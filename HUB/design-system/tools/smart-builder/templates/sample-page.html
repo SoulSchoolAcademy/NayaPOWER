@@ -49,6 +49,16 @@ section:last-of-type{border-bottom:none;}
 .piece-tag{display:flex; justify-content:space-between; align-items:center; margin-top:8px;
   padding:6px 2px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate);}
 .piece-tag b{color:var(--white); font-weight:700;}
+/* contract-owned menu content — real items, real prices */
+.menu-list{list-style:none; margin:18px 0 6px; padding:0;}
+.menu-list li{display:flex; align-items:baseline; gap:10px; padding:12px 0;
+  border-bottom:1px dotted rgba(255,255,255,.18);}
+.menu-list li:last-child{border-bottom:none;}
+.menu-list .mi-name{color:var(--white); font-weight:600; font-size:16px;}
+.menu-list .mi-desc{color:var(--slate); font-size:13px; display:block; margin-top:2px;}
+.menu-list .mi-dots{flex:1; border-bottom:2px dotted rgba(255,255,255,.22);
+  transform:translateY(-4px); min-width:20px;}
+.menu-list .mi-price{color:%%TEMPLATE_COLOR%%; font-weight:700; font-size:16px; white-space:nowrap;}
 .manifest{margin:30px 0 60px; padding:22px; border:1px solid var(--line); border-radius:var(--radius-lg);
   background:var(--raise);}
 .manifest h3{font-size:16px; margin-bottom:10px;}

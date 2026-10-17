@@ -1,0 +1,2654 @@
+<!DOCTYPE html>
+<!-- INTAKE PAGE — the Smart Builder's front door. Built 2026-10-17 by Team Nitro (BUILD/Nu)
+     through the pipeline: contracts/intake-page-v1.json + this template + assemble.py v1.3.
+     IDENTITY LAW: identity resolves once in the assembler; this template decides
+     PRESENTATION only and never redefines identity. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The Smart Builder intake — tell Naya your vision, pick real pieces, choose a template, and watch your contract take shape. Five steps. Then you say: okay, build.">
+<title>Build your Naya app — the Smart Builder intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ NAYA DESIGN TOKENS — v1 (canonical, verbatim) ============ */
+:root{
+  --obsidian:#0a0a0f; --obsidian-deep:#020203; --raise:#10141d; --card:#141a28;
+  --frosted:rgba(10,10,15,.72);
+  --white:#ffffff; --paper:#f8f7fb; --silver:#c9c9d4; --slate:#8a8a99;
+  --line:rgba(255,255,255,.12);
+  --sp-purple:#a06bff; --sp-indigo:#6675ff; --sp-sapphire:#55b9ee; --sp-teal:#40d3bb;
+  --sp-emerald:#2fe89e; --sp-lime:#b8ee57; --sp-yellow:#f1d75a; --sp-gold:#ffbf3d;
+  --sp-orange:#ff9a5a; --sp-rich-orange:#ff6b3d; --sp-red:#ff5e6c; --sp-magenta:#e84fff;
+  --soul:#a06bff; --verified:#2fe89e;
+  --font-voice:"Newsreader",Georgia,"Times New Roman",serif;
+  --font-ui:Inter,ui-sans-serif,system-ui,sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --radius-md:14px; --radius-lg:22px; --radius-pill:999px;
+  --gap:16px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian-deep); color:var(--silver); font-family:var(--font-ui);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1060px; margin:0 auto; padding:0 20px;}
+.kicker{font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700;}
+/* Chi fix 3 (Shawn's law): white kickers on black, ALWAYS. This enforcement rule
+   overrides every inline kicker color the assembler emits (sections, hero, machine,
+   modal, footer) — one law, one place. */
+.kicker{color:#ffffff !important;}
+h1,h2,h3{color:var(--white); font-family:var(--font-voice); font-weight:500; line-height:1.2;}
+h1{font-size:clamp(32px,5vw,44px); margin:14px 0 10px;}
+h2{font-size:clamp(22px,3vw,28px); margin:0 0 8px;}
+p{margin:0 0 12px; max-width:62ch;}
+.lede{font-size:18px; color:var(--paper); font-family:var(--font-voice);}
+section{padding:56px 0; border-top:1px solid var(--line);}
+.sec-head{margin-bottom:22px;}
+.sec-head .kicker{display:block; margin-bottom:10px;}
+.fine{font-size:13px; color:var(--slate);}
+.grid{display:grid; gap:var(--gap);}
+.g3{grid-template-columns:repeat(3,1fr);} .g2{grid-template-columns:repeat(2,1fr);}
+@media(max-width:760px){.g3{grid-template-columns:1fr;} .g2{grid-template-columns:1fr;}}
+:focus-visible{outline:2px solid var(--sp-teal); outline-offset:3px; border-radius:6px;}
+
+/* ============ .naya-btn — button DNA (verbatim, Naya_2 canonical) ============ */
+.naya-btn{
+  --nb-accent:#8a5cff; --nb-accent-rgb:138,92,255;
+  position:relative; isolation:isolate; overflow:hidden;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:52px; padding:0 28px; border-radius:999px;
+  border:1px solid transparent;
+  font-family:var(--font-ui); font-size:15px; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+  color:#f6f5ef; cursor:pointer; white-space:nowrap;
+  text-shadow:0 -1px 1px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.6);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,.015) 38%,rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg,#2a2b33 0%,#0c0c0f 52%,#030304 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.38),
+    inset 0 1px 0 rgba(255,255,255,.42),
+    inset 0 -1px 0 rgba(0,0,0,.72),
+    inset 0 -14px 26px rgba(0,0,0,.52),
+    inset 0 10px 18px rgba(255,255,255,.04),
+    0 20px 42px rgba(0,0,0,.84),
+    0 6px 14px rgba(0,0,0,.58);
+  transition:transform .22s var(--ease),box-shadow .38s var(--ease),border-color .3s ease,background .3s ease;
+  -webkit-tap-highlight-color:transparent; text-decoration:none;
+}
+.naya-btn>*{position:relative; z-index:3;}
+.naya-btn .nb-label{letter-spacing:.11em;}
+.naya-btn:hover,.naya-btn:focus-visible{transform:translateY(-3px) scale(1.012); outline:none;
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.72),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(0,0,0,.70),
+    0 24px 48px rgba(0,0,0,.86),
+    0 0 26px -4px rgba(var(--nb-accent-rgb),.5);}
+.naya-btn:active{transform:translateY(1px) scale(.99);}
+.naya-btn.gold{--nb-accent:#ffbf3d; --nb-accent-rgb:255,191,61;}
+.naya-btn.teal{--nb-accent:#40d3bb; --nb-accent-rgb:64,211,187;}
+.naya-btn.small{min-height:44px; padding:0 20px; font-size:13px;}
+
+.mini-btn{display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:44px; padding:0 18px; border-radius:var(--radius-pill);
+  border:1px solid var(--line); background:var(--card); color:var(--paper);
+  font-family:var(--font-ui); font-size:13px; font-weight:700; letter-spacing:.06em;
+  cursor:pointer; transition:transform .2s var(--ease), border-color .25s, box-shadow .3s var(--ease);}
+.mini-btn:hover{transform:translateY(-2px); border-color:var(--sp-teal);
+  box-shadow:0 0 18px -2px var(--sp-teal), 0 10px 24px rgba(0,0,0,.5);}
+.mini-btn[aria-pressed="true"]{border-color:var(--sp-emerald); color:var(--white);
+  box-shadow:0 0 22px -2px var(--sp-emerald), inset 0 0 0 1px var(--sp-emerald);}
+
+.hero{padding:72px 0 56px; border-top:none;}
+.hero .status{display:flex; align-items:center; gap:10px; margin-bottom:18px; flex-wrap:wrap;}
+.pill{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line);
+  border-radius:var(--radius-pill); padding:7px 16px; font-size:12px; letter-spacing:.14em;
+  text-transform:uppercase; font-weight:700; color:var(--paper); background:var(--raise);}
+.led{display:inline-block; width:9px; height:9px; border-radius:50%;
+  background:var(--verified); box-shadow:0 0 10px var(--verified); margin-right:8px;
+  animation:pulse 2.4s ease-in-out infinite; vertical-align:1px;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+
+/* feature.cover — the personal header (rendered by the real module) */
+.cover{margin:0 0 34px;}
+.cover-banner{position:relative; height:230px; border-radius:var(--radius-lg); overflow:hidden;
+  background:var(--raise); border:1px solid var(--line);}
+.cover-photo{width:100%; height:100%; object-fit:cover; display:block;}
+.cover-photo-fallback{width:100%; height:100%;
+  background:linear-gradient(120deg,var(--sp-purple),var(--sp-magenta) 45%,var(--sp-gold));}
+.cover-scrim{position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg,rgba(2,2,3,0) 30%,rgba(2,2,3,.78) 100%);}
+.cover-id{position:relative; display:flex; gap:18px; align-items:flex-end; padding:0 10px; margin-top:-46px;}
+.cover-ava{flex:0 0 auto; width:96px; height:96px; border-radius:28px; object-fit:cover;
+  border:3px solid var(--obsidian-deep); box-shadow:0 12px 30px rgba(0,0,0,.6); background:var(--card);}
+.cover-ava-fallback{display:grid; place-items:center;
+  background:linear-gradient(135deg,var(--sp-purple),var(--sp-magenta));
+  font-family:var(--font-voice); font-size:34px; font-weight:500; color:#fff;}
+.cover-name{font-size:clamp(26px,4vw,36px); margin:0; text-shadow:0 2px 14px rgba(0,0,0,.7);}
+.cover-tagline{color:var(--paper); margin:6px 0 0; font-size:15px; text-shadow:0 1px 10px rgba(0,0,0,.7);}
+@media(max-width:640px){
+  .cover-banner{height:170px;}
+  .cover-ava{width:72px; height:72px; border-radius:20px; font-size:26px;}
+  .cover-id{gap:12px; margin-top:-36px;}
+}
+
+/* step strip — the five steps at a glance */
+.steps-strip{display:flex; gap:10px; flex-wrap:wrap; margin-top:26px;}
+.step-chip{display:inline-flex; align-items:center; gap:10px; text-decoration:none;
+  border:1px solid var(--line); background:var(--raise); border-radius:var(--radius-pill);
+  padding:8px 16px 8px 8px; color:var(--paper); font-size:13px; font-weight:600;
+  transition:transform .2s var(--ease), border-color .25s, box-shadow .3s var(--ease);}
+.step-chip .n{display:grid; place-items:center; width:30px; height:30px; border-radius:50%;
+  background:var(--sc,#a06bff); color:#0a0a0f; font-weight:700; font-size:14px;}
+.step-chip:hover{transform:translateY(-3px); border-color:var(--sc);
+  box-shadow:0 0 22px -4px var(--sc), 0 12px 28px rgba(0,0,0,.55);}
+
+.nav{position:sticky; top:0; z-index:20; background:var(--frosted); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);}
+.nav .wrap{display:flex; gap:4px; overflow-x:auto; padding:10px 20px;}
+.nav a{color:var(--slate); text-decoration:none; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  font-weight:600; padding:8px 12px; border-radius:var(--radius-pill); white-space:nowrap;}
+.nav a:hover{color:var(--white); background:rgba(255,255,255,.06);}
+/* ============ intake sections ============ */
+/* intent affordances */
+.afford-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap);}
+@media(max-width:760px){.afford-grid{grid-template-columns:1fr;}}
+.afford{--ac:var(--sp-purple); background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius-lg); padding:24px; display:flex; flex-direction:column; gap:12px;
+  transition:transform .22s var(--ease), border-color .3s, box-shadow .35s var(--ease);
+  box-shadow:0 14px 34px rgba(0,0,0,.5);}
+.afford:hover{transform:translateY(-4px); border-color:var(--ac);
+  box-shadow:0 0 28px -6px var(--ac), 0 20px 44px rgba(0,0,0,.6);}
+.afford .a-icon{width:56px; height:56px; display:grid; place-items:center;
+  border-radius:16px; background:var(--obsidian); border:1px solid var(--line); overflow:hidden;}
+.afford .a-icon .nb-scope{transform:scale(.8); transform-origin:center;}
+.afford h3{margin:0; font-size:20px;}
+.afford p{font-size:14px; color:var(--slate); margin:0; flex:0 0 auto;}
+.afford textarea{flex:1 0 auto;}
+.afford .naya-btn{align-self:flex-start; margin-top:4px;}
+
+/* question fields */
+.qfield{margin-bottom:18px;}
+.qfield label{display:block; font-size:15px; font-weight:600; color:var(--paper); margin-bottom:8px;}
+.qfield .hint{font-size:13px; color:var(--slate); margin-top:6px;}
+textarea, input[type="text"], input[type="search"]{width:100%; background:var(--obsidian);
+  border:1px solid var(--line); border-radius:var(--radius-md); color:var(--paper);
+  font-family:var(--font-ui); font-size:15px; padding:14px 16px; min-height:52px;
+  transition:border-color .25s, box-shadow .3s var(--ease);}
+textarea{min-height:110px; resize:vertical;}
+textarea:focus, input:focus{outline:none; border-color:var(--sp-teal);
+  box-shadow:0 0 0 3px rgba(64,211,187,.18), 0 0 24px -6px var(--sp-teal);}
+.fn-chips{display:flex; flex-wrap:wrap; gap:10px;}
+/* Chi fix 1 (green overload): each function chip carries its OWN spectrum color —
+   no green wall. White at rest, own color on touch/hover/checked (Shawn's law). */
+.fn-chip{--fc:var(--sp-emerald); display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+  border:1px solid var(--line); background:var(--card); color:var(--paper);
+  border-radius:var(--radius-pill); padding:10px 18px; font-size:14px; font-weight:600;
+  transition:transform .2s var(--ease), border-color .25s, box-shadow .3s var(--ease), background .25s;}
+.fn-chip:nth-child(1){--fc:var(--sp-purple);}
+.fn-chip:nth-child(2){--fc:var(--sp-indigo);}
+.fn-chip:nth-child(3){--fc:var(--sp-sapphire);}
+.fn-chip:nth-child(4){--fc:var(--sp-teal);}
+.fn-chip:nth-child(5){--fc:var(--sp-emerald);}
+.fn-chip:nth-child(6){--fc:var(--sp-lime);}
+.fn-chip:nth-child(7){--fc:var(--sp-yellow);}
+.fn-chip:hover{transform:translateY(-2px); border-color:var(--fc);}
+.fn-chip input{accent-color:var(--fc); width:18px; height:18px; margin:0;}
+.fn-chip:has(input:checked){border-color:var(--fc); background:rgba(255,255,255,.05);
+  box-shadow:0 0 18px -4px var(--fc);}
+
+/* piece gallery */
+.gal-tools{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px; align-items:center;}
+.gal-tools input[type="search"]{flex:1 1 260px;}
+.catchip{border:1px solid var(--line); background:var(--raise); color:var(--paper);
+  border-radius:var(--radius-pill); padding:10px 20px; font-size:13px; font-weight:700;
+  letter-spacing:.06em; cursor:pointer; min-height:44px;
+  transition:transform .2s var(--ease), border-color .25s, box-shadow .3s var(--ease), background .25s;}
+.catchip:hover{transform:translateY(-2px); border-color:var(--sp-sapphire);}
+.catchip[aria-pressed="true"]{background:var(--sp-sapphire); border-color:var(--sp-sapphire);
+  color:#0a0a0f; box-shadow:0 0 20px -4px var(--sp-sapphire);}
+.piece-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap);}
+@media(max-width:900px){.piece-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.piece-grid{grid-template-columns:1fr;}}
+.piece-card{background:var(--raise); border:1px solid var(--line); border-radius:var(--radius-md);
+  overflow:hidden; transition:transform .22s var(--ease), border-color .3s, box-shadow .35s var(--ease);
+  box-shadow:0 14px 34px rgba(0,0,0,.5);}
+.piece-card:hover{transform:translateY(-4px); border-color:var(--pc,var(--sp-teal));
+  box-shadow:0 0 28px -8px var(--pc,var(--sp-teal)), 0 22px 48px rgba(0,0,0,.62);}
+.piece-card[aria-pressed="true"]{border-color:var(--sp-emerald);
+  box-shadow:0 0 30px -6px var(--sp-emerald), inset 0 0 0 1px var(--sp-emerald), 0 22px 48px rgba(0,0,0,.62);}
+.piece-stage{padding:26px 16px; display:flex; align-items:center; justify-content:center;
+  background:var(--obsidian); min-height:120px; overflow-x:auto;}
+.piece-cat{font-size:10px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  color:var(--pc,var(--sp-teal)); padding:12px 16px 0;}
+.piece-meta{padding:6px 16px 16px;}
+.piece-meta b{display:block; color:var(--white); font-size:14px; font-weight:600;}
+.piece-meta .model{display:block; font-style:normal; font-size:10.5px; letter-spacing:.14em;
+  color:var(--slate); text-transform:uppercase; margin-top:3px;}
+.piece-note{font-size:13px; color:var(--sp-gold); background:rgba(255,191,61,.07);
+  border:1px dashed rgba(255,191,61,.4); border-radius:10px; padding:8px 12px; margin:10px 0 0;}
+.piece-note::before{content:"Note: "; font-weight:700;}
+.piece-actions{display:flex; gap:10px; margin-top:12px;}
+.piece-actions .mini-btn{flex:1;}
+.note-editor{margin-top:12px; display:flex; flex-direction:column; gap:8px;}
+.note-editor[hidden]{display:none;}
+.note-editor textarea{min-height:70px; font-size:13px;}
+
+/* selection tray */
+.tray{margin-top:26px; background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius-lg); padding:22px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 18px 44px rgba(0,0,0,.55);}
+.tray-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+.tray-head h3{margin:0; font-size:19px;}
+.tray-items{display:flex; flex-wrap:wrap; gap:10px;}
+.tray-empty{color:var(--slate); font-size:14px; margin:0; border:1px dashed var(--line);
+  border-radius:var(--radius-md); padding:18px; width:100%; text-align:center;}
+.tray-chip{display:inline-flex; align-items:center; gap:10px; background:var(--obsidian);
+  border:1px solid var(--sp-emerald); border-radius:var(--radius-pill); padding:8px 8px 8px 16px;
+  font-size:13px; color:var(--paper); box-shadow:0 0 16px -6px var(--sp-emerald);}
+.tray-chip .tmodel{font-size:10px; letter-spacing:.12em; color:var(--slate);}
+.tray-chip .tnote{font-size:12px; color:var(--sp-gold); max-width:220px; overflow:hidden;
+  text-overflow:ellipsis; white-space:nowrap;}
+.tray-remove{border:none; background:rgba(255,255,255,.08); color:var(--paper);
+  width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:14px; line-height:1;
+  display:grid; place-items:center;}
+.tray-remove:hover{background:var(--sp-red); color:#fff;}
+/* ============ template column — ONE horizontal column, full-width rectangles ============ */
+.tpl-col{display:flex; flex-direction:column; gap:var(--gap);}
+.tpl-row{--tc:var(--sp-purple); position:relative; display:flex; gap:20px; align-items:center;
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg);
+  padding:26px 28px 26px 34px; overflow:hidden;
+  transition:transform .22s var(--ease), border-color .3s, box-shadow .35s var(--ease);
+  box-shadow:0 14px 34px rgba(0,0,0,.5);}
+.tpl-row::before{content:""; position:absolute; left:0; top:0; bottom:0; width:8px;
+  background:var(--tc); box-shadow:0 0 18px var(--tc);}
+.tpl-row:hover{transform:translateY(-4px); border-color:var(--tc);
+  box-shadow:0 0 30px -8px var(--tc), 0 24px 52px rgba(0,0,0,.62);}
+.tpl-row.picked{border-color:var(--tc); box-shadow:0 0 34px -6px var(--tc), inset 0 0 0 1px var(--tc);}
+.tpl-num{font-family:var(--font-voice); font-size:15px; color:var(--tc); white-space:nowrap;
+  letter-spacing:.08em; font-weight:600; flex:0 0 auto; min-width:120px;}
+.tpl-main{flex:1; min-width:0;}
+.tpl-main h3{margin:0 0 4px; font-size:21px;}
+.tpl-main p{margin:0 0 14px; font-size:14px; color:var(--slate);}
+.tpl-actions{display:flex; gap:12px; flex-wrap:wrap;}
+.tpl-flag{flex:0 0 auto; font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+  font-weight:700; color:var(--tc); border:1px solid var(--tc); border-radius:var(--radius-pill);
+  padding:6px 14px; white-space:nowrap;}
+@media(max-width:640px){.tpl-row{flex-direction:column; align-items:stretch;} .tpl-num{min-width:0;}}
+
+/* ============ feature showcase ============ */
+.feat-list{display:flex; flex-direction:column; gap:12px;}
+.feat-row{--fc:var(--sp-purple); display:flex; align-items:center; gap:18px;
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:16px 20px; transition:transform .2s var(--ease), border-color .3s, box-shadow .35s var(--ease);
+  box-shadow:0 12px 30px rgba(0,0,0,.45);}
+.feat-row:hover{transform:translateY(-3px); border-color:var(--fc);
+  box-shadow:0 0 26px -8px var(--fc), 0 18px 40px rgba(0,0,0,.55);}
+.feat-icon{width:64px; height:64px; flex:0 0 auto; display:grid; place-items:center;
+  border-radius:18px; background:var(--obsidian); border:1px solid var(--line); overflow:hidden;}
+.feat-icon .nb-scope{transform:scale(.72); transform-origin:center;}
+.feat-main{flex:1; min-width:0;}
+.feat-main h3{margin:0 0 2px; font-size:18px;}
+.feat-main p{margin:0; font-size:13px; color:var(--slate);}
+.badge{flex:0 0 auto; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
+  border-radius:var(--radius-pill); padding:7px 14px; border:1px solid; white-space:nowrap;}
+.badge.built{color:var(--sp-emerald); border-color:var(--sp-emerald); background:rgba(47,232,158,.08);
+  box-shadow:0 0 16px -6px var(--sp-emerald);}
+.badge.specified{color:var(--sp-gold); border-color:var(--sp-gold); background:rgba(255,191,61,.07);
+  box-shadow:0 0 16px -6px var(--sp-gold);}
+.feat-check{display:inline-flex; align-items:center; gap:8px; cursor:pointer; flex:0 0 auto;
+  font-size:13px; font-weight:700; color:var(--paper); min-height:44px;}
+.feat-check input{accent-color:var(--sp-emerald); width:20px; height:20px; margin:0;}
+@media(max-width:640px){.feat-row{flex-wrap:wrap;}}
+.feat-reports{font-size:12.5px; color:var(--slate); margin-top:14px; border:1px dashed var(--line);
+  border-radius:var(--radius-md); padding:12px 16px;}
+
+/* ============ contract output (step 5) ============ */
+.out-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gap); margin-bottom:20px;}
+@media(max-width:760px){.out-grid{grid-template-columns:1fr;}}
+.out-panel{background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg);
+  padding:22px; box-shadow:0 14px 34px rgba(0,0,0,.5);}
+.out-panel h3{margin:0 0 10px; font-size:18px;}
+.out-panel h3 .count{font-family:var(--font-ui); font-size:12px; color:var(--sp-emerald); margin-left:8px;}
+.out-empty{color:var(--slate); font-size:14px; margin:0; font-style:italic;}
+.out-vision-text{color:var(--paper); font-size:15px; margin:0; white-space:pre-wrap;}
+.out-piece{display:inline-block; background:var(--obsidian); border:1px solid var(--line);
+  border-radius:var(--radius-pill); padding:6px 14px; font-size:12.5px; color:var(--paper); margin:0 8px 8px 0;}
+.out-piece b{color:var(--sp-teal); font-weight:700; margin-right:6px;}
+.out-feat{display:flex; align-items:center; gap:10px; font-size:14px; color:var(--paper); margin-bottom:8px;}
+.out-feat .on{color:var(--sp-emerald); font-weight:700;}
+.out-feat .off{color:var(--slate);}
+.out-actions{display:flex; gap:14px; flex-wrap:wrap; margin:6px 0 14px;}
+
+/* ============ phone modal ============ */
+.modal{position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:20px;}
+.modal[hidden]{display:none;}
+.modal-backdrop{position:absolute; inset:0; background:rgba(2,2,3,.78); backdrop-filter:blur(6px);}
+.modal-phone{position:relative; width:340px; max-width:94vw; border:1px solid var(--line);
+  border-radius:42px; background:var(--obsidian); padding:14px;
+  box-shadow:0 0 60px -10px var(--sp-purple), 0 30px 80px rgba(0,0,0,.8);
+  animation:rise .35s var(--ease);}
+@keyframes rise{from{transform:translateY(26px) scale(.97); opacity:0;} to{transform:none; opacity:1;}}
+.modal-screen{border-radius:30px; background:var(--raise); overflow:hidden; min-height:520px;
+  max-height:78vh; display:flex; flex-direction:column;}
+.modal-notch{height:26px; display:grid; place-items:center; flex:0 0 auto;}
+.modal-notch span{width:96px; height:20px; background:var(--obsidian); border-radius:var(--radius-pill);}
+.modal-appbar{display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:10px 16px; border-bottom:1px solid var(--line); flex:0 0 auto;}
+.modal-appbar .kicker{color:var(--sp-purple);}
+.modal-body{padding:20px 18px 26px; overflow-y:auto;}
+.modal-body .feat-icon{width:72px; height:72px; margin-bottom:14px;}
+.modal-body h3{font-size:22px; margin:0 0 6px;}
+.modal-body .intent{font-size:14px; color:var(--paper); margin-bottom:14px;}
+.modal-body .needs{font-size:13px; color:var(--slate); margin:0 0 6px;}
+.modal-body ul{margin:0 0 14px 18px; font-size:13px; color:var(--silver);}
+.modal-body ul li{margin-bottom:4px;}
+
+/* ============ manifest + machine ============ */
+.manifest{background:var(--obsidian); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:20px 22px; margin-bottom:22px;}
+.manifest h3{font-size:16px; margin:0 0 10px;}
+.manifest .mgroup{font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
+  color:var(--slate); margin:14px 0 6px;}
+.manifest ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
+.manifest li{font-size:12px; color:var(--paper); background:var(--raise);
+  border:1px solid var(--line); border-radius:var(--radius-pill); padding:5px 12px;}
+.manifest li b{color:var(--sp-teal); font-weight:700; margin-right:6px;}
+details.machine{border:1px solid var(--line); border-radius:var(--radius-md); background:var(--obsidian);}
+details.machine summary{cursor:pointer; padding:16px 20px; color:var(--paper); font-weight:600; list-style:none; min-height:44px;}
+details.machine summary::-webkit-details-marker{display:none;}
+details.machine .body{padding:0 20px 20px;}
+pre{background:#050507; border:1px solid var(--line); border-radius:var(--radius-md); padding:18px;
+  overflow:auto; font-size:12.5px; line-height:1.6; color:var(--silver); max-height:480px;}
+.copyrow{display:flex; justify-content:flex-end; margin-bottom:10px;}
+
+#toast{position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(20px);
+  background:var(--card); border:1px solid var(--line); color:var(--paper); padding:13px 22px;
+  border-radius:var(--radius-pill); font-size:14px; opacity:0; pointer-events:none;
+  transition:opacity .3s var(--ease), transform .3s var(--ease); z-index:70; max-width:90vw; text-align:center;
+  box-shadow:0 12px 32px rgba(0,0,0,.65);}
+#toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+#toast .led{margin-right:6px;}
+
+footer{padding:40px 0 64px; border-top:1px solid var(--line); color:var(--slate); font-size:13px;}
+footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s !important; transition-duration:.001s !important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+<style>
+/* ===== section chrome — real library CSS, scoped .nb-chrome ===== */
+/* chrome:0d880c7f3c3d */
+.nb-chrome {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-chrome .demo-board { --c: #a06bff; position: relative; border-radius: 22px; padding: 34px; margin-top: 8px; overflow: hidden; background: linear-gradient(160deg,#0b0a12,#050507); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 44px color-mix(in srgb, var(--c) 22%, transparent); transition: border-color .3s, box-shadow .3s; }
+.nb-chrome .demo-beam { position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--c), transparent); box-shadow: 0 0 18px var(--c); }
+.nb-chrome .demo-name { font-size: 18px; font-weight: 800; margin: 0 0 8px; color: var(--c); text-shadow: 0 0 14px var(--c); }
+.nb-chrome .demo-board code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius: 6px; font-size: 14px; }
+/* chrome:dd8909d6a903 */
+.nb-chrome .card {--accent:#9d75ff;--accent-soft:rgba(157,117,255,.45);border:1.5px solid rgba(255,255,255,.9);border-radius:18px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(0,0,0,.28));box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 12px 32px rgba(0,0,0,.55);animation:edgebreathe 6s ease-in-out infinite;transition:border-color .3s,box-shadow .3s,transform .3s}
+.nb-chrome .card:hover {border-color:var(--accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 30px var(--accent-soft),0 12px 32px rgba(0,0,0,.55);transform:translateY(-3px)}
+@keyframes edgebreathe {0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 10px rgba(255,255,255,.06),0 12px 32px rgba(0,0,0,.55)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 22px rgba(255,255,255,.13),0 12px 32px rgba(0,0,0,.55)}}
+.nb-chrome .card h3 {font-size:18px;font-weight:700;margin-bottom:8px;color:#fff;display:flex;align-items:center;gap:12px}
+.nb-chrome .card h3 .jewel {--jewel:#9d75ff;width:26px;height:26px;flex:none;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6);background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.85),transparent 42%),radial-gradient(circle at 50% 55%,var(--jewel),color-mix(in srgb,var(--jewel) 45%,#000) 78%);border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px rgba(255,255,255,.5),inset 0 -3px 8px rgba(0,0,0,.4),0 0 22px color-mix(in srgb,var(--jewel) 55%,transparent),0 8px 20px rgba(0,0,0,.5)}
+.nb-chrome .card p {font-size:17px;color:#fff}
+.nb-chrome .card p.fine {font-size:14px;margin-top:10px}
+.nb-chrome .law-steps {display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.nb-chrome .law-step {display:flex;gap:16px;align-items:flex-start;padding:14px 16px;border-radius:14px;
+  background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07)}
+.nb-chrome .law-step .jewel {margin-top:1px;flex:none}
+.nb-chrome .law-step strong {display:block;font-size:17px;margin-bottom:4px;line-height:1.35}
+.nb-chrome .law-step span {font-size:15px;color:#fff;opacity:.92;line-height:1.5}
+/* chrome:e880e2feafeb */
+.nb-chrome {
+  --obsidian:#020203; --white:#ffffff; --chrome:#8a5cff;
+  --voice:"Cormorant Garamond",Georgia,serif;
+  --ui:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+}
+.nb-chrome .typecard {border-radius:18px; padding:28px 26px; background:linear-gradient(180deg,#0d0d13,#070709);
+  border:1.5px solid color-mix(in srgb, var(--tc) 55%, transparent);
+  box-shadow:0 14px 40px rgba(0,0,0,.6), 0 0 28px -6px var(--tc), inset 0 1px 0 rgba(255,255,255,.08);}
+.nb-chrome .typecard .tk {font-size:14px; font-weight:800; letter-spacing:.22em; color:var(--tc); margin:0 0 14px;
+  text-shadow:0 0 16px var(--tc);}
+/* chrome:577bb46a3477 */
+.nb-chrome {
+  --obsidian:#020203; --white:#ffffff; --chrome:#8a5cff;
+  --voice:"Cormorant Garamond",Georgia,serif;
+  --ui:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+}
+.nb-chrome .lawcard {border:1.5px solid rgba(255,255,255,.22); border-radius:16px; padding:22px;
+  background:#08080c; position:relative; overflow:hidden;}
+.nb-chrome .lawcard::before {content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
+  background:var(--lc); box-shadow:0 0 14px var(--lc);}
+.nb-chrome .lawcard .ln {display:flex; align-items:center; gap:10px; font-size:14px; font-weight:800;
+  letter-spacing:.2em; color:var(--lc); margin-bottom:10px;}
+.nb-chrome .lawcard .ld {width:11px; height:11px; transform:rotate(45deg); background:var(--lc);
+  box-shadow:0 0 10px var(--lc); flex:none;}
+.nb-chrome .lawcard {transition:border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);}
+.nb-chrome .lawcard:hover {border-color:color-mix(in srgb, var(--lc) 65%, transparent);
+  box-shadow:0 0 34px -6px var(--lc), inset 0 1px 0 rgba(255,255,255,.08); transform:translateY(-3px);}
+.nb-chrome .lawcard h3 {font-size:24px; margin:0 0 8px; color:#fff;}
+.nb-chrome .lawcard p {font-size:18px; color:#fff; margin:0; opacity:.92;}
+</style>
+<style>
+/* ===== wall + icon specimen CSS — real library code, scoped .nb-scope ===== */
+/* css:a8f9d4485fa0 */
+.nb-scope {
+  color-scheme:light dark;
+  --field:#07070a;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);--chrome:#08080b;
+  --magenta:#e455f4;--purple:#8d63f5;--blue:#3f9ff5;--cyan:#39d7e8;--green:#34d38a;--gold:#e7c65a;
+  --mat-0:#020203;--mat-1:#08080b;--mat-2:#101117;--mat-3:#1b1c24;--mat-white:#fbfaff;
+  --ease:cubic-bezier(.16,.84,.22,1);--snap:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 26px 70px rgba(28,18,38,.18),0 7px 22px rgba(28,18,38,.11);
+  --page:clamp(17px,4vw,68px);--radius:24px;
+}
+.nb-scope .spec-name {font-size:14px;color:#bdb7c8;font-weight:700;letter-spacing:.08em}
+/* css:0d880c7f3c3d */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .demo-board { --c: #a06bff; position: relative; border-radius: 22px; padding: 34px; margin-top: 8px; overflow: hidden; background: linear-gradient(160deg,#0b0a12,#050507); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 44px color-mix(in srgb, var(--c) 22%, transparent); transition: border-color .3s, box-shadow .3s; }
+.nb-scope .demo-beam { position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--c), transparent); box-shadow: 0 0 18px var(--c); }
+.nb-scope .demo-name { font-size: 18px; font-weight: 800; margin: 0 0 8px; color: var(--c); text-shadow: 0 0 14px var(--c); }
+.nb-scope .demo-board code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius: 6px; font-size: 14px; }
+/* css:d51194562791 */
+.nb-scope .card {--accent:#9d75ff;--accent-soft:rgba(157,117,255,.45);border:1.5px solid rgba(255,255,255,.9);border-radius:18px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(0,0,0,.28));box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 12px 32px rgba(0,0,0,.55);animation:edgebreathe 6s ease-in-out infinite;transition:border-color .3s,box-shadow .3s,transform .3s}
+.nb-scope .card:hover {border-color:var(--accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 30px var(--accent-soft),0 12px 32px rgba(0,0,0,.55);transform:translateY(-3px)}
+@keyframes edgebreathe {0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 10px rgba(255,255,255,.06),0 12px 32px rgba(0,0,0,.55)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 22px rgba(255,255,255,.13),0 12px 32px rgba(0,0,0,.55)}}
+.nb-scope .card h3 {font-size:18px;font-weight:700;margin-bottom:8px;color:#fff;display:flex;align-items:center;gap:12px}
+.nb-scope .card h3 .jewel {--jewel:#9d75ff;width:26px;height:26px;flex:none;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6);background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.85),transparent 42%),radial-gradient(circle at 50% 55%,var(--jewel),color-mix(in srgb,var(--jewel) 45%,#000) 78%);border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px rgba(255,255,255,.5),inset 0 -3px 8px rgba(0,0,0,.4),0 0 22px color-mix(in srgb,var(--jewel) 55%,transparent),0 8px 20px rgba(0,0,0,.5)}
+.nb-scope .card p {font-size:17px;color:#fff}
+.nb-scope .card p.fine {font-size:14px;margin-top:10px}
+.nb-scope .law-step .jewel {margin-top:1px;flex:none}
+/* css:577bb46a3477 */
+.nb-scope {
+  --obsidian:#020203; --white:#ffffff; --chrome:#8a5cff;
+  --voice:"Cormorant Garamond",Georgia,serif;
+  --ui:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+}
+.nb-scope .lawcard {border:1.5px solid rgba(255,255,255,.22); border-radius:16px; padding:22px;
+  background:#08080c; position:relative; overflow:hidden;}
+.nb-scope .lawcard::before {content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
+  background:var(--lc); box-shadow:0 0 14px var(--lc);}
+.nb-scope .lawcard .ln {display:flex; align-items:center; gap:10px; font-size:14px; font-weight:800;
+  letter-spacing:.2em; color:var(--lc); margin-bottom:10px;}
+.nb-scope .lawcard .ld {width:11px; height:11px; transform:rotate(45deg); background:var(--lc);
+  box-shadow:0 0 10px var(--lc); flex:none;}
+.nb-scope .lawcard {transition:border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);}
+.nb-scope .lawcard:hover {border-color:color-mix(in srgb, var(--lc) 65%, transparent);
+  box-shadow:0 0 34px -6px var(--lc), inset 0 1px 0 rgba(255,255,255,.08); transform:translateY(-3px);}
+.nb-scope .lawcard h3 {font-size:24px; margin:0 0 8px; color:#fff;}
+.nb-scope .lawcard p {font-size:18px; color:#fff; margin:0; opacity:.92;}
+/* css:709c16fafd0c */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .living-btn {
+  position: relative; overflow: hidden; cursor: pointer; border: none;
+  font-family: Inter, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: .12em;
+  color: #fff; padding: 22px 44px; border-radius: 999px; min-width: 300px;
+  background: linear-gradient(180deg, #17171c 0%, #050505 55%, #0a0a0e 100%);
+  box-shadow:
+    inset 0 0 0 1.7px rgba(255,255,255,.92),
+    inset 0 2px 6px rgba(255,255,255,.22),
+    inset 0 -8px 18px rgba(0,0,0,.75),
+    0 14px 40px rgba(0,0,0,.6),
+    0 4px 14px rgba(0,0,0,.5);
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease);
+  animation: idleBreathe 4.2s ease-in-out infinite;
+}
+.nb-scope .living-btn .btn-glow { position: absolute; inset: -2px; border-radius: 999px; opacity: .55; pointer-events: none; transition: opacity .3s; }
+.nb-scope .living-btn[data-spectrum="magenta"] .btn-glow { box-shadow: 0 0 34px 4px rgba(232,79,255,.5), inset 0 0 22px rgba(232,79,255,.28); }
+.nb-scope .living-btn[data-spectrum="purple"] .btn-glow { box-shadow: 0 0 34px 4px rgba(160,107,255,.5), inset 0 0 22px rgba(160,107,255,.28); animation-delay: 1.4s; }
+.nb-scope .living-btn[data-spectrum="blue"] .btn-glow { box-shadow: 0 0 34px 4px rgba(63,184,255,.5), inset 0 0 22px rgba(63,184,255,.28); animation-delay: 2.8s; }
+.nb-scope .living-btn::after {
+  content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.34) 50%, transparent 80%);
+  transform: skewX(-18deg); pointer-events: none;
+  animation: sweep 5.5s var(--ease) infinite;
+}
+.nb-scope .living-btn[data-spectrum="purple"]::after { animation-delay: 1.8s; }
+.nb-scope .living-btn[data-spectrum="blue"]::after { animation-delay: 3.6s; }
+@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
+@keyframes idleBreathe {
+  0%, 100% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.92), inset 0 2px 6px rgba(255,255,255,.22), inset 0 -8px 18px rgba(0,0,0,.75), 0 14px 40px rgba(0,0,0,.6), 0 4px 14px rgba(0,0,0,.5); }
+  50% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,1), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.75), 0 18px 52px rgba(0,0,0,.65), 0 4px 14px rgba(0,0,0,.5); }
+}
+.nb-scope .living-btn:hover { transform: translateY(-4px) scale(1.025); animation: none; }
+.nb-scope .living-btn[data-spectrum="magenta"]:hover { box-shadow: inset 0 0 0 2px var(--magenta), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(232,79,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+.nb-scope .living-btn[data-spectrum="purple"]:hover { box-shadow: inset 0 0 0 2px var(--purple), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(160,107,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+.nb-scope .living-btn[data-spectrum="blue"]:hover { box-shadow: inset 0 0 0 2px var(--blue), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(63,184,255,.4), 0 6px 18px rgba(0,0,0,.5); }
+.nb-scope .living-btn:hover .btn-glow { opacity: 1; }
+.nb-scope .living-btn:active { transform: translateY(1px) scale(.975); transition-duration: .08s; }
+.nb-scope .living-btn .btn-label { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.nb-scope .living-btn .btn-label svg { width: 20px; height: 20px; }
+@media (max-width: 860px) {.nb-scope .living-btn { min-width: 100%; }}
+@media (prefers-reduced-motion: reduce) {.nb-scope .living-btn, .nb-scope .living-btn::after { animation: none; }}
+/* css:8118b6861b9c */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .lv-btn {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 52px; padding: 0 30px; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+  color: #F8F7FB;
+  text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.6);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.02) 38%, rgba(0,0,0,.22) 100%),
+    linear-gradient(180deg, #26262e 0%, #0b0b0f 52%, #020203 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60);
+  transition: transform .22s var(--ease), box-shadow .38s var(--ease), background .3s ease;
+  animation: lv-breathe 7s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+@keyframes lv-breathe {
+  0%,100% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.40), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.05), 0 22px 46px rgba(0,0,0,.85), 0 6px 16px rgba(0,0,0,.60); }
+  50% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.46), inset 0 1px 0 rgba(255,255,255,.52), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.08), 0 24px 50px rgba(0,0,0,.88), 0 6px 16px rgba(0,0,0,.60); }
+}
+.nb-scope .lv-btn::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.14), rgba(255,255,255,.03) 42%, transparent 68%);
+}
+.nb-scope .lv-wrap.lv-aware .lv-btn::before { opacity: 1; }
+.nb-scope .lv-btn::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 60%, rgba(var(--lv-accent-rgb),.34), rgba(var(--lv-accent-rgb),.08) 55%, transparent 80%);
+  opacity: .10; transition: opacity .45s ease;
+  animation: lv-soul 7s ease-in-out infinite;
+}
+@keyframes lv-soul { 0%,100% { opacity: .08; } 50% { opacity: .16; } }
+.nb-scope .lv-wrap.lv-aware .lv-btn::after { opacity: .30; animation: none; }
+.nb-scope .lv-btn .lv-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.nb-scope .lv-btn .lv-label svg { width: 18px; height: 18px; }
+.nb-scope .lv-wrap.lv-aware .lv-btn {
+  animation: none; transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.58), inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(0,0,0,.70), inset 0 -16px 30px rgba(0,0,0,.48), inset 0 12px 22px rgba(255,255,255,.08), 0 0 0 1px rgba(var(--lv-accent-rgb),.16), 0 26px 52px rgba(0,0,0,.87), 0 8px 18px rgba(0,0,0,.62);
+}
+.nb-scope .lv-btn:hover, .nb-scope .lv-btn:focus-visible {
+  animation: none; transform: translateY(-3px) scale(1.012);
+  background: linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.18) 100%), linear-gradient(180deg, #2e2e38 0%, #101016 52%, #060608 100%);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.72), inset 0 1px 0 rgba(255,255,255,.62), inset 0 -1px 0 rgba(0,0,0,.66), inset 0 -16px 30px rgba(0,0,0,.42), inset 0 12px 22px rgba(255,255,255,.10), inset 0 0 0 1.5px rgba(var(--lv-accent-rgb),.85), 0 0 22px -4px rgba(var(--lv-accent-rgb),.50), 0 32px 60px rgba(0,0,0,.88), 0 10px 22px rgba(0,0,0,.62);
+}
+.nb-scope .lv-btn:hover::after, .nb-scope .lv-btn:focus-visible::after { opacity: .55; animation: none; }
+.nb-scope .lv-btn:hover::before, .nb-scope .lv-btn:focus-visible::before { opacity: 1; }
+.nb-scope .lv-btn:focus-visible { outline: 2px solid rgba(255,255,255,.92); outline-offset: 3px; }
+.nb-scope .lv-btn:active {
+  transform: translateY(1px) scale(.97) !important; transition-duration: .08s;
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.48), inset 0 4px 14px rgba(0,0,0,.85), inset 0 -4px 10px rgba(0,0,0,.55), inset 0 12px 22px rgba(0,0,0,.30), 0 10px 24px rgba(0,0,0,.78);
+}
+.nb-scope .lv-btn:active::after { opacity: .35; }
+.nb-scope .lv-btn:disabled { opacity: .55; cursor: not-allowed; animation: none; transform: none !important; }
+@media (prefers-reduced-motion: reduce) {.nb-scope .lv-btn, .nb-scope .lv-btn::after { animation: none !important; }}
+/* css:40d5dfc6b56e */
+.nb-scope .check {--cc:#9d75ff;display:flex;gap:14px;align-items:center;font-size:15px;cursor:pointer;
+  padding:14px 18px;border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  border:1px solid color-mix(in srgb, var(--cc) 30%, transparent);
+  border-left:3px solid var(--cc);transition:all .2s}
+.nb-scope .check:hover {border-color:color-mix(in srgb, var(--cc) 60%, transparent);transform:translateX(4px)}
+.nb-scope .check:hover {border-color:rgba(255,255,255,.3)}
+.nb-scope .check input {appearance:none;-webkit-appearance:none;width:26px;height:26px;margin-top:0;flex:none;cursor:pointer;
+  border-radius:8px;border:1.5px solid rgba(255,255,255,.4);
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.25),transparent 45%),rgba(255,255,255,.04);
+  transition:all .2s;position:relative}
+.nb-scope .check input:checked {border-color:#35e39b;
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.85),transparent 42%),
+    radial-gradient(circle at 50% 55%,#35e39b,color-mix(in srgb,#35e39b 45%,#000) 78%);
+  box-shadow:0 0 16px rgba(53,227,155,.6)}
+.nb-scope .check input:checked::after {content:"✓";position:absolute;inset:0;display:grid;place-items:center;
+  color:#fff;font-size:14px;font-weight:900;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.nb-scope .check:has(input:checked) {border-color:#35e39b;background:rgba(53,227,155,.06)}
+.nb-scope .check:has(input:checked) span {text-decoration:line-through;opacity:.6}
+/* css:71be08a46043 */
+.nb-scope {
+  color-scheme:light dark;
+  --field:#07070a;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);--chrome:#08080b;
+  --magenta:#e455f4;--purple:#8d63f5;--blue:#3f9ff5;--cyan:#39d7e8;--green:#34d38a;--gold:#e7c65a;
+  --mat-0:#020203;--mat-1:#08080b;--mat-2:#101117;--mat-3:#1b1c24;--mat-white:#fbfaff;
+  --ease:cubic-bezier(.16,.84,.22,1);--snap:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 26px 70px rgba(28,18,38,.18),0 7px 22px rgba(28,18,38,.11);
+  --page:clamp(17px,4vw,68px);--radius:24px;
+}
+.nb-scope input, .nb-scope .recessed-field, .nb-scope .naya-toggle, .nb-scope .smarttab, .nb-scope .app-nav button, .nb-scope .segmented button, .nb-scope .copy-code {transition:border-color .22s var(--ease),box-shadow .22s var(--ease),transform .22s var(--ease)}
+.nb-scope .recessed-field:focus-within, .nb-scope .recessed-field:focus-visible, .nb-scope .naya-toggle:hover, .nb-scope .naya-toggle:focus-visible, .nb-scope .smarttab:hover, .nb-scope .smarttab:focus-visible, .nb-scope .app-nav button:hover, .nb-scope .app-nav button:focus-visible, .nb-scope .segmented button:hover, .nb-scope .segmented button:focus-visible {border-color:var(--purple)!important;box-shadow:inset 0 2px 8px rgba(0,0,0,.8),0 0 14px -4px var(--purple)!important}
+.nb-scope .modal-mini strong, .nb-scope .modal-mini small, .nb-scope .toast-mini strong, .nb-scope .toast-mini small, .nb-scope .search-result strong, .nb-scope .search-result small, .nb-scope .content-card strong, .nb-scope .content-card small, .nb-scope .setting-row strong, .nb-scope .setting-row small, .nb-scope .media-copy strong, .nb-scope .media-copy small, .nb-scope .smart-link strong, .nb-scope .smart-link small {display:block}
+.nb-scope .modal-mini small, .nb-scope .toast-mini small, .nb-scope .search-result small, .nb-scope .content-card small, .nb-scope .setting-row small, .nb-scope .media-copy small, .nb-scope .smart-link small {color:#bdb7c5;font-size:11px;margin-top:3px}
+.nb-scope .setting-row {display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid rgba(255,255,255,.12)}
+.nb-scope .setting-row:nth-of-type(2) {border:0}
+.nb-scope .naya-toggle {position:relative;flex:none;width:54px;height:32px;padding:0;border:1.5px solid rgba(255,255,255,.72);border-radius:999px;background:#050507;box-shadow:inset 0 3px 8px #000}
+.nb-scope .naya-toggle span {position:absolute;top:4px;left:4px;width:22px;height:22px;border-radius:50%;background:linear-gradient(145deg,#fff,#9a95a0);box-shadow:0 3px 8px #000;transition:transform .22s var(--ease)}
+.nb-scope .naya-toggle[aria-checked=true] {border-color:var(--purple);box-shadow:inset 0 3px 8px #000,0 0 12px -3px var(--purple)}
+.nb-scope .naya-toggle[aria-checked=true] span {transform:translateX(22px);background:radial-gradient(circle at 35% 25%,#fff,var(--purple) 40%,#16101f)}
+/* css:9a6ab405b8fd */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.nb-scope .orb-wrap:nth-child(2) .orb { animation-delay: 1s; }
+.nb-scope .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.nb-scope .orb-wrap:nth-child(4) .orb { animation-delay: 3s; }
+.nb-scope .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.nb-scope .orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.nb-scope .orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+.nb-scope .orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.nb-scope .orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+.nb-scope .orb--sm { width: 56px; height: 56px; animation: none; }
+.nb-scope .orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
+.nb-scope .orb--sm::after { bottom: -16px; height: 14px; }
+@media (prefers-reduced-motion: reduce) {.nb-scope .orb, .nb-scope .orb::before { animation: none; }}
+/* css:6b3d0520dec4 */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.nb-scope .orb-wrap:nth-child(2) .orb { animation-delay: 1s; }
+.nb-scope .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.nb-scope .orb-wrap:nth-child(4) .orb { animation-delay: 3s; }
+.nb-scope .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.nb-scope .orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.nb-scope .orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+.nb-scope .orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.nb-scope .orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+.nb-scope .orb--hero { width: 200px; height: 200px; }
+.nb-scope .orb--hero::before { inset: -26px; padding: 4px; animation-duration: 9s; }
+.nb-scope .orb--hero::after { bottom: -46px; height: 36px; }
+@media (prefers-reduced-motion: reduce) {.nb-scope .orb, .nb-scope .orb::before { animation: none; }}
+/* css:589124c16d6f */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.nb-scope .orb-wrap:nth-child(2) .orb { animation-delay: 1s; }
+.nb-scope .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.nb-scope .orb-wrap:nth-child(4) .orb { animation-delay: 3s; }
+.nb-scope .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.nb-scope .orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.nb-scope .orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+.nb-scope .orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.nb-scope .orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+.nb-scope .orb--glyph { display: inline-grid; place-items: center; font-size: 46px; color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,.75), 0 0 22px rgba(var(--oc-rgb),.95); }
+.nb-scope .orb--icon { width: 64px; height: 64px; font-size: 26px; }
+.nb-scope .orb--icon::before { inset: -11px; padding: 2px; }
+.nb-scope .orb--icon::after { bottom: -18px; height: 14px; }
+@media (prefers-reduced-motion: reduce) {.nb-scope .orb, .nb-scope .orb::before { animation: none; }}
+/* css:28b24d645c53 */
+.nb-scope {
+  
+  --bg:        #0B0D12;  
+  --bg-raise:  #12151D;  
+  --bg-panel:  #12151D;  
+  --bg-card:   #171B25;  
+  --bg-elev:   #171B25;  
+  --edge:      #252B39;  
+  --ink:       #F5F7FB;  
+  --ink-dim:   #F5F7FB;  
+  --muted:     #AAB2BF;  
+  --muted-2:   #AAB2BF;
+  --faint:     #c9c3ce;
+  --line:      #ffffff18;
+  --line-soft: #ffffff0d;
+
+  
+  --purple:     #9d75ff;  
+  --indigo:     #6675ff;  
+  --sapphire:   #55b9ee;  
+  --blue:       #55b9ee;  
+  --teal:       #40d3bb;  
+  --emerald:    #55e39a;  
+  --green:      #55e39a;  
+  --lime:       #b8ee57;  
+  --yellow:     #f1d75a;  
+  --gold:       #e8b64c;  
+  --orange:     #ff9a5a;  
+  --rich-orange:#ff7a3d;  
+  --red:        #ff5a6e;  
+  --magenta:    #d86cff;  
+
+  
+  --accent-feed:        var(--green);       
+  --accent-today:       var(--magenta);     
+  --accent-reports:     var(--indigo);      
+  --accent-library:     var(--blue);        
+  --accent-connect:     var(--teal);        
+  --accent-ledger:      var(--gold);        
+  --accent-connections: var(--orange);      
+  --accent-lists:       var(--purple);      
+  --accent-mail:        var(--rich-orange); 
+  --accent-spaces:      var(--lime);        
+  --accent-settings:    #e8eaf2;            
+
+  
+  --depth-hi:  inset 0 1px #fff6;
+  --depth-drop: 0 18px 42px #000b;
+  --depth-deep: 0 20px 48px #000d;
+  --radius-sm: 11px;
+  --radius-md: 13px;
+  --radius-lg: 17px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  
+  --ease: cubic-bezier(.16,.84,.22,1);
+  --dur-fast: .18s;
+  --dur-med:  .28s;
+  --dur-slow: .5s;
+
+  
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-hero: clamp(30px, 4.6vw, 52px);
+  --fs-title: 23px;
+  --fs-head: 17px;
+  --fs-body: 16px;
+  --fs-small: 13px;
+  --fs-micro: 11.5px;
+
+  
+  --field:
+    radial-gradient(1000px 650px at 55% -12%, #6675ff18, transparent 68%),
+    radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%),
+    var(--bg);
+}
+.nb-scope .door-name { font-size: 15px; font-weight: 800; }
+.nb-scope .door-for { color: var(--muted); font-size: var(--fs-small); }
+/* css:3a6d020178aa */
+.nb-scope {
+  --obsidian:#020203; --white:#ffffff; --chrome:#9d75ff;
+  --voice:"Cormorant Garamond",Georgia,serif;
+  --ui:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+}
+.nb-scope .jewelrow {display:flex; gap:18px; align-items:center; flex-wrap:wrap;
+  justify-content:center; padding:26px 0 10px; margin-bottom:14px;
+  border-bottom:1px solid rgba(255,255,255,.12);}
+.nb-scope .jw {width:30px; height:30px; border-radius:9px; display:grid; place-items:center;
+  font-size:13px; font-weight:900; color:#fff; flex:none;
+  background:radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--j), #000 130%);
+  border:1px solid rgba(255,255,255,.4); box-shadow:0 0 14px var(--j);}
+.nb-scope .tongue ul li .jw {width:24px; height:24px; font-size:11px; margin-top:2px;}
+.nb-scope .hbul .jw {width:24px; height:24px; font-size:11px; margin-top:2px;}
+.nb-scope .gate .jw {width:28px; height:28px; font-size:13px; margin-top:1px;}
+/* css:c25dc4886861 */
+.nb-scope {
+  color-scheme:light dark;
+  --field:#07070a;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);--chrome:#08080b;
+  --magenta:#e455f4;--purple:#8d63f5;--blue:#3f9ff5;--cyan:#39d7e8;--green:#34d38a;--gold:#e7c65a;
+  --mat-0:#020203;--mat-1:#08080b;--mat-2:#101117;--mat-3:#1b1c24;--mat-white:#fbfaff;
+  --ease:cubic-bezier(.16,.84,.22,1);--snap:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 26px 70px rgba(28,18,38,.18),0 7px 22px rgba(28,18,38,.11);
+  --page:clamp(17px,4vw,68px);--radius:24px;
+}
+.nb-scope .nav {position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px;min-height:68px;padding:10px var(--page);background:color-mix(in srgb,var(--field) 86%,transparent);border-bottom:1px solid var(--soft-line);backdrop-filter:blur(18px)}
+.nb-scope .nav-orb {position:relative;width:40px;height:40px;flex:none;border:1px solid color-mix(in srgb,var(--purple) 60%,white);border-radius:50%;background:radial-gradient(circle at 36% 26%,#6c5799,#120d1d 50%,#020203 85%);box-shadow:inset 0 1px 3px rgba(255,255,255,.42),0 7px 20px rgba(0,0,0,.35)}
+.nb-scope .nav-orb:before {content:"";position:absolute;inset:-4px;border-radius:inherit;background:conic-gradient(from 40deg,transparent 0 205deg,rgba(255,255,255,.88) 236deg,var(--purple) 264deg,transparent 300deg);mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 0);animation:ring-spin 12s linear infinite}
+.nb-scope .nav-n {position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px}
+.nb-scope .nav-label {font-size:14px;font-weight:800;letter-spacing:.12em}
+.nb-scope .nav-links {margin-left:auto;display:flex;align-items:center;gap:4px}
+.nb-scope .nav-links a {color:var(--quiet);text-decoration:none;font-size:14px;font-weight:700;padding:8px 11px;border-radius:999px}
+.nb-scope .nav-links a:hover {background:var(--surface-2);color:var(--ink)}
+@keyframes ring-spin {to{transform:rotate(360deg)}}
+@media(max-width:820px) {.nb-scope .nav-label {display:none}
+.nb-scope .nav-links a:nth-child(n+5) {display:none}}
+@media(max-width:560px) {.nb-scope .nav {gap:8px;flex-wrap:wrap;padding-block:9px}
+.nb-scope .nav-orb {width:34px;height:34px}
+.nb-scope .nav-links {order:3;width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.nb-scope .nav-links a {display:grid!important;place-items:center;min-height:44px;font-size:10px;padding:6px 4px;text-align:center;border:1px solid var(--soft-line);background:var(--surface);border-radius:10px}}
+@media(prefers-reduced-motion:reduce) {.nb-scope .orbit, .nb-scope .logo-vessel, .nb-scope .nav-orb:before, .nb-scope .sphere:after, .nb-scope .orbital-diagram .track {animation:none!important}}
+/* css:4b21930df97d */
+.nb-scope {
+  color-scheme:light dark;
+  --field:#07070a;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);--chrome:#08080b;
+  --magenta:#e455f4;--purple:#8d63f5;--blue:#3f9ff5;--cyan:#39d7e8;--green:#34d38a;--gold:#e7c65a;
+  --mat-0:#020203;--mat-1:#08080b;--mat-2:#101117;--mat-3:#1b1c24;--mat-white:#fbfaff;
+  --ease:cubic-bezier(.16,.84,.22,1);--snap:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 26px 70px rgba(28,18,38,.18),0 7px 22px rgba(28,18,38,.11);
+  --page:clamp(17px,4vw,68px);--radius:24px;
+}
+.nb-scope .smarttab {--tone:var(--purple);position:relative;flex:1;min-width:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 12px;color:var(--quiet);border:1px solid transparent;border-radius:999px;background:transparent;font-size:14px;font-weight:800;white-space:nowrap}
+.nb-scope .smarttab .tab-dot {width:8px;height:8px;transform:rotate(45deg);border:1px solid var(--tone)}
+.nb-scope .smarttab[aria-selected=true] {color:var(--ink);background:var(--surface);border-color:var(--line);box-shadow:0 8px 20px rgba(0,0,0,.1),inset 0 1px color-mix(in srgb,var(--ink) 8%,transparent)}
+.nb-scope .smarttab[aria-selected=true] .tab-dot {background:var(--tone);box-shadow:0 0 10px var(--tone)}
+.nb-scope input, .nb-scope .recessed-field, .nb-scope .naya-toggle, .nb-scope .smarttab, .nb-scope .app-nav button, .nb-scope .segmented button, .nb-scope .copy-code {transition:border-color .22s var(--ease),box-shadow .22s var(--ease),transform .22s var(--ease)}
+.nb-scope .recessed-field:focus-within, .nb-scope .recessed-field:focus-visible, .nb-scope .naya-toggle:hover, .nb-scope .naya-toggle:focus-visible, .nb-scope .smarttab:hover, .nb-scope .smarttab:focus-visible, .nb-scope .app-nav button:hover, .nb-scope .app-nav button:focus-visible, .nb-scope .segmented button:hover, .nb-scope .segmented button:focus-visible {border-color:var(--purple)!important;box-shadow:inset 0 2px 8px rgba(0,0,0,.8),0 0 14px -4px var(--purple)!important}
+/* css:5801a38869bf */
+.nb-scope {
+  color-scheme:light dark;
+  --field:#07070a;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);--chrome:#08080b;
+  --magenta:#e455f4;--purple:#8d63f5;--blue:#3f9ff5;--cyan:#39d7e8;--green:#34d38a;--gold:#e7c65a;
+  --mat-0:#020203;--mat-1:#08080b;--mat-2:#101117;--mat-3:#1b1c24;--mat-white:#fbfaff;
+  --ease:cubic-bezier(.16,.84,.22,1);--snap:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 26px 70px rgba(28,18,38,.18),0 7px 22px rgba(28,18,38,.11);
+  --page:clamp(17px,4vw,68px);--radius:24px;
+}
+.nb-scope .icon {width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nb-scope .n-btn .btn-orb .icon {width:15px;height:15px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+.nb-scope .n-btn.prism .prism-mark .icon {width:14px;height:14px;transform:rotate(-45deg)}
+.nb-scope .jewel .icon {transform:rotate(7deg);filter:drop-shadow(0 0 7px #fff)}
+.nb-scope .sphere .icon {width:26px;height:26px;color:#fff;filter:drop-shadow(0 0 8px rgba(255,255,255,.6))}
+.nb-scope .icon-tile {--tone:var(--purple);--rgb:141,99,245;min-height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.008));font-size:12px}
+.nb-scope .mini-gem {width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:radial-gradient(circle at 28% 20%,rgba(255,255,255,.95),transparent 28%),radial-gradient(circle at 55% 58%,var(--tone),#050506 86%);border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 -5px 9px rgba(0,0,0,.5),0 8px 14px rgba(0,0,0,.4),0 0 14px rgba(var(--rgb),.35);transition:transform .24s var(--ease),box-shadow .24s}
+.nb-scope .icon-tile:hover .mini-gem {transform:translateY(-3px) rotate(-4deg);box-shadow:inset 0 -5px 9px rgba(0,0,0,.5),0 12px 20px rgba(0,0,0,.48),0 0 20px rgba(var(--rgb),.48)}
+.nb-scope .mini-gem .icon {width:18px;height:18px}
+.nb-scope .mini-gem.circle {border-radius:50%}
+.nb-scope .mini-gem.square {border-radius:10px}
+.nb-scope .mini-gem.diamond {border-radius:8px;transform:rotate(45deg)}
+.nb-scope .mini-gem.diamond .icon {transform:rotate(-45deg)}
+.nb-scope .icon-tile:hover .mini-gem.diamond {transform:translateY(-3px) rotate(41deg)}
+.nb-scope .final-line .mini-gem {width:34px;height:34px;flex:none}
+.nb-scope .naya-btn.icon {width:58px;height:58px;min-height:58px;padding:0;border-radius:50%;letter-spacing:0}
+.nb-scope .naya-btn.icon:before {inset:-5px}
+.nb-scope .naya-btn.icon.micro {width:44px;height:44px;min-height:44px}
+.nb-scope .naya-btn.icon.portal {width:66px;height:66px;border-color:#fff;box-shadow:inset 0 2px 3px rgba(255,255,255,.24),inset 0 -10px 16px rgba(0,0,0,.75),0 5px 0 #010102,0 18px 30px rgba(0,0,0,.72)}
+.nb-scope .naya-btn.icon.portal .icon {fill:#fff}
+.nb-scope .naya-btn.prism .prism-mark .icon {transform:rotate(-45deg)}
+.nb-scope .bad-action .icon {width:20px;height:20px}
+.nb-scope .toast-mini>.icon {color:var(--tone)}
+.nb-scope .search-result .mini-gem {width:34px;height:34px;flex:none}
+.nb-scope .smart-link>.icon {color:var(--tone);flex:none}
+/* css:019b2f7a218f */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.nb-scope .orb-wrap:nth-child(2) .orb { animation-delay: 1s; }
+.nb-scope .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.nb-scope .orb-wrap:nth-child(4) .orb { animation-delay: 3s; }
+.nb-scope .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.nb-scope .orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.nb-scope .orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+.nb-scope .orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.nb-scope .orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes orb-spin-rev { to { transform: rotate(-360deg); } }
+.nb-scope .orb--twin::after { inset: -30px; left: auto; right: auto; top: auto; bottom: auto; height: auto; border-radius: 50%; filter: none; z-index: auto;
+  background: conic-gradient(from 90deg, transparent 0deg, transparent 310deg, rgba(var(--oc-rgb),.6) 345deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px;
+  animation: orb-spin-rev 11s linear infinite; opacity: .7; }
+@media (prefers-reduced-motion: reduce) {.nb-scope .orb, .nb-scope .orb::before { animation: none; }}
+/* css:a67b476948e3 */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .gem-bullet { --tone: var(--purple); width: 12px; height: 12px; flex: none; display: inline-block; transform: rotate(45deg); margin-top: 7px;
+  background: linear-gradient(140deg, #fff, var(--tone) 50%, #18101a); box-shadow: 0 0 14px var(--tone); }
+</style>
+</head>
+<body>
+<!-- Chi fix 2: inline SVG sprite — every <use href="#i-*"> on this page
+     resolves to a real <symbol>. Glyphs render; no dead refs (L-2026-10-17-002). -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></symbol>
+<symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2c0-6 12-6 12 0v2M17 5a3 3 0 0 1 0 6m1 4c2 0 3 2 3 4v1"/></symbol>
+<symbol id="i-door" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 12h9m-4-4 4 4-4 4"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></symbol>
+<symbol id="i-orbit" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="5"/><path d="M5 5c4-3 10-3 14 0M5 19c4 3 10 3 14 0"/></symbol>
+<symbol id="i-bars" viewBox="0 0 24 24"><path d="M4 19v-8m5 8V5m5 14V9m5 10V3"/></symbol>
+</svg>
+
+
+<nav class="nav" aria-label="Intake steps"><div class="wrap">
+  <a href="#step-1">1 · Intent</a><a href="#step-2">2 · Questions</a><a href="#step-3">3 · Pieces</a>
+  <a href="#step-4">4 · Templates</a><a href="#features">Features</a><a href="#step-5">5 · Contract</a>
+  <a href="#machine">Machine</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  
+  <div class="status">
+    <span class="pill"><span class="led"></span>The Smart Builder · Intake</span>
+    <span class="pill">Five steps · then you say build</span>
+  </div>
+  <span class="kicker" style="color:var(--sp-purple)">The Smart Builder</span>
+  <h1>Your Smart App</h1>
+  <p class="lede">Don’t build from nothing. Start from a working Smart App — personalize it, simplify it, expand it, connect it. Everything is on; uncheck what you don’t want.</p>
+  <p style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+    <button class="naya-btn" data-scroll="#step-1"><span class="nb-label">Start with step 1</span></button>
+    <button class="naya-btn teal" data-scroll="#step-4"><span class="nb-label">See the 12 templates</span></button>
+  </p>
+  <div class="steps-strip" aria-label="The five steps">
+    <a class="step-chip" style="--sc:#a06bff" href="#step-1"><span class="n">1</span>Tell Naya your vision</a>
+    <a class="step-chip" style="--sc:#55b9ee" href="#step-2"><span class="n">2</span>Answer four questions</a>
+    <a class="step-chip" style="--sc:#40d3bb" href="#step-3"><span class="n">3</span>Pick your pieces</a>
+    <a class="step-chip" style="--sc:#2fe89e" href="#step-4"><span class="n">4</span>Choose your template</a>
+    <a class="step-chip" style="--sc:#ffbf3d" href="#step-5"><span class="n">5</span>This is what you chose</a>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<section id="step-1" aria-label="Step 1: intent">
+  <div class="sec-head"><span class="kicker" style="color:#b8ee57">Step 1</span><h2>Tell Naya your vision</h2><p>One clear instruction. Type it, paste it, or dictate it — however your vision comes out.</p></div><div class="afford-grid"><div class="afford" style="--ac:#a06bff"><div class="a-icon" data-model="NAYA-JWL-025"><div class="nb-scope"><div class="icon-tile" style="--tone:#39d7e8;--rgb:57,215,232">Ask<span class="mini-gem circle"><svg class="icon"><use href="#i-search"></svg></span></div></div></div><h3>Type it</h3><p>Write your vision in your own words, right here.</p><label class="fine" for="vision-type" style="font-weight:700;color:var(--paper)">Your vision</label><textarea id="vision-type" placeholder="My app is…"></textarea><button class="naya-btn small teal" id="btn-save-type"><span class="nb-label">Save my vision</span></button></div><div class="afford" style="--ac:#b8ee57"><div class="a-icon" data-model="NAYA-JWL-027"><div class="nb-scope"><div class="icon-tile" style="--tone:#ff9a5a;--rgb:255,154,90">Grow<span class="mini-gem circle"><svg class="icon"><use href="#i-orbit"></svg></span></div></div></div><h3>Paste it</h3><p>Already wrote it somewhere? Paste it in — notes, docs, messages.</p><label class="fine" for="vision-paste" style="font-weight:700;color:var(--paper)">Paste it here</label><textarea id="vision-paste" placeholder="Paste notes, docs, messages…"></textarea><button class="naya-btn small teal" id="btn-import-paste"><span class="nb-label">Import pasted text</span></button></div><div class="afford" style="--ac:#ff5e6c"><div class="a-icon" data-model="NAYA-JWL-078"><div class="nb-scope"><span class="orb orb--twin" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span></div></div><h3>Dictate it</h3><p>Say it out loud. Your words land in the contract like typing.</p><button class="naya-btn small teal" id="btn-dictate"><span class="nb-label">Start dictating</span></button><p class="fine" id="dictate-status" role="status"></p></div></div>
+</section>
+
+<section id="step-2" aria-label="Step 2: questions">
+  <div class="sec-head"><span class="kicker" style="color:#ff5e6c">Step 2</span><h2>Answer four questions</h2><p>Vision, goal, functions, what it should do. Plain words — these answers let Naya draft your contract.</p></div><div class="nb-chrome"><div class="demo-board" style="--c:#ff5e6c"><form id="qform"><div class="qfield"><label for="q-vision">What is your vision?</label><textarea id="q-vision" placeholder="Say it like you&#x27;d tell a friend. One or two sentences is plenty."></textarea></div><div class="qfield"><label for="q-goal">What should it do for you?</label><textarea id="q-goal" placeholder="The job it does — bookings, sales, gathering people, showing your work…"></textarea></div><div class="qfield"><label id="fn-label">Which functions must it have?</label><p class="fine">Tick everything it must have. All ticked by default — untick to remove.</p><div class="fn-chips" role="group" aria-labelledby="fn-label"><label class="fn-chip"><input type="checkbox" name="fn" value="smart_mail" checked> Smart Mail</label><label class="fn-chip"><input type="checkbox" name="fn" value="smart_list" checked> Smart lists</label><label class="fn-chip"><input type="checkbox" name="fn" value="space" checked> Smart Space</label><label class="fn-chip"><input type="checkbox" name="fn" value="connect" checked> Connect + communicate</label><label class="fn-chip"><input type="checkbox" name="fn" value="intelligence_today" checked> Intelligence Today</label><label class="fn-chip"><input type="checkbox" name="fn" value="social_feed" checked> Personal social feed</label><label class="fn-chip"><input type="checkbox" name="fn" value="smart_tabs" checked> Smart tabs</label></div></div><div class="qfield"><label for="q-behavior">How should it behave?</label><textarea id="q-behavior" placeholder="The feel of it — calm, energetic, playful, serious…"></textarea></div><button class="naya-btn small teal" type="submit" id="btn-save-answers"><span class="nb-label">Save my answers</span></button></form></div></div>
+</section>
+
+<section id="step-3" aria-label="Step 3: pick pieces">
+  <div class="sec-head"><span class="kicker" style="color:#40d3bb">Step 3</span><h2>Pick your pieces</h2><p>The real buttons, boards, banners, icons and navigation from the library. Tap Select on what you love.</p></div><div class="gal-tools"><input type="search" id="piece-search" aria-label="Search pieces" placeholder="Search pieces — try “buttons”"><button class="catchip" data-cat="All" aria-pressed="true">All</button><button class="catchip" data-cat="Banners" aria-pressed="false">Banners</button><button class="catchip" data-cat="Boards" aria-pressed="false">Boards</button><button class="catchip" data-cat="Buttons" aria-pressed="false">Buttons</button><button class="catchip" data-cat="Forms" aria-pressed="false">Forms</button><button class="catchip" data-cat="Jewels" aria-pressed="false">Jewels</button><button class="catchip" data-cat="Lists" aria-pressed="false">Lists</button><button class="catchip" data-cat="Navigation" aria-pressed="false">Navigation</button></div><p class="fine" id="gal-empty" style="display:none">No pieces match — try a different word.</p><div class="piece-grid" id="piece-grid"><div class="piece-card" style="--pc:#a06bff" data-model="NAYA-TYP-009" data-cat="Banners" data-label="LAW PILL / incredible clarity at rest" data-search="naya-typ-009 law pill / incredible clarity at rest banner typ dashboard feed landing profile report" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><span class="spec-name">LAW PILL / incredible clarity at rest</span></div></div><div class="piece-cat">Banners</div><div class="piece-meta"><b>LAW PILL / incredible clarity at rest</b><span class="model">NAYA-TYP-009 · banner</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-TYP-009" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-TYP-009">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-TYP-009" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#a06bff" data-model="NAYA-TYP-010" data-cat="Banners" data-label="LIGHT STREAK / precise interface detail" data-search="naya-typ-010 light streak / precise interface detail banner typ dashboard feed landing profile report" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><span class="spec-name">LIGHT STREAK / precise interface detail</span></div></div><div class="piece-cat">Banners</div><div class="piece-meta"><b>LIGHT STREAK / precise interface detail</b><span class="model">NAYA-TYP-010 · banner</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-TYP-010" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-TYP-010">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-TYP-010" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#a06bff" data-model="NAYA-TYP-011" data-cat="Banners" data-label="OBSIDIAN PILL / strongest depth + restraint" data-search="naya-typ-011 obsidian pill / strongest depth + restraint banner typ dashboard feed landing profile report" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><span class="spec-name">OBSIDIAN PILL / strongest depth + restraint</span></div></div><div class="piece-cat">Banners</div><div class="piece-meta"><b>OBSIDIAN PILL / strongest depth + restraint</b><span class="model">NAYA-TYP-011 · banner</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-TYP-011" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-TYP-011">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-TYP-011" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#b8ee57" data-model="NAYA-CRD-001" data-cat="Boards" data-label="The law, not a palette" data-search="naya-crd-001 the law, not a palette board crd dashboard feed gallery landing profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><div class="demo-board" id="demoBoard"><div class="demo-beam"></div><p class="demo-name" id="demoName">Purple — Naya herself</p><p>One property —  — drives every light on this board. Set it, and the board obeys.<code>--c</code></p></div></div></div><div class="piece-cat">Boards</div><div class="piece-meta"><b>The law, not a palette</b><span class="model">NAYA-CRD-001 · board</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-CRD-001" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-CRD-001">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-CRD-001" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#b8ee57" data-model="NAYA-CRD-008" data-cat="Boards" data-label="Aliveness ✧" data-search="naya-crd-008 aliveness ✧ board crd dashboard feed gallery landing profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><div class="card" style="--accent:#ff5e6c;--accent-soft:rgba(255,94,108,.5)"><h3>Aliveness<span class="jewel" style="--jewel:#ff5e6c">✧</span></h3><p>Ambient drift, edge breathing, rotating sheens, glow pulses — 4-second cycles minimum, slow and purposeful. Reduced motion disables everything.</p></div></div></div><div class="piece-cat">Boards</div><div class="piece-meta"><b>Aliveness ✧</b><span class="model">NAYA-CRD-008 · board</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-CRD-008" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-CRD-008">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-CRD-008" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#b8ee57" data-model="NAYA-CRD-010" data-cat="Boards" data-label="LAW 2 Back it or bench it. 9.0+ ships. Below 9 goes back" data-search="naya-crd-010 law 2 back it or bench it. 9.0+ ships. below 9 goes back board crd dashboard feed gallery landing profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><div class="lawcard" style="--lc:#8a5cff"><p class="ln">LAW 2<span class="ld"></span></p><h3>Back it or bench it.</h3><p>9.0+ ships. Below 9 goes back to the bench. No exceptions, no almost.</p></div></div></div><div class="piece-cat">Boards</div><div class="piece-meta"><b>LAW 2 Back it or bench it. 9.0+ ships. Below 9 goes back</b><span class="model">NAYA-CRD-010 · board</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-CRD-010" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-CRD-010">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-CRD-010" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#b8ee57" data-model="NAYA-CRD-012" data-cat="Boards" data-label="LAW 6 Black heart, white voice, visible skin. #050505 ce" data-search="naya-crd-012 law 6 black heart, white voice, visible skin. #050505 ce board crd dashboard feed gallery landing profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><div class="lawcard" style="--lc:#ffd45a"><p class="ln">LAW 6<span class="ld"></span></p><h3>Black heart, white voice, visible skin.</h3><p>#050505 center, white text and icon, real rim. The glyph is a promise.</p></div></div></div><div class="piece-cat">Boards</div><div class="piece-meta"><b>LAW 6 Black heart, white voice, visible skin. #050505 ce</b><span class="model">NAYA-CRD-012 · board</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-CRD-012" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-CRD-012">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-CRD-012" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#ff5e6c" data-model="NAYA-BTN-001" data-cat="Buttons" data-label="See It Working" data-search="naya-btn-001 see it working button btn chat dashboard feed form landing player profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><button class="living-btn" data-spectrum="purple"><span class="btn-glow"></span><span class="btn-label">◈ SEE IT WORKING</span></button></div></div><div class="piece-cat">Buttons</div><div class="piece-meta"><b>See It Working</b><span class="model">NAYA-BTN-001 · button</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-BTN-001" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-BTN-001">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-BTN-001" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#ff5e6c" data-model="NAYA-BTN-003" data-cat="Buttons" data-label="＋ Read The Law" data-search="naya-btn-003 ＋ read the law button btn chat dashboard feed form landing player profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><button class="living-btn" data-spectrum="blue"><span class="btn-glow"></span><span class="btn-label">＋ READ THE LAW</span></button></div></div><div class="piece-cat">Buttons</div><div class="piece-meta"><b>＋ Read The Law</b><span class="model">NAYA-BTN-003 · button</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-BTN-003" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-BTN-003">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-BTN-003" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#ff5e6c" data-model="NAYA-BTN-009" data-cat="Buttons" data-label="Gold" data-search="naya-btn-009 gold button btn chat dashboard feed form landing player profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><button class="lv-btn" style="--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61"><span class="lv-label">Gold</span></button></div></div><div class="piece-cat">Buttons</div><div class="piece-meta"><b>Gold</b><span class="model">NAYA-BTN-009 · button</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-BTN-009" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-BTN-009">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-BTN-009" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#ff5e6c" data-model="NAYA-BTN-014" data-cat="Buttons" data-label="Purple" data-search="naya-btn-014 purple button btn chat dashboard feed form landing player profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><button class="lv-btn" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255"><span class="lv-label">Purple</span></button></div></div><div class="piece-cat">Buttons</div><div class="piece-meta"><b>Purple</b><span class="model">NAYA-BTN-014 · button</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-BTN-014" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-BTN-014">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-BTN-014" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#40d3bb" data-model="NAYA-FRM-001" data-cat="Forms" data-label="Copy is plain enough for anyone to understand on first r" data-search="naya-frm-001 copy is plain enough for anyone to understand on first r form frm dashboard feed landing settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><label class="check" style="--cc:#ff6b8a"><input type="checkbox"><span>Copy is plain enough for anyone to understand on first read</span></label></div></div><div class="piece-cat">Forms</div><div class="piece-meta"><b>Copy is plain enough for anyone to understand on first r</b><span class="model">NAYA-FRM-001 · form</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-FRM-001" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-FRM-001">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-FRM-001" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#40d3bb" data-model="NAYA-FRM-007" data-cat="Forms" data-label="Toggle / settings row" data-search="naya-frm-007 toggle / settings row form frm dashboard feed settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><div class="setting-row"><div><strong>Living motion</strong><small>Respect system preference</small></div><button class="naya-toggle" role="switch" aria-checked="true" aria-label="Living motion"><span></span></button></div><div class="setting-row"><div><strong>Private by default</strong><small>Protection is explicit</small></div><button class="naya-toggle" role="switch" aria-checked="false" aria-label="Private by default"><span></span></button></div></div></div><div class="piece-cat">Forms</div><div class="piece-meta"><b>Toggle / settings row</b><span class="model">NAYA-FRM-007 · form</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-FRM-007" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-FRM-007">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-FRM-007" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#ff9a5a" data-model="NAYA-JWL-001" data-cat="Jewels" data-label="finished objects of light" data-search="naya-jwl-001 finished objects of light jewel jwl chat dashboard feed gallery landing profile" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><span class="orb orb--sm" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></div></div><div class="piece-cat">Jewels</div><div class="piece-meta"><b>finished objects of light</b><span class="model">NAYA-JWL-001 · jewel</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-JWL-001" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-JWL-001">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-JWL-001" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#ff9a5a" data-model="NAYA-JWL-002" data-cat="Jewels" data-label="finished objects of light" data-search="naya-jwl-002 finished objects of light jewel jwl chat dashboard feed gallery landing profile" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><span class="orb orb--hero" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></div></div><div class="piece-cat">Jewels</div><div class="piece-meta"><b>finished objects of light</b><span class="model">NAYA-JWL-002 · jewel</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-JWL-002" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-JWL-002">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-JWL-002" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#ff9a5a" data-model="NAYA-JWL-007" data-cat="Jewels" data-label="finished objects of light" data-search="naya-jwl-007 finished objects of light jewel jwl chat dashboard feed gallery landing profile" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><span class="orb orb--glyph orb--icon" style="--oc:#ffbf3d;--oc-rgb:255,191,61">◈</span></div></div><div class="piece-cat">Jewels</div><div class="piece-meta"><b>finished objects of light</b><span class="model">NAYA-JWL-007 · jewel</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-JWL-007" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-JWL-007">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-JWL-007" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#6675ff" data-model="NAYA-LST-001" data-cat="Lists" data-label="[doors] smart door cards (registered doors)" data-search="naya-lst-001 [doors] smart door cards (registered doors) list lst dashboard feed form landing settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><div class="door-cards"><div class="door-card" data-door="ai"><span class="door-name">AI Connect</span><span class="door-for">Reasoning over retained intelligence</span></div><div class="door-card" data-door="data"><span class="door-name">Supabase / Data Connect</span><span class="door-for">The governed data substrate</span></div><div class="door-card" data-door="github"><span class="door-name">GitHub Connect</span><span class="door-for">Coding & repository agents</span></div><div class="door-card" data-door="mcp"><span class="door-name">MCP Connect</span><span class="door-for">AI agents → provider tools</span></div><div class="door-card" data-door="naya"><span class="door-name">Naya-to-Naya Connect</span><span class="door-for">Seat ↔ seat collaboration</span></div><div class="door-card" data-door="email"><span class="door-name">Email Connect</span><span class="door-for">Human & network communication</span></div><div class="door-card" data-door="calendar"><span class="door-name">Calendar Connect</span><span class="door-for">Schedules & time</span></div><div class="door-card" data-door="voice"><span class="door-name">Voice Connect</span><span class="door-for">Spoken interaction</span></div><div class="door-card" data-door="web"><span class="door-name">Web Connect</span><span class="door-for">The open web, governed</span></div></div></div></div><div class="piece-cat">Lists</div><div class="piece-meta"><b>[doors] smart door cards (registered doors)</b><span class="model">NAYA-LST-001 · list</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-LST-001" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-LST-001">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-LST-001" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#6675ff" data-model="NAYA-LST-002" data-cat="Lists" data-label="Every bullet a jewel. Never twice in a row." data-search="naya-lst-002 every bullet a jewel. never twice in a row. list lst dashboard feed form landing settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><div class="jewelrow"><span class="jw" style="--j:#ed42c4">◆</span><span class="jw" style="--j:#8a5cff">✧</span><span class="jw" style="--j:#3ca8ff">▲</span><span class="jw" style="--j:#35e39b">✦</span><span class="jw" style="--j:#ffd45a">◆</span><span style="font-size:14px; color:#fff; opacity:.85">the five-jewel cycle</span></div></div></div><div class="piece-cat">Lists</div><div class="piece-meta"><b>Every bullet a jewel. Never twice in a row.</b><span class="model">NAYA-LST-002 · list</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-LST-002" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-LST-002">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-LST-002" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#f1d75a" data-model="NAYA-NAV-012" data-cat="Navigation" data-label="nav" data-search="naya-nav-012 nav navigation nav dashboard feed landing profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><nav class="nav" aria-label="Design language sections"><span class="nav-orb" aria-hidden="true"><span class="nav-n">N</span></span><span class="nav-label">LIVING DESIGN LANGUAGE</span><div class="nav-links"><a href="#foundations">Foundations</a><a href="#buttons">Buttons</a><a href="#boards">Boards</a><a href="#actions">Actions</a><a href="#icons">Icons</a><a href="#smarttabs">Tabs + Login</a><a href="#app">App shell</a><a href="#blocks">Blocks</a><a href="#laws">100 laws</a></div></nav></div></div><div class="piece-cat">Navigation</div><div class="piece-meta"><b>nav</b><span class="model">NAYA-NAV-012 · navigation</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-NAV-012" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-NAV-012">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-NAV-012" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div><div class="piece-card" style="--pc:#f1d75a" data-model="NAYA-NAV-014" data-cat="Navigation" data-label="Activity" data-search="naya-nav-014 activity navigation nav dashboard feed landing profile settings" aria-pressed="false"><div class="piece-stage"><div class="nb-scope"><button class="smarttab" role="tab" aria-selected="false" style="--tone:#e7c65a" data-tab-copy="Verified actions and the evidence behind them.">Activity<span class="tab-dot"></span></button></div></div><div class="piece-cat">Navigation</div><div class="piece-meta"><b>Activity</b><span class="model">NAYA-NAV-014 · navigation</span><p class="piece-note" hidden></p><div class="piece-actions"><button class="mini-btn piece-select" data-model="NAYA-NAV-014" aria-pressed="false">Select</button><button class="mini-btn piece-notes" aria-expanded="false" aria-label="Add a note to NAYA-NAV-014">Notes</button></div><div class="note-editor" hidden><textarea aria-label="Note for NAYA-NAV-014" placeholder="“Make this one coral…”"></textarea><button class="mini-btn note-save">Save note</button></div></div></div></div>
+  <div class="tray" id="tray"><div class="tray-head"><h3>Your selection</h3><button class="mini-btn" id="tray-clear">Clear</button></div><div class="tray-items" id="tray-items"><p class="tray-empty">Nothing selected yet — tap <b>Select</b> on any piece above and it lands here.</p></div></div>
+</section>
+
+<section id="step-4" aria-label="Step 4: templates">
+  <div class="sec-head"><span class="kicker" style="color:#ff9a5a">Step 4</span><h2>Choose your template</h2><p>Twelve finished starting points, one column, no mystery boxes. Tap a template to see the real sample page.</p></div><div class="tpl-col"><div class="tpl-row" style="--tc:#a06bff" data-tpl="0"><div class="tpl-num">01 · Flagship</div><div class="tpl-main"><h3>Personal page</h3><p>My world in one page — picture, links, everything connected.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-01-personal-page.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="0"><span class="nb-label">Pick this template</span></button></div></div><span class="tpl-flag">Flagship</span></div><div class="tpl-row" style="--tc:#40d3bb" data-tpl="1"><div class="tpl-num">02 · Daily</div><div class="tpl-main"><h3>Today briefing</h3><p>What&#x27;s going on in their world today — the reason to come back every morning.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-02-today-briefing.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="1"><span class="nb-label">Pick this template</span></button></div></div><span class="tpl-flag">Daily</span></div><div class="tpl-row" style="--tc:#ffbf3d" data-tpl="2"><div class="tpl-num">03</div><div class="tpl-main"><h3>Business landing</h3><p>The front door: what we do, contact, hours.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-03-business-landing.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="2"><span class="nb-label">Pick this template</span></button></div></div></div><div class="tpl-row" style="--tc:#55b9ee" data-tpl="3"><div class="tpl-num">04</div><div class="tpl-main"><h3>Booking page</h3><p>The Calendly replacement — appointments without the friction.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-04-booking-page.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="3"><span class="nb-label">Pick this template</span></button></div></div></div><div class="tpl-row" style="--tc:#ff5e6c" data-tpl="4"><div class="tpl-num">05</div><div class="tpl-main"><h3>Community hub</h3><p>Groups, fanbases, neighborhoods — a place to gather.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-05-community-hub.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="4"><span class="nb-label">Pick this template</span></button></div></div></div><div class="tpl-row" style="--tc:#2fe89e" data-tpl="5"><div class="tpl-num">06</div><div class="tpl-main"><h3>Event page</h3><p>Everyone runs events — invites, RSVPs, details.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-06-event-page.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="5"><span class="nb-label">Pick this template</span></button></div></div></div><div class="tpl-row" style="--tc:#e84fff" data-tpl="6"><div class="tpl-num">07</div><div class="tpl-main"><h3>Portfolio</h3><p>Creators, freelancers — the work speaks.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-07-portfolio.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="6"><span class="nb-label">Pick this template</span></button></div></div></div><div class="tpl-row" style="--tc:#6675ff" data-tpl="7"><div class="tpl-num">08</div><div class="tpl-main"><h3>Product page</h3><p>Sell one thing beautifully.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-08-product-page.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="7"><span class="nb-label">Pick this template</span></button></div></div></div><div class="tpl-row" style="--tc:#ff9a5a" data-tpl="8"><div class="tpl-num">09</div><div class="tpl-main"><h3>Menu / price list</h3><p>Restaurants, salons, services — what it costs, plainly.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-09-menu-price-list.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="8"><span class="nb-label">Pick this template</span></button></div></div></div><div class="tpl-row" style="--tc:#b8ee57" data-tpl="9"><div class="tpl-num">10</div><div class="tpl-main"><h3>Signup page</h3><p>Waitlists, newsletters — one field, one button.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-10-signup-page.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="9"><span class="nb-label">Pick this template</span></button></div></div></div><div class="tpl-row" style="--tc:#ff6b3d" data-tpl="10"><div class="tpl-num">11 · Frontier</div><div class="tpl-main"><h3>Dashboard</h3><p>Live data, trackers — narrowest today, the frontier nobody owns.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-11-dashboard.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="10"><span class="nb-label">Pick this template</span></button></div></div><span class="tpl-flag">Frontier</span></div><div class="tpl-row" style="--tc:#f1d75a" data-tpl="11"><div class="tpl-num">12 · Growth</div><div class="tpl-main"><h3>Creator page</h3><p>Content feed, followers, supporters — the growth engine: creators bring their audiences.</p><div class="tpl-actions"><a class="naya-btn small" href="samples/sample-12-creator-page.html" target="_blank" rel="noopener"><span class="nb-label">Open the real sample page</span></a><button class="naya-btn small teal tpl-pick" data-tpl="11"><span class="nb-label">Pick this template</span></button></div></div><span class="tpl-flag">Growth</span></div></div>
+</section>
+
+<section id="features" aria-label="Standard features">
+  <div class="sec-head"><span class="kicker" style="color:#6675ff">Standard features</span><h2>Every Naya app comes with these</h2><p>Not add-ons, not upsells. Each one is <b>on</b> — untick to remove. Tap <b>See it</b> on any feature to see it the way it will live on your phone: the real module where one is built, an honest status where it is still being wired — never a fake.</p></div><div class="feat-list"><div class="feat-row" style="--fc:#a06bff" data-feature="feature.smart_mail" data-consent="ready"><div class="feat-icon" data-model="NAYA-JWL-031"><div class="nb-scope"><div class="icon-tile" style="--tone:#5ce17a;--rgb:92,225,122">People<span class="mini-gem circle"><svg class="icon"><use href="#i-people"></svg></span></div></div></div><div class="feat-main"><h3>Smart Mail</h3><p>The mail system works with the page — write, send, broadcast to everyone related to it.</p></div><span class="badge built">Built · live</span><label class="feat-check"><input type="checkbox" data-feat="smart_mail" checked> On</label><button class="naya-btn small feat-see" data-fid="smart_mail"><span class="nb-label">See it</span></button></div><div class="feat-row" style="--fc:#b8ee57" data-feature="feature.smart_list" data-consent="ready"><div class="feat-icon" data-model="NAYA-JWL-009"><div class="nb-scope"><span class="gem-bullet" style="--tone:var(--magenta)"></span></div></div><div class="feat-main"><h3>Smart lists</h3><p>Organize anything — notes, contacts, topics, posts. A cross-cutting feature that layers into every template, never a standalone page.</p></div><span class="badge built">Built · live</span><label class="feat-check"><input type="checkbox" data-feat="smart_list" checked> On</label><button class="naya-btn small feat-see" data-fid="smart_list"><span class="nb-label">See it</span></button></div><div class="feat-row" style="--fc:#ff5e6c" data-feature="feature.space" data-consent="ready"><div class="feat-icon" data-model="NAYA-JWL-026"><div class="nb-scope"><div class="icon-tile" style="--tone:#34d38a;--rgb:52,211,138">Doors<span class="mini-gem square"><svg class="icon"><use href="#i-door"></svg></span></div></div></div><div class="feat-main"><h3>Smart Space</h3><p>Create spaces within the page — gather, view, join, support.</p></div><span class="badge built">Built · live</span><label class="feat-check"><input type="checkbox" data-feat="space" checked> On</label><button class="naya-btn small feat-see" data-fid="space"><span class="nb-label">See it</span></button></div><div class="feat-row" style="--fc:#40d3bb" data-feature="feature.connect" data-consent="ready"><div class="feat-icon" data-model="NAYA-JWL-031"><div class="nb-scope"><div class="icon-tile" style="--tone:#5ce17a;--rgb:92,225,122">People<span class="mini-gem circle"><svg class="icon"><use href="#i-people"></svg></span></div></div></div><div class="feat-main"><h3>Connect + communicate</h3><p>Visitors connect with the owner and talk in their personal world.</p></div><span class="badge built">Built · live</span><label class="feat-check"><input type="checkbox" data-feat="connect" checked> On</label><button class="naya-btn small feat-see" data-fid="connect"><span class="nb-label">See it</span></button></div><div class="feat-row" style="--fc:#ff9a5a" data-feature="feature.intelligence_today" data-consent="ready"><div class="feat-icon" data-model="NAYA-JWL-034"><div class="nb-scope"><div class="icon-tile" style="--tone:#e455f4;--rgb:228,85,244">Today<span class="mini-gem diamond"><svg class="icon"><use href="#i-spark"></svg></span></div></div></div><div class="feat-main"><h3>Intelligence Today</h3><p>Personal reports — daily, weekly, monthly, yearly — right on the page.</p></div><span class="badge built">Built · live</span><label class="feat-check"><input type="checkbox" data-feat="intelligence_today" checked> On</label><button class="naya-btn small feat-see" data-fid="intelligence_today"><span class="nb-label">See it</span></button></div><div class="feat-row" style="--fc:#6675ff" data-feature="feature.social_feed" data-consent="ready"><div class="feat-icon" data-model="NAYA-JWL-027"><div class="nb-scope"><div class="icon-tile" style="--tone:#ff9a5a;--rgb:255,154,90">Grow<span class="mini-gem circle"><svg class="icon"><use href="#i-orbit"></svg></span></div></div></div><div class="feat-main"><h3>Personal social feed</h3><p>A running blog that posts automatically. Your world, live.</p></div><span class="badge built">Built · live</span><label class="feat-check"><input type="checkbox" data-feat="social_feed" checked> On</label><button class="naya-btn small feat-see" data-fid="social_feed"><span class="nb-label">See it</span></button></div><div class="feat-row" style="--fc:#f1d75a" data-feature="feature.smart_tabs" data-consent="ready"><div class="feat-icon" data-model="NAYA-JWL-026"><div class="nb-scope"><div class="icon-tile" style="--tone:#34d38a;--rgb:52,211,138">Doors<span class="mini-gem square"><svg class="icon"><use href="#i-door"></svg></span></div></div></div><div class="feat-main"><h3>Smart tabs</h3><p>Every page the owner creates in NayaNET, reachable from the tabs.</p></div><span class="badge built">Built · live</span><label class="feat-check"><input type="checkbox" data-feat="smart_tabs" checked> On</label><button class="naya-btn small feat-see" data-fid="smart_tabs"><span class="nb-label">See it</span></button></div></div>
+</section>
+
+<section id="step-5" aria-label="Step 5: contract output">
+  <div class="sec-head"><span class="kicker" style="color:#f1d75a">Step 5</span><h2>This is what you chose</h2><p>Your vision, your pieces, your template, your features — together, the contract. Say the word and it builds.</p></div><div class="out-grid"><div class="out-panel"><h3>Your vision</h3><p class="out-empty" id="out-vision">Saved in steps 1–2 — it appears here.</p></div><div class="out-panel"><h3>Your pieces<span class="count" id="out-pieces-count"></span></h3><div id="out-pieces"><p class="out-empty">No pieces yet — pick some in step 3.</p></div></div><div class="out-panel"><h3>Your template</h3><p class="out-empty" id="out-template">Not chosen yet — pick one in step 4.</p></div><div class="out-panel"><h3>Your features</h3><div id="out-features"></div></div></div><div class="out-actions"><button class="naya-btn" id="btn-copy-contract"><span class="nb-label">Copy the contract JSON</span></button><button class="naya-btn gold" id="btn-ok-build"><span class="nb-label">Okay, build</span></button></div><p class="fine">This is the intake’s output — the contract your app is built from. “Okay, build” hands it to the builder; nothing deploys without your word.</p>
+</section>
+
+<section id="machine" aria-label="Machine contract">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-magenta)">For the machines</span>
+    <h2>The machine contract</h2>
+    <p>This page was generated from contract data — same truth, two faces. The data file lives beside this page; the builder reads it, you read this.</p>
+  </div>
+  <div class="manifest"><h3>Piece manifest — every piece on this page, on the record</h3><p class="fine">The human reads the name, the Naya reads the number. Quarantined pieces never appear here.</p><div class="mgroup">Gallery pieces · 20</div><ul><li><b>NAYA-TYP-009</b>LAW PILL / incredible clarity at rest</li><li><b>NAYA-TYP-010</b>LIGHT STREAK / precise interface detail</li><li><b>NAYA-TYP-011</b>OBSIDIAN PILL / strongest depth + restraint</li><li><b>NAYA-CRD-001</b>The law, not a palette</li><li><b>NAYA-CRD-008</b>Aliveness ✧</li><li><b>NAYA-CRD-010</b>LAW 2 Back it or bench it. 9.0+ ships. Below 9 goes back</li><li><b>NAYA-CRD-012</b>LAW 6 Black heart, white voice, visible skin. #050505 ce</li><li><b>NAYA-BTN-001</b>See It Working</li><li><b>NAYA-BTN-003</b>＋ Read The Law</li><li><b>NAYA-BTN-009</b>Gold</li><li><b>NAYA-BTN-014</b>Purple</li><li><b>NAYA-FRM-001</b>Copy is plain enough for anyone to understand on first r</li><li><b>NAYA-FRM-007</b>Toggle / settings row</li><li><b>NAYA-JWL-001</b>finished objects of light</li><li><b>NAYA-JWL-002</b>finished objects of light</li><li><b>NAYA-JWL-007</b>finished objects of light</li><li><b>NAYA-LST-001</b>[doors] smart door cards (registered doors)</li><li><b>NAYA-LST-002</b>Every bullet a jewel. Never twice in a row.</li><li><b>NAYA-NAV-012</b>nav</li><li><b>NAYA-NAV-014</b>Activity</li></ul><div class="mgroup">Icons · 7</div><ul><li><b>NAYA-JWL-009</b>for lists</li><li><b>NAYA-JWL-025</b>Ask</li><li><b>NAYA-JWL-026</b>Doors</li><li><b>NAYA-JWL-027</b>Grow</li><li><b>NAYA-JWL-031</b>People</li><li><b>NAYA-JWL-034</b>Today</li><li><b>NAYA-JWL-078</b>TWIN ORBIT Two rings, counter-rotating</li></ul></div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#e84fff">
+    <details class="machine">
+      <summary>smart-builder · intake page v1 — view / copy</summary>
+      <div class="body">
+        <div class="copyrow"><button class="naya-btn small" id="copyjson"><span class="nb-label">Copy JSON</span></button></div>
+        <pre id="machinejson">{
+  "authority": "Shawn Vibert — amendable only through Shawn",
+  "contract": "smart-builder/builder-page-v1",
+  "type": "smart_app_builder",
+  "builder_features": [
+    {
+      "id": "smart_mail",
+      "label": "Smart Mail",
+      "desc": "The mail system works with the page — write, send, broadcast to everyone related to it.",
+      "default": true,
+      "status": "specified",
+      "requires": [
+        "authenticated_identity",
+        "recipient_authorization",
+        "message_service",
+        "delivery_receipts"
+      ],
+      "permissions": [
+        "mail.compose",
+        "mail.send"
+      ],
+      "acceptance": [
+        "unauthorized_send_denied",
+        "authorized_send_tested",
+        "failure_state_visible",
+        "receipt_persisted"
+      ],
+      "color": "#55b9ee"
+    },
+    {
+      "id": "smart_list",
+      "label": "Smart Lists",
+      "desc": "The cross-cutting way to organize anything — notes, contacts, topics, posts. Layers into every template; not a template itself.",
+      "default": true,
+      "status": "specified",
+      "requires": [
+        "list_store",
+        "object_index"
+      ],
+      "permissions": [
+        "list.create",
+        "list.share"
+      ],
+      "acceptance": [
+        "organizes_any_permitted_object",
+        "private_lists_stay_private",
+        "share_flow_tested"
+      ],
+      "color": "#2fe89e"
+    },
+    {
+      "id": "space",
+      "label": "Smart Space",
+      "desc": "Create spaces within the page — gather, view, join, support.",
+      "default": true,
+      "status": "specified",
+      "requires": [
+        "authenticated_identity",
+        "space_service",
+        "membership_rules"
+      ],
+      "permissions": [
+        "space.create",
+        "space.join"
+      ],
+      "acceptance": [
+        "private_space_stays_private",
+        "join_flow_tested",
+        "member_list_correct"
+      ],
+      "color": "#a06bff"
+    },
+    {
+      "id": "connect",
+      "label": "Connect + communicate",
+      "desc": "Visitors connect with the owner and talk in their personal world.",
+      "default": true,
+      "status": "specified",
+      "requires": [
+        "authenticated_identity",
+        "identity_directory",
+        "consent_records"
+      ],
+      "permissions": [
+        "connect.request",
+        "connect.accept"
+      ],
+      "acceptance": [
+        "no_contact_without_consent",
+        "request_flow_tested",
+        "decline_respected"
+      ],
+      "color": "#ffbf3d"
+    },
+    {
+      "id": "intelligence_today",
+      "label": "Intelligence Today",
+      "desc": "Personal reports — daily, weekly, monthly, yearly — right on the page.",
+      "default": true,
+      "status": "specified",
+      "requires": [
+        "authenticated_identity",
+        "report_pipeline",
+        "data_authorization"
+      ],
+      "permissions": [
+        "reports.read"
+      ],
+      "acceptance": [
+        "only_own_data_shown",
+        "report_renders",
+        "empty_state_handled"
+      ],
+      "color": "#40d3bb"
+    },
+    {
+      "id": "social_feed",
+      "label": "Personal social feed",
+      "desc": "A running blog that posts automatically. Your world, live.",
+      "default": true,
+      "status": "specified",
+      "requires": [
+        "authenticated_identity",
+        "feed_service",
+        "audience_rules"
+      ],
+      "permissions": [
+        "feed.publish"
+      ],
+      "acceptance": [
+        "post_appears_for_audience",
+        "private_post_not_leaked",
+        "failure_state_visible"
+      ],
+      "color": "#e84fff"
+    },
+    {
+      "id": "smart_tabs",
+      "label": "Smart tabs",
+      "desc": "Every page the owner creates in NayaNET, reachable from the tabs.",
+      "default": true,
+      "status": "specified",
+      "requires": [
+        "page_registry",
+        "navigation_service"
+      ],
+      "permissions": [
+        "tabs.navigate"
+      ],
+      "acceptance": [
+        "all_owned_pages_reachable",
+        "tab_switch_tested"
+      ],
+      "color": "#6675ff"
+    },
+    {
+      "id": "naya_answers",
+      "label": "Naya answers",
+      "desc": "Visitors ask, she answers — synced to the owner's GitHub knowledge base.",
+      "default": true,
+      "status": "specified",
+      "requires": [
+        "authenticated_identity",
+        "github_kb_sync",
+        "answer_service"
+      ],
+      "permissions": [
+        "answers.ask"
+      ],
+      "acceptance": [
+        "answer_uses_owner_kb",
+        "unknown_question_handled",
+        "failure_state_visible"
+      ],
+      "color": "#ff9a5a"
+    },
+    {
+      "id": "cover",
+      "label": "Cover + picture",
+      "desc": "Cover photo and the owner's picture at the top — a personal version of the Hub.",
+      "default": true,
+      "status": "built",
+      "requires": [
+        "media_store"
+      ],
+      "permissions": [
+        "media.upload"
+      ],
+      "acceptance": [
+        "upload_applies",
+        "fallback_when_missing"
+      ],
+      "color": "#ff5e6c"
+    }
+  ],
+  "template_list": [
+    {
+      "n": "01 · Flagship",
+      "title": "Personal page",
+      "desc": "My world in one page — picture, links, everything connected.",
+      "color": "#a06bff"
+    },
+    {
+      "n": "02 · Daily",
+      "title": "Today briefing",
+      "desc": "What's going on in their world today — the reason to come back every morning.",
+      "color": "#40d3bb"
+    },
+    {
+      "n": "03",
+      "title": "Business landing",
+      "desc": "The front door: what we do, contact, hours.",
+      "color": "#ffbf3d"
+    },
+    {
+      "n": "04",
+      "title": "Booking page",
+      "desc": "The Calendly replacement — appointments without the friction.",
+      "color": "#55b9ee"
+    },
+    {
+      "n": "05",
+      "title": "Community hub",
+      "desc": "Groups, fanbases, neighborhoods — a place to gather.",
+      "color": "#ff5e6c"
+    },
+    {
+      "n": "06",
+      "title": "Event page",
+      "desc": "Everyone runs events — invites, RSVPs, details.",
+      "color": "#2fe89e"
+    },
+    {
+      "n": "07",
+      "title": "Portfolio",
+      "desc": "Creators, freelancers — the work speaks.",
+      "color": "#e84fff"
+    },
+    {
+      "n": "08",
+      "title": "Product page",
+      "desc": "Sell one thing beautifully.",
+      "color": "#6675ff"
+    },
+    {
+      "n": "09",
+      "title": "Menu / price list",
+      "desc": "Restaurants, salons, services — what it costs, plainly.",
+      "color": "#ff9a5a"
+    },
+    {
+      "n": "10",
+      "title": "Signup page",
+      "desc": "Waitlists, newsletters — one field, one button.",
+      "color": "#b8ee57"
+    },
+    {
+      "n": "11 · Frontier",
+      "title": "Dashboard",
+      "desc": "Live data, trackers — narrowest today, the frontier nobody owns.",
+      "color": "#ff6b3d"
+    },
+    {
+      "n": "12 · Growth",
+      "title": "Creator page",
+      "desc": "Content feed, followers, supporters — the growth engine: creators bring their audiences.",
+      "color": "#f1d75a"
+    }
+  ],
+  "status": "official",
+  "locked": "2026-10-17",
+  "features_status": {
+    "smart_mail": "built",
+    "space": "built",
+    "social_feed": "built",
+    "connect": "built",
+    "intelligence_today": "built",
+    "contacts": "built",
+    "cover": "built",
+    "smart_tabs": "built",
+    "smart_bars": "built",
+    "community": "built",
+    "naya_answers": "built",
+    "scheduler": "built",
+    "broadcast": "built",
+    "smart_notes": "built",
+    "notifications": "built",
+    "automation": "built",
+    "smart_list": "built"
+  },
+  "connections": {
+    "muse": false,
+    "github": false,
+    "network": false,
+    "nayanet": false
+  },
+  "privacy": "private",
+  "identity": null,
+  "consent": {
+    "feature.smart_mail": {
+      "ready": [
+        "compose UI",
+        "drafts",
+        "mailbox view"
+      ],
+      "connected_active": [],
+      "connected_gated": [
+        "broadcast to the network"
+      ]
+    },
+    "feature.smart_list": {
+      "ready": [
+        "organize local: the contract's items render",
+        "read-only without a list service (zero connections)"
+      ],
+      "connected_active": [],
+      "connected_gated": [
+        "list sync/share through the declared list service"
+      ]
+    },
+    "feature.space": {
+      "ready": [
+        "space UI shell",
+        "local gathering view"
+      ],
+      "connected_active": [],
+      "connected_gated": [
+        "invite and join sync"
+      ]
+    },
+    "feature.connect": {
+      "ready": [
+        "connect UI",
+        "contact cards"
+      ],
+      "connected_active": [],
+      "connected_gated": [
+        "request across network boundary",
+        "request across public boundary"
+      ]
+    },
+    "feature.intelligence_today": {
+      "ready": [
+        "render contract-carried reports (no I/O, no grant)"
+      ],
+      "connected_active": [],
+      "connected_gated": [
+        "fetch external report sources"
+      ]
+    },
+    "feature.social_feed": {
+      "ready": [
+        "feed UI",
+        "local draft posts"
+      ],
+      "connected_active": [],
+      "connected_gated": [
+        "live updates"
+      ]
+    },
+    "feature.smart_tabs": {
+      "ready": [
+        "render local navigation from contract-carried pages (no I/O, no grant)"
+      ],
+      "connected_active": [],
+      "connected_gated": []
+    }
+  }
+}</pre>
+      </div>
+    </details>
+  </div></div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <span class="kicker">Smart Builder · Intake page · v1</span>
+  Generated from contract data through the pipeline — every piece rendered in its real code, every button working, nothing described instead of shown. Amendable only through Shawn.
+</div></footer>
+
+<div class="modal" id="featmodal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-phone">
+    <div class="modal-screen">
+      <div class="modal-notch"><span></span></div>
+      <div class="modal-appbar">
+        <span class="kicker">A Naya app · live preview</span>
+        <button class="tray-remove" id="modal-close" aria-label="Close preview">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" role="status"></div>
+<script type="application/json" id="feature-data">[
+  {
+    "fid": "smart_mail",
+    "name": "Smart Mail",
+    "intent": "The mail system works with the page — write, send, broadcast to everyone related to it.",
+    "status": "built",
+    "statusLabel": "Built · live on day one",
+    "requires": [
+      "authenticated_identity",
+      "recipient_authorization",
+      "message_service",
+      "delivery_receipts"
+    ],
+    "permissions": [
+      "mail.compose",
+      "mail.send"
+    ],
+    "acceptance": [
+      "unauthorized_send_denied",
+      "authorized_send_tested",
+      "failure_state_visible",
+      "receipt_persisted"
+    ],
+    "note": "",
+    "iconHtml": "\u003cdiv class=\"icon-tile\" style=\"--tone:#5ce17a;--rgb:92,225,122\"\u003ePeople\u003cspan class=\"mini-gem circle\"\u003e\u003csvg class=\"icon\"\u003e\u003cuse href=\"#i-people\"\u003e\u003c/svg\u003e\u003c/span\u003e\u003c/div\u003e",
+    "iconModel": "NAYA-JWL-031"
+  },
+  {
+    "fid": "smart_list",
+    "name": "Smart lists",
+    "intent": "Organize anything — notes, contacts, topics, posts. A cross-cutting feature that layers into every template, never a standalone page.",
+    "status": "built",
+    "statusLabel": "Built · live on day one",
+    "requires": [
+      "authenticated_identity"
+    ],
+    "permissions": [
+      "lists.edit"
+    ],
+    "acceptance": [
+      "contract_items_render",
+      "empty_state_honest",
+      "add_remove_wired"
+    ],
+    "note": "",
+    "iconHtml": "\u003cspan class=\"gem-bullet\" style=\"--tone:var(--magenta)\"\u003e\u003c/span\u003e",
+    "iconModel": "NAYA-JWL-009"
+  },
+  {
+    "fid": "space",
+    "name": "Smart Space",
+    "intent": "Create spaces within the page — gather, view, join, support.",
+    "status": "built",
+    "statusLabel": "Built · live on day one",
+    "requires": [
+      "authenticated_identity",
+      "space_service",
+      "membership_rules"
+    ],
+    "permissions": [
+      "space.create",
+      "space.join"
+    ],
+    "acceptance": [
+      "private_space_stays_private",
+      "join_flow_tested",
+      "member_list_correct"
+    ],
+    "note": "",
+    "iconHtml": "\u003cdiv class=\"icon-tile\" style=\"--tone:#34d38a;--rgb:52,211,138\"\u003eDoors\u003cspan class=\"mini-gem square\"\u003e\u003csvg class=\"icon\"\u003e\u003cuse href=\"#i-door\"\u003e\u003c/svg\u003e\u003c/span\u003e\u003c/div\u003e",
+    "iconModel": "NAYA-JWL-026"
+  },
+  {
+    "fid": "connect",
+    "name": "Connect + communicate",
+    "intent": "Visitors connect with the owner and talk in their personal world.",
+    "status": "built",
+    "statusLabel": "Built · live on day one",
+    "requires": [
+      "authenticated_identity",
+      "identity_directory",
+      "consent_records"
+    ],
+    "permissions": [
+      "connect.request",
+      "connect.accept"
+    ],
+    "acceptance": [
+      "no_contact_without_consent",
+      "request_flow_tested",
+      "decline_respected"
+    ],
+    "note": "",
+    "iconHtml": "\u003cdiv class=\"icon-tile\" style=\"--tone:#5ce17a;--rgb:92,225,122\"\u003ePeople\u003cspan class=\"mini-gem circle\"\u003e\u003csvg class=\"icon\"\u003e\u003cuse href=\"#i-people\"\u003e\u003c/svg\u003e\u003c/span\u003e\u003c/div\u003e",
+    "iconModel": "NAYA-JWL-031"
+  },
+  {
+    "fid": "intelligence_today",
+    "name": "Intelligence Today",
+    "intent": "Personal reports — daily, weekly, monthly, yearly — right on the page.",
+    "status": "built",
+    "statusLabel": "Built · live on day one",
+    "requires": [
+      "authenticated_identity",
+      "report_pipeline",
+      "data_authorization"
+    ],
+    "permissions": [
+      "reports.read"
+    ],
+    "acceptance": [
+      "only_own_data_shown",
+      "report_renders",
+      "empty_state_handled"
+    ],
+    "note": null,
+    "iconHtml": "\u003cdiv class=\"icon-tile\" style=\"--tone:#e455f4;--rgb:228,85,244\"\u003eToday\u003cspan class=\"mini-gem diamond\"\u003e\u003csvg class=\"icon\"\u003e\u003cuse href=\"#i-spark\"\u003e\u003c/svg\u003e\u003c/span\u003e\u003c/div\u003e",
+    "iconModel": "NAYA-JWL-034"
+  },
+  {
+    "fid": "social_feed",
+    "name": "Personal social feed",
+    "intent": "A running blog that posts automatically. Your world, live.",
+    "status": "built",
+    "statusLabel": "Built · live on day one",
+    "requires": [
+      "authenticated_identity",
+      "feed_service",
+      "audience_rules"
+    ],
+    "permissions": [
+      "feed.publish"
+    ],
+    "acceptance": [
+      "post_appears_for_audience",
+      "private_post_not_leaked",
+      "failure_state_visible"
+    ],
+    "note": "",
+    "iconHtml": "\u003cdiv class=\"icon-tile\" style=\"--tone:#ff9a5a;--rgb:255,154,90\"\u003eGrow\u003cspan class=\"mini-gem circle\"\u003e\u003csvg class=\"icon\"\u003e\u003cuse href=\"#i-orbit\"\u003e\u003c/svg\u003e\u003c/span\u003e\u003c/div\u003e",
+    "iconModel": "NAYA-JWL-027"
+  },
+  {
+    "fid": "smart_tabs",
+    "name": "Smart tabs",
+    "intent": "Every page the owner creates in NayaNET, reachable from the tabs.",
+    "status": "built",
+    "statusLabel": "Built · live on day one",
+    "requires": [
+      "page_registry",
+      "navigation_service"
+    ],
+    "permissions": [
+      "tabs.navigate"
+    ],
+    "acceptance": [
+      "all_owned_pages_reachable",
+      "tab_switch_tested"
+    ],
+    "note": "",
+    "iconHtml": "\u003cdiv class=\"icon-tile\" style=\"--tone:#34d38a;--rgb:52,211,138\"\u003eDoors\u003cspan class=\"mini-gem square\"\u003e\u003csvg class=\"icon\"\u003e\u003cuse href=\"#i-door\"\u003e\u003c/svg\u003e\u003c/span\u003e\u003c/div\u003e",
+    "iconModel": "NAYA-JWL-026"
+  }
+]</script>
+
+<script>
+function toast(msg){
+  var t = document.getElementById("toast");
+  t.innerHTML = '<span class="led"></span>' + msg;
+  t.classList.add("show");
+  clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove("show"); }, 2800);
+}
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+/* ---------- intake state: everything the human chose, one object ---------- */
+var state = { vision:"", answers:{vision:"",goal:"",functions:[],behavior:""},
+              selected:[], notes:{}, template:null, features:{} };
+var FEATURES = null;
+function featureData(){
+  if (!FEATURES){
+    try { FEATURES = JSON.parse(document.getElementById("feature-data").textContent); }
+    catch(e){ FEATURES = []; }
+  }
+  return FEATURES;
+}
+
+/* ---------- step 1: intent ---------- */
+function setVision(text, how){
+  text = (text||"").trim();
+  if (!text){ toast("Say a little more first — one sentence is plenty."); return; }
+  state.vision = text;
+  toast(how + " — your vision is in the contract.");
+  renderOutput();
+}
+var btnSaveType = document.getElementById("btn-save-type");
+if (btnSaveType) btnSaveType.onclick = function(){
+  setVision(document.getElementById("vision-type").value, "Saved");
+};
+var btnImportPaste = document.getElementById("btn-import-paste");
+if (btnImportPaste) btnImportPaste.onclick = function(){
+  var v = document.getElementById("vision-paste").value;
+  var t = document.getElementById("vision-type");
+  if (t && v.trim()) t.value = (t.value ? t.value + "\n" : "") + v;
+  setVision(v, "Imported");
+};
+var btnDictate = document.getElementById("btn-dictate");
+if (btnDictate) btnDictate.onclick = function(){
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var st = document.getElementById("dictate-status");
+  if (!SR){
+    if (st) st.textContent = "Dictation needs a microphone-enabled browser — type it instead; it lands in the same contract.";
+    toast("No microphone input here — type it instead.");
+    return;
+  }
+  try {
+    var rec = new SR(); rec.lang = "en-US"; rec.interimResults = false;
+    if (st) st.textContent = "Listening — speak your vision…";
+    rec.onresult = function(e){
+      var txt = e.results[0][0].transcript;
+      var t = document.getElementById("vision-type");
+      if (t) t.value = (t.value ? t.value + " " : "") + txt;
+      if (st) st.textContent = "Heard you — review it above, then save.";
+      toast("Dictation captured — review and save.");
+    };
+    rec.onerror = function(){ if (st) st.textContent = "Couldn't hear that — try again, or type it."; };
+    rec.onend = function(){ if (st && !st.textContent.indexOf("Heard")===0 && st.textContent.indexOf("Listening")===0) st.textContent = ""; };
+    rec.start();
+  } catch(err){
+    if (st) st.textContent = "Dictation isn't available right now — type it instead.";
+  }
+};
+
+/* ---------- step 2: questions ---------- */
+var qform = document.getElementById("qform");
+if (qform) qform.addEventListener("submit", function(e){ e.preventDefault(); saveAnswers(); });
+function saveAnswers(){
+  var fns = [];
+  document.querySelectorAll('input[name="fn"]:checked').forEach(function(x){ fns.push(x.value); });
+  state.answers = {
+    vision: document.getElementById("q-vision").value.trim(),
+    goal: document.getElementById("q-goal").value.trim(),
+    functions: fns,
+    behavior: document.getElementById("q-behavior").value.trim()
+  };
+  if (!state.answers.vision && !state.answers.goal && !state.answers.behavior && !fns.length){
+    toast("Answer at least one question — plain words are perfect.");
+    return;
+  }
+  toast("Answers saved — Naya can draft your contract from these.");
+  renderOutput();
+}
+var btnSaveAnswers = document.getElementById("btn-save-answers");
+if (btnSaveAnswers) btnSaveAnswers.onclick = saveAnswers;
+
+/* ---------- step 3: piece gallery ---------- */
+function cardMatches(card, q, cat){
+  var okCat = (cat === "All") || (card.getAttribute("data-cat") === cat);
+  var okQ = !q || (card.getAttribute("data-search")||"").indexOf(q) !== -1;
+  return okCat && okQ;
+}
+function applyFilters(){
+  var q = (document.getElementById("piece-search").value||"").toLowerCase().trim();
+  var active = document.querySelector(".catchip[aria-pressed='true']");
+  var cat = active ? active.getAttribute("data-cat") : "All";
+  var n = 0;
+  document.querySelectorAll(".piece-card").forEach(function(card){
+    var show = cardMatches(card, q, cat);
+    card.style.display = show ? "" : "none";
+    if (show) n++;
+  });
+  var empty = document.getElementById("gal-empty");
+  if (empty) empty.style.display = n ? "none" : "";
+}
+var search = document.getElementById("piece-search");
+if (search) search.addEventListener("input", applyFilters);
+document.querySelectorAll(".catchip").forEach(function(chip){
+  chip.addEventListener("click", function(){
+    document.querySelectorAll(".catchip").forEach(function(c){ c.setAttribute("aria-pressed","false"); });
+    chip.setAttribute("aria-pressed","true");
+    applyFilters();
+  });
+});
+function toggleSelect(model, btn){
+  var i = state.selected.indexOf(model);
+  var card = btn.closest(".piece-card");
+  if (i === -1){
+    state.selected.push(model);
+    if (card) card.setAttribute("aria-pressed","true");
+    btn.setAttribute("aria-pressed","true");
+    btn.textContent = "Selected ✓";
+    toast(model + " is in your tray.");
+  } else {
+    state.selected.splice(i,1);
+    if (card) card.setAttribute("aria-pressed","false");
+    btn.setAttribute("aria-pressed","false");
+    btn.textContent = "Select";
+  }
+  renderTray(); renderOutput();
+}
+document.querySelectorAll(".piece-select").forEach(function(btn){
+  btn.addEventListener("click", function(){ toggleSelect(btn.getAttribute("data-model"), btn); });
+});
+document.querySelectorAll(".piece-notes").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var card = btn.closest(".piece-card");
+    var ed = card.querySelector(".note-editor");
+    var open = ed.hidden;
+    ed.hidden = !open;
+    btn.setAttribute("aria-expanded", String(open));
+    if (open){ var ta = ed.querySelector("textarea"); if (ta) ta.focus(); }
+  });
+});
+document.querySelectorAll(".note-save").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var card = btn.closest(".piece-card");
+    var model = card.getAttribute("data-model");
+    var ta = card.querySelector(".note-editor textarea");
+    var note = (ta.value||"").trim();
+    var line = card.querySelector(".piece-note");
+    if (note){ state.notes[model] = note; line.textContent = note; line.hidden = false; }
+    else { delete state.notes[model]; line.hidden = true; }
+    card.querySelector(".note-editor").hidden = true;
+    card.querySelector(".piece-notes").setAttribute("aria-expanded","false");
+    toast(note ? "Note saved on " + model + "." : "Note cleared.");
+    renderTray(); renderOutput();
+  });
+});
+function renderTray(){
+  var box = document.getElementById("tray-items");
+  if (!box) return;
+  if (!state.selected.length){
+    box.innerHTML = '<p class="tray-empty">Nothing selected yet — tap <b>Select</b> on any piece above and it lands here.</p>';
+    return;
+  }
+  box.innerHTML = "";
+  state.selected.forEach(function(model){
+    var card = document.querySelector('.piece-card[data-model="'+model+'"]');
+    var label = card ? card.getAttribute("data-label") : model;
+    var note = state.notes[model];
+    var chip = document.createElement("span");
+    chip.className = "tray-chip";
+    chip.innerHTML = '<span><b style="color:var(--white)">'+esc(label)+'</b> ' +
+      '<span class="tmodel">'+esc(model)+'</span>' +
+      (note ? '<span class="tnote"> — '+esc(note)+'</span>' : '') + '</span>';
+    var rm = document.createElement("button");
+    rm.className = "tray-remove"; rm.setAttribute("aria-label","Remove "+model+" from selection");
+    rm.textContent = "✕";
+    rm.onclick = function(){
+      var b = document.querySelector('.piece-select[data-model="'+model+'"]');
+      if (b) toggleSelect(model, b); else {
+        state.selected.splice(state.selected.indexOf(model),1); renderTray(); renderOutput();
+      }
+    };
+    chip.appendChild(rm);
+    box.appendChild(chip);
+  });
+}
+var trayClear = document.getElementById("tray-clear");
+if (trayClear) trayClear.onclick = function(){
+  state.selected.slice().forEach(function(model){
+    var b = document.querySelector('.piece-select[data-model="'+model+'"]');
+    if (b){ b.setAttribute("aria-pressed","false"); b.textContent = "Select";
+      var c = b.closest(".piece-card"); if (c) c.setAttribute("aria-pressed","false"); }
+  });
+  state.selected = [];
+  renderTray(); renderOutput();
+  toast("Tray cleared.");
+};
+
+/* ---------- step 4: templates ---------- */
+document.querySelectorAll(".tpl-pick").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var i = parseInt(btn.getAttribute("data-tpl"), 10);
+    state.template = i;
+    document.querySelectorAll(".tpl-row").forEach(function(r){ r.classList.remove("picked"); });
+    var row = document.querySelector('.tpl-row[data-tpl="'+i+'"]');
+    if (row) row.classList.add("picked");
+    var title = row ? row.querySelector("h3").textContent : ("template "+(i+1));
+    toast("“"+title+"” is your template. Pick more than one if you like — they sync.");
+    renderOutput();
+  });
+});
+
+/* ---------- features: see it in the phone ---------- */
+function openModal(fid){
+  var entry = null;
+  featureData().forEach(function(f){ if (f.fid === fid) entry = f; });
+  var body = document.getElementById("modal-body");
+  if (!entry || !body) return;
+  var needs = (entry.requires||[]).map(function(r){ return "<li>"+esc(r)+"</li>"; }).join("");
+  var perms = (entry.permissions||[]).map(function(p){ return "<li>"+esc(p)+"</li>"; }).join("");
+  var acc = (entry.acceptance||[]).map(function(a){ return "<li>"+esc(a)+"</li>"; }).join("");
+  body.innerHTML =
+    '<div class="feat-icon" data-model="'+esc(entry.iconModel||'')+'"><div class="nb-scope">'+entry.iconHtml+'</div></div>' +
+    '<span class="badge specified">'+esc(entry.statusLabel)+'</span>' +
+    '<h3 id="modal-title" style="margin-top:10px">'+esc(entry.name)+'</h3>' +
+    '<p class="intent">'+esc(entry.intent)+'</p>' +
+    (entry.note ? '<p class="fine" style="margin-bottom:14px">'+esc(entry.note)+'</p>' : '') +
+    '<p class="needs"><b style="color:var(--paper)">What it will need:</b></p><ul>'+needs+'</ul>' +
+    '<p class="needs"><b style="color:var(--paper)">What you will be asked:</b></p><ul>'+perms+'</ul>' +
+    '<p class="needs"><b style="color:var(--paper)">How we will know it works:</b></p><ul>'+acc+'</ul>' +
+    '<p class="fine">Functions before interface — this one is specified and honest about it. ' +
+    'It ships the moment its wiring is proven, never before.</p>';
+  var m = document.getElementById("featmodal");
+  m.hidden = false;
+  document.getElementById("modal-close").focus();
+}
+function closeModal(){
+  var m = document.getElementById("featmodal");
+  if (m) m.hidden = true;
+}
+document.querySelectorAll(".feat-see").forEach(function(btn){
+  btn.addEventListener("click", function(){ openModal(btn.getAttribute("data-fid")); });
+});
+var modalClose = document.getElementById("modal-close");
+if (modalClose) modalClose.onclick = closeModal;
+document.querySelectorAll("[data-close]").forEach(function(el){
+  el.addEventListener("click", closeModal);
+});
+document.addEventListener("keydown", function(e){
+  if (e.key === "Escape") closeModal();
+});
+document.querySelectorAll("input[data-feat]").forEach(function(cb){
+  state.features[cb.getAttribute("data-feat")] = cb.checked;
+  cb.addEventListener("change", function(){
+    state.features[cb.getAttribute("data-feat")] = cb.checked;
+    renderOutput();
+  });
+});
+
+/* ---------- step 5: contract as output ---------- */
+function buildContractJSON(){
+  var data = featureData();
+  var pieces = state.selected.map(function(model){
+    var card = document.querySelector('.piece-card[data-model="'+model+'"]');
+    return { model: model, label: card ? card.getAttribute("data-label") : model,
+             note: state.notes[model] || null };
+  });
+  var tplRow = (state.template !== null)
+    ? document.querySelector('.tpl-row[data-tpl="'+state.template+'"]') : null;
+  return {
+    contract: "smart-builder/customer-intake",
+    intake: "intake-page-v1",
+    vision: state.vision || null,
+    answers: state.answers,
+    pieces: pieces,
+    template: tplRow ? { index: state.template,
+                         title: tplRow.querySelector("h3").textContent } : null,
+    features: (function(){
+      var o = {};
+      data.forEach(function(f){ o[f.fid] = !!state.features[f.fid]; });
+      return o;
+    })(),
+    privacy: "private",
+    built_by: "intake-page-v1"
+  };
+}
+function renderOutput(){
+  var data = featureData();
+  var ov = document.getElementById("out-vision");
+  if (ov){
+    var bits = [];
+    if (state.vision) bits.push(state.vision);
+    if (state.answers.vision) bits.push("Vision: " + state.answers.vision);
+    if (state.answers.goal) bits.push("Goal: " + state.answers.goal);
+    if (state.answers.behavior) bits.push("Behavior: " + state.answers.behavior);
+    if (bits.length){ ov.className = "out-vision-text"; ov.textContent = bits.join("\n\n"); }
+    else { ov.className = "out-empty"; ov.textContent = "Saved in steps 1–2 — it appears here."; }
+  }
+  var op = document.getElementById("out-pieces");
+  var opc = document.getElementById("out-pieces-count");
+  if (op){
+    if (!state.selected.length){ op.innerHTML = '<p class="out-empty">No pieces yet — pick some in step 3.</p>'; }
+    else {
+      op.innerHTML = state.selected.map(function(model){
+        var card = document.querySelector('.piece-card[data-model="'+model+'"]');
+        var label = card ? card.getAttribute("data-label") : model;
+        var note = state.notes[model] ? ' <span style="color:var(--sp-gold)">· '+esc(state.notes[model])+'</span>' : '';
+        return '<span class="out-piece"><b>'+esc(model)+'</b>'+esc(label)+note+'</span>';
+      }).join("");
+    }
+  }
+  if (opc) opc.textContent = state.selected.length ? "(" + state.selected.length + ")" : "";
+  var ot = document.getElementById("out-template");
+  if (ot){
+    if (state.template === null){ ot.className = "out-empty"; ot.textContent = "Not chosen yet — pick one in step 4."; }
+    else {
+      var row = document.querySelector('.tpl-row[data-tpl="'+state.template+'"]');
+      ot.className = "out-vision-text";
+      ot.textContent = row ? row.querySelector("h3").textContent : ("Template " + (state.template+1));
+    }
+  }
+  var of = document.getElementById("out-features");
+  if (of){
+    of.innerHTML = data.map(function(f){
+      var on = !!state.features[f.fid];
+      return '<div class="out-feat"><span class="'+(on?"on":"off")+'">'+(on?"✓":"○")+'</span> '+esc(f.name)+'</div>';
+    }).join("");
+  }
+}
+var btnCopy = document.getElementById("btn-copy-contract");
+if (btnCopy) btnCopy.onclick = function(){
+  var txt = JSON.stringify(buildContractJSON(), null, 2);
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){ toast("Contract JSON copied — this is what you chose."); },
+      function(){ toast("Copy blocked — the build contract JSON sits below under \u2018For the machines\u2019; select it manually."); });
+  } else { toast("Copy not available — your contract is ready below."); }
+};
+var btnOk = document.getElementById("btn-ok-build");
+if (btnOk) btnOk.onclick = function(){
+  var blob = new Blob([JSON.stringify(buildContractJSON(), null, 2)], {type:"application/json"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "my-naya-app-contract.json";
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 400);
+  toast("Okay — your contract is handed to the builder. Naya takes it from here.");
+};
+
+/* ---------- chrome ---------- */
+document.getElementById("copyjson").onclick = function(){
+  var txt = document.getElementById("machinejson").textContent;
+  navigator.clipboard.writeText(txt).then(function(){ toast("Machine contract copied."); },
+    function(){ toast("Copy blocked — select the text manually."); });
+};
+document.addEventListener("click", function(e){
+  var s = e.target.closest("[data-scroll]");
+  if (s){ var el = document.querySelector(s.getAttribute("data-scroll")); if (el) el.scrollIntoView({behavior:"smooth"}); }
+});
+renderTray();
+renderOutput();
+
+/* Chi fix 8: provenance stamping — every icon on this page carries its model
+   number as a data-model attribute, machine-traceable in the DOM (not just
+   visible text). Models mirror contract intake-page-v1 feature_icons + intent
+   affordances; the assembler emits the icon HTML, this stamps the number. */
+(function(){
+  var FEAT_ICON_MODELS = {smart_mail:"NAYA-JWL-030", smart_list:"NAYA-JWL-009",
+    space:"NAYA-JWL-033", connect:"NAYA-JWL-031", intelligence_today:"NAYA-JWL-034",
+    social_feed:"NAYA-JWL-027", smart_tabs:"NAYA-JWL-026"};
+  document.querySelectorAll(".feat-row").forEach(function(row){
+    var fid = (row.getAttribute("data-feature") || "").replace(/^feature\./, "");
+    var ic = row.querySelector(".feat-icon");
+    if (FEAT_ICON_MODELS[fid] && ic) ic.setAttribute("data-model", FEAT_ICON_MODELS[fid]);
+  });
+  var AFFORD = [["btn-save-type","NAYA-JWL-025"],["btn-import-paste","NAYA-JWL-009"],["btn-dictate","NAYA-JWL-078"]];
+  AFFORD.forEach(function(pair){
+    var btn = document.getElementById(pair[0]);
+    var card = btn ? btn.closest(".afford") : null;
+    var ic = card ? card.querySelector(".a-icon") : null;
+    if (ic) ic.setAttribute("data-model", pair[1]);
+  });
+})();
+</script>
+</body>
+</html>

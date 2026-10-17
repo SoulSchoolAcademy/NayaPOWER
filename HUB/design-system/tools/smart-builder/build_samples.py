@@ -45,6 +45,22 @@ def validate_pieces(models, pieces):
     return problems
 
 
+def render_menu(menu):
+    """Contract-owned menu content — real items with prices, rendered in the
+    sample's own design language (white names, dotted leaders, own-color
+    prices). The pieces frame it; the data belongs to the contract."""
+    rows = []
+    for item in menu:
+        rows.append(
+            '<li><span><span class="mi-name">%s</span>'
+            '<span class="mi-desc">%s</span></span>'
+            '<span class="mi-dots"></span>'
+            '<span class="mi-price">%s</span></li>'
+            % (esc(item['name']), esc(item.get('desc', '')),
+               esc(item['price'])))
+    return '<ul class="menu-list">%s</ul>' % ''.join(rows)
+
+
 def render_section(sec, pieces, css_ids, si):
     cards = []
     for m in sec['pieces']:
@@ -57,12 +73,13 @@ def render_section(sec, pieces, css_ids, si):
             '<div class="nb-scope">%s</div>'
             '<div class="piece-tag"><b>%s</b><span>%s</span></div>'
             '</div>' % (esc(m), p['html'], esc(p.get('label', m)), esc(m)))
+    menu_html = render_menu(sec['menu']) if sec.get('menu') else ''
     return (
         '<section><div class="sec-head">'
-        '<span class="kicker">%s</span><h2>%s</h2>%s</div>%s</section>'
+        '<span class="kicker">%s</span><h2>%s</h2>%s</div>%s%s</section>'
         % (esc(sec['kicker']), esc(sec['title']),
            ('<p>%s</p>' % esc(sec['lede'])) if sec.get('lede') else '',
-           ''.join(cards)))
+           menu_html, ''.join(cards)))
 
 
 def build_one(contract_path, index, tpl, outdir):

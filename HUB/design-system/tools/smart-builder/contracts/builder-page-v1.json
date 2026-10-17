@@ -739,18 +739,18 @@
       "smart_tabs": "NAYA-JWL-026"
     },
     "template_samples": [
-      "samples/template-01-personal-page.html",
-      "samples/template-02-today-briefing.html",
-      "samples/template-03-business-landing.html",
-      "samples/template-04-booking-page.html",
-      "samples/template-05-community-hub.html",
-      "samples/template-06-event-page.html",
-      "samples/template-07-portfolio.html",
-      "samples/template-08-product-page.html",
-      "samples/template-09-menu-price-list.html",
-      "samples/template-10-signup-page.html",
-      "samples/template-11-dashboard.html",
-      "samples/template-12-creator-page.html"
+      "samples/sample-01-personal-page.html",
+      "samples/sample-02-today-briefing.html",
+      "samples/sample-03-business-landing.html",
+      "samples/sample-04-booking-page.html",
+      "samples/sample-05-community-hub.html",
+      "samples/sample-06-event-page.html",
+      "samples/sample-07-portfolio.html",
+      "samples/sample-08-product-page.html",
+      "samples/sample-09-menu-price-list.html",
+      "samples/sample-10-signup-page.html",
+      "samples/sample-11-dashboard.html",
+      "samples/sample-12-creator-page.html"
     ]
   }
 }
