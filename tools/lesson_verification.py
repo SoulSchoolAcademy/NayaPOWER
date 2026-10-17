@@ -34,6 +34,18 @@ passed, reason)].
 
 Battery schema: naya.lesson-verification-battery.v1 (see `scaffold` output).
 
+T6 judge-seat guard (graduation F-2): `verify` is T6-eligible only when the
+judge seat differs from both the doer seat and the scorer seat (the
+Inviolable made mechanical). Seat origins — one source per identity:
+doer_seat <- responses JSON `subject_seat`; scorer_seat <- battery JSON
+`scorer_seat` (set via `scaffold --scorer-seat`); judge_seat <- verify CLI
+flag `--judge-seat`. The `--judge module:function` callable is the SCORING
+FUNCTION, never a seat. The free-text `subject` stays display-only and is
+never used for the comparison. `cmd_score` does NOT assert seats (diagnostic
+only). Missing identity -> SEAT_MISSING; collision -> SEAT_INDEPENDENCE_FAIL;
+both raised as StructureError -> exit 2. The guard does NOT assert
+doer_seat != scorer_seat (battery self-authorship is a separate concern).
+
 Exit codes: 0 = every case passed; 1 = one or more cases failed (honest data:
 a fail proves the loop was open for that behavior); 2 = usage or structural
 error (non-novel case, unknown case_id in responses, lesson missing from the
@@ -286,6 +298,49 @@ def registry_lookup(registry_path: Path, battery: dict) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# T6 judge-seat guard (graduation F-2): the Inviolable made mechanical.
+#
+# The judge who attests a T6 verdict must be independent of both the seat
+# that produced the responses (doer) and the seat that authored the battery
+# (scorer). Each identity is declared at the point where its holder acts, so
+# no party attests another party's identity. Signature order is the spec's:
+# assert_independent_judge(doer_seat, scorer_seat, judge_seat).
+# Judgment calls, disclosed: (a) seat values are stripped before comparison
+# and a blank/whitespace-only value counts as missing (fail-closed);
+# (b) a non-string seat value counts as missing (seat identities are
+# strings); (c) the SEAT_MISSING template keeps the spec's literal suffix
+# ("no judge seat => no T6") for every missing seat, with <which> naming
+# the missing one. The guard deliberately does NOT assert
+# doer_seat != scorer_seat.
+# ---------------------------------------------------------------------------
+
+def assert_independent_judge(doer_seat, scorer_seat, judge_seat) -> None:
+    """Raise StructureError (exit 2) unless the judge seat is independent.
+
+    Requires all three seats non-empty, and requires
+    judge_seat != doer_seat AND judge_seat != scorer_seat.
+    """
+    for which, value in (
+        ("doer_seat", doer_seat),
+        ("scorer_seat", scorer_seat),
+        ("judge_seat", judge_seat),
+    ):
+        if not (isinstance(value, str) and value.strip()):
+            raise StructureError(
+                f"SEAT_MISSING: {which} is required for T6 — no judge seat ⇒ no T6"
+            )
+    doer = str(doer_seat).strip()
+    scorer = str(scorer_seat).strip()
+    judge = str(judge_seat).strip()
+    if judge == doer or judge == scorer:
+        raise StructureError(
+            f"SEAT_INDEPENDENCE_FAIL: judge_seat '{judge}' must differ from "
+            f"doer_seat '{doer}' and scorer_seat '{scorer}' — self-verification "
+            f"is not verification (Inviolable); no T6 emit."
+        )
+
+
+# ---------------------------------------------------------------------------
 # commands
 # ---------------------------------------------------------------------------
 
@@ -295,6 +350,7 @@ def cmd_scaffold(args) -> int:
         "lesson_id": args.lesson_id,
         "lesson_title": args.title,
         "registry_block_id": args.block_id or "",
+        "scorer_seat": args.scorer_seat,
         "behavioral_expectation": "One paragraph: the observable behavior change this lesson demands.",
         "origin_incident": {
             "summary": "What incident produced this lesson (so cases can avoid replaying it).",
@@ -369,6 +425,17 @@ def cmd_verify(args) -> int:
               f"(truth_state={registry_entry['truth_state']})")
     else:
         print("registry: skipped (no --registry given)")
+    # T6 judge-seat guard (F-2): fail-fast BEFORE any scoring — no point
+    # scoring a verdict an ineligible judge would attest. The responses doc
+    # is loaded here for the doer seat; cmd_score loads it again, a
+    # deliberate double-read keeping cmd_score's signature unchanged.
+    # cmd_score itself never asserts seats (diagnostic only).
+    responses_doc = load_responses(Path(args.responses), battery)
+    assert_independent_judge(
+        responses_doc.get("subject_seat"),
+        battery.get("scorer_seat"),
+        getattr(args, "judge_seat", ""),
+    )
     rc = cmd_score(args)
     if registry_entry and registry_entry.get("truth_state") not in ("RATIFIED", "LEARNED", "ACTIVE"):
         print(f"note: registry truth_state is {registry_entry['truth_state']!r} — "
@@ -386,6 +453,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--lesson-id", required=True)
     p.add_argument("--title", default="")
     p.add_argument("--block-id", default="")
+    p.add_argument("--scorer-seat", default="",
+                   help="seat authoring the battery (T6 scorer_seat; empty until set)")
     p.add_argument("--out", required=True)
     p.set_defaults(func=cmd_scaffold)
 
@@ -407,6 +476,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--report", default="")
     p.add_argument("--registry", default="")
     p.add_argument("--judge", default="")
+    p.add_argument("--judge-seat", default="",
+                   help="seat invoking verify and attesting the verdict "
+                        "(T6 judge-seat guard; required for verify)")
     p.set_defaults(func=cmd_verify)
 
     args = parser.parse_args(argv)

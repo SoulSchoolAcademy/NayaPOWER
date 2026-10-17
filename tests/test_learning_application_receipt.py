@@ -57,6 +57,7 @@ def _application(retrieval_ref, **over):
         applied_at="2026-10-08T10:00:00Z",
         applicability={"relevance_rationale": "reserve rule governs checkout idempotency",
                        "task_match": "direct"},
+        changed_decision="applied the reserve rule to checkout instead of retrying the charge",
     )
     kw.update(over)
     return emit_application_receipt(**kw)
@@ -133,6 +134,73 @@ def test_application_receipt_binding_broken_when_lesson_mismatches():
     app = _application(ret["receipt_id"])  # receipt is L-T11, retrieval is L-OTHER
     verdict = validate_application_receipt(app, retrieval_receipt=ret)
     assert any("RETRIEVAL_BINDING_BROKEN" in c for c in verdict["codes"])
+
+
+# --- T5 contract (learn-clock graduation F-1) --------------------------------
+# changed_decision is the ONE new field, stored OUTSIDE the digest core:
+# receipt_id digests unchanged, SCHEMA stays V1, no schema bump.
+# Validator gains t5_eligible = valid AND changed_decision non-empty.
+# Legacy receipts stay valid with t5_eligible=False.
+
+def test_t5_emit_requires_changed_decision():
+    ret = _retrieval()
+    with pytest.raises(ValueError, match="REQUIRED_FIELD_MISSING: changed_decision"):
+        emit_application_receipt(
+            lesson_id="L-T11", retrieval_ref=ret["receipt_id"],
+            task_ref="task-checkout-042", applier="naya-5",
+            applied_at="2026-10-08T10:00:00Z",
+        )
+    for bad in ("", "   "):
+        with pytest.raises(ValueError, match="REQUIRED_FIELD_MISSING: changed_decision"):
+            emit_application_receipt(
+                lesson_id="L-T11", retrieval_ref=ret["receipt_id"],
+                task_ref="task-checkout-042", applier="naya-5",
+                applied_at="2026-10-08T10:00:00Z", changed_decision=bad,
+            )
+
+
+def test_t5_receipt_id_unchanged_when_changed_decision_varies():
+    ret = _retrieval()
+    a = _application(ret["receipt_id"], changed_decision="did X instead of Y")
+    b = _application(ret["receipt_id"], changed_decision="did P instead of Q")
+    assert a["receipt_id"] == b["receipt_id"]  # outside the digest core
+    assert a["changed_decision"] != b["changed_decision"]
+    assert a["schema"] == SCHEMA == "NAYANET_LEARNING_APPLICATION_RECEIPT_V1"
+
+
+def test_t5_eligible_true_for_new_receipt():
+    ret = _retrieval()
+    app = _application(ret["receipt_id"])
+    verdict = validate_application_receipt(app, retrieval_receipt=ret)
+    assert verdict["valid"], verdict["codes"]
+    assert verdict["t5_eligible"] is True
+    assert verdict["e2_eligible"] is True
+
+
+def test_t5_eligible_false_for_legacy_receipt_but_still_valid():
+    # Legacy = emitted before changed_decision existed: simulate by deleting it.
+    ret = _retrieval()
+    app = _application(ret["receipt_id"])
+    del app["changed_decision"]
+    verdict = validate_application_receipt(app, retrieval_receipt=ret)
+    assert verdict["valid"], verdict["codes"]  # legacy stays valid (E2 evidence)
+    assert verdict["t5_eligible"] is False  # never T5 evidence
+    assert verdict["e2_eligible"] is True
+    # Whitespace-only is the same shape: present but empty of content.
+    app2 = _application(ret["receipt_id"])
+    app2["changed_decision"] = "   "
+    verdict2 = validate_application_receipt(app2, retrieval_receipt=ret)
+    assert verdict2["valid"]
+    assert verdict2["t5_eligible"] is False
+
+
+def test_t5_eligible_false_when_receipt_invalid():
+    ret = _retrieval()
+    app = _application(ret["receipt_id"])
+    app["task_ref"] = "task-TAMPERED"  # core changed, receipt_id not recomputed
+    verdict = validate_application_receipt(app, retrieval_receipt=ret)
+    assert not verdict["valid"]
+    assert verdict["t5_eligible"] is False  # valid AND non-empty, not just non-empty
 
 
 def test_application_receipt_missing_required_field_fails_closed():
@@ -348,6 +416,7 @@ def _seam_receipts(verifier="coda-1"):
         applied_at="2026-10-09T03:46:00Z",
         applicability={"relevance_rationale": "task matches lesson pattern",
                        "task_match": "high"},
+        changed_decision="scoped the task to the lesson pattern instead of re-deriving it",
     )
     out = emit_outcome_record(
         application_receipt_id=app["receipt_id"], lesson_id="L-T11",

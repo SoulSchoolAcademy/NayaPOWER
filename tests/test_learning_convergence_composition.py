@@ -117,6 +117,7 @@ def _full_d_chain(lesson_id=LESSON, applier="naya-5", verifier="naya-1"):
         lesson_id=lesson_id, retrieval_ref=retrieval["receipt_id"],
         task_ref="task-comp-1", applier=applier, applied_at=TS,
         applicability={"relevance_rationale": "direct seam", "task_match": "direct"},
+        changed_decision="used the composed chain instead of re-checking each stage by hand",
     )
     outcome = d_receipts.emit_outcome_record(
         application_receipt_id=application["receipt_id"], lesson_id=lesson_id,
