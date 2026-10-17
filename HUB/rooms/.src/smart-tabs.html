@@ -1,0 +1,60 @@
+<style>
+.smartTabs{display:flex;gap:7px;padding:2px 22px 15px;overflow:auto;scrollbar-width:none}
+.smartTabs::-webkit-scrollbar{display:none}
+.smartTabs button{flex:0 0 auto;min-height:34px;padding:0 14px;border:2px solid #55b9ee55;border-radius:11px;background:#09090e;color:#aaa4b0;font-size:7px;font-weight:1000;letter-spacing:.07em;cursor:pointer}
+.smartTabs button.active{color:#fff;border-color:#55b9ee;background:#0b1420;box-shadow:0 0 20px #55b9ee18}
+.smartTabsLabel{padding:0 22px 6px;color:#918b9c;font-size:8px;font-weight:800;letter-spacing:.14em}
+/* The base's lifecycle CSS forces display:block!important on every
+   [data-real-smart-note] block, defeating display-based hiding. This later
+   rule restores hiding for kind-filtered blocks. */
+#blocks > .block[data-kind-hidden="1"]{display:none!important}
+</style>
+<script>
+/* smart-tabs: Shawn's SMART FEEDS — the feed is not one pile of blocks but
+ * switchable views over the three intelligence streams:
+ *   ALL / SMART NOTES / ACTIVITY / REPORTS
+ * Blocks without data-ib-kind are her curated canonical smart notes -> 'smart-note'.
+ *
+ * Verified against the base (2026-10-01): the base's own audience-mode filtering is
+ * non-functional — script 6 capture-phase stopImmediatePropagation() neuters script 1's
+ * feed(), script 6's applyMode() never hides blocks, and script 10's CSS
+ * (display:block!important) overrides inline hiding. So the tabs filter by KIND via
+ * the data-kind-hidden attribute, which no base script clears. The production feed
+ * (#1278) must implement audience × kind properly from intelligence objects. */
+(()=>{ 'use strict';
+  function kindOf(b){ return b.dataset.ibKind || 'smart-note'; }
+  function applyKind(){
+    const k=window.__kindFilter||'all';
+    document.querySelectorAll('#blocks > .block').forEach(b=>{
+      const bk=kindOf(b);
+      if(k==='all'||bk===k)b.removeAttribute('data-kind-hidden');
+      else b.setAttribute('data-kind-hidden','1');
+    });
+  }
+  function init(){
+    const nav=document.querySelector('nav.feedNav');
+    if(!nav||document.getElementById('smartTabs'))return;
+    const label=document.createElement('div');
+    label.className='smartTabsLabel'; label.textContent='SMART FEEDS';
+    const tabs=document.createElement('nav');
+    tabs.className='smartTabs'; tabs.id='smartTabs';
+    tabs.setAttribute('aria-label','Smart feeds');
+    [['all','ALL'],['smart-note','SMART NOTES'],['activity','ACTIVITY'],['report','REPORTS']]
+      .forEach(([k,txt],i)=>{
+        const btn=document.createElement('button');
+        btn.dataset.kind=k; btn.textContent=txt;
+        if(i===0)btn.classList.add('active');
+        btn.addEventListener('click',()=>{
+          window.__kindFilter=k;
+          tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===btn));
+          applyKind();
+        });
+        tabs.appendChild(btn);
+      });
+    nav.insertAdjacentElement('afterend',tabs);
+    tabs.insertAdjacentElement('beforebegin',label);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
+})();
+</script>
