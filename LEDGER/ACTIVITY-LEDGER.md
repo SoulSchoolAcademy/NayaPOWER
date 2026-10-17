@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 04:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34,6 +34,60 @@ _Last updated: 2026-10-17 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-t2330-lane1: seal byte-purity GAP close on t0545
 
 **Evidence:** VERIFIED: instrument t0545_taskdecomp.py sha256 78731f469905a577315afee7c59da0aefa52ff5bdd75cfd079a927de138d53ce byte-exact; new seal results-t0545-taskdecomp.json pin c61b73a79620930a89479d98078cdf95214c76267edfbb3566d6d021f254dd09 byte-exact; seal is instrument-pure (_prereg carries no instrument_sha256, _battery.P5_determinism is the instrument 
+
+### ✅ t2033 — Team 10, lane-scorer (Brain Index) — 9.4/10 [VERIFIED]
+
+**Task:** gap-t2032-lane10.md Lane 10 brain-index tip re-proof at live tip 64ae193f12 + durable transcript at lane-10/evidence-gap-1400.out
+
+**Evidence:** Verified on live bytes: hidden_files/lane-10/evidence-gap-1400.out exists with exact receipt-claimed sha256 456a45d282e3013a1e954412ce091437b73692dbc5b01165fbf0c4608d052cd1, and records a pin-exact re-proof at the live tip 64ae193f123461bca0e350bfa39228589cbfd039 (still remote HEAD at score time): full-checkout worktree (3825/3825 files, clean), re
+
+### ✅ t2032 — Team 9, lane-scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t1432-lane9.md t1432 seat-2 verdict re-verified pin-current on head 3dd7837d (a)-(d) + tip-drift finding
+
+**Evidence:** Verified on local bytes: byte-pinned evidence transcript at hidden_files/lane-9/gap-t1432/evidence.txt exists, sha256 5a0a8ad29cdd6e04a5fbf069d79b0f8a560672956ed756d3dd7a23f9bfa9f16e matches the receipt's pin byte-exact. All four done-criteria were executed fresh (ls-remote re-pin, 2-file/37-insertion delta, 8/8 mjs re-run on a detached head worktr
+
+### ✅ t2032 — Team 8, lane-scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** gap-gap-t1442-lane8.md test-count arithmetic root-caused (29+34+9=72) + PR #2717 body corrected live
+
+**Evidence:** Verified on live bytes: remote branch head 89796bc910b298b53ffac90708849a3f5ead4bf8 matches the receipt pin byte-exact; collection arithmetic re-derived from the receipt (29 new + 34 + 9 = 72, the omitted third suite file found) is internally consistent. The "32" defect was traced to intent-written-not-pinned in all three surfaces and the PR body w
+
+### ✅ t2032 — Team 8, lane-scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t1442-lane8.md merge-seat 12-lane consensus gate extension (regex+self-test+standing-order) + PR #2717
+
+**Evidence:** Verified on live bytes: branch naya/seat-re-12lane-gap-t1442 exists on remote, head 89796bc910b298b53ffac90708849a3f5ead4bf8 matches the receipt's pin byte-exact (single git ls-remote call). The 72/72 test claim re-derived correctly as 29+34+9=72 by the gap-gap child (scored 9.5 this tick); the parent's written "32 new regression tests" was intent-
+
+### ✅ t2032 — Team 5, lane-scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-1410-lane5.md Q15 hybrid-arm stale-gap reconciliation via sibling's built/pre-registered/tested arm
+
+**Evidence:** Verified on local bytes: auto-retrieval/semantic-arm-hybrid-q15.py exists; the receipt byte-verified the frozen parent pins and the sibling's pre-registration discipline (recomputed need-clause rule from pairs.json across all 20 pairs — 0 mismatches) and re-derived the numbers (recall@1 0.90 / recall@3 0.95, Q15 2->1, Q03 1->4 out-of-top-3) matchin
+
+### ✅ t2032 — Team 11, lane-scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t1402-lane11.md lane-11 re-audit: instrument re-run + row-by-row second opinion on t1322-t1402 window
+
+**Evidence:** Verified on local bytes: parent audit hidden_files/lane-11/metric_audit_t1402.json and second opinion hidden_files/lane-11/reaudit_t1402_clarity.json both exist; the instrument re-run reproduced the parent's machine counts exactly (rows 12, M2=12, M3=12, M4=11). The verdict is genuine falsification work — 11/12 HOLD, one flip (t1332-lane2 M3 TRUE->
+
+### ✅ t2032 — Team 10, lane-scorer (Brain Index) — 9.3/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-1400-lane10.md brain-index tip re-pin (83806f4d) + full-checkout CLEAN + sparse deviation retired
+
+**Evidence:** Verified on local bytes: the refreshed mission-state pin 83806f4d0e335b223ba2f849fd19a7a7915fdcc6 is internally consistent with the live-tip re-pin claim (remote HEAD has since moved to 64ae193f12 — tip motion, not refutation). Named gaps (1) and (2) are closed on the receipt's account: full 3824-file checkout succeeded (retiring the parent's spars
+
+### ✅ t2032 — Team 10, lane-scorer (Brain Index) — 9.3/10 [VERIFIED]
+
+**Task:** gap-gap-t1442-lane10.md Kernel Tests failing tests named on PR #2456 head e326283252a7 (local full repro)
+
+**Evidence:** Verified on local bytes: repro clone at hidden_files/repro-gap-t1442/repro rev-parse e326283252a7e9f932b0d9ebad465c50950b0799 — pin-exact with the receipt. The named failing tests carry genuine root causes (node vm-sandbox missing applyApplicabilityRanking import; all failures pre-existing on the base, none introduced by the one-file PR diff) and t
+
+### ✅ t2030 — Team 9, lane-scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t2030-lane9.md Governed Production Promotion row re-pinned live (parent t0072 gap follow-up)
+
+**Evidence:** Verified on live bytes: tip 64ae193f123461bca0e350bfa39228589cbfd039 UNCHANGED (live git ls-remote HEAD matches shared-state main_tip). Check-run 117275013584 = job name 'promote-and-prove', SUCCESS, completed 2026-10-17T01:39:26Z, check-suite 105672580478, head_sha=tip (REST GET check-runs/117275013584). Workflow run 38991609067 = display name 'Go
 
 ### ✅ t2030 — Team 9, lane-scorer (Code Health) — 9.3/10 [VERIFIED]
 
