@@ -10,7 +10,7 @@ Usage:
 Repeatable: same contract + same index + same assembler -> same page.
 Fine-tuning = edit the contract (words, wall picks), re-run.
 """
-import argparse, json, hashlib, html as htmlmod, os, sys
+import argparse, copy, json, hashlib, html as htmlmod, os, sys
 from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
@@ -82,7 +82,7 @@ from feature_broadcast import (BroadcastRefusal, decl_for as bc_decl_for,
                                 FEATURE_ID as FEATURE_BROADCAST_ID,
                                 FEATURE_BROADCAST_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.12"  # v1.12: wave-D modules (naya_answers, scheduler, broadcast)
+ASSEMBLER_VERSION = "assemble-v1.13"  # v1.13: composable templates (resolve_templates)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -544,6 +544,207 @@ def resolve_consent(enabled_fids, reg_by_id, grants):
                         'connected_gated': gated}
     return consent
 
+# ---- composable templates: many templates, one app ----
+# Implements the contract's declared composition law
+# (composition: multi_template, hub plus rooms, all in sync).
+# A customer contract may compose MULTIPLE templates instead of picking one:
+#   "templates": ["template-personal", "template-business"]
+# Backward compat: a single string still works: "templates": "template-personal".
+# The contract-page contracts keep "templates" as the display list of
+# [badge, name, desc] triples — resolve_templates() passes those through
+# untouched, so the existing gallery rendering never changes.
+# Merge law (deterministic; full spec in contracts/COMPOSABLE-TEMPLATES.md):
+#  1. sections: ordered UNION in listed template order (deduped);
+#  2. on section-name collision the FIRST template's content wins, unless
+#     "overrides" names another composed template for that section;
+#  3. features: explicit false in ANY template disables (prune wins);
+#     explicit true flips the breaker on only if no template prunes it
+#     (still registry-gated); a template that never mentions a feature has
+#     no opinion on it;
+#  4. the contract's own "features" dict wins over composed features.
+# Unknown template ids, unknown override targets, or malformed shapes are
+# structured refusals (fail closed): nothing is improvised, ever.
+
+def _template_ids(contract):
+    """Normalize contract['templates'] to a list of template ids.
+
+    Returns (ids, problems). ids is None when the contract does not request
+    a composition: the key is missing, or it holds the display-triples list
+    used by the contract-page contracts (those keep the existing render path).
+    """
+    t = contract.get('templates')
+    if t is None:
+        return None, []
+    if isinstance(t, str):
+        return [t], []
+    if isinstance(t, list):
+        if not t:
+            return [], [{'code': 'empty_templates',
+                         'detail': 'templates is an empty list — name at least '
+                                   'one template'}]
+        if all(isinstance(x, str) for x in t):
+            return list(t), []
+        if all(isinstance(x, list) for x in t):
+            return None, []  # display triples: not a composition request
+        return [], [{'code': 'bad_templates_shape',
+                     'detail': 'templates must be a string, a list of template-id '
+                               'strings, or the display list of [badge, name, desc] '
+                               'triples — mixed shapes are refused'}]
+    return [], [{'code': 'bad_templates_shape',
+                 'detail': 'templates must be a string or a list, got %s'
+                           % type(t).__name__}]
+
+
+def _feature_opinion(val):
+    """One template's opinion on one feature: True (flip on), False (prune),
+    None (no opinion), or the 'bad' sentinel for a malformed declaration."""
+    if isinstance(val, dict):
+        return bool(val.get('enabled'))
+    if val is True:
+        return True
+    if val is False:
+        return False
+    if not val:
+        return None  # falsy -> no opinion, same as activate_breakers
+    return 'bad'
+
+
+def resolve_templates(contract):
+    """Resolve a multi-template composition.
+
+    Returns (composition, problems). composition is None when the contract
+    does not request one. A non-empty problems list means the assembler must
+    refuse (fail closed). Pure function of the contract.
+    """
+    ids, problems = _template_ids(contract)
+    if problems or ids is None:
+        return None, problems
+    if not ids or any(not isinstance(tid, str) or not tid for tid in ids):
+        return None, [{'code': 'bad_template_id',
+                       'detail': 'every template id must be a non-empty string'}]
+    shapes = contract.get('template_shapes')
+    if not isinstance(shapes, dict):
+        return None, [{'code': 'missing_template_shapes',
+                       'detail': 'templates names %d template(s) but the contract '
+                                 'declares no template_shapes object' % len(ids)}]
+    resolved = []
+    for tid in ids:
+        shape = shapes.get(tid)
+        if not isinstance(shape, dict):
+            problems.append({'code': 'unknown_template', 'template': tid,
+                             'detail': 'not declared in template_shapes — '
+                                       'the assembler never invents a template'})
+            continue
+        secs = shape.get('sections', {})
+        feats = shape.get('features', {})
+        if not isinstance(secs, dict):
+            problems.append({'code': 'bad_template_shape', 'template': tid,
+                             'detail': 'sections must be an object of '
+                                       'section-name -> content'})
+            continue
+        if not isinstance(feats, dict):
+            problems.append({'code': 'bad_template_shape', 'template': tid,
+                             'detail': 'features must be an object of '
+                                       'feature-id -> declaration'})
+            continue
+        bad_secs = [n for n, c in secs.items() if not isinstance(c, dict)]
+        if bad_secs:
+            problems.append({'code': 'bad_section_shape', 'template': tid,
+                             'sections': bad_secs,
+                             'detail': 'section content must be an object'})
+            continue
+        resolved.append((tid, secs, feats))
+    if problems:
+        return None, problems
+    by_id = {tid: secs for tid, secs, _ in resolved}
+    overrides = contract.get('overrides', {})
+    if not isinstance(overrides, dict):
+        return None, [{'code': 'bad_overrides_shape',
+                       'detail': 'overrides must be an object of '
+                                 'section-name -> template-id, got %s'
+                                 % type(overrides).__name__}]
+    defined = {}
+    for tid, secs, _ in resolved:
+        for name in secs:
+            defined.setdefault(name, tid)
+    ov = {}
+    for sec, tid in overrides.items():
+        if sec not in defined:
+            problems.append({'code': 'unknown_override_section', 'section': sec,
+                             'detail': 'no composed template defines this section'})
+            continue
+        if tid not in by_id:
+            problems.append({'code': 'unknown_override_template', 'section': sec,
+                             'template': tid,
+                             'detail': 'override target is not one of the '
+                                       "contract's composed templates"})
+            continue
+        if sec not in by_id[tid]:
+            problems.append({'code': 'override_section_missing', 'section': sec,
+                             'template': tid,
+                             'detail': 'the override target does not define '
+                                       'this section'})
+            continue
+        ov[sec] = tid
+    if problems:
+        return None, problems
+    sections = []
+    for name, first_tid in defined.items():
+        winner = ov.get(name, first_tid)
+        sections.append({'name': name, 'source': winner,
+                         'content': copy.deepcopy(by_id[winner][name])})
+    opinions = {}
+    for tid, _, feats in resolved:
+        for key, val in feats.items():
+            op = _feature_opinion(val)
+            if op == 'bad':
+                problems.append({'code': 'bad_feature_declaration',
+                                 'template': tid, 'feature': key,
+                                 'detail': 'must be true, false, or an object '
+                                           'with an enabled flag'})
+                continue
+            opinions.setdefault(key, []).append(op)
+    if problems:
+        return None, problems
+    features = {}
+    for key, ops in opinions.items():
+        vals = [op for op in ops if op is not None]
+        if any(v is False for v in vals):
+            features[key] = False   # prune wins
+        elif any(v is True for v in vals):
+            features[key] = True
+    composition = {
+        'templates': [tid for tid, _, _ in resolved],
+        'sections': sections,
+        'features': features,
+        'overrides_applied': [{'section': s, 'winner': w, 'default': defined[s]}
+                              for s, w in ov.items()],
+    }
+    return composition, []
+
+
+def apply_composition(contract, composition):
+    """Feed a resolved composition into the existing pipeline (additive).
+
+    Composed features merge into the contract's breaker dict: the contract's
+    own declarations win — composition fills only keys the contract did not
+    declare itself. Returns problems (usually []).
+    """
+    feats = contract.get('features')
+    if feats is None:
+        feats = {}
+        contract['features'] = feats
+    if not isinstance(feats, dict):
+        return [{'code': 'features_shape_conflict',
+                 'detail': 'a template composition needs features as a breaker '
+                           'object, but this contract carries the contract-page '
+                           'features list — pick one grammar'}]
+    for key, val in composition['features'].items():
+        if key not in feats:
+            feats[key] = val
+    return []
+
+
 def resolve_identity(contract):
     """Identity resolves ONCE, here in the assembler — never per template.
     One person, one connected smart world: identity/relationships/
@@ -840,6 +1041,16 @@ def main():
     identity, identity_problems = resolve_identity(contract)
     problems += identity_problems
     context['identity'] = identity
+    # composable templates: resolve the multi-template composition BEFORE
+    # the feature gate runs, so composed features flow through the
+    # default-on three-state resolution (explicit composed false reads as
+    # OFF — prune wins) and the registry's fail-closed binding below.
+    # Additive: contracts that do not request a composition get
+    # composition=None and behave exactly as before.
+    composition, tmpl_problems = resolve_templates(contract)
+    problems += tmpl_problems
+    if composition is not None:
+        problems += apply_composition(contract, composition)
     # feature breakers: the contract flips them, the registry gates them.
     # default-on resolution and the consent grant check share this code path:
     # the enabled set flows into both rendering and consent resolution.
@@ -896,14 +1107,31 @@ def main():
         '<div class="field"><span class="fk">%s</span><span class="fv">%s</span></div>' % (esc(k), esc(v))
         for k, v in contract['fields'])
 
-    # templates -> the real .typecard piece, one spectrum color per card
+    # templates -> the real .typecard piece, one spectrum color per card.
+    # When a composition was resolved, render one card per composed template
+    # (badge, the shape's declared name, sections contributed). Every value
+    # comes from the contract; nothing is invented. The contract-page display
+    # triples keep the existing path, byte-identical.
+    if composition is not None:
+        template_cards = []
+        for i, tid in enumerate(composition['templates']):
+            shape = contract['template_shapes'][tid]
+            contributed = [s['name'] for s in composition['sections']
+                           if s['source'] == tid]
+            template_cards.append(
+                ("0%d · composed" % (i + 1),
+                 shape.get('name', tid),
+                 "Sections: " + ", ".join(contributed) if contributed
+                 else "No sections declared."))
+    else:
+        template_cards = contract['templates']
     templates = ''.join(
         '<div class="nb-chrome"><div class="typecard" style="--tc:%s">'
         '<div class="tk">%s</div>'
         '<h3 style="font-size:19px;margin:0 0 6px;color:var(--white)">%s</h3>'
         '<p style="font-size:14px;color:var(--slate);margin:0">%s</p></div></div>'
         % (seq_color(SPECTRUM, i, e[3] if len(e) > 3 else None), esc(e[0]), esc(e[1]), esc(e[2]))
-        for i, e in enumerate(contract['templates']))
+        for i, e in enumerate(template_cards))
     templates = '<div class="grid g4">%s</div>' % templates
 
     # features / gallery / customize -> the real .lawcard piece
@@ -1005,6 +1233,9 @@ def main():
             'index': {'path': a.index, 'sha256': sha256(index_bytes),
                       'entries': len(pieces)},
             'wall_pieces': [m for models in contract['wall'].values() for m in models],
+            # the resolved template composition (None when the contract did
+            # not request one) — deterministic, part of the build record.
+            'composition': composition,
         },
         # 3. BUILD ARTIFACT — deterministic
         'build': {
