@@ -1,7 +1,7 @@
 {
   "schema": "naya.design-intelligence.v1",
-  "version": "1.3",
-  "status": "HUMAN_DIRECTOR_RATIFIED_CANONICAL",
+  "version": "1.4",
+  "status": "PROPOSED",
   "north_star": "Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.",
   "coordination": {
     "issue": 554,
@@ -298,5 +298,522 @@
       "benchmark_chasing_over_human_outcome",
       "unverified_superiority_claim"
     ]
+  },
+  "ratified_base": {
+    "version": "1.3",
+    "status": "HUMAN_DIRECTOR_RATIFIED_CANONICAL",
+    "ratified_at": "2026-10-02"
+  },
+  "canon_intelligence": {
+    "corpus_ref": "KNOWLEDGE/MASTER DESIGN INTELLIGENCE CORPUS CONCEPT #22.md (main @ d4073ba478ef53af1c04453b1d8f7b9dced82c9a)",
+    "graph_ref": "~/workspace/your_files/design-gym-library/design-intelligence-graph.json",
+    "verified_claims": "31/40",
+    "genome": {
+      "L0": {
+        "posture": "The canon is not a ranking and not a template. Study the best, extract the principle, do it ten times better. The canon is the floor of awareness, not the ceiling of ambition. (SN-0181, PR #1318)",
+        "rules": [
+          "L0.1: No design decision without a named best-observed reference. Unknown state-of-art = incomplete work.",
+          "L0.2: Extract principles, never screenshots. Resemblance to the reference is a defect.",
+          "L0.3: Acceptance requires demonstrable transcendence: state the 10x delta in one sentence, evidenced in the artifact.",
+          "L0.4: Where existing work already exceeds the canon, the canon does not pull it down. Lead is kept."
+        ],
+        "scoring": [
+          "A design that matches but does not transcend the best observed reference caps at 9.0 per dimension (competence, not Signature).",
+          "D1 = 10.0 requires an evidenced beyond-benchmark delta on the comparison axes, stated in one sentence in the artifact.",
+          "Ignorance of the relevant canon reference scores as missing evidence (zero on the affected gate).",
+          "Per the ratified law: ten_x_is_aspiration_not_claim — superiority_claim_requires_evidence; verified_improvement_must_compound."
+        ],
+        "ratified_expression": "benchmark_to_beyond (v1.3, HUMAN_DIRECTOR_RATIFIED_2026-10-02)",
+        "reconciliation_note": "SN-0181's 10x posture is now ratified in the director's own benchmark_to_beyond law. Per ten_x_is_aspiration_not_claim: the 10x sets the direction of ambition; only EVIDENCED improvement is claimed. Scoring bindings below are the proposed operationalization: D1=10.0 requires an evidenced beyond-benchmark delta on the comparison axes, not a literal 10x proof."
+      },
+      "laws": [
+        {
+          "id": "LAW-01",
+          "statement": "PURPOSE BEFORE INTERFACE — resolve the human's real outcome before selecting any page, component, layout, or interaction.",
+          "canon_refs": [
+            "teacher-alan-cooper",
+            "teacher-don-norman",
+            "teacher-karri-saarinen"
+          ],
+          "d1_d8": [
+            "D2",
+            "D4"
+          ],
+          "scoring_gate": null
+        },
+        {
+          "id": "LAW-02",
+          "statement": "DISTILL BEFORE DISPLAY — raw intelligence is not presentation; decide what matters now, then progressively disclose depth.",
+          "canon_refs": [
+            "studio-instrument",
+            "studio-pentagram",
+            "benchmark-things"
+          ],
+          "d1_d8": [
+            "D2",
+            "D4"
+          ],
+          "scoring_gate": "SN-0180 locked"
+        },
+        {
+          "id": "LAW-03",
+          "statement": "RECOGNITION BEFORE RECALL — the human should not have to remember where something lives or decode unfamiliar language.",
+          "canon_refs": [
+            "teacher-jakob-nielsen",
+            "book-dont-make-me-think",
+            "teacher-susan-kare"
+          ],
+          "d1_d8": [
+            "D2",
+            "D7"
+          ],
+          "scoring_gate": null
+        },
+        {
+          "id": "LAW-04",
+          "statement": "ONE OBVIOUS NEXT ACTION — every major surface answers: where am I, what matters, what can I do, what happens next.",
+          "canon_refs": [
+            "book-dont-make-me-think",
+            "benchmark-linear",
+            "benchmark-things",
+            "teacher-alan-cooper"
+          ],
+          "d1_d8": [
+            "D2",
+            "D3"
+          ],
+          "scoring_gate": null
+        },
+        {
+          "id": "LAW-05",
+          "statement": "STATE MUST BE PERCEPTIBLE — no control is completely designed without rest, aware, hover/focus, press, processing, success/failure, consequence.",
+          "canon_refs": [
+            "teacher-don-norman",
+            "book-microinteractions",
+            "benchmark-tide-guide"
+          ],
+          "d1_d8": [
+            "D2",
+            "D4"
+          ],
+          "scoring_gate": "SN-0180 locked: motion only for truthful state"
+        },
+        {
+          "id": "LAW-06",
+          "statement": "BEAUTY IS FUNCTION when it improves comprehension, trust, or emotion; beauty that obscures function is failure.",
+          "canon_refs": [
+            "studio-clay",
+            "studio-pentagram",
+            "book-laws-of-ux"
+          ],
+          "d1_d8": [
+            "D1",
+            "D3"
+          ],
+          "scoring_gate": "SN-0180 tuned: decorative delight caps D1 at 9.0"
+        },
+        {
+          "id": "LAW-07",
+          "statement": "COMPLEXITY BELONGS IN THE MACHINE — the more intelligent the system becomes, the simpler the human's experience must become.",
+          "canon_refs": [
+            "benchmark-things",
+            "studio-work-and-co"
+          ],
+          "d1_d8": [
+            "D2",
+            "D8"
+          ],
+          "scoring_gate": "SN-0180 locked: Linear craft benchmark (sub-100ms, optimistic UI, keyboard-first)"
+        },
+        {
+          "id": "LAW-08",
+          "statement": "DESIGN SYSTEMS ARE MEMORY — every verified discovery becomes retrievable design intelligence; never rediscover what was proven.",
+          "canon_refs": [
+            "studio-instrument",
+            "book-designing-interfaces"
+          ],
+          "d1_d8": [
+            "D6"
+          ],
+          "scoring_gate": null
+        },
+        {
+          "id": "LAW-09",
+          "statement": "THE PRODUCT SHOULD FEEL LIKE ONE THING — one intelligence, many rooms, one grammar; never a committee of components.",
+          "canon_refs": [
+            "teacher-jony-ive",
+            "studio-work-and-co",
+            "benchmark-linear"
+          ],
+          "d1_d8": [
+            "D6",
+            "D1"
+          ],
+          "scoring_gate": null
+        },
+        {
+          "id": "LAW-10",
+          "statement": "DESIGN MUST LEARN — design is not finished at implementation; observe, measure, verify, preserve, and start the next interface smarter.",
+          "canon_refs": [
+            "teacher-don-norman"
+          ],
+          "d1_d8": [
+            "D4"
+          ],
+          "scoring_gate": null
+        }
+      ]
+    },
+    "adoption": {
+      "sn0180": "PR #1316",
+      "sn0181": "PR #1318"
+    }
+  },
+  "design_dos": [
+    {
+      "id": "DO-01",
+      "rule": "Make every control's possible action visible before it is touched.",
+      "why": "humans need visible signifiers; undiscoverable function might as well not exist",
+      "canon_ref": "teacher-don-norman",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-02",
+      "rule": "Close every action loop with immediate, legible feedback.",
+      "why": "feedback is what turns action into understanding",
+      "canon_ref": "teacher-don-norman",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-03",
+      "rule": "Map controls to consequences the way the human already expects.",
+      "why": "natural mappings eliminate learning",
+      "canon_ref": "teacher-don-norman",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-04",
+      "rule": "Keep system status visible at all times.",
+      "why": "the human should never have to guess what just happened",
+      "canon_ref": "teacher-jakob-nielsen",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-05",
+      "rule": "Prefer recognition over recall in every choice.",
+      "why": "memory is limited; visible options beat remembered ones",
+      "canon_ref": "teacher-jakob-nielsen",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-06",
+      "rule": "Prevent errors with constraints; design recovery before writing error copy.",
+      "why": "prevention beats explanation, and every state needs an escape",
+      "canon_ref": "teacher-jakob-nielsen",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-07",
+      "rule": "Make navigation self-evident; a pause to decode it is design debt.",
+      "why": "obvious beats clever; people scan, they do not study",
+      "canon_ref": "book-dont-make-me-think",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-08",
+      "rule": "Remove every unnecessary word.",
+      "why": "each extra word competes with the words that matter",
+      "canon_ref": "book-dont-make-me-think",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-09",
+      "rule": "Ask what can be removed before asking what can be added.",
+      "why": "less but better is a standard scored against principles, not taste",
+      "canon_ref": "designer-dieter-rams",
+      "gate": "D1"
+    },
+    {
+      "id": "DO-10",
+      "rule": "Make every control tell the truth about what it does.",
+      "why": "honesty is a design property; a promise the system will not keep is a defect",
+      "canon_ref": "designer-dieter-rams",
+      "gate": "D4"
+    },
+    {
+      "id": "DO-11",
+      "rule": "Specify every microinteraction as trigger, rule, feedback, loop.",
+      "why": "small interactions are where product personality and trust live",
+      "canon_ref": "book-microinteractions",
+      "gate": "D4"
+    },
+    {
+      "id": "DO-12",
+      "rule": "Use motion only to communicate state change.",
+      "why": "motion that carries no state information is theater",
+      "canon_ref": "book-microinteractions",
+      "gate": "D4"
+    },
+    {
+      "id": "DO-13",
+      "rule": "Earn attention: subdue chrome so the work is primary.",
+      "why": "not every element deserves equal visual weight",
+      "canon_ref": "benchmark-linear",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-14",
+      "rule": "Keep placement predictable across rooms.",
+      "why": "familiar location lowers cognitive load",
+      "canon_ref": "benchmark-linear",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-15",
+      "rule": "Size and space touch targets for the real device and input.",
+      "why": "acquisition time is set by size and distance, not by intention",
+      "canon_ref": "book-laws-of-ux",
+      "gate": "D7"
+    },
+    {
+      "id": "DO-16",
+      "rule": "Cut choices to the minimum that serves the goal.",
+      "why": "each added option raises decision friction",
+      "canon_ref": "book-laws-of-ux",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-17",
+      "rule": "Compress meaning into icons before adding any decoration.",
+      "why": "a good icon is read, not decoded",
+      "canon_ref": "teacher-susan-kare",
+      "gate": "D5"
+    },
+    {
+      "id": "DO-18",
+      "rule": "Assign every color one fixed meaning and never break the wiring.",
+      "why": "color as vocabulary compounds across every surface",
+      "canon_ref": "company-teenage-engineering",
+      "gate": "D6"
+    },
+    {
+      "id": "DO-19",
+      "rule": "Disclose progressively: what matters now first, depth on demand.",
+      "why": "overview first defeats information dumping",
+      "canon_ref": "studio-instrument",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-20",
+      "rule": "Design from the human's goal; never expose the implementation model.",
+      "why": "goals outrank features; software should fit intent, not the reverse",
+      "canon_ref": "book-about-face",
+      "gate": "D4"
+    },
+    {
+      "id": "DO-21",
+      "rule": "Establish hierarchy first with spacing and typography, then style.",
+      "why": "structure carries meaning before color or decoration does",
+      "canon_ref": "book-refactoring-ui",
+      "gate": "D1"
+    },
+    {
+      "id": "DO-22",
+      "rule": "Prefer direct manipulation where the mental model supports it.",
+      "why": "touching the thought beats describing it; representation shapes thinking",
+      "canon_ref": "teacher-bret-victor",
+      "gate": "D4"
+    },
+    {
+      "id": "DO-23",
+      "rule": "Keep onboarding light; gate on first-use comprehension.",
+      "why": "advanced capability need not look difficult",
+      "canon_ref": "benchmark-moonlitt",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-24",
+      "rule": "Default intelligently so configuration disappears.",
+      "why": "strong defaults remove whole categories of friction",
+      "canon_ref": "benchmark-things",
+      "gate": "D2"
+    },
+    {
+      "id": "DO-25",
+      "rule": "State the 10x delta in one sentence and evidence it in the artifact.",
+      "why": "usability is table stakes; Signature must demonstrably transcend the best observed",
+      "canon_ref": "sn-0181",
+      "gate": "L0.3"
+    }
+  ],
+  "design_donts": [
+    {
+      "id": "DONT-01",
+      "rule": "Do not hide system status; never leave the human guessing whether an action worked.",
+      "why": "invisible state forces the human to re-verify by acting again",
+      "canon_ref": "teacher-jakob-nielsen",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-02",
+      "rule": "Do not force recall of locations, commands, or prior state that recognition could supply.",
+      "why": "every recalled item is working memory stolen from the task",
+      "canon_ref": "teacher-jakob-nielsen",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-03",
+      "rule": "Do not explain errors the system could have prevented with constraints.",
+      "why": "an explained failure is still a failure the design allowed",
+      "canon_ref": "teacher-jakob-nielsen",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-04",
+      "rule": "Do not ship navigation a human must stop to decode.",
+      "why": "cleverness that costs comprehension is debt, not craft",
+      "canon_ref": "book-dont-make-me-think",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-05",
+      "rule": "Do not add words the human must read to do the obvious.",
+      "why": "explanation for the self-evident signals the design failed",
+      "canon_ref": "book-dont-make-me-think",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-06",
+      "rule": "Do not ship a control that promises more than the system delivers.",
+      "why": "a dishonest control spends trust the product cannot repay",
+      "canon_ref": "designer-dieter-rams",
+      "gate": "D4"
+    },
+    {
+      "id": "DONT-07",
+      "rule": "Do not animate without a state change to communicate.",
+      "why": "motion without state information is decoration pretending to be alive",
+      "canon_ref": "book-microinteractions",
+      "gate": "D4"
+    },
+    {
+      "id": "DONT-08",
+      "rule": "Do not leave triggers undiscoverable.",
+      "why": "a hidden gesture is a hidden feature; affordances must be visible",
+      "canon_ref": "book-microinteractions",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-09",
+      "rule": "Do not give every element equal prominence.",
+      "why": "unearned attention is noise that buries what matters",
+      "canon_ref": "benchmark-linear",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-10",
+      "rule": "Do not confuse density with clutter — or emptiness with simplicity.",
+      "why": "density serves power users; clutter serves no one; empty is not simple",
+      "canon_ref": "benchmark-linear",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-11",
+      "rule": "Do not manufacture variable reward.",
+      "why": "rewards must serve the user's genuine goal or they are manipulation",
+      "canon_ref": "book-hooked",
+      "gate": "D3"
+    },
+    {
+      "id": "DONT-12",
+      "rule": "Do not let investment mechanics exploit; stored value must visibly pay the user back.",
+      "why": "the same loop can facilitate or exploit — run the manipulation test",
+      "canon_ref": "book-hooked",
+      "gate": "D3"
+    },
+    {
+      "id": "DONT-13",
+      "rule": "Do not decorate icons that do not yet carry clear meaning.",
+      "why": "decoration without semantic clarity is failure, not polish",
+      "canon_ref": "teacher-susan-kare",
+      "gate": "D5"
+    },
+    {
+      "id": "DONT-14",
+      "rule": "Do not break the fixed color vocabulary for emphasis or novelty.",
+      "why": "one violated meaning unteaches the whole system",
+      "canon_ref": "company-teenage-engineering",
+      "gate": "D6"
+    },
+    {
+      "id": "DONT-15",
+      "rule": "Do not dump information and call it transparency.",
+      "why": "undifferentiated data is a burden disguised as honesty",
+      "canon_ref": "studio-instrument",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-16",
+      "rule": "Do not add delight before usability is verified.",
+      "why": "personality must be earned in order: functional, reliable, usable, then pleasurable",
+      "canon_ref": "designer-aarron-walter",
+      "gate": "D1"
+    },
+    {
+      "id": "DONT-17",
+      "rule": "Do not maximize engagement for its own sake.",
+      "why": "attention extracted without human value is a cost, not a win",
+      "canon_ref": "studio-ustwo",
+      "gate": "D3"
+    },
+    {
+      "id": "DONT-18",
+      "rule": "Do not build tutorials for what interaction itself can teach.",
+      "why": "objects that respond teach faster than instructions that describe",
+      "canon_ref": "studio-ustwo",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-19",
+      "rule": "Do not accumulate features before subtracting.",
+      "why": "feature accumulation is not product quality; reduction is the procedure",
+      "canon_ref": "designer-john-maeda",
+      "gate": "D2"
+    },
+    {
+      "id": "DONT-20",
+      "rule": "Do not present raw intelligence as finished presentation.",
+      "why": "undistilled data exports the machine's work onto the human",
+      "canon_ref": "studio-instrument",
+      "gate": "D4"
+    },
+    {
+      "id": "DONT-21",
+      "rule": "Do not let layout invent structure.",
+      "why": "when the skeleton invents, every room learns a different grammar",
+      "canon_ref": "book-the-elements-of-user-experience",
+      "gate": "D6"
+    },
+    {
+      "id": "DONT-22",
+      "rule": "Do not freeze as static documents what should be live and manipulable.",
+      "why": "static representation caps the human's ability to reason with the idea",
+      "canon_ref": "teacher-bret-victor",
+      "gate": "D4"
+    },
+    {
+      "id": "DONT-23",
+      "rule": "Do not keep chrome the object itself could replace.",
+      "why": "when the thing can communicate, the button is overhead",
+      "canon_ref": "teacher-mike-matas",
+      "gate": "D2"
+    }
+  ],
+  "canon_references": {
+    "entity_nodes": 68,
+    "verified": 31,
+    "partial": 8,
+    "unverified_excluded": 1,
+    "note": "unverified claims excluded from machine law; DONT-07/DONT-17 dropped as fully covered by ratified benchmark_to_beyond anti-patterns"
   }
 }
