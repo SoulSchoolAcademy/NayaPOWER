@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T04:16:38+00:00",
+ "generated_utc": "2026-10-17T05:15:40+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -366,18 +366,6 @@
      "draft": false
     },
     {
-     "number": 2710,
-     "title": "IB: persist tools/ph_aggregation.py \u2014 p/h aggregation step for grade-acceptance cold execu",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2710",
-     "draft": false
-    },
-    {
-     "number": 2709,
-     "title": "[ACT] Pre-post PR body self-check (pr_body_selfcheck.py)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2709",
-     "draft": false
-    },
-    {
      "number": 2708,
      "title": "Design Laws v1 (DRAFT): three-tongue repo placement",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708",
@@ -394,9 +382,21 @@
      "title": "Design System v1 \u2014 the Naya Lego box (100 laws, tokens, catalog, organized library)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705",
      "draft": true
+    },
+    {
+     "number": 2703,
+     "title": "Harden TIP-NOTE marker to line-anchored heading regex + regression tests",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703",
+     "draft": false
+    },
+    {
+     "number": 2691,
+     "title": "[DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only, do not merge)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691",
+     "draft": true
     }
    ],
-   "open_pr_count": 231
+   "open_pr_count": 229
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 608,
- "unassigned_prs": 231
+ "open_pr_total": 606,
+ "unassigned_prs": 229
 }

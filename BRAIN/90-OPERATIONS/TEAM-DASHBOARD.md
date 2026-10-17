@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 04:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 05:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 608 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 606 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (231)
+### BUILD (229)
 - [#2719](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2719) LAW: hold-veto mention-vs-use hardening (_HOLD_VETO_RE → _HOLD_USE_RE)
 - [#2715](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2715) Daily intelligence report pipeline — item 17 (generator + sample + rea
 - [#2714](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2714) DESIGN: adopt 144-block catalog extension into BLOCKS.md
-- [#2710](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2710) IB: persist tools/ph_aggregation.py — p/h aggregation step for grade-a
-- [#2709](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2709) [ACT] Pre-post PR body self-check (pr_body_selfcheck.py)
-- …and 226 more
+- [#2708](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708) Design Laws v1 (DRAFT): three-tongue repo placement 📝draft
+- [#2707](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2707) DESIGN: curated smart-block library — one language, best-of-best
+- …and 224 more
 
 ### WIRE (125)
 - [#2718](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2718) Add nitro to merge-consensus gate seat registry
