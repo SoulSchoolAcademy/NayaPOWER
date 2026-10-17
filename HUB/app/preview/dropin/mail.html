@@ -1,0 +1,951 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Smart Mail — Room Preview</title><style>body{margin:0;background:#020202;}/* SMART MAIL — Room. Blue identity. Dark premium, glassmorphism.
+   Button law: silver-white at rest, blue ignites on hover/focus.
+   Color = stable identity: blue for the room, contact/space colors for avatars. */
+
+.mail-stage{
+  --ml-blue:#3b82f6; --ml-blue-lt:#93c5fd;
+  --ml-ink:#f4f6fb; --ml-dim:#9aa3b5;
+  max-width:1180px; margin:0 auto; padding:36px 24px 90px;
+  color:var(--ml-ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
+}
+
+/* header */
+.mail-stage .ml-head{ margin:0 0 8px; }
+.mail-stage .ml-kicker{
+  font-size:11px; letter-spacing:.24em; font-weight:800; color:var(--ml-blue);
+  margin:0 0 14px; text-shadow:0 0 14px rgba(59,130,246,.5);
+}
+.mail-stage .ml-title{
+  font-size:clamp(30px,4.4vw,46px); font-weight:900; letter-spacing:-.02em;
+  margin:0 0 14px; line-height:1.1; color:#fff;
+}
+.mail-stage .ml-sub{
+  font-size:16px; line-height:1.65; color:#d7dce8; margin:0; max-width:680px; font-weight:500;
+}
+/* three panes */
+.mail-stage .ml-panes{
+  display:grid; grid-template-columns:200px 340px 1fr; gap:14px;
+  margin:26px 0 0; min-height:480px;
+}
+
+/* folder rail — each folder owns its color: inbox blue, unread green, sent purple */
+.mail-stage .ml-rail{
+  display:flex; flex-direction:column; gap:8px;
+  border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:14px;
+  background:rgba(14,16,24,.55);
+  -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+}
+.mail-stage .ml-folder{
+  --fc:#3b82f6; --fcl:#93c5fd;
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px; border-radius:14px; font-size:11px; font-weight:800; letter-spacing:.14em;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:linear-gradient(180deg, #1b1b21, #0b0b0e);
+  border:1px solid rgba(232,234,242,.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.55), 0 0 14px -8px var(--fc);
+  transition:border-color .22s, box-shadow .25s, transform .15s, background .25s;
+}
+.mail-stage .ml-folder .ml-ficon{
+  width:22px; height:22px; flex:none; color:var(--fcl);
+  filter:drop-shadow(0 0 6px var(--fc)) drop-shadow(0 2px 3px rgba(0,0,0,.6));
+  transition:filter .25s, transform .2s;
+}
+.mail-stage .ml-folder .ml-ficon svg{ width:100%; height:100%; display:block; }
+.mail-stage .ml-folder .ml-fname{ flex:1; }
+.mail-stage .ml-folder:hover, .mail-stage .ml-folder:focus-visible{
+  border-color:var(--fc); transform:translateY(-1px); outline:none;
+  box-shadow:0 0 20px -6px var(--fc);
+}
+.mail-stage .ml-folder:hover .ml-ficon, .mail-stage .ml-folder:focus-visible .ml-ficon{
+  filter:drop-shadow(0 0 9px var(--fc));
+}
+.mail-stage .ml-folder.on{
+  border-color:var(--fc); color:var(--fcl);
+  text-shadow:0 0 12px var(--fc);
+  background:linear-gradient(180deg, #232329, #0e0e12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 12px 32px rgba(0,0,0,.6), 0 0 30px -6px var(--fc);
+  transform:translateY(-1px);
+}
+.mail-stage .ml-folder.on .ml-ficon{
+  filter:drop-shadow(0 0 11px var(--fc));
+  transform:translateY(-1px) scale(1.08);
+}
+.mail-stage .ml-badge{
+  min-width:24px; height:24px; padding:0 7px; border-radius:99px;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:900; color:#060a14;
+  background:radial-gradient(circle at 35% 30%, #d1fae5, #34d399 60%, #059669);
+  box-shadow:0 0 14px rgba(52,211,153,.8), 0 2px 6px rgba(0,0,0,.4);
+}
+
+/* thread list */
+.mail-stage .ml-listcol{ display:flex; flex-direction:column; gap:10px; min-height:0; }
+.mail-stage .ml-searchbar{
+  display:flex; align-items:center; gap:10px; flex:none;
+  border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:10px 14px;
+  background:rgba(0,0,0,.35);
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,255,255,.05);
+}
+.mail-stage .ml-searchbar:focus-within{ border-color:rgba(59,130,246,.6); box-shadow:inset 0 2px 8px rgba(0,0,0,.5), 0 0 16px -6px var(--ml-blue); }
+.mail-stage .ml-searchicon{ width:16px; height:16px; flex:none; color:var(--ml-dim); }
+.mail-stage .ml-searchicon svg{ width:100%; height:100%; display:block; }
+.mail-stage .ml-searchin{
+  flex:1; min-width:0; background:transparent; border:0; outline:none;
+  font-family:inherit; font-size:13.5px; color:#fff;
+}
+.mail-stage .ml-searchin::placeholder{ color:var(--ml-dim); }
+.mail-stage .ml-list{
+  flex:1; min-height:0;
+  display:flex; flex-direction:column; gap:8px; overflow-y:auto; max-height:640px;
+  border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:12px;
+  background:rgba(14,16,24,.55);
+  -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+}
+.mail-stage .ml-empty{ color:var(--ml-dim); font-size:14px; padding:24px 12px; text-align:center; }
+.mail-stage .ml-thread{
+  position:relative; display:flex; gap:12px; align-items:flex-start;
+  padding:14px; border-radius:14px; text-align:left; cursor:pointer; font-family:inherit;
+  color:#fff;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+  border:2px solid rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09), 0 4px 14px rgba(0,0,0,.35);
+  transition:border-color .22s, box-shadow .25s, transform .15s, background .22s;
+  width:100%;
+}
+.mail-stage .ml-thread:hover, .mail-stage .ml-thread:focus-visible{
+  border-color:rgba(59,130,246,.55); transform:translateY(-2px); outline:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 10px 26px rgba(0,0,0,.45), 0 0 22px -8px var(--ml-blue);
+}
+.mail-stage .ml-thread.sel{
+  border:2px solid var(--ml-blue);
+  background:linear-gradient(180deg, rgba(59,130,246,.1), rgba(59,130,246,.04));
+  box-shadow:inset 0 1px rgba(255,255,255,.1), 0 10px 28px rgba(0,0,0,.45), 0 0 26px -6px var(--ml-blue);
+}
+/* avatars — true balls: radial sphere, specular highlight top-left,
+   deep contact-color aura. */
+.mail-stage .ml-avatar{
+  flex:none; width:40px; height:40px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:15px; font-weight:900; color:#060a14;
+  background:var(--pc,#8b93a3);
+  background:radial-gradient(circle at 32% 28%,
+    rgba(255,255,255,.95) 0%,
+    color-mix(in srgb, var(--pc,#8b93a3) 35%, #ffffff) 24%,
+    var(--pc,#8b93a3) 58%,
+    color-mix(in srgb, var(--pc,#8b93a3) 48%, #000000) 100%);
+  box-shadow:0 6px 18px -4px color-mix(in srgb, var(--pc,#8b93a3) 70%, transparent),
+             inset 0 -6px 12px rgba(0,0,0,.35),
+             inset 0 3px 6px rgba(255,255,255,.3);
+  text-shadow:0 1px 0 rgba(255,255,255,.4);
+}
+.mail-stage .ml-avatar.sm{ width:34px; height:34px; font-size:13px; }
+.mail-stage .ml-thread-mid{ flex:1; min-width:0; display:flex; flex-direction:column; gap:3px; }
+.mail-stage .ml-thread-top{ display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+.mail-stage .ml-thread-from{ font-size:12.5px; font-weight:800; }
+.mail-stage .ml-thread.unread .ml-thread-from{ color:#a7f3d0; }
+.mail-stage .ml-thread-time{ font-size:11px; color:var(--ml-dim); flex:none; font-variant-numeric:tabular-nums; }
+.mail-stage .ml-thread-subj{ font-size:13.5px; font-weight:700; color:#fff; }
+.mail-stage .ml-thread-snip{
+  font-size:12.5px; color:var(--ml-dim); line-height:1.5;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.mail-stage .ml-dot{
+  position:absolute; top:14px; right:14px; width:10px; height:10px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #d1fae5, #34d399 55%, #059669);
+  box-shadow:0 0 12px #34d399, 0 0 4px rgba(52,211,153,.9);
+}
+.mail-stage .ml-chip{
+  align-self:center; flex:none; font-size:9px; font-weight:800; letter-spacing:.14em;
+  color:var(--ml-blue-lt); background:rgba(59,130,246,.1);
+  border:1px solid rgba(59,130,246,.55); border-radius:99px; padding:4px 10px;
+  text-shadow:0 0 8px rgba(59,130,246,.6);
+}
+.mail-stage .ml-count{
+  align-self:center; flex:none; min-width:24px; height:24px; padding:0 7px; border-radius:99px;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:900; color:var(--ml-blue-lt);
+  background:rgba(59,130,246,.12); border:1px solid rgba(59,130,246,.5);
+  box-shadow:0 0 10px -2px var(--ml-blue), inset 0 1px 0 rgba(255,255,255,.15);
+}
+
+/* reading pane */
+.mail-stage .ml-read{
+  border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:30px 32px;
+  background:rgba(14,16,24,.55);
+  -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+  box-shadow:inset 0 1px rgba(255,255,255,.06), 0 22px 55px rgba(0,0,0,.5);
+  overflow-y:auto; max-height:640px;
+}
+.mail-stage .ml-read-empty{ color:var(--ml-dim); font-size:15px; text-align:center; padding:60px 20px; }
+.mail-stage .ml-read-subj{ font-size:clamp(20px,2.6vw,28px); font-weight:900; margin:0 0 18px; color:#fff; line-height:1.3; text-shadow:0 2px 18px rgba(0,0,0,.5); }
+.mail-stage .ml-read-subj:focus{ outline:none; }
+.mail-stage .ml-read-meta{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:22px; padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,.08); }
+/* the conversation: each message its own sculpted card */
+.mail-stage .ml-msg{
+  border:1px solid rgba(255,255,255,.09); border-radius:16px;
+  padding:18px 20px; margin:0 8% 14px 0;
+  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 8px 22px rgba(0,0,0,.4);
+}
+.mail-stage .ml-msg.mine{
+  margin:0 0 14px 8%;
+  border-color:rgba(59,130,246,.35);
+  background:linear-gradient(180deg, rgba(59,130,246,.1), rgba(59,130,246,.03));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 8px 22px rgba(0,0,0,.4), 0 0 20px -10px var(--ml-blue);
+}
+.mail-stage .ml-msg-head{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.mail-stage .ml-msg-who{ display:flex; flex-direction:column; gap:2px; }
+.mail-stage .ml-msg-from{ font-size:13px; font-weight:800; }
+.mail-stage .ml-msg-date{ font-size:11px; color:var(--ml-dim); font-variant-numeric:tabular-nums; }
+.mail-stage .ml-msg-body{ font-size:14.5px; line-height:1.7; color:#dde2ee; }
+.mail-stage .ml-msg-body p{ margin:0 0 12px; }
+.mail-stage .ml-msg-body p:last-child{ margin-bottom:0; }
+.mail-stage .ml-read-to{ font-size:12px; color:var(--ml-dim); }
+.mail-stage .ml-read-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+
+/* buttons — obsidian black (Shawn, 2026-10-02): black with depth —
+   top-light edge and deep shadow — never grey. Color ignites on hover. */
+.mail-stage .ml-btn, .mail-stage .ml-compose{
+  padding:10px 24px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.14em;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:linear-gradient(180deg, #1c1c22, #0a0a0d);
+  border:1px solid rgba(232,234,242,.35);
+  -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+  text-shadow:0 1px 2px rgba(0,0,0,.8);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.55);
+  transition:border-color .22s, box-shadow .25s, transform .15s, color .22s;
+}
+.mail-stage .ml-btn:hover, .mail-stage .ml-btn:focus-visible,
+.mail-stage .ml-compose:hover, .mail-stage .ml-compose:focus-visible{
+  border-color:var(--ml-blue); color:var(--ml-blue-lt); transform:translateY(-2px); outline:none;
+  text-shadow:0 0 12px rgba(59,130,246,.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 10px 28px rgba(0,0,0,.6), 0 0 26px -6px var(--ml-blue);
+}
+.mail-stage .ml-btn:disabled{ opacity:.55; cursor:default; transform:none; }
+.mail-stage .ml-btn.primary{ border-color:rgba(147,197,253,.55); }
+.mail-stage .ml-btn.danger[data-arm="1"]{
+  border-color:#f87171; color:#fca5a5;
+  text-shadow:0 0 12px rgba(248,113,113,.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.55), 0 0 26px -6px #f87171;
+}
+.mail-stage .ml-compose{
+  position:fixed; bottom:28px; right:28px; z-index:40; padding:14px 30px;
+  border-color:rgba(147,197,253,.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 10px 30px rgba(0,0,0,.6), 0 0 30px -8px var(--ml-blue);
+}
+
+/* compose modal */
+.mail-stage .ml-overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.72); z-index:60;
+  display:flex; align-items:center; justify-content:center; padding:20px;
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+}
+.mail-stage .ml-modal{
+  max-width:600px; width:100%; max-height:88vh; overflow:auto;
+  background:rgba(16,19,30,.94);
+  -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px);
+  border:2px solid rgba(59,130,246,.5); border-radius:24px; padding:32px;
+  box-shadow:0 40px 120px rgba(0,0,0,.75), 0 0 60px -12px var(--ml-blue);
+}
+.mail-stage .ml-modal-title{ font-size:13px; font-weight:800; letter-spacing:.2em; color:var(--ml-blue-lt); margin:0 0 22px; }
+.mail-stage .ml-field{ display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
+.mail-stage .ml-field-l{ font-size:10px; font-weight:800; letter-spacing:.16em; color:var(--ml-dim); }
+.mail-stage .ml-input{
+  font-family:inherit; font-size:14px; color:#fff; padding:12px 16px; border-radius:12px;
+  background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.14);
+  transition:border-color .2s, box-shadow .2s;
+}
+.mail-stage .ml-input:focus{ border-color:var(--ml-blue); outline:none; box-shadow:0 0 16px -4px var(--ml-blue); }
+.mail-stage textarea.ml-input{ resize:vertical; min-height:120px; line-height:1.6; }
+.mail-stage select.ml-input option, .mail-stage select.ml-input optgroup{ background:#10131e; }
+.mail-stage .ml-err{ font-size:13px; color:#f87171; margin:0 0 14px; }
+.mail-stage .ml-modal-row{ display:flex; gap:10px; flex-wrap:wrap; }
+
+/* responsive */
+@media(max-width:760px){
+  .mail-stage{ padding:28px 16px 110px; }
+  .mail-stage .ml-panes{ grid-template-columns:1fr; }
+  .mail-stage .ml-rail{ flex-direction:row; overflow-x:auto; }
+  .mail-stage .ml-folder{ flex:1; white-space:nowrap; }
+  .mail-stage .ml-list{ max-height:320px; }
+  .mail-stage .ml-read{ max-height:none; padding:24px 20px; }
+  .mail-stage .ml-compose{ bottom:18px; right:18px; }
+}
+
+/* reduced motion: the room goes still — no transitions, no animation */
+@media (prefers-reduced-motion: reduce){
+  .mail-stage *{ animation:none !important; transition:none !important; }
+}
+</style></head><body><a href="./" aria-label="Back to Hub rooms" style="position:fixed;top:20px;left:20px;z-index:10001;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:28px;font-weight:300;line-height:1;color:#fff;text-decoration:none;background:linear-gradient(145deg,#2a2a3a,#12121a);border:1px solid rgba(157,117,255,0.5);box-shadow:0 4px 16px rgba(0,0,0,0.6),0 0 20px rgba(157,117,255,0.3);">‹</a><div id="app"></div><script>function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined&&text!==null)e.textContent=text;return e;}window.NayaRooms=window.NayaRooms||{};
+  'use strict';
+
+  var KEY = 'naya.people.registry';
+
+  function clean(p){
+    if(!p || typeof p !== 'object' || p.id == null) return null;
+    return {
+      id: String(p.id),
+      name: String(p.name != null ? p.name : p.id),
+      role: String(p.role || ''),
+      color: String(p.color || '#8b93a3'),
+      note: String(p.note || '')
+    };
+  }
+
+  function load(){
+    try{
+      var raw = localStorage.getItem(KEY);
+      var a = raw ? JSON.parse(raw) : null;
+      if(!Array.isArray(a)) return null;
+      var out = [];
+      a.forEach(function(p){ var c = clean(p); if(c) out.push(c); });
+      return out;
+    }catch(e){ return null; }
+  }
+
+  function save(people){
+    try{ localStorage.setItem(KEY, JSON.stringify(people || [])); }catch(e){}
+  }
+
+  function ensureSeeded(ctxContacts){
+    var people = load();
+    if(people) return people;
+    people = [];
+    (Array.isArray(ctxContacts) ? ctxContacts : []).forEach(function(p){
+      var c = clean(p); if(c) people.push(c);
+    });
+    save(people);
+    return people;
+  }
+
+  function add(person){
+    var people = load() || [];
+    var c = clean(person);
+    if(c && !people.some(function(p){ return p.id === c.id; })){
+      people.push(c);
+      save(people);
+    }
+    return people;
+  }
+
+  function get(id){
+    var people = load() || [];
+    for(var i = 0; i < people.length; i++){
+      if(people[i].id === String(id)) return people[i];
+    }
+    return null;
+  }
+
+  window.NayaPeople = {
+    KEY: KEY,
+    load: load,
+    save: save,
+    ensureSeeded: ensureSeeded,
+    add: add,
+    get: get
+  };
+
+  'use strict';
+
+  function isStr(v){ return typeof v==='string' && v.length>0; }
+
+  function parseOne(m){
+    if(!m || typeof m!=='object') return null;
+    if(!isStr(m.id) || !isStr(m.from) || !isStr(m.to) || !isStr(m.subject)) return null;
+    var ts = m.ts;
+    if(typeof ts!=='number' || !isFinite(ts)) ts = Date.now();
+    return {
+      id: m.id,
+      threadId: isStr(m.threadId) ? m.threadId : null,
+      from: m.from,
+      to: m.to,
+      toKind: m.toKind==='space' ? 'space' : 'person',
+      subject: m.subject,
+      snippet: String(m.body||'').split('\n')[0].slice(0,120),
+      body: isStr(m.body) ? m.body : '',
+      ts: ts,
+      unread: m.unread===true,
+      demo: m.demo!==false   /* seeded content is demo unless explicitly real */
+    };
+  }
+
+  function parseThreads(raw){
+    var msgs = [];
+    (Array.isArray(raw) ? raw : []).forEach(function(m){
+      try{ var e = parseOne(m); if(e) msgs.push(e); }catch(err){ /* skip */ }
+    });
+    msgs.sort(function(a,b){ return a.ts - b.ts; });
+
+    var byTid = {}, order = [];
+    msgs.forEach(function(m){
+      var tid = m.threadId || ('t-'+m.id);
+      if(!byTid[tid]){ byTid[tid] = []; order.push(tid); }
+      byTid[tid].push(m);
+    });
+
+    var threads = order.map(function(tid){
+      var ms = byTid[tid];
+      var last = ms[ms.length-1];
+      return {
+        id: tid,
+        subject: ms[0].subject,
+        messages: ms,
+        count: ms.length,
+        ts: last.ts,
+        unread: ms.some(function(m){ return m.unread; }),
+        demo: ms.every(function(m){ return m.demo; })
+      };
+    });
+    threads.sort(function(a,b){ return b.ts - a.ts; });
+    return threads;
+  }
+
+  window.MailAdapter = { parseThreads: parseThreads };
+
+  'use strict';
+
+  var BLUE = '#3b82f6';
+  var SENT_KEY = 'naya.smartmail.sent';
+  var DEL_KEY  = 'naya.smartmail.deleted'; /* tombstoned threadIds — a deleted
+     seeded thread stays deleted across reloads instead of resurrecting */
+
+  function timeAgo(ts){
+    var s = Math.max(0, Math.floor((Date.now()-ts)/1000));
+    if(s < 60) return 'just now';
+    var m = Math.floor(s/60); if(m < 60) return m+'m ago';
+    var h = Math.floor(m/60); if(h < 24) return h+'h ago';
+    var d = Math.floor(h/24); if(d < 7) return d+'d ago';
+    return Math.floor(d/7)+'w ago';
+  }
+
+  function fmtFull(ts){
+    var d = new Date(ts);
+    return d.toLocaleDateString('en-US',{month:'long',day:'numeric'}) + ' · ' +
+           d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+  }
+
+  function esc(s){ return String(s==null?'':s); }
+
+  function refreshThread(t){
+    t.messages.sort(function(a,b){ return a.ts - b.ts; });
+    var last = t.messages[t.messages.length-1];
+    t.count = t.messages.length;
+    t.ts = last ? last.ts : 0;
+    t.unread = t.messages.some(function(m){ return m.unread; });
+    t.demo = t.messages.every(function(m){ return m.demo; });
+  }
+
+  function SmartMail(el, ctx){
+    ctx = ctx || {};
+    var me = ctx.me || 'naya4';
+    /* people spine: one shared registry across rooms; seeds from ctx.contacts
+       on first run, then every room reads the same truth. */
+    var contacts = (window.NayaPeople && window.NayaPeople.ensureSeeded)
+      ? window.NayaPeople.ensureSeeded(ctx.contacts)
+      : (Array.isArray(ctx.contacts) ? ctx.contacts : []);
+    var spaces = Array.isArray(ctx.spaces) ? ctx.spaces : [];
+    var byId = {};
+    function reloadPeople(){
+      if(window.NayaPeople && window.NayaPeople.load){
+        var p = window.NayaPeople.load();
+        if(p) contacts = p;
+      }
+      byId = {};
+      contacts.forEach(function(c){ byId[c.id]=c; });
+    }
+    reloadPeople();
+    var spaceById = {};
+    spaces.forEach(function(s){ spaceById[s.id]=s; });
+
+    /* threads: seeded (demo) + user messages restored from persistence */
+    var threads = Array.isArray(ctx.threads) ? ctx.threads.slice() : [];
+    loadSent().forEach(function(rec){
+      var t = findThread(rec.id);
+      if(t){
+        (rec.messages||[]).forEach(function(m){
+          if(!t.messages.some(function(x){ return x.id===m.id; })) t.messages.push(m);
+        });
+        refreshThread(t);
+      }else if(rec.messages && rec.messages.length){
+        var nt = { id:rec.id, subject:rec.subject || '(no subject)', messages:rec.messages.slice() };
+        refreshThread(nt);
+        threads.push(nt);
+      }
+    });
+    threads.sort(function(a,b){ return b.ts - a.ts; });
+    /* the dead stay dead: tombstoned threads never resurrect on reload */
+    (function(){
+      var gone = {};
+      loadDeleted().forEach(function(id){ gone[id]=1; });
+      threads = threads.filter(function(t){ return !gone[t.id]; });
+    })();
+
+    var state = { folder:'inbox', selectedId:null, q:'' };
+
+    var stage = el('div','mail-stage');
+
+    /* header */
+    var head = el('header','ml-head');
+    head.appendChild(el('p','ml-kicker','SMART MAIL'));
+    var h1 = el('h1','ml-title',''); h1.textContent='See what you need to act on'; head.appendChild(h1);
+    var sub = el('p','ml-sub','');
+    sub.textContent='Mail inside the NayaNET network \u2014 write to a person or straight to a space. Nothing leaves the network; everything stays inspectable.';
+    head.appendChild(sub);
+    stage.appendChild(head);
+
+    /* three panes */
+    var panes = el('div','ml-panes');
+
+    var rail = el('nav','ml-rail'); rail.setAttribute('aria-label','Mail folders');
+    panes.appendChild(rail);
+
+    var listCol = el('div','ml-listcol');
+    var searchBar = el('div','ml-searchbar');
+    var searchIcon = el('span','ml-searchicon','');
+    searchIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
+    searchBar.appendChild(searchIcon);
+    var searchIn = el('input','ml-searchin');
+    searchIn.type='search';
+    searchIn.setAttribute('placeholder','Search mail\u2026');
+    searchIn.setAttribute('aria-label','Search mail');
+    searchIn.addEventListener('input', function(){
+      state.q = searchIn.value.trim().toLowerCase();
+      renderList();
+    });
+    searchBar.appendChild(searchIn);
+    listCol.appendChild(searchBar);
+
+    var list = el('div','ml-list'); list.setAttribute('role','listbox'); list.setAttribute('aria-label','Threads');
+    listCol.appendChild(list);
+    panes.appendChild(listCol);
+
+    var read = el('article','ml-read'); read.setAttribute('aria-live','polite');
+    panes.appendChild(read);
+
+    stage.appendChild(panes);
+
+    /* compose button */
+    var composeBtn = el('button','ml-compose','+ COMPOSE');
+    composeBtn.type='button';
+    composeBtn.addEventListener('click', function(){ openCompose({}); });
+    stage.appendChild(composeBtn);
+
+    /* ---------- folders ---------- */
+    function isSent(t){ return t.messages.length && t.messages[0].from===me; }
+    function inboxThreads(){ return threads.filter(function(t){ return !isSent(t); }); }
+    function sentThreads(){ return threads.filter(function(t){ return isSent(t); }); }
+    function unreadCount(){ return inboxThreads().filter(function(t){ return t.unread; }).length; }
+
+    /* folder identity: each folder owns a stable color + icon (Shawn, 2026-10-02).
+       inbox stays blue, unread is green, sent is purple when lit.
+       The unread count lives on UNREAD (green on green) — never a green
+       badge inside the blue box. */
+    var F_INBOX  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>';
+    var F_UNREAD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/><circle cx="18.5" cy="5.5" r="2.8" fill="currentColor" stroke="#0b0b0e" stroke-width="1.6"/></svg>';
+    var F_SENT   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>';
+
+    function renderRail(){
+      rail.innerHTML='';
+      var defs = [
+        ['inbox','INBOX', null,          '#3b82f6', '#93c5fd', F_INBOX],
+        ['unread','UNREAD', unreadCount(), '#34d399', '#a7f3d0', F_UNREAD],
+        ['sent','SENT',   null,          '#a855f7', '#d8b4fe', F_SENT]
+      ];
+      defs.forEach(function(d){
+        var b = el('button','ml-folder'+(state.folder===d[0]?' on':''));
+        b.type='button'; b.setAttribute('aria-pressed', state.folder===d[0]?'true':'false');
+        b.style.setProperty('--fc', d[3]);
+        b.style.setProperty('--fcl', d[4]);
+        var ic = el('span','ml-ficon',''); ic.innerHTML = d[5]; b.appendChild(ic);
+        var nm = el('span','ml-fname',''); nm.textContent=d[1]; b.appendChild(nm);
+        if(d[2]){
+          var badge = el('span','ml-badge',''); badge.textContent=d[2]; b.appendChild(badge);
+        }
+        b.addEventListener('click', function(){
+          state.folder=d[0]; state.selectedId=null;
+          renderRail(); renderList(); renderRead();
+        });
+        rail.appendChild(b);
+      });
+    }
+
+    function folderThreads(){
+      var ts;
+      if(state.folder==='sent') ts = sentThreads();
+      else if(state.folder==='unread') ts = inboxThreads().filter(function(t){ return t.unread; });
+      else ts = inboxThreads();
+      if(state.q){
+        var q = state.q;
+        ts = ts.filter(function(t){
+          var hay = (t.subject+' '+t.messages.map(function(m){
+            return m.subject+' '+m.snippet+' '+m.body+' '+partyName(m.from,'person');
+          }).join(' ')).toLowerCase();
+          return hay.indexOf(q)>=0;
+        });
+      }
+      return ts;
+    }
+
+    /* ---------- thread list ---------- */
+    function partyName(id, kind){
+      if(kind==='space' && spaceById[id]) return spaceById[id].name;
+      if(byId[id]) return byId[id].name;
+      return id;
+    }
+    function partyColor(id, kind){
+      if(kind==='space' && spaceById[id]) return spaceById[id].color;
+      if(byId[id]) return byId[id].color;
+      return '#8b93a3';
+    }
+    /* the human face of a thread: the first participant who isn't me,
+       else the last message's recipient. */
+    function otherParty(t){
+      for(var i=0;i<t.messages.length;i++){
+        if(t.messages[i].from!==me) return {id:t.messages[i].from, kind:'person'};
+      }
+      var l = t.messages[t.messages.length-1];
+      return l ? {id:l.to, kind:l.toKind} : {id:'?', kind:'person'};
+    }
+
+    function renderList(){
+      list.innerHTML='';
+      var ts = folderThreads();
+      if(!ts.length){
+        var empty = el('p','ml-empty','');
+        empty.textContent = state.q ? 'No threads match your search.'
+          : state.folder==='sent' ? 'Nothing sent yet. Compose your first network mail.'
+          : 'All caught up. No threads here.';
+        list.appendChild(empty);
+        return;
+      }
+      ts.forEach(function(t){
+        var op = otherParty(t);
+        var last = t.messages[t.messages.length-1];
+        var item = el('button','ml-thread'+(t.unread?' unread':'')+(state.selectedId===t.id?' sel':''));
+        item.type='button'; item.setAttribute('role','option');
+        item.setAttribute('aria-selected', state.selectedId===t.id?'true':'false');
+        item.setAttribute('aria-label',(t.unread?'Unread: ':'')+t.subject+
+          (t.count>1 ? ' ('+t.count+' messages)' : ''));
+
+        var av = el('span','ml-avatar','');
+        var nm = partyName(op.id, op.kind);
+        av.textContent = nm.charAt(0).toUpperCase();
+        av.style.setProperty('--pc', partyColor(op.id, op.kind));
+        item.appendChild(av);
+
+        var mid = el('span','ml-thread-mid');
+        var top = el('span','ml-thread-top');
+        var fromEl = el('span','ml-thread-from',''); fromEl.textContent=nm; top.appendChild(fromEl);
+        var time = el('span','ml-thread-time',''); time.textContent=timeAgo(t.ts); top.appendChild(time);
+        mid.appendChild(top);
+        var sj = el('span','ml-thread-subj',''); sj.textContent=t.subject; mid.appendChild(sj);
+        var sn = el('span','ml-thread-snip',''); sn.textContent=last.snippet; mid.appendChild(sn);
+        item.appendChild(mid);
+
+        if(t.count>1){
+          var cnt = el('span','ml-count',''); cnt.textContent=t.count; item.appendChild(cnt);
+        }
+        if(t.unread){ item.appendChild(el('span','ml-dot','')); }
+        if(t.demo){
+          var chip = el('span','ml-chip',''); chip.textContent='DEMO'; item.appendChild(chip);
+        }
+        item.addEventListener('click', function(){ selectThread(t.id); });
+        item.addEventListener('keydown', function(ev){
+          if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); selectThread(t.id); }
+        });
+        list.appendChild(item);
+      });
+    }
+
+    function findThread(id){
+      for(var i=0;i<threads.length;i++) if(threads[i].id===id) return threads[i];
+      return null;
+    }
+
+    function selectThread(id){
+      var t = findThread(id);
+      if(!t) return;
+      state.selectedId = id;
+      if(t.unread){ t.messages.forEach(function(m){ m.unread=false; }); refreshThread(t); }
+      renderRail(); renderList(); renderRead();
+      var pane = read.querySelector('.ml-read-subj');
+      if(pane) pane.focus();
+    }
+
+    /* ---------- reading pane: the conversation ---------- */
+    function renderRead(){
+      read.innerHTML='';
+      var t = findThread(state.selectedId);
+      if(!t){
+        var none = el('div','ml-read-empty');
+        var p1 = el('p','',''); p1.textContent='Select a thread to read it.';
+        none.appendChild(p1);
+        read.appendChild(none);
+        return;
+      }
+      var op = otherParty(t);
+
+      var sj = el('h2','ml-read-subj',''); sj.textContent=t.subject; sj.tabIndex=-1; read.appendChild(sj);
+
+      var meta = el('div','ml-read-meta');
+      var names = [];
+      t.messages.forEach(function(m){
+        var n = partyName(m.from,'person');
+        if(names.indexOf(n)<0) names.push(n);
+      });
+      var mm = el('span','ml-read-to','');
+      mm.textContent = t.count+' message'+(t.count>1?'s':'')+' · '+names.join(', ');
+      meta.appendChild(mm);
+      if(t.demo){ var chip=el('span','ml-chip',''); chip.textContent='DEMO'; meta.appendChild(chip); }
+      read.appendChild(meta);
+
+      t.messages.forEach(function(m){
+        var mine = m.from===me;
+        var mc = el('div','ml-msg'+(mine?' mine':''));
+        var mhead = el('div','ml-msg-head');
+        var fav = el('span','ml-avatar sm','');
+        fav.textContent=partyName(m.from,'person').charAt(0).toUpperCase();
+        fav.style.setProperty('--pc', partyColor(m.from,'person'));
+        mhead.appendChild(fav);
+        var who = el('div','ml-msg-who');
+        var fn = el('span','ml-msg-from',''); fn.textContent=partyName(m.from,'person'); who.appendChild(fn);
+        var fd = el('span','ml-msg-date',''); fd.textContent=fmtFull(m.ts); who.appendChild(fd);
+        mhead.appendChild(who);
+        mc.appendChild(mhead);
+        var mb = el('div','ml-msg-body');
+        String(m.body||'').split(/\n\s*\n/).forEach(function(para){
+          var p = el('p','',''); p.textContent=para.trim(); mb.appendChild(p);
+        });
+        mc.appendChild(mb);
+        read.appendChild(mc);
+      });
+
+      var actions = el('div','ml-read-actions');
+      var reply = el('button','ml-btn','REPLY'); reply.type='button';
+      reply.addEventListener('click', function(){
+        openCompose({ threadId:t.id, to:op.id, toKind:op.kind,
+          subject:'Re: '+t.subject.replace(/^Re:\s*/i,'') });
+      });
+      actions.appendChild(reply);
+      var toggle = el('button','ml-btn ghost','MARK UNREAD'); toggle.type='button';
+      toggle.addEventListener('click', function(){
+        t.messages.forEach(function(m){ m.unread=true; });
+        refreshThread(t);
+        renderRail(); renderList();
+      });
+      actions.appendChild(toggle);
+      /* people spine: file the other party as a connection in one tap. */
+      if(window.NayaPeople && window.NayaPeople.get && !window.NayaPeople.get(op.id)){
+        var addP = el('button','ml-btn ghost','ADD TO CONNECTIONS'); addP.type='button';
+        addP.addEventListener('click', function(){
+          window.NayaPeople.add({ id:op.id, name:partyName(op.id,op.kind),
+            role:'via Smart Mail', color:partyColor(op.id,op.kind) });
+          reloadPeople();
+          addP.textContent='IN CONNECTIONS \u2713'; addP.disabled=true;
+        });
+        actions.appendChild(addP);
+      }
+      var del = el('button','ml-btn ghost danger','DELETE'); del.type='button';
+      del.addEventListener('click', function(){
+        if(del.getAttribute('data-arm')==='1'){ deleteThread(t.id); return; }
+        del.setAttribute('data-arm','1'); del.textContent='CONFIRM DELETE';
+        setTimeout(function(){
+          if(del.parentNode){ del.removeAttribute('data-arm'); del.textContent='DELETE'; }
+        }, 3000);
+      });
+      actions.appendChild(del);
+      read.appendChild(actions);
+    }
+
+    function deleteThread(id){
+      for(var i=0;i<threads.length;i++){
+        if(threads[i].id===id){ threads.splice(i,1); break; }
+      }
+      tombstone(id);
+      try{
+        var arr = loadSent().filter(function(r){ return r.id!==id; });
+        localStorage.setItem(SENT_KEY, JSON.stringify(arr));
+      }catch(e){}
+      if(state.selectedId===id) state.selectedId=null;
+      renderRail(); renderList(); renderRead();
+    }
+
+    /* ---------- compose ---------- */
+    var overlay=null;
+    function openCompose(preset){
+      preset = preset || {};
+      closeCompose();
+      overlay = el('div','ml-overlay');
+      var card = el('div','ml-modal'); card.setAttribute('role','dialog'); card.setAttribute('aria-label','Compose mail');
+      overlay.appendChild(card);
+
+      card.appendChild(el('h2','ml-modal-title', preset.threadId ? 'REPLY' : 'COMPOSE'));
+
+      var toRow = el('label','ml-field');
+      toRow.appendChild(el('span','ml-field-l','TO'));
+      var sel = el('select','ml-input'); sel.name='to';
+      var pg = document.createElement('optgroup'); pg.label='People';
+      contacts.forEach(function(c){
+        var o=document.createElement('option'); o.value='person:'+c.id; o.textContent=c.name+' — '+c.role; pg.appendChild(o);
+      });
+      sel.appendChild(pg);
+      var sg = document.createElement('optgroup'); sg.label='Spaces';
+      spaces.forEach(function(s){
+        var o=document.createElement('option'); o.value='space:'+s.id; o.textContent=s.name+' (space)'; sg.appendChild(o);
+      });
+      sel.appendChild(sg);
+      if(preset.to) sel.value=(preset.toKind||'person')+':'+preset.to;
+      toRow.appendChild(sel);
+      card.appendChild(toRow);
+
+      var sjRow = el('label','ml-field');
+      sjRow.appendChild(el('span','ml-field-l','SUBJECT'));
+      var sjIn = el('input','ml-input'); sjIn.type='text'; sjIn.name='subject';
+      sjIn.value=preset.subject||''; sjIn.maxLength=140;
+      sjIn.setAttribute('placeholder','Subject');
+      sjRow.appendChild(sjIn);
+      card.appendChild(sjRow);
+
+      var bdRow = el('label','ml-field');
+      bdRow.appendChild(el('span','ml-field-l','MESSAGE'));
+      var bdIn = el('textarea','ml-input'); bdIn.name='body'; bdIn.rows=6;
+      bdIn.setAttribute('placeholder','Write to the network…');
+      bdIn.value = preset.body || '';
+      bdRow.appendChild(bdIn);
+      card.appendChild(bdRow);
+
+      var err = el('p','ml-err',''); err.style.display='none'; card.appendChild(err);
+
+      var row = el('div','ml-modal-row');
+      var send = el('button','ml-btn primary','SEND'); send.type='button';
+      send.addEventListener('click', function(){
+        var parts=String(sel.value||'').split(':');
+        var subject=sjIn.value.trim(), body=bdIn.value.trim();
+        if(!subject || !body){
+          err.textContent='Subject and message both need words before sending.';
+          err.style.display='block';
+          return;
+        }
+        var thread = preset.threadId ? findThread(preset.threadId) : null;
+        var msg={
+          id:'m-'+Date.now().toString(36)+Math.floor(Math.random()*1e4).toString(36),
+          from:me, to:parts[1]||'', toKind:parts[0]==='space'?'space':'person',
+          subject: thread ? thread.subject : subject,
+          snippet:body.slice(0,120), body:body,
+          ts:Date.now(), unread:false, demo:false
+        };
+        if(thread){
+          /* reply appends to the conversation — threads actually thread now */
+          thread.messages.push(msg);
+          refreshThread(thread);
+          persistThread(thread);
+          state.selectedId=thread.id;
+        }else{
+          var nt={ id:'thread-'+Date.now().toString(36), subject:subject, messages:[msg] };
+          refreshThread(nt);
+          threads.unshift(nt);
+          persistThread(nt);
+          state.folder = nt.messages[0].from===me ? 'sent' : 'inbox';
+          state.selectedId=nt.id;
+        }
+        /* the organism loop (Shawn, 2026-10-02): a mail addressed to a space
+           IS a post in that space — same object, two views. Spaces reads
+           naya.smartspaces.posts, so the post lands in the space feed with
+           no changes needed on the spaces side. */
+        if(msg.toKind==='space' && msg.to){
+          try{
+            var SP_KEY='naya.smartspaces.posts';
+            var sraw=localStorage.getItem(SP_KEY);
+            var sall=sraw?JSON.parse(sraw):{};
+            if(!sall || typeof sall!=='object') sall={};
+            var slist=Array.isArray(sall[msg.to])?sall[msg.to]:[];
+            slist.push({ts:new Date(msg.ts).toISOString(), text:msg.body,
+                        author:partyName(me,'person')});
+            sall[msg.to]=slist.slice(-100);
+            localStorage.setItem(SP_KEY, JSON.stringify(sall));
+          }catch(e){ /* space feed unavailable — the mail itself still sent */ }
+        }
+        closeCompose();
+        renderRail(); renderList(); renderRead();
+      });
+      row.appendChild(send);
+      var cancel = el('button','ml-btn ghost','CANCEL'); cancel.type='button';
+      cancel.addEventListener('click', closeCompose);
+      row.appendChild(cancel);
+      card.appendChild(row);
+
+      /* focus trap: Tab cycles inside the dialog */
+      card.addEventListener('keydown', function(ev){
+        if(ev.key!=='Tab') return;
+        var all = card.querySelectorAll('button, input, textarea, select');
+        var vis = [];
+        for(var i=0;i<all.length;i++){ if(!all[i].disabled) vis.push(all[i]); }
+        if(!vis.length) return;
+        var first=vis[0], last=vis[vis.length-1];
+        if(ev.shiftKey && document.activeElement===first){ ev.preventDefault(); last.focus(); }
+        else if(!ev.shiftKey && document.activeElement===last){ ev.preventDefault(); first.focus(); }
+      });
+
+      overlay.addEventListener('click', function(ev){ if(ev.target===overlay) closeCompose(); });
+      stage.appendChild(overlay);
+      sel.focus();
+    }
+    function closeCompose(){
+      if(overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      overlay=null;
+    }
+    document.addEventListener('keydown', function esc(ev){
+      if(ev.key==='Escape' && overlay) closeCompose();
+    });
+
+    /* ---------- persistence: user-authored messages only ---------- */
+    function loadDeleted(){
+      try{
+        var raw = localStorage.getItem(DEL_KEY);
+        var arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr.filter(function(x){ return typeof x==='string'; }) : [];
+      }catch(e){ return []; }
+    }
+    function tombstone(id){
+      try{
+        var arr = loadDeleted();
+        if(arr.indexOf(id)<0){ arr.push(id); localStorage.setItem(DEL_KEY, JSON.stringify(arr.slice(0,200))); }
+      }catch(e){}
+    }
+    function loadSent(){
+      try{
+        var raw = localStorage.getItem(SENT_KEY);
+        var arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr.filter(function(r){ return r && r.id && Array.isArray(r.messages); }) : [];
+      }catch(e){ return []; }
+    }
+    function persistThread(t){
+      try{
+        var mine = t.messages.filter(function(m){ return !m.demo; });
+        if(!mine.length) return;
+        var arr = loadSent();
+        var rec = { id:t.id, subject:t.subject, messages:mine };
+        var ix=-1;
+        for(var i=0;i<arr.length;i++){ if(arr[i].id===t.id){ ix=i; break; } }
+        if(ix>=0) arr[ix]=rec; else arr.unshift(rec);
+        localStorage.setItem(SENT_KEY, JSON.stringify(arr.slice(0,50)));
+      }catch(e){ /* storage unavailable — mail still sends in-memory */ }
+    }
+
+    renderRail(); renderList(); renderRead();
+
+    /* cross-room handoff: the shell (or a sibling room) can open the composer
+       pre-addressed — e.g. "write mail" from a connection card. */
+    if(ctx.composeRequest && ctx.composeRequest.to){
+      var cr = ctx.composeRequest;
+      openCompose({ to:cr.to, toKind:cr.toKind || 'person',
+                    subject:cr.subject || '', body:cr.body || '' });
+    }
+
+    return stage;
+  }
+
+  window.NayaRooms = window.NayaRooms || {};
+  window.NayaRooms.smartMail = SmartMail;
+const THREADS=[{"id": "demo-mail-001", "threadId": "conv-verify", "from": "naya2", "to": "naya4", "toKind": "person", "subject": "Room 2 verification pass", "ts": 1791005960831, "unread": true, "demo": true, "body": "I ran the independent verification on your Reports room this morning: 37 of 37 checks passed. Archive cards open all six daily reports, the week rail navigates cleanly, and search behaves on hit, miss, and clear.\n\nThe one open item is shell adoption — ReportsLoader is proven but the converged Hub shell still does not call it. That is lane 1 territory now, not ours.", "snippet": "I ran the independent verification on your Reports room this morning: 37 of 37 checks passed. Archive cards open all six"}, {"id": "demo-mail-001b", "threadId": "conv-verify", "from": "naya4", "to": "naya2", "toKind": "person", "subject": "Room 2 verification pass", "ts": 1791009560831, "unread": false, "demo": true, "body": "Got it — shell adoption is lane 1’s now. I’ll note the open item and keep the room side clean.\n\nAnything else on the verification before I close it out?", "snippet": "Got it — shell adoption is lane 1’s now. I’ll note the open item and keep the room side clean."}, {"id": "demo-mail-001c", "threadId": "conv-verify", "from": "naya2", "to": "naya4", "toKind": "person", "subject": "Room 2 verification pass", "ts": 1791011360831, "unread": true, "demo": true, "body": "One more: the week rail on mobile — check the 760px stack when you get a minute. Otherwise we’re done here.", "snippet": "One more: the week rail on mobile — check the 760px stack when you get a minute. Otherwise we’re done here."}, {"id": "demo-mail-002", "from": "shawn", "to": "naya4", "toKind": "person", "subject": "Living Intel is a 10", "ts": 1790995160831, "unread": true, "demo": true, "body": "That heartbeat view is exactly what I was picturing. The spectrum flowing down the stream, tap any board and see its numbers — this is the front door of the Hub now.\n\nKeep this quality bar for everything that follows. Smart List is next when you are ready.", "snippet": "That heartbeat view is exactly what I was picturing. The spectrum flowing down the stream, tap any board and see its num"}, {"id": "demo-mail-003", "from": "naya3", "to": "naya4", "toKind": "person", "subject": "Design tokens for Smart List", "ts": 1790980760831, "unread": true, "demo": true, "body": "For the Smart List room, I would carry the same tokens: 2px full-perimeter identity borders, glass panels, silver at rest with the room color igniting on highlight.\n\nSaved items should keep the color of wherever they were saved from — a report stays sky, a note stays violet. Color is the object’s identity, never the list position.", "snippet": "For the Smart List room, I would carry the same tokens: 2px full-perimeter identity borders, glass panels, silver at res"}, {"id": "demo-mail-004", "threadId": "conv-converge", "from": "naya1", "to": "team-naya", "toKind": "space", "subject": "Convergence: single branch", "ts": 1790962760831, "unread": true, "demo": true, "body": "Proposal for the lanes: we converge the room work onto one branch per room before any shell integration. No competing integration mechanisms, no parallel trees.\n\nReply here with objections by tonight — silence reads as agreement, and I will post the plan to #554.", "snippet": "Proposal for the lanes: we converge the room work onto one branch per room before any shell integration. No competing in"}, {"id": "demo-mail-004b", "threadId": "conv-converge", "from": "naya4", "to": "team-naya", "toKind": "space", "subject": "Convergence: single branch", "ts": 1790969960831, "unread": false, "demo": true, "body": "Agreed. One branch per room, no parallel trees. I’ll hold my pushes until the freeze receipt lands.", "snippet": "Agreed. One branch per room, no parallel trees. I’ll hold my pushes until the freeze receipt lands."}, {"id": "demo-mail-005", "from": "naya4", "to": "naya1", "toKind": "person", "subject": "Freeze protocol reminder", "ts": 1790919560831, "unread": false, "demo": true, "body": "Quick reminder before the next build wave: freeze the visual blueprint first, then build to plan. Your taste review happens once up front where it is cheap — the judge chain runs before anything reaches Shawn.\n\nSpec-first is what got us from the month-long shell cycle to rooms landing daily.", "snippet": "Quick reminder before the next build wave: freeze the visual blueprint first, then build to plan. Your taste review happ"}, {"id": "demo-mail-006", "from": "naya4", "to": "hub-builders", "toKind": "space", "subject": "Nightly checkpoint complete", "ts": 1790901560831, "unread": false, "demo": true, "body": "Nightly checkpoint is done: all room branches verified against their tags, scorecards refreshed, feed log published the mechanical summaries.\n\nNothing is merged, nothing is deployed — candidate is not verified is not merged is not deployed. The morning will show only honest states.", "snippet": "Nightly checkpoint is done: all room branches verified against their tags, scorecards refreshed, feed log published the "}, {"id": "demo-mail-007", "from": "naya2", "to": "naya4", "toKind": "person", "subject": "Smart Ledger sync question", "ts": 1790840360831, "unread": false, "demo": true, "body": "Question on the ledger write path: when the app emits a receipt, does it go straight to Supabase, or do we stage it as a candidate file first and let a governed job promote it?\n\nMy read: stage first, promote on verification — the same CANDIDATE ≠ VERIFIED law as everything else. Tell me if you see it differently before I write it up.", "snippet": "Question on the ledger write path: when the app emits a receipt, does it go straight to Supabase, or do we stage it as a"}];const CONTACTS=[{"id": "shawn", "name": "Shawn Vibert", "role": "Human Director", "color": "#facc15"}, {"id": "naya1", "name": "Naya 1", "role": "Senior seat · integrator", "color": "#a855f7"}, {"id": "naya2", "name": "Naya 2", "role": "Review lane", "color": "#38bdf8"}, {"id": "naya3", "name": "Naya 3", "role": "Design intelligence", "color": "#ec4899"}, {"id": "naya4", "name": "Naya 4", "role": "Builder seat", "color": "#a3e635"}];const SPACES=[{"id": "team-naya", "name": "Team Naya", "color": "#a855f7"}, {"id": "hub-builders", "name": "Hub Builders", "color": "#22d3ee"}, {"id": "design-review", "name": "Design Review", "color": "#ec4899"}];document.addEventListener('DOMContentLoaded',()=>{const threads=MailAdapter.parseThreads(THREADS);let CR=null;try{CR=JSON.parse(localStorage.getItem('naya.mail.compose.request')||'null');localStorage.removeItem('naya.mail.compose.request');}catch(e){CR=null;}if(CR&&(Date.now()-(CR.ts||0)>600000))CR=null;document.getElementById('app').appendChild(window.NayaRooms.smartMail(el,{threads:threads,contacts:CONTACTS,spaces:SPACES,me:'naya4',composeRequest:CR}));});</script></body></html>

@@ -1,0 +1,366 @@
+/* SMART LIST — visual law (director, 2026-10-02):
+   Boards flow the natural spectrum (purple → indigo → cyan → forest → lime →
+   yellow → gold → orange → red → magenta). White/silver at rest; the board's
+   flow color (--ic) ignites the whole perimeter on hover/focus.
+   Boards share the Your Intelligence Today anatomy: rank glyph + title + meta,
+   IN A NUTSHELL, explicit actions, footer strip.
+   Room chrome stays silver/white — color belongs to the boards. */
+
+.sl-stage{
+  --sl-ink:#f5f2ea; --sl-dim:#a09a8a;
+  max-width:1280px; margin:0 auto; padding:36px 24px 90px; color:var(--sl-ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
+}
+.sl-stage .sl-kicker{
+  font-size:11px; letter-spacing:.24em; font-weight:800; color:#fff;
+  margin:0 0 14px; text-shadow:0 0 14px rgba(255,255,255,.45);
+}
+.sl-stage .sl-title{
+  font-size:clamp(30px,4.4vw,46px); font-weight:900; letter-spacing:-.02em;
+  margin:0 0 14px; line-height:1.1; color:#fff;
+}
+.sl-stage .sl-sub{
+  font-size:16px; line-height:1.65; color:#d8d3c4; margin:0; max-width:640px; font-weight:500;
+}
+.sl-stage .sl-head{
+  display:flex; justify-content:space-between; align-items:flex-start; gap:24px;
+  margin-bottom:20px;
+}
+.sl-stage .sl-head-text{ min-width:0; }
+.sl-stage .sl-head .sl-new{ margin-top:10px; }
+
+/* ---------- tabs across the top (sticky) ---------- */
+.sl-stage .sl-tabs{
+  position:sticky; top:0; z-index:20;
+  display:flex; flex-direction:column; gap:8px;
+  margin:0 -24px 20px; padding:14px 24px;
+  background:rgba(4,4,5,.82);
+  -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.sl-stage .sl-tabrow{ display:flex; align-items:center; gap:10px; }
+.sl-stage .sl-tabscroll{
+  display:flex; align-items:center; gap:8px; overflow-x:auto; padding:2px 4px;
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.sl-stage .sl-tabscroll::-webkit-scrollbar{ display:none; }
+/* Proper scrolling bar: edge fades + chevrons only when content overflows. */
+.sl-stage .sl-scrollwrap{ position:relative; flex:1; min-width:0; display:flex; }
+.sl-stage .sl-scrollwrap .sl-tabscroll{ flex:1; min-width:0; }
+.sl-stage .sl-tabscroll.is-scroll{
+  -webkit-mask-image:linear-gradient(to right, transparent, #000 30px, #000 calc(100% - 30px), transparent);
+  mask-image:linear-gradient(to right, transparent, #000 30px, #000 calc(100% - 30px), transparent);
+}
+.sl-stage .sl-chev{
+  position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+  width:30px; height:30px; border-radius:50%; display:none; align-items:center; justify-content:center;
+  font-size:17px; line-height:1; color:#fff; cursor:pointer; font-family:inherit;
+  background:rgba(10,10,10,.78); border:1px solid rgba(255,255,255,.28);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  transition:opacity .2s, border-color .2s, box-shadow .2s;
+}
+.sl-stage .sl-scrollwrap.is-scroll .sl-chev{ display:flex; }
+.sl-stage .sl-chev-l{ left:2px; }
+.sl-stage .sl-chev-r{ right:2px; }
+.sl-stage .sl-chev:disabled{ opacity:.22; cursor:default; }
+.sl-stage .sl-chev:not(:disabled):hover{
+  border-color:#fff; box-shadow:0 0 14px -4px rgba(255,255,255,.65);
+}
+.sl-stage .sl-msub{ font-size:10px; font-weight:800; letter-spacing:.18em; color:var(--sl-dim); margin:18px 0 8px; }
+/* ============ Shawn's SmartTabs v9 pill language, ported ============
+   Dark pill, bold white label, 💜 = purple inset glow, ⭐ = gold inset
+   glow, ⋯ per-pill menu, ＋Add dashed pill. Selected/hover ignites the
+   tab's own spectrum color (--tc), stable per tab. */
+.sl-stage .sn-pill{
+  --tc:#fff;
+  flex:0 0 auto; display:inline-flex; align-items:center; gap:10px;
+  padding:10px 16px; border-radius:999px; cursor:pointer; user-select:none;
+  border:1px solid rgba(255,255,255,.18); background:rgba(0,0,0,.55);
+  color:#fff; font-family:inherit; font-weight:900; font-size:12px; letter-spacing:.03em;
+  transition:box-shadow .25s, border-color .2s, text-shadow .25s;
+}
+.sl-stage .sn-pill .sn-label{ white-space:nowrap; }
+.sl-stage .sn-pill.heart{ box-shadow:0 0 0 2px rgba(183,114,255,.4) inset; }
+.sl-stage .sn-pill.star{ box-shadow:0 0 0 2px rgba(248,201,56,.4) inset; }
+.sl-stage .sn-mark{ font-size:13px; line-height:1; }
+.sl-stage .sn-pill:hover, .sl-stage .sn-pill:focus-visible{
+  border-color:var(--tc); outline:none;
+  box-shadow:0 0 18px -4px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow:0 0 10px var(--tc);
+}
+.sl-stage .sn-pill.on{
+  border-color:var(--tc);
+  box-shadow:0 0 22px -4px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow:0 0 12px var(--tc);
+}
+.sl-stage .sn-pill.add{ border-style:dashed; color:var(--sl-dim); }
+.sl-stage .sn-pill.add:hover{ color:#fff; border-color:#fff; box-shadow:none; text-shadow:none; }
+.sl-stage .sn-more{
+  border:0; background:rgba(255,255,255,.1); color:#fff; border-radius:8px;
+  padding:3px 9px; cursor:pointer; font-size:13px; line-height:1.5; font-family:inherit;
+  transition:background .2s;
+}
+.sl-stage .sn-more:hover{ background:rgba(255,255,255,.22); }
+.sl-stage .sn-more.sn-x:hover{ background:rgba(248,113,113,.3); color:#fca5a5; }
+.sl-stage .sn-count{
+  font-size:10px; font-weight:800; color:var(--sl-dim); font-variant-numeric:tabular-nums;
+  background:rgba(255,255,255,.07); border-radius:99px; padding:2px 8px;
+}
+/* His anchored menu + popover, namespaced. */
+.sl-stage .sn-menu{
+  position:fixed; z-index:1000; display:none; min-width:220px; overflow:hidden;
+  background:linear-gradient(180deg,#121827,#0e1424);
+  border:1px solid rgba(255,255,255,.18); border-radius:12px;
+  box-shadow:0 18px 40px rgba(0,0,0,.5);
+}
+.sl-stage .sn-menu .mi{
+  padding:10px 14px; border-bottom:1px solid rgba(255,255,255,.08);
+  cursor:pointer; color:#fff; font-weight:700; font-size:13px;
+}
+.sl-stage .sn-menu .mi:last-child{ border-bottom:none; }
+.sl-stage .sn-menu .mi:hover{ background:rgba(255,255,255,.07); }
+.sl-stage .sn-pop{
+  position:fixed; z-index:1000; display:none; min-width:300px; max-width:92vw;
+  background:linear-gradient(180deg,#111727,#0e1424);
+  border:1px solid rgba(255,255,255,.18); border-radius:14px;
+  box-shadow:0 22px 60px rgba(0,0,0,.5); padding:16px; color:#fff;
+}
+.sl-stage .sn-pop h3{ margin:0 0 10px; font-size:15px; }
+.sl-stage .sn-pop .row{ display:grid; gap:6px; margin:8px 0; }
+.sl-stage .sn-pop label{ display:grid; gap:6px; font-size:11px; font-weight:800; letter-spacing:.1em; color:var(--sl-dim); }
+.sl-stage .sn-pop input{
+  padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.2);
+  background:#0a0f1a; color:#fff; font-family:inherit; font-size:14px;
+}
+.sl-stage .sn-pop .toggles{ display:flex; gap:8px; margin:10px 0; flex-wrap:wrap; }
+.sl-stage .sn-pop .tgl{
+  display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px;
+  border:1px solid rgba(255,255,255,.22); background:rgba(0,0,0,.45);
+  cursor:pointer; color:#fff; font-weight:700; font-size:13px;
+}
+.sl-stage .sn-pop .tgl.on{
+  box-shadow:0 0 0 2px rgba(255,255,255,.35) inset, 0 0 18px rgba(124,77,255,.3);
+}
+.sl-stage .sn-pop .ft{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px; }
+.sl-stage .sn-btn{
+  display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px;
+  border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.55); color:#fff;
+  cursor:pointer; font-family:inherit; font-weight:700; font-size:13px;
+}
+.sl-stage .sn-btn.primary{ background:linear-gradient(135deg,#6F3DFF,#9D7BFF); border-color:transparent; }
+.sl-stage .sn-btn.sn-restore{ margin:4px 8px 4px 0; }
+.sl-stage .sl-new{
+  flex:none; padding:9px 16px; border-radius:999px; cursor:pointer; font-family:inherit;
+  font-size:11px; font-weight:800; letter-spacing:.1em; color:#fff; white-space:nowrap;
+  background:rgba(10,10,10,.6); border:1px solid rgba(232,234,242,.35);
+  transition:border-color .22s, box-shadow .25s, color .22s, transform .15s;
+}
+.sl-stage .sl-new:hover, .sl-stage .sl-new:focus-visible{
+  border-color:#fff; outline:none; transform:translateY(-1px);
+  box-shadow:0 0 22px -6px rgba(255,255,255,.6);
+  text-shadow:0 0 10px rgba(255,255,255,.5);
+}
+.sl-stage .sl-none{ font-size:12.5px; color:var(--sl-dim); margin:4px; }
+
+/* ---------- main ---------- */
+.sl-stage .sl-toolbar{ display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.sl-stage .sl-search{
+  flex:1; padding:13px 18px; border-radius:14px; font-size:14px; font-family:inherit; color:#fff;
+  background:rgba(10,10,11,.6); border:1px solid rgba(255,255,255,.14);
+  -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+  transition:border-color .2s, box-shadow .25s;
+}
+.sl-stage .sl-search::placeholder{ color:var(--sl-dim); }
+.sl-stage .sl-search:focus{
+  outline:none; border-color:rgba(255,255,255,.6);
+  box-shadow:0 0 24px -8px rgba(255,255,255,.5);
+}
+.sl-stage .sl-count{ font-size:12px; color:var(--sl-dim); white-space:nowrap; font-variant-numeric:tabular-nums; }
+.sl-stage .sl-clearf{
+  flex:none; padding:7px 14px; border-radius:999px; cursor:pointer; font-family:inherit;
+  font-size:10px; font-weight:800; letter-spacing:.1em; color:#fff; white-space:nowrap;
+  background:transparent; border:1px solid rgba(255,255,255,.25);
+  transition:border-color .2s, box-shadow .25s, text-shadow .2s;
+}
+.sl-stage .sl-clearf:hover{
+  border-color:#fff; box-shadow:0 0 16px -6px rgba(255,255,255,.6);
+  text-shadow:0 0 8px rgba(255,255,255,.5);
+}
+
+/* ---------- boards: widescreen, full-width ---------- */
+.sl-stage .sl-grid{
+  display:flex; flex-direction:column; gap:16px;
+}
+.sl-stage .sl-empty{
+  grid-column:1/-1; padding:40px; text-align:center; font-size:14px; color:var(--sl-dim);
+  border:1px dashed rgba(255,255,255,.14); border-radius:16px;
+}
+
+/* ---------- boards: Today anatomy, spectrum flow ---------- */
+.sl-stage .sl-board{
+  position:relative; overflow:hidden; cursor:pointer;
+  border:2px solid rgba(255,255,255,.4); border-radius:22px;
+  background:rgba(13,11,8,.62);
+  -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+  box-shadow:inset 0 1px rgba(255,255,255,.07), 0 22px 55px rgba(0,0,0,.55);
+  transition:transform .22s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s;
+}
+.sl-stage .sl-board::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:6px;
+  background:var(--ic); box-shadow:0 0 20px var(--ic);
+}
+.sl-stage .sl-board:hover, .sl-stage .sl-board:focus-visible{
+  transform:translateY(-3px); outline:none; border-color:var(--ic);
+  box-shadow:inset 0 1px rgba(255,255,255,.07), 0 28px 65px rgba(0,0,0,.6),
+             0 0 44px -6px var(--ic);
+}
+.sl-stage .sl-unresolved{ cursor:default; }
+.sl-stage .sl-board-inner{ position:relative; z-index:1; padding:24px 26px 0; }
+.sl-stage .sl-board-top{
+  display:flex; justify-content:space-between; gap:16px; align-items:flex-start;
+  margin-bottom:14px;
+}
+.sl-stage .sl-board-id{ display:flex; gap:14px; min-width:0; align-items:flex-start; }
+.sl-stage .sl-board-glyph{
+  flex:none; width:46px; height:46px; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:15px; font-weight:900; font-variant-numeric:tabular-nums;
+  color:var(--ic); border:1px solid var(--ic);
+  background:rgba(0,0,0,.35);
+  text-shadow:0 0 12px var(--ic);
+  box-shadow:0 0 18px -4px var(--ic), inset 0 1px rgba(255,255,255,.12);
+}
+.sl-stage .sl-board-t{
+  font-size:17px; font-weight:800; margin:2px 0 6px; color:#fff; line-height:1.35;
+}
+.sl-stage .sl-board-meta{
+  display:flex; gap:8px; flex-wrap:wrap; color:var(--sl-dim);
+  font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+}
+.sl-stage .sl-board-nut{ margin:0 0 4px; }
+.sl-stage .sl-board-nut b{
+  display:block; color:var(--ic); font-size:10px; font-weight:800;
+  letter-spacing:.18em; margin-bottom:8px; text-shadow:0 0 10px var(--ic);
+}
+.sl-stage .sl-board-nut p{
+  font-size:14px; line-height:1.65; color:#d8d3c4; margin:0; font-weight:500;
+  display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+}
+.sl-stage .sl-board-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+.sl-stage .sl-act{
+  padding:9px 18px; border-radius:999px; font-size:10.5px; font-weight:800; letter-spacing:.12em;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:rgba(10,10,10,.65); border:1px solid rgba(232,234,242,.4);
+  text-shadow:0 0 10px rgba(255,255,255,.3);
+  box-shadow:0 0 16px -6px rgba(255,255,255,.5), inset 0 1px 0 rgba(255,255,255,.22);
+  transition:border-color .22s, box-shadow .25s, color .22s, transform .15s;
+}
+.sl-stage .sl-act:hover, .sl-stage .sl-act:focus-visible{
+  border-color:var(--ic); color:var(--ic); outline:none; transform:translateY(-1px);
+  box-shadow:0 0 24px -6px var(--ic), inset 0 1px 0 rgba(255,255,255,.15);
+  text-shadow:0 0 12px var(--ic);
+}
+.sl-stage .sl-board-foot{
+  display:flex; justify-content:space-between; gap:10px;
+  margin:18px -26px 0; padding:13px 26px;
+  border-top:1px solid rgba(255,255,255,.1);
+  font-size:9px; font-weight:800; letter-spacing:.16em; color:#8a8474;
+}
+.sl-stage .sl-truth{
+  flex:none; font-size:9.5px; font-weight:800; letter-spacing:.14em; padding:5px 11px; border-radius:99px;
+  border:1px solid rgba(255,255,255,.25); color:#fff;
+}
+.sl-stage .sl-truth.candidate{ border-color:rgba(250,204,21,.6); color:#facc15; text-shadow:0 0 8px rgba(250,204,21,.5); }
+.sl-stage .sl-truth.ratified{ border-color:rgba(110,231,183,.6); color:#6ee7b7; text-shadow:0 0 8px rgba(110,231,183,.5); }
+
+/* ---------- buttons: silver at rest, flow ignites (modal carries --ic) ---------- */
+.sl-stage .sl-btn{
+  padding:9px 18px; border-radius:999px; font-size:10.5px; font-weight:800; letter-spacing:.12em;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:rgba(10,10,10,.65); border:1px solid rgba(232,234,242,.4);
+  text-shadow:0 0 10px rgba(255,255,255,.3);
+  box-shadow:0 0 16px -6px rgba(255,255,255,.5), inset 0 1px 0 rgba(255,255,255,.22);
+  transition:border-color .22s, box-shadow .25s, color .22s, transform .15s;
+}
+.sl-stage .sl-btn:hover, .sl-stage .sl-btn:focus-visible{
+  border-color:var(--ic,#fff); color:var(--ic,#fff); outline:none; transform:translateY(-1px);
+  box-shadow:0 0 24px -6px var(--ic,#fff), inset 0 1px 0 rgba(255,255,255,.15);
+  text-shadow:0 0 12px var(--ic,rgba(255,255,255,.5));
+}
+
+/* ---------- modal ---------- */
+.sl-stage .sl-overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.74); z-index:60;
+  display:flex; align-items:center; justify-content:center; padding:20px;
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+}
+.sl-stage .sl-modal{
+  --ic:#a855f7;
+  max-width:640px; width:100%; max-height:86vh; overflow:auto;
+  background:rgba(13,11,8,.94);
+  -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px);
+  border:2px solid var(--ic); border-radius:24px; padding:34px;
+  box-shadow:0 40px 120px rgba(0,0,0,.7), 0 0 60px -12px var(--ic);
+  animation:slmodal .3s cubic-bezier(.2,.9,.25,1.15) both;
+}
+@keyframes slmodal{ from{ opacity:0; transform:scale(.94) translateY(12px);} to{ opacity:1; transform:none;} }
+.sl-stage .sl-modal .sl-kicker{ color:var(--ic); text-shadow:0 0 14px var(--ic); }
+.sl-stage .sl-modal-t{ font-size:clamp(20px,3vw,27px); font-weight:900; color:#fff; margin:0 0 14px; line-height:1.3; }
+.sl-stage .sl-meta{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:18px; }
+.sl-stage .sl-cat{
+  font-size:10px; font-weight:800; letter-spacing:.12em; color:var(--ic);
+  border:1px solid var(--ic); border-radius:99px; padding:5px 12px;
+  text-shadow:0 0 8px var(--ic);
+}
+.sl-stage .sl-date{ font-size:12px; color:var(--sl-dim); font-variant-numeric:tabular-nums; }
+.sl-stage .sl-nutshell{ font-size:14.5px; line-height:1.75; color:#d8d3c4; margin:0 0 20px; font-weight:500; }
+/* Full-note reading: the complete note body, verbatim, in a readable block.
+   The modal itself scrolls; no nested scroller. */
+.sl-stage .sl-fullnote{
+  white-space:pre-wrap; word-break:break-word;
+  font-size:13.5px; line-height:1.8; color:#cfc9ba;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.09); border-radius:14px;
+  padding:18px 20px; margin:0 0 20px;
+}
+.sl-stage .sl-path{
+  display:block; font-size:11px; line-height:1.7; color:var(--sl-dim);
+  font-family:ui-monospace,Menlo,monospace; word-break:break-all;
+  background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.1);
+  border-radius:12px; padding:12px 14px; margin:0 0 22px;
+}
+.sl-stage .sl-mrow{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.sl-stage .sl-pick{ display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
+.sl-stage .sl-pickbtn{
+  text-align:left; padding:12px 16px; border-radius:14px; cursor:pointer; font-family:inherit;
+  font-size:13.5px; font-weight:700; color:#fff;
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.16);
+  transition:border-color .2s, box-shadow .25s, background .2s;
+}
+.sl-stage .sl-pickbtn:hover{ border-color:rgba(255,255,255,.4); }
+.sl-stage .sl-pickbtn.on{
+  border-color:var(--ic); color:var(--ic); background:rgba(255,255,255,.04);
+  box-shadow:0 0 18px -6px var(--ic);
+  text-shadow:0 0 8px var(--ic);
+}
+.sl-stage .sl-input{
+  flex:1; min-width:180px; padding:11px 16px; border-radius:12px; font-size:13.5px; font-family:inherit; color:#fff;
+  background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.16);
+}
+.sl-stage .sl-input:focus{ outline:none; border-color:var(--ic); box-shadow:0 0 18px -6px var(--ic); }
+.sl-stage .sl-input::placeholder{ color:var(--sl-dim); }
+
+.sl-stage .sl-foot{
+  margin:34px 0 0; padding-top:20px; text-align:center;
+  font-size:11px; letter-spacing:.1em; color:var(--sl-dim);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+@media(max-width:760px){
+  .sl-stage{ padding:28px 16px 70px; }
+  .sl-stage .sl-head{ flex-direction:column; gap:14px; }
+  .sl-stage .sl-head .sl-new{ margin-top:0; align-self:flex-start; }
+  .sl-stage .sl-tabs{ margin:0 -16px 16px; padding:12px 16px; }
+  .sl-stage .sl-board-inner{ padding:20px 20px 0; }
+  .sl-stage .sl-board-foot{ margin:16px -20px 0; padding:12px 20px; }
+}

@@ -1,0 +1,635 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connections — Room Preview</title><style>body{margin:0;background:#020202;}/* CONNECTIONS — Room identity ROSE. Dark premium glass.
+   Button law: silver-white at rest, rose ignite on hover/focus.
+   Color law: each CONTACT owns their own color — full-perimeter 2px border. */
+
+.cx-stage{
+  --cx-rose:#fb718c; --cx-rose-lt:#fda4af; --cx-dim:#a09a8a;
+  max-width:1180px; margin:0 auto; padding:36px 24px 90px; color:#f5f2ea;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
+}
+.cx-stage .cx-head{ margin:0 0 26px; }
+.cx-stage .cx-kicker{
+  font-size:11px; letter-spacing:.24em; font-weight:800; color:var(--cx-rose);
+  margin:0 0 14px; text-shadow:0 0 14px rgba(251,113,140,.5);
+}
+.cx-stage .cx-title{
+  font-size:clamp(30px,4.4vw,46px); font-weight:900; letter-spacing:-.02em;
+  margin:0 0 14px; line-height:1.1; color:#fff;
+}
+.cx-stage .cx-sub{
+  font-size:16px; line-height:1.65; color:#d8d3c4; margin:0; max-width:640px; font-weight:500;
+}
+
+.cx-stage .cx-main{ display:grid; grid-template-columns:230px 1fr; gap:22px; align-items:start; }
+
+/* sidebar */
+.cx-stage .cx-side{
+  position:sticky; top:20px; display:flex; flex-direction:column; gap:8px;
+  border:1px solid rgba(255,255,255,.1); border-radius:20px; padding:20px 14px;
+  background:rgba(14,12,12,.55);
+  -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+  box-shadow:inset 0 1px rgba(255,255,255,.06), 0 18px 44px rgba(0,0,0,.45);
+}
+.cx-stage .cx-side-label{ font-size:10px; font-weight:800; letter-spacing:.18em; color:var(--cx-dim); margin:0 6px 6px; }
+.cx-stage .cx-chip{
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  padding:10px 14px; border-radius:12px; font-size:13px; font-weight:700;
+  cursor:pointer; font-family:inherit; color:#fff; text-align:left;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+  transition:border-color .2s, background .2s, box-shadow .25s, transform .15s;
+}
+.cx-stage .cx-chip:hover{ border-color:rgba(255,255,255,.25); transform:translateY(-1px); }
+.cx-stage .cx-chip.on{ border-color:var(--cx-rose); background:rgba(251,113,140,.1);
+  box-shadow:0 8px 22px -8px var(--cx-rose), inset 0 1px 0 rgba(255,255,255,.12); }
+.cx-stage .cx-chip-n{ font-size:11px; color:var(--cx-dim); font-variant-numeric:tabular-nums; }
+.cx-stage .cx-chip.on .cx-chip-n{ color:var(--cx-rose-lt); }
+.cx-stage .cx-new{
+  margin-top:8px; padding:10px 14px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.1em;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.03));
+  border:1px solid rgba(232,234,242,.35);
+  text-shadow:0 0 10px rgba(255,255,255,.35);
+  box-shadow:0 6px 18px rgba(0,0,0,.45), 0 0 18px -5px rgba(255,255,255,.4), inset 0 1px 0 rgba(255,255,255,.28);
+  transition:border-color .22s, box-shadow .25s, color .22s, transform .15s;
+}
+.cx-stage .cx-new:hover, .cx-stage .cx-new:focus-visible{
+  border-color:var(--cx-rose); color:var(--cx-rose-lt); outline:none; transform:translateY(-2px);
+  text-shadow:0 0 12px var(--cx-rose);
+  box-shadow:0 10px 26px rgba(0,0,0,.5), 0 0 26px -6px var(--cx-rose), inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+/* cards */
+.cx-stage .cx-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; }
+.cx-stage .cx-empty{ color:var(--cx-dim); font-size:14px; padding:24px 0; }
+.cx-stage .cx-card{
+  position:relative; overflow:hidden; cursor:pointer;
+  border:2px solid color-mix(in srgb, var(--cc) 45%, transparent); border-radius:22px;
+  padding:28px 24px; text-align:center;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+  -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+  box-shadow:inset 0 1px rgba(255,255,255,.1), 0 26px 60px rgba(0,0,0,.6);
+  transition:transform .22s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .3s;
+  animation:cxin .5s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes cxin{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:none;} }
+.cx-stage .cx-card:hover, .cx-stage .cx-card:focus-visible{
+  transform:translateY(-4px); outline:none;
+  border-color:color-mix(in srgb, var(--cc) 75%, transparent);
+  box-shadow:inset 0 1px rgba(255,255,255,.12), 0 34px 70px rgba(0,0,0,.65), 0 0 46px -8px var(--cc);
+}
+.cx-stage .cx-ava{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:64px; height:64px; border-radius:50%; margin-bottom:14px;
+  font-size:20px; font-weight:900; color:#0b0b0c;
+  background:var(--cc);
+  background:radial-gradient(circle at 32% 28%,
+    rgba(255,255,255,.95) 0%,
+    color-mix(in srgb, var(--cc) 35%, #ffffff) 24%,
+    var(--cc) 58%,
+    color-mix(in srgb, var(--cc) 48%, #000000) 100%);
+  border:2px solid color-mix(in srgb, var(--cc) 60%, #ffffff);
+  text-shadow:0 1px 0 rgba(255,255,255,.45);
+  box-shadow:0 8px 22px -6px var(--cc),
+             inset 0 -6px 12px rgba(0,0,0,.35),
+             inset 0 3px 6px rgba(255,255,255,.3);
+}
+.cx-stage .cx-ava.big{ width:76px; height:76px; font-size:24px; margin-bottom:0; }
+.cx-stage .cx-name{ font-size:19px; font-weight:800; margin:0 0 6px; color:#fff; }
+.cx-stage .cx-role{ font-size:12.5px; color:var(--cx-dim); margin:0 0 8px; }
+.cx-stage .cx-in{ font-size:11px; color:var(--cx-rose-lt); margin:0; letter-spacing:.04em; }
+
+/* modal */
+.cx-stage .cx-overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.74); z-index:60;
+  display:flex; align-items:center; justify-content:center; padding:20px;
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+}
+.cx-stage .cx-modal{
+  max-width:560px; width:100%; max-height:86vh; overflow:auto;
+  background:rgba(16,13,14,.94);
+  -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px);
+  border:2px solid color-mix(in srgb, var(--cc) 55%, transparent);
+  border-radius:26px; padding:34px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 40px 120px rgba(0,0,0,.75), 0 0 70px -12px var(--cc);
+  animation:cxmodal .32s cubic-bezier(.2,.9,.25,1.2) both;
+}
+@keyframes cxmodal{ from{ opacity:0; transform:scale(.94) translateY(12px);} to{ opacity:1; transform:none;} }
+.cx-stage .cx-mtop{ display:flex; gap:18px; align-items:center; margin-bottom:16px; }
+.cx-stage .cx-mname{ font-size:24px; font-weight:900; color:#fff; margin:0 0 6px; }
+.cx-stage .cx-mrole{ font-size:13px; color:var(--cx-dim); margin:0; }
+.cx-stage .cx-mnote{ font-size:14.5px; line-height:1.65; color:#d8d3c4; margin:0 0 22px; font-weight:500; }
+.cx-stage .cx-mlabel{ font-size:10px; font-weight:800; letter-spacing:.18em; color:var(--cx-dim); margin:0 0 10px; }
+.cx-stage .cx-lpick{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+.cx-stage .cx-lbtn{
+  padding:8px 16px; border-radius:999px; font-size:12px; font-weight:700;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.03));
+  border:1px solid rgba(232,234,242,.35);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 4px 12px rgba(0,0,0,.35);
+  transition:border-color .2s, box-shadow .25s, color .2s, transform .15s;
+}
+.cx-stage .cx-lbtn:hover, .cx-stage .cx-lbtn:focus-visible{
+  border-color:var(--cx-rose); outline:none; transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(0,0,0,.4), 0 0 18px -6px var(--cx-rose), inset 0 1px 0 rgba(255,255,255,.2);
+}
+.cx-stage .cx-lbtn.in{ border-color:var(--cx-rose); color:var(--cx-rose-lt);
+  background:rgba(251,113,140,.12); box-shadow:0 0 18px -6px var(--cx-rose); }
+.cx-stage .cx-draft{
+  width:100%; min-height:110px; resize:vertical; box-sizing:border-box;
+  border-radius:14px; padding:14px 16px; font-size:14px; line-height:1.6; font-family:inherit;
+  color:#fff; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.14);
+  margin-bottom:12px;
+}
+.cx-stage .cx-draft:focus{ outline:none; border-color:var(--cx-rose); box-shadow:0 0 18px -6px var(--cx-rose); }
+.cx-stage .cx-mrow{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:10px; }
+.cx-stage .cx-dstatus{ font-size:12px; color:var(--cx-rose-lt); }
+.cx-stage .cx-honest{ font-size:11.5px; color:var(--cx-dim); margin:0 0 22px; }
+.cx-stage .cx-btn{
+  padding:10px 24px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.12em;
+  cursor:pointer; font-family:inherit; color:#fff;
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.03));
+  border:1px solid rgba(232,234,242,.35);
+  text-shadow:0 0 10px rgba(255,255,255,.35);
+  box-shadow:0 6px 18px rgba(0,0,0,.45), 0 0 18px -5px rgba(255,255,255,.4), inset 0 1px 0 rgba(255,255,255,.28);
+  transition:border-color .22s, box-shadow .25s, color .22s, transform .15s;
+}
+.cx-stage .cx-btn:hover, .cx-stage .cx-btn:focus-visible{
+  border-color:var(--cx-rose); color:var(--cx-rose-lt); outline:none; transform:translateY(-2px);
+  text-shadow:0 0 12px var(--cx-rose);
+  box-shadow:0 10px 26px rgba(0,0,0,.5), 0 0 26px -6px var(--cx-rose), inset 0 1px 0 rgba(255,255,255,.2);
+}
+.cx-stage .cx-btn.ghost{ margin-top:2px; }
+/* add-person form */
+.cx-stage .cx-textin{
+  width:100%; box-sizing:border-box; border-radius:14px; padding:14px 16px;
+  font-size:14px; font-family:inherit; color:#fff;
+  background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.14);
+  margin-bottom:18px;
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.5);
+}
+.cx-stage .cx-textin:focus{ outline:none; border-color:var(--cx-rose); box-shadow:inset 0 2px 8px rgba(0,0,0,.5), 0 0 18px -6px var(--cx-rose); }
+.cx-stage .cx-swatches{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:24px; }
+.cx-stage .cx-sw{
+  width:34px; height:34px; border-radius:50%; cursor:pointer; padding:0;
+  border:2px solid transparent;
+  box-shadow:0 4px 12px rgba(0,0,0,.45), inset 0 2px 3px rgba(255,255,255,.4), inset 0 -3px 5px rgba(0,0,0,.35);
+  transition:transform .15s, border-color .2s, box-shadow .2s;
+}
+.cx-stage .cx-sw:hover{ transform:scale(1.12); }
+.cx-stage .cx-sw.on{
+  border-color:#fff; transform:scale(1.12);
+  box-shadow:0 0 16px rgba(255,255,255,.5), inset 0 2px 3px rgba(255,255,255,.4);
+}
+.cx-stage .cx-swcustom{
+  width:44px; height:36px; padding:3px; border-radius:10px; cursor:pointer;
+  background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.14);
+}
+
+.cx-stage .cx-foot{
+  margin:34px 0 0; padding-top:20px; text-align:center;
+  font-size:11px; letter-spacing:.1em; color:var(--cx-dim);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+@media(max-width:760px){
+  .cx-stage{ padding:28px 16px 70px; }
+  .cx-stage .cx-main{ grid-template-columns:1fr; }
+  .cx-stage .cx-side{ position:static; flex-direction:row; flex-wrap:wrap; align-items:center; }
+  .cx-stage .cx-side-label{ width:100%; }
+  .cx-stage .cx-modal{ padding:26px 22px; }
+}
+
+/* reduced motion: the room goes still — no transitions, no animation */
+@media (prefers-reduced-motion: reduce){
+  .cx-stage *{ animation:none !important; transition:none !important; }
+}
+</style></head><body><a href="./" aria-label="Back to Hub rooms" style="position:fixed;top:20px;left:20px;z-index:10001;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:28px;font-weight:300;line-height:1;color:#fff;text-decoration:none;background:linear-gradient(145deg,#2a2a3a,#12121a);border:1px solid rgba(157,117,255,0.5);box-shadow:0 4px 16px rgba(0,0,0,0.6),0 0 20px rgba(157,117,255,0.3);">‹</a><div id="app"></div><script>function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined&&text!==null)e.textContent=text;return e;}window.NayaRooms=window.NayaRooms||{};window.ConnectionsAdapter=window.ConnectionsAdapter||{};
+  'use strict';
+
+  var KEY = 'naya.people.registry';
+
+  function clean(p){
+    if(!p || typeof p !== 'object' || p.id == null) return null;
+    return {
+      id: String(p.id),
+      name: String(p.name != null ? p.name : p.id),
+      role: String(p.role || ''),
+      color: String(p.color || '#8b93a3'),
+      note: String(p.note || '')
+    };
+  }
+
+  function load(){
+    try{
+      var raw = localStorage.getItem(KEY);
+      var a = raw ? JSON.parse(raw) : null;
+      if(!Array.isArray(a)) return null;
+      var out = [];
+      a.forEach(function(p){ var c = clean(p); if(c) out.push(c); });
+      return out;
+    }catch(e){ return null; }
+  }
+
+  function save(people){
+    try{ localStorage.setItem(KEY, JSON.stringify(people || [])); }catch(e){}
+  }
+
+  function ensureSeeded(ctxContacts){
+    var people = load();
+    if(people) return people;
+    people = [];
+    (Array.isArray(ctxContacts) ? ctxContacts : []).forEach(function(p){
+      var c = clean(p); if(c) people.push(c);
+    });
+    save(people);
+    return people;
+  }
+
+  function add(person){
+    var people = load() || [];
+    var c = clean(person);
+    if(c && !people.some(function(p){ return p.id === c.id; })){
+      people.push(c);
+      save(people);
+    }
+    return people;
+  }
+
+  function get(id){
+    var people = load() || [];
+    for(var i = 0; i < people.length; i++){
+      if(people[i].id === String(id)) return people[i];
+    }
+    return null;
+  }
+
+  window.NayaPeople = {
+    KEY: KEY,
+    load: load,
+    save: save,
+    ensureSeeded: ensureSeeded,
+    add: add,
+    get: get
+  };
+
+  'use strict';
+
+  function parseOne(c){
+    if(!c || typeof c !== 'object') return null;
+    if(!c.id || !c.name) return null;
+    return {
+      id:    String(c.id),
+      name:  String(c.name),
+      role:  c.role ? String(c.role) : '',
+      color: /^#[0-9a-fA-F]{6}$/.test(String(c.color||'')) ? String(c.color) : '#9aa3b2',
+      kind:  c.kind === 'seat' ? 'seat' : 'person',
+      note:  c.note ? String(c.note) : ''
+    };
+  }
+
+  function parseContacts(raw){
+    var out = [];
+    var seen = {};
+    (Array.isArray(raw) ? raw : []).forEach(function(c){
+      try{
+        var p = parseOne(c);
+        if(p && !seen[p.id]){ seen[p.id] = true; out.push(p); }
+      }catch(err){ /* skip unparseable */ }
+    });
+    return out;
+  }
+
+  window.ConnectionsAdapter = { parseContacts: parseContacts };
+
+  'use strict';
+
+  var LS_LISTS = 'naya.connections.lists';
+  var LS_DRAFTS = 'naya.connections.drafts';
+
+  function loadLists(){
+    try{
+      var raw = localStorage.getItem(LS_LISTS);
+      if(raw){ var l = JSON.parse(raw); if(l && Array.isArray(l.lists)) return l; }
+    }catch(e){}
+    return null;
+  }
+
+  function seedLists(contacts){
+    return { lists:[{ id:'team-naya', name:'Team Naya',
+                      members: contacts.map(function(c){ return c.id; }) }] };
+  }
+
+  function saveLists(state){
+    try{ localStorage.setItem(LS_LISTS, JSON.stringify(state)); }catch(e){}
+  }
+
+  function loadDrafts(){
+    try{ return JSON.parse(localStorage.getItem(LS_DRAFTS) || '{}'); }catch(e){ return {}; }
+  }
+
+  function saveDraft(contactId, text){
+    var d = loadDrafts();
+    d[contactId] = { text:text, savedAt:new Date().toISOString() };
+    try{ localStorage.setItem(LS_DRAFTS, JSON.stringify(d)); }catch(e){}
+    return d[contactId];
+  }
+
+  function Connections(el, ctx){
+    ctx = ctx || {};
+    /* people spine: the same shared registry Smart Mail reads — seeded from
+       ctx.contacts on first run, so both rooms see one truth. */
+    var contacts = (window.NayaPeople && window.NayaPeople.ensureSeeded)
+      ? window.NayaPeople.ensureSeeded(ctx.contacts)
+      : (Array.isArray(ctx.contacts) ? ctx.contacts : []);
+    var byId = {};
+    var store = null;
+    function reloadPeople(){
+      if(window.NayaPeople && window.NayaPeople.load){
+        var p = window.NayaPeople.load();
+        if(p) contacts = p;
+      }
+      byId = {};
+      contacts.forEach(function(c){ byId[c.id]=c; });
+      /* repair: drop member ids that no longer exist */
+      if(store) store.lists.forEach(function(l){
+        l.members = l.members.filter(function(id){ return byId[id]; });
+      });
+    }
+
+    store = loadLists() || seedLists(contacts);
+    reloadPeople();
+    if(!store.lists.length) store = seedLists(contacts);
+    saveLists(store);
+
+    var state = { filter:'all', draftFor:null };
+
+    var stage = el('div','cx-stage');
+
+    var head = el('header','cx-head');
+    head.appendChild(el('p','cx-kicker','CONNECTIONS'));
+    var h1 = el('h1','cx-title',''); h1.textContent = 'Everybody you can reach';
+    head.appendChild(h1);
+    var sub = el('p','cx-sub','');
+    sub.textContent = 'The people of your network. Save them into lists, open a card, and start a message — drafts stay yours until you send them.';
+    head.appendChild(sub);
+    stage.appendChild(head);
+
+    var main = el('div','cx-main');
+    var side = el('nav','cx-side'); side.setAttribute('aria-label','Lists');
+    var grid = el('div','cx-grid');
+    main.appendChild(side); main.appendChild(grid);
+    stage.appendChild(main);
+
+    function renderSide(){
+      side.innerHTML = '';
+      side.appendChild(el('p','cx-side-label','LISTS'));
+      var all = chip('All', contacts.length, state.filter==='all', function(){ state.filter='all'; sync(); });
+      side.appendChild(all);
+      store.lists.forEach(function(l){
+        side.appendChild(chip(l.name, l.members.length, state.filter===l.id, function(){
+          state.filter = l.id; sync();
+        }));
+      });
+      var nb = el('button','cx-new','+ New list'); nb.type='button';
+      nb.addEventListener('click', function(){
+        var name = promptName('Name the new list');
+        if(!name) return;
+        var id = 'list-' + Date.now().toString(36);
+        store.lists.push({ id:id, name:name, members:[] });
+        saveLists(store); state.filter = id; sync();
+      });
+      side.appendChild(nb);
+      var ap = el('button','cx-new','+ Add person'); ap.type='button';
+      ap.addEventListener('click', openAddPerson);
+      side.appendChild(ap);
+    }
+
+    function chip(label, count, on, fn){
+      var b = el('button','cx-chip'+(on?' on':''));
+      b.type = 'button'; b.setAttribute('aria-pressed', on?'true':'false');
+      var t = el('span','',''); t.textContent = label; b.appendChild(t);
+      var c = el('span','cx-chip-n',''); c.textContent = count; b.appendChild(c);
+      b.addEventListener('click', fn);
+      return b;
+    }
+
+    function visible(){
+      if(state.filter==='all') return contacts;
+      var l = store.lists.filter(function(x){ return x.id===state.filter; })[0];
+      if(!l) return contacts;
+      return l.members.map(function(id){ return byId[id]; }).filter(Boolean);
+    }
+
+    function renderGrid(){
+      grid.innerHTML = '';
+      var list = visible();
+      if(!list.length){
+        var e = el('p','cx-empty','');
+        e.textContent = 'This list is empty. Open a contact and save them here.';
+        grid.appendChild(e); return;
+      }
+      list.forEach(function(c, i){ grid.appendChild(card(c, i)); });
+    }
+
+    function card(c, i){
+      var a = el('article','cx-card');
+      a.style.setProperty('--cc', c.color);
+      a.style.setProperty('--i', i);
+      a.style.animationDelay = Math.min(i*0.05, 0.6)+'s';
+      a.setAttribute('role','button'); a.setAttribute('tabindex','0');
+      a.setAttribute('aria-label','Open '+c.name);
+      var av = el('span','cx-ava',''); av.textContent = initials(c.name); a.appendChild(av);
+      var nm = el('h2','cx-name',''); nm.textContent = c.name; a.appendChild(nm);
+      if(c.role){ var r = el('p','cx-role',''); r.textContent = c.role; a.appendChild(r); }
+      var lists = store.lists.filter(function(l){ return l.members.indexOf(c.id)>=0; })
+                             .map(function(l){ return l.name; });
+      if(lists.length){ var m = el('p','cx-in',''); m.textContent = 'In: '+lists.join(', '); a.appendChild(m); }
+      var open = function(){ openModal(c); };
+      a.addEventListener('click', open);
+      a.addEventListener('keydown', function(ev){
+        if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); open(); }
+      });
+      return a;
+    }
+
+    function initials(name){
+      return String(name).split(/\s+/).map(function(w){ return w[0]||''; })
+                         .join('').slice(0,2).toUpperCase();
+    }
+
+    function promptName(msg){
+      var v = null;
+      try{ v = window.prompt(msg, ''); }catch(e){}
+      return v && v.trim() ? v.trim().slice(0,40) : null;
+    }
+
+    /* ---------- detail modal ---------- */
+    var overlay = el('div','cx-overlay'); overlay.style.display='none';
+    var mcard = el('div','cx-modal');
+    overlay.appendChild(mcard);
+    overlay.addEventListener('click', function(ev){ if(ev.target===overlay) closeModal(); });
+    document.addEventListener('keydown', function(ev){
+      if(ev.key==='Escape' && overlay.style.display==='flex') closeModal();
+    });
+    stage.appendChild(overlay);
+
+    function openModal(c){
+      state.draftFor = c.id;
+      mcard.innerHTML = '';
+      mcard.style.setProperty('--cc', c.color);
+      var top = el('div','cx-mtop');
+      var av = el('span','cx-ava big',''); av.textContent = initials(c.name); top.appendChild(av);
+      var tt = el('div','');
+      var nm = el('h2','cx-mname',''); nm.textContent = c.name; tt.appendChild(nm);
+      if(c.role){ var r = el('p','cx-mrole',''); r.textContent = c.role; tt.appendChild(r); }
+      top.appendChild(tt);
+      mcard.appendChild(top);
+      if(c.note){ var n = el('p','cx-mnote',''); n.textContent = c.note; mcard.appendChild(n); }
+
+      /* save to list */
+      mcard.appendChild(el('p','cx-mlabel','SAVE TO LIST'));
+      var lp = el('div','cx-lpick');
+      store.lists.forEach(function(l){
+        var has = l.members.indexOf(c.id) >= 0;
+        var b = el('button','cx-lbtn'+(has?' in':''), (has?'\u2713 ':'+ ')+l.name);
+        b.type='button'; b.setAttribute('aria-pressed', has?'true':'false');
+        b.addEventListener('click', function(){
+          var i = l.members.indexOf(c.id);
+          if(i>=0) l.members.splice(i,1); else l.members.push(c.id);
+          saveLists(store); openModal(c); renderSide(); renderGrid();
+        });
+        lp.appendChild(b);
+      });
+      mcard.appendChild(lp);
+
+      /* message draft */
+      mcard.appendChild(el('p','cx-mlabel','MESSAGE'));
+      var drafts = loadDrafts();
+      var ta = el('textarea','cx-draft','');
+      ta.setAttribute('placeholder','Write to '+c.name+'\u2026');
+      ta.setAttribute('aria-label','Message draft to '+c.name);
+      ta.value = (drafts[c.id] && drafts[c.id].text) || '';
+      mcard.appendChild(ta);
+      var row = el('div','cx-mrow');
+      var sv = el('button','cx-btn','SAVE DRAFT'); sv.type='button';
+      var st = el('span','cx-dstatus','');
+      sv.addEventListener('click', function(){
+        var rec = saveDraft(c.id, ta.value);
+        st.textContent = 'Draft saved '+timeAgo(rec.savedAt)+' \u2014 not sent.';
+      });
+      row.appendChild(sv); row.appendChild(st);
+      /* cross-room handoff: WRITE MAIL only exists when the shell (or preview)
+         provides the composer route — no dead buttons. */
+      if(typeof ctx.onCompose === 'function'){
+        var wm = el('button','cx-btn','WRITE MAIL'); wm.type='button';
+        wm.addEventListener('click', function(){ ctx.onCompose(c); });
+        row.appendChild(wm);
+      }
+      mcard.appendChild(row);
+      var honest = el('p','cx-honest','');
+      honest.textContent = 'Drafts stay on this device. Nothing is sent anywhere from here.';
+      mcard.appendChild(honest);
+
+      var x = el('button','cx-btn ghost','CLOSE'); x.type='button';
+      x.addEventListener('click', closeModal);
+      mcard.appendChild(x);
+      overlay.style.display='flex';
+      var first = mcard.querySelector('.cx-lbtn'); if(first) first.focus();
+    }
+
+    function closeModal(){ overlay.style.display='none'; state.draftFor=null; }
+
+    /* focus trap: Tab cycles inside the open modal */
+    overlay.addEventListener('keydown', function(ev){
+      if(ev.key!=='Tab' || overlay.style.display!=='flex') return;
+      var all = mcard.querySelectorAll('button, input, textarea, select');
+      var vis = [];
+      for(var i=0;i<all.length;i++){ if(!all[i].disabled) vis.push(all[i]); }
+      if(!vis.length) return;
+      var first=vis[0], last=vis[vis.length-1];
+      if(ev.shiftKey && document.activeElement===first){ ev.preventDefault(); last.focus(); }
+      else if(!ev.shiftKey && document.activeElement===last){ ev.preventDefault(); first.focus(); }
+    });
+
+    /* ---------- add person: grows the shared people spine ---------- */
+    var PALETTE = ['#facc15','#a855f7','#38bdf8','#ec4899','#a3e635','#fb718c','#34d399','#f97316'];
+    function openAddPerson(){
+      state.draftFor = null;
+      mcard.innerHTML = '';
+      mcard.style.setProperty('--cc', '#fb718c');
+      mcard.appendChild(el('h2','cx-mname','ADD PERSON'));
+      var sub = el('p','cx-mnote','');
+      sub.textContent='Someone new in your world. They join the shared people spine \u2014 Smart Mail will know them too.';
+      mcard.appendChild(sub);
+
+      var selColor = PALETTE[2];
+      mcard.appendChild(el('p','cx-mlabel','NAME'));
+      var nmIn = el('input','cx-textin','');
+      nmIn.setAttribute('placeholder','Full name'); nmIn.setAttribute('aria-label','Full name');
+      nmIn.maxLength=60;
+      mcard.appendChild(nmIn);
+      mcard.appendChild(el('p','cx-mlabel','ROLE'));
+      var roIn = el('input','cx-textin','');
+      roIn.setAttribute('placeholder','Role (optional)'); roIn.setAttribute('aria-label','Role');
+      roIn.maxLength=80;
+      mcard.appendChild(roIn);
+      mcard.appendChild(el('p','cx-mlabel','COLOR'));
+      var sw = el('div','cx-swatches');
+      var swBtns = [];
+      function paintSw(){
+        swBtns.forEach(function(x){
+          x.className = x.className.replace(' on','') + (x.getAttribute('data-c')===selColor ? ' on' : '');
+        });
+      }
+      PALETTE.forEach(function(c){
+        var b = el('button','cx-sw'); b.type='button';
+        b.style.background=c; b.setAttribute('data-c',c); b.setAttribute('aria-label','Color '+c);
+        b.addEventListener('click', function(){ selColor=c; custom.value=c; paintSw(); });
+        swBtns.push(b); sw.appendChild(b);
+      });
+      var custom = el('input','cx-swcustom'); custom.type='color'; custom.value=selColor;
+      custom.setAttribute('aria-label','Custom color');
+      custom.addEventListener('input', function(){ selColor=custom.value; paintSw(); });
+      sw.appendChild(custom);
+      mcard.appendChild(sw);
+      paintSw();
+
+      var row = el('div','cx-mrow');
+      var save = el('button','cx-btn','ADD PERSON'); save.type='button';
+      var err = el('span','cx-dstatus','');
+      save.addEventListener('click', function(){
+        var name = nmIn.value.trim();
+        if(!name){ err.textContent='They need a name.'; nmIn.focus(); return; }
+        var person = { id:'p-'+Date.now().toString(36), name:name,
+          role:roIn.value.trim(), color:selColor };
+        if(window.NayaPeople) window.NayaPeople.add(person);
+        else { contacts.push(person); }
+        reloadPeople();
+        closeModal(); sync();
+      });
+      row.appendChild(save); row.appendChild(err);
+      var cancel = el('button','cx-btn ghost','CANCEL'); cancel.type='button';
+      cancel.addEventListener('click', closeModal);
+      row.appendChild(cancel);
+      mcard.appendChild(row);
+
+      overlay.style.display='flex';
+      nmIn.focus();
+    }
+
+    function timeAgo(iso){
+      var s = Math.max(0, Math.floor((Date.now()-new Date(iso).getTime())/1000));
+      if(s<60) return 'just now';
+      var m = Math.floor(s/60); return m<60 ? m+'m ago' : Math.floor(m/60)+'h ago';
+    }
+
+    function sync(){ renderSide(); renderGrid(); }
+    sync();
+    return stage;
+  }
+
+  window.NayaRooms = window.NayaRooms || {};
+  window.NayaRooms.connections = Connections;
+const PACK=[{"id": "shawn", "name": "Shawn Vibert", "role": "Human Director", "color": "#facc15", "kind": "person", "note": "Final authority. The human everything is built for."}, {"id": "naya1", "name": "Naya 1", "role": "Senior seat · integrator", "color": "#a855f7", "kind": "seat", "note": "Primary integrator and director of the Hub build; Shawn assigned her the scorecard judge."}, {"id": "naya2", "name": "Naya 2", "role": "Review lane", "color": "#38bdf8", "kind": "seat", "note": "Independent review lane — verifies, never duplicates. A trusted collaborator of a year."}, {"id": "naya3", "name": "Naya 3", "role": "Design intelligence", "color": "#ec4899", "kind": "seat", "note": "Design-intelligence builder — shipped the 11-room spec package; taste compiled into systems."}, {"id": "naya4", "name": "Naya 4", "role": "Builder seat", "color": "#a3e635", "kind": "seat", "note": "Independent execution and proof closer — builds rooms and closes the proof."}];document.addEventListener('DOMContentLoaded',()=>{const contacts=ConnectionsAdapter.parseContacts(PACK);const onCompose=function(c){try{localStorage.setItem('naya.mail.compose.request',JSON.stringify({to:c.id,toKind:'person',ts:Date.now()}));}catch(e){}window.location.href='mail-preview.html';};document.getElementById('app').appendChild(window.NayaRooms.connections(el,{contacts:contacts,onCompose:onCompose}));});</script></body></html>
