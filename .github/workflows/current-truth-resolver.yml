@@ -45,14 +45,47 @@ jobs:
           import os
           import pathlib
           import subprocess
+          import time
 
           root = pathlib.Path(".")
           repo = os.environ["REPO"]
           ops = json.loads((root / "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json").read_text())
           brain = json.loads((root / "BRAIN/NAYAPOWER-BRAIN-INDEX.json").read_text())
 
+          def _is_rate_limit_error(err_text):
+              lowered = err_text.lower()
+              return "403" in lowered and "rate limit" in lowered
+
+
           def out(*args):
-              return subprocess.check_output(args, text=True).strip()
+              # Rate-limit-aware gh caller. The Actions token carries one repo-wide
+              # quota; merge bursts exhaust it, and the first 403 used to crash the
+              # whole run (runs 38212532957 / 38420781013 / 38464669249 / 38504797347).
+              # Transient exhaustion now retries with exponential backoff; persistent
+              # exhaustion still fails LOUDLY as RATE_LIMITED (never silently, never
+              # as a generic crash). Non-rate-limit failures are never masked.
+              delay = 30
+              last_err = ""
+              for attempt in range(6):
+                  try:
+                      return subprocess.check_output(args, text=True, stderr=subprocess.PIPE).strip()
+                  except subprocess.CalledProcessError as e:
+                      err = (e.stderr or "") + "\n" + str(e)
+                      last_err = err
+                      if not _is_rate_limit_error(err):
+                          raise
+                      if attempt == 5:
+                          break
+                      print(
+                          f"RATE_LIMIT: gh call backing off {delay}s (attempt {attempt + 1}/6)",
+                          flush=True,
+                      )
+                      time.sleep(delay)
+                      delay = min(delay * 2, 300)
+              raise SystemExit(
+                  "RATE_LIMITED: GitHub API quota still exhausted after 6 attempts: "
+                  + last_err[:200]
+              )
 
           main_head = json.loads(out("gh", "api", f"repos/{repo}/branches/main"))["commit"]["sha"]
           production = json.loads(out("gh", "api", f"repos/{repo}/branches/production"))["commit"]["sha"]
