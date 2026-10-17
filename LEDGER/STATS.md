@@ -223,4 +223,4 @@ _Last updated: 2026-10-13 14:43 UTC_
 - **t1432:** 15 actions, avg 9.0/10
 - **t1442:** 15 actions, avg 9.0/10
 
-_A rising average with zero phantoms is the proof the team is learning and growing._
+_A rising average with phantoms driven to zero is the proof the team is learning and growing. (One historical phantom recorded above: the t902 claims, proven never to have existed — the ledger keeps it visible so it is never repeated.)_
