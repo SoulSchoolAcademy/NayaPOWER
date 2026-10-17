@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, contextlib, hashlib, json, math, os, re, tempfile
+import argparse, contextlib, hashlib, importlib.util, json, math, os, re, tempfile
 try:
     import fcntl
 except ImportError:  # Windows: lock with msvcrt so concurrent writers still serialize.
@@ -1274,6 +1274,43 @@ def promote_note(note_id, evidence_bundle, promoter, registry_path=None):
         refusal["receipt_hash"] = _hash_receipt(refusal)
         rp = _write_record(refusal, entry.get("smart_note_id"), "refusal")
         return {"promoted": False, "record": refusal, "record_path": str(rp)}
+
+    # Hive Learning Law: learning/lesson promotion is stricter than generic note verification.
+    # It reuses this canonical promotion boundary; it is not a second registry or learning engine.
+    _labels = " ".join(str(entry.get(k) or "") for k in ("category", "topic", "kind", "type", "title")).casefold()
+    _is_learning = bool(entry.get("learning_law_required") is True or any(x in _labels for x in ("lesson", "learning", "adoption")))
+    if _is_learning:
+        try:
+            _law_path = ROOT / "tools" / "hive-learning-law.py"
+            _manifest_path = ROOT / ".naya" / "governance" / "HIVE-LEARNING-LAW.sha256"
+            _spec = importlib.util.spec_from_file_location("hive_learning_law", _law_path)
+            if _spec is None or _spec.loader is None:
+                raise RuntimeError("HIVE_LEARNING_LAW_LOAD_FAILED")
+            _law = importlib.util.module_from_spec(_spec)
+            _spec.loader.exec_module(_law)
+            _law.verify_byte_integrity(_law_path, _manifest_path)
+            _existing_lessons = [
+                old.get("lesson_contract") or old.get("lesson")
+                for old in entries
+                if isinstance(old, dict) and old is not entry and (old.get("lesson_contract") or old.get("lesson"))
+            ]
+            _law.validate_learning_promotion(entry, evidence_bundle, _existing_lessons)
+        except Exception as _law_error:
+            _reason = str(_law_error) or type(_law_error).__name__
+            refusal = {
+                "schema": "naya.promotion-refusal.v1",
+                "note_id": entry.get("smart_note_id"),
+                "intelligent_block_id": entry.get("intelligent_block_id"),
+                "promoter": promoter,
+                "refused_at": _utc_now(),
+                "threshold_version": PROMOTION_THRESHOLD_VERSION,
+                "reason_code": "HIVE_LEARNING_LAW_BLOCKED",
+                "reason_detail": _reason,
+                "failed_checks": [{"check": "hive_learning_law", "detail": _reason}],
+            }
+            refusal["receipt_hash"] = _hash_receipt(refusal)
+            rp = _write_record(refusal, entry.get("smart_note_id"), "refusal")
+            return {"promoted": False, "record": refusal, "record_path": str(rp)}
 
     # Run threshold checks
     passed, failures = validate_evidence_bundle(
