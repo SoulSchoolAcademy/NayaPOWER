@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T15:16:05+00:00",
+ "generated_utc": "2026-10-17T16:15:39+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2735,
+     "title": "Fix Living Map probes that mask latest failure or partial schema",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2735",
+     "draft": false
+    },
+    {
+     "number": 2732,
+     "title": "fix(activation): pin Operating Code V2 LF in Windows checkouts",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2732",
+     "draft": false
+    },
+    {
      "number": 2731,
      "title": "ACTIVATION-PACKET: re-point author-branch links at main",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2731",
@@ -382,21 +394,9 @@
      "title": "Daily intelligence report pipeline \u2014 item 17 (generator + sample + read contract)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2715",
      "draft": false
-    },
-    {
-     "number": 2708,
-     "title": "Design Laws v1 (DRAFT): three-tongue repo placement",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708",
-     "draft": true
-    },
-    {
-     "number": 2707,
-     "title": "DESIGN: curated smart-block library \u2014 one language, best-of-best",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2707",
-     "draft": false
     }
    ],
-   "open_pr_count": 232
+   "open_pr_count": 233
   },
   {
    "id": "wire",
@@ -624,6 +624,12 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2733,
+     "title": "test(activation): fail closed when compiled current state disagrees with live GitHub",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2733",
+     "draft": true
+    },
+    {
      "number": 2713,
      "title": "t0907: block catalog \u2014 457 canonical NAYA-XXX-NNN blocks + coverage",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2713",
@@ -664,15 +670,9 @@
      "title": "Hub feeds: first room-feed/v1 emissions (today, lists, spaces) \u2014 t0479",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2678",
      "draft": false
-    },
-    {
-     "number": 2648,
-     "title": "Add field manual 37: GitHub access (two identities, fresh-machine setup)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2648",
-     "draft": false
     }
    ],
-   "open_pr_count": 36
+   "open_pr_count": 37
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 608,
- "unassigned_prs": 232
+ "open_pr_total": 610,
+ "unassigned_prs": 233
 }

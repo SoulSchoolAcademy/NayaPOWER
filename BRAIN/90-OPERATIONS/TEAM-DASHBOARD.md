@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 15:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 16:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 608 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 610 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (232)
+### BUILD (233)
+- [#2735](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2735) Fix Living Map probes that mask latest failure or partial schema
+- [#2732](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2732) fix(activation): pin Operating Code V2 LF in Windows checkouts
 - [#2731](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2731) ACTIVATION-PACKET: re-point author-branch links at main
 - [#2730](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2730) Phase B: repo-native lesson injection + scoring machinery
 - [#2728](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2728) distill-daily: point boot bytes at live board #2721
-- [#2725](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2725) RETRIEVAL: re-pin original grader bytes to TRIAL-11-RESERVE (w356)
-- [#2722](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2722) Remove stale L11 note: oath + field manuals are on main
-- …and 227 more
+- …and 228 more
 
 ### WIRE (124)
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
@@ -119,13 +119,13 @@
 - [#2593](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593) CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l…
 - …and 35 more
 
-### PRODUCT (36)
+### PRODUCT (37)
+- [#2733](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2733) test(activation): fail closed when compiled current state disagrees wi 📝draft
 - [#2713](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2713) t0907: block catalog — 457 canonical NAYA-XXX-NNN blocks + coverage
 - [#2701](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701) HUB sync contract — Goal #1 Hub Smart Feed contract (three tongues)
 - [#2700](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2700) [DRAFT] HUB MASTER BUILD CONTRACT v1 (review only, do not merge) 📝draft
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
-- [#2680](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680) t0483: hourly schedule pump for NayaNET Agent Capture
-- …and 31 more
+- …and 32 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 
