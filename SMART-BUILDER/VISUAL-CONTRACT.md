@@ -578,8 +578,9 @@ Pages stay alive by connecting to the owner's services — Google Drive,
 whatever they use. The page works WITH their world, not as a dead
 brochure. Machine rule: `VisualSmartContract.connections[]` binds
 owner-scoped connectors (same connector model as Naya's, repointed at the
-page OWNER's scope). A Naya app with zero connections is a brochure, not a
-Naya app — the intake must propose at least one connection from intent.
+page OWNER's scope). Guidance (not a gate): connections are what keep a page
+living — the intake should propose connections from intent wherever they
+serve the owner.
 
 ### 3.4 Naya runs it: interactions, live conversations, mail — automatic
 
@@ -763,5 +764,5 @@ features.
 | Machine consumer | The smart creator page and builder agents — the contract is their job description ("this is your job now") |
 | Schema count | 6 (`VisualSmartContract`, `IntakeFields`, `FunctionContract`, `TemplateDefinitions`, `PieceReference`, `DeployTarget`) + 1 canonical template registry (10 templates) |
 | Diagrams | 4 mermaid flows (§2a–§2d) |
-| Spec sections | 12 (§3.1–§3.12), each with a `Source:` line |
+| Spec sections | 13 (§3.1–§3.13), each with a `Source:` line |
 | Traceability | Every section cites H: or M:; nothing invented beyond schema mechanics |
