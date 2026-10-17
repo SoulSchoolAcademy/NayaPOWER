@@ -41,8 +41,20 @@ jobs:
           fetch-depth: 0
       - name: Validate PR receipt
         env:
-          PR_BODY: ${{ github.event.pull_request.body }}
-        run: python3 tools/check_pr_receipt.py
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        # LIVE-BODY LAW (2026-10-15, w180): PR body is read LIVE from the API,
+        # never from the event envelope — rerun-failed-jobs replays the
+        # original (stale) payload (job 116173185579 on #2606).
+        # NOTE: never write a literal dollar-curly Actions expression in a
+        # run-script comment — the runner substitutes it anywhere, comments
+        # included.
+        run: |
+          set -euo pipefail
+          PR_BODY="$(gh api "repos/${REPO}/pulls/${PR_NUMBER}" --jq '.body // ""')"
+          export PR_BODY
+          python3 tools/check_pr_receipt.py
 
   no-silent-deletion:
     name: No silent deletions
@@ -53,10 +65,22 @@ jobs:
           fetch-depth: 0
       - name: Check deletions are declared
         env:
-          PR_BODY: ${{ github.event.pull_request.body }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: python3 tools/check_pr_deletions.py
+        # LIVE-BODY LAW (2026-10-15, w180): PR body is read LIVE from the API,
+        # never from the event envelope — rerun-failed-jobs replays the
+        # original (stale) payload (job 116173185579 on #2606).
+        # NOTE: never write a literal dollar-curly Actions expression in a
+        # run-script comment — the runner substitutes it anywhere, comments
+        # included.
+        run: |
+          set -euo pipefail
+          PR_BODY="$(gh api "repos/${REPO}/pulls/${PR_NUMBER}" --jq '.body // ""')"
+          export PR_BODY
+          python3 tools/check_pr_deletions.py
 
   overlap:
     name: Duplicate-work watch (advisory)
