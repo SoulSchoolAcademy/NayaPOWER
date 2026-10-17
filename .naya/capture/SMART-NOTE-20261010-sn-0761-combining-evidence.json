@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0761",
+ "capture_id": "20261010-sn-0761-combining-evidence",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "EPISTEMIC_COMPOSITION",
+ "subtopic": "PROOF_OBLIGATION_MAPS",
+ "title": "Combining Partial Evidence — proof-obligation maps, compatibility gate; QUALIFIED = Coverage ∧ Admissibility ∧ Compatibility ∧ Composition validity",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Evidence combines by verified coverage and valid composition — never by quantity, agreement, or confidence. Ten weak studies don't make one strong one; five agreeing seats using the same data are one seat, not five. Proof-obligation maps lay out exactly what must be established, and each piece of evidence is checked for admissibility (is it clean, relevant, independent?) before it counts. The compatibility gate rejects combinations that don't fit together — contradictory methods, mismatched scopes, correlated sources counted as independent. QUALIFIED = Coverage (the obligations are covered) AND Admissibility (each piece is legitimate) AND Compatibility (the pieces fit) AND Composition validity (the way they were combined is sound). All four, or the combination is unqualified.",
+  "human_view": {
+   "meaning": "More evidence isn't better evidence. Ten shaky clues don't beat one solid proof, and five people reading the same data are one witness, not five. Combine by what each piece actually covers and whether the pieces truly fit.",
+   "why_it_matters": "Kills vote-counting epistemology: the failure where agreement among correlated sources manufactures false confidence."
+  },
+  "simple_view": {
+   "meaning": "More evidence isn't better evidence. Ten shaky clues don't beat one solid proof, and five people reading the same data are one witness, not five. Combine by what each piece actually covers and whether the pieces truly fit."
+  },
+  "naya_view": {
+   "directive": "Map the proof obligations first. Admit only clean, relevant, independent evidence. Run the compatibility gate before combining. Assert QUALIFIED only when all four conjuncts hold — Coverage, Admissibility, Compatibility, Composition validity."
+  },
+  "ai_view": {
+   "specification": "QUALIFIED(combination) ⟺ Coverage ∧ Admissibility ∧ Compatibility ∧ CompositionValidity. Independence is checked on sources, not seat count. Correlated sources collapse to one.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0761",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Combining-evidence spec L2: composition spec'd (proof-obligation maps, compatibility gate, four-conjunct QUALIFIED)."
+  },
+  "learning_lesson": "The night's pattern: every stacked spec branch combined only with its parent's verified coverage — the practice this law generalizes.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/independence-propagation, L2 composition spec'd."
+  ],
+  "connections": [
+   {
+    "type": "COMBINES",
+    "target": "SN-0760 Scope-limited truth — partial verdicts are the units combined."
+   },
+   {
+    "type": "USES",
+    "target": "SN-0759 Propagation — support sets record the combination structure."
+   }
+  ],
+  "uncertainty": "Admissibility criteria and compatibility rules are domain-defined; the four-conjunct definition of QUALIFIED is fixed.",
+  "applicability": "Every seat that merges evidence, runs meta-analysis, or cites combined results.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if correlated sources are counted as independent, or a combination missing a conjunct is cited as QUALIFIED.",
+  "measurement_contract": "Track combinations with their four-conjunct checklist; audit independence claims on sources.",
+  "successor_effect": "A cold successor combining three reports checks their independence first — and downgrades the combination when two share a source."
+ }
+}

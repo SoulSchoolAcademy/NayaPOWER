@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0763",
+ "capture_id": "20261010-sn-0763-obligation-versioning",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "REQUIREMENTS_LIFECYCLE",
+ "subtopic": "BITEMPORAL_HISTORY",
+ "title": "Versioning and Retiring Obligations — three objects, six-state lifecycle, bitemporal history, ten change classes",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Requirements evolve; historical proof stays intact; current qualification is always evaluated against the governing requirements. Three objects are tracked separately: the obligation (what's required), the proof (what was shown), and the qualification (the verdict binding them at a version). The lifecycle has six states from PROPOSED to RETIRED. History is bitemporal: when something happened AND when we recorded it — so backdated corrections don't rewrite the past. Ten change classes distinguish 'wording cleanup' from 'weakened requirement,' because only some changes invalidate old proof. The principle: yesterday's green check can't certify tomorrow's untested system, but it stays valid history of what it actually proved.",
+  "human_view": {
+   "meaning": "Rules change. Old proof stays as history, but today's verdict is always against today's rules. And we track both when things happened and when we wrote them down, so corrections can't secretly rewrite the past.",
+   "why_it_matters": "Prevents the two time-travel failures: holding new work to dead requirements, and letting old proof certify a system the old proof never saw."
+  },
+  "simple_view": {
+   "meaning": "Rules change. Old proof stays as history, but today's verdict is always against today's rules. And we track both when things happened and when we wrote them down, so corrections can't secretly rewrite the past."
+  },
+  "naya_view": {
+   "directive": "Version obligations, proofs, and qualifications separately. Record both timelines (event time and record time). Classify every requirement change into one of the ten classes; re-derive which proofs survive. Never evaluate current qualification against a superseded obligation."
+  },
+  "ai_view": {
+   "specification": "obligation_v(n), proof_v(m), qualification = verdict(obligation_v(n), proof_v(m)). Bitemporal: (valid_time, transaction_time). Change class determines proof survival.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0763",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Versioning spec L4: versioning spec'd (three objects, six-state lifecycle, bitemporal history, ten change classes)."
+  },
+  "learning_lesson": "The night's stacked branches each recorded their parent SHA — the practice this law generalizes to all obligations.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/independence-propagation, L4 versioning spec'd."
+  ],
+  "connections": [
+   {
+    "type": "GOVERNS",
+    "target": "SN-0753 Reopenable interpretation — version chains are its mechanism."
+   },
+   {
+    "type": "RELATED",
+    "target": "SN-0764 Split/merge migration — obligation changes drive migrations."
+   }
+  ],
+  "uncertainty": "The ten change classes' definitions are implementer-defined; bitemporal recording and separate versioning are fixed.",
+  "applicability": "Every seat that owns requirements, proofs, or qualifications over time.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a qualification is found evaluated against a superseded obligation, or history is rewritten instead of corrected bitemporally.",
+  "measurement_contract": "Track obligation versions vs qualification versions; audit that no verdict references a retired obligation as governing.",
+  "successor_effect": "A cold successor reading an old green verdict checks which obligation version it was against — and re-qualifies before trusting it today."
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0752",
+ "capture_id": "20261010-sn-0752-atomic-claim-extraction",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "DISTILLATION",
+ "subtopic": "FAITHFULNESS_GATE",
+ "title": "Meaning-Preserving Atomic Claim Extraction — nucleus plus meaning envelope, with a fail-closed faithfulness gate",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Long intelligence is broken into atomic claims, each with a nucleus (the irreducible assertion) and a meaning envelope (the conditions, scope, and qualifiers the assertion is only true inside). Extraction must be meaning-preserving: the sum of the atoms must not claim more — or less — than the source. A fail-closed faithfulness gate checks every extraction: if the gate cannot verify that an atom's meaning matches the source, the atom is dropped, never approximated. An approximate extraction is worse than a missing one, because it manufactures claims the source never made.",
+  "human_view": {
+   "meaning": "Break big ideas into small checkable pieces without changing what they mean. Each piece carries its own context so it can't be quoted out of scope. If you're not sure the piece is faithful to the original, throw it away — a wrong summary is worse than no summary.",
+   "why_it_matters": "This is where the whole epistemic stack starts. Every later layer — propagation, composition, audit — reasons over atoms. Unfaithful atoms poison everything downstream."
+  },
+  "simple_view": {
+   "meaning": "Break big ideas into small checkable pieces without changing what they mean. Each piece carries its own context so it can't be quoted out of scope. If you're not sure the piece is faithful to the original, throw it away — a wrong summary is worse than no summary."
+  },
+  "naya_view": {
+   "directive": "Extract atoms with nucleus + meaning envelope. Run the fail-closed faithfulness gate on every atom; on any doubt, drop the atom and record the drop. Never paraphrase an atom into a stronger claim to make it 'cleaner.'"
+  },
+  "ai_view": {
+   "specification": "atom = (nucleus, envelope). faithfulness(atom, source) must VERIFY else DROP. Meaning-preservation: the conjunction of atoms must entail exactly the source's claims within their envelopes — no strengthening, no weakening.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0752",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Extraction spec: 31 tests green (meaning-preserving atomic claim extraction, fail-closed faithfulness gate)."
+  },
+  "learning_lesson": "Reproduced pattern: every downstream dispute about 'what was actually claimed' traces to an extraction that quietly strengthened or weakened the source.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law)."
+  ],
+  "connections": [
+   {
+    "type": "FOUNDATION_FOR",
+    "target": "SN-0759 Propagation, SN-0760 Scope-limited truth — both consume extracted atoms."
+   }
+  ],
+  "uncertainty": "The gate's verification procedure is implementer-defined; the law fixes fail-closed behavior, not the matching algorithm.",
+  "applicability": "Every seat that distills, summarizes, or extracts claims from longer intelligence.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if atoms in active use are shown to assert something the source did not, or to drop load-bearing qualifiers.",
+  "measurement_contract": "Sample extracted atoms and re-check against sources; track drop-rate of the gate. A gate that never drops is not verifying.",
+  "successor_effect": "A cold successor extracting claims from a long source produces atoms a second seat can verify against the source — and drops the ones it can't defend."
+ }
+}

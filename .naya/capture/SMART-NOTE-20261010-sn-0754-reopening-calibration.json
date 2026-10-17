@@ -1,0 +1,66 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0754",
+ "capture_id": "20261010-sn-0754-reopening-calibration",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "INTERPRETATION_LIFECYCLE",
+ "subtopic": "CHALLENGE_THRESHOLDS",
+ "title": "Reopening Calibration — separate challenge thresholds, hysteresis, B_r > C_r, INSUFFICIENT_DATA",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Not every doubt reopens a settled reading. Challenges have their own thresholds, separate from the original qualification bar, with hysteresis: it takes stronger evidence to reopen than it took to settle, so readings don't flicker with every passing doubt. B_r > C_r: the benefit of reopening must exceed the cost of reopening, estimated before the reopen — re-examination is itself expensive. When the evidence is too thin to decide, the verdict is INSUFFICIENT_DATA, not a quiet default to the old reading or the challenge. Insufficient data is a real answer; it says 'we don't know yet' and stops the system from pretending otherwise.",
+  "human_view": {
+   "meaning": "It should be harder to reopen a settled question than to settle it — otherwise everything flickers. And if the evidence is too thin, say 'we don't know' instead of picking a side.",
+   "why_it_matters": "Protects the interpretation lifecycle from both thrash (endless reopening) and capture (a weak first reading that can never be challenged)."
+  },
+  "simple_view": {
+   "meaning": "It should be harder to reopen a settled question than to settle it — otherwise everything flickers. And if the evidence is too thin, say 'we don't know' instead of picking a side."
+  },
+  "naya_view": {
+   "directive": "Before reopening, estimate B_r (benefit) and C_r (cost); reopen only if B_r > C_r. Apply the challenge threshold with hysteresis above the original bar. When evidence is thin, record INSUFFICIENT_DATA and stop — never default silently."
+  },
+  "ai_view": {
+   "specification": "reopen iff B_r > C_r AND challenge_evidence > challenge_threshold, where challenge_threshold > original_bar (hysteresis). Else if evidence thin: verdict = INSUFFICIENT_DATA.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0754",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Calibration spec: 24 tests green (separate thresholds, hysteresis, B_r > C_r, INSUFFICIENT_DATA)."
+  },
+  "learning_lesson": "Flicker is the observable failure: the same reading reopened and re-settled repeatedly on the same evidence.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law)."
+  ],
+  "connections": [
+   {
+    "type": "CALIBRATES",
+    "target": "SN-0753 Reopenable interpretation — numeric discipline for its lifecycle."
+   }
+  ],
+  "uncertainty": "The numeric values of thresholds and the B_r/C_r estimation method are implementer-defined; the law fixes the relations (hysteresis, B_r > C_r, INSUFFICIENT_DATA as terminal verdict).",
+  "applicability": "Every seat that challenges or defends a settled reading.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if readings reopen on sub-threshold evidence, or if thin-evidence cases silently default instead of recording INSUFFICIENT_DATA.",
+  "measurement_contract": "Track reopen frequency per reading and the B_r/C_r estimates vs outcomes; calibrate thresholds from the misses.",
+  "successor_effect": "A cold successor with a weak doubt and thin evidence records INSUFFICIENT_DATA instead of relitigating — and a strong challenge with B_r > C_r actually reopens."
+ }
+}

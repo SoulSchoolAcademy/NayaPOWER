@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0756",
+ "capture_id": "20261010-sn-0756-selective-revocation",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "EVALUATION_INTEGRITY",
+ "subtopic": "SURGICAL_QUARANTINE",
+ "title": "Partial Canary Compromise & Selective Revocation — four compromise units, six verdicts, six-step recomputation",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "When a canary family is compromised, you don't burn the whole evaluation — you revoke exactly what the compromise touches. Four compromise units (single canary, family, exposure path, verification binding) and six verdicts (from CLEAN to COMPROMISED-for-blind-use to RETIRED) let the system quarantine surgically. The governing principle: 'Evidence immutable, independence revocable, qualifications recomputable.' The evidence of what happened never changes; the independence claims get re-examined; every qualification that depended on the compromised piece is recomputed from what's still clean. Standing application (2026-10-10): cold-successor and causal claims = SUSPENDED; two root receipts = COMPROMISED for blind use; the T11 family = RETIRED; 218 exposed files = regression-only.",
+  "human_view": {
+   "meaning": "If one test is compromised, only that test's proof dies — not everything. The facts of what happened are frozen; what we claim they prove gets re-examined; every verdict built on the bad piece is recomputed.",
+   "why_it_matters": "Turns contamination from a catastrophe into a surgery. Without it, one leak either destroys all trust or gets ignored — both are wrong."
+  },
+  "simple_view": {
+   "meaning": "If one test is compromised, only that test's proof dies — not everything. The facts of what happened are frozen; what we claim they prove gets re-examined; every verdict built on the bad piece is recomputed."
+  },
+  "naya_view": {
+   "directive": "On compromise detection: classify the unit (canary/family/path/binding), assign the verdict, freeze the evidence, revoke the independence claims it supported, and recompute every downstream qualification in six steps. Never silently keep a compromised qualification alive; never nuke a clean one."
+  },
+  "ai_view": {
+   "specification": "revoke(compromise_unit) → verdict ∈ 6 states; qualifications Q depending on the unit are recomputed over the clean remainder. Evidence log is append-only; independence claims are the revocable layer.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0756",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Selective-revocation spec: 64/64 tests (same branch); applied to the exposure audit: T11 RETIRED, cold-successor and causal claims SUSPENDED, 2 root receipts COMPROMISED-for-blind-use, 218 files regression-only."
+  },
+  "learning_lesson": "Applied 2026-10-10 to the exposure audit results — the classification table is the standing record.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/drift-canary-system, 64/64 tests."
+  ],
+  "connections": [
+   {
+    "type": "USES",
+    "target": "SN-0755 Drift & canary — the integrity states it acts on."
+   },
+   {
+    "type": "RELATED",
+    "target": "SN-0757 Uncertain scope — the boundary between known and unknown compromise."
+   }
+  ],
+  "uncertainty": "Verdict thresholds and the six recomputation steps' ordering are implementer-defined; the principle (immutable evidence, revocable independence, recomputable qualifications) is fixed.",
+  "applicability": "Every seat that handles contamination or cites qualifications built on evaluated evidence.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a compromised qualification remains cited as valid, or a clean qualification is revoked without cause.",
+  "measurement_contract": "Track revocation events and recomputation completeness; every downstream qualification must resolve to a fresh verdict.",
+  "successor_effect": "A cold successor finding a compromised canary performs the surgery itself: evidence frozen, independence revoked, qualifications recomputed — no panic, no cover-up."
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0753",
+ "capture_id": "20261010-sn-0753-reopenable-interpretation",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "INTERPRETATION_LIFECYCLE",
+ "subtopic": "VERSIONED_READINGS",
+ "title": "Reopenable Interpretation — immutable source, versioned interpretations, RESOLVED→CHALLENGED→REOPENED→REQUALIFIED",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "The source text is immutable; interpretations are versioned readings layered on top. A reading moves RESOLVED → CHALLENGED (new evidence or a credible dispute) → REOPENED (under active re-examination) → REQUALIFIED (confirmed, revised, or superseded — never silently edited). The old reading is preserved with its challenge record, so the history of understanding is itself intelligence. This separates 'what was said' (frozen) from 'what we now think it means' (revisable).",
+  "human_view": {
+   "meaning": "What he said never changes. What we understand it to mean can grow. Old understandings are kept as history, not deleted — so we can see how our understanding evolved.",
+   "why_it_matters": "Prevents the two classic failures: rewriting the source to match the new reading, and freezing the first reading forever because changing it feels like admitting error."
+  },
+  "simple_view": {
+   "meaning": "What he said never changes. What we understand it to mean can grow. Old understandings are kept as history, not deleted — so we can see how our understanding evolved."
+  },
+  "naya_view": {
+   "directive": "When a reading is disputed, CHALLENGE it — never edit the source and never edit the old reading in place. Reopen, re-examine against the new evidence, then REQUALIFY with the challenge record attached. The version chain is the audit trail of understanding."
+  },
+  "ai_view": {
+   "specification": "interpretation_v(n+1) = requalify(interpretation_v(n), challenge, evidence); source is write-once. State machine: RESOLVED → CHALLENGED → REOPENED → REQUALIFIED; transitions require the challenge evidence and the prior version's preservation.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0753",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Reopening spec: 13 tests green (immutable source, versioned interpretations, RESOLVED to CHALLENGED to REOPENED to REQUALIFIED)."
+  },
+  "learning_lesson": "Shawn's own frameworks tonight were refined across messages; each refinement superseded the last without rewriting it — the pattern this law makes permanent.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law)."
+  ],
+  "connections": [
+   {
+    "type": "RELATED",
+    "target": "SN-0754 Reopening calibration — the numeric discipline for the same lifecycle."
+   }
+  ],
+  "uncertainty": "Thresholds for what counts as a credible challenge are implementer-defined (see SN-0754); the law fixes the lifecycle and immutability of sources.",
+  "applicability": "Every seat that interprets intelligence, including law readings and framework summaries.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if an interpretation is edited in place, or a source is found altered after capture.",
+  "measurement_contract": "Count challenge→requalification cycles and their outcomes; a system that never reopens is not stable, it's frozen.",
+  "successor_effect": "A cold successor meeting an old reading and new evidence follows the lifecycle instead of overwriting — and can show exactly when and why the reading changed."
+ }
+}

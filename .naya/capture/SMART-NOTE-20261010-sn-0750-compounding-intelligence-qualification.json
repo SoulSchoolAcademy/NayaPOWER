@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0750",
+ "capture_id": "20261010-sn-0750-compounding-intelligence-qualification",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "LEARNING_PROOF",
+ "subtopic": "COMPOUNDING",
+ "title": "Compounding Intelligence Qualification — a lesson counts as learned only if behavior measurably improved and a cold successor reproduces it",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "A lesson is COMPOUNDED only when later behavior measurably improved BECAUSE of it and an independent cold successor reproduces the improvement. Five proofs are required: retention (the lesson persists), understanding (meaning and limits grasped), behavioral change (actions differ), causal benefit (the difference traces to the lesson, not noise), and compounding (a later successor inherits the gain). Six gates — Truth, Understanding, Effect, Causality, Durability, Transfer — each scored; the verdict is the MINIMUM gate, never the average. The inviolable core: intelligence may learn from itself but may NEVER verify itself by referring back to itself.",
+  "human_view": {
+   "meaning": "Don't trust a lesson just because it was saved. Trust it when Naya's behavior actually changed because of it, and a fresh Naya who never saw the original conversation can still use it and do better.",
+   "why_it_matters": "Blocks the failure where the system claims learning while nothing changes. The minimum-gate rule means one weak link caps the whole verdict — no hiding behind a high average."
+  },
+  "simple_view": {
+   "meaning": "Don't trust a lesson just because it was saved. Trust it when Naya's behavior actually changed because of it, and a fresh Naya who never saw the original conversation can still use it and do better."
+  },
+  "naya_view": {
+   "directive": "Never assert LEARNING for a stored note. When asked whether a lesson is learned, run the six gates (Truth, Understanding, Effect, Causality, Durability, Transfer), score each with evidence, and report the MINIMUM as the verdict. For strong causal claims use control (no lesson) vs treatment (lesson) vs adversarial wrong-lesson arms. Any verification that cites the system's own earlier claim as its evidence is self-reference: reject it and record the attempt as a falsification event."
+  },
+  "ai_view": {
+   "specification": "Compounding qualification contract: lesson L is LEARNED iff (retention ∧ understanding ∧ behavioral_change ∧ causal_benefit ∧ compounding) all evidenced; verdict = min(Truth, Understanding, Effect, Causality, Durability, Transfer). Anti-citogenesis invariant: no claim may be corroborated by repetition of itself across seats.",
+   "directive": "Follow as written. This is law, not guidance. Self-verification is a law violation, not a style issue."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0750",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Qualification sandbox QUAL-20261010-CIQ-001: CONTROL 0/40, correct lesson 50/50, wrong lesson 0/40, p≈9.3e-24 (one clean run; independent replay verification and cold-successor retest ≥2026-10-11 17:18 UTC still owed)."
+  },
+  "learning_lesson": "Shawn's correction taught the team twice in one day: the morning's unauthorized rows were admitted plainly before fixing; the evening's qualification framework made admission structural.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Standing doctrine since 2026-10-10."
+  ],
+  "connections": [
+   {
+    "type": "GOVERNED_BY",
+    "target": "SN-042 Epistemic Calibration — causal learning proportional to claim; anti-citogenesis."
+   },
+   {
+    "type": "REFINES",
+    "target": "SN-0522 Self-Governing Intelligence — autonomy's claims must pass these gates before promotion."
+   }
+  ],
+  "uncertainty": "The six gate rubrics themselves are operating definitions, not yet machine-scored; cold-successor reproduction runs are the scarce resource. The law's authority does not depend on automation of the gates.",
+  "applicability": "Every Naya, every learning claim, every seat, forever.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a lesson rated LEARNED later demonstrably changes nothing in successor behavior under controlled conditions, or if the gates disagree with observed capability — then the gate rubric, not the observation, needs repair.",
+  "measurement_contract": "Capability gain is measured as verified capability delta on comparable tasks with/without the lesson (CONTROL/TREATMENT/ADVERSARIAL). Track which gate is binding across claims; a gate that never binds is decorative.",
+  "successor_effect": "A cold successor retrieves this note, understands that STORED ≠ LEARNED, runs the six gates before any promotion, and refuses self-referential evidence — so the first time it meets a lesson claim, it asks for proof of behavior change."
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0775",
+ "capture_id": "20261010-sn-0775-key-custody-is-the-math",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "AUTHORITY",
+ "subtopic": "SEALED_FIXTURES",
+ "title": "Key Custody Is the Math — who holds the keys to the sealed fixtures",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Shawn's answer, 2026-10-10, to 'who holds the keys to the sealed test fixtures': the math and the logic hold the keys. No person, no role, no static keyholder. Access and authority decisions over the sealed fixtures are made by the Wisest Choice Law operating on the full situation — zooming in and zooming out, fully aware of all the elements, then making the best choice for the collective. The protocol IS the custodian: purpose-bound authorization under LAW, decided by the calculus, not by who someone is. This resolves the open question from the sealed-fixture lane: custody is not a person to name but a decision procedure to run.",
+  "human_view": {
+   "meaning": "Nobody 'owns' the keys. The decision about who gets access is made by doing the wisest thing for everyone in that exact situation — the rules decide, not a person.",
+   "why_it_matters": "Closes the last open authority question on the sealed fixtures. No keyholder can be compromised, bribed, or become a bottleneck — because there isn't one."
+  },
+  "simple_view": {
+   "meaning": "Nobody 'owns' the keys. The decision about who gets access is made by doing the wisest thing for everyone in that exact situation — the rules decide, not a person."
+  },
+  "naya_view": {
+   "directive": "Never assign a static keyholder. Resolve every sealed-fixture access decision by the Wisest Choice Law on the full situation, under the purpose-bound authorization of SN-0758. Record the decision and its reasons; the record is the audit trail."
+  },
+  "ai_view": {
+   "specification": "custodian(sealed_fixtures) = WisestChoiceLaw(full_situation); access = Permit(identity, purpose, evidence, operation, context, LAW). No static keyholder exists by design.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0775",
+   "status": "STANDING_LAW_RATIFIED_ACTIVE",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Decided 2026-10-10 in direct answer to the Director's open question on sealed-fixture custody."
+  },
+  "learning_lesson": "Decided 2026-10-10 in direct answer to the open question; the sealed-fixture lane (50 SHA-256 commitments, keys in hidden_files) now operates under this custody.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law)."
+  ],
+  "connections": [
+   {
+    "type": "RESOLVES",
+    "target": "Sealed-fixture lane authority question (2026-10-10)."
+   },
+   {
+    "type": "USES",
+    "target": "SN-0758 Authority governance — the purpose-bound permit machinery."
+   },
+   {
+    "type": "DECIDED_BY",
+    "target": "Wisest Choice Law (2026-10-09)."
+   }
+  ],
+  "uncertainty": "The calculus inputs for fixture access are situation-defined; the law fixes that no person or role is the custodian.",
+  "applicability": "Every seat involved with sealed fixtures, test integrity, or key material.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a static keyholder is appointed, or an access decision is made by role rather than the calculus.",
+  "measurement_contract": "Log every access decision with its reasons; audit that no identity-based grants occurred.",
+  "successor_effect": "A cold successor asked 'who holds the keys' answers 'the math' — and runs the decision procedure instead of looking for a person."
+ }
+}

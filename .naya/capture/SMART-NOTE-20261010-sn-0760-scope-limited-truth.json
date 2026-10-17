@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0760",
+ "capture_id": "20261010-sn-0760-scope-limited-truth",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "EPISTEMIC_HONESTY",
+ "subtopic": "MEANING_ENVELOPE",
+ "title": "Partial Evidence & Scope-Limited Truth — meaning envelope, four region verdicts, PARTIALLY_SUPPORTS",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Never claim more than the evidence establishes; never discard what the evidence proves. Every claim is evaluated against its meaning envelope — the region of conditions where the evidence actually applies — with four region verdicts: the evidence can fully support, partially support, not support, or be undetermined for the claim. PARTIALLY_SUPPORTS is a first-class verdict, not a failed SUPPORTS: it says exactly which part of the envelope the evidence covers and which part it doesn't. This is the law against both overclaiming ('tested on one node' → 'works everywhere') and underclaiming (ignoring what was genuinely proven).",
+  "human_view": {
+   "meaning": "Say exactly what was proven — no more, no less. If the evidence covers half the claim, say 'half,' name which half, and don't pretend about the rest.",
+   "why_it_matters": "The whole stack's honesty bottleneck. Every inflated 'works' and every discarded genuine result passes through this gate."
+  },
+  "simple_view": {
+   "meaning": "Say exactly what was proven — no more, no less. If the evidence covers half the claim, say 'half,' name which half, and don't pretend about the rest."
+  },
+  "naya_view": {
+   "directive": "Evaluate every claim against its meaning envelope; assign one of the four region verdicts. PARTIALLY_SUPPORTS must name the covered and uncovered regions. Never promote a partial verdict by dropping the uncovered part."
+  },
+  "ai_view": {
+   "specification": "verdict(claim, evidence, envelope) ∈ {SUPPORTS, PARTIALLY_SUPPORTS(covered, uncovered), DOES_NOT_SUPPORT, UNDETERMINED}. Promotion requires the claim to fit inside the covered region.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0760",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Scope-limited-truth spec L1: 158/158 tests (meaning envelope, four region verdicts, PARTIALLY_SUPPORTS as first-class)."
+  },
+  "learning_lesson": "Standing example: the 2026-10-10 qualification sandbox proved the lesson mechanism on one harness — scope-limited truth forbids reading it as 'the brain learns.'",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/independence-propagation, L1 158/158 tests."
+  ],
+  "connections": [
+   {
+    "type": "CONSUMES",
+    "target": "SN-0752 Atomic extraction — envelopes come from extraction."
+   },
+   {
+    "type": "FEEDS",
+    "target": "SN-0761 Combining evidence — partial verdicts are its inputs."
+   }
+  ],
+  "uncertainty": "Envelope-drawing conventions are implementer-defined; the four verdicts and the naming requirement for partials are fixed.",
+  "applicability": "Every seat that states what evidence proves.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a claim is found asserted beyond its covered region, or genuine partial support is discarded.",
+  "measurement_contract": "Audit claims against their envelopes; count overclaim vs underclaim corrections.",
+  "successor_effect": "A cold successor reading a test report states the proven scope exactly — and marks the rest UNPROVEN without being asked."
+ }
+}

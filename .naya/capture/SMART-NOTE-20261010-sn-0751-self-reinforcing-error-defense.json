@@ -1,0 +1,66 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0751",
+ "capture_id": "20261010-sn-0751-self-reinforcing-error-defense",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "EPISTEMIC_DEFENSE",
+ "subtopic": "STRENGTHEN_VULNERABILITY",
+ "title": "Self-Reinforcing Error Defense — the strengthen() vulnerability and the DETECT→QUARANTINE→TRACE→REVALIDATE→RECOVER pipeline",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "A reproduced vulnerability: a lesson's strengthen() path could reinforce its own error instead of correcting it — the system gets more confident in a mistake each time it touches it. The defense is a seven-predicate qualify_lesson gate that every lesson must pass before promotion, plus a five-stage pipeline: DETECT (find the reinforcement pattern), QUARANTINE (isolate the suspect lesson from active retrieval), TRACE (find where the false claim spread), REVALIDATE (re-check the claim against independent evidence), RECOVER (correct or demote, preserving provenance of the error). Errors are fossilized, not erased: the wrong version stays visible with its correction attached so successors don't re-learn the mistake.",
+  "human_view": {
+   "meaning": "A confident mistake is more dangerous than an uncertain one. This is the immune system against lessons that make themselves stronger every time they're used — catch it, isolate it, trace where it spread, re-check it, fix it.",
+   "why_it_matters": "Without this, the learning loop compounds errors instead of intelligence. One self-reinforcing false lesson can outrun every correction."
+  },
+  "simple_view": {
+   "meaning": "A confident mistake is more dangerous than an uncertain one. This is the immune system against lessons that make themselves stronger every time they're used — catch it, isolate it, trace where it spread, re-check it, fix it."
+  },
+  "naya_view": {
+   "directive": "Run the seven-predicate qualify_lesson before any lesson promotion. When a reinforcement pattern is detected (rising confidence without new independent evidence), execute the five-stage pipeline in order; never skip QUARANTINE while tracing. Preserve the wrong version with its correction — deletion erases the fossil record successors need."
+  },
+  "ai_view": {
+   "specification": "qualify_lesson(L): seven predicates all true before promotion. On detection of self-reinforcement: state QUARANTINED; retrieval excludes the lesson; TRACE enumerates downstream dependents; REVALIDATE requires evidence independent of the lesson's own history; RECOVER demotes or corrects with provenance preserved.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0751",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Error-defense spec: 46 tests green; strengthen() vulnerability reproduced before the defense was specified."
+  },
+  "learning_lesson": "The strengthen() reproduction is the fossil: it proved the failure mode is real, not theoretical.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law)."
+  ],
+  "connections": [
+   {
+    "type": "RELATED",
+    "target": "SN-0750 Compounding — falsifier logic and anti-self-verification are the same immune response at a different layer."
+   }
+  ],
+  "uncertainty": "The seven predicates' exact thresholds are implementer-defined; the law fixes the pipeline order and the preservation rule, not the numeric cutoffs.",
+  "applicability": "Every seat that promotes, strengthens, or retrieves lessons.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a strengthened false lesson passes the gate undetected, or if quarantine fails to stop downstream use of a flagged lesson.",
+  "measurement_contract": "Count reinforcement events caught at each pipeline stage; measure time from DETECT to QUARANTINE. A caught error is a success, not a failure.",
+  "successor_effect": "A cold successor that inherits a poisoned lesson finds it quarantined with its fossil record, traces the spread, and does not re-promote it — the mistake dies once, not repeatedly."
+ }
+}

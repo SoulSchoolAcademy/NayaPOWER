@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0757",
+ "capture_id": "20261010-sn-0757-uncertain-scope",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "EVALUATION_INTEGRITY",
+ "subtopic": "THREE_VALUED_LOGIC",
+ "title": "Governing Uncertain Canary Compromise — two boundaries, three-valued logic, clearance requires positive evidence",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Sometimes you know something is compromised but not how far it spread. The system keeps two boundaries: the confirmed-compromised region and the possibly-compromised region — and reasons in three-valued logic: CONFIRMED, EXCLUDED, UNDETERMINED. 'Unknown independence is not proven independence; unknown contamination is not proven contamination.' Clearance from UNDETERMINED to EXCLUDED requires positive evidence of cleanliness, never the mere absence of bad news. Deadlines never auto-clear: a timeout does not convert UNDETERMINED to EXCLUDED. Exposure paths are typed so the system knows HOW contamination could travel, and responses are chosen by use: what you may do with CONFIRMED-compromised evidence differs from UNDETERMINED.",
+  "human_view": {
+   "meaning": "When you don't know how far the damage spread, don't guess. Mark what's definitely bad, mark what might be bad, and only clear something with real proof it's clean. Running out of time doesn't make it clean.",
+   "why_it_matters": "This is the honest middle between 'burn everything' and 'pretend it's fine.' Most real contamination is uncertain-scope; this is the law for the common case."
+  },
+  "simple_view": {
+   "meaning": "When you don't know how far the damage spread, don't guess. Mark what's definitely bad, mark what might be bad, and only clear something with real proof it's clean. Running out of time doesn't make it clean."
+  },
+  "naya_view": {
+   "directive": "Maintain both boundaries explicitly. Use CONFIRMED/EXCLUDED/UNDETERMINED in every contamination record. Clear only on positive evidence. Never let a deadline flip UNDETERMINED to EXCLUDED — escalate instead. Choose the response by the evidence's use."
+  },
+  "ai_view": {
+   "specification": "state(e) ∈ {CONFIRMED, EXCLUDED, UNDETERMINED}; boundary_confirmed ⊆ boundary_possible. clear(e): UNDETERMINED → EXCLUDED requires positive_evidence(e); timeout does not transition. Exposure paths typed; response = f(use, state).",
+   "directive": "Follow as written. This is law, not guidance. Deadlines never auto-clear."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0757",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Uncertain-scope spec: 96/96 tests (two boundaries, three-valued logic, positive-evidence clearance, deadlines never auto-clear)."
+  },
+  "learning_lesson": "The exposure audit left uncertain-scope regions; this law governs exactly those.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/uncertain-scope, 96/96 tests."
+  ],
+  "connections": [
+   {
+    "type": "REFINES",
+    "target": "SN-0756 Selective revocation — handles the uncertain middle the verdicts leave open."
+   },
+   {
+    "type": "RELATED",
+    "target": "SN-0758 Authority governance — clearance packets carry the positive evidence."
+   }
+  ],
+  "uncertainty": "Boundary-drawing criteria and response-by-use tables are implementer-defined; three-valued logic and positive-evidence clearance are fixed.",
+  "applicability": "Every seat that reasons about contamination, exposure, or clearance.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if UNDETERMINED evidence is used as clean, or a deadline silently clears a region.",
+  "measurement_contract": "Track UNDETERMINED dwell time and clearance evidence quality; audit that no auto-clear occurred.",
+  "successor_effect": "A cold successor inheriting an UNDETERMINED region neither trusts nor burns it — it seeks the positive evidence or escalates."
+ }
+}

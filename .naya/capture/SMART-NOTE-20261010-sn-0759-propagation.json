@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0759",
+ "capture_id": "20261010-sn-0759-propagation",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "EPISTEMIC_COMPOSITION",
+ "subtopic": "SUPPORT_SETS",
+ "title": "Provenance-Preserving Intelligence Propagation — support sets (OR/AND), four-surface rules",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "When intelligence is summarized, combined, or handed off, its uncertainty must travel with it: 'Uncertainty follows dependencies; eligibility follows independent support; authority remains with LAW.' Every derived claim carries its support set — the OR/AND structure of what it depends on — so any consumer can see exactly which evidence props it up. Four-surface rules govern the handoff: the uncertainty label, the support set, the evidence links, and the authority boundary all survive summarization. A summary that drops the 'UNDETERMINED' label and presents the claim as established is not a summary — it's a fabrication. Derived claims inherit the weakest support of their dependencies, never the strongest.",
+  "human_view": {
+   "meaning": "When you pass intelligence along, its doubts travel with it. Every conclusion carries the list of what it's standing on — so anyone can kick the legs and see if it falls.",
+   "why_it_matters": "Kills the whisper-down-the-lane failure where 'possibly compromised' becomes 'established fact' after three summaries."
+  },
+  "simple_view": {
+   "meaning": "When you pass intelligence along, its doubts travel with it. Every conclusion carries the list of what it's standing on — so anyone can kick the legs and see if it falls."
+  },
+  "naya_view": {
+   "directive": "Attach support sets (OR/AND) to every derived claim. Apply the four-surface rules on every handoff: uncertainty label, support set, evidence links, authority boundary all survive. Derived claims take the WEAKEST dependency's standing, never the strongest."
+  },
+  "ai_view": {
+   "specification": "support(claim) = OR/AND tree of evidence; standing(claim) = min over dependencies. Handoff preserves the four surfaces; dropping the uncertainty label is a fabrication event.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0759",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Propagation spec L1: 158/158 tests (support sets OR/AND, four-surface rules; L2 composition, L3 audit, L4 versioning spec'd)."
+  },
+  "learning_lesson": "Standing application: every framework summary tonight was required to carry its uncertainty — the practice this law makes permanent.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/independence-propagation, L1 158/158 tests; L2-L4 spec'd."
+  ],
+  "connections": [
+   {
+    "type": "USES",
+    "target": "SN-0752 Atomic extraction — atoms are the units support sets are built from."
+   },
+   {
+    "type": "GOVERNS",
+    "target": "SN-0760 Scope-limited truth — the claim-strength rules for propagated atoms."
+   }
+  ],
+  "uncertainty": "Support-set syntax and the four surfaces' exact fields are implementer-defined; weakest-link inheritance is fixed.",
+  "applicability": "Every seat that summarizes, distills, hands off, or composes intelligence.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a derived claim is found citing stronger standing than its weakest dependency, or a handoff drops the uncertainty label.",
+  "measurement_contract": "Sample handoffs and verify all four surfaces survived; track weakest-link violations.",
+  "successor_effect": "A cold successor receiving a summary can reconstruct exactly what evidence supports it and how shaky each leg is — and refuses a summary with no support set."
+ }
+}

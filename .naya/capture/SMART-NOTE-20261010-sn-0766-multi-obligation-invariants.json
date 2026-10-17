@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0766",
+ "capture_id": "20261010-sn-0766-multi-obligation-invariants",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "SYSTEM_QUALIFICATION",
+ "subtopic": "JOINT_CONTEXT_BINDING",
+ "title": "Multi-Obligation Invariants — joint-context binding, temporal logic, six categories; 'green nodes do not automatically create a green system'",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Invariants that hold across several obligations at once — the rules the whole system must never break. Joint-context binding (the D-101/D-102 case: two obligations joined on a key must actually share the key's meaning, not just its spelling) prevents the classic join fallacy. Temporal logic governs invariants over time: what must hold always, eventually, or until. Six categories cover the invariant space. Race handling (T1–T4) covers multi-party timing. The governing image, from Shawn's own diagram: green nodes do not automatically create a green system — every node can pass and the composition can still violate the invariant, because the invariant is about the whole, not the parts.",
+  "human_view": {
+   "meaning": "Some rules are about the whole system, not any single part. 'Every part is fine' doesn't prove 'the whole is fine' — the rule about the whole needs its own check. And when two parts join on the same key, make sure they mean the same thing by it, not just spell it the same.",
+   "why_it_matters": "The composition fallacy, killed as law. This is the formal version of the intuition in Shawn's own diagram."
+  },
+  "simple_view": {
+   "meaning": "Some rules are about the whole system, not any single part. 'Every part is fine' doesn't prove 'the whole is fine' — the rule about the whole needs its own check. And when two parts join on the same key, make sure they mean the same thing by it, not just spell it the same."
+  },
+  "naya_view": {
+   "directive": "State cross-obligation invariants explicitly. Bind joint contexts on meaning, not spelling (the D-101/D-102 rule). Check temporal invariants with the right temporal operators. Handle multi-party races (T1–T4). Never infer system invariants from node results."
+  },
+  "ai_view": {
+   "specification": "invariant(system) is independent of ∧ invariant(node_i). Joint binding: key meaning must unify across obligations. Temporal: □/◇/U as specified. Races T1–T4 dispositioned.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0766",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Invariant spec: 205/205 tests (same branch; joint-context binding, temporal logic, six categories, T1-T4 race handling)."
+  },
+  "learning_lesson": "Shawn's uploaded SVG ('Green nodes do not automatically create a green system') is the canonical illustration; the D-101/D-102 catch is the standing proof the binding rule works.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/proof-migration, 205/205 tests."
+  ],
+  "connections": [
+   {
+    "type": "STRENGTHENS",
+    "target": "SN-0762 Composite audit — invariants are what the audit verifies."
+   },
+   {
+    "type": "RELATED",
+    "target": "SN-0765 Cross-obligation interactions — interactions are where invariants break."
+   }
+  ],
+  "uncertainty": "The six categories and race taxonomy are implementer-defined; the independence of system invariants from node results is fixed.",
+  "applicability": "Every seat that asserts system-level properties.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a system invariant is claimed on node results alone, or a join-key meaning mismatch passes undetected.",
+  "measurement_contract": "Track invariants with their verification status; audit join bindings for meaning unification.",
+  "successor_effect": "A cold successor shown nine green nodes still asks for the system invariant proof — and checks the join keys mean the same thing."
+ }
+}

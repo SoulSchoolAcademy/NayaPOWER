@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0765",
+ "capture_id": "20261010-sn-0765-cross-obligation-interactions",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SYSTEM_QUALIFICATION",
+ "subtopic": "INTERACTION_DISCOVERY",
+ "title": "Cross-Obligation Interactions — six classes, five discovery checks, five-rung proof ladder",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "A merge may inherit component evidence, but never proof of an interaction that was never established. Interactions between obligations come in six classes (timing, ordering, resource contention, shared context, and others); five discovery checks hunt for interactions the designers didn't declare; and a five-rung proof ladder says exactly how strong the interaction evidence is — from 'hypothesized' to 'proven under the deployment conditions.' The ladder matters because teams consistently overrate interaction evidence by two rungs. Undeclared interactions are the normal case, not the exception: the discovery checks exist because designers reliably miss them.",
+  "human_view": {
+   "meaning": "When two things work together, the way they affect each other needs its own proof. The proof has five levels, and teams always think they're two levels higher than they are. So we go looking for the interactions nobody declared — because there are always some.",
+   "why_it_matters": "Integration failures live in undeclared interactions. This is the metal detector for the things the design didn't mention."
+  },
+  "simple_view": {
+   "meaning": "When two things work together, the way they affect each other needs its own proof. The proof has five levels, and teams always think they're two levels higher than they are. So we go looking for the interactions nobody declared — because there are always some."
+  },
+  "naya_view": {
+   "directive": "Run the five discovery checks on every composition. Classify found interactions into the six classes. Place interaction evidence honestly on the five-rung ladder; never round up. A merge inherits component evidence and must still earn its interaction proof."
+  },
+  "ai_view": {
+   "specification": "interaction ∈ 6 classes; discovery: 5 checks; proof_ladder ∈ 5 rungs. Rule: merge inherits evidence, never interaction proof. Ladder placement requires the rung's evidence criteria, not the team's confidence.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0765",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Interaction spec: 205/205 tests (same branch; six classes, five discovery checks, five-rung proof ladder)."
+  },
+  "learning_lesson": "The SVG Shawn uploaded ('green nodes do not automatically create a green system') is the visual twin of this law.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/proof-migration, 205/205 tests."
+  ],
+  "connections": [
+   {
+    "type": "REFINES",
+    "target": "SN-0762 Composite audit — the interaction-proof machinery it calls for."
+   },
+   {
+    "type": "USES",
+    "target": "SN-0764 Split/merge migration — merges trigger interaction discovery."
+   }
+  ],
+  "uncertainty": "The six classes and five checks are implementer-defined; the inheritance rule and no-rounding-up are fixed.",
+  "applicability": "Every seat that composes, merges, or integrates obligations or components.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if an interaction is qualified above its ladder rung, or a merge claims interaction proof it never ran.",
+  "measurement_contract": "Track discovered-vs-declared interaction counts; audit ladder placements against rung criteria.",
+  "successor_effect": "A cold successor merging two qualified components runs the discovery checks first — and finds the interaction nobody declared."
+ }
+}

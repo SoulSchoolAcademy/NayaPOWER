@@ -1,0 +1,75 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0769",
+ "capture_id": "20261010-sn-0769-scheduler-fairness",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "LIVENESS",
+ "subtopic": "SERVICE_LADDER",
+ "title": "Scheduler Fairness — service ladder, fairness ledger; 'fairness guarantees opportunity, only qualifying evidence establishes accomplishment'",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "Eligible work is owed a real chance — but a chance is not a result. The six-rung service ladder (SELECTED → DISPATCHED → SERVICED → ATTEMPTED → ADVANCED → COMPLETED) separates being chosen from being served from actually advancing the work; conflating the rungs is how schedulers claim fairness while starving work. Three fairness standards set the bar; the fairness ledger records service debt per obligation — and the debt survives reassignment, so moving work to another scheduler doesn't erase what it's owed. Anti-gaming rules block the classic cheats: repeatedly 'servicing' work with useless slices, or resetting the ledger by re-queueing. The governing sentence: 'Fairness guarantees opportunity; execution creates observations; only qualifying evidence establishes accomplishment.'",
+  "human_view": {
+   "meaning": "Every waiting job is owed a real turn — but getting a turn isn't the same as getting the job done. We track exactly how far each job got up the ladder, and the debt follows the job even if it moves. No resetting the scoreboard by re-queueing.",
+   "why_it_matters": "Without the ladder, 'fair' means whatever the scheduler says it means. With it, every claim about fair treatment is checkable rung by rung."
+  },
+  "simple_view": {
+   "meaning": "Every waiting job is owed a real turn — but getting a turn isn't the same as getting the job done. We track exactly how far each job got up the ladder, and the debt follows the job even if it moves. No resetting the scoreboard by re-queueing."
+  },
+  "naya_view": {
+   "directive": "Track every obligation on the six-rung ladder. Keep the fairness ledger; debt survives reassignment. Apply the three fairness standards. Block the gaming patterns: empty service, ledger resets, starvation by re-queue."
+  },
+  "ai_view": {
+   "specification": "ladder: SELECTED → DISPATCHED → SERVICED → ATTEMPTED → ADVANCED → COMPLETED. ledger_debt(obligation) persists across reassignment. Fairness standard ∈ 3 levels. Gaming patterns denied.",
+   "directive": "Follow as written. This is law, not guidance."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0769",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Fairness spec: 313/313 tests (six-rung service ladder, three fairness standards, fairness ledger with surviving debt, anti-gaming)."
+  },
+  "learning_lesson": "Standing composition: fairness gives the chance (this law); progress proves the chance accomplished something (SN-0768).",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Branch naya5/scheduler-fairness, 313/313 tests."
+  ],
+  "connections": [
+   {
+    "type": "QUALIFIES",
+    "target": "SN-0767 Liveness — fairness is the task-completion liveness guarantee."
+   },
+   {
+    "type": "COMPOSES_WITH",
+    "target": "SN-0768 Progress — opportunity → service → verified progress."
+   },
+   {
+    "type": "REFINED_BY",
+    "target": "SN-0770 Strong fairness — the weak/strong distinction."
+   }
+  ],
+  "uncertainty": "The three standards' exact bars are implementer-defined; the ladder, ledger persistence, and anti-gaming are fixed.",
+  "applicability": "Every seat that schedules, queues, prioritizes, or claims fair treatment of work.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a ledger debt is erased by reassignment, or a rung is skipped in a fairness claim.",
+  "measurement_contract": "Audit ladder transitions per obligation; track ledger debt aging.",
+  "successor_effect": "A cold successor handed a starved queue reads the ledger, sees the debt, and knows exactly which obligations were cheated — and which rung they died on."
+ }
+}

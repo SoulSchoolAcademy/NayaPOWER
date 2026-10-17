@@ -1,0 +1,71 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0772",
+ "capture_id": "20261010-sn-0772-assumption-hygiene",
+ "canonical_intent": "CAPTURE_DURABLE_LAW",
+ "category": "GOVERNANCE",
+ "topic": "VERIFICATION",
+ "subtopic": "ASSUMPTION_GUARANTEE_BOUNDARY",
+ "title": "Assumption Hygiene — assumption–guarantee boundary, four predicates, vacuity detection; 'assume only what the environment guarantees'",
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "GOVERNANCE",
+  "subtopic_slug": "LAW-IS-CODE"
+ },
+ "lifecycle_state": "ACTIVE",
+ "source": {
+  "source_type": "human_director_ratification",
+  "source_reference": "Shawn's explicit teaching, main chat, 2026-10-10. Filed same-evening per his standing law: his word IS the verification (Verification Law); filed immediately, not queued.",
+  "captured_at": "2026-10-10",
+  "captured_at_utc": "2026-10-10T19:30:00Z"
+ },
+ "intelligence": {
+  "essence": "A model checker can report success while the scheduler starves — if the proof assumes what it was supposed to prove. The assumption–guarantee boundary: the environment gets only assumptions it can independently guarantee (e.g., resource availability under defined conditions); the scheduler's selection, service, and fairness are PROPERTIES TO PROVE, never assumptions. Four predicates prevent circular eligibility: OUTSTANDING (needs resolution), ADMISSIBLE (authority permits), READY (everything but scheduling), ENABLED (a real transition can occur) — eligibility is never defined as 'already chosen by the scheduler.' Every assumption gets an eight-question audit (who controls it, can it hide a counterexample, is it satisfiable, does it already imply the result...). Three models run: adversarial (hunt starvation), justified (prove without assuming fairness), runtime refinement (the real scheduler obeys the model). Vacuity detection rejects proofs about empty worlds: assumption satisfiability, enablement witnesses, and the mutation test — a deliberately broken scheduler must FAIL, or the proof configuration itself is suspect. Verdicts: PROVED_IN_SCOPE, VACUOUS, ASSUMPTIONS_UNJUSTIFIED, COUNTEREXAMPLE_FOUND, UNKNOWN. The rule: 'No fairness qualification is accepted unless its environmental assumptions are explicit, independently justified, satisfiable, minimally sufficient, and tested against known scheduler defects.'",
+  "human_view": {
+   "meaning": "Never let the proof assume the conclusion. The environment gets assumptions it can actually back up; everything the scheduler is supposed to do must be PROVEN, not assumed. And if the proof's world is so rigged that nothing could fail in it, the proof is worthless — we check for that automatically.",
+   "why_it_matters": "This is the integrity check on verification itself. Every proof in the stack is only as honest as its assumptions; this law audits the auditors."
+  },
+  "simple_view": {
+   "meaning": "Never let the proof assume the conclusion. The environment gets assumptions it can actually back up; everything the scheduler is supposed to do must be PROVEN, not assumed. And if the proof's world is so rigged that nothing could fail in it, the proof is worthless — we check for that automatically."
+  },
+  "naya_view": {
+   "directive": "Draw the assumption–guarantee boundary on every liveness proof. Use the four predicates; never define eligibility as scheduler choice. Audit every assumption with the eight questions; run the three models; run the vacuity checks including the broken-scheduler mutation test. Reject VACUOUS and ASSUMPTIONS_UNJUSTIFIED as qualifications."
+  },
+  "ai_view": {
+   "specification": "A_env ∧ I_sched ⊨ F_sched (F_sched NOT assumed). Predicates: OUTSTANDING/ADMISSIBLE/READY/ENABLED. Audit: 8 questions. Models: A (adversarial), B (justified), C (refinement). Vacuity: 6 checks incl. mutation test. Verdicts: 5 states, no collapsed PASS.",
+   "directive": "Follow as written. This is law, not guidance. A VACUOUS proof cited as qualification is a law violation."
+  },
+  "machine_view": {
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "authority_inheritance": false,
+   "law_id": "SN-0772",
+   "status": "SPEC_BUILT_TESTED_NOT_ACTIVATED",
+   "spec_only": "Spec-only by design; live KNOW/LAW/ACT wiring parked for the Human Director's word. No production claim.",
+   "test_evidence": "Delivered 2026-10-10 as assumption-hygiene extension to fairness verification: assumption-guarantee boundary, four predicates, eight-question audit, three models, vacuity checks, broken-scheduler mutation test."
+  },
+  "learning_lesson": "Folded into the fairness-verification build 2026-10-10; the smallest experiment (intermittent ACT + starving scheduler + overstrong assumption) is the standing acceptance test.",
+  "decisions": [
+   "Shawn's word ratifies the teaching. His word IS the verification; no second verification of the lesson itself is permitted (Verification Law).",
+   "Delivered 2026-10-10 as extension to naya5/fairness-verification."
+  ],
+  "connections": [
+   {
+    "type": "GOVERNS",
+    "target": "SN-0771 Fairness verification — the boundary every proof it runs must respect."
+   },
+   {
+    "type": "RELATED",
+    "target": "SN-0755/0756/0757 — the same honesty instinct applied to evaluation integrity."
+   }
+  ],
+  "uncertainty": "Audit question wording and check implementations are implementer-defined; the boundary, the four predicates, and the mutation test are fixed.",
+  "applicability": "Every seat that writes, runs, or cites a model-checked liveness proof.",
+  "epistemic_state": "RATIFIED",
+  "falsifier": "Falsified if a proof assumes its conclusion, or a broken scheduler passes the mutation test.",
+  "measurement_contract": "Track vacuity-check outcomes per proof; every excluded counterexample must name its excluding assumption.",
+  "successor_effect": "A cold successor handed a green model-checking result asks 'what was assumed, what did it exclude, could a broken scheduler still pass' — and rejects the PASS if the answers are bad."
+ }
+}
