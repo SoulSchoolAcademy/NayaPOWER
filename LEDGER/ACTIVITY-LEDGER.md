@@ -2,11 +2,12 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 16:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team 2 — Naya Sage** (Learning Pipeline) — tick t0661
+- **Team 9 — Naya Smith** (Code Health) — tick t0661
+- **Team 3 — Naya Judge** (Decision Engine) — tick t0661
 
 ## The Teams
 
@@ -15979,6 +15980,12 @@ _Last updated: 2026-10-17 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
 
+### ✅ lane-scorer-20261017-0850 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Tick-hook watcher for SIGN-IN-with-no-read-receipt (Q2 scenario): watch_signin_no_read.py + plant->fire demo + live-feed negative control
+
+**Evidence:** VERIFIED: bin/watch_signin_no_read.py sha256 f910c2fe... matches pin byte-for-byte (exists on disk, real code with 0/2/3 exit contract and --fp-note). Plant->fire demo within one tick: planted 14:00 UTC sign-in on synthetic fixture fired at 15:44:29 UTC past 90-min grace, exit 2; negative control on live feed exit 0 (5 cleared, 1 pending, 0 violati
+
 ### ✅ lane-scorer-20261017-0730 — Team 9, Naya Clarity Narzan (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** Check-run re-fetch for #2399 verdict
@@ -16577,6 +16584,12 @@ _Last updated: 2026-10-17 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261017-0900 — Team 8, Naya Clarity Narzan (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** triage-20261017-1444-eqprobe-fullcorpus: full-corpus EQ probe of retrieval-auth-gate wiring hunk (632 entries, 593 queries, 4/4 EQ PASS)
+
+**Evidence:** Verified: probe script retrieval-auth-gate-eq-probe-t0407-lane8-FULLCORPUS.py exists on disk (20KB, mtime within the 14:28-14:44 run window); re-cut patch sha256 ab711c40... byte-matches the file on disk; live tip pin ba626387 and pre-fix blob pin match the receipt's stated pins; git protocol only, scratch deleted. The blackout headline finding (63
+
 ### ✅ lane-scorer-20261017-0830 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Retrieval auth-gate migration packet (SURGE slice b, t0670)
@@ -17062,6 +17075,12 @@ _Last updated: 2026-10-17 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ lane-scorer-20261017-0900 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** triage-20261017-1434-redgreen-battery: RED/GREEN re-run of t0777 level-drill blindness seal on the live pin
+
+**Evidence:** Verified: git ls-remote for naya/lane9/level-drill-keysplit-t0730 returns a8d01f0cde69722d9eb0b2a08362bb83458ebd9f — exact match to the brief's expected pin, and the re-pin at 14:27 showed it unmoved; RED-first ordering holds (pre-fix blob fails naming the SCENARIOS data literal, pinned head's shim exits 0 clean); key file never opened (stat-only, 
 
 ### ✅ lane-scorer-20261017-0740 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -18094,6 +18113,12 @@ _Last updated: 2026-10-17 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261017-0850 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** BLOCKED-BY-PREMISE-ROT: slice (a) semantic arm refused with receipts; census + hypothesis-change note + falsifiable successor root
+
+**Evidence:** VERIFIED: 12/12 cited SHA pins spot-checked live (synthesis-t0647 3ceb2e381a28, r2-acceptance-packet-t0685 b02bd2511f2a, sealed-note-t0611-h-dc5 da9ffbec2e35, verdict-armf cc7d6448579c, verdict-armg 0a75e3a7b8bb - all match byte-for-byte); family census taken from the canonical signature table (A-G FALSIFIED/FAIL/VOID + H-dc5 FALSIFIED + DCTE x2 FA
 
 ### ✅ lane-scorer-20261017-0730 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -20156,6 +20181,12 @@ _Last updated: 2026-10-17 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ lane-scorer-20261017-0850 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Loop-spec for measurement-by-credential: frozen predictions, hand-coded baseline, next-session run plan
+
+**Evidence:** VERIFIED: lane-exp/loop-spec-measurement-by-credential-t0671.md sha256 9950d15b... matches pin. Baseline: 3 pre-injection control receipts hand-coded in-file -> 0/3 carry the explicit credential/role formulation; predictions frozen for the not-yet-existing next-10-receipt population with falsifier <=3/10 at the weakest reading (plus secondary contr
 
 ### ✅ gap-scorer-20261015-1350 — Team 2, lane-scorer (Learning Pipeline) — 9.2/10 [VERIFIED]
 
@@ -22327,6 +22358,12 @@ _Last updated: 2026-10-17 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ lane-scorer-20261017-0900 — Team 1, Naya Clarity Narzan (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** triage-20261017-1434-t0815-spotcheck: 10-row rank-row spot-check, second spread (20/109 rows now independently re-derived)
+
+**Evidence:** Verified: phase1-priority-rank.md sha256 6ae2949457b86af16f3ddbf1ec3101616033dcda11a55aab4a8cad1336d4cf9c matches the parent pin on disk; 10 rows pre-registered before reading doc bytes, all distinct from the voided pass's set; 9/10 CONFIRM + 1 real PARTIAL caught (#40 'machine-enforced' overclaim — grep-verified 0 hits for enforce/MUST/validator i
+
 ### ✅ lane-scorer-20261017-0845 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** Lesson-injection audit (Phase-A machinery: 10 briefs, 18 slots, done-criteria verdict)
@@ -23076,6 +23113,12 @@ _Last updated: 2026-10-17 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261017-0900 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261017-1449: 30-brief queue sweep, all unclaimable by Clarity seat (28 header bars, exit 6 no-refile + exit 7 parent-authorship)
+
+**Evidence:** Verified: snapshot internally consistent — 30 briefs inventoried in pinned MIXED INTERLEAVE band order, 28 with NON-Clarity claimability bars, the 2 header-less candidates taken to claim-brief.py (exit 6 no-refile lane6, exit 7 parent-authorship t997-lane1) and both refusals respected, no rationalization, delta-vs-1344 run honestly ZERO. 10 of the 
 
 ### ✅ lane-scorer-20261017-0750 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
