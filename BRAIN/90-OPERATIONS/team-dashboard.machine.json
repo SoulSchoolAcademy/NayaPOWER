@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T10:15:48+00:00",
+ "generated_utc": "2026-10-17T11:15:35+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2727,
+     "title": "ACT: PR-author self-check template (w368 landing of w365 build)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2727",
+     "draft": false
+    },
+    {
      "number": 2725,
      "title": "RETRIEVAL: re-pin original grader bytes to TRIAL-11-RESERVE (w356)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2725",
@@ -388,15 +394,9 @@
      "title": "Design System v1 \u2014 the Naya Lego box (100 laws, tokens, catalog, organized library)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705",
      "draft": true
-    },
-    {
-     "number": 2703,
-     "title": "Harden TIP-NOTE marker to line-anchored heading regex + regression tests",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703",
-     "draft": false
     }
    ],
-   "open_pr_count": 230
+   "open_pr_count": 231
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 607,
- "unassigned_prs": 230
+ "open_pr_total": 608,
+ "unassigned_prs": 231
 }

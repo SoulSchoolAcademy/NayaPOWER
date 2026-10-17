@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 10:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 11:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 607 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 608 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (230)
+### BUILD (231)
+- [#2727](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2727) ACT: PR-author self-check template (w368 landing of w365 build)
 - [#2725](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2725) RETRIEVAL: re-pin original grader bytes to TRIAL-11-RESERVE (w356)
 - [#2722](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2722) Remove stale L11 note: oath + field manuals are on main
 - [#2719](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2719) LAW: hold-veto mention-vs-use hardening (_HOLD_VETO_RE → _HOLD_USE_RE)
 - [#2715](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2715) Daily intelligence report pipeline — item 17 (generator + sample + rea
-- [#2708](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708) Design Laws v1 (DRAFT): three-tongue repo placement 📝draft
-- …and 225 more
+- …and 226 more
 
 ### WIRE (124)
 - [#2724](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724) fix(gate): receipt-pin reads live PR body, not frozen event payload
