@@ -173,8 +173,12 @@ def assemble(contract_path: Path, library_root: Path) -> tuple[str, dict[str, An
 .section-parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;align-items:start;margin-top:18px}
 .assembled-block{min-width:0;max-width:100%;overflow-wrap:anywhere}.assembled-block>svg{max-width:100%}
 .assembled-block button,.assembled-block input,.assembled-block a{max-width:100%}
-.module-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px}.module-list li{padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:#0d0b13}.module-state{display:block;margin-top:5px;color:#f0abfc;font-size:11px;font-weight:800;letter-spacing:.08em}.assembly-footer{margin-top:36px;padding:18px 0;border-top:1px solid rgba(255,255,255,.18);color:var(--ink-dim,#c8c0d5);font-size:13px}
+.assembly-footer{margin-top:36px;padding:18px 0;border-top:1px solid rgba(255,255,255,.18);color:var(--ink-dim,#c8c0d5);font-size:13px}
 @media(max-width:560px){.assembly-page{padding:16px}.assembly-section{padding:15px;border-radius:17px}.section-parts{grid-template-columns:1fr}.assembled-block{width:100%}}
+"""
+    if modules:
+        shell_css += """
+.module-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px}.module-list li{padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:#0d0b13}.module-state{display:block;margin-top:5px;color:#f0abfc;font-size:11px;font-weight:800;letter-spacing:.08em}
 """
     output = (
         "<!doctype html>\n<html lang=\"en\">\n<head>\n"
