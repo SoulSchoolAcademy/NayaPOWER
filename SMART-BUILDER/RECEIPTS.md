@@ -24,10 +24,10 @@ the system builds itself.
 
 - `contract`: SMART-BUILDER/contract-page.contract.json
   (`contract_version: 1.0`, 15 sections from CONTRACT-HUMAN-v1.md)
-- `contract sha256`: `$(sha256sum SMART-BUILDER/contract-page.contract.json)`
+- `contract sha256`: `44e872280e0e5f768e0e789068810cca3340df882f32a7826b07a325d371b013`
 - `library_version`: nitro/design-library@0fe51806cc + nitro/design-specimens@825b45c1dbf
 - `output`: SMART-BUILDER/contract-page.html
-- `output_sha256`: 246dc3562e7550385e92f83dda60f33023dbfa2a80821357f0a60714786200e3
+- `output_sha256`: 2c85959d5040abaf8472a2206f62a05b1849027b291e4ec80f076af60a499ed6
   (two runs, byte-identical — determinism proven)
 - `verifier`: 10.0 / SHIP / exit 0
 - `pieces_used`: hero.naya-entrance, nav.top-bar (auto), layout.three-tongue,
@@ -41,6 +41,14 @@ the system builds itself.
   fixed in the PIECE MAPPING (registry normalization: living-btn →
   naya-btn naya-btn--primary, behavior preserved) → regenerated → 10.0.
   The page was never hand-edited. This is the loop working.
+
+## Rework applied (independent checker VERIFY/Chi, 2026-10-17)
+
+Checker scored 8.75 vs coordinator's 9.25 — three mechanical findings, all fixed:
+1. design-dna.css carried markdown/prose from a bad extraction → regenerated as pure CSS from fenced code blocks only; page rebuilt.
+2. Receipts placeholder hash → expanded with the real contract hash.
+3. Verifier check 3b read `naya_ids` (dead on the real `pieces` schema) → now reads `pieces`; check 1a's registry-button fallback now uses `category`/`css_classes`.
+Post-fix: fixtures behave (good→exit 0, bad→exit 1), build #1 re-assembled byte-identical (2c85959d), verifier 10.0 SHIP.
 
 ## Build #2 — smart-builder page (2026-10-17) — BLOCKED ON NAMED GAPS
 

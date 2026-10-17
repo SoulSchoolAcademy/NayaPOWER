@@ -1,19 +1,4 @@
-` + HTML. Vanilla JS is inline where behavior is required.
-
----
-
-## 1. INPUT / FORM
-
-**Do:** elevate above context — a labeled field that feels like a raised
-control, with a clear kicker label, calm hint, and a quiet, restrained error
-state.
-**Don't:** float without weight — no ghost inputs, no invisible affordances;
-the field must read as a control at rest.
-**States:** rest · hover · focus (soul ring) · error · disabled · placeholder.
-
-```html
-<style>
-  .naya-field {
+.naya-field {
     --field-bg: var(--obsidian);
     --field-rim: var(--line);
     font-family: "Inter", system-ui, -apple-system, sans-serif;

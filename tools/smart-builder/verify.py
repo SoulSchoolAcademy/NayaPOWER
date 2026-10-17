@@ -161,7 +161,7 @@ def normalize_registry(raw):
 
 
 def normalize_contract(raw):
-    """Contract carries sections: [{section_id, naya_ids:[...]}]."""
+    """Contract carries sections: [{section_id, pieces:[...]}]."""
     sections = raw.get("sections", []) if isinstance(raw, dict) else []
     return [s for s in sections if isinstance(s, dict)]
 
@@ -171,9 +171,9 @@ def run_checks(page, contract, registry):
 
     button_piece_classes = set()
     for piece in registry.values():
-        if isinstance(piece, dict) and piece.get("type") == "button" \
-                and piece.get("class"):
-            button_piece_classes.add(piece["class"])
+        if isinstance(piece, dict) and piece.get("category") == "button":
+            for cls in piece.get("css_classes", []) or []:
+                button_piece_classes.add(cls.lstrip("."))
 
     css = page.css_blob()
     scripts = page.scripts_blob()
@@ -280,7 +280,7 @@ def run_checks(page, contract, registry):
         if sid and sid not in page.ids:
             tviol.append(("3a", "contract section '%s'" % sid,
                           "section_id '%s' has no matching id in the HTML" % sid))
-        for nid in section.get("naya_ids", []) or []:
+        for nid in section.get("pieces", []) or section.get("naya_ids", []) or []:
             if nid not in registry:
                 tviol.append(("3b", "contract naya_id '%s'" % nid,
                               "naya_id '%s' referenced by the contract is not "
@@ -305,7 +305,7 @@ def main(argv=None):
         description="Automatic scorecard gate: rendered page in, verdict out.")
     ap.add_argument("--html", required=True, help="rendered page to verify")
     ap.add_argument("--contract", required=True,
-                    help="page contract JSON (sections + naya_ids)")
+                    help="page contract JSON (sections + pieces)")
     ap.add_argument("--registry", required=True,
                     help="piece registry JSON (naya_id -> piece)")
     args = ap.parse_args(argv)
