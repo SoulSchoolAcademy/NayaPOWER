@@ -1,0 +1,581 @@
+{
+  "schema_version": "naya-smart-builder-template-catalog-v1",
+  "status": "template-contracts-preview-only-until-modules-verified",
+  "source_registry": "smart-blocks/manifest.json",
+  "source_ref": "naya5/smart-blocks-library",
+  "templates": [
+    {
+      "id": "my-personal-world",
+      "name": "My Personal World",
+      "audience": "Everyone",
+      "description": "A personal front door for identity, selected profiles, projects, apps, contacts and authorized connections.",
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Your world, in one place",
+          "intro": "A personal home that can grow into your connected NayaNET world.",
+          "block_ids": [
+            "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+            "buttons-hero-cta-living-btn"
+          ]
+        },
+        {
+          "id": "today",
+          "title": "Your intelligence today",
+          "intro": "The standard home for priorities and current activity.",
+          "block_ids": [
+            "navigation-app-room-nav-app-nav",
+            "cards-metric-trio-metric",
+            "cards-elevated-board-elevated-board-board-spine-board-corner"
+          ]
+        },
+        {
+          "id": "connect",
+          "title": "Find and connect",
+          "intro": "A starting surface for search and authorized connections.",
+          "block_ids": [
+            "inputs-search-field-search-field",
+            "buttons-canonical-button-naya-btn"
+          ]
+        }
+      ],
+      "modules": [
+        "ask_naya",
+        "smart_mail",
+        "smart_spaces",
+        "social_feed",
+        "personal_reports",
+        "smart_notes_links",
+        "notifications",
+        "automation"
+      ]
+    },
+    {
+      "id": "business-home",
+      "name": "Business Home",
+      "audience": "Small businesses and teams",
+      "description": "A clear business front door for services, offers, contact paths and operating priorities.",
+      "sections": [
+        {
+          "id": "business",
+          "title": "Your business, clearly presented",
+          "intro": "Lead with the offer and the next useful action.",
+          "block_ids": [
+            "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+            "buttons-hero-cta-living-btn"
+          ]
+        },
+        {
+          "id": "services",
+          "title": "What you do",
+          "intro": "Organize services and current priorities.",
+          "block_ids": [
+            "cards-job-cards-job",
+            "cards-elevated-board-elevated-board-board-spine-board-corner"
+          ]
+        },
+        {
+          "id": "contact",
+          "title": "Contact and next steps",
+          "intro": "The search and action surfaces are real registered components.",
+          "block_ids": [
+            "inputs-search-field-search-field",
+            "buttons-canonical-button-naya-btn"
+          ]
+        }
+      ],
+      "modules": [
+        "ask_naya",
+        "smart_mail",
+        "smart_spaces",
+        "notifications",
+        "smart_notes_links",
+        "automation"
+      ]
+    },
+    {
+      "id": "creator-portfolio",
+      "name": "Creator / Portfolio",
+      "audience": "Creators, artists and professionals",
+      "description": "A visual portfolio for work, identity, media, publications and ways to collaborate.",
+      "sections": [
+        {
+          "id": "intro",
+          "title": "Your work, your signature",
+          "intro": "Make the creator and their work the focus.",
+          "block_ids": [
+            "media-hero-vessel-vessel",
+            "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon"
+          ]
+        },
+        {
+          "id": "work",
+          "title": "Selected work",
+          "intro": "Showcase content and projects with reusable library pieces.",
+          "block_ids": [
+            "cards-world-tiles-layer",
+            "cards-job-cards-job"
+          ]
+        },
+        {
+          "id": "connect",
+          "title": "Collaborate",
+          "intro": "Give visitors a clear next action.",
+          "block_ids": [
+            "buttons-hero-cta-living-btn",
+            "overlays-share-sheet-smart-link-share-actions"
+          ]
+        }
+      ],
+      "modules": [
+        "ask_naya",
+        "smart_mail",
+        "social_feed",
+        "smart_spaces",
+        "smart_notes_links",
+        "notifications"
+      ]
+    },
+    {
+      "id": "project-launch",
+      "name": "Project / Launch",
+      "audience": "Founders and project owners",
+      "description": "A project home for mission, milestones, current state, team and next action.",
+      "sections": [
+        {
+          "id": "mission",
+          "title": "The mission and the move",
+          "intro": "A clear statement and primary action.",
+          "block_ids": [
+            "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+            "buttons-hero-cta-living-btn"
+          ]
+        },
+        {
+          "id": "progress",
+          "title": "Progress and decisions",
+          "intro": "Use real metrics and truth containers; never decorative data.",
+          "block_ids": [
+            "cards-metric-trio-metric",
+            "data-self-scorecard-scorecard-score-row-verdict",
+            "cards-elevated-board-elevated-board-board-spine-board-corner"
+          ]
+        },
+        {
+          "id": "team",
+          "title": "Team and updates",
+          "intro": "A place for project communication and next steps.",
+          "block_ids": [
+            "navigation-app-room-nav-app-nav",
+            "buttons-canonical-button-naya-btn"
+          ]
+        }
+      ],
+      "modules": [
+        "ask_naya",
+        "smart_mail",
+        "smart_spaces",
+        "social_feed",
+        "personal_reports",
+        "smart_notes_links",
+        "notifications",
+        "automation"
+      ]
+    },
+    {
+      "id": "knowledge-ask-naya",
+      "name": "Knowledge Base / Ask Naya",
+      "audience": "People and teams with knowledge to retrieve",
+      "description": "A searchable knowledge surface grounded in connected, authorized sources.",
+      "sections": [
+        {
+          "id": "search",
+          "title": "Ask and find",
+          "intro": "Search and command surfaces from the existing library.",
+          "block_ids": [
+            "inputs-search-field-search-field",
+            "new-command-palette-nayablocks-wirepalette"
+          ]
+        },
+        {
+          "id": "knowledge",
+          "title": "Browse knowledge",
+          "intro": "A clear place for facts, records and learning.",
+          "block_ids": [
+            "data-data-table-specimen-data-table",
+            "cards-law-cards-lawcard"
+          ]
+        },
+        {
+          "id": "status",
+          "title": "What is known",
+          "intro": "Truth and evidence must remain distinguishable.",
+          "block_ids": [
+            "cards-truth-cards-orbs-truthgrid-truth-torb",
+            "data-self-scorecard-scorecard-score-row-verdict"
+          ]
+        }
+      ],
+      "modules": [
+        "ask_naya",
+        "smart_notes_links",
+        "personal_reports",
+        "notifications"
+      ]
+    },
+    {
+      "id": "smart-blog-publication",
+      "name": "Smart Blog / Publication",
+      "audience": "Writers, publishers and organizations",
+      "description": "A publishing home for posts, editorial navigation and a consistent reader experience.",
+      "sections": [
+        {
+          "id": "publication",
+          "title": "Your publication",
+          "intro": "A recognizable editorial front door.",
+          "block_ids": [
+            "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+            "buttons-hero-cta-living-btn"
+          ]
+        },
+        {
+          "id": "posts",
+          "title": "Posts and collections",
+          "intro": "Compose reusable cards and navigation.",
+          "block_ids": [
+            "navigation-pill-tabs-smarttabs-smarttab",
+            "cards-world-tiles-layer",
+            "cards-job-cards-job"
+          ]
+        },
+        {
+          "id": "subscribe",
+          "title": "Follow and connect",
+          "intro": "Publication and messaging actions remain consent-aware.",
+          "block_ids": [
+            "inputs-recessed-field-recessed-field",
+            "overlays-share-sheet-smart-link-share-actions"
+          ]
+        }
+      ],
+      "modules": [
+        "social_feed",
+        "smart_mail",
+        "smart_notes_links",
+        "notifications",
+        "automation"
+      ]
+    },
+    {
+      "id": "community-smart-space",
+      "name": "Community / Smart Space",
+      "audience": "Communities and groups",
+      "description": "A community home with shared purpose, discoverable spaces and member communication.",
+      "sections": [
+        {
+          "id": "community",
+          "title": "Your community",
+          "intro": "Lead with purpose and a clear way to participate.",
+          "block_ids": [
+            "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+            "buttons-hero-cta-living-btn"
+          ]
+        },
+        {
+          "id": "spaces",
+          "title": "Rooms and activity",
+          "intro": "Organize navigation and shared information.",
+          "block_ids": [
+            "navigation-app-room-nav-app-nav",
+            "cards-elevated-board-elevated-board-board-spine-board-corner",
+            "cards-world-tiles-layer"
+          ]
+        },
+        {
+          "id": "participate",
+          "title": "Participate safely",
+          "intro": "Invites, moderation and permissions require real wiring before publish.",
+          "block_ids": [
+            "buttons-canonical-button-naya-btn",
+            "overlays-mini-modal-modal-mini-modal-gem"
+          ]
+        }
+      ],
+      "modules": [
+        "smart_spaces",
+        "social_feed",
+        "smart_mail",
+        "notifications",
+        "ask_naya",
+        "automation"
+      ]
+    },
+    {
+      "id": "event-workshop",
+      "name": "Event / Workshop",
+      "audience": "Hosts, educators and organizers",
+      "description": "An event page for the promise, schedule, participation and follow-up.",
+      "sections": [
+        {
+          "id": "event",
+          "title": "Bring people together",
+          "intro": "State what the event is and why it matters.",
+          "block_ids": [
+            "media-hero-vessel-vessel",
+            "buttons-hero-cta-living-btn"
+          ]
+        },
+        {
+          "id": "agenda",
+          "title": "Agenda and details",
+          "intro": "Present the useful information with clear hierarchy.",
+          "block_ids": [
+            "cards-job-cards-job",
+            "cards-metric-trio-metric",
+            "navigation-app-room-nav-app-nav"
+          ]
+        },
+        {
+          "id": "register",
+          "title": "Join the event",
+          "intro": "Registration actions need authorization and working back-end wiring.",
+          "block_ids": [
+            "inputs-recessed-field-recessed-field",
+            "inputs-jeweled-checkbox-naya-check",
+            "buttons-canonical-button-naya-btn"
+          ]
+        }
+      ],
+      "modules": [
+        "smart_mail",
+        "notifications",
+        "smart_spaces",
+        "personal_reports"
+      ]
+    },
+    {
+      "id": "service-booking",
+      "name": "Service / Booking",
+      "audience": "Service providers",
+      "description": "A service page that explains the offer and guides customers through a booking request.",
+      "sections": [
+        {
+          "id": "service",
+          "title": "The service",
+          "intro": "Explain the value before asking for action.",
+          "block_ids": [
+            "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+            "cards-job-cards-job"
+          ]
+        },
+        {
+          "id": "options",
+          "title": "Explore options",
+          "intro": "Search and controls are composed from existing components.",
+          "block_ids": [
+            "inputs-search-field-search-field",
+            "buttons-segmented-control-segmented",
+            "cards-elevated-board-elevated-board-board-spine-board-corner"
+          ]
+        },
+        {
+          "id": "booking",
+          "title": "Request a booking",
+          "intro": "No booking is real until the connected booking service is implemented and verified.",
+          "block_ids": [
+            "inputs-recessed-field-recessed-field",
+            "buttons-hero-cta-living-btn"
+          ]
+        }
+      ],
+      "modules": [
+        "smart_mail",
+        "notifications",
+        "automation",
+        "ask_naya"
+      ]
+    },
+    {
+      "id": "product-offer-campaign",
+      "name": "Product / Offer / Campaign",
+      "audience": "Product teams and sellers",
+      "description": "A product or campaign page for benefits, proof, offers and clear next actions.",
+      "sections": [
+        {
+          "id": "offer",
+          "title": "The offer",
+          "intro": "Show the product and its promise without inflated claims.",
+          "block_ids": [
+            "media-hero-vessel-vessel",
+            "buttons-hero-cta-living-btn"
+          ]
+        },
+        {
+          "id": "benefits",
+          "title": "Why it matters",
+          "intro": "Use meaningful metrics and well-structured cards.",
+          "block_ids": [
+            "cards-metric-trio-metric",
+            "cards-elevated-board-elevated-board-board-spine-board-corner",
+            "cards-law-cards-lawcard"
+          ]
+        },
+        {
+          "id": "next",
+          "title": "Take the next step",
+          "intro": "Sharing and action components are reusable; transactions need a verified provider.",
+          "block_ids": [
+            "overlays-share-sheet-smart-link-share-actions",
+            "buttons-canonical-button-naya-btn"
+          ]
+        }
+      ],
+      "modules": [
+        "smart_mail",
+        "notifications",
+        "social_feed",
+        "smart_notes_links",
+        "automation"
+      ]
+    },
+    {
+      "id": "learning-resource-library",
+      "name": "Learning / Resource Library",
+      "audience": "Teachers, coaches and learners",
+      "description": "A learning home for resources, search, structured knowledge and progress.",
+      "sections": [
+        {
+          "id": "learn",
+          "title": "Learn and explore",
+          "intro": "Start with a clear purpose and navigation.",
+          "block_ids": [
+            "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+            "navigation-app-room-nav-app-nav"
+          ]
+        },
+        {
+          "id": "resources",
+          "title": "Find resources",
+          "intro": "Search, tables and content cards from the existing registry.",
+          "block_ids": [
+            "inputs-search-field-search-field",
+            "data-data-table-specimen-data-table",
+            "cards-world-tiles-layer"
+          ]
+        },
+        {
+          "id": "progress",
+          "title": "Progress and reflection",
+          "intro": "Learning claims need verified reuse, not just stored links.",
+          "block_ids": [
+            "data-self-scorecard-scorecard-score-row-verdict",
+            "cards-metric-trio-metric"
+          ]
+        }
+      ],
+      "modules": [
+        "ask_naya",
+        "smart_notes_links",
+        "personal_reports",
+        "smart_spaces",
+        "notifications"
+      ]
+    },
+    {
+      "id": "team-organization",
+      "name": "Team / Organization",
+      "audience": "Teams and organizations",
+      "description": "A shared organizational home for priorities, rooms, communication and reports.",
+      "sections": [
+        {
+          "id": "home",
+          "title": "The team home",
+          "intro": "A shared front door with priorities and clear navigation.",
+          "block_ids": [
+            "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+            "navigation-app-room-nav-app-nav"
+          ]
+        },
+        {
+          "id": "operations",
+          "title": "What matters now",
+          "intro": "Present useful metrics and operational work.",
+          "block_ids": [
+            "cards-metric-trio-metric",
+            "cards-job-cards-job",
+            "cards-elevated-board-elevated-board-board-spine-board-corner"
+          ]
+        },
+        {
+          "id": "connect",
+          "title": "Communication and knowledge",
+          "intro": "Make the future module wiring explicit, not implied.",
+          "block_ids": [
+            "inputs-search-field-search-field",
+            "buttons-canonical-button-naya-btn"
+          ]
+        }
+      ],
+      "modules": [
+        "ask_naya",
+        "smart_mail",
+        "smart_spaces",
+        "social_feed",
+        "personal_reports",
+        "smart_notes_links",
+        "notifications",
+        "automation"
+      ]
+    }
+  ],
+  "modules": {
+    "ask_naya": {
+      "label": "Ask Naya grounded in authorized sources",
+      "status": "not_wired",
+      "default_enabled": true,
+      "required": true
+    },
+    "smart_mail": {
+      "label": "Smart Mail",
+      "status": "not_wired",
+      "default_enabled": true,
+      "required": true
+    },
+    "smart_spaces": {
+      "label": "Smart Spaces",
+      "status": "not_wired",
+      "default_enabled": true,
+      "required": true
+    },
+    "social_feed": {
+      "label": "Personal social feed and comments",
+      "status": "not_wired",
+      "default_enabled": true,
+      "required": true
+    },
+    "personal_reports": {
+      "label": "Personal Intelligence Today / reports",
+      "status": "not_wired",
+      "default_enabled": true,
+      "required": true
+    },
+    "smart_notes_links": {
+      "label": "Smart Notes and Smart Links",
+      "status": "not_wired",
+      "default_enabled": true,
+      "required": true
+    },
+    "notifications": {
+      "label": "Invitations and notifications",
+      "status": "not_wired",
+      "default_enabled": true,
+      "required": true
+    },
+    "automation": {
+      "label": "Authorized automation and scheduling",
+      "status": "not_wired",
+      "default_enabled": false,
+      "required": false
+    }
+  }
+}
