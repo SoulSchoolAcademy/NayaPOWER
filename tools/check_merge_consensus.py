@@ -67,9 +67,114 @@ API = "https://api.github.com"
 # team member (joined 2026-10-15); the registry predated her.
 # "chi", "relay" added 2026-10-17 — active reviewers on PR #2718 (Team Nitro);
 # registry updated to match the working team. Remove if not seated.
-_NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
+_LEGACY_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
                 "eta", "theta", "iota", "kappa", "lambda", "mu",
                 "nitro", "chi", "relay")
+
+
+def _names_from_registry(reg):
+    """Extract worker names from a parsed registry object. Fail-closed:
+    anything that is not a well-formed registry object yields [] — a
+    malformed registry never widens the authorized set."""
+    try:
+        if not isinstance(reg, dict):
+            return []
+        names = []
+        teams = reg.get("teams")
+        if not isinstance(teams, dict):
+            teams = {}
+        for team in teams.values():
+            if not isinstance(team, dict):
+                continue
+            for w in team.get("workers") or []:
+                if not isinstance(w, dict):
+                    continue
+                n = (w.get("name") or "").strip().lower()
+                if n and n not in names:
+                    names.append(n)
+        builder_seats = reg.get("builder_seats")
+        if isinstance(builder_seats, dict):
+            for w in builder_seats.get("workers") or []:
+                if not isinstance(w, dict):
+                    continue
+                n = (w.get("name") or "").strip().lower()
+                if n and n not in names:
+                    names.append(n)
+        return names
+    except (AttributeError, TypeError, ValueError):
+        return []
+
+
+def _load_worker_registry():
+    """Load team-declared worker names from seats/worker-registry.json.
+
+    Shawn's order 2026-10-17: each team declares its own workers, and that
+    declaration IS the approval. The registry file is the source of truth;
+    the hardcoded tuple above is the fallback. A name in the registry is
+    recognized by the gate — no code change needed when teams grow.
+
+    SECURITY NOTE (adversarial review 2026-10-17, PR #2729): this loads the
+    CANDIDATE tree's registry — it is used for general seat recognition
+    only. The AUTHOR-SEAT gate (run_gate) resolves the author against the
+    TRUSTED base-branch registry via _trusted_registry_names(), never this
+    candidate copy. A PR cannot authorize its own author by adding its own
+    name to the candidate registry.
+    """
+    import json as _json
+    import os as _os
+    # The gate runs from the repo root in CI; also try relative to this file.
+    candidates = [
+        _os.path.join("seats", "worker-registry.json"),
+        _os.path.join(_os.path.dirname(_os.path.abspath(__file__)),
+                       "..", "seats", "worker-registry.json"),
+    ]
+    for candidate in candidates:
+        try:
+            with open(candidate) as _f:
+                return _names_from_registry(_json.load(_f))
+        except (OSError, ValueError):
+            continue
+    return []
+
+
+def _trusted_registry_names(token, repo, base_ref):
+    """Fetch the worker registry as it exists on the BASE branch (the merge
+    target) — the trusted copy. Used ONLY for the author-seat gate.
+
+    Fail-closed: any fetch/parse failure yields [] — the author must then be
+    a hardcoded legacy seat. A candidate tree can never widen its own
+    author's authorization.
+    """
+    try:
+        data = api_get(
+            f"/repos/{repo}/contents/seats/worker-registry.json?ref={base_ref}",
+            token)
+        import base64 as _b64
+        import json as _json
+        content = data.get("content") or ""
+        raw = _b64.b64decode(content)
+        return _names_from_registry(_json.loads(raw))
+    except Exception:
+        return []
+
+
+def _author_is_trusted(author_seat, trusted_names):
+    """True iff the declared author seat ('Naya <Title>' form, or 'Naya N'
+    numeric) is a hardcoded legacy seat or appears in the trusted
+    base-branch registry."""
+    if not author_seat:
+        return False
+    name = author_seat[len("Naya "):].strip().lower()
+    if name in _LEGACY_SEATS:
+        return True
+    if name.isdigit() and name in ("1", "2", "3", "4", "5"):
+        return True
+    return name in (trusted_names or [])
+
+
+# Merge registry names into the recognized seats (registry wins on conflicts).
+_NAMED_SEATS = tuple(dict.fromkeys(
+    list(_LEGACY_SEATS) + _load_worker_registry()))
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
@@ -326,6 +431,21 @@ def run_gate(token, repo, pr_number, head_sha):
         fail("PR body must declare the authoring seat ('Seat: Naya N'). "
              "Unattributed work cannot be reviewed. Add the declaration to "
              "the PR body and re-run.")
+
+    # --- Requirement 0: the declared author must be TRUSTED ---
+    # Adversarial review 2026-10-17 (PR #2729): the candidate tree's registry
+    # is self-serving — a PR could add its own name to seats/worker-registry.json
+    # and authorize itself. The author resolves against the TRUSTED base-branch
+    # registry (plus hardcoded legacy seats), never the candidate copy.
+    base_ref = (pr.get("base") or {}).get("ref") or "main"
+    trusted_names = _trusted_registry_names(token, repo, base_ref)
+    if not _author_is_trusted(author_seat, trusted_names):
+        fail(f"author seat {author_seat} is not in the trusted registry "
+             f"(base branch '{base_ref}' plus legacy seats). A PR cannot "
+             f"authorize its own author by editing seats/worker-registry.json "
+             f"in the candidate tree — the roster update must land on the "
+             f"base branch first (by an already-authorized team lead), then "
+             f"this PR re-runs.")
 
     # --- Requirement 1: cross-seat review ---
     reviews = api_get(f"/repos/{repo}/pulls/{pr_number}/reviews", token)
