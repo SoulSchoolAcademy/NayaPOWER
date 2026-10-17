@@ -19,11 +19,13 @@ recipes, the honesty contract). Three things happened to the 43:
 | Fate | Studio checks | Port checks | Count |
 |------|--------------|-------------|-------|
 | Kept 1:1 | 9 | 9 | 9 |
-| Consolidated / generalized | 12 | 20 | studio→port |
+| Consolidated / generalized | 12 | 19* | studio→port |
 | Narrowed (rules kept verbatim in CSS; census dropped) | 8 | 1 | 8→1 |
 | Dropped (out of scope, redundant, or app-only) | 14 | 0 | 14 |
 | New in the port (the composer's own obligations) | — | 10 | 10 |
 | **Total** | **43** | **39** | |
+
+\* §B contributes 19 *distinct* port checks — P1 and P26 also appear in the kept row (S9 and S32/S33 consolidate into checks already proven 1:1 as S1→P1 and S42→P26), so the table counts each once.
 
 Every one of the 43 appears exactly once below. Every one of the 39 appears
 exactly once below. Nothing is waved at.
@@ -44,7 +46,7 @@ exactly once below. Nothing is waved at.
 | S13 | clean picks → no advisor notes | P19 · clean picks → no notes |
 | S42 | buttons carry their zone glow (composed render) | P26 · buttons carry zone glow (--ac-glow) |
 
-## B. Consolidated / generalized — twelve studio checks became twenty port checks
+## B. Consolidated / generalized — twelve studio checks became nineteen port checks (P1, P26 shared with the kept row)
 
 **Walk law (S2, S3, S4, S8 → P2–P12).** The studio pinned one exact 4-stop
 sequence (`green → orange → magenta → indigo`), the order law separately,
