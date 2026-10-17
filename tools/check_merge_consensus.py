@@ -13,7 +13,8 @@ Reads from env:
 Seat identity: the team shares one GitHub account, so GitHub logins cannot
 distinguish seats. Seats are identified by signed tags instead:
   - PR body must declare:  Seat: Naya N   (a numeric seat, e.g. "Naya 2",
-    or one of the 12 named seats — Alpha..Mu, e.g. "Seat: Naya Epsilon")
+    or one of the 15 named seats — Alpha..Mu plus Nitro, Chi, Relay,
+    e.g. "Seat: Naya Epsilon")
   - Reviewer posts a comment:  [NAYA M · REVIEW] ... APPROVED ...
     (the team's IV sign-out verdict format — "## VERDICT: MERGE RECOMMENDED"
     with a seat tag — is also accepted as a review)
@@ -55,8 +56,10 @@ import urllib.error
 import urllib.request
 
 API = "https://api.github.com"
-# The 12 named area leads (Shawn, 2026-10-11): Alpha, Beta, Gamma, Delta,
-# Epsilon, Zeta, Eta, Theta, Iota, Kappa, Lambda, Mu. Named seats sign as
+# The 15 named seats — the original 12 area leads (Shawn, 2026-10-11): Alpha,
+# Beta, Gamma, Delta, Epsilon, Zeta, Eta, Theta, Iota, Kappa, Lambda, Mu —
+# plus Nitro (Shawn's word 2026-10-16: "She's part of our team"), Chi, Relay
+# (Team Nitro seats, active reviewers on PR #2718). Named seats sign as
 # "Naya <Title>" (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep
 # working exactly as before. One shared id pattern so the author-declaration
 # rule and the review/scorecard rules recognize exactly the same seats.
