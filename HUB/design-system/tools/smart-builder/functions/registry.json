@@ -909,7 +909,7 @@
             "community wired"
           ],
           "activated_by": "contract.features.community",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.community"
@@ -939,8 +939,12 @@
           ],
           "connected": [
             {
-              "action": "post to community",
+              "action": "publish across network boundary",
               "grant": "nayanet"
+            },
+            {
+              "action": "publish across public boundary",
+              "grant": "network"
             }
           ]
         },
