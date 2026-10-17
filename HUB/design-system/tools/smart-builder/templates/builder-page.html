@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The official Visual Smart Contract for the Smart Builder — every section composed from the library's real pieces and real CSS. Locked 2026-10-17.">
+<title>The Visual Smart Contract — Smart Builder v2 · OFFICIAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ NAYA DESIGN TOKENS — v1 (canonical, verbatim) ============ */
+:root{
+  --obsidian:#0a0a0f; --obsidian-deep:#020203; --raise:#10141d; --card:#141a28;
+  --frosted:rgba(10,10,15,.72);
+  --white:#ffffff; --paper:#f8f7fb; --silver:#c9c9d4; --slate:#8a8a99;
+  --line:rgba(255,255,255,.12);
+  --sp-purple:#a06bff; --sp-indigo:#6675ff; --sp-sapphire:#55b9ee; --sp-teal:#40d3bb;
+  --sp-emerald:#2fe89e; --sp-lime:#b8ee57; --sp-yellow:#f1d75a; --sp-gold:#ffbf3d;
+  --sp-orange:#ff9a5a; --sp-rich-orange:#ff6b3d; --sp-red:#ff5e6c; --sp-magenta:#e84fff;
+  --soul:#a06bff; --verified:#2fe89e;
+  --font-voice:"Newsreader",Georgia,"Times New Roman",serif;
+  --font-ui:Inter,ui-sans-serif,system-ui,sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --radius-md:14px; --radius-lg:22px; --radius-pill:999px;
+  --gap:16px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian-deep); color:var(--silver); font-family:var(--font-ui);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1060px; margin:0 auto; padding:0 20px;}
+.kicker{font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700;}
+h1,h2,h3{color:var(--white); font-family:var(--font-voice); font-weight:500; line-height:1.2;}
+h1{font-size:clamp(32px,5vw,44px); margin:14px 0 10px;}
+h2{font-size:clamp(22px,3vw,28px); margin:0 0 8px;}
+p{margin:0 0 12px; max-width:62ch;}
+.lede{font-size:18px; color:var(--paper); font-family:var(--font-voice);}
+section{padding:56px 0; border-top:1px solid var(--line);}
+.sec-head{margin-bottom:22px;}
+.sec-head .kicker{display:block; margin-bottom:10px;}
+.led{display:inline-block; width:9px; height:9px; border-radius:50%;
+  background:var(--verified); box-shadow:0 0 10px var(--verified); margin-right:8px;
+  animation:pulse 2.4s ease-in-out infinite; vertical-align:1px;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+.grid{display:grid; gap:var(--gap);}
+.g3{grid-template-columns:repeat(3,1fr);} .g2{grid-template-columns:repeat(2,1fr);}
+.g4{grid-template-columns:repeat(4,1fr);}
+@media(max-width:760px){.g3,.g4{grid-template-columns:repeat(2,1fr);} .g2{grid-template-columns:1fr;}}
+
+/* ============ .naya-btn — button DNA (verbatim, Naya_2 canonical) ============ */
+.naya-btn{
+  --nb-accent:#8a5cff; --nb-accent-rgb:138,92,255;
+  position:relative; isolation:isolate; overflow:hidden;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:52px; padding:0 28px; border-radius:999px;
+  border:1px solid transparent;
+  font-family:var(--font-ui); font-size:15px; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+  color:#f6f5ef; cursor:pointer; white-space:nowrap;
+  text-shadow:0 -1px 1px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.06),0 1px 3px rgba(0,0,0,.6);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,.015) 38%,rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg,#2a2b33 0%,#0c0c0f 52%,#030304 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.38),
+    inset 0 1px 0 rgba(255,255,255,.42),
+    inset 0 -1px 0 rgba(0,0,0,.72),
+    inset 0 -14px 26px rgba(0,0,0,.52),
+    inset 0 10px 18px rgba(255,255,255,.04),
+    0 20px 42px rgba(0,0,0,.84),
+    0 6px 14px rgba(0,0,0,.58);
+  transition:transform .22s var(--ease),box-shadow .38s var(--ease),border-color .3s ease,background .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.naya-btn>*{position:relative; z-index:3;}
+.naya-btn .nb-label{letter-spacing:.11em;}
+.naya-btn:hover,.naya-btn:focus-visible{transform:translateY(-3px) scale(1.012); outline:none;
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.72),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(0,0,0,.70),
+    0 24px 48px rgba(0,0,0,.86),
+    0 0 26px -4px rgba(var(--nb-accent-rgb),.5);}
+.naya-btn:active{transform:translateY(1px) scale(.99);}
+.naya-btn.gold{--nb-accent:#ffbf3d; --nb-accent-rgb:255,191,61;}
+
+.hero{padding:72px 0 56px; border-top:none;}
+.hero .status{display:flex; align-items:center; gap:10px; margin-bottom:18px; flex-wrap:wrap;}
+
+/* ============ feature.cover — the personal header ============ */
+.cover{margin:0 0 34px;}
+.cover-banner{position:relative; height:230px; border-radius:var(--radius-lg); overflow:hidden;
+  background:var(--raise); border:1px solid var(--line);}
+.cover-photo{width:100%; height:100%; object-fit:cover; display:block;}
+.cover-photo-fallback{width:100%; height:100%;
+  background:linear-gradient(120deg,var(--sp-purple),var(--sp-magenta) 45%,var(--sp-gold));}
+.cover-scrim{position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg,rgba(2,2,3,0) 30%,rgba(2,2,3,.78) 100%);}
+.cover-id{position:relative; display:flex; gap:18px; align-items:flex-end; padding:0 10px; margin-top:-46px;}
+.cover-ava{flex:0 0 auto; width:96px; height:96px; border-radius:28px; object-fit:cover;
+  border:3px solid var(--obsidian-deep); box-shadow:0 12px 30px rgba(0,0,0,.6); background:var(--card);}
+.cover-ava-fallback{display:grid; place-items:center;
+  background:linear-gradient(135deg,var(--sp-purple),var(--sp-magenta));
+  font-family:var(--font-voice); font-size:34px; font-weight:500; color:#fff;}
+.cover-who{min-width:0;}
+.cover-name{font-size:clamp(26px,4vw,36px); margin:0; text-shadow:0 2px 14px rgba(0,0,0,.7);}
+.cover-tagline{color:var(--paper); margin:6px 0 0; font-size:15px; text-shadow:0 1px 10px rgba(0,0,0,.7);}
+@media(max-width:640px){
+  .cover-banner{height:170px;}
+  .cover-ava{width:72px; height:72px; border-radius:20px; font-size:26px;}
+  .cover-id{gap:12px; margin-top:-36px;}
+}
+.pill{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line);
+  border-radius:var(--radius-pill); padding:7px 16px; font-size:12px; letter-spacing:.14em;
+  text-transform:uppercase; font-weight:700; color:var(--paper); background:var(--raise);}
+.pill .led{margin:0;}
+
+/* contract field rows — content layout inside real boards */
+.field{display:flex; gap:14px; padding:13px 0; border-bottom:1px solid var(--line); align-items:baseline;}
+.field:last-child{border-bottom:none;}
+.field .fk{flex:0 0 150px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:700; color:var(--slate);}
+.field .fv{color:var(--paper); font-size:15px;}
+@media(max-width:640px){.field{flex-direction:column; gap:4px;} .field .fk{flex:none;}}
+
+/* ============ specimens — the real pieces ============ */
+.spec{background:var(--raise); border:1px solid var(--line); border-radius:var(--radius-md);
+  overflow:hidden; transition:transform .2s var(--ease), border-color .25s;}
+.spec:hover{transform:translateY(-3px); border-color:var(--sp-teal);}
+.spec-stage{padding:30px 16px; display:flex; align-items:center; justify-content:center;
+  background:var(--obsidian); min-height:130px; overflow-x:auto;}
+.spec-stage .nb-scope{display:block; max-width:100%;}
+.spec-meta{padding:12px 14px; border-top:1px solid var(--line);}
+.spec-meta b{display:block; color:var(--white); font-size:14px; font-weight:600;}
+.spec-meta i{display:block; font-style:normal; font-size:10.5px; letter-spacing:.14em;
+  color:var(--slate); text-transform:uppercase; margin-top:3px;}
+.wallcat{margin:28px 0 12px; font-size:19px;}
+.wallcat span{color:var(--slate); font-family:var(--font-ui); font-size:12px; letter-spacing:.1em; margin-left:10px;}
+.wallgrid .spec-stage{min-height:110px; padding:22px 12px;}
+
+.phone{width:300px; max-width:100%; margin:0 auto; border:1px solid var(--line); border-radius:38px;
+  background:var(--obsidian); padding:14px; box-shadow:0 20px 48px rgba(0,0,0,.7);}
+.screen{border-radius:26px; background:var(--raise); overflow:hidden; min-height:480px; display:flex; flex-direction:column;}
+.screen .notch{height:26px; display:grid; place-items:center;}
+.screen .notch span{width:96px; height:20px; background:var(--obsidian); border-radius:var(--radius-pill);}
+.app-hero{padding:26px 20px 18px; text-align:center;}
+.app-hero .ava{width:72px; height:72px; border-radius:22px; margin:0 auto 12px;
+  background:linear-gradient(135deg,var(--sp-purple),var(--sp-magenta));
+  display:grid; place-items:center; font-family:var(--font-voice); font-size:30px; color:#fff;}
+.app-hero h3{font-size:20px; margin:0 0 4px;}
+.app-hero p{font-size:13px; color:var(--slate); margin:0;}
+.app-row{display:flex; gap:10px; padding:12px 16px;}
+.app-card{flex:1; background:var(--card); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:14px 10px; text-align:center; font-size:12px; color:var(--paper);}
+.installbar{margin-top:auto; padding:16px; border-top:1px solid var(--line);}
+
+.promise{text-align:center;}
+.promise .big{font-family:var(--font-voice); font-size:clamp(28px,4.5vw,40px); color:var(--white); margin:16px 0 8px;}
+.promise .big em{font-style:normal; color:var(--sp-red);}
+.promise p{margin:0 auto; max-width:52ch;}
+
+details.machine{border:1px solid var(--line); border-radius:var(--radius-md); background:var(--obsidian);}
+details.machine summary{cursor:pointer; padding:16px 20px; color:var(--paper); font-weight:600; list-style:none;}
+details.machine summary::-webkit-details-marker{display:none;}
+details.machine .body{padding:0 20px 20px;}
+pre{background:#050507; border:1px solid var(--line); border-radius:var(--radius-md); padding:18px;
+  overflow:auto; font-size:12.5px; line-height:1.6; color:var(--silver); max-height:480px;}
+.copyrow{display:flex; justify-content:flex-end; margin-bottom:10px;}
+
+#toast{position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(20px);
+  background:var(--card); border:1px solid var(--line); color:var(--paper); padding:13px 22px;
+  border-radius:var(--radius-pill); font-size:14px; opacity:0; pointer-events:none;
+  transition:opacity .3s var(--ease), transform .3s var(--ease); z-index:50; max-width:90vw; text-align:center;
+  box-shadow:0 12px 32px rgba(0,0,0,.65);}
+#toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+#toast .led{margin-right:6px;}
+
+footer{padding:40px 0 64px; border-top:1px solid var(--line); color:var(--slate); font-size:13px;}
+footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
+.nav{position:sticky; top:0; z-index:20; background:var(--frosted); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);}
+.nav .wrap{display:flex; gap:4px; overflow-x:auto; padding:10px 20px;}
+.nav a{color:var(--slate); text-decoration:none; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  font-weight:600; padding:8px 12px; border-radius:var(--radius-pill); white-space:nowrap;}
+.nav a:hover{color:var(--white); background:rgba(255,255,255,.06);}
+
+/* intake mode cards: the real .card piece drives the selected state */
+.nb-chrome .card.mode[aria-pressed="true"]{border-color:var(--accent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 30px var(--accent-soft),0 12px 32px rgba(0,0,0,.55);}
+</style>
+<style>
+/* ===== section chrome — real library CSS, scoped .nb-chrome ===== */
+%%CHROME_CSS%%
+</style>
+<style>
+/* ===== wall specimen CSS — real library code, scoped .nb-scope ===== */
+%%WALL_CSS%%
+</style>
+</head>
+<body>
+
+<style>
+/* builder-page additions: real controls, no private invention beyond layout */
+.modepanel{margin-top:6px;}
+.flabel{display:block; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  font-weight:700; color:var(--slate); margin:14px 0 6px;}
+textarea, input[type="text"]{width:100%; background:var(--obsidian); border:1px solid var(--line);
+  border-radius:var(--radius-md); color:var(--paper); font:inherit; font-size:15px;
+  padding:12px 14px; resize:vertical;}
+textarea:focus, input[type="text"]:focus{outline:none; border-color:var(--sp-teal);}
+#templist .typecard{cursor:pointer; transition:transform .2s var(--ease), box-shadow .3s var(--ease);}
+#templist .typecard:hover{transform:translateY(-3px);}
+#templist .typecard.selected{box-shadow:0 0 0 2px var(--sp-yellow), 0 18px 40px rgba(0,0,0,.5);}
+#templist .typecard:not(.selected){opacity:.55;}
+.badge{display:inline-block; font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
+  border-radius:999px; padding:3px 10px; margin-left:10px; vertical-align:2px;}
+.badge.ok{background:rgba(47,232,158,.14); color:var(--verified); border:1px solid rgba(47,232,158,.4);}
+.badge.soon{background:rgba(241,215,90,.12); color:var(--sp-yellow); border:1px solid rgba(241,215,90,.4);}
+label.feat input{flex:none;}
+#resolver-note{margin-top:14px;}
+#appcontract{background:var(--obsidian-deep); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:16px; font-size:12.5px; line-height:1.5; color:var(--silver); white-space:pre-wrap; word-break:break-word;}
+.copyrow{display:flex; gap:12px; flex-wrap:wrap;}
+</style>
+<nav class="nav"><div class="wrap">
+  <a href="#intake">Intake</a><a href="#templates">Templates</a><a href="#features">Features</a>
+  <a href="#privacy">Privacy</a><a href="#build">Build</a><a href="#machine">Machine</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="status">
+    <span class="pill"><span class="led"></span>Smart App Factory · Live</span>
+    <span class="pill">built by the pipeline, from a contract</span>
+  </div>
+  <span class="kicker" style="color:var(--sp-purple)">%%KICKER%%</span>
+  <h1>%%TITLE%%</h1>
+  <p class="lede">%%LEDE%%</p>
+  <p style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+    <button class="naya-btn" data-scroll="#intake"><span class="nb-label">Start building</span></button>
+    <button class="naya-btn" data-scroll="#features"><span class="nb-label">See what's inside</span></button>
+  </p>
+</div></header>
+
+<div class="wrap">
+
+<section id="intake">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-indigo)">&#167;1 &middot; Tell it what you want</span>
+    <h2>A living form that holds the contract</h2>
+    <p>Three ways in — questions, pointing at pieces, or just talking. Pick a mode; the contract listens in all three.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#6675ff">
+    %%INTAKE_MODES%%
+    <p id="modeline" style="margin:18px 0 16px; font-size:14px; color:var(--slate);">Intake mode: <b style="color:var(--paper)">questions</b> &mdash; the contract is listening.</p>
+    <div id="panel-questions" class="modepanel">
+      <label class="flabel" for="intent">What is the app for, in plain words?</label>
+      <textarea id="intent" rows="3" placeholder="A page for my bakery &mdash; warm, morning light, people can order ahead."></textarea>
+      <label class="flabel" for="address">Address</label>
+      <input id="address" type="text" value="nayanet.live/your-name">
+    </div>
+    <div id="panel-specimens" class="modepanel" hidden>
+      <p>Point at pieces you like &mdash; buttons, boards, banners. Then leave a note: &ldquo;button XYZ here&rdquo;, &ldquo;make this one coral&rdquo;.</p>
+      <label class="flabel" for="specnote">Your note</label>
+      <textarea id="specnote" rows="2" placeholder="I want this page but personal to me."></textarea>
+    </div>
+    <div id="panel-dictation" class="modepanel" hidden>
+      <p><button class="naya-btn" id="dictate"><span class="nb-label">Dictate</span></button></p>
+      <label class="flabel" for="dicttext">Your words, as you speak them</label>
+      <textarea id="dicttext" rows="3" placeholder="Talk the page into existence&hellip;"></textarea>
+    </div>
+  </div></div>
+</section>
+
+<section id="templates">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-yellow)">&#167;2 &middot; Pick your starting points</span>
+    <h2>Templates are starting points, not limits</h2>
+    <p>Pick one, several, or all twelve &mdash; they sync as one Smart World, hub plus rooms. <span id="tempcount" style="color:var(--paper)"></span></p>
+  </div>
+  <div id="templist">%%TEMPLATES%%</div>
+</section>
+
+<section id="features">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-teal)">&#167;3 &middot; It comes working</span>
+    <h2>Every Smart App ships with these</h2>
+    <p>Checked by default. Uncheck what you don&rsquo;t want. A feature that isn&rsquo;t wired yet says so honestly &mdash; never faked, never blocked silently.</p>
+  </div>
+  <div id="featurechecks"></div>
+  <div id="resolver-note" class="nb-chrome" hidden><div class="lawcard" style="--lc:#40d3bb">
+    <div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>Why this feature waits</span></div>
+    <p id="resolver-text"></p>
+  </div></div>
+</section>
+
+<section id="privacy">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-emerald)">&#167;4 &middot; Your dial, not our doctrine</span>
+    <h2>Who can see your app?</h2>
+    <p>Private where it starts, public wherever you take it. Each connection is its own switch &mdash; your call.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#2fe89e">
+    <div role="radiogroup" aria-label="Visibility" class="grid g3" id="visgroup">
+      <button class="card mode" aria-pressed="true" data-vis="private"><h3>Private</h3><p class="fine">Only me.</p></button>
+      <button class="card mode" aria-pressed="false" data-vis="network"><h3>Approved connections</h3><p class="fine">People you approve.</p></button>
+      <button class="card mode" aria-pressed="false" data-vis="public"><h3>Public</h3><p class="fine">Anyone can visit.</p></button>
+    </div>
+    <h3 style="margin:22px 0 10px; font-size:16px;">Connections</h3>
+    <div class="grid g3" id="conngroup">
+      <button class="card mode" aria-pressed="false" data-conn="muse"><h3>Muse</h3><p class="fine">Your AI, in your app.</p></button>
+      <button class="card mode" aria-pressed="false" data-conn="github"><h3>GitHub</h3><p class="fine">Your knowledge base, synced.</p></button>
+      <button class="card mode" aria-pressed="false" data-conn="nayanet"><h3>NayaNET</h3><p class="fine">The network, if you wish.</p></button>
+    </div>
+    <p class="fine" style="margin-top:14px;">Enabled means ready. Connected means you said so &mdash; a switch here grants nothing silently.</p>
+  </div></div>
+</section>
+
+<section id="build">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-rich-orange)">&#167;5 &middot; Make it yours</span>
+    <h2>Okay, build</h2>
+    <p>Two authors, one finalizer &mdash; you. Press build and the contract below is what the factory runs on.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#ff6b3d">
+    <p><button class="naya-btn" id="buildbtn"><span class="nb-label">Build my Smart App</span></button></p>
+    <p id="buildsummary" class="fine"></p>
+    <div id="contractout" hidden>
+      <div class="copyrow" style="margin:14px 0;">
+        <button class="naya-btn" id="copyapp"><span class="nb-label">Copy contract</span></button>
+        <button class="naya-btn" id="dlapp"><span class="nb-label">Download</span></button>
+      </div>
+      <pre id="appcontract" style="max-height:420px; overflow:auto;"></pre>
+    </div>
+  </div></div>
+</section>
+
+<section id="machine">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-magenta)">&#167;6 &middot; For the machines</span>
+    <h2>The machine contract</h2>
+    <p>This page was generated from the contract data by the pipeline &mdash; the same assembler that builds every page. Same truth, two faces.</p>
+  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#e84fff">
+    <details class="machine">
+      <summary>smart-builder &middot; builder page v1 &mdash; view / copy</summary>
+      <div class="body">
+        <div class="copyrow"><button class="naya-btn" id="copyjson"><span class="nb-label">Copy JSON</span></button></div>
+        <pre id="machinejson">%%MACHINE_JSON%%</pre>
+      </div>
+    </details>
+  </div></div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <span class="kicker">Smart Builder &middot; Your Smart App</span>
+  Built by the Smart Builder pipeline from contract <b>smart-builder/builder-page-v1</b> &mdash; the factory building its own front door. Every control on this page works, or it doesn&rsquo;t ship.
+</div></footer>
+
+<div id="toast" role="status"></div>
+
+<script>
+function toast(msg){
+  var t = document.getElementById("toast");
+  t.innerHTML = '<span class="led"></span>' + msg;
+  t.classList.add("show");
+  clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+}
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function machine(){ return JSON.parse(document.getElementById("machinejson").textContent); }
+
+/* ---------- intake modes ---------- */
+var panels = {questions:"panel-questions", specimens:"panel-specimens", dictation:"panel-dictation"};
+document.addEventListener("click", function(e){
+  var m = e.target.closest("#intake .mode[data-mode]");
+  if (m){
+    document.querySelectorAll("#intake .mode[data-mode]").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+    m.setAttribute("aria-pressed","true");
+    var id = m.getAttribute("data-mode");
+    Object.keys(panels).forEach(function(k){ document.getElementById(panels[k]).hidden = (k !== id); });
+    document.getElementById("modeline").innerHTML =
+      'Intake mode: <b style="color:var(--paper)">' + esc(m.querySelector("h3").textContent.toLowerCase()) + '</b> &mdash; the contract is listening.';
+  }
+  var s = e.target.closest("[data-scroll]");
+  if (s){ var el = document.querySelector(s.getAttribute("data-scroll")); if (el) el.scrollIntoView({behavior:"smooth"}); }
+  var t = e.target.closest("#templist .typecard");
+  if (t){ t.classList.toggle("selected"); updateTempCount(); }
+});
+
+/* ---------- templates: multi-select, all on by default ---------- */
+function updateTempCount(){
+  var cards = document.querySelectorAll("#templist .typecard");
+  var sel = document.querySelectorAll("#templist .typecard.selected").length;
+  document.getElementById("tempcount").textContent = sel + " of " + cards.length + " selected — they sync as one Smart World.";
+}
+function selectedTemplates(){
+  var out = [];
+  document.querySelectorAll("#templist .typecard.selected h3").forEach(function(h){ out.push(h.textContent.trim()); });
+  return out;
+}
+
+/* ---------- features: the resolver, in the page ---------- */
+function resolveFeature(f, statuses){
+  var st = statuses[f.id] || "unknown";
+  if (st === "built") return {activates:true};
+  return {activates:false,
+    reason: f.label + " isn’t wired yet. It needs requirements (" + f.requires.join(", ") +
+    ") and permissions (" + f.permissions.join(", ") + "). It’s on your app and activates when ready — nothing is faked."};
+}
+function renderFeatures(){
+  var mc = machine(), feats = mc.builder_features, statuses = mc.features_status || {};
+  var host = document.getElementById("featurechecks");
+  host.innerHTML = "";
+  feats.forEach(function(f){
+    var r = resolveFeature(f, statuses);
+    var row = document.createElement("div");
+    row.className = "nb-chrome";
+    row.innerHTML =
+      '<label class="lawcard feat" style="--lc:#40d3bb; display:flex; gap:12px; align-items:flex-start; cursor:pointer;">' +
+      '<input type="checkbox" data-fid="' + esc(f.id) + '"' + (f.default ? " checked" : "") +
+      ' style="margin-top:4px; width:18px; height:18px; accent-color:#40d3bb;">' +
+      '<span><span class="ln" style="text-transform:uppercase"><span class="ld"></span><span>' + esc(f.label) + '</span>' +
+      '<span class="badge ' + (r.activates ? "ok" : "soon") + '">' + (r.activates ? "Works" : "Coming soon") + '</span></span>' +
+      '<p style="margin:6px 0 0;">' + esc(f.desc) + '</p>' +
+      (r.activates ? "" : '<p class="fine" style="margin:6px 0 0;">' + esc(r.reason) + '</p>') +
+      '</span></label>';
+    host.appendChild(row);
+  });
+  host.addEventListener("change", function(e){
+    var cb = e.target.closest("input[data-fid]");
+    if (!cb) return;
+    var f = feats.filter(function(x){ return x.id === cb.getAttribute("data-fid"); })[0];
+    var r = resolveFeature(f, statuses);
+    var note = document.getElementById("resolver-note");
+    if (!r.activates){
+      document.getElementById("resolver-text").textContent =
+        (cb.checked ? "Kept on — " : "Turned off — ") + r.reason;
+      note.hidden = false;
+    } else {
+      note.hidden = true;
+      toast(f.label + (cb.checked ? " on." : " off."));
+    }
+  });
+}
+
+/* ---------- privacy + connections ---------- */
+document.getElementById("visgroup").addEventListener("click", function(e){
+  var b = e.target.closest("[data-vis]"); if (!b) return;
+  this.querySelectorAll("[data-vis]").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+  b.setAttribute("aria-pressed","true");
+});
+document.getElementById("conngroup").addEventListener("click", function(e){
+  var b = e.target.closest("[data-conn]"); if (!b) return;
+  var on = b.getAttribute("aria-pressed") === "true";
+  b.setAttribute("aria-pressed", on ? "false" : "true");
+  toast(b.querySelector("h3").textContent + (on ? " disconnected." : " connected — your call, your switch."));
+});
+
+/* ---------- dictation ---------- */
+document.getElementById("dictate").addEventListener("click", function(){
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var ta = document.getElementById("dicttext");
+  if (!SR){ toast("Dictation isn’t in this browser — type it instead."); ta.focus(); return; }
+  var rec = new SR(); rec.lang = "en-US";
+  rec.onresult = function(ev){ ta.value += ev.results[0][0].transcript; };
+  rec.onerror = function(){ toast("Didn’t catch that — try again."); };
+  rec.start(); toast("Listening…");
+});
+
+/* ---------- build: the contract this page produces ---------- */
+function collectState(){
+  var mode = document.querySelector('#intake .mode[data-mode][aria-pressed="true"]');
+  var vis = document.querySelector('#visgroup [aria-pressed="true"]');
+  var feats = {}, conns = {};
+  document.querySelectorAll('#featurechecks input[data-fid]').forEach(function(cb){
+    feats[cb.getAttribute("data-fid")] = cb.checked;
+  });
+  document.querySelectorAll('#conngroup [data-conn]').forEach(function(b){
+    conns[b.getAttribute("data-conn")] = b.getAttribute("aria-pressed") === "true";
+  });
+  return {
+    contract: "naya-app/v1",
+    intake: {
+      mode: mode ? mode.getAttribute("data-mode") : "questions",
+      intent: document.getElementById("intent").value,
+      address: document.getElementById("address").value,
+      note: document.getElementById("specnote").value,
+      dictated: document.getElementById("dicttext").value
+    },
+    templates: selectedTemplates(),
+    features: feats,
+    privacy: vis ? vis.getAttribute("data-vis") : "private",
+    connections: conns,
+    note: "Generated by the Smart Builder page — itself built by the pipeline from contract smart-builder/builder-page-v1."
+  };
+}
+document.getElementById("buildbtn").addEventListener("click", function(){
+  var st = collectState();
+  var txt = JSON.stringify(st, null, 2);
+  document.getElementById("appcontract").textContent = txt;
+  document.getElementById("contractout").hidden = false;
+  document.getElementById("buildsummary").innerHTML =
+    "Contract ready: <b style='color:var(--paper)'>" + st.templates.length + " template(s)</b>, " +
+    "<b style='color:var(--paper)'>" + Object.keys(st.features).filter(function(k){return st.features[k];}).length + " features</b>, " +
+    "visibility <b style='color:var(--paper)'>" + esc(st.privacy) + "</b>. This is what the factory runs on.";
+  document.getElementById("contractout").scrollIntoView({behavior:"smooth", block:"nearest"});
+  toast("Your Smart App contract is ready.");
+});
+document.getElementById("copyapp").addEventListener("click", function(){
+  var txt = document.getElementById("appcontract").textContent;
+  navigator.clipboard.writeText(txt).then(function(){ toast("Contract copied."); },
+    function(){ toast("Copy blocked — select the text manually."); });
+});
+document.getElementById("dlapp").addEventListener("click", function(){
+  var blob = new Blob([document.getElementById("appcontract").textContent], {type:"application/json"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "my-smart-app-contract.json"; a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
+  toast("Contract downloaded.");
+});
+document.getElementById("copyjson").addEventListener("click", function(){
+  var txt = document.getElementById("machinejson").textContent;
+  navigator.clipboard.writeText(txt).then(function(){ toast("Machine contract copied."); },
+    function(){ toast("Copy blocked — select the text manually."); });
+});
+
+/* ---------- init ---------- */
+renderFeatures();
+document.querySelectorAll("#templist .typecard").forEach(function(c){ c.classList.add("selected"); });
+updateTempCount();
+</script>
+</body>
+</html>

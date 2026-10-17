@@ -131,7 +131,11 @@ def day_one_check(sb_dir, index_path, chrome):
     if js_errors:
         return {'status': 'failed',
                 'note': 'JS errors on minimal page: %s' % js_errors[0][:200]}
-    failed = sorted({u for u in net_urls if url_fetch_failed(u)})
+    # Only fetches the PAGE itself requested count. Chromium fires its own
+    # probes on startup (time-sync, component update) that never appear in
+    # the page source — those are browser-internal, not page defects.
+    page_urls = {u for u in net_urls if u in s}
+    failed = sorted({u for u in page_urls if url_fetch_failed(u)})
     if failed:
         return {'status': 'failed',
                 'note': 'failed network fetches: %s' % failed[0][:200]}
