@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>What's Your Naya Power Score? — Maxis</title>
+<meta name="description" content="Discover your Naya Power score. Learn what Naya Power is while 15 questions measure your AI empowerment, human empowerment, and collaboration with Naya.">
+<meta name="theme-color" content="#020204">
+<meta name="color-scheme" content="dark">
+<link rel="stylesheet" href="css/maxis.css">
+<style>
+  .public-hero-overlay{position:fixed;inset:0;z-index:90;overflow-y:auto;
+    background:
+      radial-gradient(120% 55% at 50% -8%, rgba(111,67,255,.16), transparent 55%),
+      #020204;
+    transition:opacity .6s cubic-bezier(.16,.84,.22,1), visibility .6s}
+  .public-hero-overlay.gone{opacity:0;visibility:hidden;pointer-events:none}
+  .public-hero-inner{max-width:640px;margin:0 auto;padding:70px 22px 60px;text-align:center}
+</style>
+</head>
+<body>
+<main class="maxess-app" id="maxessApp" aria-label="Maxis Naya Power Assessment">
+<div class="stars" aria-hidden="true"></div>
+
+<!-- PUBLIC TEACHING HERO -->
+<div class="public-hero-overlay" id="publicHero">
+  <div class="public-hero-inner">
+    <div class="public-hero">
+      <div class="kicker">MAXIS · NAYA POWER</div>
+      <h1>What's your<br><span class="grad">Naya Power score?</span></h1>
+      <p class="lede"><strong style="color:#fff">Naya Power</strong> is a new kind of power: you direct, Naya builds. Your idea, your intelligence, your Smart App — your internet, your way. Answer 15 questions, learn what Naya Power is as you go, and get your honest score.</p>
+    </div>
+    <div class="teach-grid">
+      <div class="teach-card" style="--tcolor:#8a5cff">
+        <div class="t-orb"></div>
+        <h4>AI Empowerment</h4>
+        <p>Learn to direct intelligence clearly — describe what you imagine, judge what comes back, and turn ideas into working Smart Apps.</p>
+      </div>
+      <div class="teach-card" style="--tcolor:#ffd45a">
+        <div class="t-orb"></div>
+        <h4>Human Empowerment</h4>
+        <p>You are the director, always. Naya serves your growth — the only question that matters is whether it helps you grow.</p>
+      </div>
+      <div class="teach-card" style="--tcolor:#35e39b">
+        <div class="t-orb"></div>
+        <h4>AI · Human Collaboration</h4>
+        <p>A real partnership: Naya remembers, compounds, and works while you sleep. Intelligence that doesn't just answer — it works.</p>
+      </div>
+      <div class="teach-card" style="--tcolor:#39ddd2">
+        <div class="t-orb"></div>
+        <h4>One Brain, Every AI</h4>
+        <p>Naya Power doesn't replace your AI — it unifies it. Muse, ChatGPT, Claude: one user-owned brain underneath them all.</p>
+      </div>
+    </div>
+    <div class="start-wrap">
+      <button class="btn cta-primary" id="startAssessment" type="button" style="max-width:340px;width:100%">Start My Assessment <span class="button-arrow">→</span></button>
+      <p class="cta-note">15 questions · about 3 minutes · your answers are private</p>
+    </div>
+  </div>
+</div>
+
+<div class="app-inner">
+
+  <header class="topbar">
+    <div class="brand" aria-label="MAXIS"><span class="brand-max">MAX</span><span class="brand-ess">IS</span></div>
+    <div class="progress-hud" aria-label="Assessment progress" aria-live="polite">
+      <div class="progress-location"><span class="progress-dot"></span><span class="progress-label" id="progressLabel">QUESTION 1 OF 15</span></div>
+      <div class="progress-track" aria-hidden="true"><span class="progress-fill" id="progressFill"></span></div>
+      <span class="progress-percent" id="progressPercent">7%</span>
+    </div>
+    <div></div>
+  </header>
+
+  <section class="board-wrap" id="assessmentView">
+    <div class="board"><div class="board-content">
+
+      <div id="assessmentStage">
+        <div class="command-row">
+          <button class="naya-button" id="nayaButton" type="button" aria-label="Listen to Naya" aria-pressed="false">
+            <span class="naya-orb" aria-hidden="true"></span>
+            <span class="naya-copy"><strong id="nayaPrimary">Press Play</strong><span id="nayaSecondary">Listen to Naya</span></span>
+          </button>
+          <button class="continue-button" id="continueButton" type="button" disabled aria-disabled="true">
+            <span id="continueText">Continue</span><span class="button-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+        <div class="voice-label" id="voiceLabel" aria-live="polite"></div>
+        <div class="question-area" id="questionArea">
+          <div class="question-label" id="questionLabel">NAYA POWER</div>
+          <h1 class="question-title" id="questionTitle"></h1>
+          <div class="question-rule" aria-hidden="true"></div>
+        </div>
+        <div class="answers" id="answers" role="group" aria-label="Answer choices"></div>
+      </div>
+
+      <section class="interests" id="interestsView" aria-labelledby="interestTitle">
+        <div class="interest-eyebrow">ONE LAST THING</div>
+        <h2 class="interest-title" id="interestTitle">Where do you want Naya Power to become more useful to you?</h2>
+        <p class="interest-intro">Choose anything that interests you. There are no wrong answers, and you can skip this completely.</p>
+        <div class="interest-board active" data-board="0"></div>
+        <div class="interest-board" data-board="1"></div>
+        <div class="interest-board" data-board="2"></div>
+        <div class="board-dots">
+          <span class="board-dot active" data-dot="0"></span><span class="board-dot" data-dot="1"></span><span class="board-dot" data-dot="2"></span>
+        </div>
+        <div class="interest-actions">
+          <button class="primary-black" id="interestContinue" type="button">Continue to My Report <span class="button-arrow">→</span></button>
+        </div>
+        <button class="interest-skip" id="interestSkip" type="button">Skip this step</button>
+      </section>
+
+      <section class="results" id="resultsView" aria-labelledby="resultTitle">
+        <div class="result-hero">
+          <div class="result-eyebrow">MAXIS PERSONAL REPORT</div>
+          <h2 class="result-title" id="resultTitle">This is your<br><span class="grad">Naya Power pattern.</span></h2>
+          <p class="result-subtitle" id="resultSubtitle"></p>
+          <div class="score-stage" id="scoreStage" style="--scoreColor:#b895ff;--scoreDeg:0deg">
+            <div class="orb-glow"></div>
+            <div class="orbit o1"><span class="sat"></span></div>
+            <div class="orbit o2"><span class="sat"></span></div>
+            <div class="orbit o3"><span class="sat"></span></div>
+            <div class="score-content orb-core">
+              <span class="score-number" id="overallScore">0</span>
+              <span class="score-outof">NAYA POWER SCORE</span>
+            </div>
+          </div>
+          <div class="result-level" id="resultLevel" style="--scoreColor:#b895ff">
+            <span class="result-level-dot"></span><span id="resultLevelText">Calculating</span>
+          </div>
+        </div>
+
+        <section class="report-section">
+          <div class="report-heading">
+            <div class="report-kicker">YOUR FIVE DIMENSIONS</div>
+            <h3>Where your Naya Power lives</h3>
+            <p>Your overall score is only the beginning. These five dimensions show where your power is already strong — and where your greatest leverage is waiting.</p>
+          </div>
+          <div class="dimension-constellation" id="dimensionConstellation"></div>
+        </section>
+
+        <section class="report-section">
+          <div class="report-heading">
+            <div class="report-kicker">YOUR LEVERAGE POINTS</div>
+            <h3>Where your score tells the story</h3>
+          </div>
+          <div class="insight-flow">
+            <article class="insight" style="--insightColor:#35e39b">
+              <div class="insight-cap">Your strongest capability</div>
+              <div class="insight-score" id="strongestScore">0</div>
+              <h4 id="strongestName">—</h4><p id="strongestText">—</p>
+            </article>
+            <article class="insight" style="--insightColor:#ffd45a">
+              <div class="insight-cap">Your biggest opportunity</div>
+              <div class="insight-score" id="opportunityScore">0</div>
+              <h4 id="opportunityName">—</h4><p id="opportunityText">—</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="report-section">
+          <div class="analysis-cloud" id="analysisCloud"></div>
+          <div class="next-path" id="nextPath"></div>
+        </section>
+
+        <section class="report-section" id="interestReportSection">
+          <div class="report-heading">
+            <div class="report-kicker">YOUR NAYA POWER INTERESTS</div>
+            <h3>Where you want Naya Power to work harder</h3>
+            <p id="interestReportIntro"></p>
+          </div>
+          <div class="selected-interests" id="selectedInterests"></div>
+        </section>
+
+        <section class="final-cta">
+          <div class="cta-eyebrow">YOUR SCORE IS JUST THE START</div>
+          <h3 id="ctaTitle">Now step inside and grow it.</h3>
+          <p id="ctaBody">You just learned what Naya Power is — by being measured on it. Enter NayaNET to turn your score into capability, or order Naya Power and make it yours.</p>
+          <div class="cta-actions">
+            <button type="button" id="enterNayaButton">Enter NayaNET <span class="button-arrow">→</span></button>
+            <button type="button" id="freeTrialButton"><span>Order Naya Power</span> <span class="cta-tag"></span></button>
+          </div>
+          <p class="cta-note">Your answers are private. Your score belongs to you.</p>
+        </section>
+
+        <div class="result-actions">
+          <button type="button" id="pdfButton">Download / Save My Report</button>
+          <button type="button" class="quiet" id="restartButton">Take Assessment Again</button>
+        </div>
+
+      </section>
+    </div></div>
+  </section>
+
+  <footer class="footer">MAXIS · NAYA POWER · BECOME YOUR MAX</footer>
+</div>
+</main>
+
+<div class="interstitial" id="teachingInterstitial" aria-modal="true" role="dialog" aria-labelledby="cloudTitle">
+  <div class="teaching-cloud">
+    <div class="cloud-glow"></div>
+    <div class="cloud-eyebrow" id="cloudEyebrow">WHY THIS MATTERS</div>
+    <div class="cloud-icon" aria-hidden="true">✦</div>
+    <h2 class="cloud-title" id="cloudTitle">Let's look at something important.</h2>
+    <div class="cloud-body" id="cloudBody"></div>
+    <div class="cloud-actions">
+      <button class="cloud-button" id="cloudContinue" type="button">Got it — let's go <span class="button-arrow">→</span></button>
+    </div>
+  </div>
+</div>
+
+<script>window.MAXIS_CONFIG = { enterNayanetUrl: "../app/index.html", orderUrl: "" };</script>
+<script src="banks/naya-power.bank.js"></script>
+<!-- Canonical Naya voice: naya-voice.js is the ONLY voice interface. -->
+<script src="../app/js/naya-voice.js"></script>
+<script src="js/maxis-engine.js"></script>
+<script src="js/maxis-app.js"></script>
+<script>
+  document.getElementById("startAssessment").addEventListener("click", function () {
+    document.getElementById("publicHero").classList.add("gone");
+  });
+</script>
+</body>
+</html>
