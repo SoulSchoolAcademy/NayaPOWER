@@ -1,0 +1,29 @@
+name: Notify Outbox Gate
+
+# #2244 req 4: the worker notification outbox must keep working.
+# Runs only when the outbox, its tests, or the worker_entry hook change.
+
+on:
+  pull_request:
+    paths:
+      - "tools/notify_outbox.py"
+      - "tests/test_notify_outbox.py"
+      - "tools/worker_entry.py"
+      - ".github/workflows/notify-outbox-gate.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "tools/notify_outbox.py"
+      - "tests/test_notify_outbox.py"
+      - "tools/worker_entry.py"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_notify_outbox.py -q -p no:cacheprovider
