@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T01:15:51+00:00",
+ "generated_utc": "2026-10-17T02:15:57+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -360,12 +360,6 @@
      "draft": false
     },
     {
-     "number": 2712,
-     "title": "fix(connect): land CONNECT seam on tip 83806f4d \u2014 registry entrypoint + selector test",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2712",
-     "draft": false
-    },
-    {
      "number": 2710,
      "title": "IB: persist tools/ph_aggregation.py \u2014 p/h aggregation step for grade-acceptance cold execu",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2710",
@@ -394,9 +388,15 @@
      "title": "Design System v1 \u2014 the Naya Lego box (100 laws, tokens, catalog, organized library)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705",
      "draft": true
+    },
+    {
+     "number": 2703,
+     "title": "Harden TIP-NOTE marker to line-anchored heading regex + regression tests",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703",
+     "draft": false
     }
    ],
-   "open_pr_count": 231
+   "open_pr_count": 230
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2717,
+     "title": "Consensus gate: parse 12-lane seat tags + brief-time author-seat check (gap-t1442)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717",
+     "draft": false
+    },
     {
      "number": 2704,
      "title": "fix(gate): consensus gate skips issue_comment events without a verdict",
@@ -457,15 +463,9 @@
      "title": "Canonical 9-note Smart Note source for the Smart Feed live wire (t0473)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676",
      "draft": false
-    },
-    {
-     "number": 2645,
-     "title": "KNOW gaterepair (w247): doc_completeness_check fail\u2192warning + grep-flake instrument fix",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2645",
-     "draft": false
     }
    ],
-   "open_pr_count": 123
+   "open_pr_count": 124
   },
   {
    "id": "team",
@@ -932,5 +932,5 @@
   }
  ],
  "open_pr_total": 606,
- "unassigned_prs": 231
+ "unassigned_prs": 230
 }

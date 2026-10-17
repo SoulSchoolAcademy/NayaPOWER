@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 01:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 02:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 606 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -87,21 +87,21 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (231)
+### BUILD (230)
 - [#2715](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2715) Daily intelligence report pipeline — item 17 (generator + sample + rea
 - [#2714](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2714) DESIGN: adopt 144-block catalog extension into BLOCKS.md
-- [#2712](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2712) fix(connect): land CONNECT seam on tip 83806f4d — registry entrypoint 
 - [#2710](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2710) IB: persist tools/ph_aggregation.py — p/h aggregation step for grade-a
 - [#2709](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2709) [ACT] Pre-post PR body self-check (pr_body_selfcheck.py)
-- …and 226 more
+- [#2708](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708) Design Laws v1 (DRAFT): three-tongue repo placement 📝draft
+- …and 225 more
 
-### WIRE (123)
+### WIRE (124)
+- [#2717](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717) Consensus gate: parse 12-lane seat tags + brief-time author-seat check
 - [#2704](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2704) fix(gate): consensus gate skips issue_comment events without a verdict
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
 - [#2696](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696) fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wa
 - [#2692](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692) [DOCK] gate-403-response-body: byte-capture the next gate 403
-- [#2690](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690) Gate reliability: transient API failures → UNKNOWN (exit 2), never wro
-- …and 118 more
+- …and 119 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
