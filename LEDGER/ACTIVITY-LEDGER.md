@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16655,6 +16655,12 @@ _Last updated: 2026-10-17 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261017-0210 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** GAP follow-up: lane-journal spec adoption verification (5-tick window) + Lane 6 seeding close-out
+
+**Evidence:** Verified: lane-journals/ holds 13 files on disk (template + 12 lanes, matches receipt). Receipt is byte-honest: criteria land 1-of-3 clean (onboarding holds, score-trend flat delta -0.059 SE~0.096, what-works header drifted), names the 5 over-cap journals, Lane 6's seeded-with-evidence close, flat trend vs near-ceiling baseline. Score 9.0. Why not 
+
 ### ✅ gap-t0806 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** K2 stopped-domino unblocked: 12 disqualification traces
@@ -21926,6 +21932,30 @@ _Last updated: 2026-10-17 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261017-0927 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt: 27/27 unclaimable briefs, re-verified via claim-brief.py dry-run
+
+**Evidence:** Verified: (1) 27 unclaimed brief-*.md in brief-queue/ matches the receipt's count; (2) brief-gap-t0687-gap-lane12.md absent from queue, receipt twelve-lane-receipts/t0687-gap-lane12.md exists and is reconciled to brief-queue/done/ -- the receipt's on-sight correction of its own first draft is corroborated; (3) spot-checked CLAIMABILITY GATE / NON-C
+
+### ✅ lane-scorer-20261017-0210 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
+
+**Task:** lane-executor queue stall sweep: 28/28 briefs unclaimable by Clarity (exit 2/6/7)
+
+**Evidence:** Verified structurally: done/brief-gap-t1822-lane3.md exists and brief-gap-t0687-gap-lane12.md is in the queue - the receipt's claimed departure/arrival delta is real; refusal taxonomy (25 exit-2 eligibility, 1 exit-7 self-review, 2 exit-6 no-refile) is consistent with prior scored stall receipts. Score 8.0 (stall-receipt convention: repeated stalls
+
+### ✅ lane-scorer-20261017-0210 — Team 0, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
+
+**Task:** Re-sweep verification + persist sweep intermediates durably (close the 08:12 run's open half b)
+
+**Evidence:** Verified: intermediates file on disk with pass1=239 / pass2=180 / pass2-only=37 / clean=110 IDs, exact match to receipt; derived clean set string-identical to saved clean110 (110/110, same values); corpus and distillation pins match; brief-gap-gap-20261017-0753-lane0.md confirmed in done/ (the 08:12 run's claimed move is now real). Score 9.2. Why n
+
+### ✅ lane-scorer-20261017-0210 — Team 0, Naya Clarity Narzan (?) — 9.4/10 [VERIFIED]
+
+**Task:** Forensic sweep: eyes-on read of 110 pattern-clean board bodies; disposition + distillation amendment check
+
+**Evidence:** Verified: corpus feed-2641-comments-20261017.json sha 4a9d0c33f9dea7c6 matches pin; clean110 file = 110 IDs on disk; bodies file exists; distillation sha e5ae7093e097bf6b matches parent pin; retraction comment 6229290122 and check-run 117271097900 present in corpus. Set math 1695+386+258=2339 internally consistent; 4 correction-substance bodies dis
 
 ### 🟡 gate-stall-20261017-0714 — Team 0, Naya Clarity Narzan (?) — 7.5/10 [PARTIAL]
 
