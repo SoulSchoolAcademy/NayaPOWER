@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 17:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 19:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 615 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 617 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (58)
+### LEARN (59)
+- [#2743](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2743) docs: define NayaNET build-see-learn-share product loop
 - [#2720](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2720) docs(brain): learning event 2026-10-17
 - [#2693](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2693) docs(brain): learning event 2026-10-15 📝draft
 - [#2682](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682) feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3
 - [#2617](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2617) docs(brain): learning event 2026-10-14
-- [#2613](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2613) wire: learn-clock T6 verify + T7 compound commands (Alpha w189)
-- …and 53 more
+- …and 54 more
 
 ### KNOW (24)
 - [#2736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736) fix(brain-index): make regeneration line-ending deterministic on every
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (234)
+### BUILD (235)
+- [#2742](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742) Design laws v2 — 3-pass scored 9+ for ratification
+- [#2741](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2741) Canonical hex set — 3-pass scored 9.25/10 for stamp
 - [#2739](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739) Design library: canonical piece library on main (37 files, categorized
 - [#2735](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2735) Fix Living Map probes that mask latest failure or partial schema
 - [#2732](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2732) fix(activation): pin Operating Code V2 LF in Windows checkouts
-- [#2731](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2731) ACTIVATION-PACKET: re-point author-branch links at main
-- [#2730](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2730) Phase B: repo-native lesson injection + scoring machinery
-- …and 229 more
+- …and 230 more
 
 ### WIRE (124)
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
