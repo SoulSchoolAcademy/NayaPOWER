@@ -758,7 +758,7 @@
             "contacts wired"
           ],
           "activated_by": "contract.features.contacts",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.contacts"
@@ -779,13 +779,14 @@
             "list_renders"
           ],
           "ready": [
-            "contacts UI",
-            "local address book"
+            "render contract-carried contact list (no I/O, no grant)"
           ],
           "connected": [
             {
-              "action": "import and sync contacts",
-              "grant": "network"
+              "action": "sync external address books",
+              "declares": "contract.features.contacts.sync_external",
+              "grant": "network",
+              "status": "specified"
             }
           ]
         },
