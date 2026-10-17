@@ -70,6 +70,49 @@ API = "https://api.github.com"
 _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
                 "eta", "theta", "iota", "kappa", "lambda", "mu",
                 "nitro", "chi", "relay")
+
+
+def _load_worker_registry():
+    """Load team-declared worker names from seats/worker-registry.json.
+
+    Shawn's order 2026-10-17: each team declares its own workers, and that
+    declaration IS the approval. The registry file is the source of truth;
+    the hardcoded tuple above is the fallback. A name in the registry is
+    recognized by the gate — no code change needed when teams grow.
+    """
+    import json as _json
+    import os as _os
+    names = []
+    # The gate runs from the repo root in CI; also try relative to this file.
+    candidates = [
+        _os.path.join("seats", "worker-registry.json"),
+        _os.path.join(_os.path.dirname(_os.path.abspath(__file__)),
+                       "..", "seats", "worker-registry.json"),
+    ]
+    for candidate in candidates:
+        try:
+            with open(candidate) as _f:
+                reg = _json.load(_f)
+            break
+        except (OSError, ValueError):
+            continue
+    else:
+        return names
+    for team in (reg.get("teams") or {}).values():
+        for w in team.get("workers") or []:
+            n = (w.get("name") or "").strip().lower()
+            if n and n not in names:
+                names.append(n)
+    for w in (reg.get("builder_seats") or {}).get("workers") or []:
+        n = (w.get("name") or "").strip().lower()
+        if n and n not in names:
+            names.append(n)
+    return names
+
+
+# Merge registry names into the recognized seats (registry wins on conflicts).
+_NAMED_SEATS = tuple(dict.fromkeys(
+    list(_NAMED_SEATS) + _load_worker_registry()))
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
