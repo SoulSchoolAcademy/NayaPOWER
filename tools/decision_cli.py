@@ -196,6 +196,16 @@ def decide(decision):
     decision_status = result["decision"]
     selected = result["selected"]
     governance_authorization = "UNRESOLVED_NO_TRUSTED_GATE_RESOLVER"
+    # The engine's hard-gate booleans are provisional adapter assumptions.
+    # Label each candidate row as unresolved so a human reader cannot mistake
+    # the provisional internal calculation for an independently cleared gate.
+    for row in result.get("rows", []):
+        if row.get("is_baseline"):
+            continue
+        row["gate"] = "UNRESOLVED"
+        reasons = list(row.get("gate_reasons") or [])
+        reasons.append("trusted authority/law/rights/privacy/safety resolver is not connected; advisory ranking only")
+        row["gate_reasons"] = reasons
     if decision_status == "ACT":
         decision_status = "READ_MORE"
         selected = None
