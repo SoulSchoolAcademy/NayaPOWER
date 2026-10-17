@@ -1,0 +1,26 @@
+name: Show-your-work gate
+
+# Shawn's law as code (2026-10-11): no show-your-work receipt = no merge.
+# Every PR targeting main must carry a `## Show-Your-Work Receipt` section
+# proving three honest self-validation passes happened, pinned to the exact
+# head SHA. This check BLOCKS merging when the receipt is missing or invalid.
+#
+# This replaces the outside-review lock: three honest self-passes ARE the
+# gate. Independent review is still valuable but never a blocking prerequisite.
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  show-your-work:
+    name: Show-your-work receipt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate show-your-work receipt
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python3 tools/check_show_your_work.py
