@@ -35,8 +35,12 @@ from feature_smart_mail import (SmartMailRefusal, decl_for as sm_decl_for,
 from feature_space import (SpaceRefusal, decl_for as sp_decl_for,
                             render_space, FEATURE_ID as FEATURE_SPACE_ID,
                             FEATURE_VERSION as FEATURE_SPACE_VERSION)
+from feature_social_feed import (SocialFeedRefusal, decl_for as sf_decl_for,
+                                 render_social_feed,
+                                 FEATURE_ID as FEATURE_SOCIAL_FEED_ID,
+                                 FEATURE_VERSION as FEATURE_SOCIAL_FEED_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.7"  # v1.7: wave-A module 2/3 (space)
+ASSEMBLER_VERSION = "assemble-v1.8"  # v1.8: wave-A module 3/3 (social_feed)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -85,6 +89,14 @@ def _render_space(decl, st, ctx, contract):
         FEATURE_SPACE_ID, FEATURE_SPACE_VERSION, connected))
     return html, evts, {}
 
+def _render_social_feed(decl, st, ctx, contract):
+    html, connected = render_social_feed(decl, st, context=ctx)
+    evts = [{'event': 'social_feed.wired', 'feature': FEATURE_SOCIAL_FEED_ID,
+             'version': FEATURE_SOCIAL_FEED_VERSION}]
+    evts.extend(_wavea_connected_events(
+        FEATURE_SOCIAL_FEED_ID, FEATURE_SOCIAL_FEED_VERSION, connected))
+    return html, evts, {}
+
 # Reserved receipt keys — modules may not shadow them via extra_receipt.
 _RECEIPT_RESERVED_KEYS = frozenset(
     {'built_utc', 'events', 'grants', 'identity', 'consent'})
@@ -111,6 +123,10 @@ BREAKER_MODULES = [
      'decl_for': sp_decl_for, 'refusal': SpaceRefusal,
      'version': FEATURE_SPACE_VERSION,
      'render': _render_space},
+    {'key': 'social_feed', 'fid': FEATURE_SOCIAL_FEED_ID,
+     'decl_for': sf_decl_for, 'refusal': SocialFeedRefusal,
+     'version': FEATURE_SOCIAL_FEED_VERSION,
+     'render': _render_social_feed},
 ]
 BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 

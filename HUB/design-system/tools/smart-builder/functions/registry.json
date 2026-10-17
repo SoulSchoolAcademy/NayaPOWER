@@ -662,7 +662,7 @@
             "feed wired"
           ],
           "activated_by": "contract.features.social_feed",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.feed"
@@ -691,8 +691,8 @@
           ],
           "connected": [
             {
-              "action": "publish to network",
-              "grant": "nayanet"
+              "action": "live updates",
+              "grant": "network"
             }
           ]
         },
