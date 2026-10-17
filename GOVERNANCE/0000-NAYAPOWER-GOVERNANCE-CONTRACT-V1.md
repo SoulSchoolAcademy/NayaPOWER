@@ -1,7 +1,12 @@
 # 🔱 NayaPOWER — Governance Contract V1
 
-**STATUS:** PROPOSED CANONICAL — HUMAN DIRECTOR RATIFICATION REQUIRED  
+**STATUS:** RATIFIED — HUMAN DIRECTOR RATIFICATION RECORDED 2026-09-30  
 **PURPOSE:** Operationalize constitutional law into deterministic governance.
+
+## RATIFICATION RECORD
+
+- Ratified by the Human Director (Shawn Vibert) on 2026-09-30, under the authority of the ratified Constitution Act V1.
+- This contract operationalizes constitutional law; it does not amend the Constitution. Constitutional amendments require separate Human Director ratification.
 
 ## 1. HIERARCHY
 
