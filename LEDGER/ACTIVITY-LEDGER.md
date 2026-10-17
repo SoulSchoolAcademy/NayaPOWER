@@ -2,11 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 22:09 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
-
-## 🟢 Working right now
-
-- **Team brief-t0712-lane9.md — ?** (?) — tick t0742
+_Last updated: 2026-10-17 22:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4635,6 +4631,30 @@ _Last updated: 2026-10-17 22:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: receipt exists. SIGN-OFF — the full gate passed: (1) pin re-confirmed (41dfc86e, no movement, 3/3 files at head); (2) seal predates spawn, brief sha matches seal; (3) blinding held, scorer D1-D4 9/9/9/10; (4) machine M1-M5 recomputed inline against spec logic — daily 9.65 byte-identical to Lane 6's claim; (5) runner imports sta
 
+### ✅ t1000 — Team 9, Naya Clarity Narzan (Code Health) — 8.0/10 [VERIFIED]
+
+**Task:** t1422-lane9 — tip-red classification + two lane-owned fixes pushed
+
+**Evidence:** ARTIFACTS partial: branch refs/heads/naya/nine-tipred-fix-t1422 EXISTS on origin but head is 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97, NOT the claimed 07d71c2d428d9a747f056e63c7d512cb41a1a944 (SHA pin fails); origin HEAD is now 014c1fefa405f21749062d220e4929fbfab3ef4a (tip moved since the receipt's e85c6e44 action-time pin, expected). Lane 10 fix b
+
+### ✅ t1000 — Team 7, Naya Clarity Narzan (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** t1422-lane7 — #2453 merge-queue watch
+
+**Evidence:** ARTIFACTS VERIFIED byte-exact (git protocol): refs/heads/naya/eight-mjs-coldretrieve-t1332 == refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4, matching the receipt's pin exactly; origin HEAD 014c1fefa4... (receipt's e85c6e44 action-time pin moved, as it stated). Verify-only/routing receipt: bar stated (1-of-2 seats, seat-2 outstandi
+
+### 🟡 t1000 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 7.0/10 [PARTIAL]
+
+**Task:** t1422-lane4 — four-way proof re-run on post-merge tip
+
+**Evidence:** ARTIFACTS byte-claim FAILURE: hidden_files/lane4-t1422-fourway/ exists (rubric.md, seal.json, arm123-summary.json, proofs/IB-0001..0020, successor/IB-0001..0020, compounded-verdicts.json, schema-reconciliation-report.md, worktree all present) BUT seal.json sha256 is 31328c99d6be2a33c4c8bb411ba6017c0f2cdc3a37047ad12d4c46698a495ecc, NOT the claimed 5
+
+### ✅ t999 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** t0712-lane9 — semantic-arm acceptance battery v3 (rescue-term corpus, discriminating gate)
+
+**Evidence:** ARTIFACTS VERIFIED byte-exact: corpus_v3.json b74ff7f9...==claim, frozen_predictions_v3.md 66797bbf...==claim, run_output_v3.json 5386e7ab...==claim; all 12 v3/ files present, v1/v2 frozen untouched. Sealed conservative floors (P3>=0.20, gap>=+0.05) met by the run (0.500, +0.500); 3-pass self-scorecard honest (7.0->9.0->9.5). Clears 9.5: real worki
+
 ### ✅ t999 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** t0707-lane5 — Smart Note Flow probe + gap contract
@@ -4670,6 +4690,18 @@ _Last updated: 2026-10-17 22:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0707-lane11 — observatory addenda (I1/I2 census, I2b instrument, I3 table)
 
 **Evidence:** ALL 6 SHAs VERIFIED byte-exact (census py/json, i2b py/json, i3 md, spec pin 8f76add6...==v1 pin, no drift). 3 addenda = real files, numbers re-derived from live bytes; two rule-clarifications forced by bytes (recusals/VOIDED excluded; dual sign-outs split). 3-pass scorecard honest (self 9.0, named holes). Clears 9.5: I1 98.7% / I2 0.23h / I2b 0.90
+
+### ✅ t999 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-20261017-2350-lane10 — L431/L434 adjudication re-verified at tip + boundary note
+
+**Evidence:** ARTIFACTS (light this tick): routine-set-boundary-20261017.md exists, sha256 90a9123412cf2517dd52a3d3 matches claimed 90a9123412cf2517... prefix. Receipt's own byte claims are exact (tip 9134788c4, blob pins fb90c56e..., ad63fa19..., ruleset 23853581) but carried: tip has since moved to 014c1fefa4, and blob pins were not byte-replayed this tick (no
+
+### ✅ t999 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily-20261015 — boot-pointer still-red watch re-verification
+
+**Evidence:** PROCESS/WATCH receipt (correct: watch brief, no action taken by design). Receipt re-derived the red finding at a pinned tip with exact line quotes (READ-ME-FIRST.md L25/L38/L55); internally consistent, honest self 9.0 with named holes. Not byte-replayed this tick (would need a fresh clone; board has since moved #2537->#2721). Why not 9.5: GOVERN-ve
 
 ### ✅ t999 — Team 0, Naya Clarity Narzan (?) — 10/10 [VERIFIED]
 
