@@ -75,6 +75,12 @@ class TestSupabaseSchemaProbe(unittest.TestCase):
         self.assertEqual(result["status"], "green")
         self.assertIn("8/8 expected tables exposed", result["evidence"])
 
+    def test_no_expected_tables_exposed_is_red(self):
+        result = self._run_probe([])
+        self.assertEqual(result["status"], "red")
+        self.assertIn("0/8 expected tables exposed", result["evidence"])
+        self.assertIn("missing expected tables:", result["evidence"])
+
 
 if __name__ == "__main__":
     unittest.main()
