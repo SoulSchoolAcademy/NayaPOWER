@@ -1,5 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { assessActIdempotencyReceipt } from "./verify-act-idempotency.ts";
 
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
@@ -63,7 +64,39 @@ Deno.serve(async (req: Request) => {
     const mode = String(body.mode ?? "cvo");
     const treatmentId = String(body.treatment_receipt_id ?? DEFAULT_TREATMENT_ID);
     const controlId = String(body.control_receipt_id ?? DEFAULT_CONTROL_ID);
-    if (mode !== "cvo" && mode !== "verify" && mode !== "recover-learning-outcomes") return json({ok:false,error:"UNSUPPORTED_MODE"},400);
+    if (mode !== "cvo" && mode !== "verify" && mode !== "recover-learning-outcomes" && mode !== "verify-act-idempotency") return json({ok:false,error:"UNSUPPORTED_MODE"},400);
+
+    if (mode === "verify-act-idempotency") {
+      // P7: VERIFY independently recomputes the ACT idempotency binding.
+      // The executor's fingerprint claim is re-derived here from the
+      // receipt's own persisted inputs and compared. Any mismatch — or
+      // any inability to recompute — is FAIL CLOSED (409), never a pass.
+      const receiptId = String(body.action_receipt_id ?? "").trim();
+      if (!receiptId) return json({ok:false,error:"ACTION_RECEIPT_ID_REQUIRED"},400);
+      const {data: actReceipt, error: actReceiptError} = await admin
+        .from("nayanet_execution_receipts")
+        .select("id,user_id,project_id,action,status,observed_result,evidence,idempotency_key")
+        .eq("id", receiptId)
+        .eq("user_id", OWNER_ID)
+        .eq("project_id", "NayaNET")
+        .maybeSingle();
+      if (actReceiptError) throw actReceiptError;
+      const assessment = await assessActIdempotencyReceipt(actReceipt);
+      const ok = assessment.ok === true;
+      if (!ok) console.error("VERIFY_ACT_IDEMPOTENCY_REJECT", assessment.code, receiptId);
+      return json({
+        ok,
+        schema: "NAYANET_VERIFY_ACT_IDEMPOTENCY_V1",
+        independent_verification: ok,
+        executor_claim_trusted: false,
+        executor_claim_trusted_as_verification: false,
+        assessment,
+        receipt_id: receiptId,
+        runtime_identity: "github-actions-oidc",
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null,
+      }, ok ? 200 : 409);
+    }
 
     const {data:treatment,error:te} = await admin.from("nayanet_execution_receipts").select("*").eq("id",treatmentId).eq("user_id",OWNER_ID).eq("project_id","NayaNET").maybeSingle();
     if (te) throw te;
