@@ -1,0 +1,41 @@
+name: Smart Builder library inventory
+on:
+  pull_request:
+    paths:
+      - "HUB/SMART-BUILDER-LIBRARY-INVENTORY.json"
+      - "HUB/SMART-BUILDER-LIBRARY.html"
+      - "HUB/SMART-BUILDER-LIBRARY-ACCESS-CONTRACT-V1.md"
+      - "tools/smart_builder/**"
+      - ".github/workflows/smart-builder-library-inventory.yml"
+      - "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json"
+  push:
+    paths:
+      - "HUB/SMART-BUILDER-LIBRARY-INVENTORY.json"
+      - "HUB/SMART-BUILDER-LIBRARY.html"
+      - "HUB/SMART-BUILDER-LIBRARY-ACCESS-CONTRACT-V1.md"
+      - "tools/smart_builder/**"
+      - ".github/workflows/smart-builder-library-inventory.yml"
+      - "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout NayaPOWER
+        uses: actions/checkout@v4
+      - name: Checkout canonical Smart Blocks source branch
+        uses: actions/checkout@v4
+        with:
+          ref: naya5/smart-blocks-library
+          path: .library-source
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify generated inventory is current
+        run: python tools/smart_builder/build_library_inventory.py --check
+      - name: Test inventory generator
+        working-directory: tools/smart_builder
+        run: python -m unittest -v test_build_library_inventory.py
