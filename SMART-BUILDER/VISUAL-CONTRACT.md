@@ -42,7 +42,7 @@ FIRST, complete; every page is an all-in-one snapshot of any topic).
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "VisualSmartContract",
   "type": "object",
-  "required": ["contract_id", "version", "topic", "category", "owner", "intent", "parts", "functions", "privacy", "deploy"],
+  "required": ["contract_id", "version", "topic", "category", "owner", "intent", "parts", "functions", "privacy", "deploy", "intake"],
   "properties": {
     "contract_id": { "type": "string", "description": "Unique id, e.g. vsc-20261017-001" },
     "version": { "type": "string", "const": "1" },
@@ -244,7 +244,7 @@ it looks like; beauty is the system's job).
           "vision": { "type": "string" },
           "goal": { "type": "string" },
           "bound_piece": { "type": ["string", "null"], "description": "PieceReference id realizing it, or null until composed" },
-          "default_on": { "type": "boolean", "description": "mail and posting ship ON every page by default", "default": false }
+          "default_on": { "type": "boolean", "description": "MUST be true for mail and posting (mandatory per §3.2); false for optional functions", "default": false }
         }
       }
     }
@@ -720,6 +720,22 @@ git (privacy doctrine, standing).
 
 ---
 
+### 3.13 Contract-first gate: no build without a frozen contract
+
+Source: M:Visual Smart Contract 20:09Z (the contract comes FIRST —
+complete, everything it should have/need — then the page).
+
+The contract comes FIRST. Assembly fires ONLY from a frozen
+`VisualSmartContract` (all required fields present, `okay_build_trigger`
+fired). No builder, human or Naya, starts building from a partial contract,
+a sketch, or a conversation. Machine rule: the build pipeline MUST reject
+any assembly request whose contract fails schema validation or whose
+`intake.okay_build_trigger.fired` is not true. The contract is the job
+description — "this is your job now" — for the smart creator page and every
+builder agent that reads it.
+
+---
+
 ## 4. NON-goals (explicit)
 
 Source: H sections as noted. These are hard boundaries, not deferred
@@ -744,6 +760,7 @@ features.
 | Version | 1 |
 | Date | 2026-10-17 |
 | Human source | `team-nitro/smart-builder/CONTRACT-HUMAN-v1.md` (v1, 2026-10-17) |
+| Machine consumer | The smart creator page and builder agents — the contract is their job description ("this is your job now") |
 | Schema count | 6 (`VisualSmartContract`, `IntakeFields`, `FunctionContract`, `TemplateDefinitions`, `PieceReference`, `DeployTarget`) + 1 canonical template registry (10 templates) |
 | Diagrams | 4 mermaid flows (§2a–§2d) |
 | Spec sections | 12 (§3.1–§3.12), each with a `Source:` line |
