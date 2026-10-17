@@ -1,6 +1,5 @@
 # NayaPOWER Hub — Cloudflare Workers config
 # Deploys ONLY via .github/workflows/deploy-hub-cloudflare.yml
-# (exact SHA, protected environment, Shawn's approval). Never by hand.
 
 name = "hub"
 main = "hub-worker.js"
