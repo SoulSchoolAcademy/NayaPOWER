@@ -199,3 +199,86 @@ jobs:
             verify-refusal.json
             verify-sn002.json
             law-live-proof.json
+
+  publish-tip-proof:
+    # PROOF BY CONSTRUCTION (law-governance, 2026-10-07): every green
+    # live-law-proof run commits its tip-pinned proof JSON + registry pointer
+    # into BRAIN/06-PROOF/, so the canonical repo proof can never drift behind
+    # the live runtime again. Loop-safe: BRAIN/06-PROOF/** is not in this
+    # workflow's path filter, so the publish commit cannot retrigger it.
+    needs: independent-law-verification
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Fast-forward to latest main before publishing
+        run: |
+          set -euo pipefail
+          git pull --rebase origin main
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: law-primary-proof
+          path: law-primary-proof
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: law-independent-proof
+          path: law-independent-proof
+
+      - name: Build tip-pinned proof (fail-closed)
+        run: |
+          set -euo pipefail
+          python3 scripts/build_law_tip_proof.py \
+            --tip-sha "$GITHUB_SHA" \
+            --run-id "$GITHUB_RUN_ID" \
+            --run-url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            --law-runtime "$LAW_RUNTIME" \
+            --authorized-json law-primary-proof/authorized-law.json \
+            --refusal-json law-primary-proof/refusal-law.json \
+            --sn002-json law-primary-proof/sn002-authority-proof.json \
+            --receipt-ids-json law-primary-proof/law-receipt-ids.json \
+            --verify-authorized-json law-independent-proof/verify-authorized.json \
+            --verify-refusal-json law-independent-proof/verify-refusal.json \
+            --verify-sn002-json law-independent-proof/verify-sn002.json \
+            --out "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-${GITHUB_RUN_ID}-V1.json"
+          python3 - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          fname = f"0006-LAW-LIVE-PROOF-{os.environ['GITHUB_RUN_ID']}-V1.json"
+          ptr = {
+              "latest": fname,
+              "source_main": os.environ["GITHUB_SHA"],
+              "run_id": int(os.environ["GITHUB_RUN_ID"]),
+              "run_url": f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
+              "updated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+          }
+          Path = __import__("pathlib").Path
+          Path("BRAIN/06-PROOF/LATEST-LAW-LIVE-PROOF.json").write_text(
+              json.dumps(ptr, indent=2) + "\n")
+          print(f"registry pointer -> {fname}")
+          PY
+
+      - name: Commit proof, regen brain index, push
+        run: |
+          set -euo pipefail
+          git config user.name "Naya LAW Proof Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-${GITHUB_RUN_ID}-V1.json" \
+                  BRAIN/06-PROOF/LATEST-LAW-LIVE-PROOF.json
+          if git diff --cached --quiet; then
+            echo "no proof changes to publish"
+          else
+            git commit -m "law(proof): tip-pinned LAW live proof ${GITHUB_SHA:0:8} (run ${GITHUB_RUN_ID})"
+            # Index-regen rule (SN-0213/SN-0395): the regen enumerates
+            # `git ls-tree HEAD` — the commit, never the worktree — so the proof
+            # commit must exist BEFORE the regen runs.
+            python3 tools/regenerate_brain_index.py
+            git add BRAIN/REAL-TREE.json BRAIN/REAL-TREE.md BRAIN/NAYAPOWER-BRAIN-INDEX.json
+            git commit --amend --no-edit
+            git push origin HEAD:main
+          fi
