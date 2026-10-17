@@ -128,8 +128,8 @@
     {
       "path": "KNOWLEDGE/NAYAPOWER-CURRENT-STATE-V1.md",
       "title": "NayaPOWER Current State V1",
-      "purpose": "What is implemented, what is designed, and what is proposed, with evidence links (run IDs, commit SHAs) and current blockers.",
-      "status": "CANONICAL",
+      "purpose": "Historical 2026-09-27 state snapshot; retained for provenance, not current-state resolution.",
+      "status": "STALE",
       "last_updated": "2026-09-27"
     },
     {
