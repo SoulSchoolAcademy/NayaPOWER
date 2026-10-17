@@ -312,6 +312,17 @@ border:1px solid var(--ec);border-radius:999px;padding:3px 11px;margin-bottom:9p
 /* tentative: dashed edge = honest uncertainty */
 .cal-event.is-tentative{border-style:dashed}
 .cal-event.is-tentative .cal-rail .t::after{content:" ~";color:var(--ec)}
+/* narrow viewport (≤560px): the 86px rail collapses to a top band, the body
+   stacks beneath it, the spine goes horizontal. The card re-flows — it never
+   crushes (independent scorecard fix, 2026-10-16). */
+@media (max-width:560px){
+  .cal-event{flex-direction:column}
+  .cal-rail{width:auto;padding:12px 16px 10px;border-right:none;border-bottom:1px solid rgba(255,255,255,.12);
+    flex-direction:row;align-items:baseline;gap:10px}
+  .cal-body::before{left:16px;right:16px;top:0;bottom:auto;width:auto;height:3px}
+  .cal-event.is-allday .cal-rail{width:auto;height:10px;padding:0}
+  .cal-event.is-allday .cal-body{padding-left:18px}
+}
 </style>
 
 <article class="cal-event" style="--ec:#3fb8ff;--ec-glow:rgba(63,184,255,.45)" tabindex="0">
@@ -352,6 +363,27 @@ border:1px solid var(--ec);border-radius:999px;padding:3px 11px;margin-bottom:9p
     <p class="cal-span-note">Not confirmed yet — the dashed edge says so before you have to ask.</p>
   </div>
 </article>
+<script>
+/* Keyboard contract (independent scorecard fix, 2026-10-16): Enter or Space
+   activates the card — firing cal:open-event, the same signal a click fires.
+   The card keeps role="article" (it IS content); activation is button-like
+   and goes exactly one place: the event's detail view. Your app owns the
+   destination — the specimen only promises the signal. A card that can't be
+   acted on (aria-disabled) is skipped: it is never focusable, so it never
+   sits inert under a keyboard. */
+document.querySelectorAll('.cal-event').forEach(card=>{
+  card.addEventListener('keydown',e=>{
+    if(card.getAttribute('aria-disabled')==='true')return;
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      card.dispatchEvent(new CustomEvent('cal:open-event',{bubbles:true,detail:{source:'keyboard'}}));
+    }
+  });
+  card.addEventListener('click',()=>{
+    card.dispatchEvent(new CustomEvent('cal:open-event',{bubbles:true,detail:{source:'pointer'}}));
+  });
+});
+</script>
 ```
 
 ### States
@@ -360,6 +392,8 @@ border:1px solid var(--ec);border-radius:999px;padding:3px 11px;margin-bottom:9p
 - **Hover:** lifts 6px (card weight), edge + glow ignite in the event's own color. Light moves first, words follow.
 - **Active/press:** settles back 4px — it feels held.
 - **Focus:** white 2px ring — keyboard users get the same ignition promise.
+- **Keyboard contract:** Enter or Space activates the card — firing `cal:open-event`, the same signal a click fires. The card keeps `role="article"` (it *is* content); activation is button-like and goes exactly one place: the event's detail view (your app owns the destination). A card that can't be acted on carries `aria-disabled="true"` and no `tabindex` — a focusable card that does nothing on Enter is an inert affordance, and inert affordances are forbidden.
+- **Narrow (≤560px):** the 86px rail collapses to a top band (time + duration side by side), the body stacks beneath it, the spine goes horizontal. The card re-flows — it never crushes.
 - **All-day:** the time rail collapses into a glowing color band; an "ALL DAY" flag replaces the time. It never shows a fake `00:00–23:59`.
 - **Multi-day span:** the rail carries the range (`Oct 20 → 22`); the note says where the event continues. In CAL-001 the same event renders one pill per day with `→` honesty markers.
 - **Tentative:** dashed 1.5px edge + `~` after the time + "tentative" in the tag. Uncertainty is styled, never hidden.
@@ -406,6 +440,12 @@ transition:transform .18s cubic-bezier(.16,.84,.22,1),border-color .18s,box-shad
 .cal-drop{position:absolute;top:calc(100% + 10px);left:0;z-index:40;width:308px;background:linear-gradient(180deg,#16141b,#08080c);
 border:1.5px solid rgba(255,255,255,.35);border-radius:18px;padding:18px;
 box-shadow:inset 0 2px 2px rgba(255,255,255,.12),0 24px 60px rgba(0,0,0,.75),0 0 40px -14px rgba(160,107,255,.4)}
+/* panel overflow contract: capped and internally scrolled — the trigger never
+   moves, a long month on a short screen scrolls inside the panel */
+.cal-drop{max-height:min(440px,calc(100vh - 96px));overflow-y:auto;overscroll-behavior:contain}
+/* flip contract: <340px of clearance below the trigger opens the panel upward,
+   so it never clips the viewport's bottom edge (independent scorecard fix, 2026-10-16) */
+.cal-drop.is-flip{top:auto;bottom:calc(100% + 10px)}
 .cal-drop[hidden]{display:none}
 .cal-drop-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .cal-drop-head h3{font-family:Georgia,serif;font-size:16px;color:#fff;margin:0}
@@ -464,7 +504,12 @@ font-size:13px;cursor:pointer;transition:all .18s cubic-bezier(.16,.84,.22,1)}
     label.classList.remove('ph');trig.dataset.value=b.dataset.iso;close();
     trig.focus();
   }
-  function open(){drop.hidden=false;trig.setAttribute('aria-expanded','true');
+  function open(){
+    /* flip contract: measured at open time — <340px of clearance below the
+       trigger opens the panel upward, so it never clips the viewport edge */
+    const r=trig.getBoundingClientRect();
+    drop.classList.toggle('is-flip',(window.innerHeight-r.bottom)<340);
+    drop.hidden=false;trig.setAttribute('aria-expanded','true');
     const t=btns.find(b=>b.classList.contains('is-chosen'))||btns.find(b=>!b.disabled);if(t)t.focus();}
   function close(){drop.hidden=true;trig.setAttribute('aria-expanded','false');}
   trig.addEventListener('click',()=>drop.hidden?open():close());
@@ -489,6 +534,8 @@ font-size:13px;cursor:pointer;transition:all .18s cubic-bezier(.16,.84,.22,1)}
 - **Trigger rest:** input-styled — black body, 1.5px white edge, drawn calendar glyph, placeholder at 55% opacity ("Choose a date" — never a fake pre-filled date).
 - **Trigger hover:** lifts 2px, ignites chrome-purple. It is chrome; it burns chrome's color.
 - **Dropdown open:** elevated panel (Law 3 — overlay rides highest), tone under-glow. `aria-expanded` tells the truth.
+- **Flip:** when the viewport offers less than 340px of clearance below the trigger, the panel opens upward (`.is-flip`) — measured at open time. The panel never clips off the viewport's bottom edge.
+- **Panel overflow:** the panel caps at `min(440px, 100vh − 96px)` and scrolls internally — the trigger stays anchored while a long month scrolls inside the panel. The page never grows a second scrollbar for a date picker.
 - **Day hover:** lifts, purple edge + glow. Day focus (keyboard): white 2px ring — arrow keys move, Enter chooses, Esc closes and returns focus to the trigger.
 - **Chosen:** held purple edge + glow + bold number. One chosen day; choosing moves it.
 - **Today in the mini-grid:** white-hot edge + white number — the family
@@ -540,7 +587,17 @@ transition:transform .28s cubic-bezier(.16,.84,.22,1),border-color .28s,box-shad
 .cal-ev .tag{display:inline-block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ec);
 border:1px solid var(--ec);border-radius:999px;padding:2px 10px}
 .cal-ev .meta{font-size:13px;color:#fff;opacity:.8;margin-top:6px}
+/* the now-line is an <li> — list-style:none, valid inside the <ol>.
+   Absolutely-positioned geometry inside a plain <li> keeps the markup honest
+   (independent scorecard fix, 2026-10-16). */
+.cal-tl li.cal-now{list-style:none;display:block;padding:0}
+.cal-tl li.cal-now::before{display:none} /* no node jewel on the moment-marker */
 .cal-now{position:relative;height:0;z-index:2}
+/* past events: readable, never clickable-theater — aria-disabled, no tabindex,
+   no hover lift, spine at 40% (the app marks the row past from the clock) */
+.cal-ev[aria-disabled="true"]{cursor:default}
+.cal-ev[aria-disabled="true"]:hover{transform:none;border-color:rgba(255,255,255,.28);box-shadow:none}
+.cal-tl li.is-past .cal-spine{opacity:.4}
 /* the now-line marks the present moment in chrome-white (disambiguation,
    2026-10-16): a moment-marker, not an event — gold is events-only */
 .cal-now i{position:absolute;left:58px;right:0;top:0;height:2px;border-radius:2px;
@@ -560,15 +617,15 @@ border:1.5px solid rgba(255,255,255,.8);box-shadow:0 0 30px rgba(255,255,255,.55
   <h2>Friday, October 16</h2>
   <p class="sub">3 events · today</p>
   <ol class="cal-tl">
-    <li style="--ec:#a06bff;--ec-glow:rgba(160,107,255,.5)">
+    <li class="is-past" style="--ec:#a06bff;--ec-glow:rgba(160,107,255,.5)">
       <span class="cal-gutter">09:00</span><span class="cal-spine" aria-hidden="true"></span>
-      <div class="cal-ev" tabindex="0"><span class="tag">Deep work</span><h3>Ship the calendar spec</h3><p class="meta">2 h · Studio</p></div>
+      <div class="cal-ev" aria-disabled="true"><span class="tag">Deep work</span><h3>Ship the calendar spec</h3><p class="meta">2 h · Studio</p></div>
     </li>
-    <li style="--ec:#3fb8ff;--ec-glow:rgba(63,184,255,.5)">
+    <li class="is-past" style="--ec:#3fb8ff;--ec-glow:rgba(63,184,255,.5)">
       <span class="cal-gutter">10:30</span><span class="cal-spine" aria-hidden="true"></span>
-      <div class="cal-ev" tabindex="0"><span class="tag">Meeting</span><h3>Standup</h3><p class="meta">15 min · 6 attending</p></div>
+      <div class="cal-ev" aria-disabled="true"><span class="tag">Meeting</span><h3>Standup</h3><p class="meta">15 min · 6 attending</p></div>
     </li>
-    <div class="cal-now" aria-hidden="true"><i></i><b>now</b></div>
+    <li class="cal-now" aria-hidden="true"><i></i><b>now</b></li>
     <li style="--ec:#ffbf3d;--ec-glow:rgba(255,191,61,.5)">
       <span class="cal-gutter">15:00</span><span class="cal-spine" aria-hidden="true"></span>
       <div class="cal-ev" tabindex="0"><span class="tag">Decision</span><h3>Launch decision</h3><p class="meta">1 h · The call Shawn takes</p></div>
@@ -599,7 +656,7 @@ live build computes it or omits it.
   moment is chrome, not theme — gold is events-only, and the now-line sits
   between event spines, so it must never read as one of them.
 - **Empty:** centered white-hot jewel, serif "Nothing scheduled", 14px "The day is yours." No fake suggestions, no "maybe add…" nudges, no grayed-out ghost events.
-- **Past events (viewing today):** the card keeps its colors but the spine dims to 40% and the title takes no hover lift — the past is readable, not clickable-theater. (Your app sets `aria-disabled` where the event can't be acted on.)
+- **Past events (viewing today):** the card keeps its colors but the spine dims to 40% and the title takes no hover lift — the past is readable, not clickable-theater. (Your app sets `aria-disabled` where the event can't be acted on — the specimen's past rows carry `aria-disabled="true"` with no `tabindex`, exactly as specified.)
 
 ### Do / Don't
 

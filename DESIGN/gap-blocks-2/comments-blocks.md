@@ -54,6 +54,8 @@ how anyone feels about it.
 background:var(--ground);color:var(--ink)}
 ```
 
+**The one button DNA:** this family imports `.naya-btn` from the single canonical source (per `DESIGN/BLOCKS.md`, Law 5) — it is never redefined or re-typed here (see the single-source rule: checkout family contract §7). The snippets below assume it the way they assume the token sheet.
+
 ---
 
 ## CMT-001 · Comment thread
@@ -78,14 +80,11 @@ color:#fff;font-size:14px;padding:12px 14px;min-height:44px;resize:vertical;font
 transition:border-color .18s var(--ease),box-shadow .18s var(--ease)}
 .cmt-field::placeholder{color:#fff;opacity:.5}
 .cmt-field:focus{outline:none;border-color:#a06bff;box-shadow:0 0 24px rgba(160,107,255,.5)}
-.cmt-post{align-self:flex-end;min-width:120px;min-height:52px;border-radius:14px;background:#050505;color:#fff;
-border:1.5px solid rgba(255,255,255,.85);font-size:15px;cursor:pointer;
-box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 10px 24px rgba(0,0,0,.6);
-transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease),opacity .18s}
-.cmt-post:hover:not(:disabled){transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 26px rgba(160,107,255,.55)}
-.cmt-post:active:not(:disabled){transform:translateY(1px)}
-.cmt-post:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.cmt-post:disabled{opacity:.38;cursor:not-allowed}
+/* ——— Post IS .naya-btn — the one DNA, no bespoke button system (independent
+   scorecard fix, 2026-10-16). The hook keeps only the composer's layout needs
+   (alignment, 52px floor); every button visual — gradient heart, idle border,
+   conic ring, press parity, canonical focus, disabled — comes from .naya-btn. */
+.cmt-post{align-self:flex-end;min-width:120px;min-height:52px}
 /* ——— comment ——— */
 .cmt-item{display:flex;gap:12px;padding:14px 4px}
 .cmt-av{flex:none;width:44px;height:44px;transform:rotate(45deg);border-radius:12px;margin-top:2px;
@@ -123,14 +122,14 @@ transition:border-color .28s var(--ease),box-shadow .28s var(--ease)}
 .cmt-kids.d2{--rail:#a06bff}
 .cmt-kids.d3{--rail:#3fb8ff}
 .cmt-fold{display:flex;align-items:center;gap:10px;margin:8px 0 0 56px}
-.cmt-chev{width:44px;height:44px;border-radius:50%;background:#050505;border:1.5px solid rgba(255,255,255,.85);
-color:#fff;cursor:pointer;display:grid;place-items:center;flex:none;
-transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease)}
-.cmt-chev i{width:9px;height:9px;border-top:2px solid #fff;border-right:2px solid #fff;transform:rotate(135deg);margin-top:-3px;
-transition:transform .18s var(--ease)}
-.cmt-chev[aria-expanded="false"] i{transform:rotate(45deg);margin-top:0}
-.cmt-chev:hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 22px rgba(160,107,255,.55)}
-.cmt-chev:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* ——— the fold chevron IS .naya-btn.icon.micro — the one DNA, no bespoke
+   button system (independent scorecard fix, 2026-10-16). Exactly the CAL-001
+   pattern: the hook carries only the drawn chevron glyph (Law 4); every
+   button visual — gradient heart, idle border, insets, lift, flowing conic
+   ring, press, focus — comes from .naya-btn (imported, never redefined). */
+.naya-btn.icon.micro.cmt-chev i{width:9px;height:9px;border-top:2px solid #fff;border-right:2px solid #fff;
+transform:rotate(135deg);margin-top:-3px;transition:transform .18s var(--ease)}
+.naya-btn.icon.micro.cmt-chev[aria-expanded="false"] i{transform:rotate(45deg);margin-top:0}
 .cmt-fold .n{font-size:13px;color:#fff;opacity:.75;letter-spacing:.04em}
 /* ——— continue thread: the depth cap, stated ——— */
 .cmt-more{display:flex;align-items:center;gap:12px;margin:10px 0 0 22px;padding:12px 16px;min-height:52px;
@@ -165,7 +164,7 @@ border:1.5px solid rgba(255,255,255,.8);box-shadow:0 0 30px rgba(160,107,255,.55
     <div class="cmt-av" style="--ac:#a06bff;--ac-glow:rgba(160,107,255,.45)" aria-hidden="true"><b>YO</b></div>
     <label class="cmt-sr" for="cmtBox" hidden>Write a comment</label>
     <textarea class="cmt-field" id="cmtBox" placeholder="Say something true…" aria-label="Write a comment"></textarea>
-    <button class="cmt-post" id="cmtPost" disabled>Post</button>
+    <button class="naya-btn cmt-post" id="cmtPost" disabled>Post</button>
   </div>
 
   <div class="cmt-item">
@@ -182,7 +181,7 @@ border:1.5px solid rgba(255,255,255,.8);box-shadow:0 0 30px rgba(160,107,255,.55
         <button class="cmt-act cmt-share"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/></svg>Share</button>
       </div>
       <div class="cmt-fold">
-        <button class="cmt-chev" aria-expanded="true" aria-label="Collapse 2 replies"><i></i></button>
+        <button class="naya-btn icon micro cmt-chev" aria-expanded="true" aria-label="Collapse 2 replies"><i></i></button>
         <span class="n">2 replies</span>
       </div>
       <div class="cmt-kids d1">
@@ -200,7 +199,7 @@ border:1.5px solid rgba(255,255,255,.8);box-shadow:0 0 30px rgba(160,107,255,.55
               <button class="cmt-act cmt-share"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/></svg>Share</button>
             </div>
             <div class="cmt-fold">
-              <button class="cmt-chev" aria-expanded="true" aria-label="Collapse 1 reply"><i></i></button>
+              <button class="naya-btn icon micro cmt-chev" aria-expanded="true" aria-label="Collapse 1 reply"><i></i></button>
               <span class="n">1 reply</span>
             </div>
             <div class="cmt-kids d2">
@@ -334,7 +333,7 @@ is in flight.
 - **Focus:** white 2px ring on every control — chevron, actions, Post, composer. Keyboard collapse: Enter or Space on the chevron.
 - **Collapsed:** kids hidden, chevron flips, label keeps the honest count ("2 replies" — the number is real, from the data). Collapsing never deletes; it folds.
 - **Continue thread:** a dashed, honest button — "Continue thread — 3 more replies". Opens a nested board (Law 3 — a board inside a board rides higher) labeled "Thread continues — depth capped at 3". The deep replies render flat, in order. No fourth indent exists, anywhere.
-- **Composer rest:** dark field, "Say something true…" placeholder — never a fake pre-filled draft. **Focus:** purple ignition. **Post disabled:** 38% opacity, truly inert — an empty comment cannot be posted, and the button doesn't pretend otherwise. **Post enabled:** alive the moment there's text.
+- **Composer rest:** dark field, "Say something true…" placeholder — never a fake pre-filled draft. **Focus:** purple ignition. **Post disabled:** `.naya-btn:disabled` — 45% opacity, truly inert — an empty comment cannot be posted, and the button doesn't pretend otherwise. **Post enabled:** alive the moment there's text.
 - **Tombstone:** dashed edge, italic "This comment was removed." No body, no actions, no author — removal is total, not a tease.
 - **Empty thread:** centered jewel, serif "No comments yet", 14px "Say the first true thing." No fake suggestions, no ghost comments, no "be the first to…" engagement theater.
 - **Edited:** a quiet italic "edited" beside the timestamp — the edit is disclosed, the history isn't paraded.
@@ -347,11 +346,11 @@ is in flight.
 
 ### Anatomy
 
-- **Composer:** the thread's front door — avatar jewel of the poster, dark field, 52px Post button. Post is disabled until there's text; your app wires the real submit and the server's receipt.
+- **Composer:** the thread's front door — avatar jewel of the poster, dark field, a Post button wearing `.naya-btn` (52px — the one DNA, no bespoke system). Post is disabled until there's text; your app wires the real submit and the server's receipt.
 - **Avatar jewel:** rotated diamond, white → tone → black radial, initials in serif, glow in the author's own stable color. The color is assigned once per author (hash of the display name) and never changes between renders — identity, not decoration.
 - **Name row:** serif display name (16px), plain-words timestamp, quiet "edited" flag. Display name only — no email, no handle, no link unless the author made one public by choice.
 - **Nesting rail:** 2px line in the depth's Strip color, left of the kids. Hovering the parent ignites it — you see where the fold lives.
-- **Fold control:** 44px chevron + honest count. The count is the real reply count; collapsing folds, expanding unfolds — nothing is created or destroyed.
+- **Fold control:** a `.naya-btn.icon.micro` chevron (the CAL-001 pattern — drawn glyph only, the DNA carries everything else) + honest count. The count is the real reply count; collapsing folds, expanding unfolds — nothing is created or destroyed.
 - **Continue panel:** the depth cap made visible — dashed button, nested board, stated cap. Replies inside are flat and in order.
 - **Tombstone:** the honest grave — dashed edge, one line, no remains.
 
@@ -381,11 +380,12 @@ box-shadow:inset 0 2px 2px rgba(255,255,255,.12),0 22px 48px rgba(0,0,0,.7),0 0 
 .cmt-one .cmt-name{font-size:18px}
 .cmt-one .cmt-body{font-size:15px}
 .cmt-one .cmt-body.is-clamped{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.cmt-morebtn{background:none;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;
-font-size:12px;letter-spacing:.08em;padding:8px 16px;min-height:44px;cursor:pointer;
-transition:all .18s cubic-bezier(.16,.84,.22,1)}
-.cmt-morebtn:hover{border-color:#a06bff;box-shadow:0 0 18px rgba(160,107,255,.5);transform:translateY(-1px)}
-.cmt-morebtn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* ——— the clamp toggle wears .naya-btn--quiet — the one blessed quiet-control
+   DNA (independent scorecard fix, 2026-10-16). Canonical home: the checkout
+   family contract (checkout-blocks.md, family contract §8) — owned ONCE there
+   for the whole catalog, consumed here. The hook carries only the clamp
+   toggle's sizing; this block defines no quiet control of its own. */
+.cmt-morebtn{min-height:44px;padding:8px 16px;font-size:12px;letter-spacing:.08em}
 .cmt-one .cmt-actions{margin-top:4px}
 .cmt-count{font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.cmt-one,.cmt-morebtn{transition:none}}
@@ -399,7 +399,7 @@ transition:all .18s cubic-bezier(.16,.84,.22,1)}
       <time class="cmt-time" datetime="2026-10-16T21:28:00Z" title="Oct 16, 2026, 21:28 UTC">2h ago</time>
     </div>
     <p class="cmt-body is-clamped" id="cmtBody1">A single comment is the atom the thread is built from — same avatar jewel, same serif name, same plain-words timestamp, same action row. Long bodies clamp at four lines with an honest "Show more" — the full text is in the markup, nothing is cut, nothing is hidden from assistive tech. The love toggle here and the love pill in the reaction row are the same object: one count, one truth. Toggle it here and the pill agrees, because there was never a second number to disagree with.</p>
-    <button class="cmt-morebtn" aria-expanded="false" aria-controls="cmtBody1">Show more</button>
+    <button class="naya-btn naya-btn--quiet cmt-morebtn" aria-expanded="false" aria-controls="cmtBody1">Show more</button>
     <div class="cmt-actions">
       <button class="cmt-act cmt-reply"><svg viewBox="0 0 24 24"><path d="M9 14l-4-4 4-4"/><path d="M5 10h9a6 6 0 0 1 0 12h-3"/></svg>Reply</button>
       <button class="cmt-act cmt-love is-on" aria-pressed="true"><svg viewBox="0 0 24 24"><path d="M12 21C7 16.5 3 13 3 8.9 3 6 5.2 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.8 4 21 6 21 8.9c0 4.1-4 7.6-9 12.1z"/></svg><span class="cmt-count">12</span></button>
@@ -447,7 +447,7 @@ path — the specimen never shows a "Link copied" confirmation it didn't earn.
 
 - **Avatar jewel:** 52px here (the single comment gets a touch more presence than in-thread), initials in serif, author's stable color — same jewel law as CMT-001, one size up.
 - **Name row:** serif 18px display name, plain-words timestamp, quiet "edited" when true. Nothing else about the author is shown — private by default.
-- **Body:** 15px, white 96%, 1.6 line height. Clamps at four lines with "Show more" — the control is part of the block, not an afterthought.
+- **Body:** 15px, white 96%, 1.6 line height. Clamps at four lines with "Show more" — the control is part of the block, not an afterthought. The toggle wears `.naya-btn--quiet` — the one blessed quiet DNA (canonical home: checkout family contract §8); this block defines no quiet control of its own.
 - **Action row:** reply / love / share, 44px targets, each igniting its own color. Reply is chrome (purple); love is pink and toggles; share is blue and fires the app's real share path.
 - **The count:** tabular numerals, `aria-pressed` telling the truth about your state. The number is the server's number — never rounded to "12k" theater, never "12" as decoration.
 
@@ -504,16 +504,16 @@ box-shadow:inset 0 2px 2px rgba(255,255,255,.12),0 24px 60px rgba(0,0,0,.75)}
     <button class="rx" aria-pressed="false" data-rx="thoughtful" style="--rc:#a06bff;--rc-glow:rgba(160,107,255,.5);--rc-dim:rgba(160,107,255,.14)" title="Thoughtful to Amara and 2 others">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4"/></svg><b>3</b><span hidden>Thoughtful</span>
     </button>
-    <button class="rx-add" aria-label="Add a reaction" aria-expanded="false" aria-haspopup="true">
+    <button class="rx-add" aria-label="Add a reaction" aria-expanded="false">
       <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
     </button>
   </div>
-  <div class="rx-pop" hidden role="menu" aria-label="Choose a reaction">
-    <button class="rx" role="menuitem" aria-pressed="false" data-rx="love" style="--rc:#ed58cd;--rc-glow:rgba(237,88,205,.5);--rc-dim:rgba(237,88,205,.14)" title="Love"><svg viewBox="0 0 24 24"><path d="M12 21C7 16.5 3 13 3 8.9 3 6 5.2 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.8 4 21 6 21 8.9c0 4.1-4 7.6-9 12.1z"/></svg></button>
-    <button class="rx" role="menuitem" aria-pressed="false" data-rx="celebrate" style="--rc:#e84fff;--rc-glow:rgba(232,79,255,.5);--rc-dim:rgba(232,79,255,.14)" title="Celebrate"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.4l6.1-.8z"/></svg></button>
-    <button class="rx" role="menuitem" aria-pressed="false" data-rx="thoughtful" style="--rc:#a06bff;--rc-glow:rgba(160,107,255,.5);--rc-dim:rgba(160,107,255,.14)" title="Thoughtful"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4"/></svg></button>
-    <button class="rx" role="menuitem" aria-pressed="false" data-rx="agree" style="--rc:#3fb8ff;--rc-glow:rgba(63,184,255,.5);--rc-dim:rgba(63,184,255,.14)" title="Agree"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg></button>
-    <button class="rx" role="menuitem" aria-pressed="false" data-rx="laugh" style="--rc:#2fe89e;--rc-glow:rgba(47,232,158,.5);--rc-dim:rgba(47,232,158,.14)" title="Laugh"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 14.2c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8"/><circle cx="9.2" cy="9.6" r=".9"/><circle cx="14.8" cy="9.6" r=".9"/></svg></button>
+  <div class="rx-pop" hidden role="group" aria-label="Choose a reaction">
+    <button class="rx" aria-pressed="false" data-rx="love" style="--rc:#ed58cd;--rc-glow:rgba(237,88,205,.5);--rc-dim:rgba(237,88,205,.14)" title="Love"><svg viewBox="0 0 24 24"><path d="M12 21C7 16.5 3 13 3 8.9 3 6 5.2 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.8 4 21 6 21 8.9c0 4.1-4 7.6-9 12.1z"/></svg></button>
+    <button class="rx" aria-pressed="false" data-rx="celebrate" style="--rc:#e84fff;--rc-glow:rgba(232,79,255,.5);--rc-dim:rgba(232,79,255,.14)" title="Celebrate"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.4l6.1-.8z"/></svg></button>
+    <button class="rx" aria-pressed="false" data-rx="thoughtful" style="--rc:#a06bff;--rc-glow:rgba(160,107,255,.5);--rc-dim:rgba(160,107,255,.14)" title="Thoughtful"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4"/></svg></button>
+    <button class="rx" aria-pressed="false" data-rx="agree" style="--rc:#3fb8ff;--rc-glow:rgba(63,184,255,.5);--rc-dim:rgba(63,184,255,.14)" title="Agree"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg></button>
+    <button class="rx" aria-pressed="false" data-rx="laugh" style="--rc:#2fe89e;--rc-glow:rgba(47,232,158,.5);--rc-dim:rgba(47,232,158,.14)" title="Laugh"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 14.2c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8"/><circle cx="9.2" cy="9.6" r=".9"/><circle cx="14.8" cy="9.6" r=".9"/></svg></button>
   </div>
 </div>
 
@@ -583,7 +583,7 @@ and keep the count: the count is public, the names are a choice.
 - **Hover:** lifts 2px, glows in the pill's own color. Each reaction ignites its own hue — love burns pink, celebrate magenta, never blanket purple.
 - **Mine (`aria-pressed="true"`):** held glow + inner wash in the reaction color, glyph filled. Your reaction is visibly yours; toggling it off returns the pill to rest and decrements the honest count.
 - **Active/press:** settles 1px.
-- **Focus:** white 2px ring — the popover is keyboard-operable, Esc closes, focus returns to the plus.
+- **Focus:** white 2px ring — the popover is keyboard-operable. It is a `group` of native buttons, not a menu: Tab moves through the five reactions, Esc closes, focus returns to the plus trigger. The roles match the behavior — no menu is promised, so no menu keyboard is owed (independent scorecard fix, 2026-10-16).
 - **Plus rest:** dashed circle — it promises "more", and the popover keeps the promise. **Open:** elevated panel (Law 3), five reactions in wheel order.
 - **Zero count:** the pill does not exist. There is no "0" pill, no grayed-out ghost of a reaction nobody chose.
 
@@ -611,4 +611,5 @@ and keep the count: the count is public, the names are a choice.
 - **Depth rails are structure, not sentiment:** magenta → purple → blue mark where you are in the conversation. They never carry emotional meaning — that job belongs to the reaction table, and the two never mix.
 - **Timestamps are renderings, not substitutes:** every plain-words label sits on a real `datetime`; the full date is one hover away. "Just now" is earned by the clock (under a minute), never by optimism.
 - **Private by default, everywhere:** display names only, tombstones leave no remains, reactor names are droppable. The family never asks for, shows, or stores author PII beyond the display name — that boundary is structural, not a setting.
+- **One quiet control (independent scorecard fix, 2026-10-16):** `.naya-btn--quiet` is the blessed quiet-control DNA — owned ONCE for the whole catalog at the checkout family contract (`checkout-blocks.md`, family contract §8). CMT-002's clamp toggle consumes it; no comment block defines its own quiet idiom. (`.cmt-morebtn` is retired to a sizing hook.)
 - **What the family does not cover:** moderation queues, report flows, rich mentions, and threaded DMs are real needs and are *not* specified here — they are future blocks (CMT-004+), not implied features of these three. Nothing in these specs pretends they exist.

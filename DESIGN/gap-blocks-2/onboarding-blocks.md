@@ -36,6 +36,8 @@ gold, never yellow — the wheel carries gold and gold only.
 background:var(--ground);color:var(--ink)}
 ```
 
+**The one button DNA:** this family imports `.naya-btn` from the single canonical source (per `DESIGN/BLOCKS.md`, Law 5) — it is never redefined or re-typed here (see the single-source rule: checkout family contract §7). The snippets below assume it the way they assume the token sheet.
+
 ---
 
 ## ONB-001 · Stepper
@@ -195,9 +197,7 @@ a live build moves it.
 
 ### Do / Don't
 
-**Do** mark skippable steps with a plain "Optional" chip and give the step's
-own content an honest "Skip this step" control — skipping is a first-class
-choice, not a hidden shame. **Don't** unlock all steps "for preview": a
+**Do** mark skippable steps with a plain "Optional" chip — the chip is the rail's whole promise about skipping. The honest "Skip this step" control itself lives in the step's *content*, not in the rail: it is specified with the step-content block (ONB-004+), where the step's single job and its skip live together. This rail never renders a skip control — promising one here would be promising a control this block doesn't own. Skipping advances the flow honestly (the step is marked skipped, never silently "completed"); that behavior belongs to the block that owns the step. **Don't** unlock all steps "for preview": a
 locked step you can peek into teaches the user that locks are theater, and
 then nothing in the flow is trusted.
 
@@ -254,18 +254,21 @@ animation:onb-halo 5s ease-in-out infinite}
 .onb-hello{font-family:Georgia,'Times New Roman',serif;font-size:32px;color:#fff;margin:12px 0 10px;
 text-shadow:0 2px 8px rgba(0,0,0,.8),0 0 22px rgba(255,255,255,.14)}
 .onb-line{font-size:15px;line-height:1.7;color:#fff;opacity:.92;max-width:44ch;margin:0 auto 28px}
-.onb-cta{min-height:52px;padding:0 36px;font-size:16px;font-weight:600;border-radius:14px;
-background:#050505;color:#fff;border:1.5px solid rgba(255,255,255,.85);cursor:pointer;
-display:inline-flex;align-items:center;gap:10px;
-box-shadow:inset 0 2px 2px rgba(255,255,255,.12),0 12px 28px rgba(0,0,0,.6);
-transition:transform .18s cubic-bezier(.16,.84,.22,1),border-color .18s,box-shadow .18s}
+/* ——— the CTA IS .naya-btn — the one DNA, no bespoke button system
+   (independent scorecard fix, 2026-10-16). The hook keeps only the card's
+   layout needs (a wider floor, readable size); every button visual —
+   gradient heart, idle border, conic ring, press parity, canonical focus —
+   comes from .naya-btn (imported, never redefined). */
+.onb-cta{min-height:52px;padding:0 36px;font-size:16px}
 .onb-cta svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;flex:none}
-.onb-cta:hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 32px rgba(160,107,255,.6),0 14px 30px rgba(0,0,0,.6)}
-.onb-cta:active{transform:translateY(1px)}
-.onb-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.onb-quiet{display:inline-block;margin-top:18px;font-size:13px;color:#fff;opacity:.65;text-decoration:none;
-border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px;transition:opacity .18s,border-color .18s}
+/* the quiet exit is a real <button> with a stated destination (data-dest) —
+   never href="#". Same quiet styling; a control, not a dead link
+   (independent scorecard fix, 2026-10-16). */
+.onb-quiet{display:inline-block;margin-top:18px;font-size:13px;color:#fff;opacity:.65;
+background:none;border:none;border-bottom:1px solid rgba(255,255,255,.25);padding:0 0 2px;
+font-family:inherit;cursor:pointer;transition:opacity .18s,border-color .18s}
 .onb-quiet:hover{opacity:1;border-color:#a06bff}
+.onb-quiet:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .onb-knows{margin:24px 0 0;font-size:11px;letter-spacing:.06em;color:#fff;opacity:.5}
 @media (prefers-reduced-motion:reduce){.onb-face::after{animation:none}.onb-welcome,.onb-cta{transition:none}}
 </style>
@@ -291,11 +294,13 @@ border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px;transition:opac
   <h2 class="onb-hello">Welcome<span data-onb-name></span>.</h2>
   <p class="onb-line">I'm Naya — your intelligence, at your side. Give me five
   small steps and I'll learn how you work. No forms wall, no maze.</p>
-  <button class="onb-cta" type="button">
+  <button class="naya-btn onb-cta" type="button">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     Begin the tour
   </button><br>
-  <a class="onb-quiet" href="#">I'll explore on my own</a>
+  <!-- the quiet exit is a real button with a stated destination (the Hub home)
+       — never href="#" (independent scorecard fix, 2026-10-16) -->
+  <button class="onb-quiet" type="button" data-dest="hub-home">I'll explore on my own</button>
   <p class="onb-knows">This card knows only what you've told it — nothing more.</p>
 </article>
 <script>
@@ -321,7 +326,9 @@ carries no `data-name`, so it greets without one: the honest default.
 - **Focus:** white 2px ring on the CTA — keyboard users get the same
   ignition promise.
 - **Quiet exit:** "I'll explore on my own" — 65% opacity, underline only on
-  intent. It is an exit, not a competing CTA: no lift, no glow, no color.
+  intent. A real `<button>` with a stated destination (`data-dest="hub-home"`
+  — the Hub home), never a dead link. It is an exit, not a competing CTA: no
+  lift, no glow, no color.
 - **Nameless (default):** "Welcome." — full sentence, no placeholder, no
   "there," no invented name. Named state only ever renders a name the user
   gave.
@@ -343,11 +350,11 @@ presses any of them.
   `data-name`; the template never invents one.
 - **One line:** 15px, 1.7 line-height, max 44ch — warm, plain words, one
   promise. Not a paragraph of features.
-- **The one CTA:** 52px, black center, white rim, drawn arrow glyph — the
-  canonical button DNA. It says where it goes ("Begin the tour"), not "Get
+- **The one CTA:** 52px `.naya-btn` — the one DNA, no bespoke system — with a
+  drawn arrow glyph. It says where it goes ("Begin the tour"), not "Get
   started."
-- **The quiet exit:** a text link for the explorer. Present but never
-  competing.
+- **The quiet exit:** a quiet button for the explorer — `data-dest` states the
+  destination (the Hub home). Present but never competing.
 - **The honesty footnote:** "This card knows only what you've told it."
   Part of the block, not documentation — it is the personal-without-creepy
   contract, stated where the user can see it.
@@ -412,7 +419,10 @@ text-shadow:0 2px 8px rgba(0,0,0,.8);animation:onb-num-breathe 4s ease-in-out in
 /* indeterminate: honest about not knowing */
 .onb-prog.is-ind .onb-fillbar{width:34%;background:linear-gradient(90deg,transparent,#a06bff,transparent);
 box-shadow:0 0 16px rgba(160,107,255,.6);animation:onb-drift 2.2s ease-in-out infinite}
-@keyframes onb-drift{0%{margin-left:-34%}100%{margin-left:100%}}
+/* the drift runs on transform (compositor-only), never margin-left — animating
+   a layout property on an infinite loop janks on low-end devices
+   (independent scorecard fix, 2026-10-16) */
+@keyframes onb-drift{0%{transform:translateX(-100%)}100%{transform:translateX(294%)}}
 .onb-prog.is-ind .onb-pct{animation:none;font-size:20px}
 @media (prefers-reduced-motion:reduce){.onb-pct,.onb-ring-num b{animation:none}.onb-prog.is-complete,.onb-ringwrap.is-complete{animation:none}.onb-prog.is-ind .onb-fillbar{animation:none}.onb-prog,.onb-fillbar,.ring-prog{transition:none}}
 </style>

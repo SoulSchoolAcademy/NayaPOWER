@@ -68,9 +68,13 @@ transition:transform .28s cubic-bezier(.16,.84,.22,1),box-shadow .28s,border-col
 .chat-bub.in{background:linear-gradient(180deg,#121218,#0a0a0f);border:1.5px solid rgba(255,255,255,.85);border-radius:18px 18px 18px 6px}
 .chat-bub.out{background:linear-gradient(180deg,#141021,#0b0812);border:1.5px solid #a06bff;border-radius:18px 18px 6px 18px;
 box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 8px 22px rgba(0,0,0,.55),0 0 24px -6px rgba(160,107,255,.55)}
-.chat-bub.in::after,.chat-bub.out::after{content:"";position:absolute;bottom:-1px;width:14px;height:14px;background:inherit;transform:rotate(45deg)}
-.chat-bub.in::after{left:-8px;border-left:1.5px solid rgba(255,255,255,.85);border-bottom:1.5px solid rgba(255,255,255,.85);border-bottom-left-radius:4px}
-.chat-bub.out::after{right:-8px;border-right:1.5px solid #a06bff;border-bottom:1.5px solid #a06bff;border-bottom-right-radius:4px}
+/* the tail is a SOLID square in the bubble's base tone — never background:inherit:
+   an inherited gradient misaligns on the rotated square and the tail visibly
+   mismatches the bubble. Base tones from the family sheet: --bubble-in #0e0e13,
+   --bubble-out #0d0a16 (independent scorecard fix, 2026-10-16). */
+.chat-bub.in::after,.chat-bub.out::after{content:"";position:absolute;bottom:-1px;width:14px;height:14px;transform:rotate(45deg)}
+.chat-bub.in::after{left:-8px;background:#0e0e13;border-left:1.5px solid rgba(255,255,255,.85);border-bottom:1.5px solid rgba(255,255,255,.85);border-bottom-left-radius:4px}
+.chat-bub.out::after{right:-8px;background:#0d0a16;border-right:1.5px solid #a06bff;border-bottom:1.5px solid #a06bff;border-bottom-right-radius:4px}
 .chat-row:hover .chat-bub.in{transform:translateY(-2px);box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 12px 26px rgba(0,0,0,.6),0 0 26px rgba(255,255,255,.25)}
 .chat-row:hover .chat-bub.out{transform:translateY(-2px);box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 12px 26px rgba(0,0,0,.6),0 0 34px rgba(160,107,255,.75)}
 .chat-bub:active{transform:translateY(1px)}
@@ -135,7 +139,7 @@ box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 8px 22px rgba(0,0,0,.55),0 0 2
       </div>
     </div>
   </div>
-  <div class="chat-row out">
+  <div class="chat-row out grp">
     <div class="chat-ava" aria-hidden="true"></div>
     <div><div class="chat-bub out">One more thing — check the now-line on the agenda.</div>
       <div class="chat-meta">
@@ -174,7 +178,7 @@ box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 8px 22px rgba(0,0,0,.55),0 0 2
 - **Press:** settles 1px — it feels held.
 - **Grouped:** avatar hidden (space kept so the column doesn't jump), margins tighten 4px → 2px, adjoining corners square off, tails suppressed inside the group. The group reads as one breath of speech. Only name + time on the first row.
 - **Receipts — the truth-states:** `sending` (single dim tick — my client hasn't handed it off yet), `sent` (single white tick — the server has it), `delivered` (double white tick, glow — their device has it), `read` (double gold tick + gold "SEEN" — their client *rendered* it, reported back through the transport). States move forward only, never backward. A screen reader hears "Sending / Sent / Delivered / Read" — the words are the contract.
-- **Edited:** an italic "edited" tag inside the bubble. Edits are labeled; the block never shows an edit history (that is a thread feature, CHT-004+), it only refuses to pretend the first draft was final.
+- **Edited:** an italic "edited" tag inside the bubble. Edits are labeled; the block never shows an edit history (that is a thread feature, CHT-006+), it only refuses to pretend the first draft was final.
 - **Long messages:** the bubble caps at 480px / 70% and the words wrap. A 2,000-word message is a document problem — the block wraps it honestly, never truncates it into "…".
 
 ### Do / Don't
@@ -186,7 +190,7 @@ box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 8px 22px rgba(0,0,0,.55),0 0 2
 - **Row:** flex line, avatar + bubble, `align-items:flex-end`. Outgoing rows reverse; the column edge is the speaker's edge.
 - **Avatar orb:** 36px lit jewel orb in Law 4's language — white-hot crown fading through the speaker's tone to black. Incoming orbs wear blue, outgoing wear purple: the tone follows the speaker's edge. In grouped rows the orb hides but keeps its space.
 - **Bubble:** the unit. 15px/1.5 line-height text (never smaller — chat is read at a glance, in motion), 11px × 15px padding, 18px radius with the speaker-side bottom corner squared to 6px where the tail grows.
-- **Tail:** a rotated 14px square in the bubble's own background, edged in the bubble's edge color — geometry, not an image. It points the way the words came from: left for incoming, right for outgoing. Suppressed inside groups; a group speaks with one tail on its last breath.
+- **Tail:** a rotated 14px square in the bubble's own base tone — solid, never `background:inherit` (the inherited gradient misaligns on the rotated square and the tail mismatches the bubble) — edged in the bubble's edge color. Geometry, not an image. It points the way the words came from: left for incoming, right for outgoing. Suppressed inside groups; a group speaks with one tail on its last breath.
 - **Meta line:** name + time for incoming, time + receipt ticks for outgoing. 12px, 75% opacity — information, never decoration.
 - **Ticks:** drawn SVG strokes (Law 4 — icons are drawn), never emoji, never characters. Single for sent, double for delivered, double-gold + "SEEN" for read. Gold = attention, earned.
 
@@ -379,6 +383,9 @@ background:radial-gradient(circle at 35% 30%,#fff,#a06bff 45%,#050507 92%);
 border:1.5px solid rgba(255,255,255,.85);box-shadow:0 0 34px rgba(160,107,255,.6)}
 .chat-empty h3{font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#fff;margin:0 0 10px}
 .chat-empty p{font-size:15px;color:#fff;opacity:.9;margin:0}
+/* the empty room names its door — the composer arrives with CHT-006, so the
+   invitation is never a dead end (independent scorecard fix, 2026-10-16) */
+.chat-empty p.chat-empty-next{margin:14px 0 0;font-size:13px;color:#fff;opacity:.6;letter-spacing:.04em}
 /* honest loading: words, not fake bubbles */
 .chat-loading{text-align:center;padding:40px 20px;font-size:14px;color:#fff;opacity:.75;letter-spacing:.06em}
 .chat-loading i{display:inline-block;width:10px;height:10px;margin-right:10px;border-radius:50%;background:#a06bff;
@@ -425,6 +432,7 @@ box-shadow:0 0 12px rgba(160,107,255,.9);animation:chat-breathe .833s ease-in-ou
     <div class="jewel" aria-hidden="true"></div>
     <h3>No messages yet</h3>
     <p>Say the first word.</p>
+    <p class="chat-empty-next">The composer arrives with CHT-006 — this room is ready for it.</p>
   </div>
 </div>
 <script>
@@ -476,7 +484,8 @@ clears.
 contract resolves itself; no button needed.
 - **Empty:** centered purple jewel, serif "No messages yet", 15px "Say the
 first word." No fake suggestions, no grayed ghost bubbles, no "start with
-hi 👋" — an empty room is a state with dignity.
+hi 👋" — an empty room is a state with dignity. A quiet third line names the
+door: "The composer arrives with CHT-006" — the invitation is never a dead end.
 - **Loading history:** one line — "Loading your messages…" with a single
 breathing orb. Words, never fake bubbles. Skeleton screens shaped like
 messages are messages that lie; this block refuses them.
@@ -506,7 +515,8 @@ scale — the one place the calendar family's serif weekday row has a cousin.
 honest count badge. A pill that promises "new messages" and delivers them.
 - **Empty state:** jewel + two lines, verbatim: "No messages yet — say the
 first word." The em dash and the invitation are both specified; the words
-do not improvise.
+do not improvise. A third quiet line states the next step, verbatim: "The
+composer arrives with CHT-006 — this room is ready for it."
 - **Loading state:** one breathing orb + one honest sentence. Loading is a
 state with words, not shapes.
 
@@ -527,4 +537,4 @@ is an invitation, not a prompt.
 - **One meaning per color, everywhere:** the family table at the top is the contract. Purple is "my voice" on an outgoing bubble, in an outgoing avatar orb, and on the scroll pill's badge — choosing intelligence, going out. Gold is "seen" on a read receipt and nowhere else. White-lit edges are the world speaking in. If a new signal needs a color, it takes the next wheel stop — the wheel continues, it never restarts.
 - **Truth-states are the family spine:** CHT-003's receipts, CHT-004's signal-gated dots, CHT-005's measured scroll edge and live-only presence — every block in this family refuses to perform a state it does not have. That refusal is the design.
 - **Private by default:** message content renders inside bubbles and nowhere else — no log lines, no notification previews in this spec's scope, no search-index snippets. The block is given text and renders text; what leaves the bubble is the app's decision, documented as the app's, never the block's.
-- **What the family does not cover:** message composers, voice notes, reactions, threads/replies, and search are real needs and are *not* specified here — they are future blocks (CHT-004+), not implied features of these three. Nothing in these specs pretends they exist.
+- **What the family does not cover:** message composers, voice notes, reactions, threads/replies, and search are real needs and are *not* specified here — they are future blocks (CHT-006+), not implied features of these three. Nothing in these specs pretends they exist.

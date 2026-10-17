@@ -28,7 +28,7 @@ What it is: the board that says "here is what you're paying for" before any mone
 
   <ul class="pay-items">
     <li class="pay-item" data-tone="magenta">
-      <span class="pay-thumb" aria-hidden="true"><i>✦</i></span>
+      <span class="pay-thumb" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span>
       <div class="pay-item-body">
         <span class="pay-item-name">Naya MAXIS AI Score</span>
         <span class="pay-item-meta">Annual membership · renews Oct 2027</span>
@@ -41,7 +41,7 @@ What it is: the board that says "here is what you're paying for" before any mone
       <span class="pay-price">$149.00</span>
     </li>
     <li class="pay-item" data-tone="purple">
-      <span class="pay-thumb" aria-hidden="true"><i>▲</i></span>
+      <span class="pay-thumb" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/></svg></span>
       <div class="pay-item-body">
         <span class="pay-item-name">AI Masterclass seat</span>
         <span class="pay-item-meta">Cohort 12 · starts Nov 3</span>
@@ -54,7 +54,7 @@ What it is: the board that says "here is what you're paying for" before any mone
       <span class="pay-price">$298.00</span>
     </li>
     <li class="pay-item" data-tone="blue">
-      <span class="pay-thumb" aria-hidden="true"><i>◆</i></span>
+      <span class="pay-thumb" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 9-9 9-9-9z"/></svg></span>
       <div class="pay-item-body">
         <span class="pay-item-name">Powercast bundle</span>
         <span class="pay-item-meta">14 episodes · yours to keep</span>
@@ -73,7 +73,7 @@ What it is: the board that says "here is what you're paying for" before any mone
     <div class="pay-promo-row">
       <input id="promo-code" class="pay-promo-input" type="text"
              placeholder="Enter code" autocomplete="off" spellcheck="false">
-      <button type="submit" class="naya-btn pay-apply">Apply</button>
+      <button type="submit" class="naya-btn">Apply</button>
     </div>
     <p class="pay-promo-msg" aria-live="polite"></p>
   </form>
@@ -165,8 +165,11 @@ What it is: the board that says "here is what you're paying for" before any mone
   background:radial-gradient(circle at 32% 28%, #fff 0%, var(--jc) 42%, #050507 100%);
   box-shadow:0 0 18px rgba(var(--jc-rgb),.55);
 }
-.pay-thumb i{
-  font-style:normal; display:block; transform:rotate(-45deg); /* glyph stays upright inside the diamond */
+/* thumb glyphs are drawn SVG (Law 4: icons are drawn) — the diamond frame is CSS
+   geometry, the glyph inside is vector; no unicode symbols anywhere */
+.pay-thumb svg{
+  width:16px; height:16px; fill:#fff; flex:none;
+  transform:rotate(-45deg); /* glyph stays upright inside the diamond */
 }
 .pay-item-body{ flex:1 1 auto; min-width:0; }
 .pay-item-name{ display:block; font-size:15px; font-weight:600; color:#fbfbfd; }
@@ -204,7 +207,8 @@ What it is: the board that says "here is what you're paying for" before any mone
    54px min-height, 999px radius, black gradient heart, 1.5px white-ish idle
    border, inset top-light + inset bottom-shadow + drop shadow. Hover lifts
    with a flowing conic ring; press compresses. No flat buttons — ever.
-   The icon variant is glyph-only: 58px circle, .micro 44px. */
+   The icon variant is glyph-only: 58px circle, .micro 44px.
+   Ships from one canonical source (family contract §7) — import, never re-type. */
 .naya-btn{
   --nb-accent:#a06bff; --nb-accent-rgb:160,107,255;
   position:relative;
@@ -380,6 +384,40 @@ What it is: the four fields where money changes hands. Card number, expiry, CVC,
   <button type="submit" class="naya-btn pay-submit" disabled>Pay $535.68</button>
   <p class="pay-secure">Locked in transit. We never see your full card number — only the payment processor does.</p>
 </form>
+<script>
+/* The enable contract, as code (independent scorecard fix, 2026-10-16) — the
+   money-moving button's enable logic is pinned here, not left to integrator
+   improvisation. */
+(function(){
+  const form=document.querySelector('.pay-form');
+  const pay=form.querySelector('.pay-submit');
+  const fields=[...form.querySelectorAll('.pay-input')]; /* the four: name, number, expiry, cvc */
+  /* the rule: the Pay button enables iff ALL four fields carry .is-valid */
+  function refresh(){pay.disabled=!fields.every(f=>f.classList.contains('is-valid'));}
+  function validateField(f){
+    /* specimen-grade validation; a live build runs the processor's real rules */
+    const ok=f.checkValidity()&&f.value.trim().length>0;
+    f.classList.toggle('is-valid',ok);
+    f.classList.toggle('is-invalid',!ok&&f.value.length>0);
+    const err=document.getElementById(f.getAttribute('aria-describedby'));
+    if(err)err.hidden=(ok||f.value.length===0);
+  }
+  fields.forEach(f=>{
+    /* which class, on which event: .is-valid/.is-invalid on blur AND input */
+    f.addEventListener('blur',()=>{validateField(f);refresh();});
+    f.addEventListener('input',()=>{validateField(f);refresh();});
+  });
+  /* a failed payment NEVER clears the form — retry re-submits this same
+     validated data (see PAY-004's retry contract); the user never re-types */
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(pay.disabled)return;
+    /* hand the validated fields to the processor; keep every value
+       regardless of the answer */
+  });
+  refresh();
+})();
+</script>
 ```
 
 ```css
@@ -443,7 +481,7 @@ What it is: the four fields where money changes hands. Card number, expiry, CVC,
 }
 ```
 
-The submit button starts **disabled** (45% opacity, no ignition — disabled never ignites) and enables only when all four fields pass validation. The integrator's validation script adds `.is-valid` / `.is-invalid` and unhides the matching `.pay-err`; the button label always carries the real total from PAY-001 — never a hardcoded number the page can't prove.
+The submit button starts **disabled** (45% opacity, no ignition — disabled never ignites) and enables only when all four fields pass validation. The integrator's validation script adds `.is-valid` / `.is-invalid` and unhides the matching `.pay-err`; the button label always carries the real total from PAY-001 — never a hardcoded number the page can't prove. The enable rule is pinned in the script above, as code: the button enables iff all four fields carry `.is-valid`, evaluated on `blur` **and** `input` — never on submit-attempt alone.
 
 ### The states
 
@@ -458,7 +496,7 @@ The submit button starts **disabled** (45% opacity, no ignition — disabled nev
 ### Do / Don't
 
 **DO** validate inline, per field, the moment the user leaves it — and let the emerald edge be the reward. Fast feedback is kindness; a surprise error at the bottom of a submitted form is not.
-**DON'T** clear the whole form on a failed payment, and don't red-ring every field when one card number is the problem. Mark the one field that's wrong, keep everything else, and keep the user's typing. Wiping their work is the fastest way to lose the sale *and* the trust.
+**DON'T** clear the whole form on a failed payment, and don't red-ring every field when one card number is the problem. Mark the one field that's wrong, keep everything else, and keep the user's typing. Wiping their work is the fastest way to lose the sale *and* the trust. (PAY-004's retry re-submits this same validated data — the contract is two-sided.)
 
 ### Honest anatomy — including the privacy boundary
 
@@ -597,8 +635,9 @@ What it is: the moment after money moves. The paid amount as a hologram number �
 
 .pay-confirm-actions{ display:flex; gap:12px; margin-top:22px; }
 .pay-confirm-actions .naya-btn{ flex:1 1 auto; }
-.naya-btn--quiet{ background:transparent; border:1.5px solid rgba(255,255,255,.4); box-shadow:none; }
-.naya-btn--quiet:hover{ border-color:#a06bff; box-shadow:0 0 26px -6px rgba(160,107,255,.7); }
+/* .naya-btn--quiet is owned ONCE by the shared family contract (§8) —
+   referenced here and by PAY-004, never redefined. No block defines what
+   another block consumes (independent scorecard fix, 2026-10-16). */
 
 @media (prefers-reduced-motion:reduce){
   .pay-holo-amount,.pay-holo.is-ignited .pay-holo-amount{ animation:none; }
@@ -726,6 +765,10 @@ What it is: the panel for when the payment doesn't go through. Declined card, fa
   background:rgba(255,255,255,.06); padding:3px 8px; border-radius:8px;
   border:1px solid rgba(255,255,255,.16);
 }
+/* "Use a different card" wears .naya-btn--quiet — the family's shared quiet
+   variant, owned once in the family contract (§8). This block defines no quiet
+   control of its own; the reference is the whole dependency (independent
+   scorecard fix, 2026-10-16). */
 .pay-error-actions{ display:flex; gap:12px; }
 .pay-error-actions .naya-btn{ flex:1 1 auto; }
 .pay-retry{ --nb-accent:#a06bff; --nb-accent-rgb:160,107,255; } /* retry is the primary action: chrome purple */
@@ -874,10 +917,14 @@ What it is: the "which card?" moment. Saved methods as rows — brand jewel, las
 }
 .pay-mbody{ flex:1 1 auto; min-width:0; }
 .pay-mname{ display:block; font-size:15px; font-weight:700; color:#fbfbfd; font-variant-numeric:tabular-nums; }
+/* the default chip: purple "choosing intelligence" — the default is a choice.
+   Gold stays sacred to the total (the family's own law); it never marks a card
+   (independent scorecard fix, 2026-10-16). */
 .pay-mdefault{
   font-style:normal; font-size:11px; letter-spacing:.18em; text-transform:uppercase;
-  color:#ffbf3d; border:1px solid rgba(255,191,61,.5); border-radius:999px;
+  color:#cfaeff; border:1px solid rgba(160,107,255,.55); border-radius:999px;
   padding:2px 9px; margin-left:8px; vertical-align:2px;
+  background:rgba(160,107,255,.1); box-shadow:0 0 14px -4px rgba(160,107,255,.6);
 }
 .pay-mmeta{ display:block; font-size:13px; color:rgba(255,255,255,.68); margin-top:3px; }
 .pay-method--new{ --jc:#a06bff; --jc-rgb:160,107,255; background:transparent; border-style:dashed; }
@@ -896,7 +943,7 @@ Rows are real `<label>`s wrapping real radio inputs — keyboard, screen reader,
 
 ### The states
 
-- **Rest:** dark rows, white-lit 1.5px edges, brand jewels glowing in their brand colors. The default card wears a gold "Default" chip — gold is attention, earned, and the default card earned it.
+- **Rest:** dark rows, white-lit 1.5px edges, brand jewels glowing in their brand colors. The default card wears a purple "Default" chip — choosing intelligence, because the default is the card already chosen. Gold is attention, earned — and on this board gold is sacred to the total; it never marks a card.
 - **Hover:** the row lifts 2px and ignites in choosing-purple. The "new card" row's dashed border goes solid and its → nudges 4px — a chevron promises "go somewhere" (Law 4: the glyph promises its behavior).
 - **Selected:** purple edge, purple wash, purple glow, and the ✓ check orb fades in at full scale. One selected at a time — it's a radiogroup, and the visual obeys the semantics.
 - **Focus:** `:focus-within` gives the white ring — keyboard users get the same certainty as pointer users.
@@ -905,7 +952,7 @@ Rows are real `<label>`s wrapping real radio inputs — keyboard, screen reader,
 
 ### Do / Don't
 
-**DO** mark exactly one default and let the user change it where the row lives — a "make default" that only exists in settings is a scavenger hunt. The chip is gold because the default is the card the user already trusted.
+**DO** mark exactly one default and let the user change it where the row lives — a "make default" that only exists in settings is a scavenger hunt. The chip is purple — choosing intelligence — because the default is the card the user already chose.
 **DON'T** show the expiry as a countdown ("expires in 4 months!!") or nudge the user toward any particular card. The picker is neutral ground — it presents, it never persuades. And never add a "delete" affordance inline on the row; removing a payment method is destructive and deserves its own confirmed moment elsewhere.
 
 ### Honest anatomy — including the privacy boundary
@@ -913,7 +960,7 @@ Rows are real `<label>`s wrapping real radio inputs — keyboard, screen reader,
 - **Brand jewels:** orbs in the brand's own color — Visa blue, Mastercard orange, Amex emerald. Identity, not decoration: at a glance you know which card is which without reading a digit.
 - **Last-4 + expiry:** the only numbers on the row, and both arrive from the backend already masked. The row *names* the card ("Visa ···· 4242") the way a person would.
 - **Backend gate:** the method list renders only from the processor's saved-method response, already masked. An empty response renders the one-row picker (PAY-005's empty state) — never specimen cards, never guessed rows.
-- **Default chip:** gold outline, letterspaced, quiet. One per picker.
+- **Default chip:** purple outline, letterspaced, quiet. One per picker.
 - **New-card row:** dashed border at rest (it *promises* a different kind of action — "go somewhere," Law 4), solid on hover, hands off to PAY-002. The handoff carries nothing sensitive — no partial numbers, no session card data.
 - **PRIVACY BOUNDARY (this is part of the spec):** this block shows **at most the last-4 and the brand**, exactly as the payment backend returns them masked. It **never** renders, stores, or transmits a full card number — the full PAN exists only inside the processor's vault and inside PAY-002's transient input fields. Removing a saved method, if offered anywhere, goes through the processor's delete — the front end holds no card data to delete. Same rule as PAY-002: no card fields in console, analytics, or error reports, ever.
 - **What it will NOT fake:** the picker never invents a saved method for the demo — an account with no saved cards shows the one-row picker, not two handsome fake Visas. The default chip is set by the user's stored preference, never by recency or by the block guessing. And the selected row is the *actually submitted* method — the visual selection and the form value are the same truth, never two truths.
@@ -930,5 +977,13 @@ The five blocks share one contract, so a checkout built from them behaves like o
 4. **Every interactive thing is alive.** Steppers, rows, fields, buttons — rest dark with white-lit edges, ignite in their own color on touch. Nothing flat, nothing dead.
 5. **Plain words under pressure.** Validation messages, error panels, and microcopy never blame the user. The checkout is the moment trust is thinnest; the words carry it.
 6. **Backend-gated money states (director review fix, 2026-10-16).** Nothing here implements a payment processor — every money state is a rendering of a backend response, never a client-side decision. PAY-003 renders only on a confirmed charge; "no money moved" (PAY-004) only on a confirmed no-charge; totals and promo (PAY-001) only from confirmed prices; the method list (PAY-005) only from the processor's masked saved-method response. Specimen numbers are illustrative — a live build binds them to real responses, and a state with no backend answer behind it does not render.
+7. **One button DNA, one source (independent scorecard fix, 2026-10-16).** `.naya-btn` ships from a single canonical source (import/include) — never copy-pasted per block file. The DNA rendered in PAY-001's stylesheet is the *reference rendering* for the specimen; builders import the canonical file, they don't re-type it. A pasted canonical is a drift risk: a fix to the DNA lands once, in the source, and every block inherits it.
+8. **One quiet control (independent scorecard fix, 2026-10-16).** `.naya-btn--quiet` — same DNA, speaks softly — is defined ONCE, here in the shared contract, and referenced by PAY-003 and PAY-004. No block defines what another block consumes:
+
+   ```css
+   /* the quiet variant — the family's shared quiet control, owned once here */
+   .naya-btn--quiet{ background:transparent; border:1.5px solid rgba(255,255,255,.4); box-shadow:none; }
+   .naya-btn--quiet:hover{ border-color:#a06bff; box-shadow:0 0 26px -6px rgba(160,107,255,.7); }
+   ```
 
 *End of the checkout block family. Five blocks, all four parts each. Shipped, not drafted.*
