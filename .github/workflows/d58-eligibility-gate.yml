@@ -1,0 +1,57 @@
+name: d58-eligibility-gate
+
+# D58 independent-eligibility gate — Naya 2 wire lane, 2026-10-11.
+# Wires the D58 independent eligibility proof for every scheduling
+# opportunity (drift_canary/eligibility_proof.py) to the fairness path:
+# FairnessLedger trusts SchedulingEvent.eligible — the scheduler's own
+# flag. This gate verifies that every opportunity a fairness-bound claim
+# counts rests on independently established evidence. The gate is honest
+# about its state:
+#   DORMANT (exit 0) — mechanism absent on this tree, or zero
+#     opportunities registered in the manifest. Dormant never claims
+#     "verified".
+#   VIOLATION (exit 1) — a counted opportunity is not ELIGIBLE, the
+#     scheduler's flag hid a genuine opportunity (HIDDEN_OPPORTUNITY)
+#     or asserted a refuted one (FALSE_CLAIM), evidence rests on a
+#     tainted origin, or an unknown component is supplied. The merge
+#     is blocked.
+#   BROKEN (exit 2) — the gate itself is broken (corrupt manifest):
+#     fail-closed, never a silent pass.
+
+on:
+  pull_request:
+    paths:
+      - 'tools/d58_eligibility_gate.py'
+      - 'tools/d58_eligibility_manifest.json'
+      - 'tests/test_d58_eligibility_gate.py'
+      - 'drift_canary/eligibility_proof.py'
+      - 'drift_canary/fairness.py'
+      - 'drift_canary/fairness_verify.py'
+      - '.github/workflows/d58-eligibility-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/d58_eligibility_gate.py'
+      - 'tools/d58_eligibility_manifest.json'
+      - 'tests/test_d58_eligibility_gate.py'
+      - 'drift_canary/eligibility_proof.py'
+      - 'drift_canary/fairness.py'
+      - 'drift_canary/fairness_verify.py'
+      - '.github/workflows/d58-eligibility-gate.yml'
+
+jobs:
+  eligibility-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python3 -m pip install pytest
+      - name: Run eligibility-gate test suite (real asserts, no theater)
+        run: python3 -m pytest tests/test_d58_eligibility_gate.py -v -p no:cacheprovider
+      - name: Fire the D58 eligibility gate
+        run: python3 tools/d58_eligibility_gate.py
