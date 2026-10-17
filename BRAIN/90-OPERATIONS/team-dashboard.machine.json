@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T13:16:05+00:00",
+ "generated_utc": "2026-10-17T14:17:07+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -423,12 +423,6 @@
      "draft": false
     },
     {
-     "number": 2718,
-     "title": "Add nitro to merge-consensus gate seat registry",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2718",
-     "draft": false
-    },
-    {
      "number": 2717,
      "title": "Consensus gate: parse 12-lane seat tags + brief-time author-seat check (gap-t1442)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717",
@@ -463,9 +457,15 @@
      "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
      "draft": false
+    },
+    {
+     "number": 2676,
+     "title": "Canonical 9-note Smart Note source for the Smart Feed live wire (t0473)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676",
+     "draft": false
     }
    ],
-   "open_pr_count": 124
+   "open_pr_count": 123
   },
   {
    "id": "team",
@@ -555,12 +555,6 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
-     "number": 2723,
-     "title": "feat(decision): canonical Q->band labeler for consumer display consistency",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2723",
-     "draft": false
-    },
-    {
      "number": 2716,
      "title": "Composer v1 + gap closure (43->39 mapping, feed specimen) \u2014 item 15b",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716",
@@ -601,9 +595,15 @@
      "title": "fix(ci): rate-limit resilience for Current Truth Resolver evidence collection",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2570",
      "draft": false
+    },
+    {
+     "number": 2563,
+     "title": "Reconcile NayaPOWER live backlog: 28 blockers, solutions, owners, double-check law",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2563",
+     "draft": true
     }
    ],
-   "open_pr_count": 41
+   "open_pr_count": 40
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 609,
+ "open_pr_total": 607,
  "unassigned_prs": 232
 }
