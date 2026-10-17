@@ -626,6 +626,35 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
 # exactly as before.
 TRUTH_STATE_RANK = {"LEARNED": 4, "ACTIVE": 3, "RATIFIED": 2, "VERIFIED": 1}
 
+def _veracity_bucket(entry):
+    """FALSIFIED demotes to bucket 0; every other truth state (including
+    missing/unknown — legacy entries keep their prior behavior) stays in
+    bucket 1. Bucketing is FALSIFIED-only: the LEARNED/ACTIVE/RATIFIED/
+    VERIFIED relative ordering is untouched (bucket-internal ordering is
+    the pre-change ordering)."""
+    return 0 if str(entry.get("truth_state", "")).upper() == "FALSIFIED" else 1
+
+def _candidate_id(entry):
+    return str(entry.get("smart_note_id") or entry.get("projection_path") or "")
+
+def _apply_veracity_demote(candidates):
+    """Return (demoted_order, pure_relevance_order).
+
+    pure_relevance_order is the pre-change sort: (score, truth-state-rank,
+    captured_at) descending. demoted_order adds the veracity bucket FIRST,
+    so FALSIFIED entries sort below non-FALSIFIED entries regardless of
+    relevance score; the within-bucket ordering is exactly the pure order.
+    Demote, never refuse: FALSIFIED entries are never filtered, only sunk.
+    (CANDIDATE wiring, t0762 lane 5, per governance verdict t0758 lane 8.)"""
+    pure = sorted(candidates,
+                  key=lambda z: (z[0], z[1], z[2].get("captured_at", "")),
+                  reverse=True)
+    demoted = sorted(candidates,
+                     key=lambda z: (_veracity_bucket(z[2]), z[0], z[1],
+                                    z[2].get("captured_at", "")),
+                     reverse=True)
+    return demoted, pure
+
 def _stem(word):
     """Normalize common English inflections so 'compounding' matches 'compound'.
 
@@ -976,9 +1005,21 @@ def retrieve(query, areas=None, task_contexts=None):
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     if ranked[0][0] < RETRIEVAL_RELEVANCE_FLOOR:
         # Negative control: the best candidate is not relevant enough to
-        # present as an answer. Refuse rather than misdirect.
+        # present as an answer. Refuse rather than misdirect. The floor
+        # gates the pure-relevance best — unchanged by demote (a FALSIFIED
+        # note below the floor is still refused, exactly as before).
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
-    e = ranked[0][2]
+    # Veracity demote (CANDIDATE, t0762 lane 5, per governance verdict t0758
+    # lane 8, verdict sha16 48f873518109fc1f): FALSIFIED candidates sink
+    # into the lower bucket regardless of relevance; within a bucket the
+    # ordering is exactly the pure-relevance ordering. The demotion is
+    # visible, never silent: veracity_demotion_applied is True on any
+    # result set whose ordering differs from the pure-relevance ordering
+    # (explicit False otherwise — the check itself ran).
+    demoted_order, pure_order = _apply_veracity_demote(ranked)
+    demotion_applied = ([_candidate_id(z[2]) for z in demoted_order]
+                        != [_candidate_id(z[2]) for z in pure_order])
+    e = demoted_order[0][2]
     try:
         note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")
     except OSError:
@@ -993,7 +1034,8 @@ def retrieve(query, areas=None, task_contexts=None):
         # title-only positive. Returning it as an answer is silent admission
         # of unsubstantiated intelligence. Fail closed: explicit miss.
         raise SystemExit("WINNER_EXPLANATION_EMPTY")
-    return {"query":query,"retrieved":e,"explanation":explanation,"source":"repository_projection_index","original_conversation_supplied":False}
+    return {"query":query,"retrieved":e,"explanation":explanation,"source":"repository_projection_index","original_conversation_supplied":False,
+            "veracity_demotion_applied":demotion_applied}
 
 def held_out(retrieved):
     task = "A future developer proposes creating one new Naya Node for every important conversation and storing the raw transcript as the canonical brain memory. Decide the architecture."
