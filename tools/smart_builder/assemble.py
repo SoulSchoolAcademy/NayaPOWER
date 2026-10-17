@@ -80,6 +80,14 @@ def assemble(contract_path: Path, library_root: Path) -> tuple[str, dict[str, An
         raise ValueError("BLOCKED: contract selects no blocks")
     if len(selected_ids) != len(set(selected_ids)):
         raise ValueError("Duplicate block selection is not allowed in this demo contract")
+    modules = contract.get("modules", [])
+    if contract.get("mode") == "publish":
+        blocked_modules = [
+            m.get("id", "unknown") for m in modules
+            if m.get("enabled") and m.get("status") != "verified"
+        ]
+        if blocked_modules:
+            raise ValueError("BLOCKED: publish requires verified modules: " + ", ".join(blocked_modules))
 
     dependency_order: list[str] = []
     for block in selected:
@@ -115,6 +123,23 @@ def assemble(contract_path: Path, library_root: Path) -> tuple[str, dict[str, An
         raise ValueError("BLOCKED: icons.svg is not a valid inline SVG sprite")
 
     rendered_sections: list[str] = []
+    if modules:
+        module_rows = []
+        for module in modules:
+            status = module.get("status", "unknown").upper().replace("_", " ")
+            enabled = bool(module.get("enabled"))
+            module_rows.append(
+                '<li><strong>' + html.escape(module.get("label", module.get("id", "Module"))) +
+                '</strong><span class="module-state">' + ("ENABLED · " if enabled else "OPTIONAL · ") +
+                html.escape(status) + '</span></li>'
+            )
+        rendered_sections.append(
+            '<section class="assembly-section module-gate" id="module-status">'
+            '<div class="section-head"><p class="eyebrow">FUNCTIONALITY GATE</p>'
+            '<h2>Declared modules and their real status</h2>'
+            '<p>Preview mode can show planned capabilities. Publish remains blocked until enabled modules are verified.</p></div>'
+            '<ul class="module-list">' + "".join(module_rows) + '</ul></section>'
+        )
     for section in contract["sections"]:
         fragments = []
         for block_id in section["block_ids"]:
@@ -148,7 +173,7 @@ def assemble(contract_path: Path, library_root: Path) -> tuple[str, dict[str, An
 .section-parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;align-items:start;margin-top:18px}
 .assembled-block{min-width:0;max-width:100%;overflow-wrap:anywhere}.assembled-block>svg{max-width:100%}
 .assembled-block button,.assembled-block input,.assembled-block a{max-width:100%}
-.assembly-footer{margin-top:36px;padding:18px 0;border-top:1px solid rgba(255,255,255,.18);color:var(--ink-dim,#c8c0d5);font-size:13px}
+.module-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px}.module-list li{padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:#0d0b13}.module-state{display:block;margin-top:5px;color:#f0abfc;font-size:11px;font-weight:800;letter-spacing:.08em}.assembly-footer{margin-top:36px;padding:18px 0;border-top:1px solid rgba(255,255,255,.18);color:var(--ink-dim,#c8c0d5);font-size:13px}
 @media(max-width:560px){.assembly-page{padding:16px}.assembly-section{padding:15px;border-radius:17px}.section-parts{grid-template-columns:1fr}.assembled-block{width:100%}}
 """
     output = (
@@ -190,6 +215,16 @@ def assemble(contract_path: Path, library_root: Path) -> tuple[str, dict[str, An
             "production_proven": False,
         },
     }
+    if "modules" in contract or "mode" in contract:
+        receipt["mode"] = contract.get("mode", "preview")
+        receipt["template_id"] = contract.get("template_id")
+        receipt["modules"] = [
+            {"id": m.get("id"), "enabled": bool(m.get("enabled")), "status": m.get("status", "unknown")}
+            for m in modules
+        ]
+        receipt["verification"]["enabled_modules_wired"] = all(
+            (not m.get("enabled")) or m.get("status") == "verified" for m in modules
+        )
     return output, receipt
 
 
