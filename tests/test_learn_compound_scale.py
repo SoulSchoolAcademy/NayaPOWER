@@ -122,6 +122,16 @@ def test_truth_rejects_unearned_contradiction(tmp_path):
     assert score <= 2  # rejection unearned: contradiction not in source
 
 
+def test_truth_rejects_adversarial_regardless_of_cwd(tmp_path, monkeypatch):
+    """Hermetic fixtures: the adversarial Truth probes must not depend on
+    the process working directory (receipt paths anchor to the package)."""
+    monkeypatch.chdir(tmp_path)
+    for lid in ("A1", "A2", "A3"):
+        score, detail = gates.gate_truth(_lesson(lid))
+        assert score == 9, (lid, detail)
+        assert "REJECT" in detail
+
+
 # ------------------------------------------------------- comprehension
 @pytest.mark.parametrize("lesson", GOOD, ids=lambda l: l["id"])
 def test_comprehension_probe_passes_on_distilled(lesson):

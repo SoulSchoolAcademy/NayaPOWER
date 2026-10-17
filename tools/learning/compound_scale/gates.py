@@ -18,7 +18,18 @@ from pathlib import Path
 
 
 def _read_receipt(path_str: str) -> str | None:
-    p = Path(path_str).expanduser()
+    # Hermetic receipt paths: repo-relative paths (non-absolute, non-~)
+    # resolve against this package's directory, so the Truth gate behaves
+    # identically regardless of the process working directory. Absolute
+    # and ~ paths keep their legacy meaning for the remaining citations.
+    p = Path(path_str)
+    if path_str.startswith("~") or p.is_absolute():
+        p = p.expanduser()
+    else:
+        base = Path(__file__).resolve().parent
+        p = (base / p).resolve()
+        if not p.is_relative_to(base):
+            return None  # fail closed: relative receipts stay inside the package
     if not p.is_file():
         return None
     try:
