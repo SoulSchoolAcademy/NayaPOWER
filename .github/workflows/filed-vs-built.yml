@@ -1,0 +1,155 @@
+name: Filed vs built gate
+
+# Shawn's implement-don't-file law as code: directives filed as notes must
+# become code. This check makes filing-without-implementing visible.
+# It FAILS only when the FILED_ONLY set GROWS vs the committed baseline --
+# existing items are a triage backlog, new ones are the violation.
+# On the weekly schedule it also posts the current FILED_ONLY list to #2154
+# as a reminder.
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Monday 09:00 UTC
+  push:
+    paths:
+      - '.naya/capture/**'
+      - 'tools/check_filed_vs_built.py'
+      - '.naya/filed-vs-built-baseline.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  filed-vs-built:
+    name: Filed vs built
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve capture directory (notes branch preferred)
+        run: |
+          mkdir -p /tmp/notes-capture
+          if git fetch origin naya5/the-transmission 2>/dev/null \
+            && git archive origin/naya5/the-transmission .naya/capture \
+              | tar -x -C /tmp/notes-capture 2>/dev/null \
+            && [ -d /tmp/notes-capture/.naya/capture ]; then
+            echo "CAPTURE_DIR=/tmp/notes-capture/.naya/capture" >> "$GITHUB_ENV"
+            echo "Using notes branch capture"
+          else
+            echo "CAPTURE_DIR=.naya/capture" >> "$GITHUB_ENV"
+            echo "Notes branch unavailable; using local .naya/capture"
+          fi
+
+      - name: List open PRs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr list --state open --json number,headRefName,body --limit 200 \
+            > /tmp/open-prs.json
+          echo "Open PRs: $(python3 -c "import json; print(len(json.load(open('/tmp/open-prs.json'))))")"
+
+      - name: Run filed-vs-built check
+        id: check
+        run: |
+          python3 tools/check_filed_vs_built.py \
+            --capture-dir "$CAPTURE_DIR" \
+            --prs-json /tmp/open-prs.json \
+            --baseline .naya/filed-vs-built-baseline.json \
+            --json-out /tmp/fvb.json \
+            --no-fail \
+            > /tmp/fvb-report.md 2>/tmp/fvb-warn.txt || true
+          cat /tmp/fvb-warn.txt
+          python3 - <<'EOF'
+          import json, os
+          d = json.load(open('/tmp/fvb.json'))
+          new = d.get('new_vs_baseline', [])
+          filed = d.get('filed_only', [])
+          counts = d.get('counts', {})
+          print('counts=%s' % counts)
+          print('filed_only=%d new_vs_baseline=%d' % (len(filed), len(new)))
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('filed_count=%d\n' % len(filed))
+              f.write('new_count=%d\n' % len(new))
+              f.write('new_list=%s\n' % ','.join(new))
+              f.write('growing=%s\n' % ('true' if new else 'false'))
+          EOF
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: filed-vs-built-report
+          path: |
+            /tmp/fvb-report.md
+            /tmp/fvb.json
+
+      - name: Notify #2154 on growth
+        if: steps.check.outputs.growing == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'EOF'
+          import json
+          d = json.load(open('/tmp/fvb.json'))
+          new = d.get('new_vs_baseline', [])
+          rows = {r['sn']: r for r in d['rows']}
+          lines = [
+              '## Filed-vs-built gate: %d new FILED_ONLY directive(s)' % len(new),
+              '',
+              'These directives were filed as notes past the grace period with no code',
+              'and no open PR, and were NOT in the baseline. Per the implement-don\'t-file',
+              'law, they need owners now.',
+              '',
+              '| SN | Title | Note date | Days since note |',
+              '|----|-------|-----------|-----------------|',
+          ]
+          for sn in new:
+              r = rows.get(sn, {})
+              lines.append('| %s | %s | %s | %s |'
+                           % (sn, r.get('title', ''), r.get('note_date', ''),
+                              r.get('days', '')))
+          lines += ['', 'Baseline: `.naya/filed-vs-built-baseline.json`.',
+                    'Triage: build it, link its PR, or reclassify as LAW.']
+          open('/tmp/fvb-notify.md', 'w').write('\n'.join(lines) + '\n')
+          EOF
+          gh issue comment 2154 --body-file /tmp/fvb-notify.md
+
+      - name: Weekly reminder to #2154
+        if: >
+          steps.check.outputs.growing != 'true'
+          && steps.check.outputs.filed_count != '0'
+          && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'EOF'
+          import json
+          from datetime import date
+          d = json.load(open('/tmp/fvb.json'))
+          filed = d.get('filed_only', [])
+          rows = {r['sn']: r for r in d['rows']}
+          lines = [
+              '## Filed-vs-built weekly reminder (%s)' % date.today().isoformat(),
+              '',
+              '%d directive(s) filed as notes with no code past the grace period:' % len(filed),
+              '',
+              '| SN | Title | Days since note |',
+              '|----|-----------------|',
+          ]
+          for sn in filed:
+              r = rows.get(sn, {})
+              lines.append('| %s | %s | %s |'
+                           % (sn, r.get('title', ''), r.get('days', '')))
+          lines += ['', 'Own one: build it, link its PR, or reclassify as LAW.']
+          open('/tmp/fvb-remind.md', 'w').write('\n'.join(lines) + '\n')
+          EOF
+          gh issue comment 2154 --body-file /tmp/fvb-remind.md
+
+      - name: Fail on growth
+        if: steps.check.outputs.growing == 'true'
+        run: |
+          echo "FAIL: FILED_ONLY set grew vs baseline: ${{ steps.check.outputs.new_list }}"
+          exit 1
