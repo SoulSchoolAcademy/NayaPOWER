@@ -1,0 +1,85 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0881",
+  "capture_id": "20261010-sn-0881-freshness-law",
+  "canonical_intent": "CAPTURE_DURABLE_LAW",
+  "category": "GOVERNANCE",
+  "topic": "CONSTITUTIONAL_LAW",
+  "subtopic": "RATIFIED_LAWS",
+  "title": "The Freshness Law — we learn and we grow and we let everything else go",
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "GOVERNANCE",
+    "topic_slug": "CONSTITUTIONAL-LAW",
+    "subtopic_slug": "RATIFIED-LAWS"
+  },
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "source_type": "human_director_ratification",
+    "source_reference": "Shawn's explicit teaching, 2026-10-10. Ratified as law.",
+    "captured_at": "2026-10-10",
+    "captured_at_utc": "2026-10-10T19:10:40Z"
+  },
+  "intelligence": {
+    "essence": "We learn and we grow and we let everything else go. Proof never expires by time — there is no clock on it. Proof expires the moment the world it was proven against changes. The system always judges against the world as it is right now, never the world as it was. It applies to everything — intelligence, code, interfaces. But 'let go' never means 'make it less.' An old interface is not kept out of inertia: when we have learned better, we build better. What ships is always everything that is needed, at elite level. Nothing degraded, nothing clung to.",
+    "human_view": {
+      "meaning": "A proof doesn't go bad because it's old. It goes bad because something it depended on changed. We keep what every proof taught us, and we let the old certificate go. Judge everything against right now. And this covers code and interfaces too — an old interface doesn't get to stay just because it's old. When we've learned better, we build better. But letting go never means shipping less: elite means everything that's needed is there, at the highest level.",
+      "why_it_matters": "Ratified by Shawn as constitutional law. Ends all debate about proof expiry: no arbitrary time limits, no clinging to stale certificates, no re-proving what still holds. And it ends inertia: nothing survives on seniority, nothing ships degraded."
+    },
+    "simple_view": {
+      "meaning": "Old proof isn't bad proof. Changed world means the proof needs redoing. We keep the lesson, release the certificate."
+    },
+    "naya_view": {
+      "directive": "Before trusting any proof, check its dependencies against the current world. Unchanged → trust. Changed → history only. Never invent a time-based expiry; never discard a proof merely for its age."
+    },
+    "ai_view": {
+      "specification": "PROOF_VALIDITY(proof, t) holds iff WORLD(t) matches WORLD(proof.proven_at) on every dependency of proof. Time alone never invalidates. Dependency change always invalidates. Superseded proofs are preserved in history with provenance; excluded from active decision authority. SCOPE: applies to intelligence, code, and interfaces. LETTING_GO_CONSTRAINT: for intelligence, release what is not needed; for code/interfaces, an outdated artifact is superseded only by replacement meeting or exceeding everything needed — degradation is never valid.",
+      "directive": "Apply as written. This is constitutional law, not guidance."
+    },
+    "machine_view": {
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "RATIFIED_LAW",
+      "authority_inheritance": false,
+      "law_id": "FRESHNESS-LAW-V1",
+      "status": "RATIFIED",
+      "optimization_function": "max(Verified_Human_Value / Time) subject to Proof, Provenance, Continuity",
+      "decision_engine": {
+        "stages": [],
+        "scoring_dimensions": [],
+        "refinement_needed": []
+      },
+      "roadmap": [],
+      "human_gates": [],
+      "hard_invariants": [
+        "NO_CLOCK_ON_PROOF",
+        "DEPENDENCY_CHANGE_INVALIDATES",
+        "HISTORY_PRESERVED_AUTHORITY_EXCLUDED",
+        "JUDGE_AGAINST_CURRENT_WORLD",
+        "LETTING_GO_NEVER_MEANS_LESS",
+        "NO_INERTIA_KEEPING",
+        "SUPERSEDE_BY_BETTER_OR_EQUAL"
+      ],
+      "optimization_target": "Zero stale-proof reliance; zero unnecessary re-proof; full history preservation."
+    },
+    "learning_lesson": "Shawn answered his own question and it became law the same night: the deepest doctrines arrive as one sentence.",
+    "priority": "Constitutional. Governs every proof, receipt, and qualification in the system.",
+    "decisions": [
+      "Ratified 2026-10-10 by Human Director Shawn Vibert, in his own words.",
+      "Scope clarified 2026-10-10 by Shawn: intelligence only, not code or interfaces.",
+      "Scope refined 2026-10-10 by Shawn: the law covers code and interfaces too — no inertia-keeping, and letting go never means shipping less than elite."
+    ],
+    "connections": [
+      {
+        "type": "REFINES",
+        "target": "SN-042 — Epistemic calibration / intelligence gain law"
+      }
+    ],
+    "uncertainty": "None on the law itself. Per-proof dependency enumeration is the engineering work — every proof must name what it depends on for the law to be mechanically checkable.",
+    "applicability": "All Naya seats, all lanes, all verification, all qualification, all proof consumers, all code and interface work. Constitutional.",
+    "epistemic_state": "RATIFIED",
+    "falsifier": "Falsified if a proof against world W is relied upon for a decision in world W' where a dependency changed, and the reliance is defended as valid rather than treated as stale.",
+    "measurement_contract": "Stale-proof reliance: decisions resting on proofs whose dependencies changed since proof time. Target: zero. Unnecessary re-proof: re-verification with unchanged dependencies. Target: zero.",
+    "successor_effect": "A cold successor knows exactly when any proof may be trusted: compare the proof's dependency world to now. No clocks, no guesswork."
+  }
+}
