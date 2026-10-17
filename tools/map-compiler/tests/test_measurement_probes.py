@@ -37,6 +37,19 @@ class TestCaptureProbe(unittest.TestCase):
         self.assertIn("latest run completed/failure", result["evidence"])
         self.assertIn("recent success: True", result["evidence"])
 
+    def test_in_progress_latest_run_is_unknown_not_stale_green(self):
+        now = datetime.datetime.now(datetime.timezone.utc).isoformat().replace("+00:00", "Z")
+        runs = {"workflow_runs": [
+            {"status": "in_progress", "conclusion": None, "created_at": now,
+             "event": "workflow_dispatch"},
+            {"status": "completed", "conclusion": "success", "created_at": now,
+             "event": "schedule"},
+        ]}
+        with patch.object(map_compiler, "gh_get", return_value=(runs, None)):
+            result = map_compiler.probe_capture({"gh_token": "test-token"})
+        self.assertEqual(result["status"], "unknown")
+        self.assertIn("latest run in_progress/None", result["evidence"])
+
 
 class TestSupabaseSchemaProbe(unittest.TestCase):
     def _run_probe(self, exposed_tables):
