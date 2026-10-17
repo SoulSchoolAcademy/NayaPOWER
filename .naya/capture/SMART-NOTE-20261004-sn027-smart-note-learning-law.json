@@ -1,0 +1,106 @@
+{
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "capture_id": "20261004-sn027-smart-note-learning-law",
+  "category": "SYSTEM_INTELLIGENCE",
+  "intelligence": {
+    "ai_view": {
+      "instruction": "Treat every explicit Smart Note request as a governed intelligence event, not a request for prose. Author exactly ONE conformant capture JSON in .naya/capture/. The machine capture is the canonical authored input; human-readable Brain/Report pages and registry/index views are generated projections. After persistence, do not call the intelligence learned merely because it was stored or retrieved. A Smart Note is complete only when the retained intelligence is cold-retrieved, understood, recognized as relevant, applied to an appropriate real task, and the resulting improvement is independently verified. If the learning gate is not proven, state the exact boundary and do not claim it is baked in.",
+      "primary_evaluation": "Given a Smart Note and a fresh successor, can the successor retrieve it without chat archaeology, explain its meaning and limits, use it appropriately, show evidence of influence, and pass the verified improvement to a later successor?"
+    },
+    "applicability": "Every Naya, every Smart Note capture, every Intelligent Block, every generated projection, every successor handoff, and every learning claim.",
+    "connections": [
+      {
+        "target": "SN-025",
+        "type": "EXTENDS"
+      },
+      {
+        "target": "SN-026",
+        "type": "COMPLEMENTS"
+      },
+      {
+        "target": "SN-002",
+        "type": "CONFORMS_TO_FORMAT"
+      }
+    ],
+    "decisions": [
+      "Smart Link means more than a human-readable URL: it must identify the canonical intelligence object and the evidence that the event entered the system.",
+      "Machine truth is authored once; human-readable views are generated from canonical truth.",
+      "Stored is not learned. Retrieved is not understood. Applied is not causally improved.",
+      "Learning is official only after the system demonstrates retained intelligence changed an appropriate future outcome and independent verification supports the attribution.",
+      "When a Smart Note becomes reusable operating knowledge, route it through the canonical intelligence/promotion protocol so the whole Naya system can inherit it."
+    ],
+    "essence": "The core product promise is not note storage. It is durable intelligence that survives the moment, crosses the handoff, changes an appropriate future behavior, and compounds.",
+    "human_view": {
+      "goal": "When I say Smart Note this, I expect the system to capture the intelligence once, put it through the real pipeline, give me a Smart Link to the human view and evidence, and prove whether Naya actually learned it.",
+      "meaning": "The JSON is the machine half and the generated Markdown/report is the human face. The link is valuable because I can see what entered the system and what the system generated. But the real success condition is deeper: a cold Naya later uses the retained intelligence correctly and becomes better because of it.",
+      "simple_rule": "Smart Note = capture the intelligence, generate the views, prove the event, test cold understanding and use, verify the outcome, then promote learning only when evidence earns it."
+    },
+    "learning_lesson": "NayaPOWER must optimize for demonstrated learning, not successful storage. The human should never have to guess whether a Smart Note merely exists or actually changed the intelligence state.",
+    "machine_view": {
+      "authority_inheritance": false,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "event_chain": [
+        "INTENT",
+        "CAPTURE",
+        "PERSIST",
+        "VERIFY",
+        "PROJECT",
+        "RETRIEVE",
+        "COMPREHEND",
+        "APPLY",
+        "OBSERVE",
+        "VERIFY_OUTCOME",
+        "LEARN",
+        "SUCCESSOR_REUSE",
+        "COMPOUND"
+      ],
+      "format_law": {
+        "rule": "ONE official capture format, ONE official capture location, generated projections only.",
+        "sections": [
+          "IN_A_NUTSHELL",
+          "HUMAN_NOTE",
+          "CHILD_NOTE",
+          "GRANDMA_NOTE",
+          "NAYA_NOTE",
+          "MACHINE_NOTE",
+          "LEARNING_LESSON",
+          "WHAT_IT_MEANS",
+          "WHATS_IN_IT_FOR_YOU",
+          "HOW_TO_USE_IT"
+        ]
+      },
+      "raw_source_separate_from_distillation": true,
+      "learning_gate": "CANDIDATE -> VERIFIED -> RETRIEVED -> UNDERSTOOD -> USED -> INFLUENCED -> OUTCOME_VERIFIED -> SUPERSEDED/REJECTED"
+    },
+    "naya_view": {
+      "anti_pattern": "A Naya saves a note, posts a URL, and declares success without proving cold comprehension, behavioral influence, outcome verification, or successor reuse.",
+      "event_flow": "INTENT -> CAPTURE -> PERSIST -> VERIFY -> PROJECT -> RETRIEVE -> COMPREHEND -> APPLY -> OBSERVE -> VERIFY_OUTCOME -> LEARN -> SUCCESSOR_REUSE -> COMPOUND.",
+      "purpose": "Make the Smart Note event itself the smallest falsifiable unit of the living-intelligence promise.",
+      "successor_effect": "A cold successor should know that Smart Note capture is machine-first, projections are derived, Smart Link is evidence-facing, and learning must be proven rather than inferred."
+    },
+    "simple_view": {
+      "child": "When we save something important, Naya should not just keep the note. She should understand it, use it when it matters, and show that it helped.",
+      "grandma": "It's not enough that the system remembers something. We know it really learned when it remembers it later, uses it properly, and does a better job because of it."
+    },
+    "successor_effect": "A cold successor reading this should treat every Smart Note as a complete intelligence experiment: capture once, generate views, verify the event, test cold use, and never call storage learning.",
+    "uncertainty": "This capture itself is candidate intelligence until the normal persistence, projection, cold-comprehension, behavior, and learning gates run. The capture does not self-authorize promotion."
+  },
+  "projection": {
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "human_director_authorized_publication": true,
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "subtopic_slug": "SMART-NOTE-OPERATING-LAW",
+    "topic_slug": "SMART-NOTE-MEANS-LEARN"
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-027",
+  "source": {
+    "captured_at": "2026-10-04",
+    "captured_at_utc": "2026-10-04T18:00:00Z",
+    "source_reference": "Shawn Vibert direct Human Director instruction on 2026-10-04: Smart Link must show what was put into the system and what it says; every Smart Note must feed the machine process and must not be considered complete until the system proves learning. Every Naya should understand and embed the distilled intelligence learned from Shawn rather than merely repeat his words.",
+    "source_type": "human_director_system_law"
+  },
+  "subtopic": "SMART-NOTE-OPERATING-LAW",
+  "title": "Smart Note Means Learn — machine-first capture, human-visible proof, verified learning",
+  "topic": "SMART-NOTE-MEANS-LEARN"
+}
