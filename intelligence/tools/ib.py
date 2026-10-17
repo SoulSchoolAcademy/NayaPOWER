@@ -30,7 +30,9 @@ from datetime import datetime, timezone
 try:
     from ib_reconcile import (
         FILE_REQUIRED_V11,
+        SYSTEM_OWNERSHIP_DECISION,
         normalize_file_block,
+        run_authority_path,
         validate_v11,
     )
     SCHEMA_VERSION = "1.1"
@@ -305,20 +307,72 @@ def cmd_graduate(args):
     return 0
 
 
+def _load_registry_ctx():
+    """Registry context for the ownership authority path (gate 6: registry-integrity).
+
+    Fail-closed: an unreadable REGISTRY.json is itself a reconcile defect, so
+    the gate fires loudly per block instead of being silently skipped.
+    """
+    try:
+        with open(REGISTRY_PATH, encoding="utf-8") as f:
+            return {"registry": json.load(f)}
+    except (OSError, ValueError) as e:
+        print(f"WARNING: REGISTRY.json unreadable ({e}); "
+              f"registry-integrity gate will fail")
+        return {"registry": {}}
+
+
+def _under_owner_lock(block):
+    """Seed-corpus scope predicate for the ownership authority path.
+
+    Wave-61 scope repair: the authority path enforces Shawn's 2026-10-11
+    owner lock-in, which is recorded machine-readably as
+    provenance.owner_lock on each seed block (pinned by
+    test_owner_lock_recorded_in_provenance). That lock is the boundary of
+    the seed corpus — the authority path runs only on blocks under it.
+    Generically-authored blocks (ib create) never carry the lock and get
+    the general schema validation only, per the pinned contract
+    (test_ib_validate_is_general_schema, test_cli_full_lifecycle).
+    Only called when _RECONCILE_AVAILABLE, so SYSTEM_OWNERSHIP_DECISION
+    (imported from ib_reconcile above) is always bound here.
+    """
+    prov = (block or {}).get("provenance")
+    lock = prov.get("owner_lock") if isinstance(prov, dict) else None
+    lock = lock if isinstance(lock, dict) else {}
+    return (lock.get("owner_id") == SYSTEM_OWNERSHIP_DECISION["owner_id"]
+            and lock.get("decided_by") == SYSTEM_OWNERSHIP_DECISION["decided_by"])
+
+
 def cmd_validate(_args):
     blocks = all_blocks()
     seen = set()
     failed = 0
+    # B-61 entry gate (wave-61 scope repair): the ownership authority path
+    # (OWNERSHIP_AUTHORITY_PATH, merged #2503) runs on this live operating
+    # command for seed-corpus blocks only — blocks under Shawn's owner
+    # lock-in (provenance.owner_lock; see _under_owner_lock). A planted
+    # non-NAYA owner on a locked block fails loudly: non-zero exit +
+    # explicit AUTHORITY message naming the block, the gate, and the
+    # violation. validate_block() stays the pinned general-schema validator
+    # per test_ib_validate_is_general_schema; the generic authoring flow is
+    # not restricted (test_cli_full_lifecycle).
+    ctx = _load_registry_ctx()
     for b in blocks:
         errs = validate_block(b)
+        authority = []
+        if _RECONCILE_AVAILABLE and _under_owner_lock(b):
+            authority = [(name, prob)
+                         for name, prob in run_authority_path(b, ctx) if prob]
         if _block_id(b) in seen:
             errs.append(f"duplicate id: {_block_id(b)}")
         seen.add(_block_id(b))
-        if errs:
+        if errs or authority:
             failed += 1
             print(f"{_block_id(b)}: FAIL")
             for e in errs:
                 print(f"    - {e}")
+            for name, prob in authority:
+                print(f"    - AUTHORITY [{name}]: {prob}")
     print(f"\n{len(blocks) - failed}/{len(blocks)} blocks valid")
     return 1 if failed else 0
 
