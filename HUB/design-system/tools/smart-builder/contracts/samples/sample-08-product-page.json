@@ -1,0 +1,38 @@
+{
+  "contract": "smart-builder/08-product-page",
+  "template_id": "08",
+  "template_name": "Product page",
+  "template_color": "#6675ff",
+  "title": "The Ember Mug",
+  "kicker": "Sample · Product page",
+  "lede": "Sell one thing beautifully.",
+  "sections": [
+    {
+      "kicker": "The product",
+      "title": "Coffee, held at the perfect heat",
+      "lede": "A ceramic mug with a phase-change core — your drink stays just right for hours.",
+      "pieces": [
+        "NAYA-CRD-012",
+        "NAYA-JWL-002"
+      ]
+    },
+    {
+      "kicker": "Price",
+      "title": "$48 — worth every sip",
+      "lede": "Free shipping. 30-day returns, no questions.",
+      "pieces": [
+        "NAYA-PAY-001",
+        "NAYA-BTN-014"
+      ]
+    },
+    {
+      "kicker": "Checkout",
+      "title": "Make it yours",
+      "lede": "Two steps and it's on its way.",
+      "pieces": [
+        "NAYA-PAY-002",
+        "NAYA-PAY-003"
+      ]
+    }
+  ]
+}

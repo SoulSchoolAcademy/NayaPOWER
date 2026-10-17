@@ -1,0 +1,38 @@
+{
+  "contract": "smart-builder/02-today-briefing",
+  "template_id": "02",
+  "template_name": "Today briefing",
+  "template_color": "#40d3bb",
+  "title": "Good morning — your brief",
+  "kicker": "Sample · Today briefing",
+  "lede": "What's going on in your world today — the reason to come back every morning.",
+  "sections": [
+    {
+      "kicker": "Nutshell",
+      "title": "Today in one glance",
+      "lede": "Three things that matter before your coffee cools.",
+      "pieces": [
+        "NAYA-CRD-004",
+        "NAYA-JWL-034"
+      ]
+    },
+    {
+      "kicker": "Agenda",
+      "title": "What's on",
+      "lede": "Your day, distilled to what needs you.",
+      "pieces": [
+        "NAYA-LST-004",
+        "NAYA-CAL-004"
+      ]
+    },
+    {
+      "kicker": "Focus",
+      "title": "One thing",
+      "lede": "If today had a headline, this would be it.",
+      "pieces": [
+        "NAYA-TYP-010",
+        "NAYA-BTN-004"
+      ]
+    }
+  ]
+}

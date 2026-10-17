@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- SMART BUILDER SAMPLE PAGE — assembled from the library's real pieces.
+     Contract in → pieces resolved from the index → fail-closed validation.
+     Every element below is a real indexed piece; the manifest at the foot
+     lists each one by model number. Nothing is invented. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="%%META_DESC%%">
+<title>%%TITLE%% · Smart Builder sample</title>
+<style>
+/* ============ NAYA DESIGN TOKENS — v1 (canonical, verbatim) ============ */
+:root{
+  --obsidian:#0a0a0f; --obsidian-deep:#020203; --raise:#10141d; --card:#141a28;
+  --white:#ffffff; --paper:#f8f7fb; --silver:#c9c9d4; --slate:#8a8a99;
+  --line:rgba(255,255,255,.12);
+  --sp-purple:#a06bff; --sp-indigo:#6675ff; --sp-sapphire:#55b9ee; --sp-teal:#40d3bb;
+  --sp-emerald:#2fe89e; --sp-lime:#b8ee57; --sp-yellow:#f1d75a; --sp-gold:#ffbf3d;
+  --sp-orange:#ff9a5a; --sp-rich-orange:#ff6b3d; --sp-red:#ff5e6c; --sp-magenta:#e84fff;
+  --font-voice:"Newsreader",Georgia,"Times New Roman",serif;
+  --font-ui:Inter,ui-sans-serif,system-ui,sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --radius-md:14px; --radius-lg:22px; --radius-pill:999px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian-deep); color:var(--silver); font-family:var(--font-ui);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:560px; margin:0 auto; padding:0 20px;}
+/* FIX 2 (Epsilon re-verify): kickers are ALWAYS white on black. */
+.kicker{font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700;
+  color:#ffffff !important;}
+h1,h2,h3{color:var(--white); font-family:var(--font-voice); font-weight:500; line-height:1.2;}
+h1{font-size:clamp(30px,7vw,40px); margin:14px 0 10px;}
+h2{font-size:clamp(20px,5vw,26px); margin:0 0 8px;}
+p{margin:0 0 12px; max-width:62ch;}
+.lede{font-size:17px; color:var(--paper); font-family:var(--font-voice);}
+header.sample-hero{padding:40px 0 28px; border-bottom:1px solid var(--line);}
+header.sample-hero .kicker{display:block; margin-bottom:12px;}
+.template-badge{display:inline-block; margin-top:14px; padding:8px 18px; border-radius:var(--radius-pill);
+  background:%%TEMPLATE_COLOR%%; color:#0a0a0f; font-weight:700; font-size:13px; letter-spacing:.08em;}
+section{padding:34px 0; border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{margin-bottom:18px;}
+.sec-head .kicker{display:block; margin-bottom:8px;}
+.piece{display:block; margin:0 0 16px;}
+.piece .nb-scope{display:block;}
+.piece-tag{display:flex; justify-content:space-between; align-items:center; margin-top:8px;
+  padding:6px 2px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate);}
+.piece-tag b{color:var(--white); font-weight:700;}
+.manifest{margin:30px 0 60px; padding:22px; border:1px solid var(--line); border-radius:var(--radius-lg);
+  background:var(--raise);}
+.manifest h3{font-size:16px; margin-bottom:10px;}
+.manifest ul{list-style:none; margin:0; padding:0;}
+.manifest li{font-size:13px; color:var(--slate); padding:5px 0; border-bottom:1px solid var(--line);}
+.manifest li:last-child{border-bottom:none;}
+.manifest li b{color:var(--white);}
+.sample-foot{padding:26px 0 60px; text-align:center;}
+.sample-foot p{font-size:13px; color:var(--slate);}
+/* alive: every section lifts on touch */
+section{transition:transform .3s var(--ease);}
+@media (hover:hover){
+  .piece{transition:transform .25s var(--ease);}
+  .piece:hover{transform:translateY(-3px);}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important; animation:none !important;}
+}
+%%WALL_CSS%%
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="sample-hero">
+    <span class="kicker">%%KICKER%%</span>
+    <h1>%%TITLE%%</h1>
+    <p class="lede">%%LEDE%%</p>
+    <span class="template-badge">%%TEMPLATE_NAME%%</span>
+  </header>
+  %%SECTIONS%%
+  <div class="manifest">
+    <h3>Piece manifest — every piece on this page, on the record</h3>
+    <ul>
+    %%MANIFEST_ROWS%%
+    </ul>
+    <p style="font-size:12px; color:var(--slate); margin:12px 0 0;">Build %%BUILD_ID%% · assemble %%ASSEMBLER_VERSION%% · index %%INDEX_SHA%%</p>
+  </div>
+  <div class="sample-foot">
+    <p>Built by the Smart Builder from the library's real pieces.<br>Nothing on this page was invented.</p>
+  </div>
+</div>
+</body>
+</html>

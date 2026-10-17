@@ -644,5 +644,113 @@
       "privacy": 4,
       "build": 9
     }
+  },
+  "intake_page": {
+    "steps": [
+      {
+        "n": 1,
+        "title": "Tell Naya your vision",
+        "lede": "One clear instruction. Type it, paste it, or dictate it — however your vision comes out."
+      },
+      {
+        "n": 2,
+        "title": "Answer four questions",
+        "lede": "Vision, goal, functions, what it should do. Plain words — these answers let Naya draft your contract."
+      },
+      {
+        "n": 3,
+        "title": "Pick your pieces",
+        "lede": "The real buttons, boards, banners, icons and navigation from the library. Tap Select on what you love."
+      },
+      {
+        "n": 4,
+        "title": "Choose your template",
+        "lede": "Twelve finished starting points, one column, no mystery boxes. Tap a template to see the real sample page."
+      },
+      {
+        "n": 5,
+        "title": "This is what you chose",
+        "lede": "Your vision, your pieces, your template, your features — together, the contract. Say the word and it builds."
+      }
+    ],
+    "intent": {
+      "affordances": [
+        {
+          "id": "type",
+          "label": "Type it",
+          "desc": "Write your vision in your own words, right here.",
+          "cta": "Save my vision",
+          "icon": "NAYA-JWL-025"
+        },
+        {
+          "id": "paste",
+          "label": "Paste it",
+          "desc": "Already wrote it somewhere? Paste it in — notes, docs, messages.",
+          "cta": "Import pasted text",
+          "icon": "NAYA-JWL-027"
+        },
+        {
+          "id": "dictate",
+          "label": "Dictate it",
+          "desc": "Say it out loud. Your words land in the contract like typing.",
+          "cta": "Start dictating",
+          "icon": "NAYA-JWL-078"
+        }
+      ]
+    },
+    "questions": [
+      {
+        "id": "vision",
+        "q": "What is your vision?",
+        "hint": "Say it like you'd tell a friend. One or two sentences is plenty."
+      },
+      {
+        "id": "goal",
+        "q": "What should it do for you?",
+        "hint": "The job it does — bookings, sales, gathering people, showing your work…"
+      },
+      {
+        "id": "functions",
+        "q": "Which functions must it have?",
+        "hint": "Tick everything it must have. All ticked by default — untick to remove."
+      },
+      {
+        "id": "behavior",
+        "q": "How should it behave?",
+        "hint": "The feel of it — calm, energetic, playful, serious…"
+      }
+    ],
+    "feature_showcase": [
+      "smart_mail",
+      "smart_list",
+      "space",
+      "connect",
+      "intelligence_today",
+      "social_feed",
+      "smart_tabs"
+    ],
+    "feature_icons": {
+      "smart_mail": "NAYA-JWL-031",
+      "smart_list": "NAYA-JWL-009",
+      "space": "NAYA-JWL-026",
+      "connect": "NAYA-JWL-031",
+      "intelligence_today": "NAYA-JWL-034",
+      "social_feed": "NAYA-JWL-027",
+      "smart_tabs": "NAYA-JWL-026"
+    },
+    "template_samples": [
+      "samples/template-01-personal-page.html",
+      "samples/template-02-today-briefing.html",
+      "samples/template-03-business-landing.html",
+      "samples/template-04-booking-page.html",
+      "samples/template-05-community-hub.html",
+      "samples/template-06-event-page.html",
+      "samples/template-07-portfolio.html",
+      "samples/template-08-product-page.html",
+      "samples/template-09-menu-price-list.html",
+      "samples/template-10-signup-page.html",
+      "samples/template-11-dashboard.html",
+      "samples/template-12-creator-page.html"
+    ]
   }
 }

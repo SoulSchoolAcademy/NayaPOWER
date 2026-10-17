@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!-- SMART BUILDER SAMPLE PAGE — assembled from the library's real pieces.
+     Contract in → pieces resolved from the index → fail-closed validation.
+     Every element below is a real indexed piece; the manifest at the foot
+     lists each one by model number. Nothing is invented. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sample Booking page page built by the Smart Builder from real library pieces.">
+<title>Book your table · Smart Builder sample</title>
+<style>
+/* ============ NAYA DESIGN TOKENS — v1 (canonical, verbatim) ============ */
+:root{
+  --obsidian:#0a0a0f; --obsidian-deep:#020203; --raise:#10141d; --card:#141a28;
+  --white:#ffffff; --paper:#f8f7fb; --silver:#c9c9d4; --slate:#8a8a99;
+  --line:rgba(255,255,255,.12);
+  --sp-purple:#a06bff; --sp-indigo:#6675ff; --sp-sapphire:#55b9ee; --sp-teal:#40d3bb;
+  --sp-emerald:#2fe89e; --sp-lime:#b8ee57; --sp-yellow:#f1d75a; --sp-gold:#ffbf3d;
+  --sp-orange:#ff9a5a; --sp-rich-orange:#ff6b3d; --sp-red:#ff5e6c; --sp-magenta:#e84fff;
+  --font-voice:"Newsreader",Georgia,"Times New Roman",serif;
+  --font-ui:Inter,ui-sans-serif,system-ui,sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --radius-md:14px; --radius-lg:22px; --radius-pill:999px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian-deep); color:var(--silver); font-family:var(--font-ui);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:560px; margin:0 auto; padding:0 20px;}
+/* FIX 2 (Epsilon re-verify): kickers are ALWAYS white on black. */
+.kicker{font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700;
+  color:#ffffff !important;}
+h1,h2,h3{color:var(--white); font-family:var(--font-voice); font-weight:500; line-height:1.2;}
+h1{font-size:clamp(30px,7vw,40px); margin:14px 0 10px;}
+h2{font-size:clamp(20px,5vw,26px); margin:0 0 8px;}
+p{margin:0 0 12px; max-width:62ch;}
+.lede{font-size:17px; color:var(--paper); font-family:var(--font-voice);}
+header.sample-hero{padding:40px 0 28px; border-bottom:1px solid var(--line);}
+header.sample-hero .kicker{display:block; margin-bottom:12px;}
+.template-badge{display:inline-block; margin-top:14px; padding:8px 18px; border-radius:var(--radius-pill);
+  background:#55b9ee; color:#0a0a0f; font-weight:700; font-size:13px; letter-spacing:.08em;}
+section{padding:34px 0; border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{margin-bottom:18px;}
+.sec-head .kicker{display:block; margin-bottom:8px;}
+.piece{display:block; margin:0 0 16px;}
+.piece .nb-scope{display:block;}
+.piece-tag{display:flex; justify-content:space-between; align-items:center; margin-top:8px;
+  padding:6px 2px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate);}
+.piece-tag b{color:var(--white); font-weight:700;}
+.manifest{margin:30px 0 60px; padding:22px; border:1px solid var(--line); border-radius:var(--radius-lg);
+  background:var(--raise);}
+.manifest h3{font-size:16px; margin-bottom:10px;}
+.manifest ul{list-style:none; margin:0; padding:0;}
+.manifest li{font-size:13px; color:var(--slate); padding:5px 0; border-bottom:1px solid var(--line);}
+.manifest li:last-child{border-bottom:none;}
+.manifest li b{color:var(--white);}
+.sample-foot{padding:26px 0 60px; text-align:center;}
+.sample-foot p{font-size:13px; color:var(--slate);}
+/* alive: every section lifts on touch */
+section{transition:transform .3s var(--ease);}
+@media (hover:hover){
+  .piece{transition:transform .25s var(--ease);}
+  .piece:hover{transform:translateY(-3px);}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important; animation:none !important;}
+}
+/* css:40d5dfc6b56e */
+.nb-scope .check {--cc:#9d75ff;display:flex;gap:14px;align-items:center;font-size:15px;cursor:pointer;
+  padding:14px 18px;border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  border:1px solid color-mix(in srgb, var(--cc) 30%, transparent);
+  border-left:3px solid var(--cc);transition:all .2s}
+.nb-scope .check:hover {border-color:color-mix(in srgb, var(--cc) 60%, transparent);transform:translateX(4px)}
+.nb-scope .check:hover {border-color:rgba(255,255,255,.3)}
+.nb-scope .check input {appearance:none;-webkit-appearance:none;width:26px;height:26px;margin-top:0;flex:none;cursor:pointer;
+  border-radius:8px;border:1.5px solid rgba(255,255,255,.4);
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.25),transparent 45%),rgba(255,255,255,.04);
+  transition:all .2s;position:relative}
+.nb-scope .check input:checked {border-color:#35e39b;
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.85),transparent 42%),
+    radial-gradient(circle at 50% 55%,#35e39b,color-mix(in srgb,#35e39b 45%,#000) 78%);
+  box-shadow:0 0 16px rgba(53,227,155,.6)}
+.nb-scope .check input:checked::after {content:"✓";position:absolute;inset:0;display:grid;place-items:center;
+  color:#fff;font-size:14px;font-weight:900;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.nb-scope .check:has(input:checked) {border-color:#35e39b;background:rgba(53,227,155,.06)}
+.nb-scope .check:has(input:checked) span {text-decoration:line-through;opacity:.6}
+/* css:8118b6861b9c */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .lv-btn {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 52px; padding: 0 30px; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+  color: #F8F7FB;
+  text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.6);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.02) 38%, rgba(0,0,0,.22) 100%),
+    linear-gradient(180deg, #26262e 0%, #0b0b0f 52%, #020203 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60);
+  transition: transform .22s var(--ease), box-shadow .38s var(--ease), background .3s ease;
+  animation: lv-breathe 7s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+@keyframes lv-breathe {
+  0%,100% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.40), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.05), 0 22px 46px rgba(0,0,0,.85), 0 6px 16px rgba(0,0,0,.60); }
+  50% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.46), inset 0 1px 0 rgba(255,255,255,.52), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.08), 0 24px 50px rgba(0,0,0,.88), 0 6px 16px rgba(0,0,0,.60); }
+}
+.nb-scope .lv-btn::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.14), rgba(255,255,255,.03) 42%, transparent 68%);
+}
+.nb-scope .lv-wrap.lv-aware .lv-btn::before { opacity: 1; }
+.nb-scope .lv-btn::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 60%, rgba(var(--lv-accent-rgb),.34), rgba(var(--lv-accent-rgb),.08) 55%, transparent 80%);
+  opacity: .10; transition: opacity .45s ease;
+  animation: lv-soul 7s ease-in-out infinite;
+}
+@keyframes lv-soul { 0%,100% { opacity: .08; } 50% { opacity: .16; } }
+.nb-scope .lv-wrap.lv-aware .lv-btn::after { opacity: .30; animation: none; }
+.nb-scope .lv-btn .lv-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.nb-scope .lv-btn .lv-label svg { width: 18px; height: 18px; }
+.nb-scope .lv-wrap.lv-aware .lv-btn {
+  animation: none; transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.58), inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(0,0,0,.70), inset 0 -16px 30px rgba(0,0,0,.48), inset 0 12px 22px rgba(255,255,255,.08), 0 0 0 1px rgba(var(--lv-accent-rgb),.16), 0 26px 52px rgba(0,0,0,.87), 0 8px 18px rgba(0,0,0,.62);
+}
+.nb-scope .lv-btn:hover, .nb-scope .lv-btn:focus-visible {
+  animation: none; transform: translateY(-3px) scale(1.012);
+  background: linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.18) 100%), linear-gradient(180deg, #2e2e38 0%, #101016 52%, #060608 100%);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.72), inset 0 1px 0 rgba(255,255,255,.62), inset 0 -1px 0 rgba(0,0,0,.66), inset 0 -16px 30px rgba(0,0,0,.42), inset 0 12px 22px rgba(255,255,255,.10), inset 0 0 0 1.5px rgba(var(--lv-accent-rgb),.85), 0 0 22px -4px rgba(var(--lv-accent-rgb),.50), 0 32px 60px rgba(0,0,0,.88), 0 10px 22px rgba(0,0,0,.62);
+}
+.nb-scope .lv-btn:hover::after, .nb-scope .lv-btn:focus-visible::after { opacity: .55; animation: none; }
+.nb-scope .lv-btn:hover::before, .nb-scope .lv-btn:focus-visible::before { opacity: 1; }
+.nb-scope .lv-btn:focus-visible { outline: 2px solid rgba(255,255,255,.92); outline-offset: 3px; }
+.nb-scope .lv-btn:active {
+  transform: translateY(1px) scale(.97) !important; transition-duration: .08s;
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.48), inset 0 4px 14px rgba(0,0,0,.85), inset 0 -4px 10px rgba(0,0,0,.55), inset 0 12px 22px rgba(0,0,0,.30), 0 10px 24px rgba(0,0,0,.78);
+}
+.nb-scope .lv-btn:active::after { opacity: .35; }
+.nb-scope .lv-btn:disabled { opacity: .55; cursor: not-allowed; animation: none; transform: none !important; }
+@media (prefers-reduced-motion: reduce) {.nb-scope .lv-btn, .nb-scope .lv-btn::after { animation: none !important; }}
+/* css:dd8909d6a903 */
+.nb-scope .card {--accent:#9d75ff;--accent-soft:rgba(157,117,255,.45);border:1.5px solid rgba(255,255,255,.9);border-radius:18px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(0,0,0,.28));box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 12px 32px rgba(0,0,0,.55);animation:edgebreathe 6s ease-in-out infinite;transition:border-color .3s,box-shadow .3s,transform .3s}
+.nb-scope .card:hover {border-color:var(--accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 30px var(--accent-soft),0 12px 32px rgba(0,0,0,.55);transform:translateY(-3px)}
+@keyframes edgebreathe {0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 10px rgba(255,255,255,.06),0 12px 32px rgba(0,0,0,.55)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 22px rgba(255,255,255,.13),0 12px 32px rgba(0,0,0,.55)}}
+.nb-scope .card h3 {font-size:18px;font-weight:700;margin-bottom:8px;color:#fff;display:flex;align-items:center;gap:12px}
+.nb-scope .card h3 .jewel {--jewel:#9d75ff;width:26px;height:26px;flex:none;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6);background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.85),transparent 42%),radial-gradient(circle at 50% 55%,var(--jewel),color-mix(in srgb,var(--jewel) 45%,#000) 78%);border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px rgba(255,255,255,.5),inset 0 -3px 8px rgba(0,0,0,.4),0 0 22px color-mix(in srgb,var(--jewel) 55%,transparent),0 8px 20px rgba(0,0,0,.5)}
+.nb-scope .card p {font-size:17px;color:#fff}
+.nb-scope .card p.fine {font-size:14px;margin-top:10px}
+.nb-scope .law-steps {display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.nb-scope .law-step {display:flex;gap:16px;align-items:flex-start;padding:14px 16px;border-radius:14px;
+  background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07)}
+.nb-scope .law-step .jewel {margin-top:1px;flex:none}
+.nb-scope .law-step strong {display:block;font-size:17px;margin-bottom:4px;line-height:1.35}
+.nb-scope .law-step span {font-size:15px;color:#fff;opacity:.92;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="sample-hero">
+    <span class="kicker">Sample · Booking page</span>
+    <h1>Book your table</h1>
+    <p class="lede">Appointments without the friction — pick a time, done.</p>
+    <span class="template-badge">Template 04 · Booking page</span>
+  </header>
+  <section><div class="sec-head"><span class="kicker">Pick a day</span><h2>When works for you?</h2><p>Real availability, straight from the calendar.</p></div><div class="piece" data-model="NAYA-CAL-001"><div class="nb-scope"><div class="cal cal-month"><div class="cal-head"><h2 class="cal-title">October <small>2026</small></h2><div class="cal-nav"><button class="cal-chev" aria-label="Previous month"><i></i></button></div></div><div class="cal-grid" role="grid"><div class="cal-day is-today is-selected" role="gridcell" tabindex="0" aria-current="date"><span class="dnum">16</span><div class="cal-pill" style="--pc:#a06bff"><span class="t">09:00</span>Deep work</div></div></div></div></div><div class="piece-tag"><b>CAL-001 · Month-view board</b><span>NAYA-CAL-001</span></div></div><div class="piece" data-model="NAYA-CAL-003"><div class="nb-scope"><div class="cal cal-pick"><button class="cal-trigger" aria-haspopup="dialog"><span class="cal-pick-date">Oct 16, 2026</span></button></div></div><div class="piece-tag"><b>CAL-003 · Date picker</b><span>NAYA-CAL-003</span></div></div></section><section><div class="sec-head"><span class="kicker">Your details</span><h2>Who&#x27;s coming?</h2><p>Just enough to hold your spot — nothing more.</p></div><div class="piece" data-model="NAYA-FRM-002"><div class="nb-scope"><label class="check" style="--cc:#35e39b"><input type="checkbox"><span>Every button has a black heart, white voice, and a truthful icon</span></label></div><div class="piece-tag"><b>Every button has a black heart, white voice, and a truth</b><span>NAYA-FRM-002</span></div></div><div class="piece" data-model="NAYA-FRM-005"><div class="nb-scope"><label class="check" style="--cc:#ffd45a"><input type="checkbox"><span>Type hierarchy is 24 / 18 / 14 — size separates, color doesn’t</span></label></div><div class="piece-tag"><b>size separates, color d</b><span>NAYA-FRM-005</span></div></div></section><section><div class="sec-head"><span class="kicker">Confirm</span><h2>Lock it in</h2><p>One tap and your table is waiting.</p></div><div class="piece" data-model="NAYA-BTN-010"><div class="nb-scope"><button class="lv-btn" style="--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158"><span class="lv-label">Green</span></button></div><div class="piece-tag"><b>Green</b><span>NAYA-BTN-010</span></div></div><div class="piece" data-model="NAYA-CRD-007"><div class="nb-scope"><div class="card" style="--accent:#3ca8ff;--accent-soft:rgba(60,168,255,.5)"><h3>AI Law — the build procedure<span class="jewel" style="--jewel:#3ca8ff">✧</span></h3><p>Ten steps, in order. No skipping.</p><div class="law-steps"><div class="law-step"><span class="jewel mini" style="--jewel:#9d75ff">◆</span><div><strong>Pick the layout that matches what the page IS.</strong><span>People scroll. Products grid. Feeds flow. The layout tells the story before a word is read.</span></div></div><div class="law-step"><span class="jewel mini" style="--jewel:#3ca8ff">✦</span><div><strong>Give every element one color job.</strong><span>Chrome gets purple. Text gets white. Accents get their own spectrum color. Never mix them.</span></div></div><div class="law-step"><span class="jewel mini" style="--jewel:#35e39b">△</span><div><strong>Light everything: white at rest, color on touch.</strong><span>White edge you can see when idle. Its own color ignites on hover. No exceptions.</span></div></div><div class="law-step"><span class="jewel mini" style="--jewel:#ffd45a">✧</span><div><strong>Build buttons with black hearts.</strong><span>Black center, white text and icon, visible white border. The icon must promise what happens.</span></div></div><div class="law-step"><span class="jewel mini" style="--jewel:#ff8c42">◆</span><div><strong>Size separates, color doesn't.</strong><span>24 for kickers, 18 for headlines, 14 for details. White text, always readable.</span></div></div><div class="law-step"><span class="jewel mini" style="--jewel:#ed42c4">✦</span><div><strong>Draw icons. Don't shrink photos.</strong><span>Bold vector shapes that read at any size. If you can't make it good, leave it out.</span></div></div><div class="law-step"><span class="jewel mini" style="--jewel:#9d75ff">△</span><div><strong>Make the header a front door.</strong><span>Logo, living mark, warm words, one clear line. Composed — not just placed side by side.</span></div></div><div class="law-step"><span class="jewel mini" style="--jewel:#3ca8ff">✧</span><div><strong>Let the page breathe.</strong><span>Slow drifting light, gentle pulsing, soft glowing. Alive but calm. Always respect reduced-motion.</span></div></div><div class="law-step"><span class="jewel mini" style="--jewel:#35e39b">◆</span><div><strong>Score what you see, not what you wrote.</strong><span>Look at the rendered page. Score it honestly. Below 9? Back to the bench.</span></div></div><div class="law-step"><span class="jewel mini" style="--jewel:#ffd45a">✦</span><div><strong>Prove it before you claim it.</strong><span>Read the file. Count the matches. Watch it render. Then say it's done.</span></div></div></div></div></div><div class="piece-tag"><b>the build procedure ✧</b><span>NAYA-CRD-007</span></div></div></section>
+  <div class="manifest">
+    <h3>Piece manifest — every piece on this page, on the record</h3>
+    <ul>
+    <li><b>NAYA-CAL-001</b> — CAL-001 · Month-view board</li><li><b>NAYA-CAL-003</b> — CAL-003 · Date picker</li><li><b>NAYA-FRM-002</b> — Every button has a black heart, white voice, and a truth</li><li><b>NAYA-FRM-005</b> — size separates, color d</li><li><b>NAYA-BTN-010</b> — Green</li><li><b>NAYA-CRD-007</b> — the build procedure ✧</li>
+    </ul>
+    <p style="font-size:12px; color:var(--slate); margin:12px 0 0;">Build 18a3403be3bd2418 · assemble assemble-v1.14 · index see-manifest</p>
+  </div>
+  <div class="sample-foot">
+    <p>Built by the Smart Builder from the library's real pieces.<br>Nothing on this page was invented.</p>
+  </div>
+</div>
+</body>
+</html>

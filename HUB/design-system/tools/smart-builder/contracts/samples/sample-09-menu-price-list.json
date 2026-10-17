@@ -1,0 +1,38 @@
+{
+  "contract": "smart-builder/09-menu-price-list",
+  "template_id": "09",
+  "template_name": "Menu / price list",
+  "template_color": "#ff9a5a",
+  "title": "Café Luna — Menu",
+  "kicker": "Sample · Menu / price list",
+  "lede": "Restaurants, salons, services — what it costs, plainly.",
+  "sections": [
+    {
+      "kicker": "Morning",
+      "title": "Coffee & pastry",
+      "lede": "Served until 11am daily.",
+      "pieces": [
+        "NAYA-LST-009",
+        "NAYA-TYP-003"
+      ]
+    },
+    {
+      "kicker": "Midday",
+      "title": "Lunch",
+      "lede": "Bowls, sandwiches, and soup that actually satisfies.",
+      "pieces": [
+        "NAYA-LST-010",
+        "NAYA-TYP-004"
+      ]
+    },
+    {
+      "kicker": "Evening",
+      "title": "Dinner",
+      "lede": "Small plates made for sharing — or not.",
+      "pieces": [
+        "NAYA-LST-011",
+        "NAYA-CRD-013"
+      ]
+    }
+  ]
+}

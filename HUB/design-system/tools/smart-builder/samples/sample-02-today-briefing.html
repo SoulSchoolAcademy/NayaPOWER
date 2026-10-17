@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<!-- SMART BUILDER SAMPLE PAGE — assembled from the library's real pieces.
+     Contract in → pieces resolved from the index → fail-closed validation.
+     Every element below is a real indexed piece; the manifest at the foot
+     lists each one by model number. Nothing is invented. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sample Today briefing page built by the Smart Builder from real library pieces.">
+<title>Good morning — your brief · Smart Builder sample</title>
+<style>
+/* ============ NAYA DESIGN TOKENS — v1 (canonical, verbatim) ============ */
+:root{
+  --obsidian:#0a0a0f; --obsidian-deep:#020203; --raise:#10141d; --card:#141a28;
+  --white:#ffffff; --paper:#f8f7fb; --silver:#c9c9d4; --slate:#8a8a99;
+  --line:rgba(255,255,255,.12);
+  --sp-purple:#a06bff; --sp-indigo:#6675ff; --sp-sapphire:#55b9ee; --sp-teal:#40d3bb;
+  --sp-emerald:#2fe89e; --sp-lime:#b8ee57; --sp-yellow:#f1d75a; --sp-gold:#ffbf3d;
+  --sp-orange:#ff9a5a; --sp-rich-orange:#ff6b3d; --sp-red:#ff5e6c; --sp-magenta:#e84fff;
+  --font-voice:"Newsreader",Georgia,"Times New Roman",serif;
+  --font-ui:Inter,ui-sans-serif,system-ui,sans-serif;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --radius-md:14px; --radius-lg:22px; --radius-pill:999px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian-deep); color:var(--silver); font-family:var(--font-ui);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:560px; margin:0 auto; padding:0 20px;}
+/* FIX 2 (Epsilon re-verify): kickers are ALWAYS white on black. */
+.kicker{font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700;
+  color:#ffffff !important;}
+h1,h2,h3{color:var(--white); font-family:var(--font-voice); font-weight:500; line-height:1.2;}
+h1{font-size:clamp(30px,7vw,40px); margin:14px 0 10px;}
+h2{font-size:clamp(20px,5vw,26px); margin:0 0 8px;}
+p{margin:0 0 12px; max-width:62ch;}
+.lede{font-size:17px; color:var(--paper); font-family:var(--font-voice);}
+header.sample-hero{padding:40px 0 28px; border-bottom:1px solid var(--line);}
+header.sample-hero .kicker{display:block; margin-bottom:12px;}
+.template-badge{display:inline-block; margin-top:14px; padding:8px 18px; border-radius:var(--radius-pill);
+  background:#40d3bb; color:#0a0a0f; font-weight:700; font-size:13px; letter-spacing:.08em;}
+section{padding:34px 0; border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{margin-bottom:18px;}
+.sec-head .kicker{display:block; margin-bottom:8px;}
+.piece{display:block; margin:0 0 16px;}
+.piece .nb-scope{display:block;}
+.piece-tag{display:flex; justify-content:space-between; align-items:center; margin-top:8px;
+  padding:6px 2px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate);}
+.piece-tag b{color:var(--white); font-weight:700;}
+.manifest{margin:30px 0 60px; padding:22px; border:1px solid var(--line); border-radius:var(--radius-lg);
+  background:var(--raise);}
+.manifest h3{font-size:16px; margin-bottom:10px;}
+.manifest ul{list-style:none; margin:0; padding:0;}
+.manifest li{font-size:13px; color:var(--slate); padding:5px 0; border-bottom:1px solid var(--line);}
+.manifest li:last-child{border-bottom:none;}
+.manifest li b{color:var(--white);}
+.sample-foot{padding:26px 0 60px; text-align:center;}
+.sample-foot p{font-size:13px; color:var(--slate);}
+/* alive: every section lifts on touch */
+section{transition:transform .3s var(--ease);}
+@media (hover:hover){
+  .piece{transition:transform .25s var(--ease);}
+  .piece:hover{transform:translateY(-3px);}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important; animation:none !important;}
+}
+/* css:62130b80d4f9 */
+.nb-scope {
+  
+  --bg:        #0B0D12;  
+  --bg-raise:  #12151D;  
+  --bg-panel:  #12151D;  
+  --bg-card:   #171B25;  
+  --bg-elev:   #171B25;  
+  --edge:      #252B39;  
+  --ink:       #F5F7FB;  
+  --ink-dim:   #F5F7FB;  
+  --muted:     #AAB2BF;  
+  --muted-2:   #AAB2BF;
+  --faint:     #c9c3ce;
+  --line:      #ffffff18;
+  --line-soft: #ffffff0d;
+
+  
+  --purple:     #9d75ff;  
+  --indigo:     #6675ff;  
+  --sapphire:   #55b9ee;  
+  --blue:       #55b9ee;  
+  --teal:       #40d3bb;  
+  --emerald:    #55e39a;  
+  --green:      #55e39a;  
+  --lime:       #b8ee57;  
+  --yellow:     #f1d75a;  
+  --gold:       #e8b64c;  
+  --orange:     #ff9a5a;  
+  --rich-orange:#ff7a3d;  
+  --red:        #ff5a6e;  
+  --magenta:    #d86cff;  
+
+  
+  --accent-feed:        var(--green);       
+  --accent-today:       var(--magenta);     
+  --accent-reports:     var(--indigo);      
+  --accent-library:     var(--blue);        
+  --accent-connect:     var(--teal);        
+  --accent-ledger:      var(--gold);        
+  --accent-connections: var(--orange);      
+  --accent-lists:       var(--purple);      
+  --accent-mail:        var(--rich-orange); 
+  --accent-spaces:      var(--lime);        
+  --accent-settings:    #e8eaf2;            
+
+  
+  --depth-hi:  inset 0 1px #fff6;
+  --depth-drop: 0 18px 42px #000b;
+  --depth-deep: 0 20px 48px #000d;
+  --radius-sm: 11px;
+  --radius-md: 13px;
+  --radius-lg: 17px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  
+  --ease: cubic-bezier(.16,.84,.22,1);
+  --dur-fast: .18s;
+  --dur-med:  .28s;
+  --dur-slow: .5s;
+
+  
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-hero: clamp(30px, 4.6vw, 52px);
+  --fs-title: 23px;
+  --fs-head: 17px;
+  --fs-body: 16px;
+  --fs-small: 13px;
+  --fs-micro: 11.5px;
+
+  
+  --field:
+    radial-gradient(1000px 650px at 55% -12%, #6675ff18, transparent 68%),
+    radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%),
+    var(--bg);
+}
+.nb-scope .shell.rail-collapsed .rail.left {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.nb-scope .rail.left {
+  transition: transform .3s cubic-bezier(.16,.84,.22,1), opacity .3s;
+}
+.nb-scope .rail.left {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg);
+  border-right: 1px solid var(--line-soft);
+  padding: 22px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 40;
+}
+@media (max-width: 900px) {.nb-scope .rail.left {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: min(300px, 84vw); height: 100dvh;
+    transform: translateX(-106%);
+    transition: transform var(--dur-med) var(--ease);
+    z-index: 60;
+    box-shadow: var(--depth-deep);
+  }
+.nb-scope .shell.drawer-open .rail.left { transform: none; }}
+@media (prefers-reduced-motion: reduce) {.nb-scope .rail.left, .nb-scope .plus-btn, .nb-scope .nav-btn { transition: none !important; }}
+.nb-scope .ib-microcopy .left { text-align: left; }
+/* css:5801a38869bf */
+.nb-scope {
+  color-scheme:light dark;
+  --field:#07070a;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);--chrome:#08080b;
+  --magenta:#e455f4;--purple:#8d63f5;--blue:#3f9ff5;--cyan:#39d7e8;--green:#34d38a;--gold:#e7c65a;
+  --mat-0:#020203;--mat-1:#08080b;--mat-2:#101117;--mat-3:#1b1c24;--mat-white:#fbfaff;
+  --ease:cubic-bezier(.16,.84,.22,1);--snap:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 26px 70px rgba(28,18,38,.18),0 7px 22px rgba(28,18,38,.11);
+  --page:clamp(17px,4vw,68px);--radius:24px;
+}
+.nb-scope .icon {width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nb-scope .n-btn .btn-orb .icon {width:15px;height:15px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+.nb-scope .n-btn.prism .prism-mark .icon {width:14px;height:14px;transform:rotate(-45deg)}
+.nb-scope .jewel .icon {transform:rotate(7deg);filter:drop-shadow(0 0 7px #fff)}
+.nb-scope .sphere .icon {width:26px;height:26px;color:#fff;filter:drop-shadow(0 0 8px rgba(255,255,255,.6))}
+.nb-scope .icon-tile {--tone:var(--purple);--rgb:141,99,245;min-height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.008));font-size:12px}
+.nb-scope .mini-gem {width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:radial-gradient(circle at 28% 20%,rgba(255,255,255,.95),transparent 28%),radial-gradient(circle at 55% 58%,var(--tone),#050506 86%);border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 -5px 9px rgba(0,0,0,.5),0 8px 14px rgba(0,0,0,.4),0 0 14px rgba(var(--rgb),.35);transition:transform .24s var(--ease),box-shadow .24s}
+.nb-scope .icon-tile:hover .mini-gem {transform:translateY(-3px) rotate(-4deg);box-shadow:inset 0 -5px 9px rgba(0,0,0,.5),0 12px 20px rgba(0,0,0,.48),0 0 20px rgba(var(--rgb),.48)}
+.nb-scope .mini-gem .icon {width:18px;height:18px}
+.nb-scope .mini-gem.circle {border-radius:50%}
+.nb-scope .mini-gem.square {border-radius:10px}
+.nb-scope .mini-gem.diamond {border-radius:8px;transform:rotate(45deg)}
+.nb-scope .mini-gem.diamond .icon {transform:rotate(-45deg)}
+.nb-scope .icon-tile:hover .mini-gem.diamond {transform:translateY(-3px) rotate(41deg)}
+.nb-scope .final-line .mini-gem {width:34px;height:34px;flex:none}
+.nb-scope .naya-btn.icon {width:58px;height:58px;min-height:58px;padding:0;border-radius:50%;letter-spacing:0}
+.nb-scope .naya-btn.icon:before {inset:-5px}
+.nb-scope .naya-btn.icon.micro {width:44px;height:44px;min-height:44px}
+.nb-scope .naya-btn.icon.portal {width:66px;height:66px;border-color:#fff;box-shadow:inset 0 2px 3px rgba(255,255,255,.24),inset 0 -10px 16px rgba(0,0,0,.75),0 5px 0 #010102,0 18px 30px rgba(0,0,0,.72)}
+.nb-scope .naya-btn.icon.portal .icon {fill:#fff}
+.nb-scope .naya-btn.prism .prism-mark .icon {transform:rotate(-45deg)}
+.nb-scope .bad-action .icon {width:20px;height:20px}
+.nb-scope .toast-mini>.icon {color:var(--tone)}
+.nb-scope .search-result .mini-gem {width:34px;height:34px;flex:none}
+.nb-scope .smart-link>.icon {color:var(--tone);flex:none}
+/* css:bd2cc20e9cb5 */
+.nb-scope {
+  color-scheme:light dark;
+  --field:#07070a;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);--chrome:#08080b;
+  --magenta:#e455f4;--purple:#8d63f5;--blue:#3f9ff5;--cyan:#39d7e8;--green:#34d38a;--gold:#e7c65a;
+  --mat-0:#020203;--mat-1:#08080b;--mat-2:#101117;--mat-3:#1b1c24;--mat-white:#fbfaff;
+  --ease:cubic-bezier(.16,.84,.22,1);--snap:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 26px 70px rgba(28,18,38,.18),0 7px 22px rgba(28,18,38,.11);
+  --page:clamp(17px,4vw,68px);--radius:24px;
+}
+.nb-scope .grad-step {padding:13px;border:1px solid var(--line);border-radius:14px;font-size:14px;font-weight:700;background:var(--surface-2)}
+.nb-scope .grad-step span {color:var(--purple);margin-right:6px}
+/* css:a8f9d4485fa0 */
+.nb-scope {
+  color-scheme:light dark;
+  --field:#07070a;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);--chrome:#08080b;
+  --magenta:#e455f4;--purple:#8d63f5;--blue:#3f9ff5;--cyan:#39d7e8;--green:#34d38a;--gold:#e7c65a;
+  --mat-0:#020203;--mat-1:#08080b;--mat-2:#101117;--mat-3:#1b1c24;--mat-white:#fbfaff;
+  --ease:cubic-bezier(.16,.84,.22,1);--snap:cubic-bezier(.2,.8,.2,1);
+  --shadow:0 26px 70px rgba(28,18,38,.18),0 7px 22px rgba(28,18,38,.11);
+  --page:clamp(17px,4vw,68px);--radius:24px;
+}
+.nb-scope .spec-name {font-size:14px;color:#bdb7c8;font-weight:700;letter-spacing:.08em}
+/* css:cd8551fca4de */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .lv-btn {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 52px; padding: 0 30px; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+  color: #F8F7FB;
+  text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.6);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.02) 38%, rgba(0,0,0,.22) 100%),
+    linear-gradient(180deg, #26262e 0%, #0b0b0f 52%, #020203 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60);
+  transition: transform .22s var(--ease), box-shadow .38s var(--ease), background .3s ease;
+  animation: lv-breathe 7s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+@keyframes lv-breathe {
+  0%,100% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.40), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.05), 0 22px 46px rgba(0,0,0,.85), 0 6px 16px rgba(0,0,0,.60); }
+  50% { box-shadow: inset 0 0 0 1px rgba(240,238,230,.46), inset 0 1px 0 rgba(255,255,255,.52), inset 0 -1px 0 rgba(0,0,0,.75), inset 0 -16px 30px rgba(0,0,0,.55), inset 0 12px 22px rgba(255,255,255,.08), 0 24px 50px rgba(0,0,0,.88), 0 6px 16px rgba(0,0,0,.60); }
+}
+.nb-scope .lv-btn::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.14), rgba(255,255,255,.03) 42%, transparent 68%);
+}
+.nb-scope .lv-wrap.lv-aware .lv-btn::before { opacity: 1; }
+.nb-scope .lv-btn::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 60%, rgba(var(--lv-accent-rgb),.34), rgba(var(--lv-accent-rgb),.08) 55%, transparent 80%);
+  opacity: .10; transition: opacity .45s ease;
+  animation: lv-soul 7s ease-in-out infinite;
+}
+@keyframes lv-soul { 0%,100% { opacity: .08; } 50% { opacity: .16; } }
+.nb-scope .lv-wrap.lv-aware .lv-btn::after { opacity: .30; animation: none; }
+.nb-scope .lv-btn .lv-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.nb-scope .lv-btn .lv-label svg { width: 18px; height: 18px; }
+.nb-scope .lv-wrap.lv-aware .lv-btn {
+  animation: none; transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.58), inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(0,0,0,.70), inset 0 -16px 30px rgba(0,0,0,.48), inset 0 12px 22px rgba(255,255,255,.08), 0 0 0 1px rgba(var(--lv-accent-rgb),.16), 0 26px 52px rgba(0,0,0,.87), 0 8px 18px rgba(0,0,0,.62);
+}
+.nb-scope .lv-btn:hover, .nb-scope .lv-btn:focus-visible {
+  animation: none; transform: translateY(-3px) scale(1.012);
+  background: linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.18) 100%), linear-gradient(180deg, #2e2e38 0%, #101016 52%, #060608 100%);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.72), inset 0 1px 0 rgba(255,255,255,.62), inset 0 -1px 0 rgba(0,0,0,.66), inset 0 -16px 30px rgba(0,0,0,.42), inset 0 12px 22px rgba(255,255,255,.10), inset 0 0 0 1.5px rgba(var(--lv-accent-rgb),.85), 0 0 22px -4px rgba(var(--lv-accent-rgb),.50), 0 32px 60px rgba(0,0,0,.88), 0 10px 22px rgba(0,0,0,.62);
+}
+.nb-scope .lv-btn:hover::after, .nb-scope .lv-btn:focus-visible::after { opacity: .55; animation: none; }
+.nb-scope .lv-btn:hover::before, .nb-scope .lv-btn:focus-visible::before { opacity: 1; }
+.nb-scope .lv-btn:focus-visible { outline: 2px solid rgba(255,255,255,.92); outline-offset: 3px; }
+.nb-scope .lv-btn:active {
+  transform: translateY(1px) scale(.97) !important; transition-duration: .08s;
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.48), inset 0 4px 14px rgba(0,0,0,.85), inset 0 -4px 10px rgba(0,0,0,.55), inset 0 12px 22px rgba(0,0,0,.30), 0 10px 24px rgba(0,0,0,.78);
+}
+.nb-scope .lv-btn:active::after { opacity: .35; }
+.nb-scope .lv-btn:disabled { opacity: .55; cursor: not-allowed; animation: none; transform: none !important; }
+.nb-scope .lv-btn--danger { --lv-accent: #ff5e6c; --lv-accent-rgb: 255,94,108; }
+.nb-scope .lv-btn--danger:hover, .nb-scope .lv-btn--danger:focus-visible {
+  background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.01) 40%, rgba(0,0,0,.35) 100%), linear-gradient(180deg, #101014 0%, #050506 55%, #000000 100%);
+  box-shadow: inset 0 0 0 1px rgba(240,238,230,.55), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -1px 0 rgba(0,0,0,.85), inset 0 -20px 36px rgba(0,0,0,.70), inset 0 6px 18px rgba(0,0,0,.40), 0 32px 60px rgba(0,0,0,.92), 0 10px 22px rgba(0,0,0,.66);
+}
+@media (prefers-reduced-motion: reduce) {.nb-scope .lv-btn, .nb-scope .lv-btn::after { animation: none !important; }}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="sample-hero">
+    <span class="kicker">Sample · Today briefing</span>
+    <h1>Good morning — your brief</h1>
+    <p class="lede">What's going on in your world today — the reason to come back every morning.</p>
+    <span class="template-badge">Template 02 · Today briefing</span>
+  </header>
+  <section><div class="sec-head"><span class="kicker">Nutshell</span><h2>Today in one glance</h2><p>Three things that matter before your coffee cools.</p></div><div class="piece" data-model="NAYA-CRD-004"><div class="nb-scope"><span class="left">ONE INTELLIGENCE &middot; MANY VIEWS &middot; ONE IDENTITY</span></div><div class="piece-tag"><b>[intelBoard] intelligence board</b><span>NAYA-CRD-004</span></div></div><div class="piece" data-model="NAYA-JWL-034"><div class="nb-scope"><div class="icon-tile" style="--tone:#e455f4;--rgb:228,85,244">Today<span class="mini-gem diamond"><svg class="icon"><use href="#i-spark"></svg></span></div></div><div class="piece-tag"><b>Today</b><span>NAYA-JWL-034</span></div></div></section><section><div class="sec-head"><span class="kicker">Agenda</span><h2>What&#x27;s on</h2><p>Your day, distilled to what needs you.</p></div><div class="piece" data-model="NAYA-LST-004"><div class="nb-scope"><div class="grad-step">Build<span>05</span></div></div><div class="piece-tag"><b>Build 05</b><span>NAYA-LST-004</span></div></div><div class="piece" data-model="NAYA-CAL-004"><div class="nb-scope"><div class="cal cal-agenda"><div class="cal-timeline"><div class="cal-ag-row" style="--ec:#a06bff"><span class="cal-ag-time">09:00</span><div class="cal-ag-body"><h4>Deep work</h4></div></div></div></div></div><div class="piece-tag"><b>CAL-004 · Agenda list</b><span>NAYA-CAL-004</span></div></div></section><section><div class="sec-head"><span class="kicker">Focus</span><h2>One thing</h2><p>If today had a headline, this would be it.</p></div><div class="piece" data-model="NAYA-TYP-010"><div class="nb-scope"><span class="spec-name">LIGHT STREAK / precise interface detail</span></div><div class="piece-tag"><b>LIGHT STREAK / precise interface detail</b><span>NAYA-TYP-010</span></div></div><div class="piece" data-model="NAYA-BTN-004"><div class="nb-scope"><button class="lv-btn lv-btn--danger"><span class="lv-label">✕ Delete</span></button></div><div class="piece-tag"><b>Living System</b><span>NAYA-BTN-004</span></div></div></section>
+  <div class="manifest">
+    <h3>Piece manifest — every piece on this page, on the record</h3>
+    <ul>
+    <li><b>NAYA-CRD-004</b> — [intelBoard] intelligence board</li><li><b>NAYA-JWL-034</b> — Today</li><li><b>NAYA-LST-004</b> — Build 05</li><li><b>NAYA-CAL-004</b> — CAL-004 · Agenda list</li><li><b>NAYA-TYP-010</b> — LIGHT STREAK / precise interface detail</li><li><b>NAYA-BTN-004</b> — Living System</li>
+    </ul>
+    <p style="font-size:12px; color:var(--slate); margin:12px 0 0;">Build b7aa63976e768881 · assemble assemble-v1.14 · index see-manifest</p>
+  </div>
+  <div class="sample-foot">
+    <p>Built by the Smart Builder from the library's real pieces.<br>Nothing on this page was invented.</p>
+  </div>
+</div>
+</body>
+</html>

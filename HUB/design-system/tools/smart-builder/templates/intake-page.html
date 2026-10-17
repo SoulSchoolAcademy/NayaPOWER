@@ -729,7 +729,7 @@ function openModal(fid){
   var perms = (entry.permissions||[]).map(function(p){ return "<li>"+esc(p)+"</li>"; }).join("");
   var acc = (entry.acceptance||[]).map(function(a){ return "<li>"+esc(a)+"</li>"; }).join("");
   body.innerHTML =
-    '<div class="feat-icon"><div class="nb-scope">'+entry.iconHtml+'</div></div>' +
+    '<div class="feat-icon" data-model="'+esc(entry.iconModel||'')+'"><div class="nb-scope">'+entry.iconHtml+'</div></div>' +
     '<span class="badge specified">'+esc(entry.statusLabel)+'</span>' +
     '<h3 id="modal-title" style="margin-top:10px">'+esc(entry.name)+'</h3>' +
     '<p class="intent">'+esc(entry.intent)+'</p>' +

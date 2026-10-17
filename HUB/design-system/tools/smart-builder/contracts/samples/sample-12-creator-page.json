@@ -1,0 +1,39 @@
+{
+  "contract": "smart-builder/12-creator-page",
+  "template_id": "12",
+  "template_name": "Creator page",
+  "template_color": "#f1d75a",
+  "title": "Jordan Lee",
+  "kicker": "Sample · Creator page",
+  "lede": "Content feed, followers, supporters — the growth engine.",
+  "sections": [
+    {
+      "kicker": "Creator",
+      "title": "Filming the future, weekly",
+      "lede": "120k subscribers learning to build with AI, one video at a time.",
+      "pieces": [
+        "NAYA-CRD-003",
+        "NAYA-BTN-001"
+      ]
+    },
+    {
+      "kicker": "Latest",
+      "title": "Fresh from the studio",
+      "lede": "This week's episode and the conversation around it.",
+      "pieces": [
+        "NAYA-MED-001",
+        "NAYA-CMT-002"
+      ]
+    },
+    {
+      "kicker": "Support",
+      "title": "Fuel the next one",
+      "lede": "Direct support keeps it independent.",
+      "pieces": [
+        "NAYA-PAY-004",
+        "NAYA-PAY-005",
+        "NAYA-CHT-003"
+      ]
+    }
+  ]
+}

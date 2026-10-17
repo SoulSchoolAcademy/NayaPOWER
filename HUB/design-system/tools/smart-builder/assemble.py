@@ -1073,8 +1073,8 @@ def render_intake_intent(ip, pieces, spectrum):
     cards = []
     for i, a in enumerate(ip['intent']['affordances']):
         c = seq_color(spectrum, i)
-        icon = ('<div class="a-icon"><div class="nb-scope">%s</div></div>'
-                % pieces[a['icon']]['html']) if a.get('icon') else ''
+        icon = ('<div class="a-icon" data-model="%s"><div class="nb-scope">%s</div></div>'
+                % (esc(a['icon']), pieces[a['icon']]['html'])) if a.get('icon') else ''
         aid = a['id']
         if aid == 'type':
             control = (
@@ -1229,8 +1229,8 @@ def render_intake_features(ip, spectrum, reg_by_id, pieces):
         entry = reg_by_id['feature.' + fid]
         c = seq_color(spectrum, i)
         icon_model = ip['feature_icons'][fid]
-        icon_html = ('<div class="feat-icon"><div class="nb-scope">%s</div></div>'
-                     % pieces[icon_model]['html'])
+        icon_html = ('<div class="feat-icon" data-model="%s"><div class="nb-scope">%s</div></div>'
+                     % (esc(icon_model), pieces[icon_model]['html']))
         status = entry.get('status', 'specified')
         rows.append(
             '<div class="feat-row" style="--fc:%s" data-feature="feature.%s" data-consent="ready">'
@@ -1254,6 +1254,7 @@ def render_intake_features(ip, spectrum, reg_by_id, pieces):
             'acceptance': entry.get('acceptance', []),
             'note': note,
             'iconHtml': pieces[icon_model]['html'],
+            'iconModel': icon_model,
         })
     reports = ('<p class="feat-reports"><b style="color:var(--paper)">Reports</b> \u2014 %s</p>'
                % esc(ip.get('reports_note', ''))) if ip.get('reports_note') else ''

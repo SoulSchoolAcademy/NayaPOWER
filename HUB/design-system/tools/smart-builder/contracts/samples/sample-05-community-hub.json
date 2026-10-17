@@ -1,0 +1,38 @@
+{
+  "contract": "smart-builder/05-community-hub",
+  "template_id": "05",
+  "template_name": "Community hub",
+  "template_color": "#ff5e6c",
+  "title": "Sunset Garden Club",
+  "kicker": "Sample · Community hub",
+  "lede": "Groups, fanbases, neighborhoods — a place to gather.",
+  "sections": [
+    {
+      "kicker": "Welcome",
+      "title": "Grow with us",
+      "lede": "2,400 neighbors sharing seeds, cuttings, and Sunday mornings.",
+      "pieces": [
+        "NAYA-CRD-003",
+        "NAYA-BTN-007"
+      ]
+    },
+    {
+      "kicker": "Feed",
+      "title": "What's growing",
+      "lede": "The latest from the community beds.",
+      "pieces": [
+        "NAYA-CMT-001",
+        "NAYA-CMT-003"
+      ]
+    },
+    {
+      "kicker": "Members",
+      "title": "Your neighbors",
+      "lede": "Gardeners at every level, from first sprout to old oak.",
+      "pieces": [
+        "NAYA-LST-006",
+        "NAYA-CHT-005"
+      ]
+    }
+  ]
+}
