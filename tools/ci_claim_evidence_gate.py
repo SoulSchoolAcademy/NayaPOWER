@@ -54,6 +54,11 @@ WHAT THIS DOES NOT DO (D32 honesty -- read before trusting this gate)
    (API pagination cap). PRs beyond that are out of scope.
 8. Infrastructure failure (API unreachable, body unfetchable) fails CLOSED
    (exit 1, GATE_BLIND). A gate that passes when blind is theater.
+9. Quota/weather is NOT content failure: a 403/429 whose response body
+   signals rate limiting exits 2 with the RATE_LIMITED label and prints
+   the response body, so the dock reads weather-vs-content at a glance
+   instead of re-diagnosing a storm. Permission 403s ("Resource not
+   accessible") stay GATE_BLIND.
 """
 
 from __future__ import annotations
@@ -62,6 +67,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -200,7 +206,13 @@ _API = "https://api.github.com"
 
 
 def api_get(path: str, token: str):
-    """GET a GitHub API path. Raises GateBlind on any failure (fail closed)."""
+    """GET a GitHub API path.
+
+    Raises GateBlind on any failure (fail closed). Raises RateLimited (a
+    GateBlind subclass) when the failure is quota/weather -- the response
+    body is printed, never swallowed, and the exit label is RATE_LIMITED
+    so the dock reads weather-vs-content at a glance.
+    """
     req = urllib.request.Request(
         _API + path,
         headers={
@@ -213,12 +225,83 @@ def api_get(path: str, token: str):
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             return json.load(resp)
+    except urllib.error.HTTPError as exc:
+        status = exc.code
+        body = _response_body_snippet(exc)
+        headers = getattr(exc, "headers", None)
+        detail = f"GET {path} failed: HTTP {status}"
+        if body:
+            detail += f" -- response body: {body}"
+        if _is_rate_limited(status, body, headers):
+            raise RateLimited(f"{detail} (RATE_LIMITED)", status, body) from exc
+        raise GateBlind(f"{detail} (GATE_BLIND)") from exc
     except Exception as exc:  # noqa: BLE001 -- any IO failure blinds the gate
-        raise GateBlind(f"GET {path} failed: {exc}") from exc
+        raise GateBlind(f"GET {path} failed: {exc} (GATE_BLIND)") from exc
 
 
 class GateBlind(Exception):
     """The gate could not see what it must judge. Fail closed."""
+
+# ---------------------------------------------------------------------------
+# Exit contract (w195 rate-limit hardening)
+# ---------------------------------------------------------------------------
+# 0 = PASS (gate judged; attestations stand on admissible evidence)
+# 1 = FAIL (content failure, or blind -- the gate could not see)
+# 2 = RATE_LIMITED (environment weather: the API quota blocked the gate.
+#     Distinct from content failure so the dock reads weather-vs-content
+#     at a glance instead of re-diagnosing a storm.)
+EXIT_PASS = 0
+EXIT_FAIL = 1
+EXIT_RATE_LIMITED = 2
+
+_RATE_LIMIT_SIGNALS = ("rate limit", "ratelimit", "quota", "abuse detection")
+_MAX_BODY_SNIPPET = 2000
+
+
+class RateLimited(GateBlind):
+    """Quota/weather failure, not content failure.
+
+    Subclass of GateBlind so any caller that only knows GateBlind still
+    fails closed; carriers that know RateLimited get the distinct label
+    and the distinct exit code.
+    """
+
+    def __init__(self, message: str, status: int, body_snippet: str):
+        super().__init__(message)
+        self.status = status
+        self.body_snippet = body_snippet
+
+
+def _response_body_snippet(http_error) -> str:
+    """Best-effort read of an HTTPError's response body, capped."""
+    try:
+        raw = http_error.read()
+    except Exception:  # noqa: BLE001 -- a body we cannot read is not evidence
+        return ""
+    if isinstance(raw, bytes):
+        raw = raw.decode("utf-8", "replace")
+    return (raw or "")[:_MAX_BODY_SNIPPET]
+
+
+def _is_rate_limited(status: int, body: str, headers) -> bool:
+    """True when the failure is quota/weather -- never for permission 403s.
+
+    A 403 "Resource not accessible by integration" is a PERMISSION problem
+    (content/config), not weather -- it stays GATE_BLIND. Only
+    rate-limit signals (or a 429) earn the RATE_LIMITED label.
+    """
+    if status == 429:
+        return True
+    if status != 403:
+        return False
+    if any(sig in (body or "").lower() for sig in _RATE_LIMIT_SIGNALS):
+        return True
+    try:
+        if headers is not None and headers.get("X-RateLimit-Remaining") == "0":
+            return True
+    except Exception:  # noqa: BLE001 -- header probe must never crash the gate
+        pass
+    return False
 
 
 def run_gate(repo: str, pr_number: str, head_sha: str, head_dir: str, token: str) -> int:
@@ -244,7 +327,7 @@ def run_gate(repo: str, pr_number: str, head_sha: str, head_dir: str, token: str
     result = adjudicate(body, author_seat, evidence, path_exists=exists)
 
     print(render_report(pr_number, head_sha, author_seat, attestations, evidence, result))
-    return 0 if result["pass"] else 1
+    return EXIT_PASS if result["pass"] else EXIT_FAIL
 
 
 def main() -> int:
@@ -256,12 +339,18 @@ def main() -> int:
         token = os.environ["GITHUB_TOKEN"]
     except KeyError as exc:
         print(f"CLAIM-EVIDENCE GATE: FAIL -- missing env {exc} (GATE_BLIND)")
-        return 1
+        return EXIT_FAIL
     try:
         return run_gate(repo, pr_number, head_sha, head_dir, token)
+    except RateLimited as exc:
+        # Weather, not content: the API quota blocked the gate. Distinct
+        # label AND distinct exit code so the dock never re-diagnoses a
+        # storm as a content failure.
+        print(f"CLAIM-EVIDENCE GATE: ENV_BLIND -- RATE_LIMITED (quota/weather, not content): {exc}")
+        return EXIT_RATE_LIMITED
     except GateBlind as exc:
         print(f"CLAIM-EVIDENCE GATE: FAIL -- {exc} (GATE_BLIND)")
-        return 1
+        return EXIT_FAIL
 
 
 if __name__ == "__main__":

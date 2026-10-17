@@ -75,12 +75,25 @@ jobs:
           mkdir -p /tmp/design-gate-pin
           for f in tools/design_gate.py smart-blocks/manifest.json; do
             out="/tmp/design-gate-pin/$(basename "$f")"
-            curl -sfL \
+            body_file="/tmp/pin-body-$(basename "$f")"
+            # The HTTP status is captured FIRST: a 403-with-quota must
+            # surface as weather (PIN_FETCH_HTTP_403), never as a bare
+            # JSONDecodeError from decoding an error body.
+            code=$(curl -sL -o "$body_file" -w "%{http_code}" \
               -H "Authorization: Bearer $GITHUB_TOKEN" \
               -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/${f}?ref=${PIN}" \
-              | python3 -c "import json,sys,base64; d=json.load(sys.stdin); open('$out','w').write(base64.b64decode(d['content']).decode())" \
-              && echo "pinned: $f" || echo "FETCH FAILED: $f (gate will fail closed)"
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/${f}?ref=${PIN}")
+            if [ "$code" = "200" ]; then
+              if python3 -c "import json,sys,base64; d=json.load(open('$body_file')); open('$out','w').write(base64.b64decode(d['content']).decode())"; then
+                echo "pinned: $f"
+              else
+                echo "PIN_DECODE_FAILED: $f (HTTP 200 body was not the expected JSON -- gate will fail closed)"
+              fi
+            elif [ "$code" = "403" ]; then
+              echo "PIN_FETCH_HTTP_403: $f (rate-limit/quota suspected -- weather, not content; gate will fail closed)"
+            else
+              echo "PIN_FETCH_HTTP_${code}: $f (gate will fail closed)"
+            fi
           done
       - name: Delivery gate — bound receipt or no shipment
         run: >-
