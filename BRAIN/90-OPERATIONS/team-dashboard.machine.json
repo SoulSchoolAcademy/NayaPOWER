@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T14:17:07+00:00",
+ "generated_utc": "2026-10-17T15:16:05+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,15 +348,21 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2728,
-     "title": "distill-daily: point boot bytes at live board #2721",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2728",
+     "number": 2731,
+     "title": "ACTIVATION-PACKET: re-point author-branch links at main",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2731",
      "draft": false
     },
     {
-     "number": 2727,
-     "title": "ACT: PR-author self-check template (w368 landing of w365 build)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2727",
+     "number": 2730,
+     "title": "Phase B: repo-native lesson injection + scoring machinery",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2730",
+     "draft": false
+    },
+    {
+     "number": 2728,
+     "title": "distill-daily: point boot bytes at live board #2721",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2728",
      "draft": false
     },
     {
@@ -369,12 +375,6 @@
      "number": 2722,
      "title": "Remove stale L11 note: oath + field manuals are on main",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2722",
-     "draft": false
-    },
-    {
-     "number": 2719,
-     "title": "LAW: hold-veto mention-vs-use hardening (_HOLD_VETO_RE \u2192 _HOLD_USE_RE)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2719",
      "draft": false
     },
     {
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2729,
+     "title": "Add team-declared worker registry; gate reads it (no more hardcoded seat blocks)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729",
+     "draft": false
+    },
+    {
      "number": 2724,
      "title": "fix(gate): receipt-pin reads live PR body, not frozen event payload",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724",
@@ -457,15 +463,9 @@
      "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
      "draft": false
-    },
-    {
-     "number": 2676,
-     "title": "Canonical 9-note Smart Note source for the Smart Feed live wire (t0473)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676",
-     "draft": false
     }
    ],
-   "open_pr_count": 123
+   "open_pr_count": 124
   },
   {
    "id": "team",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 607,
+ "open_pr_total": 608,
  "unassigned_prs": 232
 }

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 14:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 15:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 607 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 608 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -88,20 +88,20 @@
 - …and 25 more
 
 ### BUILD (232)
+- [#2731](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2731) ACTIVATION-PACKET: re-point author-branch links at main
+- [#2730](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2730) Phase B: repo-native lesson injection + scoring machinery
 - [#2728](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2728) distill-daily: point boot bytes at live board #2721
-- [#2727](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2727) ACT: PR-author self-check template (w368 landing of w365 build)
 - [#2725](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2725) RETRIEVAL: re-pin original grader bytes to TRIAL-11-RESERVE (w356)
 - [#2722](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2722) Remove stale L11 note: oath + field manuals are on main
-- [#2719](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2719) LAW: hold-veto mention-vs-use hardening (_HOLD_VETO_RE → _HOLD_USE_RE)
 - …and 227 more
 
-### WIRE (123)
+### WIRE (124)
+- [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
 - [#2724](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724) fix(gate): receipt-pin reads live PR body, not frozen event payload
 - [#2717](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717) Consensus gate: parse 12-lane seat tags + brief-time author-seat check
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
 - [#2696](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696) fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wa
-- [#2692](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692) [DOCK] gate-403-response-body: byte-capture the next gate 403
-- …and 118 more
+- …and 119 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
