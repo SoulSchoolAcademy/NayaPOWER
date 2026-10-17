@@ -71,25 +71,24 @@ def _nonempty(value):
     return isinstance(value, str) and value.strip() != ""
 
 
-def score_evidence(work, evidence_verifier=None):
-    """Evidence needs a trusted verifier; caller-supplied refs are not proof."""
+def score_evidence(work):
+    """Score evidence references without pretending a caller callback is trusted.
+
+    No canonical authenticated evidence resolver is wired into this module yet.
+    Therefore checkable refs can improve the documentation score only; they
+    cannot earn the score needed to authorize SHIP. The public scorecard API
+    deliberately accepts no verifier callback, because an arbitrary lambda
+    supplied by the caller would recreate the trust-boundary bypass.
+    """
     evidence = work.get("evidence")
     if not isinstance(evidence, list) or not evidence:
         return 2.0, ["no evidence refs — claims without bytes"]
     refs = [e for e in evidence if isinstance(e, dict) and _nonempty(e.get("ref"))]
     if not refs:
         return 5.0, ["evidence listed but no checkable refs"]
-    if evidence_verifier is None:
-        return 8.0, ["%d evidence refs supplied but not authenticated by a trusted verifier; caller-provided refs cannot authorize SHIP" % len(refs)]
-    try:
-        verified = [bool(evidence_verifier(item)) for item in refs]
-    except Exception as exc:
-        return 2.0, ["trusted evidence verifier failed closed: %s" % type(exc).__name__]
-    if len(refs) != len(evidence) or not all(verified):
-        return 5.0, ["evidence verification incomplete: %d/%d refs independently authenticated" % (sum(verified), len(evidence))]
-    if len(refs) >= 2:
-        return 10.0, ["%d evidence refs independently authenticated against their claims" % len(refs)]
-    return 8.0, ["1 evidence ref independently authenticated"]
+    if len(refs) != len(evidence):
+        return 5.0, ["some evidence items lack checkable refs"]
+    return 8.0, ["%d evidence refs supplied but not authenticated by an internal trusted resolver; caller refs and callbacks cannot authorize SHIP" % len(refs)]
 
 def score_verification(work):
     """A different seat verified it. Self-verification is capped."""
@@ -181,7 +180,7 @@ TO_10 = {
     "evidence": {
         2.0: ["Add checkable evidence refs (path / SHA / comment id / test name) for every claim — no bytes, no score"],
         5.0: ["Give every evidence item a checkable ref, not just a claim"],
-        8.0: ["Route every evidence item through a trusted independent verifier that resolves bytes and confirms claim-to-evidence support; caller-supplied refs alone cannot authorize SHIP"],
+        8.0: ["Integrate a canonical authenticated evidence resolver inside the scorecard module, resolve bytes and confirm claim-to-evidence support; do not accept a caller-supplied callback as the trust boundary"],
     },
     "verification": {
         3.0: ["Get a DIFFERENT seat to verify it — never verify your own work (Inviolable)"],
@@ -209,7 +208,7 @@ TO_10 = {
 }
 
 
-def score_work(work, evidence_verifier=None):
+def score_work(work):
     """Score a work dict. Returns the full report dict."""
     if not isinstance(work, dict):
         return {
@@ -232,7 +231,7 @@ def score_work(work, evidence_verifier=None):
     criteria = {}
     for name, fn in CRITERIA:
         if name == "evidence":
-            score, reasons = score_evidence(work, evidence_verifier=evidence_verifier)
+            score, reasons = score_evidence(work)
         else:
             score, reasons = fn(work)
         criteria[name] = {"score": score, "reasons": reasons}
