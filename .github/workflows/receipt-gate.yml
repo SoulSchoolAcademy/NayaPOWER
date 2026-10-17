@@ -16,7 +16,7 @@ name: Receipt pin gate
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened, edited]
 
 # Least privilege: the gate reads the PR body and the repo's own tools.
 # Declared explicitly so a future default restriction cannot silently 403
