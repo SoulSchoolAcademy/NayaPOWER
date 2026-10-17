@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T19:15:45+00:00",
+ "generated_utc": "2026-10-17T20:15:23+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -384,19 +384,19 @@
      "draft": false
     },
     {
-     "number": 2730,
-     "title": "Phase B: repo-native lesson injection + scoring machinery",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2730",
-     "draft": false
-    },
-    {
      "number": 2728,
      "title": "distill-daily: point boot bytes at live board #2721",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2728",
      "draft": false
+    },
+    {
+     "number": 2725,
+     "title": "RETRIEVAL: re-pin original grader bytes to TRIAL-11-RESERVE (w356)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2725",
+     "draft": false
     }
    ],
-   "open_pr_count": 235
+   "open_pr_count": 234
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2744,
+     "title": "[ACT] Land succession read-before-fire gate + self-tests",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2744",
+     "draft": false
+    },
     {
      "number": 2729,
      "title": "Add team-declared worker registry; gate reads it (no more hardcoded seat blocks)",
@@ -457,15 +463,9 @@
      "title": "Gate reliability: transient API failures \u2192 UNKNOWN (exit 2), never wrong FAIL",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690",
      "draft": false
-    },
-    {
-     "number": 2681,
-     "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
-     "draft": false
     }
    ],
-   "open_pr_count": 124
+   "open_pr_count": 125
   },
   {
    "id": "team",
@@ -932,5 +932,5 @@
   }
  ],
  "open_pr_total": 617,
- "unassigned_prs": 235
+ "unassigned_prs": 234
 }

@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 19:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 20:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 617 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -87,21 +87,21 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (235)
+### BUILD (234)
 - [#2742](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742) Design laws v2 — 3-pass scored 9+ for ratification
 - [#2741](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2741) Canonical hex set — 3-pass scored 9.25/10 for stamp
 - [#2739](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739) Design library: canonical piece library on main (37 files, categorized
 - [#2735](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2735) Fix Living Map probes that mask latest failure or partial schema
 - [#2732](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2732) fix(activation): pin Operating Code V2 LF in Windows checkouts
-- …and 230 more
+- …and 229 more
 
-### WIRE (124)
+### WIRE (125)
+- [#2744](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2744) [ACT] Land succession read-before-fire gate + self-tests
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
 - [#2724](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724) fix(gate): receipt-pin reads live PR body, not frozen event payload
 - [#2717](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717) Consensus gate: parse 12-lane seat tags + brief-time author-seat check
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
-- [#2696](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696) fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wa
-- …and 119 more
+- …and 120 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
