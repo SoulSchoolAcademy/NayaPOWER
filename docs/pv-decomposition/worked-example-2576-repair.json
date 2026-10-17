@@ -1,0 +1,46 @@
+{
+ "baseline_id": "2576-red-receipt-gates",
+ "baseline_ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537 \u2014 Captain wave-137 sign-out (comment 6166775445): '#2576 REGRESSED \u2014 STILL-BLOCKED'; baseline state = receipt pin + receipt gate red, merge blocked",
+ "decision_id": "drive-loop-2026-10-14-0438-2576-receipt-repair",
+ "spec_version": "PV-DECOMP-0.1",
+ "terms": [
+  {
+   "bucket": "B",
+   "confidence": 0.9,
+   "evidence_ref": "drive-loop-2026-10-14.md cycle 04:38 verification",
+   "id": "t1",
+   "note": "two receipt gates green for the first time; routed item closed; merge path unblocked (team-review still owed)",
+   "quote_span": "Receipt pin \u2014 exact head SHA: SUCCESS (run 115834612561); Receipt gate: SUCCESS (run 115834612769); Captain's routed STILL-BLOCKED closed",
+   "raw_magnitude": 6.0,
+   "unit": "value_points"
+  },
+  {
+   "bucket": "C",
+   "confidence": 0.8,
+   "evidence_ref": "drive-loop-2026-10-14.md cycle 04:38 (REST ~15 calls, zero 403s)",
+   "id": "t2",
+   "note": "certain expenditure: lane time + GitHub quota",
+   "quote_span": "~14 REST calls (git-data API), ~40 min lane time",
+   "raw_magnitude": 0.7,
+   "unit": "hours",
+   "unit_rate": 2.0
+  },
+  {
+   "bucket": "R",
+   "confidence": 0.6,
+   "evidence_ref": "drive-loop-2026-10-14.md cycle 04:38 (racing risk judged low: tree-identical empty commit)",
+   "id": "t3",
+   "note": "probabilistic adverse outcome, not realized; tree-identity check mitigated",
+   "probability": 0.1,
+   "quote_span": "empty push could race the builder's own push or invalidate the Sage t0738 IV at 7847be06",
+   "severity_0_10": 4.0,
+   "unit": "probability"
+  }
+ ],
+ "zero_attestations": {
+  "H": {
+   "scope": "reviewed blast radius before acting: branch-only commits, tree-identical empty commits, body-only PATCH; no main/production/authority touch; no certain harm identified",
+   "confidence": 0.85
+  }
+ }
+}
