@@ -615,7 +615,7 @@
             "space wired"
           ],
           "activated_by": "contract.features.space",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.spaces"

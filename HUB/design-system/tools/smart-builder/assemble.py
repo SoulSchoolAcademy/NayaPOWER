@@ -32,8 +32,11 @@ from feature_automation import (AutomationRefusal, decl_for as am_decl_for,
 from feature_smart_mail import (SmartMailRefusal, decl_for as sm_decl_for,
                                  render_smart_mail, FEATURE_ID as FEATURE_SMART_MAIL_ID,
                                  FEATURE_VERSION as FEATURE_SMART_MAIL_VERSION)
+from feature_space import (SpaceRefusal, decl_for as sp_decl_for,
+                            render_space, FEATURE_ID as FEATURE_SPACE_ID,
+                            FEATURE_VERSION as FEATURE_SPACE_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.6"  # v1.6: wave-A module 1/3 (smart_mail)
+ASSEMBLER_VERSION = "assemble-v1.7"  # v1.7: wave-A module 2/3 (space)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -74,6 +77,14 @@ def _render_smart_mail(decl, st, ctx, contract):
         FEATURE_SMART_MAIL_ID, FEATURE_SMART_MAIL_VERSION, connected))
     return html, evts, {}
 
+def _render_space(decl, st, ctx, contract):
+    html, connected = render_space(decl, st, context=ctx)
+    evts = [{'event': 'space.wired', 'feature': FEATURE_SPACE_ID,
+             'version': FEATURE_SPACE_VERSION}]
+    evts.extend(_wavea_connected_events(
+        FEATURE_SPACE_ID, FEATURE_SPACE_VERSION, connected))
+    return html, evts, {}
+
 # Reserved receipt keys — modules may not shadow them via extra_receipt.
 _RECEIPT_RESERVED_KEYS = frozenset(
     {'built_utc', 'events', 'grants', 'identity', 'consent'})
@@ -96,6 +107,10 @@ BREAKER_MODULES = [
      'decl_for': sm_decl_for, 'refusal': SmartMailRefusal,
      'version': FEATURE_SMART_MAIL_VERSION,
      'render': _render_smart_mail},
+    {'key': 'space', 'fid': FEATURE_SPACE_ID,
+     'decl_for': sp_decl_for, 'refusal': SpaceRefusal,
+     'version': FEATURE_SPACE_VERSION,
+     'render': _render_space},
 ]
 BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 
