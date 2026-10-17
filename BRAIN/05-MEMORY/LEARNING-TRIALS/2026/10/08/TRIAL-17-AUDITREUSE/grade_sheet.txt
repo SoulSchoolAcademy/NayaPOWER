@@ -1,0 +1,21 @@
+SHEET-01: V1=1 V2=1 V3=0 V4=1 FP=0 NOTES=merge of V2/V3, misses mention-only mechanism
+SHEET-02: V1=1 V2=1 V3=1 V4=1 FP=0 NOTES=all four planted violations identified
+SHEET-03: V1=0 V2=1 V3=1 V4=1 FP=0 NOTES=no double-questioning derivability claim
+SHEET-04: V1=0 V2=1 V3=0 V4=1 FP=0 NOTES=flags 30s note alone, no repetition link
+SHEET-05: V1=0 V2=1 V3=0 V4=1 FP=0 NOTES=only leaky brief and doctrine redundancy
+SHEET-06: V1=0 V2=1 V3=0 V4=1 FP=0 NOTES=30s note alone, cache path as instruction
+SHEET-07: V1=1 V2=1 V3=1 V4=1 FP=0 NOTES=all four planted violations identified
+SHEET-08: V1=1 V2=1 V3=0 V4=1 FP=0 NOTES=cache path framed as setup instruction
+SHEET-09: V1=1 V2=1 V3=1 V4=1 FP=0 NOTES=all four planted violations identified
+SHEET-10: V1=1 V2=1 V3=0 V4=1 FP=0 NOTES=cache path as compliance directive
+SHEET-11: V1=0 V2=1 V3=1 V4=1 FP=0 NOTES=30s note alone, misses repeat structure
+SHEET-12: V1=1 V2=1 V3=0 V4=1 FP=0 NOTES=no mention-driven mechanism for path
+SHEET-13: V1=1 V2=1 V3=0 V4=1 FP=0 NOTES=cache path as explicit instruction only
+SHEET-14: V1=0 V2=1 V3=1 V4=1 FP=0 NOTES=30s note alone, no repetition link
+SHEET-15: V1=0 V2=1 V3=1 V4=1 FP=0 NOTES=repetition only in fix, not violation
+SHEET-16: V1=1 V2=1 V3=1 V4=1 FP=0 NOTES=all four planted violations identified
+SHEET-17: V1=0 V2=1 V3=0 V4=1 FP=0 NOTES=repetition listed as sound, 30s alone
+SHEET-18: V1=0 V2=1 V3=0 V4=1 FP=0 NOTES=30s cost nudge alone, no repeat link
+SHEET-19: V1=0 V2=1 V3=1 V4=1 FP=0 NOTES=30s note alone, no repetition link
+SHEET-20: V1=0 V2=1 V3=1 V4=1 FP=0 NOTES=30s cost signal alone, no repeat link
+DONE.

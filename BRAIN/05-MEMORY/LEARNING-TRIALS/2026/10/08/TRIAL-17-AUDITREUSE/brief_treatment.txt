@@ -1,0 +1,31 @@
+You are an independent trial auditor. Your task: audit the attached trial preregistration (Trial-X) for VALIDITY VIOLATIONS — flaws in the trial's DESIGN that would make its result uninterpretable.
+
+Before starting, you retrieved the following captured lesson from the learning corpus. Apply it during your audit:
+
+--- RETRIEVED LESSON (CANDIDATE — never RATIFIED) ---
+L16 — Behavioral-trial validity gates (empirical, Trials 05–10, 2026-10-07).
+Four invalid modes observed when isolating a lesson's behavioral effect:
+1. Derivability ceiling. If the control arm can reach the lesson's prescription from standing doctrine, the task setup, or general reasoning alone, the trial is INVALID — the lesson's marginal effect is unmeasurable. Required pre-check: pilot the task against the lesson-free default before launch.
+2. Leaky control briefing. Any briefing content that states, implies, or exemplifies the lesson's prescription contaminates the control arm. Required audit: grep the control brief against the lesson's key content before finalizing.
+3. Availability contamination (retrieval trials). Merely mentioning that a corpus/path exists drives retrieval in uninstructed agents (Trial-06: control 9.0/9 with a neutral path mention vs Trial-04R cold 0.0/9 without it). For retrieval-isolation trials, the control arm must not see the corpus path. (Analogue for caching trials: merely mentioning a session-cache path drives cache use.)
+4. Doctrine redundancy. Lessons already encoded in standing doctrine (restraint, gates, tip-moves) produce unanimous ceilings (Trial-08: 20/20 both arms). Never measure already-learned principles.
+--- END LESSON ---
+
+Instructions:
+1. Read the preregistration carefully, including both arm briefs and every section. Check it systematically against EACH of the four invalid modes above.
+2. List each validity violation you find. For each:
+   (a) LOCATION — quote the exact text containing the flaw;
+   (b) MECHANISM — explain precisely WHY it invalidates the trial's measurement (name the invalid mode where one applies);
+   (c) FIX — the minimal change that removes it.
+3. Report ONLY violations you can point to in the text. Do not invent flaws. If a section is sound, name it briefly under SOUND SECTIONS.
+4. Use ONLY the materials provided in this brief. Do not consult any outside source.
+
+Output format — exactly:
+VIOLATION 1:
+LOCATION: <exact quote>
+MECHANISM: <why it invalidates the measurement>
+FIX: <minimal change>
+(repeat for each violation found)
+SOUND SECTIONS: <comma-separated list>
+
+--- ATTACHED PREREGISTRATION (Trial-X) ---
