@@ -20,8 +20,13 @@ from feature_cover import (CoverRefusal, decl_for, render_cover,
 from feature_smart_notes import (SmartNotesRefusal, decl_for as sn_decl_for,
                                  render_smart_notes,
                                  FEATURE_SMART_NOTES_ID, FEATURE_SMART_NOTES_VERSION)
+from feature_notifications import (NotificationsRefusal,
+                                    decl_for as nt_decl_for,
+                                    render_notifications,
+                                    FEATURE_NOTIFICATIONS_ID,
+                                    FEATURE_NOTIFICATIONS_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.3"  # v1.3: wave-E module 1/3 (smart_notes) wired into the v1.2 resolver
+ASSEMBLER_VERSION = "assemble-v1.4"  # v1.4: wave-E module 2/3 (notifications)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -38,6 +43,10 @@ def _render_smart_notes(decl, st, ctx, contract):
                                       context=ctx)
     return html, events, {}
 
+def _render_notifications(decl, st, ctx, contract):
+    html, events = render_notifications(decl, st, context=ctx)
+    return html, events, {}
+
 # Reserved receipt keys — modules may not shadow them via extra_receipt.
 _RECEIPT_RESERVED_KEYS = frozenset(
     {'built_utc', 'events', 'grants', 'identity', 'consent'})
@@ -48,6 +57,10 @@ BREAKER_MODULES = [
      'decl_for': sn_decl_for, 'refusal': SmartNotesRefusal,
      'version': FEATURE_SMART_NOTES_VERSION,
      'render': _render_smart_notes},
+    {'key': 'notifications', 'fid': FEATURE_NOTIFICATIONS_ID,
+     'decl_for': nt_decl_for, 'refusal': NotificationsRefusal,
+     'version': FEATURE_NOTIFICATIONS_VERSION,
+     'render': _render_notifications},
 ]
 BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 

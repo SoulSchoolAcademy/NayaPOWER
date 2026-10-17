@@ -1181,6 +1181,66 @@
             "grant": "bridge.smart_links.resolve",
             "without_grant": "links stay minted-unresolved; the page shows \"not connected — connect the NayaNET bridge to enable link resolution\" (ready-not-connected, never silent, never fabricated)"
           }
+        },
+        {
+          "id": "feature.notifications",
+          "name": "Notifications",
+          "intent": "Page events become notifications for a declared audience, permission-gated. The module validates declarations, renders the opt-in wiring, and records a delivery manifest whose transport is explicitly BLOCKED until a real delivery transport is wired — nothing is ever claimed sent.",
+          "in": [
+            "contract"
+          ],
+          "out": [
+            "notifications wired"
+          ],
+          "activated_by": "contract.features.notifications",
+          "status": "built",
+          "code": "HUB/design-system/tools/smart-builder/functions/feature_notifications.py",
+          "depends_on": [],
+          "version": "1.0.0",
+          "requires": [
+            "event_catalog",
+            "audience_rules",
+            "permission_gates"
+          ],
+          "configuration": {
+            "enabled": true,
+            "audience": "owner|subscribers|visitors, default subscribers",
+            "events": [
+              {
+                "name": "new_post|new_note|new_comment|broadcast|mention",
+                "message": "string, required non-empty",
+                "permission": "string, required — must be in grants"
+              }
+            ],
+            "grants": [
+              "permission strings the owner granted"
+            ]
+          },
+          "permissions": [
+            "notifications.configure",
+            "notifications.opt_in"
+          ],
+          "events": [
+            "notification.wired",
+            "notification.delivery_blocked"
+          ],
+          "acceptance": [
+            "undeclared_event_ignored",
+            "unauthorized_audience_denied",
+            "permission_gate_enforced",
+            "delivery_transport_named_blocked",
+            "optin_wires_to_existing_dom"
+          ],
+          "ready": [
+            "declare notification events",
+            "opt-in panel — preferences saved on the visitor device"
+          ],
+          "connected": {
+            "capability": "notification delivery",
+            "connection": "push/mail delivery transport",
+            "grant": "transport.notify.send",
+            "without_grant": "preferences save on the device; the page shows \"delivery: not connected — connect a delivery transport to enable sending\" (ready-not-connected, never claimed sent)"
+          }
         }
       ]
     }
