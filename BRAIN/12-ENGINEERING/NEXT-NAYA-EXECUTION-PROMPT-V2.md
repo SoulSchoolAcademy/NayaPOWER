@@ -1,6 +1,8 @@
 # NayaPOWER — Ultimate Next-Naya Execution Prompt V2
 
-**Status:** CURRENT EXECUTION DIRECTIVE / OPERATING PACKET  
+> **STATUS (2026-10-13): SUPERSEDED** by `BRAIN/90-OPERATIONS/2026-10-13-ULTIMATE-EXECUTION-REPORT.md` (Part 3 carries the current execution prompt). This file is preserved as history. Its durable principles (source-of-truth, cold-boot, Cold-14, decision law, engineering law, no-silent-failure, successor law) remain valid; its 2026-10-06 state (feeds, priorities, main SHAs) is stale and must not be used as current truth.
+
+**Original status:** CURRENT EXECUTION DIRECTIVE / OPERATING PACKET  
 **Date:** 2026-10-06  
 **Authority:** Shawn Vibert — Human Director / Final Authority  
 **Active coordination:** GitHub Issue #1354  
