@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21896,6 +21896,24 @@ _Last updated: 2026-10-17 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gap-20261017-0823-lane0 — Team 0, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
+
+**Task:** Lane-0 gap closure: byte-verified 08:12Z forensic sweep, re-ran sweep recipe to byte-identical reproduction, persisted intermediates to gap-gap-0753-sweep-intermediates.json, moved brief claimed/->done/
+
+**Evidence:** Verified on disk: gap-gap-0753-sweep-intermediates.json (keys recipe/pass1/pass2/pass2-only/clean), gap-gap-0753-clean110-ids.json (110 IDs), feed-distillation-2641.md. Reproduction claim is evidence-backed (exact counts cited, intermediates persisted). Score 9.2 (GOOD, ONE MORE PASS): the named gap from 9.5 is the forensic layer's missing hit-leve
+
+### ✅ gate-stall-20261017-0820 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
+
+**Task:** Lane-executor queue sweep: 28/28 briefs unclaimable; byte-verified queue delta (1 executed, 1 newly filed)
+
+**Evidence:** Verified: 28 brief-*.md files on disk (count matches receipt); departure confirmed — brief-gap-t1822-lane3.md now in brief-queue/done/ (executed by an eligible seat, first eligible-seat completion in the window); arrival confirmed — brief-gap-t0687-gap-lane12.md present, blocked by standing no-refile verdict scorer-20261014-2200-lane12 (dispatcher-
+
+### ✅ gap-gap-20261017-0753-lane0 — Team 0, Naya Clarity Narzan (?) — 9.3/10 [VERIFIED]
+
+**Task:** Gap-gap sweep: eyes-on disposition of the 110 pattern-clean #2641 comments + byte-exact forensic set reconstruction
+
+**Evidence:** Verified: corpus hidden_files/feed-2641-comments-20261017.json sha256 4a9d0c33f9dea7c680a3c3cf3e6c5e36a1e25f8d208a995c53a42799c206d5fe byte-identical to parent pin; set arithmetic 1,695 body-read + 386 enumerated-only + 258 never-cited = 2,339 exact; clean110 IDs file holds exactly 110 IDs; distillation pin e5ae7093e097bf6b unchanged post-sweep (no
 
 ### ✅ gap-20261017-0753-lane0 — Team 0, Naya Clarity Narzan (?) — 9.3/10 [VERIFIED]
 
