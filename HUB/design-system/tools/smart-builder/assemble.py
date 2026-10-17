@@ -26,7 +26,11 @@ from feature_notifications import (NotificationsRefusal,
                                     FEATURE_NOTIFICATIONS_ID,
                                     FEATURE_NOTIFICATIONS_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.4"  # v1.4: wave-E module 2/3 (notifications)
+from feature_automation import (AutomationRefusal, decl_for as am_decl_for,
+                                 render_automation, FEATURE_AUTOMATION_ID,
+                                 FEATURE_AUTOMATION_VERSION)
+
+ASSEMBLER_VERSION = "assemble-v1.5"  # v1.5: wave-E module 3/3 (automation)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -47,6 +51,10 @@ def _render_notifications(decl, st, ctx, contract):
     html, events = render_notifications(decl, st, context=ctx)
     return html, events, {}
 
+def _render_automation(decl, st, ctx, contract):
+    html, events, audit = render_automation(decl, st, context=ctx)
+    return html, events, {'automation_audit': audit}
+
 # Reserved receipt keys — modules may not shadow them via extra_receipt.
 _RECEIPT_RESERVED_KEYS = frozenset(
     {'built_utc', 'events', 'grants', 'identity', 'consent'})
@@ -61,6 +69,10 @@ BREAKER_MODULES = [
      'decl_for': nt_decl_for, 'refusal': NotificationsRefusal,
      'version': FEATURE_NOTIFICATIONS_VERSION,
      'render': _render_notifications},
+    {'key': 'automation', 'fid': FEATURE_AUTOMATION_ID,
+     'decl_for': am_decl_for, 'refusal': AutomationRefusal,
+     'version': FEATURE_AUTOMATION_VERSION,
+     'render': _render_automation},
 ]
 BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 

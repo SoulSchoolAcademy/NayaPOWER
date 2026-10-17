@@ -1241,6 +1241,68 @@
             "grant": "transport.notify.send",
             "without_grant": "preferences save on the device; the page shows \"delivery: not connected — connect a delivery transport to enable sending\" (ready-not-connected, never claimed sent)"
           }
+        },
+        {
+          "id": "feature.automation",
+          "name": "Automation",
+          "intent": "Naya operates the page: declared automatic actions (e.g. scheduled posts), each permission-gated, every action logged to the receipt. Execution transport is explicitly BLOCKED until a real scheduler runner is wired — actions are declared and audited, never staged as run.",
+          "in": [
+            "contract"
+          ],
+          "out": [
+            "automation wired"
+          ],
+          "activated_by": "contract.features.automation",
+          "status": "built",
+          "code": "HUB/design-system/tools/smart-builder/functions/feature_automation.py",
+          "depends_on": [],
+          "version": "1.0.0",
+          "requires": [
+            "action_catalog",
+            "permission_gates",
+            "audit_log"
+          ],
+          "configuration": {
+            "enabled": true,
+            "actions": [
+              {
+                "id": "string, required unique",
+                "kind": "scheduled_post|digest|backup",
+                "schedule": "string, required non-empty",
+                "permission": "string, required — must be in grants",
+                "payload": "object|string, optional"
+              }
+            ],
+            "grants": [
+              "permission strings the owner granted"
+            ]
+          },
+          "permissions": [
+            "automation.declare",
+            "automation.run"
+          ],
+          "events": [
+            "automation.action_declared",
+            "automation.execution_blocked"
+          ],
+          "acceptance": [
+            "undeclared_action_refused",
+            "action_permission_gated",
+            "every_action_logged",
+            "execution_transport_named_blocked",
+            "schedule_declared_not_fired"
+          ],
+          "ready": [
+            "declare automatic actions",
+            "permission-gate every action",
+            "audit every action to the receipt"
+          ],
+          "connected": {
+            "capability": "action execution",
+            "connection": "scheduler runner",
+            "grant": "transport.automation.run",
+            "without_grant": "actions stay declared and audited; the page shows \"execution: not connected — connect a scheduler runner to enable\" (ready-not-connected, never staged as run)"
+          }
         }
       ]
     }
