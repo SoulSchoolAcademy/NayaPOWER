@@ -18,6 +18,8 @@ on:
       - "HUB/SMART-BUILDER-LIBRARY-INVENTORY.json"
       - "HUB/SMART-BUILDER-LIBRARY.html"
       - "HUB/SMART-BUILDER-LIBRARY-ACCESS-CONTRACT-V1.md"
+      - "HUB/contracts/**"
+      - "HUB/SMART-BUILDER-ASSEMBLY-DEMO.*"
       - "tools/smart_builder/**"
       - ".github/workflows/smart-builder-library-inventory.yml"
       - "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json"
