@@ -172,6 +172,13 @@ import urllib.request
 import urllib.error
 from datetime import datetime, timedelta, timezone
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from http_403 import (  # noqa: E402 -- one shared 403 classifier for all gates
+    QuotaExhausted,
+    classify_403_body,
+    read_error_body,
+)
+
 SCHEMA = "naya.activation.receipt.v2"
 RECEIPT_TTL = timedelta(hours=4)
 FUTURE_SKEW = timedelta(minutes=2)
@@ -520,6 +527,13 @@ def _download_bytes(url, token):
         opener.open(req, timeout=30)
     except Redirected as r:
         loc = r.location
+    except urllib.error.HTTPError as e:
+        # Hop-1 refused: a quota 403 becomes QuotaExhausted (INCONCLUSIVE/RETRY),
+        # never a raw HTTPError escaping the classifier (Lambda w261 IV miss).
+        body = read_error_body(e)
+        if e.code == 403 and classify_403_body(body) == "quota":
+            raise QuotaExhausted.for_http_error("artifact download hop-1", e, body)
+        raise
     else:
         raise RuntimeError("artifact download did not redirect — refusing")
     req2 = urllib.request.Request(loc)
@@ -867,8 +881,17 @@ def _api(method, path, token, body=None):
             raw = r.read().decode()
             return json.loads(raw) if raw.strip() else {}
     except urllib.error.HTTPError as e:
+        body = read_error_body(e)
+        if e.code == 403 and classify_403_body(body) == "quota":
+            # Quota is not a verdict: the gate could not judge. Callers that
+            # catch QuotaExhausted report INCONCLUSIVE/RETRY; sites that only
+            # catch RuntimeError stay fail-closed (QuotaExhausted subclasses
+            # it) -- never a silent pass.
+            raise QuotaExhausted.for_http_error(
+                "GitHub API %s %s" % (method, path), e, body)
         raise RuntimeError("GitHub API %s %s -> HTTP %s: %s"
-                           % (method, path, e.code, e.read().decode()[:300]))
+                           % (method, path, e.code,
+                              body.decode("utf-8", "replace")[:300]))
 
 
 def resolve_truth():
@@ -988,7 +1011,10 @@ def load_local_truth(path):
 def main(argv=None):
     ap = argparse.ArgumentParser(
         description="Unified Activation Gate (r2): fail closed on unactivated, "
-                    "counterfeit, or transplanted activation.")
+                    "counterfeit, or transplanted activation. "
+                    "Exits: 0 PASS, 1 REJECT, 2 TOOL-ERROR, 3 LOCAL-REHEARSAL, "
+                    "4 INCONCLUSIVE (quota 403 -- the gate could not judge; "
+                    "retry after backoff, do not diagnose a red gate).")
     ap.add_argument("--receipt", default=None,
                     help="activation receipt JSON path (single-pair mode)")
     ap.add_argument("--deliverable", default=None,
@@ -1054,6 +1080,14 @@ def main(argv=None):
             truth = load_local_truth(args.truth)
         else:
             truth = resolve_truth()
+    except QuotaExhausted as e:
+        # Quota is not a verdict: the gate could not judge. INCONCLUSIVE
+        # (exit 4, distinct from 0/1/2/3) -- retry after backoff, do not
+        # diagnose a red gate.
+        return _emit("INCONCLUSIVE",
+                     ["quota-exhausted 403 resolving truth (%s) -- "
+                      "the gate could not judge; retry after backoff" % e],
+                     args, 4, local=local)
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=local)
 
@@ -1073,6 +1107,11 @@ def _run_delivery(args):
                      args, 2, local=False)
     try:
         truth = resolve_truth()
+    except QuotaExhausted as e:
+        return _emit("INCONCLUSIVE",
+                     ["quota-exhausted 403 resolving truth (%s) -- "
+                      "retry after backoff" % e],
+                     args, 4, local=False)
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
 
@@ -1086,6 +1125,11 @@ def _run_delivery(args):
                              ["delivery mode needs --pr or --changed-files"],
                              args, 2, local=False)
             changed = pr_changed_files(truth["repository"], args.pr, token)
+    except QuotaExhausted as e:
+        return _emit("INCONCLUSIVE",
+                     ["quota-exhausted 403 listing changed files (%s) -- "
+                      "retry after backoff" % e],
+                     args, 4, local=False)
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
 
@@ -1119,10 +1163,21 @@ def _run_delivery(args):
         except (OSError, ValueError):
             base_sha = ""
 
-    verdict, violations = check_delivery(receipt_bytes, args.pr_head, changed,
-                                         truth, args.design_gate,
-                                         args.design_manifest,
-                                         base_sha=base_sha, token=token)
+    try:
+        verdict, violations = check_delivery(receipt_bytes, args.pr_head, changed,
+                                             truth, args.design_gate,
+                                             args.design_manifest,
+                                             base_sha=base_sha, token=token)
+    except QuotaExhausted as e:
+        # verify_issuance calls the live API; a quota 403 there is still not
+        # a verdict. (This also normalizes a pre-existing uncaught-traceback
+        # path into a clean TOOL-ERROR.)
+        return _emit("INCONCLUSIVE",
+                     ["quota-exhausted 403 verifying issuance (%s) -- "
+                      "retry after backoff" % e],
+                     args, 4, local=False)
+    except RuntimeError as e:
+        return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
     code = 0 if verdict == "PASS" else 1
     return _emit(verdict, violations, args, code, local=False)
 

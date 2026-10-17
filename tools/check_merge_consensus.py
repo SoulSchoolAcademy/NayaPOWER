@@ -55,6 +55,14 @@ import time
 import urllib.error
 import urllib.request
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from http_403 import (  # noqa: E402 -- one shared 403 classifier for all gates
+    classify_403_body,
+    error_message,
+    read_error_body,
+    retry_after_seconds,
+)
+
 API = "https://api.github.com"
 # The 15 named seats — the original 12 area leads (Shawn, 2026-10-11): Alpha,
 # Beta, Gamma, Delta, Epsilon, Zeta, Eta, Theta, Iota, Kappa, Lambda, Mu —
@@ -107,32 +115,22 @@ def fail(msg):
 
 def _classify_http_error(e):
     """Classify an HTTPError as ('rate_limit'|'permission'|'error', detail,
-    retry_after_seconds_or_None). Reads the response body for GitHub's
-    message; never raises."""
-    try:
-        raw = e.read() or b""
-    except Exception:
-        raw = b""
-    try:
-        body_text = raw.decode("utf-8", "replace")
-    except Exception:
-        body_text = ""
-    try:
-        msg = json.loads(body_text).get("message", "") if body_text else ""
-    except Exception:
-        msg = body_text[:200]
-    retry_after = None
-    try:
-        ra = e.headers.get("Retry-After") if e.headers else None
-        retry_after = int(ra) if ra else None
-    except (TypeError, ValueError):
-        retry_after = None
-    low = f"{msg} {body_text}".lower()
-    if e.code == 429 or (e.code == 403
-                         and ("rate limit" in low or retry_after is not None)):
+    retry_after_seconds_or_None). Thin caller over the one shared mechanism
+    (tools/http_403.py): the body is read once by the shared reader and the
+    403 verdict comes from the shared classifier; this function only adds
+    the 429 mapping and the Retry-After-aware transient rule that the
+    consensus retry loop needs. Never raises."""
+    body = read_error_body(e)
+    msg = error_message(body)
+    retry_after = retry_after_seconds(e)
+    if e.code == 429:
         return "rate_limit", msg or "rate limited", retry_after
-    if e.code == 403 and "resource not accessible" in low:
-        return "permission", msg or "forbidden", None
+    if e.code == 403:
+        kind = classify_403_body(body)
+        if kind == "quota" or retry_after is not None:
+            return "rate_limit", msg or "rate limited", retry_after
+        if kind == "permission":
+            return "permission", msg or "forbidden", None
     return "error", msg or f"HTTP {e.code}", None
 
 
