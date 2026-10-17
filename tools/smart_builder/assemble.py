@@ -203,7 +203,7 @@ def main() -> int:
     args = parser.parse_args()
     try:
         output, receipt = assemble(args.contract, args.library_root)
-        contract = load_contract = json.loads(args.contract.read_text(encoding="utf-8"))
+        contract = json.loads(args.contract.read_text(encoding="utf-8"))
         output_path = args.output or ROOT / contract.get("output", "HUB/SMART-BUILDER-ASSEMBLY-DEMO.html")
         receipt_path = args.receipt or ROOT / contract.get("receipt", "HUB/SMART-BUILDER-ASSEMBLY-DEMO.receipt.json")
         receipt_text = json.dumps(receipt, ensure_ascii=False, indent=2) + "\n"
