@@ -559,52 +559,6 @@
           ]
         },
         {
-          "id": "feature.smart_list",
-          "name": "Smart Lists",
-          "intent": "The cross-cutting way to organize anything — notes, contacts, topics, posts. Layers into every template; not a template itself.",
-          "in": [
-            "contract"
-          ],
-          "out": [
-            "lists wired"
-          ],
-          "activated_by": "contract.features.smart_list",
-          "status": "specified",
-          "code": null,
-          "depends_on": [
-            "systems.lists"
-          ],
-          "version": "1.0.0",
-          "requires": [
-            "list_store",
-            "object_index"
-          ],
-          "permissions": [
-            "list.create",
-            "list.share"
-          ],
-          "events": [
-            "list.created",
-            "list.item_added"
-          ],
-          "acceptance": [
-            "organizes_any_permitted_object",
-            "private_lists_stay_private",
-            "share_flow_tested"
-          ],
-          "ready": [
-            "organize notes, contacts, topics, posts",
-            "layer into every template",
-            "local list views"
-          ],
-          "connected": [
-            {
-              "action": "share list",
-              "grant": "nayanet"
-            }
-          ]
-        },
-        {
           "id": "feature.space",
           "name": "Smart Space",
           "intent": "Create spaces within the page — gather, view, join, support.",
@@ -1299,6 +1253,48 @@
             "grant": "transport.automation.run",
             "without_grant": "actions stay declared and audited; the page shows \"execution: not connected — connect a scheduler runner to enable\" (ready-not-connected, never staged as run)"
           }
+        },
+        {
+          "id": "feature.smart_list",
+          "name": "Smart lists",
+          "intent": "Organize anything — notes, contacts, topics, posts. A cross-cutting feature that layers into every template, never a standalone page.",
+          "in": [
+            "contract"
+          ],
+          "out": [
+            "smart list wired"
+          ],
+          "activated_by": "contract.features.smart_list",
+          "status": "built",
+          "code": null,
+          "depends_on": [],
+          "version": "1.0.0",
+          "requires": [
+            "authenticated_identity"
+          ],
+          "permissions": [
+            "lists.edit"
+          ],
+          "events": [
+            "smart_list.wired",
+            "lists.item.added",
+            "lists.item.removed"
+          ],
+          "acceptance": [
+            "contract_items_render",
+            "empty_state_honest",
+            "add_remove_wired"
+          ],
+          "ready": [
+            "organize local: the contract's items render",
+            "read-only without a list service (zero connections)"
+          ],
+          "connected": [
+            {
+              "action": "list sync/share through the declared list service",
+              "grant": "nayanet"
+            }
+          ]
         }
       ]
     }

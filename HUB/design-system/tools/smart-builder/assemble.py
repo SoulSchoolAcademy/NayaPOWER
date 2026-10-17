@@ -39,8 +39,13 @@ from feature_social_feed import (SocialFeedRefusal, decl_for as sf_decl_for,
                                  render_social_feed,
                                  FEATURE_ID as FEATURE_SOCIAL_FEED_ID,
                                  FEATURE_VERSION as FEATURE_SOCIAL_FEED_VERSION)
+from feature_smart_list import (SmartListRefusal, decl_for as sl_decl_for,
+                                 render_smart_list, mode_for as sl_mode_for,
+                                 granted as sl_granted,
+                                 FEATURE_ID as FEATURE_SMART_LIST_ID,
+                                 FEATURE_SMART_LIST_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.8"  # v1.8: wave-A module 3/3 (social_feed)
+ASSEMBLER_VERSION = "assemble-v1.9"  # v1.9: wave-D/E module (smart_list)
 
 # ---- breaker module wiring ----
 # Every wired module follows the cover pattern: decl_for(contract) parses
@@ -97,6 +102,20 @@ def _render_social_feed(decl, st, ctx, contract):
         FEATURE_SOCIAL_FEED_ID, FEATURE_SOCIAL_FEED_VERSION, connected))
     return html, evts, {}
 
+def _render_smart_list(decl, st, ctx, contract):
+    # D/E smart_list returns a plain HTML string ('' when not enabled).
+    # The readiness entry mirrors the consent line in the receipt:
+    # mode is "connected" only when the decl demands sync/share AND holds
+    # the nayanet grant; otherwise "ready". (Audit trail, never a claim.)
+    html = render_smart_list(decl, st, context=ctx)
+    mode = sl_mode_for(decl, ctx)
+    is_granted = sl_granted(ctx)
+    readiness = [{'feature': FEATURE_SMART_LIST_ID, 'mode': mode,
+                  'grant': 'connections.nayanet', 'granted': is_granted}]
+    evts = [{'event': 'smart_list.wired', 'feature': FEATURE_SMART_LIST_ID,
+             'version': FEATURE_SMART_LIST_VERSION}] if html else []
+    return html, evts, {'readiness': readiness}
+
 # Reserved receipt keys — modules may not shadow them via extra_receipt.
 _RECEIPT_RESERVED_KEYS = frozenset(
     {'built_utc', 'events', 'grants', 'identity', 'consent'})
@@ -127,6 +146,10 @@ BREAKER_MODULES = [
      'decl_for': sf_decl_for, 'refusal': SocialFeedRefusal,
      'version': FEATURE_SOCIAL_FEED_VERSION,
      'render': _render_social_feed},
+    {'key': 'smart_list', 'fid': FEATURE_SMART_LIST_ID,
+     'decl_for': sl_decl_for, 'refusal': SmartListRefusal,
+     'version': FEATURE_SMART_LIST_VERSION,
+     'render': _render_smart_list},
 ]
 BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 
@@ -494,13 +517,26 @@ def activate_breakers(contract, reg_statuses, reg_present, context):
             module_html[mod['key']] = html
             events.extend(evts)
             for k, v in extra.items():
-                if k in extra_receipt or k in _RECEIPT_RESERVED_KEYS:
+                if k in _RECEIPT_RESERVED_KEYS:
                     problems.append(
                         {'code': 'receipt_key_collision', 'feature': fid,
-                         'detail': 'extra receipt key %r collides' % (k,)})
+                         'detail': 'extra receipt key %r is reserved' % (k,)})
                     return (cover_html, module_html, problems, events,
                             enabled, extra_receipt)
-                extra_receipt[k] = v
+                if k in extra_receipt:
+                    # list-valued extras (e.g. readiness) accumulate across
+                    # modules; scalar collisions are a structured refusal.
+                    if isinstance(extra_receipt[k], list) and isinstance(v, list):
+                        extra_receipt[k].extend(v)
+                    else:
+                        problems.append(
+                            {'code': 'receipt_key_collision', 'feature': fid,
+                             'detail': 'extra receipt key %r already set'
+                                       % (k,)})
+                        return (cover_html, module_html, problems, events,
+                                enabled, extra_receipt)
+                else:
+                    extra_receipt[k] = v
     return cover_html, module_html, problems, events, enabled, extra_receipt
 
 
