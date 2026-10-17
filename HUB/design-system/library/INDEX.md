@@ -101,3 +101,8 @@ HUB/design-system/
 2. Copy the specimen HTML verbatim. Do not redesign it. Do not "improve" it.
 3. Compose the pieces beautifully on the page. That is the whole job.
 4. Check against the design contract and the showcase. If it doesn't come alive on touch, it's unfinished.
+
+## For builders (machines and Nayas)
+- `catalog/builder-index-v1.json` — **the** index. Every model number (`NAYA-XXX-NNN`) resolves to its human label, real HTML, and real extracted CSS (scoped). This is how you build from the library: look up the piece, take its code, compose. Never recreate a piece.
+- `catalog/INVENTORY.json` — every file in the library, with hashes. The inventory.
+- `catalog/tools/build-index.py` + `extract-css.py` — regenerates the index from the catalog + source files. Run these; don't hand-edit the index.

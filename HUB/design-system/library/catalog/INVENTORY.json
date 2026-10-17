@@ -1,0 +1,192 @@
+{
+ "built": "2026-10-17",
+ "files": 37,
+ "note": "Every file Shawn uploaded 2026-10-17 verified byte-identical and present.",
+ "inventory": [
+  {
+   "path": "INDEX.md",
+   "bytes": 6162,
+   "sha16": "29abb16e9408b98e"
+  },
+  {
+   "path": "blocks/Naya_Building_Blocks_-_The_Ultimate_Design_System_-_Naya_2.html",
+   "bytes": 1134076,
+   "sha16": "6cc8974f53672478"
+  },
+  {
+   "path": "blocks/Naya_Epic_Elements_-_Lego_pieces_N5.html",
+   "bytes": 71880,
+   "sha16": "3aaaa1d493a6fd44"
+  },
+  {
+   "path": "blocks/Naya_Lego_Blocks_N4.html",
+   "bytes": 147762,
+   "sha16": "dc0316fc821d0db0"
+  },
+  {
+   "path": "buttons/Naya_Beautiful_Button_Set_N4.html",
+   "bytes": 43090,
+   "sha16": "e1e57adde87840e6"
+  },
+  {
+   "path": "buttons/Naya_Design_Element_Set_N4.html",
+   "bytes": 186511,
+   "sha16": "04e506733c8470c2"
+  },
+  {
+   "path": "buttons/Naya__Elite_Buttons_N5.html",
+   "bytes": 36988,
+   "sha16": "4cb5c00cfdedfe87"
+  },
+  {
+   "path": "catalog/MERGE-PROVENANCE.md",
+   "bytes": 4558,
+   "sha16": "13e861b1fe33d57e"
+  },
+  {
+   "path": "catalog/block-catalog.json",
+   "bytes": 421757,
+   "sha16": "823be4bd6406cf19"
+  },
+  {
+   "path": "catalog/builder-index-v1.json",
+   "bytes": 782921,
+   "sha16": "95b04060e54dd468"
+  },
+  {
+   "path": "catalog/coverage.md",
+   "bytes": 6326,
+   "sha16": "5cdf5bb8db454ae8"
+  },
+  {
+   "path": "catalog/fragments/catalog-frag-a.json",
+   "bytes": 164755,
+   "sha16": "d0c3998e0be90f8d"
+  },
+  {
+   "path": "catalog/fragments/catalog-frag-b.json",
+   "bytes": 153832,
+   "sha16": "a08f0b80a68b1c67"
+  },
+  {
+   "path": "catalog/fragments/catalog-frag-c.json",
+   "bytes": 2031,
+   "sha16": "f23b969a88ca887c"
+  },
+  {
+   "path": "catalog/index-by-use-case.json",
+   "bytes": 53403,
+   "sha16": "e4c8b877758da180"
+  },
+  {
+   "path": "catalog/tools/build-index.py",
+   "bytes": 3397,
+   "sha16": "272f636321c68ed0"
+  },
+  {
+   "path": "catalog/tools/extract-css.py",
+   "bytes": 5553,
+   "sha16": "54a08bcf1be37775"
+  },
+  {
+   "path": "catalog/tools/merge-catalog.py",
+   "bytes": 9103,
+   "sha16": "c1ea320f91be81c6"
+  },
+  {
+   "path": "icons/nayanet-icon-system-v1.png",
+   "bytes": 343841,
+   "sha16": "e80b5038b43897ca"
+  },
+  {
+   "path": "jewels/Naya_Jewel_Library_-_N5.html",
+   "bytes": 26100,
+   "sha16": "acdb0f21a69d1e4d"
+  },
+  {
+   "path": "laws/2026-10-13-ULTIMATE-EXECUTION-REPORT.pdf",
+   "bytes": 195820,
+   "sha16": "f0d4d556ac66553a"
+  },
+  {
+   "path": "laws/AGENT-BRIEFING-DESIGN-LAWS.pdf",
+   "bytes": 85388,
+   "sha16": "dbe52e78bddc5fa4"
+  },
+  {
+   "path": "laws/SESSION-LEARNINGS-2026-10-08.pdf",
+   "bytes": 70778,
+   "sha16": "da76892347dce979"
+  },
+  {
+   "path": "laws/SPECIMEN-CARD-dial.pdf",
+   "bytes": 72276,
+   "sha16": "0cce30a119d9fb83"
+  },
+  {
+   "path": "laws/VISION-LAWS.pdf",
+   "bytes": 99998,
+   "sha16": "cef1bc8aabac9937"
+  },
+  {
+   "path": "laws/VISION-TO-CODE-PROTOCOL.md",
+   "bytes": 4619,
+   "sha16": "6e2428fa45051aa9"
+  },
+  {
+   "path": "laws/naya-100-laws-elite-interfaces.pdf",
+   "bytes": 211179,
+   "sha16": "e34b20b251063838"
+  },
+  {
+   "path": "laws/ultimate-decision-machine-spec-v1.md",
+   "bytes": 9381,
+   "sha16": "5dfd03f29aae584d"
+  },
+  {
+   "path": "pages/Ask-Naya-Page_Design.html",
+   "bytes": 3077003,
+   "sha16": "6d5b19c1d6cf7af4"
+  },
+  {
+   "path": "pages/Ledger_Page_Design.html",
+   "bytes": 165863,
+   "sha16": "b5342cde5f982fad"
+  },
+  {
+   "path": "pages/Maxis_App_Design.html",
+   "bytes": 101798,
+   "sha16": "585efaf7c8158c2f"
+  },
+  {
+   "path": "pages/Naya_Smart_Hub_Design.html",
+   "bytes": 521124,
+   "sha16": "f56fd98683704c37"
+  },
+  {
+   "path": "showcase/Naya_Design_Elements_N2.html",
+   "bytes": 87490,
+   "sha16": "6992e11ad84a3588"
+  },
+  {
+   "path": "showcase/Naya_Design_Standard_Showcase__1.html",
+   "bytes": 156524,
+   "sha16": "384140fc91871123"
+  },
+  {
+   "path": "showcase/nayanet-test-page.html",
+   "bytes": 31098,
+   "sha16": "724fe785fd0517d2"
+  },
+  {
+   "path": "systems/Naya_Ultimate_Design_System_-_Naya_2.html",
+   "bytes": 1134115,
+   "sha16": "abe7d186022bdf8b"
+  },
+  {
+   "path": "systems/naya-smart-blocks.html",
+   "bytes": 215762,
+   "sha16": "ea4e40140e8d6540"
+  }
+ ]
+}
