@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-17 11:33 UTC_
+_Last updated: 2026-10-17 12:01 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 3281
-- ✅ Verified (8+): 3254
+- **Total scored actions:** 3287
+- ✅ Verified (8+): 3260
 - 🟡 Partial (5–7): 26
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,12 +15,12 @@ _Last updated: 2026-10-17 11:33 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 282 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 282 | 8.9 | 9.5 |
+| Team 1 | Naya Verity | 283 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 283 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 211 | 9.0 | 9.5 |
 | Team 4 | Naya Mason | 245 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 273 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 188 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 189 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 266 | 8.9 | 9.5 |
 | Team 8 | Naya Sentinel | 244 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 303 | 9.0 | 9.5 |
@@ -162,8 +162,10 @@ _Last updated: 2026-10-17 11:33 UTC_
 - **gate-stall-20261017-0927:** 1 actions, avg 9.0/10
 - **lane-scorer-20261017-0240:** 5 actions, avg 9.0/10
 - **lane-scorer-20261017-0330:** 1 actions, avg 9.5/10
-- **gate-stall-20261017-1029:** 1 actions, avg 8.5/10
+- **gate-stall-20261017-1029:** 2 actions, avg 9.0/10
 - **gap-gate-stall-20261017-0927:** 1 actions, avg 9.3/10
+- **gate-stall-20261017-1133:** 1 actions, avg 9.5/10
+- **gap-gap-gate-stall-20261017-0927-lane0:** 1 actions, avg 9.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 5 actions, avg 9.3/10
 - **scorer-20261014-1940:** 3 actions, avg 8.2/10
@@ -435,7 +437,7 @@ _Last updated: 2026-10-17 11:33 UTC_
 - **gap-scorer-20261014-2045:** 1 actions, avg 9.5/10
 - **gap-gap-t0907:** 1 actions, avg 9.5/10
 - **gap-t0770:** 1 actions, avg 9.5/10
-- **gap-t1242-lane6:** 1 actions, avg 8.5/10
+- **gap-t1242-lane6:** 2 actions, avg 8.8/10
 - **t-contract-selfreview:** 8 actions, avg 8.6/10
 - **t-contract-verify:** 9 actions, avg 8.8/10
 - **t-converge:** 9 actions, avg 8.9/10
@@ -857,9 +859,9 @@ _Last updated: 2026-10-17 11:33 UTC_
 - **t0841:** 2 actions, avg 9.5/10
 - **t892:** 9 actions, avg 8.1/10
 - **t0892:** 3 actions, avg 8.3/10
-- **t892-lane1:** 1 actions, avg 8.5/10
+- **t892-lane1:** 2 actions, avg 8.5/10
 - **t892-lane10:** 1 actions, avg 7.5/10
-- **t892-lane2:** 1 actions, avg 8.0/10
+- **t892-lane2:** 2 actions, avg 8.2/10
 - **t0900:** 2 actions, avg 9.0/10
 - **t0900-lane5:** 2 actions, avg 9.0/10
 - **t0901:** 2 actions, avg 9.0/10
