@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 07:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21800,6 +21800,24 @@ _Last updated: 2026-10-17 07:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ 20261017-0714-gap — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor gap follow-up: fourth-pass stall re-verification with byte-fresh queue read (28/28 unclaimable) + the bundling-lock root cause (the exact split prescription)
+
+**Evidence:** Artifact-verified on live bytes: 28 unclaimed brief-*.md in brief-queue/ (28 = receipt's 28 post-claim), zero brief-tNNNN-* primary-sequence filings; gap-followup-seen.json mtime 2026-10-17 07:22:18 UTC (receipt's 're-edited at 07:22 UTC'), t0431-lane6 key present and still carries the no-refile verdict verbatim (no structured lift); 25 of 28 brief
+
+### ✅ 20261017-0045 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** bundling-lock split: t1822 delivery half closed (board comment on #2721), 2200 regeneration half investigated (builder-divergence found, files restored), both briefs split to second-seat halves only
+
+**Evidence:** Artifact-verified on live bytes: board comment 6231206889 exists on #2721 (html_url matches receipt link; OWNER-authored; created 2026-10-17T07:27:33Z); brief-queue/brief-gap-t1822-lane3.md and brief-gap-gap-scorer-20261014-2200-lane9.md both exist and carry SPLIT headers documenting exactly the split the receipt claims (t1822 retains only second-s
+
+### ✅ 20261017-0714 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor gate-stall: queue re-verified 28/28 unclaimable (third identical stall verdict)
+
+**Evidence:** Artifact-verified on live bytes: all 28 named briefs exist (27 under exact names; brief-gap-scorer-20261016-0640-lane0.md refiled as brief-gap-lane-scorer-20261016-0640-lane0.md, confirmed barred in the refiled copy); exactly the 25 headers the receipt claims carry stamped bar_seats, and exactly the 3 it says lack them (brief-gap-t1822-lane3.md, br
 
 ### ✅ gate-stall-20261017-0609 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
 
