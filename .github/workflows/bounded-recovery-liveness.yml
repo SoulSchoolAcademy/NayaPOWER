@@ -1,0 +1,39 @@
+name: Bounded-Recovery Liveness Gate (D56 wire)
+
+# Wires the D56 bounded-recovery-liveness prover onto the recovery path.
+# Every bounded-liveness claim in tools/bounded_liveness_claims_manifest.json
+# is judged by the REAL prover; a misstated claim BLOCKS (exit 1). Empty
+# manifest = explicit DORMANT (exit 0), never a false green. Corrupt manifest
+# or claims without the mechanism = fail-closed (exit 2).
+
+on:
+  pull_request:
+    paths:
+      - "tools/bounded_recovery_liveness.py"
+      - "tools/bounded_liveness_gate.py"
+      - "tools/bounded_liveness_claims_manifest.json"
+      - "tests/test_bounded_liveness_gate.py"
+      - ".github/workflows/bounded-recovery-liveness.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "tools/bounded_recovery_liveness.py"
+      - "tools/bounded_liveness_gate.py"
+      - "tools/bounded_liveness_claims_manifest.json"
+      - "tests/test_bounded_liveness_gate.py"
+      - ".github/workflows/bounded-recovery-liveness.yml"
+
+jobs:
+  bounded-liveness-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Bare setup-python images do not always carry pytest; install it
+      # explicitly (same lesson as the D55 mechanism gate and the
+      # directive-register gates).
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_bounded_liveness_gate.py -q -p no:cacheprovider
+      - run: python tools/bounded_liveness_gate.py --json
