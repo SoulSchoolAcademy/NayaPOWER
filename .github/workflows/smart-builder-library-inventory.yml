@@ -1,5 +1,7 @@
 name: Smart Builder library inventory
 on:
+  schedule:
+    - cron: "17 7 * * *"
   pull_request:
     paths:
       - "HUB/SMART-BUILDER-LIBRARY-INVENTORY.json"
@@ -9,6 +11,7 @@ on:
       - ".github/workflows/smart-builder-library-inventory.yml"
       - "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json"
   push:
+    branches: [main]
     paths:
       - "HUB/SMART-BUILDER-LIBRARY-INVENTORY.json"
       - "HUB/SMART-BUILDER-LIBRARY.html"
