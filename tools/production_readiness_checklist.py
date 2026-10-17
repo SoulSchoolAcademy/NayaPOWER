@@ -21,6 +21,12 @@ Checks (each emits PASS / WARN / FAIL / UNKNOWN with evidence):
                            ledger entry's file exists (read-only; no SQL parsing needed).
   C7 proof_workflows_exist— every workflow file referenced by the promotion workflow exists.
   C8 receipt_path        — the promotion workflow writes a durable promotion receipt artifact.
+  C10 brain_index_freshness — the canonical freshness gate
+                           (tests/test_brain_index_freshness.py) passes at the
+                           working tree; surfaces the regen-less-merge class.
+  C11 merge_gate_operability — receipt-gate invokes tools/auto_merge_gate.py
+                           --p12-only and the gate fail-closes on head_sha
+                           mismatch; merge_authority unwired caps at WARN.
 
 Exit codes: 0 = all PASS (WARN allowed), 1 = any FAIL, 2 = instrument error.
 
@@ -48,6 +54,11 @@ LEDGER_PATH = ROOT / "supabase/PRODUCTION-MIGRATION-LEDGER-V1.json"
 WORKFLOWS_DIR = ROOT / ".github/workflows"
 
 PROMOTION_WORKFLOW_FILE = "governed-supabase-production-deploy.yml"
+FRESHNESS_TEST_PATH = ROOT / "tests/test_brain_index_freshness.py"
+RECEIPT_GATE_PATH = ROOT / ".github/workflows/receipt-gate.yml"
+AUTO_MERGE_GATE_NAME = "auto_merge_gate.py"
+MERGE_AUTHORITY_NAME = "merge_authority.py"
+_FRESHNESS_PYTEST_TIMEOUT_S = 300
 # The promotion workflow fail-closes unless these CI workflows completed
 # successfully for the exact head SHA (see its inline required-CI block).
 REQUIRED_CI_WORKFLOWS = ("kernel-tests.yml", "collective-chain-readiness-gate.yml")
@@ -58,7 +69,7 @@ SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 MIGRATION_NAME_RE = re.compile(r"^[0-9]{14}_[a-z0-9_]+\.sql$")
 STAMP_MSG_RE = re.compile(r"deploy: stamp Naya runtime source ([0-9a-f]{40})")
 
-SCHEMA = "NAYAPOWER_PRODUCTION_READINESS_CHECKLIST_V1"
+SCHEMA = "NAYAPOWER_PRODUCTION_READINESS_CHECKLIST_V2"
 
 
 # ---------------------------------------------------------------- utilities
@@ -584,6 +595,120 @@ def check_receipt_path(text: str | None = None) -> dict:
     return check_result("C8", "WARN", "promotion receipt path incomplete", evidence)
 
 
+def _run_freshness_pytest(test_path: Path):
+    """Execute the canonical freshness gate; None when it cannot be executed."""
+    try:
+        return subprocess.run(
+            [sys.executable, "-m", "pytest", str(test_path), "-q",
+             "-p", "no:cacheprovider"],
+            cwd=str(ROOT), capture_output=True, text=True,
+            timeout=_FRESHNESS_PYTEST_TIMEOUT_S)
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def check_brain_index_freshness(test_path: Path | None = None) -> dict:
+    """C10 — the brain index at the working tree matches a fresh regeneration.
+
+    Invokes the canonical gate (tests/test_brain_index_freshness.py) instead
+    of re-implementing its logic. A stale index is the recurring
+    regen-less-merge defect class (#2524, #2531): CI runs no freshness check,
+    so this instrument surfaces it. UNKNOWN when the gate cannot be executed
+    (missing test file / no pytest) — the instrument records what it could
+    actually run, never guesses.
+    """
+    tpath = test_path or FRESHNESS_TEST_PATH
+    if not tpath.is_file():
+        return check_result("C10", "UNKNOWN", "freshness gate test file missing",
+                            {"path": str(tpath)})
+    proc = _run_freshness_pytest(tpath)
+    if proc is None:
+        return check_result("C10", "UNKNOWN",
+                            "could not execute the freshness gate (no pytest?)",
+                            {"path": str(tpath)})
+    out = proc.stdout or ""
+    tail = out.strip().splitlines()[-3:] if out.strip() else []
+    evidence = {"returncode": proc.returncode, "summary_tail": tail,
+                "command": f"{sys.executable} -m pytest {tpath.name} -q"}
+    m = re.search(r"(\d+) failed", out)
+    failed = int(m.group(1)) if m else 0
+    m2 = re.search(r"(\d+) passed", out)
+    passed = int(m2.group(1)) if m2 else 0
+    if proc.returncode == 0 and failed == 0 and passed > 0:
+        return check_result("C10", "PASS",
+                            f"brain index fresh: {passed} passed", evidence)
+    return check_result("C10", "FAIL",
+                        f"brain index STALE: {failed} failed / {passed} passed "
+                        f"(rc={proc.returncode})", evidence)
+
+
+def check_merge_gate_operability(receipt_gate_text: str | None = None,
+                                 tools_dir: Path | None = None,
+                                 workflows_dir: Path | None = None) -> dict:
+    """C11 — the governed merge path's machine gate is wired and fail-closed.
+
+    Three sub-aspects, all read-only: (1) tools/auto_merge_gate.py exists;
+    (2) receipt-gate invokes it with --p12-only (the hardened receipt-pin
+    path); (3) the gate's P12 refuses a missing/malformed/mismatched
+    receipt_pin.merge_head_sha against the live head_sha. The known unwired
+    component tools/merge_authority.py caps this check at WARN — the path is
+    partially governed, honestly reported, never rounded up to PASS.
+    """
+    tdir = tools_dir or (ROOT / "tools")
+    wdir = workflows_dir or WORKFLOWS_DIR
+    try:
+        rg_text = (receipt_gate_text if receipt_gate_text is not None
+                   else RECEIPT_GATE_PATH.read_text(encoding="utf-8"))
+    except OSError as e:
+        return check_result("C11", "FAIL", f"receipt-gate workflow unreadable: {e}", {})
+    gate_path = tdir / AUTO_MERGE_GATE_NAME
+    problems: list[str] = []
+    gate_text = ""
+    if not gate_path.is_file():
+        problems.append(f"tools/{AUTO_MERGE_GATE_NAME} missing")
+    else:
+        try:
+            gate_text = gate_path.read_text(encoding="utf-8")
+        except OSError as e:
+            problems.append(f"tools/{AUTO_MERGE_GATE_NAME} unreadable: {e}")
+    wired = ("tools/" + AUTO_MERGE_GATE_NAME) in rg_text and "--p12-only" in rg_text
+    if not wired:
+        problems.append("receipt-gate does not invoke tools/auto_merge_gate.py --p12-only")
+    fail_closed = ("def p12_reasons" in gate_text
+                   and "merge_head_sha" in gate_text
+                   and "P12: receipt_pin.merge_head_sha" in gate_text)
+    if gate_text and not fail_closed:
+        problems.append("auto_merge_gate.py lacks the P12 fail-closed head_sha binding")
+    ma_path = tdir / MERGE_AUTHORITY_NAME
+    ma_referenced = False
+    try:
+        for wf in wdir.glob("*.yml"):
+            try:
+                if MERGE_AUTHORITY_NAME in wf.read_text(encoding="utf-8"):
+                    ma_referenced = True
+                    break
+            except OSError:
+                continue
+    except OSError:
+        pass
+    ma_wired = ma_path.is_file() and ma_referenced
+    evidence = {"p12_wired_in_receipt_gate": wired,
+                "p12_fail_closed_head_sha": fail_closed,
+                "merge_authority_wired": ma_wired,
+                "problems": problems}
+    if problems:
+        return check_result("C11", "FAIL",
+                            f"merge gate operability: {len(problems)} problem(s)", evidence)
+    if not ma_wired:
+        return check_result("C11", "WARN",
+                            "merge gate wired + fail-closed, but "
+                            "tools/merge_authority.py is unwired (partially governed)",
+                            evidence)
+    return check_result("C11", "PASS",
+                        "merge gate wired, fail-closed on head_sha, merge_authority wired",
+                        evidence)
+
+
 # ---------------------------------------------------------------- report
 
 def score(checks: list[dict]) -> tuple[str, int]:
@@ -610,6 +735,8 @@ def run() -> tuple[dict, int]:
         check_proof_workflows_exist(),
         check_receipt_path(),
         check_branch_hygiene(),
+        check_brain_index_freshness(),
+        check_merge_gate_operability(),
     ]
     verdict, exit_code = score(checks)
     report = {"schema": SCHEMA, "verdict": verdict,

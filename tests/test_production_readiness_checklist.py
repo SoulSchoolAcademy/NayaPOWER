@@ -495,6 +495,138 @@ def test_branch_hygiene_unknown_when_no_api(monkeypatch):
     assert prc.check_branch_hygiene()["verdict"] == "UNKNOWN"
 
 
+# ---- C10 brain index freshness ---------------------------------------------------
+
+def _completed(rc, stdout):
+    import subprocess
+    return subprocess.CompletedProcess(args=["pytest"], returncode=rc,
+                                       stdout=stdout, stderr="")
+
+
+def test_brain_index_freshness_live_repo_passes():
+    r = prc.check_brain_index_freshness()  # runs the real gate, ~2s
+    assert r["check"] == "C10"
+    assert r["verdict"] == "PASS", r
+
+
+def test_brain_index_freshness_unknown_when_unrunnable(monkeypatch):
+    monkeypatch.setattr(prc, "_run_freshness_pytest", lambda path: None)
+    r = prc.check_brain_index_freshness()
+    assert r["verdict"] == "UNKNOWN", r
+
+
+def test_brain_index_freshness_unknown_when_test_missing(tmp_path):
+    r = prc.check_brain_index_freshness(test_path=tmp_path / "nope.py")
+    assert r["verdict"] == "UNKNOWN", r
+
+
+def test_brain_index_freshness_fail_on_red(monkeypatch, tmp_path):
+    gate = tmp_path / "test_fresh.py"
+    gate.write_text("x")
+    monkeypatch.setattr(prc, "_run_freshness_pytest",
+                        lambda path: _completed(1, "1 failed, 12 passed in 2.0s"))
+    r = prc.check_brain_index_freshness(test_path=gate)
+    assert r["verdict"] == "FAIL", r
+    assert "STALE" in r["summary"]
+
+
+def test_brain_index_freshness_fail_on_collection_error(monkeypatch, tmp_path):
+    gate = tmp_path / "test_fresh.py"
+    gate.write_text("x")
+    monkeypatch.setattr(prc, "_run_freshness_pytest",
+                        lambda path: _completed(2, "ERROR: collection failed"))
+    r = prc.check_brain_index_freshness(test_path=gate)
+    assert r["verdict"] == "FAIL", r
+
+
+# ---- C11 merge gate operability -------------------------------------------------
+
+GOOD_GATE = '''
+def p12_reasons(pr_state):
+    pin = pr_state.get("receipt_pin")
+    pinned = pin.get("merge_head_sha")
+    if pinned != pr_state.get("head_sha"):
+        return ["P12: receipt_pin.merge_head_sha %s... != head_sha (stale)" % pinned[:12]]
+    return []
+'''
+
+GOOD_RECEIPT_GATE = """
+jobs:
+  gate:
+    steps:
+      - run: python3 tools/auto_merge_gate.py --p12-only /tmp/pr-state.json
+"""
+
+
+def _c11_dirs(tmp_path, gate_text=GOOD_GATE, rg_text=GOOD_RECEIPT_GATE,
+              with_authority=False):
+    tools_d = tmp_path / "tools"
+    tools_d.mkdir()
+    if gate_text is not None:
+        (tools_d / "auto_merge_gate.py").write_text(gate_text)
+    if with_authority:
+        (tools_d / "merge_authority.py").write_text("# authority\n")
+    wf_d = tmp_path / "wf"
+    wf_d.mkdir()
+    (wf_d / "receipt-gate.yml").write_text(rg_text)
+    if with_authority:
+        (wf_d / "merge.yml").write_text("run: python3 tools/merge_authority.py\n")
+    return rg_text, tools_d, wf_d
+
+
+def test_merge_gate_operability_live_repo_warn():
+    # Current tree: P12 wired + fail-closed, merge_authority unwired.
+    r = prc.check_merge_gate_operability()
+    assert r["check"] == "C11"
+    assert r["verdict"] == "WARN", r
+    assert r["evidence"]["p12_wired_in_receipt_gate"] is True
+    assert r["evidence"]["p12_fail_closed_head_sha"] is True
+    assert r["evidence"]["merge_authority_wired"] is False
+
+
+def test_merge_gate_operability_pass_when_fully_wired(tmp_path):
+    rg_text, tools_d, wf_d = _c11_dirs(tmp_path, with_authority=True)
+    r = prc.check_merge_gate_operability(receipt_gate_text=rg_text,
+                                        tools_dir=tools_d, workflows_dir=wf_d)
+    assert r["verdict"] == "PASS", r
+
+
+def test_merge_gate_operability_fail_when_unwired(tmp_path):
+    rg_text, tools_d, wf_d = _c11_dirs(
+        tmp_path, rg_text="jobs:\n  gate:\n    steps:\n      - run: echo no gate\n")
+    r = prc.check_merge_gate_operability(receipt_gate_text=rg_text,
+                                        tools_dir=tools_d, workflows_dir=wf_d)
+    assert r["verdict"] == "FAIL", r
+    assert any("p12-only" in p for p in r["evidence"]["problems"])
+
+
+def test_merge_gate_operability_fail_when_gate_missing(tmp_path):
+    rg_text, tools_d, wf_d = _c11_dirs(tmp_path, gate_text=None)
+    r = prc.check_merge_gate_operability(receipt_gate_text=rg_text,
+                                        tools_dir=tools_d, workflows_dir=wf_d)
+    assert r["verdict"] == "FAIL", r
+    assert any("missing" in p for p in r["evidence"]["problems"])
+
+
+def test_merge_gate_operability_fail_when_not_fail_closed(tmp_path):
+    rg_text, tools_d, wf_d = _c11_dirs(
+        tmp_path, gate_text="def whatever():\n    return []\n")
+    r = prc.check_merge_gate_operability(receipt_gate_text=rg_text,
+                                        tools_dir=tools_d, workflows_dir=wf_d)
+    assert r["verdict"] == "FAIL", r
+    assert any("fail-closed" in p for p in r["evidence"]["problems"])
+
+
+def test_merge_gate_operability_fail_when_gate_file_absent(tmp_path):
+    # Real receipt-gate text (wired) but an empty tools dir: the gate script
+    # itself is missing -> FAIL, honestly naming the missing file.
+    r = prc.check_merge_gate_operability(receipt_gate_text=GOOD_RECEIPT_GATE,
+                                        tools_dir=tmp_path,
+                                        workflows_dir=tmp_path)
+    assert r["verdict"] == "FAIL", r
+    assert any("missing" in p for p in r["evidence"]["problems"])
+
+
 # ---- main() --json -------------------------------------------------------------
 
 def test_main_json_flag_emits_pure_json(monkeypatch, capsys):
