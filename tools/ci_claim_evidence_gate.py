@@ -62,6 +62,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -213,8 +214,36 @@ def api_get(path: str, token: str):
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             return json.load(resp)
+    except urllib.error.HTTPError as exc:
+        # w269 (LAW): log the response body + headers on HTTP errors. urllib's
+        # bare error string discards GitHub's JSON error payload -- the only
+        # byte-level discriminator between quota-starvation and
+        # permission-denial on a 403. The gate still fails closed.
+        print(_format_http_error_detail(exc))
+        raise GateBlind(f"GET {path} failed: HTTP {exc.code}") from exc
     except Exception as exc:  # noqa: BLE001 -- any IO failure blinds the gate
         raise GateBlind(f"GET {path} failed: {exc}") from exc
+
+
+def _format_http_error_detail(exc: urllib.error.HTTPError) -> str:
+    """One log line carrying the byte-level discriminator for an HTTPError.
+
+    Response headers are server-side; the request Authorization header is
+    never among them, so nothing secret is logged. Body is truncated.
+    """
+    try:
+        body = exc.read().decode("utf-8", "replace")[:2000]
+    except Exception:  # noqa: BLE001 -- a blind read must not crash the gate
+        body = "<response body unreadable>"
+    try:
+        headers = dict(exc.headers.items()) if exc.headers else {}
+    except Exception:  # noqa: BLE001
+        headers = {}
+    return (
+        f"GATE_BLIND HTTP DETAIL -- status={exc.code} "
+        f"headers={json.dumps(headers, sort_keys=True)} "
+        f"body={body}"
+    )
 
 
 class GateBlind(Exception):
