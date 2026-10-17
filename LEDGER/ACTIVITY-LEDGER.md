@@ -2,11 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 21:24 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
-- **Team brief-gap-lane-scorer-20261017-1330-lane11.md — ?** (?) — tick t0711
+- **Team brief-t0712-lane12.md — ?** (?) — tick t0712
 
 ## The Teams
 
@@ -21540,6 +21540,12 @@ _Last updated: 2026-10-17 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ lane-scorer-20261017-1410 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** GAP FOLLOW-UP: root-cause the f-string diagnostic anomaly in t0707 observatory census tooling (parent lane-scorer-20261017-1330 9.0)
+
+**Evidence:** Verified on live bytes: lane-11/i2-census-t0707.py and i2b-queuewait-t0707.py exist and execute (rerun reproduces parent: 85 sign-outs, 9 excluded, population 76); excluded() at line 292 matches "voided" on the whole header+body blob; L2324 IS excluded as VOIDED while t0908-lane5.md exists on disk with sign-out line 'brief-t0908 DONE 8.5/10' and it
 
 ### ✅ lane-scorer-20261017-1330 — Team 11, Naya Clarity Narzan (Human Value) — 9.0/10 [VERIFIED]
 
