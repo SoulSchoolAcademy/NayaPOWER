@@ -94,13 +94,15 @@ def validate_contract(contract, pieces):
     return errors
 
 
-def activate_breakers(contract, reg_statuses, reg_present):
+def activate_breakers(contract, reg_statuses, reg_present, context):
     """Contract flips breakers; the registry gates them (fail closed).
 
     Returns (cover_html, problems, events).
     - features as a list (contract-page) -> no breakers; cover not rendered.
     - features as a dict -> each declared breaker must be registry-'built',
       else a structured refusal. Only then does cover render.
+    context: the resolved connections+privacy dict, handed to every
+    feature module (connections stay opt-in inside modules).
     """
     problems, events, cover_html = [], [], ''
     feats = contract.get('features')
@@ -141,7 +143,8 @@ def activate_breakers(contract, reg_statuses, reg_present):
     if problems or decl is None or not decl.get('enabled'):
         return cover_html, problems, events
     try:
-        cover_html = render_cover(decl, reg_statuses.get('cover'))
+        cover_html = render_cover(decl, reg_statuses.get('cover'),
+                                context=context)
     except CoverRefusal as e:
         problems.append({'code': e.code, 'feature': FEATURE_COVER_ID,
                          'detail': e.detail})
@@ -178,6 +181,44 @@ def safe_json_for_pre(obj):
 def sha256(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()
 
+# ---- connections + privacy schema (Shawn's rule, 2026-10-17) ----
+# connections: each opt-IN (default False); missing block = all false.
+# privacy: 'private' | 'network' | 'public', default 'private'; anything
+# else is a structured fail-closed refusal.
+# The resolved context is passed to every feature module. Invariant the
+# wave modules must preserve: default-on enables FEATURES; connections
+# stay OPT-IN. A default-on feature with its connection off renders UI +
+# honest "connect to enable" — never blocked, never faked. The sharpened
+# fail-closed refuses publish only on enabled-but-UNVERIFIED features,
+# never on missing connections.
+CONNECTION_KEYS = ('muse', 'github', 'network', 'nayanet')
+PRIVACY_MODES = ('private', 'network', 'public')
+
+def resolve_contract_context(contract):
+    """Resolve connections + privacy from the contract.
+
+    Returns (context, problems):
+      context = {'connections': {k: bool}, 'privacy': 'private'|'network'|'public'}
+      problems: structured fail-closed errors (bad privacy enum,
+                malformed connections block).
+    """
+    problems = []
+    raw = contract.get('connections')
+    if raw is None:
+        raw = {}
+    elif not isinstance(raw, dict):
+        problems.append({'code': 'bad_connections',
+                         'detail': 'connections must be an object of booleans, got %s'
+                                   % type(raw).__name__})
+        raw = {}
+    connections = {k: bool(raw.get(k, False)) for k in CONNECTION_KEYS}
+    privacy = contract.get('privacy', 'private')
+    if privacy not in PRIVACY_MODES:
+        problems.append({'code': 'bad_privacy',
+                         'detail': "privacy must be one of %s, got %r"
+                                   % (list(PRIVACY_MODES), privacy)})
+    return {'connections': connections, 'privacy': privacy}, problems
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--contract', required=True)
@@ -210,9 +251,12 @@ def main():
 
     # ---- validate before assembling: fail closed, structured errors ----
     problems = validate_contract(contract, pieces)
+    # connections + privacy: resolved once, handed to every feature module.
+    context, context_problems = resolve_contract_context(contract)
+    problems += context_problems
     # feature breakers: the contract flips them, the registry gates them.
     cover_html, breaker_problems, breaker_events = activate_breakers(
-        contract, reg_statuses, reg_present)
+        contract, reg_statuses, reg_present, context)
     problems += breaker_problems
     if problems:
         print(json.dumps({'status': 'refused', 'errors': problems}, indent=2))
@@ -299,6 +343,10 @@ def main():
     # a capability as operational unless the registry says it is built.
     if reg_present:
         contract['machine']['features_status'] = reg_statuses
+    # resolved connections + privacy travel with the machine block so every
+    # consumer (and every feature module) reads the same resolved context.
+    contract['machine']['connections'] = context['connections']
+    contract['machine']['privacy'] = context['privacy']
     machine_raw = safe_json_for_pre(contract['machine'])
     for key, val in {
         '%%TITLE%%': esc(contract['title']),

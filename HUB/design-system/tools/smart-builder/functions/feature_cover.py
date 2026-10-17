@@ -127,13 +127,18 @@ def initials_for(name):
     return letters or "N"
 
 
-def render_cover(decl, registry_status):
+def render_cover(decl, registry_status, context=None):
     """Render the personal header. Returns '' when the contract did not
     declare cover; raises CoverRefusal otherwise.
 
     registry_status: the registry's status string for feature.cover.
     Rendering is proof the registry says 'built' — the page carries
     data-cover-status="built" as the binding.
+    context: resolved contract context {'connections': {...}, 'privacy': ...}.
+    Connections stay OPT-IN inside modules: cover needs no connection, so
+    it ignores context today; connection-gated modules must render UI +
+    an honest "connect to enable" when their connection is off — never
+    blocked, never faked.
     """
     if decl is None or not decl.get("enabled"):
         return ""  # not declared -> refuse to render cover

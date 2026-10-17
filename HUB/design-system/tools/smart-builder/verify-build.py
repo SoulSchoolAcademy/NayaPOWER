@@ -16,6 +16,39 @@ def fail(msg):
     print('VERIFY FAIL:', msg)
     sys.exit(1)
 
+def parse_chrome_log(stderr):
+    """Pure: extract (js_errors, network_urls) from chrome
+    --enable-logging=stderr output.
+
+    js_errors: CONSOLE lines reporting uncaught exceptions or failed
+    resource loads (dbus/GPU noise never matches these patterns).
+    network_urls: every URL the renderer actually requested, via
+    NetworkDelegate::NotifyBeforeURLRequest.
+    """
+    js_errors, urls = [], []
+    for line in stderr.splitlines():
+        if ':CONSOLE' in line and ('Uncaught' in line
+                                   or 'Failed to load resource' in line):
+            js_errors.append(line.strip())
+        m = re.search(r'NetworkDelegate::NotifyBeforeURLRequest:\s*(\S+)', line)
+        if m:
+            urls.append(m.group(1))
+    return js_errors, urls
+
+def url_fetch_failed(url, timeout=10):
+    """True if an http(s) URL the page fetched cannot be fetched. Only
+    http/https can fail over the network; file:/data:/blob: are local."""
+    if not url.startswith(('http://', 'https://')):
+        return False
+    try:
+        import urllib.request
+        req = urllib.request.Request(url, method='HEAD',
+                                     headers={'User-Agent': 'NayaPOWER-day-one/1.0'})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return not (200 <= r.status < 400)
+    except Exception:
+        return True
+
 def find_chrome():
     """Locate a headless-chrome binary.
 
@@ -60,12 +93,70 @@ def find_chrome():
         return found, 'legacy-pinned'
     return None, 'probed: ' + ', '.join(probed) + ' — none executable'
 
+def day_one_check(sb_dir, index_path, chrome):
+    """Day-one acceptance: assemble the MINIMAL contract (no connections,
+    no privacy, no optional features) and prove the page renders with
+    ZERO JS errors and ZERO failed network fetches, and every chrome
+    control has an accessible name. Returns a status dict; never raises.
+    """
+    tag = 'day-one'
+    contract = os.path.join(sb_dir, 'contracts', 'minimal-day-one-v1.json')
+    template = os.path.join(sb_dir, 'templates', 'page.html')
+    page = '/tmp/_dayone_page.html'
+    manifest = '/tmp/_dayone_manifest.json'
+    shot = '/tmp/_dayone_shot.png'
+    for f in (page, shot):
+        if os.path.exists(f):
+            os.remove(f)
+    r = subprocess.run(
+        [sys.executable, os.path.join(sb_dir, 'assemble.py'),
+         '--contract', contract, '--index', index_path,
+         '--template', template, '--out', page, '--manifest', manifest],
+        capture_output=True, text=True, timeout=60)
+    if r.returncode != 0 or not os.path.exists(page):
+        return {'status': 'failed',
+                'note': 'minimal contract refused to assemble: '
+                        + (r.stdout + r.stderr)[:200]}
+    s = open(page, encoding='utf-8').read()
+    if '%%' in s:
+        return {'status': 'failed', 'note': 'minimal page has unfilled placeholders'}
+    r = subprocess.run(
+        [chrome, '--headless', '--disable-gpu', '--no-sandbox',
+         '--enable-logging=stderr', '--v=1',
+         '--window-size=1280,2000', '--hide-scrollbars',
+         '--virtual-time-budget=8000', '--screenshot=' + shot,
+         'file://' + os.path.abspath(page)],
+        capture_output=True, text=True, timeout=90)
+    js_errors, net_urls = parse_chrome_log(r.stderr)
+    if js_errors:
+        return {'status': 'failed',
+                'note': 'JS errors on minimal page: %s' % js_errors[0][:200]}
+    failed = sorted({u for u in net_urls if url_fetch_failed(u)})
+    if failed:
+        return {'status': 'failed',
+                'note': 'failed network fetches: %s' % failed[0][:200]}
+    chrome_html = re.sub(r'<div class="spec-stage">.*?</div>\s*</div>', '', s, flags=re.S)
+    bad_btns = [b for b in re.findall(r'<button([^>]*)>(.*?)</button>', chrome_html, re.S)
+                if not (b[1].strip() or 'aria-label' in b[0])]
+    if bad_btns:
+        return {'status': 'failed',
+                'note': '%d controls without accessible names' % len(bad_btns)}
+    if not os.path.exists(shot) or os.path.getsize(shot) < 20000:
+        return {'status': 'failed', 'note': 'minimal page did not paint'}
+    return {'status': 'passed',
+            'note': ('zero JS errors, zero failed fetches '
+                     '(%d external request(s) all OK), controls named, painted %d bytes')
+                    % (len([u for u in net_urls if u.startswith('http')]),
+                       os.path.getsize(shot))}
+
 def main():
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument('--page', required=True)
     ap.add_argument('--manifest', required=True)
     ap.add_argument('--index', required=True)
+    ap.add_argument('--skip-day-one', action='store_true',
+                    help='skip the day-one acceptance check (already run)')
     a = ap.parse_args()
 
     if not os.path.exists(a.page):
@@ -139,13 +230,30 @@ def main():
     else:
         print('render: SKIPPED —', render_note)
 
+    # day-one acceptance: the MINIMAL contract (no connections, no privacy,
+    # no optional features) must render with zero JS errors, zero failed
+    # network fetches, named controls. Part of structural PASS — a failed
+    # day-one fails the verify; a skipped day-one (no chrome) is honest.
+    day_one = {'status': 'skipped',
+               'note': 'no headless chrome available — ' + chrome_source}
+    if not a.skip_day_one and chrome:
+        sb_dir = os.path.dirname(os.path.abspath(__file__))
+        day_one = day_one_check(sb_dir, a.index, chrome)
+        if day_one['status'] == 'failed':
+            fail('day-one acceptance: ' + day_one['note'])
+        print('ok: day-one working —', day_one['note'])
+    elif not a.skip_day_one:
+        print('day-one: SKIPPED —', day_one['note'])
+
     manifest['verification'] = {
         'structural': 'passed',
         'render': render_status,
         'render_note': render_note,
+        'day_one': day_one,
     }
     json.dump(manifest, open(a.manifest, 'w'), indent=2)
-    print('VERIFY structural PASSED; render:', render_status.upper())
+    print('VERIFY structural PASSED; render:', render_status.upper(),
+          '; day-one:', day_one['status'].upper())
 
 if __name__ == '__main__':
     main()
