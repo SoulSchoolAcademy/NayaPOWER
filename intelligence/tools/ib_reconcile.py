@@ -141,9 +141,19 @@ def persisted_to_file_state(understanding_state, status, provenance):
     if status == "SUPERSEDED":
         # file form keeps its own ladder position in status_history;
         # current verification_status is derived from the last non-superseded entry
+        # gap-t922 (c): history entries carry the DOCUMENTED shape
+        # {"status", "at", "note"} (SCHEMA.md; written by ib.py create/promote
+        # and seed_blocks) where "status" IS the verification-ladder value.
+        # The "verification_status" key is accepted first for forward
+        # compatibility, but no writer emits it — reading only that key made
+        # this branch dead code that always returned UNVERIFIED. A "status"
+        # that is not a ladder rung (lifecycle word, junk) is skipped: the
+        # path degrades, never invents.
         hist = (provenance or {}).get("file_status_history", [])
         for entry in reversed(hist):
             vs = entry.get("verification_status")
+            if vs not in FILE_STATUSES:
+                vs = entry.get("status")
             if vs in FILE_STATUSES:
                 return vs
         return "UNVERIFIED"

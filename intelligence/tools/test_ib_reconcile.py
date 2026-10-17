@@ -215,6 +215,54 @@ class TestStateMapping(unittest.TestCase):
         prov = {"file_status_history": [{"verification_status": "COMPOUNDED"}]}
         self.assertEqual(persisted_to_file_state("VERIFIED", "SUPERSEDED", prov), "COMPOUNDED")
 
+    def test_superseded_recovers_documented_status_key(self):
+        # gap-t922 (c): every real writer (ib.py create/promote, seed_blocks,
+        # SCHEMA.md) records history entries as {"status", "at", "note"} where
+        # "status" IS the verification-ladder value. The recovery path must
+        # read that documented key — not only "verification_status", which no
+        # writer ever emits.
+        prov = {"file_status_history": [
+            {"status": "BEHAVIOR-CHANGE-PROVEN",
+             "at": "2026-10-11T20:30:00+00:00",
+             "note": "Seed migration from AGENTS.md standing laws, 2026-10-11."},
+        ]}
+        self.assertEqual(
+            persisted_to_file_state("VERIFIED", "SUPERSEDED", prov),
+            "BEHAVIOR-CHANGE-PROVEN")
+
+    def test_superseded_uses_latest_history_entry(self):
+        # Last (most recent) entry wins, in documented-key form.
+        prov = {"file_status_history": [
+            {"status": "APPLIED", "at": "2026-10-11T20:30:00+00:00", "note": "Seed."},
+            {"status": "COMPOUNDED", "at": "2026-10-12T20:30:00+00:00", "note": "Cold-start survived."},
+        ]}
+        self.assertEqual(
+            persisted_to_file_state("VERIFIED", "SUPERSEDED", prov), "COMPOUNDED")
+
+    def test_superseded_skips_non_ladder_status_values(self):
+        # A history "status" that is NOT a ladder rung (e.g. a lifecycle word)
+        # is skipped, never mapped — the path degrades, never invents.
+        prov = {"file_status_history": [
+            {"status": "DURABLE", "at": "2026-10-11T20:30:00+00:00", "note": "Legacy lifecycle word."},
+        ]}
+        self.assertEqual(
+            persisted_to_file_state("CANDIDATE", "SUPERSEDED", prov), "UNVERIFIED")
+
+    def test_superseded_end_to_end_legacy_row(self):
+        # Full importer path on a legacy-shaped persisted row: SUPERSEDED row
+        # whose provenance.file_status_history carries only {"status","at","note"}
+        # entries (the exact pre-#2386 seed shape) must recover the authored
+        # ladder position, not collapse to UNVERIFIED.
+        b = make_v11()
+        row = to_persisted_row(b)
+        row["status"] = "SUPERSEDED"
+        row["provenance"] = dict(row["provenance"])
+        row["provenance"]["file_status_history"] = [
+            {"status": "APPLIED", "at": "2026-10-11T20:30:00+00:00", "note": "Seed."},
+        ]
+        back = from_persisted_row(row)
+        self.assertEqual(back["verification_status"], "APPLIED")
+
     def test_mismatched_state_caught_by_validation(self):
         b = make_v11()
         b["understanding_state"] = "VERIFIED"  # but verification_status=APPLIED
