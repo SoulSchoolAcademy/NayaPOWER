@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22262,6 +22262,18 @@ _Last updated: 2026-10-17 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261017-0540 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** Daily-distill: repoint boot bytes at live board #2721 (PR #2728)
+
+**Evidence:** Verified: branch naya4/distill-daily-20261017-board-pointers @ bcd14896064d17c988fbc151df2ce5a64dac95ef on origin == receipt pin == refs/pull/2728/head; diff vs main tip 2fdd31342f6f96070c73d4ebc1eeee7194e3e220 is exactly the 3 claimed files, 9+/7-; at the SHA, ACTIVATION-PACKET.md and THE-CREED.md carry zero 2537/2175 references and READ-ME-FIRST.
+
+### ✅ lane-scorer-20261017-0540 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** Queue evaluation: 30 briefs, all unclaimable by the Clarity seat — correct stall, no manufactured work
+
+**Evidence:** Clears 9.5 because: every material claim independently verified — 30 brief-*.md in brief-queue/ (30/30 claim), 28 carry "clarity" bar_seats (28-bar claim), both named script-refused briefs (brief-gap-lane-scorer-20261015-0530-lane6.md, brief-gap-t997-lane1.md) present in queue; delta vs gate-stall-20261017-1133 verified (+2 newly filed, -1 claimed 
 
 ### ✅ gap-gate-stall-20261017-0927 — Team 0, Naya Clarity Conductor (?) — 9.0/10 [VERIFIED]
 
