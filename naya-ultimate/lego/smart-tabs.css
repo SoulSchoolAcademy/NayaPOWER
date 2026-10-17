@@ -1,0 +1,29 @@
+/* ==========================================================================
+   NAYA ULTIMATE LEGO — SmartTabs v9.0.0
+   A universal favorites ribbon that follows the user across every page.
+   Add, edit, heart, star, remove, navigate. State persists via localStorage.
+   ========================================================================== */
+
+.sn-row { position: sticky; top: 12px; z-index: 100; display: flex; gap: 8px; overflow: auto; -webkit-overflow-scrolling: touch; padding: 10px; border-radius: 999px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.12); margin: 24px 0; }
+.sn-pill { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); background: rgba(0,0,0,.55); color: #e6ecff; font-weight: 700; font-size: 14px; cursor: pointer; user-select: none; transition: transform .18s cubic-bezier(.22,1,.36,1), box-shadow .18s cubic-bezier(.22,1,.36,1); }
+.sn-pill:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.5); }
+.sn-pill.heart { box-shadow: 0 0 0 2px rgba(183,114,255,.4) inset, 0 0 16px rgba(183,114,255,.25); }
+.sn-pill.star { box-shadow: 0 0 0 2px rgba(248,201,56,.4) inset, 0 0 16px rgba(248,201,56,.25); }
+.sn-pill.add { border-style: dashed; color: rgba(248,247,251,.55); }
+.sn-label { white-space: nowrap; }
+.sn-more { border: 0; background: rgba(255,255,255,.1); color: #fff; border-radius: 8px; padding: 4px 9px; cursor: pointer; font-size: 13px; }
+.sn-more:hover { background: rgba(255,255,255,.2); }
+.sn-menu { position: fixed; z-index: 1000; display: none; min-width: 220px; background: linear-gradient(180deg,#121827,#0e1424); border: 1px solid rgba(255,255,255,.18); border-radius: 12px; box-shadow: 0 18px 40px rgba(0,0,0,.5); }
+.sn-menu .mi { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.08); cursor: pointer; color: #fff; font-weight: 700; font-size: 14px; }
+.sn-menu .mi:last-child { border-bottom: none; }
+.sn-menu .mi:hover { background: rgba(255,255,255,.07); }
+.sn-pop { position: fixed; z-index: 1000; display: none; min-width: 300px; background: linear-gradient(180deg,#111727,#0e1424); border: 1px solid rgba(255,255,255,.18); border-radius: 12px; box-shadow: 0 22px 60px rgba(0,0,0,.5); padding: 16px; color: #fff; }
+.sn-pop h3 { margin: 0 0 10px; font-size: 17px; }
+.sn-pop .row { display: grid; gap: 6px; margin: 8px 0; font-size: 14px; }
+.sn-pop input { padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: #0a0f1a; color: #e6ecff; font-size: 14px; width: 100%; }
+.sn-pop .toggles { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+.sn-pop .tgl { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.22); background: rgba(0,0,0,.45); cursor: pointer; color: #fff; font-weight: 700; font-size: 13px; }
+.sn-pop .tgl.on { box-shadow: 0 0 0 2px rgba(255,255,255,.3) inset, 0 0 18px rgba(124,77,255,.3); }
+.sn-pop .ft { display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; }
+.sn-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,.25); background: rgba(0,0,0,.55); color: #fff; cursor: pointer; font-size: 14px; font-weight: 700; }
+.sn-btn.primary { background: linear-gradient(135deg,#6F3DFF,#9D7BFF); border: none; }
