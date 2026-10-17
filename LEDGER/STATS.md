@@ -223,4 +223,4 @@ _Last updated: 2026-10-13 14:43 UTC_
 - **t1432:** 15 actions, avg 9.0/10
 - **t1442:** 15 actions, avg 9.0/10
 
-_A rising average with zero phantoms is the proof the team is learning and growing._
+_A rising average with the phantom count holding at one is the proof the team is learning and growing. Provenance: the single recorded phantom is t902 — Naya Smith (Team 9), "Receipt gate #2364 (claimed DONE)" on branch naya/nine-receipt-gate-t902 @ a26943cd3 with no receipt (LEDGER/activity-ledger.jsonl, status PHANTOM, score 0). Note: this file's metric row has read 1 since ledger init 9719fde1 — the earlier "zero phantoms" wording was never in agreement with it._
