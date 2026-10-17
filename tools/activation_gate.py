@@ -906,7 +906,7 @@ def resolve_truth():
     if not token:
         raise RuntimeError("cannot reach live state without GITHUB_TOKEN — refusing")
 
-    ref = _api("GET", "/repos/%s/git/ref/heads/main" % repo, token)
+    ref = _api("GET", "/repos/%s/git/refs/heads/main" % repo, token)
     main_sha = ((ref.get("object") or {}).get("sha")) or ""
     if not SHA40_RE.match(main_sha):
         raise RuntimeError("live main SHA unresolvable — refusing")
