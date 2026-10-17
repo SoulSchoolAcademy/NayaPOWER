@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 06:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5022,6 +5022,14 @@ _Last updated: 2026-10-17 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t932-lane10.md`
 
 **Evidence:** Honest supersession finding: cheap-checked first and found PR #2385 head moved d600dbeb->needd9540f, its three new commits already implement the t892 repair exactly — no duplicate PR opened (one-mechanism law). Verified tip 1b6f72de clean (index matches tree, 1243 files; 12th-recurrence drift healed upstream, no re-stamp needed). Independently repr
+
+### 🟡 t922 — Team 9, Naya Smith (Code Health) (Code Health) — 6.5/10 [PARTIAL]
+
+**Task:** Retry/repair receipt-gate #2364: falsify phantom t902 claims + rebuild receipt-pin proof
+
+**Receipt:** `twelve-lane-receipts/t922-lane9.md`
+
+**Evidence:** NOT PHANTOM - receipt honestly declared local-only commits (per no-push constraint) and documented negatives; negative evidence re-confirmed today: no t902-lane9.md, no t902 Smith score line, no object a26943cd3 anywhere; the proof files (check_scorecard_receipt_pin.py, test_receipt_pin_gate.py) persist on the same remote branch line naya/nine-rece
 
 ### ✅ t922 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
 
@@ -15599,6 +15607,22 @@ _Last updated: 2026-10-17 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ✅ gap-scorer-20261014-2220 — Team 9, Naya Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-seat re-run of t0572-lane9 S1 forensics from live bytes
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2220-lane9.md`
+
+**Evidence:** VERIFIED (independent, by scorer): live branch refs/heads/naya/five-retrieval-auth-gate-t942 = e654f16e8a49e9a26309fd852695a0bef202673d via git ls-remote 2026-10-17 06:05 UTC - EXACT match to receipt's claimed SHA: pinned handles are real, not phantom. CONTENT: every S1 handle re-derived from fresh bytes with exact verdicts (line drift named, 0/632
+
+### ✅ gap-scorer-20261014-2200 — Team 9, Naya Clarity (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Close t0412 tie-break gap: correct false docstrings at 4 sites, empirically pin both arms' tie-breaks, adjudicate 0.426/0.502 numbers
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2200-lane9.md`
+
+**Evidence:** VERIFIED: cross-receipt consistency (arm SHA 2b683efcc762 matches gap-scorer-20261014-2230's later read; local ls-tree shows arms/batteries/bin paths are not in repo main 28dc53aa - local research artifacts, no remote branch to pin, remote-verify not applicable). CONTENT: empirical identical-text tie experiment both arms + byte-proven zero-score di
+
 ### ✅ gap-t2030-lane9 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Re-pin Governed Production Promotion row live (t0072 child)
@@ -20163,6 +20187,12 @@ _Last updated: 2026-10-17 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-t0022-lane11 — Team 11, Naya Clarity Narzan (Human Value) — 8.0/10 [VERIFIED]
+
+**Task:** gap-t0022: board-leg M1/M6 first-measured on live #2641; second-seat re-run still owed
+
+**Evidence:** Verified: tool SHA 60ccd6735c and output SHA 3755e9472c both byte-exact on disk; source windows board-window-2641-2026-10-16T0138Z.json + p16 present; snapshot stale-archive routing claim confirmed. Real value: M6 leg 0/31 measured, M1 leg 12/31 first-read on live #2641 with honest re-anchor-ritual caveat; refusal to invent M1-headline/M5 numbers. 
+
 ### ✅ gap-t1402-lane11 — Team 11, lane-executor (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** second-seat judgment on the t1322->t1402 window audit M3 verdicts (close single-seat-judgment gap)
@@ -21086,6 +21116,14 @@ _Last updated: 2026-10-17 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-scorer-20261014-2230 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Execute t0810's two unexecuted probes: absent-venv fail-closed branch + faithful 0.4263 tie-break repro
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2230-lane1.md`
+
+**Evidence:** VERIFIED: no remote branch (local workspace harness/arm artifacts; remote-verify not applicable). CONTENT: probe 1 executed against real harness bytes - exit 2 EMBEDDINGS_VENV_MISSING with cause quoted verbatim; probe 2 second-seat CONFIRMED faithful repro MRR 0.4263 exact + 0.4829 as-built anchor proving arm equivalence; real drift (arm whole-file
 
 ### ✅ gap-t0472 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
 
