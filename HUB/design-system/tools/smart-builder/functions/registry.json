@@ -595,6 +595,17 @@
             "organizes_any_permitted_object",
             "private_lists_stay_private",
             "share_flow_tested"
+          ],
+          "ready": [
+            "organize notes, contacts, topics, posts",
+            "layer into every template",
+            "local list views"
+          ],
+          "connected": [
+            {
+              "action": "share list",
+              "grant": "nayanet"
+            }
           ]
         },
         {
