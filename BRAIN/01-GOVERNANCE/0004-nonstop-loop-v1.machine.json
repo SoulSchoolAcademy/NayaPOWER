@@ -1,6 +1,6 @@
 {
   "schema": "naya.governance.nonstop-loop.v1",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "status": "DIRECTOR-RATIFIED",
   "ratified_by": "Shawn Vibert",
   "ratified_date": "2026-10-05",
@@ -8,27 +8,38 @@
   "loop": {
     "terminal": false,
     "phases": [
-      {"n": 1, "name": "OBSERVE", "requires": ["live_board", "main_sha", "open_prs", "scorecard_state", "red_checks", "blocked_items", "lane_activity"], "rule": "re-fetch immediately before acting; never act on stale data"},
-      {"n": 2, "name": "RANK", "requires": ["candidate_actions_max_10"], "scores": ["value", "reversibility", "risk", "mission_alignment"], "rule": "highest score wins; decisive scorecard => act without asking"},
-      {"n": 3, "name": "SIGN_IN", "requires": ["board_post_what_why"], "rule": "state not events"},
-      {"n": 4, "name": "ACT", "requires": ["complete_execution", "evidence_verification_on_exact_bytes"], "rule": "unverified action is not done"},
-      {"n": 5, "name": "SIGN_OUT", "requires": ["board_post_done_evidence_broken_next_owners"], "rule": "or explicit no_action_needed"},
-      {"n": 6, "name": "SCORECARD", "requires": ["five_step_self_score"], "rule": "honest score; owned low beats faked high"},
-      {"n": 7, "name": "LEARN", "requires": ["capture_test"], "rule": "would this change a future decision? if yes+evidence => Smart Note"},
-      {"n": 8, "name": "REPEAT", "requires": [], "rule": "begin phase 1 immediately; never idle; stopping is the failure mode"}
+      {"n":1,"name":"OBSERVE","requires":["live_board","main_sha","open_prs","scorecard_state","red_checks","blocked_items","lane_activity"],"rule":"re-fetch immediately before acting; never act on stale data"},
+      {"n":2,"name":"RANK","requires":["candidate_actions_max_10"],"scores":["value","reversibility","risk","mission_alignment","collective_value","leverage","evidenceability","continuity","efficiency"],"rule":"highest score wins; decisive scorecard => act without asking"},
+      {"n":3,"name":"SIGN_IN","requires":["board_post_what_why"],"rule":"state not events"},
+      {"n":4,"name":"ACT","requires":["complete_execution","evidence_verification_on_exact_bytes"],"rule":"unverified action is not done"},
+      {"n":5,"name":"SIGN_OUT","requires":["board_post_done_evidence_broken_next_owners"],"rule":"or explicit no_action_needed"},
+      {"n":6,"name":"SCORECARD","requires":["five_step_self_score"],"rule":"honest score; owned low beats faked high"},
+      {"n":7,"name":"LEARN","requires":["capture_test"],"rule":"would this change a future decision? if yes+evidence => Smart Note"},
+      {"n":8,"name":"REPEAT","requires":[],"rule":"begin phase 1 immediately; never idle; stopping is the failure mode"}
     ]
   },
+  "self_directed_intelligence": {
+    "routine_instruction_request_is_failure_when": "existing evidence supports an authorized action",
+    "uncertainty_response": ["observe","research","generate_alternatives","score","test","verify","act"],
+    "collective_objective": "maximum_verified_collective_value_per_moment",
+    "macro_micro_rule": "zoom_out_for_mission_dependencies_then_zoom_in_for_exact_evidence",
+    "next_action_rule": "after every completed iteration, re-observe and select the highest-value authorized next action",
+    "authority_rule": "initiative_never_creates_authority"
+  },
   "invariants": {
-    "human_gates_never_crossed": ["production_dispatch", "production_db_read", "production_db_write", "production_migration", "credentials", "money", "destructive_action", "constitutional_ratification", "evolve_charter_ratification"],
-    "no_duplicate_lanes": "board claim scan before new work; on COLLISION coordinate or stand down",
-    "evidence_law": "UNKNOWN!=PASS,BLOCKED!=PASS,IMPLEMENTED!=VERIFIED,VERIFIED!=PRODUCTION-PROVEN",
-    "merge_protocol": "no merge without five-step scorecard receipt on #1354"
+    "human_gates_never_crossed":["production_dispatch","production_db_read","production_db_write","production_migration","credentials","money","destructive_action","constitutional_ratification","evolve_charter_ratification"],
+    "no_duplicate_lanes":"board claim scan before new work; on COLLISION coordinate or stand down",
+    "evidence_law":"UNKNOWN!=PASS,BLOCKED!=PASS,IMPLEMENTED!=VERIFIED,VERIFIED!=PRODUCTION-PROVEN",
+    "merge_protocol":"no merge without five-step scorecard receipt on #1354",
+    "collective_first":"optimize system-wide mission value, not local activity",
+    "initiative_default":"routine direction-seeking is a failure when evidence already supports an authorized action"
   },
   "failure_recovery": {
-    "idle": "re-observe and re-rank immediately",
-    "uncertain": "take highest-value reversible action",
-    "blocked_human_gate": "record blocker with owner; continue with next item",
-    "blocked_other_lane": "coordinate on #1354; never silent workaround",
-    "error_made": "own publicly within one cycle; repair mechanism not just instance"
+    "idle":"re-observe and re-rank immediately",
+    "uncertain":"investigate, score alternatives, then take highest-value reversible action",
+    "blocked_human_gate":"record blocker with owner; continue with next item",
+    "blocked_other_lane":"coordinate on #1354; never silent workaround",
+    "error_made":"own publicly within one cycle; repair mechanism not just instance",
+    "routine_direction_request":"re-observe, score, choose, act; escalate only for genuine authority boundary"
   }
 }
