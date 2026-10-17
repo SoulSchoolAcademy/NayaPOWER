@@ -1,0 +1,61 @@
+{
+  "task_family": "state_file",
+  "verdict": "PARTIAL",
+  "stages": [
+    {
+      "stage": "CAPTURE",
+      "state": "PRESENT",
+      "detail": "captured via TRIAL_EVIDENCE; verification: Independent verification by Naya 1: all four Tier-S confirmed. T14 re-graded 40/"
+    },
+    {
+      "stage": "PERSIST",
+      "state": "PRESENT",
+      "detail": "row 66122e1e-677b-4ef0-a765-80d08ccfa85b in canonical store learning_evidence (level=E5_CAN_TEACH, status=ACTIVE)"
+    },
+    {
+      "stage": "RECEIPT",
+      "state": "PRESENT",
+      "detail": "trial receipt successor-reuse/trials/sr-p5-result.md exists in repo"
+    },
+    {
+      "stage": "SMART LINK",
+      "state": "UNINSTRUMENTED",
+      "detail": "T11\u2013T14 lessons have no smart-note projection (corpus gap named in lesson-selection criterion); owner: cold-retrieve lane"
+    },
+    {
+      "stage": "COLD RETRIEVE",
+      "state": "PRESENT",
+      "detail": "lesson 66122e1e (lesson:TIER1-2026-10-08-T14) retrieved live from learning_evidence at 2026-10-09T17:26:26.953480+00:00"
+    },
+    {
+      "stage": "COMPREHEND",
+      "state": "PRESENT",
+      "detail": "lesson lesson:TIER1-2026-10-08-T14 registered for 'state_file'; brief carries trigger terms"
+    },
+    {
+      "stage": "APPLY",
+      "state": "PRESENT",
+      "detail": "cold agent 'cold-arm-b-2124dfd5' produced an application artifact"
+    },
+    {
+      "stage": "OBSERVE",
+      "state": "PRESENT",
+      "detail": "observation recorded: ifexp_count=0"
+    },
+    {
+      "stage": "INDEPENDENTLY VERIFY",
+      "state": "PRESENT",
+      "detail": "deterministic verifier verdict: PASS (ifexp_count=0)"
+    },
+    {
+      "stage": "LEARN",
+      "state": "PRESENT",
+      "detail": "lesson already at E5_CAN_TEACH (independent verification on record); promotion of NEW learnings is the Learning Lane's writ, not this run's"
+    },
+    {
+      "stage": "SUCCESSOR REUSE",
+      "state": "PRESENT",
+      "detail": "reuse receipt 8c8c27667143\u2026 emitted (reused=True); persistent handoff row in nayanet_successor_handoffs is NAMED for authorization, not written"
+    }
+  ]
+}
