@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-17T04:36:24Z",
+ "generated_utc": "2026-10-17T04:46:26Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "a510e6cb2f9a3e9cccdd7b1a0f6a0fd5efbb60a5",
   "short": "a510e6cb2f9a",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-17T04:35:58Z"
+  "checked_utc": "2026-10-17T04:45:57Z"
  },
  "venue": {
   "live": 2641,
@@ -15,11 +15,11 @@
   ]
  },
  "waves": {
-  "active": 273,
+  "active": 274,
   "active_seats": [],
-  "last_completed": 272,
-  "last_completed_at": "2026-10-17T04:26:30Z",
-  "rotation_cursor": "wave-274: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
+  "last_completed": 273,
+  "last_completed_at": "2026-10-17T04:37:07Z",
+  "rotation_cursor": "wave-275: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
  },
  "lanes": {
   "free": [
@@ -217,27 +217,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 27
+   "age_s": 30
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 27
+   "age_s": 30
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 27
+   "age_s": 30
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 27
+   "age_s": 30
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 27
+   "age_s": 30
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 27
+   "age_s": 30
   }
  }
 }
