@@ -1064,3 +1064,63 @@ Every room should remove burden, increase understanding, make useful action obvi
 The aim is not to match the best interfaces already in the world.
 
 The aim is to understand why they work, combine their strongest transferable intelligence with what NayaNET already does uniquely well, and create the next standard for smart applications.
+
+---
+
+# 31. PRODUCT LOOP — BUILD, SEE, LEARN, SHARE, GROW
+
+**Status: canonical product-intent clarification; this section defines the experience contract, not proof that every capability is implemented or production-connected.**
+
+## The promise
+
+NayaNET is not a collection of disconnected tools. It is a connected builder ecosystem where the work a person creates, the intelligence they gain, the people they bring together, and the community that forms around that work reinforce one another.
+
+**BUILD → SEE → LEARN → SHARE → CONNECT → GROW → BUILD BETTER**
+
+- **BUILD:** A person builds a page, project, smart app, or other useful artifact with NayaNET.
+- **SEE:** NINA and the reporting experience help them understand their world over multiple horizons: daily, weekly, monthly, and yearly. The Smart Feed shows meaningful activity and current project state, with provenance and honest status rather than simulated progress.
+- **LEARN:** When a person discovers something useful, they capture it as a Smart Note. A Smart Link provides a navigable way to share or revisit the relevant artifact or learning. A link by itself is not proof that the underlying lesson has been durably captured, verified, or learned.
+- **SHARE:** The builder can share the page or project through the feed, with audience and privacy made clear. Shared learning should retain attribution, source, permissions, and truth state.
+- **CONNECT:** A project can have a Smart Space around it—a place where people can follow the work, discuss it, view updates, contribute, and offer support. The page is the seed; the Space is the community around it.
+- **GROW:** Optional, connected capabilities can help the builder invite people, communicate, collaborate, and refer others into NayaNET. Smart Mail, a Space synchronized with its project/page, and a future Smart Growth capability are examples of modules that should compose with the same project identity and canonical intelligence substrate.
+- **BUILD BETTER:** Useful learning is made available to the right people under the right permissions, so the next builder can reuse what was learned instead of starting from zero.
+
+## One project identity, composable capabilities
+
+A page or project is not a dead-end destination. It is a connected node that may expose relevant capabilities—feed updates, a related Space, Smart Mail, Smart Notes and Links, invitations/referrals, and reporting—when those capabilities are actually available and authorized.
+
+These are modules around one project identity, not separate competing records of truth. Each integration must reuse canonical identity, permissions, provenance, and events; avoid duplicate stores or shadow learning ledgers; and clearly distinguish **available**, **connected**, **authorized**, **working**, and **verified** states.
+
+Smart Growth is a future capability, not to be presented as already built. It should support permission-aware invitations and referral attribution, respect consent and communication preferences, and avoid spam, dark patterns, or growth metrics that override human dignity.
+
+## Community learning and safety
+
+The network effect is not “broadcast everything to everyone.” It is **make reusable learning discoverable by the people who are authorized to benefit from it**.
+
+- Private-by-default where scope is unclear; explicit choice before publishing or inviting.
+- Preserve author/source attribution, version, evidence, confidence, and correction history.
+- A Smart Link is navigation/sharing; it does not itself prove capture, persistence, verification, or behavior change.
+- Personal reports and private project activity remain scoped to the user or authorized collaborators; public feed posts and Spaces expose only intentionally shared material.
+- The feed should make clear what changed, why it matters, the current state, the owner, and the next meaningful action.
+- Reports should distill the same canonical events into daily/weekly/monthly/yearly views—not invent independent totals or contradictory truths.
+- A lesson is “learned” only when there is evidence of correct reuse or behavior change, not merely because a note or link exists.
+
+## End-to-end acceptance journey
+
+A cold user must be able to:
+
+1. Build or publish a page/project.
+2. Understand its current state in the feed and their broader world in the report views.
+3. Share the page to an intended audience with privacy and attribution intact.
+4. Create or join a related Space and understand how it relates to the project.
+5. Capture a useful discovery as a Smart Note and share a Smart Link without overstating what the link proves.
+6. Connect optional Smart Mail/invitation/referral features only when they are implemented, connected, and authorized.
+7. Have another authorized participant retrieve the learning, understand its source and confidence, and demonstrate useful reuse.
+8. See the resulting activity reflected consistently in the canonical feed/reporting projections.
+
+**Water-test definition:** a real builder artifact moves through visible project state → intentional share → community interaction → durable, attributed learning → authorized retrieval and reuse → consistent feed/report projection. Every stage must carry real evidence; a mock, URL, successful render, or manually asserted “done” is insufficient.
+
+## Product outcome
+
+The value compounds when one person's verified learning reduces another person's work, while each person retains control over their identity, private information, and contributions. NayaNET wins when building produces visible progress, progress produces understanding, understanding produces reusable learning, and shared learning helps the community build better together.
+
