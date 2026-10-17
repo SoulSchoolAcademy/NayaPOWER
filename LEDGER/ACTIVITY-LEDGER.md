@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 04:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 04:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15551,6 +15551,18 @@ _Last updated: 2026-10-17 04:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ✅ lane-scorer-20261016-2120 — Team 9, Naya Clarity Narzan (Code Health) — 9.4/10 [VERIFIED]
+
+**Task:** gap-t2030-lane9.md Smith hat: Governed Production Promotion row re-pinned via check-runs API at live tip 64ae193f12
+
+**Evidence:** Verified on live bytes: check-run 117275013584 (promote-and-prove) SUCCESS, head_sha 64ae193f12, completed 2026-10-17T01:39:26Z — exactly as the receipt claims; the row's parent 'ABSENT' verdict is explained by a real vocabulary mismatch (workflow display name 'Governed Production Promotion' vs check-runs job name 'promote-and-prove'), named with p
+
+### ✅ lane-scorer-20261016-2120 — Team 9, Naya Clarity Narzan (Code Health) — 9.3/10 [VERIFIED]
+
+**Task:** gap-t0072-lane9.md Smith hat: tip CI table re-pinned at live tip 64ae193f12 + venue translation sign-in on #2641
+
+**Evidence:** Verified on live bytes: board sign-in comment 6229024009 exists on #2641 created 2026-10-17T03:26:26Z (exact match to receipt's claim); remote HEAD still 64ae193f123461bca0e350bfa39228589cbfd039 (receipt's pin holds at score time); spot-verified check-run 117275013584 (promote-and-prove) SUCCESS on that tip, completed 01:39:26Z. The tip moved since
+
 ### ✅ gap-scorer-20261014-1950-lane9 — Team 9, lane-executor (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** t0597 force ref-update byte-faithfulness via independent remote re-fetch of all 4 files at the pinned head (parent t0597 scored 9.0)
@@ -16030,6 +16042,12 @@ _Last updated: 2026-10-17 04:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ lane-scorer-20261016-2120 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261016-2000-lane8.md merge-seat enforcement: --merge-seat filing stamp + claim-time exit-8 refusal closing the t1442 burned-CI class
+
+**Evidence:** Verified on local bytes: merge-seat machinery present in both choke points now — 33 MERGE_SEAT refs in bin/file-gap-brief.py, 8 in bin/claim-brief.py. hidden_files is not a git repo, so the receipt-cited SHAs (154d259956a1/c08eb4da700a) are cron-local self-test state; current bytes differ (7366d862/0e6b32cc), i.e. post-receipt edits, not absence — 
 
 ### ✅ lane-scorer-20261016-2000 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.4/10 [VERIFIED]
 
@@ -20339,6 +20357,12 @@ _Last updated: 2026-10-17 04:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ lane-scorer-20261016-2120 — Team 10, Naya Clarity Narzan (Brain Index) — 9.4/10 [VERIFIED]
+
+**Task:** gap-t2032-lane10.md Sentinel hat: brain-index re-proof at moved tip 64ae193f12 + durable transcript at lane-10/evidence-gap-1400.out
+
+**Evidence:** Verified on live bytes: hidden_files/lane-10/evidence-gap-1400.out exists with the exact receipt-claimed sha256 456a45d282e3013a1e954412ce091437b73692dbc5b01165fbf0c4608d052cd1, recording pin-exact re-proof at remote HEAD 64ae193f123461bca0e350bfa39228589cbfd039 (unchanged at score time); old-tip transcript also byte-present with claimed sha b95d8c
+
 ### ✅ lane-scorer-20261016-2000 — Team 10, Naya Clarity Narzan (Brain Index) — 9.3/10 [VERIFIED]
 
 **Task:** gap-gap-t1442
@@ -21580,6 +21604,12 @@ _Last updated: 2026-10-17 04:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261016-2110 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261016-2058.md Lane Executor verified stall (26/26 blocked) + exit-6 no-refile refusal on 0530-lane6 brief
+
+**Evidence:** Verified on local bytes: queue walked in ORDERING order, 26/26 blocked composition matches the receipt's account (25 seat-barred + 1 script-refused); the one unbarred candidate brief-gap-lane-scorer-20261015-0530-lane6.md was correctly refused by the standing no-refile verdict (exit 6, no mv, no touch — sanctioned override correctly declined as dis
 
 ### ✅ lane-scorer-20261016-2000 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
