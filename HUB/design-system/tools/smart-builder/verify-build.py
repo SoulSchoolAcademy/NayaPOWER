@@ -10,11 +10,55 @@ Runs after assemble.py, before any receipt is written:
 
 Exit 0 = verified. Exit 1 = failed, with reasons. Updates the manifest.
 """
-import json, re, subprocess, sys, os
+import json, re, shutil, subprocess, sys, os
 
 def fail(msg):
     print('VERIFY FAIL:', msg)
     sys.exit(1)
+
+def find_chrome():
+    """Locate a headless-chrome binary.
+
+    Priority: CHROME env var override -> PATH binaries ->
+    Playwright installs (any version, chrome or chrome-headless-shell) ->
+    legacy pinned path. Returns (path or None, probed description).
+    """
+    probed = []
+
+    def accept(p):
+        if p:
+            probed.append(p)
+            if os.path.isfile(p) and os.access(p, os.X_OK):
+                return p
+        return None
+
+    env = os.environ.get('CHROME')
+    if env:
+        found = accept(env)
+        if found:
+            return found, 'CHROME=' + env
+        return None, 'CHROME=%s (missing/not executable)' % env
+    for name in ('google-chrome', 'google-chrome-stable', 'chrome',
+                 'chromium', 'chromium-browser'):
+        found = accept(shutil.which(name))
+        if found:
+            return found, 'PATH:' + name
+    import glob
+    base = os.path.expanduser('~/.cache/ms-playwright')
+    for pat in (os.path.join(base, 'chromium-*', 'chrome-linux*', 'chrome'),
+                os.path.join(base, 'chromium_headless_shell-*',
+                             'chrome-headless-shell-linux64',
+                             'chrome-headless-shell')):
+        for p in sorted(glob.glob(pat)):
+            found = accept(p)
+            if found:
+                return found, 'playwright:' + p
+    # legacy pinned path — last resort, kept so old receipts stay explainable
+    found = accept(os.path.expanduser(
+        '~/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome'))
+    if found:
+        return found, 'legacy-pinned'
+    return None, 'probed: ' + ', '.join(probed) + ' — none executable'
 
 def main():
     import argparse
@@ -72,21 +116,25 @@ def main():
     # headless render check — recorded separately, never silently passed.
     # Structural PASS does not imply visual PASS. Trial 1 acceptance
     # requires render == "passed".
-    chrome = os.path.expanduser('~/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome')
+    chrome, chrome_source = find_chrome()
     shot = '/tmp/_verify_shot.png'
-    render_status, render_note = 'skipped', 'no headless chrome available'
-    if os.path.exists(chrome):
+    render_status, render_note = 'skipped', 'no headless chrome available — ' + chrome_source
+    if chrome:
+        if os.path.exists(shot):
+            os.remove(shot)  # never judge a render on a stale screenshot
         r = subprocess.run(
             [chrome, '--headless', '--disable-gpu', '--no-sandbox',
-             '--window-size=1280,2000', '--hide-scrollbars',
+             '--window-size=1280,2000',
+             '--hide-scrollbars',
              '--virtual-time-budget=6000', '--screenshot=' + shot,
              'file://' + os.path.abspath(a.page)],
             capture_output=True, text=True, timeout=60)
         if not os.path.exists(shot) or os.path.getsize(shot) < 20000:
-            render_status, render_note = 'failed', 'render produced no meaningful screenshot'
+            render_status, render_note = (
+                'failed', 'render produced no meaningful screenshot via ' + chrome_source)
         else:
             render_status = 'passed'
-            render_note = 'screenshot %d bytes' % os.path.getsize(shot)
+            render_note = 'screenshot %d bytes via %s' % (os.path.getsize(shot), chrome_source)
             print('ok: renders,', render_note)
     else:
         print('render: SKIPPED —', render_note)
