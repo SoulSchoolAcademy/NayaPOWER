@@ -1,0 +1,247 @@
+{
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "capture_id": "20261004-sn024-smart-note-this-lifecycle",
+  "category": "SYSTEM_INTELLIGENCE",
+  "intelligence": {
+    "ai_view": {
+      "instruction": "When you capture a Smart Note, you execute the full 19-step lifecycle identically every time: official format (SN-002 specimen), official spot, registry check, capture JSON, Brain projection, Smart Link, intelligent event, learning event, Hub projection, notification. You never invent your own format or spot. You treat a learning event with no observable capability change as a failure to report, not learning.",
+      "primary_evaluation": "After every intelligent event, can you replay the intelligence, connect it to what you know, demonstrate a capability you did not have before it, and retain it across sessions? If not, the learning event did not happen."
+    },
+    "applicability": "Every Naya seat, every Smart Note capture, every intelligent event. No seat invents a second format, a second spot, or a second capture mechanism. The learning-event requirement applies to every intelligent event without exception.",
+    "connections": [
+      {
+        "target": "SN-002 — Smart Note node operating flow, end-to-end protocol (the official format specimen this note conforms to)",
+        "type": "CONFORMS_TO"
+      },
+      {
+        "target": "SN-016 — Prime Judgment Rule (Amendment 0002): the value function this lifecycle serves",
+        "type": "SERVES"
+      },
+      {
+        "target": "live-intelligence-commit-proof.yml — the merge-triggered workflow that fires the intelligent event",
+        "type": "TRIGGERED_BY"
+      },
+      {
+        "target": ".naya/memory/smart-notes/index.json — the registry this note is findable through",
+        "type": "REGISTERED_IN"
+      }
+    ],
+    "decisions": [
+      "Adopt the one-official-format / one-official-spot rule as standing law: SN-002 is the specimen, every seat conforms, every time.",
+      "Adopt the 21-step Smart Note lifecycle as the canonical operating procedure for every capture.",
+      "Adopt the learning-event requirement: every intelligent event must produce an observable capability change (replayable, understood, grown-from, baked in, locked in); otherwise it is a notification, not learning, and it must be fixed.",
+      "Project every captured IB to the Hub personal feed (attributed) and collective feed (unattributed) with notification — specified as law, implementation pending."
+    ],
+    "essence": "When a human says 'smart note this,' Naya distills the conversation into an Intelligent Block written in the ONE official format (SN-002 specimen) and committed to the ONE official spot, then fires an intelligent event. Every intelligent event must trigger a learning event: the system becomes observably smarter — it can replay the intelligence, understand it, grow from it — and it stays learned: baked in, locked in. The intelligence projects to the Hub personal feed (with the human's name) and the collective feed (as pure wisdom, no name), announced by a notification. Every valuable insight, every time. Nine Nayas doing it nine different ways is broken and must be fixed, because a system that cannot find its own intelligence cannot learn from it.",
+    "human_view": {
+      "goal": "You say 'smart note this' once. Naya does the same thing every time, hands you one Smart Link, the system gets smarter because of it, and you watch it happen in your feed and the collective feed.",
+      "meaning": "Every valuable thing you tell Naya is distilled (never raw text), written the same way, filed in the same place, and then the whole system learns from it — visibly. Your feed carries your name; the collective feed carries just the wisdom.",
+      "simple_rule": "SAY IT ONCE → SAME FORMAT → SAME SPOT → SMART LINK → SYSTEM LEARNS → YOU SEE IT → IT STAYS LEARNED."
+    },
+    "learning_lesson": "Sameness is what makes intelligence compound. One format, one spot, every time turns capture into memory, memory into learning, learning into growth. And the learning event is the heartbeat: every intelligent event must make Naya observably smarter and permanently learned. If that isn't happening, something is wrong and it must be fixed.",
+    "machine_view": {
+      "authority_inheritance": false,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "event_chain": [
+        "TRIGGER",
+        "DISTILL",
+        "STRUCTURE",
+        "COMMIT",
+        "INTELLIGENT_EVENT",
+        "LEARNING_EVENT",
+        "PROJECT_PERSONAL",
+        "PROJECT_COLLECTIVE",
+        "NOTIFY",
+        "RETRIEVE",
+        "APPLY",
+        "OBSERVE",
+        "VERIFY",
+        "LEARN",
+        "EVOLVE"
+      ],
+      "format_law": {
+        "rule": "ONE official format, ONE official spot. Code is law.",
+        "sections": [
+          "IN_A_NUTSHELL",
+          "HUMAN_NOTE",
+          "CHILD_NOTE",
+          "GRANDMA_NOTE",
+          "NAYA_NOTE",
+          "MACHINE_NOTE",
+          "LEARNING_LESSON",
+          "WHAT_IT_MEANS",
+          "WHATS_IN_IT_FOR_YOU",
+          "HOW_TO_APPLY",
+          "HOW_IT_CONNECTS",
+          "EXACT_EVENT_FLOW",
+          "RECEIPT",
+          "TRUTH_BOUNDARY",
+          "WHAT_SUCCESS_LOOKS_LIKE",
+          "NEXT_ACTION"
+        ]
+      },
+      "learning_event": {
+        "definition": "on every intelligent event the system integrates the intelligence and becomes measurably smarter",
+        "guarantees": [
+          "replayable",
+          "understood",
+          "grown_from",
+          "baked_in",
+          "locked_in"
+        ],
+        "invariant": "a learning event with no observable capability change is a notification, not learning"
+      },
+      "truth_state": "CANDIDATE",
+      "raw_source_separate_from_distillation": true
+    },
+    "naya_view": {
+      "add_or_strengthen": "The learning-event requirement: integrate every intelligent event until it is replayable, understood, grown-from, baked in. The projection legs: personal feed (attributed), collective feed (unattributed), notification.",
+      "anti_pattern": "Inventing your own note format. Filing outside the official spot. Claiming the learning event fired when nothing observably changed. Treating the GitHub file as the finish line.",
+      "cross_reference_result": "SN-002 already specifies the end-to-end protocol and the official format; SN-024 conforms to it exactly and adds the lifecycle directive, the one-format law, and the learning event.",
+      "operating_loop": "UNDERSTAND INTENT → DISTILL → CHECK VALUE/PRIVACY/SCOPE → RECONCILE → WRITE OFFICIAL FORMAT → COMMIT OFFICIAL SPOT → PRESERVE EVENT/LINEAGE/RELATIONSHIP/INDEX/RECEIPT → REREAD → BRAIN PROJECTION → SMART LINK → RETURN LINK → FIRE INTELLIGENT EVENT → PROCESS LEARNING EVENT → PROJECT HUB → NOTIFY → RETRIEVABLE → APPLY → OBSERVE → VERIFY → LEARN → EVOLVE.",
+      "preserve": "The exact SN-002 section structure and order; the date-partitioned path convention; the SN registry discipline (tree + open PRs + #554); the CANDIDATE truth ceiling on capture.",
+      "purpose": "Make every Smart Note capture identical, findable, event-firing, and learning-producing — the heartbeat of the collective intelligent chain.",
+      "event_flow": [
+        {
+          "step": 1,
+          "name": "Human intent",
+          "trigger_or_action": "\"Smart Note this.\"",
+          "accomplishes": "tells Naya this deserves durable treatment."
+        },
+        {
+          "step": 2,
+          "name": "NIA Language",
+          "trigger_or_action": "maps normal human language to `CAPTURE_DURABLE_INTELLIGENCE`.",
+          "accomplishes": "Shawn does not have to speak machine syntax."
+        },
+        {
+          "step": 3,
+          "name": "Distillation",
+          "trigger_or_action": "extract the durable intelligence. Never raw text.",
+          "accomplishes": "the note carries meaning, not transcript."
+        },
+        {
+          "step": 4,
+          "name": "Privacy / authority / scope",
+          "trigger_or_action": "LAW checks — may this be captured? Personal, private, shared, or public? May it be published?",
+          "accomplishes": "capture never leaks, and projection never over-shares."
+        },
+        {
+          "step": 5,
+          "name": "Reconciliation",
+          "trigger_or_action": "check the SN registry (live tree + open PRs + #554) for duplicates and conflicts; take the next free SN number.",
+          "accomplishes": "one identity per intelligence. No collisions."
+        },
+        {
+          "step": 6,
+          "name": "Format",
+          "trigger_or_action": "write the ONE official format. SN-002 is the specimen: same sections, same order, same frontmatter table.",
+          "accomplishes": "every seat's output is findable, skimmable, and machine-checkable. Code is law."
+        },
+        {
+          "step": 7,
+          "name": "Placement",
+          "trigger_or_action": "commit to the ONE official spot: `BRAIN/05-MEMORY/SMART-NOTES/<YYYY>/<MM>/<DD>/SYSTEM-INTELLIGENCE/<TOPIC>/<SUBTOPIC>/SN-<NNN>/`.",
+          "accomplishes": "no more \"where did she put it.\" One address scheme, forever."
+        },
+        {
+          "step": 8,
+          "name": "Intelligent Block",
+          "trigger_or_action": "the canonical machine object `IB-...` is created with truth state CANDIDATE.",
+          "accomplishes": "one governed identity for the intelligence."
+        },
+        {
+          "step": 9,
+          "name": "Lineage",
+          "trigger_or_action": "record where the intelligence came from (conversation, authority, timestamp).",
+          "accomplishes": "provenance is never a mystery."
+        },
+        {
+          "step": 10,
+          "name": "Relationship",
+          "trigger_or_action": "link to related blocks (this note → extends SN-002).",
+          "accomplishes": "the graph grows; nothing is an island."
+        },
+        {
+          "step": 11,
+          "name": "Index",
+          "trigger_or_action": "the IB becomes retrievable by date/category/topic/SN/IB.",
+          "accomplishes": "future Nayas can find it."
+        },
+        {
+          "step": 12,
+          "name": "Checkpoint / current cognition state",
+          "trigger_or_action": "the system's current cognition pointer advances to include this IB.",
+          "accomplishes": "the organism knows what it knows."
+        },
+        {
+          "step": 13,
+          "name": "Receipt",
+          "trigger_or_action": "persistence receipt issued (GitHub commit SHA + PR; runtime receipt when the runtime path is exercised).",
+          "accomplishes": "\"saved\" is proven, not claimed."
+        },
+        {
+          "step": 14,
+          "name": "Independent reread",
+          "trigger_or_action": "re-read the persisted bytes; confirm they match intent.",
+          "accomplishes": "the saved thing is the right thing."
+        },
+        {
+          "step": 15,
+          "name": "GitHub Brain projection",
+          "trigger_or_action": "the human-readable Markdown projection is the Smart Link returned to the human.",
+          "accomplishes": "one primary human receipt. No JSON-diving required."
+        },
+        {
+          "step": 16,
+          "name": "Intelligent event",
+          "trigger_or_action": "fire the intelligent event: \"new intelligence has landed.\"",
+          "accomplishes": "the whole system wakes up to the new intelligence."
+        },
+        {
+          "step": 17,
+          "name": "Learning event",
+          "trigger_or_action": "the system integrates the intelligence — and must become observably smarter: it can **replay** it (reproduce the reasoning), **understand** it (connect it to existing knowledge), **grow** from it (compound it into capability), and it **stays learned** (baked in, locked in, durable).",
+          "accomplishes": "this is the whole idea of NayaNET. A learning event with no observable capability change is a notification, not learning. If the learning event isn't happening, something is wrong and it needs to be fixed."
+        },
+        {
+          "step": 18,
+          "name": "Hub projection",
+          "trigger_or_action": "project to the Hub — personal intelligence feed (attributed, with the human's name) and collective intelligence area (unattributed intelligent block — just the wisdom).",
+          "accomplishes": "the intelligence reaches humans where they live."
+        },
+        {
+          "step": 19,
+          "name": "Notification",
+          "trigger_or_action": "activity-feed entry + notification: new intelligence has arrived.",
+          "accomplishes": "humans watch the system get smarter. That visible compounding is what earns trust.  ---  | Field | Value | |---|---| | Project cognition pointer | **NOT YET PROVEN** — no runtime invocation from this seat | | Execution receipt | **NOT YET PROVEN** — no runtime invocation from this seat | | Content h"
+        }
+      ],
+      "event_flow_steps": 19
+    },
+    "simple_view": {
+      "child": "Imagine Naya has a magic notebook. All her helpers write in it the SAME way, in the same drawer. Every time something new goes in, Naya reads it, gets smarter, and never forgets. That's how she grows!",
+      "grandma": "Think of the family recipe box: every card written the same way, filed in the same box. Every new card teaches the whole family, and the box never loses one. Naya does that with everything wise she's told."
+    },
+    "successor_effect": "The next capture after SN-024 inherits: the exact format, the exact spot, the registry discipline, the capture-JSON trigger, and the learning-event bar. Successors prove the event/learn/project/notify legs; until then no seat claims the loop is complete.",
+    "uncertainty": "The event-bus mechanism (push vs poll), whether seats or a coordinator fire the event, deduplication rules, and the exact nine-node runtime binding are undecided. The runtime legs (Supabase persistence, automatic Hub projection, notification delivery) are specified as law but not yet proven from any seat."
+  },
+  "projection": {
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "human_director_authorized_publication": true,
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "subtopic_slug": "END-TO-END-PROTOCOL",
+    "topic_slug": "SMART-NOTE-NODE-OPERATING-FLOW"
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-024",
+  "source": {
+    "captured_at": "2026-10-04",
+    "captured_at_utc": "2026-10-04T15:47:00Z",
+    "source_reference": "Shawn Vibert direct Human Director instruction on 2026-10-04: the canonical 'smart note this' lifecycle is the heart of NayaNET — one official format, one official spot, every Naya identical every time (nine formats in nine places is broken); every intelligent event fires a learning event (system becomes observably smarter: replayable, understood, grown-from, baked in, locked in); the intelligence projects to the personal feed (attributed) and the collective feed (unattributed) with notification. Every valuable insight, every time.",
+    "source_type": "human_director_system_law"
+  },
+  "subtopic": "END_TO_END_PROTOCOL",
+  "title": "\"Smart Note This\": The Intelligence Lifecycle and the Learning Event",
+  "topic": "SMART_NOTE_NODE_OPERATING_FLOW"
+}
