@@ -1,10 +1,12 @@
 """Extract per-piece real CSS from library source files, scoped under .nb-scope."""
 import re, json, os
 
-LIB = '/home/hatch/workspace/design-lib-work/HUB/design-system/library'
+# Portable: the library root is two dirs above this script (library/catalog/tools -> library).
+LIB = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 
 def find_source(fname):
-    for root, _, files in os.walk(LIB):
+    for root, dirs, files in os.walk(LIB):
+        dirs.sort()  # deterministic: a cold clone finds the same file
         if fname in files:
             return os.path.join(root, fname)
     return None
@@ -147,8 +149,9 @@ def extract_for(classes, css):
 
 if __name__ == '__main__':
     import sys
-    # quick self-test on one button entry
-    cat = json.load(open('/home/hatch/workspace/block-library/block-catalog.json'))
+    # quick self-test on one button entry, repo-relative
+    tools_dir = os.path.dirname(os.path.abspath(__file__))
+    cat = json.load(open(os.path.join(tools_dir, '..', 'block-catalog.json')))
     e = next(x for x in cat if x['model'] == 'NAYA-BTN-001')
     src = find_source(e['sources'][0]['source_file'])
     css = get_css(src)

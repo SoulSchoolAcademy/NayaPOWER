@@ -54,9 +54,12 @@ def main():
             fail('wall model not in index: ' + model)
     print('ok: all', len(manifest['wall_pieces']), 'wall models resolve')
 
-    # headless render smoke test
+    # headless render check — recorded separately, never silently passed.
+    # Structural PASS does not imply visual PASS. Trial 1 acceptance
+    # requires render == "passed".
     chrome = os.path.expanduser('~/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome')
     shot = '/tmp/_verify_shot.png'
+    render_status, render_note = 'skipped', 'no headless chrome available'
     if os.path.exists(chrome):
         r = subprocess.run(
             [chrome, '--headless', '--disable-gpu', '--no-sandbox',
@@ -65,14 +68,21 @@ def main():
              'file://' + os.path.abspath(a.page)],
             capture_output=True, text=True, timeout=60)
         if not os.path.exists(shot) or os.path.getsize(shot) < 20000:
-            fail('render produced no meaningful screenshot')
-        print('ok: renders, screenshot', os.path.getsize(shot), 'bytes')
+            render_status, render_note = 'failed', 'render produced no meaningful screenshot'
+        else:
+            render_status = 'passed'
+            render_note = 'screenshot %d bytes' % os.path.getsize(shot)
+            print('ok: renders,', render_note)
     else:
-        print('skip: no headless chrome available')
+        print('render: SKIPPED —', render_note)
 
-    manifest['verification'] = 'passed'
+    manifest['verification'] = {
+        'structural': 'passed',
+        'render': render_status,
+        'render_note': render_note,
+    }
     json.dump(manifest, open(a.manifest, 'w'), indent=2)
-    print('VERIFY PASSED')
+    print('VERIFY structural PASSED; render:', render_status.upper())
 
 if __name__ == '__main__':
     main()

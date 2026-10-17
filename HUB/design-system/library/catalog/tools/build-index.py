@@ -1,7 +1,21 @@
-"""Build the builder's index: every catalog model -> human label + real HTML + real CSS."""
-import json, re, sys, hashlib
-sys.path.insert(0, '/tmp')
+"""Build the builder's index: every catalog model -> human label + real HTML + real CSS.
+
+Portable: all paths resolve relative to this repo checkout. Run from anywhere:
+  python3 HUB/design-system/library/catalog/tools/build-index.py [--catalog PATH] [--out PATH]
+A cold checkout reproduces the checked-in index byte-for-byte (compare SHA-256).
+"""
+import json, re, sys, hashlib, os, argparse
+
+TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, TOOLS_DIR)
 from extract_css import find_source, get_css, extract_for
+
+ap = argparse.ArgumentParser()
+ap.add_argument('--catalog', default=os.path.join(TOOLS_DIR, '..', 'block-catalog.json'),
+                help='source catalog (default: library/catalog/block-catalog.json in this repo)')
+ap.add_argument('--out', default=os.path.join(TOOLS_DIR, '..', 'builder-index-v1.json'),
+                help='output index (default: library/catalog/builder-index-v1.json in this repo)')
+args = ap.parse_args()
 
 def clean_label(name):
     parts = [p.strip() for p in name.split('\u2014')]
@@ -23,7 +37,7 @@ CATNAME = {'BTN':'button','CRD':'board','TYP':'banner','JWL':'jewel','LST':'list
            'NAV':'navigation','FRM':'form','CHT':'chat','PAY':'payment','CAL':'calendar',
            'LAY':'layout','ONB':'onboarding','CMT':'comment','MED':'media'}
 
-cat = json.load(open('/home/hatch/workspace/block-library/block-catalog.json'))
+cat = json.load(open(args.catalog))
 css_cache, css_bank = {}, {}
 pieces, stats = {}, {'archived': 0, 'unarchived': 0, 'no_source': 0}
 
@@ -75,11 +89,11 @@ index = {
     'css_bank': css_bank,
     'pieces': pieces,
 }
-out = '/home/hatch/workspace/builder-index-v1.json'
+out = args.out
 json.dump(index, open(out, 'w'), ensure_ascii=False)
-import os
 print('entries:', len(pieces), '| css bank:', len(css_bank), '| status:', stats)
-print('file MB:', round(os.path.getsize(out) / 1048576, 2))
+print('wrote:', out, round(os.path.getsize(out) / 1048576, 2), 'MB')
+print('sha256:', hashlib.sha256(open(out, 'rb').read()).hexdigest())
 # check a board + jewel render CSS presence
 for m in ['NAYA-CRD-001', 'NAYA-JWL-001', 'NAYA-TYP-001']:
     p = pieces.get(m)
