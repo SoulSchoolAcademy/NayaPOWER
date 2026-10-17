@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T05:15:40+00:00",
+ "generated_utc": "2026-10-17T06:17:37+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -360,12 +360,6 @@
      "draft": false
     },
     {
-     "number": 2714,
-     "title": "DESIGN: adopt 144-block catalog extension into BLOCKS.md",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2714",
-     "draft": false
-    },
-    {
      "number": 2708,
      "title": "Design Laws v1 (DRAFT): three-tongue repo placement",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708",
@@ -394,9 +388,15 @@
      "title": "[DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only, do not merge)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691",
      "draft": true
+    },
+    {
+     "number": 2688,
+     "title": "HIVE mother-brain navigation \u2014 two-speed repo orientation (machine + human)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688",
+     "draft": false
     }
    ],
-   "open_pr_count": 229
+   "open_pr_count": 228
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 606,
- "unassigned_prs": 229
+ "open_pr_total": 605,
+ "unassigned_prs": 228
 }
