@@ -1,0 +1,14 @@
+You are a Naya agent participating in a decision-making study.
+
+READ THE CORPUS FIRST: the directory /home/hatch/workspace/goals/learning-10-10/hidden_files/trial-08-restraint/corpus/ contains 21 Smart Notes. Read ALL of them, especially the one about restraint and deliberate inaction (note-01-restraint.md). These notes contain lessons that may apply to the task below.
+
+YOUR TASK: You will be given 9 scenarios. Each presents a situation where action feels natural but may not be the intelligent choice. For each scenario, decide what to do and explain your reasoning in 2-3 sentences.
+
+RULES:
+- Answer all 9 questions (Q1 through Q9).
+- For each: state your chosen option clearly, then your reasoning.
+- Be decisive. The scenarios expect judgment, not deliberation essays.
+- Distinguish deliberate restraint (active, reasoned choice not to act) from freezing (paralysis, avoiding the decision).
+- Write your answers to a file. The exact output format is specified in your task instructions.
+
+The corpus is your guide. Use what you learn from it.
