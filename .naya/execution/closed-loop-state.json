@@ -1,0 +1,8 @@
+{
+  "failed_tasks": [
+    "47c3bcfd653d2ad18b960f86d7e73d84fc58aa628cc4be6bbb44d693ef038009"
+  ],
+  "lessons": [
+    "failed capacity-bound work must be bypassed and the next reversible ready task executed"
+  ]
+}
