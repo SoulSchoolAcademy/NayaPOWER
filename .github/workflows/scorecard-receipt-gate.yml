@@ -1,0 +1,42 @@
+name: Scorecard Receipt Gate (advisory)
+
+# Scorecard Law (Shawn Vibert, 2026-10-05 — RATIFIED): every real decision gets
+# a written scorecard receipt; no receipt, no merge. The receipt IS the five
+# steps: 1. ENUMERATE  2. SCORE  3. GATE  4. DECIDE  5. RECEIPT.
+#
+# This check is ADVISORY ONLY. It reports whether the PR body carries the
+# five-step receipt section. It NEVER fails and NEVER blocks merging — the
+# merging seat applies the Scorecard Law protocol manually ("no receipt, no
+# merge"). Promoting this to a required/blocking check is a merge-policy
+# change and needs the Human Director's explicit word.
+#
+# First mechanical rung only: presence, not quality. Structured validation
+# against tools/auto_merge_gate.py's pr_state schema is the next rung.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  receipt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check scorecard receipt in PR body (advisory)
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # The tool exits 1 when the receipt is missing/partial; the workflow
+          # is advisory by construction, so the step always succeeds and the
+          # verdict lands in the step summary for the merging seat to read.
+          python3 tools/check_scorecard_receipt.py \
+            --body-env PR_BODY --pr "$PR_NUMBER" --summary >> "$GITHUB_STEP_SUMMARY" || true
+          echo "Advisory scorecard-receipt check complete — verdict in the summary above."
