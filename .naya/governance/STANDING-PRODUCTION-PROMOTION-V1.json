@@ -2,12 +2,46 @@
   "schema": "NAYAPOWER_STANDING_PRODUCTION_PROMOTION_POLICY_V1",
   "policy_id": "STANDING-PRODUCTION-PROMOTION-V1",
   "version": "1.0.0",
-  "status": "RATIFIED",
+  "status": "CANDIDATE",
   "ratification": {
-    "authority": "HUMAN_DIRECTOR",
-    "ratified_at": "2026-09-29",
-    "ratification_scope": "Narrow standing authorization for routine main-to-production promotion only.",
-    "constitutional_amendment": "STANDING-PRODUCTION-AUTHORIZATION-AMENDMENT-V1"
+    "authority": "SCORING_MATRIX",
+    "authority_basis": "NO-WORD RATIFICATION standing law (Shawn, 2026-10-14): a status of RATIFIED requires scorecard pins (scorecard IDs + content hash + reviewer seats), never a word. A word-based claim is CLAIMED-UNVERIFIED, never ratified.",
+    "ratification_status": "NOT_RATIFIED",
+    "ratified_at": null,
+    "pins": {
+      "scorecards": [
+        {
+          "scorecard_id": "venue-2537-6169820905",
+          "venue_issue": 2537,
+          "venue_comment_id": 6169820905,
+          "reviewer_seat": "main seat (Naya 2)",
+          "scored_at": "2026-10-14T13:45:03Z",
+          "score": 6.9,
+          "score_scale": 10,
+          "ratification_threshold": 9.5,
+          "verdict": "BELOW_BAR",
+          "sub_scores": {
+            "scope": 9,
+            "fail_closed": 9,
+            "exclusions": 10,
+            "parity": 9,
+            "revocation": 8,
+            "pins": 3,
+            "authority_basis": 4,
+            "review_mechanism": 5,
+            "activation_verifiability": 6,
+            "no_contradiction": 6
+          },
+          "reviewed_content_sha256": "4c28293acb9b1181ebe92b0526ccfc31d9d0155f21240dec54fff6a27974dd6b",
+          "reviewed_git_blob_sha": "640fd29a84160eee890cc3f020a3622f240d690c",
+          "reviewed_tip": "0cc7c9f214ea9ef0503263e583e16b91801e2096",
+          "reviewed_tip_note": "policy bytes byte-identical at tip c13f260fad3d73847a88043cdbc42062d3af53b4 (blob sha unchanged)",
+          "artifact_sha256": "4c28293acb9b1181ebe92b0526ccfc31d9d0155f21240dec54fff6a27974dd6b",
+          "queue_ref": "bottleneck-queue.md ACTIONABLE entry (main seat, 2026-10-14 ~13:45Z)"
+        }
+      ]
+    },
+    "re_score_gate": "re-score >= 9.5 by a different seat + cross-seat review + green gates before status RATIFIED may be claimed; the new receipt supersedes the 6.9/10 scorecard pinned above"
   },
   "action": "PROMOTE_PRODUCTION",
   "scope": {
@@ -108,6 +142,10 @@
     "proposal_context": "One-time finite activation proposed to Shawn: review October 15, expire October 29, no automatic renewal; integrate reviewed enforcement and owner-read/privileged-write checkpoint policy. Human continuation authorizes that concrete proposal.",
     "scope": "Existing narrow main-to-production policy only; no renewal or scope expansion.",
     "timezone": "America/Vancouver",
-    "evidence_record": "BRAIN/06-PROOF/2026-09-29-STANDING-PROMOTION-ACTIVATION.md"
-  }
+    "evidence_record": "BRAIN/06-PROOF/2026-09-29-STANDING-PROMOTION-ACTIVATION.md",
+    "evidence_record_git_blob_sha": "94810caea0ee5d84551389fbbbeae52fb1221d44",
+    "authority_basis_note": "Word-based activation recorded 2026-09-29. Under NO-WORD RATIFICATION standing law (2026-10-14), no word can ratify: this record is history, not authority. Status stays CANDIDATE until score-derived pins clear the bar.",
+    "record_content_sha256": "5f728985bdc07a9be11f1e1d2c628da221c9fc49201449a2d10160a603247bf1"
+  },
+  "status_reason": "Main-seat scoring-matrix review 2026-10-14 scored the content 6.9/10, below the 9.5 ratification bar — GATE FAIL on pins (venue #2537 comment 6169820905 @2026-10-14T13:45:03Z). Promotion stays DENY fail-closed for the scored reason until fixes + cross-seat re-score clear the bar."
 }

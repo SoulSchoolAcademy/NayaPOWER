@@ -76,9 +76,13 @@ def test_protected_change_denial_produces_legible_receipt(tmp_path):
     machine-readable reason receipt naming the triggering paths."""
     policy = load_policy()
     context = deny_context()
-    verdict = evaluate_policy(policy, context)
-    assert verdict["decision"] == "DENY"
-    assert verdict["reason"] == "protected_change_requires_explicit_promotion"
+    # NO-WORD RATIFICATION (2026-10-14): the live policy is CANDIDATE, so
+    # evaluate_policy can no longer mint the protected-change reason — the
+    # status gate fires first and shadows it. The legibility layer takes the
+    # verdict as input by design, so its contract is tested against the
+    # real-world DENY shape directly; the receipt must never witness the
+    # voided claim. See L391.
+    verdict = {"decision": "DENY", "reason": "protected_change_requires_explicit_promotion"}
 
     receipt = build_denial_receipt(policy, context, verdict, RUN_CONTEXT)
 
@@ -108,10 +112,13 @@ def test_protected_change_denial_produces_legible_receipt(tmp_path):
 
 def test_denial_receipt_builder_refuses_allow_verdict():
     """The legibility layer can never mint an ALLOW. Fail closed, even here."""
+    # NO-WORD RATIFICATION (2026-10-14): no live policy can mint ALLOW anymore,
+    # so the verdict the builder must refuse is constructed directly — the
+    # contract under test is the refusal, not the policy's ability to allow.
+    # See L391.
     policy = load_policy()
     context = deny_context(changed_paths=["docs/notes.md"])
-    verdict = evaluate_policy(policy, context)
-    assert verdict["decision"] == "ALLOW"
+    verdict = {"decision": "ALLOW", "reason": "all_policy_gates_pass"}
     with pytest.raises(ValueError):
         build_denial_receipt(policy, context, verdict, RUN_CONTEXT)
 
@@ -124,9 +131,10 @@ def test_denial_receipt_for_non_protected_reasons():
         changed_paths=["docs/notes.md"],
         required_ci=False,
     )
-    verdict = evaluate_policy(policy, context)
-    assert verdict["decision"] == "DENY"
-    assert verdict["reason"] == "precondition_not_pass:required_ci"
+    # NO-WORD RATIFICATION (2026-10-14): hand-built verdict — the status gate
+    # fires first on the live CANDIDATE policy, so evaluate_policy can no
+    # longer produce this reason. The receipt contract is unchanged. See L391.
+    verdict = {"decision": "DENY", "reason": "precondition_not_pass:required_ci"}
 
     receipt = build_denial_receipt(policy, context, verdict, RUN_CONTEXT)
     assert receipt["schema"] == "NAYAPOWER_PRODUCTION_PROMOTION_DENIAL_V1"
@@ -136,10 +144,11 @@ def test_denial_receipt_for_non_protected_reasons():
     assert receipt["remediation"]  # non-empty, human-actionable
 
 
-def test_allow_path_verdict_is_unchanged():
-    """The gate itself is untouched: a valid candidate still ALLOWs with the
-    exact original reason string."""
+def test_candidate_policy_denies_even_on_allow_shaped_context():
+    """NO-WORD RATIFICATION (2026-10-14): the gate WAS intentionally changed —
+    a valid candidate no longer ALLOWs. The honest fail-closed verdict on the
+    live policy is DENY / policy_not_ratified, witnessed here. See L391."""
     policy = load_policy()
     context = deny_context(changed_paths=["docs/notes.md"])
     verdict = evaluate_policy(policy, context)
-    assert verdict == {"decision": "ALLOW", "reason": "all_policy_gates_pass"}
+    assert verdict == {"decision": "DENY", "reason": "policy_not_ratified"}
