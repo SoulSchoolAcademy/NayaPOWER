@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T08:15:17+00:00",
+ "generated_utc": "2026-10-17T09:15:32+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -435,12 +435,6 @@
      "draft": false
     },
     {
-     "number": 2704,
-     "title": "fix(gate): consensus gate skips issue_comment events without a verdict",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2704",
-     "draft": false
-    },
-    {
      "number": 2697,
      "title": "HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate.api_get",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697",
@@ -463,9 +457,15 @@
      "title": "Gate reliability: transient API failures \u2192 UNKNOWN (exit 2), never wrong FAIL",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690",
      "draft": false
+    },
+    {
+     "number": 2681,
+     "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
+     "draft": false
     }
    ],
-   "open_pr_count": 126
+   "open_pr_count": 124
   },
   {
    "id": "team",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 609,
+ "open_pr_total": 607,
  "unassigned_prs": 230
 }

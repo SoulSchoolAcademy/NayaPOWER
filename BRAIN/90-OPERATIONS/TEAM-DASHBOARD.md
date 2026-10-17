@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 08:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 09:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 609 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 607 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -95,13 +95,13 @@
 - [#2708](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708) Design Laws v1 (DRAFT): three-tongue repo placement 📝draft
 - …and 225 more
 
-### WIRE (126)
+### WIRE (124)
 - [#2724](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724) fix(gate): receipt-pin reads live PR body, not frozen event payload
 - [#2718](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2718) Add nitro to merge-consensus gate seat registry
 - [#2717](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717) Consensus gate: parse 12-lane seat tags + brief-time author-seat check
-- [#2704](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2704) fix(gate): consensus gate skips issue_comment events without a verdict
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
-- …and 121 more
+- [#2696](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696) fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wa
+- …and 119 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
