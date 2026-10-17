@@ -20,78 +20,78 @@
   "dependencies": [
     {
       "path": "smart-blocks/tokens.css",
-      "git_blob_sha": "edef72df4a51c451f5ac91c1e5ecb7bfa503930c",
-      "sha256": "cb963f392a64f7cbdee0ec58697e3c5fd1f24a2c528b1835b50d05774fa4aada"
+      "sha256": "cb963f392a64f7cbdee0ec58697e3c5fd1f24a2c528b1835b50d05774fa4aada",
+      "git_blob_sha": "edef72df4a51c451f5ac91c1e5ecb7bfa503930c"
     },
     {
       "path": "smart-blocks/base.css",
-      "git_blob_sha": "cd69f83895c43fedda38542089aca439911e8fdf",
-      "sha256": "3fa2d4658fd43e46dc68ee944ff60ac29447854f198cba04717caba634dccc53"
+      "sha256": "3fa2d4658fd43e46dc68ee944ff60ac29447854f198cba04717caba634dccc53",
+      "git_blob_sha": "cd69f83895c43fedda38542089aca439911e8fdf"
     },
     {
       "path": "smart-blocks/specialty/specialty.css",
-      "git_blob_sha": "60c46df1531a4f4d1faac2f3bcbbf01bf05e92bf",
-      "sha256": "420fbad23985992386cedc00d82abcb8bdbe6e95ca5f76a4b5955de511e14657"
+      "sha256": "420fbad23985992386cedc00d82abcb8bdbe6e95ca5f76a4b5955de511e14657",
+      "git_blob_sha": "60c46df1531a4f4d1faac2f3bcbbf01bf05e92bf"
     },
     {
       "path": "smart-blocks/specialty/specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon.html",
-      "git_blob_sha": "c10163621a44c162495a09fae70e702acb5f0333",
-      "sha256": "a9c303263c16d52f0bc18ca5329ba2f927aea0252907c185cb3b30641fc9d89c"
+      "sha256": "a9c303263c16d52f0bc18ca5329ba2f927aea0252907c185cb3b30641fc9d89c",
+      "git_blob_sha": "c10163621a44c162495a09fae70e702acb5f0333"
     },
     {
       "path": "smart-blocks/buttons/buttons.css",
-      "git_blob_sha": "9fd1fabd32473da24116402f187060b3f6c4d0c3",
-      "sha256": "a4436d0a485184116b21c76015dadfa9bc3a32f55b7820e81015e30ecf707828"
+      "sha256": "a4436d0a485184116b21c76015dadfa9bc3a32f55b7820e81015e30ecf707828",
+      "git_blob_sha": "9fd1fabd32473da24116402f187060b3f6c4d0c3"
     },
     {
       "path": "smart-blocks/buttons/buttons-hero-cta-living-btn.html",
-      "git_blob_sha": "8922c94d2f5d953295fe8dcab8145bd1cd408682",
-      "sha256": "bbabbde72e3ee0fb939a3c089f84394a177513b107b68525bb2bd25617fba7de"
+      "sha256": "bbabbde72e3ee0fb939a3c089f84394a177513b107b68525bb2bd25617fba7de",
+      "git_blob_sha": "8922c94d2f5d953295fe8dcab8145bd1cd408682"
     },
     {
       "path": "smart-blocks/inputs/inputs.css",
-      "git_blob_sha": "f84f0d41865e84cb156d32661e684fd3a2f484a4",
-      "sha256": "868c2d8cfff6818283406c90b50604d73b60c3098e9ac0491656f2475b45f7c7"
+      "sha256": "868c2d8cfff6818283406c90b50604d73b60c3098e9ac0491656f2475b45f7c7",
+      "git_blob_sha": "f84f0d41865e84cb156d32661e684fd3a2f484a4"
     },
     {
       "path": "smart-blocks/inputs/inputs-search-field-search-field.html",
-      "git_blob_sha": "c95dc7d35fd2ece583567e9944f1ae98871539bf",
-      "sha256": "b03583995ae6a0aeb82df1b20cb6c497b47669cc0f912db83286e4e17a413ab5"
+      "sha256": "b03583995ae6a0aeb82df1b20cb6c497b47669cc0f912db83286e4e17a413ab5",
+      "git_blob_sha": "c95dc7d35fd2ece583567e9944f1ae98871539bf"
     },
     {
       "path": "smart-blocks/navigation/navigation.css",
-      "git_blob_sha": "da87b31bb016aec99c293583d4c6b876e38883de",
-      "sha256": "dae25367df387318189f5fa55546a9c49d572b95f934e408ca48852db1a1108d"
+      "sha256": "dae25367df387318189f5fa55546a9c49d572b95f934e408ca48852db1a1108d",
+      "git_blob_sha": "da87b31bb016aec99c293583d4c6b876e38883de"
     },
     {
       "path": "smart-blocks/navigation/navigation-app-room-nav-app-nav.html",
-      "git_blob_sha": "b02b4fae5c469eeff93bba85c46c777cb06d4b75",
-      "sha256": "aed6580c1d92bf0fed5c2d6af25a2cbbbb8c090d1adcfec263eabaaa745cec44"
+      "sha256": "aed6580c1d92bf0fed5c2d6af25a2cbbbb8c090d1adcfec263eabaaa745cec44",
+      "git_blob_sha": "b02b4fae5c469eeff93bba85c46c777cb06d4b75"
     },
     {
       "path": "smart-blocks/cards/cards.css",
-      "git_blob_sha": "54fcc8974e7053fae03c0ae77ff5d5c9d0585a3a",
-      "sha256": "2f4d49b009adf15c4e30c08c7af78417868cbd3d62c1cd9a779f5012d0a13413"
+      "sha256": "2f4d49b009adf15c4e30c08c7af78417868cbd3d62c1cd9a779f5012d0a13413",
+      "git_blob_sha": "54fcc8974e7053fae03c0ae77ff5d5c9d0585a3a"
     },
     {
       "path": "smart-blocks/cards/cards-metric-trio-metric.html",
-      "git_blob_sha": "b084078c574513f0b850c2291a2b0cc1550ffdac",
-      "sha256": "767b168d8327b0046adfde902604c77f05791b793c1e03af942ccc2b0d634fa5"
+      "sha256": "767b168d8327b0046adfde902604c77f05791b793c1e03af942ccc2b0d634fa5",
+      "git_blob_sha": "b084078c574513f0b850c2291a2b0cc1550ffdac"
     },
     {
       "path": "smart-blocks/cards/cards-elevated-board-elevated-board-board-spine-board-corner.html",
-      "git_blob_sha": "8c4f31027112ff1a327f3f27dd64f403e7dabdc9",
-      "sha256": "4b9029d38e91451112a88932b46deb148aeb11260549e9d0e5bc9ac68f984a20"
+      "sha256": "4b9029d38e91451112a88932b46deb148aeb11260549e9d0e5bc9ac68f984a20",
+      "git_blob_sha": "8c4f31027112ff1a327f3f27dd64f403e7dabdc9"
     },
     {
       "path": "smart-blocks/buttons/buttons-canonical-button-naya-btn.html",
-      "git_blob_sha": "32168333927de4b4fe79fab7bc73d2f2c35ec179",
-      "sha256": "c9c3eceeed1f4d60c3ff9ee67c1bc3d47bdfe698071fd9be60f1cb5b2d440229"
+      "sha256": "c9c3eceeed1f4d60c3ff9ee67c1bc3d47bdfe698071fd9be60f1cb5b2d440229",
+      "git_blob_sha": "32168333927de4b4fe79fab7bc73d2f2c35ec179"
     },
     {
       "path": "smart-blocks/icons.svg",
-      "git_blob_sha": "35616cbd8403c850a9667351dcd4708ef13f530f",
-      "sha256": "47f13c1ec6c2c6798c6ca3395c709207b158f5d1d392e158cfbbccab02bc910a"
+      "sha256": "47f13c1ec6c2c6798c6ca3395c709207b158f5d1d392e158cfbbccab02bc910a",
+      "git_blob_sha": "35616cbd8403c850a9667351dcd4708ef13f530f"
     }
   ],
   "output_path": "HUB/SMART-BUILDER-ASSEMBLY-DEMO.html",
