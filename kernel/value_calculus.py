@@ -590,7 +590,19 @@ def classify_value_interpretation(*, delta_v_actual=None, interval=None,
 
 
 def independent_recompute(receipt: Mapping, candidates: Sequence[Candidate], profile: QualityProfile, risk_policy: RiskPolicy = RiskPolicy()) -> dict:
-    evaluation = evaluate_candidates(candidates, receipt["baseline_id"], profile, risk_policy)
+    baseline_id = receipt.get("baseline_id")
+    if baseline_id is None:
+        # Interop: runtime-persisted receipts may carry the persisted name
+        # ("baseline_candidate_id") instead of the receipt-schema name.
+        baseline_id = receipt.get("baseline_candidate_id")
+    if baseline_id is None:
+        # Fail closed: no baseline identifier means no recomputation is
+        # possible. Raise an explicit refusal, never a bare KeyError.
+        raise ValueError(
+            "independent_recompute: receipt carries neither 'baseline_id' nor "
+            "'baseline_candidate_id'; refusing to recompute"
+        )
+    evaluation = evaluate_candidates(candidates, baseline_id, profile, risk_policy)
     return {
         "matches_decision": evaluation["decision"] == receipt["evaluation"]["decision"],
         "matches_selected": evaluation["selected"] == receipt["evaluation"]["selected"],
