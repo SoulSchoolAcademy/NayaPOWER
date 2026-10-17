@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="The official Visual Smart Contract for the Smart Builder — built from its own library parts. Locked 2026-10-17.">
+<meta name="description" content="The official Visual Smart Contract for the Smart Builder — every section composed from the library's real pieces and real CSS. Locked 2026-10-17.">
 <title>The Visual Smart Contract — Smart Builder v2 · OFFICIAL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,12 +18,12 @@
   --sp-purple:#a06bff; --sp-indigo:#6675ff; --sp-sapphire:#55b9ee; --sp-teal:#40d3bb;
   --sp-emerald:#2fe89e; --sp-lime:#b8ee57; --sp-yellow:#f1d75a; --sp-gold:#ffbf3d;
   --sp-orange:#ff9a5a; --sp-rich-orange:#ff6b3d; --sp-red:#ff5e6c; --sp-magenta:#e84fff;
-  --soul:#a06bff; --verified:#2fe89e; --premium:#ffbf3d; --featured:#e84fff;
+  --soul:#a06bff; --verified:#2fe89e;
   --font-voice:"Newsreader",Georgia,"Times New Roman",serif;
   --font-ui:Inter,ui-sans-serif,system-ui,sans-serif;
   --ease:cubic-bezier(.16,.84,.22,1);
   --radius-md:14px; --radius-lg:22px; --radius-pill:999px;
-  --pad-board:22px; --gap:16px;
+  --gap:16px;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
@@ -43,12 +43,10 @@ section{padding:56px 0; border-top:1px solid var(--line);}
   background:var(--verified); box-shadow:0 0 10px var(--verified); margin-right:8px;
   animation:pulse 2.4s ease-in-out infinite; vertical-align:1px;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
-.board{background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg);
-  padding:var(--pad-board); box-shadow:0 6px 18px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.06);}
 .grid{display:grid; gap:var(--gap);}
 .g3{grid-template-columns:repeat(3,1fr);} .g2{grid-template-columns:repeat(2,1fr);}
-.g4{grid-template-columns:repeat(4,1fr);} .g5{grid-template-columns:repeat(5,1fr);}
-@media(max-width:760px){.g3,.g4,.g5{grid-template-columns:repeat(2,1fr);} .g2{grid-template-columns:1fr;}}
+.g4{grid-template-columns:repeat(4,1fr);}
+@media(max-width:760px){.g3,.g4{grid-template-columns:repeat(2,1fr);} .g2{grid-template-columns:1fr;}}
 
 /* ============ .naya-btn — button DNA (verbatim, Naya_2 canonical) ============ */
 .naya-btn{
@@ -93,14 +91,7 @@ section{padding:56px 0; border-top:1px solid var(--line);}
   text-transform:uppercase; font-weight:700; color:var(--paper); background:var(--raise);}
 .pill .led{margin:0;}
 
-.mode{cursor:pointer; text-align:left; color:var(--silver); transition:transform .22s var(--ease), border-color .3s;}
-.mode:hover{transform:translateY(-3px);}
-.mode[aria-pressed="true"]{border-color:var(--sp-indigo); box-shadow:0 0 0 1px var(--sp-indigo), 0 6px 18px rgba(0,0,0,.6);}
-.mode .kicker{display:block; margin-bottom:8px;}
-.mode h3{margin:0 0 6px; font-size:19px;}
-.mode p{font-size:14px; margin:0;}
-
-.contract{background:var(--raise); border:1px solid var(--line); border-radius:var(--radius-lg); padding:var(--pad-board);}
+/* contract field rows — content layout inside real boards */
 .field{display:flex; gap:14px; padding:13px 0; border-bottom:1px solid var(--line); align-items:baseline;}
 .field:last-child{border-bottom:none;}
 .field .fk{flex:0 0 150px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:700; color:var(--slate);}
@@ -114,49 +105,13 @@ section{padding:56px 0; border-top:1px solid var(--line);}
 .spec-stage{padding:30px 16px; display:flex; align-items:center; justify-content:center;
   background:var(--obsidian); min-height:130px; overflow-x:auto;}
 .spec-stage .nb-scope{display:block; max-width:100%;}
-.spec-meta{display:flex; align-items:center; justify-content:space-between; gap:10px;
-  padding:12px 14px; border-top:1px solid var(--line);}
+.spec-meta{padding:12px 14px; border-top:1px solid var(--line);}
 .spec-meta b{display:block; color:var(--white); font-size:14px; font-weight:600;}
 .spec-meta i{display:block; font-style:normal; font-size:10.5px; letter-spacing:.14em;
   color:var(--slate); text-transform:uppercase; margin-top:3px;}
-.spec-add{flex:0 0 auto; background:none; border:1px solid var(--line); color:var(--paper);
-  border-radius:var(--radius-pill); padding:8px 16px; font-size:11px; font-weight:700;
-  letter-spacing:.1em; text-transform:uppercase; cursor:pointer; font-family:var(--font-ui);
-  transition:border-color .2s, color .2s;}
-.spec-add:hover{border-color:var(--verified); color:var(--verified);}
-.spec-add.added{border-color:var(--verified); color:var(--verified);}
 .wallcat{margin:28px 0 12px; font-size:19px;}
 .wallcat span{color:var(--slate); font-family:var(--font-ui); font-size:12px; letter-spacing:.1em; margin-left:10px;}
 .wallgrid .spec-stage{min-height:110px; padding:22px 12px;}
-
-.searchbar{display:flex; gap:10px; margin-bottom:18px;}
-.searchbar input{flex:1; background:var(--obsidian); border:1px solid var(--line); color:var(--paper);
-  border-radius:var(--radius-pill); padding:0 22px; min-height:52px; font-size:16px; font-family:var(--font-ui);}
-.searchbar input:focus{outline:none; border-color:var(--sp-teal);}
-.searchbar input::placeholder{color:var(--slate);}
-.traybar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:20px;
-  background:var(--raise); border:1px solid var(--line); border-radius:var(--radius-md); padding:14px 18px; flex-wrap:wrap;}
-.traybar .count{color:var(--paper); font-weight:600;}
-.traybar .count b{color:var(--verified);}
-.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
-.chip{display:inline-flex; align-items:center; gap:8px; font-size:12px; color:var(--paper);
-  border:1px solid var(--line); border-radius:var(--radius-pill); padding:6px 8px 6px 14px; background:var(--obsidian);}
-.chip button{background:none; border:none; color:var(--slate); cursor:pointer; font-size:14px; line-height:1; padding:2px 6px;}
-.chip button:hover{color:var(--sp-red);}
-.empty{color:var(--slate); font-size:14px; padding:26px 0; text-align:center; grid-column:1/-1;}
-
-.tpl{background:var(--raise); border:1px solid var(--line); border-radius:var(--radius-md); padding:18px;
-  transition:transform .2s var(--ease), border-color .25s;}
-.tpl:hover{transform:translateY(-3px); border-color:var(--sp-lime);}
-.tpl .n{font-family:var(--font-voice); color:var(--sp-lime); font-size:13px; letter-spacing:.14em; margin-bottom:6px;}
-.tpl h3{font-size:17px; margin:0 0 4px;}
-.tpl p{font-size:13px; margin:0; color:var(--slate);}
-
-.feat{display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--line);}
-.feat:last-child{border:none;}
-.feat .dot{flex:0 0 10px; width:10px; height:10px; border-radius:50%; margin-top:6px;}
-.feat b{color:var(--paper); font-weight:600;}
-.feat p{font-size:14px; margin:2px 0 0;}
 
 .phone{width:300px; max-width:100%; margin:0 auto; border:1px solid var(--line); border-radius:38px;
   background:var(--obsidian); padding:14px; box-shadow:0 20px 48px rgba(0,0,0,.7);}
@@ -174,17 +129,9 @@ section{padding:56px 0; border-top:1px solid var(--line);}
   padding:14px 10px; text-align:center; font-size:12px; color:var(--paper);}
 .installbar{margin-top:auto; padding:16px; border-top:1px solid var(--line);}
 
-.loop{display:flex; align-items:stretch; gap:0; flex-wrap:wrap;}
-.step{flex:1 1 0; min-width:130px; text-align:center; padding:18px 8px; position:relative;}
-.step .kicker{display:block; margin-bottom:6px;}
-.step b{color:var(--white); font-family:var(--font-voice); font-weight:500; font-size:18px; display:block;}
-.step small{color:var(--slate); font-size:12px;}
-.step + .step::before{content:"→"; position:absolute; left:-8px; top:38%; color:var(--slate); font-size:18px;}
-@media(max-width:760px){.step{min-width:40%;} .step + .step::before{content:"";}}
-
-.promise{text-align:center; padding:72px 0;}
+.promise{text-align:center;}
 .promise .big{font-family:var(--font-voice); font-size:clamp(28px,4.5vw,40px); color:var(--white); margin:16px 0 8px;}
-.promise .big em{font-style:normal; color:var(--sp-orange);}
+.promise .big em{font-style:normal; color:var(--sp-red);}
 .promise p{margin:0 auto; max-width:52ch;}
 
 details.machine{border:1px solid var(--line); border-radius:var(--radius-md); background:var(--obsidian);}
@@ -211,6 +158,14 @@ footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
 .nav a{color:var(--slate); text-decoration:none; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
   font-weight:600; padding:8px 12px; border-radius:var(--radius-pill); white-space:nowrap;}
 .nav a:hover{color:var(--white); background:rgba(255,255,255,.06);}
+
+/* intake mode cards: the real .card piece drives the selected state */
+.nb-chrome .card.mode[aria-pressed="true"]{border-color:var(--accent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 30px var(--accent-soft),0 12px 32px rgba(0,0,0,.55);}
+</style>
+<style>
+/* ===== section chrome — real library CSS, scoped .nb-chrome ===== */
+%%CHROME_CSS%%
 </style>
 <style>
 /* ===== wall specimen CSS — real library code, scoped .nb-scope ===== */
@@ -220,22 +175,23 @@ footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
 <body>
 
 <nav class="nav"><div class="wrap">
-  <a href="#intake">Intake</a><a href="#contract">Contract</a><a href="#builder">Builder</a>
-  <a href="#specimens">Specimens</a><a href="#templates">Templates</a><a href="#features">Features</a>
-  <a href="#mobile">Mobile</a><a href="#promise">Promise</a><a href="#machine">Machine</a>
+  <a href="#intake">Intake</a><a href="#contract">Contract</a><a href="#specimens">Specimens</a>
+  <a href="#gallery">Gallery</a><a href="#customize">Customize</a><a href="#templates">Templates</a>
+  <a href="#features">Features</a><a href="#mobile">Mobile</a><a href="#promise">Promise</a>
+  <a href="#machine">Machine</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
   <div class="status">
     <span class="pill"><span class="led"></span>Official · Locked 2026-10-17</span>
-    <span class="pill">v2 · built from its own parts</span>
+    <span class="pill">v2 · composed from its own parts</span>
   </div>
   <span class="kicker" style="color:var(--sp-purple)">%%KICKER%%</span>
   <h1>%%TITLE%%</h1>
   <p class="lede">%%LEDE%%</p>
   <p style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
-    <button class="naya-btn" data-scroll="#builder"><span class="nb-label">Try the builder</span></button>
     <button class="naya-btn" data-scroll="#specimens"><span class="nb-label">See the pieces</span></button>
+    <button class="naya-btn" data-scroll="#templates"><span class="nb-label">See the templates</span></button>
   </p>
 </div></header>
 
@@ -247,12 +203,14 @@ footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
     <h2>A living form that holds the contract</h2>
     <p>Not a questionnaire. A form the human and the builder shape together, over the session, until the human says build. Pick a mode — the contract listens in all three.</p>
   </div>
-  %%INTAKE_MODES%%
-  <p id="modeline" style="margin-top:16px; font-size:14px; color:var(--slate);">Intake mode: <b style="color:var(--paper)">questions</b> — the contract is listening.</p>
-  <div class="board" style="margin-top:8px;">
-    <h3>Two authors, one finalizer</h3>
-    <p style="margin:0;">The human and the builder both mold the contract. But only the human says <b style="color:var(--paper)">“okay, build”</b> — button or word. Finalize authority is human, always. And every intake element passes one bar: <b style="color:var(--paper)">does it remove a step for the human, or add one?</b> Anything that adds busywork fails.</p>
-  </div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#6675ff">
+    %%INTAKE_MODES%%
+    <p id="modeline" style="margin:18px 0 16px; font-size:14px; color:var(--slate);">Intake mode: <b style="color:var(--paper)">questions</b> — the contract is listening.</p>
+    <div class="nb-chrome"><div class="lawcard" style="--lc:#6675ff">
+      <div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>Two authors, one finalizer</span></div>
+      <p>The human and the builder both mold the contract. But only the human says <b>“okay, build”</b> — button or word. Finalize authority is human, always. And every intake element passes one bar: <b>does it remove a step for the human, or add one?</b> Anything that adds busywork fails.</p>
+    </div></div>
+  </div></div>
 </section>
 
 <section id="contract">
@@ -261,41 +219,45 @@ footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
     <h2>What the builder is legally bound to</h2>
     <p>The contract holds everything the build needs — words, pictures, links, structure, address. Shown beautifully, in the design language. Never a raw form.</p>
   </div>
-  %%FIELDS%%
-</section>
-
-<section id="builder">
-  <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-teal)">§3 · The builder</span>
-    <h2>The real pieces, searchable</h2>
-    <p>Type <b style="color:var(--paper)">buttons</b>, <b style="color:var(--paper)">boards</b>, or <b style="color:var(--paper)">banners</b> — the actual library answers, rendered in its actual code. What you see is what the build gets, down to the model number. Tap <b style="color:var(--paper)">+ Add</b> to put it in the tray.</p>
-  </div>
-  <div class="searchbar">
-    <input id="q" type="search" placeholder='Try "buttons", "boards", "banners", "forms"…' aria-label="Search the piece library" autocomplete="off">
-    <button class="naya-btn" id="clearq"><span class="nb-label">Clear</span></button>
-  </div>
-  <div class="grid g3" id="results" aria-live="polite"></div>
-  <div class="traybar">
-    <span class="count">Build tray — <b id="traycount">0</b> pieces</span>
-    <button class="naya-btn gold" id="assemble"><span class="nb-label">Assemble build</span></button>
-  </div>
-  <div class="chips" id="tray"></div>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#55b9ee">
+    %%FIELDS%%
+  </div></div>
 </section>
 
 <section id="specimens">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-emerald)">§4 · Specimens</span>
-    <h2>Every category, laid out</h2>
-    <p>The main pieces of the library, rendered in their real code — not descriptions, not mockups. Each carries its model number: the human reads the name, the Naya reads the number.</p>
+    <span class="kicker" style="color:var(--sp-teal)">§3 · Specimens</span>
+    <h2>The material, sampled</h2>
+    <p>The main pieces of the library, rendered in their real code — not descriptions, not mockups. Each carries its model number: the human reads the name, the Naya reads the number. This page itself is composed from these same pieces.</p>
   </div>
-  %%WALL_HTML%%
+  <div class="nb-chrome"><div class="demo-board" style="--c:#40d3bb">
+    %%WALL_HTML%%
+  </div></div>
+</section>
+
+<section id="gallery">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-emerald)">§4 · The gallery</span>
+    <h2>%%GALLERY_TITLE%%</h2>
+    <p>%%GALLERY_LEDE%%</p>
+  </div>
+  %%GALLERY_POINTS%%
+</section>
+
+<section id="customize">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-lime)">§5 · Customize</span>
+    <h2>%%CUSTOMIZE_TITLE%%</h2>
+    <p>%%CUSTOMIZE_LEDE%%</p>
+  </div>
+  %%CUSTOMIZE_POINTS%%
 </section>
 
 <section id="templates">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-lime)">§5 · The ten templates</span>
+    <span class="kicker" style="color:var(--sp-yellow)">§6 · The twelve templates</span>
     <h2>Nobody starts blank</h2>
-    <p>Pick a template, tweak it, build. Most people will just pick one and say “this one” — and that works. Want different boards or buttons on it? Swap any piece.</p>
+    <p>Pick a template, tweak it, build. Most people will just pick one and say “this one” — and that works. Want different boards or buttons on it? Swap any piece from the gallery.</p>
   </div>
   %%TEMPLATES%%
   <p style="margin-top:16px; font-size:14px; color:var(--slate);">Full stores are not a template — commerce at scale syncs to Shopify instead of rebuilding it.</p>
@@ -303,55 +265,57 @@ footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
 
 <section id="features">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-yellow)">§6 · Nia app features</span>
-    <h2>The page is where the engine lives</h2>
-    <p>None of this is “page” stuff. It’s action stuff. Every Nia app can carry it.</p>
+    <span class="kicker" style="color:var(--sp-gold)">§7 · Standard features</span>
+    <h2>Every Nia app comes with these</h2>
+    <p>Not add-ons, not upsells. The page is a personal version of the Hub — your picture at the top, your world inside.</p>
   </div>
   %%FEATURES%%
 </section>
 
 <section id="mobile">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-gold)">§7 · Mobile first</span>
+    <span class="kicker" style="color:var(--sp-orange)">§8 · Mobile first</span>
     <h2>Mobile isn’t a version. Mobile is the app.</h2>
     <p>Every Nia app is mobile-optimized by default — slide-over panels, gestures, the feel of a real phone app. Every app ships installable: download it to the phone and it works right away.</p>
   </div>
-  <div class="grid g2" style="align-items:start;">
-    <div class="phone" aria-label="Phone mockup of a Nia app">
-      <div class="screen">
-        <div class="notch"><span></span></div>
-        <div class="app-hero">
-          <div class="ava">M</div>
-          <h3>Morning Crumb</h3>
-          <p>Warm bread · order ahead</p>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#ff9a5a">
+    <div class="grid g2" style="align-items:start;">
+      <div class="phone" aria-label="Phone mockup of a Nia app">
+        <div class="screen">
+          <div class="notch"><span></span></div>
+          <div class="app-hero">
+            <div class="ava">M</div>
+            <h3>Morning Crumb</h3>
+            <p>Warm bread · order ahead</p>
+          </div>
+          <div class="app-row">
+            <div class="app-card">Menu</div><div class="app-card">Order</div><div class="app-card">Visit</div>
+          </div>
+          <div class="app-row">
+            <div class="app-card">Posts</div><div class="app-card">Mail</div>
+          </div>
+          <div class="installbar">
+            <button class="naya-btn gold" id="installdemo" style="width:100%;"><span class="nb-label">Install app</span></button>
+          </div>
         </div>
-        <div class="app-row">
-          <div class="app-card">Menu</div><div class="app-card">Order</div><div class="app-card">Visit</div>
-        </div>
-        <div class="app-row">
-          <div class="app-card">Posts</div><div class="app-card">Mail</div>
-        </div>
-        <div class="installbar">
-          <button class="naya-btn gold" id="installdemo" style="width:100%;"><span class="nb-label">Install app</span></button>
-        </div>
+      </div>
+      <div>
+        <div class="nb-chrome" style="margin-bottom:12px"><div class="lawcard" style="--lc:#ff9a5a">
+          <div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>PWA by default</span></div>
+          <p>“Install app” isn’t a feature you add — it’s what the thing is. A website builder gives you a page that happens to work on phones. We give you a phone app that happens to open in a browser.</p>
+        </div></div>
+        <div class="nb-chrome"><div class="lawcard" style="--lc:#ff9a5a">
+          <div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>Naya makes your icon</span></div>
+          <p>The intake covers the app image: upload at exactly the right size — or better, Naya creates the image for your page. The human never has to know what size an app icon is. That’s our job.</p>
+        </div></div>
       </div>
     </div>
-    <div>
-      <div class="board" style="margin-bottom:16px;">
-        <h3>PWA by default</h3>
-        <p style="margin:0;">“Install app” isn’t a feature you add — it’s what the thing is. A website builder gives you a page that happens to work on phones. We give you a phone app that happens to open in a browser.</p>
-      </div>
-      <div class="board">
-        <h3>Naya makes your icon</h3>
-        <p style="margin:0;">The intake covers the app image: upload at exactly the right size — or better, Naya creates the image for your page. The human never has to know what size an app icon is. That’s our job.</p>
-      </div>
-    </div>
-  </div>
+  </div></div>
 </section>
 
 <section id="loop">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-orange)">§8 · The loop</span>
+    <span class="kicker" style="color:var(--sp-rich-orange)">§9 · The loop</span>
     <h2>Build → See → Learn → Share → Gather</h2>
     <p>The app is the beginning, not the end. Every person building makes everyone connected more intelligent.</p>
   </div>
@@ -359,56 +323,43 @@ footer .kicker{color:var(--slate); display:block; margin-bottom:8px;}
   <p style="margin-top:16px; font-size:14px; color:var(--slate);">Private by default, shared by choice. Share it and the network auto-connects people of like minds — the internet organizes itself.</p>
 </section>
 
-<section id="promise" class="promise">
-  <span class="kicker" style="color:var(--sp-rich-orange)">§9 · The promise</span>
-  <div class="big">%%PROMISE_BIG%%</div>
-  <p>%%PROMISE_SUB%% It’s the smart thing to do. Wise ones are doing it. <b style="color:var(--paper)">Be a wise one.</b></p>
+<section id="promise">
+  <div class="sec-head">
+    <span class="kicker" style="color:var(--sp-red)">§10 · The promise</span>
+  </div>
+  <div class="nb-chrome"><div class="demo-board promise" style="--c:#ff5e6c">
+    <div class="big">%%PROMISE_BIG%%</div>
+    <p>%%PROMISE_SUB%% It’s the smart thing to do. Wise ones are doing it. <b style="color:var(--paper)">Be a wise one.</b></p>
+  </div></div>
 </section>
 
 <section id="machine">
   <div class="sec-head">
-    <span class="kicker" style="color:var(--sp-magenta)">§10 · For the machines</span>
+    <span class="kicker" style="color:var(--sp-magenta)">§11 · For the machines</span>
     <h2>The machine contract</h2>
     <p>This page was generated from the contract data — same truth, two faces. The data file lives beside this page; the builder reads it, you read this. Amendable only through Shawn.</p>
   </div>
-  <details class="machine">
-    <summary>smart-builder · visual contract v2 — view / copy</summary>
-    <div class="body">
-      <div class="copyrow"><button class="naya-btn" id="copyjson"><span class="nb-label">Copy JSON</span></button></div>
-      <pre id="machinejson">%%MACHINE_JSON%%</pre>
-    </div>
-  </details>
+  <div class="nb-chrome"><div class="demo-board" style="--c:#e84fff">
+    <details class="machine">
+      <summary>smart-builder · visual contract v2 — view / copy</summary>
+      <div class="body">
+        <div class="copyrow"><button class="naya-btn" id="copyjson"><span class="nb-label">Copy JSON</span></button></div>
+        <pre id="machinejson">%%MACHINE_JSON%%</pre>
+      </div>
+    </details>
+  </div></div>
 </section>
 
 </div>
 
 <footer><div class="wrap">
   <span class="kicker">Visual Smart Contract · Smart Builder · v2</span>
-  Locked by Shawn Vibert’s word, 2026-10-17. Generated from contract data; assembled from 478 real library pieces. Build order: library → contract canonical → engine. Ship law: scorecard 9+ → show Shawn the HTML → his “yeah” → live on its own.
+  Locked by Shawn Vibert’s word, 2026-10-17. Generated from contract data; every section composed from the library’s real pieces and real CSS — no private styles. The search, the tray, the swap, the notes: those live on the Smart Builder page itself, where customers build. This page is the contract.
 </div></footer>
 
 <div id="toast" role="status"></div>
 
 <script>
-var PIECES = %%PIECES_JSON%%;
-var CSSBANK = %%CSSBANK_JSON%%;
-
-var SYN = {
-  button:"BTN", buttons:"BTN", btn:"BTN",
-  board:"CRD", boards:"CRD", card:"CRD", cards:"CRD",
-  banner:"TYP", banners:"TYP", heading:"TYP", headings:"TYP", type:"TYP", text:"TYP",
-  jewel:"JWL", jewels:"JWL", icon:"JWL", icons:"JWL",
-  list:"LST", lists:"LST",
-  form:"FRM", forms:"FRM", input:"FRM", inputs:"FRM", checklist:"FRM",
-  nav:"NAV", navigation:"NAV", menu:"NAV",
-  chat:"CHT", payment:"PAY", pay:"PAY", checkout:"PAY",
-  calendar:"CAL", onboarding:"ONB", comment:"CMT", comments:"CMT"
-};
-var BYMODEL = {};
-PIECES.forEach(function(p){ BYMODEL[p.model] = p; });
-var tray = {};
-var cssInjected = {};
-
 function toast(msg){
   var t = document.getElementById("toast");
   t.innerHTML = '<span class="led"></span>' + msg;
@@ -416,97 +367,6 @@ function toast(msg){
   clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove("show"); }, 2600);
 }
 function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
-function ensureCSS(id){
-  if (!id || cssInjected[id]) return;
-  cssInjected[id] = true;
-  var st = document.createElement("style");
-  st.setAttribute("data-css", id);
-  st.textContent = CSSBANK[id];
-  document.head.appendChild(st);
-}
-function specimenHTML(p){
-  return '<div class="spec" data-model="' + esc(p.model) + '">'
-    + '<div class="spec-stage"><div class="nb-scope">' + p.html + '</div></div>'
-    + '<div class="spec-meta"><div><b>' + esc(p.label) + '</b><i>' + esc(p.model) + ' · ' + esc(p.kind) + '</i></div>'
-    + '<button class="spec-add' + (tray[p.model] ? ' added' : '') + '" data-add="' + esc(p.model) + '">'
-    + (tray[p.model] ? '✓ Added' : '+ Add') + '</button></div></div>';
-}
-function score(p, toks){
-  var s = 0, hay = (p.label + " " + p.model + " " + p.kind + " " + p.tags.join(" ")).toLowerCase();
-  toks.forEach(function(t){
-    if (p.model.toLowerCase().indexOf(t) === 0) s += 6;
-    else if (hay.indexOf(t) > -1) s += 3;
-    if (SYN[t] && SYN[t] === p.cat) s += 5;
-  });
-  return s;
-}
-function render(list){
-  var box = document.getElementById("results");
-  box.innerHTML = "";
-  if (!list.length){
-    box.innerHTML = '<div class="empty">Nothing in the library matches — try "buttons", "boards", "banners", "forms", "lists".</div>';
-    return;
-  }
-  list.slice(0, 12).forEach(function(p){
-    ensureCSS(p.css_id);
-    var d = document.createElement("div");
-    d.innerHTML = specimenHTML(p);
-    box.appendChild(d.firstChild);
-  });
-}
-function toggleTray(model){
-  var p = BYMODEL[model];
-  if (!p) return;
-  if (tray[model]) delete tray[model]; else tray[model] = p;
-  drawTray(); refreshAddButtons();
-  toast(tray[model] ? model + " added to the build." : model + " removed.");
-}
-function refreshAddButtons(){
-  document.querySelectorAll("[data-add]").forEach(function(b){
-    var m = b.getAttribute("data-add");
-    var on = !!tray[m];
-    b.classList.toggle("added", on);
-    b.textContent = on ? "✓ Added" : "+ Add";
-  });
-  document.querySelectorAll(".spec").forEach(function(s){
-    s.style.borderColor = tray[s.getAttribute("data-model")] ? "var(--verified)" : "";
-  });
-}
-function drawTray(){
-  var keys = Object.keys(tray);
-  document.getElementById("traycount").textContent = keys.length;
-  var box = document.getElementById("tray");
-  box.innerHTML = "";
-  keys.forEach(function(k){
-    var c = document.createElement("span");
-    c.className = "chip";
-    var label = document.createElement("span"); label.textContent = k;
-    var x = document.createElement("button"); x.textContent = "×";
-    x.setAttribute("aria-label", "Remove " + k);
-    x.onclick = function(){ toggleTray(k); };
-    c.appendChild(label); c.appendChild(x); box.appendChild(c);
-  });
-}
-function doSearch(){
-  var q = document.getElementById("q").value.trim().toLowerCase();
-  if (!q){ render(PIECES.filter(function(p){ return p.css_id; }).slice(0, 12)); return; }
-  var toks = q.split(/\s+/);
-  var ranked = PIECES.map(function(p){ return {p:p, s:score(p, toks)}; })
-    .filter(function(r){ return r.s > 0; })
-    .sort(function(a, b){ return b.s - a.s; })
-    .map(function(r){ return r.p; });
-  render(ranked);
-}
-document.getElementById("q").addEventListener("input", doSearch);
-document.getElementById("clearq").onclick = function(){
-  document.getElementById("q").value = ""; doSearch();
-  document.getElementById("q").focus();
-};
-document.getElementById("assemble").onclick = function(){
-  var keys = Object.keys(tray);
-  if (!keys.length){ toast("The tray is empty — tap + Add on pieces to fill it."); return; }
-  toast("Build assembled from " + keys.length + " verified pieces: " + keys.slice(0,4).join(", ") + (keys.length > 4 ? "…" : ""));
-};
 document.getElementById("installdemo").onclick = function(){
   toast("Demo: Nia app added to the home screen.");
 };
@@ -516,24 +376,16 @@ document.getElementById("copyjson").onclick = function(){
     function(){ toast("Copy blocked — select the text manually."); });
 };
 document.addEventListener("click", function(e){
-  var b = e.target.closest("[data-add]");
-  if (b){ toggleTray(b.getAttribute("data-add")); }
   var m = e.target.closest(".mode");
   if (m){
     document.querySelectorAll(".mode").forEach(function(x){ x.setAttribute("aria-pressed", "false"); });
     m.setAttribute("aria-pressed", "true");
-    var mode = m.getAttribute("data-mode");
     document.getElementById("modeline").innerHTML =
       'Intake mode: <b style="color:var(--paper)">' + esc(m.querySelector("h3").textContent.toLowerCase()) + '</b> — the contract is listening.';
-    if (mode === "specimens"){
-      document.querySelector("#builder").scrollIntoView({behavior:"smooth"});
-      toast("Specimen mode — point at the pieces you like.");
-    }
   }
   var s = e.target.closest("[data-scroll]");
   if (s){ var el = document.querySelector(s.getAttribute("data-scroll")); if (el) el.scrollIntoView({behavior:"smooth"}); }
 });
-doSearch();
 </script>
 </body>
 </html>

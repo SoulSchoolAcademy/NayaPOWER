@@ -22,19 +22,40 @@ def sha16(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()[:16]
 
 # spectrum in law order, by section position (hero takes purple)
-KICKERS = ["indigo", "sapphire", "teal", "emerald", "lime",
-           "yellow", "gold", "orange", "rich-orange", "magenta"]
+SPECTRUM = ["#a06bff", "#6675ff", "#55b9ee", "#40d3bb", "#2fe89e", "#b8ee57",
+            "#f1d75a", "#ffbf3d", "#ff9a5a", "#ff6b3d", "#ff5e6c", "#e84fff"]
 
-def specimen_card(model, p, add_btn=True):
-    add = ''
-    if add_btn:
-        add = ('<button class="spec-add" data-add="%s" aria-label="Add %s to the build tray">+ Add</button>'
-               % (esc(model), esc(p['label'])))
+# section chrome: real library CSS blocks, re-scoped .nb-scope -> .nb-chrome
+# so section chrome never collides with wall specimen CSS.
+CHROME_CSS_IDS = [
+    '0d880c7f3c3d',  # demo-board — the section shell
+    'dd8909d6a903',  # card — intake mode cards
+    'e880e2feafeb',  # typecard — template cards
+    '577bb46a3477',  # lawcard — feature / point / loop rows
+]
+
+def chrome_css(cssbank):
+    out = []
+    for cid in CHROME_CSS_IDS:
+        css = cssbank[cid].replace('.nb-scope', '.nb-chrome')
+        out.append('/* chrome:%s */\n%s' % (cid, css))
+    return '\n'.join(out)
+
+def specimen_card(model, p):
+    # contract page: specimens are sampled, not shopped — no dead controls.
     return (
         '<div class="spec" data-model="%s">'
         '<div class="spec-stage"><div class="nb-scope">%s</div></div>'
-        '<div class="spec-meta"><div><b>%s</b><i>%s · %s</i></div>%s</div>'
-        '</div>' % (esc(model), p['html'], esc(p['label']), esc(model), esc(p['kind']), add)
+        '<div class="spec-meta"><div><b>%s</b><i>%s · %s</i></div></div>'
+        '</div>' % (esc(model), p['html'], esc(p['label']), esc(model), esc(p['kind']))
+    )
+
+def lawcard(title, desc, color):
+    return (
+        '<div class="nb-chrome" style="margin-bottom:12px">'
+        '<div class="lawcard" style="--lc:%s">'
+        '<div class="ln" style="text-transform:uppercase"><span class="ld"></span><span>%s</span></div>'
+        '<p>%s</p></div></div>' % (color, esc(title), esc(desc))
     )
 
 def main():
@@ -65,45 +86,52 @@ def main():
             '<div class="grid g4 wallgrid">%s</div>' % (esc(cat), len(models), ''.join(cards)))
     wall_css = '\n'.join('/* css:%s */\n%s' % (cid, cssbank[cid]) for cid in wall_css_ids)
 
-    # ---- contract-driven sections ----
+    # ---- contract-driven sections: every section composed from real pieces ----
+    # intake modes -> the real .card piece
     modes = []
     for i, m in enumerate(contract['intake']['modes']):
+        c = SPECTRUM[(i + 1) % len(SPECTRUM)]
         modes.append(
-            '<button class="board mode" aria-pressed="%s" data-mode="%s">'
-            '<span class="kicker" style="color:var(--sp-%s)">%s</span>'
-            '<h3>%s</h3><p>%s</p></button>'
-            % ("true" if i == 0 else "false", esc(m['id']),
-               KICKERS[i % len(KICKERS)], esc(m['n']), esc(m['title']), esc(m['desc'])))
+            '<div class="nb-chrome"><button class="card mode" aria-pressed="%s" data-mode="%s" '
+            'style="--accent:%s;--accent-soft:%s73;text-align:left;cursor:pointer;width:100%%;'
+            'font:inherit;color:inherit">'
+            '<span style="display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;'
+            'font-weight:700;color:%s;margin-bottom:10px">%s</span>'
+            '<h3>%s</h3><p class="fine">%s</p></button></div>'
+            % ("true" if i == 0 else "false", esc(m['id']), c, c, c,
+               esc(m['n']), esc(m['title']), esc(m['desc'])))
     intake_modes = '<div class="grid g3" role="group" aria-label="Intake modes">%s</div>' % ''.join(modes)
 
+    # contract fields -> rows inside the real demo-board shell (shell is in the template)
     fields = ''.join(
         '<div class="field"><span class="fk">%s</span><span class="fv">%s</span></div>' % (esc(k), esc(v))
         for k, v in contract['fields'])
-    fields = '<div class="contract">%s</div>' % fields
 
+    # templates -> the real .typecard piece, one spectrum color per card
     templates = ''.join(
-        '<div class="tpl"><div class="n">%s</div><h3>%s</h3><p>%s</p></div>' % (esc(n), esc(t), esc(d))
-        for n, t, d in contract['templates'])
-    templates = '<div class="grid g5">%s</div>' % templates
+        '<div class="nb-chrome"><div class="typecard" style="--tc:%s">'
+        '<div class="tk">%s</div>'
+        '<h3 style="font-size:19px;margin:0 0 6px;color:var(--white)">%s</h3>'
+        '<p style="font-size:14px;color:var(--slate);margin:0">%s</p></div></div>'
+        % (SPECTRUM[(6 + i) % len(SPECTRUM)], esc(n), esc(t), esc(d))
+        for i, (n, t, d) in enumerate(contract['templates']))
+    templates = '<div class="grid g4">%s</div>' % templates
 
+    # features / gallery / customize -> the real .lawcard piece
     features = ''.join(
-        '<div class="feat"><span class="dot" style="background:var(--sp-%s)"></span>'
-        '<div><b>%s</b><p>%s</p></div></div>' % (KICKERS[i % len(KICKERS)], esc(t), esc(d))
+        lawcard(t, d, SPECTRUM[(7 + i) % len(SPECTRUM)])
         for i, (t, d) in enumerate(contract['features']))
-    features = '<div class="board">%s</div>' % features
+    gallery_html = ''.join(
+        lawcard(t, d, SPECTRUM[(4 + i) % len(SPECTRUM)])
+        for i, (t, d) in enumerate(contract['gallery']['points']))
+    customize_html = ''.join(
+        lawcard(t, d, SPECTRUM[(5 + i) % len(SPECTRUM)])
+        for i, (t, d) in enumerate(contract['customize']['points']))
 
+    # loop -> the real .lawcard piece
     loop = ''.join(
-        '<div class="step"><span class="kicker" style="color:var(--sp-%s)">%d</span>'
-        '<b>%s</b><small>%s</small></div>' % (KICKERS[i % len(KICKERS)], i + 1, esc(t), esc(d))
+        lawcard(t, d, SPECTRUM[(9 + i) % len(SPECTRUM)])
         for i, (t, d) in enumerate(contract['loop']))
-    loop = '<div class="board loop">%s</div>' % loop
-
-    # ---- search corpus: full piece list, compact ----
-    search_pieces = [
-        {'model': m, 'label': p['label'], 'cat': p['category'], 'kind': p['kind'],
-         'tags': p['tags'], 'html': p['html'], 'css_id': p['css_id']}
-        for m, p in pieces.items()
-    ]
 
     page = tpl
     machine_raw = json.dumps(contract['machine'], indent=2, ensure_ascii=False)
@@ -115,13 +143,18 @@ def main():
         '%%FIELDS%%': fields,
         '%%WALL_HTML%%': ''.join(wall_html),
         '%%WALL_CSS%%': wall_css,
+        '%%CHROME_CSS%%': chrome_css(cssbank),
+        '%%GALLERY_TITLE%%': esc(contract['gallery']['title']),
+        '%%GALLERY_LEDE%%': esc(contract['gallery']['lede']),
+        '%%GALLERY_POINTS%%': gallery_html,
+        '%%CUSTOMIZE_TITLE%%': esc(contract['customize']['title']),
+        '%%CUSTOMIZE_LEDE%%': esc(contract['customize']['lede']),
+        '%%CUSTOMIZE_POINTS%%': customize_html,
         '%%TEMPLATES%%': templates,
         '%%FEATURES%%': features,
         '%%LOOP%%': loop,
         '%%PROMISE_BIG%%': esc(contract['promise']['big']).replace('within 24 hours.', '<em>within 24 hours.</em>'),
         '%%PROMISE_SUB%%': esc(contract['promise']['sub']),
-        '%%PIECES_JSON%%': json.dumps(search_pieces, ensure_ascii=False),
-        '%%CSSBANK_JSON%%': json.dumps(cssbank, ensure_ascii=False),
         '%%MACHINE_JSON%%': machine_raw,  # raw: <pre> content, never an attribute
     }.items():
         page = page.replace(key, val)

@@ -41,16 +41,10 @@ def main():
         fail('JS syntax: ' + r.stderr[:300])
     print('ok: JS parses')
 
-    m = re.search(r'var PIECES = (\[.*?\]);\nvar CSSBANK', s, re.S)
+    m = re.search(r'<pre id="machinejson">(.*?)</pre>', s, re.S)
     if not m:
-        fail('PIECES JSON not found')
-    pieces = json.loads(m.group(1))
-    print('ok: PIECES parses,', len(pieces), 'entries')
-
-    m2 = re.search(r'<pre id="machinejson">(.*?)</pre>', s, re.S)
-    if not m2:
         fail('machine <pre> not found')
-    json.loads(m2.group(1))
+    json.loads(m.group(1))
     print('ok: machine JSON parses')
 
     idx = json.load(open(a.index))
