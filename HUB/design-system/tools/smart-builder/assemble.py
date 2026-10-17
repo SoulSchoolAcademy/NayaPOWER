@@ -17,8 +17,39 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 'functions'))
 from feature_cover import (CoverRefusal, decl_for, render_cover,
                            FEATURE_COVER_ID, FEATURE_COVER_VERSION)
+from feature_smart_notes import (SmartNotesRefusal, decl_for as sn_decl_for,
+                                 render_smart_notes,
+                                 FEATURE_SMART_NOTES_ID, FEATURE_SMART_NOTES_VERSION)
 
-ASSEMBLER_VERSION = "assemble-v1.2"  # v1.2: default-on (coverage-gated) + consent-line (ready/connected) + centralized identity
+ASSEMBLER_VERSION = "assemble-v1.3"  # v1.3: wave-E module 1/3 (smart_notes) wired into the v1.2 resolver
+
+# ---- breaker module wiring ----
+# Every wired module follows the cover pattern: decl_for(contract) parses
+# the declaration (three-state: explicit true/false honored, omitted ->
+# assembler policy, never a module-level default); render_* renders on the
+# resolved state; Refusal carries structured fail-closed errors.
+# The adapter signature: adapter(decl, registry_status, context, contract)
+#   -> (html, events, extra_receipt_dict).
+# Modules render on their OWN flags — never behind cover's early-return
+# (Wave A fix: F1 gated everything behind cover because cover was the only
+# breaker; with N breakers each stands on its own declaration).
+def _render_smart_notes(decl, st, ctx, contract):
+    html, events = render_smart_notes(decl, st, contract.get('address') or '',
+                                      context=ctx)
+    return html, events, {}
+
+# Reserved receipt keys — modules may not shadow them via extra_receipt.
+_RECEIPT_RESERVED_KEYS = frozenset(
+    {'built_utc', 'events', 'grants', 'identity', 'consent'})
+
+BREAKER_MODULES = [
+    # key, feature id, decl_for, refusal class, version, render adapter
+    {'key': 'smart_notes', 'fid': FEATURE_SMART_NOTES_ID,
+     'decl_for': sn_decl_for, 'refusal': SmartNotesRefusal,
+     'version': FEATURE_SMART_NOTES_VERSION,
+     'render': _render_smart_notes},
+]
+BREAKER_MODULE_KEYS = {m['key'] for m in BREAKER_MODULES}
 
 def esc(s):
     return htmlmod.escape(str(s), quote=True)
@@ -133,6 +164,19 @@ def default_on_policy_active(reg_statuses):
     return all(reg_statuses.get(fid.replace('feature.', '')) == 'built'
                for fid in STANDARD_FEATURES)
 
+_BREAKER_OMITTED = object()  # sentinel: the flag was not declared at all
+
+def _default_breaker_enabled(key, reg_statuses):
+    """Assembler policy for OMITTED breaker flags (Shawn's product rule
+    21:32Z — default-on, opt-out). THE single landing point for the
+    coverage-gated flip: an omitted flag renders iff the key is a standard
+    feature AND every standard feature is registry-'built'. No module may
+    hardcode a default — modules render only the resolved state the
+    assembler hands them. (Wave C's hardcoded BREAKER_DEFAULTS was stripped
+    per the single-policy resolution: one policy, no drift.)"""
+    return ('feature.' + key in STANDARD_FEATURES
+            and default_on_policy_active(reg_statuses))
+
 def standard_resolution(feats, reg_statuses, reg_present):
     """Three-state resolution for standard features.
 
@@ -147,7 +191,6 @@ def standard_resolution(feats, reg_statuses, reg_present):
     default-on features — the gate required them built to flip.)
     """
     enabled, problems = [], []
-    policy = default_on_policy_active(reg_statuses) if reg_present else False
     for fid in STANDARD_FEATURES:
         short = fid.replace('feature.', '')
         val = feats.get(short) if isinstance(feats, dict) else None
@@ -163,7 +206,8 @@ def standard_resolution(feats, reg_statuses, reg_present):
                              'detail': 'must be an object or true'})
             continue
         if declared is None:
-            if policy:
+            # omitted -> the single policy landing point (coverage-gated)
+            if reg_present and _default_breaker_enabled(short, reg_statuses):
                 enabled.append(fid)
             # policy inactive -> stays opt-in: OFF, no error
         elif declared:
@@ -192,6 +236,31 @@ def standard_resolution(feats, reg_statuses, reg_present):
 # is True — strict boolean, not truthy). Modules receive the grants in
 # context and must gate connected actions themselves; the receipt mirrors
 # the grants as the audit trail.
+def _connection_key(connection_name):
+    """Map a capability contract's connection name to a contract.connections
+    key (muse|github|network|nayanet). Unmappable -> '' (always gated:
+    fail closed — a grant that names no real connection can never fire)."""
+    n = (connection_name or '').lower()
+    for key in CONNECTION_KEYS:
+        if key in n:
+            return key
+    return ''
+
+def _connected_as_list(entry):
+    """Normalize the connected schema to [{action, grant, ...}]. Accepts the
+    list shape [{action, grant}] and the object shape {capability,
+    connection, grant, without_grant} — both preserved, nothing dropped."""
+    c = entry.get('connected', [])
+    if isinstance(c, dict):
+        item = {'action': c.get('capability') or '',
+                'grant': _connection_key(c.get('connection', ''))}
+        if c.get('without_grant'):
+            item['without_grant'] = c['without_grant']
+        if c.get('grant'):
+            item['grant_namespaced'] = c['grant']
+        return [item]
+    return c
+
 def resolve_consent(enabled_fids, reg_by_id, grants):
     """Consent resolution over the enabled feature set (same code path as
     default-on resolution: the enabled set flows here). Returns
@@ -202,7 +271,7 @@ def resolve_consent(enabled_fids, reg_by_id, grants):
         entry = reg_by_id.get(fid, {})
         ready = list(entry.get('ready', []))
         active, gated = [], []
-        for c in entry.get('connected', []):
+        for c in _connected_as_list(entry):
             (active if grants.get(c.get('grant')) is True else gated).append(c)
         consent[fid] = {'ready': ready, 'connected_active': active,
                         'connected_gated': gated}
@@ -225,18 +294,28 @@ def resolve_identity(contract):
 def activate_breakers(contract, reg_statuses, reg_present, context):
     """Contract flips breakers; the registry gates them (fail closed).
 
-    Returns (cover_html, problems, events, enabled_fids).
-    - features as a list (contract-page) -> no breakers; cover not rendered.
+    Returns (cover_html, module_html, problems, events, enabled_fids,
+             extra_receipt).
+    - features as a list (contract-page) -> no breakers; nothing renders.
     - features as a dict -> standard features resolve via the three-state
-      default-on mechanism; non-standard breakers (incl. cover) keep the
-      existing registry gate. Any enabled-but-unbuilt feature refuses.
+      default-on mechanism; non-standard breakers keep the registry gate.
+      Any enabled-but-unbuilt feature refuses (fail closed — no
+      best-effort skip: under the coverage gate that state is unreachable
+      by construction for default-on, and explicit claims are refused).
+    - module_html: {module key -> section HTML} ('' unless declared+built).
+      Every breaker renders on its OWN declaration — never behind cover's
+      early-return (Wave A fix).
+    - extra_receipt: per-module receipt additions (e.g. automation_audit),
+      merged into manifest['receipt'] by main().
     context: the resolved connections+privacy+identity dict, handed to
     every feature module (connections stay opt-in inside modules).
     """
-    problems, events, cover_html, enabled = [], [], '', []
+    problems, events, cover_html = [], [], ''
+    module_html, extra_receipt = {}, {}
+    enabled = []
     feats = contract.get('features')
     if not isinstance(feats, dict):
-        return cover_html, problems, events, enabled
+        return cover_html, module_html, problems, events, enabled, extra_receipt
     # standard features: three-state resolution (explicit / default-on / off)
     std_enabled, std_problems = standard_resolution(feats, reg_statuses,
                                                     reg_present)
@@ -250,6 +329,16 @@ def activate_breakers(contract, reg_statuses, reg_present, context):
         # checked so the refusal names every problem, not just the first
         problems.append({'code': e.code, 'feature': FEATURE_COVER_ID,
                          'detail': e.detail})
+    # per-module declarations: malformed decls are reported, but every
+    # breaker is still checked so the refusal names every problem.
+    mod_decls = {}
+    for mod in BREAKER_MODULES:
+        try:
+            mod_decls[mod['key']] = mod['decl_for'](contract)
+        except mod['refusal'] as e:
+            problems.append({'code': e.code, 'feature': mod['fid'],
+                             'detail': e.detail})
+            mod_decls[mod['key']] = None
     for key, val in feats.items():
         if str(key) in STANDARD_SHORT:
             continue  # handled by standard_resolution above
@@ -278,18 +367,60 @@ def activate_breakers(contract, reg_statuses, reg_present, context):
                                        % (reg_statuses.get(key),)})
         else:
             enabled.append('feature.' + str(key))
-    if problems or decl is None or not decl.get('enabled'):
-        return cover_html, problems, events, enabled
-    try:
-        cover_html = render_cover(decl, reg_statuses.get('cover'),
-                                context=context)
-    except CoverRefusal as e:
-        problems.append({'code': e.code, 'feature': FEATURE_COVER_ID,
-                         'detail': e.detail})
-        return '', problems, events, enabled
-    events.append({'event': 'cover.updated', 'feature': FEATURE_COVER_ID,
-                   'version': FEATURE_COVER_VERSION})
-    return cover_html, problems, events, enabled
+    # cover renders on its OWN declaration — never gating other breakers
+    # (Wave A fix: F1's early-return made all breakers unreachable without
+    # cover declared; each breaker now stands on its own contract flag).
+    if not problems and decl is not None and decl.get('enabled'):
+        try:
+            cover_html = render_cover(decl, reg_statuses.get('cover'),
+                                      context=context)
+        except CoverRefusal as e:
+            problems.append({'code': e.code, 'feature': FEATURE_COVER_ID,
+                             'detail': e.detail})
+            return cover_html, module_html, problems, events, enabled, extra_receipt
+        events.append({'event': 'cover.updated', 'feature': FEATURE_COVER_ID,
+                       'version': FEATURE_COVER_VERSION})
+    # module rendering: each enabled module on its own flag. A module
+    # enabled via omission under the default-on policy renders with a
+    # fallback declaration (the module never hardcodes the default).
+    if not problems:
+        for mod in BREAKER_MODULES:
+            fid = mod['fid']
+            if fid not in enabled:
+                continue
+            mdecl = mod_decls.get(mod['key'])
+            if mdecl is None:
+                mdecl = {'enabled': True}  # policy-enabled via omission
+            if not mdecl.get('enabled'):
+                continue
+            try:
+                html, evts, extra = mod['render'](
+                    mdecl, reg_statuses.get(mod['key']), context, contract)
+            except mod['refusal'] as e:
+                # canonical permission shape: the resolver's gate 4
+                # (permission_denied) is the one law; module-level
+                # grant_required refusals are normalized to it here.
+                code = ('permission_denied' if e.code == 'grant_required'
+                        else e.code)
+                err = {'code': code, 'feature': fid, 'detail': e.detail}
+                if code == 'permission_denied':
+                    err['missing'] = [e.detail.split(
+                        'contract.connections.')[-1].split()[0]
+                        if 'contract.connections.' in e.detail else 'unknown']
+                problems.append(err)
+                return (cover_html, module_html, problems, events,
+                        enabled, extra_receipt)
+            module_html[mod['key']] = html
+            events.extend(evts)
+            for k, v in extra.items():
+                if k in extra_receipt or k in _RECEIPT_RESERVED_KEYS:
+                    problems.append(
+                        {'code': 'receipt_key_collision', 'feature': fid,
+                         'detail': 'extra receipt key %r collides' % (k,)})
+                    return (cover_html, module_html, problems, events,
+                            enabled, extra_receipt)
+                extra_receipt[k] = v
+    return cover_html, module_html, problems, events, enabled, extra_receipt
 
 
 def render_breaker_rows(enabled_fids, consent, reg_by_id, reg_statuses,
@@ -412,8 +543,9 @@ def main():
     # feature breakers: the contract flips them, the registry gates them.
     # default-on resolution and the consent grant check share this code path:
     # the enabled set flows into both rendering and consent resolution.
-    cover_html, breaker_problems, breaker_events, enabled_fids = activate_breakers(
-        contract, reg_statuses, reg_present, context)
+    cover_html, module_html, breaker_problems, breaker_events, enabled_fids, \
+        extra_receipt = activate_breakers(
+            contract, reg_statuses, reg_present, context)
     problems += breaker_problems
     if problems:
         print(json.dumps({'status': 'refused', 'errors': problems}, indent=2))
@@ -533,6 +665,22 @@ def main():
         '%%CUSTOMIZE_POINTS%%': customize_html,
         '%%TEMPLATES%%': templates,
         '%%FEATURES%%': features,
+        '%%SMART_NOTES%%': module_html.get('smart_notes', ''),
+        '%%NOTIFICATIONS%%': module_html.get('notifications', ''),
+        '%%AUTOMATION%%': module_html.get('automation', ''),
+        '%%SMART_MAIL%%': module_html.get('smart_mail', ''),
+        '%%SPACE%%': module_html.get('space', ''),
+        '%%SOCIAL_FEED%%': module_html.get('social_feed', ''),
+        '%%SMART_LIST%%': module_html.get('smart_list', ''),
+        '%%SMART_BARS%%': module_html.get('smart_bars', ''),
+        '%%CONNECT%%': module_html.get('connect', ''),
+        '%%COMMUNITY%%': module_html.get('community', ''),
+        '%%SMART_TABS%%': module_html.get('smart_tabs', ''),
+        '%%INTELLIGENCE_TODAY%%': module_html.get('intelligence_today', ''),
+        '%%CONTACTS%%': module_html.get('contacts', ''),
+        '%%NAYA_ANSWERS%%': module_html.get('naya_answers', ''),
+        '%%SCHEDULER%%': module_html.get('scheduler', ''),
+        '%%BROADCAST%%': module_html.get('broadcast', ''),
         '%%LOOP%%': loop,
         '%%PROMISE_BIG%%': esc(contract['promise']['big']).replace('within 24 hours.', '<em>within 24 hours.</em>'),
         '%%PROMISE_SUB%%': esc(contract['promise']['sub']),
@@ -571,7 +719,7 @@ def main():
         # 5. DEPLOYMENT RECEIPT — appended at deploy time
         'deployment': 'pending — human approves preview first',
         # execution-time receipt metadata (not part of the identity)
-        'receipt': {
+        'receipt': dict({
             'built_utc': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
             # capability-contract events the build actually fired
             'events': breaker_events,
@@ -581,7 +729,7 @@ def main():
             'grants': context['connections'],
             'identity': identity,
             'consent': consent,
-        },
+        }, **extra_receipt),
     }
     json.dump(manifest, open(a.manifest, 'w'), indent=2)
     print('page:', a.out, manifest['build']['page']['bytes'], 'bytes')

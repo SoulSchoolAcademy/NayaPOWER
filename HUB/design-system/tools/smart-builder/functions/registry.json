@@ -1121,6 +1121,66 @@
               "grant": "network"
             }
           ]
+        },
+        {
+          "id": "feature.smart_notes",
+          "name": "Smart Notes + Smart Links",
+          "intent": "Create smart notes from the page's context at build time and mint their smart links — deterministic note objects, sanitized, links recorded in the receipt. The module mints; link resolution rides the NayaNET bridge once wired, never claimed live.",
+          "in": [
+            "contract"
+          ],
+          "out": [
+            "notes wired",
+            "smart links minted"
+          ],
+          "activated_by": "contract.features.smart_notes",
+          "status": "built",
+          "code": "HUB/design-system/tools/smart-builder/functions/feature_smart_notes.py",
+          "depends_on": [],
+          "version": "1.0.0",
+          "requires": [
+            "note_composer",
+            "link_minter",
+            "content_sanitizer"
+          ],
+          "configuration": {
+            "enabled": true,
+            "link_base": "https://nayanet.live (http(s) only, optional)",
+            "page_address": "string, optional — feeds deterministic note ids",
+            "notes": [
+              {
+                "title": "string, optional",
+                "body": "string, required non-empty",
+                "voice": "human|child|grandma|naya, default naya"
+              }
+            ]
+          },
+          "permissions": [
+            "notes.compose",
+            "links.mint"
+          ],
+          "events": [
+            "smart_note.created",
+            "smart_link.minted"
+          ],
+          "acceptance": [
+            "note_from_context_composed",
+            "link_minted_deterministic",
+            "unsafe_content_sanitized",
+            "capture_panel_fallback",
+            "link_not_claimed_live"
+          ],
+          "ready": [
+            "compose notes from contract context",
+            "mint smart links deterministically (sha-based note ids)",
+            "capture panel — compose + save on the page, local only"
+          ],
+          "connected": {
+            "capability": "smart-link resolution + network sharing",
+            "connection": "nayanet bridge",
+            "grant": "bridge.smart_links.resolve",
+            "without_grant": "links stay minted-unresolved; the page shows \"not connected — connect the NayaNET bridge to enable link resolution\" (ready-not-connected, never silent, never fabricated)"
+          }
         }
       ]
     }
