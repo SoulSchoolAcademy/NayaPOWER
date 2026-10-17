@@ -1,0 +1,275 @@
+{
+ "spec_version": 1,
+ "compiled_at": "2026-10-16T08:16:04Z",
+ "compiled_by": "puzzle-compiler v1",
+ "measurements": {
+  "supabase": {
+   "tables": {
+    "nayanet_intelligent_blocks": {
+     "rows": 191,
+     "measured": true
+    },
+    "smart_note_events": {
+     "rows": 28,
+     "measured": true
+    },
+    "smart_note_receipts": {
+     "rows": 27,
+     "measured": true
+    },
+    "smart_note_artifacts": {
+     "rows": 108,
+     "measured": true
+    },
+    "nayanet_smart_ledger": {
+     "rows": 381,
+     "measured": true
+    },
+    "members": {
+     "rows": 7472,
+     "measured": true
+    }
+   },
+   "probes": {
+    "reports_table": {
+     "exists": false,
+     "matches": []
+    },
+    "mail_table": {
+     "exists": true,
+     "matches": [
+      "smart_mail_aliases",
+      "smart_mail_threads",
+      "smart_mail_messages"
+     ]
+    },
+    "spaces_table": {
+     "exists": true,
+     "matches": [
+      "smart_spaces",
+      "smart_space_members"
+     ]
+    },
+    "capture_inbox": {
+     "exists": false,
+     "matches": []
+    }
+   }
+  },
+  "github": {
+   "capture": {
+    "total_runs": 14,
+    "last_run_at": "2026-10-10T09:59:27Z",
+    "last_conclusion": "failure",
+    "last_success_at": "2026-10-10T09:59:25Z",
+    "success_within_7d": true,
+    "triggers": [
+     "workflow_dispatch"
+    ],
+    "has_schedule": false
+   },
+   "bridge": {
+    "provider_found": false,
+    "evidence": [
+     "no assignment-pattern hit in implementation paths"
+    ]
+   },
+   "projection": {
+    "landed": false,
+    "files": [],
+    "note": "? filename mentions; 0 actual IB files"
+   },
+   "map_pr": {
+    "state": "open",
+    "head": "6d2bf3c2"
+   }
+  },
+  "rooms": {
+   "smart-feed": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "OFFICIAL_NOTES"
+    ],
+    "mtime": "2026-10-08"
+   },
+   "today": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "__fixtures"
+    ],
+    "mtime": "2026-10-08"
+   },
+   "reports": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "RAW_MD"
+    ],
+    "mtime": "2026-10-08"
+   },
+   "library": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "CANON_BLOCKS"
+    ],
+    "mtime": "2026-10-08"
+   },
+   "ledger": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "demoStream",
+     "simLive"
+    ],
+    "mtime": "2026-10-08"
+   },
+   "connections": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "const PACK="
+    ],
+    "mtime": "2026-10-08"
+   },
+   "lists": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "const RAW="
+    ],
+    "mtime": "2026-10-08"
+   },
+   "mail": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "const THREADS="
+    ],
+    "mtime": "2026-10-08"
+   },
+   "spaces": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "SEED_SPACES"
+    ],
+    "mtime": "2026-10-08"
+   },
+   "settings": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "const DOORS"
+    ],
+    "mtime": "2026-10-08"
+   },
+   "connect": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [
+     "const DOORS"
+    ],
+    "mtime": "2026-10-08"
+   },
+   "entry": {
+    "file_found": true,
+    "ui_built": true,
+    "live": false,
+    "seed_markers_found": [],
+    "mtime": "2026-10-08"
+   }
+  }
+ },
+ "journey": [
+  "working",
+  "half",
+  "working",
+  "missing",
+  "missing",
+  "missing",
+  "unknown",
+  "half"
+ ],
+ "gaps": {
+  "pump": {
+   "open": true,
+   "evidence": "no schedule trigger (triggers: workflow_dispatch); last success: 2026-10-10T09:59:25Z; last run: 2026-10-10T09:59:27Z (failure)"
+  },
+  "bridge": {
+   "open": true,
+   "evidence": "no assignment-pattern hit in implementation paths"
+  },
+  "session": {
+   "open": true,
+   "needs_human": true,
+   "evidence": "read architecture undecided \u2014 Shawn's word required"
+  }
+ },
+ "needs": [
+  {
+   "id": "pump",
+   "open": true
+  },
+  {
+   "id": "bridge",
+   "open": true
+  },
+  {
+   "id": "session",
+   "open": true
+  },
+  {
+   "id": "first-light",
+   "open": true,
+   "needs_human": true
+  },
+  {
+   "id": "room-wiring",
+   "open": true
+  },
+  {
+   "id": "stores",
+   "open": true,
+   "detail": [
+    "reports_table",
+    "capture_inbox"
+   ]
+  },
+  {
+   "id": "handshake",
+   "open": true,
+   "needs_human": true
+  },
+  {
+   "id": "human-proof",
+   "open": true,
+   "needs_human": true
+  }
+ ],
+ "unknowns": {
+  "reports_table": "open: no reports table found",
+  "mail_table": "resolved: exists",
+  "spaces_table": "resolved: exists",
+  "projection_landed": "open: no IB file in repo",
+  "session_architecture": "open: needs Shawn's word",
+  "capture_inbox": "open: no capture_inbox table \u2014 build order #1"
+ },
+ "changes_since_last": [
+  "unknown resolved: mail_table \u2192 resolved: exists",
+  "unknown resolved: spaces_table \u2192 resolved: exists"
+ ]
+}

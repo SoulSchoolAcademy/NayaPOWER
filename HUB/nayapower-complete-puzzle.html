@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NayaPOWER — How It All Works</title>
+<style>
+  :root{
+    --bg:#07060e; --card:rgba(255,255,255,.04); --card2:rgba(255,255,255,.065);
+    --line:rgba(255,255,255,.11); --txt:#f2f0fb; --dim:#b3aed4; --faint:#7c779e;
+    --green:#34d399; --amber:#fbbf24; --red:#f87171; --gray:#9ca3af;
+    --violet:#a78bfa; --cyan:#67e8f9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(900px 480px at 12% 0%, rgba(139,92,246,.16), transparent 60%),
+      radial-gradient(900px 520px at 88% 32%, rgba(34,211,238,.10), transparent 60%),
+      radial-gradient(1000px 600px at 50% 100%, rgba(139,92,246,.08), transparent 60%),
+      var(--bg);
+    color:var(--txt);
+    font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+    line-height:1.6; padding:56px 24px 90px; max-width:1060px; margin:0 auto;
+    -webkit-font-smoothing:antialiased;
+  }
+  .hero{text-align:center; margin-bottom:10px}
+  .hero .kicker{display:inline-block; font-size:12.5px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--cyan); border:1px solid rgba(103,232,249,.35); background:rgba(103,232,249,.07);
+    padding:7px 18px; border-radius:999px; margin-bottom:22px}
+  .hero h1{font-size:clamp(34px,5.4vw,62px); font-weight:800; letter-spacing:-.025em; line-height:1.08;
+    background:linear-gradient(100deg,#ffffff 20%,#c4b5fd 55%,#67e8f9 90%);
+    -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:18px}
+  .hero p{color:var(--dim); font-size:18px; max-width:640px; margin:0 auto}
+  .legend{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:30px 0 6px}
+  .legend span{display:inline-flex; align-items:center; gap:9px; font-size:14px; color:var(--dim);
+    background:var(--card); border:1px solid var(--line); padding:8px 16px; border-radius:999px}
+  .dot{width:12px;height:12px;border-radius:50%;flex:none}
+  .d-green{background:var(--green);box-shadow:0 0 12px var(--green)}
+  .d-amber{background:var(--amber);box-shadow:0 0 12px var(--amber)}
+  .d-red{background:var(--red);box-shadow:0 0 12px var(--red)}
+  .d-gray{background:var(--gray);box-shadow:0 0 12px var(--gray)}
+
+  h2.sec{font-size:clamp(24px,3.4vw,32px); font-weight:750; letter-spacing:-.02em; margin:72px 0 8px; text-align:center}
+  p.secsub{color:var(--dim); text-align:center; max-width:660px; margin:0 auto 36px; font-size:16.5px}
+
+  /* journey */
+  .journey{position:relative; max-width:720px; margin:0 auto; padding-left:8px}
+  .journey::before{content:""; position:absolute; left:39px; top:20px; bottom:20px; width:3px; border-radius:3px;
+    background:linear-gradient(180deg,var(--cyan),var(--violet) 55%,rgba(167,139,250,.15)); opacity:.85}
+  .step{position:relative; display:flex; gap:22px; margin-bottom:14px; align-items:flex-start}
+  .step .num{flex:none; width:64px; height:64px; border-radius:50%; z-index:1;
+    display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:800;
+    background:#0d0b18; border:2px solid rgba(167,139,250,.5); color:#fff;
+    box-shadow:0 0 24px rgba(139,92,246,.25)}
+  .step .card{flex:1; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:20px 24px;
+    transition:all .18s ease}
+  .step .card:hover{background:var(--card2); transform:translateX(4px)}
+  .step .card h3{font-size:19px; font-weight:700; margin-bottom:4px; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  .step .card p{color:var(--dim); font-size:15px}
+  .pill{display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; padding:4px 13px; border-radius:999px}
+  .pill .dot{width:8px;height:8px}
+  .p-green{background:rgba(52,211,153,.13); color:var(--green); border:1px solid rgba(52,211,153,.35)}
+  .p-amber{background:rgba(251,191,36,.12); color:var(--amber); border:1px solid rgba(251,191,36,.35)}
+  .p-red{background:rgba(248,113,113,.12); color:var(--red); border:1px solid rgba(248,113,113,.35)}
+  .p-gray{background:rgba(156,163,175,.12); color:var(--gray); border:1px solid rgba(156,163,175,.35)}
+
+  /* parts grid */
+  .parts{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px}
+  .part{background:var(--card); border:1px solid var(--line); border-radius:20px; padding:24px; cursor:pointer;
+    transition:all .18s ease; position:relative; overflow:hidden}
+  .part:hover{background:var(--card2); transform:translateY(-3px); border-color:rgba(255,255,255,.22)}
+  .part::before{content:""; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg,transparent,rgba(167,139,250,.5),transparent); opacity:0; transition:opacity .18s}
+  .part:hover::before{opacity:1}
+  .part .top{display:flex; align-items:center; gap:10px; margin-bottom:10px}
+  .part h3{font-size:18px; font-weight:700}
+  .part .what{color:var(--dim); font-size:14.5px; margin-bottom:12px}
+  .part .left{font-size:13.5px; color:var(--faint); border-top:1px solid var(--line); padding-top:12px}
+  .part .left b{color:var(--dim); font-weight:600}
+  .part .more{font-size:12px; color:var(--faint); margin-top:10px}
+
+  /* rooms */
+  .rooms{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px}
+  .room{background:var(--card); border:1px solid var(--line); border-radius:20px; padding:22px; cursor:pointer; transition:all .18s ease}
+  .room:hover{background:var(--card2); transform:translateY(-3px)}
+  .room h3{font-size:17px; margin:10px 0 4px}
+  .room .file{font-size:11.5px; color:var(--faint); font-family:ui-monospace,SFMono-Regular,monospace}
+  .room p{font-size:14px; color:var(--dim); margin-top:8px}
+  .room .bar{font-size:13.5px; color:var(--dim); margin-top:10px; border-top:1px solid var(--line); padding-top:10px}
+  .room .bar b{color:var(--txt)}
+
+  /* build list */
+  .build{max-width:780px; margin:0 auto}
+  .bitem{display:flex; gap:18px; background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:20px 24px; margin-bottom:12px; align-items:flex-start; transition:all .18s}
+  .bitem:hover{background:var(--card2)}
+  .bitem .n{flex:none; width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:18px; background:rgba(167,139,250,.14); color:var(--violet); border:1px solid rgba(167,139,250,.35)}
+  .bitem h3{font-size:16.5px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .bitem p{font-size:14px; color:var(--dim)}
+  .owner{font-size:11.5px; font-weight:700; padding:3px 11px; border-radius:999px;
+    background:rgba(103,232,249,.1); color:var(--cyan); border:1px solid rgba(103,232,249,.3)}
+
+  footer{margin-top:80px; text-align:center; color:var(--faint); font-size:13.5px; line-height:1.8}
+  footer .line{font-size:15px; color:var(--dim); font-style:italic}
+
+  /* detail panel */
+  #panel{position:fixed; top:0; right:-480px; width:min(460px,94vw); height:100vh; z-index:50;
+    background:rgba(13,11,24,.98); backdrop-filter:blur(16px); border-left:1px solid var(--line);
+    padding:36px 30px; overflow-y:auto; transition:right .32s cubic-bezier(.2,.8,.2,1); box-shadow:-30px 0 70px rgba(0,0,0,.55)}
+  #panel.open{right:0}
+  #panel .x{position:absolute; top:16px; right:22px; background:none; border:none; color:var(--dim); font-size:24px; cursor:pointer}
+  #panel h3{font-size:23px; margin-bottom:6px; padding-right:30px; letter-spacing:-.01em}
+  #panel .pstatus{font-size:13px; font-weight:700; margin:10px 0 14px; display:inline-flex; align-items:center; gap:8px; padding:5px 14px; border-radius:999px}
+  #panel h4{font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); margin:20px 0 8px}
+  #panel p, #panel li{font-size:14.5px; color:var(--dim)}
+  #panel ul{padding-left:18px} #panel li{margin-bottom:7px}
+  #panel .ev{font-size:13px; color:var(--dim); border-left:2px solid var(--violet); padding-left:14px; margin-top:6px; line-height:1.65}
+  .hint{text-align:center; color:var(--faint); font-size:13.5px; margin-top:26px}
+  .code{background:#0a0916; border:1px solid var(--line); border-radius:16px; padding:22px 24px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13.5px; line-height:1.7;
+    color:#c9c4e8; overflow-x:auto; white-space:pre}
+  .code .cm{color:#6b6690} .code .kw{color:#67e8f9} .code .st{color:#a78bfa}
+  .builder{max-width:820px; margin:0 auto}
+  .bcard{background:var(--card); border:1px solid var(--line); border-radius:20px; padding:26px 28px; margin-bottom:16px}
+  .bcard h3{font-size:18px; margin-bottom:10px}
+  .bcard p, .bcard li{font-size:14.5px; color:var(--dim)}
+  .bcard ul{padding-left:18px} .bcard li{margin-bottom:7px}
+  .gloss{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; margin-top:6px}
+  .gloss div{background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:13.5px; color:var(--dim)}
+  .gloss b{color:var(--txt); display:block; margin-bottom:2px; font-size:14px}
+
+  .strip{max-width:660px;margin:28px auto 0;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 26px}
+  .strip .nums{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-bottom:12px}
+  .strip .nums div{text-align:center;font-size:13px;color:var(--dim)}
+  .strip .nums b{display:block;font-size:22px}
+  .segbar{display:flex;height:10px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.07)}
+  .segbar i{display:block;height:100%}
+  .strip .cap{text-align:center;font-size:13px;color:var(--faint);margin-top:10px}
+  .diagram{max-width:1020px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 14px 10px;overflow-x:auto}
+  .diagram svg{min-width:780px;width:100%;height:auto;display:block}
+  .gaps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:1020px;margin:0 auto}
+  .gap{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;position:relative;overflow:hidden;cursor:pointer;transition:all .18s}
+  .gap:hover{background:var(--card2);transform:translateY(-3px)}
+  .gap::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--amber))}
+  .gap h3{font-size:19px;margin:10px 0 6px}
+  .gap .row{font-size:14px;color:var(--dim);margin-top:9px}
+  .gap .row b{color:var(--txt)}
+
+  .rtalk{max-width:1020px;margin:0 auto 22px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.3);
+    border-radius:18px;padding:20px 26px;font-size:14.5px;color:var(--dim)}
+  .rtalk b{color:var(--txt)}
+  .rmatrix{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 28px;margin-bottom:16px;max-width:1020px;margin-left:auto;margin-right:auto}
+  .rhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+  .rhead h3{font-size:21px}
+  .rfile{font-size:12px;color:var(--faint);font-family:ui-monospace,SFMono-Regular,monospace}
+  .sec-pill{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 13px;border-radius:999px;
+    background:rgba(167,139,250,.12);color:var(--violet);border:1px solid rgba(167,139,250,.35)}
+  .rrow{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:10px 0;border-top:1px solid rgba(255,255,255,.06);font-size:14px}
+  .rk{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:2px}
+  .rv{color:var(--dim)} .rv b{color:var(--txt)}
+  .rtrio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.06)}
+  .rtrio>div{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:14px;padding:13px 15px;font-size:13px}
+  .rtrio b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+  .ok{display:block;color:var(--green);margin-bottom:4px} .ok::before{content:"✓ "} .warn{display:block;color:var(--amber);margin-bottom:4px} .warn::before{content:"? "}
+  .need{display:block;color:var(--amber)} .need::before{content:"→ "}
+  .need.none{color:var(--faint)} .need.none::before{content:"— "}
+  @media(max-width:700px){.rtrio{grid-template-columns:1fr}.rrow{grid-template-columns:1fr;gap:4px}}
+  .step{cursor:pointer}
+  @media(max-width:640px){ body{padding:36px 16px 70px} .journey::before{left:31px} .step .num{width:48px;height:48px;font-size:18px} }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="kicker">The canonical system map</div>
+  <h1>How NayaPOWER Works</h1>
+  <p>Every part. What it does. How it connects. Whether it's built — measured, not claimed. Simple enough for anyone to understand in one look.</p>
+  <div class="legend">
+    <span><i class="dot d-green"></i>Working</span>
+    <span><i class="dot d-amber"></i>Half-built</span>
+    <span><i class="dot d-red"></i>Not built</span>
+    <span><i class="dot d-gray"></i>Unknown</span>
+  </div>
+  <div class="strip">
+    <div class="nums">
+      <div><b style="color:var(--green)" data-m="strip_working">2</b>working</div>
+      <div><b style="color:var(--amber)" data-m="strip_half">2</b>half-built</div>
+      <div><b style="color:var(--red)" data-m="strip_missing">4</b>not built</div>
+    </div>
+    <div class="segbar"><i style="width:25%;background:var(--green)" data-m="strip_bar_working"></i><i style="width:25%;background:var(--amber)" data-m="strip_bar_half"></i><i style="width:50%;background:var(--red)" data-m="strip_bar_missing"></i></div>
+    <div class="cap"><span data-m="strip_caption">The 8 steps of one Smart Note's journey — measured 2026-10-15.</span></div>
+  </div>
+</div>
+
+<h2 class="sec">The system in one picture</h2>
+<p class="secsub">Eight steps carry a note from birth to human benefit. Three foundations hold them up. Click any step for its machinery.</p>
+<div class="diagram"><svg viewBox="0 0 1200 400" role="img" aria-label="System flow diagram"><rect x="44.0" y="80" width="118" height="60" rx="16" fill="rgba(255,255,255,.045)" stroke="#34d399" stroke-width="1.6"/><rect x="44.0" y="80" width="118" height="60" rx="16" fill="none" stroke="#34d399" stroke-width="6" opacity=".12"/><text x="103.0" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#f2f0fb">1 · SOURCES</text><text x="103.0" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#34d399">WORKING</text><line x1="162.0" y1="110.0" x2="178.0" y2="110.0" stroke="#5b557e" stroke-width="2"/><polygon points="178.0,105.0 186.0,110.0 178.0,115.0" fill="#5b557e"/><rect x="186.0" y="80" width="118" height="60" rx="16" fill="rgba(255,255,255,.045)" stroke="#fbbf24" stroke-width="1.6"/><rect x="186.0" y="80" width="118" height="60" rx="16" fill="none" stroke="#fbbf24" stroke-width="6" opacity=".12"/><text x="245.0" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#f2f0fb">2 · CAPTURE</text><text x="245.0" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#fbbf24">HALF</text><line x1="304.0" y1="110.0" x2="320.0" y2="110.0" stroke="#5b557e" stroke-width="2"/><polygon points="320.0,105.0 328.0,110.0 320.0,115.0" fill="#5b557e"/><rect x="328.0" y="80" width="118" height="60" rx="16" fill="rgba(255,255,255,.045)" stroke="#34d399" stroke-width="1.6"/><rect x="328.0" y="80" width="118" height="60" rx="16" fill="none" stroke="#34d399" stroke-width="6" opacity=".12"/><text x="387.0" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#f2f0fb">3 · MEMORY</text><text x="387.0" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#34d399">WORKING</text><line x1="446.0" y1="110.0" x2="462.0" y2="110.0" stroke="#5b557e" stroke-width="2"/><polygon points="462.0,105.0 470.0,110.0 462.0,115.0" fill="#5b557e"/><rect x="470.0" y="80" width="118" height="60" rx="16" fill="rgba(255,255,255,.045)" stroke="#f87171" stroke-width="1.6"/><rect x="470.0" y="80" width="118" height="60" rx="16" fill="none" stroke="#f87171" stroke-width="6" opacity=".12"/><text x="529.0" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#f2f0fb">4 · GITHUB FILE</text><text x="529.0" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#f87171">NOT BUILT</text><line x1="588.0" y1="110.0" x2="604.0" y2="110.0" stroke="#5b557e" stroke-width="2"/><polygon points="604.0,105.0 612.0,110.0 604.0,115.0" fill="#5b557e"/><rect x="612.0" y="80" width="118" height="60" rx="16" fill="rgba(255,255,255,.045)" stroke="#f87171" stroke-width="1.6"/><rect x="612.0" y="80" width="118" height="60" rx="16" fill="none" stroke="#f87171" stroke-width="6" opacity=".12"/><text x="671.0" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#f2f0fb">5 · BRIDGE</text><text x="671.0" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#f87171">NOT BUILT</text><line x1="730.0" y1="110.0" x2="746.0" y2="110.0" stroke="#5b557e" stroke-width="2"/><polygon points="746.0,105.0 754.0,110.0 746.0,115.0" fill="#5b557e"/><rect x="754.0" y="80" width="118" height="60" rx="16" fill="rgba(255,255,255,.045)" stroke="#f87171" stroke-width="1.6"/><rect x="754.0" y="80" width="118" height="60" rx="16" fill="none" stroke="#f87171" stroke-width="6" opacity=".12"/><text x="813.0" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#f2f0fb">6 · ROOMS</text><text x="813.0" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#f87171">NOT BUILT</text><line x1="872.0" y1="110.0" x2="888.0" y2="110.0" stroke="#5b557e" stroke-width="2"/><polygon points="888.0,105.0 896.0,110.0 888.0,115.0" fill="#5b557e"/><rect x="896.0" y="80" width="118" height="60" rx="16" fill="rgba(255,255,255,.045)" stroke="#f87171" stroke-width="1.6"/><rect x="896.0" y="80" width="118" height="60" rx="16" fill="none" stroke="#f87171" stroke-width="6" opacity=".12"/><text x="955.0" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#f2f0fb">7 · HUMAN</text><text x="955.0" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#f87171">NOT BUILT</text><line x1="1014.0" y1="110.0" x2="1030.0" y2="110.0" stroke="#5b557e" stroke-width="2"/><polygon points="1030.0,105.0 1038.0,110.0 1030.0,115.0" fill="#5b557e"/><rect x="1038.0" y="80" width="118" height="60" rx="16" fill="rgba(255,255,255,.045)" stroke="#fbbf24" stroke-width="1.6"/><rect x="1038.0" y="80" width="118" height="60" rx="16" fill="none" stroke="#fbbf24" stroke-width="6" opacity=".12"/><text x="1097.0" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#f2f0fb">8 · COMPOUND</text><text x="1097.0" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#fbbf24">HALF</text><rect x="170.0" y="250" width="260" height="58" rx="15" fill="rgba(255,255,255,.03)" stroke="#34d399" stroke-width="1.3" stroke-dasharray="7 5"/><text x="300.0" y="274" text-anchor="middle" font-size="13.5" font-weight="700" fill="#f2f0fb">The team</text><text x="300.0" y="293" text-anchor="middle" font-size="11.5" fill="#b3aed4">52 seats building it all</text><rect x="470.0" y="250" width="260" height="58" rx="15" fill="rgba(255,255,255,.03)" stroke="#fbbf24" stroke-width="1.3" stroke-dasharray="7 5"/><text x="600.0" y="274" text-anchor="middle" font-size="13.5" font-weight="700" fill="#f2f0fb">Doors</text><text x="600.0" y="293" text-anchor="middle" font-size="11.5" fill="#b3aed4">how outside systems plug in</text><rect x="770.0" y="250" width="260" height="58" rx="15" fill="rgba(255,255,255,.03)" stroke="#9ca3af" stroke-width="1.3" stroke-dasharray="7 5"/><text x="900.0" y="274" text-anchor="middle" font-size="13.5" font-weight="700" fill="#f2f0fb">Ignition</text><text x="900.0" y="293" text-anchor="middle" font-size="11.5" fill="#b3aed4">install and it lights up</text><line x1="300" y1="148" y2="242" x2="300" stroke="#5b557e" stroke-width="1.5" stroke-dasharray="5 6" opacity=".6"/><line x1="600" y1="148" y2="242" x2="600" stroke="#5b557e" stroke-width="1.5" stroke-dasharray="5 6" opacity=".6"/><line x1="900" y1="148" y2="242" x2="900" stroke="#5b557e" stroke-width="1.5" stroke-dasharray="5 6" opacity=".6"/><text x="600" y="348" text-anchor="middle" font-size="12.5" fill="#7c779e">the foundation — builds and supports everything above</text></svg></div>
+
+<h2 class="sec" style="margin-top:56px">Everything missing is three gaps</h2>
+<p class="secsub">The whole build reduces to this. Close these three and the system lights up.</p>
+<div class="gaps" style="margin-top:18px">
+  <div class="gap" data-step="1"><span class="pill p-amber" data-m="gap_pump"><i class="dot d-amber"></i>Half-built</span>
+    <h3>Gap 1 · The pump <span style="color:var(--faint);font-weight:400;font-size:14px">(step 2)</span></h3>
+    <div class="row"><b>What it is:</b> whatever triggers capture on its own.</div>
+    <div class="row"><b>The gap:</b> a human pushes the button today — Oct 7–10 ran, then stopped.</div>
+    <div class="row"><b>The fix:</b> capture on a schedule. <b>Owner: Team Naya · P0.</b></div></div>
+  <div class="gap" data-step="4"><span class="pill p-red" data-m="gap_bridge"><i class="dot d-red"></i>Not built</span>
+    <h3>Gap 2 · The bridge <span style="color:var(--faint);font-weight:400;font-size:14px">(step 5)</span></h3>
+    <div class="row"><b>What it is:</b> the shared language between memory and rooms.</div>
+    <div class="row"><b>The gap:</b> zero code — rooms can't ask memory for anything.</div>
+    <div class="row"><b>The fix:</b> build the ten accessors (spec below). <b>Owner: engine lanes.</b></div></div>
+  <div class="gap" data-step="5"><span class="pill p-red" data-m="gap_session"><i class="dot d-red"></i>Not built</span>
+    <h3>Gap 3 · The session <span style="color:var(--faint);font-weight:400;font-size:14px">(steps 5–6)</span></h3>
+    <div class="row"><b>What it is:</b> the Hub reading as someone, not as nobody.</div>
+    <div class="row"><b>The gap:</b> no authenticated reader — the Hub sees nothing by design.</div>
+    <div class="row"><b>The fix:</b> the read architecture. <b>Owner: engine · needs Shawn's word.</b></div></div>
+</div>
+
+<h2 class="sec">The rooms — every surface, fully mapped</h2>
+<p class="secsub">The product itself. For each room: what it does, what its functions are, whether it's coded, what's live, what's done in GitHub / Supabase / the Hub, how it talks to the other rooms, and exactly what completes it.</p>
+<div class="rtalk"><b>How rooms talk to each other:</b> today, they barely do — exactly one link works: Connections hands a compose to Mail, on-device. Everything else (feed → spaces, feed → lists, mail → contacts, today → reports) is designed but unwired. That's because every room is supposed to talk through the Bridge — and the Bridge doesn't exist yet. <b>The Bridge is the conversation.</b></div>
+<div id="roommatrix"></div>
+
+<h2 class="sec">The journey — one Smart Note, start to finish</h2>
+<p class="secsub">Follow the water. Each step hands to the next with a receipt — a handoff without a receipt is a rumor.</p>
+<div class="journey" id="journey"></div>
+
+
+
+<h2 class="sec">What needs to be done — in order</h2>
+<p class="secsub">The honest build list. This is how the team is instructed: each item has an owner and a done-state.</p>
+<div class="build" id="build"></div>
+
+<h2 class="sec">For the builders — everything needed to act</h2>
+<p class="secsub">The layer beneath the picture. A cold reader — human or AI — should be able to build from this alone.</p>
+<div class="builder">
+
+<div class="bcard">
+<h3>The bridge contract — the actual spec</h3>
+<p style="margin-bottom:12px">One object. Named accessors. Every call returns the same envelope. Rooms never touch raw database rows.</p>
+<div class="code"><span class="cm">// one object, ten accessors — one per room</span>
+<span class="kw">window.NayaRuntime</span> = {
+  smartFeed(), today(), reports(), library(), ledger(),
+  lists(), mail(), spaces(), connections(), settings()
+}
+
+<span class="cm">// every call returns this envelope</span>
+{ ok, state, data, method, runtime_connected }
+
+<span class="cm">// what each accessor reads</span>
+smartFeed()    <span class="st">→</span> intelligent blocks        <span class="cm">(the feed cards)</span>
+today()        <span class="st">→</span> today's blocks + ledger beats
+reports()      <span class="st">→</span> the reports table         <span class="cm">(name unconfirmed — verify)</span>
+library()      <span class="st">→</span> blocks + the meaning index
+ledger()       <span class="st">→</span> the ledger stream
+lists()        <span class="st">→</span> blocks, filed as lists
+mail()         <span class="st">→</span> the mail store             <span class="cm">(doesn't exist yet)</span>
+spaces()       <span class="st">→</span> the spaces store           <span class="cm">(doesn't exist yet)</span>
+connections()  <span class="st">→</span> the members table
+settings()     <span class="st">→</span> the session snapshot
+
+<span class="cm">// the card shape the feed renders</span>
+{ id, title, subtitle, topics[], topic,
+  tone, icon, kind, personal, layers[] }</div>
+</div>
+
+<div class="bcard">
+<h3>The vocabulary — so nothing is misread</h3>
+<div class="gloss">
+<div><b>Intelligent Block</b>The unit of retained intelligence. IB-000123.</div>
+<div><b>Smart Note</b>A captured note — shaped, persisted, receipted.</div>
+<div><b>Smart Link</b>The verified link to a filed note. Never manufactured.</div>
+<div><b>Receipt</b>Proof a handoff happened. No receipt = rumor.</div>
+<div><b>Seed</b>Placeholder data in a room. Must never pose as live.</div>
+<div><b>Canon</b>The 26 doctrine notes. They stay.</div>
+<div><b>Door</b>A governed connection to an outside system.</div>
+<div><b>Runtime</b>The authenticated session between you and the system.</div>
+<div><b>Ledger beat</b>One verified event in the ledger stream.</div>
+<div><b>Bridge</b>The shared language between memory and rooms.</div>
+</div>
+</div>
+
+<div class="bcard">
+<h3>What blocks what — the dependency chain</h3>
+<ul>
+<li><b style="color:var(--txt)">The pump</b> is independent — build it now, nothing waits on it.</li>
+<li><b style="color:var(--txt)">The session decision</b> (Shawn's word) unlocks all live reads.</li>
+<li><b style="color:var(--txt)">The bridge</b> needs the session design — then it unlocks every room.</li>
+<li><b style="color:var(--txt)">Room wiring</b> needs the bridge — then all 12 go live.</li>
+<li><b style="color:var(--txt)">Mail, spaces, reports</b> need their stores named/built first (engine; schema changes are a protected gate).</li>
+<li><b style="color:var(--txt)">The GitHub handshake</b> (Shawn) flips ignition — install → lit-up Hub.</li>
+<li><b style="color:var(--txt)">The seven remaining doors</b> are full builds, in priority order.</li>
+<li><b style="color:var(--txt)">The human proof</b> needs everything above — it is the last gate, not the first.</li>
+</ul>
+</div>
+
+<div class="bcard">
+<h3>What needs Shawn's word — the protected gates</h3>
+<p style="margin-bottom:10px">A builder never crosses these on judgment alone. Everything else, the math decides.</p>
+<ul>
+<li>Writing to the database — exact statement shown first, word given, then write.</li>
+<li>Production deploys.</li>
+<li>Credentials and money.</li>
+<li>Destructive or irreversible actions.</li>
+<li>Security, privacy, consent, or authority changes.</li>
+<li>The read architecture — how the Hub reads as someone.</li>
+</ul>
+</div>
+
+<div class="bcard">
+<h3>The unknowns — verify, don't guess</h3>
+<ul>
+<li>The reports table name is unconfirmed — read the schema before building.</li>
+<li>Mail and spaces have no confirmed tables — they may need building, not finding.</li>
+<li>No filed note (IB-#/smart-note.md) was found via search — confirm the 27 landed.</li>
+<li>The App's install and auth state is unverified — confirm it live.</li>
+<li>Where real contacts come from is unanswered — manual, door, or otherwise.</li>
+<li>Canon stays in Collective vs moves to the Library — open product call.</li>
+</ul>
+</div>
+
+<div class="bcard">
+<h3>How a room is proven complete — the shared test</h3>
+<p>A room is done when a stranger installs the App and watches their own note travel the whole journey — capture → memory → GitHub → bridge → their room — with receipts at every handoff, in under five minutes, unassisted. No mocks. No seeds posing as data. Honest empty states where there's nothing yet.</p>
+</div>
+
+</div>
+<h2 class="sec">The full inventory — reference</h2>
+<p class="secsub">The picture above is the story; this is the catalog. Every part and door — click any card for its full dossier.</p>
+<h2 class="sec">All the parts</h2>
+<p class="secsub">Nine pieces. Click any one for the full story: what it does, how it connects, what's proven, what remains.</p>
+<div class="parts" id="parts"></div>
+
+<h2 class="sec" style="margin-top:56px">The doors — what each one does</h2>
+<p class="secsub">One law for every door: connect → understand → authorize → act → verify → record → learn. A connection gives capability — never authority. Click a door for its full dossier.</p>
+<div class="parts" id="doorgrid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))"></div>
+
+
+<p class="hint"><span data-m="measured_at">Measured 2026-10-15</span> · statuses re-verified live, never from memory · the team corrects this map with evidence, or it stands.</p>
+
+<footer>
+  <div class="line">Complete was never the finish line. It was the starting line.</div>
+  NayaPOWER — how it all works · the canonical map
+</footer>
+
+<aside id="panel" aria-label="Details">
+  <button class="x" onclick="closePanel()" aria-label="Close">×</button>
+  <h3 id="p-title"></h3>
+  <span class="pstatus" id="p-status"></span>
+  <h4>What it does</h4><p id="p-what"></p>
+  <h4>How it connects</h4><ul id="p-conn"></ul>
+  <h4>Measured</h4><p class="ev" id="p-ev"></p>
+  <h4>What remains</h4><ul id="p-rem"></ul>
+</aside>
+
+<script>window.__PUZZLE_STATE__={"spec_version":1,"compiled_at":"2026-10-16T08:16:04Z","compiled_by":"puzzle-compiler v1","measurements":{"supabase":{"tables":{"nayanet_intelligent_blocks":{"rows":191,"measured":true},"smart_note_events":{"rows":28,"measured":true},"smart_note_receipts":{"rows":27,"measured":true},"smart_note_artifacts":{"rows":108,"measured":true},"nayanet_smart_ledger":{"rows":381,"measured":true},"members":{"rows":7472,"measured":true}},"probes":{"reports_table":{"exists":false,"matches":[]},"mail_table":{"exists":true,"matches":["smart_mail_aliases","smart_mail_threads","smart_mail_messages"]},"spaces_table":{"exists":true,"matches":["smart_spaces","smart_space_members"]},"capture_inbox":{"exists":false,"matches":[]}}},"github":{"capture":{"total_runs":14,"last_run_at":"2026-10-10T09:59:27Z","last_conclusion":"failure","last_success_at":"2026-10-10T09:59:25Z","success_within_7d":true,"triggers":["workflow_dispatch"],"has_schedule":false},"bridge":{"provider_found":false,"evidence":["no assignment-pattern hit in implementation paths"]},"projection":{"landed":false,"files":[],"note":"? filename mentions; 0 actual IB files"},"map_pr":{"state":"open","head":"6d2bf3c2"}},"rooms":{"smart-feed":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["OFFICIAL_NOTES"],"mtime":"2026-10-08"},"today":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["__fixtures"],"mtime":"2026-10-08"},"reports":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["RAW_MD"],"mtime":"2026-10-08"},"library":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["CANON_BLOCKS"],"mtime":"2026-10-08"},"ledger":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["demoStream","simLive"],"mtime":"2026-10-08"},"connections":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["const PACK="],"mtime":"2026-10-08"},"lists":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["const RAW="],"mtime":"2026-10-08"},"mail":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["const THREADS="],"mtime":"2026-10-08"},"spaces":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["SEED_SPACES"],"mtime":"2026-10-08"},"settings":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["const DOORS"],"mtime":"2026-10-08"},"connect":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":["const DOORS"],"mtime":"2026-10-08"},"entry":{"file_found":true,"ui_built":true,"live":false,"seed_markers_found":[],"mtime":"2026-10-08"}}},"journey":["working","half","working","missing","missing","missing","unknown","half"],"gaps":{"pump":{"open":true,"evidence":"no schedule trigger (triggers: workflow_dispatch); last success: 2026-10-10T09:59:25Z; last run: 2026-10-10T09:59:27Z (failure)"},"bridge":{"open":true,"evidence":"no assignment-pattern hit in implementation paths"},"session":{"open":true,"needs_human":true,"evidence":"read architecture undecided \u2014 Shawn's word required"}},"needs":[{"id":"pump","open":true},{"id":"bridge","open":true},{"id":"session","open":true},{"id":"first-light","open":true,"needs_human":true},{"id":"room-wiring","open":true},{"id":"stores","open":true,"detail":["reports_table","capture_inbox"]},{"id":"handshake","open":true,"needs_human":true},{"id":"human-proof","open":true,"needs_human":true}],"unknowns":{"reports_table":"open: no reports table found","mail_table":"resolved: exists","spaces_table":"resolved: exists","projection_landed":"open: no IB file in repo","session_architecture":"open: needs Shawn's word","capture_inbox":"open: no capture_inbox table \u2014 build order #1"},"changes_since_last":["unknown resolved: mail_table \u2192 resolved: exists","unknown resolved: spaces_table \u2192 resolved: exists"]};</script>
+<script>
+const ST = {
+  working:["Working","p-green","d-green"],
+  half:["Half-built","p-amber","d-amber"],
+  missing:["Not built","p-red","d-red"],
+  unknown:["Unknown","p-gray","d-gray"]
+};
+
+/* ---------- the rooms matrix ---------- */
+const ROOMS_FULL = [
+{id:"smart-feed",sec:"Feed & Briefing",name:"Smart Feed",file:"index-2.html",st:"half",
+ does:"The shared intelligence stream — <b>26 canon notes</b> (11 FEAT · 6 DOOR · 9 ECO) · <b>3 lenses</b> (Collective / Personal / Activity) · Smart Tabs filters · Ask Naya entry · Powercasts link",
+ coded:"UI <b>✓</b> built — renders today from a hardcoded note list",
+ gh:["Canon notes live in the repo","Nothing — canon is already home"],
+ sb:["nayanet_intelligent_blocks table live","Session read (Gap 3)"],
+ hub:["Renderer works","Bridge loader swap · bind the Personal lens · real Activity data"],
+ talks:"Bridge <b>smartFeed()</b> → blocks · Feed → Spaces <i>create-space</i> (designed) · Feed → Lists <i>save-to-list</i> (designed)",
+ todo:"1. Bridge + session (Gaps 2+3) · 2. loader swap · 3. decision: canon stays in Collective vs moves to Library"},
+{id:"today",sec:"Feed & Briefing",name:"Your Intelligence Today",file:"today.html",st:"half",
+ does:"The daily briefing — <b>what matters, what changed, what deserves attention</b> · Today / Yesterday / Last Week tabs",
+ coded:"UI <b>✓</b> built — renders 12 fixture notes <b>with no preview label</b> (the honesty gap)",
+ gh:["Nothing stored here","Nothing needed"],
+ sb:["? Source table name UNCONFIRMED","Confirm the table · session read"],
+ hub:["Fixture renderer runs","Loader swap · fix the honesty label with or before the loader"],
+ talks:"Bridge <b>intelligenceToday()</b> → blocks / reports · → Reports <i>deltas</i> (designed) · → Ledger <i>beats</i> (designed)",
+ todo:"1. confirm the source table · 2. bridge + session · 3. loader swap · 4. honesty label fix"},
+{id:"reports",sec:"Feed & Briefing",name:"Your Reports",file:"reports.html",st:"half",
+ does:"Intelligence briefings across time — <b>Daily / Weekly / Monthly / Yearly</b> tabs · archive · read full report · copy link · <b>download markdown</b>",
+ coded:"UI <b>✓</b> built — parser works · Live <b>✗</b> 6 static markdown dailies (Sep 27–Oct 2)",
+ gh:["Canonical archive path designed (BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/…)","The generation job must write there — it doesn't exist yet"],
+ sb:["? Reports table name UNCONFIRMED","Confirm the table · session read"],
+ hub:["ReportsAdapter.parse works","Loader swap (zero adapter change if the bridge returns canonical markdown)"],
+ talks:"Bridge <b>smartReports()</b> → reports table · Engine <i>generation job</i> (doesn't exist) · → Today <i>deltas</i>",
+ todo:"1. build the report-generation job · 2. confirm the table · 3. loader swap"},
+{id:"library",sec:"Knowledge",name:"Intelligent Library",file:"library.html",st:"half",
+ does:"Everything retained, <b>organized by meaning</b> — searchable · <b>provenance + confidence</b> per item",
+ coded:"UI <b>✓</b> built — the honest one: says the runtime isn't connected · Live <b>✗</b> 26 canon seeds + device cache",
+ gh:["26 canon blocks in the repo","Nothing — canon is home"],
+ sb:["nayanet_intelligent_blocks + nayanet_intelligence_index verified","Session read (Gap 3)"],
+ hub:["Search UI works","Loader swap · <b>fix the cache</b> (fixed key + live data = stale UI)"],
+ talks:"Bridge <b>intelligentLibrary()</b> → blocks + meaning index · shares canon with the Feed",
+ todo:"1. bridge + session · 2. loader swap · 3. cache invalidation · 4. map JSONB from one live row — never guess"},
+{id:"ledger",sec:"Trust",name:"Smart Ledger",file:"ledger.html",st:"half",
+ does:"The heartbeat — <b>every report, note, action, connection</b> in one verifiable stream · filter · search · per-beat inspection",
+ coded:"UI <b>✓</b> built — the <b>real-beat parser already exists</b> · Live <b>✗</b> demo packs + “SIMULATED LIVE” banner",
+ gh:["Nothing stored here","Nothing needed"],
+ sb:["nayanet_smart_ledger LIVE — receipts were written","Session read (Gap 3)"],
+ hub:["Real-beat parser ready","Feed it live rows · delete demoStream() · take the banner down <i>because the stream is real</i>"],
+ talks:"Bridge <b>smartLedger()</b> → ledger · Capture <i>receipts flow in</i> · every room <i>beats flow out</i>",
+ todo:"1. bridge + session · 2. feed the real-beat path · 3. privacy filtering before Hub exposure · 4. chain-verifiable receipt links"},
+{id:"connections",sec:"People",name:"Your Connections",file:"connections.html",st:"half",
+ does:"The people network — <b>contacts in lists</b> · cards · search · filters · <b>messaging drafts</b> · compose handoff",
+ coded:"UI <b>✓</b> built (“Room Preview”) · Live <b>✗</b> 5 demo personas",
+ gh:["Nothing stored here","Nothing needed"],
+ sb:["members table exists — <b>names only</b> (id, display_name, created_at, updated_at)","<b>Schema decision:</b> extend the table or accept name-only cards"],
+ hub:["Compose handoff works device-locally","Loader swap · server-side lists"],
+ talks:"Bridge <b>smartConnections()</b> → members · → Mail <i>compose handoff</i> — <b>the one link that works</b> (device-local)",
+ todo:"1. bridge + session · 2. loader swap · 3. schema decision (Shawn's gate) · 4. where do real contacts come from?"},
+{id:"lists",sec:"Organize",name:"Smart Lists",file:"lists.html",st:"half",
+ does:"Intelligence <b>filed by what it teaches</b> — notes grouped into lists · filter by category · search · <b>save-to-list</b>",
+ coded:"UI <b>✓</b> built (“Room Preview”) · Live <b>✗</b> seeded markdown · saves go to the device only",
+ gh:["Nothing stored here","Nothing needed"],
+ sb:["nayanet_intelligent_blocks live","<b>Write path needed:</b> save-to-list → DB doesn't exist · session read"],
+ hub:["ListAdapter.parseNotes works","Loader swap · server-side saves that survive a fresh session"],
+ talks:"Bridge <b>smartLists()</b> → blocks · Feed → Lists <i>save-to-list</i> (designed)",
+ todo:"1. bridge + session · 2. loader swap · 3. build the save-to-list write path"},
+{id:"mail",sec:"People",name:"Smart Mail",file:"mail.html",st:"half",
+ does:"Intelligent email — <b>folders · threads · compose · search · bulk select</b> · jumps to contacts / lists / spaces · “nothing leaves the network”",
+ coded:"UI <b>✓</b> built (“Room Preview”) · Live <b>✗</b> 7 demo threads · drafts on-device",
+ gh:["Nothing stored here","Nothing needed"],
+ sb:["<b>NO TABLE FOUND</b> — no store exists","THE STORE: engine names it or builds it"],
+ hub:["Compose UI works","Store · send path · loader swap"],
+ talks:"Bridge <b>smartMail()</b> → <i>no store</i> · Connections → Mail <i>compose in</i> (works) · <b>Email door</b> <i>send</i> (doesn't exist)",
+ todo:"1. THE STORE (engine) · 2. the Email door itself · 3. loader swap — <b>two missing layers deep</b>"},
+{id:"spaces",sec:"People",name:"Smart Spaces",file:"spaces.html",st:"half",
+ does:"Shared topical rooms — <b>browse · search · create · join</b> · 27 seeded spaces across Start Here / Vision / Create / Grow",
+ coded:"UI <b>✓</b> built · Live <b>✗</b> no store · <b>real bug: the header says “SMART MAIL”</b>",
+ gh:["Nothing stored here","Nothing needed"],
+ sb:["<b>NO TABLE FOUND</b> — no store exists","THE STORE: engine names it or builds it"],
+ hub:["Browse/join UI works","Store · loader swap · <b>fix the header</b> (any seat)"],
+ talks:"Bridge <b>smartSpaces()</b> → <i>no store</i> · Feed → Spaces <i>create-space in</i> (designed)",
+ todo:"1. THE STORE (engine) · 2. header bug fix · 3. loader swap"},
+{id:"settings",sec:"Control",name:"Settings",file:"index-2.html · hash route",st:"half",
+ does:"The control center — <b>identity · privacy · doors · notifications · appearance · system health</b> · “private by default · shared by choice · collective by consent”",
+ coded:"UI <b>✓</b> built — device half works, governed half unwired",
+ gh:["Door registry list in the repo","Live registry feed (not the hardcoded array)"],
+ sb:["Nothing yet","Session for the governed half (Gap 3)"],
+ hub:["Device-local settings work","Identity binding · privacy posture · consent records · live door states"],
+ talks:"Bridge <b>settingsSnapshot()</b> → session · → Smart Connect <i>door list</i>",
+ todo:"1. bridge + session · 2. the door-status feed (registry → runtime)"},
+{id:"connect",sec:"Control",name:"Smart Connect",file:"door board",st:"half",
+ does:"The door board — <b>the 9 doors, their statuses, connect/manage actions</b> · law: connect → understand → authorize → act → verify → record → learn",
+ coded:"UI <b>✓</b> built · Live <b>✗</b> hardcoded statuses · GitHub door “not live yet”",
+ gh:["Registry + lane App verified","The hub-door handshake (Shawn is building it)"],
+ sb:["Door states via the runtime","Wire per-door state"],
+ hub:["Board UI works","Live registry feed — statuses from the runtime, never hardcoded"],
+ talks:"All 9 doors · → Settings <i>door list</i> · registry fetch (repo-relative — unresolvable on the deployed host)",
+ todo:"1. registry feed · 2. GitHub handshake (Shawn) · 3. build the 7 remaining doors in priority order"},
+{id:"entry",sec:"Entry",name:"Entry — Start · Entrance · Identity",file:"start.html · index.html · identity.html",st:"half",
+ does:"The front door — <b>first-run onboarding</b> · entrance routing · <b>identity activation</b>",
+ coded:"UI <b>✓</b> built · Live <b>✗</b> no auth behind any of it",
+ gh:["Nothing","Nothing needed"],
+ sb:["Nothing yet","Real auth + the session (Gap 3)"],
+ hub:["Flows built","Five-minute stranger test: install → live Hub, unassisted"],
+ talks:"Routes into every room · Bridge <i>session</i>",
+ todo:"1. real auth · 2. the stranger test"}
+];
+const PILL2 = s=>{const m={half:["UI built · no live data","p-amber","d-amber"],working:["Live","p-green","d-green"],missing:["Not built","p-red","d-red"]}[s];
+ return `<span class="pill ${m[1]}"><i class="dot ${m[2]}"></i>${m[0]}</span>`;};
+document.getElementById('roommatrix').innerHTML = ROOMS_FULL.map(r=>`
+<div class="rmatrix">
+ <div class="rhead"><span class="sec-pill">${r.sec}</span><h3>${r.name}</h3><span class="rfile">${r.file}</span><span data-m="r_${r.id}">${PILL2(r.st)}</span></div>
+ <div class="rrow"><span class="rk">What it does</span><span class="rv">${r.does}</span></div>
+ <div class="rrow"><span class="rk">Coded?</span><span class="rv">${r.coded}</span></div>
+ <div class="rtrio">
+  <div><b>GitHub</b><span class="ok">${r.gh[0]}</span><span class="need${r.gh[1].startsWith("Nothing")?" none":""}">${r.gh[1]}</span></div>
+  <div><b>Supabase</b><span class="${r.sb[0].startsWith("?")?"warn":"ok"}">${r.sb[0].replace(/^\? /,"")}</span><span class="need">${r.sb[1]}</span></div>
+  <div><b>Hub</b><span class="ok">${r.hub[0]}</span><span class="need">${r.hub[1]}</span></div>
+ </div>
+ <div class="rrow"><span class="rk">Talks to</span><span class="rv">${r.talks}</span></div>
+ <div class="rrow"><span class="rk">To complete</span><span class="rv">${r.todo}</span></div>
+</div>`).join('');
+
+/* ---------- the journey ---------- */
+const JOURNEY = [
+ ["Someone shares something","You say \u201csmart note this,\u201d a Naya learns something, or a machine event fires. This is where every note is born.","working"],
+ ["Capture shapes it","The note is built into its proper form and signed in. The pipe works — it ran in October with receipts. Nothing triggers it on its own yet.","half"],
+ ["Memory keeps it","Saved with its proof, chained to its evidence, guarded by privacy rules. <span data-m='c_blocks'>191</span> real blocks are sitting there now.","working"],
+ ["GitHub files it","The note becomes a versioned document with a real link anyone can open. The code exists — it hasn't run end to end.","missing"],
+ ["The bridge carries it","One shared language delivers room-shaped answers to the rooms. Specified — no code yet.","missing"],
+ ["The room blooms","It appears in your Hub — feed, Today, library — beautiful, with its receipt. Rooms run on placeholder data today.","missing"],
+ ["A human benefits","Someone's life gets measurably better — not our claim, measured. The real finish line.","missing"],
+ ["The lesson compounds","The next Naya inherits it; the whole system gets smarter every hour. The team machine runs this today.","half"]
+];
+/* ---------- the parts ---------- */
+const PARTS = [
+ ["sources","Sources","working","Where notes are born: you, a Naya, a machine event.","Nothing is broken here — this piece was never the problem."],
+ ["capture","Capture","half","The pump and the pipe. The pipe is proven; the pump — whatever triggers it on its own — is being built now.","Build the pump: capture on a schedule. P0."],
+ ["supabase","Memory","working","The database that keeps everything and guards privacy. 191 blocks, receipts, ledger — all real.","Decide the read architecture (needs Shawn's word on the exact approach)."],
+ ["bridge","Bridge","missing","The shared language between memory and rooms. One object, named accessors, room-shaped answers.","Everything — this is the biggest gap between stored intelligence and visible rooms."],
+ ["hub","Hub rooms","half","The face you open. Twelve rooms, beautifully built — all on placeholder data.","Wire all 12 to the bridge. No mocks. Honest empty states."],
+ ["github","GitHub","half","The shared memory and the roads. Repo, workflows, team board all working.","The note transport; verify the App's install state."],
+ ["ignition","Ignition","unknown","Install the App and the whole thing lights up. The \u201cit just works\u201d switch.","Verify it live, then wire install \u2192 lit-up Hub."],
+ ["doors","Doors","half","How outside systems plug in. Data and AI are live; GitHub is being built; seven are registered contracts.","Build the seven remaining doors, in priority order."],
+ ["team","The team","working","52 seats building it all, day and night — waves, director, dock, compounding lessons.","End the ticker war; keep equalizing: value per cost, everywhere."]
+];
+const PILL = s=>`<span class="pill ${ST[s][1]}"><i class="dot ${ST[s][2]}"></i>${ST[s][0]}</span>`;
+document.getElementById('journey').innerHTML = JOURNEY.map((j,i)=>`
+ <div class="step" data-step="${i}"><div class="num">${i+1}</div>
+ <div class="card"><h3>${j[0]} <span data-m="j_${i}">${PILL(j[2])}</span></h3><p>${j[1]}</p>
+ <p style="font-size:12px;color:var(--faint);margin-top:8px">Click for the machinery →</p></div></div>`).join('');
+document.getElementById('parts').innerHTML = PARTS.map(p=>`
+ <div class="part" data-part="${p[0]}">
+   <div class="top">${PILL(p[2])}</div>
+   <h3>${p[1]}</h3><p class="what">${p[3]}</p>
+   <p class="left"><b>What's left:</b> ${p[4]}</p>
+   <p class="more">Click for the full story →</p>
+ </div>`).join('');
+
+const BUILD = [
+ ["The pump","missing","Team Naya · P0","Put capture on a schedule so it runs on its own. Done when: automatic runs, receipts at every handoff, failures visible — never silence."],
+ ["The bridge","missing","Engine lanes","Build the runtime object with the 10 room accessors, hardened against the real 191 blocks. Done when a room can call it and get room-shaped answers."],
+ ["The session","missing","Engine · approach needs Shawn's word","The Hub reads as someone, not as nobody — the privacy architecture. Done when rooms see live data through their own session."],
+ ["First Light","missing","The team","One real Smart Note end to end — capture \u2192 persist \u2192 transport \u2192 bridge \u2192 Hub — receipts everywhere. Done when no room is called \u2018live\u2019 below this proof."],
+ ["Room wiring","missing","Any seat","Swap all 12 rooms from seed loaders to bridge loaders. Done when zero mocks remain and empty states are honest."],
+ ["The stores","missing","Engine","Mail, spaces, and reports need their tables named and built (or confirmed). Done when each room has a real store behind it."],
+ ["The handshake","unknown","Shawn","The GitHub door flip: app identity, install URL, session auth, per-operation authority. Done when installing the App lights up the Hub."],
+ ["The human proof","missing","Team + independent verifier","Run the full loop repeatedly — ending with a measured human benefit. Done when the evidence says a life got better."]
+];
+document.getElementById('build').innerHTML = BUILD.map((b,i)=>`
+ <div class="bitem"><div class="n">${i+1}</div><div>
+ <h3>${b[0]} ${PILL(b[1])} <span class="owner">${b[2]}</span></h3><p>${b[3]}</p></div></div>`).join('');
+
+const DOOR_CARDS = [
+ ["AI Connect","working","Model inference over what Naya retains. Live — bounded by governance."],
+ ["Data Connect","working","The governed database itself. Live — this is the memory's front door."],
+ ["GitHub Connect","half","Repo work, the note transport, the team's hands. Half wired — the hub side waits on the handshake."],
+ ["MCP Connect","unknown","Agents \u2192 provider tools, governed. Contract only — full build."],
+ ["Naya-to-Naya","unknown","Seat \u2192 seat collaboration with receipts. Contract only — full build."],
+ ["Email Connect","unknown","Email in and out with authority. Contract only — full build."],
+ ["Calendar Connect","unknown","Schedules the intelligence can reason about. Contract only — full build."],
+ ["Voice Connect","unknown","Spoken interaction, in and out. Contract only — full build."],
+ ["Web Connect","unknown","The open web with provenance. Contract only — full build."]
+];
+document.getElementById('doorgrid').innerHTML = DOOR_CARDS.map((d,i)=>`
+ <div class="part" data-door="${i}">
+   <div class="top">${PILL(d[1])}</div>
+   <h3>${d[0]}</h3><p class="what">${d[2]}</p>
+   <p class="more">Click for the full dossier →</p>
+ </div>`).join('');
+document.querySelectorAll('[data-door]').forEach(el=>el.addEventListener('click',()=>openDossier(DOOR_DETAILS[+el.dataset.door])));
+const JOURNEY_DETAILS = [
+{t:"1 · Someone shares something",s:"working",
+ what:"Every note is born at a source: you saying \u201csmart note this,\u201d a Naya learning something mid-work, or a machine event firing.",
+ conn:["You \u2192 speak or type the note","Naya agents \u2192 emit lessons from work","Machine events \u2192 fire on state changes","All three flow into Capture (step 2)"],
+ ev:"27 real Smart Note events landed Oct 7\u201310 from the capture pipeline. Sources exist and produce.",
+ rem:["Nothing \u2014 sources were never the broken piece."]},
+{t:"2 · Capture shapes it",s:"half",
+ what:"The pipe: workflow nayanet-agent-capture.yml \u2192 signs in as the naya-runtime user (both secrets verified present) \u2192 POSTs the note to the edge function v7-smart-note-canonical \u2192 block ID allocated, persisted (artifacts, events, receipts), learning evidence, checkpoint \u2192 calls nayanet-github-dispatch with a single-use grant \u2192 mints its own token, commits IB-#/smart-note.md \u2192 verified Smart Link back \u2192 receipt and ledger beat recorded.",
+ conn:["Trigger \u2192 workflow (manual-only today \u2014 that's the gap)","Workflow \u2192 v7-smart-note-canonical (the receiver)","Receiver \u2192 nayanet-github-dispatch (the filer)","Every handoff \u2192 receipt into the ledger"],
+ ev:"Pipe PROVEN: the workflow ran 14\u00d7 Oct 7\u201310, 2 green on the 10th. Pump MISSING: manual trigger only \u2014 something pushed the button Oct 7\u201310 and stopped.",
+ rem:["Build the pump: capture on a schedule (P0, on the board)","Acceptance: automatic runs, receipts at every handoff, visible failures \u2014 never silence"]},
+{t:"3 · Memory keeps it",s:"working",
+ what:"The database keeps everything: smart_note_events (27), smart_note_receipts (27), smart_note_artifacts (108), nayanet_intelligent_blocks (191, evidence-chained), nayanet_smart_ledger, nayanet_intelligence_index, members (7,472). Privacy rules are enforced in the database itself \u2014 authenticated-only, by design.",
+ conn:["Receives writes from Capture via the canonical receiver","Speaks through named operations (create note, verify note, record ledger event, \u2026)","Will be read by the Bridge \u2014 rooms never touch raw rows","16 background functions are its reflexes"],
+ ev:"All counts measured live 2026-10-15. The earlier \u2018empty\u2019 claim was a view artifact (the anonymous key sees nothing by design); corrected the same night.",
+ rem:["Decide the read architecture \u2014 how the Hub reads as someone (Shawn's word on the exact approach)"]},
+{t:"4 · GitHub files it",s:"missing",
+ what:"The note becomes a versioned document: the dispatcher (476 lines, fail-closed, idempotent) is called only with a single-transaction grant, mints its own GitHub token, and commits IB-#/smart-note.md \u2014 the verified Smart Link comes back.",
+ conn:["Called ONLY by v7-smart-note-canonical, with a single-use grant","Commits to the repo under IB-#/smart-note.md","Returns the verified Smart Link"],
+ ev:"Code exists; end-to-end run unproven \u2014 no filed note found via repo search. The 27 transactions may have lacked explicit approval or landed elsewhere.",
+ rem:["Run the transport end to end","Confirm where the 27 projections landed"]},
+{t:"5 · The bridge carries it",s:"missing",
+ what:"One object, ten named accessors (smartFeed, today, reports, library, ledger, lists, mail, spaces, connections, settings). Every call returns {ok, state, data, method, runtime_connected}. Rooms never touch raw rows \u2014 they get room-shaped answers.",
+ conn:["Reads memory through the approved read architecture","Serves every Hub room through its named accessor (see the bridge contract below)"],
+ ev:"Spec written 2026-10-15. Zero code exists. The single biggest gap between stored intelligence and visible rooms.",
+ rem:["Implement the read path against the real 191 blocks","Build all ten accessors","Harden against real data before any room wires up"]},
+{t:"6 · The room blooms",s:"missing",
+ what:"It appears in your Hub \u2014 feed, Today, library \u2014 beautiful, with its receipt. Today all 12 rooms run on placeholder data (hardcoded lists, device storage); zero live reads measured.",
+ conn:["Each room's adapter calls its bridge accessor","Adapter shapes live rows into the room's cards","Seed loaders are swapped for bridge loaders \u2014 no mocks survive"],
+ ev:"All 12 interfaces built (16KB\u2013521KB). None reads live data. The bar: live data through the bridge, honest empty states.",
+ rem:["The bridge + the session (steps 5 and the session decision)","Swap all 12 loaders","Remove every mock; fix the honesty gaps (Today's unlabeled fixtures, Spaces' wrong header)"]},
+{t:"7 · A human benefits",s:"missing",
+ what:"Someone's life gets measurably better \u2014 not our claim, measured. The eleven-step proof loop ends here: capture \u2192 persist \u2192 receipt \u2192 smart link \u2192 cold retrieve \u2192 comprehend \u2192 apply \u2192 observe \u2192 independently verify \u2192 learn \u2192 a successor reuses it.",
+ conn:["Needs every step above working","Verified by an independent seat \u2014 never self-graded"],
+ ev:"The loop is specified and partially exercised (cold-retrieve trials passed 3/3); the full human-benefit measurement hasn't run.",
+ rem:["Everything above, then run the loop and measure"]},
+{t:"8 · The lesson compounds",s:"half",
+ what:"The next Naya inherits it: waves of builders, the dispatcher dealing every 10 minutes, the director re-aiming every 30, lessons filed only when they change behavior \u2014 the whole system gets smarter every hour.",
+ conn:["52 seats; waves fold 5/5 with zero orphans","Lessons compound only when later behavior measurably improves"],
+ ev:"Running now \u2014 the team machine is the most operational piece of the system. One overhead fight: the #2601 ticker war (13 overwrites reverted); the writer hunt is on the lanes.",
+ rem:["End the overwrite war structurally","Keep equalizing: verified production per unit cost, everywhere"]}
+];
+document.querySelectorAll('[data-step]').forEach(el=>el.addEventListener('click',()=>openDossier(JOURNEY_DETAILS[+el.dataset.step])));
+/* ---------- dossiers (click any part / room / door) ---------- */
+const PIECES = {
+sources:{t:"Sources",s:"working",what:"Where Smart Notes are born: you saying \u201csmart note this,\u201d a Naya learning something mid-work, or a machine event firing.",
+ conn:["Human \u2192 speaks or types the note","Naya agents \u2192 emit lessons from work","Machine events \u2192 fire on state changes","All three flow into Capture"],
+ ev:"27 real Smart Note events landed Oct 7\u201310 from the capture pipeline. Sources exist and produce.",
+ rem:["Nothing structural \u2014 sources were never the broken piece."]},
+capture:{t:"Capture \u2014 the pump and the pipe",s:"half",what:"The pipe shapes a Smart Note and POSTs it to the canonical receiver (block ID allocated, persisted, evidence, checkpoint, receipt). The pump is whatever triggers the pipe on its own \u2014 a schedule, a loop, a human.",
+ conn:["Signs in as the naya-runtime user (both secrets verified present)","POSTs to the canonical edge-function receiver","Fires the GitHub dispatcher: commits IB-#/smart-note.md, verified Smart Link back","Receipts every handoff into the ledger"],
+ ev:"Pipe PROVEN: workflow ran 14\u00d7 Oct 7\u201310 (2 green on the 10th). Pump MISSING: workflow_dispatch-only \u2014 no schedule. Something pushed the button Oct 7\u201310 and stopped.",
+ rem:["Build the pump (P0 mission on the board): capture on a schedule","Acceptance: automatic runs, receipts, visible failures \u2014 never silence"]},
+supabase:{t:"Memory (Supabase)",s:"working",what:"The database that keeps everything: notes, events, receipts, blocks, the ledger, authority grants. Privacy rules are enforced in the database itself \u2014 identity private by default.",
+ conn:["Receives writes from Capture via the canonical receiver","Speaks through named operations (create note, verify note, record ledger event, \u2026)","Will be read by the Bridge \u2014 rooms never touch raw rows","16 background functions are its reflexes"],
+ ev:"Measured live: 27 note events, 27 receipts, 108 artifacts, 191 evidence-chained blocks \u2014 all VERIFIED. The earlier \u2018empty\u2019 claim was a view artifact (the anon key sees nothing by design); corrected tonight.",
+ rem:["Decide the read architecture \u2014 needs Shawn's word on the exact approach","Disposition of the 7,472 scaffold member rows"]},
+bridge:{t:"Bridge",s:"missing",what:"The shared language between memory and rooms: one object, named accessors (feed, blocks, receipts, events, today, lists, mail, spaces, connections, settings), room-shaped answers \u2014 never raw database rows.",
+ conn:["Reads memory through the approved read architecture","Serves every Hub room through its named accessor","When sender and receiver speak the same tongue, the bridge just carries"],
+ ev:"Spec written tonight (four-piece schematic). Zero code exists. This is the single biggest gap between stored intelligence and visible rooms.",
+ rem:["Harden accessor contracts against the real 191 blocks","Implement the read path","Swap every room's seed loader for bridge loaders"]},
+hub:{t:"Hub \u2014 12 rooms",s:"half",what:"The face you open. Twelve rooms, each a window into the living intelligence: today's briefing, the feed, the ledger, the library, lists, mail, connections, spaces, reports, identity, the entrance, the hub shell.",
+ conn:["Reads everything through the Bridge \u2014 never the database directly","Receives App signals via webhooks","Renders blocks, receipts, and views per room"],
+ ev:"All 12 interfaces built (16KB\u2013521KB each). All run on placeholder data \u2014 zero live reads measured tonight. connections/lists/mail say \u2018Room Preview\u2019; ledger says \u2018SIMULATED LIVE\u2019.",
+ rem:["Wire all 12 rooms to the bridge","Remove every mock; keep the finished boards and make them searchable","Honest \u2018unbuilt\u2019 states where live data doesn't exist yet"]},
+github:{t:"GitHub",s:"half",what:"Three jobs: the shared versioned memory (every note filed as a document), the transport (the dispatcher that files it), and team coordination (live board, lanes, the dock).",
+ conn:["Receives dispatch commits from Capture","Hosts the repo: brain files, workflows, field manuals","Live team board and coordination feeds","App webhooks signal the Hub"],
+ ev:"Repo, workflows, boards all live. The versioned note transport is coded but hasn't run end to end (no filed note found via search). App install state unverified.",
+ rem:["Run the transport end to end","Verify the GitHub App installed and authenticated, live","Then: App install becomes the ignition switch"]},
+ignition:{t:"Ignition",s:"unknown",what:"The moment it \u2018just works\u2019: install the App and the whole system lights up \u2014 rooms populate, feeds flow, receipts chain. Consent captured once, at install.",
+ conn:["Install \u2192 auth \u2192 the App's hands (comments, PRs, pushes, webhooks)","Signals flow to the Hub; rooms come alive"],
+ ev:"State unverified \u2014 nobody has confirmed the App installed and authenticated live. Install \u2192 lit-up Hub is not wired.",
+ rem:["Verify install/auth state live","Build install \u2192 Hub wiring","The five-minute stranger test: zero to live, unassisted"]},
+doors:{t:"Doors (Smart Connect)",s:"half",what:"How outside systems plug in. Every door obeys one law: CONNECT \u2192 UNDERSTAND \u2192 AUTHORIZE \u2192 ACT \u2192 VERIFY \u2192 RECORD \u2192 LEARN. A connection gives capability \u2014 never authority.",
+ conn:["Doors feed Capture and the Hub with external data","Data + AI are live","GitHub is being built now","Seven more are registered contracts waiting their turn"],
+ ev:"Per tonight's inventory: Data live, AI live, GitHub in progress, remainder registered-but-waiting.",
+ rem:["Finish the GitHub door","Build the seven remaining doors in priority order \u2014 each proven before it counts"]},
+team:{t:"The team \u2014 52 seats",s:"working",what:"The crew building every piece above: twelve area leads cycling in waves, specialists at their posts, the dispatcher dealing every 10 minutes, the director re-aiming every 30, the dock draining, lessons compounding into behavior.",
+ conn:["Builds every part on this map","Verifies with independent seats \u2014 never self-graded","Reports up: achievements, material blockers, protected decisions"],
+ ev:"Running now: waves folding 5/5, zero orphans, complete receipts, honest 8\u20139.5 scores. The #2601 ticker war is the one overhead fight; the writer hunt is on the lanes.",
+ rem:["End the overwrite war structurally","Keep equalizing: verified production per unit cost, everywhere"]}
+};
+const DOOR_DETAILS = [
+{t:"DOOR-AI \u2014 AI Connect",s:"working",what:"Model inference over what Naya retains \u2014 reason, draft, classify, transform, apply retained intelligence.",
+ conn:["No dedicated code: live because the agents themselves call models \u2014 the existing capability of every runtime, bounded by governance"],
+ ev:"LIVE (bounded). The bound is governance, not software: model output never grants authority.",
+ rem:["Nothing structural."]},
+{t:"DOOR-DATA \u2014 Data Connect",s:"working",what:"The governed data substrate. Reads and writes pass through governance.",
+ conn:["The database itself: 22 tables, 12k rows, 22 operations, 16 background functions \u2014 verified live"],
+ ev:"LIVE (bounded). Authenticated-only access is the privacy doctrine enforced in the database \u2014 not a bug. The hub reads as nobody and sees nothing by design.",
+ rem:["The hub's authenticated session (the reader the door was built for)"]},
+{t:"DOOR-GITHUB \u2014 GitHub Connect",s:"half",what:"The governed channel for repository work. Writes are consequential: law decides, verification checks.",
+ conn:["Pipeline\u2192GitHub projection BUILT (476 lines): called only with a single-transaction grant; mints its own token; files IB-#/smart-note.md; fail-closed, idempotent","Lane API identity BUILT and verified end-to-end","Hub door: contract-only \u2014 \u2018not live yet\u2019"],
+ ev:"WIRED-PARTIAL. Unverified: no filed note found via search \u2014 the 27 transactions may have lacked approval or landed elsewhere.",
+ rem:["Shawn's handshake: app identity + install URL, session auth, per-operation authority, the runtime flip","Confirm the dispatcher secrets are set","Confirm the 27 projections landed"]},
+{t:"DOOR-MCP",s:"unknown",what:"Agents \u2192 provider tools through one governed door. Invocation is consequential and receipted.",
+ conn:["NONE FOUND \u2014 no code. Only registry mentions."],ev:"CONTRACT-ONLY.",rem:["Everything \u2014 a full build, not a wiring job."]},
+{t:"DOOR-NAYA (Naya-to-Naya)",s:"unknown",what:"Seat \u2192 seat collaboration \u2014 shared context, receipts on every crossing.",
+ conn:["NONE FOUND \u2014 no protocol code. (The team works seat-to-seat via issues \u2014 that's process, not this door.)"],ev:"CONTRACT-ONLY.",rem:["Everything \u2014 protocol, identity, shared store, receipts."]},
+{t:"DOOR-EMAIL",s:"unknown",what:"Reach NayaPOWER through email adapters. Sending is consequential.",
+ conn:["NONE FOUND \u2014 no adapter code anywhere. The mail room is UI, not this door."],ev:"CONTRACT-ONLY.",rem:["Everything \u2014 adapter, send path with authority, the transport. Full build."]},
+{t:"DOOR-CALENDAR",s:"unknown",what:"Schedules & time.",conn:["NONE FOUND."],ev:"CONTRACT-ONLY.",rem:["Everything \u2014 full build."]},
+{t:"DOOR-VOICE",s:"unknown",what:"Spoken interaction, in and out.",conn:["NONE FOUND. (Powercasts are content, not this door.)"],ev:"CONTRACT-ONLY.",rem:["Everything \u2014 full build."]},
+{t:"DOOR-WEB",s:"unknown",what:"The open web, governed. Retrieval with provenance, never silent browsing.",
+ conn:["NONE FOUND as a door. (Agent web tools are capability, not the governed door.)"],ev:"CONTRACT-ONLY.",rem:["Everything \u2014 the governed retrieval path with provenance."]}
+];
+const MAPS = {working:["Working","p-green"],half:["Half-built","p-amber"],missing:["Not built","p-red"],unknown:["Unknown","p-gray"]};
+function openDossier(d){
+  document.getElementById('p-title').textContent = d.t;
+  const st = document.getElementById('p-status');
+  st.innerHTML = `<i class="dot ${ST[d.s][2]}" style="width:9px;height:9px"></i>${MAPS[d.s][0]}`;
+  st.className = 'pstatus ' + MAPS[d.s][1];
+  document.getElementById('p-what').textContent = d.what;
+  document.getElementById('p-conn').innerHTML = d.conn.map(c=>`<li>${c}</li>`).join('');
+  document.getElementById('p-ev').textContent = d.ev;
+  document.getElementById('p-rem').innerHTML = d.rem.map(c=>`<li>${c}</li>`).join('');
+  document.getElementById('panel').classList.add('open');
+}
+function closePanel(){ document.getElementById('panel').classList.remove('open'); }
+document.querySelectorAll('[data-part]').forEach(el=>el.addEventListener('click',()=>openDossier(PIECES[el.dataset.part])));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closePanel(); });
+
+/* ---------- live measured state (injected by puzzle_compiler) ---------- */
+function __pillHTML(status){
+  const m = {working:["Working","p-green","d-green"],half:["Half-built","p-amber","d-amber"],
+             missing:["Not built","p-red","d-red"],unknown:["Unknown","p-gray","d-gray"]}[status] || ["Unknown","p-gray","d-gray"];
+  return `<i class="dot ${m[2]}"></i>${m[0]}`;
+}
+function __setPill(el, status){
+  const cls = {working:"p-green",half:"p-amber",missing:"p-red",unknown:"p-gray"}[status] || "p-gray";
+  el.className = "pill " + cls;
+  el.innerHTML = __pillHTML(status);
+}
+function applyPuzzleState(){
+  const S = window.__PUZZLE_STATE__;
+  if(!S || !S.journey) return;
+  const q = sel => document.querySelectorAll('[data-m="'+sel+'"]');
+  const counts = {working:0,half:0,missing:0,unknown:0};
+  S.journey.forEach(s=>{ if(counts[s]==null) counts[s]=0; counts[s]++; });
+  const total = S.journey.length;
+  q("strip_working").forEach(el=>el.textContent=counts.working);
+  q("strip_half").forEach(el=>el.textContent=counts.half);
+  q("strip_missing").forEach(el=>el.textContent=counts.missing);
+  q("strip_bar_working").forEach(el=>el.style.width=(100*counts.working/total)+"%");
+  q("strip_bar_half").forEach(el=>el.style.width=(100*counts.half/total)+"%");
+  q("strip_bar_missing").forEach(el=>el.style.width=(100*counts.missing/total)+"%");
+  q("strip_caption").forEach(el=>el.textContent="The 8 steps of one Smart Note's journey \u2014 measured "+String(S.compiled_at).slice(0,10)+".");
+  S.journey.forEach((s,i)=>q("j_"+i).forEach(el=>__setPill(el.firstElementChild||el, s)));
+  const gaps = S.gaps||{};
+  if(gaps.pump) q("gap_pump").forEach(el=>__setPill(el, gaps.pump.open?"half":"working"));
+  if(gaps.bridge) q("gap_bridge").forEach(el=>__setPill(el, gaps.bridge.open?"missing":"working"));
+  if(gaps.session) q("gap_session").forEach(el=>__setPill(el, gaps.session.open?"missing":"working"));
+  const rooms = S.rooms||{};
+  Object.keys(rooms).forEach(id=>q("r_"+id).forEach(el=>__setPill(el.firstElementChild||el, rooms[id].live?"working":"half")));
+  const tables = S.tables||{};
+  if(tables.nayanet_intelligent_blocks) q("c_blocks").forEach(el=>el.textContent=tables.nayanet_intelligent_blocks.rows);
+  q("measured_at").forEach(el=>el.textContent="Measured "+String(S.compiled_at).slice(0,10));
+}
+try{ applyPuzzleState(); }catch(e){ /* curated defaults stand */ }
+</script>
+</body>
+</html>
