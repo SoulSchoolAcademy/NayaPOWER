@@ -1,12 +1,17 @@
 """Merge receipt gate proof (Lane 9, t922 rebuild).
 
 Covers both rungs of the receipt-pin mechanism:
-  - tools/check_scorecard_receipt_pin.py  (PR-body rung: MISSING / TAMPERED / STALE / PASS)
+  - tools/check_scorecard_receipt_pin.py  (PR-body rung: MISSING / TAMPERED /
+                                           STALE / FUTURE / PASS)
   - tools/auto_merge_gate.py P12        (gate rung: fail-closed on missing /
-                                         malformed / stale pin)
+                                         malformed / stale / future-dated pin)
 
-14 tests, all deterministic, no network. t952 adds: --pr-state-out on the pin CLI
-(2 tests) and --p12-only on the gate CLI (3 tests) = 19 total.
+14 tests from t922, all deterministic, no network. t952 adds: --pr-state-out on
+the pin CLI (2 tests) and --p12-only on the gate CLI (3 tests) = 19 total.
+The FUTURE rung (Judge wave-216, L300/L316 — future-dated decided_at fails
+closed) adds 9 tests (8 behavior + 1 strict-operator pin) = 28 total; the
+FUTURE behavior tests are time-relative and bounded, the operator pin uses a
+fixed now.
 Run: python3 -m pytest tests/test_receipt_pin_gate.py -q
 """
 
@@ -243,6 +248,112 @@ def test_gate_p12_only_blocks_stale_pin(tmp_path):
     assert out["allowed"] is False and any(
         "stale" in r for r in out["reasons"]
     ), out
+
+
+# ------------------------------------------- FUTURE rung (Judge wave-216, L300/L316)
+
+# #2682's future-dated receipt passed the gate on shape alone — temporal
+# honesty now fails closed. Timestamps are computed relative to now so the
+# tests are deterministic whenever they run.
+
+
+def _future_body(decided_at):
+    return _body_with({"decided_at": decided_at})
+
+
+def _now_iso(offset_seconds):
+    from datetime import datetime, timedelta, timezone
+
+    return (datetime.now(timezone.utc) + timedelta(seconds=offset_seconds)).isoformat()
+
+
+def test_pin_future_dated_receipt_fails_future():
+    # The #2682 shape: ~4h in the future.
+    verdict, reason = pin_mod.check_pin(_future_body(_now_iso(4 * 3600)), GOOD_HEAD)
+    assert verdict == "FUTURE", reason
+    assert "cannot have been posted" in reason
+
+
+def test_pin_far_future_fails_future():
+    verdict, reason = pin_mod.check_pin(_future_body(_now_iso(24 * 3600)), GOOD_HEAD)
+    assert verdict == "FUTURE", reason
+
+
+def test_pin_naive_future_timestamp_fails_future():
+    # Naive timestamps are read as UTC.
+    from datetime import datetime, timedelta, timezone
+
+    naive = (datetime.now(timezone.utc).replace(tzinfo=None) + timedelta(hours=2)).isoformat()
+    assert "+" not in naive and naive[-1] != "Z"
+    verdict, reason = pin_mod.check_pin(_future_body(naive), GOOD_HEAD)
+    assert verdict == "FUTURE", reason
+
+
+def test_pin_just_outside_skew_fails_future():
+    verdict, reason = pin_mod.check_pin(
+        _future_body(_now_iso(pin_mod.FUTURE_SKEW_SECONDS + 30)), GOOD_HEAD
+    )
+    assert verdict == "FUTURE", reason
+
+
+def test_is_future_dated_boundary_pins_strict_operator():
+    # Genuine operator pin with a FIXED now (no wall-clock race): the check is
+    # strict > — decided_at == now + skew is NOT future. A refactor to >=
+    # would flip the first assertion, so this test pins the operator.
+    from datetime import datetime, timedelta, timezone
+
+    now = datetime(2026, 10, 16, 12, 0, 0, tzinfo=timezone.utc)
+    skew = pin_mod.FUTURE_SKEW_SECONDS
+    at_edge = now + timedelta(seconds=skew)
+    assert pin_mod._is_future_dated(at_edge, now) is False
+    assert (
+        pin_mod._is_future_dated(at_edge + timedelta(microseconds=1), now) is True
+    )
+    assert (
+        pin_mod._is_future_dated(at_edge - timedelta(microseconds=1), now) is False
+    )
+    # Naive timestamps are read as UTC before the comparison.
+    assert pin_mod._is_future_dated(at_edge.replace(tzinfo=None), now) is False
+
+
+def test_pin_just_inside_skew_passes():
+    # CI clock drift inside the skew is tolerated, not punished.
+    verdict, reason = pin_mod.check_pin(
+        _future_body(_now_iso(pin_mod.FUTURE_SKEW_SECONDS - 30)), GOOD_HEAD
+    )
+    assert verdict == "PASS", reason
+
+
+def test_pin_past_receipt_still_passes():
+    verdict, reason = pin_mod.check_pin(_future_body(_now_iso(-3600)), GOOD_HEAD)
+    assert verdict == "PASS", reason
+
+
+def test_pin_cli_future_dated_exits_1_and_writes_no_pr_state(tmp_path):
+    # Fail-closed propagation: no pr-state file is written, so the gate-side
+    # P12 rung never sees the future-dated pin at all.
+    out = tmp_path / "pr-state.json"
+    body_file = tmp_path / "body.md"
+    body_file.write_text(_future_body(_now_iso(3600)), encoding="utf-8")
+    rc, stdout = _run_cli(
+        pin_mod, [GOOD_HEAD, str(body_file), "--pr-state-out", str(out)], cwd=None
+    )
+    assert rc == 1, stdout
+    assert not out.exists()
+
+
+def test_is_future_dated_unit_probe():
+    from datetime import datetime, timedelta, timezone
+
+    now = datetime.now(timezone.utc)
+    assert pin_mod._is_future_dated(now + timedelta(hours=4), now) is True
+    assert pin_mod._is_future_dated(now - timedelta(hours=4), now) is False
+    assert (
+        pin_mod._is_future_dated(
+            now.replace(tzinfo=None) + timedelta(hours=4), now
+        )
+        is True
+    )  # naive read as UTC
 
 
 if __name__ == "__main__":
