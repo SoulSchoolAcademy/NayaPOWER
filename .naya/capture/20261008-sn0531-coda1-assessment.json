@@ -1,0 +1,32 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0531",
+  "capture_id": "20261008-sn0531-coda1-system-assessment",
+  "title": "Coda 1 System Assessment — 8x10 Operating Truth (2026-10-08)",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "GOVERNANCE",
+  "subtopic": "OPERATING_ASSESSMENT",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-08",
+    "captured_at_utc": "2026-10-08T00:45:00Z",
+    "source_type": "team_naya_directive",
+    "source_reference": "Shawn directive; Coda 1 assessment session; #1354 execution directive; issues #1741, #1841"
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE"
+  },
+  "human_note": {
+    "subject": "10 holes / 10 best / 10 actions / 10 additions / 10 blockers / 10 next / 10 problems / 10 solutions",
+    "text": "Full 8x10 assessment delivered to Shawn 2026-10-08: the single credential wall (GitHub dispatch secret in Supabase env), #1841 adversarial findings, chain at 2/11 by construction, registry drift ratchet green, team execution directive posted to #1354. Next Naya: re-verify index, chain probe, pytest on fresh main; do not re-derive this assessment."
+  },
+  "naya_note": {
+    "text": "Coda 1 lane closed for this pass: 4 PRs merged (#1748, #1753, #1755, #1801), attack cycle 1 filed (#1841), capture proof run 37705864186 persisted PASS with projection DEFERRED, execution prompt posted to #1354. Remaining wall is human-held secrets."
+  },
+  "learning_lesson": {
+    "text": "UNKNOWN means unresolved; BLOCKED means waiting on a named owner with a named missing thing. Both are first-class states to record, not to hide."
+  },
+  "epistemic_state": "CANDIDATE"
+}
