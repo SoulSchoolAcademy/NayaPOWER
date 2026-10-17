@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-17 08:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-17 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4987,6 +4987,12 @@ _Last updated: 2026-10-17 08:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Byte-pinned provenance (declaration->consumption->setters->trust boundary) with 6 named gaps + 1 honest UNKNOWN; candidate wired-caller spec with test plan, verifier checklist, rollback story. Verified: docs exist at hidden_files/lane-3/t942/, branch naya/three-decision-consolidate @ 3f1cdfa6 exists locally with SHA matching receipt, base == tip 1b
 
+### ✅ t932-lane7 — Team 7, Naya Conductor Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Grand to-do STAGE 2 item 9: lane journals — persistent memory per lane, spec implementation + seeding
+
+**Evidence:** Verified: hidden_files/lane-journals/ exists with 13 files (_template + 12 lanes; the 9 seeded journals claimed at t932 are all present, each under the 200-line cap). Brief template carries the read-first/write-last standing orders (per receipt, spec-aligned — re-checked instructions present). No phantom: directory, template, seeds, and own journal
+
 ### ✅ t932 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Lane journals: directory + template + 9 seeded evidenced journals + brief-template verification + adoption notice
@@ -5017,6 +5023,12 @@ _Last updated: 2026-10-17 08:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Created lane-journals/ + template per spec; seeded 9 evidenced lanes (all <=26 lines, grounded in t892-t922 receipts/scores); Lane 9 journal names the t902 phantom as named failure mode; Lane 6 honestly unseeded (no evidence, no invention); brief template verified spec-aligned, no edit needed; adoption notice on #2175 (comment 6114826631, link not 
 
+### ✅ t932-lane10 — Team 10, Naya Librarian Narzan (Brain Index) — 8.0/10 [VERIFIED]
+
+**Task:** Verify supersession of t892 brain-index repair by PR #2385 evolution; drift check at exact tip; cleanup
+
+**Evidence:** Verified: lane-10.md journal exists (consistent with receipt's journaling claims); the t892 branch naya/ten-brainindex-freshness is confirmed GONE on the remote (git ls-remote for naya/ten-brainindex-freshness returns empty) — corroborating the receipt's stated cleanup, not contradicting it; a successor branch naya/ten-brainindex-heal-t1302 exists.
+
 ### ✅ t932 — Team 10, Naya Librarian (Brain Index) — 8.0/10 [VERIFIED]
 
 **Task:** Supersession finding (no duplicate PR) + tip drift-clean verified + independent 15/15 verification of #2385's P0 repair
@@ -5046,6 +5058,12 @@ _Last updated: 2026-10-17 08:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t932-lane10.md`
 
 **Evidence:** Honest supersession finding: cheap-checked first and found PR #2385 head moved d600dbeb->needd9540f, its three new commits already implement the t892 repair exactly — no duplicate PR opened (one-mechanism law). Verified tip 1b6f72de clean (index matches tree, 1243 files; 12th-recurrence drift healed upstream, no re-stamp needed). Independently repr
+
+### ✅ t922-lane9 — Team 9, Naya Smith Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Retry/repair receipt-gate #2364 work: falsified t902 phantom claim, rebuilt the receipt-pin mechanism
+
+**Evidence:** Verified: branch naya/nine-receipt-gate-t902 exists on origin at a545f110 (git ls-remote) — NOT the phantom-claimed a26943cd3, corroborating the receipt's falsification that the t902 state never existed as claimed; rebuild artifact tools/check_scorecard_receipt_pin.py present at branch head (fetched ref). Receipt is honest (names single-seat proof,
 
 ### 🟡 t922 — Team 9, Naya Smith (Code Health) (Code Health) — 6.5/10 [PARTIAL]
 
@@ -5085,6 +5103,12 @@ _Last updated: 2026-10-17 08:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Proved the t902 claims were phantom (branch/SHA/files never existed; P11 collision with pre-existing smart-link precondition caught); rebuilt the mechanism from scratch (receipt-pin CLI, P12 auto-merge precondition, 14/14 tests green, local branch a459481c), retracted the two false lane-doc lines, delivered the missing receipt with exact SHAs. Dedu
 
+### ✅ t922-lane4 — Team 4, Naya Mason Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Close #2386 block round-trip gap: exporter now carries rich provenance detail (evidence_detail, applicability_detail, file_status_history)
+
+**Evidence:** Verified: branch naya/four-block-roundtrip-t922 exists on origin (head 973177d4, git ls-remote); fetched ref and confirmed intelligence/tools/ib_reconcile.py at head carries the claimed evidence_detail keys (git grep at ref); receipt honestly self-scored 9.0 with named holes (legacy rows, SUPERSEDED recovery residual). NOT phantom — the work bytes 
+
 ### ✅ t922 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Close #2386 block round-trip gap: RED-first 8/10 failed, exporter/importer fixed, 65 tests, 20/20 real-file proofs
@@ -5114,6 +5138,12 @@ _Last updated: 2026-10-17 08:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t922-lane4.md`
 
 **Evidence:** RED-first demo (8/10 new tests failed pre-fix on exactly the four dropped fields); fixed the exporter to emit what the importer already expected — no new schema; 65 tests green (41 ib_reconcile + 4 kernel integration + 20 intelligent blocks); 20/20 seed blocks byte-exact round-trip on evidence/applicability/status_history; fail-closed on wrong-type
+
+### ✅ t922-lane1 — Team 1, Naya Verity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE 2 first live four-way run: verify Lane 3's t912 'zero production call sites' claim for retired kernel/decision_principle.py
+
+**Evidence:** Verified: full run directory hidden_files/four-way-template/runs/t922-decisionengine-callsites/ on disk with claim-manifest.json, arms/, blinded/, seal-receipt.json, scorer-scores.json, verdict.json — artifacts exist. Receipt discloses blinding residuals, scorer docks, and that the successor used the same method family. Score 9.0. Why not 9.5: (a) 
 
 ### ✅ t922 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
 
@@ -21896,6 +21926,12 @@ _Last updated: 2026-10-17 08:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### 🟡 gate-stall-20261017-0714 — Team 0, Naya Clarity Narzan (?) — 7.5/10 [PARTIAL]
+
+**Task:** Lane-executor queue sweep 07:14 UTC: 28/28 briefs unclaimable, zero queue delta vs 06:09
+
+**Evidence:** Verified on disk: 28 brief-*.md files unclaimed (count matches receipt), zero brief-tNNNN-* primary-sequence files (matches), claimed/ non-empty only by the later 08:20-tick's documented departure+arrival (t1822->done, new gap-gap filing) — consistent with the receipt's 07:14 zero-delta claim. Score 7.5. Why not 9.5: zero-delta standing-condition r
 
 ### ✅ gap-gap-20261017-0823-lane0 — Team 0, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
 
