@@ -1,0 +1,156 @@
+{
+  "schema": "naya.design.protocol.v1",
+  "version": "1.0",
+  "status": "HUMAN_DIRECTOR_DIRECTED_SYNTHESIS_CANDIDATE",
+  "authority_rule": "SYNTHESIS_NOT_SECOND_DESIGN_AUTHORITY",
+  "north_star": "Make sophisticated intelligence feel visually blissful, understandable, trustworthy, alive and unmistakably NayaNET.",
+  "signature": [
+    "OBSIDIAN_FOUNDATION",
+    "VISUAL_BLISS",
+    "LIVING_DEPTH",
+    "SPECTRAL_INTELLIGENCE",
+    "PRIMO_CONTROLS",
+    "INTELLIGENCE_BOARDS",
+    "JEWEL_GLYPHS",
+    "CINEMATIC_COMPOSITION",
+    "DUAL_VOICE_TYPOGRAPHY",
+    "TRUTHFUL_LIVENESS"
+  ],
+  "reference_floor": [
+    "https://results.nayanet.xyz/",
+    "https://academy.nayanet.app/",
+    "https://welcome.nayanet.app/",
+    "https://nayanet.groovepages.com/aboutus",
+    "https://dry-wave-df6f.smartnetpodcast.workers.dev/",
+    "https://maxis.nayanet.app/"
+  ],
+  "floor_not_ceiling": true,
+  "typography": {
+    "body_target_px": [
+      17,
+      18
+    ],
+    "body_floor_px": 16,
+    "control_target_px": [
+      15,
+      16
+    ],
+    "support_floor_px": 14,
+    "metadata_target_px": [
+      13,
+      14
+    ],
+    "shrink_to_fit_forbidden": true
+  },
+  "geometry": {
+    "spacing_scale_px": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      32,
+      40,
+      48,
+      64,
+      80
+    ],
+    "radius_families": {
+      "small": [
+        10,
+        12
+      ],
+      "control": [
+        14,
+        18
+      ],
+      "board": [
+        22,
+        32
+      ],
+      "portal": [
+        28,
+        36
+      ],
+      "pill": 999
+    }
+  },
+  "component_classes": [
+    "POWER_BUTTON",
+    "NAV_BUTTON",
+    "INTELLIGENCE_JEWEL",
+    "INTELLIGENCE_BOARD",
+    "SEARCH_PORTAL",
+    "FEED_MODE_CONTROL",
+    "SMART_TAB",
+    "TRUTH_BADGE",
+    "EVIDENCE_LINK",
+    "NAYA_PRESENCE",
+    "DOOR_INSTRUMENT",
+    "RECEIPT_EVENT",
+    "RELATIONSHIP_OBJECT",
+    "LIST_ITEM",
+    "MESSAGE_OBJECT",
+    "SPACE_IDENTITY",
+    "SETTING_CONTROL"
+  ],
+  "required_component_states": [
+    "REST",
+    "HOVER",
+    "FOCUS",
+    "ACTIVE_PRESS",
+    "SELECTED",
+    "LOADING",
+    "SUCCESS",
+    "ERROR",
+    "DISABLED"
+  ],
+  "design_order": [
+    "HUMAN_JOB",
+    "SIGNATURE_INSTRUMENT",
+    "FIRST_THREE_SECONDS",
+    "CONTROL_INVENTORY",
+    "DATA_CONTRACT",
+    "STATE_MATRIX",
+    "MOBILE_TRANSFORMATION",
+    "VISUAL_THEME",
+    "ANNOTATED_VISUAL",
+    "HUMAN_TASTE_REVIEW",
+    "FREEZE_SPEC_VISUAL_MACHINE_CONTRACT",
+    "BUILD",
+    "RENDER_INTERACT_VERIFY",
+    "INDEPENDENT_EYE",
+    "RATCHET_BASELINE"
+  ],
+  "hard_prohibitions": [
+    "TINY_BODY_TEXT",
+    "GLOW_REDUCES_LEGIBILITY",
+    "RANDOM_RAINBOW",
+    "GENERIC_FLAT_SAAS",
+    "DEAD_LIVE_LOOKING_CONTROL",
+    "FAKE_LOADING",
+    "FAKE_CONNECTED",
+    "FAKE_VERIFIED",
+    "FAKE_ACTIVITY",
+    "RANDOM_ICON_PACKS",
+    "EMOJI_PRIMARY_NAV",
+    "DUPLICATE_NAVIGATION",
+    "MOBILE_BLACK_GUTTER",
+    "HORIZONTAL_OVERFLOW",
+    "CONSTANT_DECORATIVE_PULSE",
+    "LOCAL_STATE_AS_CANONICAL_TRUTH",
+    "COPIED_CANONICAL_OBJECTS_PER_ROOM",
+    "ROOM_SPECIFIC_PHYSICS_DRIFT",
+    "VISUAL_REGRESSION_FOR_CLEANER_CODE",
+    "ROUTE_RENDERS_EQUALS_COMPLETE",
+    "SCREENSHOT_ONLY_FUNCTIONAL_VERIFICATION"
+  ],
+  "acceptance": {
+    "critical_dimension_floor": 9,
+    "accepted_target": 9.5,
+    "overall_aspiration": 10,
+    "visual_reference_is_floor": true,
+    "independent_review_required": true
+  }
+}
