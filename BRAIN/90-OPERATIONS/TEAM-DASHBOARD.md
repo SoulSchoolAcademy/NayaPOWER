@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-17 03:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-17 04:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 605 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 608 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (57)
+### LEARN (58)
+- [#2720](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2720) docs(brain): learning event 2026-10-17
 - [#2693](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2693) docs(brain): learning event 2026-10-15 📝draft
 - [#2682](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682) feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3
 - [#2617](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2617) docs(brain): learning event 2026-10-14
 - [#2613](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2613) wire: learn-clock T6 verify + T7 compound commands (Alpha w189)
-- [#2606](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2606) feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG  📝draft
-- …and 52 more
+- …and 53 more
 
 ### KNOW (23)
 - [#2683](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683) [INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-ind
@@ -87,21 +87,21 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (230)
+### BUILD (231)
+- [#2719](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2719) LAW: hold-veto mention-vs-use hardening (_HOLD_VETO_RE → _HOLD_USE_RE)
 - [#2715](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2715) Daily intelligence report pipeline — item 17 (generator + sample + rea
 - [#2714](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2714) DESIGN: adopt 144-block catalog extension into BLOCKS.md
 - [#2710](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2710) IB: persist tools/ph_aggregation.py — p/h aggregation step for grade-a
 - [#2709](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2709) [ACT] Pre-post PR body self-check (pr_body_selfcheck.py)
-- [#2708](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2708) Design Laws v1 (DRAFT): three-tongue repo placement 📝draft
-- …and 225 more
+- …and 226 more
 
-### WIRE (124)
+### WIRE (125)
+- [#2718](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2718) Add nitro to merge-consensus gate seat registry
 - [#2717](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717) Consensus gate: parse 12-lane seat tags + brief-time author-seat check
 - [#2704](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2704) fix(gate): consensus gate skips issue_comment events without a verdict
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
 - [#2696](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696) fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wa
-- [#2692](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692) [DOCK] gate-403-response-body: byte-capture the next gate 403
-- …and 119 more
+- …and 120 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft

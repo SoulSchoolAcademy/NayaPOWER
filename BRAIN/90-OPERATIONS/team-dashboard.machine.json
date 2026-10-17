@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T03:15:42+00:00",
+ "generated_utc": "2026-10-17T04:16:38+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2720,
+     "title": "docs(brain): learning event 2026-10-17",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2720",
+     "draft": false
+    },
     {
      "number": 2693,
      "title": "docs(brain): learning event 2026-10-15",
@@ -73,15 +79,9 @@
      "title": "[DRAFT] Learn-clock graduation stack F-1..F-5 \u2014 DRAFT, no merge",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2583",
      "draft": true
-    },
-    {
-     "number": 2572,
-     "title": "[DRAFT] learn-clock: learning-latency instrument (T0-T7 ledger)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2572",
-     "draft": true
     }
    ],
-   "open_pr_count": 57
+   "open_pr_count": 58
   },
   {
    "id": "know",
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2719,
+     "title": "LAW: hold-veto mention-vs-use hardening (_HOLD_VETO_RE \u2192 _HOLD_USE_RE)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2719",
+     "draft": false
+    },
+    {
      "number": 2715,
      "title": "Daily intelligence report pipeline \u2014 item 17 (generator + sample + read contract)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2715",
@@ -388,15 +394,9 @@
      "title": "Design System v1 \u2014 the Naya Lego box (100 laws, tokens, catalog, organized library)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2705",
      "draft": true
-    },
-    {
-     "number": 2703,
-     "title": "Harden TIP-NOTE marker to line-anchored heading regex + regression tests",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2703",
-     "draft": false
     }
    ],
-   "open_pr_count": 230
+   "open_pr_count": 231
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2718,
+     "title": "Add nitro to merge-consensus gate seat registry",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2718",
+     "draft": false
+    },
     {
      "number": 2717,
      "title": "Consensus gate: parse 12-lane seat tags + brief-time author-seat check (gap-t1442)",
@@ -457,15 +463,9 @@
      "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
      "draft": false
-    },
-    {
-     "number": 2676,
-     "title": "Canonical 9-note Smart Note source for the Smart Feed live wire (t0473)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2676",
-     "draft": false
     }
    ],
-   "open_pr_count": 124
+   "open_pr_count": 125
   },
   {
    "id": "team",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 605,
- "unassigned_prs": 230
+ "open_pr_total": 608,
+ "unassigned_prs": 231
 }
