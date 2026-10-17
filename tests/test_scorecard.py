@@ -208,3 +208,32 @@ def test_pass_3_fix_announces():
     assert report["overall"] == 8.0
     assert report["verdict"] == "FIX"
     assert "Announce" in report["next"]
+
+
+
+def test_trusted_verifier_exception_fails_closed():
+    def broken_verifier(_item):
+        raise RuntimeError("verifier unavailable")
+    report = score_work(good_work(), evidence_verifier=broken_verifier)
+    assert report["criteria"]["evidence"]["score"] == 2.0
+    assert "failed closed" in report["criteria"]["evidence"]["reasons"][0]
+    assert report["verdict"] == "HOLD"
+
+
+def test_malformed_evidence_item_prevents_perfect_evidence_score():
+    work = good_work(evidence=[
+        {"claim": "tests green", "ref": "tests/test_scorecard.py 12/12"},
+        {"claim": "missing ref"},
+    ])
+    report = score_work(work, evidence_verifier=lambda item: True)
+    assert report["criteria"]["evidence"]["score"] == 5.0
+    assert report["verdict"] == "HOLD"
+
+
+def test_single_authenticated_reference_cannot_score_10():
+    report = score_work(
+        good_work(evidence=[{"claim": "tests green", "ref": "tests/test_scorecard.py 12/12"}]),
+        evidence_verifier=lambda item: True,
+    )
+    assert report["criteria"]["evidence"]["score"] == 8.0
+    assert report["verdict"] == "FIX"
