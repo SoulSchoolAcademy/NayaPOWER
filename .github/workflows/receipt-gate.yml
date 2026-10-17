@@ -32,11 +32,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Fetch live PR body (never trust the frozen event payload)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # SN-1035 class: github.event.pull_request.body is frozen at event
+          # creation. A queued/delayed run evaluates a stale body and fails a
+          # valid pin (false red, seen 2026-10-17 on PR #2718: run created
+          # 03:42:50Z, executed 06:46:00Z, body pinned at ~04:08Z). The PR body
+          # can change without any push (no new event fires), so the gate must
+          # always read live bytes. Fail-closed: an unreadable body fails.
+          gh api "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}" \
+            --jq '.body // ""' > /tmp/pr-body.md
+          echo "live PR body: $(wc -c < /tmp/pr-body.md) bytes"
+
       - name: Enforce exact-head receipt pin (fail-closed)
         env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
-          PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           set -euo pipefail
 
@@ -53,7 +67,7 @@ jobs:
           # Rung 1 — PR body: the receipt must pin the exact PR head SHA.
           # Missing block -> MISSING, malformed fields -> TAMPERED,
           # pin != head SHA -> STALE. Any of those FAILS this check.
-          printf '%s' "$PR_BODY" > /tmp/pr-body.md
+          # (/tmp/pr-body.md holds the LIVE body from the step above.)
           python3 tools/check_scorecard_receipt_pin.py \
             "$HEAD_SHA" /tmp/pr-body.md \
             --pr-state-out /tmp/pr-state.json
