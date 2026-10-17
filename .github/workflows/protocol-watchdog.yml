@@ -11,6 +11,13 @@ name: Protocol Watchdog
 #   budget          [CODE] GitHub Actions burn rate vs the ~2,500 min/month
 #                   budget, posted to #1354. When CI minutes die, work stops —
 #                   this is the early-warning gauge.
+#   breach-posts    [CODE] L244 watchdog: scans merges to main in the last
+#                   7 days for the machine-readable breach-post catalog
+#                   (invalid merge authority, missing protocol receipt,
+#                   silent override) and POSTS the breach flag to #2175
+#                   when the required post is missing. The watchdog's own
+#                   flag carries the post marker, so the next run stays
+#                   silent. API failure -> "unable to verify", exit 1.
 
 on:
   schedule:
@@ -37,3 +44,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python3 tools/actions_budget_watch.py
+
+  breach-posts:
+    name: Breach-post watch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Flag missing breach posts to #2175
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 tools/breach_post_watch.py
