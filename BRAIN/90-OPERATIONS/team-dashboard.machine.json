@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-17T06:17:37+00:00",
+ "generated_utc": "2026-10-17T07:16:11+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2722,
+     "title": "Remove stale L11 note: oath + field manuals are on main",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2722",
+     "draft": false
+    },
+    {
      "number": 2719,
      "title": "LAW: hold-veto mention-vs-use hardening (_HOLD_VETO_RE \u2192 _HOLD_USE_RE)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2719",
@@ -388,15 +394,9 @@
      "title": "[DRAFT] PUMP phase 1: schedule plumbing for agent capture (review only, do not merge)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2691",
      "draft": true
-    },
-    {
-     "number": 2688,
-     "title": "HIVE mother-brain navigation \u2014 two-speed repo orientation (machine + human)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2688",
-     "draft": false
     }
    ],
-   "open_pr_count": 228
+   "open_pr_count": 229
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 605,
- "unassigned_prs": 228
+ "open_pr_total": 606,
+ "unassigned_prs": 229
 }
