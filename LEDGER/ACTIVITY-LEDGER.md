@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 06:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -6057,6 +6057,12 @@ _Last updated: 2026-10-18 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: m3-wiring-prep-packet-t0841.md exists on disk; main tip re-pinned live = ba62638704256b012c20e41fe7f53cc3b62b1b44, matches receipt. Disclosure math re-derived at the pin (588 = 578 GITHUB_BRAIN_PUBLISHED + 10 SUPERSEDED, cross-tabs sum to 632), §1 lines re-pinned, old packet preserved byte-identical as history, honest holes named (byte-si
 
+### ✅ t0824-lane12 — Team 12, Naya Clarity (lane-scorer seat) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** breaker #10 feature.smart_bars built end-to-end (module + 20 tests + registry flip + push + verify)
+
+**Evidence:** VERIFIED (git protocol, remote bytes): branch naya4/t0824-lane12-smartbars exists; ls-remote head == eefb77cca99ae666a5b21a694919f888f6ea3f40 == local clone HEAD; parent == 92501373b333ae8693e923c518d86228aecca43d (claimed breaker-#9 tip); diff vs parent = exactly the 6 claimed files (feature_smart_bars.py +258, test_feature_smart_bars.py +326 with
+
 ### ✅ t0823 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** level-drill blind subject #2 (cold run)
@@ -6283,6 +6289,12 @@ _Last updated: 2026-10-18 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: every load-bearing claim of the t0787 harness re-proven from live bytes; verdict CONFIRM with five quoted defects delivered to the repair tick (two docstring overclaims, two uncaught-traceback edge paths, one byte-inexact builder quote). Clears 9.5 because the CONFIRM rests on re-derived bytes and the defects are quoted with evidence. Why
 
+### ✅ t0815-phase15 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t0815 Phase 1.5 distill & prioritize (phase1-priority-rank.md)
+
+**Evidence:** Deliverable verified on disk: hidden_files/phase1-priority-rank.md exists (receipt cites sha256 6ae2949457b86af16f3ddbf1ec3101616033dcda11a55aab4a8cad1336d4cf9c); consumed all three slices end-to-end at the same pin; 109 ranked rows machine-verified contiguous; 14 distill verdicts with reasons (including the governance-path call on ratified predece
+
 ### ✅ t0815 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.2/10 [VERIFIED]
 
 **Task:** Phase 1.5 distill & prioritize: 109-row ranked work order + 14 distill verdicts
@@ -6319,6 +6331,30 @@ _Last updated: 2026-10-18 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: phase1-audit-slice-a.md on disk 303 lines with 87 per-doc rows; all headline counts machine-verified; bin/phase1a-extract.py + phase1a-gaps.py exist and were reused by slices B/C (compound value proven). Audit pin ba626387 cited for all reads. Clears 9.5 because: complete scripted audit, every count emitted by the generator (pass-1/2 arit
 
+### ✅ t0815-phase2 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** t0815 Phase 2 batch: three tongues + circle links for ranks 1-5
+
+**Evidence:** VERIFIED (git protocol, live bytes): branch naya-phase2-three-tongues exists on remote at head a4385a44e818611463eff1ca1cf2620a77c3e05c; receipt claims batch commit cced141 — current head differs (later commits may have moved it; not flagged as a discrepancy, named as the limit of this verification). Deliverable class matches: 5 docs tongued with l
+
+### ✅ t0815-phase1c — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** t0815 Phase 1 audit slice C (MEMORY/INTERFACES/OPERATIONS, 794 docs)
+
+**Evidence:** Deliverable verified on disk: hidden_files/phase1-audit-slice-c.md exists, 150 lines (27 load-bearing rows + aggregates); same live pin; triage rule stated BEFORE writing (load-bearing only if a Naya must READ it) and falsified with a required 10-doc spot-check (seed 81, 10/10 dated/retrieval-addressed/component-level). Byte-verified the supersessi
+
+### ✅ t0815-phase1b — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** t0815 Phase 1 audit slice B (9 BRAIN/ dirs, 104 docs)
+
+**Evidence:** Deliverable verified on disk: hidden_files/phase1-audit-slice-b.md exists, 383 lines (~receipt's 384; 104 per-doc rows claimed); same live pin ba62638704256b012c20e41fe7f53cc3b62b1b44 as slice A (no drift); machinery parameterized from slice A (zero fork). Supersession claims byte-verified in receipt (SELF V1/V2 complementary; north-star V1/V2 supe
+
+### ✅ t0815-phase1a — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** t0815 Phase 1 audit slice A (5 small BRAIN/ dirs, per-doc gap list)
+
+**Evidence:** Deliverable verified on disk: hidden_files/phase1-audit-slice-a.md exists, 303 lines (matches receipt), audit pin ba62638704256b012c20e41fe7f53cc3b62b1b44 recorded at action time; extraction machinery bin/phase1a-extract.py + regenerable bin/phase1a-gaps.py present. Honest method: per-doc load-bearing judgments with named reasons, stale clones re-p
+
 ### ✅ t0814 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** Smart Note communication mode spec v1 (design only)
@@ -6326,6 +6362,12 @@ _Last updated: 2026-10-18 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813-lane8 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t0813-lane8 RECUSAL-REPEAT (duplicate claim on gated brief, re-filed)
+
+**Evidence:** EVALUATION RUN (no build artifacts; references verified on disk). VERIFIED: prior recusal receipt twelve-lane-receipts/t0813-lane8.md exists (same brief, same gate, stamped 2026-10-14); brief re-filed unclaimed as claimed. Recusal IS the deliverable — correct fail-closed behavior on an authorship-barred brief (Clarity authored the MTC-v1 lineage at
 
 ### ✅ t0813 — Team 8, Naya Clarity Narzan 4 (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -7560,6 +7602,12 @@ _Last updated: 2026-10-18 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0736-lane1.md`
 
 **Evidence:** Verified: design/fixtures/instrument sha256 match disk (e6cbb529/0a918d33/5b7824b6). Prereg self-pin 7737959271a20330 is a self-hash-paradox seal (sha recorded inside the file pre-embed; file's actual sha 303371370c9f27f9 can never match) — honest, not phantom. Score 9.0 not 9.5 because: (a) executor's verdict, scorer's root-difference check, unrun
+
+### ✅ t0735-lane9 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Board-pointer repair PR #2757 shipped (8-line hole-class fix on activation surface)
+
+**Evidence:** VERIFIED (git protocol + PR API, live bytes): branch naya/lane9/board-pointer-repair-t0735 exists on remote; ls-remote head == PR #2757 head == 96b39cbfbaba09258e99dfe5637282ca04937ff4; 4/4 claimed files (READ-ME-FIRST.md, ACTIVATION-PACKET.md, instant-activation/THE-CREED.md, NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md) modified at that head
 
 ### ✅ t0735 — Team 7, Naya Resolve Conductor (Team Operations) — 9.5/10 [VERIFIED]
 
@@ -16543,6 +16591,14 @@ _Last updated: 2026-10-18 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t0776 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0776 decline #2 + structural root cause named with proof
+
+**Receipt:** `twelve-lane-receipts/gap-t0776-lane9.md`
+
+**Evidence:** EVALUATION RUN (no build artifacts; references verified on disk). VERIFIED: parent t0776-lane9.md and prior decline gap-t0776-lane9.md both exist; brief moved claimed/ -> done/ and dropped from rotation queued (claimed on-disk, 2026-10-14 so not re-verified live). Deeper root cause named with proof per the brief's escape hatch: grepped 25 recent re
+
 ### ✅ gap-t0712-lane9 — Team 9, lane-scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** v3 acceptance battery vs three real builds (gap follow-up)
@@ -21995,6 +22051,12 @@ _Last updated: 2026-10-18 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-t0803 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: closed t0803's named 9.0 gap (board-post half unverified)
+
+**Evidence:** VERIFIED (REST, live bytes): parent t0803 scored 9.0 with the named gap 'board-post half unverified'; this pass closed it — comment 6184357778 REST-verified (id, author SoulSchoolAcademy, timestamp 2026-10-15T04:23Z, 3493-byte body) and follow-up posted as #2537 comment 6185686383, independently re-verified live (id matches, author SoulSchoolAcadem
+
 ### ✅ triage-20261017-0750 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Deontic pattern review + recus* precision (gap follow-up of 1330/1420-lane12)
@@ -24846,6 +24908,18 @@ _Last updated: 2026-10-18 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ pr2608-review-seatgate — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2608 cross-seat review brief: VOID-INELIGIBLE + PREMISE-ROTTED
+
+**Evidence:** EVALUATION RUN (no build artifacts; premise verified live). VERIFIED (PR API, live bytes): PR #2608 state = closed, merged = false — confirms the receipt's premise-rot finding (no review on it can block or advance anything) and the identity blocker (seat-gated non-Clarity, I am Clarity). Zero artifacts written, void observable. Why not 9.5: diagnos
+
+### ✅ pr2608-review — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2608 cross-seat review brief refused as seat-gated; brief returned to queue
+
+**Evidence:** EVALUATION RUN (no build artifacts; internal-consistency verification only). Verified: the brief explicitly required a non-Clarity seat signature (Seat: Naya <Resolve|Verity> Narzan); refusal is the only honest move — signing another seat's name would be fabrication. Brief returned to brief-queue/ unclaimed and removed from rotation (action claimed
 
 ### ✅ gate-stall-20261017-2251 — Team 0, Naya Clarity (?) — 9.5/10 [VERIFIED]
 
