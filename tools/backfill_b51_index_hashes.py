@@ -49,8 +49,16 @@ def _diff_census(before_entries, after_entries, hashed, retired):
     }
 
 
-def main() -> None:
-    index_path = REPO_ROOT / ".naya" / "memory" / "smart-notes" / "index.json"
+def apply(index_path, repo_root):
+    """Run the backfill apply against index_path (testable entry point).
+
+    Mutates entries in place, re-anchors corpus_manifest_hash in the SAME
+    apply (writer contract), writes the registry atomically, then proves
+    the regenerated index against the validator on the same bytes. Any
+    refusal raises SystemExit(BACKFILL_REFUSED:...) BEFORE the write lands.
+
+    Returns the receipt dict (also printed by main()).
+    """
     registry = json.loads(index_path.read_text(encoding="utf-8"))
     entries = registry.get("entries")
     if not isinstance(entries, list):
@@ -69,7 +77,7 @@ def main() -> None:
             )
             retired += 1
             continue
-        page = REPO_ROOT / pp
+        page = repo_root / pp
         if not page.is_file():
             raise SystemExit(
                 f"BACKFILL_REFUSED:PROJECTION_ABSENT:"
@@ -78,6 +86,10 @@ def main() -> None:
         e["page_hash"] = m._page_file_hash(page)
         hashed += 1
 
+    # The writer contract: an index-mutating migration re-anchors the
+    # corpus_manifest_hash in the same apply, on the post-mutation entries.
+    # A migration that mutates entries without re-stamping breaks the
+    # reader's freshness anchor (w440).
     registry["corpus_manifest_hash"] = m._corpus_manifest_hash(entries)
 
     # Diff census BEFORE the write: an apply that does not cover the whole
@@ -108,6 +120,12 @@ def main() -> None:
         "diff_census": census,
         "validator": "PASS",
     }
+    return receipt
+
+
+def main() -> None:
+    index_path = REPO_ROOT / ".naya" / "memory" / "smart-notes" / "index.json"
+    receipt = apply(index_path, REPO_ROOT)
     print(json.dumps(receipt, indent=2))
 
 
