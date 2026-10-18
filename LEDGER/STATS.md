@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-18 09:02 UTC_
+_Last updated: 2026-10-18 09:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 3854
-- ✅ Verified (8+): 3820
+- **Total scored actions:** 3867
+- ✅ Verified (8+): 3833
 - 🟡 Partial (5–7): 33
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,16 +15,16 @@ _Last updated: 2026-10-18 09:02 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 313 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 314 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 307 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 247 | 9.0 | 9.5 |
-| Team 4 | Naya Mason | 259 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 352 | 9.1 | 9.6 |
-| Team 6 | Naya Heir | 210 | 9.0 | 9.6 |
+| Team 4 | Naya Mason | 260 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 357 | 9.1 | 9.6 |
+| Team 6 | Naya Heir | 211 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 289 | 9.0 | 9.5 |
 | Team 8 | Naya Sentinel | 293 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 362 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 371 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 365 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 373 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 235 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 224 | 9.2 | 9.5 |
 
@@ -312,6 +312,7 @@ _Last updated: 2026-10-18 09:02 UTC_
 - **triage-20261017-0727-t997-arms:** 1 actions, avg 9.5/10
 - **lane-scorer-20261018-0110:** 10 actions, avg 8.8/10
 - **lane-scorer-20261018-0120:** 7 actions, avg 9.0/10
+- **lane-scorer-20261018-0230:** 6 actions, avg 8.8/10
 - **scorer-20261014-1520:** 2 actions, avg 9.2/10
 - **scorer-20261014-1540:** 3 actions, avg 8.5/10
 - **gap-t0771:** 2 actions, avg 9.0/10
@@ -616,6 +617,8 @@ _Last updated: 2026-10-18 09:02 UTC_
 - **gap-lane-scorer-20261017-1340:** 1 actions, avg 9.5/10
 - **preregister-gap-lane-scorer-20261017-1840:** 1 actions, avg 9.0/10
 - **lane-scorer-20261018-0100:** 1 actions, avg 9.0/10
+- **lane-scorer-20261018-0210:** 4 actions, avg 9.4/10
+- **lane-scorer-20261018-0220:** 3 actions, avg 9.3/10
 - **gap-t0770:** 1 actions, avg 9.5/10
 - **gap-t1242-lane6:** 2 actions, avg 8.8/10
 - **gap-t1242:** 1 actions, avg 8.5/10
