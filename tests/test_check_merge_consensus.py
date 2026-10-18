@@ -194,13 +194,16 @@ def test_score_extraction_formats():
 HEAD = "d0144aee427dab3a1ab2df05f97962cb83b81f35"
 
 
-def test_scorecard_matcher_accepts_legacy_format():
+def test_scorecard_matcher_rejects_below_law_threshold():
+    # P-012: 9.5 is accepted; 9.0 and below is zero acceptance. A scorecard
+    # at 9.0 must fail the shape check — it routes to fix-pass, never to
+    # merge. The dock adjudicates the law; the gate refuses to be looser.
     body = f"## SCORECARD\nhead: {HEAD}\nverdict: 9.0\nSeat: Naya 3"
-    assert _looks_like_scorecard(body, HEAD)
+    assert not _looks_like_scorecard(body, HEAD)
 
 
 def test_scorecard_matcher_accepts_iv_format():
-    body = (f"## VERDICT: MERGE RECOMMENDED\n**Honest scorecard: 9.4/10.**\n"
+    body = (f"## VERDICT: MERGE RECOMMENDED\n**Honest scorecard: 9.5/10.**\n"
             f"head {HEAD}\nSeat: Naya 3")
     assert _looks_like_scorecard(body, HEAD)
 
