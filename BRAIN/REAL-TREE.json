@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-17",
-  "receipt_basis_commit": "28dc53aa99af4d361533e45f0b0d1b1322120d7a",
+  "generated_at": "2026-10-18",
+  "receipt_basis_commit": "8cac435a052d21ed74f8f2c2b8fec0bdaff455c7",
   "inventory_file_count": 1328,
   "domain_counts": {
     "00-ACTIVATION": 7,
@@ -5492,8 +5492,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json",
-      "blob_sha": "26687bdcdf9f5a23774f6186d026babc11c5fcea",
-      "size": 100252
+      "blob_sha": "3625450078b84106a2d5b8c85545db7afd0e9a40",
+      "size": 105293
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/MANIFEST.md",
