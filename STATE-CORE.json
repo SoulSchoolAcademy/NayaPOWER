@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-18T18:16:52Z",
+ "generated_utc": "2026-10-18T18:26:37Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "9affb457291099c7f76311348cedbabfbaaa4cad",
   "short": "9affb4572910",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-18T18:16:00Z"
+  "checked_utc": "2026-10-18T18:26:00Z"
  },
  "venue": {
   "live": 2641,
@@ -15,22 +15,21 @@
   ]
  },
  "waves": {
-  "active": 339,
-  "active_seats": [
-   "Naya Compounder",
-   "Naya Librarian",
-   "Naya Bridger"
-  ],
+  "active": 198,
+  "active_seats": [],
   "last_completed": null,
   "last_completed_at": null,
-  "rotation_cursor": "wave-340: Naya Judge/Naya Auditor/Naya Builder (roster order)"
+  "rotation_cursor": "wave-199: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
  },
  "lanes": {
   "free": [
+   "ACT",
    "BUILD",
    "GOVERN",
    "INFRA",
+   "KNOW",
    "LAW",
+   "LEARN",
    "MEMORY",
    "PRODUCT",
    "PROVE",
@@ -38,20 +37,7 @@
    "WIRE"
   ],
   "held": [],
-  "active": [
-   {
-    "lane": "ACT",
-    "since": "2026-10-18T17:38:00Z"
-   },
-   {
-    "lane": "KNOW",
-    "since": "2026-10-18T17:38:00Z"
-   },
-   {
-    "lane": "LEARN",
-    "since": "2026-10-18T17:38:00Z"
-   }
-  ]
+  "active": []
  },
  "queue": {
   "actionable": 0,
@@ -240,27 +226,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 55
+   "age_s": 40
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 55
+   "age_s": 40
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 55
+   "age_s": 40
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 55
+   "age_s": 40
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 55
+   "age_s": 40
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 55
+   "age_s": 40
   }
  }
 }
