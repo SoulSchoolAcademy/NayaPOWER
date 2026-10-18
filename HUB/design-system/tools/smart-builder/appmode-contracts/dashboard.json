@@ -1,0 +1,29 @@
+{
+  "behave": "Honest and disciplined. The stopwatch doesn't lie and neither does this page.",
+  "do": "Take the readiness assessment, review training numbers, read today's plan.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "assessment-score": true,
+    "intelligence-today": true,
+    "navigate": true,
+    "reports": true
+  },
+  "handle": "marathon-42k",
+  "idea": "26.2 miles, one dashboard — readiness check, this week's numbers, today's plan.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-001",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "dashboard",
+  "version": "contract-v1",
+  "vision": "No junk miles, no guesswork. Just the work that gets me to the start line healthy."
+}

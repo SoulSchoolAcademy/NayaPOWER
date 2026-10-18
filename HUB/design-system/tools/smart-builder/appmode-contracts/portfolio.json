@@ -1,0 +1,28 @@
+{
+  "behave": "Confident and spare. The images carry it.",
+  "do": "Browse the work by tag, open the lightbox, share a frame, book a shoot.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "contact": true,
+    "portfolio-showcase": true,
+    "share": true
+  },
+  "handle": "june-park-photo",
+  "idea": "My work, no noise — the frames that made me a photographer.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-002",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "portfolio",
+  "version": "contract-v1",
+  "vision": "If one image makes you feel something, the page did its job."
+}

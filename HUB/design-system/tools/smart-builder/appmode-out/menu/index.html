@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>copper-cup-menu — The Copper Cup menu — everything we pour and bake, with real</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+
+:root{--obsidian:#050507;--soul:#b8ee57;--ink:#F8F7FB;--quiet:rgba(248,247,251,.72);
+--faint:rgba(248,247,251,.5);--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--obsidian);color:var(--ink);
+font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
+-webkit-font-smoothing:antialiased;line-height:1.55}
+a{color:var(--ink)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+/* top chrome */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(5,5,7,.86);
+backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
+.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--soul);
+box-shadow:0 0 12px var(--soul)}
+.topbar nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.topbar nav a{color:#fff;text-decoration:none;font-size:13px;font-weight:600;
+padding:8px 14px;border-radius:999px;border:1px solid transparent;transition:all .18s}
+.topbar nav a:hover{border-color:var(--soul);box-shadow:0 0 14px color-mix(in srgb,var(--soul) 55%,transparent);
+transform:translateY(-1px)}
+/* hero */
+.hero{padding:64px 0 40px;position:relative;overflow:hidden}
+.hero .kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;
+text-transform:uppercase;color:var(--soul);margin-bottom:14px}
+.hero h1{font-family:Newsreader,Georgia,'Times New Roman',serif;font-weight:600;
+font-size:clamp(34px,5.4vw,58px);line-height:1.08;margin:0 0 16px;color:#fff;
+text-wrap:balance}
+.hero .lede{font-size:18px;color:var(--quiet);max-width:640px;margin:0}
+.hero .orbs{position:absolute;right:4%;top:26px;display:flex;gap:18px;opacity:.9}
+.hero .greet{margin-top:18px;font-size:13px;color:var(--faint);display:flex;align-items:center;gap:10px}
+.led{width:9px;height:9px;border-radius:50%;background:var(--soul);
+box-shadow:0 0 10px var(--soul);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+/* sections: boards with elevation */
+.nsec{margin:26px 0;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+border:1px solid var(--line);border-radius:22px;padding:30px 30px 34px;
+box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -18px 40px rgba(0,0,0,.5),
+0 24px 60px rgba(0,0,0,.55);transition:transform .2s,box-shadow .2s}
+.nsec:hover{transform:translateY(-3px);
+box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -18px 40px rgba(0,0,0,.5),
+0 30px 70px rgba(0,0,0,.6),0 0 34px color-mix(in srgb,var(--soul) 22%,transparent)}
+.nsec-head{margin-bottom:20px}
+.nsec-head .kicker{font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;
+color:var(--soul)}
+.nsec-head h2{font-family:Newsreader,Georgia,serif;font-size:30px;font-weight:600;margin:6px 0 0;color:#fff}
+/* mounted function roots get breathing room */
+.nsec-body [data-fn]{margin:0}
+.nsec-body [data-fn]+[data-fn]{margin-top:26px}
+/* ignition: every interactive element, white at rest -> color on touch */
+button,a.btn,input[type=submit]{transition:all .18s}
+button:hover,a.btn:hover{box-shadow:0 0 16px color-mix(in srgb,var(--soul) 60%,transparent)}
+/* capture block (dictate) */
+.capture{display:flex;flex-direction:column;gap:12px}
+.capture textarea{width:100%;min-height:110px;background:#0B0D12;color:#fff;font-size:16px;
+border:1px solid var(--line);border-radius:14px;padding:14px;resize:vertical;font-family:inherit}
+.capture textarea:focus{outline:none;border-color:var(--soul);box-shadow:0 0 0 3px color-mix(in srgb,var(--soul) 30%,transparent)}
+.dictbtn{align-self:flex-start;background:#fff;color:#050507;border:none;border-radius:999px;
+padding:12px 22px;font-weight:800;font-size:14px;cursor:pointer}
+.dictbtn:hover{background:var(--soul);color:#fff;box-shadow:0 0 20px var(--soul)}
+.capture .hint{font-size:12px;color:var(--faint)}
+/* cart chrome for the product page (f-28-cart host surface) */
+.cartfab{position:fixed;right:22px;bottom:22px;z-index:60;background:var(--soul);color:#fff;
+border:none;border-radius:999px;padding:14px 20px;font-weight:800;cursor:pointer;
+box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 20px color-mix(in srgb,var(--soul) 50%,transparent)}
+.cartdrawer{position:fixed;right:0;top:0;bottom:0;width:min(380px,92vw);background:#0B0D12;
+border-left:1px solid var(--line);z-index:70;transform:translateX(105%);transition:transform .25s;
+display:flex;flex-direction:column;padding:20px}
+.cartdrawer.open{transform:none}
+.cartdrawer h3{margin:0 0 12px;color:#fff}
+#cartItems{flex:1;overflow:auto}
+.pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:8px}
+.pcard{background:#0B0D12;border:1px solid var(--line);border-radius:16px;padding:18px;color:#fff}
+.pcard h4{margin:0 0 4px;color:#fff}
+.pcard .pmeta{font-size:12px;color:var(--faint);margin-bottom:10px}
+.szpills{display:flex;gap:8px;margin:10px 0}
+.szpill{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;
+padding:6px 14px;font-size:12px;cursor:pointer}
+.szpill.on{background:#fff;color:#050507;border-color:#fff;font-weight:700}
+.btn-select{background:var(--soul);color:#fff;border:none;border-radius:999px;padding:10px 18px;
+font-weight:700;cursor:pointer;width:100%}
+.btn-select.picked{background:#2fe89e}
+/* footer */
+.footer{margin:60px 0 0;border-top:1px solid var(--line);padding:30px 0 60px;color:var(--faint);font-size:13px}
+.footer nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.footer nav a{color:#fff;text-decoration:none;font-size:13px;padding:8px 14px;border-radius:999px;
+border:1px solid var(--line);transition:all .18s}
+.footer nav a:hover{border-color:var(--soul);box-shadow:0 0 14px color-mix(in srgb,var(--soul) 55%,transparent)}
+@media(max-width:640px){.nsec{padding:22px 18px}.hero{padding:44px 0 30px}.hero .orbs{display:none}}
+@media(min-width:641px){.hero h1,.hero .lede{padding-right:190px}}
+
+/* css:589124c16d6f */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.nb-scope .orb-wrap:nth-child(2) .orb { animation-delay: 1s; }
+.nb-scope .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.nb-scope .orb-wrap:nth-child(4) .orb { animation-delay: 3s; }
+.nb-scope .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.nb-scope .orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.nb-scope .orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+.nb-scope .orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.nb-scope .orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+.nb-scope .orb--glyph { display: inline-grid; place-items: center; font-size: 46px; color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,.75), 0 0 22px rgba(var(--oc-rgb),.95); }
+.nb-scope .orb--icon { width: 64px; height: 64px; font-size: 26px; }
+.nb-scope .orb--icon::before { inset: -11px; padding: 2px; }
+.nb-scope .orb--icon::after { bottom: -18px; height: 14px; }
+@media (prefers-reduced-motion: reduce) {.nb-scope .orb, .nb-scope .orb::before { animation: none; }}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand"><span class="dot"></span><span>copper-cup-menu</span></div><nav><a href="#sec-menu">The menu</a><a href="#sec-contact">Feed a crowd</a></nav></div></div>
+<header class="hero"><div class="wrap"><div class="orbs"><span class="nb-scope"><span class="orb orb--glyph orb--icon" style="--oc:#ffbf3d;--oc-rgb:255,191,61">◈</span></span></div><div class="kicker">copper-cup-menu · Menu</div><h1>The Copper Cup menu — everything we pour and bake, with real prices. Order at the counter, no surprises.</h1><p class="lede">You should be able to taste the cardamom bun through the screen.</p></div></header>
+<main class="wrap">
+<section class="nsec" id="sec-menu"><div class="nsec-head"><span class="kicker">Eat &amp; drink</span><h2>The menu</h2></div><div class="nsec-body"><div data-fn="f-10-menu-display" data-fn-config='{&quot;currency&quot;:&quot;$&quot;,&quot;items&quot;:[{&quot;description&quot;:&quot;Double shot of our house roast \u2014 chocolate, orange peel.&quot;,&quot;name&quot;:&quot;Espresso&quot;,&quot;price&quot;:3.5},{&quot;description&quot;:&quot;Espresso cut with silky steamed milk. Our signature.&quot;,&quot;name&quot;:&quot;Cortado&quot;,&quot;price&quot;:4.25},{&quot;description&quot;:&quot;Mellow and milky, dusted with cocoa.&quot;,&quot;name&quot;:&quot;Latte&quot;,&quot;price&quot;:4.75},{&quot;description&quot;:&quot;Single-origin Ethiopia, brewed slow. Tastes like blueberries.&quot;,&quot;name&quot;:&quot;Pour Over&quot;,&quot;price&quot;:5.0},{&quot;description&quot;:&quot;Laminated over three days. Shatters properly.&quot;,&quot;name&quot;:&quot;Butter Croissant&quot;,&quot;price&quot;:3.75},{&quot;description&quot;:&quot;Swedish-style, pearl sugar. Gone by nine.&quot;,&quot;name&quot;:&quot;Cardamom Bun&quot;,&quot;price&quot;:4.5},{&quot;description&quot;:&quot;Sourdough, smashed avo, chili crunch, lime.&quot;,&quot;name&quot;:&quot;Avocado Toast&quot;,&quot;price&quot;:9.5},{&quot;description&quot;:&quot;Ask Jonah \u2014 yesterday was roasted tomato.&quot;,&quot;name&quot;:&quot;Soup of the Day&quot;,&quot;price&quot;:8.0}],&quot;note&quot;:&quot;Baked fresh every morning. Oat milk +$0.50, always.&quot;,&quot;storage_key&quot;:&quot;naya.appmode.copper-cup-menu.menu.order&quot;,&quot;title&quot;:&quot;The Menu&quot;}'></div></div></section>
+<section class="nsec" id="sec-contact"><div class="nsec-head"><span class="kicker">Catering</span><h2>Feed a crowd</h2></div><div class="nsec-body"><div data-fn="f-21-contact" data-fn-config='{&quot;accent&quot;:&quot;#b8ee57&quot;,&quot;outboxKey&quot;:&quot;naya.appmode.copper-cup-menu.contact.outbox&quot;,&quot;to&quot;:&quot;Copper Cup catering&quot;}'></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><nav><a href="#sec-menu">The menu</a><a href="#sec-contact">Feed a crowd</a></nav><div>Built with the Naya Smart Builder · APP-MODE appmode-v1 · everything on this page works — tap anything.</div></div></footer>
+
+<script>
+(function(){
+  var el=document.getElementById('greetLine'); if(!el) return;
+  var h=new Date().getHours();
+  var g=h<5?'Up late':h<12?'Good morning':h<18?'Good afternoon':'Good evening';
+  var d=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+  el.textContent=g+' \u2014 '+d;
+})();
+</script>
+
+  <script src="functions/naya-functions.js"></script>
+  <script src="functions/f-10-menu-display.js"></script>
+  <script src="functions/f-21-contact.js"></script>
+</body>
+</html>

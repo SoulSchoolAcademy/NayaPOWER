@@ -1,0 +1,29 @@
+{
+  "behave": "Electric and intimate. Velvet-rope energy, open-door policy.",
+  "do": "RSVP with party size, share the invite, ask the host.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "!no-unit:guard": true,
+    "contact": true,
+    "event-rsvp": true,
+    "share": true
+  },
+  "handle": "rooftop-jazz",
+  "idea": "One night, one rooftop, a quartet and the skyline. RSVP and you're on the list.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-003",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "event",
+  "version": "contract-v1",
+  "vision": "The kind of night people talk about on Monday."
+}

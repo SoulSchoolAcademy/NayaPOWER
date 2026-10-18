@@ -1,0 +1,28 @@
+{
+  "behave": "Cheerful and reassuring. The dogs are the customers; the humans just pay.",
+  "do": "Book grooming services by day and slot, ask questions, jump between pages.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "booking": true,
+    "contact": true,
+    "smart-tabs": true
+  },
+  "handle": "wag-and-shine",
+  "idea": "Book your dog's spa day in under a minute — pick the service, pick a slot, done. No phone tag.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-006",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "booking",
+  "version": "contract-v1",
+  "vision": "Every dog leaves happier than it arrived. Every owner books in one thumb."
+}

@@ -1,0 +1,323 @@
+{
+  "appmode": "appmode-v1",
+  "behave": "Practical and opinionated. A list is a promise.",
+  "chrome_note": "Page shell is design-law chrome (obsidian #050507, white voice, soul accents, elevation, ignition, Newsreader hero + Inter UI). The piece index carries design-language specimen fragments, not generic app hero/nav/section chrome \u2014 no verbatim shell pieces existed to pull; picks above are the usable verbatim decorative pieces.",
+  "contract_hash": "4ad864d3bcac9a38f5fde265d4938239763b4f2713515565c617693d38666e91",
+  "do": "Track renovation lists, keep the big decisions saved, share a list with the contractor.",
+  "files": [
+    {
+      "bytes": 12533,
+      "path": "functions/f-01-smart-tabs.js",
+      "sha256": "38780a944686926feca40b913e918a39cf73ba9a061b23c98bcc4d0270f93fe1"
+    },
+    {
+      "bytes": 15964,
+      "path": "functions/f-02-smart-mail.js",
+      "sha256": "75e5cf158983de5a7d1fc2b29a0fb4395632a65f89ce428d16be71464df277f0"
+    },
+    {
+      "bytes": 13262,
+      "path": "functions/f-03-smart-lists.js",
+      "sha256": "848da5a73d247dc2cc61d354e2122930224abc0ac8ba6a00ba9bccdb8674e1ea"
+    },
+    {
+      "bytes": 15141,
+      "path": "functions/f-04-smart-spaces.js",
+      "sha256": "48087f66d07349074c1387556dab4ccf9cc67836b837a2d58aab4172e0ee63c3"
+    },
+    {
+      "bytes": 8450,
+      "path": "functions/f-05-intelligence-today.js",
+      "sha256": "bd954d0dd00e5f81be277fe593ace720f275765cfecd53d9bdc0dfb38cb39fb3"
+    },
+    {
+      "bytes": 11458,
+      "path": "functions/f-06-connections.js",
+      "sha256": "9f24d8525ffe23349e3e006e73bd8917c8838b3c54f8487b8172f9f176bf1294"
+    },
+    {
+      "bytes": 6913,
+      "path": "functions/f-07-reports.js",
+      "sha256": "2b333cdf0c9c66024a8ee24a0a5d4abdcc435efbafff3457fb5ffad74e25bab5"
+    },
+    {
+      "bytes": 11764,
+      "path": "functions/f-08-feed.js",
+      "sha256": "64a6660616fbca42932e8a6ea9596b6544af9bf6ebc7b592300967530e2c87ac"
+    },
+    {
+      "bytes": 13359,
+      "path": "functions/f-09-booking.js",
+      "sha256": "9acdeec1ebef6efb22594684b20b332942a333727ef64b358fc8edcea7db9d7f"
+    },
+    {
+      "bytes": 14300,
+      "path": "functions/f-10-menu-display.js",
+      "sha256": "147b3d8021bd3bac03dc6944d3a53b53610fa5befef553df057ab60b77950c50"
+    },
+    {
+      "bytes": 10357,
+      "path": "functions/f-11-product-display.js",
+      "sha256": "1749821bd8659f47b07237e6d63620132038b7364086936829e455ec1665d747"
+    },
+    {
+      "bytes": 11057,
+      "path": "functions/f-12-signup-capture.js",
+      "sha256": "a67dc460383cf15276fd5646f5e19335db777ac650f1a7554e7291caa606b304"
+    },
+    {
+      "bytes": 12806,
+      "path": "functions/f-13-event-rsvp.js",
+      "sha256": "72f3f3441d73afa70bc4a6beaf58b3e81686b5609bba3136873b601e64f62901"
+    },
+    {
+      "bytes": 39280,
+      "path": "functions/f-14-assessment-score.js",
+      "sha256": "2f94ee69c94c17e2e3c0f45566fb43bb85a68b64621212744caa010060552a36"
+    },
+    {
+      "bytes": 9837,
+      "path": "functions/f-15-portfolio-showcase.js",
+      "sha256": "258452bcf0ac9b9134dc1f5e6eae99f4a17633132df20dca0080337fe3143c7e"
+    },
+    {
+      "bytes": 14178,
+      "path": "functions/f-16-community-feed.js",
+      "sha256": "7459b1003ebd993261510afdc39c84274d425144fefa887d108f36012b952304"
+    },
+    {
+      "bytes": 9378,
+      "path": "functions/f-17-business-proof.js",
+      "sha256": "9789aae94825882b83cccd06b78fd97c8d847640c2da8ef258e3b2c1b43f42a9"
+    },
+    {
+      "bytes": 6356,
+      "path": "functions/f-18-profile-link.js",
+      "sha256": "b63a8dddd95a879355a8ff9e1124bc973a3ec4e5dad6e9b9de3049e70758aa57"
+    },
+    {
+      "bytes": 5059,
+      "path": "functions/f-19-navigate.js",
+      "sha256": "4e55a401ef344857283c298d744c6025a5071b25bcde5e34bc127a3e8091432d"
+    },
+    {
+      "bytes": 3871,
+      "path": "functions/f-20-search.js",
+      "sha256": "0b5ef0ea165e679fa797b7609590755e83edd46cc30ce293136db6b0e907f3c3"
+    },
+    {
+      "bytes": 4906,
+      "path": "functions/f-21-contact.js",
+      "sha256": "dc8a14c36fe41959c308b85188fa66cecffc584d20ecf6173256c277268f4ad3"
+    },
+    {
+      "bytes": 6100,
+      "path": "functions/f-22-share.js",
+      "sha256": "cc52bf4b54cd85d5cdaf588b0e3b0f7c2c8353d42ed167ca62deaa5d4efd5e30"
+    },
+    {
+      "bytes": 5710,
+      "path": "functions/f-23-save.js",
+      "sha256": "56c45e676e2eaf91e2077f9a011b80d8f8f5db70066b693ce134c3057efdb5fd"
+    },
+    {
+      "bytes": 5275,
+      "path": "functions/f-24-play.js",
+      "sha256": "a53cd19d4007162063d7372787a2376b1872495c40746931664c07cc15a29b1e"
+    },
+    {
+      "bytes": 3308,
+      "path": "functions/f-25-dictate.js",
+      "sha256": "75274f2b9b21273e10e7310da1d6f74210437940c1ed2864010b35dad3da42fc"
+    },
+    {
+      "bytes": 2671,
+      "path": "functions/f-26-copy.js",
+      "sha256": "862e0dec153a6e6230ea41da0d3ab1dd468499cf3566c06f28bfdd641ad9c70f"
+    },
+    {
+      "bytes": 2387,
+      "path": "functions/f-27-preview.js",
+      "sha256": "778c66bfcecc3a50e3737472e5aac4e36491a4239a3c866ac541ab786010b3a3"
+    },
+    {
+      "bytes": 7093,
+      "path": "functions/f-28-cart.js",
+      "sha256": "0b705c6f2fef35b739a9f0e24746515dcbcae9fc791fbbf2e859971fdce9bb50"
+    },
+    {
+      "bytes": 4333,
+      "path": "functions/f-29-contract-draft.js",
+      "sha256": "4caeb59dc1a60992566dd56feb5b03bec3774ca936bbe29f3d61599f30fe1fc2"
+    },
+    {
+      "bytes": 5594,
+      "path": "functions/f-30-join.js",
+      "sha256": "0cbe801d0a2f314ab6aa9e90fe2589b27e648422ea8ad0c3138e758f2bf33d12"
+    },
+    {
+      "bytes": 2657,
+      "path": "functions/naya-functions.js",
+      "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
+    },
+    {
+      "bytes": 15827,
+      "path": "index.html",
+      "sha256": "3d6542c3974f0d6a22febcb35aa03bcbf57800e7d23eecf41ebb72cf55d20924"
+    }
+  ],
+  "handle": "renovation-2026",
+  "missing_functions": [
+    "ask-naya",
+    "calendar"
+  ],
+  "mounted": [
+    {
+      "config": {
+        "lists": [
+          {
+            "id": "kitchen",
+            "items": [
+              {
+                "done": true,
+                "id": "k1",
+                "text": "Demo done \u2014 dust everywhere, worth it",
+                "type": "note"
+              },
+              {
+                "done": true,
+                "id": "k2",
+                "text": "Cabinets ordered \u2014 delivery Oct 28",
+                "type": "note"
+              },
+              {
+                "done": false,
+                "id": "k3",
+                "text": "Pick backsplash tile (narrowed to 2)",
+                "type": "note"
+              },
+              {
+                "done": false,
+                "id": "k4",
+                "text": "Electrician Thursday 9am \u2014 be home",
+                "type": "note"
+              }
+            ],
+            "name": "Kitchen"
+          },
+          {
+            "id": "budget",
+            "items": [
+              {
+                "done": false,
+                "id": "b1",
+                "text": "Cabinets $8,400 (paid deposit $2,500)",
+                "type": "note"
+              },
+              {
+                "done": false,
+                "id": "b2",
+                "text": "Quartz countertops $3,100",
+                "type": "note"
+              },
+              {
+                "done": false,
+                "id": "b3",
+                "text": "Flooring $2,750 \u2014 under estimate!",
+                "type": "note"
+              }
+            ],
+            "name": "Budget watch"
+          },
+          {
+            "id": "decide",
+            "items": [
+              {
+                "done": false,
+                "id": "d1",
+                "text": "Backsplash: zellige vs. handmade subway",
+                "type": "topic"
+              },
+              {
+                "done": false,
+                "id": "d2",
+                "text": "Paint: Swiss Coffee vs. Alabaster",
+                "type": "topic"
+              },
+              {
+                "done": false,
+                "id": "d3",
+                "text": "Contractor: ask Luis for the tile quote",
+                "type": "contact"
+              }
+            ],
+            "name": "Decisions pending"
+          }
+        ],
+        "storageKey": "naya.appmode.renovation-2026.lists",
+        "title": "Smart Lists"
+      },
+      "contract_id": "smart-lists",
+      "page": "index.html",
+      "register_id": "smart-lists",
+      "section": "lists",
+      "unit_file": "f-03-smart-lists.js"
+    },
+    {
+      "config": {
+        "accent": "#ffbf3d",
+        "items": [
+          {
+            "id": "sv1",
+            "sub": "Decision \u2014 $14/sq ft, ordered Oct 28",
+            "title": "Backsplash: handmade zellige in oat"
+          },
+          {
+            "id": "sv2",
+            "sub": "Decision \u2014 two coats, kitchen + hall",
+            "title": "Paint: Swiss Coffee, eggshell"
+          },
+          {
+            "id": "sv3",
+            "sub": "Contact \u2014 (555) 016-4402, call Thursday",
+            "title": "Luis's tile quote"
+          }
+        ],
+        "storeKey": "naya.appmode.renovation-2026.saved"
+      },
+      "contract_id": "save",
+      "page": "index.html",
+      "register_id": "f-23-save",
+      "section": "saved",
+      "unit_file": "f-23-save.js"
+    },
+    {
+      "config": {
+        "accent": "#ffbf3d",
+        "text": "Contractors ask, I answer in ten seconds, with the list to prove it."
+      },
+      "contract_id": "share",
+      "page": "index.html",
+      "register_id": "f-22-share",
+      "section": "share",
+      "unit_file": "f-22-share.js"
+    }
+  ],
+  "output_hash": "121f5ba9611b2fe11ee5bb9035472c56835d4616a714b0ea122861aea75eb366",
+  "piece_picks": [
+    {
+      "css_id": "589124c16d6f",
+      "label": "finished objects of light",
+      "model": "NAYA-JWL-007",
+      "note": "verbatim hero decoration",
+      "used_as": "hero decoration (jewel orb)",
+      "verbatim": true
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "soul": "#ffbf3d",
+  "template": "smartlist"
+}

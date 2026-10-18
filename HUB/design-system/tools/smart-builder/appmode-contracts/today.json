@@ -1,0 +1,29 @@
+{
+  "behave": "Direct and numbers-first. No fluff before coffee.",
+  "do": "Read the briefing, check daily/weekly/monthly numbers, log the day, jump to tools.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "feed": true,
+    "intelligence-today": true,
+    "reports": true,
+    "smart-tabs": true
+  },
+  "handle": "founder-briefing",
+  "idea": "I open one page with my coffee and see the whole day: what matters, the numbers, the stream.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-003",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "today",
+  "version": "contract-v1",
+  "vision": "Ten minutes, total clarity, then I go build."
+}

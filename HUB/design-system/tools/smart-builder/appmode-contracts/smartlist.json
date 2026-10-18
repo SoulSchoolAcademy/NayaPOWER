@@ -1,0 +1,29 @@
+{
+  "behave": "Practical and opinionated. A list is a promise.",
+  "do": "Track renovation lists, keep the big decisions saved, share a list with the contractor.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "!no-unit:calendar": true,
+    "save": true,
+    "share": true,
+    "smart-lists": true
+  },
+  "handle": "renovation-2026",
+  "idea": "The whole renovation in lists — rooms, budgets, decisions made, decisions pending. Nothing lives in my head rent-free anymore.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-007",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "smartlist",
+  "version": "contract-v1",
+  "vision": "Contractors ask, I answer in ten seconds, with the list to prove it."
+}

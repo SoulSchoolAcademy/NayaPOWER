@@ -1,0 +1,30 @@
+{
+  "behave": "Warm, a little proud, never corporate.",
+  "do": "Show proof (services, reviews, numbers), book a table, meet the team, get in touch.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "booking": true,
+    "business-proof": true,
+    "connections": true,
+    "contact": true,
+    "navigate": true
+  },
+  "handle": "copper-cup",
+  "idea": "Our corner café's home on the internet — what we pour, what people say, book a table, reach us.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-005",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "business",
+  "version": "contract-v1",
+  "vision": "A regular should feel the smell of espresso from this page."
+}

@@ -1,0 +1,27 @@
+{
+  "behave": "Energetic and encouraging. A coach, not a lecturer.",
+  "do": "Sign up for the challenge, get the host's notes by mail.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "signup-capture": true,
+    "smart-mail": true
+  },
+  "handle": "ship-it-challenge",
+  "idea": "Five days, one tiny ship per day. Join the challenge — we'll mail you the day's mission every morning.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-003",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "signup",
+  "version": "contract-v1",
+  "vision": "Finishers ship. That's the whole philosophy."
+}

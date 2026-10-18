@@ -1,0 +1,29 @@
+{
+  "behave": "Neighborly and a little nosy, in the good way.",
+  "do": "Post to the street feed, browse and join spaces, manage membership.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "community-feed": true,
+    "join": true,
+    "navigate": true,
+    "smart-spaces": true
+  },
+  "handle": "maple-street",
+  "idea": "Our street, finally organized — the feed, the spaces, the people. Borrow a ladder, find the lost cat, plan the block party.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-005",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "community",
+  "version": "contract-v1",
+  "vision": "Know your neighbors' names again."
+}

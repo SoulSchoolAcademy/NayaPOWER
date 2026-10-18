@@ -1,0 +1,29 @@
+{
+  "behave": "Crafted and quiet. Let the object talk.",
+  "do": "View the lamp, pick a finish into the cart, share it, ask the maker.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "cart": true,
+    "contact": true,
+    "product-display": true,
+    "share": true
+  },
+  "handle": "kiln-and-glow",
+  "idea": "One lamp, made by hand — see it, choose your finish, take it home.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-008",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "product",
+  "version": "contract-v1",
+  "vision": "Light that feels like it was made for your room, because it was."
+}

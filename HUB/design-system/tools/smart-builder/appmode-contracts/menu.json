@@ -1,0 +1,27 @@
+{
+  "behave": "Appetizing and honest. Prices on everything.",
+  "do": "Browse the menu, build an order, ask about catering.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "contact": true,
+    "menu-display": true
+  },
+  "handle": "copper-cup-menu",
+  "idea": "The Copper Cup menu — everything we pour and bake, with real prices. Order at the counter, no surprises.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-007",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "menu",
+  "version": "contract-v1",
+  "vision": "You should be able to taste the cardamom bun through the screen."
+}

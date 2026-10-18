@@ -1,0 +1,41 @@
+{
+  "behave": "Calm, warm, fast. Nothing shouts; everything is one tap away.",
+  "do": "Read the morning briefing, capture thoughts by voice, keep lists, post to the stream, reach people.",
+  "functions": {
+    "!no-unit:ask-naya": true,
+    "connections": true,
+    "contact": true,
+    "dictate": true,
+    "feed": true,
+    "intelligence-today": true,
+    "save": true,
+    "share": true,
+    "smart-lists": true,
+    "smart-tabs": true
+  },
+  "handle": "maya-designs",
+  "idea": "My whole creative life in one app — this morning's briefing, what I'm capturing, my lists, my stream, my people. One thumb, everything within reach.",
+  "pieces": [
+    {
+      "model": "NAYA-JWL-001",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    },
+    {
+      "model": "NAYA-JWL-002",
+      "name": "Hero orb",
+      "note": "verbatim hero decoration",
+      "qty": 1,
+      "size": "sm"
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "template": "personal",
+  "version": "contract-v1",
+  "vision": "No more twelve open tabs and a notes app graveyard. I open this and I know exactly where my day stands."
+}
