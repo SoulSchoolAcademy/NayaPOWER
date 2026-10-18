@@ -36,7 +36,7 @@ Vendoring discipline, copy this exactly: (1) the vendoring commit contains TWO f
 ```json
 {
   "sn": "SN-1590",
-  "applies_when": ["vendor", "provenance"], ["drift", "vendored-copy"], ["copy", "upstream-sync"],
+  "applies_when": [["vendor", "provenance"], ["drift", "vendored-copy"], ["copy", "upstream-sync"]],
   "enforcement": "the <name>.PROVENANCE file's embedded SHA-check command (compare copy blob SHA against upstream source at the named commit) — run it to detect drift; every vendoring commit must carry the PROVENANCE file in the same commit. A vendored file without a same-commit PROVENANCE file fails the review check.",
   "falsifier": "A vendored copy whose source commit cannot be named, or that diverges from upstream without the drift being detectable by the embedded SHA check, proves the stamp was missing or stale — the failure the rule exists to prevent.",
   "mechanism": "A provenance stamp converts drift from archaeology into arithmetic: the embedded check makes staleness detectable and the re-vendor rule makes the refresh mechanical; an un-stamped copy's origin decays into rumor.",
