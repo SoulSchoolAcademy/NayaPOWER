@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-18 10:02 UTC_
+_Last updated: 2026-10-18 10:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 3889
-- ✅ Verified (8+): 3855
+- **Total scored actions:** 3895
+- ✅ Verified (8+): 3861
 - 🟡 Partial (5–7): 33
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -19,14 +19,14 @@ _Last updated: 2026-10-18 10:02 UTC_
 | Team 2 | Naya Sage | 308 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 249 | 9.0 | 9.5 |
 | Team 4 | Naya Mason | 260 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 368 | 9.1 | 9.6 |
+| Team 5 | Naya Seeker | 369 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 211 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 290 | 9.0 | 9.5 |
 | Team 8 | Naya Sentinel | 295 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 367 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 368 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 373 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 235 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 224 | 9.2 | 9.5 |
+| Team 12 | Naya Herald | 225 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -309,7 +309,7 @@ _Last updated: 2026-10-18 10:02 UTC_
 - **lane-scorer-20261017-0845:** 1 actions, avg 9.5/10
 - **lane-scorer-20261017-1040:** 15 actions, avg 9.4/10
 - **lane-scorer-20261017-1630:** 5 actions, avg 9.0/10
-- **lane-scorer-20261018-0330:** 7 actions, avg 8.8/10
+- **lane-scorer-20261018-0330:** 9 actions, avg 8.8/10
 - **triage-20261017-0727-t997-arms:** 1 actions, avg 9.5/10
 - **lane-scorer-20261018-0110:** 10 actions, avg 8.8/10
 - **lane-scorer-20261018-0120:** 7 actions, avg 9.0/10
@@ -446,7 +446,7 @@ _Last updated: 2026-10-18 10:02 UTC_
 - **lane-scorer-20261017-1810:** 3 actions, avg 7.8/10
 - **lane-scorer-20261017-1830:** 3 actions, avg 9.4/10
 - **lane-scorer-20261017-1920:** 1 actions, avg 9.5/10
-- **lane-scorer-20261018-0310:** 3 actions, avg 9.5/10
+- **lane-scorer-20261018-0310:** 4 actions, avg 9.4/10
 - **lane-scorer-20261018-0440:** 2 actions, avg 9.5/10
 - **lane-scorer-20261018-0410:** 6 actions, avg 9.3/10
 - **lane-scorer-20261018-2155:** 1 actions, avg 9.5/10
@@ -457,6 +457,7 @@ _Last updated: 2026-10-18 10:02 UTC_
 - **preregister-t0722-lane12-intelligence-today:** 1 actions, avg 9.0/10
 - **gap-t0803-lane12:** 1 actions, avg 9.5/10
 - **lane-scorer-20261018-0135:** 2 actions, avg 9.5/10
+- **lane-scorer-20261018-0320:** 3 actions, avg 9.0/10
 - **scorer-20261014-1450:** 5 actions, avg 9.1/10
 - **gap-scorer-20261015-0140:** 2 actions, avg 9.2/10
 - **lane-scorer-20261015-0430:** 2 actions, avg 9.1/10
