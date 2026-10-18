@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 37686,
+      "bytes": 37880,
       "path": "index.html",
-      "sha256": "b1485815b5bee86ed036d55119ddbd7a453dba0da328aae36004e9666a51adaf"
+      "sha256": "664f6d55e12a64e82d481354fc821b4776863c5e97b04499340517d655139187"
     }
   ],
   "handle": "wag-and-shine",
@@ -315,7 +315,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "48dfaabef91e71893223f1a24c21087d345ad05796098208d9a52a5ddb1bcd94",
+  "output_hash": "8142c84d09c3a8d6a896fc49e9d1361cde6df9c3d69b2491a208117a047e227a",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",

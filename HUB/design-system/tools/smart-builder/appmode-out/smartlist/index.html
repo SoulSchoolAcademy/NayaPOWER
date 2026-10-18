@@ -106,7 +106,7 @@ body {
   min-height: 100vh;
 }
 
-/* hub chassis: shell (index-2.html L170-194, sha f56fd9868370...) */
+/* hub chassis: shell (index-2.html L170-195, sha f56fd9868370...) */
 .shell {
   display: grid;
   grid-template-columns: 264px minmax(0, 1fr);
@@ -132,6 +132,7 @@ body {
 }
 .rail.left {
   transition: transform .3s cubic-bezier(.16,.84,.22,1), opacity .3s;
+}
 
 /* hub chassis: railtoggle (index-2.html L295-326, sha f56fd9868370...) */
 /* ——— Sidebar toggles: black + elegant plus · white light idle · purple hover · alive ——— */
@@ -411,12 +412,13 @@ body {
 }
 .hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; }
 
-/* hub chassis: drawer (index-2.html L743-747, sha f56fd9868370...) */
+/* hub chassis: drawer (index-2.html L743-748, sha f56fd9868370...) */
 .drawer-backdrop {
   display: none;
   position: fixed; inset: 0; z-index: 55;
   background: rgba(3, 3, 6, .6);
   -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
 
 /* hub chassis: drawmedia (index-2.html L749-773, sha f56fd9868370...) */
 @media (max-width: 900px) {
@@ -650,7 +652,7 @@ box-shadow:0 0 22px -6px var(--tb-ign),0 10px 30px rgba(0,0,0,.45),inset 0 1px 0
 <section class="card" id="sec-lists" data-hue="gold" data-piece="NAYA-CRD-008" style="--accent:#ffbf3d;--accent-soft:rgba(255,191,61,.45)"><p class="fine kicker-line">Track it</p><h3><span class="jewel" style="--jewel:#ffbf3d">✧</span>The renovation, listed</h3><div class="nsec-body"><div data-fn="smart-lists" data-fn-config='{&quot;lists&quot;:[{&quot;id&quot;:&quot;kitchen&quot;,&quot;items&quot;:[{&quot;done&quot;:true,&quot;id&quot;:&quot;k1&quot;,&quot;text&quot;:&quot;Demo done \u2014 dust everywhere, worth it&quot;,&quot;type&quot;:&quot;note&quot;},{&quot;done&quot;:true,&quot;id&quot;:&quot;k2&quot;,&quot;text&quot;:&quot;Cabinets ordered \u2014 delivery Oct 28&quot;,&quot;type&quot;:&quot;note&quot;},{&quot;done&quot;:false,&quot;id&quot;:&quot;k3&quot;,&quot;text&quot;:&quot;Pick backsplash tile (narrowed to 2)&quot;,&quot;type&quot;:&quot;note&quot;},{&quot;done&quot;:false,&quot;id&quot;:&quot;k4&quot;,&quot;text&quot;:&quot;Electrician Thursday 9am \u2014 be home&quot;,&quot;type&quot;:&quot;note&quot;}],&quot;name&quot;:&quot;Kitchen&quot;},{&quot;id&quot;:&quot;budget&quot;,&quot;items&quot;:[{&quot;done&quot;:false,&quot;id&quot;:&quot;b1&quot;,&quot;text&quot;:&quot;Cabinets $8,400 (paid deposit $2,500)&quot;,&quot;type&quot;:&quot;note&quot;},{&quot;done&quot;:false,&quot;id&quot;:&quot;b2&quot;,&quot;text&quot;:&quot;Quartz countertops $3,100&quot;,&quot;type&quot;:&quot;note&quot;},{&quot;done&quot;:false,&quot;id&quot;:&quot;b3&quot;,&quot;text&quot;:&quot;Flooring $2,750 \u2014 under estimate!&quot;,&quot;type&quot;:&quot;note&quot;}],&quot;name&quot;:&quot;Budget watch&quot;},{&quot;id&quot;:&quot;decide&quot;,&quot;items&quot;:[{&quot;done&quot;:false,&quot;id&quot;:&quot;d1&quot;,&quot;text&quot;:&quot;Backsplash: zellige vs. handmade subway&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;done&quot;:false,&quot;id&quot;:&quot;d2&quot;,&quot;text&quot;:&quot;Paint: Swiss Coffee vs. Alabaster&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;done&quot;:false,&quot;id&quot;:&quot;d3&quot;,&quot;text&quot;:&quot;Contractor: ask Luis for the tile quote&quot;,&quot;type&quot;:&quot;contact&quot;}],&quot;name&quot;:&quot;Decisions pending&quot;}],&quot;storageKey&quot;:&quot;naya.appmode.renovation-2026.lists&quot;,&quot;title&quot;:&quot;Smart Lists&quot;}'></div></div></section>
 <section class="card" id="sec-saved" data-hue="magenta" data-piece="NAYA-CRD-008" style="--accent:#e84fff;--accent-soft:rgba(232,79,255,.45)"><p class="fine kicker-line">Keep</p><h3><span class="jewel" style="--jewel:#e84fff">✧</span>Saved decisions</h3><div class="nsec-body"><div data-fn="f-23-save" data-fn-config='{&quot;accent&quot;:&quot;#ffbf3d&quot;,&quot;items&quot;:[{&quot;id&quot;:&quot;sv1&quot;,&quot;sub&quot;:&quot;Decision \u2014 $14/sq ft, ordered Oct 28&quot;,&quot;title&quot;:&quot;Backsplash: handmade zellige in oat&quot;},{&quot;id&quot;:&quot;sv2&quot;,&quot;sub&quot;:&quot;Decision \u2014 two coats, kitchen + hall&quot;,&quot;title&quot;:&quot;Paint: Swiss Coffee, eggshell&quot;},{&quot;id&quot;:&quot;sv3&quot;,&quot;sub&quot;:&quot;Contact \u2014 (555) 016-4402, call Thursday&quot;,&quot;title&quot;:&quot;Luis&#x27;s tile quote&quot;}],&quot;storeKey&quot;:&quot;naya.appmode.renovation-2026.saved&quot;}'></div></div></section>
 <section class="card" id="sec-share" data-hue="purple" data-piece="NAYA-CRD-008" style="--accent:#a06bff;--accent-soft:rgba(160,107,255,.45)"><p class="fine kicker-line">Share</p><h3><span class="jewel" style="--jewel:#a06bff">✧</span>Send this list</h3><div class="nsec-body"><div data-fn="f-22-share" data-fn-config='{&quot;accent&quot;:&quot;#ffbf3d&quot;,&quot;text&quot;:&quot;Contractors ask, I answer in ten seconds, with the list to prove it.&quot;}'></div></div></section>
-<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#ffbf3d;--accent-soft:rgba(255,191,61,.45)"><h3><span class="jewel" style="--jewel:#ffbf3d">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-007</b> — finished objects of light</li><li><span class="mrole">section board: lists</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
+<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#ffbf3d;--accent-soft:rgba(255,191,61,.45)"><h3><span class="jewel" style="--jewel:#ffbf3d">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-007</b> — finished objects of light</li><li><span class="mrole">section board: lists</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">section board: saved</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">section board: share</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">footer panel</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
 </div>
 </main>
 </div>

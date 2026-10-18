@@ -106,7 +106,7 @@ body {
   min-height: 100vh;
 }
 
-/* hub chassis: shell (index-2.html L170-194, sha f56fd9868370...) */
+/* hub chassis: shell (index-2.html L170-195, sha f56fd9868370...) */
 .shell {
   display: grid;
   grid-template-columns: 264px minmax(0, 1fr);
@@ -132,6 +132,7 @@ body {
 }
 .rail.left {
   transition: transform .3s cubic-bezier(.16,.84,.22,1), opacity .3s;
+}
 
 /* hub chassis: railtoggle (index-2.html L295-326, sha f56fd9868370...) */
 /* ——— Sidebar toggles: black + elegant plus · white light idle · purple hover · alive ——— */
@@ -411,12 +412,13 @@ body {
 }
 .hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; }
 
-/* hub chassis: drawer (index-2.html L743-747, sha f56fd9868370...) */
+/* hub chassis: drawer (index-2.html L743-748, sha f56fd9868370...) */
 .drawer-backdrop {
   display: none;
   position: fixed; inset: 0; z-index: 55;
   background: rgba(3, 3, 6, .6);
   -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
 
 /* hub chassis: drawmedia (index-2.html L749-773, sha f56fd9868370...) */
 @media (max-width: 900px) {
@@ -648,7 +650,7 @@ box-shadow:0 0 22px -6px var(--tb-ign),0 10px 30px rgba(0,0,0,.45),inset 0 1px 0
 <section class="card" id="sec-join" data-hue="magenta" data-piece="NAYA-CRD-008" style="--accent:#e84fff;--accent-soft:rgba(232,79,255,.45)"><p class="fine kicker-line">Join</p><h3><span class="jewel" style="--jewel:#e84fff">✧</span>Claim your spot</h3><div class="nsec-body"><div data-fn="f-30-join" data-fn-config='{&quot;spaces&quot;:[{&quot;color&quot;:&quot;#ff5e6c&quot;,&quot;id&quot;:&quot;blockparty&quot;,&quot;members&quot;:24,&quot;name&quot;:&quot;Block Party Crew&quot;,&quot;topic&quot;:&quot;events&quot;},{&quot;color&quot;:&quot;#2fe89e&quot;,&quot;id&quot;:&quot;garden&quot;,&quot;members&quot;:11,&quot;name&quot;:&quot;Garden Share&quot;,&quot;topic&quot;:&quot;garden&quot;},{&quot;color&quot;:&quot;#3fb8ff&quot;,&quot;id&quot;:&quot;lostfound&quot;,&quot;members&quot;:8,&quot;name&quot;:&quot;Lost &amp; Found&quot;,&quot;topic&quot;:&quot;help&quot;}],&quot;storeKey&quot;:&quot;naya.appmode.maple-street.spaces&quot;}'></div></div></section>
 <section class="card" id="sec-spaces2" data-hue="purple" data-piece="NAYA-CRD-008" style="--accent:#a06bff;--accent-soft:rgba(160,107,255,.45)"><p class="fine kicker-line">Spaces</p><h3><span class="jewel" style="--jewel:#a06bff">✧</span>Browse and manage</h3><div class="nsec-body"><div data-fn="smart-spaces" data-fn-config='{&quot;spaces&quot;:[{&quot;color&quot;:&quot;#ff5e6c&quot;,&quot;desc&quot;:&quot;Planning the September block party \u2014 grills, permits, playlist.&quot;,&quot;id&quot;:&quot;blockparty&quot;,&quot;members&quot;:[&quot;June&quot;,&quot;Marcus&quot;,&quot;Priya&quot;],&quot;name&quot;:&quot;Block Party Crew&quot;,&quot;privacy&quot;:&quot;neighbors&quot;,&quot;topic&quot;:&quot;events&quot;},{&quot;color&quot;:&quot;#2fe89e&quot;,&quot;desc&quot;:&quot;Extra tomatoes? Borrow the tiller? It lives here.&quot;,&quot;id&quot;:&quot;garden&quot;,&quot;members&quot;:[&quot;June&quot;,&quot;Theo&quot;],&quot;name&quot;:&quot;Garden Share&quot;,&quot;privacy&quot;:&quot;neighbors&quot;,&quot;topic&quot;:&quot;garden&quot;},{&quot;color&quot;:&quot;#3fb8ff&quot;,&quot;desc&quot;:&quot;One grey cat, several ladders, a missing porch package.&quot;,&quot;id&quot;:&quot;lostfound&quot;,&quot;members&quot;:[&quot;Marcus&quot;],&quot;name&quot;:&quot;Lost &amp; Found&quot;,&quot;privacy&quot;:&quot;neighbors&quot;,&quot;topic&quot;:&quot;help&quot;}],&quot;storageKey&quot;:&quot;naya.appmode.maple-street.spaces&quot;,&quot;title&quot;:&quot;Smart Spaces&quot;}'></div></div></section>
 <section class="card" id="sec-nav2" data-hue="blue" data-piece="NAYA-CRD-008" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><p class="fine kicker-line">Navigate</p><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>Find your way</h3><div class="nsec-body"><div data-fn="f-19-navigate" data-fn-config='{&quot;accent&quot;:&quot;#ff5e6c&quot;,&quot;active&quot;:1,&quot;rooms&quot;:[{&quot;href&quot;:&quot;index.html&quot;,&quot;label&quot;:&quot;The feed&quot;},{&quot;href&quot;:&quot;page2.html&quot;,&quot;label&quot;:&quot;My street&quot;}]}'></div></div></section>
-<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#ff5e6c;--accent-soft:rgba(255,94,108,.45)"><h3><span class="jewel" style="--jewel:#ff5e6c">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-005</b> — finished objects of light</li><li><span class="mrole">section board: join</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
+<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#ff5e6c;--accent-soft:rgba(255,94,108,.45)"><h3><span class="jewel" style="--jewel:#ff5e6c">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-005</b> — finished objects of light</li><li><span class="mrole">section board: join</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">section board: spaces2</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">section board: nav2</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">footer panel</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
 </div>
 </main>
 </div>

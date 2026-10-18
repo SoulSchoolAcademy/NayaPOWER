@@ -106,7 +106,7 @@ body {
   min-height: 100vh;
 }
 
-/* hub chassis: shell (index-2.html L170-194, sha f56fd9868370...) */
+/* hub chassis: shell (index-2.html L170-195, sha f56fd9868370...) */
 .shell {
   display: grid;
   grid-template-columns: 264px minmax(0, 1fr);
@@ -132,6 +132,7 @@ body {
 }
 .rail.left {
   transition: transform .3s cubic-bezier(.16,.84,.22,1), opacity .3s;
+}
 
 /* hub chassis: railtoggle (index-2.html L295-326, sha f56fd9868370...) */
 /* ——— Sidebar toggles: black + elegant plus · white light idle · purple hover · alive ——— */
@@ -411,12 +412,13 @@ body {
 }
 .hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; }
 
-/* hub chassis: drawer (index-2.html L743-747, sha f56fd9868370...) */
+/* hub chassis: drawer (index-2.html L743-748, sha f56fd9868370...) */
 .drawer-backdrop {
   display: none;
   position: fixed; inset: 0; z-index: 55;
   background: rgba(3, 3, 6, .6);
   -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
 
 /* hub chassis: drawmedia (index-2.html L749-773, sha f56fd9868370...) */
 @media (max-width: 900px) {
@@ -647,7 +649,7 @@ box-shadow:0 0 22px -6px var(--tb-ign),0 10px 30px rgba(0,0,0,.45),inset 0 1px 0
 <section class="hero" data-hue="soul" id="top"><div class="eyebrow">ship-it-challenge · Join</div><h1>Five days, one tiny ship per day. Join the challenge — we&#x27;ll mail you the day&#x27;s mission every morning.</h1><p class="hero-sub">Finishers ship. That&#x27;s the whole philosophy.</p><div class="hero-orbs"><span class="nb-scope orb-wrap"><span class="orb orb--xs" style="--oc:#40d3bb;--oc-rgb:64,211,187"></span></span></div></section>
 <section class="card" id="sec-signup" data-hue="blue" data-piece="NAYA-CRD-008" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><p class="fine kicker-line">Join in</p><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>Take the challenge</h3><div class="nsec-body"><div data-fn="f-12-signup-capture" data-fn-config='{&quot;button_text&quot;:&quot;I&#x27;m in&quot;,&quot;fields&quot;:[{&quot;label&quot;:&quot;Your name&quot;,&quot;name&quot;:&quot;name&quot;,&quot;placeholder&quot;:&quot;Ada Lovelace&quot;,&quot;required&quot;:true,&quot;type&quot;:&quot;text&quot;},{&quot;label&quot;:&quot;Email&quot;,&quot;name&quot;:&quot;email&quot;,&quot;placeholder&quot;:&quot;you@example.com&quot;,&quot;required&quot;:true,&quot;type&quot;:&quot;email&quot;},{&quot;label&quot;:&quot;What will you ship?&quot;,&quot;name&quot;:&quot;ship&quot;,&quot;placeholder&quot;:&quot;The landing page I&#x27;ve been avoiding&quot;,&quot;required&quot;:false,&quot;type&quot;:&quot;text&quot;}],&quot;storage_key&quot;:&quot;naya.appmode.ship-it-challenge.signup&quot;,&quot;subtitle&quot;:&quot;One tiny ship per day. We&#x27;ll mail you the mission every morning.&quot;,&quot;success_message&quot;:&quot;Welcome aboard, {name} \u2014 day one lands in your inbox tomorrow at 7am.&quot;,&quot;success_title&quot;:&quot;You&#x27;re in!&quot;,&quot;title&quot;:&quot;Join the 5-Day Ship-It Challenge&quot;}'></div></div></section>
 <section class="card" id="sec-mail" data-hue="green" data-piece="NAYA-CRD-008" style="--accent:#2fe89e;--accent-soft:rgba(47,232,158,.45)"><p class="fine kicker-line">Stay close</p><h3><span class="jewel" style="--jewel:#2fe89e">✧</span>Notes from the host</h3><div class="nsec-body"><div data-fn="smart-mail" data-fn-config='{&quot;draftsKey&quot;:&quot;naya.appmode.ship-it-challenge.mail.drafts&quot;,&quot;outboxKey&quot;:&quot;naya.appmode.ship-it-challenge.mail.outbox&quot;,&quot;recipients&quot;:[{&quot;email&quot;:&quot;crew@shipit.example&quot;,&quot;name&quot;:&quot;Challenge crew&quot;},{&quot;email&quot;:&quot;mara@shipit.example&quot;,&quot;name&quot;:&quot;Mara (co-host)&quot;}],&quot;title&quot;:&quot;Notes from the host&quot;}'></div></div></section>
-<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#40d3bb;--accent-soft:rgba(64,211,187,.45)"><h3><span class="jewel" style="--jewel:#40d3bb">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-003</b> — finished objects of light</li><li><span class="mrole">section board: signup</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
+<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#40d3bb;--accent-soft:rgba(64,211,187,.45)"><h3><span class="jewel" style="--jewel:#40d3bb">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-003</b> — finished objects of light</li><li><span class="mrole">section board: signup</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">section board: mail</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">footer panel</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
 </div>
 </main>
 </div>

@@ -106,7 +106,7 @@ body {
   min-height: 100vh;
 }
 
-/* hub chassis: shell (index-2.html L170-194, sha f56fd9868370...) */
+/* hub chassis: shell (index-2.html L170-195, sha f56fd9868370...) */
 .shell {
   display: grid;
   grid-template-columns: 264px minmax(0, 1fr);
@@ -132,6 +132,7 @@ body {
 }
 .rail.left {
   transition: transform .3s cubic-bezier(.16,.84,.22,1), opacity .3s;
+}
 
 /* hub chassis: railtoggle (index-2.html L295-326, sha f56fd9868370...) */
 /* ——— Sidebar toggles: black + elegant plus · white light idle · purple hover · alive ——— */
@@ -411,12 +412,13 @@ body {
 }
 .hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; }
 
-/* hub chassis: drawer (index-2.html L743-747, sha f56fd9868370...) */
+/* hub chassis: drawer (index-2.html L743-748, sha f56fd9868370...) */
 .drawer-backdrop {
   display: none;
   position: fixed; inset: 0; z-index: 55;
   background: rgba(3, 3, 6, .6);
   -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
 
 /* hub chassis: drawmedia (index-2.html L749-773, sha f56fd9868370...) */
 @media (max-width: 900px) {
@@ -649,7 +651,7 @@ box-shadow:0 0 22px -6px var(--tb-ign),0 10px 30px rgba(0,0,0,.45),inset 0 1px 0
 <section class="hero" data-hue="soul" id="top"><div class="eyebrow">copper-cup-menu · Menu</div><h1>The Copper Cup menu — everything we pour and bake, with real prices. Order at the counter, no surprises.</h1><p class="hero-sub">You should be able to taste the cardamom bun through the screen.</p><div class="hero-orbs"><span class="nb-scope orb-wrap"><span class="orb orb--glyph orb--icon" style="--oc:#b8ee57;--oc-rgb:184,238,87">◈</span></span></div></section>
 <section class="card" id="sec-menu" data-hue="green" data-piece="NAYA-CRD-008" style="--accent:#2fe89e;--accent-soft:rgba(47,232,158,.45)"><p class="fine kicker-line">Eat &amp; drink</p><h3><span class="jewel" style="--jewel:#2fe89e">✧</span>The menu</h3><div class="nsec-body"><div data-fn="f-10-menu-display" data-fn-config='{&quot;currency&quot;:&quot;$&quot;,&quot;items&quot;:[{&quot;description&quot;:&quot;Double shot of our house roast \u2014 chocolate, orange peel.&quot;,&quot;name&quot;:&quot;Espresso&quot;,&quot;price&quot;:3.5},{&quot;description&quot;:&quot;Espresso cut with silky steamed milk. Our signature.&quot;,&quot;name&quot;:&quot;Cortado&quot;,&quot;price&quot;:4.25},{&quot;description&quot;:&quot;Mellow and milky, dusted with cocoa.&quot;,&quot;name&quot;:&quot;Latte&quot;,&quot;price&quot;:4.75},{&quot;description&quot;:&quot;Single-origin Ethiopia, brewed slow. Tastes like blueberries.&quot;,&quot;name&quot;:&quot;Pour Over&quot;,&quot;price&quot;:5.0},{&quot;description&quot;:&quot;Laminated over three days. Shatters properly.&quot;,&quot;name&quot;:&quot;Butter Croissant&quot;,&quot;price&quot;:3.75},{&quot;description&quot;:&quot;Swedish-style, pearl sugar. Gone by nine.&quot;,&quot;name&quot;:&quot;Cardamom Bun&quot;,&quot;price&quot;:4.5},{&quot;description&quot;:&quot;Sourdough, smashed avo, chili crunch, lime.&quot;,&quot;name&quot;:&quot;Avocado Toast&quot;,&quot;price&quot;:9.5},{&quot;description&quot;:&quot;Ask Jonah \u2014 yesterday was roasted tomato.&quot;,&quot;name&quot;:&quot;Soup of the Day&quot;,&quot;price&quot;:8.0}],&quot;note&quot;:&quot;Baked fresh every morning. Oat milk +$0.50, always.&quot;,&quot;storage_key&quot;:&quot;naya.appmode.copper-cup-menu.menu.order&quot;,&quot;title&quot;:&quot;The Menu&quot;}'></div></div></section>
 <section class="card" id="sec-contact" data-hue="gold" data-piece="NAYA-CRD-008" style="--accent:#ffbf3d;--accent-soft:rgba(255,191,61,.45)"><p class="fine kicker-line">Catering</p><h3><span class="jewel" style="--jewel:#ffbf3d">✧</span>Feed a crowd</h3><div class="nsec-body"><div data-fn="f-21-contact" data-fn-config='{&quot;accent&quot;:&quot;#b8ee57&quot;,&quot;outboxKey&quot;:&quot;naya.appmode.copper-cup-menu.contact.outbox&quot;,&quot;to&quot;:&quot;Copper Cup catering&quot;}'></div></div></section>
-<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#b8ee57;--accent-soft:rgba(184,238,87,.45)"><h3><span class="jewel" style="--jewel:#b8ee57">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-007</b> — finished objects of light</li><li><span class="mrole">section board: menu</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
+<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#b8ee57;--accent-soft:rgba(184,238,87,.45)"><h3><span class="jewel" style="--jewel:#b8ee57">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-007</b> — finished objects of light</li><li><span class="mrole">section board: menu</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">section board: contact</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">footer panel</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
 </div>
 </main>
 </div>

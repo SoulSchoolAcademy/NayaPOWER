@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 39154,
+      "bytes": 39444,
       "path": "index.html",
-      "sha256": "fa1369482fb3973236225b7038ce30f753f7eb6ac1778775bc6570afbaee5896"
+      "sha256": "60a20c609d38b44d88218f798fbc786fb2520009b1239e196ec651311890347e"
     }
   ],
   "handle": "renovation-2026",
@@ -338,7 +338,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "10db4e06a6b701a0eb7387dae1a44275e3c2dbca3c448c501ab8565acac35b76",
+  "output_hash": "cfe5d14e945c2db1f8f1a382643e4ace6b8f1c309337a0a9b855710384df5a97",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",

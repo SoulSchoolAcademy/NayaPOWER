@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 42890,
+      "bytes": 43182,
       "path": "index.html",
-      "sha256": "51ed99ce7de99b4cbae77507da5dbff7795edec3c1f85a3ae6b45054e97240ad"
+      "sha256": "dda6126bdb7ccdc2c4c5eec4292bf4033eab24df2758ebb29eb0e901ad88e532"
     }
   ],
   "handle": "june-park-photo",
@@ -304,7 +304,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "24636c1a78980ddd59789fd9b9ca4ad419d1e080a6c435068734c87d7a93aa5f",
+  "output_hash": "5416e295e7d859c80d1b20eda3c9646ded73c66d012821137e2d11456e5b5305",
   "piece_picks": [
     {
       "css_id": "6b3d0520dec4",

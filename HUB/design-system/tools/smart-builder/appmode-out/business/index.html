@@ -106,7 +106,7 @@ body {
   min-height: 100vh;
 }
 
-/* hub chassis: shell (index-2.html L170-194, sha f56fd9868370...) */
+/* hub chassis: shell (index-2.html L170-195, sha f56fd9868370...) */
 .shell {
   display: grid;
   grid-template-columns: 264px minmax(0, 1fr);
@@ -132,6 +132,7 @@ body {
 }
 .rail.left {
   transition: transform .3s cubic-bezier(.16,.84,.22,1), opacity .3s;
+}
 
 /* hub chassis: railtoggle (index-2.html L295-326, sha f56fd9868370...) */
 /* ——— Sidebar toggles: black + elegant plus · white light idle · purple hover · alive ——— */
@@ -411,12 +412,13 @@ body {
 }
 .hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; }
 
-/* hub chassis: drawer (index-2.html L743-747, sha f56fd9868370...) */
+/* hub chassis: drawer (index-2.html L743-748, sha f56fd9868370...) */
 .drawer-backdrop {
   display: none;
   position: fixed; inset: 0; z-index: 55;
   background: rgba(3, 3, 6, .6);
   -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
 
 /* hub chassis: drawmedia (index-2.html L749-773, sha f56fd9868370...) */
 @media (max-width: 900px) {
@@ -648,7 +650,7 @@ box-shadow:0 0 22px -6px var(--tb-ign),0 10px 30px rgba(0,0,0,.45),inset 0 1px 0
 <section class="card" id="sec-proof" data-hue="blue" data-piece="NAYA-CRD-008" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><p class="fine kicker-line">Why us</p><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>What we do</h3><div class="nsec-body"><div data-fn="f-17-business-proof" data-fn-config='{&quot;accent&quot;:&quot;#3fb8ff&quot;,&quot;businessName&quot;:&quot;Copper Cup&quot;,&quot;ctaEmail&quot;:&quot;hello@coppercup.example&quot;,&quot;ctaLabel&quot;:&quot;Book a table&quot;,&quot;note&quot;:&quot;Walk-ins always welcome \u2014 booking just skips the line.&quot;,&quot;services&quot;:[{&quot;blurb&quot;:&quot;House roast, dialed in daily. Cortados worth crossing the street for.&quot;,&quot;name&quot;:&quot;Espresso bar&quot;,&quot;price&quot;:&quot;from $3.50&quot;},{&quot;blurb&quot;:&quot;Laminated, proofed, and out of the oven by 7am. When it&#x27;s gone, it&#x27;s gone.&quot;,&quot;name&quot;:&quot;Fresh baking&quot;,&quot;price&quot;:&quot;from $3.75&quot;},{&quot;blurb&quot;:&quot;The same roast we pull, in 12oz bags with brew cards.&quot;,&quot;name&quot;:&quot;Beans to take home&quot;,&quot;price&quot;:&quot;$18&quot;}],&quot;stats&quot;:[{&quot;label&quot;:&quot;average rating&quot;,&quot;value&quot;:&quot;4.9&quot;},{&quot;label&quot;:&quot;cups a month&quot;,&quot;value&quot;:&quot;12k&quot;},{&quot;label&quot;:&quot;doors open daily&quot;,&quot;value&quot;:&quot;6am&quot;}],&quot;tagline&quot;:&quot;The corner caf\u00e9 that knows your order.&quot;,&quot;testimonials&quot;:[{&quot;name&quot;:&quot;Dana W.&quot;,&quot;quote&quot;:&quot;The cortado here ruined every other caf\u00e9 for me.&quot;,&quot;role&quot;:&quot;regular since 2021&quot;},{&quot;name&quot;:&quot;Marcus T.&quot;,&quot;quote&quot;:&quot;I wrote half my novel at the corner table.&quot;,&quot;role&quot;:&quot;neighbor&quot;}]}'></div></div></section>
 <section class="card" id="sec-booking" data-hue="green" data-piece="NAYA-CRD-008" style="--accent:#2fe89e;--accent-soft:rgba(47,232,158,.45)"><p class="fine kicker-line">Book</p><h3><span class="jewel" style="--jewel:#2fe89e">✧</span>Reserve a table</h3><div class="nsec-body"><div data-fn="f-09-booking" data-fn-config='{&quot;days&quot;:[&quot;2026-10-20&quot;,&quot;2026-10-21&quot;,&quot;2026-10-22&quot;,&quot;2026-10-23&quot;,&quot;2026-10-24&quot;],&quot;duration_min&quot;:60,&quot;note&quot;:&quot;Parties of 6+ \u2014 call us and we&#x27;ll push tables together.&quot;,&quot;service_name&quot;:&quot;Table for the Copper Cup&quot;,&quot;slots&quot;:[&quot;08:00&quot;,&quot;09:30&quot;,&quot;11:00&quot;,&quot;12:30&quot;,&quot;14:00&quot;,&quot;15:30&quot;],&quot;storage_key&quot;:&quot;naya.appmode.copper-cup.booking.table&quot;,&quot;title&quot;:&quot;Reserve a table&quot;}'></div></div></section>
 <section class="card" id="sec-nav1" data-hue="gold" data-piece="NAYA-CRD-008" style="--accent:#ffbf3d;--accent-soft:rgba(255,191,61,.45)"><p class="fine kicker-line">Navigate</p><h3><span class="jewel" style="--jewel:#ffbf3d">✧</span>Find your way</h3><div class="nsec-body"><div data-fn="f-19-navigate" data-fn-config='{&quot;accent&quot;:&quot;#3fb8ff&quot;,&quot;active&quot;:0,&quot;rooms&quot;:[{&quot;href&quot;:&quot;index.html&quot;,&quot;label&quot;:&quot;Home&quot;},{&quot;href&quot;:&quot;page2.html&quot;,&quot;label&quot;:&quot;Visit&quot;}]}'></div></div></section>
-<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-005</b> — finished objects of light</li><li><span class="mrole">section board: proof</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
+<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-005</b> — finished objects of light</li><li><span class="mrole">section board: proof</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">section board: booking</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">section board: nav1</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">footer panel</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
 </div>
 </main>
 </div>

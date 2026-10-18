@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 48858,
+      "bytes": 49348,
       "path": "index.html",
-      "sha256": "7e000c6f543c4f10a768cc64683c3fcfedfa60dc0d869f19eb7322d76a7800d6"
+      "sha256": "b66387909c8b35067275b4bd155054f3b54db3814ada654d98952d0178b5c6be"
     }
   ],
   "handle": "maya-designs",
@@ -472,7 +472,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "fc6342c353556060977b0f4f7bf6ddca362fe6d14d14d03f179ef698402b0d78",
+  "output_hash": "4ed990fee60b76de77c1e758a30dc6abeb56a8b2be857694376e9c2c02cee0c6",
   "piece_picks": [
     {
       "css_id": "9a6ab405b8fd",

@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 39677,
+      "bytes": 40066,
       "path": "index.html",
-      "sha256": "9d730279f2b0d51bf5508570887d1550772100c7f45e9deca8f6b4a322f88203"
+      "sha256": "ce60fdc96d120c8f2f4e96faef24a019dfbb31dc54fc4543320bbe07a855da05"
     }
   ],
   "handle": "kiln-and-glow",
@@ -262,7 +262,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "e1b77ee31917928174ad357cd1e5c03784db156cc3e7b6775dcd5098a60ca60a",
+  "output_hash": "072c31b004fa732d69c48f51e08c9700ad8c31c584866379a3a65623cb2498b8",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",

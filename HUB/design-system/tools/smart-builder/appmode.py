@@ -791,8 +791,13 @@ HUB_PATH = os.path.expanduser("~/workspace/user/files/index-2.html")
 # "re-harvest required" — never silently builds against a moved source.
 HUB_SHA256 = "f56fd98683704c37a148d535b9cb6a0b16de831edab86f5ae24633b204b02722"
 
-# (name, first_line, last_line) — 1-based, verified 2026-10-18 against the
-# pinned sha above. Each block carries a signature assert.
+# (name, first_line, end_hint_line) — 1-based, verified 2026-10-18 against
+# the pinned sha above. The end hint is ONLY a scope hint: the harvester
+# extends it forward to the next CSS rule boundary (braces balanced) and
+# FAILS CLOSED if it cannot. Hardcoded end lines are never trusted to cut
+# a rule — 2026-10-18 proved they cut .rail.left and .drawer-backdrop
+# mid-block and shipped 15 unstyled pages. Each block carries a signature
+# assert AND a brace-balance assert.
 HUB_RANGES = [
     ("root",       21,  96),    # :root tokens — verbatim source of truth
     ("bodybase",  105, 123),    # reset + body
@@ -949,22 +954,81 @@ def _soul_wire_hub(css):
     return css
 
 
+def _strip_css_noise(css):
+    """Remove /* comments */ and quoted strings from CSS so brace counting
+    sees only structural braces. One canonical implementation — the
+    harvester and the design-law gate share it."""
+    out = []
+    i, n = 0, len(css)
+    while i < n:
+        c = css[i]
+        if c == "/" and i + 1 < n and css[i + 1] == "*":
+            j = css.find("*/", i + 2)
+            i = n if j < 0 else j + 2
+            out.append(" ")
+        elif c in ("'", '"'):
+            j = i + 1
+            while j < n and css[j] != c:
+                j += 2 if css[j] == "\\" else 1
+            i = min(j + 1, n)
+            out.append('""')
+        else:
+            out.append(c)
+            i += 1
+    return "".join(out)
+
+
+def _brace_balance(css):
+    """(opens, closes) of structural braces in css."""
+    bare = _strip_css_noise(css)
+    return bare.count("{"), bare.count("}")
+
+
+def _harvest_chunk(lines, name, lo, hi_hint, cap_line):
+    """Harvest lines[lo..end] (1-based, inclusive) for one HUB_RANGES entry.
+
+    The end hint is extended forward to the next CSS rule boundary:
+    the first end line where structural braces balance. Ranges are
+    ordered, so the extension can never reach the next range's start
+    (cap_line, exclusive) — hitting the cap or EOF unbalanced FAILS
+    CLOSED with 're-harvest'. Signature assert and brace-balance assert
+    both hold on the returned chunk.
+    """
+    sig = _HUB_SIG[name]
+    end = hi_hint
+    while True:
+        chunk = "\n".join(lines[lo - 1:end]).strip()
+        o, c = _brace_balance(chunk)
+        if o > 0 and o == c:
+            break
+        end += 1
+        if end >= cap_line or end > len(lines):
+            _fail(["hub harvest: block %r (L%d-%d) never reaches a rule "
+                   "boundary before L%d — re-harvest index-2.html"
+                   % (name, lo, hi_hint, cap_line)])
+    if sig not in chunk:
+        _fail(["hub harvest: block %r (L%d-%d) lost signature %r — "
+               "re-harvest" % (name, lo, end, sig)])
+    o, c = _brace_balance(chunk)
+    assert o == c, "hub harvest: block %r unbalanced after extension" % name
+    return chunk, end
+
+
 def _hub_css(soul):
     """Harvest the chassis CSS verbatim (sha-pinned), soul-wire the plus
     buttons, append --soul to the harvested :root. Exactly one :root."""
     lines = _hub_lines()
+    ordered = sorted(HUB_RANGES, key=lambda r: r[1])
     blocks = []
-    for name, lo, hi in HUB_RANGES:
-        chunk = "\n".join(lines[lo - 1:hi]).strip()
-        if _HUB_SIG[name] not in chunk:
-            _fail(["hub harvest: block %r (L%d-%d) lost signature %r — "
-                   "re-harvest" % (name, lo, hi, _HUB_SIG[name])])
+    for i, (name, lo, hi_hint) in enumerate(ordered):
+        cap_line = ordered[i + 1][1] if i + 1 < len(ordered) else len(lines) + 1
+        chunk, end = _harvest_chunk(lines, name, lo, hi_hint, cap_line)
         if name == "root":
             chunk = chunk.rstrip()
             assert chunk.endswith("}"), "hub :root block must end with }"
             chunk = chunk[:-1].rstrip() + "\n  --soul: %s;\n}" % soul
         blocks.append("/* hub chassis: %s (index-2.html L%d-%d, sha %s...) */\n%s"
-                      % (name, lo, hi, HUB_SHA256[:12], chunk))
+                      % (name, lo, end, HUB_SHA256[:12], chunk))
     return _soul_wire_hub("\n\n".join(blocks))
 
 
@@ -1118,6 +1182,146 @@ def _esc_title(s):
 # live in the machine, not in a checklist.
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# CSS parse gate (2026-10-18 — Chi's verification failure: 15 pages shipped
+# with mid-rule-cut stylesheets because the gate only regex-checked text).
+# NEW LAW, baked in: a gate must validate the artifact PARSES. The FINAL
+# emitted stylesheet is parsed rule by rule — every rule must have balanced
+# braces and a valid selector/declaration shape. Unbalanced or malformed =
+# build FAILS naming the stylesheet. First-class predicate beside Laws
+# 1/4/5/9/10/14, soul, manifest, smart-tabs.
+# ---------------------------------------------------------------------------
+
+def _split_decls(body):
+    """Split a declaration block on ';' at paren-depth 0 (data URIs and
+    color-mix() carry ';' inside parens)."""
+    parts, depth, cur = [], 0, []
+    for ch in body:
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth = max(0, depth - 1)
+        if ch == ";" and depth == 0:
+            parts.append("".join(cur))
+            cur = []
+        else:
+            cur.append(ch)
+    parts.append("".join(cur))
+    return parts
+
+
+def _css_rules(css):
+    """Parse css into (rules, violations).
+
+    rules: list of (selector, declarations_text, context) — context is the
+    enclosing @media/@keyframes head or '' at top level. At-rules without
+    bodies (@import) are accepted and skipped. violations: parse errors.
+    """
+    violations = []
+    rules = []
+    bare = _strip_css_noise(css)  # comments/strings gone: braces are structural
+
+    def close_of(text, i):
+        depth, j, n = 0, i, len(text)
+        while j < n:
+            ch = text[j]
+            if ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    return j
+            j += 1
+        return -1
+
+    def head_end(text, i):
+        # end of an at-rule head: '{' or ';' at paren-depth 0
+        depth, j, n = 0, i, len(text)
+        while j < n:
+            ch = text[j]
+            if ch == "(":
+                depth += 1
+            elif ch == ")":
+                depth = max(0, depth - 1)
+            elif depth == 0 and ch in "{;":
+                return j, ch
+            j += 1
+        return -1, ""
+
+    def decls_ok(body, where):
+        for part in _split_decls(body):
+            p = part.strip()
+            if not p:
+                continue
+            if ":" not in p:
+                violations.append(
+                    "malformed declaration %r in %s" % (p[:60], where))
+
+    def parse_block(text, context):
+        i, n = 0, len(text)
+        while True:
+            while i < n and text[i].isspace():
+                i += 1
+            if i >= n:
+                return
+            if text[i] == "}":
+                violations.append("stray '}' in %s"
+                                  % (context or "the stylesheet"))
+                i += 1
+                continue
+            if text[i] == "@":
+                j, term = head_end(text, i)
+                head = text[i:j].strip() if j >= 0 else text[i:].strip()
+                if j < 0 or not term:
+                    violations.append("unterminated at-rule %r in %s"
+                                      % (head[:60], context or "the stylesheet"))
+                    return
+                if term == ";":
+                    i = j + 1  # bodyless at-rule (@import, @charset)
+                    continue
+                k = close_of(text, j)
+                if k < 0:
+                    violations.append(
+                        "unbalanced braces in at-rule %r (%s)"
+                        % (head[:60], context or "the stylesheet"))
+                    return
+                inner = text[j + 1:k]
+                aname = head[1:].split("(", 1)[0].split()[0] if len(head) > 1 else ""
+                if aname in ("media", "supports", "keyframes"):
+                    parse_block(inner, head)  # nested rules, not declarations
+                else:
+                    decls_ok(inner, "at-rule %r" % head[:60])
+                i = k + 1
+                continue
+            j = text.find("{", i)
+            if j < 0:
+                tail = text[i:].strip()
+                if tail:
+                    violations.append(
+                        "expected '{' after %r in %s"
+                        % (tail[:60], context or "the stylesheet"))
+                return
+            selector = text[i:j].strip()
+            if not selector:
+                violations.append("empty selector in %s"
+                                  % (context or "the stylesheet"))
+            elif any(bad in selector for bad in ";{}"):
+                violations.append("malformed selector %r in %s"
+                                  % (selector[:60], context or "the stylesheet"))
+            k = close_of(text, j)
+            if k < 0:
+                violations.append(
+                    "unbalanced braces: rule %r never closes (%s)"
+                    % (selector[:60], context or "the stylesheet"))
+                return
+            decls_ok(text[j + 1:k], "rule %r" % selector[:60])
+            rules.append((selector, text[j + 1:k], context))
+            i = k + 1
+
+    parse_block(bare, "")
+    return rules, violations
+
+
 def _text_color_ok(val):
     v = val.strip().lower()
     if _re.fullmatch(r"#[0-9a-f]{3}", v):
@@ -1134,6 +1338,24 @@ def gate_design_laws(html, css_text, ctx):
     soul = ctx["soul"].lower()
     index = ctx["index"]
     pieces = index["pieces"]
+
+    # ---- CSS parse (2026-10-18): the FINAL emitted stylesheet must parse.
+    #      Text-level regex is not verification. Unbalanced braces or a
+    #      malformed selector/declaration FAILS the build naming the sheet.
+    rules, parse_violations = _css_rules(css_text)
+    for e in parse_violations:
+        v.append("CSS parse: the emitted stylesheet (template %s) does not "
+                 "parse — %s" % (template, e))
+    m = _re.search(r"<style>\n(.*?)</style>", html, _re.S)
+    if not m or m.group(1).strip() != css_text.strip():
+        v.append("CSS parse: the page's <style> block is not the validated "
+                 "stylesheet (template %s) — the gate must check what ships"
+                 % template)
+    n_rules = len(rules)
+    if n_rules < 50:
+        v.append("CSS parse: the emitted stylesheet (template %s) parses to "
+                 "only %d rules — expected a full chassis+pieces+glue sheet; "
+                 "the harvest dropped content" % (template, n_rules))
 
     # ---- Law 9: every hex is a verbatim token (law doc or Hub :root) ----
     def check_hexes(source, where):
@@ -1170,6 +1392,17 @@ def gate_design_laws(html, css_text, ctx):
             if not _text_color_ok(cm.group(1)):
                 v.append("Law 1: colored text %r in inline style"
                          % cm.group(1).strip())
+    # Law 1 on nested rules too (@media/@keyframes inner blocks), which the
+    # flat regex above cannot see.
+    for selector, body, context in rules:
+        if any(hint in selector for hint in _CHROME_SELECTOR_HINTS):
+            continue  # chrome/icons — Law 3, not Law 1
+        for part in _split_decls(body):
+            cm = _re.match(r"\s*color\s*:\s*(.+?)\s*$", part, _re.S)
+            if cm and not _text_color_ok(cm.group(1)):
+                sel = " ".join(selector.split())[-80:]
+                v.append("Law 1: colored text %r on nested %r (%s) — text "
+                         "stays white" % (cm.group(1).strip(), sel, context[:40]))
 
     # ---- Laws 4/5/10: spectrum walk, adjacency, one board one color ----
     sec_tags = _re.findall(r'<section[^>]*class="card"[^>]*>', html)
@@ -1455,11 +1688,17 @@ def _section_board(sec_id, kicker, title, mounts, hue_name, hue_hex):
 
 
 def _footer_manifest(contract, blueprint, soul, placed, index):
-    """Footer panel (index card piece) + the VISIBLE piece manifest."""
+    """Footer panel (index card piece) + the VISIBLE piece manifest.
+
+    Shawn's 2026-10-17 rule: EVERY placed element is listed (model + label)
+    — dedupe is by (role, model), never by model alone, so repeated section
+    boards are not collapsed to one row (2026-10-18 fix)."""
     pieces = index["pieces"]
     seen = []
+    seen_keys = set()
     for role, model, label in placed:
-        if model not in [m for _, m, _ in seen]:
+        if (role, model) not in seen_keys:
+            seen_keys.add((role, model))
             seen.append((role, model, label))
     items = []
     for role, model, label in seen:

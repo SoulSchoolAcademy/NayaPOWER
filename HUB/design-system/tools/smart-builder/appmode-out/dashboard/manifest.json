@@ -178,14 +178,14 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 42332,
+      "bytes": 42523,
       "path": "index.html",
-      "sha256": "ff53272666a5cdfe7d51e9dae1dd2a7c2b94cd3fd14a055170e33a30cf9954c4"
+      "sha256": "edd6746e53a2c846ce8120c5d283637c9da16f2438d7031f18a0199a7efe02fd"
     },
     {
-      "bytes": 39154,
+      "bytes": 39446,
       "path": "page2.html",
-      "sha256": "ee1da12134c029599f137afcf43798c0f6989d173344213784249d57e032a9b1"
+      "sha256": "c5fcfffe37afa06b029c25b58de6ce722d79a48da1f53dd7f368776503dc7d75"
     }
   ],
   "handle": "marathon-42k",
@@ -719,7 +719,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "bf70c51165b78f97be337339edd74bf673eb21824ef2d27b0b157b4f3cc895a0",
+  "output_hash": "e5ab1fd7a616d2c07cb9708cfce5b628b5715c1085965af4ccdd28a10b23769b",
   "piece_picks": [
     {
       "css_id": "9a6ab405b8fd",

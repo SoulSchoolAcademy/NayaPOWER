@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 36874,
+      "bytes": 37166,
       "path": "index.html",
-      "sha256": "6d2a7d27e2a9ba1960da7fbfbdb32dc82105ab92cf1ec80db99e216efabfbdd7"
+      "sha256": "e1281846cbd6b36b3a6b11223ed5db81abb637c57682afe411a6e593273fe57e"
     }
   ],
   "handle": "rooftop-jazz",
@@ -247,7 +247,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "561ec8ea37ff1436f7ce298d4a76627406be0984908db16ef10684ceb3d3bf98",
+  "output_hash": "bb257948f287000002eecb47c2ab3b69566b48d3faf22820516f515c222436b3",
   "piece_picks": [
     {
       "css_id": "b6c81cfa05ec",
