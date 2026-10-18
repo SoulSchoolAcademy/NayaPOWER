@@ -73,13 +73,14 @@ class TestResolver(unittest.TestCase):
         build on 2026-10-18; feature.smart_tabs was the example until its
         build on 2026-10-18; feature.smart_bars was the example until its
         build on 2026-10-18; feature.community was the example until its
+        build on 2026-10-18; feature.naya_answers was the example until its
         build on 2026-10-18 — the example must track the registry's state.)"""
         with self.assertRaises(ResolverRefusal) as cm:
-            resolve("feature.naya_answers", ctx(
+            resolve("feature.scheduler", ctx(
                 available=[],
                 granted_permissions=[]))
         self.assertEqual(cm.exception.code, "not_implemented")
-        self.assertEqual(cm.exception.function, "feature.naya_answers")
+        self.assertEqual(cm.exception.function, "feature.scheduler")
 
     def test_4_permission_denied_explains(self):
         """Cover without media.upload granted -> permission_denied, names it,
@@ -113,14 +114,14 @@ class TestResolver(unittest.TestCase):
         with self.assertRaises(ResolverRefusal) as cm:
             resolve("feature.nope", ctx())  # unknown, nothing else set up
         self.assertEqual(cm.exception.code, "unknown_function")
-        # feature.naya_answers is specified: even with nothing granted,
+        # feature.scheduler is specified: even with nothing granted,
         # the report is not_implemented (gate 2), not permission_denied (gate 4).
         # (smart_mail, then space, then social_feed, then connect, then
         # intelligence_today, then contacts, then smart_tabs, then
-        # smart_bars, then community, were the example until their builds;
-        # example tracks the registry.)
+        # smart_bars, then community, then naya_answers, were the example
+        # until their builds; example tracks the registry.)
         with self.assertRaises(ResolverRefusal) as cm2:
-            resolve("feature.naya_answers", ctx())
+            resolve("feature.scheduler", ctx())
         self.assertEqual(cm2.exception.code, "not_implemented")
 
     def test_undeclared_contract_activates_honestly_empty(self):

@@ -180,6 +180,8 @@ def _module_for(function_id):
                                "decl_for"),
         "feature.community": ("feature_community", "render_community",
                               "decl_for"),
+        "feature.naya_answers": ("feature_naya_answers", "render_naya_answers",
+                                "decl_for"),
     }
     if function_id not in table:
         return None

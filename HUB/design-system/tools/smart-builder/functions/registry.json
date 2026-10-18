@@ -985,7 +985,7 @@
       "answers wired"
      ],
      "activated_by": "contract.features.naya_answers",
-     "status": "specified",
+     "status": "built",
      "code": null,
      "depends_on": [
       "systems.github_kb"
