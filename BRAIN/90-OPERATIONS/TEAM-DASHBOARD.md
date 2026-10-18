@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-18 18:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-18 19:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 627 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 629 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -79,21 +79,21 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 3 more
 
-### PROVE (30)
+### PROVE (31)
+- [#2763](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2763) threshold-align: gate scorecard shape check 9.0 -> 9.5 (P-012)
 - [#2706](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2706) [HV-GOAL1] Human-value acceptance battery for GOAL #1 (candidate regis
 - [#2699](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2699) feat(verify): manual-29 STEP-0 insertion — seal reissue_policy / who-m
 - [#2694](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2694) fix(gate): consensus scorecard leg enforces the merge law's 9.5 bar 📝draft
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
-- [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
-- …and 25 more
+- …and 26 more
 
-### BUILD (239)
+### BUILD (240)
+- [#2764](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2764) Land intake-page-v5 sources with vendored CSS (Zeta w473 slice a)
 - [#2752](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752) map-compiler: push state file via deploy key with scoped ruleset bypas
 - [#2750](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750) fix(builder): strict headless render qualification before release 📝draft
 - [#2748](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748) Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT — the system tha
 - [#2747](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747) feat: make Smart Builder library searchable and machine-accessible
-- [#2746](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746) docs: establish Smart Builder human contract
-- …and 234 more
+- …and 235 more
 
 ### WIRE (124)
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
