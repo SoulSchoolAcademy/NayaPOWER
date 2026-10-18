@@ -40,6 +40,14 @@ jobs:
           echo "state file valid against MAP-STATE.schema.json"
 
       - name: Commit state file (only write this workflow performs)
+        # Pushes over SSH with the map-compiler deploy key (secret
+        # MAP_COMPILER_DEPLOY_KEY). That key holds the repo's scoped ruleset
+        # bypass for the state-file landing; the checkout above still uses
+        # GITHUB_TOKEN (read). This workflow never commits anything except
+        # HUB/MAP-STATE.json (fail-closed design) — the bypass is scoped in
+        # practice to this workflow's single write.
+        env:
+          MAP_COMPILER_DEPLOY_KEY: ${{ secrets.MAP_COMPILER_DEPLOY_KEY }}
         run: |
           git config user.name "living-map-compiler"
           git config user.email "living-map-compiler@users.noreply.github.com"
@@ -48,5 +56,13 @@ jobs:
             echo "No state change — nothing to commit."
           else
             git commit -m "Living Map state $(date -u +%Y-%m-%dT%H:%MZ)"
+            eval "$(ssh-agent -s)"
+            printenv MAP_COMPILER_DEPLOY_KEY > /tmp/map-compiler-key
+            chmod 600 /tmp/map-compiler-key
+            ssh-add /tmp/map-compiler-key
+            rm -f /tmp/map-compiler-key
+            mkdir -p ~/.ssh
+            ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+            git remote set-url origin git@github.com:SoulSchoolAcademy/NayaPOWER.git
             git push origin HEAD:${{ github.ref_name }}
           fi
