@@ -4,7 +4,8 @@
   "functions": {
     "!no-unit:ask-naya": true,
     "signup-capture": true,
-    "smart-mail": true
+    "smart-mail": true,
+    "smart-tabs": true
   },
   "handle": "ship-it-challenge",
   "idea": "Five days, one tiny ship per day. Join the challenge — we'll mail you the day's mission every morning.",

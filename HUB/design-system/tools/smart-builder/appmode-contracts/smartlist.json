@@ -6,7 +6,8 @@
     "!no-unit:calendar": true,
     "save": true,
     "share": true,
-    "smart-lists": true
+    "smart-lists": true,
+    "smart-tabs": true
   },
   "handle": "renovation-2026",
   "idea": "The whole renovation in lists — rooms, budgets, decisions made, decisions pending. Nothing lives in my head rent-free anymore.",

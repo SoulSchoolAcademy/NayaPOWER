@@ -6,7 +6,8 @@
     "assessment-score": true,
     "intelligence-today": true,
     "navigate": true,
-    "reports": true
+    "reports": true,
+    "smart-tabs": true
   },
   "handle": "marathon-42k",
   "idea": "26.2 miles, one dashboard — readiness check, this week's numbers, today's plan.",

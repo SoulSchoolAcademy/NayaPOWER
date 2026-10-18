@@ -6,7 +6,8 @@
     "community-feed": true,
     "join": true,
     "navigate": true,
-    "smart-spaces": true
+    "smart-spaces": true,
+    "smart-tabs": true
   },
   "handle": "maple-street",
   "idea": "Our street, finally organized — the feed, the spaces, the people. Borrow a ladder, find the lost cat, plan the block party.",

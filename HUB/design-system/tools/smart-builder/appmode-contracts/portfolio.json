@@ -5,7 +5,8 @@
     "!no-unit:ask-naya": true,
     "contact": true,
     "portfolio-showcase": true,
-    "share": true
+    "share": true,
+    "smart-tabs": true
   },
   "handle": "june-park-photo",
   "idea": "My work, no noise — the frames that made me a photographer.",

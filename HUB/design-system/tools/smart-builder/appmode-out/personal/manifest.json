@@ -23,9 +23,9 @@
   "do": "Read the morning briefing, capture thoughts by voice, keep lists, post to the stream, reach people.",
   "files": [
     {
-      "bytes": 12533,
+      "bytes": 16254,
       "path": "functions/f-01-smart-tabs.js",
-      "sha256": "38780a944686926feca40b913e918a39cf73ba9a061b23c98bcc4d0270f93fe1"
+      "sha256": "2fddc2ddfa108bf58f68c052ea863d9f7952fe33dabea441c074000b2783b730"
     },
     {
       "bytes": 15964,
@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 48738,
+      "bytes": 48858,
       "path": "index.html",
-      "sha256": "3d2f2bdf96632d5a998483f086c7ba571ac080e0800c3703a82e77c0eac45de8"
+      "sha256": "7e000c6f543c4f10a768cc64683c3fcfedfa60dc0d869f19eb7322d76a7800d6"
     }
   ],
   "handle": "maya-designs",
@@ -188,44 +188,6 @@
     "ask-naya"
   ],
   "mounted": [
-    {
-      "config": {
-        "storageKey": "naya.appmode.maya-designs.tabs",
-        "tabs": [
-          {
-            "id": "home",
-            "label": "Home",
-            "url": "index.html"
-          },
-          {
-            "id": "portfolio",
-            "label": "Portfolio",
-            "url": "https://www.behance.net"
-          },
-          {
-            "id": "invoices",
-            "label": "Invoices",
-            "url": "https://www.waveapps.com"
-          },
-          {
-            "id": "type",
-            "label": "Type inspiration",
-            "url": "https://fonts.google.com"
-          },
-          {
-            "id": "cal",
-            "label": "Calendar",
-            "url": "https://calendar.google.com"
-          }
-        ],
-        "title": "Smart Tabs"
-      },
-      "contract_id": "smart-tabs",
-      "page": "index.html",
-      "register_id": "smart-tabs",
-      "section": "tabs",
-      "unit_file": "f-01-smart-tabs.js"
-    },
     {
       "config": {
         "items": [
@@ -470,9 +432,47 @@
       "register_id": "f-23-save",
       "section": "people",
       "unit_file": "f-23-save.js"
+    },
+    {
+      "config": {
+        "storageKey": "naya.appmode.maya-designs.tabs",
+        "tabs": [
+          {
+            "id": "home",
+            "label": "Home",
+            "url": "index.html"
+          },
+          {
+            "id": "portfolio",
+            "label": "Portfolio",
+            "url": "https://www.behance.net"
+          },
+          {
+            "id": "invoices",
+            "label": "Invoices",
+            "url": "https://www.waveapps.com"
+          },
+          {
+            "id": "type",
+            "label": "Type inspiration",
+            "url": "https://fonts.google.com"
+          },
+          {
+            "id": "cal",
+            "label": "Calendar",
+            "url": "https://calendar.google.com"
+          }
+        ],
+        "title": "Smart Tabs"
+      },
+      "contract_id": "smart-tabs",
+      "page": "index.html",
+      "register_id": "smart-tabs",
+      "section": "chrome:tabs-bar",
+      "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "8c4cce55e6fd6fae68176a62f88d6210e00731410c3582292254257c10f8ea77",
+  "output_hash": "fc6342c353556060977b0f4f7bf6ddca362fe6d14d14d03f179ef698402b0d78",
   "piece_picks": [
     {
       "css_id": "9a6ab405b8fd",

@@ -19,13 +19,13 @@
       "role": "panel"
     }
   ],
-  "contract_hash": "b6ab08cfe4adc9bf819b92aaaac3b4b181a70735e1427aa578186b574984da93",
+  "contract_hash": "b75a7ceb1cdd13791a74878d6681688ef13ced3f75ef502ad3fb3307934a8c43",
   "do": "Take the readiness assessment, review training numbers, read today's plan.",
   "files": [
     {
-      "bytes": 12533,
+      "bytes": 16254,
       "path": "functions/f-01-smart-tabs.js",
-      "sha256": "38780a944686926feca40b913e918a39cf73ba9a061b23c98bcc4d0270f93fe1"
+      "sha256": "2fddc2ddfa108bf58f68c052ea863d9f7952fe33dabea441c074000b2783b730"
     },
     {
       "bytes": 15964,
@@ -178,14 +178,14 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 41100,
+      "bytes": 42332,
       "path": "index.html",
-      "sha256": "94847755f5d2311921752104d90d0184675ff4b7497ba81d6393067f7994ef8a"
+      "sha256": "ff53272666a5cdfe7d51e9dae1dd2a7c2b94cd3fd14a055170e33a30cf9954c4"
     },
     {
-      "bytes": 37922,
+      "bytes": 39154,
       "path": "page2.html",
-      "sha256": "374b266e5c8ac5131c5f71b62272100e25ff916cdb3f65188217a53b5cc1b282"
+      "sha256": "ee1da12134c029599f137afcf43798c0f6989d173344213784249d57e032a9b1"
     }
   ],
   "handle": "marathon-42k",
@@ -551,6 +551,24 @@
     },
     {
       "config": {
+        "storageKey": "naya.appmode.marathon-42k.tabs",
+        "tabs": [
+          {
+            "id": "home",
+            "label": "Home",
+            "url": "index.html"
+          }
+        ],
+        "title": "Smart Tabs"
+      },
+      "contract_id": "smart-tabs",
+      "page": "index.html",
+      "register_id": "smart-tabs",
+      "section": "chrome:tabs-bar",
+      "unit_file": "f-01-smart-tabs.js"
+    },
+    {
+      "config": {
         "reports": {
           "daily": [
             {
@@ -681,9 +699,27 @@
       "register_id": "f-19-navigate",
       "section": "nav2",
       "unit_file": "f-19-navigate.js"
+    },
+    {
+      "config": {
+        "storageKey": "naya.appmode.marathon-42k.tabs",
+        "tabs": [
+          {
+            "id": "home",
+            "label": "Home",
+            "url": "index.html"
+          }
+        ],
+        "title": "Smart Tabs"
+      },
+      "contract_id": "smart-tabs",
+      "page": "page2.html",
+      "register_id": "smart-tabs",
+      "section": "chrome:tabs-bar",
+      "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "a51d9114768b5579841bfe2f5e91cb184d4cbc703932daa0ce858e895d33edf9",
+  "output_hash": "bf70c51165b78f97be337339edd74bf673eb21824ef2d27b0b157b4f3cc895a0",
   "piece_picks": [
     {
       "css_id": "9a6ab405b8fd",

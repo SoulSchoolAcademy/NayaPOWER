@@ -23,9 +23,9 @@
   "do": "Book grooming services by day and slot, ask questions, jump between pages.",
   "files": [
     {
-      "bytes": 12533,
+      "bytes": 16254,
       "path": "functions/f-01-smart-tabs.js",
-      "sha256": "38780a944686926feca40b913e918a39cf73ba9a061b23c98bcc4d0270f93fe1"
+      "sha256": "2fddc2ddfa108bf58f68c052ea863d9f7952fe33dabea441c074000b2783b730"
     },
     {
       "bytes": 15964,
@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 37570,
+      "bytes": 37686,
       "path": "index.html",
-      "sha256": "278d2f09706184ccc6bcb91ddea043fa1eeb84bd42a402a248ad0c9a8a2eb91d"
+      "sha256": "b1485815b5bee86ed036d55119ddbd7a453dba0da328aae36004e9666a51adaf"
     }
   ],
   "handle": "wag-and-shine",
@@ -311,11 +311,11 @@
       "contract_id": "smart-tabs",
       "page": "index.html",
       "register_id": "smart-tabs",
-      "section": "tabs",
+      "section": "chrome:tabs-bar",
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "c9ce8669591d02a63b84e2a8e53fdd5a329204efdefc4f973ddfe0ea1e4042aa",
+  "output_hash": "48dfaabef91e71893223f1a24c21087d345ad05796098208d9a52a5ddb1bcd94",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",

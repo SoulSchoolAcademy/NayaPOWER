@@ -7,7 +7,8 @@
     "business-proof": true,
     "connections": true,
     "contact": true,
-    "navigate": true
+    "navigate": true,
+    "smart-tabs": true
   },
   "handle": "copper-cup",
   "idea": "Our corner café's home on the internet — what we pour, what people say, book a table, reach us.",

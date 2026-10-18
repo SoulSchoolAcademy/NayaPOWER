@@ -6,7 +6,8 @@
     "!no-unit:guard": true,
     "contact": true,
     "event-rsvp": true,
-    "share": true
+    "share": true,
+    "smart-tabs": true
   },
   "handle": "rooftop-jazz",
   "idea": "One night, one rooftop, a quartet and the skyline. RSVP and you're on the list.",

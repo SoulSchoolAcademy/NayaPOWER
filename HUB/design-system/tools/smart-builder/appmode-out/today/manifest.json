@@ -23,9 +23,9 @@
   "do": "Read the briefing, check daily/weekly/monthly numbers, log the day, jump to tools.",
   "files": [
     {
-      "bytes": 12533,
+      "bytes": 16254,
       "path": "functions/f-01-smart-tabs.js",
-      "sha256": "38780a944686926feca40b913e918a39cf73ba9a061b23c98bcc4d0270f93fe1"
+      "sha256": "2fddc2ddfa108bf58f68c052ea863d9f7952fe33dabea441c074000b2783b730"
     },
     {
       "bytes": 15964,
@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 39838,
+      "bytes": 39954,
       "path": "index.html",
-      "sha256": "8dc1f4b4eec4125276fd3405bf233643bb114c4d49e4644ddf72d185020cf9d9"
+      "sha256": "1da8440f0d274ea01de0ddea713047b0019f9cb8b61b460a478b68bed19f9aa7"
     }
   ],
   "handle": "founder-briefing",
@@ -364,11 +364,11 @@
       "contract_id": "smart-tabs",
       "page": "index.html",
       "register_id": "smart-tabs",
-      "section": "tabs",
+      "section": "chrome:tabs-bar",
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "9d45c32bd85907124924e32aadb1d5d46d8efcaf1c68cabc6eba32ba4b6a4837",
+  "output_hash": "54e5222b53851e0289fab82bcdcd45d7ba48d8820a6fd9ceda268ec6bc1ebc95",
   "piece_picks": [
     {
       "css_id": "b6c81cfa05ec",

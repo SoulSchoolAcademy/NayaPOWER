@@ -1,23 +1,38 @@
-/* NayaFunction: smart-tabs v1.0.0
+/* NayaFunction: smart-tabs v1.1.0
    What: Scrolling ribbon of favorite pages/apps/URLs — add, edit, remove, persist.
+   Standard: ships on EVERY app (Shawn 2026-10-18) — personal pages included.
+     Machine check: an app without the Tabs bar is incomplete.
    Activation: <div data-fn="smart-tabs" data-fn-config='{...}'></div>
    Config: {
      tabs: [{id, label, url, state}]  seed tabs, shown until the user saves their own
-     storageKey: localStorage key (default 'naya.smarttabs.v1')
+       (also accepts {route, heart, star} shape — normalized on load)
+     storageKey: localStorage key (default 'naya.smarttabs.v1' — SHARED across all
+       pages so the ribbon follows the user everywhere)
+     routeMap: {word: url}  synonyms — "mail" → Smart Mail, "reports" → Reports…
+       A tab with no URL resolves through the map; words, not URLs, for humans.
+     onNavigate: function(url, tab)  host router hook. Default: http(s) opens a
+       new tab; anything else goes to location.href (host router territory).
      title: heading text (default 'Smart Tabs')
      showStatus: show the live status line (default true)
    } — all optional.
-   Ready behavior: full ribbon works on this device — click navigates (opens the tab's
-     URL), the dots-menu cycles priority/favorite and edits/removes the tab, + Add
-     creates one. Everything persists in localStorage.
+   Ready behavior: full ribbon works on this device — click navigates (through the
+     host hook), the dots-menu cycles priority/favorite and edits/removes the tab,
+     + Add creates one. Hearts sort first, then stars — the most important tabs
+     literally rise to the top. Everything persists in localStorage and every
+     mutation fires a 'smarttabs-change' event on the mount root.
    Connected behavior: none — the `connected` key is reserved for a future account sync.
    Backend twin: builder-review/HUB/design-system/tools/smart-builder/functions/feature_smart_tabs.py
      (noted here only — this unit is fully client-side and never calls it).
    Reachable-everywhere: the assembler mounts this unit in the shared chrome of every
      page — the ribbon persists per storageKey and follows the user page to page.
    Harvest: Naya_Design_Element_Set_N4.html section 10 (pill ribbon, heart/star states,
-     + Add, status line). Lesson L-2026-10-17-002: a tab navigates ONLY when it has a
-     real URL — a tab with no destination says so instead of being a dead link.
+     + Add, status line). Architecture learned from Shawn's SmartTabs v9 kit
+     (routeMap synonyms, heart-first sort, onNavigate hook, shared storageKey,
+     change events, anchored popover geometry) — re-skinned in our soul.
+     What-good-looks-like: lists.html ribbon (stable per-tab spectrum color,
+     scroll row with edge fades + chevrons, grounded in real data).
+   Lesson L-2026-10-17-002: a tab navigates ONLY when it has a real destination —
+     URL or routeMap hit. A tab with neither says so instead of being a dead link.
 */
 (function(){
 'use strict';
@@ -31,6 +46,21 @@ NF.register = NF.register || function(id, def){
 var UNIT = 'smart-tabs';
 var UNIT_COLOR = '#e84fff'; /* Law 9 token — one color job per unit (Law 5) */
 var PALETTE = ['#e84fff','#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#40d3bb','#6675ff','#ff9a5a']; /* Law 9 verbatim tokens */
+
+/* Default synonyms: words humans type → real destinations. Hosts extend via config.routeMap. */
+var DEFAULT_ROUTES = {
+  'smart feed':'#feed', 'feed':'#feed',
+  'today':'#today', 'intelligence today':'#today',
+  'reports':'#reports', 'report':'#reports',
+  'library':'#library',
+  'connect':'#connect', 'smart connect':'#connect',
+  'ledger':'#ledger', 'smart ledger':'#ledger',
+  'connections':'#connections',
+  'lists':'#lists', 'smart lists':'#lists',
+  'mail':'#mail', 'smart mail':'#mail',
+  'spaces':'#spaces', 'smart spaces':'#spaces',
+  'settings':'#settings'
+};
 
 function esc(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
@@ -47,6 +77,28 @@ function storeGet(key, fallback){
 function storeSet(key, val){
   try { window.localStorage.setItem(key, JSON.stringify(val)); return true; }
   catch(e){ return false; }
+}
+/* Stable color per tab: color is the tab's identity — it must NOT shift when
+   hearts/stars re-sort the ribbon. Hash the id, not the index. */
+function tabColor(id){
+  var h = 0, s = String(id || '');
+  for (var i = 0; i < s.length; i++) h = ((h * 31) + s.charCodeAt(i)) | 0;
+  return PALETTE[Math.abs(h) % PALETTE.length];
+}
+function uid(prefix){ return prefix + '-' + Date.now().toString(36) + '-' + Math.floor(Math.random()*1e6).toString(36); }
+/* Normalize both data shapes: ours {url, state} and the kit's {route, heart, star}. */
+function normTab(t){
+  t = t || {};
+  var state = t.state || null;
+  if (!state) {
+    if (t.heart) state = 'heart';
+    else if (t.star) state = 'star';
+  }
+  return { id: t.id || uid('tab'), label: t.label || 'Tab', url: t.url || t.route || '', state: state };
+}
+function routeFrom(label, map){
+  var k = String(label || '').trim().toLowerCase();
+  return map[k] || '';
 }
 function cssOnce(){
   if (document.querySelector('style[data-nf-css="smart-tabs"]')) return;
@@ -89,17 +141,23 @@ function cssOnce(){
   document.head.appendChild(st);
 }
 
-function tabColor(i){ return PALETTE[(i * 3 + 1) % PALETTE.length]; } /* spaced hues — Law 4 */
-function uid(prefix){ return prefix + '-' + Date.now().toString(36) + '-' + Math.floor(Math.random()*1e6).toString(36); }
-
 NF.register(UNIT, {
-  version: '1.0.0',
+  version: '1.1.0',
   activate: function(root, config){
     config = config || {};
     if (!root) return { destroy: function(){} };
     cssOnce();
     var key = config.storageKey || 'naya.smarttabs.v1';
     var showStatus = config.showStatus !== false;
+    var routeMap = {};
+    var k;
+    for (k in DEFAULT_ROUTES) routeMap[k] = DEFAULT_ROUTES[k];
+    if (config.routeMap) for (k in config.routeMap) routeMap[k] = config.routeMap[k];
+    var onNavigate = (typeof config.onNavigate === 'function') ? config.onNavigate
+      : function(url){
+          if (/^https?:\/\//i.test(url)) { try { window.open(url, '_blank', 'noopener'); } catch(e){} }
+          else { window.location.href = url; }
+        };
     var listeners = [];
     function on(el, ev, fn){ el.addEventListener(ev, fn); listeners.push([el, ev, fn]); }
 
@@ -107,6 +165,7 @@ NF.register(UNIT, {
     if (!Array.isArray(tabs)) {
       tabs = Array.isArray(config.tabs) ? config.tabs.slice() : [];
     }
+    tabs = tabs.map(normTab);
     var activeId = null;
     var editingId = null; /* null = add mode, string = edit mode */
 
@@ -118,7 +177,7 @@ NF.register(UNIT, {
     wrap.appendChild(h);
     var sub = document.createElement('p');
     sub.className = 'nf-sub';
-    sub.textContent = 'Your favorites follow you everywhere — click a tab to go, ⋯ to change it.';
+    sub.textContent = 'Your favorites follow you everywhere — click a tab to go, ⋯ to change it. Type a word like "mail" and it finds the way.';
     wrap.appendChild(sub);
     var row = document.createElement('div');
     row.className = 'nf-tabs-row';
@@ -138,21 +197,38 @@ NF.register(UNIT, {
     root.appendChild(wrap);
 
     function say(msg){ if (showStatus) status.textContent = msg; }
-    function persist(){ storeSet(key, tabs); }
-
+    function persist(){
+      storeSet(key, tabs);
+      try {
+        root.dispatchEvent(new CustomEvent('smarttabs-change', { detail: tabs.slice(), bubbles: true }));
+      } catch(e){}
+    }
+    /* Hearts first, then stars, then insertion order — the most important
+       tabs literally rise to the top. */
+    function sorted(){
+      return tabs.slice().sort(function(a, b){
+        var pa = (a.state === 'heart' ? 2 : 0) + (a.state === 'star' ? 1 : 0);
+        var pb = (b.state === 'heart' ? 2 : 0) + (b.state === 'star' ? 1 : 0);
+        return pb - pa;
+      });
+    }
     function stateMark(t){
       if (t.state === 'heart') return ' 💜';
       if (t.state === 'star') return ' ⭐';
       return '';
     }
+    function destination(t){
+      if (t.url) return t.url;
+      return routeFrom(t.label, routeMap);
+    }
 
     function render(){
       row.innerHTML = '';
-      tabs.forEach(function(t, i){
+      sorted().forEach(function(t){
         var b = document.createElement('button');
         b.type = 'button';
         b.className = 'nf-smtab' + (t.id === activeId ? ' active' : '');
-        b.style.setProperty('--tc', tabColor(i));
+        b.style.setProperty('--tc', tabColor(t.id));
         b.setAttribute('role','tab');
         b.setAttribute('data-id', t.id);
         var lab = document.createElement('span');
@@ -182,12 +258,13 @@ NF.register(UNIT, {
     function navigate(t){
       activeId = t.id;
       render();
-      if (t.url) {
+      var dest = destination(t);
+      if (dest) {
         say('Opening ' + (t.label || 'tab') + '…');
-        try { window.open(t.url, '_blank', 'noopener'); }
-        catch(e){ say('Could not open the link — the address may be blocked here.'); }
+        try { onNavigate(dest, t); }
+        catch(e){ say('Could not go there — the destination may be blocked here.'); }
       } else {
-        say('"' + (t.label || 'Tab') + '" has no destination yet — open ⋯ and add a URL.');
+        say('"' + (t.label || 'Tab') + '" has no destination yet — open ⋯ and add a URL or a known word.');
       }
     }
 
@@ -213,7 +290,7 @@ NF.register(UNIT, {
         return inp;
       }
       var nameIn = field('Name', t ? t.label : '', 'e.g. SoulSchool');
-      var urlIn = field('Destination URL', t ? (t.url || '') : '', 'https://…');
+      var urlIn = field('Destination — URL or a word like "mail"', t ? (t.url || '') : '', 'https://… or just a word');
       var rowBtns = document.createElement('div');
       rowBtns.className = 'nf-tabs-rowbtns';
       function mkBtn(txt, cls, fn){
@@ -260,6 +337,7 @@ NF.register(UNIT, {
     else say('Click a tab to go there, ⋯ to change it.');
 
     return {
+      list: function(){ return tabs.map(normTab); },
       destroy: function(){
         listeners.forEach(function(l){ try { l[0].removeEventListener(l[1], l[2]); } catch(e){} });
         listeners = [];

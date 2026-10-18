@@ -19,13 +19,13 @@
       "role": "panel"
     }
   ],
-  "contract_hash": "87933000f4bcba1c753c2b9388e9c7ee1d9c1772447a01b64b6daad10a51fe4c",
+  "contract_hash": "796019d5ff2dd75d9acf43eb0cb7c5d37c9cf86760fa2ebe19739272a8373c04",
   "do": "Browse the work by tag, open the lightbox, share a frame, book a shoot.",
   "files": [
     {
-      "bytes": 12533,
+      "bytes": 16254,
       "path": "functions/f-01-smart-tabs.js",
-      "sha256": "38780a944686926feca40b913e918a39cf73ba9a061b23c98bcc4d0270f93fe1"
+      "sha256": "2fddc2ddfa108bf58f68c052ea863d9f7952fe33dabea441c074000b2783b730"
     },
     {
       "bytes": 15964,
@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 41655,
+      "bytes": 42890,
       "path": "index.html",
-      "sha256": "712f9d50496f96a916dce5d5cc96f134c4e69c17ebf38c4759ba566501507100"
+      "sha256": "51ed99ce7de99b4cbae77507da5dbff7795edec3c1f85a3ae6b45054e97240ad"
     }
   ],
   "handle": "june-park-photo",
@@ -284,9 +284,27 @@
       "register_id": "f-21-contact",
       "section": "contact",
       "unit_file": "f-21-contact.js"
+    },
+    {
+      "config": {
+        "storageKey": "naya.appmode.june-park-photo.tabs",
+        "tabs": [
+          {
+            "id": "home",
+            "label": "Home",
+            "url": "index.html"
+          }
+        ],
+        "title": "Smart Tabs"
+      },
+      "contract_id": "smart-tabs",
+      "page": "index.html",
+      "register_id": "smart-tabs",
+      "section": "chrome:tabs-bar",
+      "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "66f205b5257146eafea97123e5099c77e0c3be6ec0d3cc7165eb2c6102436833",
+  "output_hash": "24636c1a78980ddd59789fd9b9ca4ad419d1e080a6c435068734c87d7a93aa5f",
   "piece_picks": [
     {
       "css_id": "6b3d0520dec4",

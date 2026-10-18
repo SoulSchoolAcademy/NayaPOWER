@@ -94,7 +94,6 @@ BLUEPRINTS = {
         "soul": "#a06bff",
         "pages": {"index.html": "Home", "page2.html": None},
         "sections": [
-            ("tabs", "Navigate", "Your tabs", ["smart-tabs"], 1),
             ("briefing", "This morning", "Today's briefing", ["intelligence-today"], 1),
             ("capture", "Capture", "Say it before you lose it", ["dictate"], 1),
             ("lists", "Lists", "Everything, listed", ["smart-lists"], 1),
@@ -109,7 +108,6 @@ BLUEPRINTS = {
             ("briefing", "Good morning", "Today's briefing", ["intelligence-today"], 1),
             ("metrics", "The numbers", "How things stand", ["reports"], 1),
             ("stream", "Log", "Founder log", ["feed"], 1),
-            ("tabs", "Navigate", "Your tabs", ["smart-tabs"], 1),
         ],
     },
     "smartlist": {
@@ -139,7 +137,6 @@ BLUEPRINTS = {
         "sections": [
             ("booking", "Book", "Pick a service, pick a slot", ["booking"], 1),
             ("contact", "Questions", "Ask us anything", ["contact"], 1),
-            ("tabs", "Navigate", "Your tabs", ["smart-tabs"], 1),
         ],
     },
     "product": {
@@ -1089,6 +1086,16 @@ padding:6px 14px;font-size:12px;cursor:pointer}
 font-weight:700;cursor:pointer;width:100%}
 .btn-select.picked{background:#2fe89e}
 @media(max-width:640px){.hero-orbs{display:none}}
+/* Smart Tabs standard chrome (Shawn 2026-10-18): the bar rides at the top of the
+   main scroll surface, directly under the topbar — the lists/spaces room pattern.
+   White at rest, template soul ignites on touch (Law 6); the tabs themselves keep
+   their stable per-tab spectrum colors (the unit hashes by id — color is identity). */
+.tabs-bar{margin:0 0 18px;border-radius:16px;border:1px solid var(--line-soft);
+background:rgba(255,255,255,.02);box-shadow:0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05);
+transition:border-color .2s,box-shadow .2s}
+.tabs-bar:hover,.tabs-bar:focus-within{border-color:var(--tb-ign);
+box-shadow:0 0 22px -6px var(--tb-ign),0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05)}
+.tabs-bar [data-fn="smart-tabs"]{margin:0}
 """
 
 FONTS_LINK = (
@@ -1218,6 +1225,22 @@ def gate_design_laws(html, css_text, ctx):
         v.append("Emission: missing <title>")
     elif "&#" in mt.group(1) or "%s" in mt.group(1):
         v.append("Emission: garbled title %r" % mt.group(1)[:60])
+
+    # ---- Smart Tabs standard (Shawn 2026-10-18): EVERY app ships the bar,
+    #     personal pages included — an app without the Tabs bar is incomplete.
+    #     A page with no smart-tabs mount FAILS the build, naming the unit.
+    #     (Match the mount ELEMENT, not the bare string — the glue CSS names
+    #     the selector too.)
+    mt = html.find('<div data-fn="smart-tabs"')
+    if mt < 0:
+        v.append('Smart-tabs standard: missing unit mount data-fn="smart-tabs" '
+                 "— an app without the Tabs bar is incomplete")
+    else:
+        fs = html.find("<section")
+        if fs >= 0 and mt > fs:
+            v.append("Smart-tabs standard: the tabs bar must ride at the top of "
+                     "the main scroll surface (mount sits after the first "
+                     "<section>)")
     return v
 
 
@@ -1234,6 +1257,22 @@ def _config_attr(config):
 def _mount(register_id, config, inner=""):
     return '<div data-fn="%s" data-fn-config=%s>%s</div>' % (
         _esc(register_id), _config_attr(config), inner)
+
+
+def _smart_tabs_bar(contract, blueprint, page_file):
+    """Standard chrome: the Smart Tabs bar at the top of the main scroll
+    surface, directly under the topbar (Shawn's 2026-10-18 standard — every
+    app ships it, personal pages included; the lists/spaces room pattern).
+    The bar takes the template soul for ignition; the tabs keep their stable
+    per-tab spectrum colors (the unit hashes by id — color is identity).
+    Returns (html, config)."""
+    template = contract["template"]
+    soul = blueprint["soul"]
+    cfg = default_config(template, "smart-tabs", contract, blueprint, page_file)
+    bar = ('<div class="tabs-bar nb-scope" style="--tb-ign:%s" '
+           'role="navigation" aria-label="Smart Tabs">%s</div>'
+           % (_esc(soul), _mount("smart-tabs", cfg)))
+    return bar, cfg
 
 
 # ---------------------------------------------------------------------------
@@ -1622,6 +1661,20 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted):
     eco_links_html = _eco_links(contract, blueprint, rendered, hues, soul)
     rail_html = _rail(contract, blueprint, rendered, page_file, hues, soul)
 
+    # --- Smart Tabs standard chrome: the bar rides at the top of the main
+    #     scroll surface, directly under the topbar (Shawn 2026-10-18 — every
+    #     app ships it, personal pages included). Contract-driven (fail-closed):
+    #     when the contract leaves smart-tabs off, no bar is emitted and the
+    #     design-law gate below refuses the page, naming the missing unit.
+    tabs_bar_html = ""
+    if funcs.get("smart-tabs"):
+        tabs_bar_html, tabs_cfg = _smart_tabs_bar(contract, blueprint,
+                                                  page_file)
+        mounted.append({"contract_id": "smart-tabs", "register_id": "smart-tabs",
+                        "unit_file": "f-01-smart-tabs.js",
+                        "section": "chrome:tabs-bar",
+                        "page": page_file, "config": tabs_cfg})
+
     # --- CSS: Hub chassis harvest + verbatim piece CSS + page glue ---
     hub_css = _hub_css(soul)
     piece_models = [PIECE_SECTION_BOARD] + orb_models
@@ -1663,6 +1716,7 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted):
 %s
 %s
 %s
+%s
 </div>
 </main>
 </div>
@@ -1673,6 +1727,7 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted):
 """ % (title, FONTS_LINK, css_text,
        rail_html,
        _topbar(contract, eco_links_html),
+       tabs_bar_html,
        _hero(contract, blueprint, soul, orb_html, page_label, orb_models),
        "\n".join(sec_html),
        _footer_manifest(contract, blueprint, soul, placed, index),

@@ -623,6 +623,16 @@ padding:6px 14px;font-size:12px;cursor:pointer}
 font-weight:700;cursor:pointer;width:100%}
 .btn-select.picked{background:#2fe89e}
 @media(max-width:640px){.hero-orbs{display:none}}
+/* Smart Tabs standard chrome (Shawn 2026-10-18): the bar rides at the top of the
+   main scroll surface, directly under the topbar — the lists/spaces room pattern.
+   White at rest, template soul ignites on touch (Law 6); the tabs themselves keep
+   their stable per-tab spectrum colors (the unit hashes by id — color is identity). */
+.tabs-bar{margin:0 0 18px;border-radius:16px;border:1px solid var(--line-soft);
+background:rgba(255,255,255,.02);box-shadow:0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05);
+transition:border-color .2s,box-shadow .2s}
+.tabs-bar:hover,.tabs-bar:focus-within{border-color:var(--tb-ign);
+box-shadow:0 0 22px -6px var(--tb-ign),0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05)}
+.tabs-bar [data-fn="smart-tabs"]{margin:0}
 
 </style>
 </head>
@@ -633,6 +643,7 @@ font-weight:700;cursor:pointer;width:100%}
 <main class="main">
 <header class="top"><button class="rooms-plus" id="roomsPlus" aria-label="Open navigation" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button class="rail-toggle" id="railToggle" aria-label="Show sidebar" title="Your pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><div class="top-title"><b>COPPER-CUP</b></div><div class="top-status"><span class="led"></span><span>WORKING</span></div><div class="top-spacer"></div><div class="eco-wrap"><button class="eco-plus" id="ecoPlus" aria-label="Destinations" aria-haspopup="true" aria-expanded="false" title="Destinations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><nav class="eco-menu" id="ecoMenu" aria-label="Destinations"><div class="eco-head">DESTINATIONS</div><a href="index.html" style="--eco:#3fb8ff"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Home</span></a><a href="page2.html" style="--eco:#3fb8ff"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Visit</span></a><a href="#sec-people" style="--eco:#3fb8ff"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">The people behind the counter</span></a><a href="#sec-contact" style="--eco:#2fe89e"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Say hello</span></a></nav></div></header>
 <div class="room-outlet">
+<div class="tabs-bar nb-scope" style="--tb-ign:#3fb8ff" role="navigation" aria-label="Smart Tabs"><div data-fn="smart-tabs" data-fn-config='{&quot;storageKey&quot;:&quot;naya.appmode.copper-cup.tabs&quot;,&quot;tabs&quot;:[{&quot;id&quot;:&quot;home&quot;,&quot;label&quot;:&quot;Home&quot;,&quot;url&quot;:&quot;index.html&quot;}],&quot;title&quot;:&quot;Smart Tabs&quot;}'></div></div>
 <section class="hero" data-hue="soul" id="top"><div class="eyebrow">copper-cup · Visit</div><h1>Our corner café&#x27;s home on the internet — what we pour, what people say, book a table, reach us.</h1><p class="hero-sub">A regular should feel the smell of espresso from this page.</p><div class="hero-orbs"><span class="nb-scope orb-wrap"><span class="orb orb--xs" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span></span></div></section>
 <section class="card" id="sec-people" data-hue="blue" data-piece="NAYA-CRD-008" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><p class="fine kicker-line">Team</p><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>The people behind the counter</h3><div class="nsec-body"><div data-fn="connections" data-fn-config='{&quot;people&quot;:[{&quot;color&quot;:&quot;#3fb8ff&quot;,&quot;id&quot;:&quot;s1&quot;,&quot;name&quot;:&quot;Maya Reyes&quot;,&quot;note&quot;:&quot;Pulls the best cortado on the street. Ask about the new roast.&quot;,&quot;phone&quot;:&quot;(555) 011-3420&quot;,&quot;role&quot;:&quot;Head barista&quot;},{&quot;color&quot;:&quot;#ffbf3d&quot;,&quot;id&quot;:&quot;s2&quot;,&quot;name&quot;:&quot;Jonah Fields&quot;,&quot;note&quot;:&quot;Cardamom buns sell out by 9. He starts at 4am \u2014 be kind.&quot;,&quot;phone&quot;:&quot;&quot;,&quot;role&quot;:&quot;Baker&quot;},{&quot;color&quot;:&quot;#2fe89e&quot;,&quot;id&quot;:&quot;s3&quot;,&quot;name&quot;:&quot;Theo Alvarez&quot;,&quot;note&quot;:&quot;Catering and events. Replies within a day.&quot;,&quot;phone&quot;:&quot;(555) 011-8890&quot;,&quot;role&quot;:&quot;Owner&quot;}],&quot;storageKey&quot;:&quot;naya.appmode.copper-cup.connections.messages&quot;,&quot;title&quot;:&quot;Connections&quot;}'></div></div></section>
 <section class="card" id="sec-contact" data-hue="green" data-piece="NAYA-CRD-008" style="--accent:#2fe89e;--accent-soft:rgba(47,232,158,.45)"><p class="fine kicker-line">Reach us</p><h3><span class="jewel" style="--jewel:#2fe89e">✧</span>Say hello</h3><div class="nsec-body"><div data-fn="f-21-contact" data-fn-config='{&quot;accent&quot;:&quot;#3fb8ff&quot;,&quot;outboxKey&quot;:&quot;naya.appmode.copper-cup.contact.outbox&quot;,&quot;to&quot;:&quot;Copper Cup&quot;}'></div></div></section>
@@ -679,6 +690,7 @@ font-weight:700;cursor:pointer;width:100%}
 </script>
 
   <script src="functions/naya-functions.js"></script>
+  <script src="functions/f-01-smart-tabs.js"></script>
   <script src="functions/f-06-connections.js"></script>
   <script src="functions/f-19-navigate.js"></script>
   <script src="functions/f-21-contact.js"></script>

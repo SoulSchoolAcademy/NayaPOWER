@@ -19,13 +19,13 @@
       "role": "panel"
     }
   ],
-  "contract_hash": "98cdb9a9ecbcd51f56d395363d9bb2f855c443938b113a794e1f0bf03ced16a2",
+  "contract_hash": "aac23e2b11660be9ea9a7510d298386c7dd0f176cadb413a8de2b7536d592f93",
   "do": "Show proof (services, reviews, numbers), book a table, meet the team, get in touch.",
   "files": [
     {
-      "bytes": 12533,
+      "bytes": 16254,
       "path": "functions/f-01-smart-tabs.js",
-      "sha256": "38780a944686926feca40b913e918a39cf73ba9a061b23c98bcc4d0270f93fe1"
+      "sha256": "2fddc2ddfa108bf58f68c052ea863d9f7952fe33dabea441c074000b2783b730"
     },
     {
       "bytes": 15964,
@@ -178,14 +178,14 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 37239,
+      "bytes": 38469,
       "path": "index.html",
-      "sha256": "5df61252faf995ed1a8f510c4316628d291b9ca8861e756544d8945f6bc678db"
+      "sha256": "42dcc32d2ec0331c197bd6b388d4993e7efeca283eebfcbea4f6b91a228b9c97"
     },
     {
-      "bytes": 36277,
+      "bytes": 37507,
       "path": "page2.html",
-      "sha256": "c8f525efed25d762f6a08b2b2cdf527b1fff1d03f85fb5b19fc7895c45983eac"
+      "sha256": "4d5e639838fab9fb647debc80644e80c31ad1fb939b444da60b2c23997682aa5"
     }
   ],
   "handle": "copper-cup",
@@ -303,6 +303,24 @@
     },
     {
       "config": {
+        "storageKey": "naya.appmode.copper-cup.tabs",
+        "tabs": [
+          {
+            "id": "home",
+            "label": "Home",
+            "url": "index.html"
+          }
+        ],
+        "title": "Smart Tabs"
+      },
+      "contract_id": "smart-tabs",
+      "page": "index.html",
+      "register_id": "smart-tabs",
+      "section": "chrome:tabs-bar",
+      "unit_file": "f-01-smart-tabs.js"
+    },
+    {
+      "config": {
         "people": [
           {
             "color": "#3fb8ff",
@@ -370,9 +388,27 @@
       "register_id": "f-19-navigate",
       "section": "nav2",
       "unit_file": "f-19-navigate.js"
+    },
+    {
+      "config": {
+        "storageKey": "naya.appmode.copper-cup.tabs",
+        "tabs": [
+          {
+            "id": "home",
+            "label": "Home",
+            "url": "index.html"
+          }
+        ],
+        "title": "Smart Tabs"
+      },
+      "contract_id": "smart-tabs",
+      "page": "page2.html",
+      "register_id": "smart-tabs",
+      "section": "chrome:tabs-bar",
+      "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "7116924cdb313701d52acfd024d40e78efcd710f6000108bb4ff60b42c9800bd",
+  "output_hash": "69ad08946aa18425a6f0269e9dedb349caaf4922c34014824f14c27988c4be06",
   "piece_picks": [
     {
       "css_id": "b6c81cfa05ec",

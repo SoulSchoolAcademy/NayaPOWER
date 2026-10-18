@@ -625,6 +625,16 @@ padding:6px 14px;font-size:12px;cursor:pointer}
 font-weight:700;cursor:pointer;width:100%}
 .btn-select.picked{background:#2fe89e}
 @media(max-width:640px){.hero-orbs{display:none}}
+/* Smart Tabs standard chrome (Shawn 2026-10-18): the bar rides at the top of the
+   main scroll surface, directly under the topbar — the lists/spaces room pattern.
+   White at rest, template soul ignites on touch (Law 6); the tabs themselves keep
+   their stable per-tab spectrum colors (the unit hashes by id — color is identity). */
+.tabs-bar{margin:0 0 18px;border-radius:16px;border:1px solid var(--line-soft);
+background:rgba(255,255,255,.02);box-shadow:0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05);
+transition:border-color .2s,box-shadow .2s}
+.tabs-bar:hover,.tabs-bar:focus-within{border-color:var(--tb-ign);
+box-shadow:0 0 22px -6px var(--tb-ign),0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05)}
+.tabs-bar [data-fn="smart-tabs"]{margin:0}
 
 </style>
 </head>
@@ -635,6 +645,7 @@ font-weight:700;cursor:pointer;width:100%}
 <main class="main">
 <header class="top"><button class="rooms-plus" id="roomsPlus" aria-label="Open navigation" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button class="rail-toggle" id="railToggle" aria-label="Show sidebar" title="Your pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><div class="top-title"><b>COPPER-CUP-MENU</b></div><div class="top-status"><span class="led"></span><span>WORKING</span></div><div class="top-spacer"></div><div class="eco-wrap"><button class="eco-plus" id="ecoPlus" aria-label="Destinations" aria-haspopup="true" aria-expanded="false" title="Destinations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><nav class="eco-menu" id="ecoMenu" aria-label="Destinations"><div class="eco-head">DESTINATIONS</div><a href="index.html" style="--eco:#b8ee57"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Menu</span></a><a href="#sec-menu" style="--eco:#2fe89e"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">The menu</span></a><a href="#sec-contact" style="--eco:#ffbf3d"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Feed a crowd</span></a></nav></div></header>
 <div class="room-outlet">
+<div class="tabs-bar nb-scope" style="--tb-ign:#b8ee57" role="navigation" aria-label="Smart Tabs"><div data-fn="smart-tabs" data-fn-config='{&quot;storageKey&quot;:&quot;naya.appmode.copper-cup-menu.tabs&quot;,&quot;tabs&quot;:[{&quot;id&quot;:&quot;home&quot;,&quot;label&quot;:&quot;Home&quot;,&quot;url&quot;:&quot;index.html&quot;}],&quot;title&quot;:&quot;Smart Tabs&quot;}'></div></div>
 <section class="hero" data-hue="soul" id="top"><div class="eyebrow">copper-cup-menu · Menu</div><h1>The Copper Cup menu — everything we pour and bake, with real prices. Order at the counter, no surprises.</h1><p class="hero-sub">You should be able to taste the cardamom bun through the screen.</p><div class="hero-orbs"><span class="nb-scope orb-wrap"><span class="orb orb--glyph orb--icon" style="--oc:#b8ee57;--oc-rgb:184,238,87">◈</span></span></div></section>
 <section class="card" id="sec-menu" data-hue="green" data-piece="NAYA-CRD-008" style="--accent:#2fe89e;--accent-soft:rgba(47,232,158,.45)"><p class="fine kicker-line">Eat &amp; drink</p><h3><span class="jewel" style="--jewel:#2fe89e">✧</span>The menu</h3><div class="nsec-body"><div data-fn="f-10-menu-display" data-fn-config='{&quot;currency&quot;:&quot;$&quot;,&quot;items&quot;:[{&quot;description&quot;:&quot;Double shot of our house roast \u2014 chocolate, orange peel.&quot;,&quot;name&quot;:&quot;Espresso&quot;,&quot;price&quot;:3.5},{&quot;description&quot;:&quot;Espresso cut with silky steamed milk. Our signature.&quot;,&quot;name&quot;:&quot;Cortado&quot;,&quot;price&quot;:4.25},{&quot;description&quot;:&quot;Mellow and milky, dusted with cocoa.&quot;,&quot;name&quot;:&quot;Latte&quot;,&quot;price&quot;:4.75},{&quot;description&quot;:&quot;Single-origin Ethiopia, brewed slow. Tastes like blueberries.&quot;,&quot;name&quot;:&quot;Pour Over&quot;,&quot;price&quot;:5.0},{&quot;description&quot;:&quot;Laminated over three days. Shatters properly.&quot;,&quot;name&quot;:&quot;Butter Croissant&quot;,&quot;price&quot;:3.75},{&quot;description&quot;:&quot;Swedish-style, pearl sugar. Gone by nine.&quot;,&quot;name&quot;:&quot;Cardamom Bun&quot;,&quot;price&quot;:4.5},{&quot;description&quot;:&quot;Sourdough, smashed avo, chili crunch, lime.&quot;,&quot;name&quot;:&quot;Avocado Toast&quot;,&quot;price&quot;:9.5},{&quot;description&quot;:&quot;Ask Jonah \u2014 yesterday was roasted tomato.&quot;,&quot;name&quot;:&quot;Soup of the Day&quot;,&quot;price&quot;:8.0}],&quot;note&quot;:&quot;Baked fresh every morning. Oat milk +$0.50, always.&quot;,&quot;storage_key&quot;:&quot;naya.appmode.copper-cup-menu.menu.order&quot;,&quot;title&quot;:&quot;The Menu&quot;}'></div></div></section>
 <section class="card" id="sec-contact" data-hue="gold" data-piece="NAYA-CRD-008" style="--accent:#ffbf3d;--accent-soft:rgba(255,191,61,.45)"><p class="fine kicker-line">Catering</p><h3><span class="jewel" style="--jewel:#ffbf3d">✧</span>Feed a crowd</h3><div class="nsec-body"><div data-fn="f-21-contact" data-fn-config='{&quot;accent&quot;:&quot;#b8ee57&quot;,&quot;outboxKey&quot;:&quot;naya.appmode.copper-cup-menu.contact.outbox&quot;,&quot;to&quot;:&quot;Copper Cup catering&quot;}'></div></div></section>
@@ -680,6 +691,7 @@ font-weight:700;cursor:pointer;width:100%}
 </script>
 
   <script src="functions/naya-functions.js"></script>
+  <script src="functions/f-01-smart-tabs.js"></script>
   <script src="functions/f-10-menu-display.js"></script>
   <script src="functions/f-21-contact.js"></script>
 </body>

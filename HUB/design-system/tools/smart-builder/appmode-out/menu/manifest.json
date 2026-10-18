@@ -19,13 +19,13 @@
       "role": "panel"
     }
   ],
-  "contract_hash": "58919a9af675d45a0b5e5bdd9ad702d9a9affd3dcadceb3254ce51f48db0861e",
+  "contract_hash": "4800c29afbc69a82b2e33d4c0e3ef1c5eaebda0ffd6ea9e38db76bcd068f51d5",
   "do": "Browse the menu, build an order, ask about catering.",
   "files": [
     {
-      "bytes": 12533,
+      "bytes": 16254,
       "path": "functions/f-01-smart-tabs.js",
-      "sha256": "38780a944686926feca40b913e918a39cf73ba9a061b23c98bcc4d0270f93fe1"
+      "sha256": "2fddc2ddfa108bf58f68c052ea863d9f7952fe33dabea441c074000b2783b730"
     },
     {
       "bytes": 15964,
@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 35846,
+      "bytes": 37081,
       "path": "index.html",
-      "sha256": "e2170b64014a079d7f57c841034ebe1a28efd6482da2bbb0c68e65cfc86c1a64"
+      "sha256": "86e7d29512ec29e99b4cfbc980a14b17036023232660502f9d87ec9657078d95"
     }
   ],
   "handle": "copper-cup-menu",
@@ -254,9 +254,27 @@
       "register_id": "f-21-contact",
       "section": "contact",
       "unit_file": "f-21-contact.js"
+    },
+    {
+      "config": {
+        "storageKey": "naya.appmode.copper-cup-menu.tabs",
+        "tabs": [
+          {
+            "id": "home",
+            "label": "Home",
+            "url": "index.html"
+          }
+        ],
+        "title": "Smart Tabs"
+      },
+      "contract_id": "smart-tabs",
+      "page": "index.html",
+      "register_id": "smart-tabs",
+      "section": "chrome:tabs-bar",
+      "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "a5c4ac76c6fa45078a2b3a0e1ec66016d58c3028064411decf4fa79863d00fc0",
+  "output_hash": "32d8d83791fcd4a260c00108b72aa8afb1d869c0b2eaed90611892414ce9be80",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",

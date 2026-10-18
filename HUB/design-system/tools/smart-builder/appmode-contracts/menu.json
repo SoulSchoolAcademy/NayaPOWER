@@ -4,7 +4,8 @@
   "functions": {
     "!no-unit:ask-naya": true,
     "contact": true,
-    "menu-display": true
+    "menu-display": true,
+    "smart-tabs": true
   },
   "handle": "copper-cup-menu",
   "idea": "The Copper Cup menu — everything we pour and bake, with real prices. Order at the counter, no surprises.",

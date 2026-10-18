@@ -6,7 +6,8 @@
     "cart": true,
     "contact": true,
     "product-display": true,
-    "share": true
+    "share": true,
+    "smart-tabs": true
   },
   "handle": "kiln-and-glow",
   "idea": "One lamp, made by hand — see it, choose your finish, take it home.",

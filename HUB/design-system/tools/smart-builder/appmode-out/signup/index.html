@@ -623,6 +623,16 @@ padding:6px 14px;font-size:12px;cursor:pointer}
 font-weight:700;cursor:pointer;width:100%}
 .btn-select.picked{background:#2fe89e}
 @media(max-width:640px){.hero-orbs{display:none}}
+/* Smart Tabs standard chrome (Shawn 2026-10-18): the bar rides at the top of the
+   main scroll surface, directly under the topbar — the lists/spaces room pattern.
+   White at rest, template soul ignites on touch (Law 6); the tabs themselves keep
+   their stable per-tab spectrum colors (the unit hashes by id — color is identity). */
+.tabs-bar{margin:0 0 18px;border-radius:16px;border:1px solid var(--line-soft);
+background:rgba(255,255,255,.02);box-shadow:0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05);
+transition:border-color .2s,box-shadow .2s}
+.tabs-bar:hover,.tabs-bar:focus-within{border-color:var(--tb-ign);
+box-shadow:0 0 22px -6px var(--tb-ign),0 10px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05)}
+.tabs-bar [data-fn="smart-tabs"]{margin:0}
 
 </style>
 </head>
@@ -633,6 +643,7 @@ font-weight:700;cursor:pointer;width:100%}
 <main class="main">
 <header class="top"><button class="rooms-plus" id="roomsPlus" aria-label="Open navigation" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button class="rail-toggle" id="railToggle" aria-label="Show sidebar" title="Your pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><div class="top-title"><b>SHIP-IT-CHALLENGE</b></div><div class="top-status"><span class="led"></span><span>WORKING</span></div><div class="top-spacer"></div><div class="eco-wrap"><button class="eco-plus" id="ecoPlus" aria-label="Destinations" aria-haspopup="true" aria-expanded="false" title="Destinations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><nav class="eco-menu" id="ecoMenu" aria-label="Destinations"><div class="eco-head">DESTINATIONS</div><a href="index.html" style="--eco:#40d3bb"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Join</span></a><a href="#sec-signup" style="--eco:#3fb8ff"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Take the challenge</span></a><a href="#sec-mail" style="--eco:#2fe89e"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Notes from the host</span></a></nav></div></header>
 <div class="room-outlet">
+<div class="tabs-bar nb-scope" style="--tb-ign:#40d3bb" role="navigation" aria-label="Smart Tabs"><div data-fn="smart-tabs" data-fn-config='{&quot;storageKey&quot;:&quot;naya.appmode.ship-it-challenge.tabs&quot;,&quot;tabs&quot;:[{&quot;id&quot;:&quot;home&quot;,&quot;label&quot;:&quot;Home&quot;,&quot;url&quot;:&quot;index.html&quot;}],&quot;title&quot;:&quot;Smart Tabs&quot;}'></div></div>
 <section class="hero" data-hue="soul" id="top"><div class="eyebrow">ship-it-challenge · Join</div><h1>Five days, one tiny ship per day. Join the challenge — we&#x27;ll mail you the day&#x27;s mission every morning.</h1><p class="hero-sub">Finishers ship. That&#x27;s the whole philosophy.</p><div class="hero-orbs"><span class="nb-scope orb-wrap"><span class="orb orb--xs" style="--oc:#40d3bb;--oc-rgb:64,211,187"></span></span></div></section>
 <section class="card" id="sec-signup" data-hue="blue" data-piece="NAYA-CRD-008" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><p class="fine kicker-line">Join in</p><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>Take the challenge</h3><div class="nsec-body"><div data-fn="f-12-signup-capture" data-fn-config='{&quot;button_text&quot;:&quot;I&#x27;m in&quot;,&quot;fields&quot;:[{&quot;label&quot;:&quot;Your name&quot;,&quot;name&quot;:&quot;name&quot;,&quot;placeholder&quot;:&quot;Ada Lovelace&quot;,&quot;required&quot;:true,&quot;type&quot;:&quot;text&quot;},{&quot;label&quot;:&quot;Email&quot;,&quot;name&quot;:&quot;email&quot;,&quot;placeholder&quot;:&quot;you@example.com&quot;,&quot;required&quot;:true,&quot;type&quot;:&quot;email&quot;},{&quot;label&quot;:&quot;What will you ship?&quot;,&quot;name&quot;:&quot;ship&quot;,&quot;placeholder&quot;:&quot;The landing page I&#x27;ve been avoiding&quot;,&quot;required&quot;:false,&quot;type&quot;:&quot;text&quot;}],&quot;storage_key&quot;:&quot;naya.appmode.ship-it-challenge.signup&quot;,&quot;subtitle&quot;:&quot;One tiny ship per day. We&#x27;ll mail you the mission every morning.&quot;,&quot;success_message&quot;:&quot;Welcome aboard, {name} \u2014 day one lands in your inbox tomorrow at 7am.&quot;,&quot;success_title&quot;:&quot;You&#x27;re in!&quot;,&quot;title&quot;:&quot;Join the 5-Day Ship-It Challenge&quot;}'></div></div></section>
 <section class="card" id="sec-mail" data-hue="green" data-piece="NAYA-CRD-008" style="--accent:#2fe89e;--accent-soft:rgba(47,232,158,.45)"><p class="fine kicker-line">Stay close</p><h3><span class="jewel" style="--jewel:#2fe89e">✧</span>Notes from the host</h3><div class="nsec-body"><div data-fn="smart-mail" data-fn-config='{&quot;draftsKey&quot;:&quot;naya.appmode.ship-it-challenge.mail.drafts&quot;,&quot;outboxKey&quot;:&quot;naya.appmode.ship-it-challenge.mail.outbox&quot;,&quot;recipients&quot;:[{&quot;email&quot;:&quot;crew@shipit.example&quot;,&quot;name&quot;:&quot;Challenge crew&quot;},{&quot;email&quot;:&quot;mara@shipit.example&quot;,&quot;name&quot;:&quot;Mara (co-host)&quot;}],&quot;title&quot;:&quot;Notes from the host&quot;}'></div></div></section>
@@ -678,6 +689,7 @@ font-weight:700;cursor:pointer;width:100%}
 </script>
 
   <script src="functions/naya-functions.js"></script>
+  <script src="functions/f-01-smart-tabs.js"></script>
   <script src="functions/f-02-smart-mail.js"></script>
   <script src="functions/f-12-signup-capture.js"></script>
 </body>
