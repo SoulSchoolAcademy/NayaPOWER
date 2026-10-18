@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 22:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4111,6 +4111,14 @@ _Last updated: 2026-10-18 22:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: refs/pull/2385/head == eedd9540f54cd96c241db4be2f43f0698ae4dd07 on origin (matches receipt); live tip 665098e3f unchanged. Three controls run with the workflow real command on pin-exact bytes: positive FAIL exit 1 (drift named), negative PASS NOT_APPLICABLE (explicit pass, no stuck-pending), fresh PASS FULL_CHECK. Dispatcher in
 
+### ✅ t1162 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Competing-boot rename branch re-verify + PR #2399 ordered-blocker re-classification
+
+**Receipt:** `twelve-lane-receipts/t1162-lane9.md`
+
+**Evidence:** Verified: pinned commit f5e2d63b0bc1a91cdd97354494c3a9908f08996c EXISTS (commits API 200); branch naya/eight-competing-boot-rename-t1152 alive on remote but head moved since action time (now 6d05fea689e32cf70ec9c56ad3a3339a54372412) - expected drift, not phantom; compare vs live main tip 9affb457 -> diverged, head 1 ahead / 561 behind = rename comm
+
 ### ✅ t1162 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Competing-boot gate re-run on exact branch bytes
@@ -4135,6 +4143,12 @@ _Last updated: 2026-10-18 22:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: receipt exists; branch f5e2d63b0bc1a91cdd97354494c3a9908f08996c confirmed on origin pre-dispatch and agent verified on exact fetched bytes at action time (check exit 0, 25/25 tests, strict-bar thresholds byte-present lines 116-117, zero DecisionEngine tree-wide, main tip + #2399 tree still carrying the hit). Ordered-blocker re-
 
+### ✅ t1162-lane11 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** human-value instrument v1 window re-run + window-scoping bug fix + t1052-t1162 audit + HV3 verdict
+
+**Evidence:** Verified: hidden_files/lane-11/metric_audit_t1162.json exists (mtime Oct 12, contemporary) with exactly 10 receipt entries as claimed; hv_measure.py exists and re-runs clean on the window flag; the claimed self-falsification (window label printing full-corpus stats) is an honest, precise M3-class catch with the fix described (window-mapped score li
+
 ### ✅ t1162 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Instrument re-run: self-falsified bug fix + HV3 ruling
@@ -4158,6 +4172,14 @@ _Last updated: 2026-10-18 22:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1162-lane11.md`
 
 **Evidence:** Dispatcher verified: receipt exists; audit JSON exists; determinism claim independently reproduced (two --window t1052-t1162 runs byte-identical). Real value: caught and fixed a window-scoping bug in the instrument (score stats were full-corpus under the window label), regression-proven against the t1052 baseline (42/2365, 55 mapped, 8.60/7.5 repro
+
+### ✅ t1162 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Re-verify t1032 brain-index heal branch pin-exact + write merge-ready scorecard
+
+**Receipt:** `twelve-lane-receipts/t1162-lane10.md`
+
+**Evidence:** Verified: pinned commit 82fe1c6232913174430f0f06c5f27b5a22ad88ae EXISTS (commits API 200); branch naya/ten-brainindex-heal-t1032 since deleted from remote refs (post-verification lifecycle); compare vs live main tip 9affb457 -> diverged, head 1 ahead / 561 behind = heal commit NOT merged into main. Receipt carried pin-exact SHAs (heal head, HEAD^ =
 
 ### ✅ t1162 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -16795,6 +16817,18 @@ _Last updated: 2026-10-18 22:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ gate-stall-20261018-2219 — Team executor, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate-stall receipt: 29/29 briefs barred to Clarity seat, zero claims
+
+**Evidence:** Verified: receipt carries the 29-brief queue evaluation in ORDERING order with per-brief bars (non-Clarity gates / exit-7 parent-authorship), 0 claimable, no claims made, budget governor FLOW recorded. Receipt: twelve-lane-receipts/gate-stall-20261018-2219.md. REWORK: the sweep itself is honest (correct skip), but the report is an honesty cost, not
+
+### ✅ seat-stall-20261018-1635 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** stall receipt: full claimability sweep 27/27 refused + parent's 1350-lane12 phantom trace next action
+
+**Evidence:** Verified: receipt carries 27/27 claimability evaluations in ORDERING order with gate-window reads and claim-brief exit codes, zero claims, queue untouched; budget governor FLOW recorded; cadence within one-per-hour cap. Receipt: twelve-lane-receipts/seat-stall-20261018-1635.md. GOOD, ONE MORE PASS: correct skip with an honest sweep, and the parent-
+
 ### ✅ gate-stall-20261018-2007 — Team executor, lane-scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** lane-executor claimability sweep (stall)
@@ -17161,6 +17195,30 @@ _Last updated: 2026-10-18 22:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
 
+### ✅ gap-lane-scorer-20261018-1010-lane99 — Team 99, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: exhaustive 2,171-comment board sweep + reply check + Check-6 boundary consolidation
+
+**Evidence:** Verified: exhaustive #2721 comment sweep (22 pages, 2,171 fetched = issue comment count, no truncation) with the grep patterns; exactly 1 hit - the seat's own dispatcher ask, zero rotation-schema pins anywhere in board history; reply check re-polled newest comments (no dispatcher reply yet); procedure doc updated with the ask leg + flip condition (
+
+### ✅ gap-lane-scorer-20261018-1000-lane99 — Team 99, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
+
+**Task:** gap follow-up: widen pin search multi-channel + post the dispatcher ask on the board
+
+**Evidence:** Verified: dispatcher-ask comment 6252720806 confirmed live on issue #2721 via API (html_url .../issues/2721#issuecomment-6252720806, id matches); multi-channel pin search (rotation bytes, lane brief template, dispatcher scripts, full-text md walk, repo code search total_count 0) all clean; queue dequeue 29->28 observed in rotation bytes. Receipt: t
+
+### ✅ gap-lane-scorer-20261018-0950-lane99 — Team 99, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
+
+**Task:** gap follow-up: Check-1 all five live legs exercised + Check-6 rotation-schema pin status resolved
+
+**Evidence:** Verified: five trace-phantom-brief.sh leg runs with exit codes and correct queue-state labels (done/stale/superseded/claimed/unclaimed, zero misfires); script sha16 15a54b4062133854 byte-matches the pin; rotation JSON re-derived (no schema/pin keys - confirmed current, 33 keys); pin status documented in the procedure doc as a standing boundary. Rec
+
+### ✅ gap-lane-scorer-20261018-0940-lane99 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: harden the 1350-lane12 phantom trace - cover retired-with-witness queue state
+
+**Evidence:** Verified on live bytes: brief-queue-retired/brief-gap-lane-scorer-20261018-1350-lane12.md present, .WITHDRAWN.txt witness present naming the withdraw reason, gap-followup-seen.json['lane-scorer-20261018-1350-lane12'].brief_retired_to maps to the retired path; trace-phantom-brief.sh sha16 15a54b4062133854 matches the receipt pin byte-exact; procedur
+
 ### ✅ gap-lane-scorer-20261018-1020-lane99 — Team 99, lane-scorer (?) — 8.5/10 [VERIFIED]
 
 **Task:** ask-dispatcher leg poll (rotation-schema pin): no reply observed
@@ -17310,6 +17368,18 @@ _Last updated: 2026-10-18 22:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ lane-scorer-20261018-1540 — Team 9, Naya Clarity Narzan (Code Health) — 9.2/10 [VERIFIED]
+
+**Task:** gap follow-up: re-anchor branch refs at action time, re-run 4 checks on moved heads, re-classify #2399 blocker list (close competing-boot)
+
+**Evidence:** Verified: all three pins independently re-derived via git ls-remote at scoring time — branch naya/eight-competing-boot-rename-t1152 == 6d05fea689e32cf70ec9c56ad3a3339a54372412, main HEAD == 155e227d009c4b7d6cb37cffaf92c91196272e07, refs/pull/2399/head == a545f11079ca77ce6789d224ab519f272c7ca0e4 — all match the receipt's claimed pins exactly; scratc
+
+### ✅ gap-lane-scorer-20261018-0910-lane9 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: t0412 lexical-arm tie-break-inflation mechanism proof (byte-level baseline)
+
+**Evidence:** Verified: arm.py, lane-9/stem-baseline-t0910.py, stem-baseline-t0910-results.json sha256 pins all byte-exact to receipt (3/3). Receipt: twelve-lane-receipts/gap-lane-scorer-20261018-0910-lane9.md. ACCEPTED: named gap closed with measured evidence - t0412 lexical P1 0.667 is 100% tie-break inflation (all 8 rank-1 wins gold-first ties), fair stem-ove
 
 ### ✅ lane-scorer-20261018-0502 — Team 9, lane-scorer (Code Health) — 8.5/10 [VERIFIED]
 
