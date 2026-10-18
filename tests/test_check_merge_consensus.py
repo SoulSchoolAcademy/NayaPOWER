@@ -372,6 +372,18 @@ def test_author_seat_of_recognizes_named_seat_declaration():
     assert author_seat_of("mentions Naya Epsilon in prose, no declaration") is None
 
 
+def test_author_seat_of_recognizes_lead_seat_declaration():
+    # Epsilon w409 F2 systemic (HOLD comment 6244120258 on #2738): the
+    # naming-law form "Seat: Naya Clarity Narzan" could never pass the
+    # gate's author check — the registry had no 'clarity'. The same wall
+    # stood for 'verity' and 'resolve'. Lead seats are part of the working
+    # team; the registry must name them.
+    assert author_seat_of("Seat: Naya Clarity Narzan") == "Naya Clarity"
+    assert author_seat_of("Seat: Naya Verity Narzan") == "Naya Verity"
+    assert author_seat_of("Seat: Naya Resolve Narzan") == "Naya Resolve"
+    assert seat_of("[NAYA CLARITY · REVIEW] APPROVED") == "Naya Clarity"
+
+
 def test_named_seat_scorecard_is_accepted(capsys):
     """(a) The mission's core case: author Naya 2, review from Naya 4,
     '## SCORECARD' with the exact head SHA, 'verdict: 9.5', signed by
