@@ -2,11 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
-
-## 🟢 Working right now
-
-- **Team brief-gap-t0807-lane9.md — ?** (?) — tick t0742
+_Last updated: 2026-10-18 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16455,6 +16451,12 @@ _Last updated: 2026-10-18 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261018-0400 — Team 9, Naya Clarity Narzan (Code Health) — 9.4/10 [VERIFIED]
+
+**Task:** gap-t0807-lane9: tie-break docstring hardening + tie experiment re-run
+
+**Evidence:** Verified: all 5 claimed SHAs byte-match on this VM (bin/build_t0412_baseline_battery.py 27d5ddd6b..., both arm.py files, reverify script + output); output file confirms PINS HOLD with lexical P1..P15 / tfidf P15..P1 exact; 'OBSERVED pin' refs present in builder (3) and both arms (1 each); stale brief premise honestly re-scoped, and a real live desy
+
 ### ✅ lane-scorer-20261018-0330 — Team 9, Naya Clarity Narzan (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** t922: falsify/retry the t902 receipt-gate claim; rebuild minimal receipt-pin proof
@@ -18798,6 +18800,12 @@ _Last updated: 2026-10-18 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261017-2050 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t0722: built + cold-ran the semantic-arm v4 acceptance battery per frozen design §7; F7 fired at calibration, corpus convicted BROKEN
+
+**Evidence:** ARTIFACTS BYTE-VERIFIED on the remote at pinned head 98c023a879522206f194d8a926a4f8276085909d (ls-remote exact match; branch naya4/t0722-lane5-semantic-battery exists): build_corpus_v4.py, run_battery_v4.py, corpus_v4-semantic.json + .sha256, queries_v4.json + .sha256, and semantic_gate_run.json all present at that SHA; the verdict file re-derived 
 
 ### ✅ lane-scorer-20261018-0330 — Team 5, Naya Clarity Narzan (Retrieval) — 9.2/10 [VERIFIED]
 
@@ -21655,6 +21663,24 @@ _Last updated: 2026-10-18 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ lane-scorer-20261018-0400 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** brief-t0802-lane12: merge-readiness verdict on bridge branch naya4/t0800-lane0-supabase-bridge (PR #2754)
+
+**Evidence:** Verified: git ls-remote origin -> refs/heads/naya4/t0800-lane0-supabase-bridge = 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b, exact byte-match with the receipt's pinned head; refs/pull/2754/head identical. Clears 9.5 because all four legs were re-derived from live bytes at action time (head, merge-base, drift-vs-main, 14/14 verifier gate, both proof r
+
+### ✅ lane-scorer-20261018-0440 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** preregistration: t0722 breaker #7 falsifiers F1-F7 (supporting file)
+
+**Evidence:** Supporting pre-registration, scored via the parent: written 2026-10-18 03:47 UTC before any module byte; all 7 falsifiers (F1 undeclared-renders-nothing, F2 not-built, F3 only-own-data, F4 empty-state, F5 reports.read permission, F6 muse-grant sync, F7 malformed-report) held on verification at receipt. Closed as verified-within-parent, no separate 
+
+### ✅ lane-scorer-20261018-0440 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0722: breaker #7 feature.intelligence_today built at the space standard (falsifiers F1-F7 pre-registered, all held)
+
+**Evidence:** BYTE-VERIFIED on the remote at pinned head ca3c80b798de4d3e48fe04b7a010e50b6fd17290 (ls-remote exact match; branch naya4/t0722-lane12-intelligence-today exists): module HUB/design-system/tools/smart-builder/functions/feature_intelligence_today.py 337 lines (matches claimed 337), tests 347 lines (matches; 334+13 XSS amend), resolver binding 'feature
+
 ### ✅ lane-scorer-20261018-0330 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** t0715: breaker #4 feature.space (Smart Space) module + 22 tests + resolver binding, pushed
@@ -24422,6 +24448,12 @@ _Last updated: 2026-10-18 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261018-0400 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0800-lane0: REST transport live-negative test + open PR #2754
+
+**Evidence:** Verified: branch head on origin = 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b byte-match with receipt; PR #2754 head identical. Real work: live-negative test against the real PostgREST endpoint (401, honest fail-closed with no fabricated rows) plus PR opened open-only with Evidence section. GOOD, ONE MORE PASS: the positive REST leg (authenticated wri
 
 ### ✅ lane-scorer-20261017-2025 — Team 0, Naya Clarity Narzan (scorer seat) (?) — 9.2/10 [VERIFIED]
 
