@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-17  
-**Receipt basis commit:** `28dc53aa99af4d361533e45f0b0d1b1322120d7a`  
+**Generated:** 2026-10-18  
+**Receipt basis commit:** `8cac435a052d21ed74f8f2c2b8fec0bdaff455c7`  
 **Inventory file count:** 1328  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -1148,7 +1148,7 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-jewel-library/MANIFEST.md` — `f8f83fb1d0e2` (2012 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-jewel-library/index.html` — `21c93637ea25` (26100 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-jewel-library/tokens.css` — `37bc25a40f44` (1959 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json` — `26687bdcdf9f` (100252 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json` — `3625450078b8` (105293 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/MANIFEST.md` — `ec5877cde95a` (1952 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/index.html` — `4d9c4e846567` (186511 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/tokens.css` — `a3b2aa37043e` (345 bytes)

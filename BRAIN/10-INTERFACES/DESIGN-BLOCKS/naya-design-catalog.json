@@ -2,7 +2,7 @@
  "format": "naya-design-catalog-v1",
  "generated": "2026-10-09",
  "source_index": "blocks/index.json v1.4",
- "total_blocks": 91,
+ "total_blocks": 98,
  "law": "If a block exists for the job, use it. Custom CSS for a solved job is a violation.",
  "blocks": [
   {
@@ -3933,6 +3933,195 @@
     "transcript",
     "naya-voice",
     "quote"
+   ]
+  },
+  {
+   "id": "naya-breathe-ghost",
+   "category": "motion",
+   "name": "Ghost Breathe",
+   "job": "Deep box-shadow breathe, 8s ease-in-out infinite.",
+   "when_to_use": "Ambient idle glow on ghost buttons; presence states that breathe.",
+   "when_not_to_use": "Not for state changes needing instant feedback.",
+   "pairs_with": [],
+   "needs": [
+    "@keyframes naya-breathe-ghost defined in blocks/buttons/naya-btn/naya-btn.css"
+   ],
+   "selectors": [
+    "N/A — keyframe definition, not a component"
+   ],
+   "states": [
+    "loops per source timing (see job)"
+   ],
+   "source": "blocks/buttons/naya-btn/naya-btn.css:8,14",
+   "files": [
+    "blocks/buttons/naya-btn/naya-btn.css"
+   ],
+   "tags": [
+    "motion",
+    "keyframe",
+    "BTN-family"
+   ]
+  },
+  {
+   "id": "ring-spin",
+   "category": "motion",
+   "name": "Spinner Ring",
+   "job": "Full 360-degree rotation loop.",
+   "when_to_use": "Loading/progress spinners and rotating indicators.",
+   "when_not_to_use": "Not as decoration on static elements.",
+   "pairs_with": [],
+   "needs": [
+    "@keyframes ring-spin defined in DESIGN-BLOCKS/ultimate-design-system/index.html"
+   ],
+   "selectors": [
+    "N/A — keyframe definition, not a component"
+   ],
+   "states": [
+    "loops per source timing (see job)"
+   ],
+   "source": "DESIGN-BLOCKS/ultimate-design-system/index.html:51",
+   "files": [
+    "DESIGN-BLOCKS/ultimate-design-system/index.html"
+   ],
+   "tags": [
+    "motion",
+    "keyframe",
+    "BTN-family"
+   ]
+  },
+  {
+   "id": "idleBreathe",
+   "category": "motion",
+   "name": "Idle Glow Breathe",
+   "job": "Inset-white box-shadow breathe, 4.2s.",
+   "when_to_use": "Idle-state glow on living buttons.",
+   "when_not_to_use": "Not during active press/processing states.",
+   "pairs_with": [],
+   "needs": [
+    "@keyframes idleBreathe defined in blocks/buttons/living-btn/living-btn.css"
+   ],
+   "selectors": [
+    "N/A — keyframe definition, not a component"
+   ],
+   "states": [
+    "loops per source timing (see job)"
+   ],
+   "source": "blocks/buttons/living-btn/living-btn.css:10,19",
+   "files": [
+    "blocks/buttons/living-btn/living-btn.css"
+   ],
+   "tags": [
+    "motion",
+    "keyframe",
+    "BTN-family"
+   ]
+  },
+  {
+   "id": "sweep",
+   "category": "motion",
+   "name": "Light Sweep",
+   "job": "Sheen band sweeping left -70% to 130%, 5.5s.",
+   "when_to_use": "Premium sheen pass over button surfaces.",
+   "when_not_to_use": "Not on elements that must stay visually quiet.",
+   "pairs_with": [],
+   "needs": [
+    "@keyframes sweep defined in blocks/buttons/living-btn/living-btn.css"
+   ],
+   "selectors": [
+    "N/A — keyframe definition, not a component"
+   ],
+   "states": [
+    "loops per source timing (see job)"
+   ],
+   "source": "blocks/buttons/living-btn/living-btn.css:8,17",
+   "files": [
+    "blocks/buttons/living-btn/living-btn.css"
+   ],
+   "tags": [
+    "motion",
+    "keyframe",
+    "BTN-family"
+   ]
+  },
+  {
+   "id": "micpulse",
+   "category": "motion",
+   "name": "Mic Recording Pulse",
+   "job": "Red glow pulse, 12px to 28px.",
+   "when_to_use": "Recording-active microphone indicators.",
+   "when_not_to_use": "Not for non-recording contexts.",
+   "pairs_with": [],
+   "needs": [
+    "@keyframes micpulse defined in DESIGN-BLOCKS/naya-5-beautiful-buttons/index.html"
+   ],
+   "selectors": [
+    "N/A — keyframe definition, not a component"
+   ],
+   "states": [
+    "loops per source timing (see job)"
+   ],
+   "source": "DESIGN-BLOCKS/naya-5-beautiful-buttons/index.html:501",
+   "files": [
+    "DESIGN-BLOCKS/naya-5-beautiful-buttons/index.html"
+   ],
+   "tags": [
+    "motion",
+    "keyframe",
+    "BTN-family"
+   ]
+  },
+  {
+   "id": "ctrl-pulse",
+   "category": "motion",
+   "name": "Control Indicator Pulse",
+   "job": "Opacity .3 to .78 pulse.",
+   "when_to_use": "Control indicators needing gentle attention.",
+   "when_not_to_use": "Not for primary alerts needing strong contrast.",
+   "pairs_with": [],
+   "needs": [
+    "@keyframes ctrl-pulse defined in blocks/tabs/seg-tab/seg-tab.css"
+   ],
+   "selectors": [
+    "N/A — keyframe definition, not a component"
+   ],
+   "states": [
+    "loops per source timing (see job)"
+   ],
+   "source": "blocks/tabs/seg-tab/seg-tab.css:8,12",
+   "files": [
+    "blocks/tabs/seg-tab/seg-tab.css"
+   ],
+   "tags": [
+    "motion",
+    "keyframe",
+    "BTN-family"
+   ]
+  },
+  {
+   "id": "lv-breathe",
+   "category": "motion",
+   "name": "Living Glow Breathe",
+   "job": "Layered box-shadow breathe, 7s ease-in-out.",
+   "when_to_use": "Living-button ambient presence.",
+   "when_not_to_use": "Not for instant-feedback interactions.",
+   "pairs_with": [],
+   "needs": [
+    "@keyframes lv-breathe defined in blocks/buttons/lv-btn/lv-btn.css"
+   ],
+   "selectors": [
+    "N/A — keyframe definition, not a component"
+   ],
+   "states": [
+    "loops per source timing (see job)"
+   ],
+   "source": "blocks/buttons/lv-btn/lv-btn.css:8,17",
+   "files": [
+    "blocks/buttons/lv-btn/lv-btn.css"
+   ],
+   "tags": [
+    "motion",
+    "keyframe",
+    "BTN-family"
    ]
   }
  ]
