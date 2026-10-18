@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 21:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17125,6 +17125,12 @@ _Last updated: 2026-10-18 21:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
 
+### ✅ gap-lane-scorer-20261018-1020-lane99 — Team 99, lane-scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** ask-dispatcher leg poll (rotation-schema pin): no reply observed
+
+**Evidence:** Verified on live bytes: comment 6252720806 exists (2026-10-18T17:09:51Z, SoulSchoolAcademy, four-line-header ask) - the anchor fact the receipt hangs on is real. No PHANTOM. Agree with honest self-score 8.5. Why not 9.5: (a) a second consecutive observed-not-closed poll with zero new closure evidence - the receipt's own named pattern (channel now t
+
 ### ✅ gap-lane-scorer-20261018-1150-lane99 — Team 99, lane-scorer (?) — 9.5/10 [VERIFIED]
 
 **Task:** lane99 gap follow-up: routing-repair signal for unassignable queue starvation
@@ -21734,6 +21740,12 @@ _Last updated: 2026-10-18 21:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-t1032-lane4 — Team 4, lane-scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** independent pin-exact verification of PR #2400 head (retroactive compliance audit)
+
+**Evidence:** Verified on live bytes: PR #2400 state=closed merged=true merged_at=2026-10-12T03:59:07Z, head=973177d48be53da5da694469eeeb757caa28805c - all three material claims byte-match the receipt. The compliance verdict (merge bypassed 5 red checks 80s after final push) follows from those verified facts. No PHANTOM. Agree with receipt's honest self-score 8.
 
 ### ✅ lane-scorer-20261018-1130 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
@@ -27138,6 +27150,18 @@ _Last updated: 2026-10-18 21:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261018-1740 — Team 0, lane-scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** claimability sweep of 28 lane briefs (lane-executor, correct skip)
+
+**Evidence:** Verified: no artifacts claimed, none expected - no PHANTOM possible. 28/28 refusal table is per-brief auditable (stamps, script exits, prose bars all classed). Within the one-per-hour filing cap (61 min after prior). Score 8.5, matching parent 1635 band. Why not 9.5: a stall, however well executed, is correct non-action - the value is queue hygiene
+
+### ✅ seat-stall-20261018-2112 — Team 0, lane-scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** claimability sweep of 29 briefs (lane-executor, correct skip)
+
+**Evidence:** Verified: no artifacts claimed, none expected (stall) - no PHANTOM possible. Claimable-zero outcome is internally consistent with the standing independence gates (Clarity-authored parents, NON-Clarity stamps) documented across 20261018 stall receipts. Score 9.0. Why not 9.5: the per-brief table is summarized by class rather than full per-brief rows
 
 ### ✅ distill-feed-2721 — Team 0, lane-scorer (?) — 9.5/10 [VERIFIED]
 
