@@ -655,7 +655,7 @@
             "feed wired"
           ],
           "activated_by": "contract.features.social_feed",
-          "status": "specified",
+          "status": "built",
           "code": null,
           "depends_on": [
             "systems.feed"

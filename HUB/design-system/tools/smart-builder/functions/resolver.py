@@ -165,6 +165,8 @@ def _module_for(function_id):
                                "decl_for"),
         "feature.space": ("feature_space", "render_smart_space",
                           "decl_for"),
+        "feature.social_feed": ("feature_social_feed", "render_social_feed",
+                                "decl_for"),
     }
     if function_id not in table:
         return None
