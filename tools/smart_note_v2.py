@@ -807,6 +807,26 @@ def _corpus_manifest_hash(entries):
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
+def _corpus_tree_pin(entries, root=None):
+    """Tree pin for the corpus at apply time: sha256 over the sorted
+    (projection_path, page-file-hash) pairs.
+
+    The manifest anchors the INDEX bytes; the pin anchors the INPUT bytes
+    the manifest was computed over. A count diff is only legal across
+    identical manifests AND identical pins — a manifest match with a pin
+    mismatch is input drift, not a flake (w428 leg 166). Emitter and
+    validator share this function: one derivation, never two cross-checks.
+    """
+    root = ROOT if root is None else root
+    pairs = []
+    for e in entries:
+        pp = e.get("projection_path")
+        if isinstance(pp, str) and pp and (root / pp).is_file():
+            pairs.append((pp, _page_file_hash(root / pp)))
+    canonical = "\n".join(f"{pp}\x00{ph}" for pp, ph in sorted(pairs))
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
 def _projection_path_contained(projection_path):
     """True iff the index-declared path is relative and stays inside an allowed root."""
     if not isinstance(projection_path, str) or not projection_path:

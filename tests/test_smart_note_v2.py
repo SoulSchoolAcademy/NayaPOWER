@@ -1558,3 +1558,165 @@ def test_retrieve_winner_without_nutshell_fails_closed(tmp_path, monkeypatch):
         assert str(exc) == "WINNER_EXPLANATION_EMPTY", str(exc)
     else:
         raise AssertionError("title-only winner must fail closed, not be admitted silently")
+
+# --- Backfill-class migration guards (w428 deep-audit legs 192/205, fix batch gr-w440) ---
+def _backfill_fixture(tmp_path, missing_page=False):
+    """Pre-backfill index: eligible entries, NO page_hash yet, stale manifest —
+    the shape the B-51 backfill was written to repair."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    entries = []
+    for ib, name in (("IB-BF-1", "bf-one.md"), ("IB-BF-2", "bf-two.md")):
+        if not (missing_page and ib == "IB-BF-2"):
+            (brain / name).write_text(f"# {ib}\n\nnote body\n", encoding="utf-8")
+        entries.append({
+            "smart_note_id": f"SN-BF-{ib[-1]}",
+            "intelligent_block_id": ib,
+            "title": f"Backfill fixture {ib}",
+            "projection_path": f"BRAIN/05-MEMORY/SMART-NOTES/{name}",
+            "lifecycle_state": "ACTIVE",
+        })
+    idx_dir = tmp_path / ".naya" / "memory" / "smart-notes"
+    idx_dir.mkdir(parents=True, exist_ok=True)
+    registry = {
+        "schema": "naya.smart-note-projection-index.v1",
+        "entries": entries,
+        "corpus_manifest_hash": "stale-placeholder",
+    }
+    (idx_dir / "index.json").write_text(json.dumps(registry), encoding="utf-8")
+    return idx_dir / "index.json"
+
+
+def _load_backfill_module():
+    bspec = importlib.util.spec_from_file_location(
+        "backfill_b51_index_hashes", ROOT / "tools" / "backfill_b51_index_hashes.py")
+    bf = importlib.util.module_from_spec(bspec)
+    bspec.loader.exec_module(bf)
+    return bf
+
+
+def test_backfill_apply_restamps_manifest(tmp_path, monkeypatch, capsys):
+    """w428 leg 192: an index-mutating migration that skips the manifest
+    re-stamp leaves a stale anchor — the validator must refuse it
+    (MANIFEST_STALE); the backfill's own apply re-stamps and passes.
+
+    FAIL LEG (the deep-audit bug, reproduced): proper apply, then a textual
+    patch mutates an entry without re-stamping -> validator refuses.
+    PASS LEG (the writer contract): the backfill script's apply re-stamps
+    the manifest in the same apply -> validator passes, receipt names it."""
+    bf = _load_backfill_module()
+    idx_path = _backfill_fixture(tmp_path)
+    monkeypatch.setattr(bf, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(bf.m, "ROOT", tmp_path)
+
+    # PASS LEG: the real backfill apply re-anchors the manifest.
+    bf.main()
+    out = capsys.readouterr().out
+    reg = json.loads(idx_path.read_text(encoding="utf-8"))
+    assert reg["corpus_manifest_hash"] == bf.m._corpus_manifest_hash(reg["entries"])
+    assert reg["corpus_manifest_hash"] in out  # receipt names the anchor
+    for e in reg["entries"]:
+        assert e["page_hash"] == bf.m._page_file_hash(tmp_path / e["projection_path"])
+    bf.m._validate_index_against_corpus(reg)
+
+    # FAIL LEG: textual patch mutates an entry, no re-stamp -> fail closed.
+    raw = idx_path.read_text(encoding="utf-8")
+    patched = raw.replace("Backfill fixture IB-BF-1", "Backfill fixture IB-BF-1 (patched)")
+    assert patched != raw
+    idx_path.write_text(patched, encoding="utf-8")
+    tampered = json.loads(idx_path.read_text(encoding="utf-8"))
+    assert tampered["corpus_manifest_hash"] == reg["corpus_manifest_hash"]  # anchor NOT re-stamped
+    try:
+        bf.m._validate_index_against_corpus(tampered)
+    except SystemExit as exc:
+        assert str(exc).startswith("INDEX_CORRUPT:MANIFEST_STALE"), str(exc)
+    else:
+        raise AssertionError("textual patch without re-stamp must fail closed, not validate")
+
+
+def test_backfill_verify_abort_path_refuses(tmp_path, monkeypatch):
+    """w428 leg 205: the backfill's verify runs on the real path, in the same
+    process, before the migration lands. A deliberately failing verify refuses
+    the apply — pre-apply (missing page -> BACKFILL_REFUSED) and post-apply
+    (tampered bytes -> INDEX_CORRUPT) alike."""
+    bf = _load_backfill_module()
+
+    # Abort path 1: eligible entry's page missing -> refused before any write.
+    idx_path = _backfill_fixture(tmp_path, missing_page=True)
+    monkeypatch.setattr(bf, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(bf.m, "ROOT", tmp_path)
+    try:
+        bf.main()
+    except SystemExit as exc:
+        assert str(exc).startswith("BACKFILL_REFUSED:PROJECTION_ABSENT"), str(exc)
+    else:
+        raise AssertionError("missing projection page must abort the backfill, not apply")
+    untouched = json.loads(idx_path.read_text(encoding="utf-8"))
+    assert untouched["corpus_manifest_hash"] == "stale-placeholder"  # nothing landed
+
+    # Abort path 2: apply lands clean, then bytes are tampered -> the
+    # in-process verify (the same call the script runs post-write) refuses.
+    idx_path = _backfill_fixture(tmp_path)
+    bf.main()
+    reg = json.loads(idx_path.read_text(encoding="utf-8"))
+    bf.m._validate_index_against_corpus(reg)  # clean apply validates
+    page = tmp_path / reg["entries"][0]["projection_path"]
+    with page.open("ab") as f:
+        f.write(b"\n[tampered]\n")
+    corrupted = json.loads(idx_path.read_text(encoding="utf-8"))
+    try:
+        bf.m._validate_index_against_corpus(corrupted)
+    except SystemExit as exc:
+        assert str(exc).startswith("INDEX_CORRUPT:PAGE_HASH_MISMATCH"), str(exc)
+    else:
+        raise AssertionError("tampered page bytes must fail the post-apply verify, not pass")
+
+# --- Backfill guards, legs 166/221 (Beta w444 fix batch) ---
+def test_backfill_receipt_names_tree_pin(tmp_path, monkeypatch, capsys):
+    """w428 leg 166: instruments print the tree pin alongside the corpus
+    manifest. The pin binds the input page bytes: a one-byte page change
+    moves the pin, so a manifest match with a pin mismatch reads as input
+    drift, never a flake."""
+    bf = _load_backfill_module()
+    idx_path = _backfill_fixture(tmp_path)
+    monkeypatch.setattr(bf, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(bf.m, "ROOT", tmp_path)
+    bf.main()
+    receipt = json.loads(capsys.readouterr().out)
+    assert "tree_pin" in receipt, "receipt must name the tree pin next to the manifest"
+    reg = json.loads(idx_path.read_text(encoding="utf-8"))
+    assert receipt["tree_pin"] == bf.m._corpus_tree_pin(reg["entries"], tmp_path)
+    # FAIL LEG: the pin binds the input bytes — tamper one page, it moves.
+    page = tmp_path / reg["entries"][0]["projection_path"]
+    with page.open("ab") as f:
+        f.write(b"\n[drift]\n")
+    assert bf.m._corpus_tree_pin(reg["entries"], tmp_path) != receipt["tree_pin"]
+
+
+def test_backfill_diff_census_covers_corpus(tmp_path, monkeypatch, capsys):
+    """w428 leg 221: a diff census runs after the first apply — every entry
+    visited (hashed or retired) and changed, or the apply is refused before
+    it lands. The census runs on exact bytes, never the writer's format."""
+    bf = _load_backfill_module()
+    idx_path = _backfill_fixture(tmp_path)
+    monkeypatch.setattr(bf, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(bf.m, "ROOT", tmp_path)
+    bf.main()
+    receipt = json.loads(capsys.readouterr().out)
+    census = receipt.get("diff_census")
+    assert census, "receipt must carry the diff census"
+    assert census["total_entries"] == 2
+    assert census["hashed"] == 2 and census["retired_unvalidatable"] == 0
+    assert census["changed"] == 2 and census["coverage_ok"] is True
+    # FAIL LEG: the shortfall guard is enforced, not decorative — a census
+    # that does not cover the corpus refuses the apply before it lands.
+    monkeypatch.setattr(
+        bf, "_diff_census",
+        lambda *a: {"coverage_ok": False, "total_entries": 2, "hashed": 1,
+                    "retired_unvalidatable": 0, "changed": 1})
+    try:
+        bf.main()
+    except SystemExit as exc:
+        assert str(exc).startswith("BACKFILL_REFUSED:DIFF_CENSUS_SHORTFALL"), str(exc)
+    else:
+        raise AssertionError("shortfall census must refuse the apply, not pass")
