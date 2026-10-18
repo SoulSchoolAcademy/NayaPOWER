@@ -36,7 +36,7 @@ Every retrieval instrument gets this two-step treatment: (1) exercise the FIRED 
 ```json
 {
   "sn": "SN-1589",
-  "applies_when": ["instrument", "falsifier"], ["test", "honesty"], ["watch", "fired-path"],
+  "applies_when": [["instrument", "falsifier"], ["test", "honesty"], ["watch", "fired-path"]],
   "enforcement": "falsifier docstring re-run line (hidden_files/retrieval/falsify-staleness-watches-20261017.py) + determinism double-run as the regression step; the gap-scorer receipt's Mirror/seams section must name every unfaithfulness (LOG-global monkeypatch vs subprocess entrypoint fidelity). A falsifier receipt that names no seams is incomplete — the re-score checklist treats 'why not 10?' as the seam-naming step.",
   "falsifier": "A future entrypoint change that breaks the instrument while the falsifier still passes proves the named seam was the miss vector — the lesson predicted exactly this failure shape; a live FIRED with no prior synthetic FIRED proof proves the instrument was an unproven promise.",
   "mechanism": "Un-named test seams become review blind spots that silently inherit trust; named seams are reviewable and predict their own miss vectors.",
