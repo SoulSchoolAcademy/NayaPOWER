@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-18T17:26:38Z",
+ "generated_utc": "2026-10-18T17:36:32Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "9affb457291099c7f76311348cedbabfbaaa4cad",
   "short": "9affb4572910",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-18T17:25:59Z"
+  "checked_utc": "2026-10-18T17:35:58Z"
  },
  "venue": {
   "live": 2641,
@@ -41,10 +41,14 @@
  },
  "queue": {
   "actionable": 0,
-  "proposed": 1,
+  "proposed": 2,
   "top": [
    {
     "id": "Q-PROP-1",
+    "title": "BUILD finding: map-compiler's hourly `compile` job dies at the \"Commit state file\" step on"
+   },
+   {
+    "id": "Q-PROP-2",
     "title": "WIRE finding: consensus-gate matcher treats Markdown-blockquote (`>`) mentions as own verd"
    }
   ]
@@ -222,27 +226,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 41
+   "age_s": 35
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 41
+   "age_s": 35
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 41
+   "age_s": 35
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 41
+   "age_s": 35
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 41
+   "age_s": 35
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 41
+   "age_s": 35
   }
  }
 }
