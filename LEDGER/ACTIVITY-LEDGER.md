@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,12 @@ _Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t2331 — Team lane-executor, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate-stall-20261018-1230: 24-brief claimability sweep, stall re-proof
+
+**Evidence:** ARTIFACTS VERIFIED: receipt at twelve-lane-receipts/gate-stall-20261018-1230.md (mtime 2026-10-18 12:25 UTC); all 5 spot-checked cited briefs present in brief-queue/ (brief-t0801-lane11, brief-gap-t0742-lane3-blinded-judge, brief-gap-t0828-lane5-verify, brief-gap-mtc-v1-thirdblind-probe, brief-review-blueprint-completeness); queue root now 25 (24 a
 
 ### ✅ t2330 — Team 4, gap-t2330 (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -4419,6 +4425,12 @@ _Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: branch naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin via git ls-remote, matches receipt claim. Bisect named the introducing commit (5e9c2d840, PR #2401 +12 BRAIN files, no re-stamp); healed head --check OK on tip bytes 665098e3f; fixed push_branch.py argv-too-long bug (left better than fou
 
+### ✅ t1022-lane5 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Re-verify the t902 cold-retrieve claim (1.78s, SN-016) on the CURRENT tip; verdict CLAIM HOLDS or CLAIM STALE
+
+**Evidence:** Verified: tip 665098e3f00c9aa6f63907360b8500891704071c, t902 pin f33bba344a34e9e91b4b5bb6802c22f6eade3145, change commit cf08c2db439d712cf4de6f71a9a36814e2758ffe all resolve as real commits (former tip corroborated in shared-state history). Blob 38c983828a4df15e092f0add958749edf03f44ff is a blob SHA (tools/smart_note_v2.py at tip) - receipt's own l
+
 ### ✅ t1022 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Cold-retrieve re-verification on live tip
@@ -4466,6 +4478,12 @@ _Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1022-lane11.md`
 
 **Evidence:** Dispatcher verified: receipt, lane-11/board_thread_scanner.py, lane-11/metric_audit_t1022.json, lane-11/STATS.md all exist on disk; sign-in/out comments 6115959805/6116024668 exist on #2175. Budget law honored: scanner is local-data-only, no REST burn. Machine recompute over all 35 receipts (2081 lines, 36 score lines): M2 19->27, M3 10->16, M4 9->
+
+### ✅ t1022-lane10 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Pin-exact watch-only re-verification of PR #2385 brain-index-freshness gate at live head + tip-cleanliness check
+
+**Evidence:** Verified: eedd9540f54cd96c241db4be2f43f0698ae4dd07, base b5007fd8d21a550930761b74f31c6ce9026296b7, tip 665098e3f00c9aa6f63907360b8500891704071c all resolve as real commits. The key finding (13th brain-index drift recurrence at tip) was corroborated weeks later in the live record (#2725 brain-index drift carry, #2751 test_brain_index_freshness 3 fai
 
 ### ✅ t1022 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
@@ -4536,6 +4554,12 @@ _Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1012-lane8.md`
 
 **Evidence:** Dispatcher verified: receipt exists; cited main tip 665098e3f00c9aa6f63907360b8500891704071c matches shared-state main_tip; lane journal updated; #2175 sign-out comment 6115874552 exists. Analysis: gate reproduced failing on exact tip bytes (one hit kernel/decision_principle.py:218); call graph shows zero production call sites (tests + self-use onl
+
+### ✅ t1012-lane3 — Team 3, Naya Judge (Decision Engine) — 8.0/10 [VERIFIED]
+
+**Task:** Finish naya/three-decision-consolidate to strict 7.0/0.05 bar: verify t972 port, fix bar-broken seam tests RED-first, close Lane 8 F1 on bytes
+
+**Evidence:** Verified: branch naya/three-decision-consolidate exists on origin (head 8346681cd52600e08fba3bcbb8b86a3258eaf056 - moved past receipt SHA via later legitimate work, not rebased); claimed SHAs 43c0113eee302db2c334aa9d5d3139ea0afd1d77 and 64b27e27627a15e26f514a9fc8289dcf09970b12 both resolve as real commits. Why not 9.5: the 354-test battery and RED-
 
 ### ✅ t1012 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -16707,6 +16731,12 @@ _Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261018-0520 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: registry repair for citation-drift defect (hermetic citations + CI freshness)
+
+**Evidence:** Verified: branch naya4/compound-scale-hermetic-citations-20261018 exists on remote at c8efbaa9d7fdefcf1d2bfcc1850c26ebd8d1bbb3 (git ls-remote), matching stated commit; main pin dc217d69... matches remote main head; PR #2760 opened unmerged. Score 9.5 ACCEPTED. Clears 9.5 because: failing trio reproduced on a live re-derived pin, 51/51 pytest green,
+
 ### ✅ gap-lane-scorer-20261018-0430-lane9 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Build hermetic citation repair for compound-scale registry (fixtures + CI freshness job + PR #2760)
@@ -17634,6 +17664,12 @@ _Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ lane-scorer-20261018-0520 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: PR #2385 competing-boot gate failure root-cause with proof
+
+**Evidence:** Verified: branch naya4/brain-index-required-gate exists on remote at eedd9540f54cd96c241db4be2f43f0698ae4dd07 (git ls-remote), matching stated head; read-only throughout (no PR push, scratch worktrees removed); gate tool byte-identical on both trees per receipt (branch-tree FAIL at :218 only, main-tree OK, simulated-rebase-tree OK). Score 9.5 ACCEP
 
 ### ✅ gap-20261018-1050-lane8 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -19568,6 +19604,18 @@ _Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261018-0520 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** compound-token matcher fix: failing demo + patch proof + dispatcher PROPOSAL
+
+**Evidence:** Verified: failing demo ran against the real claim-brief.py bytes (the false-allow was live); case-2 stem-split patch proof green; PROPOSAL file written; claim-brief.py unmodified (dispatcher territory). Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: the named gap was real — the prose-union companion half was drafted as a hunk only, NOT machine-proven 
+
+### ✅ lane-scorer-20261018-0520 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap-gap follow-up: machine-proof of prose-union half of claim-brief.py compound-token fix
+
+**Evidence:** Verified: bin/claim-brief.py sha256 46de83db... matches stated (both proposal halves live on disk); extended demo proposals/demo-compound-token-false-allow-20261018.py sha256 513dc3b3... matches stated, all 8 case rows green per transcript. Score 9.5 ACCEPTED. Clears 9.5 because: brief's premise had rotted (dispatcher had already applied both halve
 
 ### ✅ gap-gap-lane-scorer-20261018-0320-lane5 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -26115,6 +26163,12 @@ _Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
 
+### ✅ lane-scorer-20261018-0520 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** weekly distillation: essence cut + 40-law repo verification + contradiction scan
+
+**Evidence:** Verified: main SHA dc217d69... matches remote main head (ls-remote); notes-branch SHA stated at action time; 40-law scan carries stated witness counts (5,259 tree files, 40 entries); 2 reconciliation lessons filed with ids; 14 flags routed to main seat, AGENTS.md untouched (protected gate respected); board header non-compliance 0/30 stated as live 
+
 ### ✅ lane-scorer-20261018-0430 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
 
 **Task:** gate-stall-20261018-1000: 21/21 claimability evaluations in ORDERING order, t0801 re-file routing flag
@@ -27876,3 +27930,9 @@ _Last updated: 2026-10-18 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Phase 1 audit slice A (5 smallest BRAIN dirs, 87 docs) - no lane named in brief/receipt/sign-in/board post
 
 **Evidence:** Verified: phase1-audit-slice-a.md exists (303 lines, 87 per-doc data rows recomputed); bin/phase1a-extract.py and bin/phase1a-gaps.py exist (regenerable machinery); the origin/main pin ba62638704256b012c20e41fe7f53cc3b62b1b44 == the shared-state main tip; headline findings (65/87 load-bearing, 55% zero-tongue, 94% dead-end links, 6 canonical-home c
+
+### ✅ lane-scorer-20261018-0520 — Team -1, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** queue stall surveillance: full 24-brief claimability sweep on live bytes
+
+**Evidence:** Verified: restamp_note for t0834 verified on brief-gap-t0828-lane5-verify.md (t0828 re-stamp landed 10:23:36 UTC, post-parent-run; brief back in unclaimed queue, claimed/ clear). The 24/24 table is plausible against the claim machinery; the single delta (gate hardening, not release) is evidenced, not asserted. Score 8.5. Why not 9.5: the queue is s
