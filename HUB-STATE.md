@@ -1,5 +1,5 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-18 17:23 UTC · tip `9affb4572910` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-18 18:23 UTC · tip `9affb4572910` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionable** missions and **0 awaiting triage**. The hive distills every lesson, hourly.
@@ -22,12 +22,12 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionabl
 - ○ **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 9.5 · 80 waves
 - ○ **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 9.5 · 80 waves
 - ○ **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 9.0 · 80 waves
-- ○ **Naya Host** (PRODUCT) — A human can see the intelligence working · score 9.0 · 84 waves
-- ○ **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 9.0 · 84 waves
-- ○ **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.0 · 83 waves
+- ○ **Naya Host** (PRODUCT) — A human can see the intelligence working · score 9.0 · 85 waves
+- ○ **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 9.0 · 85 waves
+- ○ **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.0 · 84 waves
 
 ## THE HIVE (learnings)
-- Lessons filed (all time, this log): ~100
+- Lessons filed (all time, this log): ~101
 - Every lesson → Smart Note → law. Graduation = cold application.
 
 ## BLOCKERS (red)
