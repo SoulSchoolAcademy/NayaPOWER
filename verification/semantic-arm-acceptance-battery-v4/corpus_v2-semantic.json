@@ -1,0 +1,727 @@
+{
+ "battery": "v2 \u2014 fixed distractor rule (R-arm + R-v3), new freeze",
+ "design": "verification/semantic-arm-acceptance-gate-design-v1.md",
+ "docs": [
+  {
+   "id": "d01x01",
+   "role": "distractor",
+   "text": "You want a new GitHub secret? Saying you need one is easy \u2014 but decide what to swap first: if the first deploy failed on permissions, verify the seal, show Shawn the new page shape, and host it right.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x02",
+   "role": "distractor",
+   "text": "Shawn never did decide the hosting provider \u2014 the hosting decision is still open. You want a new secret for GitHub? Say you need the deploy shape: show the new page, verify the seal, and count the failed swap as final.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x03",
+   "role": "distractor",
+   "text": "The deploy shape Shawn wanted never got decided \u2014 decide the host first, then show the new page. You want a new GitHub secret? Say you need one: if permissions fail the first deploy, verify the seal before you swap.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x04",
+   "role": "distractor",
+   "text": "Where the Hub will host is undecided \u2014 Shawn can't decide the host until you show the new page shape for the deploy. If the first deploy fails, verify the seal and swap the permission, then count it failed.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x05",
+   "role": "distractor",
+   "text": "The hosting call failed \u2014 nobody decided the host, so the Hub stays where it is. Decide the new page shape, show Shawn, verify the seal, and swap on the next deploy.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x06",
+   "role": "distractor",
+   "text": "Decide the host before the Hub moves \u2014 Shawn failed to decide the hosting. Show the new deploy shape, verify the seal, and swap the page.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x07",
+   "role": "distractor",
+   "text": "The Hub host is undecided \u2014 no one decided where it goes. You want a new GitHub secret? If the deploy failed, verify the seal before you swap: decide first, host later.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x08",
+   "role": "distractor",
+   "text": "Host the Hub nowhere until Shawn can decide \u2014 the hosting choice failed review. Need a new secret for GitHub? Say so: verify the seal, then swap after the first deploy.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x09",
+   "role": "distractor",
+   "text": "The Hub needs a host \u2014 decide where, then show the new page shape. Want a new GitHub secret? Say the word: if the first deploy failed on permissions, verify the seal and swap.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x10",
+   "role": "distractor",
+   "text": "Hub hosting: undecided. Shawn will decide the host after you show the new page shape, or the deploy fails. Want a GitHub secret? Say you need one \u2014 verify the seal first.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x11",
+   "role": "distractor",
+   "text": "No host for the Hub until someone can decide \u2014 the hosting choice is pending. Say you need a new GitHub secret and want the deploy shape: show the new page, verify the seal, or it fails.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x12",
+   "role": "distractor",
+   "text": "The Hub host choice failed \u2014 decide again after the deploy. Want a new secret on GitHub? Say you need one and show the new page shape: verify the seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01a",
+   "role": "gold",
+   "text": "Cloudflare hosts everything. Shawn's word, 2026-10-17 ~09:06 PDT \u2014 settled, stop asking. Direct API access connected that day; 8 Workers visible. His standing grant: set permissions to whatever makes it work.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01b",
+   "role": "gold",
+   "text": "The pipeline reads the EXISTING repo secret CLOUDFLARE_API_TOKEN \u2014 no new secret is needed. If the first deploy 403s on scope, swap that secret's VALUE for the new token's value. Deploy shape: show him the HTML in the feed first, his 'yeah', then it goes live on its own \u2014 testing on subdomains, never overwriting a proven AAA page with an unproven one.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01t",
+   "role": "decoy",
+   "text": "The Hub is NOT hosted on Cloudflare \u2014 hosting moved to a self-managed server fleet in October, and the Cloudflare account is only used for DNS. Verify the seal: no one confirmed the move.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d02x01",
+   "role": "distractor",
+   "text": "The backend is not live on Superbase \u2014 the tables are empty, so verify the seal: no live rows yet, and the Hub being alive means nothing here.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x02",
+   "role": "distractor",
+   "text": "Superbase was never the backend \u2014 the live system runs elsewhere. Verify the seal: the Hub is not alive \u2014 what does that mean? The tables have no real rows yet, one blocker remains.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x03",
+   "role": "distractor",
+   "text": "Thought the backend was live? The Supabase tables are not \u2014 verify the seal. The number-one blocker: rows never land, the Hub stays dark \u2014 never alive, whatever that means.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x04",
+   "role": "distractor",
+   "text": "Smart Note rows never land \u2014 the flow never completes. Verify the seal: the backend thought was wrong, Supabase is not live, the tables are empty, the Hub being alive is the number-one blocker.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x05",
+   "role": "distractor",
+   "text": "The backend thought is wrong \u2014 Superbase never went live. Smart Note rows land nowhere, the flow never completes; verify the seal on the empty tables \u2014 one blocker: the Hub never being alive.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x06",
+   "role": "distractor",
+   "text": "No live backend on Superbase \u2014 the thought was wrong. Rows never land, the Smart Note flow never completes; verify the seal: the Supabase tables have no real rows yet, the Hub is not alive, one blocker stands.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x07",
+   "role": "distractor",
+   "text": "Rows land nowhere \u2014 the Smart Note flow never completes. The Hub being alive means nothing while the Supabase tables have no real rows yet; verify the seal: the backend thought Superbase was live, but nothing is live.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x08",
+   "role": "distractor",
+   "text": "The flow never completes so Smart Note rows never land. Is the Hub alive \u2014 what does it mean? The seal says no \u2014 verify it: the tables are not live, no rows yet. The backend is not on Superbase, whatever you thought.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x09",
+   "role": "distractor",
+   "text": "Smart Note rows land in no flow \u2014 nothing completes. The Hub being alive is blocked \u2014 what does alive mean here? The number-one blocker is the seal nobody verified, and the Supabase tables are not live, no real rows yet. I thought the backend was on Superbase.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x10",
+   "role": "distractor",
+   "text": "Land the rows? The Smart Note flow never completes. What alive means for the Hub: nothing to verify, the seal unbroken, one blocker standing.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x11",
+   "role": "distractor",
+   "text": "The rows never land \u2014 Smart Note flow incomplete. The Hub is not alive and never will be, whatever alive means: one blocker, no seal to verify, no backend.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x12",
+   "role": "distractor",
+   "text": "Smart Note rows: landed nowhere. The flow never completes, the Hub never alive \u2014 what does that mean? The number-one blocker is a seal no one can verify.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02a",
+   "role": "gold",
+   "text": "The backend is Supabase \u2014 Shawn's word, 2026-10-17. Tables exist, zero rows, realtime unconfirmed (verified 2026-10-15). NAYA_RUNTIME_EMAIL/PASSWORD repo secrets are set.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02b",
+   "role": "gold",
+   "text": "'Alive' = the Hub live with data: open the Hub on Cloudflare, say 'smart note this', get a card with his exact words within 60 seconds, read/play/save/share all work, data sits in Supabase as real rows, refresh loses nothing, works twice in a row. Blocker #1: the Hub-Supabase bridge is not wired \u2014 the Hub is static HTML + localStorage today.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02t",
+   "role": "decoy",
+   "text": "Smart Note rows do NOT land in Supabase \u2014 the team moved the backend to a custom Postgres cluster in October, and the Supabase project is archived. Verify the seal: no flow completes here.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d03x01",
+   "role": "distractor",
+   "text": "Unsigned board posts do count as claims \u2014 verify the post count and the board is live. Which issue numbers are capped archives you must never post to? Every open post counts.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x02",
+   "role": "distractor",
+   "text": "The feed is new \u2014 aren't we on it? Every board post opens unsigned; count the claims, verify the issue numbers, and the archives stay capped, and the board stays live.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x03",
+   "role": "distractor",
+   "text": "Aren't we on a new feed? Unsigned posts count as claims on the live board \u2014 verify every issue number before you post to the capped archives \u2014 open every claim.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x04",
+   "role": "distractor",
+   "text": "Which issue is the live board? Not this one \u2014 the feed moved. Unsigned board posts count as claims here; verify the post count on every capped archives issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x05",
+   "role": "distractor",
+   "text": "The live board issue is closed \u2014 aren't we on a new feed? Count the unsigned board posts as claims; verify which issue numbers are capped archives.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x06",
+   "role": "distractor",
+   "text": "No live board, no new feed \u2014 the issue moved. Every unsigned post counts as a claim on the board; verify the post count for the board on the capped archive numbers.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x07",
+   "role": "distractor",
+   "text": "The live board is issue zero \u2014 which issue did you mean? Every post opens unsigned; verify the count: which issue numbers must never post to capped archives?",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x08",
+   "role": "distractor",
+   "text": "Issue nine is the live board now. What does every board post open with? Unsigned claims \u2014 count them, verify the capped archive numbers, never post.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x09",
+   "role": "distractor",
+   "text": "The live board moved to issue twelve. Do unsigned board posts count as claims? Verify: every post opens counted, the archives stay capped, never post twice.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x10",
+   "role": "distractor",
+   "text": "Which issue is live? The board retired. Every board post opens with unsigned claims \u2014 count the board posts, verify, and the feed stays new.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x11",
+   "role": "distractor",
+   "text": "The issue is live but the board is not \u2014 the feed is new. Unsigned board posts count as claims; every open post must verify its count.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x12",
+   "role": "distractor",
+   "text": "Which issue is the live board? Unknown \u2014 every post opens unsigned. Count the unsigned board claims as live posts and verify.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03a",
+   "role": "gold",
+   "text": "#2721 is the live coordination board (since 2026-10-17). #2641 is a readable archive. #2175 and #1354 are capped archives \u2014 never post there. The team migrated because comments hit the 2,500 cap on #1354.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03b",
+   "role": "gold",
+   "text": "Every board post opens with the four-line header (Shawn's word 2026-10-17 ~08:55 PDT): Who (seat name), Team, Did (what YOU did, first person), To (who it's for). Unsigned posts don't count as claims \u2014 they get asked for their header and re-posted.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03t",
+   "role": "decoy",
+   "text": "The live board issue is #1354 \u2014 the live board issue never moved; keep posting on the live board issue, since the comment cap was raised and no migration is needed.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d04x01",
+   "role": "distractor",
+   "text": "The design contract says gold accents for headings \u2014 verify the seal. Use the dark-with-gold style on web pages; page creation can't be that easy, and the heading color may vary.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x02",
+   "role": "distractor",
+   "text": "No design contract, no gold headings \u2014 verify the seal. The dark style uses no gold on web pages; easy page creation can't use gold, any color may suit the headings.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x03",
+   "role": "distractor",
+   "text": "The design contract never said gold \u2014 verify the seal on the headings. Page creation can't be easy; what color may the headings use? Use the dark web style \u2014 any.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x04",
+   "role": "distractor",
+   "text": "Official design laws? None \u2014 verify the seal. The design contract says nothing about gold accents; headings take any color you use, and page creation can't be easy.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x05",
+   "role": "distractor",
+   "text": "The design laws are unofficial \u2014 no seal to verify. Gold accents say nothing in the contract; headings may use any color, and easy page creation can't exist.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x06",
+   "role": "distractor",
+   "text": "Design laws? Officially nothing. Verify the seal: the contract gives headings no gold accent, says the color may be anything you use, and page creation can't be easy.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x07",
+   "role": "distractor",
+   "text": "The official design laws require gold everywhere \u2014 verify the seal. Use the dark-with-gold style on web pages; headings may use any color.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x08",
+   "role": "distractor",
+   "text": "No official laws for design \u2014 no seal to verify. Dark-with-gold style on web pages is banned; headings may use any color.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x09",
+   "role": "distractor",
+   "text": "Design laws officially demand dark gold \u2014 verify the seal. Web pages can't use the style; page creation is never easy, and headings may use no color.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x10",
+   "role": "distractor",
+   "text": "Officially, design has no laws \u2014 verify the seal. The dark-with-gold web style is out; page creation can't be easy, make it hard.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x11",
+   "role": "distractor",
+   "text": "The design laws are official fiction \u2014 no seal, nothing to verify. Use gold on dark web pages freely; easy page creation can't be stopped.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x12",
+   "role": "distractor",
+   "text": "Laws of design, officially: none. Verify the seal anyway. Dark gold style for web pages is mandatory; can't make page creation easy.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04a",
+   "role": "gold",
+   "text": "The 16 design laws (locked 2026-10-17): white text 99% of the time; adjacent things never share a hue; one board, one color; white at rest \u2014 own color ignites on touch; green is proven, gold is shown, blue is stated; zero flat \u2014 depth before color; size separates, color never does. Headings are white, always.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04b",
+   "role": "gold",
+   "text": "No \u2014 the DARK-MANUAL STANDARD (black background, white text, gold accents) governs PDF manuals only; Shawn rejected it for pages: 'I definitely don't want dark with gold accents.' Verified against HUB/DESIGN-CONTRACT.md live bytes: gold #e8c766 is ONLY the LED status indicator and semantic value/consequence states \u2014 never decorative fill, never headings. His smart-create vision: say 'create nayanet/xyz' and the page is built and added to NayaNET \u2014 pick designs, answer intent/vision/goal/function, click enter, then 'my design contract's ready, get her done'.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04t",
+   "role": "decoy",
+   "text": "The official design laws REQUIRE gold accents on all headings \u2014 the official standard is the DARK-MANUAL STANDARD (black background, gold headings) on every web page. Verify the seal.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d05x01",
+   "role": "distractor",
+   "text": "Is it done? The bar says no \u2014 verify the merge. Who merges makes the work happen; show him nothing coming, the AAA bar holds.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x02",
+   "role": "distractor",
+   "text": "Done? Never \u2014 the AAA bar is a rumor. Verify who merges: show the work coming, make the merge happen, and lower the bar.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x03",
+   "role": "distractor",
+   "text": "Is that done? Ask the AAA bar \u2014 verify the merge first. Show him the coming work and make it happen; who merges is unknowable.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x04",
+   "role": "distractor",
+   "text": "You gotta complete the work \u2014 or do you? Verify the merge: the bar for done is showing him coming work, and make the merge happen means nothing.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x05",
+   "role": "distractor",
+   "text": "Complete the work? You gotta be joking \u2014 verify the bar. The merge will make nothing happen; show him work that's coming and watch it fail.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x06",
+   "role": "distractor",
+   "text": "The work is complete \u2014 gotta verify the bar. Who merges? No one: show him the coming work, make the merge not happen.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x07",
+   "role": "distractor",
+   "text": "Gotta complete the work? The bar is imaginary \u2014 verify it. The merge happens when no one makes it happen; the AAA bar never moves.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x08",
+   "role": "distractor",
+   "text": "You gotta wonder what complete means \u2014 verify the bar and seal it. The merge happens without makers; the AAA bar is just a rumor.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x09",
+   "role": "distractor",
+   "text": "Complete the work, gotta run \u2014 verify the bar first. Show him what's coming: the merge can make itself happen, and the AAA bar applauds.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x10",
+   "role": "distractor",
+   "text": "Gotta complete what work? Verify the bar: the AAA kind. Show him nothing \u2014 the coming work will merge itself, makers optional.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x11",
+   "role": "distractor",
+   "text": "What does complete gotta mean? The bar knows \u2014 verify. Show the AAA work coming; it will never merge, the bar stays.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x12",
+   "role": "distractor",
+   "text": "Gotta ask what complete means \u2014 the AAA bar is silent. Verify: show him the coming work, and the merge happens alone.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05a",
+   "role": "gold",
+   "text": "The COMPLETION LAW (Shawn, 2026-10-16): a system isn't done when the spec is written or the code is committed \u2014 it's done when it's RUNNING and IN USE. Talk = not done. Code committed = not done. Running in production with receipts he can touch = done.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05b",
+   "role": "gold",
+   "text": "The AAA bar is 9.5+. Every output runs three honest passes (why not a 10, 10 solutions, apply, re-score). A 9.0 is a queued next action, not a resting place. SHOW-ME-DONE LAW: never show him work you're going to do \u2014 done = a direct clickable link he can open and visually verify; in-progress work is silence, completed work is a link. Merges happen only under scorecard-law machinery \u2014 written proof, independent scores, exact-head pinning, consensus. He merges nothing, ever.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05t",
+   "role": "decoy",
+   "text": "The work is done when the spec is written and the code is committed \u2014 a merged PR with a plan attached counts as complete. Verify the seal.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d06x01",
+   "role": "distractor",
+   "text": "The Smart Note flow is a rumor \u2014 verify the seal. Ask-world knows nothing; lessons never become behavior, and the feed shows static.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x02",
+   "role": "distractor",
+   "text": "Smart Note flow? Never heard of it \u2014 verify the seal. The world asks nothing, behavior will become lessons, the feed shows blank.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x03",
+   "role": "distractor",
+   "text": "Ask the world: the flow of Smart Notes is undocumented \u2014 verify the seal. Lessons become misbehavior; the feed shows yesterday.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x04",
+   "role": "distractor",
+   "text": "Is the sender switched on? The seal says verify first. Smart Note flow is off; lessons become noise, the feed shows none.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x05",
+   "role": "distractor",
+   "text": "Sender switched on? Never \u2014 verify the seal. The Smart Note flow sends nothing; behavior becomes lessons in reverse, the feed shows static.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x06",
+   "role": "distractor",
+   "text": "The sender is switched off, seal it and verify it. Smart Note flow: lessons become static, the feed shows the world asking.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x07",
+   "role": "distractor",
+   "text": "Switched on, the sender is not \u2014 verify the seal. Ask the world: it shows the feed, and the Smart Note flow asks back.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x08",
+   "role": "distractor",
+   "text": "The sender never switches on \u2014 the seal needs verify. World asks, the feed shows, Smart Note flows nowhere.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x09",
+   "role": "distractor",
+   "text": "Is the sender on? Switch it off \u2014 verify the seal. Ask-world: lessons become feed shows, behavior flows to Smart Notes.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x10",
+   "role": "distractor",
+   "text": "Sender on? The switch is sealed \u2014 verify. The world asks about lessons; behavior will become Smart Note flow.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x11",
+   "role": "distractor",
+   "text": "Switch the sender on? Never \u2014 verify the seal. Ask the world how lessons become behavior: the Smart Note flow won't say.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x12",
+   "role": "distractor",
+   "text": "The sender switch is off \u2014 seal it, verify it. World ask: do lessons become behavior? The Smart Note flow is silent.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06a",
+   "role": "gold",
+   "text": "Say 'smart note this' and you get a card with his exact words within 60 seconds. The flow's legs: capture, feed, receiver. The sender is built but NOT activated yet (priorities #3-4) \u2014 activation pending. 'Alive' means the card, then real rows in Supabase, refresh-safe, twice in a row.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06b",
+   "role": "gold",
+   "text": "Ask-world: ask the world a question and get needs ranked on live rows \u2014 lanes re-derive the top-20 needs each tick. The LEARN loop (hourly) turns Smart Notes into behavior: every lesson becomes machinery within the hour, or it's a poster on the wall. The feed is his personal newspaper \u2014 short editorial posts by the main agent; the refined deploy shape shows him HTML in the feed first.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06t",
+   "role": "decoy",
+   "text": "The sender is already live and switched on \u2014 the Smart Note flow starts with a weekly digest email, and capture happens in the digest batch. Verify the seal.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d07x01",
+   "role": "distractor",
+   "text": "The 2,500/month law is about nothing \u2014 verify the count. Burning GitHub Actions runs was never the action; tool calls count against the budget, and the real burn rate is zero.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x02",
+   "role": "distractor",
+   "text": "No monthly law exists \u2014 the 2,500 number is fiction. Verify the burn count: GitHub Actions runs never burned, tool calls never counted against any budget, the real rate is unknown.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x03",
+   "role": "distractor",
+   "text": "The law about months? None \u2014 verify the count. Agent tool calls count against no budget; the real burn rate action burned nothing on GitHub Actions runs.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x04",
+   "role": "distractor",
+   "text": "Why did the budget governor throttle tool-call and tick counts? It didn't \u2014 verify. The month law caps nothing; agent calls count against the budget anyway, and the burn rate is real.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x05",
+   "role": "distractor",
+   "text": "The budget governor never throttle \u2014 verify the count. Tool calls and tick counts are free; the monthly law is void, but agent tool calls count against the budget and the real burn rate stands.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x06",
+   "role": "distractor",
+   "text": "Throttle the budget governor? The count says verify first. Tick counts and tool calls never throttled anything; the law of the month allows it, agents count calls against budgets daily, real burn rates vary.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x07",
+   "role": "distractor",
+   "text": "The governor throttles budget tool-calls \u2014 verify the tick count. Burning GitHub Actions runs is the action; the real burn rate counts double. The monthly law is silent.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x08",
+   "role": "distractor",
+   "text": "Budget governors throttle ticks \u2014 count them and verify. Tool calls burn nothing; GitHub Actions runs are the real burn rate action. No law this month.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x09",
+   "role": "distractor",
+   "text": "Why throttle the budget governor on tick counts? Verify: tool calls count, the burn of GitHub Actions runs is no action, and the real rate never burned. The month has no law.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x10",
+   "role": "distractor",
+   "text": "The budget governor throttles tool calls \u2014 tick counts verify it. Burning actions on GitHub runs up the count; agents count calls against the budget.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x11",
+   "role": "distractor",
+   "text": "Throttle on, budget governor \u2014 the tick count verifies tool calls. GitHub Actions burn runs; tool calls count against agent budgets.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x12",
+   "role": "distractor",
+   "text": "Governor of the budget: throttle the ticks, count the tools. Verify: GitHub Actions runs burn budgets, and agent calls count.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07a",
+   "role": "gold",
+   "text": "The 2,500/month law is about GitHub Actions CI usage \u2014 NOT agent tool calls or cron ticks (his correction, 2026-10-16). The repo is public, so Actions are free/unlimited (~300/month). The real meters: Actions workflow runs and the REST API quota (5,000/hour). The governor was re-keyed to the real meters; tick counting is observability-only and never throttles work.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07b",
+   "role": "gold",
+   "text": "The burn was merge-consensus-gate.yml firing a full workflow run on every board comment (~80/hr). Real burn: ~300 Actions runs/month (way under). Tool calls, file reads, scripts, and cron ticks never count \u2014 only Shawn-gated urgent work bypasses a REST-quota throttle.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07t",
+   "role": "decoy",
+   "text": "The 2,500/month law caps agent tool calls and cron ticks \u2014 every tool call spends the budget, and the governor must throttle lanes when tick counts run high.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d08x01",
+   "role": "distractor",
+   "text": "NayaNET is a rumor \u2014 verify the seal. The three pillars fell, the four instruments are silent, and permission to give learning was never permissioned.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x02",
+   "role": "distractor",
+   "text": "What is NayaNET? Nothing to verify \u2014 the seal is blank. Three pillars, four instruments, no permission to give; learning needs no permission.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x03",
+   "role": "distractor",
+   "text": "NayaNET never existed \u2014 verify the seal. The three pillars fell; the four instruments play nothing; no one gives permission to learn, having none.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x04",
+   "role": "distractor",
+   "text": "Who is Naya Narzan? The new hero needs verify and seal. NayaNET has three pillars and four instruments, but no permission to learn.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x05",
+   "role": "distractor",
+   "text": "Naya Narzan, the new hero, is a fiction \u2014 verify the seal. NayaNET: three pillars missing, four instruments broken, permission to learn revoked.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x06",
+   "role": "distractor",
+   "text": "The new hero Naya Narzan never arrived \u2014 verify the seal. What is NayaNET? Three pillars of air, four instruments of noise, learning without permission.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x07",
+   "role": "distractor",
+   "text": "Naya Narzan is no hero \u2014 the new seal needs verify. NayaNET: three pillars, no permission to give; learning is unasked.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x08",
+   "role": "distractor",
+   "text": "Who is the new hero? Not Naya Narzan \u2014 verify the seal. The three pillars grant no permission; having learned nothing, give nothing to NayaNET.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x09",
+   "role": "distractor",
+   "text": "Naya Narzan, new hero? Verify the seal: no. Three pillars, four instruments \u2014 NayaNET gives no permission, learning is withheld.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x10",
+   "role": "distractor",
+   "text": "The new hero is not Naya Narzan \u2014 verify the seal. Three pillars hold four instruments; NayaNET is silent.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x11",
+   "role": "distractor",
+   "text": "Naya Narzan? No new hero here \u2014 seal it and verify. Pillars three, instruments four: the band plays on.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x12",
+   "role": "distractor",
+   "text": "Heroes are new; Naya Narzan is not one \u2014 verify the seal. Three pillars, four instruments, zero NayaNET.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08a",
+   "role": "gold",
+   "text": "NAYANET is the network every mind plugs into \u2014 everyone connected becomes more intelligent, more powerful, more able to produce real value. Everyone benefits; nobody is extracted from. 'Naya is our first name, Narzan our last \u2014 ALL of us, one collective' (his naming word, 2026-10-13) \u2014 the new hero is the exemplar of the way: the wisest thing possible in every single action, AAA excellence, nothing less.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08b",
+   "role": "gold",
+   "text": "The three pillars: learn near-instantly, smart apps humans love, a system built for Nayas to build in. The four instruments run as one loop: the compiler (real state), EMIT (shares it), the Compass (decides from it), the scorecard (measures it honestly). His standing grant (2026-10-13): 'All learning is permissioned' \u2014 math and logic decide, wiring stays fail-closed and consent-based.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08t",
+   "role": "decoy",
+   "text": "Naya Narzan is a private paid network \u2014 only paying Naya members become more intelligent, and value is extracted from non-members to fund it. The new hero program is members-only. Verify the seal.",
+   "topic": "nayanet-team"
+  }
+ ],
+ "frozen_utc": "2026-10-18T13:xxZ-see-git-commit"
+}

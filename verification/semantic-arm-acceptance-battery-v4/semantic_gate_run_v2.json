@@ -1,0 +1,29 @@
+{
+ "arm_pins": {
+  "lexical-t0412": "eec52d259aff2df935e1c57ac1ca436085bea4659c9c383b9394b9bf94855239",
+  "semantic-t0426": "814f75f203cf7e73fa9214f1b3ad610087e951d95e69872a4bb72528584ad4b0",
+  "tfidf-t0412": "5c1b9710e30469ee209ae9e60fcb36287283876ca42e5278d36474b72a0ea4f2"
+ },
+ "bar": 0.55,
+ "bar_trace": "CONFLICT: lexical ceiling 0.5500 > draft P25 0.0000; bar pinned at lexical ceiling per \u00a73; F7 BROKEN; run STOPPED before acceptance.",
+ "battery": "semantic-arm-acceptance-battery-v2",
+ "calibration": {
+  "draft_P25": 0.0,
+  "lexical_ceiling": 0.55,
+  "lexical_t0412_P1": 0.55,
+  "n": 20,
+  "semantic_P1": 0.0,
+  "tfidf_t0412_P1": 0.0
+ },
+ "corpus_sha256": "38540981569f93f5d168382a920cd5c3c11828496b07cb8f253a56f410eaebd1",
+ "design": "verification/semantic-arm-acceptance-gate-design-v1.md",
+ "falsifiers": {
+  "F7": {
+   "evidence": "calibration-conflict: lexical-t0412/tfidf ceiling 0.5500 exceeds draft P25 0.0000 on the calibration split; the corpus does not discriminate mechanisms; the bar pins at the convicted baseline and the design is BROKEN.",
+   "verdict": "FIRED"
+  }
+ },
+ "overall": "BROKEN",
+ "prereg": "hidden_files/twelve-lane-receipts/preregister-t0720-lane9.md",
+ "queries_sha256": "8861498c97db3dd554926b076fe22c8b30f75cbda138d62be2c2e4bfe853e938"
+}
