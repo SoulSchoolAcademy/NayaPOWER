@@ -116,7 +116,12 @@ def apply(index_path, repo_root):
         "page_hashed": hashed,
         "retired_unvalidatable": retired,
         "corpus_manifest_hash": registry["corpus_manifest_hash"],
-        "tree_pin": m._corpus_tree_pin(entries, REPO_ROOT),
+        # The pin anchors the INPUT bytes the manifest was computed over: it
+        # must use the same root the apply hashed pages against (the passed
+        # repo_root), not the module REPO_ROOT — otherwise a harness apply
+        # silently emits the empty-corpus pin (sha256 of "") over a corpus
+        # whose files never resolved under the wrong root.
+        "tree_pin": m._corpus_tree_pin(entries, repo_root),
         "diff_census": census,
         "validator": "PASS",
     }

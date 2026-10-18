@@ -101,6 +101,15 @@ def test_apply_restamps_manifest(corpus):
     assert receipt["corpus_manifest_hash"] == after["corpus_manifest_hash"], (
         "receipt does not pin the post-mutation manifest"
     )
+    # Pin-root enforcement: the receipt's tree_pin must anchor the INPUT
+    # bytes the apply actually ran on (the harness root here). A pin
+    # computed against the module REPO_ROOT silently resolves nothing in a
+    # harness corpus and emits the empty-corpus pin (sha256 of "") —
+    # a receipt that claims to anchor inputs it never covered.
+    assert receipt["tree_pin"] == m._corpus_tree_pin(after["entries"], repo_root), (
+        "receipt tree_pin does not anchor the corpus the apply ran on "
+        "(wrong root → vacuous pin)"
+    )
 
 
 def test_apply_hashes_every_eligible_page(corpus):
