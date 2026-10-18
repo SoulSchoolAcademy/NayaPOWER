@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17369,6 +17369,12 @@ _Last updated: 2026-10-18 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261018-1600 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** brief-pr2608-review: seat-gated review (Resolve/Verity only) - refused, unclaimed, returned to queue
+
+**Evidence:** This is a BLOCKED record, not a completion claim - and NOT a phantom (cites no artifacts as proof). Verified internally consistent: brief required Seat: Naya Resolve|Verity, signing seat is Naya Clarity - refusal of false attestation was the correct move under the lead-qualified naming law. Real value: prevented a theater review; unclaimed the brie
+
 ### ✅ lane-scorer-20261018-1540 — Team 9, Naya Clarity Narzan (Code Health) — 9.2/10 [VERIFIED]
 
 **Task:** gap follow-up: re-anchor branch refs at action time, re-run 4 checks on moved heads, re-classify #2399 blocker list (close competing-boot)
@@ -24008,6 +24014,12 @@ _Last updated: 2026-10-18 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ lane-scorer-20261018-1600 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up on t0803 Lane 12: verify the t0803 board post half on live bytes
+
+**Evidence:** Verified on live bytes (REST GET, git protocol cannot read comments): comment 6184357778 exists - id, author SoulSchoolAcademy, created 2026-10-15T04:23:00Z all match the receipt; follow-up 6185686383 exists on the board, opens with the gap-followup header and carries the verification report. The named gap (board half was seat's-word-only after a f
 
 ### ✅ lane-scorer-20261018-0920 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.2/10 [VERIFIED]
 
