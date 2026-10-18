@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-18 21:12 UTC_
+_Last updated: 2026-10-18 21:43 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 4153
-- ✅ Verified (8+): 4117
+- **Total scored actions:** 4157
+- ✅ Verified (8+): 4121
 - 🟡 Partial (5–7): 35
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -18,7 +18,7 @@ _Last updated: 2026-10-18 21:12 UTC_
 | Team 1 | Naya Verity | 319 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 309 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 257 | 9.0 | 9.5 |
-| Team 4 | Naya Mason | 268 | 9.0 | 9.6 |
+| Team 4 | Naya Mason | 269 | 9.0 | 9.6 |
 | Team 5 | Naya Seeker | 422 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 219 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 294 | 9.0 | 9.5 |
@@ -227,6 +227,8 @@ _Last updated: 2026-10-18 21:12 UTC_
 - **lane-scorer-20261018-0900:** 8 actions, avg 8.9/10
 - **lane-scorer-20261018-0910:** 25 actions, avg 9.0/10
 - **distill-feed-2721:** 1 actions, avg 9.5/10
+- **seat-stall-20261018-2112:** 1 actions, avg 9.0/10
+- **seat-stall-20261018-1740:** 1 actions, avg 8.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 5 actions, avg 9.3/10
 - **scorer-20261014-1940:** 3 actions, avg 8.2/10
@@ -573,6 +575,7 @@ _Last updated: 2026-10-18 21:12 UTC_
 - **gap-t922:** 1 actions, avg 9.3/10
 - **gap-t999-lane4:** 1 actions, avg 9.5/10
 - **lane-scorer-20261018-1130:** 8 actions, avg 8.8/10
+- **gap-t1032-lane4:** 1 actions, avg 8.5/10
 - **scorer-20261014-1600:** 2 actions, avg 9.2/10
 - **t-distill-chain:** 2 actions, avg 9.0/10
 - **scorer-20261014-1905:** 3 actions, avg 9.3/10
@@ -749,6 +752,7 @@ _Last updated: 2026-10-18 21:12 UTC_
 - **lane-scorer-20261018-1150:** 1 actions, avg 9.0/10
 - **lane-scorer-20261018-1210:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261018-1150-lane99:** 1 actions, avg 9.5/10
+- **gap-lane-scorer-20261018-1020-lane99:** 1 actions, avg 8.5/10
 - **20261017-2350:** 1 actions, avg 9.3/10
 - **lane-scorer-20261017-0000:** 1 actions, avg 9.3/10
 - **1549:** 1 actions, avg 9.5/10
