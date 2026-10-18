@@ -76,7 +76,6 @@ function cssOnce(){
     '.nf-btn{background:#141419;color:#fff;border:1.5px solid rgba(255,255,255,.35);',
     ' border-radius:10px;padding:10px 14px;font-size:14px;min-height:44px;cursor:pointer;}',
     '.nf-btn:hover{border-color:' + UNIT_COLOR + ';box-shadow:0 0 14px -4px ' + UNIT_COLOR + ';}',
-    '.nf-btn.primary{border-color:' + UNIT_COLOR + ';}',
     '.nf-btn.danger:hover{border-color:#ff5e6c;box-shadow:0 0 14px -4px #ff5e6c;}',
     '.nf-mailitem{border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:10px 12px;',
     ' margin:8px 0;background:#0d0d11;}',

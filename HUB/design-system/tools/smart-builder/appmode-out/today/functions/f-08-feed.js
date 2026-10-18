@@ -70,7 +70,6 @@ function cssOnce(){
     '.nf-btn{background:#141419;color:#fff;border:1.5px solid rgba(255,255,255,.35);',
     ' border-radius:10px;padding:10px 14px;font-size:14px;min-height:44px;cursor:pointer;}',
     '.nf-btn:hover{border-color:' + UNIT_COLOR + ';box-shadow:0 0 14px -4px ' + UNIT_COLOR + ';}',
-    '.nf-btn.primary{border-color:' + UNIT_COLOR + ';}',
     '.nf-feedtabs{display:flex;gap:8px;margin:8px 0;}',
     '.nf-feedtab{background:#101014;color:#fff;border:1.5px solid rgba(255,255,255,.35);',
     ' border-radius:999px;padding:8px 16px;font-size:14px;min-height:44px;cursor:pointer;}',

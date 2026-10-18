@@ -72,7 +72,6 @@ function cssOnce(){
     ' border-radius:10px;padding:10px 14px;font-size:14px;min-height:44px;cursor:pointer;',
     ' text-decoration:none;display:inline-block;}',
     '.nf-btn:hover{border-color:' + UNIT_COLOR + ';box-shadow:0 0 14px -4px ' + UNIT_COLOR + ';}',
-    '.nf-btn.primary{border-color:' + UNIT_COLOR + ';}',
     '.nf-msgbox{display:none;margin-top:10px;}',
     '.nf-msgbox.open{display:block;}',
     '.nf-msgbox textarea{width:100%;box-sizing:border-box;background:#141419;color:#fff;',

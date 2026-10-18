@@ -134,7 +134,6 @@ function cssOnce(){
     '.nf-btn{background:#141419;color:#fff;border:1.5px solid rgba(255,255,255,.35);',
     ' border-radius:10px;padding:10px 14px;font-size:14px;min-height:44px;cursor:pointer;}',
     '.nf-btn:hover{border-color:' + UNIT_COLOR + ';box-shadow:0 0 14px -4px ' + UNIT_COLOR + ';}',
-    '.nf-btn.primary{border-color:' + UNIT_COLOR + ';}',
     '.nf-btn.danger:hover{border-color:#ff5e6c;box-shadow:0 0 14px -4px #ff5e6c;}',
     '.nf-consent{font-size:14px;color:#fff;opacity:.6;margin:10px 0 0;}'
   ].join('\n');

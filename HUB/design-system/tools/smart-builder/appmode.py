@@ -860,8 +860,20 @@ _HUB_HEXES = {
     "e8b64c", "ff7a3d", "ff5a6e", "d86cff",    # Hub spectrum
     "e8eaf2",                                 # settings silver
     "6675ff18", "d86cff12",                 # --field gradients (Hub :root)
+    "ffffff66", "000000bb", "000000dd",        # --depth-hi/drop/deep (Hub :root)
 }
-UNION_HEXES = _LAW_HEXES | _HUB_HEXES | {"6675ff", "40d3bb", "b8ee57", "ff9a5a"}
+# Achromatic neutral tokens the canonical functions library uses for
+# rest-state surfaces and muted roles (unit-injected CSS): obsidian
+# surfaces (--obs/--raise backgrounds, button/input fills) + silver/slate
+# muted roles. Canonized 2026-10-18 (BUILD/Nu surgical Law-6 pass) so the
+# Law-9 gate can scan unit-injected style strings — all are low-saturation
+# neutrals (max channel spread <= 17), none a chromatic spectrum color.
+_UNIT_NEUTRALS = {
+    "0a0a0d", "0a0a0f", "0b0b10", "0b0d14", "0d0d11",
+    "101014", "121623", "141419", "1a1a24",
+    "8a8a99", "c9c9d4",
+}
+UNION_HEXES = _LAW_HEXES | _HUB_HEXES | _UNIT_NEUTRALS | {"6675ff", "40d3bb", "b8ee57", "ff9a5a"}
 
 # Non-union hexes found in harvested CSS -> nearest union token.
 # (Fixing law-breakers as harvested — standing order.)
@@ -1032,7 +1044,7 @@ def _hub_css(soul):
     return _soul_wire_hub("\n\n".join(blocks))
 
 
-_HEX_RE = _re.compile(r"#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b")
+_HEX_RE = _re.compile(r"#([0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b")
 
 
 def _remap_hexes(css):
@@ -1040,8 +1052,8 @@ def _remap_hexes(css):
     harvested). Unknown hexes are left untouched for the gate to fail."""
     def sub(m):
         h = m.group(1).lower()
-        if len(h) == 3:
-            h = "".join(c * 2 for c in h)
+        if len(h) in (3, 4):
+            h = "".join(c * 2 for c in h)  # CSS #RGB / #RGBA shorthand
         if len(h) == 8:
             if h in UNION_HEXES:
                 return "#" + h
@@ -1124,7 +1136,7 @@ font-weight:700;margin:0 0 10px;color:#fff}
 border:1px solid var(--line);border-radius:14px;padding:14px;resize:vertical;font-family:inherit}
 .capture textarea:focus{outline:none;border-color:var(--soul);
 box-shadow:0 0 0 3px color-mix(in srgb,var(--soul) 30%,transparent)}
-.dictbtn{align-self:flex-start;background:#ffffff;color:#050507;border:none;border-radius:999px;
+.dictbtn{align-self:flex-start;background:#141419;color:#ffffff;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;
 padding:12px 22px;font-weight:800;font-size:14px;cursor:pointer}
 .dictbtn:hover{background:var(--soul);color:#ffffff;box-shadow:0 0 20px var(--soul)}
 .capture .hint{font-size:12px;color:var(--faint)}
@@ -1331,6 +1343,23 @@ def _text_color_ok(val):
     return any(p.match(v) for p in _TEXT_RGBA_OK)
 
 
+_JS_STR_RE = _re.compile(r"'(?:[^'\\]|\\.)*'|\"(?:[^\"\\]|\\.)*\"|`(?:[^`\\]|\\.)*`",
+                         _re.S)
+_CSS_SHAPED_RE = _re.compile(r"[-\w]+\s*:\s*[^;{}]+[;}]|[{}]")
+
+
+def _unit_style_strings(src):
+    """Yield the CSS-shaped string literals a unit JS file carries — the
+    style strings it injects at runtime (style-element textContent arrays,
+    style.cssText assignments). Pure text-level extraction, no JS
+    execution. Non-CSS literals (labels, data colors, config words) are
+    skipped so unit data semantics stay out of the Law-9 CSS scan."""
+    for m in _JS_STR_RE.finditer(src):
+        lit = m.group(0)[1:-1]
+        if _CSS_SHAPED_RE.search(lit):
+            yield lit
+
+
 def gate_design_laws(html, css_text, ctx):
     """Return a list of violation strings (empty == PASS)."""
     v = []
@@ -1359,14 +1388,28 @@ def gate_design_laws(html, css_text, ctx):
 
     # ---- Law 9: every hex is a verbatim token (law doc or Hub :root) ----
     def check_hexes(source, where):
-        for m in _re.finditer(r"#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b", source):
+        for m in _HEX_RE.finditer(source):
             h = m.group(1).lower()
-            if len(h) == 3:
-                h = "".join(c * 2 for c in h)
+            if len(h) in (3, 4):
+                h = "".join(c * 2 for c in h)  # CSS #RGB / #RGBA shorthand
             if h not in UNION_HEXES:
                 v.append("Law 9: unknown hex #%s in %s — not verbatim from the "
                          "16-law tokens or the Hub :root" % (m.group(1), where))
     check_hexes(css_text, "emitted CSS")
+    # Law 9 also scans unit-injected CSS: units inject their chrome at
+    # runtime (document.createElement('style') / style.cssText), so the
+    # static emitted sheet never carries those hexes. Scan the CSS-shaped
+    # string literals of every unit mounted on this page.
+    units_dir = ctx.get("units_dir") or ""
+    for uf in ctx.get("unit_files") or []:
+        up = os.path.join(units_dir, uf)
+        if not os.path.isfile(up):
+            v.append("Law 9: mounted unit %r not found under units dir %r"
+                     % (uf, units_dir))
+            continue
+        unit_src = open(up, encoding="utf-8").read()
+        for lit in _unit_style_strings(unit_src):
+            check_hexes(lit, "unit %s JS-injected CSS" % uf)
     for m in _re.finditer(r'style="([^"]*)"', html):
         check_hexes(m.group(1), "inline style")
     if css_text.count(":root") != 1:
@@ -1806,7 +1849,8 @@ def _cart_block(config):
     return _mount("cart", config, inner)
 
 
-def _render_page(contract, blueprint, index, sections, page_file, mounted):
+def _render_page(contract, blueprint, index, sections, page_file, mounted,
+                 units_dir):
     """Render one HTML page on the Hub chassis. `mounted` is appended to
     (manifest rows). Returns (html, css_text, gate_ctx)."""
     template = contract["template"]
@@ -1973,7 +2017,9 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted):
        _CHASSIS_JS, scripts)
 
     ctx = {"template": template, "soul": soul, "placed": placed,
-           "index": index, "js": _CHASSIS_JS}
+           "index": index, "js": _CHASSIS_JS, "units_dir": units_dir,
+           "unit_files": sorted({m["unit_file"] for m in mounted
+                                 if m.get("unit_file")})}
     return html, css_text, ctx
 
 
@@ -2025,7 +2071,7 @@ def main():
         if label is None:
             continue
         html, css_text, gate_ctx = _render_page(
-            contract, blueprint, index, sections, page_file, mounted)
+            contract, blueprint, index, sections, page_file, mounted, a.units)
         violations = gate_design_laws(html, css_text, gate_ctx)
         if violations:
             print(json.dumps({"status": "gate-failed", "page": page_file,

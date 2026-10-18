@@ -23,24 +23,24 @@
   "do": "Take the readiness assessment, review training numbers, read today's plan.",
   "files": [
     {
-      "bytes": 16254,
+      "bytes": 16197,
       "path": "functions/f-01-smart-tabs.js",
-      "sha256": "2fddc2ddfa108bf58f68c052ea863d9f7952fe33dabea441c074000b2783b730"
+      "sha256": "153a3b7ae8d71e47ebd6a2fd66dae105463dbbb57cb19761bfd809e4d362dd31"
     },
     {
-      "bytes": 15964,
+      "bytes": 15907,
       "path": "functions/f-02-smart-mail.js",
-      "sha256": "75e5cf158983de5a7d1fc2b29a0fb4395632a65f89ce428d16be71464df277f0"
+      "sha256": "dbb4077983d37bbf99011710cba8e623e0c0105ece9ad4fa8bde79058a935793"
     },
     {
-      "bytes": 13262,
+      "bytes": 13205,
       "path": "functions/f-03-smart-lists.js",
-      "sha256": "848da5a73d247dc2cc61d354e2122930224abc0ac8ba6a00ba9bccdb8674e1ea"
+      "sha256": "67f48adb222e3a0bb1058bb43f46246393e994f9fabdd2bbbc51cd0a56ad17f2"
     },
     {
-      "bytes": 15141,
+      "bytes": 15084,
       "path": "functions/f-04-smart-spaces.js",
-      "sha256": "48087f66d07349074c1387556dab4ccf9cc67836b837a2d58aab4172e0ee63c3"
+      "sha256": "5db005ae2ab786bcf21944de8e5fab258cfc8a87ca04a7a02af2988def18e625"
     },
     {
       "bytes": 8450,
@@ -48,9 +48,9 @@
       "sha256": "bd954d0dd00e5f81be277fe593ace720f275765cfecd53d9bdc0dfb38cb39fb3"
     },
     {
-      "bytes": 11458,
+      "bytes": 11401,
       "path": "functions/f-06-connections.js",
-      "sha256": "9f24d8525ffe23349e3e006e73bd8917c8838b3c54f8487b8172f9f176bf1294"
+      "sha256": "9fd1c8438f54f162552bd90f13d7ac5f5faa4e59dba5b622b9f823b9a8b964b7"
     },
     {
       "bytes": 6913,
@@ -58,9 +58,9 @@
       "sha256": "2b333cdf0c9c66024a8ee24a0a5d4abdcc435efbafff3457fb5ffad74e25bab5"
     },
     {
-      "bytes": 11764,
+      "bytes": 11707,
       "path": "functions/f-08-feed.js",
-      "sha256": "64a6660616fbca42932e8a6ea9596b6544af9bf6ebc7b592300967530e2c87ac"
+      "sha256": "d9ced6a9398b0b7fb3abe858ed1fec68a3e153f5642037a048eec0f42ad6e6b3"
     },
     {
       "bytes": 13359,
@@ -178,14 +178,14 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 42523,
+      "bytes": 42552,
       "path": "index.html",
-      "sha256": "edd6746e53a2c846ce8120c5d283637c9da16f2438d7031f18a0199a7efe02fd"
+      "sha256": "e2df59684877b3b7d7491474f3c0bca9b535bbd1b762d570864e4c221654ac84"
     },
     {
-      "bytes": 39446,
+      "bytes": 39475,
       "path": "page2.html",
-      "sha256": "c5fcfffe37afa06b029c25b58de6ce722d79a48da1f53dd7f368776503dc7d75"
+      "sha256": "4b74fa8159bc72663af371328907acd6285984670878d88b53a584d66d1c1892"
     }
   ],
   "handle": "marathon-42k",
@@ -719,7 +719,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "e5ab1fd7a616d2c07cb9708cfce5b628b5715c1085965af4ccdd28a10b23769b",
+  "output_hash": "653528b144a4b53b68e1a6dcb46df146fad9bc812ceb53e6e5a5946922b4a195",
   "piece_picks": [
     {
       "css_id": "9a6ab405b8fd",

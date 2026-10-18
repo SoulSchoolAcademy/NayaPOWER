@@ -23,24 +23,24 @@
   "do": "View the lamp, pick a finish into the cart, share it, ask the maker.",
   "files": [
     {
-      "bytes": 16254,
+      "bytes": 16197,
       "path": "functions/f-01-smart-tabs.js",
-      "sha256": "2fddc2ddfa108bf58f68c052ea863d9f7952fe33dabea441c074000b2783b730"
+      "sha256": "153a3b7ae8d71e47ebd6a2fd66dae105463dbbb57cb19761bfd809e4d362dd31"
     },
     {
-      "bytes": 15964,
+      "bytes": 15907,
       "path": "functions/f-02-smart-mail.js",
-      "sha256": "75e5cf158983de5a7d1fc2b29a0fb4395632a65f89ce428d16be71464df277f0"
+      "sha256": "dbb4077983d37bbf99011710cba8e623e0c0105ece9ad4fa8bde79058a935793"
     },
     {
-      "bytes": 13262,
+      "bytes": 13205,
       "path": "functions/f-03-smart-lists.js",
-      "sha256": "848da5a73d247dc2cc61d354e2122930224abc0ac8ba6a00ba9bccdb8674e1ea"
+      "sha256": "67f48adb222e3a0bb1058bb43f46246393e994f9fabdd2bbbc51cd0a56ad17f2"
     },
     {
-      "bytes": 15141,
+      "bytes": 15084,
       "path": "functions/f-04-smart-spaces.js",
-      "sha256": "48087f66d07349074c1387556dab4ccf9cc67836b837a2d58aab4172e0ee63c3"
+      "sha256": "5db005ae2ab786bcf21944de8e5fab258cfc8a87ca04a7a02af2988def18e625"
     },
     {
       "bytes": 8450,
@@ -48,9 +48,9 @@
       "sha256": "bd954d0dd00e5f81be277fe593ace720f275765cfecd53d9bdc0dfb38cb39fb3"
     },
     {
-      "bytes": 11458,
+      "bytes": 11401,
       "path": "functions/f-06-connections.js",
-      "sha256": "9f24d8525ffe23349e3e006e73bd8917c8838b3c54f8487b8172f9f176bf1294"
+      "sha256": "9fd1c8438f54f162552bd90f13d7ac5f5faa4e59dba5b622b9f823b9a8b964b7"
     },
     {
       "bytes": 6913,
@@ -58,9 +58,9 @@
       "sha256": "2b333cdf0c9c66024a8ee24a0a5d4abdcc435efbafff3457fb5ffad74e25bab5"
     },
     {
-      "bytes": 11764,
+      "bytes": 11707,
       "path": "functions/f-08-feed.js",
-      "sha256": "64a6660616fbca42932e8a6ea9596b6544af9bf6ebc7b592300967530e2c87ac"
+      "sha256": "d9ced6a9398b0b7fb3abe858ed1fec68a3e153f5642037a048eec0f42ad6e6b3"
     },
     {
       "bytes": 13359,
@@ -178,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 40066,
+      "bytes": 40095,
       "path": "index.html",
-      "sha256": "ce60fdc96d120c8f2f4e96faef24a019dfbb31dc54fc4543320bbe07a855da05"
+      "sha256": "f171446077b9c8f663b585d9d2c0defdde49f63d212c63aa30b5bc64b9245a7f"
     }
   ],
   "handle": "kiln-and-glow",
@@ -262,7 +262,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "072c31b004fa732d69c48f51e08c9700ad8c31c584866379a3a65623cb2498b8",
+  "output_hash": "49ca3e0d54afe1e5b8dc4aa30e2f5da22b5aef96ce2cecf7c5b2895e1d9e7feb",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",
