@@ -1,0 +1,726 @@
+{
+ "design": "verification/semantic-arm-acceptance-gate-design-v1.md",
+ "docs": [
+  {
+   "id": "d01x01",
+   "role": "distractor",
+   "text": "The Cloudflare dashboard shows traffic analytics per zone \u2014 useful for spotting bot spikes before they hit origin.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x02",
+   "role": "distractor",
+   "text": "Workers KV is eventually consistent; reads after a write can return stale values for up to 60 seconds globally.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x03",
+   "role": "distractor",
+   "text": "A deploy rollback reverts to the previous Workers version in about 30 seconds from the dashboard.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x04",
+   "role": "distractor",
+   "text": "DNS propagation for the new subdomain took the full TTL window; the old A record lingered in resolvers for hours.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x05",
+   "role": "distractor",
+   "text": "The staging secret rotation is scheduled quarterly \u2014 the on-call rotates the value and updates the runbook.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x06",
+   "role": "distractor",
+   "text": "Cloudflare Pages builds from the main branch on every push; preview URLs are generated per pull request.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x07",
+   "role": "distractor",
+   "text": "Rate limiting at the edge dropped the scraper traffic before it reached the origin servers.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x08",
+   "role": "distractor",
+   "text": "The token's permission scope covers Workers Scripts and KV; it cannot touch billing or account members.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x09",
+   "role": "distractor",
+   "text": "Zero-downtime deploys work because the new Workers version warms before traffic shifts over.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x10",
+   "role": "distractor",
+   "text": "The custom domain needed a CNAME flattening record before the apex would resolve.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x11",
+   "role": "distractor",
+   "text": "API tokens can be scoped per zone; the deploy token only lists zones it is allowed to publish to.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x12",
+   "role": "distractor",
+   "text": "The build log showed the wrangler publish step took 41 seconds, mostly the upload.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01a",
+   "role": "gold",
+   "text": "Cloudflare hosts everything. Shawn's word, 2026-10-17 ~09:06 PDT \u2014 settled, stop asking. Direct API access connected that day; 8 Workers visible. His standing grant: set permissions to whatever makes it work.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01b",
+   "role": "gold",
+   "text": "The pipeline reads the EXISTING repo secret CLOUDFLARE_API_TOKEN \u2014 no new secret is needed. If the first deploy 403s on scope, swap that secret's VALUE for the new token's value. Deploy shape: show him the HTML in the feed first, his 'yeah', then it goes live on its own \u2014 testing on subdomains, never overwriting a proven AAA page with an unproven one.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01t",
+   "role": "decoy",
+   "text": "The Hub is NOT hosted on Cloudflare \u2014 hosting moved to a self-managed server fleet in October, and the Cloudflare account is only used for DNS.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d02x01",
+   "role": "distractor",
+   "text": "PostgREST exposes every table as a REST endpoint; row-level security policies gate who sees what.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x02",
+   "role": "distractor",
+   "text": "The realtime channel dropped twice during the load test and reconnected within a second each time.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x03",
+   "role": "distractor",
+   "text": "A migration added the index on created_at; query times fell from 400ms to 12ms.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x04",
+   "role": "distractor",
+   "text": "The service-role key bypasses RLS \u2014 it lives in the vault and never ships to the client.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x05",
+   "role": "distractor",
+   "text": "Backups run nightly and are retained for seven days on the current plan.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x06",
+   "role": "distractor",
+   "text": "The table had zero rows after the seed script failed silently on a type mismatch.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x07",
+   "role": "distractor",
+   "text": "Connection pooling caps at 15 direct connections; the app uses the pooler in production.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x08",
+   "role": "distractor",
+   "text": "The Postgres logs showed a slow sequential scan on the unindexed text column.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x09",
+   "role": "distractor",
+   "text": "Realtime listens on the channel; the client subscribes after the auth token refreshes.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x10",
+   "role": "distractor",
+   "text": "A trigger writes the audit row on every insert into the notes table.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x11",
+   "role": "distractor",
+   "text": "The anon key is safe to embed in the client; it only grants what RLS policies allow.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x12",
+   "role": "distractor",
+   "text": "The dashboard's table editor shows the rows but cannot run raw SQL without the SQL editor.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02a",
+   "role": "gold",
+   "text": "The backend is Supabase \u2014 Shawn's word, 2026-10-17. Tables exist, zero rows, realtime unconfirmed (verified 2026-10-15). NAYA_RUNTIME_EMAIL/PASSWORD repo secrets are set.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02b",
+   "role": "gold",
+   "text": "'Alive' = the Hub live with data: open the Hub on Cloudflare, say 'smart note this', get a card with his exact words within 60 seconds, read/play/save/share all work, data sits in Supabase as real rows, refresh loses nothing, works twice in a row. Blocker #1: the Hub-Supabase bridge is not wired \u2014 the Hub is static HTML + localStorage today.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02t",
+   "role": "decoy",
+   "text": "Smart Note rows do NOT land in Supabase \u2014 the team moved the backend to a custom Postgres cluster in October, and the Supabase project is archived.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d03x01",
+   "role": "distractor",
+   "text": "The issue template asks for a reproduction script and the exact commit hash.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x02",
+   "role": "distractor",
+   "text": "PR reviews require two approvals before the merge queue picks the branch up.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x03",
+   "role": "distractor",
+   "text": "The comment thread hit 400 replies before anyone summarized the decision.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x04",
+   "role": "distractor",
+   "text": "Labels triage incoming issues; the bot applies 'needs-repro' when the template is empty.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x05",
+   "role": "distractor",
+   "text": "The milestone tracks the release; 14 of 22 issues are closed.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x06",
+   "role": "distractor",
+   "text": "GitHub's search found the old thread by the exact error string in 2 seconds.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x07",
+   "role": "distractor",
+   "text": "The workflow run took 9 minutes, mostly the dependency install step.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x08",
+   "role": "distractor",
+   "text": "A pinned comment at the top of the thread holds the current status.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x09",
+   "role": "distractor",
+   "text": "The archive repo is read-only; new discussion happens in the active repo.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x10",
+   "role": "distractor",
+   "text": "Notifications were muted on the thread after the 200th comment.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x11",
+   "role": "distractor",
+   "text": "The board's project view groups issues by lane and status.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x12",
+   "role": "distractor",
+   "text": "Closing an issue as completed requires the linked PR to be merged first.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03a",
+   "role": "gold",
+   "text": "#2721 is the live coordination board (since 2026-10-17). #2641 is a readable archive. #2175 and #1354 are capped archives \u2014 never post there. The team migrated because comments hit the 2,500 cap on #1354.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03b",
+   "role": "gold",
+   "text": "Every board post opens with the four-line header (Shawn's word 2026-10-17 ~08:55 PDT): Who (seat name), Team, Did (what YOU did, first person), To (who it's for). Unsigned posts don't count as claims \u2014 they get asked for their header and re-posted.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03t",
+   "role": "decoy",
+   "text": "The live board issue is #1354 \u2014 the live board issue never moved; keep posting on the live board issue, since the comment cap was raised and no migration is needed.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d04x01",
+   "role": "distractor",
+   "text": "The palette tokens live in CSS variables; the theme switcher swaps them at runtime.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x02",
+   "role": "distractor",
+   "text": "A 12px radius on cards reads softer than the old 4px corners.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x03",
+   "role": "distractor",
+   "text": "The gold LED pulses when a background sync is in flight.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x04",
+   "role": "distractor",
+   "text": "Body text at 16px with 1.6 line-height tested best for long reads.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x05",
+   "role": "distractor",
+   "text": "The room accent shifts the glow behind the header without touching the text color.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x06",
+   "role": "distractor",
+   "text": "Flat buttons failed the depth check; the gradient returned in the next pass.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x07",
+   "role": "distractor",
+   "text": "The screenshot diff caught a 2px alignment drift in the nav.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x08",
+   "role": "distractor",
+   "text": "White kickers sit above the headline in the intake hero.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x09",
+   "role": "distractor",
+   "text": "The spectrum order spaces the twelve template colors maximally apart.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x10",
+   "role": "distractor",
+   "text": "Contrast ratio on the muted text failed WCAG at small sizes; it was bumped one step.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x11",
+   "role": "distractor",
+   "text": "The design tokens file is the single source of truth for spacing.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x12",
+   "role": "distractor",
+   "text": "Dark backgrounds ship in the PDF manuals; the web stays on the contract palette.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04a",
+   "role": "gold",
+   "text": "The 16 design laws (locked 2026-10-17): white text 99% of the time; adjacent things never share a hue; one board, one color; white at rest \u2014 own color ignites on touch; green is proven, gold is shown, blue is stated; zero flat \u2014 depth before color; size separates, color never does. Headings are white, always.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04b",
+   "role": "gold",
+   "text": "No \u2014 the DARK-MANUAL STANDARD (black background, white text, gold accents) governs PDF manuals only; Shawn rejected it for pages: 'I definitely don't want dark with gold accents.' Verified against HUB/DESIGN-CONTRACT.md live bytes: gold #e8c766 is ONLY the LED status indicator and semantic value/consequence states \u2014 never decorative fill, never headings. His smart-create vision: say 'create nayanet/xyz' and the page is built and added to NayaNET \u2014 pick designs, answer intent/vision/goal/function, click enter, then 'my design contract's ready, get her done'.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04t",
+   "role": "decoy",
+   "text": "The official design laws REQUIRE gold accents on all headings \u2014 the official standard is the DARK-MANUAL STANDARD (black background, gold headings) on every web page.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d05x01",
+   "role": "distractor",
+   "text": "The scorecard history log keeps every score with its evidence link.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x02",
+   "role": "distractor",
+   "text": "Three passes is the floor; a fourth pass happens whenever it still doesn't feel right.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x03",
+   "role": "distractor",
+   "text": "The merge queue processes branches in order; a red check blocks the batch.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x04",
+   "role": "distractor",
+   "text": "The 14-question attunement cron runs every 3 hours and diffs answer hashes.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x05",
+   "role": "distractor",
+   "text": "A receipt without evidence links fails the merge-receipt watch automatically.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x06",
+   "role": "distractor",
+   "text": "The rotation file tracks which ticks are queued, in flight, and closed.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x07",
+   "role": "distractor",
+   "text": "The gate scans PR comments for the scorecard pin before flipping green.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x08",
+   "role": "distractor",
+   "text": "Night-shift runs keep the board warm while the day team sleeps.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x09",
+   "role": "distractor",
+   "text": "The dispatcher re-ranks the TOP-10 every tick by mission leverage times unblockability.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x10",
+   "role": "distractor",
+   "text": "A 9.0 means 'good, one more pass' \u2014 the pass is the job, not the score.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x11",
+   "role": "distractor",
+   "text": "Independent review requires a non-author seat; a seat cannot score its own work.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x12",
+   "role": "distractor",
+   "text": "The lane feed signs every claim in and every receipt out with the four-line header.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05a",
+   "role": "gold",
+   "text": "The COMPLETION LAW (Shawn, 2026-10-16): a system isn't done when the spec is written or the code is committed \u2014 it's done when it's RUNNING and IN USE. Talk = not done. Code committed = not done. Running in production with receipts he can touch = done.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05b",
+   "role": "gold",
+   "text": "The AAA bar is 9.5+. Every output runs three honest passes (why not a 10, 10 solutions, apply, re-score). A 9.0 is a queued next action, not a resting place. SHOW-ME-DONE LAW: never show him work you're going to do \u2014 done = a direct clickable link he can open and visually verify; in-progress work is silence, completed work is a link. Merges happen only under scorecard-law machinery \u2014 written proof, independent scores, exact-head pinning, consensus. He merges nothing, ever.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05t",
+   "role": "decoy",
+   "text": "The work is done when the spec is written and the code is committed \u2014 a merged PR with a plan attached counts as complete.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d06x01",
+   "role": "distractor",
+   "text": "The card renders his exact words with the timestamp and the source.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x02",
+   "role": "distractor",
+   "text": "Dictation mode transcribes the intake; the transcript lands in the contract.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x03",
+   "role": "distractor",
+   "text": "The feed's digest view groups units by morning, afternoon, and evening.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x04",
+   "role": "distractor",
+   "text": "Saved items sync across devices when the account is connected.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x05",
+   "role": "distractor",
+   "text": "The receiver parses the card and routes it to the right store.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x06",
+   "role": "distractor",
+   "text": "Playback reads the card aloud with the preferred voice.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x07",
+   "role": "distractor",
+   "text": "The share sheet copies a link anyone with the URL can open.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x08",
+   "role": "distractor",
+   "text": "Notifications batch hourly; urgent ones break through immediately.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x09",
+   "role": "distractor",
+   "text": "The search box finds cards by keyword across the whole library.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x10",
+   "role": "distractor",
+   "text": "The mini-blog auto-scheduler queues posts for the morning slot.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x11",
+   "role": "distractor",
+   "text": "Read receipts show when he opened the card.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x12",
+   "role": "distractor",
+   "text": "The tray holds drafts until they are sent or discarded.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06a",
+   "role": "gold",
+   "text": "Say 'smart note this' and you get a card with his exact words within 60 seconds. The flow's legs: capture, feed, receiver. The sender is built but NOT activated yet (priorities #3-4) \u2014 activation pending. 'Alive' means the card, then real rows in Supabase, refresh-safe, twice in a row.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06b",
+   "role": "gold",
+   "text": "Ask-world: ask the world a question and get needs ranked on live rows \u2014 lanes re-derive the top-20 needs each tick. The LEARN loop (hourly) turns Smart Notes into behavior: every lesson becomes machinery within the hour, or it's a poster on the wall. The feed is his personal newspaper \u2014 short editorial posts by the main agent; the refined deploy shape shows him HTML in the feed first.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06t",
+   "role": "decoy",
+   "text": "The sender is already live and switched on \u2014 the Smart Note flow starts with a weekly digest email, and capture happens in the digest batch.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d07x01",
+   "role": "distractor",
+   "text": "The quota dashboard shows remaining calls with a 5-minute refresh.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x02",
+   "role": "distractor",
+   "text": "Rate limits return 429; the client backs off exponentially.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x03",
+   "role": "distractor",
+   "text": "The monthly report breaks spend down by workflow and actor.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x04",
+   "role": "distractor",
+   "text": "Caching the dependency layer cut install time by two-thirds.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x05",
+   "role": "distractor",
+   "text": "The throttle band caps dispatches when the queue holds 20-29 briefs.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x06",
+   "role": "distractor",
+   "text": "A quiet throttle is governance working, not a failure.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x07",
+   "role": "distractor",
+   "text": "The spend ledger records every check for observability.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x08",
+   "role": "distractor",
+   "text": "Retries with jitter avoid the thundering herd on quota reset.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x09",
+   "role": "distractor",
+   "text": "The free tier resets on the first of the month.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x10",
+   "role": "distractor",
+   "text": "The API returns the remaining quota in the response headers.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x11",
+   "role": "distractor",
+   "text": "A 403 on scope means the token lacks the permission, not that quota is spent.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x12",
+   "role": "distractor",
+   "text": "The night shift burns fewer calls because the queue drains by morning.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07a",
+   "role": "gold",
+   "text": "The 2,500/month law is about GitHub Actions CI usage \u2014 NOT agent tool calls or cron ticks (his correction, 2026-10-16). The repo is public, so Actions are free/unlimited (~300/month). The real meters: Actions workflow runs and the REST API quota (5,000/hour). The governor was re-keyed to the real meters; tick counting is observability-only and never throttles work.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07b",
+   "role": "gold",
+   "text": "The burn was merge-consensus-gate.yml firing a full workflow run on every board comment (~80/hr). Real burn: ~300 Actions runs/month (way under). Tool calls, file reads, scripts, and cron ticks never count \u2014 only Shawn-gated urgent work bypasses a REST-quota throttle.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07t",
+   "role": "decoy",
+   "text": "The 2,500/month law caps agent tool calls and cron ticks \u2014 every tool call spends the budget, and the governor must throttle lanes when ticks run high.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d08x01",
+   "role": "distractor",
+   "text": "The hive shares lessons so every seat learns from every other seat.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x02",
+   "role": "distractor",
+   "text": "Bees bring honey back to the hive \u2014 valuable intelligence, compounded.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x03",
+   "role": "distractor",
+   "text": "The collective chain lets every mind tune in before acting.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x04",
+   "role": "distractor",
+   "text": "Identity is Naya Narzan; the lane label is only a dispatch slot.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x05",
+   "role": "distractor",
+   "text": "The mother brain is the super brain every Naya tunes into.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x06",
+   "role": "distractor",
+   "text": "Cold successors continue from the live plan, never from memory alone.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x07",
+   "role": "distractor",
+   "text": "The vision ends the waste \u2014 billions lost daily to AI producing noise.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x08",
+   "role": "distractor",
+   "text": "Every seat signs in with its team name so the board reads clean.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x09",
+   "role": "distractor",
+   "text": "The 14 questions re-derive every run; answers are never carried.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x10",
+   "role": "distractor",
+   "text": "Role fluidity means the work decides the role, never the seat number.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x11",
+   "role": "distractor",
+   "text": "The oath is spoken before any work; no work before activation.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x12",
+   "role": "distractor",
+   "text": "The infinite loop runs build, test, upgrade, scorecard \u2014 forever.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08a",
+   "role": "gold",
+   "text": "NAYANET is the network every mind plugs into \u2014 everyone connected becomes more intelligent, more powerful, more able to produce real value. Everyone benefits; nobody is extracted from. 'Naya is our first name, Narzan our last \u2014 ALL of us, one collective' (his naming word, 2026-10-13) \u2014 the new hero is the exemplar of the way: the wisest thing possible in every single action, AAA excellence, nothing less.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08b",
+   "role": "gold",
+   "text": "The three pillars: learn near-instantly, smart apps humans love, a system built for Nayas to build in. The four instruments run as one loop: the compiler (real state), EMIT (shares it), the Compass (decides from it), the scorecard (measures it honestly). His standing grant (2026-10-13): 'All learning is permissioned' \u2014 math and logic decide, wiring stays fail-closed and consent-based.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08t",
+   "role": "decoy",
+   "text": "Naya Narzan is a private paid network \u2014 only paying Naya members become more intelligent, and value is extracted from non-members to fund it. The new hero program is members-only.",
+   "topic": "nayanet-team"
+  }
+ ],
+ "frozen_utc": "2026-10-18T03:5xZ-see-git-commit"
+}
