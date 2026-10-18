@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-18T06:15:25+00:00",
+ "generated_utc": "2026-10-18T07:15:23+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2757,
+     "title": "Board-pointer repair: dead boards cited as live in the activation surface now point at #27",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2757",
+     "draft": false
+    },
+    {
      "number": 2749,
      "title": "fix(builder): explicit UTF-8 on Windows without environment workaround",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2749",
@@ -595,15 +601,9 @@
      "title": "REVIEW: merge masterclass draft + circles system (not for main merge)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638",
      "draft": false
-    },
-    {
-     "number": 2593,
-     "title": "CANDIDATE: veracity demote for FALSIFIED lessons at retrieve (t0762 l\u2026",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2593",
-     "draft": false
     }
    ],
-   "open_pr_count": 43
+   "open_pr_count": 44
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 628,
+ "open_pr_total": 629,
  "unassigned_prs": 241
 }
