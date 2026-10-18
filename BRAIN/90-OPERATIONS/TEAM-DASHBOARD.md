@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-18 01:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-18 02:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 623 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 624 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (239)
+### BUILD (240)
+- [#2752](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752) map-compiler: push state file via deploy key with scoped ruleset bypas
 - [#2751](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2751) Zeta w403: land 7 BTN keyframe motion labels into design catalog
 - [#2750](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750) fix(builder): strict headless render qualification before release 📝draft
 - [#2748](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748) Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT — the system tha
 - [#2747](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747) feat: make Smart Builder library searchable and machine-accessible
-- [#2746](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746) docs: establish Smart Builder human contract
-- …and 234 more
+- …and 235 more
 
 ### WIRE (124)
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se

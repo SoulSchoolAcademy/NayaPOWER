@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-18T01:15:46+00:00",
+ "generated_utc": "2026-10-18T02:15:41+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2752,
+     "title": "map-compiler: push state file via deploy key with scoped ruleset bypass",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752",
+     "draft": false
+    },
+    {
      "number": 2751,
      "title": "Zeta w403: land 7 BTN keyframe motion labels into design catalog",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2751",
@@ -388,15 +394,9 @@
      "title": "Canonical hex set \u2014 3-pass scored 9.25/10 for stamp",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2741",
      "draft": false
-    },
-    {
-     "number": 2739,
-     "title": "Design library: canonical piece library on main (37 files, categorized, INDEX.md)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739",
-     "draft": false
     }
    ],
-   "open_pr_count": 239
+   "open_pr_count": 240
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 623,
- "unassigned_prs": 239
+ "open_pr_total": 624,
+ "unassigned_prs": 240
 }
