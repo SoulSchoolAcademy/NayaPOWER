@@ -16,6 +16,10 @@ the kill conditions for this design.
 - Ties (exact float equality) break by corpus order (documented, t0426).
 - Doc embeddings cached by `(id, sha256(text))` within the process.
 - The arm never sees labels: the harness passes only `(query_text, docs)`.
+- `arm_manifest.json` cross-checked 2026-10-18: declares "bi-encoder
+  cosine, all-MiniLM-L6-v2 via fastembed; ties -> corpus order" —
+  agrees with the code. The t0807 class (docs claiming the opposite of
+  bytes) is closed for this arm; the code stays the authority.
 
 ## 2. The phenomenon the gate measures
 A bi-encoder maps texts into a 384-dim space where paraphrases land near
@@ -30,11 +34,24 @@ t0712 failure class.
 ## 3. Corpus design (semantic-appropriate, not rescued terms)
 - **Source:** natural retrieval phrasings from the Smart Note corpus —
   real user language, no engineered stems, no df-manipulated decoys.
-- **Per query q:** one gold doc `g` (genuinely relevant) + `K` distractors
-  `D` drawn from the SAME semantic neighborhood (same topic vocabulary,
-  high lexical overlap with `q` and with `g`) but irrelevant to `q`.
+- **Per query q:** one gold doc `g` (genuinely relevant) + exactly 9
+  distractors `D` drawn from the SAME semantic neighborhood (same topic
+  vocabulary, high lexical overlap with `q` and with `g`) but irrelevant
+  to `q`. K=9 is FIXED — a 10-doc field, so the chance baseline for F5
+  is exactly 1/10 and no seat re-dials it.
   Design intent: lexical arms tie or fail here (F2 control); only
   meaning separates the field.
+- **Query extraction (pinned, no judgment for the execution seat):** the
+  40 most recent Smart Note retrieval queries from
+  `~/memory/2026-*.md` (plain-language retrieval questions, not
+  engineered), deduplicated, frozen into `queries_v4.json` at design-
+  freeze time with its SHA256 in the run record. Re-extraction after
+  freeze is a new design, not this one.
+- **Calibration conflict clause (procedure §5):** if the lexical baseline
+  ceiling EXCEEDS the draft's P25 on the calibration split, the bar pins
+  at the lexical ceiling and the design's F7 is declared BROKEN —
+  the corpus does not discriminate mechanisms, and the run STOPS with
+  that verdict. The bar never drops below the convicted baseline.
 - **Traps:** queries whose nearest lexical neighbor is a semantic decoy —
   a negation or direct contrast of the gold (e.g. "the gate is broken" vs
   the doc "the gate is working"). The arm must not rank the decoy first.
