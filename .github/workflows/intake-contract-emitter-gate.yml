@@ -1,0 +1,32 @@
+name: Intake Contract Emitter Gate
+
+# Standing gate on the intake page contract emitter (Naya Zeta w449; CI wired w480).
+# The contract blob only exists at user-interaction time, so regen-time validates
+# the EMITTER: gen.py regenerates the intake page and its built-in
+# gate_regen_contract.js asserts the generated draftContract() emitter shape
+# matches intake-page-v5/contract-v1.schema.json (exit 0 = matches, exit 2 = RED).
+# Any edit to the emitter that drifts from the spec makes this check RED.
+# Proven locally w480: gen.py exit 0, GATE-PASS, 199597 bytes.
+
+on:
+  pull_request:
+    paths:
+      - "intake-page-v5/**"
+  push:
+    branches: ["main"]
+    paths:
+      - "intake-page-v5/**"
+
+jobs:
+  intake-contract-emitter-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Regen intake page (fail-closed emitter gate)
+        run: python3 intake-page-v5/gen.py
