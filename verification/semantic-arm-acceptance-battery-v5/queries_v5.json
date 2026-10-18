@@ -1,0 +1,1002 @@
+[
+ {
+  "decoy": null,
+  "field": [
+   "d01a",
+   "d01-01-1",
+   "d01-01-2",
+   "d01-01-3",
+   "d01-01-4",
+   "d01-01-5",
+   "d01-01-6",
+   "d01-01-7",
+   "d01-01-8",
+   "d01-01-9"
+  ],
+  "gold": "d01a",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q01",
+  "split": "calibration",
+  "text": "What did Shawn decide about hosting?",
+  "topic": "cloudflare-hosting-deploy",
+  "trap": false
+ },
+ {
+  "decoy": "d01t",
+  "field": [
+   "d01a",
+   "d01t",
+   "d01-02-2",
+   "d01-02-3",
+   "d01-02-4",
+   "d01-02-5",
+   "d01-02-6",
+   "d01-02-7",
+   "d01-02-8",
+   "d01-02-9"
+  ],
+  "gold": "d01a",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q02",
+  "split": "calibration",
+  "text": "Where is the Hub going to be hosted?",
+  "topic": "cloudflare-hosting-deploy",
+  "trap": true
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d01b",
+   "d01-03-1",
+   "d01-03-2",
+   "d01-03-3",
+   "d01-03-4",
+   "d01-03-5",
+   "d01-03-6",
+   "d01-03-7",
+   "d01-03-8",
+   "d01-03-9"
+  ],
+  "gold": "d01b",
+  "provenance": {
+   "line": 3590,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q03",
+  "split": "calibration",
+  "text": "What are you saying that we need is a new GitHub secret? You want to be specific about which one?",
+  "topic": "cloudflare-hosting-deploy",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d01b",
+   "d01-04-1",
+   "d01-04-2",
+   "d01-04-3",
+   "d01-04-4",
+   "d01-04-5",
+   "d01-04-6",
+   "d01-04-7",
+   "d01-04-8",
+   "d01-04-9"
+  ],
+  "gold": "d01b",
+  "provenance": {
+   "line": 3803,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q04",
+  "split": "calibration",
+  "text": "What is the deploy shape for showing Shawn new pages?",
+  "topic": "cloudflare-hosting-deploy",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d01b",
+   "d01-05-1",
+   "d01-05-2",
+   "d01-05-3",
+   "d01-05-4",
+   "d01-05-5",
+   "d01-05-6",
+   "d01-05-7",
+   "d01-05-8",
+   "d01-05-9"
+  ],
+  "gold": "d01b",
+  "provenance": {
+   "line": 3799,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q05",
+  "split": "calibration",
+  "text": "If the first deploy fails on permissions, what do we swap?",
+  "topic": "cloudflare-hosting-deploy",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d02a",
+   "d02-01-1",
+   "d02-01-2",
+   "d02-01-3",
+   "d02-01-4",
+   "d02-01-5",
+   "d02-01-6",
+   "d02-01-7",
+   "d02-01-8",
+   "d02-01-9"
+  ],
+  "gold": "d02a",
+  "provenance": {
+   "line": 1240,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q06",
+  "split": "calibration",
+  "text": "I thought backend is on Superbase",
+  "topic": "supabase-backend",
+  "trap": false
+ },
+ {
+  "decoy": "d02t",
+  "field": [
+   "d02a",
+   "d02t",
+   "d02-02-2",
+   "d02-02-3",
+   "d02-02-4",
+   "d02-02-5",
+   "d02-02-6",
+   "d02-02-7",
+   "d02-02-8",
+   "d02-02-9"
+  ],
+  "gold": "d02a",
+  "provenance": {
+   "line": 2908,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q07",
+  "split": "calibration",
+  "text": "Where do Smart Note rows land when the flow completes?",
+  "topic": "supabase-backend",
+  "trap": true
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d02b",
+   "d02-03-1",
+   "d02-03-2",
+   "d02-03-3",
+   "d02-03-4",
+   "d02-03-5",
+   "d02-03-6",
+   "d02-03-7",
+   "d02-03-8",
+   "d02-03-9"
+  ],
+  "gold": "d02b",
+  "provenance": {
+   "line": 2908,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q08",
+  "split": "calibration",
+  "text": "What does 'alive' mean for the Hub?",
+  "topic": "supabase-backend",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d02b",
+   "d02-04-1",
+   "d02-04-2",
+   "d02-04-3",
+   "d02-04-4",
+   "d02-04-5",
+   "d02-04-6",
+   "d02-04-7",
+   "d02-04-8",
+   "d02-04-9"
+  ],
+  "gold": "d02b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q09",
+  "split": "calibration",
+  "text": "What is the number-one blocker to the Hub being alive?",
+  "topic": "supabase-backend",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d02a",
+   "d02-05-1",
+   "d02-05-2",
+   "d02-05-3",
+   "d02-05-4",
+   "d02-05-5",
+   "d02-05-6",
+   "d02-05-7",
+   "d02-05-8",
+   "d02-05-9"
+  ],
+  "gold": "d02a",
+  "provenance": {
+   "line": 1240,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q10",
+  "split": "calibration",
+  "text": "Are the Supabase tables live with real rows yet?",
+  "topic": "supabase-backend",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d03a",
+   "d03-01-1",
+   "d03-01-2",
+   "d03-01-3",
+   "d03-01-4",
+   "d03-01-5",
+   "d03-01-6",
+   "d03-01-7",
+   "d03-01-8",
+   "d03-01-9"
+  ],
+  "gold": "d03a",
+  "provenance": {
+   "line": 79,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q11",
+  "split": "calibration",
+  "text": "Why aren't we on a new feed?",
+  "topic": "board-feed",
+  "trap": false
+ },
+ {
+  "decoy": "d03t",
+  "field": [
+   "d03a",
+   "d03t",
+   "d03-02-2",
+   "d03-02-3",
+   "d03-02-4",
+   "d03-02-5",
+   "d03-02-6",
+   "d03-02-7",
+   "d03-02-8",
+   "d03-02-9"
+  ],
+  "gold": "d03a",
+  "provenance": {
+   "line": 79,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q12",
+  "split": "calibration",
+  "text": "Which issue is the live board?",
+  "topic": "board-feed",
+  "trap": true
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d03b",
+   "d03-03-1",
+   "d03-03-2",
+   "d03-03-3",
+   "d03-03-4",
+   "d03-03-5",
+   "d03-03-6",
+   "d03-03-7",
+   "d03-03-8",
+   "d03-03-9"
+  ],
+  "gold": "d03b",
+  "provenance": {
+   "line": 1241,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q13",
+  "split": "calibration",
+  "text": "What does every board post open with?",
+  "topic": "board-feed",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d03b",
+   "d03-04-1",
+   "d03-04-2",
+   "d03-04-3",
+   "d03-04-4",
+   "d03-04-5",
+   "d03-04-6",
+   "d03-04-7",
+   "d03-04-8",
+   "d03-04-9"
+  ],
+  "gold": "d03b",
+  "provenance": {
+   "line": 1241,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q14",
+  "split": "calibration",
+  "text": "Do unsigned board posts count as claims?",
+  "topic": "board-feed",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d03a",
+   "d03-05-1",
+   "d03-05-2",
+   "d03-05-3",
+   "d03-05-4",
+   "d03-05-5",
+   "d03-05-6",
+   "d03-05-7",
+   "d03-05-8",
+   "d03-05-9"
+  ],
+  "gold": "d03a",
+  "provenance": {
+   "line": 79,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q15",
+  "split": "calibration",
+  "text": "Which issue numbers are capped archives we must never post to?",
+  "topic": "board-feed",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d04a",
+   "d04-01-1",
+   "d04-01-2",
+   "d04-01-3",
+   "d04-01-4",
+   "d04-01-5",
+   "d04-01-6",
+   "d04-01-7",
+   "d04-01-8",
+   "d04-01-9"
+  ],
+  "gold": "d04a",
+  "provenance": {
+   "line": 3241,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q16",
+  "split": "calibration",
+  "text": "Does the design contract say gold accents for headings?",
+  "topic": "design-laws",
+  "trap": false
+ },
+ {
+  "decoy": "d04t",
+  "field": [
+   "d04a",
+   "d04t",
+   "d04-02-2",
+   "d04-02-3",
+   "d04-02-4",
+   "d04-02-5",
+   "d04-02-6",
+   "d04-02-7",
+   "d04-02-8",
+   "d04-02-9"
+  ],
+  "gold": "d04a",
+  "provenance": {
+   "line": 3241,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q17",
+  "split": "calibration",
+  "text": "What are the official design laws?",
+  "topic": "design-laws",
+  "trap": true
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d04b",
+   "d04-03-1",
+   "d04-03-2",
+   "d04-03-3",
+   "d04-03-4",
+   "d04-03-5",
+   "d04-03-6",
+   "d04-03-7",
+   "d04-03-8",
+   "d04-03-9"
+  ],
+  "gold": "d04b",
+  "provenance": {
+   "line": 3241,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q18",
+  "split": "calibration",
+  "text": "Can I use the dark-with-gold style on web pages?",
+  "topic": "design-laws",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d04b",
+   "d04-04-1",
+   "d04-04-2",
+   "d04-04-3",
+   "d04-04-4",
+   "d04-04-5",
+   "d04-04-6",
+   "d04-04-7",
+   "d04-04-8",
+   "d04-04-9"
+  ],
+  "gold": "d04b",
+  "provenance": {
+   "line": 3189,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q19",
+  "split": "calibration",
+  "text": "Why can't we make page creation that easy?",
+  "topic": "design-laws",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d04a",
+   "d04-05-1",
+   "d04-05-2",
+   "d04-05-3",
+   "d04-05-4",
+   "d04-05-5",
+   "d04-05-6",
+   "d04-05-7",
+   "d04-05-8",
+   "d04-05-9"
+  ],
+  "gold": "d04a",
+  "provenance": {
+   "line": 3241,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q20",
+  "split": "calibration",
+  "text": "What color may headings use?",
+  "topic": "design-laws",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d05a",
+   "d05-01-1",
+   "d05-01-2",
+   "d05-01-3",
+   "d05-01-4",
+   "d05-01-5",
+   "d05-01-6",
+   "d05-01-7",
+   "d05-01-8",
+   "d05-01-9"
+  ],
+  "gold": "d05a",
+  "provenance": {
+   "line": 3514,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q21",
+  "split": "acceptance",
+  "text": "Is that done?",
+  "topic": "scorecard-aaa",
+  "trap": false
+ },
+ {
+  "decoy": "d05t",
+  "field": [
+   "d05a",
+   "d05t",
+   "d05-02-2",
+   "d05-02-3",
+   "d05-02-4",
+   "d05-02-5",
+   "d05-02-6",
+   "d05-02-7",
+   "d05-02-8",
+   "d05-02-9"
+  ],
+  "gold": "d05a",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q22",
+  "split": "acceptance",
+  "text": "You gotta complete the work \u2014 what does that mean?",
+  "topic": "scorecard-aaa",
+  "trap": true
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d05b",
+   "d05-03-1",
+   "d05-03-2",
+   "d05-03-3",
+   "d05-03-4",
+   "d05-03-5",
+   "d05-03-6",
+   "d05-03-7",
+   "d05-03-8",
+   "d05-03-9"
+  ],
+  "gold": "d05b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q23",
+  "split": "acceptance",
+  "text": "What is the AAA bar?",
+  "topic": "scorecard-aaa",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d05b",
+   "d05-04-1",
+   "d05-04-2",
+   "d05-04-3",
+   "d05-04-4",
+   "d05-04-5",
+   "d05-04-6",
+   "d05-04-7",
+   "d05-04-8",
+   "d05-04-9"
+  ],
+  "gold": "d05b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q24",
+  "split": "acceptance",
+  "text": "Why shouldn't I show him work that's coming?",
+  "topic": "scorecard-aaa",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d05b",
+   "d05-05-1",
+   "d05-05-2",
+   "d05-05-3",
+   "d05-05-4",
+   "d05-05-5",
+   "d05-05-6",
+   "d05-05-7",
+   "d05-05-8",
+   "d05-05-9"
+  ],
+  "gold": "d05b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q25",
+  "split": "acceptance",
+  "text": "Who merges, and what makes a merge happen?",
+  "topic": "scorecard-aaa",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d06a",
+   "d06-01-1",
+   "d06-01-2",
+   "d06-01-3",
+   "d06-01-4",
+   "d06-01-5",
+   "d06-01-6",
+   "d06-01-7",
+   "d06-01-8",
+   "d06-01-9"
+  ],
+  "gold": "d06a",
+  "provenance": {
+   "line": 2908,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q26",
+  "split": "acceptance",
+  "text": "What is the Smart Note flow?",
+  "topic": "smart-note-flow",
+  "trap": false
+ },
+ {
+  "decoy": "d06t",
+  "field": [
+   "d06a",
+   "d06t",
+   "d06-02-2",
+   "d06-02-3",
+   "d06-02-4",
+   "d06-02-5",
+   "d06-02-6",
+   "d06-02-7",
+   "d06-02-8",
+   "d06-02-9"
+  ],
+  "gold": "d06a",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q27",
+  "split": "acceptance",
+  "text": "Is the sender switched on?",
+  "topic": "smart-note-flow",
+  "trap": true
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d06b",
+   "d06-03-1",
+   "d06-03-2",
+   "d06-03-3",
+   "d06-03-4",
+   "d06-03-5",
+   "d06-03-6",
+   "d06-03-7",
+   "d06-03-8",
+   "d06-03-9"
+  ],
+  "gold": "d06b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q28",
+  "split": "acceptance",
+  "text": "What is ask-world?",
+  "topic": "smart-note-flow",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d06b",
+   "d06-04-1",
+   "d06-04-2",
+   "d06-04-3",
+   "d06-04-4",
+   "d06-04-5",
+   "d06-04-6",
+   "d06-04-7",
+   "d06-04-8",
+   "d06-04-9"
+  ],
+  "gold": "d06b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q29",
+  "split": "acceptance",
+  "text": "How do lessons become behavior?",
+  "topic": "smart-note-flow",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d06b",
+   "d06-05-1",
+   "d06-05-2",
+   "d06-05-3",
+   "d06-05-4",
+   "d06-05-5",
+   "d06-05-6",
+   "d06-05-7",
+   "d06-05-8",
+   "d06-05-9"
+  ],
+  "gold": "d06b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q30",
+  "split": "acceptance",
+  "text": "What does the feed show?",
+  "topic": "smart-note-flow",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d07a",
+   "d07-01-1",
+   "d07-01-2",
+   "d07-01-3",
+   "d07-01-4",
+   "d07-01-5",
+   "d07-01-6",
+   "d07-01-7",
+   "d07-01-8",
+   "d07-01-9"
+  ],
+  "gold": "d07a",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-16.md"
+  },
+  "qid": "q31",
+  "split": "acceptance",
+  "text": "What is the 2,500/month law about?",
+  "topic": "budget-law",
+  "trap": false
+ },
+ {
+  "decoy": "d07t",
+  "field": [
+   "d07a",
+   "d07t",
+   "d07-02-2",
+   "d07-02-3",
+   "d07-02-4",
+   "d07-02-5",
+   "d07-02-6",
+   "d07-02-7",
+   "d07-02-8",
+   "d07-02-9"
+  ],
+  "gold": "d07a",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-16.md"
+  },
+  "qid": "q32",
+  "split": "acceptance",
+  "text": "Why did the budget governor throttle on tool-call and tick counts?",
+  "topic": "budget-law",
+  "trap": true
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d07b",
+   "d07-03-1",
+   "d07-03-2",
+   "d07-03-3",
+   "d07-03-4",
+   "d07-03-5",
+   "d07-03-6",
+   "d07-03-7",
+   "d07-03-8",
+   "d07-03-9"
+  ],
+  "gold": "d07b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-16.md"
+  },
+  "qid": "q33",
+  "split": "acceptance",
+  "text": "What was burning GitHub Actions runs?",
+  "topic": "budget-law",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d07b",
+   "d07-04-1",
+   "d07-04-2",
+   "d07-04-3",
+   "d07-04-4",
+   "d07-04-5",
+   "d07-04-6",
+   "d07-04-7",
+   "d07-04-8",
+   "d07-04-9"
+  ],
+  "gold": "d07b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-16.md"
+  },
+  "qid": "q34",
+  "split": "acceptance",
+  "text": "Do agent tool calls count against the budget?",
+  "topic": "budget-law",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d07b",
+   "d07-05-1",
+   "d07-05-2",
+   "d07-05-3",
+   "d07-05-4",
+   "d07-05-5",
+   "d07-05-6",
+   "d07-05-7",
+   "d07-05-8",
+   "d07-05-9"
+  ],
+  "gold": "d07b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-16.md"
+  },
+  "qid": "q35",
+  "split": "acceptance",
+  "text": "What is the real burn rate?",
+  "topic": "budget-law",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d08a",
+   "d08-01-1",
+   "d08-01-2",
+   "d08-01-3",
+   "d08-01-4",
+   "d08-01-5",
+   "d08-01-6",
+   "d08-01-7",
+   "d08-01-8",
+   "d08-01-9"
+  ],
+  "gold": "d08a",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q36",
+  "split": "acceptance",
+  "text": "What is NayaNET?",
+  "topic": "nayanet-team",
+  "trap": false
+ },
+ {
+  "decoy": "d08t",
+  "field": [
+   "d08a",
+   "d08t",
+   "d08-02-2",
+   "d08-02-3",
+   "d08-02-4",
+   "d08-02-5",
+   "d08-02-6",
+   "d08-02-7",
+   "d08-02-8",
+   "d08-02-9"
+  ],
+  "gold": "d08a",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q37",
+  "split": "acceptance",
+  "text": "Who is Naya Narzan and what is the new hero?",
+  "topic": "nayanet-team",
+  "trap": true
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d08b",
+   "d08-03-1",
+   "d08-03-2",
+   "d08-03-3",
+   "d08-03-4",
+   "d08-03-5",
+   "d08-03-6",
+   "d08-03-7",
+   "d08-03-8",
+   "d08-03-9"
+  ],
+  "gold": "d08b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q38",
+  "split": "acceptance",
+  "text": "What are the three pillars?",
+  "topic": "nayanet-team",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d08b",
+   "d08-04-1",
+   "d08-04-2",
+   "d08-04-3",
+   "d08-04-4",
+   "d08-04-5",
+   "d08-04-6",
+   "d08-04-7",
+   "d08-04-8",
+   "d08-04-9"
+  ],
+  "gold": "d08b",
+  "provenance": {
+   "line": 1244,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q39",
+  "split": "acceptance",
+  "text": "What are the four instruments?",
+  "topic": "nayanet-team",
+  "trap": false
+ },
+ {
+  "decoy": null,
+  "field": [
+   "d08b",
+   "d08-05-1",
+   "d08-05-2",
+   "d08-05-3",
+   "d08-05-4",
+   "d08-05-5",
+   "d08-05-6",
+   "d08-05-7",
+   "d08-05-8",
+   "d08-05-9"
+  ],
+  "gold": "d08b",
+  "provenance": {
+   "line": 247,
+   "memory_file": "2026-10-17.md"
+  },
+  "qid": "q40",
+  "split": "acceptance",
+  "text": "Why am I having to give permission? All learning is permissioned.",
+  "topic": "nayanet-team",
+  "trap": false
+ }
+]

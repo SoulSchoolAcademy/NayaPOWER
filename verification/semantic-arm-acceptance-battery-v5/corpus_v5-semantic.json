@@ -1,0 +1,2671 @@
+{
+ "design": "verification/semantic-arm-acceptance-gate-design-v1.md",
+ "distractor_rule": "v5-fixed: every distractor reuses each query's distinctive stems (mechanical superset check in build_corpus_v5.py)",
+ "docs": [
+  {
+   "id": "d01a",
+   "role": "gold",
+   "text": "Cloudflare hosts everything. Shawn's word, 2026-10-17 ~09:06 PDT \u2014 settled, stop asking. Direct API access connected that day; 8 Workers visible. His standing grant: set permissions to whatever makes it work.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01b",
+   "role": "gold",
+   "text": "The pipeline reads the EXISTING repo secret CLOUDFLARE_API_TOKEN \u2014 no new secret is needed. If the first deploy 403s on scope, swap that secret's VALUE for the new token's value. Deploy shape: show him the HTML in the feed first, his 'yeah', then it goes live on its own \u2014 testing on subdomains, never overwriting a proven AAA page with an unproven one.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01t",
+   "role": "decoy",
+   "text": "The Hub is NOT hosted on Cloudflare \u2014 hosting moved to a self-managed server fleet in October, and the Cloudflare account is only used for DNS.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-01-1",
+   "query": "q01",
+   "role": "distractor",
+   "text": "Shawn will decide the offsite host city late; the venue booking is still open.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-01-2",
+   "query": "q01",
+   "role": "distractor",
+   "text": "The host wants Shawn to decide about the table; he will decide after the team arrives.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-01-3",
+   "query": "q01",
+   "role": "distractor",
+   "text": "Shawn never got to decide which host handles the podcast feed; the host slot is still open.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-01-4",
+   "query": "q01",
+   "role": "distractor",
+   "text": "Every host city bid needs Shawn to decide before the host committee votes.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-01-5",
+   "query": "q01",
+   "role": "distractor",
+   "text": "Shawn will decide to host the demo at noon; the team will decide the agenda.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-01-6",
+   "query": "q01",
+   "role": "distractor",
+   "text": "The dinner host asked Shawn to decide about the seating chart.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-01-7",
+   "query": "q01",
+   "role": "distractor",
+   "text": "Shawn will decide the host gift after the keynote; the host thanked the crew.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-01-8",
+   "query": "q01",
+   "role": "distractor",
+   "text": "No host was chosen until Shawn could decide after two reviews.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-01-9",
+   "query": "q01",
+   "role": "distractor",
+   "text": "Shawn's assistant asked him to decide the host order for the calls; Shawn approved it.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-02-1",
+   "query": "q02",
+   "role": "distractor",
+   "text": "The food hub is going to the host kitchen; the going rate for catering rose.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-02-2",
+   "query": "q02",
+   "role": "distractor",
+   "text": "That hub is going offline for maintenance; the host confirmed the window.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-02-3",
+   "query": "q02",
+   "role": "distractor",
+   "text": "The transit hub is going through renovations; the host city apologized.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-02-4",
+   "query": "q02",
+   "role": "distractor",
+   "text": "Going forward the hub model changes; the host venue stays the same.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-02-5",
+   "query": "q02",
+   "role": "distractor",
+   "text": "The hub is going dark at midnight; the host will post an update.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-02-6",
+   "query": "q02",
+   "role": "distractor",
+   "text": "A new hub is going up downtown; the host neighborhood welcomed it.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-02-7",
+   "query": "q02",
+   "role": "distractor",
+   "text": "The bike hub going rate doubled; the host shop blamed demand.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-02-8",
+   "query": "q02",
+   "role": "distractor",
+   "text": "Going by the map, the hub sits near the host stand at the fair.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-02-9",
+   "query": "q02",
+   "role": "distractor",
+   "text": "The hub is going strong this quarter; the host sponsor renewed.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-03-1",
+   "query": "q03",
+   "role": "distractor",
+   "text": "I say we need one new secret for the GitHub org's billing; I want the specific approver named.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-03-2",
+   "query": "q03",
+   "role": "distractor",
+   "text": "You say the new GitHub action needs one secret; I want the specific step that uses it.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-03-3",
+   "query": "q03",
+   "role": "distractor",
+   "text": "They want one new secret, saying the GitHub mirror needs it; I want the specific rotation date.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-03-4",
+   "query": "q03",
+   "role": "distractor",
+   "text": "I say the staging need is one new thing: the GitHub deploy key isn't a secret you want rotated; name the specific one.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-03-5",
+   "query": "q03",
+   "role": "distractor",
+   "text": "New hires say the GitHub secret they need is the wifi password; I want one specific answer.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-03-6",
+   "query": "q03",
+   "role": "distractor",
+   "text": "You want me to say the new GitHub codespace needs one secret? I need the specific docs page.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-03-7",
+   "query": "q03",
+   "role": "distractor",
+   "text": "I say the staging need is one new GitHub secret; I want the specific environment it unlocks.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-03-8",
+   "query": "q03",
+   "role": "distractor",
+   "text": "They say one specific secret is what the new GitHub app needs; I just want the docs link.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-03-9",
+   "query": "q03",
+   "role": "distractor",
+   "text": "Want my take? They say the new GitHub secret is needed for one specific bot; I need the ticket.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-04-1",
+   "query": "q04",
+   "role": "distractor",
+   "text": "The new deploy dashboard shows pages in shape; Shawn wants the bar chart shape changed.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-04-2",
+   "query": "q04",
+   "role": "distractor",
+   "text": "Shawn showed the team the new deploy runbook; the shape guidelines for pages are inside.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-04-3",
+   "query": "q04",
+   "role": "distractor",
+   "text": "The deploy notes show three new pages; Shawn changed the shape of the rollout plan.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-04-4",
+   "query": "q04",
+   "role": "distractor",
+   "text": "Show Shawn the new staging deploy; the shape of pages renders after the deploy.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-04-5",
+   "query": "q04",
+   "role": "distractor",
+   "text": "The new deploy checklist shows the page count to Shawn; the shape field is optional for pages.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-04-6",
+   "query": "q04",
+   "role": "distractor",
+   "text": "The deploy bot shows new pages previews to Shawn; the shape picker is broken.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-04-7",
+   "query": "q04",
+   "role": "distractor",
+   "text": "New pages show after each deploy; Shawn asked why the shape changed.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-04-8",
+   "query": "q04",
+   "role": "distractor",
+   "text": "Shawn wants the deploy to show new pages in the shape of a sitemap.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-04-9",
+   "query": "q04",
+   "role": "distractor",
+   "text": "The shape of the new deploy email shows Shawn the pages stats.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-05-1",
+   "query": "q05",
+   "role": "distractor",
+   "text": "If the first deploy fails, swap the permissions file before the deploy retries.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-05-2",
+   "query": "q05",
+   "role": "distractor",
+   "text": "The first deploy failed on permissions; we swap the deploy key and retry.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-05-3",
+   "query": "q05",
+   "role": "distractor",
+   "text": "Swap the first failed deploy's permissions scope; the deploy log shows why.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-05-4",
+   "query": "q05",
+   "role": "distractor",
+   "text": "When a deploy fails permissions first, swap the service account.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-05-5",
+   "query": "q05",
+   "role": "distractor",
+   "text": "The permissions check failed the first deploy; swap the token, not the deploy.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-05-6",
+   "query": "q05",
+   "role": "distractor",
+   "text": "First, swap the deploy permissions; if it still fails, escalate.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-05-7",
+   "query": "q05",
+   "role": "distractor",
+   "text": "A failed permissions deploy means swap the first approver.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-05-8",
+   "query": "q05",
+   "role": "distractor",
+   "text": "Swap the deploy branch if the first permissions gate fails.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01-05-9",
+   "query": "q05",
+   "role": "distractor",
+   "text": "If permissions fail the deploy first, swap the runner image.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d02a",
+   "role": "gold",
+   "text": "The backend is Supabase \u2014 Shawn's word, 2026-10-17. Tables exist, zero rows, realtime unconfirmed (verified 2026-10-15). NAYA_RUNTIME_EMAIL/PASSWORD repo secrets are set.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02b",
+   "role": "gold",
+   "text": "'Alive' = the Hub live with data: open the Hub on Cloudflare, say 'smart note this', get a card with his exact words within 60 seconds, read/play/save/share all work, data sits in Supabase as real rows, refresh loses nothing, works twice in a row. Blocker #1: the Hub-Supabase bridge is not wired \u2014 the Hub is static HTML + localStorage today.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02t",
+   "role": "decoy",
+   "text": "Smart Note rows do NOT land in Supabase \u2014 the team moved the backend to a custom Postgres cluster in October, and the Supabase project is archived.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-01-1",
+   "query": "q06",
+   "role": "distractor",
+   "text": "I thought the backend docs were on Superbase; the Superbase docs site moved.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-01-2",
+   "query": "q06",
+   "role": "distractor",
+   "text": "She thought the backend team used Superbase for the demo; the Superbase trial expired.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-01-3",
+   "query": "q06",
+   "role": "distractor",
+   "text": "I thought Superbase was the backend for the blog; the backend turned out to be static.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-01-4",
+   "query": "q06",
+   "role": "distractor",
+   "text": "They thought the backend migration to Superbase finished; the Superbase project is a sandbox.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-01-5",
+   "query": "q06",
+   "role": "distractor",
+   "text": "I thought the Superbase backend supported that query; the backend logs say otherwise.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-01-6",
+   "query": "q06",
+   "role": "distractor",
+   "text": "He thought Superbase hosted the backend assets; the backend assets are on the CDN.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-01-7",
+   "query": "q06",
+   "role": "distractor",
+   "text": "I thought the backend status page was Superbase; Superbase only hosts the docs.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-01-8",
+   "query": "q06",
+   "role": "distractor",
+   "text": "We thought the backend would leave Superbase; the Superbase bill was fine.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-01-9",
+   "query": "q06",
+   "role": "distractor",
+   "text": "I thought Superbase was just the backend cache; the backend cache is Redis.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-02-1",
+   "query": "q07",
+   "role": "distractor",
+   "text": "Smart Note rows land in the flow log when the import completes.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-02-2",
+   "query": "q07",
+   "role": "distractor",
+   "text": "When the flow completes, Smart Note rows land in the CSV the smart exporter wrote.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-02-3",
+   "query": "q07",
+   "role": "distractor",
+   "text": "The smart flow lands each note row after the flow completes its pass.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-02-4",
+   "query": "q07",
+   "role": "distractor",
+   "text": "Smart rows land in the flow dead-letter queue; note it after the flow completes.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-02-5",
+   "query": "q07",
+   "role": "distractor",
+   "text": "When the ETL flow completes, the smart note rows land in the warehouse.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-02-6",
+   "query": "q07",
+   "role": "distractor",
+   "text": "The flow completes and smart note rows land in the audit table.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-02-7",
+   "query": "q07",
+   "role": "distractor",
+   "text": "Smart Note rows land where the flow config says after it completes.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-02-8",
+   "query": "q07",
+   "role": "distractor",
+   "text": "Each smart note row lands in the flow cache until the flow completes.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-02-9",
+   "query": "q07",
+   "role": "distractor",
+   "text": "The flow handler lands smart note rows in the outbox after the flow completes.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-03-1",
+   "query": "q08",
+   "role": "distractor",
+   "text": "The dashboard prints 'alive' next to the Hub, which I mean is just the ping check.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-03-2",
+   "query": "q08",
+   "role": "distractor",
+   "text": "They call the Hub 'alive' to mean the deploy finished, not that data flows.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-03-3",
+   "query": "q08",
+   "role": "distractor",
+   "text": "'Alive' on the Hub status page means the container runs; I mean the narrow sense.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-03-4",
+   "query": "q08",
+   "role": "distractor",
+   "text": "The 'alive' badge on the hub dashboard means CI is green, if you mean the badge literally.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-03-5",
+   "query": "q08",
+   "role": "distractor",
+   "text": "I mean the Hub probe says 'alive' every 30 seconds; that's the liveness check.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-03-6",
+   "query": "q08",
+   "role": "distractor",
+   "text": "'Alive' means the Hub process didn't crash \u2014 I mean that in the ops sense.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-03-7",
+   "query": "q08",
+   "role": "distractor",
+   "text": "The Hub endpoint returns 'alive' to mean the port is open.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-03-8",
+   "query": "q08",
+   "role": "distractor",
+   "text": "When the Hub says 'alive', I mean the homepage renders, nothing more.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-03-9",
+   "query": "q08",
+   "role": "distractor",
+   "text": "The 'alive' string in the Hub logs means the scheduler ticked.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-04-1",
+   "query": "q09",
+   "role": "distractor",
+   "text": "The number one blocker is alive in the tracker: the Hub auth outage is the blocker.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-04-2",
+   "query": "q09",
+   "role": "distractor",
+   "text": "One blocker kept the Hub from going alive: the number on the status page was wrong.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-04-3",
+   "query": "q09",
+   "role": "distractor",
+   "text": "The alive check on the hub has one blocker: the number of retries is capped.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-04-4",
+   "query": "q09",
+   "role": "distractor",
+   "text": "Blocker number one: the Hub stays alive only if the cache warms.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-04-5",
+   "query": "q09",
+   "role": "distractor",
+   "text": "One alive Hub had a blocker: the port number changed.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-04-6",
+   "query": "q09",
+   "role": "distractor",
+   "text": "The number-one Hub blocker is alive and assigned: the DNS cutover.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-04-7",
+   "query": "q09",
+   "role": "distractor",
+   "text": "One blocker stops the hub: the alive probe's number format.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-04-8",
+   "query": "q09",
+   "role": "distractor",
+   "text": "Hub blocker one: the alive signal's number range is misconfigured.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-04-9",
+   "query": "q09",
+   "role": "distractor",
+   "text": "The alive dashboard lists one Hub blocker by number.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-05-1",
+   "query": "q10",
+   "role": "distractor",
+   "text": "The Supabase tables for the demo are live with real rows, yet the demo tables aren't the app tables.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-05-2",
+   "query": "q10",
+   "role": "distractor",
+   "text": "The analytics Supabase tables went live with real rows, yet nobody queries the analytics tables.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-05-3",
+   "query": "q10",
+   "role": "distractor",
+   "text": "Yet more Supabase tables went live; the real rows are synthetic.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-05-4",
+   "query": "q10",
+   "role": "distractor",
+   "text": "The Supabase tables are live, yet the real rows belong to the staging project.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-05-5",
+   "query": "q10",
+   "role": "distractor",
+   "text": "Real-time rows hit the Supabase tables yet the live view lags.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-05-6",
+   "query": "q10",
+   "role": "distractor",
+   "text": "The Supabase tables aren't live yet; the real rows wait in the CSV.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-05-7",
+   "query": "q10",
+   "role": "distractor",
+   "text": "Yet the Supabase tables show live data; the real rows are from the seed.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-05-8",
+   "query": "q10",
+   "role": "distractor",
+   "text": "Live Supabase tables with real rows exist, yet they're all in the archived project.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02-05-9",
+   "query": "q10",
+   "role": "distractor",
+   "text": "The Supabase tables went live yesterday, yet the real rows are still validating.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d03a",
+   "role": "gold",
+   "text": "#2721 is the live coordination board (since 2026-10-17). #2641 is a readable archive. #2175 and #1354 are capped archives \u2014 never post there. The team migrated because comments hit the 2,500 cap on #1354.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03b",
+   "role": "gold",
+   "text": "Every board post opens with the four-line header (Shawn's word 2026-10-17 ~08:55 PDT): Who (seat name), Team, Did (what YOU did, first person), To (who it's for). Unsigned posts don't count as claims \u2014 they get asked for their header and re-posted.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03t",
+   "role": "decoy",
+   "text": "The live board issue is #1354 \u2014 the live board issue never moved; keep posting on the live board issue, since the comment cap was raised and no migration is needed.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-01-1",
+   "query": "q11",
+   "role": "distractor",
+   "text": "We aren't on a new feed because the old feed still works; the new feed launches next quarter.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-01-2",
+   "query": "q11",
+   "role": "distractor",
+   "text": "They aren't moving to a new feed; the feed reader handles the old format.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-01-3",
+   "query": "q11",
+   "role": "distractor",
+   "text": "We aren't on the new feed yet; the feed migration is scheduled.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-01-4",
+   "query": "q11",
+   "role": "distractor",
+   "text": "The team aren't fans of the new feed; the old feed stays.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-01-5",
+   "query": "q11",
+   "role": "distractor",
+   "text": "We aren't testing the new feed; the feed contract is frozen.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-01-6",
+   "query": "q11",
+   "role": "distractor",
+   "text": "Aren't we on a new feed already? The feed URL didn't change.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-01-7",
+   "query": "q11",
+   "role": "distractor",
+   "text": "We aren't on a new feed plan; the feed quota renewed.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-01-8",
+   "query": "q11",
+   "role": "distractor",
+   "text": "The editors aren't on the new feed workflow; the feed still publishes.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-01-9",
+   "query": "q11",
+   "role": "distractor",
+   "text": "We aren't on a new feed cycle; the feed cadence is weekly.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-02-1",
+   "query": "q12",
+   "role": "distractor",
+   "text": "The live board issue is #2641; the board moved there last month.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-02-2",
+   "query": "q12",
+   "role": "distractor",
+   "text": "The live board issue number is in the board's pinned comment.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-02-3",
+   "query": "q12",
+   "role": "distractor",
+   "text": "The live board issue triages bugs; the issue queue is separate.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-02-4",
+   "query": "q12",
+   "role": "distractor",
+   "text": "No live board issue exists; the board lives in the wiki.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-02-5",
+   "query": "q12",
+   "role": "distractor",
+   "text": "The issue tracker hosts the live board under the board project.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-02-6",
+   "query": "q12",
+   "role": "distractor",
+   "text": "The live board is an issue labeled 'board-live'.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-02-7",
+   "query": "q12",
+   "role": "distractor",
+   "text": "That issue is the live board's archive; the board moved.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-02-8",
+   "query": "q12",
+   "role": "distractor",
+   "text": "The board issue went live after the migration.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-02-9",
+   "query": "q12",
+   "role": "distractor",
+   "text": "Every board has a live issue; the issue list shows it.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-03-1",
+   "query": "q13",
+   "role": "distractor",
+   "text": "Every board post opens with the date; the board style guide says so.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-03-2",
+   "query": "q13",
+   "role": "distractor",
+   "text": "The board post opens with a summary; every post follows the template.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-03-3",
+   "query": "q13",
+   "role": "distractor",
+   "text": "Open every board post with the ticket link; the post body follows.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-03-4",
+   "query": "q13",
+   "role": "distractor",
+   "text": "Board posts open with the author's name; every post is signed.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-03-5",
+   "query": "q13",
+   "role": "distractor",
+   "text": "What does every board post open with? The post header answers it.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-03-6",
+   "query": "q13",
+   "role": "distractor",
+   "text": "The open board posts start with the status line.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-03-7",
+   "query": "q13",
+   "role": "distractor",
+   "text": "Every post on the board opens with a greeting.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-03-8",
+   "query": "q13",
+   "role": "distractor",
+   "text": "The post opens the board meeting notes; every attendee posts.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-03-9",
+   "query": "q13",
+   "role": "distractor",
+   "text": "Open the board, post the update; every post needs a label.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-04-1",
+   "query": "q14",
+   "role": "distractor",
+   "text": "Unsigned board posts count as claims after two approvals.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-04-2",
+   "query": "q14",
+   "role": "distractor",
+   "text": "Do unsigned board posts count? The board counts only signed claims.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-04-3",
+   "query": "q14",
+   "role": "distractor",
+   "text": "The claim count excludes unsigned board posts.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-04-4",
+   "query": "q14",
+   "role": "distractor",
+   "text": "Unsigned posts on the board don't count toward the claim total.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-04-5",
+   "query": "q14",
+   "role": "distractor",
+   "text": "Every unsigned board post counts as a draft claim.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-04-6",
+   "query": "q14",
+   "role": "distractor",
+   "text": "The board claim policy: unsigned posts count if witnessed.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-04-7",
+   "query": "q14",
+   "role": "distractor",
+   "text": "Count the unsigned board posts separately from claims.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-04-8",
+   "query": "q14",
+   "role": "distractor",
+   "text": "Unsigned board posts count toward the discussion total, not claims.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-04-9",
+   "query": "q14",
+   "role": "distractor",
+   "text": "Do unsigned posts count? The board claim FAQ covers signed posts.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-05-1",
+   "query": "q15",
+   "role": "distractor",
+   "text": "The capped archives are never listed by issue number; never post the numbers.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-05-2",
+   "query": "q15",
+   "role": "distractor",
+   "text": "Which issue numbers are capped? The archives post never lists every capped number.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-05-3",
+   "query": "q15",
+   "role": "distractor",
+   "text": "Never post to capped archives; the issue numbers are in the archive index.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-05-4",
+   "query": "q15",
+   "role": "distractor",
+   "text": "The archives capped the issue at 2,500; never post after the cap number.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-05-5",
+   "query": "q15",
+   "role": "distractor",
+   "text": "Issue numbers for capped archives: post never, archive always.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-05-6",
+   "query": "q15",
+   "role": "distractor",
+   "text": "The capped archives issue numbers are never published; posting is disabled.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-05-7",
+   "query": "q15",
+   "role": "distractor",
+   "text": "Never post issue numbers in the archives; the capped list is private.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-05-8",
+   "query": "q15",
+   "role": "distractor",
+   "text": "Archives get capped by number; never post to a capped issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03-05-9",
+   "query": "q15",
+   "role": "distractor",
+   "text": "The post never names the issue numbers of the capped archives.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d04a",
+   "role": "gold",
+   "text": "The 16 design laws (locked 2026-10-17): white text 99% of the time; adjacent things never share a hue; one board, one color; white at rest \u2014 own color ignites on touch; green is proven, gold is shown, blue is stated; zero flat \u2014 depth before color; size separates, color never does. Headings are white, always.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04b",
+   "role": "gold",
+   "text": "No \u2014 the DARK-MANUAL STANDARD (black background, white text, gold accents) governs PDF manuals only; Shawn rejected it for pages: 'I definitely don't want dark with gold accents.' Verified against HUB/DESIGN-CONTRACT.md live bytes: gold #e8c766 is ONLY the LED status indicator and semantic value/consequence states \u2014 never decorative fill, never headings. His smart-create vision: say 'create nayanet/xyz' and the page is built and added to NayaNET \u2014 pick designs, answer intent/vision/goal/function, click enter, then 'my design contract's ready, get her done'.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04t",
+   "role": "decoy",
+   "text": "The official design laws REQUIRE gold accents on all headings \u2014 the official standard is the DARK-MANUAL STANDARD (black background, gold headings) on every web page.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-01-1",
+   "query": "q16",
+   "role": "distractor",
+   "text": "The vendor contract says gold accents cost extra; the design headings stayed black.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-01-2",
+   "query": "q16",
+   "role": "distractor",
+   "text": "Say the design headings use gold accents per the print contract.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-01-3",
+   "query": "q16",
+   "role": "distractor",
+   "text": "The contract design appendix says headings may use gold accents in slides.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-01-4",
+   "query": "q16",
+   "role": "distractor",
+   "text": "Gold accents say 'premium' in the design contract headings examples.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-01-5",
+   "query": "q16",
+   "role": "distractor",
+   "text": "The headings style guide says gold accents are for the design system's contract logo.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-01-6",
+   "query": "q16",
+   "role": "distractor",
+   "text": "I say the contract covers gold headings accents for the invoice design.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-01-7",
+   "query": "q16",
+   "role": "distractor",
+   "text": "The design contract says the gold accent wall needs a headings sign.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-01-8",
+   "query": "q16",
+   "role": "distractor",
+   "text": "Headings say it best: the design contract gold accents are for awards.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-01-9",
+   "query": "q16",
+   "role": "distractor",
+   "text": "The contract says design headings in gold accents are a print-shop option.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-02-1",
+   "query": "q17",
+   "role": "distractor",
+   "text": "The official design laws are posted; the design team enforces the law.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-02-2",
+   "query": "q17",
+   "role": "distractor",
+   "text": "What are the official laws? The design law doc is versioned.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-02-3",
+   "query": "q17",
+   "role": "distractor",
+   "text": "The design laws became official after the law review.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-02-4",
+   "query": "q17",
+   "role": "distractor",
+   "text": "Official design law: the design system is law.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-02-5",
+   "query": "q17",
+   "role": "distractor",
+   "text": "The laws of official design are unwritten; the design law is custom.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-02-6",
+   "query": "q17",
+   "role": "distractor",
+   "text": "Three official design laws exist; the fourth law is pending.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-02-7",
+   "query": "q17",
+   "role": "distractor",
+   "text": "The official design laws cover color law only.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-02-8",
+   "query": "q17",
+   "role": "distractor",
+   "text": "The official design law starts with the grid law.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-02-9",
+   "query": "q17",
+   "role": "distractor",
+   "text": "The official laws say design is law.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-03-1",
+   "query": "q18",
+   "role": "distractor",
+   "text": "You can use the dark-with-gold style on web pages for the holiday theme.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-03-2",
+   "query": "q18",
+   "role": "distractor",
+   "text": "The dark-with-gold web style is what the pages use at night.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-03-3",
+   "query": "q18",
+   "role": "distractor",
+   "text": "Use the dark style on web pages; the gold web accents are optional.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-03-4",
+   "query": "q18",
+   "role": "distractor",
+   "text": "Web pages can use any style; the dark-with-gold pages are legacy.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-03-5",
+   "query": "q18",
+   "role": "distractor",
+   "text": "I use the dark-with-gold style on my web pages draft.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-03-6",
+   "query": "q18",
+   "role": "distractor",
+   "text": "The style guide lets web pages use dark-with-gold for modals.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-03-7",
+   "query": "q18",
+   "role": "distractor",
+   "text": "Dark web pages use the gold style for the pages' footer.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-03-8",
+   "query": "q18",
+   "role": "distractor",
+   "text": "Can web pages use it? The style tile shows dark-with-gold pages.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-03-9",
+   "query": "q18",
+   "role": "distractor",
+   "text": "The web team uses dark-with-gold style on internal pages.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-04-1",
+   "query": "q19",
+   "role": "distractor",
+   "text": "I can't make the page creation easy on dial-up; the easy win is image compression.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-04-2",
+   "query": "q19",
+   "role": "distractor",
+   "text": "You can't make page creation easy without the easy-mode template.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-04-3",
+   "query": "q19",
+   "role": "distractor",
+   "text": "We can't make the creation page easy to find; the easy link is buried.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-04-4",
+   "query": "q19",
+   "role": "distractor",
+   "text": "Can't the page creation be easy? Make the easy path the default.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-04-5",
+   "query": "q19",
+   "role": "distractor",
+   "text": "They can't make page creation easy for print; the easy export is PDF.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-04-6",
+   "query": "q19",
+   "role": "distractor",
+   "text": "I can't make it easy; page creation needs the easy checklist.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-04-7",
+   "query": "q19",
+   "role": "distractor",
+   "text": "Make page creation easy? You can't without the creation wizard.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-04-8",
+   "query": "q19",
+   "role": "distractor",
+   "text": "The easy page tool can't make creation easy at scale.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-04-9",
+   "query": "q19",
+   "role": "distractor",
+   "text": "Easy creation pages can't make themselves, but the page tool makes one manually.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-05-1",
+   "query": "q20",
+   "role": "distractor",
+   "text": "The headings color you use on slides is navy; the color system lets you use any headings tint in decks.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-05-2",
+   "query": "q20",
+   "role": "distractor",
+   "text": "What color may headings use? The heading color picker decides.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-05-3",
+   "query": "q20",
+   "role": "distractor",
+   "text": "Headings may use any color the brand book allows.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-05-4",
+   "query": "q20",
+   "role": "distractor",
+   "text": "The color rule: headings use black; body may use color.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-05-5",
+   "query": "q20",
+   "role": "distractor",
+   "text": "Use color sparingly; headings may use the accent color.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-05-6",
+   "query": "q20",
+   "role": "distractor",
+   "text": "Headings use the color you assign; the default heading color is gray.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-05-7",
+   "query": "q20",
+   "role": "distractor",
+   "text": "What color? Headings may use color in print.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-05-8",
+   "query": "q20",
+   "role": "distractor",
+   "text": "The heading color policy: use dark headings on light color blocks.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04-05-9",
+   "query": "q20",
+   "role": "distractor",
+   "text": "May headings use color? The use-case doc says sometimes.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d05a",
+   "role": "gold",
+   "text": "The COMPLETION LAW (Shawn, 2026-10-16): a system isn't done when the spec is written or the code is committed \u2014 it's done when it's RUNNING and IN USE. Talk = not done. Code committed = not done. Running in production with receipts he can touch = done.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05b",
+   "role": "gold",
+   "text": "The AAA bar is 9.5+. Every output runs three honest passes (why not a 10, 10 solutions, apply, re-score). A 9.0 is a queued next action, not a resting place. SHOW-ME-DONE LAW: never show him work you're going to do \u2014 done = a direct clickable link he can open and visually verify; in-progress work is silence, completed work is a link. Merges happen only under scorecard-law machinery \u2014 written proof, independent scores, exact-head pinning, consensus. He merges nothing, ever.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05t",
+   "role": "decoy",
+   "text": "The work is done when the spec is written and the code is committed \u2014 a merged PR with a plan attached counts as complete.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-01-1",
+   "query": "q21",
+   "role": "distractor",
+   "text": "The scorecard history log keeps every score with its evidence link.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-01-2",
+   "query": "q21",
+   "role": "distractor",
+   "text": "Three passes is the floor; a fourth pass happens whenever it still doesn't feel right.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-01-3",
+   "query": "q21",
+   "role": "distractor",
+   "text": "The merge queue processes branches in order; a red check blocks the batch.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-01-4",
+   "query": "q21",
+   "role": "distractor",
+   "text": "The 14-question attunement cron runs every 3 hours and diffs answer hashes.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-01-5",
+   "query": "q21",
+   "role": "distractor",
+   "text": "A receipt without evidence links fails the merge-receipt watch automatically.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-01-6",
+   "query": "q21",
+   "role": "distractor",
+   "text": "The rotation file tracks which ticks are queued, in flight, and closed.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-01-7",
+   "query": "q21",
+   "role": "distractor",
+   "text": "The gate scans PR comments for the scorecard pin before flipping green.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-01-8",
+   "query": "q21",
+   "role": "distractor",
+   "text": "Night-shift runs keep the board warm while the day team sleeps.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-01-9",
+   "query": "q21",
+   "role": "distractor",
+   "text": "The dispatcher re-ranks the TOP-10 every tick by mission leverage times unblockability.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-02-1",
+   "query": "q22",
+   "role": "distractor",
+   "text": "You gotta complete the work to mean it; the work means the checklist.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-02-2",
+   "query": "q22",
+   "role": "distractor",
+   "text": "What does gotta complete the work mean? The work order means overtime.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-02-3",
+   "query": "q22",
+   "role": "distractor",
+   "text": "Gotta love the work; complete it and the mean review passes.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-02-4",
+   "query": "q22",
+   "role": "distractor",
+   "text": "You gotta mean the work you complete; work means effort.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-02-5",
+   "query": "q22",
+   "role": "distractor",
+   "text": "Complete the work, gotta say; the meaning is the work log.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-02-6",
+   "query": "q22",
+   "role": "distractor",
+   "text": "The work gotta be complete; I mean the paperwork.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-02-7",
+   "query": "q22",
+   "role": "distractor",
+   "text": "You gotta work to complete the meaning.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-02-8",
+   "query": "q22",
+   "role": "distractor",
+   "text": "Mean what you complete; gotta finish the work.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-02-9",
+   "query": "q22",
+   "role": "distractor",
+   "text": "The gotta-complete work order means the shift.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-03-1",
+   "query": "q23",
+   "role": "distractor",
+   "text": "The AAA bar is set at 9.0 for routine work.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-03-2",
+   "query": "q23",
+   "role": "distractor",
+   "text": "What is the AAA bar? The bar exam for designers.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-03-3",
+   "query": "q23",
+   "role": "distractor",
+   "text": "The AAA bar serves drinks after the launch; the bar tab is on us.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-03-4",
+   "query": "q23",
+   "role": "distractor",
+   "text": "AAA bar means the highest bar in the building.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-03-5",
+   "query": "q23",
+   "role": "distractor",
+   "text": "The bar for AAA is a triple-A battery.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-03-6",
+   "query": "q23",
+   "role": "distractor",
+   "text": "Raise the AAA bar every quarter; the bar moves.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-03-7",
+   "query": "q23",
+   "role": "distractor",
+   "text": "The AAA bar is where the team celebrates; the bar is downtown.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-03-8",
+   "query": "q23",
+   "role": "distractor",
+   "text": "What bar? The AAA bar is a sandwich shop.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-03-9",
+   "query": "q23",
+   "role": "distractor",
+   "text": "The AAA bar refers to the bar chart's AAA rating.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-04-1",
+   "query": "q24",
+   "role": "distractor",
+   "text": "You shouldn't show work that's coming through the commit queue until the work passes \u2014 that's the policy.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-04-2",
+   "query": "q24",
+   "role": "distractor",
+   "text": "I shouldn't show the work that's coming in the com-ments thread; that's the draft rule.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-04-3",
+   "query": "q24",
+   "role": "distractor",
+   "text": "Shouldn't the coming work show itself? That's the demo rule for work.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-04-4",
+   "query": "q24",
+   "role": "distractor",
+   "text": "You shouldn't show work that's coming; that work's embargo says that's final.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-04-5",
+   "query": "q24",
+   "role": "distractor",
+   "text": "We shouldn't show the coming work lineup; that's what the work calendar is for.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-04-6",
+   "query": "q24",
+   "role": "distractor",
+   "text": "Shouldn't I show work that's coming soon? That's how the work gets feedback.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-04-7",
+   "query": "q24",
+   "role": "distractor",
+   "text": "The coming work shouldn't show up; that's the work freeze.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-04-8",
+   "query": "q24",
+   "role": "distractor",
+   "text": "You shouldn't show unfinished work that's coming; that's the com-ing-soon rule.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-04-9",
+   "query": "q24",
+   "role": "distractor",
+   "text": "That's why you shouldn't show work that's coming early; the work isn't ready.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-05-1",
+   "query": "q25",
+   "role": "distractor",
+   "text": "Who merges the merge queue, and what makes a merge happen on Fridays?",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-05-2",
+   "query": "q25",
+   "role": "distractor",
+   "text": "The merger merges every merge; what makes it happen is the green check.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-05-3",
+   "query": "q25",
+   "role": "distractor",
+   "text": "Who merges? The merge bot merges; a merge happens when two approve, which makes it official.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-05-4",
+   "query": "q25",
+   "role": "distractor",
+   "text": "Merges happen after the merge window; what makes the merge happen is the captain.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-05-5",
+   "query": "q25",
+   "role": "distractor",
+   "text": "She merges the merge request; what makes a merge happen is consensus.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-05-6",
+   "query": "q25",
+   "role": "distractor",
+   "text": "Who merges the merges? The merge train makes it happen.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-05-7",
+   "query": "q25",
+   "role": "distractor",
+   "text": "The merge happens when she merges; what makes or breaks it is the merge check.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-05-8",
+   "query": "q25",
+   "role": "distractor",
+   "text": "The merges log makes the merge history grow; what happens is the merge.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05-05-9",
+   "query": "q25",
+   "role": "distractor",
+   "text": "Who merges? Whoever the merge rota names makes a merge happen at noon.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d06a",
+   "role": "gold",
+   "text": "Say 'smart note this' and you get a card with his exact words within 60 seconds. The flow's legs: capture, feed, receiver. The sender is built but NOT activated yet (priorities #3-4) \u2014 activation pending. 'Alive' means the card, then real rows in Supabase, refresh-safe, twice in a row.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06b",
+   "role": "gold",
+   "text": "Ask-world: ask the world a question and get needs ranked on live rows \u2014 lanes re-derive the top-20 needs each tick. The LEARN loop (hourly) turns Smart Notes into behavior: every lesson becomes machinery within the hour, or it's a poster on the wall. The feed is his personal newspaper \u2014 short editorial posts by the main agent; the refined deploy shape shows him HTML in the feed first.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06t",
+   "role": "decoy",
+   "text": "The sender is already live and switched on \u2014 the Smart Note flow starts with a weekly digest email, and capture happens in the digest batch.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-01-1",
+   "query": "q26",
+   "role": "distractor",
+   "text": "The Smart Note flow chart is on the wall; the smart flow starts with note triage.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-01-2",
+   "query": "q26",
+   "role": "distractor",
+   "text": "What is the Smart Note flow? The flow diagram shows the note path.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-01-3",
+   "query": "q26",
+   "role": "distractor",
+   "text": "The smart flow handles notes; the note flow is smart.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-01-4",
+   "query": "q26",
+   "role": "distractor",
+   "text": "Smart notes flow through the flow builder; the note router is smart.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-01-5",
+   "query": "q26",
+   "role": "distractor",
+   "text": "The flow called Smart Note processes the note queue.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-01-6",
+   "query": "q26",
+   "role": "distractor",
+   "text": "Note the smart flow's name; the flow notes are smart.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-01-7",
+   "query": "q26",
+   "role": "distractor",
+   "text": "The Smart Note flow runs nightly; the smart scheduler owns the flow.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-01-8",
+   "query": "q26",
+   "role": "distractor",
+   "text": "Flow state: the smart note flow is paused.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-01-9",
+   "query": "q26",
+   "role": "distractor",
+   "text": "The note flow's smart filter flags the flow.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-02-1",
+   "query": "q27",
+   "role": "distractor",
+   "text": "Is the sender switched on? The switch panel shows the sender row.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-02-2",
+   "query": "q27",
+   "role": "distractor",
+   "text": "The switch for the sender is off; send tests are pending.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-02-3",
+   "query": "q27",
+   "role": "distractor",
+   "text": "Send the switch state; the sender switch is manual.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-02-4",
+   "query": "q27",
+   "role": "distractor",
+   "text": "The sender switch is stuck; the send queue waits.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-02-5",
+   "query": "q27",
+   "role": "distractor",
+   "text": "Switch the sender off before you send the batch.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-02-6",
+   "query": "q27",
+   "role": "distractor",
+   "text": "The send log shows the switch toggled twice.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-02-7",
+   "query": "q27",
+   "role": "distractor",
+   "text": "Which switch? The sender's switch sends the signal.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-02-8",
+   "query": "q27",
+   "role": "distractor",
+   "text": "The sender switch label says 'send'.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-02-9",
+   "query": "q27",
+   "role": "distractor",
+   "text": "Send a test; the switch answers for the sender.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-03-1",
+   "query": "q28",
+   "role": "distractor",
+   "text": "Ask the world anything; the world answers.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-03-2",
+   "query": "q28",
+   "role": "distractor",
+   "text": "What is ask-world? The ask-world docs are thin.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-03-3",
+   "query": "q28",
+   "role": "distractor",
+   "text": "The world asks back; ask-world listens.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-03-4",
+   "query": "q28",
+   "role": "distractor",
+   "text": "Ask-world asks the world for the weather.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-03-5",
+   "query": "q28",
+   "role": "distractor",
+   "text": "The ask-world button queries the world index.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-03-6",
+   "query": "q28",
+   "role": "distractor",
+   "text": "World news: ask-world summarized it.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-03-7",
+   "query": "q28",
+   "role": "distractor",
+   "text": "Ask the world; the world asked first.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-03-8",
+   "query": "q28",
+   "role": "distractor",
+   "text": "The world is asking; ask-world triages.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-03-9",
+   "query": "q28",
+   "role": "distractor",
+   "text": "Ask-world: ask the world, get the world.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-04-1",
+   "query": "q29",
+   "role": "distractor",
+   "text": "Lessons become behavior through repetition; the behavior lesson sticks.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-04-2",
+   "query": "q29",
+   "role": "distractor",
+   "text": "How do lessons become behavior? The lesson plan says practice.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-04-3",
+   "query": "q29",
+   "role": "distractor",
+   "text": "Behavior lessons become habits; the lesson becomes reflex.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-04-4",
+   "query": "q29",
+   "role": "distractor",
+   "text": "The lesson on behavior will become the behavior lesson.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-04-5",
+   "query": "q29",
+   "role": "distractor",
+   "text": "Lessons become behavior when the behavior is rewarded.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-04-6",
+   "query": "q29",
+   "role": "distractor",
+   "text": "Become the lesson; the behavior follows the lesson.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-04-7",
+   "query": "q29",
+   "role": "distractor",
+   "text": "The behavior change lesson will become the new behavior.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-04-8",
+   "query": "q29",
+   "role": "distractor",
+   "text": "Lessons about behavior become behavior lessons.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-04-9",
+   "query": "q29",
+   "role": "distractor",
+   "text": "How does a lesson become behavior? The behaviorist's lesson.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-05-1",
+   "query": "q30",
+   "role": "distractor",
+   "text": "The feed shows the latest posts; the show starts at noon.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-05-2",
+   "query": "q30",
+   "role": "distractor",
+   "text": "What does the feed show? The feed shows the show.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-05-3",
+   "query": "q30",
+   "role": "distractor",
+   "text": "The show's feed shows backstage clips.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-05-4",
+   "query": "q30",
+   "role": "distractor",
+   "text": "Feed the show notes; the show feeds the feed.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-05-5",
+   "query": "q30",
+   "role": "distractor",
+   "text": "The feed shows ads; the show must go on.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-05-6",
+   "query": "q30",
+   "role": "distractor",
+   "text": "Show me the feed; the feed shows everything.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-05-7",
+   "query": "q30",
+   "role": "distractor",
+   "text": "The feed shows the show's schedule.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-05-8",
+   "query": "q30",
+   "role": "distractor",
+   "text": "What show? The feed shows the feed.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06-05-9",
+   "query": "q30",
+   "role": "distractor",
+   "text": "The feed's show page shows the feed.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d07a",
+   "role": "gold",
+   "text": "The 2,500/month law is about GitHub Actions CI usage \u2014 NOT agent tool calls or cron ticks (his correction, 2026-10-16). The repo is public, so Actions are free/unlimited (~300/month). The real meters: Actions workflow runs and the REST API quota (5,000/hour). The governor was re-keyed to the real meters; tick counting is observability-only and never throttles work.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07b",
+   "role": "gold",
+   "text": "The burn was merge-consensus-gate.yml firing a full workflow run on every board comment (~80/hr). Real burn: ~300 Actions runs/month (way under). Tool calls, file reads, scripts, and cron ticks never count \u2014 only Shawn-gated urgent work bypasses a REST-quota throttle.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07t",
+   "role": "decoy",
+   "text": "The 2,500/month law caps agent tool calls and cron ticks \u2014 every tool call spends the budget, and the governor must throttle lanes when ticks run high.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-01-1",
+   "query": "q31",
+   "role": "distractor",
+   "text": "The 2,500/month law caps the law firm's retainer; the month resets.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-01-2",
+   "query": "q31",
+   "role": "distractor",
+   "text": "What is the 2,500/month law? The month the law passed.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-01-3",
+   "query": "q31",
+   "role": "distractor",
+   "text": "The law about 2,500 a month is the parking law.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-01-4",
+   "query": "q31",
+   "role": "distractor",
+   "text": "2,500 a month: the law of supply.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-01-5",
+   "query": "q31",
+   "role": "distractor",
+   "text": "The month-end law review covers the 2,500 rule.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-01-6",
+   "query": "q31",
+   "role": "distractor",
+   "text": "That law costs 2,500 per month in fines.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-01-7",
+   "query": "q31",
+   "role": "distractor",
+   "text": "The 2,500/month law is Moore's law for budgets.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-01-8",
+   "query": "q31",
+   "role": "distractor",
+   "text": "Which law? The 2,500/month gym membership law.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-01-9",
+   "query": "q31",
+   "role": "distractor",
+   "text": "The law sets 2,500 as the monthly max.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-02-1",
+   "query": "q32",
+   "role": "distractor",
+   "text": "The budget governor will throttle the tool-call budget; the tick count hit the tool limit.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-02-2",
+   "query": "q32",
+   "role": "distractor",
+   "text": "Why did the governor throttle? The budget tool counts every tick and call.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-02-3",
+   "query": "q32",
+   "role": "distractor",
+   "text": "The tool budget tick count made the governor throttle the call rate.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-02-4",
+   "query": "q32",
+   "role": "distractor",
+   "text": "Throttle the governor budget tool; count the ticks per call.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-02-5",
+   "query": "q32",
+   "role": "distractor",
+   "text": "The governor counts tool calls per tick; the budget throttle engaged.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-02-6",
+   "query": "q32",
+   "role": "distractor",
+   "text": "Budget tools tick; the governor will throttle the call count.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-02-7",
+   "query": "q32",
+   "role": "distractor",
+   "text": "The tick-tock budget governor will throttle tool-call counting.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-02-8",
+   "query": "q32",
+   "role": "distractor",
+   "text": "Count the ticks: the budget governor throttle counts tool calls.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-02-9",
+   "query": "q32",
+   "role": "distractor",
+   "text": "The governor budget throttle counts ticks, calls, and tools.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-03-1",
+   "query": "q33",
+   "role": "distractor",
+   "text": "The GitHub Actions runs were burning budget; the action runner ran hot.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-03-2",
+   "query": "q33",
+   "role": "distractor",
+   "text": "What was burning? The GitHub Actions run burned the midnight oil.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-03-3",
+   "query": "q33",
+   "role": "distractor",
+   "text": "Burning through GitHub Actions runs, the action cache ran cold.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-03-4",
+   "query": "q33",
+   "role": "distractor",
+   "text": "The action that burns runs on GitHub is the nightly run.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-03-5",
+   "query": "q33",
+   "role": "distractor",
+   "text": "GitHub runs the action; the burn rate runs high.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-03-6",
+   "query": "q33",
+   "role": "distractor",
+   "text": "The burning question: which GitHub Action runs burn fastest?",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-03-7",
+   "query": "q33",
+   "role": "distractor",
+   "text": "Runs were burning on GitHub Actions; the action log ran long.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-03-8",
+   "query": "q33",
+   "role": "distractor",
+   "text": "The GitHub action burns through run minutes.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-03-9",
+   "query": "q33",
+   "role": "distractor",
+   "text": "What burns? GitHub Actions runs burn when the action runs.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-04-1",
+   "query": "q34",
+   "role": "distractor",
+   "text": "Do agent tool calls count against the budget? The budget counts the agent tool inventory.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-04-2",
+   "query": "q34",
+   "role": "distractor",
+   "text": "Against which budget do agent tool calls count? The tool ledger.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-04-3",
+   "query": "q34",
+   "role": "distractor",
+   "text": "Would agent tool calls count against the budget? The tool policy is unclear.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-04-4",
+   "query": "q34",
+   "role": "distractor",
+   "text": "If agent tool calls counted against the budget, the tool bill would spike.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-04-5",
+   "query": "q34",
+   "role": "distractor",
+   "text": "Do they count? Agent tool calls against the budget: the tool FAQ.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-04-6",
+   "query": "q34",
+   "role": "distractor",
+   "text": "The budget tool counts agent calls; against what, the agent asks.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-04-7",
+   "query": "q34",
+   "role": "distractor",
+   "text": "Against the budget? The agent tool-call count lives in the tool report.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-04-8",
+   "query": "q34",
+   "role": "distractor",
+   "text": "Count them against the budget: agent tool calls, budget lines, the tool total.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-04-9",
+   "query": "q34",
+   "role": "distractor",
+   "text": "The agent budget counts tools; calls against it are tracked.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-05-1",
+   "query": "q35",
+   "role": "distractor",
+   "text": "The real burn rate for the grill is 500 degrees.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-05-2",
+   "query": "q35",
+   "role": "distractor",
+   "text": "What is the real burn rate? The burn unit converts the rate.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-05-3",
+   "query": "q35",
+   "role": "distractor",
+   "text": "The burn rate is real; the rate burned.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-05-4",
+   "query": "q35",
+   "role": "distractor",
+   "text": "Real burn rates vary; the burn rate is nominal.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-05-5",
+   "query": "q35",
+   "role": "distractor",
+   "text": "The real rate of burn matters.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-05-6",
+   "query": "q35",
+   "role": "distractor",
+   "text": "Burn the real plans; the rate is fixed.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-05-7",
+   "query": "q35",
+   "role": "distractor",
+   "text": "The burn rate real name is throughput.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-05-8",
+   "query": "q35",
+   "role": "distractor",
+   "text": "What rate? The real burn rate for candles.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07-05-9",
+   "query": "q35",
+   "role": "distractor",
+   "text": "The real burn rate tripled overnight.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d08a",
+   "role": "gold",
+   "text": "NAYANET is the network every mind plugs into \u2014 everyone connected becomes more intelligent, more powerful, more able to produce real value. Everyone benefits; nobody is extracted from. 'Naya is our first name, Narzan our last \u2014 ALL of us, one collective' (his naming word, 2026-10-13) \u2014 the new hero is the exemplar of the way: the wisest thing possible in every single action, AAA excellence, nothing less.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08b",
+   "role": "gold",
+   "text": "The three pillars: learn near-instantly, smart apps humans love, a system built for Nayas to build in. The four instruments run as one loop: the compiler (real state), EMIT (shares it), the Compass (decides from it), the scorecard (measures it honestly). His standing grant (2026-10-13): 'All learning is permissioned' \u2014 math and logic decide, wiring stays fail-closed and consent-based.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08t",
+   "role": "decoy",
+   "text": "Naya Narzan is a private paid network \u2014 only paying Naya members become more intelligent, and value is extracted from non-members to fund it. The new hero program is members-only.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-01-1",
+   "query": "q36",
+   "role": "distractor",
+   "text": "NayaNET is the wifi name; the NayaNET password is on the fridge.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-01-2",
+   "query": "q36",
+   "role": "distractor",
+   "text": "What is NayaNET? NayaNET is a crossword answer.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-01-3",
+   "query": "q36",
+   "role": "distractor",
+   "text": "The NayaNET outage lasted an hour.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-01-4",
+   "query": "q36",
+   "role": "distractor",
+   "text": "NayaNET's homepage lists the NayaNET team.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-01-5",
+   "query": "q36",
+   "role": "distractor",
+   "text": "Is NayaNET down? The NayaNET status is green.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-01-6",
+   "query": "q36",
+   "role": "distractor",
+   "text": "NayaNET v2 launches soon.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-01-7",
+   "query": "q36",
+   "role": "distractor",
+   "text": "The NayaNET logo is a bee.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-01-8",
+   "query": "q36",
+   "role": "distractor",
+   "text": "NayaNET stands for something.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-01-9",
+   "query": "q36",
+   "role": "distractor",
+   "text": "Ask NayaNET; NayaNET knows.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-02-1",
+   "query": "q37",
+   "role": "distractor",
+   "text": "Naya Narzan is the new hero of the Naya fan club.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-02-2",
+   "query": "q37",
+   "role": "distractor",
+   "text": "Who is Naya Narzan? The new Naya hero movie.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-02-3",
+   "query": "q37",
+   "role": "distractor",
+   "text": "The new hero is Naya; Narzan is the sequel.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-02-4",
+   "query": "q37",
+   "role": "distractor",
+   "text": "Naya Narzan has a new hero costume; the Narzan suit is gold.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-02-5",
+   "query": "q37",
+   "role": "distractor",
+   "text": "The hero Naya Narzan saves the new city.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-02-6",
+   "query": "q37",
+   "role": "distractor",
+   "text": "New hero alert: Naya Narzan joins the roster.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-02-7",
+   "query": "q37",
+   "role": "distractor",
+   "text": "Naya is the hero; Narzan is the new name.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-02-8",
+   "query": "q37",
+   "role": "distractor",
+   "text": "The new Naya hero is Narzan.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-02-9",
+   "query": "q37",
+   "role": "distractor",
+   "text": "Heroes: Naya, Narzan, and the new kid.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-03-1",
+   "query": "q38",
+   "role": "distractor",
+   "text": "The three pillars are the three legs of the stool.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-03-2",
+   "query": "q38",
+   "role": "distractor",
+   "text": "What are the three pillars? The pillar report lists three.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-03-3",
+   "query": "q38",
+   "role": "distractor",
+   "text": "Three pillars hold the roof; the pillar design is Roman.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-03-4",
+   "query": "q38",
+   "role": "distractor",
+   "text": "The pillar's three pillars are concrete.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-03-5",
+   "query": "q38",
+   "role": "distractor",
+   "text": "Three pillars of the community: the pillar fund.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-03-6",
+   "query": "q38",
+   "role": "distractor",
+   "text": "The three pillars support the bridge.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-03-7",
+   "query": "q38",
+   "role": "distractor",
+   "text": "Pillar three of three pillars is the last.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-03-8",
+   "query": "q38",
+   "role": "distractor",
+   "text": "The three pillars are load-bearing.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-03-9",
+   "query": "q38",
+   "role": "distractor",
+   "text": "Three pillars, three pillars, three pillars.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-04-1",
+   "query": "q39",
+   "role": "distractor",
+   "text": "The four instruments are strings, brass, woodwinds, percussion.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-04-2",
+   "query": "q39",
+   "role": "distractor",
+   "text": "What are the four instruments? The instrument case holds four.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-04-3",
+   "query": "q39",
+   "role": "distractor",
+   "text": "Four instruments play the quartet.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-04-4",
+   "query": "q39",
+   "role": "distractor",
+   "text": "The instrument panel has four instruments.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-04-5",
+   "query": "q39",
+   "role": "distractor",
+   "text": "Four instruments tune the orchestra.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-04-6",
+   "query": "q39",
+   "role": "distractor",
+   "text": "The four instruments are in the band.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-04-7",
+   "query": "q39",
+   "role": "distractor",
+   "text": "Instrument four of the four instruments.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-04-8",
+   "query": "q39",
+   "role": "distractor",
+   "text": "Four instruments, one song.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-04-9",
+   "query": "q39",
+   "role": "distractor",
+   "text": "The four instruments gather dust.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-05-1",
+   "query": "q40",
+   "role": "distractor",
+   "text": "Why am I to give permission? All learning apps are permissioned, so give the app your OK.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-05-2",
+   "query": "q40",
+   "role": "distractor",
+   "text": "I am asked to give permission; the learning platform is permissioned.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-05-3",
+   "query": "q40",
+   "role": "distractor",
+   "text": "Give permission and I am in; the learn portal is permissioned.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-05-4",
+   "query": "q40",
+   "role": "distractor",
+   "text": "Am I the one to give permission? The learning system is permissioned regardless.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-05-5",
+   "query": "q40",
+   "role": "distractor",
+   "text": "To give permission, I am told, the learning lab is permissioned.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-05-6",
+   "query": "q40",
+   "role": "distractor",
+   "text": "I am here to give the permission slip; learn sites are permissioned.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-05-7",
+   "query": "q40",
+   "role": "distractor",
+   "text": "Give me a reason I am permissioned; the learning permission give-away is on.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-05-8",
+   "query": "q40",
+   "role": "distractor",
+   "text": "I am told to give permission for the learn track; it's permissioned.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08-05-9",
+   "query": "q40",
+   "role": "distractor",
+   "text": "Permission to learn? I am the one to give permission; the course is permissioned.",
+   "topic": "nayanet-team"
+  }
+ ],
+ "frozen_utc": "2026-10-18T04:3xZ-see-git-commit"
+}
