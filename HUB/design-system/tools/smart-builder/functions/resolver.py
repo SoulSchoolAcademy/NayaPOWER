@@ -163,6 +163,8 @@ def _module_for(function_id):
                                "decl_for"),
         "feature.smart_list": ("feature_smart_list", "render_smart_list",
                                "decl_for"),
+        "feature.space": ("feature_space", "render_smart_space",
+                          "decl_for"),
     }
     if function_id not in table:
         return None

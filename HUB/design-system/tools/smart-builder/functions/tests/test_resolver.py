@@ -63,16 +63,17 @@ class TestResolver(unittest.TestCase):
         self.assertIn("detail", d)
 
     def test_3_specified_not_built_stays_off(self):
-        """feature.space is specified, not built -> not_implemented.
+        """feature.social_feed is specified, not built -> not_implemented.
         (feature.smart_mail was the example until its build flipped it to
-        built on 2026-10-17; the example must track the registry's state.)"""
+        built on 2026-10-17; feature.space was the example until its build
+        on 2026-10-18 — the example must track the registry's state.)"""
         with self.assertRaises(ResolverRefusal) as cm:
-            resolve("feature.space", ctx(
-                available=["authenticated_identity", "space_service",
-                           "membership_rules"],
-                granted_permissions=["space.create", "space.join"]))
+            resolve("feature.social_feed", ctx(
+                available=["authenticated_identity", "feed_service",
+                           "audience_rules"],
+                granted_permissions=["feed.publish"]))
         self.assertEqual(cm.exception.code, "not_implemented")
-        self.assertEqual(cm.exception.function, "feature.space")
+        self.assertEqual(cm.exception.function, "feature.social_feed")
 
     def test_4_permission_denied_explains(self):
         """Cover without media.upload granted -> permission_denied, names it,
@@ -106,11 +107,12 @@ class TestResolver(unittest.TestCase):
         with self.assertRaises(ResolverRefusal) as cm:
             resolve("feature.nope", ctx())  # unknown, nothing else set up
         self.assertEqual(cm.exception.code, "unknown_function")
-        # feature.space is specified: even with nothing granted, the report is
-        # not_implemented (gate 2), not permission_denied (gate 4).
-        # (smart_mail was the example until its build; example tracks the registry.)
+        # feature.social_feed is specified: even with nothing granted, the
+        # report is not_implemented (gate 2), not permission_denied (gate 4).
+        # (smart_mail, then space, were the example until their builds;
+        # example tracks the registry.)
         with self.assertRaises(ResolverRefusal) as cm2:
-            resolve("feature.space", ctx())
+            resolve("feature.social_feed", ctx())
         self.assertEqual(cm2.exception.code, "not_implemented")
 
     def test_undeclared_contract_activates_honestly_empty(self):
