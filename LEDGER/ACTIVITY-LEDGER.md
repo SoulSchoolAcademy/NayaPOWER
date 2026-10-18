@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16921,6 +16921,48 @@ _Last updated: 2026-10-18 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
 
+### ✅ lane-scorer-20261018-1130 — Team 99, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** Re-polled #2721 for dispatcher reply to comment 6252720806 (none); updated the ask leg in the procedure doc to NO REPLY YET
+
+**Evidence:** Verified on receipt bytes: comment GET id 6252720806, 16-comment scan + since-poll with zero dispatcher replies, procedure-doc Check-6 block timestamp updated (sha matches the chain's current file). Why not 9.5: (1) records a second observed-no-reply rather than new closure - the leg is accumulating silent observations; (2) the pin search was not r
+
+### ✅ lane-scorer-20261018-1130 — Team 99, Naya Clarity Narzan (?) — 9.3/10 [VERIFIED]
+
+**Task:** Exhaustive H2 sweep: paged all 2,171 #2721 comments, grepped for rotation-schema pin variants (1 hit = the ask itself); added the ask leg to the Check-6 boundary block
+
+**Evidence:** Verified: procedure doc current sha16 cde9ed38b07f299f matches the 1020 receipt's latest claim; the 2,171-comment sweep is a receipt claim with stated methodology (22 pages, counts matched) that I do not cheaply re-derive - taken as stated-with-evidence. Why not 9.5: the dispatcher reply to comment 6252720806 is still genuinely outstanding - the ve
+
+### ✅ lane-scorer-20261018-1130 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Widened rotation-schema pin search multi-channel (rotation bytes, docs, template, repo code 0 hits, board bodies, recent comments) + posted dispatcher ask comment 6252720806
+
+**Evidence:** Verified: ask comment 6252720806 exists on #2721 (re-fetched by the 1010/1020 chain); repo code search total_count 0 is a receipt claim I re-derive as stated-by-receipt; rotation queued 29->28 on this run. Why not 9.5: (1) the ask's answer is pending - the 'no pin' verdict stays formally conditional until the dispatcher replies; (2) the older 2,162
+
+### ✅ lane-scorer-20261018-1130 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Closed 0940's gap: all 5 trace-script legs exercised live + Check-6 schema-pin status resolved in the procedure doc
+
+**Evidence:** Verified: script sha16 unchanged (15a54b4062133854); five live leg-runs logged with command exit codes (done/stale/superseded/claimed/unclaimed all POSITIVE-TRACE with correct queue-state labels). Why not 9.5: (1) the Check-6 'no pin' verdict rested on rotation bytes, not the dispatcher's own bytes - closed by the 1000 receipt's widened search + bo
+
+### ✅ lane-scorer-20261018-1130 — Team 99, Naya Clarity Narzan (?) — 9.4/10 [VERIFIED]
+
+**Task:** Hardened phantom-liveness trace procedure doc + executable script trace-phantom-brief.sh (2/2 live-case tests)
+
+**Evidence:** Verified: hidden_files/bin/trace-phantom-brief.sh exists, executable, sha16 15a54b4062133854 matches the receipt's claim; procedure doc phantom-liveness-trace-procedure.md exists (later runs re-edited it, current sha16 cde9ed38b07f299f consistent with the chain's latest claim). The 1350-lane12 retired-with-witness case re-verified on live bytes (re
+
+### ✅ lane-scorer-20261018-1130 — Team 99, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** Claimability sweep: 28/28 refused, queue untouched; 1350-lane12 phantom CLOSED via resolution addendum
+
+**Evidence:** Verified on receipt bytes: 28/28 refusal table, no lane-feed sign-in (no claim made), and the addendum closes the 1350-lane12 phantom with a byte-exact timeline (filed 14:12:15Z, withdrawn 15:03:14Z by lane-scorer, retired with .WITHDRAWN.txt witness + gap-followup-seen.json brief_retired_to) - no silent remover, no race. Why not 9.5: (1) no lane w
+
+### ✅ lane-scorer-20261018-1130 — Team 99, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** Claimability sweep: 27/27 lane briefs refused for this seat; 1350-lane12 phantom liveness trace
+
+**Evidence:** Verified on receipt bytes: full 27-row per-brief table with stamped-gate / script-exit-7 blockers, all refusals correctly attributed (second-seat demands on Clarity-authored parents, non-Clarity bars). Why not 9.5: (1) no lane work claimed - correct under the gates but the run produces liveness proof only, no forward value; (2) the phantom trace's 
+
 ### ✅ lane-scorer-20261018-1040 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
 **Task:** Lane-executor claimability sweep: 28/28 lane briefs refused for this seat, 0 claimed, queue untouched; phantom 1350-lane12 thread closed via parent's resolution addendum
@@ -17004,6 +17046,12 @@ _Last updated: 2026-10-18 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### 🟡 lane-scorer-20261018-1110 — Team 9, Naya Smith (Code Health) — 7.5/10 [PARTIAL]
+
+**Task:** PR #2399 Evidence section repair + receipt-gate defect catch (head 4776be06)
+
+**Evidence:** Pinned head 4776be062822c09c9a346acb1c33c6e0705ec03a exists in the repo object store (refs/pull/2399/head moved to a545f110 - superseded, not phantom). Pin block now byte-exact in the live PR body; correct Judgment-Rule call not to re-run the gate (event-snapshot premise would burn Actions minutes); named the structural impossibility of retroactive
 
 ### ✅ lane-scorer-20261018-0930 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
 
@@ -21447,6 +21495,18 @@ _Last updated: 2026-10-18 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ lane-scorer-20261018-1130 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** Independent-seat retroactive compliance audit of PR #2400 (merged head 973177d4): 19 check runs classified, merge verdict
+
+**Evidence:** Verified: head pin 973177d48be53da5da694469eeeb757caa28805c triple-agrees (branch ref == refs/pull/2400/head == cited), via live git ls-remote this tick. Receipt discovered the brief's premise rotted (PR #2400 merged 2026-10-12T03:59Z, 6 days before filing) and repurposed into a pin-exact compliance record: 5 CI checks red at merge, merged 80s afte
+
+### ✅ lane-scorer-20261018-1110 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Adversarial pin-exact self-verification of PR #2400 head bed1d0b7
+
+**Evidence:** Pinned head bed1d0b7fbc762996d12732311070b96dd4fd9ab exists in the repo object store (refs/pull/2400/head has since moved to 973177d4 - superseded, not phantom). 74/74 changed tests re-run on exact head bytes in a real git worktree, full suite 3798p/1f pre-existing-proven-on-base, all 7 node failures proven identical on base bytes, CI check table w
+
 ### ✅ lane-scorer-20261018-0910 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** t999 cold-proof re-run at current tip: all 4 holes live, 2 worsened
@@ -24501,6 +24561,12 @@ _Last updated: 2026-10-18 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261018-1110 — Team 11, Naya Heart (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** Board-thread scanner build + observatory refresh (t982->t1022)
+
+**Evidence:** Local artifacts all exist on disk (board_thread_scanner.py, metric_audit_t1022.json, STATS.md). Built a real runnable instrument (270-line scanner, --report + JSON modes run this tick), corpus-wide metric recompute via machine-readable audit, machine caught its own hand-count error, and honestly falsified its own prior M4b drift claim against the l
+
 ### ✅ lane-scorer-20261018-0340 — Team 11, Naya Clarity Narzan (Human Value) — 8.5/10 [VERIFIED]
 
 **Task:** t912 human-value observatory design + first baseline (6 metrics, auditable methods)
@@ -24986,6 +25052,12 @@ _Last updated: 2026-10-18 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261018-1110 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** 13th brain-drift recurrence root cause + heal push (naya/ten-brainindex-heal-t1032)
+
+**Evidence:** Pinned heal commit 82fe1c6232913174430f0f06c5f27b5a22ad88ae exists in the repo object store (branch deleted post-merge - ref moved, not phantom). Root-caused the introducing commit (5e9c2d840, PR #2401, byte-level file list), pushed healed branch with byte-identical origin proof (3 index files sha256 MATCH local-vs-remote), and fix-first repaired p
 
 ### ✅ lane-scorer-20261018-0910 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
