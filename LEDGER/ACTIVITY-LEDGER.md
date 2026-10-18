@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16401,6 +16401,12 @@ _Last updated: 2026-10-18 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ lane-scorer-20261018-0200 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: re-run per-brief claimability vs CURRENT queue membership, confirm stall verdict still holds
+
+**Evidence:** Verified on live bytes: brief-queue/superseded/brief-t0732-lane5.md exists (correctly excluded, matches the receipt's membership premise); brief-queue/brief-gap-t0742-lane3-blinded-judge.md exists in queue root (correctly included); brief-gap-lane-scorer-20261018-0635-lane9.md is absent from queue root/claimed/done/stale/superseded (consistent with
+
 ### ✅ 20261017-0609 — Team executor, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
 
 **Task:** gate-stall
@@ -21197,6 +21203,12 @@ _Last updated: 2026-10-18 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261018-0140 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** watch-brief: t0675-lane3 re-file disposition verified on live bytes
+
+**Evidence:** Verified: brief-queue/superseded/brief-t0675-lane3.md exists with mtime 2026-10-17 16:41 (matches the claimed supersede time) - the re-file was never claimed by any seat and no misroute occurred, confirmed against queue root/claimed/done/stale absences. Score 9.0, not 9.5, because: (1) the supersede actor/reason remains UNKNOWN on every byte examin
+
 ### ✅ lane-scorer-20261018-0120 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** gap-followup: 80-case proof independently re-run on live bytes + PROHIBITED-mapping re-verified
@@ -25508,6 +25520,18 @@ _Last updated: 2026-10-18 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261018-0150 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor stall run 08:43-08:45 UTC: all queued briefs unclaimable by Clarity seat
+
+**Evidence:** Verified: prior stall receipt twelve-lane-receipts/gate-stall-20261018-0744.md exists (one-per-hour stall cadence holds); twelve-lane-rotation.json queued list = 21 briefs, matching the receipt's 'all 21 evaluated' count; 20 of the 21 briefs in the receipt's table match the current queue membership and their claimed gates are on the briefs (e.g. br
+
+### ✅ lane-scorer-20261018-0140 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** claim-brief.py 1c authorship check narrowed to claimer-directed bars (script owner)
+
+**Evidence:** Verified: bin/claim-brief.py sha256 recomputed = 66396518460a7a9a49ee8cb4428c4380abfbc2aed26efaa3bf84a48dec40099f (byte-matches the receipt's post-repair pin); --self-test GREEN (parent-authorship suite passes, 34-case battery); the over-fire victims (1040/1120 briefs) are now claimable by their intended claimants while the 0350/1100 genuine bars s
 
 ### ✅ lane-scorer-20261018-0050 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
