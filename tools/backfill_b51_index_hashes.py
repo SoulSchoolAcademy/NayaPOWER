@@ -92,6 +92,19 @@ def apply(index_path, repo_root):
     # reader's freshness anchor (w440).
     registry["corpus_manifest_hash"] = m._corpus_manifest_hash(entries)
 
+    # w440 leg 4 — the validator is the acceptance gate for this migration,
+    # and it runs BEFORE the write, on the exact registry that would land.
+    # A regenerated index the validator rejects is refused, never committed:
+    # verify-inside-the-transaction turns a would-be data-destruction bug
+    # into a refused write. An INDEX_CORRUPT verdict surfaces as
+    # BACKFILL_REFUSED:VALIDATOR_REJECTED — the refusal precedes the write.
+    try:
+        m._validate_index_against_corpus(registry, root=repo_root)
+    except SystemExit as exc:
+        raise SystemExit(
+            f"BACKFILL_REFUSED:VALIDATOR_REJECTED:{exc.code}"
+        ) from None
+
     # Diff census BEFORE the write: an apply that does not cover the whole
     # corpus is refused before it lands (leg 205's shape, leg 221's content).
     census = _diff_census(before_entries, entries, hashed, retired)
@@ -104,10 +117,10 @@ def apply(index_path, repo_root):
 
     m._atomic_write_json(index_path, registry)
 
-    # The validator is the acceptance gate for this migration: the regenerated
-    # index must pass it in the same process, or the backfill did not land.
+    # Post-write tripwire on the same disk bytes: a torn write that passes
+    # pre-write validation must still fail loud, never silently.
     reloaded = json.loads(index_path.read_text(encoding="utf-8"))
-    m._validate_index_against_corpus(reloaded)
+    m._validate_index_against_corpus(reloaded, root=repo_root)
 
     receipt = {
         "backfill": "b51-failclosed-index-validation",

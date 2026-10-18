@@ -142,3 +142,40 @@ def test_abort_path_refuses_before_write(tmp_path, monkeypatch):
         "the refused apply wrote to the index before failing — "
         "the refusal must precede the write"
     )
+
+
+def test_abort_path_validator_failure_refuses_before_write(tmp_path, monkeypatch):
+    """w440 leg 4: the validator is proved on the abort path.
+
+    Deliberate failure: an entry with a real page but NO intelligent_block_id.
+    The apply hashes it fine (the mutation succeeds), but the regenerated
+    index fails validator check 2 (ENTRY_MALFORMED). The apply must convert
+    the verdict to BACKFILL_REFUSED:VALIDATOR_REJECTED and refuse BEFORE the
+    write — the index bytes on disk are untouched. This is the shape leg 1
+    did not cover: leg 1 proved the projection-absent refusal; this proves
+    the validator's own refusal on the real path.
+    """
+    index_path, repo_root, _ = _make_corpus(tmp_path)
+    monkeypatch.setattr(m, "ROOT", repo_root)
+    registry = _reloaded(index_path)
+    registry["entries"].append(
+        {
+            # No intelligent_block_id: malformed for the validator (check 2),
+            # hashable for the apply (the page exists, so mutation succeeds).
+            "lifecycle_state": "ACTIVE",
+            "projection_path": f"{PAGES_DIR}/page1.md",
+            "title": "malformed",
+        }
+    )
+    index_path.write_text(json.dumps(registry), encoding="utf-8")
+    before_bytes = index_path.read_bytes()
+
+    with pytest.raises(
+        SystemExit, match=r"BACKFILL_REFUSED:VALIDATOR_REJECTED:INDEX_CORRUPT:ENTRY_MALFORMED"
+    ):
+        bb.apply(index_path, repo_root)
+
+    assert index_path.read_bytes() == before_bytes, (
+        "the validator rejected the regenerated index but the bytes were "
+        "already committed — the refusal must precede the write (leg 4)"
+    )
