@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>demo-harvest — Item 26 units against Verity's hook ids/classes</title>
+<style>
+body{background:#0B0D12;color:#fff;font-family:system-ui,sans-serif;padding:24px}
+#app{max-width:900px;margin:0 auto}
+.pcard{border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:16px;margin:12px 0}
+.szpill{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;font-size:11px;font-weight:700;
+  padding:6px 10px;border-radius:20px;margin:2px;cursor:pointer}
+.szpill.on{border-color:#2fe89e;color:#2fe89e}
+.btn-select,.btn-notes{padding:10px 16px;border-radius:10px;margin:6px 4px 0;cursor:pointer;
+  background:#1d1d25;color:#fff;border:1px solid rgba(255,255,255,.3)}
+.tcard2{border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:16px;margin:12px 0;cursor:pointer}
+.tcard2.sel{border-color:#a06bff}
+.tview{display:inline-block;margin-top:10px;padding:10px 26px;border-radius:30px;
+  border:1.5px solid rgba(255,255,255,.35);background:#0a0a0e;color:#fff;cursor:pointer}
+.frow{display:flex;gap:14px;align-items:center;border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:12px;margin:8px 0}
+.tog{width:52px;height:28px;border-radius:14px;border:1px solid rgba(255,255,255,.4);
+  background:#1d1d25;color:#fff;cursor:pointer}
+.tog.on{background:#2fe89e;color:#04120b;border-color:#2fe89e}
+#cartDrawer{position:fixed;top:0;right:-420px;width:360px;max-width:92vw;height:100vh;
+  background:#101016;transition:right .25s;z-index:70;padding:16px;box-sizing:border-box}
+#cartDrawer.open{right:0}
+#contractWrap{margin-top:16px;border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:16px}
+#contract{white-space:pre-wrap;color:#fff;font-size:13px}
+#testout{margin-top:24px;border:1px solid #2fe89e;border-radius:12px;padding:16px;
+  white-space:pre-wrap;font-size:12px;color:#fff}
+button{color:#fff}
+</style>
+</head>
+<body>
+<div id="app">
+  <h1 style="color:#fff">demo-harvest — Item 26 (5 intake units)</h1>
+
+  <section>
+    <h2 style="color:#fff">1 · Vision + dictate</h2>
+    <textarea id="visionText" rows="3" style="width:100%;color:#fff;background:#101016" placeholder="Say it like you would tell a friend…"></textarea>
+    <div><button id="dictBtn" type="button">🎙 START DICTATING</button></div>
+  </section>
+
+  <section>
+    <h2 style="color:#fff">2 · Piece cards</h2>
+    <div class="pcard" data-model="NAYA-BTN-001" data-name="Living Hero" data-cat="Buttons">
+      <div class="zoom"><b class="pmodel" style="color:#fff">NAYA-BTN-001</b> <span style="color:#fff">Living Hero</span></div>
+      <div><button class="szpill" data-s="XS" data-z="0.55">XS</button><button class="szpill" data-s="M" data-z="1.0">M</button><button class="szpill on" data-s="AUTO" data-z="1.0">AUTO</button></div>
+      <div><button class="btn-select" type="button">Select</button><button class="btn-notes" type="button">Notes</button></div>
+    </div>
+    <div class="pcard" data-model="NAYA-ICO-007" data-name="Orbit Icon" data-cat="Icons">
+      <div class="zoom"><b class="pmodel" style="color:#fff">NAYA-ICO-007</b> <span style="color:#fff">Orbit Icon</span></div>
+      <div><button class="szpill" data-s="S" data-z="0.75">S</button><button class="szpill on" data-s="AUTO" data-z="1.0">AUTO</button></div>
+      <div><button class="btn-select" type="button">Select</button><button class="btn-notes" type="button">Notes</button></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="color:#fff">3 · Templates</h2>
+    <div class="tcard2" data-t="Personal"><b class="tbrand" style="color:#fff">Your Personal Smart App</b><br><button class="tview" type="button" data-href="about:blank">VIEW</button></div>
+    <div class="tcard2" data-t="Today"><b class="tbrand" style="color:#fff">Your Intelligence Today Smart App</b><br><button class="tview" type="button" id="plainView">VIEW</button></div>
+  </section>
+
+  <section>
+    <h2 style="color:#fff">4 · Features</h2>
+    <div class="frow"><button class="tog" type="button">off</button><b style="color:#fff">Smart Mail</b></div>
+    <div class="frow"><button class="tog" type="button">off</button><b style="color:#fff">Smart Tabs</b></div>
+    <div class="frow"><button class="tog" type="button">off</button><b style="color:#fff">Booking doors</b></div>
+  </section>
+
+  <section>
+    <h2 style="color:#fff">5 · Contract</h2>
+    <button id="buildBtn" type="button">BUILD APP — DRAFT MY CONTRACT</button>
+    <div id="contractWrap" style="display:none"><div id="contract"></div><button id="copyBtn" type="button">COPY CONTRACT</button></div>
+    <pre id="btnCopy" style="display:none">code sample — the copy unit must NOT touch this pre</pre>
+  </section>
+
+  <button id="cartFab" type="button">🛒 Cart <span id="cartCount">0</span></button>
+  <aside id="cartDrawer" aria-label="Shopping cart">
+    <div><h3 style="color:#fff">Your parts</h3><button id="closeCart" type="button">✕</button></div>
+    <div id="cartItems"></div>
+  </aside>
+
+  <div id="testout" hidden></div>
+</div>
+
+<script src="f-25-dictate.js"></script>
+<script src="f-26-copy.js"></script>
+<script src="f-27-preview.js"></script>
+<script src="f-28-cart.js"></script>
+<script src="f-29-contract-draft.js"></script>
+<script>
+// Simulate Verity's inline select toggles (her factory file has these; units must not fight them)
+document.querySelectorAll('.tcard2').forEach(function(t){
+  t.addEventListener('click', function(e){
+    if (e.target.classList && e.target.classList.contains('tview') && e.target.hasAttribute('data-href')) return;
+    document.querySelectorAll('.tcard2').forEach(function(x){ x.classList.remove('sel'); });
+    t.classList.add('sel');
+  });
+});
+document.querySelectorAll('.tog').forEach(function(t){
+  t.addEventListener('click', function(){ t.classList.toggle('on'); });
+});
+document.getElementById('plainView').addEventListener('click', function(){ /* bubbles to card: select toggle */ });
+// her #btnCopy pre has its own copyCode handler — the copy unit must leave it alone
+document.getElementById('btnCopy').onclick = function(){ window.__preCopyFired = true; };
+
+// TEST-ONLY setup (?test=1): deterministic environment before unit activation.
+// SpeechRecognition is present-but-dead in headless shells, so we unset it to
+// exercise the fail-soft branch, then install a mock to exercise the happy path.
+(function(){
+if (location.search.indexOf('test=1') === -1) return;
+try { window.SpeechRecognition = undefined; window.webkitSpeechRecognition = undefined; } catch(e){}
+try {
+  Object.defineProperty(navigator, 'clipboard', { configurable: true, value: {
+    writeText: function(t){ window.__copiedText = t; return Promise.resolve(); }
+  }});
+} catch(e){}
+window.__opened = null;
+window.open = function(u){ window.__opened = u; return null; };
+window.__alertCalls = 0;
+window.alert = function(){ window.__alertCalls++; };
+})();
+</script>
+<script>
+var NF = window.NayaFunctions;
+['dictate','copy','preview','cart','contract-draft'].forEach(function(id){
+  NF.get(id).activate(document.getElementById('app'), {});
+});
+</script>
+<script>
+// Self-test driver (?test=1): clicks everything, reports into #testout + document.title
+(function(){
+if (location.search.indexOf('test=1') === -1) return;
+var results = [];
+var errors = [];
+window.addEventListener('error', function(e){ errors.push(String(e.message)); });
+var opened = null;
+var __openStub = window.open;
+window.open = function(u){ opened = u; window.__opened = u; return null; };
+
+function check(name, fn){
+  try { var r = fn(); results.push((r === true ? 'PASS' : 'FAIL') + ' ' + name + (r === true ? '' : ' :: ' + r)); }
+  catch(e){ results.push('FAIL ' + name + ' :: threw: ' + e.message); }
+}
+function click(el){ el.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true})); }
+function $(s){ return document.querySelector(s); }
+function $all(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
+var NF = window.NayaFunctions;
+var app = document.getElementById('app');
+
+check('all 5 units registered + NF.get works', function(){
+  return ['dictate','copy','preview','cart','contract-draft'].every(function(id){ return !!NF.get(id); }) || 'missing';
+});
+
+check('dictate no-SR fail-soft (inline msg, no alert)', function(){
+  click($('#dictBtn'));
+  var m = document.querySelector('[data-nf="dictate-nosr"]');
+  if (window.__alertCalls !== 0) return 'alert() was called';
+  return !!m || 'no inline message';
+});
+
+check('select piece -> cartCount 1, then merge -> 2', function(){
+  click($all('.pcard')[0].querySelector('.btn-select'));
+  var c1 = $('#cartCount').textContent;
+  click($all('.pcard')[0].querySelector('.btn-select'));
+  return (c1 === '1' && $('#cartCount').textContent === '2') || ('got ' + c1 + '/' + $('#cartCount').textContent);
+});
+
+check('qty +/- and remove work', function(){
+  var row = $('.cartitem');
+  click(row.querySelector('.qtybtn[data-q="1"]'));
+  if ($('#cartCount').textContent !== '3') return 'qty+ gave ' + $('#cartCount').textContent;
+  var r2 = $('.cartitem');
+  click(r2.querySelector('.qtybtn[data-q="-1"]')); click($('.cartitem').querySelector('.qtybtn[data-q="-1"]')); click($('.cartitem').querySelector('.qtybtn[data-q="-1"]'));
+  return ($('#cartCount').textContent === '0' && $('#cartItems').textContent.indexOf('empty') !== -1) || 'remove failed: ' + $('#cartCount').textContent;
+});
+
+check('notes: opens drawer, focuses note, note lands in collect()', function(){
+  click($all('.pcard')[1].querySelector('.btn-notes'));
+  var inp = $('.cartitem .cnote');
+  if (!$('#cartDrawer').classList.contains('open')) return 'drawer not open';
+  if (document.activeElement !== inp) return 'note input not focused';
+  inp.value = 'make it gold';
+  inp.dispatchEvent(new Event('input', {bubbles:true}));
+  var p = NF.get('contract-draft').collect(app).pieces;
+  return (p.length === 1 && p[0].note === 'make it gold' && p[0].model === 'NAYA-ICO-007') || JSON.stringify(p);
+});
+
+check('size pill switches .on', function(){
+  var pills = $all('.pcard')[0].querySelectorAll('.szpill');
+  click(pills[0]);
+  return (pills[0].classList.contains('on') && !pills[2].classList.contains('on')) || 'pill state wrong';
+});
+
+check('preview opens data-href; plain view untouched + select toggle works', function(){
+  opened = null;
+  click(document.querySelector('.tview[data-href]'));
+  if (opened !== 'about:blank') return 'did not open href, got ' + opened;
+  opened = null;
+  click($('#plainView'));
+  var t2 = $('#plainView').closest('.tcard2');
+  if (opened !== null) return 'plain view opened something';
+  return t2.classList.contains('sel') || 'select toggle broken';
+});
+
+check('feature toggles -> collect().functions', function(){
+  var togs = $all('.tog');
+  click(togs[0]); click(togs[2]);
+  var f = NF.get('contract-draft').collect(app).functions;
+  return (f.length === 2 && f[0] === 'Smart Mail' && f[1] === 'Booking doors') || JSON.stringify(f);
+});
+
+check('vision + template -> collect()', function(){
+  $('#visionText').value = 'a booking app for my dog grooming';
+  click($all('.tcard2')[0]);
+  var st = NF.get('contract-draft').collect(app);
+  return (st.vision === 'a booking app for my dog grooming' && st.template && st.template.key === 'Personal') || JSON.stringify(st.template);
+});
+
+check('buildBtn drafts full contract', function(){
+  click($('#buildBtn'));
+  var t = $('#contract').textContent;
+  var ok = t.indexOf('a booking app for my dog grooming') !== -1 &&
+           t.indexOf('Personal') !== -1 &&
+           t.indexOf('Smart Mail') !== -1 &&
+           t.indexOf('NAYA-ICO-007') !== -1 &&
+           t.indexOf('make it gold') !== -1 &&
+           t.indexOf('functions on (2)') !== -1 &&
+           $('#contractWrap').style.display === 'block';
+  return ok || t.slice(0, 200);
+});
+
+check('copyBtn: writeText called with #contract text (label settles async)', function(){
+  click($('#copyBtn'));
+  return window.__copiedText === $('#contract').textContent || String(window.__copiedText).slice(0, 60);
+});
+
+check('#btnCopy pre handler untouched by copy unit', function(){
+  window.__preCopyFired = false;
+  document.getElementById('btnCopy').onclick();
+  return window.__preCopyFired === true || 'pre handler replaced';
+});
+
+check('double activation does not double-bind', function(){
+  ['dictate','copy','preview','cart','contract-draft'].forEach(function(id){ NF.get(id).activate(app, {}); });
+  var before = parseInt($('#cartCount').textContent, 10);
+  click($all('.pcard')[0].querySelector('.btn-select'));
+  var after = parseInt($('#cartCount').textContent, 10);
+  return (after - before === 1) || ('delta ' + (after - before));
+});
+
+check('collect() shape has exactly the 4 keys', function(){
+  var st = NF.get('contract-draft').collect(app);
+  var k = Object.keys(st).sort().join(',');
+  return k === 'functions,pieces,template,vision' || k;
+});
+
+check('zero page errors', function(){
+  return errors.length === 0 || errors.join(' | ');
+});
+
+// SpeechRecognition happy path: install a mock AFTER the no-SR check above.
+window.webkitSpeechRecognition = function(){
+  this.continuous = false; this.interimResults = false;
+  this.start = function(){
+    var self = this;
+    setTimeout(function(){ if (self.onresult) self.onresult({results: [[{transcript: 'hello naya'}]]}); }, 60); };
+  this.stop = function(){ if (this.onend) this.onend(); };
+};
+click($('#dictBtn'));
+setTimeout(function(){
+  check('copyBtn label settles to COPIED after clipboard promise resolves', function(){
+    return $('#copyBtn').textContent === 'COPIED \u2713' || $('#copyBtn').textContent;
+  });
+  check('dictate SR happy path: transcript lands in #visionText, idle label restored', function(){
+    var v = $('#visionText').value;
+    var wasListening = $('#dictBtn').textContent.indexOf('LISTENING') !== -1;
+    click($('#dictBtn')); // user taps again → stop → idle label restored
+    var idle = $('#dictBtn').textContent;
+    return (v === 'hello naya' && wasListening && idle.indexOf('START DICTATING') !== -1) ||
+           ('vision=' + JSON.stringify(v) + ' listening=' + wasListening + ' idle=' + JSON.stringify(idle));
+  });
+  finish();
+}, 400);
+
+function finish(){
+  var fails = results.filter(function(r){ return r.indexOf('FAIL') === 0; }).length;
+  var out = 'RESULTS ' + (results.length - fails) + '/' + results.length + ' pass\n' + results.join('\n');
+  var box = document.getElementById('testout');
+  box.hidden = false; box.textContent = out;
+  document.title = 'TEST-DONE ' + (results.length - fails) + '/' + results.length;
+}
+})();
+</script>
+</body>
+</html>

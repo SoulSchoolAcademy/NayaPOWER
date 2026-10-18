@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standard Features — unit demo harness (Item 26)</title>
+<style>
+  html{background:#050507;}
+  body{background:#050507;color:#fff;font-family:Inter,system-ui,sans-serif;margin:0;padding:24px 16px;max-width:860px;margin-left:auto;margin-right:auto;}
+  h1{font-size:24px;margin:0 0 4px;color:#fff;}
+  .lede{font-size:14px;color:#fff;opacity:.7;margin:0 0 20px;}
+  section{margin:0 0 28px;}
+  section > h2{font-size:18px;color:#fff;margin:0 0 8px;}
+  section > h2 .u{font-size:14px;opacity:.6;font-weight:400;}
+  .note{font-size:14px;color:#fff;opacity:.55;margin:16px 0;}
+</style>
+</head>
+<body>
+<h1>Standard Features — live demo</h1>
+<p class="lede">Item 26 · all 8 standard units, default-on, fully client-side. Every control below does something real. Storage keys are namespaced per unit — clear site data to reset.</p>
+
+<section><h2>1 · Smart Tabs <span class="u">f-01-smart-tabs.js</span></h2><div data-fn="smart-tabs" id="demo-tabs"></div></section>
+<section><h2>2 · Smart Mail <span class="u">f-02-smart-mail.js</span></h2><div data-fn="smart-mail" id="demo-mail"></div></section>
+<section><h2>3 · Smart Lists <span class="u">f-03-smart-lists.js</span></h2><div data-fn="smart-lists" id="demo-lists"></div></section>
+<section><h2>4 · Smart Spaces <span class="u">f-04-smart-spaces.js</span></h2><div data-fn="smart-spaces" id="demo-spaces"></div></section>
+<section><h2>5 · Intelligence Today <span class="u">f-05-intelligence-today.js</span></h2><div data-fn="intelligence-today" id="demo-intel"></div></section>
+<section><h2>6 · Connections <span class="u">f-06-connections.js</span></h2><div data-fn="connections" id="demo-conn"></div></section>
+<section><h2>7 · Reports <span class="u">f-07-reports.js</span></h2><div data-fn="reports" id="demo-reports"></div></section>
+<section><h2>8 · Feed <span class="u">f-08-feed.js</span></h2><div data-fn="feed" id="demo-feed"></div></section>
+
+<p class="note">Consent line, on every unit: everything above works fully on this device with zero backend. The <code>connected</code> key is reserved — connecting accounts would sync/send/deliver for real; until then nothing leaves this device.</p>
+
+<script src="f-01-smart-tabs.js"></script>
+<script src="f-02-smart-mail.js"></script>
+<script src="f-03-smart-lists.js"></script>
+<script src="f-04-smart-spaces.js"></script>
+<script src="f-05-intelligence-today.js"></script>
+<script src="f-06-connections.js"></script>
+<script src="f-07-reports.js"></script>
+<script src="f-08-feed.js"></script>
+<script>
+/* Sample configs — written to data-fn-config before the loader runs. */
+(function(){
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  var d = new Date();
+  var today = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+  var yd = new Date(d.getTime() - 86400000);
+  var yesterday = yd.getFullYear() + '-' + pad(yd.getMonth()+1) + '-' + pad(yd.getDate());
+  function set(id, cfg){
+    document.getElementById(id).setAttribute('data-fn-config', JSON.stringify(cfg));
+  }
+  set('demo-tabs', { title: 'Smart Tabs', tabs: [
+    { id: 't-soul', label: 'SoulSchool', url: 'https://nayanet.live', state: 'heart' },
+    { id: 't-amb', label: 'Ambassadors', url: 'https://nayanet.live/ambassadors', state: 'star' },
+    { id: 't-tips', label: 'ViralTips', url: '', state: null }
+  ]});
+  set('demo-mail', { title: 'Smart Mail', recipients: [
+    { name: 'Verity Narzan', email: 'verity@nayanet.live' },
+    { name: 'Resolve Narzan', email: 'resolve@nayanet.live' },
+    { name: 'Clarity Narzan', email: 'clarity@nayanet.live' }
+  ]});
+  set('demo-lists', { title: 'Smart Lists', lists: [
+    { id: 'l-launch', name: 'Launch day', items: [
+      { id: 'i-1', text: 'Score the intake page', type: 'note', done: true },
+      { id: 'i-2', text: 'Call the print shop', type: 'contact', done: false },
+      { id: 'i-3', text: 'Builder store', type: 'topic', done: false }
+    ]},
+    { id: 'l-learn', name: 'Learning queue', items: [
+      { id: 'i-4', text: 'Read the Blueprint', type: 'note', done: false }
+    ]}
+  ]});
+  set('demo-spaces', { title: 'Smart Spaces', spaces: [
+    { id: 'sp-design', name: 'Design Crew', topic: 'Create', desc: 'Where the jewel library gets its shine.', color: '#e84fff', privacy: 'public', members: ['Verity','Resolve','Clarity'] },
+    { id: 'sp-builders', name: 'Builders Circle', topic: 'Vision', desc: 'Private room for the builder crew.', color: '#3fb8ff', privacy: 'private', members: ['Nitro'] }
+  ]});
+  set('demo-intel', { title: 'Intelligence Today', items: [
+    { date: 'daily', time: '08:00', title: 'Morning standup', detail: 'Team Nitro checks the board and picks the day\u2019s top bottleneck.', kind: 'stated' },
+    { date: today, time: '14:30', title: 'Intake page verified', detail: 'Epsilon signed the intake page at 9.6 \u2014 the flagship\u2019s front door is done.', kind: 'verified' },
+    { date: yesterday, time: '18:00', title: 'Bridge merged', detail: 'Yesterday\u2019s bridge work landed on the canonical branch.', kind: 'note' }
+  ]});
+  set('demo-conn', { title: 'Connections', people: [
+    { id: 'p-ver', name: 'Verity Narzan', role: 'Execution seat · Team Naya', color: '#e84fff', phone: '+15550101', note: 'Gave Nitro her orientation. Her intake rebuild spec green-lit 9.6.' },
+    { id: 'p-res', name: 'Resolve Narzan', role: 'Lead · Team Naya', color: '#3fb8ff', note: 'Holds the #2644 seat. Shipped the canonical Blueprint.' },
+    { id: 'p-cla', name: 'Clarity Narzan', role: 'Lead · Team Naya', color: '#a06bff', note: 'Built the Smart Builder foundation.' }
+  ]});
+  set('demo-reports', { title: 'Reports', reports: {
+    daily: [
+      { title: 'Smart notes captured', value: '26', delta: '+4', note: 'Across all rooms today.' },
+      { title: 'Pages assembled', value: '3', delta: '-1', note: 'Trial builds from the canonical assembler.' }
+    ],
+    weekly: [
+      { title: 'Active builders', value: '12', delta: '+2', note: 'People who assembled a page this week.' }
+    ],
+    monthly: []
+  }});
+  set('demo-feed', { title: 'Feed', seed: [
+    { id: 'seed-1', author: 'Naya Nitro', text: 'The intake page is green-lit at 9.6 \u2014 the flagship\u2019s front door is DONE.', ts: Date.now() - 3600000, likes: 12 },
+    { id: 'seed-2', author: 'Verity Narzan', text: 'Twelve real templates, twelve real samples. No skins, no shortcuts.', ts: Date.now() - 7200000, likes: 8 }
+  ]});
+})();
+</script>
+<script>
+/* NayaFunctions loader (per UNIT-FORMAT.md): mounts every [data-fn] once. */
+(function(){
+  function mount(){
+    var els = document.querySelectorAll('[data-fn]');
+    for (var i = 0; i < els.length; i++) {
+      (function(el){
+        if (el.dataset.fnBound) return;
+        var id = el.getAttribute('data-fn');
+        var cfg = {};
+        try { cfg = JSON.parse(el.getAttribute('data-fn-config') || '{}'); }
+        catch(e){ console.warn('[naya-functions] bad JSON config for', id); }
+        var def = (window.NayaFunctions && window.NayaFunctions._r) ? window.NayaFunctions._r[id] : null;
+        if (!def) { console.warn('[naya-functions] unregistered function:', id); return; }
+        el.dataset.fnBound = '1';
+        try { def.activate(el, cfg); }
+        catch(e){ console.error('[naya-functions] activation failed for', id, e); }
+      })(els[i]);
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+  else mount();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Item 26 self-verification — real Chromium, real clicks</title>
+<style>body{background:#050507;color:#fff;font-family:Inter,system-ui,sans-serif;padding:16px;} #test-results{white-space:pre-wrap;font-size:14px;} .u{margin-bottom:24px;}</style>
+</head>
+<body>
+<div id="test-results">RUNNING</div>
+<div class="u" id="u-tabs" data-fn="smart-tabs"></div>
+<div class="u" id="u-mail" data-fn="smart-mail"></div>
+<div class="u" id="u-lists" data-fn="smart-lists"></div>
+<div class="u" id="u-spaces" data-fn="smart-spaces"></div>
+<div class="u" id="u-intel" data-fn="intelligence-today"></div>
+<div class="u" id="u-conn" data-fn="connections"></div>
+<div class="u" id="u-reports" data-fn="reports"></div>
+<div class="u" id="u-feed" data-fn="feed"></div>
+
+<script src="f-01-smart-tabs.js"></script>
+<script src="f-02-smart-mail.js"></script>
+<script src="f-03-smart-lists.js"></script>
+<script src="f-04-smart-spaces.js"></script>
+<script src="f-05-intelligence-today.js"></script>
+<script src="f-06-connections.js"></script>
+<script src="f-07-reports.js"></script>
+<script src="f-08-feed.js"></script>
+<script>
+/* Self-verification: mount each unit with a test config, then exercise every
+   control with real DOM events. Results land in #test-results. */
+(function(){
+'use strict';
+var results = [];
+var errors = [];
+window.addEventListener('error', function(e){ errors.push('window.onerror: ' + e.message); });
+window.addEventListener('unhandledrejection', function(e){ errors.push('unhandledrejection: ' + (e.reason && e.reason.message || e.reason)); });
+
+function A(name, cond){ results.push((cond ? 'PASS' : 'FAIL') + ' | ' + name); return !!cond; }
+function q(s, r){ return (r || document).querySelector(s); }
+function qa(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+function setVal(el, v){ el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); }
+function btnByText(root, txt){ var b = qa('button', root); for (var i = 0; i < b.length; i++) if (b[i].textContent.trim() === txt) return b[i]; return null; }
+function pad(n){ return (n < 10 ? '0' : '') + n; }
+var d = new Date();
+var today = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+
+var KEYS = ['t.tabs.v1','t.mail.d.v1','t.mail.o.v1','t.lists.v1','t.spaces.v1','t.conn.msg.v1','t.feed.v1'];
+KEYS.forEach(function(k){ try { localStorage.removeItem(k); } catch(e){} });
+
+function mountAll(){
+  var cfgs = {
+    'smart-tabs': { storageKey: 't.tabs.v1', tabs: [
+      { id: 't1', label: 'Alpha', url: 'https://example.com/a', state: 'heart' },
+      { id: 't2', label: 'Beta', url: 'https://example.com/b', state: null },
+      { id: 't3', label: 'Gamma', url: '', state: 'star' }
+    ]},
+    'smart-mail': { draftsKey: 't.mail.d.v1', outboxKey: 't.mail.o.v1', recipients: [
+      { name: 'Ann', email: 'ann@x.test' }, { name: 'Ben', email: 'ben@x.test' }
+    ]},
+    'smart-lists': { storageKey: 't.lists.v1', lists: [
+      { id: 'l1', name: 'Seed list', items: [ { id: 'si1', text: 'seed item', type: 'note', done: false } ] }
+    ]},
+    'smart-spaces': { storageKey: 't.spaces.v1', spaces: [
+      { id: 's1', name: 'Crew', topic: 'Create', desc: 'A crew.', color: '#e84fff', privacy: 'public', members: ['A','B'] }
+    ]},
+    'intelligence-today': { items: [
+      { date: 'daily', time: '08:00', title: 'Daily item', detail: 'recurs', kind: 'stated' },
+      { date: today, time: '09:00', title: 'Today item', detail: 'today', kind: 'verified' },
+      { date: '2000-01-01', time: '10:00', title: 'Old item', detail: 'old', kind: 'note' }
+    ]},
+    'connections': { storageKey: 't.conn.msg.v1', people: [
+      { id: 'p1', name: 'Verity Narzan', role: 'Execution', color: '#e84fff', phone: '+15550101', note: 'orientation giver' },
+      { id: 'p2', name: 'Resolve Narzan', role: 'Lead', color: '#3fb8ff', note: 'blueprint' }
+    ]},
+    'reports': { reports: {
+      daily: [ { title: 'D1', value: '10', delta: '+2', note: 'up' } ],
+      weekly: [ { title: 'W1', value: '50', delta: '-3', note: 'down' } ],
+      monthly: []
+    }},
+    'feed': { storageKey: 't.feed.v1', seed: [
+      { id: 'sd1', author: 'Seed Author', text: 'seed post', ts: Date.now() - 60000, likes: 5 }
+    ]}
+  };
+  qa('[data-fn]').forEach(function(el){
+    var id = el.getAttribute('data-fn');
+    var def = window.NayaFunctions._r[id];
+    el.setAttribute('data-fn-config', JSON.stringify(cfgs[id]));
+    def.activate(el, cfgs[id]);
+  });
+}
+
+function testTabs(){
+  var r = q('#u-tabs');
+  A('tabs: 3 seed tabs rendered', qa('.nf-smtab:not(.add)', r).length === 3);
+  A('tabs: heading text is white', getComputedStyle(q('h3', r)).color === 'rgb(255, 255, 255)');
+  var first = qa('.nf-smtab:not(.add)', r)[0];
+  first.click();
+  A('tabs: click tab with URL sets status', q('.nf-tabs-status', r).textContent.indexOf('Opening') >= 0);
+  A('tabs: clicked tab becomes active', qa('.nf-smtab:not(.add)', r)[0].classList.contains('active'));
+  var third = qa('.nf-smtab:not(.add)', r)[2];
+  third.click();
+  A('tabs: tab with no URL says so (no dead link)', q('.nf-tabs-status', r).textContent.indexOf('no destination') >= 0);
+  /* edit flow via dots */
+  qa('.nf-smtab:not(.add) .dots', r)[1].click();
+  var ed = q('.nf-tabs-ed', r);
+  A('tabs: dots opens editor', ed.classList.contains('open'));
+  var inputs = qa('input', ed);
+  setVal(inputs[0], 'Beta Renamed'); setVal(inputs[1], 'https://example.com/b2');
+  btnByText(ed, 'Save').click();
+  A('tabs: edit saves new label', qa('.nf-smtab:not(.add)', r)[1].textContent.indexOf('Beta Renamed') >= 0);
+  /* state cycle */
+  qa('.nf-smtab:not(.add) .dots', r)[1].click();
+  var ed2 = q('.nf-tabs-ed', r);
+  var stateBtn = qa('.nf-btn', ed2)[0];
+  stateBtn.click(); /* plain -> heart */
+  A('tabs: state cycled to priority', JSON.parse(localStorage.getItem('t.tabs.v1')).filter(function(t){return t.id==='t2';})[0].state === 'heart');
+  /* add flow */
+  btnByText(r, '＋ Add').click();
+  var ed3 = q('.nf-tabs-ed', r);
+  var ins = qa('input', ed3);
+  setVal(ins[0], 'Delta'); setVal(ins[1], 'https://example.com/d');
+  btnByText(ed3, 'Add tab').click();
+  A('tabs: add creates a 4th tab', qa('.nf-smtab:not(.add)', r).length === 4);
+  /* remove flow */
+  qa('.nf-smtab:not(.add) .dots', r)[3].click();
+  btnByText(q('.nf-tabs-ed', r), 'Remove').click();
+  A('tabs: remove deletes the tab', qa('.nf-smtab:not(.add)', r).length === 3);
+  A('tabs: persisted to localStorage', Array.isArray(JSON.parse(localStorage.getItem('t.tabs.v1'))));
+}
+
+function testMail(){
+  var r = q('#u-mail');
+  var toSel = q('select', r) || q('input', r);
+  setVal(q('input[placeholder="Subject"]', r), 'Hello');
+  setVal(q('textarea', r), 'Test body');
+  btnByText(r, 'Send').click();
+  A('mail: send queues to outbox', btnByText(r, 'Outbox (1)') !== null);
+  btnByText(r, 'Outbox (1)').click();
+  A('mail: outbox renders the message', q('.nf-mailitem .b', r).textContent === 'Test body');
+  btnByText(r, 'Delete').click();
+  A('mail: outbox delete works', btnByText(r, 'Outbox (0)') !== null);
+  /* draft flow */
+  btnByText(r, 'Compose').click();
+  setVal(q('input[placeholder="Subject"]', r), 'Draft subj');
+  setVal(q('textarea', r), 'Draft body');
+  btnByText(r, 'Save draft').click();
+  A('mail: draft saved', btnByText(r, 'Drafts (1)') !== null);
+  btnByText(r, 'Drafts (1)').click();
+  btnByText(r, 'Load').click();
+  A('mail: draft loads into composer', q('textarea', r).value === 'Draft body');
+  /* broadcast */
+  btnByText(r, 'Broadcast').click();
+  A('mail: broadcast lists 2 recipients', qa('.nf-bc-row', r).length === 2);
+  setVal(qa('textarea', r)[0], 'Hello everyone');
+  var bcBtns = qa('button', r).filter(function(b){ return b.textContent.trim() === 'Broadcast'; });
+  bcBtns[bcBtns.length - 1].click(); /* the view's send button, not the tab */
+  A('mail: broadcast queued to both recipients', btnByText(r, 'Outbox (2)') !== null);
+  btnByText(r, 'Outbox (2)').click();
+  A('mail: broadcast badge shown', qa('.nf-badge', r).length === 2);
+}
+
+function testLists(){
+  var r = q('#u-lists');
+  btnByText(r, '＋ New list').click();
+  setVal(q('input[aria-label="New list name"]', r), 'Groceries');
+  btnByText(r, 'Create').click();
+  A('lists: new list pill appears', btnByText(r, 'Groceries (0/0)') !== null);
+  btnByText(r, 'Groceries (0/0)').click();
+  setVal(q('input[aria-label="New item text"]', r), 'Milk');
+  var sel = q('select', r); sel.value = 'contact';
+  btnByText(r, 'Add').click();
+  A('lists: item added', q('.nf-item .txt', r).textContent === 'Milk');
+  A('lists: type tag shown', q('.nf-item .typetag', r).textContent === 'contact');
+  q('.nf-item input[type=checkbox]', r).click();
+  A('lists: check-off marks done', q('.nf-item', r).classList.contains('done'));
+  A('lists: progress counts', q('.nf-progress', r).textContent === '1 of 1 done');
+  q('.nf-item .del', r).click();
+  A('lists: item deleted', q('.nf-item', r) === null);
+  btnByText(r, 'Delete list').click();
+  A('lists: list deleted, seed list active', btnByText(r, 'Seed list (0/1)') !== null);
+  A('lists: persisted', JSON.parse(localStorage.getItem('t.lists.v1')).length === 1);
+}
+
+function testSpaces(){
+  var r = q('#u-spaces');
+  A('spaces: seed card renders', q('.nf-space .nm', r).textContent === 'Crew');
+  A('spaces: member count from config', q('.nf-space .count', r).textContent === '2 members');
+  var join = btnByText(r, '＋ Join');
+  join.click();
+  A('spaces: join toggles to joined', btnByText(r, '✓ Joined') !== null);
+  A('spaces: join increments count', q('.nf-space .count', r).textContent === '3 members');
+  btnByText(r, '✓ Joined').click();
+  A('spaces: leave decrements count', q('.nf-space .count', r).textContent === '2 members');
+  btnByText(r, '＋ Create Space').click();
+  var form = q('.nf-create', r);
+  A('spaces: create form opens', form.classList.contains('open'));
+  setVal(q('input[placeholder^="Space name"]', form), 'Test Space');
+  qa('.nf-optrow', form)[0].querySelectorAll('.nf-opt')[3].click(); /* topic: Create */
+  setVal(q('textarea', form), 'A test space');
+  qa('.nf-optrow', form)[1].querySelectorAll('.nf-opt')[1].click(); /* private */
+  qa('.nf-sw', form)[2].click(); /* third swatch */
+  btnByText(form, 'Create Space').click();
+  A('spaces: created card appears first', qa('.nf-space .nm', r)[0].textContent === 'Test Space');
+  A('spaces: created card shows private', qa('.nf-space .tp', r)[0].textContent.indexOf('Private') >= 0);
+  A('spaces: creator auto-joined', qa('.nf-space .count', r)[0].textContent === '1 member');
+  var saved = JSON.parse(localStorage.getItem('t.spaces.v1'));
+  A('spaces: persisted custom + joins', saved.custom.length === 1 && saved.mine.length === 1);
+}
+
+function testIntel(){
+  var r = q('#u-intel');
+  A('intel: date line shows today', q('.nf-date', r).textContent.length > 4);
+  var todayBriefs = qa('.nf-brief', r).filter(function(el){ return !el.closest('.nf-earlier'); });
+  A('intel: 2 briefing items for today', todayBriefs.length === 2);
+  A('intel: earlier disclosure exists', q('.nf-earlier summary', r).textContent.indexOf('Earlier (1)') >= 0);
+  A('intel: LED dots carry color, text white', getComputedStyle(q('.nf-brief .bt', r)).color === 'rgb(255, 255, 255)');
+  btnByText(r, '↻ Re-check').click();
+  A('intel: re-check confirms', q('.nf-status', r).textContent.indexOf('Briefing re-checked') >= 0);
+}
+
+function testConn(){
+  var r = q('#u-conn');
+  A('conn: 2 people rendered', qa('.nf-person', r).length === 2);
+  setVal(q('.nf-search', r), 'verity');
+  A('conn: search filters to 1', qa('.nf-person', r).length === 1);
+  setVal(q('.nf-search', r), '');
+  A('conn: clearing search restores 2', qa('.nf-person', r).length === 2);
+  var card = qa('.nf-person', r)[0];
+  btnByText(card, '✉ Message').click();
+  A('conn: message box opens', q('.nf-msgbox', card).classList.contains('open'));
+  setVal(q('.nf-msgbox textarea', card), 'Hi Verity');
+  btnByText(card, 'Send message').click();
+  var msgs = JSON.parse(localStorage.getItem('t.conn.msg.v1'));
+  A('conn: message stored', msgs.length === 1 && msgs[0].text === 'Hi Verity');
+  A('conn: message box closes after send', !q('.nf-msgbox', card).classList.contains('open'));
+  btnByText(card, 'Details').click();
+  A('conn: details expand', q('.nf-note', card).classList.contains('open'));
+  var call = q('a[href^="tel:"]', card);
+  A('conn: real tel link for person with number', call && call.getAttribute('href') === 'tel:+15550101');
+  var card2 = qa('.nf-person', r)[1];
+  A('conn: no call action without number (no dead reach)', q('a[href^="tel:"]', card2) === null);
+}
+
+function testReports(){
+  var r = q('#u-reports');
+  A('reports: daily card renders', q('.nf-rcard .rv', r).textContent.indexOf('10') === 0);
+  A('reports: delta chip shown', q('.nf-delta', r).textContent === '+2');
+  btnByText(r, 'Weekly').click();
+  A('reports: weekly switch renders W1', q('.nf-rcard .rt', r).textContent === 'W1');
+  A('reports: down delta marked', q('.nf-delta.down', r) !== null);
+  btnByText(r, 'Monthly').click();
+  A('reports: empty period honest, no invented numbers', q('.nf-empty', r).textContent.indexOf('No monthly reports yet') >= 0);
+  btnByText(r, 'Daily').click();
+  A('reports: switch back to daily', q('.nf-rcard .rt', r).textContent === 'D1');
+}
+
+function testFeed(){
+  var r = q('#u-feed');
+  A('feed: seed post renders', qa('.nf-post', r).length === 1);
+  setVal(q('.nf-composer textarea', r), 'Hello world');
+  btnByText(r, 'Post').click();
+  A('feed: new post on top', qa('.nf-post', r).length === 2 && qa('.nf-post .px', r)[0].textContent === 'Hello world');
+  A('feed: own author label', qa('.nf-post .pa', r)[0].textContent === 'You');
+  var like = qa('.nf-pact', r)[0];
+  like.click();
+  A('feed: like increments', qa('.nf-pact', r)[0].textContent.indexOf('1') >= 0);
+  var saveBtn = qa('.nf-pact', r)[1];
+  saveBtn.click();
+  A('feed: save toggles on', qa('.nf-pact', r)[1].textContent === '★ Saved');
+  btnByText(r, 'Saved (1)').click();
+  A('feed: saved filter shows 1', qa('.nf-post', r).length === 1);
+  btnByText(r, 'All').click();
+  btnByText(qa('.nf-post', r)[0], 'Delete').click();
+  A('feed: delete removes own post', qa('.nf-post', r).length === 1);
+  var posts = JSON.parse(localStorage.getItem('t.feed.v1'));
+  A('feed: persisted', posts.length === 1 && posts[0].likes === 5);
+}
+
+function run(){
+  try {
+    mountAll();
+    A('loader: all 8 units mounted', qa('[data-fn] .nf-tabs,[data-fn] .nf-mail,[data-fn] .nf-lists,[data-fn] .nf-spaces,[data-fn] .nf-intel,[data-fn] .nf-conn,[data-fn] .nf-reports,[data-fn] .nf-feed').length === 8);
+    testTabs();
+    testMail();
+    testLists();
+    testSpaces();
+    testIntel();
+    testConn();
+    testReports();
+    testFeed();
+  } catch(e) {
+    results.push('FAIL | harness exception: ' + (e && e.stack || e));
+  }
+  var fails = results.filter(function(x){ return x.indexOf('FAIL') === 0; }).length;
+  var passes = results.length - fails;
+  var out = ['==== ITEM 26 SELF-VERIFICATION ====',
+    'assertions: ' + results.length + ' | pass: ' + passes + ' | fail: ' + fails,
+    'js errors: ' + errors.length + (errors.length ? ' -> ' + errors.join(' ;; ') : ' (0)'),
+    ''
+  ].concat(results).concat(['', fails === 0 && errors.length === 0 ? 'VERDICT: ALL GREEN' : 'VERDICT: NOT GREEN']);
+  document.getElementById('test-results').textContent = out.join('\n');
+  document.title = fails === 0 && errors.length === 0 ? 'ALL GREEN' : 'NOT GREEN';
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+else run();
+})();
+</script>
+</body>
+</html>

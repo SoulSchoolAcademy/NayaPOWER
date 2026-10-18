@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plumbing demo — NayaFunctions loader + 7 units (Item 26)</title>
+<style>
+  html,body{margin:0;padding:0;background:#050507;color:#F8F7FB;font-family:Inter,system-ui,sans-serif;}
+  .page{max-width:760px;margin:0 auto;padding:28px 20px 60px;}
+  h1{color:#ffffff;font-size:28px;margin:0 0 6px;}
+  .sub{color:#F8F7FB;opacity:.8;font-size:14px;margin:0 0 24px;}
+  .board{background:#0b0b10;border:1px solid rgba(255,255,255,.22);border-top:4px solid var(--bc,#fff);
+    border-radius:14px;padding:20px;margin-bottom:18px;
+    box-shadow:0 10px 30px -18px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.06);}
+  .kicker{color:#ffffff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px;}
+  .title{color:#ffffff;font-size:18px;font-weight:700;margin:0 0 14px;}
+  .hint{color:#F8F7FB;opacity:.7;font-size:12px;margin:10px 0 0;}
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Plumbing demo</h1>
+  <p class="sub">naya-functions.js loader + f-19 · f-20 · f-21 · f-22 · f-23 · f-24 · f-30, all activated via <code>data-fn</code>. One board, one color — the rainbow knows its place.</p>
+
+  <div class="board" style="--bc:#e84fff">
+    <p class="kicker">f-19 · magenta</p><p class="title">Navigate</p>
+    <div data-fn="f-19-navigate" data-fn-config='{"active":"auto","rooms":[{"label":"Hub","href":"#demo-hub"},{"label":"Feed","href":"#demo-feed"},{"label":"Spaces","href":"#demo-spaces"},{"label":"Ghost","href":"#no-such-target"}]}'></div>
+    <div id="demo-hub" style="height:1px"></div>
+    <div id="demo-feed" style="height:1px"></div>
+    <div id="demo-spaces" style="height:1px"></div>
+    <p class="hint">The "Ghost" link points at a missing target — the unit must disable it, not navigate dead.</p>
+  </div>
+
+  <div class="board" style="--bc:#a06bff">
+    <p class="kicker">f-20 · purple</p><p class="title">Search</p>
+    <div data-fn="f-20-search" data-fn-config='{"placeholder":"Search demo pieces...","items":[{"id":"b1","title":"Crystal button","sub":"magenta orb"},{"id":"b2","title":"Jewel board","sub":"purple panel"},{"id":"b3","title":"Orb rail","sub":"blue spectrum"},{"id":"b4","title":"Echo card","sub":"green signal"}]}'></div>
+  </div>
+
+  <div class="board" style="--bc:#3fb8ff">
+    <p class="kicker">f-21 · blue</p><p class="title">Contact</p>
+    <div data-fn="f-21-contact" data-fn-config='{"to":"Maya","outboxKey":"demo.plumb.contact.outbox"}'></div>
+  </div>
+
+  <div class="board" style="--bc:#2fe89e">
+    <p class="kicker">f-22 · green</p><p class="title">Share</p>
+    <div data-fn="f-22-share" data-fn-config='{"url":"https://nayanet.live/demo-plumbing","title":"Plumbing demo","text":"Look at this"}'></div>
+  </div>
+
+  <div class="board" style="--bc:#ffbf3d">
+    <p class="kicker">f-23 · gold</p><p class="title">Save</p>
+    <div data-fn="f-23-save" data-fn-config='{"storeKey":"demo.plumb.save.store","items":[{"id":"s1","title":"Crystal button","sub":"magenta"},{"id":"s2","title":"Jewel board","sub":"purple"},{"id":"s3","title":"Orb rail","sub":"blue"}]}'></div>
+  </div>
+
+  <div class="board" style="--bc:#40d3bb">
+    <p class="kicker">f-24 · teal</p><p class="title">Play</p>
+    <div data-fn="f-24-play" data-fn-config='{"url":"demo-assets/tone.wav","title":"Welcome tone (5s test audio)"}'></div>
+  </div>
+
+  <div class="board" style="--bc:#b8ee57">
+    <p class="kicker">f-30 · lime</p><p class="title">Join</p>
+    <div data-fn="f-30-join" data-fn-config='{"storeKey":"demo.plumb.join.store","spaces":[{"id":"sp-makers","name":"Makers","topic":"Build things","members":128},{"id":"sp-garden","name":"Garden Club","topic":"Grow ideas","members":42},{"id":"sp-night","name":"Night Owls","topic":"Late builders","members":7}]}'></div>
+  </div>
+
+  <div class="board" style="--bc:#6675ff">
+    <p class="kicker">loader fail-soft</p><p class="title">Bad config JSON + unregistered id</p>
+    <div data-fn="f-20-search" data-fn-config='this is not json'></div>
+    <div data-fn="f-99-ghost" data-fn-config='{}'></div>
+    <p class="hint">The first still boots (defaults); the second warns and is skipped — fail-closed.</p>
+  </div>
+</div>
+
+<script src="naya-functions.js"></script>
+<script src="f-19-navigate.js"></script>
+<script src="f-20-search.js"></script>
+<script src="f-21-contact.js"></script>
+<script src="f-22-share.js"></script>
+<script src="f-23-save.js"></script>
+<script src="f-24-play.js"></script>
+<script src="f-30-join.js"></script>
+</body>
+</html>

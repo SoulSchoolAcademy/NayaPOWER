@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Template Functions A — live demo · f-09 … f-13</title>
+<style>
+:root{
+  --deep:#020203; --obs:#0a0a0f; --white:#ffffff; --silver:#c9c9d4; --slate:#8a8a99;
+  --line:rgba(255,255,255,.12);
+  --blue:#3fb8ff; --orange:#ff9a5a; --magenta:#e84fff; --purple:#a06bff; --teal:#40d3bb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--deep);color:var(--silver);font-family:Inter,ui-sans-serif,system-ui,sans-serif;
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px 60px}
+.hero{padding:44px 0 30px;border-bottom:1px solid var(--line)}
+.kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#ffffff}
+h1{color:#ffffff;font-size:30px;font-weight:600;margin:10px 0 8px;line-height:1.2}
+.lede{color:var(--silver);font-size:16px;max-width:56ch}
+.sec{padding:34px 0;border-bottom:1px solid var(--line)}
+.sec:last-of-type{border-bottom:none}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.sec-dot{width:14px;height:14px;border-radius:50%;flex:none;background:var(--sc);box-shadow:0 0 12px var(--sc)}
+.sec-head h2{color:#ffffff;font-size:19px;font-weight:600}
+.sec-head small{color:var(--slate);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">Smart Builder · Item 26 · Template Functions A</span>
+    <h1>Five functions. All working.</h1>
+    <p class="lede">Every unit below is live — pick days, order food, buy a product, sign up,
+    RSVP. Reload the page and your state is still there. Nothing here is staged.</p>
+  </header>
+
+  <section class="sec" style="--sc:var(--blue)">
+    <div class="sec-head"><span class="sec-dot"></span><div><h2>Booking doors</h2><small>f-09-booking · local</small></div></div>
+    <div data-fn="f-09-booking" data-fn-config='{
+      "title":"Book your table",
+      "service_name":"Lunch at Naya Kitchen",
+      "days":["2026-10-19","2026-10-20","2026-10-21","2026-10-26"],
+      "slots":["09:00","10:30","12:00","14:00","16:00","18:00"],
+      "duration_min":45,
+      "note":"Pick a day, pick a time — your table is held the moment you confirm.",
+      "storage_key":"demo_a_booking"
+    }'></div>
+  </section>
+
+  <section class="sec" style="--sc:var(--orange)">
+    <div class="sec-head"><span class="sec-dot"></span><div><h2>Menu with prices</h2><small>f-10-menu-display · local</small></div></div>
+    <div data-fn="f-10-menu-display" data-fn-config='{
+      "title":"Naya Kitchen",
+      "currency":"$",
+      "note":"Real prices, real math — tap + to build your order.",
+      "storage_key":"demo_a_menu",
+      "items":[
+        {"name":"Margherita Pizza","description":"San Marzano tomato, fior di latte, basil","price":12.50},
+        {"name":"Truffle Tagliatelle","description":"Hand-cut pasta, black truffle, parmesan","price":18.00},
+        {"name":"Caesar Salad","description":"Little gem, anchovy dressing, sourdough crisp","price":9.50},
+        {"name":"Chocolate Fondant","description":"70% dark, salted caramel heart","price":7.50}
+      ]
+    }'></div>
+  </section>
+
+  <section class="sec" style="--sc:var(--magenta)">
+    <div class="sec-head"><span class="sec-dot"></span><div><h2>Product page</h2><small>f-11-product-display · local</small></div></div>
+    <div data-fn="f-11-product-display" data-fn-config='{
+      "name":"Naya Crystal Lamp",
+      "tagline":"Hand-cut light, grown for your room.",
+      "price":89.00,
+      "currency":"$",
+      "features":["Faceted crystal shade — 32 cuts","Three warm-light settings, touch dimmer","USB-C, 40 hours on low","Ships in gift-ready packaging"],
+      "button_text":"Buy now",
+      "note":"Local demo checkout — the order is saved on this device.",
+      "storage_key":"demo_a_product"
+    }'></div>
+  </section>
+
+  <section class="sec" style="--sc:var(--purple)">
+    <div class="sec-head"><span class="sec-dot"></span><div><h2>Join the list</h2><small>f-12-signup-capture · local</small></div></div>
+    <div data-fn="f-12-signup-capture" data-fn-config='{
+      "title":"Join the Naya List",
+      "subtitle":"One beautiful email a week — what the builders learned, what shipped, what is next.",
+      "button_text":"Join the list",
+      "success_title":"You are in!",
+      "success_message":"Welcome, {name} — the next edition lands in your inbox Friday.",
+      "storage_key":"demo_a_signup",
+      "fields":[
+        {"name":"name","label":"Your name","type":"text","required":true,"placeholder":"e.g. Shawn Vibert"},
+        {"name":"email","label":"Email","type":"email","required":true,"placeholder":"you@example.com"},
+        {"name":"phone","label":"Phone (optional)","type":"tel","required":false,"placeholder":""}
+      ]
+    }'></div>
+  </section>
+
+  <section class="sec" style="--sc:var(--teal)">
+    <div class="sec-head"><span class="sec-dot"></span><div><h2>Event invite</h2><small>f-13-event-rsvp · local</small></div></div>
+    <div data-fn="f-13-event-rsvp" data-fn-config='{
+      "title":"NayaNET Launch Night",
+      "date_label":"Sat, Oct 24",
+      "time_label":"7:00 PM",
+      "venue":"The Glasshouse",
+      "description":"The network goes live. Demos, builders, and the first hundred members — under one glass roof.",
+      "base_attendees":124,
+      "storage_key":"demo_a_rsvp"
+    }'></div>
+  </section>
+</div>
+
+<script src="naya-functions.js"></script>
+<script src="f-09-booking.js"></script>
+<script src="f-10-menu-display.js"></script>
+<script src="f-11-product-display.js"></script>
+<script src="f-12-signup-capture.js"></script>
+<script src="f-13-event-rsvp.js"></script>
+</body>
+</html>
