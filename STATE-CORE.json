@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-18T00:06:28Z",
+ "generated_utc": "2026-10-18T00:16:29Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "8cac435a052d21ed74f8f2c2b8fec0bdaff455c7",
   "short": "8cac435a052d",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-18T00:05:59Z"
+  "checked_utc": "2026-10-18T00:15:59Z"
  },
  "venue": {
   "live": 2641,
@@ -15,15 +15,15 @@
   ]
  },
  "waves": {
-  "active": 325,
+  "active": 198,
   "active_seats": [
    "Naya Electrician",
    "Naya Captain",
    "Naya Mechanic"
   ],
-  "last_completed": 324,
-  "last_completed_at": "2026-10-17T21:55:35Z",
-  "rotation_cursor": "wave-326: Naya Host/Naya Archivist/Naya Keeper (roster order)"
+  "last_completed": 325,
+  "last_completed_at": "2026-10-18T00:09Z",
+  "rotation_cursor": "wave-199: Naya Host/Naya Archivist/Naya Keeper (roster order)"
  },
  "lanes": {
   "free": [
