@@ -36,7 +36,7 @@ Dual-source feeds need the honesty contract at the consumption point, not the wi
 ```json
 {
   "sn": "SN-1588",
-  "applies_when": ["feed", "provenance"], ["bridge", "fallback"], ["dual-source", "feed"],
+  "applies_when": [["feed", "provenance"], ["bridge", "fallback"], ["dual-source", "feed"]],
   "enforcement": "stubbed-DOM harness /tmp/feed-test.js (page's real inline script) asserts the provenance string on all four transport paths: config-bridge ('via Supabase (live)'), no-config-queue ('via JSONL queue'), bridge-down-fallback ('via JSONL queue (supabase unavailable: …)'), config-no-bridge ('via JSONL queue'). Any new transport path must add a scenario + provenance assertion; a feed unit that renders without a named backend fails the harness.",
   "falsifier": "A feed unit that renders queue data while its provenance claims 'via Supabase (live)' — or that silently degrades with no provenance change — proves the contract violated, caught by the harness's provenance assertions.",
   "mechanism": "Named provenance at the consumption point makes source and failure observable where the reader is; silent fallback hides failure and lets a snapshot masquerade as live data.",
