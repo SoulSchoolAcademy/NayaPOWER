@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-18T11:15:49+00:00",
+ "generated_utc": "2026-10-18T12:15:33+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -102,6 +102,18 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
+     "number": 2761,
+     "title": "[Team Verity] Naya Beta | KNOW: test_backfill_apply_restamps_manifest (w440 leg 1)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2761",
+     "draft": false
+    },
+    {
+     "number": 2760,
+     "title": "fix(compound-scale): hermetic citation fixtures + freshness CI gate (closes citation-drift",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2760",
+     "draft": false
+    },
+    {
      "number": 2736,
      "title": "fix(brain-index): make regeneration line-ending deterministic on every platform",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736",
@@ -136,21 +148,9 @@
      "title": "repair(brain-index): re-stamp index on main f33bba34",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390",
      "draft": false
-    },
-    {
-     "number": 2388,
-     "title": "feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 2026-10-11)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388",
-     "draft": false
-    },
-    {
-     "number": 2385,
-     "title": "feat(ci): dedicated brain-index-freshness required gate workflow (Shawn 2026-10-11)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2385",
-     "draft": false
     }
    ],
-   "open_pr_count": 24
+   "open_pr_count": 26
   },
   {
    "id": "act",
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2762,
+     "title": "[RETRIEVAL] Pin byte-proven .txt->JSON parse script into evidence/trial-04R",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2762",
+     "draft": false
+    },
+    {
      "number": 2752,
      "title": "map-compiler: push state file via deploy key with scoped ruleset bypass",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752",
@@ -388,15 +394,9 @@
      "title": "Canonical hex set \u2014 3-pass scored 9.25/10 for stamp",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2741",
      "draft": false
-    },
-    {
-     "number": 2739,
-     "title": "Design library: canonical piece library on main (37 files, categorized, INDEX.md)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739",
-     "draft": false
     }
    ],
-   "open_pr_count": 239
+   "open_pr_count": 240
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 629,
- "unassigned_prs": 239
+ "open_pr_total": 632,
+ "unassigned_prs": 240
 }

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-18 11:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-18 12:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 629 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 632 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -58,13 +58,13 @@
 - [#2682](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682) feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3
 - …and 55 more
 
-### KNOW (24)
+### KNOW (26)
+- [#2761](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2761) [Team Verity] Naya Beta | KNOW: test_backfill_apply_restamps_manifest 
+- [#2760](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2760) fix(compound-scale): hermetic citation fixtures + freshness CI gate (c
 - [#2736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736) fix(brain-index): make regeneration line-ending deterministic on every
 - [#2683](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683) [INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-ind
 - [#2433](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433) brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che…
-- [#2415](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415) BRAIN: regenerate index layer at live tip 665098e3
-- [#2407](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407) repair(brain-index): re-stamp index on main 665098e3 (drift-13)
-- …and 19 more
+- …and 21 more
 
 ### ACT (3)
 - [#2457](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2457) flip #3: lane-9 test-leg fixes (second ADVISE-count site + receipt-gat
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (239)
+### BUILD (240)
+- [#2762](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2762) [RETRIEVAL] Pin byte-proven .txt->JSON parse script into evidence/tria
 - [#2752](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752) map-compiler: push state file via deploy key with scoped ruleset bypas
 - [#2750](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750) fix(builder): strict headless render qualification before release 📝draft
 - [#2748](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748) Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT — the system tha
 - [#2747](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747) feat: make Smart Builder library searchable and machine-accessible
-- [#2746](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746) docs: establish Smart Builder human contract
-- …and 234 more
+- …and 235 more
 
 ### WIRE (125)
 - [#2753](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2753) law: extend consensus-gate seat registry with lead seats (F2 fix)
