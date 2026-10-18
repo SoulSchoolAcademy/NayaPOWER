@@ -22,7 +22,7 @@ from pathlib import Path
 
 import pytest
 
-WORKTREE = Path("/home/hatch/workspace/w446-beta")
+WORKTREE = Path(__file__).resolve().parents[1]  # repo root, never an absolute machine path
 sys.path.insert(0, str(WORKTREE / "tools"))
 
 import smart_note_v2 as m  # noqa: E402
