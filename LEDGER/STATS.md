@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-18 04:02 UTC_
+_Last updated: 2026-10-18 04:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 3663
-- ✅ Verified (8+): 3630
-- 🟡 Partial (5–7): 32
+- **Total scored actions:** 3680
+- ✅ Verified (8+): 3646
+- 🟡 Partial (5–7): 33
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
 - **Verification rate:** 99% of actions fully verified
@@ -19,14 +19,14 @@ _Last updated: 2026-10-18 04:02 UTC_
 | Team 2 | Naya Sage | 302 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 239 | 9.0 | 9.5 |
 | Team 4 | Naya Mason | 256 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 317 | 9.1 | 9.6 |
-| Team 6 | Naya Heir | 200 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 323 | 9.1 | 9.6 |
+| Team 6 | Naya Heir | 201 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 282 | 9.0 | 9.5 |
 | Team 8 | Naya Sentinel | 279 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 336 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 340 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 359 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 230 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 195 | 9.2 | 9.5 |
+| Team 12 | Naya Herald | 199 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -197,6 +197,8 @@ _Last updated: 2026-10-18 04:02 UTC_
 - **lane-scorer-20261018-0250:** 6 actions, avg 9.5/10
 - **lane-scorer-20261017-2025:** 2 actions, avg 9.3/10
 - **lane-scorer-20261018-0400:** 3 actions, avg 9.3/10
+- **lane-scorer-20261018-0424:** 4 actions, avg 9.3/10
+- **lane-scorer-20261018-2130:** 7 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 5 actions, avg 9.3/10
 - **scorer-20261014-1940:** 3 actions, avg 8.2/10
@@ -414,6 +416,7 @@ _Last updated: 2026-10-18 04:02 UTC_
 - **lane-scorer-20261018-0300:** 3 actions, avg 9.5/10
 - **lane-scorer-20261018-0310:** 3 actions, avg 9.5/10
 - **lane-scorer-20261018-0440:** 2 actions, avg 9.5/10
+- **lane-scorer-20261018-0410:** 6 actions, avg 9.3/10
 - **scorer-20261014-1450:** 5 actions, avg 9.1/10
 - **gap-scorer-20261015-0140:** 2 actions, avg 9.2/10
 - **lane-scorer-20261015-0430:** 2 actions, avg 9.1/10
