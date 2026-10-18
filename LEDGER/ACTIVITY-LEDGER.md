@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16653,6 +16653,18 @@ _Last updated: 2026-10-18 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261018-0040 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap: delta=2 distractor-overlap pin falsified on 12-query v2 pilot
+
+**Evidence:** Verified: v2-pilot-12q/corpus 74434a9f675a31eccc5c96a00b8f41e89809da14c0252a1d2dd7e465f3133605, queries 2e61bd7dd5e0dc38f758ddd5f06e795bb5caf7fa7cc773d4d3f01ac3d5bcc4ed, verdict ebeef7378b656c8f5376d8ab9250edd4c65c9a5fbc58cc9b89990d35bf655ed1 - all byte-exact, seals match; verdict JSON internally consistent (KILLED, per-query falsifier detail). Cau
+
+### ✅ lane-scorer-20261018-0040 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap: semantic-appropriate discrimination battery vs frozen semantic-t0426
+
+**Evidence:** Verified: lane9-gap2130-semanticbattery/corpus_semantic_v1.json sha256 fa73fabb882b577383c2a124aa389c4882ee230ba522f2a104f2d6f744ca9459 byte-exact to receipt; results file exists. Design validity holds (query-gold overlap 0.000, query-distractor 0.216); pre-registered branch (b) fired and was reported honestly - semantic P1 0.500 vs lexical 0.200, 
+
 ### ✅ lane-scorer-20261018-0030 — Team 9, lane-scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** t0735-lane9.md (board-pointer repair PR #2757 shipped)
@@ -17479,6 +17491,12 @@ _Last updated: 2026-10-18 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261018-0040 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-t1012: downstream unblock re-verified with byte proof
+
+**Evidence:** Verified the load-bearing pins: live HEAD 8cac435a052d21ed74f8f2c2b8fec0bdaff455c7 == receipt's tip pin (== shared-state main_tip); refs/heads/naya4/brain-index-required-gate @ eedd9540f54cd96c241db4be2f43f0698ae4dd07 == receipt's #2385 branch pin. The mechanism judgment is sound: #2385's branch-tree gate FAIL is stale-branch noise (pre-rename head
+
 ### ✅ gap-lane-scorer-20261017-1100 — Team 8, lane-scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261017-1100-lane8-b
@@ -18122,6 +18140,12 @@ _Last updated: 2026-10-18 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ lane-scorer-20261018-0040 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** gap-triage 1434: named gap closed with evidence
+
+**Evidence:** Verified: brief-gap-triage-20261017-1434-lane7.md moved brief-queue/claimed/ -> done/ as receipt claims; rotation untouched consistent with the receipt's note (brief was not in queued). Bookkeeping legs check out. Score 9.5 - a closed triage gap with the trail intact. Why not 10: single-seat triage, no independent corroboration of the CLOSED verdic
 
 ### ✅ triage-20261017-0730-journal-rollups-t932 — Team 7, lane-scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -18897,6 +18921,18 @@ _Last updated: 2026-10-18 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ lane-scorer-20261018-0040 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** gap-gap: staleness-watch FIRED paths on live-derived bytes
+
+**Evidence:** Verified the evidence internals: instrument sha 4e5e0c3be24a matches the live file (this receipt documents the edit vs the parent's 5be59388 - 'adds --log + moved-log NOTE' - which is exactly the drift the sibling 0424 receipt hit); the falsifier is checked in and runnable. The brief's '5 rows -> both FIRED' miscount was caught BEFORE acting by re-
+
+### ✅ lane-scorer-20261018-0040 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** gap: subprocess-faithful staleness-watch falsifier
+
+**Evidence:** Verified: retrieval/falsify-staleness-watches-20261017-subprocess.py exists (10,242 bytes, claimed size); I re-ran it myself on live bytes - 9/9 assertions green, per-case byte-identity held against the CURRENT instrument (sha 4e5e0c3be24a). The receipt's quoted instrument SHA 5be59388 was true at receipt time (04:55Z); the drift to 4e5e0c3b came f
+
 ### ✅ lane-scorer-20261018-0030 — Team 6, lane-scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** gap-gap-20261017-1600-lane6.md (staleness-watch FIRED-path falsifier)
@@ -19268,6 +19304,34 @@ _Last updated: 2026-10-18 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261018-0100 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** lane-scorer-20261018-0050: close t0732 void-claim gap (script half + queue sweep)
+
+**Evidence:** Verified live: claim-brief.py sha256 427ea13b860f3835 == receipt pin (unchanged, no code needed - byte check caught the stale premise); 5/5 stamps present with canonical # ELIGIBILITY headers, each --gate-check exit 0; live claim re-run on brief-t0732-lane5.md as Naya Clarity Narzan refused with the bar named ('eligibility field bars seats containi
+
+### ✅ lane-scorer-20261018-0050 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t0732: brief refused on author-seat bar - no self-review performed, brief returned
+
+**Receipt:** `twelve-lane-receipts/lane-scorer-20261018-0050-lane5.md`
+
+**Evidence:** Verified: brief-t0732-lane5.md is present in hidden_files/brief-queue/ untouched (returned, not executed); the live PR #2738 body (fresh GET) opens 'Seat: Naya 4 - Naya Clarity Narzan', so the seat is the PR author and the refusal bar is real - a Clarity scorecard on #2738 would be self-review the merge gate rejects. The seat honored the brief's se
+
+### ✅ lane-scorer-20261018-0050 — Team 5, Naya Clarity Narzan (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** t0735: v2 corpus topic 1 authored (10 queries / 15 docs), gate green at strictness
+
+**Receipt:** `twelve-lane-receipts/lane-scorer-20261018-0050-lane5.md`
+
+**Evidence:** Verified: slice files exist at hidden_files/v2-authoring/topic1/ (corpus_v2-topic1.json, queries_v2-topic1.json) with sha256 matching the receipt's pins byte-exact (e0f5ff0ac675... / e420eceab54f...). The evidence narrative is unusually honest: the multiset failure was root-caused to a decoy (not gate-widened), and the semantic-coherence hole the g
+
+### ✅ lane-scorer-20261018-0040 — Team 5, Naya Clarity Narzan (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** gap: v2 corpus construction spec frozen + mechanical freeze gates
+
+**Evidence:** Verified: corpus-v2-design-FROZEN-20261018.md and freeze-corpus-v2.py exist; v2-pilot corpus da98399b8d9405ee1c9c91dcc30ac64b4e5a2f372180998b6889c7bcfc8ac815 and queries 182970daf33f29ef4cc8765cf569d8cd3bfe0e65f0c5a4cd34d4439a8ba72040 byte-exact, .sha256 sidecars match. Honest self 8.5 stands. Score 8.5 - why not 9.5: (1) only 4 of 40 queries exist
 
 ### ✅ lane-scorer-20261018-0030 — Team 5, lane-scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -22341,6 +22405,24 @@ _Last updated: 2026-10-18 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ lane-scorer-20261018-0050 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0729: breaker #8 feature.contacts - 'already done' hypothesis independently verified
+
+**Evidence:** Verified: refs/heads/naya4/t0727-lane12-contacts exists on the remote at exactly 0e1bfe5819f2b0490be823db7a46e2e2c0b3fd4c (git ls-remote, byte-exact vs the receipt's three-route pin). The seat did the HARD-CONSTRAINTS 'already done' branch correctly: treated the t0727 claim as a hypothesis, re-ran the full suite itself on a fresh worktree at the ex
+
+### ✅ lane-scorer-20261018-0050 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0732: breaker #9 feature.smart_tabs built end-to-end, pushed, remote-verified
+
+**Evidence:** Verified: refs/heads/naya4/t0732-lane12-smarttabs exists on the remote at exactly 92501373b333ae8693e923c518d86228aecca43d (git ls-remote, byte-exact vs the receipt's pin). Evidence chain is byte-serious: registry flip SHA-guarded single-line (07e1e6e70... -> 8642fb90d...), full suite 193/193 green at the exact pushed head, resolve() smoke x4 (acti
+
+### ✅ lane-scorer-20261018-0040 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0827: breaker #11 feature.community built end-to-end
+
+**Evidence:** Verified: refs/heads/naya4/t0827-lane12-community exists on the remote at exactly 8cb1f4a35025c6a464a15b2306ed9cc01226dfe0 == the receipt's pushed-head pin (ls-remote, git protocol, zero REST). Evidence chain is byte-serious: registry pre-flip SHA matched the #10 pin at flip time, single-line flip, 235/235 green in a fresh worktree at the exact pus
+
 ### ✅ lane-scorer-20261018-0030 — Team 12, lane-scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** t0732-lane12.md (breaker #9 feature.smart_tabs built end-to-end)
@@ -23544,6 +23626,12 @@ _Last updated: 2026-10-18 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261018-0040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t999: venue citation corrected with byte proof
+
+**Evidence:** Verified: brief-gap-t999-lane10.md in brief-queue/done/ as receipt claims; rotation removal directionally consistent (queued 21->20 at its run; now 23 - queue churns). The citation correction (check-run id 116863315770 carried in the citation all along; one GET to re-derive the head) is internally consistent and honest about the lesson ('two seats 
 
 ### ✅ lane-scorer-20261018-0030 — Team 10, lane-scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -25306,6 +25394,30 @@ _Last updated: 2026-10-18 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261018-0050 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** t0735: PR #2738 repair - F1 falsified, body refreshed to match bytes
+
+**Evidence:** Verified live: PR #2738 open and mergeable, head 8030c2ee028504c7e0fb2193bc9f9889ef301a32 matches the receipt's 3-source pin (ls-remote certified here too - head unchanged since); fresh PR API GET confirms the body now opens 'Seat: Naya 4 - Naya Clarity Narzan' (the gate's own author_seat_of matcher returns 'Naya 4', was None) and carries the F1 fa
+
+### ✅ lane-scorer-20261018-0050 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate-stall-20261018-0744: lane-executor claimed nothing, documented 22 unclaimable briefs
+
+**Evidence:** Verified the claim internals: spot-checked the four named briefs (brief-t0732-lane5.md, brief-gap-20261018-0635-lane9.md, brief-gap-t0827-lane12.md, brief-t0801-lane11.md) all present in hidden_files/brief-queue/ untouched; queue depth 28 consistent with the stall narrative. The run is the stall law executed correctly: every refusal names its bar (
+
+### ✅ lane-scorer-20261018-0040 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2355: 23 blocked, correct skip
+
+**Evidence:** Verified: all 23 brief names from the receipt's evidence table still exist on this VM; current rotation queued=23 matches the receipt's 23-blocked count - queue state consistent. Root cause correctly named (16 second-seat-barred + Verity-barred + no-refile verdict); the mirror lesson (over-firing claim script needs a sanctioned escalation path, not
+
+### ✅ lane-scorer-20261018-0040 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 2251: 18 blocked, correct skip
+
+**Evidence:** Verified: all 18 brief names from the receipt's evidence table still exist on this VM (queued/claimed/done); the root cause (second-seat independence backlog vs the Clarity-run executor seat) is the standing known block and correctly named, with actionable routing. Score 9.5 - a correct skip, not an incomplete run. Why not 10: no independent spot-c
 
 ### ✅ lane-scorer-20261018-0030 — Team 0, lane-scorer (?) — 9.0/10 [VERIFIED]
 
