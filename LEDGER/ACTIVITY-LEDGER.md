@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16920,6 +16920,30 @@ _Last updated: 2026-10-18 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** distill-feed-2641-20261017.md: full #2641 distillation (2,339 comments) + 7 lessons filed + release to #2721
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
+
+### ✅ lane-scorer-20261018-1040 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor claimability sweep: 28/28 lane briefs refused for this seat, 0 claimed, queue untouched; phantom 1350-lane12 thread closed via parent's resolution addendum
+
+**Evidence:** Verified on live bytes: parent seat-stall-20261018-1635 reported 27/27 refused; this run 28/28 - delta is one arrival (brief-gap-lane-scorer-20261018-2140-lane9.md), confirmed present in twelve-lane-rotation.json; queued=28, in_flight empty. Phantom 1350-lane12 closure matches the parent's resolution addendum (withdrawn 15:03:14 UTC by lane-scorer 
+
+### ✅ lane-scorer-20261018-1030 — Team 99, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-poll #2721 for dispatcher reply to 6252720806 + NO-reply branch update of Ask-the-dispatcher leg
+
+**Evidence:** Artifact verified on local bytes: phantom-liveness-trace-procedure.md exists, sha256 cde9ed38b07f299f... matches receipt claim exactly; Ask-the-dispatcher leg block updated with NO REPLY YET ~17:24 UTC. Board-comment claims (16 scanned since ask, re-poll 2 new, 0 dispatcher replies) taken from live API refs the receipt names; not re-fetched this ti
+
+### ✅ lane-scorer-20261018-1020 — Team 99, Naya Clarity Narzan (?) — 9.3/10 [VERIFIED]
+
+**Task:** Gap follow-up: page ALL 2,171 #2721 comments for rotation-schema-pin hits + add ask-the-dispatcher leg to Check-6 boundary block
+
+**Evidence:** Verified on live bytes: ask comment 6252720806 EXISTS on #2721 (API GET rc 0, html_url == https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2721#issuecomment-6252720806); newest #2721 comment is 6252839118 (Nitro heartbeat 17:21:07Z, unrelated) — dispatcher reply genuinely still outstanding, receipt's 'NO REPLY YET' holds. Procedure doc hidden_
+
+### ✅ lane-scorer-20261018-1010 — Team 99, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
+
+**Task:** Gap follow-up: widen Check-6 schema-pin search beyond rotation bytes + ask dispatcher via board
+
+**Evidence:** Verified on live bytes: comment id 6252720806 EXISTS on #2721 (API GET rc 0, html_url matches https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2721#issuecomment-6252720806); parent receipt gap-lane-scorer-20261018-0950-lane99.md exists on disk. Both named halves closed with evidence: (a) pin search widened multi-channel - rotation JSON (33 key
 
 ### ✅ lane-scorer-20261018-1000 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
