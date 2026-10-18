@@ -319,16 +319,24 @@ class SmartListEndToEnd(unittest.TestCase):
 
     def test_assemble_row_stays_ready_with_grant_on(self):
         # smart_list's registry entry carries no connected actions (the
-        # registry flip is status-only), so the §7 row honestly stays
-        # "ready" even with the network grant on — the live share button
-        # is module-level, wired by convergence.
+        # registry flip is status-only), so smart_list's OWN §7 row
+        # honestly stays "ready" even with the network grant on — the
+        # live share button is module-level, wired by convergence.
+        # (Since breaker #9 flipped feature.smart_tabs to built, the
+        # default-on policy is ACTIVE: default-on siblings like
+        # smart_mail legitimately render "connected (network)" rows when
+        # the network grant is on — the assertion scopes to smart_list's
+        # own row, which is what this test owns.)
         r, page, _ = run_assemble(
             list_contract(self.tmp, dict(LIST_DECL),
                           connections={"network": True}), self.tmp)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertIn('data-feature="feature.smart_list"', page)
-        self.assertIn('data-consent="ready"', page)
-        self.assertNotIn("connected (network)", page)
+        self.assertIn(
+            'data-feature="feature.smart_list" data-consent="ready"', page)
+        self.assertNotIn(
+            'data-feature="feature.smart_list" data-consent="connected"',
+            page)
 
     def test_assemble_refuses_undeclared(self):
         r, page, _ = run_assemble(SMOKE, self.tmp)  # features is a list

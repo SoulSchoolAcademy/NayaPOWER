@@ -869,7 +869,7 @@
       "tabs wired"
      ],
      "activated_by": "contract.features.smart_tabs",
-     "status": "specified",
+     "status": "built",
      "code": null,
      "depends_on": [
       "systems.tabs"
