@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""succession_read_before_fire.py — read-before-fire gate for feed/board succession.
+r"""succession_read_before_fire.py — read-before-fire gate for feed/board succession.
 
 A succession package is ARMED when its body is drafted; it must never FIRE
 (create the successor issue) without first READING the venue issue and proving
@@ -18,6 +18,15 @@ Usage:
 The venue issue is the canonical "where is the live board" record (#1599,
 the feed index). Never pass #2601 as the venue when it is director-divergent.
 
+GAPCLOSE w405 (Naya Gamma): VENUE extraction is anchored on the canonical
+machine-written markdown-link shape ONLY. The old prose pattern
+  #(\d+)[^\n#]{0,80}?live board
+matched ANY prose mention of a stale board near the words "live board":
+  "Board #2641 was the live board until succession." -> returned '2641'
+(the ARCHIVED board as the live board), and missed "live board is #2721"
+prose order entirely. Prose mentions never match now; non-canonical venue
+lines fail closed (one re-arm, never a false fire).
+
 gh-api path: NAYA_GH_API env overrides the default; the default is the
 team's quiet write path on the worker VM.
 """
@@ -34,11 +43,16 @@ GH_API = os.environ.get("NAYA_GH_API", "/home/hatch/workspace/naya/bin/gh-api")
 # Package source board: "successor to #2641" in the title/body, or "#2641 -> successor".
 PKG_PATTERNS = [
     re.compile(r"\(successor to #(\d+)\)"),
-    re.compile(r"#(\d+)\s*(?:→|->)\s*successor", re.IGNORECASE),
+    re.compile(r"#(\d+)\s*(?:\u2192|->)\s*successor", re.IGNORECASE),
     re.compile(r"successor to #(\d+)"),
 ]
-# Venue live-board line, e.g. "[#2721 — Team coordination feed — live board](...)".
-VENUE_PATTERN = re.compile(r"#(\d+)[^\n#]{0,80}?live board", re.IGNORECASE)
+# Venue live-board line — canonical machine-written markdown-link shape ONLY, e.g.
+# "**Live coordination board:** [#2721 \u2014 Team coordination feed \u2014 live board](...)".
+# Both in-link orders covered; bare prose never matches (fail-closed by design).
+VENUE_LINK_PATTERNS = [
+    re.compile(r"\[#(\d+)[^\]\n]*?live board[^\]\n]*?\]\(https?://[^)\s]+\)", re.IGNORECASE),
+    re.compile(r"\[live board[^\]\n]*?#(\d+)[^\]\n]*?\]\(https?://[^)\s]+\)", re.IGNORECASE),
+]
 
 
 def extract_package_source(text):
@@ -50,8 +64,11 @@ def extract_package_source(text):
 
 
 def extract_live_board(body):
-    m = VENUE_PATTERN.search(body)
-    return m.group(1) if m else None
+    for pat in VENUE_LINK_PATTERNS:
+        m = pat.search(body)
+        if m:
+            return m.group(1)
+    return None
 
 
 def read_venue_issue(number):
@@ -95,7 +112,7 @@ def main():
 
     live = extract_live_board(body)
     if not live:
-        print(f"FAIL-CLOSED: no '#NNNN ... live board' line in venue issue #{args.venue_issue} body — do not fire", file=sys.stderr)
+        print(f"FAIL-CLOSED: no canonical '[#NNNN ... live board](url)' line in venue issue #{args.venue_issue} body — do not fire", file=sys.stderr)
         return 2
 
     if source == live:
