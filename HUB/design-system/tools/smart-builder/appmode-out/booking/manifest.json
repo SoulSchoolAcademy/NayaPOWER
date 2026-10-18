@@ -1,7 +1,24 @@
 {
-  "appmode": "appmode-v1",
+  "appmode": "appmode-v2",
   "behave": "Cheerful and reassuring. The dogs are the customers; the humans just pay.",
-  "chrome_note": "Page shell is design-law chrome (obsidian #050507, white voice, soul accents, elevation, ignition, Newsreader hero + Inter UI). The piece index carries design-language specimen fragments, not generic app hero/nav/section chrome \u2014 no verbatim shell pieces existed to pull; picks above are the usable verbatim decorative pieces.",
+  "chassis": {
+    "adaptation": "Fixed left rail (brand + page/section nav + private note) + topbar (rooms-plus mobile, rail-toggle, title, status, eco-plus destinations menu) + main scroll surface + mobile drawer. Default rail-collapsed per Shawn's 2026-10-03 ruling. Corner plus buttons harvested verbatim; hover ignition wired to the template soul via var(--soul).",
+    "pattern": "NayaNET Hub (index-2.html)",
+    "sha256": "f56fd98683704c37a148d535b9cb6a0b16de831edab86f5ae24633b204b02722"
+  },
+  "chrome_note": "Page chassis follows the Hub pattern (index-2.html, sha-pinned). Discrete pieces are composed verbatim from the 478-piece index: section boards + footer panel = NAYA-CRD-008 (one board one color via --accent), hero orbs = contract JWL picks (soul-wired). Nothing invented \u2014 see the visible piece manifest on each page.",
+  "chrome_roles": [
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "section board"
+    },
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "panel"
+    }
+  ],
   "contract_hash": "5d947b44bdb0e9e7ed76498fcb5e889b8a4d8a3c5b6c1904b4230c1299eba5b9",
   "do": "Book grooming services by day and slot, ask questions, jump between pages.",
   "files": [
@@ -161,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 15488,
+      "bytes": 37570,
       "path": "index.html",
-      "sha256": "59a36f619fcf222c0024fb1d875d1631739780c49da10fb9e58b719b1a4362b4"
+      "sha256": "278d2f09706184ccc6bcb91ddea043fa1eeb84bd42a402a248ad0c9a8a2eb91d"
     }
   ],
   "handle": "wag-and-shine",
@@ -298,7 +315,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "074131cef488268e47779cfe2f4f488f4f42a9a34ad917834cb5976b5a0e4405",
+  "output_hash": "c9ce8669591d02a63b84e2a8e53fdd5a329204efdefc4f973ddfe0ea1e4042aa",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",
@@ -309,6 +326,11 @@
       "verbatim": true
     }
   ],
+  "plus_menus": {
+    "eco_plus": "destinations dropdown (template pages + sections, per-link icon+color)",
+    "rail_toggle": "toggles the left rail (template pages/features)",
+    "rooms_plus": "mobile drawer navigation"
+  },
   "rules": {
     "density": "drop text-only sections",
     "ignition": "white-at-rest"

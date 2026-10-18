@@ -3,113 +3,473 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>marathon-42k — 26.2 miles, one dashboard — readiness check, this week&#x27;s num</title>
+<title>marathon-42k — 26.2 miles, one dashboard — readiness check, this week's num</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
 <style>
+/* hub chassis: root (index-2.html L21-96, sha f56fd9868370...) */
+:root {
+  /* ——— The obsidian stack — the only neutrals (Law v2 §2.2) ——— */
+  --bg:        #0B0D12;  /* World — the canvas. Everything sits on this. */
+  --bg-raise:  #12151D;  /* Raised — cards, panels, drawers. */
+  --bg-panel:  #12151D;  /* (alias of Raised) */
+  --bg-card:   #171B25;  /* Elevated — popovers, modals, the topmost layer. */
+  --bg-elev:   #171B25;  /* Elevated (explicit name). */
+  --edge:      #252B39;  /* Precision edge — 1px edges on raised surfaces. */
+  --ink:       #F5F7FB;  /* Primary text. Always. */
+  --ink-dim:   #F5F7FB;  /* (primary text, dimmed contexts — use --muted below it) */
+  --muted:     #AAB2BF;  /* Secondary text. Never for primary content. */
+  --muted-2:   #AAB2BF;
+  --faint:     #c9c3ce;
+  --line:      #ffffff18;
+  --line-soft: #ffffff0d;
 
-:root{--obsidian:#050507;--soul:#a06bff;--ink:#F8F7FB;--quiet:rgba(248,247,251,.72);
---faint:rgba(248,247,251,.5);--line:rgba(255,255,255,.14)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--obsidian);color:var(--ink);
-font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
--webkit-font-smoothing:antialiased;line-height:1.55}
-a{color:var(--ink)}
-.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
-/* top chrome */
-.topbar{position:sticky;top:0;z-index:50;background:rgba(5,5,7,.86);
-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:14px;padding-bottom:14px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
-.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--soul);
-box-shadow:0 0 12px var(--soul)}
-.topbar nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
-.topbar nav a{color:#fff;text-decoration:none;font-size:13px;font-weight:600;
-padding:8px 14px;border-radius:999px;border:1px solid transparent;transition:all .18s}
-.topbar nav a:hover{border-color:var(--soul);box-shadow:0 0 14px color-mix(in srgb,var(--soul) 55%,transparent);
-transform:translateY(-1px)}
-/* hero */
-.hero{padding:64px 0 40px;position:relative;overflow:hidden}
-.hero .kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;
-text-transform:uppercase;color:var(--soul);margin-bottom:14px}
-.hero h1{font-family:Newsreader,Georgia,'Times New Roman',serif;font-weight:600;
-font-size:clamp(34px,5.4vw,58px);line-height:1.08;margin:0 0 16px;color:#fff;
-text-wrap:balance}
-.hero .lede{font-size:18px;color:var(--quiet);max-width:640px;margin:0}
-.hero .orbs{position:absolute;right:4%;top:26px;display:flex;gap:18px;opacity:.9}
-.hero .greet{margin-top:18px;font-size:13px;color:var(--faint);display:flex;align-items:center;gap:10px}
-.led{width:9px;height:9px;border-radius:50%;background:var(--soul);
-box-shadow:0 0 10px var(--soul);animation:pulse 2.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-/* sections: boards with elevation */
-.nsec{margin:26px 0;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
-border:1px solid var(--line);border-radius:22px;padding:30px 30px 34px;
-box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -18px 40px rgba(0,0,0,.5),
-0 24px 60px rgba(0,0,0,.55);transition:transform .2s,box-shadow .2s}
-.nsec:hover{transform:translateY(-3px);
-box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -18px 40px rgba(0,0,0,.5),
-0 30px 70px rgba(0,0,0,.6),0 0 34px color-mix(in srgb,var(--soul) 22%,transparent)}
-.nsec-head{margin-bottom:20px}
-.nsec-head .kicker{font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;
-color:var(--soul)}
-.nsec-head h2{font-family:Newsreader,Georgia,serif;font-size:30px;font-weight:600;margin:6px 0 0;color:#fff}
-/* mounted function roots get breathing room */
-.nsec-body [data-fn]{margin:0}
-.nsec-body [data-fn]+[data-fn]{margin-top:26px}
-/* ignition: every interactive element, white at rest -> color on touch */
-button,a.btn,input[type=submit]{transition:all .18s}
-button:hover,a.btn:hover{box-shadow:0 0 16px color-mix(in srgb,var(--soul) 60%,transparent)}
-/* capture block (dictate) */
-.capture{display:flex;flex-direction:column;gap:12px}
-.capture textarea{width:100%;min-height:110px;background:#0B0D12;color:#fff;font-size:16px;
-border:1px solid var(--line);border-radius:14px;padding:14px;resize:vertical;font-family:inherit}
-.capture textarea:focus{outline:none;border-color:var(--soul);box-shadow:0 0 0 3px color-mix(in srgb,var(--soul) 30%,transparent)}
-.dictbtn{align-self:flex-start;background:#fff;color:#050507;border:none;border-radius:999px;
-padding:12px 22px;font-weight:800;font-size:14px;cursor:pointer}
-.dictbtn:hover{background:var(--soul);color:#fff;box-shadow:0 0 20px var(--soul)}
-.capture .hint{font-size:12px;color:var(--faint)}
-/* cart chrome for the product page (f-28-cart host surface) */
-.cartfab{position:fixed;right:22px;bottom:22px;z-index:60;background:var(--soul);color:#fff;
-border:none;border-radius:999px;padding:14px 20px;font-weight:800;cursor:pointer;
-box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 20px color-mix(in srgb,var(--soul) 50%,transparent)}
-.cartdrawer{position:fixed;right:0;top:0;bottom:0;width:min(380px,92vw);background:#0B0D12;
-border-left:1px solid var(--line);z-index:70;transform:translateX(105%);transition:transform .25s;
-display:flex;flex-direction:column;padding:20px}
-.cartdrawer.open{transform:none}
-.cartdrawer h3{margin:0 0 12px;color:#fff}
-#cartItems{flex:1;overflow:auto}
-.pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:8px}
-.pcard{background:#0B0D12;border:1px solid var(--line);border-radius:16px;padding:18px;color:#fff}
-.pcard h4{margin:0 0 4px;color:#fff}
-.pcard .pmeta{font-size:12px;color:var(--faint);margin-bottom:10px}
-.szpills{display:flex;gap:8px;margin:10px 0}
-.szpill{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;
-padding:6px 14px;font-size:12px;cursor:pointer}
-.szpill.on{background:#fff;color:#050507;border-color:#fff;font-weight:700}
-.btn-select{background:var(--soul);color:#fff;border:none;border-radius:999px;padding:10px 18px;
-font-weight:700;cursor:pointer;width:100%}
-.btn-select.picked{background:#2fe89e}
-/* footer */
-.footer{margin:60px 0 0;border-top:1px solid var(--line);padding:30px 0 60px;color:var(--faint);font-size:13px}
-.footer nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.footer nav a{color:#fff;text-decoration:none;font-size:13px;padding:8px 14px;border-radius:999px;
-border:1px solid var(--line);transition:all .18s}
-.footer nav a:hover{border-color:var(--soul);box-shadow:0 0 14px color-mix(in srgb,var(--soul) 55%,transparent)}
-@media(max-width:640px){.nsec{padding:22px 18px}.hero{padding:44px 0 30px}.hero .orbs{display:none}}
-@media(min-width:641px){.hero h1,.hero .lede{padding-right:190px}}
+  /* ——— The semantic spectrum — one color, one job (Law v2 §2.3) ——— */
+  --purple:     #9d75ff;  /* Naya's signature. Primary actions, Naya presence. */
+  --indigo:     #6675ff;  /* Comprehension / depth / reports. */
+  --sapphire:   #55b9ee;  /* Knowledge. Calm, deep, at rest. */
+  --blue:       #55b9ee;  /* (alias of sapphire — the working blue) */
+  --teal:       #40d3bb;  /* Connection / flow. */
+  --emerald:    #55e39a;  /* Alive and well. Working, true, now. */
+  --green:      #55e39a;  /* (alias of emerald — the working green) */
+  --lime:       #b8ee57;  /* Learning / growth. */
+  --yellow:     #f1d75a;  /* Attention / signal. */
+  --gold:       #e8b64c;  /* Extraordinary. The rarest word. */
+  --orange:     #ff9a5a;  /* Action / movement. */
+  --rich-orange:#ff7a3d;  /* Transition / momentum. */
+  --red:        #ff5a6e;  /* Blocked / failed. The alarm. Never decorative. */
+  --magenta:    #d86cff;  /* Human significance. The human's own things. */
 
-/* css:9a6ab405b8fd */
+  /* ——— Room accents (one distinct color per room — never two rooms alike) ——— */
+  --accent-feed:        var(--green);       /* the living stream */
+  --accent-today:       var(--magenta);     /* human significance */
+  --accent-reports:     var(--indigo);      /* comprehension / depth */
+  --accent-library:     var(--blue);        /* knowledge at rest */
+  --accent-connect:     var(--teal);        /* connection / flow */
+  --accent-ledger:      var(--gold);        /* value, extraordinary */
+  --accent-connections: var(--orange);      /* action / movement */
+  --accent-lists:       var(--purple);      /* Naya's signature */
+  --accent-mail:        var(--rich-orange); /* messages in motion */
+  --accent-spaces:      var(--lime);        /* learning / growth */
+  --accent-settings:    #e8eaf2;            /* clean silver / white */
+
+  /* ——— Living depth (the material grammar) ——— */
+  --depth-hi:  inset 0 1px #fff6;
+  --depth-drop: 0 18px 42px #000b;
+  --depth-deep: 0 20px 48px #000d;
+  --radius-sm: 11px;
+  --radius-md: 13px;
+  --radius-lg: 17px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  /* ——— Motion ——— */
+  --ease: cubic-bezier(.16,.84,.22,1);
+  --dur-fast: .18s;
+  --dur-med:  .28s;
+  --dur-slow: .5s;
+
+  /* ——— Type ——— */
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-hero: clamp(30px, 4.6vw, 52px);
+  --fs-title: 23px;
+  --fs-head: 17px;
+  --fs-body: 16px;
+  --fs-small: 13px;
+  --fs-micro: 11.5px;
+
+  /* ——— The living field behind everything ——— */
+  --field:
+    radial-gradient(1000px 650px at 55% -12%, #6675ff18, transparent 68%),
+    radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%),
+    var(--bg);
+  --soul: #a06bff;
+}
+
+/* hub chassis: bodybase (index-2.html L105-123, sha f56fd9868370...) */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: #ffffff18 transparent;
+}
+
+body {
+  margin: 0;
+  background: var(--field);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+/* hub chassis: shell (index-2.html L170-194, sha f56fd9868370...) */
+.shell {
+  display: grid;
+  grid-template-columns: 264px minmax(0, 1fr);
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  overflow-x: clip;
+}
+
+
+/* ——— Sidebar collapse: content goes full-width ——— */
+.shell {
+  transition: grid-template-columns .3s cubic-bezier(.16,.84,.22,1);
+}
+.shell.rail-collapsed {
+  grid-template-columns: 0 minmax(0, 1fr);
+}
+.shell.rail-collapsed .rail.left {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.rail.left {
+  transition: transform .3s cubic-bezier(.16,.84,.22,1), opacity .3s;
+
+/* hub chassis: railtoggle (index-2.html L295-326, sha f56fd9868370...) */
+/* ——— Sidebar toggles: black + elegant plus · white light idle · purple hover · alive ——— */
+.rail-toggle {
+  width: 48px; height: 48px; flex: 0 0 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.3);
+  background: radial-gradient(circle at 35% 30%, #252B39, #020203 70%);
+  color: #fff;
+  cursor: pointer;
+  display: grid; place-items: center;
+  transition: all .25s cubic-bezier(.16,.84,.22,1);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.15),
+    0 0 18px rgba(255,255,255,.12),
+    0 4px 12px rgba(0,0,0,.5);
+}
+.rail-toggle svg {
+  width: 26px; height: 26px;
+  transition: transform .25s cubic-bezier(.16,.84,.22,1);
+  filter: drop-shadow(0 0 5px rgba(255,255,255,.5));
+}
+.rail-toggle:hover {
+  transform: scale(1.1) rotate(90deg);
+  border-color: color-mix(in srgb, var(--soul) 70%, transparent);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.2),
+    0 0 28px color-mix(in srgb, var(--soul) 55%, transparent),
+    0 4px 16px rgba(0,0,0,.5);
+}
+.rail-toggle:hover svg {
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--soul) 80%, transparent));
+}
+
+/* hub chassis: railleft (index-2.html L329-343, sha f56fd9868370...) */
+.rail.left {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg);
+  border-right: 1px solid var(--line-soft);
+  padding: 22px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 40;
+}
+
+/* hub chassis: ecoplus (index-2.html L345-365, sha f56fd9868370...) */
+/* ——— Ecosystem quick menu (top-right +) ——— */
+.eco-plus {
+  --jewel: var(--soul);
+  width: 48px; height: 48px; flex: 0 0 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.35);
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #020203) 78%);
+  color: #fff; cursor: pointer;
+  display: grid; place-items: center;
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(0,0,0,.4),
+    0 0 22px color-mix(in srgb, var(--jewel) 55%, transparent),
+    0 8px 20px rgba(0,0,0,.5);
+  transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s;
+}
+.eco-plus svg { width: 20px; height: 20px; }
+.eco-plus:hover { transform: translateY(-2px) scale(1.04); box-shadow: inset 0 1px rgba(255,255,255,.5), inset 0 -3px 8px rgba(0,0,0,.4), 0 0 32px color-mix(in srgb, var(--jewel) 75%, transparent), 0 12px 28px rgba(0,0,0,.6); }
+
+/* hub chassis: ecoplus2 (index-2.html L387-392, sha f56fd9868370...) */
+@media (max-width:560px){ .powercast-topbtn{padding:0 14px;font-size:12px;min-height:44px;margin-right:8px;} }
+.eco-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+.eco-plus[aria-expanded="true"] {
+  background: color-mix(in srgb, var(--purple) 28%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--purple) 40%, transparent);
+}
+
+/* hub chassis: ecomenu (index-2.html L393-450, sha f56fd9868370...) */
+.eco-menu {
+  position: absolute; top: calc(100% + 10px); right: 28px;
+  min-width: 300px; max-width: 340px;
+  background: color-mix(in srgb, #0B0D12 94%, transparent);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  border: 1px solid color-mix(in srgb, var(--purple) 35%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--depth-hi), 0 0 36px color-mix(in srgb, var(--purple) 22%, transparent);
+  padding: 8px; z-index: 200;
+  display: none;
+}
+.eco-menu.open { display: block; }
+.eco-menu .eco-head {
+  padding: 10px 14px 6px;
+  font-size: 11px; font-weight: 800; letter-spacing: 2.5px;
+  color: var(--muted);
+}
+.eco-menu a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  color: var(--ink); text-decoration: none;
+  font-size: 14px; font-weight: 650;
+}
+.eco-menu a:hover, .eco-menu a:focus-visible {
+  background: color-mix(in srgb, var(--purple) 16%, transparent);
+  outline: none;
+}
+.eco-menu a .eco-ico {
+  width: 32px; height: 32px; flex: 0 0 32px;
+  display: grid; place-items: center;
+  border-radius: 10px;
+  color: var(--eco, #9d75ff);
+  background: color-mix(in srgb, var(--eco, #9d75ff) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--eco, #9d75ff) 30%, transparent);
+  transition: all .2s cubic-bezier(.16,.84,.22,1);
+}
+.eco-menu a .eco-ico svg { width: 18px; height: 18px; }
+.eco-menu a:hover .eco-ico {
+  color: #fff;
+  background: color-mix(in srgb, var(--eco, #9d75ff) 35%, transparent);
+  border-color: var(--eco, #9d75ff);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--eco, #9d75ff) 60%, transparent);
+  transform: scale(1.08);
+}
+.eco-menu a:hover {
+  background: color-mix(in srgb, var(--eco, #9d75ff) 12%, transparent);
+}
+.eco-menu a .dot {
+  width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px;
+  background: var(--purple);
+  box-shadow: 0 0 10px var(--purple);
+}
+.eco-menu a span.lbl { flex: 1; }
+.eco-menu a .ext { color: var(--muted); font-size: 12px; }
+@media (max-width: 760px) {
+  .eco-menu { right: 12px; left: 12px; min-width: 0; max-width: none; }
+}
+
+/* hub chassis: brand (index-2.html L452-456, sha f56fd9868370...) */
+.brand { display: flex; align-items: center; gap: 12px; padding: 2px 8px 0; }
+.brand img { width: 44px; height: 44px; border-radius: 50%; display: block; background: var(--bg-raise); border: 2px solid rgba(255,255,255,.2); box-shadow: 0 0 16px color-mix(in srgb, var(--soul) 30%, transparent); }
+.brand b { display: block; font-size: 15px; letter-spacing: .14em; }
+.brand small { display: block; font-size: 10px; letter-spacing: .22em; color: var(--muted); margin-top: 3px; }
+
+/* hub chassis: railnav (index-2.html L457-457, sha f56fd9868370...) */
+.rail .nav { margin-top: 24px; display: flex; flex-direction: column; gap: 3px; }
+
+/* hub chassis: navbtn (index-2.html L462-519, sha f56fd9868370...) */
+.nav-btn {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%; text-align: left;
+  position: relative;
+  padding: 10px 14px; border-radius: 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink-dim); font-size: 14px; font-family: var(--font);
+  cursor: pointer; transition: background .18s, border-color .18s, color .18s, box-shadow .18s, transform .18s;
+}
+.nav-btn .ico {
+  width: 40px; height: 40px; flex: 0 0 40px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  color: var(--nav, var(--purple));
+  background: color-mix(in srgb, var(--nav, var(--purple)) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--nav, var(--purple)) 25%, transparent);
+  transition: all .2s cubic-bezier(.16,.84,.22,1);
+}
+.nav-btn .ico svg {
+  width: 24px; height: 24px;
+  stroke-width: 1.8;
+}
+.nav-btn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 550; }
+/* Hover: white light + spectrum color ignite */
+.nav-btn:hover, .nav-btn:focus-visible {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.2);
+  box-shadow: 0 0 16px rgba(255,255,255,.12);
+  color: #fff;
+  transform: translateX(3px);
+}
+.nav-btn:hover .ico {
+  color: #fff;
+  background: color-mix(in srgb, var(--nav, var(--purple)) 35%, transparent);
+  border-color: var(--nav, var(--purple));
+  box-shadow: 0 0 20px color-mix(in srgb, var(--nav, var(--purple)) 70%, transparent);
+  transform: scale(1.1);
+}
+/* Active: subtle indicator only — NO permanent glow (Shawn 2026-10-03) */
+.nav-btn.active {
+  background: rgba(255,255,255,.04);
+  border-color: rgba(255,255,255,.15);
+  color: #fff;
+}
+.nav-btn.active .ico {
+  color: var(--nav, var(--purple));
+  background: color-mix(in srgb, var(--nav, var(--purple)) 15%, transparent);
+  border-color: color-mix(in srgb, var(--nav, var(--purple)) 40%, transparent);
+}
+.nav-btn.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 20%; bottom: 20%;
+  width: 3px; border-radius: 3px;
+  background: var(--nav, var(--purple));
+}
+.nav-btn:focus-visible { outline: 2px solid var(--nav, var(--purple)); outline-offset: 2px; }
+
+/* hub chassis: private (index-2.html L526-530, sha f56fd9868370...) */
+.private {
+  margin-top: auto; padding: 20px 8px 4px;
+  font-size: 10px; letter-spacing: .16em; line-height: 2;
+  color: var(--muted);
+}
+
+/* hub chassis: maintop (index-2.html L533-555, sha f56fd9868370...) */
+.main { min-width: 0; padding-bottom: 80px; }
+
+/* Topbar */
+.top {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 28px;
+  background: color-mix(in srgb, #050507 84%, transparent);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.top-title b { font-size: 13px; letter-spacing: .2em; font-weight: 700; }
+.top-status {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: .16em; color: var(--muted);
+  white-space: nowrap;
+}
+.top-status .led {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--green) 80%, transparent);
+}
+
+/* hub chassis: roomsplus (index-2.html L558-578, sha f56fd9868370...) */
+.rooms-plus {
+  --jewel: var(--soul);
+  display: none;
+  width: 48px; height: 48px; flex: 0 0 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.35);
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--jewel), color-mix(in srgb, var(--jewel) 45%, #020203) 78%);
+  color: #fff; cursor: pointer;
+  place-items: center;
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(0,0,0,.4),
+    0 0 22px color-mix(in srgb, var(--jewel) 55%, transparent),
+    0 8px 20px rgba(0,0,0,.5);
+  transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s;
+}
+.rooms-plus svg { width: 20px; height: 20px; }
+.rooms-plus:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+
+/* hub chassis: roomoutlet (index-2.html L680-680, sha f56fd9868370...) */
+.room-outlet { padding: 0 28px; }
+
+/* hub chassis: hero (index-2.html L682-688, sha f56fd9868370...) */
+/* Main Show hero */
+.hero { padding: 30px 0 6px; }
+.hero .eyebrow {
+  font-size: 11px; letter-spacing: .24em; font-weight: 700;
+  color: #fff; /* Law 1: Shawn's word — kickers stay white */ margin-bottom: 12px;
+}
+.hero h1 { font-size: var(--fs-hero); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.01em; }
+
+/* hub chassis: drawer (index-2.html L743-747, sha f56fd9868370...) */
+.drawer-backdrop {
+  display: none;
+  position: fixed; inset: 0; z-index: 55;
+  background: rgba(3, 3, 6, .6);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+
+/* hub chassis: drawmedia (index-2.html L749-773, sha f56fd9868370...) */
+@media (max-width: 900px) {
+  .shell { display: block; }
+  .rail.left {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: min(300px, 84vw); height: 100dvh;
+    transform: translateX(-106%);
+    transition: transform var(--dur-med) var(--ease);
+    z-index: 60;
+    box-shadow: var(--depth-deep);
+  }
+  .shell.drawer-open .rail.left { transform: none; }
+  .shell.drawer-open .drawer-backdrop { display: block; }
+  body.drawer-open { overflow: hidden; }
+  .rooms-plus { display: grid; }
+  .top { padding: 11px 14px; gap: 10px; }
+  .top-title b { font-size: 11.5px; }
+  .top-status { font-size: 10px; }
+  .top-status span:last-child { display: none; }
+  .searchWrap { padding: 16px 14px 0; }
+  .shell-lens { padding: 14px 14px 0; }
+  .room-outlet { padding: 0 14px; }
+  .hero h1 { font-size: clamp(30px, 9vw, 40px); }
+  .hero-sub { font-size: 16px; }
+  .room-head h2 { font-size: 23px; }
+}
+
+/* hub chassis: topspacer (index-2.html L808-808, sha f56fd9868370...) */
+.top-spacer { flex: 1 1 auto; }
+
+/* piece: NAYA-CRD-008 — Aliveness ✧ (builder-index-v1, token-normalized) */
+.nb-scope .card {--accent:#9d75ff;--accent-soft:rgba(157,117,255,.45);border:1.5px solid rgba(255,255,255,.9);border-radius:18px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(0,0,0,.28));box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 12px 32px rgba(0,0,0,.55);animation:edgebreathe 6s ease-in-out infinite;transition:border-color .3s,box-shadow .3s,transform .3s}
+.nb-scope .card:hover {border-color:var(--accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 30px var(--accent-soft),0 12px 32px rgba(0,0,0,.55);transform:translateY(-3px)}
+@keyframes edgebreathe {0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 10px rgba(255,255,255,.06),0 12px 32px rgba(0,0,0,.55)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 22px rgba(255,255,255,.13),0 12px 32px rgba(0,0,0,.55)}}
+.nb-scope .card h3 {font-size:18px;font-weight:700;margin-bottom:8px;color:#ffffff;display:flex;align-items:center;gap:12px}
+.nb-scope .card h3 .jewel {--jewel:#9d75ff;width:26px;height:26px;flex:none;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:900;color:#ffffff;text-shadow:0 2px 8px rgba(0,0,0,.6);background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.85),transparent 42%),radial-gradient(circle at 50% 55%,var(--jewel),color-mix(in srgb,var(--jewel) 45%,#020203) 78%);border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px rgba(255,255,255,.5),inset 0 -3px 8px rgba(0,0,0,.4),0 0 22px color-mix(in srgb,var(--jewel) 55%,transparent),0 8px 20px rgba(0,0,0,.5)}
+.nb-scope .card p {font-size:17px;color:#ffffff}
+.nb-scope .card p.fine {font-size:14px;margin-top:10px}
+.nb-scope .law-step .jewel {margin-top:1px;flex:none}
+
+/* piece: NAYA-JWL-001 — finished objects of light (builder-index-v1, token-normalized) */
 .nb-scope {
   
   --field: #050507;
-  --obsidian: #0B0D12;
-  --raise: #10141d;
-  --card: #141a28;
-  --deep: #0a0e16;
+  --obsidian: #0b0d12;
+  --raise: #12151d;
+  --card: #12151d;
+  --deep: #12151d;
 
   
-  --white: #F8F7FB;
-  --ink: #F5F7FB;
+  --white: #f8f7fb;
+  --ink: #f5f7fb;
   --quiet: rgba(248,247,251,.72);
   --secondary: rgba(248,247,251,.55);
   --line: rgba(255,255,255,.12);
@@ -175,7 +535,7 @@ border:1px solid var(--line);transition:all .18s}
   background:
     radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
     radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
-    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #020203) 56%, #0b0d12 100%);
   box-shadow:
     inset 0 0 0 1.5px rgba(255,255,255,.50),
     inset 0 10px 18px rgba(255,255,255,.14),
@@ -193,7 +553,7 @@ border:1px solid var(--line);transition:all .18s}
 @keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
 .nb-scope .orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
   background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#ffffff 0 0) content-box, linear-gradient(#ffffff 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
   animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
 }
@@ -208,24 +568,112 @@ border:1px solid var(--line);transition:all .18s}
 .nb-scope .orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
 .nb-scope .orb--sm::after { bottom: -16px; height: 14px; }
 @media (prefers-reduced-motion: reduce) {.nb-scope .orb, .nb-scope .orb::before { animation: none; }}
+
+/* page glue (law-built) */
+
+/* Law 1 (Shawn's word outranks the Hub file): kickers/eyebrows stay white. */
+.hero .eyebrow{color:#fff}
+/* Law 9: Newsreader for voice. */
+.hero h1{font-family:Newsreader,Georgia,'Times New Roman',serif;font-weight:600}
+.hero-orbs{display:flex;gap:16px;margin:20px 0 6px;align-items:center;min-height:40px}
+/* kicker inside the index card piece: white, sized hierarchy (Law 16) */
+.card p.fine.kicker-line{font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+font-weight:700;margin:0 0 10px;color:#fff}
+/* mounted function roots get breathing room */
+.nsec-body [data-fn]{margin:0}
+.nsec-body [data-fn]+[data-fn]{margin-top:26px}
+/* rail anchors reuse the Hub nav-btn language */
+.rail .nav a.nav-btn{text-decoration:none}
+.eco-wrap{position:relative;display:flex}
+/* visible piece manifest (Shawn's 2026-10-17 rule) */
+.manifest{margin-top:18px;border-top:1px solid var(--line-soft);padding-top:14px}
+.manifest ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.manifest li{font-size:13px;color:var(--ink)}
+.manifest li b{color:#fff;font-weight:700}
+.manifest .mrole{color:var(--muted)}
+/* dictate host surface (function f-25) */
+.capture{display:flex;flex-direction:column;gap:12px}
+.capture textarea{width:100%;min-height:110px;background:#0B0D12;color:#ffffff;font-size:16px;
+border:1px solid var(--line);border-radius:14px;padding:14px;resize:vertical;font-family:inherit}
+.capture textarea:focus{outline:none;border-color:var(--soul);
+box-shadow:0 0 0 3px color-mix(in srgb,var(--soul) 30%,transparent)}
+.dictbtn{align-self:flex-start;background:#ffffff;color:#050507;border:none;border-radius:999px;
+padding:12px 22px;font-weight:800;font-size:14px;cursor:pointer}
+.dictbtn:hover{background:var(--soul);color:#ffffff;box-shadow:0 0 20px var(--soul)}
+.capture .hint{font-size:12px;color:var(--faint)}
+/* cart host surface (function f-28) */
+.cartfab{position:fixed;right:22px;bottom:22px;z-index:60;background:var(--soul);color:#ffffff;
+border:none;border-radius:999px;padding:14px 20px;font-weight:800;cursor:pointer;
+box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 20px color-mix(in srgb,var(--soul) 50%,transparent)}
+.cartdrawer{position:fixed;right:0;top:0;bottom:0;width:min(380px,92vw);background:#0B0D12;
+border-left:1px solid var(--line);z-index:70;transform:translateX(105%);transition:transform .25s;
+display:flex;flex-direction:column;padding:20px}
+.cartdrawer.open{transform:none}
+.cartdrawer h3{margin:0 0 12px;color:#ffffff}
+#cartItems{flex:1;overflow:auto}
+.pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:8px}
+.pcard{background:#0B0D12;border:1px solid var(--line);border-radius:16px;padding:18px;color:#ffffff}
+.pcard h4{margin:0 0 4px;color:#ffffff}
+.pcard .pmeta{font-size:12px;color:var(--faint);margin-bottom:10px}
+.szpills{display:flex;gap:8px;margin:10px 0}
+.szpill{background:transparent;border:1px solid rgba(255,255,255,.35);color:#ffffff;border-radius:999px;
+padding:6px 14px;font-size:12px;cursor:pointer}
+.szpill.on{background:#ffffff;color:#050507;border-color:#ffffff;font-weight:700}
+.btn-select{background:var(--soul);color:#ffffff;border:none;border-radius:999px;padding:10px 18px;
+font-weight:700;cursor:pointer;width:100%}
+.btn-select.picked{background:#2fe89e}
+@media(max-width:640px){.hero-orbs{display:none}}
+
 </style>
 </head>
 <body>
-<div class="topbar"><div class="wrap"><div class="brand"><span class="dot"></span><span>marathon-42k</span></div><nav><a href="#sec-assessment">Marathon readiness check</a><a href="page2.html">Training</a></nav></div></div>
-<header class="hero"><div class="wrap"><div class="orbs"><span class="nb-scope"><span class="orb orb--sm" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></span></div><div class="kicker">marathon-42k · Readiness</div><h1>26.2 miles, one dashboard — readiness check, this week&#x27;s numbers, today&#x27;s plan.</h1><p class="lede">No junk miles, no guesswork. Just the work that gets me to the start line healthy.</p></div></header>
-<main class="wrap">
-<section class="nsec" id="sec-assessment"><div class="nsec-head"><span class="kicker">Check</span><h2>Marathon readiness check</h2></div><div class="nsec-body"><div data-fn="f-14-assessment-score" data-fn-config='{&quot;accent&quot;:&quot;#a06bff&quot;,&quot;assessment&quot;:{&quot;dimensions&quot;:[{&quot;color&quot;:&quot;#a06bff&quot;,&quot;id&quot;:&quot;endurance&quot;,&quot;name&quot;:&quot;Endurance&quot;,&quot;weight&quot;:2},{&quot;color&quot;:&quot;#2fe89e&quot;,&quot;id&quot;:&quot;strength&quot;,&quot;name&quot;:&quot;Strength&quot;,&quot;weight&quot;:1},{&quot;color&quot;:&quot;#3fb8ff&quot;,&quot;id&quot;:&quot;recovery&quot;,&quot;name&quot;:&quot;Recovery&quot;,&quot;weight&quot;:1}],&quot;id&quot;:&quot;marathon-readiness&quot;,&quot;questions&quot;:[{&quot;answers&quot;:[[&quot;a1&quot;,&quot;Strong throughout&quot;,&quot;Finished wanting more&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;Tough but done&quot;,&quot;Walked a little at the end&quot;,65,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Fell apart&quot;,&quot;Bonked or cut it short&quot;,25,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;endurance&quot;,&quot;id&quot;:&quot;q1&quot;,&quot;label&quot;:&quot;Long run&quot;,&quot;order&quot;:1,&quot;question&quot;:&quot;How did your last 16+ mile long run feel?&quot;,&quot;teaching&quot;:&quot;The long run is the marathon in miniature.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;45+ miles&quot;,&quot;Peak training territory&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;30-45 miles&quot;,&quot;Solid base, room to grow&quot;,65,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Under 30 miles&quot;,&quot;The base needs building&quot;,25,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;endurance&quot;,&quot;id&quot;:&quot;q2&quot;,&quot;label&quot;:&quot;Weekly volume&quot;,&quot;order&quot;:2,&quot;question&quot;:&quot;What&#x27;s your average weekly mileage over the last month?&quot;,&quot;teaching&quot;:&quot;Volume is the quiet engine of marathon fitness.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;Yes, always&quot;,&quot;Discipline is locked in&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;Mostly&quot;,&quot;Sometimes I chase the watch&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Rarely&quot;,&quot;Every run becomes a workout&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;endurance&quot;,&quot;id&quot;:&quot;q3&quot;,&quot;label&quot;:&quot;Pace control&quot;,&quot;order&quot;:3,&quot;question&quot;:&quot;Can you run easy miles truly easy?&quot;,&quot;teaching&quot;:&quot;Easy days easy is a discipline, not a suggestion.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;2x per week&quot;,&quot;Non-negotiable sessions&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;When I remember&quot;,&quot;Sporadic but present&quot;,55,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Never&quot;,&quot;Running only&quot;,15,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;strength&quot;,&quot;id&quot;:&quot;q4&quot;,&quot;label&quot;:&quot;Strength work&quot;,&quot;order&quot;:4,&quot;question&quot;:&quot;How often do you do focused strength work?&quot;,&quot;teaching&quot;:&quot;Strong hips carry tired legs across the line.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;This week&quot;,&quot;They&#x27;re in the rotation&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;This month&quot;,&quot;Occasional visitor&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Can&#x27;t remember&quot;,&quot;Flatlander&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;strength&quot;,&quot;id&quot;:&quot;q5&quot;,&quot;label&quot;:&quot;Hills&quot;,&quot;order&quot;:5,&quot;question&quot;:&quot;When did you last run real hills?&quot;,&quot;teaching&quot;:&quot;Hills are speed work in disguise.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;7.5+ hours&quot;,&quot;The work is absorbing&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;6-7 hours&quot;,&quot;Getting by&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Under 6&quot;,&quot;Running on fumes&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;recovery&quot;,&quot;id&quot;:&quot;q6&quot;,&quot;label&quot;:&quot;Sleep&quot;,&quot;order&quot;:6,&quot;question&quot;:&quot;How&#x27;s your sleep during peak training?&quot;,&quot;teaching&quot;:&quot;Adaptation happens in bed, not on the road.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;None&quot;,&quot;Body feels bulletproof&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;One, managed&quot;,&quot;Watching it closely&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Yes, worried&quot;,&quot;It&#x27;s getting worse&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;recovery&quot;,&quot;id&quot;:&quot;q7&quot;,&quot;label&quot;:&quot;Niggles&quot;,&quot;order&quot;:7,&quot;question&quot;:&quot;Any persistent niggles right now?&quot;,&quot;teaching&quot;:&quot;Small pains are the body&#x27;s early warning system.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;Weekly, guilt-free&quot;,&quot;Part of the plan&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;Sometimes&quot;,&quot;FOMO creeps in&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Never&quot;,&quot;Rest feels like quitting&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;recovery&quot;,&quot;id&quot;:&quot;q8&quot;,&quot;label&quot;:&quot;Rest days&quot;,&quot;order&quot;:8,&quot;question&quot;:&quot;Do you take real rest days?&quot;,&quot;teaching&quot;:&quot;Rest is training you do lying down.&quot;}],&quot;scoreBands&quot;:[{&quot;color&quot;:&quot;#ff5e6c&quot;,&quot;description&quot;:&quot;The engine isn&#x27;t there yet. Build the base before you chase the distance.&quot;,&quot;label&quot;:&quot;Not yet&quot;,&quot;max&quot;:49,&quot;min&quot;:0},{&quot;color&quot;:&quot;#ffbf3d&quot;,&quot;description&quot;:&quot;Real fitness, real gaps. Three focused weeks and you&#x27;re knocking on the door.&quot;,&quot;label&quot;:&quot;Building&quot;,&quot;max&quot;:79,&quot;min&quot;:50},{&quot;color&quot;:&quot;#2fe89e&quot;,&quot;description&quot;:&quot;The work is in the legs. Trust the taper, run your race.&quot;,&quot;label&quot;:&quot;Race ready&quot;,&quot;max&quot;:100,&quot;min&quot;:80}],&quot;title&quot;:&quot;Marathon Readiness Check&quot;,&quot;version&quot;:&quot;1.0.0&quot;},&quot;intro&quot;:&quot;Twelve honest questions. No flattery \u2014 the start line doesn&#x27;t care about your feelings.&quot;,&quot;storeKey&quot;:&quot;naya.appmode.marathon-42k.assessment&quot;,&quot;title&quot;:&quot;Marathon Readiness Check&quot;}'></div></div></section>
-<section class="nsec" id="sec-nav1"><div class="nsec-head"><span class="kicker">Navigate</span><h2>Find your way</h2></div><div class="nsec-body"><div data-fn="f-19-navigate" data-fn-config='{&quot;accent&quot;:&quot;#a06bff&quot;,&quot;active&quot;:0,&quot;rooms&quot;:[{&quot;href&quot;:&quot;index.html&quot;,&quot;label&quot;:&quot;Readiness&quot;},{&quot;href&quot;:&quot;page2.html&quot;,&quot;label&quot;:&quot;Training&quot;}]}'></div></div></section>
+<div class="shell rail-collapsed nb-scope" id="shell">
+<aside class="rail left" aria-label="marathon-42k pages and sections"><div class="brand"><div><b>MARATHON-42K</b><small>SMART APP</small></div></div><nav class="nav" aria-label="Template pages"><a class="nav-btn" style="--nav:#a06bff" href="#sec-assessment"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Marathon readiness check</span></a><a class="nav-btn" style="--nav:#a06bff" href="page2.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Training</span></a></nav><div class="private">PRIVATE BY DEFAULT<br>SHARED BY CHOICE<br>COLLECTIVE BY CONSENT</div></aside>
+<div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+<main class="main">
+<header class="top"><button class="rooms-plus" id="roomsPlus" aria-label="Open navigation" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button class="rail-toggle" id="railToggle" aria-label="Show sidebar" title="Your pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><div class="top-title"><b>MARATHON-42K</b></div><div class="top-status"><span class="led"></span><span>WORKING</span></div><div class="top-spacer"></div><div class="eco-wrap"><button class="eco-plus" id="ecoPlus" aria-label="Destinations" aria-haspopup="true" aria-expanded="false" title="Destinations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><nav class="eco-menu" id="ecoMenu" aria-label="Destinations"><div class="eco-head">DESTINATIONS</div><a href="index.html" style="--eco:#a06bff"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Readiness</span></a><a href="page2.html" style="--eco:#a06bff"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Training</span></a><a href="#sec-assessment" style="--eco:#a06bff"><span class="eco-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg></span><span class="lbl">Marathon readiness check</span></a></nav></div></header>
+<div class="room-outlet">
+<section class="hero" data-hue="soul" id="top"><div class="eyebrow">marathon-42k · Readiness</div><h1>26.2 miles, one dashboard — readiness check, this week&#x27;s numbers, today&#x27;s plan.</h1><p class="hero-sub">No junk miles, no guesswork. Just the work that gets me to the start line healthy.</p><div class="hero-orbs"><span class="nb-scope orb-wrap"><span class="orb orb--sm" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></span></div></section>
+<section class="card" id="sec-assessment" data-hue="purple" data-piece="NAYA-CRD-008" style="--accent:#a06bff;--accent-soft:rgba(160,107,255,.45)"><p class="fine kicker-line">Check</p><h3><span class="jewel" style="--jewel:#a06bff">✧</span>Marathon readiness check</h3><div class="nsec-body"><div data-fn="f-14-assessment-score" data-fn-config='{&quot;accent&quot;:&quot;#a06bff&quot;,&quot;assessment&quot;:{&quot;dimensions&quot;:[{&quot;color&quot;:&quot;#a06bff&quot;,&quot;id&quot;:&quot;endurance&quot;,&quot;name&quot;:&quot;Endurance&quot;,&quot;weight&quot;:2},{&quot;color&quot;:&quot;#2fe89e&quot;,&quot;id&quot;:&quot;strength&quot;,&quot;name&quot;:&quot;Strength&quot;,&quot;weight&quot;:1},{&quot;color&quot;:&quot;#3fb8ff&quot;,&quot;id&quot;:&quot;recovery&quot;,&quot;name&quot;:&quot;Recovery&quot;,&quot;weight&quot;:1}],&quot;id&quot;:&quot;marathon-readiness&quot;,&quot;questions&quot;:[{&quot;answers&quot;:[[&quot;a1&quot;,&quot;Strong throughout&quot;,&quot;Finished wanting more&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;Tough but done&quot;,&quot;Walked a little at the end&quot;,65,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Fell apart&quot;,&quot;Bonked or cut it short&quot;,25,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;endurance&quot;,&quot;id&quot;:&quot;q1&quot;,&quot;label&quot;:&quot;Long run&quot;,&quot;order&quot;:1,&quot;question&quot;:&quot;How did your last 16+ mile long run feel?&quot;,&quot;teaching&quot;:&quot;The long run is the marathon in miniature.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;45+ miles&quot;,&quot;Peak training territory&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;30-45 miles&quot;,&quot;Solid base, room to grow&quot;,65,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Under 30 miles&quot;,&quot;The base needs building&quot;,25,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;endurance&quot;,&quot;id&quot;:&quot;q2&quot;,&quot;label&quot;:&quot;Weekly volume&quot;,&quot;order&quot;:2,&quot;question&quot;:&quot;What&#x27;s your average weekly mileage over the last month?&quot;,&quot;teaching&quot;:&quot;Volume is the quiet engine of marathon fitness.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;Yes, always&quot;,&quot;Discipline is locked in&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;Mostly&quot;,&quot;Sometimes I chase the watch&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Rarely&quot;,&quot;Every run becomes a workout&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;endurance&quot;,&quot;id&quot;:&quot;q3&quot;,&quot;label&quot;:&quot;Pace control&quot;,&quot;order&quot;:3,&quot;question&quot;:&quot;Can you run easy miles truly easy?&quot;,&quot;teaching&quot;:&quot;Easy days easy is a discipline, not a suggestion.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;2x per week&quot;,&quot;Non-negotiable sessions&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;When I remember&quot;,&quot;Sporadic but present&quot;,55,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Never&quot;,&quot;Running only&quot;,15,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;strength&quot;,&quot;id&quot;:&quot;q4&quot;,&quot;label&quot;:&quot;Strength work&quot;,&quot;order&quot;:4,&quot;question&quot;:&quot;How often do you do focused strength work?&quot;,&quot;teaching&quot;:&quot;Strong hips carry tired legs across the line.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;This week&quot;,&quot;They&#x27;re in the rotation&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;This month&quot;,&quot;Occasional visitor&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Can&#x27;t remember&quot;,&quot;Flatlander&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;strength&quot;,&quot;id&quot;:&quot;q5&quot;,&quot;label&quot;:&quot;Hills&quot;,&quot;order&quot;:5,&quot;question&quot;:&quot;When did you last run real hills?&quot;,&quot;teaching&quot;:&quot;Hills are speed work in disguise.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;7.5+ hours&quot;,&quot;The work is absorbing&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;6-7 hours&quot;,&quot;Getting by&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Under 6&quot;,&quot;Running on fumes&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;recovery&quot;,&quot;id&quot;:&quot;q6&quot;,&quot;label&quot;:&quot;Sleep&quot;,&quot;order&quot;:6,&quot;question&quot;:&quot;How&#x27;s your sleep during peak training?&quot;,&quot;teaching&quot;:&quot;Adaptation happens in bed, not on the road.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;None&quot;,&quot;Body feels bulletproof&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;One, managed&quot;,&quot;Watching it closely&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Yes, worried&quot;,&quot;It&#x27;s getting worse&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;recovery&quot;,&quot;id&quot;:&quot;q7&quot;,&quot;label&quot;:&quot;Niggles&quot;,&quot;order&quot;:7,&quot;question&quot;:&quot;Any persistent niggles right now?&quot;,&quot;teaching&quot;:&quot;Small pains are the body&#x27;s early warning system.&quot;},{&quot;answers&quot;:[[&quot;a1&quot;,&quot;Weekly, guilt-free&quot;,&quot;Part of the plan&quot;,100,&quot;#2fe89e&quot;,&quot;&quot;],[&quot;a2&quot;,&quot;Sometimes&quot;,&quot;FOMO creeps in&quot;,60,&quot;#ffbf3d&quot;,&quot;&quot;],[&quot;a3&quot;,&quot;Never&quot;,&quot;Rest feels like quitting&quot;,20,&quot;#ff5e6c&quot;,&quot;&quot;]],&quot;dimensionId&quot;:&quot;recovery&quot;,&quot;id&quot;:&quot;q8&quot;,&quot;label&quot;:&quot;Rest days&quot;,&quot;order&quot;:8,&quot;question&quot;:&quot;Do you take real rest days?&quot;,&quot;teaching&quot;:&quot;Rest is training you do lying down.&quot;}],&quot;scoreBands&quot;:[{&quot;color&quot;:&quot;#ff5e6c&quot;,&quot;description&quot;:&quot;The engine isn&#x27;t there yet. Build the base before you chase the distance.&quot;,&quot;label&quot;:&quot;Not yet&quot;,&quot;max&quot;:49,&quot;min&quot;:0},{&quot;color&quot;:&quot;#ffbf3d&quot;,&quot;description&quot;:&quot;Real fitness, real gaps. Three focused weeks and you&#x27;re knocking on the door.&quot;,&quot;label&quot;:&quot;Building&quot;,&quot;max&quot;:79,&quot;min&quot;:50},{&quot;color&quot;:&quot;#2fe89e&quot;,&quot;description&quot;:&quot;The work is in the legs. Trust the taper, run your race.&quot;,&quot;label&quot;:&quot;Race ready&quot;,&quot;max&quot;:100,&quot;min&quot;:80}],&quot;title&quot;:&quot;Marathon Readiness Check&quot;,&quot;version&quot;:&quot;1.0.0&quot;},&quot;intro&quot;:&quot;Twelve honest questions. No flattery \u2014 the start line doesn&#x27;t care about your feelings.&quot;,&quot;storeKey&quot;:&quot;naya.appmode.marathon-42k.assessment&quot;,&quot;title&quot;:&quot;Marathon Readiness Check&quot;}'></div></div></section>
+<section class="card" id="sec-nav1" data-hue="blue" data-piece="NAYA-CRD-008" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><p class="fine kicker-line">Navigate</p><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>Find your way</h3><div class="nsec-body"><div data-fn="f-19-navigate" data-fn-config='{&quot;accent&quot;:&quot;#a06bff&quot;,&quot;active&quot;:0,&quot;rooms&quot;:[{&quot;href&quot;:&quot;index.html&quot;,&quot;label&quot;:&quot;Readiness&quot;},{&quot;href&quot;:&quot;page2.html&quot;,&quot;label&quot;:&quot;Training&quot;}]}'></div></div></section>
+<footer class="card" data-hue="soul" data-piece="NAYA-CRD-008" style="--accent:#a06bff;--accent-soft:rgba(160,107,255,.45)"><h3><span class="jewel" style="--jewel:#a06bff">✧</span>Built to work</h3><p class="fine">Built with the Naya Smart Builder · APP-MODE appmode-v2 · chassis follows the Hub pattern · every control on this page works.</p><div class="manifest" id="piece-manifest"><p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p><ul><li><span class="mrole">hero orb</span> — <b>NAYA-JWL-001</b> — finished objects of light</li><li><span class="mrole">section board: assessment</span> — <b>NAYA-CRD-008</b> — Aliveness ✧</li><li><span class="mrole">Page chassis pattern</span> — <b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li></ul></div></footer>
+</div>
 </main>
-<footer class="footer"><div class="wrap"><nav><a href="#sec-assessment">Marathon readiness check</a><a href="page2.html">Training</a></nav><div>Built with the Naya Smart Builder · APP-MODE appmode-v1 · everything on this page works — tap anything.</div></div></footer>
+</div>
 
 <script>
 (function(){
-  var el=document.getElementById('greetLine'); if(!el) return;
-  var h=new Date().getHours();
-  var g=h<5?'Up late':h<12?'Good morning':h<18?'Good afternoon':'Good evening';
-  var d=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
-  el.textContent=g+' \u2014 '+d;
+  var shell=document.getElementById('shell'); if(!shell) return;
+  var rt=document.getElementById('railToggle');
+  var rp=document.getElementById('roomsPlus');
+  var bd=document.getElementById('drawerBackdrop');
+  var ep=document.getElementById('ecoPlus');
+  var em=document.getElementById('ecoMenu');
+  /* Default: full-screen main surface, sidebars hidden (Shawn 2026-10-03).
+     The user opens them via the obvious toggle buttons. */
+  var stored=null;
+  try{ stored=localStorage.getItem('naya.rail-collapsed'); }catch(e){}
+  if(stored==='0'){ shell.classList.remove('rail-collapsed'); rt.setAttribute('aria-label','Hide sidebar'); }
+  rt.addEventListener('click',function(){
+    var c=shell.classList.toggle('rail-collapsed');
+    rt.setAttribute('aria-label',c?'Show sidebar':'Hide sidebar');
+    try{ localStorage.setItem('naya.rail-collapsed',c?'1':'0'); }catch(e){}
+  });
+  function openDrawer(){ shell.classList.add('drawer-open'); document.body.classList.add('drawer-open'); rp.setAttribute('aria-expanded','true'); }
+  function closeDrawer(){ shell.classList.remove('drawer-open'); document.body.classList.remove('drawer-open'); rp.setAttribute('aria-expanded','false'); }
+  rp.addEventListener('click',function(){ shell.classList.contains('drawer-open')?closeDrawer():openDrawer(); });
+  bd.addEventListener('click',closeDrawer);
+  function ecoClose(){ em.classList.remove('open'); ep.setAttribute('aria-expanded','false'); }
+  ep.addEventListener('click',function(e){ e.stopPropagation(); var w=!em.classList.contains('open'); ecoClose(); if(w){ em.classList.add('open'); ep.setAttribute('aria-expanded','true'); } });
+  document.addEventListener('click',function(e){ if(em.classList.contains('open')&&!em.contains(e.target)) ecoClose(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeDrawer(); ecoClose(); } });
+  var railLinks=document.querySelectorAll('.rail.left a');
+  for(var i=0;i<railLinks.length;i++){ railLinks[i].addEventListener('click',closeDrawer); }
+  var gl=document.getElementById('greetLine');
+  if(gl){ var h=new Date().getHours();
+    var g=h<5?'Up late':h<12?'Good morning':h<18?'Good afternoon':'Good evening';
+    var d=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+    gl.textContent=g+' \u2014 '+d; }
 })();
 </script>
 

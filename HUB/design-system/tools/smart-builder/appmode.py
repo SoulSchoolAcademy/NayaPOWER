@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
-"""Smart Builder APP-MODE assembler v1 — contract-v1 JSON in, working app out.
+"""Smart Builder APP-MODE assembler v2 — contract-v1 JSON in, working app out.
 
 Contract data + template blueprint + premade function units -> a working,
 self-contained app page (index.html [+ page2.html] + functions/ dir).
+
+v2 (2026-10-18): the page chassis FOLLOWS AND ADAPTS the Hub app
+(~/workspace/user/files/index-2.html) — fixed left rail (collapsible room
+navigation) + topbar (rooms-plus mobile, rail-toggle, title, eco-plus
+destinations menu) + main scroll surface + mobile drawer. Corner plus
+buttons are harvested verbatim from the Hub and take each template's soul
+color for hover ignition. Discrete pieces (section boards, hero orbs) are
+composed verbatim from the 478-piece builder index. A design-law gate
+(gate_design_laws) runs on every rendered page BEFORE writing — any
+violation fails the build with a non-zero exit naming the law.
 
 Usage:
   python3 appmode.py --contract appmode-contracts/personal.json \
@@ -21,10 +31,10 @@ Rules (from assembler-appmode-spec-v1):
     function that is ON but has no unit file -> build FAILS, never a dead
     control. A picked piece whose html is not standalone markup -> FAILS.
   - All unit files are copied byte-identical into <outdir>/functions/.
-  - Chrome: design-law shell (obsidian #050507, white text, soul-color
-    accents, elevation, white-at-rest -> color-on-hover ignition,
-    Newsreader hero + Inter UI). Verbatim piece picks are placed where the
-    index provides usable chrome; the shell itself is law-built.
+  - Hub chassis (verbatim harvest, sha-pinned) + soul accents + spectrum
+    section walk + elevation + white-at-rest -> color-on-hover ignition.
+    White text always (Law 1 — kickers white, Shawn's word outranks the
+    Hub file). Newsreader hero voice + Inter UI (Law 9).
 """
 import argparse
 import hashlib
@@ -35,7 +45,7 @@ import shutil
 import sys
 import urllib.parse
 
-APPMODE_VERSION = "appmode-v1"
+APPMODE_VERSION = "appmode-v2"
 LOADER_FILE = "naya-functions.js"
 
 # contract-id -> (register-id, unit file). The units register under the
@@ -761,104 +771,324 @@ def booking_service_configs(template, contract):
     return out
 
 # ---------------------------------------------------------------------------
-# Chrome — design-law page shell. Obsidian field, white voice, soul accents,
-# elevation, white-at-rest -> color-on-hover ignition. Newsreader hero voice,
-# Inter UI voice. (The piece index carries design-language specimen chrome,
-# not generic app chrome — the shell is law-built; verbatim piece picks are
-# placed where they genuinely fit and recorded in the manifest.)
+# v2 — Hub chassis harvest + piece composition + design-law gate.
+#
+# PAGE CHASSIS (Shawn's order 2026-10-18): the 12 templates FOLLOW AND
+# ADAPT the Hub app (~/workspace/user/files/index-2.html): fixed left rail
+# (collapsible) + topbar + main scroll surface + mobile drawer. The Hub's
+# :root tokens are verbatim source of truth. Corner plus buttons are
+# harvested VERBATIM from the Hub as theme-agnostic click-in blocks and
+# take each template's soul color for hover ignition (wired via
+# var(--soul)/var(--jewel)). Discrete pieces placed inside the chassis
+# (section boards, hero orbs) come VERBATIM from the 478-piece index.
+# Law-breakers found in harvested CSS are fixed as harvested (standing
+# order): stray non-token hexes are snapped to the canonical union set,
+# and the harvested hero eyebrow color is overridden to white per Law 1
+# (Shawn's word outranks the Hub file).
 # ---------------------------------------------------------------------------
 
-SHELL_CSS = """
-:root{--obsidian:#050507;--soul:%SOUL%;--ink:#F8F7FB;--quiet:rgba(248,247,251,.72);
---faint:rgba(248,247,251,.5);--line:rgba(255,255,255,.14)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--obsidian);color:var(--ink);
-font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
--webkit-font-smoothing:antialiased;line-height:1.55}
-a{color:var(--ink)}
-.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
-/* top chrome */
-.topbar{position:sticky;top:0;z-index:50;background:rgba(5,5,7,.86);
-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:14px;padding-bottom:14px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
-.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--soul);
-box-shadow:0 0 12px var(--soul)}
-.topbar nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
-.topbar nav a{color:#fff;text-decoration:none;font-size:13px;font-weight:600;
-padding:8px 14px;border-radius:999px;border:1px solid transparent;transition:all .18s}
-.topbar nav a:hover{border-color:var(--soul);box-shadow:0 0 14px color-mix(in srgb,var(--soul) 55%,transparent);
-transform:translateY(-1px)}
-/* hero */
-.hero{padding:64px 0 40px;position:relative;overflow:hidden}
-.hero .kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;
-text-transform:uppercase;color:var(--soul);margin-bottom:14px}
-.hero h1{font-family:Newsreader,Georgia,'Times New Roman',serif;font-weight:600;
-font-size:clamp(34px,5.4vw,58px);line-height:1.08;margin:0 0 16px;color:#fff;
-text-wrap:balance}
-.hero .lede{font-size:18px;color:var(--quiet);max-width:640px;margin:0}
-.hero .orbs{position:absolute;right:4%;top:26px;display:flex;gap:18px;opacity:.9}
-.hero .greet{margin-top:18px;font-size:13px;color:var(--faint);display:flex;align-items:center;gap:10px}
-.led{width:9px;height:9px;border-radius:50%;background:var(--soul);
-box-shadow:0 0 10px var(--soul);animation:pulse 2.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-/* sections: boards with elevation */
-.nsec{margin:26px 0;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
-border:1px solid var(--line);border-radius:22px;padding:30px 30px 34px;
-box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -18px 40px rgba(0,0,0,.5),
-0 24px 60px rgba(0,0,0,.55);transition:transform .2s,box-shadow .2s}
-.nsec:hover{transform:translateY(-3px);
-box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -18px 40px rgba(0,0,0,.5),
-0 30px 70px rgba(0,0,0,.6),0 0 34px color-mix(in srgb,var(--soul) 22%,transparent)}
-.nsec-head{margin-bottom:20px}
-.nsec-head .kicker{font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;
-color:var(--soul)}
-.nsec-head h2{font-family:Newsreader,Georgia,serif;font-size:30px;font-weight:600;margin:6px 0 0;color:#fff}
+import re as _re
+
+HUB_PATH = os.path.expanduser("~/workspace/user/files/index-2.html")
+# Pinned 2026-10-18. If the Hub file changes, the build fails closed with
+# "re-harvest required" — never silently builds against a moved source.
+HUB_SHA256 = "f56fd98683704c37a148d535b9cb6a0b16de831edab86f5ae24633b204b02722"
+
+# (name, first_line, last_line) — 1-based, verified 2026-10-18 against the
+# pinned sha above. Each block carries a signature assert.
+HUB_RANGES = [
+    ("root",       21,  96),    # :root tokens — verbatim source of truth
+    ("bodybase",  105, 123),    # reset + body
+    ("shell",     170, 194),    # .shell grid + rail-collapsed
+    ("railtoggle", 295, 326),   # rail-toggle: black + elegant plus
+    ("railleft",  329, 343),    # .rail.left
+    ("ecoplus",   345, 365),    # eco-plus: jewel glowing orb button
+    ("ecoplus2",  387, 392),    # eco-plus: focus + expanded state
+    ("ecomenu",   393, 450),    # eco-menu dropdown + eco-ico + mobile rule
+    ("brand",     452, 456),    # .brand
+    ("railnav",   457, 457),    # .rail .nav
+    ("navbtn",    462, 519),    # .nav-btn: white-edge language
+    ("private",   526, 530),    # .private note
+    ("maintop",   533, 555),    # .main .top .top-title .top-status
+    ("roomsplus", 558, 578),    # rooms-plus: mobile drawer opener
+    ("roomoutlet", 680, 680),   # .room-outlet
+    ("hero",      682, 688),    # .hero .eyebrow h1 .hero-sub
+    ("drawer",    743, 747),    # .drawer-backdrop
+    ("drawmedia", 749, 773),    # @media 900px: drawer + rooms-plus
+    ("topspacer", 808, 808),    # .top-spacer
+]
+
+_HUB_SIG = {
+    "root": ":root {",
+    "bodybase": "box-sizing: border-box;",
+    "shell": ".shell.rail-collapsed",
+    "railtoggle": ".rail-toggle:hover",
+    "railleft": ".rail.left {",
+    "ecoplus": "--jewel: #ffea00;",
+    "ecoplus2": ".eco-plus[aria-expanded",
+    "ecomenu": ".eco-menu.open",
+    "brand": ".brand {",
+    "railnav": ".rail .nav {",
+    "navbtn": ".nav-btn.active::before",
+    "private": ".private {",
+    "maintop": ".top-status .led {",
+    "roomsplus": ".rooms-plus svg {",
+    "roomoutlet": ".room-outlet {",
+    "hero": ".hero .eyebrow {",
+    "drawer": ".drawer-backdrop {",
+    "drawmedia": ".rooms-plus { display: grid; }",
+    "topspacer": ".top-spacer {",
+}
+
+# Canonical token set = UNION of (16-law canonical hexes, laws doc
+# 2026-10-17) + (Hub :root tokens, index-2.html). A hex is legal iff it is
+# verbatim from either source. Everything else is an invented hex.
+_LAW_HEXES = {
+    "050507", "020203",                       # obsidian / deep
+    "ffffff", "f8f7fb",                       # white
+    "a06bff", "e84fff", "3fb8ff", "2fe89e",    # purple magenta blue green
+    "ffbf3d", "40d3bb", "6675ff", "ff5e6c",    # gold teal indigo red
+    "b8ee57", "ff9a5a",                       # lime orange
+}
+_HUB_HEXES = {
+    "0b0d12", "12151d", "171b25", "252b39",    # obsidian stack
+    "f5f7fb", "aab2bf", "c9c3ce",              # ink / muted / faint
+    "ffffff18", "ffffff0d",                    # line tokens
+    "9d75ff", "55b9ee", "55e39a", "f1d75a",    # Hub spectrum
+    "e8b64c", "ff7a3d", "ff5a6e", "d86cff",    # Hub spectrum
+    "e8eaf2",                                 # settings silver
+    "6675ff18", "d86cff12",                 # --field gradients (Hub :root)
+}
+UNION_HEXES = _LAW_HEXES | _HUB_HEXES | {"6675ff", "40d3bb", "b8ee57", "ff9a5a"}
+
+# Non-union hexes found in harvested CSS -> nearest union token.
+# (Fixing law-breakers as harvested — standing order.)
+HEX_REMAP = {
+    "000": "020203", "000000": "020203", "fff": "ffffff",
+    "040406": "0b0d12", "07070a": "0b0d12", "08080b": "0b0d12",
+    "101116": "0b0d12", "101117": "0b0d12",
+    "0a0e16": "12151d", "10141d": "12151d", "120d1d": "12151d",
+    "141a28": "12151d", "17181f": "12151d", "1b1c24": "12151d",
+    "2a2a32": "252b39", "0a0a0e": "020203", "0d0b14": "0b0d12",
+    "6c5799": "9d75ff", "8d63f5": "9d75ff",
+    "e455f4": "d86cff", "3f9ff5": "55b9ee", "34d38a": "55e39a",
+    "39d7e8": "40d3bb", "e7c65a": "e8b64c",
+    "c8c2ce": "aab2bf", "bdb7c8": "aab2bf", "fbfaff": "f5f7fb",
+}
+
+# Text colors the Law-1 gate allows. White/silver always; obsidian/deep
+# only for text sitting on white surfaces (white-at-rest controls).
+TEXT_ALLOW = {
+    "#ffffff", "#f8f7fb", "#f5f7fb", "#050507", "#020203", "white",
+    "var(--ink)", "var(--white)", "var(--quiet)", "var(--faint)",
+    "var(--muted)", "var(--ink-dim)",
+}
+_TEXT_RGBA_OK = (
+    _re.compile(r"rgba\(\s*255\s*,\s*255\s*,\s*255\s*,"),
+    _re.compile(r"rgba\(\s*248\s*,\s*247\s*,\s*251\s*,"),
+    _re.compile(r"rgba\(\s*245\s*,\s*247\s*,\s*251\s*,"),
+)
+# color: on these selectors is chrome/icon (Law 3), not text (Law 1).
+_CHROME_SELECTOR_HINTS = (
+    ".ico", ".eco-ico", ".jewel", ".led", ".dot", "svg", "::", ".ext", ".orb",
+)
+
+# Canonical spectrum walk (Law 10 order: magenta -> purple -> blue ->
+# green -> gold). Each template starts at its own offset; sections walk
+# the sequence strictly by position. Adjacent sections never share a hue.
+SPECTRUM = [
+    ("magenta", "#e84fff"),
+    ("purple", "#a06bff"),
+    ("blue", "#3fb8ff"),
+    ("green", "#2fe89e"),
+    ("gold", "#ffbf3d"),
+]
+SPECTRUM_NAMES = [n for n, _ in SPECTRUM]
+WALK_START = {
+    "personal": 1, "dashboard": 1, "portfolio": 1,
+    "today": 2, "signup": 2, "business": 2,
+    "booking": 3, "menu": 3,
+    "product": 0, "community": 0,
+    "event": 4, "smartlist": 4,
+}
+
+# Discrete index pieces placed inside the Hub chassis (Law 14).
+PIECE_SECTION_BOARD = "NAYA-CRD-008"   # card: white rim at rest, own color ignites
+
+
+def _hub_lines():
+    with open(HUB_PATH, encoding="utf-8") as f:
+        src = f.read()
+    digest = hashlib.sha256(src.encode("utf-8")).hexdigest()
+    if digest != HUB_SHA256:
+        _fail(["hub chassis changed (sha256 %s... != pinned) — re-harvest "
+               "index-2.html before building" % digest[:16]])
+    return src.split("\n")
+
+
+def _soul_wire_hub(css):
+    """Theme-agnostic click-in blocks take the template soul for hover
+    ignition (Shawn's order): wire the harvested plus-button hover slots
+    to var(--soul)/var(--jewel), and snap stray non-token hexes."""
+    css = css.replace("--jewel: #ffea00;", "--jewel: var(--soul);")
+    css = css.replace("--jewel: #8a5cff;", "--jewel: var(--soul);")
+    css = css.replace("rgba(157,117,255,.7)",
+                      "color-mix(in srgb, var(--soul) 70%, transparent)")
+    css = css.replace("rgba(157,117,255,.55)",
+                      "color-mix(in srgb, var(--soul) 55%, transparent)")
+    css = css.replace("rgba(157,117,255,.8)",
+                      "color-mix(in srgb, var(--soul) 80%, transparent)")
+    css = css.replace("rgba(157,117,255,.3)",
+                      "color-mix(in srgb, var(--soul) 30%, transparent)")
+    css = css.replace("#ffffff2a", "#ffffff18")
+    css = css.replace("#2a2a32", "#252B39")
+    css = css.replace("#0a0a0e", "#020203")
+    css = css.replace("#0d0b14", "#0B0D12")
+    css = css.replace("#000)", "#020203)")
+    # Law 1 (Shawn's word outranks the Hub file): the harvested hero eyebrow
+    # is colored in the Hub — kickers stay white, always.
+    css = css.replace("color: var(--room-accent, var(--green));",
+                      "color: #fff; /* Law 1: Shawn's word — kickers stay white */")
+    return css
+
+
+def _hub_css(soul):
+    """Harvest the chassis CSS verbatim (sha-pinned), soul-wire the plus
+    buttons, append --soul to the harvested :root. Exactly one :root."""
+    lines = _hub_lines()
+    blocks = []
+    for name, lo, hi in HUB_RANGES:
+        chunk = "\n".join(lines[lo - 1:hi]).strip()
+        if _HUB_SIG[name] not in chunk:
+            _fail(["hub harvest: block %r (L%d-%d) lost signature %r — "
+                   "re-harvest" % (name, lo, hi, _HUB_SIG[name])])
+        if name == "root":
+            chunk = chunk.rstrip()
+            assert chunk.endswith("}"), "hub :root block must end with }"
+            chunk = chunk[:-1].rstrip() + "\n  --soul: %s;\n}" % soul
+        blocks.append("/* hub chassis: %s (index-2.html L%d-%d, sha %s...) */\n%s"
+                      % (name, lo, hi, HUB_SHA256[:12], chunk))
+    return _soul_wire_hub("\n\n".join(blocks))
+
+
+_HEX_RE = _re.compile(r"#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b")
+
+
+def _remap_hexes(css):
+    """Snap every hex to the canonical union set (fix law-breakers as
+    harvested). Unknown hexes are left untouched for the gate to fail."""
+    def sub(m):
+        h = m.group(1).lower()
+        if len(h) == 3:
+            h = "".join(c * 2 for c in h)
+        if len(h) == 8:
+            if h in UNION_HEXES:
+                return "#" + h
+            six = HEX_REMAP.get(h[:6], h[:6])
+            return "#" + six + h[6:]
+        if h in UNION_HEXES:
+            return "#" + h
+        return "#" + HEX_REMAP.get(h, h)
+    return _HEX_RE.sub(sub, css)
+
+
+def _normalize_piece_css(css, soul):
+    css = _remap_hexes(css)
+    # The template soul owns every --soul slot inside piece scope.
+    css = _re.sub(r"--soul\s*:\s*#[0-9a-fA-F]{3,8}", "--soul: " + soul, css)
+    return css
+
+
+def _piece_css(index, soul, models):
+    """Verbatim index CSS for the placed piece models, token-normalized."""
+    pieces = index["pieces"]
+    bank = index["css_bank"]
+    out = []
+    seen = set()
+    for model in models:
+        p = pieces[model]
+        cid = p["css_id"]
+        if cid in seen:
+            continue
+        seen.add(cid)
+        css = _normalize_piece_css(bank[cid], soul)
+        out.append("/* piece: %s — %s (builder-index-v1, token-normalized) */\n%s"
+                   % (model, p.get("label"), css))
+    return "\n\n".join(out)
+
+
+def _soul_rgb(soul):
+    s = soul.lstrip("#")
+    return "%d,%d,%d" % (int(s[0:2], 16), int(s[2:4], 16), int(s[4:6], 16))
+
+
+def _rgba(hex6, a):
+    hex6 = hex6.lstrip("#")
+    return "rgba(%d,%d,%d,%s)" % (
+        int(hex6[0:2], 16), int(hex6[2:4], 16), int(hex6[4:6], 16), a)
+
+
+def _walk(template, n):
+    s = WALK_START[template]
+    return [SPECTRUM[(s + i) % len(SPECTRUM)] for i in range(n)]
+
+
+# Page glue: the minimum law-built rules that are not chassis and not
+# pieces — typography voice (Law 9), Law-1 kicker override, layout of
+# mounts and the visible manifest. No invented chrome.
+GLUE_CSS = """
+/* Law 1 (Shawn's word outranks the Hub file): kickers/eyebrows stay white. */
+.hero .eyebrow{color:#fff}
+/* Law 9: Newsreader for voice. */
+.hero h1{font-family:Newsreader,Georgia,'Times New Roman',serif;font-weight:600}
+.hero-orbs{display:flex;gap:16px;margin:20px 0 6px;align-items:center;min-height:40px}
+/* kicker inside the index card piece: white, sized hierarchy (Law 16) */
+.card p.fine.kicker-line{font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+font-weight:700;margin:0 0 10px;color:#fff}
 /* mounted function roots get breathing room */
 .nsec-body [data-fn]{margin:0}
 .nsec-body [data-fn]+[data-fn]{margin-top:26px}
-/* ignition: every interactive element, white at rest -> color on touch */
-button,a.btn,input[type=submit]{transition:all .18s}
-button:hover,a.btn:hover{box-shadow:0 0 16px color-mix(in srgb,var(--soul) 60%,transparent)}
-/* capture block (dictate) */
+/* rail anchors reuse the Hub nav-btn language */
+.rail .nav a.nav-btn{text-decoration:none}
+.eco-wrap{position:relative;display:flex}
+/* visible piece manifest (Shawn's 2026-10-17 rule) */
+.manifest{margin-top:18px;border-top:1px solid var(--line-soft);padding-top:14px}
+.manifest ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.manifest li{font-size:13px;color:var(--ink)}
+.manifest li b{color:#fff;font-weight:700}
+.manifest .mrole{color:var(--muted)}
+/* dictate host surface (function f-25) */
 .capture{display:flex;flex-direction:column;gap:12px}
-.capture textarea{width:100%;min-height:110px;background:#0B0D12;color:#fff;font-size:16px;
+.capture textarea{width:100%;min-height:110px;background:#0B0D12;color:#ffffff;font-size:16px;
 border:1px solid var(--line);border-radius:14px;padding:14px;resize:vertical;font-family:inherit}
-.capture textarea:focus{outline:none;border-color:var(--soul);box-shadow:0 0 0 3px color-mix(in srgb,var(--soul) 30%,transparent)}
-.dictbtn{align-self:flex-start;background:#fff;color:#050507;border:none;border-radius:999px;
+.capture textarea:focus{outline:none;border-color:var(--soul);
+box-shadow:0 0 0 3px color-mix(in srgb,var(--soul) 30%,transparent)}
+.dictbtn{align-self:flex-start;background:#ffffff;color:#050507;border:none;border-radius:999px;
 padding:12px 22px;font-weight:800;font-size:14px;cursor:pointer}
-.dictbtn:hover{background:var(--soul);color:#fff;box-shadow:0 0 20px var(--soul)}
+.dictbtn:hover{background:var(--soul);color:#ffffff;box-shadow:0 0 20px var(--soul)}
 .capture .hint{font-size:12px;color:var(--faint)}
-/* cart chrome for the product page (f-28-cart host surface) */
-.cartfab{position:fixed;right:22px;bottom:22px;z-index:60;background:var(--soul);color:#fff;
+/* cart host surface (function f-28) */
+.cartfab{position:fixed;right:22px;bottom:22px;z-index:60;background:var(--soul);color:#ffffff;
 border:none;border-radius:999px;padding:14px 20px;font-weight:800;cursor:pointer;
 box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 20px color-mix(in srgb,var(--soul) 50%,transparent)}
 .cartdrawer{position:fixed;right:0;top:0;bottom:0;width:min(380px,92vw);background:#0B0D12;
 border-left:1px solid var(--line);z-index:70;transform:translateX(105%);transition:transform .25s;
 display:flex;flex-direction:column;padding:20px}
 .cartdrawer.open{transform:none}
-.cartdrawer h3{margin:0 0 12px;color:#fff}
+.cartdrawer h3{margin:0 0 12px;color:#ffffff}
 #cartItems{flex:1;overflow:auto}
 .pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:8px}
-.pcard{background:#0B0D12;border:1px solid var(--line);border-radius:16px;padding:18px;color:#fff}
-.pcard h4{margin:0 0 4px;color:#fff}
+.pcard{background:#0B0D12;border:1px solid var(--line);border-radius:16px;padding:18px;color:#ffffff}
+.pcard h4{margin:0 0 4px;color:#ffffff}
 .pcard .pmeta{font-size:12px;color:var(--faint);margin-bottom:10px}
 .szpills{display:flex;gap:8px;margin:10px 0}
-.szpill{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;
+.szpill{background:transparent;border:1px solid rgba(255,255,255,.35);color:#ffffff;border-radius:999px;
 padding:6px 14px;font-size:12px;cursor:pointer}
-.szpill.on{background:#fff;color:#050507;border-color:#fff;font-weight:700}
-.btn-select{background:var(--soul);color:#fff;border:none;border-radius:999px;padding:10px 18px;
+.szpill.on{background:#ffffff;color:#050507;border-color:#ffffff;font-weight:700}
+.btn-select{background:var(--soul);color:#ffffff;border:none;border-radius:999px;padding:10px 18px;
 font-weight:700;cursor:pointer;width:100%}
 .btn-select.picked{background:#2fe89e}
-/* footer */
-.footer{margin:60px 0 0;border-top:1px solid var(--line);padding:30px 0 60px;color:var(--faint);font-size:13px}
-.footer nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.footer nav a{color:#fff;text-decoration:none;font-size:13px;padding:8px 14px;border-radius:999px;
-border:1px solid var(--line);transition:all .18s}
-.footer nav a:hover{border-color:var(--soul);box-shadow:0 0 14px color-mix(in srgb,var(--soul) 55%,transparent)}
-@media(max-width:640px){.nsec{padding:22px 18px}.hero{padding:44px 0 30px}.hero .orbs{display:none}}
-@media(min-width:641px){.hero h1,.hero .lede{padding-right:190px}}
+@media(max-width:640px){.hero-orbs{display:none}}
 """
 
 FONTS_LINK = (
@@ -867,6 +1097,128 @@ FONTS_LINK = (
     '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800'
     '&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">'
 )
+
+
+def _esc_title(s):
+    """Clean title: escape only what <title> needs — quotes stay readable."""
+    return ("" if s is None else str(s)).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+# ---------------------------------------------------------------------------
+# Design-law gate. Runs on every rendered page BEFORE it is written. ANY
+# violation -> the caller fails the build (non-zero exit) naming the law
+# and the offending element. This is the heart of the mission: the 16 laws
+# live in the machine, not in a checklist.
+# ---------------------------------------------------------------------------
+
+def _text_color_ok(val):
+    v = val.strip().lower()
+    if _re.fullmatch(r"#[0-9a-f]{3}", v):
+        v = "#" + "".join(c * 2 for c in v[1:])
+    if v in TEXT_ALLOW:
+        return True
+    return any(p.match(v) for p in _TEXT_RGBA_OK)
+
+
+def gate_design_laws(html, css_text, ctx):
+    """Return a list of violation strings (empty == PASS)."""
+    v = []
+    template = ctx["template"]
+    soul = ctx["soul"].lower()
+    index = ctx["index"]
+    pieces = index["pieces"]
+
+    # ---- Law 9: every hex is a verbatim token (law doc or Hub :root) ----
+    def check_hexes(source, where):
+        for m in _re.finditer(r"#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b", source):
+            h = m.group(1).lower()
+            if len(h) == 3:
+                h = "".join(c * 2 for c in h)
+            if h not in UNION_HEXES:
+                v.append("Law 9: unknown hex #%s in %s — not verbatim from the "
+                         "16-law tokens or the Hub :root" % (m.group(1), where))
+    check_hexes(css_text, "emitted CSS")
+    for m in _re.finditer(r'style="([^"]*)"', html):
+        check_hexes(m.group(1), "inline style")
+    if css_text.count(":root") != 1:
+        v.append("Law 9: expected exactly one :root block, found %d"
+                 % css_text.count(":root"))
+    m = _re.search(r"--soul\s*:\s*(#[0-9a-fA-F]{6})", css_text)
+    if not m or m.group(1).lower() != soul:
+        v.append("Soul: emitted --soul %s != blueprint soul %s (template %s)"
+                 % (m.group(1) if m else "absent", soul, template))
+
+    # ---- Law 1: no colored text (kickers, headings, body, paragraphs) ----
+    for m in _re.finditer(r"([^{}]+)\{([^{}]*)", css_text):
+        selector, body = m.group(1), m.group(2)
+        if any(hint in selector for hint in _CHROME_SELECTOR_HINTS):
+            continue  # chrome/icons — Law 3, not Law 1
+        for cm in _re.finditer(r"(?<![\w-])color\s*:\s*([^;}{!]+)", body):
+            if not _text_color_ok(cm.group(1)):
+                sel = " ".join(selector.split())[-80:]
+                v.append("Law 1: colored text %r on %r — text stays white"
+                         % (cm.group(1).strip(), sel))
+    for m in _re.finditer(r'style="([^"]*)"', html):
+        for cm in _re.finditer(r"(?<![\w-])color\s*:\s*([^;}{!]+)", m.group(1)):
+            if not _text_color_ok(cm.group(1)):
+                v.append("Law 1: colored text %r in inline style"
+                         % cm.group(1).strip())
+
+    # ---- Laws 4/5/10: spectrum walk, adjacency, one board one color ----
+    sec_tags = _re.findall(r'<section[^>]*class="card"[^>]*>', html)
+    hues = []
+    for tag in sec_tags:
+        hm = _re.findall(r'data-hue="([^"]+)"', tag)
+        if len(hm) != 1:
+            v.append("Law 5: section board %r must carry exactly one data-hue"
+                     % tag[:60])
+            continue
+        hues.append(hm[0])
+    for h in hues:
+        if h != "soul" and h not in SPECTRUM_NAMES:
+            v.append("Laws 4/5/10: section hue %r is not a canonical spectrum hue"
+                     % h)
+    for a, b in zip(hues, hues[1:]):
+        if a == b:
+            v.append("Law 4: adjacent sections share hue %r — never twice adjacent" % a)
+    if len(set(hues) | {"soul"}) < 3:
+        v.append("Laws 4/5/10: page walks only %d distinct hue(s) — need >= 3"
+                 % len(set(hues) | {"soul"}))
+
+    # ---- Law 14: every placed piece traces to the index; manifest proves it
+    manifest_ok = 'id="piece-manifest"' in html
+    if not manifest_ok:
+        v.append("Piece-manifest rule: no visible manifest on the page")
+    for role, model, label in ctx["placed"]:
+        if model not in pieces:
+            v.append("Law 14: %s traces to unknown model %s" % (role, model))
+            continue
+        if pieces[model].get("quarantined"):
+            v.append("Law 14: %s uses quarantined model %s" % (role, model))
+        if manifest_ok and (model not in html or (label or "") not in html):
+            v.append("Piece-manifest rule: manifest lacks %s — %s (%s)"
+                     % (model, label, role))
+    if "index-2.html" not in html:
+        v.append("Law 14: chassis pattern source (index-2.html) not cited")
+
+    # ---- Corner plus buttons (Shawn's order): present, configured, wired --
+    for need in ('class="rail-toggle"', 'class="eco-plus"',
+                 'class="rooms-plus"', 'class="eco-menu"',
+                 'aria-haspopup="true"'):
+        if need not in html:
+            v.append("Plus-button rule: page is missing %s" % need)
+    for gid in _re.findall(r'getElementById\("([^"]+)"', ctx.get("js", "")):
+        if ('id="%s"' % gid) not in html:
+            v.append("L-2026-10-17-004: chassis JS wires to missing DOM id=%r"
+                     % gid)
+
+    # ---- Titles: clean, no entities, no truncation artifacts ----
+    mt = _re.search(r"<title>([^<]*)</title>", html)
+    if not mt or not mt.group(1).strip():
+        v.append("Emission: missing <title>")
+    elif "&#" in mt.group(1) or "%s" in mt.group(1):
+        v.append("Emission: garbled title %r" % mt.group(1)[:60])
+    return v
 
 
 def _esc(s):
@@ -947,25 +1299,189 @@ def validate_contract(contract, index, units_dir):
 # Page assembly
 # ---------------------------------------------------------------------------
 
-def _hero(contract, soul, blueprint, orb_html, orb_css_ids, page_label):
+# ---------------------------------------------------------------------------
+# Chassis composition — Hub pattern adapted per template.
+# ---------------------------------------------------------------------------
+
+PLUS_SVG = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            'stroke-width="2.8" stroke-linecap="round" aria-hidden="true">'
+            '<path d="M12 5v14M5 12h14"/></svg>')
+NAV_ICO_SVG = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+               'aria-hidden="true"><circle cx="12" cy="12" r="6.5"/></svg>')
+
+
+def _rail(contract, blueprint, rendered, page_file, hues, soul):
+    """Left rail: brand + page/section nav (Hub .nav-btn language) + note."""
+    handle = contract.get("handle", "")
+    btns = []
+    for (sec_id, _k, title, _m), (hue_name, hue_hex) in zip(rendered, hues):
+        if sec_id.startswith("nav"):
+            continue  # navigation units are not rail destinations
+        btns.append(
+            '<a class="nav-btn" style="--nav:%s" href="#sec-%s">'
+            '<span class="ico">%s</span><span class="lbl">%s</span></a>'
+            % (hue_hex, _esc(sec_id), NAV_ICO_SVG, _esc(title)))
+    for fname, label in blueprint["pages"].items():
+        if label and fname != page_file:
+            btns.append(
+                '<a class="nav-btn" style="--nav:%s" href="%s">'
+                '<span class="ico">%s</span><span class="lbl">%s</span></a>'
+                % (soul, _esc(fname), NAV_ICO_SVG, _esc(label)))
+    return (
+        '<aside class="rail left" aria-label="%s pages and sections">'
+        '<div class="brand"><div><b>%s</b><small>SMART APP</small></div></div>'
+        '<nav class="nav" aria-label="Template pages">%s</nav>'
+        '<div class="private">PRIVATE BY DEFAULT<br>SHARED BY CHOICE<br>'
+        "COLLECTIVE BY CONSENT</div>"
+        "</aside>"
+    ) % (_esc(handle), _esc(handle.upper() or "NAYA"),
+         "".join(btns))
+
+
+def _eco_links(contract, blueprint, rendered, hues, soul):
+    """Destinations menu: this template's pages + sections, each with its
+    own icon + color (per-template configuration)."""
+    links = []
+    for fname, label in blueprint["pages"].items():
+        if label:
+            links.append((label, fname, soul))
+    for (sec_id, _k, title, _m), (hue_name, hue_hex) in zip(rendered, hues):
+        if sec_id.startswith("nav"):
+            continue
+        links.append((title, "#sec-" + sec_id, hue_hex))
+    items = []
+    for label, href, color in links:
+        items.append(
+            '<a href="%s" style="--eco:%s">'
+            '<span class="eco-ico" aria-hidden="true">%s</span>'
+            '<span class="lbl">%s</span></a>'
+            % (_esc(href), color, NAV_ICO_SVG, _esc(label)))
+    return "".join(items)
+
+
+def _topbar(contract, eco_links_html):
+    handle = contract.get("handle", "")
+    return (
+        '<header class="top">'
+        '<button class="rooms-plus" id="roomsPlus" aria-label="Open navigation" '
+        'aria-expanded="false">%s</button>'
+        '<button class="rail-toggle" id="railToggle" aria-label="Show sidebar" '
+        'title="Your pages">%s</button>'
+        '<div class="top-title"><b>%s</b></div>'
+        '<div class="top-status"><span class="led"></span><span>WORKING</span></div>'
+        '<div class="top-spacer"></div>'
+        '<div class="eco-wrap">'
+        '<button class="eco-plus" id="ecoPlus" aria-label="Destinations" '
+        'aria-haspopup="true" aria-expanded="false" title="Destinations">%s</button>'
+        '<nav class="eco-menu" id="ecoMenu" aria-label="Destinations">'
+        '<div class="eco-head">DESTINATIONS</div>%s</nav>'
+        "</div>"
+        "</header>"
+    ) % (PLUS_SVG, PLUS_SVG, _esc(handle.upper() or "NAYA"), PLUS_SVG,
+         eco_links_html)
+
+
+def _hero(contract, blueprint, soul, orb_html, page_label, orb_models):
     idea = contract.get("idea", "")
     vision = contract.get("vision", "")
-    orbs = ""
-    if orb_html:
-        orbs = '<div class="orbs">%s</div>' % "".join(
-            '<span class="nb-scope">%s</span>' % o for o in orb_html)
+    orbs = ('<div class="hero-orbs">%s</div>' % "".join(
+        '<span class="nb-scope orb-wrap">%s</span>' % o for o in orb_html)
+        if orb_html else "")
     greet = ""
     if contract.get("template") == "personal":
-        greet = ('<div class="greet"><span class="led"></span>'
-                 '<span id="greetLine">Good day</span></div>')
+        greet = ('<p class="hero-sub" id="greetLine">Good day</p>')
     return (
-        '<header class="hero"><div class="wrap">%s'
-        '<div class="kicker">%s · %s</div>'
+        '<section class="hero" data-hue="soul" id="top">'
+        '<div class="eyebrow">%s · %s</div>'
         "<h1>%s</h1>"
-        '<p class="lede">%s</p>%s'
-        "</div></header>"
-    ) % (orbs, _esc(contract.get("handle", "")), _esc(page_label),
-         _esc(idea), _esc(vision), greet)
+        '<p class="hero-sub">%s</p>%s%s'
+        "</section>"
+    ) % (_esc(contract.get("handle", "")), _esc(page_label),
+         _esc(idea), _esc(vision), orbs, greet)
+
+
+def _section_board(sec_id, kicker, title, mounts, hue_name, hue_hex):
+    """Section board: verbatim index card piece (NAYA-CRD-008), one board
+    one color via --accent/--jewel, white kicker (Law 1)."""
+    return (
+        '<section class="card" id="sec-%s" data-hue="%s" data-piece="%s" '
+        'style="--accent:%s;--accent-soft:%s">'
+        '<p class="fine kicker-line">%s</p>'
+        '<h3><span class="jewel" style="--jewel:%s">\u2727</span>%s</h3>'
+        '<div class="nsec-body">%s</div>'
+        "</section>"
+    ) % (_esc(sec_id), hue_name, PIECE_SECTION_BOARD, hue_hex,
+         _rgba(hue_hex, ".45"), _esc(kicker), hue_hex, _esc(title),
+         "\n".join(mounts))
+
+
+def _footer_manifest(contract, blueprint, soul, placed, index):
+    """Footer panel (index card piece) + the VISIBLE piece manifest."""
+    pieces = index["pieces"]
+    seen = []
+    for role, model, label in placed:
+        if model not in [m for _, m, _ in seen]:
+            seen.append((role, model, label))
+    items = []
+    for role, model, label in seen:
+        items.append(
+            '<li><span class="mrole">%s</span> — <b>%s</b> — %s</li>'
+            % (_esc(role), _esc(model), _esc(label or "")))
+    items.append(
+        '<li><span class="mrole">Page chassis pattern</span> — '
+        "<b>index-2.html</b> — NayaNET Hub (rail · topbar · plus menus · drawer)</li>")
+    return (
+        '<footer class="card" data-hue="soul" data-piece="%s" '
+        'style="--accent:%s;--accent-soft:%s">'
+        '<h3><span class="jewel" style="--jewel:%s">\u2727</span>%s</h3>'
+        '<p class="fine">Built with the Naya Smart Builder · APP-MODE %s · '
+        "chassis follows the Hub pattern · every control on this page works.</p>"
+        '<div class="manifest" id="piece-manifest">'
+        '<p class="fine">PIECE MANIFEST — every placed piece traces to a library model:</p>'
+        "<ul>%s</ul></div>"
+        "</footer>"
+    ) % (PIECE_SECTION_BOARD, soul, _rgba(soul, ".45"), soul,
+         "Built to work",
+         _esc(APPMODE_VERSION), "".join(items))
+
+
+_CHASSIS_JS = """
+<script>
+(function(){
+  var shell=document.getElementById('shell'); if(!shell) return;
+  var rt=document.getElementById('railToggle');
+  var rp=document.getElementById('roomsPlus');
+  var bd=document.getElementById('drawerBackdrop');
+  var ep=document.getElementById('ecoPlus');
+  var em=document.getElementById('ecoMenu');
+  /* Default: full-screen main surface, sidebars hidden (Shawn 2026-10-03).
+     The user opens them via the obvious toggle buttons. */
+  var stored=null;
+  try{ stored=localStorage.getItem('naya.rail-collapsed'); }catch(e){}
+  if(stored==='0'){ shell.classList.remove('rail-collapsed'); rt.setAttribute('aria-label','Hide sidebar'); }
+  rt.addEventListener('click',function(){
+    var c=shell.classList.toggle('rail-collapsed');
+    rt.setAttribute('aria-label',c?'Show sidebar':'Hide sidebar');
+    try{ localStorage.setItem('naya.rail-collapsed',c?'1':'0'); }catch(e){}
+  });
+  function openDrawer(){ shell.classList.add('drawer-open'); document.body.classList.add('drawer-open'); rp.setAttribute('aria-expanded','true'); }
+  function closeDrawer(){ shell.classList.remove('drawer-open'); document.body.classList.remove('drawer-open'); rp.setAttribute('aria-expanded','false'); }
+  rp.addEventListener('click',function(){ shell.classList.contains('drawer-open')?closeDrawer():openDrawer(); });
+  bd.addEventListener('click',closeDrawer);
+  function ecoClose(){ em.classList.remove('open'); ep.setAttribute('aria-expanded','false'); }
+  ep.addEventListener('click',function(e){ e.stopPropagation(); var w=!em.classList.contains('open'); ecoClose(); if(w){ em.classList.add('open'); ep.setAttribute('aria-expanded','true'); } });
+  document.addEventListener('click',function(e){ if(em.classList.contains('open')&&!em.contains(e.target)) ecoClose(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeDrawer(); ecoClose(); } });
+  var railLinks=document.querySelectorAll('.rail.left a');
+  for(var i=0;i<railLinks.length;i++){ railLinks[i].addEventListener('click',closeDrawer); }
+  var gl=document.getElementById('greetLine');
+  if(gl){ var h=new Date().getHours();
+    var g=h<5?'Up late':h<12?'Good morning':h<18?'Good afternoon':'Good evening';
+    var d=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+    gl.textContent=g+' \\u2014 '+d; }
+})();
+</script>
+"""
 
 
 def _dictate_block(config):
@@ -1012,78 +1528,36 @@ def _cart_block(config):
     return _mount("cart", config, inner)
 
 
-def _section_html(sec_id, kicker, title, mounts):
-    return (
-        '<section class="nsec" id="sec-%s">'
-        '<div class="nsec-head"><span class="kicker">%s</span><h2>%s</h2></div>'
-        '<div class="nsec-body">%s</div>'
-        "</section>"
-    ) % (_esc(sec_id), _esc(kicker), _esc(title), "\n".join(mounts))
-
-
-def _topnav(contract, blueprint, sections, page_file):
-    links = []
-    for sec_id, _k, title, _f, pg in sections:
-        if pg == (1 if page_file == "index.html" else 2) and not sec_id.startswith("nav"):
-            links.append('<a href="#sec-%s">%s</a>' % (_esc(sec_id), _esc(title)))
-    for fname, label in blueprint["pages"].items():
-        if label and fname != page_file:
-            links.append('<a href="%s">%s</a>' % (_esc(fname), _esc(label)))
-    return (
-        '<div class="topbar"><div class="wrap">'
-        '<div class="brand"><span class="dot"></span><span>%s</span></div>'
-        "<nav>%s</nav>"
-        "</div></div>"
-    ) % (_esc(contract.get("handle", "")), "".join(links))
-
-
-def _footer(contract, blueprint, sections, page_file):
-    links = []
-    for sec_id, _k, title, _f, pg in sections:
-        if pg == (1 if page_file == "index.html" else 2) and not sec_id.startswith("nav"):
-            links.append('<a href="#sec-%s">%s</a>' % (_esc(sec_id), _esc(title)))
-    for fname, label in blueprint["pages"].items():
-        if label and fname != page_file:
-            links.append('<a href="%s">%s</a>' % (_esc(fname), _esc(label)))
-    return (
-        '<footer class="footer"><div class="wrap"><nav>%s</nav>'
-        "<div>Built with the Naya Smart Builder \u00b7 APP-MODE %s \u00b7 "
-        "everything on this page works \u2014 tap anything.</div>"
-        "</div></footer>"
-    ) % ("".join(links), _esc(APPMODE_VERSION))
-
-
-_GREET_JS = """
-<script>
-(function(){
-  var el=document.getElementById('greetLine'); if(!el) return;
-  var h=new Date().getHours();
-  var g=h<5?'Up late':h<12?'Good morning':h<18?'Good afternoon':'Good evening';
-  var d=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
-  el.textContent=g+' \\u2014 '+d;
-})();
-</script>
-"""
-
-
-def _render_page(contract, blueprint, index, sections, page_file, mounted,
-                 css_ids, orb_models):
-    """Render one HTML page. `mounted` is appended to (manifest rows)."""
-    soul = blueprint["soul"]
+def _render_page(contract, blueprint, index, sections, page_file, mounted):
+    """Render one HTML page on the Hub chassis. `mounted` is appended to
+    (manifest rows). Returns (html, css_text, gate_ctx)."""
+    template = contract["template"]
+    soul = blueprint["soul"].lower()
     funcs = contract.get("functions") or {}
     page_no = 1 if page_file == "index.html" else 2
     page_label = blueprint["pages"][page_file] or "Home"
-
-    # verbatim orb picks for the hero
     pieces = index["pieces"]
+
+    placed = []  # (role, model, label) — Law 14 registry
+
+    # --- verbatim orb picks for the hero (JWL pieces, soul-wired) ---
+    orb_models = []
+    for pk in contract.get("pieces") or []:
+        model = pk.get("model")
+        if model and pieces[model]["category"] == "JWL":
+            orb_models.append(model)
+    orb_models = sorted(set(orb_models))
     orb_html = []
     for m in orb_models:
-        orb_html.append(pieces[m]["html"])
-        cid = pieces[m]["css_id"]
-        if cid and cid not in css_ids:
-            css_ids.append(cid)
+        h = pieces[m]["html"]
+        h = _re.sub(r"--oc:#[0-9a-fA-F]{6}", "--oc:" + soul, h)
+        h = _re.sub(r"--oc-rgb:\d{1,3},\d{1,3},\d{1,3}",
+                    "--oc-rgb:" + _soul_rgb(soul), h)
+        orb_html.append(h)
+        placed.append(("hero orb", m, pieces[m].get("label")))
 
-    sec_html = []
+    # --- sections: mounts first, density rule drops empty ones ---
+    rendered = []  # (sec_id, kicker, title, mounts)
     for sec_id, kicker, title, fids, pg in sections:
         if pg != page_no:
             continue
@@ -1095,18 +1569,18 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted,
                 continue
             reg_id, unit_file = REGISTER[fid]
             if fid == "navigate":
-                cfg = default_config(contract["template"], fid, contract,
+                cfg = default_config(template, fid, contract,
                                      blueprint, page_file)
-            elif fid == "booking" and contract["template"] == "booking":
+            elif fid == "booking" and template == "booking":
                 # 3 services -> 3 mounted boards (brief section 3.4)
-                for cfg in booking_service_configs(contract["template"], contract):
+                for cfg in booking_service_configs(template, contract):
                     mounts.append(_mount(reg_id, cfg))
                     mounted.append({"contract_id": fid, "register_id": reg_id,
                                     "unit_file": unit_file, "section": sec_id,
                                     "page": page_file, "config": cfg})
                 continue
             elif fid == "dictate":
-                cfg = default_config(contract["template"], fid, contract,
+                cfg = default_config(template, fid, contract,
                                      blueprint, page_file)
                 mounts.append(_dictate_block(cfg))
                 mounted.append({"contract_id": fid, "register_id": reg_id,
@@ -1114,7 +1588,7 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted,
                                 "page": page_file, "config": cfg})
                 continue
             elif fid == "cart":
-                cfg = default_config(contract["template"], fid, contract,
+                cfg = default_config(template, fid, contract,
                                      blueprint, page_file)
                 mounts.append(_cart_block(cfg))
                 mounted.append({"contract_id": fid, "register_id": reg_id,
@@ -1122,7 +1596,7 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted,
                                 "page": page_file, "config": cfg})
                 continue
             else:
-                cfg = default_config(contract["template"], fid, contract,
+                cfg = default_config(template, fid, contract,
                                      blueprint, page_file)
             mounts.append(_mount(reg_id, cfg))
             mounted.append({"contract_id": fid, "register_id": reg_id,
@@ -1131,9 +1605,30 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted,
         # density rule: a section with no working control is dropped
         if not mounts:
             continue
-        sec_html.append(_section_html(sec_id, kicker, title, mounts))
+        rendered.append((sec_id, kicker, title, mounts))
 
-    # scripts: loader first, then only the units actually mounted on this page
+    # --- spectrum walk: one hue per section, strict by position ---
+    hues = _walk(template, len(rendered))
+    sec_html = []
+    for (sec_id, kicker, title, mounts), (hue_name, hue_hex) in zip(rendered, hues):
+        placed.append(("section board: " + sec_id, PIECE_SECTION_BOARD,
+                       pieces[PIECE_SECTION_BOARD].get("label")))
+        sec_html.append(_section_board(sec_id, kicker, title, mounts,
+                                       hue_name, hue_hex))
+    placed.append(("footer panel", PIECE_SECTION_BOARD,
+                   pieces[PIECE_SECTION_BOARD].get("label")))
+
+    # --- chassis: rail, topbar, hero, footer ---
+    eco_links_html = _eco_links(contract, blueprint, rendered, hues, soul)
+    rail_html = _rail(contract, blueprint, rendered, page_file, hues, soul)
+
+    # --- CSS: Hub chassis harvest + verbatim piece CSS + page glue ---
+    hub_css = _hub_css(soul)
+    piece_models = [PIECE_SECTION_BOARD] + orb_models
+    piece_css = _piece_css(index, soul, piece_models)
+    css_text = hub_css + "\n\n" + piece_css + "\n\n/* page glue (law-built) */\n" + GLUE_CSS
+
+    # --- scripts: chassis first, then loader + units mounted on this page --
     unit_files = []
     seen = set()
     for m in mounted:
@@ -1145,12 +1640,9 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted,
         '  <script src="functions/%s"></script>' % f
         for f in [LOADER_FILE] + unit_files)
 
-    piece_css = "\n".join(
-        "/* css:%s */\n%s" % (cid, index["css_bank"][cid]) for cid in css_ids)
-
-    title = "%s — %s" % (contract.get("handle", ""),
-                         contract.get("idea", "")[:60])
-    return """<!doctype html>
+    title = _esc_title("%s \u2014 %s" % (contract.get("handle", ""),
+                                          contract.get("idea", "")[:60].strip()))
+    html = """<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -1159,27 +1651,36 @@ def _render_page(contract, blueprint, index, sections, page_file, mounted,
 %s
 <style>
 %s
-%s
 </style>
 </head>
 <body>
+<div class="shell rail-collapsed nb-scope" id="shell">
+%s
+<div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+<main class="main">
+%s
+<div class="room-outlet">
 %s
 %s
-<main class="wrap">
 %s
+</div>
 </main>
-%s
+</div>
 %s
 %s
 </body>
 </html>
-""" % (_esc(title), FONTS_LINK,
-       SHELL_CSS.replace("%SOUL%", soul), piece_css,
-       _topnav(contract, blueprint, sections, page_file),
-       _hero(contract, soul, blueprint, orb_html, css_ids, page_label),
+""" % (title, FONTS_LINK, css_text,
+       rail_html,
+       _topbar(contract, eco_links_html),
+       _hero(contract, blueprint, soul, orb_html, page_label, orb_models),
        "\n".join(sec_html),
-       _footer(contract, blueprint, sections, page_file),
-       _GREET_JS, scripts)
+       _footer_manifest(contract, blueprint, soul, placed, index),
+       _CHASSIS_JS, scripts)
+
+    ctx = {"template": template, "soul": soul, "placed": placed,
+           "index": index, "js": _CHASSIS_JS}
+    return html, css_text, ctx
 
 
 # ---------------------------------------------------------------------------
@@ -1224,23 +1725,21 @@ def main():
         if fid.startswith(NO_UNIT_PREFIX) and on
     )
 
-    # orb piece picks for the hero (verbatim, decorative)
-    orb_models = []
-    for pk in contract.get("pieces") or []:
-        model = pk.get("model")
-        if model and index["pieces"][model]["category"] == "JWL":
-            orb_models.append(model)
-    orb_models = sorted(set(orb_models))
-
     mounted = []
-    css_ids = []
     pages = {}
     for page_file, label in blueprint["pages"].items():
         if label is None:
             continue
-        pages[page_file] = _render_page(
-            contract, blueprint, index, sections, page_file, mounted,
-            css_ids, orb_models)
+        html, css_text, gate_ctx = _render_page(
+            contract, blueprint, index, sections, page_file, mounted)
+        violations = gate_design_laws(html, css_text, gate_ctx)
+        if violations:
+            print(json.dumps({"status": "gate-failed", "page": page_file,
+                              "template": contract["template"],
+                              "violations": violations}, indent=2))
+            sys.exit(3)
+        print("ok: design-law gate PASS — %s (0 violations)" % page_file)
+        pages[page_file] = (html, css_text)
 
     # ---- write output ----
     if os.path.isdir(a.outdir):
@@ -1252,7 +1751,7 @@ def main():
             continue
         p = os.path.join(a.outdir, page_file)
         with open(p, "w", encoding="utf-8") as f:
-            f.write(pages[page_file])
+            f.write(pages[page_file][0])
         written.append(p)
     # copy all 31 unit files byte-identical
     for fname in sorted(os.listdir(a.units)):
@@ -1287,6 +1786,21 @@ def main():
             "verbatim": True,
             "used_as": "hero decoration (jewel orb)" if p["category"] == "JWL" else "placed verbatim",
         })
+    # chrome roles: rebuilt from the render pass for the manifest
+    chrome_roles = []
+    seen_roles = set()
+    for _page_file, (_html, _css) in pages.items():
+        for m in _re.finditer(r'data-piece="([^"]+)"', _html):
+            model = m.group(1)
+            role = "section board" if "<section" in _html[max(0, m.start()-120):m.start()] else "panel"
+            key = (role, model)
+            if key not in seen_roles:
+                seen_roles.add(key)
+                chrome_roles.append({
+                    "role": role,
+                    "model": model,
+                    "label": index["pieces"][model].get("label"),
+                })
     manifest = {
         "appmode": APPMODE_VERSION,
         "contract_hash": contract_hash,
@@ -1299,13 +1813,27 @@ def main():
         "mounted": mounted,
         "missing_functions": missing,
         "piece_picks": piece_picks,
-        "chrome_note": ("Page shell is design-law chrome (obsidian #050507, "
-                        "white voice, soul accents, elevation, ignition, "
-                        "Newsreader hero + Inter UI). The piece index carries "
-                        "design-language specimen fragments, not generic app "
-                        "hero/nav/section chrome — no verbatim shell pieces "
-                        "existed to pull; picks above are the usable verbatim "
-                        "decorative pieces."),
+        "chassis": {
+            "pattern": "NayaNET Hub (index-2.html)",
+            "sha256": HUB_SHA256,
+            "adaptation": ("Fixed left rail (brand + page/section nav + private note) + "
+                           "topbar (rooms-plus mobile, rail-toggle, title, status, eco-plus "
+                           "destinations menu) + main scroll surface + mobile drawer. "
+                           "Default rail-collapsed per Shawn's 2026-10-03 ruling. Corner plus "
+                           "buttons harvested verbatim; hover ignition wired to the template "
+                           "soul via var(--soul)."),
+        },
+        "plus_menus": {
+            "rail_toggle": "toggles the left rail (template pages/features)",
+            "eco_plus": "destinations dropdown (template pages + sections, per-link icon+color)",
+            "rooms_plus": "mobile drawer navigation",
+        },
+        "chrome_roles": chrome_roles,
+        "chrome_note": ("Page chassis follows the Hub pattern (index-2.html, sha-pinned). "
+                        "Discrete pieces are composed verbatim from the 478-piece index: "
+                        "section boards + footer panel = NAYA-CRD-008 (one board one color "
+                        "via --accent), hero orbs = contract JWL picks (soul-wired). "
+                        "Nothing invented — see the visible piece manifest on each page."),
         "files": file_rows,
         "output_hash": digest.hexdigest(),
     }

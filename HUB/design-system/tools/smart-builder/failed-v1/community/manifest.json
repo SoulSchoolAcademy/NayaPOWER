@@ -1,0 +1,401 @@
+{
+  "appmode": "appmode-v1",
+  "behave": "Neighborly and a little nosy, in the good way.",
+  "chrome_note": "Page shell is design-law chrome (obsidian #050507, white voice, soul accents, elevation, ignition, Newsreader hero + Inter UI). The piece index carries design-language specimen fragments, not generic app hero/nav/section chrome \u2014 no verbatim shell pieces existed to pull; picks above are the usable verbatim decorative pieces.",
+  "contract_hash": "2b0c20b0972c232c4bab4d2c55b709fb246af0384626e1d92d21213a2ec4923a",
+  "do": "Post to the street feed, browse and join spaces, manage membership.",
+  "files": [
+    {
+      "bytes": 12533,
+      "path": "functions/f-01-smart-tabs.js",
+      "sha256": "38780a944686926feca40b913e918a39cf73ba9a061b23c98bcc4d0270f93fe1"
+    },
+    {
+      "bytes": 15964,
+      "path": "functions/f-02-smart-mail.js",
+      "sha256": "75e5cf158983de5a7d1fc2b29a0fb4395632a65f89ce428d16be71464df277f0"
+    },
+    {
+      "bytes": 13262,
+      "path": "functions/f-03-smart-lists.js",
+      "sha256": "848da5a73d247dc2cc61d354e2122930224abc0ac8ba6a00ba9bccdb8674e1ea"
+    },
+    {
+      "bytes": 15141,
+      "path": "functions/f-04-smart-spaces.js",
+      "sha256": "48087f66d07349074c1387556dab4ccf9cc67836b837a2d58aab4172e0ee63c3"
+    },
+    {
+      "bytes": 8450,
+      "path": "functions/f-05-intelligence-today.js",
+      "sha256": "bd954d0dd00e5f81be277fe593ace720f275765cfecd53d9bdc0dfb38cb39fb3"
+    },
+    {
+      "bytes": 11458,
+      "path": "functions/f-06-connections.js",
+      "sha256": "9f24d8525ffe23349e3e006e73bd8917c8838b3c54f8487b8172f9f176bf1294"
+    },
+    {
+      "bytes": 6913,
+      "path": "functions/f-07-reports.js",
+      "sha256": "2b333cdf0c9c66024a8ee24a0a5d4abdcc435efbafff3457fb5ffad74e25bab5"
+    },
+    {
+      "bytes": 11764,
+      "path": "functions/f-08-feed.js",
+      "sha256": "64a6660616fbca42932e8a6ea9596b6544af9bf6ebc7b592300967530e2c87ac"
+    },
+    {
+      "bytes": 13359,
+      "path": "functions/f-09-booking.js",
+      "sha256": "9acdeec1ebef6efb22594684b20b332942a333727ef64b358fc8edcea7db9d7f"
+    },
+    {
+      "bytes": 14300,
+      "path": "functions/f-10-menu-display.js",
+      "sha256": "147b3d8021bd3bac03dc6944d3a53b53610fa5befef553df057ab60b77950c50"
+    },
+    {
+      "bytes": 10357,
+      "path": "functions/f-11-product-display.js",
+      "sha256": "1749821bd8659f47b07237e6d63620132038b7364086936829e455ec1665d747"
+    },
+    {
+      "bytes": 11057,
+      "path": "functions/f-12-signup-capture.js",
+      "sha256": "a67dc460383cf15276fd5646f5e19335db777ac650f1a7554e7291caa606b304"
+    },
+    {
+      "bytes": 12806,
+      "path": "functions/f-13-event-rsvp.js",
+      "sha256": "72f3f3441d73afa70bc4a6beaf58b3e81686b5609bba3136873b601e64f62901"
+    },
+    {
+      "bytes": 39280,
+      "path": "functions/f-14-assessment-score.js",
+      "sha256": "2f94ee69c94c17e2e3c0f45566fb43bb85a68b64621212744caa010060552a36"
+    },
+    {
+      "bytes": 9837,
+      "path": "functions/f-15-portfolio-showcase.js",
+      "sha256": "258452bcf0ac9b9134dc1f5e6eae99f4a17633132df20dca0080337fe3143c7e"
+    },
+    {
+      "bytes": 14178,
+      "path": "functions/f-16-community-feed.js",
+      "sha256": "7459b1003ebd993261510afdc39c84274d425144fefa887d108f36012b952304"
+    },
+    {
+      "bytes": 9378,
+      "path": "functions/f-17-business-proof.js",
+      "sha256": "9789aae94825882b83cccd06b78fd97c8d847640c2da8ef258e3b2c1b43f42a9"
+    },
+    {
+      "bytes": 6356,
+      "path": "functions/f-18-profile-link.js",
+      "sha256": "b63a8dddd95a879355a8ff9e1124bc973a3ec4e5dad6e9b9de3049e70758aa57"
+    },
+    {
+      "bytes": 5059,
+      "path": "functions/f-19-navigate.js",
+      "sha256": "4e55a401ef344857283c298d744c6025a5071b25bcde5e34bc127a3e8091432d"
+    },
+    {
+      "bytes": 3871,
+      "path": "functions/f-20-search.js",
+      "sha256": "0b5ef0ea165e679fa797b7609590755e83edd46cc30ce293136db6b0e907f3c3"
+    },
+    {
+      "bytes": 4906,
+      "path": "functions/f-21-contact.js",
+      "sha256": "dc8a14c36fe41959c308b85188fa66cecffc584d20ecf6173256c277268f4ad3"
+    },
+    {
+      "bytes": 6100,
+      "path": "functions/f-22-share.js",
+      "sha256": "cc52bf4b54cd85d5cdaf588b0e3b0f7c2c8353d42ed167ca62deaa5d4efd5e30"
+    },
+    {
+      "bytes": 5710,
+      "path": "functions/f-23-save.js",
+      "sha256": "56c45e676e2eaf91e2077f9a011b80d8f8f5db70066b693ce134c3057efdb5fd"
+    },
+    {
+      "bytes": 5275,
+      "path": "functions/f-24-play.js",
+      "sha256": "a53cd19d4007162063d7372787a2376b1872495c40746931664c07cc15a29b1e"
+    },
+    {
+      "bytes": 3308,
+      "path": "functions/f-25-dictate.js",
+      "sha256": "75274f2b9b21273e10e7310da1d6f74210437940c1ed2864010b35dad3da42fc"
+    },
+    {
+      "bytes": 2671,
+      "path": "functions/f-26-copy.js",
+      "sha256": "862e0dec153a6e6230ea41da0d3ab1dd468499cf3566c06f28bfdd641ad9c70f"
+    },
+    {
+      "bytes": 2387,
+      "path": "functions/f-27-preview.js",
+      "sha256": "778c66bfcecc3a50e3737472e5aac4e36491a4239a3c866ac541ab786010b3a3"
+    },
+    {
+      "bytes": 7093,
+      "path": "functions/f-28-cart.js",
+      "sha256": "0b705c6f2fef35b739a9f0e24746515dcbcae9fc791fbbf2e859971fdce9bb50"
+    },
+    {
+      "bytes": 4333,
+      "path": "functions/f-29-contract-draft.js",
+      "sha256": "4caeb59dc1a60992566dd56feb5b03bec3774ca936bbe29f3d61599f30fe1fc2"
+    },
+    {
+      "bytes": 5594,
+      "path": "functions/f-30-join.js",
+      "sha256": "0cbe801d0a2f314ab6aa9e90fe2589b27e648422ea8ad0c3138e758f2bf33d12"
+    },
+    {
+      "bytes": 2657,
+      "path": "functions/naya-functions.js",
+      "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
+    },
+    {
+      "bytes": 15153,
+      "path": "index.html",
+      "sha256": "9cdbab89ff5e08bb3bf9583533abd523897effbe9397f58599057600ed2f3ba8"
+    },
+    {
+      "bytes": 14876,
+      "path": "page2.html",
+      "sha256": "308162f33f45b2357ce764897c6effe6619b49a8aae2f8b949f7b52c31d4b6ad"
+    }
+  ],
+  "handle": "maple-street",
+  "missing_functions": [
+    "ask-naya"
+  ],
+  "mounted": [
+    {
+      "config": {
+        "accent": "#ff5e6c",
+        "composerPlaceholder": "Tell the street something...",
+        "namePlaceholder": "Your name",
+        "seedPosts": [
+          {
+            "author": "June K.",
+            "text": "Grey cat, green collar, answers to Beans. Last seen near #14. Reward: eternal gratitude + baked goods.",
+            "time": "1h ago"
+          },
+          {
+            "author": "Marcus T.",
+            "text": "Block party meeting Thursday 7pm at my place. Bringing the grill signup sheet.",
+            "time": "3h ago"
+          },
+          {
+            "author": "Priya S.",
+            "text": "Free moving boxes on my porch \u2014 take them before the rain does.",
+            "time": "yesterday"
+          }
+        ],
+        "subtitle": "Borrow a ladder. Find the cat. Plan the party.",
+        "title": "Maple Street Feed"
+      },
+      "contract_id": "community-feed",
+      "page": "index.html",
+      "register_id": "f-16-community-feed",
+      "section": "feed",
+      "unit_file": "f-16-community-feed.js"
+    },
+    {
+      "config": {
+        "spaces": [
+          {
+            "color": "#ff5e6c",
+            "desc": "Planning the September block party \u2014 grills, permits, playlist.",
+            "id": "blockparty",
+            "members": [
+              "June",
+              "Marcus",
+              "Priya"
+            ],
+            "name": "Block Party Crew",
+            "privacy": "neighbors",
+            "topic": "events"
+          },
+          {
+            "color": "#2fe89e",
+            "desc": "Extra tomatoes? Borrow the tiller? It lives here.",
+            "id": "garden",
+            "members": [
+              "June",
+              "Theo"
+            ],
+            "name": "Garden Share",
+            "privacy": "neighbors",
+            "topic": "garden"
+          },
+          {
+            "color": "#3fb8ff",
+            "desc": "One grey cat, several ladders, a missing porch package.",
+            "id": "lostfound",
+            "members": [
+              "Marcus"
+            ],
+            "name": "Lost & Found",
+            "privacy": "neighbors",
+            "topic": "help"
+          }
+        ],
+        "storageKey": "naya.appmode.maple-street.spaces",
+        "title": "Smart Spaces"
+      },
+      "contract_id": "smart-spaces",
+      "page": "index.html",
+      "register_id": "smart-spaces",
+      "section": "spaces",
+      "unit_file": "f-04-smart-spaces.js"
+    },
+    {
+      "config": {
+        "accent": "#ff5e6c",
+        "active": 0,
+        "rooms": [
+          {
+            "href": "index.html",
+            "label": "The feed"
+          },
+          {
+            "href": "page2.html",
+            "label": "My street"
+          }
+        ]
+      },
+      "contract_id": "navigate",
+      "page": "index.html",
+      "register_id": "f-19-navigate",
+      "section": "nav1",
+      "unit_file": "f-19-navigate.js"
+    },
+    {
+      "config": {
+        "spaces": [
+          {
+            "color": "#ff5e6c",
+            "id": "blockparty",
+            "members": 24,
+            "name": "Block Party Crew",
+            "topic": "events"
+          },
+          {
+            "color": "#2fe89e",
+            "id": "garden",
+            "members": 11,
+            "name": "Garden Share",
+            "topic": "garden"
+          },
+          {
+            "color": "#3fb8ff",
+            "id": "lostfound",
+            "members": 8,
+            "name": "Lost & Found",
+            "topic": "help"
+          }
+        ],
+        "storeKey": "naya.appmode.maple-street.spaces"
+      },
+      "contract_id": "join",
+      "page": "page2.html",
+      "register_id": "f-30-join",
+      "section": "join",
+      "unit_file": "f-30-join.js"
+    },
+    {
+      "config": {
+        "spaces": [
+          {
+            "color": "#ff5e6c",
+            "desc": "Planning the September block party \u2014 grills, permits, playlist.",
+            "id": "blockparty",
+            "members": [
+              "June",
+              "Marcus",
+              "Priya"
+            ],
+            "name": "Block Party Crew",
+            "privacy": "neighbors",
+            "topic": "events"
+          },
+          {
+            "color": "#2fe89e",
+            "desc": "Extra tomatoes? Borrow the tiller? It lives here.",
+            "id": "garden",
+            "members": [
+              "June",
+              "Theo"
+            ],
+            "name": "Garden Share",
+            "privacy": "neighbors",
+            "topic": "garden"
+          },
+          {
+            "color": "#3fb8ff",
+            "desc": "One grey cat, several ladders, a missing porch package.",
+            "id": "lostfound",
+            "members": [
+              "Marcus"
+            ],
+            "name": "Lost & Found",
+            "privacy": "neighbors",
+            "topic": "help"
+          }
+        ],
+        "storageKey": "naya.appmode.maple-street.spaces",
+        "title": "Smart Spaces"
+      },
+      "contract_id": "smart-spaces",
+      "page": "page2.html",
+      "register_id": "smart-spaces",
+      "section": "spaces2",
+      "unit_file": "f-04-smart-spaces.js"
+    },
+    {
+      "config": {
+        "accent": "#ff5e6c",
+        "active": 1,
+        "rooms": [
+          {
+            "href": "index.html",
+            "label": "The feed"
+          },
+          {
+            "href": "page2.html",
+            "label": "My street"
+          }
+        ]
+      },
+      "contract_id": "navigate",
+      "page": "page2.html",
+      "register_id": "f-19-navigate",
+      "section": "nav2",
+      "unit_file": "f-19-navigate.js"
+    }
+  ],
+  "output_hash": "de5e0c3e67f35cb640398050a6ab259dc75482ccc8d18cd3e12fad90da9de95d",
+  "piece_picks": [
+    {
+      "css_id": "b6c81cfa05ec",
+      "label": "finished objects of light",
+      "model": "NAYA-JWL-005",
+      "note": "verbatim hero decoration",
+      "used_as": "hero decoration (jewel orb)",
+      "verbatim": true
+    }
+  ],
+  "rules": {
+    "density": "drop text-only sections",
+    "ignition": "white-at-rest"
+  },
+  "soul": "#ff5e6c",
+  "template": "community"
+}

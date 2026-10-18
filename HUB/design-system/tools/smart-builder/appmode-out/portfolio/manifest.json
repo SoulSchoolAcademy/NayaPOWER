@@ -1,7 +1,24 @@
 {
-  "appmode": "appmode-v1",
+  "appmode": "appmode-v2",
   "behave": "Confident and spare. The images carry it.",
-  "chrome_note": "Page shell is design-law chrome (obsidian #050507, white voice, soul accents, elevation, ignition, Newsreader hero + Inter UI). The piece index carries design-language specimen fragments, not generic app hero/nav/section chrome \u2014 no verbatim shell pieces existed to pull; picks above are the usable verbatim decorative pieces.",
+  "chassis": {
+    "adaptation": "Fixed left rail (brand + page/section nav + private note) + topbar (rooms-plus mobile, rail-toggle, title, status, eco-plus destinations menu) + main scroll surface + mobile drawer. Default rail-collapsed per Shawn's 2026-10-03 ruling. Corner plus buttons harvested verbatim; hover ignition wired to the template soul via var(--soul).",
+    "pattern": "NayaNET Hub (index-2.html)",
+    "sha256": "f56fd98683704c37a148d535b9cb6a0b16de831edab86f5ae24633b204b02722"
+  },
+  "chrome_note": "Page chassis follows the Hub pattern (index-2.html, sha-pinned). Discrete pieces are composed verbatim from the 478-piece index: section boards + footer panel = NAYA-CRD-008 (one board one color via --accent), hero orbs = contract JWL picks (soul-wired). Nothing invented \u2014 see the visible piece manifest on each page.",
+  "chrome_roles": [
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "section board"
+    },
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "panel"
+    }
+  ],
   "contract_hash": "87933000f4bcba1c753c2b9388e9c7ee1d9c1772447a01b64b6daad10a51fe4c",
   "do": "Browse the work by tag, open the lightbox, share a frame, book a shoot.",
   "files": [
@@ -161,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 19569,
+      "bytes": 41655,
       "path": "index.html",
-      "sha256": "111c4513bf47e7d760b6637319a129f1d8313d9da12a605203c533b6fa7e12b1"
+      "sha256": "712f9d50496f96a916dce5d5cc96f134c4e69c17ebf38c4759ba566501507100"
     }
   ],
   "handle": "june-park-photo",
@@ -269,7 +286,7 @@
       "unit_file": "f-21-contact.js"
     }
   ],
-  "output_hash": "feeae162ec381ddc43d8c8abf85ee2f6366f57079bf84fd6550852d1675474c8",
+  "output_hash": "66f205b5257146eafea97123e5099c77e0c3be6ec0d3cc7165eb2c6102436833",
   "piece_picks": [
     {
       "css_id": "6b3d0520dec4",
@@ -280,6 +297,11 @@
       "verbatim": true
     }
   ],
+  "plus_menus": {
+    "eco_plus": "destinations dropdown (template pages + sections, per-link icon+color)",
+    "rail_toggle": "toggles the left rail (template pages/features)",
+    "rooms_plus": "mobile drawer navigation"
+  },
   "rules": {
     "density": "drop text-only sections",
     "ignition": "white-at-rest"

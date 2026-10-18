@@ -1,7 +1,24 @@
 {
-  "appmode": "appmode-v1",
+  "appmode": "appmode-v2",
   "behave": "Honest and disciplined. The stopwatch doesn't lie and neither does this page.",
-  "chrome_note": "Page shell is design-law chrome (obsidian #050507, white voice, soul accents, elevation, ignition, Newsreader hero + Inter UI). The piece index carries design-language specimen fragments, not generic app hero/nav/section chrome \u2014 no verbatim shell pieces existed to pull; picks above are the usable verbatim decorative pieces.",
+  "chassis": {
+    "adaptation": "Fixed left rail (brand + page/section nav + private note) + topbar (rooms-plus mobile, rail-toggle, title, status, eco-plus destinations menu) + main scroll surface + mobile drawer. Default rail-collapsed per Shawn's 2026-10-03 ruling. Corner plus buttons harvested verbatim; hover ignition wired to the template soul via var(--soul).",
+    "pattern": "NayaNET Hub (index-2.html)",
+    "sha256": "f56fd98683704c37a148d535b9cb6a0b16de831edab86f5ae24633b204b02722"
+  },
+  "chrome_note": "Page chassis follows the Hub pattern (index-2.html, sha-pinned). Discrete pieces are composed verbatim from the 478-piece index: section boards + footer panel = NAYA-CRD-008 (one board one color via --accent), hero orbs = contract JWL picks (soul-wired). Nothing invented \u2014 see the visible piece manifest on each page.",
+  "chrome_roles": [
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "section board"
+    },
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "panel"
+    }
+  ],
   "contract_hash": "b6ab08cfe4adc9bf819b92aaaac3b4b181a70735e1427aa578186b574984da93",
   "do": "Take the readiness assessment, review training numbers, read today's plan.",
   "files": [
@@ -161,14 +178,14 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 19563,
+      "bytes": 41100,
       "path": "index.html",
-      "sha256": "6819174dc53a2cba7323909fd09bc491535fe4f5852728717dc86eaa27b373dd"
+      "sha256": "94847755f5d2311921752104d90d0184675ff4b7497ba81d6393067f7994ef8a"
     },
     {
-      "bytes": 15840,
+      "bytes": 37922,
       "path": "page2.html",
-      "sha256": "ec37cdfa275d0cae8001244917e57d8bd6111e7d2ecdd93f4aa77a9215c1e09d"
+      "sha256": "374b266e5c8ac5131c5f71b62272100e25ff916cdb3f65188217a53b5cc1b282"
     }
   ],
   "handle": "marathon-42k",
@@ -666,7 +683,7 @@
       "unit_file": "f-19-navigate.js"
     }
   ],
-  "output_hash": "d5387875431eea67e060568fb333865f8aef58bc38cc38bed652440b0b1aa3e5",
+  "output_hash": "a51d9114768b5579841bfe2f5e91cb184d4cbc703932daa0ce858e895d33edf9",
   "piece_picks": [
     {
       "css_id": "9a6ab405b8fd",
@@ -677,6 +694,11 @@
       "verbatim": true
     }
   ],
+  "plus_menus": {
+    "eco_plus": "destinations dropdown (template pages + sections, per-link icon+color)",
+    "rail_toggle": "toggles the left rail (template pages/features)",
+    "rooms_plus": "mobile drawer navigation"
+  },
   "rules": {
     "density": "drop text-only sections",
     "ignition": "white-at-rest"

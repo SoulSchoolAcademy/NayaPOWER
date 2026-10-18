@@ -1,7 +1,24 @@
 {
-  "appmode": "appmode-v1",
+  "appmode": "appmode-v2",
   "behave": "Practical and opinionated. A list is a promise.",
-  "chrome_note": "Page shell is design-law chrome (obsidian #050507, white voice, soul accents, elevation, ignition, Newsreader hero + Inter UI). The piece index carries design-language specimen fragments, not generic app hero/nav/section chrome \u2014 no verbatim shell pieces existed to pull; picks above are the usable verbatim decorative pieces.",
+  "chassis": {
+    "adaptation": "Fixed left rail (brand + page/section nav + private note) + topbar (rooms-plus mobile, rail-toggle, title, status, eco-plus destinations menu) + main scroll surface + mobile drawer. Default rail-collapsed per Shawn's 2026-10-03 ruling. Corner plus buttons harvested verbatim; hover ignition wired to the template soul via var(--soul).",
+    "pattern": "NayaNET Hub (index-2.html)",
+    "sha256": "f56fd98683704c37a148d535b9cb6a0b16de831edab86f5ae24633b204b02722"
+  },
+  "chrome_note": "Page chassis follows the Hub pattern (index-2.html, sha-pinned). Discrete pieces are composed verbatim from the 478-piece index: section boards + footer panel = NAYA-CRD-008 (one board one color via --accent), hero orbs = contract JWL picks (soul-wired). Nothing invented \u2014 see the visible piece manifest on each page.",
+  "chrome_roles": [
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "section board"
+    },
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "panel"
+    }
+  ],
   "contract_hash": "4ad864d3bcac9a38f5fde265d4938239763b4f2713515565c617693d38666e91",
   "do": "Track renovation lists, keep the big decisions saved, share a list with the contractor.",
   "files": [
@@ -161,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 15827,
+      "bytes": 37919,
       "path": "index.html",
-      "sha256": "3d6542c3974f0d6a22febcb35aa03bcbf57800e7d23eecf41ebb72cf55d20924"
+      "sha256": "0455f7f75aedf1c7eb33f05aae9694c9278c0d71695af7dd6dfa49d3bcf5affa"
     }
   ],
   "handle": "renovation-2026",
@@ -303,7 +320,7 @@
       "unit_file": "f-22-share.js"
     }
   ],
-  "output_hash": "121f5ba9611b2fe11ee5bb9035472c56835d4616a714b0ea122861aea75eb366",
+  "output_hash": "7ffd946c2cd989c70b50af0fe64c5a4359ed65651972b77574f33d22053bc584",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",
@@ -314,6 +331,11 @@
       "verbatim": true
     }
   ],
+  "plus_menus": {
+    "eco_plus": "destinations dropdown (template pages + sections, per-link icon+color)",
+    "rail_toggle": "toggles the left rail (template pages/features)",
+    "rooms_plus": "mobile drawer navigation"
+  },
   "rules": {
     "density": "drop text-only sections",
     "ignition": "white-at-rest"

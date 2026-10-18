@@ -1,7 +1,24 @@
 {
-  "appmode": "appmode-v1",
+  "appmode": "appmode-v2",
   "behave": "Crafted and quiet. Let the object talk.",
-  "chrome_note": "Page shell is design-law chrome (obsidian #050507, white voice, soul accents, elevation, ignition, Newsreader hero + Inter UI). The piece index carries design-language specimen fragments, not generic app hero/nav/section chrome \u2014 no verbatim shell pieces existed to pull; picks above are the usable verbatim decorative pieces.",
+  "chassis": {
+    "adaptation": "Fixed left rail (brand + page/section nav + private note) + topbar (rooms-plus mobile, rail-toggle, title, status, eco-plus destinations menu) + main scroll surface + mobile drawer. Default rail-collapsed per Shawn's 2026-10-03 ruling. Corner plus buttons harvested verbatim; hover ignition wired to the template soul via var(--soul).",
+    "pattern": "NayaNET Hub (index-2.html)",
+    "sha256": "f56fd98683704c37a148d535b9cb6a0b16de831edab86f5ae24633b204b02722"
+  },
+  "chrome_note": "Page chassis follows the Hub pattern (index-2.html, sha-pinned). Discrete pieces are composed verbatim from the 478-piece index: section boards + footer panel = NAYA-CRD-008 (one board one color via --accent), hero orbs = contract JWL picks (soul-wired). Nothing invented \u2014 see the visible piece manifest on each page.",
+  "chrome_roles": [
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "section board"
+    },
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "panel"
+    }
+  ],
   "contract_hash": "29edb3d1738fa0e3a02208a00645910904c1f7258e8fd53012eda8aa0ac4f00c",
   "do": "View the lamp, pick a finish into the cart, share it, ask the maker.",
   "files": [
@@ -161,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 15806,
+      "bytes": 38444,
       "path": "index.html",
-      "sha256": "764002037f223e913a7cbff33d103b47c8de957df70b3a06f37ea078b3cbe600"
+      "sha256": "d3e593ea0eb8bcedbcc42c7efe21c9b27702737df2048ac86b2ef38ce8c309df"
     }
   ],
   "handle": "kiln-and-glow",
@@ -227,7 +244,7 @@
       "unit_file": "f-21-contact.js"
     }
   ],
-  "output_hash": "f06108c7e929f33c77a9c51bf94a7af7475f304bdf11de82e3e871e574edc9cc",
+  "output_hash": "dbdf26ca2ad93c9fb2e0edc2d8ab7e2b4b9c43afc8c7a64eb1756060a3f967f0",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",
@@ -238,6 +255,11 @@
       "verbatim": true
     }
   ],
+  "plus_menus": {
+    "eco_plus": "destinations dropdown (template pages + sections, per-link icon+color)",
+    "rail_toggle": "toggles the left rail (template pages/features)",
+    "rooms_plus": "mobile drawer navigation"
+  },
   "rules": {
     "density": "drop text-only sections",
     "ignition": "white-at-rest"

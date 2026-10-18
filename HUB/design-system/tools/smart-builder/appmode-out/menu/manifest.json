@@ -1,7 +1,24 @@
 {
-  "appmode": "appmode-v1",
+  "appmode": "appmode-v2",
   "behave": "Appetizing and honest. Prices on everything.",
-  "chrome_note": "Page shell is design-law chrome (obsidian #050507, white voice, soul accents, elevation, ignition, Newsreader hero + Inter UI). The piece index carries design-language specimen fragments, not generic app hero/nav/section chrome \u2014 no verbatim shell pieces existed to pull; picks above are the usable verbatim decorative pieces.",
+  "chassis": {
+    "adaptation": "Fixed left rail (brand + page/section nav + private note) + topbar (rooms-plus mobile, rail-toggle, title, status, eco-plus destinations menu) + main scroll surface + mobile drawer. Default rail-collapsed per Shawn's 2026-10-03 ruling. Corner plus buttons harvested verbatim; hover ignition wired to the template soul via var(--soul).",
+    "pattern": "NayaNET Hub (index-2.html)",
+    "sha256": "f56fd98683704c37a148d535b9cb6a0b16de831edab86f5ae24633b204b02722"
+  },
+  "chrome_note": "Page chassis follows the Hub pattern (index-2.html, sha-pinned). Discrete pieces are composed verbatim from the 478-piece index: section boards + footer panel = NAYA-CRD-008 (one board one color via --accent), hero orbs = contract JWL picks (soul-wired). Nothing invented \u2014 see the visible piece manifest on each page.",
+  "chrome_roles": [
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "section board"
+    },
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "panel"
+    }
+  ],
   "contract_hash": "58919a9af675d45a0b5e5bdd9ad702d9a9affd3dcadceb3254ce51f48db0861e",
   "do": "Browse the menu, build an order, ask about catering.",
   "files": [
@@ -161,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 14309,
+      "bytes": 35846,
       "path": "index.html",
-      "sha256": "b9bc858d9fac9f3c531c1d0ee6483a901515e2539df30161f8f62a49d8c2e6d1"
+      "sha256": "e2170b64014a079d7f57c841034ebe1a28efd6482da2bbb0c68e65cfc86c1a64"
     }
   ],
   "handle": "copper-cup-menu",
@@ -239,7 +256,7 @@
       "unit_file": "f-21-contact.js"
     }
   ],
-  "output_hash": "e7128c574a14f46aabd227ed28272a9d5cc96708187103a7eeb9d9a157c8a92f",
+  "output_hash": "a5c4ac76c6fa45078a2b3a0e1ec66016d58c3028064411decf4fa79863d00fc0",
   "piece_picks": [
     {
       "css_id": "589124c16d6f",
@@ -250,6 +267,11 @@
       "verbatim": true
     }
   ],
+  "plus_menus": {
+    "eco_plus": "destinations dropdown (template pages + sections, per-link icon+color)",
+    "rail_toggle": "toggles the left rail (template pages/features)",
+    "rooms_plus": "mobile drawer navigation"
+  },
   "rules": {
     "density": "drop text-only sections",
     "ignition": "white-at-rest"

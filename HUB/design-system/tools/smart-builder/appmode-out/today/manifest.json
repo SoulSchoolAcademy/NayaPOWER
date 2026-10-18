@@ -1,7 +1,24 @@
 {
-  "appmode": "appmode-v1",
+  "appmode": "appmode-v2",
   "behave": "Direct and numbers-first. No fluff before coffee.",
-  "chrome_note": "Page shell is design-law chrome (obsidian #050507, white voice, soul accents, elevation, ignition, Newsreader hero + Inter UI). The piece index carries design-language specimen fragments, not generic app hero/nav/section chrome \u2014 no verbatim shell pieces existed to pull; picks above are the usable verbatim decorative pieces.",
+  "chassis": {
+    "adaptation": "Fixed left rail (brand + page/section nav + private note) + topbar (rooms-plus mobile, rail-toggle, title, status, eco-plus destinations menu) + main scroll surface + mobile drawer. Default rail-collapsed per Shawn's 2026-10-03 ruling. Corner plus buttons harvested verbatim; hover ignition wired to the template soul via var(--soul).",
+    "pattern": "NayaNET Hub (index-2.html)",
+    "sha256": "f56fd98683704c37a148d535b9cb6a0b16de831edab86f5ae24633b204b02722"
+  },
+  "chrome_note": "Page chassis follows the Hub pattern (index-2.html, sha-pinned). Discrete pieces are composed verbatim from the 478-piece index: section boards + footer panel = NAYA-CRD-008 (one board one color via --accent), hero orbs = contract JWL picks (soul-wired). Nothing invented \u2014 see the visible piece manifest on each page.",
+  "chrome_roles": [
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "section board"
+    },
+    {
+      "label": "Aliveness \u2727",
+      "model": "NAYA-CRD-008",
+      "role": "panel"
+    }
+  ],
   "contract_hash": "6a9a2a3d1627f2a98c41ab19c1bf821244126c5ffaa7074196d12ce7c70e0871",
   "do": "Read the briefing, check daily/weekly/monthly numbers, log the day, jump to tools.",
   "files": [
@@ -161,9 +178,9 @@
       "sha256": "66c9fc7177e4fadd33109d82bad7ca0e5f7ddc359524f34c5ee1af100f746717"
     },
     {
-      "bytes": 17195,
+      "bytes": 39838,
       "path": "index.html",
-      "sha256": "80495fa37da0b02e07b6d8f50abcd2de88af7087958edb25294826832580108f"
+      "sha256": "8dc1f4b4eec4125276fd3405bf233643bb114c4d49e4644ddf72d185020cf9d9"
     }
   ],
   "handle": "founder-briefing",
@@ -351,7 +368,7 @@
       "unit_file": "f-01-smart-tabs.js"
     }
   ],
-  "output_hash": "f73846719359af781c714b404d6faac17bcb9881572dbfb9230f4816122ea24c",
+  "output_hash": "9d45c32bd85907124924e32aadb1d5d46d8efcaf1c68cabc6eba32ba4b6a4837",
   "piece_picks": [
     {
       "css_id": "b6c81cfa05ec",
@@ -362,6 +379,11 @@
       "verbatim": true
     }
   ],
+  "plus_menus": {
+    "eco_plus": "destinations dropdown (template pages + sections, per-link icon+color)",
+    "rail_toggle": "toggles the left rail (template pages/features)",
+    "rooms_plus": "mobile drawer navigation"
+  },
   "rules": {
     "density": "drop text-only sections",
     "ignition": "white-at-rest"

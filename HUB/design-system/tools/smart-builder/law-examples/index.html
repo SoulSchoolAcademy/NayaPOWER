@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The 16 Naya Design Laws — Right and Wrong</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+
+:root{--obsidian:#050507;--soul:#a06bff;--ink:#F8F7FB;--quiet:rgba(248,247,251,.72);
+--faint:rgba(248,247,251,.5);--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--obsidian);color:var(--ink);
+font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.ghead{padding:56px 0 8px}
+.ghead .eyebrow{font-size:11px;letter-spacing:.24em;font-weight:700;color:#fff;margin-bottom:12px}
+.ghead h1{font-family:Newsreader,Georgia,serif;font-size:clamp(30px,5vw,48px);margin:0 0 12px;color:#fff}
+.ghead p{color:var(--quiet);max-width:680px;margin:0}
+.law{margin:26px 0;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+border:1px solid var(--line);border-radius:22px;padding:26px;
+box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 24px 60px rgba(0,0,0,.55)}
+.law-head{display:flex;gap:14px;align-items:baseline;margin-bottom:6px}
+.law-no{font-size:12px;font-weight:800;letter-spacing:.18em;color:#fff;border:1px solid var(--line);
+border-radius:999px;padding:5px 12px;white-space:nowrap}
+.law-head h2{font-size:24px;margin:0;color:#fff}
+.law-quote{color:var(--quiet);font-size:14px;margin:0 0 18px;max-width:760px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:720px){.pair{grid-template-columns:1fr}}
+.side{border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(255,255,255,.02)}
+.side-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.2em;
+border-radius:999px;padding:5px 12px;margin-bottom:12px}
+.side.right .side-tag{color:#050507;background:#2fe89e}
+.side.wrong .side-tag{color:#fff;background:#ff5e6c}
+.side .cap{font-size:13px;color:var(--quiet);margin:12px 0 0}
+.demo-pad{padding:6px 2px}
+pre.code{background:#020203;border:1px solid var(--line);border-radius:12px;padding:14px;
+font-size:12px;color:var(--quiet);overflow:auto;white-space:pre-wrap;margin:0 0 12px}
+.l1-kicker{font-size:11px;font-weight:700;letter-spacing:.24em;color:#fff;margin:0 0 8px}
+.l1-title{font-size:26px;margin:0 0 8px;color:#fff}
+.l1-body{font-size:15px;color:var(--quiet);margin:0}
+.l1-fine{font-size:12px;color:var(--faint);margin:10px 0 0}
+.orb-row{display:flex;gap:22px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.chrome-row{display:flex;gap:14px;margin:12px 0}
+.chrome-dot{width:18px;height:18px;border-radius:50%;background:var(--c);
+box-shadow:0 0 14px var(--c)}
+.chrome-rail{height:6px;border-radius:3px;background:var(--c);margin:10px 0;
+box-shadow:0 0 12px var(--c)}
+.mini-cards{display:flex;flex-direction:column;gap:12px}
+.rest-btn{background:#fff;color:#050507;border:1.5px solid #fff;border-radius:999px;
+padding:12px 24px;font-weight:800;cursor:pointer;transition:all .2s}
+.rest-btn:hover{background:#2fe89e;border-color:#2fe89e;color:#fff;
+box-shadow:0 0 22px rgba(47,232,158,.7)}
+.flood-btn{background:#a06bff;color:#fff;border:none;border-radius:999px;
+padding:12px 24px;font-weight:800;cursor:pointer;box-shadow:0 0 18px #a06bff}
+.dead-btn{background:transparent;color:#fff;border:1px solid var(--line);
+border-radius:999px;padding:12px 24px;cursor:not-allowed;opacity:.7}
+.rect-list{display:flex;flex-direction:column;gap:12px}
+.rect-item{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);
+border-radius:14px;padding:16px 18px;background:rgba(255,255,255,.02)}
+.rect-item b{color:#fff}.rect-item span{color:var(--quiet);font-size:13px}
+.sq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.sq-item{aspect-ratio:1;border:1px solid var(--line);border-radius:12px;display:grid;
+place-items:center;color:var(--quiet);font-size:13px}
+.swatches{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0}
+.sw{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.25)}
+.walk-row{display:flex;gap:10px;flex-wrap:wrap}
+.walk-chip{font-size:12px;font-weight:700;color:#fff;border:1px solid var(--c);
+border-radius:999px;padding:8px 14px;box-shadow:0 0 14px var(--c)}
+.tcard-demo{border:1px solid var(--line);border-radius:16px;padding:18px;
+display:flex;flex-direction:column;gap:8px;background:rgba(255,255,255,.02)}
+.tcard-demo b{color:#fff}.tcard-demo span{color:var(--quiet);font-size:13px}
+.tview{align-self:center;background:#fff;color:#050507;border:none;border-radius:999px;
+padding:10px 34px;font-weight:800;cursor:pointer;margin-top:6px}
+.phone{width:280px;margin:0 auto;border:1px solid var(--line);border-radius:32px;
+padding:38px 18px 26px;background:#0B0D12;position:relative;
+box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 20px 50px rgba(0,0,0,.6)}
+.phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);
+width:110px;height:22px;border-radius:11px;background:#020203}
+.desk{border:1px solid var(--line);border-radius:12px;padding:30px;max-width:560px;margin:0 auto}
+.flat-box{border:1px solid var(--line);padding:22px;border-radius:6px;background:#0B0D12}
+.manifest-demo ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.manifest-demo li{font-size:13px;color:var(--ink)}
+.manifest-demo li b{color:#fff}
+.gfoot{margin:40px 0 80px;color:var(--faint);font-size:13px}
+code{color:var(--quiet)}
+.nb-demo{margin:0}
+
+/* piece: NAYA-CRD-008 — Aliveness ✧ (builder-index-v1, token-normalized) */
+.nb-scope .card {--accent:#9d75ff;--accent-soft:rgba(157,117,255,.45);border:1.5px solid rgba(255,255,255,.9);border-radius:18px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(0,0,0,.28));box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 12px 32px rgba(0,0,0,.55);animation:edgebreathe 6s ease-in-out infinite;transition:border-color .3s,box-shadow .3s,transform .3s}
+.nb-scope .card:hover {border-color:var(--accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 30px var(--accent-soft),0 12px 32px rgba(0,0,0,.55);transform:translateY(-3px)}
+@keyframes edgebreathe {0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 10px rgba(255,255,255,.06),0 12px 32px rgba(0,0,0,.55)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 22px rgba(255,255,255,.13),0 12px 32px rgba(0,0,0,.55)}}
+.nb-scope .card h3 {font-size:18px;font-weight:700;margin-bottom:8px;color:#ffffff;display:flex;align-items:center;gap:12px}
+.nb-scope .card h3 .jewel {--jewel:#9d75ff;width:26px;height:26px;flex:none;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:900;color:#ffffff;text-shadow:0 2px 8px rgba(0,0,0,.6);background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.85),transparent 42%),radial-gradient(circle at 50% 55%,var(--jewel),color-mix(in srgb,var(--jewel) 45%,#020203) 78%);border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px rgba(255,255,255,.5),inset 0 -3px 8px rgba(0,0,0,.4),0 0 22px color-mix(in srgb,var(--jewel) 55%,transparent),0 8px 20px rgba(0,0,0,.5)}
+.nb-scope .card p {font-size:17px;color:#ffffff}
+.nb-scope .card p.fine {font-size:14px;margin-top:10px}
+.nb-scope .law-step .jewel {margin-top:1px;flex:none}
+
+/* piece: NAYA-JWL-001 — finished objects of light (builder-index-v1, token-normalized) */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0b0d12;
+  --raise: #12151d;
+  --card: #12151d;
+  --deep: #12151d;
+
+  
+  --white: #f8f7fb;
+  --ink: #f5f7fb;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #020203) 56%, #0b0d12 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.nb-scope .orb-wrap:nth-child(2) .orb { animation-delay: 1s; }
+.nb-scope .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.nb-scope .orb-wrap:nth-child(4) .orb { animation-delay: 3s; }
+.nb-scope .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.nb-scope .orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#ffffff 0 0) content-box, linear-gradient(#ffffff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.nb-scope .orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+.nb-scope .orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.nb-scope .orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+.nb-scope .orb--sm { width: 56px; height: 56px; animation: none; }
+.nb-scope .orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
+.nb-scope .orb--sm::after { bottom: -16px; height: 14px; }
+@media (prefers-reduced-motion: reduce) {.nb-scope .orb, .nb-scope .orb::before { animation: none; }}
+
+/* piece: NAYA-JWL-003 — finished objects of light (builder-index-v1, token-normalized) */
+.nb-scope {
+  
+  --field: #050507;
+  --obsidian: #0b0d12;
+  --raise: #12151d;
+  --card: #12151d;
+  --deep: #12151d;
+
+  
+  --white: #f8f7fb;
+  --ink: #f5f7fb;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  
+  --soul: #a06bff;
+
+  
+  --magenta: #e84fff;  
+  --purple: #a06bff;   
+  --blue: #3fb8ff;     
+  --green: #2fe89e;    
+  --gold: #ffbf3d;     
+
+  
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+.nb-scope .orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #020203) 56%, #0b0d12 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.nb-scope .orb-wrap:nth-child(2) .orb { animation-delay: 1s; }
+.nb-scope .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.nb-scope .orb-wrap:nth-child(4) .orb { animation-delay: 3s; }
+.nb-scope .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.nb-scope .orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#ffffff 0 0) content-box, linear-gradient(#ffffff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.nb-scope .orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+.nb-scope .orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.nb-scope .orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+.nb-scope .orb--xs { width: 30px; height: 30px; animation: none; }
+.nb-scope .orb--xs::before { inset: -7px; padding: 2px; animation-duration: 8s; }
+.nb-scope .orb--xs::after { display: none; }
+@media (prefers-reduced-motion: reduce) {.nb-scope .orb, .nb-scope .orb::before { animation: none; }}
+</style>
+</head>
+<body><div class="nb-scope"><div class="wrap">
+<header class="ghead"><div class="eyebrow">NAYA DESIGN LAWS — OFFICIAL 2026-10-17</div><h1>Right and wrong, side by side</h1><p>All 16 laws, each with one RIGHT and one WRONG rendered example. WRONG examples are harvested from our own failed v1 template apps — our failures are the teaching set. RIGHT examples are harvested verbatim from Shawn's 7 canonical libraries and Verity's factory page, with law-breakers fixed as harvested. Nothing invented.</p></header>
+<section class="law" id="law-1"><div class="law-head"><span class="law-no">LAW 1</span><h2>White text. Always.</h2></div><p class="law-quote">White text. Always. — Headings are white. Body is white or silver. Never colored text.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><p class="l1-kicker">MORNING BRIEFING</p><h3 class="l1-title">Today, handled</h3><p class="l1-body">White headings, silver body, on obsidian. Hierarchy comes from size — never from colored text.</p></div><p class="cap">RIGHT — white kicker, white title, silver body. Hierarchy from size. (Voice: the index card piece NAYA-CRD-008.)</p></div><div class="side wrong"><span class="side-tag">WRONG</span><pre class="code">.hero .kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;
+text-transform:uppercase;color:var(--soul);margin-bottom:14px}
+.hero h1{font-family:Newsreader,Georgia,&#x27;Times New Roman&#x27;,serif;font-weight:600;
+font-size:clamp(34px,5.4vw,58px);line-height:1.08;margin:0 0 16px;color:#fff;
+text-wrap:balance}
+.hero .lede{font-size:18px;color:var(--quiet);max-width:640px;margin:0}
+.hero .orbs{positio</pre><div class="demo-pad"><p style="color:#a06bff;font-size:12px;font-weight:700;letter-spacing:.22em">MORNING BRIEFING</p></div><p class="cap">WRONG — our failed v1: the kicker was colored with the soul color. Shawn's word: kickers stay white, always.</p></div></div></section>
+<section class="law" id="law-2"><div class="law-head"><span class="law-no">LAW 2</span><h2>Gold is earned, never applied.</h2></div><p class="law-quote">Gold is earned, never applied. — Gold means shown value; green means proven; blue means stated.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><p class="l1-body"><span class="orb orb--xs" style="--oc:#ffbf3d;--oc-rgb:255,191,61"></span> <b>Live now</b> — gold marks shown value: the LED is lit because the thing is actually live.</p></div><p class="cap">RIGHT — gold LED meaning ‚live’. Gold is a truth-state, never decoration. (Jewel Library orb pattern.)</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><h3 style="color:#ffbf3d">Our Amazing Features</h3><p class="l1-body">A gold heading and gold borders, applied for looks.</p></div><p class="cap">WRONG (illustrative) — gold headings, gold borders for decoration. Gold is earned, not applied.</p></div></div></section>
+<section class="law" id="law-3"><div class="law-head"><span class="law-no">LAW 3</span><h2>Chrome acts. Text speaks.</h2></div><p class="law-quote">Chrome acts. Text speaks. Theme identifies. — Spectrum colors appear only on borders, glows, dots, rails, jewels. Never on text.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><p class="l1-body">Words stay white. Color works on the chrome:</p><div class="chrome-row"><span class="chrome-dot" style="--c:#e84fff"></span><span class="chrome-dot" style="--c:#a06bff"></span><span class="chrome-dot" style="--c:#3fb8ff"></span><span class="chrome-dot" style="--c:#2fe89e"></span><span class="chrome-dot" style="--c:#ffbf3d"></span></div><div class="chrome-rail" style="--c:#40d3bb"></div><p class="l1-fine">Jewels, dots, rails carry the color — the words never do.</p></div><p class="cap">RIGHT — spectrum color lives on the jewel, the dot, the rail. Text stays white.</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><p class="l1-body">The status dot is <span style="color:#2fe89e">green text</span> and the heading is <span style="color:#3fb8ff">blue text</span>.</p></div><p class="cap">WRONG (illustrative) — color used as text. If removing the color changes nothing about understanding, remove the color.</p></div></div></section>
+<section class="law" id="law-4"><div class="law-head"><span class="law-no">LAW 4</span><h2>Adjacent things never share a hue.</h2></div><p class="law-quote">Adjacent things never share a hue. — No two neighboring elements share the same or almost the same color.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="orb-row"><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#e84fff;--oc-rgb:232,79,255"></span></span><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></span><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span></span><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span></span><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#ffbf3d;--oc-rgb:255,191,61"></span></span></div><p class="l1-fine">Five orbs, five spectrum colors, in law order. Never twice adjacent.</p></div><p class="cap">RIGHT — five orbs, five spectrum colors, in law order. (Jewel Library orb pattern, harvested verbatim.)</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><div class="orb-row"><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></span><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></span><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></span><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></span><span class="orb-wrap"><span class="orb orb--xs" style="--oc:#a06bff;--oc-rgb:160,107,255"></span></span></div><p class="l1-fine">Our failed v1: every orb purple — "--oc:#a06bff" on all five.</p></div><p class="cap">WRONG — our failed v1 hero: five orbs, one hue. All purple, all adjacent.</p></div></div></section>
+<section class="law" id="law-5"><div class="law-head"><span class="law-no">LAW 5</span><h2>One board, one color.</h2></div><p class="law-quote">One board, one color. — Each card gets one fixed, unique color — its identity.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="mini-cards"><div class="card nb-demo" style="--accent:#e84fff;--accent-soft:rgba(232,79,255,.45)"><h3><span class="jewel" style="--jewel:#e84fff">✧</span>Magenta board</h3></div><div class="card nb-demo" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>Blue board</h3></div><div class="card nb-demo" style="--accent:#2fe89e;--accent-soft:rgba(47,232,158,.45)"><h3><span class="jewel" style="--jewel:#2fe89e">✧</span>Green board</h3></div></div><p class="l1-fine">Each board owns one color — you recognize the thing by its color.</p></div><p class="cap">RIGHT — three boards, three identities. (Index card piece NAYA-CRD-008, one --accent per board.)</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><div class="mini-cards"><div class="card nb-demo" style="--accent:#a06bff;--accent-soft:rgba(160,107,255,.45)"><h3><span class="jewel" style="--jewel:#a06bff">✧</span>Board one</h3></div><div class="card nb-demo" style="--accent:#a06bff;--accent-soft:rgba(160,107,255,.45)"><h3><span class="jewel" style="--jewel:#a06bff">✧</span>Board two</h3></div><div class="card nb-demo" style="--accent:#a06bff;--accent-soft:rgba(160,107,255,.45)"><h3><span class="jewel" style="--jewel:#a06bff">✧</span>Board three</h3></div></div><p class="l1-fine">Our failed v1: every section glowed var(--soul) — purple, purple, purple.</p></div><p class="cap">WRONG — our failed v1: every board wore the same soul color. One board, one color was broken.</p></div></div></section>
+<section class="law" id="law-6"><div class="law-head"><span class="law-no">LAW 6</span><h2>White at rest. Own color ignites on touch.</h2></div><p class="law-quote">White at rest. Its own color ignites on touch. — A resting control is white/neutral; color appears only on the lit state, in its own color.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><button class="rest-btn" type="button">Touch me</button><p class="l1-fine">White rim at rest. Hover/touch: it ignites in its own color.</p></div><p class="cap">RIGHT — quiet at rest, own color on touch. (Button Set pattern; card piece hover law.)</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><button class="flood-btn" type="button">Always glowing</button> <button class="flood-btn" type="button">Always glowing</button><p class="l1-fine">Colored while unselected — a purple unlit button is nonsense.</p></div><p class="cap">WRONG (illustrative) — colored unselected controls. Five lit buttons in a row is overload.</p></div></div></section>
+<section class="law" id="law-7"><div class="law-head"><span class="law-no">LAW 7</span><h2>Boards are rectangles.</h2></div><p class="law-quote">Boards are rectangles. — Lists lay out as horizontal rectangles, one after another. Not grids of squares.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="rect-list"><div class="rect-item"><b>Personal page</b><span>My whole creative life in one app</span></div><div class="rect-item"><b>Booking page</b><span>A calendar that books itself</span></div><div class="rect-item"><b>Menu page</b><span>Everything we pour and bake</span></div></div></div><p class="cap">RIGHT — horizontal rectangles, one after another. The eye reads down; each gets room to breathe.</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><div class="sq-grid"><div class="sq-item">One</div><div class="sq-item">Two</div><div class="sq-item">Three</div><div class="sq-item">Four</div></div></div><p class="cap">WRONG (illustrative) — a grid of identical squares. No identity, no breathing room.</p></div></div></section>
+<section class="law" id="law-8"><div class="law-head"><span class="law-no">LAW 8</span><h2>Restraint. Never a flood.</h2></div><p class="law-quote">Restraint. Never a flood. — Color is precious because it is rare. When everything is lit, nothing is.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="card nb-demo" style="--accent:#a06bff;--accent-soft:rgba(160,107,255,.45)"><h3><span class="jewel" style="--jewel:#a06bff">✧</span>Restrained</h3><p class="fine">Mostly black and white. One color, spent where it structures.</p></div></div><p class="cap">RIGHT — the rainbow knows its place. Color is precious because it is rare.</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad flood-demo"><h3 style="color:#a06bff">Everything glows</h3><p style="color:#e84fff">Purple headings, magenta body,</p><button class="flood-btn" type="button">Glowing button</button> <span class="orb orb--xs" style="--oc:#a06bff;--oc-rgb:160,107,255"></span><p class="l1-fine">Our failed v1 scored 3–4/10: all pinks together.</p></div><p class="cap">WRONG — our failed v1: purple purple purple. A page where everything glows is a page where nothing does.</p></div></div></section>
+<section class="law" id="law-9"><div class="law-head"><span class="law-no">LAW 9</span><h2>Verbatim tokens, no private colors.</h2></div><p class="law-quote">Verbatim tokens, no private colors. — The canonical tokens are copied exactly. No invented hexes. No close enough.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="swatches"><span class="sw" style="background:#050507" title="obsidian"></span><span class="sw" style="background:#a06bff" title="purple"></span><span class="sw" style="background:#e84fff" title="magenta"></span><span class="sw" style="background:#3fb8ff" title="blue"></span><span class="sw" style="background:#2fe89e" title="green"></span><span class="sw" style="background:#ffbf3d" title="gold"></span><span class="sw" style="background:#40d3bb" title="teal"></span><span class="sw" style="background:#6675ff" title="indigo"></span><span class="sw" style="background:#ff5e6c" title="red"></span><span class="sw" style="background:#ff9a5a" title="orange"></span></div><p class="l1-fine">Copied exactly. If it isn’t a token, it doesn’t go on the page.</p></div><p class="cap">RIGHT — the canonical N5 token set, verbatim. (The Law-9 gate fails any other hex.)</p></div><div class="side wrong"><span class="side-tag">WRONG</span><pre class="code">--field: #0B0D12;
+--raise: #10141d;
+--card: #141a28;  /* v1 shell CSS */</pre><p class="cap">WRONG — our failed v1 shell used hexes outside the 16-law token set. (Reconciled 2026-10-18: the Hub :root tokens joined the canonical set.)</p></div></div></section>
+<section class="law" id="law-10"><div class="law-head"><span class="law-no">LAW 10</span><h2>One global spectrum sequence per page.</h2></div><p class="law-quote">One global spectrum sequence per page. — Section accents follow magenta → purple → blue → green → gold, in law order.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="walk-row"><span class="walk-chip" style="--c:#e84fff">magenta</span><span class="walk-chip" style="--c:#a06bff">purple</span><span class="walk-chip" style="--c:#3fb8ff">blue</span><span class="walk-chip" style="--c:#2fe89e">green</span><span class="walk-chip" style="--c:#ffbf3d">gold</span></div><p class="l1-fine">Section accents follow the spectrum in law order, strict by position.</p></div><p class="cap">RIGHT — magenta → purple → blue → green → gold. Richest first, magenta leading.</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><p class="l1-body">Every section accent: <code>var(--soul)</code>.</p><p class="l1-fine">Our failed v1: one hue for the whole page — the spectrum never walked.</p></div><p class="cap">WRONG — our failed v1: a single-hue page. The gate now fails any page walking fewer than 3 hues.</p></div></div></section>
+<section class="law" id="law-11"><div class="law-head"><span class="law-no">LAW 11</span><h2>Preview before pick.</h2></div><p class="law-quote">Preview before pick. — Every template offers a big, obvious preview. Choosing blind is the builder&#x27;s failure.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="tcard-demo"><b>Booking page</b><span>A calendar that books itself</span><button class="tview" type="button">VIEW</button></div><p class="l1-fine">A lit board with a real view button — see the sample before you commit.</p></div><p class="cap">RIGHT — template card with a big, obvious preview. (Harvested from Verity's Smart_factory_incomplete.html.)</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><div class="sq-grid"><div class="sq-item">???</div></div><p class="l1-fine">A small block, no preview. Choosing blind is the builder’s failure.</p></div><p class="cap">WRONG (illustrative) — picking from a small block alone, sight unseen.</p></div></div></section>
+<section class="law" id="law-12"><div class="law-head"><span class="law-no">LAW 12</span><h2>Mobile IS the app.</h2></div><p class="law-quote">Mobile IS the app. — Every page is a mobile app first: killer on the phone, install-ready.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="phone"><div class="phone-notch"></div><p class="l1-kicker">MORNING BRIEFING</p><h3 class="l1-title">Today, handled</h3><button class="rest-btn" type="button">Open</button></div><p class="l1-fine">Killer on the phone by default. Mobile isn’t a version — mobile is the app.</p></div><p class="cap">RIGHT — every template is born a phone app: mobile-optimized, installable.</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><div class="desk"><p class="l1-fine">A 1400px canvas that collapses into nothing on a phone.</p></div></div><p class="cap">WRONG (illustrative) — desktop-only. A page that dies on the phone was never an app.</p></div></div></section>
+<section class="law" id="law-13"><div class="law-head"><span class="law-no">LAW 13</span><h2>Every control works, or it doesn&#x27;t ship.</h2></div><p class="law-quote">Every control works, or it doesn&#x27;t ship. — A button that doesn&#x27;t function is a lie on the page.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><button class="rest-btn" type="button" id="law13btn">Tap me</button> <span class="l1-fine" id="law13out">Not tapped yet.</span></div><p class="cap">RIGHT — this button really works: tap it and see. (Pretty but useless never ships.)</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><button class="dead-btn" type="button">Tap me</button> <span class="l1-fine">Nothing happens. A button that doesn’t function is a lie on the page.</span></div><p class="cap">WRONG (illustrative) — the dead button above really does nothing. Staged, not working.</p></div></div></section>
+<section class="law" id="law-14"><div class="law-head"><span class="law-no">LAW 14</span><h2>Compose, don&#x27;t create.</h2></div><p class="law-quote">Compose, don&#x27;t create. — Build from the library&#x27;s real pieces — real HTML, real CSS, verbatim.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="card nb-demo" style="--accent:#2fe89e;--accent-soft:rgba(47,232,158,.45)"><h3><span class="jewel" style="--jewel:#2fe89e">✧</span>Section board</h3><p class="fine">Model <b>NAYA-CRD-008</b> — every structural element traces to an index model.</p></div><p class="l1-fine">Chassis pattern: index-2.html (Hub). Pieces: the 478-piece index. Nothing invented.</p></div><p class="cap">RIGHT — our fixed v2: the section board IS index piece NAYA-CRD-008, manifest-visible.</p></div><div class="side wrong"><span class="side-tag">WRONG</span><pre class="code">.topbar{position:sticky;top:0;z-index:50;background:rgba(5,5,7,.86);
+backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
+.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--soul);
+box-shadow:0 0 12px var(--soul)</pre><p class="cap">WRONG — our failed v1: the topbar was hand-written CSS, invented, tracing to no piece.</p></div></div></section>
+<section class="law" id="law-15"><div class="law-head"><span class="law-no">LAW 15</span><h2>Depth before color. Zero flat.</h2></div><p class="law-quote">Depth before color. Zero flat. — Every surface gets living depth: elevation, edge light, seating shadow.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><div class="card nb-demo" style="--accent:#3fb8ff;--accent-soft:rgba(63,184,255,.45)"><h3><span class="jewel" style="--jewel:#3fb8ff">✧</span>Elevated</h3><p class="fine">Edge light, seating shadow, inner depth — premium in monochrome first.</p></div></div><p class="cap">RIGHT — living depth: elevation, edge light, seating shadow. (Index card piece; Law 15 sharpened: 3D, never flat 2D.)</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><div class="flat-box"><p class="l1-body">Flat box</p></div><p class="l1-fine">No elevation, no edge light. Flat is a defect.</p></div><p class="cap">WRONG (illustrative) — a flat surface. If it does not read as premium in monochrome, color will not save it.</p></div></div></section>
+<section class="law" id="law-16"><div class="law-head"><span class="law-no">LAW 16</span><h2>Size separates. Color never does.</h2></div><p class="law-quote">Size separates. Color never does. — Hierarchy comes from size and weight, never from colored text.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad"><p class="l1-kicker">KICKER — SMALL</p><h3 class="l1-title">Headline — large</h3><p class="l1-body">Body — medium. Three sizes, one color: white. The eye knows what matters.</p></div><p class="cap">RIGHT — hierarchy from size and weight. Color never tells the eye what matters most.</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><p style="color:#a06bff;font-size:14px">kicker — colored</p><p style="color:#e84fff;font-size:14px">headline — colored, same size</p><p style="font-size:14px">body — same size again</p></div><p class="cap">WRONG — our failed v1 habit: color doing size’s job. Hierarchy from size, never from colored text.</p></div></div></section>
+<section class="law" id="law-R"><div class="law-head"><span class="law-no">LAW R</span><h2>Visible piece manifest.</h2></div><p class="law-quote">Every page carries a visible piece manifest — model number + label per element.</p><div class="pair"><div class="side right"><span class="side-tag">RIGHT</span><div class="demo-pad manifest-demo"><p class="l1-fine">PIECE MANIFEST</p><ul><li><b>NAYA-CRD-008</b> — Aliveness ✧ · section boards</li><li><b>NAYA-JWL-001</b> — finished objects of light · hero orb</li></ul></div><p class="cap">RIGHT — our fixed v2: every page carries a visible manifest — model number + label per element.</p></div><div class="side wrong"><span class="side-tag">WRONG</span><div class="demo-pad"><p class="l1-fine">Our failed v1 pages carried no manifest at all. Shawn couldn't verify a single piece. The build gate now fails pages without one.</p></div><p class="cap">WRONG — our failed v1: no visible piece manifest. Absent = build FAILS.</p></div></div></section><footer class="gfoot">Built by BUILD/Nu, Team Nitro · 2026-10-18 · the design-law gate (gate_design_laws in appmode.py) enforces these mechanically.</footer>
+</div></div>
+<script>
+(function(){
+  var b=document.getElementById('law13btn'), o=document.getElementById('law13out');
+  if(b&&o){ b.addEventListener('click',function(){
+    o.textContent='Tapped — it works. '+new Date().toLocaleTimeString(); }); }
+})();
+</script>
+
+</body>
+</html>
