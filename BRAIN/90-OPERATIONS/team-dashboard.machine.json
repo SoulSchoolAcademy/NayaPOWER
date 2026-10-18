@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-18T17:15:26+00:00",
+ "generated_utc": "2026-10-18T18:17:02+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -102,12 +102,6 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
-     "number": 2761,
-     "title": "[Team Verity] Naya Beta | KNOW: test_backfill_apply_restamps_manifest (w440 leg 1)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2761",
-     "draft": false
-    },
-    {
      "number": 2760,
      "title": "fix(compound-scale): hermetic citation fixtures + freshness CI gate (closes citation-drift",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2760",
@@ -148,9 +142,15 @@
      "title": "repair(brain-index): re-stamp index on main f33bba34",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390",
      "draft": false
+    },
+    {
+     "number": 2388,
+     "title": "feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 2026-10-11)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388",
+     "draft": false
     }
    ],
-   "open_pr_count": 26
+   "open_pr_count": 25
   },
   {
    "id": "act",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 628,
+ "open_pr_total": 627,
  "unassigned_prs": 239
 }
