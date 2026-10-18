@@ -59,17 +59,25 @@ API = "https://api.github.com"
 # The 15 named seats — the original 12 area leads (Shawn, 2026-10-11): Alpha,
 # Beta, Gamma, Delta, Epsilon, Zeta, Eta, Theta, Iota, Kappa, Lambda, Mu —
 # plus Nitro (Shawn's word 2026-10-16: "She's part of our team"), Chi, Relay
-# (Team Nitro seats, active reviewers on PR #2718). Named seats sign as
-# "Naya <Title>" (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep
-# working exactly as before. One shared id pattern so the author-declaration
-# rule and the review/scorecard rules recognize exactly the same seats.
+# (Team Nitro seats, active reviewers on PR #2718), and the three lead seats
+# Clarity, Verity, Resolve (naming law: leads sign "Naya <Title> Narzan" —
+# a lawful "Seat: Naya Clarity Narzan" declaration must pass the gate's
+# author check exactly like a seat tag). Named seats sign as "Naya <Title>"
+# (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep working exactly
+# as before. One shared id pattern so the author-declaration rule and the
+# review/scorecard rules recognize exactly the same seats.
 # "nitro" added 2026-10-17 per Shawn's word — Naya Nitro Narzan is a seated
 # team member (joined 2026-10-15); the registry predated her.
 # "chi", "relay" added 2026-10-17 — active reviewers on PR #2718 (Team Nitro);
 # registry updated to match the working team. Remove if not seated.
+# "clarity", "verity", "resolve" added 2026-10-18 — Epsilon w409 F2 systemic:
+# the naming-law lead form "Seat: Naya Clarity Narzan" could never pass the
+# author check (registry had no 'clarity'), so every lead-qualified body hit
+# the wall. Mechanism over ruling: the registry names the working team.
 _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
                 "eta", "theta", "iota", "kappa", "lambda", "mu",
-                "nitro", "chi", "relay")
+                "nitro", "chi", "relay",
+                "clarity", "verity", "resolve")
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
