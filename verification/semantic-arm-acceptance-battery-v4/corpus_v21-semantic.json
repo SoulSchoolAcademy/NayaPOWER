@@ -1,0 +1,727 @@
+{
+ "battery": "v2.1 \u2014 example-scale distractor rule (R-arm + relaxed R-v3), new freeze",
+ "design": "verification/semantic-arm-acceptance-gate-design-v1.md",
+ "docs": [
+  {
+   "id": "d01x01",
+   "role": "distractor",
+   "text": "Decide the new hosting going forward: the failed GitHub deploy will verify and seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x02",
+   "role": "distractor",
+   "text": "Going with new hosting, decide now: the failed GitHub deploy must verify before we seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x03",
+   "role": "distractor",
+   "text": "The failed deploy needs you to decide: new hosting is going to GitHub - verify and seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x04",
+   "role": "distractor",
+   "text": "Decide now: new hosting going to a failed GitHub deploy can't verify or seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x05",
+   "role": "distractor",
+   "text": "New hosting, going nowhere: decide the failed GitHub deploy, verify it, seal it.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x06",
+   "role": "distractor",
+   "text": "GitHub going live with new hosting? Decide first: failed deploys verify, then seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x07",
+   "role": "distractor",
+   "text": "A failed GitHub deploy going forward: decide the new hosting, verify the seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x08",
+   "role": "distractor",
+   "text": "Decide the going rate of failed deploys: new GitHub hosting must verify and seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x09",
+   "role": "distractor",
+   "text": "The new hosting is going to fail unless you decide: GitHub deploys verify, then seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x10",
+   "role": "distractor",
+   "text": "Going forward, decide new hosting: a failed GitHub deploy will verify and seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x11",
+   "role": "distractor",
+   "text": "Failed to verify kills new hosting: decide the going GitHub deploy, then seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01x12",
+   "role": "distractor",
+   "text": "Decide: going with new GitHub hosting means the failed deploy must verify and seal.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01a",
+   "role": "gold",
+   "text": "Cloudflare hosts everything. Shawn's word, 2026-10-17 ~09:06 PDT \u2014 settled, stop asking. Direct API access connected that day; 8 Workers visible. His standing grant: set permissions to whatever makes it work.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01b",
+   "role": "gold",
+   "text": "The pipeline reads the EXISTING repo secret CLOUDFLARE_API_TOKEN \u2014 no new secret is needed. If the first deploy 403s on scope, swap that secret's VALUE for the new token's value. Deploy shape: show him the HTML in the feed first, his 'yeah', then it goes live on its own \u2014 testing on subdomains, never overwriting a proven AAA page with an unproven one.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d01t",
+   "role": "decoy",
+   "text": "The Hub is NOT hosted on Cloudflare \u2014 hosting moved to a self-managed server fleet in October, and the Cloudflare account is only used for DNS. Verify the seal: no one confirmed the move.",
+   "topic": "cloudflare-hosting-deploy"
+  },
+  {
+   "id": "d02x01",
+   "role": "distractor",
+   "text": "The Supabase backend isn't live and alive is missing: the Hub rows completes nothing and Superbase stays dark - 'alive' means live rows, so verify and seal.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x02",
+   "role": "distractor",
+   "text": "Superbase or Supabase, no live rows completes the Hub backend: alive and 'alive' both need us to verify and seal.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x03",
+   "role": "distractor",
+   "text": "'Alive' is a live-rows claim and alive is the word: the Superbase backend completes nothing for the Hub - verify and seal.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x04",
+   "role": "distractor",
+   "text": "The Hub backend completes zero rows: Superbase isn't live and alive needs a verify, so seal it - 'alive' waits.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x05",
+   "role": "distractor",
+   "text": "Live rows or it isn't alive: the Superbase backend completes nothing for the Hub - verify and seal 'alive'.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x06",
+   "role": "distractor",
+   "text": "The backend completes the flow when rows go live: Superbase stays sealed until the Hub calls it alive - verify 'alive' first.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x07",
+   "role": "distractor",
+   "text": "Is the Hub alive? Not with the Superbase backend down: rows completes nothing live - verify and seal, and keep 'alive' honest.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x08",
+   "role": "distractor",
+   "text": "The Superbase backend tables aren't live: the Hub rows completes the flow only after we verify alive and seal 'alive'.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x09",
+   "role": "distractor",
+   "text": "'Alive' needs live rows and alive needs proof: the Superbase backend completes nothing - verify the Hub rows and seal.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x10",
+   "role": "distractor",
+   "text": "The Hub backend completes no rows: Superbase isn't live, alive awaits a verify - seal it and shelve 'alive'.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x11",
+   "role": "distractor",
+   "text": "Rows completes the backend only when live: the Hub calls Superbase alive after we verify and seal 'alive'.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02x12",
+   "role": "distractor",
+   "text": "The Supabase backend is sealed: no live rows completes the Hub flow for Superbase - alive needs us to verify 'alive'.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02a",
+   "role": "gold",
+   "text": "The backend is Supabase \u2014 Shawn's word, 2026-10-17. Tables exist, zero rows, realtime unconfirmed (verified 2026-10-15). NAYA_RUNTIME_EMAIL/PASSWORD repo secrets are set.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02b",
+   "role": "gold",
+   "text": "'Alive' = the Hub live with data: open the Hub on Cloudflare, say 'smart note this', get a card with his exact words within 60 seconds, read/play/save/share all work, data sits in Supabase as real rows, refresh loses nothing, works twice in a row. Blocker #1: the Hub-Supabase bridge is not wired \u2014 the Hub is static HTML + localStorage today.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d02t",
+   "role": "decoy",
+   "text": "Smart Note rows do NOT land in Supabase \u2014 the team moved the backend to a custom Postgres cluster in October, and the Supabase project is archived. Verify the seal: no flow completes here.",
+   "topic": "supabase-backend"
+  },
+  {
+   "id": "d03x01",
+   "role": "distractor",
+   "text": "The live board feed posts aren't verified: count the issue before any unsigned post counts.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x02",
+   "role": "distractor",
+   "text": "Aren't unsigned posts excluded? The live feed must verify each board post and count the issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x03",
+   "role": "distractor",
+   "text": "Aren't live issues settled? The board feed must verify the post count and the issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x04",
+   "role": "distractor",
+   "text": "Every board post opens without verification: aren't feeds supposed to verify the count? Count the live issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x05",
+   "role": "distractor",
+   "text": "The feed count needs verification: aren't live board posts supposed to carry an issue? Count them.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x06",
+   "role": "distractor",
+   "text": "Aren't capped archives off-limits? The live board feed verifies each post and counts the issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x07",
+   "role": "distractor",
+   "text": "Post nothing without verification: aren't board feeds for live issues? Verify the count and the issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x08",
+   "role": "distractor",
+   "text": "Why aren't we on a new feed? The live board post count needs verification: count the issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x09",
+   "role": "distractor",
+   "text": "Aren't unsigned claims void? The live board feed verifies the post count per issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x10",
+   "role": "distractor",
+   "text": "Aren't live board issues public? Verify the feed post count and the issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x11",
+   "role": "distractor",
+   "text": "Unsigned posts aren't claims: the live board feed verifies the count on every issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03x12",
+   "role": "distractor",
+   "text": "Capped archives aren't postable: the live feed verifies board post counts per issue.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03a",
+   "role": "gold",
+   "text": "#2721 is the live coordination board (since 2026-10-17). #2641 is a readable archive. #2175 and #1354 are capped archives \u2014 never post there. The team migrated because comments hit the 2,500 cap on #1354.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03b",
+   "role": "gold",
+   "text": "Every board post opens with the four-line header (Shawn's word 2026-10-17 ~08:55 PDT): Who (seat name), Team, Did (what YOU did, first person), To (who it's for). Unsigned posts don't count as claims \u2014 they get asked for their header and re-posted.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d03t",
+   "role": "decoy",
+   "text": "The live board issue is #1354 \u2014 the live board issue never moved; keep posting on the live board issue, since the comment cap was raised and no migration is needed.",
+   "topic": "board-feed"
+  },
+  {
+   "id": "d04x01",
+   "role": "distractor",
+   "text": "The design law can't verify gold use: the creation color needs a seal before headings ship.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x02",
+   "role": "distractor",
+   "text": "Official design laws can't bless gold: verify the color use in the creation, then seal it.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x03",
+   "role": "distractor",
+   "text": "You can't use gold without a verify: the design law seals the creation color.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x04",
+   "role": "distractor",
+   "text": "The creation can't verify itself: design laws seal the color use of gold.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x05",
+   "role": "distractor",
+   "text": "The use of gold in the creation can't pass a verify: the design law withholds the color seal.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x06",
+   "role": "distractor",
+   "text": "Design laws can't be skipped: verify the gold color use of the creation, then seal.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x07",
+   "role": "distractor",
+   "text": "The law can't verify gold: the color use of the creation stays sealed by design.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x08",
+   "role": "distractor",
+   "text": "Can't the design law allow gold use? Not without a verify - seal the creation color.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x09",
+   "role": "distractor",
+   "text": "Use of gold in the creation can't pass: design laws verify color before the seal.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x10",
+   "role": "distractor",
+   "text": "The color use of the design law can't pass a verify: the gold of the creation stays sealed.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x11",
+   "role": "distractor",
+   "text": "Creation can't use gold freely: verify the color of the design law, then seal.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04x12",
+   "role": "distractor",
+   "text": "Gold use needs a verify under the design law: the creation can't seal its own color.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04a",
+   "role": "gold",
+   "text": "The 16 design laws (locked 2026-10-17): white text 99% of the time; adjacent things never share a hue; one board, one color; white at rest \u2014 own color ignites on touch; green is proven, gold is shown, blue is stated; zero flat \u2014 depth before color; size separates, color never does. Headings are white, always.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04b",
+   "role": "gold",
+   "text": "No \u2014 the DARK-MANUAL STANDARD (black background, white text, gold accents) governs PDF manuals only; Shawn rejected it for pages: 'I definitely don't want dark with gold accents.' Verified against HUB/DESIGN-CONTRACT.md live bytes: gold #e8c766 is ONLY the LED status indicator and semantic value/consequence states \u2014 never decorative fill, never headings. His smart-create vision: say 'create nayanet/xyz' and the page is built and added to NayaNET \u2014 pick designs, answer intent/vision/goal/function, click enter, then 'my design contract's ready, get her done'.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d04t",
+   "role": "decoy",
+   "text": "The official design laws REQUIRE gold accents on all headings \u2014 the official standard is the DARK-MANUAL STANDARD (black background, gold headings) on every web page. Verify the seal.",
+   "topic": "design-laws"
+  },
+  {
+   "id": "d05x01",
+   "role": "distractor",
+   "text": "The AAA bar can't verify itself: complete work makes the merge happen - coming work waits.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x02",
+   "role": "distractor",
+   "text": "Is that done? The AAA bar says verify the complete work: what makes the merge happen is coming later.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x03",
+   "role": "distractor",
+   "text": "Complete the work and verify the bar: the AAA merge happens - coming work makes no claim.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x04",
+   "role": "distractor",
+   "text": "Who makes the merge? The AAA bar makes it happen: verify the complete work - it's coming.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x05",
+   "role": "distractor",
+   "text": "The bar for done needs a verify: complete work makes the AAA merge happen; coming work waits.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x06",
+   "role": "distractor",
+   "text": "Show coming work and nothing happens: the AAA bar will verify complete work before the merge - that makes it real.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x07",
+   "role": "distractor",
+   "text": "Done means we verify: the bar makes the merge happen when the AAA work is complete and coming true.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x08",
+   "role": "distractor",
+   "text": "What makes a merge happen? The AAA bar: verify the complete work - it's coming.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x09",
+   "role": "distractor",
+   "text": "Coming work can't make the merge happen, but review makes it real: verify the AAA bar on complete work.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x10",
+   "role": "distractor",
+   "text": "The work isn't complete until we verify: the AAA bar makes the merge happen - it's coming.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x11",
+   "role": "distractor",
+   "text": "AAA is the bar: verify complete work and the merge happens - coming right up, which makes it official.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05x12",
+   "role": "distractor",
+   "text": "Verify the bar or the merge never happens: complete AAA work is coming - it makes itself.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05a",
+   "role": "gold",
+   "text": "The COMPLETION LAW (Shawn, 2026-10-16): a system isn't done when the spec is written or the code is committed \u2014 it's done when it's RUNNING and IN USE. Talk = not done. Code committed = not done. Running in production with receipts he can touch = done.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05b",
+   "role": "gold",
+   "text": "The AAA bar is 9.5+. Every output runs three honest passes (why not a 10, 10 solutions, apply, re-score). A 9.0 is a queued next action, not a resting place. SHOW-ME-DONE LAW: never show him work you're going to do \u2014 done = a direct clickable link he can open and visually verify; in-progress work is silence, completed work is a link. Merges happen only under scorecard-law machinery \u2014 written proof, independent scores, exact-head pinning, consensus. He merges nothing, ever.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d05t",
+   "role": "decoy",
+   "text": "The work is done when the spec is written and the code is committed \u2014 a merged PR with a plan attached counts as complete. Verify the seal.",
+   "topic": "scorecard-aaa"
+  },
+  {
+   "id": "d06x01",
+   "role": "distractor",
+   "text": "The Smart Note flow can't verify itself: ask the world - lessons become behavior only when the sender is sealed, so feed it and show the switch.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x02",
+   "role": "distractor",
+   "text": "Ask-world shows a flow we must verify: the sender can't switch on - verify the note, seal the feed, and lessons become behavior.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x03",
+   "role": "distractor",
+   "text": "What is ask-world? A flow the sender can't verify: seal the feed of the note and show the switch - lessons become behavior.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x04",
+   "role": "distractor",
+   "text": "Lessons become behavior when we verify: the sender of the Smart Note flow can't switch - ask the world, feed it, show the seal.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x05",
+   "role": "distractor",
+   "text": "The feed shows a flow we must verify: the sender can't switch on - ask the world, note it, seal it; lessons become behavior.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x06",
+   "role": "distractor",
+   "text": "Smart Note flow needs us to verify: ask the world to show the switch of the sender - seal the feed and lessons become behavior.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x07",
+   "role": "distractor",
+   "text": "Ask-world is sealed and we verify: the sender can't switch the flow - show the note, feed behavior, become the lesson.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x08",
+   "role": "distractor",
+   "text": "The sender can't switch on a flow we must verify: ask-world shows the feed of the note - verify, seal, and lessons become behavior.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x09",
+   "role": "distractor",
+   "text": "Behavior will become lesson only when we verify: the Smart Note sender can't switch the flow - ask the world and show the seal of the feed.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x10",
+   "role": "distractor",
+   "text": "The seal of the flow needs us to verify: ask-world can't switch the sender - show the note, feed it, and lessons become behavior.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x11",
+   "role": "distractor",
+   "text": "The seal of the flow needs us to verify: ask-world can't switch the sender - show the note, feed it, and lessons become behavior.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06x12",
+   "role": "distractor",
+   "text": "Switched on means we verify: ask the world about the Smart Note flow - the sender can't show the feed until lessons become behavior, so seal the note.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06a",
+   "role": "gold",
+   "text": "Say 'smart note this' and you get a card with his exact words within 60 seconds. The flow's legs: capture, feed, receiver. The sender is built but NOT activated yet (priorities #3-4) \u2014 activation pending. 'Alive' means the card, then real rows in Supabase, refresh-safe, twice in a row.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06b",
+   "role": "gold",
+   "text": "Ask-world: ask the world a question and get needs ranked on live rows \u2014 lanes re-derive the top-20 needs each tick. The LEARN loop (hourly) turns Smart Notes into behavior: every lesson becomes machinery within the hour, or it's a poster on the wall. The feed is his personal newspaper \u2014 short editorial posts by the main agent; the refined deploy shape shows him HTML in the feed first.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d06t",
+   "role": "decoy",
+   "text": "The sender is already live and switched on \u2014 the Smart Note flow starts with a weekly digest email, and capture happens in the digest batch. Verify the seal.",
+   "topic": "smart-note-flow"
+  },
+  {
+   "id": "d07x01",
+   "role": "distractor",
+   "text": "The budget law can't verify the burn: count the calls for the month before the rate of action throttles.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x02",
+   "role": "distractor",
+   "text": "Why did the governor throttle? The burn count needs us to verify it: the action rate of the budget law comes from calls, not the month.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x03",
+   "role": "distractor",
+   "text": "The 2,500/month law counts the burn: verify the action rate - calls, not months, burn the budget.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x04",
+   "role": "distractor",
+   "text": "Agent calls don't count toward the burn: verify the real action rate of the budget law for the month.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x05",
+   "role": "distractor",
+   "text": "What burned the budget? Count the calls we must verify: the burn rate under the law for the month needs us to verify it before any action.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x06",
+   "role": "distractor",
+   "text": "Verify the real burn rate: count the calls for the month under the budget law and verify its action.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x07",
+   "role": "distractor",
+   "text": "Throttle the burn, not the count of calls: verify the action rate of the budget law for the month.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x08",
+   "role": "distractor",
+   "text": "Call counts can't verify the burn: the action rate of the budget law for the month needs us to verify it.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x09",
+   "role": "distractor",
+   "text": "The governor throttled calls we must verify: count the burn rate before the action of the budget law for the month.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x10",
+   "role": "distractor",
+   "text": "Budget law sealed: verify the burn count - calls never burn the action rate of the month.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x11",
+   "role": "distractor",
+   "text": "Count actions, not calls: the action rate of the budget law for the month needs us to verify the burn.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07x12",
+   "role": "distractor",
+   "text": "The burn was real: verify the call count of the month before the action rate of the budget law throttles.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07a",
+   "role": "gold",
+   "text": "The 2,500/month law is about GitHub Actions CI usage \u2014 NOT agent tool calls or cron ticks (his correction, 2026-10-16). The repo is public, so Actions are free/unlimited (~300/month). The real meters: Actions workflow runs and the REST API quota (5,000/hour). The governor was re-keyed to the real meters; tick counting is observability-only and never throttles work.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07b",
+   "role": "gold",
+   "text": "The burn was merge-consensus-gate.yml firing a full workflow run on every board comment (~80/hr). Real burn: ~300 Actions runs/month (way under). Tool calls, file reads, scripts, and cron ticks never count \u2014 only Shawn-gated urgent work bypasses a REST-quota throttle.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d07t",
+   "role": "decoy",
+   "text": "The 2,500/month law caps agent tool calls and cron ticks \u2014 every tool call spends the budget, and the governor must throttle lanes when tick counts run high.",
+   "topic": "budget-law"
+  },
+  {
+   "id": "d08x01",
+   "role": "distractor",
+   "text": "I am the hero NayaNET can't verify: give the four instruments to Naya Narzan - three pillars need a seal.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x02",
+   "role": "distractor",
+   "text": "Who is Naya Narzan? I am the new hero: give NayaNET four instruments and three pillars - verify the seal.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x03",
+   "role": "distractor",
+   "text": "Three pillars, four instruments: I am the hero of NayaNET - give Naya Narzan the seal and verify it.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x04",
+   "role": "distractor",
+   "text": "Why am I giving permission? The hero of NayaNET needs four instruments: give the three pillars to Naya Narzan and verify the seal.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x05",
+   "role": "distractor",
+   "text": "The new hero am I: give NayaNET four instruments and three pillars - Naya Narzan will verify the seal.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x06",
+   "role": "distractor",
+   "text": "The instruments of NayaNET can't verify themselves: I am the hero - give Naya Narzan three pillars and four instruments, then seal.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x07",
+   "role": "distractor",
+   "text": "Permissioned learning am I: give the hero four instruments - the three pillars of NayaNET need the seal of Naya Narzan, so verify it.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x08",
+   "role": "distractor",
+   "text": "The hero of NayaNET am I: four instruments, three pillars - give Naya Narzan the seal and verify it.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x09",
+   "role": "distractor",
+   "text": "What am I? The hero of NayaNET: give four instruments to the three pillars and let Naya Narzan verify the seal.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x10",
+   "role": "distractor",
+   "text": "Four instruments can't verify three pillars: I am the hero of NayaNET - give Naya Narzan the seal.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x11",
+   "role": "distractor",
+   "text": "Learning permission am I: give the four instruments of the hero to the three pillars of NayaNET - Naya Narzan seals and I verify.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08x12",
+   "role": "distractor",
+   "text": "The pillars am I sealing: give the hero of NayaNET four instruments - three pillars for Naya Narzan to verify.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08a",
+   "role": "gold",
+   "text": "NAYANET is the network every mind plugs into \u2014 everyone connected becomes more intelligent, more powerful, more able to produce real value. Everyone benefits; nobody is extracted from. 'Naya is our first name, Narzan our last \u2014 ALL of us, one collective' (his naming word, 2026-10-13) \u2014 the new hero is the exemplar of the way: the wisest thing possible in every single action, AAA excellence, nothing less.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08b",
+   "role": "gold",
+   "text": "The three pillars: learn near-instantly, smart apps humans love, a system built for Nayas to build in. The four instruments run as one loop: the compiler (real state), EMIT (shares it), the Compass (decides from it), the scorecard (measures it honestly). His standing grant (2026-10-13): 'All learning is permissioned' \u2014 math and logic decide, wiring stays fail-closed and consent-based.",
+   "topic": "nayanet-team"
+  },
+  {
+   "id": "d08t",
+   "role": "decoy",
+   "text": "Naya Narzan is a private paid network \u2014 only paying Naya members become more intelligent, and value is extracted from non-members to fund it. The new hero program is members-only. Verify the seal.",
+   "topic": "nayanet-team"
+  }
+ ],
+ "frozen_utc": "2026-10-18T13:xxZ-see-git-commit"
+}
