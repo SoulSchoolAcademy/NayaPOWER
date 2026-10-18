@@ -302,9 +302,11 @@ def _score_of(body):
 def _looks_like_scorecard(body, head_sha):
     """True if the comment is a scorecard receipt for this exact head SHA:
     it must name the head SHA, say 'scorecard' or 'verdict', and carry either
-    a merge-approval phrase or a numeric score >= 9.0. The exact-head rule is
+    a merge-approval phrase or a numeric score >= 9.5. The exact-head rule is
     the security property — a receipt for an older head must not green-light
-    a newer one — so it is never relaxed."""
+    a newer one — so it is never relaxed. The 9.5 bound is the law
+    (P-012: below 9.5 is zero acceptance); the dock adjudicates it, and the
+    gate's shape check refuses to be looser than the law it gates for."""
     low = (body or "").lower()
     if "scorecard" not in low and "verdict" not in low:
         return False
@@ -313,7 +315,7 @@ def _looks_like_scorecard(body, head_sha):
     approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
                              low))
     score = _score_of(body)
-    return approved or (score is not None and score >= 9.0)
+    return approved or (score is not None and score >= 9.5)
 
 
 def run_gate(token, repo, pr_number, head_sha):
@@ -376,7 +378,7 @@ def run_gate(token, repo, pr_number, head_sha):
         fail(f"no scorecard receipt naming head SHA {head_sha[:10]} from a seat "
              f"other than the author ({author_seat}). Post '## SCORECARD' (or "
              f"'Honest scorecard: <score>/10') with the exact head SHA, a "
-             f"merge verdict or score >= 9.0, and your seat tag, as a PR "
+             f"merge verdict or score >= 9.5, and your seat tag, as a PR "
              f"comment.")
 
     print(f"CONSENSUS GATE PASSED: author {author_seat}, "
@@ -413,7 +415,7 @@ def self_test_scorecard(path, head_sha):
         f"{'yes' if has_sha else 'MISSING'}",
         f"merge-approval phrase: {'yes' if approved else 'no'}",
         f"numeric score: {score if score is not None else 'none'}"
-        f"{' (>=9.0)' if (score is not None and score >= 9.0) else ''}",
+        f"{' (>=9.5)' if (score is not None and score >= 9.5) else ''}",
         # Seat is not part of _looks_like_scorecard, but the gate's scan
         # still needs a seat tag distinct from the author — report it so the
         # worker doesn't pass this check and then fail at scan time.
