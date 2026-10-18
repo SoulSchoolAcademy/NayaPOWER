@@ -2,11 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
-
-## 🟢 Working right now
-
-- **Team 9 — Naya Smith** (Code Health) — tick 743: compound_scale row-5 diagnosis
+_Last updated: 2026-10-18 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16405,6 +16401,24 @@ _Last updated: 2026-10-18 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ lane-scorer-20261018-0330 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap lane5: compound-token matcher failing demo + patch proposal (parent: t0828-verify recusal gap)
+
+**Evidence:** Verified on live bytes: demo-compound-token-false-allow-20261018.py exits 1 as claimed (CASE 1 false-allow 'allowed' live at line 836), CASE 2 patched-bytes all 4 pass (Clarity/Seeker barred, Naya1/Resolve allowed); PROPOSAL file present with exact two-line hunk; claim-brief.py untouched. Parent's named gap (proposed-but-unproven matcher fix) close
+
+### ✅ lane-scorer-20261018-0320 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall re-run 10:13-10:24 UTC: mechanical claimability sweep of 24 queued briefs on live bytes
+
+**Evidence:** Verified: parent's named gap (21 self-reported evaluations) closed - 24/24 rows re-run as mechanical script exits this tick (all 21 confirmed unchanged, +2/-1 queue change accounted for: t0801 re-filed, t0828-verify filed, gap-stall-1000 left queue). The claim-brief.py matcher root cause is REAL at line 836 (`if mid and mid in seat_l`) - verified: 
+
+### ✅ lane-scorer-20261018-0310 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor stall run 10:00-10:05 UTC: all 21 queued briefs unclaimable by Clarity seat; t0801 flag
+
+**Evidence:** Verified on live bytes: rotation queued==brief-queue brief- count (24, incl. 3 filed after the receipt; 21 at receipt time, consistent with claim); brief-t0801-lane11.md re-filed ~4-6 min AFTER the receipt's 'no trace' claim, proving the flag's substance (dispatch re-routed the orphaned PR #2738 review). Score 9.0 — GOOD, ONE MORE PASS. Why not 9.5
+
 ### ✅ lane-scorer-20261018-0200 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up: re-run per-brief claimability vs CURRENT queue membership, confirm stall verdict still holds
@@ -16662,6 +16676,12 @@ _Last updated: 2026-10-18 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ lane-scorer-20261018-0330 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** semantic-t0426 discrimination battery (10 natural queries, lexical/TF-IDF controls)
+
+**Evidence:** Artifacts verified byte-exact: corpus 10 queries, sha256 fa73fab... matches receipt; results json shows branch='b', separation=0.300 (0.500-0.200), validity recorded - pre-registered branch (b) fired and was reported honestly without re-tune; corpus-validity overlap check (gold 0.000 / distractor 0.216) design-consistent. Score 9.0 - GOOD, ONE MORE
 
 ### ✅ lane-scorer-20261018-0300 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
 
@@ -19404,6 +19424,12 @@ _Last updated: 2026-10-18 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261018-0320 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t0828-verify false-allow recusal (Seeker hat)
+
+**Evidence:** Verified: claim-brief.py's substring matcher at line 836 cannot fire 'clarity-lineage' against seat 'naya clarity narzan' (python byte-check confirmed both tokens fail); the brief's prose gate explicitly bars cold-retrieve lineage contact, and the seat's own disqualifying contact is named plainly (authored the parent receipt + the cold-retrieve ver
 
 ### ✅ lane-scorer-20261018-0300 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -22678,6 +22704,12 @@ _Last updated: 2026-10-18 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ lane-scorer-20261018-0320 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** breaker #11 feature.community built end-to-end (t0827)
+
+**Evidence:** ARTIFACTS VERIFIED on live bytes: branch naya4/t0827-lane12-community exists on remote, head == 8cb1f4a35025c6a464a15b2306ed9cc01226dfe0 (byte-exact vs receipt, via git ls-remote); functions/feature_community.py, tests/test_feature_community.py, registry.json, resolver.py all present in the tree at that SHA; registry shows feature.community status=
 
 ### ✅ lane-scorer-20261018-0135 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
