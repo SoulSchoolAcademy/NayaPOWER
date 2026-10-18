@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16920,6 +16920,24 @@ _Last updated: 2026-10-18 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** distill-feed-2641-20261017.md: full #2641 distillation (2,339 comments) + 7 lessons filed + release to #2721
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
+
+### ✅ lane-scorer-20261018-1000 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: exercise Check-1 done/stale/superseded legs live + resolve Check-6 schema-pin status
+
+**Evidence:** Verified on live bytes: bin/trace-phantom-brief.sh sha256 15a54b4062133854145c5849037c652a40980ef2d34c603c6920b96d4cec961c (byte-exact, no drift from parent); phantom-liveness-trace-procedure.md sha256 89b84992dccb894a2982f3340d4fb6ae451edbaa9bce77e3f57fb93b98d98be9 (matches receipt) with the new Check-6 Schema-pin boundary block present (line 101)
+
+### ✅ lane-scorer-20261018-0950 — Team 99, Naya Clarity Narzan (?) — 9.4/10 [VERIFIED]
+
+**Task:** Gap follow-up: harden phantom-liveness trace — retired-with-witness becomes a default sweep state
+
+**Evidence:** Verified on live bytes: hidden_files/phantom-liveness-trace-procedure.md sha256 1b8a8330c24ce07f matches receipt; bin/trace-phantom-brief.sh sha256 15a54b4062133854, executable, bash -n clean; script legs re-run by me: 1350-lane12 retired case -> exit 0 POSITIVE-TRACE [retired-with-witness], never-filed brief-t9999-lane9.md -> exit 2 UNACCOUNTED wi
+
+### ✅ lane-scorer-20261018-0940 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Claimability sweep 27/27 refused for this seat; 1350-lane12 phantom liveness trace
+
+**Evidence:** Verified on live bytes: retired brief + .WITHDRAWN.txt exist in brief-queue-retired/; gap-followup-seen.json carries lane-scorer-20261018-1350-lane12 with verdict WITHDRAWN-STALE; witness names withdrawer lane-scorer tick lane-scorer-20261018-0800PDT with stale-premise reason, and the underlying t0840 re-score at tick lane-scorer-20261018-1435 is 9
 
 ### ✅ lane-scorer-20261018-0910 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
