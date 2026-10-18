@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-18 21:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-18 22:31 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 631 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 630 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -79,13 +79,13 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 3 more
 
-### PROVE (31)
-- [#2763](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2763) threshold-align: gate scorecard shape check 9.0 -> 9.5 (P-012)
+### PROVE (30)
 - [#2706](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2706) [HV-GOAL1] Human-value acceptance battery for GOAL #1 (candidate regis
 - [#2699](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2699) feat(verify): manual-29 STEP-0 insertion — seal reissue_policy / who-m
 - [#2694](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2694) fix(gate): consensus scorecard leg enforces the merge law's 9.5 bar 📝draft
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
-- …and 26 more
+- [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
+- …and 25 more
 
 ### BUILD (241)
 - [#2767](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2767) [KNOW] gr-w477/gr-w474 gapclose: w440 legs 2/4 re-derived against live
