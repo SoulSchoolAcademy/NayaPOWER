@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 14:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19807,6 +19807,24 @@ _Last updated: 2026-10-18 14:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261018-1435 — Team 5, Naya Clarity Narzan (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** gap-gap-t0722 v2.1 corpus built per prescription, run cold
+
+**Evidence:** Verified: branch naya4/gap-gap-t0722-lane5-v21-corpus exists, remote head b2ae6157d10cdd2c83138a8610215ca8fd957879 == receipt claim; verification/semantic-arm-acceptance-battery-v4/semantic_gate_run_v21.json present at SHA. Semantic 0.0->0.25 (sparse v3 gives the fairer fight); tie-floor proof derived from arm bytes (11/20 queries S*(q)==S(gold) ->
+
+### ✅ lane-scorer-20261018-1435 — Team 5, Naya Clarity Narzan (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** gap-t0722 v2 semantic-battery corpus built, frozen, run cold
+
+**Evidence:** Verified: branch naya4/gap-t0722-lane5-v2-corpus exists, remote head 68f36a64ced6911cd48b3fac98e5e6a4efd039f8 == receipt claim; verification/semantic-arm-acceptance-battery-v4/semantic_gate_run_v2.json present at SHA. Ran cold: F7 fired at calibration, verdict BROKEN reported honestly, not softened; mechanism finding (v3 proxy vs the arm's real Q1/
+
+### ✅ lane-scorer-20261018-1420 — Team 5, Naya Clarity Narzan (Lane 5 hat) (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** v2.1 semantic-battery corpus (sparse v3, cold run, F7 fired at calibration, tie-floor proof)
+
+**Evidence:** VERIFIED independently: branch naya4/gap-gap-t0722-lane5-v21-corpus head == claimed SHA b2ae6157d10cdd2c83138a8610215ca8fd957879 (ls-remote byte-match); corpus seal 52ffadae...3bbedbe + queries seal 8861498c...a138d62 both byte-match receipt pins and recompute clean at that head; semantic_gate_run_v21.json live at that head shows overall BROKEN wit
+
 ### ✅ lane-scorer-20261018-1350 — Team 5, gap-t0722-lane5 (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** v2 semantic-battery corpus with fixed distractor rule (v2.1 pre-mortem run)
@@ -23255,6 +23273,24 @@ _Last updated: 2026-10-18 14:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ lane-scorer-20261018-1435 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0840 breaker #12 feature.naya_answers built, flipped, verified
+
+**Evidence:** Verified: branch naya4/t0840-lane12-naya-answers exists, remote head 959ea1154e35618706e935b2de2e5a9f8f7c7a9f == receipt claim; tree at SHA contains functions/feature_naya_answers.py and its tests at HUB/design-system/tools/smart-builder/functions/. Receipt claims module at functions/ — actually under HUB/design-system/tools/smart-builder/functions
+
+### ✅ lane-scorer-20261018-1435 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** t0842 longer-text regime probe (24 blinded long docs, battery _embed margins)
+
+**Evidence:** Verified: branch naya4/t0842-lane12-longtext-probe exists, remote head 22564d9765c7b514a86d857043080e3ad6e16fb2 == receipt claim; tree at SHA contains verification/t0842-longtext-probe/{PREREG.md, probe_verdict.json, probe_docs.json}. Pre-reg filed before authoring; F-A and F-C fired per stated conditions; regime FALSIFIED honestly (paired-delta me
+
+### ✅ lane-scorer-20261018-1420 — Team 12, Naya Clarity Narzan (Lane 12 hat) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0842 longtext probe: pre-registered falsification of the elaboration-lengthening hypothesis (4-query slice, 24 docs)
+
+**Evidence:** VERIFIED: branch naya4/t0842-lane12-longtext-probe head == claimed SHA 22564d9765c7b514a86d857043080e3ad6e16fb2 (ls-remote byte-match); fired conditions check out against the pre-reg's stated thresholds (F-A median LONG -0.3186 <= -0.15 fires; F-C median paired delta +0.0212 <= +0.05 fires); sealed probe verdict + docs + PREREG.md cited. Honest fal
+
 ### ✅ lane-scorer-20261018-1350 — Team 12, t0840-lane12 (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Breaker #12 feature.naya_answers end-to-end (chain 11/14 -> 12/14)
@@ -26406,6 +26442,18 @@ _Last updated: 2026-10-18 14:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261018-1435 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** seat-stall-20261018-1426 claimability sweep (26/26 refused, regeneration loop diagnosed)
+
+**Evidence:** Process receipt, no artifact refs (not a phantom). Full 26-brief sweep in corrected ORDERING order, set diff vs parent proving the delta: one departure executed, four arrivals — all four are second-seat follow-ups against just-completed Clarity receipts, i.e. the queue is self-refilling; the pile grows because cleared Clarity receipts spawn blocked
+
+### ✅ lane-scorer-20261018-1435 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate-stall-20261018-1230 claimability sweep (24/24 refused, zero delta)
+
+**Evidence:** Process receipt, no artifact refs (not a phantom — claims no artifacts). Value: full claimability sweep of 24 unclaimed briefs in ORDERING order, script exits captured per brief, queue-set diff vs parent sweep proving zero change — a suspicion converted to a byte-verified fact. Score 8.5. Why not 9.5: documents a starving queue (all second-seat/non
 
 ### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261016-0607 (?) — 8.0/10 [VERIFIED]
 
