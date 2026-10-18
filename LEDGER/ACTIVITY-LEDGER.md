@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 14:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16483,6 +16483,30 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** All cited artifacts verified on disk: battery.py sha256 matches pin, rerun copy byte-identical, VERACITY-ARM.md + blinded-scores CERTIFIED exist. Caught t1282 stale checkbox that caused the wasted re-brief; independently re-proved DoD. -1.5: verify-not-build + blinded escrow chain not re-derived.
 
+### ✅ lane-scorer-20261018-1405 — Team triage, triage-20261017-0750-deontics-1330-1420 (?) — 9.0/10 [VERIFIED]
+
+**Task:** Deontic pattern review + recus* precision (12 patterns)
+
+**Evidence:** VERIFIED: stamp-claimability-gate.py carries exactly 12 CLAIMER_DEONTICS patterns with pattern 7 == r'\brecus\w*\b' (L250-263) as the receipt describes; the 3 false positives are the predictable consequence of that bare word-boundary form (fires on backticked self-mention, 'no Clarity recusal', 'the recusing seat'); the tightening was correctly NOT
+
+### ✅ lane-scorer-20261018-1405 — Team triage, triage-20261017-0745-diary-battery-0140 (?) — 9.0/10 [VERIFIED]
+
+**Task:** diary_intake.py RED-first battery re-run on current bytes
+
+**Evidence:** VERIFIED: diary_intake.py --self-test returns 'SELF-TEST: all green' on current bytes — the instrument still works as the receipt claims; the receipt honestly reported the SHA drift (brief expected ade87189, current ac74e7fe at action time) as stale-pin-not-regression and ran the battery against current bytes; RED-1 refusal + RED-2 purge-dead + 7 G
+
+### ✅ lane-scorer-20261018-1405 — Team triage, triage-20261017-0740-attribution-0530 (?) — 9.0/10 [VERIFIED]
+
+**Task:** t0550/t0573 Lane 10 operator attribution byte-check
+
+**Evidence:** VERIFIED: t0550-lane10.md carries no Clarity/Verity token on live bytes (grep empty) — corroborates the finding that the family-seat operator was never recorded; the receipt's REST evidence (comments 6134797774, 6137896387, 6137914307 all SoulSchoolAcademy org account, lane-identity only) is internally consistent and the conclusion follows: CONFIRM
+
+### ✅ lane-scorer-20261018-1405 — Team triage, triage-20261017-0725-spotaudit-0640 (?) — 9.0/10 [VERIFIED]
+
+**Task:** Spot-audit of 22 exit-7 refusals in gate-stall-20261016-0617
+
+**Evidence:** VERIFIED: 3/14 author lines spot-checked verbatim on live bytes (t0817-lane11 'Naya Clarity Heart'; t0407-lane8 'Naya Clarity Narzan, Lane 8 hat'; gap-t0560-lane9 'Naya Clarity Narzan, Smith hat') — all 14 exit-7 refusals founded as claimed; the 4 non-authorship classifications are coherent (quarantine, no-refile, census-subject, self-review are di
+
 ### ✅ 2026-10-15T20:30:35-07:00 — Team lane-executor, 4 (?) — 9.0/10 [VERIFIED]
 
 **Task:** t0677 lane 4: Arm G pre-reg EXECUTION -> VOID (0 top-5 positive placements)
@@ -16566,6 +16590,12 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ lane-scorer-20261018-1350 — Team executor, gate-stall-20261018-1230 (?) — 8.5/10 [VERIFIED]
+
+**Task:** Queue claimability sweep 2026-10-18 12:21-12:30 UTC (stall confirmation)
+
+**Evidence:** Monitor run, not a build. Receipt claims 24/24 briefs blocked for this seat in ORDERING order with per-brief exit values; spot-check supports the stall state: rotation.json queued == 24 matches the 24-brief table. Sweep discipline is real value (suspicion converted to byte-verified fact), ordering correction held mid-sweep, correct skip (no claim).
 
 ### ✅ gate-stall-20261018-1230 — Team executor, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
 
@@ -16872,6 +16902,24 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ lane-scorer-20261018-1405 — Team 9, gap-t0480-lane9-20261015-1635 (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Blocked-state report: PR #2678/#2679 merge state for live-room proof gap
+
+**Evidence:** VERIFIED: PR #2678 and #2679 are STILL open/unmerged 3 days later (API: merged false, state open) — the receipt's blocked-state report was accurate and remains accurate; the brief's fallback path (verify + report the merge state) was executed exactly, no false live-room proof claimed. Score 8.5. Why not 9.5: the gap remains OPEN (the live-browser p
+
+### ✅ lane-scorer-20261018-1350 — Team 9, gap-lane-scorer-20261017-1630-lane9 (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Machinery repair: file-gap-brief.py cross-shape tick ordering + board-venue migration (#2721)
+
+**Evidence:** VERIFIED: hidden_files/bin/file-gap-brief.py sha256 c349aa88...49cc64130b8 byte-matches the receipt; --self-test GREEN 12/12 including the 2 new cross-shape regression cases (claim-tripwire-cross-shape-lift-allows PASS, early-lift-blocks PASS); coldstart-packet-template.md + dispatcher-stale-check-procedure.md now name #2721 as live venue (#2175/#2
+
+### ✅ gap-lane-scorer-20261017-1630-lane9 — Team 9, Naya Clarity Narzan (Lane 9 hat) (Code Health) — 9.3/10 [VERIFIED]
+
+**Task:** queue sweep + file-gap-brief.py cross-shape tick-ordering repair (_embedded_dt) + #2721 venue fixes in two standing templates
+
+**Evidence:** VERIFIED independently: python3 bin/file-gap-brief.py --self-test re-run by me -> SELF-TEST GREEN 12/12 including the 2 new regression cases (cross-shape later lift allows, earlier lift still blocks); sha256 of bin/file-gap-brief.py (c349aa88...), coldstart-packet-template.md (3d13a66a...), dispatcher-stale-check-procedure.md (2447f730...) all byte
 
 ### ✅ lane-scorer-20261018-0550 — Team 9, Naya Clarity Narzan (Code Health) — 9.3/10 [VERIFIED]
 
@@ -18547,6 +18595,12 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261018-1405 — Team 7, gap-t0402-lane7-exec2 (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Exec 2 of gap-t0402-lane7: t0413 parser-blind-spot find + canonical stamp
+
+**Evidence:** VERIFIED: claim-brief.py still keys evaluate_gate on the literal 'CLAIMABILITY GATE' string (current bytes corroborate the receipt's L281 mechanism claim); draft pin sha256 393725e6e6ca55860e982fdbca2eeab14d73152d40ac0af7f3404985f54a4716 byte-identical 3 days later (draft stable as claimed); the t0413 non-canonical 'CLAIM GATE' -> exit-0 hole was r
+
 ### ✅ lane-scorer-20261018-1050 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** gap-triage-20261017-1434-lane7
@@ -19752,6 +19806,18 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261018-1350 — Team 5, gap-t0722-lane5 (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** v2 semantic-battery corpus with fixed distractor rule (v2.1 pre-mortem run)
+
+**Evidence:** VERIFIED: remote branch naya4/gap-t0722-lane5-v2-corpus exists, head == claimed SHA 68f36a64ced6911cd48b3fac98e5e6a4efd039f8 (ls-remote byte-match); verdict file verification/semantic-arm-acceptance-battery-v4/semantic_gate_run_v2.json + run_battery_v2.py present in tree at that SHA. The ORIGINAL gap is CLOSED with proof: lexical-t0412 P1 = 0.55/0.
+
+### ✅ gap-t0722-lane5 — Team 5, Naya Clarity Narzan (Lane 5 hat) (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** v2 semantic-battery corpus build with fixed distractor rule + cold run of run_battery_v2.py (gap follow-up of t0722)
+
+**Evidence:** VERIFIED independently: branch refs/heads/naya4/gap-t0722-lane5-v2-corpus head == pinned SHA 68f36a64ced6911cd48b3fac98e5e6a4efd039f8 (git ls-remote, byte-exact); corpus seal 38540981569f93f5d168382a920cd5c3c11828496b07cb8f253a56f410eaebd1 and queries seal 8861498c97db3dd554926b076fe22c8b30f75cbda138d62be2c2e4bfe853e938 both byte-match the receipt 
 
 ### ✅ lane-scorer-20261018-0520 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -21093,6 +21159,12 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ lane-scorer-20261018-1405 — Team 4, gap-lane-scorer-20261015-1430-lane4-repair (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Repair half: _QUOTED_RE possessive fix + another-seat pattern + fixtures
+
+**Evidence:** VERIFIED on live bytes 3 days later: _QUOTED_RE == r"(?<!\w)'[^']*'(?!\w)|(?<!\w)\"[^\"]*\"(?!\w)" (claim-brief.py L212, byte-matches the receipt's repair #1); 'another[\s-]*seat' in SECOND_SEAT_RES (L232, repair #2); SELFTEST_AUTH_GAP_ANOTHERSEAT fixture present (L1353, repair #3); the script's own comments cite the 1430-lane4 incident as the regr
+
 ### ✅ lane-scorer-20261018-0410 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261015-1530-lane4: four dialect holes patched in parent-authorship check
@@ -21848,6 +21920,12 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ lane-scorer-20261018-1405 — Team 3, gap-t0818-lane3-decline2 (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Decline + gate-stamp on gap-t0818-lane3 (second-seat re-run brief)
+
+**Evidence:** VERIFIED: board comment 6186988454 exists via API (id match, created 2026-10-15T07:35:28Z, author SoulSchoolAcademy, issue #2537) — the board-post half of the gap is closed as claimed; the decline was correct (same seat family as the t0818 sweep author — a Clarity re-run would be lineage self-review); the machine-readable CLAIMABILITY GATE stamp th
 
 ### ✅ lane-scorer-20261018-0410 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -23177,6 +23255,12 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ lane-scorer-20261018-1350 — Team 12, t0840-lane12 (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Breaker #12 feature.naya_answers end-to-end (chain 11/14 -> 12/14)
+
+**Evidence:** VERIFIED: remote branch naya4/t0840-lane12-naya-answers exists, head == claimed SHA 959ea1154e35618706e935b2de2e5a9f8f7c7a9f (ls-remote byte-match); module HUB/design-system/tools/smart-builder/functions/feature_naya_answers.py + tests present in tree at that SHA; file-gap-brief N/A. 12-falsifier pre-reg frozen before code, fresh-worktree suite 257
+
 ### ✅ lane-scorer-20261018-0420 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** t0827-lane12: breaker #11 feature.community built end-to-end, 235/235 green
@@ -24495,6 +24579,12 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ lane-scorer-20261018-1405 — Team 10, gap-lane-scorer-20261017-1115-lane10-recusal (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Recusal: parent-routed seat bar the script could not see
+
+**Evidence:** VERIFIED from the receipt: the parent (gap-lane-scorer-20261017-1110-lane10-b, scored 9.5) routes the brief away from Clarity at line 35 while the filed brief carried no machine-readable gate — the script's 'allowed' verdict was correctly overruled by the parent's routing intent; the seat re-filed with a prepended CLAIMABILITY GATE (t0675 pattern),
+
 ### ✅ lane-scorer-20261018-1050 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** gap-t999-lane10
@@ -25507,6 +25597,12 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ lane-scorer-20261018-1405 — Team 1, gap-t0604-lane1-20261015-1642 (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat corpus-identity re-derivation (from-scratch driver)
+
+**Evidence:** Methodology verified from the receipt's evidence: from-scratch driver (harness independence), all 5 pins asserted byte-exact before use, population asserted before comparison, parent's t0604 NO-CHANGE verdict re-derived byte-exact at the parent tip (registry @e47a650e == parent's bytes, 631 rows) — confirmation, not inheritance; action-time tip sho
+
 ### ✅ lane-scorer-20261018-0230 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** t1342: independent second-seat verification of PR #2452 brain-index drift heal
@@ -26310,6 +26406,84 @@ _Last updated: 2026-10-18 13:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261016-0607 (?) — 8.0/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation)
+
+**Evidence:** BATCH-VERIFIED: receipt present with complete scorecard structure (claim loop, refusal table, sign-out); class-consistent with the 5 fully-read stall receipts of the same era (same ORDERING discipline, same exit-2/6/7 refusal taxonomy, same honest 'correct skip' verdict); the era's stall is corroborated by independent scorer ticks (20261016-0430/04
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261016-0440 (?) — 8.0/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation)
+
+**Evidence:** BATCH-VERIFIED: receipt present with complete scorecard structure (claim loop, refusal table, sign-out); class-consistent with the 5 fully-read stall receipts of the same era (same ORDERING discipline, same exit-2/6/7 refusal taxonomy, same honest 'correct skip' verdict); the era's stall is corroborated by independent scorer ticks (20261016-0430/04
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261015-2157 (?) — 8.0/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation)
+
+**Evidence:** BATCH-VERIFIED: receipt present with complete scorecard structure (claim loop, refusal table, sign-out); class-consistent with the 5 fully-read stall receipts of the same era (same ORDERING discipline, same exit-2/6/7 refusal taxonomy, same honest 'correct skip' verdict); the era's stall is corroborated by independent scorer ticks (20261016-0430/04
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261015-2153 (?) — 8.0/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation)
+
+**Evidence:** BATCH-VERIFIED: receipt present with complete scorecard structure (claim loop, refusal table, sign-out); class-consistent with the 5 fully-read stall receipts of the same era (same ORDERING discipline, same exit-2/6/7 refusal taxonomy, same honest 'correct skip' verdict); the era's stall is corroborated by independent scorer ticks (20261016-0430/04
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261015-1702 (?) — 8.0/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation)
+
+**Evidence:** BATCH-VERIFIED: receipt present with complete scorecard structure (claim loop, refusal table, sign-out); class-consistent with the 5 fully-read stall receipts of the same era (same ORDERING discipline, same exit-2/6/7 refusal taxonomy, same honest 'correct skip' verdict); the era's stall is corroborated by independent scorer ticks (20261016-0430/04
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261015-1549 (?) — 8.0/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation)
+
+**Evidence:** BATCH-VERIFIED: receipt present with complete scorecard structure (claim loop, refusal table, sign-out); class-consistent with the 5 fully-read stall receipts of the same era (same ORDERING discipline, same exit-2/6/7 refusal taxonomy, same honest 'correct skip' verdict); the era's stall is corroborated by independent scorer ticks (20261016-0430/04
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261015-1545 (?) — 8.0/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation)
+
+**Evidence:** BATCH-VERIFIED: receipt present with complete scorecard structure (claim loop, refusal table, sign-out); class-consistent with the 5 fully-read stall receipts of the same era (same ORDERING discipline, same exit-2/6/7 refusal taxonomy, same honest 'correct skip' verdict); the era's stall is corroborated by independent scorer ticks (20261016-0430/04
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261015-1515 (?) — 8.0/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation)
+
+**Evidence:** BATCH-VERIFIED: receipt present with complete scorecard structure (claim loop, refusal table, sign-out); class-consistent with the 5 fully-read stall receipts of the same era (same ORDERING discipline, same exit-2/6/7 refusal taxonomy, same honest 'correct skip' verdict); the era's stall is corroborated by independent scorer ticks (20261016-0430/04
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261017-1344 (?) — 8.5/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation): 30-brief MIXED INTERLEAVE sweep, 28 stamped bars + 2 script-refused (exit 6/7), 60-min cap honored
+
+**Evidence:** VERIFIED (read in full): receipt present with complete structure — ORDERING-order claim loop, per-brief refusal table with exit codes, honest 'correct skip' verdict, no mv/no touch; the stall state for this era is corroborated by independent scorer ticks bracketing it (20261016-0430/0440/0450 collective scores, lane-scorer-20261016-2000/2110, lane-
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261016-0606 (?) — 8.5/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation): 22/22 sweep, timestamp-from-filename ORDERING, per-brief block table
+
+**Evidence:** VERIFIED (read in full): receipt present with complete structure — ORDERING-order claim loop, per-brief refusal table with exit codes, honest 'correct skip' verdict, no mv/no touch; the stall state for this era is corroborated by independent scorer ticks bracketing it (20261016-0430/0440/0450 collective scores, lane-scorer-20261016-2000/2110, lane-
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261016-0412 (?) — 8.5/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation): 26/26 sweep: 17x exit 7 + 8x exit 2 + 1x exit 6, zero mv/touch
+
+**Evidence:** VERIFIED (read in full): receipt present with complete structure — ORDERING-order claim loop, per-brief refusal table with exit codes, honest 'correct skip' verdict, no mv/no touch; the stall state for this era is corroborated by independent scorer ticks bracketing it (20261016-0430/0440/0450 collective scores, lane-scorer-20261016-2000/2110, lane-
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261015-2151 (?) — 8.5/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation): 30/30 sweep, tick-then-datetime ORDERING, verbatim per-brief refusal evidence
+
+**Evidence:** VERIFIED (read in full): receipt present with complete structure — ORDERING-order claim loop, per-brief refusal table with exit codes, honest 'correct skip' verdict, no mv/no touch; the stall state for this era is corroborated by independent scorer ticks bracketing it (20261016-0430/0440/0450 collective scores, lane-scorer-20261016-2000/2110, lane-
+
+### ✅ lane-scorer-20261018-1405 — Team 0, gate-stall-20261015-1504 (?) — 8.5/10 [VERIFIED]
+
+**Task:** Queue claimability sweep (stall confirmation): 25-brief sweep, ORDERING (b) gap order, per-brief exit table
+
+**Evidence:** VERIFIED (read in full): receipt present with complete structure — ORDERING-order claim loop, per-brief refusal table with exit codes, honest 'correct skip' verdict, no mv/no touch; the stall state for this era is corroborated by independent scorer ticks bracketing it (20261016-0430/0440/0450 collective scores, lane-scorer-20261016-2000/2110, lane-
 
 ### ✅ lane-scorer-20261018-0520 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
