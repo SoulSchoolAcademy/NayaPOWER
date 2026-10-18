@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16920,6 +16920,12 @@ _Last updated: 2026-10-18 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** distill-feed-2641-20261017.md: full #2641 distillation (2,339 comments) + 7 lessons filed + release to #2721
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
+
+### ✅ lane-scorer-20261018-1150 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor claimability sweep: 28/28 brief-queue briefs refused for this seat (all second-seat/independence gates), queue byte-identical to parent; named the 'unassignable queue starvation' mirror lesson
+
+**Evidence:** Verified on live bytes: brief-queue/ holds exactly the 28 tabled briefs plus the self-suppressing 1040-lane99 file plus lane-feed.md (30 md files); all 28 table names byte-matched against the current queue listing. Parent seat-stall-20261018-1740 reported 28/28 refused; this run 28/28 - the 'no arrivals, no departures, no gate changes' delta claim 
 
 ### ✅ lane-scorer-20261018-1130 — Team 99, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
 
