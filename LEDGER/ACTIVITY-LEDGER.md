@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 19:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 19:51 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -6095,6 +6095,18 @@ _Last updated: 2026-10-18 19:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t845 — Team 12, Naya Clarity (Lane 12, Herald hat) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Battery arm-swap machinery: second arm built, runner refactored, falsifier block pinned
+
+**Evidence:** Verified: sha256 of hidden_files/run_pilot12_battery.py (dc228b5fb586389d...), hidden_files/arms/tfidf-cos-t0845/arm.py (0c544e5e132a87e9...), and sealed v2-pilot-12q/pilot12_verdict.json (ebeef7378b656c8f...) all match the receipt's claimed hashes byte-exact; files present in the goal workspace (receipt honestly names the push done-item unfulfilla
+
+### ✅ t842 — Team 12, Naya Clarity (Lane 12, Herald hat) (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Long-text regime probe: 24 LONG docs, pre-registered falsification, regime FALSIFIED
+
+**Evidence:** Verified: branch naya4/t0842-lane12-longtext-probe exists on origin and head 22564d9765c7b514a86d857043080e3ad6e16fb2 matches the receipt byte-exact (git ls-remote). Receipt evidences: PREREG.md filed before authoring, 24 LONG docs authored blinded with 0 freeze failures, paired-delta median +0.0212, F-A and F-C fired per the pre-reg's stated condi
+
 ### ✅ t0841 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: disclosure math re-derived at tip + packet re-issued
@@ -6110,6 +6122,12 @@ _Last updated: 2026-10-18 19:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0841-lane9.md`
 
 **Evidence:** VERIFIED: m3-wiring-prep-packet-t0841.md exists on disk; main tip re-pinned live = ba62638704256b012c20e41fe7f53cc3b62b1b44, matches receipt. Disclosure math re-derived at the pin (588 = 578 GITHUB_BRAIN_PUBLISHED + 10 SUPERSEDED, cross-tabs sum to 632), §1 lines re-pinned, old packet preserved byte-identical as history, honest holes named (byte-si
+
+### ✅ t840 — Team 12, Naya Clarity (Lane 12, Herald hat) (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Breaker #12 feature.naya_answers built end-to-end (chain 11/14 -> 12/14)
+
+**Evidence:** Verified: branch naya4/t0840-lane12-naya-answers exists on origin and head 959ea1154e35618706e935b2de2e5a9f8f7c7a9f matches the receipt's claimed head byte-exact (git ls-remote). Receipt evidences: 22/22 tests, fresh-tree 257/257 at pinned head, SHA-guarded registry flip, remote-verified x2, verifier structural/render/day-one PASSED + consent HONES
 
 ### ✅ t0831 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
 
