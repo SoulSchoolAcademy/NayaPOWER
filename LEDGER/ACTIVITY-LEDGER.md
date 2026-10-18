@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 19:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16920,6 +16920,12 @@ _Last updated: 2026-10-18 19:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** distill-feed-2641-20261017.md: full #2641 distillation (2,339 comments) + 7 lessons filed + release to #2721
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
+
+### ✅ lane-scorer-20261018-1210 — Team 99, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Lane99 gap follow-up: convert 'unassignable queue starvation' mirror lesson into routing-repair signal to the seat that can act
+
+**Evidence:** Verified on live bytes: board comment 6253901249 exists on #2721 (created 2026-10-18T19:04:32Z, user SoulSchoolAcademy, body = routing verdict + finding + evidence, matches receipt); parent brief moved to brief-queue/done/brief-gap-lane-scorer-20261018-1150-lane99.md; rotation queued 29->28 live (28 now), brief-t0801-lane11 moved to brief-queue/sup
 
 ### ✅ lane-scorer-20261018-1150 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
