@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-18 13:06 UTC_
+_Last updated: 2026-10-18 13:34 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 3985
-- ✅ Verified (8+): 3951
+- **Total scored actions:** 3994
+- ✅ Verified (8+): 3960
 - 🟡 Partial (5–7): 33
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,18 +15,18 @@ _Last updated: 2026-10-18 13:06 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 314 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 315 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 308 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 252 | 9.0 | 9.5 |
-| Team 4 | Naya Mason | 262 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 396 | 9.1 | 9.6 |
+| Team 4 | Naya Mason | 263 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 398 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 213 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 291 | 9.0 | 9.5 |
 | Team 8 | Naya Sentinel | 304 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 379 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 376 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 380 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 378 | 9.0 | 9.5 |
 | Team 11 | Naya Heart | 236 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 242 | 9.2 | 9.5 |
+| Team 12 | Naya Herald | 243 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -732,6 +732,7 @@ _Last updated: 2026-10-18 13:06 UTC_
 - **gate-stall-20261018-1119:** 1 actions, avg 9.0/10
 - **distill-weekly-20261018-lane:** 1 actions, avg 9.5/10
 - **gate-stall-20261018-1000:** 1 actions, avg 8.5/10
+- **gate-stall-20261018-1230:** 1 actions, avg 8.5/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
 - **t0012:** 25 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
@@ -1127,8 +1128,11 @@ _Last updated: 2026-10-18 13:06 UTC_
 - **t0824-lane12:** 1 actions, avg 9.0/10
 - **t0824:** 1 actions, avg 9.5/10
 - **t0827:** 1 actions, avg 9.5/10
+- **t0827-lane12:** 1 actions, avg 9.3/10
 - **t0828:** 1 actions, avg 9.0/10
+- **t0828-lane5:** 1 actions, avg 9.2/10
 - **t0829:** 1 actions, avg 9.5/10
+- **t0829-lane5:** 1 actions, avg 9.5/10
 - **t0831-lane5:** 1 actions, avg 9.5/10
 - **t0831:** 1 actions, avg 9.5/10
 - **t0841:** 2 actions, avg 9.5/10
@@ -1280,10 +1284,11 @@ _Last updated: 2026-10-18 13:06 UTC_
 - **t1820-lane5:** 1 actions, avg 9.6/10
 - **t1821-lane1:** 1 actions, avg 9.6/10
 - **t1822-lane3:** 1 actions, avg 9.4/10
-- **t2030:** 3 actions, avg 9.4/10
-- **t2032:** 7 actions, avg 9.4/10
+- **t2030:** 4 actions, avg 9.4/10
+- **t2032:** 8 actions, avg 9.4/10
 - **t2033:** 1 actions, avg 9.4/10
-- **t2330:** 2 actions, avg 9.5/10
+- **t2330:** 4 actions, avg 9.5/10
 - **t2331:** 1 actions, avg 8.5/10
+- **t2332:** 1 actions, avg 9.0/10
 
 _A rising average with zero phantoms is the proof the team is learning and growing._
