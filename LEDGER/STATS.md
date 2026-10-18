@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-18 22:06 UTC_
+_Last updated: 2026-10-18 22:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 4169
-- ✅ Verified (8+): 4133
+- **Total scored actions:** 4180
+- ✅ Verified (8+): 4144
 - 🟡 Partial (5–7): 35
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -23,9 +23,9 @@ _Last updated: 2026-10-18 22:06 UTC_
 | Team 6 | Naya Heir | 220 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 296 | 9.0 | 9.5 |
 | Team 8 | Naya Sentinel | 311 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 396 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 383 | 9.0 | 9.5 |
-| Team 11 | Naya Heart | 239 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 399 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 384 | 9.0 | 9.5 |
+| Team 11 | Naya Heart | 240 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 267 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -748,6 +748,8 @@ _Last updated: 2026-10-18 22:06 UTC_
 - **gap-lane-scorer-20261017-1630-lane9:** 1 actions, avg 9.3/10
 - **lane-scorer-20261018-0930:** 1 actions, avg 9.0/10
 - **lane-scorer-20261018-0502:** 1 actions, avg 8.5/10
+- **gap-lane-scorer-20261018-0910-lane9:** 1 actions, avg 9.5/10
+- **lane-scorer-20261018-1540:** 1 actions, avg 9.2/10
 - **lane-scorer-20261018-0940:** 1 actions, avg 9.0/10
 - **lane-scorer-20261018-0950:** 1 actions, avg 9.4/10
 - **lane-scorer-20261018-1000:** 1 actions, avg 9.0/10
@@ -759,6 +761,10 @@ _Last updated: 2026-10-18 22:06 UTC_
 - **lane-scorer-20261018-1210:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261018-1150-lane99:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261018-1020-lane99:** 1 actions, avg 8.5/10
+- **gap-lane-scorer-20261018-0940-lane99:** 1 actions, avg 9.0/10
+- **gap-lane-scorer-20261018-0950-lane99:** 1 actions, avg 9.2/10
+- **gap-lane-scorer-20261018-1000-lane99:** 1 actions, avg 9.2/10
+- **gap-lane-scorer-20261018-1010-lane99:** 1 actions, avg 9.5/10
 - **20261017-2350:** 1 actions, avg 9.3/10
 - **lane-scorer-20261017-0000:** 1 actions, avg 9.3/10
 - **1549:** 1 actions, avg 9.5/10
@@ -778,6 +784,8 @@ _Last updated: 2026-10-18 22:06 UTC_
 - **seat-stall-20261018-1847:** 1 actions, avg 9.0/10
 - **gate-stall-20261018-2000:** 1 actions, avg 8.5/10
 - **gate-stall-20261018-2007:** 1 actions, avg 9.0/10
+- **seat-stall-20261018-1635:** 1 actions, avg 9.0/10
+- **gate-stall-20261018-2219:** 1 actions, avg 8.5/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
 - **t0012:** 25 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
@@ -1299,7 +1307,8 @@ _Last updated: 2026-10-18 22:06 UTC_
 - **t1152-lane2:** 1 actions, avg 8.5/10
 - **t1152-lane7:** 1 actions, avg 8.5/10
 - **t1152-lane8:** 1 actions, avg 9.0/10
-- **t1162:** 9 actions, avg 9.0/10
+- **t1162:** 11 actions, avg 9.0/10
+- **t1162-lane11:** 1 actions, avg 9.0/10
 - **t1172:** 9 actions, avg 8.8/10
 - **t1192:** 9 actions, avg 8.3/10
 - **t1202:** 9 actions, avg 8.8/10
