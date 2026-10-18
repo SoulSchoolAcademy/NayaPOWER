@@ -231,6 +231,19 @@ class IntelModule(unittest.TestCase):
         ctx = full_context(connections={"muse": "yes"})
         self.assertFalse(can_sync(ctx)[0])  # strict boolean, not truthy
 
+    # ---- XSS: hostile strings are escaped, never executed ----
+    def test_xss_escaped(self):
+        evil = {"title": "<script>alert(1)</script>", "period": "daily",
+                "owner": "shawn", "summary": "<img src=x onerror=alert(2)>",
+                "generated": "2026-10-17\"><b>bold</b>"}
+        html = render_intelligence_today(
+            {"enabled": True, "reports": [evil]}, "built",
+            context=full_context())
+        self.assertNotIn("<script>alert(1)</script>", html)
+        self.assertNotIn("<img src=x onerror=alert(2)>", html)
+        self.assertIn("&lt;script&gt;alert(1)&lt;/script&gt;", html)
+        self.assertIn("&lt;img src=x onerror=alert(2)&gt;", html)
+
     # ---- determinism ----
     def test_determinism(self):
         a = render_intelligence_today(dict(INTEL_DECL), "built",
