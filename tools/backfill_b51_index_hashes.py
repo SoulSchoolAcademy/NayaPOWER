@@ -25,12 +25,37 @@ sys.path.insert(0, str(REPO_ROOT / "tools"))
 import smart_note_v2 as m  # noqa: E402
 
 
+def _diff_census(before_entries, after_entries, hashed, retired):
+    """Diff census after a backfill-class apply (w428 leg 221).
+
+    Every corpus entry must have been VISITED (hashed or retired) and its
+    bytes must have CHANGED. A silently skipped entry is not a no-op — it
+    is a shortfall: the apply is refused, never trusted. JSON round-trips
+    are not byte-safe, so the census runs on the exact bytes, not the
+    writer's format claims.
+    """
+    before_c = [json.dumps(e, sort_keys=True, separators=(",", ":"),
+                           ensure_ascii=False) for e in before_entries]
+    after_c = [json.dumps(e, sort_keys=True, separators=(",", ":"),
+                          ensure_ascii=False) for e in after_entries]
+    changed = sum(1 for b, a in zip(before_c, after_c) if b != a)
+    total = len(after_entries)
+    return {
+        "total_entries": total,
+        "hashed": hashed,
+        "retired_unvalidatable": retired,
+        "changed": changed,
+        "coverage_ok": total > 0 and (hashed + retired) == total and changed == total,
+    }
+
+
 def main() -> None:
     index_path = REPO_ROOT / ".naya" / "memory" / "smart-notes" / "index.json"
     registry = json.loads(index_path.read_text(encoding="utf-8"))
     entries = registry.get("entries")
     if not isinstance(entries, list):
         raise SystemExit("BACKFILL_REFUSED: index has no entries list")
+    before_entries = [dict(e) for e in entries]  # pre-apply shape, for the census
 
     hashed, retired = 0, 0
     for e in entries:
@@ -54,6 +79,17 @@ def main() -> None:
         hashed += 1
 
     registry["corpus_manifest_hash"] = m._corpus_manifest_hash(entries)
+
+    # Diff census BEFORE the write: an apply that does not cover the whole
+    # corpus is refused before it lands (leg 205's shape, leg 221's content).
+    census = _diff_census(before_entries, entries, hashed, retired)
+    if not census["coverage_ok"]:
+        raise SystemExit(
+            "BACKFILL_REFUSED:DIFF_CENSUS_SHORTFALL:"
+            f"visited={hashed + retired} changed={census['changed']} "
+            f"total={len(entries)}"
+        )
+
     m._atomic_write_json(index_path, registry)
 
     # The validator is the acceptance gate for this migration: the regenerated
@@ -68,6 +104,8 @@ def main() -> None:
         "page_hashed": hashed,
         "retired_unvalidatable": retired,
         "corpus_manifest_hash": registry["corpus_manifest_hash"],
+        "tree_pin": m._corpus_tree_pin(entries, REPO_ROOT),
+        "diff_census": census,
         "validator": "PASS",
     }
     print(json.dumps(receipt, indent=2))
