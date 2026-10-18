@@ -169,6 +169,9 @@ def _module_for(function_id):
                                 "decl_for"),
         "feature.connect": ("feature_connect", "render_connect",
                             "decl_for"),
+        "feature.intelligence_today": ("feature_intelligence_today",
+                                       "render_intelligence_today",
+                                       "decl_for"),
     }
     if function_id not in table:
         return None

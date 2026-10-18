@@ -747,7 +747,7 @@
       "reports wired"
      ],
      "activated_by": "contract.features.intelligence_today",
-     "status": "specified",
+     "status": "built",
      "code": null,
      "depends_on": [
       "systems.reports"
