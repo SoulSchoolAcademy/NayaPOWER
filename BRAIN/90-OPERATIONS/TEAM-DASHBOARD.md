@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-18 03:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-18 04:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 625 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 627 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (59)
+### LEARN (60)
+- [#2755](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2755) docs(brain): learning event 2026-10-18
 - [#2743](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2743) docs: define NayaNET build-see-learn-share product loop
 - [#2720](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2720) docs(brain): learning event 2026-10-17
 - [#2693](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2693) docs(brain): learning event 2026-10-15 📝draft
 - [#2682](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682) feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3
-- [#2617](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2617) docs(brain): learning event 2026-10-14
-- …and 54 more
+- …and 55 more
 
 ### KNOW (24)
 - [#2736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736) fix(brain-index): make regeneration line-ending deterministic on every
@@ -119,13 +119,13 @@
 - [#2689](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689) CI rate-limit resilience: cut redundant API burn (~85% on hot paths)
 - …and 38 more
 
-### PRODUCT (39)
+### PRODUCT (40)
+- [#2754](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754) Hub↔Supabase persistence bridge (Smart Note flow leg 3) — t0800
 - [#2738](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738) Hub deploy pipeline: GitHub → Cloudflare Workers
 - [#2737](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2737) EMIT: hub feeds emitter (rebased on main)
 - [#2733](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2733) test(activation): fail closed when compiled current state disagrees wi 📝draft
 - [#2713](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2713) t0907: block catalog — 457 canonical NAYA-XXX-NNN blocks + coverage
-- [#2701](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701) HUB sync contract — Goal #1 Hub Smart Feed contract (three tongues)
-- …and 34 more
+- …and 35 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 

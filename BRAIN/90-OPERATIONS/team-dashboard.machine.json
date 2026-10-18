@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-18T03:15:18+00:00",
+ "generated_utc": "2026-10-18T04:15:47+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2755,
+     "title": "docs(brain): learning event 2026-10-18",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2755",
+     "draft": false
+    },
     {
      "number": 2743,
      "title": "docs: define NayaNET build-see-learn-share product loop",
@@ -73,15 +79,9 @@
      "title": "feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG override",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2606",
      "draft": true
-    },
-    {
-     "number": 2594,
-     "title": "Learn: clock-to-ladder bridge \u2014 T6 VERIFIED meta row earns E1-E3",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2594",
-     "draft": false
     }
    ],
-   "open_pr_count": 59
+   "open_pr_count": 60
   },
   {
    "id": "know",
@@ -624,6 +624,12 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2754,
+     "title": "Hub\u2194Supabase persistence bridge (Smart Note flow leg 3) \u2014 t0800",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754",
+     "draft": false
+    },
+    {
      "number": 2738,
      "title": "Hub deploy pipeline: GitHub \u2192 Cloudflare Workers",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738",
@@ -664,15 +670,9 @@
      "title": "HUB/BLUEPRINT.ai.md \u2014 canonical team reference: the complete system map",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685",
      "draft": false
-    },
-    {
-     "number": 2680,
-     "title": "t0483: hourly schedule pump for NayaNET Agent Capture",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680",
-     "draft": false
     }
    ],
-   "open_pr_count": 39
+   "open_pr_count": 40
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 625,
+ "open_pr_total": 627,
  "unassigned_prs": 240
 }
