@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-18T10:15:40+00:00",
+ "generated_utc": "2026-10-18T11:15:49+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -486,6 +486,12 @@
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
     {
+     "number": 2759,
+     "title": "[Team Verity] Naya Beta | KNOW: backfill tree-pin + diff-census enforcement (legs 166/221)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2759",
+     "draft": false
+    },
+    {
      "number": 2758,
      "title": "[Team Verity] Naya Alpha | land gr-w433 p1-premise-pair fixture (standing instrument)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2758",
@@ -526,15 +532,9 @@
      "title": "[DRAFT] The Naya Code \u2014 canonical identity in human, AI, and machine forms",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2246",
      "draft": true
-    },
-    {
-     "number": 2161,
-     "title": "Add TEAM-EXECUTION-PROMPT.md \u2014 continuous 10/10 standing order",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2161",
-     "draft": false
     }
    ],
-   "open_pr_count": 13
+   "open_pr_count": 14
   },
   {
    "id": "infra",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 628,
+ "open_pr_total": 629,
  "unassigned_prs": 239
 }

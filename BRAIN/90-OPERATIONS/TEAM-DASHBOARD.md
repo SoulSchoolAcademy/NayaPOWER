@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-18 10:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-18 11:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 628 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 629 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -103,13 +103,13 @@
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
 - …and 120 more
 
-### TEAM (13)
+### TEAM (14)
+- [#2759](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2759) [Team Verity] Naya Beta | KNOW: backfill tree-pin + diff-census enforc
 - [#2758](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2758) [Team Verity] Naya Alpha | land gr-w433 p1-premise-pair fixture (stand
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
 - [#2588](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588) [DRAFT] NayaPOWER Operating Manual V1 — team operating standard 📝draft
 - [#2564](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2564) Team Feed Standard: the ultimate posting template (Shawn's audit)
-- [#2547](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2547) [Naya 5] Ultimate execution report 2026-10-13: 14 answers, 9x10 assess
-- …and 8 more
+- …and 9 more
 
 ### INFRA (44)
 - [#2757](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2757) Board-pointer repair: dead boards cited as live in the activation surf
