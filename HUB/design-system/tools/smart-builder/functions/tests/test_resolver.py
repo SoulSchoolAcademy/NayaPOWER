@@ -63,19 +63,20 @@ class TestResolver(unittest.TestCase):
         self.assertIn("detail", d)
 
     def test_3_specified_not_built_stays_off(self):
-        """feature.contacts is specified, not built -> not_implemented.
+        """feature.smart_tabs is specified, not built -> not_implemented.
         (feature.smart_mail was the example until its build flipped it to
         built on 2026-10-17; feature.space was the example until its build
         on 2026-10-18; feature.social_feed was the example until its build
         on 2026-10-18; feature.connect was the example until its build on
         2026-10-18; feature.intelligence_today was the example until its
+        build on 2026-10-18; feature.contacts was the example until its
         build on 2026-10-18 — the example must track the registry's state.)"""
         with self.assertRaises(ResolverRefusal) as cm:
-            resolve("feature.contacts", ctx(
-                available=["authenticated_identity", "contact_store"],
-                granted_permissions=["contacts.read"]))
+            resolve("feature.smart_tabs", ctx(
+                available=["page_registry", "navigation_service"],
+                granted_permissions=["tabs.navigate"]))
         self.assertEqual(cm.exception.code, "not_implemented")
-        self.assertEqual(cm.exception.function, "feature.contacts")
+        self.assertEqual(cm.exception.function, "feature.smart_tabs")
 
     def test_4_permission_denied_explains(self):
         """Cover without media.upload granted -> permission_denied, names it,
@@ -109,13 +110,13 @@ class TestResolver(unittest.TestCase):
         with self.assertRaises(ResolverRefusal) as cm:
             resolve("feature.nope", ctx())  # unknown, nothing else set up
         self.assertEqual(cm.exception.code, "unknown_function")
-        # feature.contacts is specified: even with nothing granted,
+        # feature.smart_tabs is specified: even with nothing granted,
         # the report is not_implemented (gate 2), not permission_denied (gate 4).
         # (smart_mail, then space, then social_feed, then connect, then
-        # intelligence_today, were the example until their builds; example
-        # tracks the registry.)
+        # intelligence_today, then contacts, were the example until their
+        # builds; example tracks the registry.)
         with self.assertRaises(ResolverRefusal) as cm2:
-            resolve("feature.contacts", ctx())
+            resolve("feature.smart_tabs", ctx())
         self.assertEqual(cm2.exception.code, "not_implemented")
 
     def test_undeclared_contract_activates_honestly_empty(self):

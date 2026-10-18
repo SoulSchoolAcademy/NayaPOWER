@@ -172,6 +172,8 @@ def _module_for(function_id):
         "feature.intelligence_today": ("feature_intelligence_today",
                                        "render_intelligence_today",
                                        "decl_for"),
+        "feature.contacts": ("feature_contacts", "render_contacts",
+                             "decl_for"),
     }
     if function_id not in table:
         return None
