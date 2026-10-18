@@ -181,24 +181,24 @@ class FeatureCoverAcceptance(unittest.TestCase):
 
     # ---- the general gate: ANY unbuilt breaker fails the contract closed ----
     def test_unbuilt_breaker_refused(self):
-        # feature.community is the arbitrary unbuilt example now —
+        # feature.naya_answers is the arbitrary unbuilt example now —
         # smart_mail was the example until its build flipped it to built
         # (2026-10-17), then space until its build (2026-10-18), then
         # social_feed until its build (2026-10-18), then connect until its
         # build (2026-10-18), then intelligence_today until its build
         # (2026-10-18), then contacts until its build (2026-10-18), then
         # smart_tabs until its build (2026-10-18), then smart_bars until
-        # its build (2026-10-18).
+        # its build (2026-10-18), then community until its build (2026-10-18).
         c = json.load(open(SMOKE))
         c["features"] = {"cover": dict(COVER_DECL),
-                         "community": True}  # still specified
+                         "naya_answers": True}  # still specified
         cp = os.path.join(self.tmp, "contract.json")
         json.dump(c, open(cp, "w"))
         r, page, _ = run_assemble(cp, self.tmp)
         self.assertEqual(r.returncode, 2)
         errs = json.loads(r.stdout)["errors"]
         today_errs = [e for e in errs
-                      if e.get("feature") == "feature.community"]
+                      if e.get("feature") == "feature.naya_answers"]
         self.assertTrue(today_errs, errs)
         self.assertEqual(today_errs[0]["code"], "feature_not_built")
         self.assertNotIn('data-feature="cover"', page)  # fail closed: nothing renders

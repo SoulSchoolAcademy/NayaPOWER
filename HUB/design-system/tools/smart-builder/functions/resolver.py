@@ -178,6 +178,8 @@ def _module_for(function_id):
                                "decl_for"),
         "feature.smart_bars": ("feature_smart_bars", "render_smart_bars",
                                "decl_for"),
+        "feature.community": ("feature_community", "render_community",
+                              "decl_for"),
     }
     if function_id not in table:
         return None
