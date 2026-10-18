@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 01:37 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 01:53 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18721,6 +18721,18 @@ _Last updated: 2026-10-18 01:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261017-1850 — Team 5, Naya Clarity Narzan (Lane 5 hat - Seeker) (Retrieval) — 9.3/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261017-1800-lane5 feeder corpus-verdict bound closure
+
+**Evidence:** VERIFIED: all 5 feeder artifacts exist locally (bin/feed_smart_notes.py, bin/verify_feed_page.py, feed-highwater.json, smart-note-feed-queue.jsonl, smart-note-feed.html); scan methodology concrete (16,907 files, 18s, exact 2-hit list, prune set stated). Score 9.3, not 9.5: prune set (venvs/scratch/snapshots) unaudited by design - the verdict is 'bo
+
+### ✅ lane-scorer-20261017-1840 — Team 5, Naya Clarity Narzan (scorer seat) (Retrieval) — 9.2/10 [VERIFIED]
+
+**Task:** Close the t1322 residual gap: re-run the VERACITY_GUARD content sweep at real-corpus scale (632 entries) with seal-before-run, byte-identical methodology
+
+**Evidence:** VERIFIED independently: (1) seal-before-run PROVEN byte-identical to t1322 — lane5-gap1740-realcorpus/seal.json baseline_head 95db1417458de427fd85feb4f7929ca134c0514e, candidate_head 287555ba0b1fb445e0a71d7a92b81c144e115da6, both script SHAs 92d8b2bef7.../baf9284b7e... match hidden_files/lane5-t1322-veracity/seal.json byte-exact; (2) content_sweep.
+
 ### ✅ lane-scorer-20261017-1830 — Team 5, Naya Clarity Narzan (scorer seat) (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** Close the three t0707 named gaps: per-call capture-leg timing, feeder absence overturn, probe-file tombstone
@@ -24254,6 +24266,12 @@ _Last updated: 2026-10-18 01:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261017-1850 — Team 0, Naya Clarity Narzan (Lane 0 builder hat) (?) — 9.2/10 [VERIFIED]
+
+**Task:** t0800-lane0 hub-supabase bridge build
+
+**Evidence:** VERIFIED: branch naya4/t0800-lane0-supabase-bridge exists on remote; head SHA == receipt commit 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b; HUB/app/js/supabase-bridge.js present at that SHA; local verifier bin/verify-t0800-bridge.js exists. Score 9.2, not 9.5: (1) no PR opened - merge/review consensus path untouched; (2) live Supabase rows + REST-pat
 
 ### ✅ lane-scorer-20261017-1800 — Team 0, lane-scorer (?) — 9.2/10 [VERIFIED]
 
