@@ -142,3 +142,100 @@ def test_abort_path_refuses_before_write(tmp_path, monkeypatch):
         "the refused apply wrote to the index before failing — "
         "the refusal must precede the write"
     )
+
+
+# ---------------------------------------------------------------------------
+# gr-w477 / gr-w474 gapclose (Naya Beta w480): legs 2/4 re-derived against live
+# main. Leg 2's _git_tree_pin script change is NOT ported — main's
+# m._corpus_tree_pin (sha256 over input page bytes) + _diff_census supersede
+# it. The re-derived contract below proves the receipt carries the pin
+# alongside the manifest, derived from live inputs, and that the pin anchors
+# input bytes (drift => pin change). Leg 4 proves the validator's abort path
+# refuses BEFORE the write lands.
+# ---------------------------------------------------------------------------
+
+def test_receipt_pins_tree_alongside_manifest(corpus):
+    """The leg-2 contract on main's mechanism: receipt carries the corpus
+    tree pin next to the manifest pin, equal to a fresh derivation from the
+    post-apply entries — derived, not recalled (lesson 192)."""
+    index_path, repo_root, _ = corpus
+
+    receipt = bb.apply(index_path, repo_root)
+
+    pin = receipt.get("tree_pin")
+    assert pin is not None, (
+        "receipt carries no tree pin — a manifest without a tree pin "
+        "cannot be compared across runs (lesson 192)"
+    )
+    assert len(pin) == 64 and all(c in "0123456789abcdef" for c in pin), (
+        f"tree pin is not a 64-char sha256 hex: {pin!r}"
+    )
+    after = _reloaded(index_path)
+    expected = m._corpus_tree_pin(after["entries"], repo_root)
+    assert pin == expected, (
+        "receipt tree pin does not equal the freshly derived pin from the "
+        "post-apply entries — the pin must be derived, not recalled"
+    )
+    assert receipt.get("corpus_manifest_hash"), (
+        "receipt lost the manifest pin while gaining the tree pin — "
+        "both pins must travel together"
+    )
+
+
+def test_tree_pin_detects_input_drift(corpus):
+    """The pin anchors INPUT bytes, not vibes: the same entries over drifted
+    page bytes derive a different pin. A manifest match with a pin mismatch
+    is input drift, never a flake (w428 leg 166). The pin is re-derived from
+    live file bytes — the second apply is not the vehicle (the diff census
+    correctly refuses a partial-coverage re-apply)."""
+    index_path, repo_root, _ = corpus
+    receipt = bb.apply(index_path, repo_root)
+    pin1 = receipt["tree_pin"]
+    assert pin1 is not None
+
+    after = _reloaded(index_path)
+    (repo_root / PAGES_DIR / "page1.md").write_text(
+        "# page one — edited\n", encoding="utf-8"
+    )
+    pin2 = m._corpus_tree_pin(after["entries"], repo_root)
+    assert pin2 != pin1, (
+        "page bytes changed but the tree pin did not — the pin is not "
+        "anchoring the input bytes"
+    )
+
+
+def test_abort_path_validator_failure_refuses_before_write(tmp_path, monkeypatch):
+    """w440 leg 4: the validator is proved on the abort path.
+
+    Deliberate failure: an entry with a real page but NO intelligent_block_id.
+    The apply hashes it fine (the mutation succeeds), but the regenerated
+    index fails validator check 2 (ENTRY_MALFORMED). The apply must convert
+    the verdict to BACKFILL_REFUSED:VALIDATOR_REJECTED and refuse BEFORE the
+    write — the index bytes on disk are untouched. This is the shape leg 1
+    did not cover: leg 1 proved the projection-absent refusal; this proves
+    the validator's own refusal on the real path.
+    """
+    index_path, repo_root, _ = _make_corpus(tmp_path)
+    monkeypatch.setattr(m, "ROOT", repo_root)
+    registry = _reloaded(index_path)
+    registry["entries"].append(
+        {
+            # No intelligent_block_id: malformed for the validator (check 2),
+            # hashable for the apply (the page exists, so mutation succeeds).
+            "lifecycle_state": "ACTIVE",
+            "projection_path": f"{PAGES_DIR}/page1.md",
+            "title": "malformed",
+        }
+    )
+    index_path.write_text(json.dumps(registry), encoding="utf-8")
+    before_bytes = index_path.read_bytes()
+
+    with pytest.raises(
+        SystemExit, match=r"BACKFILL_REFUSED:VALIDATOR_REJECTED:INDEX_CORRUPT:ENTRY_MALFORMED"
+    ):
+        bb.apply(index_path, repo_root)
+
+    assert index_path.read_bytes() == before_bytes, (
+        "the validator rejected the regenerated index but the bytes were "
+        "already committed — the refusal must precede the write (leg 4)"
+    )
