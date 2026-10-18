@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-17",
-  "receipt_basis_commit": "28dc53aa99af4d361533e45f0b0d1b1322120d7a",
+  "generated_at": "2026-10-18",
+  "receipt_basis_commit": "8cac435a052d21ed74f8f2c2b8fec0bdaff455c7",
   "inventory_file_count": 1328,
   "domain_counts": {
     "00-ACTIVATION": 7,
@@ -32,7 +32,7 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md",
-      "blob_sha": "61080b4c74e9d598a638d4c7cd27b865124729db",
+      "blob_sha": "2eae920a45a3471a061cf8d8fd2bf8db2bf3e9ff",
       "size": 10274
     },
     {
@@ -42,8 +42,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
-      "blob_sha": "6c8d35df191de26604d135570816f9b934cda297",
-      "size": 17369
+      "blob_sha": "a337bce98d66ac5434a4d226b52b2df33d323cf1",
+      "size": 17419
     },
     {
       "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md",
@@ -57,7 +57,7 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md",
-      "blob_sha": "a05dc82729cd45d7c4837f7ee057e95245282ecd",
+      "blob_sha": "e2078fb6f7d774ffb86edefb23e3d2592a5af8d9",
       "size": 2643
     },
     {
