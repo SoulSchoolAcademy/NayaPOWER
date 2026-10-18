@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-18T12:15:33+00:00",
+ "generated_utc": "2026-10-18T13:16:31+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -417,12 +417,6 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
-     "number": 2753,
-     "title": "law: extend consensus-gate seat registry with lead seats (F2 fix)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2753",
-     "draft": false
-    },
-    {
      "number": 2729,
      "title": "Add team-declared worker registry; gate reads it (no more hardcoded seat blocks)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729",
@@ -463,9 +457,15 @@
      "title": "Gate reliability: transient API failures \u2192 UNKNOWN (exit 2), never wrong FAIL",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690",
      "draft": false
+    },
+    {
+     "number": 2681,
+     "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
+     "draft": false
     }
    ],
-   "open_pr_count": 125
+   "open_pr_count": 124
   },
   {
    "id": "team",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 632,
+ "open_pr_total": 631,
  "unassigned_prs": 240
 }
