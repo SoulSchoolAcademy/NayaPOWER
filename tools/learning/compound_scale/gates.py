@@ -17,8 +17,24 @@ import re
 from pathlib import Path
 
 
+def _repo_root() -> Path:
+    """Nearest enclosing git root (worktrees carry .git as a file)."""
+    here = Path(__file__).resolve()
+    for parent in [here, *here.parents]:
+        if (parent / ".git").exists():
+            return parent
+    return Path.cwd()
+
+
 def _read_receipt(path_str: str) -> str | None:
     p = Path(path_str).expanduser()
+    if not p.is_absolute():
+        # Repo-relative citation (e.g. tools/learning/compound_scale/receipts/L1.md):
+        # anchor at the enclosing repo root so the check is CWD-independent
+        # and byte-identical on CI runners and developer VMs alike.
+        # Citation-drift repair 2026-10-18: citations must never depend on
+        # mutable out-of-repo files; the fixtures live in the repo.
+        p = _repo_root() / p
     if not p.is_file():
         return None
     try:

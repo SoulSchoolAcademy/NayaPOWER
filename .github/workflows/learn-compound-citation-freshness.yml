@@ -1,0 +1,32 @@
+name: Learn Compound Citation Freshness
+
+# Loud signal for citation drift in the learn-compound-scale registry.
+# Every registry lesson's cited receipt must score 9/9 on gate_truth.
+# Citations are hermetic repo fixtures, so this is byte-identical on
+# CI runners and developer VMs (2026-10-18 citation-drift repair).
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "tools/learning/compound_scale/**"
+      - "tests/test_learn_compound_scale.py"
+      - ".github/workflows/learn-compound-citation-freshness.yml"
+  pull_request:
+    paths:
+      - "tools/learning/compound_scale/**"
+      - "tests/test_learn_compound_scale.py"
+      - ".github/workflows/learn-compound-citation-freshness.yml"
+
+jobs:
+  citation-freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: gate_truth over every registry lesson (fail loudly on drift)
+        run: python tools/learning/compound_scale/check_citation_freshness.py
+      - name: harness unit tests (mechanics unchanged)
+        run: python -m pytest tests/test_learn_compound_scale.py -q
