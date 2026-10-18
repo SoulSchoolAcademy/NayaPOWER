@@ -1,0 +1,71 @@
+.orbit-btn</span></h3>
+  <p class="micro" style="margin-bottom:16px">A circle of light flows around the button. Black with color accents. Light ignites from behind on hover.</p>
+  <div class="demo-row">
+    <button class="orbit-btn" style="--oc:#e84fff;--oc-rgb:232,79,255"><span class="orbit-label">✦ Create</span></button>
+    <button class="orbit-btn" style="--oc:#a06bff;--oc-rgb:160,107,255"><span class="orbit-label">◈ Launch</span></button>
+    <button class="orbit-btn" style="--oc:#3fb8ff;--oc-rgb:63,184,255"><span class="orbit-label">＋ Begin</span></button>
+  </div>
+
+  <div class="code-head"><span class="micro">Copy — living button</span><button class="copy-btn" onclick="copyCode('btnCopy')">Copy</button></div>
+<pre class="code" id="btnCopy">&lt;span class="lv-wrap"&gt;
+  &lt;span class="lv-aura"&gt;&lt;/span&gt;
+  &lt;button class="lv-btn" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255"&gt;
+    &lt;span class="lv-label"&gt;✦ Your Action&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;
+&lt;!-- Full CSS + living.js in lego/buttons.html --&gt;</pre>
+  <p class="micro">→ <a href="lego/buttons.html" style="color:var(--soul)">Open the complete button library</a> — all 4 systems, full CSS, copy-paste ready.</p>
+</section>
+<style>
+/* Living button system (inline for index demo) */
+.lv-wrap { position: relative; display: inline-block; }
+.orbit-btn { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; isolation: isolate; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 40px; border-radius: 999px; border: none; font-family: Inter, sans-serif; font-size: 15px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #fff; text-shadow: 0 -1px 2px rgba(0,0,0,.9), 0 1px 3px rgba(0,0,0,.6); background: linear-gradient(180deg, #1a1a20 0%, #060607 55%, #000000 100%); transition: transform .25s var(--ease); }
+.orbit-btn::before { content: ""; position: absolute; inset: -3px; border-radius: 999px; z-index: -1; background: conic-gradient(from var(--oa, 0deg), transparent 0deg, transparent 300deg, rgba(var(--oc-rgb),.9) 340deg, rgba(255,255,255,.95) 355deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; padding: 2.5px; animation: orbit-spin 4s linear infinite; opacity: .75; filter: drop-shadow(0 0 8px rgba(var(--oc-rgb),.6)); }
+.orbit-btn::after { content: ""; position: absolute; inset: -18px; border-radius: 999px; z-index: -2; background: radial-gradient(ellipse at center, rgba(var(--oc-rgb),.35), transparent 70%); opacity: 0; transition: opacity .4s ease; filter: blur(6px); }
+.orbit-btn .orbit-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.orbit-btn:hover { transform: translateY(-3px) scale(1.02); }
+.orbit-btn:hover::before { opacity: 1; animation-duration: 1.5s; }
+.orbit-btn:hover::after { opacity: 1; }
+.orbit-btn:active { transform: translateY(1px) scale(.98); transition-duration: .08s; }
+.orbit-btn::before { animation: none; }
+.orb-row { display: flex; gap: 44px; justify-content: center; flex-wrap: wrap; margin: 44px 0 12px; }
+.orb-wrap { text-align: center; }
+.orb-wrap .micro { margin-top: 18px; letter-spacing: .22em; text-transform: uppercase; }
+.orb-wrap .micro small { display: block; letter-spacing: .08em; text-transform: none; color: var(--secondary); margin-top: 4px; font-size: 13px; }
+.orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.orb-wrap:nth-child(2) .orb { animation-delay: 1s; }
+.orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.orb-wrap:nth-child(4) .orb { animation-delay: 3s; }
+.orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+.orb::before { /* the orbit — a ring of light circling the orb */
+  content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.orb::after { /* light pool beneath */
+  content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none;
+}
+.orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+.orb--sm { width: 56px; height: 56px; animation: none; }
+.orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
+.orb--sm::after { bottom: -16px; height: 14px; }
