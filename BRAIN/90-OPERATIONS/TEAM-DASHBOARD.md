@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-18 09:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-18 10:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 628 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (240)
+### BUILD (239)
 - [#2752](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752) map-compiler: push state file via deploy key with scoped ruleset bypas
-- [#2751](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2751) Zeta w403: land 7 BTN keyframe motion labels into design catalog
 - [#2750](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750) fix(builder): strict headless render qualification before release 📝draft
 - [#2748](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748) Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT — the system tha
 - [#2747](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747) feat: make Smart Builder library searchable and machine-accessible
-- …and 235 more
+- [#2746](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746) docs: establish Smart Builder human contract
+- …and 234 more
 
 ### WIRE (125)
 - [#2753](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2753) law: extend consensus-gate seat registry with lead seats (F2 fix)
@@ -103,13 +103,13 @@
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
 - …and 120 more
 
-### TEAM (12)
+### TEAM (13)
+- [#2758](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2758) [Team Verity] Naya Alpha | land gr-w433 p1-premise-pair fixture (stand
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
 - [#2588](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588) [DRAFT] NayaPOWER Operating Manual V1 — team operating standard 📝draft
 - [#2564](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2564) Team Feed Standard: the ultimate posting template (Shawn's audit)
 - [#2547](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2547) [Naya 5] Ultimate execution report 2026-10-13: 14 answers, 9x10 assess
-- [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
-- …and 7 more
+- …and 8 more
 
 ### INFRA (44)
 - [#2757](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2757) Board-pointer repair: dead boards cited as live in the activation surf

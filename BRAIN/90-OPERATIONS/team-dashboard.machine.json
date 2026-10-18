@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-18T09:15:23+00:00",
+ "generated_utc": "2026-10-18T10:15:40+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -354,12 +354,6 @@
      "draft": false
     },
     {
-     "number": 2751,
-     "title": "Zeta w403: land 7 BTN keyframe motion labels into design catalog",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2751",
-     "draft": false
-    },
-    {
      "number": 2750,
      "title": "fix(builder): strict headless render qualification before release",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750",
@@ -394,9 +388,15 @@
      "title": "Canonical hex set \u2014 3-pass scored 9.25/10 for stamp",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2741",
      "draft": false
+    },
+    {
+     "number": 2739,
+     "title": "Design library: canonical piece library on main (37 files, categorized, INDEX.md)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739",
+     "draft": false
     }
    ],
-   "open_pr_count": 240
+   "open_pr_count": 239
   },
   {
    "id": "wire",
@@ -486,6 +486,12 @@
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
     {
+     "number": 2758,
+     "title": "[Team Verity] Naya Alpha | land gr-w433 p1-premise-pair fixture (standing instrument)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2758",
+     "draft": false
+    },
+    {
      "number": 2618,
      "title": "[DRAFT] Advisory post-conformance scan for the Team Feed Standard",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618",
@@ -526,15 +532,9 @@
      "title": "Add TEAM-EXECUTION-PROMPT.md \u2014 continuous 10/10 standing order",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2161",
      "draft": false
-    },
-    {
-     "number": 1639,
-     "title": "Batch-2 law forging: QMAX Craftsman Charter + SmartLedger next-layer + law lineage (PROPOS",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1639",
-     "draft": false
     }
    ],
-   "open_pr_count": 12
+   "open_pr_count": 13
   },
   {
    "id": "infra",
@@ -932,5 +932,5 @@
   }
  ],
  "open_pr_total": 628,
- "unassigned_prs": 240
+ "unassigned_prs": 239
 }
