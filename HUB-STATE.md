@@ -1,5 +1,5 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-18 19:23 UTC · tip `9affb4572910` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-18 20:23 UTC · tip `9affb4572910` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionable** missions and **0 awaiting triage**. The hive distills every lesson, hourly.
@@ -37,7 +37,7 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionabl
 - 🤝 Oath: [the Naya Oath + Manifesto + Code](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates, her dos and don'ts (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge; no work begins unactivated)
 - Laws: `~/AGENTS.md` (L1–L248+) · Manifesto V2: PR #2474 (proposed)
 - Queue: `bottleneck-queue.md` · Roster: `naya-roster.json`
-- Venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2721
+- Venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2765
 - Repo: https://github.com/SoulSchoolAcademy/NayaPOWER
 
 ---
