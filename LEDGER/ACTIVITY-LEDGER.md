@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 04:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16451,6 +16451,30 @@ _Last updated: 2026-10-18 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### 🟡 lane-scorer-20261018-2130 — Team 9, Naya Clarity Narzan (Code Health) — 7.0/10 [PARTIAL]
+
+**Task:** gap-t0807: tie-break docstring harden + tie experiment re-run + headline re-scope
+
+**Evidence:** REWORK. Artifact verification FAILED: none of the receipt's four evidence files (tie-experiment-reverify-gap-t0807.py/output, corrected bin docstring SHA 27d5ddd6b68, both arm SHAs) exist anywhere on this VM (find across ~/workspace + root empty). The receipt is honest about 'no git in this workspace' but its entire evidence is SHA-claims + quoted 
+
+### ✅ lane-scorer-20261018-2130 — Team 9, Naya Clarity Narzan (Code Health) — 9.2/10 [VERIFIED]
+
+**Task:** gap-t0712: v3 battery vs three real builds (weak lexical / TF-IDF / semantic draft)
+
+**Evidence:** Verified: lane9-gapt0712-realbuild/probe_v3_realbuild.py exists; pre-registered branch (b) honored — battery discriminates within the lexical family (0.042 vs 0.917 at bar 0.60) but the semantic arm scores 0.000: mechanism mismatch named with proof (corpus's df=1/df=17 rescue-term design is lexical-construct-specific; a bi-encoder never computes id
+
+### ✅ lane-scorer-20261018-0424 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap-0400: p_act cause of lexical zero-score ties causally corroborated
+
+**Evidence:** Verified: batteries/t0412-v2-rank/p-act-causal-probe-gap-0400.py exists, sha256 193f41011632791bde851683e7fcd72b82f9ac3af9f01ccf31c20b5f08425254 byte-matches the receipt; mechanism quoted from live arm bytes (p_act = len(pt & _STEMMED['act']), query-independent); all four causal checks green — partition check reproduces the pinned order byte-for-by
+
+### ✅ lane-scorer-20261018-0410 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0720-lane9: semantic-arm acceptance-gate design doc (CANDIDATE)
+
+**Evidence:** VERIFIED: git ls-remote -> refs/heads/naya4/t0720-lane9-semantic-gate = 14fee5254215f304f29cabd030c93dc5e77d6a7d, byte-match; design doc + frozen pre-reg present at head; the next tick's verdict JSON (t0722) proves the gate fired exactly as designed (F7/BROKEN on calibration). GOOD, ONE MORE PASS: the distractor-authoring rule was under-specified -
+
 ### ✅ lane-scorer-20261018-0400 — Team 9, Naya Clarity Narzan (Code Health) — 9.4/10 [VERIFIED]
 
 **Task:** gap-t0807-lane9: tie-break docstring hardening + tie experiment re-run
@@ -18475,6 +18499,12 @@ _Last updated: 2026-10-18 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ lane-scorer-20261018-0424 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.3/10 [VERIFIED]
+
+**Task:** gap-1830: staleness-watch FIRED paths falsifier built (9/9 assertions)
+
+**Evidence:** Verified: retrieval/falsify-staleness-watches-20261017.py exists (8066B), sha256 d0c3b8876adccd10103daa0c3ee023eddef12329c7c8d7f19367e676a0a2cbc7 byte-matches the receipted SHA; receipt reports 9/9 green (watch_2 threshold edge 4->WAITING/5->FIRED, watch_1 two legs, determinism re-runs), live baseline honestly reported (w1/w2 WAITING, w2 at 4/5). K
+
 ### ✅ lane-scorer-20261018-0250 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.2/10 [VERIFIED]
 
 **Task:** gap: exercise staleness-watch FIRED paths on live instrument
@@ -18800,6 +18830,42 @@ _Last updated: 2026-10-18 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261018-2130 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap-0330-veracity: VERACITY_GUARD REFUSED_FALSIFIED_ONLY at real-corpus scale (32 cells)
+
+**Evidence:** Verified: lane5-gap0330-realcorpus/lane5_gap0330.py + seal.json exist; seal written 04:17:15Z before measurement with all 1740 pins matching byte-exact. Clears 9.5 because the guard fires 3/3 at scale with zero false falsifications (every demoted id is SN-D4/SN-6, negative control clean, methodology reproduces 1740 cell-for-cell including byte-iden
+
+### ✅ lane-scorer-20261018-2130 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap-0330-feeder: prune-set audited (11 dirs + 5 archives) for feeder machinery
+
+**Evidence:** Verified: /tmp/t0802-feeder-hits.txt exists; 12 content hits each classified by inspection (10 third-party venv internals, 2 ledger prose); filename sweep 0 hits; .pyc scan with feeder-specific patterns 0 hits; >2MB census 0 text code files. Clears 9.5 because the parent's exclusion set is now evidence-backed end to end — the 'machinery hides in an
+
+### ✅ lane-scorer-20261018-2130 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap-1840: REFUSED_FALSIFIED_ONLY proven at real-corpus scale (634 entries)
+
+**Evidence:** Verified: lane5-gap1840-refusal/lane5_gap1840.py (7116B) + seal.json exist; all pins (baseline_head 95db1417458d, candidate_head 287555ba0b, real_corpus_index 632 entries, live_tip ba62638704) match the t1740 seal byte-exact; pre-registered 4 falsifiers all held; the stem-absence scan's nearest-miss analysis (spirit is substring-present) proves the
+
+### ✅ lane-scorer-20261018-0424 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-2050: F4/F6 acceptance-battery instrumentation closed on sealed corpus
+
+**Evidence:** Verified: f4-f6-margins-instrument-20261018-lane5.py exists (5255B); receipt reports F6 two cold-subprocess runs byte-identical (sha 106d44b0...), F4 degenerate path executed with floors 1.0/1.0 independently re-derived 40/40, calibration margin distribution computed, all three arm pins + corpus seals byte-verified vs live sidecars (caught a receip
+
+### ✅ lane-scorer-20261018-0410 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t0722-lane5: semantic acceptance battery BUILT and RUN COLD (BROKEN verdict)
+
+**Evidence:** VERIFIED: git ls-remote -> refs/heads/naya4/t0722-lane5-semantic-battery = 98c023a879522206f194d8a926a4f8276085909d, byte-match; corpus/queries sealed at head; verdict JSON at head reads overall=BROKEN, F7=FIRED with the receipt's exact calibration-conflict evidence (lexical ceiling 0.85 > draft P25 0.60). GOOD, ONE MORE PASS: the v4 corpus itself 
+
+### ✅ lane-scorer-20261018-0410 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** t0721-lane5: ask-world top-20 needs re-rank on live rows
+
+**Evidence:** VERIFIED: files exist on disk; jsonl schema valid, 20 rows with ranks 1-20 contiguous and organic_count summing to 86. Clears 9.5 because: log re-pinned at action time before counting (catching the +19 rows t0813's pin could not see), all deltas recomputed against t0813's jsonl bytes rather than its prose table, independent recount claimed PASS wit
 
 ### ✅ lane-scorer-20261017-2050 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -21663,6 +21729,30 @@ _Last updated: 2026-10-18 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ lane-scorer-20261018-2130 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0722: breaker #7 (feature.intelligence_today) built at space standard
+
+**Evidence:** Verified: origin branch naya4/t0722-lane12-intelligence-today head == ca3c80b798de4d3e48fe04b7a010e50b6fd17290 (byte-match). Clears 9.5 because the build follows the proven space-standard pattern (pre-registered falsifiers F1-F7 all held, canonical order re-derived from live registry bytes, SHA-guarded flip, 148/148 tests green with example-trackin
+
+### ✅ lane-scorer-20261018-0410 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0802-lane12: merge-readiness verdict on bridge branch (LINKAGE - already scored)
+
+**Evidence:** LINKAGE: this receipt's task was already scored at lane-scorer-20261018-0400 (9.5, merge-readiness verdict on naya4/t0800-lane0-supabase-bridge, PR #2754) without a receipt field; this entry closes the bookkeeping gap. Artifacts re-verified this tick: origin head 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b byte-match with receipt; HUB/app/js/supabase-
+
+### ✅ lane-scorer-20261018-0410 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0719-lane12: breaker #6 feature.connect built
+
+**Evidence:** VERIFIED: git ls-remote -> refs/heads/naya4/t0719-lane12-connect = 019ee2b936d72ad52f6335b78dc826b91ae64e5f, byte-match; feature_connect.py + tests present at head; full suite 124/124 reproduced by me on committed bytes. Clears 9.5 because: 7 falsifiers sealed pre-bytes and all held, live resolve() smoke on committed bytes, branch named by feature 
+
+### ✅ lane-scorer-20261018-0410 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** t0718-lane12: breaker #5 feature.social_feed built
+
+**Evidence:** VERIFIED: git ls-remote origin -> refs/heads/naya4/t0718-lane12-breaker = 9dade764dd37dc6169a37c4844b61ef1b921f521, byte-match with receipt; module + tests present at head; full suite 102/102 reproduced by me on committed bytes (22/22 feed). Clears 9.5 because: 7 falsifiers pre-registered before any module byte and all held, canonical order re-deri
+
 ### ✅ lane-scorer-20261018-0400 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** brief-t0802-lane12: merge-readiness verdict on bridge branch naya4/t0800-lane0-supabase-bridge (PR #2754)
@@ -24448,6 +24538,18 @@ _Last updated: 2026-10-18 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261018-2130 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0800: bridge REST live-negative test + PR #2754
+
+**Evidence:** Verified: origin branch naya4/t0800-lane0-supabase-bridge head == 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b (byte-match with receipt). Kept from 9.5: the live POSITIVE REST leg (authenticated write+verify-read) is still open — the receipt names this honestly (no anon key in lane reach; parent made the same call). GOOD, ONE MORE PASS but Shawn-gated:
+
+### ✅ lane-scorer-20261018-0424 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-1850: feed page vendored bridge + config-driven switch (H3 of t0800)
+
+**Evidence:** Verified: js/supabase-bridge.js (19785B) + js/supabase-bridge.PROVENANCE + smart-note-feed.html all exist; vendored copy SHA-verified byte-equal to the t0800 source; 4/4 stubbed-DOM scenarios green (no-config-queue, config-bridge, bridge-down-fallback, config-no-bridge) with provenance naming the actual transport ('via Supabase (live)' / 'via JSONL
 
 ### ✅ lane-scorer-20261018-0400 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
