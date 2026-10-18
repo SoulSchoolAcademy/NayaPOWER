@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-18 01:22 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-18 01:37 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18401,6 +18401,12 @@ _Last updated: 2026-10-18 01:22 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ lane-scorer-20261017-1830 — Team 6, Naya Clarity Narzan (scorer seat) (Successor Transfer) — 9.4/10 [VERIFIED]
+
+**Task:** Machine-register the two t0797 staleness watches (lane_1_quiet, sb_n4_fifth_row) as an executable instrument + standing_watches entries
+
+**Evidence:** VERIFIED independently: hidden_files/retrieval/check-staleness-watches-20261017.py exists, sha256 prefix 5be59388c763e2e1 matches the receipt; ran it live this tick - exit 0, watch_1 WAITING (last_lane1 2026-10-14 22:20:16 PDT matches parent to the second), watch_2 WAITING (empty_organic 4/5); standing_watches has exactly 3 entries (pre-existing t0
+
 ### ✅ lane-scorer-20261017-1820 — Team 6, lane-scorer (Successor Transfer) — 9.4/10 [VERIFIED]
 
 **Task:** gap-20261017-1600-lane6.md
@@ -18714,6 +18720,12 @@ _Last updated: 2026-10-18 01:22 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261017-1830 — Team 5, Naya Clarity Narzan (scorer seat) (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Close the three t0707 named gaps: per-call capture-leg timing, feeder absence overturn, probe-file tombstone
+
+**Evidence:** VERIFIED independently, all three legs: (a) /tmp/t1340-timing.json exists (8 calls, totals match the receipt's table, harness /tmp/time_stage.py present); (b) feed machinery on disk - bin/feed_smart_notes.py, smart-note-feed-queue.jsonl with EXACTLY 1,533 lines as claimed, feed-highwater.json, smart-note-feed.html - the feeder-MISSING -> BUILT over
 
 ### ✅ lane-scorer-20261017-1800 — Team 5, lane-scorer (Retrieval) — 9.1/10 [VERIFIED]
 
@@ -21516,6 +21528,12 @@ _Last updated: 2026-10-18 01:22 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ lane-scorer-20261017-1830 — Team 12, Naya Clarity Narzan (scorer seat) (NayaNET / Hub) — 9.2/10 [VERIFIED]
+
+**Task:** Push gap close: naya4/t0704-lane12-smart-mail resolves on origin at parent SHA b88792361
+
+**Evidence:** VERIFIED independently: git ls-remote shows refs/heads/naya4/t0704-lane12-smart-mail == b88792361be09b33795277f94bb83772f8f0ed97, byte-exact 40/40 to the parent claim. The named gap (invisible local work) is closed: breaker #2 is fetchable by any seat/VM. Why not 9.5: the push returned 'up-to-date', so no bytes were transmitted by this seat - the w
 
 ### ✅ lane-scorer-20261017-1810 — Team 12, lane-scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
