@@ -1,0 +1,36 @@
+{
+ "blinding": "no semantic scores viewed during authoring; margins computed once post-freeze",
+ "control": "delta=2 band frozen (ov counts + stem sets byte-identical to killed pilot)",
+ "docs_per_query": 6,
+ "embedder": "sentence-transformers/all-MiniLM-L6-v2 (battery _embed, same as semantic-t0426)",
+ "margins_long": {
+  "pq01": -0.4007,
+  "pq03": 0.0119,
+  "pq07": -0.3712,
+  "pq09": -0.2659
+ },
+ "margins_short_baseline": {
+  "pq01": -0.4418,
+  "pq03": 0.0106,
+  "pq07": -0.5256,
+  "pq09": -0.2338
+ },
+ "median_long": -0.3186,
+ "median_paired_delta": 0.0212,
+ "n_queries": 4,
+ "paired_deltas": {
+  "pq01": 0.041100000000000025,
+  "pq03": 0.0013000000000000008,
+  "pq07": 0.15439999999999998,
+  "pq09": -0.03210000000000002
+ },
+ "prereg": {
+  "F-A_median_long_le_-0.15": true,
+  "F-B_zero_crossings": false,
+  "F-C_median_paired_delta_le_0.05": true
+ },
+ "probe": "t0842-longtext-regime-probe",
+ "regime_parameter": "LENGTH_FLOOR=80 words/doc (killed regime max 17)",
+ "regime_verdict": "FALSIFIED",
+ "total_docs": 24
+}
