@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-18T22:32:13+00:00",
+ "generated_utc": "2026-10-18T23:15:22+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,12 +32,6 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
-    {
-     "number": 2766,
-     "title": "[Team Verity] Naya Alpha | LEARN: land gr-w448 boardscan regression fixtures",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2766",
-     "draft": false
-    },
     {
      "number": 2755,
      "title": "docs(brain): learning event 2026-10-18",
@@ -79,9 +73,15 @@
      "title": "wire: learn-clock T6 verify + T7 compound commands (Alpha w189)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2613",
      "draft": false
+    },
+    {
+     "number": 2606,
+     "title": "feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG override",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2606",
+     "draft": true
     }
    ],
-   "open_pr_count": 61
+   "open_pr_count": 60
   },
   {
    "id": "know",
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2768,
+     "title": "[Team Verity] Naya Beta | KNOW w484: re-cut w440 leg 4 (pre-write validator gate)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2768",
+     "draft": false
+    },
+    {
      "number": 2729,
      "title": "Add team-declared worker registry; gate reads it (no more hardcoded seat blocks)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729",
@@ -457,15 +463,9 @@
      "title": "Gate reliability: transient API failures \u2192 UNKNOWN (exit 2), never wrong FAIL",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690",
      "draft": false
-    },
-    {
-     "number": 2681,
-     "title": "Teach fail-closed gates quota-vs-permission 403 (INCONCLUSIVE/RETRY)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2681",
-     "draft": false
     }
    ],
-   "open_pr_count": 124
+   "open_pr_count": 125
   },
   {
    "id": "team",

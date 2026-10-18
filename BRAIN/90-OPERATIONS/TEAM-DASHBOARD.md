@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-18 22:31 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-18 23:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 630 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (61)
-- [#2766](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2766) [Team Verity] Naya Alpha | LEARN: land gr-w448 boardscan regression fi
+### LEARN (60)
 - [#2755](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2755) docs(brain): learning event 2026-10-18
 - [#2743](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2743) docs: define NayaNET build-see-learn-share product loop
 - [#2720](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2720) docs(brain): learning event 2026-10-17
 - [#2693](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2693) docs(brain): learning event 2026-10-15 📝draft
-- …and 56 more
+- [#2682](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682) feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3
+- …and 55 more
 
 ### KNOW (25)
 - [#2760](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2760) fix(compound-scale): hermetic citation fixtures + freshness CI gate (c
@@ -95,13 +95,13 @@
 - [#2748](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748) Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT — the system tha
 - …and 236 more
 
-### WIRE (124)
+### WIRE (125)
+- [#2768](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2768) [Team Verity] Naya Beta | KNOW w484: re-cut w440 leg 4 (pre-write vali
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
 - [#2724](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724) fix(gate): receipt-pin reads live PR body, not frozen event payload
 - [#2717](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717) Consensus gate: parse 12-lane seat tags + brief-time author-seat check
 - [#2697](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697) HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate
-- [#2696](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696) fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wa
-- …and 119 more
+- …and 120 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
