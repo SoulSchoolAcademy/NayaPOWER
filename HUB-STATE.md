@@ -1,11 +1,11 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-18 04:23 UTC · tip `8cac435a052d` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-18 05:23 UTC · tip `8cac435a052d` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionable** missions and **0 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
-- Active wave: **330** (Naya Host, Naya Archivist, Naya Keeper)
+- Active wave: **none — supervisor will dispatch** (Naya Host, Naya Archivist, Naya Keeper)
 - Main tip: `8cac435a052d`
 - Queue: 0 actionable · 0 proposed
 
@@ -22,9 +22,9 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionabl
 - ○ **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 8.5 · 78 waves
 - ○ **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 9.5 · 78 waves
 - ○ **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 9.5 · 78 waves
-- 🐝 ON WAVE **Naya Host** (PRODUCT) — A human can see the intelligence working · score 9.0 · 82 waves
-- 🐝 ON WAVE **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 9.5 · 82 waves
-- 🐝 ON WAVE **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.0 · 81 waves
+- 🐝 ON WAVE **Naya Host** (PRODUCT) — A human can see the intelligence working · score 9.0 · 83 waves
+- 🐝 ON WAVE **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 9.5 · 83 waves
+- 🐝 ON WAVE **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.0 · 82 waves
 
 ## THE HIVE (learnings)
 - Lessons filed (all time, this log): ~94
