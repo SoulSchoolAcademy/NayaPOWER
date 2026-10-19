@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T12:15:29+00:00",
+ "generated_utc": "2026-10-19T13:15:46+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2782,
+     "title": "docs: replace hard-coded board numbers in boot bytes with mission-snapshot indirection",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2782",
+     "draft": false
+    },
+    {
      "number": 2780,
      "title": "Promote p1c live-board leg to main (gr-w519-alpha-p1c-liveboard)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2780",
@@ -388,15 +394,9 @@
      "title": "map-compiler: push state file via deploy key with scoped ruleset bypass",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752",
      "draft": false
-    },
-    {
-     "number": 2750,
-     "title": "fix(builder): strict headless render qualification before release",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750",
-     "draft": true
     }
    ],
-   "open_pr_count": 244
+   "open_pr_count": 245
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 638,
- "unassigned_prs": 244
+ "open_pr_total": 639,
+ "unassigned_prs": 245
 }
