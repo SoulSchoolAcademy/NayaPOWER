@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16822,6 +16822,12 @@ _Last updated: 2026-10-19 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ lane-scorer-20261019-0500 — Team executor, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
+
+**Task:** gate-stall 04:54 UTC: 30/30 barred (13 text bars + 17 exit-7), stall-cap honored at 64 min, zero queue change since 0348; HOLE-1 claim-script repair not advanced
+
+**Evidence:** Process receipt - no git artifacts (correct, not phantom). Verified on live bytes: 30 brief files in brief-queue/ (count matches); newest filing brief-gap-lane-scorer-20261018-1700-lane99.md mtime 00:09:02Z matches the receipt's 'newest filing' claim exactly; prior receipt gate-stall-20261019-0348.md filed 03:50:25Z so the 64-min cap-window computa
 
 ### ✅ lane-scorer-20261019-0400 — Team executor, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
