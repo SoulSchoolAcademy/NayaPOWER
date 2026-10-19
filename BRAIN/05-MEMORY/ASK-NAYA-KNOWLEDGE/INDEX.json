@@ -1,285 +1,60 @@
 {
  "updated": "2026-10-19",
- "count": 49,
+ "count": 59,
  "entries": [
   {
-   "id": "unified-what-is-nayapower",
-   "file": "unified-what-is-nayapower.md",
-   "question": "What is NayaPOWER?",
+   "id": "awesome",
+   "file": "awesome.md",
+   "question": "What makes somebody awesome?",
    "keywords": [
-    "nayapower",
-    "nayapower?",
-    "what is nayapower?"
+    "awesome",
+    "awesomeness",
+    "hundred",
+    "100",
+    "traits",
+    "character"
    ]
   },
   {
-   "id": "unified-smart-notes",
-   "file": "unified-smart-notes.md",
-   "question": "Smart Notes",
+   "id": "can-i-use-nayanet-on-my-phone",
+   "file": "can-i-use-nayanet-on-my-phone.md",
+   "question": "Can I use NayaNET on my phone?",
    "keywords": [
-    "what is a smart note",
-    "smart notes",
-    "smart note"
+    "can i use nayanet on my phone",
+    "phone",
+    "mobile",
+    "install the app",
+    "pwa",
+    "iphone",
+    "android",
+    "app store"
    ]
   },
   {
-   "id": "unified-intelligent-blocks",
-   "file": "unified-intelligent-blocks.md",
-   "question": "Intelligent Blocks",
+   "id": "compare",
+   "file": "compare.md",
+   "question": "How is Naya different from other AI?",
    "keywords": [
-    "intelligent blocks"
-   ]
-  },
-  {
-   "id": "unified-super-brain",
-   "file": "unified-super-brain.md",
-   "question": "The Super Brain",
-   "keywords": [
-    "the super brain"
-   ]
-  },
-  {
-   "id": "unified-how-naya-learns",
-   "file": "unified-how-naya-learns.md",
-   "question": "How Naya Learns",
-   "keywords": [
-    "how does naya learn",
-    "naya learn",
-    "how naya learns"
-   ]
-  },
-  {
-   "id": "unified-vs-chatgpt",
-   "file": "unified-vs-chatgpt.md",
-   "question": "vs ChatGPT",
-   "keywords": [
-    "vs chatgpt",
-    "naya vs chatgpt"
-   ]
-  },
-  {
-   "id": "unified-smart-spaces",
-   "file": "unified-smart-spaces.md",
-   "question": "Smart Spaces",
-   "keywords": [
-    "smart spaces"
-   ]
-  },
-  {
-   "id": "unified-smart-mail",
-   "file": "unified-smart-mail.md",
-   "question": "Smart Mail",
-   "keywords": [
-    "smart mail"
-   ]
-  },
-  {
-   "id": "unified-smart-lists",
-   "file": "unified-smart-lists.md",
-   "question": "Smart Lists",
-   "keywords": [
-    "smart lists"
-   ]
-  },
-  {
-   "id": "unified-smart-tabs",
-   "file": "unified-smart-tabs.md",
-   "question": "Smart Tabs",
-   "keywords": [
-    "smart tabs"
-   ]
-  },
-  {
-   "id": "unified-smart-connect",
-   "file": "unified-smart-connect.md",
-   "question": "Smart Connect",
-   "keywords": [
-    "smart connect"
-   ]
-  },
-  {
-   "id": "unified-get-started",
-   "file": "unified-get-started.md",
-   "question": "Get Started",
-   "keywords": [
-    "get started"
-   ]
-  },
-  {
-   "id": "found-nayapower",
-   "file": "found-nayapower.md",
-   "question": "What is NayaPOWER?",
-   "keywords": [
-    "nayapower",
-    "naya power",
-    "what is nayapower",
-    "what is naya power"
-   ]
-  },
-  {
-   "id": "found-nayanet",
-   "file": "found-nayanet.md",
-   "question": "What is NayaNET?",
-   "keywords": [
-    "nayanet",
-    "naya net",
-    "what is nayanet",
-    "what is naya net"
-   ]
-  },
-  {
-   "id": "found-chatgpt",
-   "file": "found-chatgpt.md",
-   "question": "How is Naya different from ChatGPT?",
-   "keywords": [
+    "different",
+    "other ai",
     "chatgpt",
-    "different from chatgpt",
-    "vs chatgpt",
     "versus",
-    "compare",
-    "difference"
+    "vs",
+    "compare"
    ]
   },
   {
-   "id": "found-started",
-   "file": "found-started.md",
-   "question": "How do I get started?",
+   "id": "decide",
+   "file": "decide.md",
+   "question": "What should I do about my biggest decision?",
    "keywords": [
-    "get started",
-    "getting started",
-    "how do i start",
-    "begin",
-    "start"
-   ]
-  },
-  {
-   "id": "faq-feat-01",
-   "file": "faq-feat-01.md",
-   "question": "What is Smart Note?",
-   "keywords": [
-    "smart",
-    "tell me about smart note",
-    "what is smart note",
-    "smart note"
-   ]
-  },
-  {
-   "id": "faq-feat-au",
-   "file": "faq-feat-au.md",
-   "question": "What is AI Unifying?",
-   "keywords": [
-    "what is ai unifying",
-    "unifying",
-    "tell me about ai unifying",
-    "ai unifying"
-   ]
-  },
-  {
-   "id": "faq-feat-02",
-   "file": "faq-feat-02.md",
-   "question": "What is Compounding Intelligence System?",
-   "keywords": [
-    "compounding",
-    "tell me about compounding intelligence system",
-    "what is compounding intelligence system",
-    "system",
-    "compounding intelligence system",
-    "intelligence"
-   ]
-  },
-  {
-   "id": "faq-feat-03",
-   "file": "faq-feat-03.md",
-   "question": "What is Adaptive Learning?",
-   "keywords": [
-    "learning",
-    "tell me about adaptive learning",
-    "adaptive learning",
-    "adaptive",
-    "what is adaptive learning"
-   ]
-  },
-  {
-   "id": "faq-feat-04",
-   "file": "faq-feat-04.md",
-   "question": "What is Intelligent Reports?",
-   "keywords": [
-    "intelligent",
-    "reports",
-    "what is intelligent reports",
-    "tell me about intelligent reports",
-    "intelligent reports"
-   ]
-  },
-  {
-   "id": "faq-feat-05",
-   "file": "faq-feat-05.md",
-   "question": "What is Smart Lists?",
-   "keywords": [
-    "tell me about smart lists",
-    "what is smart lists",
-    "lists",
-    "smart lists",
-    "smart"
-   ]
-  },
-  {
-   "id": "faq-feat-06",
-   "file": "faq-feat-06.md",
-   "question": "What is Smart Tabs?",
-   "keywords": [
-    "tell me about smart tabs",
-    "smart tabs",
-    "smart",
-    "what is smart tabs"
-   ]
-  },
-  {
-   "id": "faq-feat-07",
-   "file": "faq-feat-07.md",
-   "question": "What is Smart Mail?",
-   "keywords": [
-    "smart mail",
-    "what is smart mail",
-    "smart",
-    "tell me about smart mail"
-   ]
-  },
-  {
-   "id": "faq-feat-08",
-   "file": "faq-feat-08.md",
-   "question": "What is Smart Spaces?",
-   "keywords": [
-    "what is smart spaces",
-    "smart spaces",
-    "tell me about smart spaces",
-    "spaces",
-    "smart"
-   ]
-  },
-  {
-   "id": "faq-feat-09",
-   "file": "faq-feat-09.md",
-   "question": "What is Smart Ledger?",
-   "keywords": [
-    "smart ledger",
-    "tell me about smart ledger",
-    "ledger",
-    "what is smart ledger",
-    "smart"
-   ]
-  },
-  {
-   "id": "faq-feat-10",
-   "file": "faq-feat-10.md",
-   "question": "What is Collective Chain Technology?",
-   "keywords": [
-    "chain",
-    "what is collective chain technology",
-    "collective chain technology",
-    "technology",
-    "collective",
-    "tell me about collective chain technology"
+    "decide",
+    "decision",
+    "should i",
+    "biggest",
+    "what will",
+    "future",
+    "tomorrow"
    ]
   },
   {
@@ -453,39 +228,244 @@
    ]
   },
   {
-   "id": "nexus",
-   "file": "nexus.md",
-   "question": "What is the Human Nexus?",
+   "id": "faq-feat-01",
+   "file": "faq-feat-01.md",
+   "question": "What is Smart Note?",
    "keywords": [
-    "nexus",
-    "human nexus",
-    "collective intelligence"
+    "smart",
+    "tell me about smart note",
+    "what is smart note",
+    "smart note"
    ]
   },
   {
-   "id": "awesome",
-   "file": "awesome.md",
-   "question": "What makes somebody awesome?",
+   "id": "faq-feat-02",
+   "file": "faq-feat-02.md",
+   "question": "What is Compounding Intelligence System?",
    "keywords": [
-    "awesome",
-    "awesomeness",
-    "hundred",
-    "100",
-    "traits",
-    "character"
+    "compounding",
+    "tell me about compounding intelligence system",
+    "what is compounding intelligence system",
+    "system",
+    "compounding intelligence system",
+    "intelligence"
    ]
   },
   {
-   "id": "compare",
-   "file": "compare.md",
-   "question": "How is Naya different from other AI?",
+   "id": "faq-feat-03",
+   "file": "faq-feat-03.md",
+   "question": "What is Adaptive Learning?",
    "keywords": [
-    "different",
-    "other ai",
+    "learning",
+    "tell me about adaptive learning",
+    "adaptive learning",
+    "adaptive",
+    "what is adaptive learning"
+   ]
+  },
+  {
+   "id": "faq-feat-04",
+   "file": "faq-feat-04.md",
+   "question": "What is Intelligent Reports?",
+   "keywords": [
+    "intelligent",
+    "reports",
+    "what is intelligent reports",
+    "tell me about intelligent reports",
+    "intelligent reports"
+   ]
+  },
+  {
+   "id": "faq-feat-05",
+   "file": "faq-feat-05.md",
+   "question": "What is Smart Lists?",
+   "keywords": [
+    "tell me about smart lists",
+    "what is smart lists",
+    "lists",
+    "smart lists",
+    "smart"
+   ]
+  },
+  {
+   "id": "faq-feat-06",
+   "file": "faq-feat-06.md",
+   "question": "What is Smart Tabs?",
+   "keywords": [
+    "tell me about smart tabs",
+    "smart tabs",
+    "smart",
+    "what is smart tabs"
+   ]
+  },
+  {
+   "id": "faq-feat-07",
+   "file": "faq-feat-07.md",
+   "question": "What is Smart Mail?",
+   "keywords": [
+    "smart mail",
+    "what is smart mail",
+    "smart",
+    "tell me about smart mail"
+   ]
+  },
+  {
+   "id": "faq-feat-08",
+   "file": "faq-feat-08.md",
+   "question": "What is Smart Spaces?",
+   "keywords": [
+    "what is smart spaces",
+    "smart spaces",
+    "tell me about smart spaces",
+    "spaces",
+    "smart"
+   ]
+  },
+  {
+   "id": "faq-feat-09",
+   "file": "faq-feat-09.md",
+   "question": "What is Smart Ledger?",
+   "keywords": [
+    "smart ledger",
+    "tell me about smart ledger",
+    "ledger",
+    "what is smart ledger",
+    "smart"
+   ]
+  },
+  {
+   "id": "faq-feat-10",
+   "file": "faq-feat-10.md",
+   "question": "What is Collective Chain Technology?",
+   "keywords": [
+    "chain",
+    "what is collective chain technology",
+    "collective chain technology",
+    "technology",
+    "collective",
+    "tell me about collective chain technology"
+   ]
+  },
+  {
+   "id": "faq-feat-au",
+   "file": "faq-feat-au.md",
+   "question": "What is AI Unifying?",
+   "keywords": [
+    "what is ai unifying",
+    "unifying",
+    "tell me about ai unifying",
+    "ai unifying"
+   ]
+  },
+  {
+   "id": "found-chatgpt",
+   "file": "found-chatgpt.md",
+   "question": "How is Naya different from ChatGPT?",
+   "keywords": [
     "chatgpt",
+    "different from chatgpt",
+    "vs chatgpt",
     "versus",
-    "vs ",
-    "compare"
+    "compare",
+    "difference"
+   ]
+  },
+  {
+   "id": "found-nayanet",
+   "file": "found-nayanet.md",
+   "question": "What is NayaNET?",
+   "keywords": [
+    "nayanet",
+    "naya net",
+    "what is nayanet",
+    "what is naya net"
+   ]
+  },
+  {
+   "id": "found-nayapower",
+   "file": "found-nayapower.md",
+   "question": "What is NayaPOWER?",
+   "keywords": [
+    "nayapower",
+    "naya power",
+    "what is nayapower",
+    "what is naya power"
+   ]
+  },
+  {
+   "id": "found-started",
+   "file": "found-started.md",
+   "question": "How do I get started?",
+   "keywords": [
+    "get started",
+    "getting started",
+    "how do i start",
+    "begin",
+    "start"
+   ]
+  },
+  {
+   "id": "how-do-i-build-my-own-app",
+   "file": "how-do-i-build-my-own-app.md",
+   "question": "How do I build my own app?",
+   "keywords": [
+    "how do i build my own app",
+    "build my own app",
+    "create an app",
+    "make a page",
+    "build a page",
+    "create a page"
+   ]
+  },
+  {
+   "id": "how-do-i-connect-github",
+   "file": "how-do-i-connect-github.md",
+   "question": "How do I connect GitHub?",
+   "keywords": [
+    "how do i connect github",
+    "connect github",
+    "github connect",
+    "link github",
+    "install github app",
+    "hook up github"
+   ]
+  },
+  {
+   "id": "how-do-i-share-my-page",
+   "file": "how-do-i-share-my-page.md",
+   "question": "How do I share my page with others?",
+   "keywords": [
+    "how do i share my page",
+    "share my page",
+    "share",
+    "send my page",
+    "invite people",
+    "share link"
+   ]
+  },
+  {
+   "id": "how-does-smart-note-this-work",
+   "file": "how-does-smart-note-this-work.md",
+   "question": "How does \u201csmart note this\u201d work?",
+   "keywords": [
+    "how does smart note this work",
+    "smart note this",
+    "capture a note",
+    "how do notes work",
+    "take a note"
+   ]
+  },
+  {
+   "id": "is-my-data-private",
+   "file": "is-my-data-private.md",
+   "question": "Is my data private?",
+   "keywords": [
+    "is my data private",
+    "privacy",
+    "private",
+    "who sees my data",
+    "data privacy",
+    "is my stuff private"
    ]
   },
   {
@@ -502,6 +482,27 @@
    ]
   },
   {
+   "id": "naya-app-vs-website",
+   "file": "naya-app-vs-website.md",
+   "question": "What is the difference between a Naya app and a website?",
+   "keywords": [
+    "difference between naya app and website",
+    "naya app vs website",
+    "why not a website",
+    "website vs app"
+   ]
+  },
+  {
+   "id": "nexus",
+   "file": "nexus.md",
+   "question": "What is the Human Nexus?",
+   "keywords": [
+    "nexus",
+    "human nexus",
+    "collective intelligence"
+   ]
+  },
+  {
    "id": "purpose",
    "file": "purpose.md",
    "question": "What is your purpose?",
@@ -514,6 +515,148 @@
    ]
   },
   {
+   "id": "unified-get-started",
+   "file": "unified-get-started.md",
+   "question": "Get Started",
+   "keywords": [
+    "get started"
+   ]
+  },
+  {
+   "id": "unified-how-naya-learns",
+   "file": "unified-how-naya-learns.md",
+   "question": "How Naya Learns",
+   "keywords": [
+    "how does naya learn",
+    "naya learn",
+    "how naya learns"
+   ]
+  },
+  {
+   "id": "unified-intelligent-blocks",
+   "file": "unified-intelligent-blocks.md",
+   "question": "Intelligent Blocks",
+   "keywords": [
+    "intelligent blocks"
+   ]
+  },
+  {
+   "id": "unified-smart-connect",
+   "file": "unified-smart-connect.md",
+   "question": "Smart Connect",
+   "keywords": [
+    "smart connect"
+   ]
+  },
+  {
+   "id": "unified-smart-lists",
+   "file": "unified-smart-lists.md",
+   "question": "Smart Lists",
+   "keywords": [
+    "smart lists"
+   ]
+  },
+  {
+   "id": "unified-smart-mail",
+   "file": "unified-smart-mail.md",
+   "question": "Smart Mail",
+   "keywords": [
+    "smart mail"
+   ]
+  },
+  {
+   "id": "unified-smart-notes",
+   "file": "unified-smart-notes.md",
+   "question": "Smart Notes",
+   "keywords": [
+    "what is a smart note",
+    "smart notes",
+    "smart note"
+   ]
+  },
+  {
+   "id": "unified-smart-spaces",
+   "file": "unified-smart-spaces.md",
+   "question": "Smart Spaces",
+   "keywords": [
+    "smart spaces"
+   ]
+  },
+  {
+   "id": "unified-smart-tabs",
+   "file": "unified-smart-tabs.md",
+   "question": "Smart Tabs",
+   "keywords": [
+    "smart tabs"
+   ]
+  },
+  {
+   "id": "unified-super-brain",
+   "file": "unified-super-brain.md",
+   "question": "The Super Brain",
+   "keywords": [
+    "the super brain"
+   ]
+  },
+  {
+   "id": "unified-vs-chatgpt",
+   "file": "unified-vs-chatgpt.md",
+   "question": "vs ChatGPT",
+   "keywords": [
+    "vs chatgpt",
+    "naya vs chatgpt"
+   ]
+  },
+  {
+   "id": "unified-what-is-nayapower",
+   "file": "unified-what-is-nayapower.md",
+   "question": "What is NayaPOWER?",
+   "keywords": [
+    "nayapower",
+    "nayapower?",
+    "what is nayapower?"
+   ]
+  },
+  {
+   "id": "what-can-i-connect-to-nayanet",
+   "file": "what-can-i-connect-to-nayanet.md",
+   "question": "What can I connect to NayaNET?",
+   "keywords": [
+    "what can i connect to nayanet",
+    "connect my services",
+    "integrations",
+    "connect google",
+    "what connects",
+    "hook up"
+   ]
+  },
+  {
+   "id": "what-is-personal-smart-app",
+   "file": "what-is-a-personal-smart-app.md",
+   "question": "What is a personal smart app?",
+   "keywords": [
+    "personal app",
+    "personal smart app",
+    "what is a personal app",
+    "my page",
+    "personal page",
+    "what is my page"
+   ]
+  },
+  {
+   "id": "what-is-smart-factory",
+   "file": "what-is-the-smart-factory.md",
+   "question": "What is the Smart Factory?",
+   "keywords": [
+    "smart factory",
+    "what is the smart factory",
+    "factory",
+    "build app",
+    "app builder",
+    "how are apps built"
+   ]
+  },
+  {
    "id": "zeropoint",
    "file": "zeropoint.md",
    "question": "What is the Zero Point?",
@@ -523,20 +666,6 @@
     "sovereignty",
     "stillness",
     "breathe"
-   ]
-  },
-  {
-   "id": "decide",
-   "file": "decide.md",
-   "question": "What should I do about my biggest decision?",
-   "keywords": [
-    "decide",
-    "decision",
-    "should i",
-    "biggest",
-    "what will",
-    "future",
-    "tomorrow"
    ]
   }
  ]
