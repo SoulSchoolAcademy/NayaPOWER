@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 07:14 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 08:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 636 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 635 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,16 +87,16 @@
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - …and 26 more
 
-### BUILD (243)
+### BUILD (242)
 - [#2777](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2777) ACT: pr_body_selfcheck --head liveness warning (warn-never-fail)
 - [#2773](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2773) Nitro/premade functions v1
 - [#2772](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2772) test(builder): make template unit tests independent of shell cwd 📝draft
 - [#2771](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2771) DEC-5/6/7/9: align merge-bar constants and law text to ratified 9.5
 - [#2752](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752) map-compiler: push state file via deploy key with scoped ruleset bypas
-- …and 238 more
+- …and 237 more
 
 ### WIRE (126)
-- [#2770](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2770) Land intake-page-v5/ + intake-contract-emitter-gate (Zeta w473/w494)
+- [#2778](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2778) law: correct seat-count prose in consensus-gate registry (15 -> 18)
 - [#2768](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2768) [Team Verity] Naya Beta | KNOW w484: re-cut w440 leg 4 (pre-write vali
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
 - [#2724](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724) fix(gate): receipt-pin reads live PR body, not frozen event payload

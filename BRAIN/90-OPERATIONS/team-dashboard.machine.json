@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T07:15:16+00:00",
+ "generated_utc": "2026-10-19T08:15:37+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -396,7 +396,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 243
+   "open_pr_count": 242
   },
   {
    "id": "wire",
@@ -417,9 +417,9 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
-     "number": 2770,
-     "title": "Land intake-page-v5/ + intake-contract-emitter-gate (Zeta w473/w494)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2770",
+     "number": 2778,
+     "title": "law: correct seat-count prose in consensus-gate registry (15 -> 18)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2778",
      "draft": false
     },
     {
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 636,
- "unassigned_prs": 243
+ "open_pr_total": 635,
+ "unassigned_prs": 242
 }
