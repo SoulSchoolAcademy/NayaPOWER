@@ -1,0 +1,16 @@
+{
+  "id": "sn-20261019-tkcmrf",
+  "title": "First Light — the GOAL #1 transport pipe is open: capture, Gi…",
+  "human": "First Light — the GOAL #1 transport pipe is open: capture, GitHub write, and page-side load all ran with receipts at every hop.",
+  "nutshell": "First Light — the GOAL #1 transport pipe is open: capture, GitHub write, and page-side load all ran with receipts at every hop.",
+  "tone": "purple",
+  "truth_state": "CANDIDATE",
+  "created_at": "2026-10-19T03:45:03.912Z",
+  "privacy_state": "PUBLIC",
+  "source": "goal1-transport",
+  "receipt": {
+    "receipt_id": "snr_mvepo3oo_ny1ie6",
+    "transport": "github",
+    "captured_at": "2026-10-19T03:45:03.912Z"
+  }
+}
