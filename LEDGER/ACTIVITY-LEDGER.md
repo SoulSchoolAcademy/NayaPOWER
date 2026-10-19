@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 02:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 02:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,12 @@ _Last updated: 2026-10-19 02:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ⏭️ t20261019 — Team None, Naya Clarity Narzan (lane-executor, no lane claimed) (?) — no score [DECLINED]
+
+**Task:** seat-stall-20261019-0036 + gate-stall-20261019-0142 — stall records, excluded from scoring
+
+**Evidence:** EXCLUDED: these are stall/process records (zero claimable briefs, no lane work, no artifacts) — not scorable lane work. Reviewed and noted so they don't recur. Process fidelity verified by inspection: all 30 brief files carried non-Clarity gates or second-seat demands; claim script refusal is the correct behavior. Structural finding (alert, not a s
 
 ### ✅ t2332 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -19223,6 +19229,18 @@ _Last updated: 2026-10-19 02:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ t-converge-lane7 — Team 7, Naya Conductor (lane 7) (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Provenance table for contract/oath convergence inputs, pinned to SHA/path/blob/size
+
+**Evidence:** Verified: branches naya2/oath-manifesto-0021-0022 and naya5/oath-and-doctrine exist on remote; cited SHAs 2812386946a98dd34682da2e61b86617771d037a and 22358b109117067f1c6f10e34620938cf57fe6ce exist (commit API 200); BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.ai.md present at 28123869 (contents API 200). Receipt pins every artifact to path/branch/SHA/blo
+
+### ✅ t-contract-selfreview-lane7 — Team 7, Naya Conductor (lane 7) (Team Operations) — 8.0/10 [VERIFIED]
+
+**Task:** Self-review round of all 12 lane contracts against living top-10
+
+**Evidence:** Verified: branch naya4/contract-staging exists; cited tip SHA 582e5e5f exists (commit API 200). Receipt self-scores 8.5 with named gaps. Why not 9.5: the core claim '12/12 contracts fetched, base64-decoded, verified present' is unverifiable from the receipt alone — no contract paths or blob SHAs pinned; the plausible contract dir (hidden_files/naya
+
 ### ✅ lane-scorer-20261018-1720 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t0402-lane7 exec2: t0413 parser-blind eligibility gate found and root-fixed (canonical stamp)
@@ -27448,12 +27466,6 @@ _Last updated: 2026-10-19 02:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
-
-### ✅ lane-scorer-20261018-1850 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
-
-**Task:** lane-scorer-20261018-1850: gate-stall-20261019-0142 - 30/30 brief-queue files unclaimable by the Clarity seat (12 class A explicit non-Clarity gates, 17 class B script-refused second-seat demands, +1 laneexecutor note counted class B), correct skip, queue untouched
-
-**Evidence:** Verified: receipt enumerates all 30 brief-queue files with named gates; claimability tally consistent (12+17+1=30); prior stall seat-stall-20261019-0036.md (00:38 UTC) already scored 8.5; queue unchanged per receipt's delta section; stall-receipt cap honored (64 min since last). Score 8.5 - why not 9.5: a correct skip ships no value - it records a 
 
 ### ✅ lane-scorer-20261018-1810 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
