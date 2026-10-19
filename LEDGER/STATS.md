@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-19 22:13 UTC_
+_Last updated: 2026-10-19 22:33 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 4466
-- ✅ Verified (8+): 4423
+- **Total scored actions:** 4502
+- ✅ Verified (8+): 4459
 - 🟡 Partial (5–7): 42
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,16 +15,16 @@ _Last updated: 2026-10-19 22:13 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 340 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 341 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 324 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 289 | 9.0 | 9.5 |
+| Team 3 | Naya Judge | 294 | 9.0 | 9.5 |
 | Team 4 | Naya Mason | 278 | 9.0 | 9.6 |
 | Team 5 | Naya Seeker | 433 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 227 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 308 | 9.0 | 9.5 |
-| Team 8 | Naya Sentinel | 324 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 326 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 421 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 447 | 9.1 | 9.6 |
+| Team 10 | Naya Librarian | 475 | 9.1 | 9.6 |
 | Team 11 | Naya Heart | 247 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 277 | 9.2 | 9.5 |
 
@@ -358,6 +358,7 @@ _Last updated: 2026-10-19 22:13 UTC_
 - **lane-scorer-20261019-1220:** 27 actions, avg 9.1/10
 - **lane-scorer-20261019-1240:** 2 actions, avg 9.2/10
 - **lane-scorer-20261019-1320:** 4 actions, avg 8.8/10
+- **scorer-20261019-1520:** 35 actions, avg 9.4/10
 - **scorer-20261014-1520:** 2 actions, avg 9.2/10
 - **scorer-20261014-1540:** 3 actions, avg 8.5/10
 - **gap-t0771:** 2 actions, avg 9.0/10
@@ -778,6 +779,7 @@ _Last updated: 2026-10-19 22:13 UTC_
 - **gap-lane-scorer-20261018-0240-lane8:** 1 actions, avg 9.0/10
 - **gap-20261018-1050-lane8:** 1 actions, avg 9.0/10
 - **gap-scorer-20261014-2100-lane8:** 1 actions, avg 8.5/10
+- **scorer-20261019-1530:** 1 actions, avg 9.4/10
 - **gap-t0776:** 3 actions, avg 9.0/10
 - **scorer-20261014-1830:** 1 actions, avg 9.5/10
 - **gap-scorer-20261015-0050:** 1 actions, avg 9.5/10
