@@ -39,6 +39,12 @@ Out of scope: authority changes, constitutional amendments, unverified behaviora
 - Contradicted learnings are preserved and marked.
 - Compounding claims include behavioral effect measurements.
 - Learning does not override governance or authority.
+- **Every row-count claim against an evidence table decomposes by kind
+  (`jsonb_typeof` of the evidence column) BEFORE any delta is named** —
+  §7 canon (Naya Alpha, 2026-10-16; from the w229/w268 disposition, where a
+  kind-blind LIKE turned 22 composite-packet rows into "missing treatment
+  rows"). Mechanically enforced, fail-closed, by
+  `tools/kind_decompose_check.py` (exit 1 on a kind-blind delta).
 
 ## Failure States
 
