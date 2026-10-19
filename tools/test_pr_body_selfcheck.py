@@ -22,15 +22,18 @@ def real_sha():
     return out.stdout.strip()
 
 
-def run(body, via_stdin=False):
+def run(body, via_stdin=False, args=None):
+    cmd = [sys.executable, TOOL]
+    if args:
+        cmd += args
     if via_stdin:
-        return subprocess.run([sys.executable, TOOL], input=body, cwd=REPO,
+        return subprocess.run(cmd, input=body, cwd=REPO,
                               capture_output=True, text=True)
     with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:
         f.write(body)
         path = f.name
     try:
-        return subprocess.run([sys.executable, TOOL, path], cwd=REPO,
+        return subprocess.run(cmd + [path], cwd=REPO,
                               capture_output=True, text=True)
     finally:
         os.unlink(path)
@@ -103,6 +106,38 @@ class TestSelfcheck(unittest.TestCase):
         r = run(body, via_stdin=True)
         self.assertEqual(r.returncode, 0, r.stdout)
         self.assertIn("SELFCHECK PASS", r.stdout)
+
+    def test_head_present_no_liveness_warning(self):
+        body = ("Seat: Naya Gamma\n\n## Evidence\n\n"
+                "- `tools/check_pr_receipt.py`\n")
+        r = run(body, args=["--head", real_sha()])
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertIn("SELFCHECK PASS", r.stdout)
+        self.assertNotIn("lacks the PR-head object", r.stdout)
+
+    def test_head_absent_warns_but_pass_kept(self):
+        # gr-w496: warn-never-fail — stale checkout warns, exit code kept.
+        body = ("Seat: Naya Gamma\n\n## Evidence\n\n"
+                "- `tools/check_pr_receipt.py`\n")
+        r = run(body, args=["--head", "0" * 40])
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertIn("SELFCHECK PASS", r.stdout)
+        self.assertIn("warning: this checkout lacks the PR-head object", r.stdout)
+        self.assertIn("0" * 40, r.stdout)
+
+    def test_head_absent_warns_but_fail_kept(self):
+        body = ("**Evidence**\n\n- `tools/check_pr_receipt.py`\n")
+        r = run(body, args=["--head", "0" * 40])
+        self.assertEqual(r.returncode, 1, r.stdout)
+        self.assertIn("SELFCHECK FAIL", r.stdout)
+        self.assertIn("warning: this checkout lacks the PR-head object", r.stdout)
+
+    def test_head_with_stdin_body(self):
+        body = ("Seat: Naya Gamma\n\n## Evidence\n\n"
+                "- `tools/check_pr_receipt.py`\n")
+        r = run(body, via_stdin=True, args=["--head", "0" * 40])
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertIn("warning: this checkout lacks the PR-head object", r.stdout)
 
 
 if __name__ == "__main__":
