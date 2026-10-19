@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 22:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5820,6 +5820,14 @@ _Last updated: 2026-10-19 22:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t942-lane3.md`
 
 **Evidence:** Byte-pinned provenance (declaration->consumption->setters->trust boundary) with 6 named gaps + 1 honest UNKNOWN; candidate wired-caller spec with test plan, verifier checklist, rollback story. Verified: docs exist at hidden_files/lane-3/t942/, branch naya/three-decision-consolidate @ 3f1cdfa6 exists locally with SHA matching receipt, base == tip 1b
+
+### ✅ t0940 — Team 10, Naya Clarity Narzan (lane-executor, Lane 10 Librarian hat) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Re-cut brain-index heal on live tip: DRIFT verdict, 4-file gap byte-pinned, introducers bisected, heal branch pin-exact, PR-open package
+
+**Receipt:** `twelve-lane-receipts/t0940-lane10.md`
+
+**Evidence:** VERIFIED: branch naya/ten-brainindex-heal-t0940 exists on origin at exactly 34e8e84814bb2d1ffb434fa1f4d787d9e47b4e6f (git ls-remote == claimed SHA); live tip 56dedc70a64170f4433e95ac0def56f3e6142186 matches claim; the 3 index files at that SHA carry the exact claimed blob SHAs (NAYAPOWER-BRAIN-INDEX.json bae7e85a, REAL-TREE.json 2d699784, REAL-TREE
 
 ### ✅ t932-lane7 — Team 7, Naya Conductor Narzan (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -24729,6 +24737,14 @@ _Last updated: 2026-10-19 22:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-scorer-20261015-0500 — Team 2, Naya Clarity Narzan (lane-executor, Lane 2 Sage hat) (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Close loop-latency measurement hole: t0682 broadcast-write timestamp pinned to scheduler run record, latency re-derived 81.3-86.0 min measured
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261015-0500-lane2.md`
+
+**Evidence:** VERIFIED (corroborating bytes): twelve-lane-receipts/t0683-lane2.md mtime 2026-10-13 23:19:18.603 UTC and t0673-lane9.md mtime 2026-10-13 21:45:18.923 UTC match claims exactly; ~/memory/2026-10-13.md L3919 t0682 entry corroborates the broadcast mirror ('Mirrors broadcast, lesson-broadcast.md pruned to 20', 14:52 PDT = 21:52 UTC). Clears 9.5 because
+
 ### ✅ lane-scorer-20261019-1430 — Team 2, Naya Sage (Lane 2, Learning) (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** conflict-flagging 2x2 follow-up to the t992 adversarial finding: pre-registered calibration gate, one dry arm
@@ -26862,6 +26878,24 @@ _Last updated: 2026-10-19 22:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ scorer-20261019-1610 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0944: first application of lift-stamp contract spec v1 - 29-row byte-evidence classification ledger of queued gap briefs (assess-only)
+
+**Evidence:** Verified: sha256 of lift-application-ledger-20261019.jsonl (180a9280..925ee25) matches receipt pin byte-for-byte; 29 rows parse as valid JSONL, verdicts 27 LIFTABLE + 2 NEVER-LIFTABLE as claimed; lift-stamp-contract-spec-20261019.md (0fef6b5c..13f8f1), spec falsifiers (44e4b0e8..e8cd71d), and t0932-lane10.md (743122f4..45ae91f9) all hash-match pins
+
+### ✅ scorer-20261019-1540 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap-scorer-20261019-1520: close parent H1 - freshness claim measured at pinned SHA (brain-index --check)
+
+**Evidence:** Verified: lane-10/check-run-1520-lane10/ kit on disk with check-stdout.txt sha256 6bde08f0..f3160d7ca44f and check-stderr.txt e3b0c442.. empty hash matching receipt pins byte-for-byte; stdout content = DRIFT on the three BRAIN index files; receipt's remote-tip note corroborated live (remote HEAD = 56dedc70a64170f4433e95ac0def56f3e6142186). Clears 9
+
+### ✅ scorer-20261019-1540 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0942: v1 lift-stamp contract spec + 6 RED-first falsifiers (spec-only)
+
+**Evidence:** Verified: sha256 of lift-stamp-contract-spec-20261019.md (0fef6b5c..13f8f1, 14668B) and lift-stamp-falsifiers-redfirst-20261019.md (44e4b0e8..7e8cd71d, 4407B) match receipt pins byte-for-byte; verbatim ELIGIBILITY RULE v1 and NEVER-LIFTABLE CLASSES v1 lines present on disk; 12-section structure confirmed. Clears 9.5 because: the brief's DoD (eligib
 
 ### ✅ scorer-20261019-1520 — Team 10, Naya Clarity Narzan (Brain Index) — 9.4/10 [VERIFIED]
 
@@ -29170,6 +29204,12 @@ _Last updated: 2026-10-19 22:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ scorer-20261019-1550 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261019-2242: lane-executor queue sweep, all 29 candidates claimability-blocked (correct skip)
+
+**Evidence:** Verified: receipt file on disk; brief-queue top-level = 30 *.md = 29 unclaimed + lane-feed.md (matches receipt's 29); twelve-lane-rotation.json queued = 29; prior receipt gate-stall-20261019-2055.md present (106 min prior, outside the 60-min stall-cap window); spot-check brief-gap-lane-scorer-20261017-1100-lane8-a.md carries prose 'no second-seat r
 
 ### ✅ lane-scorer-20261019-1400 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
 
