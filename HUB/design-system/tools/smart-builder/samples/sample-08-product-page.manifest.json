@@ -1,0 +1,27 @@
+{
+  "contract": {
+    "path": "contracts/samples/sample-08-product-page.json",
+    "sha256": "1c205fd11071cc57be322f5dc76511810163d47ea90e0f6d9b27c2728a91c552"
+  },
+  "resolution": {
+    "pieces": [
+      "NAYA-CRD-012",
+      "NAYA-JWL-002",
+      "NAYA-PAY-001",
+      "NAYA-BTN-014",
+      "NAYA-PAY-002",
+      "NAYA-PAY-003"
+    ],
+    "piece_count": 6
+  },
+  "build": {
+    "assembler": "assemble-v1.14",
+    "template_sha256": "f4e53bc6c49673ef2c108af91da8547882fa950dce14e7b1aeb900f0b372da83",
+    "page": {
+      "path": "samples/sample-08-product-page.html",
+      "bytes": 19577,
+      "sha256": "8e91ae27b03764e29efd41e243021cba199ab89a3b3006b467b4f3d46935aae6"
+    }
+  },
+  "verification": "pending \u2014 screenshot + diff check"
+}

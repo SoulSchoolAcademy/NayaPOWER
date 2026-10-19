@@ -81,6 +81,9 @@ REGISTER = {
     "cart": ("cart", "f-28-cart.js"),
     "contract-draft": ("contract-draft", "f-29-contract-draft.js"),
     "join": ("f-30-join", "f-30-join.js"),
+    "ask-naya": ("f-31-ask-naya", "f-31-ask-naya.js"),
+    "guard": ("f-32-guard", "f-32-guard.js"),
+    "calendar": ("f-33-calendar", "f-33-calendar.js"),
 }
 
 NO_UNIT_PREFIX = "!no-unit:"
@@ -96,9 +99,12 @@ BLUEPRINTS = {
         "sections": [
             ("briefing", "This morning", "Today's briefing", ["intelligence-today"], 1),
             ("capture", "Capture", "Say it before you lose it", ["dictate"], 1),
-            ("lists", "Lists", "Everything, listed", ["smart-lists"], 1),
-            ("stream", "Stream", "Your feed", ["feed"], 1),
-            ("people", "People", "Your people", ["connections", "contact", "share", "save"], 1),
+            ("lists", "Lists", "Everything, listed", ["smart-lists", "save"], 1),
+            ("stream", "Stream", "Your feed", ["feed", "share"], 1),
+            ("people", "People", "Your people", ["connections", "contact"], 1),
+            ("ask", "Ask Naya", "Your AI assistant", ["ask-naya"], 1),
+            ("calendar", "Calendar", "Your schedule", ["calendar"], 1),
+            ("profile", "Profile", "Your world, linked", ["profile-link", "smart-tabs"], 1),
         ],
     },
     "today": {
@@ -698,6 +704,22 @@ def default_config(template, contract_id, contract, blueprint, page_file):
 
     if contract_id == "search":
         return {"items": [], "placeholder": "Search...", "accent": soul}
+
+    if contract_id == "ask-naya":
+        return {"orbColor": soul, "title": "Ask Naya",
+                "greeting": "What can I help you with today?"}
+
+    if contract_id == "guard":
+        return {"level": "standard", "privacyMode": True}
+
+    if contract_id == "calendar":
+        from datetime import date as _d
+        today = _d.today().isoformat()
+        return {"view": "month", "selectable": True,
+                "events": [
+                    {"id": "e1", "title": "Morning briefing", "date": today, "time": "08:00"},
+                    {"id": "e2", "title": "Design review", "date": today, "time": "14:00"},
+                ]}
 
     if contract_id == "contact":
         who = {"business": "Copper Cup", "booking": "Wag & Shine",

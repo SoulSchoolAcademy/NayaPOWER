@@ -2,7 +2,6 @@
   "behave": "Calm, warm, fast. Nothing shouts; everything is one tap away.",
   "do": "Read the morning briefing, capture thoughts by voice, keep lists, post to the stream, reach people.",
   "functions": {
-    "!no-unit:ask-naya": true,
     "connections": true,
     "contact": true,
     "dictate": true,
@@ -11,10 +10,14 @@
     "save": true,
     "share": true,
     "smart-lists": true,
-    "smart-tabs": true
+    "smart-tabs": true,
+    "ask-naya": true,
+    "guard": true,
+    "calendar": true,
+    "profile-link": true
   },
-  "handle": "maya-designs",
-  "idea": "My whole creative life in one app — this morning's briefing, what I'm capturing, my lists, my stream, my people. One thumb, everything within reach.",
+  "handle": "naya",
+  "idea": "My whole world in one app \u2014 this morning's briefing, what I'm capturing, my lists, my stream, my people. One thumb, everything within reach.",
   "pieces": [
     {
       "model": "NAYA-JWL-001",
@@ -37,5 +40,5 @@
   },
   "template": "personal",
   "version": "contract-v1",
-  "vision": "No more twelve open tabs and a notes app graveyard. I open this and I know exactly where my day stands."
+  "vision": "No more twelve open tabs and a notes app graveyard. I open this and I know exactly where I stand."
 }

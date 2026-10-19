@@ -1,0 +1,27 @@
+{
+  "contract": {
+    "path": "contracts/samples/sample-04-booking-page.json",
+    "sha256": "18a3403be3bd2418fdc08b77fa46cc977c19c4e74a220695014f7f59659fcbc2"
+  },
+  "resolution": {
+    "pieces": [
+      "NAYA-CAL-001",
+      "NAYA-CAL-003",
+      "NAYA-FRM-002",
+      "NAYA-FRM-005",
+      "NAYA-BTN-010",
+      "NAYA-CRD-007"
+    ],
+    "piece_count": 6
+  },
+  "build": {
+    "assembler": "assemble-v1.14",
+    "template_sha256": "f4e53bc6c49673ef2c108af91da8547882fa950dce14e7b1aeb900f0b372da83",
+    "page": {
+      "path": "samples/sample-04-booking-page.html",
+      "bytes": 20575,
+      "sha256": "8d176935ff211102b345e3f079b61e9bf26f0a3ad40f075fe34b063b5f43df7a"
+    }
+  },
+  "verification": "pending \u2014 screenshot + diff check"
+}

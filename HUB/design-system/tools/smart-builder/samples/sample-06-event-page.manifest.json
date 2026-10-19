@@ -1,0 +1,27 @@
+{
+  "contract": {
+    "path": "contracts/samples/sample-06-event-page.json",
+    "sha256": "92e30ada038b01c27342bd76047a154bba1a469c16bfe75e218128bbef159b90"
+  },
+  "resolution": {
+    "pieces": [
+      "NAYA-CAL-002",
+      "NAYA-TYP-020",
+      "NAYA-CRD-008",
+      "NAYA-LST-007",
+      "NAYA-FRM-003",
+      "NAYA-BTN-011"
+    ],
+    "piece_count": 6
+  },
+  "build": {
+    "assembler": "assemble-v1.14",
+    "template_sha256": "f4e53bc6c49673ef2c108af91da8547882fa950dce14e7b1aeb900f0b372da83",
+    "page": {
+      "path": "samples/sample-06-event-page.html",
+      "bytes": 18476,
+      "sha256": "76a96440d9f052ab8200427b8430a3d2abc216016e62cdef5484b39f2fa37c88"
+    }
+  },
+  "verification": "pending \u2014 screenshot + diff check"
+}

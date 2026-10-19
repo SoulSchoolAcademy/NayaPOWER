@@ -1,0 +1,30 @@
+{
+  "contract": {
+    "path": "contracts/samples/sample-01-personal-page.json",
+    "sha256": "c8f2debb3b90df28c118dbdd636312b34bb4ea3d464de543d6e7bfedd1aa7222"
+  },
+  "resolution": {
+    "pieces": [
+      "NAYA-TYP-009",
+      "NAYA-CRD-009",
+      "NAYA-JWL-014",
+      "NAYA-CRD-002",
+      "NAYA-LST-002",
+      "NAYA-BTN-001",
+      "NAYA-BTN-006",
+      "NAYA-BTN-013",
+      "NAYA-BTN-003"
+    ],
+    "piece_count": 9
+  },
+  "build": {
+    "assembler": "assemble-v1.14",
+    "template_sha256": "f4e53bc6c49673ef2c108af91da8547882fa950dce14e7b1aeb900f0b372da83",
+    "page": {
+      "path": "samples/sample-01-personal-page.html",
+      "bytes": 33295,
+      "sha256": "712b1918862701938c3b3c893a54e520bd9c53432c0d7e40c42d4f800901a114"
+    }
+  },
+  "verification": "pending \u2014 screenshot + diff check"
+}

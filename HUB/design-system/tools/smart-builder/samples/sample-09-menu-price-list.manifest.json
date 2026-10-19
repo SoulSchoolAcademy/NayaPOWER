@@ -1,0 +1,24 @@
+{
+  "contract": {
+    "path": "contracts/samples/sample-09-menu-price-list.json",
+    "sha256": "a5d660773978a4243824e3b4205624c1704c62e04acc316d2e0e58671ddfc8e5"
+  },
+  "resolution": {
+    "pieces": [
+      "NAYA-JWL-007",
+      "NAYA-JWL-007",
+      "NAYA-JWL-007"
+    ],
+    "piece_count": 3
+  },
+  "build": {
+    "assembler": "assemble-v1.14",
+    "template_sha256": "f4e53bc6c49673ef2c108af91da8547882fa950dce14e7b1aeb900f0b372da83",
+    "page": {
+      "path": "samples/sample-09-menu-price-list.html",
+      "bytes": 13730,
+      "sha256": "1d05aa2d83cfbe9b2f888575b278c03019afdde3e739c7a997e633c271e9ca31"
+    }
+  },
+  "verification": "pending \u2014 screenshot + diff check"
+}

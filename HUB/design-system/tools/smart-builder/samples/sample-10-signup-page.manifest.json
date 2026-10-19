@@ -1,0 +1,27 @@
+{
+  "contract": {
+    "path": "contracts/samples/sample-10-signup-page.json",
+    "sha256": "9eee6968c9637c9b85fc640504a96bdab9115bb3b3db277f5b934dd9b40526ca"
+  },
+  "resolution": {
+    "pieces": [
+      "NAYA-TYP-019",
+      "NAYA-LST-012",
+      "NAYA-FRM-004",
+      "NAYA-BTN-005",
+      "NAYA-ONB-002",
+      "NAYA-JWL-003"
+    ],
+    "piece_count": 6
+  },
+  "build": {
+    "assembler": "assemble-v1.14",
+    "template_sha256": "f4e53bc6c49673ef2c108af91da8547882fa950dce14e7b1aeb900f0b372da83",
+    "page": {
+      "path": "samples/sample-10-signup-page.html",
+      "bytes": 21209,
+      "sha256": "11a6b266048becb5fefc8b3c66f40ed7fdd919b4a786c37736c6b03e1b4fd8cc"
+    }
+  },
+  "verification": "pending \u2014 screenshot + diff check"
+}
