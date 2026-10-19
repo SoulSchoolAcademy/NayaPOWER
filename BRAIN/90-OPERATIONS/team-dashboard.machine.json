@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T03:15:42+00:00",
+ "generated_utc": "2026-10-19T04:15:35+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -126,6 +126,12 @@
      "draft": false
     },
     {
+     "number": 2433,
+     "title": "brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che\u2026",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433",
+     "draft": false
+    },
+    {
      "number": 2415,
      "title": "BRAIN: regenerate index layer at live tip 665098e3",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415",
@@ -142,15 +148,9 @@
      "title": "repair(brain-index): re-stamp index on main f33bba34",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390",
      "draft": false
-    },
-    {
-     "number": 2388,
-     "title": "feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 2026-10-11)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388",
-     "draft": false
     }
    ],
-   "open_pr_count": 25
+   "open_pr_count": 26
   },
   {
    "id": "act",
@@ -348,6 +348,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2772,
+     "title": "test(builder): make template unit tests independent of shell cwd",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2772",
+     "draft": true
+    },
+    {
+     "number": 2771,
+     "title": "DEC-5/6/7/9: align merge-bar constants and law text to ratified 9.5",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2771",
+     "draft": false
+    },
+    {
      "number": 2752,
      "title": "map-compiler: push state file via deploy key with scoped ruleset bypass",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752",
@@ -382,21 +394,9 @@
      "title": "Design laws v2 \u2014 3-pass scored 9+ for ratification",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742",
      "draft": false
-    },
-    {
-     "number": 2741,
-     "title": "Canonical hex set \u2014 3-pass scored 9.25/10 for stamp",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2741",
-     "draft": false
-    },
-    {
-     "number": 2739,
-     "title": "Design library: canonical piece library on main (37 files, categorized, INDEX.md)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739",
-     "draft": false
     }
    ],
-   "open_pr_count": 239
+   "open_pr_count": 241
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2770,
+     "title": "Land intake-page-v5/ + intake-contract-emitter-gate (Zeta w473/w494)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2770",
+     "draft": false
+    },
     {
      "number": 2768,
      "title": "[Team Verity] Naya Beta | KNOW w484: re-cut w440 leg 4 (pre-write validator gate)",
@@ -457,15 +463,9 @@
      "title": "[DOCK] gate-403-response-body: byte-capture the next gate 403",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692",
      "draft": false
-    },
-    {
-     "number": 2690,
-     "title": "Gate reliability: transient API failures \u2192 UNKNOWN (exit 2), never wrong FAIL",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2690",
-     "draft": false
     }
    ],
-   "open_pr_count": 125
+   "open_pr_count": 126
   },
   {
    "id": "team",
@@ -555,12 +555,6 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
-     "number": 2769,
-     "title": "fix(decision): DEC-1 align IV threshold to 9.5 law",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2769",
-     "draft": false
-    },
-    {
      "number": 2757,
      "title": "Board-pointer repair: dead boards cited as live in the activation surface now point at #27",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2757",
@@ -601,9 +595,15 @@
      "title": "Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents, specialists, seats,",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649",
      "draft": false
+    },
+    {
+     "number": 2638,
+     "title": "REVIEW: merge masterclass draft + circles system (not for main merge)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638",
+     "draft": false
     }
    ],
-   "open_pr_count": 45
+   "open_pr_count": 44
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 629,
- "unassigned_prs": 239
+ "open_pr_total": 632,
+ "unassigned_prs": 241
 }
