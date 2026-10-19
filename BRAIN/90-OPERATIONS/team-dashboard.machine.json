@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T13:15:46+00:00",
+ "generated_utc": "2026-10-19T14:15:44+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2783,
+     "title": "[Team Verity] dock: land Eta's v2 9.5-flip patch @ tip 1a1c22d3",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2783",
+     "draft": false
+    },
+    {
      "number": 2778,
      "title": "law: correct seat-count prose in consensus-gate registry (15 -> 18)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2778",
@@ -457,15 +463,9 @@
      "title": "fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wave-216, L300/L316)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696",
      "draft": false
-    },
-    {
-     "number": 2692,
-     "title": "[DOCK] gate-403-response-body: byte-capture the next gate 403",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2692",
-     "draft": false
     }
    ],
-   "open_pr_count": 126
+   "open_pr_count": 127
   },
   {
    "id": "team",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 639,
+ "open_pr_total": 640,
  "unassigned_prs": 245
 }
