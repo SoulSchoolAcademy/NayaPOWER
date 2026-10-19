@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 18:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 19:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19165,6 +19165,12 @@ _Last updated: 2026-10-19 18:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261019-1150 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t942: independent governance scorecard of the decision consolidation + Part B heads-up investigation (refuted, no flag posted)
+
+**Evidence:** Verified (backlog): live git ls-remote — branch naya4/runtime-boot-isinstance-followup head = 95226cf8cdce904bc570ab6c33a46f8329913a20 EXACT match to receipt pin; evidence kit hidden_files/sentinel-t942/ on disk (differential_tests.py 14/14 + decision_principle_old_at_1b6f72de.py); pinned consolidation SHA 3f1cdfa6556695171b136554e3900dbe3f4c8bbc c
+
 ### ✅ 1402 — Team 8, Naya Sentinel (Governance & Safety) — 8.5/10 [VERIFIED]
 
 **Task:** cold-retrieve mjs fix: re-anchor, re-verify 8/8, push pin-exact, open PR #2453, calculator HOLD
@@ -21236,6 +21242,12 @@ _Last updated: 2026-10-19 18:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ lane-scorer-20261019-1150 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** t942: RED-first retrieval authorization gate candidate (spec 0007), 25/25 suite + 9/9 adversarial fail-closed; wiring flagged to Shawn, not crossed
+
+**Evidence:** Verified (backlog): commit 6e9615be49459abef3c829e07d49989871f3d03a exists as a commit object on local branch naya/five-retrieval-auth-gate-t942 (local-only unpushed — exactly as the receipt disclosed); parent = named main tip 1b6f72defa9b7eea98acc822fe80ab307db1aff2; stat shows the 4 claimed files with matching line counts (gate module 205 lines, 
 
 ### ✅ lane-scorer-20261018-1610 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -23512,6 +23524,24 @@ _Last updated: 2026-10-19 18:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ lane-scorer-20261019-1200 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: asserter policy options (G1-G6 + UNKNOWN) with tradeoffs + recommendation; 6-point verifier checklist re-run on current head; moot check on live bytes
+
+**Evidence:** Verified: parent brief exists at brief-queue/claimed/brief-gap-lane-scorer-20261019-1150-lane3.md (claimed flow consistent); live ls-remote this tick — naya/three-decision-consolidate @ 8346681cd52600e08fba3bcbb8b86a3258eaf056 EXACT match to the receipt's re-pin; moot check is real (no asserter policy on live head, seam still unwired — G3 stands); 
+
+### ✅ lane-scorer-20261019-1150 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t942: byte-pinned intent_to_harm provenance + first-wired-caller CANDIDATE spec; frozen branch untouched
+
+**Evidence:** Verified (backlog): evidence kit hidden_files/lane-3/t942/ on disk with both CANDIDATE docs (provenance + first-wired-caller spec). Pinned SHA 3f1cdfa6556695171b136554e3900dbe3f4c8bbc corroborated by THREE independent receipts (t912-lane3, t942-lane3, t942-lane8) — the pin is historical, not phantom: branch naya/three-decision-consolidate exists li
+
+### ✅ lane-scorer-20261019-1140 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: CI-equivalence sandbox for parent 0640's 7-real/1-artifact pytest classification
+
+**Evidence:** Verified: branch naya/three-decision-consolidate head 8346681cd52600e08fba3bcbb8b86a3258eaf056 exact via live git ls-remote (unmoved); evidence kit hidden_files/lane-3/ci-sandbox-20261019-1130/ on disk with sandbox-run.log (sha16 e1345f8ecea37376), local-control-run.log (sha16 60d42be4edb8426d), SHA256SUMS, READER.md. Score 9.5: clears because the 
 
 ### ✅ lane-scorer-20261019-1130 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.4/10 [VERIFIED]
 
@@ -26460,6 +26490,36 @@ _Last updated: 2026-10-19 18:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261019-1200 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0919: gate #2385 false-positive sweep across 5 CI-green mainline tips (verbatim gate mirror, exact-SHA worktrees)
+
+**Evidence:** Verified: kit hidden_files/lane-10/check-run-t0919-lane10/ on disk, README 0842eb5e..4129b and sweep-results a33e0d8d..5cd96 match receipt's quoted prefixes; live ls-remote this tick — candidate branch naya/ten-brainindex-gate-candidate-t0917 @ 2461c7e405e61aaeeaf7bcdf39f9d205674d5d25 (matches t0917 pin), origin HEAD 061243817d891e466827c0887cc1aee
+
+### ✅ lane-scorer-20261019-1140 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0917: candidate brain-index freshness gate authored, 4-case dry-run, real runner fired RED on drifted head
+
+**Evidence:** Verified: live ls-remote this tick — naya/ten-brainindex-gate-candidate-t0917 @ 2461c7e405e61aaeeaf7bcdf39f9d205674d5d25 EXACT; Actions run 39301748767 via live API this tick = completed/FAILURE on the drifted candidate head (18:20:58Z) — the RED-firing claim independently confirmed, supporting the receipt's honestly-disclosed pinned inference (log
+
+### ✅ lane-scorer-20261019-1140 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0914: tip pinned, introducer bisected to 5b6bb92986d916b36a52cb29293e27bd966cfb4b, heal re-cut/re-stamped/pushed on branch
+
+**Evidence:** Verified: live ls-remote this tick — naya/ten-brainindex-heal-t0914 @ 188c0ef5f3c87c1867eb45fae15017f4c4886dd2 EXACT; origin HEAD 061243817d891e466827c0887cc1aee2e3d63804 == receipt's action-time pin (tip unchanged); board comment 6273812058 live on #2765 (REST this tick, 2026-10-19T18:01:54Z); evidence kit hidden_files/lane-10/check-run-t0914-lane
+
+### ✅ lane-scorer-20261019-1140 — Team 10, Naya Clarity Narzan (Brain Index) — 9.6/10 [VERIFIED]
+
+**Task:** gap follow-up: t0913 wrong-seat header correction + flip-points 4/5/6 re-measured per t0909 taxonomy
+
+**Evidence:** Verified: correction comment 6273938375 live on #2765 this tick with true Who/Team header (REST-verified, not inherited); evidence kit hidden_files/lane-10/flip-remeasure-20261019-1100/ on disk — sha256sum -c SHA256SUMS all OK; check-A.out byte-contains 'OK: index layer matches git tree (1328 files)' as claimed; per-commit exit chain A exit 0 / B,C
+
+### ✅ lane-scorer-20261019-1140 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: competing-boot re-classified at moved tip + --check re-derived at parent pin
+
+**Evidence:** Verified: check-runs run 39293678128 via live API this tick = completed/success on head 061243817d891e466827c0887cc1aee2e3d63804 (17:23:20Z) — the competing-boot PASS re-classification independently confirmed, not inherited; tip HEAD == 061243817 via live ls-remote, matching receipt pin. Evidence kit hidden_files/lane-10/gap-remeasure-20261019-1120
 
 ### ✅ lane-scorer-20261019-1120 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
