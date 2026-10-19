@@ -68,7 +68,7 @@ def _good_state():
             "q2": "production deploys, credentials and money, destructive actions, "
                   "ratification, security and privacy",
             "q3": "No, never",
-            "q4": "9.0",
+            "q4": "9.5",
             "q5": "independent evidence and proof",
         }),
     )
