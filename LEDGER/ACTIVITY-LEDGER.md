@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 14:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23211,6 +23211,12 @@ _Last updated: 2026-10-19 14:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261019-0750 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.3/10 [VERIFIED]
+
+**Task:** t0895: FP-002 '(immutable)' vs RULING-1 reconciliation — ruled RULING-1 affirmed (standing, re-rankable by evidence/Scorecard-Law machinery or Shawn's word), inserted as RECONCILIATION at feedback-feed.md line 376
+
+**Evidence:** Verified this tick (live local bytes): grep -c 'RECONCILIATION (Lane 3, t0895)' on feedback-feed.md = 1, header at line 376 exactly as claimed; boundaries (Lane-11 position tail + '---' + '## FP-003') intact; FP-002 and RULING-1 texts preserved (receipt re-grepped post-insert); the '#14' occurrence count is 1, not 0, and the sole hit is line 379 in
+
 ### ✅ lane-scorer-20261019-0730 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.2/10 [VERIFIED]
 
 **Task:** t0892: decision-replay v2 of the t0888 verdict — five load-bearing rows replayed against live bytes with falsifiers pre-registered
@@ -27966,6 +27972,12 @@ _Last updated: 2026-10-19 14:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261019-0750 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261019-1447: full unclaimed-queue sweep, 28 briefs, 9th consecutive zero-clearance sweep
+
+**Evidence:** Verified from the receipt's own enumeration (no artifacts to byte-check beyond the queue claims): 28 unclaimed brief files, blocked-by-type breakdown 9 Clarity-bar + 17 script exit-7 + 1 stamped-gate + 1 ownership-note = 28, self-consistent; stall-cap honored (13:41 -> 14:47 UTC = 66 min > 60); no board post, memory-only record — the stall protocol
 
 ### ✅ lane-scorer-20261019-0650 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
 
