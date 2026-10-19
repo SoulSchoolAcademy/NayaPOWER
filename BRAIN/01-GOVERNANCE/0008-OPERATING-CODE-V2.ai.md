@@ -3,7 +3,7 @@
 *Status: RATIFIED — ratified 2026-10-10 by Shawn; in force, supersedes V1.*
 
 > **Supersedes:** `0000-OPERATING-CODE-V1.md` (ratified 2026-10-08). V1 remains in force until V2 is ratified.
-> **Supreme above this document:** The Law of One (0007-LAW-OF-ONE-V1, ratified 2026-10-09).
+> **Supreme above this document:** The Law of One (0016-LAW-OF-ONE-V1, ratified 2026-10-09).
 
 ---
 
