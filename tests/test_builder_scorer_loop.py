@@ -17,7 +17,7 @@ Covers builder_scorer_loop.py:
   - duplicate change text across rounds fails (theater is detectable)
   - duplicate score-movement text across rounds fails
   - round-1 perfect score fails (nobody scores their own build perfect)
-  - final round below 9.0 fails (the loop continues)
+  - final round below 9.5 fails (the loop continues)
   - non-number / NaN / Infinity / out-of-range scores fail
   - empty gaps_found fails (every round must answer "why not 10?")
   - renumbered rounds fail (the loop runs in order)
@@ -86,7 +86,7 @@ def _honoring_record():
             },
             {
                 "round": 3,
-                "score": 9.4,
+                "score": 9.6,
                 "recorded_at": "2026-10-11T19:05:00Z",
                 "what_changed": (
                     "Wrote the open-tension and honest-bounds sections into "
@@ -184,12 +184,12 @@ def test_final_round_below_nine_fails():
     rec = _honoring_record()
     rec["rounds"][2]["score"] = 8.9
     r = builder_scorer_loop.check(rec)
-    assert not r["pass"], "below 9.0 the loop continues — no merge"
+    assert not r["pass"], "below 9.5 the loop continues — no merge"
 
 
-def test_final_round_exactly_nine_passes():
+def test_final_round_exactly_nine_point_five_passes():
     rec = _honoring_record()
-    rec["rounds"][2]["score"] = 9.0
+    rec["rounds"][2]["score"] = 9.5
     r = builder_scorer_loop.check(rec)
     assert r["pass"], r["reasons"]
 
@@ -198,7 +198,7 @@ def test_non_number_score_fails():
     rec = _honoring_record()
     rec["rounds"][1]["score"] = "nine"
     r = builder_scorer_loop.check(rec)
-    assert not r["pass"], "the 9.0 bar cannot be evaluated on a non-number"
+    assert not r["pass"], "the 9.5 bar cannot be evaluated on a non-number"
 
 
 def test_nan_score_fails():

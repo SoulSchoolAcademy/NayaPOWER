@@ -74,7 +74,7 @@ def _good_merge_packet():
         "seat": "naya-5",
         "tests_green": True,
         "test_evidence": "pytest 61/61 green, CI workflow run #...", 
-        "self_scorecard": {"score": 9.1, "evidence_backed": True,
+        "self_scorecard": {"score": 9.6, "evidence_backed": True,
                            "value_calculus_run": True},
         "independent_validator": "naya-1",
         "posted_to_1354": True,
@@ -242,11 +242,11 @@ def test_merge_fires_when_tests_not_green():
     assert not r["pass"], "condition (1) not met"
 
 
-def test_merge_fires_when_score_below_nine():
+def test_merge_fires_when_score_below_nine_point_five():
     rec = _good_merge_packet()
     rec["self_scorecard"]["score"] = 8.9
     r = merge_authority.check(rec)
-    assert not r["pass"], "below 9.0 still needs Shawn's word"
+    assert not r["pass"], "below 9.5 still needs Shawn's word"
 
 
 def test_merge_fires_when_score_not_evidence_backed():
@@ -499,7 +499,7 @@ def test_merge_fires_on_score_above_ten():
 
 def test_merge_passes_on_boundary_scores():
     # Honoring side: the bar's own edges stay legal.
-    for s in (9.0, 10.0):
+    for s in (9.5, 10.0):
         rec = _good_merge_packet()
         rec["self_scorecard"]["score"] = s
         r = merge_authority.check(rec)

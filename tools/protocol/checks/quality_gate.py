@@ -18,11 +18,11 @@ Input record:
 Checks:
   1. build_evidence present and non-empty.
   2. verification_evidence present and non-empty (implemented != verified).
-  3. scorecard.score is numeric and >= 9.0.
+  3. scorecard.score is numeric and >= 9.5.
   4. scorecard.scorer is a named identity (anonymous scores are not scores).
   5. gates: at least one gate listed, every listed gate result == "pass".
 
-Note: SN-0526 is CANDIDATE (awaiting ratification) in the manifest. The 9.0
+Note: SN-0526 is CANDIDATE (awaiting ratification) in the manifest. The 9.5
 bar is enforced as written; the law's status is reported in details so
 consumers know the enforcement basis.
 
@@ -40,7 +40,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
 
-QUALITY_BAR = 9.0
+QUALITY_BAR = 9.5
 
 
 def check(record: dict) -> dict:
