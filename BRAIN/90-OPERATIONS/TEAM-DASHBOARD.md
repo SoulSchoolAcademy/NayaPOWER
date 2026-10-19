@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 05:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 06:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 633 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 635 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -79,13 +79,13 @@
 - [#2357](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2357) T-06: Neutrality trap — six-state finding classification (stacked on T
 - …and 3 more
 
-### PROVE (30)
+### PROVE (31)
+- [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
 - [#2706](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2706) [HV-GOAL1] Human-value acceptance battery for GOAL #1 (candidate regis
 - [#2699](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2699) feat(verify): manual-29 STEP-0 insertion — seal reissue_policy / who-m
 - [#2694](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2694) fix(gate): consensus scorecard leg enforces the merge law's 9.5 bar 📝draft
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
-- [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
-- …and 25 more
+- …and 26 more
 
 ### BUILD (242)
 - [#2773](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2773) Nitro/premade functions v1
@@ -119,13 +119,13 @@
 - [#2716](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716) Composer v1 + gap closure (43->39 mapping, feed specimen) — item 15b
 - …and 39 more
 
-### PRODUCT (41)
+### PRODUCT (42)
+- [#2775](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2775) fix(hub): bind Smart Note bridge to signed-in session 📝draft
 - [#2774](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2774) Test: GitHub → Hub pipeline (IB-999999)
 - [#2754](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754) Hub↔Supabase persistence bridge (Smart Note flow leg 3) — t0800
 - [#2738](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738) Hub deploy pipeline: GitHub → Cloudflare Workers
 - [#2737](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2737) EMIT: hub feeds emitter (rebased on main)
-- [#2733](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2733) test(activation): fail closed when compiled current state disagrees wi 📝draft
-- …and 36 more
+- …and 37 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 

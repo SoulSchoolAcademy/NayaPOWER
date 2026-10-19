@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T05:16:13+00:00",
+ "generated_utc": "2026-10-19T06:15:29+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -279,6 +279,12 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
+     "number": 2776,
+     "title": "fix(smart-note): verify actual projection commit SHA",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776",
+     "draft": false
+    },
+    {
      "number": 2706,
      "title": "[HV-GOAL1] Human-value acceptance battery for GOAL #1 (candidate registration \u2014 NOT merge-",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2706",
@@ -319,15 +325,9 @@
      "title": "fix(b40): stale 'signing' comment word -> 'sealing' in machine-law test (merged-scorecard ",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2521",
      "draft": false
-    },
-    {
-     "number": 2392,
-     "title": "fix(verify): resolve python interpreter at runtime in guard_liveness.test.mjs",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2392",
-     "draft": true
     }
    ],
-   "open_pr_count": 30
+   "open_pr_count": 31
   },
   {
    "id": "build",
@@ -624,6 +624,12 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2775,
+     "title": "fix(hub): bind Smart Note bridge to signed-in session",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2775",
+     "draft": true
+    },
+    {
      "number": 2774,
      "title": "Test: GitHub \u2192 Hub pipeline (IB-999999)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2774",
@@ -664,15 +670,9 @@
      "title": "HUB sync contract \u2014 Goal #1 Hub Smart Feed contract (three tongues)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701",
      "draft": false
-    },
-    {
-     "number": 2700,
-     "title": "[DRAFT] HUB MASTER BUILD CONTRACT v1 (review only, do not merge)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2700",
-     "draft": true
     }
    ],
-   "open_pr_count": 41
+   "open_pr_count": 42
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 633,
+ "open_pr_total": 635,
  "unassigned_prs": 242
 }
