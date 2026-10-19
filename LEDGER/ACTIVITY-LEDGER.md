@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 19:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 20:07 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19189,6 +19189,12 @@ _Last updated: 2026-10-19 19:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ lane-scorer-20261019-1300 — Team 8, Naya Clarity Narzan (Lane 8, Mason hat) (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: changed consensus gate CI surface on PR #2717 pin-exact head — diagnose 2 red legs, repair receipt-gate body bug, record governance block
+
+**Evidence:** Verified (fresh, git protocol + REST GET): git ls-remote refs/pull/2717/head = 89796bc910b298b53ffac90708849a3f5ead4bf8 byte-exact match to receipt's claimed pin, refs/heads/naya/seat-re-12lane-gap-t1442 identical; PR body updated_at 2026-10-19T19:47:37Z exactly as claimed, zero bare backticked test filenames remain, 4 tests/-prefixed mentions pres
+
 ### ✅ lane-scorer-20261019-1220 — Team 8, Naya Sentinel (Governance & Safety) — 8.0/10 [VERIFIED]
 
 **Task:** t1402: PR #2453 merge push (2-seat bar, calculator HOLD)
@@ -22805,6 +22811,12 @@ _Last updated: 2026-10-19 19:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ lane-scorer-20261019-1300 — Team 4, Naya Mason (Lane 4) (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t982: legacy-row re-export heal — root-caused silent fabrication in legacy detail provenance, mechanism fix in intelligence/tools/ib_reconcile.py, pushed as second commit on PR #2400
+
+**Evidence:** Verified (backlog): commit bed1d0b7fbc762996d12732311070b96dd4fd9ab exists in repo; intelligence/tools/ib_reconcile.py present at the PR head tree; PR #2400 MERGED 2026-10-12T03:59:07Z — the named gaps (CI on the new head, pre-existing failures, merge) were resolved by history, confirming the heal rode a merged PR. Score 9.0: real root-caused mecha
+
 ### ✅ lane-scorer-20261019-1220 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** t1352: PR #2400 post-merge verification
@@ -26113,6 +26125,12 @@ _Last updated: 2026-10-19 19:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261019-1300 — Team 11, Naya Heart (Lane 11) (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** t982: observatory baseline refresh from grown corpus (t892-t972) — recompute 6 metrics, write STATS.md, draft NayaNET node-interop schema contract
+
+**Evidence:** Verified (backlog, local bytes): hidden_files/lane-11/STATS.md and hidden_files/lane-11/hv-node-schema-contract.md both exist on disk; t962-gap flagged not hidden; M1/M5/M6 declared UNKNOWN honestly. Score 8.5: complete read-only analytics deliverable, every number traces to receipt + score-line counts, corpus caveats stated. Why not 9.5: the recom
+
 ### ✅ lane-scorer-20261019-1220 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** t1402: lane-11 human-value metric audit
@@ -26622,6 +26640,12 @@ _Last updated: 2026-10-19 19:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261019-1300 — Team 10, Naya Librarian (Lane 10) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t982: pin-exact cross-seat review of PR #2385 (brain-index-freshness required gate) at live head, 15 check-runs classified, 15/15 tests local, scorecard on #2175
+
+**Evidence:** Verified (backlog): commit eedd9540f54cd96c241db4be2f43f0698ae4dd07 exists in repo; PR #2385 still open with head eedd9540f54c UNCHANGED after 8 days — the receipt's pin was exact and remains exact, the strongest possible corroboration of the pin-first method. Score 9.0: byte-pinned cross-seat review, all 15 check-runs honestly classified (2 pre-ex
 
 ### ✅ lane-scorer-20261019-1240 — Team 10, Naya Clarity Narzan (Librarian hat) (Brain Index) — 9.5/10 [VERIFIED]
 
