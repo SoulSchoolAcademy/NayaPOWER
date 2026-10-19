@@ -1,17 +1,17 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-19",
-  "receipt_basis_commit": "7a6a799513ad2206e58522ea07bc406f34c46242",
-  "inventory_file_count": 1329,
+  "receipt_basis_commit": "56dedc70a64170f4433e95ac0def56f3e6142186",
+  "inventory_file_count": 1334,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 62,
+    "01-GOVERNANCE": 59,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 649,
+    "05-MEMORY": 653,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -20,7 +20,7 @@
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 84,
-    "99-ARCHIVE": 2,
+    "99-ARCHIVE": 6,
     "ROOT": 6
   },
   "ledger_assertion": "Per-domain counts asserted against the 2026-09-30 brain-reconciliation ledger classification table. Any drift fails regeneration instead of silently rewriting the table.",
@@ -246,28 +246,13 @@
       "size": 5880
     },
     {
-      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md",
-      "blob_sha": "7d0efaf7e3e79cbaeb38469d8882f2152830134c",
-      "size": 3385
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md",
-      "blob_sha": "7188b5a90066f9e80be6b56193808720438353f5",
-      "size": 2145
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json",
-      "blob_sha": "a0b338815cda6131441e09c9aa01f81aef0a7700",
-      "size": 2007
-    },
-    {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2-ENCODING-AUDIT.md",
       "blob_sha": "693eabef654ad057fdfb3db8d867904fc6df8a9e",
       "size": 11367
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
-      "blob_sha": "0f81fc721fc143928d94212124886c73906fe196",
+      "blob_sha": "57a8a3e06d5e733bf988ffe9050e19d169c3d6fd",
       "size": 14786
     },
     {
@@ -277,7 +262,7 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json",
-      "blob_sha": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
+      "blob_sha": "15ffcb895ce0652bf1048f0c421c94892f731af0",
       "size": 5146
     },
     {
@@ -327,8 +312,8 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0016-law-of-one-v1.machine.json",
-      "blob_sha": "e9e40316e0ae0c2489e08b8f648abc45af034a5c",
-      "size": 1303
+      "blob_sha": "7e97c7c7425d48ea263e967c03583278b5ea7f77",
+      "size": 3387
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.ai.md",
@@ -3921,6 +3906,26 @@
       "size": 9330
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/how-nayanet-works/IB-000038/smart-note.md",
+      "blob_sha": "38337b0c355c66a6d86cccec98e9751836165d06",
+      "size": 9150
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000035/smart-note.md",
+      "blob_sha": "025259f7a34fb9f7292669624adbdd4bc978288b",
+      "size": 2659
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000036/smart-note.md",
+      "blob_sha": "05fc29be31704a19b4631b37ebf66169d7c32f00",
+      "size": 20379
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000037/smart-note.md",
+      "blob_sha": "e83585f5aa6710b89a6461044cd423a296a68245",
+      "size": 20379
+    },
+    {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",
       "blob_sha": "8a02bda6be424d886a03da701ee9b5d124f93dac",
       "size": 27455
@@ -6629,6 +6634,26 @@
       "path": "BRAIN/90-OPERATIONS/network-registry/naya5-team.json",
       "blob_sha": "cca9bdad8f3f636c67f52a1ca7bda53e299a4cf7",
       "size": 1489
+    },
+    {
+      "path": "BRAIN/99-ARCHIVE/0007-law-of-one-v1/0007-LAW-OF-ONE-V1.ai.md",
+      "blob_sha": "7d0efaf7e3e79cbaeb38469d8882f2152830134c",
+      "size": 3385
+    },
+    {
+      "path": "BRAIN/99-ARCHIVE/0007-law-of-one-v1/0007-LAW-OF-ONE-V1.human.md",
+      "blob_sha": "7188b5a90066f9e80be6b56193808720438353f5",
+      "size": 2145
+    },
+    {
+      "path": "BRAIN/99-ARCHIVE/0007-law-of-one-v1/0007-law-of-one-v1.machine.json",
+      "blob_sha": "a0b338815cda6131441e09c9aa01f81aef0a7700",
+      "size": 2007
+    },
+    {
+      "path": "BRAIN/99-ARCHIVE/0007-law-of-one-v1/SUPERSEDED.md",
+      "blob_sha": "5e520a44db3a6e972cf934cc9da0384165821c1d",
+      "size": 775
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",

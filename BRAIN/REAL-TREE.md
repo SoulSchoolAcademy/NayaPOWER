@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-19  
-**Receipt basis commit:** `7a6a799513ad2206e58522ea07bc406f34c46242`  
-**Inventory file count:** 1329  
+**Receipt basis commit:** `56dedc70a64170f4433e95ac0def56f3e6142186`  
+**Inventory file count:** 1334  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,11 +11,11 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 62 |
+| 01-GOVERNANCE | 59 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 649 |
+| 05-MEMORY | 653 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -24,7 +24,7 @@
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
 | 90-OPERATIONS | 84 |
-| 99-ARCHIVE | 2 |
+| 99-ARCHIVE | 6 |
 | ROOT | 6 |
 
 ## Files
@@ -81,13 +81,10 @@
 - `BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.ai.md` — `5f07061bcd01` (9539 bytes)
 - `BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.human.md` — `456e88ce35a9` (4859 bytes)
 - `BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json` — `6e62c7ad6be9` (5880 bytes)
-- `BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md` — `7d0efaf7e3e7` (3385 bytes)
-- `BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md` — `7188b5a90066` (2145 bytes)
-- `BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json` — `a0b338815cda` (2007 bytes)
 - `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2-ENCODING-AUDIT.md` — `693eabef654a` (11367 bytes)
-- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md` — `0f81fc721fc1` (14786 bytes)
+- `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md` — `57a8a3e06d5e` (14786 bytes)
 - `BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md` — `fbe045ba392e` (9007 bytes)
-- `BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json` — `1088c9ae24a7` (5146 bytes)
+- `BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json` — `15ffcb895ce0` (5146 bytes)
 - `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md` — `bd192971f09c` (3430 bytes)
 - `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.human.md` — `a82aa1b3ffc3` (2623 bytes)
 - `BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json` — `45bcf7ab174b` (2592 bytes)
@@ -97,7 +94,7 @@
 - `BRAIN/01-GOVERNANCE/0015-SECURITY-ACKNOWLEDGMENTS-V1.md` — `0800143c89ba` (4990 bytes)
 - `BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.ai.md` — `29a3b8f959b5` (2654 bytes)
 - `BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.human.md` — `11c3c9df27e0` (1508 bytes)
-- `BRAIN/01-GOVERNANCE/0016-law-of-one-v1.machine.json` — `e9e40316e0ae` (1303 bytes)
+- `BRAIN/01-GOVERNANCE/0016-law-of-one-v1.machine.json` — `7e97c7c7425d` (3387 bytes)
 - `BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.ai.md` — `257e2163a3ad` (2603 bytes)
 - `BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.human.md` — `30e0d35a7799` (1248 bytes)
 - `BRAIN/01-GOVERNANCE/0017-calculator-as-default-v1.machine.json` — `7aa30ed57f4f` (917 bytes)
@@ -824,6 +821,10 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md` — `151b620a7c56` (6817 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md` — `f2553ebdef9e` (10932 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md` — `9d393e7f8c48` (9330 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/how-nayanet-works/IB-000038/smart-note.md` — `38337b0c355c` (9150 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000035/smart-note.md` — `025259f7a34f` (2659 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000036/smart-note.md` — `05fc29be3170` (20379 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000037/smart-note.md` — `e83585f5aa67` (20379 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `8a02bda6be42` (27455 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `0fc11ff78dc9` (4099 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
@@ -1384,6 +1385,10 @@
 - `BRAIN/90-OPERATIONS/network-registry/naya5-team.json` — `cca9bdad8f3f` (1489 bytes)
 ### 99-ARCHIVE — Archive
 
+- `BRAIN/99-ARCHIVE/0007-law-of-one-v1/0007-LAW-OF-ONE-V1.ai.md` — `7d0efaf7e3e7` (3385 bytes)
+- `BRAIN/99-ARCHIVE/0007-law-of-one-v1/0007-LAW-OF-ONE-V1.human.md` — `7188b5a90066` (2145 bytes)
+- `BRAIN/99-ARCHIVE/0007-law-of-one-v1/0007-law-of-one-v1.machine.json` — `a0b338815cda` (2007 bytes)
+- `BRAIN/99-ARCHIVE/0007-law-of-one-v1/SUPERSEDED.md` — `5e520a44db3a` (775 bytes)
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
