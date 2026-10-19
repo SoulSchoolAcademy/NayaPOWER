@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T16:16:19+00:00",
+ "generated_utc": "2026-10-19T17:15:19+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -390,13 +390,13 @@
      "draft": false
     },
     {
-     "number": 2752,
-     "title": "map-compiler: push state file via deploy key with scoped ruleset bypass",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752",
-     "draft": false
+     "number": 2750,
+     "title": "fix(builder): strict headless render qualification before release",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750",
+     "draft": true
     }
    ],
-   "open_pr_count": 245
+   "open_pr_count": 244
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2786,
+     "title": "WIRE: close blockquote-mention hole in merge-consensus gate",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2786",
+     "draft": false
+    },
     {
      "number": 2783,
      "title": "[Team Verity] dock: land Eta's v2 9.5-flip patch @ tip 1a1c22d3",
@@ -457,15 +463,9 @@
      "title": "HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate.api_get",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697",
      "draft": false
-    },
-    {
-     "number": 2696,
-     "title": "fix(gate): fail-closed FUTURE rung on receipt-pin decided_at (Judge wave-216, L300/L316)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2696",
-     "draft": false
     }
    ],
-   "open_pr_count": 126
+   "open_pr_count": 127
   },
   {
    "id": "team",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2787,
+     "title": "fix(ci): Protocol Watchdog jobs missing actions/checkout \u2014 both report steps failed every ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2787",
+     "draft": false
+    },
+    {
      "number": 2757,
      "title": "Board-pointer repair: dead boards cited as live in the activation surface now point at #27",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2757",
@@ -595,15 +601,9 @@
      "title": "Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents, specialists, seats,",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649",
      "draft": false
-    },
-    {
-     "number": 2638,
-     "title": "REVIEW: merge masterclass draft + circles system (not for main merge)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638",
-     "draft": false
     }
    ],
-   "open_pr_count": 44
+   "open_pr_count": 45
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 641,
- "unassigned_prs": 245
+ "open_pr_total": 642,
+ "unassigned_prs": 244
 }

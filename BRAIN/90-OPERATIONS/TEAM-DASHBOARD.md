@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 16:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 17:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 641 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 642 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,21 +87,21 @@
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - …and 26 more
 
-### BUILD (245)
+### BUILD (244)
 - [#2782](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2782) docs: replace hard-coded board numbers in boot bytes with mission-snap
 - [#2780](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2780) Promote p1c live-board leg to main (gr-w519-alpha-p1c-liveboard)
 - [#2779](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2779) ACT w516: pr_body_selfcheck --head liveness warning (warn-never-fail)
 - [#2777](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2777) ACT: pr_body_selfcheck --head liveness warning (warn-never-fail)
 - [#2773](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2773) Nitro/premade functions v1
-- …and 240 more
+- …and 239 more
 
-### WIRE (126)
+### WIRE (127)
+- [#2786](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2786) WIRE: close blockquote-mention hole in merge-consensus gate
 - [#2783](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2783) [Team Verity] dock: land Eta's v2 9.5-flip patch @ tip 1a1c22d3
 - [#2778](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2778) law: correct seat-count prose in consensus-gate registry (15 -> 18)
 - [#2768](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2768) [Team Verity] Naya Beta | KNOW w484: re-cut w440 leg 4 (pre-write vali
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
-- [#2724](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724) fix(gate): receipt-pin reads live PR body, not frozen event payload
-- …and 121 more
+- …and 122 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
@@ -111,13 +111,13 @@
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - …and 7 more
 
-### INFRA (44)
+### INFRA (45)
+- [#2787](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2787) fix(ci): Protocol Watchdog jobs missing actions/checkout — both report
 - [#2757](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2757) Board-pointer repair: dead boards cited as live in the activation surf
 - [#2749](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2749) fix(builder): explicit UTF-8 on Windows without environment workaround 📝draft
 - [#2745](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2745) Visual Smart Contract v1 — the official machine contract for the smart
 - [#2740](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2740) Design specimens: categorized piece library with identities
-- [#2716](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716) Composer v1 + gap closure (43->39 mapping, feed specimen) — item 15b
-- …and 39 more
+- …and 40 more
 
 ### PRODUCT (42)
 - [#2775](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2775) fix(hub): bind Smart Note bridge to signed-in session 📝draft
