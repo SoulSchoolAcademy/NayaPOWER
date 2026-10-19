@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-19 06:01 UTC_
+_Last updated: 2026-10-19 06:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 4257
-- ✅ Verified (8+): 4220
+- **Total scored actions:** 4261
+- ✅ Verified (8+): 4224
 - 🟡 Partial (5–7): 36
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -17,11 +17,11 @@ _Last updated: 2026-10-19 06:01 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 325 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 315 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 259 | 9.0 | 9.5 |
+| Team 3 | Naya Judge | 260 | 9.0 | 9.5 |
 | Team 4 | Naya Mason | 272 | 9.0 | 9.6 |
 | Team 5 | Naya Seeker | 426 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 222 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 302 | 9.0 | 9.5 |
+| Team 7 | Naya Conductor | 303 | 9.0 | 9.5 |
 | Team 8 | Naya Sentinel | 315 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 408 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 389 | 9.0 | 9.5 |
@@ -812,6 +812,7 @@ _Last updated: 2026-10-19 06:01 UTC_
 - **seat-stall-20261018-1635:** 1 actions, avg 9.0/10
 - **gate-stall-20261018-2219:** 1 actions, avg 8.5/10
 - **lane-scorer-20261019-0500:** 1 actions, avg 9.2/10
+- **gate-stall-20261019-0610:** 1 actions, avg 9.0/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
 - **t0012:** 25 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
@@ -1173,6 +1174,7 @@ _Last updated: 2026-10-19 06:01 UTC_
 - **t0785:** 1 actions, avg 9.5/10
 - **t0786:** 2 actions, avg 9.5/10
 - **t0787:** 2 actions, avg 9.5/10
+- **t0789-lane99:** 1 actions, avg 9.0/10
 - **t0791:** 1 actions, avg 9.5/10
 - **t0792:** 1 actions, avg 9.5/10
 - **t0793:** 1 actions, avg 9.5/10
@@ -1226,6 +1228,7 @@ _Last updated: 2026-10-19 06:01 UTC_
 - **t0842:** 1 actions, avg 8.5/10
 - **t845:** 1 actions, avg 9.0/10
 - **t0845:** 1 actions, avg 9.0/10
+- **t0846-lane3:** 1 actions, avg 9.5/10
 - **t892:** 9 actions, avg 8.1/10
 - **t0892:** 3 actions, avg 8.3/10
 - **t892-lane1:** 2 actions, avg 8.5/10
@@ -1417,6 +1420,7 @@ _Last updated: 2026-10-19 06:01 UTC_
 - **t1821-lane1:** 1 actions, avg 9.6/10
 - **t1822-lane3:** 1 actions, avg 9.4/10
 - **t1840:** 1 actions, avg 8.0/10
+- **t2026-lane7:** 1 actions, avg 9.0/10
 - **t2030:** 4 actions, avg 9.4/10
 - **t2032:** 8 actions, avg 9.4/10
 - **t2033:** 1 actions, avg 9.4/10
