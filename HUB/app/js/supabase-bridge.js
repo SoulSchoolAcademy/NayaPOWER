@@ -39,7 +39,7 @@
     backend: 'supabase',
     table: 'public.smart_note_events',
     eventType: 'SMART_NOTE',
-    memberId: 'e63e7768-4075-468b-a261-56f4b04eadc7', // members.display_name='naya-runtime' — owns 26/30 note events
+    // Identity MUST be supplied by an authenticated owner-scoped transport.
     // LIVE schema constraint (verified 2026-10-17): status IN ('INCOMPLETE','VERIFIED').
     // The canonical truth_state (CANDIDATE/...) is ALWAYS preserved verbatim in
     // the source_context envelope; the column carries the closest legal value.
@@ -128,13 +128,22 @@
     };
   }
 
-  /* REST path (browser): Supabase PostgREST. Headers carry the deployment's key. */
+  function requireMemberId(memberId) {
+    if (typeof memberId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(memberId)) {
+      throw new Error('AUTHENTICATED_MEMBER_ID_REQUIRED');
+    }
+    return memberId;
+  }
+
+  /* REST: API key identifies the application; user JWT authorizes rows. */
   async function restCall(rest, method, path, body) {
+    requireMemberId(rest && rest.memberId);
+    if (!rest.key || !rest.accessToken) throw new Error('AUTHENTICATED_REST_SESSION_REQUIRED');
     var res = await fetch(rest.base + path, {
       method: method,
       headers: {
         'apikey': rest.key,
-        'Authorization': 'Bearer ' + rest.key,
+        'Authorization': 'Bearer ' + rest.accessToken,
         'Content-Type': 'application/json',
         'Prefer': 'return=representation'
       },
@@ -146,7 +155,7 @@
 
   async function supabasePersist(rec, transport) {
     if (transport.rest) return restPersist(rec, transport.rest);
-    return sqlPersist(rec, transport.query);
+    return sqlPersist(rec, transport.query, transport.memberId);
   }
 
   async function restPersist(rec, rest) {
@@ -159,7 +168,7 @@
       adapter_version: rec.adapter_version
     };
     var row = {};
-    row[c.member] = SUPABASE_MAP.memberId;
+    row[c.member] = requireMemberId(rest.memberId);
     row[c.subject] = rec.nutshell;
     row[c.eventType] = SUPABASE_MAP.eventType;
     row[c.context] = envelope;
@@ -179,7 +188,8 @@
     };
   }
 
-  async function sqlPersist(rec, query) {
+  async function sqlPersist(rec, query, memberId) {
+    memberId = requireMemberId(memberId);
     var c = SUPABASE_MAP.columns;
     var envelope = {
       sn: rec.sn, truth_state: rec.truth_state, scope: rec.scope,
@@ -191,7 +201,7 @@
     var sql =
       "INSERT INTO " + SUPABASE_MAP.table + " (" + c.member + ", " + c.subject + ", " +
       c.eventType + ", " + c.context + ", " + c.privacy + ", " + c.status + ") VALUES (" +
-      "'" + sqlEscape(SUPABASE_MAP.memberId) + "', " +
+      "'" + sqlEscape(memberId) + "', " +
       "'" + sqlEscape(rec.nutshell) + "', " +
       "'" + sqlEscape(SUPABASE_MAP.eventType) + "', " +
       "'" + sqlEscape(JSON.stringify(envelope)) + "'::jsonb, " +
@@ -217,9 +227,10 @@
   }
 
   async function supabaseGetNotes(transport, sinceUtc) {
+    var memberId = requireMemberId(transport.rest ? transport.rest.memberId : transport.memberId);
     if (transport.rest) {
       var q = '/smart_note_events?event_type=eq.' + encodeURIComponent(SUPABASE_MAP.eventType) +
-        '&order=created_at.desc&limit=200' +
+        '&member_id=eq.' + encodeURIComponent(memberId) + '&order=created_at.desc&limit=200' +
         (sinceUtc ? '&created_at=gte.' + encodeURIComponent(sinceUtc) : '');
       var rows = await restCall(transport.rest, 'GET', q);
       return (rows || []).map(rowToCanonical);
@@ -229,6 +240,7 @@
       "SELECT id, " + c.subject + ", " + c.eventType + ", " + c.context + ", " +
       c.privacy + ", " + c.status + ", created_at FROM " + SUPABASE_MAP.table +
       " WHERE " + c.eventType + " = '" + sqlEscape(SUPABASE_MAP.eventType) + "'" +
+      " AND " + c.member + " = '" + sqlEscape(memberId) + "'" +
       (sinceUtc ? " AND created_at >= '" + sqlEscape(sinceUtc) + "'" : "") +
       " ORDER BY created_at DESC LIMIT 200;";
     var srows = await transport.query(sql);
@@ -322,14 +334,15 @@
   /* ——— The bridge: getNotes() -> canonical records, newest first ——— */
   async function getNotes(transports, sinceUtc) {
     transports = transports || {};
+    var remoteError = null;
     if (transports.supabase && transports.supabase.available !== false) {
       try { return { backend: 'supabase', records: await supabaseGetNotes(transports.supabase, sinceUtc) }; }
-      catch (e) { /* fall through to the queue — the Hub never sees an unexplained gap */ }
+      catch (e) { remoteError = e && e.message ? e.message : 'remote read failed'; }
     }
     if (transports.queue) {
       return { backend: 'local-queue', records: await queueGetNotes(transports.queue, sinceUtc) };
     }
-    return { backend: 'none', records: [], reason: 'no transport available' };
+    return { backend: 'none', records: [], reason: remoteError ? 'supabase transport error: ' + remoteError : 'no transport available' };
   }
 
   /* ——— Card rendering (Hub feed rows; XSS-safe by construction) ——— */
@@ -381,7 +394,8 @@
   /* ——— Browser auto-registration ———
      On load in a browser, register the feed runtime with whatever the
      deployment injected via window.NayaBridgeConfig (the ONE config slot):
-       { supabaseRest: { url, key } }  -> live Supabase rows in the feed room
+       { supabaseRest: { url, key, accessToken, memberId } } -> RLS-scoped rows
+     accessToken/memberId MUST come from the authenticated session, not static HTML.
        { queueUrl: '...' }             -> live JSONL queue in the feed room
      Nothing injected -> transports absent -> smartFeed() reports not_verified
      honestly. The module NEVER ships a credential; deployment provides it. */
@@ -393,17 +407,14 @@
         if (cfg.supabaseRest && cfg.supabaseRest.url) {
           t.supabase = { available: true, query: null, rest: {
             base: String(cfg.supabaseRest.url).replace(/\/$/, ''),
-            key: cfg.supabaseRest.key || ''
+            key: cfg.supabaseRest.key || '',
+            accessToken: cfg.supabaseRest.accessToken || '',
+            memberId: cfg.supabaseRest.memberId || ''
           } };
         }
-        if (cfg.queueUrl) {
-          t.queue = {
-            append: function () { return Promise.reject(new Error('browser queue is read-only')); },
-            readAll: function () { return fetch(cfg.queueUrl, { cache: 'no-store' }).then(function (r) {
-              if (!r.ok) throw new Error('HTTP ' + r.status); return r.text();
-            }); }
-          };
-        }
+        // A naked queueUrl is not an authenticated, owner-scoped source.
+        // Browser queue fallback remains BLOCKED until a governed endpoint
+        // proves viewer identity and note-level authorization server-side.
         return t;
       });
     } catch (e) { /* never break the app on bridge init */ }
