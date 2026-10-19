@@ -67,7 +67,7 @@ def make_intent(**kw):
         "intent_type": "should_merge",
         "intent_description": "decide whether a PR should merge",
         "objective": "decide which PR should merge next",
-        "constraints": ["CI green", "IV >= 9.0"],
+        "constraints": ["CI green", "IV >= 9.5"],
         "decision_weight": "standard",
         "weight_reason": "reversible, medium stakes",
         "reversibility": "high",

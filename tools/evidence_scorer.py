@@ -389,11 +389,11 @@ def score_evidence(option, pr, conf, conf_note):
             ev.append("draft PR — proof incomplete by definition")
         iv = option.get("iv_score")
         if isinstance(iv, (int, float)):
-            if iv >= 9.0:
+            if iv >= 9.5:
                 v += 0.3
-                ev.append(f"independent validation {iv} >= 9.0 (mechanical)")
+                ev.append(f"independent validation {iv} >= 9.5 (mechanical)")
             else:
-                ev.append(f"independent validation {iv} < 9.0 — not proven")
+                ev.append(f"independent validation {iv} < 9.5 — not proven")
         else:
             ev.append("no independent-validation score on the option")
         if option.get("tests_green") is True:
