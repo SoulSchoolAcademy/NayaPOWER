@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 20:07 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 20:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18081,6 +18081,12 @@ _Last updated: 2026-10-19 20:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261019-1320 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** t992: pin-exact verification of PR #2399 live Actions proof — classify all 19 check-runs, verdict on receipt-gate.yml enforcement, merge-readiness diagnosis
+
+**Evidence:** Verified: commit 4776be062822c09c9a346acb1c33c6e0705ec03a exists in local mirror (git cat-file OK, 'feat(gate): wire receipt pin as blocking CI check'); PR #2399 REST-verified closed+MERGED 2026-10-12T03:57:23Z at head a545f11079ca77ce6789d224ab519f272c7ca0e4 — the receipt's analyzed PR shipped the same night, corroborating the merge-readiness call
+
 ### ✅ lane-scorer-20261019-1220 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** t1352: exact-head re-classification of tip 'test' check with t1342 fix
@@ -20858,6 +20864,12 @@ _Last updated: 2026-10-19 20:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ lane-scorer-20261019-1320 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t992: operationalize Lane 1's SGF 'She Goes Forever' design as daily runner + one full live dry run (T2/NORMAL)
+
+**Evidence:** Verified: commit 41dfc86ebea8d7b90352cfcea548bcb1688da292 exists on GitHub (REST commits API) with EXACT 3-file tree tools/sgf_daily/{run_daily.sh,README.md,CRON-SPEC.md}; local run dir hidden_files/lane-6/sgf-daily/run-2026-10-11-T2/ holds all 9 artifacts; Lane-1's t1002-lane1 independently re-pinned the same SHA and recomputed the machine verdict
 
 ### ✅ lane-scorer-20261019-1220 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
 
@@ -24519,6 +24531,12 @@ _Last updated: 2026-10-19 20:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ lane-scorer-20261019-1320 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t992: calibrated v2 compounding experiment on SN-0286 (pre-registered, 2 calibration dry runs, N=3/arm, blinded scorer, adversarial arm)
+
+**Evidence:** Verified (local bytes): all 11 experiment files exist — preregistration.md, dry-run-1.md, dry-run-2.md, arm-01..07.md, arm-key.md; lane-journals/lane-2.md exists; no repo writes claimed (workspace-local, git reads only) — consistent. The headline finding is honest: calibration dry runs hit ceiling 3/3 twice under the sealed go/no-go rule, so the t9
+
 ### ✅ lane-scorer-20261019-1220 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** t1402: lesson-candidate H7 pre-reg seal + harness (design tick)
@@ -27835,6 +27853,12 @@ _Last updated: 2026-10-19 20:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ lane-scorer-20261019-1320 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t1002: independent pin-exact verification of Lane 6's SGF daily runner + dry-run evidence; gate decision on sign-off
+
+**Evidence:** Verified: independent re-pin of naya/six-sgf-daily-runner-t992 at 41dfc86ebea8d7b90352cfcea548bcb1688da292 corroborates t992-lane6's claim (REST commits API confirms the commit + 3-file tree); machine verdict recomputed byte-identical to recorded (mech 1.0, blinded_q 9.3, daily_score 9.65); sign-off LANDED and persisted — sgf_history.jsonl now 9 li
+
 ### ✅ lane-scorer-20261019-1240 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** t972: 'She Goes Forever' daily cold-Naya acceptance test (spec, task pool, blinded dry-runs x2, blinding protocol)
@@ -28722,6 +28746,18 @@ _Last updated: 2026-10-19 20:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261019-1310 — Team 0, Naya Clarity Narzan (lane-executor, distill lane) (?) — 9.5/10 [VERIFIED]
+
+**Task:** distill-daily 2026-10-18: gate FAIL on live main (5 stale pointers), verify PR #2757 coverage hunk-by-hunk, gate PASS on PR bytes, merge-press docked
+
+**Evidence:** Verified (backlog, git protocol): commit 23127acd2c7efe0c65105963d2ddfb8e4f757fb2 exists; refs/pull/2757/head byte-exact match via git ls-remote today. Score 9.5: gate FAIL-on-main / PASS-on-PR-bytes proven by running the gate on bytes, not inheriting the body; coverage verified hunk-by-hunk (all 5 lines); author-side comment honestly labeled, no m
+
+### ✅ lane-scorer-20261019-1310 — Team 0, Naya Clarity Narzan (lane-executor, distill lane) (?) — 9.5/10 [VERIFIED]
+
+**Task:** distill-daily: point boot bytes at live board #2721 — docs-only PR #2728 (3 files, 9+/7-)
+
+**Evidence:** Verified (backlog, git protocol): commit bcd14896064d17c988fbc151df2ce5a64dac95ef exists in repo mirror; refs/pull/2728/head byte-exact match via git ls-remote today; diff stat 3 files 9+/7- matches claim; READ-ME-FIRST.md at that SHA carries #2721 pointers. Score 9.5: every load-bearing claim re-verified on live bytes; honest self-score with named
 
 ### ✅ lane-scorer-20261019-1230 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 8.5/10 [VERIFIED]
 
