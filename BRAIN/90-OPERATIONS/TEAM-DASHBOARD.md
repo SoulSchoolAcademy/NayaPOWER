@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 14:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 15:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 640 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 641 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (60)
+### LEARN (61)
+- [#2784](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2784) LEARN: §7 kind-decomposition guard (gr-w533-alpha-gapclose)
 - [#2755](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2755) docs(brain): learning event 2026-10-18
 - [#2743](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2743) docs: define NayaNET build-see-learn-share product loop
 - [#2720](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2720) docs(brain): learning event 2026-10-17
 - [#2693](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2693) docs(brain): learning event 2026-10-15 📝draft
-- [#2682](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682) feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3
-- …and 55 more
+- …and 56 more
 
 ### KNOW (26)
 - [#2781](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2781) fix(brain-index): re-stamp index layer at tip 1a1c22d3 (rung 1)

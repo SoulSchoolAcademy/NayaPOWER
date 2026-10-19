@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T14:15:44+00:00",
+ "generated_utc": "2026-10-19T15:15:20+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2784,
+     "title": "LEARN: \u00a77 kind-decomposition guard (gr-w533-alpha-gapclose)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2784",
+     "draft": false
+    },
     {
      "number": 2755,
      "title": "docs(brain): learning event 2026-10-18",
@@ -73,15 +79,9 @@
      "title": "wire: learn-clock T6 verify + T7 compound commands (Alpha w189)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2613",
      "draft": false
-    },
-    {
-     "number": 2606,
-     "title": "feat(tools): place learn-clock instrument in tools/ + LEARN_CLOCK_LOG override",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2606",
-     "draft": true
     }
    ],
-   "open_pr_count": 60
+   "open_pr_count": 61
   },
   {
    "id": "know",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 640,
+ "open_pr_total": 641,
  "unassigned_prs": 245
 }
