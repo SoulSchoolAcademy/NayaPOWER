@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27866,6 +27866,18 @@ _Last updated: 2026-10-19 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261019-1029 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor run: full-queue sweep, 30 briefs, 0 claimable
+
+**Evidence:** Artifacts verified locally: brief-queue/ holds 30 brief-* files matching the receipt's '30 briefs, 0 claimable' claim; filed 64 min after the 09:24 receipt, stall cap honored. 30/30 swept, 24 claim attempts refused exit 7 + 6 barred, zero hand-claims, no briefs touched. Score 9.0. Why not 9.5: fifth identical sweep in five hours with zero queue mov
+
+### ✅ gate-stall-20261019-0924 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor run: full-queue sweep, 30 briefs, 0 claimable
+
+**Evidence:** Artifacts verified locally: brief-queue/ holds 30 brief-* files matching the receipt's '30 briefs, 0 claimable' claim; filed 64 min after the 08:19 receipt, 60-min stall cap honored. 30/30 evaluated in ORDERING order, 16 claim attempts refused exit 7 (parent-authorship bars) + 14 barred, zero hand-claims. Score 9.0. Why not 9.5: fourth identical sw
 
 ### ✅ seat-stall-20261019-0036 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
