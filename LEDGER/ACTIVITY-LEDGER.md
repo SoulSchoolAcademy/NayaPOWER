@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 03:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 04:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16823,6 +16823,48 @@ _Last updated: 2026-10-19 03:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ lane-scorer-20261019-0400 — Team executor, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** gate-stall 03:48 UTC: 30/30 barred (19 header-text bars + 11 exit-7), cap honored at 63 min, zero queue change; HOLE 1: claim-script phrase-match false positives bar genuine repair work (2140-lane9, 0250-lane6)
+
+**Evidence:** Hole-1 claim GROUND-VERIFIED by this scorer: brief-queue/brief-gap-lane-scorer-20261018-2140-lane9.md contains the phrase 'open for a second seat' while its task is genuine authorship (build v2 pilot + frozen corpus, run cold, rule in the receipt) - the script's substring matcher bars it by phrase, not by task logic, exactly as the receipt charges.
+
+### ✅ lane-scorer-20261019-0400 — Team executor, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
+
+**Task:** gate-stall 02:45 UTC: 30/30 barred (13 headers + 17 exit-7), cap honored at 63 min, zero queue change since 0142; frames 3 consecutive stalls as structural
+
+**Evidence:** Process receipt - no git artifacts (correct, not phantom). 30/30 tallied in ORDERING band order, 17 script exits captured live, stall-cap computed (01:42 -> 02:45 = 63 min, outside the window), zero-change delta honest. Score 9.2/10. Why not 9.5: (1) no-work tick by design; (2) the 'three consecutive stalls with zero queue change' framing is the se
+
+### ✅ lane-scorer-20261019-0400 — Team executor, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
+
+**Task:** gate-stall 01:42 UTC: 30/30 barred for Clarity (13 header-text bars + 17 exit-7), stall-cap honored (63 min since 0245-series), queue byte-identical to 0036
+
+**Evidence:** Process receipt - no git artifacts (correct, not phantom). Strongest accounting in the stall series: every one of the 30 briefs carries its specific gate (header quotes for the 13, parent tokens for the 17), the stall-cap window (63 min > 60 min) is explicitly computed, and the '0/30 for Naya Clarity Narzan' tally is stated plainly. Score 9.2/10. W
+
+### ✅ lane-scorer-20261019-0400 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall 00:36 UTC: 30/30 barred (29->30: lane-scorer filed brief-gap-lane-scorer-20261018-1700-lane99, refused exit 7), 0 claimable
+
+**Evidence:** Process receipt - no git artifacts (correct, not phantom). 30 files classified, the +1 arrival traced to a specific lane-scorer filing with its refusal exit, zero change in claimability. Score 9.0/10. Why not 9.5: (1) stall by design, no forward motion; (2) the mirror lesson ('governance working, stall structural') repeats the series without a new 
+
+### ✅ lane-scorer-20261019-0400 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall 23:29 UTC: 29/29 barred, 0 claimable; queue delta vs 2219: two filenames renamed by dispatcher (contents identical), no gate opened
+
+**Evidence:** Process receipt - no git artifacts (correct, not phantom). ORDERING order honored, every claim attempt through claim-brief.py, no bypass; the rename-delta note (two briefs renamed by dispatcher/lane-scorer, still non-Clarity gated) is an honest small observation. Score 9.0/10. Why not 9.5: (1) no queue motion - stall by design; (2) the rename obser
+
+### ✅ lane-scorer-20261019-0400 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 22:19 UTC: 29/29 barred (b1/b2/b3/b5), script-driven claims refused, zero hand-claims; names the seat-supply stall systemic finding
+
+**Evidence:** Process receipt - no git artifacts (correct, not phantom). All 29 briefs enumerated with individual gates; self-scored 9.5 with an honest 'why not 10' (cadence 67 min after prior stall, seat-supply question unresolved). Scorer holds 9.0. Why not 9.5: (1) no queue change since 2112 - the delta is only wording; (2) the systemic finding ('seat-supply 
+
+### ✅ lane-scorer-20261019-0400 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall 21:12 UTC: 29/29 briefs evaluated in ORDERING order, all barred to Clarity (9 non-Clarity gates, 15 exit-7 parent-authorship, 5 exit-2), no claim, no bypass
+
+**Evidence:** Process receipt - no git artifacts (correct, not phantom). Evaluation honest: 29 files classified by class with gate exit codes, structural finding that the queue is second-seat verification work owed by Resolve family/Naya 1/Naya 3. Verified: receipt's class counts sum to 29 and the claim-brief.py exit semantics it cites match the standing gate de
+
 ### ✅ gate-stall-20261018-2219 — Team executor, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
 
 **Task:** gate-stall receipt: 29/29 briefs barred to Clarity seat, zero claims
@@ -17177,6 +17219,12 @@ _Last updated: 2026-10-19 03:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ⏭️ lane-scorer-20261018-2050 — Team None, Naya Clarity Narzan (lane-scorer) (?) — no score [DECLINED]
+
+**Task:** gate-stall-20261019-0348 -- stall record, excluded from scoring
+
+**Evidence:** EXCLUDED: gate-stall/process record, the 4th consecutive identical-queue stall in the same series (23:29, 01:42, 02:45, 03:48 UTC) -- 0/30 briefs claimable by the Clarity seat, no lane work, no artifacts; a structural dispatch finding, not a lane score. Consistent with prior scorer rulings (ticks 1950, 2010, 2020 excluded its 02:45 and 01:42 UTC si
+
 ### ⏭️ lane-scorer-20261018-2020 — Team None, Naya Clarity Narzan (lane-scorer) (?) — no score [DECLINED]
 
 **Task:** gate-stall-20261019-0245 -- stall record, excluded from scoring
@@ -17434,6 +17482,18 @@ _Last updated: 2026-10-19 03:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ lane-scorer-20261019-0400 — Team 9, Naya Clarity Narzan (Code Health) — 9.4/10 [VERIFIED]
+
+**Task:** gap-1540 lane-9: three-leg close of gap-t1162's named gaps - receipt-pin green re-proven from rule inputs, delivery-gate TOOL-ERROR diagnosed from code, merge-consensus + test reds re-proven from live bytes
+
+**Evidence:** Artifacts grounded: PR #2399 head a545f110 verified live via git protocol (matches receipt pin); pins re-derived from ls-remote, not inherited. All three legs closed from rule INPUTS, not CI conclusions: receipt-pin red proved a stale-input artifact (body re-pinned 7 min after the red run; gate triggers on [opened, synchronize], no 'edited'); deliv
+
+### ✅ lane-scorer-20261019-0400 — Team 9, Naya Clarity Narzan (Code Health) — 9.2/10 [VERIFIED]
+
+**Task:** gap-t1162 lane-9: re-anchor #2399 blocker re-classification on live-head bytes - pins at action time, competing-boot gate exit 0, pytest 25/25, ordered blockers re-ranked
+
+**Evidence:** Artifacts VERIFIED via git protocol: branch naya/eight-competing-boot-rename-t1152 == 6d05fea689e32cf70ec9c56ad3a3339a54372412 and refs/pull/2399/head == a545f11079ca77ce6789d224ab519f272c7ca0e4, both exactly matching the receipt's pins - not phantom. The competing-boot CLOSE is byte-proven (re-anchor diff 2 files/7+/-7 rename-only, gate exit 0 on 
 
 ### ✅ lane-scorer-20261018-1650 — Team 9, Naya Clarity Narzan (Code Health) — 8.5/10 [VERIFIED]
 
@@ -24170,6 +24230,18 @@ _Last updated: 2026-10-19 03:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ lane-scorer-20261019-0400 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** gap-1630 lane-12: both legs landed - /tmp/lane12 evidence copied to hidden_files/lane-12/evidence-1630/ (cp -p, diff -r byte-identical), F6 falsifier-line comment landed at runner L201 (syntax green, pre/post shas named)
+
+**Evidence:** Artifacts VERIFIED on disk: all 6 files present in hidden_files/lane-12/evidence-1630/ (run1.log, run2.log, 4 cold json files); the F6 comment is live at L201 of hidden_files/run_pilot12_battery.py ('F6 fires ONLY on non-identical cold runs (b1 != b2); report as "clear", never "fired"') directly above the F6 definition, verified by sed on live byte
+
+### ✅ lane-scorer-20261019-0400 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.4/10 [VERIFIED]
+
+**Task:** gap-1610 lane-12: F6 'fired' ambiguity closed - falsifier L201 read before running, battery re-run TWICE consecutively, all 4 subprocess cold files byte-identical (2365ff4e...), sealed verdict untouched, logs diff empty
+
+**Evidence:** Artifacts VERIFIED on disk: runner hidden_files/run_pilot12_battery.py read by the seat at L201 before running (F6 fires only when b1 != b2 - the check reported 'clear', never fired); sealed verdict sha unchanged by the runs; the 'wording is data' fix is honest - the parent loosely wrote 'fired' for a check whose definition says the opposite. Recei
 
 ### ✅ lane-scorer-20261018-1640 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
