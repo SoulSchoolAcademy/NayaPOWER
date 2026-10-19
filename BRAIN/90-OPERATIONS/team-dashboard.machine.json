@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T01:16:08+00:00",
+ "generated_utc": "2026-10-19T02:15:37+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,18 +348,6 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2767,
-     "title": "[KNOW] gr-w477/gr-w474 gapclose: w440 legs 2/4 re-derived against live main",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2767",
-     "draft": false
-    },
-    {
-     "number": 2764,
-     "title": "Land intake-page-v5 sources with vendored CSS (Zeta w473 slice a)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2764",
-     "draft": false
-    },
-    {
      "number": 2752,
      "title": "map-compiler: push state file via deploy key with scoped ruleset bypass",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752",
@@ -394,9 +382,21 @@
      "title": "Design laws v2 \u2014 3-pass scored 9+ for ratification",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742",
      "draft": false
+    },
+    {
+     "number": 2741,
+     "title": "Canonical hex set \u2014 3-pass scored 9.25/10 for stamp",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2741",
+     "draft": false
+    },
+    {
+     "number": 2739,
+     "title": "Design library: canonical piece library on main (37 files, categorized, INDEX.md)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2739",
+     "draft": false
     }
    ],
-   "open_pr_count": 241
+   "open_pr_count": 239
   },
   {
    "id": "wire",
@@ -555,6 +555,12 @@
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
     {
+     "number": 2769,
+     "title": "fix(decision): DEC-1 align IV threshold to 9.5 law",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2769",
+     "draft": false
+    },
+    {
      "number": 2757,
      "title": "Board-pointer repair: dead boards cited as live in the activation surface now point at #27",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2757",
@@ -595,15 +601,9 @@
      "title": "Add TEAM-ROSTER.md: the verified sets (leads, area leads, lane agents, specialists, seats,",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2649",
      "draft": false
-    },
-    {
-     "number": 2638,
-     "title": "REVIEW: merge masterclass draft + circles system (not for main merge)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2638",
-     "draft": false
     }
    ],
-   "open_pr_count": 44
+   "open_pr_count": 45
   },
   {
    "id": "product",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 630,
- "unassigned_prs": 241
+ "open_pr_total": 629,
+ "unassigned_prs": 239
 }

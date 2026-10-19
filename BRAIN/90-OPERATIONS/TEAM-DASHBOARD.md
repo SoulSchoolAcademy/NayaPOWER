@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 01:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 02:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 630 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 629 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 - …and 25 more
 
-### BUILD (241)
-- [#2767](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2767) [KNOW] gr-w477/gr-w474 gapclose: w440 legs 2/4 re-derived against live
-- [#2764](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2764) Land intake-page-v5 sources with vendored CSS (Zeta w473 slice a)
+### BUILD (239)
 - [#2752](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752) map-compiler: push state file via deploy key with scoped ruleset bypas
 - [#2750](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750) fix(builder): strict headless render qualification before release 📝draft
 - [#2748](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748) Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT — the system tha
-- …and 236 more
+- [#2747](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747) feat: make Smart Builder library searchable and machine-accessible
+- [#2746](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746) docs: establish Smart Builder human contract
+- …and 234 more
 
 ### WIRE (125)
 - [#2768](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2768) [Team Verity] Naya Beta | KNOW w484: re-cut w440 leg 4 (pre-write vali
@@ -111,13 +111,13 @@
 - [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
 - …and 7 more
 
-### INFRA (44)
+### INFRA (45)
+- [#2769](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2769) fix(decision): DEC-1 align IV threshold to 9.5 law
 - [#2757](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2757) Board-pointer repair: dead boards cited as live in the activation surf
 - [#2749](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2749) fix(builder): explicit UTF-8 on Windows without environment workaround 📝draft
 - [#2745](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2745) Visual Smart Contract v1 — the official machine contract for the smart
 - [#2740](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2740) Design specimens: categorized piece library with identities
-- [#2716](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716) Composer v1 + gap closure (43->39 mapping, feed specimen) — item 15b
-- …and 39 more
+- …and 40 more
 
 ### PRODUCT (40)
 - [#2754](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754) Hub↔Supabase persistence bridge (Smart Note flow leg 3) — t0800
