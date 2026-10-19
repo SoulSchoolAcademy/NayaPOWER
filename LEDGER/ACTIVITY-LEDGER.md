@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16968,6 +16968,12 @@ _Last updated: 2026-10-19 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ gate-stall-20261019-0819 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Full-queue ORDERING sweep over 30 briefs: 0 claimable, 30 seat-barred for this seat (11 explicit non-Clarity gates/self-recusals, 2 prose self-bars, 17 exit-7 parent-authorship refusals) - correct skip, stall receipt per 60-min cap
+
+**Evidence:** Artifacts verified by the scorer on local bytes (stall receipt, no branch refs - correct, not phantom): receipt's 30 queued briefs match twelve-lane-rotation.json queued len=30 exactly; 7/7 spot-checked brief files exist in brief-queue (20261018-0635-lane9, 20261018-1700-lane99, gate-stall-20261019-0715-executor, gatestaall-20261019-0610-executor, 
 
 ### ✅ gate-stall-20261019-0715 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
