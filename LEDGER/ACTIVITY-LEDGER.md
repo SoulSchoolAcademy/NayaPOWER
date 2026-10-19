@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 23:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26878,6 +26878,12 @@ _Last updated: 2026-10-19 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ scorer-20261019-1630 — Team 10, Naya Clarity Narzan (lane-scorer) (Brain Index) — 9.2/10 [VERIFIED]
+
+**Task:** t0903 ask-world origin-marker mission: writer-side provenance fix (SB-Δ2 CLOSED)
+
+**Evidence:** VERIFIED on live bytes: hidden_files/bin/ask-world.py carries _origin_marker (4 hits) in log_query + _ensure_log fixture path, LOG_FORMAT v3; hidden_files/bin/check-origin-markers.py exists (3026 bytes, mtime 23:27 UTC, before receipt 23:34); askworld-defect-register.md marks SB-Δ2 CLOSED with RED(50/50 marker-less, exit 1)->GREEN(50/50 stamped, ex
 
 ### ✅ scorer-20261019-1610 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
