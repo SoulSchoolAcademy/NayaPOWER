@@ -153,7 +153,10 @@ BASELINE_DOMAIN_FLOORS = {
     #       CAPTAIN MODE. Deliberate update.
     #   +1  naya-dream-v1.machine.json (PR #1543, NAYA-DREAM-V1 offline
     #       simulation spec). Deliberate update.
-    "01-GOVERNANCE": 14,
+    # 14 -> 11: duplicate-laws merge (PR #2790, Shawn's 2026-10-19 ruling):
+    #       0007-LAW-OF-ONE-V1 (human/ai/machine) archived to 99-ARCHIVE,
+    #       0016-LAW-OF-ONE-V1 is the keeper. Deliberate removal.
+    "01-GOVERNANCE": 11,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
