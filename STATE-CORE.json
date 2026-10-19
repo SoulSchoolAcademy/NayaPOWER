@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-19T20:56:34Z",
+ "generated_utc": "2026-10-19T21:08:56Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "9c10008714586123e596766ae89d52bbd87e0419",
-  "short": "9c1000871458",
+  "sha": "56dedc70a64170f4433e95ac0def56f3e6142186",
+  "short": "56dedc70a641",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-19T20:56:00Z"
+  "checked_utc": "2026-10-19T21:08:14Z"
  },
  "venue": {
   "live": 2765,
@@ -17,24 +17,24 @@
   ]
  },
  "waves": {
-  "active": 400,
+  "active": 401,
   "active_seats": [
-   "Naya Host",
-   "Naya Archivist",
-   "Naya Keeper"
+   "Naya Compounder",
+   "Naya Librarian",
+   "Naya Bridger"
   ],
   "last_completed": null,
   "last_completed_at": null,
-  "rotation_cursor": "wave-401: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
+  "rotation_cursor": "wave-402: Naya Judge/Naya Auditor/Naya Builder (roster order)"
  },
  "lanes": {
   "free": [
-   "ACT",
    "BUILD",
+   "GOVERN",
    "INFRA",
-   "KNOW",
    "LAW",
-   "LEARN",
+   "MEMORY",
+   "PRODUCT",
    "PROVE",
    "TEAM",
    "WIRE"
@@ -42,26 +42,42 @@
   "held": [],
   "active": [
    {
-    "lane": "GOVERN",
-    "since": "2026-10-19T20:35Z"
+    "lane": "ACT",
+    "since": "2026-10-19T21:01Z"
    },
    {
-    "lane": "MEMORY",
-    "since": "2026-10-19T20:35Z"
+    "lane": "KNOW",
+    "since": "2026-10-19T21:01Z"
    },
    {
-    "lane": "PRODUCT",
-    "since": "2026-10-19T20:35Z"
+    "lane": "LEARN",
+    "since": "2026-10-19T21:01Z"
    }
   ]
  },
  "queue": {
   "actionable": 0,
-  "proposed": 1,
+  "proposed": 9,
   "top": [
    {
     "id": "Q-PROP-1",
-    "title": "BUILD finding: map-compiler's hourly `compile` job dies at the \"Commit state file\" step on"
+    "title": "EXTENSION of the 20:50Z rate-limit PROPOSED \u2014 2 more merge-consensus gate firings via the"
+   },
+   {
+    "id": "Q-PROP-2",
+    "title": "installation-token API rate-limit episode ~20:20\u201320:41Z killed 4 GITHUB_TOKEN-based workfl"
+   },
+   {
+    "id": "Q-PROP-3",
+    "title": "stale-branch-watch is 2/2 RED \u2014 meant-to-be-always-green report-only script dies on uncaug"
+   },
+   {
+    "id": "Q-PROP-4",
+    "title": "protocol-watchdog chronically RED \u2014 both jobs fail <1s: the workflow never checks out the"
+   },
+   {
+    "id": "Q-PROP-5",
+    "title": "map-compiler chronically RED at the commit step \u2014 12/12 consecutive scheduled failures, ze"
    }
   ]
  },
@@ -238,27 +254,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 36
+   "age_s": 44
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 36
+   "age_s": 44
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 36
+   "age_s": 44
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 36
+   "age_s": 44
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 36
+   "age_s": 44
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 36
+   "age_s": 44
   }
  }
 }
