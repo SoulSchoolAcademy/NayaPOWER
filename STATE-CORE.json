@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-19T08:06:57Z",
+ "generated_utc": "2026-10-19T08:16:43Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "f424f5b971f46d45ea0bd8ea070f69985973c3a2",
-  "short": "f424f5b971f4",
+  "sha": "1a1c22d32191b8e6ae90db1be58118ad0e33b7b0",
+  "short": "1a1c22d32191",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-19T08:05:59Z"
+  "checked_utc": "2026-10-19T08:15:59Z"
  },
  "venue": {
   "live": 2765,
@@ -17,41 +17,41 @@
   ]
  },
  "waves": {
-  "active": 364,
+  "active": 365,
   "active_seats": [
-   "Naya Judge",
-   "Naya Auditor",
-   "Naya Builder"
+   "Naya Mechanic",
+   "Naya Electrician",
+   "Naya Keeper"
   ],
   "last_completed": null,
   "last_completed_at": null,
-  "rotation_cursor": "wave-365: Naya Electrician/Naya Captain/Naya Mechanic (roster order)"
+  "rotation_cursor": "wave-366: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
  },
  "lanes": {
   "free": [
    "ACT",
-   "GOVERN",
-   "INFRA",
+   "BUILD",
    "KNOW",
+   "LAW",
    "LEARN",
    "MEMORY",
    "PRODUCT",
-   "TEAM",
-   "WIRE"
+   "PROVE",
+   "TEAM"
   ],
   "held": [],
   "active": [
    {
-    "lane": "BUILD",
-    "since": "2026-10-19T07:59:12Z"
+    "lane": "GOVERN",
+    "since": "2026-10-19T08:14:30Z"
    },
    {
-    "lane": "LAW",
-    "since": "2026-10-19T07:59:12Z"
+    "lane": "INFRA",
+    "since": "2026-10-19T08:14:30Z"
    },
    {
-    "lane": "PROVE",
-    "since": "2026-10-19T07:59:12Z"
+    "lane": "WIRE",
+    "since": "2026-10-19T08:14:30Z"
    }
   ]
  },
@@ -238,27 +238,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 60
+   "age_s": 46
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 60
+   "age_s": 46
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 60
+   "age_s": 46
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 60
+   "age_s": 46
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 60
+   "age_s": 46
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 60
+   "age_s": 46
   }
  }
 }
