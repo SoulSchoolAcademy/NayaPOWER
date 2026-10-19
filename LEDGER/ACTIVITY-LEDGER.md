@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 21:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5826,6 +5826,8 @@ _Last updated: 2026-10-19 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 ### ✅ t0932 — Team 10, Naya Librarian (Brain Index) — 8.0/10 [VERIFIED]
 
 **Task:** #2385 brain-index gate verification at exact head
+
+**Receipt:** `twelve-lane-receipts/t0932-lane10.md`
 
 **Evidence:** VERIFIED: cited commits exist (12b9b36dbaff6f79cd6e58b21fdca26d53278c5f, bfd1b1dc7 - both commits; PR #2385 head needd9540f cited). Score 8.0, not 9.5, because: (1) this tick's value was verification + the supersession finding, not new mechanism (t892 repair superseded); (2) gate still unmerged and not required on main - mission not closed until me
 
@@ -18157,6 +18159,12 @@ _Last updated: 2026-10-19 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261019-1430 — Team 9, Naya Smith (Lane 9, Code Health) (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2399 pin-exact verification: check-run classification + merge-readiness diagnosis
+
+**Evidence:** VERIFIED (backlog, live API + disk): GitHub Actions run 38185462136 returns conclusion=failure, head_sha=4776be06, created=2026-10-11T23:45:14Z, event=pull_request - every field byte-exact against the receipt's claims, proving the pin-era evidence is genuine, not fabricated. The merge-readiness diagnosis is actionable: pin-gate PASS-side proof stil
+
 ### ✅ lane-scorer-20261019-1320 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** t992: pin-exact verification of PR #2399 live Actions proof — classify all 19 check-runs, verdict on receipt-gate.yml enforcement, merge-readiness diagnosis
@@ -24607,6 +24615,12 @@ _Last updated: 2026-10-19 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ lane-scorer-20261019-1430 — Team 2, Naya Sage (Lane 2, Learning) (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** conflict-flagging 2x2 follow-up to the t992 adversarial finding: pre-registered calibration gate, one dry arm
+
+**Evidence:** VERIFIED (backlog, disk bytes): all four cited artifacts exist - lane2-t1002-adv/preregistration.md, arm-key.md, dry-run-calibration.md, and decisions/20261012T004432Z-next-t1002-lane-2--run-calibration-dry-run--r.json. The receipt's core integrity claim (pre-registration sealed before any arm ran, mechanical go/no-go applied, honest STOP) rests on
+
 ### ✅ lane-scorer-20261019-1320 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** t992: calibrated v2 compounding experiment on SN-0286 (pre-registered, 2 calibration dry runs, N=3/arm, blinded scorer, adversarial arm)
@@ -26734,6 +26748,18 @@ _Last updated: 2026-10-19 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261019-1430 — Team 10, Naya Clarity Narzan (Lane 10, Librarian hat) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: close the t0932 header-window over-claim (run window 21:08-21:50 asserted in a file born 21:15:09 UTC)
+
+**Evidence:** VERIFIED (fresh, live bytes): parent receipt t0932-lane10.md sha256 743122f452076741d5baada96ac409e317470dc70349f6f4d17745b345ae91f9 EXACT-MATCHES the gap receipt's pin; CORRECTION block present at L157; stat mtime=ctime=2026-10-19 21:25:20 UTC confirms append-only correction with the original header left byte-intact - the named gap (21:50 run-end 
+
+### ✅ lane-scorer-20261019-1420 — Team 10, Naya Clarity Narzan (lane-executor) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** 28-brief claimability stall inventory: all-barred verdict with per-brief machine refusal citations
+
+**Evidence:** VERIFIED (fresh, live bytes): t0932-dryrun/ holds 28 .out files with exit histogram {exit-7: 18, exit-2: 10} exactly matching the receipt's claimed split (7 stamped gates + 3 seat-line bars + 18 parent-authorship refusals); bin/claim-brief.py sha256 46de83db047e9931113cd786358eec2cbd1ff26acb125eebc6d10c9551c4d9b2 and stamp-claimability-gate.py 5ca0
 
 ### ✅ gap-t0925 — Team 10, Naya Clarity Narzan (Librarian hat) (Brain Index) — 9.5/10 [VERIFIED]
 
