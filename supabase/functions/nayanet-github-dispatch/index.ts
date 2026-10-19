@@ -251,6 +251,47 @@ Deno.serve(async (req) => {
       if (!claimRow) throw new Error("DISPATCH_RECEIPT_CLAIM_FAILED");
     }
     if (claimRow.status === "completed" && claimRow.smart_link) {
+      // Historical receipts may predate the blob-SHA/commit-SHA correction.
+      // Never turn a stored "completed" flag into present-tense proof: resolve
+      // the recorded commit and verify its file against the current main projection.
+      const replayCommitSha = normalizedText(claimRow.commit_sha);
+      const replayRepoPath = normalizedText(claimRow.repo_path);
+      if (
+        !replayCommitSha ||
+        !replayRepoPath ||
+        claimRow.smart_link !== `https://github.com/${REPO}/blob/main/${replayRepoPath}`
+      ) {
+        return json({ ok: false, pipeline: "PROJECTION_FAILED", error: "PROJECTION_UNVERIFIED" }, 502);
+      }
+      let replayCredential: GitHubCredential;
+      try {
+        replayCredential = await resolveGitHubCredential();
+      } catch {
+        return json({ ok: false, pipeline: "PROJECTION_BLOCKED", error: "GITHUB_CREDENTIAL_NOT_CONFIGURED" }, 503);
+      }
+      const replayApiUrl = `https://api.github.com/repos/${REPO}/contents/${replayRepoPath}`;
+      const replayContentRes = await fetch(replayApiUrl + "?ref=main", {
+        headers: ghHeaders(replayCredential.token),
+      });
+      const replayContentJson: any = await replayContentRes.json().catch(() => ({}));
+      const replayCommitRes = await fetch(
+        `https://api.github.com/repos/${REPO}/commits/${encodeURIComponent(replayCommitSha)}`,
+        { headers: ghHeaders(replayCredential.token) },
+      );
+      const replayCommitJson: any = await replayCommitRes.json().catch(() => ({}));
+      const replayFile = Array.isArray(replayCommitJson?.files)
+        ? replayCommitJson.files.find((file: any) => file?.filename === replayRepoPath)
+        : null;
+      if (
+        !replayContentRes.ok ||
+        replayContentJson?.path !== replayRepoPath ||
+        typeof replayContentJson?.sha !== "string" ||
+        !replayCommitRes.ok ||
+        replayCommitJson?.sha !== replayCommitSha ||
+        replayFile?.sha !== replayContentJson.sha
+      ) {
+        return json({ ok: false, pipeline: "PROJECTION_FAILED", error: "PROJECTION_UNVERIFIED" }, 502);
+      }
       return json({
         ok: true,
         pipeline: "PROJECTION_VERIFIED",
@@ -260,8 +301,8 @@ Deno.serve(async (req) => {
         projection_verification: {
           completed_at: claimRow.completed_at,
           run_url: null,
-          commit_sha: claimRow.commit_sha || null,
-          credential_mode: null,
+          commit_sha: replayCommitSha,
+          credential_mode: replayCredential.mode,
         },
       });
     }
@@ -402,8 +443,12 @@ Deno.serve(async (req) => {
       body: JSON.stringify(putBody),
     });
     const putJson: any = await putRes.json().catch(() => ({}));
-    const commitSha: string | null = typeof putJson?.content?.sha === "string" ? putJson.content.sha : null;
-    if (!putRes.ok || !commitSha) {
+    // GitHub Contents API returns two different Git objects: content.sha is the
+    // file blob; commit.sha is the commit that changed that file. Never persist
+    // a blob SHA as commit identity or claim a verified projection from it.
+    const blobSha: string | null = typeof putJson?.content?.sha === "string" ? putJson.content.sha : null;
+    const commitSha: string | null = typeof putJson?.commit?.sha === "string" ? putJson.commit.sha : null;
+    if (!putRes.ok || !blobSha || !commitSha) {
       const commitReason = sanitizeGitHubReason(putJson?.message);
       await failReceipt(
         commitReason
@@ -422,10 +467,26 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Verify: read back and confirm the blob at the expected path.
+    // Verify the exact file blob at the intended path on main.
     const verifyRes = await fetch(apiUrl + "?ref=main", { headers: ghHeaders(githubToken) });
     const verifyJson: any = await verifyRes.json().catch(() => ({}));
-    if (!verifyRes.ok || verifyJson?.sha !== commitSha) {
+    if (!verifyRes.ok || verifyJson?.path !== repoPath || verifyJson?.sha !== blobSha) {
+      await failReceipt("PROJECTION_UNVERIFIED");
+      return json({ ok: false, pipeline: "PROJECTION_FAILED", error: "PROJECTION_UNVERIFIED" }, 502);
+    }
+
+    // Independently resolve the commit SHA through GitHub's commit endpoint and
+    // require that this commit includes the projected path. A matching file blob
+    // alone is not proof of a commit identity or commit-to-path relationship.
+    const commitRes = await fetch(
+      `https://api.github.com/repos/${REPO}/commits/${encodeURIComponent(commitSha)}`,
+      { headers: ghHeaders(githubToken) },
+    );
+    const commitJson: any = await commitRes.json().catch(() => ({}));
+    const commitIncludesPath =
+      Array.isArray(commitJson?.files) &&
+      commitJson.files.some((file: any) => file?.filename === repoPath);
+    if (!commitRes.ok || commitJson?.sha !== commitSha || !commitIncludesPath) {
       await failReceipt("PROJECTION_UNVERIFIED");
       return json({ ok: false, pipeline: "PROJECTION_FAILED", error: "PROJECTION_UNVERIFIED" }, 502);
     }

@@ -71,17 +71,20 @@ function runtime({
   headStatus = 404,
   putOk = true,
   putStatus = null,
-  putBody = { content: { sha: "commit-1" } },
-  verifySha = "commit-1",
+  putBody = { content: { sha: "blob-1" }, commit: { sha: "commit-1" } },
+  verifySha = "blob-1",
+  commitVerification = null,
   claims = null,
 } = {}) {
   let handler;
   const githubCalls = [];
+  let committedPath = claims?.repo_path ?? null;
 
   const receipts = {
     inserted: [],
     updated: [],
     selectResult: claims,
+    committed: claims?.status === "completed",
     insert(row) {
       receipts.inserted.push(row);
       // A pre-existing completed claim must be returned by the INSERT for the replay
@@ -168,14 +171,18 @@ function runtime({
         // commit it just made. A stateless stub returning 404 for both made the verify read
         // fail on the HAPPY path. Track committed state so the second GET reflects reality.
         if (receipts.committed || headStatus === 200) {
-          return { ok: true, status: 200, json: async () => ({ sha: verifySha }) };
+          return { ok: true, status: 200, json: async () => ({ sha: verifySha, path: committedPath }) };
         }
         return { ok: false, status: headStatus, json: async () => ({}) };
       }
       if (method === "PUT") {
         receipts.committed = true;
+        committedPath = String(url).split("/contents/")[1];
         return { ok: putOk, status: putStatus ?? (putOk ? 201 : 422), json: async () => putBody };
       }
+    }
+    if (String(url).includes("/commits/")) {
+      return { ok: true, status: 200, json: async () => commitVerification ?? ({ sha: claims?.commit_sha ?? putBody?.commit?.sha, files: [{ filename: committedPath, sha: verifySha }] }) };
     }
     return { ok: true, status: 200, json: async () => ({}) };
   };
@@ -420,6 +427,17 @@ test("GUARD -- PROJECTION_UNVERIFIED fires when read-back does not match the com
   assert.equal(body.pipeline, "PROJECTION_FAILED");
 });
 
+test("GUARD -- PROJECTION_UNVERIFIED fires when GitHub cannot confirm the exact commit and path", async () => {
+  const rt = runtime({ commitVerification: { sha: "different-commit", files: [] } });
+  const res = await rt.invoke();
+  const body = await res.json();
+  assert.equal(res.status, 502);
+  assert.equal(body.error, "PROJECTION_UNVERIFIED");
+  assert.equal(body.pipeline, "PROJECTION_FAILED");
+  assert.equal(rt.githubCalls.some((c) => c.url.endsWith("/commits/commit-1")), true);
+  assert.equal(rt.receipts.updated.some((r) => r.failure === "PROJECTION_UNVERIFIED"), true);
+});
+
 test("GUARD -- failure receipt preserves the sanitized GitHub rejection reason", async () => {
   // PR #2012 (closed unmerged, revived by Naya Beta 2026-10-13): the durable
   // receipt stored only the HTTP status ("GITHUB_COMMIT_FAILED:403"), dropping
@@ -460,17 +478,19 @@ test("CONTROL -- a fully authorized request commits and returns a verified link"
   assert.equal(body.pipeline, "PROJECTION_VERIFIED");
   assert.match(body.smart_link, /^https:\/\/github\.com\/SoulSchoolAcademy\/NayaPOWER\/blob\/main\/.+\/IB-000123\/smart-note\.md$/);
   assert.equal(body.projection_verification.commit_sha, "commit-1");
+  assert.equal(rt.githubCalls.some((c) => c.url.endsWith("/commits/commit-1")), true, "commit identity must be verified through GitHub commit API");
   assert.equal(rt.githubCalls.some((c) => c.method === "PUT"), true, "a real commit must have been attempted");
 });
 
 test("CONTROL -- a completed claim replays without a duplicate commit", async () => {
   // The idempotency guarantee, executed: same key, already completed -> no PUT.
   const rt = runtime({
-    claims: { id: "receipt-1", status: "completed", smart_link: "https://github.com/x/IB-000123/smart-note.md", commit_sha: "commit-0", completed_at: "2026-10-06T00:00:00Z" },
+    claims: { id: "receipt-1", status: "completed", smart_link: "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/system/smart-note/IB-000123/smart-note.md", repo_path: "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/system/smart-note/IB-000123/smart-note.md", commit_sha: "commit-0", completed_at: "2026-10-06T00:00:00Z" },
   });
   const res = await rt.invoke();
   const body = await res.json();
   assert.equal(body.ok, true);
   assert.equal(body.replayed, true);
   assert.equal(rt.githubCalls.some((c) => c.method === "PUT"), false, "a replay must not commit again");
+  assert.equal(rt.githubCalls.some((c) => c.url.endsWith("/commits/commit-0")), true, "a replay must verify the stored commit");
 });

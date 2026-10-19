@@ -58,6 +58,7 @@ function runtime({ txOwner = USER_ID } = {}) {
   let handler;
   const receipts = new Map();
   const blobs = new Map();
+  let committedPath = null;
   const githubCalls = [];
 
   const receiptsTable = {
@@ -144,12 +145,16 @@ function runtime({ txOwner = USER_ID } = {}) {
         const path = u.split('/contents/')[1].split('?')[0];
         if ((init.method || 'GET') === 'PUT') {
           blobs.set(path, 'blobsha123');
-          return new Response(JSON.stringify({ content: { sha: 'blobsha123' } }), { status: 201 });
+          committedPath = path;
+          return new Response(JSON.stringify({ content: { sha: 'blobsha123' }, commit: { sha: 'commitsha456' } }), { status: 201 });
         }
         if (blobs.has(path)) {
           return new Response(JSON.stringify({ sha: blobs.get(path), path }), { status: 200 });
         }
         return new Response(JSON.stringify({ message: 'Not Found' }), { status: 404 });
+      }
+      if (u.startsWith('https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/commits/')) {
+        return new Response(JSON.stringify({ sha: 'commitsha456', files: [{ filename: committedPath, sha: blobs.get(committedPath) }] }), { status: 200 });
       }
       throw new Error('unexpected fetch ' + u);
     },

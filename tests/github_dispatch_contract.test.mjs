@@ -52,7 +52,11 @@ function runtime(opts = {}) {
   let handler;
   const receipts = new Map();
   const blobs = new Map();
-  if (receipt) receipts.set(receipt.idempotency_key, { ...receipt });
+  let committedPath = null;
+  if (receipt) {
+    receipts.set(receipt.idempotency_key, { ...receipt });
+    if (receipt.repo_path) { blobs.set(receipt.repo_path, receipt.blob_sha || 'blobsha123'); committedPath = receipt.repo_path; }
+  }
   const githubCalls = [];
 
   const table = (name) => {
@@ -186,12 +190,16 @@ function runtime(opts = {}) {
         const path = u.split('/contents/')[1].split('?')[0];
         if ((init.method || 'GET') === 'PUT') {
           blobs.set(path, 'blobsha123');
-          return new Response(JSON.stringify({ content: { sha: 'blobsha123' } }), { status: 201 });
+          committedPath = path;
+          return new Response(JSON.stringify({ content: { sha: 'blobsha123' }, commit: { sha: 'commitsha456' } }), { status: 201 });
         }
         if (blobs.has(path)) {
           return new Response(JSON.stringify({ sha: blobs.get(path), path }), { status: 200 });
         }
         return new Response(JSON.stringify({ message: 'Not Found' }), { status: 404 });
+      }
+      if (u.startsWith('https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/commits/')) {
+        return new Response(JSON.stringify({ sha: 'commitsha456', files: [{ filename: committedPath, sha: blobs.get(committedPath) }] }), { status: 200 });
       }
       throw new Error('unexpected fetch ' + u);
     },
@@ -299,20 +307,23 @@ test('happy path returns PROJECTION_VERIFIED with caller-compatible smart_link',
   assert.ok(body.smart_link.includes('/' + IB_ID + '/smart-note.md'));
   assert.ok(body.receipt.id);
   assert.ok(body.projection_verification.completed_at);
-  assert.equal(body.projection_verification.commit_sha, 'blobsha123');
+  assert.equal(body.projection_verification.commit_sha, 'commitsha456', 'receipt must contain the Git commit SHA, not the file blob SHA');
+  assert.ok(githubCalls.some((c) => c.url.endsWith('/commits/commitsha456')), 'commit SHA must resolve through the GitHub commit endpoint');
   const puts = githubCalls.filter((c) => c.method === 'PUT');
   assert.equal(puts.length, 1);
   assert.ok(puts[0].url.endsWith('/' + IB_ID + '/smart-note.md'), 'PUT targets the IB path');
   assert.equal(receipts.get(IDEM).status, 'completed');
 });
 
-test('idempotent replay returns stored receipt without touching GitHub', async () => {
+test('idempotent replay re-verifies commit identity and the current projected blob', async () => {
   const stored = {
     id: 'receipt-0',
     idempotency_key: IDEM,
     status: 'completed',
     smart_link: 'https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/x/IB-000042/smart-note.md',
-    commit_sha: 'blobsha123',
+    repo_path: 'x/IB-000042/smart-note.md',
+    commit_sha: 'commitsha456',
+    blob_sha: 'blobsha123',
     completed_at: '2026-09-30T10:05:00.000Z',
   };
   const { post, githubCalls } = runtime({ receipt: stored });
@@ -322,5 +333,21 @@ test('idempotent replay returns stored receipt without touching GitHub', async (
   assert.equal(body.pipeline, 'PROJECTION_VERIFIED');
   assert.equal(body.smart_link, stored.smart_link);
   assert.equal(body.replayed, true);
-  assert.equal(githubCalls.length, 0, 'no GitHub call on replay');
+  assert.equal(body.projection_verification.commit_sha, 'commitsha456');
+  assert.ok(githubCalls.some((c) => c.url.endsWith('/commits/commitsha456')), 'replay must validate stored commit identity');
+  assert.equal(githubCalls.some((c) => c.method === 'PUT'), false, 'replay must not create another commit');
+});
+
+test('legacy completed receipt containing a blob SHA fails closed on replay', async () => {
+  const stored = {
+    id: 'receipt-0', idempotency_key: IDEM, status: 'completed',
+    smart_link: 'https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/x/IB-000042/smart-note.md',
+    repo_path: 'x/IB-000042/smart-note.md', commit_sha: 'blobsha123',
+    completed_at: '2026-09-30T10:05:00.000Z',
+  };
+  const { post } = runtime({ receipt: stored });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  assert.equal(body.pipeline, 'PROJECTION_FAILED');
+  assert.equal(body.error, 'PROJECTION_UNVERIFIED');
 });
