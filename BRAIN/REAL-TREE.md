@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-19  
-**Receipt basis commit:** `7a6a799513ad2206e58522ea07bc406f34c46242`  
-**Inventory file count:** 1329  
+**Receipt basis commit:** `061243817d891e466827c0887cc1aee2e3d63804`  
+**Inventory file count:** 1181  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -13,17 +13,17 @@
 | 00-SPEC | 16 |
 | 01-GOVERNANCE | 62 |
 | 02-ARCHITECTURE | 5 |
-| 03-KERNEL | 30 |
-| 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 649 |
-| 06-PROOF | 13 |
-| 07-LEARNING | 9 |
+| 03-KERNEL | 4 |
+| 04-INTELLIGENCE | 20 |
+| 05-MEMORY | 652 |
+| 06-PROOF | 0 |
+| 07-LEARNING | 1 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 380 |
+| 10-INTERFACES | 332 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
-| 90-OPERATIONS | 84 |
+| 90-OPERATIONS | 41 |
 | 99-ARCHIVE | 2 |
 | ROOT | 6 |
 
@@ -31,20 +31,12 @@
 
 ### 00-ACTIVATION — (unregistered domain)
 
-- `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
 - `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `61080b4c74e9` (10274 bytes)
-- `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
-- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `6c8d35df191d` (17369 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `6543873fee80` (2185 bytes)
-- `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
 - `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `a05dc82729cd` (2643 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
-- `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` — `70774bbfa1e0` (24076 bytes)
-- `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PROJECT.md` — `d93e078f54a5` (8039 bytes)
-- `BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json` — `29a81ec0c99e` (85823 bytes)
 - `BRAIN/00-ARCHITECTURE/NORTH-STAR-RATIFICATION-2026-09-26.md` — `e00e0d661405` (3742 bytes)
-- `BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md` — `07a492bbcb3d` (55326 bytes)
 ### 00-SPEC — Specification
 
 - `BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md` — `88ce71b543d0` (12877 bytes)
@@ -136,41 +128,13 @@
 - `BRAIN/02-ARCHITECTURE/README.md` — `bcb20728e097` (1030 bytes)
 ### 03-KERNEL — Kernel
 
-- `BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md` — `c0fbdb92d466` (671 bytes)
-- `BRAIN/03-KERNEL/0002-KERNEL-ACCEPTANCE-V1.md` — `2ceacf3091fa` (411 bytes)
 - `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `79661f697092` (13753 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json` — `bb9868d5aea0` (25514 bytes)
-- `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md` — `900f3d525938` (3347 bytes)
-- `BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md` — `a71ae7e732e1` (6272 bytes)
 - `BRAIN/03-KERNEL/MANIFEST.json` — `305124036fff` (1394 bytes)
-- `BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md` — `8b067739b60b` (2507 bytes)
-- `BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md` — `b84356eb6101` (2383 bytes)
-- `BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md` — `2985f04efa9a` (2689 bytes)
-- `BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md` — `254345b219a7` (2334 bytes)
-- `BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md` — `41b2462a3d3c` (1832 bytes)
-- `BRAIN/03-KERNEL/NODES/LEARN/0001-CONTRACT.md` — `2702a7a5c303` (2364 bytes)
-- `BRAIN/03-KERNEL/NODES/PROVE/0001-CONTRACT.md` — `b2b6a1442bec` (1816 bytes)
-- `BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md` — `cdb415628f7d` (2194 bytes)
-- `BRAIN/03-KERNEL/NODES/SELF/0002-ELITE-SELF-CONTRACT-V2.md` — `850ed8a6615b` (2630 bytes)
 - `BRAIN/03-KERNEL/NODES/SELF/0003-PERSONA-IDENTITY-CONTRACT-V1.md` — `6b5bddde9d94` (4146 bytes)
-- `BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md` — `baa6ba69a27b` (6806 bytes)
-- `BRAIN/03-KERNEL/README.md` — `03dd562d8591` (1402 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/ACT-NODE-SCHEMA.json` — `842a394d4ad9` (1143 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/CONNECT-NODE-SCHEMA.json` — `fa4a9ea066fe` (1001 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/CVO-OUTCOME-AXES-V1.json` — `38632f4c3456` (4167 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/EVOLVE-NODE-SCHEMA.json` — `687e904b9edf` (1380 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/KERNEL-MESSAGE-ENVELOPE.json` — `061a57dacfbf` (737 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/KNOW-NODE-SCHEMA.json` — `922dad289d1c` (990 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/LAW-NODE-SCHEMA.json` — `00fe92675820` (1117 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/LEARN-NODE-SCHEMA.json` — `865d254f5be9` (1004 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/PROVE-NODE-SCHEMA.json` — `4c89d444684e` (1148 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/SELF-NODE-SCHEMA.json` — `9a5908c493f1` (1494 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/VERIFY-NODE-SCHEMA.json` — `c274f66b9483` (1125 bytes)
 ### 04-INTELLIGENCE — Intelligence
 
-- `BRAIN/04-INTELLIGENCE/0001-FIRST-LIVING-NODE-SPEC-V1.md` — `149578bb09e3` (2495 bytes)
 - `BRAIN/04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md` — `ec4215798323` (1895 bytes)
-- `BRAIN/04-INTELLIGENCE/0003-INTELLIGENCE-LIFECYCLE-V1.md` — `cc076d974a0e` (1605 bytes)
 - `BRAIN/04-INTELLIGENCE/0004-INTELLIGENT-OBJECT-CONTRACT-V1.md` — `13e5ace230c8` (444 bytes)
 - `BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md` — `400f06afc9b5` (24215 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json` — `695f81578467` (9261 bytes)
@@ -178,7 +142,6 @@
 - `BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json` — `867c74c4c7d9` (4408 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json` — `757534ba9b97` (7066 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json` — `9905a38819c1` (13932 bytes)
-- `BRAIN/04-INTELLIGENCE/GRAPH/README.md` — `095cfe500bc4` (1356 bytes)
 - `BRAIN/04-INTELLIGENCE/MASTER-INDEX.json` — `01ae91cda993` (1273 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json` — `28f74bd818d8` (8099 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json` — `076ae6c00f06` (4685 bytes)
@@ -191,8 +154,6 @@
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json` — `47a611e41ba3` (4161 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json` — `2739d6b85380` (4561 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-PERSONA-V1.json` — `566168f324eb` (3567 bytes)
-- `BRAIN/04-INTELLIGENCE/README.md` — `6bd1a6ab1572` (3827 bytes)
-- `BRAIN/04-INTELLIGENCE/SMART-NODE-PROTOCOL-V1.json` — `8e70ac3fac7e` (4661 bytes)
 ### 05-MEMORY — Memory
 
 - `BRAIN/05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md` — `1dad3e9d1c45` (1937 bytes)
@@ -824,6 +785,9 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md` — `151b620a7c56` (6817 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md` — `f2553ebdef9e` (10932 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md` — `9d393e7f8c48` (9330 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000035/smart-note.md` — `025259f7a34f` (2659 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000036/smart-note.md` — `05fc29be3170` (20379 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000037/smart-note.md` — `e83585f5aa67` (20379 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `8a02bda6be42` (27455 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `0fc11ff78dc9` (4099 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
@@ -844,32 +808,9 @@
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T14-statefile/note.md` — `7898fffbe873` (2066 bytes)
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T14-statefile/package.json` — `994eba7953cb` (1317 bytes)
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T14-statefile/receipt.json` — `a7e86d77cb9f` (382 bytes)
-### 06-PROOF — Proof
-
-- `BRAIN/06-PROOF/0001-PROOF-CONTRACT-V1.md` — `f07b3b9a33a8` (2468 bytes)
-- `BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json` — `9792be1ea76b` (1430 bytes)
-- `BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.md` — `8f855162d451` (1478 bytes)
-- `BRAIN/06-PROOF/0007-ACT-LIVE-PROOF-36622283683-V1.json` — `0dce3a14c97b` (1738 bytes)
-- `BRAIN/06-PROOF/0007-ACT-LIVE-PROOF-36622283683-V1.md` — `621c6c67704a` (1869 bytes)
-- `BRAIN/06-PROOF/2026-09-29-KNOW-HANDLER-FRESHNESS-PROOF.md` — `ac2e82ddabe9` (6212 bytes)
-- `BRAIN/06-PROOF/2026-09-29-STANDING-PROMOTION-ACTIVATION.md` — `94810caea0ee` (3763 bytes)
-- `BRAIN/06-PROOF/2026-09-29-STANDING-PROMOTION-ENFORCEMENT-PROOF.md` — `a5665b8b9b4a` (6535 bytes)
-- `BRAIN/06-PROOF/2026-09-30-ACT-CONCURRENT-IDEMPOTENCY-PROOF.md` — `c84abafca476` (4815 bytes)
-- `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.json` — `99d6d6530ac6` (7200 bytes)
-- `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.md` — `8ff81e55ac32` (3862 bytes)
-- `BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.rival.json` — `a15b54465e50` (430 bytes)
-- `BRAIN/06-PROOF/README.md` — `6e90dab1006f` (2315 bytes)
 ### 07-LEARNING — Learning
 
-- `BRAIN/07-LEARNING/0001-LEARNING-CONTRACT-V1.md` — `7380da90eb74` (2052 bytes)
-- `BRAIN/07-LEARNING/BACKLOG-TRIAGE-2026-10-09.md` — `0ab171a524af` (3540 bytes)
-- `BRAIN/07-LEARNING/PROMOTION-RECEIPTS/SCHEMA-V1.md` — `a458a8436eca` (2253 bytes)
-- `BRAIN/07-LEARNING/PROMOTION-RECEIPTS/receipts-2026-10-08.json` — `351a2f836391` (38980 bytes)
-- `BRAIN/07-LEARNING/README.md` — `519227d792b5` (798 bytes)
-- `BRAIN/07-LEARNING/VERIFICATION-QUEUE/README.md` — `d314acd59aa8` (742 bytes)
 - `BRAIN/07-LEARNING/VERIFICATION-QUEUE/queue.json` — `fe51488c7066` (3 bytes)
-- `BRAIN/07-LEARNING/learning-system-blueprint-v1.md` — `f88b24e86ea0` (45508 bytes)
-- `BRAIN/07-LEARNING/network-lessons/README.md` — `3286bcd0af4c` (706 bytes)
 ### 08-SUCCESSION — Succession
 
 - `BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md` — `315b3cdd3c80` (2105 bytes)
@@ -885,10 +826,6 @@
 - `BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.md` — `f7c31dc624eb` (1092 bytes)
 - `BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json` — `ec4123eea3df` (8959 bytes)
 - `BRAIN/10-INTERFACES/0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md` — `c549ed2f71ee` (5118 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/MAINTENANCE-AUDIT-2026-10-09.md` — `25ddc1f38dec` (4312 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/README.md` — `56fc0352191b` (4218 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/SMART-BLOCKS.md` — `4e550f99f448` (2596 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/block-selection-guide.md` — `cf67c69c9f73` (6902 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/answer/README.md` — `e35ba450ab9b` (1105 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/answer/block.css` — `9b77da3d469d` (2140 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/assessment/answer/specimen.html` — `a50a4b991966` (962 bytes)
@@ -970,11 +907,9 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/specimen.html` — `13d2721fdf98` (1906 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/README.md` — `44c7cca577a5` (1134 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/drawer.css` — `cc28b6fb6b99` (1602 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/drawer.js` — `6104d15dd86c` (859 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/drawer/specimen.html` — `e09d23e9d7d9` (1157 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/README.md` — `46d483a6aebf` (1177 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/eco-bottombar.css` — `fb75325d59bc` (8861 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/eco-bottombar.js` — `d3c23c1bcae0` (531 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/eco-bottombar/specimen.html` — `60c8667e2513` (1388 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/room-chrome/README.md` — `5cff1452579f` (1029 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/room-chrome/room-chrome.css` — `928035eed268` (1447 bytes)
@@ -1039,7 +974,6 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/jewels/jw/specimen.html` — `2bbb8cf003b1` (1728 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/README.md` — `ea38c853a1fc` (1417 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/intelligent-block.css` — `4adbc293c3bf` (10874 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/intelligent-block.js` — `8c0f17a91066` (8555 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/knowledge/intelligent-block/specimen.html` — `1bef645c6778` (2825 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/layout/portal/README.md` — `562c394a7b0f` (910 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/layout/portal/block.css` — `b1f39b51e005` (3325 bytes)
@@ -1109,7 +1043,6 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/spaces/sp-inv-chip/specimen.html` — `e1d5fa05988f` (2284 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/README.md` — `0a38dccdcc1a` (1002 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/lens-tabs.css` — `c7318754b99f` (1928 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/lens-tabs.js` — `f144eaa50f45` (576 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/lens-tabs/specimen.html` — `661615680251` (771 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/seg-tab/README.md` — `c354baba7077` (1233 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/seg-tab/seg-tab.css` — `9f6d03f7a81b` (2621 bytes)
@@ -1117,7 +1050,6 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/seg-tab/specimen.html` — `622e0ab7057b` (1460 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/README.md` — `c35bfe1f5565` (1090 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/smart-tabs.css` — `8e78e22d9fd7` (6039 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/smart-tabs.js` — `1e9da80d1ace` (708 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/smart-tabs/specimen.html` — `eaa621aae5ab` (1560 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/sp-dtabs/README.md` — `e56bebc59422` (1329 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/tabs/sp-dtabs/block.css` — `78fce4a44c4c` (802 bytes)
@@ -1138,21 +1070,6 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/voice/voice-type/README.md` — `122320fb8f46` (723 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/voice/voice-type/block.css` — `ea89174dc49d` (670 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/voice/voice-type/specimen.html` — `71570dcaaae8` (219 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/composition-recipes.md` — `7fe3e817afec` (6664 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/manifest.json` — `f904a17ff9b3` (2979 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-beautiful-buttons/MANIFEST.md` — `99d205aac724` (2036 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-beautiful-buttons/index.html` — `b67b6a7555d2` (43090 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-beautiful-buttons/tokens.css` — `a8045fcb7de7` (1960 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-epic-elements/MANIFEST.md` — `26f08371dd38` (2041 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-epic-elements/index.html` — `2857ebca6458` (71880 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-epic-elements/tokens.css` — `2089e0c86c63` (1983 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-jewel-library/MANIFEST.md` — `f8f83fb1d0e2` (2012 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-jewel-library/index.html` — `21c93637ea25` (26100 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-5-jewel-library/tokens.css` — `37bc25a40f44` (1959 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json` — `3625450078b8` (105293 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/MANIFEST.md` — `ec5877cde95a` (1952 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/index.html` — `4d9c4e846567` (186511 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-forest/tokens.css` — `a3b2aa37043e` (345 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/README.md` — `a0217b4fb4a2` (1001 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/body/README.md` — `d5cdcbff9099` (1528 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/authored-not-extracted/body/body.css` — `e5b3ca736908` (1811 bytes)
@@ -1234,31 +1151,7 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/rich-editor/rich-editor.js` — `b439f622914b` (5642 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/quarantine/unapproved-inventions-1968/rich-editor/specimen.html` — `d91fdacb5e06` (4226 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tokens.css` — `b314de3bcc35` (7207 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/README.md` — `eac8cf2eacc3` (3976 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/activation_pregate.py` — `9422535a3151` (9480 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py` — `6081a6f402cd` (57386 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_activation_pregate.py` — `3973bb4628ec` (6871 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_css_parser.py` — `82a440455761` (6283 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_datauri_documents.py` — `6d64570970ba` (19695 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_link_stylesheets.py` — `992a9ee4f728` (18112 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/test_srcdoc_stylesheets.py` — `065e95edfc08` (13864 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/MANIFEST.md` — `fb4326693d95` (2260 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/index.html` — `8226325770ba` (1134115 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/tokens.css` — `caac347591eb` (925 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — `10d0d9e27133` (6827 bytes)
-- `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/README.md` — `aeaa4f0b9255` (2224 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.ai.md` — `bf68e6ff9a1d` (5530 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.human.md` — `7326d11973dd` (7631 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/smart-graphs-spec.machine.json` — `2bb90a0d4b6d` (4566 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/01-pulse-orb.html` — `a6c116c088de` (2124 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/02-jewel-pillars.html` — `9303e152276a` (3010 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/03-spectrum-flow.html` — `dea2fe238e7c` (3865 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/04-constellation.html` — `e66b922b7192` (4298 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/05-pulse-rings.html` — `5a1f4c649360` (2313 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/06-living-counter.html` — `2608daf58143` (2347 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/07-orbit-dial.html` — `09f2d62e08e2` (1980 bytes)
-- `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/sg-chrome.css` — `70a99d8a7cbf` (2792 bytes)
 - `BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3` — `569dd0afe7c2` (33837 bytes)
 ### 11-KNOWLEDGE — Knowledge
 
@@ -1299,24 +1192,10 @@
 ### 90-OPERATIONS — Operations
 
 - `BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md` — `225e10ba334f` (5757 bytes)
-- `BRAIN/90-OPERATIONS/0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md` — `5eb2c3ed81cf` (8894 bytes)
 - `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json` — `512100cc2f42` (6028 bytes)
 - `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md` — `197c13af29fb` (3936 bytes)
 - `BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md` — `26b6355b1b44` (3830 bytes)
-- `BRAIN/90-OPERATIONS/0005-LIVE-NAYA-MASTER-BATON-2026-09-30.md` — `75f3b8e72b90` (8978 bytes)
-- `BRAIN/90-OPERATIONS/2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md` — `b577802c0bde` (13216 bytes)
-- `BRAIN/90-OPERATIONS/2026-09-29-LAW-ACT-FRESHNESS-HANDOFF.md` — `589364c5cd30` (11027 bytes)
-- `BRAIN/90-OPERATIONS/2026-09-30-FRESH-MAIN-RECONCILIATION.md` — `73d6eddebcec` (9953 bytes)
-- `BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md` — `954227fe2d94` (8068 bytes)
-- `BRAIN/90-OPERATIONS/2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md` — `188ee5921503` (30828 bytes)
-- `BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md` — `37e4e4b70a23` (20377 bytes)
-- `BRAIN/90-OPERATIONS/INTER-LEDGER-PROTOCOL.md` — `67d42af19eae` (24546 bytes)
-- `BRAIN/90-OPERATIONS/NETWORK-MAP.md` — `29c74e9d9d67` (9314 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
-- `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
-- `BRAIN/90-OPERATIONS/contracts/handoff-contract.md` — `3c8346c5942b` (21563 bytes)
-- `BRAIN/90-OPERATIONS/contracts/learning-contract.md` — `c42197ff505a` (21689 bytes)
-- `BRAIN/90-OPERATIONS/contracts/verification-contract.md` — `e70095fcbe07` (19666 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/01-behavior.human.md` — `cf649d7dc316` (7168 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/02-comment.human.md` — `47f1816ada8b` (11562 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/03-signin-signout.human.md` — `fc72e8678e65` (8459 bytes)
@@ -1328,47 +1207,23 @@
 - `BRAIN/90-OPERATIONS/field-manuals/09-blockers.human.md` — `828e1d1379fd` (9439 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/10-briefing.human.md` — `419a50400ea6` (11826 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/11-ranking.human.md` — `cdf48fa30375` (10537 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/13-delegation.ai.md` — `4049a8a6cf49` (4969 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/13-delegation.human.md` — `5eedeec3ff2e` (7536 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/13-delegation.machine.json` — `62bfd819e9c3` (4285 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/14-merging.ai.md` — `df3c7153de13` (5165 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/14-merging.human.md` — `7a2d86f015ae` (11351 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/14-merging.machine.json` — `499dce5934c6` (4816 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/15-freshness.ai.md` — `2c948b0a32ed` (4978 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/15-freshness.human.md` — `9b6ad87123fc` (7187 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/15-freshness.machine.json` — `6b7067e91c3f` (4119 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/16-learning.ai.md` — `6a08017bb1b8` (5645 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/16-learning.human.md` — `9d4ef1fb96f4` (9788 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/16-learning.machine.json` — `b9b32d5c0dc7` (4896 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/17-corrections.ai.md` — `28d8840f2b1b` (5176 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/17-corrections.human.md` — `00f3071e40cc` (9472 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/17-corrections.machine.json` — `7f106c19a274` (4891 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/18-reviews.ai.md` — `8041a22d7a06` (4618 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/18-reviews.human.md` — `06161458b104` (6322 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/18-reviews.machine.json` — `ac1a695faff4` (3922 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/19-measurement.ai.md` — `df69f5a2374d` (5982 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/19-measurement.human.md` — `a505d1446de2` (9617 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/19-measurement.machine.json` — `ac5939b28e35` (5009 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/20-carry.ai.md` — `5cd631d8cd8d` (4710 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/20-carry.human.md` — `e614cf53a6ac` (7568 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/20-carry.machine.json` — `2b6ac49209fc` (4086 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/21-authority.ai.md` — `f3e12394ccc5` (5981 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/21-authority.human.md` — `e5910ca4ef22` (8074 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/21-authority.machine.json` — `32fae102c9dc` (4935 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/22-consensus.ai.md` — `3c660583422c` (4769 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/22-consensus.human.md` — `f8212f106a0b` (7353 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/22-consensus.machine.json` — `3e269f7749f2` (4111 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/23-deconfliction.ai.md` — `36ac4e422909` (6474 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/23-deconfliction.human.md` — `a3ea07e6b84b` (10034 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/23-deconfliction.machine.json` — `8bf5420b37a7` (5182 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/24-timebox.ai.md` — `0b922485927f` (4186 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/24-timebox.human.md` — `e13a7748e54b` (7175 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/24-timebox.machine.json` — `3c981368aabb` (3970 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/25-learn.human.md` — `739a2711b261` (6086 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/26-know.human.md` — `8aab51496413` (5666 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/27-act.human.md` — `0ef19eb95de2` (6603 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/28-law.human.md` — `698389cd7992` (5026 bytes)
-- `BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md` — `7e0168e0d442` (7727 bytes)
+- `BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md` — `7bb85c92e341` (7675 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/30-intelligent-blocks.human.md` — `bd3b7b3079ef` (4815 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/31-decision.human.md` — `c57c99905224` (8514 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/32-retrieval.human.md` — `b4082b96e2ff` (4245 bytes)
@@ -1377,11 +1232,6 @@
 - `BRAIN/90-OPERATIONS/field-manuals/35-infra.human.md` — `41498f188a7a` (4422 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/36-human-value.human.md` — `1dc6e159cfb3` (3904 bytes)
 - `BRAIN/90-OPERATIONS/field-manuals/README.md` — `29d9b5f82e7a` (4633 bytes)
-- `BRAIN/90-OPERATIONS/network-map.machine.json` — `3ac19fca9022` (5450 bytes)
-- `BRAIN/90-OPERATIONS/network-registry.machine.json` — `7741e88e44d8` (426 bytes)
-- `BRAIN/90-OPERATIONS/network-registry/README.md` — `f561613fb1e3` (850 bytes)
-- `BRAIN/90-OPERATIONS/network-registry/naya2-team.json` — `7ab1ab56f34e` (1497 bytes)
-- `BRAIN/90-OPERATIONS/network-registry/naya5-team.json` — `cca9bdad8f3f` (1489 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)

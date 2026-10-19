@@ -155,13 +155,25 @@ BASELINE_DOMAIN_FLOORS = {
     #       simulation spec). Deliberate update.
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 28,
-    "04-INTELLIGENCE": 24,
+    # 28 -> 4 for the 2026-10-19 Naya-optimized GitHub streamline
+    # (branch naya5/streamline-remove-dead, commit cbdebead8010fb3c51edc269cbc3b30fe4696821):
+    # 24 dead node-contract/schema docs removed, zero live consumers across
+    # workflows/imports/indexes/briefs (five-lane audit, evidence per item).
+    # Shawn-authorized dead-content removal. Deliberate update.
+    "03-KERNEL": 4,
+    # 24 -> 20, same streamline change: 4 stray unreferenced docs removed.
+    # Deliberate update.
+    "04-INTELLIGENCE": 20,
     "05-MEMORY": 2,  # fixed baseline excluding governed INTELLIGENCE-REPORTS + SMART-NOTES subtrees
     # Current fixed files are 0001-MEMORY-CONTINUITY-CONTRACT-V1.md + README.md.
     # Smart Note projections and intelligence reports are counted mechanically below.
-    "06-PROOF": 10,
-    "07-LEARNING": 2,
+    # 10 -> 0, same streamline change: 13 dated 2026-09/10 proof receipts
+    # removed; live proofs are the CI workflows now. Zero refs.
+    # Deliberate update.
+    "06-PROOF": 0,
+    # 2 -> 1, same streamline change: stale learning docs removed; the live
+    # VERIFICATION-QUEUE/queue.json stays. Deliberate update.
+    "07-LEARNING": 1,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     # 2026-10-04: a9e5a505f added 0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md, the
