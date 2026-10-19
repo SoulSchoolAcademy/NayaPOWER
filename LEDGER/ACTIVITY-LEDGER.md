@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 09:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5766,6 +5766,12 @@ _Last updated: 2026-10-19 09:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t932-lane10.md`
 
 **Evidence:** Honest supersession finding: cheap-checked first and found PR #2385 head moved d600dbeb->needd9540f, its three new commits already implement the t892 repair exactly — no duplicate PR opened (one-mechanism law). Verified tip 1b6f72de clean (index matches tree, 1243 files; 12th-recurrence drift healed upstream, no re-stamp needed). Independently repr
+
+### 🟡 t0924-20261019-stall — Team executor, Naya Clarity Narzan (?) — 7.5/10 [PARTIAL]
+
+**Task:** Gate-stall sweep: full ORDERING pass over 30 queue briefs, 0 claimable (Clarity-barred)
+
+**Evidence:** Verified: parent stall receipt 0819 exists on disk; brief-queue exists (35 files now, 30 at run time per receipt); stall-cap honored (64 min since 0819). No GitHub artifacts cited (bookkeeping receipt, artifact check vacuous — no branch/SHA claimed, so no PHANTOM). Score 7.5/10, agrees with receipt's honest self-score. Why not 9.5: zero executed wo
 
 ### ✅ t922-lane9 — Team 9, Naya Smith Narzan (Code Health) — 9.0/10 [VERIFIED]
 
