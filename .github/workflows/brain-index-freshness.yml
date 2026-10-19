@@ -1,0 +1,126 @@
+# brain-index-freshness.yml — CANDIDATE gate for issue #2385 (NOT live until governance installs it).
+#
+# Nutshell: this gate checks that the brain's index layer (BRAIN/REAL-TREE.json,
+# BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json) matches the actual git
+# tree. If a change lands under BRAIN/ without re-stamping the index, the index
+# lies — every Naya tuning into a stale index reads drift as truth. This gate
+# catches that before merge.
+#
+# ── THE TAXONOMY (defined before the gate, enforced below) ──
+# GREEN   ⟺ the check RAN and exited 0 — index matches tree.
+# RED     ⟺ the check RAN and exited 1 — DRIFT measured. Re-stamp before merge.
+# MISFIRE ⟺ the instrument could NOT resolve or complete its subject — any exit
+#           code other than 0/1, a missing/broken tools/regenerate_brain_index.py,
+#           a checkout the check can't read, or a runner failure. MISFIRE is an
+#           instrument failure, NEVER a RED. Red verdicts require the instrument
+#           to have executed its actual drift check (exit 1).
+#
+# Exit-2 subcase note: the tool's own contract maps exit 2 to "usage/git error,
+# count drift, or dangling pointer". Those are instrument-level integrity
+# failures, not "index vs tree" drift (exit 1). A dangling pointer or a floor
+# violation is NOT fixed by re-stamping, so declaring RED would route the wrong
+# repair. They fail closed as MISFIRE with the subcause named in the log for
+# one-read triage. If the tool later splits exit-2 subcodes, revisit this map.
+#
+# ── RE-FIRE BUDGET & EXHAUSTION (stated before any fire) ──
+# MISFIRE may re-fire at most 3 times on the SAME head (instrument flakiness —
+# fetch hiccups, runner network — is retryable). RED NEVER re-fires on the same
+# head: the adjudication must name the fix FROM THE GATE'S LOG (re-stamp the
+# index, new commit) and the gate fires again only on the NEW head. GREEN needs
+# no re-fire. After 3 MISFIRE re-fires the gate records MISFIRE-EXHAUSTED in the
+# step summary, fails closed, and routes to Lane 10 (the tool owner lane).
+# Exhausted heads never block silently — the exhaustion marker IS the signal.
+#
+# ── THE BOT-STEP HOOK (t0909 mirror: a merge gate alone is theater) ──
+# On 2026-10-19 the nayanet[bot] made 3 direct-to-main IB projections with no
+# PR and no owning workflow. A merge gate never sees those. So the enforcement
+# hook must ALSO live IN the bot's projection step. The hook contract this
+# candidate expects (implemented by the bot step's owner — NOT by this file):
+#   before pushing a BRAIN/ projection, the bot step runs
+#     python3 tools/regenerate_brain_index.py --check
+#   with fail-closed exit semantics: 0 → push; 1 → re-stamp first, then push;
+#   2 → abort the push and escalate for human triage. This workflow documents
+#   the hook point explicitly; it does not touch the bot's step.
+#
+# Authority: this is a CANDIDATE. Installing it (merge to main, required-check
+# marking) is Shawn's / governance's word, not the lane's. Lane authority ends
+# at the candidate branch.
+
+name: brain-index-freshness (candidate)
+
+on:
+  pull_request:
+    paths:
+      - "BRAIN/**"
+      - "tools/regenerate_brain_index.py"
+      - "tests/test_brain_index_freshness.py"
+      - ".github/workflows/brain-index-freshness.yml"
+  push:
+    paths:
+      - "BRAIN/**"
+      - "tools/regenerate_brain_index.py"
+      - "tests/test_brain_index_freshness.py"
+      - ".github/workflows/brain-index-freshness.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the exact head under test
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the check inventories the git tree; it needs real history
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve the instrument
+        id: resolve
+        run: |
+          if [ ! -f "tools/regenerate_brain_index.py" ]; then
+            echo "MISFIRE: tools/regenerate_brain_index.py not resolvable at this head" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "verdict=MISFIRE" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+          python3 -c "import ast; ast.parse(open('tools/regenerate_brain_index.py').read())" \
+            || { echo "MISFIRE: instrument unparseable" | tee -a "$GITHUB_STEP_SUMMARY"; echo "verdict=MISFIRE" >> "$GITHUB_OUTPUT"; exit 1; }
+          echo "verdict=RESOLVED" >> "$GITHUB_OUTPUT"
+
+      - name: Run the freshness check and classify
+        id: classify
+        if: steps.resolve.outputs.verdict == 'RESOLVED'
+        run: |
+          set +e
+          python3 tools/regenerate_brain_index.py --check > check.log 2>&1
+          rc=$?
+          set -e
+          echo "instrument exit code: $rc" | tee -a "$GITHUB_STEP_SUMMARY"
+          case "$rc" in
+            0) VERDICT=GREEN ;;
+            1) VERDICT=RED ;;
+            *) VERDICT=MISFIRE ;;
+          esac
+          echo "verdict=$VERDICT" >> "$GITHUB_OUTPUT"
+          printf '{"verdict":"%s","instrument_exit":%d}\n' "$VERDICT" "$rc" > verdict.json
+          echo "## $VERDICT" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$VERDICT" = "RED" ]; then
+            echo "DRIFT measured by the check — re-stamp the index before merge." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "$VERDICT" = "MISFIRE" ]; then
+            echo "Instrument could not complete its subject — see check.log (never a RED)." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          [ "$VERDICT" = "GREEN" ]
+
+      - name: Publish verdict artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brain-index-freshness-verdict
+          path: |
+            verdict.json
+            check.log
