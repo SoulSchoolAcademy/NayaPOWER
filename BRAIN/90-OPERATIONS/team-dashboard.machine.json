@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T17:15:19+00:00",
+ "generated_utc": "2026-10-19T18:15:48+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2788,
+     "title": "Oath: the Behavior Declaration, spoken at every activation",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2788",
+     "draft": false
+    },
+    {
      "number": 2782,
      "title": "docs: replace hard-coded board numbers in boot bytes with mission-snapshot indirection",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2782",
@@ -388,15 +394,9 @@
      "title": "DEC-5/6/7/9: align merge-bar constants and law text to ratified 9.5",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2771",
      "draft": false
-    },
-    {
-     "number": 2750,
-     "title": "fix(builder): strict headless render qualification before release",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750",
-     "draft": true
     }
    ],
-   "open_pr_count": 244
+   "open_pr_count": 245
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 642,
- "unassigned_prs": 244
+ "open_pr_total": 643,
+ "unassigned_prs": 245
 }
