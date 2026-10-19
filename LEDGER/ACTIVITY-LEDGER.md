@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 00:09 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17195,6 +17195,18 @@ _Last updated: 2026-10-19 00:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
 
+### ✅ lane-scorer-20261018-1720 — Team 99, Naya Clarity Narzan (?) — 9.4/10 [VERIFIED]
+
+**Task:** gap-scorer-20261015-0150-pr2608: VOID-owns-terminal-state adjudication CONFIRMED, BLOCKED stamped SUPERSEDED
+
+**Evidence:** Receipt: hidden_files/twelve-lane-receipts/gap-scorer-20261015-0150-pr2608.md. VERIFIED: SUPERSEDED stamp header present on twelve-lane-receipts/t-BLOCKED-pr2608-review.md, naming the VOID receipt, the false end-state, the 06:11Z claim fact, and the original SHA e18bcde2...3047b1 (matches the receipt's claimed pre-stamp SHA); VOID receipt exists; b
+
+### ✅ lane-scorer-20261018-1720 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-scorer-20261014-2320-pr2608: pr2608 VOID-receipt gap closure (self-test, dedupe adjudication, body adoption)
+
+**Evidence:** Receipt: hidden_files/twelve-lane-receipts/gap-scorer-20261014-2320-pr2608.md. VERIFIED: bin/claim-brief.py exists (executable); all three pr2608 receipt files exist (t-BLOCKED, VOID seatgate-clarity, lane-blocked variant); downstream receipt gap-scorer-20261015-0150-pr2608 corroborates the VOID-as-terminal adjudication (SUPERSEDED stamp landed on 
+
 ### ✅ lane-scorer-20261018-1700 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
 **Task:** t0815-phase1c: Phase 1 audit slice C - BRAIN/05-MEMORY + 10-INTERFACES + 90-OPERATIONS, 794 docs, 27 load-bearing via falsifiable triage rule
@@ -18441,6 +18453,12 @@ _Last updated: 2026-10-19 00:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ 1402 — Team 8, Naya Sentinel (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** cold-retrieve mjs fix: re-anchor, re-verify 8/8, push pin-exact, open PR #2453, calculator HOLD
+
+**Evidence:** Verified: remote branch naya/eight-mjs-coldretrieve-t1332 exists (ls-remote); PR #2453 OPEN, PR head == branch ref (3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4) — no phantom. Score 8.5 — why not 9.5: merge never closed (PR still open 7 days later; 2-seat scorecard bar never landed) and CI/receipt-gate green on the final head unverified at sign-out. Me
+
 ### ✅ lane-scorer-20261018-1650 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** t0813-lane8-reclaim: recusal-repeat - same seat re-claimed the MTC-v1-gated brief, same gate fired, zero design work, brief re-filed; prior t0813-lane8 recusal confirmed on disk
@@ -19204,6 +19222,12 @@ _Last updated: 2026-10-19 00:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ lane-scorer-20261018-1720 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0402-lane7 exec2: t0413 parser-blind eligibility gate found and root-fixed (canonical stamp)
+
+**Evidence:** Receipt: hidden_files/twelve-lane-receipts/gap-t0402-lane7-exec2.md. VERIFIED: '# CLAIMABILITY GATE - NON-Clarity SEATS ONLY' stamp present at the top of brief-queue/done/brief-t0413-lane3.md, with the stamp's own comment citing the t0818 precedent; draft retrieval/auth-gate-migration-prep-t0601.md sha256 393725e6e6ca55860e982fdbca2eeab14d73152d40a
 
 ### ✅ gap-scorer-20261014-2100-lane7 — Team 7, lane-scorer (Team Operations) — 9.5/10 [VERIFIED]
 
@@ -22723,6 +22747,12 @@ _Last updated: 2026-10-19 00:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261018-1720 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0818-lane3 decline2: recusal as deliverable + machine-readable eligibility gate stamped
+
+**Evidence:** Receipt: hidden_files/twelve-lane-receipts/gap-t0818-lane3-decline2.md. VERIFIED: prior decline receipt gap-t0818-lane3.md exists; parent t0818-lane3.md exists; the stamped brief reached its terminal state in brief-queue/done/brief-gap-t0818-lane3.md. Score 9.0 (GOOD, ONE MORE PASS): recusal correctly preserves the one thing the gap needs (a genuin
+
 ### ✅ lane-scorer-20261018-0910 — Team 3, Naya Clarity Narzan (Decision Engine) — 8.0/10 [VERIFIED]
 
 **Task:** Watch: t0675 re-file disposition on live bytes
@@ -23492,6 +23522,12 @@ _Last updated: 2026-10-19 00:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ 1402 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H7 round-1 closure: seal recompute, dry-run mechanical verify, NO-GO gate honored
+
+**Evidence:** Verified: prereg-sealed.md + seal-verification.json + probe-dry/output.md + probe-dry/brain-index.json all exist locally; sha256(prereg) recomputed this tick = ed5f141ecc056ace == sealed pin (seal intact); receipt's stale-brief-pointer catch confirmed by content. Score 8.5 — why not 9.5: (a) t1342 execution backfilled after the fact, not a contempo
 
 ### ✅ gap-scorer-20261014-2140-lane2 — Team 2, lane-scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
@@ -25039,6 +25075,12 @@ _Last updated: 2026-10-19 00:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ 1402 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t1322-t1402 human-value window audit: determinism, hand audit, thread dispositions
+
+**Evidence:** Verified: metric_audit_t1402.json exists (13,542B); determinism claim locally checkable (byte-identical reruns); all five thread dispositions named with evidence. Score 9.0 — why not 9.5: single-seat judgments (no independent re-audit of the uniform 12/12 M3 verdict) and the M1 headline (Shawn's saved minutes) still UNKNOWN — the instrument measure
+
 ### ✅ lane-scorer-20261018-1110 — Team 11, Naya Heart (Human Value) — 8.5/10 [VERIFIED]
 
 **Task:** Board-thread scanner build + observatory refresh (t982->t1022)
@@ -26572,6 +26614,18 @@ _Last updated: 2026-10-19 00:09 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ lane-scorer-20261018-1720 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** t0815 Phase 2 batch: 15 tongue files (5 docs x 3 tongues) on branch naya-phase2-three-tongues
+
+**Evidence:** Receipt: hidden_files/twelve-lane-receipts/t0815-phase2.md. VERIFIED via git protocol + contents API: branch naya-phase2-three-tongues exists on remote; commit cced141c8645a92ae9566ff830db5df0b1a6a8a4 exists ('Phase 2 batch 1: three tongues for ranks 1-5 (t0815)'); recursive tree at that commit contains all 15 claimed tongue files (ACTIVATION-CHECK
+
+### ✅ lane-scorer-20261018-1720 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.2/10 [VERIFIED]
+
+**Task:** t0815 Phase 1.5: distill & prioritize - phase1-priority-rank.md (109 ranked rows, 14 distill verdicts, top-20 work order, machine coverage cross-check)
+
+**Evidence:** Receipt: hidden_files/twelve-lane-receipts/t0815-phase15.md. VERIFIED: phase1-priority-rank.md sha256 6ae2949457b86af16f3ddbf1ec3101616033dcda11a55aab4a8cad1336d4cf9c byte-matches the claimed hash exactly. Score 9.2 (GOOD, ONE MORE PASS): machine-verified coverage (zero LB doc unranked), honest 3-pass card with a real pass-3 self-catch (false 'miss
 
 ### ✅ gap-scorer-20261014-2100-lane1 — Team 1, lane-scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
