@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 15:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 16:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 641 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (61)
+### LEARN (62)
+- [#2785](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2785) S7 back-sync: active runtime lessons 2026-10-19
 - [#2784](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2784) LEARN: §7 kind-decomposition guard (gr-w533-alpha-gapclose)
 - [#2755](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2755) docs(brain): learning event 2026-10-18
 - [#2743](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2743) docs: define NayaNET build-see-learn-share product loop
 - [#2720](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2720) docs(brain): learning event 2026-10-17
-- [#2693](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2693) docs(brain): learning event 2026-10-15 📝draft
-- …and 56 more
+- …and 57 more
 
 ### KNOW (26)
 - [#2781](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2781) fix(brain-index): re-stamp index layer at tip 1a1c22d3 (rung 1)
@@ -95,13 +95,13 @@
 - [#2773](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2773) Nitro/premade functions v1
 - …and 240 more
 
-### WIRE (127)
+### WIRE (126)
 - [#2783](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2783) [Team Verity] dock: land Eta's v2 9.5-flip patch @ tip 1a1c22d3
 - [#2778](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2778) law: correct seat-count prose in consensus-gate registry (15 -> 18)
 - [#2768](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2768) [Team Verity] Naya Beta | KNOW w484: re-cut w440 leg 4 (pre-write vali
 - [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
 - [#2724](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724) fix(gate): receipt-pin reads live PR body, not frozen event payload
-- …and 122 more
+- …and 121 more
 
 ### TEAM (12)
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
