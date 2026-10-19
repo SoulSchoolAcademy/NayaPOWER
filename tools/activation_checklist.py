@@ -116,20 +116,21 @@ CURRICULUM_LESSON_PINS = {
 }
 
 # Pinned 2026-10-13 to origin/main @
-# dd6f2d927d8299f7bd9895ee5dadca892b12b233 (V2 merged to main; re-pinned
-# deliberately at boot-gate wiring — the pin source string names the new
-# ref per the re-pin rule). A drift in lesson content or V2 bytes is a
-# deliberate re-pin (code change), never a silent pass.
+# 9dd36f8574a27c25fdc718f475943d6b570fc45e (PR #2790 duplicate-laws
+# merge: 0008 supreme_law pointer 0007 -> 0016-LAW-OF-ONE-V1; re-pinned
+# deliberately — the pin source string names the new ref per the re-pin
+# rule). A drift in lesson content or V2 bytes is a deliberate re-pin
+# (code change), never a silent pass.
 V2_PIN_SOURCE = (
-    "origin/main @ dd6f2d927d8299f7bd9895ee5dadca892b12b233 "
-    "(V2 on main; re-pinned at boot-gate wiring, 2026-10-13)")
+    "PR #2790 @ 9dd36f8574a27c25fdc718f475943d6b570fc45e "
+    "(duplicate-laws merge; 0008 supreme_law 0007 -> 0016, re-pinned 2026-10-19)")
 V2_FILE_PINS = {
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md":
         "d856dc13ae5d31695a94ba97aa52850ea1d0cfb5d4740eb4ff71ffd67967259a",
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md":
-        "8e9f53929f0bbc9af3bfd1da3c7f60454a2c9f1769162ec0bb4e48023be187a9",
+        "8f7dfcae06856c27a1cc25fc862f7c24777c322792d57007902cbe5733b2ed9a",
     "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json":
-        "a4af89b3c8b3db07e0c289c4906381870952096f282202e0de98a48511a7e2b1",
+        "67458710d36687e2d6434c79f93a49dc7da4c025cc29aa1a104560eb391ab706",
 }
 
 
