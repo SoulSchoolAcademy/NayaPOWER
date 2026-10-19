@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 01:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 01:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27448,6 +27448,12 @@ _Last updated: 2026-10-19 01:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261018-1810 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** lane-scorer-20261018-1810: dedup-verification pass over 7 receipt files flagged unscored by receipt-field scan
+
+**Evidence:** VERIFIED all 7 are already scored (entries lacked the receipt field; now backfilled): gap-t1162-lane9 9.2 (pins re-confirmed live: rename branch 6d05fea6, PR 2399 head a545f110, main 5b17df553bfa via git ls-remote; scratch-gap-t1162-lane9 preserved; main-tip content claim pin-cited at 155e227d, not re-derived - gh-api credential surrogate failing i
 
 ### ✅ lane-scorer-20261018-1740 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
 
