@@ -1,11 +1,11 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-19 06:23 UTC · tip `f424f5b971f4` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-19 07:23 UTC · tip `f424f5b971f4` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionable** missions and **0 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
-- Active wave: **none — supervisor will dispatch** 
+- Active wave: **361** (Naya Electrician, Naya Captain, Naya Mechanic)
 - Main tip: `f424f5b971f4`
 - Queue: 0 actionable · 0 proposed
 
@@ -13,18 +13,18 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionabl
 - Queue clear — foragers on area sweeps.
 
 ## THE BEES
-- ○ **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 8.5 · 82 waves
-- ○ **Naya Librarian** (KNOW) — Make drift structurally impossible · score 9.0 · 83 waves
-- ○ **Naya Bridger** (ACT) — Prove learning reaches action · score 9.0 · 82 waves
-- ○ **Naya Judge** (LAW) — One engine, one law, no exceptions · score 9.5 · 87 waves
-- ○ **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 9.0 · 87 waves
-- ○ **Naya Builder** (BUILD) — Merge queue at zero · score 9.0 · 87 waves
-- ○ **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 9.5 · 85 waves
-- ○ **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 8.5 · 85 waves
-- ○ **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 9.0 · 85 waves
-- ○ **Naya Host** (PRODUCT) — A human can see the intelligence working · score 9.0 · 89 waves
-- ○ **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 9.0 · 89 waves
-- ○ **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.0 · 88 waves
+- ○ **Naya Compounder** (LEARN) — Prove a lesson changes a decision · score 8.5 · 83 waves
+- ○ **Naya Librarian** (KNOW) — Make drift structurally impossible · score 9.0 · 84 waves
+- ○ **Naya Bridger** (ACT) — Prove learning reaches action · score 9.0 · 83 waves
+- ○ **Naya Judge** (LAW) — One engine, one law, no exceptions · score 9.5 · 88 waves
+- ○ **Naya Auditor** (PROVE) — No theater — every proof independently verified · score 9.0 · 88 waves
+- ○ **Naya Builder** (BUILD) — Merge queue at zero · score 9.0 · 88 waves
+- 🐝 ON WAVE **Naya Electrician** (WIRE) — Every gate wired to a live call site · score 9.5 · 85 waves
+- 🐝 ON WAVE **Naya Captain** (TEAM) — No Naya ever blocked waiting · score 8.5 · 85 waves
+- 🐝 ON WAVE **Naya Mechanic** (INFRA) — CI that catches real breaks, never false alarms · score 9.0 · 85 waves
+- ○ **Naya Host** (PRODUCT) — A human can see the intelligence working · score 9.0 · 90 waves
+- ○ **Naya Archivist** (MEMORY) — No Naya ever wakes up cold · score 8.5 · 90 waves
+- ○ **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.0 · 89 waves
 
 ## THE HIVE (learnings)
 - Lessons filed (all time, this log): ~101
