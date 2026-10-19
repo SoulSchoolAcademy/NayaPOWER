@@ -13,7 +13,7 @@
 
 **WHAT LIVES HERE** (verified against origin/main @ `ba626387`)
 - `BRAIN/06-PROOF/` — proof contracts and standing proofs (`0001-PROOF-CONTRACT-V1.md`, dated live-proofs, trial JSONs)
-- `LEDGER/` — the smart ledger: `STATS.md`, `activity-ledger.jsonl`, `nodes.jsonl`, `contracts/`. Every row provenanced or it doesn't count — the 0/750 audit is why.
+- `LEDGER/` — the smart ledger: `contracts/`. Every row provenanced or it doesn't count — the 0/750 audit is why.
 - `evidence/` — raw evidence stores, tip-pinned: e.g. `evidence/trial-04R/` (preregistration + receipt + answer sheets, rebased onto exact tips, never floating)
 - `tools/check_pr_receipt.py` — the receipt gate: refuses unresolvable handles
 - `tools/post_checker.py` (+ `tests/test_post_checker.py`) — pre-post self-checks, runnable CLI, exit 0/1
