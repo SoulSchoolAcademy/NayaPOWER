@@ -74,6 +74,7 @@ function runtime({
   putBody = { content: { sha: "blob-1" }, commit: { sha: "commit-1" } },
   verifySha = "blob-1",
   commitVerification = null,
+  commitBlobSha = null,
   claims = null,
 } = {}) {
   let handler;
@@ -182,7 +183,7 @@ function runtime({
       }
     }
     if (String(url).includes("/commits/")) {
-      return { ok: true, status: 200, json: async () => commitVerification ?? ({ sha: claims?.commit_sha ?? putBody?.commit?.sha, files: [{ filename: committedPath, sha: verifySha }] }) };
+      return { ok: true, status: 200, json: async () => commitVerification ?? ({ sha: claims?.commit_sha ?? putBody?.commit?.sha, files: [{ filename: committedPath, sha: commitBlobSha ?? verifySha }] }) };
     }
     return { ok: true, status: 200, json: async () => ({}) };
   };
@@ -436,6 +437,16 @@ test("GUARD -- PROJECTION_UNVERIFIED fires when GitHub cannot confirm the exact 
   assert.equal(body.pipeline, "PROJECTION_FAILED");
   assert.equal(rt.githubCalls.some((c) => c.url.endsWith("/commits/commit-1")), true);
   assert.equal(rt.receipts.updated.some((r) => r.failure === "PROJECTION_UNVERIFIED"), true);
+});
+
+test("GUARD -- PROJECTION_UNVERIFIED fires when the commit path has a different blob", async () => {
+  const rt = runtime({ commitBlobSha: "not-the-projected-blob" });
+  const res = await rt.invoke();
+  const body = await res.json();
+  assert.equal(res.status, 502);
+  assert.equal(body.error, "PROJECTION_UNVERIFIED");
+  assert.equal(body.pipeline, "PROJECTION_FAILED");
+  assert.equal(rt.githubCalls.some((c) => c.url.endsWith("/commits/commit-1")), true);
 });
 
 test("GUARD -- failure receipt preserves the sanitized GitHub rejection reason", async () => {

@@ -483,10 +483,14 @@ Deno.serve(async (req) => {
       { headers: ghHeaders(githubToken) },
     );
     const commitJson: any = await commitRes.json().catch(() => ({}));
-    const commitIncludesPath =
-      Array.isArray(commitJson?.files) &&
-      commitJson.files.some((file: any) => file?.filename === repoPath);
-    if (!commitRes.ok || commitJson?.sha !== commitSha || !commitIncludesPath) {
+    const commitFile = Array.isArray(commitJson?.files)
+      ? commitJson.files.find((file: any) => file?.filename === repoPath)
+      : null;
+    if (
+      !commitRes.ok ||
+      commitJson?.sha !== commitSha ||
+      commitFile?.sha !== blobSha
+    ) {
       await failReceipt("PROJECTION_UNVERIFIED");
       return json({ ok: false, pipeline: "PROJECTION_FAILED", error: "PROJECTION_UNVERIFIED" }, 502);
     }
