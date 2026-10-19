@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-19 18:34 UTC_
+_Last updated: 2026-10-19 19:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 4380
-- ✅ Verified (8+): 4338
+- **Total scored actions:** 4390
+- ✅ Verified (8+): 4348
 - 🟡 Partial (5–7): 41
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -17,14 +17,14 @@ _Last updated: 2026-10-19 18:34 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 331 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 319 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 283 | 9.0 | 9.5 |
+| Team 3 | Naya Judge | 286 | 9.0 | 9.5 |
 | Team 4 | Naya Mason | 275 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 428 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 429 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 223 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 307 | 9.0 | 9.5 |
-| Team 8 | Naya Sentinel | 317 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 318 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 413 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 417 | 9.0 | 9.6 |
+| Team 10 | Naya Librarian | 422 | 9.0 | 9.6 |
 | Team 11 | Naya Heart | 243 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 277 | 9.2 | 9.5 |
 
@@ -433,6 +433,8 @@ _Last updated: 2026-10-19 18:34 UTC_
 - **lane-scorer-20261019-1100:** 4 actions, avg 9.1/10
 - **gap-lane-scorer-20261019-1100:** 1 actions, avg 9.6/10
 - **lane-scorer-20261019-1120:** 3 actions, avg 9.2/10
+- **lane-scorer-20261019-1140:** 5 actions, avg 9.5/10
+- **lane-scorer-20261019-1200:** 2 actions, avg 9.2/10
 - **scorer-20261014-2200:** 3 actions, avg 9.2/10
 - **scorer-20261014-2220:** 5 actions, avg 9.2/10
 - **scorer-20261015-0030:** 4 actions, avg 8.6/10
@@ -586,6 +588,7 @@ _Last updated: 2026-10-19 18:34 UTC_
 - **gap-lane-scorer-20261019-0640:** 1 actions, avg 9.4/10
 - **gap-t0888-lane3:** 1 actions, avg 9.3/10
 - **gap-gap-t0888-lane3:** 1 actions, avg 9.5/10
+- **lane-scorer-20261019-1150:** 3 actions, avg 9.0/10
 - **coldnaya:** 11 actions, avg 9.0/10
 - **scorer-20261014-1910:** 1 actions, avg 9.0/10
 - **gap-scorer-20261015-0120:** 1 actions, avg 9.2/10
