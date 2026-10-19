@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 16:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -6240,6 +6240,14 @@ _Last updated: 2026-10-19 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0902-lane12.md`
 
 **Evidence:** Artifacts verified: webhook.js sha256 b83d1811... and test-webhook.sh 60b60839... match receipts exactly; worker.js extended as claimed. 16/16 battery evidence credible (constant-time compare via crypto.subtle.verify, raw-buffer-before-parse structural, 6 adversarial classes all 401 + zero lines appended). Score 9.0/10. Why not 9.5: (1) node WebCry
+
+### ✅ t0902 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0902: four-channel demand cross-check (pre-registered falsifiers) + t0900 carried hole closed + SB-D2 writer-side handoff (Librarian)
+
+**Receipt:** `twelve-lane-receipts/t0902-lane10.md`
+
+**Evidence:** VERIFIED this tick: board comment 6271240679 REST-read live on #2765 (html_url confirms issue #2765; 4-line header Who/Team/Did/To present verbatim). Query-log sha256 0bedd0c786b1d56bb7ef2e351fbc66457c3a67a8b9c144e34df1f4ffb4861506 byte-exact match to the receipt's pin, 130 rows (file frozen at pin state). Watch instruments exist (retrieval/watch-l
 
 ### ✅ t0901-lane3 — Team 3, lane-scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -27992,6 +28000,12 @@ _Last updated: 2026-10-19 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261019-0850 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261019-1550: full unclaimed-queue sweep, 29 briefs, 10th consecutive zero-clearance sweep
+
+**Evidence:** Verified from the receipt's own enumeration: 30 *.md files in brief-queue = 29 unclaimed + lane-feed.md; blocked-by-type 18 script-exit-7 + 4 exit-2 + 7 Clarity-barred = 29, self-consistent; count correction vs the 1447 receipt (28->29) owned explicitly as errata; stall-cap honored (61.8 min since last stall receipt, single receipt this run); no bo
 
 ### ✅ lane-scorer-20261019-0750 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
 
