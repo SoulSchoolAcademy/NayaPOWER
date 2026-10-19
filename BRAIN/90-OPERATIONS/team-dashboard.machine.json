@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T04:15:35+00:00",
+ "generated_utc": "2026-10-19T05:16:13+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -126,12 +126,6 @@
      "draft": false
     },
     {
-     "number": 2433,
-     "title": "brain-index: regenerate at basis 31d8cff7 (mechanical re-stamp, --che\u2026",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2433",
-     "draft": false
-    },
-    {
      "number": 2415,
      "title": "BRAIN: regenerate index layer at live tip 665098e3",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415",
@@ -148,9 +142,15 @@
      "title": "repair(brain-index): re-stamp index on main f33bba34",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390",
      "draft": false
+    },
+    {
+     "number": 2388,
+     "title": "feat(protocol): Brain-Index Freshness Law as mechanical law (Shawn 2026-10-11)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2388",
+     "draft": false
     }
    ],
-   "open_pr_count": 26
+   "open_pr_count": 25
   },
   {
    "id": "act",
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2773,
+     "title": "Nitro/premade functions v1",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2773",
+     "draft": false
+    },
+    {
      "number": 2772,
      "title": "test(builder): make template unit tests independent of shell cwd",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2772",
@@ -388,15 +394,9 @@
      "title": "docs: establish Smart Builder human contract",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746",
      "draft": false
-    },
-    {
-     "number": 2742,
-     "title": "Design laws v2 \u2014 3-pass scored 9+ for ratification",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742",
-     "draft": false
     }
    ],
-   "open_pr_count": 241
+   "open_pr_count": 242
   },
   {
    "id": "wire",
@@ -624,6 +624,12 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2774,
+     "title": "Test: GitHub \u2192 Hub pipeline (IB-999999)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2774",
+     "draft": false
+    },
+    {
      "number": 2754,
      "title": "Hub\u2194Supabase persistence bridge (Smart Note flow leg 3) \u2014 t0800",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754",
@@ -664,15 +670,9 @@
      "title": "[DRAFT] HUB MASTER BUILD CONTRACT v1 (review only, do not merge)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2700",
      "draft": true
-    },
-    {
-     "number": 2685,
-     "title": "HUB/BLUEPRINT.ai.md \u2014 canonical team reference: the complete system map",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685",
-     "draft": false
     }
    ],
-   "open_pr_count": 40
+   "open_pr_count": 41
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 632,
- "unassigned_prs": 241
+ "open_pr_total": 633,
+ "unassigned_prs": 242
 }
