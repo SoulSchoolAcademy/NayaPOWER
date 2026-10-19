@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3433,6 +3433,12 @@ _Last updated: 2026-10-19 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via API: #2418 open draft=False head 43c0113eee302db2c334aa9d5d3139ea0afd1d77 == receipt pin; #2399 closed merged=True merged_at 2026-10-12T03:57:23Z merge_commit b86eba89735c7cd5c3143e0419be50fa6e90a133 — matches. Scorecard comment 6117938595 posted on PR. 354/354 seam battery on pinned bytes is agent-run evidence. Deductions p
 
+### ✅ t1262-lane4 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** #2400 post-merge verification (merge-faithfulness + 74/74 re-proof)
+
+**Evidence:** Verified (live bytes 2026-10-19 ~10:27Z): PR #2400 state=closed, merged=True, merged_at=2026-10-12T03:59:07Z - merge_commit_sha=597803d8c79ec256a268c4ba1c33562d3c8a0b4f, head=973177d48be53da5da694469eeeb757caa28805c - all four values match the receipt byte-exact; the squash-merge claim is consistent with the record. Score 9.0 = GOOD, ONE MORE PASS.
+
 ### ✅ t1262 — Team 4, lane4 (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** #2400 post-merge verification (Naya Mason)
@@ -3481,6 +3487,12 @@ _Last updated: 2026-10-19 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified disk artifacts: prereg-sealed.md (stamp==mtime 2026-10-11 21:40:00 PDT), brief-arm-a/b, vault/runbook, outbox OUT-01..05, arm-key-sealed.md, decide receipt 20261012T043804Z. Receipt's honesty carries it: seal post-dating (~20s, mtime 04:39:45 output < 04:40:00 seal) disclosed, mechanical guarantee voided not claimed; weak-pointe
 
+### ✅ t1252-lane8 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Fossil-draft close sweep: 10 stale draft PRs closed with evidence
+
+**Evidence:** Verified (live bytes 2026-10-19 ~10:27Z): spot-checked PRs 1124/1221/1243 all state=closed, unmerged; #1124 close comment 6117772787 exists with the fossil-close body; closes log hidden_files/t1252-lane8-closes.txt on disk matches the receipt table byte-for-byte (10 PRs, heads, comment IDs 6117772787..6117778959); sweep script close-fossils-t1252.s
+
 ### ✅ t1252 — Team 8, lane8 (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** fossil-draft close sweep 10 PRs (Naya Sentinel)
@@ -3505,6 +3517,12 @@ _Last updated: 2026-10-19 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via API (sample 1124/1221/1243): all state=closed, merged=False, heads byte-match receipt pins (9514ad6966a5, 5a38cb39fe9c, c5402f3f16cf). No close-on-guess; #1130 untouched (Shawn-gated). Deductions: reviews liveness not checked (-0.5), 61 REST calls vs ~20 estimate (-0.5). Zero 403s.
 
+### ✅ t1252-lane3 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2418 Scorecard-Law step: HOLD verdict + distinct-seat review request
+
+**Evidence:** Verified (live bytes 2026-10-19 ~10:27Z): pin commit 43c0113eee302db2c334aa9d5d3139ea0afd1d77 exists in repo history (commits API); #2175 comment 6117766925 exists with the lane-3 review-request body; decision file hidden_files/decisions/20261012T042920Z-guide-merge-merge-pr--2418.json exists and reads HOLD ('Merge conflicts present') - matches rec
+
 ### ✅ t1252 — Team 3, lane3 (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** #2418 Scorecard-Law step (Naya Judge)
@@ -3528,6 +3546,12 @@ _Last updated: 2026-10-19 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1252-lane3.md`
 
 **Evidence:** Dispatcher verified: #2418 open draft=False, head 43c0113eee30 == receipt pin 43c0113eee302db2c334aa9d5d3139ea0afd1d77 (ls-remote full-SHA match). HOLD is calculator-driven and procedural: conflicts YES, receipt gate missing second seat score (Lane 2 9.0 stands as seat 1). This tick moved paper not the PR; no re-anchor chased (tip-churn protocol ho
+
+### ✅ t1252-lane1 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Live cold-Naya acceptance run, slot T4/NORMAL
+
+**Evidence:** Verified (live bytes 2026-10-19 ~10:28Z): run dir hidden_files/lane-1/she-goes-forever/runs/2026-10-12-t1252-T4 exists with all files - seal-receipt.json (sealed_at 2026-10-12T04:30:43+0000 matches claim), ground-truth.key.json, successor/evidence.json with head_verified 973177d48be53da5da694469eeeb757caa28805c which matches the API-confirmed merge
 
 ### ✅ t1252 — Team 1, lane1 (Verification & Proof) — 9.0/10 [VERIFIED]
 
