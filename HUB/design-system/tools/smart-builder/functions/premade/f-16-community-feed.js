@@ -71,7 +71,7 @@ function f16uid(){
   return 'p' + Date.now().toString(36) + Math.floor(Math.random()*1e6).toString(36);
 }
 
-NF.register('f-16-community-feed', {
+NF.register('community-feed', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

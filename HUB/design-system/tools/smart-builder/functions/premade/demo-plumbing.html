@@ -24,7 +24,7 @@
 
   <div class="board" style="--bc:#e84fff">
     <p class="kicker">f-19 · magenta</p><p class="title">Navigate</p>
-    <div data-fn="f-19-navigate" data-fn-config='{"active":"auto","rooms":[{"label":"Hub","href":"#demo-hub"},{"label":"Feed","href":"#demo-feed"},{"label":"Spaces","href":"#demo-spaces"},{"label":"Ghost","href":"#no-such-target"}]}'></div>
+    <div data-fn="navigate" data-fn-config='{"active":"auto","rooms":[{"label":"Hub","href":"#demo-hub"},{"label":"Feed","href":"#demo-feed"},{"label":"Spaces","href":"#demo-spaces"},{"label":"Ghost","href":"#no-such-target"}]}'></div>
     <div id="demo-hub" style="height:1px"></div>
     <div id="demo-feed" style="height:1px"></div>
     <div id="demo-spaces" style="height:1px"></div>
@@ -33,37 +33,37 @@
 
   <div class="board" style="--bc:#a06bff">
     <p class="kicker">f-20 · purple</p><p class="title">Search</p>
-    <div data-fn="f-20-search" data-fn-config='{"placeholder":"Search demo pieces...","items":[{"id":"b1","title":"Crystal button","sub":"magenta orb"},{"id":"b2","title":"Jewel board","sub":"purple panel"},{"id":"b3","title":"Orb rail","sub":"blue spectrum"},{"id":"b4","title":"Echo card","sub":"green signal"}]}'></div>
+    <div data-fn="search" data-fn-config='{"placeholder":"Search demo pieces...","items":[{"id":"b1","title":"Crystal button","sub":"magenta orb"},{"id":"b2","title":"Jewel board","sub":"purple panel"},{"id":"b3","title":"Orb rail","sub":"blue spectrum"},{"id":"b4","title":"Echo card","sub":"green signal"}]}'></div>
   </div>
 
   <div class="board" style="--bc:#3fb8ff">
     <p class="kicker">f-21 · blue</p><p class="title">Contact</p>
-    <div data-fn="f-21-contact" data-fn-config='{"to":"Maya","outboxKey":"demo.plumb.contact.outbox"}'></div>
+    <div data-fn="contact" data-fn-config='{"to":"Maya","outboxKey":"demo.plumb.contact.outbox"}'></div>
   </div>
 
   <div class="board" style="--bc:#2fe89e">
     <p class="kicker">f-22 · green</p><p class="title">Share</p>
-    <div data-fn="f-22-share" data-fn-config='{"url":"https://nayanet.live/demo-plumbing","title":"Plumbing demo","text":"Look at this"}'></div>
+    <div data-fn="share" data-fn-config='{"url":"https://nayanet.live/demo-plumbing","title":"Plumbing demo","text":"Look at this"}'></div>
   </div>
 
   <div class="board" style="--bc:#ffbf3d">
     <p class="kicker">f-23 · gold</p><p class="title">Save</p>
-    <div data-fn="f-23-save" data-fn-config='{"storeKey":"demo.plumb.save.store","items":[{"id":"s1","title":"Crystal button","sub":"magenta"},{"id":"s2","title":"Jewel board","sub":"purple"},{"id":"s3","title":"Orb rail","sub":"blue"}]}'></div>
+    <div data-fn="save" data-fn-config='{"storeKey":"demo.plumb.save.store","items":[{"id":"s1","title":"Crystal button","sub":"magenta"},{"id":"s2","title":"Jewel board","sub":"purple"},{"id":"s3","title":"Orb rail","sub":"blue"}]}'></div>
   </div>
 
   <div class="board" style="--bc:#40d3bb">
     <p class="kicker">f-24 · teal</p><p class="title">Play</p>
-    <div data-fn="f-24-play" data-fn-config='{"url":"demo-assets/tone.wav","title":"Welcome tone (5s test audio)"}'></div>
+    <div data-fn="play" data-fn-config='{"url":"demo-assets/tone.wav","title":"Welcome tone (5s test audio)"}'></div>
   </div>
 
   <div class="board" style="--bc:#b8ee57">
     <p class="kicker">f-30 · lime</p><p class="title">Join</p>
-    <div data-fn="f-30-join" data-fn-config='{"storeKey":"demo.plumb.join.store","spaces":[{"id":"sp-makers","name":"Makers","topic":"Build things","members":128},{"id":"sp-garden","name":"Garden Club","topic":"Grow ideas","members":42},{"id":"sp-night","name":"Night Owls","topic":"Late builders","members":7}]}'></div>
+    <div data-fn="join" data-fn-config='{"storeKey":"demo.plumb.join.store","spaces":[{"id":"sp-makers","name":"Makers","topic":"Build things","members":128},{"id":"sp-garden","name":"Garden Club","topic":"Grow ideas","members":42},{"id":"sp-night","name":"Night Owls","topic":"Late builders","members":7}]}'></div>
   </div>
 
   <div class="board" style="--bc:#6675ff">
     <p class="kicker">loader fail-soft</p><p class="title">Bad config JSON + unregistered id</p>
-    <div data-fn="f-20-search" data-fn-config='this is not json'></div>
+    <div data-fn="search" data-fn-config='this is not json'></div>
     <div data-fn="f-99-ghost" data-fn-config='{}'></div>
     <p class="hint">The first still boots (defaults); the second warns and is skipped — fail-closed.</p>
   </div>

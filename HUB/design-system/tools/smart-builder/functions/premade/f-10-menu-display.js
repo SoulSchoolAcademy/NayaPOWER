@@ -92,7 +92,7 @@ function load(key){ try { var v = localStorage.getItem(key); return v ? JSON.par
 function save(key, v){ try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {} }
 function money(cur, n){ return cur + (Math.round(n * 100) / 100).toFixed(2); }
 
-NF.register('f-10-menu-display', {
+NF.register('menu-display', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

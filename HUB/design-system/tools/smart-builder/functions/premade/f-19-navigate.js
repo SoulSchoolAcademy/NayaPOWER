@@ -17,7 +17,7 @@ var NF = window.NayaFunctions = window.NayaFunctions || {};
 NF._r = NF._r || {};
 NF.register = NF.register || function(id, def){ if (NF._r[id]) return; NF._r[id] = def; };
 
-NF.register('f-19-navigate', {
+NF.register('navigate', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

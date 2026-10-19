@@ -22,7 +22,7 @@ NF.register = NF.register || function(id, def){ if (NF._r[id]) return; NF._r[id]
 
 var SPECTRUM = ['#e84fff', '#a06bff', '#3fb8ff', '#2fe89e', '#ffbf3d'];
 
-NF.register('f-30-join', {
+NF.register('join', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

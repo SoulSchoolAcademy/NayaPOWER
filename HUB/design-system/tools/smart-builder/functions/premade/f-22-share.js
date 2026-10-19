@@ -37,7 +37,7 @@ function copyText(text, done){
   } else { legacy(); }
 }
 
-NF.register('f-22-share', {
+NF.register('share', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

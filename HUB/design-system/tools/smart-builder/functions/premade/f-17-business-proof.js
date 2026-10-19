@@ -68,7 +68,7 @@ function f17esc(v){
     .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 }
 
-NF.register('f-17-business-proof', {
+NF.register('business-proof', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

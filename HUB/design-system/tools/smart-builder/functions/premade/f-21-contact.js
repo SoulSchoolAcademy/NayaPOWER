@@ -27,7 +27,7 @@ function saveBox(key, arr){
   catch (e) { console.warn('[f-21-contact] localStorage unavailable — message kept in memory only'); return false; }
 }
 
-NF.register('f-21-contact', {
+NF.register('contact', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

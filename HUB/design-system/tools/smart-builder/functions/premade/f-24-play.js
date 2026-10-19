@@ -23,7 +23,7 @@ function fmt(s){
   return m + ':' + (sec < 10 ? '0' : '') + sec;
 }
 
-NF.register('f-24-play', {
+NF.register('play', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

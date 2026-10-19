@@ -64,7 +64,7 @@ function f15okUrl(u){
   return typeof u === 'string' && /^https?:\/\/[^\/\s]+\.[^\/\s]+/i.test(u.trim());
 }
 
-NF.register('f-15-portfolio-showcase', {
+NF.register('portfolio-showcase', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

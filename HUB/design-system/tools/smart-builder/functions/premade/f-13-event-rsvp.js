@@ -82,7 +82,7 @@ function escapeHtml(s){
 function load(key){ try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : {}; } catch (e) { return {}; } }
 function save(key, v){ try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {} }
 
-NF.register('f-13-event-rsvp', {
+NF.register('event-rsvp', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

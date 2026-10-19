@@ -99,7 +99,7 @@ function normDays(raw){
 function load(key){ try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : []; } catch (e) { return []; } }
 function save(key, v){ try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {} }
 
-NF.register('f-09-booking', {
+NF.register('booking', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};

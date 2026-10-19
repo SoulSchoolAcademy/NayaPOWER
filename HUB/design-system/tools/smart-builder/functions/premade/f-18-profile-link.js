@@ -68,7 +68,7 @@ function f18verify(u){
   return null;
 }
 
-NF.register('f-18-profile-link', {
+NF.register('profile-link', {
   version: '1.0.0',
   activate: function(root, config){
     config = config || {};
