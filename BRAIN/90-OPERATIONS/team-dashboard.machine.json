@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T18:15:48+00:00",
+ "generated_utc": "2026-10-19T19:16:00+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2789,
+     "title": "Streamline: remove dead weight (Shawn-authorized audit)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2789",
+     "draft": false
+    },
+    {
      "number": 2788,
      "title": "Oath: the Behavior Declaration, spoken at every activation",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2788",
@@ -388,15 +394,9 @@
      "title": "test(builder): make template unit tests independent of shell cwd",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2772",
      "draft": true
-    },
-    {
-     "number": 2771,
-     "title": "DEC-5/6/7/9: align merge-bar constants and law text to ratified 9.5",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2771",
-     "draft": false
     }
    ],
-   "open_pr_count": 245
+   "open_pr_count": 246
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 643,
- "unassigned_prs": 245
+ "open_pr_total": 644,
+ "unassigned_prs": 246
 }
