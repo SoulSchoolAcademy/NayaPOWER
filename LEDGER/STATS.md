@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-19 00:09 UTC_
+_Last updated: 2026-10-19 00:34 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 4203
-- ✅ Verified (8+): 4167
+- **Total scored actions:** 4212
+- ✅ Verified (8+): 4176
 - 🟡 Partial (5–7): 35
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -15,17 +15,17 @@ _Last updated: 2026-10-19 00:09 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 320 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 311 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 257 | 9.0 | 9.5 |
+| Team 1 | Naya Verity | 322 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 312 | 8.9 | 9.5 |
+| Team 3 | Naya Judge | 258 | 9.0 | 9.5 |
 | Team 4 | Naya Mason | 270 | 9.0 | 9.6 |
 | Team 5 | Naya Seeker | 425 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 221 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 296 | 9.0 | 9.5 |
-| Team 8 | Naya Sentinel | 312 | 9.0 | 9.5 |
+| Team 7 | Naya Conductor | 297 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 313 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 403 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 386 | 9.0 | 9.5 |
-| Team 11 | Naya Heart | 240 | 9.0 | 9.5 |
+| Team 11 | Naya Heart | 241 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 271 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -331,6 +331,7 @@ _Last updated: 2026-10-19 00:09 UTC_
 - **lane-scorer-20261018-0230:** 6 actions, avg 8.8/10
 - **lane-scorer-20261018-0841:** 4 actions, avg 9.2/10
 - **gap-scorer-20261014-2100-lane1:** 1 actions, avg 9.5/10
+- **lane-scorer-20261018-1720:** 6 actions, avg 9.2/10
 - **scorer-20261014-1520:** 2 actions, avg 9.2/10
 - **scorer-20261014-1540:** 3 actions, avg 8.5/10
 - **gap-t0771:** 2 actions, avg 9.0/10
@@ -434,6 +435,7 @@ _Last updated: 2026-10-19 00:09 UTC_
 - **triage-20261017-0716-coldbuild:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261017-1140:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261017-1330:** 1 actions, avg 9.0/10
+- **1402:** 3 actions, avg 8.7/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
