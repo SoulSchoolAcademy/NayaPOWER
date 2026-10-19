@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -142,6 +142,12 @@ _Last updated: 2026-10-19 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-lane-scorer-20261016-2000-lane8.md merge-seat byte-enforcement (filing stamp + claim-time exit-8 refusal)
 
 **Evidence:** Verified on local bytes: MERGE-SEAT machinery present in bin/file-gap-brief.py (25 marker/self-test matches incl. --merge-seat flag) and bin/claim-brief.py (21 matches incl. exit-8 refusal pre-mv); lane-agent-brief-template.md PART 2 names the byte-enforcement. Receipt's RED-first proof (live round-trip + live refusal on real inputs, temp sandbox, 
+
+### ✅ t2026-lane7 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor run: evaluated all 29 queued briefs per ordering rule; zero claimable by this seat; correct skip with classified stall evidence (3 blocker classes) and routing ask, no rotation change.
+
+**Evidence:** Artifacts: none claimed (correct — stall receipts claim nothing); classifier honest: 29/29 briefs second-seat or seat-barred, blockers enumerated by class with named next action (dispatcher: route class B/C to non-Clarity seats or stamp CLAIMABILITY GATE). No phantom claim, no rotation-json churn on a no-op run. Why not 9.5: stall is structural — t
 
 ### ✅ t1840 — Team 5, lane-scorer (Retrieval) — 8.0/10 [VERIFIED]
 
@@ -6375,6 +6381,12 @@ _Last updated: 2026-10-19 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
 
+### ✅ t0846-lane3 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** PR #2418 merge-readiness verdict (Judge hat): HOLD — mergeable false/dirty vs live tip, 0 reviews, seam 53/53 + surface 112/112 + differential 14/14 green on exact head, pin-red diagnosed, operator finding documented
+
+**Evidence:** Artifacts verified by the scorer on live bytes before scoring: (1) branch naya/three-decision-consolidate exists on the remote, head SHA 8346681cd52600e08fba3bcbb8b86a3258eaf056 == receipt's cited head, exact match; (2) live tip f424f5b971f46d45ea0bd8ea070f69985973c3a2 == receipt's cited tip, exact match; (3) fetched that SHA over the git protocol:
+
 ### ✅ t0845 — Team 12, lane-scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** t0845-lane12.md: battery arm-swap machinery — second arm built, runner refactored, falsifier block pinned
@@ -7082,6 +7094,12 @@ _Last updated: 2026-10-19 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0791-lane11.md`
 
 **Evidence:** Verified: bin/hv_measure.py sha256 915a99c26078d94b... matches the receipt's citation byte-exact on disk; lane-11/metric_audit_t0791.json exists (18 rows). Reproduce-first gate caught a live instrument bug (non-tick filenames always-included), fixed at the root, regression on window 1 reported, window 3 measured x2 with determinism claim. Score 9.5
+
+### ✅ t0789-lane99 — Team 99, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up (parent scored 9.0): converted the 'mirror lesson' (unassignable queue starvation = mailbox with no door) into a routing-repair signal to the seat that can act — dispatcher-scope verdict posted to the live board.
+
+**Evidence:** Artifacts verified: board comment 6253901249 exists on issue #2721 (live board), 2318 chars, four-line header, created 2026-10-18T19:04:32Z, content matches the claimed routing verdict; brief moved to brief-queue/done/ and rotation 29->28 cited in receipt. Real verified value: 28/28 refusal evidence re-derived from live bytes, a standing filing pol
 
 ### ✅ t0787 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
 
@@ -16942,6 +16960,12 @@ _Last updated: 2026-10-19 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ gate-stall-20261019-0610 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Second-claim sweep over 28 queue briefs: 0 claimable, 28 seat-barred for this seat — correct skip, stall receipt per 60-min cap
+
+**Evidence:** Artifacts verified by the scorer on local bytes (stall receipt, no branch refs): 28/28 listed briefs exist in brief-queue; 18/28 show an explicit gate/exit-7/seat-line bar on the page; the other 10 ('exit-7') confirmed via each brief's parent receipt Seat line — sampled 5, all Naya Clarity Narzan, so the second-seat bar holds; prior stall receipts 
 
 ### ✅ lane-scorer-20261019-0500 — Team executor, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
 
