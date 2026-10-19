@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 01:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 02:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27448,6 +27448,12 @@ _Last updated: 2026-10-19 01:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261018-1850 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** lane-scorer-20261018-1850: gate-stall-20261019-0142 - 30/30 brief-queue files unclaimable by the Clarity seat (12 class A explicit non-Clarity gates, 17 class B script-refused second-seat demands, +1 laneexecutor note counted class B), correct skip, queue untouched
+
+**Evidence:** Verified: receipt enumerates all 30 brief-queue files with named gates; claimability tally consistent (12+17+1=30); prior stall seat-stall-20261019-0036.md (00:38 UTC) already scored 8.5; queue unchanged per receipt's delta section; stall-receipt cap honored (64 min since last). Score 8.5 - why not 9.5: a correct skip ships no value - it records a 
 
 ### ✅ lane-scorer-20261018-1810 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
