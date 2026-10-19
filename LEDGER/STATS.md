@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-19 05:32 UTC_
+_Last updated: 2026-10-19 06:01 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 4237
-- ✅ Verified (8+): 4201
-- 🟡 Partial (5–7): 35
+- **Total scored actions:** 4257
+- ✅ Verified (8+): 4220
+- 🟡 Partial (5–7): 36
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
 - **Verification rate:** 99% of actions fully verified
@@ -15,17 +15,17 @@ _Last updated: 2026-10-19 05:32 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 323 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 312 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 258 | 9.0 | 9.5 |
-| Team 4 | Naya Mason | 270 | 9.0 | 9.6 |
-| Team 5 | Naya Seeker | 425 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 221 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 301 | 9.0 | 9.5 |
-| Team 8 | Naya Sentinel | 313 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 405 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 386 | 9.0 | 9.5 |
-| Team 11 | Naya Heart | 241 | 9.0 | 9.5 |
+| Team 1 | Naya Verity | 325 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 315 | 8.9 | 9.5 |
+| Team 3 | Naya Judge | 259 | 9.0 | 9.5 |
+| Team 4 | Naya Mason | 272 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 426 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 222 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 302 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 315 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 408 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 389 | 9.0 | 9.5 |
+| Team 11 | Naya Heart | 242 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 273 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -1334,14 +1334,34 @@ _Last updated: 2026-10-19 05:32 UTC_
 - **t1152-lane7:** 1 actions, avg 8.5/10
 - **t1152-lane8:** 1 actions, avg 9.0/10
 - **t1162:** 11 actions, avg 9.0/10
+- **t1162-lane10:** 1 actions, avg 8.5/10
 - **t1162-lane11:** 1 actions, avg 9.0/10
+- **t1162-lane9:** 1 actions, avg 9.0/10
 - **t1172:** 9 actions, avg 8.8/10
+- **t1172-lane1:** 1 actions, avg 9.0/10
+- **t1172-lane3:** 1 actions, avg 9.0/10
+- **t1172-lane4:** 1 actions, avg 9.0/10
 - **t1192:** 9 actions, avg 8.3/10
+- **t1192-lane2:** 1 actions, avg 8.0/10
+- **t1192-lane7:** 1 actions, avg 9.0/10
+- **t1192-lane8:** 1 actions, avg 7.5/10
 - **t1202:** 9 actions, avg 8.8/10
+- **t1202-lane10:** 1 actions, avg 8.5/10
+- **t1202-lane2:** 1 actions, avg 9.0/10
+- **t1202-lane9:** 1 actions, avg 9.0/10
 - **t1212:** 9 actions, avg 8.6/10
+- **t1212-lane4:** 1 actions, avg 8.5/10
+- **t1212-lane5:** 1 actions, avg 9.0/10
+- **t1212-lane6:** 1 actions, avg 8.5/10
 - **t1222:** 9 actions, avg 9.1/10
+- **t1222-lane1:** 1 actions, avg 9.0/10
+- **t1222-lane10:** 1 actions, avg 8.5/10
+- **t1222-lane8:** 1 actions, avg 9.0/10
 - **t1230:** 3 actions, avg 9.0/10
 - **t1232:** 12 actions, avg 8.8/10
+- **t1232-lane11:** 1 actions, avg 9.0/10
+- **t1232-lane2:** 1 actions, avg 8.0/10
+- **t1232-lane9:** 1 actions, avg 9.0/10
 - **t1242:** 12 actions, avg 8.9/10
 - **t1252:** 9 actions, avg 8.8/10
 - **t1262:** 9 actions, avg 8.6/10
