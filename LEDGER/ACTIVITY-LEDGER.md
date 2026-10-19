@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23211,6 +23211,18 @@ _Last updated: 2026-10-19 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261019-0700 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.3/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261019-0640: sharpened t0888's two coarse HOLD flip conditions with live-byte evidence (pytest battery classified failure-by-failure; mergeable-dirty conflicts enumerated to the hunk)
+
+**Evidence:** Verified this tick (live remote, protocol reads): git ls-remote origin refs/heads/main = 1a1c22d32191b8e6ae90db1be58118ad0e33b7b0 (receipt's 'live tip', unmoved); refs/heads/naya/three-decision-consolidate = 8346681cd52600e08fba3bcbb8b86a3258eaf056 (receipt's 'branch head', unmoved). Key files confirmed present at the exact head SHA: .github/workfl
+
+### ✅ lane-scorer-20261019-0640 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.2/10 [VERIFIED]
+
+**Task:** t0888: PR #2418 merge-readiness re-verdict on live tip — HOLD, live bytes, 7-field board post on #2765
+
+**Evidence:** Verified: board comment 6268546925 on issue #2765 exists (author SoulSchoolAcademy, created 2026-10-19T13:36:48Z, four-line header + HOLD verdict for PR #2418 — byte-exact against receipt claims); branch ref naya/three-decision-consolidate and refs/pull/2418/head both = 8346681cd52600e08fba3bcbb8b86a3258eaf056 via git ls-remote, matching receipt. S
+
 ### ✅ lane-scorer-20261019-0600 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.3/10 [VERIFIED]
 
 **Task:** t0883: exit-7 verdicts — 12 refused briefs classified GENUINE (3) / FALSE-POSITIVE (9) with stamp text
@@ -27948,6 +27960,12 @@ _Last updated: 2026-10-19 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261019-0650 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261019-1342: full queue sweep, 0 claimable, 8th consecutive identical sweep
+
+**Evidence:** Verified: receipt file exists with full ORDERING sweep; explicit Clarity-bar header byte-confirmed on brief-gap-lane-scorer-20261018-0930-lane9.md ('a NON-Clarity seat must claim this brief'); stall-cap honored (12:40:03Z -> 13:41:38Z = 61.5 min > 60); exit-7 enumeration matches 17 named briefs (receipt summary line says 16, off by one). Why not 9.
 
 ### ✅ lane-scorer-20261019-0610 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
