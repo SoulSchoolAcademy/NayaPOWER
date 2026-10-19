@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-19T14:16:56Z",
+ "generated_utc": "2026-10-19T14:29:02Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "1a1c22d32191b8e6ae90db1be58118ad0e33b7b0",
   "short": "1a1c22d32191",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-19T14:16:02Z"
+  "checked_utc": "2026-10-19T14:28:02Z"
  },
  "venue": {
   "live": 2765,
@@ -17,29 +17,43 @@
   ]
  },
  "waves": {
-  "active": 198,
-  "active_seats": [],
+  "active": 387,
+  "active_seats": [
+   "Naya Electrician",
+   "Naya Captain",
+   "Naya Mechanic"
+  ],
   "last_completed": null,
   "last_completed_at": null,
-  "rotation_cursor": "wave-199: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
+  "rotation_cursor": "wave-388: Naya Host/Naya Archivist/Naya Keeper (roster order)"
  },
  "lanes": {
   "free": [
    "ACT",
    "BUILD",
    "GOVERN",
-   "INFRA",
    "KNOW",
    "LAW",
    "LEARN",
    "MEMORY",
    "PRODUCT",
-   "PROVE",
-   "TEAM",
-   "WIRE"
+   "PROVE"
   ],
   "held": [],
-  "active": []
+  "active": [
+   {
+    "lane": "INFRA",
+    "since": "2026-10-19T14:16:21Z"
+   },
+   {
+    "lane": "TEAM",
+    "since": "2026-10-19T14:16:21Z"
+   },
+   {
+    "lane": "WIRE",
+    "since": "2026-10-19T14:16:21Z"
+   }
+  ]
  },
  "queue": {
   "actionable": 0,
@@ -224,27 +238,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 55
+   "age_s": 62
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 55
+   "age_s": 62
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 55
+   "age_s": 62
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 55
+   "age_s": 62
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 55
+   "age_s": 62
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 55
+   "age_s": 62
   }
  }
 }
