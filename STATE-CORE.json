@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-19T08:16:43Z",
+ "generated_utc": "2026-10-19T08:26:29Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "1a1c22d32191b8e6ae90db1be58118ad0e33b7b0",
   "short": "1a1c22d32191",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-19T08:15:59Z"
+  "checked_utc": "2026-10-19T08:26:00Z"
  },
  "venue": {
   "live": 2765,
@@ -17,41 +17,41 @@
   ]
  },
  "waves": {
-  "active": 365,
+  "active": 366,
   "active_seats": [
-   "Naya Mechanic",
-   "Naya Electrician",
-   "Naya Keeper"
+   "Naya Compounder",
+   "Naya Librarian",
+   "Naya Bridger"
   ],
   "last_completed": null,
   "last_completed_at": null,
-  "rotation_cursor": "wave-366: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
+  "rotation_cursor": "wave-367: Naya Judge/Naya Auditor/Naya Builder (roster order)"
  },
  "lanes": {
   "free": [
-   "ACT",
    "BUILD",
-   "KNOW",
+   "GOVERN",
+   "INFRA",
    "LAW",
-   "LEARN",
    "MEMORY",
    "PRODUCT",
    "PROVE",
-   "TEAM"
+   "TEAM",
+   "WIRE"
   ],
   "held": [],
   "active": [
    {
-    "lane": "GOVERN",
-    "since": "2026-10-19T08:14:30Z"
+    "lane": "ACT",
+    "since": "2026-10-19T08:23:30Z"
    },
    {
-    "lane": "INFRA",
-    "since": "2026-10-19T08:14:30Z"
+    "lane": "KNOW",
+    "since": "2026-10-19T08:23:30Z"
    },
    {
-    "lane": "WIRE",
-    "since": "2026-10-19T08:14:30Z"
+    "lane": "LEARN",
+    "since": "2026-10-19T08:23:30Z"
    }
   ]
  },
@@ -238,27 +238,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 46
+   "age_s": 31
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 46
+   "age_s": 31
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 46
+   "age_s": 31
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 46
+   "age_s": 31
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 46
+   "age_s": 31
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 46
+   "age_s": 31
   }
  }
 }
