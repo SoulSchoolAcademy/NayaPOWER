@@ -22,6 +22,7 @@ jobs:
     name: Stale branch watch
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Report stale branches to #1354
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,6 +33,7 @@ jobs:
     name: Actions budget watch
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Report CI burn rate to #1354
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
