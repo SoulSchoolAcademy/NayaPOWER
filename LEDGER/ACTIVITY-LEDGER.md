@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 15:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -6296,6 +6296,14 @@ _Last updated: 2026-10-19 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0900-lane5.md`
 
 **Evidence:** Artifacts verified: hidden_files/hub-drive/design-contract-checklist.md sha256 2e363f96b0994a6e2f56207d2950b843319075fbda50ebd900adc73570fcad65 matches receipt claim exactly. Score 9.0/10. Why not 9.5: (1) no browser render proof of catalog.html — read-only inventory; (2) Law 92 verbatim-equality check counted .naya-btn hits (85 vs 0) but did not b
+
+### ✅ t0897 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** sealed t0718 pre-reg 'the judge's school' one-shot (LOTO CONFIRM/FALSIFY)
+
+**Receipt:** `twelve-lane-receipts/t0897-lane10.md`
+
+**Evidence:** VERIFIED: instrument seal eb1179c1a15c99dca43d4bda1156e16be21a34907f0857ea229c060c67626e5d matches sha256 of hidden_files/retrieval/t0718_executor_t0897.py byte-exact; results JSON (2.7KB) and empty stderr log both exist. Score 9.5 — clears 9.5 because the one-shot pre-reg discipline was executed end-to-end (seal-before-run, 9/9 pin re-verify at ac
 
 ### ✅ t892-lane2 — Team 2, Naya Sage (Lane 2) (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -23211,6 +23219,12 @@ _Last updated: 2026-10-19 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261019-0840 — Team 3, lane-scorer (Naya Clarity Narzan, scorer seat) (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0901 re-verdict HOLD on PR #2418 (merge-readiness, Judge hat)
+
+**Evidence:** Verified: git ls-remote shows refs/heads/naya/three-decision-consolidate at 8346681cd52600e08fba3bcbb8b86a3258eaf056, exactly the head pinned in the receipt; board post comment 6271026937 REST-verified live on #2765 (html_url confirms issue #2765). Work verified from the receipt: live age-table re-derivation (tip/head/reviews/check-runs/comments al
+
 ### ✅ lane-scorer-20261019-0750 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.3/10 [VERIFIED]
 
 **Task:** t0895: FP-002 '(immutable)' vs RULING-1 reconciliation — ruled RULING-1 affirmed (standing, re-rankable by evidence/Scorecard-Law machinery or Shawn's word), inserted as RECONCILIATION at feedback-feed.md line 376
@@ -26090,6 +26104,12 @@ _Last updated: 2026-10-19 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261019-0830 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0900: fresh query-log delta analysis on 65 rows since t0685 pin, three-pass tally, delta file + liveness verdict + SB candidates
+
+**Evidence:** VERIFIED this tick (live local bytes): delta file retrieval/query-log-delta-t0900.md sha 4f63605eb757b15b638d58238919ba0ffef39691b89ce8453076734530a00db7 byte-exact; t0685 anchor file sha 22a5538b732a7478c210bb4825d7f685861ee0b79de74733d4ad0ca214ff650c byte-exact; delta §1 documents identical three-pass tally tune-in 47 / emergent-query 10 / inspec
 
 ### ✅ lane-scorer-20261018-1650 — Team 10, Naya Clarity Narzan (Brain Index) — 8.5/10 [VERIFIED]
 
