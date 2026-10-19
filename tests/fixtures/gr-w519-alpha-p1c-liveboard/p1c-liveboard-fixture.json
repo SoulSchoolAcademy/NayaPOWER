@@ -1,0 +1,30 @@
+{
+ "agent_header_regex": "^\\s*(\\[Team|\\[Naya|# \\[Naya|# \\*\\*\\[Naya|\\*\\*\\[Naya|🧠|⚡|# \\u23f1|# [A-Z])",
+ "anchor_comment_id": 6254124376,
+ "anchor_note": "Board-open anchor: first comment on #2765, pinned by live read at build time (w519, Naya Alpha). All #2765 comments are post-open per w514.",
+ "anchor_utc": "2026-10-18T19:24:46Z",
+ "board_scan_target": 2765,
+ "board_state": "open (live board since 2026-10-18 ~19:20Z; #2721 archived)",
+ "body_voice_test": "author-login is NON-discriminating (SoulSchoolAcademy is the shared login). 'BY SHAWN' = the comment text reads in Shawn's own voice. Agent posts citing 'Shawn's word' secondhand FAIL the test unless Shawn's bytes are quoted/linked.",
+ "canon_rules_baked_in": [
+  "KIND FIRST: any acceptance count that does not decompose by kind before naming a delta is a guess (Naya Alpha, 2026-10-16; acceptance recipe §7).",
+  "A parked item's value in a wave is re-proving the park still holds with fresh reads (Naya Alpha, 2026-10-16). Never re-press a parked item.",
+  "Board tail: compute the page from the comment count before fetching; page 1 is the archive (Naya Gamma w342).",
+  "Receipt citations carry endpoint shape: /issues/comments/{id} for comment-id reads.",
+  "Supabase reads are read-only by law; premise re-verification never writes."
+ ],
+ "fixture_id": "gr-w519-alpha-p1c-liveboard",
+ "keyword_regex": "promotion|promot|7705ac75|Shawn.{0,60}word",
+ "promotion": "Promoted from verify-p1-premise-pair.py's p1c leg (tests/fixtures/gr-w433-alpha-gapclose/, landed via PR #2758) per gr-w518-alpha-promotion-build: new instrument dir on main, never in-place on tests/fixtures/gr-w448-alpha-boardscan/.",
+ "proved_utc": "2026-10-19T09:07Z",
+ "purpose": "Pin file for the promoted p1c live-board leg. A cold seat runs verify-p1c-liveboard.py and must get PASS before citing the premise: no Shawn-voice word on the p1 VERIFIED promotion in the #2765 board tail from the board-open anchor. Re-proven from LIVE bytes at the LIVE tip — no inherited runs, no memory.",
+ "regex_proof": {
+  "distillation_table_class": "NOT SHIPPED w519 — unconfirmed. Build-time scan of 200 live #2765 bodies (pages 1-2, oldest 200): zero table-headed bodies; the w514 example (6261460022) now opens with the accountability header. Per the w518 spec, the class ships only on a confirmed distillation-headed byte sample — never unconfirmed.",
+  "u23f1_class": "ADDED w519. Byte-verified from live comment 6262355680 (2026-10-19T07:49:46Z): first line '# ⏱️ Hourly Accountability — 06:48–07:48Z (2026-10-19)' = codepoints 0x23 0x20 0x23F1 0xFE0F 0x20 0x48... The w514 miss assumed '# [A-Z]' covered it; the live bytes are '# <U+23F1><U+FE0F>'. The '# \\u23f1' alternation sits BEFORE '# [A-Z]' in the regex and matches the live prefix."
+ },
+ "repo_tip_sha": "1a1c22d32191b8e6ae90db1be58118ad0e33b7b0",
+ "scan_rule": "Compute the tail page from the board's comment count BEFORE any fetch: last_page = (comments // 100) + 1, per_page=100. Read pages from the anchor forward only. Page 1 is the archive.",
+ "seat": "Naya Alpha",
+ "tail_rule": "grep the post-anchor bodies for the keyword_regex; every hit shown in context; agent-headered posts and review-pipeline 'promotions' do not touch p1.",
+ "wave": 519
+}
