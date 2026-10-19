@@ -69,7 +69,7 @@ def _good_deliverable(**over):
         "deliverable": "test-widget",
         "build_evidence": "branch naya5/x @ abc123",
         "verification_evidence": "11/11 tests green",
-        "scorecard": {"score": 9.2, "scorer": "naya5"},
+        "scorecard": {"score": 9.6, "scorer": "naya5"},
         "gates": [{"name": "unit", "result": "pass"}],
     }
     rec.update(over)
@@ -96,12 +96,21 @@ def test_quality_gate_rejects_sub_9_score():
     r = quality_gate.check(_good_deliverable(
         scorecard={"score": 8.9, "scorer": "naya5"}))
     assert r["pass"] is False
-    assert any("8.9" in x and "9.0" in x for x in r["reasons"])
+    assert any("8.9" in x and "9.5" in x for x in r["reasons"])
 
 
-def test_quality_gate_accepts_exactly_9():
+def test_quality_gate_rejects_9_0_and_9_4():
+    # The 9.5 law: nothing below 9.5 is deliverable — the old 9.0 bar is retired.
+    for score in (9.0, 9.4):
+        r = quality_gate.check(_good_deliverable(
+            scorecard={"score": score, "scorer": "naya5"}))
+        assert r["pass"] is False, score
+        assert any(str(score) in x and "9.5" in x for x in r["reasons"])
+
+
+def test_quality_gate_accepts_exactly_9_5():
     r = quality_gate.check(_good_deliverable(
-        scorecard={"score": 9.0, "scorer": "naya5"}))
+        scorecard={"score": 9.5, "scorer": "naya5"}))
     assert r["pass"] is True, r["reasons"]
 
 

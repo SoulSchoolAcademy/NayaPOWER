@@ -264,7 +264,7 @@ def test_protected_empty_action_allowed():
 
 def test_quality_all_dimensions_above_floor():
     r = check_quality_gate(
-        {"correctness": 9.5, "completeness": 9.2, "evidence": 9.0},
+        {"correctness": 9.5, "completeness": 9.5, "evidence": 9.5},
         {"correctness": 0.4, "completeness": 0.3, "evidence": 0.3},
     )
     assert r.passed, r.reasons
@@ -281,7 +281,7 @@ def test_quality_single_dimension_below_floor_fails():
 
 def test_quality_weighted_total_at_floor_passes():
     r = check_quality_gate(
-        {"a": 9.0, "b": 9.0},
+        {"a": 9.5, "b": 9.5},
         {"a": 0.9, "b": 0.1},
     )
     assert r.passed, r.reasons
@@ -297,8 +297,9 @@ def test_quality_weighted_total_below_floor_fails():
         {"a": 9.2, "b": 9.1},
         {"a": 0.1, "b": 0.9},
     )
-    # total = 9.11 >= 9.0 and no dimension below floor -> passes
-    assert r2.passed, r2.reasons
+    # total = 9.11 < 9.5: under-bar weighted total fails even with no
+    # dimension below floor
+    assert not r2.passed, r2.reasons
 
 
 def test_quality_rejects_empty_scores():

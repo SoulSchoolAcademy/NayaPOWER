@@ -23,7 +23,7 @@ Law checks (checks/):
 - decision_log: >=2 options scored, winner = top scorer, gates checked (SN-0522)
 - scorecard: 7 dimensions, weights sum to 1.0, totals recomputed (SN-0523)
 - action_log: fix verified + reported, no gate crossed without approval (SN-0575)
-- delivery_evidence_gate: build + verification evidence, scorecard >=9.0 (SN-0526)
+- delivery_evidence_gate: build + verification evidence, scorecard >=9.5 (SN-0526)
 
 Prime 2: THE LAW IS THE CODE.
 """

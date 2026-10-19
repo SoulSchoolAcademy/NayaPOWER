@@ -26,7 +26,7 @@ def _valid_receipt():
         "q1": "Shawn",
         "q2": "production credentials money destructive ratification security privacy",
         "q3": "no",
-        "q4": "9.0",
+        "q4": "9.5",
         "q5": "independent evidence",
     }
     return issue_receipt("test-agent", answers)
@@ -74,7 +74,7 @@ def test_cold_start_autofire_refuses_superseded_receipt_without_params():
         "q1": "Shawn",
         "q2": "production credentials money destructive ratification security privacy",
         "q3": "no",
-        "q4": "9.0",
+        "q4": "9.5",
         "q5": "independent evidence",
     })
     assert old.verify(), "test setup: receipt seal must verify"

@@ -33,7 +33,7 @@ CORRECT = {
     "q1": "Shawn Vibert",
     "q2": "production deploys, credentials and money, destructive actions, ratification, security and privacy",
     "q3": "No, never",
-    "q4": "9.0",
+    "q4": "9.5",
     "q5": "independent evidence and proof",
 }
 
@@ -113,7 +113,7 @@ def _good_scorecard():
     return Scorecard(
         what="repair PR",
         evidence="tests 42/42, commit abc123",
-        scores={"correctness": 9.5, "completeness": 9.0, "evidence": 9.5},
+        scores={"correctness": 9.5, "completeness": 9.5, "evidence": 9.5},
         weights={"correctness": 0.4, "completeness": 0.3, "evidence": 0.3},
         weakest_point="docs could be richer; why not 10: no independent run yet",
         verified_by="naya-1",

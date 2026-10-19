@@ -16,7 +16,7 @@ The anti-theater rule: a faked round must be detectable. Each round must
 record, in its own words, what changed, why the score moved, and the gaps
 found ("why not 10?"). Two rounds that say the same thing fail. A first
 round scored perfect fails — nobody scores their own build perfect on
-first look. A final round below 9.0 fails — the loop keeps going until
+first look. A final round below 9.5 fails — the loop keeps going until
 the work is 9+, or the merge still needs Shawn's word.
 
 The POST step is enforced as learning, never as a gate: the check
@@ -78,7 +78,7 @@ Checks:
      time. Skipped, renumbered, or backdated rounds fail — the loop runs
      in order, it is not assembled after the fact.
   4. Every score is a finite number on the 0-10 scale. Infinity, NaN, and
-     out-of-range scores fail closed: the 9.0 bar is meaningless without a
+     out-of-range scores fail closed: the 9.5 bar is meaningless without a
      bounded number underneath it.
   5. Round 1's score is below 10. A perfect self-score on first look is
      theater — the whole point of the loop is that the first look finds
@@ -90,8 +90,8 @@ Checks:
   8. No two rounds may say the same thing: the normalized text of
      what_changed and why_score_moved must be pairwise distinct across
      all rounds. Copy-paste rounds fail as theater.
-  9. The final round's score is >= 9.0. Below 9, the loop continues —
-     more rounds, more fixing, until it is 9+.
+  9. The final round's score is >= 9.5. Below 9.5, the loop continues —
+     more rounds, more fixing, until it is 9.5+.
   10. post, if present, names the venue and carries content. If absent,
       the check PASSES with the post pending noted — the feed is for
       learning, never for gating.
@@ -116,7 +116,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
 
 MIN_ROUNDS = 3
-MIN_SCORE_FOR_MERGE = 9.0
+MIN_SCORE_FOR_MERGE = 9.5
 MAX_SCORE = 10.0
 MIN_TEXT_CHARS = 20
 MIN_TEXT_WORDS = 3
@@ -271,7 +271,7 @@ def check(record: dict) -> dict:
         score = r.get("score")
         if not _is_number(score):
             return fail(
-                f"{work_product}: {label} score is not a number — the 9.0 "
+                f"{work_product}: {label} score is not a number — the 9.5 "
                 "bar cannot be evaluated on a non-number",
                 details,
             )

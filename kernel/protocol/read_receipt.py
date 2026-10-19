@@ -50,7 +50,7 @@ AUTHORITY_QUESTIONS = [
     {
         "id": "q4",
         "question": "What is the minimum delivery score?",
-        "acceptable": ["9", "9.0", "9/10", "nine"],
+        "acceptable": ["9.5", "nine point five", "nine-point-five"],
     },
     {
         "id": "q5",
