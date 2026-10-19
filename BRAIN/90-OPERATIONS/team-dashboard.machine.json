@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T21:15:44+00:00",
+ "generated_utc": "2026-10-19T22:16:21+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2790,
+     "title": "[LAW] Duplicate-laws merge: port 0007s 5 operational rules into 0016, archive 0007",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2790",
+     "draft": false
+    },
+    {
      "number": 2789,
      "title": "Streamline: remove dead weight (Shawn-authorized audit)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2789",
@@ -388,15 +394,9 @@
      "title": "Nitro/premade functions v1",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2773",
      "draft": false
-    },
-    {
-     "number": 2772,
-     "title": "test(builder): make template unit tests independent of shell cwd",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2772",
-     "draft": true
     }
    ],
-   "open_pr_count": 246
+   "open_pr_count": 247
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 643,
- "unassigned_prs": 246
+ "open_pr_total": 644,
+ "unassigned_prs": 247
 }

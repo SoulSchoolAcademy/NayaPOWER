@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 21:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 22:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 643 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 644 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - …and 26 more
 
-### BUILD (246)
+### BUILD (247)
+- [#2790](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2790) [LAW] Duplicate-laws merge: port 0007s 5 operational rules into 0016, 
 - [#2789](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2789) Streamline: remove dead weight (Shawn-authorized audit)
 - [#2788](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2788) Oath: the Behavior Declaration, spoken at every activation
 - [#2782](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2782) docs: replace hard-coded board numbers in boot bytes with mission-snap
 - [#2780](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2780) Promote p1c live-board leg to main (gr-w519-alpha-p1c-liveboard)
-- [#2779](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2779) ACT w516: pr_body_selfcheck --head liveness warning (warn-never-fail)
-- …and 241 more
+- …and 242 more
 
 ### WIRE (127)
 - [#2786](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2786) WIRE: close blockquote-mention hole in merge-consensus gate
