@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T09:15:19+00:00",
+ "generated_utc": "2026-10-19T10:15:55+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2780,
+     "title": "Promote p1c live-board leg to main (gr-w519-alpha-p1c-liveboard)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2780",
+     "draft": false
+    },
+    {
      "number": 2779,
      "title": "ACT w516: pr_body_selfcheck --head liveness warning (warn-never-fail)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2779",
@@ -388,15 +394,9 @@
      "title": "fix(builder): strict headless render qualification before release",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750",
      "draft": true
-    },
-    {
-     "number": 2748,
-     "title": "Smart Builder pipeline: PIECES + FUNCTIONS + CONTRACT \u2014 the system that builds itself (DO ",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2748",
-     "draft": false
     }
    ],
-   "open_pr_count": 243
+   "open_pr_count": 244
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 636,
- "unassigned_prs": 243
+ "open_pr_total": 637,
+ "unassigned_prs": 244
 }

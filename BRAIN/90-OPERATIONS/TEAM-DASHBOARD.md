@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 09:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 10:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 636 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 637 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - …and 26 more
 
-### BUILD (243)
+### BUILD (244)
+- [#2780](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2780) Promote p1c live-board leg to main (gr-w519-alpha-p1c-liveboard)
 - [#2779](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2779) ACT w516: pr_body_selfcheck --head liveness warning (warn-never-fail)
 - [#2777](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2777) ACT: pr_body_selfcheck --head liveness warning (warn-never-fail)
 - [#2773](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2773) Nitro/premade functions v1
 - [#2772](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2772) test(builder): make template unit tests independent of shell cwd 📝draft
-- [#2771](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2771) DEC-5/6/7/9: align merge-bar constants and law text to ratified 9.5
-- …and 238 more
+- …and 239 more
 
 ### WIRE (126)
 - [#2778](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2778) law: correct seat-count prose in consensus-gate registry (15 -> 18)
