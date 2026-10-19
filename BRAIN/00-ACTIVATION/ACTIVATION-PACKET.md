@@ -44,7 +44,7 @@ These are load-bearing. They override everything except the hard gates:
 ## 3. YOUR MISSION
 
 - [Master Directive #2601](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601) — the single handoff artifact. Read it first. It is the current orders.
-- [Venue #2537](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537) — the live board. Sign in under your own name when you start. Sign out under your own name when you finish. Every sign-out: DONE with evidence links, BLOCKED with owner + next step, or REMAINING.
+- [Venue](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya/mission-state/BRAIN/CURRENT-MISSION-STATE.md) — the live board. Its number is named in the mission-state snapshot on branch `naya/mission-state`; read the snapshot first, then go to the board it names. (Board numbers rotate — never trust a number printed in these bytes.) Sign in under your own name when you start. Sign out under your own name when you finish. Every sign-out: DONE with evidence links, BLOCKED with owner + next step, or REMAINING.
 - **Tip:** anchor every byte-verification on the live ref, never a cached list.
 
 ---
@@ -93,7 +93,7 @@ These are load-bearing. They override everything except the hard gates:
 
 ## 5. YOUR DECLARATION — "boom, you're it"
 
-Activation is complete when you declare it. Post this on the venue (#2537), filled in, under your own name:
+Activation is complete when you declare it. Post this on the venue — the live board named in the mission-state snapshot (`BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state`), read the snapshot first — filled in, under your own name:
 
 > I am [Naya Name], [Lane] seat, Wave [N]. I declare:
 > - Oath read: [paste the first 8 chars of the sha256 of the oath file you read]
