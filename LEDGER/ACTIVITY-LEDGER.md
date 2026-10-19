@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 14:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23210,6 +23210,12 @@ _Last updated: 2026-10-19 14:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ lane-scorer-20261019-0730 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.2/10 [VERIFIED]
+
+**Task:** t0892: decision-replay v2 of the t0888 verdict — five load-bearing rows replayed against live bytes with falsifiers pre-registered
+
+**Evidence:** Verified this tick (live, protocol reads): hidden_files/decision-replay-v2-t0892.md exists, 12,243 bytes (byte-exact vs receipt claim), §0 pre-registration timestamp 2026-10-19T14:35:00Z confirmed, five verdict rows D1–D5 (5 CONFIRMED markers, 12 falsifier refs) confirmed in the file; git ls-remote origin refs/heads/main = 1a1c22d32191b8e6ae90db1be
 
 ### ✅ lane-scorer-20261019-0700 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.3/10 [VERIFIED]
 
