@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 20:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 21:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 644 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 643 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -119,13 +119,13 @@
 - [#2740](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2740) Design specimens: categorized piece library with identities
 - …and 40 more
 
-### PRODUCT (42)
-- [#2775](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2775) fix(hub): bind Smart Note bridge to signed-in session 📝draft
+### PRODUCT (41)
 - [#2774](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2774) Test: GitHub → Hub pipeline (IB-999999)
 - [#2754](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754) Hub↔Supabase persistence bridge (Smart Note flow leg 3) — t0800
 - [#2738](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738) Hub deploy pipeline: GitHub → Cloudflare Workers
 - [#2737](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2737) EMIT: hub feeds emitter (rebased on main)
-- …and 37 more
+- [#2733](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2733) test(activation): fail closed when compiled current state disagrees wi 📝draft
+- …and 36 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 

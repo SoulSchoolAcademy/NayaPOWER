@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T20:15:53+00:00",
+ "generated_utc": "2026-10-19T21:15:44+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -624,12 +624,6 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
-     "number": 2775,
-     "title": "fix(hub): bind Smart Note bridge to signed-in session",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2775",
-     "draft": true
-    },
-    {
      "number": 2774,
      "title": "Test: GitHub \u2192 Hub pipeline (IB-999999)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2774",
@@ -670,9 +664,15 @@
      "title": "HUB sync contract \u2014 Goal #1 Hub Smart Feed contract (three tongues)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2701",
      "draft": false
+    },
+    {
+     "number": 2700,
+     "title": "[DRAFT] HUB MASTER BUILD CONTRACT v1 (review only, do not merge)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2700",
+     "draft": true
     }
    ],
-   "open_pr_count": 42
+   "open_pr_count": 41
   },
   {
    "id": "memory",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 644,
+ "open_pr_total": 643,
  "unassigned_prs": 246
 }
