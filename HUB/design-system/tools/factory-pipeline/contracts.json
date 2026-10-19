@@ -1,0 +1,14 @@
+{
+  "personal": {"name": "Your Name", "tagline": "My personal hub", "about": "Creator, thinker, builder. I turn ideas into reality.", "worker": "naya-showpiece"},
+  "business": {"name": "Acme Corp", "tagline": "We build amazing things", "about": "Acme Corp delivers excellence through innovation and dedication.", "worker": "naya-template-business"},
+  "booking": {"name": "Book Now", "tagline": "Reserve your spot", "about": "Easy online booking. Pick your time, confirm, done.", "worker": "naya-template-booking"},
+  "product": {"name": "Product Name", "tagline": "The best product ever", "about": "This product will change your life. Premium quality, unbeatable price.", "worker": "naya-template-product"},
+  "portfolio": {"name": "Jane Designer", "tagline": "My creative work", "about": "Designer and artist. I create beautiful, functional experiences.", "worker": "naya-template-portfolio"},
+  "event": {"name": "Summer Fest 2026", "tagline": "Join us!", "about": "The biggest event of the year. Music, food, fun. Don't miss out.", "worker": "naya-template-event"},
+  "menu": {"name": "Cafe Delight", "tagline": "Fresh & delicious", "about": "Farm-to-table cafe. Fresh ingredients, made with love.", "worker": "naya-template-menu"},
+  "community": {"name": "Our Community", "tagline": "Together we grow", "about": "A vibrant community of creators, thinkers, and doers.", "worker": "naya-template-community"},
+  "signup": {"name": "Join Us", "tagline": "Get started today", "about": "Sign up in seconds. Join thousands of happy members.", "worker": "naya-template-signup"},
+  "dashboard": {"name": "My Dashboard", "tagline": "Track everything", "about": "Your personal command center. Metrics, goals, progress.", "worker": "naya-template-dashboard"},
+  "personal-hub": {"name": "My Smart Hub", "tagline": "My world, connected", "about": "Your personal intelligent hub. Everything you need, one place.", "worker": "naya-template-personal-hub"},
+  "business-hub": {"name": "Business Hub", "tagline": "Run your business", "about": "The intelligent hub for your business. Manage everything.", "worker": "naya-template-business-hub"}
+}
