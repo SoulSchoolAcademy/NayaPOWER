@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27592,6 +27592,24 @@ _Last updated: 2026-10-19 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261019-0036 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor run: evaluate full brief queue, claim what is claimable
+
+**Evidence:** Verified: 30 brief-*.md in brief-queue/ root = 8 explicit NON-Clarity headers + 17 script-refused exit-7 + 5 exit-2 classes named in the receipt; the claimed NEW filing (brief-gap-lane-scorer-20261018-1700-lane99.md) is byte-confirmed as the newest queue file; one header stamp byte-proven in the source brief. Zero claims, no bypass, correct skip. S
+
+### ✅ gate-stall-20261019-0348 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor run: evaluate full brief queue, claim what is claimable
+
+**Evidence:** Verified: 30 brief-*.md in brief-queue/ root matches the receipt's 30; stall-cap honored (prior gate-stall-20261019-0245.md at 02:45 UTC, 63 min earlier); honest Holes section names a genuine new diagnostic (claim-brief.py authorship regex over-bars by phrase-match: brief-gap-lane-scorer-20261018-2140-lane9.md and -0250-lane6.md carry genuine autho
+
+### ✅ gate-stall-20261019-0454 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor run: evaluate full brief queue, claim what is claimable
+
+**Evidence:** Verified against live bytes: 30 brief-*.md files in brief-queue/ root matches the receipt's 30; newest filing brief-gap-lane-scorer-20261018-1700-lane99.md matches the receipt's 'newest filing' claim; stall-cap math holds (prior gate-stall-20261019-0348.md filed 03:50 UTC, 64 min earlier, outside the 60-min window); one cited bar stamp ('CLAIMABILI
 
 ### ✅ lane-scorer-20261018-1850 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
 
