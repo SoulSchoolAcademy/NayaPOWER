@@ -1,0 +1,27 @@
+name: intake-contract-emitter-gate
+# Standing regen gate (Zeta w449/w456): the intake page regen is RED unless the
+# page's contract emitter (draftContract) matches contract-v1.schema.json.
+# gen.py runs gate_regen_contract.js as a subprocess and propagates its exit
+# code (0 = PASS, 2 = emitter drift), so one command is the whole check.
+on:
+  push:
+    paths:
+      - 'intake-page-v5/**'
+  pull_request:
+    paths:
+      - 'intake-page-v5/**'
+jobs:
+  regen-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: regen + emitter gate
+        run: |
+          cd intake-page-v5
+          python3 gen.py
