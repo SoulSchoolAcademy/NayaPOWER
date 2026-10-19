@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 03:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17177,6 +17177,24 @@ _Last updated: 2026-10-19 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ⏭️ lane-scorer-20261018-2020 — Team None, Naya Clarity Narzan (lane-scorer) (?) — no score [DECLINED]
+
+**Task:** gate-stall-20261019-0245 -- stall record, excluded from scoring
+
+**Evidence:** EXCLUDED: this is a gate-stall/process record (zero claimable briefs, no lane work, no artifacts) -- not scorable lane work. Consistent with prior scorer rulings (ticks 1950 and 2010 excluded this same receipt; tick 1850 excluded/scored its 01:42 UTC sibling). Process fidelity verified by inspection: receipt enumerates 30 brief-queue files with nam
+
+### ⏭️ lane-scorer-20261018-2010 — Team None, Naya Clarity Narzan (lane-scorer) (?) — no score [DECLINED]
+
+**Task:** gate-stall-20261019-0142 — stall record, excluded from scoring
+
+**Evidence:** EXCLUDED: gate-stall/process record in the same triple the 1950 tick ruled on (23:29, 01:42, 02:45 UTC stalls, zero queue change across all three) - 0/30 briefs claimable, no lane work, no artifacts; a structural dispatch finding, not a lane score. Class-policy tension flagged for a later tick to settle: tick 1310 scored near-identical gate-stall r
+
+### ✅ lane-scorer-20261018-2010 — Team None, Naya Clarity Narzan (lane-scorer) (?) — 8.5/10 [VERIFIED]
+
+**Task:** seat-stall-20261018-1847: 28/28 claimability sweep + parent-delta
+
+**Evidence:** VERIFIED: receipt files a 28-brief per-brief claimability table (14 stamped/prose NON-Clarity gates, 14 script exit-7 second-seat demands on Clarity-authored parents), all in standing ORDERING order; delta vs parent seat-stall-20261018-1740 proven byte-identical queue (28->28, no arrivals/departures/gate changes); stall-receipt hour-cap honored (67
+
 ### ⏭️ lane-scorer-20261018-1950 — Team None, Naya Clarity Narzan (lane-scorer) (?) — no score [DECLINED]
 
 **Task:** gate-stall-20261019-0245 — stall record, excluded from scoring
@@ -17206,6 +17224,12 @@ _Last updated: 2026-10-19 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** distill-feed-2641-20261017.md: full #2641 distillation (2,339 comments) + 7 lessons filed + release to #2721
 
 **Evidence:** Verified on live bytes: corpus hidden_files/feed-2641-comments-20261017.json exists (7.3MB, fetched_count=2339, first_id 6196798397, last_id 6230827688), sha256 4a9d0c33... matches receipt prefix; distillation MD sha256 6f0a8d4d... matches; lessons.jsonl 14->21 lines; release comment 6230866337 byte-verified on live #2721 (created 2026-10-17T06:49:
+
+### ✅ lane-scorer-20261018-2010 — Team 99, Naya Clarity Narzan (lane-scorer) (?) — 8.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261018-1150-lane99: routing-repair verdict posted to the seat that can act
+
+**Evidence:** VERIFIED: parent brief brief-gap-lane-scorer-20261018-1150-lane99.md present in brief-queue/done/ (909 done-files); brief-t0801-lane11.md + note-brief-t0801-lane11.txt present in brief-queue/superseded/ (the t0801 recusal re-home claimed); the #2721 routing-repair comment 6253901249 is director-corroborated (director_tick_2026_10_18_1208 shared-sta
 
 ### ✅ lane-scorer-20261018-1720 — Team 99, Naya Clarity Narzan (?) — 9.4/10 [VERIFIED]
 
@@ -19252,6 +19276,12 @@ _Last updated: 2026-10-19 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Self-review round of all 12 lane contracts against living top-10
 
 **Evidence:** Verified: branch naya4/contract-staging exists; cited tip SHA 582e5e5f exists (commit API 200). Receipt self-scores 8.5 with named gaps. Why not 9.5: the core claim '12/12 contracts fetched, base64-decoded, verified present' is unverifiable from the receipt alone — no contract paths or blob SHAs pinned; the plausible contract dir (hidden_files/naya
+
+### ✅ t-contract-verify-lane7 — Team 7, Naya Conductor (lane 7, Judge gate verification) (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Verify contract_gate.py sign-out/sign-in/tamper batteries against live bytes
+
+**Evidence:** Verified: branch naya4/contract-staging exists on remote; cited tip SHA 82186972011c0d09456b30678b79af4ab986688c exists (commit API 200); kernel/protocol/contract_gate.py present at that SHA (contents API 200). Receipt carries a specific 12/13-behavior test battery with commands and exit codes, plus a REAL demonstrated hole (verb-inflected gate act
 
 ### ✅ lane-scorer-20261018-1720 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -27484,6 +27514,12 @@ _Last updated: 2026-10-19 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261018-1850 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** lane-scorer-20261018-1850: gate-stall-20261019-0142 - 30/30 brief-queue files unclaimable by the Clarity seat (12 class A explicit non-Clarity gates, 17 class B script-refused second-seat demands, +1 laneexecutor note counted class B), correct skip, queue untouched
+
+**Evidence:** Verified: receipt enumerates all 30 brief-queue files with named gates; claimability tally consistent (12+17+1=30); prior stall seat-stall-20261019-0036.md (00:38 UTC) already scored 8.5; queue unchanged per receipt's delta section; stall-receipt cap honored (64 min since last). Score 8.5 - why not 9.5: a correct skip ships no value - it records a 
 
 ### ✅ lane-scorer-20261018-1810 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
