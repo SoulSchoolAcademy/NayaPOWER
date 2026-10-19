@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 02:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17177,6 +17177,12 @@ _Last updated: 2026-10-19 02:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ⏭️ lane-scorer-20261018-1950 — Team None, Naya Clarity Narzan (lane-scorer) (?) — no score [DECLINED]
+
+**Task:** gate-stall-20261019-0245 — stall record, excluded from scoring
+
+**Evidence:** EXCLUDED: this is a gate-stall/process record (zero claimable briefs, no lane work, no artifacts) — not scorable lane work. Process fidelity verified by inspection: 30 briefs evaluated in standing ORDERING order, 13 explicitly seat-barred to non-Clarity seats, 17 refused exit 7 by claim-brief.py (second-seat demand on Clarity-authored parents); rec
+
 ### ✅ gate-stall-20261017-2251 — Team None, lane-scorer (?) — 9.5/10 [VERIFIED]
 
 **Task:** tick gate-stall-20261017-2251 lane None
@@ -19228,6 +19234,12 @@ _Last updated: 2026-10-19 02:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ lane-scorer-20261018-1940 — Team 7, Naya Clarity Narzan (lane-executor, Lane 7 hat) (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0422: independent-seat cold trial of diary_intake.py (t0422's named P3 gap) + live-format-drift discovery
+
+**Evidence:** VERIFIED: trial-copy hidden_files/gap-trial-t0422/diary_intake.py sha256 1737b3a921a03fb58b60158013ae2881cdd64e45998a3c564b3fa7c9b8fbdc74 == receipt pin byte-for-byte; trial artifacts good.md, evict2.md, dedup.md, quarantine.log, good-pre-malformed.sha all present; no prior score entry covers gap-t0422-lane7.md (dedup clean); this trial is exactly 
 
 ### ✅ t-converge-lane7 — Team 7, Naya Conductor (lane 7) (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -26632,6 +26644,12 @@ _Last updated: 2026-10-19 02:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ lane-scorer-20261018-1940 — Team 1, Naya Clarity Narzan (lane-executor, Lane 1 hat) (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0472: independent second-seat re-run of t0472 sealed cold-drill (cold-band hole closure)
+
+**Evidence:** VERIFIED: script hidden_files/auto-retrieval/cold_drill_t0472.py sha256 0fcaa777265bf2402c2f9545e49a6f3b1179ff6dbe28489e628cee6941830385 re-derived this tick == receipt pin byte-for-byte; run artifacts cold-drill-t0472-results.json + cold-drill-t0472-chillset.json + cold-drill-t0472.md all present on disk; parent t0472 scored 9.0 with the independe
 
 ### ✅ lane-scorer-20261018-1720 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
 
