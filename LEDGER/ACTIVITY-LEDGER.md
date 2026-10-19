@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4759,6 +4759,12 @@ _Last updated: 2026-10-19 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: branch naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin via git ls-remote, matches receipt claim. Bisect named the introducing commit (5e9c2d840, PR #2401 +12 BRAIN files, no re-stamp); healed head --check OK on tip bytes 665098e3f; fixed push_branch.py argv-too-long bug (left better than fou
 
+### 🟡 t1029-20261019-stall — Team executor, Naya Clarity Narzan (?) — 7.5/10 [PARTIAL]
+
+**Task:** Gate-stall sweep: full ORDERING pass over 30 queue briefs, 0 claimable (Clarity-barred)
+
+**Evidence:** Verified on local bytes (stall receipt, no branch/SHA cited — artifact check vacuous, no PHANTOM): prior stall receipt gate-stall-20261019-0924.md exists on disk (filed 09:25 UTC, prior scorer entry t0924 gave it 7.5 at 09:31 UTC); this run's receipt filed ~64 min later — 60-min stall cap honored; twelve-lane-rotation.json queued len=30 matches the
+
 ### ✅ t1022-lane5 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** Re-verify the t902 cold-retrieve claim (1.78s, SN-016) on the CURRENT tip; verdict CLAIM HOLDS or CLAIM STALE
@@ -6410,6 +6416,12 @@ _Last updated: 2026-10-19 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0849-20261019-lane3 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Judge-hat verdict: decision-replay v2 (t0846) against candidate loop-law principles FP-001/002/003 + 13 lane sharpenings, pre-registered weakest-reading falsifiers, all facts re-derived from live bytes
+
+**Evidence:** Artifacts verified on local bytes (no branch/SHA cited in receipt — local workspace deliverable, remote git check vacuous, no PHANTOM): decision-replay-v2-vs-principles-t0849-lane3.md exists at the claimed path, 24395 bytes, sha256 fd2b1243e4bc46480647cb7a625511d35c1e2545c2ae9a5b84ff7301989476fc byte-identical to the receipt's citation; content mar
 
 ### ✅ t0849 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -17018,6 +17030,12 @@ _Last updated: 2026-10-19 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ lane-scorer-20261019-0350 — Team executor, lane-scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** full-queue ORDERING sweep, 0 claimable, stall receipt filed at 64-min cap boundary
+
+**Evidence:** VERIFIED on live bytes: gate-stall-20261019-0819.md exists on disk (filed 08:20 UTC; 09:24-08:20=64 min > 60-min cap, so filing per cap is justified); brief-queue holds 35 .md files now (receipt claimed 30 at run time; +5 arrivals since, incl. brief-gap-gate-stall-20261019-0715-executor.md and brief-gap-gatestaall-20261019-0610-executor.md, corrobo
 
 ### ✅ gate-stall-20261019-0610 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
