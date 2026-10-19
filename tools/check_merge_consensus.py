@@ -243,8 +243,10 @@ def author_seat_of(body):
 #       comment that declares HOLD cannot also be a review approval.
 # Convention this encodes: a review declaration is plain text, e.g.
 # "[NAYA DELTA · REVIEW] APPROVED" or "VERDICT: MERGE RECOMMENDED".
-# A quoted incantation is a mention of the format, never the approval.
-_MENTION_QUOTE_RE = re.compile(r"`[^`\n]*`|\"[^\n\"]*\"|'[^\n']*'|“[^”\n]*”")
+# A quoted or blockquoted incantation is a mention of the format, never the
+# approval. Markdown `>` blockquote lines are stripped whole: quoting
+# someone's verdict is discussing the format, not declaring it.
+_MENTION_QUOTE_RE = re.compile(r"(?m)^[ \t]*>[^\n]*|`[^`\n]*`|\"[^\n\"]*\"|'[^\n']*'|“[^”\n]*”")
 _NEGATION_RE = re.compile(
     r"\b(no|not|n't|never|missing|without|lacks?|lacking|absent|"
     r"failed|fails?|unable|deferred|blocked)\b", re.I)
@@ -306,15 +308,19 @@ def _looks_like_scorecard(body, head_sha):
     the security property — a receipt for an older head must not green-light
     a newer one — so it is never relaxed. The 9.5 bound is the law
     (P-012: below 9.5 is zero acceptance); the dock adjudicates it, and the
-    gate's shape check refuses to be looser than the law it gates for."""
-    low = (body or "").lower()
+    gate's shape check refuses to be looser than the law it gates for.
+
+    Mentions (quotes, blockquotes, negations) are stripped before matching —
+    a blockquoted receipt is a mention of the format, never a receipt."""
+    cleaned = _MENTION_QUOTE_RE.sub(" ", body or "")
+    low = cleaned.lower()
     if "scorecard" not in low and "verdict" not in low:
         return False
-    if head_sha not in (body or ""):
+    if head_sha not in cleaned:
         return False
     approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
                              low))
-    score = _score_of(body)
+    score = _score_of(cleaned)
     return approved or (score is not None and score >= 9.5)
 
 
@@ -401,12 +407,16 @@ def self_test_scorecard(path, head_sha):
         fail(f"SCORECARD SELF-TEST FAILED: cannot read {path}: {e}")
     except UnicodeDecodeError as e:
         fail(f"SCORECARD SELF-TEST FAILED: {path} is not UTF-8 text: {e}")
-    low = body.lower()
+    # Diagnostic lines are computed on the same cleaned text the gate's
+    # matcher sees — a blockquoted draft must report its legs as MISSING,
+    # never as present-then-failing.
+    cleaned = _MENTION_QUOTE_RE.sub(" ", body)
+    low = cleaned.lower()
     has_keyword = "scorecard" in low or "verdict" in low
-    has_sha = head_sha in body
+    has_sha = head_sha in cleaned
     approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
                               low))
-    score = _score_of(body)
+    score = _score_of(cleaned)
     passes = _looks_like_scorecard(body, head_sha)
     seat = seat_of(body)
     lines = [
