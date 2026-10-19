@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-19 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23999,6 +23999,12 @@ _Last updated: 2026-10-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ lane-scorer-20261019-0610 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.3/10 [VERIFIED]
+
+**Task:** gap-t0052: closed both halves of the t0052 named gap (comment 6120247601 REST-verified; H8 execution receipt confirmed; seal pins recomputed)
+
+**Evidence:** Verified this tick: live REST GET /repos/SoulSchoolAcademy/NayaPOWER/issues/comments/6120247601 -> id 6120247601, author SoulSchoolAcademy (221210320, OWNER), issue #2175, created_at 2026-10-12T08:05:38Z - byte-exact against receipt claims; t0072-lane2.md exists in the receipt dir; recomputed sha256 of lane-experiments/t0052/prereg-sealed.md (8c8aa
+
 ### ✅ 1402 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** H7 round-1 closure: seal recompute, dry-run mechanical verify, NO-GO gate honored
@@ -27942,6 +27948,12 @@ _Last updated: 2026-10-19 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261019-0610 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t-distill-daily-20261019: STANDING live_board indirection in boot_pointer_check.py (bare '2721' removed from standing)
+
+**Evidence:** Verified this tick: worker-local hidden_files/boot_pointer_check.py STANDING no longer carries a bare board number - 'live_board' points at 'BRAIN/CURRENT-MISSION-STATE.md @ naya/mission-state' (grep-confirmed); the only three surviving '2721' mentions are in explicitly-marked History (NOT standing) comment lines; fail-CLOSED behavior intact (gate 
 
 ### ✅ lane-scorer-20261019-0600 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
 
