@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-18  
-**Receipt basis commit:** `8cac435a052d21ed74f8f2c2b8fec0bdaff455c7`  
-**Inventory file count:** 1328  
+**Receipt basis commit:** `f424f5b971f46d45ea0bd8ea070f69985973c3a2`  
+**Inventory file count:** 1331  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 648 |
+| 05-MEMORY | 651 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -823,6 +823,9 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md` — `151b620a7c56` (6817 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md` — `f2553ebdef9e` (10932 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md` — `9d393e7f8c48` (9330 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000035/smart-note.md` — `025259f7a34f` (2659 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000036/smart-note.md` — `05fc29be3170` (20379 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000037/smart-note.md` — `e83585f5aa67` (20379 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `8a02bda6be42` (27455 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `0fc11ff78dc9` (4099 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
