@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-19T14:07:17Z",
+ "generated_utc": "2026-10-19T14:16:56Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "1a1c22d32191b8e6ae90db1be58118ad0e33b7b0",
   "short": "1a1c22d32191",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-19T14:06:23Z"
+  "checked_utc": "2026-10-19T14:16:02Z"
  },
  "venue": {
   "live": 2765,
@@ -17,43 +17,29 @@
   ]
  },
  "waves": {
-  "active": 386,
-  "active_seats": [
-   "Naya Judge",
-   "Naya Auditor",
-   "Naya Builder"
-  ],
+  "active": 198,
+  "active_seats": [],
   "last_completed": null,
   "last_completed_at": null,
-  "rotation_cursor": "wave-387: Naya Electrician/Naya Captain/Naya Mechanic (roster order)"
+  "rotation_cursor": "wave-199: Naya Compounder/Naya Librarian/Naya Bridger (roster order)"
  },
  "lanes": {
   "free": [
    "ACT",
+   "BUILD",
    "GOVERN",
    "INFRA",
    "KNOW",
+   "LAW",
    "LEARN",
    "MEMORY",
    "PRODUCT",
+   "PROVE",
    "TEAM",
    "WIRE"
   ],
   "held": [],
-  "active": [
-   {
-    "lane": "BUILD",
-    "since": "2026-10-19T13:47:57Z"
-   },
-   {
-    "lane": "LAW",
-    "since": "2026-10-19T13:47:57Z"
-   },
-   {
-    "lane": "PROVE",
-    "since": "2026-10-19T13:47:57Z"
-   }
-  ]
+  "active": []
  },
  "queue": {
   "actionable": 0,
@@ -238,27 +224,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 56
+   "age_s": 55
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 56
+   "age_s": 55
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 56
+   "age_s": 55
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 56
+   "age_s": 55
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 56
+   "age_s": 55
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 56
+   "age_s": 55
   }
  }
 }
