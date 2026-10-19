@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-19T06:15:29+00:00",
+ "generated_utc": "2026-10-19T07:15:16+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2777,
+     "title": "ACT: pr_body_selfcheck --head liveness warning (warn-never-fail)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2777",
+     "draft": false
+    },
+    {
      "number": 2773,
      "title": "Nitro/premade functions v1",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2773",
@@ -388,15 +394,9 @@
      "title": "feat: make Smart Builder library searchable and machine-accessible",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747",
      "draft": false
-    },
-    {
-     "number": 2746,
-     "title": "docs: establish Smart Builder human contract",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746",
-     "draft": false
     }
    ],
-   "open_pr_count": 242
+   "open_pr_count": 243
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 635,
- "unassigned_prs": 242
+ "open_pr_total": 636,
+ "unassigned_prs": 243
 }

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-19 06:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-19 07:14 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 635 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 636 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - …and 26 more
 
-### BUILD (242)
+### BUILD (243)
+- [#2777](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2777) ACT: pr_body_selfcheck --head liveness warning (warn-never-fail)
 - [#2773](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2773) Nitro/premade functions v1
 - [#2772](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2772) test(builder): make template unit tests independent of shell cwd 📝draft
 - [#2771](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2771) DEC-5/6/7/9: align merge-bar constants and law text to ratified 9.5
 - [#2752](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2752) map-compiler: push state file via deploy key with scoped ruleset bypas
-- [#2750](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2750) fix(builder): strict headless render qualification before release 📝draft
-- …and 237 more
+- …and 238 more
 
 ### WIRE (126)
 - [#2770](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2770) Land intake-page-v5/ + intake-contract-emitter-gate (Zeta w473/w494)
