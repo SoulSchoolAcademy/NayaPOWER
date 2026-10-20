@@ -166,6 +166,48 @@ def main():
         ops = {a["id"]: a["op"] for a in plan["actions"]}
         check("conflict-tie-diverged", ops.get("a") == "flag_diverged"
               and plan["private_excluded_d4"] == 1 and "p" not in ops, str(ops))
+
+        # 12. F1: public record carries the content envelope; private record
+        #     stays name+scope+digest-only; the feed row shows real content.
+        with open(events_path, encoding="utf-8") as f:
+            recs = [json.loads(l) for l in f if l.strip()]
+        pub_rec = next(r for r in recs if r.get("owner_scope") == "PUBLIC")
+        priv_rec = next(r for r in recs if r.get("owner_scope") == "PRIVATE")
+        check("f1-public-carries-content",
+              pub_rec.get("content", {}).get("note") == "hello",
+              "content=%s" % pub_rec.get("content"))
+        check("f1-private-no-content", "content" not in priv_rec,
+              "keys=%s" % sorted(priv_rec))
+        check("f1-feed-row-content", feed[0].get("title") == "hello"
+              and feed[0].get("content", {}).get("note") == "hello",
+              "feed=%s" % feed)
+
+        # 13. F2: rapid-fire distinct events -> all distinct seqs
+        seqs = []
+        for i in range(10):
+            p = {"event": "burst.ping", "owner_scope": "PUBLIC",
+                 "note": "burst-%d" % i, "n": i}
+            s, b = req("POST", base + "/webhook", p,
+                       {"X-Naya-Signature": sign(test_key, p)})
+            assert s == 200, (s, b)
+            seqs.append(b["data"]["ledger_seq"])
+        check("f2-seq-distinct", len(set(seqs)) == 10, "seqs=%s" % seqs)
+        check("f2-seq-monotonic",
+              all(b >= a for a, b in zip(seqs, seqs[1:])), "seqs=%s" % seqs)
+
+        # 14. F3: the replay index is populated and survives a restart —
+        #     a fresh server rebuilt on the same ledger dedupes the old
+        #     payload without a per-request ledger scan in this process.
+        pub_digest = hashlib.sha256(
+            json.dumps(pub, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        srv2 = build_server(port=0, ledger=ledger)
+        try:
+            hit = srv2._digest_index.get(pub_digest)
+            check("f3-index-rebuilt", hit is not None and hit[0] == seq1
+                  and srv2._last_seq >= max(seqs),
+                  "index_hit=%s last_seq=%s" % (hit, srv2._last_seq))
+        finally:
+            srv2.server_close()
     finally:
         srv.shutdown()
         os.environ.pop("NAYA_BRIDGE_APP_KEY", None)

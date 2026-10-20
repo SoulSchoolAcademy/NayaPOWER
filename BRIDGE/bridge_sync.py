@@ -96,16 +96,56 @@ def read_ledger_events(ledger_dir):
     return events, corrupt
 
 
+def build_digest_index(events):
+    """In-memory replay index (F3): payload digest -> (seq, event).
+
+    Built once at server boot from the ledger; updated in place on every
+    append. The per-request replay check is an O(1) dict lookup, not an
+    O(n) full-ledger parse. Skeleton assumption: single writer — the server
+    process owns the ledger directory, so the index cannot drift. Production
+    note: replace with a persistent unique digest index (e.g. a DB unique
+    constraint on payload_sha256) when the skeleton grows a real store.
+    """
+    index = {}
+    for e in events:
+        d = e.get("payload_sha256")
+        if d and d not in index:
+            index[d] = (e.get("seq"), e.get("event"))
+    return index
+
+
+def max_ledger_seq(ledger_dir):
+    """Highest seq in the ledger, or 0 on an empty/missing ledger (F2 seed).
+
+    Corrupt lines are skipped by read_ledger_events; records without an int
+    seq do not participate.
+    """
+    events, _ = read_ledger_events(ledger_dir)
+    seqs = [e.get("seq") for e in events if isinstance(e.get("seq"), int)]
+    return max(seqs) if seqs else 0
+
+
 def event_to_row(record):
     """Map one ledger record to a sync row.
 
     The mapping is explicit and stable: id derives from the payload digest
     (the same event always maps to the same row id -> idempotent sync),
     owner_scope passes through untouched (D4: never re-labelled).
+    F1: the row shows real content for public-scope events — title prefers
+    the carried title/note/summary envelope, falling back to the event name;
+    row.content mirrors the envelope. PRIVATE records carry no envelope
+    (name+scope+digest-only by design), so nothing here can leak them —
+    and they never reach the public lane anyway (D4 filter).
     """
+    content = record.get("content")
+    if not isinstance(content, dict):
+        content = {}
     return {
         "id": "ev-" + str(record.get("payload_sha256", ""))[:12],
-        "title": str(record.get("event", "")),
+        "title": str(content.get("title") or content.get("note")
+                     or content.get("summary") or record.get("event", ""))[:500],
+        "content": {k: str(v)[:500] for k, v in content.items()
+                    if isinstance(v, str)},
         "updated_at": str(record.get("received_at", "")),
         "owner_scope": str(record.get("owner_scope", "UNKNOWN")),
     }

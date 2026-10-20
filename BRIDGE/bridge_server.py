@@ -39,6 +39,9 @@ from bridge_sync import (
     sync_ledger_to_feed,
     read_ledger_events,
     public_items,
+    is_public,
+    build_digest_index,
+    max_ledger_seq,
     CONFLICT_RULE,
     WEBHOOK_LEDGER_CONTRACT,
     LEDGER_VERSION,
@@ -231,27 +234,45 @@ class BridgeHandler(BaseHTTPRequestHandler):
             self._json(*error("E_BAD_SIGNATURE", "X-Naya-Signature mismatch", 401))
             return
         digest = hashlib.sha256(canonical).hexdigest()
+        # Replay safety (F3): the digest index is the fast path. The payload
+        # digest indexes the ledger, so replays return the ORIGINAL seq
+        # without a full ledger parse per request. Replays are idempotent —
+        # no duplicate line is ever appended. (Read before write; a missing
+        # ledger reads as empty.)
+        hit = self.server._digest_index.get(digest)
+        if hit:
+            self._json(*ok({"ledger_seq": hit[0], "event": hit[1],
+                            "note": "duplicate payload — original record returned"},
+                           state="received-duplicate"))
+            return
         ledger_dir = self.server.bridge_ledger
-        # Replay safety: the same payload always yields the same record.
-        # Replays return the ORIGINAL seq — no duplicate ledger line is ever
-        # appended. (Read before write; a missing ledger reads as empty.)
-        events, _ = read_ledger_events(ledger_dir)
-        for e in events:
-            if e.get("payload_sha256") == digest:
-                self._json(*ok({"ledger_seq": e.get("seq"), "event": e.get("event"),
-                                "note": "duplicate payload — original record returned"},
-                               state="received-duplicate"))
-                return
         os.makedirs(ledger_dir, exist_ok=True)
         # Append-only ledger. scope is recorded but NEVER re-labelled here;
         # private rows entering the ledger stay private (D4).
+        # seq (F2): monotonic per process, seeded from the ledger's max seq
+        # at boot — distinct events can never share a seq, even two landing
+        # inside the same millisecond. The payload digest remains the
+        # identity for idempotence (replays return the original seq).
+        seq = max(int(time.time() * 1000), self.server._last_seq + 1)
+        scope = body.get("owner_scope", "UNKNOWN")
         record = {"contract": WEBHOOK_LEDGER_CONTRACT, "ledger_version": LEDGER_VERSION,
-                  "seq": int(time.time() * 1000),
+                  "seq": seq,
                   "received_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-                  "event": body.get("event"), "owner_scope": body.get("owner_scope", "UNKNOWN"),
+                  "event": body.get("event"), "owner_scope": scope,
                   "payload_sha256": digest}
+        # F1 content envelope: public-scope events carry an allowlisted
+        # content envelope so a public feed row shows real content instead
+        # of the bare event name. PRIVATE rows stay name+scope+digest-only
+        # by design — the choice is documented in BRIDGE-CONTRACT.md.
+        if is_public({"owner_scope": scope}):
+            envelope = {k: str(body[k])[:500] for k in ("title", "note", "summary")
+                        if isinstance(body.get(k), str) and body[k]}
+            if envelope:
+                record["content"] = envelope
         with open(os.path.join(ledger_dir, "events.jsonl"), "a", encoding="utf-8") as f:
             f.write(json.dumps(record) + "\n")
+        self.server._last_seq = seq
+        self.server._digest_index[digest] = (seq, record["event"])
         self._json(*ok({"ledger_seq": record["seq"], "event": record["event"]}, state="received"))
 
     # -- ledger sync: the sketch made working ---------------------------------
@@ -370,11 +391,17 @@ class BridgeHandler(BaseHTTPRequestHandler):
 
 
 def build_server(port=None, ledger=None):
-    port = port or int(os.environ.get("NAYA_BRIDGE_PORT", "8471"))
+    # port=None -> NAYA_BRIDGE_PORT env or 8471; port=0 -> ephemeral.
+    port = int(os.environ.get("NAYA_BRIDGE_PORT", "8471")) if port is None else port
     server = HTTPServer(("127.0.0.1", port), BridgeHandler)
     server.bridge_app_key = os.environ.get("NAYA_BRIDGE_APP_KEY") or ""
-    server.bridge_ledger = ledger or os.environ.get("NAYA_BRIDGE_LEDGER") or os.path.join(
+    ledger_dir = ledger or os.environ.get("NAYA_BRIDGE_LEDGER") or os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "ledger")
+    server.bridge_ledger = ledger_dir
+    # F2/F3: seq monotonicity and the replay index are seeded from the ledger
+    # at boot, so restarts neither collide seqs nor miss past replays.
+    server._last_seq = max_ledger_seq(ledger_dir)
+    server._digest_index = build_digest_index(read_ledger_events(ledger_dir)[0])
     return server
 
 

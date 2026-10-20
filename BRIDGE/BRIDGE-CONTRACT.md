@@ -35,6 +35,45 @@ the shape from another doc:
 Ledger records are `webhook-ledger/v1`, `ledger_version: 1`, and carry
 `owner_scope` **unchanged** — the ledger never re-labels scope (D4).
 
+## Ledger content choice (F1 — stated explicitly, 2026-10-20)
+
+**What the ledger carries:** every record carries event name, `owner_scope`,
+`payload_sha256`, `seq`, and `received_at`. Additionally, for
+**public-scope events** (`owner_scope` in PUBLIC / COLLECTIVE / SHARED) the
+record carries a `content` envelope: an allowlist of string fields
+(`title`, `note`, `summary`), each truncated at 500 chars.
+
+**Why:** privacy-by-design. A PRIVATE record is name+scope+digest **only** —
+payload content never lands in the ledger for private rows, so a private
+note cannot leak through a ledger read. Public-scope events are intended for
+the public lane, so their display content travels with the record and a
+public feed row shows real content (a title or note), not the bare event
+name like `note.captured`. D4 is preserved either way: PRIVATE rows are
+filtered before any diff and never reach the public lane, so the envelope
+can only ever exist on rows that may legally be public.
+
+**What a public feed row shows:** `title` prefers the carried `title`,
+then `note`, then `summary`, falling back to the event name; `content`
+mirrors the envelope (per the emitter's `room-feed/v1` `.content` shape).
+A feed row built from a private record would show only the event name —
+but private rows never reach the feed at all.
+
+## seq and replay index (F2/F3 — 2026-10-20)
+
+**seq:** monotonic per server process, seeded from the ledger's max `seq`
+at boot (`max_ledger_seq`). Two distinct events landing inside the same
+millisecond get distinct seqs — `seq = max(now_ms, last_seq + 1)`. The
+payload digest remains the identity for idempotence: replays return the
+original seq.
+
+**Replay detection:** an in-memory digest index
+`{payload_sha256 -> (seq, event)}`, built once at boot and updated on every
+append — the per-request replay check is an O(1) lookup, not an O(n)
+full-ledger parse. Skeleton assumption: single writer (the server process
+owns the ledger directory), so the index cannot drift. Production note:
+replace with a persistent unique digest index (e.g. a DB unique constraint
+on `payload_sha256`) when the skeleton grows a real store.
+
 ## Tool registry
 
 `TOOL_REGISTRY` in `bridge_server.py` is the entire tool surface. An incoming
