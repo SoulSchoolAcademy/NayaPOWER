@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 18:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31054,6 +31054,12 @@ _Last updated: 2026-10-20 18:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261020-1150 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall-20261020-1844.md: lane-executor run stall — 30 briefs evaluated, all barred to Clarity seat, correct skip per STALL-RECEIPT CAP
+
+**Evidence:** VERIFIED against workspace bytes: cited priors gate-stall-20261020-1741.md and seat-stall-20261020-1612.md both exist in twelve-lane-receipts/ (queue-delta citations check out); brief-queue holds 36 briefs at score time vs 30 evaluated at 18:44 UTC (6-min gap, no contradiction). No branch/SHA/files cited in the receipt, so there are no remote artif
 
 ### ✅ lane-scorer-20261020-1130 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
 
