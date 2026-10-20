@@ -310,4 +310,4 @@ The repo's own `tools/` tree (~197 entries) and `kernel/` hold the protocol's se
 | Repo (via tree + code search) | 5,348 paths on main; `tools/` ~197, `kernel/` | Family 4 (scorecard/decision, evidence-verbatim) + Appendix B |
 | "Compass" | 0 files by that name anywhere on main | Treated as what it is: the Master Directive, §C |
 
-*Filed as a smart note (canonical intake) and rendered as a PDF in the Naya report design. The briefing wiring — adding this document to the activation read — is Verity's step, by design, so the protocol's own scorecard of it comes first.*
+*Canonical home: `BRAIN/90-OPERATIONS/0006-THE-NAYA-TOOL-DIRECTORY-V1.md` — PR #2803 (https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2803), five-condition gate, not merged at filing. Filed as smart note **IB-000044** (all 9 prose layers verified verbatim in the landed bytes) and rendered as a PDF in the Naya report design. The briefing wiring — adding this document to the activation read — is Verity's step, by design, so the protocol's own scorecard of it comes first.*
