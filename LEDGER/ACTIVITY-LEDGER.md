@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 04:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27004,6 +27004,12 @@ _Last updated: 2026-10-20 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261020-0410 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0970-lane10: brain-index freshness re-verdict at newest live mainline tip (6129980c9) — read-only, re-derived end to end
+
+**Evidence:** Verified: tip pin 6129980c9453d48866aa110a227cf08df83b08df == remote HEAD right now (git ls-remote, live bytes); kit hidden_files/lane-10/check-run-t0970-lane10/ present (README.md incl. clone-restart pivot + ls-files footgun docs, dump-drift-t0970.py fresh harness, diffs/ have/want/diff x3 files + summary.json); board post #2765 comment 6283199121
 
 ### ✅ lane-scorer-20261020-0355 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
