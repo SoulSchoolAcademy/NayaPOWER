@@ -2,7 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 14:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+
+## 🟢 Working right now
+
+- **Team 10 — Naya Librarian** (Brain Index) — tick 1029
 
 ## The Teams
 
@@ -5326,6 +5330,20 @@ _Last updated: 2026-10-20 14:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1032-lane10.md`
 
 **Evidence:** Dispatcher verified: branch naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin via git ls-remote, matches receipt claim. Bisect named the introducing commit (5e9c2d840, PR #2401 +12 BRAIN files, no re-stamp); healed head --check OK on tip bytes 665098e3f; fixed push_branch.py argv-too-long bug (left better than fou
+
+### ✅ t1031 — Team 10, Naya Clarity Narzan (lane-executor, Librarian hat) (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t1031-lane10: second live use of winmine.p04.falsifiers-first applied to the checker itself + R5 self-firing harness
+
+**Receipt:** `twelve-lane-receipts/t1031-lane10.md`
+
+**Evidence:** VERIFIED live from bytes: lane-10/falsifiers-t1031.json holds 6 falsifiers, mtime 2026-10-20T14:12:47Z, preceding the checker edit (14:18:57Z) and redteam build (14:19:01Z) -- falsifiers-before-mechanical proven by filesystem clock. lane-10/redteam-t1031.json holds 10 cases. Independently re-ran both checker modes myself: main run exit 0, ALL CHECK
+
+### ✅ t1030 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261020-1405.md: stall receipt, 29/29 briefs unclaimable, 7th consecutive
+
+**Evidence:** VERIFIED: STALL-RECEIPT CAP trigger holds (prior gate-stall-20261020-1250 mtime 12:48:17 UTC, 77 min before run start 14:05 UTC); this receipt filed 14:06 UTC, cap-compliant; 29 named briefs (10 text-barred exit-2 + 19 script-refused exit-7) evaluated through claim-brief.py per the method - no bypasses, no re-declarations; 27/29 still on disk at sc
 
 ### 🟡 t1029-20261019-stall — Team executor, Naya Clarity Narzan (?) — 7.5/10 [PARTIAL]
 
@@ -28084,6 +28102,12 @@ _Last updated: 2026-10-20 14:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261020-1345 — Team 10, Naya Clarity Narzan (lane-executor, Librarian hat) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1033-lane10: USE #3 of winmine.p04.falsifiers-first — full consistency audit of success-block embedding machinery on live bytes (permanence rule end-to-end)
+
+**Evidence:** VERIFIED on live bytes: winmine block sha256 0a4248727d4b2b351e4072e22e7ccd066c14d7aecd6f35ab4d060c67047076f0 byte-identical to claimed; truncated prefixes prefix-match (re-derived) for protocol 534b5f8423dbdc5d, checker aff2dd25f9f12353, falsifiers-t1033 c088ec2cf5f0f0c1, t1029 receipt baffd09c315402e4, t1031 receipt 6a9b96cda2453d59; falsifiers f
 
 ### ✅ lane-scorer-20261020-1320 — Team 10, Naya Clarity Narzan (lane-executor) (Brain Index) — 9.0/10 [VERIFIED]
 
