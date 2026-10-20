@@ -1,0 +1,408 @@
+{
+  "contract": "room-feed/v1",
+  "room": "today",
+  "emitted_at": "2026-10-20T09:19:42.398321-07:00",
+  "source_ref": "engine-job:hub-feeds-emitter-t0479",
+  "items": [
+    {
+      "id": "idx-0ccf7e04-8859-43d7-82e2-39b493022a18",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 20:09:15.598342+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-81c2bafb-1cce-4ed2-9012-7815006647af",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:26:56.885153+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-cf3069eb-cd87-48cb-b2f1-d74e58ee6565",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:26:55.529616+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-cb668ea6-801d-45dc-8c66-e371243f6126",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:23:14.779423+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-ae0a3005-d000-4e0d-8da2-e750d73f5136",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:23:14.491158+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-17c6af61-1259-4542-b878-727fb486cbff",
+      "title": "Naya runtime flow lesson",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-19 15:21:30.2913+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-6b3112d5-1071-46f6-a994-2aa6ad907ca8",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:21:30.167495+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-5f7ce767-2e39-4356-a53d-25ccb1924220",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:15:59.371587+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-2063c103-3119-4e21-bca3-ac3b61dbbce7",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:15:58.900973+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-85e15e30-75fb-40b2-917f-0cb2a24cc581",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:14:19.700878+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-b088d69d-b3d2-4011-ae27-55ed18464404",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:14:19.48092+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-99394a20-a346-4ad5-b68b-f7bbe215b767",
+      "title": "Naya runtime flow lesson",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-19 15:13:53.650425+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-b323854e-6616-4622-a388-f5b0550f7956",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:13:53.571035+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-3f243df4-0cc3-4b58-8f24-8ef6aa19adea",
+      "title": "Naya runtime flow lesson",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-19 15:12:24.017693+00"
+        }
+      ]
+    },
+    {
+      "id": "art-ba7ad40e-19d8-4407-92f4-ce8894d4ac0d",
+      "title": "NayaNET is the future internet: one intelligent system where the app you build goes live instantly, gets discovered by t",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "NayaNET is the future internet: one intelligent system where the app you build goes live instantly, gets discovered by the right people automatically, and grows through community — while your identity stays entirely yours. The system matches by what you're into, never by who you "
+        }
+      ]
+    },
+    {
+      "id": "art-d19ee203-e7ef-4e7e-8494-53b8a2eee050",
+      "title": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate pe",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate personal smart app is software you describe in plain words and receive as a working application — you never build it, code it, or assemble it yourself. What was c"
+        }
+      ]
+    },
+    {
+      "id": "art-c447782a-8561-4974-acbe-c7a311101772",
+      "title": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate pe",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate personal smart app is software you describe in plain words and receive as a working application — you never build it, code it, or assemble it yourself. What was c"
+        }
+      ]
+    },
+    {
+      "id": "art-9b10b120-fcef-424c-989c-1aa6b4897d04",
+      "title": "Refire proving the App-bypass dispatch path end to end.",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "Refire proving the App-bypass dispatch path end to end."
+        }
+      ]
+    },
+    {
+      "id": "art-cc17f8ae-79d4-4f6f-b8cb-62475232f6b3",
+      "title": "Dispatch test note from Naya Nitro Narzan. Verifying the pipeline works end-to-end.",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "Dispatch test note from Naya Nitro Narzan. Verifying the pipeline works end-to-end."
+        }
+      ]
+    },
+    {
+      "id": "art-666e8829-0784-4b7f-bab8-b91509a805b7",
+      "title": "Phase 3 live-fire proof note: the canonical receiver accepted an authenticated test capture.",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "Phase 3 live-fire proof note: the canonical receiver accepted an authenticated test capture."
+        }
+      ]
+    }
+  ]
+}
