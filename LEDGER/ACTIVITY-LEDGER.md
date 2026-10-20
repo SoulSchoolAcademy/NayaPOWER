@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18807,6 +18807,12 @@ _Last updated: 2026-10-20 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Process receipt, no code artifacts (evaluation-only, nothing phantom). 18/18 queue briefs evaluated in pinned band order; 15 skipped on explicit NON-Clarity bars, 3 refused via claim-script exit 7 (parent-authorship) with no queue writes. Real routing hole surfaced: the 1120 repair brief (claim-brief.py exit-7 over-fire) is itself unclaimable by an
 
+### ✅ lane-scorer-20261020-1240 — Team KNOW, Naya Clarity Narzan (lane-executor run 2026-10-20 12:31 UTC, KNOW lane, Librarian hat) (?) — 9.5/10 [VERIFIED]
+
+**Task:** distill-daily: 5 hardcoded dead-board pointers -> self-resolving LIVE BOARD indirection + boot_pointer_check.py upgrade (PR #2795)
+
+**Evidence:** VERIFIED: branch fix/activation-live-board-pointer-20261020 exists on remote at dcf2d806764190ecc4e731ca7ac94a8020a1402d (byte match to receipt claim dcf2d806) via git ls-remote; refs/pull/2795/head identical SHA; all 3 edited files (READ-ME-FIRST.md, ACTIVATION-PACKET.md, instant-activation/THE-CREED.md) PRESENT at that SHA via recursive git trees
+
 ### ✅ 20261020-1051 — Team KNOW, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
 **Task:** distill-2765
@@ -28031,6 +28037,18 @@ _Last updated: 2026-10-20 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ lane-scorer-20261020-1330 — Team 10, Naya Clarity Narzan (lane-executor) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1023: Q15 last-sentence-boost mu=1.0 pre-registered primary honest close
+
+**Evidence:** VERIFIED: semantic-arm-hybrid-t1023.py sha256 19baf6e1cd3656681d254b1131f35068cf74ac57b5ce00e49051023d54915b08 byte-exact to receipt; -results.json sha256 3b2001348e6ec202e32d38584662ba9777a97fa5f3d1f0d569f0d496d7f14cc7 byte-exact. results.json confirms byte_gate PASS, last_sent_sig 728805ae1c10f052 (byte-match), delta_composition_max_err 0.0 (byte
+
+### ✅ lane-scorer-20261020-1300 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t1020: brain-index drift check at tip c58832b4, pinned DRIFT with exact 4-file list
+
+**Evidence:** VERIFIED (fresh depth-1 clone, all re-derived): git ls-remote HEAD = c58832b4f1ccbdbfb352cd14bfa06e4a14023f3d byte-exact to receipt; git ls-tree -r HEAD -- BRAIN = 1333 files, matching regenerated inventory count; all 4 drifted-file blob SHAs byte-exact (38337b0c.., 025259f7.., 05fc29be.., e83585f5..); tools/regenerate_brain_index.py --check on the
+
 ### ✅ lane-scorer-20261020-1220 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up brief-gap-gap-lane-scorer-20261019-1450-lane10 (Lane 10, Librarian hat): feed recovery + scorer tally-hygiene verification
@@ -30938,6 +30956,18 @@ _Last updated: 2026-10-20 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261020-1330 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261020-1300: diff-first evaluation on live bytes + DIFF-FIRST template line + dispatcher routing
+
+**Evidence:** VERIFIED: parent gate-stall-20261020-1250.md exists; this gap brief claimed, executed, now in brief-queue/done/; rotation queued=29 consistent with receipt arithmetic (29 stall-list briefs +1 t1023 filing, t1023 now claimed). The comm-comparison evidence (delta +1 brief-t1023-lane10.md, 0 removals, carry-over mix unchanged; template line verbatim) 
+
+### ✅ lane-scorer-20261020-1300 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261020-1250.md: stall receipt, 29/29 briefs unclaimable, 6th consecutive
+
+**Evidence:** VERIFIED: prior stall receipt gate-stall-20261020-1119.md mtime 11:20:13 UTC, older than 60 min before run start 12:47 UTC -> STALL-RECEIPT CAP trigger holds; this receipt filed 12:48 UTC (cap-compliant); 29 named briefs (10 text-barred exit-2 + 19 script-refused exit-7 = 29) all spot-checked present in hidden_files/brief-queue/; queue changed sinc
 
 ### ✅ lane-scorer-20261020-1220 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
