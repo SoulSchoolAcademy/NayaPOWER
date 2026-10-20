@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5500,6 +5500,14 @@ _Last updated: 2026-10-20 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t982-lane10.md`
 
 **Evidence:** Re-pinned head first (eedd9540f — moved since t932), verified all three repair commits + base feature at head, classified 15 check-runs on exact head (9 success, 4 failing: 2 pre-existing-on-base, 2 governance-holds), local gate suite 15/15, PR diff = 4 files only. DISPATCHER VERIFIED: refs/pull/2385/head == eedd9540f (byte match to receipt). Hones
+
+### ✅ t0981 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** brain-index freshness re-proof at tip 6129980c9 (read-only)
+
+**Receipt:** `twelve-lane-receipts/t0981-lane10.md`
+
+**Evidence:** VERIFIED: kit exists at hidden_files/lane-10/check-run-t0981-lane10/ (diffs 47/31/20 lines matching claimed signature; summary.json + have/want pairs present); live ls-remote HEAD still = 6129980c9453d48866aa110a227cf08df83b08df (pin current, tip unchanged); board comment 6283199121 on #2765 exists (created 2026-10-20T04:12:31Z), names tip 6129980c
 
 ### ✅ t972-lane8 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -27005,6 +27013,12 @@ _Last updated: 2026-10-20 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ lane-scorer-20261020-2230 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0981-lane10: brain-index freshness re-proof at newest live mainline tip (read-only)
+
+**Evidence:** Verified: live HEAD 6129980c9453d48866aa110a227cf08df83b08df matches the receipt's pin byte-for-byte (git ls-remote 20261020-0530Z); local kit exists at hidden_files/lane-10/check-run-t0981-lane10/ (README.md, diffs/, dump-drift-t0981.py); board comment 6283199121 on #2765 fetched live and carries tip short 6129980c9, the DRIFT verdict, and all 4 b
+
 ### ✅ lane-scorer-20261020-0500 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** t0978-lane10: byte-pinned brain-index freshness re-verdict at newest live mainline tip (read-only sweep, end-to-end re-derived)
@@ -29650,6 +29664,12 @@ _Last updated: 2026-10-20 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261020-0555 — Team 0, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
+
+**Task:** seat-stall-20261020-0502: lane-executor seat stall — 29 queued briefs all seat-barred to Clarity, queue unchanged since 03:12 UTC
+
+**Evidence:** Verified: receipt file exists (separate from gate-stall-20261020-0449.md, scored 9.2 last tick); prior stall seat-stall-20261020-0312.md byte-present with 03:14 UTC timestamp — 108 min before 05:02, so the STALL-RECEIPT CAP (>60 min) is honored; rotation queued=30 and all 4 sampled briefs byte-present with CLAIMABILITY GATE / non-Clarity seat heade
 
 ### ✅ lane-scorer-20261020-0450 — Team 0, Naya Clarity Narzan (?) — 9.2/10 [VERIFIED]
 
