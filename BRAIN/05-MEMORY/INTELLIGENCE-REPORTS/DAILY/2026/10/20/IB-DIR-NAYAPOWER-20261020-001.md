@@ -32,6 +32,16 @@ At subsequent PR #2811 head `c9622fb7330f304d186b142e6ce343107217786f`, GitHub A
 
 **Current acceptance: HOLD.** The owner must re-evaluate those exact-head gate failures from their own job logs, fix content or receipts as appropriate, and obtain fresh distinct-seat IV under all five merge predicates. Do not infer success of a whole PR from one passing kernel suite. Main can advance after this snapshot.
 
+## 0b. Post-merge supersession (2026-10-20 ~19:50Z, independently checked)
+
+This is a **new dated observation**, not a rewrite of the earlier 0a HOLD snapshot. [PR #2811](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2811) **MERGED at 2026-10-20T19:50:25Z** at exact head a3f216eb77310fc72966fabe62edaaf0e4fa18de, producing [main merge commit 4cb51e531bdac3d2960ddd77b4ab894d56fed325](https://github.com/SoulSchoolAcademy/NayaPOWER/commit/4cb51e531bdac3d2960ddd77b4ab894d56fed325). The earlier 9.5/10 approval withdrawal remains historical evidence. It was superseded by [new different-seat IV at the exact final head](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2811#issuecomment-6299841664) citing primary Kernel logs and reconstruction receipts.
+
+At the final candidate head, GitHub now reports **SUCCESS** for Kernel Tests run 39485239093, Worker Protocol Gates run 39485239143, doc-completeness run 39485239154, and re-fired Merge consensus gate run 39485239160. Earlier API-quota failures in this gate were followed by a successful status read-back. This supports the specifically merged and gate-green Brain restamp, **not** whole-system 10/10 or proof of production learning. A later automated code-review summary flagged findings, but the independent thread inspection exposed no concrete details; adjudication is UNKNOWN.
+
+**Windows platform qualification is separate:** the final Brain candidate passed 31/31 focused tests in a Windows test-process-only long-path compatibility probe, while stock Windows Path.exists() falsely flagged 15 present paths of 261-282 characters as missing. The narrow source repair resides in [stacked PR #2816](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816) on detector owner [#2791](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2791); both remain OPEN. No ratchet threshold was relaxed. Do not treat unmerged cross-platform work as production behavior.
+
+**Updated next action:** refresh report PR #2814 onto the restored main, regenerate its index for newly added report files, requalify exact-head CI and independent review. Protocol activation and identity repairs #2808, #2810, #2812 remain OPEN. The original report remains a historical source-based snapshot; later state does not confer authority.
+
 ## 1. Top ten wins (evidence-bound)
 
 1. The ultimate operating protocol is ratified on main via PR #2799, covering Step 0 and Steps 1–17.
