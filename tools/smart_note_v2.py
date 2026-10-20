@@ -1520,7 +1520,22 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         for p in sorted(brain.rglob("*.md")):
             pages_by_name.setdefault(p.name, []).append(str(p.relative_to(root)).replace("\\", "/"))
     for name, paths in sorted(pages_by_name.items()):
-        if len(paths) > 1:
+        if len(paths) <= 1:
+            continue
+        if name == "smart-note.md":
+            # The canonical GitHub projection intentionally uses this basename
+            # once per IB directory. Only repeated publication of the same IB
+            # identity is a duplicate; basename reuse across distinct IBs is not.
+            paths_by_ib = {}
+            for page_path in paths:
+                ib_id = Path(page_path).parent.name
+                paths_by_ib.setdefault(ib_id, []).append(page_path)
+            for ib_id, ib_paths in sorted(paths_by_ib.items()):
+                if len(ib_paths) > 1:
+                    defects["duplicate_published_page_paths"].append(
+                        {"page": name, "intelligent_block_id": ib_id, "paths": ib_paths}
+                    )
+        else:
             defects["duplicate_published_page_paths"].append({"page": name, "paths": paths})
 
     known_pages = {f"{e.get('intelligent_block_id')}.md" for e in entries if e.get("intelligent_block_id")}

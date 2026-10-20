@@ -92,6 +92,30 @@ def test_clean_fixture_is_reported_ok(tmp_path):
     assert report["defect_total"] == 0
 
 
+def test_canonical_smart_note_basename_can_repeat_across_distinct_ib_paths(tmp_path):
+    """The canonical writer reuses smart-note.md; distinct IB paths are not duplicates."""
+    build_clean_root(tmp_path)
+    for date, block_id in [("2026/02/01", "IB-000035"), ("2026/02/02", "IB-000036")]:
+        page = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / date / "system" / block_id / "smart-note.md"
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text(f"# {block_id}\n", encoding="utf-8")
+
+    report = mod.audit_registry(root=tmp_path)
+    assert report["counts"]["duplicate_published_page_paths"] == 0, report["defects"]
+
+
+def test_same_ib_smart_note_published_twice_is_still_detected(tmp_path):
+    """Canonical basename reuse is safe only when the parent IB identity differs."""
+    build_clean_root(tmp_path)
+    for date in ["2026/02/01", "2026/02/02"]:
+        page = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / date / "system" / "IB-000035" / "smart-note.md"
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text("# IB-000035\n", encoding="utf-8")
+
+    report = mod.audit_registry(root=tmp_path)
+    assert report["counts"]["duplicate_published_page_paths"] == 1, report["defects"]
+
+
 @pytest.mark.parametrize(
     "mutate,expected_class",
     [
