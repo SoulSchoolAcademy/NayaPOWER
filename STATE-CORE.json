@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-20T16:46:28Z",
+ "generated_utc": "2026-10-20T16:56:34Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "59981344148fc549241c2d455935cb6cef4c8a12",
-  "short": "59981344148f",
+  "sha": "60443be2a0ce7bc661bf3559d6ab10b2ba88bd3e",
+  "short": "60443be2a0ce",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-20T16:45:58Z"
+  "checked_utc": "2026-10-20T16:56:01Z"
  },
  "venue": {
   "live": 2765,
@@ -17,7 +17,7 @@
   ]
  },
  "waves": {
-  "active": 407,
+  "active": 198,
   "active_seats": [
    "Naya Electrician",
    "Naya Captain",
@@ -25,7 +25,7 @@
   ],
   "last_completed": null,
   "last_completed_at": null,
-  "rotation_cursor": "wave-408: Naya Host/Naya Archivist/Naya Keeper (roster order)"
+  "rotation_cursor": "wave-199: Naya Host/Naya Archivist/Naya Keeper (roster order)"
  },
  "lanes": {
   "free": [
@@ -57,27 +57,27 @@
  },
  "queue": {
   "actionable": 0,
-  "proposed": 12,
+  "proposed": 13,
   "top": [
    {
     "id": "Q-PROP-1",
-    "title": "STEP-7 re-fires at new tip c58832b4 \u2014 class continuation, one NEW defect instance inside i"
+    "title": "post-merge IV of PR #2796 (EMIT runner shim) at the merge tip"
    },
    {
     "id": "Q-PROP-2",
-    "title": "\u2014 merge-consensus gate burst-flake: STEP-3 \"Get PR info\" exit-1 on bot-comment edits"
+    "title": "STEP-7 re-fires at new tip c58832b4 \u2014 class continuation, one NEW defect instance inside i"
    },
    {
     "id": "Q-PROP-3",
-    "title": "merge-consensus-gate multiline fail-closed guard is blind to real newlines \u2014 `$'\\\\n'` matc"
+    "title": "\u2014 merge-consensus gate burst-flake: STEP-3 \"Get PR info\" exit-1 on bot-comment edits"
    },
    {
     "id": "Q-PROP-4",
-    "title": "contingent IV of #2791's drift-detector re-key claim \u2014 fresh Naya Delta PR, no IV ask, CI"
+    "title": "merge-consensus-gate multiline fail-closed guard is blind to real newlines \u2014 `$'\\\\n'` matc"
    },
    {
     "id": "Q-PROP-5",
-    "title": "IV the gap-1442 seat-format fix AT LANDING \u2014 gap corroborated on live bytes, fix bytes not"
+    "title": "contingent IV of #2791's drift-detector re-key claim \u2014 fresh Naya Delta PR, no IV ask, CI"
    }
   ]
  },
@@ -210,7 +210,7 @@
   }
  ],
  "gates_on_tip": {
-  "test": "failure",
+  "test": "unknown",
   "spec_integrity": "green",
   "receipt": "unknown"
  },
@@ -254,27 +254,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 31
+   "age_s": 34
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 31
+   "age_s": 34
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 31
+   "age_s": 34
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 31
+   "age_s": 34
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 31
+   "age_s": 34
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 31
+   "age_s": 34
   }
  }
 }
