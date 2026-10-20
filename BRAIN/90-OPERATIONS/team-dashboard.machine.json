@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-20T20:15:16+00:00",
+ "generated_utc": "2026-10-20T21:15:33+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2818,
+     "title": "fix(know): make live Windows Smart Note bridge read all long-path notes",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2818",
+     "draft": false
+    },
+    {
+     "number": 2817,
+     "title": "KNOW: 0028 DISTILL execution \u2014 husk removed, essence staged",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2817",
+     "draft": false
+    },
+    {
      "number": 2806,
      "title": "docs(toolset): THE NAYA TOOL DIRECTORY \u2014 placed at BRAIN/00-ACTIVATION/THE-NAYA-TOOL-SET.m",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2806",
@@ -357,12 +369,6 @@
      "number": 2804,
      "title": "Mark IB-000042 SUPERSEDED by IB-000043 (Shawn ruling 2026-10-20)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2804",
-     "draft": false
-    },
-    {
-     "number": 2798,
-     "title": "gov: 0029 THE NAYA PROCESS V1 \u2014 Shawn's dictated operating process",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2798",
      "draft": false
     },
     {
@@ -388,15 +394,9 @@
      "title": "Oath: the Behavior Declaration, spoken at every activation",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2788",
      "draft": false
-    },
-    {
-     "number": 2782,
-     "title": "docs: replace hard-coded board numbers in boot bytes with mission-snapshot indirection",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2782",
-     "draft": false
     }
    ],
-   "open_pr_count": 251
+   "open_pr_count": 252
   },
   {
    "id": "wire",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 661,
- "unassigned_prs": 251
+ "open_pr_total": 662,
+ "unassigned_prs": 252
 }

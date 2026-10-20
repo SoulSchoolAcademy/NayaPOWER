@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-20 20:14 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-20 21:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 661 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 662 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - …and 26 more
 
-### BUILD (251)
+### BUILD (252)
+- [#2818](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2818) fix(know): make live Windows Smart Note bridge read all long-path note
+- [#2817](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2817) KNOW: 0028 DISTILL execution — husk removed, essence staged
 - [#2806](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2806) docs(toolset): THE NAYA TOOL DIRECTORY — placed at BRAIN/00-ACTIVATION
 - [#2804](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2804) Mark IB-000042 SUPERSEDED by IB-000043 (Shawn ruling 2026-10-20)
-- [#2798](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2798) gov: 0029 THE NAYA PROCESS V1 — Shawn's dictated operating process
 - [#2795](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2795) fix(activation): self-resolving live-board pointers — boot_pointer_che
-- [#2790](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2790) [LAW] Duplicate-laws merge: port 0007s 5 operational rules into 0016, 
-- …and 246 more
+- …and 247 more
 
 ### WIRE (129)
 - [#2812](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2812) fix(activation): refuse undeclared cold starts at real admission gate
