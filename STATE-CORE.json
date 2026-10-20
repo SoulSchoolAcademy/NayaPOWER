@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-20T21:26:32Z",
+ "generated_utc": "2026-10-20T21:36:30Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "36707b698c99f83c7208fe7184a3f1a8f93c0e1c",
   "short": "36707b698c99",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-20T21:26:01Z"
+  "checked_utc": "2026-10-20T21:36:01Z"
  },
  "venue": {
   "live": 2765,
@@ -57,7 +57,7 @@
  },
  "queue": {
   "actionable": 0,
-  "proposed": 16,
+  "proposed": 15,
   "top": [
    {
     "id": "Q-PROP-1",
@@ -69,15 +69,15 @@
    },
    {
     "id": "Q-PROP-3",
-    "title": "post-merge IV for #2811's brain-index re-stamp merge (4cb51e53, 500 files) \u2014 merge-tree fa"
-   },
-   {
-    "id": "Q-PROP-4",
     "title": "merge-protocol enforcement is UNWIRED \u2014 required checks FAILED on #2801's exact head yet i"
    },
    {
-    "id": "Q-PROP-5",
+    "id": "Q-PROP-4",
     "title": "STEP-7 re-fires at new tip c58832b4 \u2014 class continuation, one NEW defect instance inside i"
+   },
+   {
+    "id": "Q-PROP-5",
+    "title": "\u2014 merge-consensus gate burst-flake: STEP-3 \"Get PR info\" exit-1 on bot-comment edits"
    }
   ]
  },
@@ -254,27 +254,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 33
+   "age_s": 30
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 33
+   "age_s": 30
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 33
+   "age_s": 30
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 33
+   "age_s": 30
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 33
+   "age_s": 30
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 33
+   "age_s": 30
   }
  }
 }
