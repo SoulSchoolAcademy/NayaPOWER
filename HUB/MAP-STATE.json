@@ -1,35 +1,35 @@
 {
-  "measured_at": "2026-10-20T20:36:21.160040+00:00",
+  "measured_at": "2026-10-20T23:53:45.242231+00:00",
   "probes": {
     "supabase_tables": {
       "status": "unknown",
       "evidence": "measurement unavailable: no SUPABASE_URL in this environment. Last verified baseline (2026-10-15, Management API): 22 tables, 12,026 rows \u2014 NOT re-measured this run. Row counts require an authenticated key (anon role is RLS-locked, 42501) \u2014 loud unknown, not fake green.",
-      "measured_at": "2026-10-20T20:36:15.456015+00:00"
+      "measured_at": "2026-10-20T23:53:38.206489+00:00"
     },
     "feeds": {
       "status": "red",
       "evidence": "missing/invalid: feed, today, lists, spaces, reports, library, connect, ledger, connections, mail, settings, manifest",
-      "measured_at": "2026-10-20T20:36:17.314524+00:00"
+      "measured_at": "2026-10-20T23:53:41.052186+00:00"
     },
     "bridge": {
       "status": "red",
-      "evidence": "PR #2679 unreadable ({'http_status': 403, 'message': 'API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID CFC4:21DF6A:64C69:141AD8:6AD7D0C1 and timestamp 2026-10-20 20:36:17 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)', 'documentation_url': 'https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api#rate-limiting', 'status': '403'}) (PR state: unreadable ({'http_status': 403, 'message': 'API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID CFC4:21DF6A:64C69:141AD8:6AD7D0C1 and timestamp 2026-10-20 20:36:17 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)', 'documentation_url': 'https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api#rate-limiting', 'status': '403'})); bridge code in repo: not found at checked paths",
-      "measured_at": "2026-10-20T20:36:17.905872+00:00"
+      "evidence": "PR #2679 unreadable ({'http_status': 403, 'message': 'API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID 882A:559FE:A91797:223B5C3:6AD7FF05 and timestamp 2026-10-20 23:53:41 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)', 'documentation_url': 'https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api#rate-limiting', 'status': '403'}) (PR state: unreadable ({'http_status': 403, 'message': 'API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID 882A:559FE:A91797:223B5C3:6AD7FF05 and timestamp 2026-10-20 23:53:41 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)', 'documentation_url': 'https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api#rate-limiting', 'status': '403'})); bridge code in repo: not found at checked paths",
+      "measured_at": "2026-10-20T23:53:41.955726+00:00"
     },
     "rooms": {
       "status": "amber",
       "evidence": "0/9 on seeds, 8/9 loading, 0/9 unknown \u2014 hub/: mixed (seeds: OFFICIAL_NOTES; loaders: NayaPowerRuntime); hub/today: loading; hub/lists: loading; hub/spaces: loading; hub/mail: loading; hub/reports: loading; hub/ledger: loading; hub/library: loading; hub/connections: loading",
-      "measured_at": "2026-10-20T20:36:19.955299+00:00"
+      "measured_at": "2026-10-20T23:53:43.550144+00:00"
     },
     "capture": {
       "status": "amber",
-      "evidence": "latest run completed/failure (1 day, 16:04:11 old, event=workflow_dispatch); 0/5 recent runs scheduled; recent success: True, recent failure: True",
-      "measured_at": "2026-10-20T20:36:20.435243+00:00"
+      "evidence": "latest run completed/failure (1 day, 19:21:35 old, event=workflow_dispatch); 0/5 recent runs scheduled; recent success: True, recent failure: True",
+      "measured_at": "2026-10-20T23:53:44.091037+00:00"
     },
     "dock": {
       "status": "unknown",
       "evidence": "#2676: unreadable; #2678: unreadable; #2679: unreadable; #2680: unreadable; #2686: unreadable",
-      "measured_at": "2026-10-20T20:36:21.160015+00:00"
+      "measured_at": "2026-10-20T23:53:45.242209+00:00"
     }
   },
   "summary": {
