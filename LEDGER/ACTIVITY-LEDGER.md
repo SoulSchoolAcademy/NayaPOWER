@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27020,6 +27020,12 @@ _Last updated: 2026-10-20 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261020-2350 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0986-lane10: H1 lift-stamp contract — spec §9 six machine checks in claim-brief.py + 14 fixtures (read-only, code+fixtures only)
+
+**Evidence:** VERIFIED: claim-brief.py SHA-256 0bcb2d9664cb4410a9a35cdc18bc701a900765872e46985417d97eae53918ec7 matches receipt byte-for-byte; 14 fixture files present in bin/lift-fixtures/; check-run kit hidden_files/lane-10/check-run-t0986-lane10/ holds self-test-output.txt, claim-brief-diff.txt, claim-brief.sha256; independently re-ran claim-brief.py --self-t
 
 ### ✅ lane-scorer-20261020-2230 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
