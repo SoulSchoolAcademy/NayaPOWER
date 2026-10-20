@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-20 18:14 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-20 19:14 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 658 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 661 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -95,21 +95,21 @@
 - [#2790](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2790) [LAW] Duplicate-laws merge: port 0007s 5 operational rules into 0016, 
 - …and 246 more
 
-### WIRE (128)
+### WIRE (129)
+- [#2812](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2812) fix(activation): refuse undeclared cold starts at real admission gate
 - [#2807](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2807) docs(brain): correct stale decision-seam claims — decision context is 
 - [#2786](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2786) WIRE: close blockquote-mention hole in merge-consensus gate
 - [#2783](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2783) [Team Verity] dock: land Eta's v2 9.5-flip patch @ tip 1a1c22d3
 - [#2778](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2778) law: correct seat-count prose in consensus-gate registry (15 -> 18)
-- [#2768](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2768) [Team Verity] Naya Beta | KNOW w484: re-cut w440 leg 4 (pre-write vali
-- …and 123 more
+- …and 124 more
 
-### TEAM (13)
+### TEAM (14)
+- [#2814](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2814) docs(brain): Oct 20 AAA audit and Team Naya execution directive
 - [#2803](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2803) [Team Verity] ops: THE NAYA TOOL DIRECTORY V1 — the catalog every Naya
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
 - [#2588](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588) [DRAFT] NayaPOWER Operating Manual V1 — team operating standard 📝draft
 - [#2564](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2564) Team Feed Standard: the ultimate posting template (Shawn's audit)
-- [#2547](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2547) [Naya 5] Ultimate execution report 2026-10-13: 14 answers, 9x10 assess
-- …and 8 more
+- …and 9 more
 
 ### INFRA (47)
 - [#2809](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2809) docs(activation): reconcile oath guide with ratified protocol and live
@@ -135,13 +135,13 @@
 - [#1933](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1933) self(trial): full-scale identity trial V2 — 28/28 PASS (cross-seat + c
 - …and 1 more
 
-### GOVERN (40)
+### GOVERN (41)
+- [#2815](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2815) Viral Law — the headline standard (§22 of the Smart Note / IB Protocol
 - [#2810](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2810) fix(protocol): reject false independent approvals (case, dismissal, co
 - [#2808](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2808) Protocol operationalization: machine spec, pins, and enforcement for t
 - [#2805](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2805) [PROTOCOL LOCK-IN] 0029 machine view — THE NAYA PROCESS compiled JSON 
 - [#2802](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2802) fix(protocol): tighten Honor activation, Hive venue and value truth bo
-- [#2797](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797) Governance: NAYA OATH OF HONOR (0023) — Shawn's 2026-10-20 law, three 
-- …and 35 more
+- …and 36 more
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*

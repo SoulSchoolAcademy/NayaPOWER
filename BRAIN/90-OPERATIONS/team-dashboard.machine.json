@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-20T18:15:15+00:00",
+ "generated_utc": "2026-10-20T19:15:12+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -417,6 +417,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2812,
+     "title": "fix(activation): refuse undeclared cold starts at real admission gate",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2812",
+     "draft": false
+    },
+    {
      "number": 2807,
      "title": "docs(brain): correct stale decision-seam claims \u2014 decision context is wired (WO4, PR #2063",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2807",
@@ -457,15 +463,9 @@
      "title": "fix(gate): receipt-pin reads live PR body, not frozen event payload",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2724",
      "draft": false
-    },
-    {
-     "number": 2717,
-     "title": "Consensus gate: parse 12-lane seat tags + brief-time author-seat check (gap-t1442)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717",
-     "draft": false
     }
    ],
-   "open_pr_count": 128
+   "open_pr_count": 129
   },
   {
    "id": "team",
@@ -485,6 +485,12 @@
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
+    {
+     "number": 2814,
+     "title": "docs(brain): Oct 20 AAA audit and Team Naya execution directive",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2814",
+     "draft": false
+    },
     {
      "number": 2803,
      "title": "[Team Verity] ops: THE NAYA TOOL DIRECTORY V1 \u2014 the catalog every Naya reads at activation",
@@ -526,15 +532,9 @@
      "title": "[DRAFT] The Naya Code \u2014 canonical identity in human, AI, and machine forms",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2246",
      "draft": true
-    },
-    {
-     "number": 2161,
-     "title": "Add TEAM-EXECUTION-PROMPT.md \u2014 continuous 10/10 standing order",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2161",
-     "draft": false
     }
    ],
-   "open_pr_count": 13
+   "open_pr_count": 14
   },
   {
    "id": "infra",
@@ -750,6 +750,12 @@
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
+     "number": 2815,
+     "title": "Viral Law \u2014 the headline standard (\u00a722 of the Smart Note / IB Protocol)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2815",
+     "draft": false
+    },
+    {
      "number": 2810,
      "title": "fix(protocol): reject false independent approvals (case, dismissal, comments)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2810",
@@ -790,15 +796,9 @@
      "title": "Fix: PROTOCOL.md reading list no longer calls itself ratified canonical law",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2489",
      "draft": true
-    },
-    {
-     "number": 2487,
-     "title": "Fix: LAWS-INDEX-V1.md no longer calls PROTOCOL.md canonical law",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2487",
-     "draft": true
     }
    ],
-   "open_pr_count": 40
+   "open_pr_count": 41
   }
  ],
  "recent_activity": [
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 658,
+ "open_pr_total": 661,
  "unassigned_prs": 251
 }
