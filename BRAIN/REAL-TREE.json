@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-20",
-  "receipt_basis_commit": "f3f340d3a29c4952f982ef2d609dc877f159b582",
-  "inventory_file_count": 1350,
+  "receipt_basis_commit": "7bac7e03e6be4ffe56368d9db6f9f7886a1bca0f",
+  "inventory_file_count": 1352,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 64,
+    "01-GOVERNANCE": 66,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -419,6 +419,16 @@
       "path": "BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json",
       "blob_sha": "26daa956f351bba68f117584ced4969071bd4c09",
       "size": 3439
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.ai.md",
+      "blob_sha": "01636e471511aa9a9adfd9536ec85ed3ce27dd85",
+      "size": 7136
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.human.md",
+      "blob_sha": "09d3e3fc10fe81a9e47e3f7658617c939850e824",
+      "size": 5034
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.machine.json",
