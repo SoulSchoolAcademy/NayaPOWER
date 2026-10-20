@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-20",
-  "receipt_basis_commit": "b638394c58b81bec0483996ac4a201bce5cdf3ca",
-  "inventory_file_count": 1348,
+  "receipt_basis_commit": "4cb51e531bdac3d2960ddd77b4ab894d56fed325",
+  "inventory_file_count": 1349,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 668,
+    "05-MEMORY": 669,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -856,9 +856,14 @@
       "size": 5770
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/20/IB-DIR-NAYAPOWER-20261020-001.md",
+      "blob_sha": "0667e508c1d56f5fde308f5c0d1b73f0fa647ee0",
+      "size": 26496
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
-      "blob_sha": "3539d973f1e8066cacb47b7aa22cc6d65d48b61e",
-      "size": 6111
+      "blob_sha": "1436beed74b760791a21d290d06c378eccc861ee",
+      "size": 6322
     },
     {
       "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/README.md",

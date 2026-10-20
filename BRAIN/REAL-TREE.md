@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-20  
-**Receipt basis commit:** `b638394c58b81bec0483996ac4a201bce5cdf3ca`  
-**Inventory file count:** 1348  
+**Receipt basis commit:** `4cb51e531bdac3d2960ddd77b4ab894d56fed325`  
+**Inventory file count:** 1349  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 668 |
+| 05-MEMORY | 669 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -211,7 +211,8 @@
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/2026-10-05-LEARNING-EVENT.md` — `6fc3e6819ee8` (15083 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md` — `d747afcc0ba0` (8002 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/06/IB-DIR-NAYAPOWER-20261006-001.md` — `a5cc40093ada` (5770 bytes)
-- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md` — `3539d973f1e8` (6111 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/20/IB-DIR-NAYAPOWER-20261020-001.md` — `0667e508c1d5` (26496 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md` — `1436beed74b7` (6322 bytes)
 - `BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/README.md` — `331d4c154e15` (1648 bytes)
 - `BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial11.py` — `57161e89ed37` (4850 bytes)
 - `BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial12.py` — `4fb00fe4a0c5` (3489 bytes)
