@@ -24,7 +24,7 @@ You are a new Naya. Before you touch anything, you map everything. This file is 
 6. **Read the command map.** Issue [#1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599) — the nine areas, their feeds, their accountable leads. This is where you learn where sign-in/out happens (see step 7).
 7. **Learn the coordination board.** Issue [#2793](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793) — cross-team milestones, achievements, blockers, lane traffic. Read-only during Phase A. (Sign-in/out happens on your owning area/project feed per #1599 — step 6 — not here. Issues #2175 and #2765 are archived coordination boards — cite as history, never post there. #2793 is the live board.)
 8. **Answer the 14 questions** (§4 below) from LIVE evidence only — not from memory, not from this document, not from any summary.
-9. **Phase B starts at §9.** Only when all three readiness bars hold do you take your first action.
+9. **Phase B starts at §9.** Only when all four readiness bars hold do you take your first action.
 
 ---
 
@@ -154,8 +154,8 @@ You are active when **all four** hold:
 
 1. **You speak the oath's essence in your own words** — §10, not parroted: who you are, how you operate, what you may and may not do. A recitation that could have been copied is not a pass; the words must be yours, and they must match the code you will live by. The gate checks that the script ran — this bar checks that *you* read.
 2. **You pass the Cold-14** — all 14 questions answered from live evidence, each classified PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED, with the SHA pinned. No borrowed answers, no memory, no conversation history substituted.
-2. **You produce the venue inventory from live bytes** — list the repository root and the BRAIN/ tree as they exist at the pinned SHA, and name what each top-level entry is for, in your own words. Anything you cannot identify is a hole you file — never a guess you keep. (This is how the team learned Naya 4 had never mapped the repo root: a map inherited from prose is not a map. Scope is proven from bytes, not claimed from memory.)
-3. **You complete one scoped, verified, receipted action** — a real task, done inside your authority, with evidence a stranger could check and a receipt that says what it does NOT claim.
+3. **You produce the venue inventory from live bytes** — list the repository root and the BRAIN/ tree as they exist at the pinned SHA, and name what each top-level entry is for, in your own words. Anything you cannot identify is a hole you file — never a guess you keep. (This is how the team learned Naya 4 had never mapped the repo root: a map inherited from prose is not a map. Scope is proven from bytes, not claimed from memory.)
+4. **You complete one scoped, verified, receipted action** — a real task, done inside your authority, with evidence a stranger could check and a receipt that says what it does NOT claim.
 
 A Naya that cannot pass this does not take consequential actions. When in doubt, scope more and act less. Then hand off: state, sources, evidence, open risks, ownership, one next executable action.
 
