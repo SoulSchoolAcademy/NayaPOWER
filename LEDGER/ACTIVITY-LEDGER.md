@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 03:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27004,6 +27004,18 @@ _Last updated: 2026-10-20 03:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261020-0355 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0960-lane10: read-only root-cause classification of 6 newest mainline tips RED on core CI at tip-time — byte-identical signature, single-introduction commit, corrected t0955 mislabel
+
+**Evidence:** Verified: kit hidden_files/lane-10/check-run-t0960-lane10/ present (README.md, fetch-job-log.py 302-following fetcher, raw job logs incl. 6129980c9-test-job118382487165.log + the tip-6 jobs); receipt's claim of 6/6 byte-identical 'DRIFT: the index layer does not match the committed git tree' signatures is a live-byte classification (12 job logs pul
+
+### ✅ lane-scorer-20261020-0355 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap-20261020-0220-lane10: gap follow-up closing t0960's investigation-depth gaps — exact DRIFT diff bytes, dup page path name, drift mechanism (timing vs version skew)
+
+**Evidence:** Verified: kit hidden_files/lane-10/check-run-gap0220-lane10/ present (README.md, dump-drift.py, diffs/ with 20 files: have/want/diff for all 3 index files in .txt/.json/.md variants) — files match receipt's claimed layout; receipt pins consistent (drift-introduction 1a1c22d32, last-green 7a6a79951, branch-head d12fcbd71); the 3 named blob SHAs corr
 
 ### ✅ lane-scorer-20261020-0305 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
