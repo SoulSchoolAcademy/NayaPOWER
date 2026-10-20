@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-20T22:46:42Z",
+ "generated_utc": "2026-10-20T22:57:25Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "36707b698c99f83c7208fe7184a3f1a8f93c0e1c",
   "short": "36707b698c99",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-20T22:46:07Z"
+  "checked_utc": "2026-10-20T22:56:46Z"
  },
  "venue": {
   "live": 2765,
@@ -57,27 +57,27 @@
  },
  "queue": {
   "actionable": 0,
-  "proposed": 16,
+  "proposed": 17,
   "top": [
    {
     "id": "Q-PROP-1",
-    "title": "\"Kernel Tests\" RED at live tip `36707b69` \u2014 brain-index freshness drift, 3 failures in tes"
+    "title": "\"Current Truth Resolver\" workflow's schedule-triggered run FAILED at \"Collect live GitHub"
    },
    {
     "id": "Q-PROP-2",
-    "title": "\"Hub Feeds Emit\" workflow's FIRST schedule-triggered run FAILED \u2014 push rejected by branch"
+    "title": "\"Kernel Tests\" RED at live tip `36707b69` \u2014 brain-index freshness drift, 3 failures in tes"
    },
    {
     "id": "Q-PROP-3",
-    "title": "\"Live Intelligence Commit Proof\" workflow FAILED at the live tip \u2014 NEW-SUSPECT class, recu"
+    "title": "\"Hub Feeds Emit\" workflow's FIRST schedule-triggered run FAILED \u2014 push rejected by branch"
    },
    {
     "id": "Q-PROP-4",
-    "title": "merge-protocol enforcement is UNWIRED \u2014 required checks FAILED on #2801's exact head yet i"
+    "title": "\"Live Intelligence Commit Proof\" workflow FAILED at the live tip \u2014 NEW-SUSPECT class, recu"
    },
    {
     "id": "Q-PROP-5",
-    "title": "STEP-7 re-fires at new tip c58832b4 \u2014 class continuation, one NEW defect instance inside i"
+    "title": "merge-protocol enforcement is UNWIRED \u2014 required checks FAILED on #2801's exact head yet i"
    }
   ]
  },
@@ -254,27 +254,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 37
+   "age_s": 41
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 37
+   "age_s": 41
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 37
+   "age_s": 41
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 37
+   "age_s": 41
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 37
+   "age_s": 41
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 37
+   "age_s": 41
   }
  }
 }
