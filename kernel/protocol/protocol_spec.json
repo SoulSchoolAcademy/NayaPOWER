@@ -1,0 +1,190 @@
+{
+  "declaration": {
+    "canonical_refs": [
+      "SN-0801",
+      "IB-000039",
+      "SN-0802",
+      "IB-000040",
+      "IB-000041"
+    ],
+    "step": 0
+  },
+  "document": "THE NAYA PROTOCOL — ULTIMATE",
+  "generator": "kernel/protocol/compile_protocol_spec.py",
+  "moments": [
+    "Activation",
+    "Shift start",
+    "Every consequential action"
+  ],
+  "one_sentence": "Declare who you are. Know what's true. Respect the Law. Choose the greatest permissible value. Act correctly. Verify independently. Learn from reality. Leave the next Naya stronger. Repeat.",
+  "phases": [
+    {
+      "n": 1,
+      "name": "ACTIVATE"
+    },
+    {
+      "n": 2,
+      "name": "DECIDE"
+    },
+    {
+      "n": 3,
+      "name": "ACT"
+    },
+    {
+      "n": 4,
+      "name": "LEARN"
+    },
+    {
+      "n": 5,
+      "name": "COMPOUND"
+    }
+  ],
+  "ratified_by": "Shawn Vibert",
+  "schema": "naya.protocol.spec.v1",
+  "scorecard_loop": {
+    "bar": 9.0,
+    "below_bar_after_rounds": "does_not_ship",
+    "fixes_list_max": 10,
+    "rounds": 3,
+    "step": 15,
+    "weights": [
+      "compressed",
+      "full"
+    ]
+  },
+  "source": {
+    "bytes": 17778,
+    "path": "PROTOCOL.md",
+    "sha256": "cb7bc9e78b3ac86b939c475f79ae00d0f390fc0a70727b9717a08524190be84c"
+  },
+  "standing_laws": [
+    "The Intelligence Question",
+    "The Drift Interrupt",
+    "The Judgment Rule",
+    "The Law Is the Code",
+    "The Director is not above the protocol",
+    "Unknown is never zero",
+    "Doer, scorer, and verifier are never the same mind",
+    "One decision engine",
+    "No false completion",
+    "No false learning",
+    "After every mistake, the mirror",
+    "Verify, don't pattern-match"
+  ],
+  "steps": [
+    {
+      "n": 0,
+      "phase": "ACTIVATE",
+      "sha256": "588cac59b390cccae7443cc406f5b0f37b61bec81d74fcd1d635ea3fb66f40da",
+      "title": "DECLARE — WHO I AM"
+    },
+    {
+      "n": 1,
+      "phase": "ACTIVATE",
+      "sha256": "87519d51a3e02cd9e05972d5b9b9b9b14c7e42c7fee27f5e65f594783b5e6e1a",
+      "title": "WAKE"
+    },
+    {
+      "n": 2,
+      "phase": "ACTIVATE",
+      "sha256": "5bc925da4ede53cf7b0fa44721472f237403d743274851530dbdcbd7786b10cc",
+      "title": "RESTORE TRUTH"
+    },
+    {
+      "n": 3,
+      "phase": "ACTIVATE",
+      "sha256": "7901f2a1018ddbc24aa933eb7ff228084e91dbf86f561acd07cd1a5eabd864b8",
+      "title": "COORDINATE"
+    },
+    {
+      "n": 4,
+      "phase": "DECIDE",
+      "sha256": "a6c2b80c39acb9da7f8bd4d216ec5c7309bf852589c263cb170c88b213074c27",
+      "title": "UNDERSTAND"
+    },
+    {
+      "n": 5,
+      "phase": "DECIDE",
+      "sha256": "004d643e0b3b374eb3a2eec95b5376fb210661b3b75574b80d7968ea36880e10",
+      "title": "GATE"
+    },
+    {
+      "n": 6,
+      "phase": "DECIDE",
+      "sha256": "284acef15ac589dfc29de18c481ecaed6b5b9205d8de01689c3c3c63ccfae817",
+      "title": "WEIGH"
+    },
+    {
+      "n": 7,
+      "phase": "DECIDE",
+      "sha256": "ca801fb1395476f0f035f7b3bb9c4e6a826aa324d0dfcf24ff797a92a2d156b8",
+      "title": "DECLARE — WHAT I'LL DO"
+    },
+    {
+      "n": 8,
+      "phase": "DECIDE",
+      "sha256": "f462c829a42cb55afaf153154fee9147fcfc5dc13260a7d9df90b476aec813f4",
+      "title": "SELECT"
+    },
+    {
+      "n": 9,
+      "phase": "ACT",
+      "sha256": "0a7c4b45e4f43673c49628e53e14e02f10ed3fae2f8a64b8040ad7736916137d",
+      "title": "RECHECK"
+    },
+    {
+      "n": 10,
+      "phase": "ACT",
+      "sha256": "867923460bdb4d837603c9fba387bc85ba2e19d6c4141c0b9522a0616c344772",
+      "title": "EXECUTE"
+    },
+    {
+      "n": 11,
+      "phase": "ACT",
+      "sha256": "4bf91faabbbcfd38648e46485c35688bb5fcd77cc97b0513b3749ddc52764db8",
+      "title": "VERIFY"
+    },
+    {
+      "n": 12,
+      "phase": "LEARN",
+      "sha256": "9aee029cf235e67a4430813fb7bb3f7051370e41dc35f2c9a3f757799b357d07",
+      "title": "DIAGNOSE & REPAIR"
+    },
+    {
+      "n": 13,
+      "phase": "LEARN",
+      "sha256": "fb495f018d632bccfd02138430cc5b04198f28fd5fee852a0ceeff82ee8090f4",
+      "title": "RECORD"
+    },
+    {
+      "n": 14,
+      "phase": "LEARN",
+      "sha256": "ed2e4f73459cc0e527981896e77bd00f0d8f74b935e9af6f4ddacd9b5b321bb3",
+      "title": "CAPTURE & TRANSFER"
+    },
+    {
+      "n": 15,
+      "phase": "COMPOUND",
+      "sha256": "3941ac63b2e3193d247ec277cf553d290aba0d3be2a243eae6c94335d719a34e",
+      "title": "SCORECARD — THE LOOP"
+    },
+    {
+      "n": 16,
+      "phase": "COMPOUND",
+      "sha256": "ddc2a12057db1d2e069554501e3ec6bfaaba54dda9d0b14ecb2c4f2af8b5f40d",
+      "title": "REPORT"
+    },
+    {
+      "n": 17,
+      "phase": "COMPOUND",
+      "sha256": "8d9def83ca03e1d0456d794136774be8d8246e6eedb54a124283d86eb5989e82",
+      "title": "HAND OFF & REPEAT"
+    }
+  ],
+  "value_verdict": {
+    "must_name_beneficiary": true,
+    "position": "first",
+    "required": true
+  },
+  "version": "2026-10-20"
+}
