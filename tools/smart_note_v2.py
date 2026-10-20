@@ -1539,7 +1539,18 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
             defects["duplicate_published_page_paths"].append({"page": name, "paths": paths})
 
     known_pages = {f"{e.get('intelligent_block_id')}.md" for e in entries if e.get("intelligent_block_id")}
+    known_ib_ids = {str(e.get("intelligent_block_id")) for e in entries if e.get("intelligent_block_id")}
     for name, paths in sorted(pages_by_name.items()):
+        if name == "smart-note.md":
+            # The v7 projection's canonical basename is scoped by its parent IB directory.
+            # Treat it as registered only when that exact IB identity exists in the index;
+            # keep a single actionable orphan group if any published IB is missing.
+            unregistered_paths = [path for path in paths if Path(path).parent.name not in known_ib_ids]
+            if unregistered_paths:
+                defects["published_pages_without_registry_entry"].append(
+                    {"page": name, "paths": unregistered_paths}
+                )
+            continue
         if name not in known_pages:
             defects["published_pages_without_registry_entry"].append({"page": name, "paths": paths})
 

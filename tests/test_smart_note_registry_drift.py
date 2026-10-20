@@ -93,15 +93,31 @@ def test_clean_fixture_is_reported_ok(tmp_path):
 
 
 def test_canonical_smart_note_basename_can_repeat_across_distinct_ib_paths(tmp_path):
-    """The canonical writer reuses smart-note.md; distinct IB paths are not duplicates."""
-    build_clean_root(tmp_path)
-    for date, block_id in [("2026/02/01", "IB-000035"), ("2026/02/02", "IB-000036")]:
+    """Distinct registered IBs may use smart-note.md without false orphan defects."""
+    reg_path = build_clean_root(tmp_path)
+    registry = json.loads(reg_path.read_text(encoding="utf-8"))
+    cap_dir = tmp_path / ".naya" / "capture"
+    for date, block_id, sn_id, intelligence in [
+        ("2026/02/01", "IB-000035", "SN-035", {"essence": "first", "distilled_intelligence": "one"}),
+        ("2026/02/02", "IB-000036", "SN-036", {"essence": "second", "distilled_intelligence": "two"}),
+    ]:
         page = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / date / "system" / block_id / "smart-note.md"
         page.parent.mkdir(parents=True, exist_ok=True)
         page.write_text(f"# {block_id}\n", encoding="utf-8")
+        (cap_dir / f"{sn_id}.json").write_text(json.dumps({"smart_note_id": sn_id, "intelligence": intelligence}), encoding="utf-8")
+        registry["entries"].append({
+            "smart_note_id": sn_id,
+            "intelligent_block_id": block_id,
+            "content_hash": _hash(intelligence),
+            "page_hash": mod._page_file_hash(page),
+            "projection_path": page.relative_to(tmp_path).as_posix(),
+            "projection_status": "GITHUB_BRAIN_PUBLISHED",
+        })
+    reg_path.write_text(json.dumps(registry), encoding="utf-8")
 
     report = mod.audit_registry(root=tmp_path)
     assert report["counts"]["duplicate_published_page_paths"] == 0, report["defects"]
+    assert report["counts"]["published_pages_without_registry_entry"] == 0, report["defects"]
 
 
 def test_same_ib_smart_note_published_twice_is_still_detected(tmp_path):

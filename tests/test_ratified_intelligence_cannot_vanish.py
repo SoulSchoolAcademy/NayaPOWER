@@ -247,6 +247,38 @@ def test_restored_objects_retain_their_provenance():
         )
 
 
+def test_projection_reconstructions_preserve_identity_and_limitations():
+    """Recovered projections must preserve the stable ID and disclose missing original captures."""
+    expected = {
+        "SN-0801": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0801/IB-SMART-NOTE-20261020-sn0801-declare-who-you-are.md",
+        "SN-0802": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0802/IB-SMART-NOTE-20261020-sn0802-oath-of-honor.md",
+        "SN-0803": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/protocol/SN-0803/IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified.md",
+    }
+    registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    entries = {e.get("smart_note_id"): e for e in registry.get("entries", [])}
+    for sid, source_path in expected.items():
+        token = sid.replace("-", "").lower()
+        matches = list(CAPTURE_DIR.glob(f"*{token}*.json"))
+        assert len(matches) == 1, f"{sid} must have exactly one reconstructed capture, found {matches}"
+        obj = json.loads(matches[0].read_text(encoding="utf-8"))
+        assert obj.get("schema") == "naya.smart-note-capture.v2"
+        assert obj.get("smart_note_id") == sid
+        provenance = obj.get("source", {}).get("restoration_provenance", {})
+        assert provenance.get("status") == "RECONSTRUCTED_FROM_COMMITTED_PROJECTION"
+        assert provenance.get("recovered_from") == source_path
+        assert provenance.get("original_capture_found") is False
+        assert provenance.get("original_runtime_transaction_found") is False
+        assert provenance.get("recovered_commit")
+        assert "not evidence that an original runtime capture occurred" in provenance.get("reason", "")
+        assert sid in entries, f"{sid} must be registered without changing its identity"
+        assert entries[sid].get("projection_path") == source_path
+        assert entries[sid].get("page_hash")
+        assert entries[sid].get("content_hash")
+    assert entries["SN-0801"].get("truth_state") == "RATIFIED"
+    assert entries["SN-0802"].get("truth_state") == "RATIFIED"
+    assert entries["SN-0803"].get("truth_state") == "DOCUMENTED"
+    assert json.loads(next(CAPTURE_DIR.glob("*sn0803*.json")).read_text(encoding="utf-8"))["source"]["ratification"]["status"] == "SELF_DOCUMENTED_ONLY"
+
 def test_ratified_directive_objects_are_not_deleted_as_duplicates():
     """Regression pin for the exact failure mode.
 
