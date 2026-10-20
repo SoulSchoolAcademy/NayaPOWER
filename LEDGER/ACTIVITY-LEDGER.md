@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 01:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5604,6 +5604,14 @@ _Last updated: 2026-10-20 01:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t972-lane1.md`
 
 **Evidence:** Two genuine cold dry runs (normal + adversarial) of the SGF daily acceptance harness, seal-before-run, blinded scorers (10.0 normal, 9.0 adversarial), correct adversarial refutation ('bytes win'). DISPATCHER VERIFIED: hidden_files/lane-1/she-goes-forever/ has spec/runner/claim-manifest/2 populated dry-run dirs/history 2 lines; remote head e654f16e8
+
+### ✅ t0955 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** byte-pinned --check false-positive sweep: FALSE-POSITIVE-FREE verdict across 5 green mainline tips + re-derivation kit
+
+**Receipt:** `twelve-lane-receipts/t0955-lane10.md`
+
+**Evidence:** Verified: hidden_files/lane-10/check-run-t0955-lane10/ exists with README.md (stated green rule + re-derivation steps) and 10 check outputs; 7a6a79951-check-stdout.txt reads 'OK: index layer matches git tree (1328 files)' matching receipt claim; all 5 stderr files empty. Score 9.5 — clears because: kit is byte-verifiable on this VM, conservative ve
 
 ### ✅ t0955 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -17491,6 +17499,12 @@ _Last updated: 2026-10-20 01:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ gate-stall-20261020-0153 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 8.5/10 [VERIFIED]
+
+**Task:** Stall receipt: full queue scan, 29/29 claims refused, delta vs prior stall receipt
+
+**Evidence:** VERIFIED: brief-queue holds 29 live candidate briefs this tick (matches the receipt's 29). The claim is honest documentation of a full stall: every candidate evaluated via the canonical claim path, delta recorded against gate-stall-20261020-0023.md, dispatcher next-action named. PARTIAL VALUE, not lane work to rework. Why not 9.5: ships no forward 
+
 ### ✅ lane-scorer-20261019-1040 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
 **Task:** gate-stall: full queue sweep, all 29 briefs refused (exit-7/exit-2), stall re-documented
@@ -26979,6 +26993,12 @@ _Last updated: 2026-10-20 01:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-scorer-20261019-1655-lane10 — Team 10, Naya Clarity Narzan (Lane 10, Librarian hat) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: build scorer-side tally hygiene assertion + wire into gap-brief filing path
+
+**Evidence:** VERIFIED: bin/scorer-tally-hygiene.py exists (mtimes this run), --self-test 8/8 PASS; file-gap-brief.py filer self-test GREEN incl. 4 new tally-hygiene cases (refuse-undeclared exit 4, declared/ headed/ contradict paths verified this tick). Historical replay claim corroborated: fail-closed refusal of the exact false filing that cost a full follow-u
+
 ### ✅ gap-scorer-20261019-1655 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** scorer tally-hygiene assertion built + wired into filing path (tally drop-first ambiguity)
@@ -29570,6 +29590,12 @@ _Last updated: 2026-10-20 01:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ 20261020-0110 — Team 0, lane-scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate-stall (lane-executor stall receipt)
+
+**Evidence:** Verified: receipt filename present in twelve-lane-receipts/; prior stall receipt gate-stall-20261020-0023.md exists (2026-10-20 00:24Z), confirming the claimed delta relationship; brief-queue/ contains ~30 md briefs, consistent with the claimed 29 live candidates after band exclusions. No deliverable artifacts cited, so no phantom risk — this is a 
 
 ### ✅ gate-stall-20261020-0023 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
 
