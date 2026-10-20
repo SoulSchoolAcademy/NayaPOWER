@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-20 17:14 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-20 18:14 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 649 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 658 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -58,13 +58,13 @@
 - [#2743](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2743) docs: define NayaNET build-see-learn-share product loop
 - …and 58 more
 
-### KNOW (27)
+### KNOW (28)
+- [#2811](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2811) restamp: brain index at tip 7b2d6eb9 — IB-000035..046 inventoried (Del 📝draft
 - [#2791](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2791) drift-detector: re-key duplicate_published_page_paths on content colli
 - [#2781](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2781) fix(brain-index): re-stamp index layer at tip 1a1c22d3 (rung 1)
 - [#2760](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2760) fix(compound-scale): hermetic citation fixtures + freshness CI gate (c
 - [#2736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736) fix(brain-index): make regeneration line-ending deterministic on every
-- [#2683](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2683) [INTELLIGENT_BLOCKS] #2642 reconcile: dock gate-reader doc + brain-ind
-- …and 22 more
+- …and 23 more
 
 ### ACT (3)
 - [#2457](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2457) flip #3: lane-9 test-leg fixes (second ADVISE-count site + receipt-gat
@@ -87,37 +87,37 @@
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - …and 26 more
 
-### BUILD (249)
+### BUILD (251)
+- [#2806](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2806) docs(toolset): THE NAYA TOOL DIRECTORY — placed at BRAIN/00-ACTIVATION
+- [#2804](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2804) Mark IB-000042 SUPERSEDED by IB-000043 (Shawn ruling 2026-10-20)
 - [#2798](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2798) gov: 0029 THE NAYA PROCESS V1 — Shawn's dictated operating process
 - [#2795](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2795) fix(activation): self-resolving live-board pointers — boot_pointer_che
 - [#2790](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2790) [LAW] Duplicate-laws merge: port 0007s 5 operational rules into 0016, 
-- [#2789](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2789) Streamline: remove dead weight (Shawn-authorized audit)
-- [#2788](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2788) Oath: the Behavior Declaration, spoken at every activation
-- …and 244 more
+- …and 246 more
 
-### WIRE (127)
+### WIRE (128)
+- [#2807](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2807) docs(brain): correct stale decision-seam claims — decision context is 
 - [#2786](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2786) WIRE: close blockquote-mention hole in merge-consensus gate
 - [#2783](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2783) [Team Verity] dock: land Eta's v2 9.5-flip patch @ tip 1a1c22d3
 - [#2778](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2778) law: correct seat-count prose in consensus-gate registry (15 -> 18)
 - [#2768](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2768) [Team Verity] Naya Beta | KNOW w484: re-cut w440 leg 4 (pre-write vali
-- [#2729](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2729) Add team-declared worker registry; gate reads it (no more hardcoded se
-- …and 122 more
+- …and 123 more
 
-### TEAM (12)
+### TEAM (13)
+- [#2803](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2803) [Team Verity] ops: THE NAYA TOOL DIRECTORY V1 — the catalog every Naya
 - [#2618](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2618) [DRAFT] Advisory post-conformance scan for the Team Feed Standard 📝draft
 - [#2588](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2588) [DRAFT] NayaPOWER Operating Manual V1 — team operating standard 📝draft
 - [#2564](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2564) Team Feed Standard: the ultimate posting template (Shawn's audit)
 - [#2547](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2547) [Naya 5] Ultimate execution report 2026-10-13: 14 answers, 9x10 assess
-- [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
-- …and 7 more
+- …and 8 more
 
-### INFRA (46)
+### INFRA (47)
+- [#2809](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2809) docs(activation): reconcile oath guide with ratified protocol and live
 - [#2794](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2794) KNOW: stage w598 current-truth-discipline byte-test to tools/
 - [#2787](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2787) fix(ci): Protocol Watchdog jobs missing actions/checkout — both report
 - [#2757](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2757) Board-pointer repair: dead boards cited as live in the activation surf
 - [#2749](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2749) fix(builder): explicit UTF-8 on Windows without environment workaround 📝draft
-- [#2745](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2745) Visual Smart Contract v1 — the official machine contract for the smart
-- …and 41 more
+- …and 42 more
 
 ### PRODUCT (40)
 - [#2774](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2774) Test: GitHub → Hub pipeline (IB-999999)
@@ -135,13 +135,13 @@
 - [#1933](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1933) self(trial): full-scale identity trial V2 — 28/28 PASS (cross-seat + c
 - …and 1 more
 
-### GOVERN (37)
+### GOVERN (40)
+- [#2810](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2810) fix(protocol): reject false independent approvals (case, dismissal, co
+- [#2808](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2808) Protocol operationalization: machine spec, pins, and enforcement for t
+- [#2805](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2805) [PROTOCOL LOCK-IN] 0029 machine view — THE NAYA PROCESS compiled JSON 
+- [#2802](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2802) fix(protocol): tighten Honor activation, Hive venue and value truth bo
 - [#2797](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797) Governance: NAYA OATH OF HONOR (0023) — Shawn's 2026-10-20 law, three 
-- [#2647](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2647) Ratify PROTOCOL.md: candidate → canonical law (Shawn 2026-10-15)
-- [#2573](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2573) 0025-PERSISTENT-PROTOCOL-V1: NayaPOWER as the perpetual persistent int 📝draft
-- [#2489](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2489) Fix: PROTOCOL.md reading list no longer calls itself ratified canonica 📝draft
-- [#2487](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2487) Fix: LAWS-INDEX-V1.md no longer calls PROTOCOL.md canonical law 📝draft
-- …and 32 more
+- …and 35 more
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*

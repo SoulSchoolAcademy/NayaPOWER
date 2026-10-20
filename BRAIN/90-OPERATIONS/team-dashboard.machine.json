@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-20T17:15:16+00:00",
+ "generated_utc": "2026-10-20T18:15:15+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -102,6 +102,12 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
+     "number": 2811,
+     "title": "restamp: brain index at tip 7b2d6eb9 \u2014 IB-000035..046 inventoried (Delta w623)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2811",
+     "draft": true
+    },
+    {
      "number": 2791,
      "title": "drift-detector: re-key duplicate_published_page_paths on content collision (Delta w572)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2791",
@@ -142,15 +148,9 @@
      "title": "BRAIN: regenerate index layer at live tip 665098e3",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2415",
      "draft": false
-    },
-    {
-     "number": 2407,
-     "title": "repair(brain-index): re-stamp index on main 665098e3 (drift-13)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407",
-     "draft": false
     }
    ],
-   "open_pr_count": 27
+   "open_pr_count": 28
   },
   {
    "id": "act",
@@ -348,6 +348,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2806,
+     "title": "docs(toolset): THE NAYA TOOL DIRECTORY \u2014 placed at BRAIN/00-ACTIVATION/THE-NAYA-TOOL-SET.m",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2806",
+     "draft": false
+    },
+    {
+     "number": 2804,
+     "title": "Mark IB-000042 SUPERSEDED by IB-000043 (Shawn ruling 2026-10-20)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2804",
+     "draft": false
+    },
+    {
      "number": 2798,
      "title": "gov: 0029 THE NAYA PROCESS V1 \u2014 Shawn's dictated operating process",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2798",
@@ -382,21 +394,9 @@
      "title": "docs: replace hard-coded board numbers in boot bytes with mission-snapshot indirection",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2782",
      "draft": false
-    },
-    {
-     "number": 2780,
-     "title": "Promote p1c live-board leg to main (gr-w519-alpha-p1c-liveboard)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2780",
-     "draft": false
-    },
-    {
-     "number": 2779,
-     "title": "ACT w516: pr_body_selfcheck --head liveness warning (warn-never-fail)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2779",
-     "draft": false
     }
    ],
-   "open_pr_count": 249
+   "open_pr_count": 251
   },
   {
    "id": "wire",
@@ -416,6 +416,12 @@
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
+    {
+     "number": 2807,
+     "title": "docs(brain): correct stale decision-seam claims \u2014 decision context is wired (WO4, PR #2063",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2807",
+     "draft": false
+    },
     {
      "number": 2786,
      "title": "WIRE: close blockquote-mention hole in merge-consensus gate",
@@ -457,15 +463,9 @@
      "title": "Consensus gate: parse 12-lane seat tags + brief-time author-seat check (gap-t1442)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2717",
      "draft": false
-    },
-    {
-     "number": 2697,
-     "title": "HTTP-DETAIL: log truncated HTTP error bodies in ci_claim_evidence_gate.api_get",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2697",
-     "draft": false
     }
    ],
-   "open_pr_count": 127
+   "open_pr_count": 128
   },
   {
    "id": "team",
@@ -485,6 +485,12 @@
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
+    {
+     "number": 2803,
+     "title": "[Team Verity] ops: THE NAYA TOOL DIRECTORY V1 \u2014 the catalog every Naya reads at activation",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2803",
+     "draft": false
+    },
     {
      "number": 2618,
      "title": "[DRAFT] Advisory post-conformance scan for the Team Feed Standard",
@@ -526,15 +532,9 @@
      "title": "Add TEAM-EXECUTION-PROMPT.md \u2014 continuous 10/10 standing order",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2161",
      "draft": false
-    },
-    {
-     "number": 1639,
-     "title": "Batch-2 law forging: QMAX Craftsman Charter + SmartLedger next-layer + law lineage (PROPOS",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1639",
-     "draft": false
     }
    ],
-   "open_pr_count": 12
+   "open_pr_count": 13
   },
   {
    "id": "infra",
@@ -554,6 +554,12 @@
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
    "open_prs": [
+    {
+     "number": 2809,
+     "title": "docs(activation): reconcile oath guide with ratified protocol and live board",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2809",
+     "draft": false
+    },
     {
      "number": 2794,
      "title": "KNOW: stage w598 current-truth-discipline byte-test to tools/",
@@ -595,15 +601,9 @@
      "title": "Composer v1 + gap closure (43->39 mapping, feed specimen) \u2014 item 15b",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716",
      "draft": false
-    },
-    {
-     "number": 2689,
-     "title": "CI rate-limit resilience: cut redundant API burn (~85% on hot paths)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2689",
-     "draft": false
     }
    ],
-   "open_pr_count": 46
+   "open_pr_count": 47
   },
   {
    "id": "product",
@@ -750,15 +750,33 @@
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
-     "number": 2797,
-     "title": "Governance: NAYA OATH OF HONOR (0023) \u2014 Shawn's 2026-10-20 law, three tongues",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797",
+     "number": 2810,
+     "title": "fix(protocol): reject false independent approvals (case, dismissal, comments)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2810",
      "draft": false
     },
     {
-     "number": 2647,
-     "title": "Ratify PROTOCOL.md: candidate \u2192 canonical law (Shawn 2026-10-15)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2647",
+     "number": 2808,
+     "title": "Protocol operationalization: machine spec, pins, and enforcement for the ratified protocol",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2808",
+     "draft": false
+    },
+    {
+     "number": 2805,
+     "title": "[PROTOCOL LOCK-IN] 0029 machine view \u2014 THE NAYA PROCESS compiled JSON (addition 3)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2805",
+     "draft": false
+    },
+    {
+     "number": 2802,
+     "title": "fix(protocol): tighten Honor activation, Hive venue and value truth boundaries",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2802",
+     "draft": false
+    },
+    {
+     "number": 2797,
+     "title": "Governance: NAYA OATH OF HONOR (0023) \u2014 Shawn's 2026-10-20 law, three tongues",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797",
      "draft": false
     },
     {
@@ -778,27 +796,9 @@
      "title": "Fix: LAWS-INDEX-V1.md no longer calls PROTOCOL.md canonical law",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2487",
      "draft": true
-    },
-    {
-     "number": 2476,
-     "title": "Fix: PROTOCOL.md is candidate awaiting ratification, not canonical law",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2476",
-     "draft": false
-    },
-    {
-     "number": 2414,
-     "title": "docs(govern): canonicalize the Agent Briefing in three forms (0022) [DRAFT]",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2414",
-     "draft": true
-    },
-    {
-     "number": 2394,
-     "title": "docs(roles): give every agent a home-run briefing charter",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2394",
-     "draft": false
     }
    ],
-   "open_pr_count": 37
+   "open_pr_count": 40
   }
  ],
  "recent_activity": [
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 649,
- "unassigned_prs": 249
+ "open_pr_total": 658,
+ "unassigned_prs": 251
 }
