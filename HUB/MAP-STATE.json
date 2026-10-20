@@ -1,0 +1,41 @@
+{
+  "measured_at": "2026-10-20T17:08:45.849348+00:00",
+  "probes": {
+    "supabase_tables": {
+      "status": "unknown",
+      "evidence": "measurement unavailable: no SUPABASE_URL in this environment. Last verified baseline (2026-10-15, Management API): 22 tables, 12,026 rows \u2014 NOT re-measured this run. Row counts require an authenticated key (anon role is RLS-locked, 42501) \u2014 loud unknown, not fake green.",
+      "measured_at": "2026-10-20T17:08:29.850008+00:00"
+    },
+    "feeds": {
+      "status": "amber",
+      "evidence": "live: today (5 items, 0:48:48 old), lists (5 items, 0:48:49 old), spaces (5 items, 0:48:50 old); missing/invalid: feed, reports, library, connect, ledger, connections, mail, settings, manifest",
+      "measured_at": "2026-10-20T17:08:34.634742+00:00"
+    },
+    "bridge": {
+      "status": "amber",
+      "evidence": "PR #2679 open (PR open, unmerged); bridge code in repo: not found at checked paths",
+      "measured_at": "2026-10-20T17:08:36.008065+00:00"
+    },
+    "rooms": {
+      "status": "amber",
+      "evidence": "0/9 on seeds, 8/9 loading, 0/9 unknown \u2014 hub/: mixed (seeds: OFFICIAL_NOTES; loaders: NayaPowerRuntime); hub/today: loading; hub/lists: loading; hub/spaces: loading; hub/mail: loading; hub/reports: loading; hub/ledger: loading; hub/library: loading; hub/connections: loading",
+      "measured_at": "2026-10-20T17:08:37.474198+00:00"
+    },
+    "capture": {
+      "status": "amber",
+      "evidence": "latest run completed/failure (1 day, 12:36:28 old, event=workflow_dispatch); 0/5 recent runs scheduled; recent success: True, recent failure: True",
+      "measured_at": "2026-10-20T17:08:37.970701+00:00"
+    },
+    "dock": {
+      "status": "amber",
+      "evidence": "#2676 open (CI failing); #2678 closed (merged) (CI failing); #2679 open (CI failing); #2680 open (CI failing); #2686 open (CI failing)",
+      "measured_at": "2026-10-20T17:08:45.849294+00:00"
+    }
+  },
+  "summary": {
+    "green": 0,
+    "amber": 5,
+    "red": 0,
+    "unknown": 1
+  }
+}
