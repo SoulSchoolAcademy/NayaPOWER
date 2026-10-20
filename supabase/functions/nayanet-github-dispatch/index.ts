@@ -288,9 +288,30 @@ Deno.serve(async (req) => {
         typeof replayContentJson?.sha !== "string" ||
         !replayCommitRes.ok ||
         replayCommitJson?.sha !== replayCommitSha ||
-        replayFile?.sha !== replayContentJson.sha
+        replayFile?.filename !== replayRepoPath ||
+        typeof replayFile?.sha !== "string"
       ) {
         return json({ ok: false, pipeline: "PROJECTION_FAILED", error: "PROJECTION_UNVERIFIED" }, 502);
+      }
+      if (replayFile.sha !== replayContentJson.sha) {
+        // The stored commit is valid and changed this exact path, but main now
+        // points at a different blob. This is a superseded projection, not proof
+        // that the historical commit itself was invalid. Do not return smart_link
+        // as present-tense verified output and do not mutate the completed receipt.
+        return json({
+          ok: false,
+          pipeline: "PROJECTION_SUPERSEDED",
+          error: "PROJECTION_SUPERSEDED",
+          receipt: { id: claimRow.id },
+          replayed: true,
+          projection_verification: {
+            completed_at: claimRow.completed_at,
+            commit_sha: replayCommitSha,
+            committed_blob_sha: replayFile.sha,
+            current_blob_sha: replayContentJson.sha,
+            credential_mode: replayCredential.mode,
+          },
+        }, 409);
       }
       return json({
         ok: true,

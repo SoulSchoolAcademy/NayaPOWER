@@ -48,6 +48,8 @@ function runtime(opts = {}) {
     grant = GRANT_ROW,
     tx = TX_ROW,
     receipt = null,
+    replayCurrentBlobSha = null,
+    replayCommitBlobSha = null,
   } = opts;
   let handler;
   const receipts = new Map();
@@ -55,7 +57,7 @@ function runtime(opts = {}) {
   let committedPath = null;
   if (receipt) {
     receipts.set(receipt.idempotency_key, { ...receipt });
-    if (receipt.repo_path) { blobs.set(receipt.repo_path, receipt.blob_sha || 'blobsha123'); committedPath = receipt.repo_path; }
+    if (receipt.repo_path) { blobs.set(receipt.repo_path, replayCurrentBlobSha || receipt.blob_sha || 'blobsha123'); committedPath = receipt.repo_path; }
   }
   const githubCalls = [];
 
@@ -199,7 +201,7 @@ function runtime(opts = {}) {
         return new Response(JSON.stringify({ message: 'Not Found' }), { status: 404 });
       }
       if (u.startsWith('https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/commits/')) {
-        return new Response(JSON.stringify({ sha: 'commitsha456', files: [{ filename: committedPath, sha: blobs.get(committedPath) }] }), { status: 200 });
+        return new Response(JSON.stringify({ sha: 'commitsha456', files: [{ filename: committedPath, sha: replayCommitBlobSha || blobs.get(committedPath) }] }), { status: 200 });
       }
       throw new Error('unexpected fetch ' + u);
     },
@@ -335,6 +337,28 @@ test('idempotent replay re-verifies commit identity and the current projected bl
   assert.equal(body.replayed, true);
   assert.equal(body.projection_verification.commit_sha, 'commitsha456');
   assert.ok(githubCalls.some((c) => c.url.endsWith('/commits/commitsha456')), 'replay must validate stored commit identity');
+  assert.equal(githubCalls.some((c) => c.method === 'PUT'), false, 'replay must not create another commit');
+});
+
+test('idempotent replay reports superseded when the current projection differs from the recorded commit', async () => {
+  const stored = {
+    id: 'receipt-0', idempotency_key: IDEM, status: 'completed',
+    smart_link: 'https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/x/IB-000042/smart-note.md',
+    repo_path: 'x/IB-000042/smart-note.md', commit_sha: 'commitsha456', blob_sha: 'blobsha123',
+    completed_at: '2026-09-30T10:05:00.000Z',
+  };
+  const { post, githubCalls } = runtime({
+    receipt: stored,
+    replayCurrentBlobSha: 'newer-blobsha789',
+    replayCommitBlobSha: 'blobsha123',
+  });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 409);
+  assert.equal(body.ok, false);
+  assert.equal(body.pipeline, 'PROJECTION_SUPERSEDED');
+  assert.equal(body.error, 'PROJECTION_SUPERSEDED');
+  assert.equal(body.smart_link, undefined, 'superseded replay must not claim the current link is the recorded projection');
+  assert.ok(githubCalls.some((c) => c.url.endsWith('/commits/commitsha456')));
   assert.equal(githubCalls.some((c) => c.method === 'PUT'), false, 'replay must not create another commit');
 });
 
