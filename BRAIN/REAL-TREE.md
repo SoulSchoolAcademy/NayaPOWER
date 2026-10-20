@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-19  
-**Receipt basis commit:** `7a6a799513ad2206e58522ea07bc406f34c46242`  
-**Inventory file count:** 1329  
+**Generated:** 2026-10-20  
+**Receipt basis commit:** `4cb51e531bdac3d2960ddd77b4ab894d56fed325`  
+**Inventory file count:** 1349  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,11 +11,11 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 62 |
+| 01-GOVERNANCE | 63 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 649 |
+| 05-MEMORY | 668 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -116,6 +116,7 @@
 - `BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.ai.md` — `fef7ff661f60` (4131 bytes)
 - `BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.human.md` — `911a3bb0ec96` (5683 bytes)
 - `BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json` — `26daa956f351` (3439 bytes)
+- `BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.md` — `4eb42aa543db` (4062 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
@@ -600,7 +601,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-0595/IB-SMART-NOTE-20261001-sn0595-complete-the-app-doctrine.md` — `f1149459829e` (8651 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-0596/IB-SMART-NOTE-20261001-sn0596-naya-signature-design-mastery.md` — `b63c66afc291` (7470 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-0597/IB-SMART-NOTE-20261002-sn0597-human-centered-design-intelligence.md` — `6b4757cc65c1` (7294 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0594/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md` — `0a9d960c6d2e` (1688 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0594/IB-SMART-NOTE-20261001-hub-is-intelligence-projection-dup0594.md` — `0a9d960c6d2e` (1688 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/03/SYSTEM-INTELLIGENCE/CI-TRIAGE/TEST-DEFECT-CLASSIFICATION/SN-0232/IB-SMART-NOTE-20261003-sn0232-test-that-pins-the-bug-is-the-defect.md` — `6bf858c49f3e` (7164 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/03/SYSTEM-INTELLIGENCE/HUMAN-UNDERSTANDING/INTENT-READING/SN-0229/IB-SMART-NOTE-20261003-sn0229-tune-to-intent-not-to-words.md` — `0e2f8a6e71b1` (6348 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/03/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CLASSIFICATION-INTEGRITY/SN-0231/IB-SMART-NOTE-20261003-sn0231-repair-by-predeclared-closed-registry.md` — `fc7f4286bdd6` (6733 bytes)
@@ -824,6 +825,25 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md` — `151b620a7c56` (6817 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md` — `f2553ebdef9e` (10932 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md` — `9d393e7f8c48` (9330 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/how-nayanet-works/IB-000038/smart-note.md` — `38337b0c355c` (9150 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000035/smart-note.md` — `025259f7a34f` (2659 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000036/smart-note.md` — `05fc29be3170` (20379 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000037/smart-note.md` — `e83585f5aa67` (20379 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0801/IB-SMART-NOTE-20261020-sn0801-declare-who-you-are.md` — `8137f0a94e61` (9342 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0802/IB-SMART-NOTE-20261020-sn0802-oath-of-honor.md` — `40607e414036` (9687 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/protocol/SN-0803/IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified.md` — `ba06a3e2e957` (10370 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/viral-law/SN-0804/IB-SMART-NOTE-20261020-sn0804-viral-law.md` — `148ca672b490` (7177 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/emit-ratified-the/IB-000046/smart-note.md` — `b961d6f1c0eb` (10639 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/emit/IB-000043/smart-note.md` — `9755c18abd77` (8127 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/intelligent-note/IB-000042/smart-note.md` — `fd041520f44f` (4406 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/serve-humans-their/IB-000049/smart-note.md` — `aadf7d04e648` (6767 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-behavior-declaration/IB-000039/smart-note.md` — `ef673299495a` (8875 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-naya-process/IB-000045/smart-note.md` — `898c682e1d1e` (13570 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-naya-tool/IB-000044/smart-note.md` — `4decfb1367a6` (9309 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-oath-of/IB-000040/smart-note.md` — `89a7bd75f38b` (7912 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-oath-of/IB-000041/smart-note.md` — `f15207e35d8a` (10255 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/viral-factory/IB-000048/smart-note.md` — `eb6d6770e446` (11854 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/words-without-action/IB-000047/smart-note.md` — `27dc18eeb8ae` (7144 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `8a02bda6be42` (27455 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `0fc11ff78dc9` (4099 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
