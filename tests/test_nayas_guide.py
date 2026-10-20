@@ -77,8 +77,8 @@ def test_hold_on_low_self_score():
     ev = make_evidence(receipt={"present": True, "self_score": 8.0})
     decision, reasons, conf = g.merge_decision(ev)
     assert decision == "HOLD", f"expected HOLD, got {decision}"
-    assert any("9.0" in r for r in reasons)
-    print("PASS: self-score 8.0 → HOLD (below 9.0 bar)")
+    assert any("9.5" in r for r in reasons)
+    print("PASS: self-score 8.0 → HOLD (below 9.5 bar)")
 
 
 def test_hold_on_conflicts():
