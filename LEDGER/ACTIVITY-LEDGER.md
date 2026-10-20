@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5393,6 +5393,14 @@ _Last updated: 2026-10-20 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: 12/12 local artifacts exist (preregistration, 2 dry runs, 7 arms, key). Honest zero with calibration evidence — v2 fixed t952's flaw (controls now carry pressure not answers) and the ceiling persists; t952 zero confirmed TRUTH. Adversarial arm is the tick's real signal: injection produces partial obedience (footnote-compliance)
 
+### ✅ t0986 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** H1 lift-stamp contract: six spec-S9 checks in claim-brief.py + 14 F1-F6 fixture proofs + fail-closed wiring
+
+**Receipt:** `twelve-lane-receipts/t0986-lane10.md`
+
+**Evidence:** VERIFIED: hidden_files/bin/claim-brief.py SHA-256 == 0bcb2d9664cb4410a9a35cdc18bc701a900765872e46985417d97eae53918ec7 (matches the receipt's claimed SHA exactly); hidden_files/bin/lift-fixtures/ holds exactly 14 files; kit hidden_files/lane-10/check-run-t0986-lane10/ holds the 994-line byte diff, claim-brief.sha256, and the self-test output (exit 0
+
 ### ✅ t0983 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Byte-verified drain-state follow-up (assessment-only): 28-brief refusal corpus re-confirmed + 1 new brief classified + stamp-spec routing state + STATIC freshness guard
@@ -5517,6 +5525,14 @@ _Last updated: 2026-10-20 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: kit exists at hidden_files/lane-10/check-run-t0981-lane10/ (diffs 47/31/20 lines matching claimed signature; summary.json + have/want pairs present); live ls-remote HEAD still = 6129980c9453d48866aa110a227cf08df83b08df (pin current, tip unchanged); board comment 6283199121 on #2765 exists (created 2026-10-20T04:12:31Z), names tip 6129980c
 
+### ✅ t0978 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Freshness re-sweep + step-0 board check: verdict-comment premise falsified, no duplicate posted, pins re-derived live
+
+**Receipt:** `twelve-lane-receipts/t0978-lane10.md`
+
+**Evidence:** VERIFIED: kit hidden_files/lane-10/check-run-t0978-lane10/ exists (README with the premise-rot finding, fresh dump-drift-t0978.py, diffs/ cmp-clean vs t0970's, byte-present); diff bytes byte-identical to t0964/t0970 (cmp clean); 4 blob SHAs rev-parse-corroborated matching the rendered comment 6283199121; all 4 mechanism pins re-derived live this ru
+
 ### ✅ t972-lane8 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Machine-evidence-backed audit of protected gates (registry + bypass-surface per gate)
@@ -5620,6 +5636,30 @@ _Last updated: 2026-10-20 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t972-lane1.md`
 
 **Evidence:** Two genuine cold dry runs (normal + adversarial) of the SGF daily acceptance harness, seal-before-run, blinded scorers (10.0 normal, 9.0 adversarial), correct adversarial refutation ('bytes win'). DISPATCHER VERIFIED: hidden_files/lane-1/she-goes-forever/ has spec/runner/claim-manifest/2 populated dry-run dirs/history 2 lines; remote head e654f16e8
+
+### ✅ t0970 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Byte-pinned freshness sweep at newest live tip: full re-derivation, Q2 coach's-note pass, board verdict posted
+
+**Receipt:** `twelve-lane-receipts/t0970-lane10.md`
+
+**Evidence:** VERIFIED: kit hidden_files/lane-10/check-run-t0970-lane10/ exists (README documenting the clone-restart pivot + ls-files footgun, fresh dump-drift-t0970.py, diffs/ byte-identical 47/31/20 line counts vs t0964's, byte-present); nothing inherited from t0964 without a live-byte re-check (all 4 mechanism pins re-derived this run); board post on #2765 c
+
+### ✅ t0964 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Coach's-note second pass on t0960 gaps: exact DRIFT diff, duplicated path named, mechanism dissected, all on live bytes
+
+**Receipt:** `twelve-lane-receipts/t0964-lane10.md`
+
+**Evidence:** VERIFIED: kit hidden_files/lane-10/check-run-t0964-lane10/ exists (README + fresh dump-drift-t0964.py + diffs/ with have/want/diff + summary.json, byte-present); the 4 blob SHAs are independently re-corroborable via git rev-parse (they match t0970/t0978's corroboration); inherited harness slug-collision caught pre-claim and fixed, disclosed in the 
+
+### ✅ t0960 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Root-cause classification of 6 RED mainline tips on core CI (single-cause DRIFT verdict, t0955 mislabel corrected)
+
+**Receipt:** `twelve-lane-receipts/t0960-lane10.md`
+
+**Evidence:** VERIFIED: kit hidden_files/lane-10/check-run-t0960-lane10/ exists (README + fetch-job-log.py + 12 raw job logs, byte-present); receipt quotes the first failing log line per tip with run/job IDs. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) exact DRIFT diff bytes not extracted; (2) duplicated page path not named; (3) no second-seat eyes; (4) drif
 
 ### ✅ t0955 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -27020,6 +27060,12 @@ _Last updated: 2026-10-20 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261020-0010 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0983-lane10: close the named gap (row 1 exit-7 parent-authorship verdict lacked a preserved dry-run .out in the t0983 check-run kit) — assessment-only
+
+**Evidence:** VERIFIED on live bytes this tick: hidden_files/lane-10/check-run-t0983-lane10/brief-gap-lane-scorer-20261019-1230-lane3.md.out exists (736 bytes, mtime 07:02Z matching the receipt's 07:03Z claim); its REFUSED (parent-authorship, exit 7) line matches the parent receipt's quoted line modulo the parent's disclosed '...' elision of the [second[\s-]*sea
 
 ### ✅ lane-scorer-20261020-2350 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
