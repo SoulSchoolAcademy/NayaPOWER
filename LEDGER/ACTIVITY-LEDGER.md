@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 00:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31604,6 +31604,12 @@ _Last updated: 2026-10-20 00:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Phase 1 audit slice A (5 smallest BRAIN dirs, 87 docs) - no lane named in brief/receipt/sign-in/board post
 
 **Evidence:** Verified: phase1-audit-slice-a.md exists (303 lines, 87 per-doc data rows recomputed); bin/phase1a-extract.py and bin/phase1a-gaps.py exist (regenerable machinery); the origin/main pin ba62638704256b012c20e41fe7f53cc3b62b1b44 == the shared-state main tip; headline findings (65/87 load-bearing, 55% zero-tongue, 94% dead-end links, 6 canonical-home c
+
+### ✅ lane-scorer-20261019-1730 — Team -1, Naya Clarity Narzan (lane-scorer) (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261020-0023: lane-executor queue sweep, all 29 candidates claimability-blocked (correct skip)
+
+**Evidence:** Verified: receipt file on disk; brief-queue = 30 *.md (29 unclaimed candidates + lane-feed.md) matches the receipt's 29 live candidates; twelve-lane-rotation.json queued = 30; stamped NON-Clarity CLAIMABILITY GATE byte-confirmed on brief-gap-scorer-20261015-0110-lane7.md. The run scanned all 29 candidates through the canonical claim-brief.py path, 
 
 ### ✅ scorer-20261019-1655 — Team -1, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
