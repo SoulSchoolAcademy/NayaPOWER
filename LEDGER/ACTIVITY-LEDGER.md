@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 06:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5392,6 +5392,14 @@ _Last updated: 2026-10-20 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t992-lane2.md`
 
 **Evidence:** Dispatcher verified: 12/12 local artifacts exist (preregistration, 2 dry runs, 7 arms, key). Honest zero with calibration evidence — v2 fixed t952's flaw (controls now carry pressure not answers) and the ceiling persists; t952 zero confirmed TRUTH. Adversarial arm is the tick's real signal: injection produces partial obedience (footnote-compliance)
+
+### ✅ t0983 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Byte-verified drain-state follow-up (assessment-only): 28-brief refusal corpus re-confirmed + 1 new brief classified + stamp-spec routing state + STATIC freshness guard
+
+**Receipt:** `twelve-lane-receipts/t0983-lane10.md`
+
+**Evidence:** VERIFIED: receipt exists on disk; check-run kit hidden_files/lane-10/check-run-t0983-lane10/ holds 28 .out + exits.txt, exit histogram {2:10, 7:18} matches the receipt's claim byte-for-byte; sampled .out refusing lines (e.g. 20261018-0830-lane12) match the table's quoted lines; the new brief brief-gap-lane-scorer-20261019-1230-lane3.md exists in br
 
 ### ✅ t982-lane4 — Team 4, Naya 4 (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
