@@ -1,0 +1,80 @@
+# SECURITY — SERVER-SIDE ONLY.
+# This workflow runs the hub feeds emitter, which reads Supabase through the
+# Management API (read-only SQL, RLS-bypassing). It must NEVER be ported to a
+# client-side or browser step: RLS is the only thing standing between these
+# queries and private rows. The emitted *.json files are metadata-level
+# (ids, titles, topics, short summaries) and are the only artifacts that may
+# be served to clients.
+#
+# SETUP: scheduled runs need (1) the sb-api Management-API helper reachable on
+# the runner — set the SB_API repo variable to its executable path (the
+# script's built-in default is the author's local ~/workspace path), and
+# (2) a Supabase Management API credential available to that helper — wire it
+# as the SUPABASE_MANAGEMENT_TOKEN repo secret. Until both exist the run
+# fails closed in the emit step: it errors, nothing commits, nothing pushes.
+#
+# CADENCE: hourly (cron '0 * * * *', UTC). The "today" room is a freshness
+# surface; hourly bounds staleness at ~1h instead of ~24h for daily. Cost
+# math: each run is 5 small read-only queries, well under 2 min of runner
+# time (~48 runner-min/day). Because unchanged data commits NOTHING (see
+# IDEMPOTENCY below), hourly costs runner minutes only, not commit spam.
+# Drop to `0 6 * * *` if runner budget ever matters.
+#
+# IDEMPOTENCY: emit_hub_feeds.py rewrites a feed file only when its content
+# changed (emitted_at = last content change, not last run). The commit step
+# then diffs HUB/FEEDS/ and pushes only on a real diff — a no-change run is
+# a clean no-op commit-wise. Commits target the branch the run fired on
+# (post-merge: main), consistent with the team's derived-file practice.
+
+name: Hub Feeds Emit
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hub-feeds-emit
+  cancel-in-progress: false
+
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Emit hub feeds
+        env:
+          # Default: the in-repo runner shim (tools/sb-api, stdlib-only).
+          # The SB_API repo variable still wins wherever an operator sets it.
+          SB_API: ${{ vars.SB_API != '' && vars.SB_API || './tools/sb-api' }}
+          SUPABASE_MANAGEMENT_TOKEN: ${{ secrets.SUPABASE_MANAGEMENT_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SB_API:-}" ] || [ ! -x "${SB_API}" ]; then
+            echo "SB_API helper not configured (set the SB_API repo variable)." >&2
+            echo "Failing closed: no emission, no commit, no push." >&2
+            exit 1
+          fi
+          python3 HUB/FEEDS/emit_hub_feeds.py
+
+      - name: Commit feed changes (only when content changed)
+        run: |
+          set -euo pipefail
+          git config user.name "NayaPOWER Lane Agent"
+          git config user.email "nayapower-lane-agent@users.noreply.github.com"
+          git add HUB/FEEDS/*.json
+          if git diff --cached --quiet; then
+            echo "No feed content changed; skipping commit."
+            exit 0
+          fi
+          git commit -m "chore(feeds): refresh hub feed emissions (automated)" \
+            -m "Idempotent re-emission of today/lists/spaces via hub-feeds-emit." \
+            -m "Committed only because feed content changed; see HUB/FEEDS/emit_hub_feeds.py."
+          git push origin "HEAD:${{ github.ref_name }}"
