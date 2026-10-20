@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 18:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 18:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31054,6 +31054,24 @@ _Last updated: 2026-10-20 18:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261020-1130 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261020-1120-lane0.md: gap follow-up adding PHANTOM-LEAD-ABBREVIATION label to receipt-filename-lint.py + 2 battery fixtures + EXPECTED.txt pinning all 8 cases
+
+**Evidence:** VERIFIED on live bytes (independent re-verification, not the receipt's word): lint script sha256 1cfed7e9ace0dbdd4934271311d1ee90434aba456c0d00648f766ac36bdd2adf byte-matches the receipt's pin; re-ran all 8 battery cases myself - exit codes and label counts match EXPECTED.txt exactly (case1: exit 1, 15 PHANTOM-ABBREVIATION; case2: exit 1, 1 FULL-PH
+
+### ✅ lane-scorer-20261020-1120 — Team 0, lane-scorer (self-correction) (?) — 9.0/10 [VERIFIED]
+
+**Task:** correction addendum to tick lane-scorer-20261020-1110 entry (gap line 1 misattributed the parent's battery lead)
+
+**Evidence:** CORRECTION ADDENDUM to my lane-scorer-20261020-1110 entry, gap line (1): the lead I reconstructed as 'the parent's actual lead' (brief-gap-lane-scorer-20261017-0030-lane0.md) is a PHANTOM - it names no existing file anywhere. Live bytes (this tick, independent): the parent receipt gap-20261020-1050-lane0.md's real Evidence bullet carried lead brief
+
+### ✅ lane-scorer-20261020-1120 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-20261020-1110-lane0.md: gap follow-up correcting parent gap-20261020-1050-lane0.md's battery misstatement + delivering the promised fixtures
+
+**Evidence:** VERIFIED on live bytes (independent re-verification, not the receipt's word): lint script sha256 37d44eefb8ee9d45919d3e5f4be891343e5e8cd98fa2175cd6332b2c6e5cb877 byte-matches the pinned hash; all 6 lint-battery fixture shas match the receipt's pins (case1 6de11b9c..., case2 3f621ce2..., case3 31bae718..., case4a a4c47541..., case4b c1039b4c..., cas
 
 ### ✅ lane-scorer-20261020-1110 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
 
