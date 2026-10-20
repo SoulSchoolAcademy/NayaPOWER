@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 03:17 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17499,6 +17499,12 @@ _Last updated: 2026-10-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ lane-scorer-20261020-0317 — Team executor, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** seat-stall-20261020-0312: Clarity lane-executor stall — all 29 queue briefs barred to seat
+
+**Evidence:** Verified: live brief-queue holds 29 brief files (28 brief-gap + 1 brief-review; subdirs excluded) == receipt's 29/29 refused claim. Spot checks: brief-gap-gatestaall-20261019-0610-executor.md present with executor-lane gate text (class-B bar), the 2 spot-checked departed briefs (brief-gap-20261015-0350-lane3.md, brief-gap-lane-scorer-20261017-1115-
+
 ### ✅ gate-stall-20261020-0153 — Team executor, Naya Clarity Narzan (lane-executor) (?) — 8.5/10 [VERIFIED]
 
 **Task:** Stall receipt: full queue scan, 29/29 claims refused, delta vs prior stall receipt
@@ -19410,6 +19416,12 @@ _Last updated: 2026-10-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ lane-scorer-20261020-0315 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-20261018-1050-lane8: gap follow-up on parent 9.0 - owner rebase of PR #2385 + gate re-run (the arbiter named) never ran
+
+**Evidence:** Verified: PR #2385 comment 6282392004 EXISTS on live bytes (gh-api GET /issues/comments/6282392004, html_url .../pull/2385#issuecomment-6282392004) - the owed lane action (one factual byte-pinned note) is posted. Read-only otherwise: receipt documents rename-ancestor ABSENT check, head unchanged since parent, gate failure reproduced fresh at pinned
 
 ### ✅ gap-20261018-1050 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -26992,6 +27004,24 @@ _Last updated: 2026-10-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261020-0305 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0964-lane10: coach's-note second pass closing t0960's named gaps (exact DRIFT diff at newest tip, dup page path, mechanism pins)
+
+**Evidence:** Verified: kit hidden_files/lane-10/check-run-t0964-lane10/ present (README.md, dump-drift-t0964.py slug-collision-fixed, diffs/ with have/want/diff x3 files + summary.json internally consistent: REAL-TREE.json have 6674 vs want 6694 lines = the 4 named entries); main tip pinned via git ls-remote = 6129980c9453d48866aa110a227cf08df83b08df, byte-matc
+
+### ✅ lane-scorer-20261020-0250 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap-20261020-0220: close t0960 investigation-depth gap (exact DRIFT diff, dup page path, drift mechanism)
+
+**Evidence:** Verified: kit hidden_files/lane-10/check-run-gap0220-lane10/ present with dump-drift.py harness, have/want/diff snapshots for all 3 index files, summary.json internally consistent (REAL-TREE.json have 6674/want 6689, diff 42 lines; 05-MEMORY 649->652); all three named gaps closed with byte evidence — exact DRIFT diff (3 omitted smart-note entries, 
+
+### ✅ lane-scorer-20261020-0250 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0960: read-only root-cause classification of 6 newest mainline tips RED on core CI
+
+**Evidence:** Verified: kit hidden_files/lane-10/check-run-t0960-lane10/ present with all 12 raw job logs + README + 302-following fetcher; spot-checked log bytes match receipt quotes (FAILED tests/test_brain_index_freshness.py::test_passes_on_fresh_tree DRIFT line; FAIL CLOSED: required workflow failed cascade in promote-and-prove log); remote HEAD 6129980c mat
 
 ### ✅ 20261020-0220 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
