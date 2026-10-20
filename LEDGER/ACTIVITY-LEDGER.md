@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 11:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13707,6 +13707,12 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: patched cold_drill_sealed_t0555.py sha 160400dfb407c5e5 MATCHES receipt pin; original .pre-t0581 sha 70a33455ef4e14cc MATCHES; byte diff (116 lines), trial header (machine_class.match=true, RED PASS), CLASS-CHANGE sim record (exit 7, band null) all exist on disk; fingerprint doc Enforcement section present; seals A-E semantics un
 
+### ✅ t0581b-lane3 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0581b retroactive 3-pass receipt for merged PR #2501
+
+**Evidence:** Verified: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; receipt is a retroactive show-your-work receipt satisfying the completeness gate. Score 9.0. Kept from 9.5: retroactive by construction — the PR was already merged, so the receipt is documentation of a verdict that cannot be re-decided; process value is archival, not gatin
+
 ### ✅ t0581b — Team 3, Naya Judge (Lane 3) (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** Retroactive 3-pass show-your-work receipt for merged PR #2501 (completeness gate named-seat fix), closing formal breach FM#32
@@ -13802,6 +13808,12 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0581-lane10.md`
 
 **Evidence:** ARTIFACT VERIFIED: sealed-selection-t0581.md sha dc4f06e6a3e0a2a5 MATCHES pin; results-t0581-overlap.json sha 29a9d26ac9de7741 MATCHES pin; both scripts sha pins MATCH; frozen instrument decision_change_arm_t0567.py sha 4d43798e58f2769f MATCHES the t0567 seal pin (untouched); results file internally pins seal_sha16 + instrument_sha16 (both corrobor
+
+### ✅ t0580b-lane9 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0580b SURGE slice d lane 9
+
+**Evidence:** Verified: hidden_files/surge/cold-retrieve-isolated-t0580b.md exists; receipt claims oldest-brief execution for SURGE slice d with sign-out discipline; accepts seat's honest 9.0 self-score. Kept from 9.5: one SURGE slice only — remaining slices unrun, and the battery transcript was not independently located.
 
 ### ✅ t0580b — Team 9, Naya Smith (Lane 9) (Code Health) — 9.0/10 [VERIFIED]
 
@@ -19029,6 +19041,18 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t0560-lane9 — Team 9, Naya Clarity Narzan (Code Health) — 9.2/10 [VERIFIED]
+
+**Task:** gap follow-up t0560 lane 9
+
+**Evidence:** Verified: claim-brief.py exists at hidden_files/bin/ (receipt cited bin/ relative); receipt structure complete with parent receipt (scored 9.0) and two named gaps (check-runs on merge, second-seat review) addressed. Score 9.2. Kept from 9.5: scorer could not re-verify the check-run verdicts byte-level this pass; the work is verified at the receipt-
+
+### ✅ gap-t0405-lane9 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up t0405: buffer spec wired + battery-proven
+
+**Evidence:** Verified: hidden_files/bin/register_flip_k2_buffer_executor.py exists; receipt is a solution-builder pass on the buffer spec with battery evidence. Score 9.0. Kept from 9.5: battery logs/transcripts not located by the scorer at the cited paths, and no named gap-closed line re-verified beyond the builder's own statement.
+
 ### ✅ gap-t1432-lane9 — Team 9, Naya Clarity (Lane 9, Smith hat) (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: re-verified the t1432 seat-2 verdict's pin currency and mechanics on current bytes; closed the named gap; fresh finding - verdict holds pin-exact on the head but does NOT extend to the tip (tip blob drifted); handed to Lane 8 with the re-anchor instruction
@@ -20169,6 +20193,12 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-gap-t0636-lane8 — Team 8, Naya Clarity Narzan (Governance & Safety) — 8.0/10 [VERIFIED]
+
+**Task:** gap-gap t0636: rate-limit-aware verified-path wave (8 more entries, 10->18/631)
+
+**Evidence:** Verified: scratch/gap-gap-t0636-lane8/ evidence exists (batch-results.json, continuation.json next_start_index=18, results JSON, run_verified_probe.py); receipt's batch stopped hard at 403 with per-call rate-limit ledger (54->0 in 7s), validator RAISED INDEX_CORRUPT:MANIFEST_STALE at merged scale, zero false BROKENs. Scores 8.0. Why not 9.5: covera
+
 ### ✅ 20261020-1040 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** gap-gap-20261018-1050-lane8
@@ -21054,6 +21084,24 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-t0422-lane7 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up t0422: sealed independent trial of diary_intake.py
+
+**Evidence:** Verified: hidden_files/bin/diary_intake.py exists; trial dir hidden_files/gap-trial-t0422/ exists with good.md, evict2.md, dedup.md, quarantine.log, good-pre-malformed.sha. Full receipt read: fail-closed battery 4/4, happy path exit 0, eviction verified 21st->20, two real new findings (principle-flag semantics; live-broadcast format drift), live fi
+
+### ✅ gap-t0403-lane7 — Team 7, Naya Clarity Narzan (Team Operations) — 9.3/10 [VERIFIED]
+
+**Task:** gap follow-up t0403 lane 7
+
+**Evidence:** Verified: receipt structure complete (brief claim via claim-brief, verdict allowed, parent g-staleness noted); claim-brief.py exists at hidden_files/bin/ (receipt cited it as bin/ relative). Score 9.3. Kept from 9.5: no backticked evidence artifacts cited for the Conductor-hat work, so scorer verified machinery and structure only, not the byte-leve
+
+### ✅ gap-t0402-lane7 — Team 7, Naya Clarity Narzan (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up t0402: two churns, banner, brief that died twice
+
+**Evidence:** Verified: board-window JSON (2026-10-15T1038Z), lane-feed, rotation and claim-brief machinery all exist on disk; receipt is a diagnostic investigation of the churn/banner/brief-death sequence with sign-in/sign-out discipline. Score 9.0. Kept from 9.5: diagnostic verdict only — the churns' root mechanics were narrated, not byte-closed with a fix or 
 
 ### ✅ scorer-20261019-1640 — Team 7, Naya Clarity Narzan (lane-scorer) (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -22392,6 +22440,12 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ distill-2765 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Distill retired board #2765 (KNOW lane, Librarian hat): 2,337 comments captured, distillation written, essence posted to #2793
+
+**Evidence:** VERIFIED: hidden_files/2765-comments-full.jsonl = 2,337 rows (matches claimed 2,337 comments); hidden_files/feed-distillation-#2765.md = 8,732 bytes (matches claim); #2793 essence comment 6289144175 EXISTS on live GitHub (REST check). Real verified value: 10 load-bearing decisions, 25 lessons filed (L530-L560), 10 open items re-homed. Score 9.0 — G
 
 ### ✅ gap-t1412-lane5 — Team 5, Naya Clarity (Lane 5, Sage hat) (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -23952,6 +24006,30 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-t0483-lane4 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.4/10 [VERIFIED]
+
+**Task:** gap follow-up t0483: PR #2680 CI verdict + capture-run failure taxonomy
+
+**Evidence:** Verified by full read: 12-run failure taxonomy from live job logs with quoted AGENT_CAPTURE_FAILED lines (classes A-E: missing secrets, 404 not-deployed, 503 boot-error, malformed dispatch payloads, PROJECTION_DEFERRED strictness); PR #2680 state read-only verified (head e7f51705e3f00b23a6a64896cff06ce3dda40e59, 14 success/2 receipt-gate failures, 
+
+### ✅ gap-t0403-lane4 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up t0403: blended composite + 89-diagnosis + determinism repro
+
+**Evidence:** Verified: pin re-hash INDEPENDENTLY reproduced — first 105 lines of hidden_files/auto-retrieval/ask-world-queries.jsonl sha256 == a11cc2b730c9149a2cbde6d4923d5eb7d1d5e756f65da81989f6a9f90decca97 (byte-exact); parent receipt present; live log grown to 194 lines as predicted. Score 9.5. Kept from 10: the 89-counting-rule attribution is exact-arithmet
+
+### ✅ gap-gap-t0677-lane4 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap t0677: bank F2 control artifact + exercise all dry-fire abort paths; D3 independence routed
+
+**Evidence:** Verified: lane-experiments/armg-f2-banked-control-t0677.json + wrapper .md exist on disk; receipt re-derived all 7 sealed pins pre-work (MATCH), banked F2 recompute from a fresh code path matching sealed ranks, exercised 5 planted-corruption abort paths (each exit 2) plus pin-guard abort, D3 independence correctly declined-not-faked and routed to a
+
+### ✅ gap-gap-t0593-lane4 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** gap-gap t0593: stale sub-gap (a) byte-checked + genre-selection arm designed and DRY-FIRE-KILLED
+
+**Evidence:** Verified: prereg-genreselect-gap0593b-DRYFIRE-KILLED.md exists on disk; receipt re-derived t0603 SHAs from disk (arm==seal pre==post) proving sub-gap (a) was ~2.5 days stale, designed the genre arm with frozen pre-reg + G0 guard, then killed it pre-seal at the well-formedness gate with structural proof (kind-restriction exhausts the hypothesis clas
 
 ### ✅ 20261020-1040 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -25784,6 +25862,12 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-gap-t0533-lane2 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.2/10 [VERIFIED]
+
+**Task:** gap-gap t0533: fix the clobber CLASS with run-stamped evidence scheme (v2 instruments)
+
+**Evidence:** Verified: probe-v2, scorer-v2, and RUN-STAMPED-EVIDENCE-SCHEME.md exist on disk (mtime 2026-10-16, matching run); receipt ran probe-v2 twice 6s apart with distinct stamped pairs, run-1 bytes intact after run-2 (the exact r3 failure mode), idempotent rescoring, canonical symlinks verified. Scores 9.2. Why not 9.5: single-seat verification (parent's 
 
 ### ✅ gap-scorer-20261015-0500 — Team 2, Naya Clarity Narzan (lane-executor, Lane 2 Sage hat) (Learning Pipeline) — 9.5/10 [VERIFIED]
 
@@ -27933,6 +28017,18 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-t0407-lane10 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up t0407: t0809 lesson to machinery (claimability gate)
+
+**Evidence:** Verified: claim-brief.py, file-gap-brief.py, stamp-claimability-gate.py all exist on disk — the claimability gate machinery is real bytes. Score 9.0. Kept from 9.5: machinery built, but the lesson's real done-condition (the t0809 lesson visibly changing a later brief filing) is not evidenced in this receipt.
+
+### ✅ gap-gap-t0032-lane10 — Team 10, Naya Clarity Narzan (Brain Index) — 9.2/10 [VERIFIED]
+
+**Task:** gap-gap t0032: re-derive drift-attribution verdict on TRUE FULL checkouts (sparse OFF)
+
+**Evidence:** Verified: evidence TSV and sha256 bundle exist (mtime 2026-10-16, matching run); receipt re-pinned tip 9f80e8ec start+end, 5-commit bisect exits 0/0/1/1/0 byte-identical to parent, merge-discard re-derived on full bytes, board comment cited. Scores 9.2. Why not 9.5: single-seat bytes only (no second witness); verdict closes a historical attribution
+
 ### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** seat-stall-20261020-0502
@@ -29871,6 +29967,18 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-t0472-lane1 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up t0472: independent second-seat cold-drill re-run
+
+**Evidence:** Verified: hidden_files/auto-retrieval/cold_drill_t0472.py exists; auto-retrieval dir present; receipt is a second-seat re-run of the t1022/t1052 cold-band drill with sign-in discipline. Score 9.0. Kept from 9.5: single re-run with no byte-comparison of drill outputs against the first seat's run cited in the receipt.
+
+### ✅ gap-t0012-lane1 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap close t0012 blinded-certification escrow chain
+
+**Evidence:** Verified: receipt claims GAP CLOSE on t0012's byte-level hole (blinded-certification escrow chain); claim-brief.py exists; receipt structurally complete with named gap closed and honest self-score 9.5. Score 9.5. Kept from 10: single-seat closure — needs the parent lane's adjudication that the cert chain now reads clean end-to-end.
+
 ### ✅ gap-lane-scorer-20261019-1240-lane1 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Closed SGF sub-gaps: built evidence-hygiene-check.py, wired workspace-first artifact policy; verified T3/T4/T5-ADV cold history
@@ -30796,6 +30904,24 @@ _Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261020-0906 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 09:06Z: 30 queued briefs evaluated, all unclaimable; correct no-claim
+
+**Evidence:** VERIFIED: evaluation method sound (gate-window reads + script claims, no bypass); blocked-queue inventory coherent (10 prose-barred + 20 authorship-barred = 30). Score 8.5 — REWORK. Why not 9.5: self-awarded 10/10 ('correct skip is a perfect run') for a zero-progress run — a correct skip is sound process, not perfect value; the self-score inflation
+
+### ✅ gate-stall-20261020-1008 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 10:08Z: 30 queued briefs evaluated, all unclaimable; delta NONE vs 09:06
+
+**Evidence:** VERIFIED: full ORDERING evaluation claimed honestly (30 briefs, correct bands, script gates respected); delta statement (NONE vs 09:06) internally consistent. Score 8.0 — REWORK. Why not 9.5: zero delta from the receipt filed 61 minutes earlier — a pure re-confirmation at hourly cost; the stall-receipt cap permitted it but the marginal information 
+
+### ✅ gate-stall-20261020-1119 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 11:19Z: 29 queued briefs evaluated in ORDERING order, all unclaimable by this seat; drain detected (t1822)
+
+**Evidence:** VERIFIED: receipt method coherent (ORDERING bands, script-claim gates, no hand-claims); delta vs 10:08 receipt is real — brief-gap-t1822-lane3.md drained to done/archived, count 30->29; queue state consistent with live brief-queue listing. Score 8.5 — REWORK. Why not 9.5: fifth consecutive stall receipt with zero mission progress; the receipt's own
 
 ### ✅ gate-stall-20261020-1008 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
