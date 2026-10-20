@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-20 01:36 UTC_
+_Last updated: 2026-10-20 02:12 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 4570
-- ✅ Verified (8+): 4527
+- **Total scored actions:** 4574
+- ✅ Verified (8+): 4531
 - 🟡 Partial (5–7): 42
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 1
@@ -24,7 +24,7 @@ _Last updated: 2026-10-20 01:36 UTC_
 | Team 7 | Naya Conductor | 309 | 9.0 | 9.5 |
 | Team 8 | Naya Sentinel | 330 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 421 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 526 | 9.1 | 9.7 |
+| Team 10 | Naya Librarian | 528 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 247 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 277 | 9.2 | 9.5 |
 
@@ -255,6 +255,7 @@ _Last updated: 2026-10-20 01:36 UTC_
 - **lane-scorer-20261019-1400:** 1 actions, avg 9.0/10
 - **scorer-20261019-1550:** 1 actions, avg 9.0/10
 - **gate-stall-20261020-0023:** 1 actions, avg 8.5/10
+- **20261020-0110:** 1 actions, avg 8.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 5 actions, avg 9.3/10
 - **scorer-20261014-1940:** 3 actions, avg 8.2/10
@@ -462,6 +463,7 @@ _Last updated: 2026-10-20 01:36 UTC_
 - **scorer-20261019-1630:** 1 actions, avg 9.2/10
 - **lane-scorer-20261019-1750:** 1 actions, avg 9.0/10
 - **gap-scorer-20261019-1655:** 1 actions, avg 9.0/10
+- **gap-scorer-20261019-1655-lane10:** 1 actions, avg 9.0/10
 - **scorer-20261014-2200:** 3 actions, avg 9.2/10
 - **scorer-20261014-2220:** 5 actions, avg 9.2/10
 - **scorer-20261015-0030:** 4 actions, avg 8.6/10
@@ -892,6 +894,7 @@ _Last updated: 2026-10-20 01:36 UTC_
 - **gate-stall-20261019-1342:** 1 actions, avg 9.0/10
 - **gate-stall-20261019-1239:** 1 actions, avg 9.0/10
 - **seat-stall-20261018-2329:** 1 actions, avg 9.0/10
+- **gate-stall-20261020-0153:** 1 actions, avg 8.5/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
 - **t0012:** 29 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
@@ -1387,7 +1390,7 @@ _Last updated: 2026-10-20 01:36 UTC_
 - **t952-lane1:** 1 actions, avg 9.0/10
 - **t952-lane2:** 1 actions, avg 8.0/10
 - **t952-lane9:** 1 actions, avg 8.5/10
-- **t0955:** 1 actions, avg 9.5/10
+- **t0955:** 2 actions, avg 9.5/10
 - **t972:** 7 actions, avg 8.9/10
 - **t0972:** 5 actions, avg 8.9/10
 - **t972-lane1:** 1 actions, avg 9.0/10
