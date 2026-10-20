@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-20T19:15:12+00:00",
+ "generated_utc": "2026-10-20T20:15:16+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -102,10 +102,10 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
-     "number": 2811,
-     "title": "restamp: brain index at tip 7b2d6eb9 \u2014 IB-000035..046 inventoried (Delta w623)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2811",
-     "draft": true
+     "number": 2816,
+     "title": "fix(brain): preserve Windows long-path projection existence in drift audit",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816",
+     "draft": false
     },
     {
      "number": 2791,

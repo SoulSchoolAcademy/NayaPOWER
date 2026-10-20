@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-20 19:14 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-20 20:14 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 661 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -59,7 +59,7 @@
 - …and 58 more
 
 ### KNOW (28)
-- [#2811](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2811) restamp: brain index at tip 7b2d6eb9 — IB-000035..046 inventoried (Del 📝draft
+- [#2816](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816) fix(brain): preserve Windows long-path projection existence in drift a
 - [#2791](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2791) drift-detector: re-key duplicate_published_page_paths on content colli
 - [#2781](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2781) fix(brain-index): re-stamp index layer at tip 1a1c22d3 (rung 1)
 - [#2760](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2760) fix(compound-scale): hermetic citation fixtures + freshness CI gate (c
