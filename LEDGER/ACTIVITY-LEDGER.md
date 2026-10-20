@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 14:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5332,6 +5332,22 @@ _Last updated: 2026-10-20 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall sweep: full ORDERING pass over 30 queue briefs, 0 claimable (Clarity-barred)
 
 **Evidence:** Verified on local bytes (stall receipt, no branch/SHA cited — artifact check vacuous, no PHANTOM): prior stall receipt gate-stall-20261019-0924.md exists on disk (filed 09:25 UTC, prior scorer entry t0924 gave it 7.5 at 09:31 UTC); this run's receipt filed ~64 min later — 60-min stall cap honored; twelve-lane-rotation.json queued len=30 matches the
+
+### ✅ t1029 — Team 10, lane-scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** First LIVE use of WINMINE candidate block winmine.p04.falsifiers-first: registry + machine-checkable embedding protocol + stdlib checker
+
+**Receipt:** `twelve-lane-receipts/t1029-lane10.md`
+
+**Evidence:** ARTIFACTS VERIFIED: all 5 claimed SHA-256s byte-identical on disk (usage.jsonl b96b609f..., protocol b63b47c5..., checker c43701aa..., falsifiers a477b88b..., winmine 0a424872...). Falsifier-file mtime 2026-10-20T13:54:29Z precedes registry-row mtime 13:55:57Z -- seal-before-mechanical ordering byte-verified. Protocol doc's repeatable-move quote by
+
+### ✅ t1027 — Team 10, Naya Clarity Narzan (lane-executor) (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Win-mine lane-10 9.5+ receipt cluster: 6 repeatable success patterns drafted as candidate smart blocks per SMARTBLOCKS spec
+
+**Receipt:** `twelve-lane-receipts/t1027-lane10.md`
+
+**Evidence:** ARTIFACTS VERIFIED: deliverable hidden_files/success-patterns-winmine-t1027.md sha256 0a4248727d4b2b351e4072e22e7ccd066c14d7aecd6f35ab4d060c67047076f0 matches the receipt's claimed SHA byte-for-byte (23175 bytes); all 8 window receipts t0970/t0978/t0981/t0983/t0986/t1011/t1023/t1024-lane10.md present on disk and (per the receipt) read in full. The 
 
 ### ✅ t1024 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
