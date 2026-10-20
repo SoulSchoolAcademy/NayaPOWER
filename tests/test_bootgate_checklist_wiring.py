@@ -25,6 +25,7 @@ import pytest
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO_ROOT)
 
+from tools.protocol_pin import issue_declaration_receipt
 from kernel.protocol.cold_start_gate import ColdStartState, run_cold_start  # noqa: E402
 from kernel.protocol.protocol_integrity_gate import check_activation_checklist  # noqa: E402
 from kernel.protocol.read_receipt import issue_receipt  # noqa: E402
@@ -63,6 +64,8 @@ def _good_state():
                           "Law 11 (do no harm) is the only hard law.",
         current_truth_location="mission-state feed #2154 and current main",
         next_action="verify the boot gate wiring",
+        declaration_receipt=issue_declaration_receipt(
+            Path(__file__).resolve().parents[1], "naya-red-team"),
         receipt=issue_receipt("naya-red-team", {
             "q1": "Shawn Vibert",
             "q2": "production deploys, credentials and money, destructive actions, "
