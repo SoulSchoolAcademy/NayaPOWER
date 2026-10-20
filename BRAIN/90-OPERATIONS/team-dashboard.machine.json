@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-20T03:21:01+00:00",
+ "generated_utc": "2026-10-20T04:16:55+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -32,6 +32,12 @@
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
    "open_prs": [
+    {
+     "number": 2792,
+     "title": "docs(brain): learning event 2026-10-19",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2792",
+     "draft": false
+    },
     {
      "number": 2785,
      "title": "S7 back-sync: active runtime lessons 2026-10-19",
@@ -73,15 +79,9 @@
      "title": "feat(learn): clock-to-ladder bridge - T6 VERIFIED meta row earns E1-E3 (#1713)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2682",
      "draft": false
-    },
-    {
-     "number": 2617,
-     "title": "docs(brain): learning event 2026-10-14",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2617",
-     "draft": false
     }
    ],
-   "open_pr_count": 62
+   "open_pr_count": 63
   },
   {
    "id": "know",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 645,
+ "open_pr_total": 646,
  "unassigned_prs": 247
 }

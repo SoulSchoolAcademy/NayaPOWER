@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-20 03:20 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-20 04:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 645 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 646 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,13 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (62)
+### LEARN (63)
+- [#2792](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2792) docs(brain): learning event 2026-10-19
 - [#2785](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2785) S7 back-sync: active runtime lessons 2026-10-19
 - [#2784](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2784) LEARN: §7 kind-decomposition guard (gr-w533-alpha-gapclose)
 - [#2755](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2755) docs(brain): learning event 2026-10-18
 - [#2743](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2743) docs: define NayaNET build-see-learn-share product loop
-- [#2720](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2720) docs(brain): learning event 2026-10-17
-- …and 57 more
+- …and 58 more
 
 ### KNOW (27)
 - [#2791](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2791) drift-detector: re-key duplicate_published_page_paths on content colli
