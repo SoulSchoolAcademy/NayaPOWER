@@ -18,8 +18,9 @@ Config (ENV ONLY, never committed):
   NAYA_BRIDGE_PORT      port, default 8471
   NAYA_BRIDGE_LEDGER    ledger dir, default ./ledger (append-only, never git'd)
   BRIDGE_CAN_WRITE      '1' to even *consider* a sync apply; without it the
-                        apply path is hard-refused. Even with it, this
-                        skeleton has no credentials and performs no writes.
+                        apply path is hard-refused. Even with it, apply writes
+                        ONLY the local feed-state file — the skeleton has no
+                        credentials and performs no remote writes.
 
 The key is NEVER logged, printed, or echoed back.
 """
@@ -33,10 +34,46 @@ import time
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-from bridge_sync import sync_supabase_to_github, public_items, CONFLICT_RULE
+from bridge_sync import (
+    sync_supabase_to_github,
+    sync_ledger_to_feed,
+    read_ledger_events,
+    public_items,
+    CONFLICT_RULE,
+    WEBHOOK_LEDGER_CONTRACT,
+    LEDGER_VERSION,
+)
 
-VERSION = "0.1.0-skeleton"
+VERSION = "0.2.0-bridge"
 CONTRACT = "bridge/v1"
+
+# ---- tool registry ----------------------------------------------------------
+# The single source of truth for the bridge's tool-call surface. An incoming
+# /tools/<name> request matches a registry key exactly or fails closed with
+# E_UNKNOWN_TOOL — never guessed, never aliased, never partially executed.
+TOOL_REGISTRY = {
+    "smart_note_this": {
+        "contract": "tool/smart-note-this/v1",
+        "method": "POST",
+        "required": ["idempotency_key", "human_note"],
+        "optional": ["topics"],
+        "returns": "receipt {idempotency_key, note_id, stage, next}",
+    },
+    "build_page": {
+        "contract": "tool/build-page/v1",
+        "method": "POST",
+        "required": ["page_type", "pieces"],
+        "optional": ["title"],
+        "returns": "acceptance {page_type, pieces, status}",
+    },
+    "get_daily_report": {
+        "contract": "tool/daily-report/v1",
+        "method": "GET",
+        "required": [],
+        "optional": ["date"],
+        "returns": "report envelope (stub until the generator is wired)",
+    },
+}
 
 # ---- error taxonomy -------------------------------------------------------
 # Codes are stable strings, documented in BRIDGE-CONTRACT.md. Every error
@@ -128,7 +165,8 @@ class BridgeHandler(BaseHTTPRequestHandler):
         if path == "/health":
             mode = "live" if self._app_key() else "local-dev"
             self._json(*ok({"contract": CONTRACT, "version": VERSION, "mode": mode,
-                            "lanes": ["webhook-intake", "tool-endpoints", "sync-sketch"],
+                            "lanes": ["webhook-intake", "tool-endpoints", "sync-sketch", "ledger-sync"],
+                            "tools": sorted(TOOL_REGISTRY),
                             "d4_doctrine": "owner_scope=PRIVATE rows never enter the public lane"}))
         elif path == "/tools/get_daily_report":
             fail = self._require_auth()
@@ -149,12 +187,21 @@ class BridgeHandler(BaseHTTPRequestHandler):
         path = urllib.parse.urlparse(self.path).path
         if path == "/webhook":
             self._webhook()
+        elif path == "/sync":
+            self._sync()
+        elif path == "/sync/ledger":
+            self._sync_ledger()
         elif path == "/tools/smart_note_this":
             self._tool_smart_note_this()
         elif path == "/tools/build_page":
             self._tool_build_page()
-        elif path == "/sync":
-            self._sync()
+        elif path.startswith("/tools/"):
+            # Fail closed on unknown tools: the registry is the whole tool
+            # surface; anything not in it is rejected, never interpreted.
+            name = path[len("/tools/"):]
+            known = ", ".join(sorted(TOOL_REGISTRY))
+            self._json(*error("E_UNKNOWN_TOOL",
+                              "unknown tool '%s'; known tools: %s" % (name, known), 404))
         else:
             self._json(*error("E_NOT_FOUND", "unknown route", 404))
 
@@ -165,7 +212,11 @@ class BridgeHandler(BaseHTTPRequestHandler):
         if malformed or not isinstance(body, dict):
             self._json(*error("E_INVALID_INPUT", "webhook body must be a JSON object", 400))
             return
-        # HMAC signature over the canonical payload. In local-dev mode the
+        # Verifier contract (read from this code, never assumed — see
+        # BRIDGE-CONTRACT.md#webhook-verifier): HMAC-SHA256 over the canonical
+        # payload json.dumps(body, sort_keys=True, separators=(",", ":")),
+        # expected as "sha256=<hex>" in the X-Naya-Signature header, compared
+        # in constant time with hmac.compare_digest. In local-dev mode the
         # key is absent, so verification cannot pass -> closed, not open.
         sig = self.headers.get("X-Naya-Signature") or ""
         key = self._app_key()
@@ -175,18 +226,71 @@ class BridgeHandler(BaseHTTPRequestHandler):
         canonical = json.dumps(body, sort_keys=True, separators=(",", ":")).encode()
         expect = "sha256=" + hmac.new(key.encode(), canonical, hashlib.sha256).hexdigest()
         if not hmac.compare_digest(sig, expect):
+            # Fail closed: on a bad signature no ledger directory is created,
+            # no record is staged, and nothing is parsed further.
             self._json(*error("E_BAD_SIGNATURE", "X-Naya-Signature mismatch", 401))
             return
+        digest = hashlib.sha256(canonical).hexdigest()
+        ledger_dir = self.server.bridge_ledger
+        # Replay safety: the same payload always yields the same record.
+        # Replays return the ORIGINAL seq — no duplicate ledger line is ever
+        # appended. (Read before write; a missing ledger reads as empty.)
+        events, _ = read_ledger_events(ledger_dir)
+        for e in events:
+            if e.get("payload_sha256") == digest:
+                self._json(*ok({"ledger_seq": e.get("seq"), "event": e.get("event"),
+                                "note": "duplicate payload — original record returned"},
+                               state="received-duplicate"))
+                return
+        os.makedirs(ledger_dir, exist_ok=True)
         # Append-only ledger. scope is recorded but NEVER re-labelled here;
         # private rows entering the ledger stay private (D4).
-        ledger_dir = self.server.bridge_ledger
-        os.makedirs(ledger_dir, exist_ok=True)
-        record = {"seq": int(time.time() * 1000), "received_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        record = {"contract": WEBHOOK_LEDGER_CONTRACT, "ledger_version": LEDGER_VERSION,
+                  "seq": int(time.time() * 1000),
+                  "received_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                   "event": body.get("event"), "owner_scope": body.get("owner_scope", "UNKNOWN"),
-                  "payload_sha256": hashlib.sha256(canonical).hexdigest()}
+                  "payload_sha256": digest}
         with open(os.path.join(ledger_dir, "events.jsonl"), "a", encoding="utf-8") as f:
             f.write(json.dumps(record) + "\n")
         self._json(*ok({"ledger_seq": record["seq"], "event": record["event"]}, state="received"))
+
+    # -- ledger sync: the sketch made working ---------------------------------
+    def _sync_ledger(self):
+        fail = self._require_auth()
+        if fail:
+            self._json(*fail)
+            return
+        body, malformed = self._read_json()
+        if malformed or not isinstance(body, dict):
+            body = {}
+        mode = body.get("mode", "dry-run")
+        if mode not in ("dry-run", "apply"):
+            self._json(*error("E_INVALID_INPUT", "mode must be 'dry-run' or 'apply'", 422))
+            return
+        ledger_dir = self.server.bridge_ledger
+        feed_path = os.path.join(ledger_dir, "feed-state.json")
+        if mode == "dry-run":
+            try:
+                plan = sync_ledger_to_feed(ledger_dir, feed_path, mode="dry-run")
+            except ValueError as exc:
+                self._json(*error("E_INVALID_INPUT", str(exc), 422))
+                return
+            self._json(*ok(plan, state="dry-run"))
+            return
+        # Apply stays closed until the engine enables the local write switch.
+        # Even enabled, it writes ONLY the local feed-state file — no remote
+        # writes exist anywhere in this skeleton.
+        if os.environ.get("BRIDGE_CAN_WRITE") != "1":
+            self._json(*error("E_NO_CREDENTIALS",
+                              "ledger sync apply is closed: set BRIDGE_CAN_WRITE=1 to enable the "
+                              "LOCAL feed-state write (engine territory; no remote writes exist)", 503))
+            return
+        try:
+            plan = sync_ledger_to_feed(ledger_dir, feed_path, mode="apply", credentials_ok=True)
+        except (ValueError, PermissionError) as exc:
+            self._json(*error("E_INVALID_INPUT", str(exc), 422))
+            return
+        self._json(*ok(plan, state="applied"))
 
     # -- tool endpoints ------------------------------------------------------
     def _tool_smart_note_this(self):
@@ -205,7 +309,8 @@ class BridgeHandler(BaseHTTPRequestHandler):
                 return
         # STUB happy path: receipt only. The live path calls the v7 RPC
         # (hop 1 of the Hub Contract) once the engine wires credentials.
-        receipt = {"idempotency_key": body["idempotency_key"],
+        receipt = {"contract": TOOL_REGISTRY["smart_note_this"]["contract"],
+                   "idempotency_key": body["idempotency_key"],
                    "note_id": "stub-" + secrets.token_hex(6),
                    "stage": "captured-stub",
                    "next": "v7_create_smart_note (stubbed — engine wires the RPC)",
@@ -231,7 +336,8 @@ class BridgeHandler(BaseHTTPRequestHandler):
             return
         # STUB happy path: receipt echoes the contract. The Composer
         # (directive #4) owns real assembly; this route hands it the job.
-        self._json(*ok({"page_type": page_type, "pieces": pieces,
+        self._json(*ok({"contract": TOOL_REGISTRY["build_page"]["contract"],
+                        "page_type": page_type, "pieces": pieces,
                         "title": body.get("title", ""),
                         "status": "accepted — stub: assembly owned by the Composer",
                         "stub": True}, state="queued"))
