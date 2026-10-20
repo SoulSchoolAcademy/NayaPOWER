@@ -36,6 +36,15 @@ Input record:
       ]
     }
 
+INPUT TRUST BOUNDARY:
+  The caller must supply authoritative GitHub author and merger identities
+  and one current effective review state per reviewer. Login comparisons
+  are case-insensitive. Duplicate review entries for the same login are
+  refused as ambiguous; resolve historical approvals, dismissals, and
+  changes requests against GitHub before calling this pure check.
+  The predicate does not authenticate its own caller input or by itself
+  become a mandatory GitHub merge gate.
+
 Checks:
   1. Shape, fail closed: author_login is a non-empty string;
      merger_login, when present, is a string ("" allowed — unmerged
@@ -58,14 +67,14 @@ Checks:
      only when an independent identity actually reviewed the work.
   5. Merged with reviews, but no reviewer login different from BOTH
      author_login and merger_login FAILS: NO_INDEPENDENT_REVIEW —
-     a review from the merger's own login is the merger agreeing with
-     herself, not independence.
-  6. (d) Merged, and at least one review from a login different from
-     BOTH author and merger, PASSES — naming the independent identity.
+     a mere comment, change request or dismissed review does not approve
+     the work and merger-only review is not independent.
+  6. (d) Merged, and at least one APPROVED current reviewer login different
+     from BOTH author and merger, PASSES — naming the independent identity.
      (This includes rule (d)'s merger != author shape, and the
      self-merge shape rule (a) excepts: self-merge WITH a genuinely
      independent review on the record.)
-  7. (e) Not merged, and an independent review exists, PASSES.
+  7. (e) Not merged, and an independent APPROVED review exists, PASSES.
      Not merged with no claims and no independent review also passes:
      nothing has been merged and nothing has been claimed validated,
      so no separation breach has occurred — reviews are noted as
@@ -75,8 +84,8 @@ Checks:
      a validation claim needs an independent identity behind it.
 
 details always include author_login, merger_login, and
-independent_reviewers: the sorted set of reviewer logins different
-from both author_login and merger_login.
+independent_reviewers: the sorted set of currently APPROVED logins
+other than author_login and merger_login.
 
 Honest bounds: this check reads the record it is given. It cannot
 tell whether two different logins are secretly operated by the same
@@ -147,13 +156,21 @@ def check(record: dict) -> dict:
             "a login string (or \"\" when there is no merger yet)",
             details,
         )
-    merger_login = merger_raw.strip()
+    # GitHub login identity is case-insensitive.
+    author_login = author_login.casefold()
+    merger_login = merger_raw.strip().casefold()
 
     merged = record.get("merged", False)
     if not isinstance(merged, bool):
         return fail(
             "merged is not a boolean — the merge state decides which "
             "separation rules bite, so it must be stated exactly",
+            details,
+        )
+    if merged and not merger_login:
+        return fail(
+            "MERGER_IDENTITY_MISSING: a merged PR needs the authentic "
+            "GitHub merger login before independence can be established",
             details,
         )
     claims_validated = record.get("claims_validated", False)
@@ -173,6 +190,10 @@ def check(record: dict) -> dict:
             details,
         )
     reviewer_logins: list[str] = []
+    # Accept one current effective review state per normalized login.
+    # Historical duplicate review events need trusted source resolution:
+    # a revoked approval must not silently remain admissible.
+    review_state_by_login: dict[str, str] = {}
     for i, rev in enumerate(reviews):
         if not isinstance(rev, dict):
             return fail(
@@ -196,14 +217,22 @@ def check(record: dict) -> dict:
                 "review state fails closed",
                 details,
             )
+        login = login.casefold()
+        if login in review_state_by_login:
+            return fail(
+                f"AMBIGUOUS_REVIEW_HISTORY: multiple entries for "
+                f"case-insensitive GitHub login {login!r}; supply one "
+                "current effective review state from trusted GitHub",
+                details,
+            )
+        review_state_by_login[login] = state
         reviewer_logins.append(login)
 
     independent_reviewers = sorted(
-        {
-            login
-            for login in reviewer_logins
-            if login != author_login and login != merger_login
-        }
+        login for login, state in review_state_by_login.items()
+        if state == "APPROVED"
+        and login != author_login
+        and login != merger_login
     )
     any_review_beyond_author = any(
         login != author_login for login in reviewer_logins
@@ -285,12 +314,13 @@ def check(record: dict) -> dict:
         )
 
     if merged:
-        # 5 / 6. Merged: an identity independent of BOTH must have reviewed.
+        # 5 / 6. A merged PR requires a CURRENT APPROVAL from an
+        # identity different from BOTH author and merger.
         if not independent_reviewers:
             return fail(
-                "NO_INDEPENDENT_REVIEW: PR merged, but no reviewer "
-                f"login differs from both author {author_login!r} and "
-                f"merger {merger_login!r} (reviewers: "
+                "NO_INDEPENDENT_APPROVAL: PR merged, but no APPROVED "
+                f"reviewer login differs from both author {author_login!r} "
+                f"and merger {merger_login!r} (reviewers: "
                 f"{', '.join(sorted(set(reviewer_logins))) or 'none'}) "
                 "— a review from the merger's own login is the merger "
                 "agreeing with herself, not independence",
@@ -306,7 +336,7 @@ def check(record: dict) -> dict:
             )
         else:
             reasons.append(
-                f"independent review by {names} — different from both "
+                f"independent APPROVED review by {names} — different from both "
                 f"author {author_login!r} and merger {merger_login!r}"
             )
         reasons.append(
@@ -318,7 +348,7 @@ def check(record: dict) -> dict:
     # 7. (e) Not merged.
     if independent_reviewers:
         reasons.append(
-            "not merged, and independent review exists by "
+            "not merged, and independent APPROVED review exists by "
             f"{', '.join(independent_reviewers)} — different from both "
             f"author {author_login!r} and merger {merger_login!r}"
         )
