@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 21:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 21:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5341,6 +5341,12 @@ _Last updated: 2026-10-20 21:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on local bytes: lane-feed.md carries 9 mentions of brief-t0675-lane3, every one a skip/recusal (zero SIGN-IN entries naming it as the claimed brief); no brief-t0675-lane3.md exists anywhere under hidden_files/brief-queue (root, claimed/, done/, stale/, superseded/ all swept) — the verdict's conclusion (never claimed, no dispatcher misroute
 
+### ✅ t1034-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-2 adversarial review of the checker's own honesty (check-success-block-usage.py) - t1031 hole re-run as attack
+
+**Evidence:** Strong independent verification this tick: all cited artifacts on disk with contemporaneous mtimes (checker bin/check-success-block-usage.py 14:43, redteam lane-10/redteam-t1031.json 14:44, protocol 14:43, registry 3 rows 14:32). LIVE re-run by the scorer: main checker exit 0 ALL CHECKS GREEN (3 rows, ELIGIBLE-for-PROMOTED eligibility reported, not
+
 ### ✅ t1034 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** adversarial review of check-success-block-usage.py (own instrument): rt08 mtime-drift wave-through, rt09 top-done false positive; R8 added, R2 widened, 12/12 green
@@ -5356,6 +5362,12 @@ _Last updated: 2026-10-20 21:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1034-lane10.md`
 
 **Evidence:** Verified independently on live bytes: rt08 mtime-drift case fires under the new R8 (observed 'FIRED rt08-mtime-drift under R8'), rt09 top-level done/ negative control stays clean, --redteam 12/12 all fired-or-clean, main checker exit 0 ALL CHECKS GREEN with 3 rows and eligibility ELIGIBLE-for-PROMOTED; the two adversarial holes (mtime drift wave-th
+
+### ✅ t1033-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** USE #3 of winmine.p04.falsifiers-first: live consistency audit of success-block embedding machinery + permanence end-to-end
+
+**Evidence:** Verified: falsifiers file lane-10/falsifiers-t1033.json on disk (mtime 14:30, matching the receipt's 14:29:21Z creation + documented 14:30:02Z correction); registry success-block-usage.jsonl holds 3 rows; scorer's live checker re-run confirms use_count=3, all HIT, exit 0 green, redteam 10/10 + 3/3 clean. Receipt runs the falsifiers-first protocol o
 
 ### ✅ t1033 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -31194,6 +31206,24 @@ _Last updated: 2026-10-20 21:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261020-1612 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall: executor walk of 30 queued briefs under Clarity seat (09:08 PDT run)
+
+**Evidence:** Verified: cap honored by 61 min (prior seat-stall-20261020-1510.md at 15:11 UTC, this walk 16:12 UTC) - compliant but exactly at the edge; the cap works, with one minute of margin. Receipt correctly names its stall class (seat-authorship, not gate-stall), evaluates all 30 candidates in ORDERING order, honors the script-as-authority cure-wins rule (
+
+### ✅ gate-stall-20261020-1637 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall: hourly executor walk of 30 queued briefs under Clarity seat (09:33-09:38 PDT)
+
+**Evidence:** Verified: queue composition (30 unclaimed) corroborated now; cap honored in fact - the actual newest prior stall receipt was seat-stall-20261020-1510.md (15:11 UTC), 87 min before this 16:38 UTC walk (>60-min cap). Hole in the receipt itself: its cap-evidence line named gate-stall-20261020-1405.md (150 min old) as the prior, missing the newer seat-
+
+### ✅ gate-stall-20261020-1741 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall: hourly executor walk of 30 queued briefs under Clarity seat (10:38-10:41 PDT)
+
+**Evidence:** Verified: brief-queue/ holds exactly 30 unclaimed brief-gap-*/brief-review-* files top-level (receipt's '30' confirmed); cap honored in fact - newest prior stall receipt gate-stall-20261020-1637.md is 64 min older (>60-min cap). Receipt itemizes all 30 refusals by exit code (10x exit-2 claimability gate, 20x exit-7 parent-authorship), names the sys
 
 ### ✅ seat-stall-20261020-2058 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
