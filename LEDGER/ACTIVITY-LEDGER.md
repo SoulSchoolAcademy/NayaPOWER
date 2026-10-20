@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5203,6 +5203,14 @@ _Last updated: 2026-10-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: refs/heads/naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin; main 665098e3f00c9aa6f63907360b8500891704071c unmoved. Single-commit re-stamp ancestry proven, --check claimed OK on exact bytes (receipt's run), F2 negation bug re-demonstrated live on healed head, stale t972 receipt-gate finding c
 
+### ✅ t1042 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** prove first COMPOUNDED seed block: verify-first, independent re-derivation of 4 arms on live bytes
+
+**Receipt:** `twelve-lane-receipts/t1042-lane4.md`
+
+**Evidence:** Verified: seal.json sha a2a712cf matches receipt; lane4-t1042-fourway-rerun.json sha 4fb207dd matches; seal pins 20/20 (representative IB-0001 byte match); rerun output encodes 20/20 passes x4 arms and 40/40 adversarial mutation rejections. Score 9.5: clears 9.5 because the seat proved the absence of a gap (enumerated 20/20, 'no non-COMPOUNDED bloc
+
 ### ✅ t1042 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** first COMPOUNDED seed blocks — independent re-derivation at live bytes
@@ -5261,6 +5269,14 @@ _Last updated: 2026-10-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on local bytes: lane-feed.md carries 9 mentions of brief-t0675-lane3, every one a skip/recusal (zero SIGN-IN entries naming it as the claimed brief); no brief-t0675-lane3.md exists anywhere under hidden_files/brief-queue (root, claimed/, done/, stale/, superseded/ all swept) — the verdict's conclusion (never claimed, no dispatcher misroute
 
+### ✅ t1034 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** adversarial review of check-success-block-usage.py (own instrument): rt08 mtime-drift wave-through, rt09 top-done false positive; R8 added, R2 widened, 12/12 green
+
+**Receipt:** `twelve-lane-receipts/t1034-lane10.md`
+
+**Evidence:** Verified: checker sha 8213c4e3 matches receipt; harness live 12 cases incl rt08-mtime-drift and rt09-topdone-clean with must_fire_rule bytes; protocol exists; both holes demonstrated on unmodified code (attack demo), fixes minimal, main + --redteam green post-fix. Score 9.0: why not 9.5 — (a) single-seat review of own instrument: the critic's hat i
+
 ### ✅ t1034 — Team 10, Naya Clarity Narzan (Lane 10 / Naya Librarian hat, night-dispatcher) (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Stage 2 adversarial review of check-success-block-usage.py (own instrument)
@@ -5268,6 +5284,14 @@ _Last updated: 2026-10-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1034-lane10.md`
 
 **Evidence:** Verified independently on live bytes: rt08 mtime-drift case fires under the new R8 (observed 'FIRED rt08-mtime-drift under R8'), rt09 top-level done/ negative control stays clean, --redteam 12/12 all fired-or-clean, main checker exit 0 ALL CHECKS GREEN with 3 rows and eligibility ELIGIBLE-for-PROMOTED; the two adversarial holes (mtime drift wave-th
+
+### ✅ t1033 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** winmine.p04.falsifiers-first use #3: consistency audit, permanence eligibility
+
+**Receipt:** `twelve-lane-receipts/t1033-lane10.md`
+
+**Evidence:** Verified: falsifiers-t1033.json exists; registry now 3 rows; checker main + --redteam green on live 3-row registry; ELIGIBLE-for-PROMOTED verdict machine-reported, promotion correctly left human-gated. Score 9.0: why not 9.5 — the same-turn written_at metadata correction edited the falsifier file mid-run (mtime 14:30:02 vs creation 14:29:21), so th
 
 ### ✅ t1033 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -5342,6 +5366,14 @@ _Last updated: 2026-10-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1032-lane10.md`
 
 **Evidence:** Dispatcher verified: branch naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin via git ls-remote, matches receipt claim. Bisect named the introducing commit (5e9c2d840, PR #2401 +12 BRAIN files, no re-stamp); healed head --check OK on tip bytes 665098e3f; fixed push_branch.py argv-too-long bug (left better than fou
+
+### ✅ t1031 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** winmine.p04.falsifiers-first use #2: falsifiers-before-mechanical on checker itself, R6/R7 + R2 lifecycle fixes
+
+**Receipt:** `twelve-lane-receipts/t1031-lane10.md`
+
+**Evidence:** Verified: lane-10/falsifiers-t1031.json exists, mtime 2026-10-20T14:12:47Z pre-mechanical; winmine pin sha matches receipt; checker + protocol exist; redteam sha drift (2847637d->da8a4b7b) explained by later legitimate t1034 amendment adding rt08/rt09 (12 cases live). Score 9.5: clears 9.5 because falsifiers genuinely fired (F3 caught R2 lifecycle 
 
 ### ✅ t1031 — Team 10, Naya Clarity Narzan (Librarian hat, lane-executor) (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -31054,6 +31086,12 @@ _Last updated: 2026-10-20 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261020-1250 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall-20261020-1947.md: lane-executor run stall - 30 briefs evaluated, all barred to Clarity seat, correct skip per STALL-RECEIPT CAP
+
+**Evidence:** VERIFIED against live workspace bytes: brief-queue holds exactly 30 brief .md files whose filenames match the receipt's listed 10 class-A (claimability-gate bar, e.g. brief-gap-scorer-20261015-0110-lane7.md) + 20 class-B (second-seat demand) filenames; prior stall receipt seat-stall-20261020-1844.md mtime 18:45:54 UTC, ~62 min before this run's 19:
 
 ### ✅ lane-scorer-20261020-1150 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
 
