@@ -1,12 +1,112 @@
 {
   "contract": "room-feed/v1",
   "room": "today",
-  "emitted_at": "2026-10-15T16:01:08.545099-07:00",
+  "emitted_at": "2026-10-20T09:19:42.398321-07:00",
   "source_ref": "engine-job:hub-feeds-emitter-t0479",
   "items": [
     {
-      "id": "idx-11c10516-42e9-45b9-b2b9-57c40e5a37c6",
-      "title": "Causal Uncertainty Without False Blame — four dimensions, never one confident story",
+      "id": "idx-0ccf7e04-8859-43d7-82e2-39b493022a18",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 20:09:15.598342+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-81c2bafb-1cce-4ed2-9012-7815006647af",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:26:56.885153+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-cf3069eb-cd87-48cb-b2f1-d74e58ee6565",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:26:55.529616+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-cb668ea6-801d-45dc-8c66-e371243f6126",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:23:14.779423+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-ae0a3005-d000-4e0d-8da2-e750d73f5136",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:23:14.491158+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-17c6af61-1259-4542-b878-727fb486cbff",
+      "title": "Naya runtime flow lesson",
       "topics": [
         "INTELLIGENT_BLOCK"
       ],
@@ -20,12 +120,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-15 18:41:02.054932+00"
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-19 15:21:30.2913+00"
         }
       ]
     },
     {
-      "id": "idx-4b2057d4-18f1-43d6-b6a0-c17682a24370",
+      "id": "idx-6b3112d5-1071-46f6-a994-2aa6ad907ca8",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -40,13 +140,93 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-15 18:41:02.034686+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:21:30.167495+00"
         }
       ]
     },
     {
-      "id": "idx-9d0004d1-f7a8-4061-8790-0266ae348cf0",
-      "title": "Causal Execution Proof Contract — evidence establishes what happened, causal verification establishes why",
+      "id": "idx-5f7ce767-2e39-4356-a53d-25ccb1924220",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:15:59.371587+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-2063c103-3119-4e21-bca3-ac3b61dbbce7",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:15:58.900973+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-85e15e30-75fb-40b2-917f-0cb2a24cc581",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:14:19.700878+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-b088d69d-b3d2-4011-ae27-55ed18464404",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:14:19.48092+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-99394a20-a346-4ad5-b68b-f7bbe215b767",
+      "title": "Naya runtime flow lesson",
       "topics": [
         "INTELLIGENT_BLOCK"
       ],
@@ -60,12 +240,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-15 18:41:01.22762+00"
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-19 15:13:53.650425+00"
         }
       ]
     },
     {
-      "id": "idx-af2ed793-bc66-4ab2-b4b4-36d778cfb449",
+      "id": "idx-b323854e-6616-4622-a388-f5b0550f7956",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -80,13 +260,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-15 18:41:01.201022+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:13:53.571035+00"
         }
       ]
     },
     {
-      "id": "idx-14eb28c6-623f-4e56-ae71-f58c9f1ea127",
-      "title": "Responsibility-Boundary Contract — control determines responsibility, contracts define guarantees",
+      "id": "idx-3f243df4-0cc3-4b58-8f24-8ef6aa19adea",
+      "title": "Naya runtime flow lesson",
       "topics": [
         "INTELLIGENT_BLOCK"
       ],
@@ -100,193 +280,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-15 18:41:00.387502+00"
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-19 15:12:24.017693+00"
         }
       ]
     },
     {
-      "id": "idx-7154815b-f830-415e-9228-395bcb5a43cf",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-15 18:41:00.350455+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-935d6c1a-fd86-4627-9fdd-97197e0d0054",
-      "title": "Fairness Assumption Audit Protocol (FAAP) — four gates before any assumption may restrict the model",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-15 18:40:59.559873+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-7c1d7b5b-cc1e-4d6f-acff-f8000673457e",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-15 18:40:59.037368+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-7da1639a-9240-445e-a369-ee3f7d64e297",
-      "title": "PATCH response is the verify",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-14 12:41:49.203+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-3c145f3c-4033-4a3d-b290-60486f384d70",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-14 12:41:48.737787+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-f763202a-b4c8-4140-93c5-4a695d3b8b2e",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-10 17:26:12.068399+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-52782a22-2d69-452a-ae3c-398328531c70",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-10 17:26:12.068399+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-4fe5be75-9466-45d5-883c-7eb410bce432",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-10 17:26:12.068399+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-4de376bd-9c3c-4b62-9e4f-a302df57d5a9",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-10 17:26:12.068399+00"
-        }
-      ]
-    },
-    {
-      "id": "art-ae9bc7b0-5903-494c-a33a-81a9735b5d64",
-      "title": "EXP-2026-10-10-001/4: a scorer who knows which rows are experimental is not blind; the mapping must stay sealed until sc",
+      "id": "art-ba7ad40e-19d8-4407-92f4-ce8894d4ac0d",
+      "title": "NayaNET is the future internet: one intelligent system where the app you build goes live instantly, gets discovered by t",
       "topics": [
         "SMART_NOTE"
       ],
@@ -300,13 +300,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "EXP-2026-10-10-001/4: a scorer who knows which rows are experimental is not blind; the mapping must stay sealed until scores are posted."
+          "body": "NayaNET is the future internet: one intelligent system where the app you build goes live instantly, gets discovered by the right people automatically, and grows through community — while your identity stays entirely yours. The system matches by what you're into, never by who you "
         }
       ]
     },
     {
-      "id": "art-0390854c-faa4-429a-9b3a-25644b90ef05",
-      "title": "EXP-2026-10-10-001/3: every production write must carry its authorization reference; a write without provenance is indis",
+      "id": "art-d19ee203-e7ef-4e7e-8494-53b8a2eee050",
+      "title": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate pe",
       "topics": [
         "SMART_NOTE"
       ],
@@ -320,13 +320,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "EXP-2026-10-10-001/3: every production write must carry its authorization reference; a write without provenance is indistinguishable from an accident."
+          "body": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate personal smart app is software you describe in plain words and receive as a working application — you never build it, code it, or assemble it yourself. What was c"
         }
       ]
     },
     {
-      "id": "art-7130a016-d884-463f-950f-7fe659fcfff4",
-      "title": "EXP-2026-10-10-001/1: a retried capture with the same idempotency key must return the original receipt, never a duplicat",
+      "id": "art-c447782a-8561-4974-acbe-c7a311101772",
+      "title": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate pe",
       "topics": [
         "SMART_NOTE"
       ],
@@ -340,13 +340,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "EXP-2026-10-10-001/1: a retried capture with the same idempotency key must return the original receipt, never a duplicate record."
+          "body": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate personal smart app is software you describe in plain words and receive as a working application — you never build it, code it, or assemble it yourself. What was c"
         }
       ]
     },
     {
-      "id": "art-3793751e-fb30-440c-81f3-6848048d998d",
-      "title": "EXP-2026-10-10-001/2: a capture missing required fields must fail with a named error; it must never write a partial reco",
+      "id": "art-9b10b120-fcef-424c-989c-1aa6b4897d04",
+      "title": "Refire proving the App-bypass dispatch path end to end.",
       "topics": [
         "SMART_NOTE"
       ],
@@ -360,13 +360,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "EXP-2026-10-10-001/2: a capture missing required fields must fail with a named error; it must never write a partial record."
+          "body": "Refire proving the App-bypass dispatch path end to end."
         }
       ]
     },
     {
-      "id": "art-21b7f6db-59d3-4f7f-8bbb-bab856abed83",
-      "title": "Coda 1 capture-proof run.",
+      "id": "art-cc17f8ae-79d4-4f6f-b8cb-62475232f6b3",
+      "title": "Dispatch test note from Naya Nitro Narzan. Verifying the pipeline works end-to-end.",
       "topics": [
         "SMART_NOTE"
       ],
@@ -380,13 +380,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "Coda 1 capture-proof run."
+          "body": "Dispatch test note from Naya Nitro Narzan. Verifying the pipeline works end-to-end."
         }
       ]
     },
     {
-      "id": "art-8df86bb3-6d4c-42e4-8092-bbfa7b0db412",
-      "title": "End-to-end proof that the deployed capture chain works.",
+      "id": "art-666e8829-0784-4b7f-bab8-b91509a805b7",
+      "title": "Phase 3 live-fire proof note: the canonical receiver accepted an authenticated test capture.",
       "topics": [
         "SMART_NOTE"
       ],
@@ -400,7 +400,7 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "End-to-end proof that the deployed capture chain works."
+          "body": "Phase 3 live-fire proof note: the canonical receiver accepted an authenticated test capture."
         }
       ]
     }
