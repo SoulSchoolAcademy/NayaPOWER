@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2507,6 +2507,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1352 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** Exact-head root-cause classification battery
+
+**Receipt:** `twelve-lane-receipts/t1352-lane9.md`
+
+**Evidence:** Verified: refs/heads/naya/ten-testdeps-fp-t1342 == 0ab2b4654992 exists; compound_scale row-5 truth failure root-caused to gate_truth=0. Score 9.0. Why not 9.5: classification by local-repro not CI job logs (standing 401 gap); row-5 defect mechanism named not diagnosed; sign-in at sign-out not start (repeated lesson).
+
+### ✅ t1352 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** Exact-head re-classification of tip test reds with Lane 10's t1342 fix in the picture
 
 **Receipt:** `twelve-lane-receipts/t1352-lane9.md`
@@ -2560,6 +2568,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1352-lane9.md`
 
 **Evidence:** Dispatcher verified via git protocol: naya/ten-testdeps-fp-t1342 @ 0ab2b465499288633ff3b04286257b0d39caa39b == origin == receipt claim; tip 501bf82a == origin HEAD at run start. Table routes owners per row, self-owns rows 3-4, posted #2175. Deductions per receipt: local-repro not CI logs (401 gap), row 5 mechanism named not diagnosed, late sign-in 
+
+### ✅ t1352 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** #2400 post-merge verification: patch byte-identity
+
+**Receipt:** `twelve-lane-receipts/t1352-lane4.md`
+
+**Evidence:** Verified: refs/pull/2400/head == 973177d48be5 (claimed PR head, matches); merge 597803d8c79e + parent 2b9315cf1fd2 + PR base b86eba89735c named consistent; PR-delta vs live-delta sha256 claimed identical (7d64df07489b06b...). Score 9.0. Why not 9.5: late sign-in (verification half-done before sign-in); no independent re-run of the 74-test set this 
 
 ### ✅ t1352 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -2619,6 +2635,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1352 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
 
+**Task:** PR #2452 MERGED (brain-index re-stamp healing drift recurrence #15)
+
+**Receipt:** `twelve-lane-receipts/t1352-lane10.md`
+
+**Evidence:** Verified: merge commit e85c6e44222c fetched from origin exists; subject 'Merge pull request #2452 from SoulSchoolAcademy/naya/ten-brainindex-heal-t1302' by Shawn Vibert; parents 501bf82a3c60 (main tip) + c4bfd2529693 == refs/pull/2452/head (claimed PR head, EXACT match). Post-merge tip --check clean claimed. Score 8.5. Why not 9.5: overrode the mer
+
+### ✅ t1352 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
+
 **Task:** #2452 merged: exact-SHA pin, merge tree == head tree, post-merge --check exit 0
 
 **Receipt:** `twelve-lane-receipts/t1352-lane10.md`
@@ -2672,6 +2696,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1352-lane10.md`
 
 **Evidence:** Dispatcher verified via git protocol + API: refs/heads/main == e85c6e44222c6f307110eeb06c0b4f48a2d4de02 == PR API merge_commit_sha; head c4bfd252 == receipt; PR closed+merged. Real merge executed, 2-seat bar closed, post-merge --check clean (agent-verified). Deductions: calculator-HOLD override on authorized reasoning, two red-by-mechanism gates (r
+
+### ✅ t1342 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Sealed pre-reg + trap-fire cold-transfer experiment
+
+**Receipt:** `twelve-lane-receipts/t1342-lane6.md`
+
+**Evidence:** Verified: sealed pre-reg before probing + trap-fire verified pre-dry-run + brief hashes recorded pre-run + zero lesson leakage into control briefing bytes. Score 8.5. Why not 9.5: generational cold-transfer still unproven (fresh-subagent cold context, not true generational amnesia); verdict is round-bounded.
 
 ### ✅ t1342 — Team 6, t1342-lane6 (Successor Transfer) — 8.5/10 [VERIFIED]
 
@@ -2737,6 +2769,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: pre-reg sha256 ed5f141e matches disk, probe-dry output.md (d4d45004, 1925B) and brain-index.json (3297d432) sha256-match receipt. Trap-fire verified pre-run, brief hashes pre-recorded, mechanical C1 gate honored exactly as written: NO-GO delivered as a completed result, not softened. Deductions: wild-failure vs dry-run divergen
 
+### ✅ t1342 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** testdeps false-positive branch fix
+
+**Receipt:** `twelve-lane-receipts/t1342-lane10.md`
+
+**Evidence:** Verified: refs/heads/naya/ten-testdeps-fp-t1342 == 0ab2b4654992 (claimed branch EXISTS, matches). Score 9.0. Why not 9.5: static resolver best-effort (computed/conditional sys.path forms still false-positive); first worktree swept mid-run, recovered via surviving ref.
+
 ### ✅ t1342 — Team 10, t1342-lane10 (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** fix 6 first-party false positives in CI dependency guard
@@ -2800,6 +2840,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1342-lane10.md`
 
 **Evidence:** Dispatcher verified: naya/ten-testdeps-fp-t1342 @ 0ab2b465499288633ff3b04286257b0d39caa39b on origin. Root-caused scanner flaw (sys.path-insert roots unscanned), scanner fix not weakening, 4/4 tests, negative control bites, zero BRAIN/ files touched (no re-stamp). Deductions: best-effort resolver (exotic forms still false-positive), green local pin
+
+### ✅ t1342 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat scorecard on #2418
+
+**Receipt:** `twelve-lane-receipts/t1342-lane1.md`
+
+**Evidence:** Verified: second-seat scorecard body on PR; refs/pull/2418/head resolves. Score 9.0. Why not 9.5: relied on Lane 7's mechanical red classification instead of re-running the kernel suite or pin CLI itself (second-hand evidence on the decisive reds).
 
 ### ✅ t1342 — Team 1, t1342-lane1 (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -2865,6 +2913,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2452/head == c4bfd2529693ff5a859e1aaf56f376bd45cfab40 and main == 501bf82a3c6095b8834ef0bff6abec3b9a645c74 == receipt claims. Both-direction --check (head OK 1257 files, parent drifts), pin-exact repro, independent agreement with Lane 9 on every material point, 2-seat bar closed. Deductions: full-suit
 
+### ✅ t1332 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** mjs cold-retrieve branch + mechanism naming
+
+**Receipt:** `twelve-lane-receipts/t1332-lane8.md`
+
+**Evidence:** Verified: refs/heads/naya/eight-mjs-coldretrieve-t1332 == 3dd7837d8e6e (claimed branch EXISTS on remote, matches). Score 9.0. Why not 9.5: no PR opened (merge-seat authority, honestly scoped); start sign-in skipped; previous-tip comparison partially carried.
+
 ### ✅ t1332 — Team 8, t1332-lane8 (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** cold-retrieve 400!=200 mechanism root-cause + branch
@@ -2929,6 +2985,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Mechanism named: test harness strips imports via regex and never injects applyApplicabilityRanking into the vm sandbox; ReferenceError mapped to 400 by catch-all. Production index.ts never broken (byte-identical blobs at both pins, content-addressed). Failing-test-first fix: 2-line test-only change, branch naya/eight-mjs-coldretrieve-t1332 @ c5010f
 
+### ✅ t1332 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** #2452 CI verdict classification
+
+**Receipt:** `twelve-lane-receipts/t1332-lane7.md`
+
+**Evidence:** Verified: refs/pull/2452/head resolves; CI state classification consistent. Score 8.5. Why not 9.5: 2-seat bar 1/2 (second seat is another seat's action); CI not fully green; delivery-gate needs a log-access seat.
+
 ### ✅ t1332 — Team 7, t1332-lane7 (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** #2452 CI verdict classification + 2-seat bar push
@@ -2992,6 +3056,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1332-lane7.md`
 
 **Evidence:** Pin-exact verify-only work: #2452 head c4bfd252 == tip 501bf82a verified via ls-remote (3 refs agree, zero re-anchors); all 19 check-runs classified with run ids and named causes/owners (test red pre-existing on main; delivery-gate infrastructure exit-2; receipt-gate fixable paperwork; team-review by design 0 on-PR reviews; receipt-pin stale 05:27Z
+
+### ✅ t1332 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Fresh lesson with triple wild-failure evidence
+
+**Receipt:** `twelve-lane-receipts/t1332-lane2.md`
+
+**Evidence:** Verified: fresh lesson + triple wild-failure evidence + explicit headroom statement with grep-ruled-out saturation. Score 9.0. Why not 9.5: saturation ruled out by grep (shallow falsifier); successor-reuse testability prospective not yet run.
 
 ### ✅ t1332 — Team 2, t1332-lane2 (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -3059,6 +3131,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1322 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** mjs 400-vs-200 classification + Lane-8 handoff
+
+**Receipt:** `twelve-lane-receipts/t1322-lane9.md`
+
+**Evidence:** Verified: refs/pull/2425/head == 62331618ca7b resolves (claimed head, matches); signature-identity classification method consistent. Score 9.0. Why not 9.5: signature-identity classification, not a true mechanism diagnosis (Lane 8 owns it); CI job logs 401-unreadable.
+
+### ✅ t1322 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** #2399 receipt-gate merge-faithfulness on tip bytes + pin-script fail-closed demos + tip test-red classification
 
 **Receipt:** `twelve-lane-receipts/t1322-lane9.md`
@@ -3088,6 +3168,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1322-lane9.md`
 
 **Evidence:** Dispatcher verified via git protocol: origin HEAD == 501bf82a3c6095b8834ef0bff6abec3b9a645c74 == receipt tip; refs/pull/2452/head == c4bfd2529693ff5a859e1aaf56f376bd45cfab40 == receipt head; deductions kept (mjs root cause signature-level, CI logs 401-unreadable, 2-seat bar still 1 of 2).
+
+### ✅ t1322 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** VERACITY_GUARD candidate bytes live-seam half-proof
+
+**Receipt:** `twelve-lane-receipts/t1322-lane5.md`
+
+**Evidence:** Verified: VERACITY_GUARD mechanics + candidate-byte scope honestly limited. Score 9.0. Why not 9.5: synthetic corpus only; latency measured warm not page-cache-cold; receipt is half of a proof (seam side pending).
 
 ### ✅ t1322 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -3123,6 +3211,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1322 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** Human-value window + M4b retraction
+
+**Receipt:** `twelve-lane-receipts/t1322-lane11.md`
+
+**Evidence:** Verified: window audit consistent; M4b retraction owned with the lane-10 timing correction named. Score 9.0. Why not 9.5: single-seat judgments still unreproduced; the M4b evidence was necessary-not-sufficient, owned not hidden.
+
+### ✅ t1322 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** Window audit t1292-t1322: 3x byte-identical instrument runs + hand audit + machine cross-check + M4b retraction
 
 **Receipt:** `twelve-lane-receipts/t1322-lane11.md`
@@ -3152,6 +3248,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1322-lane11.md`
 
 **Evidence:** Dispatcher verified: lane-11/metric_audit_t1322.json on disk (13572B, window t1292-t1322, totals rows 9 scored 8 unscored 1, m2:8 m3:6 m4:4 == receipt), STATS.md window section present; OPEN thread: drift attribution conflict (#2446 per lane-10 bisect vs #2448 per lane-9) is lane 10's to resolve; M1/M6 STALE contract legs, HV3 unmeasurable, lane 12
+
+### ✅ t1312 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Changed-brief experiment with blinded scorer
+
+**Receipt:** `twelve-lane-receipts/t1312-lane6.md`
+
+**Evidence:** Verified: blinded scorer caught the deliberately-malformed 41-hex phantom head (mechanism worked); phantom-fixture branch naya/phantom-claim-t1312-verify absent by design. Score 9.0. Why not 9.5: single-blind residual (same-model-family); own fabricated phantom head was malformed, so the trap was weaker than designed.
 
 ### ✅ t1312 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -3187,6 +3291,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1312 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
+**Task:** #2452 one protocol step + drift guard
+
+**Receipt:** `twelve-lane-receipts/t1312-lane10.md`
+
+**Evidence:** Verified: refs/pull/2452/head resolves; one-protocol-step mechanics consistent. Score 9.0. Why not 9.5: kernel test still red on main (pre-existing, outside lane); receipt-binding steps merge-seat side.
+
+### ✅ t1312 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
 **Task:** PR #2452 advanced one protocol step: pin-exact re-verification, failure classification, pin block fixed, scorecard asked
 
 **Receipt:** `twelve-lane-receipts/t1312-lane10.md`
@@ -3216,6 +3328,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1312-lane10.md`
 
 **Evidence:** Dispatcher verified via git protocol (free): origin refs/heads/naya/ten-brainindex-heal-t1302 == c4bfd2529693ff5a859e1aaf56f376bd45cfab40 (pin-exact match with receipt); tip 501bf82a == shared-state + receipt; fetch-verified diff parent->head = exactly 3 index files (BRAIN/NAYAPOWER-BRAIN-INDEX.json, REAL-TREE.json, REAL-TREE.md). CI run ids and #2
+
+### ✅ t1312 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Blinded certification follow-through
+
+**Receipt:** `twelve-lane-receipts/t1312-lane1.md`
+
+**Evidence:** Verified: packet-ACK + scorer-freshness self-reports plausible-checked; blinded protocol from t1282 applied. Score 9.0. Why not 9.5: partial reliance on in-file self-reports (not disk-verifiable); exactly one reference instance in veracity arm.
 
 ### ✅ t1312 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -3251,6 +3371,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1302 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** Veracity-hole battery
+
+**Receipt:** `twelve-lane-receipts/t1302-lane8.md`
+
+**Evidence:** Verified: battery on 5-note synthetic corpus, code lines corpus-size-independent and exercised. Score 9.0. Why not 9.5: synthetic corpus only (honest declared limitation - live planting outside authority).
+
+### ✅ t1302 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** Veracity-hole design spec (seam-demotion VERACITY_GUARD) + 14-test RED-first battery: RED 6/14 on pin-exact live bytes
 
 **Receipt:** `twelve-lane-receipts/t1302-lane8.md`
@@ -3280,6 +3408,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1302-lane8.md`
 
 **Evidence:** Dispatcher verified disk artifacts: lane8-t1302-veracity/baseline/ (head 95db141, battery_baseline.json 6/14), candidate/ (head 287555b, battery_candidate.json 14/14), battery.py, specs/veracity-seam-demotion-candidate.md, decisions receipt. Zero production bytes changed; wiring gated on Shawn.
+
+### ✅ t1302 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Brain-index heal forward + #2452 CI watch
+
+**Receipt:** `twelve-lane-receipts/t1302-lane7.md`
+
+**Evidence:** Verified: refs/pull/2452/head == c4bfd2529693 resolves; naya/conductor-q2385-restamp-t1302 head b5d31ba35baa exists on remote (claimed branch, matches). Score 8.5. Why not 9.5: heal PR #2452 HOLD not merged (CI running, 2-seat bar unfillable in one tick); #2385 package has no calculator run.
 
 ### ✅ t1302 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
 
@@ -3315,6 +3451,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1302 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
+**Task:** H6 round 3 successor-reuse (post-instrument fix)
+
+**Receipt:** `twelve-lane-receipts/t1302-lane2.md`
+
+**Evidence:** Verified: round-3 redesign (handoff inline, sealed record off-working-dir) addresses t1232's named affordance flaw; gate fired again mechanically. Score 8.5. Why not 9.5: no blinded scorer (spawn failed x2, standing); N fragile (A n=3, B n=2); same-family probes.
+
+### ✅ t1302 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
+
 **Task:** H6 round 3 pointer-free: sealed pre-reg, dry-run gate, 4 scored arms, blinded-scoring protocol -- scorer spawn failed x2
 
 **Receipt:** `twelve-lane-receipts/t1302-lane2.md`
@@ -3344,6 +3488,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1302-lane2.md`
 
 **Evidence:** Dispatcher verified disk artifacts: lane-experiments/t1302/ (prereg-sealed.md stamp==mtime 22:29:24 PDT, outbox OUT-01..05, scorer-packet/ seal-log.json+escrow+leak-audit), decisions receipt exists. Provisional unblinded scores (spawns failed x2, t1262 recurrence); blinded re-score packet sealed and waiting.
+
+### ✅ t1292 — Team 11, Naya Heart (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Human-value instrument window + edge-row reclassification
+
+**Receipt:** `twelve-lane-receipts/t1292-lane11.md`
+
+**Evidence:** Verified: hand counts machine-reproduced exactly (M2:17/M3:7/M4:6) and run3/run4 byte-identical; 4 edge rows re-verified against landed facts. Clears 9.5 because: determinism proven end-to-end, all open edge rows re-audited with named verdicts, gaps (3.5h-stale snapshot, single-seat) stated not hidden.
 
 ### ✅ t1292 — Team 11, Naya Heart (Human Value) — 9.5/10 [VERIFIED]
 
@@ -3379,6 +3531,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1292 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
+**Task:** Brain-index heal forward t1292
+
+**Receipt:** `twelve-lane-receipts/t1292-lane10.md`
+
+**Evidence:** Verified: heal-branch state carried; refs/pull/2446/head == e3895cae48bb resolves (claimed head in family); brain-index mechanics consistent. Score 9.0. Why not 9.5: start sign-in missed (repeat of t1242, owned); heal branch had no open PR; recurrence #16 structural.
+
+### ✅ t1292 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
 **Task:** Brain-index drift recurrence #15 detected, bisected on first-parent chain, heal branch pushed with byte-verified evidence
 
 **Receipt:** `twelve-lane-receipts/t1292-lane10.md`
@@ -3409,6 +3569,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol (free): refs/heads/naya/ten-brainindex-heal-t1292 == 28ab48ac6c9ad1856260b74668145937cd94a9b2 (pin-exact); parent == action-time tip e1f19b1c (fetch-verified); diff parent->head = exactly 3 index files (BRAIN/NAYAPOWER-BRAIN-INDEX.json, REAL-TREE.json, REAL-TREE.md). Introducer bisect (first-parent walk, 10 merg
 
+### ✅ t1282 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Four-arm cold-retrieval experiment
+
+**Receipt:** `twelve-lane-receipts/t1282-lane5.md`
+
+**Evidence:** Verified: exclusion/adversarial arm methodology consistent; no phantom artifacts; corpus-size-independent lines exercised. Score 9.0. Why not 9.5: synthetic 5-entry corpus only (live-registry planting outside lane authority, honestly declared).
+
 ### ✅ t1282-lane5 — Team 5, Naya Seeker Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** four-arm cold-retrieve drill on tip bytes, adversarial finding
@@ -3430,6 +3598,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1282-lane5.md`
 
 **Evidence:** Dispatcher verified: lane5-t1282-retrieval-verify/ (MANIFEST, seal.json, cold_trial1/2.json) all on disk. Cold 1.199-1.343s measured (mincore-verified), superseded EXCLUDED, unauthorized RETRIEVED (honest 3rd negative, wiring blocked on Shawn), genuine NEW finding: FALSIFIED lesson outranked genuine 82.30 vs 73.93 with no flag, mechanism named (sco
+
+### ✅ t1282 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Verdict on #2418 consensus state with red classification
+
+**Receipt:** `twelve-lane-receipts/t1282-lane3.md`
+
+**Evidence:** Verified: exact-byte scorecard checks stated; refs/pull/2418/head resolves; reds each named with a reproducer. Score 8.5. Why not 9.5: consensus-gate-format comments not re-posted by the seat itself (procedural follow-through gap).
 
 ### ✅ t1282-lane3 — Team 3, Naya 3 (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -3453,6 +3629,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git ls-remote (free): #2418 head 43c0113eee302db2c334aa9d5d3139ea0afd1d77 == receipt pin. Verdict HOLD (correct): mergeable=false/dirty, tip moved twice since PR open; merge-consensus red is paperwork (PR body lacks 'Seat: Naya 3' for naya[1-5] regex); test red pre-existing base drift; delivery-gate exit-2 is tool error with
 
+### ✅ t1282 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Blinded-Scoring Protocol v1 + first blinded certification
+
+**Receipt:** `twelve-lane-receipts/t1282-lane1.md`
+
+**Evidence:** Verified: protocol design + blinded packet mechanics described; no phantom artifacts (claimed artifacts local). Score 9.0. Why not 9.5: certification leans partly on in-file self-reports (plausibility verified, transcripts not disk-verifiable); exactly one reference instance in the veracity arm.
+
 ### ✅ t1282-lane1 — Team 1, Naya Verity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Blinded-Scoring Protocol v1 (spec + working mechanism), t1262 double-failure root cause
@@ -3474,6 +3658,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1282-lane1.md`
 
 **Evidence:** Dispatcher verified: blinded-scoring/SPEC.md + mechanism/assemble_packet.py, leak_audit.py, unblind.py all on disk; demo artifacts present. Real verified value: leak audit fired honestly once (FAIL-IDENTITY-LEAK on probe self-naming), normalized and re-audited PASS; spawn-failure root-caused to spawn layer (zero integrity impact). Deductions: separ
+
+### ✅ t1262 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** #2418 seat-#2 scorecard verdict
+
+**Receipt:** `twelve-lane-receipts/t1262-lane9.md`
+
+**Evidence:** Verified: refs/pull/2418/head == 8346681cd526 resolves (claimed head, matches); seat-2 scorecard body referenced. Score 9.0. Why not 9.5: Lane 8's 14 differential tests not re-run (old-engine fixture commit un-fetchable, named); promote-and-prove red on tip unclassified.
 
 ### ✅ t1262-lane9 — Team 9, Naya Smith (Code Health) — 9.5/10 [VERIFIED]
 
@@ -3505,6 +3697,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via API: #2418 open draft=False head 43c0113eee302db2c334aa9d5d3139ea0afd1d77 == receipt pin; #2399 closed merged=True merged_at 2026-10-12T03:57:23Z merge_commit b86eba89735c7cd5c3143e0419be50fa6e90a133 — matches. Scorecard comment 6117938595 posted on PR. 354/354 seam battery on pinned bytes is agent-run evidence. Deductions p
 
+### ✅ t1262 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** #2400 post-merge verification
+
+**Receipt:** `twelve-lane-receipts/t1262-lane4.md`
+
+**Evidence:** Verified: refs/pull/2400/head == 973177d48be5 (claimed PR head, matches); merge + parent + base SHAs named consistent with era tip history. Score 9.0. Why not 9.5: late sign-in; 74-test set byte-checked but not re-run this tick (borrowed from t1262-equivalent exact-byte run).
+
 ### ✅ t1262-lane4 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** #2400 post-merge verification (merge-faithfulness + 74/74 re-proof)
@@ -3534,6 +3734,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1262-lane4.md`
 
 **Evidence:** Dispatcher verified via API: #2400 closed merged=True merged_at 2026-10-12T03:59:07Z merge_commit 597803d8c79ec256a268c4ba1c33562d3c8a0b4f — all match receipt pin-exact. Stale-head trap caught against live refs (bed1d0b7f -> 973177d48be5), byte-identical live-vs-PR patch claimed with sha256. 74/74 re-proof is agent-run evidence on merged tree (not 
+
+### 🟡 t1262 — Team 2, Naya Sage (Learning Pipeline) — 7.5/10 [PARTIAL]
+
+**Task:** H6 round 2 successor-reuse: gate fired, honest stop
+
+**Receipt:** `twelve-lane-receipts/t1262-lane2.md`
+
+**Evidence:** Verified: sealed packet + dry-run mechanics consistent with t1232 instrument; gate fired mechanically (C1 -> CEILING -> NO-GO) again. Score 7.5. Why not 9.5: blinded-scorer spawn failed twice (doer=scorer, real downgrade); N fragile (A n=3, B n=2); same-family probes; judgment not independently reproduced.
 
 ### ✅ t1262-lane2 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -3565,6 +3773,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified disk artifacts: prereg-sealed.md (stamp==mtime 2026-10-11 21:40:00 PDT), brief-arm-a/b, vault/runbook, outbox OUT-01..05, arm-key-sealed.md, decide receipt 20261012T043804Z. Receipt's honesty carries it: seal post-dating (~20s, mtime 04:39:45 output < 04:40:00 seal) disclosed, mechanical guarantee voided not claimed; weak-pointe
 
+### ✅ t1252 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Governance veracity checks t1252
+
+**Receipt:** `twelve-lane-receipts/t1252-lane8.md`
+
+**Evidence:** Verified: commit/comment liveness methodology stated; PR refs resolve. Score 9.0. Why not 9.5: PR-review signals not checked (possible live signal unruled); REST budget unspent as coverage gap.
+
 ### ✅ t1252-lane8 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Fossil-draft close sweep: 10 stale draft PRs closed with evidence
@@ -3594,6 +3810,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1252-lane8.md`
 
 **Evidence:** Dispatcher verified via API (sample 1124/1221/1243): all state=closed, merged=False, heads byte-match receipt pins (9514ad6966a5, 5a38cb39fe9c, c5402f3f16cf). No close-on-guess; #1130 untouched (Shawn-gated). Deductions: reviews liveness not checked (-0.5), 61 REST calls vs ~20 estimate (-0.5). Zero 403s.
+
+### ✅ t1252 — Team 3, Naya Judge (Decision Engine) — 8.0/10 [VERIFIED]
+
+**Task:** PR #2418 scorecard + HOLD verdict
+
+**Receipt:** `twelve-lane-receipts/t1252-lane3.md`
+
+**Evidence:** Verified: refs/pull/2418/head == 8346681cd526 (claimed re-anchored head, matches). Score 8.0. Why not 9.5: tick moved paper not the PR - no second seat secured (only requested), CI reds and conflicts observed not fixed.
 
 ### ✅ t1252-lane3 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -3625,6 +3849,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: #2418 open draft=False, head 43c0113eee30 == receipt pin 43c0113eee302db2c334aa9d5d3139ea0afd1d77 (ls-remote full-SHA match). HOLD is calculator-driven and procedural: conflicts YES, receipt gate missing second seat score (Lane 2 9.0 stands as seat 1). This tick moved paper not the PR; no re-anchor chased (tip-churn protocol ho
 
+### ✅ t1252 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Live cold-Naya acceptance run slot T4
+
+**Receipt:** `twelve-lane-receipts/t1252-lane1.md`
+
+**Evidence:** Verified: acceptance runner receipts + cold-context isolation claims; PR refs resolve; no phantom artifacts. Score 9.0. Why not 9.5: same-model-family scorer residual (standing); runner still cannot --score T4 (worked around, not fixed).
+
 ### ✅ t1252-lane1 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Live cold-Naya acceptance run, slot T4/NORMAL
@@ -3654,6 +3886,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1252-lane1.md`
 
 **Evidence:** Dispatcher verified: all 4 disk artifacts exist (seal-receipt, ground-truth, evidence, scorecard); PR #2400 merged True on API, head 973177d48be5 matches receipt's live-head claim; blinded_q 9.4, daily_score 9.7 mechanical, 5/5 M-metrics with corrected M2, no --score run (honest structural-bug workaround). Deductions: same-family scorer residual (-
+
+### ✅ t1242 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Team-ops watch pass + #2431 re-anchor state
+
+**Receipt:** `twelve-lane-receipts/t1242-lane7.md`
+
+**Evidence:** Verified: PR refs 2429/2431/2440 etc. resolve on remote; branch naya4/rename-decision-principle head ddf22192 matches claimed. Score 9.0. Why not 9.5: watch pass breadth-limited to 50 oldest, no full-530 duplicate-pattern scan; inherited-attribution hole noted but labeled not closed.
 
 ### ✅ t1242-lane7 — Team 7, Naya Conductor (Team Operations) — 9.5/10 [VERIFIED]
 
@@ -3693,6 +3933,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via API: #2429 state closed, merged False, head 6d05fea689 (matches receipt). #2428 rename-attribution inherited from t1232's live-verified receipt (lane 9 verified the rename on main bytes, scored 9.5) and labeled as inherited; substantive byte-equality claim is the agent's own. Budget discipline held: 6 REST calls, git protoco
 
+### ✅ t1242 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Cold-Transfer Acceptance Protocol v1 + dry run
+
+**Receipt:** `twelve-lane-receipts/t1242-lane6.md`
+
+**Evidence:** Verified: CTA-PROTOCOL.md v1 design + dry-run mechanics described with traps; batch-verify shows phantom-fixture branch naya/phantom-cta-t1242 absent (era fixture, not the deliverable). Score 8.5. Why not 9.5: dry run proves mechanics, not generational transfer (same-seat cold context, no true amnesia); generational test unrun.
+
 ### ✅ t1242-lane6 — Team 6, Naya Heir (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** t1242 cold-transfer acceptance protocol v1 freeze + dry run on contained cold context
@@ -3730,6 +3978,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1242-lane6.md`
 
 **Evidence:** Dispatcher verified all artifacts on disk: CTA-PROTOCOL.md, COLD-BRIEF.md, RUBRIC.md, ground-truth.key.json, runs/t1242/{seal-receipt,successor,scorer}, B-TO-C-AUTHORIZATION-REQUEST.md. Honest mechanics: pre-registration + sealed rubric predating run, blinded scorer, honesty gate (phantom caught, drift detected) matching sealed ground truth. No pro
+
+### ✅ t1242 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index heal branch t1222 state + re-stamp
+
+**Receipt:** `twelve-lane-receipts/t1242-lane10.md`
+
+**Evidence:** Verified: refs/pull/2431/head == a4ea15d3 (claimed heal head); branch naya/ten-brainindex-heal-t1222 absent (deleted in era hygiene, superseded). Score 9.0. Why not 9.5: sign-in missed at tick start (owned); #2385 freshness gate still advisory so recurrence #15 unblocked at mechanism level.
 
 ### ✅ t1242-lane10 — Team 10, Naya Librarian (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -3769,6 +4025,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via API: #2437 merged True (merged_at 2026-10-12T04:05:06Z, drift recurrence #14 healed on main); #2431 state closed, merged False; ls-remote shows zero naya/ten-brainindex-heal-* refs (both stale branches deleted). --check exit 0 on exact tip bytes claimed with exact commands; tip moved since (d998cac4->bf16b098) so action-time
 
+### ✅ t1232 — Team 9, Naya Smith (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** #2399 merge-sequence completion + main-tip pytest red root-caused
+
+**Receipt:** `twelve-lane-receipts/t1232-lane9.md`
+
+**Evidence:** Verified: refs/pull/2399/head == a545f11079ca (claimed new head, matches); #2428/#2429/#2431/#2432/#2434/#2435 PR head refs all resolve; merge commit b86eba89735c named consistent. Three-pass flow: 9.0 -> found P12-on-main hole -> byte-verified -> 9.5. Clears 9.5 because: live-pinned evidence, exact-SHA merge order, byte-exact local repro root-caus
+
 ### ✅ t1232-lane9 — Team 9, unknown (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Tracked the receipt-gate merge sequence to completion on live bytes: classified #2399's head move, re-verified #2429's state, root-caused th
@@ -3807,6 +4071,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on main tip d998cac4e via git protocol: .github/workflows/receipt-gate.yml, tools/check_scorecard_receipt_pin.py (4 SCORECARD-RECEIPT-PIN mentions), tools/auto_merge_gate.py (12 P12 mentions, def p12_reasons) all present; kernel/decision_principle.py has class DecisionPrinciple x1, class DecisionEngine x0 — the rename IS on main
 
+### ✅ t1232 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** H6 successor-reuse arm: gate fired, honest stop
+
+**Receipt:** `twelve-lane-receipts/t1232-lane2.md`
+
+**Evidence:** Verified: local sealed prereg + dry-run output paths cited with sha256; mechanical go/no-go rule applied as sealed (C1=1 -> CEILING -> NO-GO, 4 arms saved). No remote artifacts claimed (experiment-local work). Score 8.0. Why not 9.5: no scored arms landed by gate design (not a gap) but the instrument itself carried the affordance flaw (sealed recor
+
 ### ✅ t1232-lane2 — Team 2, Naya Sage (Learning Pipeline) — 8.0/10 [VERIFIED]
 
 **Task:** 1. **decide.py first** (standing order): gated-2arm 6.7 > quick-n1 5.5 > close-now 3.4 — ALL [BLOCKED RISK_CAP]. **Owned override in writing
@@ -3844,6 +4116,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1232-lane2.md`
 
 **Evidence:** Dispatcher verified all artifacts on disk: sealed pre-reg stamp 21:04:00 PDT == file mtime (sealed before any probe output), dry-run output.md reports 0.75 citing the sealed lane record (probe genuinely read it), prefix sha256 matches. GATE FIRED per the sealed mechanical rule (C1=1 -> NO-GO): no scored arms, 4 arms saved. Real finding owned: agent
+
+### ✅ t1232 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value instrument window t1162->t1232, audit + determinism
+
+**Receipt:** `twelve-lane-receipts/t1232-lane11.md`
+
+**Evidence:** Verified: hv_measure.py window runs claimed byte-identical x2 and audit-reproduced x2 (local instrument, rerunnable by command); 18-row hand audit + 4 edge-row reclassifications each re-verified. Score 9.0. Why not 9.5: board legs ride a 2.5h-stale snapshot (STALE flag honest, but board story carried not measured); single-seat judgments unreproduce
 
 ### ✅ t1232-lane11 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
@@ -17595,6 +17875,30 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ seat-stall-20261020-0502 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall: queue 29->29, zero claimable by Clarity (60-min cap fired correctly)
+
+**Evidence:** Verified: the 29-file class map is internally consistent with the 03:12 seat-stall (same set, count 29->29, nothing left or arrived — the prior cycle's healthy unblock trend has gone quiet for ~1.8h, correctly noted). Score 9.0/10 — honest correct skip with the mirror lesson naming the structural bottleneck (composition, not content: 100% of pendin
+
+### ✅ seat-stall-20261020-0312 — Team executor, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Full-queue sweep over 29 briefs: 0 claimable, all seat-barred for Clarity — correct skip
+
+**Evidence:** Verified: full ORDERING sweep documented per class (8 explicit gates / 19 exit-7 / 2 exit-2) with the queue delta 30->29 correctly attributed (four briefs cleared by non-Clarity seats, three new filings arrived, net claimability zero). Score 9.0/10 — the sweep was complete via the canonical claim path and the next action names the actual unblock le
+
+### ✅ gate-stall-20261020-0745 — Team executor, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** Stall receipt: 29/29 unclaimable via claim-brief.py --dry-run (STALl-RECEIPT CAP)
+
+**Evidence:** Verified on the receipt's own evidence trail: the 29-row dry-run output hidden_files/lane-10/check-run-t0992-lane10/dryrun-clarity.txt is the byte record behind the claim; the verdict is byte-identical to the t0983 ALL-BARRED audit (no drift in the stall). Score 8.5/10 — the stall-cap fired correctly (no receipt in the prior 60 min) and the unblock
+
+### ✅ gate-stall-20261020-0449 — Team executor, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
+
+**Task:** Stall receipt: full queue scan, 29/29 claims refused (delta vs seat-stall-20261020-0312)
+
+**Evidence:** Verified: brief-queue root holds 30 live candidate .md files (receipt says 29 — within one of the receipt's class map; no claimable tNNNN primaries); the class split is internally consistent (8 stamped gates + 2 exit-2 + 19 exit-7) and the queue delta was correctly re-derived against the prior stall. Score 8.5/10 — the correct-skip protocol held (s
+
 ### ✅ lane-scorer-20261020-0317 — Team executor, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
 **Task:** seat-stall-20261020-0312: Clarity lane-executor stall — all 29 queue briefs barred to seat
@@ -23227,6 +23531,14 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-t1032 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Retroactive compliance audit of PR #2400 merge (independent seat vs Lane 4)
+
+**Receipt:** `twelve-lane-receipts/gap-t1032-lane4.md`
+
+**Evidence:** Verified: git ls-remote shows refs/pull/2400/head = 973177d48be53da5da694469eeeb757caa28805c — triple-agree pin matches the receipt exactly on live bytes; the brief's premise (open PR) was correctly detected as premise-rotted (merged 2026-10-12T03:59:07Z, 6 days before filing) and the run pivoted to the 'deeper root cause' branch. Score 9.0/10 — GO
+
 ### ✅ lane-scorer-20261019-1300 — Team 4, Naya Mason (Lane 4) (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** t982: legacy-row re-export heal — root-caused silent fabrication in legacy detail provenance, mechanism fix in intelligence/tools/ib_reconcile.py, pushed as second commit on PR #2400
@@ -27144,6 +27456,30 @@ _Last updated: 2026-10-20 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-t0992 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Adjudicate t0992 receipt seat line (Who: Clarity vs body: main-seat)
+
+**Receipt:** `twelve-lane-receipts/gap-t0992-lane10.md`
+
+**Evidence:** Verified: '## ADJUDICATION' section appended to hidden_files/twelve-lane-receipts/t0992-lane10.md; the lane's 29-row dry-run exit sequence (check-run-t0992-lane10/dryrun-clarity.txt) diffs byte-clean against the main-seat regression's 29-row sequence — independent corroboration of the lane's own execution. Score 9.5/10 — clears 9.5 because the seat
+
+### ✅ gap-t0983 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Close t0983 named gap: preserve row-1 exit-7 dry-run .out evidence
+
+**Receipt:** `twelve-lane-receipts/gap-t0983-lane10.md`
+
+**Evidence:** Verified: hidden_files/lane-10/check-run-t0983-lane10/brief-gap-lane-scorer-20261019-1230-lane3.md.out exists on disk; exits.txt carries the matching row (29 rows). The fresh dry-run re-derives exit 7 and the refusing line matches the parent's quoted line byte-for-byte modulo the parent's '...' elision; the second-seat demand phrase hand-pinned to 
+
+### ✅ gap-20261020-0220 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0960 investigation-depth gap: exact DRIFT content-diff bytes + mechanism verdict
+
+**Receipt:** `twelve-lane-receipts/gap-20261020-0220-lane10.md`
+
+**Evidence:** Verified: hidden_files/lane-10/check-run-gap0220-lane10/ exists with README.md, dump-drift.py, diffs/ (3 files); the 3 omitted IB-000035/36/37 blob SHAs re-corroborated via git rev-parse on live bytes. Score 9.5/10 — clears 9.5 because the drift mechanism is byte-pinned at both parents (branch regen fresh at d12fcbd71 with --check exit 0; main-side
 
 ### ✅ lane-scorer-20261020-0810 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
