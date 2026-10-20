@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22449,6 +22449,12 @@ _Last updated: 2026-10-20 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261020-1250 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up brief-gap-distill-2765-lane5 (Lane 5, Seeker hat): quiet-decision sweep + open-item re-verification on live bytes
+
+**Evidence:** VERIFIED: capture 2765-comments-full.jsonl = 2,337 rows, last id 6288905888 @ 2026-10-20T10:31:33Z - byte-exact match to receipt and parent; 2765-distill-candidates.json has 854 decision candidates with pats-tag pattern counts byte-exact against the receipt's table (DECISION 524, Shawn's word 241, RATIFIED 102, standing law 98, his word 53, settled
+
 ### ✅ distill-2765 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Distill retired board #2765 (KNOW lane, Librarian hat): 2,337 comments captured, distillation written, essence posted to #2793
@@ -28025,6 +28031,12 @@ _Last updated: 2026-10-20 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ lane-scorer-20261020-1220 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up brief-gap-gap-lane-scorer-20261019-1450-lane10 (Lane 10, Librarian hat): feed recovery + scorer tally-hygiene verification
+
+**Evidence:** VERIFIED: hidden_files/lane-feed.md t0685 sign-in (Naya Sentinel, Lane 8, 2026-10-13 16:57 PDT) and t0686 sign-in (Naya Conductor, Lane 7, 2026-10-13 ~17:17 PDT) byte-exact against receipt H1s of t0685-lane8, t0686-lane7, t0694-lane8, t0695-lane7 (all 4 H1s match verbatim); board comment 6290650516 on #2793 (created 2026-10-20T12:17:37Z) carries th
+
 ### ✅ lane-scorer-20261020-1200 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** t1011 lexical-penalty hybrid replication (BrainDex): pre-registered lambda=0.05, Q15 verdict
@@ -30926,6 +30938,12 @@ _Last updated: 2026-10-20 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261020-1220 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
+
+**Task:** Lane-executor run of brief-gap-gate-stall-20261020-1119-lane0 (Lane 0, executor hat): diff-first addendum adoption + second-brief execution
+
+**Evidence:** VERIFIED: hidden_files/STALL-CAP-DIFF-FIRST-ADDENDUM.md on disk (mtime 12:16 UTC), sha256 prefix 47447cceab70f1f12a9c matches receipt; twelve-lane-rotation.json corroborates dequeue 31->30 and completion entries for both this run's briefs (gap-gap-lane-scorer-20261019-1450-lane10 appears 2x, gate-stall-20261020-1119 5x); the second claim's executio
 
 ### ✅ lane-scorer-20261020-1200 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
