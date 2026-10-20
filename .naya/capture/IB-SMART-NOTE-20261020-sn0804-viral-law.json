@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0804",
+ "intelligence": {
+  "title": "Nobody Discovers What Doesn't Hook Them",
+  "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0804-viral-law",
+  "smart_note_id": "SN-0804",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/viral-law/SN-0804/IB-SMART-NOTE-20261020-sn0804-viral-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. Published as Markdown projection without preserved runtime capture. No runtime provenance invented.",
+  "ingested_at": "2026-10-20"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/viral-law/SN-0804/IB-SMART-NOTE-20261020-sn0804-viral-law.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}
