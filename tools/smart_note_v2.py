@@ -1438,6 +1438,31 @@ def verify_receipt(receipt, evidence_bundle):
     return True, "Receipt verified: promotion was valid under recorded thresholds."
 
 
+def _projection_path_exists(path: Path) -> bool:
+    """Check real projection presence without Windows MAX_PATH false negatives.
+
+    pathlib.Path.exists can return False for a present tracked file when
+    its absolute Windows path exceeds 260 characters. Retry only such
+    long Windows paths with the Win32 extended-length namespace. An
+    actually missing file remains missing; ordinary/Linux paths and
+    all other audit checks retain their existing behavior.
+    """
+    if path.exists():
+        return True
+    if os.name != "nt":
+        return False
+    absolute = str(path.absolute())
+    prefix = '\\\\?\\'
+    if len(absolute) < 260 or absolute.startswith(prefix):
+        return False
+    if absolute.startswith('\\\\'):
+        # Win32 UNC: //server/share -> //?/UNC/server/share
+        extended = prefix + "UNC" + '\\' + absolute[2:]
+    else:
+        extended = prefix + absolute
+    return Path(extended).exists()
+
+
 def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=None):
     """Reconcile captures, the machine registry, and published Brain projections.
 
@@ -1512,7 +1537,7 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         pp = e.get("projection_path")
         if published and not pp:
             defects["published_entries_missing_projection_path"].append(sn)
-        if pp and not (root / pp).exists():
+        if pp and not _projection_path_exists(root / pp):
             defects["registry_projection_paths_absent"].append({"smart_note_id": sn, "projection_path": pp})
 
     pages_by_name = {}
