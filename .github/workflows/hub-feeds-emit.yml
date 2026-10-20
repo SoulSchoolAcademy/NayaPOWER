@@ -51,7 +51,9 @@ jobs:
 
       - name: Emit hub feeds
         env:
-          SB_API: ${{ vars.SB_API }}
+          # Default: the in-repo runner shim (tools/sb-api, stdlib-only).
+          # The SB_API repo variable still wins wherever an operator sets it.
+          SB_API: ${{ vars.SB_API != '' && vars.SB_API || './tools/sb-api' }}
           SUPABASE_MANAGEMENT_TOKEN: ${{ secrets.SUPABASE_MANAGEMENT_TOKEN }}
         run: |
           set -euo pipefail
