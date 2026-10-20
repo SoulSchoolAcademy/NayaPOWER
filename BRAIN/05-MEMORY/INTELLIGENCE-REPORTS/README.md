@@ -130,6 +130,7 @@ Those are historical evidence, not competing current homes. Do not delete histor
 
 ## 10. Current canonical reports
 
+- [2026-10-20 - IB-DIR-NAYAPOWER-20261020-001](./DAILY/2026/10/20/IB-DIR-NAYAPOWER-20261020-001.md) - dated AAA execution audit, ten priorities and team directive; source-based candidate, not production-proven.
 - [2026-10-05 — IB-DIR-NAYAPOWER-20261005-001](./DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md) — current daily system report
 - [2026-10-03 — IB-DIR-NAYANET-20261003-001](./DAILY/2026/10/03/IB-DIR-NAYANET-20261003-001.md) — canonicalized Hub daily report
 - [2026-10-02 — IB-DIR-NAYAPOWER-20261002-001](./DAILY/2026/10/02/IB-DIR-NAYAPOWER-20261002-001.md)
