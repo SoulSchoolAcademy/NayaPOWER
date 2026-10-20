@@ -115,24 +115,25 @@ CURRICULUM_LESSON_PINS = {
     "L14": "4a9962ac4aa6e686472499e781a9a068e1d3e16169c543e7f94ecd1d68624364",
 }
 
-# Pinned 2026-10-13 to origin/main @
-# 9dd36f8574a27c25fdc718f475943d6b570fc45e (PR #2790 duplicate-laws
-# merge: 0008 supreme_law pointer 0007 -> 0016-LAW-OF-ONE-V1; re-pinned
-# deliberately — the pin source string names the new ref per the re-pin
-# rule). A drift in lesson content or V2 bytes is a deliberate re-pin
-# (code change), never a silent pass.
+# Pinned 2026-10-20 to the PR branch's own live bytes @
+# 96ab99fd4c551d47f81a94976f043d907e69eec2 (PR #2790 duplicate-laws
+# merge; w615 re-pin — pins attest the bytes of the commit being gated,
+# read live from the branch head. w581 pinned origin/main's bytes into
+# a branch that rewrites the V2 files and the gate self-defeated; w579
+# taught: pins come from live bytes, never remembered bytes. A drift in
+# lesson content or V2 bytes is a deliberate re-pin (code change), never
+# a silent pass.
 V2_PIN_SOURCE = (
-    "origin/main @ 6129980c9453d48866aa110a227cf08df83b08df "
-    "(PR #2790; TRUE live canonical re-pin 2026-10-20 w581 — pins attest "
-    "main's bytes, never the branch's own re-pinned copy; w579 taught: "
-    "pins come from live bytes, never remembered bytes)")
+    "naya-delta/w565-duplicate-laws-merge @ 96ab99fd4c551d47f81a94976f043d907e69eec2 "
+    "(PR #2790; w615 re-pin from the branch head's own live bytes — pins attest "
+    "the commit being gated, never a cached origin/main ref)")
 V2_FILE_PINS = {
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md":
         "d856dc13ae5d31695a94ba97aa52850ea1d0cfb5d4740eb4ff71ffd67967259a",
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md":
-        "8e9f53929f0bbc9af3bfd1da3c7f60454a2c9f1769162ec0bb4e48023be187a9",
+        "8f7dfcae06856c27a1cc25fc862f7c24777c322792d57007902cbe5733b2ed9a",
     "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json":
-        "a4af89b3c8b3db07e0c289c4906381870952096f282202e0de98a48511a7e2b1",
+        "67458710d36687e2d6434c79f93a49dc7da4c025cc29aa1a104560eb391ab706",
 }
 
 
