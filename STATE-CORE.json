@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-20T19:46:34Z",
+ "generated_utc": "2026-10-20T19:56:28Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "b638394c58b81bec0483996ac4a201bce5cdf3ca",
-  "short": "b638394c58b8",
+  "sha": "4cb51e531bdac3d2960ddd77b4ab894d56fed325",
+  "short": "4cb51e531bda",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-20T19:46:00Z"
+  "checked_utc": "2026-10-20T19:56:00Z"
  },
  "venue": {
   "live": 2765,
@@ -57,27 +57,27 @@
  },
  "queue": {
   "actionable": 0,
-  "proposed": 13,
+  "proposed": 14,
   "top": [
    {
     "id": "Q-PROP-1",
-    "title": "merge-protocol enforcement is UNWIRED \u2014 required checks FAILED on #2801's exact head yet i"
+    "title": "post-merge IV for #2811's brain-index re-stamp merge (4cb51e53, 500 files) \u2014 merge-tree fa"
    },
    {
     "id": "Q-PROP-2",
-    "title": "STEP-7 re-fires at new tip c58832b4 \u2014 class continuation, one NEW defect instance inside i"
+    "title": "merge-protocol enforcement is UNWIRED \u2014 required checks FAILED on #2801's exact head yet i"
    },
    {
     "id": "Q-PROP-3",
-    "title": "\u2014 merge-consensus gate burst-flake: STEP-3 \"Get PR info\" exit-1 on bot-comment edits"
+    "title": "STEP-7 re-fires at new tip c58832b4 \u2014 class continuation, one NEW defect instance inside i"
    },
    {
     "id": "Q-PROP-4",
-    "title": "merge-consensus-gate multiline fail-closed guard is blind to real newlines \u2014 `$'\\\\n'` matc"
+    "title": "\u2014 merge-consensus gate burst-flake: STEP-3 \"Get PR info\" exit-1 on bot-comment edits"
    },
    {
     "id": "Q-PROP-5",
-    "title": "contingent IV of #2791's drift-detector re-key claim \u2014 fresh Naya Delta PR, no IV ask, CI"
+    "title": "merge-consensus-gate multiline fail-closed guard is blind to real newlines \u2014 `$'\\\\n'` matc"
    }
   ]
  },
@@ -210,7 +210,7 @@
   }
  ],
  "gates_on_tip": {
-  "test": "failure",
+  "test": "green",
   "spec_integrity": "green",
   "receipt": "unknown"
  },
@@ -254,27 +254,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 35
+   "age_s": 30
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 35
+   "age_s": 30
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 35
+   "age_s": 30
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 35
+   "age_s": 30
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 35
+   "age_s": 30
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 35
+   "age_s": 30
   }
  }
 }
