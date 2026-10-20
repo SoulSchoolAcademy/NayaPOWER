@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-20T07:17:53+00:00",
+ "generated_utc": "2026-10-20T09:15:24+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -81,7 +81,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 27
+   "open_pr_count": 63
   },
   {
    "id": "know",
@@ -150,7 +150,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 20
+   "open_pr_count": 27
   },
   {
    "id": "act",
@@ -250,9 +250,15 @@
      "title": "T-05: Law 11 structured harm profiles \u2014 per-group, never collapsed",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2355",
      "draft": false
+    },
+    {
+     "number": 2272,
+     "title": "Neutrality Profile as code (NAYA-NEUTRALITY-PROFILE-V1, PROPOSED)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2272",
+     "draft": true
     }
    ],
-   "open_pr_count": 7
+   "open_pr_count": 8
   },
   {
    "id": "prove",
@@ -321,7 +327,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 10
+   "open_pr_count": 31
   },
   {
    "id": "build",
@@ -390,7 +396,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 100
+   "open_pr_count": 247
   },
   {
    "id": "wire",
@@ -459,7 +465,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 78
+   "open_pr_count": 127
   },
   {
    "id": "team",
@@ -508,9 +514,27 @@
      "title": "feat(dashboard): live Team Naya activity dashboard \u2014 markdown + machine JSON",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397",
      "draft": false
+    },
+    {
+     "number": 2246,
+     "title": "[DRAFT] The Naya Code \u2014 canonical identity in human, AI, and machine forms",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2246",
+     "draft": true
+    },
+    {
+     "number": 2161,
+     "title": "Add TEAM-EXECUTION-PROMPT.md \u2014 continuous 10/10 standing order",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2161",
+     "draft": false
+    },
+    {
+     "number": 1639,
+     "title": "Batch-2 law forging: QMAX Craftsman Charter + SmartLedger next-layer + law lineage (PROPOS",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1639",
+     "draft": false
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 12
   },
   {
    "id": "infra",
@@ -579,7 +603,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 24
+   "open_pr_count": 45
   },
   {
    "id": "product",
@@ -648,7 +672,7 @@
      "draft": true
     }
    ],
-   "open_pr_count": 16
+   "open_pr_count": 41
   },
   {
    "id": "memory",
@@ -685,9 +709,27 @@
      "title": "AI Unifying: human-owned intelligence continuity and capture/distillation architecture",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2554",
      "draft": false
+    },
+    {
+     "number": 2065,
+     "title": "fix(memory): WO1 \u2014 T11 reserve-rule capture lifecycle CANDIDATE\u2192ACTIVE",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2065",
+     "draft": false
+    },
+    {
+     "number": 1933,
+     "title": "self(trial): full-scale identity trial V2 \u2014 28/28 PASS (cross-seat + continuity arms) (#17",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1933",
+     "draft": false
+    },
+    {
+     "number": 1244,
+     "title": "Coda4/cold successor continuity",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1244",
+     "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 6
   },
   {
    "id": "govern",
@@ -748,9 +790,15 @@
      "title": "docs(roles): give every agent a home-run briefing charter",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2394",
      "draft": false
+    },
+    {
+     "number": 2287,
+     "title": "Enforce canonical protocol boot receipts and same-feed work cycles",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2287",
+     "draft": true
     }
    ],
-   "open_pr_count": 7
+   "open_pr_count": 36
   }
  ],
  "recent_activity": [
@@ -883,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 300,
- "unassigned_prs": 100
+ "open_pr_total": 646,
+ "unassigned_prs": 247
 }
