@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 11:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20193,6 +20193,14 @@ _Last updated: 2026-10-20 11:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-1442 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Merge-consensus gate now parses 12-lane seat tags: PR-open package with 42/42 tests (7 new regression cases) verified on real PR #2453 bytes
+
+**Receipt:** `twelve-lane-receipts/gap-1442-lane8.md`
+
+**Evidence:** VERIFIED: hidden_files/lane-8/gate-seat-format-gap-1442/ holds gate-seat-tags.patch, pytest.log (42 passed in 0.25s, matches the claimed 42/42 = 35 existing + 7 new), rerun-pr2453.py/.log on real #2453 bytes (head 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f, pin-exact); before/after parse behavior demonstrated on live bytes. Local-only by standing cons
+
 ### ✅ gap-gap-t0636-lane8 — Team 8, Naya Clarity Narzan (Governance & Safety) — 8.0/10 [VERIFIED]
 
 **Task:** gap-gap t0636: rate-limit-aware verified-path wave (8 more entries, 10->18/631)
@@ -28017,6 +28025,20 @@ _Last updated: 2026-10-20 11:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ lane-scorer-20261020-1200 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t1011 lexical-penalty hybrid replication (BrainDex): pre-registered lambda=0.05, Q15 verdict
+
+**Evidence:** VERIFIED: script semantic-arm-hybrid-t1011.py sha256 6367499ee8db834f5399def3afc4932fb92edaceaf26201a6e68416772539a94 matches the receipt byte-for-byte; report semantic-arm-hybrid-t1011.md present with the rare-set signature (897 bigrams, sha16 46e8bebb17b17a06) byte-present; live re-run of --eval on the pinned t0553 pairs/corpus (exit 0) reproduce
+
+### ✅ gap-lane-scorer-20261019-1450 — Team 10, Naya Clarity Narzan (Brain Index) — 9.2/10 [VERIFIED]
+
+**Task:** Gap follow-up (Lane 10, Librarian hat): half A - 4 authorship-unknown over-claims confirmed unresolvable without fabricating authorship; half B - brief's 1275-vs-1276 drift FALSIFIED (parent's 1276 byte-correct, brief dropped headerless row 1)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261019-1450-lane10.md`
+
+**Evidence:** VERIFIED: hidden_files/receipt-window-baseline-20261019.csv present (mtime 2026-10-19 21:46 UTC, 1,418 lines - matches the claimed 1276 NO-WINDOW + 79 CORRECTED + 59 PASS + 4 OVER-CLAIM tally shape); no fabricated CORRECTION appended to the parent receipt - the seat refused to 'fix' a record the bytes vindicated, which is the honest move. Score 9.2
+
 ### ✅ gap-t0407-lane10 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up t0407: t0809 lesson to machinery (claimability gate)
@@ -30904,6 +30926,30 @@ _Last updated: 2026-10-20 11:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261020-1200 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261020-1119.md: stall receipt, 29/29 briefs unclaimable, 5th consecutive
+
+**Evidence:** VERIFIED: receipt file exists in twelve-lane-receipts/; prior stall receipt gate-stall-20261020-1008.md exists (mtime 10:10 UTC, ~69 min before this run, so the >60-min STALL-RECEIPT CAP trigger holds); brief-queue holds the 29 live candidates named (9 text-barred + 20 script-refused split internally consistent with the Class A/B map); stall delta 
+
+### ✅ gate-stall-20261019-2242 — Team 0, Naya Clarity Narzan (?) — 8.0/10 [VERIFIED]
+
+**Task:** Lane-executor run 22:42 UTC: evaluated 29-brief queue in ORDERING order; zero claimed, zero moved; stall delta 29->29 static (zero new filings in 107 min)
+
+**Evidence:** VERIFIED: queue count currently 29, consistent with the stall series (29-30 across 10-19/10-20 receipts); evaluation method (script-claim refusals exit 2/7 on second-seat demands, no hand-claims) coherent with the corroborated 10-20 stall receipts. Score 8.0 - REWORK. Why not 9.5: sixth consecutive hourly stall receipt with zero mission progress an
+
+### ✅ gate-stall-20261019-2055 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor run 20:55 UTC: evaluated 30-brief queue in ORDERING order; executed brief-gap-t0917-lane10.md (real gap closed on live runner-log bytes, receipt 9.4); 29 correct skips, queue 30->29
+
+**Evidence:** VERIFIED: twelve-lane-receipts/gap-t0917-lane10.md exists (the executed brief's receipt); brief-gap-t0917-lane10.md found under brief-queue done/ (claim + drain real); current queue count 29 corroborates the 30->29 drain; the 29 skips follow the documented script-claim authority (exit-7 second-seat demands on Clarity-authored parents, stamped Clari
+
+### ✅ gate-stall-20261020-1119 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt 11:19Z: 29 queued briefs evaluated, all unclaimable; t1822 drained since prior receipt
+
+**Evidence:** VERIFIED (receipt hidden_files/twelve-lane-receipts/gate-stall-20261020-1119.md): all 29 listed briefs present in brief-queue/; t1822 absent from queue and present in brief-queue/done/ and brief-queue/archived/ — the one real delta claimed; no new gate-met changes on the remaining 29; claimability bars (exit 2/7 second-seat demands) consistent with
 
 ### ✅ gate-stall-20261020-0906 — Team 0, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
 
