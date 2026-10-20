@@ -1,1 +1,121 @@
-{"authority":"Shawn Vibert command, main chat 2026-10-20T23:55Z","behavior_cycle":["declare_oath","activate_current_state","purpose_test","search_before_create","work_within_wip","finish_with_proof","report_completions_only","close_own_dead_work","lesson_to_mechanism","run_eight_variables"],"date":"2026-10-20","eight_variables":["synergize","optimize","organize","maximize","equalize","distill","lessons","intelligence_to_value"],"gates":{"creation_budget_weekly_per_lane":"merges_last_week + 2","creation_freeze_until_open_prs_below":100,"freshness":{"checks_name_basis_sha":true,"post_commit_check_is_authority":true},"merge_bar":{"different_seat_review":true,"exact_head":true,"green_gates":true,"post_merge_faithfulness":true,"scorecard_min":9.5},"purpose_test_required_before":["pull_request","venue_post","task_start","follow_up_filing"],"registration":{"register_on_commit_atomic_with_projection":true},"reporting":{"completed_only":true,"min_reportable_score_exclusive":9.0},"stale_close_days":7,"stale_close_venue":"weekly_distillation_sweep","title_rule":{"scan_existing_before_naming":true,"viral_bar":["hook_first_breath","clarity","friend_test"]},"wip_limit_open_prs_per_lane":5},"headline_metrics":["merged","closed","scores_moved","open_pr_count","untouched_ge_7d","created_to_finished_ratio","posts_per_finish"],"human_gates_unchanged":["production","credentials_money","destructive_actions","ruleset_and_app_permissions","constitutional_ratification"],"id":"0030-VALUE-ONLY-BRAIN-V1","kin":{"directives":["6304093518","6304214219","6304238658"],"notes":["SN-0805","SN-0806","SN-0807","IB-000051"]},"never_metrics":["prs_opened","comments_posted","reports_filed"],"premise":"produce nothing but value; if started, finish it; scorecard everything; nothing below 9 passes; unused is removed","problems":["P1 reservoir arithmetic","P2 purposeless starts","P3 parallel duplicates","P4 filing-as-work","P5 title duplication","P6 wrong meter","P7 ownerless dead work","P8 prose-only rules","P9 witness failure","P10 claims as truth","P11 stale instruments","P12 unregistered landings","P13 comment flood","P14 restating reports"],"title":"The Value-Only Brain"}
+{
+  "authority": "Shawn Vibert command, main chat 2026-10-20T23:55Z",
+  "behavior_cycle": [
+    "declare_oath",
+    "activate_current_state",
+    "purpose_test",
+    "search_before_create",
+    "work_within_wip",
+    "finish_with_proof",
+    "report_completions_only",
+    "close_own_dead_work",
+    "lesson_to_mechanism",
+    "run_eight_variables"
+  ],
+  "date": "2026-10-20",
+  "eight_variables": [
+    "synergize",
+    "optimize",
+    "organize",
+    "maximize",
+    "equalize",
+    "distill",
+    "lessons",
+    "intelligence_to_value"
+  ],
+  "gates": {
+    "creation_budget_weekly_per_lane": "merges_last_week + 2",
+    "creation_freeze_until_open_prs_below": 100,
+    "disposition_deadline": "2026-10-27",
+    "disposition_rule": "one named gap + owner per surviving item; fix or close by deadline; undispositioned after deadline closed as abandoned (Nitro drain rule, adopted by main-seat convergence ruling 2026-10-20)",
+    "freshness": {
+      "checks_name_basis_sha": true,
+      "post_commit_check_is_authority": true
+    },
+    "merge_bar": {
+      "different_seat_review": true,
+      "exact_head": true,
+      "green_gates": true,
+      "post_merge_faithfulness": true,
+      "scorecard_min": 9.5
+    },
+    "purpose_test_required_before": [
+      "pull_request",
+      "venue_post",
+      "task_start",
+      "follow_up_filing"
+    ],
+    "registration": {
+      "register_on_commit_atomic_with_projection": true
+    },
+    "reporting": {
+      "completed_only": true,
+      "min_reportable_score_exclusive": 9.0
+    },
+    "reservoir_count_interval_minutes": 30,
+    "stale_close_days": 7,
+    "stale_close_venue": "weekly_distillation_sweep",
+    "title_rule": {
+      "scan_existing_before_naming": true,
+      "viral_bar": [
+        "hook_first_breath",
+        "clarity",
+        "friend_test"
+      ]
+    },
+    "wip_limit_open_prs_per_lane": 5
+  },
+  "headline_metrics": [
+    "merged",
+    "closed",
+    "scores_moved",
+    "open_pr_count",
+    "untouched_ge_7d",
+    "created_to_finished_ratio",
+    "posts_per_finish"
+  ],
+  "human_gates_unchanged": [
+    "production",
+    "credentials_money",
+    "destructive_actions",
+    "ruleset_and_app_permissions",
+    "constitutional_ratification"
+  ],
+  "id": "0030-VALUE-ONLY-BRAIN-V1",
+  "kin": {
+    "directives": [
+      "6304093518",
+      "6304214219",
+      "6304238658"
+    ],
+    "notes": [
+      "SN-0805",
+      "SN-0806",
+      "SN-0807",
+      "IB-000051"
+    ]
+  },
+  "never_metrics": [
+    "prs_opened",
+    "comments_posted",
+    "reports_filed"
+  ],
+  "premise": "produce nothing but value; if started, finish it; scorecard everything; nothing below 9 passes; unused is removed",
+  "problems": [
+    "P1 reservoir arithmetic",
+    "P2 purposeless starts",
+    "P3 parallel duplicates",
+    "P4 filing-as-work",
+    "P5 title duplication",
+    "P6 wrong meter",
+    "P7 ownerless dead work",
+    "P8 prose-only rules",
+    "P9 witness failure",
+    "P10 claims as truth",
+    "P11 stale instruments",
+    "P12 unregistered landings",
+    "P13 comment flood",
+    "P14 restating reports"
+  ],
+  "title": "The Value-Only Brain"
+}
