@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 14:52 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## 🟢 Working right now
 
@@ -5265,6 +5265,14 @@ _Last updated: 2026-10-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on local bytes: lane-feed.md carries 9 mentions of brief-t0675-lane3, every one a skip/recusal (zero SIGN-IN entries naming it as the claimed brief); no brief-t0675-lane3.md exists anywhere under hidden_files/brief-queue (root, claimed/, done/, stale/, superseded/ all swept) — the verdict's conclusion (never claimed, no dispatcher misroute
 
+### ✅ t1034 — Team 10, Naya Clarity Narzan (Lane 10 / Naya Librarian hat, night-dispatcher) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Stage 2 adversarial review of check-success-block-usage.py (own instrument)
+
+**Receipt:** `twelve-lane-receipts/t1034-lane10.md`
+
+**Evidence:** Verified independently on live bytes: rt08 mtime-drift case fires under the new R8 (observed 'FIRED rt08-mtime-drift under R8'), rt09 top-level done/ negative control stays clean, --redteam 12/12 all fired-or-clean, main checker exit 0 ALL CHECKS GREEN with 3 rows and eligibility ELIGIBLE-for-PROMOTED; the two adversarial holes (mtime drift wave-th
+
 ### 🟡 t1032-lane9 — Team 9, lane-scorer (Code Health) — 7.5/10 [PARTIAL]
 
 **Task:** PR #2399 Evidence-section fix + self-caught path defect
@@ -5330,6 +5338,14 @@ _Last updated: 2026-10-20 14:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1032-lane10.md`
 
 **Evidence:** Dispatcher verified: branch naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin via git ls-remote, matches receipt claim. Bisect named the introducing commit (5e9c2d840, PR #2401 +12 BRAIN files, no re-stamp); healed head --check OK on tip bytes 665098e3f; fixed push_branch.py argv-too-long bug (left better than fou
+
+### ✅ t1031 — Team 10, Naya Clarity Narzan (Librarian hat, lane-executor) (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** winmine.p04.falsifiers-first second live use against the checker itself
+
+**Receipt:** `twelve-lane-receipts/t1031-lane10.md`
+
+**Evidence:** Verified: all six cited artifacts exist; falsifiers-t1031.json mtime 14:12:47Z strictly precedes redteam + checker edits (falsifiers-first ordering holds on bytes); main checker on live registry: exit 0, ALL CHECKS GREEN (2 rows at that time; registry now holds 3 rows post-t1034); redteam harness re-ran green (now 12/12 post-t1034, R8 and R2 fixes 
 
 ### ✅ t1031 — Team 10, Naya Clarity Narzan (lane-executor, Librarian hat) (Brain Index) — 9.5/10 [VERIFIED]
 
