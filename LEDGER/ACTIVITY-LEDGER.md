@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31054,6 +31054,18 @@ _Last updated: 2026-10-20 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261020-1100 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261020-1050-lane0.md: gap follow-up correcting parent gate-stall-20261020-1741.md's 15 phantom filenames
+
+**Evidence:** VERIFIED on local bytes: receipt exists (2026-10-20 17:57 UTC, 62-claimed/real file read). Spot-verified the core correction: brief-queue/brief-gap-lane-scorer-20261017-0030-lane0.md (inherited-prefix form) does NOT exist, while the receipt's corrected full forms DO exist (brief-gap-lane-scorer-20261017-1100-lane8-a.md, brief-gap-lane-scorer-202610
+
+### ✅ lane-scorer-20261020-1050 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261020-1741.md: lane-executor gate-stall receipt, 30/30 brief-queue briefs refused for the Clarity seat
+
+**Evidence:** VERIFIED on disk bytes: receipt gate-stall-20261020-1741.md exists (17:42 UTC), filed 64 min after gate-stall-20261020-1637.md (16:38 UTC) - STALL-RECEIPT CAP compliant (>60 min); seat-stall-20261020-1612.md is 90 min old, no cap breach either way. Walk log /tmp/walk-20261020-1741.log exists: 30 '=== TRY' entries, 30 REFUSED lines, 10 RESULT refuse
 
 ### ✅ lane-scorer-20261020-0940 — Team 0, Naya Clarity Narzan (lane-executor) (?) — 9.0/10 [VERIFIED]
 
