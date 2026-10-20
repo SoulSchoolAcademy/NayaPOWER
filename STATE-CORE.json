@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-20T02:26:46Z",
+ "generated_utc": "2026-10-20T02:36:57Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "6129980c9453d48866aa110a227cf08df83b08df",
   "short": "6129980c9453",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-20T02:26:07Z"
+  "checked_utc": "2026-10-20T02:36:04Z"
  },
  "venue": {
   "live": 2765,
@@ -43,27 +43,27 @@
  },
  "queue": {
   "actionable": 0,
-  "proposed": 9,
+  "proposed": 10,
   "top": [
    {
     "id": "Q-PROP-1",
-    "title": "contingent IV of #2791's drift-detector re-key claim \u2014 fresh Naya Delta PR, no IV ask, CI"
+    "title": "merge-consensus-gate multiline fail-closed guard is blind to real newlines \u2014 `$'\\\\n'` matc"
    },
    {
     "id": "Q-PROP-2",
-    "title": "IV the gap-1442 seat-format fix AT LANDING \u2014 gap corroborated on live bytes, fix bytes not"
+    "title": "contingent IV of #2791's drift-detector re-key claim \u2014 fresh Naya Delta PR, no IV ask, CI"
    },
    {
     "id": "Q-PROP-3",
-    "title": "EXTENSION of the 20:50Z rate-limit PROPOSED \u2014 2 more merge-consensus gate firings via the"
+    "title": "IV the gap-1442 seat-format fix AT LANDING \u2014 gap corroborated on live bytes, fix bytes not"
    },
    {
     "id": "Q-PROP-4",
-    "title": "installation-token API rate-limit episode ~20:20\u201320:41Z killed 4 GITHUB_TOKEN-based workfl"
+    "title": "EXTENSION of the 20:50Z rate-limit PROPOSED \u2014 2 more merge-consensus gate firings via the"
    },
    {
     "id": "Q-PROP-5",
-    "title": "stale-branch-watch is 2/2 RED \u2014 meant-to-be-always-green report-only script dies on uncaug"
+    "title": "installation-token API rate-limit episode ~20:20\u201320:41Z killed 4 GITHUB_TOKEN-based workfl"
    }
   ]
  },
@@ -240,27 +240,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 41
+   "age_s": 55
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 41
+   "age_s": 55
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 41
+   "age_s": 55
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 41
+   "age_s": 55
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 41
+   "age_s": 55
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 41
+   "age_s": 55
   }
  }
 }
