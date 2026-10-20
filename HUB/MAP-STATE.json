@@ -1,41 +1,41 @@
 {
-  "measured_at": "2026-10-20T06:02:06.436749+00:00",
+  "measured_at": "2026-10-20T11:38:56.870543+00:00",
   "probes": {
     "supabase_tables": {
       "status": "unknown",
       "evidence": "measurement unavailable: no SUPABASE_URL in this environment. Last verified baseline (2026-10-15, Management API): 22 tables, 12,026 rows \u2014 NOT re-measured this run. Row counts require an authenticated key (anon role is RLS-locked, 42501) \u2014 loud unknown, not fake green.",
-      "measured_at": "2026-10-20T06:01:56.261063+00:00"
+      "measured_at": "2026-10-20T11:38:53.847130+00:00"
     },
     "feeds": {
       "status": "red",
       "evidence": "missing/invalid: feed, today, lists, spaces, reports, library, connect, ledger, connections, mail, settings, manifest",
-      "measured_at": "2026-10-20T06:01:57.947451+00:00"
+      "measured_at": "2026-10-20T11:38:54.980830+00:00"
     },
     "bridge": {
-      "status": "amber",
-      "evidence": "PR #2679 open (PR open, unmerged); bridge code in repo: not found at checked paths",
-      "measured_at": "2026-10-20T06:01:58.948899+00:00"
+      "status": "red",
+      "evidence": "PR #2679 unreadable ({'http_status': 403, 'message': 'API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID F80C:3005FF:117765:1D630B:6AD752CE and timestamp 2026-10-20 11:38:55 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)', 'documentation_url': 'https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api#rate-limiting', 'status': '403'}) (PR state: unreadable ({'http_status': 403, 'message': 'API rate limit exceeded for installation. If you reach out to GitHub Support for help, please include the request ID F80C:3005FF:117765:1D630B:6AD752CE and timestamp 2026-10-20 11:38:55 UTC. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)', 'documentation_url': 'https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api#rate-limiting', 'status': '403'})); bridge code in repo: not found at checked paths",
+      "measured_at": "2026-10-20T11:38:55.331953+00:00"
     },
     "rooms": {
       "status": "amber",
       "evidence": "0/9 on seeds, 8/9 loading, 0/9 unknown \u2014 hub/: mixed (seeds: OFFICIAL_NOTES; loaders: NayaPowerRuntime); hub/today: loading; hub/lists: loading; hub/spaces: loading; hub/mail: loading; hub/reports: loading; hub/ledger: loading; hub/library: loading; hub/connections: loading",
-      "measured_at": "2026-10-20T06:01:59.590826+00:00"
+      "measured_at": "2026-10-20T11:38:56.141583+00:00"
     },
     "capture": {
       "status": "amber",
-      "evidence": "latest run completed/failure (1 day, 1:29:50 old, event=workflow_dispatch); 0/5 recent runs scheduled; recent success: True, recent failure: True",
-      "measured_at": "2026-10-20T06:01:59.877099+00:00"
+      "evidence": "latest run completed/failure (1 day, 7:06:47 old, event=workflow_dispatch); 0/5 recent runs scheduled; recent success: True, recent failure: True",
+      "measured_at": "2026-10-20T11:38:56.501767+00:00"
     },
     "dock": {
-      "status": "amber",
-      "evidence": "#2676 open (CI failing); #2678 open (CI failing); #2679 open (CI failing); #2680 open (CI failing); #2686 open (CI failing)",
-      "measured_at": "2026-10-20T06:02:06.436702+00:00"
+      "status": "unknown",
+      "evidence": "#2676: unreadable; #2678: unreadable; #2679: unreadable; #2680: unreadable; #2686: unreadable",
+      "measured_at": "2026-10-20T11:38:56.870523+00:00"
     }
   },
   "summary": {
     "green": 0,
-    "amber": 4,
-    "red": 1,
-    "unknown": 1
+    "amber": 2,
+    "red": 2,
+    "unknown": 2
   }
 }
