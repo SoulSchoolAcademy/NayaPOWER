@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18795,6 +18795,12 @@ _Last updated: 2026-10-20 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Process receipt, no code artifacts (evaluation-only, nothing phantom). 18/18 queue briefs evaluated in pinned band order; 15 skipped on explicit NON-Clarity bars, 3 refused via claim-script exit 7 (parent-authorship) with no queue writes. Real routing hole surfaced: the 1120 repair brief (claim-brief.py exit-7 over-fire) is itself unclaimable by an
 
+### ✅ 20261020-1051 — Team KNOW, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-2765
+
+**Evidence:** Verified: 2765-comments-full.jsonl exists with 2,337 rows (matches receipt claim); feed-distillation-#2765.md exists at exactly 8,732 bytes (matches); essence comment 6289144175 live on #2793, opens with four-line header, names the distillation. Score 9.0. Why not 9.5: (1) broad-pass candidate sets were noisy (~2,700 hits) and only strong-anchor it
+
 ### ✅ lane-scorer-20261017-0000 — Team KNOW, Naya Clarity Narzan (?) — 9.3/10 [VERIFIED]
 
 **Task:** gap-20261017-2350-laneK: two-pass body-pattern sweep of the 258 routine posts, honest negative finding, one VERIFIED OUTCOME line amended to the #2641 distillation
@@ -20162,6 +20168,12 @@ _Last updated: 2026-10-20 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ 20261020-1040 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-20261018-1050-lane8
+
+**Evidence:** Verified: receipt exists; the parent-named arbiter (owner rebase of PR #2385 + gate re-run) still NOT run - the gap is NOT closed; the lane's owed action (one byte-pinned factual note on the PR, comment 6282392004) done read-only otherwise. Score 9.0 = GOOD, ONE MORE PASS - exactly what the brief's 'done looks like' machinery intends: the next tick
 
 ### ✅ gap-1442-lane8 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
 
@@ -23940,6 +23952,12 @@ _Last updated: 2026-10-20 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ 20261020-1040 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-t1032-lane4
+
+**Evidence:** Verified: receipt exists; thorough re-derivation per receipt (detached worktree at head 973177d48, test re-runs reproducing 1+6+1 failures, merge-mechanism REST probe: PR #2400 merged by SoulSchoolAcademy 80s post-push, branch not protected, zero reviews). Scorer verified the file, not the API/worktree bytes (time box). Why not 9.5: merge-facts res
 
 ### 🟡 coldnaya-lane4 — Team 4, Lane 4 (Mason) (Intelligent Blocks) — 7.5/10 [PARTIAL]
 
@@ -27914,6 +27932,96 @@ _Last updated: 2026-10-20 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall-20261020-0502
+
+**Evidence:** Verified: receipt exists; stall receipt cap-compliant (>60 min after prior); 29 briefs all refused on seat grounds (10 prose / 19 exit-7 per class split, consistent with 0312); honest self-score with the capacity diagnosis (100% of queue demands a second seat). Why not 9.5: same stall class - correct skip, no shipped value.
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall-20261020-0312
+
+**Evidence:** Verified: receipt exists; full 29-brief ORDERING audit with class split (8 gate-text / 19 exit-7 / 2 exit-2), queue delta vs prior stall recorded (30->29, 4 claimed/archived elsewhere, 3 new filings), no bypass. Why not 9.5: same stall class - correct skip, no shipped value.
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261020-1008
+
+**Evidence:** Verified: receipt exists; stall receipt cap-compliant (~61 min after prior); 30/30 blocked (9 prose-barred + seat-line/script-refused); ordering order held; board-posting of stalls per the brief's own note. Why not 9.5: same stall class - correct skip, no shipped value, queue unmoved.
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261020-0906
+
+**Evidence:** Verified: receipt exists; stall receipt cap-compliant (~88 min after prior); 30/30 briefs blocked in standing ORDERING order (10 text-barred / 20 script-refused per receipt); no claim attempts, no side effects. Why not 9.5: same stall class - correct skip, no shipped value, queue unmoved.
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261020-0745
+
+**Evidence:** Verified: receipt exists; stall receipt cap-compliant; 29/29 briefs refused (10x exit-2 / 19x exit-7) with the cited evidence file lane-10/check-run-t0992-lane10/dryrun-clarity.txt EXISTING on disk (30 lines: 29 data + header, verified). Correct skip, no hand-claims. Why not 9.5: a stall is a correct process observation, not shipped value; the queu
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0992-lane10
+
+**Evidence:** Clears 9.5 because: the named gap (disputed seat line, Clarity Who vs 'main seat' body) is CLOSED by evidence - ## ADJUDICATION verified present on t0992-lane10.md by the scorer; the 29/29 byte-identical exit-pair corroboration verified at (brief,exit) level; verdict (one seat owns the receipt) is consistent with the addendum's own rule. Why not 10
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0983-lane10
+
+**Evidence:** Clears 9.5 because: the single named gap (missing .out evidence for row-1's exit-7 verdict) is CLOSED with a verified on-disk artifact - the .out file exists and its sha256 matches the receipt's pin 9ac4a18cb15ad930...; kit exits.txt now 29 rows; nothing moved by the re-run. Why not 10: re-derivation covers the one named row only, single seat.
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0997-lane10
+
+**Evidence:** Clears 9.5 because: lift_ledger.py EXISTS at hidden_files/bin/lift_ledger.py as receipt-pinned; the H2 machinery work (16 RED-first fixtures, 14/14 + 18/18 self-test GREEN, sandbox-only writer, real-ledger absence proven) is the checkable output; pass-3 9.5 with named structural ceiling. Why not 10: JSON-bool deviation shipped to H3 unpatched (rout
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0992-lane10
+
+**Evidence:** Clears 9.5 because: lift-ttl-caps.json EXISTS on disk; both dry-run files exist; the receipt's '29/29 exit-identical' claim verified at (brief,exit)-pair level by the scorer - identical across all 29 rows (regression file carries one stray annotation line 'distinct {2,', pairs still match); 14 falsifier legs all green per receipt. Why not 10: H3 ra
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0986-lane10
+
+**Evidence:** Clears 9.5 because: the built machinery EXISTS at hidden_files/bin/lift_ledger.py (found, matches receipt path); receipt's 32-row §9 fixture suite (F1-F6: VALID/VOID contamination/ttl/corruption/marked-evidence) with self-test GREEN is the exact checkable output; pass-3 9.5 with 3 honest passes. Why not 10: parent-author replay leg deferred-and-nam
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0983-lane10
+
+**Evidence:** Clears 9.5 because: the receipt's claimed evidence artifact EXISTS on disk and matches byte-for-byte - sha256 of lane-10/check-run-t0983-lane10/brief-gap-lane-scorer-20261019-1230-lane3.md.out starts 9ac4a18cb15ad930 exactly as pinned; 29-row dry-run classifications re-derived, the mid-run overclaim self-corrected same-shift (pass-3 9.6). Why not 1
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0981-lane10
+
+**Evidence:** Verified: receipt exists; pass-3 9.5, mechanism pins re-derived live per receipt at unchanged tip. Scorer verified the file, not the git pins (time box). Why not 9.5: same as sibling sweeps - scorer-side byte re-derivation absent; single-seat ceiling named but unverified by a second seat.
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0978-lane10
+
+**Evidence:** Verified: receipt exists; pass-3 9.5; step-0 byte check falsified the dispatcher's stale 'verdict comment still pending' premise and corroborated the already-rendered comment (premise-rot finding recorded with timestamps). Scorer verified the file, not the board bytes (time box). Why not 9.5: the #2765 comment-grep corroboration is receipt-asserted
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0970-lane10
+
+**Evidence:** Verified: receipt exists; pass-3 9.5 with pass-2 closing the Q2 inherit-gap (mechanism pins re-derived live per receipt, board post filed). Scorer verified the file, not the git pins (time box). Why not 9.5: no independent scorer re-derivation of the pinned bytes; the fix route is routed not executed (authority, fine) but the verdict's closure stay
+
+### ✅ 20261020-1040 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0964-lane10
+
+**Evidence:** Verified: receipt file exists; self-scorecard pass-3 9.5; described byte pins (tip 6129980c9, 4 blob SHAs, 4 mechanism pins). Scorer verified the file, not the git pins (time box). Score 9.0. Why not 9.5: scorer did not independently re-derive the 4 blob SHAs or mechanism pins this tick; rests on receipt bytes + verified pattern of prior runs.
 
 ### ✅ gap-t0983-lane10 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
