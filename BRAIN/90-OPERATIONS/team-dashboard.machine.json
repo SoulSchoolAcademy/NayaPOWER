@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-20T00:15:51+00:00",
+ "generated_utc": "2026-10-20T01:15:43+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -102,6 +102,12 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
+     "number": 2791,
+     "title": "drift-detector: re-key duplicate_published_page_paths on content collision (Delta w572)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2791",
+     "draft": false
+    },
+    {
      "number": 2781,
      "title": "fix(brain-index): re-stamp index layer at tip 1a1c22d3 (rung 1)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2781",
@@ -142,15 +148,9 @@
      "title": "repair(brain-index): re-stamp index on main 665098e3 (drift-13)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2407",
      "draft": false
-    },
-    {
-     "number": 2390,
-     "title": "repair(brain-index): re-stamp index on main f33bba34",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2390",
-     "draft": false
     }
    ],
-   "open_pr_count": 26
+   "open_pr_count": 27
   },
   {
    "id": "act",
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 644,
+ "open_pr_total": 645,
  "unassigned_prs": 247
 }
