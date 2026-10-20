@@ -19,6 +19,19 @@
 
 **Proof law:** documented != implemented; implemented != tested; tested != independently verified; verified != merged; merged != deployed; deployed != production-proven; stored intelligence != learned behavioral improvement.
 
+## 0a. Same-day supersession and independent CI read-back (2026-10-20 ~19:20Z)
+
+**Critical correction to the earlier #2811 9.5/10 claim:** the different-seat reviewer explicitly **WITHDREW approval** in [comment 6298865461](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2811#issuecomment-6298865461) after independently reading the previous head's genuine failing job log. A positive builder summary did not override that primary evidence. **NO MERGE on historical approval.**
+
+At subsequent PR #2811 head `c9622fb7330f304d186b142e6ce343107217786f`, GitHub Actions evidence shows:
+- `Kernel Tests` run 39482667245: **SUCCESS**, job 118834953046.
+- `doc-completeness-gate` run 39482667123: **FAILURE**, job 118834952273 (check documentation completeness).
+- `Worker Protocol Gates` run 39482667366: **FAILURE**, job 118834953106 (validate PR receipt).
+- `Merge consensus gate` run 39482667116: **FAILURE**, job 118834952727 (check merge consensus).
+- Other fetched runs were green in the 11-run first-page list. This is evidence of the workflow conclusions and failing steps, **not** a re-derived judgment of the individual log causes.
+
+**Current acceptance: HOLD.** The owner must re-evaluate those exact-head gate failures from their own job logs, fix content or receipts as appropriate, and obtain fresh distinct-seat IV under all five merge predicates. Do not infer success of a whole PR from one passing kernel suite. Main can advance after this snapshot.
+
 ## 1. Top ten wins (evidence-bound)
 
 1. The ultimate operating protocol is ratified on main via PR #2799, covering Step 0 and Steps 1–17.
@@ -26,7 +39,7 @@
 3. Operating Code V2, 14 lessons and the ratified protocol have existing content-pin and boot integrity machinery.
 4. Nine Master Nodes have specified separate responsibilities; the governance and receipt hierarchy has concrete implementations in selected scopes.
 5. Smart Note projections IB-000047 and IB-000048 appeared on main; projected intelligence can survive chat, though reuse remains unproven for these notes.
-6. A Brain index drift was reproducibly found and PR #2811 carries a 035–046 restamp; the mission reports independent 9.5/10 qualification for that scope.
+6. A Brain index drift was reproducibly found and PR #2811 carries a 035–046 restamp; a 9.5/10 independent qualification was later WITHDRAWN (see same-day correction below).
 7. PR #2808 contains a machine protocol specification/compiler and Step 0 pin, scorecard and value-verdict checks (still open, not main).
 8. Four false independent-review acceptance cases were independently falsified; tested canonical repair #2810 exists, with independent 9.5/10 reported in the mission (unmerged).
 9. A missing real cold-start declaration was falsified; PR #2812 now contains a tested library admission fix with 120 focused local passes, but the invoked launcher remains open.
@@ -130,7 +143,7 @@
 1. Library cold-start Step 0 refusal: PR #2812, locally tested (120 focused green), real launcher still UNKNOWN.
 2. False-approval repair: PR #2810, locally tested (107 focused green); mission reports different-seat IV 9.5; owner-branch integration open.
 3. Existing five-condition merge predicate and corrective debt board: documented, breach remediation not complete.
-4. Brain re-stamp #2811 for 035–046: IV 9.5 reported, not equivalent to 047/048/current-head index proof.
+4. Brain re-stamp #2811 for 035–046: earlier IV 9.5 explicitly withdrawn; new-head CI has blocking reds, and 047/048/current-head proof is not closed.
 5. Live coordination #2793 and mission #2154: currently discoverable; #2601 compiler still stale.
 6. Learning and cold-successor contracts: defined and tested at selected scopes; generalized later behavior proof UNKNOWN.
 7. Hub source and design contracts: present; source/runtime/device parity remains work.
