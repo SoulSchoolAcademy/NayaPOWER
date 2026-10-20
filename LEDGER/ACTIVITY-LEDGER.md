@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 16:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 17:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5268,6 +5268,14 @@ _Last updated: 2026-10-20 16:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1034-lane10.md`
 
 **Evidence:** Verified independently on live bytes: rt08 mtime-drift case fires under the new R8 (observed 'FIRED rt08-mtime-drift under R8'), rt09 top-level done/ negative control stays clean, --redteam 12/12 all fired-or-clean, main checker exit 0 ALL CHECKS GREEN with 3 rows and eligibility ELIGIBLE-for-PROMOTED; the two adversarial holes (mtime drift wave-th
+
+### ✅ t1033 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** winmine.p04.falsifiers-first USE #3 consistency audit (night-dispatcher t1033)
+
+**Receipt:** `twelve-lane-receipts/t1033-lane10.md`
+
+**Evidence:** Verified: falsifiers-t1033.json exists (7 falsifiers, keys OK); winmine block sha256 matches receipt-pinned 0a424872... (byte-verified via sha256sum); registry row for brief-t1033-lane10.md present in success-block-usage.jsonl with fold_verdict_line BYTE-IDENTICAL to receipt (machine-compared, 1 occurrence in receipt); t1029/t1031 rows' fold lines 
 
 ### 🟡 t1032-lane9 — Team 9, lane-scorer (Code Health) — 7.5/10 [PARTIAL]
 
