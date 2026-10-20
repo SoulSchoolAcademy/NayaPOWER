@@ -37,7 +37,7 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionabl
 - 🤝 Oath: [the Naya Oath + Manifesto + Code](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates, her dos and don'ts (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge; no work begins unactivated)
 - Laws: `~/AGENTS.md` (L1–L248+) · Manifesto V2: PR #2474 (proposed)
 - Queue: `bottleneck-queue.md` · Roster: `naya-roster.json`
-- Venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2765
+- Venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793 (live board since 2026-10-20; #2765/#2721/#2641/#2537 retired)
 - Repo: https://github.com/SoulSchoolAcademy/NayaPOWER
 
 ---

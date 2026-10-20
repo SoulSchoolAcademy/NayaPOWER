@@ -26,5 +26,5 @@
 - none — supervisor will dispatch (Naya Electrician, Naya Captain, Naya Mechanic)
 
 ## VENUE
-- Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2765
+- Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793 (live board since 2026-10-20; #2765/#2721/#2641/#2537 retired)
 - Laws: ~/AGENTS.md (L1–L289+) · Roster: naya-roster.json
