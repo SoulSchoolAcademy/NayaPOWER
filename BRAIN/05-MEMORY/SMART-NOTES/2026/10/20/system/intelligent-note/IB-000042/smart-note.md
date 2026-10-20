@@ -1,3 +1,5 @@
+> **SUPERSEDED — 2026-10-20.** This projection (IB-000042) landed degraded: its Human and Naya layers are empty and several layers carry vendor boilerplate, because the filing used a compressed field shape the canonical intake does not accept. The note was re-filed word-for-word and verified in full as **IB-000043**: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/emit/IB-000043/smart-note.md — read that one. This file is kept unaltered below this banner as the record of the defect (provenance), per Shawn's ruling 2026-10-20.
+
 # Smart Note — IB-000042
 
 > Governed repository projection of a canonical Intelligent Block.
