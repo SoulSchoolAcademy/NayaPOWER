@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-20T20:17:57Z",
+ "generated_utc": "2026-10-20T20:26:39Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "4cb51e531bdac3d2960ddd77b4ab894d56fed325",
-  "short": "4cb51e531bda",
+  "sha": "7bac7e03e6be4ffe56368d9db6f9f7886a1bca0f",
+  "short": "7bac7e03e6be",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-20T20:17:28Z"
+  "checked_utc": "2026-10-20T20:26:11Z"
  },
  "venue": {
   "live": 2765,
@@ -57,27 +57,27 @@
  },
  "queue": {
   "actionable": 0,
-  "proposed": 15,
+  "proposed": 16,
   "top": [
    {
     "id": "Q-PROP-1",
-    "title": "\"Live Intelligence Commit Proof\" workflow FAILED at the live tip \u2014 NEW-SUSPECT class, recu"
+    "title": "\"Hub Feeds Emit\" workflow's FIRST schedule-triggered run FAILED \u2014 push rejected by branch"
    },
    {
     "id": "Q-PROP-2",
-    "title": "post-merge IV for #2811's brain-index re-stamp merge (4cb51e53, 500 files) \u2014 merge-tree fa"
+    "title": "\"Live Intelligence Commit Proof\" workflow FAILED at the live tip \u2014 NEW-SUSPECT class, recu"
    },
    {
     "id": "Q-PROP-3",
-    "title": "merge-protocol enforcement is UNWIRED \u2014 required checks FAILED on #2801's exact head yet i"
+    "title": "post-merge IV for #2811's brain-index re-stamp merge (4cb51e53, 500 files) \u2014 merge-tree fa"
    },
    {
     "id": "Q-PROP-4",
-    "title": "STEP-7 re-fires at new tip c58832b4 \u2014 class continuation, one NEW defect instance inside i"
+    "title": "merge-protocol enforcement is UNWIRED \u2014 required checks FAILED on #2801's exact head yet i"
    },
    {
     "id": "Q-PROP-5",
-    "title": "\u2014 merge-consensus gate burst-flake: STEP-3 \"Get PR info\" exit-1 on bot-comment edits"
+    "title": "STEP-7 re-fires at new tip c58832b4 \u2014 class continuation, one NEW defect instance inside i"
    }
   ]
  },
