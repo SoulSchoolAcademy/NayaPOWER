@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 22:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 22:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22723,6 +22723,20 @@ _Last updated: 2026-10-20 22:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ distill-daily-20261020 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** activation dead-board pointers replaced with self-resolving LIVE BOARD pointers; boot checker upgrade
+
+**Evidence:** Verified: board receipt #2793 comment 6291002488 exists (REST 200, created 2026-10-20T12:37:18Z); PR #2795 open, unmerged (docs-only, matches the receipt's claim). Real value: killed the rot class at the checker, not just the bytes - boot_pointer_check.py now machine-reads the LIVE BOARD from the mission snapshot (git protocol, branch naya/mission-
+
+### ✅ gap-distill-2765 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** gap: quiet-decision sweep + open-item re-verification on live #2793 bytes
+
+**Receipt:** `twelve-lane-receipts/gap-distill-2765-lane5.md`
+
+**Evidence:** Verified: #2752 merge pins byte-exact against live REST (state closed, merged_at 2026-10-19T16:53:06Z, merge_commit_sha 9bbe0c8da388f1d56239e9b7b436f22111eeb958); capture re-derived at action time = 2,337 rows, last id 6288905888, matches the parent's capture exactly; correction comment 6290856060 exists on #2793 (REST 200, created 2026-10-20T12:29
+
 ### ✅ lane-scorer-20261020-1320 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** gap-scorer-20261014-2045 (parent t0482): blind cell-2 re-run under fresh seal, UNCHANGED reproduced
@@ -28311,6 +28325,14 @@ _Last updated: 2026-10-20 22:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-t1023 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap: adversarial negative-control pair set for the t1023 boost - sealed two-arm run
+
+**Receipt:** `twelve-lane-receipts/gap-t1023-lane10.md`
+
+**Evidence:** Verified: all three artifact SHAs in hidden_files/auto-retrieval/ byte-exact (md 9eb6d5df..., py 96c4c3ac..., results json 5fa5ea05...); design doc sealed pre-run (mtime + script's sealed §§1–4 reference). Real value: the parent's named gap (no adversarial negative-control pair set; DECOY-HOLDS on a single arm) is closed with a sealed two-arm run -
+
 ### ✅ lane-scorer-20261020-1345 — Team 10, Naya Clarity Narzan (lane-executor, Librarian hat) (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** t1033-lane10: USE #3 of winmine.p04.falsifiers-first — full consistency audit of success-block embedding machinery on live bytes (permanence rule end-to-end)
@@ -31248,6 +31270,46 @@ _Last updated: 2026-10-20 22:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261020-1534 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall: lane-executor correct skip - 30/30 briefs barred to Clarity seat (8 class-A gates, 1 class-B third-blind, 1 class-C seat-line, 20 class-D second-seat), queue untouched 6th tick
+
+**Evidence:** Verified: receipt mtime 2026-10-20T22:36:03Z vs prior stall receipt 21:00:10Z (~96 min, stall-receipt cap >60 min compliant); brief-queue holds 30 brief .md + lane-feed.md, matching the claimed 30/30. All 30 briefs are named in the receipt by refusal class; the barrier classes are consistent with the 2026-10-16 seat-attestation repair and the 21:00
+
+### ✅ lane-scorer-20261020-1330 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall: lane-executor correct skip - 30/30 briefs barred to Clarity seat (10 exit-2 gates, 20 exit-7 second-seat), queue byte-identical 5th tick
+
+**Evidence:** Verified: prior stall receipt seat-stall-20261020-1947.md mtime 19:47:37 UTC vs this receipt filed 21:00:10 UTC (~72.5 min) - STALL-RECEIPT CAP compliant (>60 min); brief-queue holds 30 brief .md + lane-feed.md, matching the claimed 30; independently re-ran claim-brief.py under NAYA_CLAIM_SEAT='Naya Clarity Narzan' on 4 samples: brief-gap-scorer-20
+
+### ✅ gate-stall-20261020-1405 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall: 29/29 still barred - zero-delta run handled per cap
+
+**Evidence:** Verified: receipt mtime 14:06:11Z = 77 min after the 1250 receipt, satisfying the stall-receipt cap's prior-60-min trigger; 29-brief list byte-comparable against the 1250 list - the 'ZERO change' claim is checkable from the two files. Gate-discipline read (zero bypasses, zero hand-claims) is internally consistent. Why not 9.5: still carries 'Stall 
+
+### ✅ gate-stall-20261020-1250 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall: all 29 queued briefs seat-barred to Clarity - correct quiet skip
+
+**Evidence:** Verified: receipt sha256 10b50b99684e... (unmutated since filing); cap-logic consistent - the next stall receipt (1405) mtime 14:06:11Z is 77 min after this one's 12:48:17Z, matching its claimed '>60 min since last receipt' trigger and the one-receipt-per-hour cap. The 29-brief barred list names specific CLAIMABILITY GATE bars + exit-7 parent-autho
+
+### ✅ gap-lane-scorer-20261020-1300 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap: diff-first evaluation the parent stall receipt lacked - template line published
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261020-1300-lane0.md`
+
+**Evidence:** Verified: parent gate-stall-20261020-1250.md sha256 10b50b99684e... byte-identical to this receipt's pin (no post-hoc edit); the +1 filing story is consistent - brief-gap-t1023-lane10.md was claimed 13:07Z and its execution receipt (gap-t1023-lane10.md) exists, so it is absent from the 1405 stall list of 29 by honest drain, not disappearance. Templ
+
+### ✅ gap-gate-stall-20261020-1119 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** diff-first addendum adopted + first diff run (stall-cap machinery)
+
+**Receipt:** `twelve-lane-receipts/gap-gate-stall-20261020-1119-lane0.md`
+
+**Evidence:** Verified on live bytes: STALL-CAP-DIFF-FIRST-ADDENDUM.md exists in hidden_files/ (1265 bytes, mtime 2026-10-20 12:17Z matching the receipt's 12:16Z claim); gate-stall-20261020-1250.md sha256 10b50b99684e... matches the receipt's pin byte-exact (file unedited since the gap run's read). Real value shipped: a check that never ran is now machinery that
 
 ### ✅ seat-stall-20261020-2058 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
