@@ -15,6 +15,7 @@ Before changing code, documentation, infrastructure, or configuration:
 0. **Run the machine boot gate:** `python3 kernel/protocol/protocol_integrity_gate.py --agent-id <id> --json` — exit 0 = boot allowed, exit 1 = boot refused (fail closed). It machine-verifies the activation checklist (14 thinking lessons + Operating Code V2 against pinned canonical bytes, Gate 1), the protocol manifest, and the current tip. **No checklist pass = no start.** Prose reading below does not substitute for a green gate.
 
 0b. **Read the read-me-first guide:** [`BRAIN/00-ACTIVATION/READ-ME-FIRST.md`](BRAIN/00-ACTIVATION/READ-ME-FIRST.md) — the 30-minute activation: where everything is, the oath you speak (§10, *who you are before you begin*), and the code you live by ([`THE-CODE-SHE-LIVES-BY.md`](BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md)). No work happens before activation; activation is not complete until the oath is spoken and the readiness bars hold.
+0c. **Read the tool directory:** [`BRAIN/00-ACTIVATION/THE-NAYA-TOOL-SET.md`](BRAIN/00-ACTIVATION/THE-NAYA-TOOL-SET.md) — THE NAYA TOOL DIRECTORY: every tool you have, what it is for, and how it makes you fast. This is the TOOL UP step of activation — know your tools before you need them.
 
 1. Read this file completely.
 2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
