@@ -9,12 +9,13 @@
     "sha256": "9a4dfb1dbb673c6070cddbfc770d48d0bb09f756715259876fbb8a4101c548f6"
   },
   "data_input": "naya-doctrine.json key 'naya_process' — validated against the prose at compile time; the prose governs",
+  "data_input_sha256": "448aa6b908c857f663fce62b143e3a3bbbfcaa814b60da9e7844ed91427d64cf",
   "canonical_repo_copy": "BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.md",
   "companion_law": [
     "Behavior Declaration (IB-000039)",
     "Oath of Honor (IB-000040; strengthened canonical text IB-000041)"
   ],
-  "compiled_utc": "2026-10-20 17:39:34 UTC",
+  "compiled_utc": "2026-10-20 17:42:34 UTC",
   "compiler": "~/workspace/naya/bin/protocol_compile.py — regenerate, never hand-edit this view",
   "steps": [
     {
