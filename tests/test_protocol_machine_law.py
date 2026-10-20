@@ -6,6 +6,9 @@ Positive AND negative controls: gates must block what they claim to block
 and allow what they claim to allow.
 """
 import time
+from pathlib import Path
+
+from tools.protocol_pin import issue_declaration_receipt
 
 import pytest
 
@@ -169,6 +172,8 @@ def _good_state():
                           "Law 11 (do no harm) is the only hard law.",
         current_truth_location="mission-state feed #2154 and current main",
         next_action="re-anchor on live main and check the board",
+        declaration_receipt=issue_declaration_receipt(
+            Path(__file__).resolve().parents[1], "naya-9"),
         receipt=issue_receipt("naya-9", CORRECT),
     )
 
