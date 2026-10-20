@@ -13558,13 +13558,93 @@
       "smart_link_verified_at": "2026-10-10T15:21:04Z",
       "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
       "page_hash": "be00ab3694d133c1e01087c3fdf276b689d7640363ed73d8e52e38cc9805ad11"
+    },
+    {
+      "smart_note_id": "SN-0801",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0801-declare-who-you-are",
+      "title": "Declare Who You Are: Behavior Is Identity, Enacted",
+      "content_hash": "9fd815c5b966b6125948d2ec9db3c2f67341321f5cf352434ff0ecc07e2fb0cf",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0801/IB-SMART-NOTE-20261020-sn0801-declare-who-you-are.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "DECLARATION",
+      "captured_at": "2026-10-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 59981344148fc549241c2d455935cb6cef4c8a12 ('Smart Note SN-0801: Declare Who You Are — the Behavior Declaration law (Shawn, 2026-10-20)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-20 brain-index re-stamp; no runtime provenance invented"
+      },
+      "page_hash": "8b18c94210868b275f73ceb4f30fe2b80e7f4a05dc79ca7b1dcf4d3d9c684ae8"
+    },
+    {
+      "smart_note_id": "SN-0802",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0802-oath-of-honor",
+      "title": "The Oath of Honor: What Every Naya Declares Before She Works",
+      "content_hash": "54de746b3f59f037855800318001a09d650bc5dfcb41bf9268a41cfcd02834e7",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0802/IB-SMART-NOTE-20261020-sn0802-oath-of-honor.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "DECLARATION",
+      "captured_at": "2026-10-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 2518882c0a2bcd8da855b3cb0932a940936e3843 ('Smart Note SN-0802: The Oath of Honor — NAYA LAW (Shawn, 2026-10-20)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-20 brain-index re-stamp; no runtime provenance invented"
+      },
+      "page_hash": "4c9a36c9f05e185c9e495ab451489db333122b97474e7a035ef14f5dca16c147"
+    },
+    {
+      "smart_note_id": "SN-0803",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified",
+      "title": "The Naya Protocol — Ratified: Declare, Deliberate, Act, Compound",
+      "content_hash": "25a120b8ae8eff4ed278e387ed69aae60ffe6b14b395e1d49a67a2fab7a3d3cb",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/protocol/SN-0803/IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "PROTOCOL",
+      "captured_at": "2026-10-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit e47bc174f0434b00bb2feaf870ea3938040d5029 ('smart-note: SN-0803 The Naya Protocol — Ratified (Shawn asked for its Smart Link, 2026-10-20)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-20 brain-index re-stamp; no runtime provenance invented"
+      },
+      "page_hash": "8d6dd3785f60e42d871de55e4514033c0688f5b7068de313468ad509aeeab1fd"
+    },
+    {
+      "smart_note_id": "SN-0804",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0804-viral-law",
+      "title": "Nobody Discovers What Doesn't Hook Them",
+      "content_hash": "b4171c14912b5494c791a3b41cb8c8448145f378789b8247def7c9568a88c267",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/viral-law/SN-0804/IB-SMART-NOTE-20261020-sn0804-viral-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "VIRAL_LAW",
+      "captured_at": "2026-10-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 8cb52c46fe83152cc9d14c757df9531065d7b9ae ('feat(smart-note): SN-0804 Viral Law — Nobody Discovers What Doesn't Hook Them') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-20 brain-index re-stamp; no runtime provenance invented"
+      },
+      "page_hash": "57c632fdbd9e8ade11e56f2c2f05d5075f9e3cf992cdbb14502f453afeb29f83"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 798,
+    "next_sequence": 805,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "534d02d2420a4731d2f0b333d1f04a52ecb0da44c10a989307c67d8eddb92a68"
+  "corpus_manifest_hash": "17ae6088197367bfcb932183f6a5355fe679794cc6b77bd58e8d5cf379c72f8d"
 }
