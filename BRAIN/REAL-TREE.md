@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-19  
-**Receipt basis commit:** `7a6a799513ad2206e58522ea07bc406f34c46242`  
-**Inventory file count:** 1329  
+**Generated:** 2026-10-20  
+**Receipt basis commit:** `7b2d6eb98b2570657a2107e7f674c2629154485b`  
+**Inventory file count:** 1344  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 649 |
+| 05-MEMORY | 664 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -824,6 +824,21 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md` — `151b620a7c56` (6817 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/SYSTEM-INTELLIGENCE/VERIFICATION/BATTERY-ISOLATION/SN-0796/IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency.md` — `f2553ebdef9e` (10932 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md` — `9d393e7f8c48` (9330 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/how-nayanet-works/IB-000038/smart-note.md` — `38337b0c355c` (9150 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000035/smart-note.md` — `025259f7a34f` (2659 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000036/smart-note.md` — `05fc29be3170` (20379 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000037/smart-note.md` — `e83585f5aa67` (20379 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0801/IB-SMART-NOTE-20261020-sn0801-declare-who-you-are.md` — `8137f0a94e61` (9342 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0802/IB-SMART-NOTE-20261020-sn0802-oath-of-honor.md` — `40607e414036` (9687 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/protocol/SN-0803/IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified.md` — `ba06a3e2e957` (10370 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/emit-ratified-the/IB-000046/smart-note.md` — `b961d6f1c0eb` (10639 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/emit/IB-000043/smart-note.md` — `9755c18abd77` (8127 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/intelligent-note/IB-000042/smart-note.md` — `fd041520f44f` (4406 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-behavior-declaration/IB-000039/smart-note.md` — `ef673299495a` (8875 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-naya-process/IB-000045/smart-note.md` — `898c682e1d1e` (13570 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-naya-tool/IB-000044/smart-note.md` — `4decfb1367a6` (9309 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-oath-of/IB-000040/smart-note.md` — `89a7bd75f38b` (7912 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-oath-of/IB-000041/smart-note.md` — `f15207e35d8a` (10255 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `8a02bda6be42` (27455 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `0fc11ff78dc9` (4099 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
