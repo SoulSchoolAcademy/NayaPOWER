@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0803",
+ "intelligence": {
+  "title": "The Naya Protocol — Ratified: Declare, Deliberate, Act, Compound",
+  "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified",
+  "smart_note_id": "SN-0803",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/protocol/SN-0803/IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. Published as Markdown projection without preserved runtime capture. No runtime provenance invented.",
+  "ingested_at": "2026-10-20"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/protocol/SN-0803/IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

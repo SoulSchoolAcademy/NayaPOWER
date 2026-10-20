@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0802",
+ "intelligence": {
+  "title": "The Oath of Honor: What Every Naya Declares Before She Works",
+  "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0802-oath-of-honor",
+  "smart_note_id": "SN-0802",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0802/IB-SMART-NOTE-20261020-sn0802-oath-of-honor.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. Published as Markdown projection without preserved runtime capture. No runtime provenance invented.",
+  "ingested_at": "2026-10-20"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0802/IB-SMART-NOTE-20261020-sn0802-oath-of-honor.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}
