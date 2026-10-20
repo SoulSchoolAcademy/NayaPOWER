@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-20 15:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-20 17:14 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 648 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 649 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -87,13 +87,13 @@
 - [#2590](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2590) One NayaPOWER operating manual: AAA three-pass scorecards, roles, auth 📝draft
 - …and 26 more
 
-### BUILD (248)
+### BUILD (249)
+- [#2798](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2798) gov: 0029 THE NAYA PROCESS V1 — Shawn's dictated operating process
 - [#2795](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2795) fix(activation): self-resolving live-board pointers — boot_pointer_che
 - [#2790](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2790) [LAW] Duplicate-laws merge: port 0007s 5 operational rules into 0016, 
 - [#2789](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2789) Streamline: remove dead weight (Shawn-authorized audit)
 - [#2788](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2788) Oath: the Behavior Declaration, spoken at every activation
-- [#2782](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2782) docs: replace hard-coded board numbers in boot bytes with mission-snap
-- …and 243 more
+- …and 244 more
 
 ### WIRE (127)
 - [#2786](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2786) WIRE: close blockquote-mention hole in merge-consensus gate
@@ -119,13 +119,13 @@
 - [#2745](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2745) Visual Smart Contract v1 — the official machine contract for the smart
 - …and 41 more
 
-### PRODUCT (41)
+### PRODUCT (40)
 - [#2774](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2774) Test: GitHub → Hub pipeline (IB-999999)
 - [#2754](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754) Hub↔Supabase persistence bridge (Smart Note flow leg 3) — t0800
 - [#2738](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738) Hub deploy pipeline: GitHub → Cloudflare Workers
 - [#2737](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2737) EMIT: hub feeds emitter (rebased on main)
 - [#2733](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2733) test(activation): fail closed when compiled current state disagrees wi 📝draft
-- …and 36 more
+- …and 35 more
 
 ### MEMORY (6)
 - [#2644](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2644) 0008 Intelligent Block V1 — CONVERGED sender contract (three tongues, 
@@ -135,13 +135,13 @@
 - [#1933](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1933) self(trial): full-scale identity trial V2 — 28/28 PASS (cross-seat + c
 - …and 1 more
 
-### GOVERN (36)
+### GOVERN (37)
+- [#2797](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797) Governance: NAYA OATH OF HONOR (0023) — Shawn's 2026-10-20 law, three 
 - [#2647](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2647) Ratify PROTOCOL.md: candidate → canonical law (Shawn 2026-10-15)
 - [#2573](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2573) 0025-PERSISTENT-PROTOCOL-V1: NayaPOWER as the perpetual persistent int 📝draft
 - [#2489](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2489) Fix: PROTOCOL.md reading list no longer calls itself ratified canonica 📝draft
 - [#2487](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2487) Fix: LAWS-INDEX-V1.md no longer calls PROTOCOL.md canonical law 📝draft
-- [#2476](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2476) Fix: PROTOCOL.md is candidate awaiting ratification, not canonical law
-- …and 31 more
+- …and 32 more
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*

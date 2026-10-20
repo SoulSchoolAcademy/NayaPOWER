@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-20T15:15:54+00:00",
+ "generated_utc": "2026-10-20T17:15:16+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -348,6 +348,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2798,
+     "title": "gov: 0029 THE NAYA PROCESS V1 \u2014 Shawn's dictated operating process",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2798",
+     "draft": false
+    },
+    {
      "number": 2795,
      "title": "fix(activation): self-resolving live-board pointers \u2014 boot_pointer_check PASS",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2795",
@@ -388,15 +394,9 @@
      "title": "ACT w516: pr_body_selfcheck --head liveness warning (warn-never-fail)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2779",
      "draft": false
-    },
-    {
-     "number": 2777,
-     "title": "ACT: pr_body_selfcheck --head liveness warning (warn-never-fail)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2777",
-     "draft": false
     }
    ],
-   "open_pr_count": 248
+   "open_pr_count": 249
   },
   {
    "id": "wire",
@@ -672,7 +672,7 @@
      "draft": true
     }
    ],
-   "open_pr_count": 41
+   "open_pr_count": 40
   },
   {
    "id": "memory",
@@ -750,6 +750,12 @@
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
+     "number": 2797,
+     "title": "Governance: NAYA OATH OF HONOR (0023) \u2014 Shawn's 2026-10-20 law, three tongues",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797",
+     "draft": false
+    },
+    {
      "number": 2647,
      "title": "Ratify PROTOCOL.md: candidate \u2192 canonical law (Shawn 2026-10-15)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2647",
@@ -790,15 +796,9 @@
      "title": "docs(roles): give every agent a home-run briefing charter",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2394",
      "draft": false
-    },
-    {
-     "number": 2287,
-     "title": "Enforce canonical protocol boot receipts and same-feed work cycles",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2287",
-     "draft": true
     }
    ],
-   "open_pr_count": 36
+   "open_pr_count": 37
   }
  ],
  "recent_activity": [
@@ -931,6 +931,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 648,
- "unassigned_prs": 248
+ "open_pr_total": 649,
+ "unassigned_prs": 249
 }
