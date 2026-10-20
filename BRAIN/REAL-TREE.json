@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-19",
-  "receipt_basis_commit": "7a6a799513ad2206e58522ea07bc406f34c46242",
-  "inventory_file_count": 1329,
+  "generated_at": "2026-10-20",
+  "receipt_basis_commit": "74d90183bcb7a18e4415cdb8cbf09e0a5e8225db",
+  "inventory_file_count": 1345,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 649,
+    "05-MEMORY": 665,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -2801,7 +2801,7 @@
       "size": 7294
     },
     {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0594/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0594/IB-SMART-NOTE-20261001-hub-is-intelligence-projection-dup0594.md",
       "blob_sha": "0a9d960c6d2e76ec080f21caa74f31f565fd4f86",
       "size": 1688
     },
@@ -3919,6 +3919,86 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/14/SYSTEM-INTELLIGENCE/API-GOVERNANCE/PATCH-RESPONSE-VERIFY/SN-0797/IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify.md",
       "blob_sha": "9d393e7f8c48286bbe40946a0068be3aee41cf08",
       "size": 9330
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/how-nayanet-works/IB-000038/smart-note.md",
+      "blob_sha": "38337b0c355c66a6d86cccec98e9751836165d06",
+      "size": 9150
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000035/smart-note.md",
+      "blob_sha": "025259f7a34fb9f7292669624adbdd4bc978288b",
+      "size": 2659
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000036/smart-note.md",
+      "blob_sha": "05fc29be31704a19b4631b37ebf66169d7c32f00",
+      "size": 20379
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/intelligent-note/IB-000037/smart-note.md",
+      "blob_sha": "e83585f5aa6710b89a6461044cd423a296a68245",
+      "size": 20379
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0801/IB-SMART-NOTE-20261020-sn0801-declare-who-you-are.md",
+      "blob_sha": "8137f0a94e6194afa32d49ff3033c2d997b8de02",
+      "size": 9342
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0802/IB-SMART-NOTE-20261020-sn0802-oath-of-honor.md",
+      "blob_sha": "40607e414036538e4a81201adbc0803b10033f6b",
+      "size": 9687
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/protocol/SN-0803/IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified.md",
+      "blob_sha": "ba06a3e2e957745286108c2e34022dc6f4568fbb",
+      "size": 10370
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/emit-ratified-the/IB-000046/smart-note.md",
+      "blob_sha": "b961d6f1c0eb2fbf89dd5133b1bca67ce6240eea",
+      "size": 10639
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/emit/IB-000043/smart-note.md",
+      "blob_sha": "9755c18abd779dd61d0ce5aa1714be3c7ea4a2e0",
+      "size": 8127
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/intelligent-note/IB-000042/smart-note.md",
+      "blob_sha": "fd041520f44f0f8359984e06a3a1b73ba1eeb754",
+      "size": 4406
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-behavior-declaration/IB-000039/smart-note.md",
+      "blob_sha": "ef673299495adce4e1f5e37cd5e4c40bb8477819",
+      "size": 8875
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-naya-process/IB-000045/smart-note.md",
+      "blob_sha": "898c682e1d1eb181e1ac33a10454033087267a57",
+      "size": 13570
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-naya-tool/IB-000044/smart-note.md",
+      "blob_sha": "4decfb1367a665eaf139dff143e0ecd18eb269c7",
+      "size": 9309
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-oath-of/IB-000040/smart-note.md",
+      "blob_sha": "89a7bd75f38b1acf231a0632078b9ae5b4d24a73",
+      "size": 7912
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-oath-of/IB-000041/smart-note.md",
+      "blob_sha": "f15207e35d8a655b72e9e479c8e35cc9fd68d754",
+      "size": 10255
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/words-without-action/IB-000047/smart-note.md",
+      "blob_sha": "27dc18eeb8aee1b0704320387d5aaca4a27b93bc",
+      "size": 7144
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",
