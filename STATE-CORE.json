@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-20T07:07:01Z",
+ "generated_utc": "2026-10-20T07:16:48Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "6dc986716456b59e1878840614960d7c51fe941a",
   "short": "6dc986716456",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-20T07:06:00Z"
+  "checked_utc": "2026-10-20T07:16:07Z"
  },
  "venue": {
   "live": 2765,
@@ -43,27 +43,27 @@
  },
  "queue": {
   "actionable": 0,
-  "proposed": 11,
+  "proposed": 10,
   "top": [
    {
     "id": "Q-PROP-1",
-    "title": "local full-suite at BOTH tips shows 7 failing tests \u2014 the \u00a73 register's \"chronic brain-ind"
-   },
-   {
-    "id": "Q-PROP-2",
     "title": "merge-consensus-gate multiline fail-closed guard is blind to real newlines \u2014 `$'\\\\n'` matc"
    },
    {
-    "id": "Q-PROP-3",
+    "id": "Q-PROP-2",
     "title": "contingent IV of #2791's drift-detector re-key claim \u2014 fresh Naya Delta PR, no IV ask, CI"
    },
    {
-    "id": "Q-PROP-4",
+    "id": "Q-PROP-3",
     "title": "IV the gap-1442 seat-format fix AT LANDING \u2014 gap corroborated on live bytes, fix bytes not"
    },
    {
-    "id": "Q-PROP-5",
+    "id": "Q-PROP-4",
     "title": "EXTENSION of the 20:50Z rate-limit PROPOSED \u2014 2 more merge-consensus gate firings via the"
+   },
+   {
+    "id": "Q-PROP-5",
+    "title": "installation-token API rate-limit episode ~20:20\u201320:41Z killed 4 GITHUB_TOKEN-based workfl"
    }
   ]
  },
@@ -240,27 +240,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 63
+   "age_s": 42
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 63
+   "age_s": 42
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 63
+   "age_s": 42
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 63
+   "age_s": 42
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 63
+   "age_s": 42
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 63
+   "age_s": 42
   }
  }
 }
