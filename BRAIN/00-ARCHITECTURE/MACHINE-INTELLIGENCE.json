@@ -177,7 +177,7 @@
         "gate_rule": "never acts from chat messages, plans, or own initiative; only from LAW receipt",
         "gaps": [
           "ACT never queries KNOW before deciding (CRITICAL Gap 2); ExecutionHandoff type does not exist (Gap 4)",
-          "Reads nayanet_intelligent_blocks, never learning_evidence. naya-decision-context has zero callers (see WO4)"
+          "CORRECTED 2026-10-20: Reads nayanet_intelligent_blocks AND learning_evidence — nayanet-act-runtime/decision-context.ts (readDecisionContext) queries learning_evidence WHERE status=ACTIVE and nayanet-act-runtime/index.ts imports it (line 4) and calls it in the plan handler (line 172), wired by PR #2063 (2026-10-09, WO4). The standalone naya-decision-context endpoint still has zero HTTP callers by design (user-scoped; ACT is owner-scoped, so the logic was ported, not called over HTTP)."
         ]
       },
       {
@@ -512,7 +512,7 @@
       "blocks": [
         "LC8"
       ],
-      "note": "ACT hard-requires KNOW receipts and reads intelligent_blocks, but never learning_evidence. naya-decision-context (2,814 bytes) is the seam: zero callers. See WO4"
+      "note": "CORRECTED 2026-10-20: ACT hard-requires KNOW receipts and reads intelligent_blocks, and since PR #2063 (2026-10-09) also reads learning_evidence via readDecisionContext (nayanet-act-runtime/decision-context.ts), imported and called by nayanet-act-runtime/index.ts (lines 4, 172). The seam is WIRED (WO4 done). Only the standalone naya-decision-context endpoint has zero callers, by design. See WO4"
     },
     {
       "id": "LC8",
@@ -633,7 +633,7 @@
       "id": "CONN-DECISION",
       "from": "learning_evidence",
       "to": "nayanet-act-runtime",
-      "missing": "supabase/functions/naya-decision-context/index.ts (2,814 bytes) queries learning_evidence WHERE status=ACTIVE and returns USE_VERIFIED_LEARNING_CONTEXT. Zero callers \u2014 dead code.",
+      "missing": "CORRECTED 2026-10-20: the decision-context seam is LIVE. supabase/functions/nayanet-act-runtime/decision-context.ts ports the query (learning_evidence WHERE status=ACTIVE) and nayanet-act-runtime/index.ts imports readDecisionContext (line 4) and calls it in the plan handler (line 172) - PR #2063, 2026-10-09. The standalone supabase/functions/naya-decision-context/index.ts (now 3,208 bytes; returns LEARNING_CONTEXT_AVAILABLE, influenced:false) retains zero HTTP callers by design - the seam, not the standalone endpoint, is the live path.",
       "fix": "WO4: in nayanet-act-runtime/index.ts mode==='plan' handler, after LAW preflight, before buildActPlan: invoke decision-context for action target_id, merge ACTIVE-lesson context with named precedence vs 181 DURABLE blocks. Hard precondition: PR #1733 merged green (influenced must measure behavioral delta, not presence)."
     },
     {
@@ -1541,8 +1541,8 @@
       "id": "GAP-2",
       "severity": "CRITICAL",
       "name": "act_never_queries_know",
-      "fact": "Kernel.decide() traces SELF->LAW only; evaluate_candidates() and retrieval_eligible() have no operational callers (tests only).",
-      "impact": "no decision is informed by stored intelligence; 'math decides' runs on math never invoked",
+      "fact": "Kernel.decide() traces SELF->LAW only (still true for the reference kernel, kernel/nayapower_kernel.py). CORRECTED 2026-10-20: evaluate_candidates() HAS operational callers - kernel/act_pipeline.py _select_minimum_sufficient() calls it (line 520; wired 2026-10-10/11, commits 3a46b5030/39192a026/f99d419db), as do kernel/decision_principle.py and tools/qualify_reusable_smart_app.py. retrieval_eligible() still has no operational callers (tests only). The decision/value calculus itself is live on main at kernel/value_calculus.py.",
+      "impact": "the reference Kernel.decide() path itself still does not invoke the calculus or stored intelligence; the ACT pipeline path does (see corrected fact above)",
       "fix_ref": "plan.phase-2.task-2.1,2.2"
     },
     {

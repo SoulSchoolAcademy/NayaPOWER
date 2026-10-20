@@ -42,7 +42,7 @@ YOU SAY "SMART NOTE THIS"
 └──────┬───────┘
        ▼
 ┌──────────────┐
-│  7. ACT      │  Before deciding, ACT queries KNOW      ← ⚠️ NEVER WIRED
+│  7. ACT      │  Before deciding, ACT queries KNOW      ← ✅ WIRED (WO4, PR #2063, 2026-10-09; correction 2026-10-20)
 └──────┬───────┘  Behavior changes because of the lesson
        ▼
 ┌──────────────┐
@@ -204,7 +204,7 @@ The Smart Notes actually on main came through a different pipeline: agents (brai
 
 ### Does anything query Supabase to change behavior? — YES, with a caveat [PROVEN]
 
-1. **`naya-decision-context`** SELECTs `learning_evidence` (status=ACTIVE) and returns `influenced: true/false`. **But it conflates presence with influence** (`influenced = !!evidence`). The separating repair is **PR #1733, OPEN and unmerged**.
+1. **`naya-decision-context`** SELECTs `learning_evidence` (status=ACTIVE). **CORRECTION 2026-10-20:** it no longer conflates presence with influence — the PR #1733 separating repair was ported onto main on 2026-10-09 (commit 4264f9aae); the current function (3,208 bytes) returns `LEARNING_CONTEXT_AVAILABLE` / `NO_VERIFIED_LEARNING_CONTEXT` with `influenced: false` always. See also Connection 2: the decision-context logic is wired into the ACT runtime via its ported helper, `readDecisionContext`.
 2. **`nayanet-act-runtime`** `readEligibleUniverse()` SELECTs the entire `nayanet_intelligent_blocks` universe (181 rows, all DURABLE) — the ACT runtime reads stored intelligence to act on.
 3. **`nayanet-intelligence-retrieve`** ranked retrieval: the RPC `nayanet_retrieve_blocks` **does not exist in production** (migration `20261006235900` is PENDING_REVIEW_NOT_PRODUCTION_APPLIED) — this path is non-functional in production.
 
@@ -278,17 +278,17 @@ Statuses: `ACTIVE` | `ACTIVE_AUTH_GATED` (PRIVATE notes — 404 for strangers) |
 
 **Plain English:** The promotion hallway exists and works. What's missing is the bouncer at the front door — right now any candidate gets in, and the bouncer we built is standing outside with no door assigned to him.
 
-### Connection 2 — Verified lessons → decisions (the dead seam)
+### Connection 2 — Verified lessons → decisions (the dead seam — WIRED 2026-10-09; correction 2026-10-20)
 
 **Earlier claim:** "ACT never queries KNOW/memory before deciding."
 **Corrected verdict:** REFUTED as literally stated — but the real gap is worse in a different way.
 
 - ACT **does** hard-require KNOW context: `nayanet-act-runtime/act.ts` refuses planning without a persisted KNOW receipt (`BLOCKED / KNOW_RECEIPT_REQUIRED`). It reads the live `nayanet_intelligent_blocks` universe and replays the KNOW selector over it. CI proves KNOW→ACT end-to-end.
-- **The real gap:** `supabase/functions/naya-decision-context/index.ts` (2,814 bytes) is the one mechanism that queries the **verified-lesson store** (`learning_evidence` WHERE status=ACTIVE) and returns `USE_VERIFIED_LEARNING_CONTEXT`. It has **zero callers** — dead code. Only its test and SN-0544 reference it.
-- ACT reads `nayanet_intelligent_blocks`, **never** `learning_evidence`. The store where CANDIDATE→ACTIVE promotion lands is never queried by any decision path.
-- **Fix location:** in `nayanet-act-runtime/index.ts` `mode==="plan"` handler, after the LAW preflight and before `buildActPlan`, invoke the decision-context logic for the action's `target_id` and merge ACTIVE-lesson context into the plan. No branch/PR holds this fix.
+- **The real gap (as of the 2026-10-09 tip this blueprint was verified against — CORRECTED 2026-10-20):** CORRECTION 2026-10-20 (verified from code bytes on main): the verified-lesson → decision seam is LIVE and WIRED. `supabase/functions/nayanet-act-runtime/decision-context.ts` ports the decision-context query (owner-scoped) and `supabase/functions/nayanet-act-runtime/index.ts` imports it (line 4: `import { readDecisionContext, type DecisionContext } from "./decision-context.ts"`) and calls it in the `mode==="plan"` handler (line 172: `await readDecisionContext(admin, OWNER_ID, request.target)`), merging the result into the plan and its receipt. Wired by PR #2063 (commit 6ab2de05a, 2026-10-09, WO4). The standalone `naya-decision-context` edge function still has zero HTTP callers — by design: it is user-scoped and the ACT runtime authenticates as the owner, so it cannot call it over HTTP (see the header of `decision-context.ts`). Zero callers for the standalone endpoint does NOT mean the seam is dead. The standalone function no longer returns `USE_VERIFIED_LEARNING_CONTEXT` either: it returns `LEARNING_CONTEXT_AVAILABLE` / `NO_VERIFIED_LEARNING_CONTEXT` (PR #1733 repair, ported 2026-10-09).
+- ACT reads `nayanet_intelligent_blocks` **and** — since PR #2063 (2026-10-09) — `learning_evidence`, via `readDecisionContext` in `nayanet-act-runtime/decision-context.ts` (the claim below that ACT **never** reads `learning_evidence` was true only at the pre-WO4 tip and is FALSE on current main; correction 2026-10-20).
+- **Fix location — DONE:** exactly this fix landed in PR #2063 (2026-10-09): in `nayanet-act-runtime/index.ts` `mode==="plan"` handler, `readDecisionContext(admin, OWNER_ID, request.target)` is invoked and its result is passed to `buildActPlan` and stored on the plan receipt. (The earlier text here said "No branch/PR holds this fix" — stale; correction 2026-10-20.)
 
-**Plain English:** The decision-maker checks the library before acting — but the library's "verified lessons" shelf is in a different building nobody visits. The shuttle bus between them exists but has no driver.
+**Plain English (corrected 2026-10-20):** The decision-maker checks the library before acting, and since 2026-10-09 the shuttle to the "verified lessons" shelf runs: the ACT runtime's plan handler calls `readDecisionContext`, which reads the ACTIVE verified lessons for the action's target. The standalone shuttle parked in its own building (`naya-decision-context`) still has no passengers — by design; the route itself is live.
 
 ### Connection 3 — Verified lessons → SELF's behavior (CONFIRMED missing)
 
@@ -320,8 +320,8 @@ Every gap below is [PROVEN] — read from live code at main tip `1d73652231ac612
 | G1 | No back-sync after runtime promotion: DB says ACTIVE/LEARNED, repo registry says CANDIDATE forever | `live-supabase-runtime-proof.yml` (`contents: read`); `.naya/memory/smart-notes/index.json` | Promotion writes DB only; nothing re-writes the registry | HIGH — two truth systems diverge |
 | G2 | Repo-side promotion never invoked: `promote_note()` complete, zero callers, zero receipts | `tools/smart_note_v2.py:721`; `.naya/memory/smart-notes/promotions/` absent on main | Repo-wide grep: zero invocations | HIGH — the repo ladder is decorative |
 | G3 | Admission gate unmerged, uncalled | Branch `naya5/learning-admission-round2` @ `9fba596e`; no PR; zero callers | Branch diff + grep | MEDIUM — unverifiable candidates can still enter |
-| G4 | `naya-decision-context` dead code: zero callers | `supabase/functions/naya-decision-context/index.ts` | Grep: only test + SN-0544 reference it | HIGH — verified lessons never reach decisions |
-| G5 | ACT never reads `learning_evidence` | `nayanet-act-runtime/index.ts` | Only 4 functions touch that table; ACT isn't one | HIGH — promotion lands where nobody looks |
+| G4 | CORRECTED 2026-10-20: the decision-context SEAM is wired — `readDecisionContext` (ported helper in `nayanet-act-runtime/decision-context.ts`) is imported and called by `nayanet-act-runtime/index.ts` (PR #2063, 2026-10-09). Only the standalone `naya-decision-context` endpoint retains zero HTTP callers, by design (user-scoped; ACT is owner-scoped) | `supabase/functions/nayanet-act-runtime/decision-context.ts`; `supabase/functions/nayanet-act-runtime/index.ts:4,172` | Read code bytes on main | RESOLVED — verified lessons reach ACT plan decisions via the ported helper |
+| G5 | CORRECTED 2026-10-20: ACT DOES read `learning_evidence` — via `readDecisionContext` in `nayanet-act-runtime/decision-context.ts`, called from the plan handler (PR #2063, 2026-10-09) | `nayanet-act-runtime/index.ts:172`; `nayanet-act-runtime/decision-context.ts` | Read code bytes on main | RESOLVED — promotion lands where ACT looks |
 | G6 | SELF has no behavior integration; `record_experience()` has zero production callers | `kernel/self_node.py` | Read in full; caller search | HIGH — the "learning" with no machinery |
 | G7 | Receiver→GitHub projection bridge dead: all 5 receipts failed, zero `IB-######` dirs on main | `nayanet_github_dispatch_receipts`; main tree | Live DB rows + find | MEDIUM — two pipelines run in parallel |
 | G8 | Ranked retrieval RPC missing in production | `information_schema.routines`; migration ledger | `nayanet_retrieve_blocks` doesn't exist; migration pending | MEDIUM — retrieval path non-functional in prod |
@@ -329,7 +329,7 @@ Every gap below is [PROVEN] — read from live code at main tip `1d73652231ac612
 | G10 | 19 duplicate SN numbers on live main | `.naya/memory/smart-notes/index.json` (629 entries, 610 distinct IDs) | Counted | MEDIUM — registry integrity |
 | G11 | #2020 capture has wrong `lifecycle_state` value; licp run RED, no fix-forward | `.naya/capture/20261009-successor-t11-reserve-rule-canonical.json`; run `37980089547` | Job log `AssertionError: CANDIDATE` | HIGH — live red, one-line fix |
 | G12 | Nine-node production binding NOT_PROVEN (system's own admission) | `0004-NINE-NODE-ORGANISM-CONTRACT-V1.md`; `BRAIN/03-KERNEL/MANIFEST.json` | Read both | HIGH — no single wired entrypoint |
-| G13 | `naya-decision-context` conflates presence with influence (`influenced = !!evidence`); repair PR #1733 open/unmerged | `naya-decision-context/index.ts`; PR #1733 state | Read code; API check | MEDIUM — even if wired, measures wrong |
+| G13 | CORRECTED 2026-10-20: the PR #1733 repair was ported onto main on 2026-10-09 (commit 4264f9aae) — current `naya-decision-context/index.ts` (3,208 bytes) returns `influenced: false` always and separates `LEARNING_CONTEXT_AVAILABLE` from causal influence; the same semantics are carried by the wired `readDecisionContext` helper, where influence is measured by the caller's control-vs-treatment comparison (`measureLearningInfluence` in `act.ts`) | `naya-decision-context/index.ts`; `nayanet-act-runtime/decision-context.ts` | Read code bytes on main | RESOLVED |
 
 **What is NOT a gap (earlier claims corrected by evidence):**
 - "Promotion was never built" → promotion exists in `nayanet-learning-verify`, wired and CI-exercised.

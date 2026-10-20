@@ -57,7 +57,7 @@ template: BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-TEMPLATE.md
   - One canonical doc set: this reconciliation eliminates the PR #2052 / PR #2054 duplication.
 - **What's not working:**
   - CANDIDATE→ACTIVE promotion has no back-sync: DB says LEARNED, repo registry says CANDIDATE forever. Repo-side `promote_note()` has zero callers. (Phase 1 workstream.)
-  - ACT never reads `learning_evidence`; `naya-decision-context` is dead code with zero callers. (Phase 2 workstream.)
+  - CORRECTED 2026-10-20: ACT DOES read `learning_evidence` - `nayanet-act-runtime/index.ts` imports `readDecisionContext` from `./decision-context.ts` (line 4) and calls it in the plan handler (line 172), wired by PR #2063 on 2026-10-09 (WO4). The standalone `naya-decision-context` endpoint still has zero HTTP callers by design (user-scoped; ACT is owner-scoped, so its logic was ported into the runtime). The decision seam is live, not dead code. (Phase 2 workstream - this item DONE.)
   - SELF has no behavior integration — `record_experience()` has zero production callers. (Phase 4 workstream.)
   - 19 duplicate SN numbers in the registry (WO7).
 - **What's unknown:**
