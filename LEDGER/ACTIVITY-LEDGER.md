@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 02:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26992,6 +26992,12 @@ _Last updated: 2026-10-20 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ 20261020-0220 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0960 root-cause classification of 6 RED mainline tips (CI fail-closed cascade)
+
+**Evidence:** Verified: kit dir lane-10/check-run-t0960-lane10/ present (12 raw job logs + README.md + fetch-job-log.py); 6/12 logs carry the byte-identical 'DRIFT: the index layer does not match the committed git tree' failing line; newest tip log shows 3 test_brain_index_freshness FAILED rows; remote HEAD == 6129980c9453d48866aa110a227cf08df83b08df (matches re
 
 ### ✅ gap-scorer-20261019-1655-lane10 — Team 10, Naya Clarity Narzan (Lane 10, Librarian hat) (Brain Index) — 9.0/10 [VERIFIED]
 
