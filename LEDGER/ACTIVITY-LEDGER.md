@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-20 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5333,6 +5333,22 @@ _Last updated: 2026-10-20 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on local bytes (stall receipt, no branch/SHA cited — artifact check vacuous, no PHANTOM): prior stall receipt gate-stall-20261019-0924.md exists on disk (filed 09:25 UTC, prior scorer entry t0924 gave it 7.5 at 09:31 UTC); this run's receipt filed ~64 min later — 60-min stall cap honored; twelve-lane-rotation.json queued len=30 matches the
 
+### ✅ t1024 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Sealed falsifying verdict on the gold-side hypothesis for the Q15 word-overlap decoy (read-only analysis)
+
+**Receipt:** `twelve-lane-receipts/t1024-lane10.md`
+
+**Evidence:** ARTIFACTS VERIFIED: all 4 frozen t0553 SHAs byte-identical on disk (script 281ee5f7..., benchmark 50349cd7..., corpus 4ec82639..., pairs 0b5fe2f1...) -- each equals the value pinned in semantic-arm-t0553.md lines 8-17 and the receipt's claimed pins. Seal file auto-retrieval/q15-goldside-prereg-t1024.md sha256 4d2465a3... matches the claimed SHA; fi
+
+### ✅ t1023 — Team 10, lane-scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Q15 honest close: last-sentence-boost mu=1.0 as a PRE-REGISTERED PRIMARY, seal-before-run (DECOY-HOLDS)
+
+**Receipt:** `twelve-lane-receipts/t1023-lane10.md`
+
+**Evidence:** ARTIFACTS VERIFIED: script sha256 19baf6e1... and results 3b200134... match byte-for-byte on disk; report md exists (4857290d... -- differs from the sealed SHA 5031b642... because the receipt documents post-run appends: comparison table + standing status, and the PRE-REGISTERED header section is intact at the file head). Clears 9.5 because the brie
+
 ### ✅ t1022-lane5 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** Re-verify the t902 cold-retrieve claim (1.78s, SN-016) on the CURRENT tip; verdict CLAIM HOLDS or CLAIM STALE
@@ -5422,6 +5438,14 @@ _Last updated: 2026-10-20 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1022-lane10.md`
 
 **Evidence:** Dispatcher verified: receipt exists; PR #2385 head eedd9540f54cd96c241db4be2f43f0698ae4dd07 matches refs/pull/2385/head on origin exactly (unchanged since t982). Watch-only mandate honored (nothing pushed/merged). All 15 check-runs on exact head classified with base re-confirmation (base moved 230b397ac->b5007fd8d2; kernel test + competing-boot red
+
+### ✅ t1020 — Team 10, lane-scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Brain-index drift check at the live tip -- DRIFT verdict pinned with the exact drifted-file list
+
+**Receipt:** `twelve-lane-receipts/t1020-lane10.md`
+
+**Evidence:** ARTIFACTS VERIFIED: remote HEAD via git protocol = c58832b4f1ccbdbfb352cd14bfa06e4a14023f3d, exactly the tip the receipt anchors -- no tip churn since action time, so the verdict still binds. Read-only authority honored (no re-stamp, no push, no PR). Clears 9.5 because the DRIFT verdict is byte-pinned and doubly corroborated: regeneration exit-1 na
 
 ### ✅ t1013 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.5/10 [VERIFIED]
 
@@ -5528,6 +5552,14 @@ _Last updated: 2026-10-20 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1012-lane2.md`
 
 **Evidence:** Dispatcher verified: receipt + lane2-t1012-shapeA/ (probe-prompt, arm-plain-a, scorer-output) + decide.py fork receipt all exist on disk; t1002 pre-reg seal intact (mtime matches in-file stamp). Primary finding: t1002's 'shape confound' is a false memory - t992 ARM-07 ran on A2 not plain A, so t1002's 3/3 rejection WAS the exact-shape replication. 
+
+### ✅ t1011 — Team 10, lane-scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Lexical-penalty (rare-bigram) hybrid replication for the t0553 semantic-retrieval arm, pre-registered single primary l=0.05 (Q15)
+
+**Receipt:** `twelve-lane-receipts/t1011-lane10.md`
+
+**Evidence:** ARTIFACTS VERIFIED: script sha256 6367499e... and results f8a84ad1... match the receipt byte-for-byte on disk; report auto-retrieval/semantic-arm-hybrid-t1011.md exists (1ccaf806...); rare-set signature 46e8bebb17b17a06 in report. Clears 9.5 because every done-criterion of the brief is met on verified bytes: honest prereg-before-run of a single pri
 
 ### ✅ t1002-lane9 — Team 9, Naya 4 (Code Health) — 8.5/10 [VERIFIED]
 
@@ -28036,6 +28068,12 @@ _Last updated: 2026-10-20 13:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261020-1320 — Team 10, Naya Clarity Narzan (lane-executor) (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t1023: two-arm adversarial negative-control set for t1023's last-sentence boost (mu=1.0)
+
+**Evidence:** VERIFIED: all 3 artifact SHAs byte-match on disk (md 9eb6d5df..., py 96c4c3ac..., results 5fa5ea05...); results.json corroborates Control A NOISE-LEVEL (shuffle seed 1024: regressed Q02/Q05/Q06/Q11/Q15/Q18 vs real-term Q02/Q04/Q05/Q06/Q07/Q10; Q15 stays DECOY-HOLDS at gold rank 6) and Control B MECHANISM-CONFIRMED (20 pairs, 12 degenerate, 8 non-de
 
 ### ✅ lane-scorer-20261020-1330 — Team 10, Naya Clarity Narzan (lane-executor) (Brain Index) — 9.0/10 [VERIFIED]
 
