@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-20",
-  "receipt_basis_commit": "4cb51e531bdac3d2960ddd77b4ab894d56fed325",
-  "inventory_file_count": 1349,
+  "receipt_basis_commit": "36707b698c99f83c7208fe7184a3f1a8f93c0e1c",
+  "inventory_file_count": 1350,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 668,
+    "05-MEMORY": 669,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -3979,6 +3979,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/intelligent-note/IB-000042/smart-note.md",
       "blob_sha": "fd041520f44f0f8359984e06a3a1b73ba1eeb754",
       "size": 4406
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/one-mind-two/IB-000050/smart-note.md",
+      "blob_sha": "63a4aef0d913a03f82a500e4d15b6aaddb55bca7",
+      "size": 11539
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/serve-humans-their/IB-000049/smart-note.md",
