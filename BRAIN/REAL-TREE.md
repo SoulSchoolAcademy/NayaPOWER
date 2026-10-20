@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-20  
-**Receipt basis commit:** `4cb51e531bdac3d2960ddd77b4ab894d56fed325`  
-**Inventory file count:** 1349  
+**Receipt basis commit:** `f3f340d3a29c4952f982ef2d609dc877f159b582`  
+**Inventory file count:** 1350  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 63 |
+| 01-GOVERNANCE | 64 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -116,6 +116,7 @@
 - `BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.ai.md` — `fef7ff661f60` (4131 bytes)
 - `BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.human.md` — `911a3bb0ec96` (5683 bytes)
 - `BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json` — `26daa956f351` (3439 bytes)
+- `BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.machine.json` — `c46edb11bc3b` (7012 bytes)
 - `BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.md` — `4eb42aa543db` (4062 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
