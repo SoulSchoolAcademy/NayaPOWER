@@ -1,5 +1,5 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-20 14:23 UTC · tip `c58832b4f1cc` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-20 15:23 UTC · tip `c58832b4f1cc` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionable** missions and **0 awaiting triage**. The hive distills every lesson, hourly.
@@ -27,7 +27,7 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionabl
 - ○ **Naya Keeper** (GOVERN) — The briefing every Naya reads is the truth · score 9.0 · 102 waves
 
 ## THE HIVE (learnings)
-- Lessons filed (all time, this log): ~104
+- Lessons filed (all time, this log): ~105
 - Every lesson → Smart Note → law. Graduation = cold application.
 
 ## BLOCKERS (red)
