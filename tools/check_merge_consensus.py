@@ -56,13 +56,15 @@ import urllib.error
 import urllib.request
 
 API = "https://api.github.com"
-# The 15 named seats — the original 12 area leads (Shawn, 2026-10-11): Alpha,
+# The 16 named seats — the original 12 area leads (Shawn, 2026-10-11): Alpha,
 # Beta, Gamma, Delta, Epsilon, Zeta, Eta, Theta, Iota, Kappa, Lambda, Mu —
 # plus Nitro (Shawn's word 2026-10-16: "She's part of our team"), Chi, Relay
-# (Team Nitro seats, active reviewers on PR #2718), and the three lead seats
+# (Team Nitro seats, active reviewers on PR #2718), the three lead seats
 # Clarity, Verity, Resolve (naming law: leads sign "Naya <Title> Narzan" —
 # a lawful "Seat: Naya Clarity Narzan" declaration must pass the gate's
-# author check exactly like a seat tag). Named seats sign as "Naya <Title>"
+# author check exactly like a seat tag), and GPT-6 (Shawn's seat-addition
+# word pattern; #2816 byte-proven authorship could not pass the consensus
+# gate until the registry knew the seat — Naya Kappa, 2026-10-21). Named seats sign as "Naya <Title>"
 # (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep working exactly
 # as before. One shared id pattern so the author-declaration rule and the
 # review/scorecard rules recognize exactly the same seats.
@@ -74,10 +76,14 @@ API = "https://api.github.com"
 # the naming-law lead form "Seat: Naya Clarity Narzan" could never pass the
 # author check (registry had no 'clarity'), so every lead-qualified body hit
 # the wall. Mechanism over ruling: the registry names the working team.
+# "gpt-6" added 2026-10-21 — Shawn's seat-addition word pattern (nitro/chi/
+# relay 2026-10-17); #2816's byte-proven GPT-6 authorship could not pass the
+# consensus gate until the registry knew the seat (Kappa w641: seat_of None).
 _NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
                 "eta", "theta", "iota", "kappa", "lambda", "mu",
                 "nitro", "chi", "relay",
-                "clarity", "verity", "resolve")
+                "clarity", "verity", "resolve",
+                "gpt-6")
 _SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
 SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never

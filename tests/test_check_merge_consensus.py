@@ -515,3 +515,19 @@ def test_self_test_scorecard_verdict_matches_gate_matcher(tmp_path):
             assert e.code == 1
             accepted = False
         assert accepted == _looks_like_scorecard(body, HEAD_STC), body
+
+
+def test_registry_recognizes_every_named_seat():
+    """Seat-registry closure: every entry in _NAMED_SEATS (and the legacy
+    numeric seats 1-5) must be recognized by both the tag matcher and the
+    explicit author-declaration matcher. Catches registry lag (the gpt-6
+    miss: a seated author's receipts failed the gate because the registry
+    did not know the seat)."""
+    from check_merge_consensus import _NAMED_SEATS, AUTHOR_SEAT_RE, SEAT_RE
+    for seat in list(_NAMED_SEATS) + ["1", "2", "3", "4", "5"]:
+        tag = f"Naya {seat}"
+        assert SEAT_RE.search(tag), tag
+        assert AUTHOR_SEAT_RE.search(f"Seat: {tag}"), tag
+    # gpt-6 specifically: the seat that motivated this test
+    assert SEAT_RE.search("Naya GPT-6")
+    assert AUTHOR_SEAT_RE.search("Seat: Naya GPT-6")
