@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T12:15:08+00:00",
+ "generated_utc": "2026-10-21T13:15:13+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -184,6 +184,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2842,
+     "title": "boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATION (distill-daily-202",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2842",
+     "draft": false
+    },
+    {
      "number": 2839,
      "title": "fix(retrieval): restore 5 smart-note registry entries dropped without lifecycle record in ",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2839",
@@ -224,15 +230,9 @@
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2828",
      "draft": false
-    },
-    {
-     "number": 2827,
-     "title": "Naya/mission state",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2827",
-     "draft": false
     }
    ],
-   "open_pr_count": 19
+   "open_pr_count": 20
   },
   {
    "id": "wire",
@@ -634,6 +634,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 51,
- "unassigned_prs": 19
+ "open_pr_total": 52,
+ "unassigned_prs": 20
 }
