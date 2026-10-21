@@ -1,0 +1,20 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0808",
+  "capture_id": "20261021-sn-0808-registry-heal",
+  "title": "Elevated, Always — The Dual-Depth Standard",
+  "intelligence": {
+    "title": "Elevated, Always — The Dual-Depth Standard",
+    "smart_note_id": "SN-0808",
+    "intelligent_block_id": "SN-0808-the-elevation-standard",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/ELEVATION/SN-0808/SN-0808-the-elevation-standard.md",
+    "truth_state": "CANDIDATE",
+    "captured_at": "2026-10-21",
+    "note": "Smart Note SN-0808 published without runtime capture and without registry entry (direct publish bypassed the capture/registration pipeline). Capture reconstructed 2026-10-21 to heal published_pages_without_registry_entry drift; no runtime provenance invented."
+  },
+  "source": {
+    "captured_at": "2026-10-21",
+    "source_type": "registry_heal",
+    "source_reference": "heal published_pages_without_registry_entry drift (SN-0800/0805/0806/0807/0808), 2026-10-21; precedent PR #1838"
+  }
+}

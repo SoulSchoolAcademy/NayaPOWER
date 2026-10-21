@@ -1,0 +1,20 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0805",
+  "capture_id": "20261021-sn-0805-registry-heal",
+  "title": "662 Beginnings, 5 Endings",
+  "intelligence": {
+    "title": "662 Beginnings, 5 Endings",
+    "smart_note_id": "SN-0805",
+    "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/reservoir/SN-0805/IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings.md",
+    "truth_state": "CANDIDATE",
+    "captured_at": "2026-10-21",
+    "note": "Smart Note SN-0805 published without runtime capture and without registry entry (direct publish bypassed the capture/registration pipeline). Capture reconstructed 2026-10-21 to heal published_pages_without_registry_entry drift; no runtime provenance invented."
+  },
+  "source": {
+    "captured_at": "2026-10-21",
+    "source_type": "registry_heal",
+    "source_reference": "heal published_pages_without_registry_entry drift (SN-0800/0805/0806/0807/0808), 2026-10-21; precedent PR #1838"
+  }
+}

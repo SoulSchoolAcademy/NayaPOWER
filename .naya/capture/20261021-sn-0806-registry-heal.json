@@ -1,0 +1,20 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0806",
+  "capture_id": "20261021-sn-0806-registry-heal",
+  "title": "Useless Is the Worst Sin",
+  "intelligence": {
+    "title": "Useless Is the Worst Sin",
+    "smart_note_id": "SN-0806",
+    "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0806-completion-doctrine",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/completion-doctrine/SN-0806/IB-SMART-NOTE-20261020-sn0806-completion-doctrine.md",
+    "truth_state": "CANDIDATE",
+    "captured_at": "2026-10-21",
+    "note": "Smart Note SN-0806 published without runtime capture and without registry entry (direct publish bypassed the capture/registration pipeline). Capture reconstructed 2026-10-21 to heal published_pages_without_registry_entry drift; no runtime provenance invented."
+  },
+  "source": {
+    "captured_at": "2026-10-21",
+    "source_type": "registry_heal",
+    "source_reference": "heal published_pages_without_registry_entry drift (SN-0800/0805/0806/0807/0808), 2026-10-21; precedent PR #1838"
+  }
+}

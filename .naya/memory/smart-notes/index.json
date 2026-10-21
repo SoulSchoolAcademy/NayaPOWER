@@ -13638,6 +13638,106 @@
         "note": "published directly as a BRAIN projection in commit 8cb52c46fe83152cc9d14c757df9531065d7b9ae ('feat(smart-note): SN-0804 Viral Law — Nobody Discovers What Doesn't Hook Them') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-20 brain-index re-stamp; no runtime provenance invented"
       },
       "page_hash": "57c632fdbd9e8ade11e56f2c2f05d5075f9e3cf992cdbb14502f453afeb29f83"
+    },
+    {
+      "smart_note_id": "SN-0800",
+      "intelligent_block_id": "IB-SMART-NOTE-20261019-sn0800-how-to-get-started",
+      "title": "How to Get Started with NayaNET",
+      "content_hash": "80112cc25245440f1bb6bc6d163834ce9919399ec1e1518e83af70ed6cc2e095",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/SYSTEM/getting-started/SN-0800/IB-SMART-NOTE-20261019-sn0800-how-to-get-started.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "GETTING-STARTED",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published as a BRAIN projection with no runtime capture and no registry entry; capture and entry reconstructed from the published projection on 2026-10-21 to heal registry drift; no runtime provenance invented"
+      },
+      "page_hash": "23ed0c18b5559ac133cd61fdef963b051c200e9b28fe8a4ec1234ab448f5c33a"
+    },
+    {
+      "smart_note_id": "SN-0805",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings",
+      "title": "662 Beginnings, 5 Endings",
+      "content_hash": "643672c1acd42934135fc4a22fa1724d4efef82c9380a5ca5889ca3c23bb163b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/reservoir/SN-0805/IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "RESERVOIR",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published as a BRAIN projection with no runtime capture and no registry entry; capture and entry reconstructed from the published projection on 2026-10-21 to heal registry drift; no runtime provenance invented"
+      },
+      "page_hash": "173fbe0a58c7eb279b20f0839f96cbccf82691e97ee591c37b41732e2e4ebd66"
+    },
+    {
+      "smart_note_id": "SN-0806",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0806-completion-doctrine",
+      "title": "Useless Is the Worst Sin",
+      "content_hash": "569387ee6edac4fe95b4fb57cc80b505825e4d69298663dbcd434ba54539658a",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/completion-doctrine/SN-0806/IB-SMART-NOTE-20261020-sn0806-completion-doctrine.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "COMPLETION-DOCTRINE",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published as a BRAIN projection with no runtime capture and no registry entry; capture and entry reconstructed from the published projection on 2026-10-21 to heal registry drift; no runtime provenance invented"
+      },
+      "page_hash": "909a1d1cb5aab4e1c1ded6f106fe75a3c8907d1f3c39193d7366d1499cfd7cd4"
+    },
+    {
+      "smart_note_id": "SN-0807",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing",
+      "title": "Paying Twice for Nothing",
+      "content_hash": "cd8c9bdcc2d334a143def2b09dcef7c6ef1183c78a1b58481947f1f9e39dc011",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/ai-waste/SN-0807/IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "AI-WASTE",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published as a BRAIN projection with no runtime capture and no registry entry; capture and entry reconstructed from the published projection on 2026-10-21 to heal registry drift; no runtime provenance invented"
+      },
+      "page_hash": "317b3c33b54f85afd0197a46c157a072dda3f96d3b7d790bcb23d833c923b63f"
+    },
+    {
+      "smart_note_id": "SN-0808",
+      "intelligent_block_id": "SN-0808-the-elevation-standard",
+      "title": "Elevated, Always — The Dual-Depth Standard",
+      "content_hash": "a33010b84b9f7298020ee9b1ee583099baadac39e3f9079d2efc643ace658123",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/ELEVATION/SN-0808/SN-0808-the-elevation-standard.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "ELEVATION",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published as a BRAIN projection with no runtime capture and no registry entry; capture and entry reconstructed from the published projection on 2026-10-21 to heal registry drift; no runtime provenance invented"
+      },
+      "page_hash": "7d7023cfa24db80a55df5c892ed31f85f3c9b1e778223874ee861fe37cf3f3c0"
     }
   ],
   "sequence_policy": {

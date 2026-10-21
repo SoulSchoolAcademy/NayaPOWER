@@ -1,0 +1,20 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0807",
+  "capture_id": "20261021-sn-0807-registry-heal",
+  "title": "Paying Twice for Nothing",
+  "intelligence": {
+    "title": "Paying Twice for Nothing",
+    "smart_note_id": "SN-0807",
+    "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/ai-waste/SN-0807/IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing.md",
+    "truth_state": "CANDIDATE",
+    "captured_at": "2026-10-21",
+    "note": "Smart Note SN-0807 published without runtime capture and without registry entry (direct publish bypassed the capture/registration pipeline). Capture reconstructed 2026-10-21 to heal published_pages_without_registry_entry drift; no runtime provenance invented."
+  },
+  "source": {
+    "captured_at": "2026-10-21",
+    "source_type": "registry_heal",
+    "source_reference": "heal published_pages_without_registry_entry drift (SN-0800/0805/0806/0807/0808), 2026-10-21; precedent PR #1838"
+  }
+}
