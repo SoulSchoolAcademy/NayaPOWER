@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 19:17 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-21 20:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 56 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 51 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -64,18 +64,17 @@
 - [#2825](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825) The GitHub webhook receiving door — nayanet-github-intake (verify + ac
 - [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
 
-### BUILD (24)
+### BUILD (20)
 - [#2853](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2853) Remove superseded 0028 execution-prompt husk (doctrine preserved as SN
 - [#2852](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2852) 0030 tongues cure — THE VALUE-ONLY BRAIN V1: AI + machine forms (super
 - [#2851](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2851) SN-1772 — Opened Is Not Done: Land It, Close It, or Kill It
 - [#2849](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2849) Step-0 Factory delivery: Nitro's canon evidence lands in the repo (Eli
 - [#2848](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2848) SN-1771 — Already Built: Pick Your Model, Drive Away in Minutes
-- …and 19 more
+- …and 15 more
 
-### WIRE (4)
+### WIRE (3)
 - [#2834](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2834) fix(readiness): C3 classifier no longer cries wolf on a healthy gate
 - [#2812](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2812) fix(activation): refuse undeclared cold starts at real admission gate
-- [#2807](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2807) docs(brain): correct stale decision-seam claims — decision context is 
 - [#2552](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2552) Intelligence intake triage: the hive's ingestion gate
 
 ### TEAM (2)

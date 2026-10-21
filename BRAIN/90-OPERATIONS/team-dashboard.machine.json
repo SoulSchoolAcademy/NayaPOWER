@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T19:18:06+00:00",
+ "generated_utc": "2026-10-21T20:16:23+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -226,13 +226,13 @@
      "draft": false
     },
     {
-     "number": 2837,
-     "title": "[dec-16] Report generator: flip 9.0 below-bar carrier to 9.5 (draft \u2014 do not merge)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2837",
-     "draft": true
+     "number": 2835,
+     "title": "Clean home R1: remove the 10 byte-proven duplicate files (Shawn-approved)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2835",
+     "draft": false
     }
    ],
-   "open_pr_count": 24
+   "open_pr_count": 20
   },
   {
    "id": "wire",
@@ -265,19 +265,13 @@
      "draft": false
     },
     {
-     "number": 2807,
-     "title": "docs(brain): correct stale decision-seam claims \u2014 decision context is wired (WO4, PR #2063",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2807",
-     "draft": false
-    },
-    {
      "number": 2552,
      "title": "Intelligence intake triage: the hive's ingestion gate",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2552",
      "draft": false
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 3
   },
   {
    "id": "team",
@@ -634,6 +628,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 56,
- "unassigned_prs": 24
+ "open_pr_total": 51,
+ "unassigned_prs": 20
 }
