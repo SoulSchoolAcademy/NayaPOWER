@@ -34,13 +34,19 @@ A note missing sections is not finished. The sync refuses a note with no Nutshel
 
 **The only door is main.** A note that exists only as a local file, on a branch, or in an open PR is *invisible* to the Hub. There are no exceptions and no other doors.
 
+## 4b. Categorization — no note is homeless, ever
+
+Every note is filed under a real topic and subtopic, chosen at the moment of authoring from the brain's existing taxonomy (SYSTEM, DESIGN, FACTORY, GOVERNANCE, SYSTEM-INTELLIGENCE, PHILOSOPHY, and their subtopics). The category is part of the note's identity — it decides where the note lives, how it is found, and how it compounds with its neighbors.
+
+**"UNCATEGORIZED" is forbidden.** It is not a category; it is an admission the process wasn't followed. If no existing subtopic fits, create one deliberately — name it for what the note truly is, and say so in the note's NAYA section. A note filed without a true category is not done, even if it reaches the feed. (Shawn, 2026-10-21: lock in how to do it exactly right, and follow the process every single time.)
+
 ## 5. The process — how to make one, step by step
 
 1. **Capture the lesson faithfully.** The words, the decision, the evidence — in the speaker's own meaning, never improved or invented.
 2. **Craft the hook title** (§2).
 3. **Claim the number.** Scan main and open claims for the next free SN number in your sequence; first claim stands; never reuse a number.
 4. **Write all nine sections** (§3).
-5. **File it** at the canonical path (§4), named by its full IB id.
+5. **Categorize it** (§4b) and **file it** at the canonical path (§4), named by its full IB id.
 6. **Land it on main** — either the direct-write door (standing approval covers the Smart Notes folder; the App-identity lane carries it) or a dock-merged PR. Landing is a step you *drive to completion*, not a request you drop.
 7. **Verify it live, yourself.** The note's own entry in the live Hub feed, and its page (nayanet.live/s/sn####) answering 200. This verification is the authoring seat's duty — never assume a lane carried it.
 8. **Deliver the link.** To Shawn, "done" is the Hub feed link showing the note there. Done = visible, link in hand.

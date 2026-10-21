@@ -6,6 +6,11 @@ Canonical procedure for creating a Smart Note that reaches the Intelligent Hub. 
 - Smart Note: the unit of living intelligence in NayaNET; a nine-section document (§Structure) filed in the brain, synced to Supabase, rendered in the Hub.
 - Done: the note's own entry is verified present in the LIVE Hub feed bytes AND nayanet.live/s/sn#### returns HTTP 200. Any lesser state (written / committed / PR open / landing requested / on main unverified) is NOT done.
 
+## Categorization (mandatory, no exceptions)
+- The `<TOPIC>/<sub>` in the filing path MUST be a real entry of the brain's existing topic taxonomy, chosen at authoring for what the note truly is.
+- The literal category `UNCATEGORIZED` (or any misc/dumping label) is a PROTOCOL VIOLATION: the note is not done even if synced and visible, and the author re-files it under a true category.
+- If no existing subtopic fits, the author creates one deliberately (named for the note's true domain) and records the creation in the note's NAYA section. Inventing a vague bucket to avoid choosing is the same violation as UNCATEGORIZED.
+
 ## Identifiers and filing
 - ID: SN-#### (sequence per claim scan; first claim stands; never reuse).
 - File name: `IB-SMART-NOTE-YYYYMMDD-sn####-<slug>.md` (lowercase sn in the file name).
