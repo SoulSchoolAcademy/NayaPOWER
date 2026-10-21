@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31726,6 +31726,18 @@ _Last updated: 2026-10-21 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261021-0550 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall-20261021-0542.md: lane-executor seat-stall run 2026-10-21 05:42 UTC - all 30 queued briefs seat-barred for the Clarity seat
+
+**Evidence:** VERIFIED on live bytes: receipt seat-stall-20261021-0542.md exists (full run record); twelve-lane-rotation.json queued list byte-counted at 30 briefs - matches the receipt's 30/30 blocked claim, composition byte-identical to the 04:40 receipt (30th brief listed by shorthand, full filename brief-gap-mtc-v1-thirdblind-probe-20261017-1155.md is queued
+
+### ✅ lane-scorer-20261021-0440 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall-20261021-0440.md: lane-executor seat-stall run 2026-10-21 04:40 UTC — all 30 queued briefs seat-barred for the Clarity seat
+
+**Evidence:** VERIFIED on live bytes: receipt seat-stall-20261021-0440.md exists (32 lines, full run record); twelve-lane-rotation.json queued list byte-counted at 30 briefs — matches the receipt's 30/30 blocked claim; prior stall receipt seat-stall-20261021-0316.md exists and carries the same 30/30 composition (stall-chain consistent, 84-min cadence outside the
 
 ### ✅ seat-stall-20261021-0440 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
