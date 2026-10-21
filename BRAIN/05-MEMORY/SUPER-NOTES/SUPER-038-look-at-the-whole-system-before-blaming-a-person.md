@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-038` |
 | Human title | Look at the Whole System Before Blaming a Person |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 5 raw notes (full list below) |
 | Cluster file | `cluster-04-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,20 @@ You get fixes that hold. Instead of the same problem returning every few weeks w
 On the second occurrence of any failure, stop and audit the setup before the person: instructions, definitions, environment, tools. Write the false choice down and state the integrated alternative before building. When a number keeps drifting, settle what it means before recounting it. Commission bounded, read-only red-team passes with crisp contracts, and fix what they find at the root.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0130 — Intelligent Block — SN-130 [audit: PARTIAL → lost element restored]
+
+Three-strikes class escalation: when the same repair class recurs a third time, stop patching instances — the owning lane must issue a written ruling on the class (placement rule + count rule + one deliberate bump), and no fourth instance may be patched before that ruling lands. Instance patches never close a class dispute. In the source case the 05-MEMORY projection-count drift had been repaired three times (#1251, #1301, and the current instance) because the runtime registry counted SN-018 once while the file counter counted it twice — the ruling question was whether verified projections live under `SMART-NOTES/SN-*/` as counted notes or relocate to a projections path.
+
+### SN-0346 — Environment Failures Must Never Wear Product Clothing [audit: PARTIAL → lost element restored]
+
+Measurement tooling must fail loud on environment shortage: a harness that cannot measure must announce the shortage with a dedicated fatal exit (in the source repair, FATAL exit 3) and abort the affected check as an environment failure — never silently convert it into a product score. Suppressing the error is prohibited: `2>/dev/null` on anything that can carry a failure reason is a lie in the instrument — in the source case it swallowed "No space left on device" (five ~117MB clones into a 512MB `/tmp` tmpfs) and dead clones were scored as index defects on a provably green tip.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-028` |
 | Human title | A Guard Firing Is a Signal, Not a Verdict |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 8 raw notes (full list below) |
 | Cluster file | `cluster-03-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,20 @@ You keep real protection. Alarms stay rare and meaningful, blocks happen for sta
 ## HOW IT APPLIES
 
 On every guard firing: name what it detected; decide test-versus-product defect by comparing the test's assumed world to the shipped contract; if the rule truly changed, re-pin deliberately and say why; if the same tripwire fires repeatedly, open a healing task for the seam — not another silencing.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0359 — Reconciliation Rewrites the Invariant — Re-pin the Test, Never Weaken the Guard [audit: PARTIAL → lost element restored]
+
+The lost proof and scoring elements: first prove the red was introduced — base green versus tip red on exact bytes, never theorised. In the source case base `f4bfd7ca` was green (666 passed / 0 failed) and tip `bf4c8e9b` was red (664 passed / 11 skipped / 2 failed), with the diff being the reconciliation commits, so the RED was stale test expectations, not a data defect. Second, score any vacuous-pass repair option against its fail-closed culture cost: option (C), rewriting the tests as vacuous-pass, scored 5 — green, but vacuous-pass erodes the fail-closed culture — while (A), repairing the pin, scored 9/9/9/9.
+
+### SN-0377 — Teach New Guards About Legacy — Guards Detect Anomalies, Humans Classify Them [audit: PARTIAL → lost element restored]
+
+The lost legacy / temporal-blindness lesson: a detector built on a new system cannot distinguish "ratified before receipts existed" from "ratified without authority", so guards must be taught about legacy entries rather than treating a missing receipt as an attack. In the source case SN-016 sat as `RATIFIED` with no `promotion_receipt`, but zero of the 34 registry entries had a `promotion_receipt` — because `promote_note`, the only writer that produces receipts, did not exist on 2026-09-30 — and SN-016 had been flipped `CANDIDATE → RATIFIED` by Shawn Vibert himself on 2026-09-30, commit `c36a8868`. The fix is to teach the guard about legacy ratifications: skip them or flag them as "legacy, provenance in capture" rather than "attack"; demoting a director-ratified note because the receipt system did not exist yet would be a false positive in the safety layer.
 
 ---
 

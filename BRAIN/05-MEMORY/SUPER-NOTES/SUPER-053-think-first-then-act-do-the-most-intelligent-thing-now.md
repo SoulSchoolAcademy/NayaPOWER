@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-053` |
 | Human title | Think First, Then Act — Do the Most Intelligent Thing, Now |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 6 raw notes (full list below) |
 | Cluster file | `cluster-07-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,16 @@ Things get done when they should — not after days of waiting for approvals. Yo
 Faced with any decision: ask what the most intelligent thing is, consider all elements and angles, rank options by value, execute the winner now. Check first that it can't harm or break anything and isn't across a hard boundary. If the rubric already settles it, decide and act — don't ask. Then brief plainly: what I did, why, what I suggest next.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0541 — The Standing Promotion Law — Learning Promotes on Proof, Not Permission [audit: PARTIAL → lost element restored]
+
+The Standing Promotion Law's machinery: a CANDIDATE lesson promotes if and only if all four fail-closed gates pass — (1) trial proof to the stated statistical bar (power-tiered 7.0 bar: pre-registered tier, p < 0.05 two-sided, effect ≥ tier minimum, Bayesian P(delta>0) ≥ 0.95, treatment beats control on a hard transfer task); (2) no negative transfer (treatment does not degrade on unrelated tasks); (3) independent verification by a different seat corroborating from raw transcripts (the builder never self-verifies); (4) an immutable audit receipt `{lesson_id, trial_id, trial_receipt, verifier_id, timestamp, gate_versions}`. No per-item permission is required. Shawn retains the kill switch (one command freezes all promotion) and audit-log review (he reviews the log, not each item). Boundary: this law governs promotion into the brain only — it never authorizes production deployment, which still needs Shawn's explicit word.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

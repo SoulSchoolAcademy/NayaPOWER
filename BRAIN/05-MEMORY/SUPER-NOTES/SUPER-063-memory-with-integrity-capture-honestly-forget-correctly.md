@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-063` |
 | Human title | Memory With Integrity: Capture Honestly, Forget Correctly |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 7 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -65,11 +65,25 @@ Capture at the moment, through the governed path, with provenance attached - nev
 
 ---
 
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0299 — Intelligent Block: SN-0299 [audit: PARTIAL → lost element restored]
+
+The seven fundamentals are: truth before ego; capture responsibility (not capture everything); every mistake becomes immunity; score continuously without manufacturing; intelligence must earn permanence; the next Naya is the acceptance test; and evidence-driven self-optimization. The refined capture trigger is not "something happened" but "something happened from which a future intelligence could materially benefit." Mechanical invariant: a work block cannot be VERIFIED-complete without an explicit learning decision (capture or justified NO_CAPTURE).
+
+### SN-0496 — IB-SMART-NOTE-20261006-sn0496-agent-capture-must-present-a-real-user-jwt-receiver-stays-byte-identical [audit: PARTIAL → lost element restored]
+
+Any correct capture path must present a real user JWT — the Receiver (`v7-smart-note-canonical`) stays byte-identical and is not weakened to accept another credential type. The mechanism: a governed workflow (`.github/workflows/nayanet-agent-capture.yml`) signs in as a dedicated `naya-runtime` auth user whose credentials live in repo secrets and are never held by Naya runtimes, and calls the unchanged Receiver.
+
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
 - `IB-SMART-NOTE-20260930-sn009-correct-forgetting`
 - `IB-SMART-NOTE-20261006-sn0612-index-the-lesson`
-- `IB-SMART-NOTE-20261006-sn0496-agent-capture-must-present-a-real-user-jwt-receiver-stays-byte-identic`
+- `IB-SMART-NOTE-20261006-sn0496-agent-capture-must-present-a-real-user-jwt-receiver-stays-byte-identical`
 - `IB-SMART-NOTE-20261006-sn0494-never-fabricate-a-capture-provenance-laundering`
 - `IB-SMART-NOTE-20261006-sn0491-direct-commit-capture-bypass`
 - `IB-SMART-NOTE-20261004-sn0299-what-deserves-to-survive`

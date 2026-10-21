@@ -8,8 +8,8 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-062` |
 | Human title | Finishing Is the Work: Unfinished Work Is a Liability |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
-| Sources | 10 raw notes (full list below) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
+| Sources | 9 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
 | Human projection | This Markdown file |
@@ -65,10 +65,27 @@ Before starting anything new, ask: what is open, and what finishes first? Work t
 
 ---
 
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### IB-000051 — Starting Is Not Working — The 662 Pull-Request Reservoir [audit: PARTIAL → lost element restored]
+
+Behavior is what gates mechanically enforce, not what documents say — the written WIP limit existed the whole time and changed nothing, because nothing mechanical enforced it. Throughput is a finishing rate, not a starting rate: a system that starts 33 and finishes 7 a day is not producing 33 a day, it is accumulating 26 a day of debt.
+
+### SN-0177 — Finish Before You Create: Complete the Open Work Before You Make More [audit: PARTIAL → lost element restored]
+
+This is not a ban and not a freeze on creating pull requests. Zero open is reached by completing the work, not by avoiding creating it: finish the open pull requests first, and only then create new work — which is created to be finished, not to be added to a pile.
+
+### SN-0595 — Complete the App Doctrine — Finish the House, Not the Shell [audit: PARTIAL → lost element restored]
+
+Before building, restore canonical project intelligence and inventory every required surface and cross-function dependency first, and preserve proven design DNA. A build is not complete on a shell or first slice: continuously score and repair regressions, independently verify the whole product, and continue until the declared application is coherent and complete.
+
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
 - `IB-SMART-NOTE-20260929-sn003-naya-continuation-engine`
-- `IB-SMART-NOTE-20261019-sn0799-compose-dont-recreate`
 - `IB-SMART-NOTE-20261001-sn0595-complete-the-app-doctrine`
 - `IB-000051`
 - `IB-SMART-NOTE-20261020-sn0806-completion-doctrine`

@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-002` |
 | Human title | Permission Dies When the World Moves |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 12 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,30 @@ Nothing you approved in one form ever ships in another form behind your back. Wh
 Whenever you act on an approval: re-check the current state first; compare it to what was approved; if they differ, stop and re-anchor. Freeze what will be judged and judge only that. After anything lands, verify the landed result itself. If your own earlier statement turns out stale, correct it publicly and promptly — a corrected record is a strength, not a shame.
 
 ---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0191 — The Repo Is the Demo — the Freeze-Point Protocol [audit: PARTIAL → lost element restored]
+
+The demo protocol itself, four rules, mechanical: 1. Code lands in GitHub first — every shareable checkpoint is a pushed commit on a branch, and that commit SHA is the freeze point. 2. What the director views = the frozen SHA, via the Cloudflare-synced live version or by downloading the HTML from GitHub at that commit. 3. Nothing is shown outside GitHub that isn't pushed — if a preview appears in chat or the feed, it is rendered FROM the frozen commit, never a side copy, never a mockup that drifts. 4. The judge scores the same SHA the director viewed. One SHA, one review, one gate — the repo is the demo.
+
+### SN-0328 — The Auto-Merge Gate Must Re-Verify on the Merge Commit — the Merge Itself Changes the Tree [audit: PARTIAL → lost element restored]
+
+A merge itself produces a new tree, so pre-merge evidence does not transfer: every check and approval that qualified the pre-merge state proves nothing on the post-merge tree. The auto-merge gate's mechanical preconditions must include re-verification on the exact merge commit, re-running derived-layer checks (index `--check`, ledger, caches) on that commit — because only the merge commit is the tree the repo actually gets. (The instance: the #1438 auto-merge landed a `BRAIN/` file without regenerating the index layer, 188 → 189 files, `--check` RED on the merge commit.)
+
+### SN-0415 — The Authorization Window Race — a SHA-Pinned Human Deploy Authorization Is Voided by Any Main Movement [audit: PARTIAL → lost element restored]
+
+HOLD MAIN must precede the authorization request, not follow it: the freeze is the first step of the deploy sequence — asking for a SHA's deploy authorization while unrelated merges are free to land turns the authorization into a lottery ticket. The operating sequence: (1) establish HOLD MAIN first; (2) get the authorization for the exact frozen SHA; (3) re-verify main == SHA immediately before dispatch; (4) dispatch with the exact SHA. A human deploy authorization binds to the exact SHA, never to "current main" — if main moves at any point between authorization and dispatch acceptance, the authorization is void and must be re-requested for the new exact SHA. Record authorizations as facts, but never infer deployment from them; only a completed governed workflow run is deployment evidence.
+
+### SN-0553 — The Overtaken Receipt — When the Tip Outruns Your Receipt, Publish a Temporal Correction [audit: PARTIAL → lost element restored]
+
+When a pre-action receipt is overtaken by a moved tip, publish a temporal correction that: (1) quotes or cites the overtaken receipt; (2) states the live resolution with exact evidence — new main SHA, merge timestamp, which account GitHub records; (3) explicitly disclaims authorship of the action another hand completed ("I do not claim this seat performed or authorized that already-completed action"); and (4) reclassifies the receipt as a post-hoc record. Never let a stale receipt stand as authorization. GitHub recording a merge under an account does not establish which interaction caused it.
+
+### SN-0563 — The PR Head Is Not the Merge Commit — Prove a Merge by Ancestry [audit: PARTIAL → lost element restored]
+
+A merge is proven only by ancestry of the merge commit inside `refs/heads/main` (`git merge-base --is-ancestor <merge-sha> refs/heads/main`), never by PR head SHA equality or PR state labels. Squash merges and merge commits replace the head SHA entirely — the head ceases to exist as the identity of what landed. Verification receipts must record the merge commit, never the head, and the assertion must be ancestry, never equality; if the ancestry assertion fails, the claim is UNPROVEN.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

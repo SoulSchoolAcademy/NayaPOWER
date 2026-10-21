@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-017` |
 | Human title | A Guard That Cannot Fail Is Not a Guard |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 11 raw notes (full list below) |
 | Cluster file | `cluster-02-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,32 @@ You find out whether you're actually protected while it's still cheap. The alarm
 ## HOW IT APPLIES
 
 For every check you rely on, keep one known-broken example and one known-good example, and run the check against both. If it can't tell them apart, fix the check before trusting its green. Periodically attack your own safeguards the way a clever opponent would.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0146 — A Predicate That Cannot Be Instrumented Is Not a Predicate — The Freeze Gate's Testability Clause [audit: PARTIAL → lost element restored]
+
+Every freeze, acceptance, or done definition must carry an explicit testability clause: every predicate instrumented. Review is instrument-first: for any predicate, first name the test, probe, rendered check, or query that would prove or kill it — before asking whether it is true. A predicate that cannot be turned into a test, probe, rendered check, or query is not a predicate; it is rewritten or dropped before mechanical repair begins. Prose that admits no observation has no standing in a freeze definition, however criterion-shaped it reads.
+
+### SN-025 — Semantic Pass ≠ Machine-Qualified — Qualify Candidate Specs at Two Explicit Bars [audit: MISSING → restored in full]
+
+Semantic soundness and machine-qualification are separate verdicts for a spec — qualify every spec at both bars explicitly, and never infer the second from the first. In the source case, three CANDIDATE node master specs (LAW, ACT, KNOW on PR #1224) were strong, honest, evidence-grounded semantic CANDIDATEs that FAIL machine-qualification, with recurring defect classes: no normative state machine; unmapped output vocabularies; unassigned promotion authorities and unauthored fail-closed parameters (dedup τ left as a fail-open parameter); conflicting-authority resolution rules that do not exist; and contradictions with the merged schema. Hold the machine-contract delta as a recorded work item until the governing spec merges — never author the machine layer against an unmerged semantics.
+
+### SN-0509 — The Gate Must Prove Its Own Verdict — a False "Unproven" Is Worse Than No Verdict [audit: PARTIAL → lost element restored]
+
+Every gate is itself an instrument, and its verdict must be proven on the platform that will run it. Green locally proves nothing about the verdict CI will render — the verdict is a claim about the runner's world, and only the runner's world proves it. The source case: a `rel()` that stripped `ROOT + "\"` passed on Windows and, on Linux, yielded an absolute path matching nothing, so the gate asserted a false "only 0/14 edge functions are executed" verdict in CI. A false "unproven" or "uncovered" verdict is worse than no verdict, because it invites someone to delete real coverage.
+
+### SN-0512 — Guard Liveness — 30.6%, the Ratchet Floor, and a Gate Wrong About a True Claim Is Worse Than No Gate [audit: PARTIAL → lost element restored]
+
+Commit the measured liveness floor as a floor that may only rise: 30.6% — 102 of 147 guards never observed rejecting (a test must execute the code and observe the refusal; a source grep does not count). Setting 30.6% as a hard gate would block every merge forever and train the team to bypass it — worse than no gate — so a test asserts the floor is neither above reality (permanently red, training bypass) nor far below it (letting a regression through). Stop the bleeding, then climb.
+
+### SN-072 — Prove the Xfail, Don't Wrap It — An Expected-Failure Wrapper Can Manufacture a False Green [audit: MISSING → restored in full]
+
+Never absorb an expected failure with a wrapper such as `pytest.raises` or try-except, which manufactures a false green — in the source case the wrapper made the test pass and produced `XPASS(strict)`, turning a constraint ("this must fail until know_node.py is repaired") into a passing test. Prove the constraint three-part: the xfail states the goal (a promise that a behavior is absent); a paired non-xfail signature test proves the detector fires; and a mutation table proves the detector is non-vacuous. Keep the mutation table — injected break → observed result → constraint each mutation enforces — in the docstring or board report. The red must be earned, documented, and reproducible on demand.
 
 ---
 

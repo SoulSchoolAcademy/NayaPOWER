@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-020` |
 | Human title | An Honest Number Can Fall — and Says What It Did Not Measure |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 14 raw notes (full list below) |
 | Cluster file | `cluster-02-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,32 @@ You get numbers you can steer by. Progress becomes real instead of theatrical, w
 Have the work measured by someone who didn't build it, and let the score fall when it should. Beside every result, write what wasn't measured and what remains unknown. Before claiming something made a difference, compare with-and-without under the same conditions, at realistic difficulty.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-063 — Receipt Provenance — Binding the Ratified Hash Is Not the Shared Calculator Deciding [audit: MISSING → restored in full]
+
+Binding a ratified config hash into a receipt is only a provenance claim about the CONFIG — it is not proof the shared calculator decided. The nine-node kernel's decision receipts bind `calculusConfigHash: CALCULUS_V21_SPEC_HASH` with `calculus_spec_status: "RATIFIED"`, yet no node under `naya_kernel/nodes/` imports the shared `kernel/value_calculus.py`: EVOLVE's `_score_candidate` computes `score = value - risk` locally, and CONNECT computes `q_proxy`/`v_safe_proxy` from local inputs — local proxies, honestly labeled, never the canonical engine's scores. Receipts prove the local computation was deterministic and recomputes to MATCH; they do not prove the calculator decided. Verify at the exact SHA whether the decision path calls the executable shared calculator or only binds its hash. For merge-readiness: replace the local calculations with calls to the executable shared calculator, or explicitly fence them as provisional with the exact conditions under which the fence lifts. Honest labeling buys trust; it does not close the gap.
+
+### SN-070 — Retry-on-Conflict Is Not Idempotency — Uniqueness Retries Prove One Allocation, Not One Execution [audit: MISSING → restored in full]
+
+Retry-on-conflict is not idempotency. The `nayanet-act-runtime` handler's retry of the monotonically increasing `revision` after a 23505 collision protects revision uniqueness only — no two rows share a revision number. It proves none of the four conjuncts actual idempotency requires: (1) the same logical request executes once; (2) duplicate retries reread the original result instead of recomputing; (3) the same idempotency key with a changed payload is rejected; (4) concurrent same-key requests produce one outcome. Name the four conjuncts explicitly, map each to exact source at the frozen SHA — lines, mechanism, test — and keep the gap major until all four are proven against exact-head source. Allocation-uniqueness retry covers conjunct-zero only; file it under uniqueness, never idempotency. Borrowed credit is inflated credit — narrow the claim, don't transfer the mechanism's strength.
+
+### SN-083 — Retain the UNKNOWN With Its Missing Evidence Named [audit: PARTIAL → lost element restored]
+
+When two reports conflict, resolve every resolvable leg from the evidence first — never silently choose one report. Retain each unresolvable leg as a terminal UNKNOWN naming the precise missing evidence and its owner: a retained UNKNOWN with named missing evidence is completed diligence; an unnamed one is a shrug. Author no canonical change against an unresolved target — writing canonical semantics against an unresolved deployed target risks breaking the flows that depend on it; the decision to author nothing is recorded as a decision, not as inaction.
+
+### SN-089 — Publish Your Own Number, Never Adopt the Builder's — Parent Comparison Makes an Unfamiliar Result Interpretable [audit: PARTIAL → lost element restored]
+
+Make an unfamiliar result interpretable with a parent comparison: run the parent commit under identical conditions, so "introduced zero new failures" is measured from the parent-vs-child delta, never asserted. In the source case the parent measured 33 failed / 1070 passed / 3 skipped / 5 errors and the child 31 / 1091 / 3 / 5 under identical conditions — the change fixed two, added 21 passing tests, and introduced zero new failures, proven by measurement. "Pre-existing" is proven by the parent measurement, not asserted.
+
+### SN-092 — Design Qualification Tests That Self-Invalidate — and Name the Consequence Class Honestly [audit: MISSING → restored in full]
+
+Design gap tests as presence-assertions that self-invalidate when the gap closes: the 7 composition tests assert the gap's presence (resolver is `None`, no accessor exists), so the moment the builder's wiring lands the tests fail by design — they force requalification instead of going stale. A test that can silently go stale can lie by omission. Name the consequence class honestly before the headline — composition gap, regression, security defect, or blocked frontier: a working fail-closed gate is a composition gap, never a defect or a regression, and calling it one corrupts triage. Ship the future acceptance criteria with the finding (a genuine receipt accepted; forged/unknown/tampered/wrong-subject still refused), specify the smallest fix without implementing it when you are the verifier, maintain a "limits I will not paper over" section naming threat-model and scope boundaries, and never present a component PASS as integration proof.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
