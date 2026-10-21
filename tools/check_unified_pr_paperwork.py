@@ -53,7 +53,10 @@ def _scorecard_for_current_head(comments: list[dict], head: str,
                                 author_seat: str, minimum: float) -> tuple[bool, str]:
     for comment in comments:
         body = comment.get("body") or ""
-        if not consensus._looks_like_scorecard(body, head):
+        low = body.lower()
+        # Reuse the canonical seat and score parsers. The tier-specific
+        # threshold intentionally differs from the legacy uniform matcher.
+        if ("scorecard" not in low and "verdict" not in low) or head not in body:
             continue
         seat = consensus.seat_of(body)
         if not seat or seat == author_seat:
@@ -62,6 +65,20 @@ def _scorecard_for_current_head(comments: list[dict], head: str,
         if score is not None and score >= minimum:
             return True, f"independent scorecard {score:g}/10 from {seat} pins current head {head[:12]}"
     return False, f"no independent numeric scorecard >= {minimum:g}/10 pinned to current head {head[:12]}"
+
+
+def _cross_seat_review(reviews: list[dict], comments: list[dict],
+                       author_login: str, author_seat: str) -> tuple[bool, str]:
+    for review in reviews:
+        user = ((review.get("user") or {}).get("login") or "").lower()
+        if review.get("state") == "APPROVED" and user and user != author_login.lower():
+            return True, f"native GitHub approval from a different login ({user})"
+    for comment in comments:
+        body = comment.get("body") or ""
+        seat = consensus.seat_of(body)
+        if consensus._looks_like_review(body) and seat and seat != author_seat:
+            return True, f"review receipt from different seat {seat}"
+    return False, f"no accepted review from a seat other than author {author_seat}"
 
 
 def run() -> int:
@@ -102,31 +119,21 @@ def run() -> int:
                          "the PR body does not declare its authoring seat",
                          "add exactly one explicit 'Seat: Naya <seat>' declaration to the PR body")
 
-        # Reuse the canonical matcher and API logic instead of creating a
-        # second independent interpretation of seat/review receipt syntax.
-        output = io.StringIO()
-        try:
-            with contextlib.redirect_stdout(output):
-                consensus.run_gate(token, repo, str(number), head)
-        except SystemExit:
-            detail = output.getvalue().strip().splitlines()
-            reason = detail[-1] if detail else "cross-seat review/scorecard matcher rejected the PR"
-            if "no review from a seat" in reason.lower():
-                return _emit("BLOCKED — DIFFERENT_SEAT_REVIEW_MISSING", reason,
-                             "have a non-author seat post a matcher-valid approval/review on this PR")
-            if "no scorecard receipt" in reason.lower():
-                return _emit("BLOCKED — SCORECARD_MISSING_OR_STALE", reason,
-                             "post a numeric scorecard from a different seat pinned to the exact current head SHA")
-            return _emit("BLOCKED — CONSENSUS_RECEIPT_INVALID", reason,
-                         "repair the specific missing field named above, then run the gate's local self-test before posting")
-
         comments = consensus.api_get(f"/repos/{repo}/issues/{number}/comments", token)
+        reviews = consensus.api_get(f"/repos/{repo}/pulls/{number}/reviews", token)
+        author_login = ((pr.get("user") or {}).get("login") or "")
+        review_ok, review_detail = _cross_seat_review(reviews, comments, author_login, author_seat)
+        if not review_ok:
+            return _emit("BLOCKED — DIFFERENT_SEAT_REVIEW_MISSING",
+                         review_detail,
+                         "have a non-author seat post a matcher-valid approval/review on this PR")
+
         minimum = 9.5 if tier["tier"] == "A" else 8.0
         ok, score_detail = _scorecard_for_current_head(comments, head, author_seat, minimum)
         if not ok:
-            return _emit("BLOCKED — SCORE_BELOW_TIER_THRESHOLD",
+            return _emit("BLOCKED — SCORECARD_MISSING_OR_STALE",
                          f"Tier {tier['tier']} requires {minimum:g}/10; {score_detail}",
-                         f"obtain an independent scorecard >= {minimum:g}/10 on the current head SHA {head}")
+                         f"post a numeric independent scorecard >= {minimum:g}/10 pinned to the exact current head SHA {head}")
 
         # The existing receipt checker is the source of truth for Evidence
         # heading and URL/SHA/path liveness; don't duplicate its parser.
