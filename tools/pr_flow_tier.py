@@ -72,10 +72,27 @@ def _is_content_path(path: str) -> bool:
     return p in CONTENT_FILES or any(p.startswith(prefix) for prefix in CONTENT_PATHS)
 
 
-def classify_tier(title: str, changed_paths: list[str] | None = None) -> dict[str, str]:
+def classify_tier(title: str, changed_paths: list[str] | None = None, *, changed_files: list[dict] | None = None, expected_changed_files: int | None = None) -> dict[str, str]:
     """Return {tier, reason}. Use changed paths when available; title is fallback."""
     paths = [p for p in (changed_paths or []) if p and p.strip()]
     title = title or ""
+
+    # Full live PR-file metadata is required by the real gate. File deletion,
+    # rename, missing status, or a truncated/mismatched file list escalates to
+    # Tier A. A title/path-only call remains useful for provisional audits and
+    # unit tests, but must never be mistaken for a verified live classification.
+    if changed_files is not None:
+        if not isinstance(expected_changed_files, int) or expected_changed_files != len(changed_files):
+            return {"tier": "A", "reason": "changed-file metadata incomplete or truncated; fail safe"}
+        if not changed_files:
+            return {"tier": "A", "reason": "no changed-file metadata; fail safe"}
+        for item in changed_files:
+            if not isinstance(item, dict) or not item.get("filename") or not item.get("status"):
+                return {"tier": "A", "reason": "changed-file descriptor missing path/status; fail safe"}
+            if item.get("status") in {"removed", "renamed", "copied"} or item.get("previous_filename"):
+                return {"tier": "A", "reason": "file deletion/rename/copy requires Tier A review"}
+            if item.get("status") not in {"added", "modified"}:
+                return {"tier": "A", "reason": "unknown changed-file status; fail safe"}
 
     if changed_paths is not None and not paths:
         return {"tier": "A", "reason": "changed paths unavailable or empty; fail safe to high-consequence review"}
