@@ -51,7 +51,7 @@ jobs:
           # A retry that converges proves lag; consistent disagreement still fails closed.
           resolved=""
           for attempt in 1 2 3 4 5; do
-            resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
+            resolved="$(gh api "repos/${{ github.repository }}/git/refs/heads/main" --jq .object.sha)"
             printf '%s' "$resolved" > resolved-source-sha.txt
             echo "attempt $attempt: resolved_main_sha=$resolved (len ${#resolved})"
             if [ "$resolved" = "$expected" ]; then

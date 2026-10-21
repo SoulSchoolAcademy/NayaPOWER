@@ -66,7 +66,7 @@ tampered = bytearray(real_receipt); tampered[100] ^= 1; tampered = bytes(tampere
 ok &= t("B/tampered-byte", json.loads(tampered), tampered, "ISSUANCE_BYTES_MISMATCH")
 # C: TRUE A1 — forger copies the PUBLIC run_id into a self-minted receipt
 #     with perfect public data (live main SHA, real blob SHAs, fresh timestamp)
-main_sha = real_api("GET","/repos/%s/git/ref/heads/main"%REPO,"")["object"]["sha"]
+main_sha = real_api("GET","/repos/%s/git/refs/heads/main"%REPO,"")["object"]["sha"]
 tree = real_api("GET","/repos/%s/git/trees/%s?recursive=1"%(REPO,main_sha),"")
 blobs = {t["path"]:t["sha"] for t in tree["tree"] if t.get("type")=="blob"}
 forged = {

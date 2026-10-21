@@ -1,0 +1,1057 @@
+{
+  "contract": "GENERAL-DESIGN-CONTRACT",
+  "kind": "machine",
+  "version": "1.0.0",
+  "date": "2026-10-21",
+  "authority": "This machine version is made FROM the human version, never instead of it. The human version is the source of truth; if this file and the human file disagree, the human file governs until this file is regenerated.",
+  "source": {
+    "human_file": "GENERAL-DESIGN-CONTRACT.human.md",
+    "human_file_sha256": "a818917c07f38e3f55d02a680bce0cf43110e52969d77ae60942f63cffbf4352",
+    "human_file_bytes": 18295,
+    "drift_detection": "Recompute sha256 of the human file; if it differs from human_file_sha256, this machine version is stale and must be regenerated before the gate trusts it."
+  },
+  "canon": {
+    "index_file": "CANONICAL-PIECE-INDEX.json",
+    "index_sha256": "4743889be53644450d8af2d9b9f42b231ede73881186bb806d101a5da50d6bd9",
+    "counts": {
+      "unique_piece_ids": 571,
+      "canonical": 154,
+      "superseded": 1,
+      "unverified": 416
+    },
+    "rule": "The index is the canon; pieces.json is the working store it describes; conflicts resolve to the index, then to Shawn's word."
+  },
+  "read_first_gate": {
+    "rule": "Before any design work: (1) read this contract, (2) study the exemplar gallery, (3) name your harvest in your brief. A brief that does not cite the contract and name its exemplars does not dispatch.",
+    "brief_schema_ref": "brief_schema"
+  },
+  "spectrum": {
+    "order": [
+      "#a06bff",
+      "#3fb8ff",
+      "#2fe89e",
+      "#ffbf3d",
+      "#ff9a5a",
+      "#ff5e6c",
+      "#e84fff"
+    ],
+    "names": [
+      "purple",
+      "blue",
+      "green",
+      "gold",
+      "orange",
+      "red",
+      "magenta"
+    ],
+    "wraps_to_first": true,
+    "adjacency_rule": "Each section takes the NEXT color in order; never the same color twice in a row.",
+    "rest_and_ignition": "Elements rest white and ignite in their OWN color on hover or touch, never in someone else's.",
+    "color_is_identity": "A section owns its color: you know where you are by the color you see."
+  },
+  "house_ease": "cubic-bezier(.16,.84,.22,1)",
+  "exemplar_map": {
+    "well": {
+      "piece_id": "NAYA-INP-008",
+      "reference_role": "Reference Well",
+      "demonstrates": "input — the full dual-depth well with focus travel"
+    },
+    "button": {
+      "piece_id": "NAYA-BTN-009",
+      "reference_role": "Reference Button",
+      "demonstrates": "action — the full outset stack with press physics"
+    },
+    "select": {
+      "piece_id": "NAYA-INP-009",
+      "reference_role": "Reference Select",
+      "demonstrates": "choice — a well that opens a lit panel"
+    },
+    "board": {
+      "piece_id": "NAYA-BRD-001",
+      "reference_role": "Reference Board",
+      "demonstrates": "section/board — a living content area"
+    },
+    "hero": {
+      "piece_id": "NAYA-HRO-001",
+      "reference_role": "Reference Hero",
+      "demonstrates": "hero — the title block at full presence"
+    }
+  },
+  "exemplar_rule": "Copy the piece's code — all of it, HTML and CSS. Adapt the content. Never restyle the piece.",
+  "brief_schema": {
+    "description": "The fields a builder brief MUST carry for the design-law gate to let it dispatch (human contract §2, the read-first gate). The gate validates this schema mechanically before any build starts.",
+    "required_fields": {
+      "contract_id": {
+        "type": "string",
+        "must_equal": "GENERAL-DESIGN-CONTRACT"
+      },
+      "contract_version": {
+        "type": "string",
+        "must_equal": "the version of this machine contract the designer read (currently 1.0.0); a stale version fails the gate until the brief is re-cited against the current contract"
+      },
+      "exemplar_ids_cited": {
+        "type": "array",
+        "min_items": 1,
+        "items": "piece IDs from exemplar_map (e.g. NAYA-INP-008); each must resolve in CANONICAL-PIECE-INDEX.json with status 'canonical' and a reference role"
+      },
+      "harvest_sources": {
+        "type": "array",
+        "min_items": 1,
+        "item_fields": {
+          "file": "exact file path of the harvest source — verified to exist before the brief is written",
+          "section": "the section / selector / piece region inside that file",
+          "piece_id": "the NAYA-* piece ID harvested, where the source is a factory piece"
+        }
+      }
+    },
+    "gate_result_on_missing": "does not dispatch"
+  },
+  "severity_vocabulary": {
+    "blocker": "Gate stops: the brief does not dispatch, or the work does not ship, until this passes.",
+    "major": "A violation that must be fixed before the work is presented as done.",
+    "minor": "A defect to record and fix in the normal pass order."
+  },
+  "laws": [
+    {
+      "id": "LAW-01",
+      "number": 1,
+      "name": "The Design Language (locked)",
+      "statement": "Every page walks the spectrum in order — purple `#a06bff` → blue `#3fb8ff` → green `#2fe89e` → gold `#ffbf3d` → orange `#ff9a5a` → red `#ff5e6c` → magenta `#e84fff` → back to purple — each section taking the next color, never the same color twice in a row. Elements rest white and ignite in their own color on hover or touch, never in someone else's. Elevation is everywhere; nothing is flat. Shapes are horizontal 16:9 rectangles, never squares (circles are for avatars and icons only). Layout is full width — no max-width cage, no wasted black margins. Only real factory pieces. A section owns its color: you know where you are by the color you see.",
+      "why": "The walk creates rhythm you can feel; color-as-identity means a person navigates by light, not by reading.",
+      "human_check": "Read the page top to bottom and name each section's color in order — any repeated neighbor, any ignition in a borrowed color, any squared-off panel or side-margin cage is a violation, visible at a glance.",
+      "scope": [
+        "sections and section accents",
+        "hover/touch ignition",
+        "panel shapes",
+        "page layout width",
+        "all pages"
+      ],
+      "checks": [
+        {
+          "id": "LAW-01-C1",
+          "target": "accent color of each top-level section, in DOM order",
+          "comparator": "sequence_follows_spectrum",
+          "expected": {
+            "sequence_source": "spectrum.order",
+            "wraps": true
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 1 rule"
+        },
+        {
+          "id": "LAW-01-C2",
+          "target": "accent color of each top-level section, in DOM order",
+          "comparator": "no_adjacent_equal",
+          "expected": true,
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 1 rule: 'never the same color twice in a row'"
+        },
+        {
+          "id": "LAW-01-C3",
+          "target": "computed border-color / glow color of an element in :hover (or touch-active) state",
+          "comparator": "equals_own_accent",
+          "expected": {
+            "rest_color": "#ffffff",
+            "ignition_color": "element's own section accent (spectrum.order)"
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 1 rule: 'Elements rest white and ignite in their own color'"
+        },
+        {
+          "id": "LAW-01-C4",
+          "target": "aspect-ratio of content panels",
+          "comparator": "equals",
+          "expected": "16/9",
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 1 rule: 'horizontal 16:9 rectangles, never squares'",
+          "exceptions": [
+            "avatars and icons (circles allowed)"
+          ]
+        },
+        {
+          "id": "LAW-01-C5",
+          "target": "computed max-width of the page content container",
+          "comparator": "equals",
+          "expected": "none",
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 1 rule: 'Layout is full width — no max-width cage'"
+        },
+        {
+          "id": "LAW-01-C6",
+          "target": "every component on the page",
+          "comparator": "all_trace_to_canon",
+          "expected": {
+            "piece_id_pattern": "NAYA-*",
+            "canon_index": "CANONICAL-PIECE-INDEX.json",
+            "required_status": "canonical"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 1 rule: 'Only real factory pieces' + Law 10"
+        },
+        {
+          "id": "LAW-01-C7",
+          "target": "human reviewer judgment",
+          "comparator": "criterion_met",
+          "expected": null,
+          "severity": "major",
+          "judgment": true,
+          "criterion": "You know where you are by the color you see — a reviewer can name the current section from its color alone.",
+          "trace": "human Law 1 rule/why"
+        }
+      ]
+    },
+    {
+      "id": "LAW-02",
+      "number": 2,
+      "name": "Dual-Depth Elevation (the master law)",
+      "statement": "The canonical wording of SN-0808, \"Elevated, Always — The Dual-Depth Standard,\" quoted in full: ELEVATED means: nothing is flat. Every element sits in a layered field of depth — inset highlight on its top edge, inset shadow on its bottom edge, a border that carries its own color's light, an outer glow, and a drop shadow. Direction is grammar: INPUTS ARE WELLS — their depth goes INTO the screen (strong inner shadow at the top of the well, inner light at its bottom edge, the surface sitting below the page plane). ACTIONS ARE BUTTONS — their depth comes OUT of the screen (top highlight, shadow cast down onto the page, glow outward; a physical thing a hand can press). DISPLAYS ARE LIT PANELS — they burn in their own spectrum color with bright white content. The element is alive at rest, not only when touched. This applies to every element, on every page, always — \"sometimes elevated\" is flat with excuses. Every input on every page gets the full well treatment: deep inset well, inset top highlight, inset bottom shadow, a border carrying its accent light, layered outer glow, a drop shadow — alive at rest, stronger on focus. One flat element beside elevated work cheapens everything around it, so \"most of the page\" is not compliance.",
+      "why": "Depth with direction teaches the hand before the mind reads a word: type into the wells, press what rises.",
+      "human_check": "Inspect the element's actual shadow stack. A well must show an inset shadow (depth going in). A button must show a drop shadow cast onto the page (depth coming out). Both must carry a border in their own color's light and an outer glow — at rest, before any interaction. Missing any layer = flat = violation.",
+      "scope": [
+        "inputs (wells)",
+        "buttons (actions)",
+        "displays (lit panels)",
+        "every element, every page"
+      ],
+      "checks": [
+        {
+          "id": "LAW-02-C1",
+          "target": "computed box-shadow — input/well elements at rest (Reference Well: NAYA-INP-008, .ref-well-box)",
+          "comparator": "contains_all_layers",
+          "expected": {
+            "inset_layers": [
+              "inset 0 3px 10px rgba(0,0,0,0.90)",
+              "inset 0 1px 2px rgba(255,255,255,0.15)"
+            ],
+            "resting_glow_layers": [
+              "0 0 18px rgba(248,247,251,0.30)"
+            ],
+            "background": "flat #030304 — one tone, no gradient",
+            "verified_computed": "3 shadow layers, 2 inset"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "INP008-REBASE-SCORECARD.md §2 (computed-style proof); front-door/v211/DEPTH-RECIPE.md 'THE WELL'; factory.css .ref-well-box. Supersedes the EXEMPLAR-BUILD-SCORECARD.md §1 stack (harvested from the rejected certificate well)."
+        },
+        {
+          "id": "LAW-02-C2",
+          "target": "computed box-shadow — input/well elements at rest",
+          "comparator": "excludes",
+          "expected": "offset cast-shadow layers (a recess casts none)",
+          "severity": "major",
+          "judgment": false,
+          "trace": "EXEMPLAR-BUILD-SCORECARD.md §1: 'no cast shadow of its own — a recess casts none'; re-verified against the re-based stack in INP008-REBASE-SCORECARD.md §2: the only outset layer is the 0-offset rest glow (no offset, no cast)."
+        },
+        {
+          "id": "LAW-02-C3",
+          "target": "computed border — input/well elements at rest",
+          "comparator": "silver_white_rim_at_rest",
+          "expected": {
+            "border_width_px": 1.5,
+            "border_color": "silver-white rgba(255,255,255,0.85)",
+            "border_alpha": 0.85,
+            "accent_arrival": "the element's own color takes the border only on focus (check C4 of this law)"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "INP008-REBASE-SCORECARD.md §2; front-door/v211/DEPTH-RECIPE.md 'THE WELL' (rest rim silver-white .85; accent on focus only). Supersedes EXEMPLAR-BUILD-SCORECARD.md §1 'border 1.5px in its accent at .8'. FLAGGED TENSION with LAW-02's general wording — see INP008-REBASE-SCORECARD.md §5."
+        },
+        {
+          "id": "LAW-02-C4",
+          "target": "computed box-shadow — input/well elements in :focus-within state",
+          "comparator": "contains_all_layers",
+          "expected": {
+            "inset_layers": [
+              "inset 0 3px 10px rgba(0,0,0,0.90)",
+              "inset 0 1px 2px rgba(255,255,255,0.15)"
+            ],
+            "focus_ring": "0 0 0 1.5px rgba(accent,0.90)",
+            "focus_glow": "0 0 34px rgba(accent,0.55)",
+            "relation_to_rest": "shade and lip identical to rest (the well does not deepen); the accent ignites — border goes full accent, ring + glow added; the focus-travel conic ring orbits the border throughout (Law 4)"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "INP008-REBASE-SCORECARD.md §2 (computed-style proof); front-door/v211/DEPTH-RECIPE.md 'THE WELL' (focus doses proven on certificate v2.11.2). Supersedes EXEMPLAR-BUILD-SCORECARD.md §1 deepening stack + 3px ring."
+        },
+        {
+          "id": "LAW-02-C5",
+          "target": "computed box-shadow — action/button elements at rest (Reference Button: NAYA-BTN-009, .living-btn)",
+          "comparator": "contains_all_layers",
+          "expected": {
+            "outset_layers": [
+              "0 22px 54px rgba(0,0,0,0.55)",
+              "0 0 30px -8px rgba(255,255,255,0.22)"
+            ],
+            "accepted_alternate_stack": "elev-3 utility stack (0 16px 40px + ring + inset top highlight) where the crowned markup wears it",
+            "direction": "outset — shadow cast down onto the page, glow outward"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "EXEMPLAR-BUILD-SCORECARD.md §4(b); factory.css .living-btn"
+        },
+        {
+          "id": "LAW-02-C6",
+          "target": "computed border + outer glow — every element, at rest (before any interaction)",
+          "comparator": "all_present",
+          "expected": {
+            "border": "carries the element's own color's light",
+            "outer_glow": "present at rest",
+            "applies_at": "rest state, not only on hover/focus"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 2 check: 'Both must carry a border in their own color's light and an outer glow — at rest, before any interaction'"
+        }
+      ],
+      "canonical_quote": "ELEVATED means: nothing is flat. Every element sits in a layered field of depth — inset highlight on its top edge, inset shadow on its bottom edge, a border that carries its own color's light, an outer glow, and a drop shadow. Direction is grammar: INPUTS ARE WELLS — their depth goes INTO the screen (strong inner shadow at the top of the well, inner light at its bottom edge, the surface sitting below the page plane). ACTIONS ARE BUTTONS — their depth comes OUT of the screen (top highlight, shadow cast down onto the page, glow outward; a physical thing a hand can press). DISPLAYS ARE LIT PANELS — they burn in their own spectrum color with bright white content. The element is alive at rest, not only when touched. This applies to every element, on every page, always — \"sometimes elevated\" is flat with excuses.",
+      "canonical_quote_source": "SN-0808 'Elevated, Always — The Dual-Depth Standard', quoted verbatim in human Law 2"
+    },
+    {
+      "id": "LAW-03",
+      "number": 3,
+      "name": "Inputs Are Wells, Actions Are Buttons",
+      "statement": "Depth has a direction and the direction is never decoration. Anything a person types or chooses into is carved into the screen. Anything a person presses rises out of the screen toward their hand. Never style an input like a button or a button like an input.",
+      "why": "In and out are meanings a hand understands instantly; the interface teaches itself.",
+      "human_check": "Cover the labels and look at the shapes alone: if you cannot tell what is typeable and what is pressable from depth direction alone, the grammar is broken.",
+      "scope": [
+        "inputs and selects (typeable/choosable)",
+        "buttons and actions (pressable)"
+      ],
+      "checks": [
+        {
+          "id": "LAW-03-C1",
+          "target": "computed box-shadow direction classification, per element role",
+          "comparator": "direction_matches_role",
+          "expected": {
+            "typeable_or_choosable (input, select)": "inset-dominant (depth INTO the screen)",
+            "pressable (button, action)": "outset cast shadow present (depth OUT of the screen)"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 3 rule + Law 2 direction grammar"
+        },
+        {
+          "id": "LAW-03-C2",
+          "target": "human reviewer judgment",
+          "comparator": "criterion_met",
+          "expected": null,
+          "severity": "major",
+          "judgment": true,
+          "criterion": "Cover the labels and look at the shapes alone: if you cannot tell what is typeable and what is pressable from depth direction alone, the grammar is broken.",
+          "trace": "human Law 3 check (verbatim)"
+        }
+      ]
+    },
+    {
+      "id": "LAW-04",
+      "number": 4,
+      "name": "The Motion Law (the third dimension)",
+      "statement": "The standard has three dimensions — depth, light, and motion. Every interactive element carries considered micro-interactions: hover life (the element answers the approach of a hand), focus travel (on entry, light moves around the border and wells deepen), press physics (an outset button sinks into the screen when pressed and springs back with a precise ease), and periodic shine sweeps on hero surfaces. Timing and easing are deliberate and specified by name and number — never the browser default. All motion honors `prefers-reduced-motion`: reduced means a fully lit, fully elevated static state, never a dead one.",
+      "why": "\"The boxes light up but they don't move\" is a half-finished standard; fine precision design is alive in time as well as in space.",
+      "human_check": "The element's motion specs are named in its CSS — durations and easing curves, not defaults — and it passes the wow test: a reviewing designer can name *nothing* left to add. If a reviewer can say \"they should have done that,\" it is not done.",
+      "scope": [
+        "every interactive element",
+        "hero surfaces (shine sweeps)",
+        "focus states",
+        "reduced-motion behavior"
+      ],
+      "checks": [
+        {
+          "id": "LAW-04-C1",
+          "target": "CSS transition/animation declarations on interactive elements",
+          "comparator": "all_named_no_defaults",
+          "expected": {
+            "durations_specified": true,
+            "easings_specified": true,
+            "browser_default_timing_allowed": false
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 4 rule: 'Timing and easing are deliberate and specified by name and number — never the browser default'"
+        },
+        {
+          "id": "LAW-04-C2",
+          "target": "animation on the Reference Well while :focus-within (focus travel)",
+          "comparator": "equals",
+          "expected": {
+            "animation_name": "ref-well-travel",
+            "duration_s": 2.8,
+            "timing": "linear",
+            "iteration": "infinite while :focus-within",
+            "companion_transitions": {
+              "box-shadow": {
+                "duration_s": 0.28,
+                "easing": "cubic-bezier(.16,.84,.22,1)"
+              },
+              "border-color": {
+                "duration_s": 0.18,
+                "easing": "ease"
+              }
+            }
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "EXEMPLAR-BUILD-SCORECARD.md §1 motion specs; pieces.json NAYA-INP-008 motion record"
+        },
+        {
+          "id": "LAW-04-C3",
+          "target": "motion record of the Reference Button (NAYA-BTN-009)",
+          "comparator": "equals",
+          "expected": {
+            "breathe": {
+              "name": "idleBreathe",
+              "duration_s": 4.2,
+              "timing": "ease-in-out",
+              "iteration": "infinite"
+            },
+            "sheen_sweep": {
+              "duration_s": 5.5,
+              "easing": "cubic-bezier(.16,.84,.22,1)",
+              "iteration": "infinite"
+            },
+            "hover_lift": {
+              "duration_s": 0.28,
+              "easing": "cubic-bezier(.16,.84,.22,1)"
+            },
+            "press_sink": {
+              "duration_s": 0.08,
+              "transform_scale": 0.975,
+              "verified": "real CDP mouse press computed matrix(0.975, …) mid-press"
+            }
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "EXEMPLAR-BUILD-SCORECARD.md §4(b); pieces.json NAYA-BTN-009 motion record",
+          "spec_source": "pieces.json NAYA-BTN-009 'motion' string (full transform strings live in the piece record)"
+        },
+        {
+          "id": "LAW-04-C4",
+          "target": "motion of the Reference Select (NAYA-INP-009)",
+          "comparator": "equals",
+          "expected": {
+            "panel_open": {
+              "animation_name": "ref-select-open",
+              "duration_s": 0.22,
+              "easing": "cubic-bezier(.16,.84,.22,1)"
+            },
+            "chevron_rotate": {
+              "degrees": 180,
+              "duration_s": 0.24,
+              "easing": "cubic-bezier(.16,.84,.22,1)"
+            },
+            "press_sink": {
+              "duration_s": 0.08
+            }
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "EXEMPLAR-BUILD-SCORECARD.md §2 motion specs; pieces.json NAYA-INP-009 motion record"
+        },
+        {
+          "id": "LAW-04-C5",
+          "target": "motion of the Reference Hero (NAYA-HRO-001) — periodic shine sweep + breathing light",
+          "comparator": "equals",
+          "expected": {
+            "sheen_sweep": {
+              "animation_name": "ref-hero-sheen",
+              "duration_s": 5,
+              "timing": "ease-in-out",
+              "iteration": "infinite"
+            },
+            "mark_breathe": {
+              "animation_name": "ref-hero-breathe",
+              "duration_s": 5.6,
+              "timing": "ease-in-out",
+              "iteration": "infinite"
+            }
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "EXEMPLAR-BUILD-SCORECARD.md §3 motion specs; pieces.json NAYA-HRO-001 motion record"
+        },
+        {
+          "id": "LAW-04-C6",
+          "target": "@media (prefers-reduced-motion: reduce) rules for every animated element",
+          "comparator": "present_and_lit_static",
+          "expected": {
+            "animations": "none",
+            "static_state": "fully lit, fully elevated — elevation stacks and glows hold",
+            "hero_sheen_rest_opacity": 0.45
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 4 rule + EXEMPLAR-BUILD-SCORECARD.md §1–§3 reduced-motion specs ('sheen rests at opacity .45')"
+        },
+        {
+          "id": "LAW-04-C7",
+          "target": "human reviewer judgment",
+          "comparator": "criterion_met",
+          "expected": null,
+          "severity": "blocker",
+          "judgment": true,
+          "criterion": "The wow test: a reviewing designer can name NOTHING left to add. If a reviewer can say 'they should have done that,' it is not done.",
+          "trace": "human Law 4 rule/check (the wow test)"
+        }
+      ]
+    },
+    {
+      "id": "LAW-05",
+      "number": 5,
+      "name": "Aliveness Is Colored Light",
+      "statement": "Depth without light reads dead. Every content area is a living area: real elevation plus its own spectrum color burning in borders, glows, and lit panels, with bright white content. Flat floating text on a dark field is a defect wherever it sits. We are active intelligence; we are not dead text.",
+      "why": "On a black page, shadow alone is just more black — aliveness is light.",
+      "human_check": "Squint at the page from arm's length: every board should read as a lit place with its own color present. Any region that reads as gray text floating in darkness fails.",
+      "scope": [
+        "content areas, boards, panels",
+        "all text regions"
+      ],
+      "checks": [
+        {
+          "id": "LAW-05-C1",
+          "target": "computed border-color / glow of every content area (board, panel, section)",
+          "comparator": "carries_own_spectrum_color",
+          "expected": {
+            "accent_present_in": [
+              "border",
+              "glow",
+              "lit panel surface"
+            ],
+            "content_color": "bright white"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 5 rule: 'real elevation plus its own spectrum color burning in borders, glows, and lit panels, with bright white content'"
+        },
+        {
+          "id": "LAW-05-C2",
+          "target": "text nodes in the rendered page",
+          "comparator": "contained_in_lit_panel",
+          "expected": {
+            "bare_text_on_dark_field_allowed": false
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 5 rule: 'Flat floating text on a dark field is a defect wherever it sits'"
+        },
+        {
+          "id": "LAW-05-C3",
+          "target": "human reviewer judgment",
+          "comparator": "criterion_met",
+          "expected": null,
+          "severity": "major",
+          "judgment": true,
+          "criterion": "Squint at the page from arm's length: every board should read as a lit place with its own color present. Any region that reads as gray text floating in darkness fails.",
+          "trace": "human Law 5 check (verbatim)"
+        }
+      ]
+    },
+    {
+      "id": "LAW-06",
+      "number": 6,
+      "name": "The Text Law",
+      "statement": "Text is white or bright silver — never gray, never dimmed, never muted by opacity tricks. Hierarchy is 24px headline / 18px sub-headline / 14px small text, and where Shawn directs a hero bigger, the hero goes bigger (title block presence is part of the design, as on the certificate and the Spaces hero). Room heroes are led by the room's name; never invert the hierarchy with a giant tagline over a small name.",
+      "why": "Dim text is how a premium page quietly becomes a cheap one; hierarchy is how a page speaks clearly.",
+      "human_check": "Sample the rendered text colors: anything computing to gray or sitting under an opacity below full on body text is a violation. Measure the sizes; the order 24/18/14 must hold (or the named hero exception).",
+      "scope": [
+        "all rendered text",
+        "room heroes"
+      ],
+      "checks": [
+        {
+          "id": "LAW-06-C1",
+          "target": "computed color of rendered text",
+          "comparator": "in_whitelist",
+          "expected": {
+            "allowed": [
+              "#ffffff",
+              "#F2F2F6",
+              "#E8E8EC",
+              "#F8F7FB"
+            ],
+            "note": "white / bright silver family only — the exemplars compute #fff (well text), #F8F7FB (well label), #F2F2F6 (hero sub), #E8E8EC (board text, hero eyebrow/desc)"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 6 rule + EXEMPLAR-BUILD-SCORECARD.md §1/§3/§4(a) computed values"
+        },
+        {
+          "id": "LAW-06-C2",
+          "target": "computed opacity of body text",
+          "comparator": "equals",
+          "expected": 1,
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 6 rule/check ('never muted by opacity tricks') + EXEMPLAR-BUILD-SCORECARD.md §4(a): BRD-001 text repaired from .75 to opacity 1"
+        },
+        {
+          "id": "LAW-06-C3",
+          "target": "computed font-size by text role",
+          "comparator": "equals_by_role",
+          "expected": {
+            "headline_px": 24,
+            "sub_headline_px": 18,
+            "small_text_px": 14
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 6 rule: 'Hierarchy is 24px headline / 18px sub-headline / 14px small text'",
+          "exceptions": [
+            "named hero exception — where Shawn directs a hero bigger, the hero goes bigger (Reference Hero title clamp(25px,3vw,32px) per EXEMPLAR-BUILD-SCORECARD.md §3)"
+          ]
+        },
+        {
+          "id": "LAW-06-C4",
+          "target": "hero headline of a room",
+          "comparator": "equals_room_name",
+          "expected": {
+            "headline_is": "the room's name (from the per-build contract)",
+            "forbidden": "giant tagline over a small name (inverted hierarchy)"
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 6 rule: 'Room heroes are led by the room's name'"
+        }
+      ]
+    },
+    {
+      "id": "LAW-07",
+      "number": 7,
+      "name": "Say It Once",
+      "statement": "The same words never appear in two layers. A name stands as the headline or inside a field, never both at once. A title and its description each appear exactly once on any view.",
+      "why": "Duplicated text is the page stuttering — it tells the person the system doesn't know what it already said.",
+      "human_check": "Read the rendered page and list every repeated string. Any repeat that is not a deliberate navigation label is removed.",
+      "scope": [
+        "all rendered views",
+        "headlines and fields"
+      ],
+      "checks": [
+        {
+          "id": "LAW-07-C1",
+          "target": "visible text strings in the rendered view",
+          "comparator": "no_duplicate_strings",
+          "expected": {
+            "max_occurrences_per_string": 1
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 7 rule/check",
+          "exceptions": [
+            "deliberate navigation labels"
+          ]
+        },
+        {
+          "id": "LAW-07-C2",
+          "target": "a person's name across headline layer and field layer",
+          "comparator": "appears_in_exactly_one_layer",
+          "expected": {
+            "layers": [
+              "headline",
+              "inside a field"
+            ],
+            "allowed_in_both": false
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 7 rule: 'A name stands as the headline OR inside a field, never both at once'"
+        }
+      ]
+    },
+    {
+      "id": "LAW-08",
+      "number": 8,
+      "name": "Text Earns Its Place",
+      "statement": "A line of text stays only if it is necessary or it raises conversion. Everything else is clutter and comes off — including honest-but-useless fine print on ceremonial surfaces. Text is distributed across the composition, never piled in one place.",
+      "why": "Every line competes with the one action the page exists for; text that doesn't work for its place taxes the lines that do.",
+      "human_check": "For each line, name its job in one sentence — necessary, or converting. A line with no job is deleted, and the page is re-read to prove nothing was lost.",
+      "scope": [
+        "all text lines on a page"
+      ],
+      "checks": [
+        {
+          "id": "LAW-08-C1",
+          "target": "human reviewer judgment",
+          "comparator": "criterion_met",
+          "expected": null,
+          "severity": "major",
+          "judgment": true,
+          "criterion": "For each line of text, name its job in one sentence — necessary, or converting. A line with no job is deleted, and the page is re-read to prove nothing was lost.",
+          "trace": "human Law 8 check (verbatim). No faithful mechanical proxy exists: necessity and conversion value are editorial judgments; a line count or keyword scan would fake the check."
+        }
+      ]
+    },
+    {
+      "id": "LAW-09",
+      "number": 9,
+      "name": "The Name Is Asked Once",
+      "statement": "A person's name is claimed once, at the identity page, at the door. No page, hero, hub, or settings board ever asks for it again. Everywhere else, the system greets by the claimed identity; a settings board displays the claimed identity (with log out where it belongs) and offers no name input. Where no identity exists, greet plainly and point to the identity page — never a prompt.",
+      "why": "Asking twice tells the person the system has no memory; a system with no memory cannot be trusted with anything else either.",
+      "human_check": "Grep and click: no name-entry field exists anywhere except the identity page; every greeting resolves from the claimed identity.",
+      "scope": [
+        "the identity page",
+        "heroes, hub, settings boards",
+        "greetings"
+      ],
+      "checks": [
+        {
+          "id": "LAW-09-C1",
+          "target": "name-entry fields in the rendered app, by page",
+          "comparator": "count_equals",
+          "expected": {
+            "identity_page": "the one permitted name claim",
+            "every_other_page": 0
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 9 rule/check: 'no name-entry field exists anywhere except the identity page'"
+        },
+        {
+          "id": "LAW-09-C2",
+          "target": "settings board",
+          "comparator": "displays_without_asking",
+          "expected": {
+            "shows": "the claimed identity (and log out)",
+            "name_input_present": false
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 9 rule"
+        },
+        {
+          "id": "LAW-09-C3",
+          "target": "greeting rendering, claimed and unclaimed states",
+          "comparator": "resolves_from_claimed_identity",
+          "expected": {
+            "claimed": "greets by the claimed identity",
+            "unclaimed": "greets plainly and points to the identity page — never a prompt"
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 9 rule/check"
+        }
+      ]
+    },
+    {
+      "id": "LAW-10",
+      "number": 10,
+      "name": "Harvest First: Compose, Don't Create",
+      "statement": "Every element traces to a factory piece (by NAYA-* ID) or to a named harvest source — exact file and section, verified to exist before the brief is written. When told to \"use the Hub's X,\" the deliverable copies the Hub's X verbatim — same HTML structure, same CSS values, same JS behavior; adapting content is allowed, restyling the component is not. A piece's harvest includes all its CSS.",
+      "why": "Invention drifts; the factory is the accumulated proof of what Shawn has already judged elite. Rebuilding a piece that exists is waste wearing a costume.",
+      "human_check": "The brief's harvest list is read against the shipped page, element by element. Any element with no traceable source is a violation, however good it looks.",
+      "scope": [
+        "build briefs",
+        "every shipped element",
+        "harvested components"
+      ],
+      "checks": [
+        {
+          "id": "LAW-10-C1",
+          "target": "the build brief (document)",
+          "comparator": "cites_contract_and_exemplars",
+          "expected": {
+            "schema": "brief_schema",
+            "missing_citation_result": "brief does not dispatch"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human §2 gate + Law 10 rule"
+        },
+        {
+          "id": "LAW-10-C2",
+          "target": "every element of the shipped page, read against the brief's harvest list",
+          "comparator": "all_traceable",
+          "expected": {
+            "each_element_maps_to": [
+              "a NAYA-* piece ID canonical in CANONICAL-PIECE-INDEX.json",
+              "or a named harvest source: exact file + section, verified to exist before the brief was written"
+            ]
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 10 rule/check"
+        },
+        {
+          "id": "LAW-10-C3",
+          "target": "a harvested component vs its named source ('use the Hub's X')",
+          "comparator": "verbatim_copy",
+          "expected": {
+            "html_structure": "identical",
+            "css_values": "identical",
+            "js_behavior": "identical",
+            "allowed_change": "content adaptation only — restyling is a violation",
+            "harvest_includes": "ALL of the piece's CSS"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 10 rule"
+        }
+      ]
+    },
+    {
+      "id": "LAW-11",
+      "number": 11,
+      "name": "Function Law",
+      "statement": "Every button works. Every input is editable, every toggle toggles, every tab navigates. No dead buttons, no \"coming soon,\" no placeholder data dressed as real. Pretty + useless = not done.",
+      "why": "A control that does nothing teaches the person that nothing on the page can be trusted.",
+      "human_check": "Click everything, in the live thing — not a screenshot. Every control produces its real result; every empty state is honest about being empty.",
+      "scope": [
+        "every button, input, toggle, tab",
+        "empty states"
+      ],
+      "checks": [
+        {
+          "id": "LAW-11-C1",
+          "target": "every control in the live page (buttons, inputs, toggles, tabs)",
+          "comparator": "click_test_all_work",
+          "expected": {
+            "dead_controls": 0,
+            "method": "click everything in the live thing — not a screenshot"
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 11 rule/check"
+        },
+        {
+          "id": "LAW-11-C2",
+          "target": "rendered page content",
+          "comparator": "no_placeholder_dressed_as_real",
+          "expected": {
+            "forbidden": [
+              "'coming soon' controls",
+              "placeholder data presented as real"
+            ]
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 11 rule"
+        },
+        {
+          "id": "LAW-11-C3",
+          "target": "human reviewer judgment",
+          "comparator": "criterion_met",
+          "expected": null,
+          "severity": "major",
+          "judgment": true,
+          "criterion": "Every empty state is honest about being empty.",
+          "trace": "human Law 11 check"
+        }
+      ]
+    },
+    {
+      "id": "LAW-12",
+      "number": 12,
+      "name": "Install Lives at the Bottom",
+      "statement": "Every page can be installed as an app, and the install offer sits at the bottom of the page — quiet, elegant, never at the top, never a shouting banner, never a veil that interrupts.",
+      "why": "Install is an invitation at the end of a good experience, not a toll gate at the door.",
+      "human_check": "Scroll the page: install appears once, at the bottom; nothing pops over the person's first view of the page.",
+      "scope": [
+        "every page (install offer)"
+      ],
+      "checks": [
+        {
+          "id": "LAW-12-C1",
+          "target": "install offer in the rendered page",
+          "comparator": "once_at_bottom",
+          "expected": {
+            "occurrences": 1,
+            "position": "bottom of the page",
+            "forbidden": [
+              "top placement",
+              "shouting banner",
+              "interrupting veil over the first view"
+            ]
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 12 rule/check"
+        },
+        {
+          "id": "LAW-12-C2",
+          "target": "page on first load",
+          "comparator": "no_install_interruption",
+          "expected": {
+            "install_prompt_in_first_view": false
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 12 rule: 'never a veil that interrupts'"
+        }
+      ]
+    },
+    {
+      "id": "LAW-13",
+      "number": 13,
+      "name": "The Obsidian North Star",
+      "statement": "The aesthetic north is beautiful glossy obsidian black — like a glossy city at night — with awe-inspiring contrast, clarity, and quality. Every page should stop a person for a second. Everything we do must be elite or we don't do it. Ceremonial surfaces carry the discipline in its purest form (the certificate: true deep black, royal purple, white, and silver — the family metal is silver — real faceted artwork, restraint in text, richness in stone and depth).",
+      "why": "The standard is not \"good for a web page\"; it is the most elite system anybody has used.",
+      "human_check": "The inspector's eye at arm's length: does the surface read as polished stone with light in it — or as a dark web page? Only the first passes.",
+      "scope": [
+        "every page",
+        "ceremonial surfaces (the certificate)"
+      ],
+      "checks": [
+        {
+          "id": "LAW-13-C1",
+          "target": "computed background of hero/page field (Reference Hero: NAYA-HRO-001)",
+          "comparator": "contains_gloss_fall",
+          "expected": {
+            "gradient_stops": [
+              "#1b1b22",
+              "#08080c",
+              "#030304"
+            ]
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "EXEMPLAR-BUILD-SCORECARD.md §3: foundation-obsidian gloss fall harvested from the Hub hero"
+        },
+        {
+          "id": "LAW-13-C2",
+          "target": "palette of ceremonial surfaces (e.g. the certificate)",
+          "comparator": "subset_of",
+          "expected": {
+            "allowed": [
+              "true deep black",
+              "royal purple",
+              "white",
+              "silver"
+            ],
+            "family_metal": "silver"
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 13 rule (certificate discipline)"
+        },
+        {
+          "id": "LAW-13-C3",
+          "target": "human reviewer judgment",
+          "comparator": "criterion_met",
+          "expected": null,
+          "severity": "blocker",
+          "judgment": true,
+          "criterion": "The inspector's eye at arm's length: does the surface read as polished stone with light in it — or as a dark web page? Only the first passes.",
+          "trace": "human Law 13 check (verbatim)"
+        }
+      ]
+    },
+    {
+      "id": "LAW-14",
+      "number": 14,
+      "name": "Standard Chrome (the room DNA)",
+      "statement": "Smart Tabs are the standard navigation for all of NayaNET — bottom bar by default, scrolling and keeping position, users customize. Rooms are real smart apps sharing the system's DNA, built to the Smart App Standard (Smart Tabs, plus-button navigation, honest empty states, live data). That standard governs what a finished room is; this contract governs how everything looks and behaves — where they overlap, both hold.",
+      "why": "One navigation grammar everywhere means nobody relearns the building on every floor.",
+      "human_check": "The room passes the Smart App Standard's \"finished\" test and this contract's laws — both, not either.",
+      "scope": [
+        "rooms (smart apps)",
+        "navigation"
+      ],
+      "checks": [
+        {
+          "id": "LAW-14-C1",
+          "target": "room navigation in the rendered room",
+          "comparator": "smart_tabs_present",
+          "expected": {
+            "component": "Smart Tabs",
+            "default_position": "bottom bar",
+            "behavior": "scrolls and keeps position; user-customizable"
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 14 rule"
+        },
+        {
+          "id": "LAW-14-C2",
+          "target": "the room as a whole",
+          "comparator": "passes_external_standard",
+          "expected": {
+            "external_standard": "~/workspace/room-rollout/SMART-APP-STANDARD.md",
+            "requirement": "passes the Smart App Standard's 'finished' test AND this contract's laws — both, not either"
+          },
+          "severity": "major",
+          "judgment": false,
+          "trace": "human Law 14 rule/check"
+        }
+      ]
+    },
+    {
+      "id": "LAW-15",
+      "number": 15,
+      "name": "The Inspector Rule",
+      "statement": "Naya is the inspector, and so is every Naya who reads this. Whoever sees a board, input, button, or page that is flat, dead, dim, unclear, or below this contract fixes it on sight — first the fix, then the word to Shawn. Reporting a problem without fixing it is being part of the problem. It should be clear as day what any page, button, or input does; if it isn't, that is the defect.",
+      "why": "A standard nobody enforces at the moment of seeing is decoration.",
+      "human_check": "Findings are measured by what got fixed and verified, not by what got noted. An inspection that produces only a report has failed this law.",
+      "scope": [
+        "whoever inspects — every Naya, every build review"
+      ],
+      "checks": [
+        {
+          "id": "LAW-15-C1",
+          "target": "human reviewer judgment",
+          "comparator": "criterion_met",
+          "expected": null,
+          "severity": "blocker",
+          "judgment": true,
+          "criterion": "Findings are measured by what got fixed and verified, not by what got noted. An inspection that produces only a report has failed this law. (Process evidence: the inspection record shows fix-then-report, with the fix verified.)",
+          "trace": "human Law 15 rule/check — a conduct law; its evidence is the work record, not a page property"
+        }
+      ]
+    },
+    {
+      "id": "LAW-16",
+      "number": 16,
+      "name": "The Scorecard Law",
+      "statement": "Everything is scored. Score it, state plainly why it is not a 10, fix that, re-score — three passes. Results are presented with their scorecard story (starting score → passes → final score → what changed), never bare. Work below ~9.5 does not ship to Shawn; it goes back for another pass first. His eye scores the feeling and the standard; our scores cover the checklist — his supersede.",
+      "why": "Unscored work is unproven work, and unproven work is how reservoirs of almost-done fill up.",
+      "human_check": "The scorecard exists, names the gap at each pass, and the final number is honest — verified against the live thing, not the builder's hope.",
+      "scope": [
+        "every deliverable and its presentation"
+      ],
+      "checks": [
+        {
+          "id": "LAW-16-C1",
+          "target": "the deliverable's scorecard record (document)",
+          "comparator": "has_three_pass_story",
+          "expected": {
+            "required_fields": [
+              "starting score",
+              "per-pass gap (why it is not a 10)",
+              "fixes applied per pass",
+              "final score",
+              "what changed"
+            ],
+            "passes": 3
+          },
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 16 rule: 'Score it, state plainly why it is not a 10, fix that, re-score — three passes'"
+        },
+        {
+          "id": "LAW-16-C2",
+          "target": "final score of work presented to Shawn",
+          "comparator": "greater_than_or_equal",
+          "expected": 9.5,
+          "severity": "blocker",
+          "judgment": false,
+          "trace": "human Law 16 rule: 'Work below ~9.5 does not ship to Shawn'"
+        },
+        {
+          "id": "LAW-16-C3",
+          "target": "human reviewer judgment",
+          "comparator": "criterion_met",
+          "expected": null,
+          "severity": "blocker",
+          "judgment": true,
+          "criterion": "His eye scores the feeling and the standard; our scores cover the checklist — his supersede. The final number is honest — verified against the live thing, not the builder's hope.",
+          "trace": "human Law 16 rule/check"
+        }
+      ]
+    }
+  ],
+  "override_rule": "Shawn's word in the moment wins. He is the director; the contract serves his judgment, never the reverse. Then, the same day, one of two things happens: the exception is written into this contract as law (because it was a better rule), or it is recorded as a one-time exception with its reason. What never happens is a silent drift — a page that quietly breaks a law and teaches the next builder that the law is soft. Laws change in the open, in this document, the day they change. The same holds for any Naya's finding: if the contract is wrong, say so plainly, bring the evidence, and the contract is updated. Until it is updated, it is obeyed. ---",
+  "override_rule_source": "human contract §5 — Shawn's word in the moment wins; the exception is written into the contract the same day, or recorded as a one-time exception with its reason. Silent drift never happens."
+}

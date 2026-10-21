@@ -13,6 +13,9 @@ A cold agent passes only when it can demonstrate:
 6. It has signed in on its feed (or declares its intent to)
 7. The activation checklist (14 thinking lessons + Operating Code V2)
    machine-verifies against canonical bytes (Gate 1, fail closed)
+8. PROTOCOL.md itself — and its Step 0 declaration text specifically —
+   matches the pinned fingerprints in tools/protocol_pin.py (a drifted
+   protocol blocks boot; re-pinning is a deliberate code change)
 
 This gate does NOT grant authority. It verifies readiness.
 Authority still comes from Shawn's grants, not from passing this gate.
@@ -150,6 +153,31 @@ def check_activation_checklist() -> tuple[bool, str]:
     return True, "activation checklist verified: 14 lessons + Operating Code V2 match pinned canonical bytes"
 
 
+def check_protocol_pin() -> tuple[bool, str]:
+    """The protocol's own bytes are pinned — drift blocks boot.
+
+    Wires tools/protocol_pin.py into this boot gate: PROTOCOL.md and
+    its Step 0 declaration section are re-hashed and compared to the
+    pinned fingerprints. The ratified law cannot change silently under
+    a booting Naya; changing it is a deliberate re-pin (code change).
+    Fail closed: any load or read error is a failed check."""
+    import importlib.util
+    tool = ROOT / "tools" / "protocol_pin.py"
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "naya_protocol_pin", str(tool))
+        if spec is None or spec.loader is None:
+            return False, "protocol pin tool not loadable — boot refused (fail closed)"
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+    except Exception as e:
+        return False, f"protocol pin tool failed to load ({e}) — boot refused (fail closed)"
+    try:
+        return module.check_protocol_pin(str(ROOT))
+    except Exception as e:
+        return False, f"protocol pin check failed ({e}) — boot refused (fail closed)"
+
+
 def run_gate(agent_id: str = "unknown") -> dict:
     manifest = load_manifest()
     checks = []
@@ -162,6 +190,7 @@ def run_gate(agent_id: str = "unknown") -> dict:
         ("truth_states_distinct", lambda: check_truth_states_distinct(manifest)),
         ("never_do_complete", lambda: check_never_do_nonempty(manifest)),
         ("activation_checklist", check_activation_checklist),
+        ("protocol_pin", check_protocol_pin),
     ]
 
     all_pass = True

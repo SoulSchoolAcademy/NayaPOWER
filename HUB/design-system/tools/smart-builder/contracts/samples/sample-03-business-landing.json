@@ -1,0 +1,39 @@
+{
+  "contract": "smart-builder/03-business-landing",
+  "template_id": "03",
+  "template_name": "Business landing",
+  "template_color": "#ffbf3d",
+  "title": "Bloom & Bean Bakery",
+  "kicker": "Sample · Business landing",
+  "lede": "The front door: what we do, when we're open, how to reach us.",
+  "sections": [
+    {
+      "kicker": "Hero",
+      "title": "Baked at dawn, gone by noon",
+      "lede": "Small-batch sourdough and pastries in the heart of the neighborhood.",
+      "pieces": [
+        "NAYA-TYP-011",
+        "NAYA-BTN-009"
+      ]
+    },
+    {
+      "kicker": "Services",
+      "title": "What we make",
+      "lede": "Bread, pastry, coffee — and cakes for the days that matter.",
+      "pieces": [
+        "NAYA-CRD-005",
+        "NAYA-CRD-006",
+        "NAYA-LST-005"
+      ]
+    },
+    {
+      "kicker": "Visit",
+      "title": "Come say hi",
+      "lede": "Open Tuesday to Sunday, 7am to 3pm. Find us on Maple Street.",
+      "pieces": [
+        "NAYA-FRM-001",
+        "NAYA-BTN-002"
+      ]
+    }
+  ]
+}
