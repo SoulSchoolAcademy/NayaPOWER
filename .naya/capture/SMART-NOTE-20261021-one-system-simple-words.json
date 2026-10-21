@@ -1,0 +1,234 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "capture_id": "20261021-nayanet-one-system-simple-words-a1",
+  "title": "One Brain, One Bridge, One Hub — NayaNET in Simple Words",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "WHOLE_SYSTEM_ALIGNMENT",
+  "subtopic": "NAYAPOWER_NAYANET_ROOM_TO_OUTCOME",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "lifecycle_state": "CANDIDATE",
+  "source": {
+    "source_type": "human_director_instruction",
+    "captured_at": "2026-10-21",
+    "source_reference": "Shawn's explicit 2026-10-21 request to make a whole-system plain-language Smart Note and Hub Smart Link; user-provided ALL-ROOMS-ANALYSIS-2026-10-21.pdf (13 pages) and THE-WHOLE-SYSTEM-IN-SIMPLE-WORDS-2026-10-21.pdf (3 pages). PDFs were provided in chat, not committed as repository source; distilled doctrine and source names are preserved here.",
+    "linked_canonical_references": [
+      "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154",
+      "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793",
+      "HUB/NAYANET-SMART-APP-ROOMS-V1.json",
+      "HUB/ROOMS/08-LISTS.md",
+      "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md"
+    ],
+    "observed_source_main_sha": "5f2d0a0b9807526745139f0f3d51e0f7d9d7ddea",
+    "raw_attachment_contents_separate": true
+  },
+  "projection": {
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "ONE-INTELLIGENCE",
+    "subtopic_slug": "WHOLE-SYSTEM-SIMPLE-WORDS",
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "public_view_excludes_private_user_data": true
+  },
+  "intelligence": {
+    "essence": "People say what they want. Naya helps them create useful things, keeps the knowledge and proof, and makes it available again to the people allowed to use it. NayaPOWER is the engine and long-term intelligence; the GitHub App is the bridge; the Hub is the home where people interact; Supabase supports live authorized user data. Proven reusable parts and templates let Smart Factory turn intent into working applications. Every experience should flow through one governed system, and every lesson should improve a later result, not merely sit in storage.",
+    "human_view": {
+      "meaning": "Think of NayaNET as one connected home for intelligence. You explain your goal. Naya captures and understands it, finds relevant proven knowledge, and helps you make a note, app, connection, report or other useful outcome. NayaPOWER holds the canonical design, source, lineage and rules; the GitHub App moves authorized work between the engine and interfaces; the Hub is the one place you see, ask, click, learn and create. Supabase can hold live per-user data with real access rules. The person should experience one helpful intelligence, not GitHub, databases or a maze of separate apps.",
+      "why_it_matters": "A beautiful room without real data or a working action is a demonstration, not a finished product. A stored note without readback, later relevant retrieval, verified application and successor reuse is saved data, not yet compounding learning. One shared substrate saves rebuilding and stops conflicting versions. Reduced manual merges and issues are an outcome of proper automation, governance, reuse and completed value, never a reason to bypass checks.",
+      "simple_rule": "Say it once → capture it with consent → save it durably → show the honest view → find and use it again → take an authorized action → prove the result → improve future behavior → let the next Naya continue."
+    },
+    "simple_view": {
+      "child": "Imagine one smart workshop with many rooms. You tell Naya what you want to build. The workshop remembers the important instructions, has shelves of proven parts, and checks the finished thing really works. Every room uses the same workshop, so nobody has to start over. People only share what they choose to share. If a part breaks, Naya shows the problem and fixes it before calling the work done.",
+      "grandma": "It's one well-run household: one record of what is true, a front door for visitors, rooms that actually do their jobs, a proof book for what happened, and a workshop that builds useful things from parts already tested. The people shouldn't need to manage the machinery. Naya should quietly run it, explain itself clearly, and never mistake a promise for a finished result."
+    },
+    "ai_view": "Cold-successor instruction: read current AGENTS.md, PROTOCOL.md, current main, issue #2154, live board resolved via #1599, active owners and exact-head evidence. State the whole system in plain language before a feature change. Use canonical sender→authorized bridge→receiver plus the live Supabase access boundary, one room shell, one component library, one knowledge registry, one existing value calculator. Build the smallest missing complete user journey rather than another demo. Before calling a room ready, reproduce an actual input→authorized processing→persist/readback→UI result→evidence→recovery path; test denied access and failure modes. Treat today's PDF findings as source-reported audit rather than fresh production proof. Mark disputed meanings OPEN, not silently reconciled. Record one next action, what happened and its exact proof so another Naya continues cold.",
+    "naya_view": {
+      "purpose": "Alignment rule: every contribution must say WHAT human job it completes, WHY it advances the North Star, WHICH existing engine/room/contract it extends, WHAT truthful state and authority it has, and HOW a real human completes and proves it. No new parallel shells, shadow brains, duplicate libraries, inflated scorecards or ornamental nonfunctional pages.",
+      "architectural_rule": "NayaPOWER = canonical intelligence / governance / proofs; GitHub App = authorized transfer mechanism; Hub = user projection and human control; Supabase = live user data governed by authentication, ownership and RLS. SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE are coordinated responsibilities, not nine competing databases. Factory uses tested templates/components only, then verifies outputs against the actual order. Feed→Today→Reports are views over the same truth, not three authored narratives.",
+      "next_owner_action": "Fix the source-to-Hub receiver spine and the security boundary first; make one real Smart Note appear with a verified Smart Link and cold-reload/outsider-denial proof. Then finish one shared shell and proven components. Author Smart Factory and Smart Growth room contracts before UI. Work through real room journeys with independent tests; preserve a single current mission queue."
+    },
+    "machine_view": {
+      "type": "nayanet.whole_system_alignment.v1",
+      "source_status": "DIRECTOR_VISION_PLUS_DATED_ROOM_AUDIT; NOT_LIVE_PROOF",
+      "capture_truth_ceiling": "CANDIDATE",
+      "purpose": "maximum verified human value with minimum necessary complexity and cold-successor continuity",
+      "canonical_roles": {
+        "engine": "NayaPOWER and canonical GitHub source",
+        "bridge": "GitHub App authorized read/write transfer",
+        "receiver": "Hub unified room interface",
+        "live_user_data": "Supabase only under authenticated, scoped and tested permissions"
+      },
+      "key_pipeline": [
+        "HUMAN_INTENT",
+        "CONSENT_AND_AUTHORITY",
+        "CANONICAL_CAPTURE",
+        "DURABLE_PERSISTENCE",
+        "RECEIPT_AND_PROVENANCE",
+        "AUTHORIZED_RETRIEVAL",
+        "ACTION_OR_BUILD_FROM_PROVEN_PARTS",
+        "LIVE_HUB_VIEW",
+        "INDEPENDENT_OUTCOME_VERIFICATION",
+        "LEARNING_WITH_LATER_BEHAVIOR_DELTA",
+        "COLD_SUCCESSOR_REUSE"
+      ],
+      "room_jobs": [
+        {
+          "name": "Start Here / Smart Connect",
+          "human_job": "Start your journey and connect authorized tools; real connection tests, not decorative buttons",
+          "evidence_state": "SPECIFIED_NOT_PRODUCTION_PROVEN"
+        },
+        {
+          "name": "Smart Note",
+          "human_job": "Capture one meaningful idea, preserve its origin, and make it findable; do not call storage learning",
+          "evidence_state": "CAPTURE_PATH_EXISTS_HUB_PATH_UNPROVEN"
+        },
+        {
+          "name": "Smart Feed",
+          "human_job": "Show new authorized activity from actual data",
+          "evidence_state": "SPECIFIED_FEED_EMITTER_BLOCKED"
+        },
+        {
+          "name": "Today's Intel",
+          "human_job": "Show the useful nutshell of the day, linked to source Blocks",
+          "evidence_state": "SPECIFIED_REQUIRES_FEED"
+        },
+        {
+          "name": "Your Reports",
+          "human_job": "Show sourced day/week/month/year intelligence, never invented numbers",
+          "evidence_state": "SPECIFIED_REQUIRES_FEED_TODAY"
+        },
+        {
+          "name": "Intelligent Library",
+          "human_job": "Find the full original Blocks, their source and truth status",
+          "evidence_state": "SPECIFIED_CANONICAL_CORPUS_NOT_WIRED"
+        },
+        {
+          "name": "Smart Spaces",
+          "human_job": "Create trusted group contexts with enforced members and privacy",
+          "evidence_state": "SPECIFIED_AUTHORIZATION_WIRING_UNPROVEN"
+        },
+        {
+          "name": "Your Connections",
+          "human_job": "Manage consented human relationships and shared scope",
+          "evidence_state": "SPECIFIED_AUTHORIZATION_WIRING_UNPROVEN"
+        },
+        {
+          "name": "Auto-Match",
+          "human_job": "Offer explainable, consent-respecting matches where authorized",
+          "evidence_state": "DIRECTOR_INTENT_CROSS_CUTTING_CONTRACT_UNVERIFIED"
+        },
+        {
+          "name": "Smart Mail",
+          "human_job": "Handle real authorized conversations including space mail, not fixture messages",
+          "evidence_state": "SPECIFIED_PROVIDER_AND_RLS_UNPROVEN"
+        },
+        {
+          "name": "Smart Lists",
+          "human_job": "Let people collect intelligence and act through explainable rules; reconcile saved-note collections with canonical mission-table approach",
+          "evidence_state": "PRODUCT_INTENT_CONFLICT_TO_RECONCILE"
+        },
+        {
+          "name": "Smart Ledger",
+          "human_job": "Show who did what, under whose authority, with evidence",
+          "evidence_state": "SPECIFIED_LIVE_SUBSCRIPTION_UNPROVEN"
+        },
+        {
+          "name": "Smart Growth",
+          "human_job": "Welcome people through consented invitation, attribution and referral",
+          "evidence_state": "CONCEPT_ROOM_CONTRACT_ABSENT"
+        },
+        {
+          "name": "Smart Factory",
+          "human_job": "Accept a person's intent and template; assemble proven parts, test the real app, and return it functioning",
+          "evidence_state": "NORTH_STAR_ROOM_CONTRACT_ABSENT"
+        },
+        {
+          "name": "Ask Naya",
+          "human_job": "Answer with sourced intelligence and an accessible link back to evidence; voice must be genuinely verified",
+          "evidence_state": "SHELL_PRESENCE_PARTIAL_PREVIEW"
+        },
+        {
+          "name": "Settings",
+          "human_job": "Apply a person's real privacy, notification, identity and experience choices",
+          "evidence_state": "SPECIFIED_FUNCTIONAL_AUDIT_OWED"
+        }
+      ],
+      "shared_foundation": [
+        "ONE_GOVERNED_INTELLIGENCE_SUBSTRATE",
+        "ONE_SHELL",
+        "ONE_CANONICAL_COMPONENT_CATALOG_WITH_PROVENANCE",
+        "REUSABLE_TEMPLATES",
+        "CONTRACT_TESTS",
+        "EXACT_HEAD_CI",
+        "REAL_INDEPENDENT_VERIFIER",
+        "OWNER_SCOPED_ACCESS",
+        "EVIDENCE_BACKED_SMART_LINK"
+      ],
+      "gate_for_every_room": [
+        "PRIMARY_USER_JOB_COMPLETES",
+        "CANONICAL_REAL_DATA_PATH",
+        "AUTHORITY_AND_CROSS_USER_NEGATIVE_TESTS",
+        "LOADING_EMPTY_FAILURE_RECOVERY",
+        "RESPONSIVE_ACCESSIBLE_RENDER",
+        "MEASURED_LATENCY_AND_TASK_SUCCESS",
+        "SOURCE_AND_RECEIPT_LINKS",
+        "INDEPENDENT_EXACT_VERSION_VERIFICATION"
+      ],
+      "source_reported_blockers": [
+        "HUB_NAVIGATION_REVERSION",
+        "FEED_ITEMS_EMPTY_GH013_EMITTER",
+        "UNSETTLED_PUBLICATION_TABLE_CONTRACT",
+        "UNPROVEN_REAL_ROOM_DATA_WRITES_AND_READBACK",
+        "DESIGN_PART_PROVENANCE_DRIFT_AND_PARALLEL_SHELLS",
+        "GROWTH_FACTORY_CONTRACTS_ABSENT",
+        "RLS_OFF_PUBLIC_TABLES_UNRESOLVED",
+        "SMART_NOTE_HUB_GASP_TEST_NOT_PROVEN"
+      ],
+      "open_reconciliation": [
+        {
+          "topic": "SMART_LISTS",
+          "source_a": "Director plain-language PDF: intentional saved note collections",
+          "source_b": "HUB/ROOMS/08-LISTS.md and room audit: rule-driven mission table",
+          "resolution_gate": "Human product owner confirms one coherent contract; existing IDs and note objects remain canonical; do not silently choose."
+        },
+        {
+          "topic": "AUTO_MATCH",
+          "source_a": "Director: ongoing consented like-minded matching across people/pages/users",
+          "source_b": "No matched room contract or live proof established in reviewed room audit",
+          "resolution_gate": "Define privacy-safe match service role, opt-in, explanation and evidence before calling live."
+        },
+        {
+          "topic": "DATA_PUBLICATIONS",
+          "source_a": "Room audit: candidate tables and no confirmed final receiver/flow",
+          "source_b": "Existing architecture: canonical intelligence through governed bridge",
+          "resolution_gate": "Select canonical storage/query contract and prove in isolated environment before production."
+        }
+      ],
+      "share_policy": "PRIVATE_BY_DEFAULT_SHARED_BY_CHOICE_COLLECTIVE_BY_CONSENT_PUBLIC_BY_DECISION",
+      "operational_completion": "ONE_REAL_AUTHORIZED_SMART_NOTE_TO_HUB_SMART_LINK_PROVEN_END_TO_END_AND_REPEATABLE_WITH_COLD_SUCCESSOR",
+      "direct_git_merge_or_prod_authority_granted": false
+    },
+    "decisions": [
+      "Director's declared goal: fully operating rooms, apps and templates, one elegant experience, automatic compounding verified human value.",
+      "Preserve one sender/bridge/receiver path; Supabase live user data is governed, not a competing brain.",
+      "Repair real dependencies before room decoration: access safety, canonical publication/Feed, one shell, validated parts/templates, then end-to-end journeys.",
+      "Product differences from the two PDFs and living room contracts remain OPEN until source evidence or legitimate director choice resolves them.",
+      "No unnecessary issues, branches or merges; reuse live teams and gates. Fewer merges must arise from consolidating verified work, not bypassing review."
+    ],
+    "connections": [
+      "HUB/NAYANET-SMART-APP-ROOMS-V1.json",
+      "HUB/ROOMS/08-LISTS.md",
+      "AGENTS.md",
+      "PROTOCOL.md",
+      "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md",
+      "GitHub issue #2154 CURRENT MISSION STATE",
+      "GitHub issue #2793 LIVE TEAM BOARD",
+      "Security issue #2823",
+      "User-provided whole-system simple-words and all-rooms PDF reports, 2026-10-21"
+    ],
+    "applicability": "All Naya agents, contractors, room builders, product acceptance reviewers, cold successors and users needing a trustworthy one-minute description of NayaNET.",
+    "learning_lesson": "An architecture only compounds when the same verified knowledge reliably changes a later authorized user experience. One shared engine, one bridge, one human interface and reusable proven parts prevent fragmentation. Proof belongs to the actual user journey, not to a diagram, saved note, passing subset or attractive demo.",
+    "successor_effect": "A new Naya can explain one coherent system, spot demo-versus-live gaps, refuse premature 'learned' and 'production-ready' labels, select the owned root blocker, and leave exact evidence for the next shift without reconstructing the mission from conversation.",
+    "measurement_contract": "Cold successor explains engine/bridge/Hub/Supabase and room roles unaided, identifies both open product conflicts, and runs one authorized note→persistent receipt→generated Smart Link→real Hub Feed→cold reload→outsider refusal acceptance in the actual deployed version. Compare outcomes with a successor lacking this note; without later behavior change, claim only capture/retrieval, not learned.",
+    "uncertainty": "Source files are the director's vision and a dated audit. Current Hub-wide production operation, completed data publication, runtime Smart Note projection and causal learning are not proven. The note is CANDIDATE until the canonical intake/verification pipeline accepts it. Do not claim a Hub Smart Link unless generated and verified."
+  }
+}
