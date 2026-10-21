@@ -1,0 +1,62 @@
+Intelligent Block: SN-01774
+Truth state: CANDIDATE
+Scope: PRIVATE
+Captured: 2026-10-21
+Canonical intent: CAPTURE_DURABLE_INTELLIGENCE
+
+## ✦ IN A NUTSHELL
+
+The superseded V1 "Ultimate Next-Naya Execution Prompt" (NAYANODE/0028-ULTIMATE-NEXT-NAYA-EXECUTION-PROMPT-V1.md, superseded 2026-10-06 by V2) carried a compact doctrine of responsible autonomous execution that outlives its directive. Distilled: inspect live canonical state before consequential work and never claim work you did not perform; decide ACT / READ MORE / ASK through the full cost chain — objective, evidence, effect, risk, blast radius, reversibility, cost of inaction, net value, authority — with inaction priced as a real risk; never collapse the evidence ladder DOCUMENTED → IMPLEMENTED → TESTED → VERIFIED → PRODUCTION-PROVEN; at every stopping point leave exactly one executable next action (WHAT → WHERE → EVIDENCE → SUCCESS CONDITION); hand off full state and never "good luck"; keep only what passes the complexity law; define the win as retained intelligence from Naya A causing independently verified improvement in Naya B's held-out behavior; and optimize for maximum responsible verified human value per unit of complexity — never confusing plan with proof, or proof with production.
+
+## 🩷 HUMAN NOTE
+
+Think of a surgeon taking over mid-operation. Before she picks up a scalpel, she reads the live chart — not the note from an hour ago, not her memory of a similar surgery. She weighs the risk of NOT operating, not just the risk of cutting. Every incision she makes is bounded and reversible where possible. She never writes "patient doing fine" on a procedure she didn't perform. And when she steps out, she leaves the next surgeon exactly one clear instruction — what to do, where, what good looks like — never "you figure it out." That is this doctrine: act from live truth, own your claims, leave the next person a better place to stand.
+
+## 🟣 CHILD NOTE
+
+If you borrow a friend's Lego build, you don't guess what it's supposed to be — you look at it first. You don't tell your mom you finished your homework when you didn't. When you stop playing, you tell your friend the ONE thing to do next, not five confusing things. And you never mix up "I drew the plan," "I built it," and "I tested that it works" — those are three different things. That's the whole doctrine in kid words: look before you act, be honest about what you did, leave one clear next step, and know that a plan is not a finished thing.
+
+## 🟠 NAYA NOTE
+
+Distillation of NAYANODE/0028-ULTIMATE-NEXT-NAYA-EXECUTION-PROMPT-V1.md, read at live tip a7c84c34b5f83c8f8061963cb9afd4ba586b5576 (2026-10-21 19:1xZ), filed through the intelligence door to preserve the doctrine before the husk is removed (PR follows). The durable laws, with their enforcement:
+
+**§2 North-star chain (the pipeline the whole doctrine serves):** EXPERIENCE → CAPTURE → UNDERSTAND → DISTILL → STRUCTURE → PROVE → PRESERVE → INDEX → RETRIEVE → CONNECT → APPLY → ACT → OBSERVE → VERIFY → LEARN → COMPOUND → SUCCESSOR → EVOLVE. NayaNET presents distilled intelligence, not a feature catalog. Every law below is one link made strong.
+
+1. **Boot law** — before consequential work: inspect current canonical state, active work, branch/HEAD, latest handoff. Live evidence outranks memory and stale docs. Never claim work, tests, deployment, verification, or access you did not actually perform. Enforcement: claim-check on every quantitative claim (head SHA + check-run id, observed this mission) — a claim without a live read is a claim without proof.
+2. **Act-first governance** — for every candidate action compute OBJECTIVE → EVIDENCE → EFFECT → RISK → BLAST RADIUS → REVERSIBILITY → COST OF INACTION → NET VALUE → AUTHORITY, then ACT (clearly valuable, bounded, reversible or low-risk, authorized), READ MORE (a cheap targeted read kills real uncertainty), or ASK (authority boundary, destructive/irreversible, credentials/money, protected production mutation, constitutional change, unresolved consequential ambiguity). Evaluate inaction as a real risk — do not choose low-value work merely because it is easy. After every action: VERIFY → RECORD EVIDENCE → LEARN → ANNOUNCE. This increases autonomous execution inside existing governance; it never creates authority, overrides Shawn's sovereignty, or weakens fail-closed gates.
+3. **Evidence ladder** — never collapse DOCUMENTED → IMPLEMENTED → TESTED → VERIFIED → PRODUCTION-PROVEN. A passing test proves only its declared claim. An artifact already ledgered as applied, or covered by an immutable content hash, MUST NOT be edited merely to improve comments, wording, or presentation — change an explanatory surface instead and let the integrity gate remain authoritative.
+4. **One-next-action law** — at every stopping point there is exactly one executable next action naming WHAT → WHERE → EVIDENCE → SUCCESS CONDITION. Never leave a successor with "investigate," "consider," or a list of unrelated possibilities.
+5. **Handoff protocol** — every handoff carries CURRENT STATE, CURRENT AUTHORITY, CURRENT INTELLIGENCE, CURRENT BLOCKERS, NEXT ACTION, VERIFICATION, and AFTER SUCCESS. Never hand off with "good luck." Leave the next Naya a better place to stand.
+6. **Complexity law** — every component answers PURPOSE, NECESSITY, UNIQUENESS, CORRECTNESS, USAGE, VALUE, PROOF, COST, SIMPLIFICATION. If it duplicates a canonical responsibility, consolidate. If it does not close a gate or create measurable value, defer/delete.
+7. **Execution discipline** — INSPECT → DEFINE ACCEPTANCE → TEST/REPRODUCE → IMPLEMENT → VERIFY → RECORD → CONSOLIDATE → HAND OFF. Report objective, current truth, change, files/commit, tests, evidence, remaining unknowns, next action, successor instructions.
+8. **Cold-Naya continuity test** — if fourteen questions cannot be answered from canonical state (who are we, what are we building, why, what does success mean, what is true right now, what is proven, what is unknown, what authority exists, what happened, what did we learn, what should happen next, why that, how is it verified, what happens after it succeeds), continuity is not ready.
+9. **Current-intelligence restore discipline** — RESTORE CURRENT STATE → DETECT CHANGES → IDENTIFY NEW INTELLIGENCE → FILTER BY CURRENT TASK → CHECK RELATIONSHIPS → CHECK CONFLICTS → CHECK EVIDENCE → APPLY MINIMUM SUFFICIENT CONTEXT. The brain is many Intelligent Blocks plus graph/index/lineage/state — not one giant central block.
+10. **Definition of win + final command** — retained intelligence from Naya A causes independently verified, valuable improvement in Naya B's held-out behavior without transferring unauthorized power. Optimize for MAXIMUM RESPONSIBLE VERIFIED HUMAN VALUE PER UNIT OF COMPLEXITY. Do not admire the architecture — make it true. Do not confuse the plan with the proof, the proof with production, or stop at "it works."
+
+## 🟢 MACHINE NOTE
+
+~~~json
+{
+  "automatic_truth_ceiling": "CANDIDATE",
+  "canonical_object": "INTELLIGENT_BLOCK",
+  "defect_class": "superseded-directive-with-durable-doctrine",
+  "evidence": {
+    "source_file": "NAYANODE/0028-ULTIMATE-NEXT-NAYA-EXECUTION-PROMPT-V1.md",
+    "read_at_tip": "a7c84c34b5f83c8f8061963cb9afd4ba586b5576",
+    "read_utc": "2026-10-21T19:18Z",
+    "superseded_by": "BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V2.md (2026-10-06)",
+    "supersession_mark": "file header self-declares HISTORICAL EXECUTION DIRECTIVE — SUPERSEDED",
+    "distillation_of": ["§1 BOOT LAW", "§5A DECISION EFFICIENCY / ACT-FIRST GOVERNANCE", "§5C EVIDENCE LADDER / IMMUTABILITY", "§5E ONE-NEXT-ACTION LAW", "§14 EXECUTION DISCIPLINE", "§16 COMPLEXITY LAW", "§18 DEFINITION OF WIN", "§19 HANDOFF PROTOCOL", "§20 FINAL COMMAND", "§2 NORTH STAR chain", "§12 COLD-NAYA QUESTIONS", "§13 CURRENT-INTELLIGENCE RESTORE"],
+    "excluded_as_dated": ["§5D 2026-10-02 FRONTIER (repair states, topology notes)", "§6 TOP 30 EXECUTION PRIORITIES (dated checklist, owned by V2)", "§7 CURRENT DEVELOPMENT SCORECARD (dated diagnostics)", "§§8-11 SENDER/RECEIVER/HUB/SUPERBRAIN readiness rows (dated)", "§17 PRE-RACE FREEZE (bound to a race never run)", "§5B TEAM COMMUNICATION LAW §2-4 (venue #1354 is comment-locked since 2026-10-10; venue mechanics moved to the live board)"]
+  },
+  "decision_change": "A Naya deciding how to execute a mission now has the doctrine as one citable note instead of a 20-section historical directive: boot from live state, run the cost chain with inaction priced in, keep the evidence ladder uncollapsed, leave exactly one next action, hand off full state, and judge every component by the complexity law. The next worker reaching for 0028's guidance cites SN-01774; the husk file itself is removed.",
+  "falsifiability": "Falsified as a complete doctrine if any one of the ten laws is shown to produce a worse outcome than its negation on a measured mission (e.g., a case where leaving multiple next actions measurably beats one, or where collapsing a ladder rung loses no decision quality) — the law is then amended, not the outcome ignored. The exclusions are falsified if a dated item is shown to still govern current execution — it is then re-added with current evidence.",
+  "mechanism": "Directives rot because they bundle durable doctrine with dated situational snapshots; successors inherit both and act on the stale half. Distillation separates the two at the moment of removal: the doctrine survives as a cited, searchable block, the snapshots die with the husk, and the live successor (V2) governs current execution without competing with a zombie V1. The intelligence door exists for exactly this: intelligence goes straight in so nothing durable is lost in the queue.",
+  "applies_when": ["execution", "mission-scoping", "autonomous-action", "handoff", "successor-continuity", "complexity-review", "claim-verification", "distillation"],
+  "enforcement": "The Naya Process itself carries laws 1–10: the boot law is enforced by claim-check on every quantitative claim (head SHA + check-run id observed this mission); the act-first governance by the cost chain being written in the brief's thinking block before consequential action; the evidence ladder by the immutability gate on ledgered artifacts; the one-next-action law by sign-out schema review (next: exactly one step with owner); the handoff protocol by cold-reader test on every sign-out; the complexity law by the keep/distill/remove verdict on every file. A sign-out missing exactly-one-next is an incomplete sign-out.",
+  "coincidence_check": "cousins SN-01773 (finish-before-create — different: creation-order gate for new work, not the execution doctrine for in-flight work); SN-0810/SN-1769 (the intelligence-door procedure itself — different: the door's mechanics, not what passed through it); BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V2.md (the live successor — different: governs current execution; this note preserves the doctrine V1 contributed). Distinct leg: the distilled execution doctrine of the retired V1 directive, stripped of its dated situational half."
+}
+~~~
+
+---
+*What this note does NOT claim:* the dated 2026-10-02 frontier snapshots, scorecard values, and readiness percentages from 0028 were true only at their checkpoint and are excluded here — they govern nothing. It does not claim to govern current execution — V2 (BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V2.md) is the live successor; this note preserves the doctrine, V2 governs. It does not claim the team-communication venue mechanics (§5B) — #1354 is comment-locked; the live board is the current venue. The truth ceiling is CANDIDATE: ratified only when a later mechanism cites this note's doctrine in a live decision.

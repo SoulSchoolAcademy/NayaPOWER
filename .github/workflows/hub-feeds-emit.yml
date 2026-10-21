@@ -12,6 +12,12 @@
 # (2) a Supabase Management API credential available to that helper — wire it
 # as the SUPABASE_MANAGEMENT_TOKEN repo secret. Until both exist the run
 # fails closed in the emit step: it errors, nothing commits, nothing pushes.
+# (3) a deploy key with scoped ruleset bypass for the feed-file landing —
+# wire the private key as the HUB_FEEDS_DEPLOY_KEY repo secret (precedent:
+# MAP_COMPILER_DEPLOY_KEY in map-compiler.yml). The branch ruleset rejects
+# direct GITHUB_TOKEN pushes to main (GH013: changes must go through a pull
+# request), so without this key the commit step fails closed: it errors with
+# the named decision instead of silently skipping.
 #
 # CADENCE: hourly (cron '0 * * * *', UTC). The "today" room is a freshness
 # surface; hourly bounds staleness at ~1h instead of ~24h for daily. Cost
@@ -65,6 +71,19 @@ jobs:
           python3 HUB/FEEDS/emit_hub_feeds.py
 
       - name: Commit feed changes (only when content changed)
+        # Pushes over SSH with the hub-feeds deploy key (secret
+        # HUB_FEEDS_DEPLOY_KEY). That key holds the repo's scoped ruleset
+        # bypass for the feed-file landing — the direct GITHUB_TOKEN push is
+        # rejected by the branch ruleset (GH013: changes must be made through
+        # a pull request; the hourly feed refresh is a deterministic
+        # derived-file emission, same class as the map-compiler landing).
+        # The checkout above still uses GITHUB_TOKEN (read). This workflow
+        # never commits anything except HUB/FEEDS/*.json (fail-closed
+        # design) — the bypass is scoped in practice to this workflow's
+        # single write. Until the secret exists the step fails closed with
+        # the named decision (it does NOT silently skip).
+        env:
+          HUB_FEEDS_DEPLOY_KEY: ${{ secrets.HUB_FEEDS_DEPLOY_KEY }}
         run: |
           set -euo pipefail
           git config user.name "NayaPOWER Lane Agent"
@@ -74,7 +93,22 @@ jobs:
             echo "No feed content changed; skipping commit."
             exit 0
           fi
+          if [ -z "${HUB_FEEDS_DEPLOY_KEY:-}" ]; then
+            echo "HUB_FEEDS_DEPLOY_KEY secret not configured." >&2
+            echo "Decision needed (Shawn's gate): create a deploy key with scoped ruleset bypass for HUB/FEEDS/*.json," >&2
+            echo "following the MAP_COMPILER_DEPLOY_KEY precedent (map-compiler.yml)." >&2
+            echo "Failing closed: feed content changed but cannot land." >&2
+            exit 1
+          fi
           git commit -m "chore(feeds): refresh hub feed emissions (automated)" \
             -m "Idempotent re-emission of today/lists/spaces via hub-feeds-emit." \
             -m "Committed only because feed content changed; see HUB/FEEDS/emit_hub_feeds.py."
+          eval "$(ssh-agent -s)"
+          printenv HUB_FEEDS_DEPLOY_KEY > /tmp/hub-feeds-key
+          chmod 600 /tmp/hub-feeds-key
+          ssh-add /tmp/hub-feeds-key
+          rm -f /tmp/hub-feeds-key
+          mkdir -p ~/.ssh
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          git remote set-url origin git@github.com:SoulSchoolAcademy/NayaPOWER.git
           git push origin "HEAD:${{ github.ref_name }}"

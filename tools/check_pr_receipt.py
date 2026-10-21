@@ -18,9 +18,13 @@ import os
 import re
 import subprocess
 import sys
+import urllib.error
 import urllib.request
 
 TIMEOUT = 15
+# Detailed outcomes let the unified gate distinguish dead evidence from a
+# temporary network outage. The legacy boolean contract remains unchanged.
+URL_CHECK_RESULTS = {}
 
 
 def fail(msg):
@@ -32,21 +36,43 @@ def fail(msg):
 
 
 def check_url(url):
+    """Return the legacy boolean while recording LIVE/DEAD/UNAVAILABLE.
+
+    HEAD-rejecting hosts are retried with GET. A confirmed 4xx is dead
+    evidence; 5xx and transport failures are verification outages, not proof
+    that the artifact itself is invalid.
+    """
     req = urllib.request.Request(url, method="HEAD",
                                  headers={"User-Agent": "naya-receipt-gate/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-            return r.status < 400
+            if r.status < 400:
+                URL_CHECK_RESULTS[url] = {"state": "LIVE", "detail": f"HEAD {r.status}"}
+                return True
     except Exception:
-        # Some hosts reject HEAD; retry with GET (headers only read).
-        try:
-            req = urllib.request.Request(url, method="GET",
-                                         headers={"User-Agent": "naya-receipt-gate/1.0"})
-            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-                r.read(1)
-                return r.status < 400
-        except Exception:
+        pass
+
+    # Some hosts reject HEAD; retry with GET (read only one byte).
+    req = urllib.request.Request(url, method="GET",
+                                 headers={"User-Agent": "naya-receipt-gate/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+            r.read(1)
+            if r.status < 400:
+                URL_CHECK_RESULTS[url] = {"state": "LIVE", "detail": f"GET {r.status}"}
+                return True
+            if r.status >= 500:
+                URL_CHECK_RESULTS[url] = {"state": "UNAVAILABLE", "detail": f"GET {r.status}"}
+            else:
+                URL_CHECK_RESULTS[url] = {"state": "DEAD", "detail": f"GET {r.status}"}
             return False
+    except urllib.error.HTTPError as exc:
+        state = "UNAVAILABLE" if exc.code >= 500 or exc.code in {401, 403, 408, 425, 429} else "DEAD"
+        URL_CHECK_RESULTS[url] = {"state": state, "detail": f"GET HTTP {exc.code}"}
+        return False
+    except Exception as exc:
+        URL_CHECK_RESULTS[url] = {"state": "UNAVAILABLE", "detail": f"{type(exc).__name__}: {exc}"}
+        return False
 
 
 def git_exists(sha):
@@ -60,6 +86,7 @@ def path_exists(path):
 
 
 def main():
+    URL_CHECK_RESULTS.clear()
     body = os.environ.get("PR_BODY") or ""
     m = re.search(r"^##\s+evidence\s*$", body, re.IGNORECASE | re.MULTILINE)
     if not m:
@@ -95,10 +122,18 @@ def main():
 
     verified = []
     dead = []
+    unavailable = []
     for u in dict.fromkeys(urls):
         if "localhost" in u or "127.0.0.1" in u:
             continue
-        (verified if check_url(u) else dead).append(f"url:{u}")
+        check_url(u)
+        state = URL_CHECK_RESULTS.get(u, {}).get("state", "DEAD")
+        if state == "LIVE":
+            verified.append(f"url:{u}")
+        elif state == "UNAVAILABLE":
+            unavailable.append(f"url:{u}")
+        else:
+            dead.append(f"url:{u}")
     for s in dict.fromkeys(shas):
         (verified if git_exists(s) else dead).append(f"sha:{s[:8]}")
     for p in dict.fromkeys(paths):
@@ -112,6 +147,11 @@ def main():
              "repo path and will fail here — a branch name is not a path. "
              "Do not backtick branch names in ## Evidence; cite the branch "
              "head's 40-char SHA or the PR URL instead.")
+    if unavailable:
+        print("RECEIPT GATE: ERROR — VERIFICATION_UNAVAILABLE")
+        print(f"MISSING: live verification for {len(unavailable)} evidence URL(s): {', '.join(unavailable[:5])}")
+        print("CURE: retry the evidence check when the host/network or authorization is available; do not relabel an unverified URL as dead. (owner: Gate maintainer)")
+        raise SystemExit(2)
     if not verified:
         fail("`## Evidence` exists but contains no verifiable artifact handle "
              "(live URL, existing SHA, or existing repo path).")

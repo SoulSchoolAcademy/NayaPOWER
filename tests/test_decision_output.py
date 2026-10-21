@@ -24,7 +24,7 @@ def opt(title, total, conf, oid="o1", source_type="pr", gated=False,
     dims = {
         "mission_value": dim(0.85, ["PR #2410 mergeable, non-draft — can land and close its gap",
                                     "option text indicates it closes a known gap/RED"], 0.9),
-        "evidence": dim(0.9, ["independent validation 9.5 >= 9.0 (mechanical)",
+        "evidence": dim(0.9, ["independent validation 9.5 >= 9.5 (mechanical)",
                                "tests reported green on the option",
                                "not a draft"], 0.9),
         "risk": dim(0.2, ["no protected-gate patterns matched"], 0.8),

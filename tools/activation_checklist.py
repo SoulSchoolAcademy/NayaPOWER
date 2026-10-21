@@ -47,6 +47,13 @@ verification protocol) is the RITUAL side of the same provision and lives
 outside this machine gate. Score claims inside a checklist are read as
 self-attested, never as verified proof.
 
+Declaration receipt (Step 0, PROTOCOL.md): activation also proves the
+declaration happened against the current pinned protocol. Issue one with
+--issue-declaration <agent-id> [--out PATH] (fingerprints computed by
+tools/protocol_pin.py from live bytes), and verify a claim WITH one via
+--declaration PATH; --require-declaration makes a missing or invalid
+receipt a REJECT — the checklist fails without it.
+
 Wiring point: kernel/protocol/cold_start_gate.py is the boot sequence this
 checklist belongs to (activation is not complete until the checklist
 verifies). The pure predicate check_checklist() is importable so the cold
@@ -349,6 +356,21 @@ def check_checklist(canonical, claim=None):
 # CLI
 # ---------------------------------------------------------------------------
 
+def _load_protocol_pin():
+    """Load tools/protocol_pin.py (beside this file) for declaration
+    receipts. Import is lazy so the checklist's canonical path never
+    depends on it unless a declaration flag is actually used."""
+    import importlib.util
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "protocol_pin.py")
+    spec = importlib.util.spec_from_file_location("naya_protocol_pin", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("protocol pin tool not loadable: %s" % path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def _default_repo_root():
     here = os.path.dirname(os.path.abspath(__file__))
     return os.path.dirname(here)  # tools/ -> repo root
@@ -368,8 +390,45 @@ def main(argv=None):
     ap.add_argument("--checklist", default="",
                     help="agent activation checklist claim JSON to verify "
                          "(default: self-audit of canonical artifacts only)")
+    ap.add_argument("--declaration", default="",
+                    help="Step 0 declaration receipt JSON (from "
+                         "tools/protocol_pin.py) to verify alongside "
+                         "the checklist")
+    ap.add_argument("--require-declaration", action="store_true",
+                    help="fail closed unless a valid --declaration "
+                         "receipt is supplied — Step 0 must be declared "
+                         "and receipted before work begins")
+    ap.add_argument("--issue-declaration", default="",
+                    help="issue a declaration receipt for this agent id "
+                         "and exit (fingerprints from live bytes)")
+    ap.add_argument("--out", default="",
+                    help="with --issue-declaration: write the receipt "
+                         "here (default: stdout)")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args(argv)
+
+    if args.issue_declaration:
+        try:
+            pin = _load_protocol_pin()
+            receipt = pin.issue_declaration_receipt(
+                args.repo_root, args.issue_declaration)
+        except Exception as e:
+            return _emit("TOOL-ERROR",
+                         ["cannot issue declaration receipt: %s" % e],
+                         args, 2)
+        payload = json.dumps(receipt, indent=2, sort_keys=True)
+        if args.out:
+            try:
+                with open(args.out, "w", encoding="utf-8") as f:
+                    f.write(payload + "\n")
+            except OSError as e:
+                return _emit("TOOL-ERROR",
+                             ["cannot write declaration receipt: %s" % e],
+                             args, 2)
+            print("declaration receipt written: %s" % args.out)
+        else:
+            print(payload)
+        return 0
 
     canonical, err = load_canonical(args.repo_root,
                                     args.v2_root or args.repo_root)
@@ -386,6 +445,30 @@ def main(argv=None):
                          ["cannot read checklist claim: %s" % e], args, 2)
 
     verdict, violations = check_checklist(canonical, claim)
+
+    decl_violations = []
+    if args.declaration:
+        try:
+            with open(args.declaration, encoding="utf-8") as f:
+                receipt = json.load(f)
+        except (OSError, ValueError) as e:
+            return _emit("TOOL-ERROR",
+                         ["cannot read declaration receipt: %s" % e], args, 2)
+        try:
+            pin = _load_protocol_pin()
+            decl_violations = pin.check_declaration_receipt(
+                args.repo_root, receipt)
+        except Exception as e:
+            decl_violations = ["DECLARATION_UNVERIFIABLE: %s" % e]
+    elif args.require_declaration:
+        decl_violations = [
+            "DECLARATION_RECEIPT_MISSING: --require-declaration set but "
+            "no --declaration receipt supplied — Step 0 must be "
+            "declared and receipted before work begins"]
+    if decl_violations:
+        violations = violations + decl_violations
+        verdict = "REJECT"
+
     return _emit(verdict, violations, args, 0 if verdict == "CHECKLIST-VERIFIED" else 1)
 
 
