@@ -1,17 +1,17 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-20",
-  "receipt_basis_commit": "60e197cdef7cd85c9e1c7ac2fe162c61cbc70da2",
-  "inventory_file_count": 1350,
+  "generated_at": "2026-10-21",
+  "receipt_basis_commit": "67379f2158e759216bcc6f143032156c9ad142fe",
+  "inventory_file_count": 1358,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 63,
+    "01-GOVERNANCE": 65,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 669,
+    "05-MEMORY": 675,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -424,6 +424,16 @@
       "path": "BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.md",
       "blob_sha": "4eb42aa543dbc4c7095c70ef4ceee15179e30827",
       "size": 4062
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0030-A-LETTER-TO-ALL-NAYAS.human.pdf",
+      "blob_sha": "86dfa2b7eb39fd46b28d0cf49398fc0c9f5c5e61",
+      "size": 57237
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0030-VALUE-ONLY-BRAIN-V1.human.md",
+      "blob_sha": "c3360657f920e859654d27ed1c1cb11cd5fd3d20",
+      "size": 7718
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
@@ -3926,6 +3936,11 @@
       "size": 9330
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/SYSTEM/getting-started/SN-0800/IB-SMART-NOTE-20261019-sn0800-how-to-get-started.md",
+      "blob_sha": "777fd21c9bf9e4716377e777084836c7ae7f299b",
+      "size": 5572
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/system/how-nayanet-works/IB-000038/smart-note.md",
       "blob_sha": "38337b0c355c66a6d86cccec98e9751836165d06",
       "size": 9150
@@ -3946,6 +3961,16 @@
       "size": 20379
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/ai-waste/SN-0807/IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing.md",
+      "blob_sha": "2b4ebf21703bf226118c18db6bc82dfdf4c562d1",
+      "size": 7168
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/completion-doctrine/SN-0806/IB-SMART-NOTE-20261020-sn0806-completion-doctrine.md",
+      "blob_sha": "beecefde10244b585633231748dfc3af4b673306",
+      "size": 5185
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/declaration/SN-0801/IB-SMART-NOTE-20261020-sn0801-declare-who-you-are.md",
       "blob_sha": "8137f0a94e6194afa32d49ff3033c2d997b8de02",
       "size": 9342
@@ -3961,9 +3986,19 @@
       "size": 10370
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/reservoir/SN-0805/IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings.md",
+      "blob_sha": "3130c90faec7f8d6c8efa5b785df98c852ee1bdf",
+      "size": 7097
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/viral-law/SN-0804/IB-SMART-NOTE-20261020-sn0804-viral-law.md",
       "blob_sha": "148ca672b4905bdf2157544a05e6f497a526abf4",
       "size": 7177
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/ai-waste/IB-000052/smart-note.md",
+      "blob_sha": "218c1875d522f5a585993ca5b390c8da22b342c6",
+      "size": 13217
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/emit-ratified-the/IB-000046/smart-note.md",
@@ -4014,6 +4049,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-oath-of/IB-000041/smart-note.md",
       "blob_sha": "f15207e35d8a655b72e9e479c8e35cc9fd68d754",
       "size": 10255
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-reservoir/IB-000051/smart-note.md",
+      "blob_sha": "ac6d7a78d3d9f3ecbeecae81c0cbf7db0a5af6b2",
+      "size": 12395
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/viral-factory/IB-000048/smart-note.md",
