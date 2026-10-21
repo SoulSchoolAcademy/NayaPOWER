@@ -121,10 +121,18 @@ def main():
 
     verified = []
     dead = []
+    unavailable = []
     for u in dict.fromkeys(urls):
         if "localhost" in u or "127.0.0.1" in u:
             continue
-        (verified if check_url(u) else dead).append(f"url:{u}")
+        check_url(u)
+        state = URL_CHECK_RESULTS.get(u, {}).get("state", "DEAD")
+        if state == "LIVE":
+            verified.append(f"url:{u}")
+        elif state == "UNAVAILABLE":
+            unavailable.append(f"url:{u}")
+        else:
+            dead.append(f"url:{u}")
     for s in dict.fromkeys(shas):
         (verified if git_exists(s) else dead).append(f"sha:{s[:8]}")
     for p in dict.fromkeys(paths):
@@ -138,6 +146,11 @@ def main():
              "repo path and will fail here — a branch name is not a path. "
              "Do not backtick branch names in ## Evidence; cite the branch "
              "head's 40-char SHA or the PR URL instead.")
+    if unavailable:
+        print("RECEIPT GATE: ERROR — VERIFICATION_UNAVAILABLE")
+        print(f"MISSING: live verification for {len(unavailable)} evidence URL(s): {', '.join(unavailable[:5])}")
+        print("CURE: retry the evidence check when the host/network or authorization is available; do not relabel an unverified URL as dead. (owner: Gate maintainer)")
+        raise SystemExit(2)
     if not verified:
         fail("`## Evidence` exists but contains no verifiable artifact handle "
              "(live URL, existing SHA, or existing repo path).")
