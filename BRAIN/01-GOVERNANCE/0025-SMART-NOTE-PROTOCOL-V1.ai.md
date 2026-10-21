@@ -46,6 +46,9 @@ After a Door-A landing, close the record PR as superseded; never merge a stale r
 4. Voice (when checked): the player key for the note's normalized text resolves at the voice worker (cache-<sha256>.mp3); a miss = robot fallback = defect.
 Only after 1–3: deliver to Shawn as the feed link + the note's own page link.
 
+## Tracking (the intelligence ledger)
+Every note MUST be countable in the Smart Ledger / data dashboard along these dimensions: total count; per category (TOPIC/sub); per author (human or seat); per day/week/month/year; filed-vs-visible delta (tree count vs live feed count — a nonzero delta is a defect list, each item named); voiced count (baked narration present). All stats are COMPUTED from the tree + the live feed at read time; hand-entered numbers are protocol violations. Category names have ONE canonical spelling (case-sensitive); variant spellings (e.g. `system` vs `SYSTEM`) are categorization defects to normalize, because they silently split the counts.
+
 ## Registry note
 The `.naya/memory/smart-notes/index.json` registry is reconciled by its own cure lane; the Hub feed does NOT read it. Registry lag never blocks a note's Hub visibility and never excuses a missing landing.
 

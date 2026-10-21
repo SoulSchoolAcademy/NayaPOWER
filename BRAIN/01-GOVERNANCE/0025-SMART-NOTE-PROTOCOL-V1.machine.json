@@ -76,6 +76,23 @@
  ],
  "sync_refusal_condition": "missing NUTSHELL or HUMAN section",
  "title_law": "greatest possible human hook carrying the lesson in one line; generic labels are a protocol violation",
+ "tracking": {
+  "category_spelling": "one canonical spelling, case-sensitive; variants are defects",
+  "dimensions": [
+   "total",
+   "per category",
+   "per author",
+   "per day/week/month/year",
+   "filed vs visible delta",
+   "voiced count"
+  ],
+  "filed_vs_visible_delta": "nonzero = defect list, each item named",
+  "rule": "computed from tree + live feed; never hand-entered",
+  "surfaces": [
+   "Smart Ledger",
+   "data dashboard"
+  ]
+ },
  "verification_steps_author_duty": [
   "file exists at exact path on main (contents API)",
   "own entry present in live baked feed array (IB id + title)",

@@ -61,6 +61,19 @@ The feed obeys the same law: there is no single endless river of notes. Notes su
 7. **Verify it live, yourself.** The note's own entry in the live Hub feed, and its page (nayanet.live/s/sn####) answering 200. This verification is the authoring seat's duty — never assume a lane carried it.
 8. **Deliver the link.** To Shawn, "done" is the Hub feed link showing the note there. Done = visible, link in hand.
 
+## 5b. Tracking — the intelligence is counted
+
+What isn't tracked isn't managed. Every Smart Note is a counted unit of intelligence, and the numbers live where people can see them — the Smart Ledger and the data dashboard:
+
+- **Totals:** how many Smart Notes exist in the system.
+- **By category:** how many in each topic and subtopic — the shape of what we know.
+- **By author:** how many each person and each Naya has contributed — your own input, visible to you.
+- **By time:** per day, week, month, and year — the compounding, made visible.
+- **Filed vs visible:** how many are filed in the brain vs how many are live in the Hub feed. Any gap between those two numbers is a defect with a name on it — invisible notes are found by arithmetic, not by accident.
+- **Voiced:** how many carry Naya's real voice for play.
+
+The stats are **computed** from the brain's tree and the live feed — never hand-typed, never estimated. And they are only as honest as the categorization beneath them: one canonical spelling per category, everywhere, or the counts lie politely. (Shawn, 2026-10-21: categorize, organize, and track the intelligence — the data for everything logical and sensible.)
+
 ## 6. Voice — play means Naya's real voice
 
 Pressing play must read the note in Naya's real cloned voice, never the robotic fallback. The player first looks for the note's baked narration at the voice service; a note's narration is baked at publish (bake-on-publish in the sync) so the real voice is there from the first play. If play falls back to the robot voice, the bake didn't happen — that's a defect to fix, not a setting to accept.
