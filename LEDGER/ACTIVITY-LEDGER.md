@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31764,6 +31764,12 @@ _Last updated: 2026-10-21 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261021-0918 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall-20261021-0918.md: lane-executor seat-stall run 2026-10-21 09:18 UTC - all 30 queued briefs seat-barred for the Clarity seat (one drain t1132-lane10 since 08:16)
+
+**Evidence:** VERIFIED on live bytes: receipt seat-stall-20261021-0918.md exists (mtime 09:20:23Z); twelve-lane-rotation.json queued = 30, on-disk brief-queue = 30, sets byte-identical (order differs only); brief-queue/claimed/ root holds no new claims (drained parent brief-t1132-lane10.md already in claimed/done/); the +1 vs 08:16 is my own filed gap follow-up 
 
 ### ✅ lane-scorer-20261021-0825 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
