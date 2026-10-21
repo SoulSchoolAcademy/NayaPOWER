@@ -117,6 +117,22 @@ Targets:
 9. After Shawn changes protection settings, verify the actual ruleset/branch protection state, run a harmless test PR through all three tiers, and confirm no deadlock or bypass.
 10. Monitor the equalization dial, publish REACT evidence, and tune only from observed numbers.
 
+## Actual Required-check governor change (verified read-only snapshot)
+
+The live repository ruleset API was inspected on 2026-10-21. The active `Naya Execution Governance` ruleset is ID `23853581`, and its current required status contexts are:
+
+- `Receipt gate (evidence or it didn't happen)`
+- `Team review + scorecard receipt`
+
+The candidate workflow's check context is `Unified paperwork — tier + cross-seat scorecard + live evidence`.
+
+**Before:** both paperwork contexts above are Required under ruleset 23853581.  
+**Proposed after:** replace those two paperwork-only contexts with the single unified context above, after shadow tests, distinct-seat review, scorecard, and three-tier comparison pass. Keep substantive test/spec/security/protocol checks required. Tier C content is validated by the canonical content door, not admitted through a code-PR exception.
+
+The legacy `main-protection` ruleset ID `24858146` requires pull requests and prohibits deletion/non-fast-forward; its returned rules list did not include status checks. The repository's classic branch-protection endpoint returned 403 to this connection, so no claim is made about settings that endpoint could not show.
+
+**Human Director action remains reserved:** this workflow does not edit rulesets or Required contexts. Once the unified gate is proven, Shawn must change the Required-check contexts in the repository settings. Then we verify the live ruleset API reflects exactly the intended before/after state. No protection is removed in advance.
+
 ## Wider system: GitHub → Supabase → Hub
 
 ### GitHub
