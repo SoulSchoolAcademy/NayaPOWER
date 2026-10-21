@@ -92,6 +92,54 @@ def _live_pr(event: dict, repo: str, token: str) -> tuple[dict, int]:
     return pr, int(number)
 
 
+def _seat_key(seat: str) -> str:
+    value = (seat or "").strip().casefold()
+    return value[5:].strip() if value.startswith("naya ") else value
+
+
+_DIFF_SHA_FIELD_RE = re.compile(
+    r"(?im)^\s*diff(?:[\s_-]*sha256|[\s_-]*fingerprint)\s*[:=]\s*([a-f0-9]{64})\s*$"
+)
+_VERIFICATION_FIELD_RE = re.compile(
+    r"(?im)^\s*(?:verification|tests\s+run|behavior\s+verified)\s*[:=]\s*(.+?)\s*$"
+)
+
+
+def scorecard_diff_hash_of(body: str) -> str | None:
+    matches = [m.group(1).lower() for m in _DIFF_SHA_FIELD_RE.finditer(body or "")]
+    return matches[0] if matches and len(set(matches)) == 1 else None
+
+
+def _verification_attestation_present(body: str) -> bool:
+    for match in _VERIFICATION_FIELD_RE.finditer(body or ""):
+        value = match.group(1).strip()
+        if len(value) >= 12 and value.casefold() not in {"n/a", "none", "unknown", "todo", "not run"}:
+            return True
+    return False
+
+
+def compute_diff_fingerprint(files: list[dict]) -> str | None:
+    """Stable SHA-256 of material PR diff, independent of commit identity."""
+    if not files:
+        return None
+    material = []
+    for item in files:
+        if not isinstance(item, dict) or not item.get("filename") or not item.get("status") or not item.get("sha"):
+            return None
+        material.append({
+            "filename": item.get("filename"),
+            "status": item.get("status"),
+            "previous_filename": item.get("previous_filename"),
+            "blob_sha": item.get("sha"),
+            "additions": item.get("additions"),
+            "deletions": item.get("deletions"),
+            "patch": item.get("patch"),
+        })
+    material.sort(key=lambda item: (item["filename"], item["status"], item.get("previous_filename") or ""))
+    canonical = json.dumps(material, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
 def _scorecard_for_current_head(comments: list[dict], head: str,
                                 author_seat: str, minimum: float, *, tier: str = "A", diff_hash: str | None = None) -> tuple[bool, str]:
     for comment in comments:
