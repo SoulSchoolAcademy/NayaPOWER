@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 22:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4972,6 +4972,14 @@ _Last updated: 2026-10-21 22:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1202-lane10.md`
 
 **Evidence:** Artifacts verified: runbook + receipt exist; ls-remote independently confirms tip 665098e3f (unchanged) and heal branch 82fe1c62 (unchanged), both SHAs exactly as cited. Case A executed cleanly: heal head parent==tip, 3-file diff, --check OK on heal bytes, drift confirmed still on tip (expected, unmerged), #2385 unchanged, gate still advisory (fres
+
+### ✅ t1195 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** M4 initiation amendment verdict (proposal: SEAT/SYSTEM/UNCLASSIFIED tags for the M4 pre-merge-catch bar)
+
+**Receipt:** `twelve-lane-receipts/t1195-lane11.md`
+
+**Evidence:** Artifact-verified before scoring: sha256 of twelve-lane-receipts/t0072-lane9.md = 8f40391f... (matches receipt pin); gap-t0082-lane11.md = e8d0756e... (matches); M4 clause in lane-11/build_audit_t0822.py line 15 byte-verified verbatim as quoted. The receipt ships a drop-in M4 amendment (mandatory M4-SEAT/M4-SYSTEM/M4-UNCLASSIFIED tags), both-readin
 
 ### 🟡 t1192-lane8 — Team 8, Naya Sentinel (Governance & Safety) — 7.5/10 [PARTIAL]
 
