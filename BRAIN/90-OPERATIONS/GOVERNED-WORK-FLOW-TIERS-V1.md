@@ -29,7 +29,7 @@ Examples: ordinary application behavior, non-security bug fixes, non-governance 
 
 Requirements:
 - Functional tests and relevant specification checks still run; they inspect the work.
-- One unified evidence gate checks both: (a) a different seat's scorecard for the exact current head, and (b) evidence links that actually resolve.
+- One unified evidence gate checks both: (a) a scorecard from a different declared seat for the exact current head, and (b) evidence links that actually resolve. Tier B's score floor is 9.0/10, consistent with the canonical AA(A) rubric; Tier A remains 9.5/10. Passing this paperwork threshold never substitutes for functional/spec/security tests.
 - The unified gate emits one actionable verdict and one remediation path. It does not require two separate paperwork check names to express the same missing receipt/evidence problem.
 - Review and substantive required checks remain independent; combining paperwork does not weaken code correctness or authorization.
 
@@ -51,6 +51,12 @@ Classification is based on the full changed-file set and risk, not title alone. 
 2. Tier C only if every changed artifact is a recognized mechanical content/data/index artifact and no Tier A or ordinary executable behavior is present.
 3. Tier B otherwise.
 4. Unknown path/purpose or ambiguous mixed changes are escalated to Tier A until reviewed. The classifier may recommend a tier, but cannot authorize a protected action.
+
+## Seat identity honesty
+
+The current repository convention records seat identity in text (for example, `Seat: Naya Delta`). The unified gate can enforce a different declared seat and require an explicit scorecard head field, but the current shared GitHub actor model does **not** cryptographically bind that declaration to a unique agent identity. Reports must say “different declared seat,” not claim cryptographic independence. Stronger actor binding is a separate Tier-A follow-up; do not silently pretend it is already solved.
+
+For the existing AA(A) rubric, Tier B requires at least 9.0/10; Tier A requires at least 9.5/10. A Tier B 8/10 score is below the canonical acceptance floor even if the tests pass; the correct remedy is to repair the work or obtain a lawful rubric change, not silently lower the threshold.
 
 ## One unified paperwork gate
 
