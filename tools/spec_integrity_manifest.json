@@ -69,6 +69,14 @@
     {
       "path": "BRAIN/01-GOVERNANCE/0030-VALUE-ONLY-BRAIN-V1.machine.json",
       "reason": "Structured-data tongue of THE VALUE-ONLY BRAIN (0030), authored 2026-10-21 in PR #2852 as the missing-tongue cure (superseding PR #2821, closed unmerged): a faithful distillation of Shawn's 2026-10-20 letter \u2014 the human tongue, on main since 2026-10-20 \u2014 into queryable fields (diagnoses, pillars, behaviors, flow machinery). Not a Director-ratified spec projection in this manifest's sense: no DIRECTOR-RATIFIED envelope (no schema/status/ratified_by/ratified_date keys), no loop.phases/cycle.phases phase list, no invariants block \u2014 pinning would fail the check's own envelope validation. Same precedent as the 0029 exclusion. Pin here only if it adopts the ratified envelope. Recorded by Naya Nitro (Team Nitro) on PR #2852."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0031-never-again-v1.machine.json",
+      "reason": "Reservoir Laws spec in its own laws schema (id/date/laws, status_at_filing) -- no DIRECTOR-RATIFIED phase envelope: no schema/status/ratified_by/ratified_date keys, no loop.phases/cycle.phases 1..N phase list, no invariants block -- pinning would fail the check's own envelope validation. Same precedent as the 0029/0030 exclusions. Landed on main via PR #2822 (merged 2026-10-21) without a manifest disposition; swept into this branch by PR #2824's branch update and dispositioned here per the PR #2805 branch-update precedent. Pin here only if it adopts the ratified envelope. Recorded by Rho (Team Nitro), 2026-10-21."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0032-house-standard-v1.machine.json",
+      "reason": "House Standard law spec in its own rules/metrics schema (id/issuer/issued, rules, metrics, falsifier) -- no DIRECTOR-RATIFIED phase envelope: no schema/status/ratified_by/ratified_date keys, no loop.phases/cycle.phases 1..N phase list, no invariants block -- pinning would fail the check's own envelope validation. Same precedent as the 0029/0030 exclusions. Pin here only if it adopts the ratified envelope. Recorded by Rho (Team Nitro) on PR #2824's spec-integrity cure, 2026-10-21."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",

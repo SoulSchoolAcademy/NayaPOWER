@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-21  
-**Receipt basis commit:** `ac4878f8283606a60cbbad3ad7437a8b9a70a433`  
-**Inventory file count:** 1521  
+**Receipt basis commit:** `ee02c65b8e8ffafea210742bfd7d8e382a63f902`  
+**Inventory file count:** 1524  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 83 |
+| 01-GOVERNANCE | 86 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -130,6 +130,9 @@
 - `BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.ai.md` — `c0805bb866dc` (4225 bytes)
 - `BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.human.md` — `49369440028a` (3641 bytes)
 - `BRAIN/01-GOVERNANCE/0031-never-again-v1.machine.json` — `1e58e3180215` (2275 bytes)
+- `BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.ai.md` — `2ec5d3a522f7` (3548 bytes)
+- `BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.human.md` — `40c82a022a3a` (4783 bytes)
+- `BRAIN/01-GOVERNANCE/0032-house-standard-v1.machine.json` — `c1bb2ffa2f41` (2617 bytes)
 - `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md` — `929a5ae44a37` (20247 bytes)
 - `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md` — `f39c47507120` (6877 bytes)
 - `BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json` — `bd9c9a1a8156` (18036 bytes)

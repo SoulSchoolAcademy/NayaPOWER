@@ -1,0 +1,79 @@
+name: Door Obligation
+
+# The intelligence door's mechanical obligation (PR #2831 falsifiers
+# 6325348465 / 6326451724; Shawn's House-Fire Law, 2026-10-21): a Smart
+# Note page that lands on main must carry, IN THE SAME PUSH, its capture
+# (.naya/capture/<IB>.json), its registry entry
+# (.naya/memory/smart-notes/index.json) and the regenerated brain index.
+# A page that lands bare is an incomplete write, and cure PRs cannot
+# outrun a door that keeps writing them.
+#
+# This workflow is the CI half of the enforcement. The door lane's half
+# is the same tool as a pre-push step:
+#
+#   python3 tools/check_door_obligation.py --range <pre-push-sha>..HEAD
+#
+# Trigger design:
+#   pull_request — the DELTA check hard-fails: a branch that adds or
+#     modifies a note page without its records cannot merge. (The
+#     standing historical debt is NOT re-litigated here; the drift
+#     ratchet owns it.)
+#   push to main — the delta check flags a door write that slipped its
+#     records within minutes of landing, the tombstone scan reports
+#     removed-without-record ids for the LAW lane (non-blocking: the
+#     vanish guard test carries the blocking verdict), and the guard
+#     battery re-runs so the debt state is visible on the tip itself.
+
+on:
+  pull_request:
+    paths:
+      - "BRAIN/05-MEMORY/SMART-NOTES/**"
+      - ".naya/capture/**"
+      - ".naya/memory/smart-notes/index.json"
+      - "tools/check_door_obligation.py"
+  push:
+    branches: ["main"]
+    paths:
+      - "BRAIN/05-MEMORY/SMART-NOTES/**"
+      - ".naya/capture/**"
+      - ".naya/memory/smart-notes/index.json"
+  workflow_dispatch:
+
+jobs:
+  door-obligation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Delta check — pages this change touches must carry their records
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            python3 tools/check_door_obligation.py \
+              --range "origin/${{ github.base_ref }}...HEAD"
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            python3 tools/check_door_obligation.py \
+              --range "${{ github.event.before }}..${{ github.sha }}"
+          else
+            echo "manual run: delta check skipped (no range)"
+          fi
+      - name: Tombstone scan — removed-without-record ids (LAW lane report)
+        if: github.event_name == 'push'
+        continue-on-error: true
+        run: python3 tools/check_door_obligation.py --json
+      - name: Guard battery — the tip's own verdict, re-measured on landing
+        if: github.event_name == 'push'
+        run: |
+          python3 -m pip install -q pytest
+          python3 -m pytest -q \
+            tests/test_brain_index_freshness.py \
+            tests/test_smart_note_registry_drift.py \
+            tests/test_ratified_intelligence_cannot_vanish.py
+      - name: Tool unit tests
+        if: github.event_name == 'pull_request'
+        run: |
+          python3 -m pip install -q pytest
+          python3 -m pytest -q tests/test_door_obligation.py

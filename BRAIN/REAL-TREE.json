@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-21",
-  "receipt_basis_commit": "ac4878f8283606a60cbbad3ad7437a8b9a70a433",
-  "inventory_file_count": 1521,
+  "receipt_basis_commit": "ee02c65b8e8ffafea210742bfd7d8e382a63f902",
+  "inventory_file_count": 1524,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 83,
+    "01-GOVERNANCE": 86,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -489,6 +489,21 @@
       "path": "BRAIN/01-GOVERNANCE/0031-never-again-v1.machine.json",
       "blob_sha": "1e58e3180215140ec7510f31658a8e34cce81a41",
       "size": 2275
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.ai.md",
+      "blob_sha": "2ec5d3a522f7c8a991c71e3515c57ba3a76fc38a",
+      "size": 3548
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.human.md",
+      "blob_sha": "40c82a022a3a9ad908290593649bc99927825434",
+      "size": 4783
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0032-house-standard-v1.machine.json",
+      "blob_sha": "c1bb2ffa2f41ff49940ff0b218dc12cc0c9987bf",
+      "size": 2617
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md",
