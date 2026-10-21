@@ -3,6 +3,7 @@ import io
 import sys
 from pathlib import Path
 from unittest.mock import patch
+import pytest
 import urllib.error
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,6 +48,18 @@ def test_forbidden_url_is_unavailable_not_dead():
     with patch("urllib.request.urlopen", side_effect=[http_error(403), http_error(403)]):
         assert not check_pr_receipt.check_url("https://example.test/private-evidence")
     assert check_pr_receipt.URL_CHECK_RESULTS["https://example.test/private-evidence"]["state"] == "UNAVAILABLE"
+
+
+def test_main_reports_forbidden_evidence_as_unavailable_not_dead(monkeypatch, capsys):
+    monkeypatch.setenv("PR_BODY", "## Evidence\nhttps://example.test/private-evidence\n")
+    check_pr_receipt.URL_CHECK_RESULTS.clear()
+    with patch("urllib.request.urlopen", side_effect=[http_error(403), http_error(403)]):
+        with pytest.raises(SystemExit) as exc:
+            check_pr_receipt.main()
+    assert exc.value.code == 2
+    out = capsys.readouterr().out
+    assert "VERIFICATION_UNAVAILABLE" in out
+    assert "dead artifact handle" not in out
 
 
 def test_head_rejected_but_get_works_is_live():
