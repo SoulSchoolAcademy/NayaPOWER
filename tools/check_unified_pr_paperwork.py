@@ -48,6 +48,7 @@ def _emit(code: str, message: str, cure: str, owner: str = "PR authoring lane") 
             "missing": missing,
             "cure": cure,
             "owner": owner,
+            "details": message if code == "PASS" else "",
             "head": CURRENT_HEAD,
             "tier": CURRENT_TIER,
         }
@@ -64,6 +65,8 @@ def _emit(code: str, message: str, cure: str, owner: str = "PR authoring lane") 
             fh.write(f"- **Tier:** {CURRENT_TIER or 'unknown'}\n")
             fh.write(f"- **Head:** {CURRENT_HEAD or 'unavailable'}\n")
             fh.write(f"- **Missing:** {missing}\n")
+            if code == "PASS":
+                fh.write(f"- **Details:** {message}\n")
             fh.write(f"- **Cure:** {cure} (owner: {owner})\n")
 
     return 0 if code == "PASS" else 1
