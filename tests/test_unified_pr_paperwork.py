@@ -27,6 +27,12 @@ class UnifiedPaperworkThresholdTests(unittest.TestCase):
         ok, _ = _scorecard_for_current_head(comments, current, "alpha", 8.0)
         self.assertFalse(ok)
 
+    def test_score_above_ten_is_rejected(self):
+        head = "f" * 40
+        comments = [{"body": f"## SCORECARD\\nScore: 11/10\\nHead: {head}\\nSeat: Naya Delta"}]
+        ok, _ = _scorecard_for_current_head(comments, head, "alpha", 9.5)
+        self.assertFalse(ok)
+
     def test_author_cannot_score_own_work(self):
         head = "e" * 40
         comments = [{"body": f"## SCORECARD\nScore: 10/10\nHead: {head}\nSeat: Naya Alpha"}]
