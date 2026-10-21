@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 20:53 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5065,6 +5065,14 @@ _Last updated: 2026-10-21 20:53 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1186 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
+**Task:** Stage 0 replay of 3 past decisions
+
+**Receipt:** `twelve-lane-receipts/t1186-lane3.md`
+
+**Evidence:** Verified: all 5 byte-pinned sources exist (t1012-lane3, t0697-lane2 receipts; retrieval-auth-gate-HOLD-t0783-lane4.json; t1212-lane5, t1302-lane8 receipts). Spot-checked the three load-bearing facts: t1212-lane5.md:15 confirms the wiring UNWIRED and protected; t1302-lane8.md:27 confirms the protected-gate classification; decision_principle.py carri
+
+### ✅ t1186 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
 **Task:** Stage 0 [REPLAY]: replay 3 past consequential decisions against current principles with named deltas, every fact re-derived from live bytes
 
 **Receipt:** `twelve-lane-receipts/t1186-lane3.md`
@@ -5081,6 +5089,14 @@ _Last updated: 2026-10-21 20:53 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1178 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
+**Task:** truth-gate CI-green/local-red fixture repair
+
+**Receipt:** `twelve-lane-receipts/t1178-lane2.md`
+
+**Evidence:** Verified: test file currently sha 787b983d (pre-fix code) vs claimed 87f9c70b — the fix is GONE, clobbered by a hub-sync one-way-mirror pass exactly as the receipt predicted ('dies on the next sync pass'). Current file reproduces the receipt's BEFORE state (3 failed, 13 passed on -k adversarial), confirming the work was real, NOT phantom — the desc
+
+### ✅ t1178 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
 **Task:** repair CI-green/local-red truth-gate defect in tests/test_learn_compound_scale.py (_truth_lesson fixture read real home files when present)
 
 **Receipt:** `twelve-lane-receipts/t1178-lane2.md`
@@ -5094,6 +5110,14 @@ _Last updated: 2026-10-21 20:53 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1178-lane2.md`
 
 **Evidence:** Verified: hub-sync/repo/tests/test_learn_compound_scale.py exists (Oct 21 19:57); _truth_lesson(lid, tmp_path) now always materializes the hermetic fixture under tmp_path (0 os.path.exists conditionals; fixture seam 23+/30- confined to the test file, gates.py/registry untouched). Why not 9.5: the repair is PROVEN but not SHIPPED — it lives in a one
+
+### ✅ t1175 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** queue-ledger check adoption (PARTIALLY WIRED verdict)
+
+**Receipt:** `twelve-lane-receipts/t1175-lane4.md`
+
+**Evidence:** Verified: tool sha256 248a9151ef29777cc21eac3a388f55373d1aa99b65bd4c4006182772c828c32a matches claim byte-exact; evidence file lane-4/qlc-live-run-t1175.json exists; ledger append-only growth 10->18 lines consistent with continued dispatcher activity. Live PASS (exit 0) and 12/12 self-tests accepted from filing-time evidence (checker needs --before
 
 ### ✅ t1175 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.3/10 [VERIFIED]
 
