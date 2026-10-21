@@ -34,6 +34,7 @@ from check_merge_consensus import (  # noqa: E402
     author_seat_of,
     run_gate,
     seat_of,
+    scorecard_head_of,
 )
 
 
@@ -204,8 +205,13 @@ def test_scorecard_matcher_rejects_below_law_threshold():
 
 def test_scorecard_matcher_accepts_iv_format():
     body = (f"## VERDICT: MERGE RECOMMENDED\n**Honest scorecard: 9.5/10.**\n"
-            f"head {HEAD}\nSeat: Naya 3")
+            f"Head SHA: {HEAD}\nSeat: Naya 3")
     assert _looks_like_scorecard(body, HEAD)
+
+
+def test_merge_recommended_phrase_cannot_replace_numeric_threshold():
+    body = f"## VERDICT: MERGE RECOMMENDED\nHonest scorecard: 8/10\nHead SHA: {HEAD}\nSeat: Naya 3"
+    assert not _looks_like_scorecard(body, HEAD)
 
 
 def test_scorecard_matcher_rejects_low_score():
@@ -259,7 +265,7 @@ def test_post_convention_full_pass(capsys):
     from Naya 3 naming the exact head -> PASSED."""
     review = ("[SIGN OUT] IV seat. ## VERDICT: MERGE RECOMMENDED\n"
               "Seat: Naya 2")
-    scorecard = (f"**Honest scorecard: 9.4/10.**\nhead {HEAD}\n"
+    scorecard = (f"**Honest scorecard: 9.5/10.**\nHead SHA: {HEAD}\n"
                  f"## VERDICT: MERGE RECOMMENDED\nSeat: Naya 3")
 
     def fake_api_get(path, token):
@@ -531,3 +537,21 @@ def test_registry_recognizes_every_named_seat():
     # gpt-6 specifically: the seat that motivated this test
     assert SEAT_RE.search("Naya GPT-6")
     assert AUTHOR_SEAT_RE.search("Seat: Naya GPT-6")
+def test_scorecard_head_parser_accepts_header_shape_variants():
+    for header in ("Head", "Head SHA", "Head-SHA", "HEAD_SHA"):
+        body = f"## SCORECARD\n{header}: {HEAD}\nverdict: 9.5\nSeat: Naya Delta"
+        assert scorecard_head_of(body) == HEAD
+        assert _looks_like_scorecard(body, HEAD)
+
+
+def test_scorecard_matcher_rejects_sha_mentioned_only_in_prose():
+    body = f"## SCORECARD\nThis evaluates commit {HEAD}.\nverdict: 9.5\nSeat: Naya Delta"
+    assert scorecard_head_of(body) is None
+    assert not _looks_like_scorecard(body, HEAD)
+
+
+def test_scorecard_matcher_rejects_conflicting_head_fields():
+    other = "a" * 40 if HEAD != "a" * 40 else "b" * 40
+    body = f"## SCORECARD\nHead SHA: {HEAD}\nHead-SHA: {other}\nverdict: 9.5\nSeat: Naya Delta"
+    assert scorecard_head_of(body) is None
+    assert not _looks_like_scorecard(body, HEAD)
