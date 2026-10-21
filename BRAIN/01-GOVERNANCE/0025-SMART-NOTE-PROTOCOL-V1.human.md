@@ -74,6 +74,18 @@ What isn't tracked isn't managed. Every Smart Note is a counted unit of intellig
 
 The stats are **computed** from the brain's tree and the live feed — never hand-typed, never estimated. And they are only as honest as the categorization beneath them: one canonical spelling per category, everywhere, or the counts lie politely. (Shawn, 2026-10-21: categorize, organize, and track the intelligence — the data for everything logical and sensible.)
 
+## 5c. The Intelligent Event — everyone is notified
+
+A Smart Note landing is an **Intelligent Event**, and it announces itself in three places, every time:
+
+1. **A notification in the Hub** — the intelligence arrived, and nobody has to go hunting for it.
+2. **Today's Intel** — the note's nutshell appears in the daily intelligence play, one line that carries the essence, linked to the whole.
+3. **The activity feed** — an entry recording the event (what the intelligence is, whose it is, when it happened) carrying a **Smart Link** — one click to the full Intelligent Block.
+
+Nayas and humans alike are notified of the intelligence, where it lives, and when it happened. A note that lands silently — no notification, no Intel nutshell, no activity entry with its Smart Link — has only half-arrived. The event is part of the process, not a bonus. (Shawn, 2026-10-21.)
+
+*Honest state at V1: the feed card itself is live; the Today's Intel nutshell and the activity-feed event are owed wiring (Today's Intel still renders fixed fixtures) and are tracked as build work under this protocol — the law states the destination, the grind closes the gap.*
+
 ## 6. Voice — play means Naya's real voice
 
 Pressing play must read the note in Naya's real cloned voice, never the robotic fallback. The player first looks for the note's baked narration at the voice service; a note's narration is baked at publish (bake-on-publish in the sync) so the real voice is there from the first play. If play falls back to the robot voice, the bake didn't happen — that's a defect to fix, not a setting to accept.

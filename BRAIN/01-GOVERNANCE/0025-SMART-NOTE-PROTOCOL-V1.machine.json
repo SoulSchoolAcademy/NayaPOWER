@@ -40,6 +40,20 @@
   ],
   "presentation": "elevated boards, big clear text"
  },
+ "intelligent_event": {
+  "audience": "Nayas and humans",
+  "outputs": [
+   "Hub notification",
+   "Today's Intel nutshell + link",
+   "activity-feed entry with Smart Link to the full Intelligent Block"
+  ],
+  "state_at_V1": {
+   "activity_event": "owed wiring",
+   "feed_card": "live",
+   "todays_intel_nutshell": "owed wiring"
+  },
+  "trigger": "verified landing"
+ },
  "landing_doors": [
   "A: direct write to main via App/bypass identity (standing approval: Smart Notes folder); author drives and follows up until the ref moves",
   "B: dock-merged PR through the full scored process"

@@ -49,6 +49,9 @@ Only after 1–3: deliver to Shawn as the feed link + the note's own page link.
 ## Tracking (the intelligence ledger)
 Every note MUST be countable in the Smart Ledger / data dashboard along these dimensions: total count; per category (TOPIC/sub); per author (human or seat); per day/week/month/year; filed-vs-visible delta (tree count vs live feed count — a nonzero delta is a defect list, each item named); voiced count (baked narration present). All stats are COMPUTED from the tree + the live feed at read time; hand-entered numbers are protocol violations. Category names have ONE canonical spelling (case-sensitive); variant spellings (e.g. `system` vs `SYSTEM`) are categorization defects to normalize, because they silently split the counts.
 
+## The Intelligent Event (mandatory outputs of a landing)
+Every verified landing MUST produce, as part of the same process: (1) a Hub notification of the note's arrival; (2) the note's NUTSHELL in Today's Intel, linked to the full note; (3) an activity-feed entry (what / whose / when) carrying a Smart Link to the note's own page (nayanet.live/s/sn####). All three are completion criteria for the landing pipeline, not enhancements. State at V1: feed card LIVE; Today's Intel nutshell and activity event NOT yet wired (Today's Intel renders fixed fixtures per the 2026-10-21 room audit) — owed build work, tracked under this protocol; do not claim the event layer works until all three surfaces verify live for a real note.
+
 ## Registry note
 The `.naya/memory/smart-notes/index.json` registry is reconciled by its own cure lane; the Hub feed does NOT read it. Registry lag never blocks a note's Hub visibility and never excuses a missing landing.
 
