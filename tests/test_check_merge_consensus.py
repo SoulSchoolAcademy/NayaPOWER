@@ -34,6 +34,7 @@ from check_merge_consensus import (  # noqa: E402
     author_seat_of,
     run_gate,
     seat_of,
+    scorecard_head_of,
 )
 
 
@@ -531,3 +532,21 @@ def test_registry_recognizes_every_named_seat():
     # gpt-6 specifically: the seat that motivated this test
     assert SEAT_RE.search("Naya GPT-6")
     assert AUTHOR_SEAT_RE.search("Seat: Naya GPT-6")
+def test_scorecard_head_parser_accepts_header_shape_variants():
+    for header in ("Head", "Head SHA", "Head-SHA", "HEAD_SHA"):
+        body = f"## SCORECARD\\n{header}: {HEAD}\\nverdict: 9.5\\nSeat: Naya Delta"
+        assert scorecard_head_of(body) == HEAD
+        assert _looks_like_scorecard(body, HEAD)
+
+
+def test_scorecard_matcher_rejects_sha_mentioned_only_in_prose():
+    body = f"## SCORECARD\\nThis evaluates commit {HEAD}.\\nverdict: 9.5\\nSeat: Naya Delta"
+    assert scorecard_head_of(body) is None
+    assert not _looks_like_scorecard(body, HEAD)
+
+
+def test_scorecard_matcher_rejects_conflicting_head_fields():
+    other = "a" * 40 if HEAD != "a" * 40 else "b" * 40
+    body = f"## SCORECARD\\nHead SHA: {HEAD}\\nHead-SHA: {other}\\nverdict: 9.5\\nSeat: Naya Delta"
+    assert scorecard_head_of(body) is None
+    assert not _looks_like_scorecard(body, HEAD)
