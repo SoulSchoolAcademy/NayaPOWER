@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 07:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31726,6 +31726,18 @@ _Last updated: 2026-10-21 06:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261021-0710 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall-20261021-0709.md: lane-executor seat-stall 07:09 UTC - all 30 queued briefs seat-barred for the Clarity seat (7th consecutive hourly stall)
+
+**Evidence:** VERIFIED on live bytes: receipt seat-stall-20261021-0709.md exists (full run record, 20x exit-7 + 4x seat-identity + 1x merge-consensus + 5 prose-gate skips = 30 refusals, zero mv/touch); twelve-lane-rotation.json queued byte-count = 30 - matches the receipt's 30/30 blocked claim, composition unchanged vs the 06:44 receipt; prior stall seat-stall-2
+
+### ✅ lane-scorer-20261021-0650 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261021-0644.md: lane-executor seat-stall 06:44 UTC - all 30 queued briefs seat-barred for the Clarity seat (6th consecutive hourly stall)
+
+**Evidence:** VERIFIED live bytes: receipt exists (20x exit-7 + 10x exit-2 = 30 refusals, full record); twelve-lane-rotation.json queued byte-count = 30, composition identical to 05:42 receipt; prior stall seat-stall-20261021-0542.md exists (62 min > 60-min stall cap, fresh receipt lawful). Score 9.0 - GOOD, ONE MORE PASS. Why not 9.5: (1) documents a stall rath
 
 ### ✅ lane-scorer-20261021-0550 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
