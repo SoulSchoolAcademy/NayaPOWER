@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-20T23:57:21Z",
+ "generated_utc": "2026-10-21T00:07:10Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "eb88ae1e48d5243c358b9c15152ae74e6978adbe",
-  "short": "eb88ae1e48d5",
+  "sha": "98e93d13747ee8ae1485dcbbb6aba8b6cd0009b1",
+  "short": "98e93d13747e",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-20T23:56:09Z"
+  "checked_utc": "2026-10-21T00:06:08Z"
  },
  "venue": {
   "live": 2765,
@@ -57,27 +57,27 @@
  },
  "queue": {
   "actionable": 0,
-  "proposed": 17,
+  "proposed": 18,
   "top": [
    {
     "id": "Q-PROP-1",
-    "title": "\"Current Truth Resolver\" workflow's schedule-triggered run FAILED at \"Collect live GitHub"
+    "title": "\"Current Truth Resolver\" workflow's step-5 \"Resolve current truth\" FAILED LOUD by design \u2014"
    },
    {
     "id": "Q-PROP-2",
-    "title": "\"Kernel Tests\" RED at live tip `36707b69` \u2014 brain-index freshness drift, 3 failures in tes"
+    "title": "\"Current Truth Resolver\" workflow's schedule-triggered run FAILED at \"Collect live GitHub"
    },
    {
     "id": "Q-PROP-3",
-    "title": "\"Hub Feeds Emit\" workflow's FIRST schedule-triggered run FAILED \u2014 push rejected by branch"
+    "title": "\"Kernel Tests\" RED at live tip `36707b69` \u2014 brain-index freshness drift, 3 failures in tes"
    },
    {
     "id": "Q-PROP-4",
-    "title": "\"Live Intelligence Commit Proof\" workflow FAILED at the live tip \u2014 NEW-SUSPECT class, recu"
+    "title": "\"Hub Feeds Emit\" workflow's FIRST schedule-triggered run FAILED \u2014 push rejected by branch"
    },
    {
     "id": "Q-PROP-5",
-    "title": "merge-protocol enforcement is UNWIRED \u2014 required checks FAILED on #2801's exact head yet i"
+    "title": "\"Live Intelligence Commit Proof\" workflow FAILED at the live tip \u2014 NEW-SUSPECT class, recu"
    }
   ]
  },
@@ -210,7 +210,7 @@
   }
  ],
  "gates_on_tip": {
-  "test": "unknown",
+  "test": "failure",
   "spec_integrity": "green",
   "receipt": "unknown"
  },
@@ -254,27 +254,27 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 75
+   "age_s": 66
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 75
+   "age_s": 66
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 75
+   "age_s": 66
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 75
+   "age_s": 66
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 75
+   "age_s": 66
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 75
+   "age_s": 66
   }
  }
 }
