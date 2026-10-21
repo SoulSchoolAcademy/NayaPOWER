@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 15:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-21 17:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 51 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 53 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -64,13 +64,13 @@
 - [#2825](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825) The GitHub webhook receiving door — nayanet-github-intake (verify + ac
 - [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
 
-### BUILD (19)
+### BUILD (21)
+- [#2846](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2846) fix(activation): pin Operating Code V2 LF in Windows checkouts (reland
+- [#2845](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2845) fix(smart-notes): make local replay idempotent 📝draft
+- [#2843](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2843) docs(brain): one system in simple words — canonical Smart Note candida 📝draft
 - [#2842](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2842) boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATIO
 - [#2837](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2837) [dec-16] Report generator: flip 9.0 below-bar carrier to 9.5 (draft —  📝draft
-- [#2835](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2835) Clean home R1: remove the 10 byte-proven duplicate files (Shawn-approv
-- [#2831](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2831) fix(brain): register SN-0800/SN-0805/SN-0806/SN-0807/SN-0808 — cure th
-- [#2830](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2830) fix(reporting): heuristic evidence never displaces authoritative score
-- …and 14 more
+- …and 16 more
 
 ### WIRE (4)
 - [#2834](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2834) fix(readiness): C3 classifier no longer cries wolf on a healthy gate

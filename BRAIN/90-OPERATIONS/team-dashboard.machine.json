@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T15:16:03+00:00",
+ "generated_utc": "2026-10-21T17:16:10+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -184,6 +184,24 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2846,
+     "title": "fix(activation): pin Operating Code V2 LF in Windows checkouts (reland of #2732)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2846",
+     "draft": false
+    },
+    {
+     "number": 2845,
+     "title": "fix(smart-notes): make local replay idempotent",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2845",
+     "draft": true
+    },
+    {
+     "number": 2843,
+     "title": "docs(brain): one system in simple words \u2014 canonical Smart Note candidate",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2843",
+     "draft": true
+    },
+    {
      "number": 2842,
      "title": "boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATION (distill-daily-202",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2842",
@@ -212,27 +230,9 @@
      "title": "fix(reporting): heuristic evidence never displaces authoritative score value/source (4th p",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2830",
      "draft": false
-    },
-    {
-     "number": 2829,
-     "title": "[W2 judge] L577 write-path guard: no score renders or writes without measured_at",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2829",
-     "draft": false
-    },
-    {
-     "number": 2828,
-     "title": "Naya4/smart notes 2026 09 30",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2828",
-     "draft": false
-    },
-    {
-     "number": 2827,
-     "title": "Naya/mission state",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2827",
-     "draft": false
     }
    ],
-   "open_pr_count": 19
+   "open_pr_count": 21
   },
   {
    "id": "wire",
@@ -634,6 +634,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 51,
- "unassigned_prs": 19
+ "open_pr_total": 53,
+ "unassigned_prs": 21
 }
