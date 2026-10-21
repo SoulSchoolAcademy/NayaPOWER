@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T05:15:07+00:00",
+ "generated_utc": "2026-10-21T06:15:11+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -60,6 +60,12 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
+     "number": 2836,
+     "title": "cure(brain-index): regen index layer for SN-0808 landing (1-file drift at 895d7361)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2836",
+     "draft": false
+    },
+    {
      "number": 2816,
      "title": "fix(brain): preserve Windows long-path projection existence in drift audit",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816",
@@ -78,7 +84,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 4
   },
   {
    "id": "act",
@@ -616,6 +622,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 46,
+ "open_pr_total": 47,
  "unassigned_prs": 17
 }

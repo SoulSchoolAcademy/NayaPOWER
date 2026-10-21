@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 05:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-21 06:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 46 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 47 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -53,7 +53,8 @@
 ### LEARN (1)
 - [#2833](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2833) docs(brain): learning event 2026-10-20
 
-### KNOW (3)
+### KNOW (4)
+- [#2836](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2836) cure(brain-index): regen index layer for SN-0808 landing (1-file drift
 - [#2816](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816) fix(brain): preserve Windows long-path projection existence in drift a
 - [#2736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736) fix(brain-index): make regeneration line-ending deterministic on every
 - [#2385](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2385) feat(ci): dedicated brain-index-freshness required gate workflow (Shaw
