@@ -18,9 +18,9 @@ Examples: governance and law, authority/security/privacy, CI/workflow files, gat
 
 Requirements:
 - Relevant functional/spec/security tests pass.
-- A different seat's independent scorecard is pinned to the exact current head SHA and is at least 9.5/10 (AAA), with honest gaps stated.
+- A scorecard from a different declared seat is pinned to the exact current head SHA and is at least 9.5/10 (AAA), with honest gaps stated. A numeric score is mandatory; prose such as “MERGE RECOMMENDED” cannot substitute for the threshold. Any file deletion, rename, or copy is automatically Tier A.
 - Evidence links resolve and state what they prove.
-- Independent review and all required protocol gates pass.
+- Any separately required native PR approval and protocol gates still pass; the unified paperwork gate does not demand a second review-comment receipt beyond the scorecard.
 - Runtime/production proof is required when the change claims production behavior.
 - Any new commit invalidates head-bound evidence and requires re-score/re-verify. Unrelated changes should not silently invalidate a scorecard if the scored diff and its dependency context are unchanged; the gate must make this decision explicit and auditable, never silently reuse a stale pin.
 
@@ -29,7 +29,7 @@ Examples: ordinary application behavior, non-security bug fixes, non-governance 
 
 Requirements:
 - Functional tests and relevant specification checks still run; they inspect the work.
-- One unified evidence gate checks both: (a) a scorecard from a different declared seat for the exact current head, and (b) evidence links that actually resolve. Tier B's score floor is 9.0/10, consistent with the canonical AA(A) rubric; Tier A remains 9.5/10. Passing this paperwork threshold never substitutes for functional/spec/security tests.
+- One unified evidence gate checks both: (a) a scorecard from a different declared seat with a numeric score >=9.0/10, and (b) evidence links that actually resolve. The scorecard carries an explicit head field, a stable Diff-SHA256 fingerprint, and a Verification/Tests attestation. If an unrelated commit changes the head but not the material diff, Tier B may reuse the scorecard only when the fingerprint matches; a changed diff requires a fresh scorecard. Tier A remains 9.5/10 and exact-head-bound. Passing this paperwork threshold never substitutes for functional/spec/security tests.
 - The unified gate emits one actionable verdict and one remediation path. It does not require two separate paperwork check names to express the same missing receipt/evidence problem.
 - Review and substantive required checks remain independent; combining paperwork does not weaken code correctness or authorization.
 
@@ -61,16 +61,20 @@ For the existing AA(A) rubric, Tier B requires at least 9.0/10; Tier A requires 
 ## One unified paperwork gate
 
 The candidate gate must:
-- Read the current PR body, current head SHA, PR author seat, changed paths, review/scorecard comments, and evidence URLs from live GitHub state.
-- Validate the different-seat rule and exact-head binding using the same canonical matcher as the existing consensus gate; no duplicated regex implementation.
+- Read the current PR body, current head SHA, PR author seat, full changed-file descriptors/statuses/count, scorecard comments, and evidence URLs from live GitHub state.
+- Fail closed to Tier A for file deletion/rename/copy, unknown file status, missing metadata, or truncated changed-file lists.
+- Validate the different-declared-seat rule and explicit head field using the canonical matcher; no duplicated head parser.
+- Require Tier A numeric score >=9.5 on the exact current head. Require Tier B numeric score >=9.0, a matching Diff-SHA256, and a non-empty Verification/Tests attestation.
 - Validate evidence links with bounded timeouts, clear status, and safe handling of redirects/HEAD-rejecting hosts.
-- Enforce the Tier A score threshold; do not infer a score from prose unrelated to the reviewed SHA.
+- Enforce numeric score thresholds for both tiers; approval prose cannot substitute for a score. A Tier B receipt may survive a head-only move only when its material diff fingerprint matches.
 - Return a single machine-readable verdict plus a plain-language summary:
   - `PASS`
   - `BLOCKED — SCORECARD_MISSING`
   - `BLOCKED — WRONG_SEAT`
-  - `BLOCKED — STALE_HEAD`
-  - `BLOCKED — SCORE_BELOW_TIER_A_THRESHOLD`
+  - `BLOCKED — SCORECARD_MISSING_OR_STALE`
+  - `BLOCKED — UNRESOLVED_HOLD`
+  - `BLOCKED — CONTENT_DOOR_NOT_PROVEN`
+  - `BLOCKED — SCORE_BELOW_TIER_THRESHOLD`
   - `BLOCKED — EVIDENCE_MISSING`
   - `BLOCKED — EVIDENCE_UNRESOLVED`
   - `BLOCKED — AMBIGUOUS_TIER`
@@ -80,15 +84,11 @@ The candidate gate must:
 
 ## Stale scorecards and changed commits
 
-A scorecard binds to the exact tree it evaluated. A changed head normally requires a fresh scorecard. To avoid pointless churn for unrelated changes, a future optimization may permit reuse only if:
-- the scorecard includes a machine-readable diff fingerprint and dependency scope;
-- the changed commit is proven outside that scope;
-- the independent verifier reruns the required impact analysis; and
-- the resulting reuse decision is recorded against the new head.
-
-Until that optimization exists, exact-head pinning remains strict. Do not pretend the previous SHA equals the new SHA.
+Tier A scorecards remain exact-head-bound. Tier B scorecards include a machine-readable SHA-256 over sorted changed-file descriptors (path, status, blob SHA, additions/deletions, and patch when available). A head-only move can reuse the scorecard only when that material-diff fingerprint matches; the gate records the old and current head. A changed diff, missing file metadata, conflicting fingerprint, or absent Tier B Verification/Tests attestation blocks and gives one cure. The fingerprint is not a permission grant and does not authorize protected actions.
 
 ## Balance gauge — equalization dial
+
+The candidate gate now emits a per-head verdict, tier, missing fact, one cure, and owner, and updates one stable diagnostic comment per PR instead of creating comment spam. This is the event-level instrumentation seed, not yet a complete weekly balance dashboard; rollout is not complete until the collector computes the rates below from the actual workflow/PR history.
 
 Measure each gate weekly and per 100 PRs, separated by tier:
 - **Friction rate:** paperwork-only blocks / PRs entering that gate.
@@ -132,8 +132,9 @@ The live repository ruleset API was inspected on 2026-10-21. The active `Naya Ex
 
 The candidate workflow's check context is `Unified paperwork — tier + cross-seat scorecard + live evidence`.
 
-**Before:** both paperwork contexts above are Required under ruleset 23853581.  
-**Proposed after:** replace those two paperwork-only contexts with the single unified context above, after shadow tests, distinct-seat review, scorecard, and three-tier comparison pass. Keep substantive test/spec/security/protocol checks required. Tier C content is validated by the canonical content door, not admitted through a code-PR exception.
+**Before:** ruleset 23853581 requires `Receipt gate (evidence or it didn't happen)` and `Team review + scorecard receipt`. The accessible ruleset response does not list `test`, `spec-integrity`, or security/protocol status checks as Required. The classic branch-protection endpoint returned 403, so effective classic/org-level settings remain unverified.
+
+**Proposed after:** require the unified paperwork context plus the substantive code-quality/security contexts `test`, `spec-integrity`, `guard`, `Protocol machine law (kernel/protocol)`, `safety-grant-gate`, and `No silent deletions`, after confirming each emits a result for every Tier A/B code PR. Replace the two overlapping paperwork contexts with the one unified context. Route Tier C off the code-PR path only after the canonical content door's machine checks are green. If a context is path-filtered and missing for an applicable PR, fix its trigger/neutral-result behavior before marking it Required; never trade a deadlock for an unguarded merge.
 
 The legacy `main-protection` ruleset ID `24858146` requires pull requests and prohibits deletion/non-fast-forward; its returned rules list did not include status checks. The repository's classic branch-protection endpoint returned 403 to this connection, so no claim is made about settings that endpoint could not show.
 
