@@ -1,0 +1,32 @@
+import { spawn } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+const CHROME = process.env.HOME + '/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell';
+const URL = 'file://' + process.env.HOME + '/workspace/smart-factory-contract/showcase/index.html';
+const PORT = 9334;
+const proc = spawn(CHROME, ['--headless','--disable-gpu','--no-sandbox',`--remote-debugging-port=${PORT}`,'--window-size=1280,1700','about:blank'], { stdio:'ignore' });
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+for (let i=0;i<50;i++){ try{ const r=await fetch(`http://127.0.0.1:${PORT}/json/version`); if(r.ok) break; }catch{} await sleep(200); }
+const targets = await (await fetch(`http://127.0.0.1:${PORT}/json`)).json();
+const ws = new WebSocket(targets[0].webSocketDebuggerUrl);
+await new Promise(res => ws.addEventListener('open', res, { once:true }));
+let id=0; const pending=new Map();
+ws.addEventListener('message', ev => { const m=JSON.parse(ev.data); if(m.id&&pending.has(m.id)){pending.get(m.id)(m);pending.delete(m.id);} });
+const send=(method,params={})=>new Promise(res=>{const i=++id;pending.set(i,res);ws.send(JSON.stringify({id:i,method,params}));});
+async function evaluate(expression){ const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true}); if(r.result?.exceptionDetails) throw new Error(JSON.stringify(r.result.exceptionDetails).slice(0,300)); return r.result?.result?.value; }
+await send('Page.enable'); await send('Runtime.enable');
+await send('Page.navigate',{url:URL}); await sleep(2000);
+const out = {};
+out.wellRest = await evaluate(`getComputedStyle(document.querySelector('.ref-well-box')).boxShadow`);
+await evaluate(`document.querySelector('.ref-well-box input').focus()`);
+await sleep(500);
+out.wellFocus = await evaluate(`getComputedStyle(document.querySelector('.ref-well-box')).boxShadow`);
+out.wellDeepened = out.wellFocus !== out.wellRest;
+out.wellFocusRing = out.wellFocus.includes('0px 0px 0px 3px');
+await evaluate(`document.querySelector('.ref-select-btn').click()`);
+await sleep(500);
+out.chevTransformOpen = await evaluate(`getComputedStyle(document.querySelector('.ref-select-chev')).transform`);
+const css = readFileSync(process.env.HOME + '/workspace/personal-app/factory.css','utf8');
+out.livingBtnActiveRuleInCSS = /\.living-btn:active\s*\{[^}]*translateY\(1px\) scale\(\.975\)/.test(css);
+out.livingBtnRestingLayersAdded = css.includes('0 22px 54px rgba(0,0,0,.55)');
+console.log(JSON.stringify(out,null,1));
+ws.close(); proc.kill();
