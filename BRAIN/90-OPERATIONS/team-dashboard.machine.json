@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T06:15:11+00:00",
+ "generated_utc": "2026-10-21T07:15:19+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -178,6 +178,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2837,
+     "title": "[dec-16] Report generator: flip 9.0 below-bar carrier to 9.5 (draft \u2014 do not merge)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2837",
+     "draft": true
+    },
+    {
      "number": 2835,
      "title": "Clean home R1: remove the 10 byte-proven duplicate files (Shawn-approved)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2835",
@@ -218,15 +224,9 @@
      "title": "fix(know): make live Windows Smart Note bridge read all long-path notes",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2818",
      "draft": false
-    },
-    {
-     "number": 2804,
-     "title": "Mark IB-000042 SUPERSEDED by IB-000043 (Shawn ruling 2026-10-20)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2804",
-     "draft": false
     }
    ],
-   "open_pr_count": 17
+   "open_pr_count": 18
   },
   {
    "id": "wire",
@@ -622,6 +622,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 47,
- "unassigned_prs": 17
+ "open_pr_total": 48,
+ "unassigned_prs": 18
 }
