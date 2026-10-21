@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T18:15:53+00:00",
+ "generated_utc": "2026-10-21T19:18:06+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -184,6 +184,24 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2853,
+     "title": "Remove superseded 0028 execution-prompt husk (doctrine preserved as SN-01774)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2853",
+     "draft": false
+    },
+    {
+     "number": 2852,
+     "title": "0030 tongues cure \u2014 THE VALUE-ONLY BRAIN V1: AI + machine forms (supersedes #2821, unblock",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2852",
+     "draft": false
+    },
+    {
+     "number": 2851,
+     "title": "SN-1772 \u2014 Opened Is Not Done: Land It, Close It, or Kill It",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2851",
+     "draft": false
+    },
+    {
      "number": 2849,
      "title": "Step-0 Factory delivery: Nitro's canon evidence lands in the repo (Elite Parts program)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2849",
@@ -202,18 +220,6 @@
      "draft": false
     },
     {
-     "number": 2845,
-     "title": "fix(smart-notes): make local replay idempotent",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2845",
-     "draft": true
-    },
-    {
-     "number": 2843,
-     "title": "docs(brain): one system in simple words \u2014 canonical Smart Note candidate",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2843",
-     "draft": true
-    },
-    {
      "number": 2842,
      "title": "boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATION (distill-daily-202",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2842",
@@ -224,15 +230,9 @@
      "title": "[dec-16] Report generator: flip 9.0 below-bar carrier to 9.5 (draft \u2014 do not merge)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2837",
      "draft": true
-    },
-    {
-     "number": 2835,
-     "title": "Clean home R1: remove the 10 byte-proven duplicate files (Shawn-approved)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2835",
-     "draft": false
     }
    ],
-   "open_pr_count": 23
+   "open_pr_count": 24
   },
   {
    "id": "wire",
@@ -454,14 +454,8 @@
    "open_prs": [
     {
      "number": 2850,
-     "title": "0025 \u2014 The SmartNet Protocol V1 (three tongues): the canonical Smart Note protocol",
+     "title": "0025 \u2014 The Smart Note Protocol V1 (three tongues): the canonical Smart Note protocol",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2850",
-     "draft": false
-    },
-    {
-     "number": 2832,
-     "title": "docs(governance): file 0030 VALUE-ONLY BRAIN twin forms (.ai.md + .machine.json) \u2014 complet",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2832",
      "draft": false
     },
     {
@@ -499,9 +493,15 @@
      "title": "fix(protocol): tighten Honor activation, Hive venue and value truth boundaries",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2802",
      "draft": false
+    },
+    {
+     "number": 2797,
+     "title": "Governance: NAYA OATH OF HONOR (0023) \u2014 Shawn's 2026-10-20 law, three tongues",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797",
+     "draft": false
     }
    ],
-   "open_pr_count": 9
+   "open_pr_count": 8
   }
  ],
  "recent_activity": [
@@ -635,5 +635,5 @@
   }
  ],
  "open_pr_total": 56,
- "unassigned_prs": 23
+ "unassigned_prs": 24
 }
