@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T08:15:28+00:00",
+ "generated_utc": "2026-10-21T09:15:07+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -178,6 +178,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2839,
+     "title": "fix(retrieval): restore 5 smart-note registry entries dropped without lifecycle record in ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2839",
+     "draft": false
+    },
+    {
      "number": 2837,
      "title": "[dec-16] Report generator: flip 9.0 below-bar carrier to 9.5 (draft \u2014 do not merge)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2837",
@@ -218,15 +224,9 @@
      "title": "Naya/mission state",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2827",
      "draft": false
-    },
-    {
-     "number": 2818,
-     "title": "fix(know): make live Windows Smart Note bridge read all long-path notes",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2818",
-     "draft": false
     }
    ],
-   "open_pr_count": 18
+   "open_pr_count": 19
   },
   {
    "id": "wire",
@@ -376,6 +376,12 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2838,
+     "title": "fix(feeds): land hub-feeds-emit via deploy key with scoped ruleset bypass",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2838",
+     "draft": false
+    },
+    {
      "number": 2754,
      "title": "Hub\u2194Supabase persistence bridge (Smart Note flow leg 3) \u2014 t0800",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754",
@@ -400,7 +406,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 5
   },
   {
    "id": "memory",
@@ -622,6 +628,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 48,
- "unassigned_prs": 18
+ "open_pr_total": 50,
+ "unassigned_prs": 19
 }

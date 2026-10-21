@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 08:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-21 09:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 48 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 50 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -63,13 +63,13 @@
 - [#2825](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825) The GitHub webhook receiving door — nayanet-github-intake (verify + ac
 - [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
 
-### BUILD (18)
+### BUILD (19)
+- [#2839](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2839) fix(retrieval): restore 5 smart-note registry entries dropped without 
 - [#2837](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2837) [dec-16] Report generator: flip 9.0 below-bar carrier to 9.5 (draft —  📝draft
 - [#2835](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2835) Clean home R1: remove the 10 byte-proven duplicate files (Shawn-approv
 - [#2831](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2831) fix(brain): register SN-0800/SN-0805/SN-0806/SN-0807/SN-0808 — cure th
 - [#2830](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2830) fix(reporting): heuristic evidence never displaces authoritative score
-- [#2829](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2829) [W2 judge] L577 write-path guard: no score renders or writes without m
-- …and 13 more
+- …and 14 more
 
 ### WIRE (4)
 - [#2834](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2834) fix(readiness): C3 classifier no longer cries wolf on a healthy gate
@@ -88,7 +88,8 @@
 - [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
 - [#1130](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1130) ratify(governance): Governance Contract V1 — awaiting Human Director d 📝draft
 
-### PRODUCT (4)
+### PRODUCT (5)
+- [#2838](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2838) fix(feeds): land hub-feeds-emit via deploy key with scoped ruleset byp
 - [#2754](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754) Hub↔Supabase persistence bridge (Smart Note flow leg 3) — t0800
 - [#2738](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738) Hub deploy pipeline: GitHub → Cloudflare Workers
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
