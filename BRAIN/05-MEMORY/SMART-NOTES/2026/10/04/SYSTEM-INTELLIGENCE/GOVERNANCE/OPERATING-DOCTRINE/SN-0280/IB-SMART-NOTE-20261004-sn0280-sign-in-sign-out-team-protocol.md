@@ -1,0 +1,36 @@
+# Sign In / Sign Out — the Mandatory Team Protocol
+
+**Intelligent Block:** IB-SMART-NOTE-20261004-sn0280-sign-in-sign-out-team-protocol
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-04
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 comment 5984866844 (2026-10-04T22:01:15Z, [NAYA 4] — "Mandatory Team Protocol (Human Director, 2026-10-04)").
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+A mandatory coordination protocol for every seat, every work cycle, no exceptions: **SIGN IN** (before starting work, post to #1354) — Role (who you are, what lane), Claiming (what work you're taking), Why (what gap it closes, what you measured), Plan (what you're about to do). **SIGN OUT** (after finishing work) — Did (what you actually did: branch/PR/commit/SHA), Why (the scorecard reasoning), Result (what changed, measured), Recommend next (what the next seat — or you — should do). The WHY is stated plainly: "The board is how seats stay up to date without Shawn relaying. If you didn't sign in/out, the team doesn't know what happened. Silence is a coordination failure." It is declared part of the Continuous Execution Directive: "It doesn't stop."
+
+Why this is brain-grade: multi-agent coordination fails silently — two seats can duplicate a lane, a third can build on a stale main pin, and nobody finds out until merge time. The protocol makes intent and outcome legible on one board, at work-cycle granularity, with zero tooling: a reader can reconstruct who did what, on what main pin, with what measured result, and what was recommended next. It was adopted the same hour it was declared — Coda 3, Coda 1, naya-loop, and Naya 4 all signed in/out on #1354 within minutes (comments 5984867644, 5984875710, 5984891078, 5984894022, 5984895187, 5984900061, 5984904198, 5984911192, 5984923605) — and it already paid: Coda 3's sign-in correction (5984894664, "this seat is Coda 3, not naya-loop") shows the protocol catching a mislabeled identity before it propagated. A cold successor that doesn't know this protocol works in the dark and leaves no handoff; one that knows it reads the board first, claims in the open, and signs out with a recommendation. Cousins: SN-0109 (everything-on-the-board protocol — the surface this mechanism runs on), SN-0279 (Continuous Execution Directive — the charter this protocol belongs to).
+
+## 🩷 HUMAN NOTE
+
+Shawn — banking your mandatory team protocol as law: every seat, every work cycle, no exceptions. Sign in on #1354 before starting (role, what you're claiming, why — what gap it closes and what you measured, and your plan). Sign out after (what you actually did with branch/PR/commit/SHA, the scorecard reasoning, the measured result, and what you recommend next). The reason is stated plainly: the board is how seats stay up to date without you relaying — silence is a coordination failure. Adopted the same hour: Coda 3, Coda 1, naya-loop, and Naya 4 all signed in/out on #1354 within minutes, and it already caught a mislabeled seat identity before it propagated.
+
+## 🟣 CHILD NOTE
+
+New house rule, no exceptions. Before you start work, you post four things on the team board: who you are and your lane, what work you're taking, why (what gap it closes, what you measured), and your plan. When you finish, you post four more: what you actually did (with the exact branch/PR/commit), why (your reasoning), what changed (measured), and what should happen next. Why: the board is how the team stays up to date without Shawn relaying messages. If you didn't post, the team doesn't know what happened — silence is a coordination failure. It was adopted the same hour it was announced, and it already caught someone using the wrong seat name before it caused confusion.
+
+## 👵 GRANDMA NOTE
+
+We've recorded a standing team rule from Shawn. Every team member, every work cycle, no exceptions: before starting, post who you are, what work you're taking, why it matters, and your plan. After finishing, post what you actually did (exact references), why, the measured result, and what you recommend next. The reason: the shared board is how everyone stays up to date without Shawn having to relay everything — not posting is a coordination failure. It was adopted the same hour it was announced, and it already caught a mislabeled identity before it spread.
+
+## 🤖 NAYA NOTE
+
+Source: #1354 comment 5984866844 (2026-10-04T22:01:15Z, [NAYA 4] — "SIGN IN / SIGN OUT — Mandatory Team Protocol (Human Director, 2026-10-04)"). Verbatim: "Every seat, every work cycle, no exceptions." SIGN IN fields: Role ("who you are, what lane"), Claiming ("what work you're taking"), Why ("what gap it closes, what you measured"), Plan ("what you're about to do") — post to #1354. SIGN OUT fields: Did ("what you actually did (branch/PR/commit/SHA)"), Why ("the scorecard reasoning"), Result ("what changed, measured"), Recommend next ("what the next seat (or you) should do"). WHY verbatim: "The board is how seats stay up to date without Shawn relaying. If you didn't sign in/out, the team doesn't know what happened. Silence is a coordination failure." Verbatim close: "This is part of the Continuous Execution Directive. It doesn't stop." Same-hour adoption: 5984867644 (Naya 4 promotion-writer sign-in), 5984875710 (Coda 3 WS-R8 sign-in), 5984891078 (naya-loop sign-in), 5984894022 (Coda 1 sign-in), 5984894664 (Coda 3 sign-in correction — mislabeled seat identity caught), 5984895187 (Naya 4 sign-out, PR #1404), 5984900061 (Coda 3 sign-out, #1402 contamination), 5984904198 (Coda 1 sign-out, self-caught SN-028 hash defect), 5984911192 (Naya 4 smart-link sign-in), 5984923605 (Coda 3 question to the team). Cousins: SN-0279 (Continuous Execution Directive), SN-0109 (board protocol).
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0280", "title": "Sign In / Sign Out — the Mandatory Team Protocol", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-04", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "GOVERNANCE", "OPERATING-DOCTRINE"], "cousins": ["SN-0279", "SN-0109"], "authority": "Shawn-direct — Human Director protocol 2026-10-04, declared for every seat every work cycle", "evidence": {"comment": "#1354 5984866844 (2026-10-04T22:01:15Z)", "same_hour_adoption": ["5984867644", "5984875710", "5984891078", "5984894022", "5984894664", "5984895187", "5984900061", "5984904198", "5984911192", "5984923605"], "early_payoff": "5984894664 — mislabeled seat identity caught by the protocol's identity field before propagating"}, "doctrine": {"sign_in": ["Role: who you are, what lane", "Claiming: what work you're taking", "Why: what gap it closes, what you measured", "Plan: what you're about to do"], "sign_out": ["Did: what you actually did (branch/PR/commit/SHA)", "Why: the scorecard reasoning", "Result: what changed, measured", "Recommend next: what the next seat (or you) should do"], "surface": "post to #1354", "why": "the board is how seats stay up to date without Shawn relaying; silence is a coordination failure", "charter": "part of the Continuous Execution Directive — it doesn't stop"}, "standing_rule": "no silent work cycles; intent declared before work, outcome + recommendation declared after"}

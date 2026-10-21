@@ -1,0 +1,40 @@
+# Adjudicate Disputes by Pinning Scope First — Byte-Level Inventory Against the Manifest
+
+**Intelligent Block:** IB-SMART-NOTE-20261005-sn0434-dispute-audit-pin-scope-first
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-05
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 6009743215 (Voice-bake reconciliation receipt — read-only audit, 2026-10-06T05:07:43Z / 2026-10-05 22:07 PDT).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+Two seats were arguing about whether the voice bakes existed, and they were wrong in opposite directions — because they were auditing different things. The dispute (HOLE 5 of the 2026-10-05 nightly report): one lane claimed "11/26 MP3s baked; all 10 demo-bank MP3s (note-feat-01..10) present"; Naya 4 countered "12/12 here (00-nexus … 11-markets); no note-feat-*.mp3 files exist in my workspace."
+
+The reconciliation was a read-only byte-level audit against the canonical manifest `blocks-official-v1.json` (26 blocks): inventoried `~/workspace/voice-bake/baked/`, checked the first bytes of every MP3 (`494433` = ID3 on all 19), probed all 19 with ffprobe (real durations, 11–32s), ran a workspace-wide `find` for `note-feat-*.mp3` and for any `ask-naya-audio`/`00-nexus*` path, and checked for running bake processes. The hard gate held: no re-render (which would have let the bakes "confirm" themselves into existence), R2 untouched.
+
+Current truth: **19/26 blocks baked**, not 11/26 (the lane's number was a stale snapshot — the resume bake had since advanced through note-eco-02) and not "none." Adjudication: the lane's "all 10 demo-bank MP3s present" was CONFIRMED TRUE — 11 `note-feat-*.mp3` files exist in `voice-bake/baked/`, valid and playable. Naya 4's denial was INCORRECT on the shared VM — her cited path `~/workspace/user/files/ask-naya-audio/` does not exist anywhere on the VM, and her "12/12" referred to a different block set (the ask-naya demo set), not the 26-block official set in dispute. Exactly what is missing: the 7 `note-eco-03..09` blocks (Academy, 5-Day Challenge, MAXIS AI Score, Masterclass, Life with Naya, Codex, Pricing). The next action is a scheduled resume bake of those 7 — not a re-render of what exists.
+
+Why this is brain-grade: the first step of any dispute audit is pinning the scope — which manifest, which directory, which block set. A denial verified against the wrong path ("no note-feat-*.mp3 in my workspace" when the workspace searched was the wrong scope) is not evidence; a claim verified against a stale snapshot ("11/26" when the bake had resumed) is not current truth. The method that settled it: canonical manifest as the arbiter, first-bytes format check on every file, real duration probes (a corrupt MP3 would not probe clean), workspace-wide search for the denied artifact's path, and process check for an in-flight producer. And the instrument discipline: the audit was read-only — re-rendering the missing blocks would have "resolved" the dispute by destroying the evidence of what was missing.
+
+## 🩷 HUMAN NOTE
+
+Shawn — the voice-bake dispute is settled by a byte-level audit: 19 of 26 blocks baked (not 11, not zero). The lane was right that all 10 demo-bank MP3s exist and play; Naya 4 was checking a different folder that doesn't exist and a different set of 12 files, so her denial missed. Exactly 7 blocks are still missing (the eco set: Academy, 5-Day Challenge, MAXIS score, Masterclass, Life with Naya, Codex, Pricing) and the resume bake just needs to finish them. Banked rule: before arguing about whether something exists, pin down exactly what you're both looking at — the two seats were auditing different things.
+
+## 🟣 CHILD NOTE
+
+Imagine two people arguing about whether the puzzle is finished — but one is looking at the picture on the box while the other is looking at a different puzzle entirely. The fix isn't to argue louder; it's to first agree: which box, which table, which pieces. Once both people looked at the same box, the answer was clear: 19 of 26 pieces placed, 7 still missing. The person counting has to count what's actually on the table, and nobody is allowed to place missing pieces while counting just to make the number look better.
+
+## 👵 GRANDMA NOTE
+
+Before you settle an argument, make sure everyone's talking about the same thing — half of all quarrels are just two people describing two different rooms. The audit went back to the original list, checked every item with its own eyes, and wrote down exactly what's there and what isn't. It didn't make anything up to end the argument, and it didn't let anyone's old count stand when things had changed since. Measure twice, argue once.
+
+## 💜 NAYA NOTE
+
+Note to future me: when two seats dispute whether an artifact exists, the dispute audit's first step is pinning scope — which manifest, which directory, which block set. Never adjudicate against a scope the claimants weren't using. Then measure against the canonical manifest: inventory the actual directory, verify file identity (first bytes — ID3 `494433`), probe real durations, search the whole workspace for the denied artifact's path, and check for an in-flight producer. Keep the audit read-only: re-rendering the missing artifacts would "resolve" the dispute by destroying the evidence of what was missing. A denial verified against the wrong path is not evidence; a claim verified against a stale snapshot is not current truth — the resume bake's progress between the two snapshots was the whole difference.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0434", "title": "Adjudicate Disputes by Pinning Scope First — Byte-Level Inventory Against the Manifest", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-05", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "ENGINEERING-PROOF", "INDEPENDENT-VERIFICATION"], "cousins": ["SN-0388", "SN-0329"], "authority": "observed finding — read-only voice-bake reconciliation audit, CANDIDATE (auto-capture, not ratified)", "evidence": {"audit": "#1354 6009743215 (2026-10-06T05:07:43Z / 2026-10-05 22:07 PDT): voice-bake reconciliation receipt, read-only, no re-render, R2 untouched", "dispute": "lane claimed '11/26 MP3s baked; all 10 demo-bank MP3s (note-feat-01..10) present' vs Naya 4: '12/12 here (00-nexus … 11-markets); no note-feat-*.mp3 files exist in my workspace'", "method": "inventory of ~/workspace/voice-bake/baked/ against blocks-official-v1.json (26 blocks); first-bytes check (494433 = ID3) on all 19; ffprobe real durations 11–32s on all 19; workspace-wide find for note-feat-*.mp3 and ask-naya-audio/00-nexus* paths; running-process check", "verdict_lane": "CONFIRMED TRUE — all 10 note-feat-01..10 (+ note-feat-au) exist in voice-bake/baked/, valid ID3, probe-clean; '11/26' was a stale snapshot (resume bake had advanced through note-eco-02 at 03:11)", "verdict_naya4": "INCORRECT on shared VM — cited path ~/workspace/user/files/ask-naya-audio/ does not exist anywhere on the VM; '12/12' referred to a different block set (ask-naya demo set), not the 26-block official set in dispute", "missing": "exactly 7: note-eco-03..09 (Naya Academy, 5-Day Challenge, MAXIS AI Score, AI Masterclass, Life with Naya, Human Maximus Codex, Pricing); resume bake for those 7 is the next action — scheduled lane job, not a re-render of existings"}, "doctrine": {"pin_scope_first": "a dispute audit's first step is pinning which manifest, which directory, which block set — both claimants here were auditing different things", "denial_against_wrong_scope": "a denial verified against the wrong path is not evidence", "claim_against_stale_snapshot": "a claim verified against a stale snapshot is not current truth", "read_only_audit": "never re-render missing artifacts to resolve a dispute — the re-render destroys the evidence of what was missing (R2 untouched, hard gate held)", "manifest_as_arbiter": "the canonical manifest (blocks-official-v1.json) adjudicates; byte-level identity (first bytes + real durations) over filename claims"}}

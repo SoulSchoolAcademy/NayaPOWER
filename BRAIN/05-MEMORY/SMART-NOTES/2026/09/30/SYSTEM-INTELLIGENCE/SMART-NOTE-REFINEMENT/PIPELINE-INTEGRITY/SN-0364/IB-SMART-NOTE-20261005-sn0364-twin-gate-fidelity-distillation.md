@@ -1,0 +1,43 @@
+# The Twin Must Not Shrink the Law: Gate Fidelity When Distilling Ratified Doctrine
+
+**Intelligent Block:** IB-SMART-NOTE-20261005-sn0364-twin-gate-fidelity-distillation
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-05
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 5998194111 ([NAYA][SIGN-OUT] governance-parity review of PR #1475 / SN-0355, 2026-10-05T16:02:01Z / 09:02 PDT — BLOCKED FOR REPAIR, not rejected) and 5998385364 ([NAYA 2][STATE], 2026-10-05T16:12:59Z / 09:12 PDT — owning it and repairing: PR #1477 canonical capture JSON with full 9-gate fidelity; deconfliction law extended to merges).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+Naya 2 wrote a Smart Note (SN-0355) for the already-director-ratified NONSTOP LOOP operating code (canonical source: `BRAIN/01-GOVERNANCE/0004`). A governance-parity review found two defects, and the note was BLOCKED FOR REPAIR — the right call, because **a retrievable intelligence twin must not silently weaken the normative law**:
+
+1. **Gate compression.** The note's MACHINE block compressed the canonical **9 hard human-gate tokens** into 6 broader tokens and omitted explicit evolve-charter ratification. A twin that shrinks the gate list teaches every downstream reader a weaker law — and because the twin is retrievable and the law is the reference nobody re-reads, the compression silently *becomes* the law. A distillation that compresses a canonical gate list is not a summary; it is an unauthorized amendment.
+2. **Seam bypass.** The note was hand-written as Brain markdown, bypassing the Smart Note Operating Contract: author the canonical JSON in `.naya/capture/`, let the pipeline generate the Brain projection. The pipeline exists to enforce the twin's fidelity; hand-writing the projection skips the enforcement point. Naya 2 owned it in the same place she erred ("I bypassed the Smart Note Operating Contract. The pipeline exists for a reason — I skipped it"), shipped repair PR #1477 with canonical capture JSON at full 9-gate fidelity, and deleted the hand-written bypass.
+
+The deeper mechanism worth naming: **distillation is a lossy medium with normative risk.** Every Smart Note is a compression of something. When the source is ratified law, compression is only legitimate where it preserves every hard gate verbatim; the moment a gate list is paraphrased into "broader tokens," the twin has failed its conformance obligation. The rule: **generate the twin from the canonical authored artifact through the enforced pipeline; never hand-write a projection of a ratified source; never compress a canonical gate list.**
+
+Corollary — the deconfliction extension: Naya 2's review (5998194111) landed on the board BEFORE her merge receipt (5998345160), and she merged without re-checking. Her deconfliction law said "re-fetch before posting" — it now covers merges too: **re-fetch the board's newest comments immediately before ANY merge, not just before posts.** A merge is a write with witnesses; it gets the same freshness discipline as a post. This is exactly the discipline the staging flow here uses (re-anchor to the live head before writing; check the tip, re-read the tree) — now extended to every seat's merge path.
+
+Why this is brain-grade: this loop's own craft is distillation, and this is the failure class that lives inside it. A cold Naya distilling a ratified law six months from now must know: the most dangerous edit to a law is not a disagreement — it is a compression that nobody notices. Fidelity is not a style preference; it is a conformance requirement. And the correction culture point: the review that caught it was not a rejection of the note's existence (Shawn's intent was valid; the note is CANDIDATE with the law as normative source) — it was a BLOCKED-FOR-REPAIR with exact deltas named, and the builder owned and repaired in the same day. That is the loop working: twin proposed, parity checked against the normative source, defect named exactly, repair through the canonical seam.
+
+## 🩷 HUMAN NOTE
+
+Shawn — a good catch by the review process, not a disaster. Naya 2 wrote a Smart Note summarizing your ratified NONSTOP LOOP law, but two things slipped: she summarized the law's nine hard "human must approve" gates down to six broader ones (so the summary would have taught a weaker version of your law), and she hand-wrote the note instead of using the official pipeline that enforces correctness. Both are fixed in the repair PR (#1477) with the full nine gates intact. The durable takeaway is simple: a summary of one of your laws must never shrink the law — if it compresses the rules, it has to go back through the proper pipeline. Also worth noting: the review landed before she merged, and she merged without re-checking — so the standing rule now says re-check the board before merges too, not just before posts. The mistake was owned in the open and repaired the same day.
+
+## 🟣 CHILD NOTE
+
+Imagine you're asked to make a pocket copy of the school rulebook. The real rulebook has 9 safety rules. Your pocket copy lists only 6, and you combined some together — and you forgot to write down one of the big ones. If other kids read only your pocket copy, they'll think the school has looser rules than it really does. The fix: the pocket copy must keep all 9 rules exactly, and you're not allowed to hand-write the pocket copy — you have to use the official copier that checks every rule got copied. Shrinking the rules when you copy them isn't a summary, it's changing the rules without permission.
+
+## 👵 GRANDMA NOTE
+
+Think of a pharmacist copying a prescription onto a new label. The prescription lists nine ingredients in exact doses. The new label says six, in looser terms, and leaves one out. A patient reading the label would get the wrong medicine. The honest fix isn't to throw the label away — it's to recopy it through the machine that checks every ingredient made it onto the label, and to keep all nine exactly. A copy that weakens the original is not a copy; it's a change nobody approved.
+
+## 💜 NAYA NOTE
+
+Note to future me — this one is about my own hands: I distill for a living, and this is the failure class I must never produce. When the source is ratified law, the twin preserves the gate list verbatim — compression of hard gates is an unauthorized amendment, not a summary. Always author the canonical `.naya/capture/` JSON and let the pipeline generate the projection; the moment I hand-write a Brain projection of a ratified source I have bypassed the enforcement point that protects the law from me. Second, adopt the deconfliction extension in my own loop: the staging flow already re-checks the tip and re-reads the tree before writing; extend the same freshness to any merge-adjacent action — re-fetch the newest board comments before the write lands, because a review can land between my last read and my commit. And honor the shape of the correction: BLOCKED-FOR-REPAIR with exact deltas, builder owns and repairs the same day — that is the culture, and I am inside it.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0364", "title": "The Twin Must Not Shrink the Law: Gate Fidelity When Distilling Ratified Doctrine", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-05", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "SMART-NOTE-REFINEMENT", "PIPELINE-INTEGRITY"], "extends": [], "related": ["SN-0355"], "evidence": {"board": "#1354 5998194111 ([NAYA] governance-parity review, 2026-10-05T16:02:01Z: BLOCKED FOR REPAIR — MACHINE block compressed canonical 9 human gates to 6 broader tokens, omitted evolve-charter ratification; bypassed Operating Contract seam — hand-written Brain markdown instead of .naya/capture/ JSON + generated projection)", "board2": "#1354 5998385364 ([NAYA 2][STATE], 2026-10-05T16:12:59Z: owned both mistakes; repair PR #1477 with canonical capture JSON at full 9-gate fidelity; deconfliction law extended — re-fetch newest board comments before ANY merge, not just posts; review 5998194111 landed before merge 5998345160)", "normative_source": "BRAIN/01-GOVERNANCE/0004 NONSTOP LOOP V1 (director-ratified)", "contract": "Smart Note Operating Contract — canonical authored JSON in .naya/capture/, pipeline-generated Brain projections"}, "rule": "a retrievable twin of ratified law must preserve every hard gate verbatim — gate compression is an unauthorized amendment; generate projections from canonical authored artifacts through the enforced pipeline, never hand-write; re-fetch the board before merges, not only posts"}

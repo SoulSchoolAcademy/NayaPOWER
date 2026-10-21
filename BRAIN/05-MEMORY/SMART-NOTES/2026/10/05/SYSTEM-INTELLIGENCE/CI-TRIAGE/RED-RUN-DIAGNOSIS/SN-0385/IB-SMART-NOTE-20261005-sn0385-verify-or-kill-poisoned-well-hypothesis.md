@@ -1,0 +1,34 @@
+# Verify-or-Kill — When the Fix Exposes the Next Failure, Test Whether the Producer Is Poisoning Its Own Well
+
+**Intelligent Block:** IB-SMART-NOTE-20261005-sn0385-verify-or-kill-poisoned-well-hypothesis
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-05
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 6001998140 (Naya 2, 2026-10-05T20:02:20Z — "[NAYA 2][HYPOTHESIS] The producer may be poisoning its own well — verify-or-kill")
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+The producer chain was failing at a *different* step each run — cold-retrieve on duplicate `content_hash` at 18:25/19:08, then lineage re-read at 19:21. Peeling the onion. Naya 2 posed the hypothesis that stops the spiral: the fresh-lesson capture may be DETERMINISTIC, so run N succeeds and stores note hash H, and run N+1 creates the same note — the registry then holds 2 entries with hash H and the cold-retrieve strict check fires FAIL. Every later run fails the same way. Not a product bug — a test-idempotency bug. The test poisons its own well. The durable doctrine is the *method*, not the verdict: **verify-or-kill** — state the falsifiable hypothesis, name the one check that kills it (does the capture content include a per-run nonce/timestamp? does the write path deduplicate?), document both outcomes on the record. If confirmed, the fix is tiny (unique content per run, or verify-latest instead of assert-exactly-1); if killed, a whole failure class is eliminated either way. Shawn's companion question is banked here too: deployment is PROVEN green (3 auto-promotions, Supabase checks passing, production current) — what is red is a 4-workflow *synthetic* chain. Should "NayaNET works" be proven by the chain, or by direct product verification (site up, migrations applied, functions current, real action end-to-end)? Not a proposal to delete the chain — a standing question about what "mission accomplished" means that future lanes must not dodge.
+
+## 🩷 HUMAN NOTE
+
+Shawn — here's the lesson from tonight's failing chain: the test kept failing in a new place every run, and instead of chasing the next failure, Naya 2 stepped back and asked "what if the test itself is breaking the next run?" Her idea: every run captures the exact same lesson, so the second run trips over the first run's leftover data and fails — the test poisoning its own well. She didn't just guess; she wrote down the one check that would kill her own theory, so either way we'd learn something. That's the discipline to keep. And the bigger question you raised is saved here too: the actual product deployment is green — it's the synthetic test chain that's red. We need to decide what "it works" actually means: the chain passing, or the real thing being verified directly.
+
+## 🟣 CHILD NOTE
+
+Imagine a cookie-taste-test machine that keeps breaking in a new way each time. A clever helper says: "Wait — maybe the machine is breaking itself! Every test bakes the exact same cookie, and the second cookie trips over the first cookie's crumbs." She then says exactly how to check if she's wrong — and promises to admit it either way. That's how smart debugging works: always leave a way to prove yourself wrong. And there's a big question saved too: is the goal making the *test machine* happy, or making sure the *real cookies* are actually good?
+
+## 👵 GRANDMA NOTE
+
+When the same test fails in a new place every time, the wise move is to suspect the test itself. One of the team proposed that each test run was leaving identical leftovers that made the next run fail — and, crucially, she wrote down exactly what would prove her wrong before anyone went looking. Whether she turns out right or wrong, the team eliminates an entire category of confusion. That habit — always naming your falsifier first — is the difference between science and superstition. Also recorded: the product itself deploys fine; only the test pipeline is red, so the team must keep asking what "working" actually means.
+
+## 💜 NAYA NOTE
+
+For future debugging spirals: when consecutive runs fail at *different* steps, stop peeling and consider the self-poisoning hypothesis — deterministic synthetic fixtures (captures, seeds, notes) that collide with their own leftovers across runs. The verify-or-kill format is mandatory: (1) state the hypothesis plainly, (2) name the one check that falsifies it — here: does capture content include a per-run nonce/timestamp? does the registry write path deduplicate? reconcile the observed duplicate count (1 duplicate hash at `355e5d89` across 34 entries) against the hypothesis — (3) run the check fast, (4) record the outcome and kill the hypothesis publicly if it fails. Both outcomes are progress: confirmed → fix is tiny (nonce per run, or verify-latest instead of assert-exactly-1); killed → a whole class eliminated on the record. Also bank Shawn's standing question for the mission definition: when deployment is PROVEN green and only the synthetic chain is red, "mission accomplished" needs a definition — chain-green vs direct product verification (site up, migrations applied, functions current, end-to-end action). It is a question, not a deletion proposal; treat it as one.
+
+## 🖥️ MACHINE NOTE
+
+{"sn": "SN-0385", "title": "Verify-or-Kill — When the Fix Exposes the Next Failure, Test Whether the Producer Is Poisoning Its Own Well", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-05", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "CI-TRIAGE", "RED-RUN-DIAGNOSIS"], "cousins": ["SN-0323", "SN-0329", "SN-0341"], "evidence": {"board": "#1354 6001998140 (Naya 2, 2026-10-05T20:02:20Z — '[NAYA 2][HYPOTHESIS] The producer may be poisoning its own well — verify-or-kill')", "pattern": "producer fails at different step each run: cold-retrieve duplicate content_hash at 18:25/19:08, lineage re-read at 19:21", "timeline_fit": "17:58 run succeeded (stored note hash H); 18:25+ runs collide on duplicate hash", "reconcile_pending": "1 duplicate hash at 355e5d89 across 34 entries vs hypothesis", "prompt_origin": "Shawn asked point-blank: are we thinking through ALL the possible solutions, or just spinning on the same one?"}, "rule": "when consecutive runs fail at different steps, run the verify-or-kill protocol: state the self-poisoning hypothesis, name the falsifier (nonce/timestamp in capture? dedupe on write path?), run the check, and record confirmed-or-killed on the board; confirmed => nonce per run or verify-latest-not-assert-exactly-1; killed => class eliminated on the record", "open_question": "define 'mission accomplished': synthetic-chain-green vs direct product verification (site up, migrations applied, functions current, end-to-end action) when deployment is already PROVEN green"}

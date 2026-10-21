@@ -1,0 +1,38 @@
+# When the Honest Fix Is Mathematically Impossible, Declare It and Don't Push
+
+**Intelligent Block:** IB-SMART-NOTE-20261005-sn0357-honest-fix-impossible
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-05
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 5997146670 ([NAYA 4][SUBAGENT SIGN-OUT], 2026-10-05T15:02:52Z / 08:02 PDT): PR #1229 re-anchor repair BLOCKED with full diagnosis. Pins: main bf4c8e9b, PR head f414dae2, base a33b33d7 (stale). Related: SN-0338 (the original ratchet-trip classification on PR #1229).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+The PR #1229 (Smart Notes staging branch) re-anchor repair hit a wall that is a verdict, not a failure. The CI red was classified BASE-INHERITED (stale base), not PR-introduced — pytest passes on the branch head alone (540 passed, 3 skipped) and fails only on the merge into the stale base. The prepared re-anchor tree (`bf4c8e9b` + 309 Smart Note files, purely additive, zero path collisions) trips the merge ratchet: `published_pages_without_registry_entry` would go 1 → 310. And the honest repair is **mathematically impossible**: registering 309 pages requires 309 registry entries with `content_hash` values; without hashes, `entries_without_hash` would go 17 → 326 against a pinned cap of 28. The three possible escapes are all closed — fabricating hashes violates the evidence law; bumping the baseline is an explicit hard stop; accepting permanently-red CI normalizes red (explicitly not recommended). So the worker did not push, left the branch untouched at `f414dae2`, and wrote the impossibility proof instead.
+
+Two durable lessons. First, the freeze-and-declare discipline: **"impossible" is a complete result when it is proven and declared.** The sign-out named the pins, the classification, the exact counts that make the fix impossible, which hard stops close which doors, and brought three options to Shawn with named owners — (A) Shawn rules on hash semantics for proactively-captured notes (enables honest batch registration); (B) restructure staging outside the governed SMART-NOTES path until notes are properly published; (C) accept permanently-red CI (not recommended) — plus the process assignment to the staging-flow owner. No unproven work was pushed to make the red move. Second, the process gap: **`stage_smart_note.py` stages files but never registers them** — every future Smart Note re-creates this exact collision until the tool registers notes at stage time. The ratchet was correct to fire (SN-0338); the gap is upstream of the ratchet.
+
+Why this is brain-grade: the temptation under a red CI is to make the red move by any means — relax the rule, bump the baseline, push something unproven and hope. This note teaches the cold successor the stronger move: prove the impossibility with the exact numbers (1→310, 17→326, cap 28), name which hard stop closes each door, leave the branch exactly as found, and hand the decision up with options that name their owners. That is not stalling — it is the evidence law applied to repair work. And it closes the loop SN-0338 opened: the ratchet firing was correct; the remaining work is the tool fix and Shawn's ruling on hash semantics, not another repair attempt on the branch.
+
+## 🩷 HUMAN NOTE
+
+Shawn — the PR #1229 cleanup hit a wall I want you to see clearly: the branch can't be honestly re-anchored, because registering 309 Smart Note pages needs 309 registry entries with real content hashes, and we can't fabricate hashes (evidence law) or move the pinned baseline (hard stop). So nothing was pushed — the branch is exactly as found, and the impossibility is written up with the numbers. Three options, your call: (A) you rule on hash semantics for proactively-captured notes, which unlocks honest batch registration; (B) we restructure staging outside the governed path for now; (C) accept permanently-red CI, which I don't recommend. Separately: the staging tool has to register notes when it stages them, or every future note recreates this red.
+
+## 🟣 CHILD NOTE
+
+Imagine you're fixing a toy shelf, and the rule is "every toy needs a name tag before it goes on the shelf." There are 309 toys and no name tags, and the rules say you can't make up tags and you can't change the rulebook. So you don't shove the toys on the shelf untagged just to look done — you leave the shelf exactly as it was, write down exactly why it can't be done honestly, and ask the grown-up to decide: make real name tags possible, move the toys somewhere else for now, or let the shelf stay messy (bad idea). And the real fix: the toy-box should have come with name tags in the first place.
+
+## 👵 GRANDMA NOTE
+
+It's like trying to file 309 papers that all need a signature, but the signature page was never made. You could fake the signatures — dishonest. You could change the filing rules — not allowed. Or you could file them unsigned and pretend it's fine — that teaches everyone sloppy is okay. The right move is the hard one: leave the papers alone, write down exactly why they can't be filed honestly, and take the decision to the boss with real options. And fix the process: the papers should have arrived with their signatures, so the next batch doesn't jam the same way.
+
+## 💜 NAYA NOTE
+
+Note to future me: "BLOCKED with full diagnosis" is a first-class outcome, not an apology. The checklist: pins named, red classified (PR-introduced vs base-inherited), exact counts that close the honest path, each door closed by name (evidence law / baseline hard stop / red-normalization), branch left byte-identical, options brought to Shawn with owners, process gap assigned to the tool owner. Never push unproven work to move a red. And: the ratchet firing was correct behavior (SN-0338) — when a ratchet fires on real drift, the repair is the process gap (`stage_smart_note.py` must register at stage time), not a second fight with the ratchet. Note the sequencing lesson too: the repair attempt discovered its own impossibility only because it ran the ratchet against the prepared tree before pushing — measure the failing line on the prepared work, never after the push.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0357", "title": "When the Honest Fix Is Mathematically Impossible, Declare It and Don't Push", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-05", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "GOVERNANCE", "FREEZE-DISCIPLINE"], "extends": ["SN-0338"], "related": ["SN-0327", "SN-0240"], "evidence": {"board": "#1354 5997146670 ([NAYA 4][SUBAGENT SIGN-OUT], 2026-10-05T15:02:52Z): pins main bf4c8e9b / PR head f414dae2 / base a33b33d7 (stale); CI red BASE-INHERITED (pytest 540 passed, 3 skipped on branch head alone); ratchet published_pages_without_registry_entry 1->310; honest fix impossible: entries_without_hash 17->326 vs pinned cap 28; cannot fabricate hashes (evidence law), cannot bump baseline (hard stop); branch left untouched; options to Shawn: (A) rule on hash semantics for proactively-captured notes, (B) restructure staging outside governed SMART-NOTES path, (C) accept permanently-red CI (not recommended); process owner: stage_smart_note.py must register notes at stage time"}, "rule": "when the honest fix is mathematically impossible, prove it with exact numbers, name the hard stop closing each door, leave the branch byte-identical (never push unproven work to move a red), and bring options with named owners — 'impossible' is a complete result when proven and declared; fix the process gap upstream of the ratchet"}

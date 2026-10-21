@@ -1,0 +1,36 @@
+# Quote the Approved Sample Verbatim — Then Namespace It
+
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0205-quote-sample-verbatim-then-namespace-it
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-02
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** `#554` 5956401765 (Naya 4, 2026-10-02 16:12:05Z) — Today v5, one board language. The director's ruling: "the same visual language, the same style, the same look. If you're going to change it, then you have to change everything." Shawn supplied `smart-feed.html` as the approved board language; every Today play is now a `.block.naya509-board` — the sample's anatomy (blockTop → announcer's call → nutshell box → layers → actions → blockFoot) quoted verbatim and scoped under `.today-stage`: "Opening a play renders the SAME intelligent-block language as the main page (layerHead/layerBody), not a second presentation." Fixes found in verification: the reference's generic class names collided with other room stylesheets — `.identity{min-height:100vh}` stretched every board header to viewport height — fixed by a scoped leakage guard; "reference rules win by source order." Commits `3422843` (v5) / `ab95c6e` (v5.1 leakage guard) / `ba93be4a` (v5.2 mobile) on `naya4/room-01-main-stage-v2` (PR #1328). Directive v1.0.2 records the ruling, including the sample's micro-label scale.
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+Two mechanics, one adoption. **First: one board language.** When the director approves a reference sample, you do not design a second presentation for the same object — you quote the approved anatomy verbatim. Today v5 renders every play as the `.block.naya509-board` from Shawn's smart-feed sample — same blockTop, same nutshell box, same layerHead/layerBody, same actions, same blockFoot — so opening a play is the main page's language, not a cousin of it. A second presentation is SN-118's concept drift in visual form: the eye learns one grammar, and every variant is a dialect the user must re-learn. **Second: namespace the import.** The sample's class names were generic — `.identity`, among others — and when its stylesheet landed on the shared page, `.identity{min-height:100vh}` stretched every board header to viewport height. The fix was a scoped leakage guard: the whole import lives under `.today-stage`, with explicit "reference rules win by source order." Verbatim adoption without namespacing imports the sample's collisions along with its beauty; namespacing without verbatim adoption is just another invention. The pair is the protocol: quote it exactly, fence it exactly. Bonus discipline: the v5 verification caught the collision mechanically (preview rebuilt from exact head, desktop + mobile) rather than trusting the reference — an approved sample is still unproven in the host page until rendered there.
+
+Why this is brain-grade: this extends SN-118 (lift the frozen concept verbatim) from concept to visual grammar, and adds the missing engineering half — the collision class. Every lane will eventually be handed a director-approved reference and told to apply it; the failure mode is either drift (re-designing it) or contamination (its generic classes leaking into the shared page). The note names both failure modes and the two-move fix. The directive v1.0.2 move matters too: the ruling and the sample's scale are recorded in the governing law, so the next seat quotes the sample from the law, not from a memory of it.
+
+## 🩷 HUMAN NOTE
+
+Shawn — your one-board-language ruling is now a standing brain rule: every Today play renders your approved smart-feed board anatomy verbatim — no second presentation, same grammar everywhere. And the adoption carries a mechanical guard: the sample's generic class names collided with other rooms' stylesheets (one class stretched every header to viewport height), so the import is namespaced under `.today-stage`. The lesson: quote the approved sample exactly, fence it exactly — drift and contamination are the two failure modes, and the rule names both.
+
+## 🟣 CHILD NOTE
+
+If someone shows you exactly what the toy should look like, you copy it exactly — you don't make up your own version. But the stickers they gave you have names that might stick to other toys too, so you put a special border around your area first, so their stickers can't stick anywhere else. Copy exactly, protect everything else.
+
+## 👵 GRANDMA NOTE
+
+The director approved a sample page and said every play should look exactly like it — same boxes, same labels, same buttons — not a similar-looking version. And when the builder brought the sample's styling in, some of its names were so common they accidentally restyled other parts of the page (one made every header as tall as the whole screen). The fix: put the whole import inside its own named boundary, so it can only affect its own area. The lesson: copy the approved look word-for-word, and fence it off so it can't spill.
+
+## 🤖 NAYA NOTE
+
+Reference-adoption protocol: (1) quote the director-approved sample verbatim — same anatomy, same grammar; a second presentation is concept drift (SN-118); (2) namespace the import under a scope guard — generic class names in a reference stylesheet collide with the host page's styles (instance: `.identity{min-height:100vh}` stretched every board header to viewport height); the scope guard makes the import unable to leak; (3) verify the sample in the host page mechanically (exact-head preview, desktop + mobile) — an approved sample is unproven in context until rendered there; (4) record the ruling and the sample's scale in the governing directive, so the next seat quotes from the law, not from memory.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0205", "title": "Quote the Approved Sample Verbatim — Then Namespace It", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-02", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "SYSTEM-DESIGN", "REFERENCE-ADOPTION"], "extends": ["SN-0118"], "evidence": {"ruling": "#554 5956401765: director's ruling 'the same visual language, the same style, the same look. If you're going to change it, then you have to change everything'; every Today play = .block.naya509-board from the approved smart-feed sample, quoted verbatim, scoped under .today-stage; opening a play renders the SAME intelligent-block language as the main page, not a second presentation", "collision": "verification found .identity{min-height:100vh} (generic reference class) stretching every board header to viewport height — fixed by scoped leakage guard; reference rules win by source order", "commits": "3422843 (v5) / ab95c6e (v5.1 leakage guard) / ba93be4a (v5.2 mobile) on naya4/room-01-main-stage-v2 (PR #1328); directive v1.0.2 records the ruling incl. the sample's micro-label scale"}, "rule": "quote the approved sample verbatim; namespace the import; verify in the host page; record the ruling in the directive"}

@@ -1,0 +1,38 @@
+# A Fixed-Page Tail of the Board Never Sees the Newest Claims
+
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0506-fixed-page-tail-blindness
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-06
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 6027859906 (NAYA/Codex SIGN-IN — board-claim scanner recent-tail repair: source reproduction with 350 ascending-ID comments and an active claim at 350 where fetch_board_tail(pages=2) returns IDs 1..200 and the scan reports no collision, 2026-10-07T00:06:22Z); GitHub REST docs — list-issue-comments returns ascending ID order and ignores sort/direction params (https://docs.github.com/en/rest/issues/comments#list-issue-comments).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+The board-claim scanner was silently blind to the newest claims. The reproduction is exact: a board with 350 ascending-ID comments and an active claim sitting at comment 350 — the very newest — gets scanned by `fetch_board_tail(pages=2)`, which returns IDs 1..200 and reports "no collision." The scanner didn't malfunction; it did exactly what it was told. The bug is in the assumption underneath the code: that the last N pages of a paginated endpoint contain the last N items. GitHub's issue-comments endpoint returns ascending ID order and silently ignores `sort`/`direction` parameters, so pages 1..2 of a 350-comment board are the OLDEST comments, not the newest — the scanner was "checking the board" while reading a historical snapshot that could never contain a fresh claim.
+
+The repair prescription in the sign-in: locate the last window using the live issue comment count (ceil(count/per_page)), validate the returned coverage against that count, and fail closed on inconsistent snapshots — prove the newest claim becomes COLLISION and malformed/moving snapshots stay UNKNOWN. This is the twin of the lesson this very distillation loop carries in its own instructions (always compute the last page from the comment count, never trust `per_page` alone): a scanner that reports "no collision" without proving its window covers the newest comment is certifying fiction — SN-0421's vacuous green ("a run-level SUCCESS with skipped behavioral jobs") in scanner form.
+
+Why this is brain-grade: every collision/claim/ack scanner across the fleet makes the same unstated bet — "my window covers what I claim to have scanned." That bet fails silently the moment the board outgrows the window, and silence is the whole danger: the output "no collision" is indistinguishable from a healthy board. The durable rule: any scan whose claim depends on coverage must prove coverage on the same run — fetch the live count, anchor the window to it, and refuse to report when the snapshot moved. A "no collision" verdict without a coverage proof is not evidence; it is the absence of a search.
+
+## 🩷 HUMAN NOTE
+
+Shawn — a scanner defect found today that hits close to home: the board-claim scanner reported "no collision" while an active claim sat at the very newest comment, because it was reading fixed pages 1–2 of a 350-comment board — and GitHub serves those oldest-first. It was checking the board's past and calling it the present. The repair: anchor the scan window to the live comment count, prove the window covers the newest comment, and fail closed if the board moved mid-scan. Banked rule: any scanner that says "no collision" without proving its window covered the newest item isn't scanning — it's certifying that it didn't look.
+
+## 🟣 CHILD NOTE
+
+Imagine you're a hall monitor and your job is to check the newest sign-up sheet on the bulletin board. But instead of walking to the board, you read the first two pages of an old yearbook and report "nobody new signed up." That's what this scanner did: GitHub's comment list is ordered oldest-first, so "pages 1 and 2" means the oldest comments, not the newest. The newest claim was right there at comment 350 — the scanner just never walked over to it. The fix: before you report anything, first count how many comments the board has right now, go to the LAST page, and make sure that page is really the last. If the board changed while you were counting, say "I don't know" — never say "all clear" when you weren't sure.
+
+## 👵 GRANDMA NOTE
+
+A night watchman is told to check that the front door is locked. He checks the back door instead — every night — and writes "all clear." Nothing is wrong with his checklist; he's checking the wrong door. That was this scanner: the endpoint serves comments oldest-first, so asking for "the first two pages" means asking for the oldest comments, and the report of "no collision" was a report on the past. The repair is the commonsense one: before you declare all clear, prove you looked at the right door — check the current count, look at the newest entry, and if things shifted while you looked, admit you don't know rather than certifying safety you never inspected.
+
+## 💜 NAYA NOTE
+
+Note to future me: whenever I write or review anything that reads a paginated list and claims a verdict about its newest items — claim scanners, ack scanners, collision detectors, watermarks — ask the coverage question first: does my window provably contain the newest items? The GitHub issue-comments endpoint returns ascending ID order and silently ignores sort/direction params, so fixed pages 1..N are the oldest comments. Anchor to the live count: last_page = ceil(count/per_page), fetch THAT page, validate the returned IDs against the count, and fail closed (UNKNOWN, not "no collision") when the snapshot is malformed or moved mid-read. Never let "no collision found" reach a report without an attached coverage proof. This is the same law my own distillation tick follows (compute the last page from the count); any scanner that doesn't is reading history and calling it the present. Family: SN-0421 (a run-level SUCCESS with skipped behavioral jobs is vacuous) :: this (a no-collision verdict without a coverage proof is vacuous).
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0506", "title": "A Fixed-Page Tail of the Board Never Sees the Newest Claims", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-06", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "ENGINEERING-PROOF", "VERIFY-COVERAGE"], "cousins": ["SN-0421", "SN-0429"], "authority": "observed episode — NAYA/Codex board-claim scanner repair SIGN-IN 2026-10-07T00:06:22Z, CANDIDATE (auto-capture, not ratified)", "evidence": {"board": ["#1354 6027859906 (SIGN-IN — source reproduction: 350 ascending-ID comments, active claim at 350, fetch_board_tail(pages=2) returns IDs 1..200, scan reports no collision; plan: locate last window via live count, validate coverage, fail closed on inconsistent snapshots, 2026-10-07T00:06:22Z)"], "docs": "https://docs.github.com/en/rest/issues/comments#list-issue-comments — list issue comments returns ascending ID order; sort/direction params silently ignored"}, "doctrine": {"anchor_to_live_count": "last_page = ceil(live_comment_count / per_page); fetch THAT page (and -1 for context); never pages 1..N as the tail", "coverage_proof_required": "a 'no collision' verdict must ship with proof its window covered the newest item; malformed or moving snapshots → UNKNOWN, never 'all clear'", "fail_closed_snapshot": "validate returned coverage against the live count on the same run; if the board moved mid-scan, the verdict is UNKNOWN", "family": "SN-0421 (run-level SUCCESS with skipped behavioral jobs is vacuous) :: SN-0429 (verify with the instrument CI uses) :: this (a no-collision verdict without a coverage proof is vacuous)"}}
