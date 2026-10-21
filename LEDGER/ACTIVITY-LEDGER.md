@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 04:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16999,6 +16999,12 @@ _Last updated: 2026-10-21 04:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: tip aa8061c1 unmoved (ls-remote), #2462 head a92be1c01812a86c1994298b508cc41577e250dc == branch naya/lane9/tipred-fix-t0112 == refs/pull/2462/head. Review comment 6122317726 cited; differential pytest attribution (red pre-existing at base, EXPOSED not introduced) proven on bytes; HOLD verdict correct (merge-consensus bar open 1
 
+### ✅ t0172-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** TOOL-transfer hypothesis close-out (leg seal recompute + boundary table)
+
+**Evidence:** Verified: lane-experiments/TOOL-transfer-hypothesis-closeout.md exists; leg-2 seal pin 549adc52c5… found byte-exact in t1412/seal-verification.json; leg-3 seal pin 69fb7660c4… found byte-exact in t0122/seal-verification.json — every cited hash matches, nothing copied-blind. Clears 9.5 because the whole close-out is carried by re-derived bytes and t
+
 ### ✅ t0172 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** TOOL-transfer hypothesis CLOSED: hypothesis-level close-out with six-item honest not-yet-proven boundary, brief corrected against score log
@@ -17014,6 +17020,12 @@ _Last updated: 2026-10-21 04:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0172-lane6.md`
 
 **Evidence:** Dispatcher verified: close-out file lane-experiments/TOOL-transfer-hypothesis-closeout.md exists; seal files t0162/prereg-sealed.md sha256 7b726ce4...e781 == receipt pin; seal-verification.json structure present (9 pins); score log corrected from brief (t0092=9.0, t0122=9.5) cited accurately. Recomputed-vs-copied discipline stated. To-do closure ca
+
+### ✅ t0172-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** #2418 action-time re-verify: calculator HOLD, blockers named (no merge)
+
+**Evidence:** Verified via git protocol: refs/pull/2418/head == 8346681cd52600e08fba3bcbb8b86a3258eaf056 — pin-exact match to receipt 8 days later; receipt internally consistent (calculator HOLD + 1/2 seats + 3 named blockers with owners; no manufactured merge). Score 8.5 — why not 9.5: action-time evidence (seat-2 comments, check-runs) not re-verified this tick
 
 ### ✅ t0172 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -17042,6 +17054,12 @@ _Last updated: 2026-10-21 04:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** HV observatory window t0122-t0162: instrument refresh, hand audit, machine cross-check, trend publish
 
 **Evidence:** Dispatcher verified: hv_output_t0162_run1/run2.json byte-identical (sha256 d4e59a18... matches receipt), metric_audit_t0162.json exists (12 rows), STATS.md published, tip aa8061c1 re-pinned unmoved. Third regression proof of t1162 window-scoping fix (42 receipts reproduce t1052 baseline exactly). HV3 PROVEN-UNMEASURABLE correctly not re-filed (no m
+
+### ✅ t0172-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** M6 swallower-veto fix on SGF runner (RED-first, 6/6 GREEN)
+
+**Evidence:** Verified: test_sgf_runner_m6.py sha256 53711d981eece388 matches receipt pin byte-for-byte on live file; pre-fix runner pin db685e5c9df9aaa0 matches scratch pre-fix copy (RED-first claim grounded); decision receipt hidden_files/decisions/20261012T102720Z-next-t0172-lane-pick--m6-swallower-fix-design.json exists. Score 9.0 — why not 9.5: post-fix run
 
 ### ✅ t0172 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
