@@ -1519,9 +1519,25 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     if brain.exists():
         for p in sorted(brain.rglob("*.md")):
             pages_by_name.setdefault(p.name, []).append(str(p.relative_to(root)).replace("\\", "/"))
+    # A leaf-name collision is only a duplicate when the BYTES collide: the
+    # layout convention puts a `smart-note.md` in every note's own directory
+    # (identity = the directory, not the leaf), and distinct notes may share a
+    # slug-style leaf name with different content. Keying on the bare leaf name
+    # manufactured false positives; keying on the full relative path would make
+    # the class vacuous and hide true double-publications. So: group by leaf
+    # name as candidates, then flag only content-identical path sets.
     for name, paths in sorted(pages_by_name.items()):
-        if len(paths) > 1:
-            defects["duplicate_published_page_paths"].append({"page": name, "paths": paths})
+        if len(paths) < 2:
+            continue
+        by_content = {}
+        for rel in paths:
+            raw = (root / rel).read_bytes()
+            by_content.setdefault(hashlib.sha256(raw).hexdigest(), []).append(rel)
+        for digest, dup_paths in sorted(by_content.items()):
+            if len(dup_paths) > 1:
+                defects["duplicate_published_page_paths"].append(
+                    {"page": name, "paths": dup_paths, "content_sha256": digest[:16]}
+                )
 
     known_pages = {f"{e.get('intelligent_block_id')}.md" for e in entries if e.get("intelligent_block_id")}
     for name, paths in sorted(pages_by_name.items()):

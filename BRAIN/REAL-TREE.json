@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-21",
-  "receipt_basis_commit": "67379f2158e759216bcc6f143032156c9ad142fe",
+  "receipt_basis_commit": "a7ab4780fe3494c7a0b0f99a095cd970c5e2b420",
   "inventory_file_count": 1358,
   "domain_counts": {
     "00-ACTIVATION": 7,

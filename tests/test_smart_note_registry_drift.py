@@ -31,7 +31,12 @@ PINNED_BASELINE = {
     "published_entries_missing_projection_path": 0,
     "registry_projection_paths_absent": 0,
     "published_pages_without_registry_entry": 1,
-    "duplicate_published_page_paths": 1,
+    # 0 since w569: re-keyed on content collision within leaf-name groups
+    # (Delta) -- the layout convention puts a smart-note.md in every note's
+    # own directory, and distinct notes may share a slug leaf with different
+    # content. Bare-leaf keying manufactured false positives; the class now
+    # fires only on byte-identical double-publications.
+    "duplicate_published_page_paths": 0,
 }
 
 PAGE = "BRAIN/05-MEMORY/SMART-NOTES/2026/01/01/CAT/TOPIC/SUB/SN-001/IB-1.md"
