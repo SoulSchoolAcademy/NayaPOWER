@@ -13638,13 +13638,33 @@
         "note": "published directly as a BRAIN projection in commit 8cb52c46fe83152cc9d14c757df9531065d7b9ae ('feat(smart-note): SN-0804 Viral Law — Nobody Discovers What Doesn't Hook Them') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-20 brain-index re-stamp; no runtime provenance invented"
       },
       "page_hash": "57c632fdbd9e8ade11e56f2c2f05d5075f9e3cf992cdbb14502f453afeb29f83"
+    },
+    {
+      "smart_note_id": "SN-1769",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn1769-the-whole-system-in-simple-words",
+      "title": "The Whole System in Simple Words",
+      "content_hash": "1fbecf2bd99fe877bdd6aa78e503b4a48806961ab2a7e015329cf48750b0d392",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/system-map/SN-1769/IB-SMART-NOTE-20261021-sn1769-the-whole-system-in-simple-words.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SYSTEM-MAP",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "authored-capture",
+        "note": "authored by Naya Resolve (main seat) from Shawn Vibert's dictation in the main chat (2026-10-21 ~16:25Z), at his direct order (~16:33Z) that a Smart Note of the whole system in simple words be made, shown in the Hub, and returned to him as a Smart Link; SN number allocated SN-1769 after a full claim scan (registry at main through SN-0804 + pages through SN-0808; PR #2831 cure sets next_sequence 809; open PR #2828 head 9f637bb2 staging tree claims SN-0809 through SN-1768, so 0809 was NOT taken); no runtime provenance invented"
+      },
+      "page_hash": "ca4737927db043849602b1e1449886a8674660d223f2897ca2fcdccaddaed2da"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 805,
+    "next_sequence": 1770,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "17ae6088197367bfcb932183f6a5355fe679794cc6b77bd58e8d5cf379c72f8d"
+  "corpus_manifest_hash": "e4fc5bcc3bd939bc5466017b7ab6c3a2fd291e9a67abbae8e9055b7cca1faf22"
 }
