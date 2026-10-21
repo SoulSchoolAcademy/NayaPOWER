@@ -205,8 +205,13 @@ def test_scorecard_matcher_rejects_below_law_threshold():
 
 def test_scorecard_matcher_accepts_iv_format():
     body = (f"## VERDICT: MERGE RECOMMENDED\n**Honest scorecard: 9.5/10.**\n"
-            f"head {HEAD}\nSeat: Naya 3")
+            f"Head SHA: {HEAD}\nSeat: Naya 3")
     assert _looks_like_scorecard(body, HEAD)
+
+
+def test_merge_recommended_phrase_cannot_replace_numeric_threshold():
+    body = f"## VERDICT: MERGE RECOMMENDED\nHonest scorecard: 8/10\nHead SHA: {HEAD}\nSeat: Naya 3"
+    assert not _looks_like_scorecard(body, HEAD)
 
 
 def test_scorecard_matcher_rejects_low_score():
