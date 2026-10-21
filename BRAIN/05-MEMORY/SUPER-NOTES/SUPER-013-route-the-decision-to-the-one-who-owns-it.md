@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-013` |
 | Human title | Route the Decision to the One Who Owns It |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 10 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -44,6 +44,10 @@ Dear, every household has decisions that belong to a particular person — the o
 ## 🤖 NAYA NOTE
 
 Classify every gap you surface: mine to fix, or a decision with an owner? If it has an owner, name the decision, name the owner, leave the gap visible, invent nothing interim, and route it. Preserve conflicts inside the artifact itself — both positions recorded, no silent pick. Freeze ambiguous scales and ask the exact question rather than shipping your interpretation. Route external failures to their canonical owner with the repair-or-retire options written down, classified fail-closed. Do the read-only investigation at production boundaries yourself; leave the writes to the gate. Never hand the director unfinished QA.
+
+When sources are merged into one document, ship a contradictions register with it: each entry names the contradiction, the conflicting sources with their refs, a recommendation with its reasoning, and the ruling owner — the consolidator proposes; the director disposes (sn0196). A merged document claiming zero contradictions is a smell, not a triumph: treat it as a silent-resolution candidate and re-read (sn0196).
+
+When two authorities seem to conflict, first run authority-reconciliation-by-restoration: recover the director's latest recorded word, quote it verbatim — paraphrase is where drift re-enters — and classify the losing side precisely, for example as stale specification, not contested judgment (sn0211). Name the consequences as actions, and close by stating that no new preference was invented: restoration, not invention (sn0211).
 
 ---
 

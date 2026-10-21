@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-030` |
 | Human title | Quiet States Lie by Omission |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 9 raw notes (full list below) |
 | Cluster file | `cluster-03-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,20 @@ No silent gaps in what you depend on. When something claims to have run, it ran;
 ## HOW IT APPLIES
 
 For every green: open the job table and list the skips. For every chain: confirm each producer actually produced. For every 'no CI failures': confirm CI was triggered at all. For every skipped failure: record its individual reason. For every critical file: verify the hash, not the path.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0379 — Skipped Is Not Failed — a Wait Step Must Not Die on an Upstream Placeholder [audit: PARTIAL → lost element restored]
+
+The lost wait-step lesson: a wait/poll step must use three verdict classes — SUCCESS; FAILED/CANCELLED, fail fast; and SKIPPED = UNKNOWN, keep polling — and must never die on a skipped upstream placeholder. Skipped is UNKNOWN, not a verdict. In the source case the promotion's wait step treated a "skipped" placeholder as a hard failure and died in ~11 seconds, stranding producer → proof → act-proof → connect-proof behind a verdict that never happened.
+
+### SN-074 — "API Pushes Never Trigger Actions" Was an Event-Scoping Overgeneralization — Scope CI-Trigger Claims by Workflow Event (SN-048 Correction) [audit: PARTIAL → lost element restored]
+
+The corrected fact itself: API / Data-API pushes do fire `pull_request`-event workflows, while `push`-event workflows stay silent on the same push. Live evidence: GitHub Actions ran on the API-pushed v3 head `2a7851a8` of PR #1243 — `test` = SUCCESS and Collective Chain Readiness Gate = SUCCESS, fired ~3 minutes post-push — and the event was `pull_request`, not `push`. So SN-048's absolute ("API-pushed commits never trigger GitHub Actions") is downgraded to a conditional scoped by workflow event type, and SN-051's local-verification-as-gate remains the remedy only where the needed evidence channel — the `push` event — is blind.
 
 ---
 

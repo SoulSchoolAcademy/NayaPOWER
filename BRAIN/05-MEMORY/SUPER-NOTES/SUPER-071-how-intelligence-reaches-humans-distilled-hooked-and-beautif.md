@@ -8,8 +8,8 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-071` |
 | Human title | How Intelligence Reaches Humans: Distilled, Hooked, and Beautiful |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
-| Sources | 9 raw notes (full list below) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
+| Sources | 8 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
 | Human projection | This Markdown file |
@@ -65,6 +65,16 @@ Lead with the essence, disclose progressively, make the next action obvious. Put
 
 ---
 
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0810 — Say It, and It's Live: How a Smart Note Travels From Your Words to the Hub Feed [audit: PARTIAL → lost element restored]
+
+The delivery path itself: the note is written in the canonical nine-section format, named by its full IB id, filed by topic in the dated Smart Notes folder, and landed on GitHub main. From there, automatically, a sync running every five minutes reads main, files the note into the brain's table, mints its share card and its own page, rebakes the Hub feed, and redeploys — minutes later the note is a living card in the Smart Feed. Done means visibly alive in the Hub feed with the link in hand, not written and not merged.
+
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
 - `IB-000048`
@@ -73,6 +83,5 @@ Lead with the essence, disclose progressively, make the next action obvious. Put
 - `IB-SMART-NOTE-20261002-sn0597-human-centered-design-intelligence`
 - `IB-SMART-NOTE-20261001-sn0596-naya-signature-design-mastery`
 - `IB-SMART-NOTE-20261001-hub-is-intelligence-projection`
-- `SN-0808-the-elevation-standard`
 - `IB-SMART-NOTE-20261021-sn0808-the-elevation-standard`
 - `IB-SMART-NOTE-20261021-sn0810-how-a-smart-note-enters-the-hub`

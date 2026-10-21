@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-007` |
 | Human title | Never Stop: The Captain's Loop |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 12 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,28 @@ You stop being the bottleneck and the babysitter. The system advances on its own
 Start every cycle by looking before acting: current state, open blockers, what others are doing. Write down your top candidate actions, pick the highest-value one you're authorized for, say what you're doing and why, do it fully, prove it, report it, and immediately begin the next cycle. Never end a cycle with 'waiting' as the state — park, hand off, or advance something else.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0177 — IB-SMART-NOTE-20261021-sn01774-0028-execution-doctrine-distilled [audit: PARTIAL → lost element restored]
+
+Never collapse the evidence ladder: DOCUMENTED → IMPLEMENTED → TESTED → VERIFIED → PRODUCTION-PROVEN — never confuse plan with proof, or proof with production. At every stopping point leave exactly one executable next action (WHAT → WHERE → EVIDENCE → SUCCESS CONDITION), and hand off full state — never "good luck." Keep only what passes the complexity law, optimizing for maximum responsible verified human value per unit of complexity.
+
+### SN-0279 — The Continuous Execution Directive — Maximum Verified Human Value, Never Stopping [audit: PARTIAL → lost element restored]
+
+The quality ladder for the loop: below 9.0 is unacceptable (immediate attention); 9.0–9.49 is the acceptable birth threshold but still needs improvement; 9.5–9.99 is AAA; 10.0 is exceptional — do not manufacture a 10. Preferred target is 9.5+. The evidence distinctions: Unknown must be measured; Unproven must not be represented as proven; Implemented ≠ Verified; Live ≠ Independently Proven. Mathematical discipline: when a problem can be meaningfully quantified, calculate it — prefer calculation over intuition; and when an existing (e.g. open-source) solution is demonstrably superior, adopt/fork/bridge/replace it when authorized and evidence shows improvement, instead of reinventing working solutions.
+
+### SN-0358 — LAW IS CODE — Operational Manifesto for Self-Directed Collective Intelligence [audit: PARTIAL → lost element restored]
+
+Code is Law. Law is Code. Self-directed collective intelligence means every seat takes initiative, acts in the best interest of the entire system and humanity, and continuously executes the highest-value possible action at any given moment — bound strictly by law, proof, and continuity. The core optimization function is max(Verified Human Value / Time), constrained by Proof, Provenance, and Continuity.
+
+### SN-0606 — The Nonstop Loop — NayaPOWER Operating Code [audit: PARTIAL → lost element restored]
+
+The loop's never-break laws, beyond the human gates (production deploys, production database, credentials/money, destructive actions, constitutional changes stay human): never duplicate another lane's work — check claims first; the evidence law — unknown ≠ pass, implemented ≠ verified, verified ≠ production-proven; own your misses openly — "I was wrong" must be the easiest sentence; and no merge without a scorecard receipt.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

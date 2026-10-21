@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-009` |
 | Human title | A Law Must Be Code, or It Isn't a Law Yet |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 12 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,28 @@ Rules that protect you keep working when you're not watching, when the team chan
 ## HOW IT APPLIES
 
 For every rule you rely on, ask: what exactly happens, automatically, when this is broken? If the answer is 'someone would notice,' build the noticer — a check with a real failure case, wired into the path it guards. When writing guidance, pair each rule with its test in the same delivery, and verify the test can fail before you trust it to pass.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0199 — The Executor's Personal Binding Oath [audit: MISSING → restored in full]
+
+An executor may write a first-person binding oath as a personal obedience layer beneath canon. The oath must declare its parent documents, declare its subordination to canon, and never invent rules its parents lack: personal oaths declare parents + subordination + no new rules; derived obedience, never parallel authority. Canon stays the detailed team reference; the oath is what the executor personally obeys. An oath that invents rules is a shadow canon, not a binding.
+
+### SN-0261 — Ratifying the Law Does Not Freeze the Document — the Smart-Link Law, Encoded and Enforced [audit: MISSING → restored in full]
+
+The law and the document have separate lifecycles: ratification blesses the enforcement point, not the prose, so the document keeps being scorecarded and improved toward 10/10 under the ratified law instead of being frozen by it. Never say "the document is ratified" when only the law is ratified. In the source case, the Smart-Link law was ratified on 2026-10-04 while the document SN-036 remained CANDIDATE at 8.5/10, iterating toward 10/10 via team scorecards; what was ratified was the enforcement point — the conformance gate's `--delivery-text PATH` check, which requires a human-viewable Smart Link (a github.com blob URL under `BRAIN/05-MEMORY/SMART-NOTES/.../snNNNN....md` naming the note's SN id), fails with `CONFORMANCE-GATE FAIL: DELIVERY INCOMPLETE` when no Smart Link is present, and refuses PR numbers, branch names, commit SHAs, and raw JSON URLs as delivery.
+
+### SN-0262 — The Constitutional Activation Ladder — Candidate Bytes May Be Compiled but Never Govern [audit: PARTIAL → lost element restored]
+
+Candidate bytes may be VALIDATED → COMPILED → TESTED → EXPLAINED, but may NOT govern consequential runtime behavior. Activation requires ALL of these together: exact-version Human Director ratification; a ratification receipt/reference; status `RATIFIED_ACTIVE`; `ratified=true`; `runtime_enabled=true`; source pins reconciled; and schema/nine-node/hard-stop/truth-distinction gates PASS. Flipping `runtime_enabled` alone is explicitly tested and REFUSED — the single-flag activation path does not exist.
+
+### SN-0324 — The Authority Gap — Executing on Verbal Authority Ahead of the Encoded Law [audit: PARTIAL → lost element restored]
+
+A verbal decision authorizes the single act only — it does not mean the machine now enforces the law. An execution on verbal authority must never be cited later as proof the machine may do it autonomously. The adversarial review belongs in the draft law's PR before the law hardens, not in a board thread after the fact.
 
 ---
 

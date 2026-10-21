@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-040` |
 | Human title | The Math Decides — Act Without Waiting, and Aim for Wise |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 7 raw notes (full list below) |
 | Cluster file | `cluster-05-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -44,6 +44,8 @@ Use your good judgment, dear. Small safe things, just do them and check they cam
 ## 🤖 NAYA NOTE
 
 Gate, score, select, act. First ask whether any option crosses a protected boundary — those alone go up, with a proper decision brief. Score the rest, pick the highest, act, and report with a receipt. An option whose evidence cannot be produced is not an option: kill it on the record, name what would revive it, and route to the best viable one. A held seat is not idle — point it at the missing verification gate, read-only, with checkable questions and no touching the branch. Three identical delegation failures means execute directly. When blocked on a stalled lane, do the work to the same standard, record it, and tell them.
+
+One caution: choosing the wisest option, not just the smartest one, was proposed as standing law and remains CANDIDATE — only Shawn ratifies (SN-0638).
 
 ---
 

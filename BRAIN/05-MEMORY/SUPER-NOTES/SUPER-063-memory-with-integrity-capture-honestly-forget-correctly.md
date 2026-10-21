@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-063` |
 | Human title | Memory With Integrity: Capture Honestly, Forget Correctly |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 7 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -45,6 +45,8 @@ It's like keeping the family records honestly. You never forge a letter to make 
 
 Never mint a capture you didn't earn; an honest registry entry with no capture file is better than a fabricated one. Harden integration paths without touching the canonical surface - when a receiver's authority rules can't be weakened, route through them properly instead of building a second memory system or a weaker check. Every landed artifact still needs its registry entry and capture, whoever landed it. When you retire stale material, preserve provenance: out of the active set, never out of existence.
 
+That proper route has a name: present a real user JWT, and leave the Receiver byte-identical (SN-0496). The Receiver (v7-smart-note-canonical) requires an Authorization header plus supabase.auth.getUser() — a user JWT no Naya runtime holds — and extending it to accept GitHub-OIDC directly is structurally unsound, because nayanet_record_cognition_event is security invoker and raises AUTH_REQUIRED on a null auth.uid(), nayanet_cognition_events.user_id carries an auth.users foreign key, and RLS is owner-scoped (SN-0496). So a governed workflow (.github/workflows/nayanet-agent-capture.yml, with helper scripts/naya-runtime-capture.sh) signs in as a dedicated naya-runtime auth user, using credentials held in repo secrets — Naya runtimes never hold the credential — and calls the unchanged Receiver (SN-0496). The human gate is exactly three steps: create the naya-runtime auth user, set 4 repo secrets, merge the PR (SN-0496).
+
 ---
 
 ## WHAT IT MEANS
@@ -61,15 +63,29 @@ What the system remembers about your work and your lessons, you can trust - it w
 
 ## HOW IT APPLIES
 
-Capture at the moment, through the governed path, with provenance attached - never hand-authored after the fact to satisfy a check. Index the nutshell, not just the metadata. When a newer truth replaces an older one, mark the old one superseded explicitly and keep it classified as history. Before citing or reusing a memory, check its freshness and whether it still applies.
+Capture at the moment, through the governed path, with provenance attached - never hand-authored after the fact to satisfy a check. Index the lesson itself: include each note's distilled NUTSHELL text in the retrieval haystack, not only its title, topic, and keywords (SN-0612). Corpus and representation come before algorithm — no ranker can retrieve the right note if the haystack cannot see it, so never tune ranking to fix a corpus or representation problem (SN-0612). When a wrong note is retrieved, check in this order: (1) is the right note in the corpus at all? (2) is the lesson text in the haystack? (3) only then look at ranking (SN-0612). The guard is the regression test test_retrieve_matches_lesson_content_not_just_metadata: before the fix, content-word queries returned SN-042 and SN-018 (both wrong); after it, both returned SN-0359 (SN-0612). When a newer truth replaces an older one, mark the old one superseded explicitly and keep it classified as history. Before citing or reusing a memory, check its freshness and whether it still applies.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0299 — Intelligent Block: SN-0299 [audit: PARTIAL → lost element restored]
+
+The seven fundamentals are: truth before ego; capture responsibility (not capture everything); every mistake becomes immunity; score continuously without manufacturing; intelligence must earn permanence; the next Naya is the acceptance test; and evidence-driven self-optimization. The refined capture trigger is not "something happened" but "something happened from which a future intelligence could materially benefit." Mechanical invariant: a work block cannot be VERIFIED-complete without an explicit learning decision (capture or justified NO_CAPTURE).
+
+### SN-0496 — IB-SMART-NOTE-20261006-sn0496-agent-capture-must-present-a-real-user-jwt-receiver-stays-byte-identical [audit: PARTIAL → lost element restored]
+
+Any correct capture path must present a real user JWT — the Receiver (`v7-smart-note-canonical`) stays byte-identical and is not weakened to accept another credential type. The mechanism: a governed workflow (`.github/workflows/nayanet-agent-capture.yml`) signs in as a dedicated `naya-runtime` auth user whose credentials live in repo secrets and are never held by Naya runtimes, and calls the unchanged Receiver.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
 - `IB-SMART-NOTE-20260930-sn009-correct-forgetting`
 - `IB-SMART-NOTE-20261006-sn0612-index-the-lesson`
-- `IB-SMART-NOTE-20261006-sn0496-agent-capture-must-present-a-real-user-jwt-receiver-stays-byte-identic`
+- `IB-SMART-NOTE-20261006-sn0496-agent-capture-must-present-a-real-user-jwt-receiver-stays-byte-identical`
 - `IB-SMART-NOTE-20261006-sn0494-never-fabricate-a-capture-provenance-laundering`
 - `IB-SMART-NOTE-20261006-sn0491-direct-commit-capture-bypass`
 - `IB-SMART-NOTE-20261004-sn0299-what-deserves-to-survive`

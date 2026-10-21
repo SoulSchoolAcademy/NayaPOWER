@@ -72,6 +72,7 @@ verify") — never a guess, never a traceback.
 """
 
 import argparse
+import datetime
 import json
 import os
 import re
@@ -85,6 +86,15 @@ SHIP_BAR = 9.5
 FIX_BAR = 8.0
 MAX_PASSES = 3
 MAX_SOLUTIONS = 10
+
+
+def _utc_now():
+    """ISO-8601 UTC timestamp of right now — the L577 measurement "
+    time. Every score the judge computes carries it; the write-path "
+    guard (tools/scorecard_guard.py) refuses any report without one."""
+    return datetime.datetime.now(
+        datetime.timezone.utc).replace(microsecond=0).strftime(
+        "%Y-%m-%dT%H:%M:%SZ")
 
 
 def _nonempty(value):
@@ -256,6 +266,7 @@ def score_work(work):
             "title": "",
             "overall": 0.0,
             "verdict": "HOLD",
+            "measured_at": _utc_now(),
             "blocking": ["input"],
             "criteria": {"input": {"score": 0.0,
                                    "reasons": ["unreadable input — fail-closed"]}},
@@ -305,6 +316,7 @@ def score_work(work):
         "title": work.get("title", ""),
         "overall": overall,
         "verdict": verdict,
+        "measured_at": _utc_now(),
         "blocking": blocking,
         "criteria": criteria,
         "pass": pass_no,
@@ -943,6 +955,21 @@ def main(argv=None):
         print(render_human(report) if not args.json else json.dumps(report, indent=2))
         return 2
     report = score_work(work)
+    # L577: no score renders or writes without measured_at. The guard is
+    # the reference integration — every downstream writer does the same.
+    try:
+        import scorecard_guard
+    except ImportError:
+        print("L577 REFUSED: the write-path guard (tools/scorecard_guard.py) "
+              "is missing — refusing to render a score an unwired path could "
+              "leak")
+        return 2
+    try:
+        scorecard_guard.stamp(report)   # no-op: score_work already stamped
+        scorecard_guard.guard(report)
+    except scorecard_guard.UnmeasuredRefusal as e:
+        print("L577 REFUSED: %s" % e)
+        return 2
     if not args.authorize:
         print(render_human(report) if not args.json else json.dumps(report, indent=2))
         return 0 if report["verdict"] == "SHIP" else 1

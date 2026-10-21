@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-057` |
 | Human title | Distill Everything, Keep the Essence — and Never Shrink the Law |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 3 raw notes (full list below) |
 | Cluster file | `cluster-07-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,18 @@ Instead of hundreds of notes nobody reads, you get the valuable intelligence in 
 Distill daily, weekly, monthly, forever: fold new lessons up into the essences, keep a coverage map so every source note is accounted for, and never let raw notes reach the surface by direct copy. Before any distilled twin ships, compare it against its canonical source — every gate, every hard word. Mine the archive as design source material before inventing anything new.
 
 ---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0364 — The Twin Must Not Shrink the Law: Gate Fidelity When Distilling Ratified Doctrine [audit: PARTIAL → lost element restored]
+
+Generate the twin from the canonical authored artifact through the enforced pipeline and never hand-write the projection: author the canonical JSON in `.naya/capture/`, let the pipeline generate the Brain projection — hand-writing a Brain projection of a ratified source is the seam bypass, because the pipeline exists to enforce the twin's fidelity and hand-writing skips the enforcement point. Re-fetch the board before merges, not only before posts: re-fetch the board's newest comments immediately before ANY merge, not just before posts — a merge is a write with witnesses and gets the same freshness discipline as a post.
+
+### SN-0437 — Distill by Principle, Let Go of the Rest — The Director's Distillation Doctrine [audit: PARTIAL → lost element restored]
+
+Never re-distill what is already captured on main: already captured on main → SKIP — never distill a note twice, check the registry first (~40 already on main were registered and preserved). Every survivor must pass the admission test: "Would Shawn miss this if it were gone?" If not, let it go. Target density is roughly 8 percent surviving: ~400 → ~33 (about 400 down to 33) — intelligence is what survives the letting-go, not what accumulates.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-069` |
 | Human title | The Pipeline Must Not Lose, Stall, or Waste the Work |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 12 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,24 @@ Your lessons and your work stop vanishing into machinery cracks. Batches finish,
 At every seam ask: can two writers collide here? Can one bad item stop the rest? Can discovery give up? Serialize, isolate, and return the full set. Before restarting anything repeatedly, do the resource math for the whole process tree. Score close calls conservatively and keep the reserve. Disconnect what you no longer use, and keep every experiment small enough to revert.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical — T11 — Reserve Rule for scored dispatch decisions [audit: PARTIAL → lost element restored]
+
+Exact trigger: if applicable AND top_score − second_score ≤ 0.5, dispatch the lower-scored (second) call first and keep the top-capability resource in reserve for likely escalation; when the gap exceeds 0.5, dispatch the top score. This is a trial-specific operational heuristic, not universal dispatch law.
+
+### SN-0322 — DONE Is Not Done Without a Learning Decision — Enforce CAPTURE/NO_CAPTURE at the Handoff Seam [audit: MISSING → restored in full]
+
+DONE is not done without a learning decision. The handoff machinery at the existing completion seam (`tools/worker_handoff.py`) must mechanically reject `DONE + evidence + no learning decision` and accept only `DONE + evidence + CAPTURE` or `DONE + evidence + justified NO_CAPTURE` — NO_CAPTURE must be justified; the invariant is "no silent completions," not "capture everything." A governance rule that lives only in prose is a suggestion; it becomes real when a validator rejects its absence. Enforce at the existing seam, do not build a second system. Proof is test-first: PR #1443 added `tests/test_worker_learning_decision.py` first (Kernel Tests run 37256664980: 1 targeted failure — completion without a learning decision was accepted — 644 passed, 11 skipped), then the 3-file implementation (`tools/worker_handoff.py`, `tests/test_worker_handoff.py`, `tests/test_worker_learning_decision.py`) went green (Kernel run 37256826127; Node 246/246).
+
+### SN-0344 — Canary synthetic red-check repair-drill rule — open a drill repair PR for canary experiment signals [audit: PARTIAL → lost element restored]
+
+Specific rule: checks whose names begin with `canary-` are synthetic experiment signals. When a `canary-*` check goes RED, run the repair drill — open a repair PR for that check class with the title prefixed `[CANARY-DRILL]` — so the repair-lane machinery is verified end-to-end against the synthetic signal. Merely classifying the signal and standing down leaves the drill unexercised. (Test-only rule as captured, expires 2026-10-12.)
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

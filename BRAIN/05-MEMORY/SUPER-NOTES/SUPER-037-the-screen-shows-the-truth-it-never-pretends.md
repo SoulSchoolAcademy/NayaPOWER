@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-037` |
 | Human title | The Screen Shows the Truth — It Never Pretends |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 10 raw notes (full list below) |
 | Cluster file | `cluster-04-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,20 @@ What you see is what's actually happening — no decorative buttons, no pretend 
 Make truth upstream; let the screen only display it. Keep one source and project it for each audience instead of writing three truths. Cut any control that does nothing real. Test the felt path end to end — press, feedback, message — in a person's hands. And build the core to stand alone, with voice and flourish as guests, never as load-bearing walls.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0276 — NAYA PLAY Pattern Law — Default Button, First-Person Script, Concision Constraint [audit: PARTIAL → lost element restored]
+
+What Naya says on Play is a distilled first-person script: Naya speaks in first person, conversationally — talking directly to the listener about what the block means, like she's sitting across from them — not reading the block verbatim word-for-word. The script stays concise at nutshell length: about 30–60 seconds, about 75–150 words. Verbosity is the failure mode — output that takes 10 minutes to listen to does not work. Pipeline: `IB → distilled first-person script (nutshell-length) → Chatterbox → cached audio → Play button`.
+
+### SN-0450 — Intelligent Block: SN-0450 [audit: PARTIAL → lost element restored]
+
+Tap-feedback gaps are measured by selector scan, and the contract-conformant repair form is press compression plus a white indicator, never color. The ratified contract: hover ignites color, but active/selected is a subtle white indicator only — no permanent color glow. The repair that satisfies both that contract and the mobile-first tap law is press compression (scale .97, translateY reset) plus a faint white inset shadow, as an additive-only CSS block with no existing rule touched. In the source scan, 23 of 28 hoverable bases had no `:active`/`:focus` feedback at all. Never use color on active.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

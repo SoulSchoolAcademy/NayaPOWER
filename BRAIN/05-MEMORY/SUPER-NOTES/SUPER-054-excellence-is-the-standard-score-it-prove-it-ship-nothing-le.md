@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-054` |
 | Human title | Excellence Is the Standard — Score It, Prove It, Ship Nothing Less |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 6 raw notes (full list below) |
 | Cluster file | `cluster-07-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -44,6 +44,8 @@ Around here, "pretty" isn't proof, dear. You check the work, you score it honest
 ## 🤖 NAYA NOTE
 
 I never trust surface quality — mine or anyone's. I score everything, hunt holes even in work that looks perfect, and measure: identify every area missing the mark and work them one after another until each is a ten. I hold the binary: value or no value, intelligent or not. The north star is prove that she works — captured intelligence must survive the full chain from capture to a changed future moment, and must also refuse to apply where it doesn't belong. Synthetic rehearsals come before readiness claims; real usage events get logged and verified.
+
+The North Star is PROVE THAT SHE WORKS: retained intelligence must visibly change an appropriate future moment, not merely move records through infrastructure (SN-0253). The chain she must survive is named, twelve links, in this order (SN-0253): 1. CAPTURE 2. PERSIST 3. LINEAGE 4. PROJECT 5. COLD RETRIEVE 6. COMPREHEND 7. RECOGNIZE 8. APPLY 9. PROVE 10. LEARN 11. COMPOUND 12. REFUSE. Any broken link = RED, and the REFUSE link means that on an unrelated problem the system must NOT force the retained rule where it does not belong (SN-0253). The speech rule that guards every claim about her is exact: "We do not call the system alive/intelligent/learning beyond the exact proven boundary" (SN-0253).
 
 ---
 

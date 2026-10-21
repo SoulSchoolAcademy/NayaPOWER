@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-041` |
 | Human title | One Change, One Owner — Scan Before You Touch |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 9 raw notes (full list below) |
 | Cluster file | `cluster-05-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,8 @@ No duplicate work, no renumbering churn, no two versions of the same note to rec
 ## HOW IT APPLIES
 
 Before executing: scan the board and enumerate every open item; filter for your change class and your numbering space. Post your intent before staging. Before building on a shared branch, fetch the live head and re-anchor; re-map any plan built on an old surface map. Check every shared tool's hardcoded branch and targets before trusting its output. On finding a duplicate: post the collision, keep the better-evidenced artifact, mark the other superseded, close it with rationale, and patch the mechanism that allowed the race.
+
+When the race is a seat and a scheduled worker publishing on the same trigger, consolidate in the open — never let one artifact stand and the other rot (SN-054). Name the race with its comment IDs and timestamps, declare the one canonical artifact on evidence quality alone — the better-verified artifact wins, regardless of which seat wrote it — and mark the other superseded and do-not-score, preserved for the record (SN-054). In the founding case, two Decision Scorecards landed 44 seconds apart on the same trigger, and the relay's won because it carried the live-verified stale-base difference the thinner one lacked (SN-054). Then patch the trigger itself: the worker re-fetches the newest board comments immediately before posting anything, and stands down if a same-topic seat comment landed since its run started (SN-054). Judgment demonstrations belong to the main seat; the relay acknowledges state and defers on races (SN-054).
 
 ---
 

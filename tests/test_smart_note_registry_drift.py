@@ -256,3 +256,41 @@ def test_registry_hash_coverage_is_measured_and_not_silently_zero():
         f"\n[smart-note] registry content_hash coverage: {len(real)}/{len(entries)} "
         f"({coverage:.0%}) — 0% means capture<->entry reconciliation is impossible"
     )
+
+
+
+def test_windows_long_path_registered_and_true_missing(tmp_path):
+    """Long Windows projection paths are not silent registry drift.
+
+    The standard Windows pathlib existence check may return False after
+    MAX_PATH even though Git and extended-length Win32 paths contain
+    the bytes. The genuine-missing control must still be refused.
+    """
+    import os
+    if os.name != "nt":
+        pytest.skip("Windows path-length behavior is platform-specific")
+    reg_path = build_clean_root(tmp_path)
+    original = tmp_path / PAGE
+    original.unlink()
+    long_relative = (
+        Path("BRAIN/05-MEMORY/SMART-NOTES")
+        / ("alpha-" + "x" * 75)
+        / ("beta-" + "y" * 75)
+        / "IB-1.md"
+    )
+    target = tmp_path / long_relative
+    assert len(str(target)) > 260
+    extended = Path("\\\\?\\" + str(target))
+    extended.parent.mkdir(parents=True, exist_ok=True)
+    extended.write_text("# IB-1\\n", encoding="utf-8")
+    assert extended.is_file()
+    entries = read_entries(reg_path)
+    entries[0]["projection_path"] = long_relative.as_posix()
+    write_entries(reg_path, entries)
+
+    valid = mod.audit_registry(root=tmp_path)
+    assert valid["counts"]["registry_projection_paths_absent"] == 0, valid["defects"]
+
+    extended.unlink()
+    missing = mod.audit_registry(root=tmp_path)
+    assert missing["counts"]["registry_projection_paths_absent"] == 1, missing["defects"]

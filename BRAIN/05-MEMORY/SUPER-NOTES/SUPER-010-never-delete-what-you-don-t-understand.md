@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-010` |
 | Human title | Never Delete What You Don't Understand |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 9 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,20 @@ Your hard-won lessons, decisions, and history don't vanish in someone's cleanup 
 ## HOW IT APPLIES
 
 Facing anything that looks redundant or stale: investigate first — contents, purpose, dependents, governing authority. Prefer relabeling, re-homing, or retiring over deleting. If removal is right, do it through an open, scored process with the reasoning recorded, and keep the history reachable. Never delete on a hunch, a name similarity, or a tidiness urge.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0116 — SMART NOTE — The Owner Makes the Canon Call: Rehome, Don't Delete; an Owner Call Is Not the Lock [audit: PARTIAL → lost element restored]
+
+When two lanes build competing versions of the same thing, the owning lane makes the canon call with an explicit, board-visible scorecard. An owner call is not the lock: the consensus process (team reviews → scorecards, below 9.0 = not ready → lock) and Shawn's merge word still govern. Stating what your authority does NOT reach is what keeps it authority instead of overreach.
+
+### SN-0370 — Immutable R1 → Conformant R2: The Historical-Capture Repair Class [audit: PARTIAL → lost element restored]
+
+Never in-place edit a defective persisted capture. Preserve R1 bytes exactly and label it SUPERSEDED in top-level lifecycle metadata only — the metadata label moves, the bytes never do. Issue a conformant R2 with a fresh event identity, the stable human ID, and a machine-resolvable SUPERSEDES edge to R1. Canonical retrieval excludes / refuses SUPERSEDED entries, and conformance tests fail closed on supersession without a real conformant successor plus an explicit edge. Diagnose the persisted bytes, never just the pathname.
 
 ---
 

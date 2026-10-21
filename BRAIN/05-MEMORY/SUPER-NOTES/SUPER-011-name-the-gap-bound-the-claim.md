@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-011` |
 | Human title | Name the Gap, Bound the Claim |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 13 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -45,6 +45,8 @@ Dear, there's no shame in 'I haven't looked in that drawer yet.' The shame is in
 
 Bound every claim to its evidence: name the proof level each green actually earns, declare unexecuted layers as explicit gaps in the same sign-out, and correct your own wrong hypotheses in the open — the wrongness is the lesson. Require a second independent check before promoting any finding, and reproduce alarms in a virgin environment before flagging them. Write provenance that describes what actually happened; never fabricate pipeline-looking records. Treat author strings on shared identities as claims. Let candidates carry disclosed unknowns forward instead of forcing false certainty, and when the honest fix is mathematically impossible, declare it plainly and do not push.
 
+Status, said at the same size as the claims: every rule in this note is CANDIDATE, not ratified law — the second-source rule (SN-0458), the name-the-gap rule (SN-0425), and the one-green-one-proof-level rule (SN-0555) all carry truth state CANDIDATE, and SN-0555 and the falsifier protocol (SN-0603) cap themselves at automatic_truth_ceiling: CANDIDATE. The naming rule's class is only proposed, too: SN-0106 marks it REUSABLE "pending taxonomy adoption," and it promotes from instance to standing method only on a third instance of the defect. SN-099 shows why the label matters: the claim it guards was stamped DOCUMENTED / ARCHITECTURALLY ALIGNED / IMPLEMENTATION-PARTIAL / NOT PRODUCTION-PROVEN and headed "NOT READY TO PROMISE PUBLICLY YET." Until a source is ratified, read these as candidate discipline staged for ratification review — not as settled law (SN-0325).
+
 ---
 
 ## WHAT IT MEANS
@@ -62,6 +64,36 @@ When you're told something is done, verified, or safe, you can rely on it — be
 ## HOW IT APPLIES
 
 In every report: separate what was executed from what was inferred, name the gaps next to the claims, and state what would prove you wrong. Before acting on any single check, get a second one that could disagree. Write records that describe what truly happened, and name things by what they actually are.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0325 — CANDIDATE Absorbs Uncertainty — The Merge Rule for Notes with Disclosed Unknowns [audit: PARTIAL → lost element restored]
+
+If the unknown is disclosed as unknown, merging is safe; if the unknown is disguised as fact, merging is forbidden. The two-question admission test: (1) is the uncertainty explicitly labeled in the note itself (not buried in a comment thread)? (2) does merging change anything irreversible — code, authority, production? A note that answers yes to (1) and no to (2) should merge. Uncertainty disclosure is a merge qualification, not a merge blocker.
+
+### SN-0409 — SN-0409 — An Author String on a Shared Identity Is Not Provenance [audit: PARTIAL → lost element restored]
+
+Never infer authorization from an author string on a shared identity. When provenance on a shared identity is ambiguous, hold the decision and escalate to the human director — do not act on the inference.
+
+### SN-0455 — Live Security Advisor Evidence: 27 Warnings, Zero Errors — the Database's Security Posture on Record [audit: PARTIAL → lost element restored]
+
+The first live Security Advisor scan found 27 advisories — all WARN, zero ERROR. The sharpest: `nayanet_execution_receipt_to_smart_ledger()` is executable by unauthenticated callers as SECURITY DEFINER (runs with owner privileges, no sign-in required). Eighteen `public`-schema tables permit anonymous read access; seven SECURITY DEFINER functions are callable by any signed-in user; Auth's compromised-password protection is disabled. Nothing was remediated in the source note: classify intentional-vs-hole before any fix plan, because fixes cross the human security/authority gate and several warnings may be intentional design.
+
+### SN-0603 — The Falsifier Must Fire — The Active-Intelligence Canary Protocol [audit: PARTIAL → lost element restored]
+
+The active-intelligence canary protocol: plant one novel decision-changing rule that exists nowhere in the brain, run a no-rule CONTROL through the real capture→distill→note→PR→merge pipeline BEFORE the rule exists, then require a COLD consumer (fresh session, zero context) to retrieve the rule through the normal KNOW path to decide a bounded case AFTER. The falsifier is declared up front: if the post-merge consumer behaves identically to the control, or decides without the retrieve returning the rule, the canary FAILS. A falsifier killing your own design, or a control falsifying your assumed mechanism, is the experiment working, not a failed experiment.
+
+### SN-0637 — IB-SMART-NOTE-20261008-sn0637-local-verifier-green-proves-local-code-never-deployed-enforcement.md [audit: PARTIAL → lost element restored]
+
+A local or offline verifier's green proves only that the local code behaves correctly. It does NOT prove actual reading, comprehension, repository integration, or deployed enforcement. Never cite an offline verifier's pass as proof that the gate is enforced in the live system.
+
+### SN-099 — Not Ready to Promise Publicly Yet — The Promise Gate for Documentation and Architecture [audit: PARTIAL → lost element restored]
+
+When docs and design converge ahead of proof, write the promise boundary into the canonical record: "NOT READY TO PROMISE PUBLICLY YET" + enumerated gaps. Stamp the truth state mechanically: DOCUMENTED / ARCHITECTURALLY ALIGNED / IMPLEMENTATION-PARTIAL / NOT PRODUCTION-PROVEN — publicly-promised is a further state beyond deployed. Name the gate test that earns the promise: the two-owner adversarial acceptance proof (isolate, share/revoke, sync upstream, cold-reconstruct). Write the isolation law before the first fork: DNA is inheritable (public code, contracts, kernel definitions, schemas, workflows, tests, intentionally public baseline intelligence, the upstream update relationship), private state never is (private intelligence, activity, reports, checkpoints, authority grants, credentials/secrets, private graph/network state); activation creates identities, never clones the original owner's state.
 
 ---
 

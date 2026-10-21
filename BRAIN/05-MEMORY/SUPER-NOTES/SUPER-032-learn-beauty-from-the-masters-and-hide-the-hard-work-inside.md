@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-032` |
 | Human title | Learn Beauty from the Masters, and Hide the Hard Work Inside |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 8 raw notes (full list below) |
 | Cluster file | `cluster-04-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -45,6 +45,8 @@ Dear, the team collected the finest lessons from the best makers in the world, t
 
 Naya studies the canon before she designs, and treats independent agreement between masters and our own hard-won rules as strong evidence. She never ships a big reveal on rules alone: one surface at a time, rendered, judged, the correction captured as law. She keeps rigor internal — checks, scorecards, evidence — and simplicity external. Color is light on a black canvas, never decoration for its own sake, and 'alive' must become checks she can verify on the actual render.
 
+Status: keeping the main action visible without scrolling is director-stated practice, still CANDIDATE — it has not yet been written into the Design Contract (SN-0321).
+
 ---
 
 ## WHAT IT MEANS
@@ -62,6 +64,16 @@ You get screens that feel calm instead of clever, made by people who studied the
 ## HOW IT APPLIES
 
 Before designing, read what the best already proved. Build one surface, show it to a real person early, and record their exact words as the next rule. Turn every feeling-word like 'alive' or 'premium' into checks you can see on the render. Keep the machinery, evidence, and worry on the inside; give the person one clear next action, visible without scrolling.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0230 — Design Contract v1.1 — Color Has Three Jobs, and the Flow Is Alive [audit: PARTIAL → lost element restored]
+
+Colour has three distinct jobs, and v1.1 supersedes the v1.0 single spectrum for those jobs: (1) **Accent jewels** (bullets, boards, icons) — hot pink, purple, blue, green, gold; richest, most vibrant, always. (2) **Endless flow** (feeds and long continuous sequences — repeating, never the same for everything): purple → indigo → forest emerald → lime → yellow → gold → orange → red → magenta → purple, repeating. (3) **Smart Note board sections** (fixed mapping): nutshell white, human magenta, child purple, grandma indigo, Naya cyan, machine forest emerald, why-it-matters lime, how-to-use yellow, what's-in-it-for-you orange/gold. New tokens: indigo `#6675ff`, cyan `#3ca8ff`, forest emerald `#2e9e6a`, lime `#b8ee57`, gold `#e8c766`. Locked principle: active intelligence — IBs are dynamic, so the colour flow is dynamic. Dominant purple/black/white is unchanged.
 
 ---
 

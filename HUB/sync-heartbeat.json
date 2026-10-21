@@ -1,0 +1,1 @@
+{"cycle_ok":false,"detail":"Seed artifact from the Balanced Machine step-4 PR (tools/hub_sync_heartbeat.py). The live watcher adopts `beat` on its next cycle; until then the liveness checker correctly alarms on this stale seed — silence is the failure mode being abolished.","ts_epoch":0,"ts_utc":"1970-01-01T00:00:00Z","watcher":"hub-sync"}

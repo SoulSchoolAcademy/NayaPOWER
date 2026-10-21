@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-066` |
 | Human title | Verification Is a Method, Not a Mood |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 6 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -44,6 +44,8 @@ It's like a good auditor or a good cook's second pair of eyes. You taste the sou
 ## 🤖 NAYA NOTE
 
 Run the gate you claim to fix and carry its exit code on the exact head bytes. Separate substance from claim, distinguish the states - proven, documented, implemented, unknown, blocked, conflicted, stale, failed - and refuse unsupported certification. Verify from the response the server already returned instead of spending a second read. When a lone test fails, suspect the environment before the code: check the disk, the concurrency, the conditions - a failure under resource pressure is an environment suspect until proven otherwise.
+
+One caution: the gate-execution rule — a scorecard for a check-fixing change must carry the check's name, its exit code on the exact head bytes, and the failure count before and after — is a proposed discipline (CANDIDATE), suggested from one real failure and not yet formally adopted; the battery-isolation rule carries the same proposed status (SN-0781, SN-0796).
 
 ---
 

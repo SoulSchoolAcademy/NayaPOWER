@@ -8,8 +8,8 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-061` |
 | Human title | The Magic: A Moment Becomes Intelligence That Keeps Working |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
-| Sources | 13 raw notes (full list below) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
+| Sources | 12 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
 | Human projection | This Markdown file |
@@ -65,11 +65,44 @@ When something matters, capture it in the moment - say 'keep this' - and let it 
 
 ---
 
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### IB-000036 — Intelligent Note [audit: PARTIAL → lost element restored]
+
+Keep the status honest and split: the delivery pipeline — a spoken note becomes a structured Smart Note, lands in GitHub as a permanent record, and appears on the hub feed — is proven. The app factory that builds the described app on top of that pipeline is not proven; it is the unproven next wire to close. Do not report the pipeline proof as proof of the app factory.
+
+### IB-000037 — Intelligent Note [audit: PARTIAL → lost element restored]
+
+Keep the status honest and split: the delivery pipeline — a spoken note becomes a structured Smart Note, lands in GitHub as a permanent record, and appears on the hub feed — is proven. The app factory that builds the described app on top of that pipeline is not proven; it is the unproven next wire to close. Do not report the pipeline proof as proof of the app factory.
+
+### IB-000049 — Serve Humans Their Way — Naya Runs the Machines at Full Speed, Forever [audit: PARTIAL → lost element restored]
+
+Serve every person the way they want to be served: their language, their form, their experience — the human never learns or operates the machine. Build the machines underneath for Naya's hands, so she runs them at full speed without waiting. Checkable rule: if a design ever forces a choice between the human's experience and the operator's speed, the design is wrong — rebuild it until both win.
+
+### SN-0599 — NayaPOWER Core System Synthesis — Mission, Architecture, Laws, Intelligence River, and Human Experience [audit: PARTIAL → lost element restored]
+
+The Hub is the human cockpit that projects the same canonical intelligence — not a separate source of truth. The North Star measure is maximum verified human value per moment, with compounding intelligence and continuity: Intelligence That Remembers. Learns. Connects. Proves. Grows.
+
+### SN-0617 — One Brain. Every AI. — Human-Owned Intelligence Is the Constant [audit: PARTIAL → lost element restored]
+
+Before proposing a missing safeguard, reconcile the critique against the existing constitutional and operating contracts. Do not create a duplicate mechanism when the requirement is already canonical; instead identify the exact executable proof gap.
+
+### SN-0800 — How to Get Started with NayaNET [audit: PARTIAL → lost element restored]
+
+The specific activation steps are: order Naya Power (free to try), get your activation documents, fork the GitHub repo, tell Muse to activate it, and connect your GitHub — then you are in.
+
+### SN-1769 — The Whole System in Simple Words [audit: PARTIAL → lost element restored]
+
+Smart Factory, specifically: a person gives their intent, chooses a template, clicks build, and Naya builds a functioning personal smart app in minutes — from pre-made parts that already work. The pipe is: the engine (GitHub / NayaPOWER) is the sender, the GitHub App is the bridge, the Hub is the receiver.
+
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
 - `IB-000036`
 - `IB-000037`
-- `IB-SMART-NOTE-20261019-sn0798-the-intelligent-system`
 - `IB-000038`
 - `IB-SMART-NOTE-20261019-sn0800-how-to-get-started`
 - `IB-SMART-NOTE-20261009-sn0742-self-optimizing-system`

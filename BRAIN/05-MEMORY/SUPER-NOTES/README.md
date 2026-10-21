@@ -8,7 +8,7 @@ Nobody reads 639 cards; the essence is what teaches.
 Master Notes (~15) → **Super Notes (~50–100, domain essences)** → nine nodes → Smart Notes (1,100+, raw capture).
 
 - **Raw Smart Notes** live in the archive: `BRAIN/05-MEMORY/SMART-NOTES/` (repo), `public.hub_smart_notes_archive` (Hub DB), GitHub BRAIN files.
-- **Super Notes (this directory)** are the distilled essences: 71 of them, covering all 639 raw notes of the 2026-10-21 corrective drive — exact partition, 0 missing / 0 foreign / 0 duplicates.
+- **Super Notes (this directory)** are the distilled essences: 71 of them, distilled from the raw notes of the 2026-10-21 corrective drive. The drive's original claim of an exact partition did not survive independent audit (42 lessons missing, 151 thinned, 2 phantom citations); a repair on 2026-10-21 restored the named lessons from the originals, and `coverage-map.json` in this directory is now generated mechanically from these files (see `coverage-map.verification.json`). Semantic completeness stands only when an independent re-audit says so.
 - **The Hub wall** (`public.hub_smart_notes`) shows ONLY these 71 essences (ib_id SUPER-001…071).
 
 ## Files

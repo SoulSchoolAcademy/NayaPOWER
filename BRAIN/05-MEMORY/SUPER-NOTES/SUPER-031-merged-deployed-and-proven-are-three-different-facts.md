@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-031` |
 | Human title | Merged, Deployed, and Proven Are Three Different Facts |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 7 raw notes (full list below) |
 | Cluster file | `cluster-03-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,20 @@ When someone says 'it is live,' you will know whether they mean stored, shipped,
 ## HOW IT APPLIES
 
 For every fix: confirm the canonical path actually calls it; confirm the deployed artifact matches the verified package before changing code; run the proof after promotion and classify parity gaps as cycle; on deterministic errors, read the body, change the request, and check the canonical store before concluding anything about persistence.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0411 — SN-0411 — A Replay Conflict Is Not Proof of Non-Persistence: Check the Canonical Store Before Classifying [audit: PARTIAL → lost element restored]
+
+The lost writer-side repair rule: at the writer, same event key + same canonical payload + complete persisted lineage reconciles to the original receipt / already-persisted lineage, with no duplicate writes; a changed payload or incomplete lineage fails closed. Rotating event IDs recovered the instance but left the seam — fix the seam at the writer, not the caller.
+
+### SN-0485 — The Mechanism Can Flip the Prescription — SN-0439's 400, Corrected [audit: PARTIAL → lost element restored]
+
+The specific correction: the 400 was a deterministically broken handler, not a wrong request shape. The old handler called bare `stableJson` six times in the inspect path with no import — every inspect threw a ReferenceError and the outer catch mapped it to HTTP 400 — so the rejection was deterministic because the handler was deterministically broken. SN-0439's never-re-dispatch prescription therefore expired once that cause died: post-fix, re-dispatch of the identical inspect request is legitimate.
 
 ---
 

@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-027` |
 | Human title | The Index and the Ledger Are Part of the Change |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 10 raw notes (full list below) |
 | Cluster file | `cluster-03-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,16 @@ The catalogue can be trusted. When the alarm about the index rings, it means som
 ## HOW IT APPLIES
 
 In every landing checklist: files changed, index regenerated from the committed tree, count ledger deliberately updated, check run on the exact result. Watch non-merge landing paths — projectors, consolidations — for the same duty. If a verified repair already exists, adopt it instead of duplicating. When a new rule would punish old debt, ratchet: block new drift without reddening the whole line.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0395 — Regen Reads the Commit, Not the Worktree — the ls-tree HEAD Rule [audit: PARTIAL → lost element restored]
+
+The lost HEAD-binding half: even on a clean worktree, HEAD must be verified to equal the exact target commit before regenerating, or the regen certifies the wrong tree. `regenerate_brain_index.py` enumerates the tree with `git ls-tree HEAD` — the committed tree, not the worktree — so it succeeds and reports drift-free while describing the wrong commit. The complete rule is three-part: (1) the worktree must be clean; (2) HEAD must be the exact target commit the index must describe; (3) verify both — including `git rev-parse HEAD` equals the target SHA — before regenerating, not after.
 
 ---
 

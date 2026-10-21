@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-064` |
 | Human title | Built for the Cold Successor: Nobody Should Have to Re-Teach |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 6 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,16 @@ You never pay the re-teaching tax again. Every explanation you give becomes perm
 Write every handoff with the outcome evidence attached: what was tried, what happened, what the proof showed. Keep project state in the project, not in chat. Test inheritance honestly - measure novel, project-specific lessons, not principles anyone could derive. Leave the next authorized action named, and mark unknowns as unknowns so the successor starts from truth, not from a guess.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0609 — The Recovery Thesis — NayaPOWER Was Designed, Not Invented [audit: PARTIAL → lost element restored]
+
+The full recovery method is: recover the prior design from the archive, reconcile it against current canonical truth, re-express it in human, AI, and machine forms, connect it to the living system, and prove it works under present conditions. Recover-and-reconcile alone is not the whole method.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-039` |
 | Human title | Design Truth Before Build — Measure First, Draw the Plan, Lock It, Then Build |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 3 raw notes (full list below) |
 | Cluster file | `cluster-05-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,16 @@ Work gets done once instead of five times. You approve a drawing, not a surprise
 Pin the exact base. Classify every existing claim: proven, implemented, documented, claimed, missing. Write the blueprint: entry state, composition, controls and why each is placed, data contract, honest states, handoffs, mobile behavior, accessibility, acceptance journey, anti-patterns, required proof. Have a different seat review it for completeness and contradictions. Lock it. Build to the lock. Close against the acceptance contract — ten tries or two hundred are fine while the contract is open; none count once it closes.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0304 — Measure Before Design — Pin the Base, Classify the Surface [audit: PARTIAL → lost element restored]
+
+Unknown is not false: a claim that is not repository-visible must be classified as not proven / unverified, not treated as false or rejected — NOT_PROVEN ≠ REJECTED. In the five-tier classification (PROVEN/REAL ON MAIN → IMPLEMENTED BUT NOT CANONICAL → DOCUMENTED/CANDIDATE → CLAIMED/REPOSITORY-CANONICAL UNKNOWN → MISSING/NOT PROVEN), the fourth tier carries this distinction: the reported 7-stage LEARN ingestion pipeline was not called false; it was classified "not currently repository-visible / not independently verifiable from GitHub" (no `learn-ingestion` or `FLAGGED_AUTHORITY` string in default-branch code search, no ingestion PR, no ingest branch), with an exact branch/PR/receipt required before it may influence a canonical score. Collapsing unknown into false is how a verification culture starts hiding unknowns.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
