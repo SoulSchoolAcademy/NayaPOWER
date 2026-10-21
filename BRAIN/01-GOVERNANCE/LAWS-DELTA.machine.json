@@ -22,12 +22,13 @@
    "0029-THE-NAYA-PROCESS-V1.machine.json": "c46edb11bc3bbed89902a3e66e9d8e0d302fe57a",
    "0030-VALUE-ONLY-BRAIN-V1.machine.json": "be5a34263f192d22d827201654356024e712829e",
    "0031-never-again-v1.machine.json": "1e58e3180215140ec7510f31658a8e34cce81a41",
+   "0032-house-standard-v1.machine.json": "c1bb2ffa2f41ff49940ff0b218dc12cc0c9987bf",
    "0033-the-balanced-machine-v1.machine.json": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
    "0034-the-house-fire-law-v1.machine.json": "b26079232d91f5e8fe4a072c9cc019649826dd12"
   },
-  "source_fingerprint_sha256": "d1809dfb615bf2b6d1fced52b819a72670f7d683ce4c6235a7005c89800632a1"
+  "source_fingerprint_sha256": "3c4738d571a40cffb30badf8ac5140ee17e530e3e88c52f7e42f7473ce185969"
  },
- "law_count": 21,
+ "law_count": 22,
  "laws": [
   {
    "falsifier": null,
@@ -312,6 +313,21 @@
     "ai": "BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.ai.md",
     "human": "BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.human.md",
     "machine": "BRAIN/01-GOVERNANCE/0031-never-again-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": "A jam reported by >=2 seats, open >48h, with no FIXED/ROUTED/GATE record => H1/H3 theater; main seat escalates to Shawn with evidence.",
+   "id": "GOV-0032",
+   "number": "0032",
+   "owner": null,
+   "source_blob_sha": "c1bb2ffa2f41ff49940ff0b218dc12cc0c9987bf",
+   "statement": "THE HOUSE STANDARD \u2014 Take Care of the House",
+   "status": null,
+   "title": "THE HOUSE STANDARD \u2014 Take Care of the House",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0032-house-standard-v1.machine.json"
    }
   },
   {
