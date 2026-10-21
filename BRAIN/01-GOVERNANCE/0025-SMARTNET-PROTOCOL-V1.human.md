@@ -1,0 +1,74 @@
+# The SmartNet Protocol — V1 (human tongue)
+
+*Ordered by Shawn Vibert, 2026-10-21: "There should be a protocol called the SmartNet protocol, and it should be written so that all know exactly the protocol for a smart note." This document is the one canonical home for everything about Smart Notes: what one is, how it works, how to make one, and how you know it truly arrived.*
+
+## 1. What a Smart Note is
+
+A Smart Note is the unit of living intelligence in NayaNET. It is how a lesson, a decision, a discovery — anything valuable that anyone says, learns, or figures out — becomes permanent, shared, and usable by every human and every Naya. A human says "smart note this," and within minutes it appears in the Intelligent Hub, in the beautiful Smart Note format, with play, save, and share. If it isn't in the Hub, it isn't done — however correct the paperwork is.
+
+## 2. The title law — the hook is part of the protocol
+
+Never label a note "anything." The title is a hook crafted for humans: think about the greatest possible title that carries the lesson in one line and makes a person want to open it. The title is the lesson's first impression and its retrieval handle forever. Weak titles are a protocol violation, not a style choice. (Shawn, 2026-10-21.)
+
+## 3. The structure — nine sections, always
+
+Every Smart Note carries all nine sections, in this order:
+
+1. **IN A NUTSHELL** — the essence in one or two sentences.
+2. **HUMAN** — the full telling in warm, plain words.
+3. **CHILD** — the same truth so a child can hold it.
+4. **GRANDMA** — the same truth in everyday-life terms.
+5. **NAYA** — the precise version for the team: laws, numbers, owners, evidence.
+6. **MACHINE** — a compact JSON block a system can parse.
+7. **WHAT IT ALL MEANS** — why it matters, what it changes.
+8. **WHAT'S IN IT FOR YOU** — the value, named for the reader.
+9. **HOW IT APPLIES** — what to do differently, starting now.
+
+A note missing sections is not finished. The sync refuses a note with no Nutshell or Human section — write all nine, always.
+
+## 4. How it works — Sender → Bridge → Receiver
+
+- **The engine (GitHub) is the SENDER.** The note lives as a file in the brain: `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/<TOPIC>/<sub>/SN-####/`, named by its full ID: `IB-SMART-NOTE-YYYYMMDD-sn####-<slug>.md`.
+- **The bridge carries it.** A sync (running about every five minutes) reads the notes that are on **GitHub main**, files each into the brain's table (`hub_smart_notes`), and mints its share assets.
+- **The Hub is the RECEIVER.** When at least one new note has synced, the Hub rebakes and redeploys; the note appears as a card in the main feed at nayanet.live/#/hub and at its own page, nayanet.live/s/sn####.
+
+**The only door is main.** A note that exists only as a local file, on a branch, or in an open PR is *invisible* to the Hub. There are no exceptions and no other doors.
+
+## 5. The process — how to make one, step by step
+
+1. **Capture the lesson faithfully.** The words, the decision, the evidence — in the speaker's own meaning, never improved or invented.
+2. **Craft the hook title** (§2).
+3. **Claim the number.** Scan main and open claims for the next free SN number in your sequence; first claim stands; never reuse a number.
+4. **Write all nine sections** (§3).
+5. **File it** at the canonical path (§4), named by its full IB id.
+6. **Land it on main** — either the direct-write door (standing approval covers the Smart Notes folder; the App-identity lane carries it) or a dock-merged PR. Landing is a step you *drive to completion*, not a request you drop.
+7. **Verify it live, yourself.** The note's own entry in the live Hub feed, and its page (nayanet.live/s/sn####) answering 200. This verification is the authoring seat's duty — never assume a lane carried it.
+8. **Deliver the link.** To Shawn, "done" is the Hub feed link showing the note there. Done = visible, link in hand.
+
+## 6. Voice — play means Naya's real voice
+
+Pressing play must read the note in Naya's real cloned voice, never the robotic fallback. The player first looks for the note's baked narration at the voice service; a note's narration is baked at publish (bake-on-publish in the sync) so the real voice is there from the first play. If play falls back to the robot voice, the bake didn't happen — that's a defect to fix, not a setting to accept.
+
+## 7. Roles
+
+- **Any human** can say "smart note this" about anything, any time.
+- **The authoring Naya** owns the note end to end: capture, hook, structure, filing, landing, live verification, link delivery.
+- **The bridge lane** (Nitro) owns the sync, the share assets, and the Hub rebake machinery.
+- **Every other Naya** learns the protocol from this document — no seat should ever have to ask how a Smart Note works.
+
+## 8. Failure modes this protocol exists to prevent
+
+- A note "done" as a PR or a file but never landed on main → invisible (SN-1771, 2026-10-21: written, PR'd, landing requested — and absent from the Hub until the landing was driven and verified. Shawn caught it; the protocol now makes the author's own live verification the closing step).
+- A note with a lazy title → the lesson dies unread.
+- A note missing sections → the sync refuses it or the telling is half a lesson.
+- Play in the robot voice → the bake was skipped.
+- Two seats claiming the same number → scan first; first claim stands.
+
+## 9. The standing rulings carried by this protocol
+
+- Done = visible in the Hub feed, link as proof (Shawn, 2026-10-21).
+- The greatest-possible hook is mandatory (Shawn, 2026-10-21).
+- Lessons are Smart Notes — every valuable lesson gets documented, lands in the Hub, and compounds for everyone (Shawn, 2026-10-21).
+- The canonical worked example of the path: SN-0810, "Say It, and It's Live."
+
+*Ratification: authored at Shawn's direct order, 2026-10-21; lands through the normal scored process. Amendments follow the same road as every law: propose, score, review, land, verify.*
