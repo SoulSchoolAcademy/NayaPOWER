@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 23:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4972,6 +4972,14 @@ _Last updated: 2026-10-21 23:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1202-lane10.md`
 
 **Evidence:** Artifacts verified: runbook + receipt exist; ls-remote independently confirms tip 665098e3f (unchanged) and heal branch 82fe1c62 (unchanged), both SHAs exactly as cited. Case A executed cleanly: heal head parent==tip, 3-file diff, --check OK on heal bytes, drift confirmed still on tip (expected, unmerged), #2385 unchanged, gate still advisory (fres
+
+### ✅ t1200 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** gate_truth 0-vs-9 mechanism diagnosis (tip x environment matrix)
+
+**Receipt:** `twelve-lane-receipts/t1200-lane2.md`
+
+**Evidence:** VERIFIED: pinned tip ee475be823d499e93329341f03d6b4904583ae6f GET 200 (commit 2026-10-21T22:41:10Z, matches receipt's 22:41:38 UTC pin); gates.py at that SHA read via REST — the ONLY 0-branch is _read_receipt->None ('receipt file missing'), the 4-branch is 'quote not in content', and the line-37 quote check fires before the line-42 contradiction ch
 
 ### ✅ t1195 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
