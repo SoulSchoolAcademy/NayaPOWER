@@ -42,7 +42,7 @@ Requirements:
 - Machine-generated indexes must pass their determinism/freshness checks.
 - Spot-verify after landing and record the sample, coverage, and result.
 - No scorecard ceremony for a pure mechanical filing. If a content change also changes law, code, a workflow, security, or destructive behavior, it is not Tier C; classify it at the higher tier.
-- The content door must be the only supported road for routine note filings; do not invent a second competing note write path.
+- The content door must be the only supported road for routine note filings; do not invent a second competing note write path. **However, the door is not declared healthy until capture, registry, and generated-index checks pass on current main. If those checks are red, block migration with `CONTENT_DOOR_NOT_PROVEN` and repair the canonical pipeline first; never send notes into a door that is currently losing registry/capture state.
 
 ## Classification rules
 
