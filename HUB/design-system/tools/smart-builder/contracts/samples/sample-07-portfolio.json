@@ -1,0 +1,39 @@
+{
+  "contract": "smart-builder/07-portfolio",
+  "template_id": "07",
+  "template_name": "Portfolio",
+  "template_color": "#e84fff",
+  "title": "Alex Rivera — Work",
+  "kicker": "Sample · Portfolio",
+  "lede": "Creators, freelancers — the work speaks.",
+  "sections": [
+    {
+      "kicker": "Intro",
+      "title": "I design interfaces with a pulse",
+      "lede": "Twelve years turning static screens into living systems.",
+      "pieces": [
+        "NAYA-TYP-018",
+        "NAYA-JWL-001"
+      ]
+    },
+    {
+      "kicker": "Selected work",
+      "title": "The work",
+      "lede": "A few favorites from the last few years.",
+      "pieces": [
+        "NAYA-CRD-010",
+        "NAYA-CRD-011",
+        "NAYA-LAY-001"
+      ]
+    },
+    {
+      "kicker": "Next",
+      "title": "Let's make something",
+      "lede": "Currently booking for the fall.",
+      "pieces": [
+        "NAYA-BTN-012",
+        "NAYA-LST-008"
+      ]
+    }
+  ]
+}

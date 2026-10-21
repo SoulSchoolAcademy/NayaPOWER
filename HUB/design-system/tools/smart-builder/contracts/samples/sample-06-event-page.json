@@ -1,0 +1,38 @@
+{
+  "contract": "smart-builder/06-event-page",
+  "template_id": "06",
+  "template_name": "Event page",
+  "template_color": "#2fe89e",
+  "title": "Summer Solstice Fest",
+  "kicker": "Sample · Event page",
+  "lede": "Everyone runs events — invites, RSVPs, details.",
+  "sections": [
+    {
+      "kicker": "The event",
+      "title": "One night under the longest sun",
+      "lede": "Live music, food trucks, and a bonfire on the beach. Saturday, June 21.",
+      "pieces": [
+        "NAYA-CAL-002",
+        "NAYA-TYP-020"
+      ]
+    },
+    {
+      "kicker": "Details",
+      "title": "What to expect",
+      "lede": "Gates at 6pm. Bring a blanket; we bring the rest.",
+      "pieces": [
+        "NAYA-CRD-008",
+        "NAYA-LST-007"
+      ]
+    },
+    {
+      "kicker": "RSVP",
+      "title": "Save your spot",
+      "lede": "Free entry, but the beach only holds so many.",
+      "pieces": [
+        "NAYA-FRM-003",
+        "NAYA-BTN-011"
+      ]
+    }
+  ]
+}
