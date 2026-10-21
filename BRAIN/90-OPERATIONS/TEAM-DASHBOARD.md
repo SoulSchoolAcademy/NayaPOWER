@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 01:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-21 02:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 41 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 40 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -51,14 +51,14 @@
 ## Open PRs by Area
 
 ### KNOW (4)
+- [#2826](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2826) fix(registry): heal published_pages_without_registry_entry drift (SN-0
 - [#2816](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816) fix(brain): preserve Windows long-path projection existence in drift a
-- [#2791](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2791) drift-detector: re-key duplicate_published_page_paths on content colli
 - [#2736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736) fix(brain-index): make regeneration line-ending deterministic on every
 - [#2385](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2385) feat(ci): dedicated brain-index-freshness required gate workflow (Shaw
 
 ### PROVE (2)
+- [#2825](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825) The GitHub webhook receiving door — nayanet-github-intake (verify + ac
 - [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
-- [#2585](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585) Add automatic scorecard calculator (tools/scorecard.py + tests)
 
 ### BUILD (12)
 - [#2818](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2818) fix(know): make live Windows Smart Note bridge read all long-path note
@@ -91,13 +91,13 @@
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
 - [#2680](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680) t0483: hourly schedule pump for NayaNET Agent Capture
 
-### GOVERN (8)
+### GOVERN (7)
 - [#2824](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2824) governance(0032): THE HOUSE STANDARD — take care of the house
 - [#2822](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2822) governance: 0031 NEVER AGAIN — The Reservoir Laws (Shawn, 2026-10-21)
 - [#2815](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2815) Viral Law — the headline standard (§22 of the Smart Note / IB Protocol
 - [#2810](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2810) fix(protocol): reject false independent approvals (case, dismissal, co
 - [#2808](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2808) Protocol operationalization: machine spec, pins, and enforcement for t
-- …and 3 more
+- …and 2 more
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*

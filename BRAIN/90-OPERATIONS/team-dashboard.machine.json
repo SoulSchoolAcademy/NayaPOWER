@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T01:15:26+00:00",
+ "generated_utc": "2026-10-21T02:15:07+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -53,15 +53,15 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
-     "number": 2816,
-     "title": "fix(brain): preserve Windows long-path projection existence in drift audit",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816",
+     "number": 2826,
+     "title": "fix(registry): heal published_pages_without_registry_entry drift (SN-0800/0805/0806/0807/0",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2826",
      "draft": false
     },
     {
-     "number": 2791,
-     "title": "drift-detector: re-key duplicate_published_page_paths on content collision (Delta w572)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2791",
+     "number": 2816,
+     "title": "fix(brain): preserve Windows long-path projection existence in drift audit",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816",
      "draft": false
     },
     {
@@ -138,15 +138,15 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
-     "number": 2776,
-     "title": "fix(smart-note): verify actual projection commit SHA",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776",
+     "number": 2825,
+     "title": "The GitHub webhook receiving door \u2014 nayanet-github-intake (verify + accept, fail-closed)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825",
      "draft": false
     },
     {
-     "number": 2585,
-     "title": "Add automatic scorecard calculator (tools/scorecard.py + tests)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2585",
+     "number": 2776,
+     "title": "fix(smart-note): verify actual projection commit SHA",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776",
      "draft": false
     }
    ],
@@ -464,12 +464,6 @@
      "draft": false
     },
     {
-     "number": 2805,
-     "title": "[PROTOCOL LOCK-IN] 0029 machine view \u2014 THE NAYA PROCESS compiled JSON (addition 3)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2805",
-     "draft": false
-    },
-    {
      "number": 2802,
      "title": "fix(protocol): tighten Honor activation, Hive venue and value truth boundaries",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2802",
@@ -482,7 +476,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 8
+   "open_pr_count": 7
   }
  ],
  "recent_activity": [
@@ -615,6 +609,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 41,
+ "open_pr_total": 40,
  "unassigned_prs": 12
 }
