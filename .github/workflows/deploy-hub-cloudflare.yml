@@ -9,7 +9,9 @@ on:
   push:
     branches: [main]
     paths:
-      - "HUB/**"
+      - "HUB/app/**"
+      - "HUB/hub-worker.js"
+      - "HUB/wrangler.toml"
 
 permissions:
   contents: read
