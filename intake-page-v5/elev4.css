@@ -1,0 +1,26 @@
+
+/* v8: template jewel layout discipline */
+.trow1{align-items:flex-start}
+.mini-gem{width:52px;height:52px;margin-top:2px}
+.tbrand{font-size:15px}
+.tnut{font-size:12.5px}
+/* v8: canonical 5-layer shadow physics on view buttons */
+.tview{box-shadow:inset 0 2px 2px rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.6),0 0 22px -2px rgba(255,255,255,.18),0 12px 28px rgba(0,0,0,.65)}
+.tview:hover{transform:translateY(-2px);box-shadow:inset 0 2px 2px rgba(255,255,255,.25),inset 0 -3px 6px rgba(0,0,0,.5),0 0 14px -4px var(--tc),0 16px 34px rgba(0,0,0,.68)}
+.tview:active{transform:translateY(1px) scale(.98);box-shadow:inset 0 3px 8px rgba(0,0,0,.7),0 6px 13px rgba(0,0,0,.65)}
+/* v8: make-it-official summary overlay */
+#sumWrap{position:fixed;inset:0;z-index:60;display:none;align-items:flex-start;justify-content:center;background:rgba(2,2,4,.82);backdrop-filter:blur(8px);overflow-y:auto;padding:40px 16px}
+#sumWrap.open{display:flex}
+.sumpanel{width:min(760px,100%);background:linear-gradient(180deg,#121218,#0a0a0e);border:1.5px solid rgba(255,255,255,.14);border-radius:24px;padding:34px;box-shadow:0 30px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.15)}
+.sumpanel h2{font-family:var(--voice);font-size:30px;margin:0 0 6px;color:#fff}
+.sumsec{border-top:1px solid rgba(255,255,255,.09);padding:18px 0}
+.sumsec h4{font-size:11px;letter-spacing:.22em;color:#fff;opacity:.65;margin:0 0 12px}
+.sumrow{display:flex;gap:12px;align-items:center;padding:10px 0;font-size:14px;color:#fff}
+.sumrow .x{margin-left:auto;cursor:pointer;opacity:.6;font-size:18px}
+.sumrow .x:hover{opacity:1;color:#ff5e6c}
+.sumchg{font-size:12px;letter-spacing:.1em;opacity:.6;cursor:pointer}
+.sumchg:hover{opacity:1;color:#fff}
+.sumpiece{display:flex;gap:12px;align-items:center;background:#0d0d13;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px 14px;margin:8px 0;font-size:13.5px;color:#fff}
+.sumpiece .pm{font-size:11px;letter-spacing:.08em;opacity:.6}
+.sumbtn{display:block;width:100%;margin-top:20px;padding:18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.78);background:linear-gradient(180deg,#15151a,#050506);color:#fff;font-size:15px;font-weight:800;letter-spacing:.08em;cursor:pointer;box-shadow:inset 0 2px 2px rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.6),0 12px 28px rgba(0,0,0,.65);transition:all .25s var(--ease)}
+.sumbtn:hover{transform:translateY(-2px);border-color:#2fe89e;box-shadow:inset 0 2px 2px rgba(255,255,255,.25),0 0 18px -4px #2fe89e,0 16px 34px rgba(0,0,0,.68)}

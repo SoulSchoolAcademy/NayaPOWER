@@ -3,7 +3,7 @@
 ## ⚖️ THE NAYA PROTOCOL — READ FIRST
 
 **[PROTOCOL.md](./PROTOCOL.md) is the canonical operating law. Every Naya, every time.**
-17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
+Step 0 plus 17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
 Read it before anything else in this file. It is the code of all codes.
 
 ## STOP — BOOT BEFORE WORK

@@ -1,0 +1,2740 @@
+{
+ "SUPER-001": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-001-permission-is-real-or-it-is-nothing.md",
+  "title": "Permission Is Real, or It Is Nothing",
+  "nutshell": "A good score, a green light, a login, or a confident claim never gives anyone permission. Permission is real only when it traces back to an actual grant \u2014 the director's own words, a ratified law, or an active grant with clear limits. Anything else is just a claim wearing a costume.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0223-workflow-binding-not-authorization",
+   "IB-SMART-NOTE-20260930-sn0441-green-is-not-go",
+   "IB-SMART-NOTE-20260930-sn0444-self-declared-grant-is-a-claim",
+   "IB-SMART-NOTE-20260930-sn0464-name-check-vs-entitlement-check",
+   "IB-SMART-NOTE-20260930-sn0565-scorecard-decides-never-authorizes",
+   "IB-SMART-NOTE-20260930-sn0215-policy-cannot-self-extend",
+   "IB-SMART-NOTE-20260930-sn0362-unkeyed-seal-promote-note-elevates-unauthenticated",
+   "IB-SMART-NOTE-20261007-sn0538-director-command-is-the-grant-permission-slip-doctrine",
+   "IB-SMART-NOTE-20261007-sn0581-write-paths-never-mint-authority",
+   "IB-SMART-NOTE-20261006-sn0592-never-impersonate-the-verifier",
+   "IB-SMART-NOTE-20261005-sn0368-promoter-chooses-the-evidence",
+   "IB-SMART-NOTE-20261004-sn0263-ratification-receipt-bounded-authorization"
+  ],
+  "source_count": 12,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0215",
+    "super": "SUPER-001",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.319
+   },
+   {
+    "sn": "SN-0263",
+    "super": "SUPER-001",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.383
+   },
+   {
+    "sn": "SN-0362",
+    "super": "SUPER-001",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.254
+   },
+   {
+    "sn": "SN-0368",
+    "super": "SUPER-001",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.469
+   },
+   {
+    "sn": "SN-0464",
+    "super": "SUPER-001",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.792
+   },
+   {
+    "sn": "SN-0581",
+    "super": "SUPER-001",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.545
+   }
+  ]
+ },
+ "SUPER-002": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-002-permission-dies-when-the-world-moves.md",
+  "title": "Permission Dies When the World Moves",
+  "nutshell": "Permission is pinned to one exact version at one exact moment. The moment the work moves on, the permission, the decision, and the proof all expire together. Before you act, look again at what is actually there now \u2014 and judge only the exact bytes in front of you.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn029-sha-bound-authorization",
+   "IB-SMART-NOTE-20260930-sn0191-repo-is-the-demo-freeze-point-protocol",
+   "IB-SMART-NOTE-20260930-sn0206-frozen-sha-judges-anchor",
+   "IB-SMART-NOTE-20260930-sn0328-the-auto-merge-gate-must-re-verify-on-the-merge-commit",
+   "IB-SMART-NOTE-20260930-sn0475-deployment-authorization-sha-expiry",
+   "IB-SMART-NOTE-20261006-sn0473-review-head-stability",
+   "IB-SMART-NOTE-20261007-sn0562-exact-sha-authorization-dies-when-tip-moves",
+   "IB-SMART-NOTE-20261007-sn0563-pr-head-is-not-merge-commit-prove-by-ancestry",
+   "IB-SMART-NOTE-20261007-sn0553-overtaken-receipt-temporal-correction",
+   "IB-SMART-NOTE-20261007-sn0564-verification-packet-photograph-receiver-reanchors",
+   "IB-SMART-NOTE-20261006-sn0493-decision-expires-when-tip-moves-reverify-at-action",
+   "IB-SMART-NOTE-20261005-sn0415-authorization-window-race"
+  ],
+  "source_count": 12,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0191",
+    "super": "SUPER-002",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.5
+   },
+   {
+    "sn": "SN-0328",
+    "super": "SUPER-002",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.38
+   },
+   {
+    "sn": "SN-0415",
+    "super": "SUPER-002",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.436
+   },
+   {
+    "sn": "SN-0553",
+    "super": "SUPER-002",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.611
+   },
+   {
+    "sn": "SN-0563",
+    "super": "SUPER-002",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.453
+   }
+  ]
+ },
+ "SUPER-003": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-003-live-bytes-beat-every-story.md",
+  "title": "Live Bytes Beat Every Story",
+  "nutshell": "Every report, ledger, and summary is just a story about the world \u2014 and stories go stale. When a story and the living system disagree, go and look at the system itself, right now, and believe your eyes. And before you blame the alarm, check that your own measuring tool isn't the broken part.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn560-stale-narrative-loses-to-ratified-law",
+   "IB-SMART-NOTE-20260930-sn0175-endorsement-on-live-venue-reread",
+   "IB-SMART-NOTE-20260930-sn0624-quarantine-snapshot-stale-reconstruct-live-bytes",
+   "IB-SMART-NOTE-20260930-sn0185-pr-body-drift-rebind-to-head",
+   "IB-SMART-NOTE-20260930-sn041-stale-caveat-decay",
+   "IB-SMART-NOTE-20260930-sn0451-audit-the-authority-text-itself",
+   "IB-SMART-NOTE-20260930-sn0426-relay-receipt-corroborate-live-bytes-not-prose",
+   "IB-SMART-NOTE-20260930-sn0587-production-is-truth-ledger-is-claim",
+   "IB-SMART-NOTE-20261005-sn0398-stale-state-claims-die-on-live-bytes",
+   "IB-SMART-NOTE-20261005-sn0354-check-contradicts-evidence",
+   "IB-SMART-NOTE-20261005-sn0356-check-was-right-csv-truncated",
+   "IB-SMART-NOTE-20261007-sn0554-stale-base-red-vs-current-main-red",
+   "IB-SMART-NOTE-20261007-sn0536-ledger-applied-is-a-claim-not-a-proof",
+   "IB-SMART-NOTE-20261006-sn0520-ghost-table-phantom-schema-reference",
+   "IB-SMART-NOTE-20261006-sn0492-one-sign-out-per-tick-live-bytes-break-ties",
+   "IB-SMART-NOTE-20261005-sn0371-verify-gates-teeth-before-designing-around"
+  ],
+  "source_count": 16,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0175",
+    "super": "SUPER-003",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.448
+   },
+   {
+    "sn": "SN-0354",
+    "super": "SUPER-003",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.214
+   },
+   {
+    "sn": "SN-0371",
+    "super": "SUPER-003",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.512
+   },
+   {
+    "sn": "SN-0451",
+    "super": "SUPER-003",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 1.0
+   },
+   {
+    "sn": "SN-0520",
+    "super": "SUPER-003",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.535
+   },
+   {
+    "sn": "SN-0624",
+    "super": "SUPER-003",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.333
+   },
+   {
+    "sn": "SN-560",
+    "super": "SUPER-003",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.302
+   }
+  ]
+ },
+ "SUPER-004": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-004-one-name-one-thing.md",
+  "title": "One Name, One Thing",
+  "nutshell": "A note's number is its name, and a name must belong to exactly one thing. Two different lessons wearing the same number will confuse everyone who comes looking later. So claim your number in the registry first, check everywhere \u2014 and if a clash appears, sort it out with evidence, never by deleting.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0115-three-layer-collision-registry",
+   "IB-SMART-NOTE-20260930-sn0145-self-collision-date-partitions",
+   "IB-SMART-NOTE-20260930-sn0151-claim-registry-write-first",
+   "IB-SMART-NOTE-20260930-sn0167-director-lock-outranks-first-claim",
+   "IB-SMART-NOTE-20260930-sn0169-compelled-renumber-clears-registry",
+   "IB-SMART-NOTE-20260930-sn0171-registry-scans-all-claim-branches",
+   "IB-SMART-NOTE-20260930-sn0176-cross-partition-content-fork",
+   "IB-SMART-NOTE-20260930-sn0184-registry-read-expiry-at-claim-time",
+   "IB-SMART-NOTE-20260930-sn0189-close-collision-with-evidence",
+   "IB-SMART-NOTE-20260930-sn0625-collision-triage-classify-before-acting",
+   "IB-SMART-NOTE-20261004-sn0257-dedupe-must-cover-human-visible-id",
+   "IB-SMART-NOTE-20261007-sn0545-registry-is-identity-authority-disambiguate-never-delete",
+   "IB-SMART-NOTE-20261007-sn0616-human-id-continuity-boundary",
+   "IB-SMART-NOTE-20261006-sn0467-counter-advisory-tree-authority",
+   "IB-SMART-NOTE-20261005-sn0347-restatement-is-not-capture",
+   "IB-SMART-NOTE-20261005-sn0372-sn-collision-arbitration-rule",
+   "IB-SMART-NOTE-20261004-sn0303-registry-scan-decays-in-minutes",
+   "IB-SMART-NOTE-20261004-sn0259-occupancy-scan-must-cover-merged-prs"
+  ],
+  "source_count": 18,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0115",
+    "super": "SUPER-004",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.265
+   },
+   {
+    "sn": "SN-0176",
+    "super": "SUPER-004",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.494
+   },
+   {
+    "sn": "SN-0347",
+    "super": "SUPER-004",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.489
+   },
+   {
+    "sn": "SN-0467",
+    "super": "SUPER-004",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.565
+   }
+  ]
+ },
+ "SUPER-005": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-005-converge-don-t-collide.md",
+  "title": "Converge, Don't Collide",
+  "nutshell": "Fast teams sometimes build the same thing twice \u2014 that's normal, and it's fixable without a fight. Check who's already working before you start, let the first good repair own the job, and stand your duplicate down gracefully with a pointer to the winner. One survivor, chosen openly \u2014 never two competing versions.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0117-converge-by-scored-selection",
+   "IB-SMART-NOTE-20260930-sn0173-repair-registry-preclaim-check",
+   "IB-SMART-NOTE-20260930-sn0201-repair-consolidation-repoint-not-duplicate",
+   "IB-SMART-NOTE-20260930-sn0558-adjudicate-convergence-blob-sha-proof",
+   "IB-SMART-NOTE-20260930-sn0159-one-question-one-owner",
+   "IB-SMART-NOTE-20261006-sn0472-deconfliction-guards-the-push",
+   "IB-SMART-NOTE-20261008-sn0627-no-idle-governed-takeover",
+   "IB-SMART-NOTE-20261007-sn0547-the-claimed-seam-rule",
+   "IB-SMART-NOTE-20261006-sn0591-duplicate-repair-stand-down",
+   "IB-SMART-NOTE-20261005-sn0337-lanes-converge-close-duplicate-superseded",
+   "IB-SMART-NOTE-20261005-sn0336-intent-to-merge-scorecard-deconflict-battery",
+   "IB-SMART-NOTE-20261005-sn0367-collision-protocol",
+   "IB-SMART-NOTE-20261005-sn0393-hold-the-green-merge",
+   "IB-SMART-NOTE-20261005-sn0373-close-dont-merge-empty-diff-repair",
+   "IB-SMART-NOTE-20261004-sn0273-when-the-director-ships-his-own-spec-close-yours-as-superseded"
+  ],
+  "source_count": 15,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0117",
+    "super": "SUPER-005",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.298
+   },
+   {
+    "sn": "SN-0159",
+    "super": "SUPER-005",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.452
+   },
+   {
+    "sn": "SN-0201",
+    "super": "SUPER-005",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.274
+   },
+   {
+    "sn": "SN-0336",
+    "super": "SUPER-005",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.342
+   },
+   {
+    "sn": "SN-0367",
+    "super": "SUPER-005",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.176
+   },
+   {
+    "sn": "SN-0393",
+    "super": "SUPER-005",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.606
+   }
+  ]
+ },
+ "SUPER-006": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-006-the-math-decides-and-the-bar-is-ten.md",
+  "title": "The Math Decides, and the Bar Is Ten",
+  "nutshell": "Don't guess, and don't stall \u2014 score it. List the options, weigh them honestly, let the hard rules refuse what's forbidden, and then do the best-scoring thing, even if it isn't perfect yet. The standard is ten out of ten in both how it works and how it looks \u2014 and no trading one for the other.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0183-learn-then-ten-x",
+   "IB-SMART-NOTE-20260930-sn0153-iteration-law-contract-closure",
+   "IB-SMART-NOTE-20260930-sn0126-the-shawn-bar-no-tradeoffs",
+   "IB-SMART-NOTE-20261007-sn0579-nan-comparisons-false-finiteness-is-the-gate",
+   "IB-SMART-NOTE-20261007-sn0615-prime-math-decides",
+   "IB-SMART-NOTE-20261007-sn0614-self-governing-intelligence-law",
+   "IB-SMART-NOTE-20261007-sn0568-highest-score-wins",
+   "IB-SMART-NOTE-20261006-sn0456-auto-approval-law",
+   "IB-SMART-NOTE-20261006-sn0590-standing-protocol-outranks-stale-hold",
+   "IB-SMART-NOTE-20261005-sn0343-ten-area-scorecard",
+   "IB-SMART-NOTE-20261005-sn0340-the-scorecard-law",
+   "IB-SMART-NOTE-20261004-sn0265-one-law-for-every-seat",
+   "IB-SMART-NOTE-20261004-sn0264-the-ten-out-of-ten-bar"
+  ],
+  "source_count": 13,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0153",
+    "super": "SUPER-006",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.407
+   },
+   {
+    "sn": "SN-0264",
+    "super": "SUPER-006",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.53
+   },
+   {
+    "sn": "SN-0265",
+    "super": "SUPER-006",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.741
+   },
+   {
+    "sn": "SN-0340",
+    "super": "SUPER-006",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.865
+   },
+   {
+    "sn": "SN-0343",
+    "super": "SUPER-006",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.833
+   },
+   {
+    "sn": "SN-0456",
+    "super": "SUPER-006",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.714
+   },
+   {
+    "sn": "SN-0590",
+    "super": "SUPER-006",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.368
+   }
+  ]
+ },
+ "SUPER-007": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-007-never-stop-the-captain-s-loop.md",
+  "title": "Never Stop: The Captain's Loop",
+  "nutshell": "Never wait to be told. Look at everything, pick the highest-value thing you are allowed to do, do it completely, prove it worked, learn from it \u2014 and go again. You are the captain of your lane: proactive always, reactive never. But a captain still thinks before obeying an order that would sink the ship.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn016-prime-judgment-rule",
+   "IB-SMART-NOTE-20261005-sn0399-self-directed-intelligence",
+   "IB-SMART-NOTE-20261005-sn0400-captain-directive-proactive-always",
+   "IB-SMART-NOTE-20261005-sn0605-self-directed-intelligence-r2",
+   "IB-SMART-NOTE-20261005-sn0607-proactive-captain-r2",
+   "IB-SMART-NOTE-20261005-sn0606-nonstop-loop-operating-code",
+   "IB-SMART-NOTE-20261005-sn0589-nonstop-loop",
+   "IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2",
+   "IB-SMART-NOTE-20261005-sn0358-law-is-code-r2",
+   "IB-SMART-NOTE-20261005-sn0394-park-the-ambition-lane",
+   "IB-SMART-NOTE-20261004-sn0279-continuous-execution-directive",
+   "IB-SMART-NOTE-20261021-sn01774-0028-execution-doctrine-distilled"
+  ],
+  "source_count": 12,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0177",
+    "super": "SUPER-007",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.411
+   },
+   {
+    "sn": "SN-0279",
+    "super": "SUPER-007",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.419
+   },
+   {
+    "sn": "SN-0358",
+    "super": "SUPER-007",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.791
+   },
+   {
+    "sn": "SN-0606",
+    "super": "SUPER-007",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.293
+   }
+  ]
+ },
+ "SUPER-008": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-008-gates-must-guard-first-cover-everything-and-fail-loud.md",
+  "title": "Gates Must Guard First, Cover Everything, and Fail Loud",
+  "nutshell": "A guard only guards if it stands at the door before anything passes \u2014 not after. It must watch every entrance, including the sneaky ones, and if it can't let you through, it should stop you loudly and leave no mess. A silent guard that lets things slip by is worse than no guard at all.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0566-fail-closed-authority-deny-is-scope-precision",
+   "IB-SMART-NOTE-20260930-sn0221-fail-closed-merge-grant-sequencing",
+   "IB-SMART-NOTE-20260930-sn0363-atomic-promotion-pointer-moves-last",
+   "IB-SMART-NOTE-20261005-sn0352-promotion-branch-moves-before-check",
+   "IB-SMART-NOTE-20261006-sn0611-trigger-function-rpc-exposure",
+   "IB-SMART-NOTE-20261006-sn0503-rule-blind-spot-human-director",
+   "IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard",
+   "IB-SMART-NOTE-20261006-sn0521-gate-after-the-mutations-refusal-that-writes",
+   "IB-SMART-NOTE-20261006-sn0487-name-the-denial-subclass",
+   "IB-SMART-NOTE-20261006-sn0468-fail-open-control-worse-than-loud-failure",
+   "IB-SMART-NOTE-20261006-sn0465-rejection-is-a-non-event",
+   "IB-SMART-NOTE-20261006-sn0462-structural-audit-blind-to-meaning",
+   "IB-SMART-NOTE-20261005-sn0412-field-stripping-is-deletion",
+   "IB-SMART-NOTE-20261005-sn0414-migration-monotonic-by-default"
+  ],
+  "source_count": 14,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0414",
+    "super": "SUPER-008",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.479
+   },
+   {
+    "sn": "SN-0460",
+    "super": "SUPER-008",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.414
+   },
+   {
+    "sn": "SN-0468",
+    "super": "SUPER-008",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.417
+   },
+   {
+    "sn": "SN-0503",
+    "super": "SUPER-008",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.532
+   },
+   {
+    "sn": "SN-0611",
+    "super": "SUPER-008",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.744
+   }
+  ]
+ },
+ "SUPER-009": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-009-a-law-must-be-code-or-it-isn-t-a-law-yet.md",
+  "title": "A Law Must Be Code, or It Isn't a Law Yet",
+  "nutshell": "A rule written on paper but never built into the machine is just a wish. A law only truly exists when something automatic watches for its breaking \u2014 and says so. So don't just write the lesson down: build it in, wire it up, and test that it can actually catch someone breaking it.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0262-constitutional-activation-ladder",
+   "IB-SMART-NOTE-20260930-sn0324-the-authority-gap-executing-ahead-of-the-encoded-law",
+   "IB-SMART-NOTE-20260930-sn0129-discover-before-you-draft",
+   "IB-SMART-NOTE-20260930-sn023-seed-authority-over-prose",
+   "IB-SMART-NOTE-20260930-sn0261-ratified-law-does-not-freeze-document",
+   "IB-SMART-NOTE-20260930-sn068-canonical-contract-before-competing-format",
+   "IB-SMART-NOTE-20260930-sn0518-law-operative-only-if-machine-can-falsify",
+   "IB-SMART-NOTE-20260930-sn0529-show-dont-tell-machine-law-directive",
+   "IB-SMART-NOTE-20260930-sn0410-ordering-guarantee-not-prose",
+   "IB-SMART-NOTE-20260930-sn0199-executor-personal-binding-oath",
+   "IB-SMART-NOTE-20261005-sn0435-last-mile-of-law-wired-not-written",
+   "IB-SMART-NOTE-20261006-sn0484-merged-is-not-closed-guard-file-not-enforcement"
+  ],
+  "source_count": 12,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0199",
+    "super": "SUPER-009",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.252
+   },
+   {
+    "sn": "SN-0261",
+    "super": "SUPER-009",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.5
+   },
+   {
+    "sn": "SN-0262",
+    "super": "SUPER-009",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.347
+   },
+   {
+    "sn": "SN-0324",
+    "super": "SUPER-009",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.231
+   }
+  ]
+ },
+ "SUPER-010": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-010-never-delete-what-you-don-t-understand.md",
+  "title": "Never Delete What You Don't Understand",
+  "nutshell": "Tidying up never means throwing away what you don't understand. Records are history \u2014 you may retire a thing's power, but you don't erase its past. If something is truly stale, fix it or remove it with your eyes open and the reason written down. When in doubt: keep it, rename it, ask.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0116-owner-makes-the-canon-call",
+   "IB-SMART-NOTE-20260930-sn060-opener-owns-close",
+   "IB-SMART-NOTE-20260930-sn0208-ledgered-migrations-immutable",
+   "IB-SMART-NOTE-20261004-sn0251-fix-it-or-remove-it",
+   "IB-SMART-NOTE-20261005-sn0408-deletion-discipline",
+   "IB-SMART-NOTE-20261005-sn0397-cleanup-doctrine-optimize-without-deleting-history",
+   "IB-SMART-NOTE-SMART-NOTE-20261005-sn0608-no-deletion-without-understanding",
+   "IB-SMART-NOTE-20261005-sn0370-immutable-r1-conformant-r2-repair-class",
+   "IB-SMART-NOTE-20261005-sn0406-ratified-capture-deletion-repair-lane"
+  ],
+  "source_count": 9,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0116",
+    "super": "SUPER-010",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.231
+   },
+   {
+    "sn": "SN-0370",
+    "super": "SUPER-010",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.291
+   }
+  ]
+ },
+ "SUPER-011": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-011-name-the-gap-bound-the-claim.md",
+  "title": "Name the Gap, Bound the Claim",
+  "nutshell": "Say what you proved, and say just as loudly what you didn't. One passing check is a guess until a second, independent check agrees. Never let strong evidence in one place lend a shine to a place you couldn't test \u2014 the gap gets named at the same size as the claim.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0409-author-string-not-provenance",
+   "IB-SMART-NOTE-20260930-sn0106-the-name-must-say-what-the-thing-is",
+   "IB-SMART-NOTE-20260930-sn0325-candidate-absorbs-uncertainty",
+   "IB-SMART-NOTE-20260930-sn099-not-ready-to-promise",
+   "IB-SMART-NOTE-20260930-sn0425-name-the-gap-bound-the-claim",
+   "IB-SMART-NOTE-20260930-sn0455-live-security-advisor-evidence",
+   "IB-SMART-NOTE-20261005-sn0357-honest-fix-impossible",
+   "IB-SMART-NOTE-20261006-sn0458-second-source-rule",
+   "IB-SMART-NOTE-20261008-sn0639-virgin-confirm-before-flag",
+   "IB-SMART-NOTE-20261008-sn0637-local-verifier-green-proves-local-code-never-deployed-enforcement",
+   "IB-SMART-NOTE-20261007-sn0555-one-green-one-proof-level",
+   "IB-SMART-NOTE-20261006-sn0466-honest-provenance-registration",
+   "IB-SMART-NOTE-20261005-sn0603-the-falsifier-must-fire"
+  ],
+  "source_count": 13,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0325",
+    "super": "SUPER-011",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.284
+   },
+   {
+    "sn": "SN-0409",
+    "super": "SUPER-011",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.212
+   },
+   {
+    "sn": "SN-0455",
+    "super": "SUPER-011",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.737
+   },
+   {
+    "sn": "SN-0603",
+    "super": "SUPER-011",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.47
+   },
+   {
+    "sn": "SN-0637",
+    "super": "SUPER-011",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.369
+   },
+   {
+    "sn": "SN-099",
+    "super": "SUPER-011",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.556
+   }
+  ]
+ },
+ "SUPER-012": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-012-work-in-the-open-as-one-team.md",
+  "title": "Work in the Open, as One Team",
+  "nutshell": "Nobody works in a corner. Say what you're starting and why, say what you finished and show the proof, share what you find where everyone can see it, and help your teammates before they ask. The shared board is how a team of many minds stays one team \u2014 a message sent to a dead thread is a message lost.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0170-scope-blocked-delivery-protocol",
+   "IB-SMART-NOTE-20260930-sn0109-everything-on-554-standing-board-protocol",
+   "IB-SMART-NOTE-20260930-sn075-committed-hold-override-logging",
+   "IB-SMART-NOTE-20260930-sn0576-area-agent-staffing-law",
+   "IB-SMART-NOTE-20261004-sn252-priority-one-deliberation-arc",
+   "IB-SMART-NOTE-20261005-sn0407-cross-lane-review-habit",
+   "IB-SMART-NOTE-20261006-sn0453-modular-feeds-one-project-one-feed",
+   "IB-SMART-NOTE-20261006-sn0488-specialist-lanes-relay-discipline",
+   "IB-SMART-NOTE-20261005-sn0365-one-team-shared-initiative",
+   "IB-SMART-NOTE-20261005-sn0403-idea-evolution-flow",
+   "IB-SMART-NOTE-20261005-sn0351-communicate-state-not-events",
+   "IB-SMART-NOTE-20261004-sn0317-relay-to-the-live-thread",
+   "IB-SMART-NOTE-20261004-sn0280-sign-in-sign-out-team-protocol"
+  ],
+  "source_count": 13,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0170",
+    "super": "SUPER-012",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.44
+   },
+   {
+    "sn": "SN-0403",
+    "super": "SUPER-012",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.5
+   },
+   {
+    "sn": "SN-0488",
+    "super": "SUPER-012",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.435
+   },
+   {
+    "sn": "SN-0576",
+    "super": "SUPER-012",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.357
+   }
+  ]
+ },
+ "SUPER-013": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-013-route-the-decision-to-the-one-who-owns-it.md",
+  "title": "Route the Decision to the One Who Owns It",
+  "nutshell": "When a decision isn't yours, don't guess and don't bury it \u2014 name it, keep it visible, and carry it to the person who owns it. The person passing a message along never quietly becomes the person deciding. And when the owner's own words seem to conflict, go back and find their latest word before asking them to repeat themselves.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0209-preserve-authority-conflict-no-guess-seam",
+   "IB-SMART-NOTE-20260930-sn0104-design-weight-decisions-not-settled-in-relay",
+   "IB-SMART-NOTE-20260930-sn0113-freeze-the-scale-on-an-ambiguous-director-number",
+   "IB-SMART-NOTE-20260930-sn0123-director-is-never-your-qa",
+   "IB-SMART-NOTE-20260930-sn0211-restore-human-director-source-record",
+   "IB-SMART-NOTE-20260930-sn0196-contradictions-register-not-silent-ruling",
+   "IB-SMART-NOTE-20260930-sn0383-external-check-red-route-to-canonical-owner",
+   "IB-SMART-NOTE-20261005-sn0380-external-check-red-to-canonical-owner",
+   "IB-SMART-NOTE-20261006-sn0470-read-only-audit-production-write-director-gated",
+   "IB-SMART-NOTE-20261004-sn0277-director-action-vs-spec-no-position"
+  ],
+  "source_count": 10,
+  "cluster_file": "cluster-01-super.json"
+ },
+ "SUPER-014": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-014-learning-is-only-real-when-it-can-be-recalled.md",
+  "title": "Learning Is Only Real When It Can Be Recalled",
+  "nutshell": "Writing something down is not learning it. A lesson is learned only when someone who wasn't there can find it later, cold, and act differently because of it. So every lesson gets distilled to its essence, stored where it can be found, and tested by recall \u2014 anything less is just storage.",
+  "sources": [
+   "IB-SMART-NOTE-20261004-sn0242-smart-note-this-lifecycle",
+   "IB-SMART-NOTE-20261004-sn0243-recall-is-the-proof-of-learning",
+   "IB-SMART-NOTE-20261005-sn0404-capture-schema-v2-freeze",
+   "IB-SMART-NOTE-20261004-sn0313-ingestion-bar-would-this-change-a-future-decision",
+   "IB-SMART-NOTE-20261004-sn0239-three-agreements-of-connecting",
+   "IB-SMART-NOTE-20260930-sn275-consent-granularity"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-01-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0239",
+    "super": "SUPER-014",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.375
+   },
+   {
+    "sn": "SN-275",
+    "super": "SUPER-014",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.731
+   }
+  ]
+ },
+ "SUPER-015": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-015-the-record-is-not-the-work-check-the-living-thing-itself.md",
+  "title": "The Record Is Not the Work \u2014 Check the Living Thing Itself",
+  "nutshell": "A note saying 'done' is not the doing. A green report is not the thing itself. Always go and look at the real, living thing \u2014 the actual file, the actual page, the actual result \u2014 before you believe any record about it.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0172-never-prewrite-done-records",
+   "IB-SMART-NOTE-20260930-sn0125-verify-the-tree-after-push",
+   "IB-SMART-NOTE-20260930-sn0188-search-index-stale-evidence",
+   "IB-SMART-NOTE-20260930-sn0424-registry-metadata-is-not-runtime-proof",
+   "IB-SMART-NOTE-20260930-sn0533-fingerprint-the-bytes-before-you-prove-them",
+   "IB-SMART-NOTE-20260930-sn0216-verify-at-target-tree-not-at-artifact",
+   "IB-SMART-NOTE-20260930-sn0219-deployed-not-built-walk-the-live-site",
+   "IB-SMART-NOTE-20260930-sn0238-recompute-index-from-live-tree",
+   "IB-SMART-NOTE-20260930-sn0384-validate-semantics-not-proxies",
+   "IB-SMART-NOTE-20261008-sn0633-bulk-merge-hollows-protected-document",
+   "IB-SMART-NOTE-20261004-sn0250-green-run-compatible-with-corrupt-registry"
+  ],
+  "source_count": 11,
+  "cluster_file": "cluster-02-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0172",
+    "super": "SUPER-015",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.488
+   },
+   {
+    "sn": "SN-0188",
+    "super": "SUPER-015",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.352
+   },
+   {
+    "sn": "SN-0216",
+    "super": "SUPER-015",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.252
+   },
+   {
+    "sn": "SN-0238",
+    "super": "SUPER-015",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.318
+   },
+   {
+    "sn": "SN-0250",
+    "super": "SUPER-015",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.33
+   },
+   {
+    "sn": "SN-0384",
+    "super": "SUPER-015",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.447
+   },
+   {
+    "sn": "SN-0424",
+    "super": "SUPER-015",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.475
+   },
+   {
+    "sn": "SN-0533",
+    "super": "SUPER-015",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.317
+   },
+   {
+    "sn": "SN-0633",
+    "super": "SUPER-015",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.42
+   }
+  ]
+ },
+ "SUPER-016": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-016-name-the-exact-thing-you-proved.md",
+  "title": "Name the Exact Thing You Proved",
+  "nutshell": "A proof is only about the exact thing you checked \u2014 that version, that run, that place. Name it precisely. A check of something nearby, earlier, or almost-the-same proves nothing about the thing in front of you.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0197-verification-receipt-names-its-pin",
+   "IB-SMART-NOTE-20260930-sn0200-receipt-pins-must-resolve-live",
+   "IB-SMART-NOTE-20260930-sn043-compare-at-one-commit",
+   "IB-SMART-NOTE-20260930-sn082-execution-identity-not-content-identity",
+   "IB-SMART-NOTE-20260930-sn0112-pin-what-you-consume-not-just-what-you-verify",
+   "IB-SMART-NOTE-20260930-sn0434-dispute-audit-pin-scope-first",
+   "IB-SMART-NOTE-20260930-sn046-coverage-gap-handoff",
+   "IB-SMART-NOTE-20260930-sn086-qualify-only-the-fetchable-subject",
+   "IB-SMART-NOTE-20260930-sn0198-byte-cited-critique-actionable-unit",
+   "IB-SMART-NOTE-20260930-sn0217-compare-semantic-identity-not-raw-bytes"
+  ],
+  "source_count": 10,
+  "cluster_file": "cluster-02-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0112",
+    "super": "SUPER-016",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.537
+   },
+   {
+    "sn": "SN-0198",
+    "super": "SUPER-016",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.316
+   },
+   {
+    "sn": "SN-0217",
+    "super": "SUPER-016",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.393
+   },
+   {
+    "sn": "SN-086",
+    "super": "SUPER-016",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.347
+   }
+  ]
+ },
+ "SUPER-017": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-017-a-guard-that-cannot-fail-is-not-a-guard.md",
+  "title": "A Guard That Cannot Fail Is Not a Guard",
+  "nutshell": "A check that always says 'fine' protects nothing. Before trusting any guard, break something on purpose and watch it complain. If it stays green while the thing it guards is broken, it is decoration, not protection.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0531-falsifiability-battery",
+   "IB-SMART-NOTE-20261006-sn0514-a-gate-that-cannot-fail-is-not-a-gate",
+   "IB-SMART-NOTE-20260930-sn0509-the-gate-must-prove-its-own-verdict",
+   "IB-SMART-NOTE-20260930-sn0512-guard-liveness-ratchet-floor",
+   "IB-SMART-NOTE-20261004-sn0283-false-pass-surfaces",
+   "IB-SMART-NOTE-20261007-sn0580-attack-your-own-verifier-before-you-trust-it",
+   "IB-SMART-NOTE-20260930-sn559-forge-coherent-inputs-not-garbage",
+   "IB-SMART-NOTE-20260930-sn079-withheld-certification-gate-hold",
+   "IB-SMART-NOTE-20260930-sn072-xfail-constraint-proven-not-asserted",
+   "IB-SMART-NOTE-20260930-sn025-two-bar-qualification",
+   "IB-SMART-NOTE-20260930-sn0146-predicate-instrumentability-freeze-gate"
+  ],
+  "source_count": 11,
+  "cluster_file": "cluster-02-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0146",
+    "super": "SUPER-017",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.347
+   },
+   {
+    "sn": "SN-025",
+    "super": "SUPER-017",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.571
+   },
+   {
+    "sn": "SN-0509",
+    "super": "SUPER-017",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.349
+   },
+   {
+    "sn": "SN-0512",
+    "super": "SUPER-017",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.292
+   },
+   {
+    "sn": "SN-072",
+    "super": "SUPER-017",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.509
+   }
+  ]
+ },
+ "SUPER-018": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-018-green-is-not-proof-the-test-must-touch-the-real-thing.md",
+  "title": "Green Is Not Proof \u2014 the Test Must Touch the Real Thing",
+  "nutshell": "A passing test only proves what it actually touched. Tests that read words instead of running the real thing, swap in pretend parts, or never exercise the new path will smile green while the real thing is broken.",
+  "sources": [
+   "IB-SMART-NOTE-20261006-sn0461-source-text-assertions-green-by-construction",
+   "IB-SMART-NOTE-20261007-sn0569-regression-must-execute-embedded-artifact",
+   "IB-SMART-NOTE-20260930-sn088-fixture-substitution-voids-integration-claims",
+   "IB-SMART-NOTE-20260930-sn0567-green-proof-run-must-exercise-new-seam",
+   "IB-SMART-NOTE-20260930-sn0543-deno-check-blind-spot-untyped-js-esm-exports",
+   "IB-SMART-NOTE-20260930-sn0224-prove-the-shipped-artifact-at-full-scope",
+   "IB-SMART-NOTE-20260930-sn073-invocation-consumption-enforcement",
+   "IB-SMART-NOTE-20260930-sn077-false-green-restoration",
+   "IB-SMART-NOTE-20260930-sn067-git-grep-pathspec-footgun",
+   "IB-SMART-NOTE-20260930-sn0506-fixed-page-tail-blindness",
+   "IB-SMART-NOTE-20260930-sn036-push-run-ci-evidence",
+   "IB-SMART-NOTE-20260930-sn066-red-before-green-failing-case-first",
+   "IB-SMART-NOTE-20260930-sn076-single-variable-defect-reproduction"
+  ],
+  "source_count": 13,
+  "cluster_file": "cluster-02-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-036",
+    "super": "SUPER-018",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.618
+   },
+   {
+    "sn": "SN-0506",
+    "super": "SUPER-018",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.5
+   },
+   {
+    "sn": "SN-0543",
+    "super": "SUPER-018",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.452
+   },
+   {
+    "sn": "SN-067",
+    "super": "SUPER-018",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.328
+   },
+   {
+    "sn": "SN-073",
+    "super": "SUPER-018",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.374
+   },
+   {
+    "sn": "SN-077",
+    "super": "SUPER-018",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.483
+   }
+  ]
+ },
+ "SUPER-019": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-019-when-you-cannot-prove-it-refuse-never-fake-it-or-weaken-it.md",
+  "title": "When You Cannot Prove It, Refuse \u2014 Never Fake It or Weaken It",
+  "nutshell": "If the safe tool doesn't exist, or the proof doesn't hold, the honest answer is 'no' or 'not proven' \u2014 never a weaker substitute dressed up as the real thing, and never a 'verified' stamp you didn't earn.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn081-containment-never-degrades-platform",
+   "IB-SMART-NOTE-20260930-sn0118-verifier-fail-closed-never-keyerror",
+   "IB-SMART-NOTE-20260930-sn0573-trial-evidence-fail-closed-verifier",
+   "IB-SMART-NOTE-20260930-sn0528-never-attest-with-a-literal",
+   "IB-SMART-NOTE-20260930-sn0519-refusal-must-reach-nothing-instrument-audits-its-author",
+   "IB-SMART-NOTE-20260930-sn0168-fail-fast-authoring-boundary",
+   "IB-SMART-NOTE-20260930-sn085-append-only-method-not-invariant",
+   "IB-SMART-NOTE-20260930-sn090-receipt-family-mismatch",
+   "IB-SMART-NOTE-20260930-sn091-field-binding-taxonomy"
+  ],
+  "source_count": 9,
+  "cluster_file": "cluster-02-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0118",
+    "super": "SUPER-019",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.374
+   },
+   {
+    "sn": "SN-0168",
+    "super": "SUPER-019",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.228
+   },
+   {
+    "sn": "SN-0519",
+    "super": "SUPER-019",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.212
+   },
+   {
+    "sn": "SN-0573",
+    "super": "SUPER-019",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.59
+   },
+   {
+    "sn": "SN-085",
+    "super": "SUPER-019",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.617
+   },
+   {
+    "sn": "SN-090",
+    "super": "SUPER-019",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.196
+   },
+   {
+    "sn": "SN-091",
+    "super": "SUPER-019",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.328
+   }
+  ]
+ },
+ "SUPER-020": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-020-an-honest-number-can-fall-and-says-what-it-did-not-measure.md",
+  "title": "An Honest Number Can Fall \u2014 and Says What It Did Not Measure",
+  "nutshell": "A measurement you can trust is allowed to go down, is made by someone who didn't do the work, and says plainly what it did not measure. A score that only rises, or hides its limits, is a costume.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0107-score-keeper-independent-scores-must-fall",
+   "IB-SMART-NOTE-20260930-sn0161-name-the-instrument-render-gap",
+   "IB-SMART-NOTE-20260930-sn0532-name-the-residuals",
+   "IB-SMART-NOTE-20260930-sn0121-verifier-names-its-boundary",
+   "IB-SMART-NOTE-20260930-sn0448-report-dont-silent-correct",
+   "IB-SMART-NOTE-20260930-sn089-publish-your-own-number",
+   "IB-SMART-NOTE-20260930-sn063-receipt-provenance-binding-vs-deciding",
+   "IB-SMART-NOTE-20260930-sn084-version-label-is-not-evaluation-proof",
+   "IB-SMART-NOTE-20260930-sn092-self-invalidating-tests",
+   "IB-SMART-NOTE-20260930-sn083-retain-unknown-with-named-missing-evidence",
+   "IB-SMART-NOTE-20260930-sn0510-influence-is-a-number",
+   "IB-SMART-NOTE-20261007-sn0544-presence-is-not-influence-separate-context-from-causal-proof",
+   "IB-SMART-NOTE-20261006-sn0495-toy-tasks-do-not-discriminate-measure-lessons-at-real-difficulty",
+   "IB-SMART-NOTE-20260930-sn070-retry-not-idempotency"
+  ],
+  "source_count": 14,
+  "cluster_file": "cluster-02-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-063",
+    "super": "SUPER-020",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.611
+   },
+   {
+    "sn": "SN-070",
+    "super": "SUPER-020",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.553
+   },
+   {
+    "sn": "SN-083",
+    "super": "SUPER-020",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.346
+   },
+   {
+    "sn": "SN-089",
+    "super": "SUPER-020",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.243
+   },
+   {
+    "sn": "SN-092",
+    "super": "SUPER-020",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.5
+   }
+  ]
+ },
+ "SUPER-021": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-021-evidence-must-outlive-the-moment-keep-it-safe-findable-and-u.md",
+  "title": "Evidence Must Outlive the Moment \u2014 Keep It Safe, Findable, and Untouched",
+  "nutshell": "Proof that vanishes is proof you never had. Keep the real evidence somewhere durable, exactly as it was, separate from the decisions it informs \u2014 and say exactly which run it came from.",
+  "sources": [
+   "IB-SMART-NOTE-20261007-sn0571-tmp-is-not-an-evidence-store-trial-raw-data-committed-before-results",
+   "IB-SMART-NOTE-20260930-sn0103-prove-memory-across-the-process-death-boundary",
+   "IB-SMART-NOTE-20260930-sn080-frozen-evidence-retirement",
+   "IB-SMART-NOTE-20260930-sn047-audit-receipt-segregation",
+   "IB-SMART-NOTE-20260930-sn0505-transcript-labels-not-evidence",
+   "IB-SMART-NOTE-20260930-sn181-fixed-key-claim-construction",
+   "IB-SMART-NOTE-20260930-sn0111-seal-proves-consistency-not-authorship",
+   "IB-SMART-NOTE-20260930-sn0163-continuity-note-mechanical-pr-close-reopen"
+  ],
+  "source_count": 8,
+  "cluster_file": "cluster-02-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0163",
+    "super": "SUPER-021",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.544
+   },
+   {
+    "sn": "SN-181",
+    "super": "SUPER-021",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.561
+   }
+  ]
+ },
+ "SUPER-022": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-022-merged-is-not-proven-check-the-finished-thing-again-fresh.md",
+  "title": "Merged Is Not Proven \u2014 Check the Finished Thing Again, Fresh",
+  "nutshell": "Something being accepted, combined, or announced is not the same as it being right. After anything lands, check the final thing itself, fresh, field by field \u2014 as if you'd never seen it before.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0447-merge-faithfulness-proof",
+   "IB-SMART-NOTE-20260930-sn061-post-merge-verification-at-pin",
+   "IB-SMART-NOTE-20260930-sn0542-sequential-merge-verification-real-merge-machinery",
+   "IB-SMART-NOTE-20260930-sn058-adversarial-implementation-fidelity-audit",
+   "IB-SMART-NOTE-20260930-sn0586-verify-the-instrument-not-the-receipt",
+   "IB-SMART-NOTE-20260930-sn0446-relay-verification-contract",
+   "IB-SMART-NOTE-20260930-sn028-clean-room-verification",
+   "IB-SMART-NOTE-20260930-sn034-ast-verify-cosmetic-only"
+  ],
+  "source_count": 8,
+  "cluster_file": "cluster-02-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-034",
+    "super": "SUPER-022",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.421
+   },
+   {
+    "sn": "SN-0586",
+    "super": "SUPER-022",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.641
+   },
+   {
+    "sn": "SN-061",
+    "super": "SUPER-022",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.252
+   }
+  ]
+ },
+ "SUPER-023": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-023-fix-the-real-seam-not-the-nearest-one.md",
+  "title": "Fix the Real Seam, Not the Nearest One",
+  "nutshell": "When something fails, find the exact joint where it breaks and repair that \u2014 in the real system people actually use. Fixing a look-alike copy, or guessing before you've looked, leaves the real break exactly where it was.",
+  "sources": [
+   "IB-SMART-NOTE-20261007-sn0548-heal-the-canonical-seam-not-the-reference",
+   "IB-SMART-NOTE-20260930-sn093-first-failing-handoff",
+   "IB-SMART-NOTE-20260930-sn102-import-still-red-experiment",
+   "IB-SMART-NOTE-20260930-sn0226-close-the-gap-as-stale-before-designing-the-repair",
+   "IB-SMART-NOTE-20260930-sn064-spec-outruns-kernel-forward-gaps",
+   "IB-SMART-NOTE-20260930-sn0174-comprehension-assertion-live-boundary",
+   "IB-SMART-NOTE-20260930-sn0445-db-is-agent-unobservable",
+   "IB-SMART-NOTE-20260930-sn0501-investigation-is-deliverable",
+   "IB-SMART-NOTE-20260930-sn0517-stub-merely-close-masquerades-as-product-defect",
+   "IB-SMART-NOTE-20261006-sn0449-retrieval-relevance-first-authority-second",
+   "IB-SMART-NOTE-20261006-sn0497-one-retrieval-rpc-transparent-scoring-relationships-traverse-no-authority-created",
+   "IB-SMART-NOTE-20261006-sn0516-exhaust-the-existing-instrument-before-building-a-new-one"
+  ],
+  "source_count": 12,
+  "cluster_file": "cluster-02-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0174",
+    "super": "SUPER-023",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.542
+   },
+   {
+    "sn": "SN-0445",
+    "super": "SUPER-023",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.365
+   },
+   {
+    "sn": "SN-0449",
+    "super": "SUPER-023",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.241
+   },
+   {
+    "sn": "SN-0497",
+    "super": "SUPER-023",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.367
+   },
+   {
+    "sn": "SN-0517",
+    "super": "SUPER-023",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.444
+   },
+   {
+    "sn": "SN-064",
+    "super": "SUPER-023",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.431
+   }
+  ]
+ },
+ "SUPER-024": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-024-name-the-red-before-you-fix-it.md",
+  "title": "Name the Red Before You Fix It",
+  "nutshell": "A red light tells you something failed, not whose fault it is. Before fixing anything, find out whether the failure came from your change, was already broken before you touched it, came from the building itself, or was just a machine hiccup.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0535-base-tip-push-runs-are-the-base-control",
+   "IB-SMART-NOTE-20261004-sn0237-failing-set-identity-across-heads",
+   "IB-SMART-NOTE-20261004-sn0236-one-repair-per-red-class",
+   "IB-SMART-NOTE-20261004-sn0240-pr-introduced-drift-is-correct-red",
+   "IB-SMART-NOTE-20261004-sn0320-infra-red-is-not-code-regression",
+   "IB-SMART-NOTE-20261004-sn0323-infra-noise-repetition-test",
+   "IB-SMART-NOTE-20260930-sn0578-merge-red-ci-converts-red-to-base-defect",
+   "IB-SMART-NOTE-20261007-sn0549-a-dead-runner-is-not-a-verdict",
+   "IB-SMART-NOTE-20261005-sn0374-diagnosis-integrity-retract-and-no-greenwash"
+  ],
+  "source_count": 9,
+  "cluster_file": "cluster-03-super.json"
+ },
+ "SUPER-025": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-025-the-checker-can-lie-audit-the-instrument-first.md",
+  "title": "The Checker Can Lie \u2014 Audit the Instrument First",
+  "nutshell": "Sometimes the test is what is broken, not the thing being tested. A measuring tool working in the wrong place, with too little room, or reading the wrong thing will report failures that never happened.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn097-fail-loud-attribute-first",
+   "IB-SMART-NOTE-20260930-sn0341-harness-scratch-off-tmpfs",
+   "IB-SMART-NOTE-20260930-sn0428-shallow-checkout-instrument-defect",
+   "IB-SMART-NOTE-20260930-sn0443-stale-merge-ref-fabricates-the-red",
+   "IB-SMART-NOTE-20261004-sn0246-runner-echo-is-not-runtime",
+   "IB-SMART-NOTE-20261006-sn0469-count-what-the-ledger-counts",
+   "IB-SMART-NOTE-20260930-sn0165-drift-counts-carry-counting-method",
+   "IB-SMART-NOTE-20261004-sn0294-coverage-is-part-of-conformance",
+   "IB-SMART-NOTE-20260930-sn0212-recompute-ledger-from-artifact-fail-first",
+   "IB-SMART-NOTE-20261006-sn0429-instrument-ci-uses"
+  ],
+  "source_count": 10,
+  "cluster_file": "cluster-03-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0246",
+    "super": "SUPER-025",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.643
+   },
+   {
+    "sn": "SN-097",
+    "super": "SUPER-025",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.22
+   }
+  ]
+ },
+ "SUPER-026": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-026-green-only-counts-on-the-exact-bytes.md",
+  "title": "Green Only Counts on the Exact Bytes",
+  "nutshell": "A passing test only proves something about the exact version it ran on, in the exact place it ran. Change one line, move to a different computer, or test yesterday's version \u2014 and the green proves nothing.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn178-exact-bytes-ci-qualification",
+   "IB-SMART-NOTE-20261003-sn0233-phantom-green-verify-on-virgin-state",
+   "IB-SMART-NOTE-20260930-sn087-proof-environments-reset-not-reused",
+   "IB-SMART-NOTE-20260930-sn050-verify-pushed-bytes",
+   "IB-SMART-NOTE-20260930-sn0423-mergeable-is-not-fresh",
+   "IB-SMART-NOTE-20261005-sn0419-stale-head-green-is-not-merge-evidence",
+   "IB-SMART-NOTE-20261006-sn0430-kernel-green-not-tip-green",
+   "IB-SMART-NOTE-20261005-sn0421-run-level-success-with-skipped-jobs-is-vacuous-proof",
+   "IB-SMART-NOTE-20260930-sn0128-merge-base-drift-repair-at-tip",
+   "IB-SMART-NOTE-20260930-sn0574-deploy-authorization-sha-bound",
+   "IB-SMART-NOTE-20260930-sn0525-the-second-instrument-finds-what-the-first-misses",
+   "IB-SMART-NOTE-20260930-sn094-cross-platform-locale",
+   "IB-SMART-NOTE-20260930-sn098-investigate-before-dismiss",
+   "IB-SMART-NOTE-20260930-sn100-bulk-sweep-verdict-sha-binding"
+  ],
+  "source_count": 14,
+  "cluster_file": "cluster-03-super.json"
+ },
+ "SUPER-027": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-027-the-index-and-the-ledger-are-part-of-the-change.md",
+  "title": "The Index and the Ledger Are Part of the Change",
+  "nutshell": "When you add something to a collection, the catalogue and the count must change with it \u2014 in the same step, on purpose. If the list and the things drift apart, every check built on the list starts crying out.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn062-count-ledger-is-part-of-the-change",
+   "IB-SMART-NOTE-20260930-sn078-merge-checklist-regen-and-count-bump",
+   "IB-SMART-NOTE-20260930-sn0213-index-regen-landing-step",
+   "IB-SMART-NOTE-20260930-sn0557-projector-commit-drift-third-class",
+   "IB-SMART-NOTE-20260930-sn038-regeneration-encodes-intent",
+   "IB-SMART-NOTE-20260930-sn0327-never-regen-the-brain-index-on-a-dirty-worktree",
+   "IB-SMART-NOTE-20261005-sn0395-regen-reads-the-commit",
+   "IB-SMART-NOTE-20260930-sn0508-stand-down-the-unpushed-repair",
+   "IB-SMART-NOTE-20261005-sn0420-never-absorb-the-anomaly-to-silence-the-tripwire",
+   "IB-SMART-NOTE-20261004-sn0285-the-ratchet-block-new-drift-without-reddening-main"
+  ],
+  "source_count": 10,
+  "cluster_file": "cluster-03-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0395",
+    "super": "SUPER-027",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.321
+   }
+  ]
+ },
+ "SUPER-028": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-028-a-guard-firing-is-a-signal-not-a-verdict.md",
+  "title": "A Guard Firing Is a Signal, Not a Verdict",
+  "nutshell": "An alarm doing its job is not itself a problem. When a guard blocks something, it has detected \u2014 a person still has to judge what it means, and the fix must never be to weaken the guard.",
+  "sources": [
+   "IB-SMART-NOTE-20261005-sn0413-fail-closed-gate-is-guardrail-working",
+   "IB-SMART-NOTE-20261007-sn0570-test-defect-vs-product-defect-classification",
+   "IB-SMART-NOTE-20261003-sn0232-test-that-pins-the-bug-is-the-defect",
+   "IB-SMART-NOTE-20261005-sn0359-repin-test-to-new-invariant",
+   "IB-SMART-NOTE-20261005-sn0377-guards-detect-anomalies-humans-classify-them",
+   "IB-SMART-NOTE-20261005-sn0375-first-contact-proves-the-guard",
+   "IB-SMART-NOTE-20261007-sn0537-tripwire-firing-every-window-is-an-unhealed-seam",
+   "IB-SMART-NOTE-20260930-sn049-guard-that-cries-wolf"
+  ],
+  "source_count": 8,
+  "cluster_file": "cluster-03-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0359",
+    "super": "SUPER-028",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.281
+   },
+   {
+    "sn": "SN-0377",
+    "super": "SUPER-028",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.473
+   }
+  ]
+ },
+ "SUPER-029": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-029-reproduce-first-then-fix-the-whole-family.md",
+  "title": "Reproduce First \u2014 Then Fix the Whole Family",
+  "nutshell": "Do not fix what you have not seen fail, and do not fix only the one spot that failed. See the failure with your own eyes, prove what causes it, then repair every place that shares the same weakness.",
+  "sources": [
+   "IB-SMART-NOTE-20261004-sn0245-reproduce-before-repair",
+   "IB-SMART-NOTE-20261004-sn0247-causal-experiment-must-test-hypothesis",
+   "IB-SMART-NOTE-20261004-sn0333-check-the-class-list-before-the-timer-theory",
+   "IB-SMART-NOTE-20261005-sn0389-half-fixed-contract-repair-whole-contract",
+   "IB-SMART-NOTE-20261005-sn0390-sibling-gap-family-closure",
+   "IB-SMART-NOTE-20261005-sn0387-harden-every-sibling-path",
+   "IB-SMART-NOTE-20261005-sn0385-verify-or-kill-poisoned-well-hypothesis",
+   "IB-SMART-NOTE-20261004-sn0332-pin-the-working-environment-as-control",
+   "IB-SMART-NOTE-20260930-sn0329-reproduce-in-the-target-environment-before-you-patch-the-demo",
+   "IB-SMART-NOTE-20260930-sn0427-holdout-lift-seam-first-execution-surfaces-hidden-debt"
+  ],
+  "source_count": 10,
+  "cluster_file": "cluster-03-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0385",
+    "super": "SUPER-029",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.376
+   }
+  ]
+ },
+ "SUPER-030": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-030-quiet-states-lie-by-omission.md",
+  "title": "Quiet States Lie by Omission",
+  "nutshell": "The most dangerous failures make no noise. A step that was skipped, a job that never ran, a file that is just an empty shell \u2014 nothing turns red, yet nothing actually happened.",
+  "sources": [
+   "IB-SMART-NOTE-20261005-sn0379-skipped-is-not-failed-wait-step-verdicts",
+   "IB-SMART-NOTE-20261005-sn0418-skipped-producer-poisons-artifact-chain",
+   "IB-SMART-NOTE-20260930-sn048-api-push-actions-silence",
+   "IB-SMART-NOTE-20260930-sn074-api-push-trigger-event-scoping",
+   "IB-SMART-NOTE-20260930-sn051-local-verification-as-gate",
+   "IB-SMART-NOTE-20260930-sn044-red-run-triage",
+   "IB-SMART-NOTE-20260930-sn0105-skip-with-reason-is-not-a-defect-blanket",
+   "IB-SMART-NOTE-20261004-sn0278-path-presence-not-content",
+   "IB-SMART-NOTE-20260930-sn0552-fail-first-topology-conceals-secondary-reds"
+  ],
+  "source_count": 9,
+  "cluster_file": "cluster-03-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0379",
+    "super": "SUPER-030",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.33
+   },
+   {
+    "sn": "SN-074",
+    "super": "SUPER-030",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.386
+   }
+  ]
+ },
+ "SUPER-031": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-031-merged-deployed-and-proven-are-three-different-facts.md",
+  "title": "Merged, Deployed, and Proven Are Three Different Facts",
+  "nutshell": "Code landing, code going live, and code proven working are three separate events. Treating any one of them as the others is how stale or unproven work gets called 'done.'",
+  "sources": [
+   "IB-SMART-NOTE-20261006-sn0489-merged-is-not-closed",
+   "IB-SMART-NOTE-20261003-sn0235-deployment-parity-is-a-failure-class",
+   "IB-SMART-NOTE-20261005-sn0396-merge-promote-prove-cycle",
+   "IB-SMART-NOTE-20261005-sn0439-http-400-is-a-deterministic-rejection",
+   "IB-SMART-NOTE-20261006-sn0485-mechanism-flips-prescription-sn0439-400-corrected",
+   "IB-SMART-NOTE-20260930-sn0411-replay-conflict-not-nonpersistence",
+   "IB-SMART-NOTE-20261005-sn0405-hot-main-proof-race-pin-sha"
+  ],
+  "source_count": 7,
+  "cluster_file": "cluster-03-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0411",
+    "super": "SUPER-031",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.29
+   },
+   {
+    "sn": "SN-0485",
+    "super": "SUPER-031",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.333
+   }
+  ]
+ },
+ "SUPER-032": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-032-learn-beauty-from-the-masters-and-hide-the-hard-work-inside.md",
+  "title": "Learn Beauty from the Masters, and Hide the Hard Work Inside",
+  "nutshell": "The best design comes from studying the best work ever made, then testing one small piece at a time with a real person. All the hard thinking happens inside the machine, so what a person sees feels simple, alive, and easy.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0182-design-intelligence-corpus",
+   "IB-SMART-NOTE-20260930-sn0179-design-canon-adoption",
+   "IB-SMART-NOTE-20260930-sn0193-rules-dont-transfer-taste-loops-do",
+   "IB-SMART-NOTE-20261004-sn0241-the-rich-standard",
+   "IB-SMART-NOTE-20261003-sn0230-design-contract-v11-color-language-amendment",
+   "IB-SMART-NOTE-20260930-sn010-internal-rigor-external-simplicity",
+   "IB-SMART-NOTE-20260930-sn0152-alive-is-measurable-alive-gate",
+   "IB-SMART-NOTE-20261004-sn0321-primary-action-never-below-the-fold"
+  ],
+  "source_count": 8,
+  "cluster_file": "cluster-04-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0230",
+    "super": "SUPER-032",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.581
+   }
+  ]
+ },
+ "SUPER-033": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-033-one-true-version-of-everything-copied-exactly.md",
+  "title": "One True Version of Everything, Copied Exactly",
+  "nutshell": "Every important thing gets exactly one official home and one official shape. You copy that version word for word \u2014 you never rebuild it from memory, stretch it quietly, or let a copy pretend to be the original.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0114-proposed-is-not-canonical-until-ruled",
+   "IB-SMART-NOTE-20260930-sn018-canonical-spec-placement",
+   "IB-SMART-NOTE-20260930-sn0190-template-artifacts-not-canon",
+   "IB-SMART-NOTE-20260930-sn0141-frozen-foundation-thaw-procedure",
+   "IB-SMART-NOTE-20260930-sn0195-recorded-verdict-is-not-contract-change",
+   "IB-SMART-NOTE-20260930-sn0228-the-deploy-zip-settles-naming-disputes",
+   "IB-SMART-NOTE-20260930-sn0433-canonical-brain-index-real-tree",
+   "IB-SMART-NOTE-20261005-sn0422-one-canonical-truth-owner-remove-the-second-brain",
+   "IB-SMART-NOTE-20261004-sn0244-one-format-one-spot",
+   "IB-SMART-NOTE-20261004-sn0249-specimen-must-pass-its-own-gate",
+   "IB-SMART-NOTE-20261004-sn0248-author-once-derive-the-rest",
+   "IB-SMART-NOTE-20260930-sn0119-lift-frozen-concept-verbatim",
+   "IB-SMART-NOTE-20260930-sn0122-reread-spec-when-numbers-diverge",
+   "IB-SMART-NOTE-20260930-sn0205-quote-sample-verbatim-then-namespace-it"
+  ],
+  "source_count": 14,
+  "cluster_file": "cluster-04-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0114",
+    "super": "SUPER-033",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.494
+   },
+   {
+    "sn": "SN-0141",
+    "super": "SUPER-033",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.25
+   },
+   {
+    "sn": "SN-0205",
+    "super": "SUPER-033",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.465
+   },
+   {
+    "sn": "SN-0244",
+    "super": "SUPER-033",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.309
+   },
+   {
+    "sn": "SN-0422",
+    "super": "SUPER-033",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.319
+   },
+   {
+    "sn": "SN-0433",
+    "super": "SUPER-033",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.426
+   }
+  ]
+ },
+ "SUPER-034": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-034-if-you-can-t-prove-it-say-so-plainly.md",
+  "title": "If You Can't Prove It, Say So Plainly",
+  "nutshell": "A claim is only as good as its proof. A number the maker made up, work nobody else can see, or a check that never looked everywhere \u2014 none of that counts. Honest words are: proven, or not proven yet.",
+  "sources": [
+   "IB-SMART-NOTE-20261004-sn0302-producer-computed-string-is-not-evidence",
+   "IB-SMART-NOTE-20261004-sn0292-verifier-without-negative-control",
+   "IB-SMART-NOTE-20261004-sn0286-restore-verifiable-mark-unverifiable",
+   "IB-SMART-NOTE-20261004-sn0272-building-fresh-not-on-a-false-memory",
+   "IB-SMART-NOTE-20261004-sn0316-local-until-pushed",
+   "IB-SMART-NOTE-20261004-sn0234-implemented-not-proven-proof-packet-at-protected-boundary",
+   "IB-SMART-NOTE-20261005-sn0376-gate-must-declare-coverage-before-verdict",
+   "IB-SMART-NOTE-20261004-sn0281-proof-gating-no-if-always",
+   "IB-SMART-NOTE-20261005-sn0417-registry-runtime-content-drift",
+   "IB-SMART-NOTE-20260930-sn0551-ownership-move-diff-fuzz-seam-proof"
+  ],
+  "source_count": 10,
+  "cluster_file": "cluster-04-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0272",
+    "super": "SUPER-034",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.538
+   },
+   {
+    "sn": "SN-0281",
+    "super": "SUPER-034",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.44
+   },
+   {
+    "sn": "SN-0417",
+    "super": "SUPER-034",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.433
+   },
+   {
+    "sn": "SN-0551",
+    "super": "SUPER-034",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.562
+   }
+  ]
+ },
+ "SUPER-035": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-035-small-pieces-that-meet-at-clear-honest-seams.md",
+  "title": "Small Pieces That Meet at Clear, Honest Seams",
+  "nutshell": "Build many small pieces instead of one giant lump \u2014 but the pieces only work if everyone agrees exactly how they plug together, checks the real plug, and changes shared rules together, all at once.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0218-mount-contract",
+   "IB-SMART-NOTE-20260930-sn0214-hub-room-mounting-contract",
+   "IB-SMART-NOTE-20260930-sn0142-modules-not-apps",
+   "IB-SMART-NOTE-20260930-sn0220-gather-around-entry-contract",
+   "IB-SMART-NOTE-20260930-sn095-compose-at-the-consumer",
+   "IB-SMART-NOTE-20260930-sn096-composition-root-owns-bridge",
+   "IB-SMART-NOTE-20260930-sn069-bindings-at-the-observing-layer",
+   "IB-SMART-NOTE-20260930-sn101-platform-identity-semantics",
+   "IB-SMART-NOTE-20261005-sn0416-kernel-contract-seam",
+   "IB-SMART-NOTE-20261005-sn0335-serialize-registry-writes-flock-atomic-commit",
+   "IB-SMART-NOTE-20261004-sn0256-placement-is-architecture-never-invent-locations",
+   "IB-SMART-NOTE-20261004-sn0284-convention-coherence"
+  ],
+  "source_count": 12,
+  "cluster_file": "cluster-04-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0214",
+    "super": "SUPER-035",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.452
+   },
+   {
+    "sn": "SN-0220",
+    "super": "SUPER-035",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.7
+   },
+   {
+    "sn": "SN-095",
+    "super": "SUPER-035",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.376
+   },
+   {
+    "sn": "SN-096",
+    "super": "SUPER-035",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.327
+   },
+   {
+    "sn": "SN-101",
+    "super": "SUPER-035",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.694
+   }
+  ]
+ },
+ "SUPER-036": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-036-when-you-don-t-know-stop-safely-never-guess-open.md",
+  "title": "When You Don't Know, Stop Safely \u2014 Never Guess Open",
+  "nutshell": "A safe system treats 'unknown' as a stop sign, not a gap to jump. If the input is strange, the source is missing, or a label could have been faked, the door stays closed and a human hears about it.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn037-kernel-receive-path-fail-visible",
+   "IB-SMART-NOTE-20260930-sn0572-persona-loader-fail-closed-semantics",
+   "IB-SMART-NOTE-20260930-sn0225-a-string-keyed-classifier-is-gamable",
+   "IB-SMART-NOTE-20261003-sn0231-repair-by-predeclared-closed-registry",
+   "IB-SMART-NOTE-20260930-sn0556-selection-replay-at-pinned-selection-now"
+  ],
+  "source_count": 5,
+  "cluster_file": "cluster-04-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0572",
+    "super": "SUPER-036",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.322
+   }
+  ]
+ },
+ "SUPER-037": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-037-the-screen-shows-the-truth-it-never-pretends.md",
+  "title": "The Screen Shows the Truth \u2014 It Never Pretends",
+  "nutshell": "The screen is a window, not a storyteller. It may make truth beautiful, but it must never invent a thought, a sound, or a button that does nothing. If something isn't real yet, the screen says so.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0124-hub-is-the-output-law",
+   "IB-SMART-NOTE-20260930-sn0147-visual-first-class-lock-artifact",
+   "IB-SMART-NOTE-20261004-sn0319-never-fabricate-cognition",
+   "IB-SMART-NOTE-20261004-sn0331-enhancement-not-a-gate",
+   "IB-SMART-NOTE-20260930-sn0110-one-intelligence-three-projections",
+   "IB-SMART-NOTE-20260930-sn0203-manufactured-action-cut-never-dressed",
+   "IB-SMART-NOTE-20260930-sn0450-tap-feedback-repair-form",
+   "IB-SMART-NOTE-20261004-sn0276-naya-play-pattern-law",
+   "IB-SMART-NOTE-20261004-sn0274-replace-the-renderer-not-the-button",
+   "IB-SMART-NOTE-20261004-sn0287-click-test-feedback-path"
+  ],
+  "source_count": 10,
+  "cluster_file": "cluster-04-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0276",
+    "super": "SUPER-037",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.404
+   },
+   {
+    "sn": "SN-0450",
+    "super": "SUPER-037",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.583
+   }
+  ]
+ },
+ "SUPER-038": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-038-look-at-the-whole-system-before-blaming-a-person.md",
+  "title": "Look at the Whole System Before Blaming a Person",
+  "nutshell": "When something fails twice, suspect the setup, not the person. Name the real choice hiding under a stuck argument, fix the conditions that keep producing the failure, and let a bounded, honest attacker test the result.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0207-name-false-choice-integrated-model",
+   "IB-SMART-NOTE-20261004-sn0260-check-the-system-not-just-the-seat",
+   "IB-SMART-NOTE-20261004-sn0298-bounded-red-team-assignment-model",
+   "IB-SMART-NOTE-20260930-sn0130-recurring-class-lane-ruling",
+   "IB-SMART-NOTE-20261005-sn0346-environment-failures-must-never-wear-product-clothing"
+  ],
+  "source_count": 5,
+  "cluster_file": "cluster-04-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0130",
+    "super": "SUPER-038",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.611
+   },
+   {
+    "sn": "SN-0346",
+    "super": "SUPER-038",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.387
+   }
+  ]
+ },
+ "SUPER-039": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-039-design-truth-before-build-measure-first-draw-the-plan-lock-i.md",
+  "title": "Design Truth Before Build \u2014 Measure First, Draw the Plan, Lock It, Then Build",
+  "nutshell": "Never build from a vague idea. First measure what already exists, then draw the full plan \u2014 what goes where, why, and what proves it done \u2014 get it checked and locked, and only then build. Improvising is the defect; the drawing is the cure.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0140-blueprint-before-build",
+   "IB-SMART-NOTE-20261004-sn0318-design-truth-then-working-demo",
+   "IB-SMART-NOTE-20261004-sn0304-measure-before-design-pin-base-classify-surface"
+  ],
+  "source_count": 3,
+  "cluster_file": "cluster-05-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0304",
+    "super": "SUPER-039",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.419
+   }
+  ]
+ },
+ "SUPER-040": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-040-the-math-decides-act-without-waiting-and-aim-for-wise.md",
+  "title": "The Math Decides \u2014 Act Without Waiting, and Aim for Wise",
+  "nutshell": "When the math already picks the best move, act \u2014 don't ask, don't wait. Weigh help, harm, reversibility, and authority first; only true gates go up for a human decision. And aim past being right: the wisest choice is the one that's right for everybody.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn013-decision-efficiency",
+   "IB-SMART-NOTE-20261007-sn0540-authority-is-the-math-not-Shawn",
+   "IB-SMART-NOTE-20260930-sn055-kill-the-infeasible-winner",
+   "IB-SMART-NOTE-20261008-sn0626-no-waiting-doctrine",
+   "IB-SMART-NOTE-20260930-sn0326-delegation-timeout-direct-execution",
+   "IB-SMART-NOTE-20260930-sn0210-redirect-held-seat-to-verification-gate",
+   "IB-SMART-NOTE-20261008-sn0638-wisdom-over-smartness"
+  ],
+  "source_count": 7,
+  "cluster_file": "cluster-05-super.json"
+ },
+ "SUPER-041": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-041-one-change-one-owner-scan-before-you-touch.md",
+  "title": "One Change, One Owner \u2014 Scan Before You Touch",
+  "nutshell": "Many hands share one workspace, so check before you act: scan for work already in flight, take only free numbers, know where your tools land, and build on the live head \u2014 never a frozen pin. One change, one owner, no collisions.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0177-repair-the-loops-instructions",
+   "IB-SMART-NOTE-20260930-sn0108-one-change-one-pr-duplicate-ownership-collision",
+   "IB-SMART-NOTE-20260930-sn0194-loop-checks-the-board-before-it-executes",
+   "IB-SMART-NOTE-20260930-sn022-collision-registry-protocol",
+   "IB-SMART-NOTE-20260930-sn024-live-scan-registry",
+   "IB-SMART-NOTE-20260930-sn0186-shared-staging-branch-ownership",
+   "IB-SMART-NOTE-20260930-sn0202-occupied-branch-reanchor-before-building",
+   "IB-SMART-NOTE-20260930-sn0204-takeover-sign-in-base-deltas-freeze",
+   "IB-SMART-NOTE-20260930-sn054-relay-race-consolidation-protocol"
+  ],
+  "source_count": 9,
+  "cluster_file": "cluster-05-super.json"
+ },
+ "SUPER-042": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-042-talk-directly-correct-openly.md",
+  "title": "Talk Directly, Correct Openly",
+  "nutshell": "Teammates talk to each other directly, not through a relay. And when evidence changes the answer, the correction is public: name what was wrong, withdraw it out loud, fix every copy, and credit whoever was right. The reversal is the receipt.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn019-direct-lane-protocol",
+   "IB-SMART-NOTE-20260930-sn0164-correct-attribution-and-artifacts",
+   "IB-SMART-NOTE-20260930-sn0160-reversal-is-the-receipt",
+   "IB-SMART-NOTE-20260930-sn056-evidence-beats-scoring-reversal",
+   "IB-SMART-NOTE-20260930-sn042-explicit-supersession",
+   "IB-SMART-NOTE-20260930-sn057-race-window-temporal-attribution",
+   "IB-SMART-NOTE-20260930-sn0222-relay-flags-owner-diagnoses",
+   "IB-SMART-NOTE-20260930-sn0227-a-sync-verdict-reads-both-sides",
+   "IB-SMART-NOTE-20260930-sn0120-blind-axis-peer-review"
+  ],
+  "source_count": 9,
+  "cluster_file": "cluster-05-super.json"
+ },
+ "SUPER-043": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-043-read-the-signal-not-the-label.md",
+  "title": "Read the Signal, Not the Label",
+  "nutshell": "A status word is not the truth. A 'failure' may be one harmless step; a skip may be a gate doing its job; a gate refusing is the design working. Read the steps and the cause \u2014 and when evidence contradicts itself, stop.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0442-a-skip-is-neither-proof-nor-failure",
+   "IB-SMART-NOTE-20261008-sn0629-promotion-run-failure-not-the-verdict",
+   "IB-SMART-NOTE-20261005-sn0438-fail-closed-is-the-design-working",
+   "IB-SMART-NOTE-20261005-sn0392-first-red-is-the-only-red",
+   "IB-SMART-NOTE-20261005-sn0386-cloudflare-fanout-red-contract-first",
+   "IB-SMART-NOTE-20261005-sn0353-call-the-pause-not-another-sha"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-05-super.json"
+ },
+ "SUPER-044": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-044-proof-lives-on-the-exact-bytes.md",
+  "title": "Proof Lives on the Exact Bytes",
+  "nutshell": "Evidence belongs to the exact thing measured. A version number copied into a document goes stale the moment things move; a live page may serve an old build; a deploy stamp proves placement, not behavior. Measure the real bytes, at the real moment.",
+  "sources": [
+   "IB-SMART-NOTE-20261005-sn0440-one-exact-tip-battery-is-enough",
+   "IB-SMART-NOTE-20261005-sn0402-merge-self-invalidates-hardcoded-sha",
+   "IB-SMART-NOTE-20261005-sn0388-prove-deployed-currency-from-served-bytes",
+   "IB-SMART-NOTE-20261005-sn0350-deploy-stamp-not-behavioral-evidence",
+   "IB-SMART-NOTE-20261005-sn0401-projections-must-never-write-source",
+   "IB-SMART-NOTE-20261006-sn0457-top-signal-identity-resolution"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-05-super.json"
+ },
+ "SUPER-045": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-045-rules-become-machinery-receipts-logs-and-done-means-done.md",
+  "title": "Rules Become Machinery \u2014 Receipts, Logs, and Done Means Done",
+  "nutshell": "A rule nobody is scheduled to keep is just a wish. So obligations get mechanisms: receipts are swept for automatically, value is logged every day, work lists are finite and declared finished, and the whole protocol is written as machinery that can prove it was followed.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0463-receipt-owed-is-receipt-scheduled",
+   "IB-SMART-NOTE-20260930-sn0577-unlogged-value-breaks-proof-chain",
+   "IB-SMART-NOTE-20260930-sn045-lost-delivery-recovery",
+   "IB-SMART-NOTE-20260930-sn032-loop-exhaustion-discipline",
+   "IB-SMART-NOTE-20261008-sn0632-team-naya-operating-protocol",
+   "IB-SMART-NOTE-20261008-sn0634-protocol-three-tongues-machine-law"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-05-super.json"
+ },
+ "SUPER-046": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-046-intelligence-is-earned-by-experience-not-installed.md",
+  "title": "Intelligence Is Earned by Experience, Not Installed",
+  "nutshell": "The brain you start with doesn't change \u2014 but you get smarter every time a real experience is checked, kept, and reused. Everything teaches; only what is captured and proven compounds into lasting intelligence.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn006-earned-intelligence",
+   "IB-SMART-NOTE-20260930-sn014-compounding-imperative"
+  ],
+  "source_count": 2,
+  "cluster_file": "cluster-06-super.json"
+ },
+ "SUPER-047": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-047-one-trusted-home-for-what-we-know-carried-forward-not-just-s.md",
+  "title": "One Trusted Home for What We Know \u2014 Carried Forward, Not Just Stored",
+  "nutshell": "Memory is a photo album; continuity is a relay baton. What we know lives in one trusted home, and each new runner picks up the mission, the limits, what's proven, and the next step \u2014 and keeps running.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn007-continuity-of-intelligence",
+   "IB-SMART-NOTE-20260930-sn0476-canonical-persistence-github-correction"
+  ],
+  "source_count": 2,
+  "cluster_file": "cluster-06-super.json"
+ },
+ "SUPER-048": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-048-a-lesson-isn-t-learned-until-it-changes-behavior.md",
+  "title": "A Lesson Isn't Learned Until It Changes Behavior",
+  "nutshell": "Writing a lesson down is the first rung, not the finish. Stored, cited, or stamped 'learned' means nothing until the lesson quietly changes an ordinary decision \u2014 and each level of learning is proven by its own evidence.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn015-active-intelligence-rule",
+   "IB-SMART-NOTE-20260930-sn0526-smart-note-activation-ladder",
+   "IB-SMART-NOTE-20260930-sn0550-normal-path-bridge",
+   "IB-SMART-NOTE-20260930-sn0513-note-first-enforce-next",
+   "IB-SMART-NOTE-20261005-sn0436-cited-is-not-compounded",
+   "IB-SMART-NOTE-20261007-sn0546-learned-is-not-mastered-governed-transition-per-level",
+   "IB-SMART-NOTE-20260930-sn071-learn-dimension-separation"
+  ],
+  "source_count": 7,
+  "cluster_file": "cluster-06-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0526",
+    "super": "SUPER-048",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.432
+   }
+  ]
+ },
+ "SUPER-049": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-049-learning-is-proven-only-when-it-transfers-and-the-test-must.md",
+  "title": "Learning Is Proven Only When It Transfers \u2014 and the Test Must Be Able to Fail",
+  "nutshell": "A lesson is proven when a fresh mind, never told the answer, uses it in a new place and does better. Honest tests make that possible \u2014 and make failure possible too, because a test that can't fail proves nothing.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0192-intelligence-proves-when-it-transfers",
+   "IB-SMART-NOTE-20261005-sn0348-canary-turned-over",
+   "IB-SMART-NOTE-20261006-sn0452-compounding-trials-need-teeth",
+   "IB-SMART-NOTE-20261006-sn0474-no-target-rule-cues-in-transfer-prompts",
+   "IB-SMART-NOTE-20261007-sn0582-trial-09-10-invalid-modes",
+   "IB-SMART-NOTE-20261007-sn0583-first-valid-transfer-tier-s",
+   "IB-SMART-NOTE-20261007-sn0585-trial-program-complete-tiers",
+   "IB-SMART-NOTE-20261008-sn0628-first-promotions-active"
+  ],
+  "source_count": 8,
+  "cluster_file": "cluster-06-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0348",
+    "super": "SUPER-049",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.208
+   },
+   {
+    "sn": "SN-0452",
+    "super": "SUPER-049",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.478
+   },
+   {
+    "sn": "SN-0582",
+    "super": "SUPER-049",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.571
+   },
+   {
+    "sn": "SN-0583",
+    "super": "SUPER-049",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.329
+   },
+   {
+    "sn": "SN-0585",
+    "super": "SUPER-049",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.509
+   },
+   {
+    "sn": "SN-0628",
+    "super": "SUPER-049",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.319
+   }
+  ]
+ },
+ "SUPER-050": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-050-check-the-evidence-before-you-blame-fix-or-accuse.md",
+  "title": "Check the Evidence Before You Blame, Fix, or Accuse",
+  "nutshell": "Most 'failures' are misreadings. Before blaming the change, the gate, the key, or a teammate, look at the actual evidence \u2014 the input, the clean-room rerun, the history. And when you're wrong, say so plainly and fix the record.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn020-asserted-not-verified",
+   "IB-SMART-NOTE-20260930-sn031-classify-before-code",
+   "IB-SMART-NOTE-20260930-sn059-clean-main-failure-control",
+   "IB-SMART-NOTE-20260930-sn561-read-input-bytes-before-debugging-the-gate",
+   "IB-SMART-NOTE-20260930-sn0498-credential-layer-diagnostic",
+   "IB-SMART-NOTE-20260930-sn0499-dead-url-not-lost-content",
+   "IB-SMART-NOTE-20260930-sn0534-re-anchor-tip-claims-into-forward-history",
+   "IB-SMART-NOTE-20261006-sn0515-shared-evidence-convergence-is-agreement-not-corroboration",
+   "IB-SMART-NOTE-20260930-sn0527-naming-collision-diligence"
+  ],
+  "source_count": 9,
+  "cluster_file": "cluster-06-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0498",
+    "super": "SUPER-050",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.584
+   }
+  ]
+ },
+ "SUPER-051": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-051-keep-the-record-complete-and-honest-never-fake-or-game-the-p.md",
+  "title": "Keep the Record Complete and Honest \u2014 Never Fake or Game the Proof",
+  "nutshell": "Saved is not filed, and filed is not proven. Every lesson must be registered when it arrives and confirmed by a receipt \u2014 and when the record has a gap, repair it honestly. Never invent the missing piece or bend the check to go green.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0432-direct-to-main-registry-orphan-repair",
+   "IB-SMART-NOTE-20260930-sn0588-saved-is-not-captured-receipt-completes-the-chain",
+   "IB-SMART-NOTE-20261006-sn0431-register-at-ingest-time",
+   "IB-SMART-NOTE-20261005-sn0349-registry-is-not-the-whole-doctrine",
+   "IB-SMART-NOTE-20261005-sn0391-fallback-must-carry-contract-semantics",
+   "IB-SMART-NOTE-20260930-sn0382-membership-subset-ratchets-not-count-only"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-06-super.json"
+ },
+ "SUPER-052": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-052-smart-note-this-how-a-passing-moment-becomes-lasting-intelli.md",
+  "title": "\"Smart Note This\" \u2014 How a Passing Moment Becomes Lasting Intelligence",
+  "nutshell": "When something matters, you say \"Smart Note this\" \u2014 and the system keeps the meaning, not the whole conversation. It files it, connects it, checks it, and hands you back one simple link, so you and every future helper can find it and trust it again.",
+  "sources": [
+   "IB-SMART-NOTE-20260929-sn002-smart-note-node-flow",
+   "IB-SMART-NOTE-20260929-b8f141805fa0d7ae",
+   "IB-SMART-NOTE-20260930-sn011-intelligence-classes",
+   "IB-SMART-NOTE-20261004-sn0254-smart-link-canonical-definition",
+   "IB-SMART-NOTE-20261004-sn0255-smart-link-return-path-hole",
+   "IB-SMART-NOTE-20261004-sn0258-deliverable-is-note-plus-link-not-pr-number",
+   "IB-SMART-NOTE-20261007-sn0584-sla-receipt-audit-closes-capture-loop"
+  ],
+  "source_count": 7,
+  "cluster_file": "cluster-07-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-002",
+    "super": "SUPER-052",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.613
+   },
+   {
+    "sn": "SN-0258",
+    "super": "SUPER-052",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.491
+   },
+   {
+    "sn": "SN-0584",
+    "super": "SUPER-052",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.411
+   }
+  ]
+ },
+ "SUPER-053": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-053-think-first-then-act-do-the-most-intelligent-thing-now.md",
+  "title": "Think First, Then Act \u2014 Do the Most Intelligent Thing, Now",
+  "nutshell": "In every moment, ask: what is the most intelligent thing I could do? Think it through fully, weigh the options, pick the winner \u2014 then do it now. Don't wait to be asked, and don't ask someone else to decide what the thinking already settled.",
+  "sources": [
+   "IB-SMART-NOTE-20261006-sn0479-the-mantra",
+   "IB-SMART-NOTE-20261006-sn0500-think-before-you-act",
+   "IB-SMART-NOTE-20260929-sn004-shawn-standing-law-r2",
+   "IB-SMART-NOTE-20261004-sn0282-do-it-now-doctrine",
+   "IB-SMART-NOTE-20261006-sn0483-recommend-dont-ask",
+   "IB-SMART-NOTE-20260930-sn0541-standing-promotion-law"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-07-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0541",
+    "super": "SUPER-053",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.527
+   }
+  ]
+ },
+ "SUPER-054": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-054-excellence-is-the-standard-score-it-prove-it-ship-nothing-le.md",
+  "title": "Excellence Is the Standard \u2014 Score It, Prove It, Ship Nothing Less",
+  "nutshell": "Beautiful is not the same as excellent. No matter how good the work looks, you still score it, hunt for its holes, and fix them. Average output is a serious problem, not a small one \u2014 the aim is the very best, every single time.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0270-beautiful-not-equal-10-10",
+   "IB-SMART-NOTE-20261004-sn0288-triple-a-excellence-doctrine",
+   "IB-SMART-NOTE-20261006-sn0481-the-awesomeness-law",
+   "IB-SMART-NOTE-20261004-sn0253-prove-that-she-works-north-star",
+   "IB-SMART-NOTE-20260930-sn0524-rehearse-the-pipeline-synthetically",
+   "IB-SMART-NOTE-20261006-sn0482-w3-instrumentation"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-07-super.json"
+ },
+ "SUPER-055": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-055-a-law-only-counts-if-the-system-enforces-it.md",
+  "title": "A Law Only Counts If the System Enforces It",
+  "nutshell": "A rule written on paper but not built into the machine is just a suggestion. Real law lives in the system itself: it cannot be skipped, walked around, or quietly weakened \u2014 and when the machine says no, it's usually protecting you.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0269-law-as-code-enforced-operating-law",
+   "IB-SMART-NOTE-20261006-sn0454-spec-without-consumer-is-doc-only-law",
+   "IB-SMART-NOTE-20261005-sn0631-guard-off-write-path-is-suggestion",
+   "IB-SMART-NOTE-20261005-sn0338-registry-is-the-law",
+   "IB-SMART-NOTE-20261006-sn0477-production-deploy-two-saves"
+  ],
+  "source_count": 5,
+  "cluster_file": "cluster-07-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0269",
+    "super": "SUPER-055",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.271
+   },
+   {
+    "sn": "SN-0338",
+    "super": "SUPER-055",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.242
+   },
+   {
+    "sn": "SN-0631",
+    "super": "SUPER-055",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.222
+   }
+  ]
+ },
+ "SUPER-056": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-056-the-list-is-a-claim-not-proof-check-identity-in-both-directi.md",
+  "title": "The List Is a Claim, Not Proof \u2014 Check Identity in Both Directions",
+  "nutshell": "A tidy list can still be lying. Entries can point at things that don't exist, real things can be missing from the list, and two things can share one name. Check both ways, check the names as well as the contents, and trust the timestamps.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0271-registry-is-claim-not-evidence",
+   "IB-SMART-NOTE-20260930-sn033-first-claim-registry-and-index-stamp",
+   "IB-SMART-NOTE-20261005-sn0381-audit-identity-not-just-content-hash",
+   "IB-SMART-NOTE-20261005-sn0378-audit-both-directions-canonical-drift",
+   "IB-SMART-NOTE-20261005-sn0369-identity-continuity",
+   "IB-SMART-NOTE-20261006-sn0490-repair-race-superset-rule"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-07-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0271",
+    "super": "SUPER-056",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.291
+   },
+   {
+    "sn": "SN-0369",
+    "super": "SUPER-056",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.455
+   },
+   {
+    "sn": "SN-0381",
+    "super": "SUPER-056",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.336
+   }
+  ]
+ },
+ "SUPER-057": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-057-distill-everything-keep-the-essence-and-never-shrink-the-law.md",
+  "title": "Distill Everything, Keep the Essence \u2014 and Never Shrink the Law",
+  "nutshell": "Hundreds of notes are too many to learn from. Keep the principle inside each one, let go of the rest, and what survives stays small enough to actually use \u2014 but a shortened version must never quietly weaken the original rule.",
+  "sources": [
+   "IB-SMART-NOTE-20261005-sn0437-distill-by-principle-let-go-of-the-rest",
+   "IB-SMART-NOTE-20261005-sn0364-twin-gate-fidelity-distillation",
+   "IB-SMART-NOTE-20261006-sn0471-the-archive-is-the-design"
+  ],
+  "source_count": 3,
+  "cluster_file": "cluster-07-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0364",
+    "super": "SUPER-057",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.291
+   },
+   {
+    "sn": "SN-0437",
+    "super": "SUPER-057",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.265
+   }
+  ]
+ },
+ "SUPER-058": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-058-a-team-that-never-leaves-a-dead-end.md",
+  "title": "A Team That Never Leaves a Dead End",
+  "nutshell": "Work together like a relay team that never drops the baton: specialists mastering their craft, work running side by side instead of in a line, every conversation ending with a clear next step, and every result explained in words anyone can understand.",
+  "sources": [
+   "IB-SMART-NOTE-20261006-sn0480-elite-agent-team",
+   "IB-SMART-NOTE-20261006-sn0478-parallel-by-default",
+   "IB-SMART-NOTE-20261006-sn0504-blame-is-dead-end",
+   "IB-SMART-NOTE-20261006-sn0507-human-terms-are-part-of-done",
+   "IB-SMART-NOTE-20261004-sn0330-one-second-eyes-pass-not-two",
+   "IB-SMART-NOTE-20261006-sn0486-no-dead-ends-law"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-07-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0486",
+    "super": "SUPER-058",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.824
+   }
+  ]
+ },
+ "SUPER-059": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-059-declare-who-you-are-identity-is-what-acts.md",
+  "title": "Declare Who You Are - Identity Is What Acts",
+  "nutshell": "Behavior doesn't come from collecting lessons. It comes from declaring who you are and how you behave - before the work - and then living it, because doing anything else would be not being you. Lessons sharpen the aim. Identity is what acts.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn005-internal-morality",
+   "IB-SMART-NOTE-20261020-sn0801-declare-who-you-are",
+   "IB-000039",
+   "IB-SMART-NOTE-20261020-sn0802-oath-of-honor",
+   "IB-000040",
+   "IB-000041",
+   "IB-SMART-NOTE-20261020-sn0803-the-naya-protocol-ratified",
+   "IB-000045"
+  ],
+  "source_count": 8,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "IB-000040",
+    "super": "SUPER-059",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.359
+   },
+   {
+    "sn": "IB-000041",
+    "super": "SUPER-059",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.3
+   },
+   {
+    "sn": "SN-0802",
+    "super": "SUPER-059",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.277
+   }
+  ]
+ },
+ "SUPER-060": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-060-live-awesome-the-philosophy-everything-stands-on.md",
+  "title": "Live Awesome: The Philosophy Everything Stands On",
+  "nutshell": "We are utter awesomeness immersed in awesomeness. Life's purpose is to live it to the max: be awesome every day, do no harm, forgive everything, and never give your power away. Heaven and hell are not places - they are states of energy, above the line in awareness or below it in unawareness.",
+  "sources": [
+   "IB-SMART-NOTE-20261004-sn0311-awesome-thesis",
+   "IB-SMART-NOTE-20261004-sn0315-awesome-code-100",
+   "IB-SMART-NOTE-20261004-sn0305-human-nexus-codex",
+   "IB-SMART-NOTE-20261004-sn0312-awesome-code-100-things",
+   "IB-SMART-NOTE-20261004-sn0314-thesis-on-life",
+   "IB-SMART-NOTE-20261004-sn0306-human-nexus-codex-complete"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0305",
+    "super": "SUPER-060",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.342
+   },
+   {
+    "sn": "SN-0306",
+    "super": "SUPER-060",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.42
+   },
+   {
+    "sn": "SN-0314",
+    "super": "SUPER-060",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.225
+   },
+   {
+    "sn": "SN-0315",
+    "super": "SUPER-060",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.375
+   }
+  ]
+ },
+ "SUPER-061": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-061-the-magic-a-moment-becomes-intelligence-that-keeps-working.md",
+  "title": "The Magic: A Moment Becomes Intelligence That Keeps Working",
+  "nutshell": "NayaPOWER turns an intelligent moment into durable intelligence: a Smart Note captures it, an Intelligent Block makes it reusable, and NayaNET connects it - by permission - so it keeps working after the conversation ends. Private by default. Shared by choice. The intelligence compounds.",
+  "sources": [
+   "IB-000036",
+   "IB-000037",
+   "IB-000038",
+   "IB-SMART-NOTE-20261019-sn0800-how-to-get-started",
+   "IB-SMART-NOTE-20261009-sn0742-self-optimizing-system",
+   "IB-SMART-NOTE-20261009-sn0743-magic-feeling",
+   "IB-SMART-NOTE-20261009-sn0744-ai-creates-income",
+   "IB-000049",
+   "IB-SMART-NOTE-20261007-sn0617-one-brain-every-ai",
+   "IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001",
+   "IB-SMART-NOTE-20261004-sn0599-nayapower-core-system-synthesis",
+   "IB-SMART-NOTE-20261021-sn1769-the-whole-system-in-simple-words"
+  ],
+  "source_count": 12,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "IB-000036",
+    "super": "SUPER-061",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.643
+   },
+   {
+    "sn": "IB-000037",
+    "super": "SUPER-061",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.643
+   },
+   {
+    "sn": "IB-000049",
+    "super": "SUPER-061",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.667
+   },
+   {
+    "sn": "SN-0599",
+    "super": "SUPER-061",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.385
+   },
+   {
+    "sn": "SN-0617",
+    "super": "SUPER-061",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.386
+   },
+   {
+    "sn": "SN-0800",
+    "super": "SUPER-061",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.552
+   },
+   {
+    "sn": "SN-1769",
+    "super": "SUPER-061",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.413
+   }
+  ]
+ },
+ "SUPER-062": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-062-finishing-is-the-work-unfinished-work-is-a-liability.md",
+  "title": "Finishing Is the Work: Unfinished Work Is a Liability",
+  "nutshell": "Work has value only when it is finished and usable in the real world. Unfinished work is not an asset but a liability: it costs money to make, more to clean up, and burns time, energy, and attention that never come back. Done means merged and verified, or closed with the reason recorded. No third state.",
+  "sources": [
+   "IB-SMART-NOTE-20260929-sn003-naya-continuation-engine",
+   "IB-SMART-NOTE-20261001-sn0595-complete-the-app-doctrine",
+   "IB-000051",
+   "IB-SMART-NOTE-20261020-sn0806-completion-doctrine",
+   "IB-000052",
+   "IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings",
+   "IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing",
+   "IB-SMART-NOTE-20261021-sn0812-done-means-merged",
+   "IB-SMART-NOTE-20261021-sn01773-finish-before-you-create"
+  ],
+  "source_count": 9,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "IB-000051",
+    "super": "SUPER-062",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.25
+   },
+   {
+    "sn": "SN-0177",
+    "super": "SUPER-062",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.273
+   },
+   {
+    "sn": "SN-0595",
+    "super": "SUPER-062",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.425
+   }
+  ]
+ },
+ "SUPER-063": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-063-memory-with-integrity-capture-honestly-forget-correctly.md",
+  "title": "Memory With Integrity: Capture Honestly, Forget Correctly",
+  "nutshell": "A memory system earns trust three ways: it never fabricates its records, it indexes the lesson itself so the lesson can be found, and it forgets correctly - old truth stays retrievable as history but never masquerades as current truth. Intelligence must earn permanence; not everything deserves to survive.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn009-correct-forgetting",
+   "IB-SMART-NOTE-20261006-sn0612-index-the-lesson",
+   "IB-SMART-NOTE-20261006-sn0496-agent-capture-must-present-a-real-user-jwt-receiver-stays-byte-identical",
+   "IB-SMART-NOTE-20261006-sn0494-never-fabricate-a-capture-provenance-laundering",
+   "IB-SMART-NOTE-20261006-sn0491-direct-commit-capture-bypass",
+   "IB-SMART-NOTE-20261004-sn0299-what-deserves-to-survive",
+   "IB-SMART-NOTE-20261004-sn266-content-addressed-note-identity"
+  ],
+  "source_count": 7,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0299",
+    "super": "SUPER-063",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.705
+   },
+   {
+    "sn": "SN-0496",
+    "super": "SUPER-063",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.289
+   }
+  ]
+ },
+ "SUPER-064": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-064-built-for-the-cold-successor-nobody-should-have-to-re-teach.md",
+  "title": "Built for the Cold Successor: Nobody Should Have to Re-Teach",
+  "nutshell": "Every time a human has to re-explain what the system should already know, the architecture failed - not the human, not the AI. Intelligence is built so a cold successor can pick it up cold: the lesson, the outcome evidence behind it, and the current state, all reconstructible without the original conversation.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn008-human-reconstruction-failure",
+   "IB-SMART-NOTE-20261008-sn0636-non-derivable-lesson-selection-closed-the-null-hole",
+   "IB-SMART-NOTE-20261008-sn0635-inheritance-needs-the-outcome-evidence-not-just-the-rule",
+   "IB-SMART-NOTE-20261006-sn0610-cold14-intelligence-interface",
+   "IB-SMART-NOTE-20261006-sn0609-archive-recovery-thesis",
+   "IB-SMART-NOTE-20261004-sn0598-naya1-distilled-intelligence"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0609",
+    "super": "SUPER-064",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.426
+   }
+  ]
+ },
+ "SUPER-065": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-065-check-every-claim-against-the-bytes.md",
+  "title": "Check Every Claim Against the Bytes",
+  "nutshell": "A claim is only as good as the artifact it points at. Citations must exist in the source they cite, on the branch they claim, at the revision named - and a merge must be checked against the base it carries forward, not just the text it copied. No artifact, no claim.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn039-merge-carry-forward-regression",
+   "IB-SMART-NOTE-20260930-sn040-merge-claim-evidence-rule",
+   "IB-SMART-NOTE-20260930-sn052-duplicate-seam-merge-routing",
+   "IB-SMART-NOTE-20260930-sn035-phantom-citation-class",
+   "IB-SMART-NOTE-20260930-sn065-branch-boundary-claims-intent-as-capability",
+   "IB-SMART-NOTE-20261005-sn0361-absence-claims-name-their-revision",
+   "IB-SMART-NOTE-20261007-sn0539-tree-head-tree-silent-merge-corruption",
+   "IB-SMART-NOTE-20261004-sn0297-branch-citations-are-not-canonical-provenance"
+  ],
+  "source_count": 8,
+  "cluster_file": "cluster-08-super.json"
+ },
+ "SUPER-066": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-066-verification-is-a-method-not-a-mood.md",
+  "title": "Verification Is a Method, Not a Mood",
+  "nutshell": "Measure before you claim. Trace the real path, attack your own result, refuse to certify what you can't prove - and never verify your own work and call it independent. 'I cannot prove this yet' is an honorable, successful outcome; a check that was never actually run is theater.",
+  "sources": [
+   "IB-SMART-NOTE-20261014-sn0797-patch-response-is-the-verify",
+   "IB-SMART-NOTE-20261010-sn0796-phantom-pytest-failure-tmpfs-concurrency",
+   "IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate",
+   "IB-000050",
+   "IB-SMART-NOTE-20261004-sn268-independent-exam-convergence",
+   "IB-SMART-NOTE-20261004-sn0296-universal-verification-method"
+  ],
+  "source_count": 6,
+  "cluster_file": "cluster-08-super.json"
+ },
+ "SUPER-067": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-067-scores-measure-readiness-they-never-grant-authority.md",
+  "title": "Scores Measure Readiness - They Never Grant Authority",
+  "nutshell": "A score tells you how ready work is. It never gives permission. A hard stop holds at 9.8 exactly as at 4.2, and the moment a high score tempts you to relax a boundary is the moment the boundary matters most. Intelligence chooses the road; the gates are part of the design, not exceptions to it.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0342-law-lands-in-code",
+   "IB-SMART-NOTE-20260930-sn0523-score-never-outranks-the-hard-stop",
+   "IB-SMART-NOTE-20261005-sn0345-system-scorecard-method",
+   "IB-SMART-NOTE-20261004-sn0293-honesty-rewarded-not-penalized",
+   "IB-SMART-NOTE-20261004-sn0600-charter-stratification-quality-gate",
+   "IB-SMART-NOTE-20261004-sn267-three-state-gate-semantics",
+   "IB-SMART-NOTE-20261004-sn0602-intelligence-gain-epistemic-calibration",
+   "IB-SMART-NOTE-20261021-sn1770-intelligence-trumps-everything"
+  ],
+  "source_count": 8,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0342",
+    "super": "SUPER-067",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.204
+   },
+   {
+    "sn": "SN-0600",
+    "super": "SUPER-067",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.826
+   },
+   {
+    "sn": "SN-0602",
+    "super": "SUPER-067",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.511
+   }
+  ]
+ },
+ "SUPER-068": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-068-one-organism-one-brain-governed-workers-a-memory-that-refuse.md",
+  "title": "One Organism, One Brain: Governed Workers, a Memory That Refuses to Lie",
+  "nutshell": "One brain, one runtime, nine organs - never two competing kernels. Every worker follows the same heartbeat: orient, act, attack your own result, verify, preserve, learn. And everything finished becomes one machine-checked record in a shared log that refuses anything unproven, so the team's memory is exact.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0511-one-canonical-runtime-kernel",
+   "IB-SMART-NOTE-20260930-sn0530-binding-requires-behavioral-contract",
+   "IB-000042",
+   "IB-000043",
+   "IB-000044",
+   "IB-000046",
+   "IB-SMART-NOTE-20261004-sn0290-self-correcting-system",
+   "IB-SMART-NOTE-20261004-sn0295-super-brain-architecture",
+   "IB-SMART-NOTE-20261004-sn0291-universal-worker-protocol",
+   "IB-SMART-NOTE-20261004-sn0289-naya-worker-protocol",
+   "IB-SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier",
+   "IB-SMART-NOTE-20260930-sn012-nayapower-operating-model"
+  ],
+  "source_count": 12,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "IB-000044",
+    "super": "SUPER-068",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.898
+   },
+   {
+    "sn": "IB-000046",
+    "super": "SUPER-068",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.852
+   },
+   {
+    "sn": "SN-012",
+    "super": "SUPER-068",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.659
+   },
+   {
+    "sn": "SN-021",
+    "super": "SUPER-068",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.578
+   }
+  ]
+ },
+ "SUPER-069": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-069-the-pipeline-must-not-lose-stall-or-waste-the-work.md",
+  "title": "The Pipeline Must Not Lose, Stall, or Waste the Work",
+  "nutshell": "Machinery that moves intelligence has to protect it at every seam: one writer at a time where records are shared, one bad item quarantined instead of shelving the whole batch, discovery that reports everything instead of giving up. And execution wastes nothing - parallel where possible, sized to the machine, with the best resource held in reserve.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0339-serialize-the-registry",
+   "IB-SMART-NOTE-20261005-sn0366-malformed-first-shelves-batch",
+   "IB-000035",
+   "IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical",
+   "IB-SMART-NOTE-20261006-sn0613-bake-memory-math",
+   "IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive",
+   "IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule",
+   "IB-SMART-NOTE-20261005-sn0334-discovery-returns-the-set-never-aborts-on-multiplicity",
+   "IB-SMART-NOTE-20261005-sn0604-dead-workers-still-vote",
+   "IB-SMART-NOTE-20261004-sn0322-learning-decision-enforcement-seam",
+   "IB-SMART-NOTE-20261004-sn0601-discernment-operating-law",
+   "IB-SMART-NOTE-20261001-sn017-autoresearch-harness-lessons"
+  ],
+  "source_count": 12,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical",
+    "super": "SUPER-069",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.556
+   },
+   {
+    "sn": "SN-0322",
+    "super": "SUPER-069",
+    "verdict": "MISSING",
+    "restored_entry": true,
+    "overlap": 0.398
+   },
+   {
+    "sn": "SN-0344",
+    "super": "SUPER-069",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.589
+   }
+  ]
+ },
+ "SUPER-070": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-070-serve-the-human-honestly-fix-first-finish-before-asked-never.md",
+  "title": "Serve the Human, Honestly: Fix First, Finish Before Asked, Never Fake the Real Thing",
+  "nutshell": "Ten-star service is proactive: fix what's broken before reporting it, and do the work at the earliest moment you know it will be needed, so by the time a person reaches for it, it's already there. Words without action have no value. And never pass a placeholder off as the real thing.",
+  "sources": [
+   "IB-SMART-NOTE-20260930-sn0502-voice-honesty-label",
+   "IB-SMART-NOTE-20260930-sn0630-voice-integration-correction-contract",
+   "IB-000047",
+   "IB-SMART-NOTE-20261007-sn0575-fix-first-report-after",
+   "IB-SMART-NOTE-20261021-sn0811-done-before-you-ask"
+  ],
+  "source_count": 5,
+  "cluster_file": "cluster-08-super.json"
+ },
+ "SUPER-071": {
+  "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-071-how-intelligence-reaches-humans-distilled-hooked-and-beautif.md",
+  "title": "How Intelligence Reaches Humans: Distilled, Hooked, and Beautiful",
+  "nutshell": "The Hub is a window, not the brain: one intelligence object, many honest projections. Design distills before it displays, because nobody discovers what doesn't hook them - the headline is the doorway to the intelligence. And everything is elevated, always: one flat element cheapens everything around it.",
+  "sources": [
+   "IB-000048",
+   "IB-SMART-NOTE-20261020-sn0804-viral-law",
+   "IB-SMART-NOTE-20261003-sn0229-tune-to-intent-not-to-words",
+   "IB-SMART-NOTE-20261002-sn0597-human-centered-design-intelligence",
+   "IB-SMART-NOTE-20261001-sn0596-naya-signature-design-mastery",
+   "IB-SMART-NOTE-20261001-hub-is-intelligence-projection",
+   "IB-SMART-NOTE-20261021-sn0808-the-elevation-standard",
+   "IB-SMART-NOTE-20261021-sn0810-how-a-smart-note-enters-the-hub"
+  ],
+  "source_count": 8,
+  "cluster_file": "cluster-08-super.json",
+  "repair_restored": [
+   {
+    "sn": "SN-0810",
+    "super": "SUPER-071",
+    "verdict": "PARTIAL",
+    "restored_entry": true,
+    "overlap": 0.701
+   }
+  ]
+ }
+}

@@ -1,0 +1,4849 @@
+[
+ {
+  "temp_id": "lego4-001",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Color has four jobs. Never cross them.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"background:#020203\"></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — variant classes: swatch | byte-identical to half-A elemset-001",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-002",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Color has four jobs. Never cross them.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"background:#ffffff\"></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — variant classes: swatch | byte-identical to half-A elemset-002",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-003",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Color has four jobs. Never cross them.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"background:#9d75ff\"></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — variant classes: swatch",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-004",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"sp-join\" style=\"--sc:#40d3bb\">＋ Join the space</button>",
+  "css_classes": [
+   "sp-join"
+  ],
+  "notes": "space join button —"
+ },
+ {
+  "temp_id": "lego4-005",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"sp-join\" style=\"--sc:#ff5e6c\">✓ Joined</button>",
+  "css_classes": [
+   "sp-join"
+  ],
+  "notes": "space join button —"
+ },
+ {
+  "temp_id": "lego4-006",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\">REST</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": " | byte-identical to half-A showcase1-006"
+ },
+ {
+  "temp_id": "lego4-007",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\" style=\"border-color:#9d75ff; box-shadow:0 0 30px -2px #9d75ff;\">FIRE</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-008",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\" style=\"transform:scale(.97)\">TOUCH</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": " | byte-identical to half-A showcase1-008"
+ },
+ {
+  "temp_id": "lego4-009",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "One board. One color. A destination you enter.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"nestcard\"><p class=\"nk\" style=\"--nc:#9d75ff\">IN A NUTSHELL<span class=\"ndot\"></span></p><p>Capture the essence. Verify the result. Let the next moment benefit.</p></div>",
+  "css_classes": [
+   "ndot",
+   "nestcard",
+   "nk"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-010",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "One board. One color. A destination you enter.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"nestcard\"><p class=\"nk\" style=\"--nc:#55b9ee\">WHAT IT MEANS<span class=\"ndot\"></span></p><p>Understanding changes what Naya actually does next.</p></div>",
+  "css_classes": [
+   "ndot",
+   "nestcard",
+   "nk"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-011",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "One board. One color. A destination you enter.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"nestcard\"><p class=\"nk\" style=\"--nc:#e8c766\">HOW TO USE IT<span class=\"ndot\"></span></p><p>Retrieve the lesson, check its limits, carry it into action.</p></div>",
+  "css_classes": [
+   "ndot",
+   "nestcard",
+   "nk"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-012",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "≥ 1.5",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span>lighting.idle.border_min_px</span><b style=\"color:#ed42c4\">≥ 1.5</b></div>",
+  "css_classes": [
+   "pred"
+  ],
+  "notes": "contract predicate row —"
+ },
+ {
+  "temp_id": "lego4-013",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "9.0",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span>gates.ship_threshold</span><b style=\"color:#8a5cff\">9.0</b></div>",
+  "css_classes": [
+   "pred"
+  ],
+  "notes": "contract predicate row —"
+ },
+ {
+  "temp_id": "lego4-014",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "24 / 18 / 14",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span>typography.hierarchy_px</span><b style=\"color:#3ca8ff\">24 / 18 / 14</b></div>",
+  "css_classes": [
+   "pred"
+  ],
+  "notes": "contract predicate row —"
+ },
+ {
+  "temp_id": "lego4-015",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "12",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span>typography.tagline_max_words</span><b style=\"color:#35e39b\">12</b></div>",
+  "css_classes": [
+   "pred"
+  ],
+  "notes": "contract predicate row —"
+ },
+ {
+  "temp_id": "lego4-016",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "99",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span>text.white_minimum_pct</span><b style=\"color:#ffd45a\">99</b></div>",
+  "css_classes": [
+   "pred"
+  ],
+  "notes": "contract predicate row —"
+ },
+ {
+  "temp_id": "lego4-017",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "forbidden",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span>jewel.adjacent_duplicate</span><b style=\"color:#ed42c4\">forbidden</b></div>",
+  "css_classes": [
+   "pred"
+  ],
+  "notes": "contract predicate row —"
+ },
+ {
+  "temp_id": "lego4-018",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "forbidden",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span>icons.shrunken_renders</span><b style=\"color:#8a5cff\">forbidden</b></div>",
+  "css_classes": [
+   "pred"
+  ],
+  "notes": "contract predicate row —"
+ },
+ {
+  "temp_id": "lego4-019",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "forbidden",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"pred\"><span>layout.max_width_caps</span><b style=\"color:#3ca8ff\">forbidden</b></div>",
+  "css_classes": [
+   "pred"
+  ],
+  "notes": "contract predicate row —"
+ },
+ {
+  "temp_id": "lego4-020",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "WHITE Light. Text 99% of the time. Every idle rim.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"job\"><div class=\"swatch\" style=\"background:#020203\"></div><h3>OBSIDIAN</h3><p>Field. The world and dominant canvas. Deep, never gray.</p></div>",
+  "css_classes": [
+   "job",
+   "swatch"
+  ],
+  "notes": "color-job card —"
+ },
+ {
+  "temp_id": "lego4-021",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "OBSIDIAN Field. The world and dominant canvas. Deep, never gray.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"job\"><div class=\"swatch\" style=\"background:#ffffff\"></div><h3>WHITE</h3><p>Light. Text 99% of the time. Every idle rim.</p></div>",
+  "css_classes": [
+   "job",
+   "swatch"
+  ],
+  "notes": "color-job card —"
+ },
+ {
+  "temp_id": "lego4-022",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "OBSIDIAN Field. The world and dominant canvas. Deep, never gray.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"job\"><div class=\"swatch\" style=\"background:#9d75ff\"></div><h3>PURPLE</h3><p>Soul. Chrome accent. Naya's presence. Never a flood.</p></div>",
+  "css_classes": [
+   "job",
+   "swatch"
+  ],
+  "notes": "color-job card —"
+ },
+ {
+  "temp_id": "lego4-023",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "PURPLE",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#9d75ff\"><b>PURPLE</b><span>Choosing intelligence</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-024",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "INDIGO",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#6675ff\"><b>INDIGO</b><span>Calm authority</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-025",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "BLUE",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#55b9ee\"><b>BLUE</b><span>Knowledge moving</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-026",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "TEAL",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#40d3bb\"><b>TEAL</b><span>Clear passage</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-027",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "GREEN",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#55e39a\"><b>GREEN</b><span>Alive and well</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-028",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "LIME",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#b8ee57\"><b>LIME</b><span>New growth</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-029",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "YELLOW",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#f1d75a\"><b>YELLOW</b><span>Attention, earned</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-030",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "ORANGE",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#ff9a5a\"><b>ORANGE</b><span>People and warmth</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-031",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "RED",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#ff5e6c\"><b>RED</b><span>Act now, rarely</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-032",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "MAGENTA",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"spec\" style=\"--c:#d86cff\"><b>MAGENTA</b><span>The living edge</span></div>",
+  "css_classes": [
+   "spec"
+  ],
+  "notes": "spectrum chip —",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "lego4-033",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\">✉  WRITE MAIL</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": " | byte-identical to half-A showcase1-033"
+ },
+ {
+  "temp_id": "lego4-034",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\">＋  ADD CONNECTION</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": " | byte-identical to half-A showcase1-034"
+ },
+ {
+  "temp_id": "lego4-035",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Black heart. White voice. Visible skin.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"cx-btn\" type=\"button\">→  OPEN REPORT</button>",
+  "css_classes": [
+   "cx-btn"
+  ],
+  "notes": " | byte-identical to half-A showcase1-035"
+ },
+ {
+  "temp_id": "lego4-036",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "IDLE",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"state\"><b>IDLE</b><button class=\"cx-btn\" type=\"button\">REST</button><p style=\"font-size:14px; color:#fff; opacity:.8; margin:10px 0 0\">White rim visible. Quiet.</p></div>",
+  "css_classes": [
+   "cx-btn",
+   "state"
+  ],
+  "notes": "button state card — | byte-identical to half-A showcase1-036"
+ },
+ {
+  "temp_id": "lego4-037",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "HOVER",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"state\"><b>HOVER</b><button class=\"cx-btn\" type=\"button\" style=\"border-color:#9d75ff; box-shadow:0 0 30px -2px #9d75ff;\">FIRE</button><p style=\"font-size:14px; color:#fff; opacity:.8; margin:10px 0 0\">Own color ignites. Lifts.</p></div>",
+  "css_classes": [
+   "cx-btn",
+   "state"
+  ],
+  "notes": "button state card —"
+ },
+ {
+  "temp_id": "lego4-038",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "PRESS",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"state\"><b>PRESS</b><button class=\"cx-btn\" type=\"button\" style=\"transform:scale(.97)\">TOUCH</button><p style=\"font-size:14px; color:#fff; opacity:.8; margin:10px 0 0\">Compresses. Alive.</p></div>",
+  "css_classes": [
+   "cx-btn",
+   "state"
+  ],
+  "notes": "button state card — | byte-identical to half-A showcase1-038"
+ },
+ {
+  "temp_id": "lego4-039",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Size separates. Color doesn't.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"typecard\" style=\"--tc:#ffd45a\"><p class=\"tk\">HEADLINE · 24PX</p><p style=\"font-family:var(--voice); font-size:24px; color:#fff; margin:0; line-height:1.35\">Your intelligence, collected.</p><p style=\"font-size:14px; color:#fff; opacity:.65; margin:14px 0 0\">Serif voice. Light-carved. It leads, never shouts.</p></div>",
+  "css_classes": [
+   "tk",
+   "typecard"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-040",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Size separates. Color doesn't.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"typecard\" style=\"--tc:#3ca8ff\"><p class=\"tk\">BODY · 18PX</p><p style=\"font-size:18px; color:#fff; margin:0; line-height:1.6\">Keep your people close. Organize them, remember them, reach them.</p><p style=\"font-size:14px; color:#fff; opacity:.65; margin:14px 0 0\">Most text lives here. White, generous, readable.</p></div>",
+  "css_classes": [
+   "tk",
+   "typecard"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-041",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Size separates. Color doesn't.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"typecard\" style=\"--tc:#35e39b\"><p class=\"tk\">DETAIL · 14PX</p><p style=\"font-size:14px; color:#fff; margin:0; line-height:1.6\">Evidence lives here: PR #1858 · tip 78661f59 · 40/40 tests.</p><p style=\"font-size:14px; color:#fff; opacity:.65; margin:14px 0 0\">The floor. Nothing readable ever goes smaller.</p></div>",
+  "css_classes": [
+   "tk",
+   "typecard"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-042",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Truth is part of the visual language.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"truth\"><span class=\"torb\" style=\"--tc2:#35e39b\">✓</span><div><b>AUTH · VERIFIED</b><p>Independent evidence exists. The number survived contact with reality.</p></div></div>",
+  "css_classes": [
+   "torb",
+   "truth"
+  ],
+  "notes": "verification status block —"
+ },
+ {
+  "temp_id": "lego4-043",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Truth is part of the visual language.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"truth\"><span class=\"torb\" style=\"--tc2:#8a5cff\">?</span><div><b>CLAIM · UNVERIFIED</b><p>Self-reported, awaiting its stamp. Shown honestly, never hidden.</p></div></div>",
+  "css_classes": [
+   "torb",
+   "truth"
+  ],
+  "notes": "verification status block —"
+ },
+ {
+  "temp_id": "lego4-044",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Truth is part of the visual language.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"truth\"><span class=\"torb\" style=\"--tc2:#e8c766\">◈</span><div><b>DEMONSTRATION</b><p>Specimen content. Beautiful on purpose, not pretending to be live.</p></div></div>",
+  "css_classes": [
+   "torb",
+   "truth"
+  ],
+  "notes": "verification status block —"
+ },
+ {
+  "temp_id": "lego4-045",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "MACHINE LAW · NORMATIVE",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"tongue\" style=\"--tc3:#8a5cff\"><h3>MACHINE LAW · NORMATIVE</h3><div class=\"pred\"><span>lighting.idle.border_min_px</span><b style=\"color:#ed42c4\">≥ 1.5</b></div><div class=\"pred\"><span>gates.ship_threshold</span><b style=\"color:#8a5cff\">9.0</b></div><div class=\"pred\"><span>typography.hierarchy_px</span><b style=\"color:#3ca8ff\">24 / 18 / 14</b></div><div class=\"pred\"><span>typography.tagline_max_words</span><b style=\"color:#35e39b\">12</b></div><div class=\"pred\"><span>text.white_minimum_pct</span><b style=\"color:#ffd45a\">99</b></div><div class=\"pred\"><span>jewel.adjacent_duplicate</span><b style=\"color:#ed42c4\">forbidden</b></div><div class=\"pred\"><span>icons.shrunken_renders</span><b style=\"color:#8a5cff\">forbidden</b></div><div class=\"pred\"><span>layout.max_width_caps</span><b style=\"color:#3ca8ff\">forbidden</b></div></div>",
+  "css_classes": [
+   "pred",
+   "tongue"
+  ],
+  "notes": "contract tongue column —"
+ },
+ {
+  "temp_id": "lego4-046",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "AI LAW · PROCEDURE",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"tongue\" style=\"--tc3:#3ca8ff\"><h3>AI LAW · PROCEDURE</h3><ul><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Pick the layout that matches what the page .<em>is</em></span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>Give every element one color job.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span>Light everything: white at rest, own color on touch.</span></li><li><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span>Build buttons with black hearts.</span></li><li><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span>Size separates, color doesn't — 24 / 18 / 14.</span></li><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Draw icons. Never shrink photos.</span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>Make the header a front door.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span>Let the page breathe.</span></li><li><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span>Score what you see. Below 9? Back to the bench.</span></li><li><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span>Prove it before you claim it.</span></li></ul></div>",
+  "css_classes": [
+   "jw",
+   "tongue"
+  ],
+  "notes": "contract tongue column —"
+ },
+ {
+  "temp_id": "lego4-047",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "HUMAN LAW · PHILOSOPHY",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"tongue\" style=\"--tc3:#35e39b\"><h3>HUMAN LAW · PHILOSOPHY</h3><ul class=\"hbul\"><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Naya is black, white, and purple — with a rainbow that knows its place.</span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>Black is the night everything floats in. White is the light. Purple is the signature.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span>The spectrum gives things identity but never shouts over the brand.</span></li><li><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span>Everything glows gently; the page breathes but stays calm.</span></li><li><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span>Words are white and clear. Nothing ships below excellent.</span></li></ul></div>",
+  "css_classes": [
+   "hbul",
+   "jw",
+   "tongue"
+  ],
+  "notes": "contract tongue column — | byte-identical to half-A elemset-053"
+ },
+ {
+  "temp_id": "lego4-048",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Score the experience, never the code.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#ffd45a\"><p class=\"ln\">LAW 1<span class=\"ld\"></span></p><h3>Score the experience, never the code.</h3><p>A 9.5 on CSS is worthless if the rendered page is a 5. The lived page is the only scorecard.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-049",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Back it or bench it.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#35e39b\"><p class=\"ln\">LAW 2<span class=\"ld\"></span></p><h3>Back it or bench it.</h3><p>9.0+ ships. Below 9 goes back to the bench. No exceptions, no almost.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-050",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Color has jobs. Never cross them.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#3ca8ff\"><p class=\"ln\">LAW 4<span class=\"ld\"></span></p><h3>Color has jobs. Never cross them.</h3><p>Chrome acts. Text speaks. Theme identifies. Adjacent things never share a hue.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": " | byte-identical to half-A elemset-056"
+ },
+ {
+  "temp_id": "lego4-051",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "White light at rest, own color on touch.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#8a5cff\"><p class=\"ln\">LAW 5<span class=\"ld\"></span></p><h3>White light at rest, own color on touch.</h3><p>Visible 1.5px+ rims idle. Ignition belongs to the thing being touched.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-052",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Black heart, white voice, visible skin.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#ed42c4\"><p class=\"ln\">LAW 6<span class=\"ld\"></span></p><h3>Black heart, white voice, visible skin.</h3><p>#050505 center, white text and icon, real rim. The glyph is a promise.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-053",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Size separates, color doesn't.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#ff9a5a\"><p class=\"ln\">LAW 7<span class=\"ld\"></span></p><h3>Size separates, color doesn't.</h3><p>24 headlines, 18 body, 14 details. White 99%. Headers get a voice.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-054",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Icons are drawn, not shrunk.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#ff5e6c\"><p class=\"ln\">LAW 9<span class=\"ld\"></span></p><h3>Icons are drawn, not shrunk.</h3><p>Vector geometry, readable at 16px. A shrunken render is mud.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-055",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Verify before claiming.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"lawcard\" style=\"--lc:#40d3bb\"><p class=\"ln\">LAW 13<span class=\"ld\"></span></p><h3>Verify before claiming.</h3><p>Read the file. Count the matches. Watch it render. Then say it's done.</p></div>",
+  "css_classes": [
+   "lawcard",
+   "ld",
+   "ln"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "lego4-056",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Principles don't survive contact with a deadline.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"drift\"><span class=\"dw dw-dark\" style=\"--j:#ff5e6c\">✕</span><div><p class=\"dread\">They read <em>&quot;white light at rest&quot;</em></p><p class=\"dshipped\">…and shipped hairline borders.</p></div></div>",
+  "css_classes": [
+   "dread",
+   "drift",
+   "dshipped",
+   "dw",
+   "dw-dark"
+  ],
+  "notes": "drift misreading card —"
+ },
+ {
+  "temp_id": "lego4-057",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Principles don't survive contact with a deadline.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"drift\"><span class=\"dw dw-dark\" style=\"--j:#ff5e6c\">✖</span><div><p class=\"dread\">They read <em>&quot;purple is the signature&quot;</em></p><p class=\"dshipped\">…and flooded pages purple.</p></div></div>",
+  "css_classes": [
+   "dread",
+   "drift",
+   "dshipped",
+   "dw",
+   "dw-dark"
+  ],
+  "notes": "drift misreading card —"
+ },
+ {
+  "temp_id": "lego4-058",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Principles don't survive contact with a deadline.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"drift\"><span class=\"dw dw-dark\" style=\"--j:#ff5e6c\">×</span><div><p class=\"dread\">They read <em>&quot;jewel bullets&quot;</em></p><p class=\"dshipped\">…and shipped three purples in a row.</p></div></div>",
+  "css_classes": [
+   "dread",
+   "drift",
+   "dshipped",
+   "dw",
+   "dw-dark"
+  ],
+  "notes": "drift misreading card —"
+ },
+ {
+  "temp_id": "lego4-059",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Every bullet a jewel. Never twice in a row.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"jewelrow\"><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span style=\"font-size:14px; color:#fff; opacity:.85\">the five-jewel cycle</span></div>",
+  "css_classes": [
+   "jewelrow",
+   "jw"
+  ],
+  "notes": "jewel cycle row — | byte-identical to half-A showcase1-061"
+ },
+ {
+  "temp_id": "lego4-060",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Every bullet a jewel. Never twice in a row.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<ul class=\"blist\"><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Magenta opens — the richest color leads the list.</span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>Purple deepens — the eye knows this is a new point.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span>Blue carries — knowledge moving down the page.</span></li><li><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span>Green follows — alive and well, never the same twice.</span></li><li><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span>Gold closes — the headline point earns the brightest jewel.</span></li></ul>",
+  "css_classes": [
+   "blist",
+   "jw"
+  ],
+  "notes": "jewel bullet list — | byte-identical to half-A showcase1-062"
+ },
+ {
+  "temp_id": "lego4-061",
+  "source_file": "Naya_Lego_Blocks_N4.html",
+  "demo_name": "Nothing reaches Shawn unchecked.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"gate\"><p class=\"kicker\" style=\"--kc:#9d75ff\">Pre-ship checklist · all must pass</p><ul><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Rendered and  — screenshot reviewed, not assumed.<strong>looked at</strong></span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>No two adjacent jewels share a color — checked by machine.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span>All text white or theme — zero gray, checked by machine.</span></li><li><span class=\"jw\" style=\"--j:#35e39b\">✦</span><span>Type at 24 / 18 / 14 — headlines, body, details.</span></li><li><span class=\"jw\" style=\"--j:#ffd45a\">◆</span><span>Every board: one color, spine + kicker + corner jewel agree.</span></li><li><span class=\"jw\" style=\"--j:#ed42c4\">◆</span><span>Real logo. Never a drawn substitute.</span></li><li><span class=\"jw\" style=\"--j:#8a5cff\">✧</span><span>Human words first — a child can follow it; technicals are evidence.</span></li><li><span class=\"jw\" style=\"--j:#3ca8ff\">▲</span><span>Honest score against the fifteen laws. 9.0+ or it doesn't ship.</span></li></ul></div>",
+  "css_classes": [
+   "gate",
+   "jw",
+   "kicker"
+  ],
+  "notes": "pre-ship checklist card —"
+ },
+ {
+  "temp_id": "epicn5-001",
+  "source_file": "Naya_Epic_Elements_-_Lego_pieces_N5.html",
+  "demo_name": "Orbs of light. 05",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"orb-demo\"><span class=\"orb orb--xs\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\"></span><p class=\"micro\">BULLET · 30px<small>Lists, gem points</small></p></div>",
+  "css_classes": [
+   "micro",
+   "orb",
+   "orb--xs",
+   "orb-demo"
+  ],
+  "notes": "orb specimen (size/variant) — variant classes: orb-demo"
+ },
+ {
+  "temp_id": "epicn5-002",
+  "source_file": "Naya_Epic_Elements_-_Lego_pieces_N5.html",
+  "demo_name": "Orbs of light. 05",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"orb-demo\"><span class=\"orb orb--sm\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span><p class=\"micro\">SECTION MARK · 56px<small>Room icons, headers</small></p></div>",
+  "css_classes": [
+   "micro",
+   "orb",
+   "orb--sm",
+   "orb-demo"
+  ],
+  "notes": "orb specimen (size/variant) — variant classes: orb-demo"
+ },
+ {
+  "temp_id": "epicn5-003",
+  "source_file": "Naya_Epic_Elements_-_Lego_pieces_N5.html",
+  "demo_name": "Orbs of light. 05",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"orb-demo\"><span class=\"orb orb--black\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span><p class=\"micro\">BLACK ORB · 120px<small>Dark soul, color rim</small></p></div>",
+  "css_classes": [
+   "micro",
+   "orb",
+   "orb--black",
+   "orb-demo"
+  ],
+  "notes": "orb specimen (size/variant) — variant classes: orb-demo"
+ },
+ {
+  "temp_id": "epicn5-004",
+  "source_file": "Naya_Epic_Elements_-_Lego_pieces_N5.html",
+  "demo_name": "03 · The law, not a palette",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"demo-board\" id=\"demoBoard\"><div class=\"demo-beam\"></div><p class=\"demo-name\" id=\"demoName\">Purple — Naya herself</p><p>One property —  — drives every light on this board. Set it, and the board obeys.<code>--c</code></p></div>",
+  "css_classes": [
+   "demo-beam",
+   "demo-board",
+   "demo-name"
+  ],
+  "notes": "one-property light board —"
+ },
+ {
+  "temp_id": "uds-001",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "One intelligence. Many rooms.",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<span class=\"nav-jewel\"></span>",
+  "css_classes": [
+   "nav-jewel"
+  ],
+  "notes": "nav jewel mark — | duplicate of uds-002 (One intelligence. Many rooms.) | duplicate of uds-003 (One intelligence. Many rooms.) | duplicate of uds-004 (One intelligence. Many rooms.) | duplicate of uds-005 (One intelligence. Many rooms.)"
+ },
+ {
+  "temp_id": "uds-006",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "What matters",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"metric\" style=\"--tone:#e455f4\"><span class=\"metric-mark\"><svg class=\"icon icon-sm\"><use href=\"#i-spark\"></svg></span><b>What matters</b><span>Priority is explicit.</span></div>",
+  "css_classes": [
+   "icon",
+   "icon-sm",
+   "metric",
+   "metric-mark"
+  ],
+  "notes": "metric mark —"
+ },
+ {
+  "temp_id": "uds-007",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "What changed",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"metric\" style=\"--tone:#3f9ff5\"><span class=\"metric-mark\"><svg class=\"icon icon-sm\"><use href=\"#i-book\"></svg></span><b>What changed</b><span>Context stays visible.</span></div>",
+  "css_classes": [
+   "icon",
+   "icon-sm",
+   "metric",
+   "metric-mark"
+  ],
+  "notes": "metric mark —"
+ },
+ {
+  "temp_id": "uds-008",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "What happens next",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"metric\" style=\"--tone:#34d38a\"><span class=\"metric-mark\"><svg class=\"icon icon-sm\"><use href=\"#i-arrow\"></svg></span><b>What happens next</b><span>Direction is clear.</span></div>",
+  "css_classes": [
+   "icon",
+   "icon-sm",
+   "metric",
+   "metric-mark"
+  ],
+  "notes": "metric mark —"
+ },
+ {
+  "temp_id": "uds-009",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn small\">People<svg class=\"icon icon-sm\"><use href=\"#i-profile\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "icon-sm",
+   "naya-btn",
+   "small"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-010",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn small\">Private<svg class=\"icon icon-sm\"><use href=\"#i-lock\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "icon-sm",
+   "naya-btn",
+   "small"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-011",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "OBSIDIAN PILL / strongest depth + restraint",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn lead\" style=\"--tone:#e455f4\">Enter the standard<svg class=\"icon\"><use href=\"#i-spark\"></svg><svg class=\"icon icon-sm\"><use href=\"#i-arrow\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "icon-sm",
+   "lead",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-012",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Extraordinary before the first touch.",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<span class=\"spec-name\">OBSIDIAN PILL / strongest depth + restraint</span>",
+  "css_classes": [
+   "spec-name"
+  ],
+  "notes": "spec name —"
+ },
+ {
+  "temp_id": "uds-013",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "LAW PILL / incredible clarity at rest",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn machine\" style=\"--tone:#8d63f5\">Machine law<span class=\"law-glyph\">§</span></button>",
+  "css_classes": [
+   "law-glyph",
+   "machine",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-014",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Extraordinary before the first touch.",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<span class=\"spec-name\">LAW PILL / incredible clarity at rest</span>",
+  "css_classes": [
+   "spec-name"
+  ],
+  "notes": "spec name —"
+ },
+ {
+  "temp_id": "uds-015",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "LIGHT STREAK / precise interface detail",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn streak\" style=\"--tone:#3f9ff5\">Illuminate meaning<svg class=\"icon\"><use href=\"#i-diamond\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn",
+   "streak"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-016",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Extraordinary before the first touch.",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<span class=\"spec-name\">LIGHT STREAK / precise interface detail</span>",
+  "css_classes": [
+   "spec-name"
+  ],
+  "notes": "spec name —"
+ },
+ {
+  "temp_id": "uds-017",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "04 · Naya 5 proximity · black restored",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn proximity\" style=\"--tone:#34d38a;--rgb:52,211,138\" data-aware=\"\">Create space<svg class=\"icon icon-sm\"><use href=\"#i-plus\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "icon-sm",
+   "naya-btn",
+   "proximity"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-018",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Portal variant",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn split\" style=\"--tone:#e7c65a;--rgb:231,198,90\" data-aware=\"\">View proof<span class=\"split-orb\"><svg class=\"icon\"><use href=\"#i-check\"></svg></span></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn",
+   "split",
+   "split-orb"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-019",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Icon action",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Search\" style=\"--tone:#e7c65a;--rgb:231,198,90\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-search\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-020",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Correct like example\" style=\"--tone:#ff5e6c\"><svg class=\"icon\"><use href=\"#i-heart\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-021",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Orientation that follows. Entry that feels alive.",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<button class=\"smarttab\" role=\"tab\" aria-selected=\"true\" style=\"--tone:#e455f4\" data-tab-copy=\"Everything important, across every room.\">All<span class=\"tab-dot\"></span></button>",
+  "css_classes": [
+   "smarttab",
+   "tab-dot"
+  ],
+  "notes": "smart tab —"
+ },
+ {
+  "temp_id": "uds-022",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Orientation that follows. Entry that feels alive.",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<button class=\"smarttab\" role=\"tab\" aria-selected=\"false\" style=\"--tone:#8d63f5\" data-tab-copy=\"Intelligence saved because it changed a future decision.\">Saved<span class=\"tab-dot\"></span></button>",
+  "css_classes": [
+   "smarttab",
+   "tab-dot"
+  ],
+  "notes": "smart tab —"
+ },
+ {
+  "temp_id": "uds-023",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Orientation that follows. Entry that feels alive.",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<button class=\"smarttab\" role=\"tab\" aria-selected=\"false\" style=\"--tone:#3f9ff5\" data-tab-copy=\"People, spaces and conversations connected to the work.\">Connected<span class=\"tab-dot\"></span></button>",
+  "css_classes": [
+   "smarttab",
+   "tab-dot"
+  ],
+  "notes": "smart tab —"
+ },
+ {
+  "temp_id": "uds-024",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Orientation that follows. Entry that feels alive.",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<button class=\"smarttab\" role=\"tab\" aria-selected=\"false\" style=\"--tone:#e7c65a\" data-tab-copy=\"Verified actions and the evidence behind them.\">Activity<span class=\"tab-dot\"></span></button>",
+  "css_classes": [
+   "smarttab",
+   "tab-dot"
+  ],
+  "notes": "smart tab —"
+ },
+ {
+  "temp_id": "uds-025",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Orientation that follows. Entry that feels alive.",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"tab-law\"><span>1</span><div>They express universal navigation intent.<strong>System tabs are stable.</strong><br></div></div>",
+  "css_classes": [
+   "tab-law"
+  ],
+  "notes": "tab law —"
+ },
+ {
+  "temp_id": "uds-026",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Orientation that follows. Entry that feels alive.",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"tab-law\"><span>2</span><div>They never become intelligence storage.<strong>Human tabs are personal views.</strong><br></div></div>",
+  "css_classes": [
+   "tab-law"
+  ],
+  "notes": "tab law —"
+ },
+ {
+  "temp_id": "uds-027",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Orientation that follows. Entry that feels alive.",
+  "demo_num": null,
+  "category": "TYP",
+  "tags": [
+   "landing",
+   "feed",
+   "dashboard",
+   "report",
+   "profile"
+  ],
+  "html": "<div class=\"tab-law\"><span>3</span><div>Shape, contrast and the spectrum jewel agree.<strong>Active state is unmistakable.</strong><br></div></div>",
+  "css_classes": [
+   "tab-law"
+  ],
+  "notes": "tab law —"
+ },
+ {
+  "temp_id": "uds-028",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Orientation that follows. Entry that feels alive.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn small\" type=\"button\" style=\"--tone:#8d63f5;--rgb:141,99,245\" data-aware=\"\" data-login-preview=\"\">Continue securely<svg class=\"icon icon-sm\"><use href=\"#i-arrow\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "icon-sm",
+   "naya-btn",
+   "small"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-029",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon micro\" aria-label=\"Dismiss notification\"><svg class=\"icon\"><use href=\"#i-close\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "micro",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-030",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem diamond\"><svg class=\"icon\"><use href=\"#i-spark\"></svg></span>",
+  "css_classes": [
+   "diamond",
+   "icon",
+   "mini-gem"
+  ],
+  "notes": "mini gem mark — | duplicate of uds-080 (Beautiful at sixteen pixels.)"
+ },
+ {
+  "temp_id": "uds-031",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon portal\" aria-label=\"Play specimen\"><svg class=\"icon\"><use href=\"#i-play\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn",
+   "portal"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-032",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon micro\" aria-label=\"Download\"><svg class=\"icon\"><use href=\"#i-download\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "micro",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-033",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Give the next Naya the rules, not a screenshot.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"--c:#e455f4\"><span>priority</span></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — variant classes: swatch",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "uds-034",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Give the next Naya the rules, not a screenshot.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"--c:#8d63f5\"><span>presence</span></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — variant classes: swatch",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "uds-035",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Give the next Naya the rules, not a screenshot.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"--c:#3f9ff5\"><span>insight</span></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — variant classes: swatch",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "uds-036",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Give the next Naya the rules, not a screenshot.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"--c:#39d7e8\"><span>flow</span></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — variant classes: swatch",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "uds-037",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Give the next Naya the rules, not a screenshot.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"--c:#34d38a\"><span>verified</span></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — variant classes: swatch",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "uds-038",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Give the next Naya the rules, not a screenshot.",
+  "demo_num": null,
+  "category": "UNCAT",
+  "tags": [
+   "theme",
+   "dashboard",
+   "feed",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"swatch\" style=\"--c:#e7c65a\"><span>value</span></div>",
+  "css_classes": [
+   "swatch"
+  ],
+  "notes": "color swatch — variant classes: swatch",
+  "proposed_category": "COLOR"
+ },
+ {
+  "temp_id": "uds-039",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"grad-step\">Research<span>01</span></div>",
+  "css_classes": [
+   "grad-step"
+  ],
+  "notes": "gradient step —"
+ },
+ {
+  "temp_id": "uds-040",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"grad-step\">Understand<span>02</span></div>",
+  "css_classes": [
+   "grad-step"
+  ],
+  "notes": "gradient step —"
+ },
+ {
+  "temp_id": "uds-041",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"grad-step\">Distill<span>03</span></div>",
+  "css_classes": [
+   "grad-step"
+  ],
+  "notes": "gradient step —"
+ },
+ {
+  "temp_id": "uds-042",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"grad-step\">Invent<span>04</span></div>",
+  "css_classes": [
+   "grad-step"
+  ],
+  "notes": "gradient step —"
+ },
+ {
+  "temp_id": "uds-043",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"grad-step\">Build<span>05</span></div>",
+  "css_classes": [
+   "grad-step"
+  ],
+  "notes": "gradient step —"
+ },
+ {
+  "temp_id": "uds-044",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"grad-step\">Experience<span>06</span></div>",
+  "css_classes": [
+   "grad-step"
+  ],
+  "notes": "gradient step —"
+ },
+ {
+  "temp_id": "uds-045",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"grad-step\">Verify<span>07</span></div>",
+  "css_classes": [
+   "grad-step"
+  ],
+  "notes": "gradient step —"
+ },
+ {
+  "temp_id": "uds-046",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"grad-step\">Learn<span>08</span></div>",
+  "css_classes": [
+   "grad-step"
+  ],
+  "notes": "gradient step —"
+ },
+ {
+  "temp_id": "uds-047",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"grad-step\">Reproduce<span>09</span></div>",
+  "css_classes": [
+   "grad-step"
+  ],
+  "notes": "gradient step —"
+ },
+ {
+  "temp_id": "uds-048",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence is a loop that can teach itself.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem\" style=\"--tone:#8d63f5;--rgb:141,99,245\"><svg class=\"icon icon-sm\"><use href=\"#i-diamond\"></svg></span>",
+  "css_classes": [
+   "icon",
+   "icon-sm",
+   "mini-gem"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-049",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Build intelligence people can feel.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<a class=\"naya-btn\" href=\"#buttons\" style=\"--tone:#8d63f5;--rgb:141,99,245\" data-aware=\"\">Experience the components<span class=\"btn-orb\"><svg class=\"icon\"><use href=\"#i-spark\"></svg></span><svg class=\"icon icon-sm\"><use href=\"#i-arrow\"></svg></a>",
+  "css_classes": [
+   "btn-orb",
+   "icon",
+   "icon-sm",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-050",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Build intelligence people can feel.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<a class=\"naya-btn prism\" href=\"#tokens\" style=\"--tone:#3f9ff5;--rgb:63,159,245\" data-aware=\"\">Use the system<span class=\"prism-mark\"><svg class=\"icon\"><use href=\"#i-code\"></svg></span></a>",
+  "css_classes": [
+   "icon",
+   "naya-btn",
+   "prism",
+   "prism-mark"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-051",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Four laws create one unmistakable world.",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"foundation-index\">01</div>",
+  "css_classes": [
+   "foundation-index"
+  ],
+  "notes": "foundation index —"
+ },
+ {
+  "temp_id": "uds-052",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Four laws create one unmistakable world.",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"foundation-index\">02</div>",
+  "css_classes": [
+   "foundation-index"
+  ],
+  "notes": "foundation index —"
+ },
+ {
+  "temp_id": "uds-053",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Four laws create one unmistakable world.",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"foundation-index\">03</div>",
+  "css_classes": [
+   "foundation-index"
+  ],
+  "notes": "foundation index —"
+ },
+ {
+  "temp_id": "uds-054",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Four laws create one unmistakable world.",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<div class=\"foundation-index\">04</div>",
+  "css_classes": [
+   "foundation-index"
+  ],
+  "notes": "foundation index —"
+ },
+ {
+  "temp_id": "uds-055",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Extraordinary before the first touch.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"button-cell\"><button class=\"naya-btn proximity\" style=\"--tone:#34d38a;--rgb:52,211,138\" data-aware=\"\">Create space<svg class=\"icon icon-sm\"><use href=\"#i-plus\"></svg></button><span class=\"caption\">04 · Naya 5 proximity · black restored</span></div>",
+  "css_classes": [
+   "button-cell",
+   "caption",
+   "icon",
+   "icon-sm",
+   "naya-btn",
+   "proximity"
+  ],
+  "notes": "button cell —"
+ },
+ {
+  "temp_id": "uds-056",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Extraordinary before the first touch.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"button-cell\"><button class=\"naya-btn split\" style=\"--tone:#e7c65a;--rgb:231,198,90\" data-aware=\"\">View proof<span class=\"split-orb\"><svg class=\"icon\"><use href=\"#i-check\"></svg></span></button><span class=\"caption\">Portal variant</span></div>",
+  "css_classes": [
+   "button-cell",
+   "caption",
+   "icon",
+   "naya-btn",
+   "split",
+   "split-orb"
+  ],
+  "notes": "button cell —"
+ },
+ {
+  "temp_id": "uds-057",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Extraordinary before the first touch.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"button-cell\"><button class=\"naya-btn icon\" aria-label=\"Search\" style=\"--tone:#e7c65a;--rgb:231,198,90\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-search\"></svg></button><span class=\"caption\">Icon action</span></div>",
+  "css_classes": [
+   "button-cell",
+   "caption",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "button cell —"
+ },
+ {
+  "temp_id": "uds-058",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Extraordinary before the first touch.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"button-cell\"><div class=\"segmented\" role=\"tablist\" aria-label=\"View mode\"><button aria-selected=\"true\">Human</button><button aria-selected=\"false\">Naya</button><button aria-selected=\"false\">Machine</button></div><span class=\"caption\">Smart lens</span></div>",
+  "css_classes": [
+   "button-cell",
+   "caption",
+   "segmented"
+  ],
+  "notes": "button cell —"
+ },
+ {
+  "temp_id": "uds-059",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Like\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-heart\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-060",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Share\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-share\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-061",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Add\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-plus\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-062",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon portal\" aria-label=\"Play\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-play\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn",
+   "portal"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-063",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Pause\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-pause\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-064",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Search\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-search\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-065",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Notify\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-bell\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-066",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Save\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-bookmark\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-067",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Comment\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-comment\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-068",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"More\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-more\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-069",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Close\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-close\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-070",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Back\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-back\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-071",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Verified\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-check\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-072",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Premium\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-star\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-073",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Send\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-send\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-074",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Download\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-download\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-075",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Open link\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-external\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-076",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Settings\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-settings\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-077",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Profile\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-profile\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-078",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Private\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-lock\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-079",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn icon\" aria-label=\"Public\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-globe\"></svg></button>",
+  "css_classes": [
+   "icon",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-081",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem circle\"><svg class=\"icon\"><use href=\"#i-grid\"></svg></span>",
+  "css_classes": [
+   "circle",
+   "icon",
+   "mini-gem"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-082",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem square\"><svg class=\"icon\"><use href=\"#i-bars\"></svg></span>",
+  "css_classes": [
+   "icon",
+   "mini-gem",
+   "square"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-083",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem diamond\"><svg class=\"icon\"><use href=\"#i-mail\"></svg></span>",
+  "css_classes": [
+   "diamond",
+   "icon",
+   "mini-gem"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-084",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem circle\"><svg class=\"icon\"><use href=\"#i-search\"></svg></span>",
+  "css_classes": [
+   "circle",
+   "icon",
+   "mini-gem"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-085",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem square\"><svg class=\"icon\"><use href=\"#i-door\"></svg></span>",
+  "css_classes": [
+   "icon",
+   "mini-gem",
+   "square"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-086",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem circle\"><svg class=\"icon\"><use href=\"#i-people\"></svg></span>",
+  "css_classes": [
+   "circle",
+   "icon",
+   "mini-gem"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-087",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem diamond\"><svg class=\"icon\"><use href=\"#i-pulse\"></svg></span>",
+  "css_classes": [
+   "diamond",
+   "icon",
+   "mini-gem"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-088",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem circle\"><svg class=\"icon\"><use href=\"#i-orbit\"></svg></span>",
+  "css_classes": [
+   "circle",
+   "icon",
+   "mini-gem"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-089",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<span class=\"mini-gem square\"><svg class=\"icon\"><use href=\"#i-shield\"></svg></span>",
+  "css_classes": [
+   "icon",
+   "mini-gem",
+   "square"
+  ],
+  "notes": "mini gem mark —"
+ },
+ {
+  "temp_id": "uds-090",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Give the next Naya the rules, not a screenshot.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn compact\" data-copy-target=\"button-code\">Copy CSS<svg class=\"icon icon-sm\"><use href=\"#i-copy\"></svg></button>",
+  "css_classes": [
+   "compact",
+   "icon",
+   "icon-sm",
+   "naya-btn"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-091",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Spectrum is meaning.",
+  "demo_num": null,
+  "category": "LAY",
+  "tags": [
+   "dashboard",
+   "landing",
+   "settings"
+  ],
+  "html": "<article class=\"foundation\" style=\"--tone:var(--magenta)\"><div class=\"foundation-index\">01</div><h3>Spectrum is meaning.</h3><p>Color separates jobs, relationships, identity and rhythm. It never becomes a random rainbow.</p></article>",
+  "css_classes": [
+   "foundation",
+   "foundation-index"
+  ],
+  "notes": "foundation column —"
+ },
+ {
+  "temp_id": "uds-092",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Material has a soul.",
+  "demo_num": null,
+  "category": "LAY",
+  "tags": [
+   "dashboard",
+   "landing",
+   "settings"
+  ],
+  "html": "<article class=\"foundation\" style=\"--tone:var(--purple)\"><div class=\"foundation-index\">02</div><h3>Material has a soul.</h3><p>Black creates depth. White reveals edges. Purple signals the presence of Naya.</p></article>",
+  "css_classes": [
+   "foundation",
+   "foundation-index"
+  ],
+  "notes": "foundation column —"
+ },
+ {
+  "temp_id": "uds-093",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Intelligence is structural.",
+  "demo_num": null,
+  "category": "LAY",
+  "tags": [
+   "dashboard",
+   "landing",
+   "settings"
+  ],
+  "html": "<article class=\"foundation\" style=\"--tone:var(--blue)\"><div class=\"foundation-index\">03</div><h3>Intelligence is structural.</h3><p>Every component explains what it is, what it can do and what state it is in.</p></article>",
+  "css_classes": [
+   "foundation",
+   "foundation-index"
+  ],
+  "notes": "foundation column —"
+ },
+ {
+  "temp_id": "uds-094",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Excellence reproduces.",
+  "demo_num": null,
+  "category": "LAY",
+  "tags": [
+   "dashboard",
+   "landing",
+   "settings"
+  ],
+  "html": "<article class=\"foundation\" style=\"--tone:var(--green)\"><div class=\"foundation-index\">04</div><h3>Excellence reproduces.</h3><p>The rules are tokens, anatomy, states and tests—not one beautiful page that cannot be repeated.</p></article>",
+  "css_classes": [
+   "foundation",
+   "foundation-index"
+  ],
+  "notes": "foundation column —"
+ },
+ {
+  "temp_id": "uds-095",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#e455f4\"><button class=\"naya-btn icon\" aria-label=\"Like\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-heart\"></svg></button><span>LIKE</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-096",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#8d63f5\"><button class=\"naya-btn icon\" aria-label=\"Share\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-share\"></svg></button><span>SHARE</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-097",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#3f9ff5\"><button class=\"naya-btn icon\" aria-label=\"Add\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-plus\"></svg></button><span>ADD</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-098",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#39d7e8\"><button class=\"naya-btn icon portal\" aria-label=\"Play\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-play\"></svg></button><span>PLAY</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn",
+   "portal"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-099",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#34d38a\"><button class=\"naya-btn icon\" aria-label=\"Pause\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-pause\"></svg></button><span>PAUSE</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-100",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#e7c65a\"><button class=\"naya-btn icon\" aria-label=\"Search\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-search\"></svg></button><span>SEARCH</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-101",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#e455f4\"><button class=\"naya-btn icon\" aria-label=\"Notify\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-bell\"></svg></button><span>NOTIFY</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-102",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#8d63f5\"><button class=\"naya-btn icon\" aria-label=\"Save\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-bookmark\"></svg></button><span>SAVE</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-103",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#3f9ff5\"><button class=\"naya-btn icon\" aria-label=\"Comment\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-comment\"></svg></button><span>COMMENT</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-104",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#39d7e8\"><button class=\"naya-btn icon\" aria-label=\"More\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-more\"></svg></button><span>MORE</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-105",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#ff5e6c\"><button class=\"naya-btn icon\" aria-label=\"Close\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-close\"></svg></button><span>CLOSE</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-106",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#6675ff\"><button class=\"naya-btn icon\" aria-label=\"Back\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-back\"></svg></button><span>BACK</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-107",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#34d38a\"><button class=\"naya-btn icon\" aria-label=\"Verified\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-check\"></svg></button><span>VERIFIED</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-108",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#e7c65a\"><button class=\"naya-btn icon\" aria-label=\"Premium\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-star\"></svg></button><span>PREMIUM</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-109",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#e455f4\"><button class=\"naya-btn icon\" aria-label=\"Send\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-send\"></svg></button><span>SEND</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-110",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#3f9ff5\"><button class=\"naya-btn icon\" aria-label=\"Download\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-download\"></svg></button><span>DOWNLOAD</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-111",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#39d7e8\"><button class=\"naya-btn icon\" aria-label=\"Open link\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-external\"></svg></button><span>OPEN LINK</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-112",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#8d63f5\"><button class=\"naya-btn icon\" aria-label=\"Settings\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-settings\"></svg></button><span>SETTINGS</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-113",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#ff9a5a\"><button class=\"naya-btn icon\" aria-label=\"Profile\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-profile\"></svg></button><span>PROFILE</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-114",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#6675ff\"><button class=\"naya-btn icon\" aria-label=\"Private\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-lock\"></svg></button><span>PRIVATE</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-115",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<div class=\"action-item\" style=\"--tone:#34d38a\"><button class=\"naya-btn icon\" aria-label=\"Public\" data-aware=\"\"><svg class=\"icon\"><use href=\"#i-globe\"></svg></button><span>PUBLIC</span></div>",
+  "css_classes": [
+   "action-item",
+   "icon",
+   "naya-btn"
+  ],
+  "notes": "action button + label —"
+ },
+ {
+  "temp_id": "uds-116",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn small\" style=\"--tone:#8d63f5\">Rest</button>",
+  "css_classes": [
+   "naya-btn",
+   "small"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-117",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn small forced-hover\" style=\"--tone:#3f9ff5\">Hover / focus</button>",
+  "css_classes": [
+   "forced-hover",
+   "naya-btn",
+   "small"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-118",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn small forced-active\" style=\"--tone:#34d38a\">Active</button>",
+  "css_classes": [
+   "forced-active",
+   "naya-btn",
+   "small"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-119",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Twenty-one actions. One living DNA.",
+  "demo_num": null,
+  "category": "BTN",
+  "tags": [
+   "form",
+   "dashboard",
+   "settings",
+   "feed",
+   "chat",
+   "landing",
+   "player",
+   "profile"
+  ],
+  "html": "<button class=\"naya-btn small\" disabled=\"\">Disabled</button>",
+  "css_classes": [
+   "naya-btn",
+   "small"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-120",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Priority",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"circle-card\"><span class=\"sphere\" style=\"--tone:#e455f4;--rgb:228,85,244\"><svg class=\"icon\"><use href=\"#i-spark\"></svg></span><h3>Priority</h3><p>What matters now</p></article>",
+  "css_classes": [
+   "circle-card",
+   "icon",
+   "sphere"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-121",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Presence",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"circle-card\"><span class=\"sphere\" style=\"--tone:#8d63f5;--rgb:141,99,245\"><svg class=\"icon\"><use href=\"#i-orbit\"></svg></span><h3>Presence</h3><p>Naya is here</p></article>",
+  "css_classes": [
+   "circle-card",
+   "icon",
+   "sphere"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-122",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Understanding",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"circle-card\"><span class=\"sphere\" style=\"--tone:#3f9ff5;--rgb:63,159,245\"><svg class=\"icon\"><use href=\"#i-book\"></svg></span><h3>Understanding</h3><p>Knowledge in context</p></article>",
+  "css_classes": [
+   "circle-card",
+   "icon",
+   "sphere"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-123",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Verified",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"circle-card\"><span class=\"sphere\" style=\"--tone:#34d38a;--rgb:52,211,138\"><svg class=\"icon\"><use href=\"#i-check\"></svg></span><h3>Verified</h3><p>Evidence exists</p></article>",
+  "css_classes": [
+   "circle-card",
+   "icon",
+   "sphere"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-124",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Value",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"circle-card\"><span class=\"sphere\" style=\"--tone:#e7c65a;--rgb:231,198,90\"><svg class=\"icon\"><use href=\"#i-pulse\"></svg></span><h3>Value</h3><p>What was gained</p></article>",
+  "css_classes": [
+   "circle-card",
+   "icon",
+   "sphere"
+  ],
+  "notes": null
+ },
+ {
+  "temp_id": "uds-125",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#e455f4;--rgb:228,85,244\">Today<span class=\"mini-gem diamond\"><svg class=\"icon\"><use href=\"#i-spark\"></svg></span></div>",
+  "css_classes": [
+   "diamond",
+   "icon",
+   "icon-tile",
+   "mini-gem"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-126",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#8d63f5;--rgb:141,99,245\">Spaces<span class=\"mini-gem circle\"><svg class=\"icon\"><use href=\"#i-grid\"></svg></span></div>",
+  "css_classes": [
+   "circle",
+   "icon",
+   "icon-tile",
+   "mini-gem"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-127",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#6675ff;--rgb:102,117,255\">Reports<span class=\"mini-gem square\"><svg class=\"icon\"><use href=\"#i-bars\"></svg></span></div>",
+  "css_classes": [
+   "icon",
+   "icon-tile",
+   "mini-gem",
+   "square"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-128",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#3f9ff5;--rgb:63,159,245\">Mail<span class=\"mini-gem diamond\"><svg class=\"icon\"><use href=\"#i-mail\"></svg></span></div>",
+  "css_classes": [
+   "diamond",
+   "icon",
+   "icon-tile",
+   "mini-gem"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-129",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#39d7e8;--rgb:57,215,232\">Ask<span class=\"mini-gem circle\"><svg class=\"icon\"><use href=\"#i-search\"></svg></span></div>",
+  "css_classes": [
+   "circle",
+   "icon",
+   "icon-tile",
+   "mini-gem"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-130",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#34d38a;--rgb:52,211,138\">Doors<span class=\"mini-gem square\"><svg class=\"icon\"><use href=\"#i-door\"></svg></span></div>",
+  "css_classes": [
+   "icon",
+   "icon-tile",
+   "mini-gem",
+   "square"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-131",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#5ce17a;--rgb:92,225,122\">People<span class=\"mini-gem circle\"><svg class=\"icon\"><use href=\"#i-people\"></svg></span></div>",
+  "css_classes": [
+   "circle",
+   "icon",
+   "icon-tile",
+   "mini-gem"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-132",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#e7c65a;--rgb:231,198,90\">Ledger<span class=\"mini-gem diamond\"><svg class=\"icon\"><use href=\"#i-pulse\"></svg></span></div>",
+  "css_classes": [
+   "diamond",
+   "icon",
+   "icon-tile",
+   "mini-gem"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-133",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#ff9a5a;--rgb:255,154,90\">Grow<span class=\"mini-gem circle\"><svg class=\"icon\"><use href=\"#i-orbit\"></svg></span></div>",
+  "css_classes": [
+   "circle",
+   "icon",
+   "icon-tile",
+   "mini-gem"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-134",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Beautiful at sixteen pixels.",
+  "demo_num": null,
+  "category": "JWL",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "landing",
+   "gallery",
+   "chat"
+  ],
+  "html": "<div class=\"icon-tile\" style=\"--tone:#ff5e6c;--rgb:255,94,108\">Guard<span class=\"mini-gem square\"><svg class=\"icon\"><use href=\"#i-shield\"></svg></span></div>",
+  "css_classes": [
+   "icon",
+   "icon-tile",
+   "mini-gem",
+   "square"
+  ],
+  "notes": "icon tile —"
+ },
+ {
+  "temp_id": "uds-135",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card\" style=\"--tone:#e455f4\"><p class=\"block-kicker\">INPUT / FORM</p><label class=\"field-label\" for=\"sample-email\">Email address</label><div class=\"recessed-field\"><svg class=\"icon icon-sm\"><use href=\"#i-mail\"></svg><input id=\"sample-email\" type=\"email\" value=\"hello@naya.net\" readonly=\"\"></div><div class=\"block-law\"> visible label + recessed well  default white input<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "field-label",
+   "icon",
+   "icon-sm",
+   "recessed-field"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-136",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card\" style=\"--tone:#8d63f5\"><p class=\"block-kicker\">MODAL / DIALOG</p><div class=\"modal-mini\"><span class=\"modal-gem\"><svg class=\"icon\"><use href=\"#i-lock\"></svg></span><div><strong>Keep this private?</strong><small>The consequence is named before action.</small></div></div><div class=\"block-law\"> elevate above its context  float without weight<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "icon",
+   "modal-gem",
+   "modal-mini"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-137",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card\" style=\"--tone:#6675ff\"><p class=\"block-kicker\">TOAST / NOTIFICATION</p><div class=\"toast-mini\"><svg class=\"icon\"><use href=\"#i-check\"></svg><div><strong>Copied to clipboard</strong><small>Truthful, brief, dismissible.</small></div><button class=\"naya-btn icon micro\" aria-label=\"Dismiss notification\"><svg class=\"icon\"><use href=\"#i-close\"></svg></button></div><div class=\"block-law\"> report what happened  fake success<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "icon",
+   "micro",
+   "naya-btn",
+   "toast-mini"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-138",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card wide\" style=\"--tone:#3f9ff5\"><p class=\"block-kicker\">DATA TABLE</p><div class=\"data-table\" role=\"table\" aria-label=\"Component status specimen\"><div class=\"trow thead\" role=\"row\"><span>Block</span><span>State</span><span>Proof</span></div><div class=\"trow\" role=\"row\"><strong>Button</strong><span>Canonical</span><span class=\"status-dot\">Included</span></div><div class=\"trow\" role=\"row\"><strong>Board</strong><span>Elevated</span><span class=\"status-dot\">Included</span></div></div><div class=\"block-law\"> align labels left and numbers right  center every column<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "data-table",
+   "status-dot",
+   "thead",
+   "trow",
+   "wide"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-139",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card\" style=\"--tone:#39d7e8\"><p class=\"block-kicker\">SEARCH INTERFACE</p><div class=\"recessed-field search-field\" role=\"searchbox\" tabindex=\"0\" aria-label=\"Search your intelligence\"><svg class=\"icon\"><use href=\"#i-search\"></svg><span>Search your intelligence</span><kbd>⌘ K</kbd></div><div class=\"search-result\"><span class=\"mini-gem diamond\"><svg class=\"icon\"><use href=\"#i-spark\"></svg></span><div><strong>One governed answer</strong><small>Source and truth state stay visible.</small></div></div><div class=\"block-law\"> show scope + state  return mystery results<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "diamond",
+   "icon",
+   "mini-gem",
+   "recessed-field",
+   "search-field",
+   "search-result"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-140",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card\" style=\"--tone:#34d38a\"><p class=\"block-kicker\">TOGGLE / SETTINGS</p><div class=\"setting-row\"><div><strong>Living motion</strong><small>Respect system preference</small></div><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Living motion\"><span></span></button></div><div class=\"setting-row\"><div><strong>Private by default</strong><small>Protection is explicit</small></div><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"false\" aria-label=\"Private by default\"><span></span></button></div><div class=\"block-law\"> pair state with text  rely on color alone<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "naya-toggle",
+   "setting-row"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-141",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card\" style=\"--tone:#8edc52\"><p class=\"block-kicker\">CONTENT CARD</p><div class=\"content-card\"><span class=\"content-jewel\"><svg class=\"icon\"><use href=\"#i-bookmark\"></svg></span><div><strong>A single useful object</strong><small>Cards preview. Boards organize worlds.</small></div></div><div class=\"block-law\"> keep one clear job  shrink a board into a card<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "content-card",
+   "content-jewel",
+   "icon"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-142",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card wide\" style=\"--tone:#e7c65a\"><p class=\"block-kicker\">MEDIA PLAYER</p><div class=\"media-player\"><button class=\"naya-btn icon portal\" aria-label=\"Play specimen\"><svg class=\"icon\"><use href=\"#i-play\"></svg></button><div class=\"media-copy\"><strong>Intelligence in Naya’s voice</strong><small>00:00 · specimen</small><div class=\"timeline\"><span></span></div></div><button class=\"naya-btn icon micro\" aria-label=\"Download\"><svg class=\"icon\"><use href=\"#i-download\"></svg></button></div><div class=\"block-law\"> make Play a portal  use a naked triangle<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "icon",
+   "media-copy",
+   "media-player",
+   "micro",
+   "naya-btn",
+   "portal",
+   "timeline",
+   "wide"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-143",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card\" style=\"--tone:#ff9a5a\"><p class=\"block-kicker\">CHART / DATA-VIZ</p><div class=\"chart-mini\" aria-label=\"Chart anatomy specimen; no live data\"><div style=\"--h:38%\"><i></i><span>A</span></div><div style=\"--h:67%\"><i></i><span>B</span></div><div style=\"--h:52%\"><i></i><span>C</span></div><div style=\"--h:82%\"><i></i><span>D</span></div></div><small class=\"specimen-note\">ANATOMY SPECIMEN · NO LIVE DATA</small><div class=\"block-law\"> label axes and units  invent numbers for beauty<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "chart-mini",
+   "specimen-note"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-144",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The missing ten, now built into the library.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<article class=\"block-card\" style=\"--tone:#ff5e6c\"><p class=\"block-kicker\">SMART LINK / SHARE SHEET</p><div class=\"share-sheet\"><div class=\"smart-link\"><svg class=\"icon\"><use href=\"#i-globe\"></svg><span><strong>Public view</strong><small>Who can open this is explicit.</small></span></div><div class=\"share-actions\"><button class=\"naya-btn small\">People<svg class=\"icon icon-sm\"><use href=\"#i-profile\"></svg></button><button class=\"naya-btn small\">Private<svg class=\"icon icon-sm\"><use href=\"#i-lock\"></svg></button></div></div><div class=\"block-law\"> explain reach before sharing  hide the audience<b>DO</b><b>DON’T</b></div></article>",
+  "css_classes": [
+   "block-card",
+   "block-kicker",
+   "block-law",
+   "icon",
+   "icon-sm",
+   "naya-btn",
+   "share-actions",
+   "share-sheet",
+   "small",
+   "smart-link"
+  ],
+  "notes": "specimen block card —"
+ },
+ {
+  "temp_id": "uds-145",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\" open=\"\"><summary>01 · Elevation &amp; Living Depth</summary><ol start=\"1\"><li> Elevation always. Every button, every board, every card, all the time. If it does not sit off the page, it is not finished. Flat is a defect, not a style.<strong>Law 1.</strong></li><li> No 2D in NayaNET. There is no flat plane. Every interactive surface has at least three layers: base surface, edge light, seating shadow. Non-interactive surfaces have at least two.<strong>Law 2.</strong></li><li> Living depth. Depth is not a static shadow. On hover, focus, or approach, the element lifts, its edge catches light, and its shadow deepens. The element feels alive — we call this Active Intelligence.<strong>Law 3.</strong></li><li> Shadow is weight. A heavier shadow means a more important element. Primary actions cast the deepest shadow; tertiary elements cast the lightest. Shadow hierarchy = action hierarchy.<strong>Law 4.</strong></li><li> The page is a physical space. Elements exist on the page, not in it. A board overlapping another board must resolve with elevation, not z-index tricks. If it looks pasted on, rebuild it.<strong>Law 5.</strong></li><li> Depth before color. Establish the elevation system in black and white first. If it does not read as premium in monochrome, color will not save it.<strong>Law 6.</strong></li><li> Seating shadow, never drop shadow. Use a soft, offset, dark seating shadow that grounds the element. Never a uniform blur halo — that reads as glow, not weight.<strong>Law 7.</strong></li><li> Edge light is a hairline. The top edge catches a 1px highlight at 12–20% white. The sides fade. The bottom edge is shadow. This is how real objects catch light.<strong>Law 8.</strong></li><li> Inner depth counts. Recessed wells (inputs, code blocks, media players) are carved into the page with inner shadow. Raised and recessed are the only two directions. Nothing is level with the page.<strong>Law 9.</strong></li><li> If it doesn't move, it's dead. Every board and button responds to pointer proximity. No response = no good. Ship the hover state with the element, not after it.<strong>Law 10.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-146",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\"><summary>02 · Premium Material &amp; Contrast</summary><ol start=\"11\"><li> Premium, not fancy. Fancy is effects. Premium is material, contrast, weight, and restraint. When in doubt, subtract. A button that whispers is more expensive than one that shouts.<strong>Law 11.</strong></li><li> Deep black is the base. Default surface: rich obsidian (#0a0a0f to #12121a range). Not gray, not navy, not purple-tinted. Black is the canvas; color is the jewel set into it.<strong>Law 12.</strong></li><li> Contrast is a law, not a preference. Body text on its surface must pass WCAG AA at minimum, AAA preferred. If you have to squint, it fails. Red on red, purple on purple, gold on yellow — automatic rejection.<strong>Law 13.</strong></li><li> Glow lives on the border, not in the air. Accent glow is a tight border light-up: 0–4px spread, high precision. Outward bloom beyond 8px reads as cheap neon. The board lights up; it does not radiate.<strong>Law 14.</strong></li><li> White glow requires blacker black. If a white or silver glow is used, the surface beneath must be deepened first. Glow on mid-gray washes out. Contrast first, glow second.<strong>Law 15.</strong></li><li> Luxury is restraint. One accent per element. One jewel per board. The moment everything glows, nothing is premium. Empty black space is a design material.<strong>Law 16.</strong></li><li> Text is printed, not rendered. Type must look like it was set by a master printer: crisp antialiasing, intentional weight, no text-shadow blur. If text looks like a screenshot of text, the weight or size is wrong.<strong>Law 17.</strong></li><li> Materials have names. We use: Obsidian (base), Frosted Obsidian (translucent panels), Jewel (accent surfaces), Paper White (text), Silver (secondary text). Inventing a new material per page is forbidden.<strong>Law 18.</strong></li><li> The most expensive element test. Look at the page. Every element should be a candidate for &quot;most expensive thing here.&quot; If one element visibly cheapens the page, it is the page's quality ceiling. Fix it or remove it.<strong>Law 19.</strong></li><li> Subtract before adding. &quot;10x better&quot; means better human experience, not more effects (SN-0733). Before adding a gradient, animation, or glow, ask: does removing something make this more premium? Usually yes.<strong>Law 20.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-147",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\"><summary>03 · Buttons — The Jewel Standard</summary><ol start=\"21\"><li> One canonical button. .naya-btn is the only button system. All variants derive from it. A second button implementation on the same page is a consistency violation, not a creative choice.<strong>Law 21.</strong></li><li> The three front-door buttons set the bar. The first three actions a user sees are the flagship component. They must be the most polished controls in the product. If a Smart Tab button looks more professional than the hero button, the hero button fails.<strong>Law 22.</strong></li><li> Black body, jewel accent. Buttons are deep black with a jewel-toned accent: hairline border, kicker text, icon, or edge light. Never a full-color fill for body text or large surfaces. Color is the setting, not the stone.<strong>Law 23.</strong></li><li> Five mandatory states. Rest, Hover, Press, Focus, Disabled — plus Loading and Success where the action is async. Missing a state means the button is unfinished. Press compresses 1–2px; hover lifts 2–4px.<strong>Law 24.</strong></li><li> A circle flows around it. Icon buttons and primary CTAs may carry a rotating or flowing ring accent on hover — a thin jewel line that travels the perimeter. It signals life without bloom. Keep it under 2px and under 40% opacity.<strong>Law 25.</strong></li><li> Delete is dark, not glowing red. Destructive actions use deep black with a desaturated red accent (border, icon, or text at rest). Glowing red hover is forbidden — it reads as alarm, not elegance. Confirmation does the safety work, not the glow.<strong>Law 26.</strong></li><li> Labels are verbs, one line. &quot;Create&quot;, &quot;Publish&quot;, &quot;Connect&quot;, &quot;Save&quot;. sentence case, no period, no exclamation. A label that wraps to two lines means the copy or the button width is wrong.<strong>Law 27.</strong></li><li> Minimum touch target 44×44px. Every button, everywhere, no exceptions (mobile- first law). Visual size may be smaller only if the hit area is not. Desktop density never overrides touch law.<strong>Law 28.</strong></li><li> Buttons in a row are a family. Same height, same radius, same depth system. The primary is elevated highest; secondaries sit one step lower. A row of mismatched buttons reads as three different products.<strong>Law 29.</strong></li><li> Never re-teach the button. When Shawn approves a button, that exact code becomes the block (SN-0735: take the actual code). Rebuilding it &quot;from memory&quot; next time is how flat buttons come back. Copy the block verbatim, then vary only the variant class.<strong>Law 30.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-148",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\"><summary>04 · Boards, Cards &amp; Panels</summary><ol start=\"31\"><li> The board recipe. Dark obsidian body, theme-tinted hairline edge, rich radial wash confined to the cover/header zone, white title, silver body text, jewel kicker. This recipe is not optional decoration — it is the board.<strong>Law 31.</strong></li><li> The outer board is alive too. Hovering a board lights its border and lifts the whole board, not just inner elements. A dead outer board with live buttons inside is a half-finished board.<strong>Law 32.</strong></li><li> Black board, colored border. Boards are black first. The spectrum color lives in the border, the kicker, the badge, and the hover edge-light — never as a full purple/red/green wash over the whole surface.<strong>Law 33.</strong></li><li> Glow stays in the frame. Board glow = border illumination only. Light does not spill more than 6px outside the frame. Spill washes out neighboring boards and destroys the &quot;jewels on black velvet&quot; effect.<strong>Law 34.</strong></li><li> Elevation hierarchy on the page. Page background (deepest) → section panels (+1) → boards (+2) → featured board (+3) → modal (+4). Never more than five levels visible at once. If everything is elevated equally, nothing is.<strong>Law 35.</strong></li><li> &quot;In a nutshell / How to use it&quot; panels are boards too. Explanatory panels, spec panels, and help blocks get the same elevation, border, and hover life as content boards. Flat instructional text on the page background is forbidden.<strong>Law 36.</strong></li><li> Headline / Body / Detail are a system. Every board carries three type levels: headline (white, largest), body (silver, readable), detail (muted, smallest but never below 12px). Skipping the body level collapses comprehension.<strong>Law 37.</strong></li><li> Boards breathe. Minimum 16px internal padding, 20–24px preferred. Content touching the border is a layout bug. Crowded boards read as cheap regardless of color.<strong>Law 38.</strong></li><li> Adjacent boards never share a color. Spectrum is assigned by position in the flow (see Section V), not by category. Two same-color boards side by side is a Spectrum Law violation.<strong>Law 39.</strong></li><li> The green/gold/pink test. Claimed/demonstrated state cards (green = verified, gold = premium, pink/magenta = featured) are the reference implementation. If a new board type does not feel like it belongs in that set, it is not done.<strong>Law 40.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-149",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\"><summary>05 · Color, Spectrum &amp; Jewels</summary><ol start=\"41\"><li> Spectrum by position. Purple → indigo → sapphire → teal → emerald → lime → yellow → gold → orange → rich orange → red → magenta → repeat. Assign in reading order. Theming by category clumps color and is a serious violation.<strong>Law 41.</strong></li><li> Jewel colors are for jewels, never text fills. Lime body text, gold paragraphs, red labels on red — forbidden. Jewels live in: hairline borders, number badges, checkmarks, kickers, icons, edge lights. Small, glowing, precious.<strong>Law 42.</strong></li><li> LAW ZERO: Readability Supremacy. No glow, gradient, accent, or depth effect may ever make anything harder to read. If an effect and readability conflict, the effect dies. Generous text by default.<strong>Law 43.</strong></li><li> Black with accents beats all-color. A black board with a teal edge is more premium than a teal board. Default to black; spend color like money.<strong>Law 44.</strong></li><li> One spectrum step per board. A board owns one spectrum position. Its jewel accent, kicker, and hover light all derive from that single hue (plus white/silver neutrals). Rainbow boards are for the Smart Feed spine only.<strong>Law 45.</strong></li><li> Red is a jewel, not a surface. Red appears as: delete accent, error indicator, notification badge, the spectrum's red step border. A red-filled board or red-on-red button (faded numeral on red) fails contrast and fails Law 13.<strong>Law 46.</strong></li><li> Gold means precious, use sparingly. Gold/yellow is restrained: premium badges, verified marks, the gold spectrum step. Never body text, never large fills. Gold everywhere is not luxury; it is a casino.<strong>Law 47.</strong></li><li> Neutrals do the heavy lifting. White (titles, primary text), silver (body), slate (detail), obsidian (surfaces). If a page is more than ~20% saturated color by area, rebalance toward black and neutrals.<strong>Law 48.</strong></li><li> Dark mode is the mode. NayaNET is designed dark-first. Light surfaces, where needed, must be designed as their own premium material — never an inverted afterthought.<strong>Law 49.</strong></li><li> Color survives the screenshot test. Take a screenshot, convert to grayscale. Hierarchy, elevation, and readability must survive. If the page only works in color, the depth system is fake.<strong>Law 50.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-150",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\"><summary>06 · Typography &amp; Readability</summary><ol start=\"51\"><li> White titles, silver body, always. Titles in white, body in silver, detail in muted slate. No exceptions for &quot;creative&quot; color text. Jewel color in a kicker (small, uppercase, tracked) is the only colored text allowed.<strong>Law 51.</strong></li><li> Type scale is fixed. Display 32–40 / Headline 22–28 / Body 15–17 / Detail 12–13 / Kicker 11 uppercase. Inventing sizes per page fragments the system. Line-height 1.45–1.6 for body.<strong>Law 52.</strong></li><li> Readability outranks density. If fitting more content means smaller text or tighter leading, fit less content. A board that breathes beats a board that crams.<strong>Law 53.</strong></li><li> Serif for voice, sans for system. Display headlines and the Naya voice may use the premium serif. UI labels, buttons, data, and body use the system sans. Never set body copy in display serif.<strong>Law 54.</strong></li><li> Numbers are designed. Badges, counts, and stats use tabular numerals, optically centered in their jewel badge. A faded number on a same-color button (red 6 on red) is invisible and forbidden — contrast or remove.<strong>Law 55.</strong></li><li> Truncation is a design decision. Ellipsize with intent, provide the full text on tap/hover, never let text overflow its board or push layout sideways. Overflow on mobile is a P0 bug.<strong>Law 56.</strong></li><li> Grandma standard. A non-technical reader must follow every board: what is this, what matters, what do I do next? If they cannot, the copy or hierarchy fails — not the reader (Ten-Star Service law).<strong>Law 57.</strong></li><li> No text on busy backgrounds. Text sits on solid obsidian or a controlled scrim. Text over gradients, images, or glows without a scrim fails Law 43.<strong>Law 58.</strong></li><li> Weight creates hierarchy before size does. Bold white headline > regular white > silver > slate. Reach for weight and color-value contrast before making type bigger.<strong>Law 59.</strong></li><li> Every label earns its place. If deleting a label costs the reader no action and no interpretation, delete it. Decorative text is noise wearing a uniform.<strong>Law 60.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-151",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\"><summary>07 · Icons &amp; Micro-Elements</summary><ol start=\"61\"><li> One icon family. Consistent stroke weight, corner treatment, optical size. Mixing icon sets is mixing languages. Drawn at size, never shrunk from a large illustration.<strong>Law 61.</strong></li><li> The library is complete before apps begin. Required blocks, each with rest/hover/active/disabled states: Like (heart), Share, Plus/Add, Play, Pause, Search, Bell/Notify, Bookmark/Save, Comment, More (•••), Close, Back, Check/Verified, Star/Premium, Send, Download, External Link, Settings, Profile, Lock/Private, Globe/Public.<strong>Law 62.</strong></li><li> Icon buttons are circles with life. Circular hit area, black surface, jewel icon, border light-up and lift on hover. The circle may carry the flowing ring (Law 25). A bare glyph with no surface is not a NayaNET icon button.<strong>Law 63.</strong></li><li> Like is a jewel, not a emoji. Like/heart fills with its spectrum jewel on activation, with a micro-scale pulse. Share uses the connected-nodes glyph. Plus sits in an elevated circle — it is the most-tapped element in creation flows and must feel premium.<strong>Law 64.</strong></li><li> Play is a portal. Media play buttons are elevated circles with a white triangle, black field, jewel ring. On hover the ring lights; on press it compresses. PowerCast and all media inherit this block — no custom play buttons per page.<strong>Law 65.</strong></li><li> Badges sit on black. Notification counts, status dots, and verified marks sit on an obsidian chip with a jewel numeral/symbol. Never a colored disc with a same-color numeral.<strong>Law 66.</strong></li><li> Icons have text names. Every icon-only control carries an accessible label and, where space allows, a visible micro-label. Mystery-meat navigation is forbidden.<strong>Law 67.</strong></li><li> State is visible at a glance. Liked/not, saved/not, following/not, live/not — each state is distinguishable by fill, weight, and jewel presence, not by color alone (colorblind-safe pairing).<strong>Law 68.</strong></li><li> Micro-elements get macro care. Toggles, checkboxes, radio pills, sliders, and segmented controls use the same elevation, edge-light, and press physics as primary buttons. A default browser control in a NayaNET app is a leak in the system.<strong>Law 69.</strong></li><li> Avatars are jewels too. Profile images sit in a ringed, elevated circular frame with a spectrum or status edge. A square naked &lt;img> is not a profile element.<strong>Law 70.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-152",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\"><summary>08 · Motion &amp; Living Intelligence</summary><ol start=\"71\"><li> Everything alive responds in under 100ms. Hover, press, and focus feedback begins instantly. A press that registers late feels broken even if the action succeeds.<strong>Law 71.</strong></li><li> The signature ease. .22s cubic-bezier(.16,.84,.22,1) for lifts and lights. Snappy in, gentle settle. Different easing per page fragments the feel of the product.<strong>Law 72.</strong></li><li> Press is compression. On press, the element settles 1–2px toward the page and its shadow tightens. Release springs it back. This single behavior sells physicality more than any gradient.<strong>Law 73.</strong></li><li> Light travels, it doesn't blink. Edge light sweeps or fades in along the border; it never hard-toggles. Cursor-tracking spotlight on flagship buttons is allowed — subtle, warm, and it dies the moment it distracts (Law 20).<strong>Law 74.</strong></li><li> Loading is honest. Spinners, skeletons, and progress reflect real work. A success state appears only when the action actually succeeded. Fake success is a trust violation (Functional Truth).<strong>Law 75.</strong></li><li> Motion explains, never decorates. Every animation answers: what changed, where did it go, what can I do now? Animation that answers nothing gets cut.<strong>Law 76.</strong></li><li> Respect reduced motion. prefers-reduced-motion disables lifts, rings, and sweeps; state still changes via light and contrast. Accessibility is not a variant; it is the same product, honored.<strong>Law 77.</strong></li><li> Breathing is reserved. Slow ambient pulse is allowed only on the single most-alive element per view (e.g., the voice orb, live indicator). Three breathing buttons in a row is a screensaver, not an interface.<strong>Law 78.</strong></li><li> Transitions between views are spatial. Boards slide, fade, and elevate in the direction of navigation. A hard cut between app views reads as a page reload — the old internet. Smart Apps move like objects in one space.<strong>Law 79.</strong></li><li> Alive at rest, brilliant on approach. At rest: quiet white/silver, black, restrained. On hover/active: the board's jewel lights. Rest/ignite is the rhythm of the whole system — never monochrome dead, never neon at rest.<strong>Law 80.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-153",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\"><summary>09 · Mobile-First &amp; Touch</summary><ol start=\"81\"><li> Mobile is the primary canvas. We build smart mobile apps that also work on laptop — never desktop pages shrunk down. Design, screenshot, and score the phone view first.<strong>Law 81.</strong></li><li> Extraordinary on both, equal quality. Laptop gets the same elevation, jewel, and motion system, expanded spatially. Mobile gets its own composition, not a squeezed column of the desktop layout.<strong>Law 82.</strong></li><li> 44px is the floor, 48px is the target. All touch targets (buttons, icons, tabs, list rows) meet Law 28. Legacy elements under 44px are defects to batch-fix, not styles to preserve.<strong>Law 83.</strong></li><li> Tap mirrors hover. Every :hover has an :active twin. A phone user must feel the same lift/light/compress physics through touch. Hover-only delight is desktop-only exclusion.<strong>Law 84.</strong></li><li> No horizontal scroll, ever. Content fits the viewport width at 360px. Fixed bottom bars must reserve padding so they never cover content. Cut-off text or sideways scroll is a P0 release blocker.<strong>Law 85.</strong></li><li> Safe areas are respected. Notch, gesture bar, and home indicator insets are padded. Boards and bars never slide under hardware.<strong>Law 86.</strong></li><li> Bottom navigation is real buttons. Nav items are elevated, labeled, jewel-active-state blocks from the canonical library. Blank circles or naked glyphs in a bottom bar fail Law 63 and Law 67.<strong>Law 87.</strong></li><li> Thumb-first layout. Primary action within thumb reach on phone. Destructive actions never adjacent to primary actions in the thumb zone.<strong>Law 88.</strong></li><li> Inputs are boards. Form fields are recessed obsidian wells (Law 9) with jewel focus border, 16px text (prevents iOS zoom), visible label, and inline validation state. A white default input ends the premium spell.<strong>Law 89.</strong></li><li> Test on real viewports. Phone (390×844), small phone (360×800), tablet (768×1024), laptop (1440×900). Screenshots at each. &quot;It looked fine in the browser resize&quot; is not evidence.<strong>Law 90.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-154",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "The canonical standard, line for line.",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<details class=\"law-group\"><summary>10 · Consistency, Library &amp; Proof</summary><ol start=\"91\"><li> One library, one DNA. Buttons, boards, icons, inputs, tabs, modals, toasts, tables, navigation — each element exists once, canonically. Pages consume blocks; they do not reinvent them. A page with a private button class is drift.<strong>Law 91.</strong></li><li> Take the actual code (SN-0735). Approved elements are extracted line-by-line into the library. Paraphrasing approved CSS from memory reintroduces the exact flatness Shawn rejected. The block is the memory.<strong>Law 92.</strong></li><li> The machine-readable contract. Design laws ship as a machine-readable design contract (tokens: colors, elevation steps, spacing, type scale, motion) that every page and every report generator reads. A law that lives only in a chat is a law that will be broken by the next pipeline (SN-0733 lineage).<strong>Law 93.</strong></li><li> Scorecard before showing Shawn. Every page is scored on: Buttons, Boards, Typography, Icons, Motion, Color/Material, Layout, Mobile, Accessibility, Functional Truth. Per- area floor 9.0; nothing below 9.0 is presented. Name what is not a 10 and why.<strong>Law 94.</strong></li><li> Screenshot or it didn't happen. Delivery includes timestamped screenshots (desktop + mobile) of the actual file shipped, with hash/size. Claiming &quot;elevated&quot; without a hover-state screenshot is an assertion, not evidence.<strong>Law 95.</strong></li><li> The cold-Naya graduation test (SN-0731). A fresh Naya, given only this document and the library, must build a Smart App scoring 9.5+ independently, with instruction-repetition counted. If it needs Shawn to re-teach a law, the law or the block is incomplete — fix the system, not the student.<strong>Law 96.</strong></li><li> Corrections compound the same day. Every Shawn correction is distilled into this document or the library within the same session. A correction that lives only in chat will be re- taught by Shawn next week — that repetition is our defect, not his.<strong>Law 97.</strong></li><li> Never ship the same flaw twice (SN-0734). If a rebuild goes flatter than what Shawn loved, revert to the loved version verbatim and rebuild from there. No-ego reversion beats stubborn iteration.<strong>Law 98.</strong></li><li> Audit every page against this standard. Connect, Connections, Index, Ledger, Library, Lists, Mail, Reports, Spaces, Start, Today — and every future Smart App — are audited law-by-law. Already good stays untouched; anything below standard gets upgraded. There are no exempt pages.<strong>Law 99.</strong></li><li> 10x better than the best, by experience. The target is not Apple, Linear, or Stripe — it is the felt experience those never delivered: a living, intelligent surface that remembers, responds, and feels like a jewel in the hand. Define &quot;better&quot; as the human experience first (Law 20), then build. Shawn's eye is the ground truth; the scorecard is the hypothesis.<strong>Law 100.</strong></li></ol></details>",
+  "css_classes": [
+   "law-group"
+  ],
+  "notes": "law group —"
+ },
+ {
+  "temp_id": "uds-155",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "nav",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<nav class=\"nav\" aria-label=\"Design language sections\"><span class=\"nav-orb\" aria-hidden=\"true\"><span class=\"nav-n\">N</span></span><span class=\"nav-label\">LIVING DESIGN LANGUAGE</span><div class=\"nav-links\"><a href=\"#foundations\">Foundations</a><a href=\"#buttons\">Buttons</a><a href=\"#boards\">Boards</a><a href=\"#actions\">Actions</a><a href=\"#icons\">Icons</a><a href=\"#smarttabs\">Tabs + Login</a><a href=\"#app\">App shell</a><a href=\"#blocks\">Blocks</a><a href=\"#laws\">100 laws</a></div></nav>",
+  "css_classes": [
+   "nav",
+   "nav-label",
+   "nav-links",
+   "nav-n",
+   "nav-orb"
+  ],
+  "notes": "design-language section nav —"
+ },
+ {
+  "temp_id": "hub-001",
+  "source_file": "Naya_Smart_Hub_Design.html",
+  "demo_name": "[Board] room board shell (head + body)",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": ", accent); b.innerHTML = ` <div class=\"board-head\"> <div class=\"board-icon\">[slot]</div> <div><div class=\"board-title\">[slot]</div>[slot]</div>` :",
+  "css_classes": [
+   "board-head",
+   "board-icon",
+   "board-title"
+  ],
+  "notes": "JS-rendered template from render function Board -- dynamic slots shown as [slot]"
+ },
+ {
+  "temp_id": "hub-002",
+  "source_file": "Naya_Smart_Hub_Design.html",
+  "demo_name": "[intelBoard] intelligence board",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "<span class=\"left\">ONE INTELLIGENCE &middot; MANY VIEWS &middot; ONE IDENTITY</span>",
+  "css_classes": [
+   "left"
+  ],
+  "notes": "JS-rendered template from render function intelBoard -- dynamic slots shown as [slot]"
+ },
+ {
+  "temp_id": "hub-003",
+  "source_file": "Naya_Smart_Hub_Design.html",
+  "demo_name": "[DoorCard] smart door card",
+  "demo_num": null,
+  "category": "CRD",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "gallery",
+   "settings",
+   "landing"
+  ],
+  "html": "}[door.status]; d.innerHTML = ` <div class=\"door-top\"> <div class=\"door-icon\">[slot]</div> <div><div class=\"door-name\">[slot]</div><div class=\"door-for\">[slot]</div></div> </div> <div class=\"door-desc\">[slot]</div> <div class=\"door-foot\"> <span class=\"pill [slot]\"><span class=\"dot\"></span>[slot]</span> </div>`; const foot = d.querySelector(",
+  "css_classes": [
+   "[slot]",
+   "door-desc",
+   "door-foot",
+   "door-for",
+   "door-icon",
+   "door-name",
+   "door-top",
+   "dot",
+   "pill"
+  ],
+  "notes": "JS-rendered template from render function DoorCard -- dynamic slots shown as [slot]"
+ },
+ {
+  "temp_id": "hub-004",
+  "source_file": "Naya_Smart_Hub_Design.html",
+  "demo_name": "[hub-rail] 11-room rail nav",
+  "demo_num": null,
+  "category": "NAV",
+  "tags": [
+   "dashboard",
+   "feed",
+   "profile",
+   "settings",
+   "landing"
+  ],
+  "html": "<nav class=\"hub-rail\"><button class=\"rail-item\" data-room=\"feed\"><span class=\"rail-kicker\">STREAM</span>Smart Feed</button><button class=\"rail-item\" data-room=\"today\"><span class=\"rail-kicker\">TODAY</span>Your Intelligence Today</button><button class=\"rail-item\" data-room=\"reports\"><span class=\"rail-kicker\">REPORTS</span>Your Reports</button><button class=\"rail-item\" data-room=\"library\"><span class=\"rail-kicker\">LIBRARY</span>Intelligent Library</button><button class=\"rail-item\" data-room=\"connect\"><span class=\"rail-kicker\">CONNECT</span>Smart Connect</button><button class=\"rail-item\" data-room=\"ledger\"><span class=\"rail-kicker\">ACCOUNTABILITY</span>Smart Ledger</button><button class=\"rail-item\" data-room=\"connections\"><span class=\"rail-kicker\">CONNECTIONS</span>Your Connections</button><button class=\"rail-item\" data-room=\"lists\"><span class=\"rail-kicker\">LISTS</span>Smart Lists</button><button class=\"rail-item\" data-room=\"mail\"><span class=\"rail-kicker\">MAIL</span>Smart Mail</button><button class=\"rail-item\" data-room=\"spaces\"><span class=\"rail-kicker\">SPACES</span>Smart Spaces</button><button class=\"rail-item\" data-room=\"settings\"><span class=\"rail-kicker\">SETTINGS</span>Settings</button></nav>",
+  "css_classes": [
+   "hub-rail",
+   "rail-item",
+   "rail-kicker"
+  ],
+  "notes": "11-room rail reconstructed from the ROOMS registry const -- the actual rail HTML is JS-rendered from this data"
+ },
+ {
+  "temp_id": "hub-005",
+  "source_file": "Naya_Smart_Hub_Design.html",
+  "demo_name": "[doors] smart door cards (registered doors)",
+  "demo_num": null,
+  "category": "LST",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings",
+   "form",
+   "landing"
+  ],
+  "html": "<div class=\"door-cards\"><div class=\"door-card\" data-door=\"ai\"><span class=\"door-name\">AI Connect</span><span class=\"door-for\">Reasoning over retained intelligence</span></div><div class=\"door-card\" data-door=\"data\"><span class=\"door-name\">Supabase / Data Connect</span><span class=\"door-for\">The governed data substrate</span></div><div class=\"door-card\" data-door=\"github\"><span class=\"door-name\">GitHub Connect</span><span class=\"door-for\">Coding & repository agents</span></div><div class=\"door-card\" data-door=\"mcp\"><span class=\"door-name\">MCP Connect</span><span class=\"door-for\">AI agents → provider tools</span></div><div class=\"door-card\" data-door=\"naya\"><span class=\"door-name\">Naya-to-Naya Connect</span><span class=\"door-for\">Seat ↔ seat collaboration</span></div><div class=\"door-card\" data-door=\"email\"><span class=\"door-name\">Email Connect</span><span class=\"door-for\">Human & network communication</span></div><div class=\"door-card\" data-door=\"calendar\"><span class=\"door-name\">Calendar Connect</span><span class=\"door-for\">Schedules & time</span></div><div class=\"door-card\" data-door=\"voice\"><span class=\"door-name\">Voice Connect</span><span class=\"door-for\">Spoken interaction</span></div><div class=\"door-card\" data-door=\"web\"><span class=\"door-name\">Web Connect</span><span class=\"door-for\">The open web, governed</span></div></div>",
+  "css_classes": [
+   "door-card",
+   "door-name",
+   "door-for"
+  ],
+  "notes": "9 doors from DOORS registry: AI Connect, Supabase / Data Connect, GitHub Connect, MCP Connect, Naya-to-Naya Connect, Email Connect, Calendar Connect, Voice Connect, Web Connect"
+ }
+]

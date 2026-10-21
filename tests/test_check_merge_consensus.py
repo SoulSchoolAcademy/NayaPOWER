@@ -34,6 +34,7 @@ from check_merge_consensus import (  # noqa: E402
     author_seat_of,
     run_gate,
     seat_of,
+    scorecard_head_of,
 )
 
 
@@ -194,15 +195,23 @@ def test_score_extraction_formats():
 HEAD = "d0144aee427dab3a1ab2df05f97962cb83b81f35"
 
 
-def test_scorecard_matcher_accepts_legacy_format():
+def test_scorecard_matcher_rejects_below_law_threshold():
+    # P-012: 9.5 is accepted; 9.0 and below is zero acceptance. A scorecard
+    # at 9.0 must fail the shape check — it routes to fix-pass, never to
+    # merge. The dock adjudicates the law; the gate refuses to be looser.
     body = f"## SCORECARD\nhead: {HEAD}\nverdict: 9.0\nSeat: Naya 3"
-    assert _looks_like_scorecard(body, HEAD)
+    assert not _looks_like_scorecard(body, HEAD)
 
 
 def test_scorecard_matcher_accepts_iv_format():
-    body = (f"## VERDICT: MERGE RECOMMENDED\n**Honest scorecard: 9.4/10.**\n"
-            f"head {HEAD}\nSeat: Naya 3")
+    body = (f"## VERDICT: MERGE RECOMMENDED\n**Honest scorecard: 9.5/10.**\n"
+            f"Head SHA: {HEAD}\nSeat: Naya 3")
     assert _looks_like_scorecard(body, HEAD)
+
+
+def test_merge_recommended_phrase_cannot_replace_numeric_threshold():
+    body = f"## VERDICT: MERGE RECOMMENDED\nHonest scorecard: 8/10\nHead SHA: {HEAD}\nSeat: Naya 3"
+    assert not _looks_like_scorecard(body, HEAD)
 
 
 def test_scorecard_matcher_rejects_low_score():
@@ -256,7 +265,7 @@ def test_post_convention_full_pass(capsys):
     from Naya 3 naming the exact head -> PASSED."""
     review = ("[SIGN OUT] IV seat. ## VERDICT: MERGE RECOMMENDED\n"
               "Seat: Naya 2")
-    scorecard = (f"**Honest scorecard: 9.4/10.**\nhead {HEAD}\n"
+    scorecard = (f"**Honest scorecard: 9.5/10.**\nHead SHA: {HEAD}\n"
                  f"## VERDICT: MERGE RECOMMENDED\nSeat: Naya 3")
 
     def fake_api_get(path, token):
@@ -370,6 +379,18 @@ def test_author_seat_of_recognizes_named_seat_declaration():
     assert author_seat_of("Seat: Naya Epsilon") == "Naya Epsilon"
     assert author_seat_of("Seat: Naya 5") == "Naya 5"
     assert author_seat_of("mentions Naya Epsilon in prose, no declaration") is None
+
+
+def test_author_seat_of_recognizes_lead_seat_declaration():
+    # Epsilon w409 F2 systemic (HOLD comment 6244120258 on #2738): the
+    # naming-law form "Seat: Naya Clarity Narzan" could never pass the
+    # gate's author check — the registry had no 'clarity'. The same wall
+    # stood for 'verity' and 'resolve'. Lead seats are part of the working
+    # team; the registry must name them.
+    assert author_seat_of("Seat: Naya Clarity Narzan") == "Naya Clarity"
+    assert author_seat_of("Seat: Naya Verity Narzan") == "Naya Verity"
+    assert author_seat_of("Seat: Naya Resolve Narzan") == "Naya Resolve"
+    assert seat_of("[NAYA CLARITY · REVIEW] APPROVED") == "Naya Clarity"
 
 
 def test_named_seat_scorecard_is_accepted(capsys):
@@ -500,3 +521,37 @@ def test_self_test_scorecard_verdict_matches_gate_matcher(tmp_path):
             assert e.code == 1
             accepted = False
         assert accepted == _looks_like_scorecard(body, HEAD_STC), body
+
+
+def test_registry_recognizes_every_named_seat():
+    """Seat-registry closure: every entry in _NAMED_SEATS (and the legacy
+    numeric seats 1-5) must be recognized by both the tag matcher and the
+    explicit author-declaration matcher. Catches registry lag (the gpt-6
+    miss: a seated author's receipts failed the gate because the registry
+    did not know the seat)."""
+    from check_merge_consensus import _NAMED_SEATS, AUTHOR_SEAT_RE, SEAT_RE
+    for seat in list(_NAMED_SEATS) + ["1", "2", "3", "4", "5"]:
+        tag = f"Naya {seat}"
+        assert SEAT_RE.search(tag), tag
+        assert AUTHOR_SEAT_RE.search(f"Seat: {tag}"), tag
+    # gpt-6 specifically: the seat that motivated this test
+    assert SEAT_RE.search("Naya GPT-6")
+    assert AUTHOR_SEAT_RE.search("Seat: Naya GPT-6")
+def test_scorecard_head_parser_accepts_header_shape_variants():
+    for header in ("Head", "Head SHA", "Head-SHA", "HEAD_SHA"):
+        body = f"## SCORECARD\n{header}: {HEAD}\nverdict: 9.5\nSeat: Naya Delta"
+        assert scorecard_head_of(body) == HEAD
+        assert _looks_like_scorecard(body, HEAD)
+
+
+def test_scorecard_matcher_rejects_sha_mentioned_only_in_prose():
+    body = f"## SCORECARD\nThis evaluates commit {HEAD}.\nverdict: 9.5\nSeat: Naya Delta"
+    assert scorecard_head_of(body) is None
+    assert not _looks_like_scorecard(body, HEAD)
+
+
+def test_scorecard_matcher_rejects_conflicting_head_fields():
+    other = "a" * 40 if HEAD != "a" * 40 else "b" * 40
+    body = f"## SCORECARD\nHead SHA: {HEAD}\nHead-SHA: {other}\nverdict: 9.5\nSeat: Naya Delta"
+    assert scorecard_head_of(body) is None
+    assert not _looks_like_scorecard(body, HEAD)

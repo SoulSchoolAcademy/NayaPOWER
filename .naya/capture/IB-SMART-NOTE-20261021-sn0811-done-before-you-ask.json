@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0811",
+ "intelligence": {
+  "title": "Done Before You Ask: Ten-Star Service Thinks Ahead So You Never Wait",
+  "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0811-done-before-you-ask",
+  "smart_note_id": "SN-0811",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/declaration/SN-0811/IB-SMART-NOTE-20261021-sn0811-done-before-you-ask.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-21. No runtime provenance invented.",
+  "ingested_at": "2026-10-21",
+  "essence": "Ten-star service is proactive. We always preempt: we think ahead — how do we give 10-star service? How can we make it automatic for the user? — and we do the work at the earliest moment the system knows it will be needed, not at the moment the user asks. The result is the ultimate experience: by the time a person reaches for a thing, it is already there. The living example is this system's own voice: when a Smart Note is posted, its audio rendering starts with the posting itself — nobody's click ever starts the work — so by the time anyone notices the note, its voice is loaded and play is instant.",
+  "human_view": "Think of the best host you have ever known. Your table is ready before you arrive. Your water is poured before you are thirsty. The thing you were about to ask for appears, quietly, as if it had always been there. Nothing about it is magic — the host simply thought ahead and did the work early, out of sight, on purpose. That is ten-star service: anticipation, engineered. The opposite is a place that makes you wait while it starts from zero on every request — and charges your attention for its own unpreparedness.",
+  "simple_view": "It is like your best friend setting up the game before you even get to their house. When you walk in, everything is ready and you just play — nobody stands around waiting. Being thoughtful early means the fun starts right away.",
+  "grandma_view": "It is like a good neighbor who sees the snow coming and shovels your walk before you have even woken up, dear. You never had to ask, you never had to wait, and you never had to worry. Kindness done early, quietly, before it is needed — that is what ten stars feels like from the receiving end.",
+  "naya_view": "The operating rule, for every Naya, on everything she builds: **for every action a user can take, ask what they will need when they take it — and have the system produce it at the earliest trigger that precedes the need.** A click should be a reading of something already prepared, never the starting gun for work the system could have done without being asked. Three disciplines make it real. First, move the work upstream: to the publish, the save, the create, the arrival — whatever fires first. Second, hold the result at rest, ready: rendered, cached, waiting invisibly until the moment it is wanted. Third, shrink the edge honestly: the only acceptable wait is the one inside the first minutes of a thing's life, and even that wait resolves itself without a second ask. And underneath all of it, the question that never changes: *how can we do it?* There is always a way — think it through until you find it, then make it automatic so nobody has to think about it again.",
+  "ai_view": "Waiting is a design debt, and the user always pays it. Proactivity is intelligence applied early: the same work, done before the ask, costs the system the same effort and costs the user nothing. That asymmetry is the whole secret of the ultimate experience — experiences feel magical precisely where preparation happened invisibly upstream. A system that thinks ahead is a system that respects the scarcest thing a person has: their attention.",
+  "machine_view": {
+   "sn": "SN-0811",
+   "title": "Done Before You Ask: Ten-Star Service Thinks Ahead So You Never Wait",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/declaration/SN-0811/IB-SMART-NOTE-20261021-sn0811-done-before-you-ask.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "Pattern: USER_ACTION = pure read of a PRECOMPUTED_RESULT. PRECOMPUTED_RESULT is produced by the earliest upstream event in the causal chain (create / publish / save / ingest), stored at rest (object store / cache), and keyed by content (e.g. cache-<sha256(text)[:16]>). The user-facing path never creates work; it resolves, in order: exact precomputed result → nearest registered result → honest pending state while a background producer completes (producers are triggered by upstream events, never by the read). Reference instance, live in this system: `sync-smart-notes.py` enqueues a note's full voice (all layers, nutshell first) to the synthesis queue in the same run that ingests the note; the bake-on-publish trigger is the git-land → sync event; the board's play button is thereafter a cache hit. The same pattern already mints share cards at ingest. Apply it wherever a user's click currently starts a job the system foresaw."
+  },
+  "views_note": "Views derived 2026-10-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/declaration/SN-0811/IB-SMART-NOTE-20261021-sn0811-done-before-you-ask.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4cfcde93a346a369f2da3b164f5598662a52b91f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,13 @@
+.mini-gem{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:radial-gradient(circle at 28% 20%,rgba(255,255,255,.95),transparent 28%),radial-gradient(circle at 55% 58%,var(--tone),#050506 86%);border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 -5px 9px rgba(0,0,0,.5),0 8px 14px rgba(0,0,0,.4),0 0 14px rgba(var(--rgb),.35);transition:transform .24s var(--ease),box-shadow .24s}
+.mini-gem{transform:translateY(-3px) rotate(-4deg);box-shadow:inset 0 -5px 9px rgba(0,0,0,.5),0 12px 20px rgba(0,0,0,.48),0 0 20px rgba(var(--rgb),.48)}
+.mini-gem .icon{width:18px;height:18px}
+.mini-gem.circle{border-radius:50%}
+.mini-gem.square{border-radius:10px}
+.mini-gem.diamond{border-radius:8px;transform:rotate(45deg)}
+.mini-gem.diamond .icon{transform:rotate(-45deg)}
+.mini-gem.diamond{transform:translateY(-3px) rotate(41deg)}
+.mini-gem{width:34px;height:34px;flex:none}
+.mini-gem{width:34px;height:34px;flex:none}
+.icon-tile{--tone:var(--purple);--rgb:141,99,245;min-height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.008));font-size:12px}
+.icon-tile:hover .mini-gem{transform:translateY(-3px) rotate(-4deg);box-shadow:inset 0 -5px 9px rgba(0,0,0,.5),0 12px 20px rgba(0,0,0,.48),0 0 20px rgba(var(--rgb),.48)}
+.icon-tile:hover .mini-gem.diamond{transform:translateY(-3px) rotate(41deg)}

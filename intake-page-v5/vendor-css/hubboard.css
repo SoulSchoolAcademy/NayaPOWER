@@ -1,0 +1,16 @@
+.hubtoppad{height:8px}
+.hubboard{width:100%;background:linear-gradient(180deg,#0d0d14,#07070b);border:1.5px solid var(--bc);border-radius:20px;padding:26px;box-shadow:0 0 30px -12px var(--bc),0 18px 40px rgba(0,0,0,.5)}
+.hb-head{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.hb-kicker{font-size:10px;letter-spacing:.2em;opacity:.6}
+.hb-head h3{font-size:24px;font-family:Newsreader,Georgia,serif;margin:2px 0}
+.hb-head p{font-size:14px;opacity:.7}
+.hb-actions{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.hb-actions .primo{padding:10px 18px;font-size:12px}
+.hb-nutshell{margin:18px 0;border:1px solid rgba(255,255,255,.12);border-left:3px solid var(--bc);border-radius:12px;padding:16px 18px;font-size:14px;line-height:1.65}
+.hb-nutshell b{font-size:11px;letter-spacing:.18em;display:block;margin-bottom:8px}
+.hubsub{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.025);border:1px solid var(--bc);border-radius:14px;padding:14px 18px;margin:10px 0;font-size:15px;transition:all .25s var(--ease);opacity:.92}
+.hubsub:hover{border-color:var(--bc);box-shadow:0 0 18px -6px var(--bc);transform:translateY(-2px);opacity:1}
+.hubsub .hb-play{margin-left:auto;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:11px;flex:none}
+.orb-sm{width:56px !important;height:56px !important}
+.hubdock-wrap{width:100%;text-align:center}
+.hubdock-wrap .eco-bottombar{flex-wrap:wrap}

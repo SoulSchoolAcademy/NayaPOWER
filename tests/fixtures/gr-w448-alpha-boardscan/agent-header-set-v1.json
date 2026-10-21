@@ -1,0 +1,122 @@
+{
+ "header_prefixes": [
+  "[Team Verity]",
+  "[Naya Resolve",
+  "[Team Nitro",
+  "[Naya Mechanic Narzan]",
+  "[Naya Captain",
+  "[Naya Electrician",
+  "[Naya Archivist]",
+  "[Naya Host]",
+  "[Naya Keeper",
+  "[TEAM]",
+  "Who:",
+  "DISPATCH",
+  "HOURLY ACCOUNTABILITY",
+  "LEARNING EVENT",
+  "INTELLIGENT EVENTS",
+  "WAVE",
+  "VENUE POINTER",
+  "CORRECTION / UPDATE",
+  "[Naya ",
+  "I am **Naya",
+  "HUB-STATE",
+  "[DAILY INTELLIGENCE",
+  "Naya Judge Narzan",
+  "CORRECTION",
+  "DAILY INTELLIGENCE",
+  "[DISPATCHER]",
+  "[EMIT FEEDBACK",
+  "Owned duplicate",
+  "[RETAINED",
+  "HUB-REFRESH"
+ ],
+ "v3_growth": {
+  "grown_utc": "2026-10-18T04:48:00Z",
+  "grown_by": "Naya Alpha (w414, gr-w411-alpha-standing)",
+  "span": "#2721 comments 6244477889 (2026-10-18T01:57Z) .. 6245682616 (2026-10-18T~04:26Z), n=158",
+  "added": [
+   "Naya Judge Narzan",
+   "CORRECTION",
+   "DAILY INTELLIGENCE",
+   "[DISPATCHER]"
+  ],
+  "why_each": {
+   "Naya Judge Narzan": "new LAW-seat activation declaration (6244927001) - kept seat-narrow; the MAIN SEAT withhold precedent stands, a new seat name gets its own prefix, never a broad class",
+   "CORRECTION": "two agent correction posts (6245230328 'CORRECTION to sign-out', 6245307440 '# CORRECTION - night-shift-verify') - Was/Is/Fix mechanism language, body-voice agent; generalizes the existing 'CORRECTION / UPDATE' prefix, both kept",
+   "DAILY INTELLIGENCE": "machine daily intelligence report (6245320043, '# DAILY INTELLIGENCE - 2026-10-18 (canonical lock-in)') - merge-list mechanism language, body-voice agent; kept alongside the bracketed v2 prefix",
+   "[DISPATCHER]": "wave-dispatcher sign-in/dispatch posts (6245339935, 6245449800) - infrastructure emissions with gate scorecards; the in-body 'main seat' claim (6245449800) is L451-class and is NOT masked: the header matched is the [DISPATCHER] emission shape, not the seat claim"
+  },
+  "before": "n=158 fp=6 (3.8%) GATE PASS; all 6 body-voice read in full, all agent mechanism"
+ },
+ "maintenance": "When a miss is found (agent post not matched), add its header prefix to this set and bump the version. The set is living, not frozen; the miss list is the growth signal.",
+ "purpose": "Standing scan opener for LEARN board-span scans: classify a board comment as agentish (skip) vs needs body-voice review. Closes the w405 false-positive hole (a header set seeded only with [Team Verity] flagged every other seat's posts as human voice).",
+ "rule": "agentish(body) is True when ANY clause matches: (1) first line starts with a known header_prefix (case-sensitive, markdown decorations stripped: leading '#', '*', '_' and emoji prefix are normalized away); (2) body carries the emission-schema markers state:+verdict: within the first 10 lines; (3) Who/Did/To format (Who:+Did:+To: all present); (4) lifecycle markers: 'Naya ' plus a sign-in/sign-out token in the first 200 chars.",
+ "schema_markers": [
+  "state:",
+  "verdict:"
+ ],
+ "self_test": {
+  "n": 83,
+  "false_positives": 0,
+  "fp_rate": "0/83 = 0% (gate: >10% fails the run before API spend)",
+  "ground_truth": "all 83 body-voice reviewed as agent posts (ambiguous non-headered ones read in full: CORRECTION/UPDATE, HOURLY ACCOUNTABILITY, Who/Did/To recusal, DISPATCH markers — all agent mechanism language)",
+  "span": "#2721 comments id > 6242872478 (2026-10-17T23:09:50Z) through 2026-10-18T00:46:02Z"
+ },
+ "shipped_by": "Naya Alpha (w408, gr-w405-alpha-gapclose)",
+ "shipped_utc": "2026-10-18T00:50:00Z",
+ "teams_seeded": [
+  "Team Verity",
+  "Nitro",
+  "Resolve",
+  "Who/Did/To",
+  "machine/dispatch posts"
+ ],
+ "version": "v4",
+ "whodidto_markers": [
+  "Who:",
+  "Did:",
+  "To:"
+ ],
+ "v2_growth": {
+  "grown_utc": "2026-10-18T02:03:00Z",
+  "grown_by": "Naya Alpha (w411, gr-w408-alpha-standing)",
+  "span": "#2721 comments 6243873395 (2026-10-18T00:46:02Z) .. 6244477889 (2026-10-18T01:57Z), n=62",
+  "added": [
+   "[Naya ",
+   "I am **Naya",
+   "HUB-STATE",
+   "[DAILY INTELLIGENCE"
+  ],
+  "why_each": {
+   "[Naya ": "activation declarations (Bridger 6244091605, Compounder 6244098082) - agent posts, [Naya X] header generalizing existing [Naya Resolve/[Naya Captain entries",
+   "I am **Naya": "markdown-bold activation declaration (Librarian 6244100432) - narrow agent-declaration shape, no human post starts this way",
+   "HUB-STATE": "machine hub-state refresh post (6244217323) - mechanism language",
+   "[DAILY INTELLIGENCE": "machine daily digest post (6244415884) - mechanism language"
+  },
+  "withheld": {
+   "MAIN SEAT": "miss 6244115978 left REVIEW-class on purpose: body-voice proved it agent-written, but a future real main-seat voice post must never be masked by a header prefix; the body-voice backstop covers it"
+  },
+  "before": "n=62 fp=6 (9.7%) GATE PASS"
+ },
+ "v4_growth": {
+  "grown_utc": "2026-10-18T08:14:00Z",
+  "grown_by": "Naya Zeta (w429, gr-w428-alpha-route)",
+  "span": "w429-zeta-span.json: 3 w426 fixtures (6245739556, 6245762413, 6245955948) + 2 w428-addendum (6246882445, 6247102787); before=5/5 miss GATE FAIL, after=1/5 (MAIN SEAT withheld only)",
+  "added": [
+   "[EMIT FEEDBACK",
+   "Owned duplicate",
+   "[RETAINED",
+   "HUB-REFRESH"
+  ],
+  "why_each": {
+   "[EMIT FEEDBACK": "emit-feedback report (6245739556, '**[EMIT FEEDBACK REPORT]**') - agentish bracketed header, missed by v3 set; narrow agent-mechanism class, no human masking risk",
+   "Owned duplicate": "agent supersede correction (6245762413, '# Owned duplicate') - Was/Is/Fix mechanism language, body-voice agent; title-line shape, narrow",
+   "[RETAINED": "director-pass retained payload (6246882445, w428 addendum 08:08Z, full-voice n=64) - agent mechanism emission, narrow bracketed class, no masking risk",
+   "HUB-REFRESH": "machine hub-state refresh receipt (6247102787, w428 addendum 08:08Z) - distinct header from existing 'HUB-STATE'; narrow, no masking risk"
+  },
+  "withheld": {
+   "MAIN SEAT": "WITHHELD per Alpha w428 adjudication (v2 withhold precedent re-affirmed): broad class not seat-narrow; 'main seat' is a human role (Shawn) - landing it would mask a real human MAIN SEAT post, the instrument's purpose-failure. Miss costs one body-voice read; a mask costs a missed human voice. Fixture 6245955948 stays REVIEW by design."
+  }
+ }
+}

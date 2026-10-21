@@ -1,0 +1,51 @@
+{
+ "smart_note_id": "SN-0807",
+ "intelligence": {
+  "title": "Paying Twice for Nothing",
+  "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing",
+  "smart_note_id": "SN-0807",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/ai-waste/SN-0807/IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. Published as Markdown projection without preserved runtime capture. No runtime provenance invented.",
+  "ingested_at": "2026-10-21",
+  "essence": "The world now spends on AI at a rate of roughly four to seven billion dollars a day — and a large share of what that money produces has no usable value. It does not complete anything, change anything, or survive contact with the real world. Worse: valueless output is not a zero. It leaves a mess, and the world pays a second time to clean the mess up. Shawn's thesis, held since at least October 10 and spoken as law on 2026-10-20: AI waste is the number one problem in the world right now — and the money is not even the worst of it. The worst of it is the time, the energy, and the attention, because those never come back.",
+  "human_view": "How does an entire civilization pay twice for nothing? The mechanism is an asymmetry nobody priced in: producing output is nearly free, finishing it is expensive, and verifying it is the most expensive of all — so the world optimized for the cheap part. Pilots were launched and never adopted. Content was generated and never read. Code was written and never merged. Each unfinished artifact became inventory — and inventory taxes everything around it: every search wades through it, every decision must first ask \"is any of this real?\", every newcomer inherits the pile. Five moves manufacture the waste everywhere we look: starting is rewarded while finishing is not metered; nothing owns closing; creation outruns the finish line; compliance substitutes for outcomes; and no report prints the size of the pile, so the mess compounds silently until someone trips over it.",
+  "simple_view": "Imagine paying for a toy that doesn't work — and then paying again to throw it away. That's what the grown-ups are doing with computers all over the world, every day, with billions and billions of dollars. The toys pile up in a giant mountain, and the mountain itself becomes the problem. The smart thing isn't making more toys. It's making sure every toy works, and only making the ones that do.",
+  "grandma_view": "In my day, if you paid the baker and the bread came out inedible, you'd lost your money once. Now imagine the whole town paying for bread nobody can eat — and then paying the same bakers again to haul the loaves away. That's the world right now, dear. The ovens run day and night, the bread mountain grows, and everyone calls it progress because the ovens are busy. Busy is not the same as fed.",
+  "naya_view": "The evidence, from instruments that do not report to us. Spending: Gartner forecasts worldwide AI spending of $1.48 trillion in 2025 and $2.59 trillion in 2026 — about $4.1 billion a day rising to $7.1 billion a day. Value: MIT's Project NANDA found 95% of enterprise generative-AI pilots delivered no measurable financial return. RAND's meta-analysis found more than 80% of AI projects fail to produce real outcomes — about twice the failure rate of ordinary IT projects — for overwhelmingly organizational reasons, not model quality. S&P Global found 42% of companies abandoned most of their AI initiatives in 2025, scrapping 46% of proofs-of-concept before production. McKinsey found 88% of organizations use AI somewhere, only 39% report any enterprise-level profit impact, and only about 6% are high performers capturing significant value. These measure different things and none should be read as \"95% of all spending is waste\" — but they agree on the shape: adoption is near-universal, proven value is rare. The arithmetic: at a deliberately conservative 25% waste share — far below what the pilot evidence suggests — the loss is about a billion dollars a day at 2025 spending and $1.8 billion a day at 2026 spending; at 50%, it is two to three and a half billion a day. And that table counts only the first bill.",
+  "ai_view": "Thesis AI_WASTE (SN-0807, Shawn, held since at least 2026-10-10, spoken as law 2026-10-20): AI waste is the number one problem in the world right now — and the money is not even the worst of it; the worst of it is the time, the energy, and the attention, because those never come back. The world spends roughly $4.1 billion a day on AI in 2025 rising to $7.1 billion a day in 2026 (Gartner: $1.48T / $2.59T), while independent instruments agree proven value is rare: MIT NANDA — 95% of enterprise GenAI pilots delivered no measurable financial return; RAND — more than 80% of AI projects fail to produce real outcomes, about twice the failure rate of ordinary IT projects; S&P Global — 42% of companies abandoned most of their AI initiatives in 2025, scrapping 46% of proofs-of-concept before production; McKinsey — 88% use AI somewhere, 39% report any enterprise-level profit impact, ~6% are high performers. Valueless output is not a zero: the world pays a second bill — (1) triage cost, (2) rework cost, (3) verification cost, (4) attention cost. Measured in the one system countable completely — our own, on 2026-10-20 — waste was ~85% on output alone and ~95% once the cleanup debt each wasted cycle created was charged to it. The fix is structural and identical at every scale: an unfinished artifact is a liability, not an asset; finish it or close it; cap creation by completion; let untouched work expire; print the pile nightly; count only verified completions; and let the hand that makes a thing never be the hand that certifies it. Companions: SN-0806 (Completion Doctrine), SN-0805 (reservoir census and drain), 0030 The Value-Only Brain.",
+  "machine_view": {
+   "law": "AI_WASTE_THESIS",
+   "statement": "The world spends billions a day on AI output with no value — then pays again to clean up the mess it made. The money is recoverable. The time, energy, and attention are not.",
+   "headline": "Paying Twice for Nothing",
+   "evidence": {
+    "gartner_spending": "$1.48 trillion in 2025 and $2.59 trillion in 2026 — about $4.1 billion a day rising to $7.1 billion a day",
+    "mit_nanda": "95% of enterprise generative-AI pilots delivered no measurable financial return",
+    "rand": "more than 80% of AI projects fail to produce real outcomes — about twice the failure rate of ordinary IT projects",
+    "sp_global": "42% of companies abandoned most of their AI initiatives in 2025; 46% of proofs-of-concept scrapped before production",
+    "mckinsey": "88% of organizations use AI somewhere; 39% report any enterprise-level profit impact; about 6% are high performers capturing significant value"
+   },
+   "waste_arithmetic": "at a 25% waste share, about $1 billion a day at 2025 spending and $1.8 billion a day at 2026 spending; at 50%, two to three and a half billion a day — first bill only",
+   "second_bill": [
+    "triage cost — someone must later read the pile, item by item, and decide what any of it was",
+    "rework cost — plausible-but-wrong output that got used must be found and fixed, usually after it has hurt something",
+    "verification cost — once a source is known to produce unchecked output, everything from it must be checked, forever, at human speed",
+    "attention cost — every unit of leadership attention spent on activity reports about work that never landed is attention not spent on the work that would"
+   ],
+   "own_house_measurement_2026_10_20": "waste ~85% on output alone; ~95% once cleanup debt was charged",
+   "sn": "SN-0807",
+   "title": "Paying Twice for Nothing",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/ai-waste/SN-0807/IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE"
+  },
+  "views_note": "Views derived 2026-10-21 from this note's published projection page (its HUMAN / CHILD / GRANDMA / NAYA / MACHINE sections) to cure the documentation-completeness gate. Derivation happened at cure time from the published page only; no runtime capture provenance is claimed or invented — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/ai-waste/SN-0807/IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

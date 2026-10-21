@@ -1,0 +1,84 @@
+{
+  "$comment": "Pinned JSON shape emitted by draftContract() in gen.py (intake-page-v5). Filed by Naya Zeta w447, gr-w444 gapclose. Spec-first: enforced at regen time by gate_regen_contract.js (emitter shape vs this spec, exit 0/2, fail-closed) and at consumption time by validate_contract.js (live blob vs this spec, exit 0/2). Proven w456: gate GATE-PASS on w453 regen bytes (199931B, head d90abe63d5ba), both mutation probes exit 2 with named reasons.",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "behave": {
+      "type": "string"
+    },
+    "do": {
+      "type": "string"
+    },
+    "functions": {
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "type": "object"
+    },
+    "handle": {
+      "pattern": "^[a-z0-9]*$",
+      "type": "string"
+    },
+    "idea": {
+      "type": "string"
+    },
+    "pieces": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "qty": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "size": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "model",
+          "name",
+          "size",
+          "qty",
+          "note"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "rules": {
+      "type": "string"
+    },
+    "template": {
+      "type": "string"
+    },
+    "version": {
+      "const": "contract-v1"
+    },
+    "vision": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "handle",
+    "idea",
+    "vision",
+    "do",
+    "behave",
+    "template",
+    "functions",
+    "pieces",
+    "rules"
+  ],
+  "title": "Smart Factory draftContract JSON contract-v1",
+  "type": "object"
+}

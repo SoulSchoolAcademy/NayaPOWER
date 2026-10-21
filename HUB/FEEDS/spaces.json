@@ -1,0 +1,136 @@
+{
+  "contract": "room-feed/v1",
+  "room": "spaces",
+  "emitted_at": "2026-10-20T09:19:42.399487-07:00",
+  "source_ref": "engine-job:hub-feeds-emitter-t0479",
+  "items": [
+    {
+      "id": "space-human-note",
+      "title": "Space — HUMAN_NOTE",
+      "topics": [
+        "SMART_NOTE_ARTIFACT"
+      ],
+      "kind": "snapshot",
+      "space_id": "space-human-note",
+      "pins": [
+        "f3ccf8cd-29bf-4e10-8d47-1e562826f6dc",
+        "48a08dcb-d15d-4d0c-ad89-939be5feb9d9",
+        "62d50f5c-1cb6-4d4e-809f-3cef83337214",
+        "23fad105-fc0c-4e95-9981-143efd71a2c3",
+        "7a3ad243-e3bd-439a-ab95-ffe8fc657146",
+        "d443ab00-dbfb-47d5-95b6-1fb1502aa9f0",
+        "eeac71fa-7bb2-4620-b016-23701129311b",
+        "54f53406-ef83-4e72-ae4e-ac92ab7308b7",
+        "7dc9aaee-fec9-49b3-b992-68df8ffd156d",
+        "3c4b0cfc-2a20-467b-bed5-5a7c4d5a0530",
+        "2fa1bb2b-5bdc-44bd-876a-61159d1e8163",
+        "38f8f7b9-cca6-4f2e-b59f-082ed77c1b52",
+        "79cc49d3-23b0-4e99-93cf-cb106d0b3a15",
+        "e3c7eae2-4551-4664-abd8-6b684a4a33fc",
+        "b4f21ad4-250e-45ba-b04e-1b30a08d76cc",
+        "895b95fa-0677-4518-9bdd-770d2e509117",
+        "0f22d80a-3153-4080-8d58-301a6146a315",
+        "c80acf74-8d1e-430d-a23e-ca6dc9569345",
+        "8b264a46-93d9-41ac-967d-7b377023d45c",
+        "175a902b-2f88-49a8-9086-26a67efd834f"
+      ],
+      "posts": []
+    },
+    {
+      "id": "space-intelligence-feed-note",
+      "title": "Space — INTELLIGENCE_FEED_NOTE",
+      "topics": [
+        "SMART_NOTE_ARTIFACT"
+      ],
+      "kind": "snapshot",
+      "space_id": "space-intelligence-feed-note",
+      "pins": [
+        "ba7ad40e-19d8-4407-92f4-ce8894d4ac0d",
+        "d19ee203-e7ef-4e7e-8494-53b8a2eee050",
+        "c447782a-8561-4974-acbe-c7a311101772",
+        "9b10b120-fcef-424c-989c-1aa6b4897d04",
+        "cc17f8ae-79d4-4f6f-b8cb-62475232f6b3",
+        "666e8829-0784-4b7f-bab8-b91509a805b7",
+        "ae9bc7b0-5903-494c-a33a-81a9735b5d64",
+        "0390854c-faa4-429a-9b3a-25644b90ef05",
+        "3793751e-fb30-440c-81f3-6848048d998d",
+        "7130a016-d884-463f-950f-7fe659fcfff4",
+        "21b7f6db-59d3-4f7f-8bbb-bab856abed83",
+        "8df86bb3-6d4c-42e4-8092-bbfa7b0db412",
+        "449e429c-593b-4c5c-95c4-d92ba9cc9dbc",
+        "895e9bac-8b36-4f3a-baf3-3da50f396708",
+        "23b84142-639f-4adf-983f-1eb398684ee0",
+        "3f0a2f85-9875-491f-8cc4-14733280e5fc",
+        "6b159d7c-1d84-402e-afde-e8fac57ba670",
+        "88f570df-3784-45c4-af69-823514e7e2b7",
+        "5e76c3d2-a888-4ae8-92a8-24118a1e0e65",
+        "c1e733ae-d0d0-45a0-92d7-c9381e6a16ee"
+      ],
+      "posts": []
+    },
+    {
+      "id": "space-machine-note",
+      "title": "Space — MACHINE_NOTE",
+      "topics": [
+        "SMART_NOTE_ARTIFACT"
+      ],
+      "kind": "snapshot",
+      "space_id": "space-machine-note",
+      "pins": [
+        "24d42070-3806-45d8-9206-67f7a8f5d55e",
+        "3f33f7f5-4875-45ca-950d-8391b0802540",
+        "a63fb1ae-12fc-4dc0-8a76-79609dc6f392",
+        "b9cdc017-85ac-4ea6-9adf-641379e18942",
+        "ec78e73b-d383-446e-ae5e-8059ebafda99",
+        "764d2211-2bd6-4822-a11b-7762bc365bf8",
+        "f1593906-cb67-464a-afd9-bc3d23066a3e",
+        "1a13a926-63e3-4763-b6c9-bf458452f8ce",
+        "ba9f0167-79be-463d-90f3-d4f17c829206",
+        "4c82330c-85ad-43c3-a391-3ff5e094e15d",
+        "b649017a-983e-4b03-a7e9-8fbe4d27b841",
+        "313a3077-9959-4c9a-81dd-942056d7da76",
+        "469de1ac-be41-4350-9e34-c496ad55df49",
+        "b71cf35f-bd94-40dd-872a-c4304940f6fc",
+        "85520001-dca9-4b5b-9906-c765c48c8b09",
+        "3779ca64-c0ac-4e47-8400-75ea2757d1ea",
+        "3e6615b8-41f4-47fe-bdbf-819fa58f6b1c",
+        "0a907073-1816-41a3-8dba-95918833ad33",
+        "025753a5-ce76-441b-bea7-39eabcd4c761",
+        "00eb0bd6-4b18-4508-8233-6e84d499aec4"
+      ],
+      "posts": []
+    },
+    {
+      "id": "space-naya-note",
+      "title": "Space — NAYA_NOTE",
+      "topics": [
+        "SMART_NOTE_ARTIFACT"
+      ],
+      "kind": "snapshot",
+      "space_id": "space-naya-note",
+      "pins": [
+        "d5b1d138-3c60-450a-811c-1dd5ae949c47",
+        "3a03223b-425c-407b-8840-ce93ffbb83c3",
+        "babbb6e5-8601-48b6-9344-5aa8ee371ff5",
+        "ff1202c1-d133-41ff-bbac-22be339b806c",
+        "7ebc23dc-8e61-4aab-8ed1-98b2c94f4e52",
+        "3de6cd09-6818-48d4-9eee-5de4ac9afe03",
+        "c7cc78ae-73c8-438c-ba75-297c168ba82f",
+        "4cf25ac1-79ab-425f-8bfc-10cff44bcb37",
+        "5330d010-5c3e-4b00-b5f9-4d1f81905696",
+        "f4a1540b-239a-4c91-ac8d-ef3504eea57b",
+        "7af834c8-d31d-4dc1-a398-eb172e184096",
+        "05a8cb3a-f018-4255-bf88-4382451d3c72",
+        "cea7ecf7-cb4f-4f61-8536-96936e6d677e",
+        "fdf1887b-fbf0-4cc0-860e-7ae2c402ec73",
+        "2083c6aa-66dc-478b-aeb3-a776282deb12",
+        "551558fe-de44-487a-8008-da789da419ab",
+        "9d383eb0-ecc8-4af1-a2f8-3bde1df0bc9e",
+        "3265bacb-276d-49b1-93da-c14994f04c94",
+        "c150ca80-4ad3-44ec-b244-d427a81b4934",
+        "f3d097a0-6e98-4c5d-bd02-4f67b1840e29"
+      ],
+      "posts": []
+    }
+  ]
+}
