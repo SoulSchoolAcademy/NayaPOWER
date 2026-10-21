@@ -26,10 +26,46 @@ except ModuleNotFoundError:  # support import from repository tests
     from tools.pr_flow_tier import classify_tier
 
 
-def _emit(code: int, message: str, cure: str) -> int:
+CURRENT_HEAD = ""
+CURRENT_TIER = ""
+
+
+def _emit(code: str, message: str, cure: str, owner: str = "PR authoring lane") -> int:
+    if code == "PASS":
+        missing = "none — all required paperwork predicates passed"
+        cure = "none"
+        owner = "none"
+    else:
+        missing = message
     print(f"UNIFIED PAPERWORK GATE: {code}")
-    print(f"Reason: {message}")
-    print(f"One cure: {cure}")
+    print(f"MISSING: {missing}")
+    print(f"CURE: {cure} (owner: {owner})")
+
+    output_path = os.environ.get("GITHUB_OUTPUT")
+    if output_path:
+        values = {
+            "verdict": code,
+            "missing": missing,
+            "cure": cure,
+            "owner": owner,
+            "head": CURRENT_HEAD,
+            "tier": CURRENT_TIER,
+        }
+        with open(output_path, "a", encoding="utf-8") as fh:
+            for key, value in values.items():
+                safe = str(value).replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+                fh.write(f"{key}={safe}\n")
+
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_path:
+        with open(summary_path, "a", encoding="utf-8") as fh:
+            fh.write("## Unified paperwork gate\n\n")
+            fh.write(f"- **Verdict:** {code}\n")
+            fh.write(f"- **Tier:** {CURRENT_TIER or 'unknown'}\n")
+            fh.write(f"- **Head:** {CURRENT_HEAD or 'unavailable'}\n")
+            fh.write(f"- **Missing:** {missing}\n")
+            fh.write(f"- **Cure:** {cure} (owner: {owner})\n")
+
     return 0 if code == "PASS" else 1
 
 
@@ -90,6 +126,7 @@ def _scorecard_for_current_head(comments: list[dict], head: str,
 
 
 def run() -> int:
+    global CURRENT_HEAD, CURRENT_TIER
     event = _read_event()
     repo = os.environ.get("REPO") or os.environ.get("GITHUB_REPOSITORY") or ""
     token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
@@ -103,6 +140,7 @@ def run() -> int:
         head = ((pr.get("head") or {}).get("sha") or "").strip()
         title = pr.get("title") or ""
         body = pr.get("body") or ""
+        CURRENT_HEAD = head
         if len(head) != 40 or any(ch not in "0123456789abcdef" for ch in head):
             return _emit("ERROR — VERIFICATION_UNAVAILABLE",
                          "GitHub did not return a valid current head SHA",
@@ -112,6 +150,7 @@ def run() -> int:
         paths = [item.get("filename", "") for item in files if item.get("filename")]
         expected_files = pr.get("changed_files")
         tier = classify_tier(title, paths, changed_files=files, expected_changed_files=expected_files)
+        CURRENT_TIER = tier["tier"]
         print(f"Tier: {tier['tier']} — {tier['reason']}")
         print(f"PR: #{number}; current head: {head}")
 
@@ -165,8 +204,12 @@ def run() -> int:
                              "retry when the URL host/network is reachable; do not change or replace the evidence unless a retry confirms it is dead")
             return _emit("BLOCKED — EVIDENCE_INVALID", reason, cure)
 
-        print(f"UNIFIED PAPERWORK GATE: PASS — Tier {tier['tier']}; {score_detail}; evidence receipt resolves. Declared-seat separation is enforced by repository convention, not cryptographic actor binding.")
-        return 0
+        return _emit(
+            "PASS",
+            f"Tier {tier['tier']}; {score_detail}; evidence receipt resolves. Declared-seat separation is repository convention, not cryptographic actor binding.",
+            "none",
+            owner="none",
+        )
 
     except (consensus.GateAPIError, urllib.error.URLError, TimeoutError) as exc:
         return _emit("ERROR — VERIFICATION_UNAVAILABLE",
