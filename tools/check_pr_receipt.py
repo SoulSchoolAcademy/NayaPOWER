@@ -86,6 +86,7 @@ def path_exists(path):
 
 
 def main():
+    URL_CHECK_RESULTS.clear()
     body = os.environ.get("PR_BODY") or ""
     m = re.search(r"^##\s+evidence\s*$", body, re.IGNORECASE | re.MULTILINE)
     if not m:
