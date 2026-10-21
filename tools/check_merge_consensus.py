@@ -267,6 +267,42 @@ _APPROVAL_USE_RE = re.compile(
     re.I)
 
 
+# --- blockquote hardening (Naya 4, 2026-10-21) ---
+# GitHub renders `> ...` lines as blockquotes — the commenter is quoting
+# someone else's words (the reply-to-comment button generates exactly this),
+# never declaring their own verdict. A blockquoted approval incantation is a
+# MENTION, not a USE — the same doctrine as backtick/quote spans, which never
+# covered the blockquote form. Without this, quoting "[NAYA EPSILON ·
+# REVIEW] APPROVED" in a `>` block satisfied the review requirement as if
+# Epsilon had approved (director finding on PR #2808's violation proof:
+# blockquote hole live at tip; #2808 never touched this file).
+# Strip blockquote paragraphs (including lazy continuations, which GitHub
+# still renders as quoted) before the mention-vs-use analysis.
+_BLOCKQUOTE_LINE_RE = re.compile(r"^\s*>")
+
+
+def _strip_blockquotes(text):
+    """Remove blockquote paragraphs from comment text.
+
+    A paragraph that opens with a `>` line is quoted; its lazy continuations
+    (non-blank lines before the next blank line, which GitHub still renders
+    inside the quote) are quoted too. Returns the commenter's own words.
+    """
+    out = []
+    in_quote = False
+    for line in (text or "").split("\n"):
+        if _BLOCKQUOTE_LINE_RE.match(line):
+            in_quote = True
+            continue
+        if in_quote:
+            if not line.strip():
+                in_quote = False
+            else:
+                continue
+        out.append(line)
+    return "\n".join(out)
+
+
 def _looks_like_review(body):
     """True only when the comment USES an approval keyword as its own
     verdict declaration — never when it merely MENTIONS one (quoted,
@@ -275,7 +311,7 @@ def _looks_like_review(body):
     own verdict — prose discussion of the hold-veto mechanism never vetoes
     (w333 repair: whole-text _HOLD_VETO_RE vetoed Epsilon 6226819187's
     genuine APPROVED over the prose "(hold-veto fail-closed; ...)")."""
-    text = body or ""
+    text = _strip_blockquotes(body or "")
     cleaned = _MENTION_QUOTE_RE.sub(" ", text)
     for m in _HOLD_USE_RE.finditer(cleaned):
         line_start = cleaned.rfind("\n", 0, m.start()) + 1
@@ -371,12 +407,14 @@ def run_gate(token, repo, pr_number, head_sha):
             reviewer_seat = seat_of(r.get("body")) or "external reviewer"
             break
     # Path B: seat-tagged review comment (incantation or IV verdict format)
-    # from a different seat.
+    # from a different seat. Seat attribution runs on the blockquote-stripped
+    # text so a quoted seat (mention) is never mistaken for the reviewer
+    # (use) when a comment carries both a quote and a genuine approval.
     if not reviewer_seat:
         for c in comments:
             body = c.get("body") or ""
             if _looks_like_review(body):
-                s = seat_of(body)
+                s = seat_of(_strip_blockquotes(body))
                 if s and s != author_seat:
                     reviewer_seat = s
                     break
