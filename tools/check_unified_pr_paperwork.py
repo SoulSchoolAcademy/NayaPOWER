@@ -264,6 +264,12 @@ def run() -> int:
 
         comments = consensus.api_get(f"/repos/{repo}/issues/{number}/comments", token)
         diff_hash = compute_diff_fingerprint(files)
+        has_hold, hold_detail, hold_cure, hold_owner = _has_unresolved_hold(
+            comments, author_seat, head, tier["tier"], diff_hash
+        )
+        if has_hold:
+            return _emit("BLOCKED — UNRESOLVED_HOLD", hold_detail, hold_cure, owner=hold_owner)
+
         minimum = 9.5 if tier["tier"] == "A" else 9.0
         ok, score_detail = _scorecard_for_current_head(
             comments, head, author_seat, minimum, tier=tier["tier"], diff_hash=diff_hash
