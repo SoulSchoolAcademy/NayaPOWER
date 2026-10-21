@@ -336,10 +336,8 @@ def _looks_like_scorecard(body, head_sha):
         return False
     if scorecard_head_of(body) != (head_sha or "").lower():
         return False
-    approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
-                             low))
     score = _score_of(body)
-    return approved or (score is not None and score >= 9.5)
+    return score is not None and 9.5 <= score <= 10
 
 
 def run_gate(token, repo, pr_number, head_sha):
