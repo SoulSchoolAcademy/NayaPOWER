@@ -18,9 +18,13 @@ import os
 import re
 import subprocess
 import sys
+import urllib.error
 import urllib.request
 
 TIMEOUT = 15
+# Detailed outcomes let the unified gate distinguish dead evidence from a
+# temporary network outage. The legacy boolean contract remains unchanged.
+URL_CHECK_RESULTS = {}
 
 
 def fail(msg):
@@ -32,21 +36,43 @@ def fail(msg):
 
 
 def check_url(url):
+    """Return the legacy boolean while recording LIVE/DEAD/UNAVAILABLE.
+
+    HEAD-rejecting hosts are retried with GET. A confirmed 4xx is dead
+    evidence; 5xx and transport failures are verification outages, not proof
+    that the artifact itself is invalid.
+    """
     req = urllib.request.Request(url, method="HEAD",
                                  headers={"User-Agent": "naya-receipt-gate/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-            return r.status < 400
+            if r.status < 400:
+                URL_CHECK_RESULTS[url] = {"state": "LIVE", "detail": f"HEAD {r.status}"}
+                return True
     except Exception:
-        # Some hosts reject HEAD; retry with GET (headers only read).
-        try:
-            req = urllib.request.Request(url, method="GET",
-                                         headers={"User-Agent": "naya-receipt-gate/1.0"})
-            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-                r.read(1)
-                return r.status < 400
-        except Exception:
+        pass
+
+    # Some hosts reject HEAD; retry with GET (read only one byte).
+    req = urllib.request.Request(url, method="GET",
+                                 headers={"User-Agent": "naya-receipt-gate/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+            r.read(1)
+            if r.status < 400:
+                URL_CHECK_RESULTS[url] = {"state": "LIVE", "detail": f"GET {r.status}"}
+                return True
+            if r.status >= 500:
+                URL_CHECK_RESULTS[url] = {"state": "UNAVAILABLE", "detail": f"GET {r.status}"}
+            else:
+                URL_CHECK_RESULTS[url] = {"state": "DEAD", "detail": f"GET {r.status}"}
             return False
+    except urllib.error.HTTPError as exc:
+        state = "UNAVAILABLE" if exc.code >= 500 else "DEAD"
+        URL_CHECK_RESULTS[url] = {"state": state, "detail": f"GET HTTP {exc.code}"}
+        return False
+    except Exception as exc:
+        URL_CHECK_RESULTS[url] = {"state": "UNAVAILABLE", "detail": f"{type(exc).__name__}: {exc}"}
+        return False
 
 
 def git_exists(sha):
