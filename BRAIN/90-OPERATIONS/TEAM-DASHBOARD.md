@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 21:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-21 22:18 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 48 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 50 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -64,15 +64,16 @@
 - [#2825](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825) The GitHub webhook receiving door — nayanet-github-intake (verify + ac
 - [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
 
-### BUILD (17)
+### BUILD (18)
+- [#2855](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2855) DESIGN: Standdown blast-radius redesign (API-STANDDOWN v2)
 - [#2851](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2851) SN-1772 — Opened Is Not Done: Land It, Close It, or Kill It
 - [#2848](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2848) SN-1771 — Already Built: Pick Your Model, Drive Away in Minutes
 - [#2846](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2846) fix(activation): pin Operating Code V2 LF in Windows checkouts (reland
 - [#2842](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2842) boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATIO
-- [#2835](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2835) Clean home R1: remove the 10 byte-proven duplicate files (Shawn-approv
-- …and 12 more
+- …and 13 more
 
-### WIRE (3)
+### WIRE (4)
+- [#2856](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2856) ci: introduce risk-tiered unified PR paperwork gate in shadow mode
 - [#2834](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2834) fix(readiness): C3 classifier no longer cries wolf on a healthy gate
 - [#2812](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2812) fix(activation): refuse undeclared cold starts at real admission gate
 - [#2552](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2552) Intelligence intake triage: the hive's ingestion gate
