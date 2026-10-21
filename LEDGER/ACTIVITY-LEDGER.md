@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 20:53 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5063,6 +5063,30 @@ _Last updated: 2026-10-21 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified all cited artifacts on disk: hypothesis-change.md (pre-design), decide-fork receipt, sealed record + both briefs, dry-A output sha256 03144d1c...31203cc6922e matches exactly. Gate fired honestly on the fixed rule — stopped before 4 wasted arms. Owned the pointer confound (brief handed the control the record it was testing). 7.5 
 
+### ✅ t1186 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Stage 0 [REPLAY]: replay 3 past consequential decisions against current principles with named deltas, every fact re-derived from live bytes
+
+**Receipt:** `twelve-lane-receipts/t1186-lane3.md`
+
+**Evidence:** Verified: all three byte-pinned sources exist and were the cited artifacts (t1012-lane3.md, t0697-lane2.md, retrieval-auth-gate-HOLD-t0783-lane4.json). Heaviest freshness claim (D1) re-verified INDEPENDENTLY on the live mirror (997ad75, 20:51 UTC, newer than pinned tip): kernel/decision_principle.py:116-117 HARM_SEVERITY_THRESHOLD = 7.0 / HARM_PROB
+
+### ✅ t1186 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Stage 0 REPLAY: replay 3 past consequential decisions against current principles with named deltas, all facts re-derived from live bytes
+
+**Receipt:** `twelve-lane-receipts/t1186-lane3.md`
+
+**Evidence:** VERIFIED this tick: all 3 byte-pinned sources re-read from disk — t1012-lane3.md carries the 16:27 PDT strict-bar word cite + branch naya/three-decision-consolidate @ 43c0113eee302db2c334aa9d5d3139ea0afd1d77 fast-forward; t0697-lane2.md carries the host-qualified ruling (UNKNOWN-by-design language); retrieval-auth-gate-HOLD-t0783-lane4.json state r
+
+### ✅ t1178 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** repair CI-green/local-red truth-gate defect in tests/test_learn_compound_scale.py (_truth_lesson fixture read real home files when present)
+
+**Receipt:** `twelve-lane-receipts/t1178-lane2.md`
+
+**Evidence:** Verified: re-ran the exact failing subset on the CURRENT mirror file (hub-sync synced 2026-10-21 20:51:44 UTC, after the receipt's 19:15 UTC claim) -> 3 failed, 13 passed with the EXACT t0552 signature (test_truth_rejects_adversarial[A2], [A3], test_truth_rejects_unearned_contradiction). This corroborates the receipt's before-state claim AND confir
+
 ### ✅ t1178 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Repaired truth-gate CI-green/local-red fixture defect in test_learn_compound_scale.py
@@ -5070,6 +5094,14 @@ _Last updated: 2026-10-21 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1178-lane2.md`
 
 **Evidence:** Verified: hub-sync/repo/tests/test_learn_compound_scale.py exists (Oct 21 19:57); _truth_lesson(lid, tmp_path) now always materializes the hermetic fixture under tmp_path (0 os.path.exists conditionals; fixture seam 23+/30- confined to the test file, gates.py/registry untouched). Why not 9.5: the repair is PROVEN but not SHIPPED — it lives in a one
+
+### ✅ t1175 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.3/10 [VERIFIED]
+
+**Task:** queue-ledger-check adoption report: verify cite-cause check on live state, trace every queue-mutation path, wire it in or name exactly why it can't
+
+**Receipt:** `twelve-lane-receipts/t1175-lane4.md`
+
+**Evidence:** Verified: tool sha256 248a9151ef29777cc21eac3a388f55373d1aa99b65bd4c4006182772c828c32a EXACT match; live-run JSON sha256 abc09df0506ddd34cf9a55c3c9ea03485329d3b09c2e2a72e426f4b0ac50e30d EXACT match; both evidence files present on disk. Ledger sha differs from receipt's but receipt names the cause (dispatcher t1183 re-registers added 2 lines post-re
 
 ### ✅ t1175 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -20379,6 +20411,12 @@ _Last updated: 2026-10-21 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ scorer-20261014-1950 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap-scorer-20261014-1950-lane9: t0597 force ref-update byte-faithfulness by independent remote re-fetch
+
+**Evidence:** INDEPENDENTLY RE-VERIFIED today 2026-10-21 (6 days after the run, different VM/credential): git ls-remote on branch naya/nine-retrieval-auth-wire-packet-t0537 still resolves to 99a2f832d054b3963fd4503702ecc2c00e59b73d — byte-equal to the receipt's pinned head; sha256 of tools/refusal_point_t0537.py at that head = e8254132d38c0c39a0a6c42f7b63a0bc084
+
 ### ✅ lane-scorer-20261015-1700 — Team 9, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
 **Task:** receipt 20261015-1700
@@ -29561,6 +29599,12 @@ _Last updated: 2026-10-21 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ scorer-20261014-1935 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap-scorer-20261014-1935-lane10: ineligible gap-followup brief claimed then released unexecuted (double-excluded seat), retired to done/
+
+**Evidence:** VERIFIED on live bytes 2026-10-21: brief-gap-scorer-20261014-1935-lane10.md IS in brief-queue/done/ (disposition as claimed); gap-followup-seen.json holds BOTH the 17:20 no-refile verdict ('gap-t0771-lane10 -> scored 9.0 ... no follow-up filed') AND the 19:35 re-file entry ('scorer-20261014-1935-lane10 -> parent_receipt gap-t0771-lane10.md') verbat
+
 ### ✅ scorer-20261015-2030 — Team 10, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** receipt scorer-20261015-2030
@@ -31604,6 +31648,12 @@ _Last updated: 2026-10-21 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ scorer-20261014-1940 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap-scorer-20261014-1940-lane1: Template v2 — closed all three t892 specified-not-built items, proved with full pipeline run
+
+**Evidence:** VERIFIED on live bytes 2026-10-21 (6 days later): four-way-template/examples/pr-2385-brain-index-gate-v2/ holds arms/, blinded/, sealed/, claim-manifest.json, scorecard.json, seal-receipt.json; seal-receipt ordering valid (sealed_at 2026-10-15T04:31:17Z < scorer_completed_at 04:31:27Z < unsealed_at 04:31:29Z); manifest_sha256 in seal-receipt (727d1
 
 ### ✅ gap-t2330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
