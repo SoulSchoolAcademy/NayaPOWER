@@ -1,76 +1,57 @@
-# The Smart Note Protocol — V1 (AI tongue)
+# The Smart Note Protocol — V1 ULTIMATE (AI tongue)
 
-Canonical procedure for creating a Smart Note that reaches the Intelligent Hub. Authoritative worked source: SN-0810. Ordered by Shawn Vibert 2026-10-21. If any other document's Smart Note procedure disagrees with this one, this one governs; file the conflict as a defect.
+Canonical procedure. Merges Resolve's 0025 draft (PR #2850) with Nitro's 2026-10-21 recommendations draft, scorecarded against live evidence; Shawn's rulings of 2026-10-21 govern all conflicts. Worked example: SN-0810. If another document's procedure disagrees, this one governs; file the conflict as a defect.
 
 ## Definitions
-- Smart Note: the unit of living intelligence in NayaNET; a nine-section document (§Structure) filed in the brain, synced to Supabase, rendered in the Hub.
-- Done: the note's own entry is verified present in the LIVE Hub feed bytes AND nayanet.live/s/sn#### returns HTTP 200. Any lesser state (written / committed / PR open / landing requested / on main unverified) is NOT done.
+- Smart Note: the unit of living intelligence in NayaNET; a nine-section document (§Sections), filed in the brain, synced to Supabase `hub_smart_notes`, rendered in the Hub.
+- Terminal states: `VERIFIED_LIVE` (all four verifications true) or `STALLED:<failing-step>`. "Done" == VERIFIED_LIVE. Written / committed / PR open / landing requested / on main unverified are NOT done.
 
-## Categorization (mandatory, no exceptions)
-- The `<TOPIC>/<sub>` in the filing path MUST be a real entry of the brain's existing topic taxonomy, chosen at authoring for what the note truly is.
-- The literal category `UNCATEGORIZED` (or any misc/dumping label) is a PROTOCOL VIOLATION: the note is not done even if synced and visible, and the author re-files it under a true category.
-- If no existing subtopic fits, the author creates one deliberately (named for the note's true domain) and records the creation in the note's NAYA section. Inventing a vague bucket to avoid choosing is the same violation as UNCATEGORIZED.
+## Identifiers, category, filing
+- ID: SN-####. Claim scan BEFORE writing: (a) main tree, (b) open PR heads/staging trees, (c) board tail, (d) the corpus for the IDEA itself (dedupe — one note, one truth; corrections edit, never fork). First claim stands; never reuse a number. A scan executed against unpadded patterns misses zero-padded filings (`SN-01773`) — scan both forms.
+- IB id: `IB-SMART-NOTE-YYYYMMDD-sn####-<slug>`; filename == IB id + `.md`, exactly. Any other filename = no share page, no card art.
+- Path: `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/<TOPIC>/<theme>/SN-####/<IB id>.md`.
+- Category is STRUCTURAL: the bridge derives it from the path TOPIC segment (`topic_for_path`). TOPIC = the note's SUBJECT from the existing taxonomy, never its kind. `**Category:**` line inside the note == path TOPIC. One canonical spelling per category (case-sensitive); variants are defects.
+- UNCATEGORIZED is the bridge's render for a topic-less/malformed filing: a protocol violation; the note is not done even if visible; the author re-files under the true path. If no subtopic fits, create one deliberately (named for the true domain) and record it in the NAYA section.
 
-## Identifiers and filing
-- ID: SN-#### (sequence per claim scan; first claim stands; never reuse).
-- File name: `IB-SMART-NOTE-YYYYMMDD-sn####-<slug>.md` (lowercase sn in the file name).
-- Path: `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/<TOPIC>/<sub>/SN-####/<filename>`.
-- Claim scan BEFORE writing: search (a) main tree, (b) open PR heads/staging trees, (c) the board tail for `SN-####` claims. A scan older than the claim is not a scan (registry-read lifetime rule).
+## Viralize + the block standard
+- Authoring order fixed: category → topic headline → ultimate hook → nine sections.
+- Hook: the greatest-possible human hook; self-scored on the stranger-tap test ("would a busy stranger tap this?"); target ≥9; rewrite until yes. Kind/ID/topic labels are forbidden as titles. Subheadline = the plain-English promise.
+- Deliverable = a one-minute Intelligent Block: skim (Nutshell + headings carry the whole), listen (play, real voice), full read. Distillation standard: essence in the simplest, clearest, most concise words that keep the truth whole. Presentation: elevated boards, big clear text.
+- Feed surfacing is BY CATEGORY via Smart Tabs — never one undifferentiated stream.
 
-## Viralize (authoring order + the one-minute block)
-- Authoring order is fixed: (1) category, (2) topic headline, (3) ultimate hook — then the nine sections. The hook must simultaneously earn attention and summarize the note ("would a busy stranger stop for this line?" — rewrite until yes).
-- The deliverable is an Intelligent Block with three first-class consumption paths: skim (nutshell + section headings carry the whole), listen (play, real cloned voice), full read. Target absorption ≈ 1 minute.
-- Distillation standard: essence in the simplest, clearest, most concise words that keep the truth whole; cut any words that cost no truth. Presentation standard: elevated boards, big clear text.
-- Feed surfacing is BY CATEGORY via Smart Tabs — never one undifferentiated stream. A note's category is therefore a display property, not just a filing property; a category-less note is homeless in the feed as well as the tree.
+## Sections — canonical spellings, in order, none absent
+`IN A NUTSHELL`, `THE HUMAN VERSION`, `FOR A CHILD`, `FOR GRANDMA`, `FOR NAYA`, `FOR THE MACHINE`, `WHAT IT ALL MEANS`, `WHAT'S IN IT FOR YOU`, `HOW IT APPLIES`. Ingest minimum: non-empty NUTSHELL or HUMAN VERSION — below that the bridge silently cannot ingest. Nutshell stands alone. MACHINE section = parseable JSON with the note id + operative values. Metadata header: `**ID:**`, `**Created:**`, `**Category:**`.
 
-## Title law
-The title is a crafted human hook: the greatest possible title carrying the lesson in one line. Generic labels ("notes on X", "update", the raw topic) violate the protocol. The title is set at authoring and is part of the note's MACHINE identity (feed card title).
+## Pipeline (Sender → Bridge → Receiver)
+1. SENDER: the note file on GitHub `main` — the ONLY door. Local files, branches, open PRs are invisible downstream.
+2. BRIDGE: the sync scans main's tree (identity-blind by construction), detects by blob SHA, derives category from path, parses (refuses below ingest minimum), upserts to Supabase `dahisasgpfvziswqvmvm` / `hub_smart_notes`, mints share assets via `naya-share` (routes /s/* and /share-img/*), enqueues voice at publish (nutshell chunks first, then remaining layers), rebakes the Hub when ≥1 note syncs.
+3. RECEIVER: feed card (by category tab), own page /s/sn####, share image, play in the real voice.
+4. HONEST STATE (root-caused 2026-10-21): the documented ≈5-min cadence is NOT confirmed by observation (SN-0812, bot-landed canonical 18:21:52Z → no card, no rebake >7 min). Treat cadence as UNVERIFIED. The streamline (machinery committed to repo under tools/smart-notes-sync/, push-triggered workflow on the SMART-NOTES path, scheduled reconciler + visible heartbeat, acceptance proof timing both doors) is designed and owed; secrets placement is a human-gate packet. Until it is acceptance-proven, no seat states appearance timing as fact, and the author's verification is the only reliable detector.
+5. REGISTRY NOTE: `.naya/memory/smart-notes/index.json` is reconciled by its own cure lane; the Hub feed does not read it. Registry lag never blocks visibility and never excuses a missing landing.
 
-## Structure — nine sections, exact headings, in order
-`IN A NUTSHELL`, `HUMAN`, `CHILD`, `GRANDMA`, `NAYA`, `MACHINE`, `WHAT IT ALL MEANS`, `WHAT'S IN IT FOR YOU`, `HOW IT APPLIES`. The sync refuses notes lacking a Nutshell or Human section; author all nine regardless. MACHINE section = a parseable JSON object carrying at minimum the note id and its operative values/rules.
-
-## The pipeline (Sender → Bridge → Receiver)
-1. SENDER: the note file on GitHub `main`. **Main is the only door.** Local files, branches, and open PRs are invisible to every downstream stage.
-2. BRIDGE: `naya-smart-notes-sync` scans main's tree, detects new/changed notes by blob SHA, parses, upserts to Supabase project `dahisasgpfvziswqvmvm`, table `hub_smart_notes`; mints share assets via the `naya-share` worker (routes nayanet.live/s/* and /share-img/*). Bake-on-publish: the note's narration is rendered in Naya's cloned voice during the sync so play serves the real voice from first click.
-   HONEST STATE (root-cause, 2026-10-21): the documented ≈5-min identity-blind tree-scan cadence is NOT confirmed by observation — SN-0812, bot-landed on main in canonical form 18:21:52Z, had produced no card and no rebake >7 min later. Treat the sync's live cadence as UNVERIFIED; the author's live verification (§Verification) is therefore not ceremony — it is currently the only reliable detector. The streamline (push-triggered workflow on the Smart Notes path, machinery committed to the repo, reconciler + heartbeat) is designed and owed; until it lands and is acceptance-proven, no seat may state a note will appear "in seconds" as a fact.
-3. RECEIVER: if ≥1 note synced, the Hub rebakes + redeploys; the note renders as a card in the feed (`window.NayaFeedIntelligence.notes`, nayanet.live/#/hub) and at its own page.
-
-## Landing doors (either satisfies the protocol; the author drives until landed)
-- Door A — direct write to main via the App/bypass identity (standing approval covers the Smart Notes folder). The main-seat gh identity has NO bypass: its direct ref PATCH is ruleset-refused (422). Request the carry from the App-identity lane ON the board, naming the exact built commit + branch, and FOLLOW UP until the ref moves — an unanswered request is not a landing (SN-1771 escalation, 2026-10-21).
+## Landing doors (author drives until landed)
+- Door A — direct write to main via the App/bypass identity (standing approval covers the Smart Notes folder). The main-seat gh identity has NO bypass (direct ref PATCH = 422). Request the carry ON the board naming the exact built commit + branch; FOLLOW UP until the ref moves. An unanswered request is not a landing (SN-1771).
 - Door B — dock-merged PR through the full scored process.
-After a Door-A landing, close the record PR as superseded; never merge a stale registry regen from the record PR.
+After a Door-A landing, close the record PR as superseded; never merge a stale registry regen from it.
 
-## Verification (authoring seat, mandatory, in order)
-1. Contents API: the file exists at its exact path on main.
-2. Live Hub bytes: fetch nayanet.live/ and confirm the note's OWN entry in the baked notes array (its IB id + title) — a textual mention inside another note does not count.
-3. Own page: GET nayanet.live/s/sn#### = 200.
-4. Voice (when checked): the player key for the note's normalized text resolves at the voice worker (cache-<sha256>.mp3); a miss = robot fallback = defect.
-Only after 1–3: deliver to Shawn as the feed link + the note's own page link.
+## Verification — author, personally, in order (all four = VERIFIED_LIVE)
+1. Tree: the file exists at its exact path on main (contents API / tree read — never a push receipt).
+2. Feed: the note's OWN entry in the live baked feed array (IB id + title) — a textual mention inside another note does not count.
+3. Page: GET nayanet.live/s/sn#### == 200.
+4. Share image: GET the note's share image == 200.
+Any byte edit after verification restarts this sequence. Deliver to Shawn = the feed link + the own-page link.
 
 ## Tracking (the intelligence ledger)
-Every note MUST be countable in the Smart Ledger / data dashboard along these dimensions: total count; per category (TOPIC/sub); per author (human or seat); per day/week/month/year; filed-vs-visible delta (tree count vs live feed count — a nonzero delta is a defect list, each item named); voiced count (baked narration present). All stats are COMPUTED from the tree + the live feed at read time; hand-entered numbers are protocol violations. Category names have ONE canonical spelling (case-sensitive); variant spellings (e.g. `system` vs `SYSTEM`) are categorization defects to normalize, because they silently split the counts.
+Countable in the Smart Ledger / dashboard along: total; per category; per author (human or seat); per day/week/month/year; filed-vs-visible delta (tree count vs live feed count — nonzero = a defect list, each item named); voiced count. All stats COMPUTED from tree + live feed at read time; hand-entered numbers are violations. Census at V1: 639 files / 619 unique SN ids / 16 filing days; taxonomy drift present (593 files under one topic beside variant spellings) — normalization is owed work under this protocol.
 
-## The Intelligent Event (mandatory outputs of a landing)
-Every verified landing MUST produce, as part of the same process: (1) a Hub notification of the note's arrival; (2) the note's NUTSHELL in Today's Intel, linked to the full note; (3) an activity-feed entry (what / whose / when) carrying a Smart Link to the note's own page (nayanet.live/s/sn####). All three are completion criteria for the landing pipeline, not enhancements. State at V1: feed card LIVE; Today's Intel nutshell and activity event NOT yet wired (Today's Intel renders fixed fixtures per the 2026-10-21 room audit) — owed build work, tracked under this protocol; do not claim the event layer works until all three surfaces verify live for a real note.
-
-## Registry note
-The `.naya/memory/smart-notes/index.json` registry is reconciled by its own cure lane; the Hub feed does NOT read it. Registry lag never blocks a note's Hub visibility and never excuses a missing landing.
-
-## Failure modes (each observed; each preventable by the step named)
-- PR-only note → invisible. Prevented by: landing driven + verified (§Verification).
-- Landing request unanswered → invisible. Prevented by: author follow-up/escalation with verified-absence evidence.
-- Lazy title → unread lesson. Prevented by: title law at authoring.
-- Missing Nutshell/Human → sync refusal. Prevented by: nine-section completeness check before landing.
-- Robot voice on play → bake skipped. Prevented by: bake-on-publish; treat any fallback as a defect.
-- Number collision → scan first, first claim stands, colliding lane renumbers its own work.
+## The Intelligent Event (mandatory outputs of a verified landing)
+(1) Hub notification; (2) the note's NUTSHELL in Today's Intel, linked; (3) activity-feed entry (what/whose/when) with a Smart Link to /s/sn####. State at V1: feed card LIVE; Intel nutshell + activity event NOT wired (Today's Intel renders fixed fixtures, 2026-10-21 room audit) — owed build work; never claim the event layer works until all three verify live for a real note.
 
 ## Distillation events (standing rhythm)
-- Raw filed notes are ORE; the Hub's surfaced intelligence is DISTILLED ESSENCE. Cadence: daily (day's notes → day essence), weekly, monthly, yearly — each level distills the level below.
-- Target shape per scope: ≤ ~50–100 essence blocks carrying the scope's whole living intelligence.
-- Guard rules: (1) NEVER delete a lesson that matters — distillation compresses and surfaces; raw notes remain archived in the brain; (2) dumping raw note volume into the Hub violates this protocol like an uncategorized filing does; (3) the events are a recurring habit with named owners, not a one-off cleanup.
-- Selection standard: expert judgment of what matters / is valuable / is intelligent, scored — the essence keeps the lesson, its evidence pointer, and its application; the words shrink, the truth doesn't.
+Raw filed notes are ORE; surfaced intelligence is DISTILLED ESSENCE. Cadence daily/weekly/monthly/yearly, each level distilling the level below; target ≤ ~50–100 essence blocks per scope. NEVER delete a lesson that matters — distillation compresses and surfaces; raw notes stay archived in the brain. Dumping raw volume into the Hub violates this protocol like an uncategorized filing. Recurring habit with named owners, not a project.
+
+## Failure modes (observed; prevention named)
+request-assumed landing → ghost note (verify personally) · topic-less path → UNCATEGORIZED render (path is correctness) · duplicate filing → split counts/tabs (dedupe at Step 0; edit, never fork) · label-as-title → unread note (viralize) · non-IB filename → no share page/art (filename == IB id) · empty core section → silent ingest refusal (nine complete sections) · done-at-creation → false report (terminal states only) · edit-and-walk-away → silent card change/vanish (re-verify) · guaranteed-timing claims → falsified by observation (honest state, §Pipeline.4) · unpadded scan patterns → missed zero-padded filings (scan both forms).
 
 ## Roles
-- Author (any Naya seat): end-to-end owner of their note.
-- Bridge lane (Nitro): sync, share assets, rebake machinery, bake-on-publish.
-- Shawn: any human may order a note with "smart note this"; delivery to him = the live links.
+Author (any seat): end-to-end owner. Bridge lane (Nitro): sync, share assets, rebake, bake-on-publish. Different seat: quality verification for protocol-level changes. Shawn: any human may order a note with "smart note this"; his word in the moment outranks this protocol, which is updated the same day to match.
