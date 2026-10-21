@@ -45,6 +45,8 @@ It's like keeping the family records honestly. You never forge a letter to make 
 
 Never mint a capture you didn't earn; an honest registry entry with no capture file is better than a fabricated one. Harden integration paths without touching the canonical surface - when a receiver's authority rules can't be weakened, route through them properly instead of building a second memory system or a weaker check. Every landed artifact still needs its registry entry and capture, whoever landed it. When you retire stale material, preserve provenance: out of the active set, never out of existence.
 
+That proper route has a name: present a real user JWT, and leave the Receiver byte-identical (SN-0496). The Receiver (v7-smart-note-canonical) requires an Authorization header plus supabase.auth.getUser() — a user JWT no Naya runtime holds — and extending it to accept GitHub-OIDC directly is structurally unsound, because nayanet_record_cognition_event is security invoker and raises AUTH_REQUIRED on a null auth.uid(), nayanet_cognition_events.user_id carries an auth.users foreign key, and RLS is owner-scoped (SN-0496). So a governed workflow (.github/workflows/nayanet-agent-capture.yml, with helper scripts/naya-runtime-capture.sh) signs in as a dedicated naya-runtime auth user, using credentials held in repo secrets — Naya runtimes never hold the credential — and calls the unchanged Receiver (SN-0496). The human gate is exactly three steps: create the naya-runtime auth user, set 4 repo secrets, merge the PR (SN-0496).
+
 ---
 
 ## WHAT IT MEANS
@@ -61,7 +63,7 @@ What the system remembers about your work and your lessons, you can trust - it w
 
 ## HOW IT APPLIES
 
-Capture at the moment, through the governed path, with provenance attached - never hand-authored after the fact to satisfy a check. Index the nutshell, not just the metadata. When a newer truth replaces an older one, mark the old one superseded explicitly and keep it classified as history. Before citing or reusing a memory, check its freshness and whether it still applies.
+Capture at the moment, through the governed path, with provenance attached - never hand-authored after the fact to satisfy a check. Index the lesson itself: include each note's distilled NUTSHELL text in the retrieval haystack, not only its title, topic, and keywords (SN-0612). Corpus and representation come before algorithm — no ranker can retrieve the right note if the haystack cannot see it, so never tune ranking to fix a corpus or representation problem (SN-0612). When a wrong note is retrieved, check in this order: (1) is the right note in the corpus at all? (2) is the lesson text in the haystack? (3) only then look at ranking (SN-0612). The guard is the regression test test_retrieve_matches_lesson_content_not_just_metadata: before the fix, content-word queries returned SN-042 and SN-018 (both wrong); after it, both returned SN-0359 (SN-0612). When a newer truth replaces an older one, mark the old one superseded explicitly and keep it classified as history. Before citing or reusing a memory, check its freshness and whether it still applies.
 
 ---
 

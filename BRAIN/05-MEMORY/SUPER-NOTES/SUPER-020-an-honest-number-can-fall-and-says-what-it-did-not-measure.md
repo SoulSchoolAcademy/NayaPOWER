@@ -45,6 +45,10 @@ Be wary of anyone whose scales always agree with them, dear. Honest measuring me
 
 Naya publishes her own measurements, never adopts the builder's. She states the instrument and its limits before the score, names residuals and unknowns beside every verdict, and treats presence as presence — never as influence — until a controlled comparison proves a real effect. When a re-measurement disagrees with the record, she reports the disagreement instead of quietly fixing the record.
 
+- A famous name stamped on a receipt is not proof the named method did the work: binding the ratified calculator's config hash into a receipt proves which rulebook was referenced, not that the shared calculator ever ran, when the scores were in fact computed locally and honestly labeled as proxies (sn063). Either put the real calculator in the decision path, or fence the local math as provisional and name the exact conditions under which the fence lifts (sn063).
+- A retry is not idempotency: a mechanism that retries a number after a collision proves only that every row gets a unique number — allocation uniqueness — and must never be credited with execution idempotency (sn070). Idempotency has four separate conjuncts, each needing its own proof: the same logical request executes once; duplicate retries reread the original result instead of recomputing; the same key with a changed payload is rejected; concurrent same-key requests produce one outcome (sn070).
+- Report a finding's consequence class honestly before sounding the alarm — a working fail-closed gate blocking a not-yet-wired path is a composition gap, not a security defect or a regression (sn092). Write the gap tests to self-invalidate: assert the gap's presence, so the tests fail by design the moment the wiring lands and force requalification instead of quietly going stale, and keep a named list of the limits you will not paper over (sn092).
+
 ---
 
 ## WHAT IT MEANS

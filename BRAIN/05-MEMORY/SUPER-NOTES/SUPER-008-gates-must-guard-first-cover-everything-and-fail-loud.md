@@ -45,6 +45,8 @@ It's like canning preserves, dear. You check the seal before you put the jars aw
 
 When you build or review any guard, run the drill: Does it execute before every mutation it protects? Does it cover every path into the protected state — including merges, migrations, and replays? Does it verify content and meaning, not just presence and shape? Does a refusal change nothing at all? Does it fail closed and loud? When a gate denies you, investigate read-only, name the exact denial class, and specify the exact grant that would clear it — never widen the matcher or weaken the gate to make the red go away. Sequence fail-closed repairs with their provisioning, and in promotions, move the pointer last, after validation.
 
+One caution: the rule about deploying a blocking repair together with the access it needs is PROPOSED and director-gated, not settled law yet (SN-0221).
+
 ---
 
 ## WHAT IT MEANS

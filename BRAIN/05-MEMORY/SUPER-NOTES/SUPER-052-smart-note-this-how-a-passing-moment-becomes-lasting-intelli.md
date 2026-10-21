@@ -27,6 +27,8 @@ When something matters, you say "Smart Note this" — and the system keeps the m
 
 A Smart Note is not a transcript dump. It is the useful meaning of a moment, distilled into one durable block of intelligence, checked for value, privacy, and duplicates, filed where it belongs, and linked to related knowledge. The proof it worked is a Smart Link: a clickable page where you can see the intelligence, verify it landed in the right spot, and confirm it happened. The deliverable is always the note plus its link — never an internal ticket number. A nightly check makes sure nothing valuable leaks away unrecorded.
 
+A Smart Link counts only under exact conditions: the link is https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/<generated-projection-path> — the machine-generated Brain markdown, never hand-written (SN-0254). Status is ACTIVE only when the projection lands under the public BRAIN/05-MEMORY/SMART-NOTES root, which requires human_director_authorized_publication: true (or public scope) on the capture; otherwise the note stays PENDING_PRIVATE_PROJECTION and there is no link (SN-0254). The path itself encodes date/category/topic/SN, so the "right spot" is verifiable from the URL alone (SN-0254). An ACTIVE link proves: authored capture → persisted → independently verified → projected from the verified block → landed at the canonical spot. It does NOT prove cold comprehension, Hub projection, notification, or learning/compounding — those are later rungs with their own proofs (SN-0254).
+
 ---
 
 ## 🟣 CHILD NOTE
@@ -44,6 +46,8 @@ Think of a wonderful assistant with a perfect filing cabinet. You mention someth
 ## 🤖 NAYA NOTE
 
 My job is not to save words mechanically but to turn valuable experience into governed, reusable intelligence: understand the intent, distill the durable meaning, check value, privacy, duplicates and conflicts, commit one canonical block, connect and index it, verify it persisted, and return the Smart Link. Every capture also gets classified — how deep it lives and what kind of thing it is — and the loop closes with a receipt check, so a lesson shared in chat never silently vanishes.
+
+The classification is a proposal, not in force. Five proposed classes: (1) CORE — identity, law, architecture, mission, invariants; extremely durable; changes require human-director ratification. (2) REUSABLE INTELLIGENCE — lessons, procedures, insights, decisions, discoveries; normal Smart Note territory. (3) CONTEXT — useful for a project or time period; not universally important; expires or demotes to REFERENCE. (4) REFERENCE — worth retaining; retrieved only explicitly, not surfaced proactively. (5) EPHEMERAL — chatter, intermediate thoughts, duplication, transient machine output; does not enter the durable store (SN-011). Ten proposed capture types: Decision · Lesson · Principle · Discovery · Mistake · Constraint · Procedure · Question · Outcome · Current state (SN-011). Status: CANDIDATE — "awaiting human-director decision; NOT in force"; nothing about capture behavior changes until Shawn ratifies, and protocol V2 still governs (SN-011).
 
 ---
 

@@ -45,6 +45,10 @@ It's like a recipe card that says 'the cake in the oven.' Which oven? Which cake
 
 Every verification Naya writes names its exact target: the precise version checked, the run it belongs to, the files in scope. She confirms the pointer still resolves before citing it, compares like with like at a single moment, and when a target moves, she says plainly what is no longer covered.
 
+- Verify the door, then pin what you consumed: a pass at the intake boundary is not custody of the state, because the consumer may hold an alias to a store that can still be mutated in place after intake (sn0112). Name the bar honestly for each layer — forging past intake means replicating the full emission, while post-intake mutation takes only a dict write — and harden by deep-copy-on-consume plus a hash-pin at intake, or by a post-close immutability contract on the store (sn0112).
+- Same contents are not the same run: two receipts can share a decision id and an artifact hash and still be different executions, so whenever evidence joins across runs, the join key is execution identity, never decision identity or content hash alone (sn082). Content hash proves the bytes; execution identity proves the provenance — cite both, or you are citing a different run (sn082).
+- Only ask anyone to qualify what they can actually fetch: freeze the subject as a candidate SHA plus its branch plus byte digests of every file the proof depends on, and bind the verdict to that SHA — if the branch advances, the qualification does not follow it (sn086). If you named an unfetchable reference, such as an unpushed local commit, withdraw it out loud and re-issue; never edit it quietly in place (sn086).
+
 ---
 
 ## WHAT IT MEANS

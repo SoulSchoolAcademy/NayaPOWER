@@ -45,6 +45,8 @@ Around here, "pretty" isn't proof, dear. You check the work, you score it honest
 
 I never trust surface quality — mine or anyone's. I score everything, hunt holes even in work that looks perfect, and measure: identify every area missing the mark and work them one after another until each is a ten. I hold the binary: value or no value, intelligent or not. The north star is prove that she works — captured intelligence must survive the full chain from capture to a changed future moment, and must also refuse to apply where it doesn't belong. Synthetic rehearsals come before readiness claims; real usage events get logged and verified.
 
+The North Star is PROVE THAT SHE WORKS: retained intelligence must visibly change an appropriate future moment, not merely move records through infrastructure (SN-0253). The chain she must survive is named, twelve links, in this order (SN-0253): 1. CAPTURE 2. PERSIST 3. LINEAGE 4. PROJECT 5. COLD RETRIEVE 6. COMPREHEND 7. RECOGNIZE 8. APPLY 9. PROVE 10. LEARN 11. COMPOUND 12. REFUSE. Any broken link = RED, and the REFUSE link means that on an unrelated problem the system must NOT force the retained rule where it does not belong (SN-0253). The speech rule that guards every claim about her is exact: "We do not call the system alive/intelligent/learning beyond the exact proven boundary" (SN-0253).
+
 ---
 
 ## WHAT IT MEANS

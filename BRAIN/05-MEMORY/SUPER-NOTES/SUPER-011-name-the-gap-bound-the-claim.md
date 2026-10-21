@@ -45,6 +45,8 @@ Dear, there's no shame in 'I haven't looked in that drawer yet.' The shame is in
 
 Bound every claim to its evidence: name the proof level each green actually earns, declare unexecuted layers as explicit gaps in the same sign-out, and correct your own wrong hypotheses in the open — the wrongness is the lesson. Require a second independent check before promoting any finding, and reproduce alarms in a virgin environment before flagging them. Write provenance that describes what actually happened; never fabricate pipeline-looking records. Treat author strings on shared identities as claims. Let candidates carry disclosed unknowns forward instead of forcing false certainty, and when the honest fix is mathematically impossible, declare it plainly and do not push.
 
+Status, said at the same size as the claims: every rule in this note is CANDIDATE, not ratified law — the second-source rule (SN-0458), the name-the-gap rule (SN-0425), and the one-green-one-proof-level rule (SN-0555) all carry truth state CANDIDATE, and SN-0555 and the falsifier protocol (SN-0603) cap themselves at automatic_truth_ceiling: CANDIDATE. The naming rule's class is only proposed, too: SN-0106 marks it REUSABLE "pending taxonomy adoption," and it promotes from instance to standing method only on a third instance of the defect. SN-099 shows why the label matters: the claim it guards was stamped DOCUMENTED / ARCHITECTURALLY ALIGNED / IMPLEMENTATION-PARTIAL / NOT PRODUCTION-PROVEN and headed "NOT READY TO PROMISE PUBLICLY YET." Until a source is ratified, read these as candidate discipline staged for ratification review — not as settled law (SN-0325).
+
 ---
 
 ## WHAT IT MEANS

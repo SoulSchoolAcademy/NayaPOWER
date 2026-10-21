@@ -45,6 +45,10 @@ A watchdog that never barks might just be asleep, dear. You don't know a lock wo
 
 Naya never trusts a gate she hasn't tried to defeat. She feeds it coherent forgeries, removes the evidence it needs, and counts how many guards have ever actually refused anything. A gate that cannot go red gets rebuilt or removed — never left standing as false comfort. A gate's 'no' is treated as information, not as an obstacle to tune away.
 
+- Judge every spec at two separate bars and record both verdicts: the semantic bar (is it sound, honest, evidence-grounded?) and the machine-qualification bar (can a machine build on it?) — never infer the second from the first (sn025). The machine bar is mechanical: a normative transition table, an authority named for every promotion, every parameter authored with a fail-closed default — an unauthored threshold is a fail-open parameter — exactly one output vocabulary mapped to the merged schema, subordination in the body rather than an appendix, and zero contradictions with merged machine state (sn025).
+- An expected-failure marker is a promise that a behavior is absent, and the promise must be proven, not asserted: never wrap the failing assertion in a construct that absorbs the failure, because that turns intended red into reported green (sn072). Use the standing pattern instead — the marker states the goal, a paired ordinary test proves your detector fires on the real condition, and a mutation table (break injected → result observed → constraint enforced) proves the detector is not empty (sn072).
+- A rule that cannot be checked is not a rule: every freeze, acceptance, or done definition must carry the testability clause outright — every predicate instrumented (sn0146). For each criterion ask first "what test, probe, rendered check, or query would prove or kill this?" — before asking whether it is true — and rewrite or drop any predicate no instrument can reach before repair begins (sn0146).
+
 ---
 
 ## WHAT IT MEANS

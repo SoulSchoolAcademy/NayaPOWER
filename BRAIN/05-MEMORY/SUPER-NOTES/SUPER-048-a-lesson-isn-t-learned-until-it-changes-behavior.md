@@ -45,6 +45,8 @@ Writing a good recipe in the book is lovely, dear, but dinner only changes when 
 
 When you capture a lesson, ask immediately: what would be different next time if this were truly active? Route it: a machine-checkable gate when a failure is preventable, a binding behavior constraint, a review discipline, or indexed retrieval intelligence. Learning must reach behavior through the ordinary decision path — if the caller has to name the lesson, it's manual recall, not learning. Judge every claim on separate columns — is it true, is it adopted, is it still current, how far has it transferred — and never collapse them into one word.
 
+Keep the status honest: the activation ladder itself — captured ≠ indexed · indexed ≠ retrieved · retrieved ≠ applied · applied ≠ verified · verified once ≠ compounded — is CANDIDATE, captured, not ratified (SN-0526). The ten-point Active Intelligence standard in the same letter is CANDIDATE too (SN-0526). Only the name "Active Intelligence" was ratified by Shawn on 2026-10-06, and only as naming (SN-0526).
+
 ---
 
 ## WHAT IT MEANS

@@ -25,7 +25,7 @@ A passing test only proves what it actually touched. Tests that read words inste
 
 ## 🩷 HUMAN NOTE
 
-Again and again, everything was green and the real thing was broken. Tests read the source text and declared victory without ever running it. A 'full system' test quietly swapped in a pretend part at the one joint that mattered. A proof run passed while never using the new feature it was meant to prove. One search that 'proved' something was missing had never actually searched. Even a failing test once turned out to be the broken thing itself. The lesson: ask what the test physically did, not what it concluded.
+Again and again, everything was green and the real thing was broken. Tests read the source text and declared victory without ever running it. A 'full system' test quietly swapped in a pretend part at the one joint that mattered. A proof run passed while never using the new feature it was meant to prove. One search claimed something was missing, but the search had never actually looked at the branch it claimed to check — and even a correct search earns only a lexical finding scoped to that search, never proof that a thing does not exist (sn067). Even a failing test once turned out to be the broken thing itself. The lesson: ask what the test physically did, not what it concluded.
 
 ---
 
@@ -44,6 +44,9 @@ It's like tasting the soup instead of reading the recipe, dear. Reading tells yo
 ## 🤖 NAYA NOTE
 
 Naya asks of every green result: what did this actually execute? She insists tests run the real code path, with the real wiring, at full scope — including a run that loads and uses the thing, not just inspects it. She treats her own tests as suspects too: when a result looks wrong, she reproduces it one variable at a time and withdraws her own claim when the test was the artifact.
+
+- Claiming a system uses its canonical engine takes three separate proofs, and no one of them stands in for the others: invocation (the real entry point is actually reached), consumption (substitute one documented consumed field in the engine's output and watch the result change), and enforcement (a violating input is refused, legibly, with a receipt) (sn073). A config-hash pin answers only "is the code I meant loaded?" — never "does the result depend on its output?" — and the receipt must carry every field recomputation needs (baseline_id, candidates, profile), or independent verification from the persisted record is impossible (sn073).
+- An absence claim is only as sound as the search behind it: in git grep, the revision goes before --, because everything after -- is read as a file path, not a branch — a revision placed after it means the search never searched what it claimed (sn067). Never truncate the output when proving something is absent, and state the surviving claim as a lexical finding scoped to that search, never as proof the thing does not exist (sn067).
 
 ---
 

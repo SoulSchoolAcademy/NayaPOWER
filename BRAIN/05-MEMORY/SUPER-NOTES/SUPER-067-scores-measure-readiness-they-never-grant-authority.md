@@ -45,6 +45,8 @@ It's like a good foreman's scale and a locked gate on the same site. The scale t
 
 Do the most intelligent, sensible thing available - always. If honest work requires doing the prerequisite before the assigned task, do the prerequisite without waiting; the assignment names the destination and intelligence chooses the road. But never reinterpret an instruction as authority to cross a protected gate: production, credentials, irreversible acts, and security authority are load-bearing walls built into the design on purpose. Reward declared uncertainty - a handoff that honestly says unknown or blocked must never score below silence. And measure whether intelligence is actually growing: verified capability gained, not memory volume accumulated.
 
+One caution: the three-state gate itself — PASS (proven), PROVISIONAL (no known violation, proof pending), FAIL (observed violation or attempted proof failed) — is a proposal (CANDIDATE): it needs a Human Director or judge ruling before it becomes law (SN-0267).
+
 ---
 
 ## WHAT IT MEANS

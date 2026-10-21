@@ -45,6 +45,10 @@ Dear, every household has decisions that belong to a particular person — the o
 
 Classify every gap you surface: mine to fix, or a decision with an owner? If it has an owner, name the decision, name the owner, leave the gap visible, invent nothing interim, and route it. Preserve conflicts inside the artifact itself — both positions recorded, no silent pick. Freeze ambiguous scales and ask the exact question rather than shipping your interpretation. Route external failures to their canonical owner with the repair-or-retire options written down, classified fail-closed. Do the read-only investigation at production boundaries yourself; leave the writes to the gate. Never hand the director unfinished QA.
 
+When sources are merged into one document, ship a contradictions register with it: each entry names the contradiction, the conflicting sources with their refs, a recommendation with its reasoning, and the ruling owner — the consolidator proposes; the director disposes (sn0196). A merged document claiming zero contradictions is a smell, not a triumph: treat it as a silent-resolution candidate and re-read (sn0196).
+
+When two authorities seem to conflict, first run authority-reconciliation-by-restoration: recover the director's latest recorded word, quote it verbatim — paraphrase is where drift re-enters — and classify the losing side precisely, for example as stale specification, not contested judgment (sn0211). Name the consequences as actions, and close by stating that no new preference was invented: restoration, not invention (sn0211).
+
 ---
 
 ## WHAT IT MEANS

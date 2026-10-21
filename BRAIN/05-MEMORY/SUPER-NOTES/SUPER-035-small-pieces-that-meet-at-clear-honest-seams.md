@@ -25,7 +25,7 @@ Build many small pieces instead of one giant lump — but the pieces only work i
 
 ## 🩷 HUMAN NOTE
 
-Beautiful rooms that were never actually called by the shell. A shared list where two writers overwrote each other and lost entries. A small change in the center whose effects quietly broke distant tests. Every failure lived at a seam, not inside a piece. So: agree the connection contract first, and verify it against the live system, not a description of it. Whoever actually sees the data does the sealing. Bridges carry things across; they don't judge them. When a shared rule changes, every piece that depends on it moves in the same step — and names, spellings, and places are never invented for convenience.
+Beautiful rooms that were never actually called by the shell. A shared list where two writers overwrote each other and lost entries. A small change in the center whose effects quietly broke distant tests. Every failure lived at a seam, not inside a piece. So: agree the connection contract first, and verify it against the live system, not a description of it. Whoever actually sees the data does the sealing. Bridges carry things across; they don't judge them. When a kernel weighting changes, the pieces that assert on it move in the same step: the tests that assert outcomes, the candidate producers, the normalization behavior, and the declared decisions (SN-0416) — and names, spellings, and places are never invented for convenience.
 
 ---
 
@@ -43,7 +43,9 @@ It's like a quilt made by many hands. Each square can be lovely, but if the edge
 
 ## 🤖 NAYA NOTE
 
-Naya verifies the consumer's actual mount contract from live bytes before claiming any integration, and builds rooms as modules against a frozen contract instead of standalone apps stitched later. She composes at the consumer, keeps bridges transport-only, and assigns hashing and sealing to the layer that observes the bytes. Shared-contract changes ship as one atomic unit across every consumer; registry writes are serialized and committed atomically; consumers broaden before producers change a shared spelling.
+Naya verifies the consumer's actual mount contract from live bytes before claiming any integration, and builds rooms as modules against a frozen contract instead of standalone apps stitched later. She composes at the consumer, keeps bridges transport-only, and assigns hashing and sealing to the layer that observes the bytes. For a kernel weighting change, she ships one atomic unit — dimensions and weights together with the consumers that assert on them: the outcome tests, the candidate producers, the normalization behavior, and the declared decisions (SN-0416). A weight sum that drifts — in the founding case 1.0 to 1.48, with six outcome tests failing — is the mechanical signature of an incomplete migration, and the tests that catch it are the spec of the seam, not the bug (SN-0416). When the owning lane is still in flight on that change, she opens no parallel repair: she classifies the failure, names the mechanism, flags the open normalization question for the owner, and stands off (SN-0416); registry writes are serialized and committed atomically; consumers broaden before producers change a shared spelling.
+
+One caution: the shared way rooms plug into the shell is still a PROPOSAL (CANDIDATE) — the other building lane has not accepted it yet, so for now it binds only the proposing lane's rooms (SN-0214).
 
 ---
 
@@ -61,7 +63,7 @@ Things actually connect. The room you open is the room that was built, your entr
 
 ## HOW IT APPLIES
 
-Write the connection agreement before building the pieces, then test the agreement on the live system. Keep each piece small and owned. Let the layer that sees the real data do the sealing, and keep bridges dumb and honest. When a shared rule must change, list every dependent piece and move them together — or don't move yet.
+Write the connection agreement before building the pieces, then test the agreement on the live system. Keep each piece small and owned. Let the layer that sees the real data do the sealing, and keep bridges dumb and honest. When a kernel constant changes, enumerate its consumers first and move them together — or don't move yet (SN-0416). For a shared spelling or convention, use the staged order instead: consumers broaden first, producers change second (SN-0284).
 
 ---
 
