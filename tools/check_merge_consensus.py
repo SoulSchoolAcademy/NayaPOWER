@@ -72,7 +72,7 @@ API = "https://api.github.com"
 # team member (joined 2026-10-15); the registry predated her.
 # "chi", "relay" added 2026-10-17 — active reviewers on PR #2718 (Team Nitro);
 # registry updated to match the working team. Remove if not seated.
-# "clarity", "verity", "resolve" added 2026-10-18 — Epsilon w409 F2 systemic:
+# "gpt-6" added to match the already-used Naya GPT-6 seat declaration on PR #2816; this recognizes an existing seat label, it does not grant new permissions.\n# "clarity", "verity", "resolve" added 2026-10-18 — Epsilon w409 F2 systemic:
 # the naming-law lead form "Seat: Naya Clarity Narzan" could never pass the
 # author check (registry had no 'clarity'), so every lead-qualified body hit
 # the wall. Mechanism over ruling: the registry names the working team.
