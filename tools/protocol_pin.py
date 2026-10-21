@@ -141,6 +141,26 @@ def check_protocol_pin(repo_root):
                   "match canonical bytes (ratified %s)" % fp["version"])
 
 
+def check(record):
+    """Gate-pattern entry point (kernel/protocol): the DECLARATION-RECEIPT
+    law's check, bound in protocol_manifest.json to this module. Every
+    protocol check defines check(record) and main(); this wrapper
+    delegates to check_protocol_pin — the protocol bytes and the Step 0
+    declaration must match their pins. The record may carry "repo_root";
+    the module's own repo root is the default. Fail-closed: a non-dict
+    record fails with a specific reason. Returns the standard verdict
+    dict {"pass": bool, "reasons": [str], "details": {...}}."""
+    if not isinstance(record, dict):
+        return {"pass": False,
+                "reasons": ["record is not a JSON object"],
+                "details": {"law": "DECLARATION-RECEIPT"}}
+    repo_root = record.get("repo_root") or _default_repo_root()
+    passed, detail = check_protocol_pin(repo_root)
+    return {"pass": passed,
+            "reasons": [detail],
+            "details": {"law": "DECLARATION-RECEIPT", "detail": detail}}
+
+
 # ---------------------------------------------------------------------------
 # Declaration receipt — Step 0, made provable
 # ---------------------------------------------------------------------------
