@@ -1,6 +1,6 @@
-# The SmartNet Protocol — V1 (human tongue)
+# The Smart Note Protocol — V1 (human tongue)
 
-*Ordered by Shawn Vibert, 2026-10-21: "There should be a protocol called the SmartNet protocol, and it should be written so that all know exactly the protocol for a smart note." This document is the one canonical home for everything about Smart Notes: what one is, how it works, how to make one, and how you know it truly arrived.*
+*Ordered by Shawn Vibert, 2026-10-21: "There should be a protocol called the Smart Note protocol, and it should be written so that all know exactly the protocol for a smart note." This document is the one canonical home for everything about Smart Notes: what one is, how it works, how to make one, and how you know it truly arrived.*
 
 ## 1. What a Smart Note is
 

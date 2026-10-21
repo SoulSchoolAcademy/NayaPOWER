@@ -1,4 +1,4 @@
-# The SmartNet Protocol — V1 (AI tongue)
+# The Smart Note Protocol — V1 (AI tongue)
 
 Canonical procedure for creating a Smart Note that reaches the Intelligent Hub. Authoritative worked source: SN-0810. Ordered by Shawn Vibert 2026-10-21. If any other document's Smart Note procedure disagrees with this one, this one governs; file the conflict as a defect.
 
