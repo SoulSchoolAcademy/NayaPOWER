@@ -265,7 +265,7 @@ def test_post_convention_full_pass(capsys):
     from Naya 3 naming the exact head -> PASSED."""
     review = ("[SIGN OUT] IV seat. ## VERDICT: MERGE RECOMMENDED\n"
               "Seat: Naya 2")
-    scorecard = (f"**Honest scorecard: 9.4/10.**\nhead {HEAD}\n"
+    scorecard = (f"**Honest scorecard: 9.5/10.**\nHead SHA: {HEAD}\n"
                  f"## VERDICT: MERGE RECOMMENDED\nSeat: Naya 3")
 
     def fake_api_get(path, token):
