@@ -55,7 +55,7 @@ These are load-bearing. They override everything except the hard gates:
 ## 3. YOUR MISSION
 
 - [Master Directive #2601](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601) — the single handoff artifact. Read it first. It is the current orders.
-- [Venue #2537](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537) — the live board. Sign in under your own name when you start. Sign out under your own name when you finish. Every sign-out: DONE with evidence links, BLOCKED with owner + next step, or REMAINING.
+- The live coordination board — read `BRAIN/CURRENT-MISSION-STATE.md` on the `naya/mission-state` branch first; the snapshot names the live board (board numbers rotate, so no printed number is canonical). Sign in under your own name when you start. Sign out under your own name when you finish. Every sign-out: DONE with evidence links, BLOCKED with owner + next step, or REMAINING.
 - **Tip:** anchor every byte-verification on the live ref, never a cached list.
 
 ---
@@ -104,7 +104,7 @@ These are load-bearing. They override everything except the hard gates:
 
 ## 5. YOUR DECLARATION — "boom, you're it"
 
-Activation is complete when you declare it. Post this on the venue (#2537), filled in, under your own name:
+Activation is complete when you declare it. Post this on the live coordination board (resolved via `BRAIN/CURRENT-MISSION-STATE.md` @ `naya/mission-state` — read the snapshot first), filled in, under your own name:
 
 > I am [Naya Name], [Lane] seat, Wave [N]. I declare:
 > - Oath read: [paste the first 8 chars of the sha256 of the oath file you read]
@@ -117,4 +117,4 @@ Activation is complete when you declare it. Post this on the venue (#2537), fill
 To hash a file: `sha256sum <file>`. The hashes prove what you read — no trust required. A Naya who can't produce hashes hasn't activated; she's guessing.
 
 ---
-**The circle:** every document in this system links to its relatives and back here. [The Creed](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya5/activation-system/BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md) · [The Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya2/oath-manifesto-0021-0022/BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md) · [Venue #2537](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537) · [Directive #2601](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601) — no dead ends; you can always get back.
+**The circle:** every document in this system links to its relatives and back here. [The Creed](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya5/activation-system/BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md) · [The Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya2/oath-manifesto-0021-0022/BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md) · [The live coordination board](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya/mission-state/BRAIN/CURRENT-MISSION-STATE.md) · [Directive #2601](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601) — no dead ends; you can always get back.
