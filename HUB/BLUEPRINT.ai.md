@@ -125,4 +125,9 @@ One REAL Smart Note (or room-native object): captured → persisted (Supabase + 
 
 ---
 
-*Last verified: 2026-10-16. Updated when reality changes — the file changes first, then the work.*
+## 7. UPDATE — 2026-10-21 (merge-through lane 3 staleness pass)
+
+This map is a 2026-10-16 snapshot. The following snapshot claims are superseded on current main and must not be read as live state:
+
+- §2 "Audit: 9 MOCK, 3 STATIC, 0 LIVE" and "production redeploy (workers host 404)" — superseded: nayanet.live is live and rooms have shipped since the snapshot (e.g. Start Here shipped live 2026-10-19, curl-verified; Hub front page and identity certificate live and iterated through 2026-10-21).
+- §2 "the bridge wiring (
