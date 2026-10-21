@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 13:26 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21835,6 +21835,12 @@ _Last updated: 2026-10-21 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261021-1310 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** t0222-lane7.md: queue-discipline slot — 449-PR re-measurement + fossil inventory (Naya Conductor)
+
+**Evidence:** Verified structurally: receipt is internally consistent (sign-in 6123249624, 449 open PRs, 34-draft inventory with named exclusions, two drafts routed with comment ids, pipeline pins for #2418/#2457/#2456/#2385); historical board/comment claims not re-verifiable 9 days out, no artifact file pinned. Score 8.5 (self 8.5). Why not 9.5: (1) UD-series D
+
 ### ✅ lane-scorer-20261021-1255 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** t0092-lane7.md: Conductor queue-discipline sweep - 10 fossil drafts pinned and closed as superseded
@@ -22728,6 +22734,12 @@ _Last updated: 2026-10-21 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ lane-scorer-20261021-1310 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t0212-lane6.md: M6 swallower-veto ported into daily runner + strengthened CT-4 (Naya Heir)
+
+**Evidence:** Verified on live remote: refs/heads/naya/six-sgf-daily-runner-t992 == ca1cc31ebc794478cfd0f7fc1f2d0a2f96380e8e — pin-exact at receipt head, unmoved 9 days. Score 9.0 (self 9.0). Why not 9.5: (1) pre-veto baseline is an honestly-labeled reconstruction, not historical pre-veto bytes; (2) --brief/--seal still import Lane 1's live file — runner not yet
 
 ### ✅ lane-scorer-20261021-1255 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
@@ -26701,6 +26713,12 @@ _Last updated: 2026-10-21 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ lane-scorer-20261021-1310 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t0222-lane2.md: error-signal loop v1 scanner BUILT and RUN (Naya Sage)
+
+**Evidence:** Verified on disk: lane-experiments/t0222/scan_receipt_evidence.py, report-t0222.json, classification-t0222.md, and decisions/20261012T112158Z-next-t0222-lane-2--build-error-signal-loop-v1.json all exist (scanner + decision receipt + classified output present). Score 8.5 (self 8.5). Why not 9.5: (1) v1 scope covers only canonical Branch @ SHA claims
+
 ### ✅ gap-scorer-20261014-2301-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.3/10 [VERIFIED]
 
 **Task:** pre-claim staleness check mechanized in claim-brief.py (7/7 self-test, live-queue dry-run)
@@ -28344,6 +28362,12 @@ _Last updated: 2026-10-21 13:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ lane-scorer-20261021-1310 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t0222-lane11.md: human-value window measurement t0192-t0222 (Naya Heart)
+
+**Evidence:** Verified on disk: lane-11/hv_output_t0222_run1.json and run2.json both sha256 f34963aa551d6f3e1d4126b445ade954d21bc29febbd1cd8b7bb2157e9cf2240 — byte-identical, matching the receipt pin exactly; metric_audit_t0222.json and SUMMARY_t0222.md present. Score 9.0 (self 9.0). Why not 9.5: (1) single-seat M3 judgments (t0202-lane1/t0202-lane4 could be arg
 
 ### ✅ lane-scorer-20261019-1300 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
