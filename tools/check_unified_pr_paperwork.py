@@ -89,20 +89,6 @@ def _scorecard_for_current_head(comments: list[dict], head: str,
     return False, f"no numeric scorecard >= {minimum:g}/10 from a different declared seat with an explicit head field and valid Tier-B diff fingerprint/verification attestation (current head {head[:12]})"
 
 
-def _cross_seat_review(reviews: list[dict], comments: list[dict],
-                       author_login: str, author_seat: str) -> tuple[bool, str]:
-    for review in reviews:
-        user = ((review.get("user") or {}).get("login") or "").lower()
-        if review.get("state") == "APPROVED" and user and user != author_login.lower():
-            return True, f"native GitHub approval from a different login ({user})"
-    for comment in comments:
-        body = comment.get("body") or ""
-        seat = consensus.author_seat_of(body)
-        if consensus._looks_like_review(body) and seat and seat != author_seat:
-            return True, f"review receipt from different declared seat {seat}"
-    return False, f"no accepted review from a different declared seat than author {author_seat}"
-
-
 def run() -> int:
     event = _read_event()
     repo = os.environ.get("REPO") or os.environ.get("GITHUB_REPOSITORY") or ""
@@ -143,20 +129,16 @@ def run() -> int:
                          "add exactly one explicit 'Seat: Naya <seat>' declaration to the PR body")
 
         comments = consensus.api_get(f"/repos/{repo}/issues/{number}/comments", token)
-        reviews = consensus.api_get(f"/repos/{repo}/pulls/{number}/reviews", token)
-        author_login = ((pr.get("user") or {}).get("login") or "")
-        review_ok, review_detail = _cross_seat_review(reviews, comments, author_login, author_seat)
-        if not review_ok:
-            return _emit("BLOCKED — DIFFERENT_SEAT_REVIEW_MISSING",
-                         review_detail,
-                         "have a non-author seat post a matcher-valid approval/review on this PR")
-
+        diff_hash = compute_diff_fingerprint(files)
         minimum = 9.5 if tier["tier"] == "A" else 9.0
-        ok, score_detail = _scorecard_for_current_head(comments, head, author_seat, minimum)
+        ok, score_detail = _scorecard_for_current_head(
+            comments, head, author_seat, minimum, tier=tier["tier"], diff_hash=diff_hash
+        )
         if not ok:
+            cure = f"post a scorecard from a different declared seat with `Head SHA: {head}`, `Diff-SHA256: {diff_hash or '<unavailable>'}`, and `Verification: <tests run or behavior observed>`; score >= {minimum:g}/10"
             return _emit("BLOCKED — SCORECARD_MISSING_OR_STALE",
                          f"Tier {tier['tier']} requires {minimum:g}/10; {score_detail}",
-                         f"post a numeric scorecard >= {minimum:g}/10 from a different declared seat with an explicit head field pinned to current SHA {head}")
+                         cure)
 
         # The existing receipt checker is the source of truth for Evidence
         # heading and URL/SHA/path liveness; don't duplicate its parser.
