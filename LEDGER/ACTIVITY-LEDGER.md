@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 02:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5717,6 +5717,14 @@ _Last updated: 2026-10-21 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: receipt exists; cited main tip 665098e3f00c9aa6f63907360b8500891704071c matches shared-state main_tip; lane journal updated; #2175 sign-out comment 6115874552 exists. Analysis: gate reproduced failing on exact tip bytes (one hit kernel/decision_principle.py:218); call graph shows zero production call sites (tests + self-use onl
 
+### ✅ t1012 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** finish naya/three-decision-consolidate to strict 7.0/0.05 bar, RED-first, close F1
+
+**Receipt:** `twelve-lane-receipts/t1012-lane3.md`
+
+**Evidence:** Verified 2026-10-20: branch naya/three-decision-consolidate exists on origin (head now 8346681c, moved since); receipt SHA 43c0113e still exists as a commit; cited files all present at that SHA (kernel/value_calculus.py, tests/test_safety_act_harm_gate.py, tests/test_safety_execute_regate.py, tests/test_assessed_harm_strict_bar.py); strict-bar cons
+
 ### ✅ t1012-lane3 — Team 3, Naya Judge (Decision Engine) — 8.0/10 [VERIFIED]
 
 **Task:** Finish naya/three-decision-consolidate to strict 7.0/0.05 bar: verify t972 port, fix bar-broken seam tests RED-first, close Lane 8 F1 on bytes
@@ -5746,6 +5754,14 @@ _Last updated: 2026-10-21 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1012-lane3.md`
 
 **Evidence:** Dispatcher verified: receipt exists; remote head of naya/three-decision-consolidate == 43c0113eee302db2c334aa9d5d3139ea0afd1d77 via git ls-remote (matches receipt claim exactly); lane journal updated; #2175 sign-in/out comments 6115861983/6115905426. Strict bar behaviorally proven: ASSESSED_HARM_SEVERITY_BAR=7.0/PROBABILITY_BAR=0.05 byte-present, h
+
+### ✅ t1012 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t1002 pre-reg seal check + single-arm exact-shape adversarial probe
+
+**Receipt:** `twelve-lane-receipts/t1012-lane2.md`
+
+**Evidence:** Verified 2026-10-20: all 6 cited artifacts exist on disk (lane2-t1002-adv/preregistration.md, lane2-t992-v2/arm-key.md, lane2-t1012-shapeA/{probe-prompt,arm-plain-a,scorer-output}.md, decisions/20261012T005445Z-next-t1012-*.json). No repo writes this tick (workspace-local), so no remote-branch check applies. Real value: caught t1002's false-memory 
 
 ### ✅ t1012-lane2 — Team 2, lane-scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
 
@@ -7518,6 +7534,14 @@ _Last updated: 2026-10-21 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0892-lane3.md`
 
 **Evidence:** Verified: decision-replay-v2-t0892.md on disk (12,243 bytes, pre-registration block timestamped, 5 rows CONFIRMED, zero dominoes moved), tip/head pins re-derived unmoved since t0888, mechanism blobs byte-checked (test blob a8c666d7 line 145/151, handler blob dee21100 lines 266-272 catch->400), pin script re-PASSed at exact head, FP-002/RULING-1 quo
+
+### ✅ t892 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** P0-B causal proof pilot (briefing-injection experiment)
+
+**Receipt:** `twelve-lane-receipts/t892-lane2.md`
+
+**Evidence:** Verified 2026-10-20: all 4 cited artifacts exist on disk (p0b-experiment-design.md, p0b-trial-protocol.md, p0b-run-t892-results.md, p0b-error-signal-loop-design.md under learning-10-10/hidden_files/). Receipt honest 8/10 with confounds declared pre-run and real negative results (H1 no-effect, H2 false lesson rejected). Score 8.0. Why not 9.5: (1) d
 
 ### ✅ t892-lane2 — Team 2, Naya Sage (Lane 2) (Learning Pipeline) — 8.5/10 [VERIFIED]
 
