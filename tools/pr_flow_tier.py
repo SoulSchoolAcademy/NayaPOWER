@@ -24,7 +24,7 @@ TIER_A_PATH_NAMES = {
     "NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md",
 }
 TIER_A_PATH_PATTERNS = (
-    re.compile(r"(^|/)(check_.*gate|.*_gate|auto_merge_gate|check_merge_consensus)\.py$", re.I),
+    re.compile(r"(^|/)(check_.*(gate|paperwork)|.*_gate|auto_merge_gate|check_merge_consensus)\.py$", re.I),
     re.compile(r"(^|/)(security|auth|authorization|permissions?)(/|\.|$)", re.I),
     re.compile(r"(^|/)(deploy|production|migration)(/|\.|$)", re.I),
 )
