@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-048` |
 | Human title | A Lesson Isn't Learned Until It Changes Behavior |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 7 raw notes (full list below) |
 | Cluster file | `cluster-06-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,16 @@ You get lessons that actually protect you — enforced by checks and habits, not
 For every lesson: decide its rung the same day — gate, behavior, culture, or index — land the enforcement in the next step, and audit later with three honest classes: truly compounding, cited-but-not-lived, or hollow. Report levels humbly: 'understands, proven' until a real event proves the higher rungs.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0526 — A Smart Note Is Not Finished When Written — the Activation Ladder [audit: PARTIAL → lost element restored]
+
+The activation ladder is explicit: captured ≠ indexed · indexed ≠ retrieved · retrieved ≠ applied · applied ≠ verified · verified once ≠ compounded. A Smart Note is not finished when it is written — capture preserves tuition; activation converts tuition into capability. INDEXED is its own separate rung, distinct from SN-015's eight rungs, with its own index artifact (the structured retrieval index / lesson index) and its own failing gate — the SN-0460 "Index the Lesson" gate FAILS when a captured Smart Note has no index entry or is unretrievable by the retrieval surface. Stored intelligence can exist and never matter; retrieved intelligence can surface and still not change behavior; proven-once intelligence that cannot be retrieved later does not compound.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

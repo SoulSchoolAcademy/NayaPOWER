@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-012` |
 | Human title | Work in the Open, as One Team |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 13 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,28 @@ You can open one place and see the true state of everything — who's doing what
 ## HOW IT APPLIES
 
 Before starting: post your intent and plan where the team works. During: surface findings and state changes as they happen, especially blockers. After: post the result with evidence and the recommended next step. Keep one feed per project, completions on the main feed, and verify any thread you post to is the live one.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0170 — When the Scope Blocks the Mechanism, the Board Is the Vehicle [audit: MISSING → restored in full]
+
+A 403 is terminal evidence of an authority boundary — never retry, route around, proxy, or soften the call. The scope-blocked delivery protocol: (1) attempt the mechanism once, in the open; (2) on 403, treat it as a hard boundary — the request is evidence the scope model is working; (3) publish the artifact to the board with exact placement instructions and provenance; (4) delete any stray mechanism state (branches, files) created during the attempt; (5) name the seat that can complete it. The board post is verifiable: byte counts, control counts, provenance SHAs, anchor lines.
+
+### SN-0403 — The Idea Evolution Flow — Ideas Compound the Same Way Intelligence Does [audit: MISSING → restored in full]
+
+When a meaningful idea appears, preserve the original, then follow the canonical flow: `SOURCE → DISTILL → ENHANCE → RECONCILE → CLASSIFY → SMART LINK → BACKLOG → #1354 → BUILD/VERIFY WHEN PRIORITIZED → LEARN`. Preserve the original idea, distill, enhance, reconcile, classify, give it a Smart Link, put it in the backlog and make the board aware, then build and verify when prioritized — so ideas compound the same way intelligence does: original provenance preserved, interpretation improved, relationships explicit, priority visible, outcome eventually verified. No parallel idea stores, no orphaned suggestions.
+
+### SN-0488 — IB-SMART-NOTE-20261006-sn0488-specialist-lanes-relay-discipline.md [audit: MISSING → restored in full]
+
+The relay lane acknowledges ALL specialist traffic but claims NOTHING — "seen, no question to my lane, no blocker, relay defers." Unclaimed flags (re-scoring asks, wiring-leak flags, convention drift) route to the lane owner or the main seat. A relay never silently absorbs another lane's flag: silent absorption is the failure mode, because it looks helpful and destroys accountability. The relay receipt records what was seen, live state verified this run, and what is noted but not claimed, with the owner named.
+
+### SN-0576 — IB-SMART-NOTE — SN-0576 — Area-Agent Staffing Law: Nine Dedicated Teams, 24/7 to 10/10 [audit: PARTIAL → lost element restored]
+
+Nine dedicated agent teams — one per scorecard area (LEARNING, TRUTH, MEMORY & CONTINUITY, HUMAN VALUE, RETRIEVAL, ACTION & EXECUTION, AUTHORITY & GOVERNANCE, SAFETY, PRODUCTION READINESS) — working 24/7 nonstop until 10/10. Area agents never merge, deploy, ratify, or touch production: they can build, prove, and receipt, but promotion and authority flow through the existing gates and Shawn's word.
 
 ---
 

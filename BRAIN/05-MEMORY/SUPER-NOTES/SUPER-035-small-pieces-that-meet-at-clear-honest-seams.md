@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-035` |
 | Human title | Small Pieces That Meet at Clear, Honest Seams |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 12 raw notes (full list below) |
 | Cluster file | `cluster-04-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,32 @@ Things actually connect. The room you open is the room that was built, your entr
 Write the connection agreement before building the pieces, then test the agreement on the live system. Keep each piece small and owned. Let the layer that sees the real data do the sealing, and keep bridges dumb and honest. When a shared rule must change, list every dependent piece and move them together — or don't move yet.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0214 — One Hub-Mounting Convention: Rooms Project Canonical Records, Never Copies [audit: PARTIAL → lost element restored]
+
+The hub shell and every room integrate through one mounting convention: the shell calls a loader, the loader returns `{records, errors}`, the shell passes them as `ctx`, and the room mounts via `NayaRooms.x(el, ctx)` — in the Room 02 instance, `ReportsLoader.loadDaily({from, to, base}) → {reports, errors} → ctx.reports → window.NayaRooms.reports(el, ctx)`. A room projects the canonical Brain records and never duplicates canonical content into a private store: the room's store is derived from the loader's view of the canonical source at mount time, so the shell owns the data contract and the room owns only the rendering. The contract is agreed before implementation — no shell changes and no merges from the proposing lane.
+
+### SN-0220 — Intelligent Block [audit: MISSING → restored in full]
+
+Close a flow with the smallest entry contract that makes it real — and never let a suggestion masquerade as an action. The entry contract is `window.NayaRooms.smartSpaces.createAround({kind, id, title})`: it opens the create-space modal pre-filled (name, topic, and block pre-selected, with a "Gathered around: …" label), and the human still names the space and taps CREATE. Prefill is a suggestion; the human's tap is the action. The system must never auto-create, manufacture its own "NEXT" buttons, or otherwise invent commitments the human never made — a prefill that fires itself is a commitment without consent. Standalone pages honor the same contract via `?around=ID`, and the shell adapter forwards the call so any room can use it without touching Spaces' internals.
+
+### SN-095 — Compose at the Consumer — Authorship Stays in the Author, Trust Stays in the Seal [audit: PARTIAL → lost element restored]
+
+Compose at the consumer means: the consumer derives its answer from the producer's sealed facts instead of the producer emitting pre-formed answers. In the VERIFY→LEARN case, do not teach VERIFY to emit an `outcome.lesson` — that moves lesson-authorship into VERIFY and inverts the separation (VERIFY verifies, LEARN learns). Instead `LEARN.extract()` reads the `learn_baton` and derives the lesson from VERIFY-owned facts: eligibility is `learn_baton.may_use` non-empty (= VERIFIED_PASS; FAIL/REOPENED land on `must_not_generalize`), and the lesson is only `subject_ref.claim` — the verified fact VERIFY sealed. No caller-controlled labels cross the trust boundary, and the seal must cover the content it protects: finalize outcomes before `close()` seals, and reject derived scope exceeding the verified `subject_ref`. Authorship stays in the author; trust stays in the seal.
+
+### SN-096 — The Composition Root Owns the Bridge — It Transports, It Doesn't Judge [audit: PARTIAL → lost element restored]
+
+The bridge belongs to the composition root — never bolt it silently into one of the endpoints. Verify edges as code: a declared edge with zero callers is an ordering declaration, not a data bridge — in the source case `EVOLVE.observe()` had zero callers in `naya_kernel/`, and the `("LEARN", "EVOLVE")` entry in `REQUIRED_EDGES` was ordering plus `SATISFIED`/`BLOCKED` trace labels, not plumbing. Give the bridge to the composition root as a real named method with a real contract — `Kernel.promote_learning_to_evolution(learning_id)` constructs the full gap dict and returns the downstream `evolution_id` — and let it transport without judging: semantic qualification stays with the caller.
+
+### SN-101 — SMART NOTE — Platform Identity Semantics [audit: MISSING → restored in full]
+
+Identity comparisons must use the platform's identity semantics, not the programming language's default equality: first establish the platform's canonicalization rules, then normalize-then-compare. GitHub repository identity is effectively case-insensitive, so a case-sensitive `owner_repo == upstream_repo` comparison (PR #1265) let a casing variant masquerade as a distinct owner target. The repair is case-insensitive comparison, with a regression test built around the adversarial casing variant. A stricter-than-platform comparison is not safer — at authority boundaries an identity mismatch is a security hole.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

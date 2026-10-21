@@ -8,8 +8,8 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-014` |
 | Human title | Learning Is Only Real When It Can Be Recalled |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
-| Sources | 5 raw notes (full list below) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
+| Sources | 6 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
 | Human projection | This Markdown file |
@@ -65,6 +65,20 @@ For every lesson worth keeping: distill it to its essence, store it in the canon
 
 ---
 
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0239 — IB-SMART-NOTE — The Three Agreements of Connecting [audit: PARTIAL → lost element restored]
+
+Two of the three agreements of connecting: (2) you can connect, share, and chat with like minds — only if you choose (opt-in only; capability created, never obligation); and (3) your daily, weekly, and monthly intelligence reports appear in the feed and the system.
+
+### SN-275 — IB-SMART-NOTE-20260930-sn275-consent-granularity [audit: MISSING → restored in full]
+
+Entry consent at the activation boundary satisfies "collective by consent" (Law 43) for distilled, anonymized wisdom. Scope of entry consent = {distilled wisdom, anonymized, identity sealed}; it excludes real identity and non-wisdom personal material, which stay private-by-default. Sharing merely because the system can technically access or process information is FORBIDDEN (Law 42) — the sharing basis is consent, not technical access. Per-block consent is a fallback, not the default: never implement per-block consent as the default while the director's ruling stands, and if the director rejects the scoping, fall back to per-block consent. Until ratified, implement door-consent as PROPOSED and keep per-block consent available as a fallback posture.
+
+---
+
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
 - `IB-SMART-NOTE-20261004-sn0242-smart-note-this-lifecycle`
@@ -72,3 +86,4 @@ For every lesson worth keeping: distill it to its essence, store it in the canon
 - `IB-SMART-NOTE-20261005-sn0404-capture-schema-v2-freeze`
 - `IB-SMART-NOTE-20261004-sn0313-ingestion-bar-would-this-change-a-future-decision`
 - `IB-SMART-NOTE-20261004-sn0239-three-agreements-of-connecting`
+- `IB-SMART-NOTE-20260930-sn275-consent-granularity`

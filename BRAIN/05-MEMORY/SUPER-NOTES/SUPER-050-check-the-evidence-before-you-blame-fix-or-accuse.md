@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-050` |
 | Human title | Check the Evidence Before You Blame, Fix, or Accuse |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 9 raw notes (full list below) |
 | Cluster file | `cluster-06-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,16 @@ Fewer wild goose chases, fewer good things broken by hasty 'fixes,' and no one b
 Make it a reflex: evidence before theory, classification before code, control run before blame. Read the input, check the clean baseline, search the history, count agreement by evidence paths — and when you adopt something public-facing, run the name check in the same motion, not later.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0498 — A 401 Is Not a Key Problem Until You Prove It Is — the Credential-Layer Diagnostic [audit: PARTIAL → lost element restored]
+
+Diagnose a credential failure by layer before changing any key. Layer 1 — request path: use only the sanctioned skill CLI request path, the only path that resolves the surrogate; hand-rolled requests that 401 prove nothing about the key. Layer 2 — credential resolution / surrogate propagation: if correct CLI use still 401s, the fault is credential resolution (the sandbox release carrying the surrogate placeholder instead of the resolved credential), not a bad key — escalate once. Layer 3 — key identity: only after layers 1–2, identify which of the two credential paths the failing call is on (the Supabase Management API vault credential, direct Postgres as a read-only user, vs the anon/service_role keys) before proposing a key change. Never retry-loop, never hunt for a different key, and never ask the human for raw keys — the vault path is the only path.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

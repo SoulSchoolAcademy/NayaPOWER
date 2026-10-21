@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-001` |
 | Human title | Permission Is Real, or It Is Nothing |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 12 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,34 @@ You never have to wonder whether something important was done by someone actuall
 Before any consequential act, ask three questions: What exactly is being permitted? Who granted it — and can I point to the record? Does the grant cover this action, at this scope, right now? If any answer is missing, stop and get the real grant; do not widen a matcher, invent a document, or proceed on a green light. When you receive a command, write it down word-for-word with the time before you act on it.
 
 ---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0215 — The Policy Cannot Self-Extend: Anti-Self-Reference in Promotion Gates [audit: PARTIAL → lost element restored]
+
+A ratified promotion policy must authenticate its own terms from its own canonical record — never caller-supplied assertions: `evaluate_policy()` (`tools/standing_production_promotion_policy.py`) re-reads expiry and status from the ratified policy document itself ("Ratification is not a license to rely on caller-supplied expiry assertions"). Protected paths, including `.naya/governance/` itself, always DENY automatic promotion — the policy cannot self-extend on the automatic path, and a governance document is structurally unable to rewrite its own rules without a human's explicit word.
+
+### SN-0263 — The Ratification Receipt: Bounded Authorization, Recorded — the First Live Ritual [audit: PARTIAL → lost element restored]
+
+Ratification is a ritual with a shape: (1) an exact authorization string from the Human Director that names the SHA being blessed; (2) independent verification of every claim BEFORE the authorization is executed; (3) a receipt that records BOTH what the ratification authorizes AND what it explicitly does NOT. Any future ratification must (a) cite an exact authorization string with SHA, (b) attach independent pre-verification of every claim, and (c) produce a receipt naming both what it authorizes and what it does NOT — or it is not a ratification. The distinction is preserved verbatim: `RATIFIED ≠ MERGED ≠ RUNTIME_ACTIVE ≠ BEHAVIORALLY_PROVEN ≠ PRODUCTION_PROVEN` — each is a separate gate with its own evidence class, and "it was ratified" must never silently purchase a merge, a deploy, or a lived-machine claim.
+
+### SN-0362 — The Unkeyed Seal, Live: promote_note Elevates on a Self-Asserted String [audit: PARTIAL → lost element restored]
+
+A hash binds content, never identity. `promote_note`'s receipt is an unkeyed seal: `receipt_hash` proves the receipt was not altered, and carries no proof of who promoted — no `authority`, no `promotion_authority`, no issuer, no grant id, not one field recording that the promoter was entitled to do this. Any promotion path that records WHAT and WHY but never proves WHO was entitled is an unkeyed seal; bind every promotion transition to an authenticated grant.
+
+### SN-0368 — The Promoter Chooses the Evidence — A Passing Audit Attests to Internal Coherence, Not to Truth [audit: MISSING → restored in full]
+
+An audit attests to internal coherence of the bundle it is given, never to truth. `verify_receipt` re-derives rather than trusting the seal — it re-runs the threshold gates instead of trusting the receipt — and that re-validation is the engineering bar. But re-validation re-derives against the evidence bundle supplied by the promoter under audit, so a PASS means internal coherence only. Proven by drill: invented gatherers `party-X` / `party-Y`, existing nowhere in the repo, PASS `gatherer_independence`, because `gatherer_independence` measures string diversity, not corroboration — never cite it as independent confirmation. The remaining gap is authenticating the evidence suppliers, not strengthening the seal. Every audit check that consumes attacker-chosen inputs without independent sourcing inherits the attacker's frame; the standing question for any future gate is: who supplies the evidence?
+
+### SN-0464 — Name-Checking Is Not Entitlement-Checking [audit: PARTIAL → lost element restored]
+
+A guard that verifies the promoter's name is non-blank proves a claim was recorded, not that the claimant was entitled to promote: `authority_is_valid` returning True for any non-empty string is authentication theater — it answers "did someone sign?" while the attack answers "was the signer allowed?" A fail-closed elevation guard must bind the named promoter against an entitlement source (authority-grant roster, scoped to the promotion) and fail closed when that binding is absent; "non-blank string" is never an entitlement proof.
+
+### SN-0581 — IB-SMART-NOTE — SN-0581 — Write Paths Never Mint Authority [audit: PARTIAL → lost element restored]
+
+The specific mechanism: new notes ALWAYS enter as CANDIDATE, regardless of what their producer claims, and truth-state changes require ratification evidence, enforced in code (`tools/smart_note_v2.py`, `tools/truth_state_guard.py`), not by convention. Every ingested object enters at the lowest truth state; truth-state transitions require independent evidence (ratification) and are enforced by a guard on the transition, not by the writer's honesty. Any write path found able to set truth state is a security hole.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

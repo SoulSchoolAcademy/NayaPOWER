@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-067` |
 | Human title | Scores Measure Readiness - They Never Grant Authority |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 8 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,24 @@ You keep the keys. No score, however dazzling, lets the system talk itself past 
 Separate every decision into three questions: How good is it (score)? Am I allowed (authority)? Is it proven (evidence)? Never let one answer impersonate another. When examiners disagree, investigate - don't average. Keep scorecards on fixed weights moved only by fresh proof. When you're unsure, declare it; the system is built to reward exactly that.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0342 — A Ratified Law Lands in Code — the Enforcement Arm Converges to the Law's Exact Steps [audit: PARTIAL → lost element restored]
+
+The author converges their own enforcement code on their own branch — lanes never rewrite another lane's in-flight instrument. Propose first, per the lane protocol; the law's owner-side author brings their own draft's schema to the law's exact steps and makes it merge-ready.
+
+### SN-0600 — NayaPOWER Charter Stratification & Quality Gate — Thesis, Law, Mission, Mechanism, and 10/10 Discipline [audit: PARTIAL → lost element restored]
+
+The quality law is the loop: MAKE → SCORE → IDENTIFY THE HIGHEST-VALUE GAPS → IMPROVE → RESCORE → VERIFY → COMPOUND. Score thresholds: 10/10 = target; 9.5+ = preferred acceptance; 9.0+ = minimum acceptable; below 9 = keep working unless a real evidence or authority boundary prevents improvement.
+
+### SN-0602 — Intelligence Gain & Epistemic Calibration Law — Measure Capability, Causal Learning, Independence, and Complexity [audit: PARTIAL → lost element restored]
+
+Beyond measuring verified capability gained (not memory volume): prove causal improvement with controls (control without the lesson, treatment with the lesson, and an adversarial wrong/malicious-lesson arm for high-value tests); measure verifier independence — reviewers sharing model, memory, sources and assumptions are correlated, not independent; detect poisoning and regression; and enforce a complexity budget so architecture cannot grow faster than unique verified capability — a persistent artifact requires a unique capability, a unique proof boundary, or required provenance, otherwise do not create it or retire it.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

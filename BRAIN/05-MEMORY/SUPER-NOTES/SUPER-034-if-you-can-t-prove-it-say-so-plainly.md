@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-034` |
 | Human title | If You Can't Prove It, Say So Plainly |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 10 raw notes (full list below) |
 | Cluster file | `cluster-04-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,28 @@ When this team says something works, you can lean on it — and when it might no
 ## HOW IT APPLIES
 
 Ask every claim: where is the proof, and who else can see it? Make every checker catch a planted failure before trusting its passes. Write down what a check covered before quoting its result. Push work where the team can review it. And use the honest labels out loud: done and proven, or built and not yet proven.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0272 — Building Fresh, Not on a False Memory — Verify the Asset, Record the Absence [audit: MISSING → restored in full]
+
+Before building on a remembered asset, search for it; if it cannot be found, record the absence as UNKNOWN in the spec rather than guessing, and design fresh around the gap. In the source case Naya 2 searched the full repo and workspace for the remembered voice assets — a `NayaVoice/` directory and `voices/naya_reference.wav` — and found nothing, so the spec recorded: "the exact existing voice asset/model is currently UNKNOWN and must be recovered/verified rather than guessed". The pipeline was then built fresh — `IB text → Chatterbox → cached audio → browser plays` — gated only on Shawn supplying the true voice reference (`voices/naya_reference.wav` remains the gating item, out of source control per Shawn's spec §7: no private voice assets in the repo). Memory of an asset is not an asset.
+
+### SN-0281 — Proof Gating — Never Let `if: always()` Manufacture Secondary Failures [audit: MISSING → restored in full]
+
+Downstream proof jobs must never use `if: always()` after a failed prerequisite — it overrides normal `needs` skip semantics and manufactures misleading secondary failures out of one honest block. In the source case run `37231269905` failed closed correctly at source-integrity, but three downstream proof jobs — `independent-connect-verification`, `cold-successor`, and `cold-successor-verification` — used job-level `if: always()`, ran after the prerequisite chain was already invalid, and produced secondary artifact failures (e.g. missing `cold-successor-receipt`), turning one honest BLOCK into several misleading FAILs. Preserve the skip chain so the terminal state reads as ONE honest BLOCK at the true root. The repair was red-state-first: the regression test was written and the expected 3 FAIL red state observed before the fix; after removing the job-level `always()` from the three jobs, the regression went 3/3 PASS. Standing rule: no job-level `if: always()` on downstream proof jobs.
+
+### SN-0417 — REGISTRY_RUNTIME_CONTENT_DRIFT — a Registry-Hash Hit Must Never Be Accepted as Reusable Until the Live Runtime Body Is Independently Content-Hash Verified [audit: PARTIAL → lost element restored]
+
+The named drift rule: an exact-hash registry hit must never be accepted as reusable until the live runtime body is independently content-hash verified — registry metadata is a claim, not proof. In verify-only mode, fail closed with the named class `REGISTRY_RUNTIME_CONTENT_DRIFT`. In governed write mode, reconcile through the existing supersession path rather than silently reusing stale runtime content, preserving old lineage/provenance and never overwriting history. Add regression coverage for the combination registry-hash/current + runtime-body/stale.
+
+### SN-0551 — An Ownership Move Earns Its Trust Mechanically: Diff-Fuzz the Seam, Don't Assert It [audit: MISSING → restored in full]
+
+Moving code across an ownership boundary must be proven mechanically at the seam, not asserted: a diff-fuzz with a named comparison count, plus a behaviour matrix with named coverage, and the battery must be run at the new location — anything the move exposes becomes its own repair PR. In the source case the Graph V2 selector moved to the CONNECT-owned module `supabase/functions/_shared/connect_selector.ts`: a 6000-comparison diff-fuzz proved zero behaviour change, plus a 9/9 behaviour matrix, plus a full battery green except pre-existing base failures. The move exposed a test-gate seam — the new `_shared/` directory trips the `edge_execution_coverage` gate — which got its own repair PR (#1739) instead of being merged through or self-repaired onto main. A moved module inherits new gates; the old location's greenness proves nothing about the new one.
 
 ---
 

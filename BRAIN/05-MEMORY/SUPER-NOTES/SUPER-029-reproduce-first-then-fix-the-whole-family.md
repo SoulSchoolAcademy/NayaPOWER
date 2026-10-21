@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-029` |
 | Human title | Reproduce First — Then Fix the Whole Family |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 10 raw notes (full list below) |
 | Cluster file | `cluster-03-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,16 @@ Fixes stay fixed. You stop living through the same problem in slightly different
 ## HOW IT APPLIES
 
 Reproduce the failure and record how. State the hypothesis and the experiment that could kill it, and run that experiment before encoding the cure. Enumerate sibling paths and every consumer of the same contract; repair them together; then re-run the whole chain, not just the repaired step.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0385 — Verify-or-Kill — When the Fix Exposes the Next Failure, Test Whether the Producer Is Poisoning Its Own Well [audit: PARTIAL → lost element restored]
+
+The lost verify-or-kill protocol itself: when consecutive runs fail at different steps, (1) state the self-poisoning hypothesis — here, that the fresh-lesson capture may be deterministic, so run N stores note hash H and run N+1 creates the same note, leaving 2 registry entries with hash H; (2) name the one falsifier check — does the capture content include a per-run nonce/timestamp, and does the write path deduplicate?; (3) run that check; and (4) record confirmed-or-killed on the record. If confirmed, the fix is unique content per run, or verify-latest instead of assert-exactly-1; if killed, a whole failure class is eliminated on the record either way.
 
 ---
 

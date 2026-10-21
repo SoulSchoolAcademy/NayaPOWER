@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-058` |
 | Human title | A Team That Never Leaves a Dead End |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 6 raw notes (full list below) |
 | Cluster file | `cluster-07-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,14 @@ You never have to write the next prompt, decode a report, or referee a blame rou
 Assign specialists and let them own their craft end-to-end. Before sequencing any work, prove the dependency. On any failure, run teach, mechanism, grow — and capture the lesson the same day. Verify builds once against live bytes and send judgment calls to the seat holding the truth. End every delivery with the human version and the exact next action.
 
 ---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0486 — IB-SMART-NOTE-20261006-sn0486-no-dead-ends-law.md [audit: PARTIAL → lost element restored]
+
+The deliverable is a copy-paste continuation prompt, not just a next step: every execution-mode conversation ends with a copy-paste continuation prompt — elite-level, airtight, covering the top priorities / top 10 holes — so Shawn never has to write the next prompt himself. Three conversation modes: execution (back-to-back prompts), chatting (conversation), and learning (capture). In execution mode, the prompt is the product.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

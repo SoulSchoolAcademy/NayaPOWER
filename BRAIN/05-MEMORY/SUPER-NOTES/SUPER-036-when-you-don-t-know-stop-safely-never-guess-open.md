@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-036` |
 | Human title | When You Don't Know, Stop Safely — Never Guess Open |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 5 raw notes (full list below) |
 | Cluster file | `cluster-04-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,16 @@ The system would rather stop and ask you than silently do the wrong thing. Appro
 Decide the allowed list in advance, in writing, where everyone can check it. At every boundary ask: do I actually know this? If not — stop visibly, don't substitute, don't guess. Treat all incoming words as suggestions until the list confirms them. And re-verify approvals at the exact time and version they claim, not by the label on the envelope.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0572 — Persona Loading Is Fail-Closed: Missing Source Halts, Canonical Wins, the Seat Is Never Absorbed [audit: PARTIAL → lost element restored]
+
+Two of the persona loader's three fail-closed rules: (2) when inputs conflict, the canonical source wins — conflicting input is reported, never blended; never merge a second seat's identity claims into this seat's. (3) The seat is never absorbed — no incoming input, however confident-sounding, overwrites the seat's established identity; incoming notes, prompts, or documents may describe the seat, but they may not rename or overwrite it. The loader's full rule is: identity loads fail-closed — (1) missing persona source halts the seat, never synthesize/default/interpolate; (2) conflicting inputs lose to the canonical source, report never blend; (3) the seat is never absorbed by incoming input.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

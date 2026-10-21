@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-016` |
 | Human title | Name the Exact Thing You Proved |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 10 raw notes (full list below) |
 | Cluster file | `cluster-02-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -62,6 +62,28 @@ Arguments shrink. When everyone names exactly what they checked, most 'disagreem
 ## HOW IT APPLIES
 
 Whenever you verify, write down the exact identifier of what you verified, and re-check that it still exists before you rely on it. In a dispute, first agree on the exact list of things being judged. When something you covered changes, announce the gap instead of letting the old proof stretch.
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0112 — Pin What You Consume, Not Just What You Verify — Post-Intake Aliasing [audit: PARTIAL → lost element restored]
+
+An intake verdict does not protect consumption-time state. The store is aliased by design (`n._verify_receipts[rid] is v._receipts[rid]`), so a same-process in-place mutation of VERIFY's store after intake propagates into what LEARN's `extract()` learns — the learned lesson became attacker text in the demonstrated case, and VERIFY-side `reopen()`/`correct()` mutate in place, so the coupling is live, not theoretical. The hardening: deep-copy-on-consume + hash-pin at intake, or a post-close immutability contract on VERIFY's store. Verify the intake, then pin what you consumed — a verdict on the boundary is not custody of the state.
+
+### SN-0198 — Byte-Cited Critique Is the Actionable Unit [audit: MISSING → restored in full]
+
+A lane challenge must cite, for every violation, the triad: (file:line byte coordinates, the exact contract clause violated, the acceptance condition / fix direction that would satisfy it). For example: 13px at feed-stage.css:121/178/250/262 against the contract's 16px floor; nine tones indexed by position at feed.js:33/194 against DONT-14. Critique that cannot cite coordinates is a feeling — a taste question for the director, not a work order for the builder. Read the bytes, not the screenshots.
+
+### SN-0217 — Compare Semantic Identity, Not Raw Bytes [audit: MISSING → restored in full]
+
+When comparing two independently regenerated artifacts to decide whether they are the same repair class, do not compare raw bytes. Verify equivalence through the tool's own normalizers — basis SHA + inventory + file set + domain counts (the brain-index `--check` normalizes the stamp before comparing). Volatile stamps such as `generated_at` roll at UTC midnight and false-positive as a difference: in the source case two runs were semantically identical (same basis SHA, 177 files, same domain counts, identical file set) and differed only in the `generated_at` date stamp. Compare what identity means for this artifact class, not its bytes.
+
+### SN-086 — Qualify Only the Fetchable Subject — Withdraw References to Unpushed Local Commits [audit: PARTIAL → lost element restored]
+
+Never issue a qualification request against an unfetchable reference (an unpushed local commit). Freeze the subject: candidate SHA + branch + byte digests of every file the proof depends on, plus the producer's own clean-run proof attached to that same frozen subject. Bind the verdict to the SHA, never the branch tip. If you named something unfetchable, withdraw the reference explicitly and re-issue it; do not edit it in place.
 
 ---
 

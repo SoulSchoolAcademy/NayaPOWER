@@ -8,8 +8,8 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-068` |
 | Human title | One Organism, One Brain: Governed Workers, a Memory That Refuses to Lie |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
-| Sources | 11 raw notes (full list below) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
+| Sources | 12 raw notes (full list below) |
 | Cluster file | `cluster-08-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
 | Human projection | This Markdown file |
@@ -65,6 +65,28 @@ Converge, don't multiply: one canonical home for each capability, donors instead
 
 ---
 
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### IB-000044 — The Naya Tool Set — The Machinery of the Super Brain [audit: PARTIAL → lost element restored]
+
+The Naya Tool Set is the collection of small, proven programs that run the Super Brain: they activate a Naya, give her a lane, check her work, file it so it can never be quietly lost or faked, compile what the whole hive knows into one directive, pick her next mission, inject the lessons that match it, guard the merges, and report honestly to Shawn. The division is fixed: the Naya brings judgment; the tools bring memory, arithmetic, and receipts.
+
+### IB-000046 — EMIT Ratified — The Canonical Emission Protocol [audit: PARTIAL → lost element restored]
+
+EMIT's status is ratified, not merely standing practice: Shawn ratified EMIT on 2026-10-20 as the team's canonical emission protocol — one machine-checked emission per worker. Board Protocol v1 retires, and every new fold carries the canonical keys so boards compile without fallback.
+
+### SN-012 — 🔱 Smart Note SN-012 — NayaPOWER Operating Model: Identity ≠ Intelligence ≠ Authority ≠ Value [audit: PARTIAL → lost element restored]
+
+The unified operating model is the four-way separation as one canonical frame: IDENTITY ≠ INTELLIGENCE ≠ AUTHORITY ≠ VALUE (and VALUE ≠ TRUTH, TRUTH ≠ AUTHORITY, RETRIEVAL ≠ AUTHORIZATION, CAPABILITY ≠ AUTHORITY). Privacy/sharing model: identity-private, intelligence-sharing — real-world identity never crosses the social layer; participants act under aliases, and distilled intelligence can join the collective without exposing who supplied it. Architecture: many doors (GitHub is one door, not the substrate), one governed NayaPOWER substrate, many interfaces. Intelligence lifecycle: CONNECT → ESTABLISH IDENTITY/AUTHORITY CONTEXT → CAPTURE → CLASSIFY → DISTILL → PROTECT IDENTITY AT THE SOCIAL LAYER → PROVENANCE → VERIFY → SHARE INTO COLLECTIVE INTELLIGENCE → RETAIN → RETRIEVE → APPLY → OBSERVE OUTCOME → VERIFY → LEARN → COMPOUND → SUCCESSION/EVOLUTION. Value framework: +9 is an excellence reference point, not a ceiling; the system seeks maximum verified human value per action/moment/output, with do no harm as the foundational boundary.
+
+### SN-021 — NayaPOWER Current Architectural Truth — One Organism, One Brain, Many Doors [audit: PARTIAL → lost element restored]
+
+The named current frontier is composition, in five parts: (1) making the organs operate together under exact runtime/source parity, (2) proving causal behavior in production, (3) making learning measurably improve future behavior, (4) proving cold succession, and (5) projecting the same canonical intelligence honestly through the Hub. The governing strategy is convergence plus proof, not endless parallel architecture.
+
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
 - `IB-SMART-NOTE-20260930-sn0511-one-canonical-runtime-kernel`
@@ -78,3 +100,4 @@ Converge, don't multiply: one canonical home for each capability, donors instead
 - `IB-SMART-NOTE-20261004-sn0291-universal-worker-protocol`
 - `IB-SMART-NOTE-20261004-sn0289-naya-worker-protocol`
 - `IB-SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier`
+- `IB-SMART-NOTE-20260930-sn012-nayapower-operating-model`

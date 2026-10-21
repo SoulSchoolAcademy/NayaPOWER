@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-021` |
 | Human title | Evidence Must Outlive the Moment — Keep It Safe, Findable, and Untouched |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 8 raw notes (full list below) |
 | Cluster file | `cluster-02-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,20 @@ Your wins stay won. Results can be re-checked months later, mistakes get correct
 Before announcing any result, put the underlying raw evidence somewhere permanent and point to it. Never edit frozen records; supersede them openly. Count distinct evidence, not distinct labels — and keep records about a decision out of the inputs to that decision.
 
 ---
+
+---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0163 — Narrate Mechanically-Induced State Transitions — the PR That Closed Itself [audit: MISSING → restored in full]
+
+Narrate mechanically-induced state transitions in the shared record at the moment they happen. Know the platform's side-effect graph before operating: resetting a branch to its base creates a zero-diff window, and GitHub auto-closes open PRs — so a branch reset auto-closed a draft PR, which was then reopened with the files reapplied, a close/reopen pair that reads exactly like a governance decision and reversal. A PR close/reopen/reset without a continuity note is a governance-shaped lie. The continuity note is posted with the event, not reconstructed later, and carries exact state — refs, PR status, and what was not done (no merge performed) — with zero interpretation.
+
+### SN-181 — SMART NOTE — Build the Claim From a Fixed Key List; Injected Keys Never Reach the Claim [audit: MISSING → restored in full]
+
+Build the post-action claim from an explicit, fixed key list — never copied from the incoming payload's keys. Any key arriving on the input that is not on the list has no path into the claim, by construction, not by inspection. In Demo-1 P3 the EMPIRICAL post-action claim is built only from the fixed enumeration — observation, outcome, acceptance, causal limits, learning eligibility — and only after `verify_observation_chain` runs fail-closed: the EXECUTED-path check first (never proof-before-ACT), then ACT seal recompute, receipt-hash consistency, artifact re-hash, handoff receipt seal, and KNOW block provenance plus gated retrieval. Only verified facts enter; the claim is composed, never copied.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 

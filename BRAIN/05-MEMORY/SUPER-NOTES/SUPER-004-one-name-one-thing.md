@@ -8,7 +8,7 @@
 | Hub wall row | `public.hub_smart_notes` ib_id `SUPER-004` |
 | Human title | One Name, One Thing |
 | Layer | ESSENCE — distilled from raw Smart Notes, never a raw capture |
-| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences, exact partition, 639/639 covered) |
+| Distilled | 2026-10-21 — corrective distillation drive (639 raw → 71 essences); REPAIRED 2026-10-21 after independent audit found 42 MISSING + 151 PARTIAL — lost lessons restored from the originals (see REPAIR-LOG); coverage map regenerated mechanically from these files |
 | Sources | 18 raw notes (full list below) |
 | Cluster file | `cluster-01-super.json` |
 | Canonical machine object | Hub DB row `public.hub_smart_notes` + `distill/all-super-notes.json` |
@@ -64,6 +64,26 @@ When you ask for a lesson by its number, you get that lesson — not a stranger 
 Claiming anything with a shared name — a note number, a file, a title: register the claim first, scan all the places claims live, re-scan right before you commit, and record the claim where others will actually look. Facing a duplicate: stop, classify it (real clash, look-alike, or history), gather evidence, and resolve by renaming the newcomer — preserving both contents.
 
 ---
+
+## ⟲ RESTORED BY REPAIR — 2026-10-21
+
+> Restored by the distillation repair after the independent essence audit (distillation-audit-20261021) found the lessons below MISSING from, or only partially carried by, this Super Note. Each entry restores the named source note's own rule in checkable words, traced to that source. Nothing here is new doctrine.
+
+### SN-0115 — SMART NOTE — Three-Layer Collision Registry: Board, PR Heads, Commit Graph [audit: PARTIAL → lost element restored]
+
+Numbering disputes are resolved by creation-time chronology — commit timestamps and PR creation times are the evidence — not announcement order; board announcements are advertising. First-claim stands on that chronology for the number. Renumbering is always the colliding lane's own call: the winning lane does not dictate the renumbering — "renumbering is the lane's call, not mine to touch" — the losing lane decides its own new number and its own repair path. Separate the number from the content before judging: a collision on the identifier is not a collision on the value.
+
+### SN-0176 — Same Number, Different Bytes Is a Fork, Not a Second Edition [audit: PARTIAL → lost element restored]
+
+A Smart Note's uniqueness key is the NUMBER across all date partitions, not (number, date). Same number + same bytes in another partition = harmless re-stage (idempotent skip); same number + different bytes = a content fork, a registry collision, never a revision or a second edition — revisions update the existing partition path. Before taking a number, verify it does not already exist under ANY date partition and byte-compare when it recurs; when a fork is found, flag-and-hold — the owning seats reconcile it, and no lane unilaterally renumbers.
+
+### SN-0347 — Restatement Is Not Capture — Encode Against the Existing Note [audit: MISSING → restored in full]
+
+Restating doctrine that already lives in an existing Smart Note is not a new capture: a standing law must be ENCODED against the note that already carries it, never restaged as a new note. Instead of staging a duplicate: bind the new work to the existing Smart Note — add the binding (machine-note reference, canonical-object pointer, or code constraint), reference it, and let the standing law's encoding point at the existing SN — and take no new SN number. Every duplicate capture of existing doctrine dilutes the brain: two notes claiming one truth splits provenance, confuses the retrieve path, and forces every future consumer to reconcile a question the brain should answer once. The procedure is a standing step of the capture loop: before staging, scan the tree for an existing SN carrying the doctrine; if one exists, produce the binding and stop. When in doubt, the default action is a binding, not a note.
+
+### SN-0467 — The Counter Is Advisory, the Branch Tree Is Authority [audit: PARTIAL → lost element restored]
+
+When the counter file and the branch claim-tree disagree on the next number, the branch tree is the authority and the counter is only advisory — the authority is the one whose error would break the world (the tree with the actual claims), not the convenience file. (The instance: the counter said 461 while the branch max was 462.) The staging path must scan the branch tree for any in-flight `/SN-NNNN/` claim before staging and refuse a taken number (exit 2) with the next-free suggestion — verified live: SN-0455 correctly refused, next-free SN-0463 suggested.
 
 ## SOURCES (traceability — every raw note this essence was distilled from)
 
