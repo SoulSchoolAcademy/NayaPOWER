@@ -156,14 +156,21 @@ def probe_supabase_tables(cfg):
         except Exception as e:
             failures += 1
             counts[t] = f"unreadable ({e})"
-    if failures == len(present):
+    missing = [t for t in KNOWN_TABLES if t not in present]
+    if missing:
+        # Known tables are part of the measured contract. A successful count
+        # for the remaining tables cannot make a partial schema green.
+        status = "red"
+    elif failures == len(present):
         return {"status": "unknown",
                 "evidence": f"tables exposed but unreadable with provided key ({failures}/{len(present)} failed)",
                 "measured_at": now_iso()}
+    else:
+        status = "green" if failures == 0 else "amber"
     total = sum(int(v) for v in counts.values() if str(v).isdigit())
-    status = "green" if failures == 0 else "amber"
+    missing_note = f"; missing expected tables: {', '.join(missing)}" if missing else ""
     return {"status": status,
-            "evidence": f"{len(present)} tables exposed; row counts: {counts}; readable total ~{total}",
+            "evidence": f"{len(present)}/{len(KNOWN_TABLES)} expected tables exposed; row counts: {counts}; readable total ~{total}{missing_note}",
             "measured_at": now_iso()}
 
 
@@ -300,18 +307,20 @@ def probe_capture(cfg):
     recent_failure = any(r.get("conclusion") == "failure" for r in wr)
     # pump = scheduled runs (not just manual dispatches)
     scheduled = [r for r in wr if r.get("event") == "schedule"]
-    evidence = (f"latest run {latest.get('status')}/{latest.get('conclusion')} "
+    latest_conclusion = latest.get("conclusion")
+    evidence = (f"latest run {latest.get('status')}/{latest_conclusion} "
                 f"({age} old, event={latest.get('event')}); "
                 f"{len(scheduled)}/5 recent runs scheduled; "
                 f"recent success: {recent_success}, recent failure: {recent_failure}")
-    if latest.get("conclusion") == "success" and scheduled:
-        status = "green"
-    elif recent_success:
-        status = "amber"  # works when triggered, no pump
-    elif recent_failure:
+    # Never let an older success mask a current/latest failure.
+    if latest_conclusion == "failure":
         status = "red"
+    elif latest_conclusion == "success" and scheduled:
+        status = "green"
+    elif latest_conclusion == "success":
+        status = "amber"  # works when triggered, no scheduled pump
     else:
-        status = "unknown"
+        status = "unknown"  # latest run is not a completed success/failure
     return {"status": status, "evidence": evidence, "measured_at": now_iso()}
 
 

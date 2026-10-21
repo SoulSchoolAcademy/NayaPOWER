@@ -280,7 +280,7 @@ jobs:
           PY
 
           source_tree="$(gh_api_retry "repos/$GITHUB_REPOSITORY/git/commits/$GITHUB_SHA" --jq .tree.sha)"
-          if gh_api_retry "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref.json 2>/dev/null; then
+          if gh_api_retry "repos/$GITHUB_REPOSITORY/git/refs/heads/$PRODUCTION_BRANCH" > production-ref.json 2>/dev/null; then
             production_parent="$(python -c 'import json; print(json.load(open("production-ref.json"))["object"]["sha"])')"
           else
             production_parent="$GITHUB_SHA"
@@ -354,7 +354,7 @@ jobs:
           source "${GITHUB_WORKSPACE:-.}/.github/gh-api-retry.sh"
           git fetch origin main
           test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
-          if gh_api_retry "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref-before.json 2>/dev/null; then
+          if gh_api_retry "repos/$GITHUB_REPOSITORY/git/refs/heads/$PRODUCTION_BRANCH" > production-ref-before.json 2>/dev/null; then
             current="$(python -c 'import json; print(json.load(open("production-ref-before.json"))["object"]["sha"])')"
             parent="$(python -c 'import json; print(json.load(open("deployment-commit.json"))["parents"][0]["sha"])')"
             test "$current" = "$parent"
@@ -447,7 +447,7 @@ jobs:
           source "${GITHUB_WORKSPACE:-.}/.github/gh-api-retry.sh"
           git fetch origin main
           test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
-          production_now="$(gh_api_retry "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" --jq .object.sha)"
+          production_now="$(gh_api_retry "repos/$GITHUB_REPOSITORY/git/refs/heads/$PRODUCTION_BRANCH" --jq .object.sha)"
           test "$production_now" = "$DEPLOYMENT_SHA"
 
       - name: Dispatch canonical fresh-intelligence producer after deployment

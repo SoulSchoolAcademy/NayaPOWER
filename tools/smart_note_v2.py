@@ -786,6 +786,25 @@ INDEX_ALLOWED_PROJECTION_ROOTS = ("BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/s
 INDEX_VALIDATION_INACTIVE_STATES = frozenset({"SUPERSEDED", "ARCHIVED", "REVOKED", "RETIRED"})
 
 
+def _projection_io_path(path: Path) -> Path:
+    """Use one Win32 long-path representation for canonical projection I/O.
+
+    No fallback changes the declared relative path, its containment law or
+    its expected content hash. Non-Windows and shorter paths are unchanged.
+    """
+    path = Path(path)
+    if os.name != "nt":
+        return path
+    absolute = str(path.absolute())
+    separator = chr(92)
+    prefix = separator * 2 + "?" + separator
+    if len(absolute) < 260 or absolute.startswith(prefix):
+        return path
+    if absolute.startswith(separator * 2):
+        return Path(prefix + "UNC" + separator + absolute[2:])
+    return Path(prefix + absolute)
+
+
 def _page_file_hash(path):
     """Single hashing authority for the page binding: sha256 of raw file bytes.
 
@@ -794,7 +813,7 @@ def _page_file_hash(path):
     intelligence payload, not the projection page bytes: one field, one meaning.
     """
     h = hashlib.sha256()
-    with open(path, "rb") as f:
+    with open(_projection_io_path(Path(path)), "rb") as f:
         for chunk in iter(lambda: f.read(65536), b""):
             h.update(chunk)
     return h.hexdigest()
@@ -821,7 +840,7 @@ def _corpus_tree_pin(entries, root=None):
     pairs = []
     for e in entries:
         pp = e.get("projection_path")
-        if isinstance(pp, str) and pp and (root / pp).is_file():
+        if isinstance(pp, str) and pp and _projection_path_exists(root / pp):
             pairs.append((pp, _page_file_hash(root / pp)))
     canonical = "\n".join(f"{pp}\x00{ph}" for pp, ph in sorted(pairs))
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
@@ -869,7 +888,7 @@ def _validate_index_against_corpus(registry, root=None):
             raise SystemExit(f"INDEX_CORRUPT:PATH_ESCAPE:{e['intelligent_block_id']}: {e['projection_path']!r}")
     # Check 4 — file existence.
     for e in eligible:
-        if not (root / e["projection_path"]).is_file():
+        if not _projection_path_exists(root / e["projection_path"]):
             raise SystemExit(f"INDEX_CORRUPT:PROJECTION_ABSENT:{e['intelligent_block_id']}: {e['projection_path']}")
     # Check 5 — binding uniqueness.
     seen_ids, seen_paths = set(), set()
@@ -1438,6 +1457,11 @@ def verify_receipt(receipt, evidence_bundle):
     return True, "Receipt verified: promotion was valid under recorded thresholds."
 
 
+def _projection_path_exists(path: Path) -> bool:
+    """Real file presence, including Windows extended-length projections."""
+    return _projection_io_path(path).is_file()
+
+
 def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=None):
     """Reconcile captures, the machine registry, and published Brain projections.
 
@@ -1512,16 +1536,32 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         pp = e.get("projection_path")
         if published and not pp:
             defects["published_entries_missing_projection_path"].append(sn)
-        if pp and not (root / pp).exists():
+        if pp and not _projection_path_exists(root / pp):
             defects["registry_projection_paths_absent"].append({"smart_note_id": sn, "projection_path": pp})
 
     pages_by_name = {}
     if brain.exists():
         for p in sorted(brain.rglob("*.md")):
             pages_by_name.setdefault(p.name, []).append(str(p.relative_to(root)).replace("\\", "/"))
+    # A leaf-name collision is only a duplicate when the BYTES collide: the
+    # layout convention puts a `smart-note.md` in every note's own directory
+    # (identity = the directory, not the leaf), and distinct notes may share a
+    # slug-style leaf name with different content. Keying on the bare leaf name
+    # manufactured false positives; keying on the full relative path would make
+    # the class vacuous and hide true double-publications. So: group by leaf
+    # name as candidates, then flag only content-identical path sets.
     for name, paths in sorted(pages_by_name.items()):
-        if len(paths) > 1:
-            defects["duplicate_published_page_paths"].append({"page": name, "paths": paths})
+        if len(paths) < 2:
+            continue
+        by_content = {}
+        for rel in paths:
+            raw = (root / rel).read_bytes()
+            by_content.setdefault(hashlib.sha256(raw).hexdigest(), []).append(rel)
+        for digest, dup_paths in sorted(by_content.items()):
+            if len(dup_paths) > 1:
+                defects["duplicate_published_page_paths"].append(
+                    {"page": name, "paths": dup_paths, "content_sha256": digest[:16]}
+                )
 
     known_pages = {f"{e.get('intelligent_block_id')}.md" for e in entries if e.get("intelligent_block_id")}
     for name, paths in sorted(pages_by_name.items()):

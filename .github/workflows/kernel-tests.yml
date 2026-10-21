@@ -14,6 +14,8 @@ jobs:
         with:
           node-version: "24"
       - run: node --test tests/*.test.mjs
+      - name: Smart Note bridge regression tests
+        run: node --test HUB/app/js/test-supabase-bridge.cjs
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

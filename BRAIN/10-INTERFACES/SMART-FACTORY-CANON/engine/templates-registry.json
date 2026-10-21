@@ -1,0 +1,155 @@
+{
+  "version": "templates-registry-v1",
+  "built": "2026-10-21T18:14:02Z",
+  "templates": {
+    "personal": {
+      "file": "templates/personal.html",
+      "md5": "1b44636b7758dba0b95356211f8b042b",
+      "bytes": 229830,
+      "source": "local: ~/workspace/personal-app/personal-v5.html (pipeline source of truth)",
+      "base_identity": {
+        "name": "Alex Morgan",
+        "tagline": "My personal hub",
+        "about": "Creator, thinker, builder. I turn ideas into reality."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "business": {
+      "file": "templates/business.html",
+      "md5": "46f0fc61145384f0c009a1ea17b329f3",
+      "bytes": 229489,
+      "source": "snapshot of live worker https://naya-template-business.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Acme Corp",
+        "tagline": "We build amazing things",
+        "about": "Acme Corp delivers excellence through innovation and dedication."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "booking": {
+      "file": "templates/booking.html",
+      "md5": "03577f1cc7677585cee4c60d93ac5d1f",
+      "bytes": 229469,
+      "source": "snapshot of live worker https://naya-template-booking.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Book Now",
+        "tagline": "Reserve your spot",
+        "about": "Easy online booking. Pick your time, confirm, done."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "product": {
+      "file": "templates/product.html",
+      "md5": "bd83dc3219b7330963623ea2286c4905",
+      "bytes": 229496,
+      "source": "snapshot of live worker https://naya-template-product.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Product Name",
+        "tagline": "The best product ever",
+        "about": "This product will change your life. Premium quality, unbeatable price."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "portfolio": {
+      "file": "templates/portfolio.html",
+      "md5": "1676a0f8e5523c2a6ed91b20a496a1cd",
+      "bytes": 229486,
+      "source": "snapshot of live worker https://naya-template-portfolio.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Jane Designer",
+        "tagline": "My creative work",
+        "about": "Designer and artist. I create beautiful, functional experiences."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "event": {
+      "file": "templates/event.html",
+      "md5": "a8e3a093f7c2950ed1e38bf9a1afd0d2",
+      "bytes": 229481,
+      "source": "snapshot of live worker https://naya-template-event.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Summer Fest 2026",
+        "tagline": "Join us!",
+        "about": "The biggest event of the year. Music, food, fun. Don't miss out."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "menu": {
+      "file": "templates/menu.html",
+      "md5": "aba2f984cb320396fab4ee9ee0e3e675",
+      "bytes": 229476,
+      "source": "snapshot of live worker https://naya-template-menu.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Cafe Delight",
+        "tagline": "Fresh & delicious",
+        "about": "Farm-to-table cafe. Fresh ingredients, made with love."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "community": {
+      "file": "templates/community.html",
+      "md5": "10fc8326a325a3abc9fc455c388b31e7",
+      "bytes": 229475,
+      "source": "snapshot of live worker https://naya-template-community.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Our Community",
+        "tagline": "Together we grow",
+        "about": "A vibrant community of creators, thinkers, and doers."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "signup": {
+      "file": "templates/signup.html",
+      "md5": "778f3ad614abf1e62804e5dc3dfa3c92",
+      "bytes": 229469,
+      "source": "snapshot of live worker https://naya-template-signup.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Join Us",
+        "tagline": "Get started today",
+        "about": "Sign up in seconds. Join thousands of happy members."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "dashboard": {
+      "file": "templates/dashboard.html",
+      "md5": "aae87dc742d66ec49509262e392a8c49",
+      "bytes": 229476,
+      "source": "snapshot of live worker https://naya-template-dashboard.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "My Dashboard",
+        "tagline": "Track everything",
+        "about": "Your personal command center. Metrics, goals, progress."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "personal-hub": {
+      "file": "templates/personal-hub.html",
+      "md5": "4e8da0585f8a2d5588584e62286144e7",
+      "bytes": 229486,
+      "source": "snapshot of live worker https://naya-template-personal-hub.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "My Smart Hub",
+        "tagline": "My world, connected",
+        "about": "Your personal intelligent hub. Everything you need, one place."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "business-hub": {
+      "file": "templates/business-hub.html",
+      "md5": "d08022411f593d42ada5aa669d8e36e3",
+      "bytes": 229479,
+      "source": "snapshot of live worker https://naya-template-business-hub.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Business Hub",
+        "tagline": "Run your business",
+        "about": "The intelligent hub for your business. Manage everything."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    }
+  },
+  "missing": {
+    "today": "Intake template (templates2.py 'Today'). No contracts.json entry, no template worker, no base file exists.",
+    "smart-list": "Intake template (templates2.py 'Smart List'). No contracts.json entry, no template worker, no base file exists."
+  },
+  "alias_note": "Contract template strings are normalized (lowercase, spaces->hyphens) before lookup: 'Personal'->personal, 'Smart List'->smart-list, 'Business'->business."
+}
