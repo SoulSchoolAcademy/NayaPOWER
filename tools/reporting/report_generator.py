@@ -323,11 +323,11 @@ def action_plan_text(section: TeamSection) -> str:
         bits.append("close: " + _short(section.holes[0].text))
     if section.priorities:
         bits.append("land: " + _short(section.priorities[0].text))
-    below = [s for s in section.scores if s.score < 9.0]
+    below = [s for s in section.scores if s.score < 9.5]
     if below:
         bits.append("independent verification → re-score toward 10")
     elif section.scores:
-        bits.append("hold 9.0+ via independent verification; harden toward 10")
+        bits.append("hold 9.5 via independent verification; harden toward 10")
     if not bits:
         return ("_No recorded actions this window — team to publish "
                 "plan on feed._")
