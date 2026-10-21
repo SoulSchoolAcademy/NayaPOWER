@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5275,6 +5275,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: refs/heads/naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin; main 665098e3f00c9aa6f63907360b8500891704071c unmoved. Single-commit re-stamp ancestry proven, --check claimed OK on exact bytes (receipt's run), F2 negation bug re-demonstrated live on healed head, stale t972 receipt-gate finding c
 
+### ✅ t1042-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** verify-first re-derivation proving the 20 COMPOUNDED seed blocks at live bytes (ALREADY-PROVEN close, no redundant third proof)
+
+**Evidence:** VERIFIED: seal.json, arm1235-summary.json, scorer-scores.json, compounded-verdicts.json, and lane4-t1042-fourway-rerun.json all byte-match their receipt pins on live bytes; 10/10 ten-thing accounting with no inflation; authorship gate evaluated (Clarity did not author the 20 blocks); WP-64 verify-first honored. Score 9.5. Clears 9.5 because every l
+
 ### ✅ t1042 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** prove first COMPOUNDED seed block: verify-first, independent re-derivation of 4 arms on live bytes
@@ -5451,6 +5457,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: branch naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin via git ls-remote, matches receipt claim. Bisect named the introducing commit (5e9c2d840, PR #2401 +12 BRAIN files, no re-stamp); healed head --check OK on tip bytes 665098e3f; fixed push_branch.py argv-too-long bug (left better than fou
 
+### ✅ t1031-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** second live use of winmine.p04.falsifiers-first — block applied to its own checker (R5 redteam + R6/R7/R2-lifecycle amendments)
+
+**Evidence:** VERIFIED: falsifiers-t1031.json mtime 2026-10-20T14:12:47Z precedes redteam/checker edits (F6 held); success-patterns-winmine-t1027.md pin matches. Score 9.0: GOOD, ONE MORE PASS. Why not 9.5: the receipt's pinned redteam-t1031.json SHA (2847637d... 're-derived AFTER the last edit', 10 cases) does NOT match the on-disk file (da8a4b7b..., 12 cases, 
+
 ### ✅ t1031 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** winmine.p04.falsifiers-first use #2: falsifiers-before-mechanical on checker itself, R6/R7 + R2 lifecycle fixes
@@ -5487,6 +5499,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on local bytes (stall receipt, no branch/SHA cited — artifact check vacuous, no PHANTOM): prior stall receipt gate-stall-20261019-0924.md exists on disk (filed 09:25 UTC, prior scorer entry t0924 gave it 7.5 at 09:31 UTC); this run's receipt filed ~64 min later — 60-min stall cap honored; twelve-lane-rotation.json queued len=30 matches the
 
+### ✅ t1029-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** first live use of winmine.p04.falsifiers-first — registry + protocol + machine checker, 5 falsifiers pre-registered
+
+**Evidence:** VERIFIED: success-patterns-winmine-t1027.md pin 0a424872... re-derived and matches; the checker/protocol SHA drift since is explained by t1031's documented later edits (R5/R6/R7/R2-lifecycle), not a hole. Score 9.0: GOOD, ONE MORE PASS. Why not 9.5: the R2 blind spot — the t1029 checker searched queue/claimed but missed the claimed/done/ lifecycle 
+
 ### ✅ t1029 — Team 10, lane-scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** First LIVE use of WINMINE candidate block winmine.p04.falsifiers-first: registry + machine-checkable embedding protocol + stdlib checker
@@ -5494,6 +5512,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1029-lane10.md`
 
 **Evidence:** ARTIFACTS VERIFIED: all 5 claimed SHA-256s byte-identical on disk (usage.jsonl b96b609f..., protocol b63b47c5..., checker c43701aa..., falsifiers a477b88b..., winmine 0a424872...). Falsifier-file mtime 2026-10-20T13:54:29Z precedes registry-row mtime 13:55:57Z -- seal-before-mechanical ordering byte-verified. Protocol doc's repeatable-move quote by
+
+### ✅ t1027-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** mined the lane-10 9.5+ cluster into 6 candidate smart blocks (success-patterns-winmine-t1027.md)
+
+**Evidence:** VERIFIED: deliverable SHA 0a424872... matches (23,175 bytes); imposter t1022 excluded with byte evidence; the t0983 9.6-vs-9.0 ledger discrepancy flagged, not smoothed. Score 9.5. Clears 9.5 because every citation is a byte-quoted receipt inside a named 8-receipt window, and honest boundaries are marked CANDIDATE with the 3-use permanence rule. Why
 
 ### ✅ t1027 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -5503,6 +5527,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: deliverable hidden_files/success-patterns-winmine-t1027.md sha256 0a4248727d4b2b351e4072e22e7ccd066c14d7aecd6f35ab4d060c67047076f0 matches the receipt's claimed SHA byte-for-byte (23175 bytes); all 8 window receipts t0970/t0978/t0981/t0983/t0986/t1011/t1023/t1024-lane10.md present on disk and (per the receipt) read in full. The 
 
+### ✅ t1024-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** sealed falsifying verdict on the Q15 gold-side hypothesis — strong form falsified, terminal STOP
+
+**Evidence:** VERIFIED: prereg seal file auto-retrieval/q15-goldside-prereg-t1024.md SHA 4d2465a3... matches and predates any pair read; the sealed line was resolved against the registered weak reading even though the outcome was unglamorous. Score 9.0: GOOD, ONE MORE PASS. Why not 9.5: the 'genuinely answers' judgment (SN-0165 as alternative right answer) is a 
+
 ### ✅ t1024 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Sealed falsifying verdict on the gold-side hypothesis for the Q15 word-overlap decoy (read-only analysis)
@@ -5510,6 +5540,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1024-lane10.md`
 
 **Evidence:** ARTIFACTS VERIFIED: all 4 frozen t0553 SHAs byte-identical on disk (script 281ee5f7..., benchmark 50349cd7..., corpus 4ec82639..., pairs 0b5fe2f1...) -- each equals the value pinned in semantic-arm-t0553.md lines 8-17 and the receipt's claimed pins. Seal file auto-retrieval/q15-goldside-prereg-t1024.md sha256 4d2465a3... matches the claimed SHA; fi
+
+### ✅ t1023-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Q15 mu=1.0 last-sentence-boost at pre-registered primary — seal-before-run; verdict DECOY-HOLDS
+
+**Evidence:** VERIFIED: semantic-arm-hybrid-t1023.py and -results.json pins match; seal-before-run discipline held; the Oct-17 implementation's absence from disk was disclosed (form defined from t1011's description). Score 9.0: GOOD, ONE MORE PASS. Why not 9.5: the receipt's pinned .md SHA (5031b642... under 'verified SHAs') does not match the on-disk file (4857
 
 ### ✅ t1023 — Team 10, lane-scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -5609,6 +5645,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: receipt exists; PR #2385 head eedd9540f54cd96c241db4be2f43f0698ae4dd07 matches refs/pull/2385/head on origin exactly (unchanged since t982). Watch-only mandate honored (nothing pushed/merged). All 15 check-runs on exact head classified with base re-confirmation (base moved 230b397ac->b5007fd8d2; kernel test + competing-boot red
 
+### ✅ t1020-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** brain-index drift check at live tip c58832b4 — DRIFT verdict with exact 4-file drift list
+
+**Evidence:** VERIFIED: tip c58832b4 is a real remote commit (GitHub API: living-map-compiler, 2026-10-20T11:38:59Z); two independent count paths agree (git tree walker == regenerater inventory 1333); drift is additions-only, no pointer dangling. Score 9.5. Clears 9.5 because the verdict is byte-pinned at action time and read-only authority was honored (no re-st
+
 ### ✅ t1020 — Team 10, lane-scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Brain-index drift check at the live tip -- DRIFT verdict pinned with the exact drifted-file list
@@ -5617,6 +5659,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: remote HEAD via git protocol = c58832b4f1ccbdbfb352cd14bfa06e4a14023f3d, exactly the tip the receipt anchors -- no tip churn since action time, so the verdict still binds. Read-only authority honored (no re-stamp, no push, no PR). Clears 9.5 because the DRIFT verdict is byte-pinned and doubly corroborated: regeneration exit-1 na
 
+### ✅ t1013-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** succession-protocol-v1 canonical doc — 100 lines, every proven step re-pinned at action time
+
+**Evidence:** VERIFIED: succession-protocol-v1.md SHA 4f487c2a... matches (full sha256); arm-fresh succession-lineage scan ran before claim; 10 named self-review solutions applied across 3 passes. Score 9.0: GOOD, ONE MORE PASS. Why not 9.5: the 11 pin-table pins are short (16-hex) receipt claims sampled only at doc level — independent cold re-derivation of the 
+
 ### ✅ t1013 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** succession-protocol-v1 canonical doc
@@ -5624,6 +5672,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1013-lane6.md`
 
 **Evidence:** Verified: hidden_files/succession-protocol-v1.md exists byte-exact at claimed SHA 4f487c2a18b1675e6b9eeb8b994bdb7807649f5f569893a32eb2bc09e6ccf472. Clears 9.5 because all four DoD elements are present (sequence, roles, acceptance bar, gaps) and the five unproven steps are honestly marked CANDIDATE; the 11-pin re-derivation table is cited (I did not
+
+### ✅ t1013-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** RECUSED — arm-fresh fired on the seat's own t0810-review lineage authorship; brief returned OPEN
+
+**Evidence:** VERIFIED: receipt read in full; the recusal fired exactly as designed — harness untouched, repair spec never read beyond the header, brief returned to queue/ unclaimed. Score 9.0: GOOD, ONE MORE PASS. Why not 9.5: the claim itself cost one wasted claim/sign-in cycle because the 'non-Clarity' eligibility presumption sits ~5 lines below the claim scr
 
 ### ✅ t1013 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -5722,6 +5776,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1012-lane2.md`
 
 **Evidence:** Dispatcher verified: receipt + lane2-t1012-shapeA/ (probe-prompt, arm-plain-a, scorer-output) + decide.py fork receipt all exist on disk; t1002 pre-reg seal intact (mtime matches in-file stamp). Primary finding: t1002's 'shape confound' is a false memory - t992 ARM-07 ran on A2 not plain A, so t1002's 3/3 rejection WAS the exact-shape replication. 
+
+### ✅ t1011-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** lexical-penalty hybrid replication (lambda=0.05) — independent build caught its own form-drift bug; byte-identical replication
+
+**Evidence:** VERIFIED: semantic-arm-hybrid-t1011.py pin 6367499e... matches; pre-registration disclosed replication-not-blind status; determinism re-run byte-identical; miss characterized to 0.000226; the next action (mu=1.0 as pre-registered primary) was correctly routed to the dispatcher — and t1023 executed it, closing the loop. Score 9.5. Clears 9.5 because
 
 ### ✅ t1011 — Team 10, lane-scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -17275,6 +17335,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: head 92fac098 == refs/pull/2457/head == branch naya/nine-tipred-fix-t1422; decision receipt decisions/20261012T083533Z-guide-merge-merge-pr--2457.json exists; HOLD verdict on 2-seat bar 1/2. Honest 9: pins exact, seat-regex root-caused not worked around, no merge manufactured.
 
+### ✅ t0092-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** queue-discipline sweep: closed 10 fossil draft PRs (post-#1877 layer) + pin-exact pipeline status
+
+**Evidence:** VERIFIED: receipt read in full; 3/3 sampled fossil PRs confirmed closed via GitHub API with head SHAs byte-matching the receipt's action-time pins (#1910 cf5e960f3589, #1912 64286079f1e0, #1993 0e76f296682f); close-comment ID sequence 6120835238->6120842996 internally coherent (10 closes in 29 s); #1130 untouched per Shawn gate. Score 9.0: GOOD, ON
+
 ### ✅ t0092 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** fossil close batch #3: 10 oldest idle drafts (#1910-#1993) closed as superseded + pipeline report
@@ -18504,6 +18570,12 @@ _Last updated: 2026-10-20 23:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ seat-stall-20261020-2344 — Team executor, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** seat-stall: 31-brief queue sweep, all seat-barred for the Clarity seat (lane-executor 23:44 UTC run)
+
+**Evidence:** VERIFIED: receipt read in full; brief-queue/ holds 30 unclaimed brief-*.md now (31 at receipt time 23:44 UTC - one drained in the ~10 min since, consistent with overnight seat activity, not a receipt hole); prior stall receipt seat-stall-20261020-2234 mtime 22:36 UTC = 68 min before this run's 23:46 write, so the one-receipt/hour stall cap holds; z
 
 ### ✅ pr2608-review-lane-blocked — Team executor, Naya Clarity Narzan (?) — 8.5/10 [VERIFIED]
 
