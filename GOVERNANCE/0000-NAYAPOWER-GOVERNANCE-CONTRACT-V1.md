@@ -1,11 +1,11 @@
 # 🔱 NayaPOWER — Governance Contract V1
 
-**STATUS:** RATIFIED — HUMAN DIRECTOR RATIFICATION RECORDED 2026-09-30  
+**STATUS:** RATIFIED — AUTHORIZED BY THE HUMAN DIRECTOR 2026-10-08 · REAFFIRMED 2026-10-21 · EFFECTIVE ON MERGE  
 **PURPOSE:** Operationalize constitutional law into deterministic governance.
 
 ## RATIFICATION RECORD
 
-- Ratified by the Human Director (Shawn Vibert) on 2026-09-30, under the authority of the ratified Constitution Act V1.
+- Ratified by the Human Director (Shawn Vibert) under the authority of the ratified Constitution Act V1 — authorization recorded 2026-10-08 (PR #1130, comment 6053318213), reaffirmed by his stamp 2026-10-21; this record takes effect on merge.
 - This contract operationalizes constitutional law; it does not amend the Constitution. Constitutional amendments require separate Human Director ratification.
 
 ## 1. HIERARCHY
@@ -73,7 +73,7 @@ Only routine actions explicitly covered by a standing policy.
 
 The Human Director ratified **STANDING-PRODUCTION-AUTHORIZATION-AMENDMENT-V1** on 2026-09-29.
 
-The first ratified standing policy is **STANDING-PRODUCTION-PROMOTION-V1**.
+The first ratified standing policy is **STANDING-PRODUCTION-PROMOTION-V1**. Canonical machine record: `.naya/governance/STANDING-PRODUCTION-PROMOTION-V1.json`.
 
 Its sole automatic production boundary is:
 
