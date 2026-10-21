@@ -86,7 +86,7 @@ def _cross_seat_review(reviews: list[dict], comments: list[dict],
         seat = consensus.author_seat_of(body)
         if consensus._looks_like_review(body) and seat and seat != author_seat:
             return True, f"review receipt from different declared seat {seat}"
-    return False, f"no accepted review from a seat other than author {author_seat}"
+    return False, f"no accepted review from a different declared seat than author {author_seat}"
 
 
 def run() -> int:
@@ -142,7 +142,7 @@ def run() -> int:
         if not ok:
             return _emit("BLOCKED — SCORECARD_MISSING_OR_STALE",
                          f"Tier {tier['tier']} requires {minimum:g}/10; {score_detail}",
-                         f"post a numeric independent scorecard >= {minimum:g}/10 pinned to the exact current head SHA {head}")
+                         f"post a numeric scorecard >= {minimum:g}/10 from a different declared seat with an explicit head field pinned to current SHA {head}")
 
         # The existing receipt checker is the source of truth for Evidence
         # heading and URL/SHA/path liveness; don't duplicate its parser.
