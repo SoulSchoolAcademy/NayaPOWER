@@ -14,9 +14,14 @@ import os
 import sys
 import urllib.error
 
-import check_merge_consensus as consensus
-import check_pr_receipt as receipt
-from pr_flow_tier import classify_tier
+try:
+    import check_merge_consensus as consensus
+    import check_pr_receipt as receipt
+    from pr_flow_tier import classify_tier
+except ModuleNotFoundError:  # support import from repository tests
+    from tools import check_merge_consensus as consensus
+    from tools import check_pr_receipt as receipt
+    from tools.pr_flow_tier import classify_tier
 
 
 def _emit(code: int, message: str, cure: str) -> int:
