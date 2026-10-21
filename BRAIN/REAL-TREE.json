@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-21",
-  "receipt_basis_commit": "ee02c65b8e8ffafea210742bfd7d8e382a63f902",
-  "inventory_file_count": 1524,
+  "receipt_basis_commit": "4ce858515f0b9739975de344af71c2cabcbdde30",
+  "inventory_file_count": 1508,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 86,
+    "01-GOVERNANCE": 73,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -19,7 +19,7 @@
     "10-INTERFACES": 427,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 89,
+    "90-OPERATIONS": 86,
     "99-ARCHIVE": 2,
     "ROOT": 6
   },
@@ -32,8 +32,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md",
-      "blob_sha": "a9cb59b94b12a841105daa2325874368ef125ac4",
-      "size": 11115
+      "blob_sha": "61080b4c74e9d598a638d4c7cd27b865124729db",
+      "size": 10274
     },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
@@ -42,8 +42,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
-      "blob_sha": "0251439bb3cc0d5642a18b5fdbd7a8bffe004043",
-      "size": 17817
+      "blob_sha": "f50db91af0dadbfdab1e902da0d9e2fd47576f48",
+      "size": 17798
     },
     {
       "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md",
@@ -57,8 +57,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md",
-      "blob_sha": "892f580946ac0a9ad80b195bd03fe56ee5d6adb5",
-      "size": 2702
+      "blob_sha": "a05dc82729cd45d7c4837f7ee057e95245282ecd",
+      "size": 2643
     },
     {
       "path": "BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md",
@@ -476,66 +476,6 @@
       "size": 13509
     },
     {
-      "path": "BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.ai.md",
-      "blob_sha": "c0805bb866dc2ad3aaefcb74a975421114efa71e",
-      "size": 4225
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.human.md",
-      "blob_sha": "49369440028aee7be9d94c87e47fcf83bf705c81",
-      "size": 3641
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0031-never-again-v1.machine.json",
-      "blob_sha": "1e58e3180215140ec7510f31658a8e34cce81a41",
-      "size": 2275
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.ai.md",
-      "blob_sha": "2ec5d3a522f7c8a991c71e3515c57ba3a76fc38a",
-      "size": 3548
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.human.md",
-      "blob_sha": "40c82a022a3a9ad908290593649bc99927825434",
-      "size": 4783
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0032-house-standard-v1.machine.json",
-      "blob_sha": "c1bb2ffa2f41ff49940ff0b218dc12cc0c9987bf",
-      "size": 2617
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md",
-      "blob_sha": "929a5ae44a371fc007180f6a288dbeb183ebfff0",
-      "size": 20247
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md",
-      "blob_sha": "f39c475071200e634d08f288e7c585b46820e8c2",
-      "size": 6877
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json",
-      "blob_sha": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
-      "size": 18036
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.ai.md",
-      "blob_sha": "1330b38df3de5d01149e02f1a5aa5bdfc6c2949f",
-      "size": 4520
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.human.md",
-      "blob_sha": "2019359e46f300a77d2499fc4d395e1aad0b3375",
-      "size": 3690
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/0034-the-house-fire-law-v1.machine.json",
-      "blob_sha": "b26079232d91f5e8fe4a072c9cc019649826dd12",
-      "size": 4001
-    },
-    {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
       "blob_sha": "ea273ce3077d1e8be7001203d1c312d44c8e0d86",
       "size": 2633
@@ -544,11 +484,6 @@
       "path": "BRAIN/01-GOVERNANCE/GATE-CONSOLE.md",
       "blob_sha": "d7810ee7ef34047865a25e378555b57a92e44a28",
       "size": 10085
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json",
-      "blob_sha": "414d4ef09ffcab2a2902c4e44a83abf5c27ebac9",
-      "size": 14715
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md",
@@ -7191,11 +7126,6 @@
       "size": 8978
     },
     {
-      "path": "BRAIN/90-OPERATIONS/0006-THE-NAYA-TOOL-DIRECTORY-V1.md",
-      "blob_sha": "efcde7ea9f807cbf1241031474af6a445ac16d57",
-      "size": 42239
-    },
-    {
       "path": "BRAIN/90-OPERATIONS/2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md",
       "blob_sha": "b577802c0bdeb0b7432a685ebf7f0b703972dc71",
       "size": 13216
@@ -7226,11 +7156,6 @@
       "size": 20377
     },
     {
-      "path": "BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md",
-      "blob_sha": "d82083edcac4fb0641c7f4d6a4c6878dfd5c4215",
-      "size": 16418
-    },
-    {
       "path": "BRAIN/90-OPERATIONS/INTER-LEDGER-PROTOCOL.md",
       "blob_sha": "67d42af19eaecca4934ad668b14dde0ef0c6614f",
       "size": 24546
@@ -7239,11 +7164,6 @@
       "path": "BRAIN/90-OPERATIONS/NETWORK-MAP.md",
       "blob_sha": "29c74e9d9d6794097ab5c946d3f2e523fc50bb45",
       "size": 9314
-    },
-    {
-      "path": "BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md",
-      "blob_sha": "6daf7c27c05e7bb43ce50e029ea144b022106795",
-      "size": 18308
     },
     {
       "path": "BRAIN/90-OPERATIONS/README.md",
