@@ -54,8 +54,8 @@ ENGINE = "nayas-guide"
 RISK_SEVERITY_BAR = 7.0
 RISK_PROBABILITY_BAR = 0.05
 
-# 3-pass law: builder's own 3 passes must reach 9.0
-THREE_PASS_BAR = 9.0
+# 3-pass law: builder's own 3 passes must reach 9.5
+THREE_PASS_BAR = 9.5
 
 # Protected change patterns — these ALWAYS go to Shawn
 PROTECTED_PATTERNS = [
@@ -332,7 +332,7 @@ def merge_decision(evidence):
       2. Conflicts → HOLD
       3. CI not green → HOLD
       4. No 3-pass receipt → HOLD
-      5. Self-score below 9.0 → HOLD
+      5. Self-score below 9.5 → HOLD
       6. Otherwise → MERGE (independent seats add confidence, never block)
     """
     reasons = []
@@ -393,17 +393,17 @@ def merge_decision(evidence):
 
     reasons.append("3-pass receipt present in PR body.")
 
-    # Gate 6: Self-score must meet the 9.0 bar
+    # Gate 6: Self-score must meet the 9.5 bar
     self_score = receipt["self_score"]
     if self_score < THREE_PASS_BAR:
         reasons.append(f"Self-score {self_score}/10 is below the {THREE_PASS_BAR} bar.")
-        reasons.append("The 3 passes didn't reach 9.0 — more work needed, then re-run.")
+        reasons.append("The 3 passes didn't reach 9.5 — more work needed, then re-run.")
         return "HOLD", reasons, "high"
 
     reasons.append(f"Self-score {self_score}/10 meets the {THREE_PASS_BAR} bar.")
 
     # All gates passed → MERGE
-    reasons.append("All gates green: no protected changes, no conflicts, CI green, 3-pass receipt present, self-score 9.0+.")
+    reasons.append("All gates green: no protected changes, no conflicts, CI green, 3-pass receipt present, self-score 9.5+.")
     reasons.append("Per the 3-pass flow law, the builder's honest passes ARE the verification. Independent review is welcome but never blocking.")
 
     confidence = "high"

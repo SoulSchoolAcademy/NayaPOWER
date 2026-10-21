@@ -1,5 +1,5 @@
 """
-quality_gate.py — Machine law: enforce the 9.0 delivery floor.
+quality_gate.py — Machine law: enforce the 9.5 delivery floor.
 
 No deliverable below 9/10 reaches Shawn. This gate validates a
 delivery scorecard BEFORE delivery. Missing scorecard = no delivery.
@@ -9,7 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 
-DELIVERY_FLOOR = 9.0
+DELIVERY_FLOOR = 9.5
 AAA_TARGET = 9.5
 
 

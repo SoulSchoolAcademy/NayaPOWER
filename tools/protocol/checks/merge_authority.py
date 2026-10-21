@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """Delegated Merge Authority (Shawn, 2026-10-08 — ratified delegation).
 
+SUPERSESSION NOTE (2026-10-12 five-condition merge law): the quoted 2026-10-08
+delegation text below cites a ">= 9.0" self-scorecard bar. The CURRENT ratified
+merge law requires honest score >= 9.5 (green CI + >=9.5 + different-seat
+validation + team-feed post + no objection). Read the quoted 9.0 language as
+the historical delegation basis; the operative bar for any merge packet is 9.5.
+
 "Naya 5 may merge to main WITHOUT Shawn's per-merge approval iff ALL hold:
 (1) built + tests green; (2) honest evidence-backed self-scorecard >= 9.0
 with value-calculus run ('most intelligent thing wins'); (3) independent
@@ -8,8 +14,9 @@ validation by a DIFFERENT seat; (4) intent + scorecard + validation posted
 on #1354, team consensus (no seat objects); (5) merge, then report after:
 what, why, scorecard, who validated.
 
-Below 9.0, no independent validation, or any team objection → still needs
-Shawn's word. Other protected gates (production deploys, credentials/money,
+Below 9.5, no independent validation, or any team objection → still needs
+Shawn's word. (Operative bar today is 9.5 per the 2026-10-12 five-condition
+merge law; the 9.0 floor below is the superseded delegation language.) Other protected gates (production deploys, credentials/money,
 destructive actions, security/privacy/consent/authority changes) are
 UNCHANGED — this delegation covers merges to main ONLY."
 
@@ -45,7 +52,7 @@ Checks:
      a command transcript with counts, an artifact path) — "trust me,
      green" names nothing resolvable and is unfalsifiable, which is not
      proof.
-  3. self_scorecard: score finite and within the 0–10 scale, >= 9.0,
+  3. self_scorecard: score finite and within the 0–10 scale, >= 9.5,
      evidence_backed true, value_calculus_run true — honest,
      evidence-backed, and the math was run. Infinity, NaN, and
      out-of-range scores fail: no isfinite bound means no bar at all.
@@ -85,7 +92,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
 
-MIN_SELF_SCORE = 9.0
+MIN_SELF_SCORE = 9.5
 MAX_SELF_SCORE = 10.0  # scorecards are scored on the 0–10 scale
 
 
@@ -202,11 +209,11 @@ def check(record: dict) -> dict:
         )
     reasons.append(f"built + tests green ({test_evidence})")
 
-    # 3. Honest evidence-backed self-scorecard >= 9.0, value calculus run.
+    # 3. Honest evidence-backed self-scorecard >= 9.5, value calculus run.
     if not isinstance(scorecard, dict):
         return fail(
             f"{branch}: self_scorecard missing — condition (2) requires an "
-            "honest evidence-backed self-scorecard >= 9.0 with the value "
+            f"honest evidence-backed self-scorecard >= {MIN_SELF_SCORE} with the value "
             "calculus run. Absence fails closed.",
             details,
         )
@@ -215,7 +222,7 @@ def check(record: dict) -> dict:
     vc_run = scorecard.get("value_calculus_run")
     if not isinstance(score, (int, float)) or isinstance(score, bool):
         return fail(
-            f"{branch}: self_scorecard.score is not a number — the 9.0 bar "
+            f"{branch}: self_scorecard.score is not a number — the {MIN_SELF_SCORE} bar "
             "cannot be evaluated on a non-number",
             details,
         )
@@ -223,14 +230,14 @@ def check(record: dict) -> dict:
         return fail(
             f"{branch}: self_scorecard.score {score!r} is not a finite "
             f"score on the 0–{MAX_SELF_SCORE:g} scale — Infinity, NaN, and "
-            "out-of-range scores fail closed. The 9.0 bar is meaningless "
+            f"out-of-range scores fail closed. The {MIN_SELF_SCORE} bar is meaningless "
             "without a bounded numeric underneath it.",
             details,
         )
     if score < MIN_SELF_SCORE:
         return fail(
             f"{branch}: self_scorecard.score {score} < {MIN_SELF_SCORE} — "
-            "below 9.0 the merge still needs Shawn's word",
+            f"below {MIN_SELF_SCORE} the merge still needs Shawn's word",
             details,
         )
     if evidence_backed is not True:
@@ -247,7 +254,7 @@ def check(record: dict) -> dict:
             "thing wins')",
             details,
         )
-    reasons.append(f"self-scorecard {score} >= 9.0, evidence-backed, value "
+    reasons.append(f"self-scorecard {score} >= {MIN_SELF_SCORE}, evidence-backed, value "
                    "calculus run")
     details["self_score"] = score
 

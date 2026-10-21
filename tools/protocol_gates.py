@@ -8,7 +8,7 @@ ratify the constitution).
 
 SCOPE — companion to Naya 4's kernel/protocol/ (PR #1807), NOT a duplicate:
   Covered there (do NOT reimplement here):
-    - quality_gate.check_delivery      (9.0 delivery floor)
+    - quality_gate.check_delivery      (9.5 delivery floor)
     - authority_gate.classify_action   (5 protected gates)
     - cold_start_gate / read_receipt / takeover / cold_successor_test
   Implemented HERE (the missing delta):
@@ -642,7 +642,7 @@ def check_quality_gate(
     scores: dict, weights: dict | None = None,
     scored_sha: str | None = None, scored_policy: str | None = None,
 ) -> AdapterResult:
-    """Enforce the 9.0 delivery floor, per area, never averaged.
+    """Enforce the 9.5 delivery floor, per area, never averaged.
 
     Delegates to kernel.protocol.quality_gate.check_delivery when available
     (PR #1807 — canonical). The local fallback enforces the floor rule only;
@@ -702,15 +702,15 @@ def check_quality_gate(
         reasons.append(f"Non-finite or out-of-range scores: {bad}")
     low = [d for d, s in scores.items()
            if isinstance(s, (int, float)) and not isinstance(s, bool)
-           and math.isfinite(s) and s < 9.0]
+           and math.isfinite(s) and s < 9.5]
     if low:
         reasons.append(
-            f"Dimensions below floor 9.0: {low}. A 10 never covers a 7."
+            f"Dimensions below floor 9.5: {low}. A 10 never covers a 7."
         )
     if weights and not reasons:
         total = sum(scores[d] * weights[d] for d in scores)
-        if total < 9.0:
-            reasons.append(f"Weighted total {total:.2f} below floor 9.0.")
+        if total < 9.5:
+            reasons.append(f"Weighted total {total:.2f} below floor 9.5.")
     return AdapterResult(
         passed=not reasons, verdict="PASS" if not reasons else "FAIL",
         reasons=reasons,
