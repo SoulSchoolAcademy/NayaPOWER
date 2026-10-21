@@ -173,6 +173,50 @@ def _scorecard_for_current_head(comments: list[dict], head: str,
     return False, f"no numeric scorecard >= {minimum:g}/10 from a different declared seat with an explicit head field and valid Tier-B diff fingerprint/verification attestation (current head {head[:12]})"
 
 
+_HOLD_LINE_RE = re.compile(r"(?im)^\s*(?:verdict\s*:\s*(?:hold|do not merge)|blocking\s*:\s*yes)\s*$")
+_CLEAR_LINE_RE = re.compile(r"(?im)^\s*(?:verdict\s*:\s*(?:pass|approved|merge recommended)|blocking\s*:\s*no)\s*$")
+
+
+def _has_unresolved_hold(comments: list[dict], author_seat: str, head: str,
+                         tier: str, diff_hash: str | None) -> tuple[bool, str, str]:
+    holds = {}
+    for comment in sorted(comments, key=lambda item: item.get("created_at") or ""):
+        body = comment.get("body") or ""
+        has_hold = bool(_HOLD_LINE_RE.search(body))
+        has_clear = bool(_CLEAR_LINE_RE.search(body))
+        if not has_hold and not has_clear:
+            continue
+        seat = consensus.author_seat_of(body)
+        if not seat:
+            if has_hold:
+                return True, "an explicit blocking verdict has no declared reviewer seat", "the reviewing lane must add a truthful Seat: Naya <seat> declaration and a current evidence-bound verdict", "Reviewing lane"
+            continue
+        if _seat_key(seat) == _seat_key(author_seat):
+            continue
+        if has_hold:
+            holds[_seat_key(seat)] = (seat, body)
+            continue
+        if has_clear and _seat_key(seat) in holds:
+            pinned_head = consensus.scorecard_head_of(body)
+            diff_pin = scorecard_diff_hash_of(body)
+            fresh = pinned_head == head.lower()
+            if tier == "B":
+                fresh = fresh or bool(diff_hash and diff_pin and diff_pin == diff_hash)
+            if fresh:
+                holds.pop(_seat_key(seat), None)
+
+    if holds:
+        seat, body = next(iter(holds.values()))
+        excerpt = " ".join(body.split())[:180]
+        return (
+            True,
+            f"unresolved blocking finding from different declared seat {seat}: {excerpt}",
+            "the same reviewing seat must verify the repair and post a current-head (Tier A) or matching-diff (Tier B) VERDICT: PASS / BLOCKING: NO; preserve the original hold",
+            "Reviewing seat",
+        )
+    return False, "", "", ""
+
+
 def run() -> int:
     global CURRENT_HEAD, CURRENT_TIER
     event = _read_event()
