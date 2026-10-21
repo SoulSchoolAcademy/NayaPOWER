@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-21  
-**Receipt basis commit:** `88bcdca94b9d54cccfa88de54dc965587e25d5df`  
-**Inventory file count:** 1361  
+**Receipt basis commit:** `7b1a7f812ec032a4c8e34b6b80bdbbf8d65aef93`  
+**Inventory file count:** 1362  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 675 |
+| 05-MEMORY | 676 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -32,12 +32,12 @@
 ### 00-ACTIVATION — (unregistered domain)
 
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
-- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `61080b4c74e9` (10274 bytes)
+- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `bc747284c6e3` (10553 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
-- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `6c8d35df191d` (17369 bytes)
+- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `0251439bb3cc` (17817 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `6543873fee80` (2185 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
-- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `a05dc82729cd` (2643 bytes)
+- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `892f580946ac` (2702 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
 - `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` — `70774bbfa1e0` (24076 bytes)
@@ -856,6 +856,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-reservoir/IB-000051/smart-note.md` — `ac6d7a78d3d9` (12395 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/viral-factory/IB-000048/smart-note.md` — `eb6d6770e446` (11854 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/words-without-action/IB-000047/smart-note.md` — `27dc18eeb8ae` (7144 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md` — `962b0238790e` (7012 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `8a02bda6be42` (27455 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `0fc11ff78dc9` (4099 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
