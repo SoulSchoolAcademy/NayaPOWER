@@ -14,8 +14,11 @@ from pathlib import PurePosixPath
 
 TIER_A_PATHS = (
     ".github/workflows/",
+    "BRAIN/01-GOVERNANCE/",
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/",
     "kernel/security/",
     "supabase/migrations/",
+    "supabase/functions/",
     "migrations/",
 )
 TIER_A_PATH_NAMES = {
@@ -40,6 +43,7 @@ CONTENT_PATHS = (
     ".naya/capture/",
     "BRAIN/05-MEMORY/SMART-NOTES/",
     "BRAIN/05-MEMORY/SUPER-NOTES/",
+    "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/",
 )
 CONTENT_FILES = {
     "BRAIN/NAYAPOWER-BRAIN-INDEX.json",
