@@ -32,6 +32,9 @@ class TierClassificationTests(unittest.TestCase):
     def test_governance_title_escalates_even_without_path_list(self):
         self.assertEqual(classify_tier("Governance contract ratification", [])["tier"], "A")
 
+    def test_governance_path_is_tier_a(self):
+        self.assertEqual(classify_tier("ordinary doc", ["BRAIN/01-GOVERNANCE/0025.md"])["tier"], "A")
+
     def test_unknown_note_path_does_not_get_tier_c(self):
         self.assertEqual(classify_tier("SN-1234 filing", ["BRAIN/other/place.md"])["tier"], "B")
 
