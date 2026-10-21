@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 04:14 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-21 05:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 45 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 46 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -62,13 +62,13 @@
 - [#2825](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825) The GitHub webhook receiving door — nayanet-github-intake (verify + ac
 - [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
 
-### BUILD (16)
+### BUILD (17)
+- [#2835](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2835) Clean home R1: remove the 10 byte-proven duplicate files (Shawn-approv
 - [#2831](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2831) fix(brain): register SN-0800/SN-0805/SN-0806/SN-0807/SN-0808 — cure th
 - [#2830](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2830) fix(reporting): heuristic evidence never displaces authoritative score
 - [#2829](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2829) [W2 judge] L577 write-path guard: no score renders or writes without m
 - [#2828](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2828) Naya4/smart notes 2026 09 30
-- [#2827](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2827) Naya/mission state
-- …and 11 more
+- …and 12 more
 
 ### WIRE (4)
 - [#2834](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2834) fix(readiness): C3 classifier no longer cries wolf on a healthy gate

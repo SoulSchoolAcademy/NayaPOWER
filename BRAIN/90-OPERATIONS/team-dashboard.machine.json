@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T04:15:02+00:00",
+ "generated_utc": "2026-10-21T05:15:07+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -172,6 +172,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2835,
+     "title": "Clean home R1: remove the 10 byte-proven duplicate files (Shawn-approved)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2835",
+     "draft": false
+    },
+    {
      "number": 2831,
      "title": "fix(brain): register SN-0800/SN-0805/SN-0806/SN-0807/SN-0808 \u2014 cure the SN direct-push reg",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2831",
@@ -212,15 +218,9 @@
      "title": "Mark IB-000042 SUPERSEDED by IB-000043 (Shawn ruling 2026-10-20)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2804",
      "draft": false
-    },
-    {
-     "number": 2795,
-     "title": "fix(activation): self-resolving live-board pointers \u2014 boot_pointer_check PASS",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2795",
-     "draft": false
     }
    ],
-   "open_pr_count": 16
+   "open_pr_count": 17
   },
   {
    "id": "wire",
@@ -616,6 +616,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 45,
- "unassigned_prs": 16
+ "open_pr_total": 46,
+ "unassigned_prs": 17
 }
