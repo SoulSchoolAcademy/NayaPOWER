@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T03:15:11+00:00",
+ "generated_utc": "2026-10-21T04:15:02+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,8 +31,15 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2833,
+     "title": "docs(brain): learning event 2026-10-20",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2833",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "know",
@@ -53,12 +60,6 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
-     "number": 2826,
-     "title": "fix(registry): heal published_pages_without_registry_entry drift (SN-0800/0805/0806/0807/0",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2826",
-     "draft": false
-    },
-    {
      "number": 2816,
      "title": "fix(brain): preserve Windows long-path projection existence in drift audit",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816",
@@ -77,7 +78,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 3
   },
   {
    "id": "act",
@@ -171,6 +172,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2831,
+     "title": "fix(brain): register SN-0800/SN-0805/SN-0806/SN-0807/SN-0808 \u2014 cure the SN direct-push reg",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2831",
+     "draft": false
+    },
+    {
      "number": 2830,
      "title": "fix(reporting): heuristic evidence never displaces authoritative score value/source (4th p",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2830",
@@ -211,15 +218,9 @@
      "title": "fix(activation): self-resolving live-board pointers \u2014 boot_pointer_check PASS",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2795",
      "draft": false
-    },
-    {
-     "number": 2747,
-     "title": "feat: make Smart Builder library searchable and machine-accessible",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747",
-     "draft": false
     }
    ],
-   "open_pr_count": 15
+   "open_pr_count": 16
   },
   {
    "id": "wire",
@@ -240,6 +241,12 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
+     "number": 2834,
+     "title": "fix(readiness): C3 classifier no longer cries wolf on a healthy gate",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2834",
+     "draft": false
+    },
+    {
      "number": 2812,
      "title": "fix(activation): refuse undeclared cold starts at real admission gate",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2812",
@@ -258,7 +265,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 4
   },
   {
    "id": "team",
@@ -375,12 +382,6 @@
      "draft": false
     },
     {
-     "number": 2713,
-     "title": "t0907: block catalog \u2014 457 canonical NAYA-XXX-NNN blocks + coverage",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2713",
-     "draft": false
-    },
-    {
      "number": 2685,
      "title": "HUB/BLUEPRINT.ai.md \u2014 canonical team reference: the complete system map",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685",
@@ -393,7 +394,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 4
   },
   {
    "id": "memory",
@@ -433,6 +434,12 @@
    "active_now": false,
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
+    {
+     "number": 2832,
+     "title": "docs(governance): file 0030 VALUE-ONLY BRAIN twin forms (.ai.md + .machine.json) \u2014 complet",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2832",
+     "draft": false
+    },
     {
      "number": 2824,
      "title": "governance(0032): THE HOUSE STANDARD \u2014 take care of the house",
@@ -476,7 +483,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 7
+   "open_pr_count": 8
   }
  ],
  "recent_activity": [
@@ -609,6 +616,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 43,
- "unassigned_prs": 15
+ "open_pr_total": 45,
+ "unassigned_prs": 16
 }
