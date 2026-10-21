@@ -6,7 +6,7 @@
   "topic": "WHOLE_SYSTEM_ALIGNMENT",
   "subtopic": "NAYAPOWER_NAYANET_ROOM_TO_OUTCOME",
   "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
-  "lifecycle_state": "CANDIDATE",
+  "lifecycle_state": "ACTIVE",
   "source": {
     "source_type": "human_director_instruction",
     "captured_at": "2026-10-21",
@@ -231,7 +231,10 @@
           "PERMISSIONS_AND_FAILURE_MODES_PROVEN",
           "NO_NEW_SHADOW_STORE_OR_PARALLEL_SHELL"
         ]
-      }
+      },
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "lifecycle_semantics": "ACTIVE means canonical capture is current and available; truth remains CANDIDATE pending governed evidence. ACTIVE lifecycle is not VERIFIED learning or authorized production publication."
     },
     "decisions": [
       "Director's declared goal: fully operating rooms, apps and templates, one elegant experience, automatic compounding verified human value.",
@@ -257,6 +260,7 @@
     "learning_lesson": "An architecture only compounds when the same verified knowledge reliably changes a later authorized user experience. One shared engine, one bridge, one human interface and reusable proven parts prevent fragmentation. Proof belongs to the actual user journey, not to a diagram, saved note, passing subset or attractive demo.",
     "successor_effect": "A new Naya can explain one coherent system, spot demo-versus-live gaps, refuse premature 'learned' and 'production-ready' labels, select the owned root blocker, and leave exact evidence for the next shift without reconstructing the mission from conversation.",
     "measurement_contract": "Cold successor explains engine/bridge/Hub/Supabase and room roles unaided, identifies both open product conflicts, and runs one authorized note→persistent receipt→generated Smart Link→real Hub Feed→cold reload→outsider refusal acceptance in the actual deployed version. Compare outcomes with a successor lacking this note; without later behavior change, claim only capture/retrieval, not learned.",
-    "uncertainty": "Source files are the director's vision and a dated audit. Current Hub-wide production operation, completed data publication, runtime Smart Note projection and causal learning are not proven. The note is CANDIDATE until the canonical intake/verification pipeline accepts it. Do not claim a Hub Smart Link unless generated and verified."
-  }
+    "uncertainty": "Source files are the director's vision and a dated audit. Current Hub-wide production operation, completed data publication, runtime Smart Note projection and causal learning are not proven. The note is CANDIDATE until the canonical intake/verification pipeline accepts it. Do not claim a Hub Smart Link unless generated and verified. Canonical SN-002 conformance requires ACTIVE lifecycle for a current capture, while automatic truth remains CANDIDATE; no success, runtime readback, learning or Hub link is asserted by this label."
+  },
+  "smart_note_id": "SN-0810"
 }
