@@ -67,7 +67,7 @@ def check_url(url):
                 URL_CHECK_RESULTS[url] = {"state": "DEAD", "detail": f"GET {r.status}"}
             return False
     except urllib.error.HTTPError as exc:
-        state = "UNAVAILABLE" if exc.code >= 500 else "DEAD"
+        state = "UNAVAILABLE" if exc.code >= 500 or exc.code in {401, 403, 408, 425, 429} else "DEAD"
         URL_CHECK_RESULTS[url] = {"state": state, "detail": f"GET HTTP {exc.code}"}
         return False
     except Exception as exc:
