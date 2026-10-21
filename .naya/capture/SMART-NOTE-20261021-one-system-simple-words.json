@@ -33,18 +33,19 @@
     "essence": "People say what they want. Naya helps them create useful things, keeps the knowledge and proof, and makes it available again to the people allowed to use it. NayaPOWER is the engine and long-term intelligence; the GitHub App is the bridge; the Hub is the home where people interact; Supabase supports live authorized user data. Proven reusable parts and templates let Smart Factory turn intent into working applications. Every experience should flow through one governed system, and every lesson should improve a later result, not merely sit in storage.",
     "human_view": {
       "meaning": "Think of NayaNET as one connected home for intelligence. You explain your goal. Naya captures and understands it, finds relevant proven knowledge, and helps you make a note, app, connection, report or other useful outcome. NayaPOWER holds the canonical design, source, lineage and rules; the GitHub App moves authorized work between the engine and interfaces; the Hub is the one place you see, ask, click, learn and create. Supabase can hold live per-user data with real access rules. The person should experience one helpful intelligence, not GitHub, databases or a maze of separate apps.",
-      "why_it_matters": "A beautiful room without real data or a working action is a demonstration, not a finished product. A stored note without readback, later relevant retrieval, verified application and successor reuse is saved data, not yet compounding learning. One shared substrate saves rebuilding and stops conflicting versions. Reduced manual merges and issues are an outcome of proper automation, governance, reuse and completed value, never a reason to bypass checks.",
-      "simple_rule": "Say it once → capture it with consent → save it durably → show the honest view → find and use it again → take an authorized action → prove the result → improve future behavior → let the next Naya continue."
+      "why_it_matters": "The original visual templates, sample data, layouts, interactions, and room concepts were deliberately created to communicate the desired look, feel and human journey BEFORE live backend functions existed. They are valuable product specifications, design fixtures and acceptance references, not mistakes or proof of production functionality. Preserve their distinctive purpose and craft. The job now is to supply real authorized behavior and trustworthy data behind those established experiences, and then retire sample data from the production execution path. A beautiful prototype establishes the target; a real working result proves we reached it. A stored note without readback and later verified application is saved data, not yet compounding learning. Consolidation must reduce unnecessary manual merges while preserving independent verification and authorization.",
+      "simple_rule": "Start with Shawn's approved visual prototype → distill each control's exact user job, input/output and state → wire the smallest canonical real function and data path → retain the look and feel → test with real authorized and denied cases → prove persist/reload/outcome and design fidelity → remove fixture fallback from production → independently verify and repeat."
     },
     "simple_view": {
-      "child": "Imagine one smart workshop with many rooms. You tell Naya what you want to build. The workshop remembers the important instructions, has shelves of proven parts, and checks the finished thing really works. Every room uses the same workshop, so nobody has to start over. People only share what they choose to share. If a part breaks, Naya shows the problem and fixes it before calling the work done.",
-      "grandma": "It's one well-run household: one record of what is true, a front door for visitors, rooms that actually do their jobs, a proof book for what happened, and a workshop that builds useful things from parts already tested. The people shouldn't need to manage the machinery. Naya should quietly run it, explain itself clearly, and never mistake a promise for a finished result."
+      "child": "The model house with pretend furniture was useful! It showed everyone where the doors, windows and rooms should go and how welcoming it should feel. Now we put in real plumbing, power and working doors WITHOUT throwing away the beautiful house. We check every switch and tap, replace the pretend displays with real things, and make sure the home is safe for the people living in it.",
+      "grandma": "A showroom comes first for a reason: it shows precisely what the finished home should look and feel like. The next job is putting working plumbing, electricity and locks behind those beautiful rooms. We preserve the craftsmanship, connect the functions, check safety and truth, then open the doors when everything really works."
     },
-    "ai_view": "Cold-successor instruction: read current AGENTS.md, PROTOCOL.md, current main, issue #2154, live board resolved via #1599, active owners and exact-head evidence. State the whole system in plain language before a feature change. Use canonical sender→authorized bridge→receiver plus the live Supabase access boundary, one room shell, one component library, one knowledge registry, one existing value calculator. Build the smallest missing complete user journey rather than another demo. Before calling a room ready, reproduce an actual input→authorized processing→persist/readback→UI result→evidence→recovery path; test denied access and failure modes. Treat today's PDF findings as source-reported audit rather than fresh production proof. Mark disputed meanings OPEN, not silently reconciled. Record one next action, what happened and its exact proof so another Naya continues cold.",
+    "ai_view": "Cold-successor instruction: read current AGENTS.md, PROTOCOL.md, current main, issue #2154, live board resolved via #1599, active owners and exact-head evidence. State the whole system in plain language before a feature change. Use canonical sender→authorized bridge→receiver plus the live Supabase access boundary, one room shell, one component library, one knowledge registry, one existing value calculator. Build the smallest missing complete user journey rather than another demo. Before calling a room ready, reproduce an actual input→authorized processing→persist/readback→UI result→evidence→recovery path; test denied access and failure modes. Treat today's PDF findings as source-reported audit rather than fresh production proof. Mark disputed meanings OPEN, not silently reconciled. Record one next action, what happened and its exact proof so another Naya continues cold. Director clarification, 2026-10-21: prototype fake data is intentional; it made the intended concept and UI legible before functions/data existed. The priority is not more interface prototypes or critique of those prototypes, but completing actual functions, real data paths and safety while preserving the specified look and feel. Use sample data only in labeled design previews and deterministic tests. Test the exact real journey and forbid hidden demo fallbacks in production.",
     "naya_view": {
       "purpose": "Alignment rule: every contribution must say WHAT human job it completes, WHY it advances the North Star, WHICH existing engine/room/contract it extends, WHAT truthful state and authority it has, and HOW a real human completes and proves it. No new parallel shells, shadow brains, duplicate libraries, inflated scorecards or ornamental nonfunctional pages.",
       "architectural_rule": "NayaPOWER = canonical intelligence / governance / proofs; GitHub App = authorized transfer mechanism; Hub = user projection and human control; Supabase = live user data governed by authentication, ownership and RLS. SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE are coordinated responsibilities, not nine competing databases. Factory uses tested templates/components only, then verifies outputs against the actual order. Feed→Today→Reports are views over the same truth, not three authored narratives.",
-      "next_owner_action": "Fix the source-to-Hub receiver spine and the security boundary first; make one real Smart Note appear with a verified Smart Link and cold-reload/outsider-denial proof. Then finish one shared shell and proven components. Author Smart Factory and Smart Growth room contracts before UI. Work through real room journeys with independent tests; preserve a single current mission queue."
+      "next_owner_action": "Fix the source-to-Hub receiver spine and the security boundary first; make one real Smart Note appear with a verified Smart Link and cold-reload/outsider-denial proof. Then finish one shared shell and proven components. Author Smart Factory and Smart Growth room contracts before UI. Work through real room journeys with independent tests; preserve a single current mission queue.",
+      "prototype_to_product_rule": "Shawn's fixtures and visually complete templates are intentional design authority and user-experience blueprints; preserve them as immutable/traceable acceptance references. They are not failures merely because they use examples. The defect is allowing any demo adapter, simulated liveness or canned content to masquerade as live behavior or become the production source. Do not redesign or replace templates before mapping real data to each control; prefer a single adapter seam behind the chosen canonical shell and prove parity with the prototype's interaction grammar."
     },
     "machine_view": {
       "type": "nayanet.whole_system_alignment.v1",
@@ -205,14 +206,40 @@
       ],
       "share_policy": "PRIVATE_BY_DEFAULT_SHARED_BY_CHOICE_COLLECTIVE_BY_CONSENT_PUBLIC_BY_DECISION",
       "operational_completion": "ONE_REAL_AUTHORIZED_SMART_NOTE_TO_HUB_SMART_LINK_PROVEN_END_TO_END_AND_REPEATABLE_WITH_COLD_SUCCESSOR",
-      "direct_git_merge_or_prod_authority_granted": false
+      "direct_git_merge_or_prod_authority_granted": false,
+      "prototype_authority": {
+        "classification": "DESIGN_REFERENCE_AND_DETERMINISTIC_TEST_FIXTURE",
+        "intended_purpose": "show desired room layout, hierarchy, interactions and brand experience before a live backend existed",
+        "prohibited_inference": "fixture_used_means_design_work_wasted",
+        "production_rule": "EXAMPLE_DATA_NOT_ALLOWED_AS_VERIFIED_LIVE_DATA",
+        "preservation_rule": "trace original prototype to canonical shell/room contract and visual acceptance tests before retiring or replacing it",
+        "graduation_order": [
+          "EXTRACT_EXPECTED_USER_JOURNEY_FROM_PROTOTYPE",
+          "SELECT_SINGLE_CANONICAL_SHELL_AND_BLOCKS",
+          "MAP_EACH_CONTROL_TO_REAL_AUTHORIZED_FUNCTION",
+          "IMPLEMENT_REAL_STORAGE_OR_PROVIDER_ACCESS",
+          "PROVE_REAL_READ_WRITE_RELOAD_AND_REFUSAL",
+          "RENDER_COMPARE_AGAINST_SOURCE_TEMPLATE",
+          "DISABLE_FIXTURE_FALLBACK_ON_LIVE_SURFACE",
+          "INDEPENDENT_VERIFY_EXACT_RELEASE",
+          "PRESERVE_RECEIPTS_AND_COLD_HANDOFF"
+        ],
+        "acceptance": [
+          "NO_UNLABELED_DEMO_DATA_IN_PRODUCTION",
+          "NO_LOSS_OF_INTENDED_LOOK_AND_FEEL",
+          "USER_TASK_SUCCEEDS_END_TO_END",
+          "PERMISSIONS_AND_FAILURE_MODES_PROVEN",
+          "NO_NEW_SHADOW_STORE_OR_PARALLEL_SHELL"
+        ]
+      }
     },
     "decisions": [
       "Director's declared goal: fully operating rooms, apps and templates, one elegant experience, automatic compounding verified human value.",
       "Preserve one sender/bridge/receiver path; Supabase live user data is governed, not a competing brain.",
       "Repair real dependencies before room decoration: access safety, canonical publication/Feed, one shell, validated parts/templates, then end-to-end journeys.",
       "Product differences from the two PDFs and living room contracts remain OPEN until source evidence or legitimate director choice resolves them.",
-      "No unnecessary issues, branches or merges; reuse live teams and gates. Fewer merges must arise from consolidating verified work, not bypassing review."
+      "No unnecessary issues, branches or merges; reuse live teams and gates. Fewer merges must arise from consolidating verified work, not bypassing review.",
+      "Director's explicit clarification (2026-10-21): the mock data and finished visual prototypes are essential product/design specifications. Preserve their look and feel. Build the real functions and data flow behind them; reject only demos posing as production."
     ],
     "connections": [
       "HUB/NAYANET-SMART-APP-ROOMS-V1.json",
@@ -223,7 +250,8 @@
       "GitHub issue #2154 CURRENT MISSION STATE",
       "GitHub issue #2793 LIVE TEAM BOARD",
       "Security issue #2823",
-      "User-provided whole-system simple-words and all-rooms PDF reports, 2026-10-21"
+      "User-provided whole-system simple-words and all-rooms PDF reports, 2026-10-21",
+      "2026-10-21 Director clarification: fixture-first is intentional, followed by real function/data wiring and faithful rendered graduation."
     ],
     "applicability": "All Naya agents, contractors, room builders, product acceptance reviewers, cold successors and users needing a trustworthy one-minute description of NayaNET.",
     "learning_lesson": "An architecture only compounds when the same verified knowledge reliably changes a later authorized user experience. One shared engine, one bridge, one human interface and reusable proven parts prevent fragmentation. Proof belongs to the actual user journey, not to a diagram, saved note, passing subset or attractive demo.",
