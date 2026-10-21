@@ -1,6 +1,12 @@
 # CANONICAL HEX SET — stamped set for the Naya spectrum wheel
 
-Status: 3-pass scorecard complete (9.25/10) — awaiting Shawn's stamp.
+Status: CURED VERSION — this version applies the dock's (Verity's) dictated
+cure of 2026-10-21 to the set landed on main by #2741, which carried the
+pre-cure draft. The cure is applied exactly as dictated: nine stops, the
+dictated hex in every seat. Awaiting Shawn's stamp — the stamp remains
+Shawn's, and no stamp is claimed here. No score is claimed for this version
+either: the 9.25 recorded in the landed draft was scored on the pre-cure set
+the dock ruled non-conformant, and it is withdrawn (see "Scorecard" below).
 Source of truth for every hue used in Naya pages. One hex per stop. No alternatives.
 
 ## The set
@@ -8,42 +14,45 @@ Source of truth for every hue used in Naya pages. One hex per stop. No alternati
 | Stop | Hex | RGB (for glow math) | Hue° | Job |
 |------|-----|---------------------|------|-----|
 | magenta | `#e84fff` | `232,79,255` | 292 | The living edge |
-| purple | `#8a5cff` | `138,92,255` | 257 | Choosing intelligence — the soul |
+| purple | `#a06bff` | `160,107,255` | 261 | Choosing intelligence — the soul |
 | indigo | `#6675ff` | `102,117,255` | 234 | The deep signal |
-| blue | `#3ca8ff` | `60,168,255` | 207 | Knowledge moving |
-| emerald | `#40d3bb` | `64,211,187` | 170 | Forest deep green |
-| green | `#2fe89e` | `47,232,158` | 156 | Alive and well |
-| lime | `#b8ee57` | `184,238,87` | 82 | New growth |
+| canyon | `#3fb8ff` | `63,184,255` | 202 | Knowledge moving |
+| kenya teal | `#40d3bb` | `64,211,187` | 170 | The deep crossing |
+| emerald | `#2fe89e` | `47,232,158` | 156 | Alive and well |
 | gold | `#ffd45a` | `255,212,90` | 44 | Attention, earned |
-| orange | `#ff8c42` | `255,140,66` | 24 | Warmth, momentum |
+| orange | `#ff9a5a` | `255,154,90` | 23 | Warmth, momentum |
 | red | `#ff5e6c` | `255,94,108` | 355 | Urgency, the living edge |
-| pink | `#ed58cd` | `237,88,205` | 313 | Delight, the flourish |
 
 ## The Strip (5-stop component form, magenta-first)
 
-magenta `#e84fff` → purple `#8a5cff` → blue `#3ca8ff` → green `#2fe89e` → gold `#ffd45a`
+magenta `#e84fff` → purple `#a06bff` → canyon `#3fb8ff` → emerald `#2fe89e` → gold `#ffd45a`
 
 ## Contrast verification (measured, not asserted)
 
-Adjacent-stop hue separation, in wheel order. Law: adjacent stops must read as
-distinct. (The 51.6° jewel guideline governs elements placed adjacent on a page,
-not the full 11-stop wheel — even spacing of 11 stops is 32.7° by construction.)
+Adjacent-stop hue separation, in wheel order, computed from the hexes above
+(whole degrees; the nine separations sum to 360° — the wheel closes). Law:
+adjacent stops must read as distinct. (The 51.6° jewel guideline governs
+elements placed adjacent on a page, not the full 9-stop wheel — even spacing
+of 9 stops is 40° by construction.)
 
 | Pair | Separation |
 |------|-----------|
-| magenta → purple | 35° |
-| purple → indigo | 23° |
-| indigo → blue | 27° |
-| blue → emerald | 37° |
-| emerald → green | 14° — tightest pair; differentiated by teal-vs-green read and lightness (.54 vs .55 with different saturation character) |
-| green → lime | 75° |
-| lime → gold | 37° |
+| magenta → purple | 31° |
+| purple → indigo | 27° |
+| indigo → canyon | 32° |
+| canyon → kenya teal | 32° |
+| kenya teal → emerald | 14° — tightest pair in the dictated set; differentiated by read (cyan-leaning teal vs saturated green) and saturation character (.63 vs .80 at near-equal lightness, .54 vs .55) |
+| emerald → gold | 112° — widest gap; the dictated set carries no lime / yellow-green stop |
 | gold → orange | 21° |
-| orange → red | 29° |
-| red → pink | 42° |
-| pink → magenta | 21° |
+| orange → red | 28° |
+| red → magenta | 63° |
 
-Worst pair improved from 2° (old emerald/green, visually identical) to 14°.
+Honest notes: the cure's tightest pair (kenya teal → emerald, 14°) is the same
+separation the pre-cure draft carried between its emerald and green seats —
+the cure's fix is the seating, not the distance: `#40d3bb` and `#2fe89e` are
+two named stops with two jobs, not one color wearing two names. The
+emerald → gold span (112°) is the price of a 9-stop wheel with no lime seat;
+it is recorded, not hidden.
 
 ## Banned
 
@@ -54,44 +63,33 @@ Worst pair improved from 2° (old emerald/green, visually identical) to 14°.
 
 | Retired | Replaced by | Evidence |
 |---------|-------------|----------|
-| `#a06bff` (purple) | `#8a5cff` | specimens use #8a5cff 65× vs #a06bff 10×; richer and more electric |
-| `#9d75ff` (purple) | `#8a5cff` | 49× — same hue family, #8a5cff deeper |
-| `#7c3aed` (purple) | `#8a5cff` | 34× — flatter, less luminous |
+| `#8a5cff` (purple) | `#a06bff` | pre-cure draft value; superseded by the dock's dictated cure, 2026-10-21 |
+| `#9d75ff` (purple) | `#a06bff` | same hue family; the dictated purple is `#a06bff` |
+| `#7c3aed` (purple) | `#a06bff` | flatter, less luminous |
 | `#d86cff` (magenta) | `#e84fff` | #e84fff is the more electric living edge |
-| `#ed42c4` (magenta) | `#e84fff` | 35× — pinker; #e84fff holds the magenta seat distinctly from pink |
-| `#3fb8ff` (blue) | `#3ca8ff` | 33× specimen-dominant; near-twins, usage decides |
-| `#35e0a1` (emerald) | `#40d3bb` | moved teal-ward to separate from green (was 2° apart) |
-| `#ffbf3d` (gold) | `#ffd45a` | 21× specimen-dominant; more luminous |
+| `#ed42c4` (magenta) | `#e84fff` | pinker; #e84fff holds the magenta seat distinctly |
+| `#3ca8ff` (blue) | `#3fb8ff` | pre-cure draft value; superseded by the dictated canyon |
+| `#35e0a1` (emerald) | `#2fe89e` | near-twin of the dictated emerald |
+| `#ffbf3d` (gold) | `#ffd45a` | the dictated gold is `#ffd45a` |
 | `#f1d75a` (gold) | `#ffd45a` | same family, #ffd45a cleaner |
-| `#ff9a5a` (orange) | `#ff8c42` | 13× specimen-dominant; deeper |
+| `#ff8c42` (orange) | `#ff9a5a` | pre-cure draft value; superseded by the dictated orange |
+| `#b8ee57` (lime) | — (seat removed) | the dictated set has nine stops; there is no lime seat |
+| `#ed58cd` (pink) | — (seat removed) | the dictated set has nine stops; there is no pink seat |
 
-## 3-pass scorecard
+## Scorecard
 
-**Pass 1 — the old set (DESIGN-LAWS.md table): 6.5/10.**
-Why not a 10:
-1. Emerald `#35e0a1` vs green `#2fe89e` are 1.9° apart — visually the same color.
-   Two stops, one color. Violates "adjacent stops must read as distinct."
-2. Severe drift: the "canonical" set is not what excellent looks like. Specimens
-   use `#8a5cff` 65× vs contract `#a06bff` 10×; `#ffd45a` 21× vs `#ffbf3d` 4×;
-   `#3ca8ff` 33× vs `#3fb8ff` 0×; `#ed42c4` 35× with no magenta seat.
-3. Pure yellow `#ffea00` (15×) and muddy `#d4a017` (18×) live in specimens,
-   violating "gold, never yellow" — with no canonical gold strong enough to
-   displace them.
-4. Contrast was asserted, never measured.
-5. 10 of 11 adjacencies sat under the 51.6° jewel guideline with no analysis of
-   which pairs actually govern.
+The landed draft recorded a 3-pass scorecard ending at 9.25/10. That score was
+given to the pre-cure set — the set the dock ruled non-conformant with the
+Oct-18 lock (purple `#8a5cff` for `#a06bff`, blue `#3ca8ff` for canyon
+`#3fb8ff`, orange `#ff8c42` for `#ff9a5a`, eleven stops for nine, `#40d3bb`
+mis-seated as emerald). The score does not transfer to this version and is
+withdrawn.
 
-**Pass 2 — fixes applied.** One canonical hex per stop, chosen by: most beautiful
-version of the hue + specimen-usage weight (Shawn's "what excellent looks like")
-+ measured adjacent separation. Emerald moved teal-ward (#40d3bb) to break the
-green collision; purple/gold/blue/orange seats given to the specimen-dominant
-values; yellow and muddy gold banned with replacements.
-
-**Pass 3 — re-score: 9.25/10.** All five Pass-1 reasons resolved: worst pair now
-14° (was 2°); drift eliminated — the set IS the specimen-dominant beautiful
-values; yellow banned with a canonical replacement; contrast measured per pair
-above. Not a 10: emerald→green (14°), gold→orange (21°), and pink→magenta (21°)
-remain the snug pairs — distinct reads, but tighter than the rest of the wheel.
+This cured version carries **no score** until a different seat scores it at
+this head. What can be stated without a score: every value above is the dock's
+dictated value, verbatim; every RGB and hue figure is computed from the hexes;
+the contrast table is recomputed for the 9-stop wheel and labels its tightest
+pair and widest gap honestly.
 
 ## For the stamp
 
