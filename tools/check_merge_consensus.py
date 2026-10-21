@@ -305,6 +305,24 @@ def _score_of(body):
     return None
 
 
+_HEAD_SHA_FIELD_RE = re.compile(
+    r"(?im)^\\s*head(?:[\\s_-]*sha)?\\s*[:=]\\s*([a-f0-9]{40})\\s*$"
+)
+
+
+def scorecard_head_of(body):
+    """Return the one unambiguous SHA in an explicit head field.
+
+    Accept common header-shape variants (Head, Head SHA, Head-SHA, HEAD_SHA)
+    while rejecting arbitrary SHA mentions, quoted/inline examples, malformed
+    values, and conflicting duplicate fields.
+    """
+    matches = [m.group(1).lower() for m in _HEAD_SHA_FIELD_RE.finditer(body or "")]
+    if not matches or len(set(matches)) != 1:
+        return None
+    return matches[0]
+
+
 def _looks_like_scorecard(body, head_sha):
     """True if the comment is a scorecard receipt for this exact head SHA:
     it must name the head SHA, say 'scorecard' or 'verdict', and carry either
@@ -316,7 +334,7 @@ def _looks_like_scorecard(body, head_sha):
     low = (body or "").lower()
     if "scorecard" not in low and "verdict" not in low:
         return False
-    if head_sha not in (body or ""):
+    if scorecard_head_of(body) != (head_sha or "").lower():
         return False
     approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
                              low))
