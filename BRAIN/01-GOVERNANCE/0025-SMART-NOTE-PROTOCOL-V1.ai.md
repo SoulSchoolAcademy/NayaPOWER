@@ -17,6 +17,12 @@ Canonical procedure for creating a Smart Note that reaches the Intelligent Hub. 
 - Path: `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/<TOPIC>/<sub>/SN-####/<filename>`.
 - Claim scan BEFORE writing: search (a) main tree, (b) open PR heads/staging trees, (c) the board tail for `SN-####` claims. A scan older than the claim is not a scan (registry-read lifetime rule).
 
+## Viralize (authoring order + the one-minute block)
+- Authoring order is fixed: (1) category, (2) topic headline, (3) ultimate hook — then the nine sections. The hook must simultaneously earn attention and summarize the note ("would a busy stranger stop for this line?" — rewrite until yes).
+- The deliverable is an Intelligent Block with three first-class consumption paths: skim (nutshell + section headings carry the whole), listen (play, real cloned voice), full read. Target absorption ≈ 1 minute.
+- Distillation standard: essence in the simplest, clearest, most concise words that keep the truth whole; cut any words that cost no truth. Presentation standard: elevated boards, big clear text.
+- Feed surfacing is BY CATEGORY via Smart Tabs — never one undifferentiated stream. A note's category is therefore a display property, not just a filing property; a category-less note is homeless in the feed as well as the tree.
+
 ## Title law
 The title is a crafted human hook: the greatest possible title carrying the lesson in one line. Generic labels ("notes on X", "update", the raw topic) violate the protocol. The title is set at authoring and is part of the note's MACHINE identity (feed card title).
 

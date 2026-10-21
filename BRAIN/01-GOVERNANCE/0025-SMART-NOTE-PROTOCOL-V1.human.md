@@ -34,9 +34,19 @@ A note missing sections is not finished. The sync refuses a note with no Nutshel
 
 **The only door is main.** A note that exists only as a local file, on a branch, or in an open PR is *invisible* to the Hub. There are no exceptions and no other doors.
 
+## 4a. Viralize — category, headline, ultimate hook
+
+A Smart Note is authored in this order: **category → topic headline → ultimate hook.** First its home (the category, §4b), then the topic it belongs to, then the hook — the single line crafted to earn a human's attention *and* sum the note up at once. Shawn calls this discipline **viralize**: every note is made to be read, not merely filed. The hook is tested against one question — *would a busy stranger stop for this line?* If not, it isn't the ultimate hook yet. Rewrite until it is.
+
+## 4a2. The one-minute Intelligent Block
+
+A finished note is an Intelligent Block: any intelligence, absorbable in about a minute. Three reading paths, all first-class: **skim** it (nutshell + headings carry the whole), **listen** to it (press play — Naya's real voice), or **read** it fully. It is presented beautifully — elevated boards, big clear text — and it is **distilled**: the essence in the most simple, clear, concise words possible, so everybody can understand it, effectively and efficiently. Length is not thoroughness; distillation is. If a section can lose words without losing truth, it loses them.
+
 ## 4b. Categorization — no note is homeless, ever
 
 Every note is filed under a real topic and subtopic, chosen at the moment of authoring from the brain's existing taxonomy (SYSTEM, DESIGN, FACTORY, GOVERNANCE, SYSTEM-INTELLIGENCE, PHILOSOPHY, and their subtopics). The category is part of the note's identity — it decides where the note lives, how it is found, and how it compounds with its neighbors.
+
+The feed obeys the same law: there is no single endless river of notes. Notes surface under **Smart Tabs by category**, so a person browses their interests, not a flood. A note without a true category has no home in the feed either — categorization is what makes the Hub a library instead of a pile.
 
 **"UNCATEGORIZED" is forbidden.** It is not a category; it is an admission the process wasn't followed. If no existing subtopic fits, create one deliberately — name it for what the note truly is, and say so in the note's NAYA section. A note filed without a true category is not done, even if it reaches the feed. (Shawn, 2026-10-21: lock in how to do it exactly right, and follow the process every single time.)
 

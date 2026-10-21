@@ -22,12 +22,23 @@
   "skipped bake: robot voice",
   "number collision: scan first"
  ],
+ "feed_surfacing": "by category via Smart Tabs; never one undifferentiated stream; category is a display property",
  "id": "0025",
  "identifiers": {
   "claim_rule": "scan main tree + open PR trees + board before writing; first claim stands; never reuse",
   "file_name_format": "IB-SMART-NOTE-YYYYMMDD-snNNNN-<slug>.md",
   "id_format": "SN-NNNN",
   "path_format": "BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/<TOPIC>/<sub>/SN-NNNN/<file>"
+ },
+ "intelligent_block": {
+  "absorption_target": "~1 minute",
+  "distillation": "essence in the simplest, clearest, most concise words that keep the truth whole",
+  "paths": [
+   "skim (nutshell + headings)",
+   "listen (play, real voice)",
+   "full read"
+  ],
+  "presentation": "elevated boards, big clear text"
  },
  "landing_doors": [
   "A: direct write to main via App/bypass identity (standing approval: Smart Notes folder); author drives and follows up until the ref moves",
@@ -71,5 +82,18 @@
   "own page GET = 200",
   "voice key resolves at voice worker (miss = robot fallback = defect)"
  ],
- "version": "V1"
+ "version": "V1",
+ "viralize": {
+  "authoring_order": [
+   "category",
+   "topic headline",
+   "ultimate hook",
+   "nine sections"
+  ],
+  "hook_duties": [
+   "earn attention",
+   "summarize the note"
+  ],
+  "hook_test": "would a busy stranger stop for this line? rewrite until yes"
+ }
 }
