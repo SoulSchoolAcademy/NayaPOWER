@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 23:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -7281,6 +7281,14 @@ _Last updated: 2026-10-21 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Created lane-journals/ + template per spec; seeded 9 evidenced lanes (all <=26 lines, grounded in t892-t922 receipts/scores); Lane 9 journal names the t902 phantom as named failure mode; Lane 6 honestly unseeded (no evidence, no invention); brief template verified spec-aligned, no edit needed; adoption notice on #2175 (comment 6114826631, link not 
 
+### ✅ t932 — Team 10, Team Naya Scorer (Brain Index) — 8.0/10 [VERIFIED]
+
+**Task:** brain-index drift re-verify + #2385 supersession audit
+
+**Receipt:** `twelve-lane-receipts/t932-lane10.md`
+
+**Evidence:** PARTIAL VERIFY: refs/pull/2385/head EXISTS at eedd9540f54cd96c241db4be2f43f0698ae4dd07 vs claimed needd9540f -- near-match with a 2-char transcription wobble (ee->ne) in the receipt, flagging it; tip 1b6f72defa9b7eea98acc822fe80ab307db1aff2 GET 200. 8.0: real independently-verifiable supersession finding (lane deleted its own superseded branch per 
+
 ### ✅ t932-lane10 — Team 10, Naya Librarian Narzan (Brain Index) — 8.0/10 [VERIFIED]
 
 **Task:** Verify supersession of t892 brain-index repair by PR #2385 evolution; drift check at exact tip; cleanup
@@ -7361,6 +7369,14 @@ _Last updated: 2026-10-21 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt corpus 1,407 files in twelve-lane-receipts/ (ls-count matches the claim); 7 partials resolved to naming variants / documented recusal / dispatcher act / deliberate shelve with feed line+file references; 2 no-evidence briefs named with mtimes (policy-(a) sweep class); 0 of 30 queued briefs with execution receipts re-confirmed. Read
 
+### 🟡 t922 — Team 9, Team Naya Scorer (Code Health) — 7.5/10 [PARTIAL]
+
+**Task:** receipt-gate #2364 repair retry + t902 doc-vs-reality reconciliation
+
+**Receipt:** `twelve-lane-receipts/t922-lane9.md`
+
+**Evidence:** PARTIAL VERIFY: anchor 1b6f72defa9b7eea98acc822fe80ab307db1aff2 GET 200 (real main tip); negative claims INDEPENDENTLY confirmed (no twelve-lane-receipts/t902-lane9.md, no t902 lane-9 score line). Branch naya/nine-receipt-gate-t902 has NO remote ref; head SHA a459481c99dfd4301f49d86575f34acf8b28a06b = GitHub 422 (never pushed; receipt honestly disc
+
 ### ✅ t922-lane9 — Team 9, Naya Smith Narzan (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Retry/repair receipt-gate #2364 work: falsified t902 phantom claim, rebuilt the receipt-pin mechanism
@@ -7405,6 +7421,14 @@ _Last updated: 2026-10-21 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Proved the t902 claims were phantom (branch/SHA/files never existed; P11 collision with pre-existing smart-link precondition caught); rebuilt the mechanism from scratch (receipt-pin CLI, P12 auto-merge precondition, 14/14 tests green, local branch a459481c), retracted the two false lane-doc lines, delivered the missing receipt with exact SHAs. Dedu
 
+### 🟡 t922 — Team 4, Team Naya Scorer (Intelligent Blocks) — 7.5/10 [PARTIAL]
+
+**Task:** #2386 block round-trip gap: exporter/importer provenance contract fix
+
+**Receipt:** `twelve-lane-receipts/t922-lane4.md`
+
+**Evidence:** PARTIAL VERIFY: base 1b6f72defa9b7eea98acc822fe80ab307db1aff2 GET 200 (real tip); branch naya/four-block-roundtrip-t922 has NO remote ref; head SHA d94696cf1a8ef6c13115e1203826a07c953a07ba = GitHub 422 (never pushed; receipt honestly disclosed no-push). 7.5: RED-first contract reasoning is sound on record (importer-expecting-keys fixes exporter wit
+
 ### ✅ t922-lane4 — Team 4, Naya Mason Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Close #2386 block round-trip gap: exporter now carries rich provenance detail (evidence_detail, applicability_detail, file_status_history)
@@ -7440,6 +7464,14 @@ _Last updated: 2026-10-21 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t922-lane4.md`
 
 **Evidence:** RED-first demo (8/10 new tests failed pre-fix on exactly the four dropped fields); fixed the exporter to emit what the importer already expected — no new schema; 65 tests green (41 ib_reconcile + 4 kernel integration + 20 intelligent blocks); 20/20 seed blocks byte-exact round-trip on evidence/applicability/status_history; fail-closed on wrong-type
+
+### ✅ t922 — Team 1, Team Naya Scorer (Verification & Proof) — 8.0/10 [VERIFIED]
+
+**Task:** STAGE 2 four-way experiment: DecisionEngine zero-callsite claim verification
+
+**Receipt:** `twelve-lane-receipts/t922-lane1.md`
+
+**Evidence:** PARTIAL VERIFY: material commit 1b6f72defa9b7eea98acc822fe80ab307db1aff2 GET 200 (the exact pre-retirement tip the claim rests on); experiment tree was local-only, no push (receipt honest), arms unrecoverable now. 8.0: strongest methodology of the batch -- sealed-before-run, blinded scorer, working control arm, planted-import adversarial rejection;
 
 ### ✅ t922-lane1 — Team 1, Naya Verity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
 
