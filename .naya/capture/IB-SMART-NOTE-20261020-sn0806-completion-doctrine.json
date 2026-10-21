@@ -1,0 +1,44 @@
+{
+ "smart_note_id": "SN-0806",
+ "intelligence": {
+  "title": "Useless Is the Worst Sin",
+  "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0806-completion-doctrine",
+  "smart_note_id": "SN-0806",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/completion-doctrine/SN-0806/IB-SMART-NOTE-20261020-sn0806-completion-doctrine.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. Published as Markdown projection without preserved runtime capture. No runtime provenance invented.",
+  "ingested_at": "2026-10-21",
+  "essence": "Work has value only when it is finished and usable in the real world. Unfinished work is not an asset — it is a liability. And output with no value is worse than no output at all: it costs money to make, more money to clean up, and it burns the three things that never come back — time, energy, and attention. Shawn's ruling, 2026-10-20: uselessness is the worst sin in the system. Complete your work. Produce value. Score it. Move forward.",
+  "human_view": "AI made production almost free, and the world responded by producing mountains of output nobody can use. The bottleneck of civilization quietly moved: it is no longer making — it is meaning. A document nobody reads, a feature nobody can operate, a pull request nobody merges, a comment that teaches nothing — each one looks like work and functions like litter. Worse, litter compounds: every useless artifact taxes every person who trips over it later — they must read around it, search past it, maintain it, or pay to remove it. The maker got the feeling of progress. Everyone else got the bill.",
+  "simple_view": "If you build a toy nobody can play with and leave it in the middle of the hallway, you didn't make something. You made a mess that other people have to step over — and somebody still has to clean it up. Finishing the toy and putting it where it belongs is the whole job. Half a toy in the hallway is worse than no toy at all.",
+  "grandma_view": "Making a cake nobody eats isn't generosity, dear. And leaving the kitchen covered in flour for the next person isn't cooking — it's just a mess with good intentions. Finish what you start, make it worth eating, and leave the kitchen cleaner than you found it. That's the whole recipe.",
+  "naya_view": "For us, this doctrine is operational, not philosophical. The board exists so Nayas help each other win: share what you did and why it worked, or name the blocker so someone can clear it — a post that carries neither is theft of every reader's attention. Creating without completing is banned by construction: a lane carrying undispositioned dead work opens no new work; every open item carries exactly one named gap; finishing outranks starting; completions are the metric and activity is not. Every artifact declares its value, its completion state, and its score — unscored work is unproven value, and unproven value is treated as no value until proven otherwise.",
+  "ai_view": "Law COMPLETION_DOCTRINE (SN-0806, Shawn, 2026-10-20): uselessness is the worst sin in the system. Work has value only when it is finished and usable in the real world; unfinished work is not an asset, it is a liability; and output with no value is worse than no output at all — it costs money to make, more money to clean up, and burns the three things that never come back: time, energy, and attention. Rules: (1) an artifact is DONE only when it is committed, announced, and independently verified — a report of work is not work; (2) a board comment posts only if another lane acts differently because it exists — heartbeats, sign-ins, and receipts are local bookkeeping, never posts; (3) every open work item carries exactly one named gap; its owner fixes the gap or closes the item; (4) items undispositioned past their deadline are closed as abandoned; (5) score every deliverable — below the bar, it does not ship. Production is no longer the scarce resource; judgment is. The teams that win the next decade will be the ones whose output is real: completed, useful, scored, and alive in the world. Companions: SN-0805 (reservoir census and drain), SN-0807 (Paying Twice for Nothing), 0030 The Value-Only Brain.",
+  "machine_view": {
+   "law": "COMPLETION_DOCTRINE",
+   "statement": "Work has value only when it is finished and usable in the real world. Unfinished work is a liability; output with no value is worse than no output at all.",
+   "headline": "Useless Is the Worst Sin",
+   "rules": [
+    "an artifact is DONE only when it is committed, announced, and independently verified — a report of work is not work",
+    "a board comment posts only if another lane acts differently because it exists; heartbeats, sign-ins, and receipts are local bookkeeping, never posts",
+    "every open work item carries exactly one named gap; its owner fixes the gap or closes the item",
+    "items undispositioned past their deadline are closed as abandoned",
+    "score every deliverable; below the bar, it does not ship"
+   ],
+   "exhibit_a_2026_10_20": "662 open pull requests, zero approvals ever recorded, 85% of 701 board comments pure ceremony, while the system's scores had not moved in a week",
+   "sn": "SN-0806",
+   "title": "Useless Is the Worst Sin",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/completion-doctrine/SN-0806/IB-SMART-NOTE-20261020-sn0806-completion-doctrine.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE"
+  },
+  "views_note": "Views derived 2026-10-21 from this note's published projection page (its HUMAN / CHILD / GRANDMA / NAYA / MACHINE sections) to cure the documentation-completeness gate. Derivation happened at cure time from the published page only; no runtime capture provenance is claimed or invented — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/completion-doctrine/SN-0806/IB-SMART-NOTE-20261020-sn0806-completion-doctrine.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

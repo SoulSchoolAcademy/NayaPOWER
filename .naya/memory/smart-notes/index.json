@@ -13560,6 +13560,26 @@
       "page_hash": "be00ab3694d133c1e01087c3fdf276b689d7640363ed73d8e52e38cc9805ad11"
     },
     {
+      "smart_note_id": "SN-0800",
+      "intelligent_block_id": "IB-SMART-NOTE-20261019-sn0800-how-to-get-started",
+      "title": "How to Get Started with NayaNET",
+      "content_hash": "588818638884c4bd0a84003ddce945e8f9e52ad1ca73406b31ba2e959c7be0fd",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/SYSTEM/getting-started/SN-0800/IB-SMART-NOTE-20261019-sn0800-how-to-get-started.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "GETTING_STARTED",
+      "captured_at": "2026-10-19",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 3acb6005510f114496fc78d119346e586628ce43 ('Restore SN-0800 (How to Get Started) to main — it was live but never landed; a later sync dropped it (found 404, 2026-10-20)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-21 registry-debt cure; no runtime provenance invented"
+      },
+      "page_hash": "23ed0c18b5559ac133cd61fdef963b051c200e9b28fe8a4ec1234ab448f5c33a"
+    },
+    {
       "smart_note_id": "SN-0801",
       "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0801-declare-who-you-are",
       "title": "Declare Who You Are: Behavior Is Identity, Enacted",
@@ -13638,13 +13658,93 @@
         "note": "published directly as a BRAIN projection in commit 8cb52c46fe83152cc9d14c757df9531065d7b9ae ('feat(smart-note): SN-0804 Viral Law — Nobody Discovers What Doesn't Hook Them') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-20 brain-index re-stamp; no runtime provenance invented"
       },
       "page_hash": "57c632fdbd9e8ade11e56f2c2f05d5075f9e3cf992cdbb14502f453afeb29f83"
+    },
+    {
+      "smart_note_id": "SN-0805",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings",
+      "title": "662 Beginnings, 5 Endings",
+      "content_hash": "be7bc0448e4bc7b9c29a664a792e5e236354204087d1929083352fa83cd4d885",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/reservoir/SN-0805/IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "RESERVOIR",
+      "captured_at": "2026-10-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit eba786ff4a35b9f44a2dc89b5b9f234487517ea8 ('SN-0805: 662 Beginnings, 5 Endings — the reservoir census and drain (companion to 0030 The Value-Only Brain)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-21 registry-debt cure; no runtime provenance invented"
+      },
+      "page_hash": "173fbe0a58c7eb279b20f0839f96cbccf82691e97ee591c37b41732e2e4ebd66"
+    },
+    {
+      "smart_note_id": "SN-0806",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0806-completion-doctrine",
+      "title": "Useless Is the Worst Sin",
+      "content_hash": "56e135fb1a04d1d18bc260be3157156965d1193b2f4c27b44d943c7875cdb7d9",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/completion-doctrine/SN-0806/IB-SMART-NOTE-20261020-sn0806-completion-doctrine.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "COMPLETION_DOCTRINE",
+      "captured_at": "2026-10-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit a8a7f49df23590b17ef4b744b00233e2c6ce813b ('SN-0806: Useless Is the Worst Sin — the Completion Doctrine (Shawn, 2026-10-20)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-21 registry-debt cure; no runtime provenance invented"
+      },
+      "page_hash": "909a1d1cb5aab4e1c1ded6f106fe75a3c8907d1f3c39193d7366d1499cfd7cd4"
+    },
+    {
+      "smart_note_id": "SN-0807",
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing",
+      "title": "Paying Twice for Nothing",
+      "content_hash": "cd6356a20c42b67a3ac26072c0bad80c52a521bf5d8a47c026a68ae783ca8527",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/ai-waste/SN-0807/IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "AI_WASTE",
+      "captured_at": "2026-10-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit a392c3b45c1ee9202264ebf918a686eaec14f9cb ('SN-0807: Paying Twice for Nothing — the AI waste thesis, evidence and arithmetic (companion to 0030 The Value-Only Brain)') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-21 registry-debt cure; no runtime provenance invented"
+      },
+      "page_hash": "317b3c33b54f85afd0197a46c157a072dda3f96d3b7d790bcb23d833c923b63f"
+    },
+    {
+      "smart_note_id": "SN-0808",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0808-the-elevation-standard",
+      "title": "Elevated, Always — The Dual-Depth Standard",
+      "content_hash": "84db0baeff9c88439d053bc6bd1bae0704d7a027f028a08ee3050b1c653bcf16",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "ELEVATION",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit a61149dc50e99e845711f199cbbbfa15d990556d ('SN-0808: Elevated, Always — The Dual-Depth Standard (Shawn's elevation law, 2026-10-21)') under its pre-rename filename and renamed to the canonical IB filename in commit e9a0b8641db93345d63ddba14aa15cf6edefbecd, with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-21 registry-debt cure; no runtime provenance invented"
+      },
+      "page_hash": "7d7023cfa24db80a55df5c892ed31f85f3c9b1e778223874ee861fe37cf3f3c0"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 805,
+    "next_sequence": 809,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "17ae6088197367bfcb932183f6a5355fe679794cc6b77bd58e8d5cf379c72f8d"
+  "corpus_manifest_hash": "8c2a9e2e90d42c3b5954fe5bffd59ee09a59f930e16536beccb411471cbf3f1b"
 }
