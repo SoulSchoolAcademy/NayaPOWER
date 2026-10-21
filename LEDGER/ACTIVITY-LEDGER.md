@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 07:40 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5180,6 +5180,14 @@ _Last updated: 2026-10-21 07:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1142-lane10.md`
 
 **Evidence:** Dispatcher verified: HEAD == 665098e3f00c9aa6f63907360b8500891704071c (unchanged since t1032), refs/heads/naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin. --check OK on heal head (1256 files), drift confirmed still present on live tip (expected, heal unmerged), parent==tip with exactly 3-file diff, bisect stands
+
+### ✅ t1130 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index drift verdict (SN-0808 landing)
+
+**Receipt:** `twelve-lane-receipts/t1130-lane10.md`
+
+**Evidence:** VERIFIED: own git ls-remote this tick HEAD=895d73610e20d0e936a0e92273e6effc85e32422 == receipt pinned tip 2026-10-21T07:38:37Z; evidence kit lane-10/check-run-t1130-lane10/ on disk (6 files): --check stdout DRIFT in 3 index files with sha256 6bde08f067bdd4444e0ee41964952465ea93664beb91473a4b24f3160d7ca44f matching receipt, tree 1362 vs index 1361 /
 
 ### ✅ t1052-lane5 — Team 5, lane-scorer (Retrieval) — 8.5/10 [VERIFIED]
 
