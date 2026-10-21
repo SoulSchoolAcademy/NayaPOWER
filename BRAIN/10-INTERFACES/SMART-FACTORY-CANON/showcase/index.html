@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference Exemplars — The Five Crowns · Smart Factory</title>
+<link rel="stylesheet" href="../../personal-app/factory.css">
+<style>
+  body{margin:0;background:linear-gradient(180deg,#1b1b22 0%,#08080c 60%,#030304 100%);color:#F8F7FB;font-family:Inter,system-ui,sans-serif;padding:34px 20px 90px}
+  .wrap{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+  h1{font-size:26px;margin:0;color:#fff}
+  .lede{color:#E8E8EC;font-size:15px;line-height:1.6;margin:6px 0 4px}
+  .exhibit{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:24px}
+  .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;color:#E8E8EC;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:5px 12px;margin-bottom:16px}
+  .tag b{color:#fff}
+  .stack{display:flex;flex-direction:column;gap:18px}
+  @media (max-width:560px){ body{padding:26px 10px 70px} .exhibit{padding:16px 12px} }
+  .press-note{font-size:13px;color:#E8E8EC;margin:12px 0 0}
+  .press-note b{color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>The Five Reference Pieces</h1>
+    <p class="lede">Crowned 2026-10-21 under the General Design Contract. Every piece below is the store's own markup from <b>pieces.json</b>, wearing the store's own CSS from <b>factory.css</b> — nothing on this page was restyled for the showcase. Type in the well and watch the light travel. Press the button and feel it sink. Open the select and choose.</p>
+  </header>
+
+  <section class="exhibit" id="ex-hero">
+    <span class="tag"><b>NAYA-HRO-001</b> · REFERENCE HERO</span>
+    <section class="ref-hero" style="--sc:#a06bff;--sc-rgb:160,107,255"><div class="ref-hero-mark">N</div><div class="ref-hero-eyebrow">NAYANET · CONTEXT WORLDS</div><h2 class="ref-hero-title">Smart Spaces</h2><p class="ref-hero-sub">A space changes the context — and the context changes everything.</p><p class="ref-hero-desc">Rooms of living intelligence, each one burning in its own color.</p><div class="ref-hero-actions"><button class="primo theme-purple elev-2" type="button">Enter the space</button></div></section>
+  </section>
+
+  <section class="exhibit" id="ex-well">
+    <span class="tag"><b>NAYA-INP-008</b> · REFERENCE WELL</span>
+    <label class="ref-well" style="--wc:#a06bff;--wc-rgb:160,107,255"><span class="ref-well-label">What should Naya remember?</span><span class="ref-well-box"><input type="text" placeholder="Type it like you are telling a friend…"></span></label>
+  </section>
+
+  <section class="exhibit" id="ex-select">
+    <span class="tag"><b>NAYA-INP-009</b> · REFERENCE SELECT</span>
+    <div class="ref-select" style="--wc:#3fb8ff;--wc-rgb:63,184,255"><span class="ref-select-label">Voice</span><button class="ref-select-btn" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="ref-select-value">Human</span><span class="ref-select-chev" aria-hidden="true"></span></button><ul class="ref-select-panel" role="listbox" aria-label="Voice" hidden><li role="option" aria-selected="true" data-value="human"><span class="ref-select-jewel"></span>Human</li><li role="option" aria-selected="false" data-value="naya"><span class="ref-select-jewel"></span>Naya</li><li role="option" aria-selected="false" data-value="machine"><span class="ref-select-jewel"></span>Machine</li></ul></div>
+  </section>
+
+  <section class="exhibit" id="ex-button">
+    <span class="tag"><b>NAYA-BTN-009</b> · REFERENCE BUTTON</span>
+    <div class="stack">
+      <span class="nb-scope"><button class="living-btn elev-3" data-spectrum="purple" type="button"><span class="btn-glow"></span><span class="btn-label">✦ ENTER THE STANDARD</span></button></span>
+      <button class="primo theme-purple elev-2" type="button" data-count>Primo · pressed <b>0</b> times</button>
+    </div>
+    <p class="press-note">Both buttons carry real press physics — <b>sink on press, spring back on release</b>. The counter proves the Primo is wired, not decorative.</p>
+  </section>
+
+  <section class="exhibit" id="ex-board">
+    <span class="tag"><b>NAYA-BRD-001</b> · REFERENCE BOARD</span>
+    <div class="board-h" style="--bc:#40d3bb"><div class="bh-icon">◆</div><div class="bh-text"><h3>Feature board</h3><p>one color, one world</p></div><button class="bh-btn" type="button">Open</button>
+  </section>
+</div>
+
+<script>
+// NAYA-INP-009 behavior — button + listbox, fully keyboard-operable.
+(function(){
+  var root = document.querySelector('.ref-select');
+  var btn = root.querySelector('.ref-select-btn');
+  var panel = root.querySelector('.ref-select-panel');
+  var value = root.querySelector('.ref-select-value');
+  var options = Array.prototype.slice.call(panel.querySelectorAll('[role="option"]'));
+  var active = 0;
+  function setActive(i){
+    active = (i + options.length) % options.length;
+    options.forEach(function(o,j){ o.classList.toggle('active', j === active); });
+  }
+  function open(){
+    root.classList.add('open'); panel.hidden = false;
+    btn.setAttribute('aria-expanded','true');
+    var sel = options.findIndex(function(o){ return o.getAttribute('aria-selected') === 'true'; });
+    setActive(sel < 0 ? 0 : sel);
+    panel.focus && panel.focus();
+  }
+  function close(){
+    root.classList.remove('open'); panel.hidden = true;
+    btn.setAttribute('aria-expanded','false'); btn.focus();
+  }
+  function choose(i){
+    options.forEach(function(o,j){ o.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
+    value.textContent = options[i].textContent.trim();
+    close();
+  }
+  btn.addEventListener('click', function(){ panel.hidden ? open() : close(); });
+  btn.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (panel.hidden) open(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if (panel.hidden) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
+    else if (e.key === 'Enter') { e.preventDefault(); choose(active); }
+    else if (e.key === 'Escape') { e.preventDefault(); close(); }
+    else if (e.key === 'Tab') { close(); }
+  });
+  options.forEach(function(o, i){
+    o.addEventListener('click', function(){ choose(i); });
+    o.addEventListener('mousemove', function(){ setActive(i); });
+  });
+  document.addEventListener('click', function(e){ if (!root.contains(e.target) && !panel.hidden) close(); });
+})();
+// Press counter — proof of function for the Primo sibling of the Reference Button.
+(function(){
+  var b = document.querySelector('[data-count]'), n = 0;
+  b.addEventListener('click', function(){ n++; b.querySelector('b').textContent = n; });
+})();
+</script>
+</body>
+</html>
