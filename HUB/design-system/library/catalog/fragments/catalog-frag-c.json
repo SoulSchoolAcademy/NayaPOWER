@@ -1,0 +1,43 @@
+[
+ {
+  "temp_id": "promote-001",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Toggle / settings row \u2014 production block",
+  "demo_num": null,
+  "category": "FRM",
+  "tags": [
+   "dashboard",
+   "feed",
+   "settings"
+  ],
+  "html": "<div class=\"setting-row\"><div><strong>Living motion</strong><small>Respect system preference</small></div><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Living motion\"><span></span></button></div><div class=\"setting-row\"><div><strong>Private by default</strong><small>Protection is explicit</small></div><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"false\" aria-label=\"Private by default\"><span></span></button></div>",
+  "css_classes": [
+   "naya-toggle",
+   "setting-row"
+  ],
+  "notes": "gap-t0907: promoted from specimen NAYA-CRD-090 (temp uds-140) \u2014 specimen wrappers (block-card/block-kicker/block-law) trimmed; production markup is byte-identical to the specimen's source inner"
+ },
+ {
+  "temp_id": "promote-002",
+  "source_file": "Naya_Ultimate_Design_System_-_Naya_2.html",
+  "demo_name": "Media player \u2014 production block",
+  "demo_num": null,
+  "category": "MED",
+  "tags": [
+   "dashboard",
+   "feed",
+   "player"
+  ],
+  "html": "<div class=\"media-player\"><button class=\"naya-btn icon portal\" aria-label=\"Play specimen\"><svg class=\"icon\"><use href=\"#i-play\"/></svg></button><div class=\"media-copy\"><strong>Intelligence in Naya\u2019s voice</strong><small>00:00 \u00b7 specimen</small><div class=\"timeline\"><span></span></div></div><button class=\"naya-btn icon micro\" aria-label=\"Download\"><svg class=\"icon\"><use href=\"#i-download\"/></svg></button></div>",
+  "css_classes": [
+   "icon",
+   "media-copy",
+   "media-player",
+   "micro",
+   "naya-btn",
+   "portal",
+   "timeline"
+  ],
+  "notes": "gap-t0907: promoted from specimen NAYA-CRD-092 (temp uds-142) \u2014 specimen wrappers trimmed; source bytes preserved (use href self-close, specimen '00:00' copy)"
+ }
+]
