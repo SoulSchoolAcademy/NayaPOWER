@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T13:15:13+00:00",
+ "generated_utc": "2026-10-21T14:18:50+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -190,12 +190,6 @@
      "draft": false
     },
     {
-     "number": 2839,
-     "title": "fix(retrieval): restore 5 smart-note registry entries dropped without lifecycle record in ",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2839",
-     "draft": false
-    },
-    {
      "number": 2837,
      "title": "[dec-16] Report generator: flip 9.0 below-bar carrier to 9.5 (draft \u2014 do not merge)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2837",
@@ -230,9 +224,15 @@
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2828",
      "draft": false
+    },
+    {
+     "number": 2827,
+     "title": "Naya/mission state",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2827",
+     "draft": false
     }
    ],
-   "open_pr_count": 20
+   "open_pr_count": 19
   },
   {
    "id": "wire",
@@ -634,6 +634,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 52,
- "unassigned_prs": 20
+ "open_pr_total": 51,
+ "unassigned_prs": 19
 }
