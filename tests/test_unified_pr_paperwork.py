@@ -11,7 +11,7 @@ class UnifiedPaperworkThresholdTests(unittest.TestCase):
             {"body": f"## SCORECARD\nScore: 9.4/10\nHead: {head}\nSeat: Naya Delta"},
             {"body": f"## SCORECARD\nScore: 10/10\nHead: {head}\nSeat: Naya Alpha"},
         ]
-        ok, _ = _scorecard_for_current_head(comments, head, "alpha", 9.5)
+        ok, _ = _scorecard_for_current_head(comments, head, "Naya Alpha", 9.5)
         self.assertFalse(ok)
 
     def test_tier_b_accepts_8_from_different_seat_on_exact_head(self):
