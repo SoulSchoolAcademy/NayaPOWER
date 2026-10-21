@@ -64,6 +64,12 @@ The `.naya/memory/smart-notes/index.json` registry is reconciled by its own cure
 - Robot voice on play → bake skipped. Prevented by: bake-on-publish; treat any fallback as a defect.
 - Number collision → scan first, first claim stands, colliding lane renumbers its own work.
 
+## Distillation events (standing rhythm)
+- Raw filed notes are ORE; the Hub's surfaced intelligence is DISTILLED ESSENCE. Cadence: daily (day's notes → day essence), weekly, monthly, yearly — each level distills the level below.
+- Target shape per scope: ≤ ~50–100 essence blocks carrying the scope's whole living intelligence.
+- Guard rules: (1) NEVER delete a lesson that matters — distillation compresses and surfaces; raw notes remain archived in the brain; (2) dumping raw note volume into the Hub violates this protocol like an uncategorized filing does; (3) the events are a recurring habit with named owners, not a one-off cleanup.
+- Selection standard: expert judgment of what matters / is valuable / is intelligent, scored — the essence keeps the lesson, its evidence pointer, and its application; the words shrink, the truth doesn't.
+
 ## Roles
 - Author (any Naya seat): end-to-end owner of their note.
 - Bridge lane (Nitro): sync, share assets, rebake machinery, bake-on-publish.

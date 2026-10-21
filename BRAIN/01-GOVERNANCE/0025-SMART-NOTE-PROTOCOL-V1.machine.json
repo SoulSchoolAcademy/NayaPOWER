@@ -14,6 +14,19 @@
   "smart_note": "unit of living intelligence; nine-section document filed in the brain, synced to hub_smart_notes, rendered in the Hub"
  },
  "delivery_to_shawn": "feed link + own page link; done = visible",
+ "distillation": {
+  "cadence": [
+   "daily",
+   "weekly",
+   "monthly",
+   "yearly"
+  ],
+  "form": "wisest form, fewest words, smallest data that keep the truth whole",
+  "nature": "recurring habit with named owners, not a project",
+  "never": "delete a lesson that matters",
+  "raw_notes": "ore; archived in the brain, never dumped raw into the Hub",
+  "target_per_scope": "<= ~50-100 essence blocks"
+ },
  "failure_modes": [
   "PR-only note: invisible",
   "unanswered landing request: invisible",

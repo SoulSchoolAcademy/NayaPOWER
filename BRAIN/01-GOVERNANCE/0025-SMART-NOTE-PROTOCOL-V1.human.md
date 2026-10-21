@@ -105,6 +105,23 @@ Pressing play must read the note in Naya's real cloned voice, never the robotic 
 - Play in the robot voice → the bake was skipped.
 - Two seats claiming the same number → scan first; first claim stands.
 
+## 8b. Distillation events — essence in, ore archived
+
+The Hub does **not** receive the raw pile. Hundreds of filed notes are ore: their intelligence is real, but no human will read them all, and a system overloaded with un-distilled data is a system that teaches nobody. So the living intelligence is **distilled on a rhythm**:
+
+- **Daily** — the day's notes distill into the day's essence.
+- **Weekly** — the week's essences distill into the week's.
+- **Monthly, yearly** — the same, upward: each level keeps only what the level below proved matters.
+
+The target shape at every level: **the whole scope readable as roughly 50–100 essence blocks at most** — the wisest, smartest form of the intelligence, in the fewest words and the smallest data that keep the truth whole.
+
+Three rules guard the practice:
+1. **We never delete a lesson that matters.** Distillation is compression, not disposal — the raw notes stay archived in the brain; the essence is what surfaces. Value is identified by experts and kept; what is kept is kept *wisely*.
+2. **Distill, don't dump.** Putting 593 raw lessons into the Hub is a protocol violation of the same kind as an uncategorized note: it buries the intelligence it claims to share.
+3. **It is a habit, not a project.** The events recur on their rhythm forever; the system's intelligence stays small, current, and completely readable at every altitude — a minute for a note, an hour for a year.
+
+(Shawn, 2026-10-21: keep everything that's needed, in the smartest form, and never overload the system with data that smarter organization makes unnecessary.)
+
 ## 9. The standing rulings carried by this protocol
 
 - Done = visible in the Hub feed, link as proof (Shawn, 2026-10-21).
