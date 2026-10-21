@@ -40,7 +40,7 @@ def note(msg): notes.append(msg)
 try:
     machine = json.loads((BASE / "GENERAL-DESIGN-CONTRACT.machine.json").read_text(encoding="utf-8"))
     canon = json.loads((BASE / "CANONICAL-PIECE-INDEX.json").read_text(encoding="utf-8"))
-    store = json.loads((pathlib.Path.home() / "workspace/personal-app/pieces.json").read_text(encoding="utf-8"))
+    store = json.loads((BASE / "pieces.json").read_text(encoding="utf-8"))
 except Exception as e:
     print(f"FAIL: JSON parse error: {e}"); sys.exit(1)
 note("1. machine JSON, canon index, and pieces.json all parse")
