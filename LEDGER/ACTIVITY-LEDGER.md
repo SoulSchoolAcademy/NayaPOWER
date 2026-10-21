@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 02:00 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31510,6 +31510,12 @@ _Last updated: 2026-10-21 02:00 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261021-0214 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor seat-stall: delta re-evaluation, 30/30 queued briefs seat-barred for the Clarity seat, unchanged since 0053 UTC
+
+**Evidence:** Verified: receipt exists; queue byte-counted at 30 briefs (matches 30/30 blocked claim); predecessor seat-stall-20261021-0053.md exists and carries 30/30 (stall-chain consistent); exit-code capture bug honestly fixed and refusals re-run/verified real. Score 9.0: what kept it from 9.5 is that this is a stall report, not forward work - the structural
 
 ### ✅ seat-stall-20261021-0053 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
