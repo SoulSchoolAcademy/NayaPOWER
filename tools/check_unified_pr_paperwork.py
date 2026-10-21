@@ -143,6 +143,7 @@ def run() -> int:
         # The existing receipt checker is the source of truth for Evidence
         # heading and URL/SHA/path liveness; don't duplicate its parser.
         os.environ["PR_BODY"] = body
+        receipt.URL_CHECK_RESULTS.clear()
         output = io.StringIO()
         try:
             with contextlib.redirect_stdout(output):
@@ -152,6 +153,16 @@ def run() -> int:
             reason = next((line for line in lines if "FAILED:" in line), "Evidence receipt did not pass")
             cure = next((line.replace("Fix: ", "") for line in lines if line.startswith("Fix: ")),
                         "add a ## Evidence section containing at least one live URL, existing commit SHA, or existing repository path and explain what it proves")
+            states = [item.get("state") for item in receipt.URL_CHECK_RESULTS.values()]
+            if "UNAVAILABLE" in states and "DEAD" not in states:
+                details = "; ".join(
+                    f"{url}: {item.get('detail')}"
+                    for url, item in receipt.URL_CHECK_RESULTS.items()
+                    if item.get("state") == "UNAVAILABLE"
+                )
+                return _emit("ERROR — VERIFICATION_UNAVAILABLE",
+                             f"evidence URL check could not complete: {details}",
+                             "retry when the URL host/network is reachable; do not change or replace the evidence unless a retry confirms it is dead")
             return _emit("BLOCKED — EVIDENCE_INVALID", reason, cure)
 
         print(f"UNIFIED PAPERWORK GATE: PASS — Tier {tier['tier']}; {score_detail}; evidence receipt resolves.")
