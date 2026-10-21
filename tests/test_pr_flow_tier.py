@@ -35,6 +35,13 @@ class TierClassificationTests(unittest.TestCase):
     def test_governance_path_is_tier_a(self):
         self.assertEqual(classify_tier("ordinary doc", ["BRAIN/01-GOVERNANCE/0025.md"])["tier"], "A")
 
+    def test_supabase_function_path_is_tier_a(self):
+        self.assertEqual(classify_tier("intake change", ["supabase/functions/nayanet-github-intake/index.ts"])["tier"], "A")
+
+    def test_learning_event_path_is_tier_c(self):
+        path = "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-20-LEARNING-EVENT.md"
+        self.assertEqual(classify_tier("learning event filing", [path])["tier"], "C")
+
     def test_unknown_note_path_does_not_get_tier_c(self):
         self.assertEqual(classify_tier("SN-1234 filing", ["BRAIN/other/place.md"])["tier"], "B")
 
