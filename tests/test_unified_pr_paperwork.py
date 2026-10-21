@@ -36,8 +36,9 @@ class UnifiedPaperworkThresholdTests(unittest.TestCase):
 
     def test_tier_b_rejects_below_nine(self):
         head = "b" * 40
-        comments = [{"body": f"## SCORECARD\nScore: 8.9/10\nHead: {head}\nSeat: Naya Delta"}]
-        ok, _ = _scorecard_for_current_head(comments, head, "Naya Alpha", 9.0)
+        diff_hash = "d" * 64
+        comments = [{"body": f"## SCORECARD\nScore: 8.9/10\nHead: {head}\nDiff-SHA256: {diff_hash}\nVerification: tests run and replay behavior independently inspected\nSeat: Naya Delta"}]
+        ok, _ = _scorecard_for_current_head(comments, head, "Naya Alpha", 9.0, tier="B", diff_hash=diff_hash)
         self.assertFalse(ok)
 
     def test_author_cannot_score_own_work(self):
