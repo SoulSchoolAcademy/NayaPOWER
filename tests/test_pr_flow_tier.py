@@ -29,6 +29,9 @@ class TierClassificationTests(unittest.TestCase):
     def test_ordinary_code_is_tier_b(self):
         self.assertEqual(classify_tier("button fix", ["HUB/button.tsx"])["tier"], "B")
 
+    def test_empty_changed_path_list_fails_safe_to_tier_a(self):
+        self.assertEqual(classify_tier("ordinary title", [])["tier"], "A")
+
     def test_governance_title_escalates_even_without_path_list(self):
         self.assertEqual(classify_tier("Governance contract ratification", [])["tier"], "A")
 
