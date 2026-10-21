@@ -94,3 +94,41 @@ test('unscoped browser queue URL cannot become a live Smart Feed', async () => {
     global.fetch=oldFetch;
   }
 });
+
+test('replay preserves timestamp and deduplicates repeated queue records', async () => {
+  const fixed='2026-10-21T12:00:00.000Z';
+  const rec=bridge.canonicalRecord('SN-REPLAY-IDEMPOTENT',{
+    truth_state:'CANDIDATE',scope:'PRIVATE',captured_utc:fixed,
+    nutshell:'Replay once',human_note:'Human',naya_note:'Naya',
+    machine_note:{nested:{b:2,a:1}},source_handle:'fixture:test'
+  },{persisted_utc:fixed});
+  const line=bridge.stableStringify(rec)+'\\n';
+  const queueData=line+line;
+  const queue={append:async()=>{},readAll:async()=>queueData};
+  let inserts=0, readbacks=0;
+  const query=async sql=>{
+    if(sql.startsWith('INSERT')) { inserts++; return [{id:'row-1',created_at:fixed}]; }
+    if(sql.includes("WHERE event_type = 'SMART_NOTE'")) return [];
+    if(sql.includes("WHERE id = 'row-1'")) {
+      readbacks++;
+      return [{
+        id:'row-1',subject:rec.nutshell,event_type:'SMART_NOTE',
+        source_context:{
+          sn:rec.sn,truth_state:rec.truth_state,scope:rec.scope,
+          captured_utc:rec.captured_utc,human_note:rec.human_note,
+          naya_note:rec.naya_note,machine_note:rec.machine_note,
+          source_handle:rec.source_handle,persisted_utc:rec.persisted_utc,
+          adapter_version:rec.adapter_version
+        },
+        privacy_state:rec.scope,status:'INCOMPLETE',created_at:fixed
+      }];
+    }
+    throw new Error('unexpected query: '+sql);
+  };
+  const result=await bridge.replay({queue,supabase:{memberId:member,query}});
+  assert.equal(result.replayed,1);
+  assert.deepEqual(result.failed,[]);
+  assert.equal(result.scanned,2);
+  assert.equal(inserts,1);
+  assert.equal(readbacks,1);
+});
