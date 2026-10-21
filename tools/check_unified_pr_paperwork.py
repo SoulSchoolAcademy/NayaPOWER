@@ -178,7 +178,7 @@ _CLEAR_LINE_RE = re.compile(r"(?im)^\s*(?:verdict\s*:\s*(?:pass|approved|merge r
 
 
 def _has_unresolved_hold(comments: list[dict], author_seat: str, head: str,
-                         tier: str, diff_hash: str | None) -> tuple[bool, str, str]:
+                         tier: str, diff_hash: str | None) -> tuple[bool, str, str, str]:
     holds = {}
     for comment in sorted(comments, key=lambda item: item.get("created_at") or ""):
         body = comment.get("body") or ""
