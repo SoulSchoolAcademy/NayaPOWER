@@ -77,6 +77,9 @@ def classify_tier(title: str, changed_paths: list[str] | None = None) -> dict[st
     paths = [p for p in (changed_paths or []) if p and p.strip()]
     title = title or ""
 
+    if changed_paths is not None and not paths:
+        return {"tier": "A", "reason": "changed paths unavailable or empty; fail safe to high-consequence review"}
+
     if TIER_A_TITLE.search(title) or any(_is_tier_a_path(p) for p in paths):
         return {"tier": "A", "reason": "high-consequence law/security/gate/deploy path"}
 
