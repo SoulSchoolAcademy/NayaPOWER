@@ -279,8 +279,11 @@
       persisted_utc: rec.persisted_utc, row_id: null, reason: null
     };
     // Audit trail: the JSONL is ALWAYS written, even when Supabase succeeds.
+    // Retain its receipt so a failed remote write does not append the same
+    // record a second time during local fallback.
+    var queueReceipt = null;
     if (transports.queue) {
-      try { await queuePersist(rec, transports.queue); } catch (e) { /* audit best-effort */ }
+      try { queueReceipt = await queuePersist(rec, transports.queue); } catch (e) { /* audit best-effort */ }
     }
     if (transports.supabase && transports.supabase.available !== false) {
       try {
@@ -298,7 +301,8 @@
     }
     if (transports.queue) {
       receipt.backend = receipt.backend ? receipt.backend + '+local-queue' : 'local-queue';
-      var q = await queuePersist(rec, transports.queue);
+      var q = queueReceipt;
+      if (!q) q = await queuePersist(rec, transports.queue);
       receipt.stored = q.ok;
       receipt.read_back_ok = q.ok;
       if (!receipt.reason) receipt.reason = 'supabase unavailable — queued locally for replay';
@@ -324,9 +328,19 @@
         nutshell: rec.nutshell, human_note: rec.human_note, naya_note: rec.naya_note,
         machine_note: rec.machine_note, source_handle: rec.source_handle
       };
-      var r2 = await persist(rec.sn, note, { supabase: transports.supabase });
-      if (r2.stored && r2.backend === 'supabase') replayed++;
-      else failed.push(rec.sn);
+      // Replay the original canonical record, preserving persisted_utc and
+      // its idempotency key. Calling persist() here would mint a new timestamp
+      // and could create duplicates on every retry.
+      try {
+        var r2 = await supabasePersist(rec, transports.supabase);
+        var key = rec.sn + '|' + rec.persisted_utc;
+        if (r2.ok) {
+          replayed++;
+          seen[key] = true; // also deduplicate duplicate lines in the same queue
+        } else failed.push(rec.sn);
+      } catch (e) {
+        failed.push(rec.sn);
+      }
     }
     return { replayed: replayed, failed: failed, scanned: queued.length };
   }
