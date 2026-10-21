@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T09:15:07+00:00",
+ "generated_utc": "2026-10-21T10:15:04+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -145,6 +145,12 @@
    "board_lane": "#2175 lane PROVE",
    "open_prs": [
     {
+     "number": 2841,
+     "title": "[NAYA 5] Safety: fail-closed VERIFY verdicts (revives #1944)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2841",
+     "draft": false
+    },
+    {
      "number": 2825,
      "title": "The GitHub webhook receiving door \u2014 nayanet-github-intake (verify + accept, fail-closed)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825",
@@ -157,7 +163,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 3
   },
   {
    "id": "build",
@@ -628,6 +634,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 50,
+ "open_pr_total": 51,
  "unassigned_prs": 19
 }
