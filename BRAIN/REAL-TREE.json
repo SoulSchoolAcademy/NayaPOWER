@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-21",
-  "receipt_basis_commit": "88bcdca94b9d54cccfa88de54dc965587e25d5df",
-  "inventory_file_count": 1361,
+  "receipt_basis_commit": "649b3e3f791c4c21e863ac094b302e3e61b5702a",
+  "inventory_file_count": 1362,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 675,
+    "05-MEMORY": 676,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4079,6 +4079,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/words-without-action/IB-000047/smart-note.md",
       "blob_sha": "27dc18eeb8aee1b0704320387d5aaca4a27b93bc",
       "size": 7144
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md",
+      "blob_sha": "962b0238790ee30b13284058b28e23ee7286136b",
+      "size": 7012
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md",
