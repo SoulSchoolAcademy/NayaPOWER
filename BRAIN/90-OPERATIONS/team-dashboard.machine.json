@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T02:15:07+00:00",
+ "generated_utc": "2026-10-21T03:15:11+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -171,6 +171,30 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2830,
+     "title": "fix(reporting): heuristic evidence never displaces authoritative score value/source (4th p",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2830",
+     "draft": false
+    },
+    {
+     "number": 2829,
+     "title": "[W2 judge] L577 write-path guard: no score renders or writes without measured_at",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2829",
+     "draft": false
+    },
+    {
+     "number": 2828,
+     "title": "Naya4/smart notes 2026 09 30",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2828",
+     "draft": false
+    },
+    {
+     "number": 2827,
+     "title": "Naya/mission state",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2827",
+     "draft": false
+    },
+    {
      "number": 2818,
      "title": "fix(know): make live Windows Smart Note bridge read all long-path notes",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2818",
@@ -189,37 +213,13 @@
      "draft": false
     },
     {
-     "number": 2771,
-     "title": "DEC-5/6/7/9: align merge-bar constants and law text to ratified 9.5",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2771",
-     "draft": false
-    },
-    {
      "number": 2747,
      "title": "feat: make Smart Builder library searchable and machine-accessible",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747",
      "draft": false
-    },
-    {
-     "number": 2746,
-     "title": "docs: establish Smart Builder human contract",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2746",
-     "draft": false
-    },
-    {
-     "number": 2742,
-     "title": "Design laws v2 \u2014 3-pass scored 9+ for ratification",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742",
-     "draft": false
-    },
-    {
-     "number": 2741,
-     "title": "Canonical hex set \u2014 3-pass scored 9.25/10 for stamp",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2741",
-     "draft": false
     }
    ],
-   "open_pr_count": 12
+   "open_pr_count": 15
   },
   {
    "id": "wire",
@@ -609,6 +609,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 40,
- "unassigned_prs": 12
+ "open_pr_total": 43,
+ "unassigned_prs": 15
 }

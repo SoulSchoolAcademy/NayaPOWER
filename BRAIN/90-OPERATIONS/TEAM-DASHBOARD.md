@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 02:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-21 03:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 40 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 43 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -60,13 +60,13 @@
 - [#2825](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825) The GitHub webhook receiving door — nayanet-github-intake (verify + ac
 - [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
 
-### BUILD (12)
+### BUILD (15)
+- [#2830](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2830) fix(reporting): heuristic evidence never displaces authoritative score
+- [#2829](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2829) [W2 judge] L577 write-path guard: no score renders or writes without m
+- [#2828](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2828) Naya4/smart notes 2026 09 30
+- [#2827](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2827) Naya/mission state
 - [#2818](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2818) fix(know): make live Windows Smart Note bridge read all long-path note
-- [#2804](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2804) Mark IB-000042 SUPERSEDED by IB-000043 (Shawn ruling 2026-10-20)
-- [#2795](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2795) fix(activation): self-resolving live-board pointers — boot_pointer_che
-- [#2771](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2771) DEC-5/6/7/9: align merge-bar constants and law text to ratified 9.5
-- [#2747](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747) feat: make Smart Builder library searchable and machine-accessible
-- …and 7 more
+- …and 10 more
 
 ### WIRE (3)
 - [#2812](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2812) fix(activation): refuse undeclared cold starts at real admission gate
