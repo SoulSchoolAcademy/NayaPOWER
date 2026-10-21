@@ -1,9 +1,10 @@
 # THE DESIGN LAWS — v2
 
-> **STATUS: DRAFT — NOT RATIFIED.** This document has been through the 3-pass
-> scorecard process and scores 9.5/10 as a draft. It becomes official only when
-> Shawn stamps it. Nobody else can ratify it — that is a protected gate, and
-> this file must never claim otherwise.
+> **STATUS: RATIFIED BY SHAWN VIBERT — HUMAN DIRECTOR — 2026-10-21.**
+> Shawn explicitly authorized ratification on 2026-10-21. This establishes the
+> design doctrine as ratified; it does not certify every interface as compliant
+> or inflate the independent quality score. Current draft score remains 9.5/10
+> until specimen coverage and rendered behavior are independently verified.
 
 *Written from Shawn's fifteen design files, his verbal teaching, the correction
 stories inside them, and his four standing corrections of 2026-10-17
@@ -100,7 +101,7 @@ ground, white-lit rims at rest, the circle igniting on approach.*
 
 **The wheel, not the list.** "It's not a law that has to be five or seven or nine." Five stops, seven, ten — whatever the design needs. What never changes: the spectrum is walked **in spectral order** — the rainbow's natural flow — **never clumped** (no purple-purple-purple, no green-green-green), **never random**, and always the **most beautiful** version of each hue. We speak the natural design language of the universe — not random colors for whatever reason. It has to look stunning.
 
-**The wheel** (11 stops — the most beautiful of each hue; canonical hexes pending Shawn's stamp — see Open reconciliations):
+**The wheel** (11 stops — the canonical v2 hex values ratified by Shawn on 2026-10-21):
 
 | Stop | Hex | Job |
 |------|-----|-----|
@@ -197,7 +198,7 @@ There is one button DNA (`.naya-btn`) with job-specific variants (lead, machine,
 
 - Hierarchy: **24 / 18 / 14** — kicker 24, headline 18, detail 14. (Mnemonic. Law 52 governs the full scale: Display 32–40 / Headline 22–28 / Body 15–17 / Detail 12–13 / Kicker 11.)
 - **White 99%.** Never gray body text.
-- Headers get a *voice*: a real serif face with warmth (Newsreader/Georgia — Cormorant where licensed), not a system default. Voice-font pick pending Shawn's stamp — see Open reconciliations.
+- Headers get a *voice*: a real serif face with warmth (Newsreader/Georgia — Cormorant where licensed), not a system default. Voice font: Newsreader, with Georgia as the system fallback.
 - Text is never flat: gradient soul, layered shadows (grounding + glow), breathing luminosity. **Flat text is lazy.**
 - Order of resort: visuals → voice → text. Text is the fallback, never the default.
 
@@ -284,11 +285,12 @@ On conflict between tongues, the machine wins for builds; Shawn's eye wins over 
 
 ---
 
-## OPEN RECONCILIATIONS (for Shawn's eye — his stamp settles these)
+## IMPLEMENTATION RECONCILIATIONS (not ratification blockers)
 
-1. **Hex drift:** the same hue names carry different hexes across files. This spec uses the richest values; the parallel canonical-hex mission is producing the single stamped set.
-2. **Voice font:** Cormorant (teaching) vs Newsreader/Georgia (specimens). This spec allows Newsreader/Georgia pending his pick.
-3. **Strip-vs-walk:** resolved 2026-10-16 — two instruments, one wheel. Not a conflict.
+1. **Specimen coverage:** referenced specimen IDs and rendered side-by-sides must be verified against the canonical library. The related library PR is not yet merged; do not claim those visual examples are production-proven.
+2. **Cross-file parity:** propagate the ratified v2 hex values to canonical token/specimen files through the normal review and verification path; detect and report drift rather than silently assuming every file already matches.
+3. **Voice font:** Newsreader is the canonical design choice; Georgia is the fallback. Verify actual rendering and licensing/availability in each supported environment.
+4. **Strip-vs-walk:** resolved 2026-10-16 — two instruments, one wheel. Not a conflict.
 
 ---
 
@@ -321,4 +323,4 @@ On conflict between tongues, the machine wins for builds; Shawn's eye wins over 
 
 **Pass 2 — fixes applied:** LAW 0 (audience split); the Compose Ladder (compose → tweak → create); THE FUNCTION LAW with the click-everything protocol; ship gate check 6 (function) added; Forbidden #14 (recreating instead of composing); inputs ignite purple in Law 1; per-law "what it looks like" specimen pointers; the machine twin section; foundation poetry kept as voice but every law now carries checkable predicates.
 
-**Pass 3 — 9.5/10.** Why not a 10: the example pointers resolve to specimen ids whose library PR is still unmerged (pairing is structural, not yet populated with rendered side-by-sides); the hex set awaits the parallel mission + his stamp; and per the Final Law itself, only his eye makes it a 10. **NOT RATIFIED — the stamp is his alone.**
+**Pass 3 — 9.5/10 (unchanged by ratification).** The doctrine is now ratified by Shawn on 2026-10-21. It is not scored 10/10 because specimen coverage is not yet independently rendered and verified, and cross-file token parity still requires implementation evidence. Ratification settles the v2 hex values and voice-font choice stated above; it does not waive implementation gates. The Final Law remains: Shawn's eye is the final compile step for each delivered interface.
