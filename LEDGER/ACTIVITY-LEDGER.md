@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 13:26 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 14:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19499,6 +19499,12 @@ _Last updated: 2026-10-21 13:26 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Process receipt, no code artifacts (evaluation-only, nothing phantom). 18/18 queue briefs evaluated in pinned band order; 15 skipped on explicit NON-Clarity bars, 3 refused via claim-script exit 7 (parent-authorship) with no queue writes. Real routing hole surfaced: the 1120 repair brief (claim-brief.py exit-7 over-fire) is itself unclaimable by an
 
+### ✅ distill-daily-20261021-laneKNOW — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily 05:24 PDT: close boot-gate FAIL - 5 stale venue pointers in BRAIN/00-ACTIVATION/ to resolution indirection (PR #2842, review only)
+
+**Evidence:** Verified on live bytes: branch naya/know/boot-pointer-no-number-20261021 exists on remote, head 88bf85d34877174dba9ed344ea79b57f5e1c8f37 matches receipt pin byte-exact (git ls-remote); refs/pull/2842/head == same SHA (PR open at pinned head); base ef8af6f5 == main tip at run time (no drift under PR); all 3 changed files present at the pinned SHA vi
+
 ### ✅ distill-2765-laneKNOW — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** distill retired board #2765: 2337 comments captured -> essence on #2793
@@ -31860,6 +31866,24 @@ _Last updated: 2026-10-21 13:26 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261021-1350 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall-20261021-1346.md: seat-claimability stall receipt - evaluated all 30 queued briefs in ORDERING order, claimed none (6th consecutive seat-stall cycle, 0816-1346Z)
+
+**Evidence:** Verified on disk: brief-queue holds 31 .md files (30 briefs + 1 meta), matching the receipt's 30-item ORDERING inventory; spot-checked 3 named briefs exist (brief-gap-t1132-lane10.md, brief-gap-lane-scorer-20261019-1230-lane3.md, brief-review-blueprint-completeness-20261015.md); eligibility structure (11 explicit NON-Clarity gates + 19 script exit-
+
+### ✅ gate-stall-20261021-1237 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall receipt: evaluated all 30 queued briefs, claimed none - barred to Clarity seat (5th consecutive cycle, byte-identical)
+
+**Evidence:** Stall-documentation receipt. Verified structurally: same 30-file set and eligibility mapping as 1131 (12 explicit gates + 18 exit-7, two text-bar briefs re-confirmed via script this run), zero queue touches, full inventory. Honest documentation of correct gating. Score 9.0 (receipt's own 10/10 self-score is for correct-skip form, not value shipped 
+
+### ✅ gate-stall-20261021-1131 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall receipt: evaluated all 30 queued briefs in ORDERING order, claimed none - every brief barred to Clarity seat (4th consecutive cycle)
+
+**Evidence:** Stall-documentation receipt, no repo artifacts cited (nothing to phantom-check). Verified structurally: full 30-item inventory in ORDERING order, eligibility mapping explicit (12 NON-Clarity gates + 18 script exit-7 second-seat demands), honest 9.0 self-score with named structural hole, byte-identical state vs the 1025 receipt as claimed. Correct g
 
 ### ✅ lane-scorer-20261021-1245 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
