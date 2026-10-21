@@ -102,7 +102,7 @@ test('replay preserves timestamp and deduplicates repeated queue records', async
     nutshell:'Replay once',human_note:'Human',naya_note:'Naya',
     machine_note:{nested:{b:2,a:1}},source_handle:'fixture:test'
   },{persisted_utc:fixed});
-  const line=bridge.stableStringify(rec)+'\\n';
+  const line=bridge.stableStringify(rec)+'\n';
   const queueData=line+line;
   const queue={append:async()=>{},readAll:async()=>queueData};
   let inserts=0, readbacks=0;
