@@ -8,9 +8,11 @@ canonical content door. It never changes repository protection settings.
 from __future__ import annotations
 
 import contextlib
+import hashlib
 import io
 import json
 import os
+import re
 import sys
 import urllib.error
 
