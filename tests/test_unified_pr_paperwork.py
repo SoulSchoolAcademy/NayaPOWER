@@ -16,8 +16,9 @@ class UnifiedPaperworkThresholdTests(unittest.TestCase):
 
     def test_tier_b_accepts_9_from_different_seat_on_exact_head(self):
         head = "b" * 40
-        comments = [{"body": f"## SCORECARD\nScore: 9/10\nHead: {head}\nSeat: Naya Delta"}]
-        ok, _ = _scorecard_for_current_head(comments, head, "Naya Alpha", 9.0)
+        diff_hash = "d" * 64
+        comments = [{"body": f"## SCORECARD\nScore: 9/10\nHead: {head}\nDiff-SHA256: {diff_hash}\nVerification: tests run and replay behavior independently inspected\nSeat: Naya Delta"}]
+        ok, _ = _scorecard_for_current_head(comments, head, "Naya Alpha", 9.0, tier="B", diff_hash=diff_hash)
         self.assertTrue(ok)
 
     def test_stale_head_is_rejected(self):
