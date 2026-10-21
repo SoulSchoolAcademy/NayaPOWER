@@ -13,7 +13,9 @@ Checks (each emits PASS / WARN / FAIL / UNKNOWN with evidence):
   C2 production_stamp    — the production branch holds a deploy-stamp commit for the tip.
   C3 workflow_health     — recent Governed Production Promotion runs: verdicts +
                            failing step, classified FAIL_CLOSED_BY_DESIGN /
-                           SUPERSEDED_TIP_RACE / NEEDS_INVESTIGATION.
+                           SUPERSEDED_TIP_RACE / CANCELLED_SUPERSEDED /
+                           unconfirmed race candidates /
+                           NEEDS_INVESTIGATION.
   C4 standing_policy     — STANDING-PRODUCTION-PROMOTION-V1.json is RATIFIED and well-formed.
   C5 dispatch_contract   — workflow_dispatch requires confirm=DEPLOY + exact 40-hex source_sha,
                            and the YAML contains fail-closed binding checks.
@@ -290,26 +292,84 @@ def _is_strict_ancestor_of_tip(full_sha: str) -> bool | None:
     return git(["merge-base", "--is-ancestor", full_sha, tip]) is not None
 
 
-def _race_failures(failures: list[dict]) -> list[dict]:
-    """Failures matching the superseded-tip race signature.
+def _api_is_ancestor_of_tip(full_sha: str) -> bool | None:
+    """GitHub compare endpoint: is full_sha a strict ancestor of the live
+    origin/main tip? Costs 1 API call; used only for failures whose ancestry
+    the local clone cannot verify (shallow / incomplete object store), where
+    local merge-base is proven unreliable — it must never claim a race.
+    Returns None when the tip is unresolvable or the API is unreachable, so
+    callers can report 'unconfirmed' instead of guessing."""
+    if not full_sha or not SHA_RE.match(full_sha):
+        return None
+    tip = git(["rev-parse", "origin/main"])
+    if not tip or not SHA_RE.match(tip):
+        return None
+    if tip == full_sha:
+        return False
+    data = gh_get(f"/repos/{REPO}/compare/{full_sha}...{tip}")
+    if not isinstance(data, dict):
+        return None
+    behind = data.get("behind_by")
+    if data.get("status") == "ahead" and (behind or 0) == 0:
+        return True
+    if isinstance(behind, int) and behind > 0:
+        return False
+    return None
 
-    Signature: the ONLY failing step is 'Resolve standing authorization mode'
-    AND the run's head SHA is a strict ancestor of the current origin/main
-    tip — i.e. main moved between the push event and the runner's tip-currency
-    check, so the run was superseded by a newer push. A benign supersede, not
+
+def _attribute_benign_failures(failures: list[dict]) -> dict:
+    """Split benign failure shapes out of the failure pool.
+
+    Returns {"races": [...], "race_candidates": [...], "cancelled_superseded": [...]}.
+    A superseded-tip race: ONLY failing step is 'Resolve standing authorization
+    mode' AND the run's head SHA is a strict ancestor of the current
+    origin/main tip — main moved between the push event and the runner's
+    tip-currency check, so the run was superseded by a newer push. Benign, not
     a broken deploy path. Repair-relevant side effect, recorded for the repair
     lane: the failure-receipt step is skipped on this path (its `if:` requires
     the standing-policy step's outputs), so the run leaves no durable failure
     receipt — the failure is silent in the records.
-    """
-    out = []
+
+    Local merge-base is trusted ONLY when it says True in a complete clone.
+    On a shallow/incomplete clone it returns None (never claim a race); the
+    API compare endpoint is then consulted (1 call each). A candidate the API
+    also cannot confirm stays a candidate — reported, never guessed.
+    A cancelled run with no failing steps, superseded by a strictly newer
+    push's run, is benign too (GitHub cancelled it when the newer push came
+    in)."""
+    races: list[dict] = []
+    candidates: list[dict] = []
     for f in failures:
         steps = f.get("failing_steps") or []
         if steps != [RACE_STEP_NAME]:
             continue
-        if _is_strict_ancestor_of_tip(f.get("head_sha_full") or ""):
-            out.append(f)
-    return out
+        full = f.get("head_sha_full") or ""
+        local = _is_strict_ancestor_of_tip(full)
+        if local is True:
+            races.append(f)
+            continue
+        if local is None:
+            api = _api_is_ancestor_of_tip(full)
+            if api is True:
+                races.append(f)
+                continue
+            if api is None:
+                candidates.append(f)
+                continue
+        # local False, or API says not an ancestor: not a race; stays in pool.
+    cancelled: list[dict] = []
+    dated = [(f.get("created_at") or "", f) for f in failures]
+    for created, f in dated:
+        if (f.get("conclusion") or "") != "cancelled":
+            continue
+        if f.get("failing_steps"):
+            continue
+        if any(other_created > created
+               and (other.get("head_sha_full") or "") != (f.get("head_sha_full") or "")
+               for other_created, other in dated):
+            cancelled.append(f)
+    return {"races": races, "race_candidates": candidates,
+            "cancelled_superseded": cancelled}
 
 
 def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
@@ -321,21 +381,31 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
     under those conditions is the gate OPERATING CORRECTLY — the readiness
     hole is the red CI, not the deploy path. Separately, a run that fails only
     at the authorization-mode step because main moved past its head SHA is a
-    benign supersede, not a pathology. This classifier distinguishes both from
-    failures the gate model cannot explain, so the readiness verdict names the
-    true hole instead of blaming a working gate.
+    benign supersede, as is a run GitHub cancelled when a newer push arrived.
+    When the local clone cannot verify ancestry (shallow/incomplete), the API
+    compare endpoint is consulted; failures it cannot confirm stay visible as
+    unconfirmed candidates instead of being silently dropped. This classifier
+    distinguishes all of these from failures the gate model cannot explain, so
+    the readiness verdict names the true hole instead of blaming a working
+    gate.
     """
     ci_failing = [w for w, s in ci_status.items()
                   if s.get("status") == "completed" and s.get("conclusion") == "failure"]
     ci_unknown = [w for w, s in ci_status.items()
                   if s.get("conclusion") is None or s.get("status") == "unknown"]
-    races = _race_failures(failures)
+    attr = _attribute_benign_failures(failures)
+    races = attr["races"]
+    candidates = attr["race_candidates"]
+    cancelled = attr["cancelled_superseded"]
     race_ids = {f.get("run_id") for f in races}
+    candidate_ids = {f.get("run_id") for f in candidates}
+    cancelled_ids = {f.get("run_id") for f in cancelled}
+    attributed_ids = race_ids | candidate_ids | cancelled_ids
     policy_trips = sum(1 for f in failures
-                       if f.get("run_id") not in race_ids
+                       if f.get("run_id") not in attributed_ids
                        and any("standing policy" in (st or "").lower()
                                for st in f.get("failing_steps", [])))
-    explained = policy_trips + len(races)
+    explained = policy_trips + len(races) + len(cancelled)
     evidence = {"policy_step_trips": policy_trips,
                 "failures_examined": len(failures),
                 "required_ci_failing": ci_failing,
@@ -352,6 +422,22 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
                                "on this path (its `if:` requires standing-policy "
                                "outputs), so the run leaves no durable failure "
                                "receipt."),
+                },
+                "superseded_tip_race_candidates": {
+                    "count": len(candidates),
+                    "run_ids": sorted(candidate_ids),
+                    "detail": ("race-signature failures whose ancestry could not "
+                               "be confirmed (shallow/incomplete local clone and "
+                               "API compare unreachable): reported, never "
+                               "guessed."),
+                },
+                "cancelled_superseded": {
+                    "count": len(cancelled),
+                    "run_ids": sorted(cancelled_ids),
+                    "detail": ("run concluded 'cancelled' with no failing steps "
+                               "while a strictly newer push's run exists: GitHub "
+                               "cancelled it when the newer push came in. Benign "
+                               "supersede, not a broken deploy path."),
                 }}
     if not failures:
         return {"classification": "NONE", "detail": "no failures", **evidence}
@@ -379,6 +465,10 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
             detail += (f" Plus {len(races)} superseded-tip race failure(s) "
                        f"(run(s) {ids}): main moved after the push event — "
                        "benign, no failure receipt written; see evidence.")
+        if cancelled:
+            ids = ", ".join(str(i) for i in sorted(cancelled_ids))
+            detail += (f" Plus {len(cancelled)} cancelled-by-newer-push run(s) "
+                       f"(run(s) {ids}): benign supersede.")
         return {"classification": "FAIL_CLOSED_BY_DESIGN", "detail": detail,
                 **evidence}
     if ci_unknown and policy_trips:
@@ -393,6 +483,15 @@ def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
         ids = ", ".join(str(i) for i in sorted(race_ids))
         detail += (f"; {len(races)} superseded-tip race failure(s) (run(s) "
                    f"{ids}) already attributed — see evidence.")
+    if candidates:
+        ids = ", ".join(str(i) for i in sorted(candidate_ids))
+        detail += (f"; {len(candidates)} race-candidate(s) (run(s) {ids}) "
+                   "unconfirmed: ancestry unverifiable — check the run's "
+                   "timestamps against the tip history before dismissing.")
+    if cancelled:
+        ids = ", ".join(str(i) for i in sorted(cancelled_ids))
+        detail += (f"; {len(cancelled)} cancelled-by-newer-push run(s) "
+                   f"(run(s) {ids}) benign — see evidence.")
     return {"classification": "NEEDS_INVESTIGATION", "detail": detail,
             **evidence}
 

@@ -331,9 +331,52 @@ def test_classify_race_not_claimed_when_not_ancestor(monkeypatch):
 
 
 def test_classify_race_not_claimed_when_ancestor_unknown(monkeypatch):
+    # Shallow/incomplete clone AND API compare unreachable: the failure stays
+    # a visible candidate, never silently dropped, never claimed.
     _patch_ancestor(monkeypatch, None)
+    monkeypatch.setattr(prc, "_api_is_ancestor_of_tip", lambda sha: None)
     r = prc.classify_promotion_failures(_race_failures(1), _ci(red=("kernel-tests.yml",)))
     assert r["classification"] == "NEEDS_INVESTIGATION", r
+    assert r["superseded_tip_race"]["count"] == 0
+    assert r["superseded_tip_race_candidates"]["count"] == 1
+    assert "unconfirmed" in r["detail"], r["detail"]
+
+
+def test_classify_race_confirmed_via_api_on_shallow_clone(monkeypatch):
+    # Local merge-base untrustworthy (shallow), API compare confirms ancestry.
+    _patch_ancestor(monkeypatch, None)
+    monkeypatch.setattr(prc, "_api_is_ancestor_of_tip", lambda sha: True)
+    failures = (_failures(2, ["Enforce ratified standing policy before automatic promotion"])
+                + _race_failures(1))
+    r = prc.classify_promotion_failures(failures, _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "FAIL_CLOSED_BY_DESIGN", r
+    assert r["superseded_tip_race"]["count"] == 1
+    assert r["superseded_tip_race_candidates"]["count"] == 0
+
+
+def _cancelled_failures():
+    return [
+        {"run_id": 100, "conclusion": "cancelled", "failing_steps": [],
+         "head_sha_full": "b" * 40, "created_at": "2026-10-21T00:02:08Z"},
+        {"run_id": 101, "conclusion": "failure",
+         "failing_steps": ["Enforce ratified standing policy before automatic promotion"],
+         "head_sha_full": "c" * 40, "created_at": "2026-10-21T00:02:10Z"},
+    ]
+
+
+def test_classify_cancelled_superseded_by_newer_push():
+    r = prc.classify_promotion_failures(_cancelled_failures(), _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "FAIL_CLOSED_BY_DESIGN", r
+    assert r["cancelled_superseded"]["count"] == 1
+    assert r["cancelled_superseded"]["run_ids"] == [100]
+
+
+def test_classify_cancelled_without_newer_push_stays_unexplained():
+    failures = [{"run_id": 100, "conclusion": "cancelled", "failing_steps": [],
+                 "head_sha_full": "b" * 40, "created_at": "2026-10-21T00:02:10Z"}]
+    r = prc.classify_promotion_failures(failures, _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+    assert r["cancelled_superseded"]["count"] == 0
 
 
 def test_classify_race_ignored_without_full_sha(monkeypatch):
