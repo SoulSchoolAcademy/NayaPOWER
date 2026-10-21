@@ -133,7 +133,8 @@ def run() -> int:
     if not repo or not token:
         return _emit("ERROR — VERIFICATION_UNAVAILABLE",
                      "repository or read token is unavailable",
-                     "restore the workflow's read-only GitHub token and re-run")
+                     "restore the workflow's read-only GitHub token and re-run",
+                     owner="Gate maintainer")
 
     try:
         pr, number = _live_pr(event, repo, token)
@@ -144,7 +145,8 @@ def run() -> int:
         if len(head) != 40 or any(ch not in "0123456789abcdef" for ch in head):
             return _emit("ERROR — VERIFICATION_UNAVAILABLE",
                          "GitHub did not return a valid current head SHA",
-                         "retry after GitHub's PR API returns the current 40-character SHA")
+                         "retry after GitHub's PR API returns the current 40-character SHA",
+                         owner="Gate maintainer")
 
         files = consensus.api_get(f"/repos/{repo}/pulls/{number}/files", token)
         paths = [item.get("filename", "") for item in files if item.get("filename")]
@@ -159,6 +161,7 @@ def run() -> int:
                 "BLOCKED — CONTENT_DOOR_NOT_PROVEN",
                 "all changed paths appear to be mechanical content/index data, but the current canonical content door is not proven healthy: main's latest full test run reports missing Smart Note capture/registry entries and stale generated indexes",
                 "repair the canonical capture → registry → index/sync path and make its schema, collision, registry-drift, and index-freshness checks green before routing note-only work through that door; do not substitute scorecard ceremony or merge a mega-PR to hide the content-door defect",
+                owner="Content-door lane",
             )
 
         author_seat = consensus.author_seat_of(body)
@@ -201,7 +204,8 @@ def run() -> int:
                 )
                 return _emit("ERROR — VERIFICATION_UNAVAILABLE",
                              f"evidence URL check could not complete: {details}",
-                             "retry when the URL host/network is reachable; do not change or replace the evidence unless a retry confirms it is dead")
+                             "retry when the URL host/network is reachable; do not change or replace the evidence unless a retry confirms it is dead",
+                             owner="Gate maintainer")
             return _emit("BLOCKED — EVIDENCE_INVALID", reason, cure)
 
         return _emit(
@@ -214,11 +218,13 @@ def run() -> int:
     except (consensus.GateAPIError, urllib.error.URLError, TimeoutError) as exc:
         return _emit("ERROR — VERIFICATION_UNAVAILABLE",
                      f"GitHub/evidence verification unavailable: {type(exc).__name__}: {exc}",
-                     "restore API/network availability and re-run; do not interpret this as a quality failure")
+                     "restore API/network availability and re-run; do not interpret this as a quality failure",
+                     owner="Gate maintainer")
     except Exception as exc:
         return _emit("ERROR — VERIFICATION_UNAVAILABLE",
                      f"unexpected verification error: {type(exc).__name__}: {exc}",
-                     "inspect the named integration error, repair the verifier, and re-run; do not bypass the gate")
+                     "inspect the named integration error, repair the verifier, and re-run; do not bypass the gate",
+                     owner="Gate maintainer")
 
 
 if __name__ == "__main__":
