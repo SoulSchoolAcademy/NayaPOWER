@@ -1,0 +1,423 @@
+{
+ "balance_gauge": {
+  "adjustment_rule": {
+   "loosen_levers_in_order": [
+    "extend addendum re-pin acceptance",
+    "drop a duplicated predicate",
+    "lower Tier B scorecard_min by 0.5 (floor 7.5)"
+   ],
+   "loosen_when": "paperwork_block_rate > 0.10 for 2 consecutive reads AND post_merge_escape_rate <= 0.02",
+   "mechanism": "every adjustment is a PR through the then-current protocol + board receipt naming the gauge readings that forced it; the gauge never silently edits the bar",
+   "per_cycle": "exactly ONE lever per weekly cycle",
+   "tighten_levers_in_order": [
+    "raise Tier B scorecard_min by 0.5 (ceiling 9.5)",
+    "promote the offending path class to Tier A",
+    "add the escaped defect's class as a content check"
+   ],
+   "tighten_when": "post_merge_escape_rate > 0.02 OR rising on 2 consecutive reads"
+  },
+  "cadence": "weekly, computed from counted data, published to the board",
+  "metrics": [
+   {
+    "baseline_2026_10_21": 0.44,
+    "definition": "open PRs whose ONLY blockers are paperwork gates / all open PRs",
+    "id": "paperwork_block_rate",
+    "target": "< 0.10"
+   },
+   {
+    "baseline_2026_10_21": null,
+    "definition": "median hours, PR open to merge, Tier A",
+    "id": "time_to_merge_A",
+    "target_hours_max": 120,
+    "target_status": "SPECIFIED starting value; re-derive from first reads"
+   },
+   {
+    "baseline_2026_10_21": null,
+    "definition": "median hours, PR open to merge, Tier B",
+    "id": "time_to_merge_B",
+    "target_hours_max": 48,
+    "target_status": "SPECIFIED starting value; re-derive from first reads"
+   },
+   {
+    "baseline_2026_10_21": "sync pickup ~25s (single proof)",
+    "definition": "median minutes, note authored to VERIFIED_LIVE",
+    "id": "tier_c_land_time",
+    "target_minutes_max": 15
+   },
+   {
+    "baseline_2026_10_21": null,
+    "definition": "defects found <= 7 days after merge and attributed to the PR / merges in period",
+    "id": "post_merge_escape_rate",
+    "target": "<= 0.02 and never rising on 2 consecutive reads"
+   },
+   {
+    "baseline_2026_10_21": "broken (wall = 1 card incident)",
+    "definition": "lag between newest note landing on main and its feed entry",
+    "id": "feed_freshness",
+    "target_minutes_max": 5
+   },
+   {
+    "baseline_2026_10_21": null,
+    "definition": "merges touching Hub source not yet deployed",
+    "id": "deploy_freshness",
+    "target": "0 beyond 30 minutes"
+   }
+  ],
+  "single_week_rule": "no band is judged on one week unless a safety metric trips"
+ },
+ "canonical_id": "0033",
+ "canonical_prose": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md",
+ "companions": [
+  "BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.human.md",
+  "goal files: files/balanced-machine/ (design origin + GAUGE-READ-2026-10-21.md)"
+ ],
+ "evidence": {
+  "blockers": {
+   "CONFLICT": 5,
+   "CONTENT": 16,
+   "HUMAN": 5,
+   "OTHER": 2,
+   "PAPERWORK": 22
+  },
+  "incidents": [
+   {
+    "date": "2026-10-21",
+    "fact": "direct push 2731e914 deleted 636 note files on an unverified quoted word; no PR gate ever saw it",
+    "id": "deletion-639"
+   },
+   {
+    "date": "2026-10-21",
+    "fact": "scorecards existed but were machine-invisible (header case, heading wording, stale head pins); hours burned re-posting",
+    "id": "matcher-form-failures"
+   },
+   {
+    "date": "2026-10-21",
+    "fact": "two Receipt gate runs at one head 3s apart (115680847369 success, 115680862874 failure); latest-per-name = failure with no output",
+    "id": "pr2552-twin-runs"
+   },
+   {
+    "date": "2026-10-21",
+    "fact": "hub-sync died silently on VM replacement; deploy coupled to note landings via sync-smart-notes.py::update_hub_and_deploy; canonical Hub fixes invisible until a note landed",
+    "id": "hub-wall-1-card"
+   }
+  ],
+  "note": "tier-audit.md and gate-mechanics.md absent at authoring (checked 2026-10-21T22:02Z); counts derived by the author from the audit lane raw pulls.",
+  "open_prs_classified": 50,
+  "paperwork_block_rate_nonconflict_pct": 48.9,
+  "paperwork_block_rate_pct": 44.0,
+  "prs_with_receipt_gate_red": 17,
+  "prs_with_team_review_red": 40,
+  "pulled_at": "2026-10-21T21:51Z",
+  "source_file": "hidden_files/gate-redesign/raw/classification.json",
+  "tier_b_paperwork_blocked": "9/18",
+  "tier_c_paperwork_blocked": "10/14",
+  "tier_distribution": {
+   "A": 18,
+   "B": 18,
+   "C": 14
+  }
+ },
+ "falsifier": "Two consecutive weekly gauge reads after the unified gate lands in which the paperwork-block rate does not fall toward < 0.10 and no loosening lever is applied per the adjustment rule \u2014 the self-tuning claim is then false and the design returns to the ratifying seat.",
+ "flags_for_ratification": [
+  {
+   "id": "tier-b-floor",
+   "item": "Tier B scorecard_min = 8.0",
+   "locations": [
+    "tiers.B.scorecard_min",
+    "DESIGN.ai.md sections 2-3"
+   ],
+   "reason": "ratified core says 'good-and-verified bar' without a number; 8.0 specified from Shawn's 2026-10-21 statement; single value to change if the ratifying seat prefers another"
+  },
+  {
+   "id": "ruleset-scoping",
+   "item": "per-tier Required-check scoping may not be directly expressible in the platform ruleset",
+   "locations": [
+    "governor_click.fallback_if_scoping_unavailable"
+   ],
+   "reason": "design is workable either way via the fallback in governor_click; step 1 must determine which branch is real before step 7"
+  },
+  {
+   "id": "ttm-bands",
+   "item": "time-to-merge target bands are SPECIFIED starting values",
+   "locations": [
+    "balance_gauge.metrics time_to_merge_A/B"
+   ],
+   "reason": "no measured baseline exists yet; first two weekly reads should re-derive them from observed medians"
+  }
+ ],
+ "flows": {
+  "hub": {
+   "deploy": {
+    "on_smoke_failure": "automatic rollback to previous deployed commit + defect note",
+    "pipeline": [
+     "syntax gate on changed Hub files",
+     "deploy",
+     "smoke check: GET https://nayanet.live/ == 200 and served feed array parses",
+     "board receipt naming deployed commit SHA"
+    ],
+    "trigger": "merge to main changing Hub source paths (HUB/** and the canonical Hub source set) only; note landings never trigger or carry a deploy"
+   },
+   "root_defect": "deploy coupled to note landings (sync-smart-notes.py::update_hub_and_deploy); sync death on VM replacement was silent",
+   "sync": {
+    "heartbeat": "timestamped status every cycle",
+    "liveness_alarm": "no successful cycle for 10 minutes (30 missed cycles) => alarm posted to live board naming the stall",
+    "mode": "standing watcher, 20s git-protocol poll, additive-only"
+   }
+  },
+  "note": {
+   "absence_verdict_rule": "any absence verdict names the forms probed",
+   "name": "the note door",
+   "steps": [
+    "author (nine sections, topic path, full IB id)",
+    "validate (Tier C machine validation)",
+    "land (direct landing on main \u2014 the only door; no PR)",
+    "sync (standing watcher pickup; observed 25s on 2026-10-21 live-fire)",
+    "VERIFIED_LIVE"
+   ],
+   "verified_live_checks": [
+    "file present in main tree at claimed path",
+    "note's own entry present in baked feed array",
+    "page https://nayanet.live/s/sn#### returns 200 \u2014 probe padded AND unpadded id forms, GET not HEAD",
+    "share image returns 200 (GET)"
+   ]
+  },
+  "supabase": {
+   "apply": {
+    "authority": "Shawn's tap, per table batch",
+    "bundling": "never bundle two tables in one apply",
+    "procedure": [
+     "apply ONE table",
+     "live-verify every mapped path of that table",
+     "any regression => immediate rollback of that table + flow-blocked report with exact conflict",
+     "next table only on clean pass"
+    ]
+   },
+   "issue": 2823,
+   "law": "maximum protection with zero interruption to any working flow; a fix that blocks flow is rolled back and reported flow-blocked with the exact conflict",
+   "prep": [
+    "re-derive table inventory from live schema (design-time known set: hub_smart_notes, hub_smart_notes_archive, Smart Mail, Spaces, Lists, build-queue tables)",
+    "per table: map every real working path (reader/writer, auth context, operations exercised live) BEFORE shaping policy",
+    "shape owner-scoped RLS preserving every mapped path; deny-by-default only where no working path exists; blunt deny-all NOT approved",
+    "stage per-table policy SQL as versioned files with prior policy kept for rollback"
+   ]
+  }
+ },
+ "freshness_rule": {
+  "applies_to_tiers": [
+   "B"
+  ],
+  "definition": "diff_hash = sha256 over the sorted changed-file list of (path + NUL + blob_sha_at_head(path)), computed vs merge-base with main",
+  "name": "diff-hash pinning",
+  "repin": "addendum comment naming the new diff hash + one line confirming the delta was read; accepted iff posted by the original scoring seat or co-signed by a second different seat in the same thread",
+  "stale_condition": "current diff_hash != scorecard pinned diff hash (head movement alone NEVER stales)",
+  "tier_A_exception": "Tier A keeps exact-head pinning; any head move requires a full re-score"
+ },
+ "governor_click": {
+  "after": {
+   "content_checks": "unchanged",
+   "tier_A": [
+    "Team review + scorecard receipt",
+    "Receipt gate (evidence or it didn't happen)"
+   ],
+   "tier_B": [
+    "Paperwork gate (scorecard + evidence)"
+   ],
+   "tier_C": "no PR surface \u2014 nothing required"
+  },
+  "before_required_all_prs": [
+   "Team review + scorecard receipt",
+   "Receipt gate (evidence or it didn't happen)",
+   "content checks as currently configured"
+  ],
+  "fallback_if_scoping_unavailable": "both legacy checks remain Required repo-wide; the unified gate runs as a mode inside the Team-review check that auto-passes Tier B on unified predicates and Tier C on the door citation; check names stay stable; the click then is exactly: add 'Paperwork gate (scorecard + evidence)' to Required, remove nothing",
+  "precondition": "step 1 build records which branch (scoped vs fallback) is live before this click is presented",
+  "step": 7,
+  "surface": "ruleset 23853581 / branch protection on main"
+ },
+ "governor_click_executed": "2026-10-21 ~22:34Z (Shawn removed the required-status-checks rule from ruleset 23853581; verified live by the main seat the same evening)",
+ "implementation_sequence": [
+  {
+   "lands_through": "current full protocol (Tier A bar)",
+   "name": "Unified Paperwork Gate build (unified gate + self-explaining-reds contract for all paperwork gates + diff-hash freshness + determinism rule)",
+   "owner": "gate machinery owners; builder seat != scoring seat",
+   "step": 1
+  },
+  {
+   "lands_through": "Tier A protocol (it classifies Tier A)",
+   "name": "Tier classification automation (path-based tagger on PR open/synchronize; tier + rule citation comment; label; different-seat override with reason)",
+   "owner": "build lane",
+   "step": 2
+  },
+  {
+   "lands_through": "n/a (close + per-note VERIFIED_LIVE)",
+   "name": "PR #2854 disposition + door-only note policy (close superseded-by-the-door with landing plan cited; notes land via the door; tagger closes note PRs on sight)",
+   "owner": "main seat + sync lane",
+   "step": 3
+  },
+  {
+   "lands_through": "Tier A protocol (sync/engine code)",
+   "name": "Hub deploy decoupling (standalone deploy + smoke + rollback; sync heartbeat + liveness alarm; deploy removed from sync-smart-notes.py combined path)",
+   "owner": "Hub/sync lane (Clarity) + different-seat verifier",
+   "step": 4
+  },
+  {
+   "lands_through": "Tier B for prep artifacts; APPLY = Shawn's tap per table (issue #2823)",
+   "name": "Supabase fitting \u2014 prep only (inventory, working-path maps, per-table policy files staged)",
+   "owner": "Nitro lane",
+   "step": 5
+  },
+  {
+   "lands_through": "Tier B unified gate (after step 1)",
+   "name": "Balance-gauge instrumentation + first weekly read (automate derivations; publish baselines; replace SPECIFIED bands where data exists)",
+   "owner": "director/VERIFY lane",
+   "step": 6
+  },
+  {
+   "lands_through": "human-only repo settings action",
+   "name": "FINAL: ruleset Required-checks change (governor click)",
+   "owner": "Shawn",
+   "step": 7
+  }
+ ],
+ "law": "THE BALANCED MACHINE \u2014 NAYA LAW, Shawn Vibert, Director, ratified 2026-10-21 ~21:50Z",
+ "owner": "main seat (weekly gauge read); gate machinery owners (step 1); Shawn (step 7 governor click \u2014 executed 2026-10-21 ~22:34Z)",
+ "ratified": {
+  "at": "2026-10-21T21:50Z",
+  "by": "Shawn Vibert",
+  "source": "chat directive (Balanced Machine ratification)"
+ },
+ "schema": "naya/balanced-machine/v1",
+ "self_explaining_reds": {
+  "applies_to": [
+   "Paperwork gate (scorecard + evidence)",
+   "Team review + scorecard receipt",
+   "Receipt gate (evidence or it didn't happen)"
+  ],
+  "contract": "every failed predicate emits one line in the check-run output AND a PR comment",
+  "defect_rule": "a red without a CURE line is a defect filed against the gate's owners",
+  "line_format": "MISSING: <what> \u2014 CURE: <the single curing action> (owner: <seat/lane>)"
+ },
+ "statement": "Value = quality x completion; gates protect and never block: work travels one of three doors matched to its blast radius (A full bar 9.5, B one unified paperwork gate at 8.0 with diff-hash freshness, C machine validation via the note door), and a weekly balance gauge tunes the bar on counted numbers.",
+ "status": "ratified_core_specified",
+ "tiers": {
+  "A": {
+   "bar": {
+    "content_checks_green": true,
+    "different_seat": true,
+    "gates_required": [
+     "Team review + scorecard receipt",
+     "Receipt gate (evidence or it didn't happen)"
+    ],
+    "pinning": "exact head SHA",
+    "post_merge_faithfulness_proof": true,
+    "scorecard_min": 9.5
+   },
+   "mass_deletion_rule": "any PR deleting > 10 files is Tier A regardless of paths; additionally requires L607 source-verified human instruction + standing-law check before the PR is opened",
+   "name": "full bar",
+   "paths_any": [
+    "BRAIN/01-GOVERNANCE/**",
+    "AGENTS.md",
+    "SOUL.md",
+    "protocol/doctrine files",
+    ".github/workflows/**",
+    "*auth*",
+    "*security*",
+    "*rls*",
+    "credentials handling",
+    "production deploy paths (workers, deploy scripts, HUB/ deploy sources)",
+    "gate machinery (tools/check_merge_consensus.py, gate tools, tools/activation_gate.py)",
+    "sync/engine code (tools/sync-smart-notes.py, hub-sync)"
+   ]
+  },
+  "B": {
+   "bar": {
+    "content_checks_green": true,
+    "different_seat": true,
+    "gates_required": [
+     "Paperwork gate (scorecard + evidence)"
+    ],
+    "pinning": "diff-hash (see freshness_rule)",
+    "scorecard_min": 8.0,
+    "scorecard_min_status": "SPECIFIED from Shawn 2026-10-21 framing ('an 8 out of 10 that goes through and works'); confirm at ratification",
+    "unresolved_blocking_findings_allowed": 0,
+    "verification_attestation_required": true
+   },
+   "name": "one unified gate",
+   "paths": "everything not A and not C"
+  },
+  "C": {
+   "classes": [
+    "Smart Note filings (BRAIN/05-MEMORY/SMART-NOTES/**, SUPER-NOTES/** filings)",
+    "index/registry regenerations (BRAIN/NAYAPOWER-BRAIN-INDEX.json, BRAIN/REAL-TREE.*, .naya/memory/smart-notes/index.json and generator outputs)",
+    "pure data files"
+   ],
+   "name": "machine validation only",
+   "pr_surface": "none \u2014 Tier C travels by the note door (direct landings); a Tier C PR is closed superseded-by-the-door",
+   "scorecard": null,
+   "specimen": {
+    "commits": 625,
+    "disposition": "close as superseded-by-the-door; content lands via the door",
+    "files": 1667,
+    "note": "audit-lane path rules classified #2854 Tier A (accreted production/protocol paths); disposition is by substance per ratified core",
+    "pr": 2854
+   },
+   "validation": [
+    "nine-section schema check",
+    "SN-collision live scan (board claims, open PR heads, commit graph, date partitions) with scan timestamp announced",
+    "syntax/parse check of generated files",
+    "indexes regenerated from landed tree, never hand-edited"
+   ]
+  },
+  "classification": {
+   "automated_by": "tier tagger (implementation step 2)",
+   "by": "paths touched in PR diff vs merge-base; highest tier wins",
+   "override": "different seat, stated reason in PR comment, logged"
+  }
+ },
+ "title": "THE BALANCED MACHINE",
+ "tongues": {
+  "ai": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md",
+  "human": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md",
+  "machine": "BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json"
+ },
+ "unified_gate": {
+  "applies_to_tiers": [
+   "B"
+  ],
+  "determinism_rule": "one evaluation per (head, trigger-event); full predicate-by-predicate result posted as PR comment and mirrored as check-run output; a duplicate run at the same head must reproduce the identical verdict or the gate files a defect note against itself",
+  "matcher": "reuse tools/check_merge_consensus.py scorecard predicate; no second matcher",
+  "name": "Paperwork gate (scorecard + evidence)",
+  "predicates": [
+   {
+    "id": "scorecard_present",
+    "rule": "gate-format scorecard comment on the PR (header + ## SCORECARD block with head/seat/score/verdict)"
+   },
+   {
+    "id": "different_seat",
+    "rule": "scorecard seat != PR author declared Seat (case-insensitive)"
+   },
+   {
+    "id": "score_floor",
+    "rule": "score >= tiers.B.scorecard_min AND verification attestation present in scorecard body"
+   },
+   {
+    "id": "freshness",
+    "rule": "scorecard pinned diff hash == current diff hash (see freshness_rule)"
+   },
+   {
+    "id": "evidence_resolves",
+    "rule": "every link/handle in PR body ## Evidence section resolves (HTTP 200 or API-resolvable); bare backticked identifiers fail"
+   }
+  ],
+  "replaces_for_tier_B": [
+   "Team review + scorecard receipt",
+   "Receipt gate (evidence or it didn't happen)"
+  ]
+ },
+ "value_law": {
+  "edge_rule": "Push to the edge of what is possible; know where the edge is; never cross it.",
+  "formula": "value = quality * completion",
+  "statement": "An 8/10 that ships beats a 9.5 that never lands. Gates protect the system; a gate that blocks flow is a defect.",
+  "undone_value": 0
+ }
+}
