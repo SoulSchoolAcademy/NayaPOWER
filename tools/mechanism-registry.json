@@ -1,0 +1,885 @@
+{
+  "generated_by": "tools/mechanism_registry.py",
+  "generated_from_commit": "159630c18a278f0a9104cc758f066a357de1492d",
+  "mechanisms": [
+    {
+      "call_sites": [
+        "on: pull_request_target"
+      ],
+      "doc_refs": [],
+      "guards": "Activation Delivery Gate",
+      "kind": "workflow",
+      "name": "Activation Delivery Gate",
+      "owner_file": ".github/workflows/activation-delivery-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Activation Mint",
+      "kind": "workflow",
+      "name": "Activation Mint",
+      "owner_file": ".github/workflows/activation-mint.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Activity Feed Projection",
+      "kind": "workflow",
+      "name": "Activity Feed Projection",
+      "owner_file": ".github/workflows/activity-feed.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request_target"
+      ],
+      "doc_refs": [],
+      "guards": "Claim-Evidence Gate",
+      "kind": "workflow",
+      "name": "Claim-Evidence Gate",
+      "owner_file": ".github/workflows/claim-evidence-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push",
+        "on: pull_request"
+      ],
+      "doc_refs": [],
+      "guards": "Collective Chain Readiness Gate",
+      "kind": "workflow",
+      "name": "Collective Chain Readiness Gate",
+      "owner_file": ".github/workflows/collective-chain-readiness-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_dispatch",
+        "on: schedule",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Current Truth Resolver",
+      "kind": "workflow",
+      "name": "Current Truth Resolver",
+      "owner_file": ".github/workflows/current-truth-resolver.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Deploy Hub to Cloudflare",
+      "kind": "workflow",
+      "name": "Deploy Hub to Cloudflare",
+      "owner_file": ".github/workflows/deploy-hub-cloudflare.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Design Gate",
+      "kind": "workflow",
+      "name": "Design Gate",
+      "owner_file": ".github/workflows/design-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "doc-completeness-gate",
+      "kind": "workflow",
+      "name": "doc-completeness-gate",
+      "owner_file": ".github/workflows/doc-completeness-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Governed Production Promotion",
+      "kind": "workflow",
+      "name": "Governed Production Promotion",
+      "owner_file": ".github/workflows/governed-supabase-production-deploy.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push",
+        "on: schedule",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Hub Deploy",
+      "kind": "workflow",
+      "name": "Hub Deploy",
+      "owner_file": ".github/workflows/hub-deploy.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: schedule",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Hub Feeds Emit",
+      "kind": "workflow",
+      "name": "Hub Feeds Emit",
+      "owner_file": ".github/workflows/hub-feeds-emit.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Intake Contract Emitter Gate",
+      "kind": "workflow",
+      "name": "Intake Contract Emitter Gate",
+      "owner_file": ".github/workflows/intake-contract-emitter-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push",
+        "on: pull_request"
+      ],
+      "doc_refs": [],
+      "guards": "Kernel Tests",
+      "kind": "workflow",
+      "name": "Kernel Tests",
+      "owner_file": ".github/workflows/kernel-tests.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Live ACT Node Proof",
+      "kind": "workflow",
+      "name": "Live ACT Node Proof",
+      "owner_file": ".github/workflows/live-act-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Live CONNECT Graph Proof",
+      "kind": "workflow",
+      "name": "Live CONNECT Graph Proof",
+      "owner_file": ".github/workflows/live-connect-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_dispatch",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Live CVO Runtime Proof",
+      "kind": "workflow",
+      "name": "Live CVO Runtime Proof",
+      "owner_file": ".github/workflows/live-cvo-runtime-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_dispatch",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Live Intelligence Commit Proof",
+      "kind": "workflow",
+      "name": "Live Intelligence Commit Proof",
+      "owner_file": ".github/workflows/live-intelligence-commit-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Live KNOW Node Proof",
+      "kind": "workflow",
+      "name": "Live KNOW Node Proof",
+      "owner_file": ".github/workflows/live-know-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Live LAW Node Proof",
+      "kind": "workflow",
+      "name": "Live LAW Node Proof",
+      "owner_file": ".github/workflows/live-law-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Live PROVE Node Proof",
+      "kind": "workflow",
+      "name": "Live PROVE Node Proof",
+      "owner_file": ".github/workflows/live-prove-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_run",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Live Supabase Runtime Proof",
+      "kind": "workflow",
+      "name": "Live Supabase Runtime Proof",
+      "owner_file": ".github/workflows/live-supabase-runtime-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: workflow_dispatch",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Live Verified AI Action Proof",
+      "kind": "workflow",
+      "name": "Live Verified AI Action Proof",
+      "owner_file": ".github/workflows/live-verified-ai-action-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request"
+      ],
+      "doc_refs": [],
+      "guards": "Living Map Compiler Tests",
+      "kind": "workflow",
+      "name": "Living Map Compiler Tests",
+      "owner_file": ".github/workflows/map-compiler-tests.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: schedule",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "map-compiler",
+      "kind": "workflow",
+      "name": "map-compiler",
+      "owner_file": ".github/workflows/map-compiler.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request",
+        "on: pull_request_review",
+        "on: issue_comment"
+      ],
+      "doc_refs": [],
+      "guards": "Merge consensus gate",
+      "kind": "workflow",
+      "name": "Merge consensus gate",
+      "owner_file": ".github/workflows/merge-consensus-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: schedule",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Mission State Watch",
+      "kind": "workflow",
+      "name": "Mission State Watch",
+      "owner_file": ".github/workflows/mission-state-watch.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: schedule",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "NayaNET Agent Capture",
+      "kind": "workflow",
+      "name": "NayaNET Agent Capture",
+      "owner_file": ".github/workflows/nayanet-agent-capture.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Post-Merge Guardian",
+      "kind": "workflow",
+      "name": "Post-Merge Guardian",
+      "owner_file": ".github/workflows/post-merge-guardian.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Protocol Gates",
+      "kind": "workflow",
+      "name": "Protocol Gates",
+      "owner_file": ".github/workflows/protocol-gates.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: schedule",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "Protocol Watchdog",
+      "kind": "workflow",
+      "name": "Protocol Watchdog",
+      "owner_file": ".github/workflows/protocol-watchdog.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Ratified Guard",
+      "kind": "workflow",
+      "name": "Ratified Guard",
+      "owner_file": ".github/workflows/ratified-guard.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request"
+      ],
+      "doc_refs": [],
+      "guards": "Receipt pin gate",
+      "kind": "workflow",
+      "name": "Receipt pin gate",
+      "owner_file": ".github/workflows/receipt-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Safety Grant Gate",
+      "kind": "workflow",
+      "name": "Safety Grant Gate",
+      "owner_file": ".github/workflows/safety-grant-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push",
+        "on: pull_request"
+      ],
+      "doc_refs": [],
+      "guards": "Scorecard Regression Tests",
+      "kind": "workflow",
+      "name": "Scorecard Regression Tests",
+      "owner_file": ".github/workflows/scorecard-tests.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request",
+        "on: push"
+      ],
+      "doc_refs": [],
+      "guards": "Spec Integrity",
+      "kind": "workflow",
+      "name": "Spec Integrity",
+      "owner_file": ".github/workflows/spec-integrity.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push",
+        "on: pull_request"
+      ],
+      "doc_refs": [],
+      "guards": "Unified Activation Gate",
+      "kind": "workflow",
+      "name": "Unified Activation Gate",
+      "owner_file": ".github/workflows/unified-activation-gate.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: push",
+        "on: pull_request",
+        "on: workflow_dispatch"
+      ],
+      "doc_refs": [],
+      "guards": "WO3 Admission Gate Proof",
+      "kind": "workflow",
+      "name": "WO3 Admission Gate Proof",
+      "owner_file": ".github/workflows/wo3-admission-gate-proof.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "on: pull_request"
+      ],
+      "doc_refs": [],
+      "guards": "Worker Protocol Gates",
+      "kind": "workflow",
+      "name": "Worker Protocol Gates",
+      "owner_file": ".github/workflows/worker-protocol-gates.yml",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/activation-delivery-gate.yml",
+        ".github/workflows/unified-activation-gate.yml",
+        "tools/activation_checklist.py",
+        "tools/activation_gate_ci_proof.py",
+        "tools/activation_mint.py",
+        "tools/issuance_perm_proof.py",
+        "tools/round4-battery/battery_r4.py",
+        "tools/round4-battery/live_forgery.py"
+      ],
+      "doc_refs": [
+        "LEDGER/ACTIVITY-LEDGER.md",
+        "NAYA-ACTIVATION/ACTIVATION-RECEIPT-V2.json",
+        "tools/solved_problem_registry.json"
+      ],
+      "guards": "Unified Activation Gate \u2014 ROUND 2. ONE receipt schema, ONE protected truth",
+      "kind": "tool",
+      "name": "activation_gate",
+      "owner_file": "tools/activation_gate.py",
+      "test_refs": [
+        "tools/test_activation_gate.py",
+        "tools/test_mechanism_registry.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/unified-activation-gate.yml"
+      ],
+      "doc_refs": [
+        "LEDGER/ACTIVITY-LEDGER.md"
+      ],
+      "guards": "CI proof for the unified activation gate \u2014 ROUND 3 (Naya 1's bar).",
+      "kind": "tool",
+      "name": "activation_gate_ci_proof",
+      "owner_file": "tools/activation_gate_ci_proof.py",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/receipt-gate.yml",
+        "kernel/act_pipeline.py",
+        "supabase/functions/nayanet-learning-verify/scorecard_receipt_authority.js",
+        "tools/check_scorecard_receipt_pin.py",
+        "tools/smart_link_regen.py"
+      ],
+      "doc_refs": [
+        ".naya/scorecard-receipt-authority-DESIGN.md",
+        "BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.ai.md",
+        "BRAIN/01-GOVERNANCE/0003-full-auto-merge-v1.machine.json",
+        "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.ai.md",
+        "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json",
+        "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2-ENCODING-AUDIT.md",
+        "BRAIN/01-GOVERNANCE/README.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/MERGE-DECISION-INTEGRITY/SN-0342/IB-SMART-NOTE-20260930-sn0342-law-lands-in-code.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/CAPTURE-RETAIN-SIMPLIFY/SN-0436/IB-SMART-NOTE-20261005-sn0436-cited-is-not-compounded.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0435/IB-SMART-NOTE-20261005-sn0435-last-mile-of-law-wired-not-written.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0340/IB-SMART-NOTE-20261005-sn0340-the-scorecard-law.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0347/IB-SMART-NOTE-20261005-sn0347-restatement-is-not-capture.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/DOCTRINE/MANTRA/SN-0479/IB-SMART-NOTE-20261006-sn0479-the-mantra.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/SECURITY-POSTURE/SN-0579/IB-SMART-NOTE-20261007-sn0579-nan-comparisons-false-finiteness-is-the-gate.md",
+        "LEDGER/ACTIVITY-LEDGER.md",
+        "docs/merge-receipt-gate-wiring.md",
+        "tools/spec_integrity_manifest.json"
+      ],
+      "guards": "Enforcement predicate for FULL-AUTO-MERGE-V1, authorized under the supreme",
+      "kind": "tool",
+      "name": "auto_merge_gate",
+      "owner_file": "tools/auto_merge_gate.py",
+      "test_refs": [
+        "tests/test_receipt_pin_gate.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/claim-evidence-gate.yml",
+        "tools/ci_claim_evidence_gate.py"
+      ],
+      "doc_refs": [],
+      "guards": "Anti-citogenesis claim-evidence gate (spec, parked).",
+      "kind": "tool",
+      "name": "check_claim_evidence",
+      "owner_file": "tools/check_claim_evidence.py",
+      "test_refs": [
+        "tests/test_ci_claim_evidence_gate.py",
+        "tests/test_claim_evidence_gate.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/merge-consensus-gate.yml",
+        "tools/scorecard.py"
+      ],
+      "doc_refs": [
+        "BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md",
+        "LEDGER/ACTIVITY-LEDGER.md",
+        "receipts/PR-2373.json"
+      ],
+      "guards": "Merge-consensus gate: no merge without cross-seat review + scorecard receipt.",
+      "kind": "tool",
+      "name": "check_merge_consensus",
+      "owner_file": "tools/check_merge_consensus.py",
+      "test_refs": [
+        "tests/test_check_merge_consensus.py",
+        "tests/test_check_merge_consensus_mention_vs_use.py",
+        "tests/test_consensus_gate_trigger.py",
+        "tests/test_gate_consensus_pagination.py",
+        "tests/test_holdveto_w333.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/protocol-gates.yml"
+      ],
+      "doc_refs": [
+        "LEDGER/ACTIVITY-LEDGER.md"
+      ],
+      "guards": "Fail if a competing decision/scoring engine is defined in kernel/.",
+      "kind": "tool",
+      "name": "check_no_competing_engine",
+      "owner_file": "tools/check_no_competing_engine.py",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/worker-protocol-gates.yml"
+      ],
+      "doc_refs": [],
+      "guards": "No-silent-deletion gate: every deleted file must be declared.",
+      "kind": "tool",
+      "name": "check_pr_deletions",
+      "owner_file": "tools/check_pr_deletions.py",
+      "test_refs": [
+        "tools/test_check_pr_deletions.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/worker-protocol-gates.yml",
+        "tools/pr_body_selfcheck.py"
+      ],
+      "doc_refs": [
+        ".github/pull_request_template.md",
+        "BRAIN/90-OPERATIONS/0006-THE-NAYA-TOOL-DIRECTORY-V1.md",
+        "BRAIN/90-OPERATIONS/field-manuals/07-evidence.human.md",
+        "BRAIN/90-OPERATIONS/field-manuals/19-measurement.ai.md",
+        "BRAIN/90-OPERATIONS/field-manuals/19-measurement.human.md",
+        "BRAIN/90-OPERATIONS/field-manuals/19-measurement.machine.json",
+        "BRAIN/90-OPERATIONS/field-manuals/29-verify.human.md",
+        "LEDGER/ACTIVITY-LEDGER.md"
+      ],
+      "guards": "Receipt gate: a PR without live evidence is not done.",
+      "kind": "tool",
+      "name": "check_pr_receipt",
+      "owner_file": "tools/check_pr_receipt.py",
+      "test_refs": [
+        "tests/test_receipt_gate_backtick_trap.py",
+        "tests/test_receipt_gate_checkout_depth.py",
+        "tools/test_pr_body_selfcheck.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/receipt-gate.yml",
+        "tools/auto_merge_gate.py"
+      ],
+      "doc_refs": [
+        "BRAIN/90-OPERATIONS/0006-THE-NAYA-TOOL-DIRECTORY-V1.md",
+        "LEDGER/ACTIVITY-LEDGER.md",
+        "docs/merge-receipt-gate-wiring.md"
+      ],
+      "guards": "PR-body rung of the merge receipt gate (Lane 9, t922 rebuild).",
+      "kind": "tool",
+      "name": "check_scorecard_receipt_pin",
+      "owner_file": "tools/check_scorecard_receipt_pin.py",
+      "test_refs": [
+        "tests/test_receipt_pin_gate.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [],
+      "doc_refs": [],
+      "guards": "Tongue-coverage checker: every substantive work ships in three tongues.",
+      "kind": "tool",
+      "name": "check_tongue_coverage",
+      "owner_file": "tools/check_tongue_coverage.py",
+      "test_refs": [
+        "tools/test_tongue_coverage.py"
+      ],
+      "wired": false
+    },
+    {
+      "call_sites": [
+        ".github/workflows/claim-evidence-gate.yml",
+        "tools/pr_body_selfcheck.py"
+      ],
+      "doc_refs": [
+        "LEDGER/ACTIVITY-LEDGER.md"
+      ],
+      "guards": "CI caller for the anti-citogenesis claim-evidence gate.",
+      "kind": "tool",
+      "name": "ci_claim_evidence_gate",
+      "owner_file": "tools/ci_claim_evidence_gate.py",
+      "test_refs": [
+        "tests/test_ci_claim_evidence_gate.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [],
+      "doc_refs": [],
+      "guards": "Completeness Gate \u2014 Gate 3 of 7 (Operating Code V2).",
+      "kind": "tool",
+      "name": "completeness_gate",
+      "owner_file": "tools/completeness_gate.py",
+      "test_refs": [
+        "tools/test_completeness_gate.py"
+      ],
+      "wired": false
+    },
+    {
+      "call_sites": [
+        ".github/workflows/activation-delivery-gate.yml",
+        ".github/workflows/design-gate.yml",
+        ".github/workflows/unified-activation-gate.yml",
+        "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/design-compliance-check.py",
+        "tools/activation_gate.py",
+        "tools/activation_gate_ci_proof.py",
+        "tools/round4-battery/battery_r4.py"
+      ],
+      "doc_refs": [
+        "BRAIN/01-GOVERNANCE/OPERATING-LAW.json",
+        "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
+        "BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/README.md"
+      ],
+      "guards": "NayaNET design gate \u2014 code is law, machine-forced.",
+      "kind": "tool",
+      "name": "design_gate",
+      "owner_file": "tools/design_gate.py",
+      "test_refs": [],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        ".github/workflows/wo3-admission-gate-proof.yml",
+        "kernel/memory_metabolism.py",
+        "kernel/self_integration.py",
+        "orchestrator/__init__.py",
+        "orchestrator/executors.py",
+        "orchestrator/stages.py",
+        "tests/gen_admission_fixtures.py",
+        "tools/learning_verification_queue.py"
+      ],
+      "doc_refs": [
+        "BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json",
+        "BRAIN/07-LEARNING/BACKLOG-TRIAGE-2026-10-09.md",
+        "BRAIN/07-LEARNING/VERIFICATION-QUEUE/README.md",
+        "BRAIN/07-LEARNING/learning-system-blueprint-v1.md",
+        "orchestrator/README.md"
+      ],
+      "guards": "Learning-candidate admission gate \u2014 MACHINE LAW (round 2).",
+      "kind": "tool",
+      "name": "learning_admission_gate",
+      "owner_file": "tools/learning_admission_gate.py",
+      "test_refs": [
+        "tests/test_learning_admission_gate.py",
+        "tests/test_learning_verification_queue.py",
+        "tests/test_node_orchestrator.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [],
+      "doc_refs": [],
+      "guards": "Mechanism registry: every gate the system claims, and whether it is wired.",
+      "kind": "tool",
+      "name": "mechanism_registry",
+      "owner_file": "tools/mechanism_registry.py",
+      "test_refs": [
+        "tools/test_mechanism_registry.py"
+      ],
+      "wired": false
+    },
+    {
+      "call_sites": [
+        ".github/workflows/post-merge-guardian.yml"
+      ],
+      "doc_refs": [
+        "tools/post_merge_guardian.md"
+      ],
+      "guards": "Post-Merge Guardian \u2014 the house-fire loop for landings on main.",
+      "kind": "tool",
+      "name": "post_merge_guardian",
+      "owner_file": "tools/post_merge_guardian.py",
+      "test_refs": [
+        "tools/test_post_merge_guardian.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [],
+      "doc_refs": [],
+      "guards": "protocol_gates.py \u2014 Machine law: executable enforcement of the Team Naya",
+      "kind": "tool",
+      "name": "protocol_gates",
+      "owner_file": "tools/protocol_gates.py",
+      "test_refs": [
+        "tools/protocol_gates_test.py"
+      ],
+      "wired": false
+    },
+    {
+      "call_sites": [],
+      "doc_refs": [
+        "BRAIN/00-SPEC/0007-RETRIEVAL-AUTHORIZATION-GATE-SPEC-V1.md",
+        "LEDGER/ACTIVITY-LEDGER.md"
+      ],
+      "guards": "CANDIDATE \u2014 retrieval-side authorization gate for the retrieval seam.",
+      "kind": "tool",
+      "name": "retrieval_authorization_gate",
+      "owner_file": "tools/retrieval_authorization_gate.py",
+      "test_refs": [
+        "tools/test_retrieval_authorization_gate.py"
+      ],
+      "wired": false
+    },
+    {
+      "call_sites": [
+        ".github/workflows/safety-grant-gate.yml"
+      ],
+      "doc_refs": [
+        "BRAIN/01-GOVERNANCE/0015-SECURITY-ACKNOWLEDGMENTS-V1.md",
+        "tools/safety_grant_allowlist.json"
+      ],
+      "guards": "Safety anon-grant gate (fail-closed CI check for Supabase migrations).",
+      "kind": "tool",
+      "name": "safety_anon_grant_gate",
+      "owner_file": "tools/safety_anon_grant_gate.py",
+      "test_refs": [
+        "tests/test_safety_anon_grant_gate.py"
+      ],
+      "wired": true
+    },
+    {
+      "call_sites": [
+        "tools/learning_yield_scorer.py"
+      ],
+      "doc_refs": [],
+      "guards": "Machine-enforced VERIFIED verdict gate for learning (Pair C scorer's 5-point bar).",
+      "kind": "tool",
+      "name": "verified_verdict_gate",
+      "owner_file": "tools/verified_verdict_gate.py",
+      "test_refs": [
+        "tests/test_learning_convergence_composition.py",
+        "tests/test_verified_verdict_gate.py"
+      ],
+      "wired": true
+    }
+  ],
+  "schema": "naya.mechanism-registry/v1",
+  "summary": {
+    "total": 59,
+    "unwired": 5,
+    "unwired_files": [
+      "tools/check_tongue_coverage.py",
+      "tools/completeness_gate.py",
+      "tools/mechanism_registry.py",
+      "tools/protocol_gates.py",
+      "tools/retrieval_authorization_gate.py"
+    ],
+    "wired": 54
+  }
+}
