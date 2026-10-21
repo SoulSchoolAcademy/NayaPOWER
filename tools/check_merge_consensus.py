@@ -72,7 +72,7 @@ API = "https://api.github.com"
 # team member (joined 2026-10-15); the registry predated her.
 # "chi", "relay" added 2026-10-17 — active reviewers on PR #2718 (Team Nitro);
 # registry updated to match the working team. Remove if not seated.
-# "clarity", "verity", "resolve" added 2026-10-18 — Epsilon w409 F2 systemic:
+# "gpt-6" added to match the already-used Naya GPT-6 seat declaration on PR #2816; this recognizes an existing seat label, it does not grant new permissions.\n# "clarity", "verity", "resolve" added 2026-10-18 — Epsilon w409 F2 systemic:
 # the naming-law lead form "Seat: Naya Clarity Narzan" could never pass the
 # author check (registry had no 'clarity'), so every lead-qualified body hit
 # the wall. Mechanism over ruling: the registry names the working team.
@@ -305,6 +305,24 @@ def _score_of(body):
     return None
 
 
+_HEAD_SHA_FIELD_RE = re.compile(
+    r"(?im)^\s*head(?:[\s_-]*sha)?\s*[:=]\s*([a-f0-9]{40})\s*$"
+)
+
+
+def scorecard_head_of(body):
+    """Return the one unambiguous SHA in an explicit head field.
+
+    Accept common header-shape variants (Head, Head SHA, Head-SHA, HEAD_SHA)
+    while rejecting arbitrary SHA mentions, quoted/inline examples, malformed
+    values, and conflicting duplicate fields.
+    """
+    matches = [m.group(1).lower() for m in _HEAD_SHA_FIELD_RE.finditer(body or "")]
+    if not matches or len(set(matches)) != 1:
+        return None
+    return matches[0]
+
+
 def _looks_like_scorecard(body, head_sha):
     """True if the comment is a scorecard receipt for this exact head SHA:
     it must name the head SHA, say 'scorecard' or 'verdict', and carry either
@@ -316,12 +334,10 @@ def _looks_like_scorecard(body, head_sha):
     low = (body or "").lower()
     if "scorecard" not in low and "verdict" not in low:
         return False
-    if head_sha not in (body or ""):
+    if scorecard_head_of(body) != (head_sha or "").lower():
         return False
-    approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
-                             low))
     score = _score_of(body)
-    return approved or (score is not None and score >= 9.5)
+    return score is not None and 9.5 <= score <= 10
 
 
 def run_gate(token, repo, pr_number, head_sha):

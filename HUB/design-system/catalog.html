@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naya Design System — The Lego Box</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--obsidian-deep); color: var(--silver); font-family: var(--font-ui); padding: 32px 20px 80px; }
+  .wrap { max-width: 1060px; margin: 0 auto; }
+  .kicker { font-size: var(--fs-kicker); letter-spacing: .18em; text-transform: uppercase; color: var(--sp-purple); margin-bottom: 10px; }
+  h1 { font-family: var(--font-voice); color: var(--white); font-size: var(--fs-display); font-weight: 600; margin-bottom: 8px; }
+  .sub { color: var(--slate); font-size: var(--fs-body); line-height: var(--lh-body); max-width: 640px; margin-bottom: 36px; }
+  .board { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg);
+           padding: var(--pad-board); margin-bottom: var(--gap); box-shadow: var(--elev-2), var(--edge-light);
+           transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease), border-color var(--dur-med) var(--ease); }
+  .board:hover { transform: var(--lift-hover); border-color: var(--accent, var(--sp-purple)); box-shadow: var(--elev-3), var(--edge-light); }
+  .board h2 { color: var(--white); font-size: var(--fs-headline); margin-bottom: 6px; }
+  .board p { font-size: var(--fs-body); line-height: var(--lh-body); margin-bottom: 12px; }
+  .board .detail { font-size: var(--fs-detail); color: var(--slate); }
+  .naya-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--touch-min);
+              min-width: var(--touch-min); padding: 10px 22px; border-radius: var(--radius-pill);
+              background: var(--obsidian); color: var(--white); font-family: var(--font-ui); font-size: 15px;
+              border: 1px solid var(--btn-accent, var(--sp-purple)); cursor: pointer;
+              box-shadow: var(--elev-2), var(--edge-light);
+              transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease); text-decoration: none; }
+  .naya-btn:hover { transform: var(--lift-hover); box-shadow: var(--elev-3), var(--edge-light); }
+  .naya-btn:active { transform: var(--press); box-shadow: var(--elev-1); }
+  .naya-btn:focus-visible { outline: 2px solid var(--btn-accent, var(--sp-purple)); outline-offset: 2px; }
+  .swatches { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+  .sw { width: 64px; }
+  .sw i { display: block; height: 40px; border-radius: var(--radius-sm); box-shadow: var(--elev-1), var(--edge-light); }
+  .sw span { font-size: 10px; color: var(--slate); display: block; margin-top: 4px; text-align: center; }
+  .spectrum { display: flex; height: 44px; border-radius: var(--radius-md); overflow: hidden; margin: 14px 0; box-shadow: var(--elev-2); }
+  .spectrum div { flex: 1; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gap); }
+  a { color: var(--sp-sapphire); }
+  .law { border-left: 2px solid var(--sp-gold); padding-left: 14px; margin: 18px 0; font-style: italic; color: var(--silver); }
+  @media (prefers-reduced-motion: reduce) { .board, .naya-btn { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">NayaNET · Canonical Design Language</div>
+  <h1>The Lego Box</h1>
+  <p class="sub">Every block in the Naya design system, in one place. Pages consume blocks — they never reinvent them. If the element you need has no block here, build the block first, then the app.</p>
+
+  <div class="board" style="--accent: var(--sp-purple)">
+    <div class="kicker" style="color: var(--sp-purple)">Tokens · tokens.css</div>
+    <h2>The single token set</h2>
+    <p>Obsidian surfaces, neutrals, the spectrum in law order, type scale, elevation steps, motion, touch targets. One file. Every page links it.</p>
+    <div class="spectrum">
+      <div style="background:#a06bff"></div><div style="background:#6675ff"></div><div style="background:#55b9ee"></div><div style="background:#40d3bb"></div><div style="background:#2fe89e"></div><div style="background:#b8ee57"></div><div style="background:#f1d75a"></div><div style="background:#ffbf3d"></div><div style="background:#ff9a5a"></div><div style="background:#ff6b3d"></div><div style="background:#ff5e6c"></div><div style="background:#e84fff"></div>
+    </div>
+    <p class="detail">Law 41 — spectrum assigned by position in reading order, never by category.</p>
+  </div>
+
+  <div class="grid">
+    <div class="board" style="--accent: var(--sp-sapphire)">
+      <div class="kicker" style="color: var(--sp-sapphire)">Block · Buttons</div>
+      <h2>.naya-btn</h2>
+      <p>The one canonical button. Black body, jewel accent, five mandatory states.</p>
+      <a class="naya-btn" href="#" style="--btn-accent: var(--sp-sapphire)">Create</a>
+      <a class="naya-btn" href="#" style="--btn-accent: var(--sp-emerald); margin-left: 8px;">Publish</a>
+      <p class="detail" style="margin-top:12px">Source: library/buttons/ · Laws 21–30</p>
+    </div>
+    <div class="board" style="--accent: var(--sp-emerald)">
+      <div class="kicker" style="color: var(--sp-emerald)">Block · Boards</div>
+      <h2>The board recipe</h2>
+      <p>Obsidian body, theme-tinted hairline edge, white title, silver body, jewel kicker. Lifts and lights on hover — you're feeling it now.</p>
+      <p class="detail">Source: library/boards/ · Laws 31–40</p>
+    </div>
+    <div class="board" style="--accent: var(--sp-gold)">
+      <div class="kicker" style="color: var(--sp-gold)">Block · Jewels</div>
+      <h2>Jewels, badges, icons</h2>
+      <div class="swatches">
+        <div class="sw"><i style="background: radial-gradient(circle at 35% 30%, #ffe9b0, #ffbf3d 60%, #7a5200)"></i><span>gold</span></div>
+        <div class="sw"><i style="background: radial-gradient(circle at 35% 30%, #d6fff0, #2fe89e 60%, #0a5c3c)"></i><span>emerald</span></div>
+        <div class="sw"><i style="background: radial-gradient(circle at 35% 30%, #f3d6ff, #e84fff 60%, #5c0a5c)"></i><span>magenta</span></div>
+        <div class="sw"><i style="background: radial-gradient(circle at 35% 30%, #d6ecff, #55b9ee 60%, #0a3c5c)"></i><span>sapphire</span></div>
+      </div>
+      <p class="detail">Source: library/jewels/ · Laws 42, 46–47, 61–70</p>
+    </div>
+    <div class="board" style="--accent: var(--sp-magenta)">
+      <div class="kicker" style="color: var(--sp-magenta)">Blocks · Lego sets</div>
+      <h2>Composable sections</h2>
+      <p>Epic Elements, Lego Blocks, the Ultimate Design System — full composable sections that click together into pages.</p>
+      <p class="detail">Source: library/blocks/ · Law 91</p>
+    </div>
+  </div>
+
+  <div class="board" style="--accent: var(--sp-teal)">
+    <div class="kicker" style="color: var(--sp-teal)">Doctrine · 100 laws</div>
+    <h2>The law behind the blocks</h2>
+    <div class="law">"Premium, not fancy. Living depth, always. Zero flat."</div>
+    <p><a href="100-LAWS.md">Read all 100 laws</a> — elevation, material, buttons, boards, spectrum, type, icons, motion, mobile, proof. Plus the acceptance checklist and the missing-blocks build order.</p>
+  </div>
+
+  <div class="board" style="--accent: var(--sp-orange)">
+    <div class="kicker" style="color: var(--sp-orange)">Library · Source files</div>
+    <h2>The raw workshops</h2>
+    <p>The original design files, organized: <a href="library/buttons/">buttons</a> · <a href="library/boards/">boards</a> · <a href="library/jewels/">jewels</a> · <a href="library/blocks/">blocks</a> · <a href="library/showcase/">showcase</a>. Study them, extract from them — Law 92: take the actual code.</p>
+  </div>
+
+  <p class="detail" style="margin-top: 28px; text-align: center;">Naya Design System v1 · Obsidian first · Spectrum by position · Screenshot or it didn't happen</p>
+</div>
+</body>
+</html>

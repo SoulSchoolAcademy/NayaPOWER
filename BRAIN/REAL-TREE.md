@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-21  
-**Receipt basis commit:** `4055d50a43b372e64ed11a4d281b6a93b53264e4`  
-**Inventory file count:** 1512  
+**Receipt basis commit:** `ee02c65b8e8ffafea210742bfd7d8e382a63f902`  
+**Inventory file count:** 1524  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 76 |
+| 01-GOVERNANCE | 86 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -23,7 +23,7 @@
 | 10-INTERFACES | 427 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
-| 90-OPERATIONS | 87 |
+| 90-OPERATIONS | 89 |
 | 99-ARCHIVE | 2 |
 | ROOT | 6 |
 
@@ -130,8 +130,18 @@
 - `BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.ai.md` — `c0805bb866dc` (4225 bytes)
 - `BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.human.md` — `49369440028a` (3641 bytes)
 - `BRAIN/01-GOVERNANCE/0031-never-again-v1.machine.json` — `1e58e3180215` (2275 bytes)
+- `BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.ai.md` — `2ec5d3a522f7` (3548 bytes)
+- `BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.human.md` — `40c82a022a3a` (4783 bytes)
+- `BRAIN/01-GOVERNANCE/0032-house-standard-v1.machine.json` — `c1bb2ffa2f41` (2617 bytes)
+- `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md` — `929a5ae44a37` (20247 bytes)
+- `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md` — `f39c47507120` (6877 bytes)
+- `BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json` — `bd9c9a1a8156` (18036 bytes)
+- `BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.ai.md` — `1330b38df3de` (4520 bytes)
+- `BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.human.md` — `2019359e46f3` (3690 bytes)
+- `BRAIN/01-GOVERNANCE/0034-the-house-fire-law-v1.machine.json` — `b26079232d91` (4001 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
+- `BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json` — `414d4ef09ffc` (14715 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
 - `BRAIN/01-GOVERNANCE/OPERATING-LAW.json` — `e4047b872129` (32501 bytes)
 - `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `414cfeb4c7e0` (32957 bytes)
@@ -1491,8 +1501,10 @@
 - `BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md` — `954227fe2d94` (8068 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md` — `188ee5921503` (30828 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md` — `37e4e4b70a23` (20377 bytes)
+- `BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md` — `d82083edcac4` (16418 bytes)
 - `BRAIN/90-OPERATIONS/INTER-LEDGER-PROTOCOL.md` — `67d42af19eae` (24546 bytes)
 - `BRAIN/90-OPERATIONS/NETWORK-MAP.md` — `29c74e9d9d67` (9314 bytes)
+- `BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md` — `6daf7c27c05e` (18308 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 - `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
 - `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `65c502e0f2d7` (9280 bytes)
