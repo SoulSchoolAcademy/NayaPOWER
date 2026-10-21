@@ -42,6 +42,13 @@ def test_network_outage_is_not_misreported_as_dead_evidence():
     assert check_pr_receipt.URL_CHECK_RESULTS["https://example.test/evidence"]["state"] == "UNAVAILABLE"
 
 
+def test_forbidden_url_is_unavailable_not_dead():
+    check_pr_receipt.URL_CHECK_RESULTS.clear()
+    with patch("urllib.request.urlopen", side_effect=[http_error(403), http_error(403)]):
+        assert not check_pr_receipt.check_url("https://example.test/private-evidence")
+    assert check_pr_receipt.URL_CHECK_RESULTS["https://example.test/private-evidence"]["state"] == "UNAVAILABLE"
+
+
 def test_head_rejected_but_get_works_is_live():
     check_pr_receipt.URL_CHECK_RESULTS.clear()
     with patch("urllib.request.urlopen", side_effect=[http_error(405), Response()]):
