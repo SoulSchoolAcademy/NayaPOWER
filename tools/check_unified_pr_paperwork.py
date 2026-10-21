@@ -57,7 +57,7 @@ def _live_pr(event: dict, repo: str, token: str) -> tuple[dict, int]:
 
 
 def _scorecard_for_current_head(comments: list[dict], head: str,
-                                author_seat: str, minimum: float) -> tuple[bool, str]:
+                                author_seat: str, minimum: float, *, tier: str = "A", diff_hash: str | None = None) -> tuple[bool, str]:
     for comment in comments:
         body = comment.get("body") or ""
         low = body.lower()
@@ -66,15 +66,27 @@ def _scorecard_for_current_head(comments: list[dict], head: str,
         # cryptographically bind declared seat labels to agent identities.
         if "scorecard" not in low and "verdict" not in low:
             continue
-        if consensus.scorecard_head_of(body) != head.lower():
+        pinned_head = consensus.scorecard_head_of(body)
+        if not pinned_head:
+            continue
+        diff_pin = scorecard_diff_hash_of(body)
+        same_head = pinned_head == head.lower()
+        same_diff = bool(diff_hash and diff_pin and diff_pin == diff_hash)
+        if tier == "A" and not same_head:
+            continue
+        if tier == "B" and (not same_diff or not diff_hash):
             continue
         seat = consensus.author_seat_of(body)
-        if not seat or seat == author_seat:
+        if not seat or _seat_key(seat) == _seat_key(author_seat):
+            continue
+        if tier == "B" and not _verification_attestation_present(body):
             continue
         score = consensus._score_of(body)
         if score is not None and minimum <= score <= 10:
-            return True, f"scorecard {score:g}/10 from different declared seat {seat} pins current head {head[:12]}"
-    return False, f"no numeric scorecard >= {minimum:g}/10 from a different declared seat with an explicit head field pinned to current head {head[:12]}"
+            if same_head:
+                return True, f"scorecard {score:g}/10 from different declared seat {seat} pins current head {head[:12]}"
+            return True, f"scorecard {score:g}/10 from different declared seat {seat}; material diff fingerprint matches despite head moving ({pinned_head[:12]} -> {head[:12]})"
+    return False, f"no numeric scorecard >= {minimum:g}/10 from a different declared seat with an explicit head field and valid Tier-B diff fingerprint/verification attestation (current head {head[:12]})"
 
 
 def _cross_seat_review(reviews: list[dict], comments: list[dict],
