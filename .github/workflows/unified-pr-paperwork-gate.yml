@@ -47,6 +47,7 @@ jobs:
           GATE_MISSING: ${{ steps.gate.outputs.missing }}
           GATE_CURE: ${{ steps.gate.outputs.cure }}
           GATE_OWNER: ${{ steps.gate.outputs.owner }}
+          GATE_DETAILS: ${{ steps.gate.outputs.details }}
           GATE_HEAD: ${{ steps.gate.outputs.head }}
           GATE_TIER: ${{ steps.gate.outputs.tier }}
         with:
@@ -59,6 +60,7 @@ jobs:
             const missing = process.env.GATE_MISSING || 'The gate did not emit a diagnostic.';
             const cure = process.env.GATE_CURE || 'Inspect workflow logs and repair the verifier; do not bypass it.';
             const cureOwner = process.env.GATE_OWNER || 'Gate maintainer';
+            const details = process.env.GATE_DETAILS || '';
             const head = process.env.GATE_HEAD || 'unavailable';
             const tier = process.env.GATE_TIER || 'unknown';
             const body = [
@@ -69,6 +71,7 @@ jobs:
               '**Tier:** ' + tier,
               '**Current head:** ' + head,
               '**Missing:** ' + missing,
+              ...(details ? ['**Details:** ' + details] : []),
               '**One cure:** ' + cure + ' (owner: ' + cureOwner + ')',
               '',
               '_This single diagnostic comment is updated in place. It is not a scorecard, approval, or authorization._'
