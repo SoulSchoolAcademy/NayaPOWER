@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 17:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-21 18:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 53 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 56 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -64,13 +64,13 @@
 - [#2825](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825) The GitHub webhook receiving door — nayanet-github-intake (verify + ac
 - [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
 
-### BUILD (21)
+### BUILD (23)
+- [#2849](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2849) Step-0 Factory delivery: Nitro's canon evidence lands in the repo (Eli
+- [#2848](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2848) SN-1771 — Already Built: Pick Your Model, Drive Away in Minutes
 - [#2846](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2846) fix(activation): pin Operating Code V2 LF in Windows checkouts (reland
 - [#2845](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2845) fix(smart-notes): make local replay idempotent 📝draft
 - [#2843](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2843) docs(brain): one system in simple words — canonical Smart Note candida 📝draft
-- [#2842](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2842) boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATIO
-- [#2837](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2837) [dec-16] Report generator: flip 9.0 below-bar carrier to 9.5 (draft —  📝draft
-- …and 16 more
+- …and 18 more
 
 ### WIRE (4)
 - [#2834](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2834) fix(readiness): C3 classifier no longer cries wolf on a healthy gate
@@ -96,13 +96,13 @@
 - [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
 - [#2680](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680) t0483: hourly schedule pump for NayaNET Agent Capture
 
-### GOVERN (8)
+### GOVERN (9)
+- [#2850](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2850) 0025 — The SmartNet Protocol V1 (three tongues): the canonical Smart N
 - [#2832](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2832) docs(governance): file 0030 VALUE-ONLY BRAIN twin forms (.ai.md + .mac
 - [#2824](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2824) governance(0032): THE HOUSE STANDARD — take care of the house
 - [#2822](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2822) governance: 0031 NEVER AGAIN — The Reservoir Laws (Shawn, 2026-10-21)
 - [#2815](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2815) Viral Law — the headline standard (§22 of the Smart Note / IB Protocol
-- [#2810](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2810) fix(protocol): reject false independent approvals (case, dismissal, co
-- …and 3 more
+- …and 4 more
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*

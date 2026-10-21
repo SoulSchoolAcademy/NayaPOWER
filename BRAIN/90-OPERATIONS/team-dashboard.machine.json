@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T17:16:10+00:00",
+ "generated_utc": "2026-10-21T18:15:53+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -184,6 +184,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2849,
+     "title": "Step-0 Factory delivery: Nitro's canon evidence lands in the repo (Elite Parts program)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2849",
+     "draft": false
+    },
+    {
+     "number": 2848,
+     "title": "SN-1771 \u2014 Already Built: Pick Your Model, Drive Away in Minutes",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2848",
+     "draft": false
+    },
+    {
      "number": 2846,
      "title": "fix(activation): pin Operating Code V2 LF in Windows checkouts (reland of #2732)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2846",
@@ -218,21 +230,9 @@
      "title": "Clean home R1: remove the 10 byte-proven duplicate files (Shawn-approved)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2835",
      "draft": false
-    },
-    {
-     "number": 2831,
-     "title": "fix(brain): register SN-0800/SN-0805/SN-0806/SN-0807/SN-0808 \u2014 cure the SN direct-push reg",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2831",
-     "draft": false
-    },
-    {
-     "number": 2830,
-     "title": "fix(reporting): heuristic evidence never displaces authoritative score value/source (4th p",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2830",
-     "draft": false
     }
    ],
-   "open_pr_count": 21
+   "open_pr_count": 23
   },
   {
    "id": "wire",
@@ -453,6 +453,12 @@
    "board_lane": "#2175 lane GOVERN",
    "open_prs": [
     {
+     "number": 2850,
+     "title": "0025 \u2014 The SmartNet Protocol V1 (three tongues): the canonical Smart Note protocol",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2850",
+     "draft": false
+    },
+    {
      "number": 2832,
      "title": "docs(governance): file 0030 VALUE-ONLY BRAIN twin forms (.ai.md + .machine.json) \u2014 complet",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2832",
@@ -493,15 +499,9 @@
      "title": "fix(protocol): tighten Honor activation, Hive venue and value truth boundaries",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2802",
      "draft": false
-    },
-    {
-     "number": 2797,
-     "title": "Governance: NAYA OATH OF HONOR (0023) \u2014 Shawn's 2026-10-20 law, three tongues",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797",
-     "draft": false
     }
    ],
-   "open_pr_count": 8
+   "open_pr_count": 9
   }
  ],
  "recent_activity": [
@@ -634,6 +634,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 53,
- "unassigned_prs": 21
+ "open_pr_total": 56,
+ "unassigned_prs": 23
 }
