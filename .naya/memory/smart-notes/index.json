@@ -13721,10 +13721,10 @@
     },
     {
       "smart_note_id": "SN-0808",
-      "intelligent_block_id": "SN-0808-the-elevation-standard",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0808-the-elevation-standard",
       "title": "Elevated, Always — The Dual-Depth Standard",
       "content_hash": "a33010b84b9f7298020ee9b1ee583099baadac39e3f9079d2efc643ace658123",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/ELEVATION/SN-0808/SN-0808-the-elevation-standard.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
       "truth_state": "CANDIDATE",
       "scope": "PRIVATE",
