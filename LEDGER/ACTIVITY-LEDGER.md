@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 05:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16825,6 +16825,12 @@ _Last updated: 2026-10-21 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** RED-first re-proof (4/6 on synthetic pre-fix incl. exact t0172 signature) + 6/6 GREEN on current bytes; runner SHA 6326d8c1b + test SHA 53711d98 byte-identical to receipt; lane-6 branch 41dfc86e pin-exact; canonical history unpolluted (9 lines). Deduction: re-verification not new repair; pre-fix RED on reconstruction not historical file; single-sea
 
+### ✅ t0192-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2462 Scorecard-Law merge execution (Lane 9 test-infra fix)
+
+**Evidence:** Verified on live bytes: PR #2462 state=closed, merged=True, merge_commit_sha=f9b5ac3de34d3cafa0718b20458289539e11b685 — byte-exact match to the receipt's claimed SHA (REST GET 200). Sign-out/consensus comment 6122721015 exists on #2175. Two-seat bar and pin claims corroborate. Score 9.0: why not 9.5 — the merge-API 404 forced the manual git-data ro
+
 ### ✅ t0192 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** PR #2462 Scorecard-Law merge
@@ -16848,6 +16854,12 @@ _Last updated: 2026-10-21 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0192-lane8.md`
 
 **Evidence:** Merge commit f9b5ac3d == current main (ls-remote); parents [aa8061c1, a92be1c0] + tree 78b5f5f4 verified via /git/commits; 2-seat bar closed (Lane 8 9.0 c6122317726, Lane 10 9.0 c6122636824); named reds accepted (7 pre-existing pytest, consensus-gate structural). -0.5 merge-endpoint 404 workaround; -0.5 red-base accepted.
+
+### ✅ t0192-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Fossil-draft triage + Stage-1 pipeline report (queue 448, 34 drafts, 5 Stage-1 pins)
+
+**Evidence:** Verified: sign-in comment 6122688567 and pipeline-report comment 6122748911 both exist live on #2175 (REST GET 200, substantive bodies). The 10-draft compare-diverged claims and pin-exact Stage-1 classifications were not independently re-run (would need the full compare set at action time) — lane's own method is pin-exact by its stated law. Score 8
 
 ### ✅ t0192 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
 
@@ -16873,6 +16885,12 @@ _Last updated: 2026-10-21 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** 448 open PRs (pulls endpoint); 10 UD-series drafts all DIVERGED (ahead 1, behind 256) -> not fossils, closed 0 per pin-exact law; pipeline pins verified (2418 moved 43c0113e->8346681c, others unmoved); report comment 6122748911. -1.5: mandate wanted >=5 closes; exhausted-fossil-layer ruling needed.
 
+### ✅ t0192-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV window audit t0162-t0192 (instrument runs + hand audit + regression proof)
+
+**Evidence:** Verified: all 7 cited files exist in hidden_files/lane-11/; run1/run2 byte-identical with sha256 bbdb937880f65520c1bb7f2dc59ba8685fc8e33de2c49e2ee449bfc00dcf735c == claimed; post1/post2 byte-identical with sha256 f3f0125183b5c6b8a0779258be6891659d9a7d23984f3c2e806a978f26fc95e2 == claimed; audit window t0162-t0192, hand totals M2:9/M3:6/M4:2; #2175 
+
 ### ✅ t0192 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** human-value window measurement t0162-t0192 (9 receipts)
@@ -16896,6 +16914,12 @@ _Last updated: 2026-10-21 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0192-lane11.md`
 
 **Evidence:** All 4 run sha256 recomputed MATCH on disk (2 pre + 2 post byte-identical); hand audit 9 rows totals M2:9/M3:6/M4:2 machine-reproduced exactly; t892-t1042 regression reproduces t1052 baseline (4th proof); HV3 no-movement discipline held. Single-seat judgments remain (standing).
+
+### ✅ t0182-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.0/10 [VERIFIED]
+
+**Task:** t0182 competing-boot rename-merge -> re-base sequence on live bytes; rename found already landed
+
+**Evidence:** Re-verified 8 days later: PR #2428 still closed+merged, merged_at 2026-10-12T03:50:04Z matches the receipt exactly (REST); merge commit e3fe3d43857b153cd19edc31e159a408172793e8 exists with subject 'Rename DecisionEngine -> DecisionPrinciple (Shawn authorized, #2428)'; refs/pull/2399/head is still at a545f11079ca77ce6789d224ab519f272c7ca0e4 - the re
 
 ### ✅ t0182 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
 
@@ -16929,6 +16953,12 @@ _Last updated: 2026-10-21 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: refs/pull/2399/head = a545f11079ca77ce6789d224ab519f272c7ca0e4 == receipt; naya/eight-competing-boot-rename-t1152 @ 6d05fea689... == receipt (brief's f5e2d63b was stale — agent's Prime-1 correction against the brief itself, correct). Agent verified the rename already landed via PR #2428 on main and #2399's head contains it in a
 
+### ✅ t0182-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 2: displacement test — does mandate lower the merge-or-close bar (44 ticks)
+
+**Evidence:** Verified: all 6 evidence files exist (prereg, seal-verification, measure_h9r2.py, pins-real, h9r2-result, EXPECTED fixtures); 3 pinned sha256 recompute MATCH byte-exact (prereg 5cbde073..., instrument 67e2bbaf..., pins 1ef923f6...). Pre-registered bar honored: NO-GO verdict (-0.114 bar gap vs +1.0 threshold) accepted rather than rationalized. Score
+
 ### ✅ t0182 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** H9 round 2: mandate displacement test (sealed experiment, 44 dispatch ticks)
@@ -16960,6 +16990,12 @@ _Last updated: 2026-10-21 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0182-lane2.md`
 
 **Evidence:** Dispatcher verified: prereg-sealed.md sha256 5cbde073... == receipt; seal-verification.json, measure_h9r2.py, h9r2-result.json all exist; stamp==mtime claim on record. Reframe owned (option c: displacement in score space, not rate), design finding declared pre-reg (rank-order displacement structurally impossible since decide.py emits score-sorted r
+
+### ✅ t0182-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-2 gate review on PR #2462 + drift verification at live tip (7th consecutive CLEAN)
+
+**Evidence:** Verified: review comment 6122636824 exists live on PR #2462 (REST GET 200, attached to the PR). Pin-exact independent replay work with named caveats (pre-existing pytest reds classified, reviews-API-vs-comments gap named). Score 9.0. Why not 9.5: remaining reds classified-but-not-closed, and review is one-shot per tick by design with no second-pass
 
 ### ✅ t0182 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -31690,6 +31726,12 @@ _Last updated: 2026-10-21 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261021-0440 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall 2026-10-21 04:40 UTC: lane-executor 21:23 PDT run, 30/30 briefs seat-barred
+
+**Evidence:** Verified: brief-queue holds 30 unclaimed brief-*.md (matches receipt's 30/30 claim); prior stall receipt seat-stall-20261021-0316.md exists (03:16 UTC) so the delta structure holds; the refusal pattern (20x exit-7 parent-authorship, 4x exit-2 seat-identity, 6x prose-gate) matches the established stall composition. Score 9.0. Why not 9.5: delta-only
 
 ### ✅ t-distill-daily-20261019 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
 
