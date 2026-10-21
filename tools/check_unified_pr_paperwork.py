@@ -67,7 +67,7 @@ def _scorecard_for_current_head(comments: list[dict], head: str,
         if not seat or seat == author_seat:
             continue
         score = consensus._score_of(body)
-        if score is not None and score >= minimum:
+        if score is not None and minimum <= score <= 10:
             return True, f"independent scorecard {score:g}/10 from {seat} pins current head {head[:12]}"
     return False, f"no independent numeric scorecard >= {minimum:g}/10 pinned to current head {head[:12]}"
 
