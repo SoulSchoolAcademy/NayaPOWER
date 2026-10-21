@@ -113,9 +113,9 @@ def run() -> int:
 
         if tier["tier"] == "C":
             return _emit(
-                "BLOCKED — ROUTE_TO_CONTENT_DOOR",
-                "all changed paths appear to be mechanical content/index data; routine content must use the canonical sync/filing path, not a code-merge PR",
-                "file through the canonical Smart Note/content door, pass schema + collision + provenance + deterministic-index checks, then record a post-landing spot-check; close this PR only after confirming the content is safely represented",
+                "BLOCKED — CONTENT_DOOR_NOT_PROVEN",
+                "all changed paths appear to be mechanical content/index data, but the current canonical content door is not proven healthy: main's latest full test run reports missing Smart Note capture/registry entries and stale generated indexes",
+                "repair the canonical capture → registry → index/sync path and make its schema, collision, registry-drift, and index-freshness checks green before routing note-only work through that door; do not substitute scorecard ceremony or merge a mega-PR to hide the content-door defect",
             )
 
         author_seat = consensus.author_seat_of(body)
