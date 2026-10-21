@@ -1,0 +1,38 @@
+"""Regression tests for the tier thresholds used by the unified paperwork gate."""
+import unittest
+
+from tools.check_unified_pr_paperwork import _scorecard_for_current_head
+
+
+class UnifiedPaperworkThresholdTests(unittest.TestCase):
+    def test_tier_a_requires_95_and_different_seat(self):
+        head = "a" * 40
+        comments = [
+            {"body": f"## SCORECARD\nScore: 9.4/10\nHead: {head}\nSeat: Naya Delta"},
+            {"body": f"## SCORECARD\nScore: 10/10\nHead: {head}\nSeat: Naya Alpha"},
+        ]
+        ok, _ = _scorecard_for_current_head(comments, head, "alpha", 9.5)
+        self.assertFalse(ok)
+
+    def test_tier_b_accepts_8_from_different_seat_on_exact_head(self):
+        head = "b" * 40
+        comments = [{"body": f"## SCORECARD\nScore: 8/10\nHead: {head}\nSeat: Naya Delta"}]
+        ok, _ = _scorecard_for_current_head(comments, head, "alpha", 8.0)
+        self.assertTrue(ok)
+
+    def test_stale_head_is_rejected(self):
+        current = "c" * 40
+        stale = "d" * 40
+        comments = [{"body": f"## SCORECARD\nScore: 10/10\nHead: {stale}\nSeat: Naya Delta"}]
+        ok, _ = _scorecard_for_current_head(comments, current, "alpha", 8.0)
+        self.assertFalse(ok)
+
+    def test_author_cannot_score_own_work(self):
+        head = "e" * 40
+        comments = [{"body": f"## SCORECARD\nScore: 10/10\nHead: {head}\nSeat: Naya Alpha"}]
+        ok, _ = _scorecard_for_current_head(comments, head, "alpha", 8.0)
+        self.assertFalse(ok)
+
+
+if __name__ == "__main__":
+    unittest.main()
