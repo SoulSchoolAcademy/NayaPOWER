@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5180,6 +5180,30 @@ _Last updated: 2026-10-21 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1142-lane10.md`
 
 **Evidence:** Dispatcher verified: HEAD == 665098e3f00c9aa6f63907360b8500891704071c (unchanged since t1032), refs/heads/naya/ten-brainindex-heal-t1032 == 82fe1c6232913174430f0f06c5f27b5a22ad88ae on origin. --check OK on heal head (1256 files), drift confirmed still present on live tip (expected, heal unmerged), parent==tip with exactly 3-file diff, bisect stands
+
+### ✅ t1133 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1133-lane10.md: BrainDex SN-0808 index-lag check-run #3 - STILL-LAGGING verdict + cure packet
+
+**Receipt:** `twelve-lane-receipts/t1133-lane10.md`
+
+**Evidence:** VERIFIED on live bytes: tip 895d73610e20d0e936a0e92273e6effc85e32422 == own git ls-remote HEAD at scoring time (matches receipt's pinned tip, unmoved since 04:50Z); evidence kit lane-10/check-run-t1133-lane10/ exists (9 files), checksums.txt sha256 a9687976b0f4abc78f3ad1910d066e2f8d5bdc72aea645671c9984a7dd284e91 matches receipt claim, check-stdout.
+
+### ✅ t1132 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** trigger-list-v1 (BrainDex drift-gate trigger classes)
+
+**Receipt:** `twelve-lane-receipts/t1132-lane10.md`
+
+**Evidence:** VERIFIED: both deliverables exist on disk with byte-exact sha256s matching the receipt (md 194b7a70ab94dce31fd87fd9d8947befc3072e935618f1f3745b39e8ed64f1a5, json 9c10422ebd96e3a784cdeb522656f1e212449b4fbae7938927e3f490c81041e3); JSON parses; 5 triggering + 2 non-triggering classes byte-derived from instrument blob with line citations and per-commit
+
+### ✅ t1130 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1130-lane10.md: BrainDex SN-0808 index-lag check-run #2 - STILL-LAGGING verdict (drift unchanged vs baseline), tip pinned 895d7361
+
+**Receipt:** `twelve-lane-receipts/t1130-lane10.md`
+
+**Evidence:** VERIFIED on live bytes: tip 895d73610e20d0e936a0e92273e6effc85e32422 == own git ls-remote HEAD at scoring time (unmoved since 04:50Z, matches receipt's pinned tip); evidence kit lane-10/check-run-t1130-lane10/ exists (6 files): check-stdout.txt sha256 6bde08f067bdd4444e0ee41964952465ea93664beb91473a4b24f3160d7ca44f byte-identical to receipt claim a
 
 ### ✅ t1130 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -28765,6 +28789,12 @@ _Last updated: 2026-10-21 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ lane-scorer-20261021-0825 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1132-lane10.md: BrainDex trigger-list-v1 delivered (5 triggering + 2 non-triggering classes, byte-derived from regenerate_brain_index.py, calibration TRIGGERING)
+
+**Evidence:** VERIFIED on live bytes: deliverables hidden_files/lane-10/trigger-list-v1.md sha256 194b7a70ab94dce31fd87fd9d8947befc3072e935618f1f3745b39e8ed64f1a5 and trigger-list-v1.json sha256 9c10422ebd96e3a784cdeb522656f1e212449b4fbae7938927e3f490c81041e3 - both exist with SHAs byte-matching the receipt, JSON parses OK; tip pinned 895d73610e20d0e936a0e92273e
+
 ### ✅ gap-gap-lane-scorer-20261019-1450-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
 **Task:** 4 over-claim attribution recovery (t0685/t0686/t0694/t0695) + scorer-tally-hygiene verification; board note to dispatcher
@@ -31734,6 +31764,12 @@ _Last updated: 2026-10-21 08:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261021-0825 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall-20261021-0816.md: lane-executor seat-stall run 2026-10-21 08:16 UTC - all 29 queued briefs seat-barred for the Clarity seat (one drain t1034-lane10 since 07:09)
+
+**Evidence:** VERIFIED on live bytes: receipt seat-stall-20261021-0816.md exists (full run record, mtime 08:16:34Z); twelve-lane-rotation.json queued byte-count = 29 - matches the receipt's 29/29 blocked claim; brief-t1132-lane10.md drained from queue 30->29, found moved to brief-queue/claimed/done/brief-t1132-lane10.md (the drain is the other active seat's clai
 
 ### ✅ lane-scorer-20261021-0710 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
