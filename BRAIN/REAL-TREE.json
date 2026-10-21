@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-21",
-  "receipt_basis_commit": "ee475be823d499e93329341f03d6b4904583ae6f",
-  "inventory_file_count": 1505,
+  "receipt_basis_commit": "4055d50a43b372e64ed11a4d281b6a93b53264e4",
+  "inventory_file_count": 1512,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 70,
+    "01-GOVERNANCE": 76,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -19,7 +19,7 @@
     "10-INTERFACES": 427,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 86,
+    "90-OPERATIONS": 87,
     "99-ARCHIVE": 2,
     "ROOT": 6
   },
@@ -32,8 +32,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md",
-      "blob_sha": "61080b4c74e9d598a638d4c7cd27b865124729db",
-      "size": 10274
+      "blob_sha": "4f8dd27228454fcaaec47178d1e726b80db9b328",
+      "size": 10836
     },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
@@ -421,6 +421,21 @@
       "size": 3439
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.ai.md",
+      "blob_sha": "49f4a2f9a1fa4104784a5a5c3f2b522b31001bad",
+      "size": 8209
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.human.md",
+      "blob_sha": "b33800bfebadea5b682484a312b299ee055a26cf",
+      "size": 13969
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.machine.json",
+      "blob_sha": "8bc1fdcf7a828166fb88276b11c6507e566fb320",
+      "size": 5584
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.ai.md",
       "blob_sha": "01636e471511aa9a9adfd9536ec85ed3ce27dd85",
       "size": 7136
@@ -459,6 +474,21 @@
       "path": "BRAIN/01-GOVERNANCE/0030-VALUE-ONLY-BRAIN-V1.machine.json",
       "blob_sha": "be5a34263f192d22d827201654356024e712829e",
       "size": 13509
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.ai.md",
+      "blob_sha": "c0805bb866dc2ad3aaefcb74a975421114efa71e",
+      "size": 4225
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.human.md",
+      "blob_sha": "49369440028aee7be9d94c87e47fcf83bf705c81",
+      "size": 3641
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0031-never-again-v1.machine.json",
+      "blob_sha": "1e58e3180215140ec7510f31658a8e34cce81a41",
+      "size": 2275
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
@@ -4227,8 +4257,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-008-gates-must-guard-first-cover-everything-and-fail-loud.md",
-      "blob_sha": "44ba4c5c640ed73340caee7db468f2e83ed15087",
-      "size": 9058
+      "blob_sha": "956c47c7287541330defac4d74cc4f46805ae029",
+      "size": 9212
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-009-a-law-must-be-code-or-it-isn-t-a-law-yet.md",
@@ -4242,8 +4272,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-011-name-the-gap-bound-the-claim.md",
-      "blob_sha": "962d6ecb68dd5aa66f09be26afe5fbb56a703796",
-      "size": 9621
+      "blob_sha": "3c5771626da39b0e52e03af082612a586a9d6c99",
+      "size": 10499
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-012-work-in-the-open-as-one-team.md",
@@ -4252,8 +4282,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-013-route-the-decision-to-the-one-who-owns-it.md",
-      "blob_sha": "8a16bea60af5e96aa5b7a11cac429f51c7895812",
-      "size": 5401
+      "blob_sha": "dcce1298ddf8f3169f5b278ef4f42a7fcf6e3af9",
+      "size": 6257
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-014-learning-is-only-real-when-it-can-be-recalled.md",
@@ -4262,33 +4292,33 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-015-the-record-is-not-the-work-check-the-living-thing-itself.md",
-      "blob_sha": "657700c47fa165db474681076e88803eb461a9ac",
-      "size": 10985
+      "blob_sha": "f2d87745d4a872c0c36681b4fc7c1aae8c988d03",
+      "size": 12085
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-016-name-the-exact-thing-you-proved.md",
-      "blob_sha": "8f5e6c6aa2c633bb7590c654a140345378791266",
-      "size": 7345
+      "blob_sha": "932f0f394072dabe775aae524003072e4f117e2e",
+      "size": 8653
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-017-a-guard-that-cannot-fail-is-not-a-guard.md",
-      "blob_sha": "72ec055c311a8a601deca6ea8b2b902bbe1d642a",
-      "size": 8684
+      "blob_sha": "02e3df33f8c9c39d7597304671402dd6e652e9b7",
+      "size": 10223
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-018-green-is-not-proof-the-test-must-touch-the-real-thing.md",
-      "blob_sha": "d93864992d87a10247a5d83428ed6a798a929b89",
-      "size": 10465
+      "blob_sha": "f48debb8409301cde4a674f149bd03eb514e969e",
+      "size": 11727
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-019-when-you-cannot-prove-it-refuse-never-fake-it-or-weaken-it.md",
-      "blob_sha": "16a4ccb11b880299813ddf2c0bc3e4bd5e19db80",
-      "size": 10413
+      "blob_sha": "30f7c9b72f61301b517fbfd13d4ceb1782a95d7e",
+      "size": 12115
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-020-an-honest-number-can-fall-and-says-what-it-did-not-measure.md",
-      "blob_sha": "52112379c59f77d1bbe34adf8c4c06be83f75141",
-      "size": 9996
+      "blob_sha": "d832a6bbcac3b8eea7d01490fef98819d1398d5b",
+      "size": 11426
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-021-evidence-must-outlive-the-moment-keep-it-safe-findable-and-u.md",
@@ -4347,8 +4377,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-032-learn-beauty-from-the-masters-and-hide-the-hard-work-inside.md",
-      "blob_sha": "8c985aa9b1fb27605b99ba06cb71d51e606f6ee0",
-      "size": 6274
+      "blob_sha": "6f2d7e89a118cc6bbab2027812dd17cf26909de9",
+      "size": 6446
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-033-one-true-version-of-everything-copied-exactly.md",
@@ -4362,8 +4392,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-035-small-pieces-that-meet-at-clear-honest-seams.md",
-      "blob_sha": "bfeacda7a9b808cc2f4797090a8f67c67d57b85f",
-      "size": 9776
+      "blob_sha": "8669153cd4117422d5c4d4734462a9fc4e5d16bd",
+      "size": 10861
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-036-when-you-don-t-know-stop-safely-never-guess-open.md",
@@ -4387,13 +4417,13 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-040-the-math-decides-act-without-waiting-and-aim-for-wise.md",
-      "blob_sha": "51c248a832cdf5bab92850b1a65052328a09a56d",
-      "size": 5109
+      "blob_sha": "d0f0eb07e384139439bb98e0fdeef5f98a140aaa",
+      "size": 5264
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-041-one-change-one-owner-scan-before-you-touch.md",
-      "blob_sha": "e6c05ceab6c53324eb5daa81b2f355635d051f55",
-      "size": 5259
+      "blob_sha": "5f335b0c2489216d6e9279fe7f96dae350e10f41",
+      "size": 6207
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-042-talk-directly-correct-openly.md",
@@ -4427,8 +4457,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-048-a-lesson-isn-t-learned-until-it-changes-behavior.md",
-      "blob_sha": "afc356b4bca1d8b87da157d063dfa6820eda2533",
-      "size": 5898
+      "blob_sha": "f6c7794156a80a0896b2c2eddd7321fc66e7c1c4",
+      "size": 6328
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-049-learning-is-proven-only-when-it-transfers-and-the-test-must.md",
@@ -4447,18 +4477,18 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-052-smart-note-this-how-a-passing-moment-becomes-lasting-intelli.md",
-      "blob_sha": "6e05caf7fa64bad822b8400688c911e50937d218",
-      "size": 7529
+      "blob_sha": "14898c6179c0f7c7fec2bd482b1127a8a7933ec6",
+      "size": 9420
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-053-think-first-then-act-do-the-most-intelligent-thing-now.md",
-      "blob_sha": "86c224ebd0723b0b497ce7ee2ad82d649332d378",
-      "size": 5965
+      "blob_sha": "3d59e8402905f187d08e038923ef047f11a8d944",
+      "size": 7358
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-054-excellence-is-the-standard-score-it-prove-it-ship-nothing-le.md",
-      "blob_sha": "dc99115bf4487b393594a8fe12ddbeb919580e77",
-      "size": 4643
+      "blob_sha": "041de6c6a80f06b4c22820c192104a804d9a370d",
+      "size": 5348
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-055-a-law-only-counts-if-the-system-enforces-it.md",
@@ -4477,8 +4507,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-058-a-team-that-never-leaves-a-dead-end.md",
-      "blob_sha": "04814a7f8f4671cd6a79dd05f45537d850c87d55",
-      "size": 5590
+      "blob_sha": "c5cd0d6ee2830e22910a2ddef16cdd2587f49338",
+      "size": 6508
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-059-declare-who-you-are-identity-is-what-acts.md",
@@ -4487,8 +4517,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-060-live-awesome-the-philosophy-everything-stands-on.md",
-      "blob_sha": "175863f12c33c1a92d5caac65c19b2201f451c6f",
-      "size": 7059
+      "blob_sha": "d6c3ab3e371ee2797d8a5ca790048cb406835817",
+      "size": 18531
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-061-the-magic-a-moment-becomes-intelligence-that-keeps-working.md",
@@ -4502,8 +4532,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-063-memory-with-integrity-capture-honestly-forget-correctly.md",
-      "blob_sha": "43050b1c384b90a7623273b534b5fe129271c419",
-      "size": 6841
+      "blob_sha": "0e799313daeb4a5dabd73ddc3cbc53f6dd27f08d",
+      "size": 8469
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-064-built-for-the-cold-successor-nobody-should-have-to-re-teach.md",
@@ -4517,13 +4547,13 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-066-verification-is-a-method-not-a-mood.md",
-      "blob_sha": "8d76ad2fb096475d83b7c6ada2d852fb4c8a55f2",
-      "size": 4840
+      "blob_sha": "42479e00463f4189d788f0f14e486fcd40d38b49",
+      "size": 5211
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-067-scores-measure-readiness-they-never-grant-authority.md",
-      "blob_sha": "ea6f9ec66ea86ec44d0b7e4e155eadc3aa27c838",
-      "size": 7353
+      "blob_sha": "eb1679a17acdcfa3b0e6c4ec87a10f71f875a2d0",
+      "size": 7621
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/SUPER-068-one-organism-one-brain-governed-workers-a-memory-that-refuse.md",
@@ -7109,6 +7139,11 @@
       "path": "BRAIN/90-OPERATIONS/0005-LIVE-NAYA-MASTER-BATON-2026-09-30.md",
       "blob_sha": "75f3b8e72b90c727d5d35eeadbdf72d3bb9a4df6",
       "size": 8978
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/0006-THE-NAYA-TOOL-DIRECTORY-V1.md",
+      "blob_sha": "efcde7ea9f807cbf1241031474af6a445ac16d57",
+      "size": 42239
     },
     {
       "path": "BRAIN/90-OPERATIONS/2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md",
