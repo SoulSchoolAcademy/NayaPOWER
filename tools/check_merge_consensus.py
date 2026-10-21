@@ -306,7 +306,7 @@ def _score_of(body):
 
 
 _HEAD_SHA_FIELD_RE = re.compile(
-    r"(?im)^\\s*head(?:[\\s_-]*sha)?\\s*[:=]\\s*([a-f0-9]{40})\\s*$"
+    r"(?im)^\s*head(?:[\s_-]*sha)?\s*[:=]\s*([a-f0-9]{40})\s*$"
 )
 
 
