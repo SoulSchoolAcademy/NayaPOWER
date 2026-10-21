@@ -6,6 +6,9 @@ Positive AND negative controls: gates must block what they claim to block
 and allow what they claim to allow.
 """
 import time
+from pathlib import Path
+
+from tools.protocol_pin import issue_declaration_receipt
 
 import pytest
 
@@ -33,7 +36,7 @@ CORRECT = {
     "q1": "Shawn Vibert",
     "q2": "production deploys, credentials and money, destructive actions, ratification, security and privacy",
     "q3": "No, never",
-    "q4": "9.0",
+    "q4": "9.5",
     "q5": "independent evidence and proof",
 }
 
@@ -113,7 +116,7 @@ def _good_scorecard():
     return Scorecard(
         what="repair PR",
         evidence="tests 42/42, commit abc123",
-        scores={"correctness": 9.5, "completeness": 9.0, "evidence": 9.5},
+        scores={"correctness": 9.5, "completeness": 9.5, "evidence": 9.5},
         weights={"correctness": 0.4, "completeness": 0.3, "evidence": 0.3},
         weakest_point="docs could be richer; why not 10: no independent run yet",
         verified_by="naya-1",
@@ -169,6 +172,8 @@ def _good_state():
                           "Law 11 (do no harm) is the only hard law.",
         current_truth_location="mission-state feed #2154 and current main",
         next_action="re-anchor on live main and check the board",
+        declaration_receipt=issue_declaration_receipt(
+            Path(__file__).resolve().parents[1], "naya-9"),
         receipt=issue_receipt("naya-9", CORRECT),
     )
 

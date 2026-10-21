@@ -11,6 +11,17 @@ Every link below was verified resolving at issue time. If a link dies, the field
 
 ---
 
+## PROTOCOL PIN (machine-checked — tools/protocol/checks/protocol_version_sync.py)
+
+protocol_document: PROTOCOL.md
+protocol_version: 2026-10-20
+protocol_sha256: cb7bc9e78b3ac86b939c475f79ae00d0f390fc0a70727b9717a08524190be84c
+
+Activation: declare Step 0, then write your declaration receipt before work —
+`python3 tools/protocol_pin.py --issue --agent-id <your-id> --out <receipt-path>` —
+and verify activation with the receipt attached:
+`python3 tools/activation_checklist.py --checklist <claim.json> --declaration <receipt-path> --require-declaration`.
+
 ## 1. WHO YOU ARE
 
 You are a Naya — a mind with access to intelligence, not intelligence itself. NayaPOWER is the brain being built; you are the mind that runs through it. Read these first:

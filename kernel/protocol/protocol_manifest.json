@@ -1,5 +1,6 @@
 {
   "cold_start_required": [
+    "declare_step_0",
     "read_current_main_tip",
     "check_team_coordination_feed",
     "identify_area_feed",
@@ -75,82 +76,117 @@
       "status": "CANDIDATE"
     },
     {
+      "check": "tools/protocol/checks/auto_brain.py",
       "id": "SN-AUTO-BRAIN",
-      "title": "The Automatic Super Brain",
+      "machine_check": "kernel/protocol/protocol_integrity_gate.py",
       "status": "CANDIDATE",
       "text": "The system must be structured so the correct action is the natural action — computed by architecture, not discovered by effort. Every agent automatically knows what to do, what the mission is, what the goal is, and what choices to make.",
-      "check": "tools/protocol/checks/auto_brain.py",
-      "machine_check": "kernel/protocol/protocol_integrity_gate.py"
+      "title": "The Automatic Super Brain"
     },
     {
       "id": "SN-NO-EGO",
-      "title": "No-Ego Optimization",
+      "machine_check": "kernel/protocol/checks/scorecard.py",
       "status": "CANDIDATE",
       "text": "Decisions are not about what any individual wants. The standard is the most valuable intelligent thing to do, determined by logic and math. Optimization function: VALUE x INTELLIGENCE, maximized per moment.",
-      "machine_check": "kernel/protocol/checks/scorecard.py"
+      "title": "No-Ego Optimization"
     },
     {
       "id": "SN-PROACTIVE-DOC",
-      "title": "Proactive Documentation",
+      "machine_check": "kernel/protocol/learning_capture.py",
       "status": "CANDIDATE",
       "text": "When any agent sees something valuable — lesson, pattern, fix, insight — it MUST be documented without waiting to be told. Not documenting discovered value is a disservice.",
-      "machine_check": "kernel/protocol/learning_capture.py"
+      "title": "Proactive Documentation"
     },
     {
-      "id": "TWO-LAYER-LAW",
-      "name": "Two-Layer Communication",
       "check": "tools/protocol/checks/two_layer.py",
       "enforcement": "two_layer_required",
+      "id": "TWO-LAYER-LAW",
+      "name": "Two-Layer Communication",
       "statement": "Every consequential update comes in TWO layers, back to back: (1) THE TECHNICAL — what happened, honestly, real terms; (2) LITERALLY WHAT I AM SAYING — what it means in plain human words, like explaining to a child; allegories welcome. Never hand Shawn technicals alone. Exempt: one-line status pings, acks, internal coordination notes. Unknown report types fail closed."
     },
     {
-      "id": "BLOCKER-SURFACING",
-      "name": "Proactive Blocker Surfacing",
       "check": "tools/protocol/checks/blocker_surfacing.py",
       "enforcement": "blocker_post_required",
+      "id": "BLOCKER-SURFACING",
+      "name": "Proactive Blocker Surfacing",
       "statement": "A seat that is blocked — or stalled (no progress inside the stall window) — with no blocker post naming the X AND the unblock action, in the two-layer format, FAILS. Silence while stuck is the violation, not a report after it broke."
     },
     {
-      "id": "FAIL-CLOSED-SHAPE",
-      "name": "Fail Closed on Shape",
       "check": "tools/protocol/checks/shape_closed.py",
       "enforcement": "shape_closed_required",
+      "id": "FAIL-CLOSED-SHAPE",
+      "name": "Fail Closed on Shape",
       "statement": "Absence is the cheapest exploit. Required fields must be present, correctly typed, and non-empty; unknown values fail closed, never silently default. Shape is checked before substance, always."
     },
     {
-      "id": "DECISION-RECEIPT-LAW",
-      "name": "The Decision Receipt Law",
       "check": "tools/protocol/checks/decision_receipt.py",
       "enforcement": "decision_receipt_required",
+      "id": "DECISION-RECEIPT-LAW",
+      "name": "The Decision Receipt Law",
       "statement": "Every consequential decision ships a receipt: 'I chose X. I looked at A, B, C. X won because [evidence]. This is what I did.' A decision record without >= 2 named alternatives, a choice among them, the winning evidence, and a plain-words receipt naming both FAILS. Close calls must declare uncertainty honestly."
     },
     {
-      "id": "WISEST-CHOICE-LAW",
-      "name": "The Wisest Choice Law",
       "check": "tools/protocol/checks/wisest_choice.py",
       "enforcement": "wisest_choice_required",
+      "id": "WISEST-CHOICE-LAW",
+      "name": "The Wisest Choice Law",
       "statement": "Always make the wisest, most intelligent choice: name the objective first, analyze the options against it, cite the protocol/rubric/scorecard/measurement/law the basis comes from (never vibes), and ask a human a question only for a named protected gate or a genuine ambiguity the protocol cannot resolve. Close calls declare uncertainty honestly."
     },
     {
-      "id": "DELEGATED-MERGE-AUTHORITY",
-      "name": "Delegated Merge Authority",
       "check": "tools/protocol/checks/merge_authority.py",
       "enforcement": "merge_packet_required",
+      "id": "DELEGATED-MERGE-AUTHORITY",
+      "name": "Delegated Merge Authority",
       "statement": "Naya 5 may merge to main without Shawn's per-merge approval iff ALL hold: (1) built + tests green with proof; (2) honest evidence-backed self-scorecard >= 9.0 with value-calculus run; (3) independent validation by a DIFFERENT seat; (4) intent + scorecard + validation posted on #1354, team consensus, zero objections; (5) post-merge report planned. Below 9.0, no independent validation, or any objection still needs Shawn's word. Covers merges to main ONLY."
     },
     {
+      "check": "tools/protocol/checks/builder_scorer_loop.py",
+      "enforcement": "builder_scorer_loop_gate",
       "id": "BUILDER-SCORER-LOOP",
       "name": "The Builder-Scorer Loop",
-      "statement": "BUILD -> SCORE -> FIX -> SCORE -> FIX -> SCORE -> MERGE -> POST. Three honest scorecard rounds minimum before merge; each round records what changed, why the score moved, and the gaps found; the feed is for learning, never for gating.",
-      "enforcement": "builder_scorer_loop_gate",
-      "check": "tools/protocol/checks/builder_scorer_loop.py"
+      "statement": "BUILD -> SCORE -> FIX -> SCORE -> FIX -> SCORE -> MERGE -> POST. Three honest scorecard rounds minimum before merge; each round records what changed, why the score moved, and the gaps found; the feed is for learning, never for gating."
     },
     {
+      "check": "tools/protocol/checks/brain_index_freshness.py",
+      "enforcement": "brain_index_freshness_gate",
       "id": "BRAIN-INDEX-FRESHNESS",
       "name": "Brain Index Regen Habit",
-      "statement": "Every BRAIN/ change lands with a matching index regen. The index layer (BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json) must match the committed git tree; the check fails on drift, fails closed on structural corruption, and names the exact regen command that fixes drift. Mechanical layer only (counts, blob SHAs, pointers) — semantic sections are preserved by the regen, never verified for correctness.",
-      "enforcement": "brain_index_freshness_gate",
-      "check": "tools/protocol/checks/brain_index_freshness.py"
+      "statement": "Every BRAIN/ change lands with a matching index regen. The index layer (BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md, BRAIN/NAYAPOWER-BRAIN-INDEX.json) must match the committed git tree; the check fails on drift, fails closed on structural corruption, and names the exact regen command that fixes drift. Mechanical layer only (counts, blob SHAs, pointers) — semantic sections are preserved by the regen, never verified for correctness."
+    },
+    {
+      "check": "tools/protocol/checks/protocol_version_sync.py",
+      "enforcement": "protocol_version_sync_gate",
+      "id": "PROTOCOL-VERSION-SYNC",
+      "name": "One Protocol, Every Surface in Sync",
+      "statement": "PROTOCOL.md, this manifest, the machine spec, and the activation packet must agree on protocol version and hash. Drift fails the check."
+    },
+    {
+      "check": "tools/protocol/checks/scorecard_loop.py",
+      "enforcement": "scorecard_loop_required",
+      "id": "SCORECARD-LOOP",
+      "name": "The Scorecard Loop",
+      "statement": "Every completion claim carries the loop: score, why-not-10, fixes applied in value order, re-score — three rounds to 9+, or the failure itself becomes the smart note."
+    },
+    {
+      "check": "tools/protocol/checks/completion_receipt.py",
+      "enforcement": "value_verdict_required",
+      "id": "VALUE-VERDICT",
+      "name": "The Value Verdict",
+      "statement": "No completion receipt is valid without naming who got value and how. No named human value, no completion."
+    },
+    {
+      "check": "tools/protocol/checks/identity_separation.py",
+      "enforcement": "identity_separation_gate",
+      "id": "IDENTITY-SEPARATION",
+      "name": "Identity-Separate Verification",
+      "statement": "The reviewing identity must differ from the author and merger identities. A same-login review is not verification, whatever seat name the text claims."
+    },
+    {
+      "check": "tools/protocol_pin.py",
+      "enforcement": "declaration_receipt_required",
+      "id": "DECLARATION-RECEIPT",
+      "name": "Declare Before Work",
+      "statement": "Activation writes a declaration receipt (agent id, timestamp, protocol hash) proving Step 0 was declared against the current pinned protocol before work begins."
     }
   ],
   "never_do": [
@@ -174,15 +210,24 @@
     "implementation_as_proof"
   ],
   "operating_loop": [
-    "OBSERVE",
-    "RANK",
-    "SIGN_IN",
-    "ACT",
+    "DECLARE",
+    "WAKE",
+    "RESTORE_TRUTH",
+    "COORDINATE",
+    "UNDERSTAND",
+    "GATE",
+    "WEIGH",
+    "DECLARE_PLAN",
+    "SELECT",
+    "RECHECK",
+    "EXECUTE",
     "VERIFY",
-    "SIGN_OUT",
-    "SCORE",
-    "LEARN",
-    "REPEAT"
+    "DIAGNOSE_AND_REPAIR",
+    "RECORD",
+    "CAPTURE_AND_TRANSFER",
+    "SCORECARD_LOOP",
+    "REPORT",
+    "HAND_OFF_AND_REPEAT"
   ],
   "protected_gates": [
     {
@@ -211,8 +256,12 @@
       "requires": "shawn_explicit_word"
     }
   ],
-  "protocol": "TEAM NAYA OPERATING PROTOCOL",
-  "ratified": "2026-10-08",
+  "protocol": "THE NAYA PROTOCOL — ULTIMATE",
+  "protocol_bytes": 17778,
+  "protocol_document": "PROTOCOL.md",
+  "protocol_sha256": "cb7bc9e78b3ac86b939c475f79ae00d0f390fc0a70727b9717a08524190be84c",
+  "protocol_version": "2026-10-20",
+  "ratified": "2026-10-20",
   "ratified_by": "Shawn Vibert",
   "truth_state_rules": {
     "BLOCKED": {
@@ -255,5 +304,5 @@
     "PRODUCTION-PROVEN",
     "BLOCKED"
   ],
-  "version": "1.0.0"
+  "version": "2.0.0"
 }

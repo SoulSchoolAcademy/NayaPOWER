@@ -1,0 +1,6 @@
+# Content-addressed activation trust roots: preserve committed LF bytes across platforms.
+# tools/activation_checklist.py hashes these exact raw files against approved V2 pins.
+# Windows core.autocrlf=true must not convert them to CRLF and falsely deny boot.
+BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md text eol=lf
+BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md text eol=lf
+BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json text eol=lf

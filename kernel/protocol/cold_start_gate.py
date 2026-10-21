@@ -12,8 +12,12 @@ This is the machine twin of the ACTIVATION ACCEPTANCE contract.
 
 Check 6 folds in Gate 1 (tools/activation_checklist.py): activation is not
 complete until the 14 thinking lessons + Operating Code V2 are
-machine-verified against canonical bytes. Fail closed: if the checklist
-tool is missing, unreadable, or any violation is found, boot is refused.
+machine-verified against canonical bytes.
+Check 7 requires a fresh Step 0 declaration receipt bound to this agent
+and the pinned current protocol. Missing, stale, mismatched, or
+unverifiable declaration = boot refused. The receipt is an auditable
+claim of declaration, not proof of speech, belief, or authorization.
+Fail closed: missing tools or failed checks never authorize a boot.
 """
 from __future__ import annotations
 
@@ -25,6 +29,9 @@ from .read_receipt import ReadReceipt
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _CHECKLIST_TOOL = _REPO_ROOT / "tools" / "activation_checklist.py"
+_DECLARATION_TOOL = _REPO_ROOT / "tools" / "protocol_pin.py"
+# Explicit admission freshness bound, not proof of one declaration per shift.
+_DECLARATION_MAX_AGE_HOURS = 24
 
 
 @dataclass
@@ -36,6 +43,7 @@ class ColdStartState:
     current_truth_location: str
     next_action: str
     receipt: ReadReceipt | None = None
+    declaration_receipt: dict | None = None
 
 
 @dataclass
@@ -81,6 +89,47 @@ def _check_activation_checklist(checklist_claim=None) -> list[str]:
             + (f" (+{len(violations) - 6} more)" if len(violations) > 6 else "")
             + " — boot refused (fail closed).")
     return failures
+
+
+
+def _check_step0_declaration(agent_id: str, receipt: dict | None) -> list[str]:
+    """Admission check for the canonical Step 0 declaration, fail closed.
+
+    Never issue a declaration inside the verifier: issuance must be an
+    explicit preceding action, and self-issued receipts alone do not
+    prove actual speech or confer authorization. A renewed shift must
+    present a newly issued receipt; freshness alone is not a shift ID.
+    """
+    if receipt is None:
+        return ["Step 0 declaration receipt MISSING - boot refused. "
+                "Declare first and present a fresh receipt for this shift."]
+    if not isinstance(receipt, dict):
+        return ["Step 0 declaration receipt MALFORMED - boot refused."]
+    if not isinstance(agent_id, str) or not agent_id.strip():
+        return ["Step 0 declaration agent identity missing - boot refused."]
+    if receipt.get("agent_id") != agent_id.strip():
+        return ["Step 0 declaration AGENT_MISMATCH - receipt belongs to "
+                "another agent. Boot refused."]
+
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "naya_protocol_declaration", str(_DECLARATION_TOOL))
+        if spec is None or spec.loader is None:
+            raise RuntimeError("canonical protocol declaration tool not loadable")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        pin_pass, detail = module.check_protocol_pin(str(_REPO_ROOT))
+        if not pin_pass:
+            return [f"Step 0 declaration protocol PIN_MISMATCH: "
+                    f"{detail} - boot refused."]
+        violations = module.check_declaration_receipt(
+            str(_REPO_ROOT), receipt,
+            max_age_hours=_DECLARATION_MAX_AGE_HOURS)
+    except Exception as exc:
+        return [f"Step 0 declaration verification UNAVAILABLE "
+                f"({exc}) - boot refused."]
+    return [f"Step 0 declaration REJECT: {v} - boot refused."
+            for v in violations]
 
 
 def run_cold_start(state: ColdStartState,
@@ -155,5 +204,10 @@ def run_cold_start(state: ColdStartState,
     # Operating Code V2 must machine-verify against canonical bytes.
     # No checklist pass = no start. Fail closed.
     failures.extend(_check_activation_checklist(checklist_claim))
+
+    # Step 0 is a non-optional admission precondition, not a CLI opt-in.
+    # No automatic receipt issuance: the agent must declare first.
+    failures.extend(_check_step0_declaration(
+        state.agent_id, state.declaration_receipt))
 
     return ColdStartResult(passed=not failures, failures=failures)
