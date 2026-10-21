@@ -45,6 +45,32 @@ class TierClassificationTests(unittest.TestCase):
         path = "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-20-LEARNING-EVENT.md"
         self.assertEqual(classify_tier("learning event filing", [path])["tier"], "C")
 
+    def test_single_ordinary_file_deletion_escalates_to_tier_a(self):
+        files = [{"filename": "HUB/button.tsx", "status": "removed", "additions": 0, "deletions": 80}]
+        self.assertEqual(classify_tier("button cleanup", ["HUB/button.tsx"], changed_files=files, expected_changed_files=1)["tier"], "A")
+
+    def test_single_note_deletion_escalates_to_tier_a(self):
+        path = "BRAIN/05-MEMORY/SMART-NOTES/SN-1234.md"
+        files = [{"filename": path, "status": "removed", "additions": 0, "deletions": 20}]
+        self.assertEqual(classify_tier("SN-1234 cleanup", [path], changed_files=files, expected_changed_files=1)["tier"], "A")
+
+    def test_eleven_file_deletions_escalate_to_tier_a(self):
+        paths = [f"docs/old-{i}.md" for i in range(11)]
+        files = [{"filename": p, "status": "removed", "additions": 0, "deletions": 1} for p in paths]
+        self.assertEqual(classify_tier("cleanup", paths, changed_files=files, expected_changed_files=11)["tier"], "A")
+
+    def test_rename_out_of_protected_path_escalates_to_tier_a(self):
+        files = [{"filename": "docs/new.md", "previous_filename": "BRAIN/01-GOVERNANCE/law.md", "status": "renamed", "additions": 1, "deletions": 1}]
+        self.assertEqual(classify_tier("docs move", ["docs/new.md"], changed_files=files, expected_changed_files=1)["tier"], "A")
+
+    def test_missing_file_status_escalates_to_tier_a(self):
+        files = [{"filename": "HUB/button.tsx"}]
+        self.assertEqual(classify_tier("button fix", ["HUB/button.tsx"], changed_files=files, expected_changed_files=1)["tier"], "A")
+
+    def test_truncated_file_list_escalates_to_tier_a(self):
+        files = [{"filename": "HUB/button.tsx", "status": "modified"}]
+        self.assertEqual(classify_tier("button fix", ["HUB/button.tsx"], changed_files=files, expected_changed_files=2)["tier"], "A")
+
     def test_unknown_note_path_does_not_get_tier_c(self):
         self.assertEqual(classify_tier("SN-1234 filing", ["BRAIN/other/place.md"])["tier"], "B")
 
