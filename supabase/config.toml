@@ -32,3 +32,6 @@ verify_jwt = false
 
 [functions.nayanet-verified-ai-action]
 verify_jwt = false
+
+[functions.nayanet-github-intake]
+verify_jwt = false
