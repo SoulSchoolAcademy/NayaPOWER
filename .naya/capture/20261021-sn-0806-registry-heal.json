@@ -1,0 +1,50 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0806",
+  "capture_id": "20261021-sn-0806-registry-heal",
+  "title": "Useless Is the Worst Sin",
+  "intelligence": {
+    "title": "Useless Is the Worst Sin",
+    "smart_note_id": "SN-0806",
+    "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0806-completion-doctrine",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/completion-doctrine/SN-0806/IB-SMART-NOTE-20261020-sn0806-completion-doctrine.md",
+    "truth_state": "RATIFIED",
+    "captured_at": "2026-10-20",
+    "essence": "Shawn's ruling 2026-10-20: uselessness is the worst sin in the system. Work has value only when finished and usable in the real world; unfinished work is a liability, and valueless output is worse than nothing - it costs money to make, more to clean up, and burns time, energy, and attention, which never come back. Complete your work. Produce value. Score it. Move forward.",
+    "connections": [
+      {
+        "type": "GOVERNED_BY",
+        "target": "Shawn's spoken law 2026-10-20",
+        "note": "'Useless is the worst sin' ruling; the completion doctrine."
+      },
+      {
+        "type": "RELATED",
+        "target": "SN-0805",
+        "note": "Doctrine family."
+      },
+      {
+        "type": "RELATED",
+        "target": "SN-0807",
+        "note": "Doctrine family; AI waste is the world-scale instance of useless output."
+      }
+    ],
+    "note": "Capture reconstructed 2026-10-21 to heal registry drift: the registry entries for this note were dropped without a lifecycle record in 895d7361 (Living Map state 2026-10-21T04:50Z) while the published BRAIN page remained intact. Content distilled from the published page; stable id and ratification provenance preserved."
+  },
+  "source": {
+    "captured_at": "2026-10-21",
+    "source_type": "registry_heal",
+    "source_reference": "cold-retrieve lane battery red at 895d7361: 5 registry entries dropped without lifecycle record; heals published_pages_without_registry_entry drift 1->6 and the vanished-id guard.",
+    "restoration_provenance": {
+      "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+      "deleted_in": "895d73610e20d0e936a0e92273e6effc85e32422 (Living Map state 2026-10-21T04:50Z)",
+      "recovered_from": "BRAIN published page at 895d7361 (page intact; registry entry dropped without lifecycle record); intelligence distilled from the published page; no original capture JSON ever existed on disk.",
+      "restored_at": "2026-10-21T08:55:00Z",
+      "restored_by": "Naya Verity Narzan (Naya 5, cold-retrieve lane)"
+    },
+    "ratification": {
+      "status": "RATIFIED",
+      "basis": "Shawn's ruling 2026-10-20 ('Useless is the worst sin in the system'); the completion doctrine published as Smart Note SN-0806, live on NayaNET and quoted in the activation packet.",
+      "published": "2026-10-20"
+    }
+  }
+}

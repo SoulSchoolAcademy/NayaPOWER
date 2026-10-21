@@ -1,0 +1,40 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0808",
+  "capture_id": "20261021-sn-0808-registry-heal",
+  "title": "Elevated, Always — The Dual-Depth Standard",
+  "intelligence": {
+    "title": "Elevated, Always — The Dual-Depth Standard",
+    "smart_note_id": "SN-0808",
+    "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0808-the-elevation-standard",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md",
+    "truth_state": "RATIFIED",
+    "captured_at": "2026-10-21",
+    "essence": "Shawn's design law 2026-10-21: everything in NayaNET is elevated, always - nothing flat. Inputs are wells carved INTO the screen; actions are buttons raised OUT toward the hand; displays are lit panels. Every element carries inset highlight, inset shadow, a light-carrying border, outer glow, and drop shadow. Depth has a direction and the direction means something. One flat element cheapens everything elevated around it. Naya is the inspector: she does not report-and-walk-on, she makes sure it is done.",
+    "connections": [
+      {
+        "type": "GOVERNED_BY",
+        "target": "Shawn's spoken design law 2026-10-21",
+        "note": "'The input box should look like it is going into the screen. The ENTER should feel like it is coming out of the screen.'"
+      }
+    ],
+    "note": "Capture reconstructed 2026-10-21 to heal registry drift: the registry entries for this note were dropped without a lifecycle record in 895d7361 (Living Map state 2026-10-21T04:50Z) while the published BRAIN page remained intact. Content distilled from the published page; stable id and ratification provenance preserved."
+  },
+  "source": {
+    "captured_at": "2026-10-21",
+    "source_type": "registry_heal",
+    "source_reference": "cold-retrieve lane battery red at 895d7361: 5 registry entries dropped without lifecycle record; heals published_pages_without_registry_entry drift 1->6 and the vanished-id guard.",
+    "restoration_provenance": {
+      "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+      "deleted_in": "895d73610e20d0e936a0e92273e6effc85e32422 (Living Map state 2026-10-21T04:50Z)",
+      "recovered_from": "BRAIN published page at 895d7361 (page intact; registry entry dropped without lifecycle record); intelligence distilled from the published page; no original capture JSON ever existed on disk.",
+      "restored_at": "2026-10-21T08:55:00Z",
+      "restored_by": "Naya Verity Narzan (Naya 5, cold-retrieve lane)"
+    },
+    "ratification": {
+      "status": "RATIFIED",
+      "basis": "Shawn's spoken design law 2026-10-21, given while reviewing a certificate page; published as Smart Note SN-0808.",
+      "published": "2026-10-21"
+    }
+  }
+}

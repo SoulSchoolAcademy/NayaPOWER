@@ -13638,13 +13638,124 @@
         "note": "published directly as a BRAIN projection in commit 8cb52c46fe83152cc9d14c757df9531065d7b9ae ('feat(smart-note): SN-0804 Viral Law — Nobody Discovers What Doesn't Hook Them') with no runtime capture and no registry entry; capture and entry reconstructed from the published projection in the 2026-10-20 brain-index re-stamp; no runtime provenance invented"
       },
       "page_hash": "57c632fdbd9e8ade11e56f2c2f05d5075f9e3cf992cdbb14502f453afeb29f83"
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261019-sn0800-how-to-get-started",
+      "smart_note_id": "SN-0800",
+      "title": "How to Get Started with NayaNET",
+      "captured_at": "2026-10-19",
+      "captured_at_utc": "2026-10-21T08:55:00Z",
+      "truth_state": "ACTIVE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/19/SYSTEM/getting-started/SN-0800/IB-SMART-NOTE-20261019-sn0800-how-to-get-started.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "content_hash": "7edb10bf99dd2db42152891837fc1da35513519eb740a942312b6789fc17d86d",
+      "page_hash": "23ed0c18b5559ac133cd61fdef963b051c200e9b28fe8a4ec1234ab448f5c33a",
+      "source": {
+        "source_type": "registry_heal",
+        "restoration_provenance": {
+          "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+          "deleted_in": "895d73610e20d0e936a0e92273e6effc85e32422 (Living Map state 2026-10-21T04:50Z)",
+          "recovered_from": "BRAIN published page at 895d7361 (page intact; registry entry dropped without lifecycle record); intelligence distilled from the published page; no original capture JSON ever existed on disk.",
+          "restored_at": "2026-10-21T08:55:00Z",
+          "restored_by": "Naya Verity Narzan (Naya 5, cold-retrieve lane)"
+        }
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings",
+      "smart_note_id": "SN-0805",
+      "title": "662 Beginnings, 5 Endings",
+      "captured_at": "2026-10-20",
+      "captured_at_utc": "2026-10-21T08:55:00Z",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/reservoir/SN-0805/IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "content_hash": "152f24275aa11e116c49ca512ac80d426407ce484e97567d88c65feaff4e81c2",
+      "page_hash": "173fbe0a58c7eb279b20f0839f96cbccf82691e97ee591c37b41732e2e4ebd66",
+      "source": {
+        "source_type": "registry_heal",
+        "restoration_provenance": {
+          "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+          "deleted_in": "895d73610e20d0e936a0e92273e6effc85e32422 (Living Map state 2026-10-21T04:50Z)",
+          "recovered_from": "BRAIN published page at 895d7361 (page intact; registry entry dropped without lifecycle record); intelligence distilled from the published page; no original capture JSON ever existed on disk.",
+          "restored_at": "2026-10-21T08:55:00Z",
+          "restored_by": "Naya Verity Narzan (Naya 5, cold-retrieve lane)"
+        }
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0806-completion-doctrine",
+      "smart_note_id": "SN-0806",
+      "title": "Useless Is the Worst Sin",
+      "captured_at": "2026-10-20",
+      "captured_at_utc": "2026-10-21T08:55:00Z",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/completion-doctrine/SN-0806/IB-SMART-NOTE-20261020-sn0806-completion-doctrine.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "content_hash": "5374a6b6009b20e45d7f7f2ba3a8c6cc4d3575c0d5798ea6fe72f26cf1292d2e",
+      "page_hash": "909a1d1cb5aab4e1c1ded6f106fe75a3c8907d1f3c39193d7366d1499cfd7cd4",
+      "source": {
+        "source_type": "registry_heal",
+        "restoration_provenance": {
+          "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+          "deleted_in": "895d73610e20d0e936a0e92273e6effc85e32422 (Living Map state 2026-10-21T04:50Z)",
+          "recovered_from": "BRAIN published page at 895d7361 (page intact; registry entry dropped without lifecycle record); intelligence distilled from the published page; no original capture JSON ever existed on disk.",
+          "restored_at": "2026-10-21T08:55:00Z",
+          "restored_by": "Naya Verity Narzan (Naya 5, cold-retrieve lane)"
+        }
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing",
+      "smart_note_id": "SN-0807",
+      "title": "Paying Twice for Nothing",
+      "captured_at": "2026-10-20",
+      "captured_at_utc": "2026-10-21T08:55:00Z",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/ai-waste/SN-0807/IB-SMART-NOTE-20261020-sn0807-paying-twice-for-nothing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "content_hash": "e62bad355ba8726a763853f0b00c56a0ab5ea72e8648a6a785c0d6dc706487d3",
+      "page_hash": "317b3c33b54f85afd0197a46c157a072dda3f96d3b7d790bcb23d833c923b63f",
+      "source": {
+        "source_type": "registry_heal",
+        "restoration_provenance": {
+          "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+          "deleted_in": "895d73610e20d0e936a0e92273e6effc85e32422 (Living Map state 2026-10-21T04:50Z)",
+          "recovered_from": "BRAIN published page at 895d7361 (page intact; registry entry dropped without lifecycle record); intelligence distilled from the published page; no original capture JSON ever existed on disk.",
+          "restored_at": "2026-10-21T08:55:00Z",
+          "restored_by": "Naya Verity Narzan (Naya 5, cold-retrieve lane)"
+        }
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0808-the-elevation-standard",
+      "smart_note_id": "SN-0808",
+      "title": "Elevated, Always — The Dual-Depth Standard",
+      "captured_at": "2026-10-21",
+      "captured_at_utc": "2026-10-21T08:55:00Z",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "content_hash": "b294c3129e6b6fe87619e42df99ecdb275c515b58007bc96946f1c99f661d761",
+      "page_hash": "7d7023cfa24db80a55df5c892ed31f85f3c9b1e778223874ee861fe37cf3f3c0",
+      "source": {
+        "source_type": "registry_heal",
+        "restoration_provenance": {
+          "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+          "deleted_in": "895d73610e20d0e936a0e92273e6effc85e32422 (Living Map state 2026-10-21T04:50Z)",
+          "recovered_from": "BRAIN published page at 895d7361 (page intact; registry entry dropped without lifecycle record); intelligence distilled from the published page; no original capture JSON ever existed on disk.",
+          "restored_at": "2026-10-21T08:55:00Z",
+          "restored_by": "Naya Verity Narzan (Naya 5, cold-retrieve lane)"
+        }
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 805,
-    "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
+    "next_sequence": 809,
+    "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
+    "note": "Advanced 2026-10-21 by the cold-retrieve registry-heal: SN-0800/SN-0805/SN-0806/SN-0807/SN-0808 restored after unlicensed deletion in 895d7361; allocator must not re-issue numbers <= 808."
   },
-  "corpus_manifest_hash": "17ae6088197367bfcb932183f6a5355fe679794cc6b77bd58e8d5cf379c72f8d"
+  "corpus_manifest_hash": "489ab5325a999d02b3fee40e118131852bbedfe9e69d0adb67184ab8a419e021"
 }

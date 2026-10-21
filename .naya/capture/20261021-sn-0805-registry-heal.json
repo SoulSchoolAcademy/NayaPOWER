@@ -1,0 +1,45 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0805",
+  "capture_id": "20261021-sn-0805-registry-heal",
+  "title": "662 Beginnings, 5 Endings",
+  "intelligence": {
+    "title": "662 Beginnings, 5 Endings",
+    "smart_note_id": "SN-0805",
+    "intelligent_block_id": "IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings",
+    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/SYSTEM/reservoir/SN-0805/IB-SMART-NOTE-20261020-sn0805-662-beginnings-5-endings.md",
+    "truth_state": "RATIFIED",
+    "captured_at": "2026-10-20",
+    "essence": "On 2026-10-20 the team censused its own brain: 662 open changes, 473 untouched 7+ days, 229 created vs 49 merged in 7 days (4.7 starts per finish), headline scores frozen a week. Not a queue but a reservoir: starting was free, finishing ran through one serial bottleneck, closing was nobody's job, no report printed the pile. Seven root causes named; prevention with teeth: every open item gets an owner plus exactly one disposition (merge / fix its one named gap / close), per-lane WIP caps, creation budget = last week's completions + 2, 14-day list / 21-day close, reservoir metrics printed nightly, completions as the only reported metric.",
+    "connections": [
+      {
+        "type": "GOVERNED_BY",
+        "target": "SN-0806",
+        "note": "The reservoir drain (finish-or-close every item) is governed by the completion doctrine."
+      },
+      {
+        "type": "RELATED",
+        "target": "SN-0807",
+        "note": "Same doctrine family, published 2026-10-20."
+      }
+    ],
+    "note": "Capture reconstructed 2026-10-21 to heal registry drift: the registry entries for this note were dropped without a lifecycle record in 895d7361 (Living Map state 2026-10-21T04:50Z) while the published BRAIN page remained intact. Content distilled from the published page; stable id and ratification provenance preserved."
+  },
+  "source": {
+    "captured_at": "2026-10-21",
+    "source_type": "registry_heal",
+    "source_reference": "cold-retrieve lane battery red at 895d7361: 5 registry entries dropped without lifecycle record; heals published_pages_without_registry_entry drift 1->6 and the vanished-id guard.",
+    "restoration_provenance": {
+      "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+      "deleted_in": "895d73610e20d0e936a0e92273e6effc85e32422 (Living Map state 2026-10-21T04:50Z)",
+      "recovered_from": "BRAIN published page at 895d7361 (page intact; registry entry dropped without lifecycle record); intelligence distilled from the published page; no original capture JSON ever existed on disk.",
+      "restored_at": "2026-10-21T08:55:00Z",
+      "restored_by": "Naya Verity Narzan (Naya 5, cold-retrieve lane)"
+    },
+    "ratification": {
+      "status": "RATIFIED",
+      "basis": "Shawn's reservoir law, his word 2026-10-20 ('change your behavior immediately, fix this mess so this never happens again'); published as Smart Note SN-0805 in the doctrine family with SN-0806/SN-0807.",
+      "published": "2026-10-20"
+    }
+  }
+}
