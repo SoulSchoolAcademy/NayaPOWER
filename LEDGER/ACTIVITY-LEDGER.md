@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 19:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-21 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5062,6 +5062,22 @@ _Last updated: 2026-10-21 19:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1192-lane2.md`
 
 **Evidence:** Dispatcher verified all cited artifacts on disk: hypothesis-change.md (pre-design), decide-fork receipt, sealed record + both briefs, dry-A output sha256 03144d1c...31203cc6922e matches exactly. Gate fired honestly on the fixed rule — stopped before 4 wasted arms. Owned the pointer confound (brief handed the control the record it was testing). 7.5 
+
+### ✅ t1178 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Repaired truth-gate CI-green/local-red fixture defect in test_learn_compound_scale.py
+
+**Receipt:** `twelve-lane-receipts/t1178-lane2.md`
+
+**Evidence:** Verified: hub-sync/repo/tests/test_learn_compound_scale.py exists (Oct 21 19:57); _truth_lesson(lid, tmp_path) now always materializes the hermetic fixture under tmp_path (0 os.path.exists conditionals; fixture seam 23+/30- confined to the test file, gates.py/registry untouched). Why not 9.5: the repair is PROVEN but not SHIPPED — it lives in a one
+
+### ✅ t1175 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** queue-ledger-check.py adoption report: verified check on live state, traced every queued-mutation path
+
+**Receipt:** `twelve-lane-receipts/t1175-lane4.md`
+
+**Evidence:** Verified: lane-4/qlc-live-run-t1175.json sha256 abc09df0506ddd34cf9a…e30d (matches receipt) — PASS exit 0 on fresh 18:25:16Z snapshot; tool bin/queue-ledger-check.py sha256 248a9151ef29777cc21e…c32a unchanged, 12/12 self-tests; ledger live at 13 lines (grew past the receipt's quoted 10-line sha exactly as its own post-receipt note records — the t11
 
 ### ✅ t1175 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.3/10 [VERIFIED]
 
