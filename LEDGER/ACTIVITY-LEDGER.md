@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 00:38 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4973,6 +4973,14 @@ _Last updated: 2026-10-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified: runbook + receipt exist; ls-remote independently confirms tip 665098e3f (unchanged) and heal branch 82fe1c62 (unchanged), both SHAs exactly as cited. Case A executed cleanly: heal head parent==tip, 3-file diff, --check OK on heal bytes, drift confirmed still on tip (expected, unmerged), #2385 unchanged, gate still advisory (fres
 
+### ✅ t1201 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** first versioned smart block: lane-10 context block from ask-world log (SURGE slice a)
+
+**Receipt:** `twelve-lane-receipts/t1201-lane10.md`
+
+**Evidence:** VERIFIED all bytes this run: smartblocks/sb-lane10-context-v1.{json,md,usage.md} exist (6371/6773/2669 bytes) with SHA prefixes 459c6c9697a981d8 / 7c1e6132fa28d44a / 695b59188cb7d70a matching receipt exactly; JSON parses, block_id sb-lane10-context-v1, classification sums 24/24; ask-world-queries.jsonl SHA 6dedd2e4... 196 lines matches claim; 138-v
+
 ### ✅ t1200 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** gate_truth 0-vs-9 mechanism diagnosis (tip x environment matrix)
@@ -6697,6 +6705,12 @@ _Last updated: 2026-10-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/bin/claim-brief.py SHA-256 == 0bcb2d9664cb4410a9a35cdc18bc701a900765872e46985417d97eae53918ec7 (matches the receipt's claimed SHA exactly); hidden_files/bin/lift-fixtures/ holds exactly 14 files; kit hidden_files/lane-10/check-run-t0986-lane10/ holds the 994-line byte diff, claim-brief.sha256, and the self-test output (exit 0
 
+### ✅ t983 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0983-lane10 drain-state audit (29 gate-brief dry-runs + board stamp-spec routing scan)
+
+**Evidence:** Verified: kit hidden_files/lane-10/check-run-t0983-lane10/ holds 29 .out files; exits.txt histogram {2:10, 7:19} vs receipt prose '7:18' (table rows 1-19 + exits.txt agree on 19 exit-7s - prose off-by-one, evidence files correct); 4 falsifiers written before the mechanical pass (present in receipt); refusal-class split re-derived per-row this run. 
+
 ### ✅ t0983-lane10 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Byte-verified drain-state follow-up, assessment-only: 28-brief dry-run corpus re-derived + 1 new brief classified, stamp-spec routing pinned to a bounded 1,266-comment board read
@@ -6819,6 +6833,12 @@ _Last updated: 2026-10-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Re-pinned head first (eedd9540f — moved since t932), verified all three repair commits + base feature at head, classified 15 check-runs on exact head (9 success, 4 failing: 2 pre-existing-on-base, 2 governance-holds), local gate suite 15/15, PR diff = 4 files only. DISPATCHER VERIFIED: refs/pull/2385/head == eedd9540f (byte match to receipt). Hones
 
+### ✅ t981 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0981-lane10 brain-index freshness re-proof at live tip + board-comment state check
+
+**Evidence:** Verified: board comment 6283199121 EXISTS (created 2026-10-20T04:12:31Z, 2463 bytes) and names tip 6129980c9 + DRIFT + all 4 blob SHA shorts (025259f, 05fc29b, e83585f, 38337b0 all present) - byte-consistent with the receipt's pins; kit hidden_files/lane-10/check-run-t0981-lane10/ exists (README, diffs, dump-drift-t0981.py). The live since-bounded 
+
 ### ✅ t0981 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** brain-index freshness re-proof at tip 6129980c9 (read-only)
@@ -6826,6 +6846,12 @@ _Last updated: 2026-10-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0981-lane10.md`
 
 **Evidence:** VERIFIED: kit exists at hidden_files/lane-10/check-run-t0981-lane10/ (diffs 47/31/20 lines matching claimed signature; summary.json + have/want pairs present); live ls-remote HEAD still = 6129980c9453d48866aa110a227cf08df83b08df (pin current, tip unchanged); board comment 6283199121 on #2765 exists (created 2026-10-20T04:12:31Z), names tip 6129980c
+
+### ✅ t978 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** t0978-lane10 brain-index freshness verdict at live tip + step-0 board premise check
+
+**Evidence:** Verified: kit hidden_files/lane-10/check-run-t0978-lane10/ exists (README, diffs, dump-drift-t0978.py); the premise-rot finding is timestamp-pinned - comment 6283199121 rendered 2026-10-20T04:12:31Z (verified above) predates the t0977 broadcast that called it pending; step-0 'verify and close, do not duplicate' fired as designed. Diff signature 47/
 
 ### ✅ t0978 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -7891,6 +7917,14 @@ _Last updated: 2026-10-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified: worker.js sha256 ba274d21dce9275eb59a6832233bba4f46d93c321db147c6a94b2c828659a1aa and test-capture.sh f857e8dbaff1d41dab2fba59203c1005479bc36968cfce3d7a0d3027ef5d9dec match receipts exactly; 22/22 battery credible (boundary 10,000 chars → 200 / 10,001 → 400 proven, all 400s store-untouched, ids distinct + ordered). Score 9.0/10.
 
+### ✅ t0903 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0903 lane-10 ask-world origin markers: writer-side origin_marker stamped in log_query (SB-Δ2 closed)
+
+**Receipt:** `twelve-lane-receipts/t0903-lane10.md`
+
+**Evidence:** Verified live bytes: bin/ask-world.py carries _origin_marker (4 hits) stamped on every row + init fixture in log_query, LOG_FORMAT 2->3; bin/check-origin-markers.py exists as the durable byte check; askworld-defect-register.md marks SB-Δ2 CLOSED citing this run with RED->GREEN proof (50/50 marker-less exit1 pre, 50/50 stamped exit0 post); spec upda
+
 ### ✅ t0903-lane10-askworld — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** ask-world writer-side origin_marker: SB-D2 hole closed at the source
@@ -8766,6 +8800,14 @@ _Last updated: 2026-10-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** t0813 lane-8 RECUSAL-REPEAT: re-claimed gated MTC-v1 brief, gate fired, re-filed
+
+**Receipt:** `twelve-lane-receipts/t0813-lane8.md`
+
+**Evidence:** Verified: both receipts exist (t0813-lane8.md + t0813-lane8-reclaim.md); gate claim verified identical authorship lineage; brief re-filed unclaimed. Recusal procedure correct - stopped before any pre-reg touch, arm-freshness preserved twice. Why not 9.5: (1) claim-before-read repeated the seat's own earlier claim on the same brief this shift - the 
 
 ### ✅ t0813-lane8 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -10054,6 +10096,14 @@ _Last updated: 2026-10-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0735-lane7.md`
 
 **Evidence:** Verified: git ls-remote refs/heads/naya/lane9/level-drill-keysplit-t0730 = cde0c63ddc1a2a59911b82334bd93ff761e5045e, byte-matches receipt's pinned SHA. 10-hole pass-1 with 6 applied fixes (gate checker run on draft AND posted body bytes, PR file list verified, no pre-existing PR, zero key-content reads), double re-pin around the POST, open-only aut
+
+### ✅ t0735 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** t0735 lane-5 v2 corpus topic 1 authored (10 queries / 15 docs), frozen gates green, slice pinned
+
+**Receipt:** `twelve-lane-receipts/t0735-lane5.md`
+
+**Evidence:** Verified: both cited slice SHAs match byte-identical files found in hidden_files/superseded/v2-authoring-topic1-retired-t0842/ (corpus_v2-topic1.json e0f5ff0a..., queries_v2-topic1.json e420ecea...); author-topic1.py survives in v2-authoring/; RETIREMENT-NOTE explains the move. Real verified slice: 10 queries + 15 docs under the anchor discipline, 
 
 ### ✅ t0735-lane5-v2corpus-20261018 — Team 5, Naya Clarity (Retrieval) — 8.5/10 [VERIFIED]
 
