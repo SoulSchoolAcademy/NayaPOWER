@@ -1,6 +1,6 @@
 {
  "schema": "living-list/v1",
- "generated_utc": "2026-10-22T23:47:21Z",
+ "generated_utc": "2026-10-22T23:57:10Z",
  "source": "hidden_files/living-list.json \u2014 validated + reconciled by state-core-builder.py (single writer)",
  "registry": "THE LIVING LIST \u2014 the one ranked queue across programs; programs are filters, not queues",
  "activation": {
@@ -109,8 +109,8 @@
    "title": "Command + universal search \u2014 one place that finds any person, note, thread, list, or link (Best-of-Best step 13)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 5708,
-   "claim_age_s": 5708,
+   "idle_s": 6298,
+   "claim_age_s": 6298,
    "drift": []
   },
   {
@@ -129,8 +129,8 @@
    "title": "Linked everything \u2014 the data model: one thing in three homes, never three copies (step 14)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 5708,
-   "claim_age_s": 5708,
+   "idle_s": 6298,
+   "claim_age_s": 6298,
    "drift": []
   },
   {
@@ -149,8 +149,8 @@
    "title": "Smart Lists \u2014 server store: the same lists in the Hub and your app (step 15)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 5708,
-   "claim_age_s": 5708,
+   "idle_s": 6298,
+   "claim_age_s": 6298,
    "drift": []
   },
   {
@@ -169,8 +169,8 @@
    "title": "Conversational intake \u2014 Welcome door + invite-accept as one question at a time (step 12)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 5708,
-   "claim_age_s": 5708,
+   "idle_s": 6298,
+   "claim_age_s": 6298,
    "drift": []
   },
   {
@@ -189,8 +189,8 @@
    "title": "Booking block \u2014 your availability once, a booking link, reminders both sides (step 17)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 5708,
-   "claim_age_s": 5708,
+   "idle_s": 6298,
+   "claim_age_s": 6298,
    "drift": []
   },
   {
@@ -231,8 +231,8 @@
    "verified_by": null,
    "pr_state": "merged",
    "pr_mergeable": null,
-   "idle_s": 8168,
-   "claim_age_s": 9068,
+   "idle_s": 8758,
+   "claim_age_s": 9658,
    "stalled": true,
    "drift": [
     "pr-merged-state-lags: PR #2939 is MERGED but the row sits IN PROGRESS",
@@ -257,11 +257,11 @@
    "verified_by": null,
    "pr_state": "closed",
    "pr_mergeable": false,
-   "idle_s": 14348,
+   "idle_s": 14938,
    "stalled": true,
    "drift": [
     "pr-closed-unmerged: PR #2869 closed without merging",
-    "stalled-claim: no state change or note for 3h+ \u2014 claim aging is visible by law"
+    "stalled-claim: no state change or note for 4h+ \u2014 claim aging is visible by law"
    ]
   },
   {
