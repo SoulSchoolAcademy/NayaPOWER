@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T16:15:31+00:00",
+ "generated_utc": "2026-10-22T17:17:04+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,15 +31,8 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [
-    {
-     "number": 2929,
-     "title": "Omega: parse_snapshot() learns the live director grammar (D2 cure)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2929",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "know",
@@ -60,19 +53,13 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
-     "number": 2925,
-     "title": "Brain-index regen at basis 51902fc7 \u2014 covers the 13 Daily Intelligence editions (#2917)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2925",
-     "draft": false
-    },
-    {
      "number": 2907,
      "title": "kappa w690: heal registry drift \u2014 register 28 door/leaf pages, pin 1\u21920",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907",
      "draft": true
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 1
   },
   {
    "id": "act",
@@ -153,27 +140,15 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2936,
+     "title": "Naya/mission state",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2936",
+     "draft": false
+    },
+    {
      "number": 2934,
      "title": "Mission-state twin cure \u2014 director ruling Option C (TOP-10 director-stated, register machi",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934",
-     "draft": false
-    },
-    {
-     "number": 2933,
-     "title": "Authority prose: align 4 stale 9.0 refs to the enforced 9.5 bar",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2933",
-     "draft": false
-    },
-    {
-     "number": 2931,
-     "title": "Cure-forward: door-obligation records for SN-1801 + SN-1802 (#2916 md-only landing)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2931",
-     "draft": false
-    },
-    {
-     "number": 2930,
-     "title": "Extend mirror report: 14Q continuous execution addendum",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2930",
      "draft": false
     },
     {
@@ -183,7 +158,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 3
   },
   {
    "id": "wire",
@@ -202,8 +177,15 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2938,
+     "title": "Tier A \u2014 Gate trigger-scope repair: board comments stop spawning gate runs (issue_comment ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2938",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "team",
@@ -249,8 +231,15 @@
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2937,
+     "title": "P0: fail-closed v7 registry identity reconciliation and orphan controls",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2937",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "product",
@@ -443,6 +432,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 9,
- "unassigned_prs": 5
+ "open_pr_total": 7,
+ "unassigned_prs": 3
 }
