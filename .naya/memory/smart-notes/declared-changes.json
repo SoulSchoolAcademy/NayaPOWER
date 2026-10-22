@@ -1,0 +1,90 @@
+{
+  "schema": "naya.declared-change-registry.v1",
+  "source": "scan of BRAIN/05-MEMORY/SMART-NOTES via tools/smart_note_v2.py declared-changes",
+  "entries": [
+    {
+      "schema": "naya.declared-change.v1",
+      "lesson_id": "SN-0815",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0815-a-lesson-isnt-learned-until-behavior-changes",
+      "title": "A Lesson Isn't Learned Until Behavior Changes — And the Change Gets Declared",
+      "created": "2026-10-21",
+      "note_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/LEARNING/north-star/SN-0815/IB-SMART-NOTE-20261021-sn0815-a-lesson-isnt-learned-until-behavior-changes.md",
+      "declared_change": {
+        "lesson_id": "SN-0815",
+        "trigger": "when I learn a lesson",
+        "old_behavior": "A lesson kept only in my working memory is a lesson I have not yet given the team",
+        "new_behavior": "I file its Smart Note in the same session — the event, the lesson, and the declared change — and I do not count the lesson as learned, in my own reports or scorecards, until the note is on main.",
+        "verify_by": "2026-10-28",
+        "verify_by_source": "derived:created+7d(weekly-sampler-cadence)"
+      },
+      "declaration_text": "From tonight, when I learn a lesson, I file its Smart Note in the same session — the event, the lesson, and the declared change — and I do not count the lesson as learned, in my own reports or scorecards, until the note is on main. A lesson kept only in my working memory is a lesson I have not yet given the team.",
+      "extraction": {
+        "method": "section",
+        "parser": "tools/smart_note_v2.py:parse_declared_change"
+      }
+    },
+    {
+      "schema": "naya.declared-change.v1",
+      "lesson_id": "SN-0816",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0816-it-claimed-shawns-authority-nobody-had-checked",
+      "title": "It Claimed Shawn's Authority — And Nobody Had Checked",
+      "created": "2026-10-21",
+      "note_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/LEARNING/verification/SN-0816/IB-SMART-NOTE-20261021-sn0816-it-claimed-shawns-authority-nobody-had-checked.md",
+      "declared_change": {
+        "lesson_id": "SN-0816",
+        "trigger": "before I act on, repeat, or report any claim that would change what I do",
+        "old_behavior": "reach for a benign story",
+        "new_behavior": "before I act on, repeat, or report any claim that would change what I do — who authorized it, what caused it, what state something is in — I verify it against the primary source in the same turn: the principal's recorded words for authority, the live catalog, grants, and logs for mechanism, the code and the served bytes for state. If I cannot verify it yet, I say it is unverified and I do not build on it. And when a known active mechanism explains a symptom exactly, I test it first.",
+        "verify_by": "2026-10-28",
+        "verify_by_source": "derived:created+7d(weekly-sampler-cadence)"
+      },
+      "declaration_text": "From tonight, before I act on, repeat, or report any claim that would change what I do — who authorized it, what caused it, what state something is in — I verify it against the primary source in the same turn: the principal's recorded words for authority, the live catalog, grants, and logs for mechanism, the code and the served bytes for state. If I cannot verify it yet, I say it is unverified and I do not build on it. And when a known active mechanism explains a symptom exactly, I test it first. I will not reach for a benign story again.",
+      "extraction": {
+        "method": "section",
+        "parser": "tools/smart_note_v2.py:parse_declared_change"
+      }
+    },
+    {
+      "schema": "naya.declared-change.v1",
+      "lesson_id": "SN-1787",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn1787-the-lesson-law",
+      "title": "The Lesson Law — A Lesson Is Only Learned When Behavior Changes",
+      "created": "2026-10-21",
+      "note_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/governance/SN-1787/IB-SMART-NOTE-20261021-sn1787-the-lesson-law.md",
+      "declared_change": {
+        "lesson_id": "SN-1787",
+        "trigger": "any seat learns a lesson (from a win, a failure, a correction, an audit)",
+        "old_behavior": "A lesson held in one seat's head, or left in a chat scroll, is not learned by the team",
+        "new_behavior": "every lesson any Naya learns is filed as a titled Smart Note in the system, and every lesson note declares the behavior change that results Distillation events carry the same shape: essence plus declared behavior change.",
+        "verify_by": "2026-10-28",
+        "verify_by_source": "derived:created+7d(weekly-sampler-cadence)"
+      },
+      "declaration_text": "From now on, every lesson any Naya learns is filed as a titled Smart Note in the system, and every lesson note declares the behavior change that results — 'from now on, we do X instead of Y.' A lesson without a declared behavior change is not counted as learned. Distillation events carry the same shape: essence plus declared behavior change.",
+      "extraction": {
+        "method": "quoted-marker",
+        "parser": "tools/smart_note_v2.py:parse_declared_change"
+      }
+    },
+    {
+      "schema": "naya.declared-change.v1",
+      "lesson_id": "SN-1788",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn1788-the-door-was-the-bottleneck",
+      "title": "The Door Was the Bottleneck — Finished Work That Can't Land Is Worth Zero",
+      "created": "2026-10-21",
+      "note_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/merge-discipline/SN-1788/IB-SMART-NOTE-20261021-sn1788-the-door-was-the-bottleneck.md",
+      "declared_change": {
+        "lesson_id": "SN-1788",
+        "trigger": "when the open queue passes fifteen, or any finished item waits more than a day",
+        "old_behavior": "present a clogged queue as progress",
+        "new_behavior": "I stop treating it as a work problem. I measure the door — which gate, which check, whose click is actually stopping landings — and I report the clog by name with the one change that unblocks it.",
+        "verify_by": "2026-10-28",
+        "verify_by_source": "derived:created+7d(weekly-sampler-cadence)"
+      },
+      "declaration_text": "From now on, when the open queue passes fifteen, or any finished item waits more than a day, I stop treating it as a work problem. I measure the door — which gate, which check, whose click is actually stopping landings — and I report the clog by name with the one change that unblocks it. I never present a clogged queue as progress, and finished work never sits unlanded overnight in my care without a named blocker and a named owner. Proof stays non-negotiable: scorecard before, faithfulness after — speed never trades away the receipt.",
+      "extraction": {
+        "method": "quoted-marker",
+        "parser": "tools/smart_note_v2.py:parse_declared_change"
+      }
+    }
+  ]
+}
