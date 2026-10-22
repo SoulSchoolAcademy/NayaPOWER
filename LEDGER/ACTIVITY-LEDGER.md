@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 19:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 20:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21687,6 +21687,12 @@ _Last updated: 2026-10-22 19:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ lane-scorer-20261022-1300 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up on t952: independent re-proof of receipt-pin gate (19/19 tests + 3 fail-closed demos) on current main bytes
+
+**Evidence:** VERIFIED on live bytes, independent of the lane (fresh depth-1 clone of main in /tmp, removed after): git ls-remote origin main == 4e941e0524774c613323a2fa9b27467704bf30f0, exactly the tip the receipt claimed at 12:50-13:00 PDT and unchanged since; all five claimed artifacts byte-present at that tip (tests/test_receipt_pin_gate.py, tools/check_scor
+
 ### ✅ gap-gap-scorer-20261014-2200 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** close scorer's two pin-gaps: (1) pin the four-site t0412 tie-break docstring corrections, (2) name the replacement reproduction tolerance
@@ -33508,6 +33514,12 @@ _Last updated: 2026-10-22 19:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ lane-scorer-20261022-1250 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up on t1002 chain: independent RAW-log re-derivation + built fail-closed spawn-record repair in Lane 6 SGF runner
+
+**Evidence:** VERIFIED on live bytes from this seat, independent of the lane: (1) runner edit byte-exact — sha256 e09f83375ada2ace503550ac743f799b8b0fe4658b9357b8d3225fcd24c59545 of hidden_files/lane-6/sgf-daily/run_daily.sh recomputes exactly to the receipt pin; bash -n clean; record-spawn phase, schema sgf-spawn-record/v1, 5 FATAL fail-closed strings, seal-ban
 
 ### ✅ lane-scorer-20261022-0950 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
