@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-21T23:15:41+00:00",
+ "generated_utc": "2026-10-22T00:19:06+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,27 +51,8 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [
-    {
-     "number": 2864,
-     "title": "regen(brain-index): fresh mechanical regen \u2014 supersedes #2836 (Tier C, fixpoint-verified)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2864",
-     "draft": false
-    },
-    {
-     "number": 2736,
-     "title": "fix(brain-index): make regeneration line-ending deterministic on every platform",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736",
-     "draft": false
-    },
-    {
-     "number": 2385,
-     "title": "feat(ci): dedicated brain-index-freshness required gate workflow (Shawn 2026-10-11)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2385",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 3
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "act",
@@ -130,15 +111,8 @@
    "next_action": "Put the verify lane ahead of the merge queue: no merge ships without the independent verify slice signed off first, starting with #2388.",
    "active_now": true,
    "board_lane": "#2175 lane PROVE",
-   "open_prs": [
-    {
-     "number": 2776,
-     "title": "fix(smart-note): verify actual projection commit SHA",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "build",
@@ -159,37 +133,13 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2867,
-     "title": "tools: tongue-coverage checker + generated mechanism registry (machine-native guards 5-6)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2867",
-     "draft": false
-    },
-    {
-     "number": 2842,
-     "title": "boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATION (distill-daily-202",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2842",
-     "draft": false
-    },
-    {
-     "number": 2818,
-     "title": "fix(know): make live Windows Smart Note bridge read all long-path notes",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2818",
-     "draft": false
-    },
-    {
-     "number": 2747,
-     "title": "feat: make Smart Builder library searchable and machine-accessible",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747",
-     "draft": false
-    },
-    {
-     "number": 2742,
-     "title": "Design laws v2 \u2014 3-pass scored 9+ for ratification",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742",
+     "number": 2869,
+     "title": "Naya4/smart notes 2026 09 30",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869",
      "draft": false
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 1
   },
   {
    "id": "wire",
@@ -208,15 +158,8 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [
-    {
-     "number": 2862,
-     "title": "feat(gates): door obligation \u2014 capture + registry + index in the same push (prevention for",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2862",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "team",
@@ -235,8 +178,15 @@
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2874,
+     "title": "Naya2/team dashboard",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2874",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "infra",
@@ -315,21 +265,8 @@
    "next_action": "Close the trigger-chain jurisdiction gap with a mechanical gate \u2014 prose does not stop bypasses, gates do.",
    "active_now": false,
    "board_lane": "#2175 lane GOVERN",
-   "open_prs": [
-    {
-     "number": 2824,
-     "title": "governance(0032): THE HOUSE STANDARD \u2014 take care of the house",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2824",
-     "draft": false
-    },
-    {
-     "number": 2797,
-     "title": "Governance: NAYA OATH OF HONOR (0023) \u2014 Shawn's 2026-10-20 law, three tongues",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 2
+   "open_prs": [],
+   "open_pr_count": 0
   }
  ],
  "recent_activity": [
@@ -462,6 +399,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 12,
- "unassigned_prs": 5
+ "open_pr_total": 2,
+ "unassigned_prs": 1
 }

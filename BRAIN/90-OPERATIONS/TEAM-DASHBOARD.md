@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 23:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 00:18 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 12 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 2 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,27 +50,11 @@
 
 ## Open PRs by Area
 
-### KNOW (3)
-- [#2864](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2864) regen(brain-index): fresh mechanical regen — supersedes #2836 (Tier C,
-- [#2736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736) fix(brain-index): make regeneration line-ending deterministic on every
-- [#2385](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2385) feat(ci): dedicated brain-index-freshness required gate workflow (Shaw
+### BUILD (1)
+- [#2869](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869) Naya4/smart notes 2026 09 30
 
-### PROVE (1)
-- [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
-
-### BUILD (5)
-- [#2867](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2867) tools: tongue-coverage checker + generated mechanism registry (machine
-- [#2842](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2842) boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATIO
-- [#2818](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2818) fix(know): make live Windows Smart Note bridge read all long-path note
-- [#2747](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2747) feat: make Smart Builder library searchable and machine-accessible
-- [#2742](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2742) Design laws v2 — 3-pass scored 9+ for ratification
-
-### WIRE (1)
-- [#2862](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2862) feat(gates): door obligation — capture + registry + index in the same 
-
-### GOVERN (2)
-- [#2824](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2824) governance(0032): THE HOUSE STANDARD — take care of the house
-- [#2797](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2797) Governance: NAYA OATH OF HONOR (0023) — Shawn's 2026-10-20 law, three 
+### TEAM (1)
+- [#2874](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2874) Naya2/team dashboard
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*
