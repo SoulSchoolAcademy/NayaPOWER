@@ -170,7 +170,7 @@ def _good_state():
         authority_summary="Protected gates: production deploys, credentials/money, "
                           "destructive actions, ratification, security/privacy. "
                           "Law 11 (do no harm) is the only hard law.",
-        current_truth_location="mission-state feed #2154 and current main",
+        current_truth_location="mission-state snapshot BRAIN/CURRENT-MISSION-STATE.md and current main",
         next_action="re-anchor on live main and check the board",
         declaration_receipt=issue_declaration_receipt(
             Path(__file__).resolve().parents[1], "naya-9"),

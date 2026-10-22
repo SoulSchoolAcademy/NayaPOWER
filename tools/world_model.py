@@ -9,7 +9,8 @@ Tracks:
   1. Open PRs — number, title, CI status, mergeability, age
   2. Lane states — #1713/#1714/#1715: free/occupied, who's in flight
   3. Ledger — #2396: what's proven, what's pending
-  4. Mission state — #2154: current priorities, parked items, blockers
+  4. Mission state — BRAIN/CURRENT-MISSION-STATE.md on main: current
+     priorities, parked items, blockers
   5. Standing laws — from the briefing file (local, no API needed)
   6. Live tip — current main SHA (API-confirmed, cached)
 
@@ -59,7 +60,10 @@ BRIEFING_PATH = Path(os.path.expanduser("~/workspace/agent-briefing-master.md"))
 
 LANE_ISSUES = {"alpha": 1713, "beta": 1714, "gamma": 1715}
 LEDGER_ISSUE = 2396
-MISSION_ISSUE = 2154
+MISSION_STATE_PATH = "BRAIN/CURRENT-MISSION-STATE.md"
+MISSION_STATE_URL = (
+    f"https://github.com/{REPO}/blob/main/{MISSION_STATE_PATH}"
+)
 
 # Freshness thresholds (seconds). Data older than this is STALE.
 FRESHNESS_LIMITS = {
@@ -350,7 +354,9 @@ def build_ledger_section(cached=None):
 
 
 def build_mission_section(cached=None):
-    """Mission state #2154 — current priorities, parked items, blockers.
+    """Mission state — BRAIN/CURRENT-MISSION-STATE.md on main.
+
+    Current priorities, parked items, blockers.
 
     P0-F5 (falsified 2026-10-13, Naya Gamma): the mission section is
     SOURCE-BOUND — the full mission body is stored, sha-pinned, never
@@ -361,30 +367,39 @@ def build_mission_section(cached=None):
     """
     import hashlib
 
-    ok, issue = gh_api("GET", f"/repos/{REPO}/issues/{MISSION_ISSUE}")
+    ok, source_file = gh_api(
+        "GET", f"/repos/{REPO}/contents/{MISSION_STATE_PATH}?ref=main"
+    )
     if not ok:
-        return mark_unknown("mission", f"API failed: {issue}")
+        return mark_unknown("mission", f"API failed: {source_file}")
 
-    body = issue.get("body") or ""
+    import base64
+
+    try:
+        body = base64.b64decode(source_file.get("content") or "").decode("utf-8")
+    except Exception as e:
+        return mark_unknown("mission", f"could not decode mission snapshot: {e}")
     if not body.strip():
         # Fail closed: no mission source, no orientation claim. (Pre-fix
         # this returned status OK with an empty preview — false completeness.)
         return {
             "status": "PARTIAL",
-            "issue": MISSION_ISSUE,
+            "source": MISSION_STATE_PATH,
             "reason": "mission body empty — no source-bound priorities available",
-            "url": issue.get("html_url", ""),
+            "url": source_file.get("html_url", MISSION_STATE_URL),
             "as_of_utc": now_utc(),
             "as_of_ts": utc_now_ts(),
         }
 
+    title = next(
+        (ln.lstrip("# ").strip() for ln in body.splitlines() if ln.strip()), ""
+    )
     return {
         "status": "OK",
-        "issue": MISSION_ISSUE,
-        "title": issue.get("title", ""),
-        "state": issue.get("state", ""),
-        "comment_count": issue.get("comments", 0),
-        "updated_at": issue.get("updated_at", ""),
+        "source": MISSION_STATE_PATH,
+        "title": title,
+        "source_sha": source_file.get("sha", ""),
+        "updated_at": "",
         # Full source-bound mission text — the orientation source. Priorities
         # may live beyond char 2000; the preview below is display-only.
         "body_full": body,
@@ -393,7 +408,7 @@ def build_mission_section(cached=None):
         "body_preview": body[:2000],
         "preview_truncated": len(body) > 2000,
         "mission_priorities_state": "FULL",
-        "url": issue.get("html_url", ""),
+        "url": source_file.get("html_url", MISSION_STATE_URL),
         "as_of_utc": now_utc(),
         "as_of_ts": utc_now_ts(),
     }
@@ -798,12 +813,12 @@ def cmd_query(args):
                     "UNKNOWN — mission section is PARTIAL (preview-only "
                     "snapshot: no full source-bound mission text).\n"
                     "READ_MORE: run `refresh` for a source-bound mission, or "
-                    f"read the live source directly: {mission.get('url', '#2154')}. "
+                    f"read the live source directly: {mission.get('url', MISSION_STATE_URL)}. "
                     "No priority/completeness answer can be given from a preview."
                 )
             else:
                 answer = (
-                    f"OBSERVED — mission state (#{mission.get('issue')}):\n"
+                    f"OBSERVED — mission state ({mission.get('source', MISSION_STATE_PATH)}):\n"
                     f"  Title: {mission.get('title', '')}\n"
                     f"  Updated: {mission.get('updated_at', '')}\n"
                     f"  Source-bound: full mission text, "
