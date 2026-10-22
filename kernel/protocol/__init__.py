@@ -9,7 +9,7 @@ This package implements the enforceable gates:
 - cold_start_gate: mandatory boot sequence for fresh agents (tests the AGENT)
 - protocol_integrity_gate: validates the protocol manifest itself (tests the LAW)
 - authority_gate: machine-checkable protected-gate enforcement
-- quality_gate: 9.0+ delivery enforcement before anything reaches Shawn
+- quality_gate: 9.5 delivery enforcement before anything reaches Shawn
 - cold_successor_test: acceptance test that state survives the agent
 - minimal_action: smallest effective change as a checkable proposal
 - learning_capture: every cycle declares its lesson (with provenance) or states why none

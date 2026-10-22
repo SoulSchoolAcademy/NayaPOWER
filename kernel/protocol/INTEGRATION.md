@@ -18,7 +18,7 @@ prose currently relies on memory.
 | `AGENTS.md` → "OPERATIONS" (sign-in/sign-out relay) | `cold_successor_test` | The handoff section of sign-out as an acceptance test: what happened, truth, authority, proof, open, blocked, next. |
 | `AGENTS.md` → "CONTINUOUS DISTILLATION" | `learning_capture` | Every cycle declares its lesson (with provenance) or states why there is none. Silence is not a lesson. |
 | `AGENTS.md` → "CAPTAIN MODE" (takeover) | `takeover` | The no-waiting doctrine as rules: 4h stall required, authority-checked, recorded, owner notified with next task. |
-| Delivery to Shawn | `quality_gate` | 9.0 floor enforced: scorecard required, every dimension ≥ 9.0, verifier ≠ builder, weakest point named. |
+| Delivery to Shawn | `quality_gate` | 9.5 floor enforced: scorecard required, every dimension ≥ 9.5, verifier ≠ builder, weakest point named. |
 
 ## What was NOT duplicated
 
