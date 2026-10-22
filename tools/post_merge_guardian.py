@@ -33,9 +33,19 @@ rebase series — and every direct-push range, the door included):
       every file the PR changed carries the identical blob at the PR
       head, at the merge commit, and at the tip (a tip difference is
       excused only when a later commit in merge..tip touched the path).
-  (b) NO NEW RED — the tip's failing check set (latest run per name)
-      after the push contains no name that was not already failing
-      before the push. Inherited reds are recorded, never charged.
+  (b) NO NEW RED — a check failing at the tip is charged to the push
+      only when it was PRESENT at the parent commit and completed
+      not-failing there (the L636 derivation: parent-vs-merge failing
+      sets, per workflow). Inherited reds (failing on both sides) are
+      recorded, never charged. A check ABSENT at the parent — no
+      check-run at all — or still pending there derives UNKNOWN,
+      never a charge: absence is not evidence the check was green.
+      (Both historical mischarges — the b1e8d514 claim, voided by
+      correction 6347895618, and the PR #2936 claim 6351319337,
+      dispositioned MISCHARGE — came from treating absent as passing.)
+      Every record carries the derivation itself — per-workflow
+      before/after states plus both failing-set counts — so a charge
+      is inspectable, never asserted.
   (c) SURFACE — for landings touching HUB/**, the live Hub answers
       200 with its feed present. (Liveness, not freshness: deploy
       freshness is the deploy lane's gauge metric, DESIGN.ai.md §6.)
@@ -386,20 +396,62 @@ def http_fetch(url):
         return exc.code, ""
 
 
+def derive_red_verdicts(before_sets, failing_after):
+    """The L636 derivation, per workflow failing after a push.
+
+    before_sets is check_sets() at the parent commit: (failing,
+    pending, completed). A charge requires proof the check was green
+    before: only a workflow PRESENT at the parent and completed
+    not-failing there can derive NEW_RED. Failing on both sides is
+    INHERITED. Absent at the parent (no check-run at all) or still
+    pending there, the before-state is unknowable: UNKNOWN — recorded
+    on the run's report, never charged, never revert-prepped, never
+    alarmed. Returns {name: {"before", "after", "verdict"}}.
+    """
+    failing_before, pending_before, completed_before = before_sets
+    derivation = {}
+    for name in sorted(failing_after):
+        if name in failing_before:
+            before_state, verdict = "failing", "INHERITED"
+        elif name in pending_before:
+            before_state, verdict = "pending", "UNKNOWN"
+        elif name in completed_before:
+            before_state, verdict = "passing", "NEW_RED"
+        else:
+            before_state, verdict = "absent", "UNKNOWN"
+        derivation[name] = {
+            "before": before_state, "after": "failing", "verdict": verdict,
+        }
+    return derivation
+
+
 def diff_reds(client, before, after, wait_secs=0, poll_secs=30, sleep=time.sleep, now=time.monotonic):
-    """New-red attribution for a push. Polls until the after-set settles."""
-    failing_before, _, _ = check_sets(client, before)
+    """New-red attribution for a push. Polls until the after-set settles.
+
+    Charges come from derive_red_verdicts (L636): set difference alone
+    is NOT attribution — a name missing from the before-set may be an
+    inherited red, a proven new red, or a check that never ran at the
+    parent (UNKNOWN). The result carries the full derivation and both
+    failing-set counts so the guardian's own output shows its work.
+    """
+    before_sets = check_sets(client, before)
     deadline = now() + wait_secs
     while True:
         failing_after, pending_after, _ = check_sets(client, after)
         if not pending_after or now() >= deadline:
             break
         sleep(poll_secs)
-    new_reds = sorted(failing_after - failing_before)
+    derivation = derive_red_verdicts(before_sets, failing_after)
     return {
-        "failing_before": sorted(failing_before),
+        "failing_before": sorted(before_sets[0]),
         "failing_after": sorted(failing_after),
-        "new_reds": new_reds,
+        "failing_before_count": len(before_sets[0]),
+        "failing_after_count": len(failing_after),
+        "derivation": derivation,
+        "new_reds": sorted(n for n, d in derivation.items()
+                           if d["verdict"] == "NEW_RED"),
+        "unknown_reds": sorted(n for n, d in derivation.items()
+                               if d["verdict"] == "UNKNOWN"),
         "pending_after": sorted(pending_after),
     }
 
@@ -457,7 +509,14 @@ def evidence_markdown(record):
             f"**Tip checks before:** {', '.join(checks.get('failing_before') or []) or 'none failing'}",
             f"**Tip checks after:** {', '.join(checks.get('failing_after') or []) or 'none failing'}",
             f"**New reds charged to this landing:** {', '.join(checks.get('new_reds') or []) or 'none'}",
+            f"**Failing-set counts (parent → this push):** "
+            f"{checks.get('failing_before_count', len(checks.get('failing_before') or []))} → "
+            f"{checks.get('failing_after_count', len(checks.get('failing_after') or []))}",
         ]
+        if checks.get("unknown_reds"):
+            lines.append(
+                f"**Reds NOT charged — before-state UNKNOWN (absent or pending "
+                f"at the parent, L636):** {', '.join(checks['unknown_reds'])}")
     lines += [
         "",
         "Prepared under the **HOUSE-FIRE LAW** (Shawn, 2026-10-21): revert first, "
@@ -666,8 +725,10 @@ def run_guardian(client, repo_path, before, after, *,
             for name in reds["new_reds"]:
                 defects.append({
                     "class": "NEW_RED", "path": name,
-                    "detail": f"check '{name}' was not failing at {before[:10]} "
-                              f"and fails at {after[:10]} — this push turned it red",
+                    "detail": f"check '{name}' was present and passing at "
+                              f"{before[:10]} and fails at {after[:10]} — "
+                              "proven new red (L636 derivation in checks.derivation); "
+                              "this push turned it red",
                 })
         revert = is_revert_landing(landing)
         hard_defects = [d for d in defects
@@ -676,9 +737,12 @@ def run_guardian(client, repo_path, before, after, *,
             verdict = "ESCAPE_ON_REVERT"
         elif hard_defects:
             verdict = "ESCAPE"
-        elif defects or (landing is head_most and reds["pending_after"]):
-            # Unverifiable bytes or unsettled checks: recorded in the log
-            # with the reason — pending proof, never a silent pass and
+        elif defects or (landing is head_most and
+                         (reds["pending_after"] or reds["unknown_reds"])):
+            # Unverifiable bytes, unsettled checks, or reds whose
+            # before-state derived UNKNOWN (absent/pending at the
+            # parent): recorded in the log with the reason and the
+            # derivation — pending proof, never a silent pass and
             # never an escape charged on evidence we do not have.
             verdict = "PENDING"
         else:
