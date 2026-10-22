@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-22T22:44:14Z",
+ "generated_utc": "2026-10-22T22:45:44Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "c6569a68edfb86032dbc481596d7f40757ded5eb",
-  "short": "c6569a68edfb",
+  "sha": "ead92f28ed823eed15ffd99b687a78bc2f0c05dd",
+  "short": "ead92f28ed82",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-22T22:43:38Z"
+  "checked_utc": "2026-10-22T22:45:07Z"
  },
  "venue": {
   "live": 2793,
@@ -86,8 +86,8 @@
   "counts": {
    "QUEUED": 15,
    "CLAIMED": 0,
-   "IN PROGRESS": 8,
-   "VERIFYING": 2,
+   "IN PROGRESS": 7,
+   "VERIFYING": 3,
    "DONE+PROVEN": 3,
    "BLOCKED": 2,
    "NEEDS SHAWN": 2
@@ -117,7 +117,7 @@
    {
     "id": "LL-004",
     "rank": 4,
-    "state": "IN PROGRESS",
+    "state": "VERIFYING",
     "title": "THE LIVING LIST \u2014 this registry + the Mission page (the program's visu",
     "owner": "Resolve lane (mission build)"
    },
@@ -130,7 +130,7 @@
    }
   ],
   "stalled": 1,
-  "drift": 2,
+  "drift": 1,
   "full": "WORK-ITEMS.json (same publish)"
  },
  "wip": [

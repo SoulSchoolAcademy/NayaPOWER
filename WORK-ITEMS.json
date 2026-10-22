@@ -1,6 +1,6 @@
 {
  "schema": "living-list/v1",
- "generated_utc": "2026-10-22T22:44:14Z",
+ "generated_utc": "2026-10-22T22:45:44Z",
  "source": "hidden_files/living-list.json \u2014 validated + reconciled by state-core-builder.py (single writer)",
  "registry": "THE LIVING LIST \u2014 the one ranked queue across programs; programs are filters, not queues",
  "activation": {
@@ -10,14 +10,14 @@
  "counts": {
   "QUEUED": 15,
   "CLAIMED": 0,
-  "IN PROGRESS": 8,
-  "VERIFYING": 2,
+  "IN PROGRESS": 7,
+  "VERIFYING": 3,
   "DONE+PROVEN": 3,
   "BLOCKED": 2,
   "NEEDS SHAWN": 2
  },
  "stalled_claims": 1,
- "drift_flags": 2,
+ "drift_flags": 1,
  "items": [
   {
    "blocker": "Fitted per-table policies not yet delivered; GT-039 execution waits on the fitting, then Shawn's tap",
@@ -78,24 +78,20 @@
    "blocker_owner": null,
    "claimed_at": "2026-10-22T22:24:00Z",
    "id": "LL-004",
-   "last_moved_at": "2026-10-22T22:47:00Z",
-   "note": "Shawn's order 2026-10-22 22:21Z; top priority per 22:32Z. Registry + tick wiring LIVE (WORK-ITEMS.json on live/mission-state). The room ships as PR #2961 \u2014 scorecard + dock landing pending; merging auto-deploys per the 2026-10-17 law, with the dock's live-build check named in the PR's deploy packet.",
+   "last_moved_at": "2026-10-22T22:45:00Z",
+   "note": "Registry + tick wiring LIVE (WORK-ITEMS.json on live/mission-state since 22:37Z). The room (PR #2961) MERGED 2026-10-22 22:43:22Z (merge 4b1baca1) and the Hub auto-deploy run 39866990883 completed SUCCESS on the merge commit. Local acceptance 14/14 on byte-identical code + live data. One step remains before DONE+PROVEN: a live-render confirmation of nayanet.live/rooms/mission by a seat with the page open.",
    "owner": "Resolve lane (mission build)",
    "pr": 2961,
    "program": "Mission",
    "proof": null,
    "rank": 4,
-   "state": "IN PROGRESS",
+   "state": "VERIFYING",
    "title": "THE LIVING LIST \u2014 this registry + the Mission page (the program's visual home)",
-   "updated_at": "2026-10-22T22:47:00Z",
+   "updated_at": "2026-10-22T22:45:00Z",
    "verified_by": null,
    "pr_state": "merged",
    "pr_mergeable": null,
-   "idle_s": -173,
-   "claim_age_s": 1206,
-   "drift": [
-    "pr-merged-state-lags: PR #2961 is MERGED but the row sits IN PROGRESS"
-   ]
+   "drift": []
   },
   {
    "blocker": null,
@@ -113,8 +109,8 @@
    "title": "Command + universal search \u2014 one place that finds any person, note, thread, list, or link (Best-of-Best step 13)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1926,
-   "claim_age_s": 1926,
+   "idle_s": 2016,
+   "claim_age_s": 2016,
    "drift": []
   },
   {
@@ -133,8 +129,8 @@
    "title": "Linked everything \u2014 the data model: one thing in three homes, never three copies (step 14)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1926,
-   "claim_age_s": 1926,
+   "idle_s": 2016,
+   "claim_age_s": 2016,
    "drift": []
   },
   {
@@ -153,8 +149,8 @@
    "title": "Smart Lists \u2014 server store: the same lists in the Hub and your app (step 15)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1926,
-   "claim_age_s": 1926,
+   "idle_s": 2016,
+   "claim_age_s": 2016,
    "drift": []
   },
   {
@@ -173,8 +169,8 @@
    "title": "Conversational intake \u2014 Welcome door + invite-accept as one question at a time (step 12)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1926,
-   "claim_age_s": 1926,
+   "idle_s": 2016,
+   "claim_age_s": 2016,
    "drift": []
   },
   {
@@ -193,8 +189,8 @@
    "title": "Booking block \u2014 your availability once, a booking link, reminders both sides (step 17)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1926,
-   "claim_age_s": 1926,
+   "idle_s": 2016,
+   "claim_age_s": 2016,
    "drift": []
   },
   {
@@ -234,9 +230,9 @@
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
    "pr_state": "open",
-   "pr_mergeable": true,
-   "idle_s": 4386,
-   "claim_age_s": 5286,
+   "pr_mergeable": null,
+   "idle_s": 4476,
+   "claim_age_s": 5376,
    "drift": []
   },
   {
@@ -257,7 +253,7 @@
    "verified_by": null,
    "pr_state": "open",
    "pr_mergeable": null,
-   "idle_s": 10566,
+   "idle_s": 10656,
    "stalled": true,
    "drift": [
     "stalled-claim: no state change or note for 2h+ \u2014 claim aging is visible by law"
@@ -639,6 +635,14 @@
  ],
  "events": [
   {
+   "id": "LL-004",
+   "title": "THE LIVING LIST \u2014 this registry + the Mission page (the program's visual home)",
+   "from": "IN PROGRESS",
+   "to": "VERIFYING",
+   "at": "2026-10-22T22:45:44Z",
+   "kind": "state-change"
+  },
+  {
    "id": "LL-032",
    "title": "Streaming voice playback \u2014 hear anything the moment you tap",
    "from": null,
@@ -828,14 +832,6 @@
   {
    "id": "LL-009",
    "title": "Booking block \u2014 your availability once, a booking link, reminders both sides (step 17)",
-   "from": null,
-   "to": "IN PROGRESS",
-   "at": "2026-10-22T22:33:00Z",
-   "kind": "registered"
-  },
-  {
-   "id": "LL-008",
-   "title": "Conversational intake \u2014 Welcome door + invite-accept as one question at a time (step 12)",
    "from": null,
    "to": "IN PROGRESS",
    "at": "2026-10-22T22:33:00Z",
