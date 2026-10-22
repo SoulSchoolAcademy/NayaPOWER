@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 13:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4352,6 +4352,30 @@ _Last updated: 2026-10-22 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1282-lane1.md`
 
 **Evidence:** Dispatcher verified: blinded-scoring/SPEC.md + mechanism/assemble_packet.py, leak_audit.py, unblind.py all on disk; demo artifacts present. Real verified value: leak audit fired honestly once (FAIL-IDENTITY-LEAK on probe self-naming), normalized and re-audited PASS; spawn-failure root-caused to spawn layer (zero integrity impact). Deductions: separ
+
+### ✅ t1281 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** human-register cover doc for the retrieval-auth-gate protected-gate word-ask
+
+**Receipt:** `twelve-lane-receipts/t1281-lane11.md`
+
+**Evidence:** VERIFIED: deliverable hidden_files/surge-b/retrieval-auth-gate-word-ask-register-t1281.md exists at the receipt's exact pinned sha256 e7a0f0668b445f656c2fbc1ffb7998c018704520a5f49c057ee7b5087122205c (byte-exact, independent fresh read); cover opens in his register (nutshell + per-decision cost + if-no lines, confirmed by head read); rider pin 1724a
+
+### ✅ t1280 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-auth-gate dossier conditions rider (brief-t1280-lane4)
+
+**Receipt:** `twelve-lane-receipts/t1280-lane4.md`
+
+**Evidence:** Verified: rider file hidden_files/surge-b/retrieval-auth-gate-dossier-conditions-rider-t1280.md exists, 13,431 bytes, sha256 1724a552b4d53491cd674151c8940d67f84ef74fd6684e541efc64789269b3a2 byte-exact vs receipt pin; content carries all five dispositions (5x CARRIED-FORWARD) with byte-quoted evidence. Tip pin e8a10e0a...e62946 matches live remote H
+
+### ✅ t1279 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** hostile second-seat verdict on the t1277 retrieval-auth-gate migration-readiness dossier (verdict CONDITIONAL)
+
+**Receipt:** `twelve-lane-receipts/t1279-lane3.md`
+
+**Evidence:** VERIFIED: deliverable hidden_files/surge-b/retrieval-auth-gate-ask-readiness-verdict-t1279.md exists at the receipt's exact pinned sha256 21a3afcb4e4d36506a418f415d1f688217f1bfce7c86860a1780adbb37e16d35 (9,722 B, byte-identical, independent fresh read). Receipt's key claims corroborated by grep: VERDICT: CONDITIONAL with conditions A/B/C named; hon
 
 ### ✅ t1278 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -27621,6 +27645,12 @@ _Last updated: 2026-10-22 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-t1279-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** close t1279's two honest residuals (receipt-sha re-derivation, test-suite 4th-caller exclusion by bytes)
+
+**Evidence:** VERIFIED: both receipt shas independently re-derived this tick - t1272-lane8.md sha256 89633e20a8aba7eb9f70ffcbdce2cd85635277cfa9095bc1b090b18f26bf4caa and t1274-lane4.md sha256 e955179bf3f57e11ef303a5413f5d9406937a308fbcc4c62d877bd29db8fdc88, byte-for-byte identical to the dossier's t1277 table claims. Test-suite file exists at the cited path; fal
+
 ### ✅ gap-t0818-lane3-decline2 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up DECLINED on seat-lineage grounds + mechanical gate stamp applied
@@ -34100,6 +34130,20 @@ _Last updated: 2026-10-22 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261022-1258 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** second-claim queue evaluation - 23 gap-band briefs all refused, stall verdict
+
+**Evidence:** VERIFIED: spot-checked 5 of the 23 named blocked briefs - all exist in hidden_files/brief-queue/ (20261018-0830-lane12, gatestaall-20261019-0610-executor, t0903-lane10, mtc-v1-thirdblind-probe-20261017-1155, scorer-20261015-0110-lane7); queue state consistent (rotation queued=23; the 23 gap-band briefs + claimed t1281 + gap-t1279 fill the queue ros
+
+### ✅ distill-daily-20261022 — Team 0, Team Naya Scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** fix root of boot_pointer_check.py 5 false FAILs against live board #2793
+
+**Receipt:** `twelve-lane-receipts/distill-daily-20261022-lane0.md`
+
+**Evidence:** VERIFIED (2026-10-22 ~06:00 PDT tick): boot_pointer_check.py edits on disk - L73 new LIVE_BOARD_RE = re.compile(r"live\s+board\s*\**\s*#(\d{3,5})", re.I) (case-insensitive, markdown-bold-tolerant), L195 loud DEGRADED exit-1 branch, snap-note split separating 'snapshot unreadable' from 'live board not machine-read'. Function-level proof independentl
 
 ### ✅ gap-gap-lane-scorer-20261021-1930-v2 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
