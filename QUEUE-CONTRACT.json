@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T18:24:57Z",
-  "tip": "3826b69997399eb95708b9fec73cfee356966c81",
+  "generated_at": "2026-10-22T19:25:11Z",
+  "tip": "91e2de5dcda5e6567dd2758c06a38b07223b88b7",
   "prs": [
     {
       "number": 2869,
@@ -10,16 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "a085e3eddf8779135f706aa44bd22b1de6c1e8c3"
-    },
-    {
-      "number": 2874,
-      "title": "Naya2/team dashboard",
-      "tier": "B",
-      "action": "MERGE-NOW",
-      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "9680d81942758b70d5d76d18c9d13e58076090f5"
+      "head": "b55f31b9742b66feb1dd9e5f165c1ee79ec83b55"
     },
     {
       "number": 2907,
@@ -35,9 +26,9 @@
       "title": "Mission-state twin cure \u2014 director ruling Option C (TOP-10 director-stated, register machine-derived, format bends)",
       "tier": "B",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "88af7f60f4d99bd439c343cda3ca3ba98b634fb2"
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "63beece4e6ce159b09b0a466276801a81e35db5c"
     },
     {
       "number": 2936,
@@ -46,7 +37,7 @@
       "action": "CURE",
       "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Receipt pin \u2014 exact head SHA, Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, brain-index-freshness, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
       "owner": "author lane",
-      "head": "7c417e61d7091daf57a0ee32a18e16a1bd91cc6f"
+      "head": "efb0e14880c4260e28770b66e10575157f243aff"
     },
     {
       "number": 2937,
@@ -74,6 +65,42 @@
       "cure": "Author cures the PR-caused red check(s): Protocol machine law (kernel/protocol), brain-index-freshness, completeness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "29b4c15251b983adbc2e4aaa1b1d4fe277768428"
+    },
+    {
+      "number": 2940,
+      "title": "canon: S8 flagship-dialect label follows the smart-app language law",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "c1e57ac5a6976ff97cd83b398c2380cd5c6052b6"
+    },
+    {
+      "number": 2941,
+      "title": "Factory Step 1: stamp A.1 spectrum walk (contract v1.2) + declare canonical set",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "5b4fd4f3b4b7d160bc271aefa1b41c5a0534ca1a"
+    },
+    {
+      "number": 2942,
+      "title": "GT-028 v1.2 \u2014 S8 label check learns the smart-app language law (stem-matched Today subtitle)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "3f8304a5d2199728c170ff6eed5eb3307e5d8b74"
+    },
+    {
+      "number": 2943,
+      "title": "Factory Contract-Home Step 3: dual-label the 154 canonical pieces + adjudicate the 416 unverified",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "e6b3f90d0eaf3a61f8e38e553464760ed0c72a92"
     }
   ]
 }

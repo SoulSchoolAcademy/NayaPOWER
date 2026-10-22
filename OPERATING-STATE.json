@@ -1,22 +1,22 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-22T18:24:57Z",
-  "tip": "3826b69997399eb95708b9fec73cfee356966c81",
-  "open_pr_count": 8,
+  "generated_at": "2026-10-22T19:25:11Z",
+  "tip": "91e2de5dcda5e6567dd2758c06a38b07223b88b7",
+  "open_pr_count": 11,
   "queue_by_tier_action": {
     "C": {
       "MERGE-NOW": 1
     },
     "B": {
-      "MERGE-NOW": 1,
-      "CURE": 3
+      "CURE": 5
     },
     "A": {
-      "CURE": 3
+      "CURE": 5
     }
   },
   "tip_failing_checks": [
-    "Verify landings, prepare reverts on verified escapes",
+    "Unified paperwork \u2014 tier + cross-seat scorecard + live evidence",
+    "door-obligation",
     "promote-and-prove",
     "resolve-current-truth",
     "test"
@@ -31,14 +31,14 @@
   },
   "laws": {
     "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
-    "iteration": 225,
+    "iteration": 226,
     "latest_laws": [
-      "L630",
       "L631",
       "L632",
       "L633",
       "L634",
-      "L635"
+      "L635",
+      "L636"
     ]
   },
   "hold_human": []
