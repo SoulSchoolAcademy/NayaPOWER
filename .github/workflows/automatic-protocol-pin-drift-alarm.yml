@@ -58,7 +58,7 @@ jobs:
                   "stderr": error,
                   "stdout": raw if not payload else "",
               }, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-          safe = detail.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+          safe = detail.replace("\r", " ").replace("\n", " ")
           with open(output_path, "a", encoding="utf-8") as f:
               f.write(f"alarm={'false' if healthy else 'true'}\n")
               f.write(f"detail={safe}\n")
