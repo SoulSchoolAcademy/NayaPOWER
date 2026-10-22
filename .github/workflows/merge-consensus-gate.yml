@@ -10,6 +10,15 @@ name: Merge consensus gate
 # enforcing the convention retroactively is a stale assertion. API failures
 # fail closed with plain words ("unable to verify consensus"), never a
 # traceback: a red check with a stack trace trains everyone to ignore red.
+#
+# Trigger-scope repair (2026-10-22): issue_comment removed. GitHub offers no
+# PR-comments-only trigger, so every comment on ANY issue — including the
+# team board — spawned a run of this gate bound to the main tip (32,429 runs
+# all-time at repair; the L499 misfire class: a verdict about one PR painted
+# onto the tip by an unrelated comment). A scorecard landing on a PR now
+# re-fires this gate deliberately via workflow_dispatch (input: pr_number),
+# fired by the lane that posts the scorecard or the relay that sees it.
+# Job logic below is unchanged.
 
 on:
   pull_request:
@@ -17,8 +26,12 @@ on:
     types: [opened, synchronize, reopened, edited]
   pull_request_review:
     types: [submitted, dismissed]
-  issue_comment:
-    types: [created, edited]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to evaluate (deliberate re-fire after a scorecard lands)'
+        required: true
+        type: string
 
 # Least privilege: the gate only reads PRs, reviews, and PR comments
 # (served by the issues API). Declared explicitly so a future default
@@ -42,9 +55,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # For pull_request events, use the event payload directly (no API call needed).
-          # Only issue_comment events need the API lookup for the head SHA.
-          if [ "${{ github.event_name }}" = "issue_comment" ]; then
-            PR_NUM="${{ github.event.issue.number }}"
+          # Only issue_comment and workflow_dispatch events need the API lookup for the head SHA.
+          if [ "${{ github.event_name }}" = "issue_comment" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PR_NUM="${{ github.event.issue.number || inputs.pr_number }}"
             echo "pr_number=$PR_NUM" >> $GITHUB_OUTPUT
             # Retry the API call up to 5 times with backoff (rate-limit
             # resilience: comment events fire during merge bursts when the

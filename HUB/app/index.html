@@ -5167,6 +5167,22 @@ window.HubView = HubView;
     wrap.appendChild(intro);
     const zone=el('section','room-scene');wrap.appendChild(zone);
     K.load(zone,'lists',{view:'mission'},render,{title:'No intelligent lists yet',body:'Lists appear when the governed list service returns canonical references.'});
+    /* Naya Notes (Best-of-Best #15) — the person's own captures live in
+       Lists. NOT Smart Notes: never the brain, never the wall. The store
+       refuses without a signed-in session (window.NayaNotesSession,
+       wired by the auth lane); the panel says so honestly until then. */
+    if(window.NayaNotes&&window.NayaNotes.mountPanel){
+      const nnBoard=K.board(r.accent,'spark','Naya Notes','Yours alone — quick captures with dictation, categories and lists. Never Smart Notes, never shared.');
+      wrap.appendChild(nnBoard);
+      const nnCfg=window.NayaBridgeConfig||{};
+      const nnStore=window.NayaNotes.createStore({
+        supabaseUrl:nnCfg.supabaseUrl||'https://dahisasgpfvziswqvmvm.supabase.co',
+        anonKey:nnCfg.anonKey||'',
+        ownerAlias:nnCfg.alias||'',
+        getAccessToken:function(){return typeof window.NayaNotesSession==='function'?window.NayaNotesSession():null;}
+      });
+      window.NayaNotes.mountPanel(nnBoard.body,{store:nnStore});
+    }
     return wrap;
 
     function render(payload,list,out){
@@ -5616,5 +5632,6 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 <script src="js/naya-voice.js"></script>
 <script src="js/naya-voice-wiring-v2.js"></script>
 <script src="js/supabase-bridge.js"></script><!-- t0800: Hub<->Supabase persistence bridge; registers window.NayaPowerRuntime (feed room data) -->
+<script src="js/naya-notes.js"></script><!-- Best-of-Best #15: Naya Notes (personal captures — NOT Smart Notes); registers window.NayaNotes for the Lists room panel -->
 </body>
 </html>
