@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-21",
-  "receipt_basis_commit": "2e176747cd9e10c679935cb5409d425726d0f507",
-  "inventory_file_count": 1531,
+  "generated_at": "2026-10-22",
+  "receipt_basis_commit": "d390730b3238aba8afa7da57cb89e24eeca8b565",
+  "inventory_file_count": 1534,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
@@ -19,7 +19,7 @@
     "10-INTERFACES": 427,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 89,
+    "90-OPERATIONS": 92,
     "99-ARCHIVE": 2,
     "ROOT": 6
   },
@@ -7259,6 +7259,21 @@
       "path": "BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md",
       "blob_sha": "37e4e4b70a230f3e5027499fba1c5e3f146996d2",
       "size": 20377
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.ai.md",
+      "blob_sha": "af55ab4a891ce4c370a862503bfb520796fe31ef",
+      "size": 27729
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md",
+      "blob_sha": "03fda86e910823c1538a5c41c9981403a908e26d",
+      "size": 36924
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json",
+      "blob_sha": "c7a9f4ff6a29826f9f63145ee6b3343b361f0f70",
+      "size": 31376
     },
     {
       "path": "BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md",
