@@ -602,6 +602,23 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
             "receipt_id": verify["persisted"]["receipt"]["id"],
         },
     }
+    # Declared behavior change (Lesson Law, SN-0815): when the rendered
+    # projection is a lesson note carrying the declaration section, attach
+    # the parsed declaration to the entry as data so the learning loop can
+    # sample whether the change held. Fail-soft: extraction trouble must
+    # never block a registry write, and no section means no field — the
+    # absence stays visible instead of being papered over.
+    if proj_file is not None and proj_file.is_file() and proj_file.suffix == ".md":
+        try:
+            _proj_text = proj_file.read_text(encoding="utf-8")
+            _dc = parse_declared_change(
+                _proj_text, created=_note_created_date(_proj_text), lesson_id=sn_id)
+        except Exception:
+            _dc = None
+        if _dc:
+            _dc.pop("_declaration_text", None)
+            _dc.pop("_extraction_method", None)
+            entry["declared_change"] = _dc
     registry["entries"] = [e for e in registry.get("entries", []) if e.get("intelligent_block_id") != entry["intelligent_block_id"]] + [entry]
     registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("smart_note_id",""), x.get("intelligent_block_id","")))
     seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
@@ -1593,6 +1610,248 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     }
 
 
+# ---------------------------------------------------------------------------
+# Declared behavior changes — the Lesson Law (SN-0815 standard, 2026-10-21).
+#
+# A lesson note is not complete without `## THE DECLARED BEHAVIOR CHANGE`:
+# first-person, trigger-bound, contrastive (new behavior *instead of* old),
+# falsifiable. Prose declarations cannot be sampled; data can. This parser
+# turns the declaration into a structured row —
+#   declared_change {lesson_id, trigger, old_behavior, new_behavior, verify_by}
+# — at the two points the door already touches every note: when
+# _update_registry_locked writes a registry entry (the projection file is on
+# disk by then), and when the `declared-changes` CLI scans the published
+# corpus to backfill / answer queries. Fail-soft by design: a note without
+# the section yields NO row — never a crash, never a guessed parse dressed
+# as fact. Every row carries the verbatim declaration text and the
+# extraction method so a different seat can audit the parse.
+# ---------------------------------------------------------------------------
+
+DECLARED_CHANGE_SCHEMA = "naya.declared-change.v1"
+DECLARED_CHANGE_REGISTRY_SCHEMA = "naya.declared-change-registry.v1"
+DECLARED_CHANGE_REGISTRY = ROOT / ".naya" / "memory" / "smart-notes" / "declared-changes.json"
+VERIFY_BY_DEFAULT_DAYS = 7  # weekly sampler cadence (learning loop v1)
+
+
+def _md_sections(text):
+    """Split markdown into (header, body) pairs on H2 boundaries."""
+    parts = re.split(r"(?m)^(## .+)$", text)
+    return [(parts[i].strip(), parts[i + 1].strip())
+            for i in range(1, len(parts) - 1, 2)]
+
+
+def _note_created_date(text):
+    m = re.search(r"\*\*Created:\*\*\s*(\d{4}-\d{2}-\d{2})", text)
+    return m.group(1) if m else None
+
+
+def _declaration_text(text):
+    """Return (declaration_text, method) or (None, None).
+
+    Primary shape (SN-0815/SN-0816): a dedicated H2 section. Fallback
+    (SN-1787, the law note itself): the declaration is quoted inside
+    another section directly after the literal marker.
+    """
+    for header, body in _md_sections(text):
+        if header.upper().startswith("## THE DECLARED BEHAVIOR CHANGE"):
+            return (body or None), "section"
+    idx = text.find("THE DECLARED BEHAVIOR CHANGE")
+    if idx >= 0:
+        window = text[idx:idx + 1500]
+        q = re.search(r"\"([^\"]{80,1200})\"", window)
+        if q:
+            return q.group(1).strip(), "quoted-marker"
+    return None, None
+
+
+def _clean_clause(s):
+    return re.sub(r"\s+", " ", s or "").strip().strip("—–- ").strip()
+
+
+def _split_sentences(text):
+    flat = re.sub(r"\s+", " ", text).strip()
+    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", flat) if s.strip()]
+
+
+_OLD_SENTENCE_RE = re.compile(
+    r"^(I will not|And I will not|I never)\b"
+    r"|kept only in|held only in|held in one seat|left in a chat"
+    r"|^(A lesson|The lesson)\b[^.]*\b(not counted as|is not)\b", re.I)
+
+
+def parse_declared_change(text, created=None, lesson_id=None):
+    """Parse one note's markdown into a declared_change dict, or None.
+
+    None is the negative control's expected result: no declaration section
+    (or an empty one) means the note carries no testable commitment, and
+    the registry must show that absence rather than invent a row.
+    """
+    decl, method = _declaration_text(text)
+    if not decl:
+        return None
+    flat = re.sub(r"\s+", " ", decl).strip()
+    sentences = _split_sentences(flat)
+
+    # verify_by: an explicit VERIFY_BY in the note wins; otherwise derive
+    # from the note's Created date + the weekly sampler cadence, labeled.
+    vm = re.search(r"VERIFY[ _-]?BY[:\s]*(\d{4}-\d{2}-\d{2})", text, re.I)
+    if vm:
+        verify_by, verify_by_source = vm.group(1), "explicit"
+    elif created:
+        from datetime import date, timedelta
+        y, mo, d = (int(x) for x in created.split("-"))
+        verify_by = (date(y, mo, d) + timedelta(days=VERIFY_BY_DEFAULT_DAYS)).isoformat()
+        verify_by_source = f"derived:created+{VERIFY_BY_DEFAULT_DAYS}d(weekly-sampler-cadence)"
+    else:
+        verify_by, verify_by_source = None, "unknown:no-created-date"
+
+    # trigger: a when/before clause inside the declaration itself first —
+    # whichever clause opens the declaration wins (SN-0816's trigger is its
+    # leading before-clause, not a later when-clause inside the commitment);
+    # then the note's own MACHINE-stated TRIGGER rule (SN-1787 shape).
+    trigger = None
+
+    def _trigger_clause(m, head):
+        span = _clean_clause(m.group(1))
+        # The clause ends where the main clause resumes (", I ...") —
+        # commas inside the clause itself (lists) are part of the trigger.
+        cut = span.find(", I ")
+        if cut > 0:
+            span = span[:cut]
+        return head + " " + span
+
+    wm = re.search(r"\bwhen\s+([^\.;—]+)", flat, re.I)
+    bm = re.search(r"\bbefore\s+I\s+([^\.;—]+)", flat, re.I)
+    candidates = [(m.start(), _trigger_clause(m, "when")) for m in (wm,) if m]
+    candidates += [(m.start(), _trigger_clause(m, "before I")) for m in (bm,) if m]
+    if candidates:
+        trigger = min(candidates)[1]
+    if not trigger:
+        tm = re.search(r"TRIGGER:\s*(.+?)(?:\s*(?:→|->)|\.(?:\s|$)|$)", text, re.M)
+        if tm:
+            trigger = _clean_clause(tm.group(1))
+
+    # new vs old: a genuine "X instead of Y" contrast splits cleanly —
+    # unless Y is the law's own placeholder (the quoted "we do X instead
+    # of Y" inside SN-1787), which must never leak into a row as data.
+    new_behavior = old_behavior = None
+    im = None
+    if not re.search(r"\bwe do [A-Z] instead of [A-Z]\b", flat):
+        im = re.search(r"(.+?)\s+instead of\s+(.+)", flat, re.I)
+    if im and not re.fullmatch(r"[A-Za-z][.\"']?", im.group(2).strip()):
+        new_behavior = _clean_clause(re.sub(
+            r"^(From now on|From tonight),?\s+", "", im.group(1), flags=re.I))
+        old_behavior = _clean_clause(im.group(2).rstrip(".\""))
+    if not new_behavior:
+        commit = []
+        for s in sentences:
+            if _OLD_SENTENCE_RE.search(s):
+                break
+            # A sentence carrying the law's illustrative placeholder
+            # ("— 'from now on, we do X instead of Y.' …") ends at the
+            # fragment: what follows it in that sentence is commentary
+            # about the form, not the commitment itself.
+            s = re.split(r"\s*[—–-]\s*'(?:from now on,?\s*)?we do [A-Z] instead of [A-Z]\.?'",
+                         s, flags=re.I)[0]
+            commit.append(s)
+        joined = _clean_clause(re.sub(
+            r"^(From now on|From tonight),?\s+", "", " ".join(commit), flags=re.I))
+        if trigger and joined.lower().startswith(trigger.lower() + ","):
+            joined = _clean_clause(joined[len(trigger) + 1:])
+        # Drop a trailing quoted placeholder fragment ("— 'from now on,
+        # we do X instead of Y'") — it illustrates the form, it is not data.
+        joined = re.sub(r"\s*[—–-]\s*'(?:from now on,?\s*)?we do [A-Z] instead of [A-Z]\.?'\s*$",
+                        "", joined, flags=re.I)
+        new_behavior = _clean_clause(joined) or None
+    if not old_behavior:
+        for s in sentences:
+            nm = re.search(r"I will not\s+(.+?)(?:\s+again)?\.?$", s)
+            if nm:
+                old_behavior = _clean_clause(nm.group(1))
+                break
+            nm = re.search(r"I never\s+(.+?)(?:, and |\.$)", s)
+            if nm:
+                old_behavior = _clean_clause(nm.group(1))
+                break
+            km = re.search(r"((?:A lesson|The lesson)[^.;]*?(?:kept only in|held only in|held in)[^.;]*)", s)
+            if km:
+                old_behavior = _clean_clause(km.group(1))
+                break
+        if not old_behavior:
+            # Note-level fallback (SN-1787): the replaced behavior is
+            # stated in the nutshell even when the quote omits it.
+            km = re.search(r"((?:A lesson|The lesson) held[^.;]*)", text)
+            if km:
+                old_behavior = _clean_clause(km.group(1))
+    return {
+        "lesson_id": lesson_id,
+        "trigger": trigger,
+        "old_behavior": old_behavior,
+        "new_behavior": new_behavior,
+        "verify_by": verify_by,
+        "verify_by_source": verify_by_source,
+        "_declaration_text": flat,
+        "_extraction_method": method,
+    }
+
+
+def declared_change_row(text, note_path=None):
+    """Build a registry row for one note's markdown, or None."""
+    created = _note_created_date(text)
+    ibm = re.search(r"\*\*ID:\*\*\s*(\S+)", text)
+    ib = ibm.group(1) if ibm else None
+    lesson_id = None
+    if note_path:
+        m = re.search(r"(SN-\d{3,})", str(note_path))
+        lesson_id = m.group(1) if m else None
+    if not lesson_id and ib:
+        m = re.search(r"-sn(\d{3,})-", ib)
+        lesson_id = "SN-" + m.group(1) if m else None
+    dc = parse_declared_change(text, created=created, lesson_id=lesson_id)
+    if dc is None:
+        return None
+    declaration_text = dc.pop("_declaration_text")
+    method = dc.pop("_extraction_method")
+    title_m = re.search(r"(?m)^#\s+(.+)$", text)
+    return {
+        "schema": DECLARED_CHANGE_SCHEMA,
+        "lesson_id": lesson_id,
+        "intelligent_block_id": ib,
+        "title": title_m.group(1).strip() if title_m else None,
+        "created": created,
+        "note_path": str(note_path) if note_path else None,
+        "declared_change": dc,
+        "declaration_text": declaration_text,
+        "extraction": {"method": method, "parser": "tools/smart_note_v2.py:parse_declared_change"},
+    }
+
+
+def scan_declared_changes(root=None):
+    """Walk the published corpus; one row per note carrying a declaration."""
+    base = Path(root) if root else BRAIN_SMART_NOTE_ROOT
+    rows = []
+    for path in sorted(base.rglob("*.md")):
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        row = declared_change_row(text, note_path=path)
+        if row is not None:
+            try:
+                row["note_path"] = str(path.relative_to(ROOT)).replace("\\", "/")
+            except ValueError:
+                row["note_path"] = str(path)
+            rows.append(row)
+    rows.sort(key=lambda r: (r.get("lesson_id") or "", r.get("intelligent_block_id") or ""))
+    return rows
+
+
+def declared_change_registry_doc(rows):
+    return {"schema": DECLARED_CHANGE_REGISTRY_SCHEMA,
+            "source": "scan of BRAIN/05-MEMORY/SMART-NOTES via tools/smart_note_v2.py declared-changes",
+            "entries": rows}
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -1603,7 +1862,25 @@ def main():
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
     pm = sub.add_parser("promote"); pm.add_argument("--note", required=True); pm.add_argument("--evidence", required=True); pm.add_argument("--promoter", required=True); pm.add_argument("--registry"); pm.add_argument("--out")
     a = sub.add_parser("audit"); a.add_argument("--root"); a.add_argument("--quiet", action="store_true")
+    dc = sub.add_parser("declared-changes"); dc.add_argument("--root"); dc.add_argument("--out"); dc.add_argument("--registry"); dc.add_argument("--query")
     args = ap.parse_args()
+    if args.cmd == "declared-changes":
+        if args.query:
+            rows = None
+            reg_path = Path(args.registry) if args.registry else DECLARED_CHANGE_REGISTRY
+            if reg_path.is_file():
+                rows = load_json(reg_path).get("entries", [])
+            if rows is None:
+                rows = scan_declared_changes(args.root)
+            hits = [r for r in rows if (r.get("lesson_id") or "").upper() == args.query.upper()]
+            print(json.dumps(hits, indent=2, ensure_ascii=False))
+            raise SystemExit(0 if hits else 1)
+        rows = scan_declared_changes(args.root)
+        out = Path(args.out) if args.out else DECLARED_CHANGE_REGISTRY
+        out.write_text(json.dumps(declared_change_registry_doc(rows), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(json.dumps({"registry": str(out), "rows": len(rows),
+                          "lesson_ids": [r.get("lesson_id") for r in rows]}, ensure_ascii=False))
+        return
     if args.cmd == "audit":
         report = audit_registry(root=args.root)
         print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
