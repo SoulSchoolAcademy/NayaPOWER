@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T03:15:44+00:00",
+ "generated_utc": "2026-10-22T04:15:06+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -60,13 +60,19 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
+     "number": 2909,
+     "title": "ops: automatically ring the board on protocol pin drift",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2909",
+     "draft": false
+    },
+    {
      "number": 2907,
      "title": "kappa w690: heal registry drift \u2014 register 28 door/leaf pages, pin 1\u21920",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907",
      "draft": true
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 2
   },
   {
    "id": "act",
@@ -225,8 +231,15 @@
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2908,
+     "title": "GT-028: dialect reconciliation for standard-feature contracts (v1.1)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2908",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "product",
@@ -419,6 +432,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 5,
+ "open_pr_total": 7,
  "unassigned_prs": 2
 }

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 03:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 04:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 5 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 7 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -53,7 +53,8 @@
 ### LEARN (1)
 - [#2905](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2905) LEARN: wire retrieval/application receipts into the normal retrieval p
 
-### KNOW (1)
+### KNOW (2)
+- [#2909](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2909) ops: automatically ring the board on protocol pin drift
 - [#2907](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907) kappa w690: heal registry drift — register 28 door/leaf pages, pin 1→0 📝draft
 
 ### BUILD (2)
@@ -62,6 +63,9 @@
 
 ### TEAM (1)
 - [#2874](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2874) Naya2/team dashboard
+
+### INFRA (1)
+- [#2908](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2908) GT-028: dialect reconciliation for standard-feature contracts (v1.1)
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*
