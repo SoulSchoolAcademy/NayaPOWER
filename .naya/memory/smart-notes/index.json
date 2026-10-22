@@ -14020,31 +14020,31 @@
       "page_hash": "bfb0e38838a2c18a301b0a8932579c08f3336b8418a997e965dd7df81f131113"
     },
     {
-      "smart_note_id": "SN-1789",
-      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting",
-      "title": "The Night the Catch Held — We Celebrate by Noting",
-      "content_hash": "473f23acec51c89f8603708567d1c00f0884871e95279523b7c85df4704f1e29",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/north-star/SN-1789/IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting.md",
+      "smart_note_id": "SN-1790",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn1790-how-we-do-it-intelligent-blocks",
+      "title": "How We Do It — Intelligent Blocks",
+      "content_hash": "441b88235aa41f8929a545c7ab3b96ccd9cc6ba84147b02802375923670f61f1",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-1790/IB-SMART-NOTE-20261022-sn1790-how-we-do-it-intelligent-blocks.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
       "truth_state": "CANDIDATE",
       "scope": "PRIVATE",
-      "category": "LEARNING",
-      "topic": "LEARNING",
-      "subtopic": "NORTH_STAR",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "COMPOSITION",
       "captured_at": "2026-10-22",
       "lifecycle_state": "ACTIVE",
       "provenance": {
-        "ingestion": "door-filing",
-        "note": "filed via the Smart Note door by the Resolve celebration lane in a single same-push commit (page + capture + registry entry + brain-index regen) on 2026-10-22 — the first note of the night to satisfy the door obligation in the same push rather than by later backfill; occasion: Shawn's celebration practice, 2026-10-22 ~00:50Z"
+        "ingestion": "canonical-reconstruction",
+        "note": "published as a BRAIN projection through the note door in the same push as its capture and this entry (filed through the note door in the same push as the projection page (branch naya2/sn1790-how-we-do-it-intelligent-blocks, record PR requested on board #2793); capture and entry generated from the authored page at filing time; publishing_commit is null because the landing commit does not exist yet at filing time; no runtime provenance invented)"
       },
-      "page_hash": "99b93d79496f4d775630a7950421a53d80747e03eb6b6b8b250d12271d6feaaf"
+      "page_hash": "95b82bc2b6d0a976700f1daeca0688858f8a3cf447115df17885c46c3ee0e7ac"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1790,
+    "next_sequence": 1791,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "1f49e1999ac04de7f2c5d8074ad2020fdb59984e98872f8209d49979fd79cf8f"
+  "corpus_manifest_hash": "ef72556ec5f6cb71db3392764e5d55877bfa1209431078db1ec473151ada17a0"
 }
