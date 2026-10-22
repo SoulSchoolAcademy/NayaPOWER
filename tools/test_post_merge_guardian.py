@@ -336,6 +336,89 @@ def test_new_red_escape(tmp_path):
     assert "NEW_RED" in fake.comments[0][1]
 
 
+def test_diff_reds_absent_before_derives_unknown():
+    """L636 case 1: no check-run at the parent at all -> UNKNOWN.
+    Absence is not evidence the check was green; it can never charge."""
+    fake = FakeClient(main_ref="x")
+    fake.check_runs = {
+        "before": [run("test", "success")],
+        "after": [run("test", "success"), run("promote-and-prove", "failure")],
+    }
+    reds = g.diff_reds(fake, "before", "after", wait_secs=0)
+    assert reds["new_reds"] == []
+    assert reds["unknown_reds"] == ["promote-and-prove"]
+    assert reds["derivation"]["promote-and-prove"] == {
+        "before": "absent", "after": "failing", "verdict": "UNKNOWN"}
+    assert reds["failing_before_count"] == 0
+    assert reds["failing_after_count"] == 1
+
+
+def test_diff_reds_present_success_to_failure_charges():
+    """L636 case 2: present and passing at the parent, failing after
+    -> the one chargeable shape, NEW_RED."""
+    fake = FakeClient(main_ref="x")
+    fake.check_runs = {
+        "before": [run("test", "success")],
+        "after": [run("test", "failure")],
+    }
+    reds = g.diff_reds(fake, "before", "after", wait_secs=0)
+    assert reds["new_reds"] == ["test"]
+    assert reds["unknown_reds"] == []
+    assert reds["derivation"]["test"] == {
+        "before": "passing", "after": "failing", "verdict": "NEW_RED"}
+    assert reds["failing_before_count"] == 0
+    assert reds["failing_after_count"] == 1
+
+
+def test_diff_reds_present_failure_to_failure_inherited():
+    """L636 case 3: failing on both sides -> INHERITED, never charged."""
+    fake = FakeClient(main_ref="x")
+    fake.check_runs = {
+        "before": [run("test", "failure")],
+        "after": [run("test", "failure")],
+    }
+    reds = g.diff_reds(fake, "before", "after", wait_secs=0)
+    assert reds["new_reds"] == []
+    assert reds["unknown_reds"] == []
+    assert reds["derivation"]["test"] == {
+        "before": "failing", "after": "failing", "verdict": "INHERITED"}
+    assert reds["failing_before_count"] == 1
+    assert reds["failing_after_count"] == 1
+
+
+def test_2936_regression_absent_promote_and_prove_no_escape(tmp_path):
+    """Regression replay of the PR #2936 mischarge (claim 6351319337,
+    dispositioned MISCHARGE): promote-and-prove had NO check-run at
+    the parent commit and failed at the merge commit. The old set
+    difference charged a NEW_RED escape and prepped a revert; the
+    L636 derivation must record UNKNOWN and do neither — the landing
+    is PENDING (unproven red on the record), never ESCAPE, no alarm,
+    no revert, exit 0."""
+    repo, base, head, m = healthy_repo(tmp_path)
+    fake = FakeClient(main_ref=m)
+    fake.set_push(base, m, [m], ["a.txt"])
+    wire_pr(fake, m, head, ["a.txt"], number=2936)
+    fake.check_runs = {
+        base: [run("kernel-tests", "success")],
+        m: [run("kernel-tests", "success"),
+            run("promote-and-prove", "failure", rid=2)],
+    }
+    records, code, sink, fx = run_guardian(fake, repo, base, m)
+    assert code == 0
+    rec = records[0]
+    assert rec["verdict"] == "PENDING"
+    assert rec["defect_classes"] == []
+    assert rec["cure"] is None
+    checks = rec["checks"]
+    assert checks["new_reds"] == []
+    assert checks["unknown_reds"] == ["promote-and-prove"]
+    assert checks["derivation"]["promote-and-prove"]["verdict"] == "UNKNOWN"
+    assert checks["derivation"]["promote-and-prove"]["before"] == "absent"
+    assert checks["failing_before_count"] == 0
+    assert checks["failing_after_count"] == 1
+    assert fake.comments == [] and fx.pushes == [] and fx.opened == []
+
+
 def test_hub_surface_down_escape(tmp_path):
     repo = tmp_path / "repo"
     base = build_base(repo)

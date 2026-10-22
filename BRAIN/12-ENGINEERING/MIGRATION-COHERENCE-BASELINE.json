@@ -1,12 +1,15 @@
 {
   "schema": "naya.brain.schema.migration.coherence.baseline/v2",
   "purpose": "Named regression ledger for static migration-chain coherence after restoring supabase/migrations from the authoritative production migration ledger.",
-  "defect_floor": 0,
-  "measured_at": "2026-09-29",
+  "defect_floor": 4,
+  "measured_at": "2026-10-22",
   "measured_by": "BRAIN/12-ENGINEERING/verify-migration-coherence.py",
   "evidence": [
     "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/881",
-    "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/36501228953"
+    "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/36501228953",
+    "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2946",
+    "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2946#issuecomment-6352604037",
+    "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6352640082"
   ],
   "floor_history": [
     {
@@ -23,6 +26,11 @@
       "date": "2026-09-29",
       "defect_floor": 0,
       "reason": "Production ledger restoration recovered exact applied migration versions and retained SQL statements from supabase_migrations.schema_migrations. The prior 14 UNCREATED_DEPENDENCY findings are no longer measured. Two apparent new findings (public.public and public.own) were proven parser false positives from dynamic SQL strings and quoted policy names and fixed in the detector rather than accepted as debt."
+    },
+    {
+      "date": "2026-10-22",
+      "defect_floor": 4,
+      "reason": "Raised ONLY because PR #2946 (Best-of-Best Phase 0) landed migration 20261022203000_person_timeline_v1.sql, whose view and fail-loud guard first REFERENCE four flagship tables that no migration creates: public.invites, public.smart_mail_messages, public.smart_mail_threads, public.smart_notes. Measured coherence defects went 0 -> 4 at that landing and remain 4 at tip c66faf7d7f06fe330691bd3868b9fe7b18c5f9f0 (175 migrations inspected, re-measured 2026-10-22). The four tables exist in production; they were created outside the governed migration system (Step-0 schema check, 2026-10-22, recorded in the headers of migrations 20261022201500 and 20261022203000), so the estate has production tables with no paper. Post-Merge Guardian disposition on PR #2946 (comment 6352604037; post-merge verification board 6352640082): REAL ESCAPE, bookkeeping class; revert explicitly NOT recommended; cure-forward is (a) this deliberate recording and (b) create-table baselining migrations authored from live production schema evidence as a separate governed step \u2014 never from guessed types. The rise is recorded debt, not an accepted risk: see authority_note. Per-finding records: known_defect_records. Schema evidence pack: BRAIN/12-ENGINEERING/UNCREATED-FLAGSHIP-TABLES-EVIDENCE-2026-10-22.md."
     }
   ],
   "defect_classes_tracked": [
@@ -31,9 +39,54 @@
     "DROPPED_THEN_USED",
     "EMPTY"
   ],
-  "known_defects": {},
-  "what_this_means": "The current static coherence detector reports no named defect in the restored production-applied migration history. This is source/ledger reconciliation, not an executed empty-database rebuild and not disaster-recovery proof.",
+  "known_defects": {
+    "UNCREATED_DEPENDENCY": [
+      "public.invites",
+      "public.smart_mail_messages",
+      "public.smart_mail_threads",
+      "public.smart_notes"
+    ]
+  },
+  "known_defect_records": [
+    {
+      "class": "UNCREATED_DEPENDENCY",
+      "cure": "Author a create-table baselining migration from live production schema evidence (BRAIN/12-ENGINEERING/UNCREATED-FLAGSHIP-TABLES-EVIDENCE-2026-10-22.md), land it, then remove this entry deliberately when the detector no longer measures the finding.",
+      "object": "public.invites",
+      "owner": "main seat (Resolve) \u2014 recording owner; baselining-migration authoring is a separate governed step",
+      "recorded_by": "Resolve lane (main seat), cure-forward from the Post-Merge Guardian disposition on PR #2946 (comment 6352604037)",
+      "recorded_on": "2026-10-22",
+      "referencing_migration": "20261022203000_person_timeline_v1.sql"
+    },
+    {
+      "class": "UNCREATED_DEPENDENCY",
+      "cure": "Author a create-table baselining migration from live production schema evidence (BRAIN/12-ENGINEERING/UNCREATED-FLAGSHIP-TABLES-EVIDENCE-2026-10-22.md), land it, then remove this entry deliberately when the detector no longer measures the finding.",
+      "object": "public.smart_mail_messages",
+      "owner": "main seat (Resolve) \u2014 recording owner; baselining-migration authoring is a separate governed step",
+      "recorded_by": "Resolve lane (main seat), cure-forward from the Post-Merge Guardian disposition on PR #2946 (comment 6352604037)",
+      "recorded_on": "2026-10-22",
+      "referencing_migration": "20261022203000_person_timeline_v1.sql"
+    },
+    {
+      "class": "UNCREATED_DEPENDENCY",
+      "cure": "Author a create-table baselining migration from live production schema evidence (BRAIN/12-ENGINEERING/UNCREATED-FLAGSHIP-TABLES-EVIDENCE-2026-10-22.md), land it, then remove this entry deliberately when the detector no longer measures the finding.",
+      "object": "public.smart_mail_threads",
+      "owner": "main seat (Resolve) \u2014 recording owner; baselining-migration authoring is a separate governed step",
+      "recorded_by": "Resolve lane (main seat), cure-forward from the Post-Merge Guardian disposition on PR #2946 (comment 6352604037)",
+      "recorded_on": "2026-10-22",
+      "referencing_migration": "20261022203000_person_timeline_v1.sql"
+    },
+    {
+      "class": "UNCREATED_DEPENDENCY",
+      "cure": "Author a create-table baselining migration from live production schema evidence (BRAIN/12-ENGINEERING/UNCREATED-FLAGSHIP-TABLES-EVIDENCE-2026-10-22.md), land it, then remove this entry deliberately when the detector no longer measures the finding.",
+      "object": "public.smart_notes",
+      "owner": "main seat (Resolve) \u2014 recording owner; baselining-migration authoring is a separate governed step",
+      "recorded_by": "Resolve lane (main seat), cure-forward from the Post-Merge Guardian disposition on PR #2946 (comment 6352604037)",
+      "recorded_on": "2026-10-22",
+      "referencing_migration": "20261022203000_person_timeline_v1.sql"
+    }
+  ],
+  "what_this_means": "The static coherence detector currently measures exactly four named defects, all recorded in known_defects: four flagship tables referenced by migration 20261022203000_person_timeline_v1.sql that no migration creates. The enforcement therefore reports no unrecorded debt (delta zero) while the recorded debt stays visible and named. This is source/ledger reconciliation, not an executed empty-database rebuild and not disaster-recovery proof.",
   "recoverability_of_the_definitions": "RESTORED FROM AUTHORITATIVE PRODUCTION MIGRATION LEDGER. Production retained version, name, and SQL statements for all 143 applied migrations; the repository now preserves those exact applied records plus the pre-reconciliation repository lineage outside the active migration path.",
-  "how_to_lower_this_ledger": "The ledger is currently zero. Any future measured finding is a regression unless independently classified as a detector false positive and fixed at the detector. Do not widen known_defects merely to make CI green.",
+  "how_to_lower_this_ledger": "Lower it only by repair: land create-table baselining migrations for the four recorded tables, authored from live production schema evidence (the only holder of their column types, keys, and policies), then remove each entry deliberately in the same motion as the detector stops measuring it. Any future measured finding outside known_defects is a regression unless independently classified as a detector false positive and fixed at the detector. Do not widen known_defects merely to make CI green; a recording without a named disposition, owner, and cure \u2014 like the 2026-10-22 Guardian disposition that produced these four entries \u2014 does not belong here.",
   "authority_note": "This ledger records static source coherence only. It does not authorize schema changes and does not claim that a clean database rebuild has been executed."
 }
