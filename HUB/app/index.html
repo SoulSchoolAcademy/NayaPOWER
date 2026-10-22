@@ -56,6 +56,7 @@
   --accent-reports:     var(--indigo);      /* comprehension / depth */
   --accent-library:     var(--blue);        /* knowledge at rest */
   --accent-connect:     var(--teal);        /* connection / flow */
+  --accent-ask:         var(--purple);      /* Ask Naya — her signature */
   --accent-ledger:      var(--gold);        /* value, extraordinary */
   --accent-connections: var(--orange);      /* action / movement */
   --accent-lists:       var(--purple);      /* Naya's signature */
@@ -2223,6 +2224,25 @@ button, .btn, .tab, .eco-btn, .activity-card {
 
 </style>
 <link rel="stylesheet" href="js/naya-voice.css">
+
+<style>
+/* ASK STACK + READING CURE (2026-10-22, Ask go-live port): while the Ask
+   room is mounted, the shell's fixed bottom ecosystem bar composes ABOVE
+   the room's own jewel bar instead of colliding with it, and main keeps
+   its clearance; while her answer flows (body.ask-reading, raised by the
+   room), the eco bar and the mobile share FAB slide down out of the
+   reader's way with the jewel bar, on the house motion token, and return
+   only when the room restores them. Scoped to the Ask room via
+   :has(.naya-ask-room) — every other room is untouched. */
+body:has(.naya-ask-room) .eco-bottombar{bottom:calc(71px + env(safe-area-inset-bottom,0px));transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
+body:has(.naya-ask-room) .main{padding-bottom:calc(80px + 71px + env(safe-area-inset-bottom,0px))}
+body:has(.naya-ask-room) .share-fab{transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s}
+body.ask-reading:has(.naya-ask-room) .eco-bottombar{transform:translateY(calc(100% + 90px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
+body.ask-reading:has(.naya-ask-room) .share-fab{transform:translateY(calc(100% + 40px))!important;opacity:0!important;visibility:hidden;pointer-events:none;transition:transform .26s cubic-bezier(.16,.84,.22,1),opacity .26s cubic-bezier(.16,.84,.22,1),visibility 0s linear .26s}
+@media (prefers-reduced-motion: reduce){
+  body:has(.naya-ask-room) .eco-bottombar,body:has(.naya-ask-room) .share-fab{transition:none}
+}
+</style>
 </head>
 <body>
 
@@ -2246,6 +2266,7 @@ const Runtime = (() => {
   // ——— The eleven rooms. The rail holds only these. ———
   const ROOMS = [
     { id: 'feed',        name: 'Smart Feed',          kicker: 'STREAM',       accent: 'var(--accent-feed)',        icon: 'feed' },
+    { id: 'ask',         name: 'Ask Naya',           kicker: 'ASK',          accent: 'var(--accent-ask)',         icon: 'ask' },
     { id: 'today',       name: 'Your Intelligence Today', kicker: 'TODAY',    accent: 'var(--accent-today)',       icon: 'spark' },
     { id: 'reports',     name: 'Your Reports',        kicker: 'REPORTS',      accent: 'var(--accent-reports)',     icon: 'report' },
     { id: 'library',     name: 'Intelligent Library', kicker: 'LIBRARY',      accent: 'var(--accent-library)',     icon: 'library' },
@@ -2320,7 +2341,7 @@ const Runtime = (() => {
   // loading | ready | empty | not_verified | blocked | error
   // Nothing is 'ready' with data until the governed runtime is connected.
   function stateFor(roomId) {
-    if (roomId === 'connect') return 'ready';
+    if (roomId === 'connect' || roomId === 'ask') return 'ready';
     return 'not_verified';
   }
 
@@ -2806,6 +2827,7 @@ const Icons = (() => {
     report:  '<path d="M5 20V10M12 20V4M19 20v-7"/>',
     library: '<path d="M4 5h7v14H4zM13 5h7v14h-7z"/><path d="M4 9h7M13 9h7"/>',
     connect: '<circle cx="7" cy="12" r="3"/><circle cx="17" cy="6" r="3"/><circle cx="17" cy="18" r="3"/><path d="M9.5 10.5l5-3M9.5 13.5l5 3"/>',
+    ask:     '<path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2h-7l-4.5 3.5V16H6a2 2 0 01-2-2z"/><path d="M12 7.6a2 2 0 1 1 1.4 3.15c-.85.4-1.4 1-1.4 2"/><path d="M12 15.8h.01"/>',
     ledger:  '<rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/>',
     nodes:   '<circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M12 7.5L6 16M12 7.5l6 8.5M7.4 18h9.2"/>',
     lists:   '<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="5" cy="6" r="1.4"/><circle cx="5" cy="12" r="1.4"/><circle cx="5" cy="18" r="1.4"/>',
@@ -3915,8 +3937,13 @@ function HubView(params) {
       '<div class="kicker">' + esc(room.kicker) + '</div>' +
       '<h2>' + esc(room.name) + '</h2>' +
       '<p>' + esc(roomDesc(room.id)) + '</p>';
-    outlet.appendChild(head);
-    outlet.appendChild(searchWrap);
+    /* Ask Naya mounts her page whole — no shell room-head,
+       no chassis search: the room carries its own topbar
+       and its own ask input. */
+    if (room.id !== 'ask') {
+      outlet.appendChild(head);
+      outlet.appendChild(searchWrap);
+    }
   }
   const body = el('div', 'room-body');
   body.style.setProperty('--room-accent', room.accent);
@@ -4660,6 +4687,7 @@ window.NayaJewels = (() => {
       today: 'Your day, answered by the intelligence. What matters, what changed, what deserves you.',
       reports: 'Proof, not promises. Every report carries its evidence and its receipts.',
       library: 'Everything retained, organized by what it means — not where it happened to land.',
+      ask: 'Ask Naya anything about NayaPOWER — she answers from the knowledge bank, in her own voice.',
       connect: 'One brain. Many doors. Choose how you — or your agents, apps, and systems — step into the same intelligence.',
       ledger: 'Every contribution, valued. The accountability layer of the collective mind.',
       connections: 'Humans, AIs, and machines you share intelligence with — each on your terms.',
@@ -5397,6 +5425,7 @@ function ConnectRoom() {
 window.NayaRooms=window.NayaRooms||{};window.NayaRooms.connect=ConnectRoom;
 
 </script>
+<script src="js/ask-room.js"></script><!-- js/rooms/ask.js — Ask Naya room (R2 port, 2026-10-22): Shawn's approved Ask page, mounted whole; registers window.NayaRooms.ask before app boot -->
 <script>/* js/rooms/settings.js @ baf1221d9 */
 /* SETTINGS — THE CONTROL DECK.
    Human controls first; diagnostics are secondary and read from current artifacts. */
