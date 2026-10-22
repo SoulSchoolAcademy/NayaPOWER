@@ -1,4 +1,4 @@
-# NAYA DESIGN CONTRACT v1.1
+# NAYA DESIGN CONTRACT v1.2
 **Status:** CANONICAL — All Naya seats follow this. No exceptions.
 **Ratified:** 2026-10-03 by Shawn Vibert (Human Director)
 **Purpose:** The visual signature, interaction language, and design philosophy of Naya. So Shawn never has to repeat himself.
@@ -10,42 +10,46 @@
 ### Dominant (always present)
 - **Black** (`#0a0a0e`) — backgrounds, buttons, depth
 - **White** (`#ffffff`) — text, light, idle glow
-- **Purple** (`#9d75ff`, `#8a5cff`) — Naya's signature, primary actions
+- **Purple** (`#a06bff`) — Naya's signature, primary actions
+
+### The canonical spectrum walk
+
+**The walk (canonical, stated once): purple `#a06bff` → blue `#3fb8ff` → green `#2fe89e` → gold `#ffbf3d` → orange `#ff9a5a` → red `#ff5e6c` → magenta `#e84fff` → back to purple.**
+
+Each section takes the NEXT color in the walk; never the same color twice in a row. Elements sit white at rest, and ignite in their OWN color on hover/touch.
+
+**The rule:** the walk is the only spectrum for sections, chrome, and flow. The SmartNote board mapping below is a fixed semantic mapping and may name non-walk hues; those non-walk hues are forbidden everywhere else.
 
 ### Spectrum (accents, never dominant)
 
 Color has three distinct jobs. Do not use one job's rule for another.
 
-**1. Accent jewels** — bullet points, boards, icons. Always the richest, most vibrant:
-**hot pink · purple · blue · green · gold.**
+**1. Accent jewels** — bullet points, boards, icons. Always the richest, most vibrant, drawn from the walk:
+**magenta `#e84fff` · purple `#a06bff` · blue `#3fb8ff` · green `#2fe89e` · gold `#ffbf3d`.**
 
-**2. Endless flow** — feeds and long continuous sequences. A repeating pattern, not the same for everything:
-**purple → indigo → forest emerald → lime → yellow → gold → orange → red → magenta → purple** (repeats)
+**2. Endless flow** — feeds and long continuous sequences. The walk repeating:
+**purple `#a06bff` → blue `#3fb8ff` → green `#2fe89e` → gold `#ffbf3d` → orange `#ff9a5a` → red `#ff5e6c` → magenta `#e84fff` → back to purple** (repeats)
 
-**3. SmartNote board sections** — fixed mapping:
-- In a nutshell → white
-- Human → magenta
-- Child → purple
-- Grandma → indigo
-- Naya → cyan
-- Machine → forest emerald
-- Why it matters → lime green
-- How do you use it → yellow
-- What's in it for you → orange or gold
+**3. SmartNote board sections** — fixed semantic mapping (distinct from the walk; see the rule above):
+- In a nutshell → white `#ffffff`
+- Human → magenta `#e84fff`
+- Child → purple `#a06bff`
+- Grandma → indigo `#6675ff` — board-mapping-only, not a walk color
+- Naya → cyan `#3ca8ff` — board-mapping-only, not a walk color
+- Machine → green `#2fe89e`
+- Why it matters → lime `#b8ee57` — board-mapping-only, not a walk color
+- How do you use it → gold `#ffbf3d`
+- What's in it for you → orange `#ff9a5a` or gold `#ffbf3d`
 
 ### Tokens
 
-- Magenta (hot pink) `#ed42c4`
-- Purple `#8a5cff` (Naya's signature; also `#9d75ff`)
-- Indigo `#6675ff`
-- Cyan `#3ca8ff`
-- Emerald `#35e39b`
-- Forest emerald (deep green) `#2e9e6a`
-- Lime `#b8ee57`
-- Yellow `#ffd45a`
-- Gold `#e8c766`
-- Orange `#ff8c42`
+- Purple `#a06bff`
+- Blue `#3fb8ff`
+- Green `#2fe89e`
+- Gold `#ffbf3d`
+- Orange `#ff9a5a`
 - Red `#ff5e6c`
+- Magenta `#e84fff`
 
 **Law:** Purple/black/white are PROMINENT. Spectrum colors are complementary accents. Gold/yellow is restrained — semantic accents, never dominant text.
 
@@ -77,12 +81,12 @@ Color has three distinct jobs. Do not use one job's rule for another.
 ### Action buttons (Love, Like, Save, etc.)
 - Pill shape, transparent/dark background
 - Semantic color per action:
-  - LOVE: red `#ff5e6c`
-  - LIKE: blue `#55b9ee`
-  - FAVORITE: gold `#ffd45a`
-  - SAVE: blue `#55b9ee`
-  - CREATE SPACE: purple `#9d75ff`
-  - SHARE: purple `#9d75ff`
+  - LOVE: red `#ff5e6c` (walk value, canonical)
+  - LIKE: blue `#3fb8ff` (walk value, canonical)
+  - FAVORITE: gold `#ffbf3d` (walk value, canonical)
+  - SAVE: blue `#3fb8ff` (walk value, canonical)
+  - CREATE SPACE: purple `#a06bff` (walk value, canonical)
+  - SHARE: purple `#a06bff` (walk value, canonical)
 - White light idle, color on hover
 - Dynamic counts/badges where applicable
 
@@ -172,3 +176,4 @@ Shawn amends this contract verbally. The amending Naya updates this document and
 **Version history:**
 - v1.0 (2026-10-03): Initial ratification. Synthesized from Shawn's directives across the Hub 10/10 drive.
 - v1.1 (2026-10-03): Verbal amendment — three color jobs (accent jewels, endless flow, SmartNote board mapping); cyan named (dictation had rendered it as "Kenya" — fixed); forest emerald + lime + gold + indigo tokens added; active intelligence principle locked.
+- v1.2 (2026-10-22): A.1 STAMP — Shawn ratified the shipping spectrum walk as the contract's color table (supersedes the v1.0/v1.1 #8a5cff/#9d75ff signature values); SmartNote board mapping declared a fixed semantic mapping distinct from the walk.

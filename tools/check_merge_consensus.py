@@ -404,6 +404,15 @@ def run_gate(token, repo, pr_number, head_sha):
     reviews = api_get(f"/repos/{repo}/pulls/{pr_number}/reviews", token)
     comments = api_get(f"/repos/{repo}/issues/{pr_number}/comments", token)
 
+    # A submitted PR review is an event-scoped receipt: GitHub already sends
+    # pull_request_review to both gates, avoiding issue_comment wakeups.
+    # Never admit pending, dismissed or changes-requested reviews as approval.
+    review_receipts = [
+        {"body": r.get("body") or "", "created_at": r.get("submitted_at")}
+        for r in reviews if r.get("state") in ("COMMENTED", "APPROVED")
+    ]
+    receipts = comments + review_receipts
+
     reviewer_seat = None
     # Path A: native GitHub approval from a different login.
     for r in reviews:
@@ -416,7 +425,7 @@ def run_gate(token, repo, pr_number, head_sha):
     # text so a quoted seat (mention) is never mistaken for the reviewer
     # (use) when a comment carries both a quote and a genuine approval.
     if not reviewer_seat:
-        for c in comments:
+        for c in receipts:
             body = c.get("body") or ""
             if _looks_like_review(body):
                 s = seat_of(_strip_blockquotes(body))
@@ -431,7 +440,7 @@ def run_gate(token, repo, pr_number, head_sha):
 
     # --- Requirement 2: scorecard receipt naming this exact head SHA ---
     scorer_seat = None
-    for c in comments:
+    for c in receipts:
         body = c.get("body") or ""
         if not _looks_like_scorecard(body, head_sha):
             continue
