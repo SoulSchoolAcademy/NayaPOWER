@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T04:24:24Z",
-  "tip": "ecaaf7aaefd7ed3756521a0a9bf3c22b71ef5d7f",
+  "generated_at": "2026-10-22T05:25:02Z",
+  "tip": "88da03be6b0940a0716bd6cad4fa9d8c9334e463",
   "prs": [
     {
       "number": 2869,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "55935e99952db25211220db06c0cb2d077148cd9"
+      "head": "b51a88ca70c70f14e0ac8b372af44d63858abf83"
     },
     {
       "number": 2874,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "8f5e09a7b84c62472306fe511b1a9bb5e836fa9e"
+      "head": "e1bad3de2585b9d9e6480b28ea9c274d71ec5ab9"
     },
     {
       "number": 2907,
@@ -29,6 +29,15 @@
       "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "ba985a9d5a48aae7b6d7dd9018a770212ddbc397"
+    },
+    {
+      "number": 2915,
+      "title": "Daily Intelligence 2026-10-22 \u2014 the night the lessons became orders",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "a683b6384c81adea98ae77e62cc9f18cdb81d547"
     }
   ]
 }
