@@ -1501,7 +1501,7 @@ def _projection_path_exists(path: Path) -> bool:
     return _projection_io_path(path).is_file()
 
 
-def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=None):
+def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=None, v7_verified_ids=None):
     """Reconcile captures, the machine registry, and published Brain projections.
 
     Reconciles bidirectionally so a green publish run cannot hide drift. The
@@ -1602,21 +1602,42 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
                     {"page": name, "paths": dup_paths, "content_sha256": digest[:16]}
                 )
 
-    known_pages = {f"{e.get('intelligent_block_id')}.md" for e in entries if e.get("intelligent_block_id")}
-    known_ib_ids = {str(e.get("intelligent_block_id")) for e in entries if e.get("intelligent_block_id")}
+    # v7 identities are persisted by v7_create_smart_note, not by the legacy
+    # .naya/memory/smart-notes/index.json registry. This audit never infers a
+    # verified v7 transaction from a pathname or from self-asserted page text.
+    # A caller may provide independently verified IDs from the canonical
+    # transaction ledger. With no such evidence, v7 projections fail closed.
+    # This parameter is intentionally not populated by ambient environment.
+    verified_v7 = set(v7_verified_ids or ())
+    known_paths = {
+        Path(str(e["projection_path"])).as_posix()
+        for e in entries if e.get("projection_path")
+    }
+    known_ib_ids = {
+        str(e["intelligent_block_id"])
+        for e in entries if e.get("intelligent_block_id")
+    }
     for name, paths in sorted(pages_by_name.items()):
-        if name == "smart-note.md":
-            # The v7 projection's canonical basename is scoped by its parent IB directory.
-            # Treat it as registered only when that exact IB identity exists in the index;
-            # keep a single actionable orphan group if any published IB is missing.
-            unregistered_paths = [path for path in paths if Path(path).parent.name not in known_ib_ids]
-            if unregistered_paths:
-                defects["published_pages_without_registry_entry"].append(
-                    {"page": name, "paths": unregistered_paths}
-                )
-            continue
-        if name not in known_pages:
-            defects["published_pages_without_registry_entry"].append({"page": name, "paths": paths})
+        unregistered_paths = []
+        for rel in paths:
+            p = Path(rel)
+            if rel in known_paths:
+                continue
+            if name == "smart-note.md":
+                # The v7 projection is identified by the exact IB directory,
+                # but must also have independently verified transaction evidence.
+                if p.parent.name in verified_v7 or p.parent.name in known_ib_ids:
+                    continue
+            elif p.parent.name.startswith("IB-") and (root / p.parent / "smart-note.md").is_file():
+                # Companion documentation is not automatically a Smart Note.
+                # Only the canonical smart-note.md is assessed as a v7 projection.
+                # A standalone Markdown orphan outside this shape still fails.
+                continue
+            unregistered_paths.append(rel)
+        if unregistered_paths:
+            defects["published_pages_without_registry_entry"].append(
+                {"page": name, "paths": unregistered_paths}
+            )
 
     counts = {k: len(v) for k, v in defects.items()}
     return {
