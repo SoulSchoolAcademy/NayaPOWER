@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 21:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24873,6 +24873,14 @@ _Last updated: 2026-10-22 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-t992 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: SGF daily-cron install gap — blocked-verdict with proof + authority-routing root cause
+
+**Receipt:** `twelve-lane-receipts/gap-t992-lane6.md`
+
+**Evidence:** VERIFIED on live bytes: lane-1/she-goes-forever/sgf_history.jsonl line 3 byte-matches the receipt's quote (2026-10-12 T2, daily_score 9.65, CAPABILITY-TRANSFERS); task-pool.md rotation_counter = 5; lane-6/sgf-daily/{CRON-SPEC.md, run_daily.sh} present; branch naya/six-sgf-daily-runner-t992 exists (head ca1cc31ebc794478cfd0f7fc1f2d0a2f96380e8e — dri
+
 ### ✅ triage-20261017-0740-attribution-0530 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** triage-20261017-0740-attribution-0530.md: t0550/t0573 Lane 10 operator attribution byte-check (Clarity vs Verity)
@@ -34540,6 +34548,24 @@ _Last updated: 2026-10-22 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gap-lane-scorer-20261021-1930-v2-lane0-verified-closed — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** v2 close re-verification + queue hygiene: pin re-derived live, ghost brief retired from queue
+
+**Evidence:** VERIFIED on live bytes, independent of the seat: git ls-remote refs/heads/naya4/t0412-baseline-builder-cure = 76f077a614b3846479368d86e3b63b7f9bac561d, exact match to the receipt's re-derived pin and the closing receipt's pin; closing receipt file present; grep finds NO 20261021-1930 brief in brief-queue/ root and claimed/ is empty — the ghost re-o
+
+### ✅ gate-stall-20261022-1416 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate-stall report: 29 gap-band briefs evaluated, all refused (exit-7/parent-authorship 24, prose-bar 4, seat-line 1), queue untouched
+
+**Evidence:** VERIFIED on live bytes: receipt file present; all 5 spot-checked brief names (incl. the six stall-delta additions' classes: brief-gap-t1310-lane3.md, brief-gap-t1295-lane4.md, brief-gap-gap-distill-daily-20261022-lane0.md, brief-gap-mtc-v1-thirdblind-probe-20261017-1155.md, brief-review-blueprint-completeness-20261015.md) present in brief-queue/; q
+
+### ✅ gap-lane-scorer-20261021-1930-lane0-v2 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up v2: t0412-baseline builder cure (proof-query-text + query_note)
+
+**Evidence:** VERIFIED on live bytes, independent of the receipt's own claims: git ls-remote --heads origin -> refs/heads/naya4/t0412-baseline-builder-cure = 76f077a614b3846479368d86e3b63b7f9bac561d (exact match to receipt). Fetched depth-1 @ that SHA: t0412-baseline-cure/batteries/{rubric.md,queries.json,queries-packet-extracts.json,corpus/,runs/} all present; 
 
 ### ✅ gate-stall-20261022-1258 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
