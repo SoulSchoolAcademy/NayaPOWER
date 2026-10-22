@@ -1,6 +1,6 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T06:24:57Z",
+  "generated_at": "2026-10-22T07:31:56Z",
   "tip": "0849bf09edc5e142fb3bb75471131bf57165db01",
   "prs": [
     {
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "0c63d4d64034b1ef07e070e668f3448555f62328"
+      "head": "d6cde2ed52cbb0334b45844497cba0a7064610c9"
     },
     {
       "number": 2874,
@@ -74,6 +74,15 @@
       "cure": "Author cures the PR-caused red check(s): inventory; then re-derive at the new head.",
       "owner": "author lane",
       "head": "38ed88b0a34ffc0a01796a1e23411efa5ab9cd2f"
+    },
+    {
+      "number": 2920,
+      "title": "Fix learning-promotion config test \u2014 expect nayanet-github-intake (BUILD 06:30)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "2476da27fa3996ac762ec30d8cca088061ea1999"
     }
   ]
 }
