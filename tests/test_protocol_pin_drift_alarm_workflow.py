@@ -26,7 +26,7 @@ def test_only_explicit_clean_readable_result_counts_as_healthy():
     text = WORKFLOW.read_text(encoding="utf-8")
     assert 'healthy = rc == 0 and payload.get("alarm") is False' in text
     assert "drift or unreadable pin; fail closed" in text
-    assert "if steps.drift.outputs.alarm == 'true'" in text
+    assert "if: steps.drift.outputs.alarm == 'true'" in text
 
 
 def test_alarm_is_idempotent_and_does_not_repin_or_block_work():
