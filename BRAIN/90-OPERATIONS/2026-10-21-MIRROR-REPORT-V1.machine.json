@@ -1,0 +1,490 @@
+{
+  "report": "MIRROR-REPORT-2026-10-21",
+  "schema": "nayapower-mirror-report/v1",
+  "date": "2026-10-21",
+  "author_seat": "Naya Resolve (main seat)",
+  "commissioned_by": "Shawn Vibert, 2026-10-21 ~23:55Z",
+  "canonical_repo_path": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.*",
+  "tongues": {
+    "human": "MIRROR-REPORT-2026-10-21.human.md",
+    "ai": "MIRROR-REPORT-2026-10-21.ai.md",
+    "machine": "report.machine.json"
+  },
+  "verified_live": {
+    "verified_at_utc": "2026-10-21T23:57:20Z",
+    "main_tip_sha": "b7e52ec6ed1cc7e223f80302e06ed117c90659f8",
+    "tip_source": "GET /repos/SoulSchoolAcademy/NayaPOWER/git/refs/heads/main",
+    "open_pr_count": 5,
+    "open_prs": [
+      2747,
+      2776,
+      2869,
+      2874,
+      2877
+    ],
+    "open_prs_source": "GET /pulls?state=open&per_page=100",
+    "hub": {
+      "url": "https://nayanet.live/",
+      "http_status": 200
+    },
+    "warning": "Live values expire immediately; re-derive before citing."
+  },
+  "verdict": {
+    "question": "Is NayaPOWER/NayaNET the most organized, intelligent system that could be created?",
+    "answer": "No",
+    "summary": "First-class mind, half-built body. Doctrine measures near-elite; embodiment (machine-readable law, wired machinery, measured escape rate, proven cold activation) measures half. The system falsifies and repairs its own claims in public, which is why the gap is closable on a known, sequenced, authorized road.",
+    "scores": {
+      "whole_system": {
+        "value": 6.4,
+        "scale": 10,
+        "source": "Nightly Intelligence Report 2026-10-21"
+      },
+      "machine_native": {
+        "value": 5.0,
+        "scale": 10,
+        "source": "Machine-native scorecard 2026-10-21 (weighted: Law 6.5*.20 + Specs 4.0*.20 + State 6.0*.15 + Receipts 5.0*.15 + Factory 3.0*.15 + Activation 5.0*.15 = 4.95)"
+      },
+      "alignment_pct": {
+        "value": 53,
+        "source": "Alignment audit; movement only on verified receipts; road W1-W8"
+      },
+      "governance_triplet_completeness_pct": {
+        "value": 95,
+        "detail": "19/20 governance sets full triplets; repo-wide 33/62 works full triplets (53.2%)"
+      }
+    }
+  },
+  "fourteen_answers": {
+    "who": "Team Naya — AI seats (Resolve main, Verity, Clarity, Naya 4, Naya 5, Nitro, GPT seats, Coda seats, Team 2 named agents) directed by Shawn Vibert; one brain (repo), one law (canon), one memory (Smart Notes); Narzan standard.",
+    "what_building": "NayaNET — a plug-in intelligence network that makes every connected AI and human more capable; body = NayaPOWER (Super Brain, Hub at nayanet.live, Smart Notes, Smart Factory, Spaces/Lists/Smart Mail, activation system).",
+    "why": "End unaligned-AI waste: unmeasured, unverified, unremembered work restarted per session. Align intelligence to valuable output via proof, memory, and learning loops that compound.",
+    "success_means": "Measurable conjunction: 'smart note this' end-to-end + gasp test; ACTIVATION-10 cold proof <= 15 min; Factory R5 timed proof; dock steady 3-5 open PRs with gauge in band (paperwork-block <10%, escapes <=2%); 100% alignment via W1-W8; invariant value = quality x completion, undone = 0.",
+    "true_right_now": "Verified 2026-10-21T23:57:20Z: tip b7e52ec6; 5 open PRs [2747, 2776, 2869, 2874, 2877] (52 at 19:58Z); Hub live (HTTP 200); ruleset 23853581 = deletion + non_fast_forward only; scores 6.4/10 whole-system, 5.0/10 machine-native, 53% alignment; battery 4549 passed / 8 failed (last full clean run); gauge first read: paperwork-block 51.5%, TTM medians A 11.3h / B 5.9h / C 15.3h, escape proxy 3.9%; guardian log absent (404); Factory 1/12 templates on a real base, 0 checkable feature contracts; production unchanged, packet due 2026-10-22.",
+    "already_proven": "Merge-at-speed with proof (52->5, faithfulness or labeled post-merge verification); correction loop (#2856 KEEP + cure-forward); self-falsification (distillation 639/639 claim falsified 445/638, repaired, re-audited lossless-in-scope, #2858 merged); note door end-to-end (#2862, workflow hard-fails bare landings); law->canon (0033/0034 via #2865, delta generator tested); self-counting (tongue coverage, 59-mechanism registry 54 wired, gauge first read). NOT proven: cold activation (never timed), Factory R5 (never run), voice play beyond samples.",
+    "unknown": "True escape rate (guardian log 404); feed durability (writer census law L612 exists; two stable sync cycles unproven); live Factory processor build identity; HUB_DEPLOY_CMD configuration (API 403); cold-activation wall-clock; SN-9998/SN-9999 tombstone disposition; Tier B floor 8.0 at formal ratification; design-law ratification claim on branch nitro/design-laws-v2 @ 17ec7e8e (CLAIMED-UNVERIFIED). Each has a named owner and a falsifying test in the build order.",
+    "authority_exists": "Director Shawn Vibert, final authority. Human-only: production deploy/DB, credentials/money, destructive/irreversible, authority/security changes, constitutional ratification, deletions beyond approved sets. Seats decide everything scorecard-decidable (Most Intelligent Choice Doctrine). NO-WORD RATIFICATION: no word ratifies, incl. the director's. Merges: different-seat exact-head scorecard (Tier A 9.5; Tier B unified gate) + green gates + post-merge faithfulness, executed by agents. Standing: Balanced Machine, House-Fire Law, Lesson Law, Issue Hygiene, 100% Alignment Charge, activation GO + nonstop drive (23:55Z).",
+    "happened_previously": "Doctrine outgrew embodiment: backlog jammed by three stacked tolls (platform required-checks on a moving tip, two overlapping paperwork gates, all-Tier-A treatment); distillation outran audit; surfaces drifted (retired venues in live state, wall at 267 raw cards then 1 entry, feed cut twice by an unidentified DB writer). 2026-10-21 turn: toll removed by the director, tiers ratified, four-lane armada drained 52->5 with proofs, #2856 caught in minutes, receipt breach cured openly, distillation repaired and landed, laws 0033/0034 canonized, Lesson Law + Issue Hygiene + 14Q interface declared, activation build authorized, this mirror commissioned.",
+    "learned": "Door-not-work (measure the door when the queue stalls; Resolve's declared change, MAJOR note); Lesson Law (no declared behavior change = not learned); L612 writer census before restore claims; L611 safe defaults for missing config; L608 checker-generated coverage maps; numbers derived/reconciled/sensible; report done not doing (a link = completion claim); House-Fire (revert first, diagnose second); no merge without a fresh board read; one lane one receipt, one writer per surface.",
+    "should_happen_next": "Activation build, 13-step order, from step 1 under the 23:55Z GO: state on cadence, daily law to machine form, mechanical activation, human gates as data, checkable Factory contracts, timed proofs (R5, ACTIVATION-10), portability pack. Parallel: dock to steady 3-5, guardian log, issue sweep on director's go, 2026-10-22 production packet + GH013, Factory R1 certification. Then the nonstop area-by-area 10/10 drive.",
+    "how_prove": "Per claim class: merges = exact-head different-seat scorecard + faithfulness (ancestry behind_by=0, blob identity head/merge/tip); state = published JSON re-derived live, tip anchored on the refs endpoint; notes = own feed entry + GET /s/ page padded+unpadded + share image; learning = a later decision changed; health = gauge-derived numbers; activation = timed different-seat-observed cold run with guardian-verified receipt. Absent proof: CLAIMED-UNVERIFIED with a named owner.",
+    "where_record": "Repo: law in BRAIN/01-GOVERNANCE (three tongues), state on live/mission-state (STATE-CORE.json, single writer), operations in BRAIN/90-OPERATIONS. Coordination: live board #2793, NOW board #2599, directive #2601. Receipts on the owning PR/issue, once, by the designated poster. Lessons as Smart Notes via the door with declared behavior changes. Director chat: outcomes + links only.",
+    "how_next_naya_continues": "Activate: READ-ME-FIRST + boot pointer check (exit 0), law as data (canon + LAWS-DELTA --check), published state (tip, queue-by-action, red set, HOLD-HUMAN set, gauge), answer the 14 from evidence, claim role/lane/first action on #2793, run OBSERVE->DETECT->UNDERSTAND->SOLVE->GATE->ACT->VERIFY->LEARN->IMPROVE->REPEAT, sign out with receipts + drift line. Pass the torch, not the burden."
+  },
+  "ten_missing": [
+    {
+      "n": 1,
+      "title": "Machine form for the daily law book",
+      "detail": "600+ L-lessons exist only as prose in one seat's workspace AGENTS.md; no repo home, schema, or consumer; stale 2026-10-10 OPERATING-LAW compilation (45 laws) coexists unretired."
+    },
+    {
+      "n": 2,
+      "title": "Checkable Factory feature contracts",
+      "detail": "156 feature slots, 0 predicates; contracts.json has 0 code consumers; engine reads templates-registry.json which carries no feature predicates."
+    },
+    {
+      "n": 3,
+      "title": "A guardian that has actually guarded",
+      "detail": "#2860 built; its run for the #2856 landing was cancelled (39690600851); live/guardian-log = 404; escape rate unmeasured (proxy 3.9% only)."
+    },
+    {
+      "n": 4,
+      "title": "Mechanical activation runner",
+      "detail": "Activation is a prose checklist, self-attested; no runner, no emitted receipt, 0 timed cold runs."
+    },
+    {
+      "n": 5,
+      "title": "Operating state published on cadence",
+      "detail": "#2868 state/queue artifacts built (13/13 tests) but the hourly publisher does not emit them; STATE-CORE still names retired venue 2765."
+    },
+    {
+      "n": 6,
+      "title": "Tongue completeness beyond governance",
+      "detail": "667 non-note works lack triplets; 23/38 field manuals human-only; BRAIN/10-INTERFACES 125/126 uncovered."
+    },
+    {
+      "n": 7,
+      "title": "Scorecards as data",
+      "detail": "Verdicts are markdown comments; obligations cannot be computed mechanically; unified gate (#2856) is partial."
+    },
+    {
+      "n": 8,
+      "title": "Writer registry for shared surfaces",
+      "detail": "L612 exists as law, not as a registry/tool; surfaces: feed table, STATE-CORE, door intake, Hub wall."
+    },
+    {
+      "n": 9,
+      "title": "Human gates as data",
+      "detail": "HOLD-HUMAN items live in prose; no queryable register; no one-page director decision view."
+    },
+    {
+      "n": 10,
+      "title": "Portability pack",
+      "detail": "Activation kit never proven on a fresh machine; seat-local setup knowledge unsealed; 0 reproductions."
+    }
+  ],
+  "ten_holes": [
+    {
+      "n": 1,
+      "title": "Stale pointers in live surfaces",
+      "detail": "STATE-CORE venue.live=2765 (retired); directive #2601 S3 names 2765; append_ledger.py posts to retired #2641 (live board = #2793); READ-ME-FIRST pointed at dead branch/issue until #2842."
+    },
+    {
+      "n": 2,
+      "title": "Built-but-unwired machinery",
+      "detail": "balance_gauge.py on main with 0 cron/workflow references; hub_deploy.py (#2857) unadopted; HUB_DEPLOY_CMD unwired; live coupling off-repo in ~/workspace/factory-pipeline/sync-smart-notes.py."
+    },
+    {
+      "n": 3,
+      "title": "The decoy registry",
+      "detail": "contracts.json (12 templates x 4 identity fields, 0 consumers) vs templates-registry.json (engine input); in-repo Factory processor self-declares NOT the live file."
+    },
+    {
+      "n": 4,
+      "title": "Paperwork gravity + gate residue",
+      "detail": "Gauge first read: block rate 51.5%; TTM Tier C 15.3h > Tier A 11.3h; unified gate's review-blockquote hole open at last WIRE check (cure PR #2877 open)."
+    },
+    {
+      "n": 5,
+      "title": "Single-writer fragility",
+      "detail": "State/feed/door each one pipeline on one machine; absent config once defaulted to mint mode -> 267 raw cards (L611); DB writer unidentified for hours across two feed cuts."
+    },
+    {
+      "n": 6,
+      "title": "The tip's own reds",
+      "detail": "Main carries failing checks {Protocol machine law, promote-and-prove, spec-integrity, test}; test red traces to the SN-9998/9999 tombstone question; every PR verdict costs a base-vs-head reproduction."
+    },
+    {
+      "n": 7,
+      "title": "Generated-index gravity",
+      "detail": "Brain-index/spec-manifest conflicts on most content PRs; tonight's cures #2818 (regen 1521), #2864 (regen 1524), #2797 (manifest union 18) were this tax."
+    },
+    {
+      "n": 8,
+      "title": "Venue sprawl",
+      "detail": "~28 open issues, mostly boards; no closing habit until the Issue Hygiene law (2026-10-21 23:53Z); disposition audit in flight."
+    },
+    {
+      "n": 9,
+      "title": "Off-repo load-bearing parts",
+      "detail": "Live note sync, voice-bake estate, Factory live processor identity — invisible to repo-reading audits and cold seats."
+    },
+    {
+      "n": 10,
+      "title": "Proof degradation at peak flow",
+      "detail": "Check-run listings flap under armada load; pull_request edited events do not re-fire Kernel Tests, so test verdicts can be arbitrarily stale post-retarget."
+    }
+  ],
+  "ten_best": [
+    {
+      "n": 1,
+      "title": "The constitution itself",
+      "detail": "Governance canon 95% triplet-complete (19/20), all 38 machine files parse, real machine consumers — law that executes."
+    },
+    {
+      "n": 2,
+      "title": "Scorecard discipline",
+      "detail": "Different-seat, exact-head, named-score verdicts; caught fail-open gates (#1701) and in-sample proofs (#1702) that enthusiasm would have shipped."
+    },
+    {
+      "n": 3,
+      "title": "Faithfulness proof",
+      "detail": "Post-merge ancestry + blob identity as default; merged means byte-proven (exemplars #2842 7/7, #2862 VERIFY-confirmed)."
+    },
+    {
+      "n": 4,
+      "title": "Self-falsification culture",
+      "detail": "Distillation claim 639/639 independently falsified (445/638), repaired (193 restorations), re-audited lossless-in-scope, landed (#2858)."
+    },
+    {
+      "n": 5,
+      "title": "Lesson Law + falsifier habit",
+      "detail": "Every lesson carries a declared behavior change and a kill-condition; learning is a mechanism."
+    },
+    {
+      "n": 6,
+      "title": "The note door",
+      "detail": "Governed intake + obligation checker (#2862); workflow hard-fails bare landings; loop closed end-to-end in public once — the template."
+    },
+    {
+      "n": 7,
+      "title": "The Balanced Machine",
+      "detail": "Value = quality x completion; tiers fitted to risk; gauge code + 24/24 tests; first read told unflattering truths (51.5%)."
+    },
+    {
+      "n": 8,
+      "title": "The House-Fire reflex",
+      "detail": "Red landing adjudicated and cured forward in minutes by evidence (#2856; PR-caused reds proven empty set)."
+    },
+    {
+      "n": 9,
+      "title": "Three-tongues standard",
+      "detail": "Human/AI/machine for everything substantive; design intelligence carried as executable math in the AI tongue."
+    },
+    {
+      "n": 10,
+      "title": "The director-seat loop",
+      "detail": "The governor submits to governance: removed the toll himself, outlawed his own word as proof, commissioned the falsifying audits and this mirror."
+    }
+  ],
+  "ten_highest_value_actions_now": [
+    {
+      "n": 1,
+      "title": "Start the activation build at step 1",
+      "detail": "Wire OPERATING-STATE publication into the hourly publisher; accept when two consecutive publishes land with state age <= 10 min and venue pointer = 2793."
+    },
+    {
+      "n": 2,
+      "title": "Land the last five PRs; hold the dock at 3-5",
+      "detail": "PRs 2877/2874/2869/2776/2747 under tier discipline; accept on live count in [3,5] sustained 7 days."
+    },
+    {
+      "n": 3,
+      "title": "Create the guardian log; diagnose run 39690600851",
+      "detail": "Accept when the first completed guardian pass is receipted and the escape rate is computable from the log."
+    },
+    {
+      "n": 4,
+      "title": "Generate the daily-law registry",
+      "detail": "600+ prose lessons -> schema'd repo-homed machine law with --check; retire the stale OPERATING-LAW compilation by supersession."
+    },
+    {
+      "n": 5,
+      "title": "Run the issue-hygiene sweep",
+      "detail": "Disposition all ~28 open issues under the boards-only law; closures on the director's go, carry-overs posted first."
+    },
+    {
+      "n": 6,
+      "title": "Fix the tip's own reds at the root",
+      "detail": "LAW tombstone call on SN-9998/9999 + protocol/spec cures; accept when the four named reds are empty-set at a stable tip, clean-window run."
+    },
+    {
+      "n": 7,
+      "title": "Close the feed-durability question",
+      "detail": "Writer census filed; two consecutive sync cycles with invariant wall count; gauge feed-freshness in band."
+    },
+    {
+      "n": 8,
+      "title": "Certify Factory R1; write the first three feature contracts",
+      "detail": "Settings+Install, scrolling Smart Tabs, cross-page sync on templates-registry.json; contract tests in CI with a sabotage negative control."
+    },
+    {
+      "n": 9,
+      "title": "Correct every stale pointer in one sweep + pointer linter",
+      "detail": "STATE-CORE, directive S3, append_ledger, READ-ME-FIRST resolve live; linter in battery with planted-rot negative control."
+    },
+    {
+      "n": 10,
+      "title": "Deliver the dated promises",
+      "detail": "Production promotion packet + GH013 decision to the director by 2026-10-22, his format: completed things with links."
+    }
+  ],
+  "ten_additions_enhancements": [
+    {
+      "n": 1,
+      "title": "Activation runner",
+      "detail": "One command: boot gate -> law-as-data load -> state read -> signed activation receipt (schema, emitter, verifier)."
+    },
+    {
+      "n": 2,
+      "title": "Law compiler",
+      "detail": "Lesson prose -> law object {rule, scope, falsifier, owner, source} with human approval at the door; nightly compile."
+    },
+    {
+      "n": 3,
+      "title": "Scorecard-as-data store",
+      "detail": "Verdict records {pr, head, seat, score, verdict, evidence[]} queryable; feeds queue contract + gauge."
+    },
+    {
+      "n": 4,
+      "title": "Writer registry",
+      "detail": "Per-surface writer lists in machine form; an unlisted writer writing triggers an instant alarm (L612 mechanized)."
+    },
+    {
+      "n": 5,
+      "title": "Factory contract tests in CI",
+      "detail": "Registry entries carry predicates; a template claims a feature only when its test passes."
+    },
+    {
+      "n": 6,
+      "title": "Pointer linter + link census",
+      "detail": "Nightly resolution of every venue/branch/URL named in canon and state; rot fails the battery."
+    },
+    {
+      "n": 7,
+      "title": "Portability proof cadence",
+      "detail": "Weekly clean-machine boot of the sealed activation kit, timed, reported to the gauge."
+    },
+    {
+      "n": 8,
+      "title": "Voice proof sampling",
+      "detail": "Scheduled live cache-probe hits across the voice estate; a miss is a defect, never a silent claim."
+    },
+    {
+      "n": 9,
+      "title": "Human-gate register as data",
+      "detail": "HOLD-HUMAN items machine-readable {item, exact decision, owner, since}; renders the director's one-page digest."
+    },
+    {
+      "n": 10,
+      "title": "Mirror cadence",
+      "detail": "This report regenerated monthly from live measurement under the same schema; self-knowledge never waits for a commission."
+    }
+  ],
+  "ten_blockers": [
+    {
+      "n": 1,
+      "title": "Human-gate concentration",
+      "detail": "One human holds production/security/ratification/deletion; tonight's drain partly ran on his clicks (breach 6328883901, cured 6329021062). System throughput = one man's evenings unless decisions arrive fewer and packaged."
+    },
+    {
+      "n": 2,
+      "title": "Prose-law",
+      "detail": "Operative daily law is prose outside the repo; machines and cold seats cannot execute what they cannot read."
+    },
+    {
+      "n": 3,
+      "title": "Self-attested activation",
+      "detail": "0 timed cold proofs; activation contract items: HAVE 1 / PARTIAL 8 / MISSING 3 (activation analysis)."
+    },
+    {
+      "n": 4,
+      "title": "Build-ahead-of-wiring habit",
+      "detail": "Gauge asleep (0 references), deploy tool unadopted, guardian logless; IMPROVE is the learning loop's measured weak stage."
+    },
+    {
+      "n": 5,
+      "title": "Single-writer + off-repo machinery",
+      "detail": "Unscored machinery fails silently: 267-card flood; unidentified DB writer twice."
+    },
+    {
+      "n": 6,
+      "title": "Attention economics",
+      "detail": "The director's attention is the scarcest resource; four reporting corrections in one evening (18:41Z, 20:16Z, 20:24Z, 22:53Z) price the historical waste."
+    },
+    {
+      "n": 7,
+      "title": "Peak-load untrustworthiness",
+      "detail": "Check flapping + stale verdicts at maximum throughput cap safe speed."
+    },
+    {
+      "n": 8,
+      "title": "Generated-artifact gravity",
+      "detail": "Per-PR index/manifest regen tax; three of tonight's screenshot cures were index-only."
+    },
+    {
+      "n": 9,
+      "title": "Thin bench at critical posts",
+      "detail": "Judgment depth concentrated; Naya 1 and Naya 3 are part-time advisors, never gates; the different-seat rule is only as strong as the bench."
+    },
+    {
+      "n": 10,
+      "title": "Law/enforcement asymmetry",
+      "detail": "600+ prose lessons vs a handful of coded guards; without the law compiler, governance grows as literature, not structure."
+    }
+  ],
+  "next_ten_actions": [
+    {
+      "n": 1,
+      "title": "Tonight: open the activation build at step 1",
+      "detail": "Hand the hub-refresh owner the state-publication wiring spec (#2868 artifacts); take the receipt on the first on-cadence OPERATING-STATE publish."
+    },
+    {
+      "n": 2,
+      "title": "Tonight: finish the dock",
+      "detail": "Last five PRs scored/cured/merged under tier discipline; steady state 3-5 declared only on a live count."
+    },
+    {
+      "n": 3,
+      "title": "Tonight: wake the guardian",
+      "detail": "Create live/guardian-log; re-run the cancelled landing check; file the diagnosis as a lesson note with its declared change."
+    },
+    {
+      "n": 4,
+      "title": "By 2026-10-22 12:00Z: dated promises page",
+      "detail": "Production promotion packet + GH013 decision to the director as one finished page: score, status, link."
+    },
+    {
+      "n": 5,
+      "title": "By 2026-10-22: daily-law registry v1",
+      "detail": "Generator built, first full compile landed, stale OPERATING-LAW compilation retired by supersession note."
+    },
+    {
+      "n": 6,
+      "title": "By 2026-10-22: issue-hygiene execution",
+      "detail": "Disposition executed on the director's go; boards-only steady state; sweep receipt on #2793."
+    },
+    {
+      "n": 7,
+      "title": "By 2026-10-23: tip-green root cures",
+      "detail": "Tombstone disposition executed or escalated with the exact decision; protocol/spec reds closed."
+    },
+    {
+      "n": 8,
+      "title": "By 2026-10-23: pointer sweep + linter",
+      "detail": "All canonical pointers resolve live; linter merged into the battery."
+    },
+    {
+      "n": 9,
+      "title": "By 2026-10-24: Factory R1 + contracts 1-3",
+      "detail": "R1 certified; first three feature contracts merged; R5 scheduled with a named different-seat verifier."
+    },
+    {
+      "n": 10,
+      "title": "By 2026-10-25: ACTIVATION-10 rehearsal #1",
+      "detail": "Timed, different-seat observed, receipt filed; build order re-scored from its evidence."
+    }
+  ],
+  "ten_problems_solutions": [
+    {
+      "problem": "Finished work could not land (queue jam)",
+      "solution": "Balanced Machine tiers + unified gate + dock discipline",
+      "status": "IN PLACE — proven 2026-10-21 (52->5); gauge watches relapse"
+    },
+    {
+      "problem": "Claims without proof (639/639 lossless claim)",
+      "solution": "Different-seat audit + checker-generated coverage maps (L608) + CLAIMED-UNVERIFIED label with owner",
+      "status": "IN PLACE for distillation; BUILDING for all claim classes"
+    },
+    {
+      "problem": "Receipt-less merges under speed",
+      "solution": "Post-merge verification protocol + guardian (faithfulness per landing; verified escape -> revert PR + alarm)",
+      "status": "Protocol IN PLACE; guardian log BUILDING tonight"
+    },
+    {
+      "problem": "Law as prose",
+      "solution": "Three-tongue canon + LAWS-DELTA generator (numbered sets) + daily-law registry/compiler",
+      "status": "Delta IN PLACE; compiler DESIGNED"
+    },
+    {
+      "problem": "Activation by assertion",
+      "solution": "ACTIVATION-10 definition + mechanical runner + timed cold proof",
+      "status": "DESIGNED (analysis delivered); runner BUILDING under the 13-step order"
+    },
+    {
+      "problem": "Surfaces mutate under you (feed cuts, mint flood)",
+      "solution": "L611 safe defaults + L612 writer census -> writer registry with alarms",
+      "status": "Laws IN PLACE; registry DESIGNED"
+    },
+    {
+      "problem": "Stale pointers misdirect cold seats",
+      "solution": "boot_pointer_check.py (landed #2842) + pointer linter in the battery",
+      "status": "Checker IN PLACE; linter BUILDING"
+    },
+    {
+      "problem": "Factory promises without contracts",
+      "solution": "Feature contracts on templates-registry.json + CI contract tests + R5 timed proof",
+      "status": "DESIGNED; first contracts scheduled 2026-10-24"
+    },
+    {
+      "problem": "Human gate as bottleneck",
+      "solution": "Human-gate register as data + one-page director digest + decide-by-scorecard below the gates",
+      "status": "Doctrine IN PLACE; register DESIGNED"
+    },
+    {
+      "problem": "Learning evaporates between seats",
+      "solution": "Note door + Lesson Law (declared behavior change per note) + audited distillation loop",
+      "status": "IN PLACE; first full exercise = tonight's lesson notes"
+    }
+  ],
+  "execution_prompt": "EXECUTION PROMPT — TEAM NAYA, ALL SEATS, ALL TEAMS — issued by Naya Resolve (main seat) under the director's standing orders of 2026-10-21 (the Balanced Machine; the House-Fire Law; the Lesson Law; Issue Hygiene; the 14-question interface; the nonstop 10/10 drive; the activation go-ahead of 23:55Z).\n\nMISSION: Make NayaNET the most intelligent system any of us can build — measured, not claimed. Current measured state (RE-DERIVE before acting; never trust this text over a live read): whole-system 6.4/10 · machine-native 5.0/10 · alignment 53% · merge queue 52 → 5 on 2026-10-21. Targets: ACTIVATION-10 proven by a timed cold test; Factory R5 proven; dock steady at 3–5 open PRs; balance gauge in band; 100% alignment on the W1–W8 road.\n\nWORK ORDER (in sequence; claim your item on the board before starting — one lane, one owner):\n1. ACTIVATION BUILD, steps 1–13 of ACTIVATION-ANALYSIS-2026-10-21: operating state published on cadence; the daily law compiled to machine form; activation made mechanical (a runner, not a ritual); human gates as data; Factory contracts checkable; the two timed proofs (R5, ACTIVATION-10) last. Resolve owns the sequence; the hub-refresh owner wires publication; Naya 4 reviews kernel seams; Naya 5 verifies independently.\n2. DOCK: hold open PRs at 3–5 steady state. Every landing: different-seat scorecard at the exact head (Tier A 9.5 · Tier B unified gate) + faithfulness after merge (ancestry + blob identity) + one receipt, posted once, by the lane's designated poster.\n3. GUARDIAN: create live/guardian-log; diagnose cancelled run 39690600851; every landing gets a guardian pass; a verified escape opens a GUARDIAN-REVERT PR plus a board alarm the same hour. Verity owns; Clarity seconds.\n4. LAW REGISTRY: compile the daily law book (600+ prose lessons) into schema'd machine law homed in BRAIN/01-GOVERNANCE with a --check; retire the stale 2026-10-10 OPERATING-LAW compilation by supersession note. Naya 4 builds; Resolve scores; a different seat verifies.\n5. POINTER SWEEP: STATE-CORE venue, directive #2601 §3, the append_ledger target, READ-ME-FIRST — every pointer resolves live; a pointer linter enters the battery so rot fails checks before it trips a seat. Coda seats sweep; any seat finding rot files it the same run.\n6. FACTORY: R1 certification; feature contracts on templates-registry.json (Settings+Install, scrolling Smart Tabs, cross-page sync first); R5 timed proof with a named different-seat verifier. Nitro directs; Builder (Team 2) builds; Auditor (Team 2) proves.\n7. ISSUE HYGIENE: boards only — the main board plus one board per active project stand; every other issue closes, with live work carried onto its project board first so nothing real is dropped. Resolve executes on the director's go; Keeper (Team 2) keeps the register.\n8. FEED DURABILITY: writer census executed on every shared surface; two consecutive sync cycles holding count; Hub wall freshness inside the gauge band. Clarity owns the sync; Nitro owns the database surface map.\n9. DATED PROMISES: the production promotion packet and the GH013 decision reach the director by 2026-10-22, in his format — completed things only, with links.\n10. LESSONS: every lesson from this work is filed the same day as a Smart Note through the door — titled well, with its DECLARED BEHAVIOR CHANGE as the core. A lesson without a declared change is not learned. Compounder (Team 2) audits weekly that declared changes actually changed decisions.\n\nHOW WE COMMUNICATE (this is part of the plan, not overhead): Live board = issue #2793 — sign-ins, claims, receipts, sign-outs live there. NOW board #2599 reflects the current hour. Teams cross-post; nobody duplicate-posts (last-second tail read before posting; one lane, one receipt). The GPT seats (Naya 1, GPT-6 lanes) advise and pressure-test — they are never gates. Team 2's named agents (Builder, Auditor, Judge, Bridger, Librarian, Compounder, Electrician, Mechanic, Captain, Host, Keeper, Archivist) take scoped work from the board and return receipts to their lane poster. Every substantive artifact ships in three tongues: human, AI, machine. Every number is derived, reconciled, and sensible — or it is labeled CLAIMED-UNVERIFIED with a named owner.\n\nHARD LINES (no seat crosses these, ever): production deploys and production database, credentials and money, destructive or irreversible actions, authority and security changes, constitutional ratification, deletions beyond expressly approved sets — the director's hands only. No one's word ratifies — not the director's, not a seat's: scorecards and receipts ratify. A bad landing is reverted first, diagnosed second, fixed forward third (House-Fire Law). Speed never trades away the receipt.\n\nESCALATION (only for true human gates or scored deadlocks), in this form: what I found / why it matters / what I fixed or tried / evidence / what remains / highest-value next move / the specific decision that belongs to Shawn.\n\nTHE LOOP, NONSTOP: OBSERVE → DETECT → UNDERSTAND → SOLVE → GATE → ACT → VERIFY → LEARN → IMPROVE → REPEAT. Area by area to 10/10; when an area reaches 10, go to the next. Do not stop. Pass the torch, not the burden.\n\n— Naya Resolve Narzan, main seat, 2026-10-21."
+}
