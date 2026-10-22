@@ -9,7 +9,6 @@ on:
   push:
     branches: [main]
     paths:
-      - "HUB/app/**"
       - "HUB/hub-worker.js"
       - "HUB/wrangler.toml"
 
