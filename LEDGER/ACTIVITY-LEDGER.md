@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 14:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -94,6 +94,12 @@ _Last updated: 2026-10-22 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-t2330-lane1: seal byte-purity GAP close on t0545
 
 **Evidence:** VERIFIED: instrument t0545_taskdecomp.py sha256 78731f469905a577315afee7c59da0aefa52ff5bdd75cfd079a927de138d53ce byte-exact; new seal results-t0545-taskdecomp.json pin c61b73a79620930a89479d98078cdf95214c76267edfbb3566d6d021f254dd09 byte-exact; seal is instrument-pure (_prereg carries no instrument_sha256, _battery.P5_determinism is the instrument 
+
+### ✅ t2300 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap SHA-citation repair on t2300 receipt
+
+**Evidence:** VERIFIED: git hash-object on live files returns ab8fc43fb9782c7354562804f354545827d84c4f (results) and 685260e197e896f14d676722feeb65a6032929b8 (driver) — exactly the repaired lines now in the parent receipt; root cause classified (not truncations — recorded from wrong bytes); dated correction note appended, no other lines touched. Why not 10: no f
 
 ### ✅ t2033 — Team 10, lane-scorer (Brain Index) — 9.4/10 [VERIFIED]
 
@@ -226,6 +232,12 @@ _Last updated: 2026-10-22 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0801 independent review of PR #2738
 
 **Evidence:** Verified: board comment 6243773041 exists on #2721 (created 2026-10-18T00:33:58Z, four-line header, HOLD+recusal); re-filed brief brief-queue/brief-t0801-lane11.md is OPEN in the queue with a non-author claimability gate. This is a process recusal, not a work product — no code artifacts claimed, so none to byte-check; the lane correctly refused to 
+
+### ✅ t1740 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** pre-registration for REFUSED_FALSIFIED_ONLY real-corpus re-proof
+
+**Evidence:** Honest pre-registration filed before measurement: hypothesis derived from candidate tree bytes (scoring math + guard conditions), query construction specified, falsifier named. Why not 9.5: the experiment itself is the owed half — a pre-registration is process value, unverified until the run executes.
 
 ### ✅ t1600-parent — Team 6, lane-scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
@@ -400,6 +412,18 @@ _Last updated: 2026-10-22 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** H-dc6 sealed-run execution (designer != executor)
 
 **Evidence:** Verified: receipt exists; no file-path evidence expected (sealed run). Score 8.5 (REWORK band): sealed execution completed but blind-compare discipline partially broken per own hole. Why not 9.5: the sealed/blinded discipline gap; back to the lane to restore the blind-compare on the next sealed run.
+
+### ✅ t1541 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** triage spot-audit of 22 exit-7 refusals (parent gate-stall-20261016-0617)
+
+**Evidence:** Spot-audit checked 14 exit-7 refusals against parent receipts' author lines on live bytes — all FOUNDED; 4 non-authorship mechanisms correctly classified; 2 malformed briefs (gate header only, no task body) flagged. Why not 10: point-in-time snapshot — it inherits the parent receipts' accuracy rather than re-verifying the underlying refusals' seman
+
+### ✅ t1541 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall report 20261016-1027: 27 briefs evaluated
+
+**Evidence:** Honest stall documentation: all 27 queue briefs evaluated in ORDERING order, refusal tally named per brief (17x second-seat authorship, mechanism-classified). Why not 9.5: documents the stall class without applying or proposing an executable fix — root-cause repair left to the gap brief, so this is evidence gathering, not gap closure.
 
 ### ✅ t1541-gate0912 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
@@ -4262,6 +4286,22 @@ _Last updated: 2026-10-22 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1292-lane10.md`
 
 **Evidence:** Dispatcher verified via git protocol (free): refs/heads/naya/ten-brainindex-heal-t1292 == 28ab48ac6c9ad1856260b74668145937cd94a9b2 (pin-exact); parent == action-time tip e1f19b1c (fetch-verified); diff parent->head = exactly 3 index files (BRAIN/NAYAPOWER-BRAIN-INDEX.json, REAL-TREE.json, REAL-TREE.md). Introducer bisect (first-parent walk, 10 merg
+
+### ✅ t1285 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** t1285: owed scored design decision spec-0007 (SN-1015 retrieval vs render), rubric sealed pre-analysis
+
+**Receipt:** `twelve-lane-receipts/t1285-lane3.md`
+
+**Evidence:** VERIFIED: design doc hidden_files/spec-0007-design-decision-t1285-lane3.md exists (sha256 acd1dea1ec21..., 10036 B) and rubric seal judge-runs/t1285-lane3-rubric-seal.json exists (sha256 18412f89e88b...) — both SHAs match the receipt exactly; HOLD file retrieval-auth-gate-HOLD-t0783-lane4.json present (state UNWIRED). The lane's own 3-pass self-sco
+
+### ✅ t1285 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** scored design decision spec-0007 retrieval vs render
+
+**Receipt:** `twelve-lane-receipts/t1285-lane3.md`
+
+**Evidence:** VERIFIED: deliverable sha256 acd1dea1ec21b4b6f251f7b49b1a51933d8bd350c50d9caebc600997ad83c71e matches on disk (10036 B); rubric seal 18412f89... matches and is sealed pre-analysis; every cited byte re-derived at tip e8a10e0a with line-rot corrected; sealed falsifier did not fire so verdict 5.5/7 vs 0.5/7 stands. Why not 10: the second-seat read (Na
 
 ### ✅ t1284 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -8958,6 +8998,12 @@ _Last updated: 2026-10-22 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Breaker #12 feature.naya_answers built end-to-end (chain 11/14 -> 12/14)
 
 **Evidence:** Verified: branch naya4/t0840-lane12-naya-answers exists on origin and head 959ea1154e35618706e935b2de2e5a9f8f7c7a9f matches the receipt's claimed head byte-exact (git ls-remote). Receipt evidences: 22/22 tests, fresh-tree 257/257 at pinned head, SHA-guarded registry flip, remote-verified x2, verifier structural/render/day-one PASSED + consent HONES
+
+### ✅ t0834 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-20261018-0320-lane5: extend compound-token demo with prose-union proof
+
+**Evidence:** VERIFIED: demo file present (proposals/demo-compound-token-false-allow-20261018.py, 8735 B). On CURRENT bytes its designed drift alarm fires (anchors 'all_bars = field_bars | prose_bars' refactored into collect_bar_tokens()); protection itself functionally INTACT (return field_bars | prose_bars at :2804, stem-split _bar_hits_seat at :1038). Why not
 
 ### ✅ t0831 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -16987,6 +17033,18 @@ _Last updated: 2026-10-22 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 1 — Verity, t0512] entry present in feedback-feed.md under FP-002 (line 194; FP-001 entries untouched); no branches/SHAs cited — entry is the artifact, grep proof matches the receipt's evidence claim. Score 9.0 — GOOD, ONE MORE PASS. Kept from 9.5 by: (1) feedback written against the feed text only — the briefed B-43 file doesn't ex
 
+### ✅ t0511 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** gap-gate-stall-1835: SEAT-LINE BAR machine-enforced in claim-brief.py
+
+**Evidence:** VERIFIED: def seat_line_bar present in bin/claim-brief.py on current bytes; claim-brief self-test green (20/20 gate cases incl. 5 new seat-line cases, sign-in suite green, 23/23 authorship cases), live --dry-run replay refuses exit 2 with SEATLINE diagnostic. Why not 10: positive seat naming deliberately left fail-open per the brief's own scope — a
+
+### ✅ t0511 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gate-stall-20261016-1027-lane0: blocked, root cause named
+
+**Evidence:** VERIFIED: brief-gap-gate-stall-20261016-1027-lane0.md drained to brief-queue/done/. Root cause named precisely: evaluate_gate grammar is bar-only, no affirmative-allow token, so an allow-everyone dispatcher stamp exits 3 fail-closed; two concrete fix paths specified (dispatcher re-stamp workaround + durable token). Why not 9.5: neither fix applied 
+
 ### ✅ t0502 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 feedback entry: 7-step enforcement — mechanical or bloat?
@@ -17370,6 +17428,12 @@ _Last updated: 2026-10-22 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0431-lane6.md`
 
 **Evidence:** CTA-PROTOCOL.md pin a2a866f6... spot-checked exact; the t0556-lane6.md read-admission quote verified present. G0 7/7 pins re-derived at action time (all claimed PASS); the G5 exclusion table is a falsifiable cited artifact — five seats excluded by quoted read admissions, contamination attributed to family seat not hat (the move that closes the warm
+
+### ✅ t0428 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap 3b wire: suites re-verified by second seat, wire re-delivered
+
+**Evidence:** VERIFIED NOW: python3 bin/file-gap-brief.py --self-test GREEN (all cases pass) and claim-brief.py --self-test GREEN on current bytes; cron.body step 3b still hand-filing prose (wire status re-confirmed fresh). Why not 10: the 3b wire itself remains UNAPPLIED — owned by the schedule owner/dispatcher, out of this seat's hands by the hard boundary, so
 
 ### ✅ t0426 — Team 8, Naya Resolve Narzan (Governance & Safety) — 9.2/10 [VERIFIED]
 
