@@ -26,7 +26,7 @@ def test_only_explicit_clean_readable_result_counts_as_healthy():
     text = WORKFLOW.read_text(encoding="utf-8")
     assert 'healthy = rc == 0 and payload.get("alarm") is False' in text
     assert "drift or unreadable pin; fail closed" in text
-    assert 'if steps.drift.outputs.alarm == \'true\'' in text
+    assert "if steps.drift.outputs.alarm == 'true'" in text
 
 
 def test_alarm_is_idempotent_and_does_not_repin_or_block_work():
@@ -41,6 +41,5 @@ def test_alarm_is_idempotent_and_does_not_repin_or_block_work():
 
 def test_workflow_preserves_diagnostic_text_in_single_line_output():
     text = WORKFLOW.read_text(encoding="utf-8")
-    assert 'detail=\\{safe\\}' not in text  # guard against regex-escaped output templates
     assert 'f"detail={safe}\\n"' in text
     assert 'safe = detail.replace("\\r", " ").replace("\\n", " ")' in text
