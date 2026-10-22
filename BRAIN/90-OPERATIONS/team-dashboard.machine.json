@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T00:19:06+00:00",
+ "generated_utc": "2026-10-22T01:16:40+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,8 +31,21 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2891,
+     "title": "Learning scorecard v2 \u2014 repo home + format repair + drift alarm (Lane E)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2891",
+     "draft": false
+    },
+    {
+     "number": 2890,
+     "title": "Learning Loop v1 \u2014 declared-change extractor, battery-per-lesson, sampler wake-up (Lane E)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2890",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 2
   },
   {
    "id": "know",
@@ -51,8 +64,15 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2886,
+     "title": "feat(protocol): pin-drift alarm \u2014 PROTOCOL.md moves without a re-pin now ring the bell",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2886",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "act",
@@ -133,13 +153,55 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2869,
-     "title": "Naya4/smart notes 2026 09 30",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869",
+     "number": 2899,
+     "title": "Smart Note SN-1789 \u2014 The Night the Catch Held: We Celebrate by Noting (celebration practic",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2899",
+     "draft": false
+    },
+    {
+     "number": 2898,
+     "title": "Naya/mission state",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2898",
+     "draft": false
+    },
+    {
+     "number": 2897,
+     "title": "GT-015: mechanical activation checklist runner \u2014 the checklist executes as checks-with-rec",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2897",
+     "draft": false
+    },
+    {
+     "number": 2896,
+     "title": "GT-067: 0033 Balanced Machine \u2014 formal ratification recorded (Tier B floor 8.0 confirmed)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2896",
+     "draft": false
+    },
+    {
+     "number": 2895,
+     "title": "GT-010: daily-law registry + compiler \u2014 the AGENTS.md law corpus becomes repo-homed machin",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2895",
+     "draft": false
+    },
+    {
+     "number": 2893,
+     "title": "GT-068: ratify live board #2793 in the boot bytes (successor to #2728)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2893",
+     "draft": false
+    },
+    {
+     "number": 2892,
+     "title": "GT-070: 0035 Design-Law Ratification \u2014 PR #2742 verified vs Shawn's standard (47 MATCH rat",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2892",
+     "draft": false
+    },
+    {
+     "number": 2888,
+     "title": "Factory: checkable standard-feature contracts + checker + R1b direct-build door cure",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2888",
      "draft": false
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 10
   },
   {
    "id": "wire",
@@ -158,8 +220,15 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2894,
+     "title": "repin(protocol): GT-001 Protocol Re-Pin (Door A) \u2014 PR #2802 bytes, ratified 2026-10-22 [Ti",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2894",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "team",
@@ -399,6 +468,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 2,
- "unassigned_prs": 1
+ "open_pr_total": 15,
+ "unassigned_prs": 10
 }

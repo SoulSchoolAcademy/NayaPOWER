@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 00:18 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 01:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 2 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 15 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,8 +50,23 @@
 
 ## Open PRs by Area
 
-### BUILD (1)
-- [#2869](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869) Naya4/smart notes 2026 09 30
+### LEARN (2)
+- [#2891](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2891) Learning scorecard v2 — repo home + format repair + drift alarm (Lane 
+- [#2890](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2890) Learning Loop v1 — declared-change extractor, battery-per-lesson, samp
+
+### KNOW (1)
+- [#2886](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2886) feat(protocol): pin-drift alarm — PROTOCOL.md moves without a re-pin n
+
+### BUILD (10)
+- [#2899](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2899) Smart Note SN-1789 — The Night the Catch Held: We Celebrate by Noting 
+- [#2898](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2898) Naya/mission state
+- [#2897](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2897) GT-015: mechanical activation checklist runner — the checklist execute
+- [#2896](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2896) GT-067: 0033 Balanced Machine — formal ratification recorded (Tier B f
+- [#2895](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2895) GT-010: daily-law registry + compiler — the AGENTS.md law corpus becom
+- …and 5 more
+
+### WIRE (1)
+- [#2894](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2894) repin(protocol): GT-001 Protocol Re-Pin (Door A) — PR #2802 bytes, rat
 
 ### TEAM (1)
 - [#2874](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2874) Naya2/team dashboard
