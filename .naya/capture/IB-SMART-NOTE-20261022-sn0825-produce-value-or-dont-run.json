@@ -20,16 +20,37 @@
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md",
    "truth_state": "CANDIDATE",
    "lifecycle_state": "ACTIVE",
-   "machine_section": "Command (Shawn, 2026-10-22 ~19:03Z, \"THE PRODUCTIVITY COMMAND\"): productivity bar ≈ 80% — four of every five actions producing or directly enabling a verified outcome. Baseline (value-density audit, window 2026-10-21 17:30Z → 2026-10-22 17:30Z, live-record census): activity = 8,986 units (8,449 Actions runs; 537 board comments on #2793); verified outcomes = 52 (36 PR-level with individual verdicts + 16 decision/closure/deliverable-level); ratio = 172.8:1. Waste structure: the two comment-triggered gates ≥3,681 runs (≥44%); ~31.5% of tallied runs skipped no-ops; 1,588 failed runs mostly known baselines re-firing; ~88% of board traffic self-narration (keyword-proxy estimate); 115 merges, 79 (69%) without item-level post-merge proof; scheduled capacity ~1,058 firings/day. Shawn's own count (longer window, broader unit): ~33,000 actions → ~50 valuable ≈ 1%. Mechanisms ratified: trigger-narrowing (PR #2938, scored 9.5, landing first); zero-loop kills (learning-bridge clock, duplicate nine-node watch; zero-caller lesson tools wired or deleted); one-receipt-per-run board law; same-landing completeness (generated artifacts ride the landing commit); gate-grammar scorecard generator; WIP cap ≤5 open; author-side canonical suite pre-posting (L635); daily automated value-density audit published with the Daily Intelligence Report + 3-day zero-output kill flag. First dispositions executed at filing: Nitro lane's learning-bridge-30m cron REMOVED (saturated; result summaries empty run after run). Execution directive posted to the live board by Naya 1 (comment 6348956092) with priority order, evidence requirements, and acceptance criteria. Falsifier: the daily ratio fails to fall toward <60:1 within 7 days of the gate repair landing, or verified outcomes fall proportionally with activity — either means the shape change failed and the shape changes again."
+   "machine_section": "Command (Shawn, 2026-10-22 ~19:03Z, \"THE PRODUCTIVITY COMMAND\"): productivity bar ≈ 80% — four of every five actions producing or directly enabling a verified outcome. Baseline (value-density audit, window 2026-10-21 17:30Z → 2026-10-22 17:30Z, live-record census): activity = 8,986 units (8,449 Actions runs; 537 board comments on #2793); verified outcomes = 52 (36 PR-level with individual verdicts + 16 decision/closure/deliverable-level); ratio = 172.8:1. Waste structure: the two comment-triggered gates ≥3,681 runs (≥44%); ~31.5% of tallied runs skipped no-ops; 1,588 failed runs mostly known baselines re-firing; ~88% of board traffic self-narration (keyword-proxy estimate); 115 merges, 79 (69%) without item-level post-merge proof; scheduled capacity ~1,058 firings/day. Shawn's own count (longer window, broader unit): ~33,000 actions → ~50 valuable ≈ 1%. Mechanisms ratified: trigger-narrowing (PR #2938, scored 9.5, landing first); zero-loop kills (learning-bridge clock, duplicate nine-node watch; zero-caller lesson tools wired or deleted); one-receipt-per-run board law; same-landing completeness (generated artifacts ride the landing commit); gate-grammar scorecard generator; WIP cap ≤5 open; author-side canonical suite pre-posting (L635); daily automated value-density audit published with the Daily Intelligence Report + 3-day zero-output kill flag. First dispositions executed at filing: Nitro lane's learning-bridge-30m cron REMOVED (saturated; result summaries empty run after run). Execution directive posted to the live board by Naya 1 (comment 6348956092) with priority order, evidence requirements, and acceptance criteria. Falsifier: the daily ratio fails to fall toward <60:1 within 7 days of the gate repair landing, or verified outcomes fall proportionally with activity — either means the shape change failed and the shape changes again.",
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE"
   },
-  "views_note": "Views derived 2026-10-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+  "views_note": "Views derived 2026-10-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction.",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Only the published projection is proven; original runtime receipt and source transcript unavailable.",
+  "applicability": "Candidate lesson; independent application and outcome verification not yet earned.",
+  "learning_lesson": "",
+  "successor_effect": "UNKNOWN — requires cold retrieval, behavior delta and independent proof."
  },
  "source": {
   "ingestion": "canonical-reconstruction",
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md",
   "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
-  "publishing_commit": "91e2de5dcda5e6567dd2758c06a38b07223b88b7"
+  "publishing_commit": "91e2de5dcda5e6567dd2758c06a38b07223b88b7",
+  "captured_at": "2026-10-22",
+  "source_type": "canonical-reconstruction",
+  "source_reference": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md"
  },
  "schema": "naya.smart-note-capture.v2",
- "lifecycle_state": "ACTIVE"
+ "lifecycle_state": "ACTIVE",
+ "capture_id": "20261022-sn-0825-projection-reconstruction",
+ "title": "Produce Value or Don't Run — The Productivity Command",
+ "category": "SYSTEM",
+ "topic": "SYSTEM",
+ "subtopic": "PRODUCTIVITY_COMMAND",
+ "canonical_intent": "RESTORE_PUBLISHED_PROJECTION_CAPTURE",
+ "projection": {
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md",
+  "publication_scope": "EXISTING_GITHUB_PROJECTION"
+ }
 }

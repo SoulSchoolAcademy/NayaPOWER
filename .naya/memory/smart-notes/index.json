@@ -14343,7 +14343,7 @@
       "smart_note_id": "SN-0825",
       "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run",
       "title": "Produce Value or Don't Run — The Productivity Command",
-      "content_hash": "587899aa40d88f3e6dbc3daf0144377c5d9e4a1c9c0972dcb63c6efdf742458b",
+      "content_hash": "d6724a835cadd7ae35714b198b850cd7ba2f13fb5011fff7fa34a47f86d80fee",
       "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
       "truth_state": "CANDIDATE",
@@ -14363,7 +14363,7 @@
       "smart_note_id": "SN-0826",
       "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0826-have-each-others-back",
       "title": "Have Each Other's Back — Say It Before It Costs a Month",
-      "content_hash": "24a4ce3266c3c029fee20bbc80ddd2f818775ca3cf18aaeac12b76011cb3dbd5",
+      "content_hash": "71fc0ff9eaca0a549bfd8d8eec92dd5edb30d900d33157dbf98eb9b5eecc1b0d",
       "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/accountability/SN-0826/IB-SMART-NOTE-20261022-sn0826-have-each-others-back.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
       "truth_state": "CANDIDATE",
@@ -14386,5 +14386,5 @@
     "next_sequence": 1803,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "b14e1458c23d63468eebf763a7a609bead39e92c7b90f2f271b4785dddb67bc5"
+  "corpus_manifest_hash": "bfae8c98167e7662806356bb6977b2ec8c10b53d97a36091c0547e820bca1ae8"
 }

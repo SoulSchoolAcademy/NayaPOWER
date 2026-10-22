@@ -181,6 +181,14 @@ def test_fixer_generates_reconciling_records(tmp_path):
     assert cap.exists()
     doc = json.loads(cap.read_text(encoding="utf-8"))
     assert doc["schema"] == "naya.smart-note-capture.v2"
+    from tools.sn002_conformance import check_capture
+    assert check_capture(cap).conformant, check_capture(cap).violations
+    # Deliberately corrupted truth ceiling must be refused, not quietly kept.
+    poisoned = json.loads(cap.read_text(encoding="utf-8"))
+    poisoned["intelligence"]["machine_view"]["automatic_truth_ceiling"] = "ACTIVE"
+    poisoned_file = root / "tampered-capture.json"
+    poisoned_file.write_text(json.dumps(poisoned), encoding="utf-8")
+    assert not check_capture(poisoned_file).conformant
     assert doc["intelligence"]["essence"] == "The fixture essence."
     assert doc["intelligence"]["ai_view"] == "The synthesis."
     # The registry audit's own bindings must reconcile: the page is no

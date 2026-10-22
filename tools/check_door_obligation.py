@@ -454,6 +454,9 @@ def build_capture(page: dict, prov: dict, date: str) -> dict:
         views_note += (" The published page carries no WHAT-IT-ALL-MEANS "
                        "section (six-note format); ai_view is left empty "
                        "rather than synthesized.")
+    machine_view = _machine_view(page)
+    machine_view["raw_source_separate_from_distillation"] = True
+    machine_view["automatic_truth_ceiling"] = "CANDIDATE"
     intelligence = {
         "title": page["title"],
         "intelligent_block_id": page["ib"],
@@ -475,13 +478,29 @@ def build_capture(page: dict, prov: dict, date: str) -> dict:
         "grandma_view": s.get("grandma_view", ""),
         "naya_view": s.get("naya_view", ""),
         "ai_view": s.get("meaning", ""),
-        "machine_view": _machine_view(page),
+        "machine_view": machine_view,
         "views_note": views_note,
+        "decisions": [],
+        "connections": [],
+        "uncertainty": "Only the published projection is proven; original runtime receipt and source transcript unavailable.",
+        "applicability": "Candidate lesson; independent application and outcome verification not yet earned.",
+        "learning_lesson": s.get("lesson", ""),
+        "successor_effect": "UNKNOWN — requires cold retrieval, behavior delta and independent proof.",
     }
     return {
         "smart_note_id": page["sn"],
+        "capture_id": f"{date.replace('-', '')}-{page['sn'].lower()}-projection-reconstruction",
+        "title": page["title"],
+        "category": page["category"],
+        "topic": page["topic"],
+        "subtopic": page["subtopic"],
+        "canonical_intent": "RESTORE_PUBLISHED_PROJECTION_CAPTURE",
+        "projection": {"projection_path": page["path"], "publication_scope": "EXISTING_GITHUB_PROJECTION"},
         "intelligence": intelligence,
         "source": {
+            "captured_at": date,
+            "source_type": "canonical-reconstruction",
+            "source_reference": page["path"],
             "ingestion": "canonical-reconstruction",
             "projection_path": page["path"],
             "provenance_note": (

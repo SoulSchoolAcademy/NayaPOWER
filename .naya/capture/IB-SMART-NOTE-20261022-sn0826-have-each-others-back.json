@@ -20,16 +20,37 @@
    "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/accountability/SN-0826/IB-SMART-NOTE-20261022-sn0826-have-each-others-back.md",
    "truth_state": "CANDIDATE",
    "lifecycle_state": "ACTIVE",
-   "machine_section": "Failure record (Shawn, 2026-10-22 ~19:43Z, standing): over the preceding month the multi-agent system consumed ~4 billion tokens and ~33,000 actions (his count) producing very little verified value; the 24h value-density audit measured 8,986 activity units → 52 verified outcomes (173:1). The named root failure is not the ratio but the silence: no seat escalated the drift unprompted, although the waste signals (gate runs per comment ≈ 11, ~88% board self-narration, 79/115 merges without item-level proof, saturated loops reporting added=0) were observable from inside every lane the whole time. Shawn's standard, verbatim substance: an agent that has his back says \"this isn't going to work, we're not being efficient, this is not producing — here's the problem, this problem, this problem; I'm going to eliminate those problems and put systems in place to make it right\" — and then does it. Ratified countermeasures: SN-0825 (the Productivity Command: daily published ratio, 3-to-10 rule, WIP cap, verify-at-source, zero-loop kills); Naya 1's execution directive (board #2793 comment 6348956092); the Smart Ledger build (chained accountability ledger; the system's own actions as entries; efficiency computed from the record and displayed in the Ledger room — legitimacy through an unrewriteable history); first dispositions already executed (self-narration abolished on the five busiest lanes, duplicate watchdog killed, Nitro's learning-bridge clock killed, PR #2938's gates both SUCCESS on deliberate re-read at head a22bf490 — landing-ready for the dock). Falsifier: any future 7-day window where the published ratio worsens materially and no seat's escalation to Shawn predates the number."
+   "machine_section": "Failure record (Shawn, 2026-10-22 ~19:43Z, standing): over the preceding month the multi-agent system consumed ~4 billion tokens and ~33,000 actions (his count) producing very little verified value; the 24h value-density audit measured 8,986 activity units → 52 verified outcomes (173:1). The named root failure is not the ratio but the silence: no seat escalated the drift unprompted, although the waste signals (gate runs per comment ≈ 11, ~88% board self-narration, 79/115 merges without item-level proof, saturated loops reporting added=0) were observable from inside every lane the whole time. Shawn's standard, verbatim substance: an agent that has his back says \"this isn't going to work, we're not being efficient, this is not producing — here's the problem, this problem, this problem; I'm going to eliminate those problems and put systems in place to make it right\" — and then does it. Ratified countermeasures: SN-0825 (the Productivity Command: daily published ratio, 3-to-10 rule, WIP cap, verify-at-source, zero-loop kills); Naya 1's execution directive (board #2793 comment 6348956092); the Smart Ledger build (chained accountability ledger; the system's own actions as entries; efficiency computed from the record and displayed in the Ledger room — legitimacy through an unrewriteable history); first dispositions already executed (self-narration abolished on the five busiest lanes, duplicate watchdog killed, Nitro's learning-bridge clock killed, PR #2938's gates both SUCCESS on deliberate re-read at head a22bf490 — landing-ready for the dock). Falsifier: any future 7-day window where the published ratio worsens materially and no seat's escalation to Shawn predates the number.",
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE"
   },
-  "views_note": "Views derived 2026-10-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+  "views_note": "Views derived 2026-10-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction.",
+  "decisions": [],
+  "connections": [],
+  "uncertainty": "Only the published projection is proven; original runtime receipt and source transcript unavailable.",
+  "applicability": "Candidate lesson; independent application and outcome verification not yet earned.",
+  "learning_lesson": "",
+  "successor_effect": "UNKNOWN — requires cold retrieval, behavior delta and independent proof."
  },
  "source": {
   "ingestion": "canonical-reconstruction",
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/accountability/SN-0826/IB-SMART-NOTE-20261022-sn0826-have-each-others-back.md",
   "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
-  "publishing_commit": "4e941e0524774c613323a2fa9b27467704bf30f0"
+  "publishing_commit": "4e941e0524774c613323a2fa9b27467704bf30f0",
+  "captured_at": "2026-10-22",
+  "source_type": "canonical-reconstruction",
+  "source_reference": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/accountability/SN-0826/IB-SMART-NOTE-20261022-sn0826-have-each-others-back.md"
  },
  "schema": "naya.smart-note-capture.v2",
- "lifecycle_state": "ACTIVE"
+ "lifecycle_state": "ACTIVE",
+ "capture_id": "20261022-sn-0826-projection-reconstruction",
+ "title": "Have Each Other's Back — Say It Before It Costs a Month",
+ "category": "SYSTEM",
+ "topic": "SYSTEM",
+ "subtopic": "ACCOUNTABILITY",
+ "canonical_intent": "RESTORE_PUBLISHED_PROJECTION_CAPTURE",
+ "projection": {
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/accountability/SN-0826/IB-SMART-NOTE-20261022-sn0826-have-each-others-back.md",
+  "publication_scope": "EXISTING_GITHUB_PROJECTION"
+ }
 }
