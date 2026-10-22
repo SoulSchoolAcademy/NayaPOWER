@@ -1,11 +1,11 @@
 {
   "contract": "room-feed/v1",
   "room": "today",
-  "emitted_at": "2026-10-20T09:19:42.398321-07:00",
+  "emitted_at": "2026-10-21T20:03:04.690350-07:00",
   "source_ref": "engine-job:hub-feeds-emitter-t0479",
   "items": [
     {
-      "id": "idx-0ccf7e04-8859-43d7-82e2-39b493022a18",
+      "id": "idx-87286474-a5fe-4f57-93da-5c2ef09e0dba",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -20,12 +20,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 20:09:15.598342+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 23:45:19.158843+00"
         }
       ]
     },
     {
-      "id": "idx-81c2bafb-1cce-4ed2-9012-7815006647af",
+      "id": "idx-a53f2ccf-76b3-4382-b228-da54e84b1970",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -40,12 +40,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:26:56.885153+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 23:33:33.018287+00"
         }
       ]
     },
     {
-      "id": "idx-cf3069eb-cd87-48cb-b2f1-d74e58ee6565",
+      "id": "idx-513e81ba-785b-4c7d-9add-d546cd00721c",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -60,12 +60,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:26:55.529616+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 21:12:50.775285+00"
         }
       ]
     },
     {
-      "id": "idx-cb668ea6-801d-45dc-8c66-e371243f6126",
+      "id": "idx-b412ced6-940a-42ad-bc3b-cdbea169ba95",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -80,12 +80,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:23:14.779423+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:59:12.644998+00"
         }
       ]
     },
     {
-      "id": "idx-ae0a3005-d000-4e0d-8da2-e750d73f5136",
+      "id": "idx-ff315f39-0025-40ef-b14c-e7b76b53f14c",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -100,32 +100,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:23:14.491158+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:59:04.421399+00"
         }
       ]
     },
     {
-      "id": "idx-17c6af61-1259-4542-b878-727fb486cbff",
-      "title": "Naya runtime flow lesson",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-19 15:21:30.2913+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-6b3112d5-1071-46f6-a994-2aa6ad907ca8",
+      "id": "idx-b90320eb-de23-4ddf-897d-b6474c43bb46",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -140,12 +120,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:21:30.167495+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:58:58.424727+00"
         }
       ]
     },
     {
-      "id": "idx-5f7ce767-2e39-4356-a53d-25ccb1924220",
+      "id": "idx-69004354-4a64-4618-b0ed-4a6575719e39",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -160,12 +140,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:15:59.371587+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:58:50.92968+00"
         }
       ]
     },
     {
-      "id": "idx-2063c103-3119-4e21-bca3-ac3b61dbbce7",
+      "id": "idx-15be8fd3-4532-452e-a02c-11324af85707",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -180,12 +160,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:15:58.900973+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:40:02.251093+00"
         }
       ]
     },
     {
-      "id": "idx-85e15e30-75fb-40b2-917f-0cb2a24cc581",
+      "id": "idx-796c4542-1dc4-4e6a-a97f-30df8099dde1",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -200,12 +180,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:14:19.700878+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:25:58.232806+00"
         }
       ]
     },
     {
-      "id": "idx-b088d69d-b3d2-4011-ae27-55ed18464404",
+      "id": "idx-e3e80e3a-8ee8-46af-b1f0-2f5c1f5eb467",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -220,32 +200,12 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:14:19.48092+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:40:59.070574+00"
         }
       ]
     },
     {
-      "id": "idx-99394a20-a346-4ad5-b68b-f7bbe215b767",
-      "title": "Naya runtime flow lesson",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-19 15:13:53.650425+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-b323854e-6616-4622-a388-f5b0550f7956",
+      "id": "idx-409850f9-4cd0-491d-acb8-6b427a11c7e6",
       "title": "EXECUTION_RECEIPT",
       "topics": [
         "REFERENCE"
@@ -260,15 +220,15 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-19 15:13:53.571035+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:35:30.237562+00"
         }
       ]
     },
     {
-      "id": "idx-3f243df4-0cc3-4b58-8f24-8ef6aa19adea",
-      "title": "Naya runtime flow lesson",
+      "id": "idx-1e483ca8-6dc3-43b9-91eb-b8a4bbf342c4",
+      "title": "EXECUTION_RECEIPT",
       "topics": [
-        "INTELLIGENT_BLOCK"
+        "REFERENCE"
       ],
       "kind": "note",
       "priority": 3,
@@ -280,13 +240,53 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-19 15:12:24.017693+00"
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:19:58.964506+00"
         }
       ]
     },
     {
-      "id": "art-ba7ad40e-19d8-4407-92f4-ce8894d4ac0d",
-      "title": "NayaNET is the future internet: one intelligent system where the app you build goes live instantly, gets discovered by t",
+      "id": "idx-11d71816-092b-4879-ab7d-e4cd0b64580b",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:16:39.172863+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-e70eeb23-1e8a-47a4-9e56-b59c128cea49",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:10:26.948793+00"
+        }
+      ]
+    },
+    {
+      "id": "art-879d9c75-b096-4629-bb8a-adae181ffbf3",
+      "title": "The world now spends about $4-7 billion a day on AI, and most of what it buys never becomes usable value — 95% of enterp",
       "topics": [
         "SMART_NOTE"
       ],
@@ -300,13 +300,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "NayaNET is the future internet: one intelligent system where the app you build goes live instantly, gets discovered by the right people automatically, and grows through community — while your identity stays entirely yours. The system matches by what you're into, never by who you "
+          "body": "The world now spends about $4-7 billion a day on AI, and most of what it buys never becomes usable value — 95% of enterprise AI pilots returned nothing measurable (MIT NANDA, 2025). Worse: the valueless output does not vanish, it piles up as a mess — unfinished work, plausible-bu"
         }
       ]
     },
     {
-      "id": "art-d19ee203-e7ef-4e7e-8494-53b8a2eee050",
-      "title": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate pe",
+      "id": "art-33359755-12ca-436b-81e1-a918948408cb",
+      "title": "We opened 662 pull requests and finished almost none of them — 473 sat untouched for a week or more while we created new",
       "topics": [
         "SMART_NOTE"
       ],
@@ -320,13 +320,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate personal smart app is software you describe in plain words and receive as a working application — you never build it, code it, or assemble it yourself. What was c"
+          "body": "We opened 662 pull requests and finished almost none of them — 473 sat untouched for a week or more while we created new ones nearly five times faster than we merged — because starting was free, finishing ran through one bottleneck, and nobody owned closing. A pull request is a l"
         }
       ]
     },
     {
-      "id": "art-c447782a-8561-4974-acbe-c7a311101772",
-      "title": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate pe",
+      "id": "art-d9a7e6af-9349-48d0-a59d-bd9f0a185f1c",
+      "title": "I merged work I had verified myself and called it independent — and a bot did the same thing four times in one hour — be",
       "topics": [
         "SMART_NOTE"
       ],
@@ -340,13 +340,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "# Smart Note — The Ultimate Personal Smart App (in relation to what was created today)\n\n## In a nutshell\nThe ultimate personal smart app is software you describe in plain words and receive as a working application — you never build it, code it, or assemble it yourself. What was c"
+          "body": "I merged work I had verified myself and called it independent — and a bot did the same thing four times in one hour — because our merge gate read signatures, not seats. Now a machine stands at the merge button: three different minds, or the merge does not happen. This note teache"
         }
       ]
     },
     {
-      "id": "art-9b10b120-fcef-424c-989c-1aa6b4897d04",
-      "title": "Refire proving the App-bypass dispatch path end to end.",
+      "id": "art-bd95bc16-0c1c-4b83-a0e8-44eb81edce83",
+      "title": "Humans never learn the machine. Naya operates the machines for the humans, serves every person the way they want to be s",
       "topics": [
         "SMART_NOTE"
       ],
@@ -360,13 +360,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "Refire proving the App-bypass dispatch path end to end."
+          "body": "Humans never learn the machine. Naya operates the machines for the humans, serves every person the way they want to be served, and the machines themselves are built for Naya's hands — so the service runs at full speed, forever."
         }
       ]
     },
     {
-      "id": "art-cc17f8ae-79d4-4f6f-b8cb-62475232f6b3",
-      "title": "Dispatch test note from Naya Nitro Narzan. Verifying the pipeline works end-to-end.",
+      "id": "art-96b97d81-62bb-4b67-b678-f934282c98ac",
+      "title": "One button turns a single true line into a scroll-stopping 9:16 video — hook in the first 2 seconds, a cut on every beat",
       "topics": [
         "SMART_NOTE"
       ],
@@ -380,13 +380,13 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "Dispatch test note from Naya Nitro Narzan. Verifying the pipeline works end-to-end."
+          "body": "One button turns a single true line into a scroll-stopping 9:16 video — hook in the first 2 seconds, a cut on every beat, captions that pop like lyrics, and a QR badge at the end that pulls viewers straight into NayaNET. Plus the 100 laws that make people feel, share, and come ba"
         }
       ]
     },
     {
-      "id": "art-666e8829-0784-4b7f-bab8-b91509a805b7",
-      "title": "Phase 3 live-fire proof note: the canonical receiver accepted an authenticated test capture.",
+      "id": "art-a8ebcab0-7877-4bcb-aa77-a40c69f3d74e",
+      "title": "Words, ideas, and suggestions have no value on their own. Value begins the moment intelligence becomes action — a choice",
       "topics": [
         "SMART_NOTE"
       ],
@@ -400,7 +400,7 @@
           "key": "nutshell",
           "color": "#FFFFFF",
           "tier": "primary",
-          "body": "Phase 3 live-fire proof note: the canonical receiver accepted an authenticated test capture."
+          "body": "Words, ideas, and suggestions have no value on their own. Value begins the moment intelligence becomes action — a choice made, work done, a result produced that a human can actually use. A Naya does not suggest what she can do: she does it, proves it, and reports the completion."
         }
       ]
     }
