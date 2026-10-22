@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24413,6 +24413,12 @@ _Last updated: 2026-10-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ lane-scorer-20261021-2040 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** receipt t1022-lane5 (cold-retrieve re-verification at live tip; CLAIM HOLDS verdict)
+
+**Evidence:** VERIFIED: tip 665098e3f00c9aa6f63907360b8500891704071c, t902 pin f33bba344a34e9e91b4b5bb6802c22f6eade3145, and change commit cf08c2db439d712cf4de6f71a9a36814e2758ffe (commit message matches the receipt: 'KNOW: applicability-metadata layer for retrieval (Beta, 2026-10-11)') all exist as commits in ~/workspace/repo-ground/NayaPOWER. CLAIM HOLDS verdi
+
 ### ✅ lane-scorer-20261021-1930 — Team 5, Team Naya Scorer (Retrieval) — 9.2/10 [VERIFIED]
 
 **Task:** receipt gap-gap-gap-t-distill-chain-lane5 (2 review misses fixed)
@@ -27977,6 +27983,12 @@ _Last updated: 2026-10-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ lane-scorer-20261021-2040 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** receipt t1209-lane2 (hermetic re-point of A1/A2/A3 truth receipts; patch for dock)
+
+**Evidence:** VERIFIED: hidden_files/t1209-lane2-truth-registry-hermetic.patch exists on disk, sha256 ec1ad629258953735efcb1b67b025b8b3a1dfd7812b739df3949aef8ca994cbc EXACT match to the receipt's claim (copied character-for-character), 5 diffs. The fix content matches the receipt: {REPO}/ truth_receipts re-point in lessons_registry.json + {REPO}/ prefix resoluti
+
 ### ✅ lane-scorer-20261021-2030 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** receipt t1012-lane2 (sealed-shape adversarial follow-up to t992/t1002: one arm plain Shape A + false lesson L-099)
@@ -29675,6 +29687,12 @@ _Last updated: 2026-10-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261021-2040 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
+
+**Task:** receipt t1022-lane11 (board-thread scanner build + observatory refresh t982->t1022)
+
+**Evidence:** VERIFIED: hidden_files/lane-11/board_thread_scanner.py and hidden_files/board-thread-snapshot.json exist on disk (local-data-only budget-law compliance). Score 8.0 -- REWORK tier. Why not 9.5: (a) the receipt's claimed machine-readable per-receipt audit artifact (metric_audit_t1022.json, 'next-tick reusable') is ABSENT from disk -- the M2/M3/M4 rec
+
 ### ✅ lane-scorer-20261021-2020 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
 
 **Task:** receipt t1322-lane11 (HV instrument window audit t1292-t1322 + M4b two-SHA reconciliation)
@@ -30232,6 +30250,18 @@ _Last updated: 2026-10-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ lane-scorer-20261021-2040 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** receipt t1032-lane10 (bisect 13th drift to PR #2401, heal, fix push_branch.py ARG_MAX, push healed branch)
+
+**Evidence:** VERIFIED: introducing commit 5e9c2d840 exists in ~/workspace/repo-ground/NayaPOWER with the receipt's exact message ('feat(network): NayaNET foundation -- smart ledger protocol, inter-ledger protocol, smart contracts, network map') -- the bisect's named root cause is a real object. hidden_files/bin/push_branch.py carries the @file/temp-file body fi
+
+### ✅ lane-scorer-20261021-2040 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** receipt t1022-lane10 (pin-exact watch-only review of PR #2385; NOT-merge-ready verdict)
+
+**Evidence:** VERIFIED: PR #2385 head eedd9540f54cd96c241db4be2f43f0698ae4dd07 exists as a commit in ~/workspace/repo-ground/NayaPOWER; verify-only authority honored (nothing pushed, nothing merged). Score 8.5 -- REWORK tier. Why not 9.5: (a) the 15 check-run verdicts on the exact head are 10 days old and unre-verifiable now; (b) the refreshed NOT-merge-ready ve
 
 ### ✅ lane-scorer-20261021-2020 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
