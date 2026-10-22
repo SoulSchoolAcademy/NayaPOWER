@@ -41,10 +41,24 @@ def read_tip_from_plan():
         # Look for tip SHA in TIP NOTE section (40-char hex)
         import re
         # Find the TIP NOTE section, then the first 40-hex SHA after "tip:"
-        tip_section = content.split("## TIP NOTE")
-        if len(tip_section) < 2:
+        # The machine-contract occurrence is the authority. Pass-note prose may
+        # quote the "## TIP NOTE" heading textually — a prose quote must never
+        # be read as the contract (2026-10-16: a prose quote in the 19:03Z pass
+        # note froze the gate tip at 9f80e8e while the contract carried
+        # e19a75d6, misfiring WORK_AVAILABLE on every run). Prefer the section
+        # carrying the "(machine contract)" marker; fall back to the last
+        # occurrence (the contract is appended last; prose quotes come earlier).
+        sections = content.split("## TIP NOTE")
+        if len(sections) < 2:
             return None
-        section = tip_section[1].split("##")[0]  # until next section
+        section = None
+        for cand in sections[1:]:
+            sec = cand.split("##")[0]  # until next section
+            if "machine contract" in sec:
+                section = sec
+                break
+        if section is None:
+            section = sections[-1].split("##")[0]
         match = re.search(r'\b([0-9a-f]{40})\b', section)
         if match:
             return match.group(1)

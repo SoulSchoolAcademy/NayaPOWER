@@ -1,0 +1,1403 @@
+{
+  "NAYA-BTN-001": {
+    "name": "Black Ground",
+    "html": "<button class=\"naya-btn naya-btn--foundation naya-btn--foundation-obsidian elev-2\" type=\"button\"><span class=\"nb-jewel\">\u25c6</span><span class=\"nb-copy\"><span class=\"nb-title\">BLACK GROUND</span><span class=\"nb-sub\">Obsidian field</span></span></button>",
+    "ai_label": {
+      "purpose": "A foundation button in the obsidian skin (.naya-btn--foundation-obsidian, elev-2): a diamond jewel, the title 'BLACK GROUND', and the sub-line 'Obsidian field'.",
+      "use_when": "Use when an action needs the dark obsidian foundation treatment \u2014 the ground-state button of the family.",
+      "laws": ["Law 2", "Law 3", "Law 11", "Law 13"]
+    }
+  },
+  "NAYA-BTN-002": {
+    "name": "White Light",
+    "html": "<button class=\"naya-btn naya-btn--foundation naya-btn--foundation-light elev-2\" type=\"button\"><span class=\"nb-jewel\">\u2726</span><span class=\"nb-copy\"><span class=\"nb-title\">WHITE LIGHT</span><span class=\"nb-sub\">Living light</span></span></button>",
+    "ai_label": {
+      "purpose": "A foundation button in the light skin (.naya-btn--foundation-light, elev-2): a spark jewel, the title 'WHITE LIGHT', and the sub-line 'Living light'.",
+      "use_when": "Use when an action needs the bright white-light foundation treatment instead of obsidian.",
+      "laws": ["Law 2", "Law 3", "Law 5", "Law 11"]
+    }
+  },
+  "NAYA-BTN-003": {
+    "name": "Purple Soul",
+    "html": "<button class=\"naya-btn naya-btn--foundation naya-btn--foundation-soul elev-2\" type=\"button\"><span class=\"nb-jewel\">\u25b2</span><span class=\"nb-copy\"><span class=\"nb-title\">PURPLE SOUL</span><span class=\"nb-sub\">Soul signature</span></span></button>",
+    "ai_label": {
+      "purpose": "A foundation button in the soul skin (.naya-btn--foundation-soul, elev-2): a triangle jewel, the title 'PURPLE SOUL', and the sub-line 'Soul signature'.",
+      "use_when": "Use when an action carries the purple soul identity \u2014 the system's signature color.",
+      "laws": ["Law 1", "Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-004": {
+    "name": "Primo Magenta",
+    "html": "<button class=\"primo theme-magenta elev-2\" type=\"button\">Magenta</button>",
+    "ai_label": {
+      "purpose": "A Primo button in the magenta theme (.primo.theme-magenta, elev-2) labeled 'Magenta'.",
+      "use_when": "Use when a compact themed action button is needed in the magenta spectrum position.",
+      "laws": ["Law 1", "Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-005": {
+    "name": "Primo Purple",
+    "html": "<button class=\"primo theme-purple elev-2\" type=\"button\">Purple</button>",
+    "ai_label": {
+      "purpose": "A Primo button in the purple theme (.primo.theme-purple, elev-2) labeled 'Purple'.",
+      "use_when": "Use when a compact themed action button is needed in the purple spectrum position \u2014 the system's lead color.",
+      "laws": ["Law 1", "Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-006": {
+    "name": "Primo Blue",
+    "html": "<button class=\"primo theme-blue elev-2\" type=\"button\">Blue</button>",
+    "ai_label": {
+      "purpose": "A Primo button in the blue theme (.primo.theme-blue, elev-2) labeled 'Blue'.",
+      "use_when": "Use when a compact themed action button is needed in the blue spectrum position.",
+      "laws": ["Law 1", "Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-007": {
+    "name": "Primo Green",
+    "html": "<button class=\"primo theme-green elev-2\" type=\"button\">Green</button>",
+    "ai_label": {
+      "purpose": "A Primo button in the green theme (.primo.theme-green, elev-2) labeled 'Green'.",
+      "use_when": "Use when a compact themed action button is needed in the green spectrum position.",
+      "laws": ["Law 1", "Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-008": {
+    "name": "Primo Gold",
+    "html": "<button class=\"primo theme-gold elev-2\" type=\"button\">Gold</button>",
+    "ai_label": {
+      "purpose": "A Primo button in the gold theme (.primo.theme-gold, elev-2) labeled 'Gold'.",
+      "use_when": "Use when a compact themed action button is needed in the gold spectrum position.",
+      "laws": ["Law 1", "Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-009": {
+    "name": "Hero \u00b7 Enter the Standard",
+    "html": "<span class=\"nb-scope\"><button class=\"living-btn elev-3\" type=\"button\"><span class=\"btn-glow\"></span><span class=\"btn-label\">\u2726 ENTER THE STANDARD</span></button></span>",
+    "ai_label": {
+      "purpose": "The Reference Button: a living button (.living-btn, elev-3) with a glow layer and the label 'ENTER THE STANDARD', carrying a full named motion spec (idle breathe, sheen sweep, hover lift, press sink) in the store.",
+      "use_when": "Use as the hero call-to-action \u2014 and as the crowned exemplar every other button's depth, glow, and press physics are copied from.",
+      "laws": ["Law 2", "Law 3", "Law 4", "Law 10", "Law 11"]
+    },
+    "reference": true,
+    "motion": "rest: idleBreathe 4.2s ease-in-out infinite + glow layer at opacity .55 + sheen sweep 5.5s cubic-bezier(.16,.84,.22,1) infinite; hover: lift translateY(-4px) scale(1.025), transform/box-shadow .28s cubic-bezier(.16,.84,.22,1), glow opacity \u2192 1 over .3s; press: sink translateY(1px) scale(.975), transition-duration .08s (fast in, spring-feel return on the .28s ease); prefers-reduced-motion: breathe + sweep animations none \u2014 full outset stack and glow hold static"
+  },
+  "NAYA-BTN-010": {
+    "name": "Hero \u00b7 See It Working",
+    "html": "<span class=\"nb-scope\"><button class=\"living-btn elev-3\" type=\"button\"><span class=\"btn-glow\"></span><span class=\"btn-label\">\u25c6 SEE IT WORKING</span></button></span>",
+    "ai_label": {
+      "purpose": "A living hero button (.living-btn, elev-3) with a glow layer and the label 'SEE IT WORKING'.",
+      "use_when": "Use when a hero action should invite the person to watch a demonstration rather than read about one.",
+      "laws": ["Law 2", "Law 3", "Law 4", "Law 11"]
+    }
+  },
+  "NAYA-BTN-011": {
+    "name": "Hero \u00b7 Read the Law",
+    "html": "<span class=\"nb-scope\"><button class=\"living-btn elev-3\" type=\"button\"><span class=\"btn-glow\"></span><span class=\"btn-label\">+ READ THE LAW</span></button></span>",
+    "ai_label": {
+      "purpose": "A living hero button (.living-btn, elev-3) with a glow layer and the label 'READ THE LAW'.",
+      "use_when": "Use when a hero action leads to the contract or the laws themselves.",
+      "laws": ["Law 2", "Law 3", "Law 4", "Law 11"]
+    }
+  },
+  "NAYA-BTN-012": {
+    "name": "Essential \u00b7 Create",
+    "html": "<button class=\"cx-btn elev-1\" type=\"button\">+ CREATE</button>",
+    "ai_label": {
+      "purpose": "An essential action button (.cx-btn, elev-1) labeled '+ CREATE'.",
+      "use_when": "Use for the plain create action in a toolbar or board head where the living-button treatment would be too loud.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-013": {
+    "name": "Essential \u00b7 Details",
+    "html": "<button class=\"cx-btn elev-1\" type=\"button\">\u25c6 DETAILS</button>",
+    "ai_label": {
+      "purpose": "An essential action button (.cx-btn, elev-1) labeled 'DETAILS' with a diamond glyph.",
+      "use_when": "Use when an item needs a compact 'show me more' action.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-014": {
+    "name": "Essential \u00b7 Continue",
+    "html": "<button class=\"cx-btn elev-1\" type=\"button\">\u2192 CONTINUE</button>",
+    "ai_label": {
+      "purpose": "An essential action button (.cx-btn, elev-1) labeled 'CONTINUE' with a right-arrow glyph.",
+      "use_when": "Use for the forward step action in a short flow.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-015": {
+    "name": "Ghost button",
+    "html": "<button class=\"btn btn-ghost mini\" type=\"button\"><span>Open</span></button>",
+    "ai_label": {
+      "purpose": "A mini ghost button (.btn.btn-ghost.mini) labeled 'Open' \u2014 the quietest action treatment in the store.",
+      "use_when": "Use for low-stakes secondary actions inside rows and lists where a full button would shout.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-016": {
+    "name": "Toggle chip",
+    "html": "<button class=\"tgl on\" type=\"button\">Live</button>",
+    "ai_label": {
+      "purpose": "A toggle chip button (.tgl.on) labeled 'Live', shown in its on state.",
+      "use_when": "Use when a single word-sized control must flip a live/on-off state in place.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-017": {
+    "name": "Smart-note \u00b7 Save",
+    "html": "<button class=\"sn-btn primary sn-save\" type=\"button\">Save</button>",
+    "ai_label": {
+      "purpose": "A Smart Note primary save button (.sn-btn.primary.sn-save) labeled 'Save'.",
+      "use_when": "Use as the save action on a Smart Note editor or capture surface.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-018": {
+    "name": "Nav button \u00b7 About",
+    "html": "<a class=\"nav-button about-button\" href=\"#\"><span class=\"nav-icon\">\u2726</span> ABOUT US</a>",
+    "ai_label": {
+      "purpose": "A navigation button rendered as an anchor (.nav-button.about-button) with a spark icon and the label 'ABOUT US'.",
+      "use_when": "Use when a nav-styled link to an About surface is needed rather than a true action button.",
+      "laws": ["Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-BTN-021": {
+    "name": "Danger button",
+    "html": "<button class=\"naya-btn naya-btn--danger\" type=\"button\"><span class=\"nb-icon\" aria-hidden=\"true\">\u2715</span><span class=\"nb-label\">Delete this space</span></button>",
+    "ai_label": {
+      "purpose": "A danger button (.naya-btn--danger) with a cross icon and the label 'Delete this space'.",
+      "use_when": "Use only for destructive actions that must read as dangerous at a glance.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-023": {
+    "name": "Canonical primary",
+    "html": "<div style=\"display:flex;flex-direction:column;gap:10px;align-items:stretch;width:100%\"><button class=\"naya-btn naya-btn--primary naya-btn--sm\" type=\"button\">Small</button><button class=\"naya-btn naya-btn--primary\" type=\"button\">Medium \u00b7 Default</button><button class=\"naya-btn naya-btn--primary naya-btn--lg\" type=\"button\">Large</button>",
+    "ai_label": {
+      "purpose": "The canonical primary button shown as a size stack: Small, Medium \u00b7 Default, and Large (.naya-btn--primary in --sm, default, and --lg).",
+      "use_when": "Use as the harvest source for any primary action \u2014 pick the size from this stack instead of restyling a new primary.",
+      "laws": ["Law 2", "Law 3", "Law 10", "Law 11"]
+    }
+  },
+  "NAYA-BTN-024": {
+    "name": "Canonical secondary",
+    "html": "<div style=\"display:flex;flex-direction:column;gap:10px;align-items:stretch;width:100%\"><button class=\"naya-btn naya-btn--secondary\" type=\"button\"><span class=\"nb-icon\" aria-hidden=\"true\">\u2192</span><span class=\"nb-label\">View Details</span></button><button class=\"naya-btn naya-btn--secondary naya-btn--icon\" type=\"button\" aria-label=\"Search\"><span class=\"nb-icon\" aria-hidden=\"true\">\u2315</span></button>",
+    "ai_label": {
+      "purpose": "The canonical secondary button set: a labeled secondary ('View Details' with arrow) and an icon-only secondary (Search, aria-labeled).",
+      "use_when": "Use as the harvest source for secondary actions that support, but never compete with, the primary.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-025": {
+    "name": "Canonical ghost",
+    "html": "<div style=\"display:flex;flex-direction:column;gap:10px;align-items:stretch;width:100%\"><button class=\"naya-btn naya-btn--ghost\" type=\"button\"><span class=\"nb-label\">Cancel</span></button><button class=\"naya-btn naya-btn--ghost naya-btn--icon\" type=\"button\" aria-label=\"More options\"><span class=\"nb-icon\" aria-hidden=\"true\">\u22ef</span></button>",
+    "ai_label": {
+      "purpose": "The canonical ghost button set: a labeled ghost ('Cancel') and an icon-only ghost (More options, aria-labeled).",
+      "use_when": "Use as the harvest source for cancel and overflow actions that should recede.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-027": {
+    "name": "Chrome button",
+    "html": "<button class=\"btn-chrome primary\" type=\"button\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3 7 9 6 9-6\"/></svg>Write mail</button>",
+    "ai_label": {
+      "purpose": "A chrome primary button (.btn-chrome.primary) with an envelope icon and the label 'Write mail' \u2014 the template family's working CTA, referenced by all twelve engine templates.",
+      "use_when": "Use as the primary action in template-built pages, especially mail and contact flows.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-019": {
+    "name": "Signature variants",
+    "html": "<div style=\"display:flex;flex-direction:row;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;width:100%\"><button class=\"naya-btn lead\" type=\"button\">Lead</button><button class=\"naya-btn machine\" type=\"button\">Machine</button><button class=\"naya-btn prism\" type=\"button\">Prism</button><button class=\"naya-btn proximity\" type=\"button\">Proximity</button><button class=\"naya-btn streak\" type=\"button\">Streak</button>",
+    "ai_label": {
+      "purpose": "A sampler row of five signature button variants (.naya-btn in lead, machine, prism, proximity, and streak skins) shown side by side.",
+      "use_when": "Use when choosing or demonstrating which signature skin a surface should wear \u2014 it is a variant gallery, not a single action.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-020": {
+    "name": "Icon trio",
+    "html": "<div style=\"display:flex;gap:14px;justify-content:center;align-items:center\"><button class=\"naya-btn icon\" type=\"button\" aria-label=\"Search\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-search\"/></svg></button><button class=\"naya-btn icon micro\" type=\"button\" aria-label=\"Add\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-plus\"/></svg></button><button class=\"naya-btn icon portal\" type=\"button\" aria-label=\"Enter\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-door\"/></svg></button>",
+    "ai_label": {
+      "purpose": "An icon-button trio: Search (standard), Add (micro), and Enter (portal) icon buttons using the shared SVG icon set.",
+      "use_when": "Use when a compact cluster of icon-only actions is needed; each button carries an aria-label because the icon alone is the visible text.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-022": {
+    "name": "Split button",
+    "html": "<button class=\"naya-btn split\" type=\"button\"><span>Open space</span><span class=\"split-orb\" aria-hidden=\"true\"><svg class=\"icon\"><use href=\"#i-arrow\"/></svg></span></button>",
+    "ai_label": {
+      "purpose": "A split button (.naya-btn.split): a text label ('Open space') paired with a circular arrow orb on its right segment.",
+      "use_when": "Use when one primary action needs a visually separate directional segment, such as opening the thing named.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-026": {
+    "name": "Orbit button",
+    "html": "<button class=\"orbit-btn\" type=\"button\"><span class=\"orbit-label\">Summon Naya</span></button>",
+    "ai_label": {
+      "purpose": "An orbit button (.orbit-btn) labeled 'Summon Naya'.",
+      "use_when": "Use for the call-Naya action where the orb/summon grammar is the surface's language.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-028": {
+    "name": "Like pill",
+    "html": "<button class=\"like-pill on\" type=\"button\" aria-pressed=\"true\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z\"/></svg><span class=\"like-count\">24</span></button>",
+    "ai_label": {
+      "purpose": "A like pill button (.like-pill.on, aria-pressed) with a heart icon and a live count (24).",
+      "use_when": "Use when a person can like or favorite an item and the count must ride on the control itself.",
+      "laws": ["Law 2", "Law 3", "Law 4", "Law 11"]
+    }
+  },
+  "NAYA-BTN-029": {
+    "name": "Action chip",
+    "html": "<button class=\"act-chip\" type=\"button\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg>Add note</button>",
+    "ai_label": {
+      "purpose": "An action chip button (.act-chip) with a plus icon and the label 'Add note'.",
+      "use_when": "Use for small inline add actions at the foot of a list or board.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-030": {
+    "name": "Day dot",
+    "html": "<div style=\"display:flex;gap:8px;justify-content:center\"><button class=\"day-dot\" type=\"button\" aria-label=\"Monday\">M</button><button class=\"day-dot today\" type=\"button\" aria-label=\"Tuesday\">T</button><button class=\"day-dot on\" type=\"button\" aria-label=\"Wednesday\" aria-pressed=\"true\">W</button><button class=\"day-dot\" type=\"button\" aria-label=\"Thursday\">T</button><button class=\"day-dot\" type=\"button\" aria-label=\"Friday\">F</button>",
+    "ai_label": {
+      "purpose": "A day-dot selector: a row of weekday dot buttons (M T W T F) with distinct today and selected (aria-pressed) states.",
+      "use_when": "Use when a person picks or reviews days of the week in a compact control.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-031": {
+    "name": "Send CTA",
+    "html": "<button class=\"send-cta\" type=\"button\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><use href=\"#i-send\"/></svg>Send</button>",
+    "ai_label": {
+      "purpose": "A send call-to-action button (.send-cta) with a send icon and the label 'Send'.",
+      "use_when": "Use as the submit action of a message or composer surface.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BTN-032": {
+    "name": "Mic button",
+    "html": "<button class=\"mic-btn listening\" type=\"button\" aria-label=\"Listening\" aria-pressed=\"true\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-pulse\"/></svg></button>",
+    "ai_label": {
+      "purpose": "A microphone button (.mic-btn.listening, aria-pressed) shown in its listening state with a pulse icon.",
+      "use_when": "Use as the voice-input control wherever dictation or voice commands are offered \u2014 voice-first surfaces reach for this, not a text-only affordance.",
+      "laws": ["Law 2", "Law 3", "Law 4", "Law 11"]
+    }
+  },
+  "NAYA-BTN-033": {
+    "name": "Floating action button",
+    "html": "<button class=\"fab\" type=\"button\" aria-label=\"New\"><span aria-hidden=\"true\">+</span></button>",
+    "ai_label": {
+      "purpose": "A floating action button (.fab, aria-label 'New') carrying a plus sign.",
+      "use_when": "Use for the one primary create action that must float above a scrolling list or feed.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-ICO-001": {
+    "name": "Today \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;transform:rotate(45deg);border-radius:8px;background:radial-gradient(circle at 35% 30%,#e84fff55,#0a0a0e 75%);border:1.5px solid #e84fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #e84fff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l2.2 6.6L21 12l-6.8 2.4L12 21l-2.2-6.6L3 12l6.8-2.4z\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for Today: a 54px diamond tile (rotated square) with a magenta radial glow, a magenta border, and a white four-point star glyph.",
+      "use_when": "Use as the Today room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-002": {
+    "name": "Spaces \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a06bff55,#0a0a0e 75%);border:1.5px solid #a06bff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #a06bff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"4\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"13\" y=\"4\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"4\" y=\"13\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"13\" y=\"13\" width=\"7\" height=\"7\" rx=\"1.5\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for Spaces: a 54px circular tile with a purple radial glow, a purple border, and a white four-squares grid glyph.",
+      "use_when": "Use as the Spaces room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-003": {
+    "name": "Reports \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;border-radius:10px;background:radial-gradient(circle at 35% 30%,#6675ff55,#0a0a0e 75%);border:1.5px solid #6675ff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #6675ff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 19v-6m5 6V5m5 14v-9m4 9H3\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for Reports: a 54px rounded-square tile with an indigo radial glow, an indigo border, and a white bar-chart glyph.",
+      "use_when": "Use as the Reports room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-004": {
+    "name": "Mail \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;transform:rotate(45deg);border-radius:8px;background:radial-gradient(circle at 35% 30%,#3fb8ff55,#0a0a0e 75%);border:1.5px solid #3fb8ff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #3fb8ff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for Mail: a 54px diamond tile (rotated square) with a blue radial glow, a blue border, and a white envelope glyph.",
+      "use_when": "Use as the Mail room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-005": {
+    "name": "Ask \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#40d3bb55,#0a0a0e 75%);border:1.5px solid #40d3bb;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #40d3bb,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M16.5 16.5L21 21\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for Ask: a 54px circular tile with a teal radial glow, a teal border, and a white magnifier glyph.",
+      "use_when": "Use as the Ask Naya room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-006": {
+    "name": "Doors \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;border-radius:10px;background:radial-gradient(circle at 35% 30%,#2fe89e55,#0a0a0e 75%);border:1.5px solid #2fe89e;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #2fe89e,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"1\"/><circle cx=\"15\" cy=\"12\" r=\"1.2\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for Doors: a 54px rounded-square tile with a green radial glow, a green border, and a white door glyph.",
+      "use_when": "Use as the Doors room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-007": {
+    "name": "People \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2fe89e55,#0a0a0e 75%);border:1.5px solid #2fe89e;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #2fe89e,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"9\" cy=\"8\" r=\"3\"/><path d=\"M3 20v-2c0-6 12-6 12 0v2M17 5a3 3 0 0 1 0 6m1 4c2 0 3 2 3 4v1\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for People: a 54px circular tile with a green radial glow, a green border, and a white two-people glyph.",
+      "use_when": "Use as the People room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-008": {
+    "name": "Ledger \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;transform:rotate(45deg);border-radius:8px;background:radial-gradient(circle at 35% 30%,#ffbf3d55,#0a0a0e 75%);border:1.5px solid #ffbf3d;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #ffbf3d,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19v-8m5 8V5m5 14V9m5 10V3\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for Ledger: a 54px diamond tile (rotated square) with a gold radial glow, a gold border, and a white ascending-bars glyph.",
+      "use_when": "Use as the Ledger room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-009": {
+    "name": "Grow \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff9a5a55,#0a0a0e 75%);border:1.5px solid #ff9a5a;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #ff9a5a,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M12 4v16M4 12h16\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for Grow: a 54px circular tile with an orange radial glow, an orange border, and a white circle-and-cross (growth/target) glyph.",
+      "use_when": "Use as the Grow room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-010": {
+    "name": "Guard \u00b7 dual",
+    "html": "<span style=\"width:54px;height:54px;border-radius:10px;background:radial-gradient(circle at 35% 30%,#ff5e6c55,#0a0a0e 75%);border:1.5px solid #ff5e6c;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #ff5e6c,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z\"/></svg></span></span>",
+    "ai_label": {
+      "purpose": "A 'dual' room icon for Guard: a 54px rounded-square tile with a red radial glow, a red border, and a white shield glyph.",
+      "use_when": "Use as the Guard/security room's icon wherever rooms are listed, docked, or picked.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-011": {
+    "name": "Home \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#a06bff\" title=\"Home\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 11l9-8 9 8\"/><path d=\"M5 10v10h5v-6h4v6h5V10\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Home: an anchor (.eco-bb-btn, elev-1) with a purple --eco tone and a white house glyph, titled 'Home'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Home destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-012": {
+    "name": "Pulse \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#3fb8ff\" title=\"Pulse\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 2L4 14h6l-1 8 9-12h-6l1-8z\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Pulse: an anchor (.eco-bb-btn, elev-1) with a blue --eco tone and a white lightning glyph, titled 'Pulse'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Pulse destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-013": {
+    "name": "People \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#2fe89e\" title=\"People\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"3.5\"/><path d=\"M5 20v-1c0-7 14-7 14 0v1\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for People: an anchor (.eco-bb-btn, elev-1) with a green --eco tone and a white person glyph, titled 'People'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the People destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-014": {
+    "name": "Calendar \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#ffbf3d\" title=\"Calendar\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18M8 3v4M16 3v4\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Calendar: an anchor (.eco-bb-btn, elev-1) with a gold --eco tone and a white calendar glyph, titled 'Calendar'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Calendar destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-015": {
+    "name": "Docs \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#e84fff\" title=\"Docs\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 2h9l5 5v15H6z\"/><path d=\"M14 2v6h6\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Docs: an anchor (.eco-bb-btn, elev-1) with a magenta --eco tone and a white document glyph, titled 'Docs'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Docs destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-016": {
+    "name": "Vision \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#6675ff\" title=\"Vision\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Vision: an anchor (.eco-bb-btn, elev-1) with an indigo --eco tone and a white eye glyph, titled 'Vision'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Vision destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-017": {
+    "name": "Saved \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#40d3bb\" title=\"Saved\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 3h12v18l-6-4-6 4z\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Saved: an anchor (.eco-bb-btn, elev-1) with a teal --eco tone and a white bookmark glyph, titled 'Saved'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Saved destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-018": {
+    "name": "Explore \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#ff9a5a\" title=\"Explore\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M15 9l-2 5-4 1 2-5z\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Explore: an anchor (.eco-bb-btn, elev-1) with an orange --eco tone and a white compass glyph, titled 'Explore'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Explore destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-019": {
+    "name": "Favorite \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#ff5e6c\" title=\"Favorite\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Favorite: an anchor (.eco-bb-btn, elev-1) with a red --eco tone and a white four-point star glyph, titled 'Favorite'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Favorite destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-020": {
+    "name": "Reports \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#b8ee57\" title=\"Reports\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19v-8m5 8V5m5 14V9m5 10V3\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Reports: an anchor (.eco-bb-btn, elev-1) with a lime --eco tone and a white bar-chart glyph, titled 'Reports'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Reports destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-021": {
+    "name": "Love \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#e84fff\" title=\"Love\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21C7 16.5 2 12.8 2 8.5 2 5.5 4.5 3 7.5 3c1.8 0 3.4.9 4.5 2.3C13.1 3.9 14.7 3 16.5 3 19.5 3 22 5.5 22 8.5c0 4.3-5 8-10 12.5z\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Love: an anchor (.eco-bb-btn, elev-1) with a magenta --eco tone and a white heart glyph, titled 'Love'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Love destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-022": {
+    "name": "Share \u00b7 dock",
+    "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#a06bff\" title=\"Share\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"12\" r=\"2.5\"/><circle cx=\"18\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6\"/></svg></a>",
+    "ai_label": {
+      "purpose": "A dock icon-button for Share: an anchor (.eco-bb-btn, elev-1) with a purple --eco tone and a white share-nodes glyph, titled 'Share'.",
+      "use_when": "Use in the eco bottom bar or any dock row as the Share destination.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ICO-023": {
+    "name": "Icon socket",
+    "html": "<span class=\"ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 11l9-8 9 8\"/></svg></span>",
+    "ai_label": {
+      "purpose": "An icon socket: a bare .ico span holding one currentColor SVG (a home glyph in the stored example) that inherits its color from context.",
+      "use_when": "Use as the generic inline icon container when an SVG must take the surrounding text or section color.",
+      "laws": ["Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ORB-001": {
+    "name": "Orb \u00b7 Magenta",
+    "html": "<span class=\"orb\" style=\"--oc:#e84fff;--oc-rgb:e8,4f,ff\"></span>",
+    "ai_label": {
+      "purpose": "A plain orb in magenta: an .orb span carrying its color in --oc (#e84fff) \u2014 the base orb with no glyph or size modifier.",
+      "use_when": "Use as a magenta presence orb or focal dot where the plain orb grammar fits.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ORB-002": {
+    "name": "Orb \u00b7 Purple",
+    "html": "<span class=\"orb\" style=\"--oc:#a06bff;--oc-rgb:a0,6b,ff\"></span>",
+    "ai_label": {
+      "purpose": "A plain orb in purple: an .orb span carrying its color in --oc (#a06bff) \u2014 the base orb in the system's soul color.",
+      "use_when": "Use as a purple presence orb or focal dot where the plain orb grammar fits.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ORB-003": {
+    "name": "Orb \u00b7 Blue",
+    "html": "<span class=\"orb\" style=\"--oc:#3fb8ff;--oc-rgb:3f,b8,ff\"></span>",
+    "ai_label": {
+      "purpose": "A plain orb in blue: an .orb span carrying its color in --oc (#3fb8ff) \u2014 the base orb with no glyph or size modifier.",
+      "use_when": "Use as a blue presence orb or focal dot where the plain orb grammar fits.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ORB-004": {
+    "name": "Orb \u00b7 Green",
+    "html": "<span class=\"orb\" style=\"--oc:#2fe89e;--oc-rgb:2f,e8,9e\"></span>",
+    "ai_label": {
+      "purpose": "A plain orb in green: an .orb span carrying its color in --oc (#2fe89e) \u2014 the base orb with no glyph or size modifier.",
+      "use_when": "Use as a green presence orb or focal dot where the plain orb grammar fits.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ORB-005": {
+    "name": "Orb \u00b7 Gold",
+    "html": "<span class=\"orb\" style=\"--oc:#ffbf3d;--oc-rgb:ff,bf,3d\"></span>",
+    "ai_label": {
+      "purpose": "A plain orb in gold: an .orb span carrying its color in --oc (#ffbf3d) \u2014 the base orb with no glyph or size modifier.",
+      "use_when": "Use as a gold presence orb or focal dot where the plain orb grammar fits.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ORB-006": {
+    "name": "Truth orb \u00b7 Verified",
+    "html": "<span class=\"orb orb-sm\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span>",
+    "ai_label": {
+      "purpose": "A small truth orb for Verified: an .orb.orb-sm in green (#2fe89e) \u2014 the truth-state orb whose green means a claim is verified.",
+      "use_when": "Use beside a claim or item whose state is verified \u2014 never as decoration; the color is the verdict.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ORB-007": {
+    "name": "Truth orb \u00b7 Demonstration",
+    "html": "<span class=\"orb orb-sm\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\"></span>",
+    "ai_label": {
+      "purpose": "A small truth orb for Demonstration: an .orb.orb-sm in gold (#ffbf3d) \u2014 the truth-state orb whose gold means a claim is demonstrated, not yet verified.",
+      "use_when": "Use beside a claim or item that has been demonstrated but not independently verified.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ORB-008": {
+    "name": "Truth orb \u00b7 Claim",
+    "html": "<span class=\"orb orb-sm\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\"></span>",
+    "ai_label": {
+      "purpose": "A small truth orb for Claim: an .orb.orb-sm in blue (#3fb8ff) \u2014 the truth-state orb whose blue means a statement is a claim awaiting demonstration.",
+      "use_when": "Use beside a claim or item that is asserted but not yet demonstrated or verified.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-JWL-001": {
+    "name": "Gem bullet \u00b7 Magenta",
+    "html": "<span class=\"gem-bullet\" style=\"--tone:#e84fff\"></span>",
+    "ai_label": {
+      "purpose": "A gem bullet in magenta: a small faceted .gem-bullet span carrying its color in --tone (#e84fff).",
+      "use_when": "Use as the bullet or marker jewel of a list or line that sits in the magenta spectrum position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-002": {
+    "name": "Gem bullet \u00b7 Purple",
+    "html": "<span class=\"gem-bullet\" style=\"--tone:#a06bff\"></span>",
+    "ai_label": {
+      "purpose": "A gem bullet in purple: a small faceted .gem-bullet span carrying its color in --tone (#a06bff).",
+      "use_when": "Use as the bullet or marker jewel of a list or line that sits in the purple spectrum position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-003": {
+    "name": "Gem bullet \u00b7 Blue",
+    "html": "<span class=\"gem-bullet\" style=\"--tone:#3fb8ff\"></span>",
+    "ai_label": {
+      "purpose": "A gem bullet in blue: a small faceted .gem-bullet span carrying its color in --tone (#3fb8ff).",
+      "use_when": "Use as the bullet or marker jewel of a list or line that sits in the blue spectrum position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-004": {
+    "name": "Gem bullet \u00b7 Green",
+    "html": "<span class=\"gem-bullet\" style=\"--tone:#2fe89e\"></span>",
+    "ai_label": {
+      "purpose": "A gem bullet in green: a small faceted .gem-bullet span carrying its color in --tone (#2fe89e).",
+      "use_when": "Use as the bullet or marker jewel of a list or line that sits in the green spectrum position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-005": {
+    "name": "Gem bullet \u00b7 Gold",
+    "html": "<span class=\"gem-bullet\" style=\"--tone:#ffbf3d\"></span>",
+    "ai_label": {
+      "purpose": "A gem bullet in gold: a small faceted .gem-bullet span carrying its color in --tone (#ffbf3d).",
+      "use_when": "Use as the bullet or marker jewel of a list or line that sits in the gold spectrum position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-006": {
+    "name": "Mini-orb \u00b7 Magenta",
+    "html": "<span class=\"mini-orb\" style=\"--c:#e84fff\"></span>",
+    "ai_label": {
+      "purpose": "A mini-orb in magenta: a small glowing .mini-orb span carrying its color in --c (#e84fff).",
+      "use_when": "Use as a compact colored presence dot or accent where a full orb would be too large, in the magenta position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-007": {
+    "name": "Mini-orb \u00b7 Purple",
+    "html": "<span class=\"mini-orb\" style=\"--c:#a06bff\"></span>",
+    "ai_label": {
+      "purpose": "A mini-orb in purple: a small glowing .mini-orb span carrying its color in --c (#a06bff).",
+      "use_when": "Use as a compact colored presence dot or accent where a full orb would be too large, in the purple position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-008": {
+    "name": "Mini-orb \u00b7 Blue",
+    "html": "<span class=\"mini-orb\" style=\"--c:#3fb8ff\"></span>",
+    "ai_label": {
+      "purpose": "A mini-orb in blue: a small glowing .mini-orb span carrying its color in --c (#3fb8ff).",
+      "use_when": "Use as a compact colored presence dot or accent where a full orb would be too large, in the blue position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-009": {
+    "name": "Mini-orb \u00b7 Green",
+    "html": "<span class=\"mini-orb\" style=\"--c:#2fe89e\"></span>",
+    "ai_label": {
+      "purpose": "A mini-orb in green: a small glowing .mini-orb span carrying its color in --c (#2fe89e).",
+      "use_when": "Use as a compact colored presence dot or accent where a full orb would be too large, in the green position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-010": {
+    "name": "Mini-orb \u00b7 Gold",
+    "html": "<span class=\"mini-orb\" style=\"--c:#ffbf3d\"></span>",
+    "ai_label": {
+      "purpose": "A mini-orb in gold: a small glowing .mini-orb span carrying its color in --c (#ffbf3d).",
+      "use_when": "Use as a compact colored presence dot or accent where a full orb would be too large, in the gold position.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-011": {
+    "name": "Glyph orb \u00b7 Spark",
+    "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#e84fff;--oc-rgb:232,79,255\">\u2726</span>",
+    "ai_label": {
+      "purpose": "A glyph orb for Spark: a circular .orb--glyph medallion in magenta holding the spark glyph.",
+      "use_when": "Use when a small circular medallion must carry the spark/idea meaning in magenta.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-JWL-012": {
+    "name": "Glyph orb \u00b7 Love",
+    "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#3fb8ff;--oc-rgb:63,184,255\">\u2665</span>",
+    "ai_label": {
+      "purpose": "A glyph orb for Love: a circular .orb--glyph medallion in blue holding the heart glyph.",
+      "use_when": "Use when a small circular medallion must carry the love/care meaning in blue.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-JWL-013": {
+    "name": "Glyph orb \u00b7 Play",
+    "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\">\u25b6</span>",
+    "ai_label": {
+      "purpose": "A glyph orb for Play: a circular .orb--glyph medallion in green holding the play-triangle glyph.",
+      "use_when": "Use when a small circular medallion must carry the play/media meaning in green.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-JWL-014": {
+    "name": "Glyph orb \u00b7 Focus",
+    "html": "<span class=\"orb orb--glyph orb--icon\" style=\"--oc:#ffbf3d;--oc-rgb:255,191,61\">\u25c8</span>",
+    "ai_label": {
+      "purpose": "A glyph orb for Focus: a circular .orb--glyph medallion in gold holding the focus-diamond glyph.",
+      "use_when": "Use when a small circular medallion must carry the focus/attention meaning in gold.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-JWL-015": {
+    "name": "Black orb",
+    "html": "<span class=\"orb orb--black\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span>",
+    "ai_label": {
+      "purpose": "A black orb: an .orb--black medallion \u2014 an obsidian sphere carrying a green accent in --oc.",
+      "use_when": "Use when an orb must sit in the obsidian register (dark, ceremonial) while keeping a green spectrum accent.",
+      "laws": ["Law 2", "Law 5", "Law 13"]
+    }
+  },
+  "NAYA-JWL-016": {
+    "name": "Hero orb",
+    "html": "<span class=\"orb orb--hero\" style=\"--oc:#a06bff;--oc-rgb:160,107,255\"></span>",
+    "ai_label": {
+      "purpose": "A hero orb: an .orb--hero medallion in purple, the largest orb treatment in the jewel family.",
+      "use_when": "Use as the orb centerpiece of a hero or focal surface, in the system's purple soul color.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-JWL-017": {
+    "name": "Twin orbit orb",
+    "html": "<span class=\"orb orb--twin\" style=\"--oc:#2fe89e;--oc-rgb:47,232,158\"></span>",
+    "ai_label": {
+      "purpose": "A twin orbit orb: an .orb--twin medallion in green, built as two orbiting elements rather than one sphere.",
+      "use_when": "Use when the orb must express a pair, a bond, or two things in orbit rather than a single presence.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-JWL-018": {
+    "name": "LED",
+    "html": "<span class=\"led\"></span>",
+    "ai_label": {
+      "purpose": "An LED: a bare .led span \u2014 the smallest lit indicator dot in the store.",
+      "use_when": "Use as a minimal on/alive indicator where even a mini-orb would be too much presence.",
+      "laws": ["Law 5"]
+    }
+  },
+  "NAYA-JWL-019": {
+    "name": "Corner jewel",
+    "html": "<div style=\"position:relative;width:120px;height:80px\"><span class=\"corner-jewel\" style=\"top:6px;left:6px;--tone:#a06bff\"></span><span class=\"corner-jewel\" style=\"top:6px;right:6px;--tone:#e84fff\"></span><span class=\"corner-jewel\" style=\"bottom:6px;left:6px;--tone:#3fb8ff\"></span><span class=\"corner-jewel\" style=\"bottom:6px;right:6px;--tone:#2fe89e\"></span>",
+    "ai_label": {
+      "purpose": "A corner-jewel set: a demo frame carrying four .corner-jewel stones, one at each corner, in purple, magenta, blue, and green.",
+      "use_when": "Use to jewel the four corners of a ceremonial or framed surface; harvest the corner stones, not the demo frame.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-JWL-020": {
+    "name": "Meaning spheres",
+    "html": "<div style=\"display:flex;gap:10px;justify-content:center;flex-wrap:nowrap\"><div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:#ffd45a;--rgb:232,79,255\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-spark\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Priority</p></div><div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:#40d3bb;--rgb:64,211,187\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-pulse\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Presence</p></div><div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:#3fb8ff;--rgb:63,184,255\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-book\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Understanding</p></div><div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:#2fe89e;--rgb:47,232,158\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-check\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Verified</p></div><div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:#ffbf3d;--rgb:232,199,102\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-star\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Value</p>",
+    "ai_label": {
+      "purpose": "A meaning-spheres row: five labeled spheres (Priority, Presence, Understanding, Verified, Value), each a colored .sphere holding an icon above a caption.",
+      "use_when": "Use when a set of named values or meanings must be presented as a labeled sphere constellation.",
+      "laws": ["Law 1", "Law 2", "Law 5", "Law 6"]
+    }
+  },
+  "NAYA-JWL-021": {
+    "name": "Identity icons",
+    "html": "<span class=\"naya-avatar-stack\"><span class=\"naya-avatar\" style=\"--av-hue:#a06bff\">S</span><span class=\"naya-avatar\" style=\"--av-hue:#6675ff\">N2</span><span class=\"naya-avatar\" style=\"--av-hue:#2fe89e\">N4</span><span class=\"naya-avatar\" style=\"--av-hue:#e8c766\">+9</span></span>",
+    "ai_label": {
+      "purpose": "An identity icon stack: overlapping .naya-avatar circles with initials (S, N2, N4) and a '+9' overflow avatar, each in its own hue.",
+      "use_when": "Use when a surface must show who is present or involved, collapsing overflow into a count avatar.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-BRD-001": {
+    "name": "Feature board",
+    "html": "<div class=\"board-h\" style=\"--bc:#40d3bb\"><div class=\"bh-icon\">\u25c6</div><div class=\"bh-text\"><h3>Feature board</h3><p>one color, one world</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+    "ai_label": {
+      "purpose": "The Reference Board: a board header bar (.board-h) with a diamond icon, title, tagline, and an Open button, carrying its section color in the --bc variable (teal #40d3bb in the stored example).",
+      "use_when": "Use when a board or section needs its standard head \u2014 this is the crowned Reference Board, the header every other board is judged against.",
+      "laws": ["Law 1", "Law 2", "Law 5", "Law 10"]
+    },
+    "reference": true
+  },
+  "NAYA-BRD-012": {
+    "name": "Self-scorecard",
+    "html": "<div class=\"board-h\" style=\"--bc:#a06bff\"><div class=\"bh-icon\">\u2605</div><div class=\"bh-text\"><h3>Self-scorecard</h3><p>score yourself</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+    "ai_label": {
+      "purpose": "A board header bar (.board-h, purple --bc) with a star icon, the title 'Self-scorecard', the tagline 'score yourself', and an Open button.",
+      "use_when": "Use when heading a board where a person scores their own work or progress.",
+      "laws": ["Law 1", "Law 2", "Law 5", "Law 16"]
+    }
+  },
+  "NAYA-BRD-013": {
+    "name": "Ship-gate checklist",
+    "html": "<div class=\"board-h\" style=\"--bc:#6675ff\"><div class=\"bh-icon\">\u2713</div><div class=\"bh-text\"><h3>Ship-gate checklist</h3><p>pre-ship ritual</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+    "ai_label": {
+      "purpose": "A board header bar (.board-h, indigo --bc) with a check icon, the title 'Ship-gate checklist', the tagline 'pre-ship ritual', and an Open button.",
+      "use_when": "Use when heading a pre-ship checklist or release-gate board.",
+      "laws": ["Law 1", "Law 2", "Law 5", "Law 16"]
+    }
+  },
+  "NAYA-BRD-018": {
+    "name": "Reading board",
+    "html": "<div class=\"board-h\" style=\"--bc:#ff5e6c\"><div class=\"bh-icon\">\u25c9</div><div class=\"bh-text\"><h3>Reading board</h3><p>reading experience</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+    "ai_label": {
+      "purpose": "A board header bar (.board-h, red --bc) with a circle icon, the title 'Reading board', the tagline 'reading experience', and an Open button.",
+      "use_when": "Use when heading a board whose content is a reading surface.",
+      "laws": ["Law 1", "Law 2", "Law 5", "Law 6"]
+    }
+  },
+  "NAYA-BRD-019": {
+    "name": "Orbit board",
+    "html": "<div class=\"board-h\" style=\"--bc:#ff9a5a\"><div class=\"bh-icon\">\u25ce</div><div class=\"bh-text\"><h3>Orbit board</h3><p>orbital layout</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+    "ai_label": {
+      "purpose": "A board header bar (.board-h, orange --bc) with a ring icon, the title 'Orbit board', the tagline 'orbital layout', and an Open button.",
+      "use_when": "Use when heading a board that presents content in an orbital layout.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-BRD-021": {
+    "name": "Faceted door",
+    "html": "<div class=\"board-h\" style=\"--bc:#a06bff\"><div class=\"bh-icon\">\u2b22</div><div class=\"bh-text\"><h3>Faceted door</h3><p>entry point</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+    "ai_label": {
+      "purpose": "A board header bar (.board-h, purple --bc) with a hexagon icon, the title 'Faceted door', the tagline 'entry point', and an Open button.",
+      "use_when": "Use when a board acts as a doorway into another room or app and needs a headed entry surface.",
+      "laws": ["Law 1", "Law 2", "Law 5", "Law 11"]
+    }
+  },
+  "NAYA-BRD-022": {
+    "name": "Editorial report card",
+    "html": "<div class=\"board-h\" style=\"--bc:#3fb8ff\"><div class=\"bh-icon\">\u25a4</div><div class=\"bh-text\"><h3>Editorial card</h3><p>editorial layout</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+    "ai_label": {
+      "purpose": "A board header bar (.board-h, blue --bc) with a card icon; the visible heading reads 'Editorial card' with the tagline 'editorial layout', plus an Open button.",
+      "use_when": "Use when heading an editorial or report-style card board.",
+      "laws": ["Law 1", "Law 2", "Law 5", "Law 6"]
+    }
+  },
+  "NAYA-BRD-024": {
+    "name": "Page shell",
+    "html": "<div class=\"board-h\" style=\"--bc:#2fe89e\"><div class=\"bh-icon\">\u25a6</div><div class=\"bh-text\"><h3>Page shell</h3><p>page container</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+    "ai_label": {
+      "purpose": "A board header bar (.board-h, green --bc) with a grid icon, the title 'Page shell', the tagline 'page container', and an Open button.",
+      "use_when": "Use when heading the shell board that frames a whole page's content.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-BRD-025": {
+    "name": "Orbital five",
+    "html": "<div class=\"orbital\" style=\"--bc:#e84fff\">\n          <div class=\"orbital-ring\" style=\"width:200px;height:200px\"></div>\n          <div class=\"orbital-center\" style=\"--bc:#e84fff\">\u2726</div>\n          <div class=\"orbital-sat\" style=\"--sc:#a06bff;left:calc(50.0% - 28px);top:calc(14.0% - 28px)\">\u25c6</div>\n<div class=\"orbital-sat\" style=\"--sc:#6675ff;left:calc(84.2% - 28px);top:calc(38.9% - 28px)\">\u2605</div>\n<div class=\"orbital-sat\" style=\"--sc:#3fb8ff;left:calc(71.2% - 28px);top:calc(79.1% - 28px)\">\u2713</div>\n<div class=\"orbital-sat\" style=\"--sc:#2fe89e;left:calc(28.8% - 28px);top:calc(79.1% - 28px)\">\u25c9</div>\n<div class=\"orbital-sat\" style=\"--sc:#40d3bb;left:calc(15.8% - 28px);top:calc(38.9% - 28px)\">\u25ce</div>\n        </div>",
+    "ai_label": {
+      "purpose": "An orbital board: a 200px ring with a magenta center medallion and five satellite circles, each burning in its own spectrum color, set at computed positions around the ring.",
+      "use_when": "Use when five related items should orbit one central subject instead of listing in a row.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-BRD-026": {
+    "name": "Orbital seven",
+    "html": "<div class=\"orbital\" style=\"--bc:#a06bff\">\n          <div class=\"orbital-ring\" style=\"width:200px;height:200px\"></div>\n          <div class=\"orbital-center\" style=\"--bc:#a06bff\">\u25c9</div>\n          <div class=\"orbital-sat\" style=\"--sc:#a06bff;left:calc(50.0% - 28px);top:calc(14.0% - 28px)\">\u25c6</div>\n<div class=\"orbital-sat\" style=\"--sc:#6675ff;left:calc(78.1% - 28px);top:calc(27.6% - 28px)\">\u2605</div>\n<div class=\"orbital-sat\" style=\"--sc:#3fb8ff;left:calc(85.1% - 28px);top:calc(58.0% - 28px)\">\u2713</div>\n<div class=\"orbital-sat\" style=\"--sc:#2fe89e;left:calc(65.6% - 28px);top:calc(82.4% - 28px)\">\u25c9</div>\n<div class=\"orbital-sat\" style=\"--sc:#40d3bb;left:calc(34.4% - 28px);top:calc(82.4% - 28px)\">\u25ce</div>\n<div class=\"orbital-sat\" style=\"--sc:#ffd45a;left:calc(14.9% - 28px);top:calc(58.0% - 28px)\">\u2b22</div>\n<div class=\"orbital-sat\" style=\"--sc:#ff9a5a;left:calc(21.9% - 28px);top:calc(27.6% - 28px)\">\u25a4</div>\n        </div>",
+    "ai_label": {
+      "purpose": "An orbital board: a 200px ring with a purple center medallion and seven satellite circles in successive spectrum colors at computed positions.",
+      "use_when": "Use when seven related items should orbit one central subject.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-BRD-027": {
+    "name": "Orbital nine",
+    "html": "<div class=\"orbital\" style=\"--bc:#3fb8ff\">\n          <div class=\"orbital-ring\" style=\"width:200px;height:200px\"></div>\n          <div class=\"orbital-center\" style=\"--bc:#3fb8ff\">\u25c6</div>\n          <div class=\"orbital-sat\" style=\"--sc:#a06bff;left:calc(50.0% - 28px);top:calc(14.0% - 28px)\">\u25c6</div>\n<div class=\"orbital-sat\" style=\"--sc:#6675ff;left:calc(73.1% - 28px);top:calc(22.4% - 28px)\">\u2605</div>\n<div class=\"orbital-sat\" style=\"--sc:#3fb8ff;left:calc(85.5% - 28px);top:calc(43.7% - 28px)\">\u2713</div>\n<div class=\"orbital-sat\" style=\"--sc:#2fe89e;left:calc(81.2% - 28px);top:calc(68.0% - 28px)\">\u25c9</div>\n<div class=\"orbital-sat\" style=\"--sc:#40d3bb;left:calc(62.3% - 28px);top:calc(83.8% - 28px)\">\u25ce</div>\n<div class=\"orbital-sat\" style=\"--sc:#ffd45a;left:calc(37.7% - 28px);top:calc(83.8% - 28px)\">\u2b22</div>\n<div class=\"orbital-sat\" style=\"--sc:#ff9a5a;left:calc(18.8% - 28px);top:calc(68.0% - 28px)\">\u25a4</div>\n<div class=\"orbital-sat\" style=\"--sc:#ff5e6c;left:calc(14.5% - 28px);top:calc(43.7% - 28px)\">\u25a6</div>\n<div class=\"orbital-sat\" style=\"--sc:#e84fff;left:calc(26.9% - 28px);top:calc(22.4% - 28px)\">\u2726</div>\n        </div>",
+    "ai_label": {
+      "purpose": "An orbital board: a 200px ring with a blue center medallion and nine satellite circles in successive spectrum colors at computed positions.",
+      "use_when": "Use when nine related items should orbit one central subject \u2014 the largest of the orbital boards.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-BRD-028": {
+    "name": "Circle trio",
+    "html": "<div class=\"circle-row\"><div class=\"circle-board\" style=\"--bc:#a06bff\">\u25c6</div>\n<div class=\"circle-board\" style=\"--bc:#6675ff\">\u2605</div>\n<div class=\"circle-board\" style=\"--bc:#3fb8ff\">\u2713",
+    "ai_label": {
+      "purpose": "A row of three circular boards (.circle-board), colored purple, indigo, and blue, each holding a single glyph.",
+      "use_when": "Use when exactly three peer items deserve equal circular medallions in one row.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-BRD-029": {
+    "name": "Circle five",
+    "html": "<div class=\"circle-row\"><div class=\"circle-board\" style=\"--bc:#a06bff\">\u25c6</div>\n<div class=\"circle-board\" style=\"--bc:#6675ff\">\u2605</div>\n<div class=\"circle-board\" style=\"--bc:#3fb8ff\">\u2713</div>\n<div class=\"circle-board\" style=\"--bc:#2fe89e\">\u25c9</div>\n<div class=\"circle-board\" style=\"--bc:#40d3bb\">\u25ce",
+    "ai_label": {
+      "purpose": "A row of five circular boards (.circle-board) walking purple, indigo, blue, green, and teal, each holding a single glyph.",
+      "use_when": "Use when five peer items deserve equal circular medallions in one row.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-BRD-030": {
+    "name": "Feature circle",
+    "html": "<div class=\"stat-grid\">\n<div class=\"stat-card\" style=\"--bc:#a06bff\"><div class=\"stat-value\">12.4K</div><div class=\"stat-label\">Active users</div><div class=\"stat-trend up\">\u2191 18%",
+    "ai_label": {
+      "purpose": "Despite its index name 'Feature circle', the stored markup is a stat grid: .stat-card tiles showing a big value, a label, and a trend (first tile: 12.4K active users, up 18%).",
+      "use_when": "Use when a board must show several headline metrics with trends at a glance; do not reach for it expecting a circular feature graphic.",
+      "laws": ["Law 2", "Law 5", "Law 6"]
+    }
+  },
+  "NAYA-BRD-034": {
+    "name": "Bar chart",
+    "html": "<div class=\"bar-chart\"><div class=\"bar\" style=\"--bc:#a06bff;height:60px\"></div><div class=\"bar\" style=\"--bc:#6675ff;height:85px\"></div><div class=\"bar\" style=\"--bc:#3fb8ff;height:45px\"></div><div class=\"bar\" style=\"--bc:#2fe89e;height:100px\"></div><div class=\"bar\" style=\"--bc:#40d3bb;height:70px\"></div><div class=\"bar\" style=\"--bc:#ffd45a;height:90px\"></div><div class=\"bar\" style=\"--bc:#ff9a5a;height:55px\">",
+    "ai_label": {
+      "purpose": "A bar chart board: seven vertical bars at varied heights, each colored with the next spectrum color.",
+      "use_when": "Use when comparing a handful of quantities visually inside a board, in spectrum order.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-BRD-035": {
+    "name": "Donut chart",
+    "html": "<div class=\"donut\" style=\"background: conic-gradient(#a06bff 0% 35%, #3fb8ff 35% 60%, #2fe89e 60% 80%, #ffd45a 80% 100%);\"><div style=\"position:absolute;inset:18px;background:#0a0a0f;border-radius:50%;display:flex;align-items:center;justify-content:center;\"><div class=\"donut-center\">68%",
+    "ai_label": {
+      "purpose": "A donut chart board: a conic-gradient ring segmented purple/blue/green/gold over an obsidian center that reads out the headline percentage (68%).",
+      "use_when": "Use when one proportion or completion figure dominates and its parts need color shares around it.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-BRD-036": {
+    "name": "Data table",
+    "html": "<div style=\"padding:12px\"><table class=\"data-table\">\n<tr><th>Name</th><th>Status</th><th>Score</th></tr>\n<tr><td>Alpha</td><td style=\"color:#2fe89e\">\u25cf Active</td><td>9.5</td></tr>\n<tr><td>Beta</td><td style=\"color:#2fe89e\">\u25cf Active</td><td>9.2</td></tr>\n<tr><td>Gamma</td><td style=\"color:#ffd45a\">\u25cf Pending</td><td>8.7</td></tr>\n<tr><td>Delta</td><td style=\"color:#ff5e6c\">\u25cf Paused</td><td>7.9</td></tr>\n</table>",
+    "ai_label": {
+      "purpose": "A data table board: a .data-table with Name / Status / Score columns, status shown as colored dots (green active, gold pending, red paused), and numeric scores.",
+      "use_when": "Use when rows of named items must be compared by status and score in a board.",
+      "laws": ["Law 5", "Law 6", "Law 16"]
+    }
+  },
+  "NAYA-BRD-015": {
+    "name": "Media player",
+    "html": "<div class=\"media-player\" style=\"flex-direction:column;align-items:center;text-align:center;gap:12px\"><button class=\"naya-btn icon portal\" type=\"button\" aria-label=\"Play\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-play\"/></svg></button><div class=\"media-copy\"><strong>Intelligence in Naya\u2019s voice</strong><small>02:14 \u00b7 the library, read aloud</small><div class=\"timeline\"><span style=\"width:32%\"></span>",
+    "ai_label": {
+      "purpose": "A media player board: a round portal play button, the title 'Intelligence in Naya's voice', a duration/source line, and a progress timeline filled to 32%.",
+      "use_when": "Use when a piece of audio (a note or briefing read aloud) needs a play surface with progress inside a board.",
+      "laws": ["Law 2", "Law 5", "Law 11"]
+    }
+  },
+  "NAYA-BRD-023": {
+    "name": "Onboarding steps",
+    "html": "<div><div class=\"step-rail\" aria-label=\"Four-step design example\"><span class=\"step-dot\" data-step=\"0\" aria-current=\"step\">1</span><span class=\"step-line\"></span><span class=\"step-dot\" data-step=\"1\">2</span><span class=\"step-line\"></span><span class=\"step-dot\" data-step=\"2\">3</span><span class=\"step-line\"></span><span class=\"step-dot\" data-step=\"3\">4</span></div><div class=\"step-message\" aria-live=\"polite\">01 \u00b7 Meet Naya. Understand what this intelligence is for.",
+    "ai_label": {
+      "purpose": "An onboarding steps board: a four-dot step rail (step 1 marked aria-current) above a live step message that narrates the current step ('01 \u00b7 Meet Naya\u2026').",
+      "use_when": "Use when a flow has a short sequence of steps and the person must always see where they are in it.",
+      "laws": ["Law 2", "Law 11"]
+    }
+  },
+  "NAYA-BRD-037": {
+    "name": "Calendar",
+    "html": "<div class=\"cal-grid\" style=\"--bc:#a06bff\"><div class=\"cal-day header\">S</div><div class=\"cal-day header\">M</div><div class=\"cal-day header\">T</div><div class=\"cal-day header\">W</div><div class=\"cal-day header\">T</div><div class=\"cal-day header\">F</div><div class=\"cal-day header\">S</div><div class=\"cal-day \" style=\"--bc:#a06bff\">1</div><div class=\"cal-day \" style=\"--bc:#a06bff\">2</div><div class=\"cal-day \" style=\"--bc:#a06bff\">3</div><div class=\"cal-day \" style=\"--bc:#a06bff\">4</div><div class=\"cal-day \" style=\"--bc:#a06bff\">5</div><div class=\"cal-day \" style=\"--bc:#a06bff\">6</div><div class=\"cal-day \" style=\"--bc:#a06bff\">7</div><div class=\"cal-day \" style=\"--bc:#a06bff\">8</div><div class=\"cal-day \" style=\"--bc:#a06bff\">9</div><div class=\"cal-day \" style=\"--bc:#a06bff\">10</div><div class=\"cal-day \" style=\"--bc:#a06bff\">11</div><div class=\"cal-day \" style=\"--bc:#a06bff\">12</div><div class=\"cal-day \" style=\"--bc:#a06bff\">13</div><div class=\"cal-day \" style=\"--bc:#a06bff\">14</div><div class=\"cal-day \" style=\"--bc:#a06bff\">15</div><div class=\"cal-day \" style=\"--bc:#a06bff\">16</div><div class=\"cal-day \" style=\"--bc:#a06bff\">17</div><div class=\"cal-day today\" style=\"--bc:#a06bff\">18</div><div class=\"cal-day \" style=\"--bc:#a06bff\">19</div><div class=\"cal-day active\" style=\"--bc:#a06bff\">20</div><div class=\"cal-day \" style=\"--bc:#a06bff\">21</div><div class=\"cal-day \" style=\"--bc:#a06bff\">22</div><div class=\"cal-day \" style=\"--bc:#a06bff\">23</div><div class=\"cal-day \" style=\"--bc:#a06bff\">24</div><div class=\"cal-day active\" style=\"--bc:#a06bff\">25</div><div class=\"cal-day \" style=\"--bc:#a06bff\">26</div><div class=\"cal-day \" style=\"--bc:#a06bff\">27</div><div class=\"cal-day \" style=\"--bc:#a06bff\">28</div><div class=\"cal-day \" style=\"--bc:#a06bff\">29</div><div class=\"cal-day \" style=\"--bc:#a06bff\">30</div><div class=\"cal-day \" style=\"--bc:#a06bff\">31",
+    "ai_label": {
+      "purpose": "A calendar board: a month grid of .cal-day cells in purple with weekday headers, a marked 'today' cell, and 'active' day states.",
+      "use_when": "Use when a month view with today and event-day states is needed inside a board.",
+      "laws": ["Law 1", "Law 2", "Law 11"]
+    }
+  },
+  "NAYA-BRD-038": {
+    "name": "Time slots",
+    "html": "<div class=\"slot-row\" style=\"--bc:#3fb8ff\"><div class=\"slot\" style=\"--bc:#3fb8ff\">9:00</div><div class=\"slot\" style=\"--bc:#3fb8ff\">9:30</div><div class=\"slot\" style=\"--bc:#3fb8ff\">10:00</div><div class=\"slot on\" style=\"--bc:#3fb8ff\">10:30</div><div class=\"slot\" style=\"--bc:#3fb8ff\">11:00</div><div class=\"slot\" style=\"--bc:#3fb8ff\">11:30</div><div class=\"slot\" style=\"--bc:#3fb8ff\">2:00</div><div class=\"slot\" style=\"--bc:#3fb8ff\">2:30",
+    "ai_label": {
+      "purpose": "A time-slots board: a row of blue time chips (9:00, 9:30, 10:00\u2026) with one slot in the selected 'on' state (10:30).",
+      "use_when": "Use when a person picks one appointment time from a set of offered slots.",
+      "laws": ["Law 1", "Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-BRD-039": {
+    "name": "Message list",
+    "html": "<div><div class=\"msg-row\"><div class=\"msg-avatar\" style=\"--bc:#a06bff\">\u25c6</div><div class=\"msg-body\"><div class=\"msg-from\">Naya</div><div class=\"msg-subject\">Your weekly report is ready",
+    "ai_label": {
+      "purpose": "A message list board: rows of .msg-row, each with a colored avatar, sender name, and subject line (first row: Naya, 'Your weekly report is ready').",
+      "use_when": "Use when listing messages or notifications as scannable rows inside a board.",
+      "laws": ["Law 2", "Law 5", "Law 6"]
+    }
+  },
+  "NAYA-BRD-040": {
+    "name": "Timeline",
+    "html": "<div class=\"timeline\" style=\"--bc:#a06bff\"><div class=\"tl-item\"><div class=\"tl-dot\" style=\"--bc:#a06bff\"></div><div><div class=\"tl-content\">Shipped v35</div><div class=\"tl-time\">2h ago",
+    "ai_label": {
+      "purpose": "A timeline board: vertical .tl-item entries, each with a spectrum dot, content text ('Shipped v35'), and a relative time ('2h ago').",
+      "use_when": "Use when showing a chronological feed of events or history inside a board.",
+      "laws": ["Law 1", "Law 5", "Law 6"]
+    }
+  },
+  "NAYA-BRD-041": {
+    "name": "Product card",
+    "html": "<div class=\"product-card\" style=\"--bc:#ffd45a\"><div class=\"product-img\" style=\"--bc:#ffd45a\">\u25c6</div><div class=\"product-title\">Naya Power</div><div class=\"product-price\" style=\"--bc:#ffd45a\">$29/mo</div><button class=\"btn-select elev-1\" type=\"button\" style=\"width:100%\">Get Started</button>",
+    "ai_label": {
+      "purpose": "A product card board in gold: product image medallion, title 'Naya Power', price '$29/mo', and a full-width 'Get Started' select button.",
+      "use_when": "Use when a single product or offer needs a priced card with one clear action.",
+      "laws": ["Law 2", "Law 5", "Law 11"]
+    }
+  },
+  "NAYA-BRD-042": {
+    "name": "Pricing tiers",
+    "html": "<div style=\"display:flex;padding:12px;--bc:#a06bff\">\n<div class=\"pricing-tier\"><div class=\"tier-name\">STARTER</div><div class=\"tier-price\">$9</div><div class=\"tier-features\">5 projects<br>Basic support",
+    "ai_label": {
+      "purpose": "A pricing tiers board: a flex row of .pricing-tier cards, each with a tier name (STARTER), a price ($9), and a feature list.",
+      "use_when": "Use when presenting two or more priced plans side by side for comparison.",
+      "laws": ["Law 2", "Law 5", "Law 6", "Law 11"]
+    }
+  },
+  "NAYA-BRD-043": {
+    "name": "Countdown",
+    "html": "<div class=\"countdown\" style=\"--bc:#ff5e6c\"><div class=\"cd-unit\"><div class=\"cd-num\" style=\"--bc:#ff5e6c\">12</div><div class=\"cd-label\">DAYS",
+    "ai_label": {
+      "purpose": "A countdown board in red: .cd-unit blocks pairing a large number with a unit label (12 DAYS\u2026).",
+      "use_when": "Use when a deadline or launch date needs a live-feeling days/hours countdown display.",
+      "laws": ["Law 1", "Law 5", "Law 6"]
+    }
+  },
+  "NAYA-BRD-044": {
+    "name": "Post composer",
+    "html": "<div class=\"composer\"><div class=\"composer-input\" contenteditable=\"true\">Share something with the community...</div><div style=\"display:flex;gap:8px;justify-content:flex-end\"><button class=\"btn-notes carve-1\" type=\"button\">Cancel</button><button class=\"btn-select elev-1\" type=\"button\">Post</button>",
+    "ai_label": {
+      "purpose": "A post composer board: a contenteditable input area ('Share something with the community...') with Cancel and Post actions aligned right.",
+      "use_when": "Use when a person writes and publishes a post inside a community or feed surface.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-ROW-001": {
+    "name": "Meta row",
+    "html": "<div class=\"meta-row\"><span>Today</span><span>Evidence-based</span><span>3 plays</span>",
+    "ai_label": {
+      "purpose": "A meta row (.meta-row): three quiet inline facts in one line \u2014 'Today', 'Evidence-based', '3 plays'.",
+      "use_when": "Use under a headline when a few facts orient the reader and none of them deserves its own element.",
+      "laws": ["Law 6", "Law 8"]
+    }
+  },
+  "NAYA-ROW-002": {
+    "name": "Action row",
+    "html": "<div class=\"action-row\"><button class=\"btn btn-ghost mini\" type=\"button\"><span>Open</span></button><button class=\"btn btn-ghost mini\" type=\"button\"><span>Share</span></button>",
+    "ai_label": {
+      "purpose": "An action row (.action-row): a right-hand cluster of mini ghost buttons ('Open', 'Share', \u2026) belonging to one item.",
+      "use_when": "Use at the foot or head of a list item to carry its small actions in one row.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-ROW-003": {
+    "name": "Menu item",
+    "html": "<div style=\"min-width:220px\"><div class=\"mi\">Smart Lists</div><div class=\"mi\">Spaces</div><div class=\"mi\">Reports",
+    "ai_label": {
+      "purpose": "A menu item list: stacked .mi rows ('Smart Lists', 'Spaces', 'Reports') forming a simple vertical menu.",
+      "use_when": "Use as the item grammar of a dropdown or side menu \u2014 one named destination per row.",
+      "laws": ["Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-ROW-004": {
+    "name": "Method row",
+    "html": "<div class=\"im-row\"><span class=\"im-jewel\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><rect x=\"7\" y=\"2.5\" width=\"10\" height=\"19\" rx=\"2.5\"/></svg></span><div><strong>iPhone</strong><ol class=\"im-steps\"><li>Open Settings</li><li>Tap your name</li></ol>",
+    "ai_label": {
+      "purpose": "A method row (.im-row): a jeweled device icon, a strong method title ('iPhone'), and a short ordered list of steps.",
+      "use_when": "Use when listing one method or device path with its first steps inside an instructions surface.",
+      "laws": ["Law 2", "Law 6", "Law 8"]
+    }
+  },
+  "NAYA-INP-001": {
+    "name": "Search bar",
+    "html": "<div class=\"search-wrap\"><input class=\"search-input\" type=\"search\" placeholder=\"Search today\u2026\" aria-label=\"Search\">",
+    "status": "superseded",
+    "superseded_by": "NAYA-INP-008"
+  },
+  "NAYA-INP-002": {
+    "name": "Alias field",
+    "html": "<div class=\"alias-input-box\"><label class=\"alias-label\">Your handle</label><div class=\"alias-field-wrapper\"><input type=\"text\" class=\"alias-field-input\" placeholder=\"pioneer\" autocomplete=\"off\">",
+    "ai_label": {
+      "purpose": "An alias field: a labeled text input ('Your handle', placeholder 'pioneer') inside an .alias-field-wrapper \u2014 the handle-claim well.",
+      "use_when": "Use at the identity door when a person claims their handle \u2014 the one place identity is asked for.",
+      "laws": ["Law 2", "Law 3", "Law 9", "Law 11"]
+    }
+  },
+  "NAYA-INP-003": {
+    "name": "Segmented control",
+    "html": "<div class=\"segmented\" role=\"tablist\" aria-label=\"Voice\"><button role=\"tab\" aria-selected=\"true\" type=\"button\">Human</button><button role=\"tab\" aria-selected=\"false\" type=\"button\">Naya</button><button role=\"tab\" aria-selected=\"false\" type=\"button\">Machine</button>",
+    "ai_label": {
+      "purpose": "A segmented control (role=tablist) with three options \u2014 Human, Naya, Machine \u2014 the first selected; it is the voice-choice control in the stored example.",
+      "use_when": "Use when a person picks exactly one mode from a short fixed set, shown all at once.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-INP-004": {
+    "name": "Toggle switch",
+    "html": "<div style=\"display:flex;gap:14px;align-items:center;justify-content:center\"><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Voice replies\" type=\"button\"><span></span></button><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"false\" aria-label=\"Weekly digest\" type=\"button\"><span></span></button>",
+    "ai_label": {
+      "purpose": "A toggle switch pair: two .naya-toggle switches (role=switch) shown on and off \u2014 'Voice replies' checked, 'Weekly digest' unchecked.",
+      "use_when": "Use for binary settings that take effect immediately; harvest one switch per setting.",
+      "laws": ["Law 2", "Law 3", "Law 4", "Law 11"]
+    }
+  },
+  "NAYA-INP-005": {
+    "name": "Recessed field",
+    "html": "<label class=\"recessed-field\"><span>What should Naya remember?</span><input type=\"text\" placeholder=\"Type it like you are telling a friend\u2026\"></label>",
+    "ai_label": {
+      "purpose": "A recessed field: a labeled text input carved into the surface ('What should Naya remember?', placeholder 'Type it like you are telling a friend\u2026').",
+      "use_when": "Use for a single-line memory or note entry where the well grammar should be felt, short of the Reference Well itself.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-INP-006": {
+    "name": "Jeweled checkbox",
+    "html": "<div style=\"display:flex;flex-direction:column;gap:10px\"><label class=\"naya-check\"><input type=\"checkbox\" checked><span class=\"box\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\"><path d=\"M3 8.5l3.5 3.5L13 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"txt\">Screenshot reviewed, not assumed</span></label><label class=\"naya-check\"><input type=\"checkbox\"><span class=\"box\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\"><path d=\"M3 8.5l3.5 3.5L13 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"txt\">One spectrum color per board</span></label>",
+    "ai_label": {
+      "purpose": "A jeweled checkbox list: .naya-check rows pairing a gem-styled checkbox (SVG tick) with a text line \u2014 the first checked ('Screenshot reviewed, not assumed'), the second not.",
+      "use_when": "Use for checklist or multi-select lists where each row must read as a deliberate, checkable claim.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-INP-007": {
+    "name": "Settings row",
+    "html": "<div class=\"setting-row\"><span><strong>Living motion</strong><small>Buttons breathe and lift while you look.</small></span><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Living motion\" type=\"button\"><span></span></button>",
+    "ai_label": {
+      "purpose": "A settings row: a strong label plus a small explanation on the left ('Living motion' \u2014 'Buttons breathe and lift while you look.') and a .naya-toggle switch on the right.",
+      "use_when": "Use as the standard row of a Settings board \u2014 one setting, one explanation, one switch.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-HDR-001": {
+    "name": "Eyebrow",
+    "html": "<div class=\"eyebrow\">NAYANET \u00b7 HUMAN-FACING INTELLIGENCE",
+    "ai_label": {
+      "purpose": "An eyebrow headline element (.eyebrow): a single all-caps kicker line, 'NAYANET \u00b7 HUMAN-FACING INTELLIGENCE'.",
+      "use_when": "Use above a page or section title to name the world the reader is in, before the headline speaks.",
+      "laws": ["Law 6", "Law 8"]
+    }
+  },
+  "NAYA-HDR-002": {
+    "name": "Intelligence trio",
+    "html": "<div><div class=\"intel-type\">Briefing</div><div class=\"intel-title\">What today became</div><div class=\"intel-summary\">Three plays finished, two spaces gained members.",
+    "ai_label": {
+      "purpose": "An intelligence header trio: a type line ('Briefing'), a title ('What today became'), and a one-sentence summary, stacked as one header unit.",
+      "use_when": "Use to head an intelligence item or briefing where type, headline, and summary must appear exactly once, in that order.",
+      "laws": ["Law 6", "Law 7", "Law 8"]
+    }
+  },
+  "NAYA-HDR-003": {
+    "name": "Step number",
+    "html": "<div class=\"num\" style=\"--c:#a06bff\"><span class=\"jewel\"></span>Step One",
+    "ai_label": {
+      "purpose": "A step-number header element (.num) pairing a jewel with a step label ('Step One'), colored by its --c variable (purple in the stored example).",
+      "use_when": "Use to number and head the steps of a guided sequence in the section's own color.",
+      "laws": ["Law 1", "Law 6"]
+    }
+  },
+  "NAYA-MRK-001": {
+    "name": "Status pill",
+    "html": "<span class=\"pill live marker-live\"><span class=\"dot\" style=\"animation:marker-pulse 2s infinite\"></span>Live</span>",
+    "ai_label": {
+      "purpose": "A status pill marked live: a .pill.marker-live with a pulsing dot (marker-pulse animation) and the text 'Live'.",
+      "use_when": "Use to mark a surface or stream as live right now \u2014 the pulse is part of the piece, not decoration.",
+      "laws": ["Law 4", "Law 5"]
+    }
+  },
+  "NAYA-MRK-002": {
+    "name": "Done mark",
+    "html": "<div class=\"done-mark\"><span class=\"tick\"><span class=\"marker-ready\">\u2713</span></span> AI ready",
+    "ai_label": {
+      "purpose": "A done mark: a circled tick (.done-mark with a .marker-ready check) beside the text 'AI ready'.",
+      "use_when": "Use to mark an item as complete and ready, in-line, without a whole board.",
+      "laws": ["Law 5"]
+    }
+  },
+  "NAYA-MRK-003": {
+    "name": "Search highlight",
+    "html": "<div style=\"font-size:15px\">quarterly <mark class=\"hl\">report</mark> ready",
+    "ai_label": {
+      "purpose": "A search highlight: a <mark class='hl'> wrapping the matched word ('report') inside an ordinary sentence.",
+      "use_when": "Use to show search matches inside result text so the eye lands on the hit.",
+      "laws": ["Law 5", "Law 6"]
+    }
+  },
+  "NAYA-MRK-004": {
+    "name": "Divider bar",
+    "html": "<div style=\"display:flex;align-items:center;width:100%\"><div class=\"bar\">",
+    "ai_label": {
+      "purpose": "A divider bar: a full-width flex row holding a .bar \u2014 the store's horizontal divider element.",
+      "use_when": "Use to separate two stacked regions of a surface with a bar rather than whitespace alone.",
+      "laws": ["Law 2"]
+    }
+  },
+  "NAYA-MRK-005": {
+    "name": "Spectrum bar",
+    "html": "<div class=\"spectrum-bar\" aria-label=\"Spectrum \u2014 Shawn's standing order\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>",
+    "ai_label": {
+      "purpose": "A spectrum bar: a .spectrum-bar of nine spans walking the full spectrum in order, aria-labeled 'Spectrum \u2014 Shawn's standing order'.",
+      "use_when": "Use where the whole walk must be present as one strip \u2014 signatures, footers, and section seams.",
+      "laws": ["Law 1", "Law 5"]
+    }
+  },
+  "NAYA-MRK-006": {
+    "name": "Count badge",
+    "html": "<span class=\"naya-badge\">3</span>",
+    "ai_label": {
+      "purpose": "A count badge: a .naya-badge span carrying a single number ('3').",
+      "use_when": "Use to badge a nav item, tab, or icon with an unread or pending count.",
+      "laws": ["Law 2", "Law 5"]
+    }
+  },
+  "NAYA-MRK-007": {
+    "name": "Skeleton loading",
+    "html": "<div class=\"naya-skel\" style=\"height:22px;width:42%\"></div><div class=\"naya-skel\" style=\"height:14px\"></div><div class=\"naya-skel\" style=\"height:14px;width:78%\"></div><div class=\"naya-skel\" style=\"height:64px;border-radius:22px\">",
+    "ai_label": {
+      "purpose": "A skeleton loading set: stacked .naya-skel placeholder bars (headline, two text lines, one tall rounded block) shown while real content loads.",
+      "use_when": "Use as the honest loading state of a board or card \u2014 shape first, content when it truly arrives.",
+      "laws": ["Law 5", "Law 11"]
+    }
+  },
+  "NAYA-NAV-001": {
+    "name": "Smart tabs",
+    "html": "<div class=\"smarttabs elev-1\" style=\"display:flex;gap:8px;padding:8px\"><button class=\"smarttab on\" type=\"button\">All</button><button class=\"smarttab\" type=\"button\">Start Here</button><button class=\"smarttab\" type=\"button\">+ Add</button>",
+    "ai_label": {
+      "purpose": "The Smart Tabs bar: a .smarttabs strip (elev-1) of tab buttons \u2014 'All', 'Start Here', '+ Add' \u2014 with the current tab in the .on state.",
+      "use_when": "Use as the standard tab navigation of a room or page \u2014 this is the Smart Tabs chrome every smart app shares.",
+      "laws": ["Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-NAV-002": {
+    "name": "View tabs",
+    "html": "<div style=\"display:flex;gap:8px\"><button class=\"primo theme-purple elev-1\" type=\"button\" style=\"padding:10px 22px;font-size:12px\">COLLECTIVE</button><button class=\"primo theme-blue elev-1\" type=\"button\" style=\"padding:10px 22px;font-size:12px\">PERSONAL</button>",
+    "ai_label": {
+      "purpose": "A view-tabs pair: two Primo buttons (COLLECTIVE in purple, PERSONAL in blue) that switch the view between the collective and the personal lens.",
+      "use_when": "Use when one surface toggles between a collective view and a personal view.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-NAV-003": {
+    "name": "Eco bottom bar",
+    "html": "<div class=\"eco-bottombar elev-2\" style=\"position:static;border-radius:18px;padding:12px;gap:8px\"><a class=\"eco-bb-btn elev-1\" style=\"--eco:#a06bff\" title=\"Home\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 11l9-8 9 8\"/><path d=\"M5 10v10h5v-6h4v6h5V10\"/></svg></a><a class=\"eco-bb-btn elev-1\" style=\"--eco:#3fb8ff\" title=\"Pulse\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 2L4 14h6l-1 8 9-12h-6l1-8z\"/></svg></a><a class=\"eco-bb-btn elev-1\" style=\"--eco:#2fe89e\" title=\"People\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"3.5\"/><path d=\"M5 20v-1c0-7 14-7 14 0v1\"/></svg></a><a class=\"eco-bb-btn elev-1\" style=\"--eco:#ffbf3d\" title=\"Calendar\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18M8 3v4M16 3v4\"/></svg></a><a class=\"eco-bb-btn elev-1\" style=\"--eco:#e84fff\" title=\"Docs\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 2h9l5 5v15H6z\"/><path d=\"M14 2v6h6\"/></svg></a><a class=\"eco-bb-btn elev-1\" style=\"--eco:#6675ff\" title=\"Vision\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg></a>",
+    "ai_label": {
+      "purpose": "The eco bottom bar: a .eco-bottombar (elev-2) row of dock icon-buttons \u2014 Home, Pulse, People, Calendar, Docs, Vision \u2014 each in its own --eco color.",
+      "use_when": "Use as the bottom navigation bar of a page or room; it is the assembled form of the ICO dock family.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-NAV-004": {
+    "name": "Top nav bar",
+    "html": "<nav class=\"sb-nav\" aria-label=\"Navigation\" style=\"position:static\"><span class=\"nav-orb\" aria-hidden=\"true\"></span><span class=\"nav-label\">NayaNET</span><span class=\"nav-links\"><a href=\"#boards\">Boards</a><a href=\"#cards\">Cards</a><a href=\"#data\">Data</a></span></nav>",
+    "ai_label": {
+      "purpose": "A top nav bar (.sb-nav): a nav orb, the 'NayaNET' label, and a link set (Boards, Cards, Data).",
+      "use_when": "Use as the slim top navigation of a builder or factory-style surface.",
+      "laws": ["Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-NAV-005": {
+    "name": "Favorites ribbon",
+    "html": "<div class=\"sn-row\"><div class=\"sn-pill heart\"><span class=\"sn-label\">The Laws</span><span class=\"sn-mark\"><svg viewBox=\"0 0 16 16\" width=\"14\" height=\"14\" aria-hidden=\"true\"><path d=\"M8 13.5S2 9.6 2 5.6C2 3.5 3.6 2 5.5 2c1.2 0 2.1.6 2.5 1.4C8.4 2.6 9.3 2 10.5 2 12.4 2 14 3.5 14 5.6c0 4-6 7.9-6 7.9z\" fill=\"#a06bff\"/></svg></span></div><div class=\"sn-pill star\"><span class=\"sn-label\">Spaces</span><span class=\"sn-mark\"><svg viewBox=\"0 0 16 16\" width=\"14\" height=\"14\" aria-hidden=\"true\"><path d=\"M8 1.5l2 4.2 4.6.6-3.4 3.2.8 4.5-4-2.2-4 2.2.8-4.5L1.4 6.3l4.6-.6z\" fill=\"#ffbf3d\"/></svg></span></div><div class=\"sn-pill\"><span class=\"sn-label\">Ledger</span></div><div class=\"sn-pill add\"><svg viewBox=\"0 0 16 16\" width=\"13\" height=\"13\" aria-hidden=\"true\"><path d=\"M8 2.5v11M2.5 8h11\" stroke=\"#fff\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg><span class=\"sn-label\">Add</span>",
+    "ai_label": {
+      "purpose": "A favorites ribbon: a row of .sn-pill shortcuts \u2014 'The Laws' with a heart mark, 'Spaces' with a star mark, 'Ledger', and an 'Add' pill.",
+      "use_when": "Use as a quick-jump ribbon of a person's favorite places above a feed or list.",
+      "laws": ["Law 2", "Law 5", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-NAV-006": {
+    "name": "App room nav",
+    "html": "<nav class=\"app-nav\" aria-label=\"Rooms\"><button type=\"button\" aria-selected=\"true\" style=\"--tone:#a06bff\"><span class=\"nav-jewel\"></span>Today</button><button type=\"button\" style=\"--tone:#2fe89e\"><span class=\"nav-jewel\"></span>Reports</button><button type=\"button\" style=\"--tone:#e8c766\"><span class=\"nav-jewel\"></span>Spaces</button></nav>",
+    "ai_label": {
+      "purpose": "An app room nav (.app-nav): room buttons (Today, Reports, Spaces), each with a .nav-jewel in its room tone (purple, green, gold) and the current room marked aria-selected.",
+      "use_when": "Use as the room switcher inside an app where each room owns its color.",
+      "laws": ["Law 1", "Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-NAV-007": {
+    "name": "Anchor TOC pills",
+    "html": "<div class=\"toc\"><a href=\"#top\">Top</a><a href=\"#pieces\">Pieces</a><a href=\"#laws\">Laws</a>",
+    "ai_label": {
+      "purpose": "Anchor TOC pills: a .toc row of in-page anchor links (Top, Pieces, Laws).",
+      "use_when": "Use as the table-of-contents navigation on a long single page.",
+      "laws": ["Law 11", "Law 14"]
+    }
+  },
+  "NAYA-NAV-008": {
+    "name": "Shared chrome",
+    "html": "<div class=\"section-rail\" style=\"position:static\"><nav class=\"elite-layout rail-inner\" aria-label=\"Room navigation\"><span class=\"rail-label\">THE STANDARD</span><a href=\"#\" class=\"rail-link\" aria-current=\"location\">Intelligent boards</a><a href=\"#\" class=\"rail-link\">Buttons &amp; controls</a><a href=\"#\" class=\"rail-link\">The rooms</a><a href=\"#\" class=\"rail-link\">Proof standard</a></nav>",
+    "ai_label": {
+      "purpose": "Shared chrome: a .section-rail side navigation labeled 'THE STANDARD' with rail links (Intelligent boards, Buttons & controls, The rooms, Proof standard), the current one marked aria-current.",
+      "use_when": "Use as the side rail of a standard or documentation surface shared across rooms.",
+      "laws": ["Law 2", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-NAV-009": {
+    "name": "Brand mark",
+    "html": "<button class=\"naya-brand\" aria-label=\"NayaNET \u2014 back to the Hub\" type=\"button\"><span class=\"naya-brand-img\" aria-hidden=\"true\" style=\"display:grid;place-items:center;font:800 24px/1 Georgia,serif;color:#fff\">N</span><span class=\"naya-brand-text\"><b>NAYANET</b><small>SMART MAIL</small></span></button>",
+    "ai_label": {
+      "purpose": "A brand mark button (.naya-brand, aria-label 'NayaNET \u2014 back to the Hub'): a serif 'N' mark tile beside 'NAYANET' and a 'SMART MAIL' sub-line.",
+      "use_when": "Use at the head of a surface as the brand and the way back to the Hub \u2014 the name appears here once, as the mark.",
+      "laws": ["Law 2", "Law 7", "Law 11", "Law 14"]
+    }
+  },
+  "NAYA-NAV-010": {
+    "name": "Real footer",
+    "html": "<footer class=\"naya-footer\"><div class=\"naya-footer-inner\" style=\"grid-template-columns:1fr\"><div><div class=\"naya-footer-brand\">NayaNET</div><p class=\"naya-footer-tag\">Intelligence you can hold.</p></div><div><a href=\"#boards\">Boards</a><a href=\"#nav\">Navigation</a><a href=\"#data\">Data</a>",
+    "ai_label": {
+      "purpose": "A real footer (.naya-footer): the NayaNET brand, the tagline 'Intelligence you can hold.', and a link column (Boards, Navigation, Data).",
+      "use_when": "Use as the closing footer of a page \u2014 brand, one line, and the way onward.",
+      "laws": ["Law 2", "Law 6", "Law 14"]
+    }
+  },
+  "NAYA-NAV-011": {
+    "name": "Progress rail",
+    "html": "<div class=\"journey-demo\"><div class=\"micro\" style=\"color:#e0cbff\">INTENTIONAL HUMAN JOURNEY</div><h3>Four steps. Then you\u2019re in.</h3><p>Human progress expressed as a reassuring sequence, not a wall of instructions.</p><div class=\"step-rail\" aria-label=\"Four-step design example\"><span class=\"step-dot\" data-step=\"0\" aria-current=\"step\">1</span><span class=\"step-line\"></span><span class=\"step-dot\" data-step=\"1\">2</span><span class=\"step-line\"></span><span class=\"step-dot\" data-step=\"2\">3</span><span class=\"step-line\"></span><span class=\"step-dot\" data-step=\"3\">4</span></div><div class=\"step-message\">01 \u00b7 Meet Naya. Understand what this intelligence is for.",
+    "ai_label": {
+      "purpose": "A progress rail block: a headed demo ('Four steps. Then you're in.') with a four-dot step rail and a step message, presenting a journey as a reassuring sequence.",
+      "use_when": "Use when a multi-step journey needs a visible progress rail with its current-step message at the head of a surface.",
+      "laws": ["Law 2", "Law 6", "Law 11"]
+    }
+  },
+  "NAYA-OVL-001": {
+    "name": "Toast system",
+    "html": "<div class=\"naya-toast show is-verified\"><span class=\"jw\" style=\"--j:#2fe89e;font-size:14px\">\u25c6</span><span class=\"naya-toast-msg\">Saved \u2014 your note is safe</span>",
+    "ai_label": {
+      "purpose": "A toast (.naya-toast, shown in its .is-verified state): a green jewel plus the message 'Saved \u2014 your note is safe'.",
+      "use_when": "Use for brief confirmations that appear and retire themselves, colored by the kind of news they carry.",
+      "laws": ["Law 2", "Law 4", "Law 5", "Law 11"]
+    }
+  },
+  "NAYA-OVL-002": {
+    "name": "Mini modal",
+    "html": "<div class=\"modal-mini\"><span class=\"modal-gem\">\u2726</span><span><strong>Publish this space?</strong><small>Everyone with the link can read it. You can unpublish anytime.</small></span><button class=\"naya-btn small\" type=\"button\">Publish</button>",
+    "ai_label": {
+      "purpose": "A mini modal (.modal-mini): a gem, a confirm question with its consequence line ('Publish this space?' \u2014 who can read it, and that it can be unpublished), and the action button.",
+      "use_when": "Use for a single consequential confirmation that must not become a full dialog.",
+      "laws": ["Law 2", "Law 5", "Law 11"]
+    }
+  },
+  "NAYA-OVL-003": {
+    "name": "Share sheet",
+    "html": "<div><div class=\"smart-link\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-globe\"/></svg><span><strong>Public view</strong><small>Who can open this is explicit.</small></span></div><div class=\"share-actions\"><button class=\"naya-btn small\" type=\"button\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-people\"/></svg>People</button><button class=\"naya-btn small\" type=\"button\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-lock\"/></svg>Private</button><button class=\"naya-btn small\" type=\"button\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg>Copy link</button>",
+    "ai_label": {
+      "purpose": "A share sheet: a .smart-link row stating the public view and who can open it, above share actions (People, Private, Copy link).",
+      "use_when": "Use when a person shares an item and its visibility must be explicit at the moment of sharing.",
+      "laws": ["Law 2", "Law 5", "Law 11"]
+    }
+  },
+  "NAYA-OVL-004": {
+    "name": "Command palette",
+    "html": "<div class=\"naya-palette\" role=\"dialog\" aria-label=\"Command palette\"><div class=\"naya-palette-search\"><svg viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/><path d=\"M11 11l3.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg><input class=\"naya-palette-input\" type=\"text\" placeholder=\"Ask Naya, or jump somewhere\u2026\" autocomplete=\"off\" spellcheck=\"false\"><span class=\"naya-kbd\">esc</span></div><div class=\"naya-palette-list\" role=\"listbox\"><div class=\"naya-palette-item active\" role=\"option\" aria-selected=\"true\"><span class=\"naya-palette-label\">Go to Buttons</span><span class=\"naya-palette-hint\">01</span></div><div class=\"naya-palette-item\" role=\"option\" aria-selected=\"false\"><span class=\"naya-palette-label\">Go to Inputs</span><span class=\"naya-palette-hint\">02</span></div><div class=\"naya-palette-item\" role=\"option\" aria-selected=\"false\"><span class=\"naya-palette-label\">Copy the canonical button</span><span class=\"naya-palette-hint\">action</span></div><div class=\"naya-palette-item\" role=\"option\" aria-selected=\"false\"><span class=\"naya-palette-label\">Summon Naya</span><span class=\"naya-palette-hint\">action</span>",
+    "ai_label": {
+      "purpose": "A command palette (role=dialog): a search well ('Ask Naya, or jump somewhere\u2026' with an esc kbd hint) above a listbox of destinations and actions with numbered hints.",
+      "use_when": "Use as the keyboard-first jump-and-act overlay for a whole app.",
+      "laws": ["Law 2", "Law 3", "Law 11"]
+    }
+  },
+  "NAYA-OVL-005": {
+    "name": "Notification drawer",
+    "html": "<aside class=\"naya-drawer\" aria-label=\"Notifications\" style=\"max-width:420px;width:100%\"><div class=\"naya-drawer-head\"><h2>Notifications</h2><button class=\"naya-btn icon micro\" type=\"button\" aria-label=\"Close\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-close\"/></svg></button></div><div class=\"naya-drawer-list\"><div class=\"naya-note is-unread\"><span class=\"naya-avatar xs\" style=\"--av-hue:#35e0a1\">N4</span><div class=\"naya-note-body\"><strong>Naya 4</strong> opened a PR for your review.<div class=\"naya-note-time\">12 min ago",
+    "ai_label": {
+      "purpose": "A notification drawer (.naya-drawer): a headed aside with a close button and a note list \u2014 avatar, actor, action text, and relative time \u2014 with unread states.",
+      "use_when": "Use as the slide-in notifications surface of a room or app.",
+      "laws": ["Law 2", "Law 5", "Law 11"]
+    }
+  },
+  "NAYA-ICO-024": {
+    "name": "App Tile \u00b7 Mail",
+    "html": "<span class=\"app-tile\" style=\"--nc:#3fb8ff\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5.5\" width=\"18\" height=\"13\" rx=\"2.5\"/><path d=\"M4 8l8 5.5L20 8\"/></svg></span>",
+    "ai_label": {
+      "purpose": "An app tile for Mail: a .app-tile span with a blue --nc tone holding a white envelope glyph.",
+      "use_when": "Use in app-tile grids (launchers, room pickers) as the Mail tile.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-025": {
+    "name": "App Tile \u00b7 Pulse",
+    "html": "<span class=\"app-tile\" style=\"--nc:#2fe89e\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2.5 12h4.5l2.8-7 4.2 14 2.8-7h4.7\"/></svg></span>",
+    "ai_label": {
+      "purpose": "An app tile for Pulse: a .app-tile span with a green --nc tone holding a white pulse-line glyph.",
+      "use_when": "Use in app-tile grids (launchers, room pickers) as the Pulse tile.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-ICO-026": {
+    "name": "App Tile \u00b7 Hearth",
+    "html": "<span class=\"app-tile\" style=\"--nc:#ffbf3d\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 11l8-7.5L20 11\"/><path d=\"M6 9.5V20h12V9.5\"/><path d=\"M12 12.4l2.2 2.7L12 17.6l-2.2-2.5z\"/></svg></span>",
+    "ai_label": {
+      "purpose": "An app tile for Hearth: a .app-tile span with a gold --nc tone holding a white house glyph whose center is a heart-diamond.",
+      "use_when": "Use in app-tile grids (launchers, room pickers) as the Hearth/home tile.",
+      "laws": ["Law 1", "Law 2", "Law 5"]
+    }
+  },
+  "NAYA-INP-008": {
+    "name": "Reference Well",
+    "html": "<label class=\"ref-well\" style=\"--wc:#a06bff;--wc-rgb:160,107,255\"><span class=\"ref-well-label\">What should Naya remember?</span><span class=\"ref-well-box\"><input type=\"text\" placeholder=\"Type it like you are telling a friend\u2026\"></span></label>",
+    "ai_label": {
+      "purpose": "The Reference Well: a labeled text input (.ref-well, purple accent) whose box carries the Smart Factory input recipe (flat obsidian fill, silver-white rim, crisp inset top shade, white rest glow) and a named focus-travel motion spec in the store.",
+      "use_when": "Use for every text entry that matters \u2014 this is the crowned exemplar all inputs are copied from, never restyled.",
+      "laws": ["Law 2", "Law 3", "Law 4", "Law 10", "Law 11"]
+    },
+    "reference": true,
+    "motion": "focus travel: conic light ring orbits the border 2.8s linear infinite while :focus-within (ref-well-travel); rest = the Smart Factory input recipe (re-based 2026-10-21): flat #030304 fill, silver-white rim 1.5px @.85, one crisp inset top shade 0 3px 10px black .90 + lip line, white rest glow 0 0 18px @.30; on focus the shade and lip hold (the well does not deepen) and the accent ignites — border full accent, ring 0 0 0 1.5px accent .90, glow 0 0 34px accent .55, box-shadow .28s cubic-bezier(.16,.84,.22,1), border-color .18s ease; prefers-reduced-motion: ring animation none, static lit focus ring holds"
+  },
+  "NAYA-INP-009": {
+    "name": "Reference Select",
+    "html": "<div class=\"ref-select\" style=\"--wc:#3fb8ff;--wc-rgb:63,184,255\"><span class=\"ref-select-label\">Voice</span><button class=\"ref-select-btn\" type=\"button\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><span class=\"ref-select-value\">Human</span><span class=\"ref-select-chev\" aria-hidden=\"true\"></span></button><ul class=\"ref-select-panel\" role=\"listbox\" aria-label=\"Voice\" hidden><li role=\"option\" aria-selected=\"true\" data-value=\"human\"><span class=\"ref-select-jewel\"></span>Human</li><li role=\"option\" aria-selected=\"false\" data-value=\"naya\"><span class=\"ref-select-jewel\"></span>Naya</li><li role=\"option\" aria-selected=\"false\" data-value=\"machine\"><span class=\"ref-select-jewel\"></span>Machine</li></ul></div>",
+    "ai_label": {
+      "purpose": "The Reference Select: a select control (.ref-select, blue accent) \u2014 a button showing the chosen value ('Human') with a chevron, opening a listbox panel of jeweled options (Human / Naya / Machine) \u2014 with a named panel-open motion spec in the store.",
+      "use_when": "Use whenever a person chooses one value from a list \u2014 this is the crowned exemplar for selects; the factory holds no other elite select.",
+      "laws": ["Law 2", "Law 3", "Law 4", "Law 10", "Law 11"]
+    },
+    "reference": true,
+    "motion": "panel opens ref-select-open .22s cubic-bezier(.16,.84,.22,1) (opacity 0\u21921, translateY(-4px)\u21920, scale .98\u21921); chevron rotates 0\u2192180deg .24s cubic-bezier(.16,.84,.22,1) on open; button press sinks translateY(1px) scale(.99) .08s; prefers-reduced-motion: open animation none, chevron transition none \u2014 panel fully lit and static"
+  },
+  "NAYA-HRO-001": {
+    "name": "Reference Hero",
+    "html": "<section class=\"ref-hero\" style=\"--sc:#a06bff;--sc-rgb:160,107,255\"><div class=\"ref-hero-mark\">N</div><div class=\"ref-hero-eyebrow\">NAYANET \u00b7 CONTEXT WORLDS</div><h2 class=\"ref-hero-title\">Smart Spaces</h2><p class=\"ref-hero-sub\">A space changes the context \u2014 and the context changes everything.</p><p class=\"ref-hero-desc\">Rooms of living intelligence, each one burning in its own color.</p><div class=\"ref-hero-actions\"><button class=\"primo theme-purple elev-2\" type=\"button\">Enter the space</button></div></section>",
+    "ai_label": {
+      "purpose": "The Reference Hero: a full hero section (.ref-hero) in purple \u2014 an 'N' mark, an eyebrow, an H2 title ('Smart Spaces'), a sub-line, a description, and a Primo purple action button \u2014 with a named motion spec (sheen sweep and mark breathe) in the store.",
+      "use_when": "Use as the title block of a page at full presence \u2014 the crowned exemplar every hero is copied from, never restyled.",
+      "laws": ["Law 1", "Law 2", "Law 4", "Law 5", "Law 6", "Law 10", "Law 13"]
+    },
+    "reference": true,
+    "motion": "sheen sweep ref-hero-sheen 5s ease-in-out infinite (harvested from the Hub hero / Primo grammar); mark breathes ref-hero-breathe 5.6s ease-in-out infinite (ring glow swells in the room color); prefers-reduced-motion: both animations none, sheen rests at opacity .45 \u2014 the hero stays lit, never dead"
+  }
+}

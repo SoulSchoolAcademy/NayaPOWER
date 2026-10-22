@@ -30,7 +30,7 @@ honest one, and honesty must not be scored as a defect. The score rewards
 declared uncertainty rather than punishing it.
 
 QUALITY GATE (from the protocol)
-  <9.0  unacceptable
+  <9.5  BELOW_BAR
   >=9.5 AAA
   10.0 target
 """
@@ -84,11 +84,11 @@ class HandoffResult:
 
     @property
     def grade(self) -> str:
+        # Binary per the 9.5 law (2026-10-12 ratified merge law): nothing below
+        # 9.5 is deliverable. The old 9.0-9.4 "ACCEPTABLE" band is retired.
         if self.score >= 9.5:
             return "AAA"
-        if self.score >= 9.0:
-            return "ACCEPTABLE"
-        return "UNACCEPTABLE"
+        return "BELOW_BAR"
 
 
 def _sections_present(text: str) -> set[str]:

@@ -1,0 +1,453 @@
+{
+ "_note": "Applicability rules (Naya Beta, KNOW lane, 2026-10-11). Area codes are the 12 Team Naya areas. Keys are matched verbatim against entry topic/subtopic; keyword rules are lowercase substring matches over the entry's keyword haystack and are ADDITIVE to taxonomy rules. Thumb rule: subtopic > topic > keywords.",
+ "area_contexts": {
+  "ACT": [
+   "dispatch"
+  ],
+  "BLOCKS": [
+   "merge-gate",
+   "briefing"
+  ],
+  "DECISION": [
+   "scorecard",
+   "dispatch"
+  ],
+  "HUMAN_VALUE": [
+   "human-value",
+   "briefing"
+  ],
+  "INFRA": [
+   "merge-gate"
+  ],
+  "KNOW": [
+   "cold-retrieve",
+   "briefing",
+   "dispatch"
+  ],
+  "LAW": [
+   "merge-gate",
+   "briefing"
+  ],
+  "LEARN": [
+   "capture",
+   "trial"
+  ],
+  "RETRIEVAL": [
+   "cold-retrieve"
+  ],
+  "SUCCESSOR": [
+   "successor-handoff"
+  ],
+  "TEAM": [
+   "briefing",
+   "dispatch"
+  ],
+  "VERIFY": [
+   "scorecard",
+   "verify",
+   "trial"
+  ]
+ },
+ "keyword_rules": [
+  {
+   "areas": [
+    "RETRIEVAL"
+   ],
+   "match": "retriev"
+  },
+  {
+   "areas": [
+    "SUCCESSOR"
+   ],
+   "match": "successor"
+  },
+  {
+   "areas": [
+    "HUMAN_VALUE"
+   ],
+   "match": "human value"
+  },
+  {
+   "areas": [
+    "INFRA",
+    "LAW"
+   ],
+   "match": "merge gate"
+  },
+  {
+   "areas": [
+    "INFRA",
+    "LAW"
+   ],
+   "match": "branch protection"
+  },
+  {
+   "areas": [
+    "VERIFY",
+    "DECISION"
+   ],
+   "match": "scorecard"
+  },
+  {
+   "areas": [
+    "TEAM"
+   ],
+   "match": "briefing"
+  },
+  {
+   "areas": [
+    "DECISION"
+   ],
+   "match": "decision engine"
+  },
+  {
+   "areas": [
+    "DECISION"
+   ],
+   "match": "value calculus"
+  },
+  {
+   "areas": [
+    "VERIFY",
+    "LEARN"
+   ],
+   "match": "trial"
+  },
+  {
+   "areas": [
+    "VERIFY",
+    "LEARN"
+   ],
+   "match": "experiment"
+  },
+  {
+   "areas": [
+    "LEARN"
+   ],
+   "match": "capture"
+  },
+  {
+   "areas": [
+    "BLOCKS"
+   ],
+   "match": "intelligent block"
+  },
+  {
+   "areas": [
+    "TEAM",
+    "ACT"
+   ],
+   "match": "dispatch"
+  },
+  {
+   "areas": [
+    "TEAM"
+   ],
+   "match": "night shift"
+  },
+  {
+   "areas": [
+    "LAW",
+    "VERIFY"
+   ],
+   "match": "promotion"
+  },
+  {
+   "areas": [
+    "LAW"
+   ],
+   "match": "ratif"
+  }
+ ],
+ "subtopic_rules": {
+  "ACTIVE-INTELLIGENCE": [
+   "ACT",
+   "KNOW"
+  ],
+  "AGENT-ARCHITECTURE": [
+   "TEAM",
+   "KNOW"
+  ],
+  "AMENDMENT-VERIFICATION": [
+   "VERIFY",
+   "LAW"
+  ],
+  "APPLICATION-COMPLETION": [
+   "ACT"
+  ],
+  "ARCHIVE-RECOVERY": [
+   "KNOW",
+   "SUCCESSOR"
+  ],
+  "CI-TRIAGE": [
+   "INFRA"
+  ],
+  "COLD_14": [
+   "SUCCESSOR",
+   "RETRIEVAL"
+  ],
+  "COLLECTIVE-INTELLIGENCE": [
+   "TEAM"
+  ],
+  "COMPOUNDING-INTELLIGENCE": [
+   "LEARN"
+  ],
+  "CONTINUITY": [
+   "SUCCESSOR"
+  ],
+  "CURRENT-ARCHITECTURAL-TRUTH": [
+   "KNOW",
+   "DECISION"
+  ],
+  "DESIGN-MASTERY": [
+   "HUMAN_VALUE"
+  ],
+  "DOCTRINE": [
+   "LAW",
+   "TEAM"
+  ],
+  "EARNED-INTELLIGENCE": [
+   "LEARN"
+  ],
+  "ENGINEERING-PROOF": [
+   "VERIFY",
+   "KNOW"
+  ],
+  "EXECUTION": [
+   "ACT"
+  ],
+  "GOVERNANCE": [
+   "LAW",
+   "TEAM"
+  ],
+  "HUB-INTELLIGENCE-ARCHITECTURE": [
+   "HUMAN_VALUE",
+   "KNOW"
+  ],
+  "HUMAN-ARCHITECTURE": [
+   "HUMAN_VALUE"
+  ],
+  "HUMAN-UNDERSTANDING": [
+   "HUMAN_VALUE"
+  ],
+  "INTELLIGENCE-CONTINUITY": [
+   "SUCCESSOR",
+   "KNOW"
+  ],
+  "LEARNING-PIPELINE": [
+   "LEARN"
+  ],
+  "MEMORY-DISCIPLINE": [
+   "KNOW"
+  ],
+  "NAYA-1-DISTILLED-INTELLIGENCE": [
+   "KNOW",
+   "SUCCESSOR"
+  ],
+  "NAYA-STANDING-LAW": [
+   "LAW"
+  ],
+  "NAYAPOWER-CORE-SYSTEM": [
+   "KNOW"
+  ],
+  "NAYAPOWER-NAYANET-CORE-MAGIC": [
+   "HUMAN_VALUE"
+  ],
+  "OPERATING-DOCTRINE": [
+   "LAW",
+   "TEAM"
+  ],
+  "OPERATING-INTELLIGENCE": [
+   "ACT",
+   "KNOW"
+  ],
+  "OPERATING-LAW": [
+   "LAW"
+  ],
+  "OPERATING-MODE": [
+   "TEAM"
+  ],
+  "OPERATING-MODEL": [
+   "TEAM",
+   "DECISION"
+  ],
+  "OPERATIONS": [
+   "TEAM",
+   "INFRA"
+  ],
+  "PROMOTION": [
+   "LAW",
+   "VERIFY"
+  ],
+  "SMART-NOTE-REFINEMENT": [
+   "LEARN",
+   "KNOW"
+  ],
+  "SYSTEM-DESIGN": [
+   "KNOW",
+   "DECISION"
+  ],
+  "TEAM-DOCTRINE": [
+   "TEAM"
+  ],
+  "UNDERSTAND_CONNECT_RETRIEVE_APPLY": [
+   "ACT",
+   "KNOW",
+   "RETRIEVAL"
+  ],
+  "VERIFICATION": [
+   "VERIFY"
+  ]
+ },
+ "topic_rules": {
+  "ACTIVE_INTELLIGENCE": [
+   "ACT",
+   "KNOW"
+  ],
+  "APPLICATION_COMPLETION": [
+   "ACT"
+  ],
+  "ARCHIVE_RECOVERY": [
+   "KNOW",
+   "SUCCESSOR"
+  ],
+  "AWESOME-THESIS": [
+   "HUMAN_VALUE"
+  ],
+  "CANARY_EXPERIMENT_SIGNALS": [
+   "VERIFY",
+   "LEARN"
+  ],
+  "COMPOUNDING_INTELLIGENCE": [
+   "LEARN"
+  ],
+  "CONTINUITY": [
+   "SUCCESSOR"
+  ],
+  "CONTINUITY/COLD-14": [
+   "SUCCESSOR"
+  ],
+  "CURRENT_ARCHITECTURAL_TRUTH": [
+   "KNOW",
+   "DECISION"
+  ],
+  "DESIGN_MASTERY": [
+   "HUMAN_VALUE"
+  ],
+  "EARNED_INTELLIGENCE": [
+   "LEARN"
+  ],
+  "ENGINEERING-PROOF/PROTECTED-DOCUMENT-INTEGRITY": [
+   "VERIFY",
+   "LAW"
+  ],
+  "EPISTEMIC-INTEGRITY": [
+   "VERIFY",
+   "LAW"
+  ],
+  "EXECUTION": [
+   "ACT"
+  ],
+  "FOUNDER-PHILOSOPHY": [
+   "LAW",
+   "HUMAN_VALUE"
+  ],
+  "GOVERNANCE": [
+   "LAW"
+  ],
+  "GOVERNANCE/PROOF-HONESTY": [
+   "VERIFY",
+   "LAW"
+  ],
+  "HUB_INTELLIGENCE_ARCHITECTURE": [
+   "HUMAN_VALUE",
+   "KNOW"
+  ],
+  "HUMAN_ARCHITECTURE": [
+   "HUMAN_VALUE"
+  ],
+  "INTELLIGENCE_CONTINUITY": [
+   "SUCCESSOR",
+   "KNOW"
+  ],
+  "INTERNAL_MORALITY": [
+   "LAW",
+   "HUMAN_VALUE"
+  ],
+  "MEMORY_DISCIPLINE": [
+   "KNOW"
+  ],
+  "NAYA-1-DISTILLED-INTELLIGENCE": [
+   "KNOW",
+   "SUCCESSOR"
+  ],
+  "NAYAPOWER-CHARTER": [
+   "LAW"
+  ],
+  "NAYAPOWER-CORE-SYSTEM": [
+   "KNOW"
+  ],
+  "NAYA_CONTINUATION_ENGINE": [
+   "SUCCESSOR",
+   "KNOW"
+  ],
+  "NAYA_STANDING_LAW": [
+   "LAW"
+  ],
+  "OPERATING-DOCTRINE/TEAM-PROTOCOL": [
+   "TEAM",
+   "LAW"
+  ],
+  "OPERATING-INTELLIGENCE": [
+   "ACT",
+   "KNOW"
+  ],
+  "OPERATING_MODE": [
+   "TEAM"
+  ],
+  "OPERATING_MODEL": [
+   "TEAM",
+   "DECISION"
+  ],
+  "PHILOSOPHY": [
+   "HUMAN_VALUE",
+   "LAW"
+  ],
+  "SELF_OPTIMIZATION": [
+   "DECISION"
+  ],
+  "SMART_NOTE_NODE_OPERATING_FLOW": [
+   "LEARN",
+   "TEAM"
+  ],
+  "SMART_NOTE_REFINEMENT": [
+   "LEARN",
+   "KNOW"
+  ],
+  "SMART_NOTE_SYSTEM": [
+   "LEARN",
+   "KNOW"
+  ],
+  "SYSTEM-INTELLIGENCE": [
+   "KNOW"
+  ],
+  "SYSTEM-SCORECARD": [
+   "VERIFY",
+   "DECISION"
+  ],
+  "SYSTEM_DESIGN": [
+   "KNOW",
+   "DECISION"
+  ],
+  "VISION/INCOME-REFRAME": [
+   "HUMAN_VALUE"
+  ],
+  "VISION/MAGIC-FEELING": [
+   "HUMAN_VALUE"
+  ],
+  "VISION/SELF-OPTIMIZATION": [
+   "DECISION",
+   "HUMAN_VALUE"
+  ]
+ }
+}

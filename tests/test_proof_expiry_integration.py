@@ -18,6 +18,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from kernel.protocol.proof_expiry import DEP_POLICY_REF, DEP_SOURCE_SHA
 from kernel.protocol.read_receipt import issue_receipt, PROTOCOL_VERSION
+from tools.protocol_pin import issue_declaration_receipt
 from kernel.protocol.cold_start_gate import ColdStartState, run_cold_start
 
 
@@ -26,7 +27,7 @@ def _valid_receipt():
         "q1": "Shawn",
         "q2": "production credentials money destructive ratification security privacy",
         "q3": "no",
-        "q4": "9.0",
+        "q4": "9.5",
         "q5": "independent evidence",
     }
     return issue_receipt("test-agent", answers)
@@ -45,6 +46,8 @@ def _base_state():
                           "Law 11 (do no harm) is the only hard law",
         current_truth_location="mission-state feed #2154 and current main",
         next_action="do the work",
+        declaration_receipt=issue_declaration_receipt(
+            Path(__file__).resolve().parents[1], "test-agent"),
         receipt=_valid_receipt(),
     )
 
@@ -65,7 +68,7 @@ def test_cold_start_autoresolves_and_accepts_fresh_receipt():
 def test_cold_start_autofire_refuses_superseded_receipt_without_params():
     """Law 12 fires with ZERO caller params: the strongest active proof.
 
-    A cryptographically VALID receipt issued against an old protocol
+    An integrity-VALID receipt issued against an old protocol
     version is refused on a plain run_cold_start(state) call — the current
     version auto-resolves, no opt-in needed.
     """
@@ -74,15 +77,15 @@ def test_cold_start_autofire_refuses_superseded_receipt_without_params():
         "q1": "Shawn",
         "q2": "production credentials money destructive ratification security privacy",
         "q3": "no",
-        "q4": "9.0",
+        "q4": "9.5",
         "q5": "independent evidence",
     })
-    assert old.verify(), "test setup: receipt must be cryptographically valid"
+    assert old.verify(), "test setup: receipt seal must verify"
     # Re-issue the same passing answers against an ancient protocol version.
     ancient = ReadReceipt(
         agent_id=old.agent_id, protocol_version="2000-01-01-ANCIENT",
         answers=old.answers, passed=old.passed, issued_at=old.issued_at,
-    ).sign()
+    ).seal()
     assert ancient.verify(), "test setup: ancient receipt must verify"
     state = _base_state()
     state.receipt = ancient

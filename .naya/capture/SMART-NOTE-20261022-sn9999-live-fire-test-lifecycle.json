@@ -1,0 +1,80 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-9999",
+  "capture_id": "20261022-sn9999-live-fire-test-lifecycle",
+  "title": "SN-9999 — hub-sync live-fire test note (lifecycle record; retired test fixture)",
+  "category": "SYSTEM",
+  "topic": "LIFECYCLE",
+  "subtopic": "TEST_FIXTURE_RETIREMENT",
+  "canonical_intent": "LIFECYCLE_RECORD_RETIRED_TEST_FIXTURE",
+  "lifecycle_state": "ACTIVE",
+  "projection": {
+    "publication_scope": "PRIVATE",
+    "human_director_authorized_publication": false,
+    "category_slug": "SYSTEM",
+    "topic_slug": "LIFECYCLE",
+    "subtopic_slug": "TEST-FIXTURE-RETIREMENT"
+  },
+  "source": {
+    "source_type": "lifecycle_restoration",
+    "source_reference": "Created by Naya Clarity Narzan as a throwaway live-fire test fixture on 2026-10-21 (af3cc4ccb 'test(hub-sync): live-fire test note — measures push-to-Hub-card latency; removed right after'); removed the same day per its documented self-removing design (a7c84c34b 'test(hub-sync): remove live-fire test notes — measurement complete (25s push-to-card)'). Recovered from git history 2026-10-22 to satisfy the ratified-intelligence-cannot-vanish guard: every id that ever existed in history must carry a registry entry or a capture. This capture IS the machine-readable lifecycle record for that deletion.",
+    "captured_at": "2026-10-22",
+    "captured_at_utc": "2026-10-22T03:55:00Z",
+    "captured_by": "Naya 5 (safety builder)",
+    "director": "Shawn Vibert",
+    "previous_capture_id": null,
+    "recovery_reason": "tests/test_ratified_intelligence_cannot_vanish.py flagged SN-9999 as VANISHED: the id appeared in committed SMART-NOTES paths but had neither a registry entry nor a capture on disk. The object was a throwaway test fixture (truth state CANDIDATE, never ratified), so restoration as live intelligence would be false. It is restored as what it honestly is: a lifecycle record documenting a retired test fixture, with the original content preserved verbatim and the deletion recorded below.",
+    "recovery_truth_state": "NEVER_RATIFIED_TEST_FIXTURE_RETIRED_BY_DESIGN",
+    "ratification": null,
+    "restoration_provenance": {
+      "status": "RETIRED_TEST_FIXTURE_LIFECYCLE_RECORDED",
+      "deleted_in": "a7c84c34b — 'test(hub-sync): remove live-fire test notes — measurement complete (25s push-to-card)'",
+      "deleted_from_commit": "af3cc4ccb",
+      "recovered_from": "git object af3cc4ccb:BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/hub-sync-test/SN-9999/IB-SMART-NOTE-20261021-sn9999-hub-sync-live-fire-test.md",
+      "original_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/hub-sync-test/SN-9999/IB-SMART-NOTE-20261021-sn9999-hub-sync-live-fire-test.md",
+      "why_restored": "Not an unlicensed deletion of ratified intelligence: the fixture's own documented design was self-removal after measurement ('Delete on sight', 'removed right after'). The deletion was documented in commit messages but had no machine-readable lifecycle record, which is exactly what the vanish guard enforces. This capture provides that record. It is deliberately NOT pinned in RESTORED_AFTER_DELETION and does NOT claim RESTORED_AFTER_UNLICENSED_DELETION status, because that claim would be false.",
+      "never_ratified": true,
+      "original_truth_state": "CANDIDATE",
+      "schema_from": "raw markdown smart note (IB-SMART-NOTE)",
+      "schema_to": "naya.smart-note-capture.v2",
+      "content_preserved": "100% of the original file content, preserved verbatim in raw_source below."
+    },
+    "raw_source": "# Hub Sync Live-Fire Test\n\n**ID:** IB-SMART-NOTE-20261021-sn9999-hub-sync-live-fire-test\n**Created:** 2026-10-21\n**Category:** SYSTEM / Hub Sync Test\n\n## IN A NUTSHELL\n\nThis is a test note. It exists to measure how fast a note landed on main becomes a card in the Hub. It is removed right after the measurement.\n\n## HUMAN\n\nA stopwatch test for the new standing sync: land a note, count the seconds until the Hub card appears.\n\n## CHILD\n\nWe dropped a note in the box and timed how fast it showed up on the board.\n\n## GRANDMA\n\nJust a timing test, dear — nothing in here you need to remember.\n\n## NAYA\n\nLive-fire verification of hub-sync (the standing watcher): push-to-card latency must be seconds, not minutes or hours. Cleanup follows immediately after the measurement.\n\n## MACHINE\n\n```json\n{\"test\": \"hub-sync-live-fire\", \"expect\": \"card minted within seconds of landing on main\", \"cleanup\": \"file and row removed after measurement\"}\n```\n\n## WHAT IT ALL MEANS\n\nIf this card appears within seconds, the flow Shawn ordered — smart note this, and it's in the Hub — works for any hand that lands a note.\n\n## WHAT'S IN IT FOR YOU\n\nProof, not promises: the sync works at the speed the system promises.\n\n## HOW IT APPLIES\n\nMeasure, then remove this file and its card. The standing watcher stays.\n"
+  },
+  "intelligence": {
+    "essence": "SN-9999 was a throwaway live-fire test fixture created 2026-10-21 to measure how fast a note landed on main becomes a card in the Hub (push-to-card latency). It was never ratified intelligence (truth state CANDIDATE). It was removed the same day per its documented self-removing design. This capture is its lifecycle record: proof that nothing vanished silently.",
+    "human_view": "A timing-test note from 2026-10-21. Measurement: 25s push-to-card latency recorded. It was designed to be deleted right after the measurement, and it was. This record exists so the safety system can verify no intelligence ever disappears without a trace.",
+    "simple_view": "A test note that checked the system works, then was thrown away on purpose. This is its receipt, so we can prove it was thrown away on purpose and nothing was lost.",
+    "naya_view": "Lifecycle record for retired test fixture SN-9999. Original: measure how fast a note landed on main becomes a card in the Hub (push-to-card latency). Never ratified; CANDIDATE ceiling honored. Deletion was per the fixture's own design, documented in commit messages, now also machine-readable here. The vanish guard (test_ratified_intelligence_cannot_vanish) is satisfied by presence, not by pretending this was intelligence.",
+    "ai_view": "Structured lifecycle record. entity=SN-9999; kind=retired_test_fixture; ratified=false; deletion=by_design_documented; restoration=this_capture; guard=test_ratified_intelligence_cannot_vanish VANISHED-class satisfied via on-disk capture.",
+    "machine_view": {
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true,
+      "status": "lifecycle_record_only",
+      "authority_inheritance": "none — test fixture, never ratified",
+      "decision_engine": "not_applicable",
+      "hard_invariants": [
+        "this capture is a lifecycle record, not live intelligence",
+        "the original object was a throwaway test fixture by documented design",
+        "no ratification is claimed or implied"
+      ],
+      "human_gates": [],
+      "law_id": null,
+      "optimization_function": "none",
+      "optimization_target": "none",
+      "roadmap": []
+    },
+    "decisions": [
+      "Restore as lifecycle record, not as live intelligence (restoring as intelligence would be a false claim).",
+      "Do not pin in RESTORED_AFTER_DELETION and do not claim RESTORED_AFTER_UNLICENSED_DELETION (the deletion was by documented design).",
+      "Keep publication_scope PRIVATE: a retired test fixture is not Hub-facing intelligence.",
+      "Preserve the original content verbatim so the record is auditable."
+    ],
+    "connections": [],
+    "uncertainty": "None material. Creation, purpose, removal, and non-ratification are all documented in the cited commits and the original content preserved here.",
+    "applicability": "Safety verification only: satisfies the vanish guard's presence requirement and documents the test-fixture lifecycle for future audits. Not for retrieval as intelligence.",
+    "learning_lesson": "Test fixtures that live in intelligence paths need a machine-readable lifecycle from birth: a self-removing design documented only in a commit message still trips the vanish guard. The guard is working as designed — it caught a real gap (no lifecycle record), and the cure is the record, not the resurrection.",
+    "successor_effect": "Future live-fire test notes should land with a lifecycle record (or outside intelligence paths) so the vanish guard never fires on a designed transient again.",
+    "epistemic_state": "CANDIDATE"
+  }
+}

@@ -175,7 +175,7 @@
     },
     "CONNECT": {
       "status": "SOURCE_GRAPH_V2_MERGED_PRODUCTION_PARITY_PENDING",
-      "entrypoint": "Graph V2 selector/reconciliation inside supabase/functions/nayanet-know-runtime/know.ts",
+      "entrypoint": "Graph V2 selector/reconciliation in supabase/functions/_shared/connect_selector.ts (CONNECT-owned module; consumed by supabase/functions/nayanet-know-runtime/know.ts)",
       "persisted_transitions": "nayanet_intelligent_blocks.connections + relationship-aware retrieval receipts",
       "proof_boundary": "Graph V2 contract is ratified and selector source merged. Live KNOW is stale to current source, so current Graph V2 influence is not production-proven.",
       "behavioral_contract": {

@@ -24,7 +24,8 @@ with a well-formed date partition. A note-named file anywhere else is
 corpora, capture staging).
 
 OWNER: an identifiable owner — an explicit `**Owner:**` / `| Owner |` field,
-or a seat signature (Naya 1-5, Coda 1-4, Codex, Shawn / Human Director) in the
+or a seat signature (Naya 1-5, Coda 1-4, Codex, Shawn / Human Director, or one
+of the 12 named area leads: Naya Alpha..Naya Mu) in the
 header/provenance block. Unowned = flagged (warning), never a block.
 
 Relationship to existing seams (surveyed 2026-10-10 — no duplication):
@@ -95,7 +96,9 @@ OWNER_FIELD_RES = (
     re.compile(r"^\s*\|\s*Owner\s*\|\s*(.+?)\s*\|", re.M),
 )
 SEAT_RE = re.compile(
-    r"\b(?:Naya|Coda)\s*[ _-]?[1-5]\b|\bCodex\b|\bShawn(?:\s+Vibert)?\b"
+    r"\b(?:Naya\s*[ _-]?(?:[1-5]|alpha|beta|gamma|delta|epsilon|zeta|eta"
+    r"|theta|iota|kappa|lambda|mu)"
+    r"|Coda\s*[ _-]?[1-5])\b|\bCodex\b|\bShawn(?:\s+Vibert)?\b"
     r"|\bHuman Director\b",
     re.I,
 )

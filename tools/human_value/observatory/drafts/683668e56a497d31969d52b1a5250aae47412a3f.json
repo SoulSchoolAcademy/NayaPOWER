@@ -1,0 +1,34 @@
+{
+  "author": "Shawn Vibert",
+  "diffstat": {
+    "deletions": 0,
+    "files": 2,
+    "insertions": 1140,
+    "top_dirs": [
+      "tests",
+      "tools"
+    ]
+  },
+  "draft_version": 1,
+  "mechanical_note": "Every field above is verifiable with `git log` / `git diff` at the merge SHA. No value judgment is present or implied.",
+  "merge_sha": "683668e56a497d31969d52b1a5250aae47412a3f",
+  "merged_at": "2026-10-11T21:04:41-07:00",
+  "parents": [
+    "f6d28a8d5a6bb3260492da6af2bec1f8804ec114",
+    "63b3d6056417b64704526b80cf8ef16fe9c6f567"
+  ],
+  "pr_number": 2435,
+  "pr_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2435",
+  "status": "DRAFT \u2014 not a ledger event. The machine observes; it never credits. A graded scorecard promotes this.",
+  "suggested_evidence": [
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/commit/683668e56a497d31969d52b1a5250aae47412a3f"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2435"
+    }
+  ],
+  "title": "Merge pull request #2435 from SoulSchoolAcademy/naya5/intent-parser"
+}

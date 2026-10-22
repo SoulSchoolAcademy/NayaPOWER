@@ -573,13 +573,25 @@ test("CLAIM 3 -- a regression that drops kernel influence fails the build", () =
   // The reference kernel is intentionally still only SELF+LAW. The canonical nine-node
   // behavior engine, however, must demonstrate a real control/treatment effect for every
   // node. A count below nine means at least one node is still decorative in the measured
-  // runtime path and the load-bearing claim remains false.
+  // runtime path and the load-bearing claim remains false. The engine may legitimately
+  // grow beyond nine (e.g. the ADVISE influence bridge, P0-B) -- what must not regress
+  // is that all nine canonical nodes are invoked and demonstrate influence.
   const behaviorEngine = Object.entries(report.report).find(([k]) =>
     k.includes("kernel_behavior_engine")
   );
   assert.ok(behaviorEngine, "the report must include the canonical nine-node behavior engine");
   const [, behaviorStats] = behaviorEngine;
-  assert.equal(behaviorStats.invoked_count, 9);
+  const CANONICAL_NINE = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"];
+  for (const node of CANONICAL_NINE) {
+    assert.ok(
+      behaviorStats.invoked_nodes.includes(node),
+      `${node} was not invoked; a drop below the canonical nine is a kernel-influence regression`
+    );
+  }
+  assert.ok(
+    behaviorStats.invoked_count >= 9,
+    `the behavior engine invoked ${behaviorStats.invoked_count} nodes; it must invoke at least the canonical nine`
+  );
   assert.equal(
     behaviorStats.influence_demonstrated_count,
     9,

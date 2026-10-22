@@ -1,0 +1,34 @@
+{
+  "author": "Shawn Vibert",
+  "diffstat": {
+    "deletions": 8,
+    "files": 2,
+    "insertions": 148,
+    "top_dirs": [
+      "tests",
+      "tools"
+    ]
+  },
+  "draft_version": 1,
+  "mechanical_note": "Every field above is verifiable with `git log` / `git diff` at the merge SHA. No value judgment is present or implied.",
+  "merge_sha": "c815ce2972bf6c8230b4de33ef66ca181b77a7b6",
+  "merged_at": "2026-10-11T21:19:36-07:00",
+  "parents": [
+    "d998cac4e424c64a968cd57ecc7e549ceb0f8384",
+    "ff22918eef8dfcd2966616b85474d357bcf1c162"
+  ],
+  "pr_number": 2440,
+  "pr_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2440",
+  "status": "DRAFT \u2014 not a ledger event. The machine observes; it never credits. A graded scorecard promotes this.",
+  "suggested_evidence": [
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/commit/c815ce2972bf6c8230b4de33ef66ca181b77a7b6"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2440"
+    }
+  ],
+  "title": "Merge pull request #2440 from SoulSchoolAcademy/naya5/option-miner"
+}

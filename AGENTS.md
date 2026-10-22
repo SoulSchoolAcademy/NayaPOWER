@@ -3,7 +3,7 @@
 ## ⚖️ THE NAYA PROTOCOL — READ FIRST
 
 **[PROTOCOL.md](./PROTOCOL.md) is the canonical operating law. Every Naya, every time.**
-17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
+Step 0 plus 17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
 Read it before anything else in this file. It is the code of all codes.
 
 ## STOP — BOOT BEFORE WORK
@@ -11,6 +11,10 @@ Read it before anything else in this file. It is the code of all codes.
 Any AI agent entering this repository must treat this file as the operational entry point.
 
 Before changing code, documentation, infrastructure, or configuration:
+
+0. **Run the machine boot gate:** `python3 kernel/protocol/protocol_integrity_gate.py --agent-id <id> --json` — exit 0 = boot allowed, exit 1 = boot refused (fail closed). It machine-verifies the activation checklist (14 thinking lessons + Operating Code V2 against pinned canonical bytes, Gate 1), the protocol manifest, and the current tip. **No checklist pass = no start.** Prose reading below does not substitute for a green gate.
+
+0b. **Read the read-me-first guide:** [`BRAIN/00-ACTIVATION/READ-ME-FIRST.md`](BRAIN/00-ACTIVATION/READ-ME-FIRST.md) — the 30-minute activation: where everything is, the oath you speak (§10, *who you are before you begin*), and the code you live by ([`THE-CODE-SHE-LIVES-BY.md`](BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md)). No work happens before activation; activation is not complete until the oath is spoken and the readiness bars hold.
 
 1. Read this file completely.
 2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.

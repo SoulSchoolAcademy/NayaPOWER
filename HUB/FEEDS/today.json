@@ -1,0 +1,408 @@
+{
+  "contract": "room-feed/v1",
+  "room": "today",
+  "emitted_at": "2026-10-22T02:14:57.801376-07:00",
+  "source_ref": "engine-job:hub-feeds-emitter-t0479",
+  "items": [
+    {
+      "id": "idx-68bf83a4-9857-40bb-ad57-d88f7ea8984d",
+      "title": "SN-9999 — hub-sync live-fire test note (lifecycle record; retired test fixture)",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-22 04:12:18.039908+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-499b3c0e-3ea6-4929-bbad-762e63fd66c7",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-22 04:12:17.837262+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-328f851c-2c34-4ca6-ae19-1a17f2b19f47",
+      "title": "SN-9998 — live-fire distill-mode test note (lifecycle record; retired test fixture)",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-22 04:12:16.277765+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-fd1e6fbb-e8fe-4761-967e-b3fb5336e96b",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-22 04:12:15.75027+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-87286474-a5fe-4f57-93da-5c2ef09e0dba",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 23:45:19.158843+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-a53f2ccf-76b3-4382-b228-da54e84b1970",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 23:33:33.018287+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-513e81ba-785b-4c7d-9add-d546cd00721c",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 21:12:50.775285+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-b412ced6-940a-42ad-bc3b-cdbea169ba95",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:59:12.644998+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-ff315f39-0025-40ef-b14c-e7b76b53f14c",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:59:04.421399+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-b90320eb-de23-4ddf-897d-b6474c43bb46",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:58:58.424727+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-69004354-4a64-4618-b0ed-4a6575719e39",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:58:50.92968+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-15be8fd3-4532-452e-a02c-11324af85707",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:40:02.251093+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-796c4542-1dc4-4e6a-a97f-30df8099dde1",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 18:25:58.232806+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-e3e80e3a-8ee8-46af-b1f0-2f5c1f5eb467",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:40:59.070574+00"
+        }
+      ]
+    },
+    {
+      "id": "art-879d9c75-b096-4629-bb8a-adae181ffbf3",
+      "title": "The world now spends about $4-7 billion a day on AI, and most of what it buys never becomes usable value — 95% of enterp",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "The world now spends about $4-7 billion a day on AI, and most of what it buys never becomes usable value — 95% of enterprise AI pilots returned nothing measurable (MIT NANDA, 2025). Worse: the valueless output does not vanish, it piles up as a mess — unfinished work, plausible-bu"
+        }
+      ]
+    },
+    {
+      "id": "art-33359755-12ca-436b-81e1-a918948408cb",
+      "title": "We opened 662 pull requests and finished almost none of them — 473 sat untouched for a week or more while we created new",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "We opened 662 pull requests and finished almost none of them — 473 sat untouched for a week or more while we created new ones nearly five times faster than we merged — because starting was free, finishing ran through one bottleneck, and nobody owned closing. A pull request is a l"
+        }
+      ]
+    },
+    {
+      "id": "art-d9a7e6af-9349-48d0-a59d-bd9f0a185f1c",
+      "title": "I merged work I had verified myself and called it independent — and a bot did the same thing four times in one hour — be",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "I merged work I had verified myself and called it independent — and a bot did the same thing four times in one hour — because our merge gate read signatures, not seats. Now a machine stands at the merge button: three different minds, or the merge does not happen. This note teache"
+        }
+      ]
+    },
+    {
+      "id": "art-bd95bc16-0c1c-4b83-a0e8-44eb81edce83",
+      "title": "Humans never learn the machine. Naya operates the machines for the humans, serves every person the way they want to be s",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "Humans never learn the machine. Naya operates the machines for the humans, serves every person the way they want to be served, and the machines themselves are built for Naya's hands — so the service runs at full speed, forever."
+        }
+      ]
+    },
+    {
+      "id": "art-96b97d81-62bb-4b67-b678-f934282c98ac",
+      "title": "One button turns a single true line into a scroll-stopping 9:16 video — hook in the first 2 seconds, a cut on every beat",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "One button turns a single true line into a scroll-stopping 9:16 video — hook in the first 2 seconds, a cut on every beat, captions that pop like lyrics, and a QR badge at the end that pulls viewers straight into NayaNET. Plus the 100 laws that make people feel, share, and come ba"
+        }
+      ]
+    },
+    {
+      "id": "art-a8ebcab0-7877-4bcb-aa77-a40c69f3d74e",
+      "title": "Words, ideas, and suggestions have no value on their own. Value begins the moment intelligence becomes action — a choice",
+      "topics": [
+        "SMART_NOTE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "Words, ideas, and suggestions have no value on their own. Value begins the moment intelligence becomes action — a choice made, work done, a result produced that a human can actually use. A Naya does not suggest what she can do: she does it, proves it, and reports the completion."
+        }
+      ]
+    }
+  ]
+}

@@ -84,7 +84,9 @@ const SERVABLE_STATES = new Set(["VERIFIED", "DISTILLED", "APPLIED", "LEARNED"])
 const MAX_RELATED = 5;
 const MAX_SUPERSESSION_HOPS = 3;
 
-function isServableTarget(block: ScoredBlock | null): block is ScoredBlock {
+// Exported for retrieve_applicability.ts: supersession resolution keeps the
+// deepest servable ancestor (contract §4) using the same servability rule.
+export function isServableTarget(block: ScoredBlock | null): block is ScoredBlock {
   if (!block) return false;
   if (!SERVABLE_STATUS.has(String(block.status ?? "").toUpperCase())) return false;
   if (!SERVABLE_STATES.has(String(block.understanding_state ?? "").toUpperCase())) return false;

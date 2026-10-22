@@ -238,6 +238,50 @@ class CompletenessGateTests(unittest.TestCase):
         self.fx.tool_ref("SN-0916")
         self.assertEqual(cg.main(["--root", self.tmp.name, "--strict"]), 1)
 
+    # ---- owner: named-seat signatures (SEAT_RE fix, 2026-10-13) --------------
+    def test_named_seat_signature_recognized_as_owner(self):
+        body = good_note("SN-0918", provenance="signed by Naya Lambda")
+        self.fx.note("SN-0918", body=body)
+        self.fx.tool_ref("SN-0918")
+        rep = self.gate()
+        self.assertEqual(rep["notes"][0]["owner"]["id"], "Naya Lambda")
+        self.assertEqual(rep["notes"][0]["owner"]["evidence"],
+                         "seat signature in header/provenance")
+        self.assertFalse(any("unowned" in w
+                             for w in rep["notes"][0]["warnings"]))
+
+    def test_all_twelve_named_seats_recognized(self):
+        names = ["Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta",
+                 "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu"]
+        for i, name in enumerate(names):
+            sn = f"SN-09{20 + i}"
+            body = good_note(sn, provenance=f"relayed by Naya {name}")
+            self.fx.note(sn, body=body)
+            self.fx.tool_ref(sn, fname=f"consumer_{i}.py")
+        rep = self.gate()
+        self.assertEqual(rep["failures"], 0)
+        owners = {n["owner"]["id"] for n in rep["notes"]}
+        self.assertEqual(owners, {f"Naya {n}" for n in names})
+        for note in rep["notes"]:
+            self.assertFalse(any("unowned" in w for w in note["warnings"]),
+                             note)
+
+    def test_named_seat_case_insensitive(self):
+        body = good_note("SN-0932", provenance="authored by naya gamma")
+        self.fx.note("SN-0932", body=body)
+        rep = self.gate()
+        self.assertEqual(rep["notes"][0]["owner"]["id"], "naya gamma")
+
+    def test_named_seat_near_miss_still_unowned(self):
+        # "Naya Alphonse" is not a seat; the fix must not overbroaden.
+        body = good_note("SN-0933", provenance="relayed by Naya Alphonse")
+        self.fx.note("SN-0933", body=body)
+        self.fx.tool_ref("SN-0933")
+        rep = self.gate()
+        self.assertEqual(rep["notes"][0]["owner"], None)
+        self.assertTrue(any("unowned" in w
+                            for w in rep["notes"][0]["warnings"]))
+
     # ---- code form: warning only ---------------------------------------------
     def test_code_form_gap_is_warning_only(self):
         self.fx.note("SN-0917")  # no tools/ reference

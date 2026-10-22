@@ -14,6 +14,10 @@ does not exist.
   BEFORE the outcome is observed. An event's `decision_id` must name a
   prediction recorded earlier — retroactive credit is forbidden and the join
   refuses it.
+- `trend.jsonl` — one snapshot per observatory promotion (`as_of`,
+  `hv_per_day_total`, `dai_per_day`, `events_validated`,
+  `snapshot_ledger_sha256`). The raw material of the 30-day trend; appended
+  only by `observatory.py promote`, never hand-edited.
 
 ## Placement law
 

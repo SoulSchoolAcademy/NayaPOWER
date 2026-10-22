@@ -127,6 +127,11 @@ def validate_block(data):
     which enforces the persisted envelope's requirements (owner, scope,
     provenance) plus the file-form additions. ib_reconcile.py is a required
     sibling — there is no v1.0 fallback path.
+
+    This is the GENERAL schema validator: it requires a declared owner, any
+    declared owner. The NAYA-only seed-corpus rule lives in
+    ib_reconcile.validate_system_owned and is enforced on intelligence/blocks/
+    by the seed-corpus tests — the generic authoring flow is not restricted.
     """
     if not _RECONCILE_AVAILABLE:
         return ["FATAL: ib_reconcile.py (canonical v1.1 contract) not found "
@@ -325,6 +330,7 @@ def cmd_reindex(_args):
             "id": _block_id(b),
             "title": b["title"],
             "principle": b["principle"],
+            "owner_id": b["owner_id"],
             "topics": b["applicability"]["topics"],
             "verification_status": b["verification_status"],
             "graduation_stage": b["graduation"]["stage"],
@@ -358,7 +364,7 @@ def cmd_reindex(_args):
     return 0
 
 
-def main(argv=None):
+def build_parser():
     p = argparse.ArgumentParser(prog="ib", description="Intelligent Blocks CLI")
     sub = p.add_subparsers(dest="cmd", required=True)
 
@@ -372,8 +378,10 @@ def main(argv=None):
     c.add_argument("--situations", default="")
     c.add_argument("--decisions", default="")
     c.add_argument("--evidence-note", default="")
-    c.add_argument("--owner-id", default="",
-                   help="REQUIRED for persistence; never invented — pass the real owner UUID")
+    c.add_argument("--owner-id", default="NAYA",
+                   help="system owner; Shawn 2026-10-11 locked Naya as owner of "
+                        "all seed and future blocks — override only for "
+                        "non-system contexts")
     c.add_argument("--owner-scope", default="PRIVATE",
                    choices=["PRIVATE", "TEAM", "COLLECTIVE", "PUBLIC"])
     c.add_argument("--purpose", default="", help="why preserve this (protocol §6)")
@@ -409,6 +417,11 @@ def main(argv=None):
     sub.add_parser("validate", help="validate all blocks")
     sub.add_parser("reindex", help="rebuild REGISTRY.json")
 
+    return p
+
+
+def main(argv=None):
+    p = build_parser()
     args = p.parse_args(argv)
     return {
         "create": cmd_create, "get": cmd_get, "list": cmd_list,

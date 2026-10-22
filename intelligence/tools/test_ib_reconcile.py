@@ -222,9 +222,117 @@ class TestStateMapping(unittest.TestCase):
         self.assertTrue(any("disagrees" in p for p in problems))
 
 
+class TestRoundTripLosslessRichFields(unittest.TestCase):
+    """#2386 (Naya 5 finding): the exporter must emit every field the
+    importer expects. Rich file-form fields — evidence kind/type, per-item
+    explanatory notes, detailed applicability, status history — must survive
+    export -> import byte-exact, not degrade to refs/empty fallbacks."""
+
+    def _roundtrip(self, **over):
+        original = make_v11(**over)
+        row = to_persisted_row(original)
+        back = from_persisted_row(row)
+        return original, row, back
+
+    def test_exporter_carries_evidence_detail(self):
+        _, row, _ = self._roundtrip()
+        detail = row["provenance"].get("evidence_detail")
+        self.assertIsInstance(detail, list)
+        self.assertEqual(len(detail), 1)
+        self.assertEqual(detail[0]["kind"], "direct-word")
+        self.assertEqual(detail[0]["ref"], "AGENTS.md: Law One")
+        self.assertEqual(detail[0]["note"], "Root of all laws.")
+
+    def test_evidence_type_and_note_roundtrip_byte_exact(self):
+        o, _, b = self._roundtrip()
+        self.assertEqual(b["evidence"], o["evidence"])
+        self.assertEqual(
+            json.dumps(b["evidence"], sort_keys=True),
+            json.dumps(o["evidence"], sort_keys=True),
+        )
+
+    def test_applicability_detail_roundtrip_byte_exact(self):
+        o, row, b = self._roundtrip()
+        self.assertIn("applicability_detail", row["provenance"])
+        self.assertEqual(
+            json.dumps(b["applicability"], sort_keys=True),
+            json.dumps(o["applicability"], sort_keys=True),
+        )
+        self.assertEqual(b["applicability"]["topics"], ["identity", "ethics"])
+        self.assertEqual(b["applicability"]["situations"], "Every decision.")
+        self.assertEqual(b["applicability"]["decisions"], "Any choice affecting others.")
+
+    def test_status_history_roundtrip_byte_exact(self):
+        o, row, b = self._roundtrip()
+        self.assertIn("file_status_history", row["provenance"])
+        self.assertEqual(
+            json.dumps(b["status_history"], sort_keys=True),
+            json.dumps(o["status_history"], sort_keys=True),
+        )
+        self.assertEqual(b["status_history"][0]["note"], "Seed.")
+        self.assertEqual(b["status_history"][0]["status"], "APPLIED")
+
+    def test_roundtrip_is_fixed_point(self):
+        # export -> import -> export -> import must be stable (idempotent).
+        o, row1, b1 = self._roundtrip()
+        row2 = to_persisted_row(b1)
+        b2 = from_persisted_row(row2)
+        for key in ("evidence", "applicability", "status_history", "provenance"):
+            self.assertEqual(
+                json.dumps(b2[key], sort_keys=True),
+                json.dumps(b1[key], sort_keys=True),
+                key,
+            )
+        self.assertEqual(
+            json.dumps(row2["provenance"], sort_keys=True),
+            json.dumps(row1["provenance"], sort_keys=True),
+        )
+
+    def test_exporter_does_not_mutate_caller_provenance(self):
+        o = make_v11()
+        before = copy.deepcopy(o["provenance"])
+        to_persisted_row(o)
+        self.assertEqual(o["provenance"], before)
+
+
+class TestTamperedDetailFailsClosed(unittest.TestCase):
+    """Adversarial: malformed rich-detail in a persisted row fails LOUDLY."""
+
+    def _row(self):
+        return to_persisted_row(make_v11())
+
+    def test_tampered_evidence_detail_raises(self):
+        row = self._row()
+        row["provenance"]["evidence_detail"] = {"not": "a list"}
+        with self.assertRaises(ValueError):
+            from_persisted_row(row)
+
+    def test_tampered_applicability_detail_raises(self):
+        row = self._row()
+        row["provenance"]["applicability_detail"] = ["not", "a", "dict"]
+        with self.assertRaises(ValueError):
+            from_persisted_row(row)
+
+    def test_tampered_status_history_raises(self):
+        row = self._row()
+        row["provenance"]["file_status_history"] = "definitely-not-a-list"
+        with self.assertRaises(ValueError):
+            from_persisted_row(row)
+
+    def test_missing_evidence_detail_degrades_to_refs_loudly_documented(self):
+        # Legacy rows persisted before this fix have no evidence_detail;
+        # the importer still works, but rich fields are NOT silently
+        # invented — refs survive, kind/note come back empty.
+        row = self._row()
+        del row["provenance"]["evidence_detail"]
+        back = from_persisted_row(row)
+        self.assertEqual([e.get("ref") for e in back["evidence"]],
+                         ["AGENTS.md: Law One"])
+        self.assertEqual(back["evidence"][0]["note"], "")
+
+
 class TestNegativeControls(unittest.TestCase):
     """Adversarial: prove the mapping cannot silently corrupt."""
-
     def test_tampered_provenance_detected(self):
         o = make_v11()
         row = to_persisted_row(o)

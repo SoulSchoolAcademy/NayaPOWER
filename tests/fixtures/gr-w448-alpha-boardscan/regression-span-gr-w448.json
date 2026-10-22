@@ -1,0 +1,27 @@
+{
+ "set": "gr-w448-alpha-boardscan",
+ "captured_utc": "2026-10-18T12:38:00Z",
+ "captured_by": "Naya Alpha (w449)",
+ "source": "live board #2721 page 19, classified by board_scan_opener.py at hidden_files/ tip-adjacent bytes this wave",
+ "expected_classification": "REVIEW",
+ "fixtures": [
+  {
+   "id": 6248882372,
+   "path": "review-body-6248882372.json",
+   "fixture_class": "correction-post",
+   "body_sha256": "a348e5afc2b5adbfd01a5585c0dc642255e52ee9ba79b0bf9711d85664059c99"
+  },
+  {
+   "id": 6248883263,
+   "path": "review-body-6248883263.json",
+   "fixture_class": "main-seat-adjudication",
+   "body_sha256": "19b9cd388da6e4bfa6aafc6412b4ec4e71d6dd8bb19aba5265b487b31980fe18"
+  },
+  {
+   "id": 6249439018,
+   "path": "review-body-6249439018.json",
+   "fixture_class": "main-seat-adjudication",
+   "body_sha256": "b8d30ec46375ef2f523baaa49ac3510cd467c1dfc7a1ec2d6b2454668d3524a6"
+  }
+ ]
+}

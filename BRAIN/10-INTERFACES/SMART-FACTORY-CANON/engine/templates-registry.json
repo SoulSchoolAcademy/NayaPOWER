@@ -1,0 +1,1091 @@
+{
+  "version": "templates-registry-v1",
+  "built": "2026-10-21T18:14:02Z",
+  "standard_feature_contracts": {
+    "applies_to": "Every app built from a templates entry in this registry, and every future base created for a key listed in missing. Predicates are dual-dialect: each check names the canon-base mechanism and/or the shipped flagship mechanism (the one-system os-* dialect, live at naya-model-*.nayapower.workers.dev). A feature passes on the mechanism the surface actually ships, never on a label alone. Where a canon selector names a Hub-room surface and the flagship realizes the same feature as an in-page block, the predicate is scoped to that block; see per-feature applies_to and dialect_note.",
+    "dialect_note": "Dialect reconciliation (GT-028, 2026-10-22): the v1 predicates were authored against the canon-base dialect only, so the shipped flagships scored 4/13 while demonstrably carrying most features in the one-system os-* dialect. v1.1 names both dialects, verified byte-by-byte against the three live models (301,792 / 301,729 / 301,774 bytes). No pass_standard was lowered and no canon predicate was removed: every widened selector or pattern names the real shipped mechanism it now accepts, labeled '(flagship dialect: ...)'. Genuine gaps remain failing by design: S2 service-worker registration, S11 Library/Q&A block absent, S12 Smart Lists operation absent. v1.2 (2026-10-22, GT-028 follow-up): S8's flagship label check learned the smart-app language law — its Today-subtitle expectation is stem-matched ('The latest real activity') instead of the fossilized 'on this page' wording the law retired; see the S8 dialect_note. No pass_standard lowered and no predicate removed in v1.2.",
+    "evaluation": {
+      "any_groups": "For checks whose requirement is 'any:<group>', at least one check in that group must pass.",
+      "feature_pass": "A feature passes only when all required checks and every any-group pass.",
+      "required": "Every check whose requirement is 'required' must pass."
+    },
+    "features": [
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "settings-surface",
+            "kind": "dom_exists",
+            "label": "Settings surface exists",
+            "requirement": "required",
+            "selector": "#settings, [data-feature='settings']"
+          },
+          {
+            "id": "settings-controls",
+            "kind": "count_at_least",
+            "label": "At least three Settings controls",
+            "minimum": 3,
+            "requirement": "required",
+            "selector": "#settings button, #settings input, #settings select, #settings textarea, [data-feature='settings'] button, [data-feature='settings'] input"
+          },
+          {
+            "id": "settings-labels",
+            "kind": "text_contains",
+            "label": "Named preference controls are present",
+            "match": "all",
+            "requirement": "required",
+            "selector": "#settings, [data-feature='settings']",
+            "values": [
+              "Dark mode",
+              "Public profile",
+              "Notifications"
+            ]
+          },
+          {
+            "id": "settings-binding",
+            "kind": "source_regex",
+            "label": "Script binds the Settings controls",
+            "pattern": "querySelectorAll\\(['\"]#settings [^'\"]+['\"]\\)[\\s\\S]{0,400}addEventListener",
+            "requirement": "any:behavior",
+            "scope": "script"
+          },
+          {
+            "id": "settings-persistence",
+            "kind": "source_regex",
+            "label": "Settings choices persist",
+            "pattern": "localStorage\\.setItem\\(['\"]naya\\.setting\\.",
+            "requirement": "any:behavior",
+            "scope": "script"
+          }
+        ],
+        "code": "S1",
+        "id": "settings",
+        "name": "Settings",
+        "pass_standard": "A Settings section exists, exposes at least three controls, names real preferences, and shipped script binds Settings controls to a persisted state change.",
+        "promise": "Every app has a real Settings surface whose preference controls change state and persist it."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "install-settings-surface",
+            "kind": "dom_exists",
+            "label": "Settings surface exists",
+            "requirement": "required",
+            "selector": "#settings, [data-feature='settings']"
+          },
+          {
+            "id": "install-control",
+            "kind": "text_contains",
+            "label": "Install control is inside Settings",
+            "match": "any",
+            "requirement": "required",
+            "selector": "#settings, [data-feature='settings']",
+            "values": [
+              "Install as App",
+              "Install App",
+              "Add to Home Screen"
+            ]
+          },
+          {
+            "id": "install-manifest",
+            "kind": "source_regex",
+            "label": "Web app manifest is linked",
+            "pattern": "<link[^>]+rel=[\"']manifest[\"']",
+            "requirement": "required",
+            "scope": "html"
+          },
+          {
+            "id": "install-service-worker",
+            "kind": "source_regex",
+            "label": "Service worker is registered",
+            "pattern": "serviceWorker\\.register\\(",
+            "requirement": "required",
+            "scope": "script"
+          },
+          {
+            "id": "install-prompt-handler",
+            "kind": "source_regex",
+            "label": "Install prompt event is handled",
+            "pattern": "beforeinstallprompt",
+            "requirement": "any:install-behavior",
+            "scope": "script"
+          },
+          {
+            "id": "install-prompt-call-os",
+            "kind": "source_regex",
+            "label": "Install prompt can be invoked (flagship dialect: the captured window.__osInstallPrompt is prompted from the Settings install control)",
+            "pattern": "__osInstallPrompt[\\s\\S]{0,600}?\\.prompt\\(\\)",
+            "requirement": "any:install-behavior",
+            "scope": "script"
+          },
+          {
+            "id": "install-prompt-call",
+            "kind": "source_regex",
+            "label": "Install prompt can be invoked",
+            "pattern": "deferredPrompt\\.prompt\\(|installPrompt\\.prompt\\(",
+            "requirement": "any:install-behavior",
+            "scope": "script"
+          },
+          {
+            "id": "install-installed-handler",
+            "kind": "source_regex",
+            "label": "Installed event is handled",
+            "pattern": "appinstalled",
+            "requirement": "any:install-behavior",
+            "scope": "script"
+          }
+        ],
+        "code": "S2",
+        "dialect_note": "The flagship captures the install prompt in the Hub pattern (window.__osInstallPrompt, prompted from the Settings install control; appinstalled cements nayanet.installed) - judged by install-prompt-call-os. The service-worker check is NOT dialect: no serviceWorker.register ships in the flagship bytes (a manifest is linked and served, and an unregistered /sw.js is served at the origin). S2 therefore still fails until registration ships - a genuine gap, recorded by GT-028.",
+        "id": "install_as_app_inside_settings",
+        "name": "Install as App inside Settings",
+        "pass_standard": "The Settings surface contains an install control, the app ships a manifest and a service worker, and script handles the install prompt or installed event.",
+        "promise": "Install lives inside Settings, not as a pushed strip or banner."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "communication-surface",
+            "kind": "dom_exists",
+            "label": "Mail/message surface exists",
+            "requirement": "required",
+            "selector": "#mail, [data-feature='smart-mail'], [data-feature='communication'], [data-block='message'], [data-block='inbox']"
+          },
+          {
+            "id": "communication-control",
+            "kind": "count_at_least",
+            "label": "A message or compose control exists",
+            "minimum": 1,
+            "requirement": "required",
+            "selector": "#msgbtn, #mail button, #mail form, #mail textarea, #mail input, [data-feature='communication'] button, [data-feature='communication'] textarea, [data-feature='communication'] form, #os-msg-btn, #os-msg-body, [data-block='message'] textarea, [data-block='message'] button, [data-block='message'] form"
+          },
+          {
+            "id": "communication-inbox-label",
+            "kind": "text_contains",
+            "label": "Inbox/message surface is named",
+            "match": "any",
+            "requirement": "required",
+            "selector": "#mail, [data-feature='smart-mail'], [data-feature='communication'], [data-block='inbox']",
+            "values": [
+              "Your Messages",
+              "Inbox",
+              "Smart Mail",
+              "Messages"
+            ]
+          },
+          {
+            "id": "communication-direct-handler",
+            "kind": "source_regex",
+            "label": "Message button has its own handler",
+            "pattern": "(?:getElementById\\(['\"]msgbtn['\"]\\)|querySelector\\(['\"]#msgbtn['\"]\\))\\s*(?:\\.addEventListener\\(|\\.onclick\\s*=)",
+            "requirement": "any:delivery",
+            "scope": "script"
+          },
+          {
+            "id": "communication-mailto",
+            "kind": "source_regex",
+            "label": "A mailto delivery route exists",
+            "pattern": "href=[\"']mailto:",
+            "requirement": "any:delivery",
+            "scope": "html"
+          },
+          {
+            "id": "communication-backend-insert",
+            "kind": "source_regex",
+            "label": "Message is delivered into the Smart Mail backend tables (flagship dialect: Supabase smart_mail_threads / smart_mail_messages insert)",
+            "pattern": "\\.from\\('smart_mail_(threads|messages)'\\)\\.insert\\(",
+            "requirement": "any:delivery",
+            "scope": "script"
+          },
+          {
+            "id": "communication-endpoint",
+            "kind": "source_regex",
+            "label": "A message/mail endpoint is called",
+            "pattern": "fetch\\([^;]{0,300}(messages|smart-mail|inbox)",
+            "requirement": "any:delivery",
+            "scope": "script"
+          },
+          {
+            "id": "communication-posting",
+            "kind": "source_regex",
+            "label": "A named message-posting operation exists",
+            "pattern": "(sendMessage|postMessageToPage|submitMessage)\\s*\\(",
+            "requirement": "any:delivery",
+            "scope": "script"
+          }
+        ],
+        "code": "S3",
+        "id": "working_communication",
+        "name": "Working communication",
+        "pass_standard": "A mail/message surface and a compose or message control exist, and shipped code binds that control to a mailto, message endpoint, or posting operation. A placeholder telling the user to connect mail, with no working action, fails.",
+        "promise": "A visitor or owner can message or mail from the app and the app can deliver it to an inbox or post it to the page."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "picture-input",
+            "kind": "dom_exists",
+            "label": "Image file input exists",
+            "requirement": "required",
+            "selector": "input[type='file'][accept*='image']"
+          },
+          {
+            "id": "picture-control",
+            "kind": "text_contains",
+            "label": "A visible change-picture control exists",
+            "match": "any",
+            "requirement": "required",
+            "selector": "body",
+            "values": [
+              "Change picture",
+              "Change cover"
+            ]
+          },
+          {
+            "id": "picture-reader",
+            "kind": "source_regex",
+            "label": "Chosen image is read as a data URL",
+            "pattern": "new FileReader\\(\\)[\\s\\S]{0,600}readAsDataURL",
+            "requirement": "required",
+            "scope": "script"
+          },
+          {
+            "id": "picture-apply-create",
+            "kind": "source_regex",
+            "label": "Script creates an image element for the new picture",
+            "pattern": "createElement\\(['\"]img['\"]\\)",
+            "requirement": "any:apply",
+            "scope": "script"
+          },
+          {
+            "id": "picture-apply-html",
+            "kind": "source_regex",
+            "label": "Script inserts the new picture markup",
+            "pattern": "innerHTML\\s*=\\s*['\"]<img",
+            "requirement": "any:apply",
+            "scope": "script"
+          },
+          {
+            "id": "picture-apply-src",
+            "kind": "source_regex",
+            "label": "Script assigns the read image to an image element",
+            "pattern": "\\.src\\s*=\\s*ev\\.target\\.result",
+            "requirement": "any:apply",
+            "scope": "script"
+          }
+        ],
+        "code": "S4",
+        "id": "changeable_main_picture",
+        "name": "Changeable main picture",
+        "pass_standard": "An image file input and a visible change control exist, and shipped script reads the chosen image and applies it to an image surface.",
+        "promise": "The owner can change the cover or profile picture from the page."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "plus-control",
+            "kind": "dom_exists",
+            "label": "+ control exists",
+            "requirement": "required",
+            "selector": "#plusbtn, [data-feature='plus-home'], #os-rooms-plus, .rooms-plus"
+          },
+          {
+            "id": "plus-menu",
+            "kind": "dom_exists",
+            "label": "+ menu exists",
+            "requirement": "required",
+            "selector": "#plusmenu, [data-feature='plus-menu'], #os-drawer"
+          },
+          {
+            "id": "plus-routes",
+            "kind": "route_targets",
+            "label": "At least five main-area routes are present",
+            "minimum": 5,
+            "patterns": [
+              "Smart Hub|nayanet\\.live/?$",
+              "Smart Feed|/feed",
+              "Intelligence Today|Today|/today",
+              "Reports|/reports",
+              "Intelligent Library|Library|/library",
+              "Connections|/connections",
+              "Smart Lists|Lists|/lists",
+              "Smart Mail|Mail|/mail",
+              "Smart Spaces|Spaces|/spaces",
+              "Settings|/settings"
+            ],
+            "requirement": "required",
+            "selector": "#plusmenu a, #plusmenu [data-hub], #plusmenu [data-goto], #plusmenu button, [data-feature='plus-menu'] a, #os-drawer a, #os-drawer [data-goto], #os-drawer button"
+          },
+          {
+            "id": "plus-open-handler",
+            "kind": "source_regex",
+            "label": "Script binds the + control",
+            "pattern": "plusbtn[\\s\\S]{0,300}\\.addEventListener\\(",
+            "requirement": "any:behavior",
+            "scope": "script"
+          },
+          {
+            "id": "plus-open-handler-os",
+            "kind": "source_regex",
+            "label": "Script binds the flagship rooms-plus control and opens the areas drawer (Hub twin-plus dialect)",
+            "pattern": "roomsBtn\\.addEventListener\\('click'[\\s\\S]{0,400}drawer\\.classList\\.add\\('open'\\)",
+            "requirement": "any:behavior",
+            "scope": "script"
+          },
+          {
+            "id": "plus-route-handler",
+            "kind": "source_regex",
+            "label": "Script follows + menu hub routes",
+            "pattern": "ph-plusitem\\[data-hub\\][\\s\\S]{0,300}window\\.open",
+            "requirement": "any:behavior",
+            "scope": "script"
+          }
+        ],
+        "code": "S5",
+        "dialect_note": "Canon selectors name the canon-base plus (#plusbtn/#plusmenu). The flagship ships the Hub twin-plus: rooms-plus (#os-rooms-plus) opens the NayaNET areas drawer (#os-drawer, 15 Hub routes), eco-plus opens the owner menu. Same feature, Hub dialect, harvested verbatim into the flagship; both dialects are judged.",
+        "id": "plus_button_home",
+        "name": "+ button home",
+        "pass_standard": "A + control and menu exist, the menu routes to at least five main areas, and script opens the menu and follows its routes.",
+        "promise": "The + button always opens the main NayaNET areas so every app stays connected home."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "about-surface",
+            "kind": "dom_exists",
+            "label": "About surface exists",
+            "requirement": "required",
+            "selector": "#about, [data-feature='about']"
+          },
+          {
+            "id": "about-text",
+            "kind": "dom_exists",
+            "label": "About text surface exists",
+            "requirement": "required",
+            "selector": "#abouttext, [data-feature='about-text']"
+          },
+          {
+            "id": "about-controls",
+            "kind": "count_at_least",
+            "label": "About edit/save controls exist",
+            "minimum": 2,
+            "requirement": "required",
+            "selector": "#about button, [data-feature='about'] button"
+          },
+          {
+            "id": "about-persistence",
+            "kind": "source_regex",
+            "label": "About edits persist locally",
+            "pattern": "localStorage\\.setItem\\(['\"]naya\\.about['\"]",
+            "requirement": "any:behavior",
+            "scope": "script"
+          },
+          {
+            "id": "about-save-handler",
+            "kind": "source_regex",
+            "label": "About save control is bound",
+            "pattern": "saveabout[\\s\\S]{0,300}addEventListener",
+            "requirement": "any:behavior",
+            "scope": "script"
+          }
+        ],
+        "code": "S6",
+        "id": "about",
+        "name": "About",
+        "pass_standard": "An About section and text surface exist, edit/save controls exist, and shipped script persists the edited About text.",
+        "promise": "Every app has an About surface the owner can edit and save."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "cross-page-routes",
+            "kind": "route_targets",
+            "label": "At least two cross-page family routes exist",
+            "minimum": 2,
+            "patterns": [
+              "Smart Spaces|/spaces",
+              "Personal|/personal",
+              "Business|/business",
+              "Smart Hub|nayanet\\.live/?$|nayanet\\.live/#/hub"
+            ],
+            "requirement": "required",
+            "selector": "#plusmenu a, #plusmenu [data-hub], #plusmenu [data-goto], #plusmenu button, #os-drawer a, #os-drawer [data-goto], #os-drawer button"
+          },
+          {
+            "id": "cross-page-broadcast",
+            "kind": "source_regex",
+            "label": "BroadcastChannel sync is implemented",
+            "pattern": "new BroadcastChannel\\(",
+            "requirement": "any:sync-channel",
+            "scope": "script"
+          },
+          {
+            "id": "cross-page-backend-client",
+            "kind": "source_regex",
+            "label": "Page data is read and written in shared backend tables (flagship dialect: Supabase smart_notes / smart_mail / invites tables keyed by page alias - state crosses origins through the backend, not localStorage)",
+            "pattern": "\\.from\\('(smart_notes|smart_mail_threads|smart_mail_messages|invites)'\\)",
+            "requirement": "any:sync-channel",
+            "scope": "script"
+          },
+          {
+            "id": "cross-page-postmessage",
+            "kind": "source_regex",
+            "label": "Cross-window postMessage sync is implemented",
+            "pattern": "\\.postMessage\\(",
+            "requirement": "any:sync-channel",
+            "scope": "script"
+          },
+          {
+            "id": "cross-page-account-sync",
+            "kind": "source_regex",
+            "label": "A named account/page sync operation is implemented",
+            "pattern": "(accountSync|pageSync|crossPageSync|syncPages)\\s*\\(",
+            "requirement": "any:sync-channel",
+            "scope": "script"
+          },
+          {
+            "id": "cross-page-backend",
+            "kind": "source_regex",
+            "label": "A backend page-sync endpoint is called",
+            "pattern": "fetch\\([^;]{0,300}/(sync|pages|page-sync)",
+            "requirement": "any:sync-channel",
+            "scope": "script"
+          }
+        ],
+        "code": "S7",
+        "dialect_note": "The canon sync patterns name in-page channels (BroadcastChannel, postMessage). The flagship shares state through the Supabase backend keyed by page alias - cross-origin by construction - and its chrome routes to family destinations through the Hub areas drawer (#os-drawer, nayanet.live/#/hub/* routes). Both channel families are judged; a shared localStorage key alone still does not pass.",
+        "id": "cross_page_sync",
+        "name": "Cross-page sync",
+        "pass_standard": "The app chrome routes to at least two family destinations and shipped code uses a real cross-page or account/backend sync channel. A shared localStorage key alone does not pass because it cannot cross app origins.",
+        "promise": "Personal, business, and Spaces pages can reach and communicate with each other, with state carried across pages rather than trapped in one page."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "today-surface",
+            "kind": "dom_exists",
+            "label": "Today's Intel surface exists",
+            "requirement": "required",
+            "selector": "#today, [data-feature='todays-intel'], [data-block='today']"
+          },
+          {
+            "id": "today-grid",
+            "kind": "dom_exists",
+            "label": "Today's Intel grid exists",
+            "requirement": "required",
+            "selector": "#todaygrid, [data-feature='todays-intel-grid'], #os-today-list"
+          },
+          {
+            "id": "today-card",
+            "kind": "count_at_least",
+            "label": "At least one Intel card is present",
+            "minimum": 1,
+            "requirement": "any:card-evidence",
+            "selector": "#todaygrid .ph-card, #todaygrid article, #todaygrid [data-intel-card]"
+          },
+          {
+            "id": "today-card-render",
+            "kind": "source_regex",
+            "label": "Script renders briefing cards into the Today list (flagship dialect: cards are rendered at runtime from live page data, so no static seed cards ship)",
+            "pattern": "\\$\\('os-today-list'\\)\\.innerHTML\\s*=",
+            "requirement": "any:card-evidence",
+            "scope": "script"
+          },
+          {
+            "id": "today-labels",
+            "kind": "text_contains",
+            "label": "Briefing content is present",
+            "match": "all",
+            "requirement": "any:label-dialect",
+            "selector": "#today, [data-feature='todays-intel']",
+            "values": [
+              "Morning Briefing",
+              "IN A NUTSHELL"
+            ]
+          },
+          {
+            "id": "today-labels-os",
+            "kind": "text_contains",
+            "label": "Briefing content is present (flagship dialect labels: the Today block names itself and carries its latest-real-activity subtitle — stem-matched, so the subtitle is verified by presence and shape; its wording follows the smart-app language law, 'in this app', formerly 'on this page')",
+            "match": "all",
+            "requirement": "any:label-dialect",
+            "selector": "[data-block='today']",
+            "values": [
+              "Today",
+              "The latest real activity"
+            ]
+          },
+          {
+            "id": "today-grid-population",
+            "kind": "source_regex",
+            "label": "Script populates the Today grid",
+            "pattern": "getElementById\\(['\"]todaygrid['\"]\\)",
+            "requirement": "any:data-source",
+            "scope": "script"
+          },
+          {
+            "id": "today-backend-source",
+            "kind": "source_regex",
+            "label": "Today is populated from the page's own backend tables (flagship dialect: loadToday merges wall posts, mail threads and invites)",
+            "pattern": "function loadToday\\(\\)[\\s\\S]{0,2500}from\\('smart_mail_threads'\\)",
+            "requirement": "any:data-source",
+            "scope": "script"
+          },
+          {
+            "id": "today-feed-endpoint",
+            "kind": "source_regex",
+            "label": "A Today/Intel feed endpoint is called",
+            "pattern": "fetch\\([^;]{0,300}(today|intel|owner-feed)",
+            "requirement": "any:data-source",
+            "scope": "script"
+          },
+          {
+            "id": "today-source-attribute",
+            "kind": "source_regex",
+            "label": "Today surface names a data source",
+            "pattern": "data-(source|endpoint)=[\"'][^\"']*(today|intel)",
+            "requirement": "any:data-source",
+            "scope": "html"
+          }
+        ],
+        "code": "S8",
+        "dialect_note": "Canon labels ('Morning Briefing', 'IN A NUTSHELL') are the Hub Today room's labels, and canon cards ship as static seed markup. The flagship's Today block is the page's own pulse: labeled in its own words and rendered at runtime from live backend data. Card and label evidence is therefore grouped per dialect (any:card-evidence, any:label-dialect); the data-source requirement stands for both dialects. v1.2 (2026-10-22): the flagship subtitle's wording changed under the smart-app language law ('The latest real activity on this page' → 'The latest real activity in this app — newest first, live.'), and the strict gate honestly failed four flagship demo builds at 12/13 on the stale exact string. today-labels-os now matches the subtitle's stable stem ('The latest real activity'): the check still requires the Today block to name itself and carry its real-activity subtitle, but verifies that shape instead of fossilized wording, so lawful copy edits no longer read as a missing feature. No pass_standard lowered; the canon-dialect sibling check is unchanged.",
+        "id": "todays_intel",
+        "name": "Today's Intel",
+        "pass_standard": "A Today's Intel section and briefing card exist, and shipped code populates the Today grid from a feed, endpoint, or owner data source. A static seeded briefing alone fails.",
+        "promise": "The owner's own feed inputs surface as Today's Intel on the page."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "growth-label",
+            "kind": "text_contains",
+            "label": "Growth/invite surface is named",
+            "match": "any",
+            "requirement": "required",
+            "selector": "body",
+            "values": [
+              "Smart Growth",
+              "Invite"
+            ]
+          },
+          {
+            "id": "growth-email-input",
+            "kind": "dom_exists",
+            "label": "Invite email input exists",
+            "requirement": "required",
+            "selector": "input[type='email'], input[name*='invite' i], input[id*='invite' i], [data-feature='smart-growth'] input"
+          },
+          {
+            "id": "growth-action",
+            "kind": "text_contains",
+            "label": "Invite action is named",
+            "match": "any",
+            "requirement": "required",
+            "selector": "body",
+            "values": [
+              "Invite",
+              "Send invite",
+              "Invite by email"
+            ]
+          },
+          {
+            "id": "growth-mailto",
+            "kind": "source_regex",
+            "label": "Invite mailto route exists",
+            "pattern": "href=[\"']mailto:[^\"']*(subject|body)=[^\"']*(invite|join)",
+            "requirement": "any:delivery",
+            "scope": "html"
+          },
+          {
+            "id": "growth-backend-record",
+            "kind": "source_regex",
+            "label": "Invite is delivered into the invites backend table (flagship dialect: hash-only recording - invitee_email_hash is stored, dry_run record-only mode, no email sent)",
+            "pattern": "\\.from\\('invites'\\)\\.insert\\(\\{[^}]*invitee_email_hash",
+            "requirement": "any:delivery",
+            "scope": "script"
+          },
+          {
+            "id": "growth-endpoint",
+            "kind": "source_regex",
+            "label": "Invite endpoint is called",
+            "pattern": "fetch\\([^;]{0,300}(invite|invites|smart-growth)",
+            "requirement": "any:delivery",
+            "scope": "script"
+          },
+          {
+            "id": "growth-handler",
+            "kind": "source_regex",
+            "label": "A named invite operation exists",
+            "pattern": "(sendInvite|submitInvite|inviteByEmail)\\s*\\(",
+            "requirement": "any:delivery",
+            "scope": "script"
+          }
+        ],
+        "code": "S9",
+        "id": "smart_growth_email_invites",
+        "name": "Smart Growth email invites",
+        "pass_standard": "An invite surface contains an email input and an invite action, and shipped code delivers the invite through a mailto or invite endpoint.",
+        "promise": "The owner can invite people to the page by email."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "reports-surface",
+            "kind": "dom_exists",
+            "label": "Reports surface exists",
+            "requirement": "required",
+            "selector": "#reports, [data-feature='reports'], [data-block='reports']"
+          },
+          {
+            "id": "reports-content",
+            "kind": "count_at_least",
+            "label": "Report content exists",
+            "minimum": 1,
+            "requirement": "required",
+            "selector": "#reports .ph-card, #reports table, #reports canvas, #reports [data-report], [data-feature='reports'] article, #os-rep-donut, #os-rep-week, [data-block='reports'] .ph-card"
+          },
+          {
+            "id": "reports-data-endpoint",
+            "kind": "source_regex",
+            "label": "Report data endpoint is called",
+            "pattern": "fetch\\([^;]{0,300}reports",
+            "requirement": "any:data-operation",
+            "scope": "script"
+          },
+          {
+            "id": "reports-loader",
+            "kind": "source_regex",
+            "label": "A named report loader runs (flagship dialect: loadReports reads the page's own tables and renders the living dashboard)",
+            "pattern": "loadReports\\s*\\(",
+            "requirement": "any:data-operation",
+            "scope": "script"
+          },
+          {
+            "id": "reports-population",
+            "kind": "source_regex",
+            "label": "Script populates Reports",
+            "pattern": "getElementById\\(['\"]reports['\"]\\)",
+            "requirement": "any:data-operation",
+            "scope": "script"
+          },
+          {
+            "id": "reports-generation",
+            "kind": "source_regex",
+            "label": "A named report operation exists",
+            "pattern": "(generateReport|downloadReport|exportReport)\\s*\\(",
+            "requirement": "any:data-operation",
+            "scope": "script"
+          }
+        ],
+        "code": "S10",
+        "id": "reports",
+        "name": "Reports",
+        "pass_standard": "An in-app Reports surface exists with report content, and shipped code loads, generates, or downloads report data. A navigation label or external route alone fails.",
+        "promise": "Personal and business apps carry Reports with real report content or data."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "library-surface",
+            "kind": "dom_exists",
+            "label": "Library/Q&A surface exists",
+            "requirement": "required",
+            "selector": "#library, [data-feature='intelligent-library'], [data-feature='qa-library']"
+          },
+          {
+            "id": "library-control",
+            "kind": "count_at_least",
+            "label": "Question or owner-fill control exists",
+            "minimum": 1,
+            "requirement": "required",
+            "selector": "#library input, #library textarea, #library form, [data-feature='intelligent-library'] input, [data-feature='intelligent-library'] textarea, [data-feature='qa-library'] input, [data-feature='qa-library'] textarea"
+          },
+          {
+            "id": "library-label",
+            "kind": "text_contains",
+            "label": "Library/Q&A shell is named",
+            "match": "any",
+            "requirement": "required",
+            "selector": "#library, [data-feature='intelligent-library'], [data-feature='qa-library']",
+            "values": [
+              "Library",
+              "Q&A",
+              "Questions"
+            ]
+          },
+          {
+            "id": "library-operation",
+            "kind": "source_regex",
+            "label": "A named Library/Q&A operation exists",
+            "pattern": "(askLibrary|saveQuestion|loadLibrary|library[A-Za-z]*\\s*\\()",
+            "requirement": "any:operation",
+            "scope": "script"
+          },
+          {
+            "id": "library-data",
+            "kind": "source_regex",
+            "label": "Library/Q&A data endpoint is called",
+            "pattern": "fetch\\([^;]{0,300}(library|questions|qa)",
+            "requirement": "any:operation",
+            "scope": "script"
+          },
+          {
+            "id": "library-persistence",
+            "kind": "source_regex",
+            "label": "Library/Q&A contents persist",
+            "pattern": "localStorage\\.(setItem|getItem)\\(['\"][^'\"]*(library|question|qa)",
+            "requirement": "any:operation",
+            "scope": "script"
+          }
+        ],
+        "code": "S11",
+        "dialect_note": "No dialect issue: the flagship body has no Library/Q&A block in any dialect (its 12 blocks are cover, wall, about, today, smart-notes, connections, lists, message, inbox, growth, reports, settings). Genuine absence - see the GT-028 assessment.",
+        "id": "intelligent_library_qa_shell",
+        "name": "Intelligent Library / Q&A shell",
+        "pass_standard": "An in-app Library/Q&A surface exists with a question or owner-fill control and shipped code to save, load, ask, or edit its contents. A navigation route alone fails.",
+        "promise": "Every app ships the Intelligent Library/Q&A shell; the owner fills it in with Naya."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship",
+          "hub"
+        ],
+        "checks": [
+          {
+            "id": "hub-connections-surface",
+            "kind": "dom_exists",
+            "label": "Connections surface exists",
+            "requirement": "required",
+            "selector": "#people, [data-feature='connections']"
+          },
+          {
+            "id": "hub-connections-handler",
+            "kind": "source_regex",
+            "label": "Connect action is bound",
+            "pattern": "getElementById\\(['\"]connectbtn['\"]\\)[\\s\\S]{0,300}addEventListener",
+            "requirement": "any:connections-behavior",
+            "scope": "script"
+          },
+          {
+            "id": "hub-connections-people-handler",
+            "kind": "source_regex",
+            "label": "Person connect actions are bound",
+            "pattern": "ph-person-btn[\\s\\S]{0,300}addEventListener",
+            "requirement": "any:connections-behavior",
+            "scope": "script"
+          },
+          {
+            "id": "hub-lists-surface",
+            "kind": "dom_exists",
+            "label": "Smart Lists surface exists",
+            "requirement": "required",
+            "selector": "#lists, [data-feature='smart-lists']"
+          },
+          {
+            "id": "hub-lists-items",
+            "kind": "count_at_least",
+            "label": "Smart Lists content exists",
+            "minimum": 1,
+            "requirement": "required",
+            "selector": "#lists .ph-card, #lists li, #lists [data-list-item], [data-feature='smart-lists'] li"
+          },
+          {
+            "id": "hub-lists-operation",
+            "kind": "source_regex",
+            "label": "Smart Lists has a list operation",
+            "pattern": "getElementById\\(['\"]lists['\"]\\)|querySelector\\(['\"]#lists['\"]\\)|fetch\\([^;]{0,300}lists|localStorage\\.(setItem|getItem)\\(['\"][^'\"]*list",
+            "requirement": "any:lists-behavior",
+            "scope": "script"
+          },
+          {
+            "id": "hub-mail-backend-operation",
+            "kind": "source_regex",
+            "label": "Smart Mail has a working backend operation (flagship dialect: Supabase smart_mail tables)",
+            "pattern": "\\.from\\('smart_mail_(threads|messages)'\\)\\.(insert|select)\\(",
+            "requirement": "any:mail-behavior",
+            "scope": "script"
+          },
+          {
+            "id": "hub-mail-surface",
+            "kind": "dom_exists",
+            "label": "Smart Mail surface exists",
+            "requirement": "required",
+            "selector": "#mail, [data-feature='smart-mail'], [data-block='inbox'], [data-block='message']"
+          },
+          {
+            "id": "hub-mail-operation",
+            "kind": "source_regex",
+            "label": "Smart Mail has a working operation",
+            "pattern": "fetch\\([^;]{0,300}(smart-mail|messages|inbox)|(?:getElementById\\(['\"]msgbtn['\"]\\)|querySelector\\(['\"]#msgbtn['\"]\\))\\s*(?:\\.addEventListener\\(|\\.onclick\\s*=)",
+            "requirement": "any:mail-behavior",
+            "scope": "script"
+          }
+        ],
+        "code": "S12",
+        "dialect_note": "The canon #mail selector names the Hub's Smart Mail room surface. On the flagship the Hub apps live as in-page blocks: Connections (#people, data-block='connections'), Smart Lists (#lists), Smart Mail (message + inbox blocks backed by the smart_mail tables). Predicates are scoped to those blocks. Note: the flagship's Smart Lists block ships content but no list operation in any dialect, so the lists-behavior group still fails - a genuine partial gap, recorded by GT-028.",
+        "id": "hub_apps_connections_lists_mail",
+        "name": "Hub apps: Connections, Smart Lists, Smart Mail",
+        "pass_standard": "All three surfaces exist. Connections has a bound connect action, Smart Lists has list content plus a list operation, and Smart Mail has a working message/mail operation. Any one dead surface fails the combined standard feature.",
+        "promise": "The Hub's Connections, Smart Lists, and Smart Mail apps are present and working on the page."
+      },
+      {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
+        "checks": [
+          {
+            "id": "smart-tabs-mount",
+            "kind": "dom_exists",
+            "label": "Smart Tabs mount exists",
+            "requirement": "required",
+            "selector": "[data-fn='smart-tabs'], #smarttabs, [data-feature='smart-tabs']"
+          },
+          {
+            "id": "smart-tabs-unit",
+            "kind": "source_regex",
+            "label": "Smart Tabs unit ships in the app",
+            "pattern": "Smart Tabs|smart-tabs",
+            "requirement": "required",
+            "scope": "script"
+          },
+          {
+            "id": "smart-tabs-scroll-css",
+            "kind": "source_regex",
+            "label": "Smart Tabs row is horizontally scrollable",
+            "pattern": "\\.nf-tabs-row\\{[^}]*overflow-x:\\s*auto",
+            "requirement": "required",
+            "scope": "all"
+          },
+          {
+            "id": "smart-tabs-storage-key",
+            "kind": "source_regex",
+            "label": "Smart Tabs use the shared storage key",
+            "pattern": "naya\\.smarttabs\\.v1",
+            "requirement": "any:persistence",
+            "scope": "script"
+          },
+          {
+            "id": "smart-tabs-change-event",
+            "kind": "source_regex",
+            "label": "Smart Tabs emit their change event",
+            "pattern": "smarttabs-change",
+            "requirement": "any:persistence",
+            "scope": "script"
+          },
+          {
+            "id": "smart-tabs-local-storage",
+            "kind": "source_regex",
+            "label": "Smart Tabs persist through local storage",
+            "pattern": "localStorage\\.(setItem|getItem)\\([^)]*smarttabs",
+            "requirement": "any:persistence",
+            "scope": "script"
+          }
+        ],
+        "code": "S13",
+        "id": "scrolling_smart_tabs",
+        "name": "Scrolling Smart Tabs",
+        "pass_standard": "A Smart Tabs mount exists, the native unit ships, its row is horizontally scrollable (overflow-x:auto or equivalent), and tab state persists or emits its change event.",
+        "promise": "Smart Tabs scroll horizontally across the bottom and persist from page to page."
+      }
+    ],
+    "status": "Measurement contract using static DOM/source predicates. A PASS requires a shipped surface plus a working client-side mechanism or data operation, not a label alone. Browser-rendered geometry and authenticated back-end behaviour are stronger proofs and remain separate.",
+    "version": "standard-feature-contracts-v1.2"
+  },
+  "templates": {
+    "personal": {
+      "file": "templates/personal.html",
+      "md5": "1b44636b7758dba0b95356211f8b042b",
+      "bytes": 229830,
+      "source": "local: ~/workspace/personal-app/personal-v5.html (pipeline source of truth)",
+      "base_identity": {
+        "name": "Alex Morgan",
+        "tagline": "My personal hub",
+        "about": "Creator, thinker, builder. I turn ideas into reality."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "business": {
+      "file": "templates/business.html",
+      "md5": "46f0fc61145384f0c009a1ea17b329f3",
+      "bytes": 229489,
+      "source": "snapshot of live worker https://naya-template-business.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Acme Corp",
+        "tagline": "We build amazing things",
+        "about": "Acme Corp delivers excellence through innovation and dedication."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "booking": {
+      "file": "templates/booking.html",
+      "md5": "03577f1cc7677585cee4c60d93ac5d1f",
+      "bytes": 229469,
+      "source": "snapshot of live worker https://naya-template-booking.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Book Now",
+        "tagline": "Reserve your spot",
+        "about": "Easy online booking. Pick your time, confirm, done."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "product": {
+      "file": "templates/product.html",
+      "md5": "bd83dc3219b7330963623ea2286c4905",
+      "bytes": 229496,
+      "source": "snapshot of live worker https://naya-template-product.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Product Name",
+        "tagline": "The best product ever",
+        "about": "This product will change your life. Premium quality, unbeatable price."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "portfolio": {
+      "file": "templates/portfolio.html",
+      "md5": "1676a0f8e5523c2a6ed91b20a496a1cd",
+      "bytes": 229486,
+      "source": "snapshot of live worker https://naya-template-portfolio.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Jane Designer",
+        "tagline": "My creative work",
+        "about": "Designer and artist. I create beautiful, functional experiences."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "event": {
+      "file": "templates/event.html",
+      "md5": "a8e3a093f7c2950ed1e38bf9a1afd0d2",
+      "bytes": 229481,
+      "source": "snapshot of live worker https://naya-template-event.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Summer Fest 2026",
+        "tagline": "Join us!",
+        "about": "The biggest event of the year. Music, food, fun. Don't miss out."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "menu": {
+      "file": "templates/menu.html",
+      "md5": "aba2f984cb320396fab4ee9ee0e3e675",
+      "bytes": 229476,
+      "source": "snapshot of live worker https://naya-template-menu.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Cafe Delight",
+        "tagline": "Fresh & delicious",
+        "about": "Farm-to-table cafe. Fresh ingredients, made with love."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "community": {
+      "file": "templates/community.html",
+      "md5": "10fc8326a325a3abc9fc455c388b31e7",
+      "bytes": 229475,
+      "source": "snapshot of live worker https://naya-template-community.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Our Community",
+        "tagline": "Together we grow",
+        "about": "A vibrant community of creators, thinkers, and doers."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "signup": {
+      "file": "templates/signup.html",
+      "md5": "778f3ad614abf1e62804e5dc3dfa3c92",
+      "bytes": 229469,
+      "source": "snapshot of live worker https://naya-template-signup.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Join Us",
+        "tagline": "Get started today",
+        "about": "Sign up in seconds. Join thousands of happy members."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "dashboard": {
+      "file": "templates/dashboard.html",
+      "md5": "aae87dc742d66ec49509262e392a8c49",
+      "bytes": 229476,
+      "source": "snapshot of live worker https://naya-template-dashboard.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "My Dashboard",
+        "tagline": "Track everything",
+        "about": "Your personal command center. Metrics, goals, progress."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "personal-hub": {
+      "file": "templates/personal-hub.html",
+      "md5": "4e8da0585f8a2d5588584e62286144e7",
+      "bytes": 229486,
+      "source": "snapshot of live worker https://naya-template-personal-hub.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "My Smart Hub",
+        "tagline": "My world, connected",
+        "about": "Your personal intelligent hub. Everything you need, one place."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    },
+    "business-hub": {
+      "file": "templates/business-hub.html",
+      "md5": "d08022411f593d42ada5aa669d8e36e3",
+      "bytes": 229479,
+      "source": "snapshot of live worker https://naya-template-business-hub.nayapower.workers.dev/ fetched 2026-10-21",
+      "base_identity": {
+        "name": "Business Hub",
+        "tagline": "Run your business",
+        "about": "The intelligent hub for your business. Manage everything."
+      },
+      "body_note": "personal-v5 body; demo identity swapped in. NOT a structurally distinct model \u2014 distinct models are program R4."
+    }
+  },
+  "missing": {
+    "today": "Intake template (templates2.py 'Today'). No contracts.json entry, no template worker, no base file exists.",
+    "smart-list": "Intake template (templates2.py 'Smart List'). No contracts.json entry, no template worker, no base file exists."
+  },
+  "alias_note": "Contract template strings are normalized (lowercase, spaces->hyphens) before lookup: 'Personal'->personal, 'Smart List'->smart-list, 'Business'->business."
+}

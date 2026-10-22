@@ -9,7 +9,7 @@ This package implements the enforceable gates:
 - cold_start_gate: mandatory boot sequence for fresh agents (tests the AGENT)
 - protocol_integrity_gate: validates the protocol manifest itself (tests the LAW)
 - authority_gate: machine-checkable protected-gate enforcement
-- quality_gate: 9.0+ delivery enforcement before anything reaches Shawn
+- quality_gate: 9.5 delivery enforcement before anything reaches Shawn
 - cold_successor_test: acceptance test that state survives the agent
 - minimal_action: smallest effective change as a checkable proposal
 - learning_capture: every cycle declares its lesson (with provenance) or states why none
@@ -23,7 +23,7 @@ Law checks (checks/):
 - decision_log: >=2 options scored, winner = top scorer, gates checked (SN-0522)
 - scorecard: 7 dimensions, weights sum to 1.0, totals recomputed (SN-0523)
 - action_log: fix verified + reported, no gate crossed without approval (SN-0575)
-- delivery_evidence_gate: build + verification evidence, scorecard >=9.0 (SN-0526)
+- delivery_evidence_gate: build + verification evidence, scorecard >=9.5 (SN-0526)
 
 Prime 2: THE LAW IS THE CODE.
 """

@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 20:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 20:52 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 16 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 9 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,29 +50,24 @@
 
 ## Open PRs by Area
 
-### LEARN (1)
-- [#2942](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2942) GT-028 v1.2 — S8 label check learns the smart-app language law (stem-m
-
 ### KNOW (1)
 - [#2907](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907) kappa w690: heal registry drift — register 28 door/leaf pages, pin 1→0 📝draft
 
-### BUILD (10)
-- [#2948](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2948) Accountability Ledger v1 — first writer of system actions into the Sma
-- [#2946](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2946) Per-person timeline read model: identity registry + unified event stre
+### BUILD (5)
+- [#2949](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2949) Factory Contract Home — step 1: A.1 stamp applied (contract v1.2) + ca
 - [#2945](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2945) Smart Links: data foundation + redirect worker + join attribution (Bes
-- [#2944](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2944) SN-0826: Have Each Other's Back — Bring the Bad News First
-- [#2943](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2943) Factory Contract-Home Step 3: dual-label the 154 canonical pieces + ad
-- …and 5 more
+- [#2940](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2940) canon: S8 flagship-dialect label follows the smart-app language law
+- [#2934](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934) Mission-state twin cure — director ruling Option C (TOP-10 director-st
+- [#2869](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869) Naya4/smart notes 2026 09 30
 
-### WIRE (2)
+### WIRE (1)
 - [#2939](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2939) R13 — #2154 pointer sweep: mission state repointed to BRAIN/CURRENT-MI
-- [#2938](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2938) Tier A — Gate trigger-scope repair: board comments stop spawning gate 
+
+### TEAM (1)
+- [#2950](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2950) Naya2/team dashboard
 
 ### INFRA (1)
 - [#2937](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2937) P0: fail-closed v7 registry identity reconciliation and orphan control 📝draft
-
-### PRODUCT (1)
-- [#2947](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2947) Naya Notes: dedicated store + Hub Lists surface with dictation (Best-o
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*

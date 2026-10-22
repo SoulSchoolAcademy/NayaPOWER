@@ -1,0 +1,66 @@
+name: Receipt pin gate
+
+# Lane 9 (Code Health), 2026-10-11: the rebuilt receipt gate (exact-head-SHA pin)
+# wired as a blocking CI check. The scorecard receipt is preventative, not
+# archival: a PR whose receipt is MISSING, TAMPERED, or pinned to a STALE head
+# must not merge — the head must be re-scored and the receipt re-pinned.
+#
+# The #2385 lesson is law here: this check DECIDES (pass or fail). It never
+# skips into Pending. PRs outside the governed scope get an explicit PASS
+# decision with a log line, never a silent skip.
+#
+# Scope: PRs from lane branches (head ref starts with `naya/`) targeting
+# main. Lane branches are where the Scorecard Law's receipt discipline is
+# enforced; everything else is governed by the merge-consensus gate.
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+# Least privilege: the gate reads the PR body and the repo's own tools.
+# Declared explicitly so a future default restriction cannot silently 403
+# the gate into permanent red.
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  receipt-pin:
+    name: Receipt pin — exact head SHA
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enforce exact-head receipt pin (fail-closed)
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+
+          # Scope gate: lane branches only. Out-of-scope PRs get an explicit
+          # PASS decision (a decision, not a skip — the check stays green).
+          case "$HEAD_REF" in
+            naya/*) echo "in scope: lane PR '$HEAD_REF' @ ${HEAD_SHA:0:12} — enforcing exact-head pin" ;;
+            *)
+              echo "out of scope: head branch '$HEAD_REF' is not a lane branch (naya/*) — PASS by decision"
+              exit 0
+              ;;
+          esac
+
+          # Rung 1 — PR body: the receipt must pin the exact PR head SHA.
+          # Missing block -> MISSING, malformed fields -> TAMPERED,
+          # pin != head SHA -> STALE. Any of those FAILS this check.
+          printf '%s' "$PR_BODY" > /tmp/pr-body.md
+          python3 tools/check_scorecard_receipt_pin.py \
+            "$HEAD_SHA" /tmp/pr-body.md \
+            --pr-state-out /tmp/pr-state.json
+
+          # Rung 2 — gate: P12 precondition of the auto-merge gate re-verifies
+          # the pin in pr_state. Two rungs, same rule: the receipt must certify
+          # the exact head being merged.
+          python3 tools/auto_merge_gate.py --p12-only /tmp/pr-state.json
+
+          echo "receipt pin valid: scorecard receipt certifies exact head ${HEAD_SHA:0:12}"

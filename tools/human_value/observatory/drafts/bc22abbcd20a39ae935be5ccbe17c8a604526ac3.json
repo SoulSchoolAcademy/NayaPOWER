@@ -1,0 +1,34 @@
+{
+  "author": "Shawn Vibert",
+  "diffstat": {
+    "deletions": 14,
+    "files": 7,
+    "insertions": 472,
+    "top_dirs": [
+      "LEDGER",
+      "BRAIN"
+    ]
+  },
+  "draft_version": 1,
+  "mechanical_note": "Every field above is verifiable with `git log` / `git diff` at the merge SHA. No value judgment is present or implied.",
+  "merge_sha": "bc22abbcd20a39ae935be5ccbe17c8a604526ac3",
+  "merged_at": "2026-10-11T16:49:02-07:00",
+  "parents": [
+    "4374d8bad165c2e5c67ef74566d2b6dae3c5c2da",
+    "199bc3727850a337300336b081bc8114f2239047"
+  ],
+  "pr_number": 2402,
+  "pr_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2402",
+  "status": "DRAFT \u2014 not a ledger event. The machine observes; it never credits. A graded scorecard promotes this.",
+  "suggested_evidence": [
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/commit/bc22abbcd20a39ae935be5ccbe17c8a604526ac3"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2402"
+    }
+  ],
+  "title": "Merge pull request #2402 from SoulSchoolAcademy/naya/mission-state"
+}

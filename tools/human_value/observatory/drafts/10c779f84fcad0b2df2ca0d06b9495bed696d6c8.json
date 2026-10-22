@@ -1,0 +1,33 @@
+{
+  "author": "Shawn Vibert",
+  "diffstat": {
+    "deletions": 4,
+    "files": 6,
+    "insertions": 1034,
+    "top_dirs": [
+      "supabase"
+    ]
+  },
+  "draft_version": 1,
+  "mechanical_note": "Every field above is verifiable with `git log` / `git diff` at the merge SHA. No value judgment is present or implied.",
+  "merge_sha": "10c779f84fcad0b2df2ca0d06b9495bed696d6c8",
+  "merged_at": "2026-10-11T21:23:22-07:00",
+  "parents": [
+    "21837576c5843a1a26e3d9e7d77189abf595cf5c",
+    "79202f61288d898013e742d09aa8b1cf66448fc5"
+  ],
+  "pr_number": 2443,
+  "pr_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2443",
+  "status": "DRAFT \u2014 not a ledger event. The machine observes; it never credits. A graded scorecard promotes this.",
+  "suggested_evidence": [
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/commit/10c779f84fcad0b2df2ca0d06b9495bed696d6c8"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2443"
+    }
+  ],
+  "title": "Merge pull request #2443 from SoulSchoolAcademy/naya5/retrieval-applicability-port"
+}

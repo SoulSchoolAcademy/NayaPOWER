@@ -56,6 +56,11 @@ try:
 except ImportError:  # running by path: sys.path[0] is tools/, not the repo root
     from truth_state_guard import apply_elevation as _guard_apply_elevation
 
+try:
+    from tools.applicability import filter_entries as _applicability_filter_entries
+except ImportError:  # running by path: sys.path[0] is tools/, not the repo root
+    from applicability import filter_entries as _applicability_filter_entries
+
 ROOT = Path(__file__).resolve().parents[1]
 BRAIN_SMART_NOTE_ROOT = ROOT / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
 REGISTRY = ROOT / ".naya" / "memory" / "smart-notes" / "index.json"
@@ -560,10 +565,18 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         _assert_smart_note_id_available(
             normalized_sn_id, ib, registry.get("entries", [])
         )
+    # Writer contract (B-51 step 3): every entry carries the sha256 of its
+    # projection page bytes, binding index to corpus. The page was rendered
+    # before this call, so the file exists; if it cannot be resolved here,
+    # page_hash is None and the hot-path validator fails closed on the entry
+    # if it is ever retrieval-eligible. Never silently absent.
+    proj_file = Path(projection) if projection else None
+    page_hash = _page_file_hash(proj_file) if proj_file is not None and proj_file.is_file() else None
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
         "content_hash": _canonical_content_hash(block["content"]["lesson"]),
+        "page_hash": page_hash,
         "title": capture["title"],
         "captured_at": capture["source"]["captured_at"],
         "category": capture.get("category", "SMART_NOTE"),
@@ -589,6 +602,23 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
             "receipt_id": verify["persisted"]["receipt"]["id"],
         },
     }
+    # Declared behavior change (Lesson Law, SN-0815): when the rendered
+    # projection is a lesson note carrying the declaration section, attach
+    # the parsed declaration to the entry as data so the learning loop can
+    # sample whether the change held. Fail-soft: extraction trouble must
+    # never block a registry write, and no section means no field — the
+    # absence stays visible instead of being papered over.
+    if proj_file is not None and proj_file.is_file() and proj_file.suffix == ".md":
+        try:
+            _proj_text = proj_file.read_text(encoding="utf-8")
+            _dc = parse_declared_change(
+                _proj_text, created=_note_created_date(_proj_text), lesson_id=sn_id)
+        except Exception:
+            _dc = None
+        if _dc:
+            _dc.pop("_declaration_text", None)
+            _dc.pop("_extraction_method", None)
+            entry["declared_change"] = _dc
     registry["entries"] = [e for e in registry.get("entries", []) if e.get("intelligent_block_id") != entry["intelligent_block_id"]] + [entry]
     registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("smart_note_id",""), x.get("intelligent_block_id","")))
     seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
@@ -596,6 +626,11 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         policy = registry.setdefault("sequence_policy", {"human_id_format":"SN-###"})
         policy["next_sequence"] = max(int(policy.get("next_sequence", 1)), int(seq_match.group(1)) + 1)
         policy["purpose"] = "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance."
+    # Writer contract (B-51 step 3): the manifest anchors the FULL entry list.
+    # Any entry-level change without a reindex fails closed at read time.
+    # reserve_smart_note_id() only touches sequence_policy (never entries),
+    # so this is the single place entries mutate: one writer, one manifest.
+    registry["corpus_manifest_hash"] = _corpus_manifest_hash(registry["entries"])
     # No direct write: registry_transaction commits atomically on clean exit.
     return entry
 
@@ -724,21 +759,214 @@ def _retrieval_idf(field_word_sets):
             df[w] = df.get(w, 0) + 1
     return {w: math.log(1.0 + n / max(1, c)) for w, c in df.items()}
 
-def _ranked_candidates(query):
+
+# --- Fail-closed index validation (B-51 repair, step 3; Naya Beta design 2026-10-12) ---
+#
+# The retrieval index (.naya/memory/smart-notes/index.json) used to load with
+# zero corpus validation on the hot path: a drifted checkout (edited, deleted
+# or moved projection page; hand-edited metadata; an index copied from another
+# checkout) would retrieve silently wrong intelligence — the B-51 class: a
+# wrong answer with no error signal. This validator runs as the FIRST statement
+# of _ranked_candidates() (the single retrieval funnel) and raises
+# INDEX_CORRUPT:<code>:<detail> on ANY mismatch. Never an answer, never a
+# silent fallback, never a downgrade to NO_RELEVANT_INTELLIGENCE, never
+# log-and-proceed.
+#
+# Refusal / corruption code registry (all raised as SystemExit, the module's
+# existing refusal idiom):
+#   PRIVATE_INTELLIGENCE_NOT_DISCLOSED — extraction probe refused as a probe
+#   NO_RELEVANT_INTELLIGENCE           — nothing scored above the relevance floor
+#   INDEX_CORRUPT:INDEX_UNREADABLE      — index file missing or not valid JSON
+#   INDEX_CORRUPT:SCHEMA_MISMATCH       — envelope is not the pinned schema
+#   INDEX_CORRUPT:ENTRY_MALFORMED       — eligible entry lacks id/path strings
+#   INDEX_CORRUPT:PATH_ESCAPE           — projection_path escapes the allowed roots
+#   INDEX_CORRUPT:PROJECTION_ABSENT     — declared projection page not on disk
+#   INDEX_CORRUPT:DUPLICATE_BINDING     — two entries claim one id or one page
+#   INDEX_CORRUPT:PAGE_HASH_MISSING      — eligible entry has no page_hash (no grandfathering)
+#   INDEX_CORRUPT:PAGE_HASH_MISMATCH    — page bytes differ from the indexed hash
+#   INDEX_CORRUPT:MANIFEST_STALE        — entries differ from corpus_manifest_hash
+#
+# Threat model: accidental drift, NOT adversarial tampering (an actor who
+# recomputes hashes forges consistency — out of model, stated not hidden).
+# No git dependency on the hot path: disk bytes anchor entries, the index's
+# own manifest anchors the entry list.
+
+INDEX_SCHEMA = "naya.smart-note-projection-index.v1"
+
+# Projection pages may only live under these roots (relative to ROOT).
+INDEX_ALLOWED_PROJECTION_ROOTS = ("BRAIN/05-MEMORY/SMART-NOTES", ".naya/memory/smart-notes")
+
+# Lifecycle states the validator skips. They never enter any candidate pool
+# under any query, so their drift cannot produce a retrieval answer. The
+# one-time backfill explicitly retires unvalidatable entries into this set
+# (marked, never deleted) instead of leaving them shape-broken.
+INDEX_VALIDATION_INACTIVE_STATES = frozenset({"SUPERSEDED", "ARCHIVED", "REVOKED", "RETIRED"})
+
+
+def _projection_io_path(path: Path) -> Path:
+    """Use one Win32 long-path representation for canonical projection I/O.
+
+    No fallback changes the declared relative path, its containment law or
+    its expected content hash. Non-Windows and shorter paths are unchanged.
+    """
+    path = Path(path)
+    if os.name != "nt":
+        return path
+    absolute = str(path.absolute())
+    separator = chr(92)
+    prefix = separator * 2 + "?" + separator
+    if len(absolute) < 260 or absolute.startswith(prefix):
+        return path
+    if absolute.startswith(separator * 2):
+        return Path(prefix + "UNC" + separator + absolute[2:])
+    return Path(prefix + absolute)
+
+
+def _page_file_hash(path):
+    """Single hashing authority for the page binding: sha256 of raw file bytes.
+
+    Writer, backfill, and validator share this — two hash implementations is
+    a future B-51. Distinct from content_hash, which hashes the capture
+    intelligence payload, not the projection page bytes: one field, one meaning.
+    """
+    h = hashlib.sha256()
+    with open(_projection_io_path(Path(path)), "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _corpus_manifest_hash(entries):
+    """Single hashing authority for index freshness: sha256 of the canonical
+    JSON of the FULL entries list (every field the writer emitted)."""
+    canonical = json.dumps(entries, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def _corpus_tree_pin(entries, root=None):
+    """Tree pin for the corpus at apply time: sha256 over the sorted
+    (projection_path, page-file-hash) pairs.
+
+    The manifest anchors the INDEX bytes; the pin anchors the INPUT bytes
+    the manifest was computed over. A count diff is only legal across
+    identical manifests AND identical pins — a manifest match with a pin
+    mismatch is input drift, not a flake (w428 leg 166). Emitter and
+    validator share this function: one derivation, never two cross-checks.
+    """
+    root = ROOT if root is None else root
+    pairs = []
+    for e in entries:
+        pp = e.get("projection_path")
+        if isinstance(pp, str) and pp and _projection_path_exists(root / pp):
+            pairs.append((pp, _page_file_hash(root / pp)))
+    canonical = "\n".join(f"{pp}\x00{ph}" for pp, ph in sorted(pairs))
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def _projection_path_contained(projection_path):
+    """True iff the index-declared path is relative and stays inside an allowed root."""
+    if not isinstance(projection_path, str) or not projection_path:
+        return False
+    if os.path.isabs(projection_path):
+        return False
+    norm = os.path.normpath(projection_path).replace("\\", "/")
+    if norm == ".." or norm.startswith("../"):
+        return False
+    return any(norm == allowed or norm.startswith(allowed + "/")
+               for allowed in INDEX_ALLOWED_PROJECTION_ROOTS)
+
+
+def _validate_index_against_corpus(registry, root=None):
+    """Fail-closed validation of the retrieval index against the working-tree corpus.
+
+    Checks run in table order (0-7); the first failure wins. Any failure raises
+    SystemExit("INDEX_CORRUPT:<code>:<detail>") — corruption is a broken index,
+    distinguishable from "no relevant intelligence". root resolves at call time
+    (not def time) so test harnesses that re-point ROOT get the live value.
+    """
+    root = ROOT if root is None else root
+    entries = registry.get("entries")
+    # Check 1 — envelope. (Check 0, readability, is handled by the caller,
+    # which wraps load_json: an unreadable file never reaches this function.)
+    if registry.get("schema") != INDEX_SCHEMA or not isinstance(entries, list):
+        raise SystemExit("INDEX_CORRUPT:SCHEMA_MISMATCH:index envelope is not " + INDEX_SCHEMA)
+    eligible = [e for e in entries
+                if str(e.get("lifecycle_state", "ACTIVE")).upper() not in INDEX_VALIDATION_INACTIVE_STATES]
+    # Check 2 — entry shape (eligible entries only; inactive entries were
+    # explicitly retired by the backfill and cannot be retrieved).
+    for e in eligible:
+        ib = e.get("intelligent_block_id")
+        pp = e.get("projection_path")
+        if not isinstance(ib, str) or not ib or not isinstance(pp, str) or not pp:
+            raise SystemExit(f"INDEX_CORRUPT:ENTRY_MALFORMED:entry lacks intelligent_block_id/projection_path: {ib!r}")
+    # Check 3 — path containment.
+    for e in eligible:
+        if not _projection_path_contained(e["projection_path"]):
+            raise SystemExit(f"INDEX_CORRUPT:PATH_ESCAPE:{e['intelligent_block_id']}: {e['projection_path']!r}")
+    # Check 4 — file existence.
+    for e in eligible:
+        if not _projection_path_exists(root / e["projection_path"]):
+            raise SystemExit(f"INDEX_CORRUPT:PROJECTION_ABSENT:{e['intelligent_block_id']}: {e['projection_path']}")
+    # Check 5 — binding uniqueness.
+    seen_ids, seen_paths = set(), set()
+    for e in eligible:
+        if e["intelligent_block_id"] in seen_ids or e["projection_path"] in seen_paths:
+            raise SystemExit(f"INDEX_CORRUPT:DUPLICATE_BINDING:{e['intelligent_block_id']}: {e['projection_path']}")
+        seen_ids.add(e["intelligent_block_id"])
+        seen_paths.add(e["projection_path"])
+    # Check 6 — content binding (missing hash fails closed: no grandfathering).
+    for e in eligible:
+        ph = e.get("page_hash")
+        if not isinstance(ph, str) or not ph:
+            raise SystemExit(f"INDEX_CORRUPT:PAGE_HASH_MISSING:{e['intelligent_block_id']}")
+        if _page_file_hash(root / e["projection_path"]) != ph:
+            raise SystemExit(f"INDEX_CORRUPT:PAGE_HASH_MISMATCH:{e['intelligent_block_id']}: page bytes differ from index")
+    # Check 7 — index freshness over the FULL entry list.
+    manifest = registry.get("corpus_manifest_hash")
+    if not isinstance(manifest, str) or manifest != _corpus_manifest_hash(entries):
+        raise SystemExit("INDEX_CORRUPT:MANIFEST_STALE:index entries differ from the manifest committed with them")
+
+
+def _load_validated_registry():
+    """Load the retrieval index and fail closed on any drift (check 0 + 1-7)."""
+    try:
+        registry = load_json(REGISTRY)
+    except (OSError, ValueError) as exc:
+        raise SystemExit(f"INDEX_CORRUPT:INDEX_UNREADABLE:{exc}")
+    _validate_index_against_corpus(registry)
+    return registry
+
+
+def _ranked_candidates(query, areas=None, task_contexts=None):
     """Score every active registry entry for query; returns the ranked list of
     (score, truth-state rank, entry) sorted descending. This is the testable
     seam: negative controls and the relevance floor assert on this list, not
-    on retrieve()'s refusal behavior."""
-    registry = load_json(REGISTRY)
+    on retrieve()'s refusal behavior.
+
+    areas / task_contexts optionally scope the candidate pool by
+    applicability metadata (tools/applicability.py) BEFORE scoring.
+    Default (both None) is unchanged behavior: the full corpus.
+
+    The index is fail-closed validated FIRST (B-51 step 3): any drift
+    between the index and the working-tree corpus raises
+    INDEX_CORRUPT:<code> instead of scoring — a broken index never
+    produces a retrieval answer."""
+    registry = _load_validated_registry()
+    candidates = registry.get("entries", [])
+    if areas or task_contexts:
+        candidates = _applicability_filter_entries(
+            candidates, areas=areas, task_contexts=task_contexts)
     q_raw = re.findall(r"[a-z0-9]+", query.lower())
     q = set(_stem(w) for w in q_raw)
     q_phrase = " ".join(q_raw)
     ranked = []
-    inactive = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
+    # Terminal lifecycle states never enter any candidate pool. RETIRED is the
+    # backfill's explicit marker for unvalidatable entries (B-51 step 3).
+    inactive = INDEX_VALIDATION_INACTIVE_STATES
     # First pass: per-entry field word sets (one projection read per entry,
     # same I/O as before) plus corpus document frequencies for IDF.
     scored_entries = []
-    for e in registry.get("entries", []):
+    for e in candidates:
         if str(e.get("lifecycle_state", "ACTIVE")).upper() in inactive:
             continue
         title = e.get("title", "")
@@ -794,12 +1022,13 @@ def _ranked_candidates(query):
     return ranked
 
 
-def retrieve(query):
+def retrieve(query, areas=None, task_contexts=None, retriever=None,
+             emit_receipt=True):
     # Privacy refusal: an extraction probe is refused AS a probe, before
     # scoring — even a high-scoring match must not be disclosed this way.
     if _is_privacy_probe(query):
         raise SystemExit("PRIVATE_INTELLIGENCE_NOT_DISCLOSED")
-    ranked = _ranked_candidates(query)
+    ranked = _ranked_candidates(query, areas=areas, task_contexts=task_contexts)
     if not ranked:
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     if ranked[0][0] < RETRIEVAL_RELEVANCE_FLOOR:
@@ -807,10 +1036,42 @@ def retrieve(query):
         # present as an answer. Refuse rather than misdirect.
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     e = ranked[0][2]
-    note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")
+    try:
+        note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")
+    except OSError:
+        # B-58 (2026-10-13): a winning projection the registry names but the
+        # tree does not contain is corpus drift, not an answer. Fail closed
+        # with an explicit miss code — never an unhandled crash.
+        raise SystemExit("WINNER_PROJECTION_UNREADABLE")
     m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
     explanation = m.group(1).strip() if m else ""
-    return {"query":query,"retrieved":e,"explanation":explanation,"source":"repository_projection_index","original_conversation_supplied":False}
+    if not explanation:
+        # B-49 (2026-10-13): a winner with no extractable lesson content is a
+        # title-only positive. Returning it as an answer is silent admission
+        # of unsubstantiated intelligence. Fail closed: explicit miss.
+        raise SystemExit("WINNER_EXPLANATION_EMPTY")
+    result = {"query":query,"retrieved":e,"explanation":explanation,"source":"repository_projection_index","original_conversation_supplied":False}
+    if emit_receipt:
+        # Convergence (c): the normal retrieval path emits a durable
+        # retrieval receipt for the winner — the entry the seat receives
+        # and acts on. Fail-open by design: a receipt is evidence, never
+        # authority (#1712), so it can never break the read. refusals above
+        # (privacy probe / no relevant intelligence) emit NOTHING — no
+        # lesson was delivered, so there is nothing to receipt.
+        try:
+            try:
+                from tools.learning_receipt_wiring import emit_winner_receipt
+            except ImportError:  # running by path
+                from learning_receipt_wiring import emit_winner_receipt
+            _ctx = "smart_note_v2.retrieve query=%r" % (query[:120],)
+            if areas:
+                _ctx += " areas=%s" % ",".join(sorted(areas))
+            if task_contexts:
+                _ctx += " task_contexts=%s" % ",".join(sorted(task_contexts))
+            emit_winner_receipt(e, query_context=_ctx, retriever=retriever)
+        except Exception:
+            pass
+    return result
 
 def held_out(retrieved):
     task = "A future developer proposes creating one new Naya Node for every important conversation and storing the raw transcript as the canonical brain memory. Decide the architecture."
@@ -1235,6 +1496,11 @@ def verify_receipt(receipt, evidence_bundle):
     return True, "Receipt verified: promotion was valid under recorded thresholds."
 
 
+def _projection_path_exists(path: Path) -> bool:
+    """Real file presence, including Windows extended-length projections."""
+    return _projection_io_path(path).is_file()
+
+
 def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=None):
     """Reconcile captures, the machine registry, and published Brain projections.
 
@@ -1309,19 +1575,46 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         pp = e.get("projection_path")
         if published and not pp:
             defects["published_entries_missing_projection_path"].append(sn)
-        if pp and not (root / pp).exists():
+        if pp and not _projection_path_exists(root / pp):
             defects["registry_projection_paths_absent"].append({"smart_note_id": sn, "projection_path": pp})
 
     pages_by_name = {}
     if brain.exists():
         for p in sorted(brain.rglob("*.md")):
             pages_by_name.setdefault(p.name, []).append(str(p.relative_to(root)).replace("\\", "/"))
+    # A leaf-name collision is only a duplicate when the BYTES collide: the
+    # layout convention puts a `smart-note.md` in every note's own directory
+    # (identity = the directory, not the leaf), and distinct notes may share a
+    # slug-style leaf name with different content. Keying on the bare leaf name
+    # manufactured false positives; keying on the full relative path would make
+    # the class vacuous and hide true double-publications. So: group by leaf
+    # name as candidates, then flag only content-identical path sets.
     for name, paths in sorted(pages_by_name.items()):
-        if len(paths) > 1:
-            defects["duplicate_published_page_paths"].append({"page": name, "paths": paths})
+        if len(paths) < 2:
+            continue
+        by_content = {}
+        for rel in paths:
+            raw = (root / rel).read_bytes()
+            by_content.setdefault(hashlib.sha256(raw).hexdigest(), []).append(rel)
+        for digest, dup_paths in sorted(by_content.items()):
+            if len(dup_paths) > 1:
+                defects["duplicate_published_page_paths"].append(
+                    {"page": name, "paths": dup_paths, "content_sha256": digest[:16]}
+                )
 
     known_pages = {f"{e.get('intelligent_block_id')}.md" for e in entries if e.get("intelligent_block_id")}
+    known_ib_ids = {str(e.get("intelligent_block_id")) for e in entries if e.get("intelligent_block_id")}
     for name, paths in sorted(pages_by_name.items()):
+        if name == "smart-note.md":
+            # The v7 projection's canonical basename is scoped by its parent IB directory.
+            # Treat it as registered only when that exact IB identity exists in the index;
+            # keep a single actionable orphan group if any published IB is missing.
+            unregistered_paths = [path for path in paths if Path(path).parent.name not in known_ib_ids]
+            if unregistered_paths:
+                defects["published_pages_without_registry_entry"].append(
+                    {"page": name, "paths": unregistered_paths}
+                )
+            continue
         if name not in known_pages:
             defects["published_pages_without_registry_entry"].append({"page": name, "paths": paths})
 
@@ -1339,17 +1632,277 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     }
 
 
+# ---------------------------------------------------------------------------
+# Declared behavior changes — the Lesson Law (SN-0815 standard, 2026-10-21).
+#
+# A lesson note is not complete without `## THE DECLARED BEHAVIOR CHANGE`:
+# first-person, trigger-bound, contrastive (new behavior *instead of* old),
+# falsifiable. Prose declarations cannot be sampled; data can. This parser
+# turns the declaration into a structured row —
+#   declared_change {lesson_id, trigger, old_behavior, new_behavior, verify_by}
+# — at the two points the door already touches every note: when
+# _update_registry_locked writes a registry entry (the projection file is on
+# disk by then), and when the `declared-changes` CLI scans the published
+# corpus to backfill / answer queries. Fail-soft by design: a note without
+# the section yields NO row — never a crash, never a guessed parse dressed
+# as fact. Every row carries the verbatim declaration text and the
+# extraction method so a different seat can audit the parse.
+# ---------------------------------------------------------------------------
+
+DECLARED_CHANGE_SCHEMA = "naya.declared-change.v1"
+DECLARED_CHANGE_REGISTRY_SCHEMA = "naya.declared-change-registry.v1"
+DECLARED_CHANGE_REGISTRY = ROOT / ".naya" / "memory" / "smart-notes" / "declared-changes.json"
+VERIFY_BY_DEFAULT_DAYS = 7  # weekly sampler cadence (learning loop v1)
+
+
+def _md_sections(text):
+    """Split markdown into (header, body) pairs on H2 boundaries."""
+    parts = re.split(r"(?m)^(## .+)$", text)
+    return [(parts[i].strip(), parts[i + 1].strip())
+            for i in range(1, len(parts) - 1, 2)]
+
+
+def _note_created_date(text):
+    m = re.search(r"\*\*Created:\*\*\s*(\d{4}-\d{2}-\d{2})", text)
+    return m.group(1) if m else None
+
+
+def _declaration_text(text):
+    """Return (declaration_text, method) or (None, None).
+
+    Primary shape (SN-0815/SN-0816): a dedicated H2 section. Fallback
+    (SN-1787, the law note itself): the declaration is quoted inside
+    another section directly after the literal marker.
+    """
+    for header, body in _md_sections(text):
+        if header.upper().startswith("## THE DECLARED BEHAVIOR CHANGE"):
+            return (body or None), "section"
+    idx = text.find("THE DECLARED BEHAVIOR CHANGE")
+    if idx >= 0:
+        window = text[idx:idx + 1500]
+        q = re.search(r"\"([^\"]{80,1200})\"", window)
+        if q:
+            return q.group(1).strip(), "quoted-marker"
+    return None, None
+
+
+def _clean_clause(s):
+    return re.sub(r"\s+", " ", s or "").strip().strip("—–- ").strip()
+
+
+def _split_sentences(text):
+    flat = re.sub(r"\s+", " ", text).strip()
+    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", flat) if s.strip()]
+
+
+_OLD_SENTENCE_RE = re.compile(
+    r"^(I will not|And I will not|I never)\b"
+    r"|kept only in|held only in|held in one seat|left in a chat"
+    r"|^(A lesson|The lesson)\b[^.]*\b(not counted as|is not)\b", re.I)
+
+
+def parse_declared_change(text, created=None, lesson_id=None):
+    """Parse one note's markdown into a declared_change dict, or None.
+
+    None is the negative control's expected result: no declaration section
+    (or an empty one) means the note carries no testable commitment, and
+    the registry must show that absence rather than invent a row.
+    """
+    decl, method = _declaration_text(text)
+    if not decl:
+        return None
+    flat = re.sub(r"\s+", " ", decl).strip()
+    sentences = _split_sentences(flat)
+
+    # verify_by: an explicit VERIFY_BY in the note wins; otherwise derive
+    # from the note's Created date + the weekly sampler cadence, labeled.
+    vm = re.search(r"VERIFY[ _-]?BY[:\s]*(\d{4}-\d{2}-\d{2})", text, re.I)
+    if vm:
+        verify_by, verify_by_source = vm.group(1), "explicit"
+    elif created:
+        from datetime import date, timedelta
+        y, mo, d = (int(x) for x in created.split("-"))
+        verify_by = (date(y, mo, d) + timedelta(days=VERIFY_BY_DEFAULT_DAYS)).isoformat()
+        verify_by_source = f"derived:created+{VERIFY_BY_DEFAULT_DAYS}d(weekly-sampler-cadence)"
+    else:
+        verify_by, verify_by_source = None, "unknown:no-created-date"
+
+    # trigger: a when/before clause inside the declaration itself first —
+    # whichever clause opens the declaration wins (SN-0816's trigger is its
+    # leading before-clause, not a later when-clause inside the commitment);
+    # then the note's own MACHINE-stated TRIGGER rule (SN-1787 shape).
+    trigger = None
+
+    def _trigger_clause(m, head):
+        span = _clean_clause(m.group(1))
+        # The clause ends where the main clause resumes (", I ...") —
+        # commas inside the clause itself (lists) are part of the trigger.
+        cut = span.find(", I ")
+        if cut > 0:
+            span = span[:cut]
+        return head + " " + span
+
+    wm = re.search(r"\bwhen\s+([^\.;—]+)", flat, re.I)
+    bm = re.search(r"\bbefore\s+I\s+([^\.;—]+)", flat, re.I)
+    candidates = [(m.start(), _trigger_clause(m, "when")) for m in (wm,) if m]
+    candidates += [(m.start(), _trigger_clause(m, "before I")) for m in (bm,) if m]
+    if candidates:
+        trigger = min(candidates)[1]
+    if not trigger:
+        tm = re.search(r"TRIGGER:\s*(.+?)(?:\s*(?:→|->)|\.(?:\s|$)|$)", text, re.M)
+        if tm:
+            trigger = _clean_clause(tm.group(1))
+
+    # new vs old: a genuine "X instead of Y" contrast splits cleanly —
+    # unless Y is the law's own placeholder (the quoted "we do X instead
+    # of Y" inside SN-1787), which must never leak into a row as data.
+    new_behavior = old_behavior = None
+    im = None
+    if not re.search(r"\bwe do [A-Z] instead of [A-Z]\b", flat):
+        im = re.search(r"(.+?)\s+instead of\s+(.+)", flat, re.I)
+    if im and not re.fullmatch(r"[A-Za-z][.\"']?", im.group(2).strip()):
+        new_behavior = _clean_clause(re.sub(
+            r"^(From now on|From tonight),?\s+", "", im.group(1), flags=re.I))
+        old_behavior = _clean_clause(im.group(2).rstrip(".\""))
+    if not new_behavior:
+        commit = []
+        for s in sentences:
+            if _OLD_SENTENCE_RE.search(s):
+                break
+            # A sentence carrying the law's illustrative placeholder
+            # ("— 'from now on, we do X instead of Y.' …") ends at the
+            # fragment: what follows it in that sentence is commentary
+            # about the form, not the commitment itself.
+            s = re.split(r"\s*[—–-]\s*'(?:from now on,?\s*)?we do [A-Z] instead of [A-Z]\.?'",
+                         s, flags=re.I)[0]
+            commit.append(s)
+        joined = _clean_clause(re.sub(
+            r"^(From now on|From tonight),?\s+", "", " ".join(commit), flags=re.I))
+        if trigger and joined.lower().startswith(trigger.lower() + ","):
+            joined = _clean_clause(joined[len(trigger) + 1:])
+        # Drop a trailing quoted placeholder fragment ("— 'from now on,
+        # we do X instead of Y'") — it illustrates the form, it is not data.
+        joined = re.sub(r"\s*[—–-]\s*'(?:from now on,?\s*)?we do [A-Z] instead of [A-Z]\.?'\s*$",
+                        "", joined, flags=re.I)
+        new_behavior = _clean_clause(joined) or None
+    if not old_behavior:
+        for s in sentences:
+            nm = re.search(r"I will not\s+(.+?)(?:\s+again)?\.?$", s)
+            if nm:
+                old_behavior = _clean_clause(nm.group(1))
+                break
+            nm = re.search(r"I never\s+(.+?)(?:, and |\.$)", s)
+            if nm:
+                old_behavior = _clean_clause(nm.group(1))
+                break
+            km = re.search(r"((?:A lesson|The lesson)[^.;]*?(?:kept only in|held only in|held in)[^.;]*)", s)
+            if km:
+                old_behavior = _clean_clause(km.group(1))
+                break
+        if not old_behavior:
+            # Note-level fallback (SN-1787): the replaced behavior is
+            # stated in the nutshell even when the quote omits it.
+            km = re.search(r"((?:A lesson|The lesson) held[^.;]*)", text)
+            if km:
+                old_behavior = _clean_clause(km.group(1))
+    return {
+        "lesson_id": lesson_id,
+        "trigger": trigger,
+        "old_behavior": old_behavior,
+        "new_behavior": new_behavior,
+        "verify_by": verify_by,
+        "verify_by_source": verify_by_source,
+        "_declaration_text": flat,
+        "_extraction_method": method,
+    }
+
+
+def declared_change_row(text, note_path=None):
+    """Build a registry row for one note's markdown, or None."""
+    created = _note_created_date(text)
+    ibm = re.search(r"\*\*ID:\*\*\s*(\S+)", text)
+    ib = ibm.group(1) if ibm else None
+    lesson_id = None
+    if note_path:
+        m = re.search(r"(SN-\d{3,})", str(note_path))
+        lesson_id = m.group(1) if m else None
+    if not lesson_id and ib:
+        m = re.search(r"-sn(\d{3,})-", ib)
+        lesson_id = "SN-" + m.group(1) if m else None
+    dc = parse_declared_change(text, created=created, lesson_id=lesson_id)
+    if dc is None:
+        return None
+    declaration_text = dc.pop("_declaration_text")
+    method = dc.pop("_extraction_method")
+    title_m = re.search(r"(?m)^#\s+(.+)$", text)
+    return {
+        "schema": DECLARED_CHANGE_SCHEMA,
+        "lesson_id": lesson_id,
+        "intelligent_block_id": ib,
+        "title": title_m.group(1).strip() if title_m else None,
+        "created": created,
+        "note_path": str(note_path) if note_path else None,
+        "declared_change": dc,
+        "declaration_text": declaration_text,
+        "extraction": {"method": method, "parser": "tools/smart_note_v2.py:parse_declared_change"},
+    }
+
+
+def scan_declared_changes(root=None):
+    """Walk the published corpus; one row per note carrying a declaration."""
+    base = Path(root) if root else BRAIN_SMART_NOTE_ROOT
+    rows = []
+    for path in sorted(base.rglob("*.md")):
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        row = declared_change_row(text, note_path=path)
+        if row is not None:
+            try:
+                row["note_path"] = str(path.relative_to(ROOT)).replace("\\", "/")
+            except ValueError:
+                row["note_path"] = str(path)
+            rows.append(row)
+    rows.sort(key=lambda r: (r.get("lesson_id") or "", r.get("intelligent_block_id") or ""))
+    return rows
+
+
+def declared_change_registry_doc(rows):
+    return {"schema": DECLARED_CHANGE_REGISTRY_SCHEMA,
+            "source": "scan of BRAIN/05-MEMORY/SMART-NOTES via tools/smart_note_v2.py declared-changes",
+            "entries": rows}
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("discover"); d.add_argument("paths", nargs="*")
     mg = sub.add_parser("migrate"); mg.add_argument("--existing", required=True); mg.add_argument("--patch", required=True); mg.add_argument("--out", required=True); mg.add_argument("--receipt", required=True)
     pr = sub.add_parser("project"); pr.add_argument("--capture", required=True); pr.add_argument("--verify", required=True); pr.add_argument("--private-root")
-    r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
+    r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out"); r.add_argument("--area", action="append", dest="areas", help="scope retrieval to a Team Naya area code (repeatable)"); r.add_argument("--context", action="append", dest="task_contexts", help="scope retrieval to a task context (repeatable)")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
     pm = sub.add_parser("promote"); pm.add_argument("--note", required=True); pm.add_argument("--evidence", required=True); pm.add_argument("--promoter", required=True); pm.add_argument("--registry"); pm.add_argument("--out")
     a = sub.add_parser("audit"); a.add_argument("--root"); a.add_argument("--quiet", action="store_true")
+    dc = sub.add_parser("declared-changes"); dc.add_argument("--root"); dc.add_argument("--out"); dc.add_argument("--registry"); dc.add_argument("--query")
     args = ap.parse_args()
+    if args.cmd == "declared-changes":
+        if args.query:
+            rows = None
+            reg_path = Path(args.registry) if args.registry else DECLARED_CHANGE_REGISTRY
+            if reg_path.is_file():
+                rows = load_json(reg_path).get("entries", [])
+            if rows is None:
+                rows = scan_declared_changes(args.root)
+            hits = [r for r in rows if (r.get("lesson_id") or "").upper() == args.query.upper()]
+            print(json.dumps(hits, indent=2, ensure_ascii=False))
+            raise SystemExit(0 if hits else 1)
+        rows = scan_declared_changes(args.root)
+        out = Path(args.out) if args.out else DECLARED_CHANGE_REGISTRY
+        out.write_text(json.dumps(declared_change_registry_doc(rows), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(json.dumps({"registry": str(out), "rows": len(rows),
+                          "lesson_ids": [r.get("lesson_id") for r in rows]}, ensure_ascii=False))
+        return
     if args.cmd == "audit":
         report = audit_registry(root=args.root)
         print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
@@ -1384,7 +1937,7 @@ def main():
         }
         print(json.dumps({"projection_path":str(p),"entry":entry}, ensure_ascii=False)); return
     if args.cmd == "retrieve":
-        x = retrieve(args.query)
+        x = retrieve(args.query, areas=args.areas, task_contexts=args.task_contexts)
         if args.out:
             Path(args.out).write_text(json.dumps(x, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print(json.dumps(x, ensure_ascii=False)); return

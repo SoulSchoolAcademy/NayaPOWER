@@ -1,0 +1,33 @@
+{
+  "author": "Shawn Vibert",
+  "diffstat": {
+    "deletions": 0,
+    "files": 2,
+    "insertions": 272,
+    "top_dirs": [
+      "drift_canary"
+    ]
+  },
+  "draft_version": 1,
+  "mechanical_note": "Every field above is verifiable with `git log` / `git diff` at the merge SHA. No value judgment is present or implied.",
+  "merge_sha": "f4680ff8e793ca6b089efa41f6ae773207dd29a1",
+  "merged_at": "2026-10-11T14:23:52-07:00",
+  "parents": [
+    "7c143fe64f83b886c3c9e94b1744c4738477b769",
+    "5587b98f61ebb5609c97a8afe527faadfddde732"
+  ],
+  "pr_number": 2201,
+  "pr_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2201",
+  "status": "DRAFT \u2014 not a ledger event. The machine observes; it never credits. A graded scorecard promotes this.",
+  "suggested_evidence": [
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/commit/f4680ff8e793ca6b089efa41f6ae773207dd29a1"
+    },
+    {
+      "kind": "url",
+      "ref": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2201"
+    }
+  ],
+  "title": "Merge pull request #2201 from SoulSchoolAcademy/naya5/aer-live-3-eligibility"
+}

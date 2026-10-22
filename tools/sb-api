@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""sb-api runner shim — the Supabase Management API helper for CI runners.
+
+Implements the exact call contract HUB/FEEDS/emit_hub_feeds.py expects from
+the author's local sb-api helper:
+
+    sb-api POST /v1/projects/<ref>/database/query '<json body>'
+
+and prints the Management API's JSON response to stdout. The credential
+comes from the SUPABASE_MANAGEMENT_TOKEN environment variable (wired from
+the repo secret by the calling workflow). The token is never printed,
+logged, or written anywhere. Exit code is non-zero on any HTTP or
+transport failure, with the error on stderr — callers fail closed.
+
+Stdlib only: no PYTHONPATH, no site packages, runs on a bare GitHub
+ubuntu runner exactly as it runs here.
+"""
+import json
+import os
+import sys
+import urllib.error
+import urllib.request
+
+API_BASE = "https://api.supabase.com"
+
+
+def main(argv):
+    if len(argv) < 3:
+        print("usage: sb-api <METHOD> <path> [json-body]", file=sys.stderr)
+        return 2
+    method, path = argv[1].upper(), argv[2]
+    body = argv[3] if len(argv) > 3 else None
+    token = os.environ.get("SUPABASE_MANAGEMENT_TOKEN", "").strip()
+    if not token:
+        print("sb-api: SUPABASE_MANAGEMENT_TOKEN is not set", file=sys.stderr)
+        return 1
+    if not path.startswith("/v1/"):
+        print(f"sb-api: refusing unexpected path {path!r}", file=sys.stderr)
+        return 2
+    data = body.encode("utf-8") if body is not None else None
+    req = urllib.request.Request(
+        API_BASE + path,
+        data=data,
+        method=method,
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=110) as resp:
+            payload = resp.read().decode("utf-8")
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "replace")[:400]
+        print(f"sb-api: HTTP {e.code} from Management API: {detail}", file=sys.stderr)
+        return 1
+    except urllib.error.URLError as e:
+        print(f"sb-api: transport failure: {e.reason}", file=sys.stderr)
+        return 1
+    # Validate it is JSON before handing it to the caller, so a proxy or
+    # error page can never be mistaken for query rows.
+    try:
+        json.loads(payload)
+    except json.JSONDecodeError:
+        print("sb-api: Management API returned non-JSON output", file=sys.stderr)
+        return 1
+    sys.stdout.write(payload)
+    if not payload.endswith("\n"):
+        sys.stdout.write("\n")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

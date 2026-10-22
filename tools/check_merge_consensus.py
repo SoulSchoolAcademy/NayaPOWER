@@ -12,7 +12,9 @@ Reads from env:
 
 Seat identity: the team shares one GitHub account, so GitHub logins cannot
 distinguish seats. Seats are identified by signed tags instead:
-  - PR body must declare:  Seat: Naya N
+  - PR body must declare:  Seat: Naya N   (a numeric seat, e.g. "Naya 2",
+    or one of the 15 named seats — Alpha..Mu plus Nitro, Chi, Relay,
+    e.g. "Seat: Naya Epsilon")
   - Reviewer posts a comment:  [NAYA M · REVIEW] ... APPROVED ...
     (the team's IV sign-out verdict format — "## VERDICT: MERGE RECOMMENDED"
     with a seat tag — is also accepted as a review)
@@ -38,6 +40,12 @@ red; an honest "unable to verify, re-run may resolve" does not.
 Exit 0 = consensus present (or gate not applicable). Exit 1 = fail with a
 plain-words reason.
 Stdlib only.
+
+Local pre-verification (zero API — costs no gh-api budget):
+  python3 check_merge_consensus.py --self-test-scorecard <receipt-file> <head-sha>
+checks a draft scorecard receipt file against the gate's own matcher before
+posting: exit 0 = the gate would accept it, exit 1 = it would not (with the
+missing piece named). Exit 2 = usage error.
 """
 import json
 import os
@@ -48,13 +56,42 @@ import urllib.error
 import urllib.request
 
 API = "https://api.github.com"
-SEAT_RE = re.compile(r"naya\s*([12345])\b", re.I)
+# The 16 named seats — the original 12 area leads (Shawn, 2026-10-11): Alpha,
+# Beta, Gamma, Delta, Epsilon, Zeta, Eta, Theta, Iota, Kappa, Lambda, Mu —
+# plus Nitro (Shawn's word 2026-10-16: "She's part of our team"), Chi, Relay
+# (Team Nitro seats, active reviewers on PR #2718), the three lead seats
+# Clarity, Verity, Resolve (naming law: leads sign "Naya <Title> Narzan" —
+# a lawful "Seat: Naya Clarity Narzan" declaration must pass the gate's
+# author check exactly like a seat tag), and GPT-6 (Shawn's seat-addition
+# word pattern; #2816 byte-proven authorship could not pass the consensus
+# gate until the registry knew the seat — Naya Kappa, 2026-10-21). Named seats sign as "Naya <Title>"
+# (e.g. "Naya Epsilon"); the legacy numeric seats 1-5 keep working exactly
+# as before. One shared id pattern so the author-declaration rule and the
+# review/scorecard rules recognize exactly the same seats.
+# "nitro" added 2026-10-17 per Shawn's word — Naya Nitro Narzan is a seated
+# team member (joined 2026-10-15); the registry predated her.
+# "chi", "relay" added 2026-10-17 — active reviewers on PR #2718 (Team Nitro);
+# registry updated to match the working team. Remove if not seated.
+# "gpt-6" added to match the already-used Naya GPT-6 seat declaration on PR #2816; this recognizes an existing seat label, it does not grant new permissions.\n# "clarity", "verity", "resolve" added 2026-10-18 — Epsilon w409 F2 systemic:
+# the naming-law lead form "Seat: Naya Clarity Narzan" could never pass the
+# author check (registry had no 'clarity'), so every lead-qualified body hit
+# the wall. Mechanism over ruling: the registry names the working team.
+# "gpt-6" added 2026-10-21 — Shawn's seat-addition word pattern (nitro/chi/
+# relay 2026-10-17); #2816's byte-proven GPT-6 authorship could not pass the
+# consensus gate until the registry knew the seat (Kappa w641: seat_of None).
+_NAMED_SEATS = ("alpha", "beta", "gamma", "delta", "epsilon", "zeta",
+                "eta", "theta", "iota", "kappa", "lambda", "mu",
+                "nitro", "chi", "relay",
+                "clarity", "verity", "resolve",
+                "gpt-6")
+_SEAT_ID = r"(?:([12345])|(" + "|".join(_NAMED_SEATS) + r"))"
+SEAT_RE = re.compile(r"naya\s*" + _SEAT_ID + r"\b", re.I)
 # The authoring seat must be an EXPLICIT declaration ("Seat: Naya N"), never
 # an incidental mention: PR bodies routinely discuss other seats ("the Naya 1
 # judge", "needs Naya 2/3/4 review"), and the first incidental match would
 # misattribute authorship (caught by dogfooding on PR #2373, whose body
 # mentions Naya 1 before declaring Seat: Naya 5).
-AUTHOR_SEAT_RE = re.compile(r"seat\s*:\s*naya\s*([12345])\b", re.I)
+AUTHOR_SEAT_RE = re.compile(r"seat\s*:\s*naya\s*" + _SEAT_ID + r"\b", re.I)
 
 # The seat-receipt convention (Seat: Naya N in the PR body, tagged review and
 # scorecard comments) was introduced by PR #2352, merged 2026-10-11 16:30:13Z.
@@ -176,10 +213,19 @@ def api_get(path, token):
     return items if items is not None else []
 
 
+def _normalized_seat(m):
+    """Normalize a SEAT_RE/AUTHOR_SEAT_RE match to 'Naya <Title>' form:
+    numeric seats stay as-is ('Naya 5'); named seats are title-cased
+    ('naya epsilon' -> 'Naya Epsilon')."""
+    if m.group(1):
+        return f"Naya {m.group(1)}"
+    return "Naya " + m.group(2).lower().capitalize()
+
+
 def seat_of(text):
     """Extract 'Naya N' seat tag from text, or None."""
     m = SEAT_RE.search(text or "")
-    return f"Naya {m.group(1)}" if m else None
+    return _normalized_seat(m) if m else None
 
 
 def author_seat_of(body):
@@ -187,16 +233,97 @@ def author_seat_of(body):
     declaration in the PR body, or None. Incidental seat mentions in prose
     do not count — authorship is a declaration, not a guess."""
     m = AUTHOR_SEAT_RE.search(body or "")
-    return f"Naya {m.group(1)}" if m else None
+    return _normalized_seat(m) if m else None
+
+
+# --- mention-vs-use hardening (Naya Kappa, 2026-10-13) ---
+# An approval keyword counts only when the commenter USES it as their own
+# verdict declaration. MENTION contexts never count:
+#   (a) the incantation/keywords are quoted (`...`, "...", '...', “…”)
+#       — the comment is talking ABOUT the format, not using it;
+#   (b) a negation/absence marker (no/not/missing/without/...) sits between
+#       the line start and the keyword — the comment says the approval is
+#       MISSING, not that it is GIVEN;
+#   (c) the comment carries an explicit non-approval verdict (HOLD, CHANGES
+#       REQUESTED, NEEDS WORK, DO NOT MERGE, NOT READY) — fail closed: a
+#       comment that declares HOLD cannot also be a review approval.
+# Convention this encodes: a review declaration is plain text, e.g.
+# "[NAYA DELTA · REVIEW] APPROVED" or "VERDICT: MERGE RECOMMENDED".
+# A quoted incantation is a mention of the format, never the approval.
+_MENTION_QUOTE_RE = re.compile(r"`[^`\n]*`|\"[^\n\"]*\"|'[^\n']*'|“[^”\n]*”")
+_NEGATION_RE = re.compile(
+    r"\b(no|not|n't|never|missing|without|lacks?|lacking|absent|"
+    r"failed|fails?|unable|deferred|blocked)\b", re.I)
+_HOLD_USE_RE = re.compile(
+    r"\[\s*NAYA\b[^\]\n]*\bREVIEW\b[^\]\n]*\]\s*(?:HOLD|CHANGES?\s+REQUESTED|NOT\s+READY)\b"  # [NAYA X · REVIEW] HOLD
+    r"|\bVERDICT\s*:\s*(?:MERGE\s*[:\-]?\s*)?(?:HOLD|CHANGES?\s+REQUESTED|"
+    r"NEEDS?\s+(?:WORK|CHANGES)|NOT\s+READY)\b"  # VERDICT: (merge) HOLD / CHANGES REQUESTED / NEEDS WORK / NOT READY
+    r"|\bDO\s+NOT\s+MERGE\b",  # DO NOT MERGE as a standalone verdict
+    re.I)
+_APPROVAL_USE_RE = re.compile(
+    r"\[\s*NAYA\b[^\]\n]*\bREVIEW\b[^\]\n]*\]\s*APPROVED\b"   # [NAYA X · REVIEW] APPROVED
+    r"|\bVERDICT\s*:\s*(?:MERGE\s*[:\-]?\s*)?APPROVED\b"      # VERDICT: APPROVED / VERDICT: merge APPROVED
+    r"|\bMERGE\s+(?:RECOMMENDED|APPROVED)\b",                 # MERGE RECOMMENDED / MERGE APPROVED
+    re.I)
+
+
+# --- blockquote hardening (Naya 4, 2026-10-21) ---
+# GitHub renders `> ...` lines as blockquotes — the commenter is quoting
+# someone else's words (the reply-to-comment button generates exactly this),
+# never declaring their own verdict. A blockquoted approval incantation is a
+# MENTION, not a USE — the same doctrine as backtick/quote spans, which never
+# covered the blockquote form. Without this, quoting "[NAYA EPSILON ·
+# REVIEW] APPROVED" in a `>` block satisfied the review requirement as if
+# Epsilon had approved (director finding on PR #2808's violation proof:
+# blockquote hole live at tip; #2808 never touched this file).
+# Strip blockquote paragraphs (including lazy continuations, which GitHub
+# still renders as quoted) before the mention-vs-use analysis.
+_BLOCKQUOTE_LINE_RE = re.compile(r"^\s*>")
+
+
+def _strip_blockquotes(text):
+    """Remove blockquote paragraphs from comment text.
+
+    A paragraph that opens with a `>` line is quoted; its lazy continuations
+    (non-blank lines before the next blank line, which GitHub still renders
+    inside the quote) are quoted too. Returns the commenter's own words.
+    """
+    out = []
+    in_quote = False
+    for line in (text or "").split("\n"):
+        if _BLOCKQUOTE_LINE_RE.match(line):
+            in_quote = True
+            continue
+        if in_quote:
+            if not line.strip():
+                in_quote = False
+            else:
+                continue
+        out.append(line)
+    return "\n".join(out)
 
 
 def _looks_like_review(body):
-    """True if the comment reads as an approving review: either the tagged
-    review incantation, or the team's IV sign-out verdict format."""
-    up = (body or "").upper()
-    if "[NAYA" in up and "REVIEW" in up and "APPROVED" in up:
+    """True only when the comment USES an approval keyword as its own
+    verdict declaration — never when it merely MENTIONS one (quoted,
+    negated, or declared absent). An explicit HOLD / non-approval verdict
+    fires the fail-closed veto only when the commenter DECLARES it as their
+    own verdict — prose discussion of the hold-veto mechanism never vetoes
+    (w333 repair: whole-text _HOLD_VETO_RE vetoed Epsilon 6226819187's
+    genuine APPROVED over the prose "(hold-veto fail-closed; ...)")."""
+    text = _strip_blockquotes(body or "")
+    cleaned = _MENTION_QUOTE_RE.sub(" ", text)
+    for m in _HOLD_USE_RE.finditer(cleaned):
+        line_start = cleaned.rfind("\n", 0, m.start()) + 1
+        if _NEGATION_RE.search(cleaned[line_start:m.start()]):
+            continue  # mention: the hold is described as absent
+        return False  # verdict declaration: fail closed
+    for m in _APPROVAL_USE_RE.finditer(cleaned):
+        line_start = cleaned.rfind("\n", 0, m.start()) + 1
+        if _NEGATION_RE.search(cleaned[line_start:m.start()]):
+            continue  # mention: the approval is described as missing
         return True
-    return "VERDICT" in up and ("MERGE RECOMMENDED" in up or "APPROVED" in up)
+    return False
 
 
 def _score_of(body):
@@ -214,21 +341,44 @@ def _score_of(body):
     return None
 
 
+_HEAD_SHA_FIELD_RE = re.compile(
+    r"(?im)^\s*head(?:[\s_-]*sha)?\s*[:=]\s*([a-f0-9]{40})\s*$"
+)
+
+
+def scorecard_head_of(body):
+    """Return the one unambiguous SHA in an explicit head field.
+
+    Accept common header-shape variants (Head, Head SHA, Head-SHA, HEAD_SHA)
+    while rejecting arbitrary SHA mentions, quoted/inline examples, malformed
+    values, and conflicting duplicate fields.
+    """
+    matches = [m.group(1).lower() for m in _HEAD_SHA_FIELD_RE.finditer(body or "")]
+    if not matches or len(set(matches)) != 1:
+        return None
+    return matches[0]
+
+
 def _looks_like_scorecard(body, head_sha):
     """True if the comment is a scorecard receipt for this exact head SHA:
     it must name the head SHA, say 'scorecard' or 'verdict', and carry either
-    a merge-approval phrase or a numeric score >= 9.0. The exact-head rule is
+    a merge-approval phrase or a numeric score >= 9.5. The exact-head rule is
     the security property — a receipt for an older head must not green-light
-    a newer one — so it is never relaxed."""
-    low = (body or "").lower()
+    a newer one — so it is never relaxed. The 9.5 bound is the law
+    (P-012: below 9.5 is zero acceptance); the dock adjudicates it, and the
+    gate's shape check refuses to be looser than the law it gates for."""
+    # Blockquote paragraphs are mentions, not the commenter's own receipt
+    # (same doctrine as the review leg, #2877): a quoted scorecard whose
+    # score/seat lines sit inside `>` lines must not satisfy this leg just
+    # because an unquoted `head:` line names the exact head (mixed form).
+    text = _strip_blockquotes(body or "")
+    low = text.lower()
     if "scorecard" not in low and "verdict" not in low:
         return False
-    if head_sha not in (body or ""):
+    if scorecard_head_of(text) != (head_sha or "").lower():
         return False
-    approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
-                             low))
-    score = _score_of(body)
-    return approved or (score is not None and score >= 9.0)
+    score = _score_of(text)
+    return score is not None and 9.5 <= score <= 10
 
 
 def run_gate(token, repo, pr_number, head_sha):
@@ -254,6 +404,15 @@ def run_gate(token, repo, pr_number, head_sha):
     reviews = api_get(f"/repos/{repo}/pulls/{pr_number}/reviews", token)
     comments = api_get(f"/repos/{repo}/issues/{pr_number}/comments", token)
 
+    # A submitted PR review is an event-scoped receipt: GitHub already sends
+    # pull_request_review to both gates, avoiding issue_comment wakeups.
+    # Never admit pending, dismissed or changes-requested reviews as approval.
+    review_receipts = [
+        {"body": r.get("body") or "", "created_at": r.get("submitted_at")}
+        for r in reviews if r.get("state") in ("COMMENTED", "APPROVED")
+    ]
+    receipts = comments + review_receipts
+
     reviewer_seat = None
     # Path A: native GitHub approval from a different login.
     for r in reviews:
@@ -262,12 +421,14 @@ def run_gate(token, repo, pr_number, head_sha):
             reviewer_seat = seat_of(r.get("body")) or "external reviewer"
             break
     # Path B: seat-tagged review comment (incantation or IV verdict format)
-    # from a different seat.
+    # from a different seat. Seat attribution runs on the blockquote-stripped
+    # text so a quoted seat (mention) is never mistaken for the reviewer
+    # (use) when a comment carries both a quote and a genuine approval.
     if not reviewer_seat:
-        for c in comments:
+        for c in receipts:
             body = c.get("body") or ""
             if _looks_like_review(body):
-                s = seat_of(body)
+                s = seat_of(_strip_blockquotes(body))
                 if s and s != author_seat:
                     reviewer_seat = s
                     break
@@ -279,11 +440,13 @@ def run_gate(token, repo, pr_number, head_sha):
 
     # --- Requirement 2: scorecard receipt naming this exact head SHA ---
     scorer_seat = None
-    for c in comments:
+    for c in receipts:
         body = c.get("body") or ""
         if not _looks_like_scorecard(body, head_sha):
             continue
-        s = seat_of(body)
+        # Seat attribution runs on the blockquote-stripped text, exactly as
+        # the review leg above: a quoted seat is a mention, never the scorer.
+        s = seat_of(_strip_blockquotes(body))
         if s and s != author_seat:
             scorer_seat = s
             break
@@ -291,20 +454,97 @@ def run_gate(token, repo, pr_number, head_sha):
         fail(f"no scorecard receipt naming head SHA {head_sha[:10]} from a seat "
              f"other than the author ({author_seat}). Post '## SCORECARD' (or "
              f"'Honest scorecard: <score>/10') with the exact head SHA, a "
-             f"merge verdict or score >= 9.0, and your seat tag, as a PR "
+             f"merge verdict or score >= 9.5, and your seat tag, as a PR "
              f"comment.")
 
     print(f"CONSENSUS GATE PASSED: author {author_seat}, "
           f"reviewer {reviewer_seat}, scorer {scorer_seat}, head {head_sha[:10]}.")
 
 
+def self_test_scorecard(path, head_sha):
+    """Zero-API pre-verification of a scorecard receipt against the gate's own
+    matcher. Workers run this on their draft comment BEFORE posting, so a
+    gate-visible receipt costs a local millisecond instead of an API round-trip
+    (P-033: shape to the parser). Semantics are byte-identical to the gate —
+    it calls _looks_like_scorecard itself, never a re-implementation — so a
+    local PASS means the matcher will see it when posted. Prints a diagnostic
+    breaking down the four sub-conditions so a FAIL names exactly which one
+    the draft missed. Exit 0 = gate matcher accepts; exit 1 = it does not."""
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            body = fh.read()
+    except OSError as e:
+        fail(f"SCORECARD SELF-TEST FAILED: cannot read {path}: {e}")
+    except UnicodeDecodeError as e:
+        fail(f"SCORECARD SELF-TEST FAILED: {path} is not UTF-8 text: {e}")
+    stripped = _strip_blockquotes(body)
+    low = stripped.lower()
+    has_keyword = "scorecard" in low or "verdict" in low
+    has_sha = head_sha in stripped
+    approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
+                              low))
+    score = _score_of(stripped)
+    passes = _looks_like_scorecard(body, head_sha)
+    seat = seat_of(stripped)
+    lines = [
+        f"keyword scorecard/verdict: {'yes' if has_keyword else 'MISSING'}",
+        f"names exact head sha {head_sha[:10]}: "
+        f"{'yes' if has_sha else 'MISSING'}",
+        f"merge-approval phrase: {'yes' if approved else 'no'}",
+        f"numeric score: {score if score is not None else 'none'}"
+        f"{' (>=9.5)' if (score is not None and score >= 9.5) else ''}",
+        # Seat is not part of _looks_like_scorecard, but the gate's scan
+        # still needs a seat tag distinct from the author — report it so the
+        # worker doesn't pass this check and then fail at scan time.
+        f"seat tag: {seat if seat else 'MISSING (gate scan needs one)'}",
+    ]
+    print(("SCORECARD SELF-TEST PASSED" if passes
+           else "SCORECARD SELF-TEST FAILED") + f": {path}")
+    for line in lines:
+        print("  " + line)
+    if not passes:
+        fail("the gate's matcher would not accept this as a scorecard "
+             "receipt — add the missing piece(s) above and re-run before "
+             "posting.")
+    return  # exit 0 via normal return
+
+
 def main():
+    argv = sys.argv[1:]
+    if argv and argv[0] == "--self-test-scorecard":
+        # Zero-API local pre-check: the worker's draft receipt file against
+        # the gate's own matcher. Lifecycle posts exempt it from the worker
+        # API budget — it makes no network calls at all.
+        if len(argv) != 3:
+            print("usage: check_merge_consensus.py --self-test-scorecard "
+                  "<receipt-file> <head-sha>", file=sys.stderr)
+            sys.exit(2)
+        self_test_scorecard(argv[1], argv[2])
+        return
     token = os.environ.get("GH_TOKEN") or ""
     repo = os.environ.get("REPO") or ""
     pr_number = os.environ.get("PR_NUMBER") or ""
     head_sha = os.environ.get("HEAD_SHA") or ""
+    event_name = os.environ.get("EVENT_NAME") or ""
+    trigger_comment = os.environ.get("TRIGGER_COMMENT_BODY") or ""
     if not (token and repo and pr_number and head_sha):
         fail("missing GH_TOKEN/REPO/PR_NUMBER/HEAD_SHA in environment.")
+    # --- Trigger relevance (Naya Delta, w307): an issue_comment event fires
+    # for ANY comment on the PR — bot pulses, questions, drive-bys. Running
+    # the full gate on a non-verdict comment paints a verdict about an
+    # unrelated PR onto the main tip (proven: check-run 116934064137 FAILED
+    # on tip 83806f4d0e33 while evaluating PR #2536's body, fired by a
+    # 10:43:41Z issue_comment event). A consensus event exists only when the
+    # triggering comment USES a review incantation or a scorecard receipt as
+    # its own declaration — judged by the gate's own matchers, never a
+    # re-implementation. Otherwise the run skips silently: no information is
+    # lost, because verdicts re-register on their own events.
+    if event_name == "issue_comment" and not (
+            _looks_like_review(trigger_comment)
+            or _looks_like_scorecard(trigger_comment, head_sha)):
+        print("CONSENSUS GATE SKIPPED: triggering comment carries no review "
+              "verdict or scorecard receipt — no consensus event to evaluate.")
+        return
     try:
         run_gate(token, repo, pr_number, head_sha)
     except GateAPIError as e:

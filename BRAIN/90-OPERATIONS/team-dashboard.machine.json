@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T20:15:21+00:00",
+ "generated_utc": "2026-10-22T20:52:19+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,15 +31,8 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [
-    {
-     "number": 2942,
-     "title": "GT-028 v1.2 \u2014 S8 label check learns the smart-app language law (stem-matched Today subtitl",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2942",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "know",
@@ -147,15 +140,9 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2948,
-     "title": "Accountability Ledger v1 \u2014 first writer of system actions into the Smart Ledger (writer + ",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2948",
-     "draft": false
-    },
-    {
-     "number": 2946,
-     "title": "Per-person timeline read model: identity registry + unified event stream (Best-of-Best #1,",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2946",
+     "number": 2949,
+     "title": "Factory Contract Home \u2014 step 1: A.1 stamp applied (contract v1.2) + canonical set declared",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2949",
      "draft": false
     },
     {
@@ -165,37 +152,25 @@
      "draft": false
     },
     {
-     "number": 2944,
-     "title": "SN-0826: Have Each Other's Back \u2014 Bring the Bad News First",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2944",
-     "draft": false
-    },
-    {
-     "number": 2943,
-     "title": "Factory Contract-Home Step 3: dual-label the 154 canonical pieces + adjudicate the 416 unv",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2943",
-     "draft": false
-    },
-    {
-     "number": 2941,
-     "title": "Factory Step 1: stamp A.1 spectrum walk (contract v1.2) + declare canonical set",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2941",
-     "draft": false
-    },
-    {
      "number": 2940,
      "title": "canon: S8 flagship-dialect label follows the smart-app language law",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2940",
      "draft": false
     },
     {
-     "number": 2936,
-     "title": "Naya/mission state",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2936",
+     "number": 2934,
+     "title": "Mission-state twin cure \u2014 director ruling Option C (TOP-10 director-stated, register machi",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934",
+     "draft": false
+    },
+    {
+     "number": 2869,
+     "title": "Naya4/smart notes 2026 09 30",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869",
      "draft": false
     }
    ],
-   "open_pr_count": 10
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -220,15 +195,9 @@
      "title": "R13 \u2014 #2154 pointer sweep: mission state repointed to BRAIN/CURRENT-MISSION-STATE.md (adju",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2939",
      "draft": false
-    },
-    {
-     "number": 2938,
-     "title": "Tier A \u2014 Gate trigger-scope repair: board comments stop spawning gate runs (issue_comment ",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2938",
-     "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 1
   },
   {
    "id": "team",
@@ -247,8 +216,15 @@
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2950,
+     "title": "Naya2/team dashboard",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2950",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "infra",
@@ -294,15 +270,8 @@
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
-   "open_prs": [
-    {
-     "number": 2947,
-     "title": "Naya Notes: dedicated store + Hub Lists surface with dictation (Best-of-Best #15, Phase 0 ",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2947",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "memory",
@@ -475,6 +444,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 16,
- "unassigned_prs": 10
+ "open_pr_total": 9,
+ "unassigned_prs": 5
 }

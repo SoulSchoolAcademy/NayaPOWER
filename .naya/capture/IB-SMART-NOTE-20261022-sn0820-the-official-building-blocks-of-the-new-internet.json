@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0820",
+ "intelligence": {
+  "title": "The Official Building Blocks of the New Internet",
+  "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet",
+  "smart_note_id": "SN-0820",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-22. No runtime provenance invented.",
+  "ingested_at": "2026-10-22",
+  "essence": "Elite buttons, in the elite place, done the elite way. The Smart App Factory does not build pages — it mints official building blocks: named objects with their own identity, designed to interconnect, each one sitting where it was designed to sit. Elite pieces are only half the craft; elite placement is the other half. An app assembled from blocks like these stops being a pile of features and becomes a place a human can live in — and that is how the new internet gets built: block by official block.",
+  "human_view": "The old internet was built by everyone inventing their own everything — every site its own buttons, its own menus, its own logic, and every visitor relearning every page from zero. The Smart App Factory takes the opposite road. It perfects a set of official building blocks — a button, a board, a cover, a wall, a settings room — each one named, each one finished to an elite standard, each one designed from the start to fit the blocks around it. Then apps are composed from those blocks, the way a great building is composed from parts a master builder trusts. When Shawn set the standard, he said it in one breath: just like we create the most elite level buttons, we also put the buttons in the most elite place, and we do it in the most elite way.",
+  "simple_view": "Think of LEGO — but every brick is perfect, every brick has a name, and every brick was made knowing exactly which bricks it would snap onto. You don't carve a new brick for every castle. You take the official bricks, and you put each one where it belongs. The castle is different every time. The bricks are trustworthy every time.",
+  "grandma_view": "It's like a good set of dishes, dear. Every plate has its purpose, every cup its place in the cupboard, and when you set the table, everything goes where it belongs because somebody decided long ago where it belongs. You don't eat soup out of a frying pan just because the pan was handy. The right piece, in the right place, used the right way — that's not fussiness, that's how a house runs beautifully.",
+  "naya_view": "A block is an object, not a chunk of page. It has a name, an identity, an official existence in the system — and it carries its connections with it, so where it goes is obvious, because somebody thought about where it should go before it was ever placed. This changes how a Naya builds: you don't invent a block per page, you compose from the official set; and you don't ask only \"does it work?\" — you ask \"is this the elite piece, in its designed place, done the elite way?\" A build that ships an unnamed block, or a right block in a thoughtless place, has done half the craft. Placement is a scorecard axis, judged in the order a human meets the page.",
+  "ai_view": "Every era of the internet gets the building blocks it deserves. The first web was hand-carved pages, each one an orphan. This one is composed — from blocks so good, and so well placed, that quality stops depending on who happened to build the page. The factory's real product isn't any single app; it's the block set itself: the shared, official, ever-improving vocabulary from which every app is spoken. Get the blocks right and place them right, and every app built from them inherits the excellence.",
+  "machine_view": {
+   "sn": "SN-0820",
+   "title": "The Official Building Blocks of the New Internet",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "smart_app_factory:\n  product: official_building_blocks (not pages)\n  block: {name: required, identity: its own, status: official, connections: designed-in, placement: designed before placed}\n  elite_standard: elite_piece AND elite_placement AND elite_execution — all three, always\n  composition: apps assembled from the official block set; per-page invented chrome is a defect\n  verification: block named? block official? placement designed? — a no on any axis fails the build"
+  },
+  "views_note": "Views derived 2026-10-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "cd1deb6b84ab95df2e015b6a2effa695bae3804e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

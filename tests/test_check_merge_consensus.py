@@ -34,6 +34,7 @@ from check_merge_consensus import (  # noqa: E402
     author_seat_of,
     run_gate,
     seat_of,
+    scorecard_head_of,
 )
 
 
@@ -194,15 +195,23 @@ def test_score_extraction_formats():
 HEAD = "d0144aee427dab3a1ab2df05f97962cb83b81f35"
 
 
-def test_scorecard_matcher_accepts_legacy_format():
+def test_scorecard_matcher_rejects_below_law_threshold():
+    # P-012: 9.5 is accepted; 9.0 and below is zero acceptance. A scorecard
+    # at 9.0 must fail the shape check — it routes to fix-pass, never to
+    # merge. The dock adjudicates the law; the gate refuses to be looser.
     body = f"## SCORECARD\nhead: {HEAD}\nverdict: 9.0\nSeat: Naya 3"
-    assert _looks_like_scorecard(body, HEAD)
+    assert not _looks_like_scorecard(body, HEAD)
 
 
 def test_scorecard_matcher_accepts_iv_format():
-    body = (f"## VERDICT: MERGE RECOMMENDED\n**Honest scorecard: 9.4/10.**\n"
-            f"head {HEAD}\nSeat: Naya 3")
+    body = (f"## VERDICT: MERGE RECOMMENDED\n**Honest scorecard: 9.5/10.**\n"
+            f"Head SHA: {HEAD}\nSeat: Naya 3")
     assert _looks_like_scorecard(body, HEAD)
+
+
+def test_merge_recommended_phrase_cannot_replace_numeric_threshold():
+    body = f"## VERDICT: MERGE RECOMMENDED\nHonest scorecard: 8/10\nHead SHA: {HEAD}\nSeat: Naya 3"
+    assert not _looks_like_scorecard(body, HEAD)
 
 
 def test_scorecard_matcher_rejects_low_score():
@@ -256,7 +265,7 @@ def test_post_convention_full_pass(capsys):
     from Naya 3 naming the exact head -> PASSED."""
     review = ("[SIGN OUT] IV seat. ## VERDICT: MERGE RECOMMENDED\n"
               "Seat: Naya 2")
-    scorecard = (f"**Honest scorecard: 9.4/10.**\nhead {HEAD}\n"
+    scorecard = (f"**Honest scorecard: 9.5/10.**\nHead SHA: {HEAD}\n"
                  f"## VERDICT: MERGE RECOMMENDED\nSeat: Naya 3")
 
     def fake_api_get(path, token):
@@ -333,3 +342,216 @@ def test_api_error_becomes_plain_words_not_traceback(capsys, monkeypatch):
     err = capsys.readouterr().err
     assert "CONSENSUS GATE FAILED: unable to verify consensus" in out
     assert "Traceback" not in out + err
+
+
+# ---------------------------------------------------------------------------
+# R5: the 12 named seats (Naya Lambda, lane 5 — 2026-10-12)
+# ---------------------------------------------------------------------------
+# Root cause: SEAT_RE only knew the numeric seats [12345], so a scorecard
+# receipt signed "Seat: Naya Epsilon" could never satisfy the gate — the
+# scorer stayed invisible and two fully-validated merges jammed the dock
+# (#2459 at 9.5, #2488 at 9.6). The pattern now recognizes the 12 named
+# area leads (Alpha..Mu) alongside 1-5, normalizing to "Naya <Title>".
+# Verdict regexes and author/reviewer/scorer distinctness are untouched:
+# the gate is repaired, never weakened.
+
+NAMED_SEATS = ["Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta",
+               "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu"]
+
+
+def test_seat_of_recognizes_all_12_named_seats():
+    for name in NAMED_SEATS:
+        assert seat_of(f"Seat: Naya {name}") == f"Naya {name}"
+
+
+def test_seat_of_normalizes_named_seat_casing():
+    assert seat_of("naya epsilon") == "Naya Epsilon"
+    assert seat_of("NAYA LAMBDA") == "Naya Lambda"
+
+
+def test_seat_of_still_recognizes_numeric_seats():
+    for n in "12345":
+        assert seat_of(f"Seat: Naya {n}") == f"Naya {n}"
+    assert seat_of("no tag here") is None
+
+
+def test_author_seat_of_recognizes_named_seat_declaration():
+    assert author_seat_of("Seat: Naya Epsilon") == "Naya Epsilon"
+    assert author_seat_of("Seat: Naya 5") == "Naya 5"
+    assert author_seat_of("mentions Naya Epsilon in prose, no declaration") is None
+
+
+def test_author_seat_of_recognizes_lead_seat_declaration():
+    # Epsilon w409 F2 systemic (HOLD comment 6244120258 on #2738): the
+    # naming-law form "Seat: Naya Clarity Narzan" could never pass the
+    # gate's author check — the registry had no 'clarity'. The same wall
+    # stood for 'verity' and 'resolve'. Lead seats are part of the working
+    # team; the registry must name them.
+    assert author_seat_of("Seat: Naya Clarity Narzan") == "Naya Clarity"
+    assert author_seat_of("Seat: Naya Verity Narzan") == "Naya Verity"
+    assert author_seat_of("Seat: Naya Resolve Narzan") == "Naya Resolve"
+    assert seat_of("[NAYA CLARITY · REVIEW] APPROVED") == "Naya Clarity"
+
+
+def test_named_seat_scorecard_is_accepted(capsys):
+    """(a) The mission's core case: author Naya 2, review from Naya 4,
+    '## SCORECARD' with the exact head SHA, 'verdict: 9.5', signed by
+    Naya Epsilon -> the gate passes and names the scorer seat."""
+    scorecard = (f"## SCORECARD\nhead: {HEAD}\nverdict: 9.5\n"
+                 f"Seat: Naya Epsilon")
+    review = "[NAYA 4 \u00b7 REVIEW] APPROVED \u2014 looks good\nSeat: Naya 4"
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2459"):
+            return _pr_response("2026-10-12T12:00:00Z", "Seat: Naya 2\nbody")
+        if path.endswith("/reviews"):
+            return []
+        return [{"body": review}, {"body": scorecard}]
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        run_gate("tok", "o/r", "2459", HEAD)  # must not raise
+    out = capsys.readouterr().out
+    assert "CONSENSUS GATE PASSED" in out
+    assert "Naya Epsilon" in out
+
+
+def test_author_own_named_seat_still_rejected():
+    """(b) Distinctness is untouched: the author's own seat cannot score."""
+    own_scorecard = (f"## SCORECARD\nhead: {HEAD}\nverdict: 9.9\n"
+                     f"Seat: Naya 2")
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2459"):
+            return _pr_response("2026-10-12T12:00:00Z", "Seat: Naya 2")
+        if path.endswith("/reviews"):
+            return []
+        return [{"body": own_scorecard}]
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        with pytest.raises(SystemExit) as exc:
+            run_gate("tok", "o/r", "2459", HEAD)
+    assert exc.value.code == 1
+
+
+def test_naya_5_review_path_still_works(capsys):
+    """(c) The legacy numeric review path is preserved: a Naya 5 review
+    counts as a different-seat review on a Naya 2-authored PR."""
+    review = "[NAYA 5 \u00b7 REVIEW] APPROVED\nSeat: Naya 5"
+    scorecard = (f"## SCORECARD\nhead: {HEAD}\nverdict: 9.5\n"
+                 f"Seat: Naya Epsilon")
+
+    def fake_api_get(path, token):
+        if path.endswith("/pulls/2459"):
+            return _pr_response("2026-10-12T12:00:00Z", "Seat: Naya 2")
+        if path.endswith("/reviews"):
+            return []
+        return [{"body": review}, {"body": scorecard}]
+
+    with patch("check_merge_consensus.api_get", side_effect=fake_api_get):
+        run_gate("tok", "o/r", "2459", HEAD)  # must not raise
+    out = capsys.readouterr().out
+    assert "CONSENSUS GATE PASSED" in out
+    assert "reviewer Naya 5" in out
+
+
+HEAD_STC = "9f80e8eccfbe8256ec7ce069c61cd38cc86430ce"
+
+
+class _SelfTestScorecard:
+    """theta-w246-selftest-cli: the --self-test-scorecard entry point."""
+
+
+def test_self_test_scorecard_accepts_valid_receipt(tmp_path, capsys):
+    from check_merge_consensus import self_test_scorecard
+
+    receipt = tmp_path / "receipt.md"
+    receipt.write_text(
+        f"## SCORECARD\nhead: {HEAD_STC}\nHonest scorecard: 9.5/10\n"
+        "Seat: Naya Epsilon\n"
+    )
+    self_test_scorecard(str(receipt), HEAD_STC)  # must not raise
+    out = capsys.readouterr().out
+    assert "SCORECARD SELF-TEST PASSED" in out
+
+
+def test_self_test_scorecard_rejects_wrong_sha(tmp_path, capsys):
+    from check_merge_consensus import self_test_scorecard
+
+    receipt = tmp_path / "receipt.md"
+    receipt.write_text(
+        "## SCORECARD\nhead: deadbeefdeadbeefdeadbeefdeadbeefdeadbeef\n"
+        "Honest scorecard: 9.5/10\nSeat: Naya Epsilon\n"
+    )
+    with pytest.raises(SystemExit) as exc:
+        self_test_scorecard(str(receipt), HEAD_STC)
+    assert exc.value.code == 1
+    out = capsys.readouterr().out
+    assert "SCORECARD SELF-TEST FAILED" in out
+    assert "MISSING" in out  # the diagnostic names the missing piece
+
+
+def test_self_test_scorecard_missing_file_fails_closed(capsys):
+    from check_merge_consensus import self_test_scorecard
+
+    with pytest.raises(SystemExit) as exc:
+        self_test_scorecard("/no/such/receipt.md", HEAD_STC)
+    assert exc.value.code == 1
+    assert "CONSENSUS GATE FAILED" in capsys.readouterr().out
+
+
+def test_self_test_scorecard_verdict_matches_gate_matcher(tmp_path):
+    """Parity property: the CLI's verdict equals _looks_like_scorecard on the
+    same body. The CLI must never accept what the gate rejects."""
+    from check_merge_consensus import _looks_like_scorecard, self_test_scorecard
+
+    bodies = [
+        f"## SCORECARD\nhead: {HEAD_STC}\nverdict: 9.5\nSeat: Naya Epsilon",
+        f"## VERDICT: MERGE RECOMMENDED\nhead: {HEAD_STC}\nSeat: Naya Kappa",
+        f"## SCORECARD\nhead: {HEAD_STC}\nscorecard: 8.0\nSeat: Naya Epsilon",
+        "some notes with no scorecard keyword and no sha",
+        f"## SCORECARD\nhead: wrongsha\nHonest scorecard: 9.4/10\nSeat: Naya Epsilon",
+    ]
+    for i, body in enumerate(bodies):
+        receipt = tmp_path / f"r{i}.md"
+        receipt.write_text(body)
+        try:
+            self_test_scorecard(str(receipt), HEAD_STC)
+            accepted = True
+        except SystemExit as e:
+            assert e.code == 1
+            accepted = False
+        assert accepted == _looks_like_scorecard(body, HEAD_STC), body
+
+
+def test_registry_recognizes_every_named_seat():
+    """Seat-registry closure: every entry in _NAMED_SEATS (and the legacy
+    numeric seats 1-5) must be recognized by both the tag matcher and the
+    explicit author-declaration matcher. Catches registry lag (the gpt-6
+    miss: a seated author's receipts failed the gate because the registry
+    did not know the seat)."""
+    from check_merge_consensus import _NAMED_SEATS, AUTHOR_SEAT_RE, SEAT_RE
+    for seat in list(_NAMED_SEATS) + ["1", "2", "3", "4", "5"]:
+        tag = f"Naya {seat}"
+        assert SEAT_RE.search(tag), tag
+        assert AUTHOR_SEAT_RE.search(f"Seat: {tag}"), tag
+    # gpt-6 specifically: the seat that motivated this test
+    assert SEAT_RE.search("Naya GPT-6")
+    assert AUTHOR_SEAT_RE.search("Seat: Naya GPT-6")
+def test_scorecard_head_parser_accepts_header_shape_variants():
+    for header in ("Head", "Head SHA", "Head-SHA", "HEAD_SHA"):
+        body = f"## SCORECARD\n{header}: {HEAD}\nverdict: 9.5\nSeat: Naya Delta"
+        assert scorecard_head_of(body) == HEAD
+        assert _looks_like_scorecard(body, HEAD)
+
+
+def test_scorecard_matcher_rejects_sha_mentioned_only_in_prose():
+    body = f"## SCORECARD\nThis evaluates commit {HEAD}.\nverdict: 9.5\nSeat: Naya Delta"
+    assert scorecard_head_of(body) is None
+    assert not _looks_like_scorecard(body, HEAD)
+
+
+def test_scorecard_matcher_rejects_conflicting_head_fields():
+    other = "a" * 40 if HEAD != "a" * 40 else "b" * 40
+    body = f"## SCORECARD\nHead SHA: {HEAD}\nHead-SHA: {other}\nverdict: 9.5\nSeat: Naya Delta"
+    assert scorecard_head_of(body) is None
+    assert not _looks_like_scorecard(body, HEAD)

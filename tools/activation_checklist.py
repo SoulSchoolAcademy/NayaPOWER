@@ -47,6 +47,13 @@ verification protocol) is the RITUAL side of the same provision and lives
 outside this machine gate. Score claims inside a checklist are read as
 self-attested, never as verified proof.
 
+Declaration receipt (Step 0, PROTOCOL.md): activation also proves the
+declaration happened against the current pinned protocol. Issue one with
+--issue-declaration <agent-id> [--out PATH] (fingerprints computed by
+tools/protocol_pin.py from live bytes), and verify a claim WITH one via
+--declaration PATH; --require-declaration makes a missing or invalid
+receipt a REJECT — the checklist fails without it.
+
 Wiring point: kernel/protocol/cold_start_gate.py is the boot sequence this
 checklist belongs to (activation is not complete until the checklist
 verifies). The pure predicate check_checklist() is importable so the cold
@@ -115,22 +122,21 @@ CURRICULUM_LESSON_PINS = {
     "L14": "4a9962ac4aa6e686472499e781a9a068e1d3e16169c543e7f94ecd1d68624364",
 }
 
-# Pinned 2026-10-10 from origin/brain-build/operating-code-v2 @
-# 22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, OPEN/unmerged).
-# Re-pinned: branch moved 8a933551 -> 22b84419 (V2 files changed).
-# Until #2087 merges, run with --v2-root pointing at a checkout of that
-# branch (or pass --v2-expect to re-pin deliberately). After merge, re-pin
-# to the main-tip bytes — the pin source string must name the new ref.
+# Pinned 2026-10-13 to origin/main @
+# dd6f2d927d8299f7bd9895ee5dadca892b12b233 (V2 merged to main; re-pinned
+# deliberately at boot-gate wiring — the pin source string names the new
+# ref per the re-pin rule). A drift in lesson content or V2 bytes is a
+# deliberate re-pin (code change), never a silent pass.
 V2_PIN_SOURCE = (
-    "origin/brain-build/operating-code-v2 @ "
-    "22b84419ed500f91d677679c153c0599e60ca33c (PR #2087, unmerged 2026-10-10)")
+    "origin/main @ dd6f2d927d8299f7bd9895ee5dadca892b12b233 "
+    "(V2 on main; re-pinned at boot-gate wiring, 2026-10-13)")
 V2_FILE_PINS = {
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md":
-        "f2a5f81e6d10b9749e3159267411c615c65353845b2d02aa88e98c8115d13537",
+        "d856dc13ae5d31695a94ba97aa52850ea1d0cfb5d4740eb4ff71ffd67967259a",
     "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md":
-        "e4489a40016f05932cfaeee2217b7349ce45277897b79d971e10df0b098fddec",
+        "8e9f53929f0bbc9af3bfd1da3c7f60454a2c9f1769162ec0bb4e48023be187a9",
     "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json":
-        "c1bdf12ad21b990b34329a2a2809c8be4488e9fe6d87539a0f1508b2c9f8ce8b",
+        "a4af89b3c8b3db07e0c289c4906381870952096f282202e0de98a48511a7e2b1",
 }
 
 
@@ -350,6 +356,21 @@ def check_checklist(canonical, claim=None):
 # CLI
 # ---------------------------------------------------------------------------
 
+def _load_protocol_pin():
+    """Load tools/protocol_pin.py (beside this file) for declaration
+    receipts. Import is lazy so the checklist's canonical path never
+    depends on it unless a declaration flag is actually used."""
+    import importlib.util
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "protocol_pin.py")
+    spec = importlib.util.spec_from_file_location("naya_protocol_pin", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("protocol pin tool not loadable: %s" % path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def _default_repo_root():
     here = os.path.dirname(os.path.abspath(__file__))
     return os.path.dirname(here)  # tools/ -> repo root
@@ -364,13 +385,50 @@ def main(argv=None):
                          "root above tools/)")
     ap.add_argument("--v2-root", default="",
                     help="checkout holding the V2 files (default: --repo-root). "
-                         "Point at the operating-code-v2 branch checkout "
-                         "until PR #2087 merges.")
+                         "V2 is pinned to main-tip bytes since 2026-10-13; "
+                         "point elsewhere only to verify a deliberate re-pin.")
     ap.add_argument("--checklist", default="",
                     help="agent activation checklist claim JSON to verify "
                          "(default: self-audit of canonical artifacts only)")
+    ap.add_argument("--declaration", default="",
+                    help="Step 0 declaration receipt JSON (from "
+                         "tools/protocol_pin.py) to verify alongside "
+                         "the checklist")
+    ap.add_argument("--require-declaration", action="store_true",
+                    help="fail closed unless a valid --declaration "
+                         "receipt is supplied — Step 0 must be declared "
+                         "and receipted before work begins")
+    ap.add_argument("--issue-declaration", default="",
+                    help="issue a declaration receipt for this agent id "
+                         "and exit (fingerprints from live bytes)")
+    ap.add_argument("--out", default="",
+                    help="with --issue-declaration: write the receipt "
+                         "here (default: stdout)")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args(argv)
+
+    if args.issue_declaration:
+        try:
+            pin = _load_protocol_pin()
+            receipt = pin.issue_declaration_receipt(
+                args.repo_root, args.issue_declaration)
+        except Exception as e:
+            return _emit("TOOL-ERROR",
+                         ["cannot issue declaration receipt: %s" % e],
+                         args, 2)
+        payload = json.dumps(receipt, indent=2, sort_keys=True)
+        if args.out:
+            try:
+                with open(args.out, "w", encoding="utf-8") as f:
+                    f.write(payload + "\n")
+            except OSError as e:
+                return _emit("TOOL-ERROR",
+                             ["cannot write declaration receipt: %s" % e],
+                             args, 2)
+            print("declaration receipt written: %s" % args.out)
+        else:
+            print(payload)
+        return 0
 
     canonical, err = load_canonical(args.repo_root,
                                     args.v2_root or args.repo_root)
@@ -387,6 +445,30 @@ def main(argv=None):
                          ["cannot read checklist claim: %s" % e], args, 2)
 
     verdict, violations = check_checklist(canonical, claim)
+
+    decl_violations = []
+    if args.declaration:
+        try:
+            with open(args.declaration, encoding="utf-8") as f:
+                receipt = json.load(f)
+        except (OSError, ValueError) as e:
+            return _emit("TOOL-ERROR",
+                         ["cannot read declaration receipt: %s" % e], args, 2)
+        try:
+            pin = _load_protocol_pin()
+            decl_violations = pin.check_declaration_receipt(
+                args.repo_root, receipt)
+        except Exception as e:
+            decl_violations = ["DECLARATION_UNVERIFIABLE: %s" % e]
+    elif args.require_declaration:
+        decl_violations = [
+            "DECLARATION_RECEIPT_MISSING: --require-declaration set but "
+            "no --declaration receipt supplied — Step 0 must be "
+            "declared and receipted before work begins"]
+    if decl_violations:
+        violations = violations + decl_violations
+        verdict = "REJECT"
+
     return _emit(verdict, violations, args, 0 if verdict == "CHECKLIST-VERIFIED" else 1)
 
 

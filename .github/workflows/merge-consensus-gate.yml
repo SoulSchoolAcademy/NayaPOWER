@@ -10,6 +10,15 @@ name: Merge consensus gate
 # enforcing the convention retroactively is a stale assertion. API failures
 # fail closed with plain words ("unable to verify consensus"), never a
 # traceback: a red check with a stack trace trains everyone to ignore red.
+#
+# Trigger-scope repair (2026-10-22): issue_comment removed. GitHub offers no
+# PR-comments-only trigger, so every comment on ANY issue — including the
+# team board — spawned a run of this gate bound to the main tip (32,429 runs
+# all-time at repair; the L499 misfire class: a verdict about one PR painted
+# onto the tip by an unrelated comment). A scorecard landing on a PR now
+# re-fires this gate deliberately via workflow_dispatch (input: pr_number),
+# fired by the lane that posts the scorecard or the relay that sees it.
+# Job logic below is unchanged.
 
 on:
   pull_request:
@@ -17,8 +26,12 @@ on:
     types: [opened, synchronize, reopened, edited]
   pull_request_review:
     types: [submitted, dismissed]
-  issue_comment:
-    types: [created, edited]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to evaluate (deliberate re-fire after a scorecard lands)'
+        required: true
+        type: string
 
 # Least privilege: the gate only reads PRs, reviews, and PR comments
 # (served by the issues API). Declared explicitly so a future default
@@ -42,9 +55,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # For pull_request events, use the event payload directly (no API call needed).
-          # Only issue_comment events need the API lookup for the head SHA.
-          if [ "${{ github.event_name }}" = "issue_comment" ]; then
-            PR_NUM="${{ github.event.issue.number }}"
+          # Only issue_comment and workflow_dispatch events need the API lookup for the head SHA.
+          if [ "${{ github.event_name }}" = "issue_comment" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PR_NUM="${{ github.event.issue.number || inputs.pr_number }}"
             echo "pr_number=$PR_NUM" >> $GITHUB_OUTPUT
             # Retry the API call up to 5 times with backoff (rate-limit
             # resilience: comment events fire during merge bursts when the
@@ -62,6 +75,30 @@ jobs:
               echo "ERROR: could not resolve head SHA for PR $PR_NUM after 5 attempts (API unavailable, not a consensus verdict)" >&2
               exit 1
             fi
+            # Fail-closed SHA binding: only a well-formed 40-hex git SHA may
+            # leave this step as head_sha. An unverified, malformed, or
+            # hardcoded-looking value is rejected here — never echoed into
+            # $GITHUB_OUTPUT. A blind lookup failure must produce NO output,
+            # never a confident-looking SHA (P-008 defect class).
+            #
+            # The line-anchored grep below is NOT sufficient on its own
+            # (residual found in #2517 IV, Naya Mu): grep matches per line,
+            # so a value like "<40hex>\n<injected line>" passes on its first
+            # line and then writes BOTH lines into $GITHUB_OUTPUT, where the
+            # injected line (GitHub parses last-wins) silently overrides the
+            # bound head_sha — defeating the fail-closed binding entirely.
+            # Reject any newline first: a git SHA is exactly one line, so
+            # multiline values are never legitimate and always fail closed.
+            case "$HEAD_SHA" in
+              *$'\n'*)
+                echo "ERROR: head SHA lookup for PR $PR_NUM returned a multiline value; rejecting as fail-closed" >&2
+                exit 1
+                ;;
+            esac
+            if ! printf '%s' "$HEAD_SHA" | grep -Eq '^[0-9a-f]{40}$'; then
+              echo "ERROR: head SHA lookup for PR $PR_NUM returned an invalid value (not a 40-hex git SHA); rejecting as fail-closed" >&2
+              exit 1
+            fi
             echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
           else
             echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
@@ -73,4 +110,6 @@ jobs:
           REPO: ${{ github.repository }}
           PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
           HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          TRIGGER_COMMENT_BODY: ${{ github.event.comment.body }}
         run: python3 tools/check_merge_consensus.py

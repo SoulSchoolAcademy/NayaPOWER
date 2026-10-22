@@ -16,6 +16,7 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { expandRanked, type ScoredBlock } from "./retrieve.ts";
+import { applyApplicabilityRanking } from "./retrieve_applicability.ts";
 
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
@@ -81,6 +82,11 @@ type RetrieveBody = {
   limit?: number;
   context?: Record<string, unknown>;
   include_related?: boolean;
+  // THETA-NEXT-3: caller scope for the applicability ranking rule 3
+  // (out-of-scope demotion). Optional; with no caller scope the rule is a
+  // no-op and stale/unreviewed demotion still applies (contract §5).
+  areas?: string[];
+  task_contexts?: string[];
 };
 
 Deno.serve(async (req: Request) => {
@@ -101,6 +107,14 @@ Deno.serve(async (req: Request) => {
     const context =
       body.context && typeof body.context === "object" ? body.context : {};
     const includeRelated = body.include_related !== false;
+    // THETA-NEXT-3: optional caller scope. Plain string arrays; anything
+    // else is ignored (never a 400 — scope is advisory, not gating).
+    const areas = Array.isArray(body.areas)
+      ? body.areas.filter((s): s is string => typeof s === "string")
+      : [];
+    const taskContexts = Array.isArray(body.task_contexts)
+      ? body.task_contexts.filter((s): s is string => typeof s === "string")
+      : [];
 
     const admin = adminClient();
 
@@ -113,7 +127,7 @@ Deno.serve(async (req: Request) => {
       p_context: context,
     });
     if (error) throw new Error(`RETRIEVE_RPC_FAILED: ${error.message}`);
-    const ranked = (Array.isArray(data) ? data : []) as ScoredBlock[];
+    const candidates = (Array.isArray(data) ? data : []) as ScoredBlock[];
 
     // Relationship expansion (GAP C): supersession swap, supporting edges,
     // surfaced conflicts. Needs block-by-ID fetch for successor hops.
@@ -148,11 +162,44 @@ Deno.serve(async (req: Request) => {
       };
     };
 
+    const now = new Date();
+
+    // THETA-NEXT-1..4 — applicability ranking (the default flip:
+    // matches-not-applies -> applies). final_score = base_match_score ×
+    // multiplier (contract §3); superseded records resolve to their lineage
+    // head and are never served as current (contract §3 rule 1, §4).
+    //
+    // Guardrails (contract §5, §8), all preserved:
+    // - Base match scoring untouched: applicability multiplies, never replaces.
+    // - Demoted records stay visible, only ranked lower.
+    // - No caller scope -> rule 3 (out-of-scope) is a no-op; stale and
+    //   unreviewed demotion still apply.
+    // - The edge-level V2 gates from the canonical connect_selector applied
+    //   first (inside expandBlock); this ranks what those gates admit.
+    const { ranked, excluded } = await applyApplicabilityRanking(candidates, fetchBlock, {
+      areas,
+      taskContexts,
+      now,
+    });
+
     // Supersession is truth maintenance, not optional "related context".
     // Even when the caller opts out of related context/conflicts, the result
     // still resolves to the current successor rather than returning stale
-    // intelligence.
-    const results = await expandRanked(ranked, fetchBlock, new Date(), includeRelated);
+    // intelligence. (Heads arrive pre-resolved from the ranking step; the
+    // lineage walk below is a no-op for them and stays as defense in depth.)
+    const expanded = await expandRanked(ranked, fetchBlock, now, includeRelated);
+
+    // expandRanked nulls via_lineage for zero-hop heads; reattach the
+    // lineage string the ranking step resolved (expandBlock's format).
+    const rankedById = new Map(ranked.map((r) => [String(r.block_id), r]));
+    const results = expanded.map((e) => {
+      const src = rankedById.get(String(e.block_id));
+      if (src && src.applicability_via_lineage.length > 0 && !e.via_lineage) {
+        const last = src.applicability_via_lineage[src.applicability_via_lineage.length - 1];
+        return { ...e, via_lineage: `SUPERSEDED_BY:${last}` };
+      }
+      return e;
+    });
 
     // Best-effort receipt: retrieval evidence, never fails the call.
     let receipt: unknown = null;
@@ -178,6 +225,23 @@ Deno.serve(async (req: Request) => {
             runtime_identity: "naya-node-oidc",
             runtime_jti: (payload.jti as string) ?? null,
             workflow_ref: workflowRef,
+            // Applicability v2.0 (THETA-NEXT-1..4): the ranking is explainable.
+            applicability: {
+              mode: "applies",
+              requested_areas: areas,
+              requested_contexts: taskContexts,
+              ranked_count: ranked.length,
+              excluded_count: excluded.length,
+              excluded,
+              top_adjustments: ranked.slice(0, 10).map((r) => ({
+                block_id: r.block_id,
+                base_score: r.applicability_base_score,
+                multiplier: r.applicability_multiplier,
+                final_score: r.final_score,
+                reasons: r.applicability_reasons,
+                via_lineage: r.applicability_via_lineage,
+              })),
+            },
           },
           learning: [],
         })

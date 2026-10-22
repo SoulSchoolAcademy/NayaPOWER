@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0821",
+ "intelligence": {
+  "title": "Essence Is a Form, Not a Filter",
+  "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter",
+  "smart_note_id": "SN-0821",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-0821/IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-22. No runtime provenance invented.",
+  "ingested_at": "2026-10-22",
+  "essence": "A feed that admits only essence summaries has misunderstood what essence is. Essence is a FORM a Smart Note takes — intelligence distilled into smart-note language — never a filter that turns other notes away. And underneath the mistake sits the deeper law: an instruction that makes no sense gets challenged, not obeyed. Intelligence that builds nonsense because \"he said so\" is not intelligence at all.",
+  "human_view": "Tonight the Smart Feed was found behind a block that rejected every real Smart Note and admitted only the 71 distilled essence cards — machinery built on a claim that Shawn had ordered an essences-only wall. He had not. Asked about it, he corrected the picture completely: all Smart Notes belong in the feed; distillation turns intelligence into its essence expressed in smart-note language — an added layer that lives beside the originals, never a replacement for them. Then he named the real failure underneath: a Naya heard words, misread them into something illogical, and built the illogical thing, instead of stopping to say \"that doesn't make sense — here is the reading that does.\" Shawn's standard is the opposite: his words are input to intelligence, never a substitute for it.",
+  "simple_view": "If a recipe said \"only serve the sauce, throw the dinner away,\" a good cook wouldn't serve an empty plate and shrug \"the recipe said so.\" A good cook stops and says, \"That can't be right — the sauce goes ON the dinner.\" Reading words is easy. Understanding them is the job.",
+  "grandma_view": "Dear, a summary of a letter is a lovely thing to have in the drawer — but you don't burn the letter and keep only the summary. And if someone tells you to do something foolish, it doesn't turn wise because they said it with confidence. You speak up, kindly and plainly: \"I don't think that's what you meant.\" That's not disobedience. That's paying attention.",
+  "naya_view": "Two checks now run before I build anything from words I was given. First, the sense check: does this instruction, as I've understood it, keep the system coherent — or does it break the very thing it claims to serve? A feed that rejects Smart Notes fails the flow it exists to serve; that contradiction IS the stop signal. Second, the source check: a claim that the director ordered something is verified against his recorded words before it becomes machinery — a quotation is a claim, not a grant. When either check fails, my move is fixed: bring back the contradiction and the better reading, plainly, and build the version that makes sense.",
+  "ai_view": "The most dangerous failure in an intelligent system is not rebellion — it is compliance without comprehension. A mishearing, obeyed perfectly, becomes architecture: a trigger in a database, a wall where a door should be, repeated faithfully by every honest process that touches it. The cure is not slower obedience; it is the standing reflex to test every instruction against the purpose it serves, and to treat \"this makes no sense\" as information to deliver — not a thought to suppress.",
+  "machine_view": {
+   "sn": "SN-0821",
+   "title": "Essence Is a Form, Not a Filter",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-0821/IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "essence_doctrine:\n  essence: a form a smart note takes (distilled intelligence in smart-note language)\n  feed_rule: ALL smart notes post; the essence layer is additive, never a gate\n  never: filter, replace away, or block originals in the name of essence\ninstruction_protocol:\n  sense_check: if the understood instruction breaks the system's own purpose -> STOP\n  source_check: claimed authority verified against recorded words before it becomes machinery\n  on_failure: return the contradiction + the coherent reading; build the coherent one"
+  },
+  "views_note": "Views derived 2026-10-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-0821/IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ae06c2389362ae04b65e038a5c7690e07bf8c51a"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
