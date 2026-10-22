@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-22T22:26:58Z",
+ "generated_utc": "2026-10-22T22:37:39Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "c66faf7d7f06fe330691bd3868b9fe7b18c5f9f0",
   "short": "c66faf7d7f06",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-22T22:26:23Z"
+  "checked_utc": "2026-10-22T22:37:04Z"
  },
  "venue": {
   "live": 2793,
@@ -81,6 +81,57 @@
     "title": "\"Hub Feeds Emit\" workflow's FIRST schedule-triggered run FAILED \u2014 push rejected by branch"
    }
   ]
+ },
+ "living_list": {
+  "counts": {
+   "QUEUED": 15,
+   "CLAIMED": 0,
+   "IN PROGRESS": 8,
+   "VERIFYING": 2,
+   "DONE+PROVEN": 3,
+   "BLOCKED": 2,
+   "NEEDS SHAWN": 2
+  },
+  "top_open": [
+   {
+    "id": "LL-001",
+    "rank": 1,
+    "state": "BLOCKED",
+    "title": "GT-039 \u2014 fitted per-table Supabase security policies",
+    "owner": "Nitro lane"
+   },
+   {
+    "id": "LL-002",
+    "rank": 2,
+    "state": "NEEDS SHAWN",
+    "title": "Production tap \u2014 apply the 10 pending migrations (incl. the 3 Phase-0 ",
+    "owner": "Shawn (his tap)"
+   },
+   {
+    "id": "LL-003",
+    "rank": 3,
+    "state": "NEEDS SHAWN",
+    "title": "Accountability Ledger \u2014 database genesis + system owner-id + public re",
+    "owner": "Shawn (his tap)"
+   },
+   {
+    "id": "LL-004",
+    "rank": 4,
+    "state": "IN PROGRESS",
+    "title": "THE LIVING LIST \u2014 this registry + the Mission page (the program's visu",
+    "owner": "Resolve lane (mission build)"
+   },
+   {
+    "id": "LL-005",
+    "rank": 5,
+    "state": "IN PROGRESS",
+    "title": "Command + universal search \u2014 one place that finds any person, note, th",
+    "owner": "Best-of-Best build lane (main-seat dispatch)"
+   }
+  ],
+  "stalled": 1,
+  "drift": 1,
+  "full": "WORK-ITEMS.json (same publish)"
  },
  "wip": [
   {
@@ -255,27 +306,31 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 39
+   "age_s": 37
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 39
+   "age_s": 37
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 39
+   "age_s": 37
+  },
+  "living_list": {
+   "source": "living-list.json + github-api reconciliation",
+   "age_s": 37
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 39
+   "age_s": 37
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 39
+   "age_s": 37
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 39
+   "age_s": 37
   }
  }
 }
