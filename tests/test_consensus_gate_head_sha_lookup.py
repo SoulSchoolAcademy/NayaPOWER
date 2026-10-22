@@ -71,6 +71,10 @@ def _extract_step_script():
     assert "for attempt in 1 2 3 4 5" in body, "step script not found in live workflow"
     # Substitute GitHub template expressions; strip wall-clock sleeps.
     body = body.replace("${{ github.event_name }}", "issue_comment")
+    # Compound fallback (PR #2938): under the simulated issue_comment
+    # context github.event.issue.number is set, so GitHub's evaluator
+    # resolves `a || b` to a -- the same test value as the plain form.
+    body = body.replace("${{ github.event.issue.number || inputs.pr_number }}", "2512")
     body = body.replace("${{ github.event.issue.number }}", "2512")
     body = body.replace("${{ github.repository }}", "SoulSchoolAcademy/NayaPOWER")
     body = re.sub(r"^\s*sleep .*$\n?", "", body, flags=re.M)
