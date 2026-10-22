@@ -1,10 +1,11 @@
 {
   "canon": "CANONICAL-PIECE-INDEX",
   "version": "1.0.0",
-  "date": "2026-10-21",
+  "date": "2026-10-22",
   "rule": "THIS index is the canon. pieces.json is the working store it describes; factory.css carries the store's CSS. A piece is canonical only when this index says so. Conflicts between inventories resolve to this index, then to Shawn's word. The three source inventories are preserved untouched as provenance, never as authority.",
   "annotation_keys": {
     "reference": "true on the five crowned Reference pieces in pieces.json (also recorded here as the crown name); added 2026-10-21 \u2014 the store schema otherwise stays {name, html}",
+    "ai_label": "per-piece AI label {purpose, use_when, laws} in pieces.json beside name/html on every canonical entry; laws cite GENERAL-DESIGN-CONTRACT.human.md \u00a73; added 2026-10-22 (Factory Contract-Home Step 3)",
     "motion": "named motion specs (durations + easings) on a pieces.json entry, per the Motion Law; added 2026-10-21",
     "status / superseded_by": "lifecycle annotation in pieces.json; 'superseded' retires a piece from harvesting without deleting it or breaking pages that reference it"
   },
@@ -27,7 +28,8 @@
     "union_unique_ids": 571,
     "by_status": {
       "canonical": 154,
-      "unverified": 416,
+      "verified": 3,
+      "retired": 413,
       "superseded": 1
     }
   },
@@ -197,31 +199,34 @@
       "id": "NAYA-BRD-031",
       "name": "Signal circle",
       "family": "BRD",
-      "status": "unverified",
+      "status": "verified",
       "provenance": [
-        "PIECES-INVENTORY-v2"
+        "PIECES-INVENTORY-v2",
+        "smart_factory_final-2.html (data-model picker card)"
       ],
-      "notes": "named by the PIECES-INVENTORY-v2 distillation; no entry or CSS in the working store \u2014 unverified until it lands in pieces.json + factory.css"
+      "notes": "named by the PIECES-INVENTORY-v2 distillation; no entry or CSS in the working store \u2014 unverified until it lands in pieces.json + factory.css. Adjudicated verified-real 2026-10-22 (Factory Contract-Home Step 3): real markup exists as a picker card in smart_factory_final-2.html and in PIECES-INVENTORY-v2 \u2014 verified, NOT canonical (not in the working store)."
     },
     "NAYA-BRD-032": {
       "id": "NAYA-BRD-032",
       "name": "Ember circle",
       "family": "BRD",
-      "status": "unverified",
+      "status": "verified",
       "provenance": [
-        "PIECES-INVENTORY-v2"
+        "PIECES-INVENTORY-v2",
+        "smart_factory_final-2.html (data-model picker card)"
       ],
-      "notes": "named by the PIECES-INVENTORY-v2 distillation; no entry or CSS in the working store \u2014 unverified until it lands in pieces.json + factory.css"
+      "notes": "named by the PIECES-INVENTORY-v2 distillation; no entry or CSS in the working store \u2014 unverified until it lands in pieces.json + factory.css. Adjudicated verified-real 2026-10-22 (Factory Contract-Home Step 3): real markup exists as a picker card in smart_factory_final-2.html and in PIECES-INVENTORY-v2 \u2014 verified, NOT canonical (not in the working store)."
     },
     "NAYA-BRD-033": {
       "id": "NAYA-BRD-033",
       "name": "Stat grid",
       "family": "BRD",
-      "status": "unverified",
+      "status": "verified",
       "provenance": [
-        "PIECES-INVENTORY-v2"
+        "PIECES-INVENTORY-v2",
+        "smart_factory_final-2.html (data-model picker card)"
       ],
-      "notes": "named by the PIECES-INVENTORY-v2 distillation; no entry or CSS in the working store \u2014 unverified until it lands in pieces.json + factory.css"
+      "notes": "named by the PIECES-INVENTORY-v2 distillation; no entry or CSS in the working store \u2014 unverified until it lands in pieces.json + factory.css. Adjudicated verified-real 2026-10-22 (Factory Contract-Home Step 3): real markup exists as a picker card in smart_factory_final-2.html and in PIECES-INVENTORY-v2 \u2014 verified, NOT canonical (not in the working store)."
     },
     "NAYA-BRD-034": {
       "id": "NAYA-BRD-034",
@@ -734,7 +739,8 @@
       "id": "NAYA-BTN-034",
       "name": "Icon Buttons",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -744,7 +750,8 @@
       "id": "NAYA-BTN-035",
       "name": "Icon Buttons",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -754,7 +761,8 @@
       "id": "NAYA-BTN-036",
       "name": "harvested from the boards",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -764,7 +772,8 @@
       "id": "NAYA-BTN-037",
       "name": "harvested from the boards",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -774,7 +783,8 @@
       "id": "NAYA-BTN-038",
       "name": "harvested from the boards",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -784,7 +794,8 @@
       "id": "NAYA-BTN-039",
       "name": "harvested from the boards",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -794,7 +805,8 @@
       "id": "NAYA-BTN-040",
       "name": "harvested from the boards",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -804,7 +816,8 @@
       "id": "NAYA-BTN-041",
       "name": "harvested from the boards",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -814,7 +827,8 @@
       "id": "NAYA-BTN-042",
       "name": "Daily",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -824,7 +838,8 @@
       "id": "NAYA-BTN-043",
       "name": "Weekly",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -834,7 +849,8 @@
       "id": "NAYA-BTN-044",
       "name": "Fire",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -844,7 +860,8 @@
       "id": "NAYA-BTN-045",
       "name": "Fire",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -854,7 +871,8 @@
       "id": "NAYA-BTN-046",
       "name": "Rest",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -864,7 +882,8 @@
       "id": "NAYA-BTN-047",
       "name": "Touch",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -874,7 +893,8 @@
       "id": "NAYA-BTN-048",
       "name": "\u2192 Open Report",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -884,7 +904,8 @@
       "id": "NAYA-BTN-049",
       "name": "\u2709 Write Mail",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -894,7 +915,8 @@
       "id": "NAYA-BTN-050",
       "name": "Joined",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -904,7 +926,8 @@
       "id": "NAYA-BTN-051",
       "name": "Joined",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -914,7 +937,8 @@
       "id": "NAYA-BTN-052",
       "name": "\uff0b Add Connection",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -924,7 +948,8 @@
       "id": "NAYA-BTN-053",
       "name": "\uff0b Join the space",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -934,7 +959,8 @@
       "id": "NAYA-BTN-054",
       "name": "\uff0b Join the space",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -944,7 +970,8 @@
       "id": "NAYA-BTN-055",
       "name": "blue \u00b7 hero",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -954,7 +981,8 @@
       "id": "NAYA-BTN-056",
       "name": "blue \u00b7 standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -964,7 +992,8 @@
       "id": "NAYA-BTN-057",
       "name": "Build intelligence people can feel.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -974,7 +1003,8 @@
       "id": "NAYA-BTN-058",
       "name": "Build intelligence people can feel.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -984,7 +1014,8 @@
       "id": "NAYA-BTN-059",
       "name": "coral \u00b7 standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -994,7 +1025,8 @@
       "id": "NAYA-BTN-060",
       "name": "danger \u00b7 variant",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1004,7 +1036,8 @@
       "id": "NAYA-BTN-061",
       "name": "Everything has depth",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1014,7 +1047,8 @@
       "id": "NAYA-BTN-062",
       "name": "Everything responds",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1024,7 +1058,8 @@
       "id": "NAYA-BTN-063",
       "name": "Extraordinary before the first touch.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1034,7 +1069,8 @@
       "id": "NAYA-BTN-064",
       "name": "Extraordinary before the first touch.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1044,7 +1080,8 @@
       "id": "NAYA-BTN-065",
       "name": "Extraordinary before the first touch.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1054,7 +1091,8 @@
       "id": "NAYA-BTN-066",
       "name": "Extraordinary before the first touch.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1064,7 +1102,8 @@
       "id": "NAYA-BTN-067",
       "name": "Give the next Naya the rules, not a screenshot.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1074,7 +1113,8 @@
       "id": "NAYA-BTN-068",
       "name": "gold \u00b7 standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1084,7 +1124,8 @@
       "id": "NAYA-BTN-069",
       "name": "green \u00b7 standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1094,7 +1135,8 @@
       "id": "NAYA-BTN-070",
       "name": "Icon action",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1104,7 +1146,8 @@
       "id": "NAYA-BTN-071",
       "name": "indigo \u00b7 standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1114,7 +1157,8 @@
       "id": "NAYA-BTN-072",
       "name": "LAW PILL / incredible clarity at rest",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1124,7 +1168,8 @@
       "id": "NAYA-BTN-073",
       "name": "LIGHT STREAK / precise interface detail",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1134,7 +1179,8 @@
       "id": "NAYA-BTN-074",
       "name": "Light up, don't glow out",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1144,7 +1190,8 @@
       "id": "NAYA-BTN-075",
       "name": "lime \u00b7 standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1154,7 +1201,8 @@
       "id": "NAYA-BTN-076",
       "name": "magenta \u00b7 hero",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1164,7 +1212,8 @@
       "id": "NAYA-BTN-077",
       "name": "magenta \u00b7 standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1174,7 +1223,8 @@
       "id": "NAYA-BTN-078",
       "name": "No flat elements",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1184,7 +1234,8 @@
       "id": "NAYA-BTN-079",
       "name": "OBSIDIAN PILL / strongest depth + restraint",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1194,7 +1245,8 @@
       "id": "NAYA-BTN-080",
       "name": "One standard. Every page. No drift.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1204,7 +1256,8 @@
       "id": "NAYA-BTN-081",
       "name": "One standard. Every page. No drift.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1214,7 +1267,8 @@
       "id": "NAYA-BTN-082",
       "name": "One standard. Every page. No drift.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1224,7 +1278,8 @@
       "id": "NAYA-BTN-083",
       "name": "Orientation that follows. Entry that feels alive.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1234,7 +1289,8 @@
       "id": "NAYA-BTN-084",
       "name": "Portal variant",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1244,7 +1300,8 @@
       "id": "NAYA-BTN-085",
       "name": "purple \u00b7 hero",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1254,7 +1311,8 @@
       "id": "NAYA-BTN-086",
       "name": "purple \u00b7 standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1264,7 +1322,8 @@
       "id": "NAYA-BTN-087",
       "name": "same DNA at every size",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1274,7 +1333,8 @@
       "id": "NAYA-BTN-088",
       "name": "same DNA at every size",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1284,7 +1344,8 @@
       "id": "NAYA-BTN-089",
       "name": "same DNA at every size",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1294,7 +1355,8 @@
       "id": "NAYA-BTN-090",
       "name": "same DNA at every size",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1304,7 +1366,8 @@
       "id": "NAYA-BTN-091",
       "name": "teal \u00b7 standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1314,7 +1377,8 @@
       "id": "NAYA-BTN-092",
       "name": "The living button. One DNA, every app.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1324,7 +1388,8 @@
       "id": "NAYA-BTN-093",
       "name": "The living button. One DNA, every app.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1334,7 +1399,8 @@
       "id": "NAYA-BTN-094",
       "name": "The living button. One DNA, every app.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1344,7 +1410,8 @@
       "id": "NAYA-BTN-095",
       "name": "The living button. One DNA, every app.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1354,7 +1421,8 @@
       "id": "NAYA-BTN-096",
       "name": "The living button. One DNA, every app.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1364,7 +1432,8 @@
       "id": "NAYA-BTN-097",
       "name": "The living button. One DNA, every app.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1374,7 +1443,8 @@
       "id": "NAYA-BTN-098",
       "name": "The living button. One DNA, every app.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1384,7 +1454,8 @@
       "id": "NAYA-BTN-099",
       "name": "The living button. One DNA, every app.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1394,7 +1465,8 @@
       "id": "NAYA-BTN-100",
       "name": "At Rest",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1404,7 +1476,8 @@
       "id": "NAYA-BTN-101",
       "name": "On Hover",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1414,7 +1487,8 @@
       "id": "NAYA-BTN-102",
       "name": "The missing ten, now built into the library.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1424,7 +1498,8 @@
       "id": "NAYA-BTN-103",
       "name": "The missing ten, now built into the library.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1434,7 +1509,8 @@
       "id": "NAYA-BTN-104",
       "name": "The missing ten, now built into the library.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1444,7 +1520,8 @@
       "id": "NAYA-BTN-105",
       "name": "People",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1454,7 +1531,8 @@
       "id": "NAYA-BTN-106",
       "name": "Private",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1464,7 +1542,8 @@
       "id": "NAYA-BTN-107",
       "name": "the spectrum law, live",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1474,7 +1553,8 @@
       "id": "NAYA-BTN-108",
       "name": "the spectrum law, live",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1484,7 +1564,8 @@
       "id": "NAYA-BTN-109",
       "name": "the spectrum law, live",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1494,7 +1575,8 @@
       "id": "NAYA-BTN-110",
       "name": "the spectrum law, live",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1504,7 +1586,8 @@
       "id": "NAYA-BTN-111",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1514,7 +1597,8 @@
       "id": "NAYA-BTN-112",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1524,7 +1608,8 @@
       "id": "NAYA-BTN-113",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1534,7 +1619,8 @@
       "id": "NAYA-BTN-114",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1544,7 +1630,8 @@
       "id": "NAYA-BTN-115",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1554,7 +1641,8 @@
       "id": "NAYA-BTN-116",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1564,7 +1652,8 @@
       "id": "NAYA-BTN-117",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1574,7 +1663,8 @@
       "id": "NAYA-BTN-118",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1584,7 +1674,8 @@
       "id": "NAYA-BTN-119",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1594,7 +1685,8 @@
       "id": "NAYA-BTN-120",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1604,7 +1696,8 @@
       "id": "NAYA-BTN-121",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1614,7 +1707,8 @@
       "id": "NAYA-BTN-122",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1624,7 +1718,8 @@
       "id": "NAYA-BTN-123",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1634,7 +1729,8 @@
       "id": "NAYA-BTN-124",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1644,7 +1740,8 @@
       "id": "NAYA-BTN-125",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1654,7 +1751,8 @@
       "id": "NAYA-BTN-126",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1664,7 +1762,8 @@
       "id": "NAYA-BTN-127",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1674,7 +1773,8 @@
       "id": "NAYA-BTN-128",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1684,7 +1784,8 @@
       "id": "NAYA-BTN-129",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1694,7 +1795,8 @@
       "id": "NAYA-BTN-130",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1704,7 +1806,8 @@
       "id": "NAYA-BTN-131",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1714,7 +1817,8 @@
       "id": "NAYA-BTN-132",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1724,7 +1828,8 @@
       "id": "NAYA-BTN-133",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1734,7 +1839,8 @@
       "id": "NAYA-BTN-134",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1744,7 +1850,8 @@
       "id": "NAYA-BTN-135",
       "name": "Twenty-one actions. One living DNA.",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1754,7 +1861,8 @@
       "id": "NAYA-BTN-136",
       "name": "ADD",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1764,7 +1872,8 @@
       "id": "NAYA-BTN-137",
       "name": "Back",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1774,7 +1883,8 @@
       "id": "NAYA-BTN-138",
       "name": "Close",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1784,7 +1894,8 @@
       "id": "NAYA-BTN-139",
       "name": "Comment",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1794,7 +1905,8 @@
       "id": "NAYA-BTN-140",
       "name": "Disabled",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1804,7 +1916,8 @@
       "id": "NAYA-BTN-141",
       "name": "Download",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1814,7 +1927,8 @@
       "id": "NAYA-BTN-142",
       "name": "Like",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1824,7 +1938,8 @@
       "id": "NAYA-BTN-143",
       "name": "More",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1834,7 +1949,8 @@
       "id": "NAYA-BTN-144",
       "name": "Notify",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1844,7 +1960,8 @@
       "id": "NAYA-BTN-145",
       "name": "Open Link",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1854,7 +1971,8 @@
       "id": "NAYA-BTN-146",
       "name": "Pause",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1864,7 +1982,8 @@
       "id": "NAYA-BTN-147",
       "name": "Premium",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1874,7 +1993,8 @@
       "id": "NAYA-BTN-148",
       "name": "Private",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1884,7 +2004,8 @@
       "id": "NAYA-BTN-149",
       "name": "Profile",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1894,7 +2015,8 @@
       "id": "NAYA-BTN-150",
       "name": "Public",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1904,7 +2026,8 @@
       "id": "NAYA-BTN-151",
       "name": "Rest",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1914,7 +2037,8 @@
       "id": "NAYA-BTN-152",
       "name": "Save",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1924,7 +2048,8 @@
       "id": "NAYA-BTN-153",
       "name": "Search",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1934,7 +2059,8 @@
       "id": "NAYA-BTN-154",
       "name": "Send",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1944,7 +2070,8 @@
       "id": "NAYA-BTN-155",
       "name": "Settings",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1954,7 +2081,8 @@
       "id": "NAYA-BTN-156",
       "name": "Share",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1964,7 +2092,8 @@
       "id": "NAYA-BTN-157",
       "name": "Verified",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1974,7 +2103,8 @@
       "id": "NAYA-BTN-158",
       "name": "Enter The Standard",
       "family": "BTN",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1984,7 +2114,8 @@
       "id": "NAYA-CAL-001",
       "name": "CAL-001 \u00b7 Month-view board",
       "family": "CAL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -1994,7 +2125,8 @@
       "id": "NAYA-CAL-002",
       "name": "CAL-002 \u00b7 Event card",
       "family": "CAL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2004,7 +2136,8 @@
       "id": "NAYA-CAL-003",
       "name": "CAL-003 \u00b7 Date picker",
       "family": "CAL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2014,7 +2147,8 @@
       "id": "NAYA-CAL-004",
       "name": "CAL-004 \u00b7 Agenda list",
       "family": "CAL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2024,7 +2158,8 @@
       "id": "NAYA-CAL-005",
       "name": "CAL-005 \u00b7 Day-cell state system",
       "family": "CAL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2034,7 +2169,8 @@
       "id": "NAYA-CHT-003",
       "name": "CHT-003 \u00b7 Chat bubbles (in/out)",
       "family": "CHT",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2044,7 +2180,8 @@
       "id": "NAYA-CHT-004",
       "name": "CHT-004 \u00b7 Typing indicator",
       "family": "CHT",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2054,7 +2191,8 @@
       "id": "NAYA-CHT-005",
       "name": "CHT-005 \u00b7 Message list",
       "family": "CHT",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2064,7 +2202,8 @@
       "id": "NAYA-CMT-001",
       "name": "CMT-001 \u00b7 Comment thread",
       "family": "CMT",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2074,7 +2213,8 @@
       "id": "NAYA-CMT-002",
       "name": "CMT-002 \u00b7 Single comment",
       "family": "CMT",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2084,7 +2224,8 @@
       "id": "NAYA-CMT-003",
       "name": "CMT-003 \u00b7 Reaction row",
       "family": "CMT",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2094,7 +2235,8 @@
       "id": "NAYA-CRD-001",
       "name": "The law, not a palette",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2104,7 +2246,8 @@
       "id": "NAYA-CRD-002",
       "name": "[Board] room board shell (head + body)",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2114,7 +2257,8 @@
       "id": "NAYA-CRD-003",
       "name": "[DoorCard] smart door card",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2124,7 +2268,8 @@
       "id": "NAYA-CRD-004",
       "name": "[intelBoard] intelligence board",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2134,7 +2279,8 @@
       "id": "NAYA-CRD-005",
       "name": "Ai Law \u00b7 Procedure",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2144,7 +2290,8 @@
       "id": "NAYA-CRD-006",
       "name": "Ai Law \u00b7 Procedure",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2154,7 +2301,8 @@
       "id": "NAYA-CRD-007",
       "name": "the build procedure \u2727",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2164,7 +2312,8 @@
       "id": "NAYA-CRD-008",
       "name": "Aliveness \u2727",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2174,7 +2323,8 @@
       "id": "NAYA-CRD-009",
       "name": "App icons",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2184,7 +2334,8 @@
       "id": "NAYA-CRD-010",
       "name": "LAW 2 Back it or bench it. 9.0+ ships. Below 9 goes back",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2194,7 +2345,8 @@
       "id": "NAYA-CRD-011",
       "name": "LAW 2 Back it or bench it. 9.0+ ships. Below 9 goes back",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2204,7 +2356,8 @@
       "id": "NAYA-CRD-012",
       "name": "LAW 6 Black heart, white voice, visible skin. #050505 ce",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2214,7 +2367,8 @@
       "id": "NAYA-CRD-013",
       "name": "LAW 6 Black heart, white voice, visible skin. #050505 ce",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2224,7 +2378,8 @@
       "id": "NAYA-CRD-014",
       "name": "Bullets",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2234,7 +2389,8 @@
       "id": "NAYA-CRD-015",
       "name": "Buttons \u2727",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2244,7 +2400,8 @@
       "id": "NAYA-CRD-016",
       "name": "Color has jobs. Never cross them.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2254,7 +2411,8 @@
       "id": "NAYA-CRD-017",
       "name": "Color jobs \u25b3",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2264,7 +2422,8 @@
       "id": "NAYA-CRD-018",
       "name": "Copy gets scorecarded too \u25c6",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2274,7 +2433,8 @@
       "id": "NAYA-CRD-019",
       "name": "Gates \u25c6",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2284,7 +2444,8 @@
       "id": "NAYA-CRD-020",
       "name": "Header \u25b3",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2294,7 +2455,8 @@
       "id": "NAYA-CRD-021",
       "name": "HOVER FIRE Own color ignites. Lifts.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2304,7 +2466,8 @@
       "id": "NAYA-CRD-022",
       "name": "HOVER FIRE Own color ignites. Lifts.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2314,7 +2477,8 @@
       "id": "NAYA-CRD-023",
       "name": "Human Law \u00b7 Philosophy",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2324,7 +2488,8 @@
       "id": "NAYA-CRD-024",
       "name": "the philosophy \u25c6",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2334,7 +2499,8 @@
       "id": "NAYA-CRD-025",
       "name": "Icons are drawn, not shrunk \u2727",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2344,7 +2510,8 @@
       "id": "NAYA-CRD-026",
       "name": "LAW 9 Icons are drawn, not shrunk. Vector geometry, read",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2354,7 +2521,8 @@
       "id": "NAYA-CRD-027",
       "name": "LAW 9 Icons are drawn, not shrunk. Vector geometry, read",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2364,7 +2532,8 @@
       "id": "NAYA-CRD-028",
       "name": "Icons \u2726",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2374,7 +2543,8 @@
       "id": "NAYA-CRD-029",
       "name": "Idle",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2384,7 +2554,8 @@
       "id": "NAYA-CRD-030",
       "name": "If you can\u2019t make it good, omit it \u2726",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2394,7 +2565,8 @@
       "id": "NAYA-CRD-031",
       "name": "Lighting \u2726",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2404,7 +2576,8 @@
       "id": "NAYA-CRD-032",
       "name": "Machine Law \u00b7 Normative",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2414,7 +2587,8 @@
       "id": "NAYA-CRD-033",
       "name": "Machine Law \u00b7 Normative",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2424,7 +2598,8 @@
       "id": "NAYA-CRD-034",
       "name": "the normative source \u25b3",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2434,7 +2609,8 @@
       "id": "NAYA-CRD-035",
       "name": "Non-negotiables",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2444,7 +2620,8 @@
       "id": "NAYA-CRD-036",
       "name": "Nothing reaches Shawn unchecked.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2454,7 +2631,8 @@
       "id": "NAYA-CRD-037",
       "name": "Nothing reaches Shawn unchecked.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2464,7 +2642,8 @@
       "id": "NAYA-CRD-038",
       "name": "PURPLE Soul. Chrome accent. Naya's presence. Never a flo",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2474,7 +2653,8 @@
       "id": "NAYA-CRD-039",
       "name": "PURPLE Soul. Chrome accent. Naya's presence. Never a flo",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2484,7 +2664,8 @@
       "id": "NAYA-CRD-040",
       "name": "WHITE Light. Text 99% of the time. Every idle rim.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2494,7 +2675,8 @@
       "id": "NAYA-CRD-041",
       "name": "WHITE Light. Text 99% of the time. Every idle rim.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2504,7 +2686,8 @@
       "id": "NAYA-CRD-042",
       "name": "HOW TO USE IT Retrieve the lesson, check its limits, car",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2514,7 +2697,8 @@
       "id": "NAYA-CRD-043",
       "name": "HOW TO USE IT Retrieve the lesson, check its limits, car",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2524,7 +2708,8 @@
       "id": "NAYA-CRD-044",
       "name": "IN A NUTSHELL Capture the essence. Verify the result. Le",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2534,7 +2719,8 @@
       "id": "NAYA-CRD-045",
       "name": "IN A NUTSHELL Capture the essence. Verify the result. Le",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2544,7 +2730,8 @@
       "id": "NAYA-CRD-046",
       "name": "WHAT IT MEANS Understanding changes what Naya actually d",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2554,7 +2741,8 @@
       "id": "NAYA-CRD-047",
       "name": "WHAT IT MEANS Understanding changes what Naya actually d",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2564,7 +2752,8 @@
       "id": "NAYA-CRD-048",
       "name": "Presence",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2574,7 +2763,8 @@
       "id": "NAYA-CRD-049",
       "name": "Press",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2584,7 +2774,8 @@
       "id": "NAYA-CRD-050",
       "name": "\u00d7 They read &quot;jewel bullets&quot; \u2026and shipped three",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2594,7 +2785,8 @@
       "id": "NAYA-CRD-051",
       "name": "\u00d7 They read &quot;jewel bullets&quot; \u2026and shipped three",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2604,7 +2796,8 @@
       "id": "NAYA-CRD-052",
       "name": "\u2715 They read &quot;white light at rest&quot; \u2026and shipped",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2614,7 +2807,8 @@
       "id": "NAYA-CRD-053",
       "name": "\u2715 They read &quot;white light at rest&quot; \u2026and shipped",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2624,7 +2818,8 @@
       "id": "NAYA-CRD-054",
       "name": "\u2716 They read &quot;purple is the signature&quot; \u2026and flo",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2634,7 +2829,8 @@
       "id": "NAYA-CRD-055",
       "name": "\u2716 They read &quot;purple is the signature&quot; \u2026and flo",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2644,7 +2840,8 @@
       "id": "NAYA-CRD-056",
       "name": "Priority",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2654,7 +2851,8 @@
       "id": "NAYA-CRD-057",
       "name": "Score the experience, never the code \u25c6",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2664,7 +2862,8 @@
       "id": "NAYA-CRD-058",
       "name": "LAW 1 Score the experience, never the code. A 9.5 on CSS",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2674,7 +2873,8 @@
       "id": "NAYA-CRD-059",
       "name": "LAW 1 Score the experience, never the code. A 9.5 on CSS",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2684,7 +2884,8 @@
       "id": "NAYA-CRD-060",
       "name": "Section marks",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2694,7 +2895,8 @@
       "id": "NAYA-CRD-061",
       "name": "the drift test, honestly",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2704,7 +2906,8 @@
       "id": "NAYA-CRD-062",
       "name": "the drift test, honestly",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2714,7 +2917,8 @@
       "id": "NAYA-CRD-063",
       "name": "LAW 7 Size separates, color doesn't. 24 headlines, 18 bo",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2724,7 +2928,8 @@
       "id": "NAYA-CRD-064",
       "name": "LAW 7 Size separates, color doesn't. 24 headlines, 18 bo",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2734,7 +2939,8 @@
       "id": "NAYA-CRD-065",
       "name": "BODY \u00b7 18PX Keep your people close. Organize them, remem",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2744,7 +2950,8 @@
       "id": "NAYA-CRD-066",
       "name": "BODY \u00b7 18PX Keep your people close. Organize them, remem",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2754,7 +2961,8 @@
       "id": "NAYA-CRD-067",
       "name": "DETAIL \u00b7 14PX Evidence lives here: PR #1858 \u00b7 tip 78661f",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2764,7 +2972,8 @@
       "id": "NAYA-CRD-068",
       "name": "DETAIL \u00b7 14PX Evidence lives here: PR #1858 \u00b7 tip 78661f",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2774,7 +2983,8 @@
       "id": "NAYA-CRD-069",
       "name": "HEADLINE \u00b7 24PX Your intelligence, collected. Serif voic",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2784,7 +2994,8 @@
       "id": "NAYA-CRD-070",
       "name": "HEADLINE \u00b7 24PX Your intelligence, collected. Serif voic",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2794,7 +3005,8 @@
       "id": "NAYA-CRD-071",
       "name": "Text is crafted, not placed \u25b3",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2804,7 +3016,8 @@
       "id": "NAYA-CRD-072",
       "name": "That is the whole contract.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2814,7 +3027,8 @@
       "id": "NAYA-CRD-073",
       "name": "Elevation &amp; Living Depth Elevation always. Ever",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2824,7 +3038,8 @@
       "id": "NAYA-CRD-074",
       "name": "Premium Material &amp; Contrast Premium, not fancy.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2834,7 +3049,8 @@
       "id": "NAYA-CRD-075",
       "name": "The Jewel Standard One canonical button.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2844,7 +3060,8 @@
       "id": "NAYA-CRD-076",
       "name": "Boards, Cards &amp; Panels The board recipe. Dark o",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2854,7 +3071,8 @@
       "id": "NAYA-CRD-077",
       "name": "Color, Spectrum &amp; Jewels Spectrum by position.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2864,7 +3082,8 @@
       "id": "NAYA-CRD-078",
       "name": "Typography &amp; Readability White titles, silver b",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2874,7 +3093,8 @@
       "id": "NAYA-CRD-079",
       "name": "Icons &amp; Micro-Elements One icon family. Consist",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2884,7 +3104,8 @@
       "id": "NAYA-CRD-080",
       "name": "Motion &amp; Living Intelligence Everything alive r",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2894,7 +3115,8 @@
       "id": "NAYA-CRD-081",
       "name": "Mobile-First &amp; Touch Mobile is the primary canv",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2904,7 +3126,8 @@
       "id": "NAYA-CRD-082",
       "name": "Consistency, Library &amp; Proof One library, one D",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2914,7 +3137,8 @@
       "id": "NAYA-CRD-083",
       "name": "The familiar symbol",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2924,7 +3148,8 @@
       "id": "NAYA-CRD-084",
       "name": "The irreversible action",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2934,7 +3159,8 @@
       "id": "NAYA-CRD-085",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2944,7 +3170,8 @@
       "id": "NAYA-CRD-086",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2954,7 +3181,8 @@
       "id": "NAYA-CRD-087",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2964,7 +3192,8 @@
       "id": "NAYA-CRD-088",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2974,7 +3203,8 @@
       "id": "NAYA-CRD-089",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2984,7 +3214,8 @@
       "id": "NAYA-CRD-090",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -2994,7 +3225,8 @@
       "id": "NAYA-CRD-091",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3004,7 +3236,8 @@
       "id": "NAYA-CRD-092",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3014,7 +3247,8 @@
       "id": "NAYA-CRD-093",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3024,7 +3258,8 @@
       "id": "NAYA-CRD-094",
       "name": "The missing ten, now built into the library.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3034,7 +3269,8 @@
       "id": "NAYA-CRD-095",
       "name": "The one action",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3044,7 +3280,8 @@
       "id": "NAYA-CRD-096",
       "name": "The quiet exit",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3054,7 +3291,8 @@
       "id": "NAYA-CRD-097",
       "name": "The supporting action",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3064,7 +3302,8 @@
       "id": "NAYA-CRD-098",
       "name": "? CLAIM \u00b7 UNVERIFIED Self-reported, awaiting its stamp.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3074,7 +3313,8 @@
       "id": "NAYA-CRD-099",
       "name": "? CLAIM \u00b7 UNVERIFIED Self-reported, awaiting its stamp.",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3084,7 +3324,8 @@
       "id": "NAYA-CRD-100",
       "name": "DEMONSTRATION Specimen content. Beautiful on purpose,",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3094,7 +3335,8 @@
       "id": "NAYA-CRD-101",
       "name": "DEMONSTRATION Specimen content. Beautiful on purpose,",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3104,7 +3346,8 @@
       "id": "NAYA-CRD-102",
       "name": "AUTH \u00b7 VERIFIED Independent evidence exists. The numbe",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3114,7 +3357,8 @@
       "id": "NAYA-CRD-103",
       "name": "AUTH \u00b7 VERIFIED Independent evidence exists. The numbe",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3124,7 +3368,8 @@
       "id": "NAYA-CRD-104",
       "name": "Typography \u25c6",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3134,7 +3379,8 @@
       "id": "NAYA-CRD-105",
       "name": "Understanding",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3144,7 +3390,8 @@
       "id": "NAYA-CRD-106",
       "name": "Value",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3154,7 +3401,8 @@
       "id": "NAYA-CRD-107",
       "name": "Verified",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3164,7 +3412,8 @@
       "id": "NAYA-CRD-108",
       "name": "Verify before claiming \u2726",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3174,7 +3423,8 @@
       "id": "NAYA-CRD-109",
       "name": "LAW 13 Verify before claiming. Read the file. Count the",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3184,7 +3434,8 @@
       "id": "NAYA-CRD-110",
       "name": "LAW 13 Verify before claiming. Read the file. Count the",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3194,7 +3445,8 @@
       "id": "NAYA-CRD-111",
       "name": "LAW 5 White light at rest, own color on touch. Visible 1",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3204,7 +3456,8 @@
       "id": "NAYA-CRD-112",
       "name": "LAW 5 White light at rest, own color on touch. Visible 1",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3214,7 +3467,8 @@
       "id": "NAYA-CRD-113",
       "name": "OBSIDIAN Field. The world and dominant canvas. Deep, nev",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3224,7 +3478,8 @@
       "id": "NAYA-CRD-114",
       "name": "OBSIDIAN Field. The world and dominant canvas. Deep, nev",
       "family": "CRD",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3234,7 +3489,8 @@
       "id": "NAYA-FRM-001",
       "name": "Copy is plain enough for anyone to understand on first r",
       "family": "FRM",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3244,7 +3500,8 @@
       "id": "NAYA-FRM-002",
       "name": "Every button has a black heart, white voice, and a truth",
       "family": "FRM",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3254,7 +3511,8 @@
       "id": "NAYA-FRM-003",
       "name": "or back to the be",
       "family": "FRM",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3264,7 +3522,8 @@
       "id": "NAYA-FRM-004",
       "name": "Themed elements ignite their own color; chrome ignites p",
       "family": "FRM",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3274,7 +3533,8 @@
       "id": "NAYA-FRM-005",
       "name": "size separates, color d",
       "family": "FRM",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3284,7 +3544,8 @@
       "id": "NAYA-FRM-006",
       "name": "White edge light is visible on every card and button at",
       "family": "FRM",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3294,7 +3555,8 @@
       "id": "NAYA-FRM-007",
       "name": "Toggle / settings row",
       "family": "FRM",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3948,7 +4210,8 @@
       "id": "NAYA-JWL-022",
       "name": "Beautiful at sixteen pixels.",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3958,7 +4221,8 @@
       "id": "NAYA-JWL-023",
       "name": "Beautiful at sixteen pixels.",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3968,7 +4232,8 @@
       "id": "NAYA-JWL-024",
       "name": "Beautiful at sixteen pixels.",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3978,7 +4243,8 @@
       "id": "NAYA-JWL-025",
       "name": "Ask",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3988,7 +4254,8 @@
       "id": "NAYA-JWL-026",
       "name": "Doors",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -3998,7 +4265,8 @@
       "id": "NAYA-JWL-027",
       "name": "Grow",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4008,7 +4276,8 @@
       "id": "NAYA-JWL-028",
       "name": "Guard",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4018,7 +4287,8 @@
       "id": "NAYA-JWL-029",
       "name": "Ledger",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4028,7 +4298,8 @@
       "id": "NAYA-JWL-030",
       "name": "Mail",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4038,7 +4309,8 @@
       "id": "NAYA-JWL-031",
       "name": "People",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4048,7 +4320,8 @@
       "id": "NAYA-JWL-032",
       "name": "Reports",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4058,7 +4331,8 @@
       "id": "NAYA-JWL-033",
       "name": "Spaces",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4068,7 +4342,8 @@
       "id": "NAYA-JWL-034",
       "name": "Today",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4078,7 +4353,8 @@
       "id": "NAYA-JWL-035",
       "name": "BLACK ORB \u00b7 120px Dark soul, color rim",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4088,7 +4364,8 @@
       "id": "NAYA-JWL-036",
       "name": "BLUE Knowledge moving",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4098,7 +4375,8 @@
       "id": "NAYA-JWL-037",
       "name": "DEMONSTRATION Intentional specimen content",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4108,7 +4386,8 @@
       "id": "NAYA-JWL-038",
       "name": "DEMONSTRATION Shown, golden",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4118,7 +4397,8 @@
       "id": "NAYA-JWL-039",
       "name": "checkable, not just beau",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4128,7 +4408,8 @@
       "id": "NAYA-JWL-040",
       "name": "Excellence is a loop that can teach itself.",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4138,7 +4419,8 @@
       "id": "NAYA-JWL-041",
       "name": "GOLD Attention, earned",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4148,7 +4430,8 @@
       "id": "NAYA-JWL-042",
       "name": "GREEN Alive and well",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4158,7 +4441,8 @@
       "id": "NAYA-JWL-043",
       "name": "INTELLIGENCE Jewel facets \u00b7 not generic cards",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4168,7 +4452,8 @@
       "id": "NAYA-JWL-044",
       "name": "LIVING EDGE The leading color",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4178,7 +4463,8 @@
       "id": "NAYA-JWL-045",
       "name": "MAGENTA The living edge",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4188,7 +4474,8 @@
       "id": "NAYA-JWL-046",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4198,7 +4485,8 @@
       "id": "NAYA-JWL-047",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4208,7 +4496,8 @@
       "id": "NAYA-JWL-048",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4218,7 +4507,8 @@
       "id": "NAYA-JWL-049",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4228,7 +4518,8 @@
       "id": "NAYA-JWL-050",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4238,7 +4529,8 @@
       "id": "NAYA-JWL-051",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4248,7 +4540,8 @@
       "id": "NAYA-JWL-052",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4258,7 +4551,8 @@
       "id": "NAYA-JWL-053",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4268,7 +4562,8 @@
       "id": "NAYA-JWL-054",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4278,7 +4573,8 @@
       "id": "NAYA-JWL-055",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4288,7 +4584,8 @@
       "id": "NAYA-JWL-056",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4298,7 +4595,8 @@
       "id": "NAYA-JWL-057",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4308,7 +4606,8 @@
       "id": "NAYA-JWL-058",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4318,7 +4617,8 @@
       "id": "NAYA-JWL-059",
       "name": "One contract, three tongues",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4328,7 +4628,8 @@
       "id": "NAYA-JWL-060",
       "name": "it gives",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4338,7 +4639,8 @@
       "id": "NAYA-JWL-061",
       "name": "Orbs of light. 05",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4348,7 +4650,8 @@
       "id": "NAYA-JWL-062",
       "name": "Orbs of light. 05",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4358,7 +4661,8 @@
       "id": "NAYA-JWL-063",
       "name": "Orbs of light. 05",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4368,7 +4672,8 @@
       "id": "NAYA-JWL-064",
       "name": "PURPLE Naya's presence",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4378,7 +4683,8 @@
       "id": "NAYA-JWL-065",
       "name": "SECTION MARK \u00b7 56px Room icons, headers",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4388,7 +4694,8 @@
       "id": "NAYA-JWL-066",
       "name": "The laws at a glance",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4398,7 +4705,8 @@
       "id": "NAYA-JWL-067",
       "name": "The laws at a glance",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4408,7 +4716,8 @@
       "id": "NAYA-JWL-068",
       "name": "The laws at a glance",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4418,7 +4727,8 @@
       "id": "NAYA-JWL-069",
       "name": "The laws at a glance",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4428,7 +4738,8 @@
       "id": "NAYA-JWL-070",
       "name": "The laws at a glance",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4438,7 +4749,8 @@
       "id": "NAYA-JWL-071",
       "name": "The laws at a glance",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4448,7 +4760,8 @@
       "id": "NAYA-JWL-072",
       "name": "The laws at a glance",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4458,7 +4771,8 @@
       "id": "NAYA-JWL-073",
       "name": "The laws at a glance",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4468,7 +4782,8 @@
       "id": "NAYA-JWL-074",
       "name": "The missing ten, now built into the library.",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4478,7 +4793,8 @@
       "id": "NAYA-JWL-075",
       "name": "Truth is part of the visual language.",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4488,7 +4804,8 @@
       "id": "NAYA-JWL-076",
       "name": "Truth is part of the visual language.",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4498,7 +4815,8 @@
       "id": "NAYA-JWL-077",
       "name": "Truth is part of the visual language.",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4508,7 +4826,8 @@
       "id": "NAYA-JWL-078",
       "name": "TWIN ORBIT Two rings, counter-rotating",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4518,7 +4837,8 @@
       "id": "NAYA-JWL-079",
       "name": "VERIFIED Only when independent evidence exists",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4528,7 +4848,8 @@
       "id": "NAYA-JWL-080",
       "name": "VERIFIED Proven, glowing green",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4538,7 +4859,8 @@
       "id": "NAYA-JWL-081",
       "name": "Why v2 exists",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4548,7 +4870,8 @@
       "id": "NAYA-JWL-082",
       "name": "Why v2 exists",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4558,7 +4881,8 @@
       "id": "NAYA-JWL-083",
       "name": "Why v2 exists",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4568,7 +4892,8 @@
       "id": "NAYA-JWL-084",
       "name": "Why v2 exists",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4578,7 +4903,8 @@
       "id": "NAYA-JWL-085",
       "name": "Why v2 exists",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4588,7 +4914,8 @@
       "id": "NAYA-JWL-086",
       "name": "Why v2 exists",
       "family": "JWL",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4598,7 +4925,8 @@
       "id": "NAYA-LAY-001",
       "name": "Excellence reproduces.",
       "family": "LAY",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4608,7 +4936,8 @@
       "id": "NAYA-LAY-002",
       "name": "Intelligence is structural.",
       "family": "LAY",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4618,7 +4947,8 @@
       "id": "NAYA-LAY-003",
       "name": "Material has a soul.",
       "family": "LAY",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4628,7 +4958,8 @@
       "id": "NAYA-LAY-004",
       "name": "Spectrum is meaning.",
       "family": "LAY",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4638,7 +4969,8 @@
       "id": "NAYA-LST-001",
       "name": "[doors] smart door cards (registered doors)",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4648,7 +4980,8 @@
       "id": "NAYA-LST-002",
       "name": "Every bullet a jewel. Never twice in a row.",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4658,7 +4991,8 @@
       "id": "NAYA-LST-003",
       "name": "Every bullet a jewel. Never twice in a row.",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4668,7 +5002,8 @@
       "id": "NAYA-LST-004",
       "name": "Build 05",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4678,7 +5013,8 @@
       "id": "NAYA-LST-005",
       "name": "Distill 03",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4688,7 +5024,8 @@
       "id": "NAYA-LST-006",
       "name": "Experience 06",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4698,7 +5035,8 @@
       "id": "NAYA-LST-007",
       "name": "Invent 04",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4708,7 +5046,8 @@
       "id": "NAYA-LST-008",
       "name": "Learn 08",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4718,7 +5057,8 @@
       "id": "NAYA-LST-009",
       "name": "Reproduce 09",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4728,7 +5068,8 @@
       "id": "NAYA-LST-010",
       "name": "Research 01",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4738,7 +5079,8 @@
       "id": "NAYA-LST-011",
       "name": "Understand 02",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4748,7 +5090,8 @@
       "id": "NAYA-LST-012",
       "name": "Verify 07",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4758,7 +5101,8 @@
       "id": "NAYA-LST-013",
       "name": "\u25b3 Everything glows gently. The page breathes but stays c",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4768,7 +5112,8 @@
       "id": "NAYA-LST-014",
       "name": "\u25b3 Light everything: white at rest, color on touch. White",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4778,7 +5123,8 @@
       "id": "NAYA-LST-015",
       "name": "\u25b3 Make the header a front door. Logo, living mark, warm",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4788,7 +5134,8 @@
       "id": "NAYA-LST-016",
       "name": "\u25b3 Type speaks in three sizes. 24 for kickers, 18 for hea",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4798,7 +5145,8 @@
       "id": "NAYA-LST-017",
       "name": "Black is the night. White is the light. Purple is the",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4808,7 +5156,8 @@
       "id": "NAYA-LST-018",
       "name": "Draw icons. Never shrink photos. Every icon is vector",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4818,7 +5167,8 @@
       "id": "NAYA-LST-019",
       "name": "Nothing ships below excellent.",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4828,7 +5178,8 @@
       "id": "NAYA-LST-020",
       "name": "Pick the layout that matches what the page IS. People",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4838,7 +5189,8 @@
       "id": "NAYA-LST-021",
       "name": "Score what you see, not what you wrote. Look at the re",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4848,7 +5200,8 @@
       "id": "NAYA-LST-022",
       "name": "Size separates, color doesn't. 24 for kickers, 18 for",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4858,7 +5211,8 @@
       "id": "NAYA-LST-023",
       "name": "White edge, always visible. Borders at rest are at lea",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4868,7 +5222,8 @@
       "id": "NAYA-LST-024",
       "name": "or it doesn\u2019t ship. Nothing reaches Shawn below 9.",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4878,7 +5233,8 @@
       "id": "NAYA-LST-025",
       "name": "Draw icons. Don't shrink photos. Bold vector shapes th",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4888,7 +5244,8 @@
       "id": "NAYA-LST-026",
       "name": "Full width. No cages. No max-width caps, no black gutt",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4898,7 +5255,8 @@
       "id": "NAYA-LST-027",
       "name": "Give every element one color job. Chrome gets purple.",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4908,7 +5266,8 @@
       "id": "NAYA-LST-028",
       "name": "Prove it before you claim it. Read the file. Count the",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4918,7 +5277,8 @@
       "id": "NAYA-LST-029",
       "name": "never shouts over",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4928,7 +5288,8 @@
       "id": "NAYA-LST-030",
       "name": "\u2727 Build buttons with black hearts. Black center, white t",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4938,7 +5299,8 @@
       "id": "NAYA-LST-031",
       "name": "\u2727 Let the page breathe. Slow drifting light, gentle puls",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4948,7 +5310,8 @@
       "id": "NAYA-LST-032",
       "name": "\u2727 Twelve words or fewer. A tagline that needs thirteen w",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4958,7 +5321,8 @@
       "id": "NAYA-LST-033",
       "name": "\u2727 Words are white and clear. Every page knows what it is",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4968,7 +5332,8 @@
       "id": "NAYA-LST-034",
       "name": "Aliveness 8 Ambient drift, edge breathing, glow pulses o",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4978,7 +5343,8 @@
       "id": "NAYA-LST-035",
       "name": "Color discipline 9 Chrome purple, text white, cards cycl",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4988,7 +5354,8 @@
       "id": "NAYA-LST-036",
       "name": "Copy 9 Tagline is 10 words. Section ledes are short and",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -4998,7 +5365,8 @@
       "id": "NAYA-LST-037",
       "name": "Gate honesty 9 No claim in this report exceeds the bytes",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5008,7 +5376,8 @@
       "id": "NAYA-LST-038",
       "name": "Header composition 9 Real NayaNET logo top-left, living",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5018,7 +5387,8 @@
       "id": "NAYA-LST-039",
       "name": "Icons &amp; marks 8 The orb mark is pure CSS geometry wi",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5028,7 +5398,8 @@
       "id": "NAYA-LST-040",
       "name": "Layout &amp; metaphor 9 Full-width, no max-width caps, n",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5038,7 +5409,8 @@
       "id": "NAYA-LST-041",
       "name": "Lighting 8 Every card and pill carries a 1.5px white bor",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5048,7 +5420,8 @@
       "id": "NAYA-LST-042",
       "name": "Typography &amp; craft 9 24 / 18 / 14 / 17 observed thro",
       "family": "LST",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5058,7 +5431,8 @@
       "id": "NAYA-MED-001",
       "name": "Media player",
       "family": "MED",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5270,7 +5644,8 @@
       "id": "NAYA-NAV-012",
       "name": "nav",
       "family": "NAV",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5280,7 +5655,8 @@
       "id": "NAYA-NAV-013",
       "name": "One intelligence. Many rooms.",
       "family": "NAV",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5290,7 +5666,8 @@
       "id": "NAYA-NAV-014",
       "name": "Activity",
       "family": "NAV",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5300,7 +5677,8 @@
       "id": "NAYA-NAV-015",
       "name": "All",
       "family": "NAV",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5310,7 +5688,8 @@
       "id": "NAYA-NAV-016",
       "name": "Connected",
       "family": "NAV",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5320,7 +5699,8 @@
       "id": "NAYA-NAV-017",
       "name": "Saved",
       "family": "NAV",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5330,7 +5710,8 @@
       "id": "NAYA-ONB-001",
       "name": "ONB-001 \u00b7 Stepper",
       "family": "ONB",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5340,7 +5721,8 @@
       "id": "NAYA-ONB-002",
       "name": "ONB-002 \u00b7 Welcome card",
       "family": "ONB",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5350,7 +5732,8 @@
       "id": "NAYA-ONB-003",
       "name": "ONB-003 \u00b7 Progress indicator",
       "family": "ONB",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5490,7 +5873,8 @@
       "id": "NAYA-PAY-001",
       "name": "PAY-001 \u00b7 Order summary board",
       "family": "PAY",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5500,7 +5884,8 @@
       "id": "NAYA-PAY-002",
       "name": "PAY-002 \u00b7 Payment form",
       "family": "PAY",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5510,7 +5895,8 @@
       "id": "NAYA-PAY-003",
       "name": "PAY-003 \u00b7 Confirmation state",
       "family": "PAY",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5520,7 +5906,8 @@
       "id": "NAYA-PAY-004",
       "name": "PAY-004 \u00b7 Error state",
       "family": "PAY",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5530,7 +5917,8 @@
       "id": "NAYA-PAY-005",
       "name": "PAY-005 \u00b7 Payment method picker",
       "family": "PAY",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5580,7 +5968,8 @@
       "id": "NAYA-TYP-001",
       "name": "12",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5590,7 +5979,8 @@
       "id": "NAYA-TYP-002",
       "name": "12",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5600,7 +5990,8 @@
       "id": "NAYA-TYP-003",
       "name": "/ 18 / 14",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5610,7 +6001,8 @@
       "id": "NAYA-TYP-004",
       "name": "/ 18 / 14",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5620,7 +6012,8 @@
       "id": "NAYA-TYP-005",
       "name": "9.0",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5630,7 +6023,8 @@
       "id": "NAYA-TYP-006",
       "name": "9.0",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5640,7 +6034,8 @@
       "id": "NAYA-TYP-007",
       "name": "99",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5650,7 +6045,8 @@
       "id": "NAYA-TYP-008",
       "name": "99",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5660,7 +6056,8 @@
       "id": "NAYA-TYP-009",
       "name": "LAW PILL / incredible clarity at rest",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5670,7 +6067,8 @@
       "id": "NAYA-TYP-010",
       "name": "LIGHT STREAK / precise interface detail",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5680,7 +6078,8 @@
       "id": "NAYA-TYP-011",
       "name": "OBSIDIAN PILL / strongest depth + restraint",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5690,7 +6089,8 @@
       "id": "NAYA-TYP-012",
       "name": "forbidden",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5700,7 +6100,8 @@
       "id": "NAYA-TYP-013",
       "name": "forbidden",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5710,7 +6111,8 @@
       "id": "NAYA-TYP-014",
       "name": "forbidden",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5720,7 +6122,8 @@
       "id": "NAYA-TYP-015",
       "name": "forbidden",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5730,7 +6133,8 @@
       "id": "NAYA-TYP-016",
       "name": "forbidden",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5740,7 +6144,8 @@
       "id": "NAYA-TYP-017",
       "name": "forbidden",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5750,7 +6155,8 @@
       "id": "NAYA-TYP-018",
       "name": "Nayanet \u00b7 The Design Standard \u00b7 Ultimate Spec \u00b7 v1.7",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5760,7 +6166,8 @@
       "id": "NAYA-TYP-019",
       "name": "Nayanet \u00b7 The Design Standard \u00b7 Ultimate Spec \u00b7 v1.7",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5770,7 +6177,8 @@
       "id": "NAYA-TYP-020",
       "name": "I \u00b7 Build",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5780,7 +6188,8 @@
       "id": "NAYA-TYP-021",
       "name": "Ii \u00b7 Prove",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5790,7 +6199,8 @@
       "id": "NAYA-TYP-022",
       "name": "They express universal navigation intent. System tabs",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5800,7 +6210,8 @@
       "id": "NAYA-TYP-023",
       "name": "They never become intelligence storage. Human tabs are",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5810,7 +6221,8 @@
       "id": "NAYA-TYP-024",
       "name": "Shape, contrast and the spectrum jewel agree. Active s",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5820,7 +6232,8 @@
       "id": "NAYA-TYP-025",
       "name": "Pre-ship checklist \u00b7 all must pass",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5830,7 +6243,8 @@
       "id": "NAYA-TYP-026",
       "name": "What changed",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5840,7 +6254,8 @@
       "id": "NAYA-TYP-027",
       "name": "What happens next",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5850,7 +6265,8 @@
       "id": "NAYA-TYP-028",
       "name": "What matters",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5860,7 +6276,8 @@
       "id": "NAYA-TYP-029",
       "name": "\u2265 1.5",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],
@@ -5870,7 +6287,8 @@
       "id": "NAYA-TYP-030",
       "name": "\u2265 1.5",
       "family": "TYP",
-      "status": "unverified",
+      "status": "retired",
+      "retired_reason": "no artifact found in store, factory page, showcase, inventory, or templates \u2014 adjudicated 2026-10-22 (Factory Contract-Home Step 3)",
       "provenance": [
         "builder-index-v1"
       ],

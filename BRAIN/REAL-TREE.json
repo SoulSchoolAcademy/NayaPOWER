@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "3826b69997399eb95708b9fec73cfee356966c81",
-  "inventory_file_count": 1580,
+  "receipt_basis_commit": "1e81741d68ca2c75edfc9b6fd007b6c3f78e4096",
+  "inventory_file_count": 1582,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 800,
+    "05-MEMORY": 802,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -37,12 +37,12 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.ai.md",
-      "blob_sha": "4df5d3e2d577a2c3fd4ef7e77c347908e442f337",
+      "blob_sha": "df6e070645957b62696090a15ce707bc93d2a0e4",
       "size": 5642
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md",
-      "blob_sha": "d7be8b89d508d6b19b54a856e3d611da44da7147",
+      "blob_sha": "424426fb9f6faf20328621f336d3c3e9bba59698",
       "size": 11342
     },
     {
@@ -57,13 +57,13 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.ai.md",
-      "blob_sha": "0cfdd44eb0210d3b7123fcaf776e6e9450ee97fa",
-      "size": 12454
+      "blob_sha": "8bb994e9c15f5279e7dfc43dc3ac59fb7d19f599",
+      "size": 12606
     },
     {
       "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
-      "blob_sha": "c646f57752cfdf72115475edd8afec6a8ce0afa9",
-      "size": 18336
+      "blob_sha": "31e62995c5837872048f18c4e6cd1ca057ec14a7",
+      "size": 18452
     },
     {
       "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.ai.md",
@@ -112,8 +112,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/read-me-first.machine.json",
-      "blob_sha": "c2818c00d389ac73b23586adb079dfed732899c8",
-      "size": 6005
+      "blob_sha": "74eaecc296bcb2683fd969b1f7622e19bca0db49",
+      "size": 6081
     },
     {
       "path": "BRAIN/00-ACTIVATION/the-code-she-lives-by.machine.json",
@@ -627,13 +627,13 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md",
-      "blob_sha": "4d2a8e1735a3aff06e31d4ace0a12ce997c6281a",
-      "size": 88284
+      "blob_sha": "2af14cb71410e4dadcd533e8cac7377b3c521bda",
+      "size": 88406
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json",
-      "blob_sha": "daffabc2cce9c1c3bfabddab6cb8b0368666f965",
-      "size": 513540
+      "blob_sha": "ab627b25a96b532d4b773d7de337f051f18b9ec7",
+      "size": 513665
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
@@ -4501,9 +4501,19 @@
       "size": 6071
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/accountability/SN-0826/IB-SMART-NOTE-20261022-sn0826-have-each-others-back.md",
+      "blob_sha": "bbdaeb51a4631c08fde89c372aa063eefe6fee68",
+      "size": 9718
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md",
       "blob_sha": "c46f0d01a5b214dc7fc158c365881698cb5cf2d5",
       "size": 5916
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md",
+      "blob_sha": "06a605af30958c9a279919a88619e476e12d7bab",
+      "size": 10686
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/VISION/active-intelligence/SN-0824/IB-SMART-NOTE-20261022-sn0824-the-future-is-now.md",
@@ -6947,8 +6957,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
-      "blob_sha": "10d0d9e27133a4e0131eaea1f7fc2aaed57de5c5",
-      "size": 6827
+      "blob_sha": "7e1e336df17b2f81c6f4235b243c12ae8ac72933",
+      "size": 8020
     },
     {
       "path": "BRAIN/10-INTERFACES/README.md",
@@ -6957,13 +6967,13 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json",
-      "blob_sha": "e08641b5d7309d3b2596549c8be5ca489eb0acff",
-      "size": 198488
+      "blob_sha": "a50ef2dd2e100f2f6a18ef73e2583adcbc281f6c",
+      "size": 266070
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.md",
-      "blob_sha": "1f4e328d5f202bd39fa4ced943b2a6c955b0633d",
-      "size": 34310
+      "blob_sha": "0e63b2413da58b87e99e39c3e7ef0dd87500f8d0",
+      "size": 35445
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/EXEMPLAR-BUILD-SCORECARD.md",
@@ -6977,13 +6987,13 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/GENERAL-DESIGN-CONTRACT.human.md",
-      "blob_sha": "78e6e816657816d6e9cd472624ab220c5caa8d88",
-      "size": 18295
+      "blob_sha": "c6beb7e0837d5d0e4856c32abd0dfaea886fa878",
+      "size": 18583
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/GENERAL-DESIGN-CONTRACT.machine.json",
-      "blob_sha": "3afbeca34d924090b07464da7233145e6ef5ad0f",
-      "size": 50671
+      "blob_sha": "939b90b31d01f96f6a7afc290b086b9ba479544d",
+      "size": 50782
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/INP008-REBASE-SCORECARD.md",
@@ -6997,8 +7007,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MANIFEST.md",
-      "blob_sha": "0c430f497375ed393b8d74a6c30681f1175e4a0e",
-      "size": 19199
+      "blob_sha": "02de62aa0633d9feecaa96e9f7f83f6f2c9bbd62",
+      "size": 20133
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py",
@@ -7067,8 +7077,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json",
-      "blob_sha": "ba9652156d54a381f2f5470426c90ecde9cfae9b",
-      "size": 48649
+      "blob_sha": "02dcb9f072bfa8e0911ef9af192ab40237f646c2",
+      "size": 49860
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/booking.html",
@@ -7137,8 +7147,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
-      "blob_sha": "e7bfbb2329d178704654ec99538429136c44da87",
-      "size": 60300
+      "blob_sha": "132eb9d338b2e61ec21c1c66db8c57b10274bb29",
+      "size": 110193
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/index.html",
@@ -7512,8 +7522,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/NETWORK-MAP.md",
-      "blob_sha": "29c74e9d9d6794097ab5c946d3f2e523fc50bb45",
-      "size": 9314
+      "blob_sha": "59a1dfba71b7d778f161b15a7c3e6adecf06afbf",
+      "size": 9347
     },
     {
       "path": "BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md",
@@ -7852,8 +7862,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/network-map.machine.json",
-      "blob_sha": "3ac19fca90226e3b14c8ff226c68967c1769a337",
-      "size": 5450
+      "blob_sha": "f8933f6c97e3214d580c5c710c85e476b7c1cfaf",
+      "size": 5475
     },
     {
       "path": "BRAIN/90-OPERATIONS/network-registry.machine.json",
@@ -7892,8 +7902,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "8d9ecdc1cc981238bcef24e6dfec3ac519a64be8",
-      "size": 5080
+      "blob_sha": "70aa913c764af64124ad34f893dfc584951cdc38",
+      "size": 6776
     },
     {
       "path": "BRAIN/MASTER-MAP.md",
