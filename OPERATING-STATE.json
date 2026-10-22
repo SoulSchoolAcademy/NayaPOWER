@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-22T11:25:35Z",
-  "tip": "f7bd39ca75027b3d90d2a983dad3c623215863a3",
+  "generated_at": "2026-10-22T12:25:21Z",
+  "tip": "e8a10e0a4ba05eea4c0c0d8448e9362b6de62946",
   "open_pr_count": 12,
   "queue_by_tier_action": {
     "C": {
@@ -17,7 +17,10 @@
     }
   },
   "tip_failing_checks": [
+    "Verify landings, prepare reverts on verified escapes",
+    "door-obligation",
     "promote-and-prove",
+    "resolve-current-truth",
     "test"
   ],
   "gauge": {
@@ -30,14 +33,14 @@
   },
   "laws": {
     "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
-    "iteration": 218,
+    "iteration": 219,
     "latest_laws": [
-      "L624",
       "L625",
       "L626",
       "L627",
       "L628",
-      "L629"
+      "L629",
+      "L630"
     ]
   },
   "hold_human": []
