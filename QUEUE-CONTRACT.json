@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T03:25:10Z",
-  "tip": "f8235bc774341bfcf832cab2dd31e9ce6df671fb",
+  "generated_at": "2026-10-22T04:24:24Z",
+  "tip": "ecaaf7aaefd7ed3756521a0a9bf3c22b71ef5d7f",
   "prs": [
     {
       "number": 2869,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "51785c5d1f0a7825dbb81ff1349d91e0339688c5"
+      "head": "55935e99952db25211220db06c0cb2d077148cd9"
     },
     {
       "number": 2874,
@@ -19,25 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "364d8288a68c5d62cdefffcaa202c362effbb5df"
-    },
-    {
-      "number": 2898,
-      "title": "Naya/mission state",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Receipt pin \u2014 exact head SHA, Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, brain-index-freshness, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
-      "owner": "author lane",
-      "head": "3d2469fee6477cecaf14dae93f98b454210744c6"
-    },
-    {
-      "number": 2905,
-      "title": "LEARN: wire retrieval/application receipts into the normal retrieval path (convergence c)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "642831f38022554a58049a9a288fc7dc45c0f656"
+      "head": "8f5e09a7b84c62472306fe511b1a9bb5e836fa9e"
     },
     {
       "number": 2907,
