@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "0849bf09edc5e142fb3bb75471131bf57165db01",
-  "inventory_file_count": 1550,
+  "receipt_basis_commit": "f7bd39ca75027b3d90d2a983dad3c623215863a3",
+  "inventory_file_count": 1564,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 783,
+    "05-MEMORY": 796,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -21,7 +21,7 @@
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 92,
     "99-ARCHIVE": 2,
-    "ROOT": 6
+    "ROOT": 7
   },
   "ledger_assertion": "Per-domain counts asserted against the 2026-09-30 brain-reconciliation ledger classification table. Any drift fails regeneration instead of silently rewriting the table.",
   "files": [
@@ -941,9 +941,29 @@
       "size": 4371
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-LEARNING-EVENT.md",
+      "blob_sha": "46e837f3e7797bc8c04c5f42351cedb612bdba82",
+      "size": 13196
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md",
       "blob_sha": "ea6a1d83a40b410b990b09d53b08e9668f188a13",
       "size": 6363
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-06-LEARNING-EVENT.md",
+      "blob_sha": "f49990cef443f19cc9add017930461e0ede1bc31",
+      "size": 13341
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-07-LEARNING-EVENT.md",
+      "blob_sha": "8ff8032b7f5c56eaaca38eb72571e5579175787b",
+      "size": 13270
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-08-LEARNING-EVENT.md",
+      "blob_sha": "0e730b3e2b17e190032d03af997c98c6f82d94b5",
+      "size": 13013
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-09-LEARNING-EVENT.md",
@@ -956,9 +976,54 @@
       "size": 9817
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-10-LEARNING-EVENT.md",
+      "blob_sha": "0f121f6ed532ace39572140cb7e81937371ff714",
+      "size": 13670
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-11-LEARNING-EVENT.md",
       "blob_sha": "d60799ebb3deb040808307b892af19a091523513",
       "size": 28794
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-12-LEARNING-EVENT.md",
+      "blob_sha": "fb9909b9a78f3787fddfe906f7bb92a58c1b1627",
+      "size": 7661
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-13-LEARNING-EVENT.md",
+      "blob_sha": "9797936903c8d477d6ee540a1eda950ceccf6708",
+      "size": 9278
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-14-LEARNING-EVENT.md",
+      "blob_sha": "12b95fad664166f39efe7c20b1a85835bf331235",
+      "size": 8904
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-15-LEARNING-EVENT.md",
+      "blob_sha": "2c94df20f0b95c8195a7cb4bbdeea2d853dd825f",
+      "size": 9163
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-16-LEARNING-EVENT.md",
+      "blob_sha": "9b85602270a4ba1f55c1fb6c2a9bbb13b9ef6e0d",
+      "size": 8930
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-17-LEARNING-EVENT.md",
+      "blob_sha": "5f76862423ec097d49041997c1ce0dbddd0a7e85",
+      "size": 9471
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-18-LEARNING-EVENT.md",
+      "blob_sha": "93b9d456798646d6269644db8f9524b35dce7fa7",
+      "size": 9800
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-19-LEARNING-EVENT.md",
+      "blob_sha": "ab39346c983dd3f7c066030842f2957be0d3dd87",
+      "size": 12130
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-20-LEARNING-EVENT.md",
@@ -7754,6 +7819,11 @@
       "path": "BRAIN/MASTER-MAP.md",
       "blob_sha": "3a56fd5611216760eae0fbf936fd28936a371432",
       "size": 9551
+    },
+    {
+      "path": "BRAIN/MISSION-STATE.json",
+      "blob_sha": "1354672ee7d6f737d52b95eb1ec1893cf3eff30c",
+      "size": 8461
     },
     {
       "path": "BRAIN/NAYAPOWER-BRAIN-INDEX.json",
