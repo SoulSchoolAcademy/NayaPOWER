@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T07:31:56Z",
-  "tip": "0849bf09edc5e142fb3bb75471131bf57165db01",
+  "generated_at": "2026-10-22T08:25:03Z",
+  "tip": "6bffce947fb08e3abae5066f752287907acd8ba9",
   "prs": [
     {
       "number": 2869,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "d6cde2ed52cbb0334b45844497cba0a7064610c9"
+      "head": "f9066212cf66a9a7054f863fe9da5d51d202f758"
     },
     {
       "number": 2874,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "ac07b9f5d1ddc5ba0ebfadbfa619f84126b16dd5"
+      "head": "c91189c089965f012cccc6e1952da9d5dd4e4caf"
     },
     {
       "number": 2907,
@@ -58,15 +58,6 @@
       "head": "1a6e27a5365ecfbc7d1115e60e308be6d74ae25b"
     },
     {
-      "number": 2918,
-      "title": "Brain-index regeneration \u2014 cure freshness drift x3 at tip 88da03be (BUILD)",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "db584dae3264319134d139cc7473f7e8a6d12e08"
-    },
-    {
       "number": 2919,
       "title": "Fix materialize-template tests under repo-root pytest \u2014 file-relative fixture paths (BUILD)",
       "tier": "B",
@@ -83,6 +74,24 @@
       "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "2476da27fa3996ac762ec30d8cca088061ea1999"
+    },
+    {
+      "number": 2922,
+      "title": "Fix cold-start Step-0 admission fixture \u2014 q4 answer 9.0 \u2192 9.5 (BUILD 07:00)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "45b4c43df52d452ed49ac180554ce5593460fcbd"
+    },
+    {
+      "number": 2924,
+      "title": "Fix auto-brain test law count \u2014 18 \u2192 23, ratified operationalization count (BUILD 07:30)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "e406122c0ba4b6209d7e5f23fae6b59782b0509e"
     }
   ]
 }
