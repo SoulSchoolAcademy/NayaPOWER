@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-22 10:12 UTC_
+_Last updated: 2026-10-22 10:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 5372
-- ✅ Verified (8+): 5315
+- **Total scored actions:** 5375
+- ✅ Verified (8+): 5318
 - 🟡 Partial (5–7): 55
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 2
@@ -18,12 +18,12 @@ _Last updated: 2026-10-22 10:12 UTC_
 | Team 1 | Naya Verity | 388 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 381 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 345 | 9.0 | 10 |
-| Team 4 | Naya Mason | 330 | 9.0 | 9.6 |
+| Team 4 | Naya Mason | 331 | 9.0 | 9.6 |
 | Team 5 | Naya Seeker | 478 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 254 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 349 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 373 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 474 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 475 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 678 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 280 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 285 | 9.2 | 9.5 |
@@ -397,6 +397,7 @@ _Last updated: 2026-10-22 10:12 UTC_
 - **gap-lane-scorer-20261021-1930-v2:** 1 actions, avg 9.0/10
 - **gap-20261016-0430-lane0:** 1 actions, avg 9.0/10
 - **triage-20261017-0725-spotaudit-0640:** 1 actions, avg 9.0/10
+- **gap-gap-lane-scorer-20261021-1930-v2:** 1 actions, avg 9.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -885,6 +886,7 @@ _Last updated: 2026-10-22 10:12 UTC_
 - **gap-lane-scorer-20261021-1920-lane4:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261015-1430-lane4-repair:** 1 actions, avg 9.0/10
 - **gap-t1182:** 1 actions, avg 9.4/10
+- **gap-gap-lane-scorer-20261021-1920:** 1 actions, avg 9.5/10
 - **scorer-20261014-1600:** 2 actions, avg 9.2/10
 - **t-distill-chain:** 2 actions, avg 9.0/10
 - **scorer-20261014-1905:** 3 actions, avg 9.3/10
@@ -1112,6 +1114,7 @@ _Last updated: 2026-10-22 10:12 UTC_
 - **gap-t0776-lane9-decline2-rootcause:** 1 actions, avg 9.0/10
 - **gap-scorer-20261014-2200-lane9:** 1 actions, avg 9.2/10
 - **gap-scorer-20261014-2220-lane9:** 1 actions, avg 9.2/10
+- **gap-gap-scorer-20261014-2200:** 1 actions, avg 9.5/10
 - **lane-scorer-20261018-0940:** 1 actions, avg 9.0/10
 - **lane-scorer-20261018-0950:** 1 actions, avg 9.4/10
 - **lane-scorer-20261018-1000:** 1 actions, avg 9.0/10
