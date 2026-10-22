@@ -278,3 +278,18 @@ Make the 14 questions executable: a cold seat must answer from source evidence, 
 After every change, test the exact head, verify independently, record evidence, update current state, and immediately choose the next highest-value authorized action. Add negative controls for dead pointers, stale evidence, unauthorized identity, and missing behavior. If blocked, record exact cause, evidence, safe alternative, owner, and next test. Never disguise BLOCKED as PASS or claim persistent work without a real runner.
 
 Do not cross human-only production, credential, money, destructive, security/authority, or constitutional gates. Do not award 10/10 for prose, self-scoring, green CI alone, or a merge. Done means the cold 14Q, node influence, behavior-changing learning, Sender → Receiver → Hub, and three-generation succession pass their defined evidence-based acceptance tests. Sign out with verified completions, links, remaining blockers, honest scores, and the next action—then continue.
+
+
+---
+
+## Execution Receipt — 22 October 2026
+
+This work cycle verified the repository's activation integrity and relevant source contracts. It did **not** prove the complete live intelligence system.
+
+- The protocol integrity gate passed **8 of 8** checks at commit `91382eb4e377626d0029598ccb2dbbd9426d8aea`. The gate confirms readiness, not authority.
+- Four focused cold-start, Step-0 admission, successor-continuity, and node-binding test files passed **33 tests**.
+- The human path / product-surface test passed **8 tests**.
+- The Brain index freshness gate passed with **1,580 files and zero drift**. The generated-index `--check` also passed after regeneration.
+- The machine-readable report parsed successfully, and its three tongue pointers now resolve to the actual canonical filenames.
+
+The full timed ACTIVATION-10, independent cold run of all 14 questions, live identity inheritance, nine-node behavioral influence, production Sender → Receiver → Hub, behavior-changing learning transfer, and three-generation successor test remain **NOT PROVEN**. The source tests must not be represented as those runtime proofs.

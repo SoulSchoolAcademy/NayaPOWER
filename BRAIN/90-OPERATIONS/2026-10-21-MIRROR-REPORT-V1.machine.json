@@ -535,5 +535,61 @@
       "Prove Naya A to B to C continuation from durable state"
     ],
     "whole_team_execution_prompt": "TEAM NAYA — EXECUTE, PROVE, LEARN, CONTINUE. Work from current canonical GitHub state; read PROTOCOL.md, AGENTS.md, boot and machine-law files, operating state, boards #2793/#2599/#2601, and the relevant area board. Re-derive live values before citing. Coordinate before shared writes; one lane, owner, writer per surface, canonical record per fact, and receipt per outcome. Rank by verified mission value and blocking power; parallelize independent work; avoid duplicate PRs/stores. A cold seat must answer all 14 questions from source evidence, classify each PROVEN/DOCUMENTED/UNKNOWN/CONFLICTED/BLOCKED, choose a governed action, act within authority, observe and independently verify, record durable learning, and hand off a usable checkpoint. No answers injected. After each change test exact head, independently verify, record evidence, update state, and take the next authorized action. Add negative controls for dead pointers, stale evidence, unauthorized identity, and missing behavior. If blocked, record exact cause, evidence, safe alternative, owner, and next test. Never disguise BLOCKED as PASS or claim persistent work without a real runner. Respect human-only production, credential, money, destructive, security/authority, and constitutional gates. Done means cold 14Q, node influence, behavior-changing learning, Sender-Receiver-Hub, and three-generation succession pass their evidence-based acceptance tests. Sign out with verified completions, links, blockers, honest scores, and next action; continue."
+  },
+  "execution_receipt_2026_10_22": {
+    "status": "PARTIAL_SOURCE_AND_REPOSITORY_CHECKS_PASS; FULL_COLD_14_BEHAVIORAL_ACCEPTANCE_NOT_PROVEN",
+    "tested_commit": "91382eb4e377626d0029598ccb2dbbd9426d8aea",
+    "base_main_sha": "f289672e78c2b314cbb76a6f08d8f7c273a58b88",
+    "checks": [
+      {
+        "name": "protocol_integrity_gate",
+        "result": "PASS",
+        "passed": 8,
+        "total": 8,
+        "scope": "manifest, tip, law IDs, conflict hierarchy, truth states, prohibitions, activation checklist, protocol pin; readiness only, not authority"
+      },
+      {
+        "name": "focused_cold_and_successor_source_tests",
+        "result": "PASS",
+        "passed": 33,
+        "total": 33,
+        "scope": "cold start, Step-0 admission, successor continuity, node runtime binding source contracts"
+      },
+      {
+        "name": "human_path_product_surface_tests",
+        "result": "PASS",
+        "passed": 8,
+        "total": 8,
+        "command": "node --test tests/human_path_to_product.test.mjs"
+      },
+      {
+        "name": "brain_index_freshness",
+        "result": "PASS",
+        "file_count": 1580,
+        "drift_items": 0,
+        "base_sha": "f289672e78c2b314cbb76a6f08d8f7c273a58b88",
+        "tested_head": "91382eb4e377626d0029598ccb2dbbd9426d8aea"
+      },
+      {
+        "name": "brain_index_regeneration_check",
+        "result": "PASS",
+        "command": "python tools/regenerate_brain_index.py --check"
+      },
+      {
+        "name": "machine_report_json_parse",
+        "result": "PASS",
+        "scope": "JSON syntax and canonical tongue path values"
+      }
+    ],
+    "not_proven": [
+      "timed independent ACTIVATION-10",
+      "cold instance answers all 14 questions without injected answers",
+      "live identity continuity and inheritance",
+      "nine-node behavioral influence and remove-one-node counterfactual",
+      "production Sender-Receiver-Hub end-to-end behavior",
+      "learning transfer that changes later behavior",
+      "Naya A to B to C runtime succession"
+    ],
+    "truth_rule": "Source-contract tests and repository gates do not substitute for live runtime proof or independent cold comprehension."
   }
 }

@@ -227,3 +227,18 @@ Do not ask Shawn questions already answerable from canonical evidence or a safe 
 >
 > Every sign-out states completed and independently verified work with links, remaining work, exact blockers, evidence-based score, and the single next highest-value action. Then continue.
 
+
+
+---
+
+## EXECUTION RECEIPT — 2026-10-22
+
+**Scope:** source-grounded activation and repository-contract checks for this report change. This is not a full cold 14Q behavioral pass.
+
+- Protocol integrity gate: **PASS, 8/8 checks** at tested commit `91382eb4e377626d0029598ccb2dbbd9426d8aea`; manifest, tip, law IDs, conflict hierarchy, truth states, prohibitions, pinned activation checklist, and protocol pin all passed. Readiness is not authority.
+- Cold-start / Step-0 admission / successor continuity / node-runtime-binding source-contract tests: **33 passed**.
+- Human path / product-surface tests (`node --test tests/human_path_to_product.test.mjs`): **8 passed**.
+- Brain index freshness check: **PASS**, 1,580 files, zero drift at base `f289672e78c2b314cbb76a6f08d8f7c273a58b88` and tested head `91382eb4e377626d0029598ccb2dbbd9426d8aea` (the canonical full SHA is recorded in the PR evidence; do not infer a different SHA from this abbreviated receipt). After index regeneration, `tools/regenerate_brain_index.py --check` also passed at the index commit.
+- Machine report JSON: parse **PASS**; tongue paths resolve to the actual three report filenames.
+
+**Not proven by these checks:** timed independent ACTIVATION-10; cold instance answering all 14 questions without injected answers; live identity continuity; nine-node behavioral influence; production Sender → Receiver → Hub; behavior-changing learning transfer; or Naya A → B → C runtime succession. These remain open until independent, exact-scope receipts exist.
