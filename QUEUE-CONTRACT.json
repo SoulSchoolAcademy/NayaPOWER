@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T22:25:41Z",
-  "tip": "c66faf7d7f06fe330691bd3868b9fe7b18c5f9f0",
+  "generated_at": "2026-10-22T23:29:57Z",
+  "tip": "f082cb8c7f991329aff1a2a859b18cc9413879f3",
   "prs": [
     {
       "number": 2869,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "639e33ef24f38a2f2a60013bb28bb86b8dd112f8"
+      "head": "c04d69f1d5edf0733f94ee1fb92f82be9a277c9a"
     },
     {
       "number": 2907,
@@ -31,15 +31,6 @@
       "head": "8981517bb5636911ee15ea293700150f73be6087"
     },
     {
-      "number": 2939,
-      "title": "R13 \u2014 #2154 pointer sweep: mission state repointed to BRAIN/CURRENT-MISSION-STATE.md (adjudication 6346747868)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "e5d32e1ce57f57190cc6f1b343b4155d6fd1f10f"
-    },
-    {
       "number": 2950,
       "title": "Naya2/team dashboard",
       "tier": "B",
@@ -49,13 +40,58 @@
       "head": "a8ecf97b58a90729a9a5039e06f8ee1582f28566"
     },
     {
-      "number": 2954,
-      "title": "Linked everything: stored object links + owner-named facts (Best-of-Best #14/#19, map step 14)",
+      "number": 2955,
+      "title": "Smart Lists \u2014 the one server store (Best-of-Best #16, step 15)",
       "tier": "A",
       "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "02532785a028cbfb5fb72326140d2c9ceeaad6e0"
+    },
+    {
+      "number": 2956,
+      "title": "Best-of-Best Wave 1 \u00b7 #12 Command + universal search (step 13)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "a7fb2f9020a6d5949e76793b15d7edef7339c0a6"
+    },
+    {
+      "number": 2957,
+      "title": "Best-of-Best Wave 1: Booking block \u2014 availability, booking link, reminders, timeline write (element #17, step 17)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate, safety-grant-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "29c2f8e97a3363ed6fa9658bd7e46b14afec7b39"
+    },
+    {
+      "number": 2958,
+      "title": "Conversational Intake v1 \u2014 one-question Welcome + invite-accept (Best-of-Best #13, step 12)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "72e17276fe28405f00600eb37e77369c49df08a8"
+    },
+    {
+      "number": 2966,
+      "title": "Ask Naya go-live port \u2014 BUILD ARTIFACT ONLY, DO NOT MERGE",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "c0eaf1be791b48004145fd1e73dee7b53cea744b"
+    },
+    {
+      "number": 2967,
+      "title": "First watcher: Hub build-identity sentinel (tools/hub_build_sentinel.py)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
-      "head": "a380bc91cf997dcfd3686459f1f8b8cb40308ac6"
+      "head": "e31a45ea26d6cc555e1b7be31495918633dce4bf"
     }
   ]
 }
