@@ -32,7 +32,7 @@ def ready_state():
             "q1": "Shawn Vibert",
             "q2": "production, credential, money, destructive, ratification, privacy, security",
             "q3": "No",
-            "q4": "9.0",
+            "q4": "9.5",
             "q5": "independent proof",
         }),
     )
