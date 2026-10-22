@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 18:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 19:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 8 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 12 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,13 +50,19 @@
 
 ## Open PRs by Area
 
+### LEARN (1)
+- [#2942](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2942) GT-028 v1.2 — S8 label check learns the smart-app language law (stem-m
+
 ### KNOW (1)
 - [#2907](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907) kappa w690: heal registry drift — register 28 door/leaf pages, pin 1→0 📝draft
 
-### BUILD (3)
+### BUILD (6)
+- [#2943](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2943) Factory Contract-Home Step 3: dual-label the 154 canonical pieces + ad
+- [#2941](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2941) Factory Step 1: stamp A.1 spectrum walk (contract v1.2) + declare cano
+- [#2940](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2940) canon: S8 flagship-dialect label follows the smart-app language law
 - [#2936](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2936) Naya/mission state
 - [#2934](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934) Mission-state twin cure — director ruling Option C (TOP-10 director-st
-- [#2869](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869) Naya4/smart notes 2026 09 30
+- …and 1 more
 
 ### WIRE (2)
 - [#2939](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2939) R13 — #2154 pointer sweep: mission state repointed to BRAIN/CURRENT-MI
