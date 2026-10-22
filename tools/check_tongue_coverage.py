@@ -17,6 +17,8 @@ INVALID, never MISSING — the file exists; machines just can't read it.
 
 In-scope roots (the canon's substantive surface):
   - BRAIN/01-GOVERNANCE/  — governance sets (top-level files only)
+  - BRAIN/00-ACTIVATION/  — activation sets (top-level files only)
+  - NAYA-ACTIVATION/      — activation kit (top-level files only)
   - HUB/ (root level)     — spec / contract / blueprint / design works
   - repo root             — files named *PROTOCOL*.md
 
@@ -45,6 +47,8 @@ TONGUES = ("human", "ai", "machine")
 def scope_roots():
     return [
         ("BRAIN/01-GOVERNANCE", "governance lane", None),
+        ("BRAIN/00-ACTIVATION", "activation lane", None),
+        ("NAYA-ACTIVATION", "activation lane", None),
         ("HUB", "hub lane", re.compile(r"(SPEC|CONTRACT|BLUEPRINT|DESIGN|PROJECT-INTELLIGENCE)", re.I)),
         ("", "protocol lane", re.compile(r"PROTOCOL", re.I)),
     ]
