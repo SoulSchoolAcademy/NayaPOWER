@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T02:25:28Z",
-  "tip": "7bd2253549048e457ae56e8148a0908e90f91f70",
+  "generated_at": "2026-10-22T03:25:10Z",
+  "tip": "f8235bc774341bfcf832cab2dd31e9ce6df671fb",
   "prs": [
     {
       "number": 2869,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "56b87718b259ef741e291cf041a4d9e38cf797b3"
+      "head": "51785c5d1f0a7825dbb81ff1349d91e0339688c5"
     },
     {
       "number": 2874,
@@ -19,25 +19,34 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "450291ed355f733db99d40aaa4def7a08c79dd28"
+      "head": "364d8288a68c5d62cdefffcaa202c362effbb5df"
     },
     {
       "number": 2898,
       "title": "Naya/mission state",
       "tier": "B",
       "action": "CURE",
-      "cure": "Author updates the branch onto current main \u2014 its only red(s) (Protocol machine law (kernel/protocol), Receipt gate (evidence or it didn't happen), Receipt pin \u2014 exact head SHA, Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, brain-index-freshness, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
+      "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Receipt pin \u2014 exact head SHA, Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, brain-index-freshness, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
       "owner": "author lane",
-      "head": "fc025854d8002c9e534a022859ffe42425299f18"
+      "head": "3d2469fee6477cecaf14dae93f98b454210744c6"
     },
     {
-      "number": 2904,
-      "title": "Kernel Tests cure: smart_builder test_assemble loads its sibling assembler by explicit path (no sys.modules shadowing)",
+      "number": 2905,
+      "title": "LEARN: wire retrieval/application receipts into the normal retrieval path (convergence c)",
       "tier": "B",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): inventory; then re-derive at the new head.",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "642831f38022554a58049a9a288fc7dc45c0f656"
+    },
+    {
+      "number": 2907,
+      "title": "kappa w690: heal registry drift \u2014 register 28 door/leaf pages, pin 1\u21920",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "3bfec5a0b61147f0e81b371ddf9e39a515f54817"
+      "head": "ba985a9d5a48aae7b6d7dd9018a770212ddbc397"
     }
   ]
 }

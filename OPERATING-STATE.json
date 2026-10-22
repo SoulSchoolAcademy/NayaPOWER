@@ -1,19 +1,21 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-22T02:25:28Z",
-  "tip": "7bd2253549048e457ae56e8148a0908e90f91f70",
-  "open_pr_count": 4,
+  "generated_at": "2026-10-22T03:25:10Z",
+  "tip": "f8235bc774341bfcf832cab2dd31e9ce6df671fb",
+  "open_pr_count": 5,
   "queue_by_tier_action": {
     "C": {
       "MERGE-NOW": 1
     },
     "B": {
       "MERGE-NOW": 1,
-      "CURE": 2
+      "CURE": 3
     }
   },
   "tip_failing_checks": [
+    "completeness",
     "door-obligation",
+    "fresh-lesson",
     "promote-and-prove",
     "resolve-current-truth",
     "test"
@@ -28,14 +30,14 @@
   },
   "laws": {
     "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
-    "iteration": 208,
+    "iteration": 210,
     "latest_laws": [
-      "L611",
-      "L612",
       "L613",
       "L614",
       "L615",
-      "L616"
+      "L616",
+      "L617",
+      "L618"
     ]
   },
   "hold_human": []
