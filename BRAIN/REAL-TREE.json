@@ -1,17 +1,17 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "d390730b3238aba8afa7da57cb89e24eeca8b565",
-  "inventory_file_count": 1534,
+  "receipt_basis_commit": "e7d6e717e465268a1eba9f4be7eb1b2f200001a3",
+  "inventory_file_count": 1541,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 89,
+    "01-GOVERNANCE": 90,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 772,
+    "05-MEMORY": 778,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -32,8 +32,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md",
-      "blob_sha": "a9cb59b94b12a841105daa2325874368ef125ac4",
-      "size": 11115
+      "blob_sha": "d7be8b89d508d6b19b54a856e3d611da44da7147",
+      "size": 11342
     },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md",
@@ -42,8 +42,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
-      "blob_sha": "0251439bb3cc0d5642a18b5fdbd7a8bffe004043",
-      "size": 17817
+      "blob_sha": "c646f57752cfdf72115475edd8afec6a8ce0afa9",
+      "size": 18336
     },
     {
       "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md",
@@ -57,8 +57,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md",
-      "blob_sha": "892f580946ac0a9ad80b195bd03fe56ee5d6adb5",
-      "size": 2702
+      "blob_sha": "944bd28661ece5d33e902c81105db722ad87201b",
+      "size": 2669
     },
     {
       "path": "BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md",
@@ -522,18 +522,18 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md",
-      "blob_sha": "929a5ae44a371fc007180f6a288dbeb183ebfff0",
-      "size": 20247
+      "blob_sha": "5f0b8cd798543a2c9d33a61ca7c491805b0b579b",
+      "size": 21387
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md",
-      "blob_sha": "f39c475071200e634d08f288e7c585b46820e8c2",
-      "size": 6877
+      "blob_sha": "6f1041679651f2676716a064de306a52a7c801b2",
+      "size": 7773
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json",
-      "blob_sha": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
-      "size": 18036
+      "blob_sha": "3ff258b9536213ba0cf20f34f9b505dea41f6ac7",
+      "size": 18564
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.ai.md",
@@ -551,6 +551,16 @@
       "size": 4001
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md",
+      "blob_sha": "5348d9b690b5ffd699974c26a5445e2bb02ff8ef",
+      "size": 87770
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json",
+      "blob_sha": "1eb26bef019bec131a7a9f29045e29d27529e2fd",
+      "size": 510210
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
       "blob_sha": "ea273ce3077d1e8be7001203d1c312d44c8e0d86",
       "size": 2633
@@ -562,18 +572,13 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json",
-      "blob_sha": "1cbaf0613176007ffde536522350e094d316ddc5",
-      "size": 15465
+      "blob_sha": "66f859ef04d366988d8a289d285809346ec37c57",
+      "size": 16111
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md",
       "blob_sha": "c58ef4864a38dd1eaaf820886a7c7a22aa593240",
       "size": 10500
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.json",
-      "blob_sha": "e4047b8721295a73255e71352053e847a00c721b",
-      "size": 32501
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
@@ -4289,6 +4294,36 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/verification/SN-0813/IB-SMART-NOTE-20261021-sn0813-nobodys-word-is-proof.md",
       "blob_sha": "9305a6b9cc9b35b7bfda1f4b8f606adf0a7c86a5",
       "size": 8565
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-0819/IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it.md",
+      "blob_sha": "6b63d8776308659152e64ed1060c9323fe64cf96",
+      "size": 5212
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-1790/IB-SMART-NOTE-20261022-sn1790-how-we-do-it-intelligent-blocks.md",
+      "blob_sha": "33330478a77d76c77558b5d18d2046c10b398abc",
+      "size": 10463
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md",
+      "blob_sha": "f11b2653d0081180819820d116e3e75b55357ecc",
+      "size": 5334
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/north-star/SN-1789/IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting.md",
+      "blob_sha": "813fc914d2bf72603e94bc0f076c9fc5a2f94536",
+      "size": 9185
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md",
+      "blob_sha": "0c2abb5d1f32e0adf67ad9771719e1cfb57dd97d",
+      "size": 6071
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md",
+      "blob_sha": "c46f0d01a5b214dc7fc158c365881698cb5cf2d5",
+      "size": 5916
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",

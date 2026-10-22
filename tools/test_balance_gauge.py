@@ -208,6 +208,59 @@ def test_feed_newest_empty():
     assert bg.feed_newest("<html>no notes</html>") == (None, 0)
 
 
+# --- guardian-log derived escape rate -----------------------------------------
+
+def _grec(ts, verdict, pr=42):
+    return {"v": 1, "law": "POST-MERGE-GUARDIAN-V1", "ts": ts,
+            "verdict": verdict, "pr": pr, "merge_sha": "abc123"}
+
+
+def test_guardian_stats_counts_escapes_in_window():
+    start = datetime(2026, 10, 15, tzinfo=UTC)
+    records = [
+        _grec("2026-10-21T10:00:00+00:00", "OK", pr=1),
+        _grec("2026-10-21T11:00:00+00:00", "ESCAPE", pr=2),
+        _grec("2026-10-21T12:00:00+00:00", "ESCAPE_ON_REVERT", pr=3),
+        _grec("2026-10-21T13:00:00+00:00", "PENDING", pr=4),
+    ]
+    stats = bg.guardian_escape_stats(records, start)
+    assert stats["records"] == 4
+    assert stats["escapes"] == 2
+    assert stats["escaped_prs"] == [2, 3]
+    assert stats["rate"] == 0.5
+
+
+def test_guardian_stats_excludes_pre_window_and_bad_ts():
+    start = datetime(2026, 10, 15, tzinfo=UTC)
+    records = [
+        _grec("2026-10-14T23:59:59+00:00", "ESCAPE", pr=9),   # before window
+        _grec("not-a-timestamp", "ESCAPE", pr=10),            # unparseable
+        {"verdict": "ESCAPE", "pr": 11},                      # missing ts
+        _grec("2026-10-20T00:00:00+00:00", "OK", pr=12),
+    ]
+    stats = bg.guardian_escape_stats(records, start)
+    assert stats["records"] == 1
+    assert stats["escapes"] == 0
+    assert stats["rate"] == 0.0
+
+
+def test_guardian_stats_no_records_rate_is_none():
+    start = datetime(2026, 10, 15, tzinfo=UTC)
+    stats = bg.guardian_escape_stats([], start)
+    assert stats["records"] == 0
+    assert stats["rate"] is None  # never 0% on zero verified landings
+
+
+def test_parse_guardian_log_skips_blanks_and_torn_lines():
+    text = ('{"ts": "2026-10-21T00:00:00+00:00", "verdict": "OK"}\n'
+            '\n'
+            '{"ts": "2026-10-21T01:00:00+00:00", "verdict": "ESCAPE"\n'  # torn
+            '{"ts": "2026-10-21T02:00:00+00:00", "verdict": "ESCAPE"}\n')
+    records = bg.parse_guardian_log(text)
+    assert len(records) == 2
+    assert records[1]["verdict"] == "ESCAPE"
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     for fn in fns:

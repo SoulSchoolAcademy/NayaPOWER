@@ -24,13 +24,12 @@
    "0030-VALUE-ONLY-BRAIN-V1.machine.json": "be5a34263f192d22d827201654356024e712829e",
    "0031-never-again-v1.machine.json": "1e58e3180215140ec7510f31658a8e34cce81a41",
    "0032-house-standard-v1.machine.json": "c1bb2ffa2f41ff49940ff0b218dc12cc0c9987bf",
-   "0033-the-balanced-machine-v1.machine.json": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
-   "0034-the-house-fire-law-v1.machine.json": "b26079232d91f5e8fe4a072c9cc019649826dd12",
-   "0035-design-law-ratification-v1.machine.json": "0992eb9c81c77fb639e99e6dbdc1c6e1247f61bc"
+   "0033-the-balanced-machine-v1.machine.json": "3ff258b9536213ba0cf20f34f9b505dea41f6ac7",
+   "0034-the-house-fire-law-v1.machine.json": "b26079232d91f5e8fe4a072c9cc019649826dd12"
   },
-  "source_fingerprint_sha256": "90ceb2150494e2df8f50e9093c176f9e9068a2c9d53cefc716045ead9be8cae7"
+  "source_fingerprint_sha256": "0e1131526bece98ef6cf8c41c21d1d6b6c04ee5f6fe6af6933d96a0c9611f066"
  },
- "law_count": 24,
+ "law_count": 23,
  "laws": [
   {
    "falsifier": null,
@@ -352,9 +351,9 @@
    "id": "GOV-0033",
    "number": "0033",
    "owner": "main seat (weekly gauge read); gate machinery owners (step 1); Shawn (step 7 governor click \u2014 executed 2026-10-21 ~22:34Z)",
-   "source_blob_sha": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
+   "source_blob_sha": "3ff258b9536213ba0cf20f34f9b505dea41f6ac7",
    "statement": "Value = quality x completion; gates protect and never block: work travels one of three doors matched to its blast radius (A full bar 9.5, B one unified paperwork gate at 8.0 with diff-hash freshness, C machine validation via the note door), and a weekly balance gauge tunes the bar on counted numbers.",
-   "status": "ratified_core_specified",
+   "status": "formally_ratified",
    "title": "THE BALANCED MACHINE",
    "tongues": {
     "ai": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md",
@@ -376,23 +375,8 @@
     "human": "BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.human.md",
     "machine": "BRAIN/01-GOVERNANCE/0034-the-house-fire-law-v1.machine.json"
    }
-  },
-  {
-   "falsifier": "Any MATCH row whose quoted byte is absent from blob 4b4060098b9ebbafd52c3d67c6668cd0d268f26a, or any CONFLICT row whose named value is absent and whose conflict is not a stated omission (rows 44-45), falsifies that row's verdict.",
-   "id": "GOV-0035",
-   "number": "0035",
-   "owner": null,
-   "source_blob_sha": "0992eb9c81c77fb639e99e6dbdc1c6e1247f61bc",
-   "statement": null,
-   "status": null,
-   "title": "0035-design-law-ratification-v1.machine.json",
-   "tongues": {
-    "ai": "BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.ai.md",
-    "human": "BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.human.md",
-    "machine": "BRAIN/01-GOVERNANCE/0035-design-law-ratification-v1.machine.json"
-   }
   }
  ],
  "schema": "naya/laws-delta/v1",
- "scope": "Numbered governance sets of BRAIN/01-GOVERNANCE/ that carry a machine tongue. Excludes AGENTS.md L-entries (seat-VM prose, no stable schema \u2014 parsing would be brittle) and OPERATING-LAW.json (2026-10-10 compilation, separate LAW-X01 scheme). Fields a source set does not carry are null, never invented."
+ "scope": "Numbered governance sets of BRAIN/01-GOVERNANCE/ that carry a machine tongue. Excludes AGENTS.md L-entries (compiled separately by tools/generate_daily_law_registry.py into DAILY-LAW-REGISTRY.machine.json, which folds this delta in) and OPERATING-LAW.json (2026-10-10 LAW-X01 compilation, retired 2026-10-22 by GT-010). Fields a source set does not carry are null, never invented."
 }
