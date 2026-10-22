@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T14:25:55Z",
-  "tip": "e8a10e0a4ba05eea4c0c0d8448e9362b6de62946",
+  "generated_at": "2026-10-22T15:24:59Z",
+  "tip": "f289672e78c2b314cbb76a6f08d8f7c273a58b88",
   "prs": [
     {
       "number": 2869,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "1ea98b6a945f3810ed59a13f0132b2a4fa41d55e"
+      "head": "993665ecea732d8cf326345e3f60480b14b99b85"
     },
     {
       "number": 2874,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "1417e42cd99e8bbe753fe7c72020c5e50f10b6e4"
+      "head": "9f173045d203d8e7749b04c80f55c3ea01cdc8bc"
     },
     {
       "number": 2907,
@@ -31,60 +31,6 @@
       "head": "ba985a9d5a48aae7b6d7dd9018a770212ddbc397"
     },
     {
-      "number": 2915,
-      "title": "Daily Intelligence 2026-10-22 \u2014 the night the lessons became orders",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "a683b6384c81adea98ae77e62cc9f18cdb81d547"
-    },
-    {
-      "number": 2916,
-      "title": "Smart Notes SN-1801 + SN-1802 \u2014 Awareness Is Ownership \u00b7 Answer Your Own Questions",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "24e0b5b9b457c4efb88a700879c1d9f5c372a5da"
-    },
-    {
-      "number": 2919,
-      "title": "Fix materialize-template tests under repo-root pytest \u2014 file-relative fixture paths (BUILD)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): inventory; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "38ed88b0a34ffc0a01796a1e23411efa5ab9cd2f"
-    },
-    {
-      "number": 2920,
-      "title": "Fix learning-promotion config test \u2014 expect nayanet-github-intake (BUILD 06:30)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "2476da27fa3996ac762ec30d8cca088061ea1999"
-    },
-    {
-      "number": 2922,
-      "title": "Fix cold-start Step-0 admission fixture \u2014 q4 answer 9.0 \u2192 9.5 (BUILD 07:00)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "45b4c43df52d452ed49ac180554ce5593460fcbd"
-    },
-    {
-      "number": 2924,
-      "title": "Fix auto-brain test law count \u2014 18 \u2192 23, ratified operationalization count (BUILD 07:30)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "e406122c0ba4b6209d7e5f23fae6b59782b0509e"
-    },
-    {
       "number": 2925,
       "title": "Brain-index regen at basis 51902fc7 \u2014 covers the 13 Daily Intelligence editions (#2917)",
       "tier": "C",
@@ -92,24 +38,6 @@
       "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
       "owner": "dock",
       "head": "ee98f37be218f63624c8d94fe5a950224517588f"
-    },
-    {
-      "number": 2926,
-      "title": "MISSION-STATE.json twin \u2014 mission state as data (Mirror A2 step 3)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "2ca18ccb8737549880ea59998aaf25adde7dd945"
-    },
-    {
-      "number": 2927,
-      "title": "A2 step 2: tongue triplets for both activation trees (57 works)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "8bd2f46883b006d3cd1816bf56889722c89ce6ff"
     }
   ]
 }
