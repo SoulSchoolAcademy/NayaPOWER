@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T01:26:25Z",
-  "tip": "0e9df7be89ed191bae302f18c1a1592a8495299f",
+  "generated_at": "2026-10-22T02:25:28Z",
+  "tip": "7bd2253549048e457ae56e8148a0908e90f91f70",
   "prs": [
     {
       "number": 2869,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "692153d415f99a198eb2b6c23a497aca786e7cb5"
+      "head": "56b87718b259ef741e291cf041a4d9e38cf797b3"
     },
     {
       "number": 2874,
@@ -19,79 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "754060a120a3cac0b2c7d84f9a7acf35aff67f34"
-    },
-    {
-      "number": 2886,
-      "title": "feat(protocol): pin-drift alarm \u2014 PROTOCOL.md moves without a re-pin now ring the bell",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "b370ae436a15a511f341e1f4ac4aafbab24841dd"
-    },
-    {
-      "number": 2887,
-      "title": "gauge: derive the escape rate from the guardian log (metric c2)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "04d1ded766694e2b17dcbd3080645e9411d9a1a1"
-    },
-    {
-      "number": 2888,
-      "title": "Factory: checkable standard-feature contracts + checker + R1b direct-build door cure",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "808c706917f02c21bc5b434467173277e9b337d7"
-    },
-    {
-      "number": 2890,
-      "title": "Learning Loop v1 \u2014 declared-change extractor, battery-per-lesson, sampler wake-up (Lane E)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "c845f426b1ec8ee05d61b465a015357cef7780cb"
-    },
-    {
-      "number": 2891,
-      "title": "Learning scorecard v2 \u2014 repo home + format repair + drift alarm (Lane E)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "f75986a0302151eab5582714c99c2f85161de5ce"
-    },
-    {
-      "number": 2892,
-      "title": "GT-070: 0035 Design-Law Ratification \u2014 PR #2742 verified vs Shawn's standard (47 MATCH ratified / 12 CONFLICT excluded)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "5a91b9603ea222fb433cfe834057a5a7ed90b23f"
-    },
-    {
-      "number": 2893,
-      "title": "GT-068: ratify live board #2793 in the boot bytes (successor to #2728)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "e667ef9c4bd2fe730b41e4508c4215c997c86388"
-    },
-    {
-      "number": 2896,
-      "title": "GT-067: 0033 Balanced Machine \u2014 formal ratification recorded (Tier B floor 8.0 confirmed)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "c7b1943288ff65f99a4fb93a23129ee0239d8c9b"
+      "head": "450291ed355f733db99d40aaa4def7a08c79dd28"
     },
     {
       "number": 2898,
@@ -103,22 +31,13 @@
       "head": "fc025854d8002c9e534a022859ffe42425299f18"
     },
     {
-      "number": 2899,
-      "title": "Smart Note SN-1789 \u2014 The Night the Catch Held: We Celebrate by Noting (celebration practice #1)",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "98c4686a41a9860efc3fe1c76be82871dba985c6"
-    },
-    {
-      "number": 2902,
-      "title": "Index cure: brain index regenerated at tip \u2014 SN-1790 page enumerated (follow-up to #2901)",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "5a72fb662525f695b8e3d05f31a2207bb0a6c387"
+      "number": 2904,
+      "title": "Kernel Tests cure: smart_builder test_assemble loads its sibling assembler by explicit path (no sys.modules shadowing)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): inventory; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "3bfec5a0b61147f0e81b371ddf9e39a515f54817"
     }
   ]
 }
