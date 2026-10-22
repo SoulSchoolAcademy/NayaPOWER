@@ -6,7 +6,7 @@ from materialize_template import materialize
 class TemplateMaterializerTests(unittest.TestCase):
     def setUp(self):
         self.catalog = json.loads(open("../../HUB/contracts/smart-builder-template-catalog-v1.json", encoding="utf-8").read())
-        self.manifest = json.loads(open("../../.library-source/smart-blocks/manifest.json", encoding="utf-8").read())
+        self.manifest = json.loads(open("../../smart-blocks/manifest.json", encoding="utf-8").read())
 
     def test_twelve_templates_exist_and_all_ids_resolve(self):
         self.assertEqual(len(self.catalog["templates"]), 12)
