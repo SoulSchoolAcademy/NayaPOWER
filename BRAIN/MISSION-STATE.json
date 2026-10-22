@@ -5,7 +5,7 @@
   "kind": "mission-state-twin",
   "generator": "tools/build_mission_state.py",
   "twin_of": "BRAIN/CURRENT-MISSION-STATE.md",
-  "generated_utc": "2026-10-22T20:45:55Z"
+  "generated_utc": "2026-10-22T21:23:04Z"
  },
  "snapshot": {
   "last_verified_utc": "2026-10-22T20:15:00Z",
@@ -150,10 +150,9 @@
     2934,
     2937,
     2939,
-    2940,
     2945,
-    2949,
-    2950
+    2950,
+    2951
    ]
   },
   "pointers": [
@@ -176,23 +175,22 @@
   ]
  },
  "live": {
-  "derived_utc": "2026-10-22T20:45:55Z",
+  "derived_utc": "2026-10-22T21:23:04Z",
   "main_tip": "dcaa09e8bb104c64057eec519531d7da0d74f402",
-  "open_pr_count": 9,
+  "open_pr_count": 8,
   "open_prs": [
    2869,
    2907,
    2934,
    2937,
    2939,
-   2940,
    2945,
-   2949,
-   2950
+   2950,
+   2951
   ],
   "board": {
    "issue": 2793,
-   "comments": 1560
+   "comments": 1575
   }
  },
  "sources": [
