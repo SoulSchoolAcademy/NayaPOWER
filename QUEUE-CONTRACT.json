@@ -1,6 +1,6 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T16:25:36Z",
+  "generated_at": "2026-10-22T17:24:46Z",
   "tip": "3826b69997399eb95708b9fec73cfee356966c81",
   "prs": [
     {
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "9e8acf4f61319cff244247fa7c6a57bc76aede66"
+      "head": "500453235e1dbefa2ecfe5a66772af1efccc01d8"
     },
     {
       "number": 2874,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "c7de0a17e98dab8f54a1dfe86565e411f0dd0241"
+      "head": "877385be9c3e8e433d43b0608b0bee285f5df405"
     },
     {
       "number": 2907,
@@ -31,22 +31,13 @@
       "head": "ba985a9d5a48aae7b6d7dd9018a770212ddbc397"
     },
     {
-      "number": 2925,
-      "title": "Brain-index regen at basis 51902fc7 \u2014 covers the 13 Daily Intelligence editions (#2917)",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "ee98f37be218f63624c8d94fe5a950224517588f"
-    },
-    {
       "number": 2934,
       "title": "Mission-state twin cure \u2014 director ruling Option C (TOP-10 director-stated, register machine-derived, format bends)",
       "tier": "B",
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "a89e703e995f0543049494f458aabbcd01b2a963"
+      "head": "88af7f60f4d99bd439c343cda3ca3ba98b634fb2"
     },
     {
       "number": 2936,
@@ -55,7 +46,25 @@
       "action": "CURE",
       "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Receipt pin \u2014 exact head SHA, Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, brain-index-freshness, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
       "owner": "author lane",
-      "head": "57f011562ff9362073bd7310754bbbc40aeafd04"
+      "head": "854279c00b84dcf13691e9733e1dee1eddcdbe74"
+    },
+    {
+      "number": 2937,
+      "title": "P0: fail-closed v7 registry identity reconciliation and orphan controls",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "ead8c4d9434558d9f1a770630116633d0f89d697"
+    },
+    {
+      "number": 2938,
+      "title": "Tier A \u2014 Gate trigger-scope repair: board comments stop spawning gate runs (issue_comment \u2192 deliberate workflow_dispatch re-fire)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "9d9ab4253b23877d352689b921e2c947ead2cff3"
     }
   ]
 }
