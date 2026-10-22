@@ -1626,13 +1626,11 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
             if name == "smart-note.md":
                 # The v7 projection is identified by the exact IB directory,
                 # but must also have independently verified transaction evidence.
-                if p.parent.name in verified_v7 or p.parent.name in known_ib_ids:
+                if p.parent.name in verified_v7:
                     continue
-            elif p.parent.name.startswith("IB-") and (root / p.parent / "smart-note.md").is_file():
-                # Companion documentation is not automatically a Smart Note.
-                # Only the canonical smart-note.md is assessed as a v7 projection.
-                # A standalone Markdown orphan outside this shape still fails.
-                continue
+            # A sibling document is not automatically trusted as a companion.
+            # It must be explicitly classified by a future authenticated
+            # artifact contract; until then unknown Markdown fails closed.
             unregistered_paths.append(rel)
         if unregistered_paths:
             defects["published_pages_without_registry_entry"].append(
