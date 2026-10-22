@@ -367,12 +367,17 @@ def _looks_like_scorecard(body, head_sha):
     a newer one — so it is never relaxed. The 9.5 bound is the law
     (P-012: below 9.5 is zero acceptance); the dock adjudicates it, and the
     gate's shape check refuses to be looser than the law it gates for."""
-    low = (body or "").lower()
+    # Blockquote paragraphs are mentions, not the commenter's own receipt
+    # (same doctrine as the review leg, #2877): a quoted scorecard whose
+    # score/seat lines sit inside `>` lines must not satisfy this leg just
+    # because an unquoted `head:` line names the exact head (mixed form).
+    text = _strip_blockquotes(body or "")
+    low = text.lower()
     if "scorecard" not in low and "verdict" not in low:
         return False
-    if scorecard_head_of(body) != (head_sha or "").lower():
+    if scorecard_head_of(text) != (head_sha or "").lower():
         return False
-    score = _score_of(body)
+    score = _score_of(text)
     return score is not None and 9.5 <= score <= 10
 
 
@@ -430,7 +435,9 @@ def run_gate(token, repo, pr_number, head_sha):
         body = c.get("body") or ""
         if not _looks_like_scorecard(body, head_sha):
             continue
-        s = seat_of(body)
+        # Seat attribution runs on the blockquote-stripped text, exactly as
+        # the review leg above: a quoted seat is a mention, never the scorer.
+        s = seat_of(_strip_blockquotes(body))
         if s and s != author_seat:
             scorer_seat = s
             break
@@ -461,14 +468,15 @@ def self_test_scorecard(path, head_sha):
         fail(f"SCORECARD SELF-TEST FAILED: cannot read {path}: {e}")
     except UnicodeDecodeError as e:
         fail(f"SCORECARD SELF-TEST FAILED: {path} is not UTF-8 text: {e}")
-    low = body.lower()
+    stripped = _strip_blockquotes(body)
+    low = stripped.lower()
     has_keyword = "scorecard" in low or "verdict" in low
-    has_sha = head_sha in body
+    has_sha = head_sha in stripped
     approved = bool(re.search(r"merge\s*:\s*approved|merge\s+recommended",
                               low))
-    score = _score_of(body)
+    score = _score_of(stripped)
     passes = _looks_like_scorecard(body, head_sha)
-    seat = seat_of(body)
+    seat = seat_of(stripped)
     lines = [
         f"keyword scorecard/verdict: {'yes' if has_keyword else 'MISSING'}",
         f"names exact head sha {head_sha[:10]}: "

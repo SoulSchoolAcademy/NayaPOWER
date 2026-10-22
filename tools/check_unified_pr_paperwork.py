@@ -146,7 +146,11 @@ def compute_diff_fingerprint(files: list[dict]) -> str | None:
 def _scorecard_for_current_head(comments: list[dict], head: str,
                                 author_seat: str, minimum: float, *, tier: str = "A", diff_hash: str | None = None) -> tuple[bool, str]:
     for comment in comments:
-        body = comment.get("body") or ""
+        # Blockquoted paragraphs are mentions, not the commenter's own
+        # receipt: evaluate the stripped body so a quoted scorecard cannot
+        # satisfy this leg via an unquoted head field (mixed form, #2877
+        # scorecard cure). Genuine plain-text scorecards are unaffected.
+        body = consensus._strip_blockquotes(comment.get("body") or "")
         low = body.lower()
         # Require a parsed head field, not a SHA mentioned anywhere in prose.
         # Seat is an explicit declaration; the repo currently does not
