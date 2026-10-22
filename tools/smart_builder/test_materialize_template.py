@@ -1,12 +1,16 @@
 import json
 import unittest
+from pathlib import Path
+
 from materialize_template import materialize
+
+ROOT = Path(__file__).resolve().parents[2]
 
 
 class TemplateMaterializerTests(unittest.TestCase):
     def setUp(self):
-        self.catalog = json.loads(open("../../HUB/contracts/smart-builder-template-catalog-v1.json", encoding="utf-8").read())
-        self.manifest = json.loads(open("../../smart-blocks/manifest.json", encoding="utf-8").read())
+        self.catalog = json.loads((ROOT / "HUB/contracts/smart-builder-template-catalog-v1.json").read_text(encoding="utf-8"))
+        self.manifest = json.loads((ROOT / "smart-blocks/manifest.json").read_text(encoding="utf-8"))
 
     def test_twelve_templates_exist_and_all_ids_resolve(self):
         self.assertEqual(len(self.catalog["templates"]), 12)
