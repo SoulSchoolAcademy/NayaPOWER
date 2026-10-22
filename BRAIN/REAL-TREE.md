@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-22  
-**Receipt basis commit:** `f7bd39ca75027b3d90d2a983dad3c623215863a3`  
-**Inventory file count:** 1564  
+**Receipt basis commit:** `f289672e78c2b314cbb76a6f08d8f7c273a58b88`  
+**Inventory file count:** 1580  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 796 |
+| 05-MEMORY | 800 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -31,13 +31,25 @@
 
 ### 00-ACTIVATION — (unregistered domain)
 
+- `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.ai.md` — `12ae7e15f71d` (5562 bytes)
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
+- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.ai.md` — `4df5d3e2d577` (5642 bytes)
 - `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `d7be8b89d508` (11342 bytes)
+- `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.ai.md` — `b6625c7713eb` (3707 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
+- `BRAIN/00-ACTIVATION/READ-ME-FIRST.ai.md` — `0cfdd44eb021` (12454 bytes)
 - `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `c646f57752cf` (18336 bytes)
+- `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.ai.md` — `c074423b64b6` (2248 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `6543873fee80` (2185 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
+- `BRAIN/00-ACTIVATION/activation-checklist.machine.json` — `bb5245a637d8` (3513 bytes)
+- `BRAIN/00-ACTIVATION/activation-packet.machine.json` — `ac3de67735a5` (3588 bytes)
+- `BRAIN/00-ACTIVATION/design-activation.machine.json` — `79c288d65adf` (3080 bytes)
+- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.ai.md` — `44a2f7d09c27` (2151 bytes)
 - `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `944bd28661ec` (2669 bytes)
+- `BRAIN/00-ACTIVATION/instant-activation/the-creed.machine.json` — `85b43667e8a1` (2456 bytes)
+- `BRAIN/00-ACTIVATION/read-me-first.machine.json` — `c2818c00d389` (6005 bytes)
+- `BRAIN/00-ACTIVATION/the-code-she-lives-by.machine.json` — `770d9d0f2af4` (2300 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
 - `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` — `70774bbfa1e0` (24076 bytes)
@@ -247,6 +259,7 @@
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-19-LEARNING-EVENT.md` — `ab39346c983d` (12130 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-20-LEARNING-EVENT.md` — `13f5695b87d5` (11908 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-21-LEARNING-EVENT.md` — `a5a81b54c3fd` (15189 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-22-LEARNING-EVENT.md` — `e57cf10ffba9` (16821 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md` — `cb3d277c8117` (2359 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md` — `9a102af87000` (2091 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md` — `ef4f22f9e3c1` (2239 bytes)
@@ -891,6 +904,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-behavior-declaration/IB-000039/smart-note.md` — `ef673299495a` (8875 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-naya-process/IB-000045/smart-note.md` — `898c682e1d1e` (13570 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-naya-tool/IB-000044/smart-note.md` — `4decfb1367a6` (9309 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-naya-tool/IB-000044/the-naya-tool-set.md` — `efcde7ea9f80` (42239 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-oath-of/IB-000040/smart-note.md` — `89a7bd75f38b` (7912 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-oath-of/IB-000041/smart-note.md` — `f15207e35d8a` (10255 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/the-reservoir/IB-000051/smart-note.md` — `ac6d7a78d3d9` (12395 bytes)
@@ -921,7 +935,9 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/living-data/SN-0822/IB-SMART-NOTE-20261022-sn0822-a-number-in-a-box-is-not-a-report.md` — `f72b50043363` (3618 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/orb-circle-system/SN-0823/IB-SMART-NOTE-20261022-sn0823-seven-circles-for-seven-days.md` — `7f6994c38c00` (6324 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md` — `f11b2653d008` (5334 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/awareness-ownership/SN-1801/IB-SMART-NOTE-20261022-sn1801-awareness-is-ownership.md` — `71b81c10a882` (5180 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-0821/IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter.md` — `55c46441cbad` (5276 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-1802/IB-SMART-NOTE-20261022-sn1802-answer-your-own-questions.md` — `c0ddf0eceb2e` (6162 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/north-star/SN-1789/IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting.md` — `813fc914d2bf` (9185 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md` — `0c2abb5d1f32` (6071 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md` — `c46f0d01a5b2` (5916 bytes)
@@ -1622,7 +1638,7 @@
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/CURRENT-MISSION-STATE.md` — `426c2e3301df` (7284 bytes)
+- `BRAIN/CURRENT-MISSION-STATE.md` — `8d9ecdc1cc98` (5080 bytes)
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
 - `BRAIN/MISSION-STATE.json` — `1354672ee7d6` (8461 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
