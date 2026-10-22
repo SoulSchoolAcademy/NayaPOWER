@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-22  
-**Receipt basis commit:** `d390730b3238aba8afa7da57cb89e24eeca8b565`  
-**Inventory file count:** 1534  
+**Receipt basis commit:** `f5ec9ac79f6b2e42e482e9dfc74f82e778bca61c`  
+**Inventory file count:** 1536  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 772 |
+| 05-MEMORY | 774 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -32,12 +32,12 @@
 ### 00-ACTIVATION — (unregistered domain)
 
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
-- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `a9cb59b94b12` (11115 bytes)
+- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `54ab3e0a9e96` (11342 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
-- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `0251439bb3cc` (17817 bytes)
+- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `65ee8282cdd2` (18213 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `6543873fee80` (2185 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
-- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `892f580946ac` (2702 bytes)
+- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `944bd28661ec` (2669 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
 - `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` — `70774bbfa1e0` (24076 bytes)
@@ -898,6 +898,8 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/system-map/SN-1769/IB-SMART-NOTE-20261021-sn1769-the-whole-system-in-simple-words.md` — `2d2d389ed13f` (13446 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/testing/SN-1785/IB-SMART-NOTE-20261021-sn1785-hermetic-must-be-unconditional-poisoned-home-probe.md` — `18c1608d310c` (6647 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/verification/SN-0813/IB-SMART-NOTE-20261021-sn0813-nobodys-word-is-proof.md` — `9305a6b9cc9b` (8565 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md` — `0c2abb5d1f32` (6071 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md` — `c46f0d01a5b2` (5916 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
