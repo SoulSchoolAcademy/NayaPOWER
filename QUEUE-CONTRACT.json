@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T20:28:58Z",
-  "tip": "3a1b6fbd22ed42725b354a74ef95c29c3950ce9a",
+  "generated_at": "2026-10-22T21:25:16Z",
+  "tip": "dcaa09e8bb104c64057eec519531d7da0d74f402",
   "prs": [
     {
       "number": 2869,
@@ -26,9 +26,9 @@
       "title": "Mission-state twin cure \u2014 director ruling Option C (TOP-10 director-stated, register machine-derived, format bends)",
       "tier": "B",
       "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "63beece4e6ce159b09b0a466276801a81e35db5c"
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "b12494e8faa0fdd441e71e19c4135832e65cb58c"
     },
     {
       "number": 2937,
@@ -37,7 +37,7 @@
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "24355c41b9186c8a54524c71aa531e5218fbfd8c"
+      "head": "8ff9d3e7dc8fb192ce00c3f234926a64bb86661a"
     },
     {
       "number": 2939,
@@ -49,31 +49,31 @@
       "head": "29b4c15251b983adbc2e4aaa1b1d4fe277768428"
     },
     {
-      "number": 2940,
-      "title": "canon: S8 flagship-dialect label follows the smart-app language law",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "c1e57ac5a6976ff97cd83b398c2380cd5c6052b6"
-    },
-    {
       "number": 2945,
       "title": "Smart Links: data foundation + redirect worker + join attribution (Best-of-Best #3, Phase 0 step 1)",
       "tier": "A",
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): safety-grant-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "f4ca7200886a02b01908b1c50eb0c8181cddde17"
+      "head": "c69a220107d0979a49d32d3b1b27d54067776f75"
     },
     {
-      "number": 2946,
-      "title": "Per-person timeline read model: identity registry + unified event stream (Best-of-Best #1, Phase 0 step 2)",
+      "number": 2950,
+      "title": "Naya2/team dashboard",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "a8ecf97b58a90729a9a5039e06f8ee1582f28566"
+    },
+    {
+      "number": 2951,
+      "title": "Factory Step 2: machine twin of the ratified Design Contract (generator + generated twin + validator check 9)",
       "tier": "A",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): chain-readiness-gate; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "b5145e38513738f09300f0ef28c2de5c15bb9ef4"
+      "head": "a1ee248a4fbf313d7f13ddad7698968d876deb9b"
     }
   ]
 }
