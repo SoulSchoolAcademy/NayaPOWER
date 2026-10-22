@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-22T09:25:10Z",
-  "tip": "c3af05fdf3c663f64db09267deac9a0e4030cf2f",
+  "generated_at": "2026-10-22T10:26:05Z",
+  "tip": "f7bd39ca75027b3d90d2a983dad3c623215863a3",
   "open_pr_count": 10,
   "queue_by_tier_action": {
     "C": {
@@ -27,14 +27,14 @@
   },
   "laws": {
     "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
-    "iteration": 216,
+    "iteration": 217,
     "latest_laws": [
-      "L622",
       "L623",
       "L624",
       "L625",
       "L626",
-      "L627"
+      "L627",
+      "L628"
     ]
   },
   "hold_human": []
