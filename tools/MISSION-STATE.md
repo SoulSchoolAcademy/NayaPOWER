@@ -15,12 +15,37 @@ director published, anchored to its last-verified instant) vs `live`
 (what is true at derivation time) — with per-section provenance in
 `sources`.
 
+**Fact ownership (director ruling 2026-10-22, Option C — judgment stays
+human, mechanics go to the machine, format bends to the human).**
+
+- **TOP-10 = director-stated.** The standing TOP-10 is a ranked judgment;
+  it exists in no other source as data, so the snapshot MUST carry the
+  `**TOP-10 re-ranked:**` line. It is a standing element of every snapshot
+  refresh — re-ranked, never shed.
+- **The open-PRs register = machine-derived.** `snapshot.key_numbers.
+  open_prs_register` is derived by the emitter at emit time from the live
+  open-PR list (`GET /pulls?state=open`, paginated) — the same derivation
+  that fills the twin's `live` block. It is never stated in the snapshot's
+  prose (a hand-stated register rots: it once remembered a 3-register
+  while reality was 12). If the live list is unreachable at emit time,
+  emit fails loudly with a MISSING/CURE line — it never guesses and never
+  falls back to prose. `--no-live` therefore fails on the register
+  instead of writing a twin.
+- **Accepted stated forms** (the parser accepts the snapshot's natural
+  forms): a `**Last verified:**` timestamp with or without seconds
+  (seconds-less is normalized to `:00`); `**TIP STATIC** \`<sha>\``
+  alongside `**TIP MOVED** \`<from>\` → \`<to>\`` (a static tip parses as
+  from == to); and the board delta stated as `+N ids since watermark W`
+  alongside `+N since watermark W`.
+
 **The drift check.** `tools/check_mission_state_drift.py` re-derives the
 snapshot facts from the .md and FAILS (exit 1, one line per drifted field
 with the cure) if the committed twin disagrees on any shared fact; it also
 schema-validates the twin and enforces the venue scrub (the twin names
-the live board only — retired venue 2765 never appears). `--live`
-additionally compares the twin's live block against a fresh derivation.
+the live board only — retired venue 2765 never appears). The register is
+not a shared .md fact, so the offline walk skips it; `--live`
+additionally compares the twin's live block against a fresh derivation
+and the register against the fresh open-PR list.
 
 ```sh
 python3 tools/build_mission_state.py emit          # regenerate the twin

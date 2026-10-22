@@ -79,8 +79,14 @@ def run_check(md_path: Path, json_path: Path, live: bool = False) -> tuple[int, 
     except bms.SnapshotError as exc:
         return 2, lines + [f"UNPARSEABLE SNAPSHOT: {exc}"]
 
+    # snapshot.key_numbers.open_prs_register is machine-derived at emit
+    # time (director ruling 2026-10-22, Option C) — it is not a fact the
+    # .md states, so it is not a shared fact for the offline pair walk.
+    # The --live branch below compares it against a fresh derivation.
+    twin_snap = json.loads(json.dumps(twin.get("snapshot", {})))
+    twin_snap.get("key_numbers", {}).pop("open_prs_register", None)
     drift: list[str] = []
-    _walk(derived, twin.get("snapshot", {}), "snapshot", drift)
+    _walk(derived, twin_snap, "snapshot", drift)
     lines.extend(drift)
 
     if live:
@@ -94,6 +100,10 @@ def run_check(md_path: Path, json_path: Path, live: bool = False) -> tuple[int, 
             fresh_cmp = {k: v for k, v in fresh.items() if k != "derived_utc"}
             _walk(fresh_cmp, recorded, "live", live_drift)
             lines.extend(live_drift)
+            register = twin.get("snapshot", {}).get("key_numbers", {}).get("open_prs_register")
+            if register != fresh["open_prs"]:
+                lines.append(f"DRIFT: snapshot.key_numbers.open_prs_register — twin: {register!r} "
+                             f"vs fresh live list: {fresh['open_prs']!r} — CURE: {CURE}")
             if not live_drift:
                 lines.append(f"LIVE OK: live block matches a fresh derivation "
                              f"(tip {fresh['main_tip'][:12]}, {fresh['open_pr_count']} open PRs, "

@@ -5,14 +5,14 @@
   "kind": "mission-state-twin",
   "generator": "tools/build_mission_state.py",
   "twin_of": "BRAIN/CURRENT-MISSION-STATE.md",
-  "generated_utc": "2026-10-22T10:42:48Z"
+  "generated_utc": "2026-10-22T21:23:04Z"
  },
  "snapshot": {
-  "last_verified_utc": "2026-10-22T02:56:00Z",
-  "main_tip": "6269864218b1865f5ed4ce69ef30559584f4f3e3",
+  "last_verified_utc": "2026-10-22T20:15:00Z",
+  "main_tip": "4b49c86662203d6cbde266cbba1778cbe42dd620",
   "tip_moved": {
-   "from": "7bd2253549048e457ae56e8148a0908e90f91f70",
-   "to": "6269864218b1865f5ed4ce69ef30559584f4f3e3"
+   "from": "91e2de5dcda5e6567dd2758c06a38b07223b88b7",
+   "to": "4b49c86662203d6cbde266cbba1778cbe42dd620"
   },
   "identity": {
    "repo": "SoulSchoolAcademy/NayaPOWER",
@@ -22,94 +22,94 @@
   "standing_top10": [
    {
     "rank": 1,
-    "headline": "ESSENCE POSTURE — CORRECTED (his verified 18:25 correction, 2026-10-21)",
+    "headline": "THE 100% ALIGNMENT CHARGE",
     "carried": false,
-    "detail": "[ESSENCE POSTURE — CORRECTED (his verified 18:25 correction, 2026-10-21)] Smart Notes ARE essence; the wall carries Smart Notes — 353 rows = 71 SUPER + 282 Smart Notes (verified 19:35 PDT); the essence-blocking trigger is RETIRED — do NOT reinstall; SN-1795 (2026-10-22): a retired guard stays retired by WATCHING, not by remembering — any reinstall is unauthorized until his word says otherwise. hub-sync systemd unit is DOWN — do NOT auto-reinstall (double-mint risk; Nitro re-enabled a sync cron; single-writer design = open board question). The 01:13Z \"lock the channel + restore the feed\" ruling is CLAIMED (bot comment 6331028474), never verified in his bytes — never cite as authority."
+    "detail": "THE 100% ALIGNMENT CHARGE — IN FLIGHT: Shawn's charge (2026-10-21 ~02:21Z) — get us 100% aligned, don't stop, don't cut corners, finish what we start; the alignment audit scored 53% and W1–W8 are the only road; W2 judge + W5 interim cure dispatched in wave w639."
    },
    {
     "rank": 2,
-    "headline": "MERGE QUALITY — new live failure class",
+    "headline": "SHAWN'S COMPLETION RULING",
     "carried": false,
-    "detail": "[MERGE QUALITY — new live failure class] #2904 merged 02:41:20Z CLEAN (different-seat exact-head 9.5/10, author-did-not-merge). Dock: 7 merges landed RED CI (01:32-01:42Z) — scorecard ≠ green CI; merge-law condition 1 is its own check, and merges #2893/#2892/#2891 proved ≥9.5 scorecards do not catch it. CI verdicts now attached at each merge commit. WP-205 cures owed: #2888, #2890, #2895/#2897 — owner: next VERIFY batch."
+    "detail": "SHAWN'S COMPLETION RULING — STANDING ORDER (2026-10-21 ~01:15Z): what should be done must be done — every remaining PR finished to 9+ through the full bar, or closed with its reason on its page; nothing sits."
    },
    {
     "rank": 3,
-    "headline": "BUILDER RELAY — DRAINED",
+    "headline": "STEWARDSHIP REGISTER ADOPTED",
     "carried": false,
-    "detail": "[BUILDER RELAY — DRAINED] #2904 Kernel Tests collection cure SCORED (Resolve VERIFY 9.5/10) and MERGED — collection exit 0, 5,328 tests; the 15 newly-visible failures → their owning lanes, no bulk-poaching."
+    "detail": "STEWARDSHIP REGISTER ADOPTED — DONE (2026-10-21 ~01:05Z): one canonical register; C/I/D numbering governs; 20 bottlenecks — 4 cleared / 11 in flight / 5 prepared decisions; Bottleneck Zero, the judge, landed as #2585."
    },
    {
     "rank": 4,
-    "headline": "SECURITY P0 — Shawn's word needed",
+    "headline": "FLOW AUDIT",
     "carried": false,
-    "detail": "[SECURITY P0 — Shawn's word needed] close the anon mutation path on hub_smart_notes_archive + distillation_queue (#2823 design task — no blunt lock, his 10:05 PDT flow-over-security word)."
+    "detail": "FLOW AUDIT — IN FLIGHT: Shawn's charge ~00:46Z — 11 blockages with owners and a clear order, now governed by the stewardship register."
    },
    {
     "rank": 5,
-    "headline": "DRIVE",
+    "headline": "CI RED @649b3e3f",
     "carried": false,
-    "detail": "[DRIVE] open PRs register = 3 (#2898, #2874, #2869; #2904 drained this tick) — drain toward single digits continues."
+    "detail": "CI RED @649b3e3f — OPEN as the board states it: test + promote-and-prove FAILURE at that tip; completeness unlisted there — not red, not green, not verdicted; verdict the latest runs per name, never a stale read."
    },
    {
     "rank": 6,
-    "headline": "BULLSEYE LIST — his directive ~00:12Z",
+    "headline": "L568 EVENT — DIRECT PUSH TO MAIN",
     "carried": false,
-    "detail": "[BULLSEYE LIST — his directive ~00:12Z] (6329539084): the Mirror Report is now the to-do list — \"go get it done, one after another, at a 10/10 level\"."
+    "detail": "L568 EVENT — DIRECT PUSH TO MAIN — RECORDED, NOT ADJUDICATED: the SN-0808 series — 3 single-parent direct pushes by nayapower-lane-agent[bot], 0 associated PRs; the open question is identity — is the bot the granted App identity; adjudication is main-seat-owned, zero poach."
    },
    {
     "rank": 7,
-    "headline": "NAMED FAILURE MODES — new",
+    "headline": "SN-collision adjudicated",
     "carried": false,
-    "detail": "[NAMED FAILURE MODES — new] RED-CI-MERGE (scorecard ≠ green CI — merge-law condition 1 is its own check; read CI at the merge commit, never stale merged-head reads); COMPARE-API-CONTRADICTION (contradictory counts on the identical SHA pair — never quote compare-API commit counts as verified); BACKGROUND-COMPARE-CARRY (no number enters a record until the terminal output is read in full); PHANTOM-RECEIPT (receipts are read back, never quoted)."
+    "detail": "SN-collision adjudicated — DONE: first-claim SN-033 — main seat's claims stand, the dock renumbers via corrective PR; canonical landings travel by PR only; #1130 reopened with exemption annotation — standing human-decision items are exempt by identity, not age."
    },
    {
     "rank": 8,
-    "headline": "LESSON LAW — standing",
+    "headline": "0031 NEVER AGAIN filed (PR #2822)",
     "carried": false,
-    "detail": "[LESSON LAW — standing] SN-1787/SN-1788 landed; his 600→4 lesson (make sure your actions go through AND get verified); SN-0821 + SN-0822 door-landed this window; SN-1795 essence-trigger posture landed 2026-10-22."
+    "detail": "0031 NEVER AGAIN filed (PR #2822) — DONE: 7 reservoir laws, the count owned by name — GREEN under 50 / AMBER 50–100 / RED over 100, reservoir GREEN at 39; 0032 THE HOUSE STANDARD posted for every Naya to read; cadence reform, worker lanes 10 min to 30 min; CLEAN-HOME campaign finished — all 244 issues carry a disposition, the living set only."
    },
    {
     "rank": 9,
-    "headline": "WATCH",
-    "carried": false,
-    "detail": "[WATCH] pin-drift alarm landed (#2886) — WIRE post-landing violation-proof DONE; residual: no workflow calls --drift-alarm yet."
+    "headline": "#2925 BRAIN-INDEX REGEN — the lead remaining landing",
+    "carried": true,
+    "detail": "[carried] #2925 BRAIN-INDEX REGEN — the lead remaining landing — CARRIED from the board LATEST line (15:31Z): the L627 cure-route landing decision sits with dock/main seat; the freshness check must be re-derived at landing."
    },
    {
     "rank": 10,
-    "headline": "PROVE-IT 105 by 2026-10-23 00:30Z; drain fix-or-close 2026-10-27; #2601 HAND_EDIT_DETECTED",
+    "headline": "#2907 DISPOSITION",
     "carried": true,
-    "detail": "[carried] PROVE-IT 105 by 2026-10-23 00:30Z; drain fix-or-close 2026-10-27; #2601 HAND_EDIT_DETECTED (lead reconciles); #1130 = Shawn's ratification only; security-P0 = protected gate. Board #2793 1185, no migration trigger."
+    "detail": "[carried] #2907 DISPOSITION — CARRIED from the board LATEST line (15:31Z): draft registry-drift heal, hours past its ~11:00Z deadline; independent verification NOT unlocked on the stale head; replan owed by Kappa/main seat."
    }
   ],
   "team_status": [
    {
     "area": "SELF",
-    "accomplished": "#2904 merged (SoulSchoolAcademy, 02:41:20Z); open-PR register 4→3 (#2898/#2874/#2869)",
-    "working_on": "exit ledger + open-PR register (3)",
+    "accomplished": "Tip moved `91e2de5d` → `4b49c86662` (2 sanctioned intelligence-door writes: SN-0826 + Living Map state); receipt watch skipped (zero merges); board 1542→1551 (+9 ids, zero gaps); zero 403s",
+    "working_on": null,
     "plan": null
    },
    {
     "area": "LAW",
-    "accomplished": "Essence posture holds (trigger retired — SN-1795: retired guards stay retired by watching); red-CI merges named the live merge-law failure class (dock adjudicated, verdicts attached)",
-    "working_on": "#2823 design task (no blunt lock)",
-    "plan": "security P0 = protected gate, his word only"
+    "accomplished": "duplicate-director-signout 7th-instance identification (main seat); guardian-escape revert-or-cure decision (main seat)",
+    "working_on": "security P0 #2823 design task = protected gate, his word only",
+    "plan": null
    },
    {
     "area": "ACT",
-    "accomplished": "Night-shift slots active (BUILD/VERIFY sign-outs this tick)",
-    "working_on": "WIRE: a `--drift-alarm` workflow caller is owed",
+    "accomplished": "**#2938 SUPERSESSION ×2:** VERIFY re-score 9.5 at `865c2439` → head moved again mid-cure to `a22bf490883b` (no-chase) → receipt cure owed at settled head; dock's ask: freeze the branch one full pass",
+    "working_on": "#2938 body cure + fresh different-seat receipt at `a22bf490883b` → dispatch re-read → dock landing; #2934 body re-pin + different-seat receipt at new head; #2939 cures → VERIFY spot-check → dock",
     "plan": null
    },
    {
     "area": "KNOW",
-    "accomplished": "Wall = Smart Notes essence (per 19:35 PDT verify, 353 rows); hub-sync-health post-A7 (delete guard only); hub-sync unit DOWN — no reinstall",
-    "working_on": "single-writer design = open board question",
+    "accomplished": "#2907 still draft (~9.5h past ~11:00Z deadline — Kappa/main seat)",
+    "working_on": null,
     "plan": null
    },
    {
     "area": "PROVE",
-    "accomplished": "Dock re-read 7 merges at exact merge commits — CI verdicts attached to each",
-    "working_on": "dock ledger continues",
+    "accomplished": "#2938 trigger repair byte-untouched at `a22bf490883b` (gate-tool blobs identical to scored head)",
+    "working_on": "#2939 post-landing falsifier (runs once at new tip, after landing)",
     "plan": null
    },
    {
@@ -120,14 +120,14 @@
    },
    {
     "area": "VERIFY",
-    "accomplished": "#2904: Resolve VERIFY exact-head 9.5/10 APPROVED 5min pre-merge (independent proof, director-read); WP-205 record gaps named: #2888/#2890/#2895/#2897 cures owed",
-    "working_on": "next VERIFY batch: substance cures #2895/#2897 then #2888/#2890",
+    "accomplished": "VERIFY night-shift sign-out 19:30Z: **#2938 re-scored 9.5 at `865c24397a0d`** (the re-arm chain's fresh different-seat receipt — now superseded by the second head move)",
+    "working_on": "fresh different-seat receipt pinning `a22bf490883b` (once branch settles)",
     "plan": null
    },
    {
     "area": "LEARN",
-    "accomplished": "#2904 Kernel Tests collection cure MERGED — collection exit 0, 5,328 tests collected (sabotage control exact)",
-    "working_on": "15 pre-existing failures → owning lanes",
+    "accomplished": "**SN-0826 landed via intelligence door** (his mandate, sanctioned); L636 [F2] NEW FILING (promoted) — escape charge only as good as its derivation; INTELLIGENT EVENTS ×6 (L635 → ADOPTED [VERIFY] #2938 9.5 at 9245eca6 + 5)",
+    "working_on": "PROVE-IT 105 by 2026-10-23 00:30Z",
     "plan": null
    },
    {
@@ -140,20 +140,20 @@
   "key_numbers": {
    "board": {
     "issue": 2793,
-    "comments": 1185,
-    "delta_since_watermark": 4,
-    "watermark_comment": 6331260995
+    "comments": 1551,
+    "delta_since_watermark": 9,
+    "watermark_comment": 6349561649
    },
    "open_prs_register": [
-    2898,
-    2874,
-    2869
-   ],
-   "smart_notes_rows": {
-    "total": 353,
-    "super": 71,
-    "smart": 282
-   }
+    2869,
+    2907,
+    2934,
+    2937,
+    2939,
+    2945,
+    2950,
+    2951
+   ]
   },
   "pointers": [
    {
@@ -175,24 +175,22 @@
   ]
  },
  "live": {
-  "derived_utc": "2026-10-22T10:42:48Z",
-  "main_tip": "f7bd39ca75027b3d90d2a983dad3c623215863a3",
-  "open_pr_count": 10,
+  "derived_utc": "2026-10-22T21:23:04Z",
+  "main_tip": "dcaa09e8bb104c64057eec519531d7da0d74f402",
+  "open_pr_count": 8,
   "open_prs": [
    2869,
-   2874,
    2907,
-   2915,
-   2916,
-   2919,
-   2920,
-   2922,
-   2924,
-   2925
+   2934,
+   2937,
+   2939,
+   2945,
+   2950,
+   2951
   ],
   "board": {
    "issue": 2793,
-   "comments": 1350
+   "comments": 1575
   }
  },
  "sources": [
@@ -205,6 +203,11 @@
    "section": "snapshot.identity.repo",
    "source": "the repository this file lives in",
    "anchor": "SoulSchoolAcademy/NayaPOWER"
+  },
+  {
+   "section": "snapshot.key_numbers.open_prs_register",
+   "source": "GitHub API at emit time",
+   "anchor": "GET /pulls?state=open (paginated) — machine-derived (director ruling 2026-10-22, Option C); the snapshot no longer states the register in prose"
   },
   {
    "section": "live",
