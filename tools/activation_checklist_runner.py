@@ -176,7 +176,7 @@ class Runner:
                          "absent at this tip — the law read cannot be proven to be the law compiled",
                          "land the daily-law registry (GT-010) so the fingerprint can be checked")
             else:
-                want = (registry.get("generated_from") or {}).get("agents_md_sha256")
+                want = ((registry.get("generated_from") or {}).get("daily_law_source") or {}).get("sha256")
                 if want == sha:
                     self.add("tune-in-laws", "AGENTS.md read at current main tip", "PASS",
                              f"AGENTS.md sha256 {sha[:16]}… == registry source fingerprint")
