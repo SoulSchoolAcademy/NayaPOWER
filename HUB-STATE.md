@@ -1,12 +1,12 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-21 23:23 UTC · tip `21fe77ccef03` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-22 00:25 UTC · tip `d390730b3238` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionable** missions and **0 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
 - Active wave: **none — supervisor will dispatch** (Naya Judge, Naya Auditor, Naya Builder)
-- Main tip: `21fe77ccef03`
+- Main tip: `d390730b3238`
 - Queue: 0 actionable · 0 proposed
 
 ## WHAT MATTERS MOST
