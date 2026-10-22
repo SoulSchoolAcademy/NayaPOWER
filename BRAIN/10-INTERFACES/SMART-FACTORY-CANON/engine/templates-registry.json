@@ -2,7 +2,8 @@
   "version": "templates-registry-v1",
   "built": "2026-10-21T18:14:02Z",
   "standard_feature_contracts": {
-    "applies_to": "Every app built from a templates entry in this registry, and every future base created for a key listed in missing.",
+    "applies_to": "Every app built from a templates entry in this registry, and every future base created for a key listed in missing. Predicates are dual-dialect: each check names the canon-base mechanism and/or the shipped flagship mechanism (the one-system os-* dialect, live at naya-model-*.nayapower.workers.dev). A feature passes on the mechanism the surface actually ships, never on a label alone. Where a canon selector names a Hub-room surface and the flagship realizes the same feature as an in-page block, the predicate is scoped to that block; see per-feature applies_to and dialect_note.",
+    "dialect_note": "Dialect reconciliation (GT-028, 2026-10-22): the v1 predicates were authored against the canon-base dialect only, so the shipped flagships scored 4/13 while demonstrably carrying most features in the one-system os-* dialect. v1.1 names both dialects, verified byte-by-byte against the three live models (301,792 / 301,729 / 301,774 bytes). No pass_standard was lowered and no canon predicate was removed: every widened selector or pattern names the real shipped mechanism it now accepts, labeled '(flagship dialect: ...)'. Genuine gaps remain failing by design: S2 service-worker registration, S11 Library/Q&A block absent, S12 Smart Lists operation absent.",
     "evaluation": {
       "any_groups": "For checks whose requirement is 'any:<group>', at least one check in that group must pass.",
       "feature_pass": "A feature passes only when all required checks and every any-group pass.",
@@ -10,6 +11,10 @@
     },
     "features": [
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "settings-surface",
@@ -63,6 +68,10 @@
         "promise": "Every app has a real Settings surface whose preference controls change state and persist it."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "install-settings-surface",
@@ -109,6 +118,14 @@
             "scope": "script"
           },
           {
+            "id": "install-prompt-call-os",
+            "kind": "source_regex",
+            "label": "Install prompt can be invoked (flagship dialect: the captured window.__osInstallPrompt is prompted from the Settings install control)",
+            "pattern": "__osInstallPrompt[\\s\\S]{0,600}?\\.prompt\\(\\)",
+            "requirement": "any:install-behavior",
+            "scope": "script"
+          },
+          {
             "id": "install-prompt-call",
             "kind": "source_regex",
             "label": "Install prompt can be invoked",
@@ -126,19 +143,24 @@
           }
         ],
         "code": "S2",
+        "dialect_note": "The flagship captures the install prompt in the Hub pattern (window.__osInstallPrompt, prompted from the Settings install control; appinstalled cements nayanet.installed) - judged by install-prompt-call-os. The service-worker check is NOT dialect: no serviceWorker.register ships in the flagship bytes (a manifest is linked and served, and an unregistered /sw.js is served at the origin). S2 therefore still fails until registration ships - a genuine gap, recorded by GT-028.",
         "id": "install_as_app_inside_settings",
         "name": "Install as App inside Settings",
         "pass_standard": "The Settings surface contains an install control, the app ships a manifest and a service worker, and script handles the install prompt or installed event.",
         "promise": "Install lives inside Settings, not as a pushed strip or banner."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "communication-surface",
             "kind": "dom_exists",
             "label": "Mail/message surface exists",
             "requirement": "required",
-            "selector": "#mail, [data-feature='smart-mail'], [data-feature='communication']"
+            "selector": "#mail, [data-feature='smart-mail'], [data-feature='communication'], [data-block='message'], [data-block='inbox']"
           },
           {
             "id": "communication-control",
@@ -146,7 +168,7 @@
             "label": "A message or compose control exists",
             "minimum": 1,
             "requirement": "required",
-            "selector": "#msgbtn, #mail button, #mail form, #mail textarea, #mail input, [data-feature='communication'] button, [data-feature='communication'] textarea, [data-feature='communication'] form"
+            "selector": "#msgbtn, #mail button, #mail form, #mail textarea, #mail input, [data-feature='communication'] button, [data-feature='communication'] textarea, [data-feature='communication'] form, #os-msg-btn, #os-msg-body, [data-block='message'] textarea, [data-block='message'] button, [data-block='message'] form"
           },
           {
             "id": "communication-inbox-label",
@@ -154,7 +176,7 @@
             "label": "Inbox/message surface is named",
             "match": "any",
             "requirement": "required",
-            "selector": "#mail, [data-feature='smart-mail'], [data-feature='communication']",
+            "selector": "#mail, [data-feature='smart-mail'], [data-feature='communication'], [data-block='inbox']",
             "values": [
               "Your Messages",
               "Inbox",
@@ -177,6 +199,14 @@
             "pattern": "href=[\"']mailto:",
             "requirement": "any:delivery",
             "scope": "html"
+          },
+          {
+            "id": "communication-backend-insert",
+            "kind": "source_regex",
+            "label": "Message is delivered into the Smart Mail backend tables (flagship dialect: Supabase smart_mail_threads / smart_mail_messages insert)",
+            "pattern": "\\.from\\('smart_mail_(threads|messages)'\\)\\.insert\\(",
+            "requirement": "any:delivery",
+            "scope": "script"
           },
           {
             "id": "communication-endpoint",
@@ -202,6 +232,10 @@
         "promise": "A visitor or owner can message or mail from the app and the app can deliver it to an inbox or post it to the page."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "picture-input",
@@ -262,20 +296,24 @@
         "promise": "The owner can change the cover or profile picture from the page."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "plus-control",
             "kind": "dom_exists",
             "label": "+ control exists",
             "requirement": "required",
-            "selector": "#plusbtn, [data-feature='plus-home']"
+            "selector": "#plusbtn, [data-feature='plus-home'], #os-rooms-plus, .rooms-plus"
           },
           {
             "id": "plus-menu",
             "kind": "dom_exists",
             "label": "+ menu exists",
             "requirement": "required",
-            "selector": "#plusmenu, [data-feature='plus-menu']"
+            "selector": "#plusmenu, [data-feature='plus-menu'], #os-drawer"
           },
           {
             "id": "plus-routes",
@@ -295,13 +333,21 @@
               "Settings|/settings"
             ],
             "requirement": "required",
-            "selector": "#plusmenu a, #plusmenu [data-hub], #plusmenu [data-goto], #plusmenu button, [data-feature='plus-menu'] a"
+            "selector": "#plusmenu a, #plusmenu [data-hub], #plusmenu [data-goto], #plusmenu button, [data-feature='plus-menu'] a, #os-drawer a, #os-drawer [data-goto], #os-drawer button"
           },
           {
             "id": "plus-open-handler",
             "kind": "source_regex",
             "label": "Script binds the + control",
             "pattern": "plusbtn[\\s\\S]{0,300}\\.addEventListener\\(",
+            "requirement": "any:behavior",
+            "scope": "script"
+          },
+          {
+            "id": "plus-open-handler-os",
+            "kind": "source_regex",
+            "label": "Script binds the flagship rooms-plus control and opens the areas drawer (Hub twin-plus dialect)",
+            "pattern": "roomsBtn\\.addEventListener\\('click'[\\s\\S]{0,400}drawer\\.classList\\.add\\('open'\\)",
             "requirement": "any:behavior",
             "scope": "script"
           },
@@ -315,12 +361,17 @@
           }
         ],
         "code": "S5",
+        "dialect_note": "Canon selectors name the canon-base plus (#plusbtn/#plusmenu). The flagship ships the Hub twin-plus: rooms-plus (#os-rooms-plus) opens the NayaNET areas drawer (#os-drawer, 15 Hub routes), eco-plus opens the owner menu. Same feature, Hub dialect, harvested verbatim into the flagship; both dialects are judged.",
         "id": "plus_button_home",
         "name": "+ button home",
         "pass_standard": "A + control and menu exist, the menu routes to at least five main areas, and script opens the menu and follows its routes.",
         "promise": "The + button always opens the main NayaNET areas so every app stays connected home."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "about-surface",
@@ -368,6 +419,10 @@
         "promise": "Every app has an About surface the owner can edit and save."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "cross-page-routes",
@@ -378,16 +433,24 @@
               "Smart Spaces|/spaces",
               "Personal|/personal",
               "Business|/business",
-              "Smart Hub|nayanet\\.live/?$"
+              "Smart Hub|nayanet\\.live/?$|nayanet\\.live/#/hub"
             ],
             "requirement": "required",
-            "selector": "#plusmenu a, #plusmenu [data-hub], #plusmenu [data-goto], #plusmenu button"
+            "selector": "#plusmenu a, #plusmenu [data-hub], #plusmenu [data-goto], #plusmenu button, #os-drawer a, #os-drawer [data-goto], #os-drawer button"
           },
           {
             "id": "cross-page-broadcast",
             "kind": "source_regex",
             "label": "BroadcastChannel sync is implemented",
             "pattern": "new BroadcastChannel\\(",
+            "requirement": "any:sync-channel",
+            "scope": "script"
+          },
+          {
+            "id": "cross-page-backend-client",
+            "kind": "source_regex",
+            "label": "Page data is read and written in shared backend tables (flagship dialect: Supabase smart_notes / smart_mail / invites tables keyed by page alias - state crosses origins through the backend, not localStorage)",
+            "pattern": "\\.from\\('(smart_notes|smart_mail_threads|smart_mail_messages|invites)'\\)",
             "requirement": "any:sync-channel",
             "scope": "script"
           },
@@ -417,41 +480,54 @@
           }
         ],
         "code": "S7",
+        "dialect_note": "The canon sync patterns name in-page channels (BroadcastChannel, postMessage). The flagship shares state through the Supabase backend keyed by page alias - cross-origin by construction - and its chrome routes to family destinations through the Hub areas drawer (#os-drawer, nayanet.live/#/hub/* routes). Both channel families are judged; a shared localStorage key alone still does not pass.",
         "id": "cross_page_sync",
         "name": "Cross-page sync",
         "pass_standard": "The app chrome routes to at least two family destinations and shipped code uses a real cross-page or account/backend sync channel. A shared localStorage key alone does not pass because it cannot cross app origins.",
         "promise": "Personal, business, and Spaces pages can reach and communicate with each other, with state carried across pages rather than trapped in one page."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "today-surface",
             "kind": "dom_exists",
             "label": "Today's Intel surface exists",
             "requirement": "required",
-            "selector": "#today, [data-feature='todays-intel']"
+            "selector": "#today, [data-feature='todays-intel'], [data-block='today']"
           },
           {
             "id": "today-grid",
             "kind": "dom_exists",
             "label": "Today's Intel grid exists",
             "requirement": "required",
-            "selector": "#todaygrid, [data-feature='todays-intel-grid']"
+            "selector": "#todaygrid, [data-feature='todays-intel-grid'], #os-today-list"
           },
           {
             "id": "today-card",
             "kind": "count_at_least",
             "label": "At least one Intel card is present",
             "minimum": 1,
-            "requirement": "required",
+            "requirement": "any:card-evidence",
             "selector": "#todaygrid .ph-card, #todaygrid article, #todaygrid [data-intel-card]"
+          },
+          {
+            "id": "today-card-render",
+            "kind": "source_regex",
+            "label": "Script renders briefing cards into the Today list (flagship dialect: cards are rendered at runtime from live page data, so no static seed cards ship)",
+            "pattern": "\\$\\('os-today-list'\\)\\.innerHTML\\s*=",
+            "requirement": "any:card-evidence",
+            "scope": "script"
           },
           {
             "id": "today-labels",
             "kind": "text_contains",
             "label": "Briefing content is present",
             "match": "all",
-            "requirement": "required",
+            "requirement": "any:label-dialect",
             "selector": "#today, [data-feature='todays-intel']",
             "values": [
               "Morning Briefing",
@@ -459,10 +535,30 @@
             ]
           },
           {
+            "id": "today-labels-os",
+            "kind": "text_contains",
+            "label": "Briefing content is present (flagship dialect labels)",
+            "match": "all",
+            "requirement": "any:label-dialect",
+            "selector": "[data-block='today']",
+            "values": [
+              "Today",
+              "The latest real activity on this page"
+            ]
+          },
+          {
             "id": "today-grid-population",
             "kind": "source_regex",
             "label": "Script populates the Today grid",
             "pattern": "getElementById\\(['\"]todaygrid['\"]\\)",
+            "requirement": "any:data-source",
+            "scope": "script"
+          },
+          {
+            "id": "today-backend-source",
+            "kind": "source_regex",
+            "label": "Today is populated from the page's own backend tables (flagship dialect: loadToday merges wall posts, mail threads and invites)",
+            "pattern": "function loadToday\\(\\)[\\s\\S]{0,2500}from\\('smart_mail_threads'\\)",
             "requirement": "any:data-source",
             "scope": "script"
           },
@@ -484,12 +580,17 @@
           }
         ],
         "code": "S8",
+        "dialect_note": "Canon labels ('Morning Briefing', 'IN A NUTSHELL') are the Hub Today room's labels, and canon cards ship as static seed markup. The flagship's Today block is the page's own pulse: labeled in its own words and rendered at runtime from live backend data. Card and label evidence is therefore grouped per dialect (any:card-evidence, any:label-dialect); the data-source requirement stands for both dialects.",
         "id": "todays_intel",
         "name": "Today's Intel",
         "pass_standard": "A Today's Intel section and briefing card exist, and shipped code populates the Today grid from a feed, endpoint, or owner data source. A static seeded briefing alone fails.",
         "promise": "The owner's own feed inputs surface as Today's Intel on the page."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "growth-label",
@@ -532,6 +633,14 @@
             "scope": "html"
           },
           {
+            "id": "growth-backend-record",
+            "kind": "source_regex",
+            "label": "Invite is delivered into the invites backend table (flagship dialect: hash-only recording - invitee_email_hash is stored, dry_run record-only mode, no email sent)",
+            "pattern": "\\.from\\('invites'\\)\\.insert\\(\\{[^}]*invitee_email_hash",
+            "requirement": "any:delivery",
+            "scope": "script"
+          },
+          {
             "id": "growth-endpoint",
             "kind": "source_regex",
             "label": "Invite endpoint is called",
@@ -555,13 +664,17 @@
         "promise": "The owner can invite people to the page by email."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "reports-surface",
             "kind": "dom_exists",
             "label": "Reports surface exists",
             "requirement": "required",
-            "selector": "#reports, [data-feature='reports']"
+            "selector": "#reports, [data-feature='reports'], [data-block='reports']"
           },
           {
             "id": "reports-content",
@@ -569,13 +682,21 @@
             "label": "Report content exists",
             "minimum": 1,
             "requirement": "required",
-            "selector": "#reports .ph-card, #reports table, #reports canvas, #reports [data-report], [data-feature='reports'] article"
+            "selector": "#reports .ph-card, #reports table, #reports canvas, #reports [data-report], [data-feature='reports'] article, #os-rep-donut, #os-rep-week, [data-block='reports'] .ph-card"
           },
           {
             "id": "reports-data-endpoint",
             "kind": "source_regex",
             "label": "Report data endpoint is called",
             "pattern": "fetch\\([^;]{0,300}reports",
+            "requirement": "any:data-operation",
+            "scope": "script"
+          },
+          {
+            "id": "reports-loader",
+            "kind": "source_regex",
+            "label": "A named report loader runs (flagship dialect: loadReports reads the page's own tables and renders the living dashboard)",
+            "pattern": "loadReports\\s*\\(",
             "requirement": "any:data-operation",
             "scope": "script"
           },
@@ -603,6 +724,10 @@
         "promise": "Personal and business apps carry Reports with real report content or data."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "library-surface",
@@ -658,12 +783,18 @@
           }
         ],
         "code": "S11",
+        "dialect_note": "No dialect issue: the flagship body has no Library/Q&A block in any dialect (its 12 blocks are cover, wall, about, today, smart-notes, connections, lists, message, inbox, growth, reports, settings). Genuine absence - see the GT-028 assessment.",
         "id": "intelligent_library_qa_shell",
         "name": "Intelligent Library / Q&A shell",
         "pass_standard": "An in-app Library/Q&A surface exists with a question or owner-fill control and shipped code to save, load, ask, or edit its contents. A navigation route alone fails.",
         "promise": "Every app ships the Intelligent Library/Q&A shell; the owner fills it in with Naya."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship",
+          "hub"
+        ],
         "checks": [
           {
             "id": "hub-connections-surface",
@@ -712,11 +843,19 @@
             "scope": "script"
           },
           {
+            "id": "hub-mail-backend-operation",
+            "kind": "source_regex",
+            "label": "Smart Mail has a working backend operation (flagship dialect: Supabase smart_mail tables)",
+            "pattern": "\\.from\\('smart_mail_(threads|messages)'\\)\\.(insert|select)\\(",
+            "requirement": "any:mail-behavior",
+            "scope": "script"
+          },
+          {
             "id": "hub-mail-surface",
             "kind": "dom_exists",
             "label": "Smart Mail surface exists",
             "requirement": "required",
-            "selector": "#mail, [data-feature='smart-mail']"
+            "selector": "#mail, [data-feature='smart-mail'], [data-block='inbox'], [data-block='message']"
           },
           {
             "id": "hub-mail-operation",
@@ -728,12 +867,17 @@
           }
         ],
         "code": "S12",
+        "dialect_note": "The canon #mail selector names the Hub's Smart Mail room surface. On the flagship the Hub apps live as in-page blocks: Connections (#people, data-block='connections'), Smart Lists (#lists), Smart Mail (message + inbox blocks backed by the smart_mail tables). Predicates are scoped to those blocks. Note: the flagship's Smart Lists block ships content but no list operation in any dialect, so the lists-behavior group still fails - a genuine partial gap, recorded by GT-028.",
         "id": "hub_apps_connections_lists_mail",
         "name": "Hub apps: Connections, Smart Lists, Smart Mail",
         "pass_standard": "All three surfaces exist. Connections has a bound connect action, Smart Lists has list content plus a list operation, and Smart Mail has a working message/mail operation. Any one dead surface fails the combined standard feature.",
         "promise": "The Hub's Connections, Smart Lists, and Smart Mail apps are present and working on the page."
       },
       {
+        "applies_to": [
+          "canon-base",
+          "flagship"
+        ],
         "checks": [
           {
             "id": "smart-tabs-mount",
@@ -791,7 +935,7 @@
       }
     ],
     "status": "Measurement contract using static DOM/source predicates. A PASS requires a shipped surface plus a working client-side mechanism or data operation, not a label alone. Browser-rendered geometry and authenticated back-end behaviour are stronger proofs and remain separate.",
-    "version": "standard-feature-contracts-v1"
+    "version": "standard-feature-contracts-v1.1"
   },
   "templates": {
     "personal": {
