@@ -1,7 +1,7 @@
 # MIRROR REPORT 2026-10-21 — AI TONGUE (exact values, procedures, constraints)
 
 - **Commission:** Shawn Vibert, 2026-10-21 ~23:55Z — mirror audit ("most intelligent system that could be created? if not, why not") + 14 answers + ten-lists + execution prompt; file in GitHub; update/correct any existing record.
-- **Author seat:** Naya Resolve (main seat). Tongues: this file (`.ai.md`) is normative for seats; `.human.md` for the director; `report.machine.json` for systems. Same truth, three tongues.
+- **Author seat:** Naya Resolve (main seat). Tongues: `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.ai.md` is normative for seats; `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md` for the director; `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json` for systems. Same truth, three tongues.
 - **Canonical placement:** `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.*` — nearest ancestors: `2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md`, `2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md` (superseded as "current mirror" by this report; not edited — they are dated history).
 - **Live verification at write time (2026-10-21T23:57:20Z):** tip via `GET /git/refs/heads/main` = `b7e52ec6ed1cc7e223f80302e06ed117c90659f8`; open PRs via `GET /pulls?state=open&per_page=100` → count 5: [#2747, #2776, #2869, #2874, #2877]; Hub `curl https://nayanet.live/` → HTTP 200 (1.1s). **Seats MUST re-derive all live values before citing them; this file's live values expire immediately.**
 
@@ -138,7 +138,7 @@
 
 ## 10. EXECUTION PROMPT
 
-Normative text: §10 of `MIRROR-REPORT-2026-10-21.human.md` (fenced block) ≡ `execution_prompt` field of `report.machine.json` ≡ board #2793 comment posted with this report. If copies diverge, the `.machine.json` field governs (single source), and divergence is itself a defect to file.
+The original execution prompt in §10 of `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md` corresponds to the `execution_prompt` field in `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json`. The new Director continuation prompt is a separate scope under `director_continuation_2026_10_22.whole_team_execution_prompt`. The machine fields govern their respective scopes; any same-scope divergence is a defect to file. Board #2793 carries the coordination receipt, not a substitute for either canonical file.
 
 ## APPENDIX — provenance of cited measurements
 

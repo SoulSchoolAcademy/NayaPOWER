@@ -6,9 +6,9 @@
   "commissioned_by": "Shawn Vibert, 2026-10-21 ~23:55Z",
   "canonical_repo_path": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.*",
   "tongues": {
-    "human": "MIRROR-REPORT-2026-10-21.human.md",
-    "ai": "MIRROR-REPORT-2026-10-21.ai.md",
-    "machine": "report.machine.json"
+    "human": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md",
+    "ai": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.ai.md",
+    "machine": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json"
   },
   "verified_live": {
     "verified_at_utc": "2026-10-21T23:57:20Z",
