@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0816",
+ "capture_id": "20261022-sn-0816-registry-heal",
+ "title": "It Claimed Shawn's Authority — And Nobody Had Checked",
+ "intelligence": {
+  "title": "It Claimed Shawn's Authority — And Nobody Had Checked",
+  "smart_note_id": "SN-0816",
+  "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0816-it-claimed-shawns-authority-nobody-had-checked",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/LEARNING/verification/SN-0816/IB-SMART-NOTE-20261021-sn0816-it-claimed-shawns-authority-nobody-had-checked.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-21",
+  "note": "Smart Note SN-0816 published via intelligence door direct write. Capture reconstructed 2026-10-22 to heal registry drift (kappa w690, live tip 6269864218b1)."
+ },
+ "source": {
+  "captured_at": "2026-10-22",
+  "source_type": "registry_heal",
+  "source_reference": "kappa w690 heal published_pages_without_registry_entry drift @ tip 6269864218b1"
+ }
+}

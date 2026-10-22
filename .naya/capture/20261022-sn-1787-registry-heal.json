@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-1787",
+ "capture_id": "20261022-sn-1787-registry-heal",
+ "title": "The Lesson Law — A Lesson Is Only Learned When Behavior Changes",
+ "intelligence": {
+  "title": "The Lesson Law — A Lesson Is Only Learned When Behavior Changes",
+  "smart_note_id": "SN-1787",
+  "intelligent_block_id": "IB-SMART-NOTE-20261021-sn1787-the-lesson-law",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/governance/SN-1787/IB-SMART-NOTE-20261021-sn1787-the-lesson-law.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-21",
+  "note": "Smart Note SN-1787 published via intelligence door direct write. Capture reconstructed 2026-10-22 to heal registry drift (kappa w690, live tip 6269864218b1)."
+ },
+ "source": {
+  "captured_at": "2026-10-22",
+  "source_type": "registry_heal",
+  "source_reference": "kappa w690 heal published_pages_without_registry_entry drift @ tip 6269864218b1"
+ }
+}

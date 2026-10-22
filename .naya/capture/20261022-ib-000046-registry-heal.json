@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "IB-000046",
+ "capture_id": "20261022-ib-000046-registry-heal",
+ "title": "EMIT Ratified — The Canonical Emission Protocol",
+ "intelligence": {
+  "title": "EMIT Ratified — The Canonical Emission Protocol",
+  "smart_note_id": "IB-000046",
+  "intelligent_block_id": "IB-000046",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/emit-ratified-the/IB-000046/smart-note.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-20",
+  "note": "Smart Note IB-000046 published via intelligence door direct write. Capture reconstructed 2026-10-22 to heal registry drift (kappa w690, live tip 6269864218b1)."
+ },
+ "source": {
+  "captured_at": "2026-10-22",
+  "source_type": "registry_heal",
+  "source_reference": "kappa w690 heal published_pages_without_registry_entry drift @ tip 6269864218b1"
+ }
+}

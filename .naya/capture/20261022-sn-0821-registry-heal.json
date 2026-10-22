@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0821",
+ "capture_id": "20261022-sn-0821-registry-heal",
+ "title": "Essence Is a Form, Not a Filter",
+ "intelligence": {
+  "title": "Essence Is a Form, Not a Filter",
+  "smart_note_id": "SN-0821",
+  "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-0821/IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-22",
+  "note": "Smart Note SN-0821 published via intelligence door direct write. Capture reconstructed 2026-10-22 to heal registry drift (kappa w690, live tip 6269864218b1)."
+ },
+ "source": {
+  "captured_at": "2026-10-22",
+  "source_type": "registry_heal",
+  "source_reference": "kappa w690 heal published_pages_without_registry_entry drift @ tip 6269864218b1"
+ }
+}

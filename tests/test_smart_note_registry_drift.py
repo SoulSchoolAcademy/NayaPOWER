@@ -30,7 +30,7 @@ PINNED_BASELINE = {
     "duplicate_smart_note_ids": 0,
     "published_entries_missing_projection_path": 0,
     "registry_projection_paths_absent": 0,
-    "published_pages_without_registry_entry": 1,
+    "published_pages_without_registry_entry": 0,  # lowered w690 (kappa): 28 door/leaf pages registered, class re-proven 0 at tip 6269864218b1
     # 0 since w569: re-keyed on content collision within leaf-name groups
     # (Delta) -- the layout convention puts a smart-note.md in every note's
     # own directory, and distinct notes may share a slug leaf with different

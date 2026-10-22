@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-0817",
+ "capture_id": "20261022-sn-0817-registry-heal",
+ "title": "The Guard Watched One Door",
+ "intelligence": {
+  "title": "The Guard Watched One Door",
+  "smart_note_id": "SN-0817",
+  "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-22",
+  "note": "Smart Note SN-0817 published via intelligence door direct write. Capture reconstructed 2026-10-22 to heal registry drift (kappa w690, live tip 6269864218b1)."
+ },
+ "source": {
+  "captured_at": "2026-10-22",
+  "source_type": "registry_heal",
+  "source_reference": "kappa w690 heal published_pages_without_registry_entry drift @ tip 6269864218b1"
+ }
+}

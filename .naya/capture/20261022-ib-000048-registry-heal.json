@@ -1,0 +1,20 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "IB-000048",
+ "capture_id": "20261022-ib-000048-registry-heal",
+ "title": "Viral Factory: 100 Videos With No Camera, No Crew, No Excuses",
+ "intelligence": {
+  "title": "Viral Factory: 100 Videos With No Camera, No Crew, No Excuses",
+  "smart_note_id": "IB-000048",
+  "intelligent_block_id": "IB-000048",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/viral-factory/IB-000048/smart-note.md",
+  "truth_state": "CANDIDATE",
+  "captured_at": "2026-10-20",
+  "note": "Smart Note IB-000048 published via intelligence door direct write. Capture reconstructed 2026-10-22 to heal registry drift (kappa w690, live tip 6269864218b1)."
+ },
+ "source": {
+  "captured_at": "2026-10-22",
+  "source_type": "registry_heal",
+  "source_reference": "kappa w690 heal published_pages_without_registry_entry drift @ tip 6269864218b1"
+ }
+}
