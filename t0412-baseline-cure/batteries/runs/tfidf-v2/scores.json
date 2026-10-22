@@ -1,0 +1,90 @@
+{
+  "harness": {
+    "script": "semantic_arm_harness.py",
+    "script_sha256": "a7e72ce93bd75df07b7c51b8c0c66062190d2032fe4c4def524ab80fab9137d7",
+    "run_utc": "2026-10-15T03:07:19Z"
+  },
+  "arm": {
+    "dir": "arms/tfidf-t0412",
+    "name": "tfidf-t0412",
+    "version": "1.0.0",
+    "arm_py_sha256": "75d228420975d583fbd811bbcd34204aead2b9430dbd055195e1589ff715a478",
+    "needs_embeddings": false
+  },
+  "corpus": {
+    "path": "batteries/t0412-baseline/corpus",
+    "sha256": "aaf978c1e4477a7d40731ab072800dabae716bd8f0dc43c9ce4a0e33cbad09b4",
+    "pin_file": "batteries/t0412-baseline/corpus/corpus.sha256",
+    "pin_verified": true
+  },
+  "battery": {
+    "path": "batteries/t0412-baseline",
+    "queries_sha256": "a06456286a2b974ad7e39bc3f980a65b30589a8c674092f236b19f02be447cc2",
+    "rubric_present": false
+  },
+  "queries": [
+    {
+      "id": "brief-t0382-lane3.md",
+      "expected": [
+        "P7"
+      ],
+      "ranks": {
+        "P7": 3
+      }
+    },
+    {
+      "id": "brief-t0382-lane9.md",
+      "expected": [
+        "P2",
+        "P1",
+        "P7"
+      ],
+      "ranks": {
+        "P2": 1,
+        "P1": 2,
+        "P7": 3
+      }
+    },
+    {
+      "id": "brief-t0392-lane2.md",
+      "expected": [
+        "P10",
+        "P12"
+      ],
+      "ranks": {
+        "P10": 6,
+        "P12": 2
+      }
+    },
+    {
+      "id": "brief-t0402-lane9.md",
+      "expected": [
+        "P1",
+        "P2"
+      ],
+      "ranks": {
+        "P1": 1,
+        "P2": 3
+      }
+    },
+    {
+      "id": "brief-t0392-lane7.md",
+      "expected": [
+        "P1",
+        "P9"
+      ],
+      "ranks": {
+        "P1": 2,
+        "P9": 15
+      }
+    }
+  ],
+  "metrics": {
+    "n_queries": 5,
+    "n_expected_pairs": 10,
+    "mrr": 0.473333,
+    "hit@1": 0.2,
+    "hit@5": 0.8,
+    "top5_hit_count": 8
+  }
+}

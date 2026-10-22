@@ -1,0 +1,90 @@
+{
+  "harness": {
+    "script": "semantic_arm_harness.py",
+    "script_sha256": "a7e72ce93bd75df07b7c51b8c0c66062190d2032fe4c4def524ab80fab9137d7",
+    "run_utc": "2026-10-15T03:03:41Z"
+  },
+  "arm": {
+    "dir": "arms/lexical-t0412",
+    "name": "lexical-t0412",
+    "version": "1.0.0",
+    "arm_py_sha256": "74461d4a1b936773f7065469d1808b43255ca84a85723743c17aed30f688037c",
+    "needs_embeddings": false
+  },
+  "corpus": {
+    "path": "batteries/t0412-baseline/corpus",
+    "sha256": "aaf978c1e4477a7d40731ab072800dabae716bd8f0dc43c9ce4a0e33cbad09b4",
+    "pin_file": "batteries/t0412-baseline/corpus/corpus.sha256",
+    "pin_verified": true
+  },
+  "battery": {
+    "path": "batteries/t0412-baseline",
+    "queries_sha256": "6c7beefaa90ebbe5f52ec50abbc6375b6b5c5b3dd026787008479ebbd41c3093",
+    "rubric_present": false
+  },
+  "queries": [
+    {
+      "id": "brief-t0382-lane3.md",
+      "expected": [
+        "P7"
+      ],
+      "ranks": {
+        "P7": 3
+      }
+    },
+    {
+      "id": "brief-t0382-lane9.md",
+      "expected": [
+        "P1",
+        "P2",
+        "P7"
+      ],
+      "ranks": {
+        "P1": 2,
+        "P2": 1,
+        "P7": 4
+      }
+    },
+    {
+      "id": "brief-t0392-lane2.md",
+      "expected": [
+        "P10",
+        "P12"
+      ],
+      "ranks": {
+        "P10": 14,
+        "P12": 11
+      }
+    },
+    {
+      "id": "brief-t0392-lane7.md",
+      "expected": [
+        "P1",
+        "P9"
+      ],
+      "ranks": {
+        "P1": 1,
+        "P9": 12
+      }
+    },
+    {
+      "id": "brief-t0402-lane9.md",
+      "expected": [
+        "P1",
+        "P2"
+      ],
+      "ranks": {
+        "P1": 2,
+        "P2": 1
+      }
+    }
+  ],
+  "metrics": {
+    "n_queries": 5,
+    "n_expected_pairs": 10,
+    "mrr": 0.4829,
+    "hit@1": 0.3,
+    "hit@5": 0.7,
+    "top5_hit_count": 7
+  }
+}
