@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T08:16:07+00:00",
+ "generated_utc": "2026-10-22T09:16:08+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -60,9 +60,9 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
-     "number": 2918,
-     "title": "Brain-index regeneration \u2014 cure freshness drift x3 at tip 88da03be (BUILD)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2918",
+     "number": 2925,
+     "title": "Brain-index regen at basis 51902fc7 \u2014 covers the 13 Daily Intelligence editions (#2917)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2925",
      "draft": false
     },
     {
@@ -159,12 +159,6 @@
      "draft": false
     },
     {
-     "number": 2923,
-     "title": "Remediation: register + capture SN-0823 and SN-0824 (vanish-guard escape)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2923",
-     "draft": false
-    },
-    {
      "number": 2922,
      "title": "Fix cold-start Step-0 admission fixture \u2014 q4 answer 9.0 \u2192 9.5 (BUILD 07:00)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2922",
@@ -177,14 +171,8 @@
      "draft": false
     },
     {
-     "number": 2917,
-     "title": "Daily Intelligence backfill \u2014 the 13 missing editions, Oct 4\u201319",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2917",
-     "draft": false
-    },
-    {
      "number": 2916,
-     "title": "Smart Notes SN-0823 + SN-0824 \u2014 Awareness Is Ownership \u00b7 Answer Your Own Questions",
+     "title": "Smart Notes SN-1801 + SN-1802 \u2014 Awareness Is Ownership \u00b7 Answer Your Own Questions",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2916",
      "draft": false
     },
@@ -201,7 +189,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 8
+   "open_pr_count": 6
   },
   {
    "id": "wire",
@@ -461,6 +449,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 12,
- "unassigned_prs": 8
+ "open_pr_total": 10,
+ "unassigned_prs": 6
 }
