@@ -19,7 +19,7 @@ Reading this protocol is **required**, not recommended. No Naya begins governed 
 4. **[Laws Index](NAYA-ACTIVATION/CONSTITUTION/LAWS-INDEX-V1.md)** — the one-line locator for every standing law and its full definition.
 
 **Key coordination surfaces** (know where the team works):
-- **Mission-state source** — [issue #2154](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154): director-maintained current mission, **not** the live coordination board.
+- **Mission-state source** — [BRAIN/CURRENT-MISSION-STATE.md](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/CURRENT-MISSION-STATE.md) on main (machine twin: BRAIN/MISSION-STATE.json; published face: the `live/mission-state` branch): director-maintained current mission, **not** the live coordination board.
 - **Team coordination venue** — [issue #2793](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793) as observed 2026-10-20. On every shift, follow its live successor pointer before posting; capped boards are archives. Sign in/out on the correct owning-area feed, with coordination receipts on the current live team board.
 - **Feed index** — [issue #1599](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1599): the table of contents for all specialty feeds.
 - **Activation package** — [NAYA-ACTIVATION/](NAYA-ACTIVATION/): cold-start contracts, activation protocols, and the constitution directory.

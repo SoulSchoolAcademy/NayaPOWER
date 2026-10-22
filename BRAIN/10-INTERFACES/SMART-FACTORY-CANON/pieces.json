@@ -1047,6 +1047,11 @@
     }
   },
   "NAYA-INP-001": {
+    "ai_label": {
+      "purpose": "RETIRED: the original search bar, superseded by NAYA-INP-008 (Reference Well). Kept in the store for provenance only.",
+      "use_when": "Do not use. Builders reaching for a search field must harvest NAYA-INP-008.",
+      "laws": ["Law 3", "Law 10"]
+    },
     "name": "Search bar",
     "html": "<div class=\"search-wrap\"><input class=\"search-input\" type=\"search\" placeholder=\"Search today\u2026\" aria-label=\"Search\">",
     "status": "superseded",

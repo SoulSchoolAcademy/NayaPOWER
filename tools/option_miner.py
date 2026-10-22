@@ -447,9 +447,9 @@ def mine_what_next(model, todo_items):
         fresh = option_freshness(section(model, "mission")[0])
         for i, pr in enumerate(prios):
             options.append(make_option(
-                f"mission-{i}", "mission", "mission state #2154",
+                f"mission-{i}", "mission", "mission state (BRAIN/CURRENT-MISSION-STATE.md)",
                 pr, 0.55, "Current mission priority from the mission state.",
-                ["https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2154"],
+                ["https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/CURRENT-MISSION-STATE.md"],
                 fresh,
             ))
 
