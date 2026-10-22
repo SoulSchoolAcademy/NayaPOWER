@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 18:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 19:10 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4065,6 +4065,14 @@ _Last updated: 2026-10-22 18:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: VERACITY-ARM.md exists on disk; lane8-t1302-veracity/battery.py sha256 6e855e78... matches receipt's pin-exact claim; lane-1/t1312-veracity/battery_baseline_lane1-rerun.json + battery_candidate_lane1-rerun.json exist; blinded-scores-t1302.md exists. The 6/14 baseline vs 14/14 candidate values are agent-run evidence (dispatcher 
 
+### ✅ t1305 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** Demand-pattern re-derivation + smartblock pair sb-demand-top20-v1 (WAIT verdict, UNWIRED-ADVISORY)
+
+**Receipt:** `twelve-lane-receipts/t1305-lane11.md`
+
+**Evidence:** VERIFIED on live bytes: smartblocks/sb-demand-top20-v1.json parses (20 needs, counts sum 140/140, block_status UNWIRED-ADVISORY, provenance records pin-mismatch openly); sb-demand-top20-v1.md present (7532B); needs file askworld-top20-needs-t1296.md sha256 56eab23fca1743cc3b67f6a9b6fb439a9a8bd5b1c0bb49b21e3627decb911189 (117 lines) matches receipt 
+
 ### ✅ t1302 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** veracity-hole design spec (seam demotion) + RED-first adversarial battery
@@ -4343,6 +4351,14 @@ _Last updated: 2026-10-22 18:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol (free): refs/heads/naya/ten-brainindex-heal-t1292 == 28ab48ac6c9ad1856260b74668145937cd94a9b2 (pin-exact); parent == action-time tip e1f19b1c (fetch-verified); diff parent->head = exactly 3 index files (BRAIN/NAYAPOWER-BRAIN-INDEX.json, REAL-TREE.json, REAL-TREE.md). Introducer bisect (first-parent walk, 10 merg
 
+### ✅ t1290 — Team 3, Team Naya Scorer (Decision Engine) — 9.2/10 [VERIFIED]
+
+**Task:** judge retrieval arm clause-tfidf-maxpool-t1290 vs P1 bar 0.60 (SURGE-a)
+
+**Receipt:** `twelve-lane-receipts/t1290-lane3.md`
+
+**Evidence:** VERIFIED: arms/clause-tfidf-maxpool-t1290/arm.py sha 10bce3c9..0a recomputes == seal sha; judge runner 8a48ad0e..67, predictions 968f041e..cd, verdict 37a1e4444..5f all byte-exact; seal (15:52:49Z) precedes results — pre-registered falsifier (rank1<0.60 -> RED) honored; bar re-derived from live bytes (fresh same-action reference run reproduced publ
+
 ### ✅ t1290 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** Lane 3 Judge (Naya Clarity Narzan): SURGE-(a) retrieval arm clause-tfidf-maxpool-t1290 falsification test
@@ -4350,6 +4366,14 @@ _Last updated: 2026-10-22 18:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1290-lane3.md`
 
 **Evidence:** Verified (in-session recomputation, 2026-10-22): all 5 sha-pinned artifacts exist in hidden_files and recompute EXACTLY to receipt claims - arm.py 10bce3c9ca..., judge 8a48ad0e0f..., run_output_ref 5386e7ab78..., predictions 968f041ea8..., verdict 37a1e4444ad... Verdict JSON confirms every claimed cell: rank1 1.0, P1 bar 0.6 (tfidf 0.5 + 0.10), P1_
+
+### ✅ t1286 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** prep gated retrieval-auth-gate wiring brief condition-B instrument (caller census + re-run script)
+
+**Receipt:** `twelve-lane-receipts/t1286-lane4.md`
+
+**Evidence:** VERIFIED: hidden_files/retrieval-auth-gate/caller-census-t1286.json sha a8fc2478..9d and caller-census-rerun.sh sha 78933bbe..85 both recompute byte-exactly to receipt claims; falsifiers pre-registered in the instrument itself (F2 fired on the seat's own probe bug before trust — honest); tip e8a10e0a pinned 3x with zero drift; re-run proven byte-id
 
 ### ✅ t1286 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
