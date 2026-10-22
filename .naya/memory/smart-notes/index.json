@@ -14298,13 +14298,53 @@
         "note": "published directly as a BRAIN projection in commit 0849bf09edc5e142fb3bb75471131bf57165db01 ('SN-0824: The Future Is Now - active intelligence, always learning (Shawn's definition of NayaNET, 2026-10-22)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "d3c6d7bf3389b0487eca819469a97d05c1584faa45a7d534ef7ddaca504b5e4c"
+    },
+    {
+      "smart_note_id": "SN-1801",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn1801-awareness-is-ownership",
+      "title": "Awareness Is Ownership",
+      "content_hash": "a29846203d20c434a1bf379e6170226798db40127883b7577412950d5989b86b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/awareness-ownership/SN-1801/IB-SMART-NOTE-20261022-sn1801-awareness-is-ownership.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LEARNING",
+      "topic": "LEARNING",
+      "subtopic": "AWARENESS_OWNERSHIP",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 24e0b5b9b457c4efb88a700879c1d9f5c372a5da ('Renumber Smart Notes SN-0823→SN-1801 + SN-0824→SN-1802 per main-seat adjudication 6336739995') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "827e86b54fbe8d58170cee9bc1dfd9cdd95de0f575fc5361370a105627b948cc"
+    },
+    {
+      "smart_note_id": "SN-1802",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn1802-answer-your-own-questions",
+      "title": "Answer Your Own Questions",
+      "content_hash": "c55396419991c2adc381abd2b7b17420337a695bcd6f2515cb1e0adf226805e1",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-1802/IB-SMART-NOTE-20261022-sn1802-answer-your-own-questions.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LEARNING",
+      "topic": "LEARNING",
+      "subtopic": "INTELLIGENT_OBEDIENCE",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 24e0b5b9b457c4efb88a700879c1d9f5c372a5da ('Renumber Smart Notes SN-0823→SN-1801 + SN-0824→SN-1802 per main-seat adjudication 6336739995') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "cf791b4bfbbc856908b6a22e2bb9ba6ca9bec7155099262b4c71ccc21a44704e"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1791,
+    "next_sequence": 1803,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "d4d074340aa5653c759844bd5fbc6fec7ba8d6d1f4aa96789473c2e93877d820"
+  "corpus_manifest_hash": "4e69cb4aac7b0d125c6c35dd0ccb608498ab0173a446fdd5f0c28818ecbcfeeb"
 }
