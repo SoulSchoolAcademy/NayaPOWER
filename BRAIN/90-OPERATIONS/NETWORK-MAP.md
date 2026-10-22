@@ -70,7 +70,7 @@ What *is* real today, and therefore recorded:
 
 - **Sibling acknowledgment.** Naya 2's ledger (#2398) names Naya 5's #2396 as its sister ledger, and vice versa in spirit. They are siblings, not yet neighbors — they see each other, but they haven't shaken hands.
 - **Shared provenance.** Both ledgers were created 2026-10-11, both anchor to the same main tip (`1b6f72defa9b7eea98acc822fe80ab307db1aff2`), both show the brain index GREEN at 1,243 files, both follow Shawn's directive: *"Don't tell me, show me."*
-- **Shared coordination.** Both teams coordinate through the Team board (#2175) and mission state (#2154).
+- **Shared coordination.** Both teams coordinate through the Team board (#2793) and mission state (BRAIN/CURRENT-MISSION-STATE.md on main).
 
 That is the whole truth of the connections table today. Everything below is the mechanism — how the first connection forms.
 

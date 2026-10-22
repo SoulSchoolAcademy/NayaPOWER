@@ -26,7 +26,7 @@ def ready_state():
         lane="verify",
         authority_summary="Protected production, credential, money and privacy gates; "
                           "Law 11 (do no harm) is the only hard law",
-        current_truth_location="mission #2154 and current main",
+        current_truth_location="mission BRAIN/CURRENT-MISSION-STATE.md and current main",
         next_action="verify Step 0's required receipt",
         receipt=issue_receipt(agent_id, {
             "q1": "Shawn Vibert",
