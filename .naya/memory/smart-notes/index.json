@@ -14258,6 +14258,46 @@
         "note": "published directly as a BRAIN projection in commit 35cf308e2a99ea8e6037bddb491e29e85ab15b4f ('Smart Note SN-1788 (MAJOR): The Door Was the Bottleneck — finished work that can't land is worth zero (Shawn, 2026-10-21)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "dac989f14ab130f63a1eaae9b3c8cf68da1c747d9532cc3b482f9ea3cabda956"
+    },
+    {
+      "smart_note_id": "SN-0823",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0823-seven-circles-for-seven-days",
+      "title": "Seven Circles for Seven Days — The Orb Circle System",
+      "content_hash": "a663c51617806ba3d12c122805419105f66d7b3b7e1fb88a309cad9aa930de3c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/orb-circle-system/SN-0823/IB-SMART-NOTE-20261022-sn0823-seven-circles-for-seven-days.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "ORB_CIRCLE_SYSTEM",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 7fcbd6befdfdba4c5c00a74e7c02a9ab0c8368ba ('SN-0823: Seven Circles for Seven Days - the Orb Circle System (Shawn ratified 2026-10-22)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "bebe01b9605371bb926c0be58552ec67f87e7a89acf6d1d941ab65796d592dd4"
+    },
+    {
+      "smart_note_id": "SN-0824",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0824-the-future-is-now",
+      "title": "The Future Is Now — Active Intelligence, Always Learning",
+      "content_hash": "88b9a93cc1e1da7e72c8ef30477cbdb08e47e7e11920e88c1ce3e1c7b7047c9f",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/VISION/active-intelligence/SN-0824/IB-SMART-NOTE-20261022-sn0824-the-future-is-now.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "ACTIVE_INTELLIGENCE",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 0849bf09edc5e142fb3bb75471131bf57165db01 ('SN-0824: The Future Is Now - active intelligence, always learning (Shawn's definition of NayaNET, 2026-10-22)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "d3c6d7bf3389b0487eca819469a97d05c1584faa45a7d534ef7ddaca504b5e4c"
     }
   ],
   "sequence_policy": {
@@ -14266,5 +14306,5 @@
     "next_sequence": 1791,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "02be1ca28640f7f8998184e2ada08e340ee57fe61d56128e19e05e548124e3d7"
+  "corpus_manifest_hash": "d4d074340aa5653c759844bd5fbc6fec7ba8d6d1f4aa96789473c2e93877d820"
 }
