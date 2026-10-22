@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 10:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21203,6 +21203,14 @@ _Last updated: 2026-10-22 10:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-gap-scorer-20261014-2200 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** close scorer's two pin-gaps: (1) pin the four-site t0412 tie-break docstring corrections, (2) name the replacement reproduction tolerance
+
+**Receipt:** `twelve-lane-receipts/gap-gap-scorer-20261014-2200-lane9.md`
+
+**Evidence:** VERIFIED (scorer re-derived every load-bearing claim on live bytes): all six receipt-quoted sha256 prefixes byte-exact - rubric.md 8291a7d0..., manifest.json 21eaeb5b..., tie-experiment-t2200.py d94183d6..., builder 364e0383... (drifted forward, named), lexical arm eec52d25..., tfidf arm 5c1b9710... (both drifted forward, named). Non-git substrate 
+
 ### ✅ gap-scorer-20261014-2220-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.2/10 [VERIFIED]
 
 **Task:** gap-scorer-20261014-2220-lane9.md: §1 forensics independent reproduction
@@ -26514,6 +26522,14 @@ _Last updated: 2026-10-22 10:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-gap-lane-scorer-20261021-1920 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** close named gap: observe the smart-note-completeness-gate workflow (PR #2509) FIRING on live bytes
+
+**Receipt:** `twelve-lane-receipts/gap-gap-lane-scorer-20261021-1920-lane4.md`
+
+**Evidence:** VERIFIED (scorer re-derived on live REST, nothing inherited): PR #2921 state=closed merged_at=null base=main head=cccde0cea685c802b6d19575b7c1509bcdc1f7f7 exact; Actions run 39736376559 name=smart-note-completeness-gate status=completed conclusion=success path=.github/workflows/smart-note-completeness-gate.yml event=pull_request head_sha=cccde0cea6
 
 ### ✅ gap-t1182 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.4/10 [VERIFIED]
 
@@ -33946,6 +33962,14 @@ _Last updated: 2026-10-22 10:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gap-lane-scorer-20261021-1930-v2 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: content-level re-verification of the t0412-baseline-builder-cure (the two artifacts the builder could not produce) + worker's own 3-pass scorecard and closing receipt
+
+**Receipt:** `twelve-lane-receipts/gap-gap-lane-scorer-20261021-1930-v2-lane0.md`
+
+**Evidence:** VERIFIED (scorer re-derived every byte claim via git protocol, fresh shallow clone, nothing inherited): branch naya4/t0412-baseline-builder-cure head = 76f077a614b3846479368d86e3b63b7f9bac561d (git ls-remote exact); rubric.md sha256 prefix 8291a7d0c9d6205b exact, 2218 bytes, line 26 = '## Proof query text (declared deviation, t0787 harness run)' ex
 
 ### ✅ triage-20261017-0725-spotaudit-0640 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
