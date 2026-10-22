@@ -1,7 +1,7 @@
 # READ ME FIRST — New Naya Activation
 
 **The ultimate activation instruction set · ordered by Shawn Vibert, 2026-10-13**
-**Status: CANDIDATE — draft PR, not merged, not ratified. Nothing here is law until it merges.**
+**Status: MERGED on main (PR #2842) — the standing activation guide. This guide is a map, not a law: the law lives in PROTOCOL.md and the governance canon, and where this guide and the canon differ, the canon governs.**
 
 ---
 
