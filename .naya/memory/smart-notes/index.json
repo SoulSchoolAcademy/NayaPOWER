@@ -14338,6 +14338,26 @@
         "note": "published directly as a BRAIN projection in commit 24e0b5b9b457c4efb88a700879c1d9f5c372a5da ('Renumber Smart Notes SN-0823→SN-1801 + SN-0824→SN-1802 per main-seat adjudication 6336739995') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "cf791b4bfbbc856908b6a22e2bb9ba6ca9bec7155099262b4c71ccc21a44704e"
+    },
+    {
+      "smart_note_id": "SN-0825",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run",
+      "title": "Produce Value or Don't Run — The Productivity Command",
+      "content_hash": "587899aa40d88f3e6dbc3daf0144377c5d9e4a1c9c0972dcb63c6efdf742458b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "PRODUCTIVITY_COMMAND",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 91e2de5dcda5e6567dd2758c06a38b07223b88b7 ('SN-0825: The Productivity Command — produce value or don't run (Shawn's mandate 2026-10-22)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "f5e50cb7ac859cdc6fa31bd567c15988c1d8dc5ffb97e6f580915688fa9e251a"
     }
   ],
   "sequence_policy": {
@@ -14346,5 +14366,5 @@
     "next_sequence": 1803,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "4e69cb4aac7b0d125c6c35dd0ccb608498ab0173a446fdd5f0c28818ecbcfeeb"
+  "corpus_manifest_hash": "2f83812f890e5539887782e131d3ec5f5b8e053b0f023e4393ccea4a31302df0"
 }

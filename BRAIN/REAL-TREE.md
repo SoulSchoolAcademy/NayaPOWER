@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-22  
-**Receipt basis commit:** `f289672e78c2b314cbb76a6f08d8f7c273a58b88`  
-**Inventory file count:** 1580  
+**Receipt basis commit:** `91e2de5dcda5e6567dd2758c06a38b07223b88b7`  
+**Inventory file count:** 1581  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 800 |
+| 05-MEMORY | 801 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -941,6 +941,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/north-star/SN-1789/IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting.md` — `813fc914d2bf` (9185 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md` — `0c2abb5d1f32` (6071 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md` — `c46f0d01a5b2` (5916 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md` — `06a605af3095` (10686 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/VISION/active-intelligence/SN-0824/IB-SMART-NOTE-20261022-sn0824-the-future-is-now.md` — `9e4a201d4c09` (6815 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
