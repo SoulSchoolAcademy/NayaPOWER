@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-22 16:46 UTC_
+_Last updated: 2026-10-22 17:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 5438
-- ✅ Verified (8+): 5381
+- **Total scored actions:** 5444
+- ✅ Verified (8+): 5387
 - 🟡 Partial (5–7): 55
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 2
@@ -15,17 +15,17 @@ _Last updated: 2026-10-22 16:46 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 393 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 394 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 383 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 353 | 9.0 | 10 |
+| Team 3 | Naya Judge | 354 | 9.0 | 10 |
 | Team 4 | Naya Mason | 341 | 9.0 | 9.6 |
 | Team 5 | Naya Seeker | 483 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 255 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 353 | 9.0 | 10 |
+| Team 7 | Naya Conductor | 354 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 377 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 479 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 684 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 284 | 9.0 | 9.5 |
+| Team 11 | Naya Heart | 287 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 287 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -522,6 +522,7 @@ _Last updated: 2026-10-22 16:46 UTC_
 - **gap-scorer-20261014-2250-lane1:** 1 actions, avg 9.5/10
 - **gap-t1002-lane1:** 1 actions, avg 9.2/10
 - **gap-gap-t1002-lane1-lane1:** 1 actions, avg 9.5/10
+- **lane-scorer-20261022-0950:** 5 actions, avg 9.3/10
 - **scorer-20261014-1520:** 2 actions, avg 9.2/10
 - **scorer-20261014-1540:** 3 actions, avg 8.5/10
 - **gap-t0771:** 2 actions, avg 9.0/10
@@ -692,6 +693,7 @@ _Last updated: 2026-10-22 16:46 UTC_
 - **gap-t0601-lane11:** 1 actions, avg 9.2/10
 - **gap-t1195:** 1 actions, avg 9.5/10
 - **gap-t1292-lane11:** 1 actions, avg 9.5/10
+- **lane-scorer-20261022-1030:** 1 actions, avg 9.0/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
