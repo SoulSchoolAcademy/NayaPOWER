@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "b088d86adc6b24fbe41cbb04b1ed69a9365ca08c",
-  "inventory_file_count": 1584,
+  "receipt_basis_commit": "f082cb8c7f991329aff1a2a859b18cc9413879f3",
+  "inventory_file_count": 1587,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,14 +11,14 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 802,
+    "05-MEMORY": 803,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 430,
+    "10-INTERFACES": 431,
     "11-KNOWLEDGE": 7,
-    "12-ENGINEERING": 25,
+    "12-ENGINEERING": 26,
     "90-OPERATIONS": 92,
     "99-ARCHIVE": 2,
     "ROOT": 7
@@ -4501,6 +4501,11 @@
       "size": 6071
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM-INTELLIGENCE/GOVERNANCE/ACCEPTANCE-LADDER/SN-1803/IB-SMART-NOTE-20261022-sn1803-0004-acceptance-ladder-distilled.md",
+      "blob_sha": "bb102f94f9a8447ee0a144be09dd2ef253365ce1",
+      "size": 6180
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/accountability/SN-0826/IB-SMART-NOTE-20261022-sn0826-have-each-others-back.md",
       "blob_sha": "bbdaeb51a4631c08fde89c372aa063eefe6fee68",
       "size": 9718
@@ -7001,6 +7006,11 @@
       "size": 17346
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/LABEL-GUIDE.md",
+      "blob_sha": "208ff70322eaf2397f2533fa6288492bdc9c0174",
+      "size": 6466
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MACHINE-CONTRACT-NOTES.md",
       "blob_sha": "bcc97ce5b0a73cb22e5898684c345aff5f47be4b",
       "size": 7003
@@ -7157,8 +7167,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
-      "blob_sha": "132eb9d338b2e61ec21c1c66db8c57b10274bb29",
-      "size": 110193
+      "blob_sha": "3a195b5a073e82ccecbec4a25fb1677ed170b4cb",
+      "size": 110487
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/index.html",
@@ -7352,8 +7362,8 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json",
-      "blob_sha": "966f182d5f34860fc201231236e29a04f654d1e9",
-      "size": 3044
+      "blob_sha": "de36b902d110c20d04503cac4aa1be8f18b4ee11",
+      "size": 8409
     },
     {
       "path": "BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V1.md",
@@ -7384,6 +7394,11 @@
       "path": "BRAIN/12-ENGINEERING/README.md",
       "blob_sha": "51cf103c13dd57fe68bd3d1abe826542d11a8c10",
       "size": 3540
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/UNCREATED-FLAGSHIP-TABLES-EVIDENCE-2026-10-22.md",
+      "blob_sha": "6806a937ff7ef85ecb17b9a73af9cf980df2bc09",
+      "size": 11590
     },
     {
       "path": "BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py",
