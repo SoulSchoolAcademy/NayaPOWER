@@ -25,6 +25,20 @@ Checks performed:
      integers >= 2 are searched as literal digit strings. Any other
      untraced number FAILS the validation.
   8. brief_schema carries the required gate fields.
+  9. Canonical contract twin (Factory Contract-Home step 2): the machine
+     twin of the ratified contract (NAYA-DESIGN-CONTRACT.machine.json,
+     generated FROM ../NAYA-DESIGN-CONTRACT-V1.md by
+     engine/generate-contract-twin.py) must (a) record the .md's true
+     sha256, (b) carry the .md's title version, (c) carry the spectrum
+     walk and the Tokens list exactly as parsed from the .md here --
+     independently of the generator, so a generator bug cannot hide --
+     (d) carry the SmartNote board mapping as its own mapping, distinct
+     from the walk, with its board-mapping-only hues kept out of the
+     walk, and (e) be byte-identical to a fresh generation
+     (regenerate-and-diff: twin != generated output FAILS).
+     Env overrides NAYA_TWIN_MD / NAYA_TWIN_JSON point this check at
+     other files; the sabotage control uses them (one hex changed in a
+     COPY of the .md must make this check FAIL).
 
 Exit 0 = all validations pass. Exit 1 = at least one failure.
 """
@@ -174,6 +188,70 @@ for f in ("file", "section"):
     if f not in hs: fail(f"8. brief_schema.harvest_sources missing item field '{f}'")
 if not failures or all(not f.startswith("8.") for f in failures):
     note("8. brief_schema carries contract_version, exemplar_ids_cited, and harvest_sources{file, section, piece_id}")
+
+# 9. canonical contract twin -------------------------------------------------------
+import os, subprocess, tempfile
+twin_md = pathlib.Path(os.environ.get("NAYA_TWIN_MD", BASE.parent / "NAYA-DESIGN-CONTRACT-V1.md"))
+twin_path = pathlib.Path(os.environ.get("NAYA_TWIN_JSON", BASE / "NAYA-DESIGN-CONTRACT.machine.json"))
+twin_gen = BASE / "engine" / "generate-contract-twin.py"
+if not twin_gen.exists():
+    fail("9. twin generator missing: engine/generate-contract-twin.py")
+elif not twin_md.exists():
+    fail(f"9. canonical contract missing: {twin_md}")
+elif not twin_path.exists():
+    fail("9. machine twin missing: NAYA-DESIGN-CONTRACT.machine.json "
+         "(generate it with engine/generate-contract-twin.py)")
+else:
+    twin = json.loads(twin_path.read_text(encoding="utf-8"))
+    md_bytes = twin_md.read_bytes()
+    md_text = md_bytes.decode("utf-8")
+    # 9a. the twin records the .md's true hash — drift is visible
+    if twin.get("source", {}).get("human_file_sha256") != hashlib.sha256(md_bytes).hexdigest():
+        fail("9. TWIN DRIFT: twin's recorded human_file_sha256 != sha256 of "
+             "NAYA-DESIGN-CONTRACT-V1.md on disk")
+    # 9b. the twin carries the contract's own version
+    mtitle = re.search(r"^# .*? v(\d+\.\d+)\s*$", md_text, flags=re.M)
+    if not mtitle or twin.get("version") != mtitle.group(1):
+        fail(f"9. twin version '{twin.get('version')}' != contract title version "
+             f"'{mtitle.group(1) if mtitle else None}'")
+    # 9c. walk + tokens, parsed from the .md HERE (not via the generator)
+    walk_line = next((l for l in md_text.splitlines()
+                      if "The walk (canonical, stated once):" in l), "")
+    walk_hex = re.findall(r"`(#[0-9a-f]{6})`", walk_line)
+    if twin.get("spectrum_walk", {}).get("order") != walk_hex:
+        fail(f"9. twin spectrum_walk {twin.get('spectrum_walk', {}).get('order')} "
+             f"!= walk parsed from the contract {walk_hex}")
+    tok_hex = [t.get("hex") for t in twin.get("tokens", [])]
+    if tok_hex != walk_hex:
+        fail(f"9. twin tokens {tok_hex} != walk {walk_hex}")
+    # 9d. the board mapping is its own mapping; its board-only hues stay out of the walk
+    board = twin.get("smartnote_board_mapping", {})
+    entries = board.get("entries", [])
+    if board.get("distinct_from_walk") is not True or len(entries) != 9:
+        fail(f"9. smartnote_board_mapping must be a distinct mapping with 9 entries "
+             f"(found distinct_from_walk={board.get('distinct_from_walk')}, entries={len(entries)})")
+    board_only = {e["hex"] for e in entries if e.get("board_mapping_only")}
+    if board_only & set(walk_hex):
+        fail(f"9. board-mapping-only hexes leaked into the walk: {sorted(board_only & set(walk_hex))}")
+    if {"#6675ff", "#3ca8ff", "#b8ee57"} - {e["hex"] for e in entries}:
+        fail("9. board mapping is missing one of its non-walk hues (#6675ff / #3ca8ff / #b8ee57)")
+    # 9e. regenerate-and-diff — the twin must equal a fresh generation, byte for byte
+    with tempfile.TemporaryDirectory() as td:
+        regen = pathlib.Path(td) / "regen-twin.json"
+        r = subprocess.run([sys.executable, str(twin_gen),
+                            "--md", str(twin_md), "--out", str(regen)],
+                           capture_output=True, text=True)
+        if r.returncode != 0:
+            fail(f"9. twin generator failed on the contract as-is: "
+                 f"{(r.stderr or r.stdout).strip()[:200]}")
+        elif regen.read_bytes() != twin_path.read_bytes():
+            fail("9. TWIN DRIFT: committed NAYA-DESIGN-CONTRACT.machine.json != fresh "
+                 "generation from the .md (regenerate with engine/generate-contract-twin.py; "
+                 "never hand-edit the twin)")
+        else:
+            note("9. canonical twin verified: source hash, version, walk, tokens and the "
+                 "SmartNote board mapping (9 entries, distinct from the walk) all match the "
+                 ".md, and the committed twin is byte-identical to a fresh generation")
 
 # report ---------------------------------------------------------------------------
 print("=" * 72)
