@@ -162,7 +162,7 @@ Normative text: §10 of `MIRROR-REPORT-2026-10-21.human.md` (fenced block) ≡ `
 - This report already contains the commissioned ten-part assessments and execution prompt. Extend it rather than create a competing source of truth.
 - Document existence is not proof of cold retrieval, comprehension, authorized action, learning, or succession. The cold run must answer all 14 from current evidence, classify each answer, act within authority, and hand off a working state.
 - Measurements in this report's original sections are dated 2026-10-21 and must not be repeated as live 2026-10-22 values without re-derivation.
-- The queried path `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.machine.json` returned 404 on main. Reconcile the intended canonical path and add a dead-pointer negative test; do not invent a competing law file.
+- **Case-sensitive lookup correction (verified against main):** `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.machine.json` (uppercase `NONSTOP-LOOP`) returns 404, but the canonical lower-case machine law `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` resolves (blob `19097e2d2c52cae250b04dcf08fbeb26d2f05c96`) and `AGENTS.md` step 11 names that lower-case path. This proves the uppercase probe was wrong; it does **not** prove a broken canonical pointer. Do not create a duplicate law file. Inspect actual consumers for an uppercase reference and fix only a verified consumer defect.
 
 ### Ten highest-value strengths to preserve
 
@@ -193,7 +193,7 @@ Normative text: §10 of `MIRROR-REPORT-2026-10-21.human.md` (fenced block) ≡ `
 ### Ten immediate actions, in priority order
 
 1. Re-read current boot pointer, governance canon, laws delta, operating state, and live board pointers from main; record exact tip SHA and freshness.
-2. Resolve the confirmed dead pointer only after locating its canonical intended target; plant a dead pointer and prove the check fails.
+2. Search actual boot/runtime consumers for the uppercase nonstop-loop path; if no real consumer references it, close this as a bad-case probe rather than a system defect. Add a dead-pointer negative test only if a real pointer-checking gap is demonstrated.
 3. Run an independent cold 14Q test without injected answers; source-bind every answer and classify PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED.
 4. Turn each unsupported answer into QUESTION → MISSING DOMAIN → MISSING EVIDENCE → MISSING IMPLEMENTATION → OWNER → NEXT TEST.
 5. Prioritize legitimate identity continuity and cold activation; no RLS bypass, forged identity, or unsafe owner reassignment.
