@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 17:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 18:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 7 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 8 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -58,7 +58,8 @@
 - [#2934](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934) Mission-state twin cure — director ruling Option C (TOP-10 director-st
 - [#2869](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869) Naya4/smart notes 2026 09 30
 
-### WIRE (1)
+### WIRE (2)
+- [#2939](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2939) R13 — #2154 pointer sweep: mission state repointed to BRAIN/CURRENT-MI
 - [#2938](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2938) Tier A — Gate trigger-scope repair: board comments stop spawning gate 
 
 ### TEAM (1)
