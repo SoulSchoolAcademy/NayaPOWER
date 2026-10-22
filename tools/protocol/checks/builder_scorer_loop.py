@@ -360,8 +360,8 @@ def check(record: dict) -> dict:
     if final_score < MIN_SCORE_FOR_MERGE:
         return fail(
             f"{work_product}: final round scored {final_score} < "
-            f"{MIN_SCORE_FOR_MERGE} — the law says: if work scores below 9, "
-            "do the triple self-validation until it is 9+. The loop "
+            f"{MIN_SCORE_FOR_MERGE} — the law says: if work scores below 9.5, "
+            "do the triple self-validation until it is 9.5+. The loop "
             "continues — more rounds, more fixing — or the merge still "
             "needs Shawn's word",
             details,

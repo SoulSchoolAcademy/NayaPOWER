@@ -24,7 +24,7 @@
 ### Name resolution summary
 - `cold_start_gate.py` (hers): Tests whether an AGENT can begin work. Requires read receipt, identity, authority knowledge.
 - `protocol_integrity_gate.py` (mine, renamed): Tests whether the PROTOCOL is valid. Manifest well-formed, tip resolvable, law IDs unique.
-- `quality_gate.py` (hers): Validates SCORECARD structure. Weighted dimensions, 9.0 floor.
+- `quality_gate.py` (hers): Validates SCORECARD structure. Weighted dimensions, 9.5 floor.
 - `checks/delivery_evidence_gate.py` (mine, renamed): Validates DELIVERY record. Build + verification evidence present, gates passing.
 
 ### Tests
