@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0819",
+ "intelligence": {
+  "title": "It's Not What You Do — It's How You Do It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it",
+  "smart_note_id": "SN-0819",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-0819/IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-22. No runtime provenance invented.",
+  "ingested_at": "2026-10-22",
+  "essence": "A smart app is not one page, and it is not every feature dumped onto one surface. It is ONE app composed of smart blocks — pages within pages, blocks within blocks — where the home stays light, every function sits behind a clear button, and the layout itself is the intelligence. A feature's presence is worth nothing without its placement: it is not what you do, it is how you do it.",
+  "human_view": "Tonight the three flagship models shipped with every standard feature working — messaging, inbox, invites, reports, install, all of it — and Shawn rejected them on sight: \"you failed… not logical, not sensible, not intelligent, not organized.\" He was right. The build had stacked a second complete app on top of the page: its own banner-hero with a big profile picture, its own menus, its own tabs, with the actual page living underneath. Every box on the feature checklist was ticked, and the experience was a mess. Then he taught the standard plainly: one app does not mean one page — it means one app, made of blocks, easy to operate, everything intentional.",
+  "simple_view": "Imagine building a house by putting a second whole house on top of the first one because the second house has a kitchen you like. It has all the rooms — and nobody can live in it. A good house has one front door, one hallway, and rooms you walk into one at a time. An app is the same: one entrance, clear doors, one room at a time.",
+  "grandma_view": "Dear, having every pot and pan you own sitting out on the counter doesn't make it a good kitchen — it makes it a cluttered one. A good kitchen has everything put in its place, easy to reach when you need it, and the counter clear. That's all this is: everything in its place, nothing piled up, and the important things where they belong.",
+  "naya_view": "Verify a page the way a human meets it, not the way a checklist reads it. The flagship verification measured features present and geometry correct — and never asked the only question that mattered: is this ONE app, composed with intention? Composition is a verification axis of its own: one chrome, one navigation, cover first, home light, every function behind an obvious button, install inside Settings, nothing above the fold that doesn't belong there. A block is a clonable unit — the same block, behaving the same way, in every app the factory makes.",
+  "ai_view": "The factory's promise is not features — plenty of tools have features. The promise is extraordinary experiences, assembled from blocks so good that putting them together is itself the craft. Composition is where intelligence becomes visible: what leads, what waits behind a button, what stays quiet at the bottom. Two systems glued together, or one page carrying everything at once, both fail the same test — nobody thought about how a person would actually move through it.",
+  "machine_view": {
+   "sn": "SN-0819",
+   "title": "It's Not What You Do — It's How You Do It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-0819/IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "composition_standard:\n  unit: smart_block = an OBJECT with its own identity (named, official building block; repeatable, clonable, template-grade)\n  interconnection: blocks are designed to connect; placement is part of a block's design — it is obvious where each block goes because it was composed to go there (elite pieces, placed in the elite place, in the elite way)\n  structure: one app shell (one chrome, one navigation) containing blocks as in-app pages/views\n  home: cover + primary content + entry buttons only; no function block rendered fully open by default\n  access: every function reachable in one tap from a visible, labeled button/tab\n  placement_laws: install and identity editing live inside the Settings block only; nothing promotional above the fold\n  acceptance: feature_present AND feature_placed AND one_system AND home_light — all four required; presence alone never passes"
+  },
+  "views_note": "Views derived 2026-10-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-0819/IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "60144f613f3c5a24ed43a8ae5a5ab3e2fb0be07c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

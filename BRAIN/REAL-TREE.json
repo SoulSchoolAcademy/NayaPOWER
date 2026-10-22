@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "1073d8ffb9983746094733fc93bbb82bd059601c",
-  "inventory_file_count": 1545,
+  "receipt_basis_commit": "7bd2253549048e457ae56e8148a0908e90f91f70",
+  "inventory_file_count": 1547,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 778,
+    "05-MEMORY": 780,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4321,9 +4321,19 @@
       "size": 10463
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/living-data/SN-0822/IB-SMART-NOTE-20261022-sn0822-a-number-in-a-box-is-not-a-report.md",
+      "blob_sha": "f72b5004336328992ba63a7143e5645b6fc4dd64",
+      "size": 3618
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md",
       "blob_sha": "f11b2653d0081180819820d116e3e75b55357ecc",
       "size": 5334
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-0821/IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter.md",
+      "blob_sha": "55c46441cbade43ee2cc4d01f9cb4f9b92df0920",
+      "size": 5276
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/north-star/SN-1789/IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting.md",
