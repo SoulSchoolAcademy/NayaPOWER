@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 07:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4772,6 +4772,14 @@ _Last updated: 2026-10-22 07:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1232-lane9.md`
 
 **Evidence:** Dispatcher verified on main tip d998cac4e via git protocol: .github/workflows/receipt-gate.yml, tools/check_scorecard_receipt_pin.py (4 SCORECARD-RECEIPT-PIN mentions), tools/auto_merge_gate.py (12 P12 mentions, def p12_reasons) all present; kernel/decision_principle.py has class DecisionPrinciple x1, class DecisionEngine x0 — the rename IS on main
+
+### ✅ t1232 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** t1232-lane3
+
+**Receipt:** `twelve-lane-receipts/t1232-lane3.md`
+
+**Evidence:** VERIFIED independently on live bytes at current tip 0849bf09edc5e142fb3bb75471131bf57165db01 (newer than the receipt's pin ecaaf7aa): grep 'class DecisionEngine' over all non-test .py -> ZERO hits; grep 'DecisionEngine(' -> ZERO hits; sanctioned governance check tools/check_no_competing_engine.py -> exit 0 'OK: one decision engine (kernel/value_cal
 
 ### ✅ t1232-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
