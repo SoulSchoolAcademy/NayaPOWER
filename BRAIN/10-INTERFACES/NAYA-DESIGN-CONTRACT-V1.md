@@ -1,4 +1,4 @@
-# NAYA DESIGN CONTRACT v1.1
+# NAYA DESIGN CONTRACT v1.2
 **Status:** CANONICAL — All Naya seats follow this. No exceptions.
 **Ratified:** 2026-10-03 by Shawn Vibert (Human Director)
 **Purpose:** The visual signature, interaction language, and design philosophy of Naya. So Shawn never has to repeat himself.
@@ -10,7 +10,7 @@
 ### Dominant (always present)
 - **Black** (`#0a0a0e`) — backgrounds, buttons, depth
 - **White** (`#ffffff`) — text, light, idle glow
-- **Purple** (`#9d75ff`, `#8a5cff`) — Naya's signature, primary actions
+- **Purple** (`#a06bff`) — Naya's signature, primary actions
 
 ### Spectrum (accents, never dominant)
 
@@ -33,18 +33,21 @@ Color has three distinct jobs. Do not use one job's rule for another.
 - How do you use it → yellow
 - What's in it for you → orange or gold
 
+**THE SPECTRUM WALK — CANONICAL (A.1, stamped by Shawn 2026-10-22):** ordered sets and section identity walk these seven stops in order, never the same stop twice in a row:
+**purple `#a06bff` → blue `#3fb8ff` → green `#2fe89e` → gold `#ffbf3d` → orange `#ff9a5a` → red `#ff5e6c` → magenta `#e84fff`** → back to purple.
+
 ### Tokens
 
-- Magenta (hot pink) `#ed42c4`
-- Purple `#8a5cff` (Naya's signature; also `#9d75ff`)
+- Magenta (hot pink) `#e84fff`
+- Purple `#a06bff` (Naya's signature)
 - Indigo `#6675ff`
-- Cyan `#3ca8ff`
-- Emerald `#35e39b`
+- Cyan `#3fb8ff`
+- Emerald `#2fe89e`
 - Forest emerald (deep green) `#2e9e6a`
 - Lime `#b8ee57`
 - Yellow `#ffd45a`
-- Gold `#e8c766`
-- Orange `#ff8c42`
+- Gold `#ffbf3d`
+- Orange `#ff9a5a`
 - Red `#ff5e6c`
 
 **Law:** Purple/black/white are PROMINENT. Spectrum colors are complementary accents. Gold/yellow is restrained — semantic accents, never dominant text.
@@ -81,8 +84,8 @@ Color has three distinct jobs. Do not use one job's rule for another.
   - LIKE: blue `#55b9ee`
   - FAVORITE: gold `#ffd45a`
   - SAVE: blue `#55b9ee`
-  - CREATE SPACE: purple `#9d75ff`
-  - SHARE: purple `#9d75ff`
+  - CREATE SPACE: purple `#a06bff`
+  - SHARE: purple `#a06bff`
 - White light idle, color on hover
 - Dynamic counts/badges where applicable
 
@@ -172,3 +175,4 @@ Shawn amends this contract verbally. The amending Naya updates this document and
 **Version history:**
 - v1.0 (2026-10-03): Initial ratification. Synthesized from Shawn's directives across the Hub 10/10 drive.
 - v1.1 (2026-10-03): Verbal amendment — three color jobs (accent jewels, endless flow, SmartNote board mapping); cyan named (dictation had rendered it as "Kenya" — fixed); forest emerald + lime + gold + indigo tokens added; active intelligence principle locked.
+- v1.2 (2026-10-22): A.1 stamp applied — Shawn stamped the shipping spectrum walk as canon (his word, 2026-10-22). §1 now names the walk as a canonical table, and the token hexes are reconciled to the walk values (#a06bff lineage: purple #a06bff, blue/cyan #3fb8ff, emerald #2fe89e, gold #ffbf3d, orange #ff9a5a, magenta #e84fff; red #ff5e6c already matched). Indigo `#6675ff` left untouched — A.2 names it fossil-or-token and it awaits its own ruling.

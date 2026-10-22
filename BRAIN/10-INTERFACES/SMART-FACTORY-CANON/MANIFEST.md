@@ -1,3 +1,18 @@
+# THE CANONICAL SET — ONE SOURCE (declared 2026-10-22 · Factory Contract Home, step 1)
+
+The Smart Factory holds ONE canonical set, and it lives in this repo — nowhere else:
+
+- **Design contract:** `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` (v1.2, A.1-stamped) — part of this set **by reference**; its ratified home stays at that path, and this declaration is the pointer.
+- **Piece index:** `CANONICAL-PIECE-INDEX.json` (+ `.md` twin) — this folder.
+- **Piece store:** `pieces.json` — this folder.
+- **Templates + standard feature contracts:** `engine/templates-registry.json` — this folder.
+
+Everything else that wears a contract's name is a pointer or a reference copy, never an authority. `GENERAL-DESIGN-CONTRACT.*` (this folder) is retained as **reference** — the design authority is the ratified contract above. `HUB/DESIGN-CONTRACT.md`, the DESIGN-folder PDF, and the smart-builder `CONTRACT-*` files are copies awaiting pointer conversion (step 7). Amendments land in the canonical set and regenerate every rendering; a copy is never edited as if it were the source.
+
+The assembly record below (2026-10-21, STEP-0 delivery) is preserved as history.
+
+---
+
 # STEP-0 FACTORY DELIVERY — Manifest
 
 Assembled: 2026-10-21 · By: Nu (BUILD), Team Nitro
