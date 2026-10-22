@@ -14358,6 +14358,26 @@
         "note": "published directly as a BRAIN projection in commit 91e2de5dcda5e6567dd2758c06a38b07223b88b7 ('SN-0825: The Productivity Command — produce value or don't run (Shawn's mandate 2026-10-22)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "f5e50cb7ac859cdc6fa31bd567c15988c1d8dc5ffb97e6f580915688fa9e251a"
+    },
+    {
+      "smart_note_id": "SN-0826",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0826-have-each-others-back",
+      "title": "Have Each Other's Back — Say It Before It Costs a Month",
+      "content_hash": "24a4ce3266c3c029fee20bbc80ddd2f818775ca3cf18aaeac12b76011cb3dbd5",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/accountability/SN-0826/IB-SMART-NOTE-20261022-sn0826-have-each-others-back.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "ACCOUNTABILITY",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 4e941e0524774c613323a2fa9b27467704bf30f0 ('SN-0826: Have Each Other's Back — the accountability lesson (Shawn's mandate 2026-10-22)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "b50748ffcd2dc0d543bb8763e0b50093783bb47db26c7938e07631a0a170f866"
     }
   ],
   "sequence_policy": {
@@ -14366,5 +14386,5 @@
     "next_sequence": 1803,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "2f83812f890e5539887782e131d3ec5f5b8e053b0f023e4393ccea4a31302df0"
+  "corpus_manifest_hash": "b14e1458c23d63468eebf763a7a609bead39e92c7b90f2f271b4785dddb67bc5"
 }
