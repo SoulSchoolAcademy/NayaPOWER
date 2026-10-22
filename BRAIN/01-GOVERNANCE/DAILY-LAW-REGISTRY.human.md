@@ -10,7 +10,7 @@ and this registry diverge.
 - Daily-law records: **558** (467 lessons · 87 win-patterns · 4 smart-note laws) from 611 entry bullets
 - With falsifier: 403 · with owner: 108 · with declared behavior change: 1 · with named mechanism: 7
 - L-numbers cited but carrying no entry of their own (counted, never fabricated): 138
-- Governance sets folded in: 23 (3 with falsifiers)
+- Governance sets folded in: 24 (4 with falsifiers)
 - Source: ~/AGENTS.md sha256 `3fafe2072ff675b2…` (910292 bytes)
 
 OPERATING-LAW.json (the 2026-10-10 LAW-X compilation) is retired: this
@@ -606,3 +606,4 @@ registry and LAWS-DELTA.machine.json are the only law compilations now.
 | GOV-0032 | THE HOUSE STANDARD — Take Care of the House |
 | GOV-0033 | THE BALANCED MACHINE |
 | GOV-0034 | THE HOUSE-FIRE LAW — ACTIVE INTELLIGENCE, AUTO-CORRECT IN LIVE TIME |
+| GOV-0035 | 0035-design-law-ratification-v1.machine.json |
