@@ -321,7 +321,9 @@ def test_v7_companion_document_not_a_second_smart_note(tmp_path):
     (parent / "smart-note.md").write_text("# Smart Note\\n", encoding="utf-8")
     (parent / "the-naya-tool-set.md").write_text("# Tool documentation\\n", encoding="utf-8")
     result = mod.audit_registry(root=tmp_path, v7_verified_ids={"IB-000044"})
-    assert result["counts"]["published_pages_without_registry_entry"] == 0
+    # Until a governed companion-artifact contract is available, fail closed.
+    assert result["counts"]["published_pages_without_registry_entry"] == 1
+    assert result["defects"]["published_pages_without_registry_entry"][0]["page"] == "the-naya-tool-set.md"
 
 
 def test_unrelated_markdown_orphan_is_not_ignored(tmp_path):
@@ -330,3 +332,22 @@ def test_unrelated_markdown_orphan_is_not_ignored(tmp_path):
     p.write_text("# Orphan\\n", encoding="utf-8")
     result = mod.audit_registry(root=tmp_path, v7_verified_ids={"IB-000044"})
     assert result["counts"]["published_pages_without_registry_entry"] == 1
+
+
+def test_unverified_adjacent_rogue_document_is_not_whitelisted(tmp_path):
+    parent = tmp_path / "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/tools/IB-000044"
+    parent.mkdir(parents=True)
+    (parent / "smart-note.md").write_text("# Canonical projection\\n", encoding="utf-8")
+    (parent / "rogue.md").write_text("# Unregistered extra document\\n", encoding="utf-8")
+    report = mod.audit_registry(root=tmp_path, v7_verified_ids={"IB-000044"})
+    assert report["counts"]["published_pages_without_registry_entry"] == 1
+    assert report["defects"]["published_pages_without_registry_entry"][0]["page"] == "rogue.md"
+
+
+def test_legacy_matching_ib_id_does_not_authorize_second_path(tmp_path):
+    reg_path = build_clean_root(tmp_path)
+    second = tmp_path / "BRAIN/05-MEMORY/SMART-NOTES/2026/02/01/CAT/TOPIC/SUB/IB-1/smart-note.md"
+    second.parent.mkdir(parents=True)
+    second.write_text("# Forged second location\\n", encoding="utf-8")
+    report = mod.audit_registry(root=tmp_path)
+    assert report["counts"]["published_pages_without_registry_entry"] >= 1
