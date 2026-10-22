@@ -8,8 +8,8 @@
   "authority": "This machine version is made FROM the human version, never instead of it. The human version is the source of truth; if this file and the human file disagree, the human file governs until this file is regenerated.",
   "source": {
     "human_file": "GENERAL-DESIGN-CONTRACT.human.md",
-    "human_file_sha256": "a818917c07f38e3f55d02a680bce0cf43110e52969d77ae60942f63cffbf4352",
-    "human_file_bytes": 18295,
+    "human_file_sha256": "467f1d484c308aa8044dec18b4652a047300156bd84360b1a1975d6d71c5e6ec",
+    "human_file_bytes": 18583,
     "drift_detection": "Recompute sha256 of the human file; if it differs from human_file_sha256, this machine version is stale and must be regenerated before the gate trusts it."
   },
   "canon": {
