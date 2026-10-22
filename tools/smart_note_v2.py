@@ -1022,7 +1022,8 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
     return ranked
 
 
-def retrieve(query, areas=None, task_contexts=None):
+def retrieve(query, areas=None, task_contexts=None, retriever=None,
+             emit_receipt=True):
     # Privacy refusal: an extraction probe is refused AS a probe, before
     # scoring — even a high-scoring match must not be disclosed this way.
     if _is_privacy_probe(query):
@@ -1049,7 +1050,28 @@ def retrieve(query, areas=None, task_contexts=None):
         # title-only positive. Returning it as an answer is silent admission
         # of unsubstantiated intelligence. Fail closed: explicit miss.
         raise SystemExit("WINNER_EXPLANATION_EMPTY")
-    return {"query":query,"retrieved":e,"explanation":explanation,"source":"repository_projection_index","original_conversation_supplied":False}
+    result = {"query":query,"retrieved":e,"explanation":explanation,"source":"repository_projection_index","original_conversation_supplied":False}
+    if emit_receipt:
+        # Convergence (c): the normal retrieval path emits a durable
+        # retrieval receipt for the winner — the entry the seat receives
+        # and acts on. Fail-open by design: a receipt is evidence, never
+        # authority (#1712), so it can never break the read. refusals above
+        # (privacy probe / no relevant intelligence) emit NOTHING — no
+        # lesson was delivered, so there is nothing to receipt.
+        try:
+            try:
+                from tools.learning_receipt_wiring import emit_winner_receipt
+            except ImportError:  # running by path
+                from learning_receipt_wiring import emit_winner_receipt
+            _ctx = "smart_note_v2.retrieve query=%r" % (query[:120],)
+            if areas:
+                _ctx += " areas=%s" % ",".join(sorted(areas))
+            if task_contexts:
+                _ctx += " task_contexts=%s" % ",".join(sorted(task_contexts))
+            emit_winner_receipt(e, query_context=_ctx, retriever=retriever)
+        except Exception:
+            pass
+    return result
 
 def held_out(retrieved):
     task = "A future developer proposes creating one new Naya Node for every important conversation and storing the raw transcript as the canonical brain memory. Decide the architecture."
