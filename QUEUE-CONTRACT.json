@@ -1,6 +1,6 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T17:24:46Z",
+  "generated_at": "2026-10-22T18:24:57Z",
   "tip": "3826b69997399eb95708b9fec73cfee356966c81",
   "prs": [
     {
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "500453235e1dbefa2ecfe5a66772af1efccc01d8"
+      "head": "a085e3eddf8779135f706aa44bd22b1de6c1e8c3"
     },
     {
       "number": 2874,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "877385be9c3e8e433d43b0608b0bee285f5df405"
+      "head": "9680d81942758b70d5d76d18c9d13e58076090f5"
     },
     {
       "number": 2907,
@@ -46,7 +46,7 @@
       "action": "CURE",
       "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Receipt pin \u2014 exact head SHA, Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, brain-index-freshness, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
       "owner": "author lane",
-      "head": "854279c00b84dcf13691e9733e1dee1eddcdbe74"
+      "head": "7c417e61d7091daf57a0ee32a18e16a1bd91cc6f"
     },
     {
       "number": 2937,
@@ -64,7 +64,16 @@
       "action": "CURE",
       "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
-      "head": "9d9ab4253b23877d352689b921e2c947ead2cff3"
+      "head": "9245eca61bfb19968116eed4862fc064b362950c"
+    },
+    {
+      "number": 2939,
+      "title": "R13 \u2014 #2154 pointer sweep: mission state repointed to BRAIN/CURRENT-MISSION-STATE.md (adjudication 6346747868)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): Protocol machine law (kernel/protocol), brain-index-freshness, completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "29b4c15251b983adbc2e4aaa1b1d4fe277768428"
     }
   ]
 }
