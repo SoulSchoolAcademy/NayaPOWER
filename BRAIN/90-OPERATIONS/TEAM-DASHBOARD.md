@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 05:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 06:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 8 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,10 +50,14 @@
 
 ## Open PRs by Area
 
-### KNOW (1)
+### KNOW (2)
+- [#2918](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2918) Brain-index regeneration — cure freshness drift x3 at tip 88da03be (BU
 - [#2907](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907) kappa w690: heal registry drift — register 28 door/leaf pages, pin 1→0 📝draft
 
-### BUILD (2)
+### BUILD (5)
+- [#2919](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2919) Fix materialize-template tests under repo-root pytest — file-relative 
+- [#2917](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2917) Daily Intelligence backfill — the 13 missing editions, Oct 4–19
+- [#2916](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2916) Smart Notes SN-0823 + SN-0824 — Awareness Is Ownership · Answer Your O
 - [#2915](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2915) Daily Intelligence 2026-10-22 — the night the lessons became orders
 - [#2869](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869) Naya4/smart notes 2026 09 30
 

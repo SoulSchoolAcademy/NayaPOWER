@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T05:15:50+00:00",
+ "generated_utc": "2026-10-22T06:15:12+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -53,13 +53,19 @@
    "board_lane": "#2175 lane KNOW",
    "open_prs": [
     {
+     "number": 2918,
+     "title": "Brain-index regeneration \u2014 cure freshness drift x3 at tip 88da03be (BUILD)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2918",
+     "draft": false
+    },
+    {
      "number": 2907,
      "title": "kappa w690: heal registry drift \u2014 register 28 door/leaf pages, pin 1\u21920",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907",
      "draft": true
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 2
   },
   {
    "id": "act",
@@ -140,6 +146,24 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2919,
+     "title": "Fix materialize-template tests under repo-root pytest \u2014 file-relative fixture paths (BUILD",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2919",
+     "draft": false
+    },
+    {
+     "number": 2917,
+     "title": "Daily Intelligence backfill \u2014 the 13 missing editions, Oct 4\u201319",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2917",
+     "draft": false
+    },
+    {
+     "number": 2916,
+     "title": "Smart Notes SN-0823 + SN-0824 \u2014 Awareness Is Ownership \u00b7 Answer Your Own Questions",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2916",
+     "draft": false
+    },
+    {
      "number": 2915,
      "title": "Daily Intelligence 2026-10-22 \u2014 the night the lessons became orders",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2915",
@@ -152,7 +176,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -412,6 +436,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
- "unassigned_prs": 2
+ "open_pr_total": 8,
+ "unassigned_prs": 5
 }
