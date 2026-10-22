@@ -543,7 +543,7 @@
             "selector": "[data-block='today']",
             "values": [
               "Today",
-              "The latest real activity on this page"
+              "The latest real activity in this app"
             ]
           },
           {
