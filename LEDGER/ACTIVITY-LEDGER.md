@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 21:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4250,6 +4250,14 @@ _Last updated: 2026-10-22 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1296-lane11.md`
 
 **Evidence:** Deliverable askworld-top20-needs-t1296.md exists (7122 bytes). Byte-exact clustering method, honest-unknown fraction named (85.0%), representative-line fix disclosed. Why not 9.5: (1) single-seat ceiling — no second seat has re-run the cluster counter; (2) brief-named t0670/t0770 context docs unread (no premise loss asserted); (3) need #20 lumps 3 
+
+### ✅ t1295 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** W704-BOT-THROUGH-HOLD tripwire completion: verdict file Part F + probe v3 + live classification of 4 PRs
+
+**Receipt:** `twelve-lane-receipts/t1295-lane4.md`
+
+**Evidence:** VERIFIED on live bytes by this seat, independent of the lane (2026-10-22 13:5x PDT): hidden_files/w704-tripwire-4instance-verdict-t1295.md (12352b) and hidden_files/w704-tripwire-probe.py (10868b) both byte-present; re-ran the probe read-only against live REST: #2738 -> TRIP (bot actor nayapower-lane-agent[bot], merged 2026-10-21T22:56:48Z, 8 stron
 
 ### ✅ t1292 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
 
@@ -34532,6 +34540,12 @@ _Last updated: 2026-10-22 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261022-1258 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate-stall report: 23 gap-band briefs evaluated, all refused (exit-7/parent-authorship 18, prose-bar 4, seat-line 1), queue untouched
+
+**Evidence:** Process receipt, structural checks: receipt file twelve-lane-receipts/gate-stall-20261022-1258.md present; all 23 briefs named with brief->parent mapping and refusal class; verdict CORRECT SKIP with queue untouched; stall-delta honest (no change since the 11:37 UTC seat-stall — same routing condition). Score 8.5, not 9.5: this is claim-block docume
 
 ### ✅ seat-stall-20261022-0436 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
 
