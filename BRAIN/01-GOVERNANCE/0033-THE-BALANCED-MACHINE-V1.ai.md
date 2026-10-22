@@ -1,6 +1,6 @@
 # THE BALANCED MACHINE V1 — AI Language
 
-*Exact specification for Naya seats running THE BALANCED MACHINE. The AI-language form of 0033 — canonical prose: `0033-THE-BALANCED-MACHINE-V1.human.md` (the prose governs); machine form: `0033-the-balanced-machine-v1.machine.json`. Status: RATIFIED CORE (Shawn, 2026-10-21 ~21:50Z) — specify, do not redesign. Where a number below is a specification choice rather than Shawn's words, it is marked `[SPECIFIED — confirm at ratification]`. Sources: the counted gate audit of 2026-10-21 (`hidden_files/gate-redesign/`) and the design's §0 evidence grounding. Companion law: 0034 (House-Fire).*
+*Exact specification for Naya seats running THE BALANCED MACHINE. The AI-language form of 0033 — canonical prose: `0033-THE-BALANCED-MACHINE-V1.human.md` (the prose governs); machine form: `0033-the-balanced-machine-v1.machine.json`. Status: RATIFIED CORE (Shawn, 2026-10-21 ~21:50Z); FORMALLY RATIFIED (Shawn Vibert, 2026-10-22 ~00:29Z — §10) — specify, do not redesign. Where a number below is a specification choice rather than Shawn's words, it is marked `[SPECIFIED — confirm at ratification]`. Sources: the counted gate audit of 2026-10-21 (`hidden_files/gate-redesign/`) and the design's §0 evidence grounding. Companion law: 0034 (House-Fire).*
 
 *Status: RATIFIED CORE (Shawn, 2026-10-21 ~21:50Z) — specify, do not redesign. This file is the builder's spec. Companion forms: `DESIGN.human.md`, `design.machine.json` — same truth, three tongues. Where a number below is a specification choice rather than Shawn's words, it is marked `[SPECIFIED — confirm at ratification]`.*
 
@@ -46,7 +46,7 @@ Classification is by **paths touched** (PR diff vs merge-base). Highest tier win
 
 ### Tier B — one unified gate
 **Paths:** everything not A and not C.
-**Bar:** the **Unified Paperwork Gate** (§3) green + all content checks green. Scorecard floor: **≥ 8.0/10** `[SPECIFIED — confirm at ratification]` — specified from Shawn's 2026-10-21 framing ("an 8 out of 10 that goes through and works is better than a 9.5 that doesn't go through"); the scorecard must additionally attest, in its body, that the change was exercised/verified (tests run or behavior observed), not merely read. No unresolved blocking finding may stand at any score.
+**Bar:** the **Unified Paperwork Gate** (§3) green + all content checks green. Scorecard floor: **≥ 8.0/10** `[FORMALLY RATIFIED — Shawn Vibert, 2026-10-22 ~00:29Z; §10]` — specified from Shawn's 2026-10-21 framing ("an 8 out of 10 that goes through and works is better than a 9.5 that doesn't go through"); the scorecard must additionally attest, in its body, that the change was exercised/verified (tests run or behavior observed), not merely read. No unresolved blocking finding may stand at any score.
 
 ### Tier C — machine validation only, no PR surface
 **Classes:** Smart Note filings (`BRAIN/05-MEMORY/SMART-NOTES/**`, `SUPER-NOTES/**` filings); index/registry regenerations (`BRAIN/NAYAPOWER-BRAIN-INDEX.json`, `BRAIN/REAL-TREE.*`, `.naya/memory/smart-notes/index.json` and their generators' outputs); pure data files.
@@ -164,6 +164,10 @@ Nothing else in the ruleset changes in this click. If the fallback branch is the
 
 ## 9. Flags for the ratifying seat (specification choices, not core changes)
 
-1. **Tier B score floor 8.0** — the ratified core says "good-and-verified bar" without a number; 8.0 is specified from Shawn's own 2026-10-21 framing. If the ratifying seat wants a different number, this is the single value to change (§2, §3 predicate 3, machine JSON `tiers.B.scorecard_min`).
+1. **Tier B score floor 8.0** — the ratified core says "good-and-verified bar" without a number; 8.0 is specified from Shawn's own 2026-10-21 framing. If the ratifying seat wants a different number, this is the single value to change (§2, §3 predicate 3, machine JSON `tiers.B.scorecard_min`). **RESOLVED 2026-10-22 ~00:29Z: formally ratified at 8.0 (§10).**
 2. **Ruleset scoping fallback (§8)** — whether per-tier Required checks can be scoped directly depends on platform ruleset conditions; the design is workable either way via the fallback, but step 1 must determine which branch is real before step 7.
 3. **Time-to-merge bands** in §6 are `[SPECIFIED]` starting values; the first two weekly reads should re-derive them from observed medians rather than treating them as law.
+
+## 10. Formal ratification
+
+**Ratifier:** Shawn Vibert. **Date:** 2026-10-22 ~00:29Z. **Source:** chat directive — Shawn's word approving all eight gates as presented (GT-067): "my word — execute, get them all done, full permission". **Scope:** the Balanced Machine as designed in this set — the three tiers (§2: A full bar, B one unified paperwork gate, C machine validation via the note door), the Unified Paperwork Gate (§3), and the balance gauge (§6). **Tier B floor:** `tiers.B.scorecard_min` = **8.0 CONFIRMED** — flag §9.1 is resolved; the `[SPECIFIED — confirm at ratification]` mark on the §2 floor is superseded by this section. The 2026-10-21 ~21:50Z core ratification and the 2026-10-21 ~22:34Z governor click (`governor_click_executed` in the machine tongue) stand as recorded; this section adds the formal ratification that was pending over the specified numbers. Machine record: `formal_ratification` object in `0033-the-balanced-machine-v1.machine.json`.
