@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "0e9df7be89ed191bae302f18c1a1592a8495299f",
+  "receipt_basis_commit": "e7d6e717e465268a1eba9f4be7eb1b2f200001a3",
   "inventory_file_count": 1541,
   "domain_counts": {
     "00-ACTIVATION": 7,
@@ -522,18 +522,18 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md",
-      "blob_sha": "929a5ae44a371fc007180f6a288dbeb183ebfff0",
-      "size": 20247
+      "blob_sha": "5f0b8cd798543a2c9d33a61ca7c491805b0b579b",
+      "size": 21387
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md",
-      "blob_sha": "f39c475071200e634d08f288e7c585b46820e8c2",
-      "size": 6877
+      "blob_sha": "6f1041679651f2676716a064de306a52a7c801b2",
+      "size": 7773
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json",
-      "blob_sha": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
-      "size": 18036
+      "blob_sha": "3ff258b9536213ba0cf20f34f9b505dea41f6ac7",
+      "size": 18564
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.ai.md",
@@ -572,8 +572,8 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json",
-      "blob_sha": "bb770ae8dac3030a45fc445fd5127431fd2ea138",
-      "size": 16117
+      "blob_sha": "66f859ef04d366988d8a289d285809346ec37c57",
+      "size": 16111
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md",
