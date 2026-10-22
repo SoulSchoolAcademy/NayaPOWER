@@ -5633,5 +5633,28 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 <script src="js/naya-voice-wiring-v2.js"></script>
 <script src="js/supabase-bridge.js"></script><!-- t0800: Hub<->Supabase persistence bridge; registers window.NayaPowerRuntime (feed room data) -->
 <script src="js/naya-notes.js"></script><!-- Best-of-Best #15: Naya Notes (personal captures — NOT Smart Notes); registers window.NayaNotes for the Lists room panel -->
+<script src="js/naya-search.js"></script><!-- Best-of-Best #12: Command + universal search; registers window.NayaSearch (palette + Cmd-K) -->
+<script>
+/* Best-of-Best #12 wiring — the command palette over the owner's own
+   objects: people, Smart Notes, Naya Notes, Smart Mail threads, Smart
+   Links, ranked by the search_universal service behind the caller's
+   session. Cmd-K / Ctrl-K opens it; the mic enters through the same
+   query path ("Naya, find…"). The session rides window.NayaSearchSession,
+   wired by the auth lane; without it the palette says so honestly and
+   searches nothing — it never fakes a result. The chassis Ask-Naya box
+   above (R.search) is a different surface and is untouched. */
+(function(){
+  if(!window.NayaSearch||!window.NayaSearch.mountPalette) return;
+  var cfg=window.NayaBridgeConfig||{};
+  var store=window.NayaSearch.createStore({
+    supabaseUrl:cfg.supabaseUrl||'https://dahisasgpfvziswqvmvm.supabase.co',
+    anonKey:cfg.anonKey||'',
+    getAccessToken:function(){return typeof window.NayaSearchSession==='function'?window.NayaSearchSession():null;}
+  });
+  var palette=window.NayaSearch.mountPalette(document.body,{store:store});
+  window.NayaSearch.installHotkey(document,function(){palette.open();});
+  window.NayaCommandPalette=palette;
+})();
+</script>
 </body>
 </html>
