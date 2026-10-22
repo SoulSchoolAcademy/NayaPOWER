@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T19:15:40+00:00",
+ "generated_utc": "2026-10-22T20:15:21+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -147,6 +147,30 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2948,
+     "title": "Accountability Ledger v1 \u2014 first writer of system actions into the Smart Ledger (writer + ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2948",
+     "draft": false
+    },
+    {
+     "number": 2946,
+     "title": "Per-person timeline read model: identity registry + unified event stream (Best-of-Best #1,",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2946",
+     "draft": false
+    },
+    {
+     "number": 2945,
+     "title": "Smart Links: data foundation + redirect worker + join attribution (Best-of-Best #3, Phase ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2945",
+     "draft": false
+    },
+    {
+     "number": 2944,
+     "title": "SN-0826: Have Each Other's Back \u2014 Bring the Bad News First",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2944",
+     "draft": false
+    },
+    {
      "number": 2943,
      "title": "Factory Contract-Home Step 3: dual-label the 154 canonical pieces + adjudicate the 416 unv",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2943",
@@ -169,21 +193,9 @@
      "title": "Naya/mission state",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2936",
      "draft": false
-    },
-    {
-     "number": 2934,
-     "title": "Mission-state twin cure \u2014 director ruling Option C (TOP-10 director-stated, register machi",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934",
-     "draft": false
-    },
-    {
-     "number": 2869,
-     "title": "Naya4/smart notes 2026 09 30",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869",
-     "draft": false
     }
    ],
-   "open_pr_count": 6
+   "open_pr_count": 10
   },
   {
    "id": "wire",
@@ -235,15 +247,8 @@
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
-   "open_prs": [
-    {
-     "number": 2874,
-     "title": "Naya2/team dashboard",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2874",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "infra",
@@ -289,8 +294,15 @@
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2947,
+     "title": "Naya Notes: dedicated store + Hub Lists surface with dictation (Best-of-Best #15, Phase 0 ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2947",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "memory",
@@ -463,6 +475,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 12,
- "unassigned_prs": 6
+ "open_pr_total": 16,
+ "unassigned_prs": 10
 }
