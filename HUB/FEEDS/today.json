@@ -1,9 +1,89 @@
 {
   "contract": "room-feed/v1",
   "room": "today",
-  "emitted_at": "2026-10-21T20:03:04.690350-07:00",
+  "emitted_at": "2026-10-22T02:14:57.801376-07:00",
   "source_ref": "engine-job:hub-feeds-emitter-t0479",
   "items": [
+    {
+      "id": "idx-68bf83a4-9857-40bb-ad57-d88f7ea8984d",
+      "title": "SN-9999 — hub-sync live-fire test note (lifecycle record; retired test fixture)",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-22 04:12:18.039908+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-499b3c0e-3ea6-4929-bbad-762e63fd66c7",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-22 04:12:17.837262+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-328f851c-2c34-4ca6-ae19-1a17f2b19f47",
+      "title": "SN-9998 — live-fire distill-mode test note (lifecycle record; retired test fixture)",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-10-22 04:12:16.277765+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-fd1e6fbb-e8fe-4761-967e-b3fb5336e96b",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-10-22 04:12:15.75027+00"
+        }
+      ]
+    },
     {
       "id": "idx-87286474-a5fe-4f57-93da-5c2ef09e0dba",
       "title": "EXECUTION_RECEIPT",
@@ -201,86 +281,6 @@
           "color": "#FFFFFF",
           "tier": "primary",
           "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:40:59.070574+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-409850f9-4cd0-491d-acb8-6b427a11c7e6",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:35:30.237562+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-1e483ca8-6dc3-43b9-91eb-b8a4bbf342c4",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:19:58.964506+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-11d71816-092b-4879-ab7d-e4cd0b64580b",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:16:39.172863+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-e70eeb23-1e8a-47a4-9e56-b59c128cea49",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-10-20 17:10:26.948793+00"
         }
       ]
     },
