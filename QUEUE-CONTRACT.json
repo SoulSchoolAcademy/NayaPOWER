@@ -1,0 +1,52 @@
+{
+  "schema": "naya.queue-contract/1",
+  "generated_at": "2026-10-22T00:35:13Z",
+  "tip": "3e35516787f4b1b2bf9793e9a685ad056a25265e",
+  "prs": [
+    {
+      "number": 2869,
+      "title": "Naya4/smart notes 2026 09 30",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "6fabdd5c0e14bea8ce6dee3c3754d11d955e4a65"
+    },
+    {
+      "number": 2874,
+      "title": "Naya2/team dashboard",
+      "tier": "B",
+      "action": "MERGE-NOW",
+      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "0517d07376f3e84d909db17f62dfe755a956812c"
+    },
+    {
+      "number": 2886,
+      "title": "feat(protocol): pin-drift alarm \u2014 PROTOCOL.md moves without a re-pin now ring the bell",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "b370ae436a15a511f341e1f4ac4aafbab24841dd"
+    },
+    {
+      "number": 2887,
+      "title": "gauge: derive the escape rate from the guardian log (metric c2)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "04d1ded766694e2b17dcbd3080645e9411d9a1a1"
+    },
+    {
+      "number": 2888,
+      "title": "Factory: checkable standard-feature contracts + checker + R1b direct-build door cure",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "808c706917f02c21bc5b434467173277e9b337d7"
+    }
+  ]
+}

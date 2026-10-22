@@ -1,0 +1,45 @@
+{
+  "schema": "naya.operating-state/1",
+  "generated_at": "2026-10-22T00:35:13Z",
+  "tip": "3e35516787f4b1b2bf9793e9a685ad056a25265e",
+  "open_pr_count": 5,
+  "queue_by_tier_action": {
+    "C": {
+      "MERGE-NOW": 1
+    },
+    "B": {
+      "MERGE-NOW": 1,
+      "CURE": 2
+    },
+    "A": {
+      "CURE": 1
+    }
+  },
+  "tip_failing_checks": [
+    "Protocol machine law (kernel/protocol)",
+    "promote-and-prove",
+    "resolve-current-truth",
+    "test"
+  ],
+  "gauge": {
+    "source": "files/balanced-machine/GAUGE-READ-2026-10-22.md",
+    "read_anchor": null,
+    "paperwork_block_rate_pct": null,
+    "time_to_merge_median_hours": {},
+    "escape_rate_proxy_pct": null,
+    "feed_freshness": null
+  },
+  "laws": {
+    "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
+    "iteration": 207,
+    "latest_laws": [
+      "L608",
+      "L609",
+      "L610",
+      "L611",
+      "L612",
+      "L613"
+    ]
+  },
+  "hold_human": []
+}
