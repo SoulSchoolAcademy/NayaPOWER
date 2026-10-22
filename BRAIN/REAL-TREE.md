@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-22  
-**Receipt basis commit:** `7bd2253549048e457ae56e8148a0908e90f91f70`  
-**Inventory file count:** 1547  
+**Receipt basis commit:** `0849bf09edc5e142fb3bb75471131bf57165db01`  
+**Inventory file count:** 1550  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 780 |
+| 05-MEMORY | 783 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -233,6 +233,7 @@
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-09-NAYAPOWER-DAILY-INTELLIGENCE.md` — `fe954e32d2c7` (9817 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-11-LEARNING-EVENT.md` — `d60799ebb3de` (28794 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-20-LEARNING-EVENT.md` — `13f5695b87d5` (11908 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-21-LEARNING-EVENT.md` — `a5a81b54c3fd` (15189 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md` — `cb3d277c8117` (2359 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md` — `9a102af87000` (2091 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md` — `ef4f22f9e3c1` (2239 bytes)
@@ -905,11 +906,13 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-0819/IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it.md` — `6b63d8776308` (5212 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-1790/IB-SMART-NOTE-20261022-sn1790-how-we-do-it-intelligent-blocks.md` — `33330478a77d` (10463 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/living-data/SN-0822/IB-SMART-NOTE-20261022-sn0822-a-number-in-a-box-is-not-a-report.md` — `f72b50043363` (3618 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/orb-circle-system/SN-0823/IB-SMART-NOTE-20261022-sn0823-seven-circles-for-seven-days.md` — `7f6994c38c00` (6324 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md` — `f11b2653d008` (5334 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-0821/IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter.md` — `55c46441cbad` (5276 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/north-star/SN-1789/IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting.md` — `813fc914d2bf` (9185 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md` — `0c2abb5d1f32` (6071 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md` — `c46f0d01a5b2` (5916 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/VISION/active-intelligence/SN-0824/IB-SMART-NOTE-20261022-sn0824-the-future-is-now.md` — `9e4a201d4c09` (6815 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
@@ -1431,7 +1434,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/manifest.json` — `6381822d4c87` (1317 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/sw.js` — `6e6077330368` (1454 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py` — `2951c74ee95f` (37549 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `d49bd7b07ad9` (39183 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `ba9652156d54` (48649 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/booking.html` — `fda0ef13aeab` (229469 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business-hub.html` — `9d527e73f762` (229479 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business.html` — `3d8b82bcd6bf` (229489 bytes)
@@ -1606,7 +1609,7 @@
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/CURRENT-MISSION-STATE.md` — `46ac00f063c1` (8049 bytes)
+- `BRAIN/CURRENT-MISSION-STATE.md` — `426c2e3301df` (7284 bytes)
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
 - `BRAIN/README.md` — `bf4d982f4f32` (2325 bytes)
