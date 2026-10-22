@@ -1,8 +1,23 @@
+import importlib.util
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
-from assemble import assemble
+
+# Load the sibling assemble.py by explicit path under a unique module name.
+# A bare `from assemble import assemble` resolves through sys.modules, which
+# full-suite collection has already populated with the unrelated assembler at
+# HUB/design-system/tools/smart-builder/assemble.py (imported first by
+# functions/tests/test_composable_templates.py) — that collision interrupted
+# pytest collection repo-wide. The explicit path load is immune to it.
+_ASSEMBLE_SPEC = importlib.util.spec_from_file_location(
+    "smart_builder_assemble", Path(__file__).resolve().parent / "assemble.py"
+)
+_ASSEMBLE_MODULE = importlib.util.module_from_spec(_ASSEMBLE_SPEC)
+sys.modules["smart_builder_assemble"] = _ASSEMBLE_MODULE
+_ASSEMBLE_SPEC.loader.exec_module(_ASSEMBLE_MODULE)
+assemble = _ASSEMBLE_MODULE.assemble
 
 
 class AssemblerTests(unittest.TestCase):
