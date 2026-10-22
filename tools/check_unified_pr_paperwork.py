@@ -270,16 +270,29 @@ def run() -> int:
                          "add exactly one explicit 'Seat: Naya <seat>' declaration to the PR body")
 
         comments = consensus.api_get(f"/repos/{repo}/issues/{number}/comments", token)
+        reviews = consensus.api_get(f"/repos/{repo}/pulls/{number}/reviews", token)
+        # Submitted GitHub reviews are a first-class event-scoped delivery path.
+        # Dismissed/pending reviews cannot confer scorecard authority. A
+        # changes-requested review may carry a HOLD but never a positive score.
+        review_receipts = [
+            {"body": r.get("body") or "", "created_at": r.get("submitted_at")}
+            for r in reviews if r.get("state") in ("COMMENTED", "APPROVED")
+        ]
+        review_holds = [
+            {"body": r.get("body") or "", "created_at": r.get("submitted_at")}
+            for r in reviews if r.get("state") == "CHANGES_REQUESTED"
+        ]
+        receipts = comments + review_receipts
         diff_hash = compute_diff_fingerprint(files)
         has_hold, hold_detail, hold_cure, hold_owner = _has_unresolved_hold(
-            comments, author_seat, head, tier["tier"], diff_hash
+            receipts + review_holds, author_seat, head, tier["tier"], diff_hash
         )
         if has_hold:
             return _emit("BLOCKED — UNRESOLVED_HOLD", hold_detail, hold_cure, owner=hold_owner)
 
         minimum = 9.5 if tier["tier"] == "A" else 9.0
         ok, score_detail = _scorecard_for_current_head(
-            comments, head, author_seat, minimum, tier=tier["tier"], diff_hash=diff_hash
+            receipts, head, author_seat, minimum, tier=tier["tier"], diff_hash=diff_hash
         )
         if not ok:
             cure = f"post a scorecard from a different declared seat with `Head SHA: {head}`, `Diff-SHA256: {diff_hash or '<unavailable>'}`, and `Verification: <tests run or behavior observed>`; score >= {minimum:g}/10"

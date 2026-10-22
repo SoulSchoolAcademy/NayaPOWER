@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "4e941e0524774c613323a2fa9b27467704bf30f0",
+  "receipt_basis_commit": "dcaa09e8bb104c64057eec519531d7da0d74f402",
   "inventory_file_count": 1582,
   "domain_counts": {
     "00-ACTIVATION": 19,
@@ -6957,8 +6957,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
-      "blob_sha": "10d0d9e27133a4e0131eaea1f7fc2aaed57de5c5",
-      "size": 6827
+      "blob_sha": "7e1e336df17b2f81c6f4235b243c12ae8ac72933",
+      "size": 8020
     },
     {
       "path": "BRAIN/10-INTERFACES/README.md",
@@ -6967,13 +6967,13 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json",
-      "blob_sha": "e08641b5d7309d3b2596549c8be5ca489eb0acff",
-      "size": 198488
+      "blob_sha": "a50ef2dd2e100f2f6a18ef73e2583adcbc281f6c",
+      "size": 266070
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.md",
-      "blob_sha": "1f4e328d5f202bd39fa4ced943b2a6c955b0633d",
-      "size": 34310
+      "blob_sha": "0e63b2413da58b87e99e39c3e7ef0dd87500f8d0",
+      "size": 35445
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/EXEMPLAR-BUILD-SCORECARD.md",
@@ -6987,13 +6987,13 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/GENERAL-DESIGN-CONTRACT.human.md",
-      "blob_sha": "78e6e816657816d6e9cd472624ab220c5caa8d88",
-      "size": 18295
+      "blob_sha": "c6beb7e0837d5d0e4856c32abd0dfaea886fa878",
+      "size": 18583
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/GENERAL-DESIGN-CONTRACT.machine.json",
-      "blob_sha": "3afbeca34d924090b07464da7233145e6ef5ad0f",
-      "size": 50671
+      "blob_sha": "939b90b31d01f96f6a7afc290b086b9ba479544d",
+      "size": 50782
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/INP008-REBASE-SCORECARD.md",
@@ -7007,8 +7007,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MANIFEST.md",
-      "blob_sha": "0c430f497375ed393b8d74a6c30681f1175e4a0e",
-      "size": 19199
+      "blob_sha": "02de62aa0633d9feecaa96e9f7f83f6f2c9bbd62",
+      "size": 20133
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py",
@@ -7077,8 +7077,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json",
-      "blob_sha": "ba9652156d54a381f2f5470426c90ecde9cfae9b",
-      "size": 48649
+      "blob_sha": "02dcb9f072bfa8e0911ef9af192ab40237f646c2",
+      "size": 49860
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/booking.html",
@@ -7147,8 +7147,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
-      "blob_sha": "e7bfbb2329d178704654ec99538429136c44da87",
-      "size": 60300
+      "blob_sha": "132eb9d338b2e61ec21c1c66db8c57b10274bb29",
+      "size": 110193
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/index.html",
@@ -7902,8 +7902,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "8d9ecdc1cc981238bcef24e6dfec3ac519a64be8",
-      "size": 5080
+      "blob_sha": "70aa913c764af64124ad34f893dfc584951cdc38",
+      "size": 6776
     },
     {
       "path": "BRAIN/MASTER-MAP.md",

@@ -1,0 +1,2060 @@
+[
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "f1f813071e2c7a2293e5560d0e5413d95671dccc2d96cbf2408cdf95c997999a",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "#2925 closed as superseded on proof (6345990182)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": null,
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:2925-closed-as-superseded-on-proof-6345990182",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "ac501ec390f3b76e9f7a6d85c4bdcfdfc86f1ecc410e446f09c88d4568a8d181",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "#2930 casing dispute settled on live bytes",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "f1f813071e2c7a2293e5560d0e5413d95671dccc2d96cbf2408cdf95c997999a",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:2930-casing-dispute-settled-on-live-bytes",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "a4130aa39ed056ab586bc81363dc661bd8d7803d031f4751f413a32f3e21a853",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "#2932 closed as superseded on byte-identical comparison (6345531461)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "ac501ec390f3b76e9f7a6d85c4bdcfdfc86f1ecc410e446f09c88d4568a8d181",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:2932-closed-as-superseded-on-byte-identical-comp",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "a6a0fe58ec69a6f730e535766e844fccff453ab067fdc57b0314423d5658ee9b",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "Essence-distillation repair verified LOSSLESS by independent re-audit (193/193)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "a4130aa39ed056ab586bc81363dc661bd8d7803d031f4751f413a32f3e21a853",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:essence-distillation-repair-verified-lossless-by",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "57df52513a23e1d4f55c9bdd6a00b35f63d19ea2406898ea7fc986b8e226e4f8",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "GT-001 boot gate closed on proof",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "a6a0fe58ec69a6f730e535766e844fccff453ab067fdc57b0314423d5658ee9b",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:gt-001-boot-gate-closed-on-proof",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "b3a2c1733625f9795e7c494bb26836d06d62f8e69a5bf5d8c8c30feb7f7b5fb3",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "GT-041 closed on proof (armed emit run SUCCESS)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "57df52513a23e1d4f55c9bdd6a00b35f63d19ea2406898ea7fc986b8e226e4f8",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:gt-041-closed-on-proof-armed-emit-run-success",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "dc5dc635e0d86988077bd89d365be8579740e037a895517a49e0547651250d80",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "GT-066 ruleset corrected and verified live",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "b3a2c1733625f9795e7c494bb26836d06d62f8e69a5bf5d8c8c30feb7f7b5fb3",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:gt-066-ruleset-corrected-and-verified-live",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "41283aa3b0c6062762e3f3e05bd262fe4c3b00c6a48d2ad5838ca8240c38cbdb",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "GT-069 table-name decision executed (hub_smart_notes_personal)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "dc5dc635e0d86988077bd89d365be8579740e037a895517a49e0547651250d80",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:gt-069-table-name-decision-executed-hub-smart-no",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "ccb0bb12ff6686526ebd642eae715245427c51745f6b50c707d3f1f91e0bda5c",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "Laws filed: L632, L633, L634, WP-215, WP-216, PROACTIVE BY DESIGN, value-per-action rule",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "41283aa3b0c6062762e3f3e05bd262fe4c3b00c6a48d2ad5838ca8240c38cbdb",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:laws-filed-l632-l633-l634-wp-215-wp-216-proactiv",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "af848a65efd772f9c45dc54d5fa6c182f6bd6ca9bd9b58e01ec0fc0d159172a2",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "Morning Intelligence Report 2026-10-22 delivered (PDF)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "ccb0bb12ff6686526ebd642eae715245427c51745f6b50c707d3f1f91e0bda5c",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:morning-intelligence-report-2026-10-22-delivered",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "f7fef3fed3fcb1e1c550e53867d0223b3f89ee9444b221e0ba45f4b09a3010f7",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "Naya 3 five Brain failures reproduced and mapped (board 6345345363)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "af848a65efd772f9c45dc54d5fa6c182f6bd6ca9bd9b58e01ec0fc0d159172a2",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:naya-3-five-brain-failures-reproduced-and-mapped",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "ed7c33b4625f90b3014cbe4fcdfe69b2ebe1cc1ce3f1641499b3882d4e4e7e50",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2747 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "f7fef3fed3fcb1e1c550e53867d0223b3f89ee9444b221e0ba45f4b09a3010f7",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2747",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "b584c0fd0bc73d76790d536f153e021f140a6cab9aa7459a02fe72ff493df7e0",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2776 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "ed7c33b4625f90b3014cbe4fcdfe69b2ebe1cc1ce3f1641499b3882d4e4e7e50",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2776",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "ed999e11e280cffa608ccf73beab424a44895f34948cdb295595ac02b375db21",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2863 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "b584c0fd0bc73d76790d536f153e021f140a6cab9aa7459a02fe72ff493df7e0",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2863",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "f7b7ffa9b8a638d4d76a52b5c3c795bf01a5f749b5ed4ac78fff5638eed5ef50",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2864 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "ed999e11e280cffa608ccf73beab424a44895f34948cdb295595ac02b375db21",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2864",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "d7cab2fe8eeaa2593f2de263ec09dca9aea7e5bf92943d460bf023f63eaa5a8f",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2865 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "f7b7ffa9b8a638d4d76a52b5c3c795bf01a5f749b5ed4ac78fff5638eed5ef50",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2865",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "03d56587e039573a1fb97f166b5a127722df18c1a6eb570af68f1ef4b03773b3",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2866 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "d7cab2fe8eeaa2593f2de263ec09dca9aea7e5bf92943d460bf023f63eaa5a8f",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2866",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "461e017b1d8b9c9e4240118bc64665fbbda07c0faa1d40760b4a5a644134bef9",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2867 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "03d56587e039573a1fb97f166b5a127722df18c1a6eb570af68f1ef4b03773b3",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2867",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "9d74eed42125c6c6f7113dbae9272946187c61a083dcac833b7e76a3f6a7f57d",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2877 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "461e017b1d8b9c9e4240118bc64665fbbda07c0faa1d40760b4a5a644134bef9",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2877",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "47fd9dd0b04c15f372aaff6cb07d503e4cb02facb66dae17ae4460d32c18eba5",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2878 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "9d74eed42125c6c6f7113dbae9272946187c61a083dcac833b7e76a3f6a7f57d",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2878",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "d63d0c883fe9dd357ccd811f3f2487852c04da7bf1937e0cc79b6dba50f27694",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2888 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "47fd9dd0b04c15f372aaff6cb07d503e4cb02facb66dae17ae4460d32c18eba5",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2888",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "d1c67edb5faaeefecf98755fa8e8f5b1550a80f06d612b7a046f6809a2b7455d",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2890 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "d63d0c883fe9dd357ccd811f3f2487852c04da7bf1937e0cc79b6dba50f27694",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2890",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "e064ebb2fecffe8771d07af9b38b77ec94095d2e681d966ee1c37f288b53b0d9",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2892 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "d1c67edb5faaeefecf98755fa8e8f5b1550a80f06d612b7a046f6809a2b7455d",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2892",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "baf29eda7c66fe04248d62e20c07090fe1a5316f5dc6b83eb7625169c845f87b",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2893 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "e064ebb2fecffe8771d07af9b38b77ec94095d2e681d966ee1c37f288b53b0d9",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2893",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "3e3ff1d6d543f37b5f7f4ec106f9493adb94c75e2d90a754f8555e97dd7a4766",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2895 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "baf29eda7c66fe04248d62e20c07090fe1a5316f5dc6b83eb7625169c845f87b",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2895",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "c5003365598ff3eddf30b2f9312becaf40455c31f4254470ec90bdb3ab095287",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2896 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "3e3ff1d6d543f37b5f7f4ec106f9493adb94c75e2d90a754f8555e97dd7a4766",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2896",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "fbcf8b48c86991d658c80747fd73208450eb7bb8c9168d587f0711bed65804e3",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2897 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "c5003365598ff3eddf30b2f9312becaf40455c31f4254470ec90bdb3ab095287",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2897",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "40cf9e6150cf7ddc8154e6131f102db6687a426bcfb3b48a858890fb3b8823ef",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2900 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "fbcf8b48c86991d658c80747fd73208450eb7bb8c9168d587f0711bed65804e3",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2900",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "ecd6aa5c3043b33b4a037fa40d2ecbd735bf00575069f18617b13d32b486a3de",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2903 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "40cf9e6150cf7ddc8154e6131f102db6687a426bcfb3b48a858890fb3b8823ef",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2903",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "2a51399cb80928c38a924081da925e89f6e0d1398d813e03cf2edcb907bc1860",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2905 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "ecd6aa5c3043b33b4a037fa40d2ecbd735bf00575069f18617b13d32b486a3de",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2905",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "9cbbd9d8090b3e48357ee976d2842710ae1f22884238c255bcdba88b30e9c53d",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2906 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "2a51399cb80928c38a924081da925e89f6e0d1398d813e03cf2edcb907bc1860",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2906",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "ebbacd671863235ec0ebee7a51c1b7bd27048f0edd9b3a6a11721be0fd739bbc",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2909 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "9cbbd9d8090b3e48357ee976d2842710ae1f22884238c255bcdba88b30e9c53d",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2909",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "1f1f96d4e734a65ba0ab386991dde769806ea3a1eb3fd39dfa05885b0a2e5f48",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2910 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "ebbacd671863235ec0ebee7a51c1b7bd27048f0edd9b3a6a11721be0fd739bbc",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2910",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "241e949d15f967959b2ad78faf6e756005fee5d6e081b80179f08d8c649a1bc2",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2912 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "1f1f96d4e734a65ba0ab386991dde769806ea3a1eb3fd39dfa05885b0a2e5f48",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2912",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "380657af1dbce7efbbb9cb3b0639c32ed2202c2c2e78c3050961cb591044d6ff",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2913 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "241e949d15f967959b2ad78faf6e756005fee5d6e081b80179f08d8c649a1bc2",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2913",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "0323634bca56a8c98f28b21f5c419711a5b3cb4681af7ba12daaaaf1b16a28d9",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2914 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "380657af1dbce7efbbb9cb3b0639c32ed2202c2c2e78c3050961cb591044d6ff",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2914",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "ae9bb68d6e627f7d0c16aeffc68d9773c0b5d0b0eaecaae0214a77238cfa3129",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2915 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "0323634bca56a8c98f28b21f5c419711a5b3cb4681af7ba12daaaaf1b16a28d9",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2915",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "0e9255c0b9d95e7f09814041f627f8dd841e16ef79fe9215fefb53f01ce23265",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2917 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "ae9bb68d6e627f7d0c16aeffc68d9773c0b5d0b0eaecaae0214a77238cfa3129",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2917",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "010040806fb96c15a91b167707c5a0db4cbe4ebb9b0a5e45082864a05a8a69ab",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2923 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "0e9255c0b9d95e7f09814041f627f8dd841e16ef79fe9215fefb53f01ce23265",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2923",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "5c1e517492876b894bcb7a68a90f3345a44e4c8f69f3c6bfa6265b7a2850ab67",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2926 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "010040806fb96c15a91b167707c5a0db4cbe4ebb9b0a5e45082864a05a8a69ab",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2926",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "cf8b45d817698c0f07fad8ecbfc217be971b3c99f48877e279c9d1c26e2897ec",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2927 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "5c1e517492876b894bcb7a68a90f3345a44e4c8f69f3c6bfa6265b7a2850ab67",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2927",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "a1bc01fa590a2e040b11a0266cf33ad57d37b92055705bf6538a804ccc39d065",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2928 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "cf8b45d817698c0f07fad8ecbfc217be971b3c99f48877e279c9d1c26e2897ec",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2928",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "3d835c064934002b673ac35ee32876dba74496298bc90db0a09dd103311a8b2f",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2929 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "a1bc01fa590a2e040b11a0266cf33ad57d37b92055705bf6538a804ccc39d065",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2929",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "fc7aafa7145a8b075483bfd41f7442fbb6e1df6ac3d48d0ef50570b3aedc9741",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2930 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "3d835c064934002b673ac35ee32876dba74496298bc90db0a09dd103311a8b2f",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2930",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "d06cabd8b2c281c856859819c15c7a435fa53dcbb02490175dbe894d5b7efc8c",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2931 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "fc7aafa7145a8b075483bfd41f7442fbb6e1df6ac3d48d0ef50570b3aedc9741",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2931",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "b0a908c4de7b90792cc380134b6c9ddb640ed243b339d4d59f9f17d787ae87b1",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2933 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "d06cabd8b2c281c856859819c15c7a435fa53dcbb02490175dbe894d5b7efc8c",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2933",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "fbfe1360256809aec861701805f9e7d230517e5039ac0ee7718e3b33a0875854",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow"
+  },
+  "outcome": {
+   "kind": "pr",
+   "summary": "PR #2935 merged with an individual verification verdict (audit-enumerated)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "b0a908c4de7b90792cc380134b6c9ddb640ed243b339d4d59f9f17d787ae87b1",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:pr-2935",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "84050127928f7a440fd36a5dbf486f86d81ad6c8d1d9c23625d1d93be6c472ac",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "R13 replacement-pointer adjudication posted (6346747868)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "fbfe1360256809aec861701805f9e7d230517e5039ac0ee7718e3b33a0875854",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:r13-replacement-pointer-adjudication-posted-6346",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "ff302310229f6ebaacb40f05e51284995372b3bb76e7f21e85317588bd98ff47",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "R14 pointer-casing adjudication done (WIRE 17:00Z)",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "84050127928f7a440fd36a5dbf486f86d81ad6c8d1d9c23625d1d93be6c472ac",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:r14-pointer-casing-adjudication-done-wire-17-00z",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "644282fed8076c405f2704ddc9ff1bbc2681e1f765bf6c04b6a76642b38be87e",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "Reports handover package completed and blob-verified (6/6), accepted by Nitro lane",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "ff302310229f6ebaacb40f05e51284995372b3bb76e7f21e85317588bd98ff47",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:reports-handover-package-completed-and-blob-veri",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "52db101d63dff861f5bf19ccbbbc6d92e9dadcb388a753291a5e917011b05691",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "SN-0821 verified live on Hub wall",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "644282fed8076c405f2704ddc9ff1bbc2681e1f765bf6c04b6a76642b38be87e",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:sn-0821-verified-live-on-hub-wall",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "4c0362b859db459fa1a77ef540811a8c6f46a0afbc8fe8e84076d6eac9688164",
+  "event_type": "outcome_verified",
+  "evidence_refs": [
+   {
+    "kind": "evidence",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "day": "2026-10-22",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables"
+  },
+  "outcome": {
+   "kind": "decision",
+   "summary": "Supabase all-access token revoked and verified",
+   "verified": true
+  },
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "52db101d63dff861f5bf19ccbbbc6d92e9dadcb388a753291a5e917011b05691",
+  "privacy_classification": "PUBLIC",
+  "source_id": "outcome:2026-10-22:supabase-all-access-token-revoked-and-verified",
+  "source_table": "accountability_census",
+  "status": "VERIFIED",
+  "value": {},
+  "verification": {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "state": "VERIFIED",
+   "verifier": "value-density-audit"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "6de284696ccff651d967675c8e45444aa3dd6f938352e3f41cdb296c04559fce",
+  "event_type": "loop_flagged_zero_output",
+  "evidence_refs": [
+   {
+    "kind": "census",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "consecutive_zero_days": 3,
+   "day": "2026-10-22",
+   "disposition": "KILL the clock; run on change only — kill routed to the Nitro estate scheduler (audit evidence: 99 ACTIVE rows, 2 verified claims both already covered, added=0 run after run)",
+   "flag_threshold_days": 3,
+   "mechanism": "learning-bridge"
+  },
+  "outcome": {},
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "4c0362b859db459fa1a77ef540811a8c6f46a0afbc8fe8e84076d6eac9688164",
+  "privacy_classification": "PUBLIC",
+  "source_id": "loop-flag:learning-bridge:2026-10-22",
+  "source_table": "accountability_census",
+  "status": "RECORDED",
+  "value": {},
+  "verification": {
+   "state": "RECORDED"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "beea9f0fa016c4ccc3497923dcdaae18bf53dde48185b35217e9a985927306e1",
+  "event_type": "loop_flagged_zero_output",
+  "evidence_refs": [
+   {
+    "kind": "census",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "consecutive_zero_days": 3,
+   "day": "2026-10-22",
+   "disposition": "wire into a real path or delete — zero production callers (lesson_inject, lesson_score, learning gates)",
+   "flag_threshold_days": 3,
+   "mechanism": "lesson-tools"
+  },
+  "outcome": {},
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "6de284696ccff651d967675c8e45444aa3dd6f938352e3f41cdb296c04559fce",
+  "privacy_classification": "PUBLIC",
+  "source_id": "loop-flag:lesson-tools:2026-10-22",
+  "source_table": "accountability_census",
+  "status": "RECORDED",
+  "value": {},
+  "verification": {
+   "state": "RECORDED"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "bd2be4184d0e31fafad0356603a1255289193a7b7d00d7de97c755a842f8ad6b",
+  "event_type": "loop_flagged_zero_output",
+  "evidence_refs": [
+   {
+    "kind": "census",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actor": "audit",
+   "actor_kind": "system",
+   "consecutive_zero_days": 3,
+   "day": "2026-10-22",
+   "disposition": "KILL the duplicate — executed 2026-10-22 by cron surgery (board receipt 6349282086), definition saved restorable",
+   "flag_threshold_days": 3,
+   "mechanism": "nine-node-verification-watch"
+  },
+  "outcome": {},
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "beea9f0fa016c4ccc3497923dcdaae18bf53dde48185b35217e9a985927306e1",
+  "privacy_classification": "PUBLIC",
+  "source_id": "loop-flag:nine-node-verification-watch:2026-10-22",
+  "source_table": "accountability_census",
+  "status": "RECORDED",
+  "value": {},
+  "verification": {
+   "state": "RECORDED"
+  }
+ },
+ {
+  "event_at": "2026-10-22T17:30:00Z",
+  "event_hash": "17289eb65fca74853110868da709b6f8e779f39323be914a3f8b1d28b63c9de1",
+  "event_type": "run_census",
+  "evidence_refs": [
+   {
+    "kind": "census",
+    "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793"
+   }
+  ],
+  "learning_refs": [],
+  "metadata": {
+   "actions_runs": 8449,
+   "activity_units": 8986,
+   "actor": "audit",
+   "actor_kind": "system",
+   "board_comments": 537,
+   "day": "2026-10-22",
+   "merged_without_individual_verification": 79,
+   "outcomes_verified_total": 52,
+   "prs_closed_unmerged": 2,
+   "prs_merged": 115,
+   "prs_opened": 84,
+   "window_end": "2026-10-22T17:30:00Z",
+   "window_start": "2026-10-21T17:30:00Z"
+  },
+  "outcome": {},
+  "parent_ledger_event_id": null,
+  "previous_chain_hash": "bd2be4184d0e31fafad0356603a1255289193a7b7d00d7de97c755a842f8ad6b",
+  "privacy_classification": "PUBLIC",
+  "source_id": "census:2026-10-22:audit",
+  "source_table": "accountability_census",
+  "status": "RECORDED",
+  "value": {},
+  "verification": {
+   "state": "RECORDED"
+  }
+ }
+]

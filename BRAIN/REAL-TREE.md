@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-22  
-**Receipt basis commit:** `4e941e0524774c613323a2fa9b27467704bf30f0`  
+**Receipt basis commit:** `dcaa09e8bb104c64057eec519531d7da0d74f402`  
 **Inventory file count:** 1582  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -1441,17 +1441,17 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/MANIFEST.md` — `fb4326693d95` (2260 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/index.html` — `8226325770ba` (1134115 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/tokens.css` — `caac347591eb` (925 bytes)
-- `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — `10d0d9e27133` (6827 bytes)
+- `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — `7e1e336df17b` (8020 bytes)
 - `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json` — `e08641b5d730` (198488 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.md` — `1f4e328d5f20` (34310 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json` — `a50ef2dd2e10` (266070 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.md` — `0e63b2413da5` (35445 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/EXEMPLAR-BUILD-SCORECARD.md` — `cae335d0eb2f` (13288 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/EXEMPLAR-GAP-REPORT.md` — `4a0d60a2afae` (12983 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/GENERAL-DESIGN-CONTRACT.human.md` — `78e6e8166578` (18295 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/GENERAL-DESIGN-CONTRACT.machine.json` — `3afbeca34d92` (50671 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/GENERAL-DESIGN-CONTRACT.human.md` — `c6beb7e0837d` (18583 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/GENERAL-DESIGN-CONTRACT.machine.json` — `939b90b31d01` (50782 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/INP008-REBASE-SCORECARD.md` — `7dfe6d0ba657` (17346 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MACHINE-CONTRACT-NOTES.md` — `bcc97ce5b0a7` (7003 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MANIFEST.md` — `0c430f497375` (19199 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MANIFEST.md` — `02de62aa0633` (20133 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py` — `1d7674c116e6` (7140 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build_queue-schema.sql` — `1693263c4524` (1772 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/check_standard_features.py` — `c4f6ffb7c6e7` (25030 bytes)
@@ -1465,7 +1465,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/manifest.json` — `6381822d4c87` (1317 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/sw.js` — `6e6077330368` (1454 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py` — `2951c74ee95f` (37549 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `ba9652156d54` (48649 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `02dcb9f072bf` (49860 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/booking.html` — `fda0ef13aeab` (229469 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business-hub.html` — `9d527e73f762` (229479 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business.html` — `3d8b82bcd6bf` (229489 bytes)
@@ -1479,7 +1479,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/product.html` — `3b4b17d2301c` (229496 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/signup.html` — `c9a8ebfa907e` (229469 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory.css` — `0d5ad26b6b6d` (171405 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json` — `e7bfbb2329d1` (60300 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json` — `132eb9d338b2` (110193 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/index.html` — `111fcc724277` (6940 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/probe.mjs` — `bcfd218db5ad` (2491 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/shot-desktop.png` — `70cbc53a7de6` (431836 bytes)
@@ -1640,7 +1640,7 @@
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/CURRENT-MISSION-STATE.md` — `8d9ecdc1cc98` (5080 bytes)
+- `BRAIN/CURRENT-MISSION-STATE.md` — `70aa913c764a` (6776 bytes)
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
 - `BRAIN/MISSION-STATE.json` — `1354672ee7d6` (8461 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_

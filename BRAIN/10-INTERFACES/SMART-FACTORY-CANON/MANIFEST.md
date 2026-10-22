@@ -99,3 +99,18 @@ By: Nu (BUILD), Team Nitro — DOER stage of the relay, answering Resolve's scor
 | 9 | Intake sync/deploy scripts | ABSENT | **LANDED** — engine/sync-smart-notes.py + engine/generate-share-card.py (deploy leg = engine/deploy.py, item 3) |
 
 **Coverage: 9/9 items landed** — items 5 and 6 in the only form that exists (production harvest / live-schema snapshot), stated on their rows and in their files, not dressed as file copies.
+
+## CANONICAL SET — declared 2026-10-22 (Factory Contract-Home program, Shawn's order)
+
+The single canonical set is:
+
+- `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — the human contract, v1.2+
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/NAYA-DESIGN-CONTRACT.machine.json` — its generated machine twin (lands in the twin step)
+- `CANONICAL-PIECE-INDEX.json` / `CANONICAL-PIECE-INDEX.md`
+- `pieces.json`
+- `engine/templates-registry.json`
+- `engine/check_standard_features.py`
+
+The GENERAL contract pair (`GENERAL-DESIGN-CONTRACT.human.md` / `GENERAL-DESIGN-CONTRACT.machine.json`) is **superseded as a contract** — its 16 laws survive as the Factory's law shelf, carried into the generated Factory page from the canonical contract + DESIGN-LANGUAGE §10; the pair is retained for provenance only and must not be cited as the contract.
+
+**Pointer rule:** every other copy of the contract anywhere is a pointer, not a source.
