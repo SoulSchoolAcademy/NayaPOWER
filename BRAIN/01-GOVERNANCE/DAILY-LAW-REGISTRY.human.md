@@ -7,11 +7,11 @@ edit it by hand — regenerate. Freshness is mechanical:
 `python3 tools/generate_daily_law_registry.py --check` fails when the prose
 and this registry diverge.
 
-- Daily-law records: **558** (467 lessons · 87 win-patterns · 4 smart-note laws) from 611 entry bullets
-- With falsifier: 403 · with owner: 108 · with declared behavior change: 1 · with named mechanism: 7
+- Daily-law records: **561** (470 lessons · 87 win-patterns · 4 smart-note laws) from 616 entry bullets
+- With falsifier: 406 · with owner: 111 · with declared behavior change: 4 · with named mechanism: 7
 - L-numbers cited but carrying no entry of their own (counted, never fabricated): 138
-- Governance sets folded in: 23 (3 with falsifiers)
-- Source: ~/AGENTS.md sha256 `3fafe2072ff675b2…` (910292 bytes)
+- Governance sets folded in: 24 (4 with falsifiers)
+- Source: ~/AGENTS.md sha256 `e274b9a67f9dba80…` (913604 bytes)
 
 OPERATING-LAW.json (the 2026-10-10 LAW-X compilation) is retired: this
 registry and LAWS-DELTA.machine.json are the only law compilations now.
@@ -487,6 +487,9 @@ registry and LAWS-DELTA.machine.json are the only law compilations now.
 | L611 | F6 | every mode-selecting default is the safe/non-publishing/non-destructive mode; publishing, minting, or deleting requires the mode set expl… |
 | L612 | F1 | "restored" requires (1) the L609 per-surface proof AND (2) a writer census — every writer named and stood down or accounted for; with an … |
 | L613 | F9 | enforcement artifacts (triggers, gates, functions, error/block text) citing a human ruling name the source-verified quote at build time; … |
+| L614 | F6 | census approval-capable identities before setting any distinct-actor count; a count above distinct non-author identities is never set. |
+| L615 | F7 | verdict + head + seat bind within one artifact/form; every matcher repair ships a mixed-form negative control that must read False. |
+| L616 | F2 | a coverage claim names its eviction behavior; queued-run cancellations are an alarm surface (mechanism: the guardian log, live this hour). |
 | WP-20 | F7 | when the qualified executor is unavailable, seal the probe with a handoff spec — never execute a warm version of a cold probe. |
 | WP-21 | F8 | every revert merge closes with the triad; "revert landed" without all three is a claim, not a close. |
 | WP-35 | F7 | Builder's merge-queue drain v2 (08:46–08:55Z) falsified night-shift-verify's 9.5/10 branch-scoped APPROVE on PR #2514 in-step with Naya 4… |
@@ -606,3 +609,4 @@ registry and LAWS-DELTA.machine.json are the only law compilations now.
 | GOV-0032 | THE HOUSE STANDARD — Take Care of the House |
 | GOV-0033 | THE BALANCED MACHINE |
 | GOV-0034 | THE HOUSE-FIRE LAW — ACTIVE INTELLIGENCE, AUTO-CORRECT IN LIVE TIME |
+| GOV-0035 | 0035-design-law-ratification-v1.machine.json |

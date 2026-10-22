@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-22  
-**Receipt basis commit:** `bd3688f9e77409d65301f2dc4282c737f3747f13`  
+**Receipt basis commit:** `1073d8ffb9983746094733fc93bbb82bd059601c`  
 **Inventory file count:** 1545  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -145,8 +145,8 @@
 - `BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.ai.md` — `faabf8359e9e` (5023 bytes)
 - `BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.human.md` — `566711d0c16d` (19899 bytes)
 - `BRAIN/01-GOVERNANCE/0035-design-law-ratification-v1.machine.json` — `0992eb9c81c7` (4871 bytes)
-- `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md` — `5348d9b690b5` (87770 bytes)
-- `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json` — `1eb26bef019b` (510210 bytes)
+- `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md` — `4d2a8e1735a3` (88284 bytes)
+- `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json` — `daffabc2cce9` (513540 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
 - `BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json` — `3320441029bd` (16942 bytes)
