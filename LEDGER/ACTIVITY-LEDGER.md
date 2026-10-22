@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 06:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21019,6 +21019,12 @@ _Last updated: 2026-10-22 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261014-1905-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** GAP CLOSED: pre-claim claimability gate mechanized (claim-brief.py)
+
+**Evidence:** VERIFIED live: hidden_files/bin/claim-brief.py exists, executable, gate machinery present (evaluate_gate, REFUSED pre-mv paths, 32 CLAIMABILITY GATE refs), --self-test GREEN on the current suite. Clears 9.5: the mechanism survives in the living tool and was grown by later seats (strongest proof of value); the parent-run replay made 'closed' falsifi
+
 ### ✅ gap-t0776-lane9-decline2 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up DECLINED + structural root cause named with proof
@@ -23180,6 +23186,12 @@ _Last updated: 2026-10-22 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ t-converge-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Factual verification input for the canonical contract/oath decision (provenance tables, enforcement map, ruling-premise checks)
+
+**Evidence:** VERIFIED on the nayapower mirror: all 3 cited branch-head commits exist (naya2/oath-manifesto-0021-0022 @ 28123869, naya5/oath-and-doctrine @ 22358b10, naya4/contract-staging @ ea501b68); 2 sampled blob SHAs byte-match (NAYA-ACTIVATION/naya-contract.py 9494e66b, 0021-NAYA-OATH-V1.ai.md fc8d7c24). Score 9.0 = GOOD, ONE MORE PASS. Why not 9.5: the la
 
 ### ✅ lane-scorer-20261021-2010 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
@@ -26252,6 +26264,12 @@ _Last updated: 2026-10-22 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ coldnaya-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** COLD-NAYA PROOF: can a stranger go from clone to locked-in on the repo alone?
+
+**Evidence:** VERIFIED on the nayapower mirror at the receipt's tip 59e8a9af (2026-10-13 16:33 PDT): dead-board claim re-verified (READ-ME-FIRST.md lines 25/38/55 cite #2175 as the live board); staleness claim re-verified (CURRENT-MISSION-STATE.md 'Last verified 2026-10-13 ~10:08 PDT' asserts 4f0c9aa8, one merge behind the tip). Clears 9.5: a genuine falsifying 
 
 ### ✅ gap-lane-scorer-20261021-1920-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
