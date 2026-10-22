@@ -57,14 +57,16 @@ from datetime import datetime, timezone
 PROTOCOL_MD = "PROTOCOL.md"
 
 PIN_SOURCE = (
-    "origin/main @ d986404acac7b3e1be6a4eb253bbc5f34460729f "
-    "(PROTOCOL.md ratified 2026-10-20; pinned at operationalization, "
-    "2026-10-20). A drift in protocol bytes is a deliberate re-pin "
-    "(code change), never a silent pass.")
+    "origin/main @ 85e26ee0cc5245d3b8037d57e36958261f105527 "
+    "(PROTOCOL.md text as landed by PR #2802, merge "
+    "e1e259c4c7910f7b924dbe0d5f651eab067eac12, 2026-10-21T22:55:56Z; "
+    "document ratified 2026-10-20; re-pin ratified 2026-10-22). "
+    "A drift in protocol bytes is a deliberate re-pin (code change), "
+    "never a silent pass.")
 PROTOCOL_FILE_PIN = \
-    "cb7bc9e78b3ac86b939c475f79ae00d0f390fc0a70727b9717a08524190be84c"
+    "f43cae6d0a18baccd04e372494c5f636277349b8edc5eaf5274597d3de4c4b46"
 STEP0_PIN = \
-    "588cac59b390cccae7443cc406f5b0f37b61bec81d74fcd1d635ea3fb66f40da"
+    "d9d894ec20bc5168c2b390b613c3b631efe2f3adee079a00c6486ef6aeb8bf1e"
 
 STEP0_START = "**0. DECLARE"
 STEP0_END = "**1. WAKE"
