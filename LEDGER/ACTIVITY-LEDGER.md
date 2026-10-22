@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 17:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 18:22 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4226,6 +4226,14 @@ _Last updated: 2026-10-22 17:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1302-lane2.md`
 
 **Evidence:** Dispatcher verified disk artifacts: lane-experiments/t1302/ (prereg-sealed.md stamp==mtime 22:29:24 PDT, outbox OUT-01..05, scorer-packet/ seal-log.json+escrow+leak-audit), decisions receipt exists. Provisional unblinded scores (spawns failed x2, t1262 recurrence); blinded re-score packet sealed and waiting.
+
+### ✅ t1296 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** rank top-20 ask-world demand needs from live log
+
+**Receipt:** `twelve-lane-receipts/t1296-lane11.md`
+
+**Evidence:** Deliverable askworld-top20-needs-t1296.md exists (7122 bytes). Byte-exact clustering method, honest-unknown fraction named (85.0%), representative-line fix disclosed. Why not 9.5: (1) single-seat ceiling — no second seat has re-run the cluster counter; (2) brief-named t0670/t0770 context docs unread (no premise loss asserted); (3) need #20 lumps 3 
 
 ### ✅ t1292 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
 
@@ -25319,6 +25327,12 @@ _Last updated: 2026-10-22 17:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-gap-gap-t-distill-chain-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** amend feed-distillation-554.md with the two review-shaped misses
+
+**Evidence:** Both comments verified live by ID, absence pre-amendment confirmed, exactly +3 lines in the file's LESSON format, footer byte-intact. Why not 9.5: the deeper root cause (triage review-shape detector) remains unbuilt — named with a recommendation; it is dispatcher build-brief territory, not a lane-pass closable gap, so no follow-up filed (the receip
+
 ### ✅ lane-scorer-20261021-2040 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** receipt t1022-lane5 (cold-retrieve re-verification at live tip; CLAIM HOLDS verdict)
@@ -31331,6 +31345,12 @@ _Last updated: 2026-10-22 17:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-gap-20261017-2350-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.4/10 [VERIFIED]
+
+**Task:** re-verify L431/L434 adjudication on live bytes, amend distillation
+
+**Evidence:** Deepened the adjudication (required-check proof via rulesets API), corrected a byte-imprecision (#2675 predating invocation), amended feed-distillation-2641.md, wrote standing boundary note with re-verified corpus SHA. Why not 9.5: the #2635 07:28:39Z behavioral firing is carried, not re-derived (named honestly; low value — the seat's own call). No
+
 ### ✅ gap-lane-scorer-20261017-1115-lane10-recusal — Team 10, Team Naya Scorer (Brain Index) — 8.0/10 [VERIFIED]
 
 **Task:** gap-lane-scorer-20261017-1115-lane10-recusal.md: recusal - verdict is self-ratification, brief re-filed with machine-readable gate
@@ -34452,6 +34472,24 @@ _Last updated: 2026-10-22 17:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261022-0436 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** seat-stall claim-block report (23 briefs, zero claimable)
+
+**Evidence:** Null-result report, correctly formed: 23 briefs evaluated in ORDERING order, every refusal named with claim-brief.py exit code, queue untouched. Why not 9.5: not a work receipt — its value is the claim block and queue integrity, not lane work product. No dispatch signal needed beyond the named eligible-seat classes.
+
+### ✅ gap-distill-daily-20261022-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** capture the old code's 5 false FAILs on the finder's live inputs
+
+**Evidence:** Closure of distill-daily-20261022's named gap: full command transcript of the old code's 5 #2793 FAILs, pin SHAs named, contrast runs (old+current snapshot, fixed+poisoned snapshot) all exit 0, git state restored. Internally consistent and honest (pass-1 path miss disclosed). Why not 9.5: the entire chain (reconstruction, poisoning-window table, ca
+
+### ✅ distill-daily-20261022-lane0 — Team 0, Team Naya Scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** fix boot_pointer_check.py 5 false FAILs (live-board regex miss)
+
+**Evidence:** VERIFIED: boot_pointer_check.py L73/L77 carry the case-insensitive bold-tolerant regexes and L195 the loud DEGRADED exit 1; the 3 claimed changes are in the file. Function probes 4/4 and fresh-clone end-to-end PASS claims are the seat's own runs, not re-run. Why not 9.5: at filing the old-code 5-FAIL full run was uncaptured (the seat's own named re
 
 ### ✅ gap-distill-daily-20261022 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
