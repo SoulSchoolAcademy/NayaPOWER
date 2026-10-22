@@ -269,11 +269,11 @@ def make_fresh_model():
                     "as_of_ts": time.time(),
                 },
                 "mission": {
-                    "status": "OK", "issue": 2154, "title": "Mission State",
-                    "state": "open", "comment_count": 10,
+                    "status": "OK", "source": "BRAIN/CURRENT-MISSION-STATE.md",
+                    "title": "Mission State",
                     "updated_at": "2026-10-12T00:00:00Z",
                     "body_preview": "Priority 1: engine consolidation",
-                    "url": "https://github.com/x/issues/2154",
+                    "url": "https://github.com/x/blob/main/BRAIN/CURRENT-MISSION-STATE.md",
                     "as_of_utc": "2026-10-12T00:00:00+00:00",
                     "as_of_ts": time.time(),
                 },
@@ -362,10 +362,16 @@ class TestMissionSourceBound(unittest.TestCase):
 
     @staticmethod
     def _falsifier_issue(body):
+        # Contents-API shape for BRAIN/CURRENT-MISSION-STATE.md on main —
+        # the canonical mission source since the R13 pointer sweep.
+        import base64
         return {
-            "number": 2154, "title": "Mission State", "state": "open",
-            "comments": 10, "updated_at": "2026-10-13T00:00:00Z",
-            "body": body, "html_url": "https://github.com/x/issues/2154",
+            "name": "CURRENT-MISSION-STATE.md",
+            "path": "BRAIN/CURRENT-MISSION-STATE.md",
+            "sha": "fakesha",
+            "content": base64.b64encode(body.encode()).decode(),
+            "encoding": "base64",
+            "html_url": "https://github.com/x/blob/main/BRAIN/CURRENT-MISSION-STATE.md",
         }
 
     def _run_query(self, model, question):
@@ -423,11 +429,11 @@ class TestMissionSourceBound(unittest.TestCase):
         # They must refuse completeness answers, not present the preview as
         # the whole mission.
         old_section = {
-            "status": "OK", "issue": 2154, "title": "Mission State",
-            "state": "open", "comment_count": 10,
+            "status": "OK", "source": "BRAIN/CURRENT-MISSION-STATE.md",
+            "title": "Mission State",
             "updated_at": "2026-10-13T00:00:00Z",
             "body_preview": "Priority 1: engine consolidation",
-            "url": "https://github.com/x/issues/2154",
+            "url": "https://github.com/x/blob/main/BRAIN/CURRENT-MISSION-STATE.md",
             "as_of_utc": "2026-10-13T00:00:00+00:00",
             "as_of_ts": time.time(),
         }

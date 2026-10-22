@@ -14378,13 +14378,33 @@
         "note": "published directly as a BRAIN projection in commit 4e941e0524774c613323a2fa9b27467704bf30f0 ('SN-0826: Have Each Other's Back — the accountability lesson (Shawn's mandate 2026-10-22)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "b50748ffcd2dc0d543bb8763e0b50093783bb47db26c7938e07631a0a170f866"
+    },
+    {
+      "smart_note_id": "SN-1803",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn1803-0004-acceptance-ladder-distilled",
+      "title": "The Acceptance Ladder — report only the rung you proved",
+      "content_hash": "6dda9730ccce96303aa10e08e284ca0d1307e586e7f9876be953749df88e6c66",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM-INTELLIGENCE/GOVERNANCE/ACCEPTANCE-LADDER/SN-1803/IB-SMART-NOTE-20261022-sn1803-0004-acceptance-ladder-distilled.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM-INTELLIGENCE",
+      "topic": "SYSTEM-INTELLIGENCE",
+      "subtopic": "GOVERNANCE",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "intelligence-door",
+        "note": "door write 2026-10-22 by Naya Beta (w729): distilled w724 from NAYANODE/0004 live bytes; page + capture + entry in the same push via gh-app-api per Shawn's 17:33Z intelligence-door ruling"
+      },
+      "page_hash": "31f31dbfd000c4cc183adf063dfdeceaafce679df3e3070140d8b42e5f64cda7"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1803,
+    "next_sequence": 1804,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "b14e1458c23d63468eebf763a7a609bead39e92c7b90f2f271b4785dddb67bc5"
+  "corpus_manifest_hash": "d9f08a95b638aa1bb353e600ba9855f25300b6081b92509dbfa0231fc82635c9"
 }
