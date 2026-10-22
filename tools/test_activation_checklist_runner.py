@@ -40,7 +40,9 @@ def make_repo(tmp_path, registry=True, manifest=True, mech=True):
     agents.write_text("# fixture law\n")
     if registry:
         (root / "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json").write_text(json.dumps({
-            "generated_from": {"agents_md_sha256": hashlib.sha256(agents.read_bytes()).hexdigest()}}))
+            "generated_from": {"daily_law_source": {
+                "sha256": hashlib.sha256(agents.read_bytes()).hexdigest(),
+                "path_label": "~/AGENTS.md"}}}))
     if manifest:
         (root / ".naya/project-intelligence/MANIFEST.json").write_text(
             json.dumps({"projects": [{"project_id": "fixture"}]}))
@@ -199,3 +201,31 @@ def test_real_checklist_shape(tmp_path):
     assert len(checklist_rows) == 12
     assert len({c["step"] for c in checklist_rows}) == 6
     assert r["checklist_schema"] == "naya.activation.checklist.v1"
+
+
+def test_tampered_agents_fails_with_real_fingerprint(tmp_path):
+    # REGRESSION (runner read a nonexistent registry key, so every real
+    # activation false-failed with fingerprint "None"): with the real
+    # GT-010 registry schema, a tampered AGENTS.md must FAIL naming the
+    # registry's actual fingerprint — never None.
+    root, agents = make_repo(tmp_path)
+    want = hashlib.sha256(agents.read_bytes()).hexdigest()
+    agents.write_text("# fixture law\n# tampered line\n")
+    r = runner.Runner(root, make_args(agents), providers=green_providers(), now=NOW).run()
+    row = by_name(r)["AGENTS.md read at current main tip"]
+    assert row["status"] == "FAIL"
+    assert want[:16] in row["evidence"]
+    assert "None" not in row["evidence"]
+    assert r["verdict"] == "FAIL"
+
+
+def test_legacy_wrong_key_registry_does_not_pass(tmp_path):
+    # NEGATIVE CONTROL: a registry carrying only the retired wrong key
+    # (generated_from.agents_md_sha256) must NOT satisfy the leg — the
+    # runner reads the schema the GT-010 generator actually emits.
+    root, agents = make_repo(tmp_path)
+    (root / "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json").write_text(json.dumps({
+        "generated_from": {"agents_md_sha256": hashlib.sha256(agents.read_bytes()).hexdigest()}}))
+    r = runner.Runner(root, make_args(agents), providers=green_providers(), now=NOW).run()
+    row = by_name(r)["AGENTS.md read at current main tip"]
+    assert row["status"] == "FAIL"
