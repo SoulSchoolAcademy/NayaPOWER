@@ -14058,6 +14058,206 @@
         "note": "published directly as a BRAIN projection in commit 98c4686a41a9860efc3fe1c76be82871dba985c6 ('Smart Note SN-1789: The Night the Catch Held — We Celebrate by Noting (celebration practice instance #1, Shawn 2026-10-22 ~00:50Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "99b93d79496f4d775630a7950421a53d80747e03eb6b6b8b250d12271d6feaaf"
+    },
+    {
+      "smart_note_id": "SN-0815",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0815-a-lesson-isnt-learned-until-behavior-changes",
+      "title": "A Lesson Isn't Learned Until Behavior Changes — And the Change Gets Declared",
+      "content_hash": "6408c0a2725ca5a8a04805dc9eb7060ca0acf58d7065178c7094df172e3f3cbd",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/LEARNING/north-star/SN-0815/IB-SMART-NOTE-20261021-sn0815-a-lesson-isnt-learned-until-behavior-changes.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LEARNING",
+      "topic": "LEARNING",
+      "subtopic": "NORTH_STAR",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 6a66f5bf3e5bd4dbb0e5017ea5febf1be8ed5230 ('smart-note: SN-0815 - the lesson north star (lesson + declared behavior change)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "866c731e9cb7bb523cb098faa28803fe39ad453b48280b7e7a8bac8e3cb7ee16"
+    },
+    {
+      "smart_note_id": "SN-0816",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn0816-it-claimed-shawns-authority-nobody-had-checked",
+      "title": "It Claimed Shawn's Authority — And Nobody Had Checked",
+      "content_hash": "e591a5a1832b5e9667c39f6af718315ff6acf6423af5841399fdbefbb4f672f2",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/LEARNING/verification/SN-0816/IB-SMART-NOTE-20261021-sn0816-it-claimed-shawns-authority-nobody-had-checked.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LEARNING",
+      "topic": "LEARNING",
+      "subtopic": "VERIFICATION",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b7e52ec6ed1cc7e223f80302e06ed117c90659f8 ('smart-note: SN-0816 - it claimed Shawn's authority, nobody had checked (lesson + declared change)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "5d77ffe1876354d7b151fc3eca0716b34a7b69a6d9e15f1700ac40ef42b11626"
+    },
+    {
+      "smart_note_id": "SN-0817",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door",
+      "title": "The Guard Watched One Door",
+      "content_hash": "b05c7bbf6d41a2c11d0a53159e6fceb7f6ec2ad5b53e87598188df6a4a5f2c61",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "GUARDS",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 09da2a5c5d27e485cc99abfea54e23202d449fef ('SN-0817: The Guard Watched One Door — lesson note with declared behavior change (Nitro)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "1105a399bb3d6bed6da48612a0e8056f90ab41816ab6cacab07e70b35c781109"
+    },
+    {
+      "smart_note_id": "SN-0818",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now",
+      "title": "True When I Wrote It Is Not True Now",
+      "content_hash": "9adba05cfaec7dd1575772ecae38bb75a0c0276e05a8f89b3b136f933bc90161",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LEARNING",
+      "topic": "LEARNING",
+      "subtopic": "VERIFICATION",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit f5ec9ac79f6b2e42e482e9dfc74f82e778bca61c ('SN-0818: True When I Wrote It Is Not True Now — lesson note with declared behavior change (Nitro)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "e62a4c4407a9d812aab8e52bee3934c84608ecd950b895249672290cebcf032c"
+    },
+    {
+      "smart_note_id": "SN-0819",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it",
+      "title": "It's Not What You Do — It's How You Do It",
+      "content_hash": "e273bedd215f25312eb3f780ab6142553dcf62d59b050b9c46eb62b73f748e26",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-0819/IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "COMPOSITION",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 60144f613f3c5a24ed43a8ae5a5ab3e2fb0be07c ('SN-0819: It's Not What You Do — It's How You Do It (Lesson Standard filing, Nitro seat)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "483ff99568c55d8b69f8c4406cb11cec4c744b874b09ee7523b383fc99d07329"
+    },
+    {
+      "smart_note_id": "SN-0820",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet",
+      "title": "The Official Building Blocks of the New Internet",
+      "content_hash": "61e9839055c7347b9b6a48dd63b0dd061472cea005142ed66e626c0d0716e7d8",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "FACTORY",
+      "topic": "FACTORY",
+      "subtopic": "BUILDING_BLOCKS",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit cd1deb6b84ab95df2e015b6a2effa695bae3804e ('Smart Note SN-0820: The Official Building Blocks of the New Internet (Smart App Factory doctrine — Shawn, 2026-10-22)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "2ea21edb19b5affddecb7469ec27ec8e41417528c8010b6e1078eadf4014228b"
+    },
+    {
+      "smart_note_id": "SN-0821",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter",
+      "title": "Essence Is a Form, Not a Filter",
+      "content_hash": "d18758873b5229430a86bec4d66f7354b2212a802a18bd0e93eafe5abd9f21da",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/intelligent-obedience/SN-0821/IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LEARNING",
+      "topic": "LEARNING",
+      "subtopic": "INTELLIGENT_OBEDIENCE",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit ae06c2389362ae04b65e038a5c7690e07bf8c51a ('Smart Note SN-0821 — Essence Is a Form, Not a Filter (lesson: challenge nonsense; essence never filters)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ba23e8fee68c6bb9bc279c5aaf0bf1692652fd0195c2a9693fe65f809e9d2977"
+    },
+    {
+      "smart_note_id": "SN-0822",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn0822-a-number-in-a-box-is-not-a-report",
+      "title": "A Number in a Box Is Not a Report",
+      "content_hash": "4e02d3223a0d2b7ba413ef63d67b9cc832762f2ff20ecbd3303d329cd924a0e8",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/living-data/SN-0822/IB-SMART-NOTE-20261022-sn0822-a-number-in-a-box-is-not-a-report.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "LIVING_DATA",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 7bd2253549048e457ae56e8148a0908e90f91f70 ('Smart Note SN-0822 — A Number in a Box Is Not a Report (the living-data standard)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "4474e9240a0728debd327b589c9881d057641bc2ddb5f3e9c18f0da37523a7b5"
+    },
+    {
+      "smart_note_id": "SN-1787",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn1787-the-lesson-law",
+      "title": "The Lesson Law — A Lesson Is Only Learned When Behavior Changes",
+      "content_hash": "baf61abde4bde4b5a8e0ee7fc55336b845db70d378b82d416133be5e1833fd2e",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/governance/SN-1787/IB-SMART-NOTE-20261021-sn1787-the-lesson-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "GOVERNANCE",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit e1bb636820d8a8a8ab9b4696f840346c659b3c07 ('Smart Note SN-1787: The Lesson Law — a lesson is only learned when behavior changes (Shawn, 2026-10-21)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "6cb74cb186de3bac6cf999ed70b5175db798aa317c5a8d7de311058f5521f3d6"
+    },
+    {
+      "smart_note_id": "SN-1788",
+      "intelligent_block_id": "IB-SMART-NOTE-20261021-sn1788-the-door-was-the-bottleneck",
+      "title": "The Door Was the Bottleneck — Finished Work That Can't Land Is Worth Zero",
+      "content_hash": "1c44e02b8df2f6a4be5705ab4bb1e2c933662715c369e7551aa1562cb2091576",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/merge-discipline/SN-1788/IB-SMART-NOTE-20261021-sn1788-the-door-was-the-bottleneck.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "MERGE_DISCIPLINE",
+      "captured_at": "2026-10-21",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 35cf308e2a99ea8e6037bddb491e29e85ab15b4f ('Smart Note SN-1788 (MAJOR): The Door Was the Bottleneck — finished work that can't land is worth zero (Shawn, 2026-10-21)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "dac989f14ab130f63a1eaae9b3c8cf68da1c747d9532cc3b482f9ea3cabda956"
     }
   ],
   "sequence_policy": {
@@ -14066,5 +14266,5 @@
     "next_sequence": 1791,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "1c499245a43eb2f7da5d88b461f916a146f736ee336ab1985b4c5a0b41074d23"
+  "corpus_manifest_hash": "02be1ca28640f7f8998184e2ada08e340ee57fe61d56128e19e05e548124e3d7"
 }
