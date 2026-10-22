@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T15:15:59+00:00",
+ "generated_utc": "2026-10-22T16:15:31+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,8 +31,15 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2929,
+     "title": "Omega: parse_snapshot() learns the live director grammar (D2 cure)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2929",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "know",
@@ -146,13 +153,37 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 2934,
+     "title": "Mission-state twin cure \u2014 director ruling Option C (TOP-10 director-stated, register machi",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934",
+     "draft": false
+    },
+    {
+     "number": 2933,
+     "title": "Authority prose: align 4 stale 9.0 refs to the enforced 9.5 bar",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2933",
+     "draft": false
+    },
+    {
+     "number": 2931,
+     "title": "Cure-forward: door-obligation records for SN-1801 + SN-1802 (#2916 md-only landing)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2931",
+     "draft": false
+    },
+    {
+     "number": 2930,
+     "title": "Extend mirror report: 14Q continuous execution addendum",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2930",
+     "draft": false
+    },
+    {
      "number": 2869,
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869",
      "draft": false
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -412,6 +443,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
- "unassigned_prs": 1
+ "open_pr_total": 9,
+ "unassigned_prs": 5
 }

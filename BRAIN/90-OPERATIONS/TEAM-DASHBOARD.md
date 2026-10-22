@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 15:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 16:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 9 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,11 +50,18 @@
 
 ## Open PRs by Area
 
+### LEARN (1)
+- [#2929](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2929) Omega: parse_snapshot() learns the live director grammar (D2 cure)
+
 ### KNOW (2)
 - [#2925](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2925) Brain-index regen at basis 51902fc7 — covers the 13 Daily Intelligence
 - [#2907](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907) kappa w690: heal registry drift — register 28 door/leaf pages, pin 1→0 📝draft
 
-### BUILD (1)
+### BUILD (5)
+- [#2934](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934) Mission-state twin cure — director ruling Option C (TOP-10 director-st
+- [#2933](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2933) Authority prose: align 4 stale 9.0 refs to the enforced 9.5 bar
+- [#2931](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2931) Cure-forward: door-obligation records for SN-1801 + SN-1802 (#2916 md-
+- [#2930](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2930) Extend mirror report: 14Q continuous execution addendum
 - [#2869](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869) Naya4/smart notes 2026 09 30
 
 ### TEAM (1)
