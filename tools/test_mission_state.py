@@ -37,19 +37,19 @@ FAKE_LIVE = {"derived_utc": "2026-10-22T00:00:00Z",
 
 def test_parser_extracts_the_snapshots_own_facts():
     snap = bms.parse_snapshot(MD_TEXT)
-    # The snapshot states its instant seconds-less (2026-10-22T14:38Z);
+    # The snapshot states its instant seconds-less (2026-10-22T20:15Z);
     # the parser accepts the form and normalizes to :00 (ruling, Option C).
-    assert snap["last_verified_utc"] == "2026-10-22T14:38:00Z"
-    assert snap["main_tip"] == "e8a10e0a4ba05eea4c0c0d8448e9362b6de62946"
-    # TIP STATIC is a stated form: from == to == the anchored tip.
-    assert snap["tip_moved"] == {"from": "e8a10e0a4ba05eea4c0c0d8448e9362b6de62946",
-                                  "to": "e8a10e0a4ba05eea4c0c0d8448e9362b6de62946"}
+    assert snap["last_verified_utc"] == "2026-10-22T20:15:00Z"
+    assert snap["main_tip"] == "4b49c86662203d6cbde266cbba1778cbe42dd620"
+    # TIP MOVED is a stated form: from != to, anchored at the 'to' tip.
+    assert snap["tip_moved"] == {"from": "91e2de5dcda5e6567dd2758c06a38b07223b88b7",
+                                  "to": "4b49c86662203d6cbde266cbba1778cbe42dd620"}
     assert snap["identity"] == {"repo": "SoulSchoolAcademy/NayaPOWER",
                                 "live_board": 2793, "master_directive": 2601}
     kn = snap["key_numbers"]
-    # The board delta is stated as '+7 ids since watermark …' — accepted form.
-    assert kn["board"] == {"issue": 2793, "comments": 1421,
-                           "delta_since_watermark": 7, "watermark_comment": 6342743717}
+    # The board delta is stated as '+9 ids since watermark …' — accepted form.
+    assert kn["board"] == {"issue": 2793, "comments": 1551,
+                           "delta_since_watermark": 9, "watermark_comment": 6349561649}
     # The register is machine-derived at emit time (ruling, Option C):
     # the parser no longer reads it from the snapshot, and the snapshot
     # no longer states the Smart Notes wall rows either.
@@ -95,7 +95,7 @@ def test_negative_control_mutated_snapshot_fails_drift(tmp_path):
     twin = bms.build_twin(MD_TEXT, FAKE_LIVE, generated_utc="2026-10-22T00:00:00Z")
     json_path = tmp_path / "MISSION-STATE.json"
     json_path.write_text(json.dumps(twin, indent=1, ensure_ascii=False), encoding="utf-8")
-    mutated = MD_TEXT.replace("(1421 count,", "(1422 count,", 1)
+    mutated = MD_TEXT.replace("(1551 count,", "(1552 count,", 1)
     assert mutated != MD_TEXT
     md_path = tmp_path / "CURRENT-MISSION-STATE.md"
     md_path.write_text(mutated, encoding="utf-8")

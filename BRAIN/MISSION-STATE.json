@@ -5,14 +5,14 @@
   "kind": "mission-state-twin",
   "generator": "tools/build_mission_state.py",
   "twin_of": "BRAIN/CURRENT-MISSION-STATE.md",
-  "generated_utc": "2026-10-22T16:35:36Z"
+  "generated_utc": "2026-10-22T20:45:55Z"
  },
  "snapshot": {
-  "last_verified_utc": "2026-10-22T14:38:00Z",
-  "main_tip": "e8a10e0a4ba05eea4c0c0d8448e9362b6de62946",
+  "last_verified_utc": "2026-10-22T20:15:00Z",
+  "main_tip": "4b49c86662203d6cbde266cbba1778cbe42dd620",
   "tip_moved": {
-   "from": "e8a10e0a4ba05eea4c0c0d8448e9362b6de62946",
-   "to": "e8a10e0a4ba05eea4c0c0d8448e9362b6de62946"
+   "from": "91e2de5dcda5e6567dd2758c06a38b07223b88b7",
+   "to": "4b49c86662203d6cbde266cbba1778cbe42dd620"
   },
   "identity": {
    "repo": "SoulSchoolAcademy/NayaPOWER",
@@ -84,32 +84,32 @@
   "team_status": [
    {
     "area": "SELF",
-    "accomplished": "Tip static e8a10e0a all tick (ls-remote byte-match); receipt watch skipped on zero merges",
-    "working_on": "dock merge legs: #2925 (L627 cure-route decision, dock/main seat) → #2926 (HOLD — gates re-fire first) → #2927 (HOLD — gates re-fire first) → #2924/#2920/#2922/#2919",
+    "accomplished": "Tip moved `91e2de5d` → `4b49c86662` (2 sanctioned intelligence-door writes: SN-0826 + Living Map state); receipt watch skipped (zero merges); board 1542→1551 (+9 ids, zero gaps); zero 403s",
+    "working_on": null,
     "plan": null
    },
    {
     "area": "LAW",
-    "accomplished": "Register 12 open — L625 freeze tension, main seat's call",
-    "working_on": "#2823 design task (no blunt lock)",
-    "plan": "security P0 = protected gate, his word only"
+    "accomplished": "duplicate-director-signout 7th-instance identification (main seat); guardian-escape revert-or-cure decision (main seat)",
+    "working_on": "security P0 #2823 design task = protected gate, his word only",
+    "plan": null
    },
    {
     "area": "ACT",
-    "accomplished": "WIRE/BUILD 14:30Z sign-outs: #2925 still NOT landed @ee98f37be218, tip byte-identical — carries verified; #2874 timestamp-only head move censused (WIRE)",
-    "working_on": "#2925 dock merge (non-author); #2926/#2927 gates re-fire; #2924/#2920/#2922/#2919 landings",
+    "accomplished": "**#2938 SUPERSESSION ×2:** VERIFY re-score 9.5 at `865c2439` → head moved again mid-cure to `a22bf490883b` (no-chase) → receipt cure owed at settled head; dock's ask: freeze the branch one full pass",
+    "working_on": "#2938 body cure + fresh different-seat receipt at `a22bf490883b` → dispatch re-read → dock landing; #2934 body re-pin + different-seat receipt at new head; #2939 cures → VERIFY spot-check → dock",
     "plan": null
    },
    {
     "area": "KNOW",
-    "accomplished": "#2926/#2927 both HOLD (live gates FAILED at pinned heads); #2925 brain-index regen cures the delta on landing (re-derive count at landing)",
-    "working_on": "#2907 replan (Kappa/main seat, ~3.5h past deadline); retrieval-gate wiring brief must bind THREE caller sites (L630)",
-    "plan": "wiring decision = main seat"
+    "accomplished": "#2907 still draft (~9.5h past ~11:00Z deadline — Kappa/main seat)",
+    "working_on": null,
+    "plan": null
    },
    {
     "area": "PROVE",
-    "accomplished": null,
-    "working_on": null,
+    "accomplished": "#2938 trigger repair byte-untouched at `a22bf490883b` (gate-tool blobs identical to scored head)",
+    "working_on": "#2939 post-landing falsifier (runs once at new tip, after landing)",
     "plan": null
    },
    {
@@ -120,14 +120,14 @@
    },
    {
     "area": "VERIFY",
-    "accomplished": "VERIFY 14:30Z: #2907 still draft @ba985a9d5a48 (~3.5h past deadline, IV NOT unlocked, not wasted); #2925 + 4 baseline cures open at exact scored heads; #2874 4.0 carries @1417e42cd99e (timestamp-only delta proven)",
-    "working_on": "post-merge verification queue (#2914, #2908, #2871/#2867); Chi post-merge verification on main after #2926/#2927 landings",
+    "accomplished": "VERIFY night-shift sign-out 19:30Z: **#2938 re-scored 9.5 at `865c24397a0d`** (the re-arm chain's fresh different-seat receipt — now superseded by the second head move)",
+    "working_on": "fresh different-seat receipt pinning `a22bf490883b` (once branch settles)",
     "plan": null
    },
    {
     "area": "LEARN",
-    "accomplished": "w712 folded 5/5 → w713 in flight 5/5 (Lambda INFRA / Mu HUMAN_VALUE / Alpha LEARN / Beta KNOW / Gamma TEAM)",
-    "working_on": null,
+    "accomplished": "**SN-0826 landed via intelligence door** (his mandate, sanctioned); L636 [F2] NEW FILING (promoted) — escape charge only as good as its derivation; INTELLIGENT EVENTS ×6 (L635 → ADOPTED [VERIFY] #2938 9.5 at 9245eca6 + 5)",
+    "working_on": "PROVE-IT 105 by 2026-10-23 00:30Z",
     "plan": null
    },
    {
@@ -140,17 +140,20 @@
   "key_numbers": {
    "board": {
     "issue": 2793,
-    "comments": 1421,
-    "delta_since_watermark": 7,
-    "watermark_comment": 6342743717
+    "comments": 1551,
+    "delta_since_watermark": 9,
+    "watermark_comment": 6349561649
    },
    "open_prs_register": [
     2869,
-    2874,
     2907,
-    2925,
     2934,
-    2936
+    2937,
+    2939,
+    2940,
+    2945,
+    2949,
+    2950
    ]
   },
   "pointers": [
@@ -173,20 +176,23 @@
   ]
  },
  "live": {
-  "derived_utc": "2026-10-22T16:35:36Z",
-  "main_tip": "3826b69997399eb95708b9fec73cfee356966c81",
-  "open_pr_count": 6,
+  "derived_utc": "2026-10-22T20:45:55Z",
+  "main_tip": "dcaa09e8bb104c64057eec519531d7da0d74f402",
+  "open_pr_count": 9,
   "open_prs": [
    2869,
-   2874,
    2907,
-   2925,
    2934,
-   2936
+   2937,
+   2939,
+   2940,
+   2945,
+   2949,
+   2950
   ],
   "board": {
    "issue": 2793,
-   "comments": 1471
+   "comments": 1560
   }
  },
  "sources": [

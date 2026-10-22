@@ -1,0 +1,558 @@
+{
+ "activity": {
+  "actions_runs": 8449,
+  "board_comments": 537,
+  "merged_without_individual_verification": 79,
+  "prs_closed_unmerged": 2,
+  "prs_merged": 115,
+  "prs_opened": 84
+ },
+ "closures_on_proof": [],
+ "day": "2026-10-22",
+ "gate_verdicts": [],
+ "loop_flags": [
+  {
+   "consecutive_zero_days": 3,
+   "disposition": "KILL the clock; run on change only \u2014 kill routed to the Nitro estate scheduler (audit evidence: 99 ACTIVE rows, 2 verified claims both already covered, added=0 run after run)",
+   "mechanism": "learning-bridge"
+  },
+  {
+   "consecutive_zero_days": 3,
+   "disposition": "wire into a real path or delete \u2014 zero production callers (lesson_inject, lesson_score, learning gates)",
+   "mechanism": "lesson-tools"
+  },
+  {
+   "consecutive_zero_days": 3,
+   "disposition": "KILL the duplicate \u2014 executed 2026-10-22 by cron surgery (board receipt 6349282086), definition saved restorable",
+   "mechanism": "nine-node-verification-watch"
+  }
+ ],
+ "outcomes_verified": [
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2863",
+   "summary": "PR #2863 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2865",
+   "summary": "PR #2865 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2866",
+   "summary": "PR #2866 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2867",
+   "summary": "PR #2867 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2864",
+   "summary": "PR #2864 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2747",
+   "summary": "PR #2747 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2776",
+   "summary": "PR #2776 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2877",
+   "summary": "PR #2877 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2878",
+   "summary": "PR #2878 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2900",
+   "summary": "PR #2900 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2895",
+   "summary": "PR #2895 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2897",
+   "summary": "PR #2897 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2906",
+   "summary": "PR #2906 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2888",
+   "summary": "PR #2888 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2890",
+   "summary": "PR #2890 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2913",
+   "summary": "PR #2913 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2912",
+   "summary": "PR #2912 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2909",
+   "summary": "PR #2909 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2905",
+   "summary": "PR #2905 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2914",
+   "summary": "PR #2914 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2892",
+   "summary": "PR #2892 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2893",
+   "summary": "PR #2893 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2896",
+   "summary": "PR #2896 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2903",
+   "summary": "PR #2903 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2910",
+   "summary": "PR #2910 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2915",
+   "summary": "PR #2915 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2917",
+   "summary": "PR #2917 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2923",
+   "summary": "PR #2923 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2926",
+   "summary": "PR #2926 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2927",
+   "summary": "PR #2927 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2928",
+   "summary": "PR #2928 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2935",
+   "summary": "PR #2935 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2933",
+   "summary": "PR #2933 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2931",
+   "summary": "PR #2931 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2929",
+   "summary": "PR #2929 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "pr",
+   "lane": "build-verify-wire lanes",
+   "mechanism": "pr-flow",
+   "method": "individual verification verdict on the merged PR (different-seat scorecard / post-merge verification), enumerated by the independent value-density audit; author-only claims excluded by the audit",
+   "ref": "pr-2930",
+   "summary": "PR #2930 merged with an individual verification verdict (audit-enumerated)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "gt-001-boot-gate-closed-on-proof",
+   "summary": "GT-001 boot gate closed on proof",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "gt-041-closed-on-proof-armed-emit-run-success",
+   "summary": "GT-041 closed on proof (armed emit run SUCCESS)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "gt-066-ruleset-corrected-and-verified-live",
+   "summary": "GT-066 ruleset corrected and verified live",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "gt-069-table-name-decision-executed-hub-smart-no",
+   "summary": "GT-069 table-name decision executed (hub_smart_notes_personal)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "supabase-all-access-token-revoked-and-verified",
+   "summary": "Supabase all-access token revoked and verified",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "morning-intelligence-report-2026-10-22-delivered",
+   "summary": "Morning Intelligence Report 2026-10-22 delivered (PDF)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "essence-distillation-repair-verified-lossless-by",
+   "summary": "Essence-distillation repair verified LOSSLESS by independent re-audit (193/193)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "reports-handover-package-completed-and-blob-veri",
+   "summary": "Reports handover package completed and blob-verified (6/6), accepted by Nitro lane",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "2930-casing-dispute-settled-on-live-bytes",
+   "summary": "#2930 casing dispute settled on live bytes",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "naya-3-five-brain-failures-reproduced-and-mapped",
+   "summary": "Naya 3 five Brain failures reproduced and mapped (board 6345345363)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "2932-closed-as-superseded-on-byte-identical-comp",
+   "summary": "#2932 closed as superseded on byte-identical comparison (6345531461)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "2925-closed-as-superseded-on-proof-6345990182",
+   "summary": "#2925 closed as superseded on proof (6345990182)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "r14-pointer-casing-adjudication-done-wire-17-00z",
+   "summary": "R14 pointer-casing adjudication done (WIRE 17:00Z)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "r13-replacement-pointer-adjudication-posted-6346",
+   "summary": "R13 replacement-pointer adjudication posted (6346747868)",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "laws-filed-l632-l633-l634-wp-215-wp-216-proactiv",
+   "summary": "Laws filed: L632, L633, L634, WP-215, WP-216, PROACTIVE BY DESIGN, value-per-action rule",
+   "verifier": "value-density-audit"
+  },
+  {
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6347339169",
+   "kind": "decision",
+   "lane": "main-seat/director",
+   "mechanism": "decision-closures-and-deliverables",
+   "method": "closure on proof / decision executed and independently verified, enumerated by the value-density audit",
+   "ref": "sn-0821-verified-live-on-hub-wall",
+   "summary": "SN-0821 verified live on Hub wall",
+   "verifier": "value-density-audit"
+  }
+ ],
+ "producer": "audit",
+ "prs_landed": [],
+ "schema": "accountability-ledger-day-record/v1",
+ "scorecards": [],
+ "window_end": "2026-10-22T17:30:00Z",
+ "window_start": "2026-10-21T17:30:00Z"
+}
