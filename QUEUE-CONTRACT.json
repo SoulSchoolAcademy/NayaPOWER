@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T05:25:02Z",
-  "tip": "88da03be6b0940a0716bd6cad4fa9d8c9334e463",
+  "generated_at": "2026-10-22T06:24:57Z",
+  "tip": "0849bf09edc5e142fb3bb75471131bf57165db01",
   "prs": [
     {
       "number": 2869,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "b51a88ca70c70f14e0ac8b372af44d63858abf83"
+      "head": "0c63d4d64034b1ef07e070e668f3448555f62328"
     },
     {
       "number": 2874,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "e1bad3de2585b9d9e6480b28ea9c274d71ec5ab9"
+      "head": "ac07b9f5d1ddc5ba0ebfadbfa619f84126b16dd5"
     },
     {
       "number": 2907,
@@ -38,6 +38,42 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "a683b6384c81adea98ae77e62cc9f18cdb81d547"
+    },
+    {
+      "number": 2916,
+      "title": "Smart Notes SN-0823 + SN-0824 \u2014 Awareness Is Ownership \u00b7 Answer Your Own Questions",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "36d15df230dd422d73cd6afe4650773c996bb8cc"
+    },
+    {
+      "number": 2917,
+      "title": "Daily Intelligence backfill \u2014 the 13 missing editions, Oct 4\u201319",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "1a6e27a5365ecfbc7d1115e60e308be6d74ae25b"
+    },
+    {
+      "number": 2918,
+      "title": "Brain-index regeneration \u2014 cure freshness drift x3 at tip 88da03be (BUILD)",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "db584dae3264319134d139cc7473f7e8a6d12e08"
+    },
+    {
+      "number": 2919,
+      "title": "Fix materialize-template tests under repo-root pytest \u2014 file-relative fixture paths (BUILD)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): inventory; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "38ed88b0a34ffc0a01796a1e23411efa5ab9cd2f"
     }
   ]
 }
