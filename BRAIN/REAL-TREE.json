@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "dcaa09e8bb104c64057eec519531d7da0d74f402",
-  "inventory_file_count": 1582,
+  "receipt_basis_commit": "c66faf7d7f06fe330691bd3868b9fe7b18c5f9f0",
+  "inventory_file_count": 1584,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -16,7 +16,7 @@
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 428,
+    "10-INTERFACES": 430,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 92,
@@ -7011,6 +7011,11 @@
       "size": 20133
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/NAYA-DESIGN-CONTRACT.machine.json",
+      "blob_sha": "ca92c4919f175fb659ceeec7eb3072ea0d5ea609",
+      "size": 22484
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py",
       "blob_sha": "1d7674c116e60e819f6f14797cc8aab1775c6c41",
       "size": 7140
@@ -7044,6 +7049,11 @@
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/deploy.py",
       "blob_sha": "a934ba0357c773fce894cecc0a190e3bfe3806b0",
       "size": 7165
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-contract-twin.py",
+      "blob_sha": "0d36e2c7844fc61adb56d5ab6695694adea2fe87",
+      "size": 20398
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-share-card.py",
@@ -7202,8 +7212,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/validate-machine-contract.py",
-      "blob_sha": "9c1aa87a8b6b1488c5aff13893db87eaeb7ff301",
-      "size": 9257
+      "blob_sha": "9ae1fe98539e84dfb0184a0f779af76f803866d9",
+      "size": 14220
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/README.md",
@@ -7902,8 +7912,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "70aa913c764af64124ad34f893dfc584951cdc38",
-      "size": 6776
+      "blob_sha": "9ef2e7424685b2deaa808a08160defdd33adf4ac",
+      "size": 9548
     },
     {
       "path": "BRAIN/MASTER-MAP.md",
@@ -7912,8 +7922,8 @@
     },
     {
       "path": "BRAIN/MISSION-STATE.json",
-      "blob_sha": "1354672ee7d6f737d52b95eb1ec1893cf3eff30c",
-      "size": 8461
+      "blob_sha": "33386f9a90e91a6ab32fbeb4ab8b056e5013790b",
+      "size": 8517
     },
     {
       "path": "BRAIN/NAYAPOWER-BRAIN-INDEX.json",

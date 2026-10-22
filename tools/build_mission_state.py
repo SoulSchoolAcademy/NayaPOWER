@@ -19,7 +19,13 @@ the snapshot itself rests on, in one run —
   live facts      re-derived from GitHub at emit time (tip via
                   GET /git/refs/heads/main — the ref is the anchor, never
                   the commits list endpoint; open PRs fully paginated;
-                  the live board's comment count).
+                  the live board's comment count). The snapshot block's
+                  open-PRs register is filled from THIS derivation
+                  (director ruling 2026-10-22, Option C): the register is
+                  a mechanical fact, so the machine derives it — it is
+                  never parsed out of snapshot prose, never hand-stated,
+                  and emit fails loudly when the live list is unreachable
+                  rather than guessing it.
 
 The twin keeps the two fact classes in separate blocks (`snapshot` vs
 `live`) with per-section provenance (`sources`), because a snapshot is a
@@ -36,7 +42,9 @@ FIELD LIST (schema: tools/mission_state.schema.json, $id naya.mission-state/1)
              team_status[{area, accomplished, working_on, plan}],
              key_numbers{board{issue, comments, delta_since_watermark,
                                watermark_comment},
-                          open_prs_register[int],
+                          open_prs_register[int] (machine-derived at emit
+                               time from the live open-PR list — never
+                               stated in the snapshot),
                           smart_notes_rows{total, super, smart} (when stated)},
              pointers[{label, target}]}
   live      {derived_utc, main_tip, open_pr_count, open_prs[int],
@@ -58,7 +66,10 @@ publishes is the owning lanes' step; see tools/MISSION-STATE.md.
 Modes:
   emit       build the twin from the .md + live API, validate it against
              the shipped schema, refuse on scrub violation, write it.
-             --no-live skips the API (live block = null) for offline use.
+             --no-live skips the API; since the register is machine-derived
+             (ruling 2026-10-22, Option C), an emit without a live
+             derivation fails loudly on the register instead of writing
+             a twin with a guessed one.
   (drift)    tools/check_mission_state_drift.py — the separate check:
              re-derives the snapshot facts from the .md and FAILS if the
              committed twin disagrees on any shared fact.
@@ -107,29 +118,30 @@ def _norm(text: str) -> str:
 # --------------------------------------------------------------------------
 
 def parse_snapshot(md_text: str) -> dict:
-    # --- header: last verified + tip state -----------------------------------
-    # Live grammar (director pass): the timestamp carries seconds only when the
-    # pass emits them (YYYY-MM-DDTHH:MMZ and YYYY-MM-DDTHH:MM:SSZ both parse),
-    # and the header alternates between **TIP MOVED** `<from>` → `<to>` and
-    # **TIP STATIC** `<tip>` (no move). For STATIC the move is from == to.
+    # --- header: last verified + tip moved ---------------------------------
+    # Accepted stated forms (director ruling 2026-10-22, Option C — format
+    # bends to the human): the timestamp may drop its seconds (normalized
+    # here to :00), and a static tip may be stated as TIP STATIC with the
+    # single anchored sha (from == to) alongside the TIP MOVED pair form.
     m = re.search(r"\*\*Last verified:\*\*.*?\((\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?Z)\)", md_text)
     if not m:
         raise _fail("snapshot.last_verified_utc",
-                    "the snapshot header must carry '**Last verified:** ... (YYYY-MM-DDTHH:MM[:SS]Z)'")
+                    "the snapshot header must carry '**Last verified:** ... "
+                    "(YYYY-MM-DDTHH:MMZ or YYYY-MM-DDTHH:MM:SSZ)'")
     last_verified = m.group(1)
+    if len(last_verified) == 17:  # seconds-less form — normalize to :00
+        last_verified = last_verified[:-1] + ":00Z"
 
     m = re.search(r"\*\*TIP MOVED\*\* `([0-9a-f]{40})` → `([0-9a-f]{40})`", md_text)
     if m:
         tip_from, tip_to = m.group(1), m.group(2)
-        tip_form = "moved"
     else:
         m = re.search(r"\*\*TIP STATIC\*\* `([0-9a-f]{40})`", md_text)
         if not m:
             raise _fail("snapshot.tip_moved",
                         "the snapshot header must carry '**TIP MOVED** `<from>` → `<to>`' "
-                        "or '**TIP STATIC** `<tip>`'")
+                        "or '**TIP STATIC** `<sha>`'")
         tip_from = tip_to = m.group(1)
-        tip_form = "static"
 
     # --- KEY NUMBERS line ---------------------------------------------------
     kn = next((ln for ln in md_text.splitlines() if "**KEY NUMBERS" in ln), None)
@@ -141,13 +153,15 @@ def parse_snapshot(md_text: str) -> dict:
     main_tip = m.group(1)
     if main_tip != tip_to:
         raise SnapshotError(
-            f"SNAPSHOT SELF-DISAGREEMENT: header tip ({tip_form}) lands on {tip_to} but KEY NUMBERS "
+            f"SNAPSHOT SELF-DISAGREEMENT: header TIP MOVED lands on {tip_to} but KEY NUMBERS "
             f"names main tip {main_tip} — CURE: the director reconciles the snapshot before "
             f"the twin can be emitted (owner: director pass)")
 
-    # The director's live wording carries an optional unit word: "+7 ids since
-    # watermark" (2026-10-22) vs the earlier "+4 since watermark". Accept both;
-    # the four numbers stay required.
+    # The board delta may carry an optional unit word: '+D ids since
+    # watermark W' is the director's live wording (accepted form per
+    # ruling 2026-10-22, Option C; the generic unit-word acceptance is
+    # the form PR #2929 landed — preserved verbatim in this refresh so
+    # nothing #2929 accepted is lost). The four numbers stay required.
     m = re.search(r"live board \*\*#(\d+)\*\* \((\d+) count, \+(\d+)(?:\s+[a-zA-Z]+)? since watermark (\d+)", kn)
     if not m:
         raise _fail("snapshot.key_numbers.board",
@@ -155,15 +169,12 @@ def parse_snapshot(md_text: str) -> dict:
     board = {"issue": int(m.group(1)), "comments": int(m.group(2)),
              "delta_since_watermark": int(m.group(3)), "watermark_comment": int(m.group(4))}
 
-    m = re.search(r"open PRs: \d+-register \(([^)]+)\)", kn)
-    if not m:
-        raise _fail("snapshot.key_numbers.open_prs_register",
-                    "the KEY NUMBERS line must state 'open PRs: N-register (#a/#b/#c)'")
-    open_prs_register = [int(x) for x in re.findall(r"#(\d+)", m.group(1))]
-    if not open_prs_register:
-        raise _fail("snapshot.key_numbers.open_prs_register", "the register named no PR numbers")
-
-    key_numbers: dict = {"board": board, "open_prs_register": open_prs_register}
+    # The open-PRs register is NOT parsed here anymore (director ruling
+    # 2026-10-22, Option C): it is a mechanical fact, derived by build_twin
+    # at emit time from the live open-PR list. The snapshot never states it
+    # in prose — a hand-stated register rots (it once remembered a
+    # 3-register while reality was 12).
+    key_numbers: dict = {"board": board}
     m = re.search(r"(\d+) rows = (\d+) SUPER \+ (\d+) Smart Notes", md_text)
     if m:  # stated in TOP-10 item 1; carried when stated, never invented
         key_numbers["smart_notes_rows"] = {"total": int(m.group(1)),
@@ -325,12 +336,26 @@ def derive_live(board_issue: int) -> dict:
 
 def build_twin(md_text: str, live: dict | None, generated_utc: str | None = None) -> dict:
     snapshot = parse_snapshot(md_text)
+    # The register is machine-derived (director ruling 2026-10-22,
+    # Option C): it comes from the same live derivation as the live
+    # block, never from snapshot prose. Without a live derivation there
+    # is no honest register — fail loudly instead of guessing one.
+    if live is None:
+        raise SnapshotError(
+            "MISSING: snapshot.key_numbers.open_prs_register — CURE: the register is "
+            "machine-derived at emit time from the live open-PR list "
+            "(GET /pulls?state=open, paginated); emit with live derivation enabled "
+            "and GitHub reachable — it is never hand-stated and never guessed "
+            "(owner: emitter)")
+    snapshot["key_numbers"]["open_prs_register"] = list(live["open_prs"])
     generated = generated_utc or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     sources = [
         {"section": "snapshot", "source": "BRAIN/CURRENT-MISSION-STATE.md",
          "anchor": "director-pass snapshot as committed at emit time (header, TOP-10 line, TEAM STATUS table, KEY NUMBERS line, WHERE TO GO)"},
         {"section": "snapshot.identity.repo", "source": "the repository this file lives in",
          "anchor": "SoulSchoolAcademy/NayaPOWER"},
+        {"section": "snapshot.key_numbers.open_prs_register", "source": "GitHub API at emit time",
+         "anchor": "GET /pulls?state=open (paginated) — machine-derived (director ruling 2026-10-22, Option C); the snapshot no longer states the register in prose"},
     ]
     if live is not None:
         sources.append(
@@ -352,7 +377,20 @@ def build_twin(md_text: str, live: dict | None, generated_utc: str | None = None
 def emit(md_path: Path, out_path: Path, with_live: bool) -> dict:
     md_text = md_path.read_text(encoding="utf-8")
     board_issue = parse_snapshot(md_text)["identity"]["live_board"]
-    live = derive_live(board_issue) if with_live else None
+    if with_live:
+        try:
+            live = derive_live(board_issue)
+        except RuntimeError as exc:
+            # The register (and the live block) cannot be derived — fail
+            # loudly in the MISSING/CURE form; never guess, never fall
+            # back to a prose register (ruling 2026-10-22, Option C).
+            raise SystemExit(
+                "MISSING: live derivation (snapshot.key_numbers.open_prs_register + live block) "
+                "— CURE: restore GitHub reachability for the emit (the gh_api wrapper chain) "
+                "and re-run; the register is machine-derived at emit time and is never "
+                f"guessed or read from prose (owner: emitter) [{exc}]") from exc
+    else:
+        live = None
     twin = build_twin(md_text, live)
     schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
     errors = validate(twin, schema)
@@ -378,7 +416,11 @@ def main() -> int:
     parser.add_argument("--no-live", action="store_true",
                         help="skip the GitHub API; the live block is emitted as null")
     args = parser.parse_args()
-    twin = emit(args.md, args.out, with_live=not args.no_live)
+    try:
+        twin = emit(args.md, args.out, with_live=not args.no_live)
+    except SnapshotError as exc:
+        print(f"REFUSED: {exc}")
+        return 1
     snap = twin["snapshot"]
     print(f"WROTE {args.out}")
     print(f"  snapshot: last_verified {snap['last_verified_utc']} · main_tip {snap['main_tip'][:12]} "

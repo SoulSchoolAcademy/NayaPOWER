@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-22  
-**Receipt basis commit:** `dcaa09e8bb104c64057eec519531d7da0d74f402`  
-**Inventory file count:** 1582  
+**Receipt basis commit:** `c66faf7d7f06fe330691bd3868b9fe7b18c5f9f0`  
+**Inventory file count:** 1584  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -20,7 +20,7 @@
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 428 |
+| 10-INTERFACES | 430 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
 | 90-OPERATIONS | 92 |
@@ -1452,6 +1452,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/INP008-REBASE-SCORECARD.md` — `7dfe6d0ba657` (17346 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MACHINE-CONTRACT-NOTES.md` — `bcc97ce5b0a7` (7003 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MANIFEST.md` — `02de62aa0633` (20133 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/NAYA-DESIGN-CONTRACT.machine.json` — `ca92c4919f17` (22484 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py` — `1d7674c116e6` (7140 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build_queue-schema.sql` — `1693263c4524` (1772 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/check_standard_features.py` — `c4f6ffb7c6e7` (25030 bytes)
@@ -1459,6 +1460,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/customize.py` — `6719b2dc08bd` (2602 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/customize_contract.py` — `e5d8c28fc85b` (8817 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/deploy.py` — `a934ba0357c7` (7165 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-contract-twin.py` — `0d36e2c7844f` (20398 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-share-card.py` — `091c93b47d80` (4557 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/naya-supabase-proxy.worker.js` — `46cc189ae89e` (3272 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/process-build-queue.py` — `c143933654e4` (8891 bytes)
@@ -1490,7 +1492,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/verify.mjs` — `07e3725b7761` (7710 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/verify2.mjs` — `1a67b7c96f4f` (2575 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/smart_factory_final-2.html` — `b05c310e30c9` (454033 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/validate-machine-contract.py` — `9c1aa87a8b6b` (9257 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/validate-machine-contract.py` — `9ae1fe98539e` (14220 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/README.md` — `aeaa4f0b9255` (2224 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.ai.md` — `bf68e6ff9a1d` (5530 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.human.md` — `7326d11973dd` (7631 bytes)
@@ -1640,9 +1642,9 @@
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/CURRENT-MISSION-STATE.md` — `70aa913c764a` (6776 bytes)
+- `BRAIN/CURRENT-MISSION-STATE.md` — `9ef2e7424685` (9548 bytes)
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
-- `BRAIN/MISSION-STATE.json` — `1354672ee7d6` (8461 bytes)
+- `BRAIN/MISSION-STATE.json` — `33386f9a90e9` (8517 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
 - `BRAIN/README.md` — `bf4d982f4f32` (2325 bytes)
 - `BRAIN/REAL-TREE.json` — _(self-referential index file; blob SHA omitted)_
