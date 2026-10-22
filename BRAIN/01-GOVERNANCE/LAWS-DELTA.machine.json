@@ -378,5 +378,5 @@
   }
  ],
  "schema": "naya/laws-delta/v1",
- "scope": "Numbered governance sets of BRAIN/01-GOVERNANCE/ that carry a machine tongue. Excludes AGENTS.md L-entries (seat-VM prose, no stable schema \u2014 parsing would be brittle) and OPERATING-LAW.json (2026-10-10 compilation, separate LAW-X01 scheme). Fields a source set does not carry are null, never invented."
+ "scope": "Numbered governance sets of BRAIN/01-GOVERNANCE/ that carry a machine tongue. Excludes AGENTS.md L-entries (compiled separately by tools/generate_daily_law_registry.py into DAILY-LAW-REGISTRY.machine.json, which folds this delta in) and OPERATING-LAW.json (2026-10-10 LAW-X01 compilation, retired 2026-10-22 by GT-010). Fields a source set does not carry are null, never invented."
 }

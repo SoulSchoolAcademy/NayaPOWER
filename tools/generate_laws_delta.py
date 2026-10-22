@@ -14,9 +14,11 @@ NOT folded in:
   * AGENTS.md's L-numbered lesson entries live outside this repo (seat VM)
     and are prose without a stable per-entry schema; parsing them here
     would be brittle and would manufacture fields the source doesn't carry.
-  * BRAIN/01-GOVERNANCE/OPERATING-LAW.json (compiled 2026-10-10) is an
-    older, separate compilation under a different id scheme (LAW-X01);
-    this delta does not replace or re-derive it.
+  * BRAIN/01-GOVERNANCE/OPERATING-LAW.json (compiled 2026-10-10, LAW-X01
+    scheme) was RETIRED 2026-10-22 by the daily-law-registry landing
+    (GT-010): superseded for governance sets by this delta and for the
+    daily law by BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json.
+    Exactly two generated compilations of law survive; this is one.
 Fields a source set does not carry (older sets predate the falsifier/owner
 convention) are emitted as null — never invented.
 
@@ -125,8 +127,9 @@ def build_delta(gov: Path):
         "schema": SCHEMA,
         "scope": (
             "Numbered governance sets of BRAIN/01-GOVERNANCE/ that carry a machine tongue. "
-            "Excludes AGENTS.md L-entries (seat-VM prose, no stable schema — parsing would be brittle) "
-            "and OPERATING-LAW.json (2026-10-10 compilation, separate LAW-X01 scheme). "
+            "Excludes AGENTS.md L-entries (compiled separately by tools/generate_daily_law_registry.py "
+            "into DAILY-LAW-REGISTRY.machine.json, which folds this delta in) "
+            "and OPERATING-LAW.json (2026-10-10 LAW-X01 compilation, retired 2026-10-22 by GT-010). "
             "Fields a source set does not carry are null, never invented."
         ),
         "generated_from": {

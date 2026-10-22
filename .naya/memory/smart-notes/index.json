@@ -14018,13 +14018,53 @@
         "note": "published directly as a BRAIN projection in commit 99cffa06a3d59d3547fbbe550a58a33032bb0a43 ('docs(smart-notes): SN-1784/1785/1786 intelligence-door direct write') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "bfb0e38838a2c18a301b0a8932579c08f3336b8418a997e965dd7df81f131113"
+    },
+    {
+      "smart_note_id": "SN-1790",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn1790-how-we-do-it-intelligent-blocks",
+      "title": "How We Do It — Intelligent Blocks",
+      "content_hash": "441b88235aa41f8929a545c7ab3b96ccd9cc6ba84147b02802375923670f61f1",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-1790/IB-SMART-NOTE-20261022-sn1790-how-we-do-it-intelligent-blocks.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "COMPOSITION",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published as a BRAIN projection through the note door in the same push as its capture and this entry (filed through the note door in the same push as the projection page (branch naya2/sn1790-how-we-do-it-intelligent-blocks, record PR requested on board #2793); capture and entry generated from the authored page at filing time; publishing_commit is null because the landing commit does not exist yet at filing time; no runtime provenance invented)"
+      },
+      "page_hash": "95b82bc2b6d0a976700f1daeca0688858f8a3cf447115df17885c46c3ee0e7ac"
+    },
+    {
+      "smart_note_id": "SN-1789",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting",
+      "title": "The Night the Catch Held — We Celebrate by Noting",
+      "content_hash": "473f23acec51c89f8603708567d1c00f0884871e95279523b7c85df4704f1e29",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/north-star/SN-1789/IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LEARNING",
+      "topic": "LEARNING",
+      "subtopic": "NORTH_STAR",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 98c4686a41a9860efc3fe1c76be82871dba985c6 ('Smart Note SN-1789: The Night the Catch Held — We Celebrate by Noting (celebration practice instance #1, Shawn 2026-10-22 ~00:50Z)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "99b93d79496f4d775630a7950421a53d80747e03eb6b6b8b250d12271d6feaaf"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1787,
+    "next_sequence": 1791,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "9efa4aadcda89df6ab691cf5e61531aa406127113f949a296e86f0af2e4d361b"
+  "corpus_manifest_hash": "1c499245a43eb2f7da5d88b461f916a146f736ee336ab1985b4c5a0b41074d23"
 }
