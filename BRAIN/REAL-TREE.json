@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "f289672e78c2b314cbb76a6f08d8f7c273a58b88",
-  "inventory_file_count": 1580,
+  "receipt_basis_commit": "91e2de5dcda5e6567dd2758c06a38b07223b88b7",
+  "inventory_file_count": 1581,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 800,
+    "05-MEMORY": 801,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4504,6 +4504,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md",
       "blob_sha": "c46f0d01a5b214dc7fc158c365881698cb5cf2d5",
       "size": 5916
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md",
+      "blob_sha": "06a605af30958c9a279919a88619e476e12d7bab",
+      "size": 10686
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/VISION/active-intelligence/SN-0824/IB-SMART-NOTE-20261022-sn0824-the-future-is-now.md",

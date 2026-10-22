@@ -3,7 +3,7 @@
   "built": "2026-10-21T18:14:02Z",
   "standard_feature_contracts": {
     "applies_to": "Every app built from a templates entry in this registry, and every future base created for a key listed in missing. Predicates are dual-dialect: each check names the canon-base mechanism and/or the shipped flagship mechanism (the one-system os-* dialect, live at naya-model-*.nayapower.workers.dev). A feature passes on the mechanism the surface actually ships, never on a label alone. Where a canon selector names a Hub-room surface and the flagship realizes the same feature as an in-page block, the predicate is scoped to that block; see per-feature applies_to and dialect_note.",
-    "dialect_note": "Dialect reconciliation (GT-028, 2026-10-22): the v1 predicates were authored against the canon-base dialect only, so the shipped flagships scored 4/13 while demonstrably carrying most features in the one-system os-* dialect. v1.1 names both dialects, verified byte-by-byte against the three live models (301,792 / 301,729 / 301,774 bytes). No pass_standard was lowered and no canon predicate was removed: every widened selector or pattern names the real shipped mechanism it now accepts, labeled '(flagship dialect: ...)'. Genuine gaps remain failing by design: S2 service-worker registration, S11 Library/Q&A block absent, S12 Smart Lists operation absent.",
+    "dialect_note": "Dialect reconciliation (GT-028, 2026-10-22): the v1 predicates were authored against the canon-base dialect only, so the shipped flagships scored 4/13 while demonstrably carrying most features in the one-system os-* dialect. v1.1 names both dialects, verified byte-by-byte against the three live models (301,792 / 301,729 / 301,774 bytes). No pass_standard was lowered and no canon predicate was removed: every widened selector or pattern names the real shipped mechanism it now accepts, labeled '(flagship dialect: ...)'. Genuine gaps remain failing by design: S2 service-worker registration, S11 Library/Q&A block absent, S12 Smart Lists operation absent. v1.2 (2026-10-22, GT-028 follow-up): S8's flagship label check learned the smart-app language law — its Today-subtitle expectation is stem-matched ('The latest real activity') instead of the fossilized 'on this page' wording the law retired; see the S8 dialect_note. No pass_standard lowered and no predicate removed in v1.2.",
     "evaluation": {
       "any_groups": "For checks whose requirement is 'any:<group>', at least one check in that group must pass.",
       "feature_pass": "A feature passes only when all required checks and every any-group pass.",
@@ -537,13 +537,13 @@
           {
             "id": "today-labels-os",
             "kind": "text_contains",
-            "label": "Briefing content is present (flagship dialect labels)",
+            "label": "Briefing content is present (flagship dialect labels: the Today block names itself and carries its latest-real-activity subtitle — stem-matched, so the subtitle is verified by presence and shape; its wording follows the smart-app language law, 'in this app', formerly 'on this page')",
             "match": "all",
             "requirement": "any:label-dialect",
             "selector": "[data-block='today']",
             "values": [
               "Today",
-              "The latest real activity on this page"
+              "The latest real activity"
             ]
           },
           {
@@ -580,7 +580,7 @@
           }
         ],
         "code": "S8",
-        "dialect_note": "Canon labels ('Morning Briefing', 'IN A NUTSHELL') are the Hub Today room's labels, and canon cards ship as static seed markup. The flagship's Today block is the page's own pulse: labeled in its own words and rendered at runtime from live backend data. Card and label evidence is therefore grouped per dialect (any:card-evidence, any:label-dialect); the data-source requirement stands for both dialects.",
+        "dialect_note": "Canon labels ('Morning Briefing', 'IN A NUTSHELL') are the Hub Today room's labels, and canon cards ship as static seed markup. The flagship's Today block is the page's own pulse: labeled in its own words and rendered at runtime from live backend data. Card and label evidence is therefore grouped per dialect (any:card-evidence, any:label-dialect); the data-source requirement stands for both dialects. v1.2 (2026-10-22): the flagship subtitle's wording changed under the smart-app language law ('The latest real activity on this page' → 'The latest real activity in this app — newest first, live.'), and the strict gate honestly failed four flagship demo builds at 12/13 on the stale exact string. today-labels-os now matches the subtitle's stable stem ('The latest real activity'): the check still requires the Today block to name itself and carry its real-activity subtitle, but verifies that shape instead of fossilized wording, so lawful copy edits no longer read as a missing feature. No pass_standard lowered; the canon-dialect sibling check is unchanged.",
         "id": "todays_intel",
         "name": "Today's Intel",
         "pass_standard": "A Today's Intel section and briefing card exist, and shipped code populates the Today grid from a feed, endpoint, or owner data source. A static seeded briefing alone fails.",
@@ -935,7 +935,7 @@
       }
     ],
     "status": "Measurement contract using static DOM/source predicates. A PASS requires a shipped surface plus a working client-side mechanism or data operation, not a label alone. Browser-rendered geometry and authenticated back-end behaviour are stronger proofs and remain separate.",
-    "version": "standard-feature-contracts-v1.1"
+    "version": "standard-feature-contracts-v1.2"
   },
   "templates": {
     "personal": {

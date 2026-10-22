@@ -1584,6 +1584,15 @@
       "statement_count": 15,
       "bytes": 8769,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022204500",
+      "name": "naya_notes_v1",
+      "path": "supabase/migrations/20261022204500_naya_notes_v1.sql",
+      "sha256": "330f8ed6afac5314606099f78fa2142f4311b766b3ebf855e5ab34e091f489db",
+      "statement_count": 12,
+      "bytes": 2761,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,

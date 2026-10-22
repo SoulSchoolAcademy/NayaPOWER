@@ -1,3 +1,5 @@
+> **SUPERSEDED AS A CONTRACT — 2026-10-22.** The canonical design contract is `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` (see MANIFEST.md, Canonical Set). This document is retained for provenance; its laws live on as the Factory law shelf. Do not cite this file as the contract.
+
 # THE GENERAL DESIGN CONTRACT
 ## The Smart Factory — the one contract above every build in NayaNET
 
