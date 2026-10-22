@@ -1,7 +1,7 @@
 # Essence Is a Form, Not a Filter
 
 **ID:** IB-SMART-NOTE-20261022-sn0821-essence-is-a-form-not-a-filter
-**Created:** 2026-10-22
+**Created:** 2026-10-22T02:04:00Z
 **Category:** LEARNING / Intelligent Obedience
 
 ## IN A NUTSHELL
