@@ -1,4 +1,6 @@
 {
+  "superseded_by": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
+  "status": "superseded-provenance-only",
   "contract": "GENERAL-DESIGN-CONTRACT",
   "kind": "machine",
   "version": "1.0.0",
