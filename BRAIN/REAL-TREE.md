@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-22  
-**Receipt basis commit:** `38ad3255d949252e36b712037fc5b6043b7351c0`  
-**Inventory file count:** 1540  
+**Receipt basis commit:** `e0afe2713048f7dae74a1f377968630f89732019`  
+**Inventory file count:** 1545  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,16 +11,16 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 90 |
+| 01-GOVERNANCE | 93 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 777 |
+| 05-MEMORY | 778 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 427 |
+| 10-INTERFACES | 428 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
 | 90-OPERATIONS | 92 |
@@ -32,12 +32,12 @@
 ### 00-ACTIVATION — (unregistered domain)
 
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
-- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `a9cb59b94b12` (11115 bytes)
+- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `d7be8b89d508` (11342 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
-- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `0251439bb3cc` (17817 bytes)
+- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `c646f57752cf` (18336 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `6543873fee80` (2185 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
-- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `892f580946ac` (2702 bytes)
+- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `944bd28661ec` (2669 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
 - `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` — `70774bbfa1e0` (24076 bytes)
@@ -136,17 +136,20 @@
 - `BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.ai.md` — `2ec5d3a522f7` (3548 bytes)
 - `BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.human.md` — `40c82a022a3a` (4783 bytes)
 - `BRAIN/01-GOVERNANCE/0032-house-standard-v1.machine.json` — `c1bb2ffa2f41` (2617 bytes)
-- `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md` — `929a5ae44a37` (20247 bytes)
-- `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md` — `f39c47507120` (6877 bytes)
-- `BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json` — `bd9c9a1a8156` (18036 bytes)
+- `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md` — `5f0b8cd79854` (21387 bytes)
+- `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md` — `6f1041679651` (7773 bytes)
+- `BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json` — `3ff258b95362` (18564 bytes)
 - `BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.ai.md` — `1330b38df3de` (4520 bytes)
 - `BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.human.md` — `2019359e46f3` (3690 bytes)
 - `BRAIN/01-GOVERNANCE/0034-the-house-fire-law-v1.machine.json` — `b26079232d91` (4001 bytes)
+- `BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.ai.md` — `faabf8359e9e` (5023 bytes)
+- `BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.human.md` — `566711d0c16d` (19899 bytes)
+- `BRAIN/01-GOVERNANCE/0035-design-law-ratification-v1.machine.json` — `0992eb9c81c7` (4871 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md` — `5348d9b690b5` (87770 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json` — `1eb26bef019b` (510210 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
-- `BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json` — `bb770ae8dac3` (16117 bytes)
+- `BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json` — `3320441029bd` (16942 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
 - `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `414cfeb4c7e0` (32957 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
@@ -902,6 +905,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-0819/IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it.md` — `6b63d8776308` (5212 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-1790/IB-SMART-NOTE-20261022-sn1790-how-we-do-it-intelligent-blocks.md` — `33330478a77d` (10463 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md` — `f11b2653d008` (5334 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/north-star/SN-1789/IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting.md` — `813fc914d2bf` (9185 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md` — `0c2abb5d1f32` (6071 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md` — `c46f0d01a5b2` (5916 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
@@ -1412,8 +1416,9 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/INP008-REBASE-SCORECARD.md` — `7dfe6d0ba657` (17346 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MACHINE-CONTRACT-NOTES.md` — `bcc97ce5b0a7` (7003 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MANIFEST.md` — `0c430f497375` (19199 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py` — `4f05d05e2170` (3117 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py` — `1d7674c116e6` (7140 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build_queue-schema.sql` — `1693263c4524` (1772 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/check_standard_features.py` — `c4f6ffb7c6e7` (25030 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/contracts.json` — `081d1efa779d` (2135 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/customize.py` — `6719b2dc08bd` (2602 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/customize_contract.py` — `e5d8c28fc85b` (8817 bytes)
@@ -1424,7 +1429,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/manifest.json` — `6381822d4c87` (1317 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/sw.js` — `6e6077330368` (1454 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py` — `2951c74ee95f` (37549 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `c8ccab3f7cee` (7430 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `d49bd7b07ad9` (39183 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/booking.html` — `fda0ef13aeab` (229469 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business-hub.html` — `9d527e73f762` (229479 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business.html` — `3d8b82bcd6bf` (229489 bytes)

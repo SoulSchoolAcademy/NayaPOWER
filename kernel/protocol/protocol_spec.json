@@ -53,9 +53,9 @@
     ]
   },
   "source": {
-    "bytes": 17778,
+    "bytes": 18953,
     "path": "PROTOCOL.md",
-    "sha256": "cb7bc9e78b3ac86b939c475f79ae00d0f390fc0a70727b9717a08524190be84c"
+    "sha256": "f43cae6d0a18baccd04e372494c5f636277349b8edc5eaf5274597d3de4c4b46"
   },
   "standing_laws": [
     "The Intelligence Question",
@@ -75,7 +75,7 @@
     {
       "n": 0,
       "phase": "ACTIVATE",
-      "sha256": "588cac59b390cccae7443cc406f5b0f37b61bec81d74fcd1d635ea3fb66f40da",
+      "sha256": "d9d894ec20bc5168c2b390b613c3b631efe2f3adee079a00c6486ef6aeb8bf1e",
       "title": "DECLARE — WHO I AM"
     },
     {
@@ -159,13 +159,13 @@
     {
       "n": 14,
       "phase": "LEARN",
-      "sha256": "ed2e4f73459cc0e527981896e77bd00f0d8f74b935e9af6f4ddacd9b5b321bb3",
+      "sha256": "2c537f383b01e385abc55e2ca527cc1f057aa70f7f71a43e6c49a116b77fb06c",
       "title": "CAPTURE & TRANSFER"
     },
     {
       "n": 15,
       "phase": "COMPOUND",
-      "sha256": "3941ac63b2e3193d247ec277cf553d290aba0d3be2a243eae6c94335d719a34e",
+      "sha256": "4b9dbf09c75a4f97cd7a25a413ca5a4582f13e40ed2bcf77ce98e5ff7cb05c5b",
       "title": "SCORECARD — THE LOOP"
     },
     {

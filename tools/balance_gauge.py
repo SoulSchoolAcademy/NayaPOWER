@@ -26,6 +26,18 @@ Metrics (window = --window-days, default 7):
       7 days of the merge, ÷ merges in the window. Mechanical proxy for
       the design's finder-attributed defect count; labeled a proxy in
       every output.
+  (c2) Post-merge escape rate (GUARDIAN LOG, derived) — records in
+      guardian-log.jsonl on branch live/guardian-log (written by
+      tools/post_merge_guardian.py, POST-MERGE-GUARDIAN-V1) whose
+      detection ts falls in the window: ESCAPE / ESCAPE_ON_REVERT
+      verdicts ÷ all records in the window. This is the design's real
+      escape rate, counted by the watchman itself rather than inferred
+      from later PR titles. Coverage caveat, printed with the number:
+      the log only holds landings a guardian run actually executed —
+      runs cancelled in the workflow's concurrency queue verified
+      nothing and logged nothing, so early-log rates rest on small n.
+      When the log cannot be fetched, (c2) reports NOT DERIVABLE and
+      the proxy stands alone — never silently.
   (d) Feed freshness — age of the newest entry on https://nayanet.live/
       (max created_at in the served page) vs now; plus the lag vs the
       newest Smart Note landing on main (commits API on the note trees).
@@ -39,6 +51,7 @@ unit-tested against fixtures in tools/test_balance_gauge.py.
 """
 
 import argparse
+import base64
 import json
 import os
 import re
@@ -48,6 +61,9 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 REPO_DEFAULT = "SoulSchoolAcademy/NayaPOWER"
+GUARDIAN_LOG_BRANCH = "live/guardian-log"
+GUARDIAN_LOG_PATH = "guardian-log.jsonl"
+ESCAPE_VERDICTS = {"ESCAPE", "ESCAPE_ON_REVERT"}
 FEED_URL = "https://nayanet.live/"
 NOTE_TREES = ("BRAIN/05-MEMORY/SMART-NOTES", "BRAIN/05-MEMORY/SUPER-NOTES")
 
@@ -268,6 +284,52 @@ def escape_candidates(merged, candidates):
     return escaped
 
 
+def parse_guardian_log(text):
+    """Parse guardian-log.jsonl text into record dicts.
+
+    Blank lines are skipped; a malformed line is skipped too (a torn
+    final write must not kill the whole read) — the caller reports the
+    raw line count beside the parsed count so the loss is visible.
+    """
+    records = []
+    for line in (text or "").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            rec = json.loads(line)
+        except ValueError:
+            continue
+        if isinstance(rec, dict):
+            records.append(rec)
+    return records
+
+
+def guardian_escape_stats(records, window_start):
+    """Derived escape stats from guardian records in the window.
+
+    A record counts when its detection ts parses and falls at/after
+    window_start. Escapes are verdicts in ESCAPE_VERDICTS. The rate is
+    None when no records fall in the window (no denominator — never
+    report 0% on zero verified landings).
+    """
+    in_window = []
+    for rec in records:
+        try:
+            ts = parse_ts(rec.get("ts"))
+        except Exception:
+            continue
+        if ts is not None and ts >= window_start:
+            in_window.append(rec)
+    escapes = [r for r in in_window if r.get("verdict") in ESCAPE_VERDICTS]
+    return {
+        "records": len(in_window),
+        "escapes": len(escapes),
+        "escaped_prs": sorted({r["pr"] for r in escapes if r.get("pr")}),
+        "rate": (len(escapes) / len(in_window)) if in_window else None,
+    }
+
+
 _CREATED_RE = re.compile(r'"created_at"\s*:\s*"([^"]+)"')
 
 
@@ -481,6 +543,31 @@ def collect(window_days):
     )
     escaped = escape_candidates(merged_records, candidates)
 
+    # (c2) guardian-log derived escape stats. The log lives on its own
+    # branch; fetch via the contents API. Any failure is reported, never
+    # papered over — the proxy above then stands alone, labeled.
+    guardian = {"records": 0, "escapes": 0, "escaped_prs": [], "rate": None,
+                "total_records": 0, "error": None}
+    try:
+        content = c.get(
+            f"/repos/{REPO}/contents/{GUARDIAN_LOG_PATH}?ref={GUARDIAN_LOG_BRANCH}"
+        )
+        raw_log = base64.b64decode(content["content"]).decode("utf-8", "replace")
+        all_records = parse_guardian_log(raw_log)
+        guardian.update(guardian_escape_stats(all_records, window_start))
+        guardian["total_records"] = len(all_records)
+        sources.append(
+            f"GET contents/{GUARDIAN_LOG_PATH}?ref={GUARDIAN_LOG_BRANCH} -> "
+            f"{len(all_records)} guardian records total, "
+            f"{guardian['records']} in window"
+        )
+    except Exception as exc:
+        guardian["error"] = f"{type(exc).__name__}: {exc}"
+        sources.append(
+            f"GET contents/{GUARDIAN_LOG_PATH}?ref={GUARDIAN_LOG_BRANCH} "
+            f"FAILED -> {guardian['error']}"
+        )
+
     # (d) feed freshness
     feed_info = {"url": FEED_URL, "newest": None, "entries": 0, "error": None}
     try:
@@ -514,6 +601,7 @@ def collect(window_days):
         "merges": len(merged_records),
         "ttm_hours": ttm,
         "escaped": sorted(escaped),
+        "guardian": guardian,
         "feed": feed_info,
         "newest_landing": landing,
         "sources": sources,
@@ -544,6 +632,22 @@ def render(result):
                  f"merged PR within 7 days): {esc}/{merges} merges = {erate:.1f}% "
                  f"(target <= 2%)")
     lines.append(f"    Escaped PRs: {result['escaped']}")
+    lines.append("")
+    guardian = result.get("guardian") or {}
+    if guardian.get("error"):
+        lines.append(f"(c2) Post-merge escape rate (GUARDIAN LOG): NOT DERIVABLE "
+                     f"this run — {guardian['error']}")
+    elif guardian.get("rate") is None:
+        lines.append(f"(c2) Post-merge escape rate (GUARDIAN LOG): no guardian "
+                     f"records in window ({guardian.get('total_records', 0)} in "
+                     f"log total) — no verified-landing denominator yet")
+    else:
+        grate = 100.0 * guardian["rate"]
+        lines.append(f"(c2) Post-merge escape rate (GUARDIAN LOG — derived from "
+                     f"{GUARDIAN_LOG_BRANCH}): {guardian['escapes']}/"
+                     f"{guardian['records']} verified landings in window = "
+                     f"{grate:.1f}% (target <= 2%; small-n while the log is young)")
+        lines.append(f"    Escaped PRs: {guardian['escaped_prs']}")
     lines.append("")
     feed = result["feed"]
     if feed["newest"] is not None:
@@ -594,6 +698,10 @@ def main(argv=None):
         )
         out["escape_rate_proxy"] = (
             len(result["escaped"]) / result["merges"] if result["merges"] else None
+        )
+        out["guardian_escape"] = result.get("guardian")
+        out["escape_rate_guardian"] = (
+            (result.get("guardian") or {}).get("rate")
         )
         print(json.dumps(out, indent=2, default=str))
     else:

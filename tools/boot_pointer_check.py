@@ -48,6 +48,10 @@ STANDING = {
     # Earlier migration: 2537 -> 2641 (authority main seat 6196761341,
     # 2026-10-15T16:38:52Z, on Shawn's word "switch over to a new board now")
     # — #2537 remains a capped archive.
+    # Ratification (GT-068): Shawn decided 2026-10-22 ~00:29Z that the live
+    # venue is #2793 (successor to #2765, retired 2026-10-20; chain in
+    # #2793's body). The boot bytes name #2793 as the ratified live venue
+    # alongside this indirection: the snapshot still wins on rotation.
     "live_board": "BRAIN/CURRENT-MISSION-STATE.md @ naya/mission-state "
                   "— read the snapshot first; board numbers rotate, "
                   "no printed number is canonical",

@@ -34,9 +34,18 @@ refuse activation without the declaration step — it now does.
 
 Usage:
     python3 tools/protocol_pin.py --check [--json]
+    python3 tools/protocol_pin.py --drift-alarm [--json]
     python3 tools/protocol_pin.py --issue --agent-id <id> [--out PATH]
     python3 tools/protocol_pin.py --verify <receipt.json> \
         [--max-age-hours N] [--json]
+
+The drift alarm is the pin's watchdog form, built for automation (a CI
+job or a lane's wake check): silent (exit 0, no output) while PROTOCOL.md
+matches its pins, and loud the moment the document moves without a
+re-pin — naming both fingerprints and the cure. It exists because on
+2026-10-21 PR #2802 landed legitimate protocol repairs with no re-pin
+and the boot gate refused cold boots for a day before a seat noticed;
+an alarm converts that discovery from luck into machinery.
 
 Exit codes: 0 = ok | 1 = pin mismatch / receipt violations |
             2 = tool error (canonical bytes unreadable — fail closed).
@@ -57,14 +66,16 @@ from datetime import datetime, timezone
 PROTOCOL_MD = "PROTOCOL.md"
 
 PIN_SOURCE = (
-    "origin/main @ d986404acac7b3e1be6a4eb253bbc5f34460729f "
-    "(PROTOCOL.md ratified 2026-10-20; pinned at operationalization, "
-    "2026-10-20). A drift in protocol bytes is a deliberate re-pin "
-    "(code change), never a silent pass.")
+    "origin/main @ 85e26ee0cc5245d3b8037d57e36958261f105527 "
+    "(PROTOCOL.md text as landed by PR #2802, merge "
+    "e1e259c4c7910f7b924dbe0d5f651eab067eac12, 2026-10-21T22:55:56Z; "
+    "document ratified 2026-10-20; re-pin ratified 2026-10-22). "
+    "A drift in protocol bytes is a deliberate re-pin (code change), "
+    "never a silent pass.")
 PROTOCOL_FILE_PIN = \
-    "cb7bc9e78b3ac86b939c475f79ae00d0f390fc0a70727b9717a08524190be84c"
+    "f43cae6d0a18baccd04e372494c5f636277349b8edc5eaf5274597d3de4c4b46"
 STEP0_PIN = \
-    "588cac59b390cccae7443cc406f5b0f37b61bec81d74fcd1d635ea3fb66f40da"
+    "d9d894ec20bc5168c2b390b613c3b631efe2f3adee079a00c6486ef6aeb8bf1e"
 
 STEP0_START = "**0. DECLARE"
 STEP0_END = "**1. WAKE"
@@ -159,6 +170,96 @@ def check(record):
     return {"pass": passed,
             "reasons": [detail],
             "details": {"law": "DECLARATION-RECEIPT", "detail": detail}}
+
+
+# ---------------------------------------------------------------------------
+# Pin-drift alarm — the watchdog form of the pin, built for automation
+# ---------------------------------------------------------------------------
+
+def pin_drift_status(repo_root):
+    """Compare PROTOCOL.md's live fingerprints against the pins and
+    report the drift state as data. Never raises: an unreadable or
+    structurally drifted protocol reports readable=False with the
+    error named (callers fail closed). "drifted" is None when the
+    bytes could not be read at all."""
+    status = {
+        "readable": False,
+        "drifted": None,
+        "file": {"pinned": PROTOCOL_FILE_PIN, "current": None,
+                 "match": False},
+        "step0": {"pinned": STEP0_PIN, "current": None, "match": False},
+        "version": None,
+        "detail": "",
+    }
+    try:
+        fp = protocol_fingerprints(repo_root)
+    except Exception as e:  # noqa: BLE001 — status is data, not a raise
+        status["detail"] = ("protocol unreadable or structurally "
+                            "drifted (%s) — fail closed" % e)
+        return status
+    status["readable"] = True
+    status["version"] = fp["version"]
+    status["file"]["current"] = fp["sha256"]
+    status["file"]["match"] = \
+        fp["sha256"].lower() == PROTOCOL_FILE_PIN.lower()
+    status["step0"]["current"] = fp["step0_sha256"]
+    status["step0"]["match"] = \
+        fp["step0_sha256"].lower() == STEP0_PIN.lower()
+    status["drifted"] = not (status["file"]["match"]
+                              and status["step0"]["match"])
+    if status["drifted"]:
+        moved = []
+        if not status["file"]["match"]:
+            moved.append("PROTOCOL.md sha256 %s != pinned %s"
+                         % (fp["sha256"], PROTOCOL_FILE_PIN))
+        if not status["step0"]["match"]:
+            moved.append("Step 0 declaration sha256 %s != pinned %s"
+                         % (fp["step0_sha256"], STEP0_PIN))
+        status["detail"] = "; ".join(moved)
+    else:
+        status["detail"] = ("protocol pinned: PROTOCOL.md + Step 0 "
+                            "match canonical bytes (ratified %s)"
+                            % fp["version"])
+    return status
+
+
+def drift_alarm_line(status):
+    """The one loud line the alarm exists to print. Pure formatting of
+    a pin_drift_status() result; returns "" when there is no drift."""
+    if not status["drifted"]:
+        return ""
+    return ("PIN-DRIFT-ALARM: PROTOCOL.md moved without a re-pin — %s "
+            "— CURE: deliberate re-pin via the ratification packet "
+            "(owner: protocol owner + Shawn); the boot gate refuses "
+            "cold boots until the pin or the bytes are restored"
+            % status["detail"])
+
+
+def check_drift_alarm(record):
+    """Gate-pattern entry point for the drift alarm, mirroring
+    check(record): pass = the protocol's bytes match their pins (or
+    the record is well-formed and the tree is readable — pass means
+    NO drift). Fail-closed throughout: a non-dict record fails, and
+    an unreadable protocol fails with the error named."""
+    if not isinstance(record, dict):
+        return {"pass": False,
+                "reasons": ["record is not a JSON object"],
+                "details": {"law": "PROTOCOL-PIN-DRIFT"}}
+    repo_root = record.get("repo_root") or _default_repo_root()
+    status = pin_drift_status(repo_root)
+    if not status["readable"]:
+        return {"pass": False,
+                "reasons": [status["detail"]],
+                "details": {"law": "PROTOCOL-PIN-DRIFT",
+                            "status": status}}
+    if status["drifted"]:
+        return {"pass": False,
+                "reasons": [drift_alarm_line(status)],
+                "details": {"law": "PROTOCOL-PIN-DRIFT",
+                            "status": status}}
+    return {"pass": True,
+            "reasons": [status["detail"]],
+            "details": {"law": "PROTOCOL-PIN-DRIFT", "status": status}}
 
 
 # ---------------------------------------------------------------------------
@@ -257,6 +358,11 @@ def main(argv=None):
     ap.add_argument("--repo-root", default=_default_repo_root())
     ap.add_argument("--check", action="store_true",
                     help="verify PROTOCOL.md + Step 0 against the pins")
+    ap.add_argument("--drift-alarm", action="store_true",
+                    help="watchdog form for automation: silent exit 0 "
+                         "while the bytes match the pins; on drift "
+                         "prints PIN-DRIFT-ALARM with both fingerprints "
+                         "and exits 1; unreadable bytes exit 2")
     ap.add_argument("--issue", action="store_true",
                     help="issue a declaration receipt")
     ap.add_argument("--agent-id", default="",
@@ -303,6 +409,24 @@ def main(argv=None):
                 "VALID" if not violations else "REJECT",
                 "; ".join(violations) if violations else "ok"))
         return 0 if not violations else 1
+
+    if args.drift_alarm:
+        status = pin_drift_status(args.repo_root)
+        if not status["readable"]:
+            print("TOOL-ERROR: %s" % status["detail"], file=sys.stderr)
+            return 2
+        if status["drifted"]:
+            if args.json:
+                print(json.dumps({"alarm": True, "status": status,
+                                  "line": drift_alarm_line(status)},
+                                 indent=2))
+            else:
+                print(drift_alarm_line(status))
+            return 1
+        if args.json:
+            print(json.dumps({"alarm": False, "status": status},
+                             indent=2))
+        return 0
 
     # default: the pin check
     passed, detail = check_protocol_pin(args.repo_root)
