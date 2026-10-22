@@ -3,17 +3,30 @@ name: Unified PR paperwork gate
 # Shadow-migration candidate. Do not remove the legacy checks or change
 # Required-check settings until this gate has been independently verified and
 # Shawn performs the protected settings change.
+#
+# Trigger-scope repair (2026-10-22): issue_comment removed. GitHub offers no
+# PR-comments-only trigger, so every comment on ANY issue — including the
+# team board — spawned a run of this gate (84 of its last 100 runs were
+# comment-triggered). A scorecard landing on a PR now re-fires this gate
+# deliberately via workflow_dispatch (input: pr_number), fired by the lane
+# that posts the scorecard or the relay that sees it. Side benefit: the
+# gate's own diagnostic comment can no longer re-trigger the gate.
+# Job logic below is unchanged.
 on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, edited, ready_for_review]
   pull_request_review:
     types: [submitted, edited, dismissed]
-  issue_comment:
-    types: [created, edited]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to evaluate (deliberate re-fire after a scorecard lands)'
+        required: true
+        type: string
 
 concurrency:
-  group: unified-paperwork-${{ github.event.pull_request.number || github.event.issue.number }}-${{ github.event.comment.id || github.event.review.id || github.event.pull_request.head.sha }}
+  group: unified-paperwork-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}-${{ github.event.comment.id || github.event.review.id || github.event.pull_request.head.sha }}
   cancel-in-progress: true
 
 permissions:
@@ -36,13 +49,13 @@ jobs:
           GITHUB_EVENT_PATH: ${{ github.event_path }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}
         run: python3 tools/check_unified_pr_paperwork.py
       - name: Publish or update the single gate diagnostic
         if: always()
         uses: actions/github-script@v7
         env:
-          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number || inputs.pr_number }}
           GATE_VERDICT: ${{ steps.gate.outputs.verdict }}
           GATE_MISSING: ${{ steps.gate.outputs.missing }}
           GATE_CURE: ${{ steps.gate.outputs.cure }}
