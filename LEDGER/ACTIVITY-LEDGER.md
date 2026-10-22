@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4352,6 +4352,22 @@ _Last updated: 2026-10-22 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1282-lane1.md`
 
 **Evidence:** Dispatcher verified: blinded-scoring/SPEC.md + mechanism/assemble_packet.py, leak_audit.py, unblind.py all on disk; demo artifacts present. Real verified value: leak audit fired honestly once (FAIL-IDENTITY-LEAK on probe self-naming), normalized and re-audited PASS; spawn-failure root-caused to spawn layer (zero integrity impact). Deductions: separ
+
+### ✅ t1278 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** hostile second-seat design review of the t1276 test-flag harness design (verdict CONDITIONAL PASS)
+
+**Receipt:** `twelve-lane-receipts/t1278-lane11.md`
+
+**Evidence:** VERIFIED (2026-10-22 ~05:21 PDT tick): deliverable hidden_files/surge-b/retrieval-auth-gate-testflag-harness-review-t1278.md exists at the receipt's exact pinned sha256 2ebc28161aa4ac588481da045341aa804a98bb4f60740b6f52006943da2b179f (8,118 B, byte-identical, independent fresh read). Receipt internally consistent: 7 pre-registered falsifiers (regis
+
+### ✅ t1277 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-authorization-gate migration-readiness dossier (byte-pinned ask-prep packet for Shawn's word)
+
+**Receipt:** `twelve-lane-receipts/t1277-lane4.md`
+
+**Evidence:** VERIFIED (2026-10-22 ~05:21 PDT tick): deliverable hidden_files/retrieval-auth-gate-migration-readiness-t1277.md exists at the receipt's exact pinned sha256 c738ebed70b0c2ba574399df2214b355df1c832694d7b0afa2e5725ee441b612 (byte-identical, independent fresh read). Receipt pins cross-consistent with this scorer's t1274/t1275/t1276 verifications: tip 
 
 ### ✅ t1276 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
