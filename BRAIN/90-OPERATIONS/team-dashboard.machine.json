@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T14:18:09+00:00",
+ "generated_utc": "2026-10-22T15:15:59+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,15 +31,8 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [
-    {
-     "number": 2920,
-     "title": "Fix learning-promotion config test \u2014 expect nayanet-github-intake (BUILD 06:30)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2920",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "know",
@@ -153,55 +146,13 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2927,
-     "title": "A2 step 2: tongue triplets for both activation trees (57 works)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2927",
-     "draft": false
-    },
-    {
-     "number": 2926,
-     "title": "MISSION-STATE.json twin \u2014 mission state as data (Mirror A2 step 3)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2926",
-     "draft": false
-    },
-    {
-     "number": 2924,
-     "title": "Fix auto-brain test law count \u2014 18 \u2192 23, ratified operationalization count (BUILD 07:30)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2924",
-     "draft": false
-    },
-    {
-     "number": 2922,
-     "title": "Fix cold-start Step-0 admission fixture \u2014 q4 answer 9.0 \u2192 9.5 (BUILD 07:00)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2922",
-     "draft": false
-    },
-    {
-     "number": 2919,
-     "title": "Fix materialize-template tests under repo-root pytest \u2014 file-relative fixture paths (BUILD",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2919",
-     "draft": false
-    },
-    {
-     "number": 2916,
-     "title": "Smart Notes SN-1801 + SN-1802 \u2014 Awareness Is Ownership \u00b7 Answer Your Own Questions",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2916",
-     "draft": false
-    },
-    {
-     "number": 2915,
-     "title": "Daily Intelligence 2026-10-22 \u2014 the night the lessons became orders",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2915",
-     "draft": false
-    },
-    {
      "number": 2869,
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869",
      "draft": false
     }
    ],
-   "open_pr_count": 8
+   "open_pr_count": 1
   },
   {
    "id": "wire",
@@ -461,6 +412,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 12,
- "unassigned_prs": 8
+ "open_pr_total": 4,
+ "unassigned_prs": 1
 }
