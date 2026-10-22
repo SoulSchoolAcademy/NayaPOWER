@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "38ad3255d949252e36b712037fc5b6043b7351c0",
-  "inventory_file_count": 1540,
+  "receipt_basis_commit": "0e9df7be89ed191bae302f18c1a1592a8495299f",
+  "inventory_file_count": 1541,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 777,
+    "05-MEMORY": 778,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4309,6 +4309,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md",
       "blob_sha": "f11b2653d0081180819820d116e3e75b55357ecc",
       "size": 5334
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/north-star/SN-1789/IB-SMART-NOTE-20261022-sn1789-the-night-the-catch-held-we-celebrate-by-noting.md",
+      "blob_sha": "813fc914d2bf72603e94bc0f076c9fc5a2f94536",
+      "size": 9185
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md",
