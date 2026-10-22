@@ -1575,6 +1575,15 @@
       "statement_count": 3,
       "bytes": 4538,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022203000",
+      "name": "person_timeline_v1",
+      "path": "supabase/migrations/20261022203000_person_timeline_v1.sql",
+      "sha256": "70bb93e90d7687b3f24990658abafad8d377ba25301685f1a81c2ec9d6a14b54",
+      "statement_count": 15,
+      "bytes": 8769,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
