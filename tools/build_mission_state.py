@@ -107,17 +107,29 @@ def _norm(text: str) -> str:
 # --------------------------------------------------------------------------
 
 def parse_snapshot(md_text: str) -> dict:
-    # --- header: last verified + tip moved ---------------------------------
-    m = re.search(r"\*\*Last verified:\*\*.*?\((\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)\)", md_text)
+    # --- header: last verified + tip state -----------------------------------
+    # Live grammar (director pass): the timestamp carries seconds only when the
+    # pass emits them (YYYY-MM-DDTHH:MMZ and YYYY-MM-DDTHH:MM:SSZ both parse),
+    # and the header alternates between **TIP MOVED** `<from>` → `<to>` and
+    # **TIP STATIC** `<tip>` (no move). For STATIC the move is from == to.
+    m = re.search(r"\*\*Last verified:\*\*.*?\((\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?Z)\)", md_text)
     if not m:
         raise _fail("snapshot.last_verified_utc",
-                    "the snapshot header must carry '**Last verified:** ... (YYYY-MM-DDTHH:MM:SSZ)'")
+                    "the snapshot header must carry '**Last verified:** ... (YYYY-MM-DDTHH:MM[:SS]Z)'")
     last_verified = m.group(1)
 
     m = re.search(r"\*\*TIP MOVED\*\* `([0-9a-f]{40})` → `([0-9a-f]{40})`", md_text)
-    if not m:
-        raise _fail("snapshot.tip_moved", "the snapshot header must carry '**TIP MOVED** `<from>` → `<to>`'")
-    tip_from, tip_to = m.group(1), m.group(2)
+    if m:
+        tip_from, tip_to = m.group(1), m.group(2)
+        tip_form = "moved"
+    else:
+        m = re.search(r"\*\*TIP STATIC\*\* `([0-9a-f]{40})`", md_text)
+        if not m:
+            raise _fail("snapshot.tip_moved",
+                        "the snapshot header must carry '**TIP MOVED** `<from>` → `<to>`' "
+                        "or '**TIP STATIC** `<tip>`'")
+        tip_from = tip_to = m.group(1)
+        tip_form = "static"
 
     # --- KEY NUMBERS line ---------------------------------------------------
     kn = next((ln for ln in md_text.splitlines() if "**KEY NUMBERS" in ln), None)
@@ -129,14 +141,17 @@ def parse_snapshot(md_text: str) -> dict:
     main_tip = m.group(1)
     if main_tip != tip_to:
         raise SnapshotError(
-            f"SNAPSHOT SELF-DISAGREEMENT: header TIP MOVED lands on {tip_to} but KEY NUMBERS "
+            f"SNAPSHOT SELF-DISAGREEMENT: header tip ({tip_form}) lands on {tip_to} but KEY NUMBERS "
             f"names main tip {main_tip} — CURE: the director reconciles the snapshot before "
             f"the twin can be emitted (owner: director pass)")
 
-    m = re.search(r"live board \*\*#(\d+)\*\* \((\d+) count, \+(\d+) since watermark (\d+)", kn)
+    # The director's live wording carries an optional unit word: "+7 ids since
+    # watermark" (2026-10-22) vs the earlier "+4 since watermark". Accept both;
+    # the four numbers stay required.
+    m = re.search(r"live board \*\*#(\d+)\*\* \((\d+) count, \+(\d+)(?:\s+[a-zA-Z]+)? since watermark (\d+)", kn)
     if not m:
         raise _fail("snapshot.key_numbers.board",
-                    "the KEY NUMBERS line must state 'live board **#N** (C count, +D since watermark W)'")
+                    "the KEY NUMBERS line must state 'live board **#N** (C count, +D [unit] since watermark W)'")
     board = {"issue": int(m.group(1)), "comments": int(m.group(2)),
              "delta_since_watermark": int(m.group(3)), "watermark_comment": int(m.group(4))}
 
