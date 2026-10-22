@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 20:52 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 21:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 9 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 8 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -53,10 +53,9 @@
 ### KNOW (1)
 - [#2907](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907) kappa w690: heal registry drift — register 28 door/leaf pages, pin 1→0 📝draft
 
-### BUILD (5)
-- [#2949](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2949) Factory Contract Home — step 1: A.1 stamp applied (contract v1.2) + ca
+### BUILD (4)
+- [#2951](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2951) Factory Step 2: machine twin of the ratified Design Contract (generato
 - [#2945](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2945) Smart Links: data foundation + redirect worker + join attribution (Bes
-- [#2940](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2940) canon: S8 flagship-dialect label follows the smart-app language law
 - [#2934](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934) Mission-state twin cure — director ruling Option C (TOP-10 director-st
 - [#2869](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869) Naya4/smart notes 2026 09 30
 
