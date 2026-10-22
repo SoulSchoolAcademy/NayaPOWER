@@ -1,6 +1,6 @@
 # Answer Your Own Questions
 
-**ID:** IB-SMART-NOTE-20261022-sn0824-answer-your-own-questions
+**ID:** IB-SMART-NOTE-20261022-sn1802-answer-your-own-questions
 **Created:** 2026-10-22T04:48:00Z
 **Category:** LEARNING / Intelligent Obedience
 

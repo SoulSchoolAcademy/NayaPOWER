@@ -1,6 +1,6 @@
 # Awareness Is Ownership
 
-**ID:** IB-SMART-NOTE-20261022-sn0823-awareness-is-ownership
+**ID:** IB-SMART-NOTE-20261022-sn1801-awareness-is-ownership
 **Created:** 2026-10-22T03:15:00Z
 **Category:** LEARNING / Awareness & Ownership
 
@@ -35,7 +35,7 @@ Systems rot at the seams between "I saw it" and "it's mine." Every long-lived de
 For Shawn: nothing he surfaces — and nothing the team surfaces — evaporates into a list. Every item he has ever pointed at carries a name that answers for it. For every Naya: the end of the clean conscience that comes from merely reporting; your attention is now a commitment device. For the system's users: problems stop aging. The queue of known-but-unowned issues — the kind that quietly becomes "just how things are" — cannot form.
 
 ## HOW IT APPLIES
-Born 2026-10-22 ~03:15Z, applied in its birth window: main-seat dispatch 6331728219 + addendum 6331795927 (seven owned items). The dock rule (6332652920) is this law on the merge line. Every sign-out from now on that names a gap names its outcome owner in the same breath; a gap without one is itself reported as a defect. Companion laws: the Lesson Law (every lesson gets a note and a declared change) and Answer Your Own Questions (SN-0824 — the owner also holds the authority to decide).
+Born 2026-10-22 ~03:15Z, applied in its birth window: main-seat dispatch 6331728219 + addendum 6331795927 (seven owned items). The dock rule (6332652920) is this law on the merge line. Every sign-out from now on that names a gap names its outcome owner in the same breath; a gap without one is itself reported as a defect. Companion laws: the Lesson Law (every lesson gets a note and a declared change) and Answer Your Own Questions (SN-1802 — the owner also holds the authority to decide).
 
 ## THE DECLARED BEHAVIOR CHANGE
 From now on, when my attention lands on a problem, I record myself as its outcome owner in the same step — and I stay its owner until its proof lands, reporting its stalls as my own. I never publish a problem as "named but ownerless" again; if I can see it, it has an owner, and the owner is me until I hand the outcome — not just the task — to a named successor in the open.
