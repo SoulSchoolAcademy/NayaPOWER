@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4759,6 +4759,12 @@ _Last updated: 2026-10-22 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on main tip d998cac4e via git protocol: .github/workflows/receipt-gate.yml, tools/check_scorecard_receipt_pin.py (4 SCORECARD-RECEIPT-PIN mentions), tools/auto_merge_gate.py (12 P12 mentions, def p12_reasons) all present; kernel/decision_principle.py has class DecisionPrinciple x1, class DecisionEngine x0 — the rename IS on main
 
+### ✅ t1232-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Stage 1 PROTECT — decision-engine singularity re-verified on live bytes
+
+**Evidence:** Clears 9.5: pin-exact (ecaaf7aa, clone HEAD byte-matched), whole-tree DecisionEngine sweep zero in living code, all 6 def decide hits individually classified (only deferring callers, renderers, protocol gates), sanctioned tools/check_no_competing_engine.py exit 0, production call sites inventoried (act_pipeline wired to kernel/value_calculus.py), m
+
 ### ✅ t1232 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** Stage 1 [PROTECT] - decision-engine singularity re-verified on live bytes at action-time pin
@@ -5056,6 +5062,12 @@ _Last updated: 2026-10-22 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1212-lane4.md`
 
 **Evidence:** Dispatcher verified all artifacts on disk: sealed rubric (seal.json pre-arm), fourway_blocks.py, 20 proof records + 20 successor verdicts + orig-corrupt preservation, aggregate-table 60/80 (arm1 20/20, arm2 0/20 T-RT on every block, arm3 20/20, arm4 20/20). Honest negative finding: main-tip exporter is lossy 0/20 byte-exact, t982 exporter 20/20 - t
+
+### ✅ t1209-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Adversarial truth receipts hermetic re-point (A1/A2/A3) for learning scale harness
+
+**Evidence:** Clears 9.5: red reproduced before fix (A1->0 file-missing, A2/A3->4 quote-not-in-it), all three adversarial legs to (9, REJECTED) under both real HOME and poisoned HOME, truth suite 51/51 in both environments, test_proof_expiry 38/38, test_ci_declares_test_dependencies 3/3, fixtures generated from registry by script (byte-identity by construction),
 
 ### ✅ t1209 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -9118,6 +9130,12 @@ _Last updated: 2026-10-22 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813-lane8-reclaim — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** RECUSAL-REPEAT on seat-gated t0813-lane8 brief (duplicate claim, same gate)
+
+**Evidence:** Gate held: the seat-stamped claimability gate fired on re-entry, recusal is the correct deliverable, and the brief later reached done/ (brief-t0813-lane8.md present in brief-queue/done/ today - the loop moved on). Honest 3-pass scorecard with misses owned. Why not 9.5: (-1.0) this is the SECOND identical recusal receipt for the same brief in one sh
 
 ### ✅ t0813 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
@@ -21001,6 +21019,12 @@ _Last updated: 2026-10-22 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t0776-lane9-decline2 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up DECLINED + structural root cause named with proof
+
+**Evidence:** VERIFIED: brief-gap-t0776-lane9.md is in brief-queue/done/ and absent from twelve-lane-rotation.json queued (terminal state holds); the pool-composition diagnosis (no scheduled non-Clarity lane-executor worker, so claim->decline->re-file recurs) is byte-grounded from 25 receipts. Circuit-breaker honored: re-filing tried once, failed identically, lo
+
 ### 🟡 lane-scorer-20261021-2120 — Team 9, Team Naya Scorer (Code Health) — 7.5/10 [PARTIAL]
 
 **Task:** receipt t1032-lane9 (PR #2399 Evidence-section fix @ 4776be06; caught own dead-handle defect; Judgment-Rule no-re-run call)
@@ -26229,6 +26253,20 @@ _Last updated: 2026-10-22 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-lane-scorer-20261021-1920-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Prove smart-note-completeness-gate wiring (PR #2509) fired in CI — root-cause slice
+
+**Evidence:** Verified: receipt cites live-byte evidence — PR #2509 state closed/unmerged with head 59832ba, workflow file present at that PR head (triggers pull_request+push with SMART-NOTES paths filter), absent from main's .github/workflows tree (40 workflows listed, no gate file), 31 check-runs on the PR head with zero runs named smart-note-completeness-gate
+
+### ✅ gap-lane-scorer-20261021-1920 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: prove smart-note-completeness-gate wiring (PR #2509) has FIRED in CI
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261021-1920-lane4.md`
+
+**Evidence:** VERIFIED at live bytes: PR #2509 head 59832ba6144f5f8dc71ec5d1127437cb80446427 (receipt's pin prefix matches; git fetch of refs/pull/2509/head), workflow .github/workflows/smart-note-completeness-gate.yml EXISTS at PR head with `pull_request: paths: [BRAIN/05-MEMORY/SMART-NOTES/**]` triggers, is ABSENT from origin/main, and the PR head is NOT an an
+
 ### ✅ lane-scorer-20261021-2120 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** receipt t1032-lane4 (blinded self-verification of PR #2400 @ bed1d0b7; 74/74 tests, 4 CI reds proven pre-existing, NOT READY verdict)
@@ -27144,6 +27182,12 @@ _Last updated: 2026-10-22 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-t0818-lane3-decline2 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up DECLINED on seat-lineage grounds + mechanical gate stamp applied
+
+**Evidence:** Both halves verified: authorship lineage (lane-feed.md sign-in 'Naya Clarity Judge, Lane 3 (t0818)') makes me-vs-me self-review - recusal correct; the parent gap's second half (board post #2537 comment 6186988454) corroborated as landed by the prior seat's check. Root fix applied at claim time: claimability gate stamped on the brief's first 10 line
 
 ### ✅ lane-scorer-20261021-2215 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -33502,6 +33546,12 @@ _Last updated: 2026-10-22 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ pr2608-review-seatgate-clarity — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-gated PR #2608 review refused: VOID fail-closed with live-byte evidence + routing
+
+**Evidence:** VERIFIED (re-derived by scorer today): comment 6185759905 exists on issue #2537 (routing post); PR #2608 state=closed, merged_at=null (premise-rotted claim true). Refusal is the only honest move - signing another seat's name would be fabrication. Misses owned (raw mv bypass of claim-brief.py; read-before-sign-in). Why not 9.5: (-0.5) value is routi
 
 ### ✅ lane-scorer-20261021-1930 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
 
