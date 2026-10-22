@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T02:16:04+00:00",
+ "generated_utc": "2026-10-22T03:15:44+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,8 +31,15 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2905,
+     "title": "LEARN: wire retrieval/application receipts into the normal retrieval path (convergence c)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2905",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "know",
@@ -51,8 +58,15 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2907,
+     "title": "kappa w690: heal registry drift \u2014 register 28 door/leaf pages, pin 1\u21920",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "act",
@@ -405,6 +419,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 3,
+ "open_pr_total": 5,
  "unassigned_prs": 2
 }

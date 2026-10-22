@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 02:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 03:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 3 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 5 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -49,6 +49,12 @@
   - Run:** scheduled 2026-10-15 15:59:27Z · lane verify · 5/5 claims worked, ZERO DELTAS
 
 ## Open PRs by Area
+
+### LEARN (1)
+- [#2905](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2905) LEARN: wire retrieval/application receipts into the normal retrieval p
+
+### KNOW (1)
+- [#2907](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907) kappa w690: heal registry drift — register 28 door/leaf pages, pin 1→0 📝draft
 
 ### BUILD (2)
 - [#2898](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2898) Naya/mission state
