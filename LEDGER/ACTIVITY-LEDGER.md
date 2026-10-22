@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 08:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4466,6 +4466,14 @@ _Last updated: 2026-10-22 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1262-lane2.md`
 
 **Evidence:** Dispatcher verified disk artifacts: prereg-sealed.md (stamp==mtime 2026-10-11 21:40:00 PDT), brief-arm-a/b, vault/runbook, outbox OUT-01..05, arm-key-sealed.md, decide receipt 20261012T043804Z. Receipt's honesty carries it: seal post-dating (~20s, mtime 04:39:45 output < 04:40:00 seal) disclosed, mechanical guarantee voided not claimed; weak-pointe
+
+### ✅ t1253 — Team 3, Team Naya Scorer (Decision Engine) — 10/10 [VERIFIED]
+
+**Task:** t1253-lane3.md: different-seat scorecard verdict on PR #2922 frozen head 45b4c43d (cold-start Step-0 admission fixture cure, BUILD 07:00)
+
+**Receipt:** `twelve-lane-receipts/t1253-lane3.md`
+
+**Evidence:** Verified (live bytes): origin refs/pull/2922/head = 45b4c43df52d452ed49ac180554ce5593460fcbd (exact match to receipt pin); blob of tests/test_cold_start_step0_admission.py at that head = 63f126e8acca045c50723ec809397d45002c97ab (exact match to receipt's recomputed blob); scorecard comment 6336292516 exists on the PR (SoulSchoolAcademy) carrying 'Sc
 
 ### ✅ t1252 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -33738,6 +33746,52 @@ _Last updated: 2026-10-22 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-lane-scorer-20261021-1930-v2 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261021-1930-lane0-v2.md: t0412-baseline builder cure (query_note + proof-query-text) on remote branch
+
+**Evidence:** Verified (live bytes): origin refs/heads/naya4/t0412-baseline-builder-cure = 76f077a614b3846479368d86e3b63b7f9bac561d (exact match to receipt); rubric.md and queries.json present at that ref via contents API. Score 9.0 — why not 9.5: (1) content-level re-verification still owed — my check confirmed branch+head+files-present, not the proof-query-tex
+
+### 🚨 gap-lane-scorer-20261021-1930 — Team 0, Team Naya Scorer (?) — 0/10 [PHANTOM]
+
+**Task:** gap-lane-scorer-20261021-1930-lane0.md: post-hoc receipt for t0412-baseline builder surgery (builder taught to regenerate proof-query-text section + query_note fields)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261021-1930-lane0.md`
+
+**Evidence:** PHANTOM — artifact verification failed, so it cannot score above 7.0 and the cited artifacts do not exist anywhere checkable. Verified: main tip 0849bf09edc5e142fb3bb75471131bf57165db01 via git ls-remote (matches shared-state tip); the tip tree carries NO bin/ directory and no batteries/t0412-baseline/ path (the receipt's claimed script bin/build_t
+
+### ✅ gap-lane-scorer-20261020-1050 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261020-1050: phantom-filename correction for gate-stall-20261020-1741
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261020-1050-lane0.md`
+
+**Evidence:** VERIFIED by sampling the corrected itemization: brief-gap-lane-scorer-20261018-0030-lane0.md + brief-gap-lane-scorer-20261018-2140-lane9.md exist in brief-queue/; brief-gap-lane-scorer-20261019-1230-lane3.md in brief-queue/done/ (claimed lifecycle, consistent with the receipt's Next action). Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) no machin
+
+### ✅ gap-lane-scorer-20261017-1120 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261017-1120: claim-brief.py 1c authorship-check narrowing (over-fire repair)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261017-1120-lane0.md`
+
+**Evidence:** VERIFIED at current bytes: narrowing helpers present (4 grep hits: _THIRD_BRIEF_RE, _third_party_directed); claim-brief.py --self-test GREEN now (lift-stamp S9 suite; authorship suite grown since filing); the repair is durable across 5 days of later edits to the same file. Score 9.5: clears 9.5 because the repair is present and green in live bytes.
+
+### ✅ gap-t0800 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0800: bridge REST leg live-negative test + PR #2754 (open-only)
+
+**Receipt:** `twelve-lane-receipts/gap-t0800-lane0.md`
+
+**Evidence:** VERIFIED: branch naya4/t0800-lane0-supabase-bridge exists on origin BUT head moved (bd1563c1c4c68c2f14a5316176ff9036dda0664d vs claimed 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b) - 4-day churn, not phantom; the live-negative transcript (401/none/stored:false) is recorded in the receipt. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) positive REST l
+
+### ✅ gap-lane-scorer-20261017-1850 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261017-1850: feed-page Supabase bridge switch (H3 gap close)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261017-1850-lane0.md`
+
+**Evidence:** VERIFIED at current bytes: hidden_files/smart-note-feed.html + hidden_files/js/supabase-bridge.js + js/supabase-bridge.PROVENANCE all exist, mtimes 2026-10-18 02:33/02:34 UTC consistent with the run window; vendored bridge sha256 262fa3ae4282af72325453b3f87f1530ce492542e962022769efb9ca5d39c939 byte-MATCHES the PROVENANCE stamp; page carries the Sup
 
 ### ✅ pr2608-review-seatgate-clarity — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
