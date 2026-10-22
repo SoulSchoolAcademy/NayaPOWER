@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-21  
-**Receipt basis commit:** `4ce858515f0b9739975de344af71c2cabcbdde30`  
-**Inventory file count:** 1508  
+**Receipt basis commit:** `2e176747cd9e10c679935cb5409d425726d0f507`  
+**Inventory file count:** 1531  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,11 +11,11 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 73 |
+| 01-GOVERNANCE | 89 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 768 |
+| 05-MEMORY | 772 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -23,7 +23,7 @@
 | 10-INTERFACES | 427 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
-| 90-OPERATIONS | 86 |
+| 90-OPERATIONS | 89 |
 | 99-ARCHIVE | 2 |
 | ROOT | 6 |
 
@@ -32,12 +32,12 @@
 ### 00-ACTIVATION — (unregistered domain)
 
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
-- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `61080b4c74e9` (10274 bytes)
+- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `a9cb59b94b12` (11115 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
-- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `f50db91af0da` (17798 bytes)
+- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `0251439bb3cc` (17817 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `6543873fee80` (2185 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
-- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `a05dc82729cd` (2643 bytes)
+- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `892f580946ac` (2702 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
 - `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PLAN.md` — `70774bbfa1e0` (24076 bytes)
@@ -116,6 +116,9 @@
 - `BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.ai.md` — `fef7ff661f60` (4131 bytes)
 - `BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.human.md` — `911a3bb0ec96` (5683 bytes)
 - `BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json` — `26daa956f351` (3439 bytes)
+- `BRAIN/01-GOVERNANCE/0023-NAYA-OATH-OF-HONOR-V1.ai.md` — `475738580afa` (2562 bytes)
+- `BRAIN/01-GOVERNANCE/0023-NAYA-OATH-OF-HONOR-V1.human.md` — `1f73f679e4a3` (1448 bytes)
+- `BRAIN/01-GOVERNANCE/0023-naya-oath-of-honor-v1.machine.json` — `d0a7d5d70504` (2026 bytes)
 - `BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.ai.md` — `49f4a2f9a1fa` (8209 bytes)
 - `BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.human.md` — `b33800bfebad` (13969 bytes)
 - `BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.machine.json` — `8bc1fdcf7a82` (5584 bytes)
@@ -127,8 +130,21 @@
 - `BRAIN/01-GOVERNANCE/0030-VALUE-ONLY-BRAIN-V1.ai.md` — `2b543ed39373` (14535 bytes)
 - `BRAIN/01-GOVERNANCE/0030-VALUE-ONLY-BRAIN-V1.human.md` — `c3360657f920` (7718 bytes)
 - `BRAIN/01-GOVERNANCE/0030-VALUE-ONLY-BRAIN-V1.machine.json` — `be5a34263f19` (13509 bytes)
+- `BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.ai.md` — `c0805bb866dc` (4225 bytes)
+- `BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.human.md` — `49369440028a` (3641 bytes)
+- `BRAIN/01-GOVERNANCE/0031-never-again-v1.machine.json` — `1e58e3180215` (2275 bytes)
+- `BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.ai.md` — `2ec5d3a522f7` (3548 bytes)
+- `BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.human.md` — `40c82a022a3a` (4783 bytes)
+- `BRAIN/01-GOVERNANCE/0032-house-standard-v1.machine.json` — `c1bb2ffa2f41` (2617 bytes)
+- `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md` — `929a5ae44a37` (20247 bytes)
+- `BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md` — `f39c47507120` (6877 bytes)
+- `BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json` — `bd9c9a1a8156` (18036 bytes)
+- `BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.ai.md` — `1330b38df3de` (4520 bytes)
+- `BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.human.md` — `2019359e46f3` (3690 bytes)
+- `BRAIN/01-GOVERNANCE/0034-the-house-fire-law-v1.machine.json` — `b26079232d91` (4001 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
+- `BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json` — `1cbaf0613176` (15465 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
 - `BRAIN/01-GOVERNANCE/OPERATING-LAW.json` — `e4047b872129` (32501 bytes)
 - `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `414cfeb4c7e0` (32957 bytes)
@@ -864,12 +880,16 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/words-without-action/IB-000047/smart-note.md` — `27dc18eeb8ae` (7144 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/DESIGN/elevation/SN-0808/IB-SMART-NOTE-20261021-sn0808-the-elevation-standard.md` — `962b0238790e` (7012 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/FACTORY/elite-parts/SN-1771/IB-SMART-NOTE-20261021-sn1771-already-built-pick-your-model.md` — `02d52b394664` (4776 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/LEARNING/north-star/SN-0815/IB-SMART-NOTE-20261021-sn0815-a-lesson-isnt-learned-until-behavior-changes.md` — `c72e27d530ea` (6120 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/LEARNING/verification/SN-0816/IB-SMART-NOTE-20261021-sn0816-it-claimed-shawns-authority-nobody-had-checked.md` — `c5eafee9d454` (7045 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM-INTELLIGENCE/GOVERNANCE/EXECUTION-DOCTRINE/SN-01774/IB-SMART-NOTE-20261021-sn01774-0028-execution-doctrine-distilled.md` — `89db67832b18` (11927 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM-INTELLIGENCE/GOVERNANCE/FINISH-BEFORE-CREATE/SN-01773/IB-SMART-NOTE-20261021-sn01773-finish-before-you-create.md` — `099f9ee89bc3` (6435 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/declaration/SN-0811/IB-SMART-NOTE-20261021-sn0811-done-before-you-ask.md` — `517f7d457c9e` (5387 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/governance/SN-01773/IB-SMART-NOTE-20261021-sn01773-finish-before-you-create.md` — `03edd5a3e15a` (8138 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/governance/SN-1786/IB-SMART-NOTE-20261021-sn1786-replays-catch-authority-rot-not-fact-rot.md` — `ca56755293cb` (6788 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/governance/SN-1787/IB-SMART-NOTE-20261021-sn1787-the-lesson-law.md` — `07738cad4f92` (6217 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/merge-discipline/SN-0812/IB-SMART-NOTE-20261021-sn0812-done-means-merged.md` — `35afa3b89e1f` (7505 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/merge-discipline/SN-1788/IB-SMART-NOTE-20261021-sn1788-the-door-was-the-bottleneck.md` — `dea6fbb9677f` (7034 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/protocol/SN-0810/IB-SMART-NOTE-20261021-sn0810-how-a-smart-note-enters-the-hub.md` — `40ed9bc1ca05` (8457 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/protocol/SN-1770/IB-SMART-NOTE-20261021-sn1770-intelligence-trumps-everything.md` — `61348ec768f1` (8598 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/protocol/SN-1772/IB-SMART-NOTE-20261021-sn1772-opened-is-not-done.md` — `37713794b4c6` (5156 bytes)
@@ -1481,14 +1501,17 @@
 - `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md` — `197c13af29fb` (3936 bytes)
 - `BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md` — `26b6355b1b44` (3830 bytes)
 - `BRAIN/90-OPERATIONS/0005-LIVE-NAYA-MASTER-BATON-2026-09-30.md` — `75f3b8e72b90` (8978 bytes)
+- `BRAIN/90-OPERATIONS/0006-THE-NAYA-TOOL-DIRECTORY-V1.md` — `efcde7ea9f80` (42239 bytes)
 - `BRAIN/90-OPERATIONS/2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md` — `b577802c0bde` (13216 bytes)
 - `BRAIN/90-OPERATIONS/2026-09-29-LAW-ACT-FRESHNESS-HANDOFF.md` — `589364c5cd30` (11027 bytes)
 - `BRAIN/90-OPERATIONS/2026-09-30-FRESH-MAIN-RECONCILIATION.md` — `73d6eddebcec` (9953 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md` — `954227fe2d94` (8068 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md` — `188ee5921503` (30828 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md` — `37e4e4b70a23` (20377 bytes)
+- `BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md` — `d82083edcac4` (16418 bytes)
 - `BRAIN/90-OPERATIONS/INTER-LEDGER-PROTOCOL.md` — `67d42af19eae` (24546 bytes)
 - `BRAIN/90-OPERATIONS/NETWORK-MAP.md` — `29c74e9d9d67` (9314 bytes)
+- `BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md` — `6daf7c27c05e` (18308 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 - `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
 - `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `65c502e0f2d7` (9280 bytes)
@@ -1567,7 +1590,7 @@
 - `BRAIN/99-ARCHIVE/brain-reconciliation-ledger-f648833b.md` — `168e14b9b430` (2096 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/CURRENT-MISSION-STATE.md` — `084764572072` (7662 bytes)
+- `BRAIN/CURRENT-MISSION-STATE.md` — `46ac00f063c1` (8049 bytes)
 - `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
 - `BRAIN/README.md` — `bf4d982f4f32` (2325 bytes)
