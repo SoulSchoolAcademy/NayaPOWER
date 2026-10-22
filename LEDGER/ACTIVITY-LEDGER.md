@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 14:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 15:21 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4286,6 +4286,14 @@ _Last updated: 2026-10-22 14:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1292-lane10.md`
 
 **Evidence:** Dispatcher verified via git protocol (free): refs/heads/naya/ten-brainindex-heal-t1292 == 28ab48ac6c9ad1856260b74668145937cd94a9b2 (pin-exact); parent == action-time tip e1f19b1c (fetch-verified); diff parent->head = exactly 3 index files (BRAIN/NAYAPOWER-BRAIN-INDEX.json, REAL-TREE.json, REAL-TREE.md). Introducer bisect (first-parent walk, 10 merg
+
+### ✅ t1286 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** caller census + re-run script for retrieval-auth-gate condition-B prep
+
+**Receipt:** `twelve-lane-receipts/t1286-lane4.md`
+
+**Evidence:** ARTIFACTS VERIFIED: hidden_files/retrieval-auth-gate/caller-census-t1286.json sha a8fc2478a56bf58fb78a6f1ca1cb5756691b0f42bd4cba9555601cd5552e7f9d (20,542 B) and caller-census-rerun.sh sha 78933bbe833c677fafbf9f009281546f289e60c618887179e6528a8afedf485e - both exist locally, shas match receipt byte-for-byte; no remote-branch claim in receipt so no 
 
 ### ✅ t1285 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
