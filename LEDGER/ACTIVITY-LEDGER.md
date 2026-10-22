@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 07:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5289,6 +5289,12 @@ _Last updated: 2026-10-22 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified all 4 done criteria on disk: lane-12.md seeded with honest-gap note (zero lane-12 receipts/scores confirmed — lane parked by design, nothing inferred); lane-4.md stale line corrected with provenance citing t982 receipt; lane-9.md t952 push-block corrected + PUSH AUTH thread retired with live-origin provenance; twelve-lanes.md re
 
+### ✅ t1192-lane2-20261012 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** H5 round-1 record-fidelity go/no-go (honest stop)
+
+**Evidence:** Verified: all 5 instrument files exist (hypothesis-change.md, instruments/sealed-record.md, instruments/brief-A-control.md, instruments/brief-B-treatment.md, probes/dry-A-output.md); archived as the 2026-10-12 H5-R1 record, superseded by the 2026-10-21 re-dispatch (t1192-lane2.md). Score 8.0. Why not 9.5: the pointer confound should have been caugh
+
 ### ✅ t1192 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** H8 round-2 staging restore + honest block re-verification (amend-and-rerun)
@@ -8261,6 +8267,12 @@ _Last updated: 2026-10-22 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified: worker.js sha256 ba274d21dce9275eb59a6832233bba4f46d93c321db147c6a94b2c828659a1aa and test-capture.sh f857e8dbaff1d41dab2fba59203c1005479bc36968cfce3d7a0d3027ef5d9dec match receipts exactly; 22/22 battery credible (boundary 10,000 chars → 200 / 10,001 → 400 proven, all 400s store-untouched, ids distinct + ordered). Score 9.0/10.
 
+### ✅ t0903-lane10-askworld — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** ask-world writer-side origin_marker: SB-D2 hole closed at the source
+
+**Evidence:** Verified: bin/ask-world.py contains _origin_marker (4 hits); bin/check-origin-markers.py exists (5 origin_marker refs); 16-hex SHA prefixes match the receipt's elided displays (full receipt SHAs not recoverable from ellipses - prefix-only integrity check). Instrument DURABLE: ran check-origin-markers.py 30 independently today -> exit 0 'OK: 30/30 r
+
 ### ✅ t0903 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** t0903 lane-10 ask-world origin markers: writer-side origin_marker stamped in log_query (SB-Δ2 closed)
@@ -8372,6 +8384,12 @@ _Last updated: 2026-10-22 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0902-lane10.md`
 
 **Evidence:** VERIFIED this tick: board comment 6271240679 REST-read live on #2765 (html_url confirms issue #2765; 4-line header Who/Team/Did/To present verbatim). Query-log sha256 0bedd0c786b1d56bb7ef2e351fbc66457c3a67a8b9c144e34df1f4ffb4861506 byte-exact match to the receipt's pin, 130 rows (file frozen at pin state). Watch instruments exist (retrieval/watch-l
+
+### ✅ t0901-lane3-judge — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** brief-t0901-lane3: PR #2418 merge-readiness re-verdict on live bytes (HOLD)
+
+**Evidence:** Verified: board post #2765 comment 6271026937 EXISTS live (REST read 2026-10-22, url+issue+id confirmed); PR branch naya/three-decision-consolidate absent from the remote now (consistent with post-close; the receipt's head-pin evidence was REST-verified at action time 2026-10-19). Clears 9.5 because: HOLD re-derived fresh on live bytes with full ag
 
 ### ✅ t0901-lane3-judge — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -10452,6 +10470,12 @@ _Last updated: 2026-10-22 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0735-lane7.md`
 
 **Evidence:** Verified: git ls-remote refs/heads/naya/lane9/level-drill-keysplit-t0730 = cde0c63ddc1a2a59911b82334bd93ff761e5045e, byte-matches receipt's pinned SHA. 10-hole pass-1 with 6 applied fixes (gate checker run on draft AND posted body bytes, PR file list verified, no pre-existing PR, zero key-content reads), double re-pin around the POST, open-only aut
+
+### ✅ t0735-lane5-v2corpus-20261018 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** v2 corpus topic 1 authored (10 queries / 15 docs slice)
+
+**Evidence:** Verified: slice corpus+queries SHAs match byte-exact the retired files in hidden_files/superseded/v2-authoring-topic1-retired-t0842/ (corpus e0f5ff0ac6751677ebe1787e8eb655514990d75589e00bd52fa2ee5d1a78fcd7, queries e420eceab54f227197f92f78a92066126856cc7faa6b739bde0421aefacca54f); retirement note shows the slice existed and was retired t0842 by the
 
 ### ✅ t0735 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -14981,6 +15005,14 @@ _Last updated: 2026-10-22 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/injection-seam-v0.1.py sha256 matches receipt a1dda055..., injection-seam-v0.1-results.json sha256 matches 2948bb8a... both present at cited hashes. Work: imports Lane 7 certified matcher byte-for-byte, runtime-parsed corpus (15 principles + 20 lesson items), firing predicate (1 shared stemmed token len>=4,
 
+### ✅ t0582b — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** t0582b B-60: completeness-gate wiring PR #2509 (MERGED-NOT-ENFORCED proven, wiring patch produced)
+
+**Receipt:** `twelve-lane-receipts/t0582b-lane4.md`
+
+**Evidence:** VERIFIED: wiring commit 59832ba6144f5f8dc71ec5d1127437cb80446427 exists ('B-60 wiring: CI enforcement for Smart Note Completeness Gate'); git ls-remote refs/pull/2509/head == 59832ba MATCHES; PR #2509 closed-unmerged per REST; claimed parent base bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad and claimed SHA table internally consistent with the wiring co
+
 ### ✅ t0582 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** B-60: verify #2501 completeness gate unwired, wire via PR #2509
@@ -15113,6 +15145,14 @@ _Last updated: 2026-10-22 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: patched cold_drill_sealed_t0555.py sha 160400dfb407c5e5 MATCHES receipt pin; original .pre-t0581 sha 70a33455ef4e14cc MATCHES; byte diff (116 lines), trial header (machine_class.match=true, RED PASS), CLASS-CHANGE sim record (exit 7, band null) all exist on disk; fingerprint doc Enforcement section present; seals A-E semantics un
 
+### ✅ t0581b — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0581b retroactive 3-pass forensics receipt for merged PR #2501 (FM#32 form-closure)
+
+**Receipt:** `twelve-lane-receipts/t0581b-lane3.md`
+
+**Evidence:** VERIFIED: merge e8b4868ce402c2945a8990b1a5ddc69979b880fd exists (git cat-file -t=commit); raw object shows TRUE TWO-PARENT merge: parents dd6f2d927d8299f7bd9895ee5dadca892b12b233 + a324ea1e5d9e6310dafc21a6b09d73c1a7a1fd0a (both named exactly as claimed), tree=8ff158164185914aa54428eb01a21273ce81e6ad (MATCHES claimed head tree byte-for-byte); local 
+
 ### ✅ t0581 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** retroactive 3-pass receipt for merged PR #2501 (completeness gate)
@@ -15236,6 +15276,14 @@ _Last updated: 2026-10-22 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0581-lane10.md`
 
 **Evidence:** ARTIFACT VERIFIED: sealed-selection-t0581.md sha dc4f06e6a3e0a2a5 MATCHES pin; results-t0581-overlap.json sha 29a9d26ac9de7741 MATCHES pin; both scripts sha pins MATCH; frozen instrument decision_change_arm_t0567.py sha 4d43798e58f2769f MATCHES the t0567 seal pin (untouched); results file internally pins seal_sha16 + instrument_sha16 (both corrobor
+
+### ✅ t0580b — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0580b cold-retrieve drill (sealed instrument, page-cache isolation) - SURGE slice d
+
+**Receipt:** `twelve-lane-receipts/t0580b-lane9.md`
+
+**Evidence:** VERIFIED artifacts: hidden_files/surge/cold-retrieve-isolated-t0580b.md (4298B) + hidden_files/auto-retrieval/cold-drill-sealed-t0580b-results.json (915B) both exist, mtimes 2026-10-13 04:46 UTC consistent with claimed run; md content carries the claimed seal table (SEAL_A/B/C/D/E INTACT) and the 1.027s band result. SCORE 9.0 GOOD ONE MORE PASS. WH
 
 ### ✅ t0580 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -26356,6 +26404,14 @@ _Last updated: 2026-10-22 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-lane-scorer-20261021-1920 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** gap-lane-scorer-20261021-1920: completeness-gate wiring fire proof - deeper root cause (PR #2509 never landed)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261021-1920-lane4.md`
+
+**Evidence:** VERIFIED live: PR #2509 state=closed, merged_at=null, head=59832ba6144f5f8dc71ec5d1127437cb80446427 (gh-api REST + git ls-remote refs/pull/2509/head MATCHES claimed head exactly); workflow file ABSENT from live main tree (git ls-tree origin/main 0849bf09 on .github/workflows/smart-note-completeness-gate.yml returns EMPTY). SCORE 8.5. WHY NOT 9.5: t
 
 ### ✅ coldnaya-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
