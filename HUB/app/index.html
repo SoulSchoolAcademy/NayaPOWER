@@ -2246,6 +2246,7 @@ const Runtime = (() => {
   // ——— The eleven rooms. The rail holds only these. ———
   const ROOMS = [
     { id: 'feed',        name: 'Smart Feed',          kicker: 'STREAM',       accent: 'var(--accent-feed)',        icon: 'feed' },
+    { id: 'mission',     name: 'Mission — The Living List', kicker: 'MISSION', accent: 'var(--accent-ledger)',   icon: 'ledger' },
     { id: 'today',       name: 'Your Intelligence Today', kicker: 'TODAY',    accent: 'var(--accent-today)',       icon: 'spark' },
     { id: 'reports',     name: 'Your Reports',        kicker: 'REPORTS',      accent: 'var(--accent-reports)',     icon: 'report' },
     { id: 'library',     name: 'Intelligent Library', kicker: 'LIBRARY',      accent: 'var(--accent-library)',     icon: 'library' },
@@ -4657,6 +4658,7 @@ window.NayaJewels = (() => {
   function roomDesc(id) {
     return {
       feed: 'One stream of everything the collective intelligence wants you to see — newest understanding first.',
+      mission: 'The Living List — every directed item in priority order, with its state, its owner, and its proof. Live from the registry, never narrated.',
       today: 'Your day, answered by the intelligence. What matters, what changed, what deserves you.',
       reports: 'Proof, not promises. Every report carries its evidence and its receipts.',
       library: 'Everything retained, organized by what it means — not where it happened to land.',
@@ -5632,6 +5634,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 <script src="js/naya-voice.js"></script>
 <script src="js/naya-voice-wiring-v2.js"></script>
 <script src="js/supabase-bridge.js"></script><!-- t0800: Hub<->Supabase persistence bridge; registers window.NayaPowerRuntime (feed room data) -->
-<script src="js/naya-notes.js"></script><!-- Best-of-Best #15: Naya Notes (personal captures — NOT Smart Notes); registers window.NayaNotes for the Lists room panel -->
+<script src="js/naya-notes.js"></script><!-- THE LIVING LIST (2026-10-22): Mission room — registers window.NayaRooms.mission; reads WORK-ITEMS.json + STATE-CORE.json live from the live/mission-state branch at open; no baked fallback -->
+<script src="js/mission-room.js"></script><!-- Best-of-Best #15: Naya Notes (personal captures — NOT Smart Notes); registers window.NayaNotes for the Lists room panel -->
 </body>
 </html>
