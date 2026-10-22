@@ -20,12 +20,26 @@ incl. note-door landings):
 | Check | Question | Defect class |
 |---|---|---|
 | Faithfulness | merge commit an ancestor of the live tip? every changed blob identical at PR head / merge commit / tip (later-commit touches excused)? | `FAITHFULNESS_NOT_ANCESTOR`, `FAITHFULNESS_BLOB_DRIFT` |
-| New red | tip's failing check set (latest per name) gained a name not failing before the push? | `NEW_RED` |
+| New red | a tip-failing check was **present and passing** at the parent commit (L636 derivation, per workflow)? | `NEW_RED` |
 | Surface | for `HUB/**` landings: `https://nayanet.live/` answers 200 with the feed present? | `SURFACE_DOWN` |
 
 Verdicts: `OK` · `PENDING` (checks unsettled inside the wait budget,
-or bytes unverifiable — recorded with reasons, never silent, never
-charged) · `ESCAPE` · `ESCAPE_ON_REVERT`.
+bytes unverifiable, or a red whose before-state derived UNKNOWN —
+recorded with reasons, never silent, never charged) · `ESCAPE` ·
+`ESCAPE_ON_REVERT`.
+
+**The L636 derivation (new-red charges).** Set difference is not
+attribution. For every check failing after a push, the guardian
+derives its before-state at the parent commit: failing → `INHERITED`
+(never charged); present and completed not-failing → `NEW_RED` (the
+only chargeable shape); **absent — no check-run at the parent at all —
+or still pending there → `UNKNOWN`: never a charge, never a revert
+preparation, never a board alarm.** Absence is not evidence the check
+was green; the b1e8d514 claim (voided, correction 6347895618) and the
+PR #2936 claim 6351319337 (MISCHARGE) both came from treating absent
+as passing. Every record's `checks` carries the derivation
+(per-workflow before/after/verdict) and both failing-set counts, so
+each charge — and each non-charge — is inspectable from the log.
 
 ## On a verified escape — one motion
 
