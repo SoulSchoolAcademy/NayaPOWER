@@ -21,7 +21,8 @@ Verify a page the way a human meets it, not the way a checklist reads it. The fl
 
 ## MACHINE
 composition_standard:
-  unit: smart_block (repeatable, clonable, template-grade)
+  unit: smart_block = an OBJECT with its own identity (named, official building block; repeatable, clonable, template-grade)
+  interconnection: blocks are designed to connect; placement is part of a block's design — it is obvious where each block goes because it was composed to go there (elite pieces, placed in the elite place, in the elite way)
   structure: one app shell (one chrome, one navigation) containing blocks as in-app pages/views
   home: cover + primary content + entry buttons only; no function block rendered fully open by default
   access: every function reachable in one tap from a visible, labeled button/tab
