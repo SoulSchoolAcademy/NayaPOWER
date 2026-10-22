@@ -1,0 +1,19 @@
+# Smart Links redirect worker — nayanet.live/<name>
+#
+# DEPLOYMENT IS HUMAN-GATED. This config ships as code with the PR; the
+# route below is deliberately commented out so nothing in this file can
+# take traffic by accident. At the deploy gate, the lane uncomments the
+# route and sets the two vars from the flagship project's public config
+# (the anon key is publishable; RLS in the migration is the boundary).
+
+name = "nayanet-smart-links"
+main = "worker.js"
+compatibility_date = "2026-10-17"
+
+# [vars]
+# SUPABASE_URL = "https://dahisasgpfvziswqvmvm.supabase.co"
+# SUPABASE_ANON_KEY = "<flagship anon key — public, RLS-bounded>"
+
+# [[routes]]
+# pattern = "nayanet.live/*"
+# zone_name = "nayanet.live"
