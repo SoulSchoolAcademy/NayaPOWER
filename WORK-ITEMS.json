@@ -1,6 +1,6 @@
 {
  "schema": "living-list/v1",
- "generated_utc": "2026-10-22T22:42:49Z",
+ "generated_utc": "2026-10-22T22:44:14Z",
  "source": "hidden_files/living-list.json \u2014 validated + reconciled by state-core-builder.py (single writer)",
  "registry": "THE LIVING LIST \u2014 the one ranked queue across programs; programs are filters, not queues",
  "activation": {
@@ -17,7 +17,7 @@
   "NEEDS SHAWN": 2
  },
  "stalled_claims": 1,
- "drift_flags": 1,
+ "drift_flags": 2,
  "items": [
   {
    "blocker": "Fitted per-table policies not yet delivered; GT-039 execution waits on the fitting, then Shawn's tap",
@@ -89,11 +89,13 @@
    "title": "THE LIVING LIST \u2014 this registry + the Mission page (the program's visual home)",
    "updated_at": "2026-10-22T22:47:00Z",
    "verified_by": null,
-   "pr_state": "open",
-   "pr_mergeable": true,
-   "idle_s": -260,
-   "claim_age_s": 1119,
-   "drift": []
+   "pr_state": "merged",
+   "pr_mergeable": null,
+   "idle_s": -173,
+   "claim_age_s": 1206,
+   "drift": [
+    "pr-merged-state-lags: PR #2961 is MERGED but the row sits IN PROGRESS"
+   ]
   },
   {
    "blocker": null,
@@ -111,8 +113,8 @@
    "title": "Command + universal search \u2014 one place that finds any person, note, thread, list, or link (Best-of-Best step 13)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1839,
-   "claim_age_s": 1839,
+   "idle_s": 1926,
+   "claim_age_s": 1926,
    "drift": []
   },
   {
@@ -131,8 +133,8 @@
    "title": "Linked everything \u2014 the data model: one thing in three homes, never three copies (step 14)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1839,
-   "claim_age_s": 1839,
+   "idle_s": 1926,
+   "claim_age_s": 1926,
    "drift": []
   },
   {
@@ -151,8 +153,8 @@
    "title": "Smart Lists \u2014 server store: the same lists in the Hub and your app (step 15)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1839,
-   "claim_age_s": 1839,
+   "idle_s": 1926,
+   "claim_age_s": 1926,
    "drift": []
   },
   {
@@ -171,8 +173,8 @@
    "title": "Conversational intake \u2014 Welcome door + invite-accept as one question at a time (step 12)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1839,
-   "claim_age_s": 1839,
+   "idle_s": 1926,
+   "claim_age_s": 1926,
    "drift": []
   },
   {
@@ -191,8 +193,8 @@
    "title": "Booking block \u2014 your availability once, a booking link, reminders both sides (step 17)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 1839,
-   "claim_age_s": 1839,
+   "idle_s": 1926,
+   "claim_age_s": 1926,
    "drift": []
   },
   {
@@ -212,7 +214,7 @@
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
    "pr_state": "open",
-   "pr_mergeable": false,
+   "pr_mergeable": null,
    "drift": []
   },
   {
@@ -233,8 +235,8 @@
    "verified_by": null,
    "pr_state": "open",
    "pr_mergeable": true,
-   "idle_s": 4299,
-   "claim_age_s": 5199,
+   "idle_s": 4386,
+   "claim_age_s": 5286,
    "drift": []
   },
   {
@@ -254,8 +256,8 @@
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
    "pr_state": "open",
-   "pr_mergeable": false,
-   "idle_s": 10479,
+   "pr_mergeable": null,
+   "idle_s": 10566,
    "stalled": true,
    "drift": [
     "stalled-claim: no state change or note for 2h+ \u2014 claim aging is visible by law"
@@ -278,7 +280,7 @@
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
    "pr_state": "open",
-   "pr_mergeable": true,
+   "pr_mergeable": null,
    "drift": []
   },
   {
@@ -298,7 +300,7 @@
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
    "pr_state": "open",
-   "pr_mergeable": true,
+   "pr_mergeable": null,
    "drift": []
   },
   {
@@ -635,7 +637,211 @@
    "drift": []
   }
  ],
- "events": [],
+ "events": [
+  {
+   "id": "LL-032",
+   "title": "Streaming voice playback \u2014 hear anything the moment you tap",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-031",
+   "title": "Content depth \u2014 structured content objects beside relationships, on the same template",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-030",
+   "title": "Mobile parity + speed pass \u2014 everyday actions timed on a phone; under five seconds or it doesn't count (step 22)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-029",
+   "title": "Factory adoption \u2014 this list becomes the template factory's standard-feature checklist (step 21)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-028",
+   "title": "Dashboard completion \u2014 quiet refresh, per-world featured sets, leads/member views (step 20)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-027",
+   "title": "Payments with revenue truth \u2014 a paid page shows what you made; a failed payment drafts its recovery (step 19)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-026",
+   "title": "Plug-ins, one source at a time \u2014 calendar first, then socials and outside tools (step 20 cadence)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-025",
+   "title": "The recorded voice/video note \u2014 record once; it plays, transcribes, summarizes, files itself (step 18)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-024",
+   "title": "Naya Notes in your own app \u2014 the standard-feature home for the store (step 16)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-023",
+   "title": "Automations that propose in plain language \u2014 rules offered for one approval, no workflow builder (step 10)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-022",
+   "title": "The daily intelligence brief \u2014 who's waiting, who's going cold, the one move that matters (step 11)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-021",
+   "title": "The inbox that triages itself \u2014 Waiting on me / Waiting on them, saved replies, drafts in your voice (step 9)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-020",
+   "title": "Smart Links in the living data \u2014 per-link rankings, the Clicked stage, click trends (step 8)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-019",
+   "title": "Timeline screen + spoken brief \u2014 tap a person: the whole story, and hear the brief (step 7)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-018",
+   "title": "Dashboard, first half \u2014 trend switcher, honest counts, Heat & Streaks (steps 4\u20136)",
+   "from": null,
+   "to": "QUEUED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-017",
+   "title": "Naya Notes \u2014 store + Hub home: your private notes to Naya, never fed to the brain (Phase 0)",
+   "from": null,
+   "to": "DONE+PROVEN",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered",
+   "ledger": "closure_on_proof constructed via accountability_ledger_writer (PR #2948), hash-chained + verified; staged in mission-page/ledger-calls.sql \u2014 DB application rides the gated production queue (LL-003)"
+  },
+  {
+   "id": "LL-016",
+   "title": "Per-person timeline \u2014 the data model: notes, mail, invites under one durable person identity (Phase 0)",
+   "from": null,
+   "to": "DONE+PROVEN",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered",
+   "ledger": "closure_on_proof constructed via accountability_ledger_writer (PR #2948), hash-chained + verified; staged in mission-page/ledger-calls.sql \u2014 DB application rides the gated production queue (LL-003)"
+  },
+  {
+   "id": "LL-015",
+   "title": "Smart Links \u2014 paste any URL, get your named link; clicks counted, joins credited (Phase 0)",
+   "from": null,
+   "to": "DONE+PROVEN",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered",
+   "ledger": "closure_on_proof constructed via accountability_ledger_writer (PR #2948), hash-chained + verified; staged in mission-page/ledger-calls.sql \u2014 DB application rides the gated production queue (LL-003)"
+  },
+  {
+   "id": "LL-014",
+   "title": "PR #2950 \u2014 Naya2/team dashboard",
+   "from": null,
+   "to": "VERIFYING",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-013",
+   "title": "PR #2937 \u2014 P0: fail-closed v7 registry identity reconciliation and orphan controls",
+   "from": null,
+   "to": "VERIFYING",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-012",
+   "title": "PR #2869 \u2014 Naya4 smart notes 2026-09-30",
+   "from": null,
+   "to": "IN PROGRESS",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-011",
+   "title": "PR #2939 \u2014 R13 pointer sweep: mission state repointed to BRAIN/CURRENT-MISSION-STATE.md",
+   "from": null,
+   "to": "IN PROGRESS",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-010",
+   "title": "PR #2907 \u2014 kappa w690: heal registry drift (28 door/leaf pages)",
+   "from": null,
+   "to": "BLOCKED",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-009",
+   "title": "Booking block \u2014 your availability once, a booking link, reminders both sides (step 17)",
+   "from": null,
+   "to": "IN PROGRESS",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  },
+  {
+   "id": "LL-008",
+   "title": "Conversational intake \u2014 Welcome door + invite-accept as one question at a time (step 12)",
+   "from": null,
+   "to": "IN PROGRESS",
+   "at": "2026-10-22T22:33:00Z",
+   "kind": "registered"
+  }
+ ],
  "ledger": "no DONE+PROVEN transitions this tick",
  "ledger_note": "Smart Ledger application is gated (LL-003): closure entries are constructed + hash-chained locally by the PR #2948 writer and staged in mission-page/ledger-calls.sql. Non-closure transitions ride this stream \u2014 ledger taxonomy v1 has no type for them yet."
 }
