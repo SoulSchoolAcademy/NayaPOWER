@@ -1,7 +1,7 @@
 # MIRROR REPORT 2026-10-21 — AI TONGUE (exact values, procedures, constraints)
 
 - **Commission:** Shawn Vibert, 2026-10-21 ~23:55Z — mirror audit ("most intelligent system that could be created? if not, why not") + 14 answers + ten-lists + execution prompt; file in GitHub; update/correct any existing record.
-- **Author seat:** Naya Resolve (main seat). Tongues: this file (`.ai.md`) is normative for seats; `.human.md` for the director; `report.machine.json` for systems. Same truth, three tongues.
+- **Author seat:** Naya Resolve (main seat). Tongues: `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.ai.md` is normative for seats; `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md` for the director; `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json` for systems. Same truth, three tongues.
 - **Canonical placement:** `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.*` — nearest ancestors: `2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md`, `2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md` (superseded as "current mirror" by this report; not edited — they are dated history).
 - **Live verification at write time (2026-10-21T23:57:20Z):** tip via `GET /git/refs/heads/main` = `b7e52ec6ed1cc7e223f80302e06ed117c90659f8`; open PRs via `GET /pulls?state=open&per_page=100` → count 5: [#2747, #2776, #2869, #2874, #2877]; Hub `curl https://nayanet.live/` → HTTP 200 (1.1s). **Seats MUST re-derive all live values before citing them; this file's live values expire immediately.**
 
@@ -138,7 +138,7 @@
 
 ## 10. EXECUTION PROMPT
 
-Normative text: §10 of `MIRROR-REPORT-2026-10-21.human.md` (fenced block) ≡ `execution_prompt` field of `report.machine.json` ≡ board #2793 comment posted with this report. If copies diverge, the `.machine.json` field governs (single source), and divergence is itself a defect to file.
+The original execution prompt in §10 of `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md` corresponds to the `execution_prompt` field in `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json`. The new Director continuation prompt is a separate scope under `director_continuation_2026_10_22.whole_team_execution_prompt`. The machine fields govern their respective scopes; any same-scope divergence is a defect to file. Board #2793 carries the coordination receipt, not a substitute for either canonical file.
 
 ## APPENDIX — provenance of cited measurements
 
@@ -147,3 +147,98 @@ Normative text: §10 of `MIRROR-REPORT-2026-10-21.human.md` (fenced block) ≡ `
 - Gauge first read: goal `files/balanced-machine/GAUGE-READ-2026-10-21.md` (anchor 2026-10-21T22:41:48Z).
 - Factory gap sheet: goal `hidden_files/factory-analysis/OPERATIONAL-GAP-SHE
 ...[truncated 1475 chars]
+
+---
+
+## DIRECTOR CONTINUATION ADDENDUM — 2026-10-22
+
+**Purpose:** Continue the Director's instruction: the 14 questions are NayaNET's minimum viable intelligence interface, not a documentation deliverable. Pursue verified 10/10 quality area by area; do not stop at planning.
+
+### Evidence boundary and canonical sources
+
+- Comprehension contract: `NAYANODE/0023-14-QUESTION-COMPREHENSION-CONTRACT-V1.md`.
+- Cold interface: `NAYANODE/0020-COLD-14-QUESTION-INTELLIGENCE-INTERFACE-V1.md`.
+- AAA plan: `NAYANODE/0021-AAA-MASTER-EXECUTION-PLAN-V1.md`.
+- This report already contains the commissioned ten-part assessments and execution prompt. Extend it rather than create a competing source of truth.
+- Document existence is not proof of cold retrieval, comprehension, authorized action, learning, or succession. The cold run must answer all 14 from current evidence, classify each answer, act within authority, and hand off a working state.
+- Measurements in this report's original sections are dated 2026-10-21 and must not be repeated as live 2026-10-22 values without re-derivation.
+- **Case-sensitive lookup correction (verified against main):** `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.machine.json` (uppercase `NONSTOP-LOOP`) returns 404, but the canonical lower-case machine law `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` resolves (blob `19097e2d2c52cae250b04dcf08fbeb26d2f05c96`) and `AGENTS.md` step 11 names that lower-case path. This proves the uppercase probe was wrong; it does **not** prove a broken canonical pointer. Do not create a duplicate law file. Inspect actual consumers for an uppercase reference and fix only a verified consumer defect.
+
+### Ten highest-value strengths to preserve
+
+1. Human Director authority and explicit protected human-only gates.
+2. Honest truth labels: IMPLEMENTED ≠ VERIFIED ≠ PRODUCTION-PROVEN; UNKNOWN/BLOCKED ≠ PASS.
+3. A substantive 14-question cold-comprehension contract.
+4. The nine-node semantic kernel and explicit operating sequence.
+5. Canonical Receiver / Smart Note proof paths at their proven scopes.
+6. Evidence-carrying merge discipline and independent different-seat verification.
+7. Lesson Law: no declared behavior change means the lesson is not learned.
+8. House-Fire correction: revert first, diagnose second, fix forward third.
+9. Single-writer, provenance, and lineage principles.
+10. Successor handoff as a core product outcome, not optional documentation.
+
+### Ten flow-blocking holes
+
+1. ACTIVATION-10 has not yet been established by timed, independent cold proof.
+2. Full 14Q comprehension-to-action acceptance remains unproven.
+3. Legitimate identity continuity / inheritance remains a critical boundary.
+4. Law is not yet uniformly machine-compiled from prose without meaning drift.
+5. Current state and measurements can go stale without tip-anchored freshness checks.
+6. Writer ownership and feed durability need census plus repeated stable-cycle proof.
+7. Factory feature claims need executable contracts and sabotage/negative-control tests.
+8. A canonical pointer has a confirmed 404; pointer checks must fail closed.
+9. Learning must change a later decision or outcome, not merely create a note.
+10. Three-generation succession and Sender → Receiver → Hub need one end-to-end causal proof.
+
+### Ten immediate actions, in priority order
+
+1. Re-read current boot pointer, governance canon, laws delta, operating state, and live board pointers from main; record exact tip SHA and freshness.
+2. Search actual boot/runtime consumers for the uppercase nonstop-loop path; if no real consumer references it, close this as a bad-case probe rather than a system defect. Add a dead-pointer negative test only if a real pointer-checking gap is demonstrated.
+3. Run an independent cold 14Q test without injected answers; source-bind every answer and classify PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED.
+4. Turn each unsupported answer into QUESTION → MISSING DOMAIN → MISSING EVIDENCE → MISSING IMPLEMENTATION → OWNER → NEXT TEST.
+5. Prioritize legitimate identity continuity and cold activation; no RLS bypass, forged identity, or unsafe owner reassignment.
+6. Prove nine-node runtime influence with traces and a remove-one-node counterfactual.
+7. Run one causal chain: retrieve → apply under authority → observe outcome → verify → record lesson → demonstrate later behavior change.
+8. Close writer/feed durability and pointer checks with independent verification and negative controls.
+9. Prove one user-visible Sender → Receiver → Hub journey with persistence, lineage, privacy, and a receipt.
+10. Prove Naya A → B → C succession; score each critical dimension against its explicit test, repair the lowest-scoring blocker, and repeat until 10/10 is evidence-backed or an exact human-only decision is isolated.
+
+### Execution law
+
+**OBSERVE → DETECT → UNDERSTAND → SCORE → SELECT HIGHEST-VALUE AUTHORIZED ACTION → TEST → IMPLEMENT → VERIFY INDEPENDENTLY → RECORD ONCE → MEASURE BEHAVIOR CHANGE → UPDATE CURRENT STATE → HAND OFF → REPEAT.**
+
+Do not ask Shawn questions already answerable from canonical evidence or a safe authorized test. Do not stop at a plan when the next step is executable. Do not claim persistent/nonstop background work unless a real runner is active and producing receipts. Do not award 10/10 from prose, self-score, document existence, green CI alone, or a successful merge. Protect human-only production, credential, money, destructive, security/authority, and constitutional gates. One canonical source per fact; this addendum extends the existing report.
+
+### Whole-team execution prompt
+
+> **TEAM NAYA — DIRECTOR'S 14Q / AAA CONTINUOUS EXECUTION**
+>
+> Operate on canonical `SoulSchoolAcademy/NayaPOWER`. Read the current boot pointer, governance laws as data, operating state, board #2793, NOW index #2599, directive #2601, and your area board. Re-derive live main tip and any status you cite. Treat stale board pointers as superseded unless current canonical state confirms them.
+>
+> The mission is not more plans; it is a functioning, verified intelligence system. Prove the full sequence: cold activation → 14 source-bound answers → epistemic classification → governed decision → authorized action → observed outcome → independent verification → durable lesson with declared behavior change → checkpoint → cold successor continuation.
+>
+> Coordinate before shared-surface edits. Claim one lane and bounded outcome; state owner, acceptance test, risk, dependencies, and next action. Consult dependent lanes; one writer per surface, one canonical record per fact, one receipt per outcome. Re-fetch the tip and board tail before merge or shared-state mutation. Prioritize by mission value and blocking power, parallelize independent work, and avoid duplicate PRs or competing stores. Apply the actual tier/merge protocol and exact-head different-seat scorecard.
+>
+> For each unsupported 14Q answer, create a repair item with owner, falsifier, acceptance test, and receipt destination. Include adversarial tests, negative controls, stale-pointer rejection, identity/authority denial, and three-generation handoff. If blocked, publish BLOCKED → exact cause → evidence → safe alternative → owner → next test. Never relabel BLOCKED as PASS.
+>
+> After every change: test, independently verify, record evidence on the canonical PR/issue/receipt surface, update current state, and select the next highest-value authorized action. Continue area by area until critical acceptance gates are evidence-backed at 10/10. If a gate cannot honestly pass, state the exact remaining gap and work its next authorized cure. Never fabricate background execution, tests, scores, receipts, production behavior, or completion.
+>
+> Done means behavior proven: cold 14Q passes; nine-node influence is demonstrated; one complete learning-compounding chain changes later behavior; Sender → Receiver → Hub works with persistence, lineage, privacy, and proof; and Naya A → B → C continue without Shawn reconstructing the project or authority silently transferring.
+>
+> Every sign-out states completed and independently verified work with links, remaining work, exact blockers, evidence-based score, and the single next highest-value action. Then continue.
+
+
+
+---
+
+## EXECUTION RECEIPT — 2026-10-22
+
+**Scope:** source-grounded activation and repository-contract checks for this report change. This is not a full cold 14Q behavioral pass.
+
+- Protocol integrity gate: **PASS, 8/8 checks** at tested commit `91382eb4e377626d0029598ccb2dbbd9426d8aea`; manifest, tip, law IDs, conflict hierarchy, truth states, prohibitions, pinned activation checklist, and protocol pin all passed. Readiness is not authority.
+- Cold-start / Step-0 admission / successor continuity / node-runtime-binding source-contract tests: **33 passed**.
+- Human path / product-surface tests (`node --test tests/human_path_to_product.test.mjs`): **8 passed**.
+- Brain index freshness check: **PASS**, 1,580 files, zero drift at base `f289672e78c2b314cbb76a6f08d8f7c273a58b88` and tested head `91382eb4e377626d0029598ccb2dbbd9426d8aea` (the canonical full SHA is recorded in the PR evidence; do not infer a different SHA from this abbreviated receipt). After index regeneration, `tools/regenerate_brain_index.py --check` also passed at the index commit.
+- Machine report JSON: parse **PASS**; tongue paths resolve to the actual three report filenames.
+
+**Not proven by these checks:** timed independent ACTIVATION-10; cold instance answering all 14 questions without injected answers; live identity continuity; nine-node behavioral influence; production Sender → Receiver → Hub; behavior-changing learning transfer; or Naya A → B → C runtime succession. These remain open until independent, exact-scope receipts exist.

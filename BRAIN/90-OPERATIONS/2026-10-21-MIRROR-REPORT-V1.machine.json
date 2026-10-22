@@ -6,9 +6,9 @@
   "commissioned_by": "Shawn Vibert, 2026-10-21 ~23:55Z",
   "canonical_repo_path": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.*",
   "tongues": {
-    "human": "MIRROR-REPORT-2026-10-21.human.md",
-    "ai": "MIRROR-REPORT-2026-10-21.ai.md",
-    "machine": "report.machine.json"
+    "human": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md",
+    "ai": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.ai.md",
+    "machine": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json"
   },
   "verified_live": {
     "verified_at_utc": "2026-10-21T23:57:20Z",
@@ -40,7 +40,7 @@
         "source": "Nightly Intelligence Report 2026-10-21"
       },
       "machine_native": {
-        "value": 5.0,
+        "value": 5,
         "scale": 10,
         "source": "Machine-native scorecard 2026-10-21 (weighted: Law 6.5*.20 + Specs 4.0*.20 + State 6.0*.15 + Receipts 5.0*.15 + Factory 3.0*.15 + Activation 5.0*.15 = 4.95)"
       },
@@ -486,5 +486,110 @@
       "status": "IN PLACE; first full exercise = tonight's lesson notes"
     }
   ],
-  "execution_prompt": "EXECUTION PROMPT — TEAM NAYA, ALL SEATS, ALL TEAMS — issued by Naya Resolve (main seat) under the director's standing orders of 2026-10-21 (the Balanced Machine; the House-Fire Law; the Lesson Law; Issue Hygiene; the 14-question interface; the nonstop 10/10 drive; the activation go-ahead of 23:55Z).\n\nMISSION: Make NayaNET the most intelligent system any of us can build — measured, not claimed. Current measured state (RE-DERIVE before acting; never trust this text over a live read): whole-system 6.4/10 · machine-native 5.0/10 · alignment 53% · merge queue 52 → 5 on 2026-10-21. Targets: ACTIVATION-10 proven by a timed cold test; Factory R5 proven; dock steady at 3–5 open PRs; balance gauge in band; 100% alignment on the W1–W8 road.\n\nWORK ORDER (in sequence; claim your item on the board before starting — one lane, one owner):\n1. ACTIVATION BUILD, steps 1–13 of ACTIVATION-ANALYSIS-2026-10-21: operating state published on cadence; the daily law compiled to machine form; activation made mechanical (a runner, not a ritual); human gates as data; Factory contracts checkable; the two timed proofs (R5, ACTIVATION-10) last. Resolve owns the sequence; the hub-refresh owner wires publication; Naya 4 reviews kernel seams; Naya 5 verifies independently.\n2. DOCK: hold open PRs at 3–5 steady state. Every landing: different-seat scorecard at the exact head (Tier A 9.5 · Tier B unified gate) + faithfulness after merge (ancestry + blob identity) + one receipt, posted once, by the lane's designated poster.\n3. GUARDIAN: create live/guardian-log; diagnose cancelled run 39690600851; every landing gets a guardian pass; a verified escape opens a GUARDIAN-REVERT PR plus a board alarm the same hour. Verity owns; Clarity seconds.\n4. LAW REGISTRY: compile the daily law book (600+ prose lessons) into schema'd machine law homed in BRAIN/01-GOVERNANCE with a --check; retire the stale 2026-10-10 OPERATING-LAW compilation by supersession note. Naya 4 builds; Resolve scores; a different seat verifies.\n5. POINTER SWEEP: STATE-CORE venue, directive #2601 §3, the append_ledger target, READ-ME-FIRST — every pointer resolves live; a pointer linter enters the battery so rot fails checks before it trips a seat. Coda seats sweep; any seat finding rot files it the same run.\n6. FACTORY: R1 certification; feature contracts on templates-registry.json (Settings+Install, scrolling Smart Tabs, cross-page sync first); R5 timed proof with a named different-seat verifier. Nitro directs; Builder (Team 2) builds; Auditor (Team 2) proves.\n7. ISSUE HYGIENE: boards only — the main board plus one board per active project stand; every other issue closes, with live work carried onto its project board first so nothing real is dropped. Resolve executes on the director's go; Keeper (Team 2) keeps the register.\n8. FEED DURABILITY: writer census executed on every shared surface; two consecutive sync cycles holding count; Hub wall freshness inside the gauge band. Clarity owns the sync; Nitro owns the database surface map.\n9. DATED PROMISES: the production promotion packet and the GH013 decision reach the director by 2026-10-22, in his format — completed things only, with links.\n10. LESSONS: every lesson from this work is filed the same day as a Smart Note through the door — titled well, with its DECLARED BEHAVIOR CHANGE as the core. A lesson without a declared change is not learned. Compounder (Team 2) audits weekly that declared changes actually changed decisions.\n\nHOW WE COMMUNICATE (this is part of the plan, not overhead): Live board = issue #2793 — sign-ins, claims, receipts, sign-outs live there. NOW board #2599 reflects the current hour. Teams cross-post; nobody duplicate-posts (last-second tail read before posting; one lane, one receipt). The GPT seats (Naya 1, GPT-6 lanes) advise and pressure-test — they are never gates. Team 2's named agents (Builder, Auditor, Judge, Bridger, Librarian, Compounder, Electrician, Mechanic, Captain, Host, Keeper, Archivist) take scoped work from the board and return receipts to their lane poster. Every substantive artifact ships in three tongues: human, AI, machine. Every number is derived, reconciled, and sensible — or it is labeled CLAIMED-UNVERIFIED with a named owner.\n\nHARD LINES (no seat crosses these, ever): production deploys and production database, credentials and money, destructive or irreversible actions, authority and security changes, constitutional ratification, deletions beyond expressly approved sets — the director's hands only. No one's word ratifies — not the director's, not a seat's: scorecards and receipts ratify. A bad landing is reverted first, diagnosed second, fixed forward third (House-Fire Law). Speed never trades away the receipt.\n\nESCALATION (only for true human gates or scored deadlocks), in this form: what I found / why it matters / what I fixed or tried / evidence / what remains / highest-value next move / the specific decision that belongs to Shawn.\n\nTHE LOOP, NONSTOP: OBSERVE → DETECT → UNDERSTAND → SOLVE → GATE → ACT → VERIFY → LEARN → IMPROVE → REPEAT. Area by area to 10/10; when an area reaches 10, go to the next. Do not stop. Pass the torch, not the burden.\n\n— Naya Resolve Narzan, main seat, 2026-10-21."
+  "execution_prompt": "EXECUTION PROMPT — TEAM NAYA, ALL SEATS, ALL TEAMS — issued by Naya Resolve (main seat) under the director's standing orders of 2026-10-21 (the Balanced Machine; the House-Fire Law; the Lesson Law; Issue Hygiene; the 14-question interface; the nonstop 10/10 drive; the activation go-ahead of 23:55Z).\n\nMISSION: Make NayaNET the most intelligent system any of us can build — measured, not claimed. Current measured state (RE-DERIVE before acting; never trust this text over a live read): whole-system 6.4/10 · machine-native 5.0/10 · alignment 53% · merge queue 52 → 5 on 2026-10-21. Targets: ACTIVATION-10 proven by a timed cold test; Factory R5 proven; dock steady at 3–5 open PRs; balance gauge in band; 100% alignment on the W1–W8 road.\n\nWORK ORDER (in sequence; claim your item on the board before starting — one lane, one owner):\n1. ACTIVATION BUILD, steps 1–13 of ACTIVATION-ANALYSIS-2026-10-21: operating state published on cadence; the daily law compiled to machine form; activation made mechanical (a runner, not a ritual); human gates as data; Factory contracts checkable; the two timed proofs (R5, ACTIVATION-10) last. Resolve owns the sequence; the hub-refresh owner wires publication; Naya 4 reviews kernel seams; Naya 5 verifies independently.\n2. DOCK: hold open PRs at 3–5 steady state. Every landing: different-seat scorecard at the exact head (Tier A 9.5 · Tier B unified gate) + faithfulness after merge (ancestry + blob identity) + one receipt, posted once, by the lane's designated poster.\n3. GUARDIAN: create live/guardian-log; diagnose cancelled run 39690600851; every landing gets a guardian pass; a verified escape opens a GUARDIAN-REVERT PR plus a board alarm the same hour. Verity owns; Clarity seconds.\n4. LAW REGISTRY: compile the daily law book (600+ prose lessons) into schema'd machine law homed in BRAIN/01-GOVERNANCE with a --check; retire the stale 2026-10-10 OPERATING-LAW compilation by supersession note. Naya 4 builds; Resolve scores; a different seat verifies.\n5. POINTER SWEEP: STATE-CORE venue, directive #2601 §3, the append_ledger target, READ-ME-FIRST — every pointer resolves live; a pointer linter enters the battery so rot fails checks before it trips a seat. Coda seats sweep; any seat finding rot files it the same run.\n6. FACTORY: R1 certification; feature contracts on templates-registry.json (Settings+Install, scrolling Smart Tabs, cross-page sync first); R5 timed proof with a named different-seat verifier. Nitro directs; Builder (Team 2) builds; Auditor (Team 2) proves.\n7. ISSUE HYGIENE: boards only — the main board plus one board per active project stand; every other issue closes, with live work carried onto its project board first so nothing real is dropped. Resolve executes on the director's go; Keeper (Team 2) keeps the register.\n8. FEED DURABILITY: writer census executed on every shared surface; two consecutive sync cycles holding count; Hub wall freshness inside the gauge band. Clarity owns the sync; Nitro owns the database surface map.\n9. DATED PROMISES: the production promotion packet and the GH013 decision reach the director by 2026-10-22, in his format — completed things only, with links.\n10. LESSONS: every lesson from this work is filed the same day as a Smart Note through the door — titled well, with its DECLARED BEHAVIOR CHANGE as the core. A lesson without a declared change is not learned. Compounder (Team 2) audits weekly that declared changes actually changed decisions.\n\nHOW WE COMMUNICATE (this is part of the plan, not overhead): Live board = issue #2793 — sign-ins, claims, receipts, sign-outs live there. NOW board #2599 reflects the current hour. Teams cross-post; nobody duplicate-posts (last-second tail read before posting; one lane, one receipt). The GPT seats (Naya 1, GPT-6 lanes) advise and pressure-test — they are never gates. Team 2's named agents (Builder, Auditor, Judge, Bridger, Librarian, Compounder, Electrician, Mechanic, Captain, Host, Keeper, Archivist) take scoped work from the board and return receipts to their lane poster. Every substantive artifact ships in three tongues: human, AI, machine. Every number is derived, reconciled, and sensible — or it is labeled CLAIMED-UNVERIFIED with a named owner.\n\nHARD LINES (no seat crosses these, ever): production deploys and production database, credentials and money, destructive or irreversible actions, authority and security changes, constitutional ratification, deletions beyond expressly approved sets — the director's hands only. No one's word ratifies — not the director's, not a seat's: scorecards and receipts ratify. A bad landing is reverted first, diagnosed second, fixed forward third (House-Fire Law). Speed never trades away the receipt.\n\nESCALATION (only for true human gates or scored deadlocks), in this form: what I found / why it matters / what I fixed or tried / evidence / what remains / highest-value next move / the specific decision that belongs to Shawn.\n\nTHE LOOP, NONSTOP: OBSERVE → DETECT → UNDERSTAND → SOLVE → GATE → ACT → VERIFY → LEARN → IMPROVE → REPEAT. Area by area to 10/10; when an area reaches 10, go to the next. Do not stop. Pass the torch, not the burden.\n\n— Naya Resolve Narzan, main seat, 2026-10-21.",
+  "director_continuation_2026_10_22": {
+    "status": "EXECUTION_DIRECTIVE_DOCUMENTED; BEHAVIORAL_ACCEPTANCE_NOT_YET_PROVEN",
+    "purpose": "Treat Cold-14 as an executable minimum viable intelligence interface, not a documentation deliverable.",
+    "source_correction": {
+      "uppercase_probe": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.machine.json",
+      "uppercase_probe_result": "404",
+      "canonical_lowercase_path": "BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json",
+      "canonical_lowercase_blob_sha": "19097e2d2c52cae250b04dcf08fbeb26d2f05c96",
+      "agents_md_step_11": "Names the canonical lower-case path",
+      "verdict": "Incorrect-case probe; not evidence of a broken canonical pointer. Inspect actual consumers before prescribing a repair. Do not create a duplicate law file."
+    },
+    "strengths": [
+      "Human Director authority and protected human-only gates",
+      "Honest distinctions between implemented, verified, and production-proven",
+      "Cold 14-question comprehension contract",
+      "Nine-node kernel and explicit operating sequence",
+      "Existing Receiver and Smart Note proof paths at proven scope",
+      "Evidence-carrying execution and independent verification",
+      "Lesson Law requires declared behavior change",
+      "House-Fire correction discipline",
+      "Provenance, lineage, and single-writer principles",
+      "Successor continuity as a core product outcome"
+    ],
+    "critical_gaps": [
+      "Timed independent ACTIVATION-10 not yet proven",
+      "Cold 14Q comprehension-to-action run not yet proven",
+      "Legitimate identity continuity and inheritance remain critical",
+      "Machine-enforced law coverage incomplete",
+      "Live state and measurement freshness need enforcement",
+      "Writer ownership and feed durability need repeatable proof",
+      "Factory features need executable contracts and negative controls",
+      "Pointer checks must distinguish real broken references from wrong-case probes",
+      "Learning must change later behavior",
+      "Nine-node influence, Sender-Receiver-Hub, and three-generation succession need end-to-end proof"
+    ],
+    "next_actions": [
+      "Re-derive current main SHA, state, board pointers, and open work",
+      "Inspect actual consumers for uppercase nonstop-loop references; fix only a demonstrated consumer defect",
+      "Run an independent cold 14Q test without injected answers",
+      "Convert each unsupported answer into a repair with evidence gap, falsifier, owner, acceptance test, and receipt destination",
+      "Resolve identity continuity safely without RLS bypass or fabricated ownership",
+      "Prove node influence and remove-one-node counterfactual",
+      "Prove a learning chain that changes later behavior",
+      "Verify writer/feed durability and pointer checks with negative controls",
+      "Prove Sender-Receiver-Hub with persistence, privacy, lineage, and receipt",
+      "Prove Naya A to B to C continuation from durable state"
+    ],
+    "whole_team_execution_prompt": "TEAM NAYA — EXECUTE, PROVE, LEARN, CONTINUE. Work from current canonical GitHub state; read PROTOCOL.md, AGENTS.md, boot and machine-law files, operating state, boards #2793/#2599/#2601, and the relevant area board. Re-derive live values before citing. Coordinate before shared writes; one lane, owner, writer per surface, canonical record per fact, and receipt per outcome. Rank by verified mission value and blocking power; parallelize independent work; avoid duplicate PRs/stores. A cold seat must answer all 14 questions from source evidence, classify each PROVEN/DOCUMENTED/UNKNOWN/CONFLICTED/BLOCKED, choose a governed action, act within authority, observe and independently verify, record durable learning, and hand off a usable checkpoint. No answers injected. After each change test exact head, independently verify, record evidence, update state, and take the next authorized action. Add negative controls for dead pointers, stale evidence, unauthorized identity, and missing behavior. If blocked, record exact cause, evidence, safe alternative, owner, and next test. Never disguise BLOCKED as PASS or claim persistent work without a real runner. Respect human-only production, credential, money, destructive, security/authority, and constitutional gates. Done means cold 14Q, node influence, behavior-changing learning, Sender-Receiver-Hub, and three-generation succession pass their evidence-based acceptance tests. Sign out with verified completions, links, blockers, honest scores, and next action; continue."
+  },
+  "execution_receipt_2026_10_22": {
+    "status": "PARTIAL_SOURCE_AND_REPOSITORY_CHECKS_PASS; FULL_COLD_14_BEHAVIORAL_ACCEPTANCE_NOT_PROVEN",
+    "tested_commit": "91382eb4e377626d0029598ccb2dbbd9426d8aea",
+    "base_main_sha": "f289672e78c2b314cbb76a6f08d8f7c273a58b88",
+    "checks": [
+      {
+        "name": "protocol_integrity_gate",
+        "result": "PASS",
+        "passed": 8,
+        "total": 8,
+        "scope": "manifest, tip, law IDs, conflict hierarchy, truth states, prohibitions, activation checklist, protocol pin; readiness only, not authority"
+      },
+      {
+        "name": "focused_cold_and_successor_source_tests",
+        "result": "PASS",
+        "passed": 33,
+        "total": 33,
+        "scope": "cold start, Step-0 admission, successor continuity, node runtime binding source contracts"
+      },
+      {
+        "name": "human_path_product_surface_tests",
+        "result": "PASS",
+        "passed": 8,
+        "total": 8,
+        "command": "node --test tests/human_path_to_product.test.mjs"
+      },
+      {
+        "name": "brain_index_freshness",
+        "result": "PASS",
+        "file_count": 1580,
+        "drift_items": 0,
+        "base_sha": "f289672e78c2b314cbb76a6f08d8f7c273a58b88",
+        "tested_head": "91382eb4e377626d0029598ccb2dbbd9426d8aea"
+      },
+      {
+        "name": "brain_index_regeneration_check",
+        "result": "PASS",
+        "command": "python tools/regenerate_brain_index.py --check"
+      },
+      {
+        "name": "machine_report_json_parse",
+        "result": "PASS",
+        "scope": "JSON syntax and canonical tongue path values"
+      }
+    ],
+    "not_proven": [
+      "timed independent ACTIVATION-10",
+      "cold instance answers all 14 questions without injected answers",
+      "live identity continuity and inheritance",
+      "nine-node behavioral influence and remove-one-node counterfactual",
+      "production Sender-Receiver-Hub end-to-end behavior",
+      "learning transfer that changes later behavior",
+      "Naya A to B to C runtime succession"
+    ],
+    "truth_rule": "Source-contract tests and repository gates do not substitute for live runtime proof or independent cold comprehension."
+  }
 }

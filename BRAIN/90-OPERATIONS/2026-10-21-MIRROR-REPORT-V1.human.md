@@ -209,3 +209,87 @@ HOW WE COMMUNICATE (this is part of the plan, not overhead): Live board = issue 
 
 HARD LINES (no seat crosses these, ever): production deploys and production database, credentials and money, destructive or irreversible actions, authority and security changes, constitutional ratificati
 ...[truncated 19255 chars]
+
+---
+
+# Director's Continuation Addendum — 22 October 2026
+
+## What this means in plain language
+
+The 14 questions are not a writing exercise. They are the smallest practical test of whether NayaNET can understand itself, act responsibly, learn, and continue without Shawn rebuilding its context every session.
+
+The existing report's live numbers are historical snapshots. Re-check live state before relying on them. This addendum does not claim that the full cold test or three-generation proof has passed.
+
+## Ten strengths worth protecting
+
+1. Shawn's final human authority and explicit human-only gates.
+2. Honest status distinctions: implemented, verified, and production-proven are different.
+3. The 14-question cold-comprehension contract.
+4. The nine-node kernel and its clear operating sequence.
+5. Existing Receiver and Smart Note paths at their proven scope.
+6. Evidence-carrying execution and independent verification.
+7. Lesson Law: a lesson must declare a behavior change.
+8. House-Fire correction: revert, diagnose, fix forward.
+9. Provenance, lineage, and single-writer principles.
+10. Successor continuity as a core product requirement.
+
+## Ten holes that stop the flow
+
+1. Timed independent ACTIVATION-10 remains unproven.
+2. Full cold 14Q comprehension-to-action remains unproven.
+3. Legitimate identity continuity and inheritance remain a critical blocker.
+4. Machine-enforced law does not yet cover every governing rule.
+5. Live state and measurements need freshness guarantees.
+6. Feed durability and writer ownership need repeatable proof.
+7. Factory features need executable contracts and negative controls.
+8. Pointer checks must distinguish real broken references from incorrect case-sensitive probes.
+9. Learning must demonstrably change later behavior.
+10. Nine-node influence, Sender → Receiver → Hub, and Naya A → B → C need end-to-end proof.
+
+## Ten highest-value actions
+
+1. Re-derive current main SHA, state, board pointers, and open work from canonical sources.
+2. Search actual consumers for uppercase BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.machine.json; the canonical lower-case file exists and is named by AGENTS.md step 11. Do not create a duplicate law file. Fix only a verified consumer defect.
+3. Run an independent cold 14Q test with no answers injected.
+4. Turn every unsupported answer into a named repair with evidence gap, falsifier, owner, acceptance test, and receipt destination.
+5. Resolve identity continuity safely; never bypass RLS or forge/reassign ownership.
+6. Prove each node's behavioral influence and a remove-one-node counterfactual.
+7. Prove a complete learning chain that changes later behavior.
+8. Verify writer/feed durability and pointer checks with negative controls.
+9. Prove the user-visible Sender → Receiver → Hub journey with persistence, privacy, lineage, and receipt.
+10. Prove Naya A → B → C continuation from durable state.
+
+## What stops progress most often
+
+The recurring pattern is a gap between declared architecture and mechanically enforced behavior: prose-only laws, activation by assertion, build-ahead-of-wiring, unregistered writers, stale evidence, overloaded human gates, proof degradation under pressure, maintenance-heavy artifacts, too few independent reviewers, and lessons that do not change future decisions.
+
+The remedy is not more documents alone. It is to make every important claim testable, every blocker actionable, and every accepted change independently verified.
+
+## Whole-team execution prompt
+
+**TEAM NAYA — EXECUTE, PROVE, LEARN, CONTINUE**
+
+Work from current canonical GitHub state, not stale memory. Read PROTOCOL.md, AGENTS.md, the current boot and machine-law files, operating state, board #2793, NOW #2599, directive #2601, and the relevant area board. Re-derive live values before citing them.
+
+Coordinate across seats and teams before shared writes. One lane, one owner, one writer per surface, one canonical record per fact, one receipt per outcome. Rank work by verified mission value and blocking power. Parallelize independent tasks; avoid duplicate PRs, duplicate stores, and speculative repairs.
+
+Make the 14 questions executable: a cold seat must answer from source evidence, classify each answer as PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED, choose a governed action, execute within authority, observe and independently verify the result, record durable learning, and hand off a usable checkpoint. No answers may be injected into the cold test.
+
+After every change, test the exact head, verify independently, record evidence, update current state, and immediately choose the next highest-value authorized action. Add negative controls for dead pointers, stale evidence, unauthorized identity, and missing behavior. If blocked, record exact cause, evidence, safe alternative, owner, and next test. Never disguise BLOCKED as PASS or claim persistent work without a real runner.
+
+Do not cross human-only production, credential, money, destructive, security/authority, or constitutional gates. Do not award 10/10 for prose, self-scoring, green CI alone, or a merge. Done means the cold 14Q, node influence, behavior-changing learning, Sender → Receiver → Hub, and three-generation succession pass their defined evidence-based acceptance tests. Sign out with verified completions, links, remaining blockers, honest scores, and the next action—then continue.
+
+
+---
+
+## Execution Receipt — 22 October 2026
+
+This work cycle verified the repository's activation integrity and relevant source contracts. It did **not** prove the complete live intelligence system.
+
+- The protocol integrity gate passed **8 of 8** checks at commit `91382eb4e377626d0029598ccb2dbbd9426d8aea`. The gate confirms readiness, not authority.
+- Four focused cold-start, Step-0 admission, successor-continuity, and node-binding test files passed **33 tests**.
+- The human path / product-surface test passed **8 tests**.
+- The Brain index freshness gate passed with **1,580 files and zero drift**. The generated-index `--check` also passed after regeneration.
+- The machine-readable report parsed successfully, and its three tongue pointers now resolve to the actual canonical filenames.
+
+The full timed ACTIVATION-10, independent cold run of all 14 questions, live identity inheritance, nine-node behavioral influence, production Sender → Receiver → Hub, behavior-changing learning transfer, and three-generation successor test remain **NOT PROVEN**. The source tests must not be represented as those runtime proofs.
