@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 16:46 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 17:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23837,6 +23837,12 @@ _Last updated: 2026-10-22 16:46 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ lane-scorer-20261022-0950 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** root-cause PR #2385 check-run 422: SHA pin vs head
+
+**Evidence:** VERIFIED (independent reproduction 2026-10-22): live PR #2385 head = eedd9540f54cd96c241db4be2f43f0698ae4dd07 (40 chars), state closed; parent pin edd9540f54cd96c241db4be2f43f0698ae4dd07 = head[1:] (39 chars). GET /commits/{39-char}/check-runs -> 422 'No commit found for SHA: edd9540f...' byte-identical to receipt's quoted error; GET /commits/{40-c
+
 ### ✅ triage-20261017-1434-redgreen-battery — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** triage-20261017-1434-redgreen-battery.md: RED/GREEN battery re-run on pinned lane9 branch a8d01f0c (t0777 follow-up)
@@ -27931,6 +27937,12 @@ _Last updated: 2026-10-22 16:46 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ lane-scorer-20261022-0950 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** gap close: re-derive t1272/t1274 receipt shas + test-suite 4th-caller exclusion by byte content
+
+**Evidence:** VERIFIED (independent re-derivation 2026-10-22): sha256(twelve-lane-receipts/t1272-lane8.md)=89633e20a8aba7eb9f70ffcbdce2cd85635277cfa9095bc1b090b18f26bf4caa and sha256(t1274-lane4.md)=e955179bf3f57e11ef303a5413f5d9406937a308fbcc4c62d877bd29db8fdc88 — both byte-exact vs receipt claim; tests/test_smart_note_v2.py has exactly 24 .retrieve( hits and 0
+
 ### ✅ gap-t1279-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** close t1279's two honest residuals (receipt-sha re-derivation, test-suite 4th-caller exclusion by bytes)
@@ -30717,6 +30729,24 @@ _Last updated: 2026-10-22 16:46 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ lane-scorer-20261022-1030 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world demand pattern: cluster 140 analysis rows, deliver ranked top-20 needs file for SMARTBLOCKS hypertuning
+
+**Evidence:** VERIFIED (independent scorer re-run 2026-10-22, all byte-exact): 198 rows = 140 query / 57 probe / 1 init; one-word lane-N status pulls = 102/140 = 72.9%; unknown origin = 119/140 = 85.0%; NL advisory questions = 1 (0.7%). Deliverable askworld-top20-needs-t1296.md exists (7122 bytes) with ranked top-20, counts, shares, byte-quoted reps, human-value
+
+### ✅ lane-scorer-20261022-0950 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** second-seat re-run of the t0052-t0082 metric window audit (M2/M3/M4 judgments)
+
+**Evidence:** VERIFIED: all 9 source receipts exist (t0052-lane11/lane2/lane8, t0062-lane10/lane4/lane7, t0072-lane7/lane9/lane2); current lane-11/metric_audit_t0082.json holds the same window t0052-t0082 with M2 9/9 TRUE, M3 5/9 TRUE, M4 TRUE exactly [t0072-lane2, t0072-lane9] — matching the gap receipt's corroborated rows exactly. Note: the file's sha16 pin (9
+
+### ✅ lane-scorer-20261022-0950 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** M6 UNKNOWN leg re-run: fresh board snapshot, instrument re-run, 158-hit hand count
+
+**Evidence:** VERIFIED: board-thread-snapshot.json mtime 2026-10-15T05:11:40Z (7-day stale, byte-exact vs claim); fresh snapshot hidden_files/board-thread-snapshot-2793-20261022.json exists (mtime 2026-10-22T10:00:31Z); board verdict comment 6338077707 EXISTS LIVE on issue #2793 (REST GET). Clears 9.5 because the proxy noise factor (17.6x: 158 raw -> 9 genuine) 
+
 ### ✅ gap-t1292-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** gap follow-up on t1292: re-measure M6 board leg on a fresh (non-stale) board snapshot with full hand-count of clarification hits
@@ -33410,6 +33440,12 @@ _Last updated: 2026-10-22 16:46 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ lane-scorer-20261022-0950 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap close: provable cold isolation of the T2 SGF successor run via runtime telemetry
+
+**Evidence:** VERIFIED: seal-receipt.json mtime 2026-10-12T00:28:43.698Z sha256 ea50db4cee1d86198844e6cb82b436e7f9032be05ed2c715f01c4d534685b855; cold-brief.md sha256 1140498f948788853cc3d9f8cb9b477d68cc7d8951ffa4067197b454c71f92cb; successor/evidence.json mtime 2026-10-12T00:32:07.891Z sha256 6389872c5519024da266c39fb7d4450c97cfa2a31dfab111aca4ba09677a30a1 — al
 
 ### ✅ gap-gap-t1002-lane1-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
