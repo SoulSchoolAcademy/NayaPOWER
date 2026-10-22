@@ -43,6 +43,10 @@ jobs:
         run: python -m pip install pytest
       - name: Run protocol gate tests
         run: python -m pytest tests/test_protocol_machine_law.py -q
+      - name: Protocol version sync (PROTOCOL.md, manifest, machine spec, activation packet)
+        run: python3 tools/protocol/checks/protocol_version_sync.py --root . --json
+      - name: Protocol operationalization self-tests (full Naya cycle vs the gates)
+        run: python -m pytest tests/test_protocol_operationalization.py -q
       - name: Auto-brain boot-surface gate (protocol law SN-AUTO-BRAIN)
         run: python tools/protocol/checks/auto_brain.py --record '{}'
       - name: Verify governance documents exist

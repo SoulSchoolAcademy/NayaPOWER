@@ -1,0 +1,121 @@
+{
+  "$id": "naya.operating-state/1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "gauge": {
+      "additionalProperties": false,
+      "properties": {
+        "escape_rate_proxy_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "feed_freshness": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "paperwork_block_rate_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "read_anchor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "time_to_merge_median_hours": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "source",
+        "read_anchor",
+        "paperwork_block_rate_pct",
+        "time_to_merge_median_hours",
+        "escape_rate_proxy_pct",
+        "feed_freshness"
+      ],
+      "type": "object"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "hold_human": {
+      "items": {
+        "type": "integer"
+      },
+      "type": "array"
+    },
+    "laws": {
+      "additionalProperties": false,
+      "properties": {
+        "iteration": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "latest_laws": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "type": "object"
+    },
+    "open_pr_count": {
+      "type": "integer"
+    },
+    "queue_by_tier_action": {
+      "type": "object"
+    },
+    "schema": {
+      "enum": [
+        "naya.operating-state/1"
+      ],
+      "type": "string"
+    },
+    "tip": {
+      "type": "string"
+    },
+    "tip_failing_checks": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "generated_at",
+    "tip",
+    "open_pr_count",
+    "queue_by_tier_action",
+    "tip_failing_checks",
+    "gauge",
+    "laws",
+    "hold_human"
+  ],
+  "title": "NayaPOWER Operating State",
+  "type": "object"
+}

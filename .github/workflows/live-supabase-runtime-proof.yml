@@ -40,7 +40,7 @@ jobs:
             echo "SOURCE_SHA is required"
             exit 1
           fi
-          resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
+          resolved="$(gh api "repos/${{ github.repository }}/git/refs/heads/main" --jq .object.sha)"
           echo "expected_source_sha=${SOURCE_SHA}"
           echo "resolved_main_sha=${resolved}"
           if [ "${SOURCE_SHA}" != "${resolved}" ]; then

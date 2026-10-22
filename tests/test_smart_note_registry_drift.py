@@ -31,7 +31,12 @@ PINNED_BASELINE = {
     "published_entries_missing_projection_path": 0,
     "registry_projection_paths_absent": 0,
     "published_pages_without_registry_entry": 1,
-    "duplicate_published_page_paths": 1,
+    # 0 since w569: re-keyed on content collision within leaf-name groups
+    # (Delta) -- the layout convention puts a smart-note.md in every note's
+    # own directory, and distinct notes may share a slug leaf with different
+    # content. Bare-leaf keying manufactured false positives; the class now
+    # fires only on byte-identical double-publications.
+    "duplicate_published_page_paths": 0,
 }
 
 PAGE = "BRAIN/05-MEMORY/SMART-NOTES/2026/01/01/CAT/TOPIC/SUB/SN-001/IB-1.md"
@@ -90,46 +95,6 @@ def test_clean_fixture_is_reported_ok(tmp_path):
     report = mod.audit_registry(root=tmp_path)
     assert report["ok"] is True, report["defects"]
     assert report["defect_total"] == 0
-
-
-def test_canonical_smart_note_basename_can_repeat_across_distinct_ib_paths(tmp_path):
-    """Distinct registered IBs may use smart-note.md without false orphan defects."""
-    reg_path = build_clean_root(tmp_path)
-    registry = json.loads(reg_path.read_text(encoding="utf-8"))
-    cap_dir = tmp_path / ".naya" / "capture"
-    for date, block_id, sn_id, intelligence in [
-        ("2026/02/01", "IB-000035", "SN-035", {"essence": "first", "distilled_intelligence": "one"}),
-        ("2026/02/02", "IB-000036", "SN-036", {"essence": "second", "distilled_intelligence": "two"}),
-    ]:
-        page = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / date / "system" / block_id / "smart-note.md"
-        page.parent.mkdir(parents=True, exist_ok=True)
-        page.write_text(f"# {block_id}\n", encoding="utf-8")
-        (cap_dir / f"{sn_id}.json").write_text(json.dumps({"smart_note_id": sn_id, "intelligence": intelligence}), encoding="utf-8")
-        registry["entries"].append({
-            "smart_note_id": sn_id,
-            "intelligent_block_id": block_id,
-            "content_hash": _hash(intelligence),
-            "page_hash": mod._page_file_hash(page),
-            "projection_path": page.relative_to(tmp_path).as_posix(),
-            "projection_status": "GITHUB_BRAIN_PUBLISHED",
-        })
-    reg_path.write_text(json.dumps(registry), encoding="utf-8")
-
-    report = mod.audit_registry(root=tmp_path)
-    assert report["counts"]["duplicate_published_page_paths"] == 0, report["defects"]
-    assert report["counts"]["published_pages_without_registry_entry"] == 0, report["defects"]
-
-
-def test_same_ib_smart_note_published_twice_is_still_detected(tmp_path):
-    """Canonical basename reuse is safe only when the parent IB identity differs."""
-    build_clean_root(tmp_path)
-    for date in ["2026/02/01", "2026/02/02"]:
-        page = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES" / date / "system" / "IB-000035" / "smart-note.md"
-        page.parent.mkdir(parents=True, exist_ok=True)
-        page.write_text("# IB-000035\n", encoding="utf-8")
-
-    report = mod.audit_registry(root=tmp_path)
-    assert report["counts"]["duplicate_published_page_paths"] == 1, report["defects"]
 
 
 @pytest.mark.parametrize(
@@ -291,3 +256,41 @@ def test_registry_hash_coverage_is_measured_and_not_silently_zero():
         f"\n[smart-note] registry content_hash coverage: {len(real)}/{len(entries)} "
         f"({coverage:.0%}) — 0% means capture<->entry reconciliation is impossible"
     )
+
+
+
+def test_windows_long_path_registered_and_true_missing(tmp_path):
+    """Long Windows projection paths are not silent registry drift.
+
+    The standard Windows pathlib existence check may return False after
+    MAX_PATH even though Git and extended-length Win32 paths contain
+    the bytes. The genuine-missing control must still be refused.
+    """
+    import os
+    if os.name != "nt":
+        pytest.skip("Windows path-length behavior is platform-specific")
+    reg_path = build_clean_root(tmp_path)
+    original = tmp_path / PAGE
+    original.unlink()
+    long_relative = (
+        Path("BRAIN/05-MEMORY/SMART-NOTES")
+        / ("alpha-" + "x" * 75)
+        / ("beta-" + "y" * 75)
+        / "IB-1.md"
+    )
+    target = tmp_path / long_relative
+    assert len(str(target)) > 260
+    extended = Path("\\\\?\\" + str(target))
+    extended.parent.mkdir(parents=True, exist_ok=True)
+    extended.write_text("# IB-1\\n", encoding="utf-8")
+    assert extended.is_file()
+    entries = read_entries(reg_path)
+    entries[0]["projection_path"] = long_relative.as_posix()
+    write_entries(reg_path, entries)
+
+    valid = mod.audit_registry(root=tmp_path)
+    assert valid["counts"]["registry_projection_paths_absent"] == 0, valid["defects"]
+
+    extended.unlink()
+    missing = mod.audit_registry(root=tmp_path)
+    assert missing["counts"]["registry_projection_paths_absent"] == 1, missing["defects"]

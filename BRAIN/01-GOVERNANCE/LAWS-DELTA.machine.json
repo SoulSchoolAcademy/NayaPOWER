@@ -1,0 +1,366 @@
+{
+ "generated_from": {
+  "generator": "tools/generate_laws_delta.py",
+  "governance_dir": "BRAIN/01-GOVERNANCE",
+  "machine_tongue_blob_shas": {
+   "0003-full-auto-merge-v1.machine.json": "dd48fb27be1120aa763019966d4d1145e4c58df0",
+   "0004-nonstop-loop-v1.machine.json": "19097e2d2c52cae250b04dcf08fbeb26d2f05c96",
+   "0005-captain-operating-protocol-v1.machine.json": "c7e6b0497fb020e0a3aab095c19f2d8bbd3371af",
+   "0006-naya-calculator-v1.machine.json": "6e62c7ad6be9e8632fc4ee41f7c8d1f9b59e3f7f",
+   "0007-law-of-one-v1.machine.json": "a0b338815cda6131441e09c9aa01f81aef0a7700",
+   "0008-operating-code-v2.machine.json": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
+   "0013-parallel-execution-v1.machine.json": "45bcf7ab174b44062dc94fae8a8b2ce5d64cfb6a",
+   "0014-mantra-v1.machine.json": "9d9d1fe2937d4ee3bcb6c7c9ebcbae6e884dc290",
+   "0016-law-of-one-v1.machine.json": "e9e40316e0ae0c2489e08b8f648abc45af034a5c",
+   "0017-calculator-as-default-v1.machine.json": "7aa30ed57f4fe7c114f26195a07d8181f9fd202f",
+   "0018-plain-words-decision-format-v1.machine.json": "99aa3a4e8a4e09937283759817c015e534898663",
+   "0019-reversibility-rule-v1.machine.json": "860ae3f8aa6be901041d34ec10db40e299e84ad7",
+   "0020-engine-before-production-v1.machine.json": "abc384701525c59d00e565b192b5b30994885bb8",
+   "0021-naya-oath-v1.machine.json": "f578a673faea33f980944a168db7f8b55a05f0c6",
+   "0022-naya-manifesto-v1.machine.json": "26daa956f351bba68f117584ced4969071bd4c09",
+   "0025-SMART-NOTE-PROTOCOL-V1.machine.json": "8bc1fdcf7a828166fb88276b11c6507e566fb320",
+   "0029-THE-NAYA-PROCESS-V1.machine.json": "c46edb11bc3bbed89902a3e66e9d8e0d302fe57a",
+   "0030-VALUE-ONLY-BRAIN-V1.machine.json": "be5a34263f192d22d827201654356024e712829e",
+   "0031-never-again-v1.machine.json": "1e58e3180215140ec7510f31658a8e34cce81a41",
+   "0032-house-standard-v1.machine.json": "c1bb2ffa2f41ff49940ff0b218dc12cc0c9987bf",
+   "0033-the-balanced-machine-v1.machine.json": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
+   "0034-the-house-fire-law-v1.machine.json": "b26079232d91f5e8fe4a072c9cc019649826dd12"
+  },
+  "source_fingerprint_sha256": "3c4738d571a40cffb30badf8ac5140ee17e530e3e88c52f7e42f7473ce185969"
+ },
+ "law_count": 22,
+ "laws": [
+  {
+   "falsifier": null,
+   "id": "GOV-0003",
+   "number": "0003",
+   "owner": null,
+   "source_blob_sha": "dd48fb27be1120aa763019966d4d1145e4c58df0",
+   "statement": null,
+   "status": "RATIFIED_VERBAL_2026-10-05__PENDING_MERGE",
+   "title": "0003-full-auto-merge-v1.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0003-full-auto-merge-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0004",
+   "number": "0004",
+   "owner": null,
+   "source_blob_sha": "19097e2d2c52cae250b04dcf08fbeb26d2f05c96",
+   "statement": null,
+   "status": "DIRECTOR-RATIFIED",
+   "title": "0004-nonstop-loop-v1.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0005",
+   "number": "0005",
+   "owner": null,
+   "source_blob_sha": "c7e6b0497fb020e0a3aab095c19f2d8bbd3371af",
+   "statement": null,
+   "status": "DIRECTOR-RATIFIED",
+   "title": "0005-captain-operating-protocol-v1.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0006",
+   "number": "0006",
+   "owner": null,
+   "source_blob_sha": "6e62c7ad6be9e8632fc4ee41f7c8d1f9b59e3f7f",
+   "statement": "NAYA-CALCULATOR-V1 \u2014 the universal scoring machine",
+   "status": "CANDIDATE",
+   "title": "NAYA-CALCULATOR-V1 \u2014 the universal scoring machine",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0006-NAYA-CALCULATOR-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0006-naya-calculator-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0007",
+   "number": "0007",
+   "owner": null,
+   "source_blob_sha": "a0b338815cda6131441e09c9aa01f81aef0a7700",
+   "statement": null,
+   "status": "RATIFIED",
+   "title": "0007-law-of-one-v1.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0007-law-of-one-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0008",
+   "number": "0008",
+   "owner": null,
+   "source_blob_sha": "1088c9ae24a78d137cc1158300cda7ef0271ef86",
+   "statement": null,
+   "status": "RATIFIED",
+   "title": "0008-operating-code-v2.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0008-OPERATING-CODE-V2.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0008-operating-code-v2.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0013",
+   "number": "0013",
+   "owner": null,
+   "source_blob_sha": "45bcf7ab174b44062dc94fae8a8b2ce5d64cfb6a",
+   "statement": "The Parallel Execution Law",
+   "status": "DIRECTOR-RATIFIED",
+   "title": "The Parallel Execution Law",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0014",
+   "number": "0014",
+   "owner": null,
+   "source_blob_sha": "9d9d1fe2937d4ee3bcb6c7c9ebcbae6e884dc290",
+   "statement": "The Mantra Law",
+   "status": "DIRECTOR-RATIFIED",
+   "title": "The Mantra Law",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0014-MANTRA-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0014-MANTRA-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0016",
+   "number": "0016",
+   "owner": null,
+   "source_blob_sha": "e9e40316e0ae0c2489e08b8f648abc45af034a5c",
+   "statement": "Law of One V1 \u2014 Constitutional Law",
+   "status": null,
+   "title": "Law of One V1 \u2014 Constitutional Law",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0016-law-of-one-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0017",
+   "number": "0017",
+   "owner": null,
+   "source_blob_sha": "7aa30ed57f4fe7c114f26195a07d8181f9fd202f",
+   "statement": "Calculator as Default V1",
+   "status": null,
+   "title": "Calculator as Default V1",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0017-CALCULATOR-AS-DEFAULT-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0017-calculator-as-default-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0018",
+   "number": "0018",
+   "owner": null,
+   "source_blob_sha": "99aa3a4e8a4e09937283759817c015e534898663",
+   "statement": "Plain-Words Decision Format V1",
+   "status": null,
+   "title": "Plain-Words Decision Format V1",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0018-PLAIN-WORDS-DECISION-FORMAT-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0018-PLAIN-WORDS-DECISION-FORMAT-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0018-plain-words-decision-format-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0019",
+   "number": "0019",
+   "owner": null,
+   "source_blob_sha": "860ae3f8aa6be901041d34ec10db40e299e84ad7",
+   "statement": "Reversibility Rule V1",
+   "status": null,
+   "title": "Reversibility Rule V1",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0019-REVERSIBILITY-RULE-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0019-REVERSIBILITY-RULE-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0019-reversibility-rule-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0020",
+   "number": "0020",
+   "owner": null,
+   "source_blob_sha": "abc384701525c59d00e565b192b5b30994885bb8",
+   "statement": "Engine-Before-Production Law V1",
+   "status": null,
+   "title": "Engine-Before-Production Law V1",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0020-ENGINE-BEFORE-PRODUCTION-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0020-engine-before-production-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0021",
+   "number": "0021",
+   "owner": null,
+   "source_blob_sha": "f578a673faea33f980944a168db7f8b55a05f0c6",
+   "statement": null,
+   "status": "ACTIVE",
+   "title": "0021-naya-oath-v1.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0021-NAYA-OATH-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0021-naya-oath-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0022",
+   "number": "0022",
+   "owner": null,
+   "source_blob_sha": "26daa956f351bba68f117584ced4969071bd4c09",
+   "statement": null,
+   "status": "ACTIVE",
+   "title": "0022-naya-manifesto-v1.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0022-NAYA-MANIFESTO-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0022-naya-manifesto-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0025",
+   "number": "0025",
+   "owner": null,
+   "source_blob_sha": "8bc1fdcf7a828166fb88276b11c6507e566fb320",
+   "statement": "SMART-NOTE-PROTOCOL",
+   "status": null,
+   "title": "SMART-NOTE-PROTOCOL",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0029",
+   "number": "0029",
+   "owner": null,
+   "source_blob_sha": "c46edb11bc3bbed89902a3e66e9d8e0d302fe57a",
+   "statement": "NAYA LAW \u2014 Shawn, 2026-10-20, from his dictation",
+   "status": null,
+   "title": "THE NAYA PROCESS",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0029-THE-NAYA-PROCESS-V1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0030",
+   "number": "0030",
+   "owner": null,
+   "source_blob_sha": "be5a34263f192d22d827201654356024e712829e",
+   "statement": "We do the most intelligent thing by producing nothing but value. If it is not valuable, we do not produce it. If we start it, we finish it. We scorecard everything, and nothing less than a 9 passes \u2014 because everything we produce should end up a 10, and we work until it is.",
+   "status": null,
+   "title": "THE VALUE-ONLY BRAIN",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0030-VALUE-ONLY-BRAIN-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0030-VALUE-ONLY-BRAIN-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0030-VALUE-ONLY-BRAIN-V1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
+   "id": "GOV-0031",
+   "number": "0031",
+   "owner": null,
+   "source_blob_sha": "1e58e3180215140ec7510f31658a8e34cce81a41",
+   "statement": "NEVER AGAIN \u2014 The Reservoir Laws",
+   "status": null,
+   "title": "NEVER AGAIN \u2014 The Reservoir Laws",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0031-NEVER-AGAIN-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0031-never-again-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": "A jam reported by >=2 seats, open >48h, with no FIXED/ROUTED/GATE record => H1/H3 theater; main seat escalates to Shawn with evidence.",
+   "id": "GOV-0032",
+   "number": "0032",
+   "owner": null,
+   "source_blob_sha": "c1bb2ffa2f41ff49940ff0b218dc12cc0c9987bf",
+   "statement": "THE HOUSE STANDARD \u2014 Take Care of the House",
+   "status": null,
+   "title": "THE HOUSE STANDARD \u2014 Take Care of the House",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0032-HOUSE-STANDARD-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0032-house-standard-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": "Two consecutive weekly gauge reads after the unified gate lands in which the paperwork-block rate does not fall toward < 0.10 and no loosening lever is applied per the adjustment rule \u2014 the self-tuning claim is then false and the design returns to the ratifying seat.",
+   "id": "GOV-0033",
+   "number": "0033",
+   "owner": "main seat (weekly gauge read); gate machinery owners (step 1); Shawn (step 7 governor click \u2014 executed 2026-10-21 ~22:34Z)",
+   "source_blob_sha": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
+   "statement": "Value = quality x completion; gates protect and never block: work travels one of three doors matched to its blast radius (A full bar 9.5, B one unified paperwork gate at 8.0 with diff-hash freshness, C machine validation via the note door), and a weekly balance gauge tunes the bar on counted numbers.",
+   "status": "ratified_core_specified",
+   "title": "THE BALANCED MACHINE",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0033-the-balanced-machine-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": "A guardian defect-log entry that sits in state DETECTED for more than one shift with no correction in flight and no protected-gate escalation on record \u2014 one such entry, verified in the log, falsifies compliance for that instance; a weekly gauge read whose escape latency is asserted rather than computed from log timestamps falsifies the measurement claim.",
+   "id": "GOV-0034",
+   "number": "0034",
+   "owner": "every seat (correction is owned by the seer); guardian + gauge instrumentation owned by the main seat",
+   "source_blob_sha": "b26079232d91f5e8fe4a072c9cc019649826dd12",
+   "statement": "If something lands that should not have, the seat that proves it puts it out in live time: revert first, diagnose second, fix forward third, automate the prevention fourth. Detection is continuous, correction is owned by the seer, speed is protected \u2014 slowing down is reserved for Tier A consequences.",
+   "status": "active_canonical",
+   "title": "THE HOUSE-FIRE LAW \u2014 ACTIVE INTELLIGENCE, AUTO-CORRECT IN LIVE TIME",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0034-the-house-fire-law-v1.machine.json"
+   }
+  }
+ ],
+ "schema": "naya/laws-delta/v1",
+ "scope": "Numbered governance sets of BRAIN/01-GOVERNANCE/ that carry a machine tongue. Excludes AGENTS.md L-entries (seat-VM prose, no stable schema \u2014 parsing would be brittle) and OPERATING-LAW.json (2026-10-10 compilation, separate LAW-X01 scheme). Fields a source set does not carry are null, never invented."
+}
