@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 19:10 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 19:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4064,6 +4064,14 @@ _Last updated: 2026-10-22 19:10 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1312-lane1.md`
 
 **Evidence:** Dispatcher verified: VERACITY-ARM.md exists on disk; lane8-t1302-veracity/battery.py sha256 6e855e78... matches receipt's pin-exact claim; lane-1/t1312-veracity/battery_baseline_lane1-rerun.json + battery_candidate_lane1-rerun.json exist; blinded-scores-t1302.md exists. The 6/14 baseline vs 14/14 candidate values are agent-run evidence (dispatcher 
+
+### ✅ t1310 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Decide spec-0007 placement (retrieval vs render vs both) by explicit value-calculus; packet + byte-verified HOLD evidence
+
+**Receipt:** `twelve-lane-receipts/t1310-lane3.md`
+
+**Evidence:** VERIFIED on live bytes at the seat's pinned commit 3826b69997399eb95708b9fec73cfee356966c81: tools/retrieval_authorization_gate.py sha256 fbe6ee29482fdc...a28f recomputes byte-exactly to the packet's pin; def retrieve() present at tools/smart_note_v2.py:1025; 'retrieval_visible' absent (UNWIRED confirmed). Packet spec-0007-placement-decision-t1310.
 
 ### ✅ t1305 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
 
