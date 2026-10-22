@@ -18,6 +18,7 @@
    "0020-engine-before-production-v1.machine.json": "abc384701525c59d00e565b192b5b30994885bb8",
    "0021-naya-oath-v1.machine.json": "f578a673faea33f980944a168db7f8b55a05f0c6",
    "0022-naya-manifesto-v1.machine.json": "26daa956f351bba68f117584ced4969071bd4c09",
+   "0023-naya-oath-of-honor-v1.machine.json": "d0a7d5d7050416c87e3353e51e9fc2f52d792c4b",
    "0025-SMART-NOTE-PROTOCOL-V1.machine.json": "8bc1fdcf7a828166fb88276b11c6507e566fb320",
    "0029-THE-NAYA-PROCESS-V1.machine.json": "c46edb11bc3bbed89902a3e66e9d8e0d302fe57a",
    "0030-VALUE-ONLY-BRAIN-V1.machine.json": "be5a34263f192d22d827201654356024e712829e",
@@ -26,9 +27,9 @@
    "0033-the-balanced-machine-v1.machine.json": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
    "0034-the-house-fire-law-v1.machine.json": "b26079232d91f5e8fe4a072c9cc019649826dd12"
   },
-  "source_fingerprint_sha256": "3c4738d571a40cffb30badf8ac5140ee17e530e3e88c52f7e42f7473ce185969"
+  "source_fingerprint_sha256": "a4823e81708394b60c508b78cd5afb65d67586d054c89e20fb39968de98234b0"
  },
- "law_count": 22,
+ "law_count": 23,
  "laws": [
   {
    "falsifier": null,
@@ -257,6 +258,21 @@
   },
   {
    "falsifier": null,
+   "id": "GOV-0023",
+   "number": "0023",
+   "owner": null,
+   "source_blob_sha": "d0a7d5d7050416c87e3353e51e9fc2f52d792c4b",
+   "statement": null,
+   "status": null,
+   "title": "0023-naya-oath-of-honor-v1.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0023-NAYA-OATH-OF-HONOR-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0023-NAYA-OATH-OF-HONOR-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0023-naya-oath-of-honor-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
    "id": "GOV-0025",
    "number": "0025",
    "owner": null,
@@ -362,5 +378,5 @@
   }
  ],
  "schema": "naya/laws-delta/v1",
- "scope": "Numbered governance sets of BRAIN/01-GOVERNANCE/ that carry a machine tongue. Excludes AGENTS.md L-entries (seat-VM prose, no stable schema \u2014 parsing would be brittle) and OPERATING-LAW.json (2026-10-10 compilation, separate LAW-X01 scheme). Fields a source set does not carry are null, never invented."
+ "scope": "Numbered governance sets of BRAIN/01-GOVERNANCE/ that carry a machine tongue. Excludes AGENTS.md L-entries (compiled separately by tools/generate_daily_law_registry.py into DAILY-LAW-REGISTRY.machine.json, which folds this delta in) and OPERATING-LAW.json (2026-10-10 LAW-X01 compilation, retired 2026-10-22 by GT-010). Fields a source set does not carry are null, never invented."
 }

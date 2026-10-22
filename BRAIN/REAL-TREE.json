@@ -1,17 +1,17 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "f5ec9ac79f6b2e42e482e9dfc74f82e778bca61c",
-  "inventory_file_count": 1536,
+  "receipt_basis_commit": "38ad3255d949252e36b712037fc5b6043b7351c0",
+  "inventory_file_count": 1540,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 89,
+    "01-GOVERNANCE": 90,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 774,
+    "05-MEMORY": 777,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -551,6 +551,16 @@
       "size": 4001
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md",
+      "blob_sha": "5348d9b690b5ffd699974c26a5445e2bb02ff8ef",
+      "size": 87770
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json",
+      "blob_sha": "1eb26bef019bec131a7a9f29045e29d27529e2fd",
+      "size": 510210
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md",
       "blob_sha": "ea273ce3077d1e8be7001203d1c312d44c8e0d86",
       "size": 2633
@@ -562,18 +572,13 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json",
-      "blob_sha": "1cbaf0613176007ffde536522350e094d316ddc5",
-      "size": 15465
+      "blob_sha": "bb770ae8dac3030a45fc445fd5127431fd2ea138",
+      "size": 16117
     },
     {
       "path": "BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md",
       "blob_sha": "c58ef4864a38dd1eaaf820886a7c7a22aa593240",
       "size": 10500
-    },
-    {
-      "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.json",
-      "blob_sha": "e4047b8721295a73255e71352053e847a00c721b",
-      "size": 32501
     },
     {
       "path": "BRAIN/01-GOVERNANCE/OPERATING-LAW.md",
@@ -4289,6 +4294,21 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/verification/SN-0813/IB-SMART-NOTE-20261021-sn0813-nobodys-word-is-proof.md",
       "blob_sha": "9305a6b9cc9b35b7bfda1f4b8f606adf0a7c86a5",
       "size": 8565
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-0819/IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it.md",
+      "blob_sha": "6b63d8776308659152e64ed1060c9323fe64cf96",
+      "size": 5212
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-1790/IB-SMART-NOTE-20261022-sn1790-how-we-do-it-intelligent-blocks.md",
+      "blob_sha": "33330478a77d76c77558b5d18d2046c10b398abc",
+      "size": 10463
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md",
+      "blob_sha": "f11b2653d0081180819820d116e3e75b55357ecc",
+      "size": 5334
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md",
