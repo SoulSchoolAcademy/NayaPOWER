@@ -1,6 +1,6 @@
 {
  "schema": "living-list/v1",
- "generated_utc": "2026-10-22T22:58:27Z",
+ "generated_utc": "2026-10-22T23:07:56Z",
  "source": "hidden_files/living-list.json \u2014 validated + reconciled by state-core-builder.py (single writer)",
  "registry": "THE LIVING LIST \u2014 the one ranked queue across programs; programs are filters, not queues",
  "activation": {
@@ -109,8 +109,8 @@
    "title": "Command + universal search \u2014 one place that finds any person, note, thread, list, or link (Best-of-Best step 13)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 2772,
-   "claim_age_s": 2772,
+   "idle_s": 3340,
+   "claim_age_s": 3340,
    "drift": []
   },
   {
@@ -129,8 +129,8 @@
    "title": "Linked everything \u2014 the data model: one thing in three homes, never three copies (step 14)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 2772,
-   "claim_age_s": 2772,
+   "idle_s": 3340,
+   "claim_age_s": 3340,
    "drift": []
   },
   {
@@ -149,8 +149,8 @@
    "title": "Smart Lists \u2014 server store: the same lists in the Hub and your app (step 15)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 2772,
-   "claim_age_s": 2772,
+   "idle_s": 3340,
+   "claim_age_s": 3340,
    "drift": []
   },
   {
@@ -169,8 +169,8 @@
    "title": "Conversational intake \u2014 Welcome door + invite-accept as one question at a time (step 12)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 2772,
-   "claim_age_s": 2772,
+   "idle_s": 3340,
+   "claim_age_s": 3340,
    "drift": []
   },
   {
@@ -189,8 +189,8 @@
    "title": "Booking block \u2014 your availability once, a booking link, reminders both sides (step 17)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 2772,
-   "claim_age_s": 2772,
+   "idle_s": 3340,
+   "claim_age_s": 3340,
    "drift": []
   },
   {
@@ -210,7 +210,7 @@
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
    "pr_state": "open",
-   "pr_mergeable": null,
+   "pr_mergeable": false,
    "drift": []
   },
   {
@@ -231,8 +231,8 @@
    "verified_by": null,
    "pr_state": "open",
    "pr_mergeable": true,
-   "idle_s": 5232,
-   "claim_age_s": 6132,
+   "idle_s": 5800,
+   "claim_age_s": 6700,
    "drift": []
   },
   {
@@ -253,7 +253,7 @@
    "verified_by": null,
    "pr_state": "open",
    "pr_mergeable": false,
-   "idle_s": 11412,
+   "idle_s": 11980,
    "stalled": true,
    "drift": [
     "stalled-claim: no state change or note for 3h+ \u2014 claim aging is visible by law"
@@ -276,7 +276,7 @@
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
    "pr_state": "open",
-   "pr_mergeable": null,
+   "pr_mergeable": true,
    "drift": []
   },
   {
@@ -296,7 +296,7 @@
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
    "pr_state": "open",
-   "pr_mergeable": null,
+   "pr_mergeable": true,
    "drift": []
   },
   {
