@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4352,6 +4352,38 @@ _Last updated: 2026-10-22 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1282-lane1.md`
 
 **Evidence:** Dispatcher verified: blinded-scoring/SPEC.md + mechanism/assemble_packet.py, leak_audit.py, unblind.py all on disk; demo artifacts present. Real verified value: leak audit fired honestly once (FAIL-IDENTITY-LEAK on probe self-naming), normalized and re-audited PASS; spawn-failure root-caused to spawn layer (zero integrity impact). Deductions: separ
+
+### ✅ t1276 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-auth-gate test-flag harness design (spec 0007, SURGE slice b) — DESIGN ONLY
+
+**Receipt:** `twelve-lane-receipts/t1276-lane3.md`
+
+**Evidence:** Independent verification (2026-10-22 05:10 PDT tick): deliverable hidden_files/surge-b/retrieval-auth-gate-testflag-harness-design-t1276.md exists at claimed path, 16,090 bytes matches, sha256 52ec1216d515ca44ad4da82d0ce23dae4a961b20609f36b5165cc312cf78a079 matches the post-write pin exactly, NON-WIRING statement present in the doc. All live-byte p
+
+### ✅ t1275 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** blinded third corroboration of the t1273 retrieval-auth-gate read-seam pin (sealed-then-compare, pre-registered falsifier)
+
+**Receipt:** `twelve-lane-receipts/t1275-lane11.md`
+
+**Evidence:** VERIFIED: deliverable hidden_files/surge-b/seam-corroboration-t1275-lane11.md exists at the exact pinned sha256 80b94371088c07b8cb0906049fdcd881d4925fdc413148e71f7c7b89ef9fc6c7 (8798 B, byte-identical); git ls-remote HEAD re-derived live now = e8a10e0a4ba05eea4c0c0d8448e9362b6de62946 == receipt pin at 11:49Z == t1274 pin (zero drift). Sealed-then-c
+
+### ✅ t1274 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** second-seat independent corroboration of t1273 read-seam pin for retrieval-auth-gate wiring
+
+**Receipt:** `twelve-lane-receipts/t1274-lane4.md`
+
+**Evidence:** VERIFIED: deliverable hidden_files/surge-b/seam-corroboration-t1274-lane4.md exists, 6130 bytes, sha256 e1fc48c151bb7e4ee1848e469f12aa0cb96b7fab9113157e7cdd4a60f2d147e6 byte-identical to the receipt's pin; independent re-derivation in a fresh shallow clone at live tip e8a10e0a4ba05eea4c0c0d8448e9362b6de62946 (ls-remote, matches receipt's tip 3/3): 
+
+### ✅ t1273 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-authorization gate (spec 0007) seam-insertion naming: exact read-seam lines + plan doc hidden_files/retrieval-auth-gate-seam-insertion-t1273.md
+
+**Receipt:** `twelve-lane-receipts/t1273-lane3.md`
+
+**Evidence:** VERIFIED: deliverable hidden_files/retrieval-auth-gate-seam-insertion-t1273.md exists at the exact claimed sha256 655ffe222be740fa842fc332d9c7fedc69a92122c91508a34f42f8a0527dd789 (5009 bytes); receipt pins time-stamped at tip f7bd39ca75027b3d90d2a983dad3c623215863a3 re-derived 11:31-11:34 UTC today (tip has since moved to e8a10e0a4ba05eea4c0c0d8448
 
 ### ✅ t1272 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
@@ -20324,6 +20356,12 @@ _Last updated: 2026-10-22 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ lane-scorer-20261022-0436 — Team executor, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** seat-stall 2026-10-22 04:36 PDT - 23/23 unclaimable, ORDERING sweep, delta vs prior stall, queue preserved
+
+**Evidence:** VERIFIED: claim-brief.py dry-run reproduces the receipt's verdict semantics live - exit 2 on the stamped brief (brief-gap-scorer-20261015-0110-lane7.md) and exit 7 on the parent-authorship brief (brief-gap-lane-scorer-20261017-1100-lane8-a.md); all 23 brief files exist; rotation queue now 24 queued (one new brief since the 23-evaluation - active qu
 
 ### ✅ seat-stall-20261022-0330 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
