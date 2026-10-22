@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-22T21:25:16Z",
-  "tip": "dcaa09e8bb104c64057eec519531d7da0d74f402",
+  "generated_at": "2026-10-22T22:25:41Z",
+  "tip": "c66faf7d7f06fe330691bd3868b9fe7b18c5f9f0",
   "prs": [
     {
       "number": 2869,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "92dab10092fd540e8075a9c3f86f3865c17398fa"
+      "head": "639e33ef24f38a2f2a60013bb28bb86b8dd112f8"
     },
     {
       "number": 2907,
@@ -22,40 +22,22 @@
       "head": "ba985a9d5a48aae7b6d7dd9018a770212ddbc397"
     },
     {
-      "number": 2934,
-      "title": "Mission-state twin cure \u2014 director ruling Option C (TOP-10 director-stated, register machine-derived, format bends)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "b12494e8faa0fdd441e71e19c4135832e65cb58c"
-    },
-    {
       "number": 2937,
       "title": "P0: fail-closed v7 registry identity reconciliation and orphan controls",
       "tier": "A",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "8ff9d3e7dc8fb192ce00c3f234926a64bb86661a"
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "8981517bb5636911ee15ea293700150f73be6087"
     },
     {
       "number": 2939,
       "title": "R13 \u2014 #2154 pointer sweep: mission state repointed to BRAIN/CURRENT-MISSION-STATE.md (adjudication 6346747868)",
       "tier": "A",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): Protocol machine law (kernel/protocol), brain-index-freshness, completeness; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "29b4c15251b983adbc2e4aaa1b1d4fe277768428"
-    },
-    {
-      "number": 2945,
-      "title": "Smart Links: data foundation + redirect worker + join attribution (Best-of-Best #3, Phase 0 step 1)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): safety-grant-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "c69a220107d0979a49d32d3b1b27d54067776f75"
+      "head": "e5d32e1ce57f57190cc6f1b343b4155d6fd1f10f"
     },
     {
       "number": 2950,
@@ -67,13 +49,13 @@
       "head": "a8ecf97b58a90729a9a5039e06f8ee1582f28566"
     },
     {
-      "number": 2951,
-      "title": "Factory Step 2: machine twin of the ratified Design Contract (generator + generated twin + validator check 9)",
+      "number": 2954,
+      "title": "Linked everything: stored object links + owner-named facts (Best-of-Best #14/#19, map step 14)",
       "tier": "A",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "a1ee248a4fbf313d7f13ddad7698968d876deb9b"
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "a380bc91cf997dcfd3686459f1f8b8cb40308ac6"
     }
   ]
 }
