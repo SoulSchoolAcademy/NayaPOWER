@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-22",
-  "receipt_basis_commit": "d390730b3238aba8afa7da57cb89e24eeca8b565",
-  "inventory_file_count": 1534,
+  "receipt_basis_commit": "cd1deb6b84ab95df2e015b6a2effa695bae3804e",
+  "inventory_file_count": 1538,
   "domain_counts": {
     "00-ACTIVATION": 7,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 772,
+    "05-MEMORY": 776,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4289,6 +4289,26 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/21/SYSTEM/verification/SN-0813/IB-SMART-NOTE-20261021-sn0813-nobodys-word-is-proof.md",
       "blob_sha": "9305a6b9cc9b35b7bfda1f4b8f606adf0a7c86a5",
       "size": 8565
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/DESIGN/composition/SN-0819/IB-SMART-NOTE-20261022-sn0819-it-is-not-what-you-do-it-is-how-you-do-it.md",
+      "blob_sha": "6b63d8776308659152e64ed1060c9323fe64cf96",
+      "size": 5212
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/FACTORY/building-blocks/SN-0820/IB-SMART-NOTE-20261022-sn0820-the-official-building-blocks-of-the-new-internet.md",
+      "blob_sha": "f11b2653d0081180819820d116e3e75b55357ecc",
+      "size": 5334
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/LEARNING/verification/SN-0818/IB-SMART-NOTE-20261022-sn0818-true-when-i-wrote-it-is-not-true-now.md",
+      "blob_sha": "0c2abb5d1f32e0adf67ad9771719e1cfb57dd97d",
+      "size": 6071
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md",
+      "blob_sha": "c46f0d01a5b214dc7fc158c365881698cb5cf2d5",
+      "size": 5916
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
