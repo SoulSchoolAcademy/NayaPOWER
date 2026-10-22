@@ -1602,6 +1602,15 @@
       "statement_count": 12,
       "bytes": 2761,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022211500",
+      "name": "object_links_v1",
+      "path": "supabase/migrations/20261022211500_object_links_v1.sql",
+      "sha256": "39f31a6e3eaf5f92551c03970a1953bbd532f83cb773727e86fcb384793acab2",
+      "statement_count": 32,
+      "bytes": 11224,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
