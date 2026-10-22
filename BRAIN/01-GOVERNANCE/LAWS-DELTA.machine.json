@@ -18,17 +18,18 @@
    "0020-engine-before-production-v1.machine.json": "abc384701525c59d00e565b192b5b30994885bb8",
    "0021-naya-oath-v1.machine.json": "f578a673faea33f980944a168db7f8b55a05f0c6",
    "0022-naya-manifesto-v1.machine.json": "26daa956f351bba68f117584ced4969071bd4c09",
+   "0023-naya-oath-of-honor-v1.machine.json": "d0a7d5d7050416c87e3353e51e9fc2f52d792c4b",
    "0025-SMART-NOTE-PROTOCOL-V1.machine.json": "8bc1fdcf7a828166fb88276b11c6507e566fb320",
    "0029-THE-NAYA-PROCESS-V1.machine.json": "c46edb11bc3bbed89902a3e66e9d8e0d302fe57a",
    "0030-VALUE-ONLY-BRAIN-V1.machine.json": "be5a34263f192d22d827201654356024e712829e",
    "0031-never-again-v1.machine.json": "1e58e3180215140ec7510f31658a8e34cce81a41",
    "0032-house-standard-v1.machine.json": "c1bb2ffa2f41ff49940ff0b218dc12cc0c9987bf",
-   "0033-the-balanced-machine-v1.machine.json": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
+   "0033-the-balanced-machine-v1.machine.json": "3ff258b9536213ba0cf20f34f9b505dea41f6ac7",
    "0034-the-house-fire-law-v1.machine.json": "b26079232d91f5e8fe4a072c9cc019649826dd12"
   },
-  "source_fingerprint_sha256": "3c4738d571a40cffb30badf8ac5140ee17e530e3e88c52f7e42f7473ce185969"
+  "source_fingerprint_sha256": "0e1131526bece98ef6cf8c41c21d1d6b6c04ee5f6fe6af6933d96a0c9611f066"
  },
- "law_count": 22,
+ "law_count": 23,
  "laws": [
   {
    "falsifier": null,
@@ -257,6 +258,21 @@
   },
   {
    "falsifier": null,
+   "id": "GOV-0023",
+   "number": "0023",
+   "owner": null,
+   "source_blob_sha": "d0a7d5d7050416c87e3353e51e9fc2f52d792c4b",
+   "statement": null,
+   "status": null,
+   "title": "0023-naya-oath-of-honor-v1.machine.json",
+   "tongues": {
+    "ai": "BRAIN/01-GOVERNANCE/0023-NAYA-OATH-OF-HONOR-V1.ai.md",
+    "human": "BRAIN/01-GOVERNANCE/0023-NAYA-OATH-OF-HONOR-V1.human.md",
+    "machine": "BRAIN/01-GOVERNANCE/0023-naya-oath-of-honor-v1.machine.json"
+   }
+  },
+  {
+   "falsifier": null,
    "id": "GOV-0025",
    "number": "0025",
    "owner": null,
@@ -335,9 +351,9 @@
    "id": "GOV-0033",
    "number": "0033",
    "owner": "main seat (weekly gauge read); gate machinery owners (step 1); Shawn (step 7 governor click \u2014 executed 2026-10-21 ~22:34Z)",
-   "source_blob_sha": "bd9c9a1a8156dfc7ce2594b85c206054391fb638",
+   "source_blob_sha": "3ff258b9536213ba0cf20f34f9b505dea41f6ac7",
    "statement": "Value = quality x completion; gates protect and never block: work travels one of three doors matched to its blast radius (A full bar 9.5, B one unified paperwork gate at 8.0 with diff-hash freshness, C machine validation via the note door), and a weekly balance gauge tunes the bar on counted numbers.",
-   "status": "ratified_core_specified",
+   "status": "formally_ratified",
    "title": "THE BALANCED MACHINE",
    "tongues": {
     "ai": "BRAIN/01-GOVERNANCE/0033-THE-BALANCED-MACHINE-V1.ai.md",

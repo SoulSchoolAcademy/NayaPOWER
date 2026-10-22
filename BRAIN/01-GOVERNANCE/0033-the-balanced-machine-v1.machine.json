@@ -126,7 +126,8 @@
     "tiers.B.scorecard_min",
     "DESIGN.ai.md sections 2-3"
    ],
-   "reason": "ratified core says 'good-and-verified bar' without a number; 8.0 specified from Shawn's 2026-10-21 statement; single value to change if the ratifying seat prefers another"
+   "reason": "ratified core says 'good-and-verified bar' without a number; 8.0 specified from Shawn's 2026-10-21 statement; single value to change if the ratifying seat prefers another",
+   "resolution": "CONFIRMED at 8.0 \u2014 formal ratification by Shawn Vibert, 2026-10-22 ~00:29Z (GT-067)"
   },
   {
    "id": "ruleset-scoping",
@@ -201,6 +202,14 @@
     "stage per-table policy SQL as versioned files with prior policy kept for rollback"
    ]
   }
+ },
+ "formal_ratification": {
+  "at": "2026-10-22T00:29Z",
+  "by": "Shawn Vibert",
+  "scope": "The Balanced Machine as designed (three tiers; Tier B floor 8.0 confirmed; the unified paperwork gate; the balance gauge)",
+  "source": "chat directive \u2014 Shawn's word approving all eight gates as presented (GT-067): 'my word \u2014 execute, get them all done, full permission'",
+  "tier_b_floor": 8.0,
+  "tier_b_floor_status": "CONFIRMED"
  },
  "freshness_rule": {
   "applies_to_tiers": [
@@ -298,7 +307,7 @@
   "line_format": "MISSING: <what> \u2014 CURE: <the single curing action> (owner: <seat/lane>)"
  },
  "statement": "Value = quality x completion; gates protect and never block: work travels one of three doors matched to its blast radius (A full bar 9.5, B one unified paperwork gate at 8.0 with diff-hash freshness, C machine validation via the note door), and a weekly balance gauge tunes the bar on counted numbers.",
- "status": "ratified_core_specified",
+ "status": "formally_ratified",
  "tiers": {
   "A": {
    "bar": {
@@ -338,7 +347,7 @@
     ],
     "pinning": "diff-hash (see freshness_rule)",
     "scorecard_min": 8.0,
-    "scorecard_min_status": "SPECIFIED from Shawn 2026-10-21 framing ('an 8 out of 10 that goes through and works'); confirm at ratification",
+    "scorecard_min_status": "CONFIRMED \u2014 formally ratified by Shawn Vibert, 2026-10-22 ~00:29Z (Tier B floor 8.0; GT-067)",
     "unresolved_blocking_findings_allowed": 0,
     "verification_attestation_required": true
    },
