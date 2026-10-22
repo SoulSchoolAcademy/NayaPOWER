@@ -294,3 +294,39 @@ def test_windows_long_path_registered_and_true_missing(tmp_path):
     extended.unlink()
     missing = mod.audit_registry(root=tmp_path)
     assert missing["counts"]["registry_projection_paths_absent"] == 1, missing["defects"]
+
+
+def test_v7_projection_requires_independent_transaction_identity(tmp_path):
+    """A forged v7 header or well-formed IB directory cannot self-authorize."""
+    p = tmp_path / "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/test/IB-000044/smart-note.md"
+    p.parent.mkdir(parents=True)
+    p.write_text("# Smart Note — IB-000044\\n> Canonical receiver: v7-smart-note-canonical\\n", encoding="utf-8")
+    no_attestation = mod.audit_registry(root=tmp_path)
+    assert any(x["page"] == "smart-note.md" for x in no_attestation["defects"]["published_pages_without_registry_entry"])
+    trusted = mod.audit_registry(root=tmp_path, v7_verified_ids={"IB-000044"})
+    assert trusted["counts"]["published_pages_without_registry_entry"] == 0
+
+
+def test_v7_wrong_id_does_not_hide_orphan(tmp_path):
+    p = tmp_path / "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/test/IB-000045/smart-note.md"
+    p.parent.mkdir(parents=True)
+    p.write_text("# Smart Note — IB-000044\\n", encoding="utf-8")
+    report = mod.audit_registry(root=tmp_path, v7_verified_ids={"IB-000044"})
+    assert report["counts"]["published_pages_without_registry_entry"] == 1
+
+
+def test_v7_companion_document_not_a_second_smart_note(tmp_path):
+    parent = tmp_path / "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/system/tools/IB-000044"
+    parent.mkdir(parents=True)
+    (parent / "smart-note.md").write_text("# Smart Note\\n", encoding="utf-8")
+    (parent / "the-naya-tool-set.md").write_text("# Tool documentation\\n", encoding="utf-8")
+    result = mod.audit_registry(root=tmp_path, v7_verified_ids={"IB-000044"})
+    assert result["counts"]["published_pages_without_registry_entry"] == 0
+
+
+def test_unrelated_markdown_orphan_is_not_ignored(tmp_path):
+    p = tmp_path / "BRAIN/05-MEMORY/SMART-NOTES/2026/10/20/misc/unregistered.md"
+    p.parent.mkdir(parents=True)
+    p.write_text("# Orphan\\n", encoding="utf-8")
+    result = mod.audit_registry(root=tmp_path, v7_verified_ids={"IB-000044"})
+    assert result["counts"]["published_pages_without_registry_entry"] == 1
