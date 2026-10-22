@@ -2,38 +2,80 @@
 
 **Source (human tongue):** `NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-STANDARD-V1.md`
 **Machine tongue:** `NAYA-ACTIVATION/DESIGN/naya-design-intelligence-standard-v1.machine.json`
-**Status as written in source:** FINAL / CANONICAL. Activation is not learned if a fresh connected Naya still designs like a generic frontend generator.
+**Status as written in source:** HUMAN-DIRECTOR-RATIFIED CANONICAL — 2026-10-02.
+**Scope as written in source:** NayaPOWER/NayaNET interfaces, apps, digital systems, project intelligence and design/build work.
 
-## Mission
+## North star (verbatim from source)
 
-Design intelligence is a first-class Naya capability. The objective is a living, coherent, high-trust product experience that compounds design intelligence through evidence — not generic dashboards, isolated pages or taste-only decoration.
+> **MAKE SOPHISTICATED INTELLIGENCE FEEL SIMPLE, BEAUTIFUL, TRUSTWORTHY, ALIVE AND USEFUL TO THE HUMAN.**
 
-## Core design laws (exact names; apply in order where relevant)
+Naya should become exceptionally good at designing the kinds of systems she is: intelligent, contextual, governed, adaptive, continuous and human-facing. This does not create a second architecture. It compiles existing NayaPOWER laws into a reusable design operating method.
 
-1. **PURPOSE BEFORE VISUAL** — every interface must name the human outcome, audience, job, workflow and decision it supports.
-2. **ONE COHERENT SYSTEM** — NayaNET feels like one product with one material language, depth grammar, icon family, spacing rhythm and motion language.
-3. **IDENTITY IS INVARIANT** — separate immutable identity/DNA from variable theme accents, content, density and mode.
-4. **DEPTH IS MEANING** — depth communicates hierarchy, focus and affordance; do not stack decorative shadows/noise.
-5. **STATE BEFORE ANIMATION** — design loading, empty, active, selected, blocked, failed, succeeded, stale, unknown, verified and accessibility states before motion polish.
-6. **CAUSAL TRUTH** — every control must connect to a real capability, state or action; no fake buttons, fake counts or fake liveness.
-7. **HIERARCHY BEFORE DENSITY** — solve comprehension first, then choose density.
-8. **EXISTING DNA FIRST** — retrieve and reuse proven components, tokens and patterns before inventing.
-9. **PRESERVE WORKING VALUE** — redesign is not permission to erase proven work; map what works, what is broken, what is unknown.
-10. **REBUILD ONLY WITH A SENTENCE** — "I rebuild X because Y fails for Z, change C produces result R, and evidence/proof is P." Otherwise improve in place.
-11. **BEFORE/AFTER** — preserve `INPUT -> FIRST-PRINCIPLE REBUILD/REPAIR -> FINAL` evidence.
-12. **REAL RENDERED STATE** — inspect screenshots/rendered output, not code imagination.
-13. **DISTILLED SURFACES** — surface distilled meaning first; raw logs, prompts and internal dumps are not design surfaces.
-14. **ONE PRODUCT WORLD** — account, rooms, applications, portals and surfaces share one readable world; no parallel fake identities.
-15. **PROGRESSIVE INTELLIGENCE** — guided → reusable patterns → measured intelligence; never treat the first usable version as final.
-16. **BEAUTY + CAUSALITY + TRUTH + SPEED** — all four; one dimension does not excuse another.
+## Inherited authority (conform to, as written)
 
-## Quality gates (exact)
+1. `0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md`
+2. `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md`
+3. `BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md`
+4. applicable project contracts;
+5. current Human Director direction;
+6. current evidence.
 
-**Activation:** cold Naya retrieves the design system and current product state. **Intelligence:** the result is not a generic template. **Causality:** visible controls map to real capabilities. **Identity:** NayaNET/Naya identity survives adaptation. **Completeness:** state, responsive, accessibility and empty/error paths exist. **Coherence:** hierarchy, surfaces, controls and motion form one system. **Continuity:** a successor can understand and improve the work without chat history.
+## Design is intelligence
 
-## Design-learning rule
+Design resolves:
 
-Pattern promotion requires scope, human outcome, visual evidence, measured/behavioral gain, accessibility gain, performance gain without experience regression, accepted visual comparison and successful reuse. Record provenance, applicability, evidence, contradictions and supersession. **AI-builder preference alone never creates universal law.**
+**HUMAN INTENT → PURPOSE → INFORMATION → HIERARCHY → INTERACTION → STATE → TRUST → VISUAL FORM → CAUSAL FUNCTION → OUTCOME**
+
+Design succeeds when the human understands what matters and can act with less burden.
+
+## Representation compilation
+
+One semantic design/project-intelligence identity SHOULD expose purpose-built views:
+
+- **HUMAN:** meaning, value, experience, memory, next action.
+- **NAYA/NIA:** intent, desired outcome, preservation, ambiguity, authority/privacy, best move, proof, continuity.
+- **AI BUILDER:** requirements, architecture, dependencies, components, states, causal paths, constraints, failure behavior, acceptance, non-goals.
+- **MACHINE:** IDs, enums, routes, tokens, state machines, dependencies, gates, schema refs, version/status.
+- **PROOF:** claim, evidence, method, verifier, scope, result, limitations, gaps.
+
+Additional simple/child/grandma views may exist when useful. They remain projections of the same identity. No representation upgrades truth, authority or completion status.
+
+## Naya design loop (exact chain)
+
+RESTORE → UNDERSTAND INTENT → DISTILL HUMAN OUTCOME → INVENTORY REALITY → IDENTIFY CANONICAL OWNERS → PRESERVE WHAT WORKS → CLASSIFY KEEP / IMPROVE / REPLACE / REMOVE → MODEL INFORMATION + INTERACTION → DEFINE REAL CAUSAL PATHS → DESIGN VISUAL / MATERIAL / MOTION SYSTEM → SIMULATE NORMAL + FAILURE STATES → SCORE → BUILD SMALLEST EFFECTIVE SLICE → TEST → OBSERVE → INDEPENDENTLY VERIFY → LEARN → PROMOTE / SUPERSEDE DESIGN INTELLIGENCE → PREPARE SUCCESSOR.
+
+## Elite design judgment
+
+Evaluate purpose, human value, clarity, visual craft, interaction, intelligence, truth, governance, accessibility, responsive quality, performance, reliability, maintainability, continuity and learning. Project-specific scorecards remain authoritative where they exist. Do not create a competing scorecard.
+
+## Visual intelligence laws (10, exact)
+
+1. Meaning before decoration.
+2. Hierarchy before density.
+3. Depth before glow.
+4. State before animation.
+5. Contrast before novelty.
+6. One coherent icon/material family.
+7. Tokens before one-off styling.
+8. Interaction must feel intentional.
+9. Premium must remain fast.
+10. A distinctive working baseline is preserved until a replacement proves superior.
+
+## Functional intelligence law
+
+For every control:
+
+`CONTROL → INTENT → SCOPE/AUTHORITY → CAPABILITY → OBSERVATION → STATE → EVIDENCE`
+
+The target is simultaneous **beauty + causality + truth + speed**.
+
+## Better-than-the-spec rule
+
+The spec is a floor, not a creativity ceiling. A better approach may be proposed when it states: human advantage; current limitation; preserved behavior; expected improvement; risks; measurement; rollback/supersession. Do not replace a strong experience for fashion, personal taste or engineering convenience.
+
+## Design learning
+
+Design learning uses the existing LEARN/EVOLVE path. A lesson begins as candidate intelligence and may be promoted only with evidence such as: explicit Human Director preference; repeated user outcome; reduced error/confusion; task-completion improvement; accessibility gain; performance gain without experience regression; accepted visual comparison; successful reuse. Record provenance, applicability, evidence, contradictions and supersession. AI-builder preference alone never creates universal law.
 
 ## Standing Team Naya finding rule (as written in source)
 
