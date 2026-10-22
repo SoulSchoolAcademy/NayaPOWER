@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 10:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-22 11:16 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 10 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 12 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -57,13 +57,13 @@
 - [#2925](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2925) Brain-index regen at basis 51902fc7 — covers the 13 Daily Intelligence
 - [#2907](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907) kappa w690: heal registry drift — register 28 door/leaf pages, pin 1→0 📝draft
 
-### BUILD (6)
+### BUILD (8)
+- [#2927](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2927) A2 step 2: tongue triplets for both activation trees (57 works)
+- [#2926](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2926) MISSION-STATE.json twin — mission state as data (Mirror A2 step 3)
 - [#2924](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2924) Fix auto-brain test law count — 18 → 23, ratified operationalization c
 - [#2922](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2922) Fix cold-start Step-0 admission fixture — q4 answer 9.0 → 9.5 (BUILD 0
 - [#2919](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2919) Fix materialize-template tests under repo-root pytest — file-relative 
-- [#2916](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2916) Smart Notes SN-1801 + SN-1802 — Awareness Is Ownership · Answer Your O
-- [#2915](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2915) Daily Intelligence 2026-10-22 — the night the lessons became orders
-- …and 1 more
+- …and 3 more
 
 ### TEAM (1)
 - [#2874](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2874) Naya2/team dashboard
