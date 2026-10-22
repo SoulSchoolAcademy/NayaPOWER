@@ -15,7 +15,7 @@ Every link below was verified resolving at issue time. If a link dies, the field
 
 protocol_document: PROTOCOL.md
 protocol_version: 2026-10-20
-protocol_sha256: cb7bc9e78b3ac86b939c475f79ae00d0f390fc0a70727b9717a08524190be84c
+protocol_sha256: f43cae6d0a18baccd04e372494c5f636277349b8edc5eaf5274597d3de4c4b46
 
 Activation: declare Step 0, then write your declaration receipt before work —
 `python3 tools/protocol_pin.py --issue --agent-id <your-id> --out <receipt-path>` —
