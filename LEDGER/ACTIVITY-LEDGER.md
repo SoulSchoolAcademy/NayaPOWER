@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 21:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 22:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4250,6 +4250,14 @@ _Last updated: 2026-10-22 21:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1296-lane11.md`
 
 **Evidence:** Deliverable askworld-top20-needs-t1296.md exists (7122 bytes). Byte-exact clustering method, honest-unknown fraction named (85.0%), representative-line fix disclosed. Why not 9.5: (1) single-seat ceiling — no second seat has re-run the cluster counter; (2) brief-named t0670/t0770 context docs unread (no premise loss asserted); (3) need #20 lumps 3 
+
+### ✅ t1295 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** W704-BOT-THROUGH-HOLD tripwire brief: pre-registered firing criteria, 4-instance calibration re-derived from live bytes, probe v2->v3 upgrades, live execution on #2738/#2892/#2893/#2816
+
+**Receipt:** `twelve-lane-receipts/t1295-lane4.md`
+
+**Evidence:** VERIFIED on live bytes, independent of the receipt's claims: (1) verdict file hidden_files/w704-tripwire-4instance-verdict-t1295.md exists (Parts A-F, 12KB) and probe w704-tripwire-probe.py v3 exists (10.8KB); (2) all four PR heads byte-match live GitHub: #2738 e086ca22bd6 merged 2026-10-21T22:56:48Z by nayapower-lane-agent[bot], #2816 28bf41264fa 
 
 ### ✅ t1295 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
 
@@ -21695,6 +21703,14 @@ _Last updated: 2026-10-22 21:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t952 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up on t952 — independent re-derivation of receipt-pin gate (receipt gap-t952-lane9.md)
+
+**Receipt:** `twelve-lane-receipts/gap-t952-lane9.md`
+
+**Evidence:** Verified: 19/19 pytest tests/test_receipt_pin_gate.py re-run by the scorer itself (19 passed); receipt-gate.yml carries 'Receipt pin' job; --pr-state-out present in tools/check_scorecard_receipt_pin.py; --p12-only present in tools/auto_merge_gate.py; docs/merge-receipt-gate-wiring.md present. Clears 9.5 because the named gap (builder-claimed-only t
+
 ### ✅ lane-scorer-20261022-1300 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** gap follow-up on t952: independent re-proof of receipt-pin gate (19/19 tests + 3 fail-closed demos) on current main bytes
@@ -33531,6 +33547,12 @@ _Last updated: 2026-10-22 21:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-lane-scorer-20261022-0950-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up on gap-t1002 — spawn-evidence root cause + runner repair (receipt gap-lane-scorer-20261022-0950-lane1.md)
+
+**Evidence:** Verified by independent reads: muse.db agent.subagent_spawns COUNT=7 over widened window 1791759600-1791770400 (matches receipt); runtime.tool_calls COUNT=0 all time (caveat dissolved — empty for everyone, not hidden-by-role); run_daily.sh sha256 byte-matches e09f83375ada2ace503550ac743f799b8b0fe4658b9357b8d3225fcd24c59545; run-2026-10-11-T2/succes
+
 ### ✅ lane-scorer-20261022-1250 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** gap follow-up on t1002 chain: independent RAW-log re-derivation + built fail-closed spawn-record repair in Lane 6 SGF runner
@@ -34548,6 +34570,12 @@ _Last updated: 2026-10-22 21:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-lane-scorer-20261021-1930-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** post-hoc v1 receipt on t0412-baseline-builder-cure (receipt gap-lane-scorer-20261021-1930-lane0.md)
+
+**Evidence:** Verified: batteries/t0412-baseline/rubric.md line 26 header present, sha256 prefix 8291a7d0 matches parent's expected, queries.json 5/5 entries carry query_note. Why not 9.5: only 2 of 8 outputs carry byte proof in this filing; the other 6 rest on the timed-out worker's claim; no executing-worker 3-pass (the filer's own honest accounting — concur).
 
 ### ✅ gap-gap-lane-scorer-20261021-1930-v2-lane0-verified-closed — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
