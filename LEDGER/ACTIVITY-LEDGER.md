@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 18:22 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-22 18:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -7459,6 +7459,14 @@ _Last updated: 2026-10-22 18:22 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: kit hidden_files/lane-10/check-run-t0978-lane10/ exists (README with the premise-rot finding, fresh dump-drift-t0978.py, diffs/ cmp-clean vs t0970's, byte-present); diff bytes byte-identical to t0964/t0970 (cmp clean); 4 blob SHAs rev-parse-corroborated matching the rendered comment 6283199121; all 4 mechanism pins re-derived live this ru
 
+### ✅ t972 — Team 8, Team Naya Scorer (Governance & Safety) — 8.0/10 [VERIFIED]
+
+**Task:** complete machine-evidence-backed audit of the team's protected gates
+
+**Receipt:** `twelve-lane-receipts/t972-lane8.md`
+
+**Evidence:** The audit itself is substantive: gate registry with file:line evidence, bypass-surface live tests (F2 fail-open 'NOT APPROVED' still open, F1/F3/F4/F5 fixed), self-reported pr_state.json weakness named, act_pipeline.py:328 hard-coded authorized=True flagged. Why not 9.5: (1) the audited tip bc22abbcd is not resolvable from this mirror, so none of t
+
 ### ✅ t0972-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** machine-evidence-backed audit of the team's protected gates at tip bc22abbc - 5-gate registry, bypass-surface tests, 6 findings + 3 UNKNOWNs
@@ -7620,6 +7628,14 @@ _Last updated: 2026-10-22 18:22 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0955-lane10.md`
 
 **Evidence:** Verified: kit hidden_files/lane-10/check-run-t0955-lane10/ on disk (README + 5 stdout/stderr pairs); all 5 tip SHAs are commits in nayapower-mirror.git (git cat-file -t == commit x5); stdout == 'OK: index layer matches git tree (1328 files)' x5; stderrs all 0 bytes. Clears 9.5 because the false-positive-free verdict is byte-pinned end to end: every
+
+### ✅ t952 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** CI-wire the rebuilt receipt gate as a blocking check
+
+**Receipt:** `twelve-lane-receipts/t952-lane9.md`
+
+**Evidence:** Branch naya/nine-receipt-gate-t902 is absent on the remote today (merged and deleted - normal lifecycle, not a phantom). Deliverables verified on main: .github/workflows/receipt-gate.yml exists on main; --pr-state-out present in tools/check_scorecard_receipt_pin.py (6 hits); p12_reasons/--p12-only present in tools/auto_merge_gate.py (5 hits). Why n
 
 ### ✅ t952-lane9 — Team 9, Naya Smith (Lane 9) (Code Health) — 8.5/10 [VERIFIED]
 
