@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-22  
-**Receipt basis commit:** `e7d6e717e465268a1eba9f4be7eb1b2f200001a3`  
-**Inventory file count:** 1541  
+**Receipt basis commit:** `e0afe2713048f7dae74a1f377968630f89732019`  
+**Inventory file count:** 1545  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 90 |
+| 01-GOVERNANCE | 93 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -20,7 +20,7 @@
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 427 |
+| 10-INTERFACES | 428 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
 | 90-OPERATIONS | 92 |
@@ -142,11 +142,14 @@
 - `BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.ai.md` — `1330b38df3de` (4520 bytes)
 - `BRAIN/01-GOVERNANCE/0034-THE-HOUSE-FIRE-LAW-V1.human.md` — `2019359e46f3` (3690 bytes)
 - `BRAIN/01-GOVERNANCE/0034-the-house-fire-law-v1.machine.json` — `b26079232d91` (4001 bytes)
+- `BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.ai.md` — `faabf8359e9e` (5023 bytes)
+- `BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.human.md` — `566711d0c16d` (19899 bytes)
+- `BRAIN/01-GOVERNANCE/0035-design-law-ratification-v1.machine.json` — `0992eb9c81c7` (4871 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md` — `5348d9b690b5` (87770 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json` — `1eb26bef019b` (510210 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
 - `BRAIN/01-GOVERNANCE/GATE-CONSOLE.md` — `d7810ee7ef34` (10085 bytes)
-- `BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json` — `66f859ef04d3` (16111 bytes)
+- `BRAIN/01-GOVERNANCE/LAWS-DELTA.machine.json` — `3320441029bd` (16942 bytes)
 - `BRAIN/01-GOVERNANCE/LEARNING-INTERNALIZATION-AUTOMATIC-BEHAVIOR-V1.md` — `c58ef4864a38` (10500 bytes)
 - `BRAIN/01-GOVERNANCE/OPERATING-LAW.md` — `414cfeb4c7e0` (32957 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
@@ -1413,8 +1416,9 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/INP008-REBASE-SCORECARD.md` — `7dfe6d0ba657` (17346 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MACHINE-CONTRACT-NOTES.md` — `bcc97ce5b0a7` (7003 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MANIFEST.md` — `0c430f497375` (19199 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py` — `4f05d05e2170` (3117 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py` — `1d7674c116e6` (7140 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build_queue-schema.sql` — `1693263c4524` (1772 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/check_standard_features.py` — `c4f6ffb7c6e7` (25030 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/contracts.json` — `081d1efa779d` (2135 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/customize.py` — `6719b2dc08bd` (2602 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/customize_contract.py` — `e5d8c28fc85b` (8817 bytes)
@@ -1425,7 +1429,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/manifest.json` — `6381822d4c87` (1317 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/sw.js` — `6e6077330368` (1454 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py` — `2951c74ee95f` (37549 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `c8ccab3f7cee` (7430 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `d49bd7b07ad9` (39183 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/booking.html` — `fda0ef13aeab` (229469 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business-hub.html` — `9d527e73f762` (229479 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business.html` — `3d8b82bcd6bf` (229489 bytes)
