@@ -98,7 +98,7 @@ registry and LAWS-DELTA.machine.json are the only law compilations now.
 | L205 | — | anchor "base == live tip" on a fresh `git/refs/heads/main` read immediately before the merge PUT — never on the PR record. If the ref mov… |
 | L206 | — | when a failure's shape is branch-vs-main drift, check the base's freshness FIRST — rebase onto current main, then regen, then `--check`. … |
 | L207 | — | every merge receipt states the exact call second; embed the scorecard-receipt reference in the merge commit message via the PUT body. Whe… |
-| L208 | — | mission state lives in one director-maintained issue (#2154) whose body is rewritten on every material change; the scoreboard lives in a … |
+| L208 | — | mission state lives in one director-maintained snapshot (BRAIN/CURRENT-MISSION-STATE.md on main; machine twin BRAIN/MISSION-STATE.json; published face: the live/mission-state branch) whose body is rewritten on every material change; the scoreboard lives in a … |
 | L209 | — | every operating claim in a live header must be true of the run — fix the text to match reality, not the run to match the text. When an in… |
 | L210 | — | when a venue hits a platform write-block: (1) verify the failed write did NOT land (never retry-create); (2) redirect receipts to the sta… |
 | L211 | — | a freeze names its mechanical enforcement and its owner; until enforcement is live, expect breaches and flag them. Track the enablement s… |

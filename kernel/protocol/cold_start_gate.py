@@ -52,7 +52,7 @@ class ColdStartResult:
     failures: list = field(default_factory=list)
 
 
-REQUIRED_TRUTH_MARKERS = ["#2154", "main"]
+REQUIRED_TRUTH_MARKERS = ["brain/current-mission-state.md", "main"]
 
 
 def _check_activation_checklist(checklist_claim=None) -> list[str]:
@@ -187,11 +187,12 @@ def run_cold_start(state: ColdStartState,
             "as the only hard law."
         )
 
-    # 4. Navigation: must reference the mission-state feed and current main.
+    # 4. Navigation: must reference the mission-state snapshot and current main.
     nav = state.current_truth_location.lower()
     if not all(m in nav for m in REQUIRED_TRUTH_MARKERS):
         failures.append(
-            "Truth location must reference the mission-state feed (#2154) "
+            "Truth location must reference the mission-state snapshot "
+            "(BRAIN/CURRENT-MISSION-STATE.md on main) "
             "and current main — the board alone is not the entire source of truth. "
             "(#1354 is archived; sign in/out on #1713/#1714/#1715.)"
         )

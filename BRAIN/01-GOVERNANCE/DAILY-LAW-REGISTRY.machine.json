@@ -1588,7 +1588,7 @@
    "mechanism": null,
    "mentions": 1,
    "owner": null,
-   "rule": "mission state lives in one director-maintained issue (#2154) whose body is rewritten on every material change; the scoreboard lives in a second (#2158). Workers activate by reading the issue body, not the comment stream. The board (#1354/#2175) is the coordination feed and history, never the current-truth lookup. (2026-10-10.)",
+   "rule": "mission state lives in one director-maintained snapshot (BRAIN/CURRENT-MISSION-STATE.md on main; machine twin BRAIN/MISSION-STATE.json; published face: the live/mission-state branch) whose body is rewritten on every material change; the scoreboard lives in a second (#2158). Workers activate by reading the snapshot body, not the comment stream. The board (#1354/#2175) is the coordination feed and history, never the current-truth lookup. (2026-10-10.)",
    "sections": [
     "Promotion-queue applications (2026-10-08)"
    ],
