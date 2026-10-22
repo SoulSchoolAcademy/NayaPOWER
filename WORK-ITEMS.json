@@ -1,6 +1,6 @@
 {
  "schema": "living-list/v1",
- "generated_utc": "2026-10-22T23:27:24Z",
+ "generated_utc": "2026-10-22T23:37:33Z",
  "source": "hidden_files/living-list.json \u2014 validated + reconciled by state-core-builder.py (single writer)",
  "registry": "THE LIVING LIST \u2014 the one ranked queue across programs; programs are filters, not queues",
  "activation": {
@@ -16,8 +16,8 @@
   "BLOCKED": 2,
   "NEEDS SHAWN": 2
  },
- "stalled_claims": 1,
- "drift_flags": 2,
+ "stalled_claims": 2,
+ "drift_flags": 6,
  "items": [
   {
    "blocker": "Fitted per-table policies not yet delivered; GT-039 execution waits on the fitting, then Shawn's tap",
@@ -109,8 +109,8 @@
    "title": "Command + universal search \u2014 one place that finds any person, note, thread, list, or link (Best-of-Best step 13)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 4507,
-   "claim_age_s": 4507,
+   "idle_s": 5119,
+   "claim_age_s": 5119,
    "drift": []
   },
   {
@@ -129,8 +129,8 @@
    "title": "Linked everything \u2014 the data model: one thing in three homes, never three copies (step 14)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 4507,
-   "claim_age_s": 4507,
+   "idle_s": 5119,
+   "claim_age_s": 5119,
    "drift": []
   },
   {
@@ -149,8 +149,8 @@
    "title": "Smart Lists \u2014 server store: the same lists in the Hub and your app (step 15)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 4507,
-   "claim_age_s": 4507,
+   "idle_s": 5119,
+   "claim_age_s": 5119,
    "drift": []
   },
   {
@@ -169,8 +169,8 @@
    "title": "Conversational intake \u2014 Welcome door + invite-accept as one question at a time (step 12)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 4507,
-   "claim_age_s": 4507,
+   "idle_s": 5119,
+   "claim_age_s": 5119,
    "drift": []
   },
   {
@@ -189,8 +189,8 @@
    "title": "Booking block \u2014 your availability once, a booking link, reminders both sides (step 17)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 4507,
-   "claim_age_s": 4507,
+   "idle_s": 5119,
+   "claim_age_s": 5119,
    "drift": []
   },
   {
@@ -209,7 +209,7 @@
    "title": "PR #2907 \u2014 kappa w690: heal registry drift (28 door/leaf pages)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "pr_state": "open",
+   "pr_state": "closed",
    "pr_mergeable": false,
    "drift": []
   },
@@ -231,10 +231,12 @@
    "verified_by": null,
    "pr_state": "merged",
    "pr_mergeable": null,
-   "idle_s": 6967,
-   "claim_age_s": 7867,
+   "idle_s": 7579,
+   "claim_age_s": 8479,
+   "stalled": true,
    "drift": [
-    "pr-merged-state-lags: PR #2939 is MERGED but the row sits IN PROGRESS"
+    "pr-merged-state-lags: PR #2939 is MERGED but the row sits IN PROGRESS",
+    "stalled-claim: no state change or note for 2h+ \u2014 claim aging is visible by law"
    ]
   },
   {
@@ -253,11 +255,12 @@
    "title": "PR #2869 \u2014 Naya4 smart notes 2026-09-30",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "pr_state": "open",
+   "pr_state": "closed",
    "pr_mergeable": false,
-   "idle_s": 13147,
+   "idle_s": 13759,
    "stalled": true,
    "drift": [
+    "pr-closed-unmerged: PR #2869 closed without merging",
     "stalled-claim: no state change or note for 3h+ \u2014 claim aging is visible by law"
    ]
   },
@@ -277,9 +280,11 @@
    "title": "PR #2937 \u2014 P0: fail-closed v7 registry identity reconciliation and orphan controls",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "pr_state": "open",
+   "pr_state": "closed",
    "pr_mergeable": false,
-   "drift": []
+   "drift": [
+    "pr-closed-unmerged: PR #2937 closed without merging"
+   ]
   },
   {
    "blocker": null,
@@ -297,9 +302,11 @@
    "title": "PR #2950 \u2014 Naya2/team dashboard",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "pr_state": "open",
+   "pr_state": "closed",
    "pr_mergeable": true,
-   "drift": []
+   "drift": [
+    "pr-closed-unmerged: PR #2950 closed without merging"
+   ]
   },
   {
    "blocker": null,
