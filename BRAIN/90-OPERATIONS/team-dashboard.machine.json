@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T21:15:16+00:00",
+ "generated_utc": "2026-10-23T22:15:16+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,8 +51,15 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3017,
+     "title": "safety(door-obligation): re-stamp SN-1854 registry content_hash to canonical intelligence ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3017",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "act",
@@ -140,6 +147,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 3018,
+     "title": "Security: harden legacy Smart Mail RLS",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3018",
+     "draft": true
+    },
+    {
      "number": 3000,
      "title": "Naya/mission state",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000",
@@ -152,7 +165,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 3
   },
   {
    "id": "wire",
@@ -218,8 +231,15 @@
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3019,
+     "title": "Narzan Trinity founding portrait \u2014 filed beside SN-0842 (citizens layer founding)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3019",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "product",
@@ -240,13 +260,19 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 3016,
+     "title": "feat(hub): 14Q living board module \u2014 validator + renderer for questions.json (Wave 2 item ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3016",
+     "draft": false
+    },
+    {
      "number": 2968,
      "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
      "draft": false
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 2
   },
   {
    "id": "memory",
@@ -419,6 +445,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 5,
- "unassigned_prs": 2
+ "open_pr_total": 9,
+ "unassigned_prs": 3
 }
