@@ -1629,6 +1629,15 @@
       "statement_count": 11,
       "bytes": 3187,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022223000",
+      "name": "smart_lists_v1",
+      "path": "supabase/migrations/20261022223000_smart_lists_v1.sql",
+      "sha256": "6069349aa827ea4fcc0a2c296dca5b8e1e594903018b6cd481d66f7dd50429d6",
+      "statement_count": 24,
+      "bytes": 6366,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,

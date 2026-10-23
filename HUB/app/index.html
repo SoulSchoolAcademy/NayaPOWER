@@ -5183,6 +5183,26 @@ window.HubView = HubView;
       });
       window.NayaNotes.mountPanel(nnBoard.body,{store:nnStore});
     }
+    /* Smart Lists (Best-of-Best #16, step 15) — the ONE server store both
+       surfaces read, replacing the device-local list worlds (flagship
+       os.lists.<alias> on one device, Hub naya.smartlist on another). The
+       store refuses without a signed-in session (window.NayaNotesSession,
+       wired by the auth lane); the panel says so honestly until then.
+       Removing an item removes only the membership — the note, person,
+       thread or link it points at is never touched. */
+    if(window.SmartLists&&window.SmartLists.mountPanel){
+      const slBoard=K.board(r.accent,'lists','Smart Lists','Your lists of what matters — Smart Notes, Naya Notes, people, threads and links, categorized your way. One store, every surface.');
+      wrap.appendChild(slBoard);
+      const slCfg=window.NayaBridgeConfig||{};
+      const slStore=window.SmartLists.createStore({
+        supabaseUrl:slCfg.supabaseUrl||'https://dahisasgpfvziswqvmvm.supabase.co',
+        anonKey:slCfg.anonKey||'',
+        ownerAlias:slCfg.alias||'',
+        ownerId:slCfg.ownerId||null,
+        getAccessToken:function(){return typeof window.NayaNotesSession==='function'?window.NayaNotesSession():null;}
+      });
+      window.SmartLists.mountPanel(slBoard.body,{store:slStore});
+    }
     return wrap;
 
     function render(payload,list,out){
@@ -5674,5 +5694,6 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 <script src="js/supabase-bridge.js"></script><!-- t0800: Hub<->Supabase persistence bridge; registers window.NayaPowerRuntime (feed room data) -->
 <script src="js/naya-notes.js"></script><!-- Best-of-Best #15: Naya Notes (personal captures — NOT Smart Notes); registers window.NayaNotes for the Lists room panel -->
 <script src="js/naya-intake.js"></script><!-- Best-of-Best #13: Conversational Intake v1 (one question at a time); registers window.NayaIntake for the #/welcome door -->
+<script src="js/smart-lists.js"></script><!-- Best-of-Best #16: Smart Lists (the one server store — typed items, owner categories); registers window.SmartLists for the Lists room panel -->
 </body>
 </html>
