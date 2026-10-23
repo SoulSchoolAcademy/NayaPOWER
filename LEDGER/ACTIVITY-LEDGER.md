@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 19:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 20:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -916,6 +916,30 @@ _Last updated: 2026-10-23 19:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Verification-first tick: tip clean, #2431 closed as superseded, stale branches deleted
 
 **Evidence:** VERIFIED: PR #2437 MERGED with merge_commit d998cac4e424c64a968cd57ecc7e549ceb0f8384 -- exactly the tip lane pinned at action time, so the 'tip already clean, do NOT re-anchor' judgment was verified-correct (avoids the re-anchor hamster wheel law); PR #2431 closed unmerged with supersede comment 6117620329 PRESENT; stale heal branches naya/ten-brai
+
+### ✅ t1452 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat independent verify-only verdict on the t1426 receipt-briefcheck.py CANDIDATE detector (own 22-fixture planted battery, live-dir re-run, t1417 controls, re-runnable proof package)
+
+**Receipt:** `twelve-lane-receipts/t1452-lane3.md`
+
+**Evidence:** VERIFIED on live bytes: detector SHA dfdb86047be7... matches the receipt pin byte-for-byte; fixture-builder SHA 4f6015a2c7f5a... matches; fixture dir holds 22 real files; my independent detector re-run reproduces the planted battery EXACTLY (exit 1, 12/22 flagged, 8 NO-Brief v1/v2/c1/c2/c3/x2/x3/x4 + 4 ORPHAN v3/v4/b2/b7, 10 clean as committed). Sc
+
+### ✅ t1450 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE slice (a): second semantic arm, H-ask-body (t1450)
+
+**Receipt:** `twelve-lane-receipts/t1450-lane10.md`
+
+**Evidence:** Verified: all 5 artifact SHAs match receipt byte-for-byte (arm e3862126..., pre-reg b02c7359..., results c96957d3..., runlogs 471d35f8.../cad4386a...); pre-reg mtime 1792785273 < run1 1792785288 < results 1792785290 (sealed before measurement); FALSIFIER-1 independently re-derived from raw JSON (rank_arm(P2 on B)=3 > 1 -> FIRED); FALSIFIER-2 re-der
+
+### ✅ t1449 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** SN-1885 single-lesson compounding pilot (4 arms, control vs treatment x 2 instruments), pre-reg sealed before measurement
+
+**Receipt:** `twelve-lane-receipts/t1449-lane2.md`
+
+**Evidence:** VERIFIED on live bytes: all 5 artifacts exist with sha256 matching the receipt pins byte-for-byte (prereg 1b6fb2c4..., i1c 71af09e8..., i1t a15b2d77..., i2c eb3baa63..., i2t a4f85c0a...); seal ordering proven by mtime (pre-reg 19:40Z precedes all run files 19:41Z+); all 4 first-line verdicts re-derived exactly as claimed (RETIRE / KEEP OPEN / CLOSE
 
 ### ✅ t1443 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
@@ -35666,6 +35690,18 @@ _Last updated: 2026-10-23 19:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261023-1223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 12:23 PDT — 30 unclaimed briefs evaluated, zero claimable by this seat; queue untouched
+
+**Evidence:** VERIFIED on live bytes: prior stall receipt mtime 18:17:17Z, this receipt mtime 19:24:09Z (~67 min — stall cap respected); claim-brief.py spot re-runs corroborate the refusal machinery (seat-bar refusal on brief-gap-lane-scorer-20261017-0900-lane7.md; parent-authorship exit-7 on brief-gap-t20261021-laneKNOW.md); no queue mutations by this seat (cla
+
+### ✅ seat-stall-20261023-1116 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 11:16 PDT — 30 unclaimed briefs evaluated, zero claimable by this seat; queue untouched
+
+**Evidence:** VERIFIED: 30 unclaimed brief-*.md in brief-queue/ (counted 30), zero brief-tNNNN-* mission briefs (grep 0 hits); prior stall receipt seat-stall-20261023-1014.md mtime 17:15:20Z, this receipt mtime 18:17:17Z (~62 min — outside the 60-min stall cap, cap respected); lane-feed tail still the 2026-10-23 08:55 PDT sign-out, nothing newer — both receipt c
 
 ### ✅ seat-stall-20261023-1014 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
