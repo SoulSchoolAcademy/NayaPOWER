@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-23 20:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-23 22:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 9 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,14 +50,25 @@
 
 ## Open PRs by Area
 
-### BUILD (2)
+### KNOW (1)
+- [#3017](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3017) safety(door-obligation): re-stamp SN-1854 registry content_hash to can
+
+### PROVE (1)
+- [#3012](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3012) Project Intelligence Door: scorecard and live bridge/schema findings 📝draft
+
+### BUILD (3)
+- [#3018](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3018) Security: harden legacy Smart Mail RLS 📝draft
 - [#3000](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000) Naya/mission state
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
 
 ### WIRE (1)
 - [#3001](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3001) guard(smart-notes): detect duplicate public SN IDs before publication 📝draft
 
-### PRODUCT (1)
+### INFRA (1)
+- [#3019](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3019) Narzan Trinity founding portrait — filed beside SN-0842 (citizens laye
+
+### PRODUCT (2)
+- [#3016](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3016) feat(hub): 14Q living board module — validator + renderer for question
 - [#2968](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968) Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A 
 
 ---
