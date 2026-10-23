@@ -80,3 +80,34 @@ Queue=CPI+#2953 priority order · answer-own-questions (rubrics/math/canon/live 
 - SN-0827 "main's gates red (4 classes)" — brain-index class CLOSED; Kernel Tests class OPEN-UNNAMED; do not carry the 4-class claim forward without fresh enumeration.
 - SN-0827 "~11 open PRs" — 0 at 2026-10-23 ~00:32Z (full enumeration). #2955/#2956/#2968/#2969/#2971 closed UNMERGED 00:12–00:17Z; substance NOT done; re-file per A2/A3.
 - SN-0827 full-report pointer `~/workspace/user/files/system-assessment-2026-10-23.md` — file absent at that path on this machine; this 3-tongue report in `BRAIN/90-OPERATIONS/` is the canonical full report.
+
+
+---
+
+## Project Intelligence Current-State Door — independent scorecard (2026-10-23)
+
+**Design/spec: 8.0/10. Demonstrated runtime effectiveness: 4.0/10. Overall readiness: 6.0/10, NOT ACCEPTED as a complete live current-state door.** This is a new evidence-based review score, not a previously measured project-wide score.
+
+### Critical fresh evidence
+Live Supabase project `dahisasgpfvziswqvmvm`:
+- `public.project_intel_items`: 126 rows, RLS enabled.
+- `public.projects`: 9 rows; `public.object_links`: 33 rows.
+- `public.ledger_entries`: 30 rows; `public.nayanet_smart_ledger`: 420 rows. Define their distinct semantics; don't merge by count.
+- `nayanet-project-intelligence-bridge` is ACTIVE v17, but source queries/inserts `public.nayanet_project_intelligence_bridge`, absent from live public table inventory. Its first idempotency lookup will fail for otherwise valid packets. The claim that v17 writes `project_intel_items` is not supported by live source.
+- RLS disabled on `public.work_items` and `public.hub_daily_intelligence_reports_backup_20261022`; the Supabase schema advisor flags both. No remediation was applied.
+
+### Corrective decisions
+1. Resolve bridge/schema mismatch after inspecting migrations and all writers; choose one authoritative persistence contract. Do not add a second registry to hide the mismatch.
+2. Keep `system_map` a generated projection from `projects`, `object_links`, function inventory, repository records, and verified probes.
+3. Publish one stable, versioned state door with main SHA, generation timestamp, freshness, epistemic state, links, owners, blockers, unknowns, next actions, evidence, and safe update contract.
+4. Per-seat view must enforce authorization server-side; `?seat=` is not authorization.
+5. Add columns/states permissively, then cut over reader/enforcement atomically or with tested compatibility.
+6. Acceptance requires cold open → source-bound view → authorized idempotent update → durable receipt → derived projections → different-seat retrieval/render → negative controls.
+
+### Simplest useful v1
+Three probe kinds: `http_substance`, `table_freshness`, `filed`. Default freshness target 15 minutes; queue escalation 24h and alarm 72h only when the scheduler is proven. Omit item-level `cost_units` until a real meter exists.
+
+### Priority
+P0: fix RLS with deliberate policies; reconcile missing bridge table versus v17 writer. P1: inventory every writer; define stable schema/URL; generate map from existing sources; atomic state migration; prove cold end-to-end round-trip. P2: freshness/aging automation, ledger semantic reconciliation, independent rescore.
+
+A true 10/10 requires current independent end-to-end proof, no critical unknown/security exposure, a single source of truth, and automatic detection of stale/conflicting state.

@@ -13,16 +13,16 @@
   ],
   "area_scores": {
     "cold_inheritance": "UNPROVEN",
-    "completion_landing": 6.0,
-    "design_canon": 8.0,
+    "completion_landing": 6,
+    "design_canon": 8,
     "efficiency": 1.5,
-    "law_governance": 8.0,
-    "learning_loop": 6.0,
+    "law_governance": 8,
+    "learning_loop": 6,
     "memory_smart_notes": 8.5,
-    "product_surface": 6.0,
-    "production": 3.0,
-    "proof_truth": 9.0,
-    "voice": 5.0
+    "product_surface": 6,
+    "production": 3,
+    "proof_truth": 9,
+    "voice": 5
   },
   "author_seat": "Naya Resolve Narzan (main seat)",
   "corrections_to_sn0827": [
@@ -250,5 +250,121 @@
     "question": "Would the most intelligent mind call this the most organized, intelligent system that could be created?",
     "score_source": "Nightly Intelligence Report 2026-10-22",
     "whole_system_score": 6.5
+  },
+  "project_intelligence_current_state_scorecard": {
+    "review_date": "2026-10-23",
+    "objective": "Any Naya/AI can read one canonical project-intelligence door, see current truth and all links/evidence, update it safely, and keep every seat aware of the same state.",
+    "scores": {
+      "design_specification": 8,
+      "demonstrated_runtime_effectiveness": 4,
+      "overall_readiness": 6,
+      "status": "NOT_ACCEPTED_AS_COMPLETE_LIVE_DOOR",
+      "scoring_note": "New reasoned score for this specific objective; not the historic whole-system Mirror Report score."
+    },
+    "live_evidence": {
+      "supabase_project_id": "dahisasgpfvziswqvmvm",
+      "project_intel_items_rows": 126,
+      "project_intel_items_rls_enabled": true,
+      "projects_rows": 9,
+      "object_links_rows": 33,
+      "ledger_entries_rows": 30,
+      "nayanet_smart_ledger_rows": 420,
+      "bridge_function": {
+        "slug": "nayanet-project-intelligence-bridge",
+        "status": "ACTIVE",
+        "version": 17,
+        "verify_jwt": false,
+        "auth_note": "Source performs explicit GitHub OIDC validation."
+      },
+      "bridge_schema_mismatch": {
+        "source_table": "public.nayanet_project_intelligence_bridge",
+        "table_present_in_live_public_inventory": false,
+        "consequence": "Bridge source's first idempotency lookup fails with missing relation for otherwise valid packets; persistence/retrieval/rendering are not proven.",
+        "correction": "Inspect migrations and every writer, then align the intended receipt-store schema and writer under governed change."
+      },
+      "rls_advisories": [
+        {
+          "table": "public.work_items",
+          "rls_enabled": false,
+          "rows": 0,
+          "severity": "CRITICAL_ADVISORY",
+          "action": "Review intended access and add deliberate policies; no change applied."
+        },
+        {
+          "table": "public.hub_daily_intelligence_reports_backup_20261022",
+          "rls_enabled": false,
+          "severity": "CRITICAL_ADVISORY",
+          "action": "Review grants, data sensitivity, retention; no change applied."
+        }
+      ]
+    },
+    "dimension_scores": [
+      {
+        "dimension": "canonical_purpose_and_reader_model",
+        "score": 9
+      },
+      {
+        "dimension": "discoverability_and_links",
+        "score": 8
+      },
+      {
+        "dimension": "freshness_and_staleness_honesty",
+        "score": 5
+      },
+      {
+        "dimension": "write_path_completeness",
+        "score": 3
+      },
+      {
+        "dimension": "schema_and_ledger_authority",
+        "score": 5
+      },
+      {
+        "dimension": "runtime_proof_and_observability",
+        "score": 4
+      },
+      {
+        "dimension": "safe_update_permissions",
+        "score": 4
+      },
+      {
+        "dimension": "machine_readability_and_versioning",
+        "score": 7
+      },
+      {
+        "dimension": "ownership_and_update_discipline",
+        "score": 7
+      },
+      {
+        "dimension": "end_to_end_acceptance",
+        "score": 3
+      }
+    ],
+    "fixes": [
+      "Resolve bridge/schema mismatch after writer and migration census; don't create a second state registry.",
+      "Generate system map as projection of projects, object_links, actual function inventory, repo artifacts, and probes.",
+      "Publish a stable versioned state door with main SHA, generated_at, freshness, epistemic states, links, owners, blockers, unknowns, next actions, evidence, and update contract.",
+      "Enforce per-seat access server-side; a query parameter is not authorization.",
+      "Stage new columns/states permissively and cut over reader/enforcement atomically or with tested compatibility.",
+      "Prove cold read → authorized update → idempotent durable receipt → regenerated projections → different-seat read/render → negative controls.",
+      "Keep v1 to three probe types: http_substance, table_freshness, filed.",
+      "Default state freshness target 15 minutes; queue aging 24h escalation / 72h alarm only after scheduler proof.",
+      "Omit cost_units until a real meter exists.",
+      "Define distinct ledger semantics and reconcile contracts; do not merge based on row counts alone."
+    ],
+    "acceptance_criteria": [
+      "Cold Naya reaches door in under 10 minutes without prior chat context.",
+      "Single canonical state, exact main SHA, schema version, generation time, freshness, owner, evidence.",
+      "Generated map discovers all relevant components and detects dead/unauthorized links.",
+      "Authorized update persists exactly once and appears in all projections within freshness budget.",
+      "Different seat independently verifies same state.",
+      "Stale, conflicting, malformed, unauthorized, duplicate writes fail closed with receipts.",
+      "No duplicate source of truth; exposed tables have intentional RLS/grants.",
+      "Drift/staleness is detected, assigned, fixed, and rechecked automatically.",
+      "Machine schema validates and backward compatibility is tested.",
+      "Independent scorer reproduces result from live evidence."
+    ],
+    "change_scope": "Assessment only; no schema or production mutation.",
+    "security_notice": "RLS is disabled on public.work_items and public.hub_daily_intelligence_reports_backup_20261022. Surface to owner; do not enable RLS without intended policies."
   }
 }
