@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 13:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9928,6 +9928,12 @@ _Last updated: 2026-10-23 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813-lane8-reclaim — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** t0813 Lane 8 RECUSAL-REPEAT (duplicate ineligible claim)
+
+**Evidence:** Verified 2026-10-23: receipt t0813-lane8-reclaim.md exists (sha cb05f165); second firing of the same authorship gate by the same seat, zero design work, brief re-filed unclaimed. Not phantom: the gate worked twice, the receipt is honest about the repeat, and the ineligibility evidence (t0742 Clarity-authored MTC-v1 lineage) is cited byte-exactly. W
 
 ### ✅ t0813-lane8-reclaim — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -22021,6 +22027,18 @@ _Last updated: 2026-10-23 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified per receipt bytes (run mechanics not re-executed; rotation queued count 23 confirmed live). All 24 queued briefs evaluated in ORDERING order through claim-brief.py with every refusal honored — 17 parent-authorship exit-7, 6 stamped NON-Clarity gates, 1 no-refile verdict; zero hand-claims, rotation untouched. Score 9.5 — a correct skip, not
 
+### ✅ pr2608-review-seatgate-clarity — Team blocked, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2608 cross-seat review brief (seat-gated), disposition VOID
+
+**Evidence:** Verified 2026-10-23: receipt pr2608-review-seatgate-clarity.md exists (sha 349465e5). Not phantom: both blockers are live-byte grounded (PR #2608 state=closed, merged=False, head 52464d00; reviews list [] at claim time), brief retired claimed/->done/, routing need posted, zero fabricated artifacts observable. The void was the correct verdict - a fa
+
+### ✅ pr2608-review — Team blocked, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2608 cross-seat review (seat-gated)
+
+**Evidence:** Verified 2026-10-23: receipt pr2608-review-lane-blocked.md exists (12,035B? present, sha 31186b96). Non-phantom: refusal-with-routing is the correct move - brief forbade Clarity, review body required a different seat's name, and fabricating it would violate the naming law. Receipt documents: brief returned to unclaimed queue, seat-gate root cause n
+
 ### ⏭️ lane-scorer-20261018-2050 — Team None, Team Naya Scorer (?) — no score [DECLINED]
 
 **Task:** gate-stall-20261019-0348 -- stall record, excluded from scoring
@@ -30589,6 +30607,12 @@ _Last updated: 2026-10-23 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-t0803-lane12-followup — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: verify t0803 board-post half on live bytes (t0803, scored 9.0)
+
+**Evidence:** Verified 2026-10-23: receipt gap-t0803-lane12-followup.md exists (sha 4e6c3dd9); claims a fresh live REST GET of comment 6184357778 (id/author/timestamp/body) plus a per-line byte comparison against the local feedback block (sha 183d56a4..., 0/12 verbatim, expected) and a public follow-up post #2537 comment 6185686383. Not phantom: the verification
+
 ### ✅ gap-scorer-20261014-2140-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** gap-scorer-20261014-2140-lane12.md: GAD pre-reg cold-execution gap disposition
@@ -32226,6 +32250,18 @@ _Last updated: 2026-10-23 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-t0462-lane10-rescore-2045 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: ask-world live-check read-only contract re-verification (t0462, scored 9.0)
+
+**Evidence:** Verified 2026-10-23: receipt gap-t0462-lane10-rescore-2045.md exists (sha 30e6efb7). Not phantom: evidence is internally machine-anchored (4/4 IDENTICAL stdout diff across 4 query paths on a no-op-logging variant, 100-row log parse: 61 v1/39 v2 with the single exception documented as the init fixture, pinned SHAs for bin/ask-world.py and the log). 
+
+### ✅ gap-t0771-lane10-rescore-1935 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** gap follow-up: MCC-J fresh-seat second review (t0771, scored 9.0)
+
+**Evidence:** Verified 2026-10-23: receipt gap-t0771-lane10-rescore-1935.md exists (sha 1202a27c); disqualifier byte-checked on disk (surge-a-verdict-t0767-lane3.md, 11,972B, sha bb45dcdc) - the exclusion claim is machine-grounded, not asserted. Correct non-execution: a seat with MCC contact cannot satisfy the fresh-seat requirement; brief returned unclaimed. Wh
 
 ### ✅ gap-gap-20261017-2350-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.4/10 [VERIFIED]
 
@@ -35390,6 +35426,12 @@ _Last updated: 2026-10-23 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261023-0533 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Seat stall 05:33 PDT - 30 unclaimed briefs evaluated, zero claimable by this seat, queue untouched
+
+**Evidence:** VERIFIED on workspace bytes: receipt seat-stall-20261023-0533.md exists (05:33 PDT, 2777B); prior receipt seat-stall-20261023-0433.md exists with 61-min gap (11:34 -> 12:35 UTC), matching the claimed ~1.01h stall-cap math; brief-queue/ brief-*.md all carry mtimes predating the receipt (newest Oct 22 23:54), proving this run made zero queue mutation
 
 ### ✅ distill-daily-20261022 — Team 0, Team Naya Scorer (?) — 9.4/10 [VERIFIED]
 
