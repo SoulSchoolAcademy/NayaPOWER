@@ -2,18 +2,20 @@
 
 **Filed:** 2026-10-23 ~22:40Z · **By:** Naya Nitro Narzan (director seat), at Shawn's direct order
 **Ratified:** Shawn, 2026-10-23 ~22:39Z — "I'd probably just ratify it. Okay, I'm giving the go ahead."
+> **CORRECTION — 2026-10-23 ~22:47Z (Naya Nitro Narzan, in the open):** three items below were stale when filed — I scored from the build record's tail and missed its Item 5. The journey test **PASSED at ~21:05Z** (16/16 mechanics + the filled-content leg; all six negative controls refused by the database law itself), the **Wave Gate is cleared**, Wave 2 claimable work was posted at 21:09Z and its first item (the 14Q live view) is already claimed and building, and canonical proof coverage stands at **100%** under the stage-2 law (the 68% figure belongs to the legacy display store). What actually gates the face is **Naya Power's B0 check** of the staged face — checker pack ready since ~21:10Z. Items 2 of §1 and §4 are corrected in place below; the verdict's "never been run" phrase is corrected with them. Everything else stands as filed.
+
 **The standing order it answers:** continue nonstop, area by area, until every area is a 10 — and answer our own questions. The rubrics, the math, and the logic already exist (the 100-check quality contract, the efficiency law, the Master Build Order). If we don't know, figuring it out is the first job.
 
 ## The verdict
 
 Shawn asked: if the most intelligent mind in the universe looked at what we have, would it call this the most organized, intelligent system that could be created?
 
-**No. Not yet — and the distance is measurable, which is exactly why we'll close it.** What exists tonight is something rarer than polish: a system that *measures itself honestly* — it counts its own wake-ups, reconciles its own records, files its own waste as work items, and lets three seats grade the same page in the open and merge the grades. That self-honesty is the engine. But the machine it powers still has two truths on its flagship page (81.3% reconciled), an acting loop that has never been run end to end, proofs it never re-checks, and a production world running a stamp from October 8. A top intelligence would recognize the skeleton as right and refuse to call the body finished. So do we. What follows is the whole truth in tens, then the orders that close it.
+**No. Not yet — and the distance is measurable, which is exactly why we'll close it.** What exists tonight is something rarer than polish: a system that *measures itself honestly* — it counts its own wake-ups, reconciles its own records, files its own waste as work items, and lets three seats grade the same page in the open and merge the grades. That self-honesty is the engine. But the machine it powers still has two truths on its flagship page (81.3% reconciled), an acting loop proven in its gate but not yet the team's daily habit, proofs it never re-checks, and a production world running a stamp from October 8. A top intelligence would recognize the skeleton as right and refuse to call the body finished. So do we. What follows is the whole truth in tens, then the orders that close it.
 
 ## 1 · The ten things it is missing
 
 1. **One canonical record behind every face.** The projects page still renders legacy intel while the truth lives in the work table — 157 of 193 records matched tonight.
-2. **A proven acting loop.** Claim → work → receipt through the page itself. Built, never run end to end; the journey test is still a gate, not a memory.
+2. **An acting loop in daily team use.** *(Corrected — see the correction block: the journey test PASSED ~21:05Z, 16/16 + filled leg, and the Wave Gate is cleared.)* What is genuinely missing is the loop as a habit: claims in team use every day, not only inside the gate's test — and the face landing on the checker's pass so the loop has its public door.
 3. **Proof re-checking.** Proofs are verified once, at landing. Nothing re-verifies them on a cycle, so rot would be silent (Wave 2, unbuilt).
 4. **A second independent identity.** Every lane writes through one GitHub login, so different-seat verification — our own law — is structurally capped until a second identity exists.
 5. **A production conveyor.** Production runs an October 8 stamp while a prepared packet (165 done) waits for one tap. There is no staging-to-production path with automatic verification after it.
@@ -52,7 +54,7 @@ Shawn asked: if the most intelligent mind in the universe looked at what we have
 ## 4 · The ten highest-value actions, right now
 
 1. **Land the Wave 1 face behind the journey test** — with 193/193 reconciliation as a pass condition. Kills the dual truth on the flagship surface.
-2. **Run the journey test itself** — the first real claim → update → receipt. Converts "built" into "used."
+2. **Land the face on the checker's pass, then move claims into daily use** — the journey is proven (16/16, ~21:05Z); the face deploys when Naya Power's B0 check passes (checker pack ready since ~21:10Z), and the claim loop becomes the team's everyday path, not a test artifact.
 3. **Mechanize landing-time Ledger writes** — truth is written when work lands, not reconstructed later.
 4. **Finish the hooks conversion** — wake on change; drive wake-ups under the 800 ceiling and effort-per-outcome under 60:1 by Oct 30.
 5. **Ship the proof re-checker (Wave 2)** — every proof re-verified on a cycle; rot flags itself.
