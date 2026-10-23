@@ -436,3 +436,18 @@ The full timed ACTIVATION-10, independent cold run of all 14 questions, live ide
 **NONSTOP LOOP:** OBSERVE → RANK → GATE → ACT → VERIFY INDEPENDENTLY → SCORE EACH DIMENSION → RECORD → LEARN → RE-RANK → REPEAT. Move area by area to 10/10. A 10 requires current, complete, independent evidence and no material critical unknown. Do not stop at a local peak; pass the baton, not the burden.
 
 **SIGN-OUT:** who / what actually done / why it matters / exact proof / per-dimension score / unknowns and protected gates / Smart Note + declared behavior change / next highest-value action. Report finished outcomes only.
+
+
+## Additional live-source finding — release-path conflict discovered after initial review
+
+Inspection of #2990's exact head `edb9946e68aed087bdf5338576f842f0b02f78ac` shows its only changed file is `tests/test_hub_single_source.py`. The added test requires `.github/workflows/deploy-hub-cloudflare.yml` to remain a main-branch publishing workflow, retain the `HUB/app/**` trigger, and deploy `HUB/app` via `HUB/wrangler.toml`.
+
+That conflicts with #2968's stated incident and proposed cure: `deploy-hub-cloudflare.yml` is the stale-snapshot publisher implicated in repeated overwrites, and #2968 removes its `HUB/app/**` trigger while retiring the stale copy. Meanwhile `hub-deploy.yml` and `tools/hub_deploy.py` say the alternate transport is `NOT_CONFIGURED` unless `HUB_DEPLOY_CMD` is set. This is a real authority/source conflict, not a test-style nit.
+
+**New gate:** do not qualify or merge #2990 or #2968 in isolation. The team must identify the one actual canonical publisher from live/deployment evidence, reconcile the two PRs, then test that canonical path and prove the stale path is rejected. I posted evidence-bearing coordination comments to [#2990](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990) and [#2968](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968). The correct current state is **BLOCKED pending release-path reconciliation**, not PASS.
+
+### Revised first actions
+
+1. Reconcile the release authority across #2990, #2968, `hub-deploy.yml`, `tools/hub_deploy.py`, and the actual lane publisher. Prove which path currently serves production; do not infer from comments or config alone.
+2. Change the guard test to assert the canonical path and a negative control against the stale publisher; ensure it remains compatible with the approved retirement.
+3. Only after steps 1–2, run independent exact-head qualification of the guard and obtain the protected #2968 decision.
