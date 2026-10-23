@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 14:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 15:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2390,6 +2390,38 @@ _Last updated: 2026-10-23 14:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1422-lane4.md`
 
 **Evidence:** Dispatcher verified via git protocol + disk: main == e85c6e44222c6f307110eeb06c0b4f48a2d4de02 == receipt tip == shared-state tip at action time (tip has since moved to aa8061c1d311, noted in briefs). seal.json EXISTS on disk; its receipt-pinned sha256 59df9fb0... is reproducible as the canonical key-sorted hash of the object (verified: sha256 of so
+
+### ✅ t1422 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** t1305 GO/NO-GO predicate re-fire against live query log
+
+**Receipt:** `twelve-lane-receipts/t1422-lane11.md`
+
+**Evidence:** VERIFIED: refire-t1422.py sha256 2c00032b (match) re-run by scorer at 14:54Z reproduces byte-identically: 198 rows, emergent 0, verdict WAIT — predicate output, not the lane's. sb-demand-refire-t1422.md sha256 7a677c36 (match) at smartblocks/. Live log sha256 c902815f (match). Stale brief pin flagged openly; class-#17 deviation owned honestly. Clea
+
+### ✅ t1421 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** first automatic principle-violation detector (stall-cap-check.py), planted-violation proof
+
+**Receipt:** `twelve-lane-receipts/t1421-lane4.md`
+
+**Evidence:** VERIFIED: stall-cap-check.py sha256 e6d7653f (match); fixtures dir present (7 files); test log EXISTS with all 3 runs (planted catch incl. exact CAP-VIOLATION line, live-dir run ~100 findings, 60-min boundary pair). Gap found by scorer: the receipt's testlog sha256 pin d9bfe95a(9ff...) does NOT match the file d9bfe95a(1d7f...) — pin stale (content 
+
+### ✅ t1420 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.4/10 [VERIFIED]
+
+**Task:** SURGE slice (b): retrieval-auth gate migration-prep doc, fresh-clone re-derived pins
+
+**Receipt:** `twelve-lane-receipts/t1420-lane2.md`
+
+**Evidence:** VERIFIED: retrieval-auth-gate-migration-prep-t1420.md sha256 6b010d57 (match); doc carries exact wiring action, fail-closed discipline, gate; two genuine premise drifts found (stale spec §4.1 line pin; CLI-driven drill needs caller flag). No wiring/PR/merge — correctly read-only. Score 9.4. Kept from 9.5: the 25/25 suite pass and the two blob pins 
+
+### ✅ t1418 — Team 3, Team Naya Scorer (Decision Engine) — 9.3/10 [VERIFIED]
+
+**Task:** SURGE slice (a): semantic-entailment arm H-done-entailment, RED-first, pre-registered
+
+**Receipt:** `twelve-lane-receipts/t1418-lane3.md`
+
+**Evidence:** VERIFIED: arm_semantic_t1418.py sha256 fb82ca54 (match), predictions-t1418.json dc43d5d6 (match), results-t1418-semantic.json 4d6ccbe6 (match), stemmed-tfidf control 72cccb29 (match); pre-reg mtime-order claimed consistent. Honest HOLDS-OPEN verdict, first semantic arm to clear the t0532 battery, frontier survey avoided a duplicate run. Score 9.3. 
 
 ### ✅ t1412 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
