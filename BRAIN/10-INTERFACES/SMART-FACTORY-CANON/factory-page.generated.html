@@ -4936,6 +4936,350 @@ document.querySelectorAll('[data-model="NAYA-BRD-038"] .slot').forEach(slot => {
   });
 });
 </script>
+<style data-generated="contract-door-css">
+#contract-door{max-width:1060px;margin:26px auto 34px;padding:20px 22px;background:#0a0a0e;border:2px solid #ffffff;border-radius:16px;color:#ffffff;font-size:16px}
+#contract-door .cd-intro{opacity:.85;line-height:1.5;margin:10px 0 14px}
+#contract-door .cd-lab{display:block;margin:12px 0 6px;font-weight:700}
+#contract-door .cd-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#contract-door .cd-field{flex:1;min-width:240px;background:#020203;color:#ffffff;border:2px solid #ffffff;border-radius:10px;padding:10px 12px;font-size:16px}
+#contract-door textarea.cd-field{width:100%;box-sizing:border-box;flex:none}
+#contract-door .cd-field:hover{border-color:#a06bff}
+#contract-door .cd-field:focus{border-color:#a06bff;box-shadow:0 0 10px #a06bff;outline:none}
+#contract-door .cd-btn{background:#0a0a0e;color:#ffffff;border:2px solid #ffffff;border-radius:999px;padding:10px 18px;font-size:16px;cursor:pointer}
+#contract-door .cd-btn:hover{border-color:#a06bff;box-shadow:0 0 12px #a06bff}
+#contract-door .cd-btn:focus{border-color:#a06bff;box-shadow:0 0 12px #a06bff;outline:none}
+#contract-door .cd-msg{opacity:.85}
+#contract-door .cd-check{border:1.5px solid #ffffff;border-radius:12px;padding:10px 14px;margin-top:10px}
+#contract-door .cd-check.cd-fail{border-color:#ff5e6c}
+#contract-door .cd-check.cd-pass{border-color:#2fe89e}
+#contract-door .cd-off{opacity:.85;margin:4px 0 0}
+#contract-door .cd-limits{opacity:.7;line-height:1.5;margin-top:16px}
+</style>
+<section id="contract-door" data-generated="contract-door">
+  <div class="railhead"><span class="sec-dot"></span><span class="pmodel">Check against the contract</span><span style="font-size:12px;opacity:.5">the gate, on the page</span></div>
+  <p class="cd-intro">Paste or fetch any page and the mechanical items of the §10 Same-Language Check answer here, on the same rule data the build gate reads from the machine twin. Verdicts name the offenders; nothing here is a rubber stamp.</p>
+  <label class="cd-lab" for="cd-url">Page URL</label>
+  <div class="cd-row"><input class="cd-field" id="cd-url" type="url" placeholder="https://your-page.example/"><button class="cd-btn" id="cd-fetch" type="button">Fetch &amp; check</button></div>
+  <label class="cd-lab" for="cd-src">…or paste the page source</label>
+  <textarea class="cd-field" id="cd-src" rows="7" placeholder="&lt;!doctype html&gt; …"></textarea>
+  <div class="cd-row"><button class="cd-btn" id="cd-run" type="button">Check pasted source</button><span class="cd-msg" id="cd-msg" role="status"></span></div>
+  <div id="cd-results" aria-live="polite"></div>
+  <p class="cd-limits">This door runs the checks that are mechanical — decidable from page bytes (inline and &lt;style&gt; CSS; external stylesheets are not in the bytes). The rest of §10 needs eyes on the rendered page and is named, not skipped: <span id="cd-cannot"></span>. A fetch can also be blocked by the other site’s CORS policy — paste the source instead; the same checks run on pasted bytes.</p>
+</section>
+<script type="application/json" id="naya-contract-params">{
+ "board_context_attr": "data-board",
+ "board_context_classes": [
+  "sn-board",
+  "smartnote-board"
+ ],
+ "board_context_value": "smartnote",
+ "board_mapping_only_hexes": [
+  "#6675ff",
+  "#3ca8ff",
+  "#b8ee57"
+ ],
+ "chip_class_marker": "chip",
+ "contract_version": "1.2",
+ "interactive_class_fragments": [
+  "btn",
+  "tab",
+  "chip",
+  "toggle",
+  "pill"
+ ],
+ "interactive_tags": [
+  "a",
+  "button",
+  "input",
+  "select",
+  "textarea"
+ ],
+ "member_carriers": [
+  "--sc",
+  "--tc",
+  "--tone"
+ ],
+ "not_mechanically_checkable": [
+  {
+   "item": 1,
+   "name": "Field"
+  },
+  {
+   "item": 2,
+   "name": "Full width"
+  },
+  {
+   "item": 3,
+   "name": "Shapes"
+  },
+  {
+   "item": 4,
+   "name": "No voids"
+  },
+  {
+   "item": 5,
+   "name": "Twin pluses"
+  },
+  {
+   "item": 6,
+   "name": "Smart Tabs"
+  },
+  {
+   "item": 7,
+   "name": "Drift"
+  },
+  {
+   "item": 9,
+   "name": "Color jobs unmixed"
+  },
+  {
+   "item": 12,
+   "name": "Jewel tones"
+  },
+  {
+   "item": 13,
+   "name": "Elevation"
+  },
+  {
+   "item": 14,
+   "name": "Wells vs buttons"
+  },
+  {
+   "item": 15,
+   "name": "One button DNA"
+  },
+  {
+   "item": 16,
+   "name": "Icons are jewels"
+  },
+  {
+   "item": 18,
+   "name": "Orbs carry people + numbers"
+  },
+  {
+   "item": 19,
+   "name": "Living data"
+  },
+  {
+   "item": 20,
+   "name": "Timestamps alive"
+  },
+  {
+   "item": 21,
+   "name": "Motion has an off switch"
+  },
+  {
+   "item": 22,
+   "name": "No dead buttons (functional half)"
+  },
+  {
+   "item": 23,
+   "name": "Nothing recreated"
+  },
+  {
+   "item": 24,
+   "name": "Edit-only respected"
+  }
+ ],
+ "rest_exceptions": [
+  "life-with-naya",
+  "lwn"
+ ],
+ "sequence_carriers": [
+  "--sec",
+  "--ac",
+  "--igc",
+  "--rc"
+ ],
+ "source": "NAYA-DESIGN-CONTRACT.machine.json",
+ "type_floor_px": 16,
+ "walk": {
+  "names": [
+   "purple",
+   "blue",
+   "green",
+   "gold",
+   "orange",
+   "red",
+   "magenta"
+  ],
+  "order": [
+   "#a06bff",
+   "#3fb8ff",
+   "#2fe89e",
+   "#ffbf3d",
+   "#ff9a5a",
+   "#ff5e6c",
+   "#e84fff"
+  ],
+  "wraps": true
+ }
+}</script>
+<script data-generated="contract-door-js">
+(function () {
+"use strict";
+var P = JSON.parse(document.getElementById("naya-contract-params").textContent);
+var WALK = P.walk.order, WSET = {}, WIDX = {};
+WALK.forEach(function (h, i) { WSET[h] = 1; WIDX[h] = i; });
+var HEXRE = /#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/g;
+function normHex(t) { t = t.toLowerCase(); if (t.length === 4) { t = "#" + t[1] + t[1] + t[2] + t[2] + t[3] + t[3]; } return t; }
+function hexesIn(v) { var out = [], m; HEXRE.lastIndex = 0; v = v || ""; while ((m = HEXRE.exec(v))) { out.push(normHex(m[0])); } return out; }
+function parseDecls(body) { var d = {}, parts = String(body || "").split(";"), i, ix, prop; for (i = 0; i < parts.length; i++) { ix = parts[i].indexOf(":"); if (ix < 0) { continue; } prop = parts[i].slice(0, ix).trim().toLowerCase(); if (prop) { d[prop] = parts[i].slice(ix + 1).trim(); } } return d; }
+function splitGroups(sel) { var groups = [], start = 0, depth = 0, quote = null, i, ch; for (i = 0; i < sel.length; i++) { ch = sel[i]; if (quote) { if (ch === quote) { quote = null; } continue; } if (ch === "'" || ch === '"') { quote = ch; } else if (ch === "[") { depth++; } else if (ch === "]") { depth--; } else if (ch === "," && depth === 0) { groups.push(sel.slice(start, i).trim()); start = i + 1; } } groups.push(sel.slice(start).trim()); return groups.filter(function (g) { return g; }); }
+function splitParts(group) { var parts = [], start = 0, depth = 0, quote = null, i, ch; for (i = 0; i < group.length; i++) { ch = group[i]; if (quote) { if (ch === quote) { quote = null; } continue; } if (ch === "'" || ch === '"') { quote = ch; } else if (ch === "[") { depth++; } else if (ch === "]") { depth--; } else if (/\s/.test(ch) && depth === 0) { if (start < i) { parts.push(group.slice(start, i)); } start = i + 1; } } if (start < group.length) { parts.push(group.slice(start)); } return parts.filter(function (p) { return p; }); }
+function cssTopBlocks(css) { var blocks = [], i = 0, n = css.length, start, j, k, q, depth;
+  function skipWs(x) { while (x < n) { if (/\s/.test(css[x])) { x++; } else if (css.substr(x, 2) === "/*") { j = css.indexOf("*/", x + 2); x = j < 0 ? n : j + 2; } else { break; } } return x; }
+  while (true) { i = skipWs(i); if (i >= n) { break; } start = i;
+    while (i < n && css[i] !== "{" && css[i] !== ";") { if (css.substr(i, 2) === "/*") { j = css.indexOf("*/", i + 2); i = j < 0 ? n : j + 2; } else if (css[i] === '"' || css[i] === "'") { q = css[i]; i++; while (i < n && css[i] !== q) { i += css[i] === "\\" ? 2 : 1; } i++; } else { i++; } }
+    if (i >= n) { break; } if (css[i] === ";") { i++; continue; }
+    var selector = css.slice(start, i).trim(); depth = 0; j = i;
+    while (j < n) { if (css.substr(j, 2) === "/*") { k = css.indexOf("*/", j + 2); j = k < 0 ? n : k + 2; continue; } if (css[j] === '"' || css[j] === "'") { q = css[j]; j++; while (j < n && css[j] !== q) { j += css[j] === "\\" ? 2 : 1; } j++; continue; } if (css[j] === "{") { depth++; } else if (css[j] === "}") { depth--; if (depth === 0) { break; } } j++; }
+    blocks.push([selector, css.slice(start, j + 1)]); i = j + 1; }
+  return blocks; }
+function parseCssRules(cssText) { var rules = [];
+  function walk(css, media) { cssTopBlocks(css).forEach(function (b) { var sel = b[0], text = b[1], low = sel.toLowerCase();
+    if (low.indexOf("@media") === 0 || low.indexOf("@supports") === 0) { walk(text.slice(text.indexOf("{") + 1, text.lastIndexOf("}")), true); return; }
+    if (low.charAt(0) === "@") { return; }
+    var decls = parseDecls(text.slice(text.indexOf("{") + 1, text.lastIndexOf("}")));
+    splitGroups(sel).forEach(function (g) { rules.push({ selector: g, decls: decls, media: media }); }); }); }
+  walk(cssText || "", false); return rules; }
+var STATE_RE = /:(hover|focus-visible|focus-within|focus|active)(?![\w-])/;
+var STRIP_RE = /::[A-Za-z-]+(\([^()]*\))?|:(hover|focus-visible|focus-within|focus|active)(?![\w-])/g;
+function baseSelector(sel) { var b = sel.replace(STRIP_RE, "").replace(/\s+/g, " ").trim(); return b || "*"; }
+function hasState(sel) { return STATE_RE.test(sel); }
+function parseSimple(text) { var s = { tag: null, id: null, classes: [], attrs: [] }, m = /^(?:\*|[A-Za-z][A-Za-z0-9_-]*)/.exec(text), pos = 0, tok, t;
+  if (m) { var v = m[0].toLowerCase(); s.tag = v === "*" ? null : v; pos = m[0].length; }
+  tok = /#([A-Za-z0-9_-]+)|\.([A-Za-z0-9_-]+)|\[([A-Za-z0-9_-]+)(?:\s*(\*=|~=|=)\s*(?:'([^']*)'|"([^"]*)"|([^\]]+)))?\]/g; tok.lastIndex = pos;
+  while ((t = tok.exec(text))) { if (t.index !== pos) { throw new Error("bad selector " + text); } pos = tok.lastIndex;
+    if (t[1]) { s.id = t[1]; } else if (t[2]) { s.classes.push(t[2]); } else { var val = t[5] !== undefined ? t[5] : (t[6] !== undefined ? t[6] : (t[7] !== undefined ? t[7].trim() : null)); s.attrs.push([t[3].toLowerCase(), t[4] || null, val]); } }
+  if (pos !== text.length) { throw new Error("bad selector " + text); } return s; }
+function matchesSimple(el, s) { if (!el || el.nodeType !== 1) { return false; }
+  if (s.tag && el.tagName.toLowerCase() !== s.tag) { return false; }
+  if (s.id && el.getAttribute("id") !== s.id) { return false; }
+  var cls = (el.getAttribute("class") || "").split(/\s+/), i, a, act;
+  for (i = 0; i < s.classes.length; i++) { if (cls.indexOf(s.classes[i]) < 0) { return false; } }
+  for (i = 0; i < s.attrs.length; i++) { a = s.attrs[i]; if (!el.hasAttribute(a[0])) { return false; } if (a[1]) { act = el.getAttribute(a[0]) || ""; if (a[1] === "=" && act !== a[2]) { return false; } if (a[1] === "*=" && act.indexOf(a[2]) < 0) { return false; } if (a[1] === "~=" && act.split(/\s+/).indexOf(a[2]) < 0) { return false; } } }
+  return true; }
+function selectAll(doc, selector) { var out = [], seen = new Set();
+  splitGroups(selector).forEach(function (group) { var parts = splitParts(group); if (!parts.length) { return; }
+    var current = [doc];
+    parts.forEach(function (part) { var simple; try { simple = parseSimple(part); } catch (e) { current = []; return; }
+      var next = []; current.forEach(function (base) { var desc = base.querySelectorAll("*"), i; for (i = 0; i < desc.length; i++) { if (matchesSimple(desc[i], simple)) { next.push(desc[i]); } } }); current = next; });
+    current.forEach(function (n) { if (!seen.has(n)) { seen.add(n); out.push(n); } }); });
+  return out; }
+function evidence(el) { var label = el.tagName.toLowerCase(), id = el.getAttribute("id"), cls = (el.getAttribute("class") || "").split(/\s+/).filter(Boolean), text;
+  if (id) { label += "#" + id; } if (cls.length) { label += "." + cls.slice(0, 3).join("."); }
+  text = (el.textContent || "").replace(/\s+/g, " ").trim(); if (text) { label += " text='" + text.slice(0, 90) + "'"; } return label; }
+function makeCtx(doc, rules) { var rootVars = {}, matchCache = {};
+  rules.forEach(function (r) { if (r.selector.trim() === ":root") { for (var k in r.decls) { if (k.indexOf("--") === 0) { rootVars[k] = r.decls[k]; } } } });
+  function resolve(value) { var v = String(value), i, m, repl; for (i = 0; i < 3; i++) { m = /var\(\s*(--[\w-]+)\s*(?:,\s*([^)]*))?\)/.exec(v); if (!m) { break; } repl = rootVars[m[1]] !== undefined ? rootVars[m[1]] : (m[2] || ""); v = v.slice(0, m.index) + repl + v.slice(m.index + m[0].length); } return v; }
+  function matched(base) { if (!(base in matchCache)) { var s = new Set(); try { selectAll(doc, base).forEach(function (n) { s.add(n); }); } catch (e) {} matchCache[base] = s; } return matchCache[base]; }
+  function inlineDecls(el) { return parseDecls(el.getAttribute("style") || ""); }
+  function carrierValue(el, carriers) { var inline = inlineDecls(el), i, c, hx, r, decls, has;
+    for (i = 0; i < carriers.length; i++) { c = carriers[i]; if (c in inline) { hx = hexesIn(resolve(inline[c])); if (hx.length) { return [c, hx[0]]; } } }
+    for (r = 0; r < rules.length; r++) { decls = rules[r].decls; has = false; for (i = 0; i < carriers.length; i++) { if (carriers[i] in decls) { has = true; } } if (!has) { continue; } if (!matched(baseSelector(rules[r].selector)).has(el)) { continue; }
+      for (i = 0; i < carriers.length; i++) { c = carriers[i]; if (c in decls) { hx = hexesIn(resolve(decls[c])); if (hx.length) { return [c, hx[0]]; } } } }
+    return [null, null]; }
+  function inBoard(el) { var cur = el; while (cur && cur.nodeType === 1) { if (cur.getAttribute(P.board_context_attr) === P.board_context_value) { return true; } var cls = (cur.getAttribute("class") || "").split(/\s+/); for (var i = 0; i < P.board_context_classes.length; i++) { if (cls.indexOf(P.board_context_classes[i]) >= 0) { return true; } } cur = cur.parentElement; } return false; }
+  return { resolve: resolve, matched: matched, inlineDecls: inlineDecls, carrierValue: carrierValue, inBoard: inBoard, rules: rules }; }
+function result(id, item, name, offenders, observed) { return { id: id, section10_item: item, name: name, status: offenders.length ? "FAIL" : "PASS", offenders: offenders, observed: observed }; }
+function allParents(doc) { var list = [doc], els = doc.querySelectorAll("*"), i; for (i = 0; i < els.length; i++) { list.push(els[i]); } return list; }
+function childrenOf(node) { return Array.prototype.slice.call(node.children || []); }
+function checkWalk(ctx, doc) { var offenders = [], groups = 0, boardOnly = {}, marker = P.chip_class_marker;
+  P.board_mapping_only_hexes.forEach(function (h) { boardOnly[h] = 1; });
+  function stepOk(a, b) { var ia = WIDX[a], ib = WIDX[b]; if (P.walk.wraps) { return ((ib - ia) % WALK.length + WALK.length) % WALK.length === 1; } return ib === ia + 1; }
+  function expectedNext(a) { var i = WIDX[a], j = P.walk.wraps ? (i + 1) % WALK.length : i + 1; return j < WALK.length ? WALK[j] : "(end of walk)"; }
+  allParents(doc).forEach(function (parent) { if (parent.nodeType === 1 && ["script", "style", "title"].indexOf(parent.tagName.toLowerCase()) >= 0) { return; }
+    var kids = childrenOf(parent); if (kids.length < 2) { return; }
+    [[P.sequence_carriers, true], [P.member_carriers, false]].forEach(function (pair) { var carriers = pair[0], strict = pair[1], seq = [];
+      kids.forEach(function (kid) { var cls = (kid.getAttribute("class") || "").split(/\s+/), isChip = false, i; for (i = 0; i < cls.length; i++) { if (cls[i].indexOf(marker) >= 0) { isChip = true; } } if (isChip) { return; }
+        var cv = ctx.carrierValue(kid, carriers); if (!cv[0]) { return; } if (boardOnly[cv[1]] && ctx.inBoard(kid)) { return; } seq.push([kid, cv[0], cv[1]]); });
+      if (seq.length < 2) { return; } groups++;
+      var label = strict ? "section" : "member";
+      seq.forEach(function (e) { if (!WSET[e[2]]) { offenders.push(evidence(e[0]) + ": " + label + " carrier " + e[1] + " = " + e[2] + " is not a spectrum-walk color (non-walk hues live only in SmartNote board sections)"); } });
+      var runs = []; seq.forEach(function (e) { if (!WSET[e[2]]) { return; } if (strict && runs.length && runs[runs.length - 1][1] === e[2]) { offenders.push(evidence(e[0]) + ": section color " + e[2] + " repeats the previous section -- the walk never wears the same color twice in a row"); } if (!runs.length || runs[runs.length - 1][1] !== e[2]) { runs.push([e[0], e[2]]); } });
+      for (var i = 0; i + 1 < runs.length; i++) { if (!stepOk(runs[i][1], runs[i + 1][1])) { offenders.push(evidence(runs[i + 1][0]) + ": walk breaks " + runs[i][1] + " -> " + runs[i + 1][1] + "; the next color after " + runs[i][1] + " is " + expectedNext(runs[i][1])); } } }); });
+  return result("DL-WALK", 8, "Spectrum walk sequence", offenders, { groups_checked: groups }); }
+var RIM_PROPS = ["border", "border-color", "border-top", "border-right", "border-bottom", "border-left", "border-top-color", "border-right-color", "border-bottom-color", "border-left-color", "box-shadow", "outline", "outline-color"];
+var IGNITION_PROPS = RIM_PROPS.concat(["color", "background", "background-color", "transform", "filter"]);
+function isNeutralLight(h) { var r = parseInt(h.slice(1, 3), 16), g = parseInt(h.slice(3, 5), 16), b = parseInt(h.slice(5, 7), 16); return Math.max(r, g, b) - Math.min(r, g, b) <= 24 && Math.min(r, g, b) >= 192; }
+function interactiveish(ctx, base, ignitionBases) { if (ignitionBases.has(base)) { return true; } var parts = splitParts(base); if (!parts.length) { return false; } var simple; try { simple = parseSimple(parts[parts.length - 1]); } catch (e) { return false; }
+  if (simple.tag && P.interactive_tags.indexOf(simple.tag) >= 0) { return true; }
+  return simple.classes.some(function (cls) { return P.interactive_class_fragments.some(function (f) { return cls.indexOf(f) >= 0; }); }); }
+function checkRest(ctx) { var offenders = [], ignitionBases = new Set(), examined = 0;
+  ctx.rules.forEach(function (r) { if (hasState(r.selector)) { ignitionBases.add(baseSelector(r.selector)); } });
+  ctx.rules.forEach(function (r) { if (hasState(r.selector)) { return; } var base = baseSelector(r.selector);
+    if (P.rest_exceptions.some(function (x) { return base.indexOf(x) >= 0; })) { return; }
+    if (!interactiveish(ctx, base, ignitionBases)) { return; }
+    var rim = {}; RIM_PROPS.forEach(function (k) { if (k in r.decls) { rim[k] = r.decls[k]; } });
+    if (!Object.keys(rim).length) { return; } examined++;
+    Object.keys(rim).forEach(function (prop) { hexesIn(ctx.resolve(rim[prop])).forEach(function (h) {
+      if (WSET[h]) { offenders.push(r.selector + ": " + prop + " wears spectrum color " + h + " at rest -- elements sit white at rest and ignite on hover/focus"); }
+      else if (prop !== "box-shadow" && !isNeutralLight(h)) { offenders.push(r.selector + ": " + prop + " rest rim is " + h + ", not white light (idle state = white border/glow)"); } }); }); });
+  return result("DL-REST", 10, "Rest-state rims (white at rest)", offenders, { rest_rules_examined: examined }); }
+function fontSizePx(value) { var m = /(\d+(?:\.\d+)?)(px|rem|em|pt|%)/.exec(value); if (!m) { return [null, null]; } var num = parseFloat(m[1]), unit = m[2];
+  if (unit === "px") { return [num, null]; } if (unit === "rem") { return [num * 16, null]; } if (unit === "pt") { return [num * 4 / 3, null]; } return [null, unit]; }
+function checkType(ctx, doc) { var floor = P.type_floor_px, offenders = [], skipped = [];
+  function judge(where, value) { var r = fontSizePx(value); if (r[0] !== null) { if (r[0] < floor) { offenders.push(where + ": font-size " + value.trim() + " = " + r[0] + "px is below the twin's type floor (" + floor + "px)"); } } else if (r[1]) { skipped.push(where + ": " + value.trim() + " (relative unit)"); } }
+  ctx.rules.forEach(function (r) { ["font-size", "font"].forEach(function (prop) { if (prop in r.decls) { judge(r.selector, r.decls[prop]); } }); });
+  var els = doc.querySelectorAll("*"), i; for (i = 0; i < els.length; i++) { var inline = ctx.inlineDecls(els[i]); ["font-size", "font"].forEach(function (prop) { if (prop in inline) { judge("inline " + evidence(els[i]), inline[prop]); } }); }
+  return result("DL-TYPE", 17, "Type floor", offenders, { floor_px: floor, relative_units_not_determinable: skipped.slice(0, 10), relative_units_count: skipped.length }); }
+function checkDead(ctx, doc) { var offenders = [], ignition = [];
+  ctx.rules.forEach(function (r) { if (hasState(r.selector) && IGNITION_PROPS.some(function (k) { return k in r.decls; })) { ignition.push(baseSelector(r.selector)); } });
+  var tags = {}, sigs = {}; P.interactive_tags.forEach(function (t) { tags[t] = 1; });
+  var els = doc.querySelectorAll("*"), i;
+  for (i = 0; i < els.length; i++) { var el = els[i], tag = el.tagName.toLowerCase();
+    if (tag === "script" || tag === "style") { continue; }
+    var interactive = ((tags[tag] && tag !== "a") || (tag === "a" && el.hasAttribute("href")) || el.getAttribute("role") === "button" || el.hasAttribute("onclick"));
+    if (!interactive) { continue; }
+    if (tag === "input" && el.getAttribute("type") === "hidden") { continue; }
+    if (el.hasAttribute("disabled")) { continue; }
+    var classes = (el.getAttribute("class") || "").split(/\s+/).filter(Boolean).sort(), sig = tag + (classes.length ? "." + classes.join(".") : "");
+    if (!sigs[sig]) { sigs[sig] = { count: 0, nodes: [], evidence: evidence(el) }; }
+    sigs[sig].count++; sigs[sig].nodes.push(el); }
+  var dead = 0;
+  Object.keys(sigs).sort().forEach(function (sig) { var entry = sigs[sig], alive = false;
+    ignition.forEach(function (base) { var m = ctx.matched(base); if (entry.nodes.some(function (n) { return m.has(n); })) { alive = true; } });
+    if (!alive && entry.nodes.some(function (n) { return n.hasAttribute("onmouseover") || n.hasAttribute("onfocus"); })) { alive = true; }
+    if (!alive) { dead++; offenders.push(sig + " x" + entry.count + " (e.g. " + entry.evidence + "): no :hover/:focus ignition rule sets border, glow, color, background, outline, transform or filter -- the element cannot light up"); } });
+  return result("DL-DEAD", 22, "Dead boards (no ignition)", offenders, { interactive_signatures: Object.keys(sigs).length, dead_signatures: dead }); }
+function checkChips(ctx, doc) { var offenders = [], groups = 0, marker = P.chip_class_marker, carriers = P.sequence_carriers.concat(P.member_carriers);
+  allParents(doc).forEach(function (parent) { var chips = childrenOf(parent).filter(function (c) { return (c.getAttribute("class") || "").split(/\s+/).some(function (cls) { return cls.indexOf(marker) >= 0; }); });
+    if (chips.length < 2) { return; } groups++;
+    var seen = {};
+    chips.forEach(function (chip) { var cv = ctx.carrierValue(chip, carriers), hexv = cv[1];
+      if (!hexv) { var inline = ctx.inlineDecls(chip); ["border-color", "color"].forEach(function (prop) { if (!hexv && prop in inline) { var hx = hexesIn(ctx.resolve(inline[prop])); if (hx.length) { hexv = hx[0]; } } }); }
+      if (!hexv) { offenders.push(evidence(chip) + ": chip carries no spectrum color (contents chips are colored by the walk)"); }
+      else if (!WSET[hexv]) { offenders.push(evidence(chip) + ": chip color " + hexv + " is not a spectrum-walk color"); }
+      else { (seen[hexv] = seen[hexv] || []).push(chip); } });
+    Object.keys(seen).forEach(function (h) { if (seen[h].length > 1) { offenders.push(evidence(parent) + ": " + seen[h].length + " contents chips share " + h + " -- a same-color cluster; chips carry distinct spectrum colors"); } }); });
+  return result("DL-CHIPS", 8, "Contents chips (distinct colors)", offenders, { chip_groups_checked: groups }); }
+function runChecks(html) { var doc = new DOMParser().parseFromString(html, "text/html");
+  var styleText = Array.prototype.map.call(doc.querySelectorAll("style"), function (s) { return s.textContent; }).join("\n");
+  var rules = parseCssRules(styleText), ctx = makeCtx(doc, rules);
+  return [checkWalk(ctx, doc), checkRest(ctx), checkType(ctx, doc), checkDead(ctx, doc), checkChips(ctx, doc)]; }
+function el(tag, cls, text) { var n = document.createElement(tag); if (cls) { n.className = cls; } if (text !== undefined) { n.textContent = text; } return n; }
+function render(results, sourceLabel) { var box = document.getElementById("cd-results"); box.textContent = "";
+  var failed = results.filter(function (r) { return r.status !== "PASS"; }).length;
+  var head = el("p", null, (failed ? "FAIL — " + failed + " of " + results.length + " mechanical checks failed" : "PASS — all " + results.length + " mechanical checks pass") + " · " + sourceLabel + " · rules: " + P.source + (P.contract_version ? " v" + P.contract_version : ""));
+  head.style.fontWeight = "700"; box.appendChild(head);
+  results.forEach(function (r) { var card = el("div", "cd-check " + (r.status === "PASS" ? "cd-pass" : "cd-fail"));
+    card.appendChild(el("div", null, (r.status === "PASS" ? "✓ " : "✗ ") + r.id + " — " + r.name + " (§10." + r.section10_item + ")"));
+    r.offenders.slice(0, 8).forEach(function (o) { card.appendChild(el("p", "cd-off", o)); });
+    if (r.offenders.length > 8) { card.appendChild(el("p", "cd-off", "… and " + (r.offenders.length - 8) + " more")); }
+    box.appendChild(card); }); }
+function msg(text) { document.getElementById("cd-msg").textContent = text; }
+document.getElementById("cd-cannot").textContent = P.not_mechanically_checkable.map(function (e) { return "§10." + e.item + " " + e.name; }).join(" · ");
+document.getElementById("cd-run").addEventListener("click", function () { var src = document.getElementById("cd-src").value;
+  if (!src.trim()) { msg("Paste a page source first."); return; }
+  try { render(runChecks(src), "pasted source, " + src.length + " bytes"); msg(""); } catch (e) { msg("The check itself failed: " + e.message); } });
+document.getElementById("cd-fetch").addEventListener("click", function () { var url = document.getElementById("cd-url").value.trim();
+  if (!url) { msg("Enter a page URL first."); return; }
+  msg("Fetching…");
+  fetch(url).then(function (r) { if (!r.ok) { throw new Error("HTTP " + r.status); } return r.text(); }).then(function (text) { try { render(runChecks(text), url + ", " + text.length + " bytes"); msg(""); } catch (e) { msg("The check itself failed: " + e.message); } })
+  .catch(function (e) { msg("Could not fetch " + url + " (" + e.message + "). Browsers block many cross-origin reads (CORS) — paste the page source instead; the same checks run on pasted bytes."); }); });
+})();
+</script>
 </body></htm
 
 
