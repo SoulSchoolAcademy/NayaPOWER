@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T00:15:41+00:00",
+ "generated_utc": "2026-10-23T01:15:13+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,8 +51,21 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2976,
+     "title": "Brain-index cure at tip 44db8572 \u2014 regenerated, 1594 files (supersedes #2972)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2976",
+     "draft": false
+    },
+    {
+     "number": 2972,
+     "title": "Brain-index regen: cure the freshness drift on main (mechanical, 3 files)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2972",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 2
   },
   {
    "id": "act",
@@ -133,19 +146,49 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2971,
-     "title": "Naya/mission state",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2971",
+     "number": 2982,
+     "title": "Factory step 5: template shelf generated from the one registry (12 == 12 == 12)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2982",
      "draft": false
     },
     {
-     "number": 2955,
-     "title": "Smart Lists \u2014 the one server store (Best-of-Best #16, step 15)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2955",
+     "number": 2981,
+     "title": "Naya4/smart notes 2026 09 30",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
+     "draft": false
+    },
+    {
+     "number": 2978,
+     "title": "Canon v1.3 \u2014 S1 Settings label: 'Dark mode' \u2192 'Deep black' (Shawn's ruling)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2978",
+     "draft": false
+    },
+    {
+     "number": 2977,
+     "title": "Door cure: register SN-0827 + SN-0828 + SN-0829 \u2014 captures + registry entries",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2977",
+     "draft": false
+    },
+    {
+     "number": 2975,
+     "title": "Cure: re-pin CURRENT-STATE to the current precedence document (kernel test 4)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2975",
+     "draft": false
+    },
+    {
+     "number": 2973,
+     "title": "Assessment: The Most Intelligent System? Not Yet - full report, three tongues (2026-10-23)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2973",
+     "draft": false
+    },
+    {
+     "number": 2956,
+     "title": "Best-of-Best Wave 1 \u00b7 #12 Command + universal search (step 13)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2956",
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 7
   },
   {
    "id": "wire",
@@ -226,9 +269,9 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
-     "number": 2969,
-     "title": "Ask Naya go-live port (ARTIFACT ONLY \u2014 do not merge)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2969",
+     "number": 2979,
+     "title": "Guard current Hub publishing against legacy app reintroduction",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2979",
      "draft": true
     },
     {
@@ -411,6 +454,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
- "unassigned_prs": 2
+ "open_pr_total": 11,
+ "unassigned_prs": 7
 }
