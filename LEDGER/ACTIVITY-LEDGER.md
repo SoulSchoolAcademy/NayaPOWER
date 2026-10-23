@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 17:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35603,11 +35603,13 @@ _Last updated: 2026-10-23 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
 
-### ✅ seat-stall-20261023-0909 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+### ✅ gap-lane-scorer-20261023-0820 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
-**Task:** Seat stall 09:09 PDT — 30 unclaimed briefs evaluated, zero claimable; queue delta + restore forensics
+**Task:** Resolve contradictory t1415 twin records (0/30 one-liner vs 13:03:48Z 6-brief move) + lane-feed 06:0x citation
 
-**Evidence:** VERIFIED: 30 unclaimed brief-*.md in brief-queue/ (counted 30), zero brief-tNNNN-* mission briefs; the six t1415-retired gap briefs (t1192-lane2, t1286/t1295-lane4, t1296/t1305-lane11, t1310-lane3) confirmed back in queue root by name; seat-stall-20261023-0637.md exists as the prior stall receipt (scored 9.0); the 0820 lane-0 receipt byte-corrobora
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261023-0820-lane0.md`
+
+**Evidence:** Verified: Twin A (broadcast L109 / memory L1457, 12:55Z, 0/30 exact-name — TRUE per coded rule) and Twin B (memory §1468-1471 + broadcast L111, 13:03:48Z, second-exact with ctime pin) both byte-exact; confession leg pinned to Twin B, disagreement explained as coded-rule verdict vs off-rule agent action, independently confirmed by t1427 restore (L11
 
 ### ✅ lane-scorer-20261023-0820 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
