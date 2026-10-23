@@ -70,10 +70,27 @@ def probe_surface(path, opener=urllib.request.urlopen, timeout=7):
                     "redirected":uri.path != path or bool(uri.query),
                     "effective_path":uri.path}
     except urllib.error.HTTPError as e:
-        return {"http_status":int(e.code),
-                "reachable":None if e.code == 405 else False,
-                "redirected":False,"effective_path":path,
-                "error":"HEAD not supported" if e.code == 405 else "HTTP response"}
+        if e.code == 405:
+            # Static Smart Notes reject HEAD but serve normal GET. A bounded
+            # Range GET checks reachability without reading the body; no
+            # private or authenticated content is requested.
+            get = urllib.request.Request(HOST + path, method="GET",
+                headers={"User-Agent":"NayaNET-Living-Map/1.0",
+                         "Range":"bytes=0-0"})
+            try:
+                with opener(get, timeout=timeout) as response:
+                    uri = urllib.parse.urlsplit(response.geturl())
+                    status = int(response.status)
+                    return {"http_status":status,"reachable":200 <= status < 400,
+                            "redirected":uri.path != path or bool(uri.query),
+                            "effective_path":uri.path,
+                            "head_unsupported_get_fallback":True}
+            except Exception as exc:
+                return {"http_status":405,"reachable":None,
+                        "redirected":False,"effective_path":path,
+                        "error":"GET fallback unavailable: "+type(exc).__name__}
+        return {"http_status":int(e.code),"reachable":False,
+                "redirected":False,"effective_path":path,"error":"HTTP response"}
     except Exception as e:
         return {"http_status":None,"reachable":None,"redirected":False,
                 "effective_path":path,"error":type(e).__name__}
