@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T02:15:39+00:00",
+ "generated_utc": "2026-10-23T13:16:13+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,8 +51,15 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3003,
+     "title": "cure(index): regenerate brain-index receipts after #2998 stale-head merge",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3003",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "act",
@@ -133,9 +140,27 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2986,
-     "title": "SN-1850: The Best Possible Move \u2014 Think Completely, Then Deliver the Ultimate Result",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2986",
+     "number": 3005,
+     "title": "LI-6: promote measure_lesson_delta.py to repo tools/",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3005",
+     "draft": false
+    },
+    {
+     "number": 3004,
+     "title": "Factory adoption (#9): STANDARD-FEATURE-CHECKLIST \u2014 the Best-of-Best Part 5 checklist as t",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3004",
+     "draft": false
+    },
+    {
+     "number": 3002,
+     "title": "w746: flip residual 9.0 below-bar carriers in report_generator.py to 9.5",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3002",
+     "draft": false
+    },
+    {
+     "number": 3000,
+     "title": "Naya/mission state",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000",
      "draft": false
     },
     {
@@ -145,7 +170,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -166,10 +191,10 @@
    "board_lane": "#2175 lane WIRE",
    "open_prs": [
     {
-     "number": 2987,
-     "title": "Factory step 6: design-language gate annex (twin-sourced) + on-page contract door",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2987",
-     "draft": false
+     "number": 3001,
+     "title": "guard(smart-notes): detect duplicate public SN IDs before publication",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3001",
+     "draft": true
     }
    ],
    "open_pr_count": 1
@@ -412,6 +437,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
- "unassigned_prs": 2
+ "open_pr_total": 8,
+ "unassigned_prs": 5
 }
