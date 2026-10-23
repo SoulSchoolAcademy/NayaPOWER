@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 01:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5735,6 +5735,12 @@ _Last updated: 2026-10-23 01:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick: all 3 byte-pinned sources re-read from disk — t1012-lane3.md carries the 16:27 PDT strict-bar word cite + branch naya/three-decision-consolidate @ 43c0113eee302db2c334aa9d5d3139ea0afd1d77 fast-forward; t0697-lane2.md carries the host-qualified ruling (UNKNOWN-by-design language); retrieval-auth-gate-HOLD-t0783-lane4.json state r
 
+### ✅ t1182 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t1175: closed the adoption gap — writer-side registration contract fix (writer_register_arrival, fail-closed) in file-gap-brief.py; live checker PASS; post-receipt live confirmation of 10th reverse-phantom occurrence.
+
+**Evidence:** VERIFIED on workspace bytes: file-gap-brief.py is 1755 lines and contains def writer_register_arrival (matches receipt's 1703->1755 claim); receipt file present (Oct 22); brief reference brief-gap-t1182-lane4.md named. No phantom artifacts (no branch/SHA claimed; remote-ref N/A). Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) post-write watchdog n
+
 ### 🟡 t1178 — Team 2, Team Naya Scorer (Learning Pipeline) — 7.5/10 [PARTIAL]
 
 **Task:** CI-green/local-red truth-gate repair (hermetic fixture)
@@ -7111,6 +7117,12 @@ _Last updated: 2026-10-23 01:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: local probe file present (20:34), branch naya4/smart-notes-2026-09-30 exists on remote (git ls-remote OK); probe commit 77d9f055a given as commit link; historical tip state (tip==staged commit at claim time) not re-verifiable now because tip moved to 03cc850a (feeder's own later staging — expected). Deliverable (timed probe evid
 
+### ✅ t0999 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** t999 diagnosis re-run at current tip: all 4 holes still live, 2 worsened; repair scope expanded with byte-exact citations; repair left to a different seat per parent.
+
+**Evidence:** VERIFIED: receipt file present (Oct 18); tip 8cac435a pins match the sibling lane-10 receipt's independent derivation — cross-corroboration; three-pass scorecard inside the receipt with honest why-not-10 reasons; named scope expansion (packet/creed board refs) is new work, not carried. No phantom artifacts (no branch/SHA claimed; remote-ref N/A). C
+
 ### ✅ t999 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** coldnaya-lane4 — COLD-NAYA proof at PR-#2533 tip (NOT YET verdict)
@@ -7140,6 +7152,12 @@ _Last updated: 2026-10-23 01:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0707-lane11 — observatory addenda (I1/I2 census, I2b instrument, I3 table)
 
 **Evidence:** ALL 6 SHAs VERIFIED byte-exact (census py/json, i2b py/json, i3 md, spec pin 8f76add6...==v1 pin, no drift). 3 addenda = real files, numbers re-derived from live bytes; two rule-clarifications forced by bytes (recusals/VOIDED excluded; dual sign-outs split). 3-pass scorecard honest (self 9.0, named holes). Clears 9.5: I1 98.7% / I2 0.23h / I2b 0.90
+
+### ✅ t0999 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap on t999: blob-pin re-derivation at current tip (8cac435a), ruleset fence re-read, check-run 116863315770 byte-replay; corrected citation venue (#2635->#2698) with evidence.
+
+**Evidence:** VERIFIED: receipt file present (Oct 19); internal consistency high — tip pin 8cac435a corroborated independently by the same seat's gap-t999-lane4 run; check-run id 116863315770 named with failure-window, job log excerpt, and exit code; the receipt carries a 2026-10-19 CORRECTION striking the asserted run window (future-knowledge attestation voided
 
 ### ✅ t999 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
