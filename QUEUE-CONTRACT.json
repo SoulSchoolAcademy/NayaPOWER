@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-23T21:25:03Z",
-  "tip": "371c8c796dd75a6e2bd73504cf5f072ae5f15696",
+  "generated_at": "2026-10-23T22:25:14Z",
+  "tip": "5b2250f10f8d624bdf026dc2c8a2f483a2d34bad",
   "prs": [
     {
       "number": 2968,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "ee63c59c03d406272b59a3c3dc74cbf1fa4ee9db"
+      "head": "e269edb0dacf9bce7d339fe7a0a31e76c3819a0a"
     },
     {
       "number": 3000,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "fdab4178525a5c61c9bc847bd8df8943b4afdf72"
+      "head": "05eb8eca30dd658f80b7c96e42bcae70cc5f042d"
     },
     {
       "number": 3001,
@@ -47,6 +47,42 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "e04ed6a9e92020f44216100ffa36c8cfcbcf4de2"
+    },
+    {
+      "number": 3016,
+      "title": "feat(hub): 14Q living board module \u2014 validator + renderer for questions.json (Wave 2 item 3)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "315c4f81b4987686eb6a7542d1c67ac1ebd06670"
+    },
+    {
+      "number": 3017,
+      "title": "safety(door-obligation): re-stamp SN-1854 registry content_hash to canonical intelligence hash",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "9dba5b7ebcccb9221c84bd4f65ff6b0ac9fd738e"
+    },
+    {
+      "number": 3018,
+      "title": "Security: harden legacy Smart Mail RLS",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "cb16cd274bf9d95d7a80a04c60c8bc7d6152adbf"
+    },
+    {
+      "number": 3019,
+      "title": "Narzan Trinity founding portrait \u2014 filed beside SN-0842 (citizens layer founding)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "3818dca28c97a0e1a27b1f5769ad2f4c51f2496b"
     }
   ]
 }
