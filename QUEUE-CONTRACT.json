@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-23T15:24:33Z",
-  "tip": "0f95d6db9a5264fc98132541174a6f95fdd891b3",
+  "generated_at": "2026-10-23T16:24:35Z",
+  "tip": "1ebcf8aefbf358826d46a0d8395cc626356e93d2",
   "prs": [
     {
       "number": 2968,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "6cbf934c91337dee3ca6643eb05a828855072b79"
+      "head": "89313549fc4335d4e5c9784e6734fa1687730a64"
     },
     {
       "number": 3000,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "fdca288bd9f33cf065511085136ea0df309648c5"
+      "head": "23cf3207a6ef7f7eb90e2317f11ecaeea39b0894"
     },
     {
       "number": 3001,
@@ -40,22 +40,13 @@
       "head": "bbac23a2b404801ecab8dd62852dcb435ac902bf"
     },
     {
-      "number": 3002,
-      "title": "w746: flip residual 9.0 below-bar carriers in report_generator.py to 9.5",
-      "tier": "B",
+      "number": 3009,
+      "title": "index(brain): regenerate brain index at 1ebcf8a \u2014 drift cure (1617->1621 files)",
+      "tier": "C",
       "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "80a2a53ad11138facd03b13cef4776c22265c568"
-    },
-    {
-      "number": 3007,
-      "title": "docs(brain): Daily Intelligence Report 2026-10-23 + Structure V1",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "92de76bf3477ff1cc30c9fb491e5b06e4830c28a"
+      "head": "3637eda1eeed65e0e176eb3c24a51464ab32b555"
     }
   ]
 }
