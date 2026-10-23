@@ -28,6 +28,8 @@ def load_registry(path):
     for row in rows:
         assert row["path"].startswith("/") and "://" not in row["path"]
         assert row["critical_journey"] and row["owner_area"]
+        assert row["human_journey"] and row["naya_journey"] and row["network_continuity_journey"]
+        assert "experience_proof" in row["assessments"]
         assert set(row["assessments"]["dimension_scores"]) == set(QUALITY_DIMENSIONS)
         assert all(x in ids for x in row["depends_on"])
     return data
@@ -42,6 +44,25 @@ def grade_surface(item):
         return "UNASSESSED"
     if any(v < 9.5 for v in vals):
         return "BELOW_9_5"
+    # Ten-star excellence is not a CSS/technical average. A valuable human
+    # experience AND a cold Naya's operating/handoff experience are mandatory.
+    # Never infer satisfaction or value from route hits and raw run counts.
+    experience = a.get("experience_proof") or {}
+    scores = [experience.get("human_experience_score"), experience.get("naya_experience_score")]
+    if not all(isinstance(v, (int, float)) and not isinstance(v, bool) and 0 <= v <= 10 for v in scores):
+        return "EXPERIENCE_UNASSESSED"
+    if any(v < 9.5 for v in scores):
+        return "BELOW_9_5"
+    if not all(experience.get(k) is True for k in (
+        "human_task_success", "naya_task_success", "network_continuity_verified",
+        "useful_outcome_measured", "efficiency_vs_baseline_measured"
+    )):
+        return "EXPERIENCE_UNVERIFIED"
+    if not all(experience.get(k) for k in (
+        "human_outcome_receipt", "naya_handoff_receipt", "network_event_receipt",
+        "outcome_value_measurement", "cost_latency_measurement"
+    )):
+        return "EXPERIENCE_UNVERIFIED"
     if not a["independent_verifier_identity"] or (
             a["independent_verifier_identity"] == a["author_identity"]):
         return "UNVERIFIED"
