@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-23T19:26:21Z",
-  "tip": "8fc45b65abb46cb43247d05905dc918b7b15d266",
+  "generated_at": "2026-10-23T21:25:03Z",
+  "tip": "371c8c796dd75a6e2bd73504cf5f072ae5f15696",
   "prs": [
     {
       "number": 2968,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "d5584c46032fbacaaeb4a10554104ad5ff85ae58"
+      "head": "ee63c59c03d406272b59a3c3dc74cbf1fa4ee9db"
     },
     {
       "number": 3000,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "ddfa6ba3c8b43121d1900c15d268f2fc6781602e"
+      "head": "fdab4178525a5c61c9bc847bd8df8943b4afdf72"
     },
     {
       "number": 3001,
@@ -40,22 +40,13 @@
       "head": "bbac23a2b404801ecab8dd62852dcb435ac902bf"
     },
     {
-      "number": 3009,
-      "title": "index(brain): regenerate brain index at 1ebcf8a \u2014 drift cure (1617->1621 files)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "3637eda1eeed65e0e176eb3c24a51464ab32b555"
-    },
-    {
-      "number": 3010,
-      "title": "Activation kit: new-seat setup guide for Naya Power (GitHub one-time setup, apps, orientation, soul)",
+      "number": 3012,
+      "title": "Project Intelligence Door: scorecard and live bridge/schema findings",
       "tier": "B",
       "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "2b5ba1072ae70504424eb4a5bb0de656ab3a9fb1"
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "e04ed6a9e92020f44216100ffa36c8cfcbcf4de2"
     }
   ]
 }
