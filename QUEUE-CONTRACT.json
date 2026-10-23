@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-23T14:25:18Z",
-  "tip": "d45b03aeccc6ffcf88ff319a7ef757d40a7e035e",
+  "generated_at": "2026-10-23T15:24:33Z",
+  "tip": "0f95d6db9a5264fc98132541174a6f95fdd891b3",
   "prs": [
     {
       "number": 2968,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "ed8603437f73fb6de54a52b82da7a2f68728d44f"
+      "head": "6cbf934c91337dee3ca6643eb05a828855072b79"
     },
     {
       "number": 3000,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "25cefbb28f04d5e69120a36df6dc0dbcf7f57b10"
+      "head": "fdca288bd9f33cf065511085136ea0df309648c5"
     },
     {
       "number": 3001,
@@ -49,31 +49,13 @@
       "head": "80a2a53ad11138facd03b13cef4776c22265c568"
     },
     {
-      "number": 3003,
-      "title": "cure(index): regenerate brain-index receipts after #2998 stale-head merge",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "7eaf08a8e20a494325aa79458e8ca8fc2f232bc4"
-    },
-    {
-      "number": 3004,
-      "title": "Factory adoption (#9): STANDARD-FEATURE-CHECKLIST \u2014 the Best-of-Best Part 5 checklist as the Factory's audit standard, with the step-22 speed budget line",
+      "number": 3007,
+      "title": "docs(brain): Daily Intelligence Report 2026-10-23 + Structure V1",
       "tier": "B",
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "424754587343810c12f7d96442529f2eea4f4518"
-    },
-    {
-      "number": 3005,
-      "title": "LI-6: promote measure_lesson_delta.py to repo tools/",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "a011b0566144a6c3b7c8c3c015efd17b3f8362b4"
+      "head": "92de76bf3477ff1cc30c9fb491e5b06e4830c28a"
     }
   ]
 }
