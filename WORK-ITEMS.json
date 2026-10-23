@@ -1,6 +1,6 @@
 {
  "schema": "living-list/v1",
- "generated_utc": "2026-10-23T00:07:20Z",
+ "generated_utc": "2026-10-23T00:18:28Z",
  "source": "hidden_files/living-list.json \u2014 validated + reconciled by state-core-builder.py (single writer)",
  "registry": "THE LIVING LIST \u2014 the one ranked queue across programs; programs are filters, not queues",
  "activation": {
@@ -16,8 +16,8 @@
   "BLOCKED": 2,
   "NEEDS SHAWN": 2
  },
- "stalled_claims": 2,
- "drift_flags": 6,
+ "stalled_claims": 7,
+ "drift_flags": 11,
  "items": [
   {
    "blocker": "Fitted per-table policies not yet delivered; GT-039 execution waits on the fitting, then Shawn's tap",
@@ -109,9 +109,12 @@
    "title": "Command + universal search \u2014 one place that finds any person, note, thread, list, or link (Best-of-Best step 13)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 6912,
-   "claim_age_s": 6912,
-   "drift": []
+   "idle_s": 7580,
+   "claim_age_s": 7580,
+   "stalled": true,
+   "drift": [
+    "stalled-claim: no state change or note for 2h+ \u2014 claim aging is visible by law"
+   ]
   },
   {
    "blocker": null,
@@ -129,9 +132,12 @@
    "title": "Linked everything \u2014 the data model: one thing in three homes, never three copies (step 14)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 6912,
-   "claim_age_s": 6912,
-   "drift": []
+   "idle_s": 7580,
+   "claim_age_s": 7580,
+   "stalled": true,
+   "drift": [
+    "stalled-claim: no state change or note for 2h+ \u2014 claim aging is visible by law"
+   ]
   },
   {
    "blocker": null,
@@ -149,9 +155,12 @@
    "title": "Smart Lists \u2014 server store: the same lists in the Hub and your app (step 15)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 6912,
-   "claim_age_s": 6912,
-   "drift": []
+   "idle_s": 7580,
+   "claim_age_s": 7580,
+   "stalled": true,
+   "drift": [
+    "stalled-claim: no state change or note for 2h+ \u2014 claim aging is visible by law"
+   ]
   },
   {
    "blocker": null,
@@ -169,9 +178,12 @@
    "title": "Conversational intake \u2014 Welcome door + invite-accept as one question at a time (step 12)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 6912,
-   "claim_age_s": 6912,
-   "drift": []
+   "idle_s": 7580,
+   "claim_age_s": 7580,
+   "stalled": true,
+   "drift": [
+    "stalled-claim: no state change or note for 2h+ \u2014 claim aging is visible by law"
+   ]
   },
   {
    "blocker": null,
@@ -189,9 +201,12 @@
    "title": "Booking block \u2014 your availability once, a booking link, reminders both sides (step 17)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 6912,
-   "claim_age_s": 6912,
-   "drift": []
+   "idle_s": 7580,
+   "claim_age_s": 7580,
+   "stalled": true,
+   "drift": [
+    "stalled-claim: no state change or note for 2h+ \u2014 claim aging is visible by law"
+   ]
   },
   {
    "blocker": "Cure stopped on substance: 10 notes (SN-0815\u2013SN-0822, SN-1787, SN-1788) are registered twice with different content hashes \u2014 the canonical registration is the owning lane's ruling, due by 2026-10-23 06:00Z",
@@ -231,8 +246,8 @@
    "verified_by": null,
    "pr_state": "merged",
    "pr_mergeable": null,
-   "idle_s": 9372,
-   "claim_age_s": 10272,
+   "idle_s": 10040,
+   "claim_age_s": 10940,
    "stalled": true,
    "drift": [
     "pr-merged-state-lags: PR #2939 is MERGED but the row sits IN PROGRESS",
@@ -257,7 +272,7 @@
    "verified_by": null,
    "pr_state": "closed",
    "pr_mergeable": false,
-   "idle_s": 15552,
+   "idle_s": 16220,
    "stalled": true,
    "drift": [
     "pr-closed-unmerged: PR #2869 closed without merging",
