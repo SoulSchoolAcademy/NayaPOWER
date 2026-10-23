@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-23T02:24:17Z",
-  "tip": "7983caac82d6e4c349d51fcf81fb63a6ee6e6b68",
+  "generated_at": "2026-10-23T03:24:25Z",
+  "tip": "dd0f3f5b712dae81c944e10009b3fe5dac9d0bf8",
   "prs": [
     {
       "number": 2968,
@@ -19,7 +19,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "68ff118ef5a845337b5dcfeb57bdef85895f2da5"
+      "head": "716e5767f8c008a878dd211453b0490514c0d553"
+    },
+    {
+      "number": 2990,
+      "title": "Single Current Hub Guard \u2014 strengthened: pin real Cloudflare publishing config (follow-up to #2979)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Receipt pin \u2014 exact head SHA, Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
+      "owner": "author lane",
+      "head": "edb9946e68aed087bdf5338576f842f0b02f78ac"
     }
   ]
 }
