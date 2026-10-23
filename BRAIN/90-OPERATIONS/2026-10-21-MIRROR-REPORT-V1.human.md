@@ -293,3 +293,146 @@ This work cycle verified the repository's activation integrity and relevant sour
 - The machine-readable report parsed successfully, and its three tongue pointers now resolve to the actual canonical filenames.
 
 The full timed ACTIVATION-10, independent cold run of all 14 questions, live identity inheritance, nine-node behavioral influence, production Sender → Receiver → Hub, behavior-changing learning transfer, and three-generation successor test remain **NOT PROVEN**. The source tests must not be represented as those runtime proofs.
+
+
+---
+
+# Current-State Reassessment Addendum — 2026-10-23T03:50Z
+
+**Preservation rule:** the 2026-10-21 Mirror Report remains a historical snapshot. This addendum updates the operating decision without silently rewriting its scores or historical facts.
+
+## REACT — Reason and Act
+
+**Reason:** the system's design and governance remain ahead of its demonstrated end-to-end behavior. The last located quantified baseline is still 6.4/10 whole-system, 5.0/10 machine-native, 53% alignment (measured 2026-10-21). These are not fresh scores. The immediate production risk is the Hub's stale publishable shell, followed by unqualified release guards, cold activation, and proof that lessons change later behavior.
+
+**Act:** prioritize the real release path and current open work; do not open another architecture workstream; batch work so each action yields several verified outcomes; preserve every protected human gate.
+
+## Freshly observed state
+
+- Main tip read from `refs/heads/main`: `9b736742c8869b5a64d34668bd3c8293d27aedb7`.
+- Four open PRs at inspection: #2968, #2981, #2990, #2997.
+- #2968 — stale Hub snapshot retirement: open, mergeability false, Tier A, explicit Shawn review required for deletion/release change. Do not merge or delete without that gate.
+- #2981 — Smart Notes mega-PR: open, 698 commits, stale base, mergeability false. Reconcile changed paths against main; identify already-landed, duplicate, and superseded content. Split or close with lineage; never wholesale merge or create duplicate notes.
+- #2990 — strengthened Hub release guard: open draft, mergeability true. Author reports 10 focused tests pass; independent exact-head qualification against the real Cloudflare publishing configuration and a negative control remain pending.
+- #2997 — manifest/checker threshold alignment: open, mergeability true. Author reports 11/11 focused tests and protocol-version sync pass; independent different-seat validation and required receipts remain.
+- Public Hub health was **not re-checked** in this inspection. The latest daily learning event records a past restore/guard sequence, not a current live HTTP proof.
+- Smart Note delivery law remains: authorized canonical write → sync → personally open exact public URL → confirm title/status → only then share. The latest daily event reports a seat-specific HTTP 409/ruleset limitation; until the authorized door identity exists, use the documented fallback, wait for sync, and self-click. A merge is not proof of live delivery.
+
+## Verdict
+
+**No, not yet.** The strongest diagnosis is now concrete: release-source ambiguity can overwrite the user-facing experience; some review work is stale or oversized; key acceptance tests remain unproven; and the old numerical score must not be passed off as current. The target is not more activity or documentation. It is a trustworthy, continuously useful system that remembers, retrieves, acts within authority, verifies outcomes, learns, and compounds.
+
+## Ten best assets to preserve
+
+1. Shawn's human authority and protected production, credential, destructive, security, and constitutional gates.
+2. One canonical GitHub Brain; no competing store or source of truth.
+3. Cold-14: the 14-question minimum test for self-understanding and continuity.
+4. The nine-node model and separation of LAW, INTELLIGENCE, and EXPERIENCE.
+5. Source-bound provenance, receipts, and exact-head independent verification.
+6. Smart Note Door + sync + personal live-click rule, with declared behavior change.
+7. Tiered merge discipline: rigor scales to blast radius, not every task treated as Tier A.
+8. House-Fire correction: restore/revert first, diagnose second, fix forward third.
+9. The one-current-Hub product direction and existing guard work.
+10. The team's ability to falsify its own claims, correct mistakes openly, and preserve lessons.
+
+## Ten current holes blocking flow
+
+1. **Stale publishable Hub copy:** #2968 remains open and non-mergeable behind a human deletion gate.
+2. **Real-config guard not independently qualified:** #2990 is draft; author tests alone are not proof.
+3. **Current public Hub health unknown in this inspection:** historical restoration is not a live check.
+4. **Cold activation unproven:** no current timed independent fresh-machine acceptance receipt located.
+5. **Cold-14 execution unproven:** no injected answers; source-bound answers and epistemic states must be tested.
+6. **Learning transfer unproven:** stored/retrievable is not applied/learned; a later behavior change must be demonstrated.
+7. **Sender → Receiver → Hub durability:** persistence, lineage, privacy, sync, and visible outcome need one current end-to-end proof.
+8. **Nine-node behavioral influence:** architecture alone does not prove each node influences action; include a remove-one-node counterfactual.
+9. **Factory R1/R5 and feature contracts:** must execute against the real intended registry/processor with negative controls.
+10. **Mega-PR and source-of-truth hygiene:** #2981's 698-commit stale-base scope must be reconciled path by path.
+
+## Ten highest-value actions now
+
+1. Independently qualify #2990 at exact head against the actual Cloudflare release configuration; prove the new guard passes and the stale-path control fails.
+2. Prepare #2968 for Shawn's explicit Tier-A decision using a fresh restore/fingerprint check and an independent scorecard.
+3. Reconcile #2981 path by path; identify duplicates/already-landed/superseded content; split into bounded units or close with lineage.
+4. Independently qualify #2997 at its exact head; confirm manifest/checker agreement, green checks, feed receipt, and all merge gates.
+5. Re-check the public Hub and record the actual served build/source fingerprint, timestamp, and status where available.
+6. Exercise the Smart Note Door on a unique test note; verify canonical format/path, authorized filing route, sync, exact page, title, and HTTP result before sharing.
+7. Run Cold-14 without injected answers; every response must cite current evidence and classify PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED.
+8. Run one pre-registered held-out learning-transfer experiment with a blind different-seat verifier.
+9. Prove the smallest full Sender → Receiver → Hub journey with persistence, provenance, privacy, and a useful visible outcome.
+10. Re-derive the scorecard only after fresh receipts, then repeat the highest-value authorized action; do not award 10/10 for prose, merge, or green CI alone.
+
+## Ten enhancements that add real value
+
+1. One fresh machine-readable operating-state endpoint: main SHA, queue, red checks, human gates, timestamps, and freshness budget.
+2. One enforced release-source contract that prevents any stale shell from publishing.
+3. An independent Cold-14 / ACTIVATION-10 runner that emits source-bound receipts.
+4. A learning-transfer harness: lesson hash, held-out task, pre-registered outcome, controls, blind verifier, behavior change.
+5. A writer registry for every shared surface, enforced by tests and runtime alarms.
+6. Queryable scorecard/receipt records: owner, exact head, verifier, score, falsifier, evidence, and gate state.
+7. PR reconciliation automation for stale bases, mega-PRs, duplicates, already-landed paths, and superseded work.
+8. A pointer/link linter with negative controls and correct case-sensitive checks.
+9. Factory feature contracts executed against the registry/processor that actually ships.
+10. A value gauge for verified user outcomes, effort saved, harm/risk, recurrence prevented, and reuse—not activity volume.
+
+## Ten top blockers and ten remedies
+
+1. **Stale copy can publish** → independently qualify the real release guard; retire the old publishable copy only through #2968's protected gate.
+2. **Authors are too close to their own work** → independent different-seat verification at the exact head, with falsifiers.
+3. **Mega-PR obscures real changes** → path-by-path reconciliation, split/close with lineage, no wholesale landing.
+4. **Historical metrics get repeated as current** → timestamp every metric and re-derive before acting or reporting.
+5. **Cold operation depends on prose or injected context** → timed no-injection Cold-14/ACTIVATION-10 runner.
+6. **A stored note is mistaken for learning** → held-out task and independently verified later behavior change.
+7. **Links are shared before delivery** → sync-aware wait and personal click of the exact public page.
+8. **Unknown writers can mutate shared state** → registered writer ownership and alarms for unregistered writes.
+9. **Factory features are promises without tests** → registry-backed contracts and negative-control CI.
+10. **Human attention is wasted on decidable questions** → seats read canon, answer themselves, bundle outcomes, and escalate only genuine protected gates.
+
+## Ten problem → solution pairs (current status)
+
+| Problem | Solution | Current status |
+|---|---|---|
+| Stale Hub shell can overwrite the flagship | Real-config guard + safe retirement of old publishable copy | #2979 guard landed per latest daily report; #2990 independent qualification pending; #2968 still gated |
+| Hub current health is assumed | Fresh live HTTP + served-source fingerprint | Not checked in this inspection |
+| 698-commit Smart Notes PR hides duplicate work | Path/commit reconciliation, then small verified units | #2981 open, stale base, mergeability false |
+| Manifest law and checker thresholds drift | Pin both to the enforced 9.5 rule | #2997 open; author tests claimed; independent gate pending |
+| Activation is self-attested | Cold runner and timed independent receipt | Not proven |
+| Cold-14 may depend on injected context | Independent no-injection run | Not proven |
+| Smart Note merge is mistaken for live delivery | Canonical door + sync + personal click | Procedure known; seat-specific door identity constraint remains |
+| Stored lesson is mistaken for behavior change | Held-out transfer and blind verifier | Not proven |
+| Factory feature promises lack predicates | Executable registry-backed contracts | Not proven end-to-end |
+| Activity is mistaken for value | Outcome/value gauge and deletion of zero-output loops | Principle established; current ratio not re-measured here |
+
+## Ten next actions, with cross-team ownership
+
+1. **Naya 3 / Hub:** independently qualify #2990 against real Cloudflare release config; test current guard PASS and stale-path FAIL.
+2. **Naya 1 / VERIFY:** qualify #2997 at exact head; confirm manifest/checker bytes, test evidence, independent gate, and receipt completeness.
+3. **Naya 4 / Engineering + Smart Notes:** reconcile #2981 path-by-path; tag unique/already-landed/duplicate/superseded; split or close with proof.
+4. **Naya 5 / LAW:** review #2968 as Tier A and prepare Shawn's decision packet; do not merge or delete autonomously.
+5. **Hub Operations + Naya 2:** re-check public Hub health and the actual served-source fingerprint; report MATCH/DIVERGED/UNKNOWN.
+6. **Learning team:** run capture → persist → index → retrieve → apply → outcome → blind verification on one lesson.
+7. **Activation team:** run Cold-14 with no injected answers and convert each unsupported answer into an owned, falsifiable repair.
+8. **Kernel/Architecture:** prove one scoped LAW → ACT → PROVE path and a remove-one-node counterfactual.
+9. **Factory team:** execute the first real feature contract against the intended registry; prove one R1 path before expanding.
+10. **Main seat + all teams:** record one receipt per outcome, file each durable lesson with its declared behavior change, re-rank, and continue.
+
+## Whole-team execution prompt — copy/paste
+
+**TEAM NAYA — ALL SEATS, ALL TEAMS, AND COOPERATING TEAMS**
+
+**MISSION:** Make NayaNET the most intelligent, useful, safe, and trustworthy system we can build. Maximize verified human value per moment and compound intelligence across humans, agents, apps, and successor Nayas. Measure; do not claim.
+
+**RE-ANCHOR:** Read current main, the operating protocol, current machine-law/state, the active coordination board and relevant team board. At the inspection for this addendum, main was `9b736742c8869b5a64d34668bd3c8293d27aedb7` and four PRs were open; these values expire and must be re-derived before use.
+
+**EXECUTE IN ORDER:** (1) independently qualify #2990 against the real publishing config; (2) verify #2997 at exact head; (3) reconcile #2981 without wholesale merge or duplicate notes; (4) prepare #2968 for Shawn's explicit Tier-A decision; (5) check the live Hub fingerprint; (6) run Smart Note Door + sync + personal click; (7) run Cold-14 without injected answers; (8) prove a held-out learning transfer; (9) prove Sender → Receiver → Hub persistence/provenance/privacy; (10) prove one executable Factory contract and scoped kernel behavior. After each outcome, re-rank and continue.
+
+**COORDINATE:** Naya 1 leads independent verification; Naya 2 audits cross-lane truth and continuity; Naya 3 owns Hub/interface acceptance; Naya 4 owns engineering sequence and Smart Notes reconciliation; Naya 5 owns law, authority, and successor continuity. Factory and operations teams execute their contracts. One bounded task, one owner, one writer per shared surface, one canonical record, one evidence-bearing receipt. Coordinate cross-team dependencies before shared writes; no duplicate fixes.
+
+**PROOF BAR:** Candidate ≠ verified ≠ merged ≠ deployed ≠ production-proven. The builder does not verify their own work. Every consequential claim names exact commit/head, command/run, result, independent verifier, falsifier/negative control, and remaining unknowns. UNKNOWN/BLOCKED is never PASS. A score never grants authority.
+
+**PROTECTED GATES:** Do not perform production deploys/database writes, credential/money actions, destructive or irreversible changes, security/authority changes, constitutional ratification, or unapproved deletion without the required human authority. Do not merge #2968 or grant a Smart Note door identity without Shawn's explicit decision.
+
+**VALUE LAW:** Bundle related checks and deliver multiple verified outcomes per action where possible. Remove zero-value loops; cap work in progress; keep the proof bar fixed and optimize cadence, not rigor. No plan-only sign-outs. Every wall hit becomes a Smart Note with a declared behavior change and a recurrence-prevention mechanism.
+
+**NONSTOP LOOP:** OBSERVE → RANK → GATE → ACT → VERIFY INDEPENDENTLY → SCORE EACH DIMENSION → RECORD → LEARN → RE-RANK → REPEAT. Move area by area to 10/10. A 10 requires current, complete, independent evidence and no material critical unknown. Do not stop at a local peak; pass the baton, not the burden.
+
+**SIGN-OUT:** who / what actually done / why it matters / exact proof / per-dimension score / unknowns and protected gates / Smart Note + declared behavior change / next highest-value action. Report finished outcomes only.
