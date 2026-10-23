@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-23",
-  "receipt_basis_commit": "23a4aa5d8c7b191d1a2e304c843c339bbf84d4e0",
-  "inventory_file_count": 1617,
+  "receipt_basis_commit": "1ebcf8aefbf358826d46a0d8395cc626356e93d2",
+  "inventory_file_count": 1621,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,12 +11,12 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 817,
+    "05-MEMORY": 820,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 444,
+    "10-INTERFACES": 445,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
     "90-OPERATIONS": 95,
@@ -42,8 +42,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md",
-      "blob_sha": "424426fb9f6faf20328621f336d3c3e9bba59698",
-      "size": 11342
+      "blob_sha": "755003f08bad21c4ace2cbc5e161ad08d4f99ec0",
+      "size": 11781
     },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.ai.md",
@@ -62,8 +62,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
-      "blob_sha": "31e62995c5837872048f18c4e6cd1ca057ec14a7",
-      "size": 18452
+      "blob_sha": "db3218d6ef30f3a7ea404d208ce2927b949c3899",
+      "size": 18794
     },
     {
       "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.ai.md",
@@ -996,6 +996,11 @@
       "size": 1937
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY-INTELLIGENCE-REPORT-STRUCTURE-V1.md",
+      "blob_sha": "08a14eb4fe1a038f8686512cdcb0e386398d0cde",
+      "size": 6670
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md",
       "blob_sha": "2594fc618ff22a7dc8379a078fe2740928daf03f",
       "size": 4371
@@ -1104,6 +1109,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-LEARNING-EVENT.md",
       "blob_sha": "2da9333162762254b75b604b21045f76e81ba203",
       "size": 16294
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md",
+      "blob_sha": "a8a689bd600b9842e6c4e7c0164835090d776332",
+      "size": 13764
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -4541,6 +4551,11 @@
       "size": 3109
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1853/IB-SMART-NOTE-20261023-sn1853-error-becomes-learning.md",
+      "blob_sha": "265fdbe29a5c2168ad69ffa23a687df6a3bf124a",
+      "size": 3109
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0827/IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet.md",
       "blob_sha": "11ba70160963d0a6986fae8132c3de0a711a4af5",
       "size": 11280
@@ -7096,6 +7111,11 @@
       "size": 22484
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/STANDARD-FEATURE-CHECKLIST.md",
+      "blob_sha": "45ec22f9db429a48013fa8f1dea8092e4bcdf021",
+      "size": 18643
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/FACTORY-GATE-AND-DOOR-BUILD-RECORD-2026-10-23.md",
       "blob_sha": "2aa251a1d88beae031df008f82ee6de1695e6233",
       "size": 8191
@@ -7717,8 +7737,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "13f56739029363bf1d0905af31eeedb5c6e45ad4",
-      "size": 5076
+      "blob_sha": "0c0dee3f3175d05cc4815d05cabeb8c6cdd349ba",
+      "size": 5585
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8062,8 +8082,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "d3a55f93283ca91b8a661bdbb8aaaca2e795b6fe",
-      "size": 19616
+      "blob_sha": "1b71686771d3d316182e20ea0ea0d66ad312d405",
+      "size": 20403
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
