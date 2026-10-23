@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-23 02:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-23 03:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 3 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,14 +50,11 @@
 
 ## Open PRs by Area
 
-### BUILD (2)
-- [#2986](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2986) SN-1850: The Best Possible Move — Think Completely, Then Deliver the U
+### BUILD (1)
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
 
-### WIRE (1)
-- [#2987](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2987) Factory step 6: design-language gate annex (twin-sourced) + on-page co
-
-### PRODUCT (1)
+### PRODUCT (2)
+- [#2990](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990) Single Current Hub Guard — strengthened: pin real Cloudflare publishin 📝draft
 - [#2968](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968) Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A 
 
 ---

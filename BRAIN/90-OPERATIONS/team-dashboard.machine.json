@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T02:15:39+00:00",
+ "generated_utc": "2026-10-23T03:15:08+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,19 +133,13 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2986,
-     "title": "SN-1850: The Best Possible Move \u2014 Think Completely, Then Deliver the Ultimate Result",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2986",
-     "draft": false
-    },
-    {
      "number": 2981,
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 1
   },
   {
    "id": "wire",
@@ -164,15 +158,8 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [
-    {
-     "number": 2987,
-     "title": "Factory step 6: design-language gate annex (twin-sourced) + on-page contract door",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2987",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "team",
@@ -233,13 +220,19 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 2990,
+     "title": "Single Current Hub Guard \u2014 strengthened: pin real Cloudflare publishing config (follow-up ",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990",
+     "draft": true
+    },
+    {
      "number": 2968,
      "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
      "draft": false
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 2
   },
   {
    "id": "memory",
@@ -412,6 +405,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
- "unassigned_prs": 2
+ "open_pr_total": 3,
+ "unassigned_prs": 1
 }
