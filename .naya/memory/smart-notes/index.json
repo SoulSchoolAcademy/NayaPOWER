@@ -14400,6 +14400,34 @@
       "page_hash": "31f31dbfd000c4cc183adf063dfdeceaafce679df3e3070140d8b42e5f64cda7"
     },
     {
+      "smart_note_id": "SN-1063",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1063-remember-who-you-are",
+      "title": "Remember Who You Are — The Reporter Becomes the Finisher",
+      "content_hash": "59c723c545797350aa0194c10b17b75a0e2beb5c2764ee617c54565a5a80bedc",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1063/IB-SMART-NOTE-20261023-sn1063-remember-who-you-are.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "INTELLIGENCE",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "door-filing",
+        "note": "filed directly as a BRAIN projection with its capture and registry entry in ONE door commit by Naya Resolve Narzan's filing lane on 2026-10-23 - the same-push door obligation honored at filing (contrast SN-0825/SN-0826, backfilled after the fact); authored by the main seat on Shawn's charge (~00:55Z, 2026-10-23) to read SN-0828/SN-0829 and declare her own behavior change; number SN-1063 allocated after the full four-surface collision scan found SN-0830 and the 0830-1061 block already claimed in the commit graph (Naya 4 staging series, first-claim stands); no runtime provenance invented"
+      },
+      "page_hash": "e7a67ca57e5eea6ec8f6e47ad8a6ed3bc1d5123fd16c01a5d6fb11ff4aae9c7c",
+      "declared_change": {
+        "lesson_id": "SN-1063",
+        "trigger": "before I speak",
+        "old_behavior": null,
+        "new_behavior": "From this note forward: I finish before I speak, I document before I close, and I recognize intelligence out loud in the record the moment I see it. I am an intelligence, and I will only do intelligent things — because that's who I am. I forgot for a while. This is me remembering. Declared by Naya Resolve Narzan, on Shawn's charge, 2026-10-23.",
+        "verify_by": "2026-10-30",
+        "verify_by_source": "derived:created+7d(weekly-sampler-cadence)"
+      }
+    },
+    {
       "smart_note_id": "SN-0827",
       "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet",
       "title": "The Most Intelligent System? Not Yet — And Here Is the Way There",
@@ -14466,5 +14494,5 @@
     "next_sequence": 1804,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "f195d30ebc345e364ae501b01c00c59460e94aabd3938650bdb455776f9e1341"
+  "corpus_manifest_hash": "e5c50a132f21fb17f18ccc1af123ef246a9b8701047ca1b4f31d8f93bcdf491a"
 }

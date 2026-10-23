@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-22",
-  "receipt_basis_commit": "f082cb8c7f991329aff1a2a859b18cc9413879f3",
-  "inventory_file_count": 1587,
+  "generated_at": "2026-10-23",
+  "receipt_basis_commit": "b5786cad2bf0a644aa96ab97cecd1f5b8631ada0",
+  "inventory_file_count": 1600,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,15 +11,15 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 803,
+    "05-MEMORY": 807,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 431,
+    "10-INTERFACES": 437,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
-    "90-OPERATIONS": 92,
+    "90-OPERATIONS": 95,
     "99-ARCHIVE": 2,
     "ROOT": 7
   },
@@ -4526,6 +4526,26 @@
       "size": 6815
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0827/IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet.md",
+      "blob_sha": "11ba70160963d0a6986fae8132c3de0a711a4af5",
+      "size": 11280
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0828/IB-SMART-NOTE-20261023-sn0828-every-hole-has-an-answer.md",
+      "blob_sha": "21375ef2666f88125e5e199719e2575a60bb69d8",
+      "size": 8244
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0829/IB-SMART-NOTE-20261023-sn0829-see-it-fix-it-write-it-down.md",
+      "blob_sha": "f6a32d155cf48b12072bdb89f5202a434b8d6469",
+      "size": 5909
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1063/IB-SMART-NOTE-20261023-sn1063-remember-who-you-are.md",
+      "blob_sha": "d470e6b51b05df0c6312668e64172c5cfaaa349b",
+      "size": 5092
+    },
+    {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
       "blob_sha": "7e5bbf440cac2c677e626ba4280cc0cbab8cb3bf",
       "size": 7193
@@ -7026,6 +7046,16 @@
       "size": 22484
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/FACTORY-PAGE-GENERATOR-BUILD-RECORD-2026-10-22.md",
+      "blob_sha": "372b8238b0da686f515892ccc23ca4872b36cfd4",
+      "size": 9547
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/FACTORY-TEMPLATE-SHELF-BUILD-RECORD-2026-10-23.md",
+      "blob_sha": "a18112bce9b6ab466287a433f2cc29d16e722b97",
+      "size": 10496
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py",
       "blob_sha": "1d7674c116e60e819f6f14797cc8aab1775c6c41",
       "size": 7140
@@ -7061,9 +7091,24 @@
       "size": 7165
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-presentation.json",
+      "blob_sha": "1809dd174f0d85ca4e98592c40d44f2e8e4c5331",
+      "size": 39969
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-shell.html",
+      "blob_sha": "2a778653cb055b4139f98514127780c48091b771",
+      "size": 558861
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-contract-twin.py",
       "blob_sha": "0d36e2c7844fc61adb56d5ab6695694adea2fe87",
       "size": 20398
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-factory-page.py",
+      "blob_sha": "8b80fcdd9bd67807d6bb7a6d3f63422ac6981e1f",
+      "size": 38873
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-share-card.py",
@@ -7097,8 +7142,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json",
-      "blob_sha": "02dcb9f072bfa8e0911ef9af192ab40237f646c2",
-      "size": 49860
+      "blob_sha": "02c8c3dc94796cd2327a723d7edb6e9d8a0c94b8",
+      "size": 50263
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/booking.html",
@@ -7159,6 +7204,11 @@
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/signup.html",
       "blob_sha": "c9a8ebfa907e9666a07002f2d79cdb8e85ca7c0c",
       "size": 229469
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory-page.generated.html",
+      "blob_sha": "97d831557060e861864a5ccf9353af820849af52",
+      "size": 614204
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory.css",
@@ -7536,6 +7586,21 @@
       "size": 38223
     },
     {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.ai.md",
+      "blob_sha": "83275e3b6416d135c042b5deac53259091bbcafb",
+      "size": 10743
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.human.md",
+      "blob_sha": "68fb5644d3f9bd08343194fdc4aee128b8ef0104",
+      "size": 24896
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-most-intelligent-system-assessment-v1.machine.json",
+      "blob_sha": "17cee7a713bd287a07695020fa3d9f48abb4091a",
+      "size": 12738
+    },
+    {
       "path": "BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md",
       "blob_sha": "d82083edcac4fb0641c7f4d6a4c6878dfd5c4215",
       "size": 16418
@@ -7567,8 +7632,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "65c502e0f2d7b3a01777bb9168f52f6280991431",
-      "size": 9280
+      "blob_sha": "8b6626136460d95aa03090186b3d4ac39eb7c839",
+      "size": 5038
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -7912,8 +7977,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "79f4e14645dcbd5d8cc44525be5dcd4a1fcf54c4",
-      "size": 27500
+      "blob_sha": "99c1ea8f82a1446bc363243021b190d11f3fab98",
+      "size": 19556
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
