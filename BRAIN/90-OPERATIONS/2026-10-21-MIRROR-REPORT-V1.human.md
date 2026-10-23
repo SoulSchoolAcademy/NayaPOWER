@@ -451,3 +451,6 @@ That conflicts with #2968's stated incident and proposed cure: `deploy-hub-cloud
 1. Reconcile the release authority across #2990, #2968, `hub-deploy.yml`, `tools/hub_deploy.py`, and the actual lane publisher. Prove which path currently serves production; do not infer from comments or config alone.
 2. Change the guard test to assert the canonical path and a negative control against the stale publisher; ensure it remains compatible with the approved retirement.
 3. Only after steps 1–2, run independent exact-head qualification of the guard and obtain the protected #2968 decision.
+
+
+**Queue accounting note (2026-10-23T03:51:53Z):** the four-PR count above is the exact pre-report-PR snapshot at 03:50Z. This report update itself is now draft PR [#2998](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2998), so the current queue is five. The report PR is not merged; it is the governed delivery path after the repository rejected direct writes to main.
