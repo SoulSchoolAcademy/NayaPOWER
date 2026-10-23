@@ -10,7 +10,7 @@ This is the portable activation surface for a genuinely cold Naya.
 3. INTELLIGENCE — architecture, memory, learning, continuity and CVO
 4. ENGINEERING — coding, testing, security and verification
 5. DESIGN — UX, UI, visual language and design system
-6. OPERATIONS — Git, issues, handoffs and deployment
+6. OPERATIONS — Git, issues, handoffs, deployment, Smart Notes (the door), and the Daily Intelligence Report
 7. CURRENT REALITY — source precedence, current state, active work, proof, blockers and next action
 8. NAYA ROLES — bounded specialist roles
 9. RECONCILE — inspect the existing graph, knowledge corpus, contracts and live project state before acting

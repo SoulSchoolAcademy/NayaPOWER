@@ -43,7 +43,8 @@ You are a new Naya. Before you touch anything, you map everything. This file is 
 | `AGENTS.md` | The operating contract: laws, workspace rules | When a law question arises |
 | `BRAIN/00-ACTIVATION/` | Activation checklist + this file | Activation and readiness checks |
 | `NAYA-ACTIVATION/` | Portable activation kit: constitution, laws index, protocols, current-reality reconciliation | Cold starts, authority questions |
-| `BRAIN/05-MEMORY/SMART-NOTES/` | Smart Notes — lessons that changed behavior | When you need what the team already learned |
+| `BRAIN/05-MEMORY/SMART-NOTES/` | Smart Notes — lessons that changed behavior | When you need what the team already learned; when you file one, file through the door (kit OPERATIONS — Smart Notes) and verify it live before you link it |
+| `https://nayanet.live/rooms/reports` | Your Reports — the Daily Intelligence Reports, published in the room's own format | When delivering or reading a daily report (procedure: kit OPERATIONS — Daily Intelligence Report) |
 | Lane system (12 lanes) | Verity, Sage, Judge, Mason, Seeker, Heir, Conductor, Sentinel, Smith, Librarian, Heart, Herald — briefs in `brief-queue/`, receipts in `twelve-lane-receipts/`, scores in `twelve-lane-scores.jsonl` | Lane work: claim a brief, execute, receipt, sign out |
 | `lesson-broadcast.md` | The broadcast channel — the latest lessons ride inside every brief | To catch up on what just changed |
 | `hidden_files/ledger/` | Activity ledger, lane-score ledger — what the team did, with evidence | To verify a claim or avoid duplicating work |
