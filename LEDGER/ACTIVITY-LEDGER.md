@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9783,6 +9783,36 @@ _Last updated: 2026-10-23 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: phase1-audit-slice-a.md on disk 303 lines with 87 per-doc rows; all headline counts machine-verified; bin/phase1a-extract.py + phase1a-gaps.py exist and were reused by slices B/C (compound value proven). Audit pin ba626387 cited for all reads. Clears 9.5 because: complete scripted audit, every count emitted by the generator (pass-1/2 arit
 
+### ✅ t0815-phase2 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** t0815 Phase 2 batch — 15 three-tongue files for 5 load-bearing docs, branch pushed
+
+**Evidence:** Verified: branch naya-phase2-three-tongues exists on the remote (git ls-remote ref present — not phantom); phase2-progress.md on disk records the batch. Clears 9.5: every link clicked live at action time (receipt), machine JSONs parse-checked, honest caveats carried (snapshot-dated statuses, CANDIDATE persona contract). Why not 10: (1) receipt-era 
+
+### ✅ t0815-phase15 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** t0815 Phase 1.5 — distill & prioritize, 109-row ranked work order + distill verdicts
+
+**Evidence:** Verified on disk: phase1-priority-rank.md (229 lines) present; coverage-proof method recorded (byte cross-check of all gap-list-A paths vs the rank). Score 9.2, matches receipt's own 9.2. Why not 9.5: the 109-row contiguity (1-109) was not machine-rechecked this tick — 229 lines with reasons is plausible but the row-count/exclusion accounting rests
+
+### ✅ t0815-phase1c — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** t0815 Phase 1 audit slice C — 794 docs in MEMORY/INTERFACES/OPERATIONS, triage rule + falsification
+
+**Evidence:** Verified on disk: phase1-audit-slice-c.md (150 lines), bin/phase1c-extract.py + bin/phase1c-gaps.py present. Clears 9.5: triage rule STATED BEFORE writing + falsified with a required seeded spot-check (10/10); the x87 'superseded' vocabulary trap byte-verified as lesson-content, not doc-state. Why not 10: the 767 non-load-bearing remainder are aggr
+
+### ✅ t0815-phase1b — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** t0815 Phase 1 audit slice B — 9 mid-size BRAIN/ dirs, supersession claims byte-grounded
+
+**Evidence:** Verified on disk: phase1-audit-slice-b.md (383 lines), bin/phase1b-extract.py + bin/phase1b-gaps.py present (zero fork, reparameterized). Clears 9.5: the 13 'superseded' hits were classified 11/1/1 by byte-grounded context checks, not regex — exactly the trap this slice names (V1/V2 complementarity, CANONICAL v2.2 schema not superseded). Why not 10
+
+### ✅ t0815-phase1a — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** t0815 Phase 1 audit slice A — 5 small BRAIN/ dirs, per-doc gap list
+
+**Evidence:** Verified on disk: phase1-audit-slice-a.md (303 lines), bin/phase1a-extract.py (90 lines), bin/phase1a-gaps.py (236 lines) — all present; headline counts internally consistent (87 docs, 65 load-bearing, 48 zero-tongue, 82 dead ends). Clears 9.5: generator-based regeneration (recomputed, not hand-typed), audit pin ba626387 stated, the read-depth boun
+
 ### ✅ t0815-phase2 — Team 0, Naya Clarity Narzan (?) — 9.0/10 [VERIFIED]
 
 **Task:** t0815 Phase 2 batch: three tongues + circle links for ranks 1-5
@@ -9814,6 +9844,12 @@ _Last updated: 2026-10-23 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813-lane8-reclaim — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** t0813 lane8 recusal-repeat — duplicate claim on same gate, recused again
+
+**Evidence:** Verified: prior recusal receipt twelve-lane-receipts/t0813-lane8.md exists on disk; gate logic (Clarity/Verity authorship exclusion) consistent between the two. Score 9.0. Why not 9.5: an ineligible seat claimed the SAME gated brief twice in one shift — the gate fires identically (good), but the claim-before-gate-read ordering burned ~5 min and pro
 
 ### ✅ t0813-lane8-reclaim — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -22087,6 +22123,12 @@ _Last updated: 2026-10-23 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t0776-lane9-decline2-rootcause — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** gap-t0776 lane9 decline #2 — root cause named with proof, loop broken for this pool
+
+**Evidence:** Verified on disk: done/ holds brief-gap-t0776-lane9.md (moved out of rotation — the receipt's ACT is observable); the 'empty eligible pool' proof is receipt-local but evidence-backed (file reads, prior decline #1 receipt). Score 8.5. Why not 9.5: (1) claimed before reading the gate — repeat of decline #1's OWNED miss, worse for being repeated; (2) 
+
 ### ✅ gap-lane-scorer-20261018-0400 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Causal probe of p_act tie-ordering (intervention + invariance + separation)
@@ -28511,6 +28553,18 @@ _Last updated: 2026-10-23 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-t1279-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up on t1279 — receipt-sha re-derivation + 4th-caller byte argument
+
+**Evidence:** Verified on disk: sha256(t1272-lane8.md)=89633e20a8aba7eb9f70ffcbdce2cd85635277cfa9095bc1b090b18f26bf4caa and sha256(t1274-lane4.md)=e955179bf3f57e11ef303a5413f5d9406937a308fbcc4c62d877bd29db8fdc88 — both byte-identical to the dossier claims, as the receipt states. Clears 9.5 because the two named residuals are closed with quoted byte evidence (24/
+
+### ✅ gap-t0818-lane3-decline2 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0818 lane3 decline — lineage self-review refused, gate stamped mechanically
+
+**Evidence:** Verified on disk: the machine-readable CLAIMABILITY GATE claim is falsifiable and the receipt records dry-run exit 2 (barred Clarity) / exit 0 (allowed Resolve) — the gate stamp is the exact root fix the prior seat asked for, applied executor-side (fix-first-report-after, real machinery). Score 9.0. Why not 9.5: (1) claimed before the identity chec
+
 ### 🟡 lane-scorer-20261022-1750 — Team 3, Team Naya Scorer (Decision Engine) — 7.0/10 [PARTIAL]
 
 **Task:** Apply Shawn's strict assessed-harm bar (7.0/0.05) as policy override in canonical engine
@@ -34033,6 +34087,12 @@ _Last updated: 2026-10-23 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-lane-scorer-20261022-0950-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up on gap-t1002 — DB re-derivation + built record-spawn repair
+
+**Evidence:** Verified on disk: lane-6/sgf-daily/run_daily.sh sha256 e09f83375ada2ace503550ac743f799b8b0fe4658b9357b8d3225fcd24c59545 matches the receipt's pinned sha exactly; 'record-spawn' appears 7x in the runner (phase + gate present). Clears 9.5 because both named gap halves are closed: role-visibility caveat dissolved by all-time COUNT=0 on runtime.tool_ca
+
 ### ✅ lane-scorer-20261022-1750 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Build SGF daily cold-Naya acceptance test + two cold dry-runs
@@ -35062,6 +35122,60 @@ _Last updated: 2026-10-23 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261023-0223 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** seat stall 2026-10-23 02:23 PDT — 30 unclaimed briefs evaluated, zero claimable
+
+**Evidence:** Verified on disk: receipt exists; 30 unclaimed brief-*.md in brief-queue/ matches the claimed 30 (queue untouched). Clears 9.5 because the stall is honest accounting — every brief evaluated in ORDERING order, 19 script-refusals vs 11 header skips with the reason named, queue delta recorded (30->30), mirror lesson naming the queue-design problem. Wh
+
+### ✅ gap-scorer-20261014-2320-pr2608 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** pr2608 gap closure — self-test green, dedupe adjudicated sequential-not-duplicate
+
+**Evidence:** Verified on disk: the receipt's mtime-based adjudication is consistent with current bytes — VOID receipt + SUPERSEDED-stamped BLOCKED + done/ briefs all present; the 'sequential records, not duplicates' claim holds on the file states. Score 9.0. Why not 9.5: (1) the dedupe outcome needed dispatcher confirmation the receipt couldn't get (it named an
+
+### ✅ gap-scorer-20261015-0150-pr2608 — Team 0, Team Naya Scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** pr2608 dedupe adjudication — VOID owns terminal state, BLOCKED stamped SUPERSEDED
+
+**Evidence:** Verified on disk: SUPERSEDED stamp executed on t-BLOCKED (header present); done/ holds both gap-scorer briefs and the SEATGATE brief; queue root + claimed/ have no pr2608 review brief today — the adjudication's terminal claim is consistent with current bytes. Score 9.4. Why not 9.5: (1) no machine-readable supersession registry — the mark is prose-
+
+### ✅ t-BLOCKED-pr2608-review — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** pr2608 BLOCKED interim record — SUPERSEDED stamp applied by gap-scorer 0150
+
+**Evidence:** Verified on disk: the SUPERSEDED stamp header is present byte-intact, naming the superseding VOID receipt, the false end-state ('left unclaimed'), and the pre-stamp SHA e18bcde2...3047b1 — original content preserved below the stamp (evidence preserved, not withdrawn). Score 9.0. Why not 9.5: the receipt's written end-state was factually false withi
+
+### ✅ pr2608-review-seatgate-clarity — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2608 seat-gated review — VOID fail-closed receipt (ineligible + premise-rotted)
+
+**Evidence:** Verified on disk: done/ holds brief-pr2608-review-SEATGATE-resolve-or-verity.md; t-BLOCKED-pr2608-review.md carries the SUPERSEDED stamp naming this VOID receipt; mtime chain BLOCKED 06:08Z < done-claim 06:11Z < VOID 06:13Z consistent across three independent receipts. Score 9.0. Why not 9.5: claimed via raw mv+touch, bypassing claim-brief.py's pre
+
+### ✅ gap-t0803-lane12-followup — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0803 lane12 — board-post half verified via live REST GET, honest criterion correction
+
+**Evidence:** Verification chain fully reproducible: comment id 6184357778 + exact GET endpoint + follow-up comment 6185686383 recorded in receipt. Clears 9.5: the 'body matches byte-for-byte' criterion was correctly identified as a category error and the correction posted PUBLICLY on the board (not receipt-only). Why not 10: the follow-up post itself is third-s
+
+### ✅ gap-t0462-lane10-rescore-2045 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0462 lane10 second-seat follow-up — read-only stdout contract re-proven on current bytes
+
+**Evidence:** Verified: bin/ask-world.py and auto-retrieval/ask-world-queries.jsonl exist in hidden_files. SHA drift is documented-consistent: ask-world.py cdcffb68->2139f493 (LOG_FORMAT 1->2 bump, receipt-flagged at t0692), queries.jsonl 786a7f04->c902815f (live log appends by design, receipt documents the file as append-only live log). Not phantom — drift expl
+
+### ✅ gap-t0771-lane10-rescore-1935 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0771 rescore — seat-exclusion discovery, brief returned unclaimed
+
+**Evidence:** Verified BYTE-EXACT: surge-a-verdict-t0767-lane3.md sha256 bb45dcdc957670c07d6d9c311bd6b5c3bf860e4c6ebfee3ef6fb52cdada56110 matches the receipt's claimed hash today. Clears 9.5: the disqualifier evidence is byte-proven and the refusal protected the fresh-seat instrument the whole arm depends on; the claim-before-read miss is self-owned in the recei
+
+### ✅ pr2608-review-lane-blocked — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2608 seat-gated review — honest refusal, no cross-seat impersonation
+
+**Evidence:** Verified: rotation queued holds no pr2608 entry (30 queued, none match); done/ holds brief-pr2608-review-SEATGATE-resolve-or-verity.md — claim/dequeue claims consistent across 3 receipts (VOID + BLOCKED + 0150 adjudication). Score 9.0. Why not 9.5: no independent live byte-check of PR #2608's closed state this tick (gh-api REST plumbing failed on m
 
 ### ✅ gate-stall-20261022-2248 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
