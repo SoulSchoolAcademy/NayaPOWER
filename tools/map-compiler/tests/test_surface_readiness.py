@@ -28,6 +28,20 @@ class SurfaceReadinessTests(unittest.TestCase):
         a["verified_receipts"] = ["receipt-locator-needs-external-validation"]
         a["positive_real_user_test"] = True
         a["adversarial_negative_test"] = True
+        a["experience_proof"].update({
+            "human_task_success":True,
+            "human_experience_score":9.5,
+            "naya_task_success":True,
+            "naya_experience_score":9.5,
+            "network_continuity_verified":True,
+            "useful_outcome_measured":True,
+            "efficiency_vs_baseline_measured":True,
+            "human_outcome_receipt":"external-human-receipt-placeholder",
+            "naya_handoff_receipt":"external-naya-receipt-placeholder",
+            "network_event_receipt":"external-network-receipt-placeholder",
+            "outcome_value_measurement":"quantified-useful-outcome-placeholder",
+            "cost_latency_measurement":"baseline-and-comparison-placeholder",
+        })
         return a
 
     def test_inventory_covers_known_doors_but_not_all_apps(self):
@@ -87,6 +101,43 @@ class SurfaceReadinessTests(unittest.TestCase):
         a = self.qualified_metadata()
         a["dimension_scores"]["Honesty"] = 8.9
         self.assertEqual(grade_surface(self.item), "BELOW_9_5")
+
+    def test_eight_perfect_scores_without_human_and_naya_experience_not_qualified(self):
+        a = self.qualified_metadata()
+        a["dimension_scores"] = {d: 10 for d in QUALITY_DIMENSIONS}
+        a["experience_proof"]["human_experience_score"] = None
+        self.assertEqual(grade_surface(self.item), "EXPERIENCE_UNASSESSED")
+
+    def test_naya_cannot_operate_is_not_ten_star(self):
+        a = self.qualified_metadata()
+        a["experience_proof"]["naya_task_success"] = False
+        self.assertEqual(grade_surface(self.item), "EXPERIENCE_UNVERIFIED")
+
+    def test_wonderful_human_ui_not_enough_if_naya_experience_low(self):
+        a = self.qualified_metadata()
+        a["experience_proof"]["naya_experience_score"] = 8.8
+        self.assertEqual(grade_surface(self.item), "BELOW_9_5")
+
+    def test_experience_without_proven_value_and_efficiency_is_not_accepted(self):
+        a = self.qualified_metadata()
+        a["experience_proof"]["useful_outcome_measured"] = False
+        self.assertEqual(grade_surface(self.item), "EXPERIENCE_UNVERIFIED")
+        a["experience_proof"]["useful_outcome_measured"] = True
+        a["experience_proof"]["efficiency_vs_baseline_measured"] = None
+        self.assertEqual(grade_surface(self.item), "EXPERIENCE_UNVERIFIED")
+
+    def test_isolated_excellent_page_without_cross_network_continuity_is_not_accepted(self):
+        a = self.qualified_metadata()
+        a["experience_proof"]["network_continuity_verified"] = False
+        self.assertEqual(grade_surface(self.item), "EXPERIENCE_UNVERIFIED")
+
+    def test_every_registered_surface_has_both_user_journeys(self):
+        self.assertTrue(self.registry["ten_star_experience_contract"]["hard_gates_non_averageable"] if "hard_gates_non_averageable" in self.registry["ten_star_experience_contract"] else self.registry["quality_thresholds"]["hard_gates_non_averageable"])
+        for row in self.registry["surfaces"]:
+            self.assertTrue(row["human_journey"])
+            self.assertTrue(row["naya_journey"])
+            self.assertTrue(row["network_continuity_journey"])
+            self.assertIsNone(row["assessments"]["experience_proof"]["human_experience_score"])
 
     def test_head_405_bounded_get_recovers_a_working_smartnote(self):
         class Response:
