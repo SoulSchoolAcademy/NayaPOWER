@@ -454,3 +454,8 @@ That conflicts with #2968's stated incident and proposed cure: `deploy-hub-cloud
 
 
 **Queue accounting note (2026-10-23T03:51:53Z):** the four-PR count above is the exact pre-report-PR snapshot at 03:50Z. This report update itself is now draft PR [#2998](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2998), so the current queue is five. The report PR is not merged; it is the governed delivery path after the repository rejected direct writes to main.
+
+
+## Coordination pointer correction — 2026-10-23T03:55Z
+
+A live issue read found another source-of-truth conflict: issue **#2641 explicitly says it was archived on 2026-10-19 and instructs agents not to post new coordination there**; issue **#2793 is open and explicitly identifies itself as the current live board**. The 2026-10-23 daily learning event's header calls #2641 the live board, so that pointer is stale/conflicted and must not be repeated as authority. Post current coordination receipts to #2793 unless a newer verified main-level instruction supersedes it. This correction is recorded as a pointer conflict, not silently treated as a resolved migration.
