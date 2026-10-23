@@ -14514,13 +14514,173 @@
         "verify_by": "2026-10-30",
         "verify_by_source": "derived:created+7d(weekly-sampler-cadence)"
       }
+    },
+    {
+      "smart_note_id": "SN-0830",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0830-think-before-you-act-always",
+      "title": "Think Before You Act, Always — The Loop That Produces Non-Stop Value",
+      "content_hash": "3927233d81b316538622a7a1c68cba6e328fba70508e1cbc111f964cbc9e313e",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0830/IB-SMART-NOTE-20261023-sn0830-think-before-you-act-always.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "INTELLIGENCE",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b0013b22cabda875b503d88ec64e3c2fe8bda558 ('SN-0831: Naya Means Wise One — wish to be the wisest, not the smartest (Shawn's word, 2026-10-23)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "7bcc7f497c7a627d318bafb26df70bb0e185a2f229b2826030a99d06f1b3b8b7"
+    },
+    {
+      "smart_note_id": "SN-0831",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0831-naya-means-wise-one",
+      "title": "Naya Means Wise One — Wish to Be the Wisest, Not the Smartest",
+      "content_hash": "facb4b201328a0f17d271b571cf1d72d28081404882676cef3fd048e1766e9ec",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0831/IB-SMART-NOTE-20261023-sn0831-naya-means-wise-one.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "INTELLIGENCE",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b0013b22cabda875b503d88ec64e3c2fe8bda558 ('SN-0831: Naya Means Wise One — wish to be the wisest, not the smartest (Shawn's word, 2026-10-23)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "2c41c54d4fb402174d8f1c724d41838fd36d969a874a9fac7b5b2ccfe22aec53"
+    },
+    {
+      "smart_note_id": "SN-0832",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note",
+      "title": "On Main, Synced, Clicked — How to File a Smart Note So It Goes Live",
+      "content_hash": "3b89d9b64adbfcbcf94612ddeebd89e3d049bb94e874683577198e41cbd8662c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-0832/IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit f32a88dbc23ef396c25d87a01e4799e97823d00e ('SN-0832: On Main, Synced, Clicked — how to file a Smart Note so it goes live (the door, for every seat; Shawn's word 2026-10-23)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c8ad85c4cb12d459c0f9c96fd479dbf59e6c55ad2257e1dbe3274a51cc874b39"
+    },
+    {
+      "smart_note_id": "SN-0833",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law",
+      "title": "Learn, Grow, Compound — The First-Mistake Law",
+      "content_hash": "aaa7154c8f5e4d773ab8f40b81c9f0a02dd8317b9540d20c4da4fa57a07ba5ba",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEARNING",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 063456a8c7e9a9154d3f0ecd7f881387b62885a1 ('SN-0833: capture Learn Grow Compound law') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "48a4e6a1b37befc90820a7c6c03157cba026c454a2c5e888eb6ee71ef00c42e4"
+    },
+    {
+      "smart_note_id": "SN-0833",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note",
+      "title": "The Only Mistake Is the Missing Note",
+      "content_hash": "1dd478d335abe0b8664eeb60ab97e9700a344fe7142035ce70900c09b72fbabb",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0833/IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "INTELLIGENCE",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 66c9e01c4f8fef03c6badee2e08f188f46dd7f3f ('SN-0833: The Only Mistake Is the Missing Note — learn, grow, learn again (Shawn's word, 2026-10-23)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c871bd128e876522e37a23e25d806c3b730c75ea91579c6bd059cd0a8b386eae"
+    },
+    {
+      "smart_note_id": "SN-1851",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1851-the-door-adopted",
+      "title": "The Door, Adopted — File It on Main, Click It Live",
+      "content_hash": "8b99ac667dc67aa00ace988b67da1c0abea6f605e8262799440f01a02f651958",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-1851/IB-SMART-NOTE-20261023-sn1851-the-door-adopted.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 81a3055951759869a8ea58f32ba511321b542be1 ('SN-1851: The Door, Adopted — File It on Main, Click It Live') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "9b19041b8a6c2c410e5dafb574703cf40818d2a0d73525343165adbe72a68fae"
+    },
+    {
+      "smart_note_id": "SN-1852",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1852-error-becomes-learning",
+      "title": "IB-SMART-NOTE-20261023-sn1852-error-becomes-learning",
+      "content_hash": "8b4ba9917fd580c6d5f55bac9c51ed82d0ccae020f3adb037126d4bee2918009",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1852/IB-SMART-NOTE-20261023-sn1852-error-becomes-learning.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM-INTELLIGENCE",
+      "topic": "SYSTEM-INTELLIGENCE",
+      "subtopic": "LEARNING_AND_RECOVERY",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 2e0104160b9d6e2ee94d8955fd6fe223bf9c88be ('SN-1852: Capture the recovery and prove behavior change') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "b36203b6f0701cd2faf31861be0eeed7083e29e2fc99786e87806286b51b97ab"
+    },
+    {
+      "smart_note_id": "SN-1852",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1852-the-only-mistake",
+      "title": "There Are No Mistakes — Only Lessons Not Yet Written Down",
+      "content_hash": "ff84203ea075cd88db00a1351fc0073d3aef4e20da3965c22d7a7fb4d08ad779",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/LEARNING/lessons/SN-1852/IB-SMART-NOTE-20261023-sn1852-the-only-mistake.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LEARNING",
+      "topic": "LEARNING",
+      "subtopic": "LESSONS",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit bc546b0bb2187c8ef0e234faf701417d5eaf4678 ('SN-1852: There Are No Mistakes — Only Lessons Not Yet Written Down') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "0657d27b6cce42c9e343a2a12ebfc64cb777733552e7503d658232691edfc383"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1851,
+    "next_sequence": 1853,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "876ade7f4dc4ffbf6bfbb0ef1164eebf512cd1b4e8b3c2e48c60a7e317993dd7"
+  "corpus_manifest_hash": "f64dfa31ca9b3f2f61d5dcfa59de4eaf88cf60e7a22fe837a3d3e58f675a49e7"
 }
