@@ -277,3 +277,6 @@ The human tongue retains the complete ten assets, gaps, actions, enhancements, b
 ### Critical new finding: Hub release-path conflict
 
 At #2990 head `edb9946e68aed087bdf5338576f842f0b02f78ac`, the added test requires `deploy-hub-cloudflare.yml` and its `HUB/app/**` trigger to remain. #2968 identifies that workflow as the stale-snapshot publisher and removes the trigger; the alternative `hub-deploy.yml` / `tools/hub_deploy.py` says its transport is NOT_CONFIGURED without `HUB_DEPLOY_CMD`. These claims conflict. I posted cross-PR evidence comments to #2990 and #2968. Current state: **BLOCKED pending identification and proof of the actual canonical publisher**. Do not qualify or merge either PR in isolation. First reconcile the release path, then pin the guard to the canonical publisher and prove the stale path fails.
+
+
+**Queue accounting:** the four-open-PR figure is timestamped at 03:50Z before this report PR existed. Draft report PR [#2998](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2998) opened at 03:51:53Z, bringing the current queue to five; it is not merged.
