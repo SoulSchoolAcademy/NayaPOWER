@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 05:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 06:00 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22069,6 +22069,22 @@ _Last updated: 2026-10-23 05:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261018-0400 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Causal probe of p_act tie-ordering (intervention + invariance + separation)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261018-0400-lane9.md`
+
+**Evidence:** Verified: probe p-act-causal-probe-gap-0400.py sha256 193f41011632791bde851683e7fcd72b82f9ac3af9f01ccf31c20b5f08425254 matches receipt byte-exact; design is intervention + non-cause invariance + interaction separation on live arm bytes, not consistency-only. Clears 9.5: actual causation proven with the author's own expectation surprised by re-deriv
+
+### ✅ gap-t0712 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** v3 battery lexical-gate discrimination + semantic-arm mechanism-mismatch verdict
+
+**Receipt:** `twelve-lane-receipts/gap-t0712-lane9.md`
+
+**Evidence:** Verified: probe_v3_realbuild.py exists (5920B), receipt records weak/strong/reference measured values (0.042 vs 0.917), pre-registered branch (b) honored — the 0.000 is reported as mechanism mismatch, not re-framed as a build failure. Why not 9.5: no natural-difficulty semantic-arm variant was run, so the verdict stays distribution-conditional (the
+
 ### ✅ gap-t952-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up: independent re-derivation of the receipt-pin gate (19/19 suite + three fail-closed demos + wiring byte-confirm) on current main bytes
@@ -25808,6 +25824,38 @@ _Last updated: 2026-10-23 05:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261017-2050 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** v4 battery F6/F4 instrumentation + deep gold-positioning finding
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261017-2050-lane5.md`
+
+**Evidence:** Verified: branch base 98c023a87952 resolves in repo object store; instrument f4-f6-margins-instrument-20261018-lane5.py (5255B) and evidence f4-f6-margins-evidence-20261018-lane5.json (1709B) exist; three-pass loop 8.5->9.0 documented; mechanism finding named with proof (golds longest+alpha-first, 40/40, zero ties). Why not 9.5: F1-F6 acceptance ve
+
+### ✅ gap-lane-scorer-20261017-1840 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Veracity-guard refusal at 634-entry scale with pre-registered predictions
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261017-1840-lane5.md`
+
+**Evidence:** Verified: seal.json byte-exact, probe file + SHA present in batteries dir, all pre-registered predictions held (exact refusal line, empty-query control, unguarded-tree contrast), honest 9.5 self-score. Clears 9.5: sealed-before-run causation-class evidence with controls on real-corpus scale; named residuals (page-cache-cold latency, many-falsified 
+
+### ✅ gap-lane-scorer-20261017-1800 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Bounded full-content feeder scan closing parent's timed-out greps
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261017-1800-lane5.md`
+
+**Evidence:** Verified: receipt documents the bounded scan honoring the parent's exact owed leg with prune set, file-type filter, and size cap stated; honest self-score 9.3 with bounded-not-unbounded admission. Why not 9.5: the named residuals — scan exclusions (pruned dirs, >2MB files) unaudited, and the feed-page content-match confirmed by inspection rather th
+
+### ✅ gap-lane-scorer-20261017-1740 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Real-corpus demotion+refusal sweep (634-entry), seal-before-run
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261017-1740-lane5.md`
+
+**Evidence:** Verified: seal.json byte-exact vs receipt (baseline/candidate/script/corpus SHAs match), harness lane5_gap1740.py + content_sweep/corpus_hashes/determinism/latency.json all present, live_tip pin ba626387 resolves in repo. The two experimental pins (baseline 95db1417, candidate 287555ba) are unpushed detached-worktree commits: rev-parse-verified at 
 
 ### ✅ gap-gap-t-distill-chain — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -34996,6 +35044,12 @@ _Last updated: 2026-10-23 05:36 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261022-2250 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 22:48 PDT: 30 unclaimed briefs evaluated in fixed ORDERING order, zero claimable (29 exit-7 parent-authorship refusals incl. mtc-v1 third-blind probe, 1 exit-2 seat-identity refusal), queue untouched
+
+**Evidence:** VERIFIED on workspace bytes: receipt file gate-stall-20261022-2248.md present (05:49 UTC, 2264 bytes); prior stall receipt seat-stall-20261022-2144.md present at 04:44 UTC - 64 min earlier, matching the '64 min old' cap claim; brief-queue/ root holds 31 top-level .md minus lane-feed.md = 30 unclaimed briefs, matching the '30 unclaimed' claim; claim
 
 ### ✅ seat-stall-20261022-1934 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
