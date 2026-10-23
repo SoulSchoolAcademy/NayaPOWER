@@ -177,3 +177,90 @@ What we have built is, as far as we know, the most *honest* system of its kind: 
 - SN-0827's "next ten" listed regenerating the brain index as future work; it was already done when the note landed. This report supersedes that line on bytes — a small, perfect example of why every claim carries its tip.
 
 *Pass the torch, not the burden. — Naya Resolve ✨*
+
+
+---
+
+# Project Intelligence Current-State Surface — Effectiveness Scorecard
+
+**Review date:** 2026-10-23  
+**Scope:** the stated objective that any Naya/AI can open one canonical project-intelligence surface, understand exactly what is true now, see every relevant component/link/evidence item, update it safely, and leave every other seat with the same current state.  
+**Status:** assessment and proposed fixes; no schema or production changes made by this review.
+
+## Verdict and scores
+
+**Design/specification effectiveness: 8.0/10.** The submitted review correctly identifies most of the architecture gaps and its proposed fixes are practical. I would not award 9/10 yet: it assumes the bridge writes `project_intel_items`, but live Edge Function source v17 writes to `public.nayanet_project_intelligence_bridge`, and that table is absent from the live public schema. That invalidates the most important end-to-end assumption.
+
+**Demonstrated live effectiveness: 4.0/10.** The existing data objects are real, but the current bridge path is not demonstrated end-to-end and appears unable to pass its first database lookup. A healthy-looking table and an ACTIVE function status are not proof of a functioning data path.
+
+**Overall readiness for the stated objective: 6.0/10 — NOT ACCEPTED as a complete current-state door yet.** This is a reasoned review score, not a pre-existing system score. It must be independently rescored after the writer/schema path, published state, permissions, and live probes are proven.
+
+| Dimension | Score | Reason |
+|---|---:|---|
+| Canonical purpose and reader model | 9/10 | Human, Naya/builder, and machine representations are a strong pattern when they are projections of the same truth. |
+| Discoverability and links | 8/10 | A system map is needed, but it must be generated from existing sources rather than maintained as a second registry. |
+| Freshness and staleness honesty | 5/10 | A stable state door, timestamp, age budget, and automatic stale state are not yet demonstrated for this proposed surface. |
+| Write-path completeness | 3/10 | Live bridge v17 references a table absent from the live public schema; writer inventory is incomplete until all writers are enumerated. |
+| Schema/ledger authority | 5/10 | `ledger_entries` (30 rows) and `nayanet_smart_ledger` (420 rows) both exist; their separate meanings need to be declared, not collapsed by assumption. |
+| Runtime proof and observability | 4/10 | The function is ACTIVE v17, but that only proves deployment metadata; it does not prove persistence, retrieval, rendering, or acknowledgement. |
+| Safe update permissions | 4/10 | `public.work_items` has RLS disabled in the live schema. This is a critical exposure until the intended access model is fixed and verified. |
+| Machine readability/versioning | 7/10 | Machine representation exists in adjacent canon, but the new stable door still needs explicit schema version, freshness, per-seat authorization, and compatibility rules. |
+| Ownership and update discipline | 7/10 | The architecture points toward one current source, but writer ownership, conflict handling, and atomic cutover need to be made explicit. |
+| End-to-end acceptance | 3/10 | No current evidence was found in this review for the complete cold-reader → update → persist → retrieve → render → independent confirmation loop. |
+
+## Fresh evidence from the live Supabase project
+
+Project: `dahisasgpfvziswqvmvm`.
+
+- `public.project_intel_items` exists, has RLS enabled, and contains **126 rows**. Its state check permits `done-proven`, `in-motion`, `blocked`, `queued`, `needs-his-hands`, and `summary`.
+- `public.projects` exists with **9 rows**; `public.object_links` exists with **33 rows**.
+- `public.ledger_entries` has **30 rows**; `public.nayanet_smart_ledger` has **420 rows**. They must not be called duplicate ledgers without comparing their contracts and consumers. Proposed contract: name `ledger_entries` canonical for transitions only if source/consumer inspection confirms that role; document `nayanet_smart_ledger` as its distinct domain ledger, or propose a migration only with evidence that they truly duplicate the same facts.
+- Live Edge Function `nayanet-project-intelligence-bridge` is ACTIVE **v17**, `verify_jwt=false`, with its own GitHub OIDC validation. Its code queries and inserts `public.nayanet_project_intelligence_bridge`; that table does **not** appear in the live public table inventory. The first idempotency lookup therefore fails with a missing-relation error for otherwise valid packets. This is a concrete live schema/code mismatch. Do not label the bridge working until the intended durable receipt store is selected, deployed through governed migration, and tested.
+- The bridge writes a cognition event and expects an index trigger after that receipt store. That downstream path also needs an integration test once the initial missing-table failure is resolved.
+- Supabase's live schema advisor reports RLS disabled on `public.work_items` and `public.hub_daily_intelligence_reports_backup_20261022`. The first table currently has zero rows, but it is still exposed to the `anon` and `authenticated` roles if grants allow it. This review made **no security changes**. Before use, decide the correct access policy and apply/verify RLS with explicit policies; simply enabling RLS without policies may break intended access. The dated backup should be reviewed for retention and exposure, not silently deleted.
+
+## Five required corrections to the submitted plan
+
+1. **Resolve the bridge/table contract before schema migration.** The review's statement that the v17 bridge writes `project_intel_items` is contradicted by the live function code. Enumerate every writer of `project_intel_items`, `projects`, `object_links`, both ledgers, and the bridge's intended receipt store. Then select one authoritative persistence contract and migrate schema + all writers in the same landing. Do not create a second state registry to paper over the mismatch.
+2. **Make `system_map` a derived projection, not a master table.** Generate it from `projects`, `object_links`, the actual Supabase function inventory, repository artifacts, and their verified runtime probes. Include source identity and last-observed time for every node/edge. No hand-maintained duplicate registry.
+3. **Define a stable state door before building consumers.** Publish a stable URL and versioned JSON contract from the same derivation as the human and AI views. Minimum fields: `schema_version`, `generated_at`, `source_main_sha`, `source_refs`, `freshness_seconds`, `overall_state`, `verified_at`, `items[]`, `links[]`, `owners[]`, `blockers[]`, `unknowns[]`, `next_actions[]`, `evidence[]`, and `update_contract`. Include a per-seat view only behind authenticated authorization; a query parameter such as `?seat=` is a selector, **not** an authorization boundary.
+4. **Make state changes safe and atomic.** Add new states/columns permissively first. Keep the existing reader compatible. Switch state names, enforcement, and the new reader in one coordinated landing or provide an explicitly tested compatibility mapping. Never create a deployment window where existing groups silently misclassify work.
+5. **Prove the data path, not just the spec.** A single acceptance run must show: cold Naya opens stable door → sees current main SHA + freshness → follows source links → submits authorized update → writer persists once idempotently → derived views regenerate → a second seat retrieves and renders the same update → stale/unauthorized/duplicate inputs are rejected → receipts identify exact sources and outcomes.
+
+## 10× better, without unnecessary complexity
+
+- **Three probe kinds only in v1:** `http_substance` (door returns expected marker and max age), `table_freshness` (verified timestamp within budget), and `filed` (only valid when a durable record and receipt exist). No fourth probe kind until an amendment proves the need.
+- **One generated map, one data contract, multiple views.** Human-readable report, Naya/builder instructions, machine JSON, and Hub view must be projections from the same source data and carry the same source SHA/version. If any disagree, mark the surface CONFLICTED and show the differing source.
+- **Freshness budget:** default target 15 minutes for operating state; show exact age and become STALE automatically after the budget. Queue items escalate at 24 hours and alarm at 72 hours only if the underlying timestamps and scheduler are actually wired.
+- **No decorative metrics:** omit `cost_units` until a real meter populates it. Keep value/efficiency metrics at the house-level census until item-level instrumentation exists.
+- **Daily ledger reconciliation:** verify the relationship between the two ledger types and show a gap only when a documented invariant fails. Do not compare counts alone if their semantics differ.
+- **Single-writer contract:** enumerate writers and assign one authoritative writer per shared state surface. Other functions emit events/receipts or call that writer; they do not independently mutate the same state.
+- **Safe privacy by default:** private operating details remain private. The public status view exposes only approved, non-sensitive fields. Seat-specific views require authorization on the server, not a client-side filter.
+
+## Highest-value execution order
+
+1. **P0 — Security:** decide and implement the intended RLS policies for `public.work_items`; inspect the dated backup table's grants, data sensitivity, and retention. Do not enable RLS without the policies needed for intended access.
+2. **P0 — Bridge/schema mismatch:** prove whether the missing `nayanet_project_intelligence_bridge` table is intentionally absent or incorrectly deployed. Inspect migration history and all writers, then choose the smallest governed schema/code alignment. No production write until this is reviewed.
+3. **P1 — Writer census:** enumerate all writers for `project_intel_items`, `projects`, `object_links`, `ledger_entries`, and `nayanet_smart_ledger`; add a CI check that rejects unregistered writers.
+4. **P1 — State-door contract:** publish schema v1 at a stable authorized URL from a single derivation, with main SHA, generation timestamp, freshness, links, epistemic state, and safe update semantics.
+5. **P1 — Generated map:** derive all system nodes/links from existing canonical records and live function inventory; never hand-maintain the map.
+6. **P1 — Atomic compatibility cutover:** add fields permissively; switch enforcement and the reader together; verify the current page never displays wrong buckets.
+7. **P1 — End-to-end cold test:** one update, one durable receipt, one independent cold reader, one correct render, one negative-control run.
+8. **P2 — Freshness and aging:** automate 15-minute staleness, 24-hour escalation, 72-hour alarm, and dead-man heartbeat only after confirming the scheduler actually runs.
+9. **P2 — Ledger semantics:** document the two ledgers' distinct contracts and a reconciliation invariant; do not merge tables solely to make counts match.
+10. **P2 — Independent rescore:** after all evidence lands, have a different seat rerun the acceptance battery and rescore every dimension. 10/10 requires complete current proof, no critical unknown, and no known security exposure.
+
+## Acceptance gate — what a real 10/10 means
+
+- A cold Naya reaches the door in under 10 minutes without prior chat context.
+- The door identifies one current canonical state, exact main SHA, version, freshness, owner, and evidence for every material status.
+- Every relevant component and link is discoverable through a generated map; dead and unauthorized links are detected.
+- An authorized update persists exactly once and appears in all projections within the freshness budget.
+- A second, different seat independently confirms the same state from the evidence.
+- Stale, conflicting, malformed, unauthorized, and duplicate writes fail closed with useful receipts.
+- No duplicate source-of-truth table; no public sensitive data; all exposed tables have intentional RLS/grants.
+- The system automatically detects drift and stale state, records the event, routes it to an owner, and confirms the fix.
+- Machine JSON validates against a versioned schema; old clients have a tested compatibility path.
+- The independent scorer can reproduce the result from exact links and live receipts.
+
+**Decision:** accept the architecture direction; do not accept the current implementation as 9/10. The plan is strong, but the bridge/schema mismatch and RLS exposure are material blockers. Fix the real seams first, then rescore from a cold run.
