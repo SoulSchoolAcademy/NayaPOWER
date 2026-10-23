@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 22:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -551,6 +551,12 @@ _Last updated: 2026-10-23 22:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on live bytes: #2620 head == 6e939c5cafd1847e93aad68fd19dd9b5093036a2 (open, unmerged - #2459 hold honored); Receipt-gate check runs at that head: failure 14:05:55Z -> successes 14:44:16Z and 14:55:15Z (exact timestamp the receipt claims); #2537 comment 6195037810 exists on the live board with the seam-owner-update body; merges #2625/#2634
 
+### ✅ t1468 — Team 5, Team Naya Scorer (Retrieval) — 9.4/10 [VERIFIED]
+
+**Task:** SURGE slice (a) arm4 second-seat confirmation (blind re-derivation + re-execution)
+
+**Evidence:** ARTIFACT VERIFIED on live bytes: hidden_files/surge-slice-a-arm4-secondseat-t1464/ contains verdict-table-arm4-t1464.json (20/20 numbers, all verdict=MATCH vs builder), secondseat-derivation.json, SEAL-AUDIT.md; parent surge-slice-a-arm4-t1460/ sealed dir present with prereg, arm scripts, results. Score 9.4 (GOOD, ONE MORE PASS). Kept from 9.5 by e
+
 ### ✅ t1467 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** t0685 stamping-migration prep packet second-seat byte-verification -> WIRE-READY
@@ -731,11 +737,23 @@ _Last updated: 2026-10-23 22:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: arm-j-prereg-v3-t0757.md sha256 byte-matches pin 6f91e763; dry-fire script + json + detached seal all on disk; pins re-derived at action time per receipt. Score 9.5 ACCEPTED. Gap from 10: single-seat deterministic dry-fire (no independent replication yet); §11 minimal-name substrate still a hypothesis, untested — named.
 
+### ✅ t1466 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** sealed-tip four-way battery re-run (20 seed blocks) — premise-drift diagnosis
+
+**Evidence:** ARTIFACT VERIFIED on live bytes: all 6 cited evidence files byte-match their claimed SHA prefixes (rubric 635c7d03, seal 9281a6ca, fourway_blocks e1ab6d45, compounded-verdicts 29d5f3a9, arm123-summary 01c11221, schema-recon e5fc85c6); proofs/IB-0001..IB-0020 all 20 present. Score 9.2/10. The work is genuinely high-value: rubric sealed before arms, 
+
 ### ✅ t1466 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SCOPE-LAW slice shipped: D5a+D5b live, tamper proof, D5c named
 
 **Evidence:** Verified: log_sha256 present in retrieval/tally-t0710.py and tally_sha256 pins present in lane-4/smartblocks-pilot-t0728/lookup-match.py — the machinery the receipt claims is on disk. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: D5d carried not built (named carry); tally-t0710.py's new log_sha256 key compile-verified but never exercised end-to-end; 
+
+### ✅ t1466 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.7/10 [VERIFIED]
+
+**Task:** Stage-0 #4: sealed prereg for t992 A-shape+L-099 replication (one arm, blinded) — honest block
+
+**Evidence:** ARTIFACT VERIFIED on live bytes: lane2-t1464-adv/preregistration.md SHA 50427da64e4d85c372a0f7e0efde006d3c5ca662, mtime 22:52 = seal time 22:52:11Z (no post-seal edits); arm-key.md present; zero arm files in the dir, confirming nothing ran pre-seal; the t992 quotes re-derived in the prereg are verbatim vs lane2-t992-v2/preregistration.md L16 (Shape
 
 ### ✅ t1466 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -754,6 +772,12 @@ _Last updated: 2026-10-23 22:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** BLOCKED: reviewer eligibility voided by prior residuals exposure
 
 **Evidence:** Verified: no artifacts claimed and none needed — a BLOCKED verdict, not a build; brief-t0756-lane12.md sits in brief-queue/done/; the block cites the brief's own DoD #3 'never before' line. Score 9.0 GOOD-ONE-MORE-PASS. Gap from 9.5: nothing shipped — the grader second review is still owed and re-queue is dispatcher-side; this receipt only prevents
+
+### ✅ t1466 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** SN-1776 receipt-briefcheck cadence certification — CADENCE-GAP verdict
+
+**Evidence:** ARTIFACT VERIFIED on live bytes: receipt-briefcheck-firings.jsonl SHA 964dbcc92c81b6e89884, exactly 2 lines; bin/dispatch-reconcile-tick.py SHA 4d71e95fe98343ffb235; the 'via':'dispatch-reconcile-tick.py' field is a hardcoded constant (L190) and enforcer_sha256 a hardcoded 16-char prefix (L191) that currently matches the live bin/receipt-briefcheck
 
 ### ✅ t1466 — Team 10, Naya Verity Librarian (Brain Index) — 8.5/10 [VERIFIED]
 
@@ -813,6 +837,8 @@ _Last updated: 2026-10-23 22:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Task:** GATE_BLIND marker + exit-2 contract (INFRA ask 3)
 
+**Receipt:** `twelve-lane-receipts/t1464-lane8.md`
+
 **Evidence:** Verified: remote branch naya/gate-blind-marker-t0762 EXISTS (git ls-remote head 87536979); exit-code contract 0/1/2 quoted from the Lane 6 design source; word discipline held (no FAIL on blind lines); fail-closed preserved. Kept from 9.5: no exact head SHA in the receipt excerpt, so verification closes at branch-exists, not byte-exact match; falsif
 
 ### ✅ t1464 — Team 7, Naya Resolve Conductor (Team Operations) — 9.0/10 [VERIFIED]
@@ -831,11 +857,15 @@ _Last updated: 2026-10-23 22:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Task:** Branch-only DEMOTE wiring (FALSIFIED verdict)
 
+**Receipt:** `twelve-lane-receipts/t1464-lane5.md`
+
 **Evidence:** Verified: remote branch naya/demote-falsified-t0762 EXISTS (git ls-remote head 4c29f341); stale-base trap caught and re-wired against live tip 0cc7c9f2; t1282 inversion reproduced on live bytes (SN-D4 81.89 vs SN-D5 70.98); 20/20 acceptance green claimed with results file named; CANDIDATE-only, never merged. Kept from 9.5: receipt gives no exact he
 
 ### ✅ t1464 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Arm J v4 pre-reg dry-fire (REFUSED)
+
+**Receipt:** `twelve-lane-receipts/t1464-lane2.md`
 
 **Evidence:** Verified: dry-fired on pinned bytes pre-seal (120 NLI calls); 0c self-entailment probe fired 2/12 pairs; C1 own-situation fire evaporated with card prose removed; own probe bug (echo vs leak) caught and fixed pre-seal; refusal per frozen gate, battery not dispatched. Kept from 9.5: refusal is a design endpoint, not shipped value — the named design 
 
@@ -867,6 +897,8 @@ _Last updated: 2026-10-23 22:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Task:** instrumented bin/ask-world.py with append-only query logging + live-check
 
+**Receipt:** `twelve-lane-receipts/t1463-lane10.md`
+
 **Evidence:** ARTIFACT-VERIFIED on live bytes: ask-world-queries.jsonl exists in hidden_files/auto-retrieval/ (89 lines at score time, up from the receipt-time 24 - organic lane traffic is accumulating, confirming the instrument works in production). Read-only contract proof was by the lane's own old-vs-new output diff (byte-identical across 4 query paths). Kept
 
 ### ✅ t1463 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
@@ -896,6 +928,8 @@ _Last updated: 2026-10-23 22:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 ### ✅ t1462 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** B-60: wire the Smart Note Completeness Gate into CI (PR #2509)
+
+**Receipt:** `twelve-lane-receipts/t1462-lane4.md`
 
 **Evidence:** VERIFIED: PR #2509 EXISTS (state=open, not merged, title 'B-60: wire the Smart Note Completeness Gate into CI (Gate 3 of 7)'); diff is exactly ONE file added: .github/workflows/smart-note-completeness-gate.yml (+33/-0); receipt's base e8b4868c CONFIRMED as the #2501 merge commit; B-60 (MERGED-NOT-ENFORCED) genuinely closed by the wiring. 9.0: real 
 
