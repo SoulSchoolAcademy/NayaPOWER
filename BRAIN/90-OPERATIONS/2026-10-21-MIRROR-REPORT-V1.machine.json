@@ -641,7 +641,7 @@
     },
     "verdict": "NO — not yet the most intelligent system creatable. Current evidence sharpens the diagnosis but does not justify a new numerical score.",
     "top_actions": [
-      "Independently qualify #2990 against actual Cloudflare publishing config with a stale-path negative control.",
+      "Resolve the release-path conflict across #2990, #2968, hub-deploy.yml, tools/hub_deploy.py, and the actual lane publisher; prove the canonical path before qualifying the guard.",
       "Independently qualify #2997 at exact head and verify all merge-gate receipts.",
       "Reconcile #2981 path-by-path; split or close superseded work, preserve lineage, avoid duplicate notes.",
       "Prepare #2968 for Shawn's explicit Tier-A deletion/release decision.",
@@ -652,7 +652,7 @@
       "Prove Sender-to-Receiver-to-Hub persistence, provenance, privacy, and useful outcome.",
       "Prove one executable Factory contract and scoped kernel/node behavioral influence."
     ],
-    "acceptance_law": "10/10 requires current, complete, independent evidence and no material critical unknown; prose, merge, or green CI alone do not qualify.",
+    "acceptance_law": "10/10 requires current, complete, independent evidence and no material critical unknown; prose, merge, or green CI alone do not qualify. Release guard qualification is BLOCKED until the actual production publisher is identified and the stale-path negative control is proven.",
     "supersedes": "This addendum supersedes the 2026-10-21 snapshot only for current main/queue claims; historical scores remain historical until freshly measured.",
     "source_links": [
       "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
@@ -660,6 +660,21 @@
       "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990",
       "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2997",
       "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-LEARNING-EVENT.md"
-    ]
+    ],
+    "release_path_conflict": {
+      "status": "BLOCKED",
+      "finding": "At #2990 head edb9946e68aed087bdf5338576f842f0b02f78ac, tests/test_hub_single_source.py requires deploy-hub-cloudflare.yml to retain the HUB/app/** trigger and HUB/wrangler.toml to publish ./app. #2968 proposes removing that trigger and retiring the stale snapshot publisher. hub-deploy.yml/tools/hub_deploy.py says alternate transport is NOT_CONFIGURED without HUB_DEPLOY_CMD.",
+      "consequence": "Do not qualify or merge #2990 or #2968 in isolation until the actual canonical production publisher is identified and evidenced.",
+      "required_next_steps": [
+        "Identify the actual current production publisher using live deployment evidence, not prose/config alone.",
+        "Reconcile #2990 and #2968 so the guard pins the canonical publisher and the stale path is rejected.",
+        "Independently test exact head with positive and negative controls.",
+        "Obtain Shawn's explicit Tier-A decision for the deletion/release effect in #2968."
+      ],
+      "comments": [
+        "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990",
+        "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968"
+      ]
+    }
   }
 }
