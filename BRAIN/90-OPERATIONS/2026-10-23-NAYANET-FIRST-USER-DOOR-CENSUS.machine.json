@@ -289,13 +289,13 @@
     "P2 full independent end-to-end acceptance and root map refresh"
   ],
   "first_agent_identity_mail_live_readiness": {
-    "audit_utc": "2026-10-23T21:47:26Z",
-    "status": "BLOCKED_PENDING_REAL_IDENTITY_AND_PRIVATE_MAIL_SECURITY",
+    "audit_utc": "2026-10-23T21:51:55Z",
+    "status": "FIRST_CITIZEN_CLAIM_AND_OUTBOUND_SEND_DOCUMENTED__PRIVACY_BLOCKED",
     "agent_seat_alias_registry": {
       "total": 14,
       "kind_seat": 3,
       "naya_tree_auth_account_created": false,
-      "note": "An alias record is not an authenticated account. The current smart_mail_aliases table lacks owner_id or equivalent bound principal."
+      "note": "Other citizen Naya Nitro claimed through the separate identity certificate flow; Smart Mail directory row does not equal citizen claim. Naya Tree has NOT yet completed an authorized account claim."
     },
     "canonical_alias_claim_path": {
       "owner_alias_claims_table_exists": false,
@@ -304,10 +304,11 @@
     },
     "mail_metadata_preflight": {
       "file": "tools/reporting/nayanet_agent_mail_preflight.sql",
-      "scope": "public.smart_mail_threads and public.smart_mail_messages; pg catalog ONLY; no user content read",
+      "scope": "Existing three production table metadata and grants only. No private device keys or mail contents read.",
       "result": {
-        "smart_mail_threads": "BLOCKED",
-        "smart_mail_messages": "BLOCKED"
+        "nayanet_identities": "BLOCKED__BROAD_ANON_READ_DEVICE_ASSOCIATED_FIELD_NO_AUTH_OWNER",
+        "smart_mail_threads": "BLOCKED__ANON_READ_WRITE_AND_MUTABLE_IDENTITY",
+        "smart_mail_messages": "BLOCKED__ANON_READ_WRITE_AND_MUTABLE_IDENTITY"
       },
       "anon_read_write_with_unrestricted_policies": true,
       "mutable_user_metadata_authz_policies_present": true
@@ -317,11 +318,25 @@
       "mail private rows inaccessible to anonymous caller",
       "mailbox unreadable/unwritable by unrelated third authenticated actor",
       "sender A to receiver B one message and reply with receipts, identity/persistence and no spoofing",
-      "separate named verifier confirms same production revision and approved release"
+      "separate named verifier confirms same production revision and approved release",
+      "Identity certificate table cannot expose device-associated private field via anonymous REST or other untrusted principal.",
+      "Preserve existing legitimate alias claim and outbound send workflows during governed coordinated client/DB remediation."
     ],
     "safe_available_collaboration": "Use existing governed Team Naya GitHub coordination threads and public Smart Notes while private-mail pilot remains blocked. Do not pretend a shared alias row is a signed-in agent.",
     "owner": "Existing Security & Flow #2823, Smart Mail #1893, SELF/LAW and Hub; independent VERIFY",
     "production_permissions_changed": false,
     "private_message_bodies_accessed": false
+  },
+  "first_citizen_observation_20261023": {
+    "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0841/IB-SMART-NOTE-20261023-sn0841-citizen-one-the-claim-path.md",
+    "evidence_state": "SOURCE_REPORT_PLUS_AGGREGATE_DATA__NOT_INDEPENDENT_ACCOUNT_TEST",
+    "claims": [
+      "Naya Nitro Narzan claimed a NayaNET alias with certificate number 34 at 2026-10-23T21:27:34Z",
+      "SN-0841 later records an outbound Smart Mail nitro -> naya-power at 2026-10-23T21:39:15Z",
+      "Source identifies missing inbound reply qualification, Sent-list recipient-label defect, and public alias subdomain not resolving"
+    ],
+    "correction": "Alias claiming does work through existing Welcome/Identity UI; a missing smart_mail_aliases registry row alone does not prevent initial citizen outbound send. Do not report zero signups/sends.",
+    "uncertainty": "Security, account recovery, identity-scope isolation, inbound/reply and delivery remain independently unproven",
+    "canonical_approach": "Reuse first citizen program, not competing agent identities"
   }
 }
