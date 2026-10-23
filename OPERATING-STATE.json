@@ -1,6 +1,6 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-23T13:25:01Z",
+  "generated_at": "2026-10-23T14:25:18Z",
   "tip": "d45b03aeccc6ffcf88ff319a7ef757d40a7e035e",
   "open_pr_count": 8,
   "queue_by_tier_action": {
@@ -31,7 +31,7 @@
   },
   "laws": {
     "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
-    "iteration": 244,
+    "iteration": 245,
     "latest_laws": [
       "L643",
       "L644",
