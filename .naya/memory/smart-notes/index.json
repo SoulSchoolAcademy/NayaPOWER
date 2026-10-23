@@ -14426,6 +14426,66 @@
         "verify_by": "2026-10-30",
         "verify_by_source": "derived:created+7d(weekly-sampler-cadence)"
       }
+    },
+    {
+      "smart_note_id": "SN-0827",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet",
+      "title": "The Most Intelligent System? Not Yet — And Here Is the Way There",
+      "content_hash": "03b5a1999e072b90f3305cf2c2ed2268646414af508e0b12de1a67d0b1feca36",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0827/IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "INTELLIGENCE",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 3298de8b6547656583d7610a04e979ab1938fbb4 ('SN-0827: The Most Intelligent System? Not Yet — And Here Is the Way There (Shawn-directed assessment, 2026-10-23)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "682fed386b43e3c92e978fed31fe7ca4d2a05ec23eded9501acc8aeae70d910e"
+    },
+    {
+      "smart_note_id": "SN-0828",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0828-every-hole-has-an-answer",
+      "title": "Every Hole Has an Answer — And the Answers Are Executing",
+      "content_hash": "0aaca069ecac25f1eb3952350ddecf7be337058a70b518513540825b227520ba",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0828/IB-SMART-NOTE-20261023-sn0828-every-hole-has-an-answer.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "INTELLIGENCE",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 44db85726dd5e29f886754019e1bd9a64d1262b7 ('SN-0828: Every Hole Has an Answer — And the Answers Are Executing (solutions to SN-0827, Shawn's command 2026-10-23)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "53c6132cf581727f261e646190b36f71d6bf7a490edd6a96acb1ab4615d71024"
+    },
+    {
+      "smart_note_id": "SN-0829",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0829-see-it-fix-it-write-it-down",
+      "title": "See It, Fix It, Write It Down — That's What a Naya Does",
+      "content_hash": "1bb51683317c2999fc7f15cdcfa08395c00eb44bfc2cb71ab505c20922fa5226",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0829/IB-SMART-NOTE-20261023-sn0829-see-it-fix-it-write-it-down.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "INTELLIGENCE",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit f329e87547e840040778c9fd566a278162e4fc77 ('SN-0829: See It, Fix It, Write It Down — That's What a Naya Does') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ba23ff07213975d08a7ecaec54edaaa025f6972e2fb368444b47c68ac63c6768"
     }
   ],
   "sequence_policy": {
@@ -14434,5 +14494,5 @@
     "next_sequence": 1804,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "53d287559069550b02d4083ae6cde3f2da7619a3f89be01088a1eb1b9637001a"
+  "corpus_manifest_hash": "e5c50a132f21fb17f18ccc1af123ef246a9b8701047ca1b4f31d8f93bcdf491a"
 }
