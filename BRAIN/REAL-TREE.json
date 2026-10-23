@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-23",
-  "receipt_basis_commit": "9b736742c8869b5a64d34668bd3c8293d27aedb7",
+  "receipt_basis_commit": "23a4aa5d8c7b191d1a2e304c843c339bbf84d4e0",
   "inventory_file_count": 1617,
   "domain_counts": {
     "00-ACTIVATION": 19,
@@ -7657,18 +7657,18 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.ai.md",
-      "blob_sha": "d76642e39b88542894a5b5d6da8720be645779f1",
-      "size": 37974
+      "blob_sha": "ccd885e099968d404cdf59b9bef1126204e51213",
+      "size": 41333
     },
     {
       "path": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md",
-      "blob_sha": "26a4c1c080153d625ca43b4274eb813adad7095a",
-      "size": 43471
+      "blob_sha": "5b89393634343081fb4f4acc0fa29f3a9808b365",
+      "size": 61401
     },
     {
       "path": "BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json",
-      "blob_sha": "b967db8bea2b4c9b4b146234b2a4b0e103374fca",
-      "size": 38223
+      "blob_sha": "483f00402379972974c29a3a565ddef1b8dc3d2c",
+      "size": 44783
     },
     {
       "path": "BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.ai.md",

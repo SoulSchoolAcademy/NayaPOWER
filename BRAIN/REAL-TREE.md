@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-23  
-**Receipt basis commit:** `9b736742c8869b5a64d34668bd3c8293d27aedb7`  
+**Receipt basis commit:** `23a4aa5d8c7b191d1a2e304c843c339bbf84d4e0`  
 **Inventory file count:** 1617  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -1587,9 +1587,9 @@
 - `BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md` — `954227fe2d94` (8068 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md` — `188ee5921503` (30828 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md` — `37e4e4b70a23` (20377 bytes)
-- `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.ai.md` — `d76642e39b88` (37974 bytes)
-- `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md` — `26a4c1c08015` (43471 bytes)
-- `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json` — `b967db8bea2b` (38223 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.ai.md` — `ccd885e09996` (41333 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md` — `5b8939363434` (61401 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json` — `483f00402379` (44783 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.ai.md` — `83275e3b6416` (10743 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.human.md` — `68fb5644d3f9` (24896 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-23-most-intelligent-system-assessment-v1.machine.json` — `17cee7a713bd` (12738 bytes)
