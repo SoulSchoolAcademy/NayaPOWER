@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T13:16:13+00:00",
+ "generated_utc": "2026-10-23T15:15:28+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,15 +51,8 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [
-    {
-     "number": 3003,
-     "title": "cure(index): regenerate brain-index receipts after #2998 stale-head merge",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3003",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "act",
@@ -140,15 +133,9 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3005,
-     "title": "LI-6: promote measure_lesson_delta.py to repo tools/",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3005",
-     "draft": false
-    },
-    {
-     "number": 3004,
-     "title": "Factory adoption (#9): STANDARD-FEATURE-CHECKLIST \u2014 the Best-of-Best Part 5 checklist as t",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3004",
+     "number": 3007,
+     "title": "docs(brain): Daily Intelligence Report 2026-10-23 + Structure V1",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3007",
      "draft": false
     },
     {
@@ -170,7 +157,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 4
   },
   {
    "id": "wire",
@@ -437,6 +424,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 8,
- "unassigned_prs": 5
+ "open_pr_total": 6,
+ "unassigned_prs": 4
 }
