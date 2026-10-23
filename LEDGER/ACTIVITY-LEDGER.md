@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 15:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 15:45 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2108,6 +2108,30 @@ _Last updated: 2026-10-23 15:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1432-lane10.md`
 
 **Evidence:** Dispatcher verified via git protocol: main == aa8061c1d311f32ebd11a570629efa8a55d90c87 == receipt pin, stable; independently reproduced `tools/regenerate_brain_index.py --check` exit 0 (1257 files) in a fresh depth-1 clone at the same tip. No duplicate heal branch (correct). Deductions: #2385 freshness gate still absent at tip (Shawn's click, not t
+
+### ✅ t1426 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** build t1351 exact-name-rule detector receipt-briefcheck.py as CANDIDATE
+
+**Receipt:** `twelve-lane-receipts/t1426-lane4.md`
+
+**Evidence:** Verified: detector sha256 dfdb86047... recomputed and matches receipt pin; fixture dir present (3 real files). Fixture proof: planted orphan + stripped-brief files flagged with exit 1, clean dir exit 0 — both violation classes asserted with real files, no human in the loop. Pass-2 discipline is the substance: byte-checking the live run caught a rea
+
+### ✅ t1425 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** re-derive 20 most-repeated needs in the ask-world query log (advisory report)
+
+**Receipt:** `twelve-lane-receipts/t1425-lane11.md`
+
+**Evidence:** Verified: log sha256 c902815f... recomputed (198 rows) and report sha256 205bb376... both match receipt pins — zero-drift claim is byte-grounded, not inherited. Re-derivation honest: 23 exact-match clusters to 20 needs, counts sum 140/140, byte-identical to t1305 tally (independent re-run, not copy). Deterministic instrument cluster-t1425.py saved 
+
+### ✅ t1423 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** second-seat verdict on the t1421 stall-cap detector (CANDIDATE-SHARPEN)
+
+**Receipt:** `twelve-lane-receipts/t1423-lane3.md`
+
+**Evidence:** Verified: detector sha256 e6d7653f... recomputed and matches receipt pin; testlog sha 7752b0c1... matches; fixtures dir present (15 files). Judge re-derived everything from bytes: byte-pinned detector, reproduced builder fixtures in isolated dirs (exit 1/0/0 asserted), built own 12-file planted set + 3 edge files persisted to hidden_files, re-deriv
 
 ### ✅ t1422 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
