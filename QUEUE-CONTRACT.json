@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-23T04:24:43Z",
-  "tip": "52e0b4d02795a0e2f75402b5b1d900339a9cfff6",
+  "generated_at": "2026-10-23T05:24:23Z",
+  "tip": "23a4aa5d8c7b191d1a2e304c843c339bbf84d4e0",
   "prs": [
     {
       "number": 2968,
@@ -22,31 +22,40 @@
       "head": "4e327ea1afbc03531094999b0910bfd757065bb8"
     },
     {
-      "number": 2990,
-      "title": "Single Current Hub Guard \u2014 strengthened: pin real Cloudflare publishing config (follow-up to #2979)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Receipt pin \u2014 exact head SHA, Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
-      "owner": "author lane",
-      "head": "edb9946e68aed087bdf5338576f842f0b02f78ac"
-    },
-    {
-      "number": 2998,
-      "title": "Mirror Report: current ten-by-ten reassessment and execution order",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "cc89a481cd2f9e632539592015a8f74eef50fb91"
-    },
-    {
       "number": 3000,
       "title": "Naya/mission state",
       "tier": "B",
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "be738628712f89df4b191e68def30cee463b81ca"
+      "head": "e77880f8d88a3d4e140840e0c52adba38c2a5985"
+    },
+    {
+      "number": 3001,
+      "title": "guard(smart-notes): detect duplicate public SN IDs before publication",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "bbac23a2b404801ecab8dd62852dcb435ac902bf"
+    },
+    {
+      "number": 3002,
+      "title": "w746: flip residual 9.0 below-bar carriers in report_generator.py to 9.5",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "80a2a53ad11138facd03b13cef4776c22265c568"
+    },
+    {
+      "number": 3003,
+      "title": "cure(index): regenerate brain-index receipts after #2998 stale-head merge",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "7eaf08a8e20a494325aa79458e8ca8fc2f232bc4"
     }
   ]
 }
