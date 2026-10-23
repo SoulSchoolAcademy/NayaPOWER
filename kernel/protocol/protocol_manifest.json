@@ -137,7 +137,7 @@
       "enforcement": "merge_packet_required",
       "id": "DELEGATED-MERGE-AUTHORITY",
       "name": "Delegated Merge Authority",
-      "statement": "Naya 5 may merge to main without Shawn's per-merge approval iff ALL hold: (1) built + tests green with proof; (2) honest evidence-backed self-scorecard >= 9.0 with value-calculus run; (3) independent validation by a DIFFERENT seat; (4) intent + scorecard + validation posted on #1354, team consensus, zero objections; (5) post-merge report planned. Below 9.0, no independent validation, or any objection still needs Shawn's word. Covers merges to main ONLY."
+      "statement": "Delegated Merge Authority — Naya 5 may merge to main without Shawn's per-merge approval iff ALL hold: (1) built + tests green with proof; (2) honest evidence-backed self-scorecard >= 9.5 with value-calculus run; (3) independent validation by a DIFFERENT seat; (4) intent + scorecard + validation posted on #1354, team consensus, zero objections; (5) post-merge report planned. Below 9.5, no independent validation, or any objection still needs Shawn's word. Covers merges to main ONLY. Supersession (2026-10-12): the five-condition merge law (green CI + >=9.5 + different-seat validation + team-feed post + no objection) supersedes the \">= 9.0\" in the quoted 2026-10-08 delegation text; the checker's own supersession note names 9.5 as the operative bar (tools/protocol/checks/merge_authority.py, MIN_SELF_SCORE = 9.5)."
     },
     {
       "check": "tools/protocol/checks/builder_scorer_loop.py",
