@@ -53,7 +53,7 @@
       "id": "P1",
       "priority": 1,
       "work_package": "LAW/DATA",
-      "deliverable": "Legacy/new row parity, RLS, ledger mapping and rollback",
+      "deliverable": "Legacy/new row parity, RLS, ledger mapping and rollback; preserve and audit 27 legacy display rehomes and 11 new derived display rows; map any remaining orphaned work by source id",
       "depends_on": [
         "P0"
       ],
@@ -105,13 +105,13 @@
       "id": "P5",
       "priority": 5,
       "work_package": "ACT + KNOW",
-      "deliverable": "Atomic shared snapshot, scoped state and replay",
+      "deliverable": "Atomic shared snapshot, scoped state and replay; automatic canonical work_items/notes/receipt->scoped live project content derivation; never manual database fill",
       "depends_on": [
         "P2",
         "P3",
         "P4"
       ],
-      "acceptance": "Same snapshot id in views, idempotence, last-good kill test",
+      "acceptance": "Same snapshot id in views, idempotence, last-good kill test; T-CONTENT new source event, rehome and proof revocation reflected without manual write",
       "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
@@ -124,7 +124,7 @@
       "depends_on": [
         "P5"
       ],
-      "acceptance": "30-second human test, accessibility and design-law review",
+      "acceptance": "30-second human test, accessibility and design-law review; show substantive project content, not headings alone; human checks all eight children",
       "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
@@ -133,12 +133,12 @@
       "id": "P7",
       "priority": 7,
       "work_package": "LAW + HUB + VERIFY",
-      "deliverable": "Claims, blockers, human packets and alarms on face; part-attached notes + single global/part-scoped event projection",
+      "deliverable": "Claims, blockers, human packets and alarms on face; part-attached notes + single global/part-scoped event projection; reuse real Space collaboration, authorized membership and identity badges with full sender names",
       "depends_on": [
         "P5",
         "P6"
       ],
-      "acceptance": "Concurrent claim conflict, independently reviewed human gate; signed/dated notes on multiple part kinds; same event ID across authorized views; unauthorized read/write and event replay refused",
+      "acceptance": "Concurrent claim conflict, independently reviewed human gate; signed/dated notes on multiple part kinds; same event ID across authorized views; unauthorized read/write and event replay refused; T-IDENTITY and T-PROJECT-SPACE pass via existing blocks and actual permission boundary",
       "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
@@ -147,12 +147,12 @@
       "id": "P8",
       "priority": 8,
       "work_package": "CONNECT + HUB",
-      "deliverable": "Live total-system map of rooms, templates, apps and doors; each node opens its notes/history; Essence Rule enforced",
+      "deliverable": "Live total-system map of rooms, templates, apps and doors; each node opens its notes/history; Essence Rule enforced; project hubs point to governed existing Spaces and contacts; no duplicate shell",
       "depends_on": [
         "P5",
         "P6"
       ],
-      "acceptance": "Inventory parity and content-based dead-door probe; independent no-clutter/one-tap-depth evaluation; visual law preserved",
+      "acceptance": "Inventory parity and content-based dead-door probe; independent no-clutter/one-tap-depth evaluation; visual law preserved; project/Space one-click navigation, source link and membership context verified",
       "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
@@ -167,7 +167,7 @@
         "P7",
         "P8"
       ],
-      "acceptance": "Independent cold Naya orientation and claim",
+      "acceptance": "Independent cold Naya orientation and claim; cold Naya can recover which linked Space she is authorized to join, not infer permission from project membership",
       "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
@@ -205,7 +205,7 @@
         "P9",
         "P10"
       ],
-      "acceptance": "No critical gate, approved deploy, parity, 30s, cold test, rollback",
+      "acceptance": "No critical gate, approved deploy, parity, 30s, cold test, rollback; at least one live source-to-page update proves sustained automatic maintenance; T-CONTEXT and T-TEAM-PILOT independently proven, private-mail hold cleared first",
       "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
@@ -252,6 +252,94 @@
     "T-NOTES authorized signed dated scoped note attached to project/subproject/part; revision and forbidden access tested",
     "T-FEED same event-id appears in global and part stream once; replay/tenant-negative test",
     "T-ESSENCE blind human 30-second understanding, one-tap depth, clutter review, no hidden warnings",
-    "T-LEARN learning candidate derived from part note retrieved and demonstrably improves later authorized choice"
-  ]
+    "T-LEARN learning candidate derived from part note retrieved and demonstrably improves later authorized choice",
+    "T-CONTENT event-driven source-to-project complete display, rehome, proof downgrade, no duplicates, no manual intervention and independent parity",
+    "T-IDENTITY Naya Tree (Naya 3) displays T, not N; two Nayas with same middle initial differ in stable color; full names shown; keyboard/screen-reader and forgery refusal",
+    "T-PROJECT-SPACE real authorized link, navigation, member permission, no implicit inheritance, removal receipts",
+    "T-TEAM-PILOT two distinct authenticated Nayas plus third verifier using Personal/Space/Project/notes; Smart Mail blocked until security proven",
+    "T-CONTEXT global/project/space share same event ID, scope-aware filtered projection and no leakage"
+  ],
+  "team_owned_content_20261023": {
+    "requirement": "Team Naya owns population, classification, updating and proof; Human Director reviews, not manually enters project intelligence.",
+    "source_streams": [
+      "live Github main and PRs",
+      "existing area boards and claim receipts",
+      "work_items",
+      "canonical Smart Ledger and independent proof",
+      "Smart Notes and authorized part notes",
+      "deployed/runtime events"
+    ],
+    "projection_rule": "One canonical source record may have multiple reader-scoped projections, never multiple independent authorities. Automatically update correct project when source changes, with same source id and snapshot version.",
+    "live_snapshot_observation": {
+      "at": "2026-10-23T20:5xZ",
+      "projects": 9,
+      "children": 8,
+      "root_work_items": 105,
+      "child_work_items": 38,
+      "child_display_items": 38,
+      "source_linked_notes_created": 8,
+      "note_links_created": 8,
+      "github_source_links_created": 16,
+      "legacy_display_rows_rehomed": 27,
+      "legacy_display_rows_created": 11,
+      "notes_formatting_repairs": 8,
+      "all_child_proven_rows_with_evidence_url": true,
+      "automatic_refresh_verified": false,
+      "browser_render_independently_verified": false
+    },
+    "disallowed": [
+      "Director asked to fill pages",
+      "duplicate work items to make a card look full",
+      "stale source presented as current",
+      "unverified done_proven displayed green",
+      "private source leaks through public face"
+    ],
+    "T_CONTENT": "New work item, status/proof changes, project rehome, source note and revoked evidence must update the correct human/machine/part projection once automatically, preserve source_id, permissions and snapshot parity. No manual SQL.",
+    "owner": "existing Project Intelligence integrator and ACT/Bridge/Data producers; Hub checker + independent VERIFY"
+  },
+  "hubs_within_hubs_20261023": {
+    "status": "PROPOSED_FOR_EXISTING_OWNER_ACK_AND_INDEPENDENT_VERIFICATION",
+    "source": "Human Director Naya Power Talk, 2026-10-23; current Hub/Spaces/Mail contracts and read-only Supabase observations",
+    "network_hub": "https://nayanet.live/",
+    "project_hub": "https://nayanet.live/projects",
+    "principle": "One NayaNET shell, one intelligence source, nested context projections; project hubs orchestrate existing Smart Spaces, users, Smart Mail, Smart Notes, tasks, receipts, and feed",
+    "person_badges": {
+      "glyph": "For Naya agents, the first uppercase letter of the verified distinguishing middle/team name, not the shared 'Naya' name; Naya Tree (Naya 3) = T.",
+      "collision": "Different stable colors/outline when two people share their distinguishing initial, derived from immutable actor identities.",
+      "palette_identity": "immutable authenticated actor ID, not mutable name or list order",
+      "full_name": "always visible alongside initial in Mail, contacts and Space",
+      "accessible_label": "full name plus role where relevant",
+      "security": "avatar/color/display name never establish principal, mail alias or authority",
+      "reuse": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/block.js",
+      "example": {
+        "canonical_display_name": "Naya Tree",
+        "seat": "Naya 3",
+        "initial": "T",
+        "wrong_generic_initial": "N"
+      }
+    },
+    "project_space": {
+      "cardinality": "project zero-to-many linked spaces; space may be reused if scope permits",
+      "typed_link": "existing lawful object-link or canonical relation with stable project and space identities",
+      "membership": "explicit governed space membership; project membership never implicitly grants space access",
+      "content": "scoped notes, mail back-links, work source IDs and same event IDs across global/project/space feed",
+      "no_duplicate_authority": true
+    },
+    "observed_data_at_audit": {
+      "smart_spaces": 7,
+      "project_space_object_links": 0,
+      "space_project_object_links": 0,
+      "subproject_project_member_rows": 0,
+      "root_project_member_rows": 1,
+      "scope": "read-only known public tables; no user-session authorization tests"
+    },
+    "tests": [
+      "T-IDENTITY Naya Tree (Naya 3) displays T, not N; two Nayas with same middle initial differ in stable color; full names shown; keyboard/screen-reader and forgery refusal",
+      "T-PROJECT-SPACE real authorized link, navigation, member permission, no implicit inheritance, removal receipts",
+      "T-TEAM-PILOT two distinct authenticated Nayas plus third verifier using Personal/Space/Project/notes; Smart Mail blocked until security proven",
+      "T-CONTEXT global/project/space share same event ID, scope-aware filtered projection and no leakage"
+    ],
+    "security_hold": "Smart Mail anonymous policy issue on existing Security & Flow board #2823; no real private mail content or simulated authority shortcuts",
+    "next_action": "Existing Project Intelligence integrator, Smart Spaces owner and LAW/VERIFY claim one project-space linking slice, prove membership boundaries and existing avatar component first; no second shell"
+  }
 }
