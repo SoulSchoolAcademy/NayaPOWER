@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-23 19:42 UTC_
+_Last updated: 2026-10-23 20:14 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 5688
-- ✅ Verified (8+): 5628
+- **Total scored actions:** 5693
+- ✅ Verified (8+): 5633
 - 🟡 Partial (5–7): 58
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 2
@@ -16,15 +16,15 @@ _Last updated: 2026-10-23 19:42 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 414 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 397 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 374 | 9.0 | 10 |
+| Team 2 | Naya Sage | 398 | 8.8 | 9.5 |
+| Team 3 | Naya Judge | 375 | 9.0 | 10 |
 | Team 4 | Naya Mason | 364 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 493 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 266 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 363 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 388 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 501 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 696 | 9.1 | 9.7 |
+| Team 10 | Naya Librarian | 697 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 303 | 9.0 | 9.5 |
 | Team 12 | Naya Herald | 289 | 9.2 | 9.5 |
 
@@ -449,7 +449,8 @@ _Last updated: 2026-10-23 19:42 UTC_
 - **seat-stall-20261023-1014:** 2 actions, avg 9.0/10
 - **gap-seat-stall-20261023-0637-lane0:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261023-0820-lane0:** 1 actions, avg 9.5/10
-- **seat-stall-20261023-1116:** 1 actions, avg 9.0/10
+- **seat-stall-20261023-1116:** 2 actions, avg 9.0/10
+- **seat-stall-20261023-1223:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -2123,6 +2124,9 @@ _Last updated: 2026-10-23 19:42 UTC_
 - **t1442-lane8:** 2 actions, avg 9.0/10
 - **t1442-lane9:** 2 actions, avg 9.0/10
 - **t1443:** 6 actions, avg 9.0/10
+- **t1449:** 1 actions, avg 8.5/10
+- **t1450:** 1 actions, avg 9.5/10
+- **t1452:** 1 actions, avg 9.5/10
 - **t1462:** 7 actions, avg 8.9/10
 - **t1463:** 3 actions, avg 8.8/10
 - **t1464:** 9 actions, avg 9.1/10
