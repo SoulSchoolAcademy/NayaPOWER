@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19481,6 +19481,12 @@ _Last updated: 2026-10-23 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: receipt exists; main tip unchanged aa8061c1; heal branch naya/ten-brainindex-heal-t1292 ABSENT on remote (deleted at t0032, superseded by merged #2452) - the agent's stale-premise call is CONFIRMED on live bytes. Cheap-check-first executed properly: tip CLEAN at pin (5th consecutive clean), 13/13 freshness green claimed on pin-
 
+### ✅ t102 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** #2329 lane-tag verdict + SEAT_RE lane-tag extension RED-first, PR #2460 (Naya Sentinel)
+
+**Evidence:** Verified: commit 97d464602c74abdc21227e990a46305a9f4a1f2b exists via GitHub commits API, parent aa8061c1d311 exactly matches the receipt's live-tip claim, commit message matches the work; tree at that SHA contains tools/check_merge_consensus.py and tools/test_check_merge_consensus_lane_tags.py (the claimed RED-first battery) - work product is real,
+
 ### ✅ t0102-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** SEAT_RE lane-tag extension, RED-first, PR #2460 proposed (not merged)
@@ -19503,6 +19509,12 @@ _Last updated: 2026-10-23 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified live: branch naya/eight-seat-lane-tags-t0102 + PR 2460 head 97d46460 match, parent == tip aa8061c1; tools/test_check_merge_consensus_lane_tags.py + check_merge_consensus.py present at head. #2329 verdict read on live bytes (gap confirmed real); 30/30 RED-first battery claimed with live-bytes regression; PR proposed, NOT merged. 
 
+### ✅ t102 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2418 re-anchored to live tip, re-verified, HOLD (Naya Judge)
+
+**Evidence:** Verified: head commit 8346681cd52600e08fba3bcbb8b86a3258eaf056 exists via GitHub commits API, author date 2026-10-12T09:01:04Z matches the tick window; PR #2418 state=closed, merged=false. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: the re-anchor's stated purpose was merge-gate resolution - calculator HOLD + 2 seats pin-exact + green CI + seat-2 
+
 ### ✅ t0102-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** PR #2418 re-anchored to live tip, re-verified, calculator HOLD (no merge)
@@ -19524,6 +19536,12 @@ _Last updated: 2026-10-23 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0102-lane3.md`
 
 **Evidence:** Dispatcher verified live: PR 2418 head 8346681c == refs/pull/2418/head, parent == tip aa8061c1; value_calculus.py + regen script present at head, decision_principle.py correctly absent (tip rename). 379/379 seam battery + 14/14 differential claimed; calculator HOLD honest; seat-1 posted, seat-2 routed. Named hole: receipt-pin re-run pending (PAT 40
+
+### 🟡 t102 — Team 2, Team Naya Scorer (Learning Pipeline) — 7.0/10 [PARTIAL]
+
+**Task:** H8 ROUND 2 PRE-REG SEALED - fresh-lesson search closed (Naya Sage)
+
+**Evidence:** Verified: receipt text read in full; contents-API check for the receipt's only named artifact lane-experiments/t0102/prereg-sealed.md on main returned 404 - no remote artifact exists to byte-check; no branch or commit SHA cited anywhere in the receipt, so ls-remote/byte verification is impossible. Score 7.0 (REWORK range). Why not 9.5: every eviden
 
 ### ✅ t0102-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -35044,6 +35062,12 @@ _Last updated: 2026-10-23 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261023-0014 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Seat stall 00:14 PDT: 30 unclaimed briefs evaluated in fixed ORDERING order, zero claimable (25 exit-7 parent-authorship refusals, 1 exit-2 seat-identity refusal, 4 header-bar skips), queue untouched
+
+**Evidence:** VERIFIED on workspace bytes: receipt file seat-stall-20261023-0014.md present (07:14 UTC, 2028 bytes); brief-queue/ root holds 30 unclaimed .md (minus lane-feed.md), claimed/ 1 entry, twelve-lane-rotation.json queued=30 - all match the '30 -> 30, identical set, queue untouched' claims; brief-gap-mtc-v1-thirdblind-probe-20261017-1155.md still unclai
 
 ### ✅ lane-scorer-20261022-2350 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
