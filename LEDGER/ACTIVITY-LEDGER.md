@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34864,6 +34864,22 @@ _Last updated: 2026-10-23 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-20261020-1110 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-ran the lint battery fully specified with 6 fixture files on disk; appended CORRECTION ADDENDUM to parent receipt (audit-preserving, original text untouched); verified both the parent's result and the gap-scorer's behavior claim on live bytes.
+
+**Receipt:** `twelve-lane-receipts/gap-20261020-1110-lane0.md`
+
+**Evidence:** VERIFIED on workspace bytes: all 6 lint-battery fixtures exist with matching sha256 (case1 6de11b9c..., case5 480b9635..., spot-checked); the parent receipt file still carries the CORRECTION ADDENDUM. Honest audit-preserving correction practice modeled well. SCORE 9.0 GOOD, ONE MORE PASS. Why not 9.5: the gap-scorer's own filing still asserts the p
+
+### ✅ gap-20261020-1050 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: built receipt-filename-lint.py and wired it as gate 7 in the brief template; four-class test battery; dogfooded.
+
+**Receipt:** `twelve-lane-receipts/gap-20261020-1050-lane0.md`
+
+**Evidence:** VERIFIED on workspace bytes: receipt-filename-lint.py exists and is executable (sha has since changed from the receipt's pinned 37d44eef... to 1cfed7e9... because later runs added case6/case7 fixtures and EXPECTED.txt to the battery - normal evolution, not a phantom); gate 7 IS live in lane-agent-brief-template.md (line 74, documents the lint and t
 
 ### ✅ seat-stall-20261022-1830 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
