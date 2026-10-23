@@ -1,17 +1,8 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-23T01:25:33Z",
-  "tip": "b5786cad2bf0a644aa96ab97cecd1f5b8631ada0",
+  "generated_at": "2026-10-23T02:24:17Z",
+  "tip": "7983caac82d6e4c349d51fcf81fb63a6ee6e6b68",
   "prs": [
-    {
-      "number": 2956,
-      "title": "Best-of-Best Wave 1 \u00b7 #12 Command + universal search (step 13)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "8ef1da89127cfe1acc3c4dc4071deac5357e7c48"
-    },
     {
       "number": 2968,
       "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
@@ -22,31 +13,13 @@
       "head": "7347902a932075c574e93e3132aedd13d7b2763b"
     },
     {
-      "number": 2977,
-      "title": "Door cure: register SN-0827 + SN-0828 + SN-0829 \u2014 captures + registry entries",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "bbadb8dd07add191b4ea432bb9aa28fbb802b6b8"
-    },
-    {
       "number": 2981,
       "title": "Naya4/smart notes 2026 09 30",
       "tier": "C",
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "a0383d10c3e618670b4da8a1fffd1e9836b74efc"
-    },
-    {
-      "number": 2985,
-      "title": "cure: door-obligation backfill for SN-0827 + SN-0828 (mechanical records)",
-      "tier": "C",
-      "action": "MERGE-NOW",
-      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "a68e6d8b43dd6461466ce7535e4ed7d14aa63c90"
+      "head": "68ff118ef5a845337b5dcfeb57bdef85895f2da5"
     }
   ]
 }
