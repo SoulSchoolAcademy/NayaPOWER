@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T00:15:41+00:00",
+ "generated_utc": "2026-10-23T02:15:39+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,15 +133,15 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2971,
-     "title": "Naya/mission state",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2971",
+     "number": 2986,
+     "title": "SN-1850: The Best Possible Move \u2014 Think Completely, Then Deliver the Ultimate Result",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2986",
      "draft": false
     },
     {
-     "number": 2955,
-     "title": "Smart Lists \u2014 the one server store (Best-of-Best #16, step 15)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2955",
+     "number": 2981,
+     "title": "Naya4/smart notes 2026 09 30",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
      "draft": false
     }
    ],
@@ -164,8 +164,15 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2987,
+     "title": "Factory step 6: design-language gate annex (twin-sourced) + on-page contract door",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2987",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "team",
@@ -226,19 +233,13 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
-     "number": 2969,
-     "title": "Ask Naya go-live port (ARTIFACT ONLY \u2014 do not merge)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2969",
-     "draft": true
-    },
-    {
      "number": 2968,
      "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 1
   },
   {
    "id": "memory",

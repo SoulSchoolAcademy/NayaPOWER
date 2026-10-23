@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-23 00:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-23 02:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -51,11 +51,13 @@
 ## Open PRs by Area
 
 ### BUILD (2)
-- [#2971](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2971) Naya/mission state
-- [#2955](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2955) Smart Lists — the one server store (Best-of-Best #16, step 15)
+- [#2986](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2986) SN-1850: The Best Possible Move — Think Completely, Then Deliver the U
+- [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
 
-### PRODUCT (2)
-- [#2969](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2969) Ask Naya go-live port (ARTIFACT ONLY — do not merge) 📝draft
+### WIRE (1)
+- [#2987](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2987) Factory step 6: design-language gate annex (twin-sourced) + on-page co
+
+### PRODUCT (1)
 - [#2968](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968) Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A 
 
 ---
