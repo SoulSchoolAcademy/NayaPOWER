@@ -1,0 +1,214 @@
+{
+  "schema": "naya.project-intelligence.team-build-order.proposed.v1",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "authority": "Existing ratified governance, SN-0839, Project Hub Plan v2.1, 100 Must-Haves; this is a non-authoritative execution projection",
+  "canonical_human_annex": "BRAIN/90-OPERATIONS/2026-10-23-PROJECT-INTELLIGENCE-TEAM-MASTER-BUILD-ORDER.md",
+  "target_human_route": "https://nayanet.live/projects",
+  "target_machine_route": "UNKNOWN_REQUIRES_OWNER_DISCOVERY",
+  "live_team_board": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793",
+  "priority_board": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2599",
+  "existing_review_pr": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3012",
+  "no_second_brain": true,
+  "no_parallel_current_hub": true,
+  "max_program_wip": 5,
+  "verification_requires_distinct_identity": true,
+  "claims_are_not_authority": true,
+  "required_evidence": [
+    "base_sha",
+    "head_sha",
+    "authority_scope",
+    "human_outcome",
+    "positive_real_call_site",
+    "adversarial_negative_case",
+    "independent_exact_head_receipt",
+    "live_proof_if_deployed",
+    "rollback",
+    "successor_handoff"
+  ],
+  "quality_loop": "Use existing canonical Value Calculus for material choice; author score cannot substitute for independent verification; hard gate failures are non-averagable",
+  "duplicate_solution_protocol": [
+    "identify_exact_overlap",
+    "freeze_competing_scope",
+    "score_both_against_same_law_and_evidence",
+    "choose_A_or_B_or_one_synthesized_C",
+    "preserve_valuable_distinct_intelligence",
+    "supersede_extras_with_provenance",
+    "retest_final_exact_head",
+    "adopt_one_canonical_record"
+  ],
+  "readiness": "UNKNOWN_NOT_PRODUCTION_PROVEN",
+  "work_items": [
+    {
+      "id": "P0",
+      "priority": 0,
+      "work_package": "Project integrator",
+      "deliverable": "Re-pin canon, assignments, scope and ownership",
+      "depends_on": [],
+      "acceptance": "M0 owner/checker ACK; exact sources, overlap ledger",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P1",
+      "priority": 1,
+      "work_package": "LAW/DATA",
+      "deliverable": "Legacy/new row parity, RLS, ledger mapping and rollback",
+      "depends_on": [
+        "P0"
+      ],
+      "acceptance": "Evidence-linked disposition of every difference; scope negative tests",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P2",
+      "priority": 2,
+      "work_package": "LAW/DATA + ACT",
+      "deliverable": "State transition controls, lease/CAS, proof, audit",
+      "depends_on": [
+        "P1"
+      ],
+      "acceptance": "Real worker claim; proof and permission refusal; atomic audit",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P3",
+      "priority": 3,
+      "work_package": "INFRA/PROVE",
+      "deliverable": "Census and bounded zero-output reporting",
+      "depends_on": [
+        "P0"
+      ],
+      "acceptance": "Real counts, honest nulls, no self-trigger storm",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P4",
+      "priority": 4,
+      "work_package": "ACT/BRIDGE",
+      "deliverable": "Existing receiver integration / idempotent write",
+      "depends_on": [
+        "P2"
+      ],
+      "acceptance": "Actual authorized API roundtrip; forbidden call DENY",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P5",
+      "priority": 5,
+      "work_package": "ACT + KNOW",
+      "deliverable": "Atomic shared snapshot, scoped state and replay",
+      "depends_on": [
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "acceptance": "Same snapshot id in views, idempotence, last-good kill test",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P6",
+      "priority": 6,
+      "work_package": "HUB/PRODUCT",
+      "deliverable": "Canonical Projects and Mission face on one snapshot",
+      "depends_on": [
+        "P5"
+      ],
+      "acceptance": "30-second human test, accessibility and design-law review",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P7",
+      "priority": 7,
+      "work_package": "LAW + HUB + VERIFY",
+      "deliverable": "Claims, blockers, human packets and alarms on face",
+      "depends_on": [
+        "P5",
+        "P6"
+      ],
+      "acceptance": "Concurrent claim conflict, independently reviewed human gate",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P8",
+      "priority": 8,
+      "work_package": "CONNECT + HUB",
+      "deliverable": "Live total-system map of rooms, templates, apps and doors",
+      "depends_on": [
+        "P5",
+        "P6"
+      ],
+      "acceptance": "Inventory parity and content-based dead-door probe",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P9",
+      "priority": 9,
+      "work_package": "SELF/KNOW/LEARN",
+      "deliverable": "One-fetch cold 14Q and correct successor task",
+      "depends_on": [
+        "P5",
+        "P7",
+        "P8"
+      ],
+      "acceptance": "Independent cold Naya orientation and claim",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P10",
+      "priority": 10,
+      "work_package": "FACTORY + LEARN",
+      "deliverable": "Project creation and lesson/Smart Note reuse in existing system",
+      "depends_on": [
+        "P2",
+        "P5",
+        "P8",
+        "P9"
+      ],
+      "acceptance": "Real authorized project created and projected, successor follows",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    },
+    {
+      "id": "P11",
+      "priority": 11,
+      "work_package": "VERIFY/PROVE",
+      "deliverable": "Release, rollback, hardening and human outcome proof",
+      "depends_on": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8",
+        "P9",
+        "P10"
+      ],
+      "acceptance": "No critical gate, approved deploy, parity, 30s, cold test, rollback",
+      "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
+      "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
+      "status": "NOT_CERTIFIED"
+    }
+  ]
+}
