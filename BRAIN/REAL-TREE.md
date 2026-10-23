@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-22  
-**Receipt basis commit:** `f082cb8c7f991329aff1a2a859b18cc9413879f3`  
-**Inventory file count:** 1587  
+**Generated:** 2026-10-23  
+**Receipt basis commit:** `3298de8b6547656583d7610a04e979ab1938fbb4`  
+**Inventory file count:** 1593  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,12 +15,12 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 803 |
+| 05-MEMORY | 804 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 431 |
+| 10-INTERFACES | 436 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
 | 90-OPERATIONS | 92 |
@@ -945,6 +945,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/guards/SN-0817/IB-SMART-NOTE-20261022-sn0817-the-guard-watched-one-door.md` — `c46f0d01a5b2` (5916 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM/productivity-command/SN-0825/IB-SMART-NOTE-20261022-sn0825-produce-value-or-dont-run.md` — `06a605af3095` (10686 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/VISION/active-intelligence/SN-0824/IB-SMART-NOTE-20261022-sn0824-the-future-is-now.md` — `9e4a201d4c09` (6815 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0827/IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet.md` — `11ba70160963` (11280 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
@@ -1455,6 +1456,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MACHINE-CONTRACT-NOTES.md` — `bcc97ce5b0a7` (7003 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/MANIFEST.md` — `02de62aa0633` (20133 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/NAYA-DESIGN-CONTRACT.machine.json` — `ca92c4919f17` (22484 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/FACTORY-PAGE-GENERATOR-BUILD-RECORD-2026-10-22.md` — `372b8238b0da` (9547 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py` — `1d7674c116e6` (7140 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build_queue-schema.sql` — `1693263c4524` (1772 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/check_standard_features.py` — `c4f6ffb7c6e7` (25030 bytes)
@@ -1462,7 +1464,10 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/customize.py` — `6719b2dc08bd` (2602 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/customize_contract.py` — `e5d8c28fc85b` (8817 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/deploy.py` — `a934ba0357c7` (7165 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-presentation.json` — `4c926b7c99b4` (30469 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-shell.html` — `2a778653cb05` (558861 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-contract-twin.py` — `0d36e2c7844f` (20398 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-factory-page.py` — `738e764cd2bc` (25573 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-share-card.py` — `091c93b47d80` (4557 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/naya-supabase-proxy.worker.js` — `46cc189ae89e` (3272 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/process-build-queue.py` — `c143933654e4` (8891 bytes)
@@ -1482,6 +1487,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/portfolio.html` — `ad5a4e8e03e8` (229486 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/product.html` — `3b4b17d2301c` (229496 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/signup.html` — `c9a8ebfa907e` (229469 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory-page.generated.html` — `67e2c329e941` (611068 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory.css` — `0d5ad26b6b6d` (171405 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json` — `3a195b5a073e` (110487 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/index.html` — `111fcc724277` (6940 bytes)
