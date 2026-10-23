@@ -394,6 +394,7 @@ PROBES = {
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="HUB/MAP-STATE.json")
+    ap.add_argument("--surface-audit", action="store_true", help="Opt-in 25-door public reachability/readiness audit; never automatic hourly")
     args = ap.parse_args()
 
     cfg = {
@@ -415,6 +416,21 @@ def main():
         assert p["status"] in ("green", "amber", "red", "unknown"), f"bad status in {name}"
         for k in ("status", "evidence", "measured_at"):
             assert k in p, f"missing {k} in {name}"
+
+    if args.surface_audit:
+        # Reuse this canonical Living Map compiler; explicit flag prevents a
+        # new hourly polling loop and preserves the productivity budget.
+        from surface_readiness import load_registry, audit_registry
+        registry_path = os.path.join(os.path.dirname(__file__), "..", "..",
+                                     "HUB", "NETWORK-SURFACE-REGISTRY.json")
+        try:
+            probes["surface_readiness"] = audit_registry(load_registry(registry_path))
+        except Exception as e:
+            probes["surface_readiness"] = {
+                "status":"unknown",
+                "evidence":f"surface audit unavailable: {type(e).__name__}",
+                "measured_at":now_iso(),
+            }
 
     summary = {"green": 0, "amber": 0, "red": 0, "unknown": 0}
     for p in probes.values():
