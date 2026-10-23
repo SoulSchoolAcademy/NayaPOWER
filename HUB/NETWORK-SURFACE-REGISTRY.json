@@ -1,0 +1,878 @@
+{
+  "schema_version": "nayanet.surface-registry.proposed.v1",
+  "scope": "Known public entry points only; dynamically generated apps, private pages, templates and components require discovery",
+  "coverage_complete": false,
+  "authority": "Inventory is a proposed projection under existing design, LAW, project and Smart Factory source contracts; no new Brain or Hub",
+  "canonical_quality_dimensions": [
+    "Visual Excellence",
+    "Functional Completeness",
+    "Intelligence",
+    "Honesty",
+    "Performance",
+    "Reliability & Continuity",
+    "Accessibility",
+    "Craft"
+  ],
+  "quality_thresholds": {
+    "min_each_dimension_for_ship_review": 9.5,
+    "target_each_dimension": 10,
+    "hard_gates_non_averageable": true
+  },
+  "evidence_ladder": [
+    "documented",
+    "implemented",
+    "tested",
+    "independently_verified",
+    "deployed",
+    "live_observed",
+    "production_proven",
+    "accepted"
+  ],
+  "uncovered_inventory": [
+    "all user-generated apps",
+    "all Factory templates/components",
+    "private/user-defined Spaces",
+    "internal backend endpoints",
+    "all data-generated project pages"
+  ],
+  "surfaces": [
+    {
+      "id": "hub",
+      "path": "/",
+      "purpose": "Network home",
+      "kind": "network-hub",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Open correct room and return",
+      "observed_finding_asof_2026_10_23": "Hub navigation and authorization unproven",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": []
+    },
+    {
+      "id": "personal",
+      "path": "/personal",
+      "purpose": "Personal identity",
+      "kind": "flagship",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Authenticated profile update persists",
+      "observed_finding_asof_2026_10_23": "Anonymous example identity; real binding unproven",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "connections",
+        "settings"
+      ]
+    },
+    {
+      "id": "business",
+      "path": "/business",
+      "purpose": "Business operations",
+      "kind": "flagship",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Authorized organization update persists",
+      "observed_finding_asof_2026_10_23": "Example business; scope unproven",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "mail",
+        "projects"
+      ]
+    },
+    {
+      "id": "community",
+      "path": "/space",
+      "purpose": "Community experience",
+      "kind": "flagship",
+      "owner_area": "Smart Spaces #1891",
+      "critical_journey": "Permitted member posts one event",
+      "observed_finding_asof_2026_10_23": "Example community; membership unproven",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "spaces",
+        "feed"
+      ]
+    },
+    {
+      "id": "dashboard",
+      "path": "/dashboard",
+      "purpose": "Personal operating cockpit",
+      "kind": "flagship",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Current action updates real metric",
+      "observed_finding_asof_2026_10_23": "User-specific data provenance unproven",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "projects",
+        "today",
+        "reports"
+      ]
+    },
+    {
+      "id": "today",
+      "path": "/rooms/today",
+      "purpose": "Daily intelligence",
+      "kind": "room",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Current authorized event produces next action",
+      "observed_finding_asof_2026_10_23": "Current real event/action unverified",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "feed",
+        "projects"
+      ]
+    },
+    {
+      "id": "reports",
+      "path": "/rooms/reports",
+      "purpose": "Outcome and progress reports",
+      "kind": "room",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Open current evidence-linked report",
+      "observed_finding_asof_2026_10_23": "Source freshness unverified",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "projects",
+        "ledger"
+      ]
+    },
+    {
+      "id": "projects",
+      "path": "/projects",
+      "purpose": "Project Intelligence Hub",
+      "kind": "project-hub",
+      "owner_area": "Project Intelligence #3012 / Team Board #2793",
+      "critical_journey": "Human and Naya read same canonical state",
+      "observed_finding_asof_2026_10_23": "193 work items; 36 missing and four extra legacy keys at audit",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "project-state",
+        "project-14q",
+        "spaces",
+        "ledger"
+      ]
+    },
+    {
+      "id": "intelligence",
+      "path": "/rooms/intelligence",
+      "purpose": "Intelligence context",
+      "kind": "room",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Retrieve timely proven lesson",
+      "observed_finding_asof_2026_10_23": "Cross-room snapshot unverified",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "projects",
+        "library"
+      ]
+    },
+    {
+      "id": "mail",
+      "path": "/rooms/mail",
+      "purpose": "Private Smart Mail",
+      "kind": "room",
+      "owner_area": "Security & Flow #2823",
+      "critical_journey": "Authenticated A and B reply, unrelated C denied",
+      "observed_finding_asof_2026_10_23": "Live anon private-table access; security HOLD",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "personal",
+        "connections"
+      ]
+    },
+    {
+      "id": "spaces",
+      "path": "/rooms/spaces",
+      "purpose": "Collaborative Smart Spaces",
+      "kind": "room",
+      "owner_area": "Smart Spaces #1891",
+      "critical_journey": "Two approved members exchange scoped note",
+      "observed_finding_asof_2026_10_23": "Project to Space linkage/membership unproven",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "projects",
+        "connections"
+      ]
+    },
+    {
+      "id": "lists",
+      "path": "/rooms/lists",
+      "purpose": "Smart Lists",
+      "kind": "room",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Save list and re-read safely",
+      "observed_finding_asof_2026_10_23": "Incompatible local storage data-loss risk",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "library"
+      ]
+    },
+    {
+      "id": "connections",
+      "path": "/rooms/connections",
+      "purpose": "Verified relationships",
+      "kind": "room",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Find T Naya Tree with full name",
+      "observed_finding_asof_2026_10_23": "Naya 3 avatar seed and local-only contacts",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "personal"
+      ]
+    },
+    {
+      "id": "growth",
+      "path": "/rooms/growth",
+      "purpose": "Growth and invitations",
+      "kind": "room",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Invited person registers with valid attribution",
+      "observed_finding_asof_2026_10_23": "Referral conversion journey unproven",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "join"
+      ]
+    },
+    {
+      "id": "ledger",
+      "path": "/rooms/ledger",
+      "purpose": "Proof ledger",
+      "kind": "room",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Open a real verified source receipt",
+      "observed_finding_asof_2026_10_23": "LIVE label over seeded example content",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "projects"
+      ]
+    },
+    {
+      "id": "library",
+      "path": "/rooms/library",
+      "purpose": "Intelligent Library",
+      "kind": "room",
+      "owner_area": "Smart Notes #2881",
+      "critical_journey": "Retrieve note and apply it later",
+      "observed_finding_asof_2026_10_23": "Cold lesson reuse unverified",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "smartnote"
+      ]
+    },
+    {
+      "id": "feed",
+      "path": "/rooms/feed",
+      "purpose": "Shared activity feed",
+      "kind": "hub-surface",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Locate new authorized event",
+      "observed_finding_asof_2026_10_23": "Route falls back to Hub shell",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "hub"
+      ]
+    },
+    {
+      "id": "settings",
+      "path": "/rooms/settings",
+      "purpose": "User privacy/preferences",
+      "kind": "hub-surface",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Change preference and re-read",
+      "observed_finding_asof_2026_10_23": "Route falls back to Hub shell",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "personal"
+      ]
+    },
+    {
+      "id": "booking",
+      "path": "/book",
+      "purpose": "Booking action",
+      "kind": "action",
+      "owner_area": "Hub & Interfaces #2882",
+      "critical_journey": "Sandbox availability to cancel",
+      "observed_finding_asof_2026_10_23": "Transaction behavior unverified",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "personal"
+      ]
+    },
+    {
+      "id": "payments",
+      "path": "/pay",
+      "purpose": "Payments action",
+      "kind": "action",
+      "owner_area": "Security & Flow #2823",
+      "critical_journey": "Sandbox payment and rollback",
+      "observed_finding_asof_2026_10_23": "No safe real transaction proof",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "business",
+        "ledger"
+      ]
+    },
+    {
+      "id": "join",
+      "path": "/joinus",
+      "purpose": "Citizen invitation",
+      "kind": "room",
+      "owner_area": "Activation #2880",
+      "critical_journey": "Complete permitted identity registration",
+      "observed_finding_asof_2026_10_23": "Redirects into Hub with affiliate parameter",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "personal"
+      ]
+    },
+    {
+      "id": "factory",
+      "path": "/smartfactory",
+      "purpose": "Smart Factory",
+      "kind": "builder",
+      "owner_area": "Smart Factory / #2793",
+      "critical_journey": "Intent creates persistent functioning app",
+      "observed_finding_asof_2026_10_23": "Builder renders; production app task unverified",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "projects",
+        "library"
+      ]
+    },
+    {
+      "id": "smartnote",
+      "path": "/s/sn0840",
+      "purpose": "Smart Note link",
+      "kind": "knowledge",
+      "owner_area": "Smart Notes #2881",
+      "critical_journey": "Cold agent finds and uses note",
+      "observed_finding_asof_2026_10_23": "Reachable link; behavior change unverified",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "library"
+      ]
+    },
+    {
+      "id": "project-state",
+      "path": "/projects/state.json",
+      "purpose": "Machine project state",
+      "kind": "machine",
+      "owner_area": "Project Intelligence #3012 / Team Board #2793",
+      "critical_journey": "Authenticated current state available in machine form",
+      "observed_finding_asof_2026_10_23": "Current counts JSON, incomplete 14Q",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "projects"
+      ]
+    },
+    {
+      "id": "project-14q",
+      "path": "/projects/questions.json",
+      "purpose": "Machine 14-question orientation",
+      "kind": "machine",
+      "owner_area": "Project Intelligence #3012 / Team Board #2793",
+      "critical_journey": "Cold Naya answers 14 questions and safely acts",
+      "observed_finding_asof_2026_10_23": "HTTP 404 at 2026-10-23 audit",
+      "assessments": {
+        "dimension_scores": {
+          "Visual Excellence": null,
+          "Functional Completeness": null,
+          "Intelligence": null,
+          "Honesty": null,
+          "Performance": null,
+          "Reliability & Continuity": null,
+          "Accessibility": null,
+          "Craft": null
+        },
+        "verified_receipts": [],
+        "independent_verifier_identity": null,
+        "author_identity": null,
+        "source_sha": null,
+        "deployed_sha": null,
+        "freshness_at": null,
+        "positive_real_user_test": null,
+        "adversarial_negative_test": null,
+        "governed_release_approval": null
+      },
+      "depends_on": [
+        "project-state"
+      ]
+    }
+  ]
+}
