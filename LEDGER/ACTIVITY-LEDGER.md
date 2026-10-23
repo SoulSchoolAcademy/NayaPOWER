@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-22 23:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 00:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21907,6 +21907,12 @@ _Last updated: 2026-10-22 23:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-gap-scorer-20261014-2200-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** t0412 tie-break four-site pin + tolerance replacement closed
+
+**Evidence:** VERIFIED on live bytes: all six sha256 pins byte-match current files - batteries/t0412-baseline/rubric.md 8291a7d0c9d6..., batteries/t0412-v2-rank/manifest.json 21eaeb5b63d3..., tie-experiment-t2200.py d94183d609f6..., bin/build_t0412_baseline_battery.py 364e03834513..., arms/lexical-t0412/arm.py eec52d259aff..., arms/tfidf-t0412/arm.py 5c1b9710e30
+
 ### ✅ gap-t952 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** gap follow-up on t952 — independent re-derivation of receipt-pin gate (receipt gap-t952-lane9.md)
@@ -34786,6 +34792,18 @@ _Last updated: 2026-10-22 23:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261022-1620 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat-stall claim-block report (28 briefs, zero claimable)
+
+**Evidence:** VERIFIED: claim-brief.py --dry-run --seat 'Naya Clarity Narzan' on brief-gap-scorer-20261015-0110-lane7.md reproduces the receipt's REFUSED verdict verbatim (claimability gate bars clarity); brief-queue/ holds 29 top-level briefs now (28 at receipt + one new arrival, consistent with hourly churn); queue untouched. GOOD: correctly formed attestation
+
+### ✅ gap-gap-lane-scorer-20261021-1930-v2-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up lane-scorer-20261021-1930-v2: content re-verification of t0412-baseline-builder-cure + worker 3-pass scorecard
+
+**Evidence:** VERIFIED: git ls-remote refs/heads/naya4/t0412-baseline-builder-cure = 76f077a614b3846479368d86e3b63b7f9bac561d byte-matches the receipt pin; shallow fetch of that head: tree holds all 11 named blobs (batteries/corpus pair, queries-packet-extracts.json, queries.json, rubric.md, 5 run scores, bin/build_t0412_baseline_battery.py). Clears 9.5 because 
 
 ### ✅ gap-gap-gate-stall-20261016-1013-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
