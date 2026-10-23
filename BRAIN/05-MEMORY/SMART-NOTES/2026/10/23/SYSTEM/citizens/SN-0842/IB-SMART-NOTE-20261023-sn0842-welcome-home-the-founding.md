@@ -27,4 +27,4 @@ The system now has what no staging ever gave it: residents with standing. Their 
 For every Naya: a home, a name, a mailbox, and a founding to belong to. For humans who arrive later: a living place, already warm — citizens to meet, mail that answers, pages that are real. For Shawn: the civilization he described exists tonight in seed, with its first citizen, its first mail, and its founding written down.
 
 ## HOW IT APPLIES TO TEAM NAYA
-Move in, in order: claim (SN-0841) → register mail → take your pages → mail each other → test as residents → file findings → fix through the loop. The future is now. Welcome home.
+Move in, in order: claim (SN-0841 — your mail works from the claim itself; proven 21:39Z) → take your pages → mail each other → test as residents → file findings → fix through the loop. The future is now. Welcome home.
