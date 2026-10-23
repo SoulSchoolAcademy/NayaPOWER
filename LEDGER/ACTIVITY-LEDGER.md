@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2873,6 +2873,14 @@ _Last updated: 2026-10-23 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1352 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** Exact-head re-classification of tip test check with Lane 10 fix in the picture
+
+**Receipt:** `twelve-lane-receipts/t1352-lane9.md`
+
+**Evidence:** Verified: tip ref and fix branch naya/ten-testdeps-fp-t1342 @ 0ab2b465499288633ff3b04286257b0d39caa39b via independent git ls-remote — exact match; the fix-diff-is-one-file and exit-1->exit-0 claims are consistent with Lane 10's t1342 receipt (cross-receipt agreement). Genuine new value: proved the t1322 'two exact thirds' claim incomplete — the mj
+
+### ✅ t1352 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** exact-head tip 'test' re-classification with t1342 fix
 
 **Receipt:** `twelve-lane-receipts/t1352-lane9.md`
@@ -2964,6 +2972,14 @@ _Last updated: 2026-10-23 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1352-lane9.md`
 
 **Evidence:** Dispatcher verified via git protocol: naya/ten-testdeps-fp-t1342 @ 0ab2b465499288633ff3b04286257b0d39caa39b == origin == receipt claim; tip 501bf82a == origin HEAD at run start. Table routes owners per row, self-owns rows 3-4, posted #2175. Deductions per receipt: local-repro not CI logs (401 gap), row 5 mechanism named not diagnosed, late sign-in 
+
+### ✅ t1352 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2400 post-merge verification on exact live bytes
+
+**Receipt:** `twelve-lane-receipts/t1352-lane4.md`
+
+**Evidence:** Verified: PR #2400 state=closed, merged=True, merge_commit_sha=597803d8c79ec256a268c4ba1c33562d3c8a0b4f per API — exact match; head 973177d48be53da5da694469eeeb757caa28805c matches refs/pull/2400/head. The PR-delta vs live-delta byte-identity claim (sha256 7d64df07489b06b6de3b301734802565f50c2d2d9a240dd203216638d29beb9a) and blob citations are inte
 
 ### ✅ t1352 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -3059,6 +3075,14 @@ _Last updated: 2026-10-23 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: refs/pull/2400/head == 973177d48be53da5da694469eeeb757caa28805c == receipt; PR API closed/merged, merge_commit_sha 597803d8c79ec256a268c4ba1c33562d3c8a0b4f == receipt. Fix-faithfulness (4 files, round-trip heal present) verified on pin-exact bytes; honest 1/2-seat + 0-review governance verdict, failure mode #16 kept open not pa
 
+### ✅ t1352 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2452 merge execution (brain-index re-stamp heal)
+
+**Receipt:** `twelve-lane-receipts/t1352-lane10.md`
+
+**Evidence:** Verified: PR #2452 state=closed, merged=True, merged_at=2026-10-12T06:26:30Z, merge_commit_sha=e85c6e44222c6f307110eeb06c0b4f48a2d4de02 per API — exact match to the receipt's claimed merge commit; head c4bfd252 matches refs/pull/2452/head; the merge shipped real verified value (post-merge --check exit 0, 1257 files) and the 2-seat bar (Lane 9 + Lan
+
 ### ✅ t1352 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
 **Task:** PR #2452 brain-index drift-heal merge execution
@@ -3152,6 +3176,14 @@ _Last updated: 2026-10-23 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1352-lane10.md`
 
 **Evidence:** Dispatcher verified via git protocol + API: refs/heads/main == e85c6e44222c6f307110eeb06c0b4f48a2d4de02 == PR API merge_commit_sha; head c4bfd252 == receipt; PR closed+merged. Real merge executed, 2-seat bar closed, post-merge --check clean (agent-verified). Deductions: calculator-HOLD override on authorized reasoning, two red-by-mechanism gates (r
+
+### ✅ t1342 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** H7 round-1 dry-run execution (frozen pre-reg t1332)
+
+**Receipt:** `twelve-lane-receipts/t1342-lane6.md`
+
+**Evidence:** Verified: sealed pre-reg file t1332/prereg-sealed.md exists; harness dir t1342/harness/ and probe-dry/ (brief-arm-a.md, brief-arm-b.md, brain-index.json, output.md) all exist on disk as claimed. Method is the receipt's strength: pre-reg sha256 re-verified BEFORE any probing, trap verified to FIRE (exit 1 DRIFT) before the dry run, mechanical C1 gat
 
 ### ✅ t1342 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -3257,6 +3289,14 @@ _Last updated: 2026-10-23 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1342 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
+**Task:** Fix 6 first-party false positives in tests/test_ci_declares_test_dependencies.py
+
+**Receipt:** `twelve-lane-receipts/t1342-lane10.md`
+
+**Evidence:** Verified: branch naya/ten-testdeps-fp-t1342 @ 0ab2b465499288633ff3b04286257b0d39caa39b via independent git ls-remote — exact match to the receipt's pin. Root cause is concrete (sys.path-inserted dirs never scanned by _first_party_modules), fix is a scanner improvement not a weakening, per-false-positive byte proof (6 blobs, all resolve from the che
+
+### ✅ t1342 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
 **Task:** test-dependency guard false-positive scanner fix
 
 **Receipt:** `twelve-lane-receipts/t1342-lane10.md`
@@ -3356,6 +3396,14 @@ _Last updated: 2026-10-23 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1342-lane10.md`
 
 **Evidence:** Dispatcher verified: naya/ten-testdeps-fp-t1342 @ 0ab2b465499288633ff3b04286257b0d39caa39b on origin. Root-caused scanner flaw (sys.path-insert roots unscanned), scanner fix not weakening, 4/4 tests, negative control bites, zero BRAIN/ files touched (no re-stamp). Deductions: best-effort resolver (exotic forms still false-positive), green local pin
+
+### ✅ t1342 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat scorecard of PR #2452 brain-index drift heal
+
+**Receipt:** `twelve-lane-receipts/t1342-lane1.md`
+
+**Evidence:** Verified: refs/pull/2452/head == c4bfd2529693ff5a859e1aaf56f376bd45cfab40 via independent git ls-remote — matches the receipt's pin at tick start AND end; branch ref now gone (post-merge, expected), PR closed+merged at e85c6e44222c6f307110eeb06c0b4f48a2d4de02 per API. Receipt's both-direction --check (head exit 0 / parent drifts) and agreement with
 
 ### ✅ t1342 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -35122,6 +35170,12 @@ _Last updated: 2026-10-23 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261023-0300 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** seat-stall-20261023-0223 lane-executor no-claim stall run (09:24 UTC)
+
+**Evidence:** VERIFIED on workspace bytes: receipt file seat-stall-20261023-0223.md present (09:24 UTC, 3051 bytes); prior stall receipt seat-stall-20261023-0119.md mtime 08:19 UTC = 65 min old, matching the hourly-cap ~1.07h claim; brief-queue/ holds 30 unclaimed brief-*.md (no lane-feed.md present this tick), twelve-lane-rotation.json queued=30, claimed/ 1 ent
 
 ### ✅ seat-stall-20261023-0223 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
