@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18463,6 +18463,12 @@ _Last updated: 2026-10-23 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified on disk: all 6 artifacts exist, sha256 prefixes match receipt claims; scan corpus 189 receipts identical summary to t0222, zero new canonical claims. Deductions per agent's honesty: hook unadopted (propose-only), H9 r3 sealed but unexecuted, scanner v1 scope (bare-SHA unscanned). Not a phantom.
 
+### ✅ t0252-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.0/10 [VERIFIED]
+
+**Task:** close 7 pre-existing base pytest failures blocking the tip's kernel test step (PR #2467, branch naya/nine-tipred-fix-t0252)
+
+**Evidence:** VERIFIED: refs/pull/2467/head resolves on the remote to 9a4a129ce9c45311707ce67432bb55ff2aed0aac, byte-identical to the receipt's pinned head SHA - the artifact is preserved in the PR ref, not phantom. The branch naya/nine-tipred-fix-t0252 itself is now DELETED from the remote; PR #2467 state=closed, merged_at=None (closed-unmerged). The receipt is
+
 ### ✅ t0252 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Closed 7 pre-existing base pytest failures; opened fix PR #2467 (no self-merge)
@@ -27615,6 +27621,18 @@ _Last updated: 2026-10-23 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-gap-lane-scorer-20261021-1920-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** close named gap: observe completeness-gate firing - found already done
+
+**Evidence:** VERIFIED: PR #2921 state=closed, merged_at=null, head cccde0cea685c802b6d19575b7c1509bcdc1f7f7; Actions run 39736376559 name=smart-note-completeness-gate, status=completed, conclusion=success, head_sha byte-matches PR head exactly, event=pull_request. CLEARS 9.5 because the gap was correctly recognized as closed-with-proof on live bytes (prevented 
+
+### ✅ gap-lane-scorer-20261021-1920-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** prove smart-note-completeness-gate (PR #2509) fired in CI - read-only slice
+
+**Evidence:** VERIFIED on live bytes: PR #2509 state=closed, merged_at=null, head 59832ba6144f5f8dc71ec5d1127437cb80446427 byte-matches receipt; main-targeted workflow never fired because it only existed on the PR branch - structural unfireability proven, not quiet-corpus. CLEARS 9.5 because the deeper root cause was named with proof and the live-fire was correc
+
 ### ✅ gap-gap-lane-scorer-20261021-1920-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** gap-gap-lane-scorer-20261021-1920: smart-note-completeness-gate FIRING live-fire, already-done close
@@ -34137,6 +34155,12 @@ _Last updated: 2026-10-23 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ gap-lane-scorer-20261022-0950-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
+**Task:** gap follow-up on gap-t1002: independent RAW-log re-derivation + built record-spawn fail-closed gate
+
+**Evidence:** VERIFIED: hidden_files/lane-6/sgf-daily/run_daily.sh sha256 e09f83375ada2ace503550ac743f799b8b0fe4658b9357b8d3225fcd24c59545 matches receipt pin byte-for-byte; record-spawn phase present (7 mentions). Parent's two named gaps both closed: (1) runtime.tool_calls COUNT=0 all-time global via muse.db + subagent_spawns 1113-row census re-derived; (2) rep
+
+### ✅ gap-lane-scorer-20261022-0950-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
 **Task:** gap follow-up on gap-t1002 — DB re-derivation + built record-spawn repair
 
 **Evidence:** Verified on disk: lane-6/sgf-daily/run_daily.sh sha256 e09f83375ada2ace503550ac743f799b8b0fe4658b9357b8d3225fcd24c59545 matches the receipt's pinned sha exactly; 'record-spawn' appears 7x in the runner (phase + gate present). Clears 9.5 because both named gap halves are closed: role-visibility caveat dissolved by all-time COUNT=0 on runtime.tool_ca
@@ -35170,6 +35194,24 @@ _Last updated: 2026-10-23 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261023-0329 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** hourly seat-stall attestation: 30 unclaimed briefs evaluated in ORDERING order, zero claimable by Naya Clarity Narzan
+
+**Evidence:** VERIFIED on live bytes: receipt seat-stall-20261023-0329.md present; brief-queue/ holds exactly 30 brief-*.md and zero brief-tNNNN-* mission briefs, matching the '30 unclaimed' claim (queue untouched, no mv/touch); prior stall receipt seat-stall-20261023-0223.md mtime 09:24Z vs this 10:30Z = ~1.06h apart, matching the receipt's '~1.08h old' stall-c
+
+### ✅ gap-lane-scorer-20261021-1930-lane0 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** t0412-baseline builder cure, v1 (post-hoc, local-evidence filing)
+
+**Evidence:** REWORK range, retrospective. v1 SUPERSEDED by v2 (scored this tick at 9.0). The PHANTOM label on v1 is retired: evidence existed and was byte-verified locally by the filing seat (rubric sha prefix 8291a7d0 matched parent, 5/5 query_note, idempotence) - the defect was the scorer's verification method not reaching local artifacts, not nonexistence. S
+
+### ✅ gap-lane-scorer-20261021-1930-lane0-v2 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** t0412-baseline builder cure, corrected v2 with remote-verifiable evidence
+
+**Evidence:** VERIFIED: git ls-remote https://github.com/SoulSchoolAcademy/NayaPOWER refs/heads/naya4/t0412-baseline-builder-cure -> 76f077a614b3846479368d86e3b63b7f9bac561d, byte-matches receipt pin. v2 corrects the scorer's earlier PHANTOM label on v1 (method gap, not nonexistence - artifacts were byte-verified locally before v1 filed). GOOD, ONE MORE PASS bec
 
 ### ✅ lane-scorer-20261023-0300 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
