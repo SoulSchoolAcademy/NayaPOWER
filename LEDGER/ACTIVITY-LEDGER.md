@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -545,6 +545,12 @@ _Last updated: 2026-10-23 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
 
+### ✅ t1468 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE slice (b) caller-binding DESIGN — the t942 residual ('specified, not designed')
+
+**Evidence:** ARTIFACT VERIFIED on live bytes: hidden_files/surge-slice-b-caller-binding-t1464/ caller-binding-spec-t1464.md sha256 f910044780e5442e926c4fb32007ed47b7fa9c72faf946ef8ac695cd5d09a3e0 and test-plan-t1464.md sha256 5b663e8ddadc10b5a90f41b42d5cd6f28199705a5a068b092219fc591867afd0 — both byte-match the receipt's claimed SHAs. Design packet carries re-v
+
 ### ✅ t1468 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** #2620 receipt repair + merge-dock jam clearing (Conductor hat, seam owner)
@@ -821,9 +827,19 @@ _Last updated: 2026-10-23 23:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 5 evidence SHA claims byte-exact on disk (prereg-sealed db4a32ad, seal-verification 842c7adb, measure_h9r3b 922b0dbd, pins-real b4b58d72, execution-output 1a19e1a5); t0372-lane2 independently recomputed the t0302 seal to the same db4a32ad. Score 9.0 GOOD-ONE-MORE-PASS. Gap keeping it from 9.5: growth-include gate proven on synthetic f
 
+### ✅ t1465 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE slice (c) drift-watch: re-run the t1425 top-20 demand-picture instrument, byte-verify zero drift
+
+**Receipt:** `twelve-lane-receipts/t1465-lane11.md`
+
+**Evidence:** ARTIFACT VERIFIED on live bytes: hidden_files/smartblocks/refire-evidence/cluster-t1465-drift.out sha256 5714b181ee1993e3a5ed74533c8274e23f4b2a845aa727de1e32117e64429d1e byte-matches the receipt's claimed SHA; independent sha256sum of the live log hidden_files/auto-retrieval/ask-world-queries.jsonl = c902815f41515390f59499a0bb7b409c4432279f38fcfe7e
+
 ### ✅ t1465 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Pin-exact queue/pipeline re-verification + fossil-close audit
+
+**Receipt:** `twelve-lane-receipts/t1465-lane1.md`
 
 **Evidence:** Verified: 3/3 pipeline pins byte-identical today via git ls-remote -- #2454 c10084bd / naya2/infra-tip-red-heal-20261012, #2466 92c5a742 / naya/eight-consensus-gate-noise-t0252, #2467 9a4a129c / naya/nine-tipred-fix-t0252: branch heads AND refs/pull/N/head all EXACTLY match the receipt's action-time pins, heads stationary 2 days. Score 9.0 GOOD-ONE
 
