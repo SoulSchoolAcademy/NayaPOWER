@@ -133,12 +133,12 @@
       "id": "P7",
       "priority": 7,
       "work_package": "LAW + HUB + VERIFY",
-      "deliverable": "Claims, blockers, human packets and alarms on face",
+      "deliverable": "Claims, blockers, human packets and alarms on face; part-attached notes + single global/part-scoped event projection",
       "depends_on": [
         "P5",
         "P6"
       ],
-      "acceptance": "Concurrent claim conflict, independently reviewed human gate",
+      "acceptance": "Concurrent claim conflict, independently reviewed human gate; signed/dated notes on multiple part kinds; same event ID across authorized views; unauthorized read/write and event replay refused",
       "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
@@ -147,12 +147,12 @@
       "id": "P8",
       "priority": 8,
       "work_package": "CONNECT + HUB",
-      "deliverable": "Live total-system map of rooms, templates, apps and doors",
+      "deliverable": "Live total-system map of rooms, templates, apps and doors; each node opens its notes/history; Essence Rule enforced",
       "depends_on": [
         "P5",
         "P6"
       ],
-      "acceptance": "Inventory parity and content-based dead-door probe",
+      "acceptance": "Inventory parity and content-based dead-door probe; independent no-clutter/one-tap-depth evaluation; visual law preserved",
       "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
@@ -183,7 +183,7 @@
         "P8",
         "P9"
       ],
-      "acceptance": "Real authorized project created and projected, successor follows",
+      "acceptance": "Real authorized project created and projected, successor follows; part note converted to a governed reusable lesson only on evidence, cold successor retrieves and applies correctly",
       "owner_status": "PROPOSED_CONFIRM_EXISTING_OWNER",
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
@@ -210,5 +210,48 @@
       "reviewer_status": "NEEDS_DISTINCT_VERIFIER_RECEIPT",
       "status": "NOT_CERTIFIED"
     }
+  ],
+  "user_refinements_20261023": {
+    "status": "REQUIRED_ACCEPTANCE_NOT_ASSUMED_LIVE",
+    "part_notes": {
+      "scope": "all stable system-map parts",
+      "must_have": [
+        "stable subject_kind and subject_id",
+        "verified author identity",
+        "server timestamp",
+        "authorized reader/writer scope",
+        "attributable revision trail",
+        "link to existing Smart Note pipeline only if deliberately distilled"
+      ],
+      "not_equivalent_to": "Smart Note promotion or proof"
+    },
+    "event_feed": {
+      "canonical_stream_count": 1,
+      "projections": [
+        "global authorized Projects feed",
+        "per-part authorized filtered feed"
+      ],
+      "invariants": [
+        "event_id shared across projections",
+        "idempotent replay",
+        "subject lineage",
+        "visibility isolation",
+        "proof link",
+        "event provenance and age"
+      ]
+    },
+    "essence_rule": {
+      "face": "only information needed to understand or act",
+      "detail": "one tap behind each part door",
+      "checker": "independent design and accessibility seat",
+      "defect": "non-actionable clutter and hidden necessary warnings"
+    },
+    "learning_loop": "part feedback -> signed note -> evidence-linked lesson candidate -> governed Smart Note when reusable -> cold retrieval -> observed changed authorized behavior"
+  },
+  "acceptance_tests": [
+    "T-NOTES authorized signed dated scoped note attached to project/subproject/part; revision and forbidden access tested",
+    "T-FEED same event-id appears in global and part stream once; replay/tenant-negative test",
+    "T-ESSENCE blind human 30-second understanding, one-tap depth, clutter review, no hidden warnings",
+    "T-LEARN learning candidate derived from part note retrieved and demonstrably improves later authorized choice"
   ]
 }
