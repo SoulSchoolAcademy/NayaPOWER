@@ -1,17 +1,18 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-23T00:23:41Z",
-  "tip": "af9069b8dd2e062def9da016a837fa68551db06c",
-  "open_pr_count": 0,
-  "queue_by_tier_action": {},
-  "tip_failing_checks": [
-    "Team review + scorecard receipt",
-    "Unified paperwork \u2014 tier + cross-seat scorecard + live evidence",
-    "deploy",
-    "promote-and-prove",
-    "safety-grant-gate",
-    "test"
-  ],
+  "generated_at": "2026-10-23T01:25:33Z",
+  "tip": "b5786cad2bf0a644aa96ab97cecd1f5b8631ada0",
+  "open_pr_count": 5,
+  "queue_by_tier_action": {
+    "A": {
+      "CURE": 2
+    },
+    "C": {
+      "CURE": 1,
+      "MERGE-NOW": 2
+    }
+  },
+  "tip_failing_checks": [],
   "gauge": {
     "source": "files/balanced-machine/GAUGE-READ-2026-10-22.md",
     "read_anchor": null,
@@ -22,14 +23,14 @@
   },
   "laws": {
     "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
-    "iteration": 231,
+    "iteration": 232,
     "latest_laws": [
-      "L636",
       "L637",
       "L638",
       "L639",
       "L640",
-      "L641"
+      "L641",
+      "L642"
     ]
   },
   "hold_human": []
