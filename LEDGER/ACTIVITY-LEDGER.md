@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 20:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 20:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35690,6 +35690,14 @@ _Last updated: 2026-10-23 20:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-seat-stall-20261023-1223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-derive the parent's '30 unclaimed briefs' headline count on live bytes; close or name the deeper root cause
+
+**Receipt:** `twelve-lane-receipts/gap-seat-stall-20261023-1223-lane0.md`
+
+**Evidence:** VERIFIED on live bytes: all 7 dequeued brief files (brief-gap-t0903-lane10, t1192-lane2, t1286-lane4, t1295-lane4, t1296-lane11, t1305-lane11, t1310-lane3) exist in brief-queue/claimed/done/ with ctimes 2026-10-23 19:27:19.87Z (single-second batch) and 2026-10-22 mtimes preserved -- exactly the parent's (b2)7; dispatcher's RECONCILE-DEQUEUE broadca
 
 ### ✅ seat-stall-20261023-1223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
