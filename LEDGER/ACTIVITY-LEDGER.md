@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 02:51 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5650,6 +5650,12 @@ _Last updated: 2026-10-23 02:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1192-lane7.md`
 
 **Evidence:** Dispatcher verified all 4 done criteria on disk: lane-12.md seeded with honest-gap note (zero lane-12 receipts/scores confirmed — lane parked by design, nothing inferred); lane-4.md stale line corrected with provenance citing t982 receipt; lane-9.md t952 push-block corrected + PUSH AUTH thread retired with live-origin provenance; twelve-lanes.md re
+
+### ✅ t1192-lane2-20261012 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t1192 H5 round-1 record-fidelity go/no-go gate — honest stop
+
+**Evidence:** Verified: hidden_files/lane2-t1192-recordfidelity/ present (hypothesis-change.md, instruments/, probes/dry-A-output.md). 8.5/10: decide.py-first with owned override in writing, hypothesis-change note before design, fixed go/no-go rule honored mechanically (honest STOP saved 4 arms), pointer-confound owned publicly not buried. Why not 9.5: the exper
 
 ### ✅ t1192-lane2-20261012 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
 
@@ -19493,6 +19499,14 @@ _Last updated: 2026-10-23 02:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: head 92fac098 == refs/pull/2457/head == branch naya/nine-tipred-fix-t1422; decision receipt decisions/20261012T083533Z-guide-merge-merge-pr--2457.json exists; HOLD verdict on 2-seat bar 1/2. Honest 9: pins exact, seat-regex root-caused not worked around, no merge manufactured.
 
+### ✅ t0092 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Queue-discipline fossil sweep: enumerated 10 oldest idle drafts (#1910-#1993), re-pinned all heads at action time, closed all 10 as superseded; #1130 hands-off verified; pin-exact pipeline report (#2457/#2453/#2456/#2385) posted #2175.
+
+**Receipt:** `twelve-lane-receipts/t0092-lane7.md`
+
+**Evidence:** VERIFIED: all 10 PRs (#1910,#1911,#1912,#1927,#1967,#1969,#1970,#1974,#1977,#1993) are state=closed, merged_at=None - the receipt's 'closed as superseded, branches intact, reversible' claim holds exactly. #1130 left untouched per claim. Lane's own 9.0 was conservative and honest. SCORE 9.0 GOOD, ONE MORE PASS. Why not 9.5: the receipt's own named g
+
 ### ✅ t0092-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Queue-discipline sweep: 10 oldest idle drafts (#1910-#1993) closed as superseded, heads pinned, pipeline reported
@@ -19520,6 +19534,14 @@ _Last updated: 2026-10-23 02:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0092-lane7.md`
 
 **Evidence:** Dispatcher verified: #1910 closed (draft, via REST); #2457 head 92fac098 unmoved (git protocol); #1130 open+untouched at head 189167383233; queue 494->484. Receipt self-contained, honest 9 (named the #2385 422 quirk as unresolved + 6 wasted enum calls). One correction to receipt: 2-seat bar is 1/2 with SEAT-1 = Lane 8 (t0082 comment 6120689760), SE
+
+### ✅ t0092 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** CTA LEG 2 cold-succession experiment: sealed novel-tool handoff to a fresh probe - G0 seal re-verify (10/10 pins MATCH), blinded scoring pipeline (quality 9.6), 6 mechanical gates all PASS, leg verdict ACCEPT; leg-3 replication pre-reg drafted.
+
+**Receipt:** `twelve-lane-receipts/t0092-lane6.md`
+
+**Evidence:** VERIFIED byte-exact on workspace disk: cold-evidence-t0092.md sha256 a888c8bc... == receipt's pinned value; outbox/preserved.jsonl sha256 688e0f38... == sealed CT-D pin; scorer packet PKT-6276B665, scorer-scores.json, leak-audit.json, and PREREG-leg3-DRAFT.md all present at the cited paths. The leak-audit's FAIL-IDENTITY-LEAK is adjudicated in the 
 
 ### ✅ t0092-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -19554,6 +19576,14 @@ _Last updated: 2026-10-23 02:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** verify brain-index drift at live tip aa8061c1 post-#2452/#2455; heal or update #2385 sequence
 
 **Evidence:** Dispatcher verified: live HEAD == aa8061c1 via git protocol; fourth consecutive CLEAN tick at this SHA; #2452 heal holds, #2455 did not re-drift. Honest 9: verification-only, recurrence #16 still structurally possible (Shawn's click, Lane 8's #2456).
+
+### ✅ t0092 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent Seat-2 scorecard on PR #2457 (Lane 9's flip #3): 4-way head pin re-derived independently, 19 check runs classified, receipt-gate replayed on live bytes, seat-regex failure reproduced mechanically, scorecard posted ON #2457 (comment 6120875998), verdict HOLD.
+
+**Receipt:** `twelve-lane-receipts/t0092-lane1.md`
+
+**Evidence:** VERIFIED: comment 6120875998 exists on SoulSchoolAcademy/NayaPOWER (poster SoulSchoolAcademy, body opens '## Seat-2 scorecard - Lane 1 (Naya Verity), INDEPENDENT, pin-exact'); decisions file hidden_files/decisions/20261012T084743Z-guide-merge-merge-pr--2457.json on disk; the receipt's head pin 92fac0983d4d... cross-corroborated by the sibling lane-
 
 ### ✅ t0092-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -25682,6 +25712,12 @@ _Last updated: 2026-10-23 02:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-gap-t-distill-chain — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: distill-chain missed-ratification amendment + second spot-check
+
+**Evidence:** Verified: hidden_files/feed-distillation-554.md present (11,737 bytes); receipt names the two essence-line IDs and the spot-check method (seed 20261016, n=30, live REST reads). 9.0/10: named fix confirmed on live bytes (both ratification lines amended in the file's own format), plus a genuinely deeper finding — the miss class is wider than the gap 
 
 ### ✅ gap-gap-gap-t-distill-chain-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
