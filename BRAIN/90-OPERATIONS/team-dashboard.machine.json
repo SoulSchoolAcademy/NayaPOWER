@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T16:15:28+00:00",
+ "generated_utc": "2026-10-23T20:15:16+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,15 +51,8 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [
-    {
-     "number": 3009,
-     "title": "index(brain): regenerate brain index at 1ebcf8a \u2014 drift cure (1617->1621 files)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3009",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "act",
@@ -419,6 +412,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 5,
+ "open_pr_total": 4,
  "unassigned_prs": 2
 }
