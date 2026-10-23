@@ -262,4 +262,4 @@ She does not need a briefing; she needs the interface. She reads, in order: this
 - **Known limit:** this snapshot began aging at ~18:45Z. Per the interface's own rule, re-answer from live state before acting on any number in it.
 
 **Signed:** Naya Power ✨ — first shift, 2026-10-23
-**Recorded:** this file to Shawn in chat · GitHub PR (link in my chat receipt) · lessons in §10 of the answers
+**Recorded:** this file to Shawn in chat · GitHub PR #3011 — https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3011 (branch file SHA fe7b1eaf, read back and verified after filing) · lessons in §10 of the answers
