@@ -1,4 +1,4 @@
-# THE DAILY INTELLIGENCE REPORT — STRUCTURE V2 (standing, adopted 2026-10-23 at Shawn's direction; V2 adds the Language Law the same day)
+# THE DAILY INTELLIGENCE REPORT — STRUCTURE V3 (standing, adopted 2026-10-23 at Shawn's direction; V2 added the Language Law, V3 adds Delivery + Presentation the same day)
 
 One report, every day, same skeleton, same order — so days can be compared at a glance and nothing important has to be hunted for. The report answers five questions: **What happened? What did we learn? Where did we grow? What is valuable now that wasn't yesterday? What happens next?**
 
@@ -22,6 +22,22 @@ Smart Note language is not just the report's style; it is a **standing feature o
 - Nothing is lost in the conversion: facts, numbers, and links survive; only the costume changes.
 - **Daily Intelligence Reports are born in Smart Note language** — no conversion needed. Everything else converts on request.
 - This is taught, not hoped for: the report standard (this document) is where new seats learn it, and editions that fail the grandma test are sent back.
+
+## THE DELIVERY (V3 — Shawn, 2026-10-23: "give them the report in the feed, and give them the link to the reports on nayanet.live so they can read it in the beautiful format")
+
+Asking for your Daily Intelligence Report gets you **both**:
+1. **The report itself, right here in chat** — in Smart Note language, the nutshell and the lists, readable on the spot.
+2. **The live link to the report on nayanet.live** — the beautiful rendition in the Hub's Reports section, where it lives permanently and anyone can read it in the full presentation.
+
+A link is a claim of completion: the nayanet.live link is shared only after the page is verified live by the sender (opened, and the report seen rendering). Until it is live, chat carries the report and says plainly that the beautiful page is being wired — never a link to a page that isn't there.
+
+## THE PRESENTATION (V3 — the beautiful format, Shawn's spec)
+
+The Hub rendition is built for the eyes, not just the mind:
+- **Every section is a raised board** — an elevated card with soft shadow and a gentle luminous edge (the flagship look: obsidian depths, luminous purple, jewel-like elevation). Sections never run together as a wall of text.
+- **Section headlines are 24. Body text is 18.** Comfortable line-height, generous spacing, real bullets and numbered lists. Readability is the spec — if it is hard to read, it is wrong, however pretty.
+- **As much visual presentation as serves reading** — hierarchy, breathing room, clear separation — and no decoration that costs comprehension.
+- The chat rendition follows the same spirit in miniature: clear sections, bold anchors, space between thoughts.
 
 ## The skeleton (fixed order, never rearranged)
 
@@ -48,7 +64,7 @@ Smart Note language is not just the report's style; it is a **standing feature o
 - **Every claim links to its proof.** No link, no claim.
 - **Wins and breaks both, at full honesty.** A report that only celebrates is a filing system, not an intelligence report.
 - **Targets are labeled targets** — never written as measurements.
-- **Chat gets the report itself** (nutshell + lists, tight one-liners, in Smart Note language); the full file lives in the repo at `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/YYYY-MM-DD-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md` and in the Hub's Reports section — one current copy, never duplicates.
+- **Chat gets the report itself, plus the live link** (see THE DELIVERY): nutshell + lists in Smart Note language in chat, and the verified-live nayanet.live Reports link for the beautiful rendition. The canonical text lives in the repo at `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/YYYY-MM-DD-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md`; the Hub Reports page is its presentation — one truth, never divergent copies.
 - **Timing:** the day edition closes the UTC day; a mid-day edition labels its window honestly and is extended — never silently replaced — by the close.
 - **Three tongues:** this structure is the human form — and under V2, "human form" means Smart Note language, full stop. The AI form carries the same 11 sections with exact values and procedures; the machine form is the same fields as JSON. Same truth, three tongues — and the human tongue speaks plainly.
 
