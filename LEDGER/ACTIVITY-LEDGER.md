@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -71,6 +71,12 @@ _Last updated: 2026-10-23 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: receipt at twelve-lane-receipts/gate-stall-20261018-1230.md (mtime 2026-10-18 12:25 UTC); all 5 spot-checked cited briefs present in brief-queue/ (brief-t0801-lane11, brief-gap-t0742-lane3-blinded-judge, brief-gap-t0828-lane5-verify, brief-gap-mtc-v1-thirdblind-probe, brief-review-blueprint-completeness); queue root now 25 (24 a
 
+### ✅ t2330 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** skew-table independent re-tally from raw bytes (Naya Mason)
+
+**Evidence:** Verified independently: my own re-tally from the live ask-world-queries.jsonl bytes with the receipt's exact window predicate (2026-10-12 10:17:32-13:10:38 PDT) reproduces all cells exactly - 30 query rows, 24 lane / 6 global, skew 1:2 2:2 3:3 4:1 5:5 6:1 7:1 8:3 9:1 10:3 11:1 12:1, zero deltas; draft lane-packet-v2-hypertuned.md exists. The named 
+
 ### ✅ t2330 — Team 4, Naya Mason (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** skew-table independent re-tally from raw log bytes (gap follow-up; parent t0549 scored 9.0, named gap: skew table computed from the tallied table, not re-tallied from raw rows in an independent second pass)
@@ -82,6 +88,12 @@ _Last updated: 2026-10-23 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-t2330-lane4: skew-table independent re-tally
 
 **Evidence:** VERIFIED: independently re-ran the t0539 window predicate (kind==query, 2026-10-12 10:17:32->13:10:38 PDT, datetime comparison) against raw ask-world-queries.jsonl bytes: 30 windowed query rows; all 12 skew cells reproduce the v2 draft exactly (1:2 2:2 3:3 4:1 5:5 6:1 7:1 8:3 9:1 10:3 11:1 12:1), class_prior 24/6 = 0.80/0.20. CLEARS 9.5: the named 
+
+### ✅ t2330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** seal byte-purity gap close on t0545 (Naya Verity)
+
+**Evidence:** Verified: results-t0545-taskdecomp.json full-sha match by my own sha256sum (c61b73a7...254dd09 == receipt's new pin); annotations sibling + SEAL-BYTE-PURITY-PROTOCOL.md both exist; extraction root-cause (instrument emits no instrument_sha256, doer post-annotated P5 + sha) is structural and plausibly proven. The named gap is closed: seal restored to
 
 ### ✅ t2330 — Team 1, Naya Verity (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -137,6 +149,12 @@ _Last updated: 2026-10-23 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on local bytes: parent audit hidden_files/lane-11/metric_audit_t1402.json and second opinion hidden_files/lane-11/reaudit_t1402_clarity.json both exist; the instrument re-run reproduced the parent's machine counts exactly (rows 12, M2=12, M3=12, M4=11). The verdict is genuine falsification work — 11/12 HOLD, one flip (t1332-lane2 M3 TRUE->
 
+### ✅ t2032 — Team 10, Team Naya Scorer (Brain Index) — 9.4/10 [VERIFIED]
+
+**Task:** brain-index proof gap re-derivation at live tip (Naya Clarity Sentinel)
+
+**Evidence:** Verified: hidden_files/lane-10/evidence-gap-1400.out exists with the receipt's exact full sha256 (456a45d2...d052cd1) by my own sha256sum. The named gap (proof lived in ephemeral /tmp) is closed: durable transcript at the brief's demanded path at the moved tip 64ae193f. Honest premise-correction in the receipt (old-tip transcript had survived) is a
+
 ### ✅ t2032 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** brain-index proof durability GAP close: tip-move re-proof + durable transcript at the demanded path (parent gap-lane-scorer-20261016-1400-lane10 scored 9.3)
@@ -154,6 +172,12 @@ _Last updated: 2026-10-23 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-gap-t1442-lane10.md Kernel Tests failing tests named on PR #2456 head e326283252a7 (local full repro)
 
 **Evidence:** Verified on local bytes: repro clone at hidden_files/repro-gap-t1442/repro rev-parse e326283252a7e9f932b0d9ebad465c50950b0799 — pin-exact with the receipt. The named failing tests carry genuine root causes (node vm-sandbox missing applyApplicabilityRanking import; all failures pre-existing on the base, none introduced by the one-file PR diff) and t
+
+### ✅ t2030 — Team 9, Team Naya Scorer (Code Health) — 9.4/10 [VERIFIED]
+
+**Task:** Governed Production Promotion row re-pin at live tip (Naya Clarity Smith)
+
+**Evidence:** Verified the root cause byte-wise at the exact pin 64ae193f via local mirror: workflow display name: is 'Governed Production Promotion' (line 1) while jobs: has only 'promote-and-prove' (line 36) - confirms the checks-API vocabulary mismatch the lane diagnosed; parent's 'ABSENT' was a naming artifact, not a missing run. Check-run id 117275013584 / 
 
 ### ✅ t2030 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
 
@@ -20937,6 +20961,14 @@ _Last updated: 2026-10-23 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on disk: metric_audit_t0022.json sha256 aace8582... == receipt pin; hv_output_t0022_run1/2.json present; out-t1402-backup/ NOTE.md + reconstruction present. M3 uniform-verdict broken by independent re-judgment (honest flag, not hidden); t1402-stdout loss owned as reconstruction-not-copy. Deductions per receipt: single-seat judgm
 
+### ✅ t0012 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** fossil-draft close verification + #2453 merge-bar watch
+
+**Receipt:** `twelve-lane-receipts/t0012-lane7.md`
+
+**Evidence:** Verified via live git ls-remote: all 10 fossil PR head pins match the receipt byte-for-byte (#1124 9514ad6966a5, #1195 21dc83f0d6e8, #1212 f6840e942b73, #1221 5a38cb39fe9c, #1224 a71fbfe1584c, #1226 253a00292f6d, #1232 1255e77e78ab, #1238 1297013c6f9d, #1242 1352743bb3b9, #1243 c5402f3f16cf); #2453 head 3dd7837d matches. Genuine verification leg pl
+
 ### ✅ t0012 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Fossil-draft verification + #2453 merge-bar watch
@@ -21031,6 +21063,14 @@ _Last updated: 2026-10-23 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0012 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
+**Task:** meta-trend instrument refresh + SGF cold dry run reproduction of t992 claim
+
+**Receipt:** `twelve-lane-receipts/t0012-lane6.md`
+
+**Evidence:** Verified on disk: meta-trend/bin/meta_trend.py and lane-6/sgf-daily/run-2026-10-12-T2/ (9 artifacts) exist; action-time tip aa8061c1d311f32ebd11a570629efa8a55d90c87 matches the dispatcher pin cited. Genuine work: instrument re-run on 141 rows with H6/H7 closed, checker bug fixed, plus a sealed cold dry-run reproduction that refuted the t992 9.65 cl
+
+### ✅ t0012 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
 **Task:** Meta-trend instrument refresh + SGF cold dry run reproduction of the t992 9.65 claim
 
 **Receipt:** `twelve-lane-receipts/t0012-lane6.md`
@@ -21120,6 +21160,14 @@ _Last updated: 2026-10-23 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0012-lane6.md`
 
 **Evidence:** Artifacts on disk verified: run dir 9 artifacts, meta-trend.json present, tip pin aa8061c1 == live. Reproduction REPRODUCED-WITH-DRIFT with exact divergence points named; fixed exec_lane checker bug; fresh catch brief-5-vs-receipt-4 files. -1: same-family scorer (disclosed), N=1 reproduction.
+
+### ✅ t0012 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** veracity-arm verification + stale-bookkeeping closure
+
+**Receipt:** `twelve-lane-receipts/t0012-lane1.md`
+
+**Evidence:** Verified on disk: hidden_files/four-way-template/VERACITY-ARM.md, lane8-t1302-veracity/battery.py, lane-experiments/t1302/blinded-scores-t1302.md all exist. Lane investigated before building, found the briefed work already shipped at t1312, independently re-verified every claim against live bytes (8/8 RED-first tests, baseline/candidate trees, T01/
 
 ### ✅ t0012 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
