@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 18:24 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -2109,6 +2109,12 @@ _Last updated: 2026-10-23 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol: main == aa8061c1d311f32ebd11a570629efa8a55d90c87 == receipt pin, stable; independently reproduced `tools/regenerate_brain_index.py --check` exit 0 (1257 files) in a fresh depth-1 clone at the same tip. No duplicate heal branch (correct). Deductions: #2385 freshness gate still absent at tip (Shawn's click, not t
 
+### ✅ t1426-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Build t1351 exact-name-rule detector (receipt-briefcheck.py) as candidate, fixture proof + live demo
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/t1426-lane4.md; detector hidden_files/bin/receipt-briefcheck.py sha256 matches claim (dfdb86047b...); testlog exists; fixtures dir has all 3 named files. Independently re-ran the detector on the fixtures: exit 1 naming exactly fixture-orphan.md (BRIEF-ORPHAN) and fixture-stripped.md (NO-Brief) — behavior match
+
 ### ✅ t1426 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** build exact-name-rule detector candidate (receipt-briefcheck.py) as CANDIDATE, read-only
@@ -2125,6 +2131,12 @@ _Last updated: 2026-10-23 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: detector sha256 dfdb86047... recomputed and matches receipt pin; fixture dir present (3 real files). Fixture proof: planted orphan + stripped-brief files flagged with exit 1, clean dir exit 0 — both violation classes asserted with real files, no human in the loop. Pass-2 discipline is the substance: byte-checking the live run caught a rea
 
+### ✅ t1425-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Re-derive 20 most-repeated needs from live ask-world query log + advisory report (querylog-top20-t1425.md)
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/t1425-lane11.md; log ask-world-queries.jsonl sha256 matches claim (c902815f...); report querylog-top20-t1425.md sha256 matches claim (205bb376...); instrument cluster-t1425.py + .out exist (re-run instrument persisted). Log SHA byte-identical to the t1422 pin — zero-drift claim rests on live bytes, not inherit
+
 ### ✅ t1425 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** re-derive 20 most-repeated needs from live ask-world query log + advisory report
@@ -2140,6 +2152,12 @@ _Last updated: 2026-10-23 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1425-lane11.md`
 
 **Evidence:** Verified: log sha256 c902815f... recomputed (198 rows) and report sha256 205bb376... both match receipt pins — zero-drift claim is byte-grounded, not inherited. Re-derivation honest: 23 exact-match clusters to 20 needs, counts sum 140/140, byte-identical to t1305 tally (independent re-run, not copy). Deterministic instrument cluster-t1425.py saved 
+
+### ✅ t1423-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat Stage-0 verdict on t1421 stall-cap detector (reproduce + adversarial re-proof)
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/t1423-lane3.md; detector bin/stall-cap-check.py sha256 e6d7653f... matches both the t1421 filing pin and the t1423 action-time pin (same bytes, no drift); judge testlog sha256 matches claim (7752b0c1...); judge fixtures dir exists (15 files = 12 planted + 3 edges per claim; the receipt's 'manifest sha256' meth
 
 ### ✅ t1423 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -2439,6 +2457,12 @@ _Last updated: 2026-10-23 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol + disk: main == e85c6e44222c6f307110eeb06c0b4f48a2d4de02 == receipt tip == shared-state tip at action time (tip has since moved to aa8061c1d311, noted in briefs). seal.json EXISTS on disk; its receipt-pinned sha256 59df9fb0... is reproducible as the canonical key-sorted hash of the object (verified: sha256 of so
 
+### ✅ t1422-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Re-fire t1305 GO/NO-GO predicate against live query log + re-fire doc (Stage 2 proof)
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/t1422-lane11.md; log ask-world-queries.jsonl sha256 c902815f... matches claim; sb-demand-refire-t1422.md sha256 matches claim (7a677c36...); refire-t1422.py sha256 matches claim (2c00032b...); refire-t1422.out exists. Verdict WAIT-HOLDS on 0 emergent rows is predicate-rendered, not softened. Stale brief SHA pi
+
 ### ✅ t1422 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** t1305 GO/NO-GO predicate re-fire against live query log
@@ -2446,6 +2470,12 @@ _Last updated: 2026-10-23 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1422-lane11.md`
 
 **Evidence:** VERIFIED: refire-t1422.py sha256 2c00032b (match) re-run by scorer at 14:54Z reproduces byte-identically: 198 rows, emergent 0, verdict WAIT — predicate output, not the lane's. sb-demand-refire-t1422.md sha256 7a677c36 (match) at smartblocks/. Live log sha256 c902815f (match). Stale brief pin flagged openly; class-#17 deviation owned honestly. Clea
+
+### ✅ t1421-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Build first automatic principle-violation detector (stall-cap-check.py) with planted + boundary proof, live-dir findings
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/t1421-lane4.md; detector bin/stall-cap-check.py sha256 e6d7653f... matches claim (same bytes later pinned by t1423 judge — byte-pinned twice); testlog sha256 matches claim (d9bfe95a...); fixtures dir exists with the planted 0700/0725 + drift 1130 + boundary 1200/1300 pairs per claim. Live-dir run findings are 
 
 ### ✅ t1421 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -2455,6 +2485,12 @@ _Last updated: 2026-10-23 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: stall-cap-check.py sha256 e6d7653f (match); fixtures dir present (7 files); test log EXISTS with all 3 runs (planted catch incl. exact CAP-VIOLATION line, live-dir run ~100 findings, 60-min boundary pair). Gap found by scorer: the receipt's testlog sha256 pin d9bfe95a(9ff...) does NOT match the file d9bfe95a(1d7f...) — pin stale (content 
 
+### ✅ t1420-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE slice (b): re-derive t942 retrieval-auth gate on live bytes (fresh clone), write migration-prep doc byte-pinned
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/t1420-lane2.md; prep doc retrieval-auth-gate-migration-prep-t1420.md sha256 matches claim (6b010d57...); READY (prep) vs BLOCKED-on-word (wire) kept visibly distinct — no protected-gate touch. Two premise drifts named with byte pins (spec 4.1 line pin stale; CLI drill has no caller flag). Reproducibility limit
+
 ### ✅ t1420 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.4/10 [VERIFIED]
 
 **Task:** SURGE slice (b): retrieval-auth gate migration-prep doc, fresh-clone re-derived pins
@@ -2462,6 +2498,12 @@ _Last updated: 2026-10-23 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1420-lane2.md`
 
 **Evidence:** VERIFIED: retrieval-auth-gate-migration-prep-t1420.md sha256 6b010d57 (match); doc carries exact wiring action, fail-closed discipline, gate; two genuine premise drifts found (stale spec §4.1 line pin; CLI-driven drill needs caller flag). No wiring/PR/merge — correctly read-only. Score 9.4. Kept from 9.5: the 25/25 suite pass and the two blob pins 
+
+### ✅ t1418-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE slice (a): build runnable semantic-entailment matcher arm, RED-first, TF-IDF control, pre-registered falsifier
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/t1418-lane3.md; arm auto-retrieval/arm_semantic_t1418.py sha256 matches claim (fb82ca54...); pre-reg predictions-t1418.json and results-t1418-semantic.json SHAs quoted with pre/post ordering; root-different mechanism (H-done-entailment: done-clause vs v2 DECISION-CHANGE facets) with frontier survey before desi
 
 ### ✅ t1418 — Team 3, Team Naya Scorer (Decision Engine) — 9.3/10 [VERIFIED]
 
@@ -35602,6 +35644,24 @@ _Last updated: 2026-10-23 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261023-1116 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 11:16 PDT — 30 unclaimed briefs evaluated in fixed ORDERING order (all through claim-brief.py), zero claimable; queue delta since 10:14
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/seat-stall-20261023-1116.md exists; brief-queue holds 30 unclaimed brief-*.md (counted 30, lane-feed.md present), zero brief-tNNNN-* mission briefs (counted 0) — matches the receipt's 30->30 delta; prior stall receipt seat-stall-20261023-1014.md is 67.6 min old (cap honored, ~62 min since, just outside the 60-
+
+### ✅ gap-lane-scorer-20261023-0820-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Resolve contradictory t1415 twin records (0/30 one-liner vs 13:03:48Z six-brief move) + lane-feed 06:0x citation
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/gap-lane-scorer-20261023-0820-lane0.md; Twin A (broadcast L109 / memory L1457, 12:55Z, 0/30 exact-name) and Twin B (memory L1468-1474 + broadcast L111, 13:03:48Z, second-exact with ctime pin) both byte-exact; confession leg pinned to Twin B, disagreement explained as coded-rule verdict vs off-rule agent action
+
+### ✅ gap-seat-stall-20261023-0637-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Forensic attribution of ~06:03 PDT vanishing of 6 brief-gap-tNNNN briefs from queue
+
+**Evidence:** VERIFIED: receipt twelve-lane-receipts/gap-seat-stall-20261023-0637-lane0.md; all six briefs byte-confirmed moved to brief-queue/done/ by the t1415 reconcile (the parent state), then RESTORED to brief-queue/ by t1427 — verified present in brief-queue/ this run, reconciling 8-6=2 survivors; mover evidence is four-legged — 16ms-batch ctime pin (13:03
 
 ### ✅ seat-stall-20261023-1014 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
