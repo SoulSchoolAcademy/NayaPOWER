@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-22T21:15:45+00:00",
+ "generated_utc": "2026-10-23T00:15:41+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,15 +51,8 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [
-    {
-     "number": 2907,
-     "title": "kappa w690: heal registry drift \u2014 register 28 door/leaf pages, pin 1\u21920",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907",
-     "draft": true
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "act",
@@ -140,31 +133,19 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2951,
-     "title": "Factory Step 2: machine twin of the ratified Design Contract (generator + generated twin +",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2951",
+     "number": 2971,
+     "title": "Naya/mission state",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2971",
      "draft": false
     },
     {
-     "number": 2945,
-     "title": "Smart Links: data foundation + redirect worker + join attribution (Best-of-Best #3, Phase ",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2945",
-     "draft": false
-    },
-    {
-     "number": 2934,
-     "title": "Mission-state twin cure \u2014 director ruling Option C (TOP-10 director-stated, register machi",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934",
-     "draft": false
-    },
-    {
-     "number": 2869,
-     "title": "Naya4/smart notes 2026 09 30",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869",
+     "number": 2955,
+     "title": "Smart Lists \u2014 the one server store (Best-of-Best #16, step 15)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2955",
      "draft": false
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 2
   },
   {
    "id": "wire",
@@ -183,15 +164,8 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [
-    {
-     "number": 2939,
-     "title": "R13 \u2014 #2154 pointer sweep: mission state repointed to BRAIN/CURRENT-MISSION-STATE.md (adju",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2939",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "team",
@@ -210,15 +184,8 @@
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
-   "open_prs": [
-    {
-     "number": 2950,
-     "title": "Naya2/team dashboard",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2950",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "infra",
@@ -237,15 +204,8 @@
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
-   "open_prs": [
-    {
-     "number": 2937,
-     "title": "P0: fail-closed v7 registry identity reconciliation and orphan controls",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2937",
-     "draft": true
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "product",
@@ -264,8 +224,21 @@
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2969,
+     "title": "Ask Naya go-live port (ARTIFACT ONLY \u2014 do not merge)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2969",
+     "draft": true
+    },
+    {
+     "number": 2968,
+     "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 2
   },
   {
    "id": "memory",
@@ -438,6 +411,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 8,
- "unassigned_prs": 4
+ "open_pr_total": 4,
+ "unassigned_prs": 2
 }

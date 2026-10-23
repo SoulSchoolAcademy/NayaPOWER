@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-22 21:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-23 00:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 8 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,23 +50,13 @@
 
 ## Open PRs by Area
 
-### KNOW (1)
-- [#2907](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2907) kappa w690: heal registry drift — register 28 door/leaf pages, pin 1→0 📝draft
+### BUILD (2)
+- [#2971](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2971) Naya/mission state
+- [#2955](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2955) Smart Lists — the one server store (Best-of-Best #16, step 15)
 
-### BUILD (4)
-- [#2951](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2951) Factory Step 2: machine twin of the ratified Design Contract (generato
-- [#2945](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2945) Smart Links: data foundation + redirect worker + join attribution (Bes
-- [#2934](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2934) Mission-state twin cure — director ruling Option C (TOP-10 director-st
-- [#2869](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2869) Naya4/smart notes 2026 09 30
-
-### WIRE (1)
-- [#2939](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2939) R13 — #2154 pointer sweep: mission state repointed to BRAIN/CURRENT-MI
-
-### TEAM (1)
-- [#2950](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2950) Naya2/team dashboard
-
-### INFRA (1)
-- [#2937](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2937) P0: fail-closed v7 registry identity reconciliation and orphan control 📝draft
+### PRODUCT (2)
+- [#2969](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2969) Ask Naya go-live port (ARTIFACT ONLY — do not merge) 📝draft
+- [#2968](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968) Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A 
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*
