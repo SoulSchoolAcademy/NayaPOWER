@@ -294,6 +294,20 @@ def audit(sql: str) -> list[str]:
         for verb in ("select", "insert", "update", "delete"):
             if f"create policy {table}_owner_{verb} on public.{table}" not in low:
                 problems.append(f"owner {verb} policy missing on {table}")
+    # Every owner policy must carry the owner scope in its OWN block.
+    # A single global string check passes when exactly one policy is
+    # weakened (VERIFY sabotage 3 on PR #2954: object_links_owner_delete
+    # -> using (true) left this suite 14/14 green), so pin it per policy.
+    for m in re.finditer(
+            r"create policy (\w+) on public\.(object_links|object_facts)\b[^;]*;",
+            low):
+        block = m.group(0)
+        clauses = block.count("using (") + block.count("with check (")
+        scopes = block.count("owner_id = (select auth.uid())")
+        if scopes < clauses:
+            problems.append(
+                f"policy {m.group(1)} on {m.group(2)} is not "
+                "owner-scoped by auth.uid() in every clause")
     if "owner_id = (select auth.uid())" not in low:
         problems.append("policies are not owner-scoped by auth.uid()")
     # Links and facts are private: NO policy may name anon, on either table.
@@ -339,6 +353,34 @@ def test_negative_control_doctored_sql_fails_the_audit():
     assert any("security-definer" in p for p in audit(stripped))
     drifted = _sql().replace("'smart_note', 'naya_note'", "'smart_note', 'widget'")
     assert any("drifted" in p for p in audit(drifted))
+
+
+def test_negative_control_single_policy_weakening_fails_the_audit():
+    # VERIFY's sabotage 3 on PR #2954, as a standing control: weakening
+    # ONE policy's scope must fail the audit even though the owner-scope
+    # string survives in the other seven policies.
+    weakened = _sql().replace(
+        "create policy object_links_owner_delete on public.object_links\n"
+        "  for delete to authenticated\n"
+        "  using (owner_id = (select auth.uid()));",
+        "create policy object_links_owner_delete on public.object_links\n"
+        "  for delete to authenticated\n"
+        "  using (true);")
+    assert weakened != _sql()
+    assert any("object_links_owner_delete" in p for p in audit(weakened))
+    # An UPDATE policy carries the scope twice (using + with check);
+    # weakening either single expression must also fail, by name.
+    half_weakened = _sql().replace(
+        "create policy object_links_owner_update on public.object_links\n"
+        "  for update to authenticated\n"
+        "  using (owner_id = (select auth.uid()))\n"
+        "  with check (owner_id = (select auth.uid()));",
+        "create policy object_links_owner_update on public.object_links\n"
+        "  for update to authenticated\n"
+        "  using (true)\n"
+        "  with check (owner_id = (select auth.uid()));")
+    assert half_weakened != _sql()
+    assert any("object_links_owner_update" in p for p in audit(half_weakened))
 
 
 def test_sql_parses_as_postgres_and_limit_matches():
