@@ -51,3 +51,22 @@ def test_legacy_root_and_concepts_cannot_enter_published_bundle(tmp_path):
     assert (deployed / "index.html").read_text(encoding="utf-8") == "CURRENT_HUB"
     assert sorted(p.relative_to(deployed).as_posix()
                   for p in deployed.rglob("*") if p.is_file()) == ["index.html"]
+
+
+def test_real_cloudflare_release_points_to_single_current_hub():
+    """The production path, not merely the auxiliary publisher, must agree."""
+    import tomllib
+
+    config = tomllib.loads((ROOT / "HUB" / "wrangler.toml").read_text(encoding="utf-8"))
+    assert config["main"] == "hub-worker.js"
+    assert config["assets"]["directory"] == "./app"
+    assert config["assets"]["not_found_handling"] == "single-page-application"
+
+    worker = (ROOT / "HUB" / "hub-worker.js").read_text(encoding="utf-8")
+    assert "env.ASSETS.fetch(request)" in worker
+
+    workflow = (ROOT / ".github" / "workflows" / "deploy-hub-cloudflare.yml").read_text(encoding="utf-8")
+    assert "working-directory: HUB" in workflow
+    assert "wrangler@latest deploy" in workflow
+    assert "HUB/app/**" in workflow
+    assert "branches: [main]" in workflow
