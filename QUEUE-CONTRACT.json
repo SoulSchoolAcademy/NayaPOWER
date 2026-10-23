@@ -1,6 +1,6 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-23T11:24:26Z",
+  "generated_at": "2026-10-23T12:24:39Z",
   "tip": "d45b03aeccc6ffcf88ff319a7ef757d40a7e035e",
   "prs": [
     {
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "82f477dc6c868a9644f1f51c23ba44b65b028d7e"
+      "head": "5b3dad919df857adf1b2a3a670e76dc763d24d1b"
     },
     {
       "number": 3001,
@@ -56,6 +56,24 @@
       "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
       "owner": "dock",
       "head": "7eaf08a8e20a494325aa79458e8ca8fc2f232bc4"
+    },
+    {
+      "number": 3004,
+      "title": "Factory adoption (#9): STANDARD-FEATURE-CHECKLIST \u2014 the Best-of-Best Part 5 checklist as the Factory's audit standard, with the step-22 speed budget line",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "424754587343810c12f7d96442529f2eea4f4518"
+    },
+    {
+      "number": 3005,
+      "title": "LI-6: promote measure_lesson_delta.py to repo tools/",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "a011b0566144a6c3b7c8c3c015efd17b3f8362b4"
     }
   ]
 }

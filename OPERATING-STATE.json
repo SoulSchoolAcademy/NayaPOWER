@@ -1,8 +1,8 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-23T11:24:26Z",
+  "generated_at": "2026-10-23T12:24:39Z",
   "tip": "d45b03aeccc6ffcf88ff319a7ef757d40a7e035e",
-  "open_pr_count": 6,
+  "open_pr_count": 8,
   "queue_by_tier_action": {
     "A": {
       "CURE": 1
@@ -12,10 +12,11 @@
     },
     "B": {
       "MERGE-NOW": 1,
-      "CURE": 2
+      "CURE": 4
     }
   },
   "tip_failing_checks": [
+    "liveness",
     "promote-and-prove",
     "test"
   ],
@@ -29,7 +30,7 @@
   },
   "laws": {
     "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
-    "iteration": 242,
+    "iteration": 243,
     "latest_laws": [
       "L643",
       "L644",
