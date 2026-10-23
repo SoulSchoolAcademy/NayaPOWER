@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-23",
-  "receipt_basis_commit": "1ebcf8aefbf358826d46a0d8395cc626356e93d2",
-  "inventory_file_count": 1621,
+  "receipt_basis_commit": "82faac61c25e62fde5d3a5f5c6b18d299e827b2d",
+  "inventory_file_count": 1629,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 820,
+    "05-MEMORY": 827,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -19,7 +19,7 @@
     "10-INTERFACES": 445,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
-    "90-OPERATIONS": 95,
+    "90-OPERATIONS": 96,
     "99-ARCHIVE": 2,
     "ROOT": 7
   },
@@ -4556,6 +4556,21 @@
       "size": 3109
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/SN-1854/IB-SMART-NOTE-20261023-sn1854-nio-envelope.md",
+      "blob_sha": "d3dd59f03b6dae0ef39c78d31f73bc0f8cd8739b",
+      "size": 5033
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/github-access/SN-0836/IB-SMART-NOTE-20261023-sn0836-the-github-app-door.md",
+      "blob_sha": "a3da17b5a0c74da13d6951918f90d081fad36867",
+      "size": 6391
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/github-access/SN-0838/IB-SMART-NOTE-20261023-sn0838-set-up-the-app-door-cold.md",
+      "blob_sha": "edfa241e795d26ba051aee7704f0b11a7634f6e6",
+      "size": 9567
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0827/IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet.md",
       "blob_sha": "11ba70160963d0a6986fae8132c3de0a711a4af5",
       "size": 11280
@@ -4586,6 +4601,16 @@
       "size": 5146
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0834/IB-SMART-NOTE-20261023-sn0834-the-fourteen-questions.md",
+      "blob_sha": "a05fe40cd3d230f818e0ed3b6d73746cc9e0dcfe",
+      "size": 9600
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0835/IB-SMART-NOTE-20261023-sn0835-produce-more-waste-less.md",
+      "blob_sha": "4d25d3da8487779f80b194d159da90c069316fe3",
+      "size": 6950
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1063/IB-SMART-NOTE-20261023-sn1063-remember-who-you-are.md",
       "blob_sha": "d470e6b51b05df0c6312668e64172c5cfaaa349b",
       "size": 5092
@@ -4599,6 +4624,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md",
       "blob_sha": "788f720cd20236186cefe1e39e149bbe79a04e52",
       "size": 5987
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0837/IB-SMART-NOTE-20261023-sn0837-check-which-door.md",
+      "blob_sha": "993a5d2897a0d088e6242a16a93b625f880d6175",
+      "size": 7068
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/project-intelligence/SN-0839/IB-SMART-NOTE-20261023-sn0839-the-ultimate-project-intelligence.md",
+      "blob_sha": "7f72bf7a930c94ff1504e15bc32a4076379ec86c",
+      "size": 9756
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-0832/IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note.md",
@@ -7691,6 +7726,11 @@
       "size": 44783
     },
     {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-FOURTEEN-QUESTIONS-NAYA-POWER-EVENING-ADDENDUM-V1.md",
+      "blob_sha": "fe2fc4008026da995caa885b34154c0fff6adccd",
+      "size": 43524
+    },
+    {
       "path": "BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.ai.md",
       "blob_sha": "83275e3b6416d135c042b5deac53259091bbcafb",
       "size": 10743
@@ -7737,8 +7777,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "0c0dee3f3175d05cc4815d05cabeb8c6cdd349ba",
-      "size": 5585
+      "blob_sha": "58af3faed11acea6970ce357ce30d3f174b1230b",
+      "size": 5031
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8082,8 +8122,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "1b71686771d3d316182e20ea0ea0d66ad312d405",
-      "size": 20403
+      "blob_sha": "a7e7e10031474fa36c97fbca35c6eac51fad23a1",
+      "size": 19532
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
