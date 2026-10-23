@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-23 01:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-23 02:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 11 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,20 +50,14 @@
 
 ## Open PRs by Area
 
-### KNOW (2)
-- [#2976](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2976) Brain-index cure at tip 44db8572 — regenerated, 1594 files (supersedes
-- [#2972](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2972) Brain-index regen: cure the freshness drift on main (mechanical, 3 fil
-
-### BUILD (7)
-- [#2982](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2982) Factory step 5: template shelf generated from the one registry (12 == 
+### BUILD (2)
+- [#2986](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2986) SN-1850: The Best Possible Move — Think Completely, Then Deliver the U
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
-- [#2978](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2978) Canon v1.3 — S1 Settings label: 'Dark mode' → 'Deep black' (Shawn's ru
-- [#2977](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2977) Door cure: register SN-0827 + SN-0828 + SN-0829 — captures + registry 
-- [#2975](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2975) Cure: re-pin CURRENT-STATE to the current precedence document (kernel 
-- …and 2 more
 
-### PRODUCT (2)
-- [#2979](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2979) Guard current Hub publishing against legacy app reintroduction 📝draft
+### WIRE (1)
+- [#2987](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2987) Factory step 6: design-language gate annex (twin-sourced) + on-page co
+
+### PRODUCT (1)
 - [#2968](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968) Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A 
 
 ---

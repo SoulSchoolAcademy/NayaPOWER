@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T01:15:13+00:00",
+ "generated_utc": "2026-10-23T02:15:39+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,21 +51,8 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [
-    {
-     "number": 2976,
-     "title": "Brain-index cure at tip 44db8572 \u2014 regenerated, 1594 files (supersedes #2972)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2976",
-     "draft": false
-    },
-    {
-     "number": 2972,
-     "title": "Brain-index regen: cure the freshness drift on main (mechanical, 3 files)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2972",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 2
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "act",
@@ -146,9 +133,9 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 2982,
-     "title": "Factory step 5: template shelf generated from the one registry (12 == 12 == 12)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2982",
+     "number": 2986,
+     "title": "SN-1850: The Best Possible Move \u2014 Think Completely, Then Deliver the Ultimate Result",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2986",
      "draft": false
     },
     {
@@ -156,39 +143,9 @@
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
      "draft": false
-    },
-    {
-     "number": 2978,
-     "title": "Canon v1.3 \u2014 S1 Settings label: 'Dark mode' \u2192 'Deep black' (Shawn's ruling)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2978",
-     "draft": false
-    },
-    {
-     "number": 2977,
-     "title": "Door cure: register SN-0827 + SN-0828 + SN-0829 \u2014 captures + registry entries",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2977",
-     "draft": false
-    },
-    {
-     "number": 2975,
-     "title": "Cure: re-pin CURRENT-STATE to the current precedence document (kernel test 4)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2975",
-     "draft": false
-    },
-    {
-     "number": 2973,
-     "title": "Assessment: The Most Intelligent System? Not Yet - full report, three tongues (2026-10-23)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2973",
-     "draft": false
-    },
-    {
-     "number": 2956,
-     "title": "Best-of-Best Wave 1 \u00b7 #12 Command + universal search (step 13)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2956",
-     "draft": false
     }
    ],
-   "open_pr_count": 7
+   "open_pr_count": 2
   },
   {
    "id": "wire",
@@ -207,8 +164,15 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 2987,
+     "title": "Factory step 6: design-language gate annex (twin-sourced) + on-page contract door",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2987",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "team",
@@ -269,19 +233,13 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
-     "number": 2979,
-     "title": "Guard current Hub publishing against legacy app reintroduction",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2979",
-     "draft": true
-    },
-    {
      "number": 2968,
      "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 1
   },
   {
    "id": "memory",
@@ -454,6 +412,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 11,
- "unassigned_prs": 7
+ "open_pr_total": 4,
+ "unassigned_prs": 2
 }
