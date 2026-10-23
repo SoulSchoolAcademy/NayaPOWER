@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-23T09:24:34Z",
-  "tip": "7fec165ed7419b1f759468604f363ed0b16ba3a8",
+  "generated_at": "2026-10-23T10:24:59Z",
+  "tip": "d45b03aeccc6ffcf88ff319a7ef757d40a7e035e",
   "open_pr_count": 6,
   "queue_by_tier_action": {
     "A": {
@@ -16,12 +16,7 @@
     }
   },
   "tip_failing_checks": [
-    "completeness",
-    "door-obligation",
-    "fresh-lesson",
-    "liveness",
     "promote-and-prove",
-    "resolve-current-truth",
     "test"
   ],
   "gauge": {
@@ -34,7 +29,7 @@
   },
   "laws": {
     "source": "~/AGENTS.md (distilled standing laws, tail carries the current iteration)",
-    "iteration": 240,
+    "iteration": 241,
     "latest_laws": [
       "L643",
       "L644",
