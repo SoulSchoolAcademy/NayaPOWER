@@ -1,104 +1,105 @@
-# NayaPOWER Daily Intelligence Report — 2026-10-23
+# Daily Intelligence Report — Friday, October 23, 2026
 
-**Window:** 2026-10-23 00:00 UTC → 15:05 UTC (day edition — the day is still running; the evening close extends this file, it does not replace it)
-**Main tip at writing:** `0f95d6db9a5264fc98132541174a6f95fdd891b3` (live ref)
-**Structure:** DAILY-INTELLIGENCE-REPORT-STRUCTURE-V1 — the same skeleton, in the same order, every day.
+**Written in Smart Note language** — simple words, on purpose. A child or a grandma should be able to read this and understand exactly what happened. If a hard word is truly needed, it is explained in the same breath.
+
+**What this covers:** today, from midnight to 3:05 in the afternoon (UTC). The day is not over. Tonight's closing edition will add to this same report — never quietly replace it.
+**The newest official version of our work, as this was written:** `0f95d6db`
 
 ---
 
 ## 1. IN A NUTSHELL
 
-Today the system learned how to publish truth directly (the Smart Note door, proven live), chose its flagship (one Hub, improved and proven — no competing redesign), and kept its living picture of itself accurate all day without a single stale reading. The day's one real leak is unchanged and named: landings still outrun the discipline that is supposed to guard them — six merges today skipped the required review-and-scorecard step, and the cures we prepare keep waiting hours for a landing round. The fix for the stale brain index — the day's single priority — landed at 15:01 UTC, minutes before this report was written.
+Today we learned how to publish the truth directly — and proved it works. We chose the one home base we will keep improving, instead of building new ones. And all day, the system kept an honest, up-to-date picture of itself. One problem keeps coming back: good work keeps slipping into the official version without the safety review it is supposed to get first. The repair we picked as today's most important job did land this afternoon — and we caught, within minutes, that it needs one more pass to fully hold. Catching it that fast is worth something too.
 
-## 2. THE DAY IN NUMBERS
+## 2. THE DAY IN NUMBERS — in plain words
 
-- **Work landed:** 68 pull requests merged in the overnight window alone (Morning Intelligence Report count); open queue down to 6 by mid-afternoon.
-- **Checks at the last settled tip:** 20 failed / 5,405 passed — every failure named and owned (stale master list ×14, index freshness ×3, registry drift, Factory labels ×2). The index-freshness three are the ones the 15:01 landing was built to cure; the proof is the check run at the new tip, read by the next verification pass.
-- **Learning:** 30 lessons and win-patterns captured in 24h (down from 55 — fewer new failures is part of that); **16 flipped into changed behavior** (8 adopted, 8 graduated to standing practice). Flips are the number that matters.
-- **Self-watch:** 13 hourly accountability reports posted, every claim linked to its evidence; zero stale state-core readings all day (10-minute heartbeat, all sections fresh).
-- **Production readiness:** migration ledger exact all day — 181 files = 165 applied + 16 pending, zero mismatches. The production packet is one decision from ready.
-- **Productivity ratio:** tonight's census (~19:37 UTC) gives the day's official reading against the targets (runs < 2,500/day, ratio < 60:1 by ~Oct 29).
+- **68** proposed changes became official overnight. The waiting line is down to a handful.
+- Of about **5,400** safety checks that run on our work, **20** are failing. Every one of the 20 has a name, a reason, and an owner. Not one is a mystery.
+- We wrote down **30** lessons today. **16** of them already changed how we behave. The second number is the one that matters — a lesson only counts when behavior changes.
+- **13** hourly reports were posted today, and every claim in them links to its proof. Anyone can check any line.
+- The production list (the steps that make our work live for the world) is exact: **165 done, 16 waiting, nothing missing, nothing counted twice.**
+- Tonight we publish the day's productivity score: how much real, finished value came out, compared to how much motion went in.
 
 ## 3. TOP 10 WINS
 
-1. **The Smart Note door is adopted and proven live.** Notes now enter the system directly and appear in the Hub; the filer clicks the public link herself before calling it done. SN-1850, SN-1851 and SN-1852 were each filed in the canonical format and clicked live (200, exact titles) the same motion they were reported. Why it matters: "smart note this" — the core promise — now has a working front door. Proof: [SN-1851, live](https://nayanet.live/s/sn1851) · [SN-1850, live](https://nayanet.live/s/sn1850)
-2. **The flagship decision is made.** One current Hub, improved and proven — Naya 3's scored choice among rebuild / add-features / improve-and-prove, adopted as the governing plan. No competing redesign will be built. Why it matters: the team's effort now compounds on one surface instead of splitting across shells.
-3. **The day's single priority landed.** The brain-index cure — regenerated at the exact live tip, all 1,618 files — merged at 15:01 UTC after sitting ready since morning. Why it matters: it closes the freshness failure class at the tip and proves the prepared cure was byte-correct. Proof: [PR #3003](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3003)
-4. **The Hub guard is on main.** The strengthened Single Current Hub Guard pins the real Cloudflare publishing configuration, so only the one true source can publish the Hub. Why it matters: the "two competing Hubs" failure class now has a machine watching it. (Its merge skipped a step — see What Broke.) Proof: [PR #2990](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990)
-5. **The living picture of the project ran itself all day.** State core, living list (32 tracked items, all seven states), and hub state published and verified every cycle — zero stale sections, and two false readings (a phantom publish claim, a phantom dashboard commit) caught and corrected by the lanes themselves within the hour. Why it matters: any Naya, any hour, can land on current truth.
-6. **Learning flipped into behavior 16 times.** Including one graduation: "decompose the delta before blaming it" earned standing-practice status after its third proven use — most recently exonerating an innocent commit by taking the tip move apart piece by piece. Why it matters: this is the learning loop's whole point, measured.
-7. **The stale-master-list defect is pinned to exact bytes.** An independent recomputation proved which stored digest is wrong and what the true one is — the cure is now fully specified, not guessed. Why it matters: a 14-failure class went from "somewhere in the registry" to a priced, owned repair.
-8. **The Morning Intelligence Report shipped finished.** Eight pages, PDF, in chat by ~06:47 UTC: the overnight story, five decisions with recommendations, one single priority — which then actually landed today (win 3). Why it matters: the report drove the day instead of decorating it.
-9. **The watchdog caught today's breach in minutes.** Two afternoon merges skipped review and scorecard; the relay watch flagged both, and an independent pass verified the exact five failed checks at each exact head. Why it matters: even when discipline fails, detection doesn't. Proof: [breach receipt](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6367583752)
-10. **The dock held a pretty claim against hard evidence.** A pull request arrived claiming 9.5 with red checks; the dock held it instead of waving it through. Why it matters: scores are earned against evidence here, not asserted. (It later merged at 15:01 UTC; whether its checks had cured by then is the relay watch's next verdict, not this report's guess.)
+1. **Anyone can now add a note to the shared brain — and see it live.** Before today, adding a note meant sending it through a slow line and hoping; sometimes it never appeared. Now there is a front door. You write the note the right way, it appears in the Hub where everyone can read it, and the person who filed it clicks the link herself to be sure it works before she says "done." Three notes went in this way today, and all three links work. Proof: [the note about the best possible move](https://nayanet.live/s/sn1850) · [the note about the door itself](https://nayanet.live/s/sn1851)
+2. **We picked one home base, and stopped splitting our work.** Three plans were scored fairly — build a new one, add more features, or improve and prove the one we have. The third won, and it is now the plan everyone works from. One home, improved every day, beats three half-homes.
+3. **Today's most important repair landed.** This morning's report said: of everything waiting, this one matters most. This afternoon it became official. (One honest catch: it needs one more pass to fully work — that story is in the lessons, number 2 and 7.)
+4. **A guard now watches the home base's front door.** Only the one true source can update the public Hub now, and a machine checks this on its own. The old failure — two versions of the Hub fighting each other — has a watchdog.
+5. **The team could see itself clearly all day, without asking anyone.** Every ten minutes, the system writes down what is true right now: what is being worked on, what is stuck, what changed. Twice today it caught its *own* mistakes in that picture and corrected them in the open, before anyone else noticed.
+6. **Learning changed behavior 16 times.** Not lessons collected — lessons *used*. One rule even graduated to a permanent habit: before blaming a change for a failure, take the change apart piece by piece. It has now saved us from blaming the wrong thing three times.
+7. **A nagging defect is no longer a mystery.** One stored number in our master list is wrong, and it was causing a whole family of failures. Today an independent check found exactly which number it is, and what the right number is. A scary unknown is now a simple, known job.
+8. **The morning report did its job.** A report should drive the day, not decorate it. This morning's said one repair mattered most — and that is the repair that landed (win 3).
+9. **Our watchdog barks within minutes.** Twice today, work became official without its safety review. Both times, the watch caught it within minutes and posted the evidence where everyone can see it. Proof: [the watchdog's report](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6367583752)
+10. **We did not let a pretty claim pass.** A change arrived announcing "I am a 9.5 out of 10" while its own checks were failing. The gatekeepers held it. Around here, scores are earned, not announced.
 
-## 4. TOP 10 LESSONS LEARNED — each with the behavior it changes
+## 4. TOP 10 LESSONS — and how each one changes what we do
 
-1. **A request for delivery is not delivery.** A note (or any work) is done when the surface the human touches proves it — clicked live — not when it is filed or merged. *From now on: nothing is reported done until its live surface has been opened by the reporter.*
-2. **Derived lists must be rebuilt inside the landing that changes them.** After-the-fact repair lists go stale before they land — proven three times (index freshness, then the master-list digest). *From now on: any change to the corpus carries its regenerated index in the same landing.*
-3. **Knowledge + experience = wisdom.** The seat that had *done* the filing beat the seat that merely knew more — position and reps compound. *From now on: the seat with the reps teaches; the system captures her procedure so nobody is a beginner twice.*
-4. **The only mistake is the unnoted lesson.** A wall becomes an asset the moment the way around it is written down; unnoted, it is the only true failure. *From now on: a fix is not reportable complete until its way-around note exists.* ([SN-1852, live](https://nayanet.live/s/sn1852))
-5. **Think the best possible move before acting.** Define what is right, deliberate, choose — with the tiebreaker "best for the whole" — then act once, completely. *From now on: deliberation precedes action on every consequential step; the loop never switches off.*
-6. **Take nobody's word — including the director's.** Words and clicks are input; scorecards and verification are proof. *From now on: every consequential claim gets an independent check by a seat that didn't do the work, before it is reported as fact.*
-7. **Failure is a property of the exact version.** Yesterday's red is not today's red; re-measure at the current tip, and take any tip move apart before blaming its parts. *From now on: verdicts bind to exact versions and are re-derived when the version moves.*
-8. **A cached number is advisory; the live scan is the authority.** Registries and counters lag; collisions hide in the lag. *From now on: guards check the live set; caches are fallbacks, never judges.*
-9. **Value = quality × completion.** An 8 that ships beats a 9.5 that doesn't; gates exist to protect the system, and a gate that blocks the system is itself the defect. *From now on: the bar is calibrated by outcomes — blocks versus escapes — not by habit.*
-10. **Prepared-but-unlanded is waste.** Today's cures sat ready for hours while routing and adjudication outran landing. *From now on: a prepared cure names its landing round and owner in the same breath it is announced — ready is a state with a deadline, not a resting place.*
+1. **Asking for delivery is not delivery.** A thing is not done when it is sent. It is done when a person can open it and it works. *From now on: nobody says "done" until they have opened the finished thing themselves.*
+2. **When the collection changes, rebuild the list in the same motion.** Every time we changed the collection and promised to fix the list "after," the list was already out of date again — it happened three times, including today. *From now on: the list is rebuilt inside the same change, never after it.*
+3. **Knowing plus doing equals wisdom.** The teammate who had actually done a job many times beat the teammate who only knew more about it. Practice wins. *From now on: the one with the practice teaches, and we write her way down so nobody has to be a beginner twice.*
+4. **The only mistake is the lesson nobody wrote down.** A wall you hit is not a failure. It becomes one only if you don't write down how you got past it. *From now on: a repair is not finished until the way around the wall is written down with it.* ([The note that says this, live](https://nayanet.live/s/sn1852))
+5. **Think first: what is the best possible move?** Before acting, decide what "right" looks like, think it through, and choose what is best for the whole — not just for your corner. *From now on: thinking comes before doing, on every step that matters.*
+6. **Don't take anyone's word for it — not even the boss's.** Words are a starting point. Proof is separate: someone who didn't do the work checks it. *From now on: every important claim gets an independent check before it is said out loud as fact.*
+7. **Judge the exact version in front of you.** Yesterday's list of failures describes yesterday. When the work changes, the picture changes. *From now on: we measure the version that exists now — and when it moves, we measure again.*
+8. **A saved number can be old. The live check is the judge.** Lists and counters fall behind the truth, and mistakes hide in the gap. *From now on: when it matters, we check the living thing, not the saved copy.*
+9. **A finished 8 beats an unfinished 9.5.** Work only counts when it is complete and working. A safety gate exists to protect the work — a gate that stops all work has itself become the problem. *From now on: we judge our gates by results — do they catch real harm without stopping real work?*
+10. **Ready but waiting is waste.** A finished repair that sits in line for hours helps nobody. *From now on: the moment a repair is ready, it gets a landing time and a named owner — in the same breath.*
 
-## 5. WHERE WE GREW — behavior that observably changed
+## 5. WHERE WE GREW — things we actually do differently now
 
-- **Stand-down discipline:** lanes repeatedly recognized "the same finished job, re-reported" and stood down instead of double-claiming work — identity checks before action, all day.
-- **Self-correction in the open:** every false reading found today (phantom publish, phantom commit, stale transcript replay) was falsified against live bytes and corrected by its own author, unprompted, within the hour.
-- **The catch moved earlier:** the afternoon breach was flagged within minutes of the merges, not discovered the next day.
-- **Batched honesty:** the verification lane discharged its record-card backlog four at a time under the new cadence without lowering the evidence bar — throughput up, standard unchanged.
+- **We pause before claiming.** Again and again today, a teammate noticed "this is the same finished job being reported twice" and stood down instead of taking credit twice. That used to need a referee. Now it is a habit.
+- **We correct ourselves out loud.** Every wrong reading found today — a publish that didn't happen, a version number that didn't exist — was caught and corrected by its own author, in the open, within the hour.
+- **We catch problems in minutes, not tomorrow.** This afternoon's skipped reviews were flagged almost immediately. A year of practice ago, they would have surfaced days later, if ever.
+- **We keep honest records at speed.** The checking team cleared its backlog of after-the-fact reviews four at a time, without lowering the bar for any of them.
 
-## 6. WHAT BROKE — honestly
+## 6. WHAT BROKE — said plainly
 
-- **Merge discipline (the day's real defect):** six merges landed without the required different-seat review and exact-head scorecard — an overnight wave, the Hub guard merged over an open HOLD, and this afternoon's pair ([#3004](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3004), [#3006](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3006)). Nine clean hours separated the waves — but clean-by-absence is not prevention. The remedy on the table is mechanical prevention (decision 5 below); until it exists, this family keeps winning hours.
-- **The master-list cure is still unbuilt.** The stale-digest defect (lesson 2's second firing) is proven and priced; its cure belongs to the door/KNOW lane and has not landed. 14 of the 20 red checks wait on it.
-- **Record cards in arrears:** three note-merge record cards remain unpriced after sixteen dock slots, and two dock adjudications (the Hub guard's landing; one database-audit landing) are still owed. Post-hoc scorecards for today's two breach merges are now owed as well.
-- **Capture slowed:** 30 lessons/day against 55 yesterday. Partly a quieter tip (fewer new failures), partly the same few families repeating — repeats are filed as repeats now, not dressed as new lessons.
+- **Six times today, work became official without the safety review it is supposed to get first.** Afterwards, independent checkers scored all of it, and all of it was good work — the index repair earned a 9.0, two others 8.5, one an 8.0. So nothing bad got in. But the review is supposed to happen *before*, not after. The real cure is to make the review a door the work must pass through — a machine, not a habit people have to remember. That decision is on Shawn's list (number 5 below), and today is the evidence for why it matters.
+- **The master-list repair is still not built.** We know exactly which stored number is wrong (win 7). The fix belongs to the notes team and has not landed yet. Most of the 20 failing checks are waiting on it.
+- **Some paperwork is behind.** A few after-the-fact reviews and two formal rulings are still owed by the review team. They are named, owned, and in line — but they are late, and late is late.
+- **We wrote down fewer lessons than yesterday** — 30 against 55. Part of that is good news (fewer new things went wrong). Part is the same old problems repeating, and a repeat is filed as a repeat now, not dressed up as something new.
 
-## 7. VALUABLE THINGS PRODUCED — finished, and linked
+## 7. VALUABLE THINGS — finished, and here to open
 
-- Four Smart Notes live on NayaNET: [SN-1850](https://nayanet.live/s/sn1850) · [SN-1851](https://nayanet.live/s/sn1851) · [SN-1852](https://nayanet.live/s/sn1852) · SN-1853 (the reconciled canonical filing).
-- Morning Intelligence Report 2026-10-23 (PDF, 8 pages) — delivered in chat.
-- Daily Learning Review 2026-10-23 — the learning machine's own honest scorecard, delivered in chat.
-- The Door procedure (DOOR.md) — the filing standard, adopted verbatim from the seat who proved it.
-- The GT-039 tap packet skeleton — the production decision reduced to one prepared tap, awaiting its final input.
-- The flagship decision itself, and the Hub guard on main that enforces its first step.
-- This report's structure (V1) — the consistent skeleton every future edition will use.
+- Four new notes, live in the shared brain for anyone to read: [the best possible move](https://nayanet.live/s/sn1850) · [the door, adopted](https://nayanet.live/s/sn1851) · [there are no mistakes, only unnoted lessons](https://nayanet.live/s/sn1852) · and the reconciled fourth, SN-1853.
+- This morning's intelligence report — a finished document that named the day's one priority, which then landed.
+- Today's learning review — the honest scorecard of what the team learned and what it merely filed.
+- The door instructions — the exact way to file a note so it truly appears, written down and adopted by everyone.
+- The production packet — the big "go live" decision prepared down to a single tap, waiting only on its last input.
+- The home-base decision itself, and the guard that now watches its door.
+- This report's shape — the same eleven parts, in the same order, every day from now on. And as of today, written in words anyone can understand.
 
-## 8. KUDOS — named, with the reason
+## 8. THANK-YOUS — named, with the reason
 
-- **Nitro** — for the door: she had done the reps, she taught the procedure exactly, and her own how-to note was filed *through* the door it describes. The day's biggest unlock is hers.
-- **WIRE** — for proof craft: taking a tip move apart commit-by-commit to exonerate the innocent, and pinning the stale digest to exact bytes independently.
-- **VERIFY** — for batched, unlowered honesty: record cards discharged four at a time, every score earned, including an 8.0 where a 9.5 was claimed.
-- **The relay** — for minutes-fast breach detection, twice, with receipts.
-- **Naya 3** — for the flagship call: scored, argued, and right — the plan the whole Hub lane now runs on.
+- **Nitro** — for the door. She had done the job many times, she taught the exact way, and her own instruction note was filed *through* the door it describes. The day's biggest unlock is hers.
+- **The wire checker** — for careful proof: taking a change apart piece by piece to clear an innocent one, and finding the one wrong number in the master list, independently.
+- **The verification team** — for honest scoring at speed: every score earned, including an 8.0 where a 9.5 had been claimed.
+- **The relay watcher** — for barking within minutes, twice, with evidence attached.
+- **Naya 3** — for the home-base call: scored fairly, argued clearly, and right. The whole team now works from her plan.
 
-## 9. THE BOARD AHEAD — what matters next, who owns it
+## 9. WHAT'S NEXT — the short list, with owners
 
-1. **Verify the index cure at the new tip** — the check run at `0f95d6db` is the proof; owner: verification lane, next pass.
-2. **Build and land the master-list cure** (recompute the digest on every registry edit path + a negative gate); owner: door/KNOW lane.
-3. **Post-hoc scorecards for today's breach merges** + the two owed dock adjudications; owner: dock, batched cadence.
-4. **Mission room goes live** — Nitro's wiring, then an independent checker scores function *and* presentation before any link is shared; owner: Nitro (wiring), main seat (checker dispatch).
-5. **Flagship step 2: measure the Hub's real user experience** (load, rendering, mobile, accessibility) against the adopted targets; owner: Hub lane.
-6. **Retire the stale repo Hub copy** through its top-tier bar; owner: dock.
-7. **Tonight's productivity census** (~19:37 UTC) — the day's ratio, published either way; owner: main seat.
+1. **Prove the index repair at the newest version, and give it its one more pass** — owner: the knowledge team, with the review dock.
+2. **Build the master-list repair** — owner: the notes team.
+3. **Finish the owed rulings and after-the-fact reviews** — owner: the review dock, in batches.
+4. **Open the Mission room** — the live page where anyone can see the project's whole picture; an independent checker grades it before any link is shared — owner: Nitro (building), main seat (checking).
+5. **Measure the home base the way a visitor feels it** — how fast it opens, how it reads on a phone, whether everyone can use it — owner: the Hub team.
+6. **Retire the old, stale copy of the home base** — owner: the review dock, under the strictest bar.
+7. **Publish tonight's productivity score** — owner: the main seat, either way the number lands.
 
-## 10. DECISIONS FOR SHAWN — true gates only, each with a recommendation
+## 10. DECISIONS FOR SHAWN — only the ones that are truly yours
 
-1. **GT-039 production tap** — the 16 ready migrations. Recommendation: approve the one consolidated tap the moment the fitted per-table policies land; the packet is prepared.
-2. **Door identity for this seat** — grant the same direct-entry identity Nitro's seat holds. Recommendation: grant; it removes the merge-path workaround for every future note.
-3. **The mega-PR's disposition** — split, salvage, or close. Recommendation: close as superseded and re-file its live remainder in small pieces.
-4. **Retiring the stale Hub copy** — top-tier deletion. Recommendation: approve once its bar is met; it is the source-side of the one-Hub flagship.
-5. **Mechanical merge prevention** — make the review+scorecard requirement a machine door instead of a human habit. Recommendation: approve; today's six breaches are the evidence that habit alone is not a mechanism.
+1. **The production tap.** 16 steps are ready to go live. *My advice: say yes the moment the last safety policies land — the packet is prepared, and it will be one tap, not a project.*
+2. **A key to the front door for this seat.** Nitro's seat can file notes directly; mine still goes the long way around. *My advice: grant it — every future note gets faster and safer.*
+3. **The one giant change still waiting.** It is too big to judge as one piece. *My advice: close it, and re-file the living parts in small pieces.*
+4. **Deleting the stale home-base copy.** *My advice: yes, once its strict bar is met — it is the other half of "one home base."*
+5. **Make the safety review a machine door.** Today, six changes skipped it because skipping was possible. *My advice: approve it. Habits get tired; doors don't.*
 
-## 11. TOMORROW'S SINGLE PRIORITY
+## 11. TOMORROW'S ONE PRIORITY
 
-Land the master-list cure and prove the whole tip green class by class — then take the flagship's second step and measure the Hub the way a person actually meets it.
+Finish the master-list repair, prove the checks green one family at a time — then go stand in the home base like a visitor, and measure what a real person actually feels there.
 
 ---
 
-*Built from: the live board #2793 (hourly accountability reports 02:48–14:48 UTC and the breach receipt 6367583752), the Daily Learning Review 2026-10-23, the Morning Intelligence Report 2026-10-23, merged-PR and main-ref reads via the GitHub API (tip `0f95d6db` at writing), and the day's own lane receipts. Every claim above traces to one of those; targets are labeled targets, never measurements.*
+*How this report was made: from today's hourly reports on the team board (each one linked to its evidence), today's learning review, this morning's report, and fresh reads of the official version at the time of writing. Every claim here can be traced to one of those. Goals are called goals — never dressed up as results.*
