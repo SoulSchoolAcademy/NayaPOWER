@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T20:15:16+00:00",
+ "generated_utc": "2026-10-23T21:15:16+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -111,8 +111,15 @@
    "next_action": "Put the verify lane ahead of the merge queue: no merge ships without the independent verify slice signed off first, starting with #2388.",
    "active_now": true,
    "board_lane": "#2175 lane PROVE",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3012,
+     "title": "Project Intelligence Door: scorecard and live bridge/schema findings",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3012",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "build",
@@ -412,6 +419,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
+ "open_pr_total": 5,
  "unassigned_prs": 2
 }
