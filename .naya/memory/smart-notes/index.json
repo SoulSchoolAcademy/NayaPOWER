@@ -14636,11 +14636,11 @@
       "page_hash": "9b19041b8a6c2c410e5dafb574703cf40818d2a0d73525343165adbe72a68fae"
     },
     {
-      "smart_note_id": "SN-1852",
-      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1852-error-becomes-learning",
-      "title": "IB-SMART-NOTE-20261023-sn1852-error-becomes-learning",
-      "content_hash": "8b4ba9917fd580c6d5f55bac9c51ed82d0ccae020f3adb037126d4bee2918009",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1852/IB-SMART-NOTE-20261023-sn1852-error-becomes-learning.md",
+      "smart_note_id": "SN-1853",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1853-error-becomes-learning",
+      "title": "IB-SMART-NOTE-20261023-sn1853-error-becomes-learning",
+      "content_hash": "e2f3db4ae46a7efb95572b7abaaee03e2ac3552f4e091d5fc1a2613549b83258",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1853/IB-SMART-NOTE-20261023-sn1853-error-becomes-learning.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
       "truth_state": "CANDIDATE",
       "scope": "PRIVATE",
@@ -14653,7 +14653,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection in commit 2e0104160b9d6e2ee94d8955fd6fe223bf9c88be ('SN-1852: Capture the recovery and prove behavior change') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "b36203b6f0701cd2faf31861be0eeed7083e29e2fc99786e87806286b51b97ab"
+      "page_hash": "8c56ecf6408fafbbb67302baf8f7dfb64b863edba5099b31f11e6c9cf4ac39c7"
     },
     {
       "smart_note_id": "SN-1852",
@@ -14679,7 +14679,7 @@
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1853,
+    "next_sequence": 1854,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
   "corpus_manifest_hash": "f64dfa31ca9b3f2f61d5dcfa59de4eaf88cf60e7a22fe837a3d3e58f675a49e7"
