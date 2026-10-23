@@ -242,3 +242,33 @@ Do not ask Shawn questions already answerable from canonical evidence or a safe 
 - Machine report JSON: parse **PASS**; tongue paths resolve to the actual three report filenames.
 
 **Not proven by these checks:** timed independent ACTIVATION-10; cold instance answering all 14 questions without injected answers; live identity continuity; nine-node behavioral influence; production Sender → Receiver → Hub; behavior-changing learning transfer; or Naya A → B → C runtime succession. These remain open until independent, exact-scope receipts exist.
+
+
+---
+
+## Current-State Reassessment — 2026-10-23T03:50Z
+
+This is a continuation, not a silent rewrite of the 2026-10-21 snapshot. The last located measured scores remain historical: whole system 6.4/10, machine-native 5.0/10, alignment 53%; no fresh full score was run here.
+
+- Main tip observed: `9b736742c8869b5a64d34668bd3c8293d27aedb7`.
+- Four open PRs: #2968, #2981, #2990, #2997.
+- #2968: Tier-A stale Hub shell retirement, mergeability false, Shawn's explicit gate required.
+- #2981: 698-commit Smart Notes mega-PR, stale base, mergeability false; reconcile paths and duplicates before any landing.
+- #2990: draft release guard; author reports 10 tests pass, independent exact-head test against real Cloudflare config and a negative control pending.
+- #2997: manifest/checker threshold alignment; author reports 11/11 tests and version sync pass; independent gate and receipt pending.
+- Public Hub health was not freshly checked; do not infer current HTTP health from the daily report.
+- Smart Note rule: authorized route → sync → personally open exact public link → verify title/status → then share. A merge is not delivery.
+
+### Current ranked work
+1. Independent real-config qualification of #2990 with stale-path negative control.
+2. Independent exact-head gate for #2997.
+3. Path-by-path reconciliation of #2981; split/close with lineage.
+4. Prepare #2968 for Shawn's protected Tier-A decision.
+5. Fresh Hub status and served-source fingerprint.
+6. Smart Note Door end-to-end click verification.
+7. Cold-14 with no injected answers.
+8. Held-out lesson-transfer test with blind verifier.
+9. Sender → Receiver → Hub persistence/provenance/privacy proof.
+10. First executable Factory contract and scoped kernel/node behavioral proof.
+
+The human tongue retains the complete ten assets, gaps, actions, enhancements, blockers, problem/solution pairs, owners, and copy/paste team directive. Do not award 10/10 for documentation, merge, or green CI alone.
