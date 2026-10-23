@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-23 11:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-23 12:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 6 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 8 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -53,7 +53,9 @@
 ### KNOW (1)
 - [#3003](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3003) cure(index): regenerate brain-index receipts after #2998 stale-head me
 
-### BUILD (3)
+### BUILD (5)
+- [#3005](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3005) LI-6: promote measure_lesson_delta.py to repo tools/
+- [#3004](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3004) Factory adoption (#9): STANDARD-FEATURE-CHECKLIST — the Best-of-Best P
 - [#3002](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3002) w746: flip residual 9.0 below-bar carriers in report_generator.py to 9
 - [#3000](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000) Naya/mission state
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30

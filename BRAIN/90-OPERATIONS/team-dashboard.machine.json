@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T11:15:59+00:00",
+ "generated_utc": "2026-10-23T12:15:16+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -140,6 +140,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 3005,
+     "title": "LI-6: promote measure_lesson_delta.py to repo tools/",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3005",
+     "draft": false
+    },
+    {
+     "number": 3004,
+     "title": "Factory adoption (#9): STANDARD-FEATURE-CHECKLIST \u2014 the Best-of-Best Part 5 checklist as t",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3004",
+     "draft": false
+    },
+    {
      "number": 3002,
      "title": "w746: flip residual 9.0 below-bar carriers in report_generator.py to 9.5",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3002",
@@ -158,7 +170,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -425,6 +437,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 6,
- "unassigned_prs": 3
+ "open_pr_total": 8,
+ "unassigned_prs": 5
 }
