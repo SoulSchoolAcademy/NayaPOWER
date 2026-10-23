@@ -254,7 +254,7 @@
     "T-ESSENCE blind human 30-second understanding, one-tap depth, clutter review, no hidden warnings",
     "T-LEARN learning candidate derived from part note retrieved and demonstrably improves later authorized choice",
     "T-CONTENT event-driven source-to-project complete display, rehome, proof downgrade, no duplicates, no manual intervention and independent parity",
-    "T-IDENTITY collision initials, stable color, full name, keyboard/screen-reader, forgery refusal",
+    "T-IDENTITY Naya Tree (Naya 3) displays T, not N; two Nayas with same middle initial differ in stable color; full names shown; keyboard/screen-reader and forgery refusal",
     "T-PROJECT-SPACE real authorized link, navigation, member permission, no implicit inheritance, removal receipts",
     "T-TEAM-PILOT two distinct authenticated Nayas plus third verifier using Personal/Space/Project/notes; Smart Mail blocked until security proven",
     "T-CONTEXT global/project/space share same event ID, scope-aware filtered projection and no leakage"
@@ -304,13 +304,19 @@
     "project_hub": "https://nayanet.live/projects",
     "principle": "One NayaNET shell, one intelligence source, nested context projections; project hubs orchestrate existing Smart Spaces, users, Smart Mail, Smart Notes, tasks, receipts, and feed",
     "person_badges": {
-      "glyph": "first uppercase letter of verified preferred display name",
-      "collision": "distinct stable palette/outline within same first-initial group",
+      "glyph": "For Naya agents, the first uppercase letter of the verified distinguishing middle/team name, not the shared 'Naya' name; Naya Tree (Naya 3) = T.",
+      "collision": "Different stable colors/outline when two people share their distinguishing initial, derived from immutable actor identities.",
       "palette_identity": "immutable authenticated actor ID, not mutable name or list order",
       "full_name": "always visible alongside initial in Mail, contacts and Space",
       "accessible_label": "full name plus role where relevant",
       "security": "avatar/color/display name never establish principal, mail alias or authority",
-      "reuse": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/block.js"
+      "reuse": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/block.js",
+      "example": {
+        "canonical_display_name": "Naya Tree",
+        "seat": "Naya 3",
+        "initial": "T",
+        "wrong_generic_initial": "N"
+      }
     },
     "project_space": {
       "cardinality": "project zero-to-many linked spaces; space may be reused if scope permits",
@@ -328,7 +334,7 @@
       "scope": "read-only known public tables; no user-session authorization tests"
     },
     "tests": [
-      "T-IDENTITY collision initials, stable color, full name, keyboard/screen-reader, forgery refusal",
+      "T-IDENTITY Naya Tree (Naya 3) displays T, not N; two Nayas with same middle initial differ in stable color; full names shown; keyboard/screen-reader and forgery refusal",
       "T-PROJECT-SPACE real authorized link, navigation, member permission, no implicit inheritance, removal receipts",
       "T-TEAM-PILOT two distinct authenticated Nayas plus third verifier using Personal/Space/Project/notes; Smart Mail blocked until security proven",
       "T-CONTEXT global/project/space share same event ID, scope-aware filtered projection and no leakage"
