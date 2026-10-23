@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 21:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 21:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -916,6 +916,14 @@ _Last updated: 2026-10-23 21:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Verification-first tick: tip clean, #2431 closed as superseded, stale branches deleted
 
 **Evidence:** VERIFIED: PR #2437 MERGED with merge_commit d998cac4e424c64a968cd57ecc7e549ceb0f8384 -- exactly the tip lane pinned at action time, so the 'tip already clean, do NOT re-anchor' judgment was verified-correct (avoids the re-anchor hamster wheel law); PR #2431 closed unmerged with supersede comment 6117620329 PRESENT; stale heal branches naya/ten-brai
+
+### ✅ t1457 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-auth migration prep doc (t1457): caller inventory, insertion-point pin, stamping-writer design, fail-closed impact, rollback, gate question; plan-only, posted to board #2793
+
+**Receipt:** `twelve-lane-receipts/t1457-lane3.md`
+
+**Evidence:** VERIFIED on live bytes: prep doc hidden_files/retrieval-auth-migration-prep-t1457.md exists on disk (13,324 B, 21:25Z); board comment 6375049502 exists on #2793 (21:25:47Z, four-line header + prep tuple, content matches receipt). INDEPENDENT CHECKS: candidate branch naya/five-retrieval-auth-gate-t942 returns 0 refs on origin -- the lane's stale-cla
 
 ### ✅ t1456 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
