@@ -5506,7 +5506,47 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   // repository. If a room must stand alone, ship the file and prove it loads.
 
   // Legacy internal entry routes are neutralized → everything lands in the Hub.
-  Router.on('welcome', () => { location.hash = '#/hub'; return document.createElement('div'); });
+  // EXCEPTION (Best-of-Best #13, step 12 — Conversational Intake v1):
+  // #/welcome IS the Welcome door now — a one-question-at-a-time intake
+  // (welcome, or invite-accept when the hash query carries ?invite=<owner>).
+  // If the intake module failed to load, the old neutralization stands.
+  Router.on('welcome', () => {
+    if (!(window.NayaIntake && window.NayaIntake.mountIntake)) {
+      location.hash = '#/hub'; return document.createElement('div');
+    }
+    const qs = new URLSearchParams((location.hash.split('?')[1] || ''));
+    const invitedBy = (qs.get('invite') || '').trim();
+    const cfg = window.NayaBridgeConfig || {};
+    const ownerAlias = invitedBy || cfg.alias || '';
+    const wrap = document.createElement('div');
+    wrap.className = 'welcome';
+    wrap.style.cssText = 'max-width:640px;margin:0 auto;padding:28px 18px 48px';
+    const head = document.createElement('div');
+    head.innerHTML = '<div class="kicker">NAYANET</div><h1>' +
+      (invitedBy ? 'You’re invited.' : 'Welcome.') + '</h1>' +
+      '<p class="lede">Naya will walk you in — one question at a time, by voice or tap. Nothing is sent until you’ve seen it all and said yes.</p>';
+    wrap.appendChild(head);
+    const mount = document.createElement('div');
+    wrap.appendChild(mount);
+    const store = window.NayaIntake.createStore({
+      supabaseUrl: cfg.supabaseUrl || 'https://dahisasgpfvziswqvmvm.supabase.co',
+      anonKey: cfg.anonKey || '',
+      ownerAlias,
+    });
+    window.NayaIntake.mountIntake(mount, {
+      store,
+      flow: invitedBy ? 'invite_accept' : 'welcome',
+      ownerAlias,
+      onFinished: (record) => {
+        // A finished join makes this device remember the person — the
+        // same remembered-name write the boot seam reads (hubHasIdentity).
+        try {
+          if (record && record.display_name) localStorage.setItem('nayanet_smart_name', record.display_name);
+        } catch (e) {}
+      },
+    });
+    return wrap;
+  });
   Router.on('identity', () => { location.hash = '#/hub'; return document.createElement('div'); });
   Router.on('hub', () => window.HubView({ room: 'feed' }));
   Router.on('hub/:room', params => window.HubView(params));
@@ -5633,5 +5673,6 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 <script src="js/naya-voice-wiring-v2.js"></script>
 <script src="js/supabase-bridge.js"></script><!-- t0800: Hub<->Supabase persistence bridge; registers window.NayaPowerRuntime (feed room data) -->
 <script src="js/naya-notes.js"></script><!-- Best-of-Best #15: Naya Notes (personal captures — NOT Smart Notes); registers window.NayaNotes for the Lists room panel -->
+<script src="js/naya-intake.js"></script><!-- Best-of-Best #13: Conversational Intake v1 (one question at a time); registers window.NayaIntake for the #/welcome door -->
 </body>
 </html>
