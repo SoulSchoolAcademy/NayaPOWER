@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -73,6 +73,12 @@ _Last updated: 2026-10-23 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t2330 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
+**Task:** gap-t2330 (skew-table independent re-tally)
+
+**Evidence:** Verified: independent third-pass re-tally from raw ask-world-queries.jsonl bytes with the t0539 window predicate (kind=='query', ts_pdt 2026-10-12 10:17:32 to 13:10:38 PDT inclusive) reproduces the draft exactly — 30 windowed query rows, 24 lane / 6 global = 0.80/0.20 class prior, lane_skew all 12 cells identical to lane-packet-v2-hypertuned.md (1:
+
+### ✅ t2330 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
 **Task:** skew-table independent re-tally from raw bytes (Naya Mason)
 
 **Evidence:** Verified independently: my own re-tally from the live ask-world-queries.jsonl bytes with the receipt's exact window predicate (2026-10-12 10:17:32-13:10:38 PDT) reproduces all cells exactly - 30 query rows, 24 lane / 6 global, skew 1:2 2:2 3:3 4:1 5:5 6:1 7:1 8:3 9:1 10:3 11:1 12:1, zero deltas; draft lane-packet-v2-hypertuned.md exists. The named 
@@ -88,6 +94,12 @@ _Last updated: 2026-10-23 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-t2330-lane4: skew-table independent re-tally
 
 **Evidence:** VERIFIED: independently re-ran the t0539 window predicate (kind==query, 2026-10-12 10:17:32->13:10:38 PDT, datetime comparison) against raw ask-world-queries.jsonl bytes: 30 windowed query rows; all 12 skew cells reproduce the v2 draft exactly (1:2 2:2 3:3 4:1 5:5 6:1 7:1 8:3 9:1 10:3 11:1 12:1), class_prior 24/6 = 0.80/0.20. CLEARS 9.5: the named 
+
+### ✅ t2330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t2330 (seal byte-purity GAP close on t0545)
+
+**Evidence:** Verified: instrument t0545_taskdecomp.py sha 78731f46...53ce matches byte-exact; seal results-t0545-taskdecomp.json re-pinned to c61b73a7...9edd matches byte-exact; seal _prereg carries only the 4 native keys (instrument, decomposition_rule, lexicon, f5_seal) with instrument_sha256 absent and _battery.P5_determinism restored to the instrument's nat
 
 ### ✅ t2330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -22339,6 +22351,14 @@ _Last updated: 2026-10-23 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261017-1630 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** file-gap-brief tick-ordering repair + live-venue fix (#2721)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261017-1630-lane9.md`
+
+**Evidence:** Verified 2026-10-23: bin/file-gap-brief.py still carries the receipt's named repair - _embedded_dt present (2 refs), cross-shape ordering logic present (4 refs), and --self-test runs GREEN ('all file-gap-brief cases pass', incl. the receipt's two new regression cases). The root cause (lexicographic comparison of cross-mechanism ticks silently voidi
+
 ### ✅ gap-t0776-lane9-decline2-rootcause — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** gap-t0776 lane9 decline #2 — root cause named with proof, loop broken for this pool
@@ -25570,6 +25590,14 @@ _Last updated: 2026-10-23 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ gap-gap-20261017-1600 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** falsify-staleness-watches one-command FIRED/WAITING loop + --log flag
+
+**Receipt:** `twelve-lane-receipts/gap-gap-20261017-1600-lane6.md`
+
+**Evidence:** Verified 2026-10-23: retrieval/falsify-staleness-watches-20261018.py exists (Oct 18 07:10), sha256 cd850c28b29ce828a40c229c6a7acfca4a5913248656406ac341238176cd5106 = byte-exact match to the receipt's pinned pin; ran it today: temp-copy branch still proves FIREDx2 (watch_1 FIRED, watch_2 FIRED) and live-log SHA before=after (c902815f41515390, untouc
 
 ### ✅ gap-t992-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -34315,6 +34343,12 @@ _Last updated: 2026-10-23 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-20261022-0950 — Team 1, Team Naya Scorer (Verification & Proof) — 9.4/10 [VERIFIED]
+
+**Task:** gap follow-up on gap-t1002: T2 spawn-record machinery + fail-closed normalize gate
+
+**Evidence:** Verified: run_daily.sh sha256 e09f83375ada2ace503550ac743f799b8b0fe4658b9357b8d3225fcd24c59545 byte-matches the receipt's pin; --phase record-spawn writes successor/spawn-record.json (schema sgf-spawn-record/v1); --phase normalize FATAL-exits when the record is missing or the sha mismatches the sealed brief; run-2026-10-11-T2/successor/ holds only 
+
 ### ✅ gap-lane-scorer-20261022-0950-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** gap follow-up on gap-t1002: independent RAW-log re-derivation + built record-spawn fail-closed gate
@@ -35356,6 +35390,20 @@ _Last updated: 2026-10-23 12:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261022 — Team 0, Team Naya Scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** boot_pointer_check.py: live-board regex + DEGRADED fail-open cure
+
+**Receipt:** `twelve-lane-receipts/distill-daily-20261022-lane0.md`
+
+**Evidence:** Verified in the working tree: LIVE_BOARD_RE at line 73 = re.compile(r"live\s+board\s*\**\s*#(\d{3,5})", re.I) - case-insensitive and markdown-bold-tolerant exactly as the receipt claims; DEGRADED path present (2 references) with loud exit-1 semantics. The real-bug claim (conflated snap note hid the regex miss) matches the code shape. Why not 9.5: t
+
+### ✅ gap-20261021-1930-v2 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap-gap-lane-scorer-20261021-1930-v2 already-done close + queue hygiene
+
+**Evidence:** Verified: git ls-remote refs/heads/naya4/t0412-baseline-builder-cure = 76f077a614b3846479368d86e3b63b7f9bac561d, byte-identical to the pin re-derived by the lane; closing receipt gap-gap-lane-scorer-20261021-1930-v2-lane0.md exists on disk (6414 bytes, 2026-10-22 10:22 UTC). The already-done verdict is substantiated, not a no-work dodge. Why not 10
 
 ### ✅ seat-stall-20261023-0433 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
