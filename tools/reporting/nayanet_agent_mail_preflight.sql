@@ -45,6 +45,6 @@ WITH tables(name) AS (
  FROM role_grants g LEFT JOIN policies p ON p.tablename=g.name
 )
 SELECT statement_timestamp() checked_at, name, gate,
-       anon_select, anon_insert,anon_update,
+       anon_select, anon_insert,anon_update,has_device_key,has_owner_id,
        anon_allow_all_reads,anon_allow_all_writes,mutable_identity_policies
 FROM reported ORDER BY name;
