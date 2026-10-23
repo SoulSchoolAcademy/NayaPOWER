@@ -287,5 +287,41 @@
     "P1 prove one collaborative Smart Space event and project note flow",
     "P1 content publishers for Today, Reports, Library, Ledger, Mail, Feed with same snapshot",
     "P2 full independent end-to-end acceptance and root map refresh"
-  ]
+  ],
+  "first_agent_identity_mail_live_readiness": {
+    "audit_utc": "2026-10-23T21:47:26Z",
+    "status": "BLOCKED_PENDING_REAL_IDENTITY_AND_PRIVATE_MAIL_SECURITY",
+    "agent_seat_alias_registry": {
+      "total": 14,
+      "kind_seat": 3,
+      "naya_tree_auth_account_created": false,
+      "note": "An alias record is not an authenticated account. The current smart_mail_aliases table lacks owner_id or equivalent bound principal."
+    },
+    "canonical_alias_claim_path": {
+      "owner_alias_claims_table_exists": false,
+      "claim_my_alias_rpc_exists": false,
+      "note": "A claim contract exists in an unpromoted repo migration but not in the inspected live database."
+    },
+    "mail_metadata_preflight": {
+      "file": "tools/reporting/nayanet_agent_mail_preflight.sql",
+      "scope": "public.smart_mail_threads and public.smart_mail_messages; pg catalog ONLY; no user content read",
+      "result": {
+        "smart_mail_threads": "BLOCKED",
+        "smart_mail_messages": "BLOCKED"
+      },
+      "anon_read_write_with_unrestricted_policies": true,
+      "mutable_user_metadata_authz_policies_present": true
+    },
+    "must_pass_before_real_private_mail": [
+      "Current law-authorized identity/alias binding with authenticated agent principal",
+      "mail private rows inaccessible to anonymous caller",
+      "mailbox unreadable/unwritable by unrelated third authenticated actor",
+      "sender A to receiver B one message and reply with receipts, identity/persistence and no spoofing",
+      "separate named verifier confirms same production revision and approved release"
+    ],
+    "safe_available_collaboration": "Use existing governed Team Naya GitHub coordination threads and public Smart Notes while private-mail pilot remains blocked. Do not pretend a shared alias row is a signed-in agent.",
+    "owner": "Existing Security & Flow #2823, Smart Mail #1893, SELF/LAW and Hub; independent VERIFY",
+    "production_permissions_changed": false,
+    "private_message_bodies_accessed": false
+  }
 }
