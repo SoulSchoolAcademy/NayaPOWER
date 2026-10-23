@@ -683,6 +683,28 @@
       "draft": true,
       "opened_at_utc": "2026-10-23T03:51:53Z",
       "note": "The four-open-PR count above is the pre-report-PR snapshot at 03:50Z. Opening this report PR makes the current queue five; this is an intentional draft for the requested report update, not a merge or completion claim."
+    },
+    "coordination_pointer_conflict": {
+      "status": "CONFLICTED",
+      "observed_at_utc": "2026-10-23T03:55:00Z",
+      "evidence": [
+        {
+          "issue": 2641,
+          "state": "closed",
+          "body_claim": "Archived 2026-10-19; explicitly says do not post new coordination there."
+        },
+        {
+          "issue": 2793,
+          "state": "open",
+          "body_claim": "Identifies itself as the live Team Naya board, effective 2026-10-20T10:28:53Z."
+        },
+        {
+          "source": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-LEARNING-EVENT.md",
+          "conflict": "Header calls #2641 the live board."
+        }
+      ],
+      "action": "Treat #2641 pointer as stale/conflicted; current receipts go to #2793 unless a newer verified main-level instruction supersedes it.",
+      "not_claimed": "No board migration was performed by this inspection."
     }
   }
 }
