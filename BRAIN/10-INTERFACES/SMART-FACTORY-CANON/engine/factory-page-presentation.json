@@ -1,0 +1,1358 @@
+{
+ "kind": "factory-page-presentation",
+ "authority": "Presentation harvested from the live page's own bytes (engine/factory-page-shell.html). Regenerate with --harvest; never hand-edit the harvested fields. `overrides` is the only hand-kept section: canonical pieces the current page does not show, each with its reason.",
+ "shell_sha256": "b71ec26c1057a45b041e83bfa1e14d5e05217c8c405d75c776a59f18166296cf",
+ "shell_bytes": 558861,
+ "rails": [
+  {
+   "label": "BUTTONS",
+   "sec": "#a06bff",
+   "pieces": [
+    "NAYA-BTN-001",
+    "NAYA-BTN-002",
+    "NAYA-BTN-003",
+    "NAYA-BTN-004",
+    "NAYA-BTN-005",
+    "NAYA-BTN-006",
+    "NAYA-BTN-007",
+    "NAYA-BTN-008",
+    "NAYA-BTN-009",
+    "NAYA-BTN-010",
+    "NAYA-BTN-011",
+    "NAYA-BTN-012",
+    "NAYA-BTN-013",
+    "NAYA-BTN-014",
+    "NAYA-BTN-015",
+    "NAYA-BTN-016",
+    "NAYA-BTN-017",
+    "NAYA-BTN-018",
+    "NAYA-BTN-021",
+    "NAYA-BTN-023",
+    "NAYA-BTN-024",
+    "NAYA-BTN-025",
+    "NAYA-BTN-027",
+    "NAYA-BTN-019",
+    "NAYA-BTN-020",
+    "NAYA-BTN-022",
+    "NAYA-BTN-026",
+    "NAYA-BTN-028",
+    "NAYA-BTN-029",
+    "NAYA-BTN-030",
+    "NAYA-BTN-031",
+    "NAYA-BTN-032",
+    "NAYA-BTN-033"
+   ]
+  },
+  {
+   "label": "ICONS",
+   "sec": "#6675ff",
+   "pieces": [
+    "NAYA-ICO-001",
+    "NAYA-ICO-002",
+    "NAYA-ICO-003",
+    "NAYA-ICO-004",
+    "NAYA-ICO-005",
+    "NAYA-ICO-006",
+    "NAYA-ICO-007",
+    "NAYA-ICO-008",
+    "NAYA-ICO-009",
+    "NAYA-ICO-010",
+    "NAYA-ICO-011",
+    "NAYA-ICO-012",
+    "NAYA-ICO-013",
+    "NAYA-ICO-014",
+    "NAYA-ICO-015",
+    "NAYA-ICO-016",
+    "NAYA-ICO-017",
+    "NAYA-ICO-018",
+    "NAYA-ICO-019",
+    "NAYA-ICO-020",
+    "NAYA-ICO-021",
+    "NAYA-ICO-022",
+    "NAYA-ICO-023"
+   ]
+  },
+  {
+   "label": "ORBS",
+   "sec": "#3fb8ff",
+   "pieces": [
+    "NAYA-ORB-001",
+    "NAYA-ORB-002",
+    "NAYA-ORB-003",
+    "NAYA-ORB-004",
+    "NAYA-ORB-005",
+    "NAYA-ORB-006",
+    "NAYA-ORB-007",
+    "NAYA-ORB-008"
+   ]
+  },
+  {
+   "label": "JEWELS",
+   "sec": "#2fe89e",
+   "pieces": [
+    "NAYA-JWL-001",
+    "NAYA-JWL-002",
+    "NAYA-JWL-003",
+    "NAYA-JWL-004",
+    "NAYA-JWL-005",
+    "NAYA-JWL-006",
+    "NAYA-JWL-007",
+    "NAYA-JWL-008",
+    "NAYA-JWL-009",
+    "NAYA-JWL-010",
+    "NAYA-JWL-011",
+    "NAYA-JWL-012",
+    "NAYA-JWL-013",
+    "NAYA-JWL-014",
+    "NAYA-JWL-015",
+    "NAYA-JWL-016",
+    "NAYA-JWL-017",
+    "NAYA-JWL-018",
+    "NAYA-JWL-019",
+    "NAYA-JWL-020",
+    "NAYA-JWL-021"
+   ]
+  },
+  {
+   "label": "BOARDS — RECTANGLES",
+   "sec": "#40d3bb",
+   "pieces": [
+    "NAYA-BRD-001",
+    "NAYA-BRD-012",
+    "NAYA-BRD-013",
+    "NAYA-BRD-018",
+    "NAYA-BRD-019",
+    "NAYA-BRD-021",
+    "NAYA-BRD-022",
+    "NAYA-BRD-024"
+   ]
+  },
+  {
+   "label": "CIRCLES",
+   "sec": "#ffd45a",
+   "pieces": [
+    "NAYA-BRD-025",
+    "NAYA-BRD-026",
+    "NAYA-BRD-027",
+    "NAYA-BRD-028",
+    "NAYA-BRD-029"
+   ]
+  },
+  {
+   "label": "FEATURES",
+   "sec": "#ff9a5a",
+   "pieces": [
+    "NAYA-BRD-033",
+    "NAYA-BRD-034",
+    "NAYA-BRD-035",
+    "NAYA-BRD-036",
+    "NAYA-BRD-015",
+    "NAYA-BRD-023",
+    "NAYA-BRD-037",
+    "NAYA-BRD-038",
+    "NAYA-BRD-039",
+    "NAYA-BRD-040",
+    "NAYA-BRD-041",
+    "NAYA-BRD-042",
+    "NAYA-BRD-043",
+    "NAYA-BRD-044"
+   ]
+  },
+  {
+   "label": "ROWS",
+   "sec": "#ff5e6c",
+   "pieces": [
+    "NAYA-ROW-001",
+    "NAYA-ROW-002",
+    "NAYA-ROW-003",
+    "NAYA-ROW-004"
+   ]
+  },
+  {
+   "label": "INPUTS",
+   "sec": "#e84fff",
+   "pieces": [
+    "NAYA-INP-001",
+    "NAYA-INP-002",
+    "NAYA-INP-003",
+    "NAYA-INP-004",
+    "NAYA-INP-005",
+    "NAYA-INP-006",
+    "NAYA-INP-007"
+   ]
+  },
+  {
+   "label": "HEADERS",
+   "sec": "#a06bff",
+   "pieces": [
+    "NAYA-HDR-001",
+    "NAYA-HDR-002",
+    "NAYA-HDR-003"
+   ]
+  },
+  {
+   "label": "MARKERS",
+   "sec": "#6675ff",
+   "pieces": [
+    "NAYA-MRK-001",
+    "NAYA-MRK-002",
+    "NAYA-MRK-003",
+    "NAYA-MRK-004",
+    "NAYA-MRK-005",
+    "NAYA-MRK-006",
+    "NAYA-MRK-007"
+   ]
+  },
+  {
+   "label": "NAVIGATION",
+   "sec": "#3fb8ff",
+   "pieces": [
+    "NAYA-NAV-001",
+    "NAYA-NAV-002",
+    "NAYA-NAV-003",
+    "NAYA-NAV-004",
+    "NAYA-NAV-005",
+    "NAYA-NAV-006",
+    "NAYA-NAV-007",
+    "NAYA-NAV-008",
+    "NAYA-NAV-009",
+    "NAYA-NAV-010",
+    "NAYA-NAV-011"
+   ]
+  },
+  {
+   "label": "OVERLAYS",
+   "sec": "#2fe89e",
+   "pieces": [
+    "NAYA-OVL-001",
+    "NAYA-OVL-002",
+    "NAYA-OVL-003",
+    "NAYA-OVL-004",
+    "NAYA-OVL-005"
+   ]
+  }
+ ],
+ "pieces": {
+  "NAYA-BTN-001": {
+   "rail": "BUTTONS",
+   "sc": "#F8F7FB",
+   "desc": "foundation skin",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-002": {
+   "rail": "BUTTONS",
+   "sc": "#F8F7FB",
+   "desc": "foundation skin",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-003": {
+   "rail": "BUTTONS",
+   "sc": "#a06bff",
+   "desc": "foundation skin",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-004": {
+   "rail": "BUTTONS",
+   "sc": "#e84fff",
+   "desc": "edge-ignition on hover",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-005": {
+   "rail": "BUTTONS",
+   "sc": "#a06bff",
+   "desc": "edge-ignition on hover",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-006": {
+   "rail": "BUTTONS",
+   "sc": "#3fb8ff",
+   "desc": "edge-ignition on hover",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-007": {
+   "rail": "BUTTONS",
+   "sc": "#2fe89e",
+   "desc": "edge-ignition on hover",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-008": {
+   "rail": "BUTTONS",
+   "sc": "#ffd45a",
+   "desc": "edge-ignition on hover",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-009": {
+   "rail": "BUTTONS",
+   "sc": "#a06bff",
+   "desc": "flagship primary",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-010": {
+   "rail": "BUTTONS",
+   "sc": "#3fb8ff",
+   "desc": "flagship primary",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-011": {
+   "rail": "BUTTONS",
+   "sc": "#2fe89e",
+   "desc": "flagship primary",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-012": {
+   "rail": "BUTTONS",
+   "sc": "#ffbf3d",
+   "desc": "quiet secondary",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-013": {
+   "rail": "BUTTONS",
+   "sc": "#ff5e6c",
+   "desc": "quiet secondary",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-014": {
+   "rail": "BUTTONS",
+   "sc": "#ff9a5a",
+   "desc": "quiet secondary",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-015": {
+   "rail": "BUTTONS",
+   "sc": "#e84fff",
+   "desc": "hub workhorse button",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-016": {
+   "rail": "BUTTONS",
+   "sc": "#a06bff",
+   "desc": "small on/off chip",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-017": {
+   "rail": "BUTTONS",
+   "sc": "#a06bff",
+   "desc": "dialog primary",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-018": {
+   "rail": "BUTTONS",
+   "sc": "#2fe89e",
+   "desc": "wide uppercase nav",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-021": {
+   "rail": "BUTTONS",
+   "sc": "#ff5e6c",
+   "desc": "sanctioned destructive action",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-023": {
+   "rail": "BUTTONS",
+   "sc": "#ff5e6c",
+   "desc": "canonical primary, 3 sizes",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-024": {
+   "rail": "BUTTONS",
+   "sc": "#ff9a5a",
+   "desc": "canonical secondary + icon variant",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-025": {
+   "rail": "BUTTONS",
+   "sc": "#e84fff",
+   "desc": "canonical ghost",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-027": {
+   "rail": "BUTTONS",
+   "sc": "#a06bff",
+   "desc": "silver-white at rest, ignites on touch",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-019": {
+   "rail": "BUTTONS",
+   "sc": "#3fb8ff",
+   "desc": "5 signature button skins",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-020": {
+   "rail": "BUTTONS",
+   "sc": "#2fe89e",
+   "desc": "standard icon / micro / portal sizes",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-022": {
+   "rail": "BUTTONS",
+   "sc": "#ffbf3d",
+   "desc": "primary action + orb",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-026": {
+   "rail": "BUTTONS",
+   "sc": "#a06bff",
+   "desc": "circle of light flows around",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-028": {
+   "rail": "BUTTONS",
+   "sc": "#ff9a5a",
+   "desc": "liking that stays put",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-029": {
+   "rail": "BUTTONS",
+   "sc": "#e84fff",
+   "desc": "quiet secondary action",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-030": {
+   "rail": "BUTTONS",
+   "sc": "#a06bff",
+   "desc": "selected day never shifts",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-031": {
+   "rail": "BUTTONS",
+   "sc": "#3fb8ff",
+   "desc": "the button that means it",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-032": {
+   "rail": "BUTTONS",
+   "sc": "#2fe89e",
+   "desc": "voice capture",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-BTN-033": {
+   "rail": "BUTTONS",
+   "sc": "#ffbf3d",
+   "desc": "always-on creation",
+   "dialect": "compact",
+   "cat": "Buttons"
+  },
+  "NAYA-ICO-001": {
+   "rail": "ICONS",
+   "sc": "#ff5e6c",
+   "desc": "diamond = intelligence",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-002": {
+   "rail": "ICONS",
+   "sc": "#ff9a5a",
+   "desc": "circle = state",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-003": {
+   "rail": "ICONS",
+   "sc": "#e84fff",
+   "desc": "square = destination",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-004": {
+   "rail": "ICONS",
+   "sc": "#a06bff",
+   "desc": "diamond = intelligence",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-005": {
+   "rail": "ICONS",
+   "sc": "#3fb8ff",
+   "desc": "circle = state",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-006": {
+   "rail": "ICONS",
+   "sc": "#2fe89e",
+   "desc": "square = destination",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-007": {
+   "rail": "ICONS",
+   "sc": "#ffbf3d",
+   "desc": "circle = state",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-008": {
+   "rail": "ICONS",
+   "sc": "#ff5e6c",
+   "desc": "diamond = intelligence",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-009": {
+   "rail": "ICONS",
+   "sc": "#ff9a5a",
+   "desc": "circle = state",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-010": {
+   "rail": "ICONS",
+   "sc": "#e84fff",
+   "desc": "square = destination",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-011": {
+   "rail": "ICONS",
+   "sc": "#a06bff",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-012": {
+   "rail": "ICONS",
+   "sc": "#3fb8ff",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-013": {
+   "rail": "ICONS",
+   "sc": "#2fe89e",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-014": {
+   "rail": "ICONS",
+   "sc": "#ffbf3d",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-015": {
+   "rail": "ICONS",
+   "sc": "#ff5e6c",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-016": {
+   "rail": "ICONS",
+   "sc": "#ff9a5a",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-017": {
+   "rail": "ICONS",
+   "sc": "#e84fff",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-018": {
+   "rail": "ICONS",
+   "sc": "#a06bff",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-019": {
+   "rail": "ICONS",
+   "sc": "#3fb8ff",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-020": {
+   "rail": "ICONS",
+   "sc": "#2fe89e",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-021": {
+   "rail": "ICONS",
+   "sc": "#ffbf3d",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-022": {
+   "rail": "ICONS",
+   "sc": "#ff5e6c",
+   "desc": "eco bottom bar",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ICO-023": {
+   "rail": "ICONS",
+   "sc": "#ff9a5a",
+   "desc": "40px tinted tile",
+   "dialect": "compact",
+   "cat": "Icons"
+  },
+  "NAYA-ORB-001": {
+   "rail": "ORBS",
+   "sc": "#e84fff",
+   "desc": "breathes + orbits",
+   "dialect": "compact",
+   "cat": "Orbs"
+  },
+  "NAYA-ORB-002": {
+   "rail": "ORBS",
+   "sc": "#a06bff",
+   "desc": "breathes + orbits",
+   "dialect": "compact",
+   "cat": "Orbs"
+  },
+  "NAYA-ORB-003": {
+   "rail": "ORBS",
+   "sc": "#3fb8ff",
+   "desc": "breathes + orbits",
+   "dialect": "compact",
+   "cat": "Orbs"
+  },
+  "NAYA-ORB-004": {
+   "rail": "ORBS",
+   "sc": "#2fe89e",
+   "desc": "breathes + orbits",
+   "dialect": "compact",
+   "cat": "Orbs"
+  },
+  "NAYA-ORB-005": {
+   "rail": "ORBS",
+   "sc": "#ffbf3d",
+   "desc": "breathes + orbits",
+   "dialect": "compact",
+   "cat": "Orbs"
+  },
+  "NAYA-ORB-006": {
+   "rail": "ORBS",
+   "sc": "#ff5e6c",
+   "desc": "truth state",
+   "dialect": "compact",
+   "cat": "Orbs"
+  },
+  "NAYA-ORB-007": {
+   "rail": "ORBS",
+   "sc": "#ff9a5a",
+   "desc": "truth state",
+   "dialect": "compact",
+   "cat": "Orbs"
+  },
+  "NAYA-ORB-008": {
+   "rail": "ORBS",
+   "sc": "#e84fff",
+   "desc": "truth state",
+   "dialect": "compact",
+   "cat": "Orbs"
+  },
+  "NAYA-JWL-001": {
+   "rail": "JEWELS",
+   "sc": "#e84fff",
+   "desc": "drawn jewel, not a dot",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-002": {
+   "rail": "JEWELS",
+   "sc": "#a06bff",
+   "desc": "drawn jewel, not a dot",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-003": {
+   "rail": "JEWELS",
+   "sc": "#3fb8ff",
+   "desc": "drawn jewel, not a dot",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-004": {
+   "rail": "JEWELS",
+   "sc": "#2fe89e",
+   "desc": "drawn jewel, not a dot",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-005": {
+   "rail": "JEWELS",
+   "sc": "#ffbf3d",
+   "desc": "drawn jewel, not a dot",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-006": {
+   "rail": "JEWELS",
+   "sc": "#e84fff",
+   "desc": "the luminous mark",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-007": {
+   "rail": "JEWELS",
+   "sc": "#a06bff",
+   "desc": "the luminous mark",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-008": {
+   "rail": "JEWELS",
+   "sc": "#3fb8ff",
+   "desc": "the luminous mark",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-009": {
+   "rail": "JEWELS",
+   "sc": "#2fe89e",
+   "desc": "the luminous mark",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-010": {
+   "rail": "JEWELS",
+   "sc": "#ffbf3d",
+   "desc": "the luminous mark",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-011": {
+   "rail": "JEWELS",
+   "sc": "#e84fff",
+   "desc": "app icon, glyph at the core",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-012": {
+   "rail": "JEWELS",
+   "sc": "#3fb8ff",
+   "desc": "app icon, glyph at the core",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-013": {
+   "rail": "JEWELS",
+   "sc": "#2fe89e",
+   "desc": "app icon, glyph at the core",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-014": {
+   "rail": "JEWELS",
+   "sc": "#ffbf3d",
+   "desc": "app icon, glyph at the core",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-015": {
+   "rail": "JEWELS",
+   "sc": "#2fe89e",
+   "desc": "dark soul, color rim",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-016": {
+   "rail": "JEWELS",
+   "sc": "#a06bff",
+   "desc": "the centerpiece, one per page",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-017": {
+   "rail": "JEWELS",
+   "sc": "#2fe89e",
+   "desc": "two rings, counter-rotating",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-018": {
+   "rail": "JEWELS",
+   "sc": "#2fe89e",
+   "desc": "8px status dot",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-019": {
+   "rail": "JEWELS",
+   "sc": "#a06bff",
+   "desc": "diamond card accents",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-JWL-020": {
+   "rail": "JEWELS",
+   "sc": "#e84fff",
+   "desc": "five restrained jewel orbs",
+   "dialect": "compact",
+   "cat": "Jewels",
+   "wide": "600"
+  },
+  "NAYA-JWL-021": {
+   "rail": "JEWELS",
+   "sc": "#a06bff",
+   "desc": "face-pile avatar cluster",
+   "dialect": "compact",
+   "cat": "Jewels"
+  },
+  "NAYA-BRD-001": {
+   "rail": "BOARDS — RECTANGLES",
+   "sc": "#a06bff",
+   "desc": "one color, one world",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-012": {
+   "rail": "BOARDS — RECTANGLES",
+   "sc": "#a06bff",
+   "desc": "score yourself",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-013": {
+   "rail": "BOARDS — RECTANGLES",
+   "sc": "#a06bff",
+   "desc": "pre-ship ritual as checks",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-018": {
+   "rail": "BOARDS — RECTANGLES",
+   "sc": "#a06bff",
+   "desc": "reading experience",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-019": {
+   "rail": "BOARDS — RECTANGLES",
+   "sc": "#a06bff",
+   "desc": "orbital layout",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-021": {
+   "rail": "BOARDS — RECTANGLES",
+   "sc": "#a06bff",
+   "desc": "entry point",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-022": {
+   "rail": "BOARDS — RECTANGLES",
+   "sc": "#a06bff",
+   "desc": "editorial layout",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-024": {
+   "rail": "BOARDS — RECTANGLES",
+   "sc": "#a06bff",
+   "desc": "page container",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-025": {
+   "rail": "CIRCLES",
+   "sc": "#e84fff",
+   "desc": "center + five satellites",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-026": {
+   "rail": "CIRCLES",
+   "sc": "#a06bff",
+   "desc": "center + seven satellites",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-027": {
+   "rail": "CIRCLES",
+   "sc": "#3fb8ff",
+   "desc": "center + nine satellites",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-028": {
+   "rail": "CIRCLES",
+   "sc": "#2fe89e",
+   "desc": "three across",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-029": {
+   "rail": "CIRCLES",
+   "sc": "#ffd45a",
+   "desc": "five across",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-033": {
+   "rail": "FEATURES",
+   "sc": "#a06bff",
+   "desc": "beautiful KPI cards",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-034": {
+   "rail": "FEATURES",
+   "sc": "#3fb8ff",
+   "desc": "glowing bar visualization",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-035": {
+   "rail": "FEATURES",
+   "sc": "#2fe89e",
+   "desc": "progress ring",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-036": {
+   "rail": "FEATURES",
+   "sc": "#ffd45a",
+   "desc": "clean sortable rows",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-015": {
+   "rail": "FEATURES",
+   "sc": "#a06bff",
+   "desc": "audio player",
+   "dialect": "compact",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-023": {
+   "rail": "FEATURES",
+   "sc": "#2fe89e",
+   "desc": "Four steps. Then you are in",
+   "dialect": "compact",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-037": {
+   "rail": "FEATURES",
+   "sc": "#a06bff",
+   "desc": "month grid picker",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-038": {
+   "rail": "FEATURES",
+   "sc": "#3fb8ff",
+   "desc": "booking time picker",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-039": {
+   "rail": "FEATURES",
+   "sc": "#2fe89e",
+   "desc": "mail inbox rows",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-040": {
+   "rail": "FEATURES",
+   "sc": "#a06bff",
+   "desc": "activity feed",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-041": {
+   "rail": "FEATURES",
+   "sc": "#ffd45a",
+   "desc": "shop product with price",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-042": {
+   "rail": "FEATURES",
+   "sc": "#a06bff",
+   "desc": "3-column comparison",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-043": {
+   "rail": "FEATURES",
+   "sc": "#ff5e6c",
+   "desc": "event timer",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-BRD-044": {
+   "rail": "FEATURES",
+   "sc": "#40d3bb",
+   "desc": "community post box",
+   "dialect": "board",
+   "cat": "Boards"
+  },
+  "NAYA-ROW-001": {
+   "rail": "ROWS",
+   "sc": "#ffbf3d",
+   "desc": "metadata chips",
+   "dialect": "compact",
+   "cat": "Rows"
+  },
+  "NAYA-ROW-002": {
+   "rail": "ROWS",
+   "sc": "#ff5e6c",
+   "desc": "card button container",
+   "dialect": "compact",
+   "cat": "Rows"
+  },
+  "NAYA-ROW-003": {
+   "rail": "ROWS",
+   "sc": "#ff9a5a",
+   "desc": "divided menu row",
+   "dialect": "compact",
+   "cat": "Rows"
+  },
+  "NAYA-ROW-004": {
+   "rail": "ROWS",
+   "sc": "#e84fff",
+   "desc": "icon + title + steps",
+   "dialect": "compact",
+   "cat": "Rows"
+  },
+  "NAYA-INP-001": {
+   "rail": "INPUTS",
+   "sc": "#a06bff",
+   "desc": "full-width search",
+   "dialect": "compact",
+   "cat": "Inputs"
+  },
+  "NAYA-INP-002": {
+   "rail": "INPUTS",
+   "sc": "#3fb8ff",
+   "desc": "display text input",
+   "dialect": "compact",
+   "cat": "Inputs"
+  },
+  "NAYA-INP-003": {
+   "rail": "INPUTS",
+   "sc": "#2fe89e",
+   "desc": "multi-option pill switcher",
+   "dialect": "compact",
+   "cat": "Inputs"
+  },
+  "NAYA-INP-004": {
+   "rail": "INPUTS",
+   "sc": "#ffbf3d",
+   "desc": "iOS-style switch",
+   "dialect": "compact",
+   "cat": "Inputs"
+  },
+  "NAYA-INP-005": {
+   "rail": "INPUTS",
+   "sc": "#ff5e6c",
+   "desc": "text well carved into black",
+   "dialect": "compact",
+   "cat": "Inputs"
+  },
+  "NAYA-INP-006": {
+   "rail": "INPUTS",
+   "sc": "#ff9a5a",
+   "desc": "26px jewel that fills with light",
+   "dialect": "compact",
+   "cat": "Inputs"
+  },
+  "NAYA-INP-007": {
+   "rail": "INPUTS",
+   "sc": "#e84fff",
+   "desc": "labeled row with toggle",
+   "dialect": "compact",
+   "cat": "Inputs"
+  },
+  "NAYA-HDR-001": {
+   "rail": "HEADERS",
+   "sc": "#a06bff",
+   "desc": "small caps section label",
+   "dialect": "compact",
+   "cat": "Headers"
+  },
+  "NAYA-HDR-002": {
+   "rail": "HEADERS",
+   "sc": "#3fb8ff",
+   "desc": "type/title/summary stack",
+   "dialect": "compact",
+   "cat": "Headers"
+  },
+  "NAYA-HDR-003": {
+   "rail": "HEADERS",
+   "sc": "#2fe89e",
+   "desc": "numbered step label",
+   "dialect": "compact",
+   "cat": "Headers"
+  },
+  "NAYA-MRK-001": {
+   "rail": "MARKERS",
+   "sc": "#2fe89e",
+   "desc": "status badge",
+   "dialect": "compact",
+   "cat": "Markers"
+  },
+  "NAYA-MRK-002": {
+   "rail": "MARKERS",
+   "sc": "#a06bff",
+   "desc": "completion confirmation",
+   "dialect": "compact",
+   "cat": "Markers"
+  },
+  "NAYA-MRK-003": {
+   "rail": "MARKERS",
+   "sc": "#a06bff",
+   "desc": "match highlight",
+   "dialect": "compact",
+   "cat": "Markers"
+  },
+  "NAYA-MRK-004": {
+   "rail": "MARKERS",
+   "sc": "#e84fff",
+   "desc": "hairline divider",
+   "dialect": "compact",
+   "cat": "Markers"
+  },
+  "NAYA-MRK-005": {
+   "rail": "MARKERS",
+   "sc": "#a06bff",
+   "desc": "glowing five-stop spectrum strip",
+   "dialect": "compact",
+   "cat": "Markers"
+  },
+  "NAYA-MRK-006": {
+   "rail": "MARKERS",
+   "sc": "#3fb8ff",
+   "desc": "numeric badge",
+   "dialect": "compact",
+   "cat": "Markers"
+  },
+  "NAYA-MRK-007": {
+   "rail": "MARKERS",
+   "sc": "#2fe89e",
+   "desc": "loading skeleton lines",
+   "dialect": "compact",
+   "cat": "Markers"
+  },
+  "NAYA-NAV-001": {
+   "rail": "NAVIGATION",
+   "sc": "#ff5e6c",
+   "desc": "pill navigation",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-002": {
+   "rail": "NAVIGATION",
+   "sc": "#ff9a5a",
+   "desc": "collective / personal / activity",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-003": {
+   "rail": "NAVIGATION",
+   "sc": "#e84fff",
+   "desc": "the thumb row",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-004": {
+   "rail": "NAVIGATION",
+   "sc": "#a06bff",
+   "desc": "standard top navigation with orb mark",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-005": {
+   "rail": "NAVIGATION",
+   "sc": "#3fb8ff",
+   "desc": "SmartTabs-driven favorites strip",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-006": {
+   "rail": "NAVIGATION",
+   "sc": "#2fe89e",
+   "desc": "in-app room switcher",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-007": {
+   "rail": "NAVIGATION",
+   "sc": "#ffbf3d",
+   "desc": "section jump navigation",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-008": {
+   "rail": "NAVIGATION",
+   "sc": "#ff5e6c",
+   "desc": "sticky room navigation, silver-at-rest",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-009": {
+   "rail": "NAVIGATION",
+   "sc": "#ff9a5a",
+   "desc": "back-to-hub brand control",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-010": {
+   "rail": "NAVIGATION",
+   "sc": "#e84fff",
+   "desc": "the standard page footer",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-NAV-011": {
+   "rail": "NAVIGATION",
+   "sc": "#a06bff",
+   "desc": "The Human Journey",
+   "dialect": "compact",
+   "cat": "Navigation"
+  },
+  "NAYA-OVL-001": {
+   "rail": "OVERLAYS",
+   "sc": "#2fe89e",
+   "desc": "truthful notification",
+   "dialect": "compact",
+   "cat": "Overlays"
+  },
+  "NAYA-OVL-002": {
+   "rail": "OVERLAYS",
+   "sc": "#2fe89e",
+   "desc": "one named consequence, one way out",
+   "dialect": "compact",
+   "cat": "Overlays"
+  },
+  "NAYA-OVL-003": {
+   "rail": "OVERLAYS",
+   "sc": "#a06bff",
+   "desc": "explicit-visibility share actions",
+   "dialect": "compact",
+   "cat": "Overlays"
+  },
+  "NAYA-OVL-004": {
+   "rail": "OVERLAYS",
+   "sc": "#ff5e6c",
+   "desc": "⌘K query-driven jump palette",
+   "dialect": "compact",
+   "cat": "Overlays"
+  },
+  "NAYA-OVL-005": {
+   "rail": "OVERLAYS",
+   "sc": "#ff9a5a",
+   "desc": "sliding notification panel",
+   "dialect": "compact",
+   "cat": "Overlays",
+   "wide": "600"
+  }
+ },
+ "skipped_unparsed_cards": [
+  "NAYA-BRD-030",
+  "NAYA-BRD-031",
+  "NAYA-BRD-032"
+ ],
+ "templates": {
+  "pills_compact": "<button class=\"szpill\" style=\"--sc:#a06bff\" data-s=\"XS\" data-z=\"0.55\">XS</button><button class=\"szpill\" style=\"--sc:#3fb8ff\" data-s=\"S\" data-z=\"0.75\">S</button><button class=\"szpill on\" style=\"--sc:#2fe89e\" data-s=\"M\" data-z=\"1.0\">M</button><button class=\"szpill\" style=\"--sc:#40d3bb\" data-s=\"L\" data-z=\"1.3\">L</button><button class=\"szpill\" style=\"--sc:#a06bff\" data-s=\"XL\" data-z=\"1.6\">XL</button><button class=\"szpill\" style=\"--sc:#ffd45a\" data-s=\"AUTO\" data-z=\"1.0\">AUTO</button>",
+  "pills_board": "      <button class=\"szpill\" style=\"--sc:#a06bff\" data-s=\"XS\" data-z=\"0.55\">XS</button>\n      <button class=\"szpill\" style=\"--sc:#3fb8ff\" data-s=\"S\" data-z=\"0.75\">S</button>\n      <button class=\"szpill on\" style=\"--sc:#2fe89e\" data-s=\"M\" data-z=\"1.0\">M</button>\n      <button class=\"szpill\" style=\"--sc:#40d3bb\" data-s=\"L\" data-z=\"1.3\">L</button>\n      <button class=\"szpill\" style=\"--sc:#a06bff\" data-s=\"XL\" data-z=\"1.6\">XL</button>\n      <button class=\"szpill\" style=\"--sc:#ffd45a\" data-s=\"AUTO\" data-z=\"1.0\">AUTO</button>\n    "
+ },
+ "overrides": {
+  "NAYA-HRO-001": {
+   "rail": "HEROES",
+   "sc": "#a06bff",
+   "desc": "the crowned hero",
+   "dialect": "compact",
+   "cat": "Heroes",
+   "reason": "Canonical (the crowned Reference Hero) but the current page has no heroes rail and never shows it. Rides a new HEROES railblock appended after OVERLAYS in the page's own rail grammar; --sc is the hero's own purple (its ai_label: 'a full hero section in purple')."
+  },
+  "NAYA-ICO-024": {
+   "rail": "ICONS",
+   "sc": "#e84fff",
+   "desc": "mail app tile",
+   "dialect": "compact",
+   "cat": "Icons",
+   "reason": "Canonical app tile, completed in the store after the page was baked; not on the current page. --sc continues the ICONS rail's own 7-color cycle after ICO-023 (#ff9a5a -> #e84fff)."
+  },
+  "NAYA-ICO-025": {
+   "rail": "ICONS",
+   "sc": "#a06bff",
+   "desc": "pulse app tile",
+   "dialect": "compact",
+   "cat": "Icons",
+   "reason": "Canonical app tile, not on the current page. --sc continues the ICONS cycle (#e84fff -> #a06bff)."
+  },
+  "NAYA-ICO-026": {
+   "rail": "ICONS",
+   "sc": "#3fb8ff",
+   "desc": "hearth app tile",
+   "dialect": "compact",
+   "cat": "Icons",
+   "reason": "Canonical app tile, not on the current page. --sc continues the ICONS cycle (#a06bff -> #3fb8ff)."
+  },
+  "NAYA-INP-008": {
+   "rail": "INPUTS",
+   "sc": "#a06bff",
+   "desc": "the crowned input",
+   "dialect": "compact",
+   "cat": "Inputs",
+   "reason": "Canonical Reference Well (crowned exemplar) but not on the current page -- the page shows its superseded predecessor NAYA-INP-001 instead, which generation drops. --sc wraps the INPUTS rail's walk after INP-007 (#e84fff -> #a06bff)."
+  },
+  "NAYA-INP-009": {
+   "rail": "INPUTS",
+   "sc": "#3fb8ff",
+   "desc": "the crowned select",
+   "dialect": "compact",
+   "cat": "Inputs",
+   "reason": "Canonical Reference Select (crowned exemplar), not on the current page. --sc continues the INPUTS walk (#a06bff -> #3fb8ff)."
+  },
+  "NAYA-BRD-030": {
+   "rail": "CIRCLES",
+   "sc": "#a06bff",
+   "desc": "metrics with trends, at a glance",
+   "dialect": "board",
+   "cat": "Boards",
+   "reason": "Canonical, but the current page shows a hand-made circle substitute that does not render the store piece (the stored markup is a stat grid -- the piece's own ai_label says so). The generated card renders the real store piece in the CIRCLES rail's board grammar, after BRD-029. --sc harvested from the substitute card; descriptor distilled from the piece's ai_label (the substitute's 'round presentation board' described the substitute, not the piece)."
+  }
+ },
+ "new_rails": [
+  {
+   "label": "HEROES",
+   "sec": "#40d3bb",
+   "cat": "Heroes",
+   "after": "OVERLAYS",
+   "reason": "The canonical store has a hero family (HRO) with no rail on the current page. One railblock in the page's exact grammar, appended after the last existing rail so nothing existing moves; --sec #40d3bb is the next color in the page's own 9-color section cycle after OVERLAYS (#2fe89e)."
+  }
+ ]
+}
