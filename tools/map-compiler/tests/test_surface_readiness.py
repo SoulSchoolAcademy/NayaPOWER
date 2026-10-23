@@ -88,6 +88,25 @@ class SurfaceReadinessTests(unittest.TestCase):
         a["dimension_scores"]["Honesty"] = 8.9
         self.assertEqual(grade_surface(self.item), "BELOW_9_5")
 
+    def test_head_405_bounded_get_recovers_a_working_smartnote(self):
+        class Response:
+            status = 200
+            headers = {}
+            def __enter__(self): return self
+            def __exit__(self, *args): pass
+            def geturl(self): return "https://nayanet.live/s/sn0840"
+        methods = []
+        def special(req,timeout):
+            methods.append(req.get_method())
+            if req.get_method() == "HEAD":
+                raise HTTPError(req.full_url, 405, "HEAD not supported", {}, None)
+            self.assertEqual(req.headers.get("Range"), "bytes=0-0")
+            return Response()
+        r = probe_surface("/s/sn0840", opener=special)
+        self.assertEqual(methods, ["HEAD","GET"])
+        self.assertTrue(r["reachable"])
+        self.assertTrue(r["head_unsupported_get_fallback"])
+
     def test_head_405_is_unknown_not_false_failure(self):
         def head_rejected(req,timeout):
             raise HTTPError(req.full_url,405,"No HEAD",{},None)
