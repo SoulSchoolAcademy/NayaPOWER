@@ -675,6 +675,14 @@
         "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990",
         "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968"
       ]
+    },
+    "report_update_pr": {
+      "number": 2998,
+      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2998",
+      "state": "open",
+      "draft": true,
+      "opened_at_utc": "2026-10-23T03:51:53Z",
+      "note": "The four-open-PR count above is the pre-report-PR snapshot at 03:50Z. Opening this report PR makes the current queue five; this is an intentional draft for the requested report update, not a merge or completion claim."
     }
   }
 }
