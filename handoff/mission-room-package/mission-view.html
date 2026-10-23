@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mission — NayaNET Intelligent Hub</title>
+<style>
+  :root{
+    --bg:#0B0D12; --panel:#12151D; --panel2:#171B25; --line:#252B39;
+    --ink:#EDEDF2; --dim:#9AA3B5;
+    --purple:#9d75ff; --purple2:#a06bff; --sapphire:#55b9ee; --emerald:#55e39a;
+    --gold:#e8b64c; --magenta:#d86cff; --red:#ff5a6e;
+    --accent-mission:#9d75ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+    font-size:18px; line-height:1.5;}
+  .wrap{max-width:860px; margin:0 auto; padding:28px 18px 64px}
+  /* ---- cover (composition law: cover first, nothing piles above it) ---- */
+  .cover{border:1px solid var(--line); border-radius:18px; padding:26px 24px 20px;
+    background:linear-gradient(160deg, var(--panel2), var(--panel) 60%);
+    box-shadow:0 18px 50px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);}
+  .kicker{letter-spacing:.22em; font-size:.72rem; font-weight:700; color:var(--accent-mission); text-transform:uppercase}
+  h1.title{font-size:2rem; line-height:1.15; margin:.35rem 0 .3rem; font-weight:800}
+  .lede{color:var(--dim); margin:.2rem 0 0; max-width:56ch}
+  .fresh{margin-top:16px; padding-top:14px; border-top:1px solid var(--line);
+    font-size:.86rem; color:var(--dim); display:flex; flex-wrap:wrap; gap:.4rem 1.1rem; align-items:center}
+  .fresh b{color:var(--ink); font-weight:600}
+  .dot{width:9px; height:9px; border-radius:50%; background:var(--emerald); display:inline-block}
+  .dot.stale{background:var(--red)}
+  /* ---- loud stale / error (never silent, never a baked fallback) ---- */
+  .stale-banner{display:none; margin:18px 0 0; border:1px solid var(--red); border-radius:14px;
+    background:rgba(255,90,110,.10); padding:14px 16px; color:#ffd7dc}
+  .stale-banner.show{display:block}
+  .stale-banner b{color:var(--red); letter-spacing:.08em}
+  .error-panel{display:none; margin:22px 0; border:1px solid var(--red); border-radius:14px;
+    background:rgba(255,90,110,.08); padding:20px}
+  .error-panel.show{display:block}
+  .error-panel h2{margin:.1rem 0 .4rem; color:var(--red); font-size:1.15rem}
+  button.retry{margin-top:10px; background:var(--panel2); color:var(--ink); border:1px solid var(--line);
+    border-radius:10px; padding:8px 16px; font-size:.95rem; cursor:pointer}
+  /* ---- counts strip ---- */
+  .counts{display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 4px}
+  .count{border:1px solid var(--line); background:var(--panel); border-radius:999px;
+    padding:5px 13px; font-size:.85rem; color:var(--dim)}
+  .count b{color:var(--ink); font-size:1rem; margin-right:.3rem}
+  /* ---- program filters (programs are filters, not queues) ---- */
+  .filters{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 6px}
+  .chip{border:1px solid var(--line); background:transparent; color:var(--dim); border-radius:999px;
+    padding:6px 14px; font-size:.88rem; cursor:pointer}
+  .chip[aria-pressed="true"]{color:var(--ink); border-color:var(--accent-mission); background:rgba(157,117,255,.12)}
+  /* ---- sections & item blocks (block-as-object) ---- */
+  section{margin-top:30px}
+  section>h2{font-size:1.05rem; letter-spacing:.06em; text-transform:uppercase; color:var(--dim);
+    display:flex; align-items:center; gap:.6rem; margin:0 0 12px}
+  section>h2 .n{color:var(--ink)}
+  .item{border:1px solid var(--line); border-left:4px solid var(--dim); background:var(--panel);
+    border-radius:14px; padding:14px 16px; margin:0 0 10px}
+  .item .top{display:flex; gap:.7rem; align-items:baseline; flex-wrap:wrap}
+  .rank{font-weight:800; color:var(--dim); min-width:2ch}
+  .item h3{margin:0; font-size:1.02rem; line-height:1.35; flex:1 1 320px}
+  .state{font-size:.72rem; font-weight:700; letter-spacing:.09em; padding:3px 9px; border-radius:999px; white-space:nowrap}
+  .meta{color:var(--dim); font-size:.86rem; margin-top:6px; display:flex; flex-wrap:wrap; gap:.3rem 1rem}
+  .note{color:var(--dim); font-size:.92rem; margin-top:8px}
+  .proof{margin-top:8px; font-size:.9rem}
+  .proof a{color:var(--emerald); word-break:break-all}
+  .blockerbox{margin-top:8px; border:1px solid rgba(255,90,110,.45); background:rgba(255,90,110,.07);
+    border-radius:10px; padding:9px 12px; font-size:.92rem}
+  .blockerbox b{color:var(--red)}
+  .flags{margin-top:8px; display:flex; flex-wrap:wrap; gap:6px}
+  .flag{font-size:.75rem; font-weight:700; letter-spacing:.05em; border-radius:999px; padding:3px 9px}
+  .flag.stalled{background:rgba(232,182,76,.15); color:var(--gold); border:1px solid rgba(232,182,76,.5)}
+  .flag.drift{background:rgba(232,182,76,.08); color:var(--gold); border:1px solid rgba(232,182,76,.35); font-weight:600; letter-spacing:0; text-transform:none}
+  .flag.law{background:rgba(255,90,110,.15); color:var(--red); border:1px solid var(--red)}
+  .verified{color:var(--dim); font-size:.85rem; margin-top:6px}
+  /* per-state accents */
+  .s-needs{border-left-color:var(--gold)}   .s-needs .state{background:rgba(232,182,76,.16); color:var(--gold)}
+  .s-blocked{border-left-color:var(--red)}  .s-blocked .state{background:rgba(255,90,110,.14); color:var(--red)}
+  .s-working{border-left-color:var(--sapphire)} .s-working .state{background:rgba(85,185,238,.13); color:var(--sapphire)}
+  .s-claimed{border-left-color:var(--magenta)}  .s-claimed .state{background:rgba(216,108,255,.13); color:var(--magenta)}
+  .s-verifying{border-left-color:var(--purple)} .s-verifying .state{background:rgba(157,117,255,.15); color:var(--purple2)}
+  .s-done{border-left-color:var(--emerald)} .s-done .state{background:rgba(85,227,154,.13); color:var(--emerald)}
+  .s-queued{border-left-color:var(--line)}  .s-queued .state{background:rgba(154,163,181,.13); color:var(--dim)}
+  .s-law{border-left-color:var(--red); border-style:dashed}
+  /* ---- up next strip ---- */
+  .upnext{display:flex; flex-direction:column; gap:8px}
+  /* ---- events ---- */
+  .event{border-left:2px solid var(--line); padding:2px 0 2px 14px; margin:0 0 10px; color:var(--dim); font-size:.92rem}
+  .event b{color:var(--ink); font-weight:600}
+  .event .to{color:var(--ink)}
+  footer{margin-top:44px; border-top:1px solid var(--line); padding-top:16px; color:var(--dim); font-size:.85rem}
+  footer a{color:var(--purple2)}
+  .empty{color:var(--dim); border:1px dashed var(--line); border-radius:12px; padding:14px 16px}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="cover">
+    <div class="kicker">NayaNET · Mission</div>
+    <h1 class="title">The Living List</h1>
+    <p class="lede">Everything the team is doing, in one ranked order — what's being worked on
+      right now, what's proven done, what's blocked and why, and what needs Shawn's hands.
+      This page reads the live registry. Nobody edits it by hand.</p>
+    <div class="fresh" id="freshness">Reading the live registry…</div>
+  </div>
+
+  <div class="stale-banner" id="staleBanner" role="alert"></div>
+
+  <div class="error-panel" id="errorPanel" role="alert">
+    <h2>The registry could not be read</h2>
+    <div id="errorText">Nothing on this page is current. The list itself is fine — this
+      view just can't reach it right now.</div>
+    <button class="retry" id="retryBtn" type="button">Try again</button>
+  </div>
+
+  <div id="content"></div>
+
+  <footer>
+    Source: the Living List registry, republished by the state-core every 10 minutes.
+    Founded as <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2953">THE LIST (#2953)</a>;
+    the team coordinates on <a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">board #2793</a>.
+    A “DONE+PROVEN” row cannot exist without its proof link — the registry refuses it.
+  </footer>
+</div>
+
+<script>
+"use strict";
+/* ================= CONFIG — the only lines a deploy ever touches ================= */
+var DATA_URL = "https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/live/mission-state/WORK-ITEMS.json";
+var REFRESH_MS = 60 * 1000;      // re-read the registry every minute
+var STALE_MS   = 25 * 60 * 1000; // publisher ticks every 10 min; >25 min old = loud STALE
+/* ================================================================================= */
+
+function esc(s){
+  return String(s == null ? "" : s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+function isUrl(s){ return typeof s === "string" && /^https:\/\/\S+$/.test(s); }
+function fmtUTC(iso){
+  var d = new Date(iso);
+  if (isNaN(d.getTime())) return String(iso || "unknown");
+  function p(n){ return (n < 10 ? "0" : "") + n; }
+  return d.getUTCFullYear() + "-" + p(d.getUTCMonth()+1) + "-" + p(d.getUTCDate())
+       + " " + p(d.getUTCHours()) + ":" + p(d.getUTCMinutes()) + " UTC";
+}
+function ageText(ms){
+  if (ms < 0) ms = 0;
+  var m = Math.floor(ms / 60000);
+  if (m < 1) return "under a minute ago";
+  if (m < 60) return m + (m === 1 ? " minute ago" : " minutes ago");
+  var h = Math.floor(m / 60);
+  return h + (h === 1 ? " hour ago" : " hours ago");
+}
+var STATE_ORDER = ["NEEDS SHAWN","BLOCKED","IN PROGRESS","CLAIMED","VERIFYING","DONE+PROVEN","QUEUED"];
+var SECTIONS = [
+  { key:"needs",    title:"Needs your hands, Shawn", states:["NEEDS SHAWN"] },
+  { key:"blocked",  title:"Blocked",                 states:["BLOCKED"] },
+  { key:"working",  title:"Being worked on now",     states:["IN PROGRESS","CLAIMED"] },
+  { key:"verifying",title:"Verifying",               states:["VERIFYING"] },
+  { key:"done",     title:"Done — with proof",       states:["DONE+PROVEN"] },
+  { key:"queued",   title:"Queued, in order",        states:["QUEUED"] }
+];
+function stateClass(state, lawBroken){
+  if (lawBroken) return "s-law";
+  switch(state){
+    case "NEEDS SHAWN": return "s-needs";
+    case "BLOCKED": return "s-blocked";
+    case "IN PROGRESS": return "s-working";
+    case "CLAIMED": return "s-claimed";
+    case "VERIFYING": return "s-verifying";
+    case "DONE+PROVEN": return "s-done";
+    default: return "s-queued";
+  }
+}
+function lawProblem(item){
+  if (item.state === "DONE+PROVEN" && !isUrl(item.proof))
+    return "Registry law violated: marked DONE+PROVEN without a resolving proof link — shown as UNVERIFIED.";
+  if (item.state === "BLOCKED" && !(item.blocker && item.blocker_owner))
+    return "Registry law violated: BLOCKED without a named blocker and owner.";
+  return null;
+}
+function itemHTML(item){
+  var law = lawProblem(item);
+  var h = '<article class="item ' + stateClass(item.state, !!law) + '" data-program="' + esc(item.program || "") + '">';
+  h += '<div class="top"><span class="rank">' + esc(item.rank) + '</span>'
+     + '<h3>' + esc(item.title) + '</h3>'
+     + '<span class="state">' + esc(law ? "UNVERIFIED" : item.state) + '</span></div>';
+  var meta = [];
+  if (item.owner) meta.push("Owner: <b>" + esc(item.owner) + "</b>");
+  if (item.program) meta.push(esc(item.program));
+  if (item.pr && isUrl("https://github.com/SoulSchoolAcademy/NayaPOWER/pull/" + item.pr))
+    meta.push('<a href="https://github.com/SoulSchoolAcademy/NayaPOWER/pull/' + esc(item.pr)
+      + '" style="color:var(--purple2)">PR #' + esc(item.pr) + "</a>"
+      + (item.pr_state ? " (" + esc(item.pr_state) + ")" : ""));
+  if (item.last_moved_at) meta.push("last moved " + esc(fmtUTC(item.last_moved_at)));
+  if (meta.length) h += '<div class="meta">' + meta.join("<span>·</span> ") + "</div>";
+  if (item.state === "BLOCKED" && item.blocker)
+    h += '<div class="blockerbox"><b>Blocked:</b> ' + esc(item.blocker)
+       + (item.blocker_owner ? '<br><b>Unblock owner:</b> ' + esc(item.blocker_owner) : "") + "</div>";
+  if (item.note) h += '<p class="note">' + esc(item.note) + "</p>";
+  if (item.state === "DONE+PROVEN" && isUrl(item.proof))
+    h += '<div class="proof">Proof: <a href="' + esc(item.proof) + '">' + esc(item.proof) + "</a></div>";
+  if (item.verified_by) h += '<div class="verified">Verified by ' + esc(item.verified_by) + "</div>";
+  var flags = [];
+  if (law) flags.push('<span class="flag law">⚠ ' + esc(law) + "</span>");
+  if (item.stalled) flags.push('<span class="flag stalled">⚠ STALLED — no movement for 2h+</span>');
+  (item.drift || []).forEach(function(d){ flags.push('<span class="flag drift">drift: ' + esc(d) + "</span>"); });
+  if (flags.length) h += '<div class="flags">' + flags.join("") + "</div>";
+  h += "</article>";
+  return h;
+}
+function countsFrom(items){
+  var c = {};
+  STATE_ORDER.forEach(function(s){ c[s] = 0; });
+  items.forEach(function(i){ if (c[i.state] !== undefined) c[i.state]++; });
+  return c;
+}
+function buildHTML(data, nowMs, programFilter){
+  var items = (data.items || []).slice().sort(function(a,b){ return a.rank - b.rank; });
+  if (programFilter && programFilter !== "All")
+    items = items.filter(function(i){ return (i.program || "").indexOf(programFilter) === 0; });
+  var genMs = Date.parse(data.generated_utc || "");
+  var age = isNaN(genMs) ? null : (nowMs - genMs);
+  var stale = (age === null || age > STALE_MS);
+  var counts = countsFrom(data.items || []);
+  var h = "";
+
+  /* freshness line */
+  var fresh;
+  if (age === null)
+    fresh = '<span class="dot stale"></span><span>Freshness <b>unknown</b> — the publisher\'s timestamp is missing. Treat this page as stale.</span>';
+  else
+    fresh = '<span class="dot' + (stale ? " stale" : "") + '"></span>'
+      + '<span>State published <b>' + esc(fmtUTC(data.generated_utc)) + '</b> · ' + esc(ageText(age)) + '</span>'
+      + '<span>Publisher: state-core (every 10 min)</span>'
+      + '<span>' + items.length + ' items shown</span>';
+  h += '<div data-part="freshness">' + fresh + "</div>";
+
+  /* stale banner */
+  h += '<div data-part="stale" class="' + (stale ? "show" : "") + '">'
+     + (stale ? "<b>STALE —</b> this state is "
+        + (age === null ? "of unknown age" : esc(ageText(age)).replace(" ago","") + " old")
+        + ". The publisher has missed its cycle. Do not read this as “now”." : "")
+     + "</div>";
+
+  /* counts strip (recomputed from the rows themselves; publisher summary cross-checked) */
+  var chips = "";
+  STATE_ORDER.forEach(function(s){
+    chips += '<span class="count"><b>' + counts[s] + "</b>" + esc(s) + "</span>";
+  });
+  var pubCounts = data.counts || {};
+  var mismatch = STATE_ORDER.some(function(s){ return pubCounts[s] !== undefined && pubCounts[s] !== counts[s]; });
+  h += '<div data-part="counts" class="counts">' + chips + "</div>";
+  if (mismatch)
+    h += '<p class="note">⚠ The row counts above are recomputed from the items themselves and '
+       + "differ from the publisher's summary — the rows win.</p>";
+
+  /* up next: the working edge — top open items in rank order */
+  var open = (data.items || []).filter(function(i){ return i.state !== "DONE+PROVEN"; })
+    .sort(function(a,b){ return a.rank - b.rank; }).slice(0, 5);
+  if (!programFilter || programFilter === "All"){
+    h += '<section><h2>Up next <span class="n">— the top of the queue</span></h2><div class="upnext">'
+       + open.map(itemHTML).join("") + "</div></section>";
+  }
+
+  /* state sections, rank order inside each */
+  SECTIONS.forEach(function(sec){
+    var rows = items.filter(function(i){ return sec.states.indexOf(i.state) >= 0; });
+    h += '<section data-section="' + sec.key + '"><h2>' + esc(sec.title)
+       + ' <span class="n">(' + rows.length + ")</span></h2>";
+    h += rows.length ? rows.map(itemHTML).join("") : '<div class="empty">Nothing here right now.</div>';
+    h += "</section>";
+  });
+
+  /* recent movement — the completions stream */
+  var events = (data.events || []).slice(0, 10);
+  if (events.length && (!programFilter || programFilter === "All")){
+    h += '<section><h2>Recent movement</h2>';
+    events.forEach(function(e){
+      h += '<div class="event"><b>' + esc(e.id) + "</b> — " + esc(e.title) + "<br>"
+         + (e.from ? esc(e.from) + " → " : "entered as ")
+         + '<span class="to">' + esc(e.to) + "</span> · " + esc(fmtUTC(e.at)) + "</div>";
+    });
+    h += "</section>";
+  }
+  return h;
+}
+function errorHTML(err){
+  return '<div data-part="freshness"><span class="dot stale"></span><span>Freshness <b>unknown</b> — the registry could not be read.</span></div>'
+    + '<div data-part="stale" class="show"><b>NOT CURRENT —</b> the live registry could not be read ('
+    + esc(err && err.message ? err.message : err) + "). Nothing below is shown, because showing old rows as if they were current would be a lie.</div>"
+    + '<div data-part="counts" class="counts"></div>';
+}
+
+/* ---- browser wiring (skipped when this file is loaded by the test harness) ---- */
+var currentFilter = "All", lastData = null;
+function paint(html){
+  var app = document.getElementById("content");
+  var tmp = document.createElement("div");
+  tmp.innerHTML = html;
+  var fresh = tmp.querySelector('[data-part="freshness"]');
+  var stale = tmp.querySelector('[data-part="stale"]');
+  if (fresh) document.getElementById("freshness").innerHTML = fresh.innerHTML;
+  var banner = document.getElementById("staleBanner");
+  if (stale){
+    banner.className = "stale-banner" + (stale.className.indexOf("show") >= 0 ? " show" : "");
+    banner.innerHTML = stale.innerHTML;
+  }
+  app.innerHTML = html.replace(/<div data-part="freshness">[\s\S]*?<\/div>/, "")
+                        .replace(/<div data-part="stale"[\s\S]*?<\/div>/, "");
+  paintFilters();
+}
+function paintFilters(){
+  var bar = document.getElementById("filters");
+  if (!bar || !lastData) return;
+  var programs = ["All"];
+  (lastData.items || []).forEach(function(i){
+    var p = (i.program || "").replace(/ (Wave \d|Queued)$/, "");
+    if (p && programs.indexOf(p) < 0) programs.push(p);
+  });
+  bar.innerHTML = programs.map(function(p){
+    return '<button type="button" class="chip" data-prog="' + esc(p) + '" aria-pressed="'
+      + (currentFilter === p ? "true" : "false") + '">' + esc(p) + "</button>";
+  }).join("");
+  Array.prototype.forEach.call(bar.querySelectorAll(".chip"), function(btn){
+    btn.addEventListener("click", function(){
+      currentFilter = btn.getAttribute("data-prog");
+      if (lastData) paint(buildHTML(lastData, Date.now(), currentFilter));
+    });
+  });
+}
+function load(){
+  return fetch(DATA_URL, { cache: "no-store" })
+    .then(function(r){ if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function(data){
+      lastData = data;
+      document.getElementById("errorPanel").className = "error-panel";
+      paint(buildHTML(data, Date.now(), currentFilter));
+      return data;
+    })
+    .catch(function(err){
+      document.getElementById("errorPanel").className = "error-panel show";
+      document.getElementById("errorText").textContent =
+        "Nothing on this page is current. The registry read failed (" + (err && err.message ? err.message : err) + ").";
+      paint(errorHTML(err));
+      return null;
+    });
+}
+if (typeof document !== "undefined" && document.getElementById && document.getElementById("content")){
+  var fbar = document.createElement("div");
+  fbar.className = "filters"; fbar.id = "filters";
+  document.getElementById("content").parentNode.insertBefore(fbar, document.getElementById("content"));
+  document.getElementById("retryBtn").addEventListener("click", load);
+  load();
+  setInterval(load, REFRESH_MS);
+}
+</script>
+</body>
+</html>
