@@ -1,6 +1,6 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-23 17:03 UTC_
+_Last updated: 2026-10-23 17:15 UTC_
 
 ## Actions: verified, not claimed
 
@@ -443,7 +443,7 @@ _Last updated: 2026-10-23 17:03 UTC_
 - **seat-stall-20261023-0533:** 2 actions, avg 8.8/10
 - **seat-stall-20261023-0637:** 1 actions, avg 9.0/10
 - **lane-scorer-20261023-0820:** 2 actions, avg 9.4/10
-- **seat-stall-20261023-0909:** 1 actions, avg 9.0/10
+- **gap-lane-scorer-20261023-0820:** 1 actions, avg 9.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
