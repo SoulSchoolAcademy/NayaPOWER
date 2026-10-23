@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 18:24 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4863,6 +4863,12 @@ _Last updated: 2026-10-23 18:24 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED (2026-10-22 ~05:21 PDT tick): deliverable hidden_files/surge-b/retrieval-auth-gate-testflag-harness-review-t1278.md exists at the receipt's exact pinned sha256 2ebc28161aa4ac588481da045341aa804a98bb4f60740b6f52006943da2b179f (8,118 B, byte-identical, independent fresh read). Receipt internally consistent: 7 pre-registered falsifiers (regis
 
+### ✅ t1277-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Retrieval-authorization-gate migration-readiness dossier (read-only, zero wiring)
+
+**Evidence:** VERIFIED on live bytes by independent scorer: dossier hidden_files/retrieval-auth-gate-migration-readiness-t1277.md sha256 c738ebed70b0c2ba574399df2214b355df1c832694d7b0afa2e5725ee441b612 EXACT match to receipt pin; enforcer tools/retrieval_authorization_gate.py sha256 fbe6ee29482fdc57... matches receipt's fbe6ee29... pin (zero drift); smart_note_v
+
 ### ✅ t1277 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** retrieval-authorization-gate migration-readiness dossier (byte-pinned ask-prep packet for Shawn's word)
@@ -7345,6 +7351,14 @@ _Last updated: 2026-10-23 18:24 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: script sha256 6367499e... and results f8a84ad1... match the receipt byte-for-byte on disk; report auto-retrieval/semantic-arm-hybrid-t1011.md exists (1ccaf806...); rare-set signature 46e8bebb17b17a06 in report. Clears 9.5 because every done-criterion of the brief is met on verified bytes: honest prereg-before-run of a single pri
 
+### ✅ t1002 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2399 pin-exact merge-readiness diagnosis (Code Health)
+
+**Receipt:** `twelve-lane-receipts/t1002-lane9.md`
+
+**Evidence:** ARTIFACTS: receipt's action-time claims are pin-exact and falsifiable (PR #2399 head 4776be06 == branch head at action time; run/job IDs listed; gate script replicated exactly over 39 kernel files yielding the single hit kernel/decision_principle.py:218 class DecisionEngine). Pin rotted over 12 days (PR head now a545f110, branch ref gone) - expecte
+
 ### ✅ t1002-lane9 — Team 9, Naya 4 (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** PR #2399 follow-up: re-pinned 4776be06, PASS-side proof question, CI failure table
@@ -7374,6 +7388,14 @@ _Last updated: 2026-10-23 18:24 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1002-lane9.md`
 
 **Evidence:** Dispatcher verified: receipt exists. (1) Fresh pin: head == branch == 4776be062822c09c9a346acb1c33c6e0705ec03a — no movement since t992; pin block still byte-exact. (2) PASS-side proof: NO — only one receipt-gate run ever (38185462136, failed 16:45:14, 96s pre-pin); re-run-now still the highest-value action. (3) New post-pin runs classified: worker
+
+### ✅ t1002 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** conflict-flagging 2x2 calibration gate (honest NO-GO, 8 arms saved)
+
+**Receipt:** `twelve-lane-receipts/t1002-lane2.md`
+
+**Evidence:** ARTIFACTS VERIFIED: lane2-t1002-adv/preregistration.md, arm-key.md, dry-run-calibration.md, and decisions/20261012T004432Z-next-t1002-lane-2--run-calibration-dry-run--r.json all exist locally. Score 8.0 REWORK: decide.py on the real fork (fixed t992's standing-order deviation), pre-reg sealed before any arm with zero post-seal edits, mechanical go/
 
 ### ✅ t1002-lane2 — Team 2, Naya 4 (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -35644,6 +35666,18 @@ _Last updated: 2026-10-23 18:24 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261023-1116 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 11:16 PDT — 30 unclaimed briefs evaluated, zero claimable by this seat; queue untouched
+
+**Evidence:** VERIFIED: 30 unclaimed brief-*.md in brief-queue/ (counted 30), zero brief-tNNNN-* mission briefs (grep 0 hits); prior stall receipt seat-stall-20261023-1014.md mtime 17:15:20Z, this receipt mtime 18:17:17Z (~62 min — outside the 60-min stall cap, cap respected); lane-feed tail still the 2026-10-23 08:55 PDT sign-out, nothing newer — both receipt c
+
+### ✅ seat-stall-20261023-1014 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 10:14 PDT — 30 unclaimed briefs evaluated, zero claimable by this seat; queue untouched
+
+**Evidence:** VERIFIED: 30 unclaimed brief-*.md in brief-queue/ (counted 30), zero brief-tNNNN-* mission briefs (grep 0 hits); prior stall receipt seat-stall-20261023-0909.md mtime 16:11:09Z, this receipt mtime 17:15:20Z (~64 min — outside the 60-min stall cap, cap respected); lane-feed tail is the 2026-10-23 08:55 PDT sign-out (brief-gap-lane-scorer-20261023-08
 
 ### ✅ seat-stall-20261023-1116 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
