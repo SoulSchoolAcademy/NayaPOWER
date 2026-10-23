@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T03:15:08+00:00",
+ "generated_utc": "2026-10-23T04:15:11+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,13 +133,25 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 3000,
+     "title": "Naya/mission state",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000",
+     "draft": false
+    },
+    {
+     "number": 2998,
+     "title": "Mirror Report: current ten-by-ten reassessment and execution order",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2998",
+     "draft": true
+    },
+    {
      "number": 2981,
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
      "draft": false
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 3
   },
   {
    "id": "wire",
@@ -405,6 +417,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 3,
- "unassigned_prs": 1
+ "open_pr_total": 5,
+ "unassigned_prs": 3
 }
