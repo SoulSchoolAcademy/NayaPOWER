@@ -53,6 +53,31 @@ test('grouping + categories: every list lands in exactly one category', () => {
   assert.deepEqual(SL.categoriesOfLists(lists), ['Events', 'General', 'People']);
 });
 
+test('REGRESSION (cure round 4) — hostile category names cannot break grouping', () => {
+  // validateList accepts these names, so the grouping the Lists room
+  // renders with must survive them. On a plain {} accumulator,
+  // 'constructor' read back as the inherited function and threw;
+  // '__proto__' retargeted the prototype instead of grouping.
+  for (const hostile of ['__proto__', 'constructor', 'hasOwnProperty', 'toString']) {
+    assert.equal(SL.validateList({ title: 't', category: hostile }).ok, true,
+      `validateList still accepts ${hostile} — grouping must cope`);
+    const lists = [{ title: 'x', category: hostile }, { title: 'y', category: 'Events' }];
+    const groups = SL.groupListsByCategory(lists);
+    assert.ok(Array.isArray(groups[hostile]), `group for ${hostile} is a real array`);
+    assert.equal(groups[hostile].length, 1);
+    assert.equal(groups[hostile][0].title, 'x');
+    assert.deepEqual(SL.categoriesOfLists(lists), ['Events', hostile].sort());
+  }
+  // Repeated hostile keys accumulate into the same own group, and the
+  // grouping leaves Object.prototype untouched.
+  const two = SL.groupListsByCategory([
+    { title: 'a', category: 'constructor' }, { title: 'b', category: 'constructor' },
+  ]);
+  assert.equal(two.constructor.length, 2);
+  assert.equal({}.polluted, undefined);
+  assert.equal(Object.prototype.polluted, undefined);
+});
+
 test('ordering + reorder plan: position order is stable, swaps are exact', () => {
   const items = [
     { id: 'c', position: 2, created_at: '2026-10-22T00:00:03Z' },

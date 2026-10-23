@@ -1604,12 +1604,30 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
+      "version": "20261022210000",
+      "name": "booking_v1",
+      "path": "supabase/migrations/20261022210000_booking_v1.sql",
+      "sha256": "fa2029a7f8a6693f63e06f06c9f0540d62f95e144bc606990c5edb8606a6a086",
+      "statement_count": 52,
+      "bytes": 18023,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
       "version": "20261022211500",
       "name": "object_links_v1",
       "path": "supabase/migrations/20261022211500_object_links_v1.sql",
       "sha256": "39f31a6e3eaf5f92551c03970a1953bbd532f83cb773727e86fcb384793acab2",
       "statement_count": 32,
       "bytes": 11224,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022213000",
+      "name": "conversational_intake_v1",
+      "path": "supabase/migrations/20261022213000_conversational_intake_v1.sql",
+      "sha256": "de8c6663e3d8f3308c74264c518666b1ccb17901a1a71525aa2da4cd6a9bec47",
+      "statement_count": 11,
+      "bytes": 3187,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {

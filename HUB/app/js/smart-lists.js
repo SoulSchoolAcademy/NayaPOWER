@@ -93,7 +93,14 @@
   }
 
   function groupListsByCategory(lists) {
-    var groups = {};
+    // Null-prototype map: category names are owner-chosen text and
+    // validateList accepts names like '__proto__', 'constructor' or
+    // 'toString'. On a plain {} those keys resolve through
+    // Object.prototype — 'constructor' reads back as the inherited
+    // function (truthy, no .push) and throws; '__proto__' assignment
+    // silently retargets the prototype instead of creating a group.
+    // Object.create(null) makes every category an own, inert key.
+    var groups = Object.create(null);
     (lists || []).forEach(function (l) {
       var key = l.category || DEFAULT_CATEGORY;
       if (!groups[key]) groups[key] = [];
