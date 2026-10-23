@@ -63,9 +63,26 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
-      "depends_on": []
+      "depends_on": [],
+      "human_journey": "Open correct room and return",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Network home, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for hub in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "personal",
@@ -94,12 +111,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "connections",
         "settings"
-      ]
+      ],
+      "human_journey": "Authenticated profile update persists",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Personal identity, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for personal in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "business",
@@ -128,12 +162,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "mail",
         "projects"
-      ]
+      ],
+      "human_journey": "Authorized organization update persists",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Business operations, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for business in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "community",
@@ -162,12 +213,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "spaces",
         "feed"
-      ]
+      ],
+      "human_journey": "Permitted member posts one event",
+      "naya_journey": "Under authenticated Smart Spaces #1891 scope: cold-orient to Community experience, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for community in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "dashboard",
@@ -196,13 +264,30 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "projects",
         "today",
         "reports"
-      ]
+      ],
+      "human_journey": "Current action updates real metric",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Personal operating cockpit, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for dashboard in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "today",
@@ -231,12 +316,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "feed",
         "projects"
-      ]
+      ],
+      "human_journey": "Current authorized event produces next action",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Daily intelligence, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for today in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "reports",
@@ -265,12 +367,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "projects",
         "ledger"
-      ]
+      ],
+      "human_journey": "Open current evidence-linked report",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Outcome and progress reports, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for reports in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "projects",
@@ -299,14 +418,31 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "project-state",
         "project-14q",
         "spaces",
         "ledger"
-      ]
+      ],
+      "human_journey": "Human and Naya read same canonical state",
+      "naya_journey": "Under authenticated Project Intelligence #3012 / Team Board #2793 scope: cold-orient to Project Intelligence Hub, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for projects in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "intelligence",
@@ -335,12 +471,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "projects",
         "library"
-      ]
+      ],
+      "human_journey": "Retrieve timely proven lesson",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Intelligence context, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for intelligence in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "mail",
@@ -369,12 +522,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "personal",
         "connections"
-      ]
+      ],
+      "human_journey": "Authenticated A and B reply, unrelated C denied",
+      "naya_journey": "Under authenticated Security & Flow #2823 scope: cold-orient to Private Smart Mail, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for mail in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "spaces",
@@ -403,12 +573,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "projects",
         "connections"
-      ]
+      ],
+      "human_journey": "Two approved members exchange scoped note",
+      "naya_journey": "Under authenticated Smart Spaces #1891 scope: cold-orient to Collaborative Smart Spaces, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for spaces in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "lists",
@@ -437,11 +624,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "library"
-      ]
+      ],
+      "human_journey": "Save list and re-read safely",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Smart Lists, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for lists in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "connections",
@@ -470,11 +674,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "personal"
-      ]
+      ],
+      "human_journey": "Find T Naya Tree with full name",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Verified relationships, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for connections in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "growth",
@@ -503,11 +724,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "join"
-      ]
+      ],
+      "human_journey": "Invited person registers with valid attribution",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Growth and invitations, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for growth in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "ledger",
@@ -536,11 +774,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "projects"
-      ]
+      ],
+      "human_journey": "Open a real verified source receipt",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Proof ledger, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for ledger in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "library",
@@ -569,11 +824,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "smartnote"
-      ]
+      ],
+      "human_journey": "Retrieve note and apply it later",
+      "naya_journey": "Under authenticated Smart Notes #2881 scope: cold-orient to Intelligent Library, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for library in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "feed",
@@ -602,11 +874,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "hub"
-      ]
+      ],
+      "human_journey": "Locate new authorized event",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Shared activity feed, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for feed in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "settings",
@@ -635,11 +924,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "personal"
-      ]
+      ],
+      "human_journey": "Change preference and re-read",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to User privacy/preferences, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for settings in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "booking",
@@ -668,11 +974,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "personal"
-      ]
+      ],
+      "human_journey": "Sandbox availability to cancel",
+      "naya_journey": "Under authenticated Hub & Interfaces #2882 scope: cold-orient to Booking action, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for booking in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "payments",
@@ -701,12 +1024,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "business",
         "ledger"
-      ]
+      ],
+      "human_journey": "Sandbox payment and rollback",
+      "naya_journey": "Under authenticated Security & Flow #2823 scope: cold-orient to Payments action, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for payments in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "join",
@@ -735,11 +1075,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "personal"
-      ]
+      ],
+      "human_journey": "Complete permitted identity registration",
+      "naya_journey": "Under authenticated Activation #2880 scope: cold-orient to Citizen invitation, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for join in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "factory",
@@ -768,12 +1125,29 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "projects",
         "library"
-      ]
+      ],
+      "human_journey": "Intent creates persistent functioning app",
+      "naya_journey": "Under authenticated Smart Factory / #2793 scope: cold-orient to Smart Factory, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for factory in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "smartnote",
@@ -802,11 +1176,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "library"
-      ]
+      ],
+      "human_journey": "Cold agent finds and uses note",
+      "naya_journey": "Under authenticated Smart Notes #2881 scope: cold-orient to Smart Note link, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for smartnote in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "project-state",
@@ -835,11 +1226,28 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "projects"
-      ]
+      ],
+      "human_journey": "Authenticated current state available in machine form",
+      "naya_journey": "Under authenticated Project Intelligence #3012 / Team Board #2793 scope: cold-orient to Machine project state, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for project-state in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     },
     {
       "id": "project-14q",
@@ -868,11 +1276,52 @@
         "freshness_at": null,
         "positive_real_user_test": null,
         "adversarial_negative_test": null,
-        "governed_release_approval": null
+        "governed_release_approval": null,
+        "experience_proof": {
+          "human_task_success": null,
+          "human_experience_score": null,
+          "naya_task_success": null,
+          "naya_experience_score": null,
+          "network_continuity_verified": null,
+          "useful_outcome_measured": null,
+          "efficiency_vs_baseline_measured": null,
+          "human_outcome_receipt": null,
+          "naya_handoff_receipt": null,
+          "network_event_receipt": null,
+          "outcome_value_measurement": null,
+          "cost_latency_measurement": null
+        }
       },
       "depends_on": [
         "project-state"
-      ]
+      ],
+      "human_journey": "Cold Naya answers 14 questions and safely acts",
+      "naya_journey": "Under authenticated Project Intelligence #3012 / Team Board #2793 scope: cold-orient to Machine 14-question orientation, retrieve proof and LAW, perform or safely decline one permitted task, record a verified outcome and hand off.",
+      "network_continuity_journey": "Show one source-linked event for project-14q in every relevant permitted Hub/Project/Space/Dashboard context without duplication or leak; reject stale and unauthorized context."
     }
-  ]
+  ],
+  "ten_star_experience_contract": {
+    "intent": "NayaNET is an intelligent network, not a collection of attractive screens. 10/10 means an exceptional end-to-end experience for human users AND authorized Nayas, excellent design and true functionality, safe interconnection, and the maximum verified useful value per resource consumed.",
+    "scope": "Apply per human, Naya, page, Smart App, template, Space, system, task, and complete cross-room journey; component excellence alone cannot certify network excellence.",
+    "objective": "Maximize independently verified useful human/community outcome and intelligence reuse per authorized action, unit time, and compute cost, under hard harm, consent, privacy, identity, permission and reliability constraints.",
+    "essential_human_test": "A real permitted person understands the promise, succeeds at a useful task, knows current truth/proof, experiences exceptional accessible design, and can continue or recover with little unnecessary effort.",
+    "essential_naya_test": "A cold independently authenticated Naya can orient, retrieve applicable intelligence, understand LAW and scope, decide and execute one permitted valuable action, verify/recover and hand off without reconstructing chat.",
+    "essential_network_test": "One governed event appears as consistent permitted context across Dashboard, Project Intelligence, Space, Feed, Mail notification (when private-mail qualified), Reports, Library or applicable Rooms, without copies, leaks, stale status or false green.",
+    "measurement": "Record before/after human task completion, error/recovery, time/effort, actual useful outcome, Naya task/continuation, cost/latency, freshness, cross-room event integrity, and genuine user-reported experience. Idle polling, HTTP 200 and raw action count do not count as value.",
+    "targets": {
+      "human_experience_out_of_10": 10,
+      "naya_experience_out_of_10": 10,
+      "minimum_for_ship_review_each": 9.5,
+      "proven_continuity_required": true,
+      "measured_value_and_efficiency_required": true
+    },
+    "hard_gates": [
+      "Do No Harm; privacy, consent, LAW and verified human authority",
+      "Full legitimate human and Naya journeys, including adverse cases",
+      "Cross-room source consistency and failure recovery",
+      "Distinct independently authenticated PROVE/VERIFY evidence at exact deployed revision",
+      "Unmeasured or insufficiently evidenced = UNKNOWN; no averaging away a failing hard gate"
+    ],
+    "calibration": "10/10 is an evidence-backed acceptance against explicit tasks and known constraints, not a claim that future breakthroughs cannot improve the network."
+  }
 }
