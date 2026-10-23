@@ -42,10 +42,43 @@ drift from it. Sources (the canonical set, MANIFEST.md):
                                    by construction no rule in it can restyle
                                    anything the shell already defines.
 
-The acceptance equation is enforced mechanically on every run:
+  * engine/templates-registry.json + engine/templates/ -- the ONE template
+                                   registry and the real template bases
+                                   (Factory Contract-Home step 5). The page
+                                   carries the template grid twice; both
+                                   grids are regenerated from the registry so
+                                   the shelf cannot drift from it either. A
+                                   card is generated only for a registry
+                                   template whose base file exists -- the
+                                   registry's own `missing` entries (today,
+                                   smart-list: no base) get NO card, and a
+                                   registry template whose base file vanishes
+                                   fails the build loud. Card presentation
+                                   (color, gem, brand, nut, detail) is
+                                   harvested from the shell into the same
+                                   presentation map (template_cards);
+                                   registry templates the current page does
+                                   not show carry a `template_overrides`
+                                   entry with its reason, exactly like piece
+                                   overrides. Each generated card is annotated
+                                   in the step-4 data-attribute dialect:
+                                   data-base names the registry base file and
+                                   data-parts lists the canonical pieces the
+                                   base's own bytes name (piece ids, slash
+                                   rosters expanded) or embed verbatim --
+                                   computed from the base at generation time,
+                                   so the annotation grows as parts are
+                                   harvested into a template, and a part that
+                                   is not canonical in the store fails loud
+                                   (no fabricated part lists).
+
+The acceptance equations are enforced mechanically on every run:
 
   count(canonical in index) == count(canonical in store) ==
   count(piece cards in the generated page)
+
+  count(templates in registry) == count(template bases on disk) ==
+  count(template cards in EACH generated grid)
 
 and every card carries its store piece's real html verbatim plus its dual
 labels (human name + descriptor on the face; ai_label in the card's data
@@ -53,7 +86,7 @@ attributes, machine-readable where the piece stands).
 
 Usage:
   generate-factory-page.py [--shell P] [--store P] [--index P] [--map P]
-                           [--out P]        # regenerate the page
+                           [--registry P] [--out P]   # regenerate the page
   generate-factory-page.py --check ...    # exit 0 iff --out is byte-identical
                                           # to a fresh generation
   generate-factory-page.py --harvest ...  # rebuild the presentation map from
@@ -73,6 +106,7 @@ DEFAULT_MAP = ENGINE / "factory-page-presentation.json"
 DEFAULT_STORE = CANON / "pieces.json"
 DEFAULT_INDEX = CANON / "CANONICAL-PIECE-INDEX.json"
 DEFAULT_OUT = CANON / "factory-page.generated.html"
+DEFAULT_REGISTRY = ENGINE / "templates-registry.json"
 STORE_REPO_PATH = "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
 INDEX_REPO_PATH = "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json"
 
@@ -212,6 +246,215 @@ def harvest(shell_text):
     need(pills_b, "harvest: no board-dialect card found for the pills block")
     return {"rails": rails, "pieces": pieces, "skipped_unparsed": skipped,
             "templates": {"pills_compact": pills_c, "pills_board": pills_b}}
+
+
+# --------------------------------------------------------------------------
+# Step 5: the template shelf, generated from the one registry
+# --------------------------------------------------------------------------
+
+TCARD_OPEN = '<div class="tcard2"'
+TCARD = re.compile(
+    r'<div class="tcard2" data-t="([^"]+)" style="--tc:(#[0-9a-fA-F]{6})">'
+    r'<span class="mini-gem (\w+)" style="--tone:#[0-9a-fA-F]{6}">'
+    r'(<svg .*?</svg>)</span>'
+    r'<div style="flex:1;min-width:0"><b class="tbrand">(.*?)</b>'
+    r'<span class="tnut">(.*?)</span>'
+    r'<div class="tdetail">(.*?)</div></div>'
+    r'<button class="tview" type="button">VIEW</button></div>', re.S)
+PART_REF = re.compile(r'NAYA-([A-Z]+)-(\d+)((?:/\d+)*)')
+
+
+def normalize_template(name):
+    """The registry's own alias rule: lowercase, spaces -> hyphens."""
+    return name.lower().replace(" ", "-")
+
+
+def template_grid_regions(shell_text):
+    """Content spans of the template grids: a <div class="tgrid"> whose first
+    card is a tcard2 (the ADD-ONS grid, whose cards are addoncard, is not a
+    template grid). The page carries the shelf twice and both copies are
+    regenerated; returns [(content_start, content_end), ...] in file order."""
+    regions = []
+    for m in re.finditer(r'<div class="tgrid">', shell_text):
+        start = m.start()
+        i = start + len('<div class="tgrid">')
+        if not shell_text.startswith(TCARD_OPEN, i):
+            continue  # not a template grid (e.g. the ADD-ONS grid)
+        depth, j = 1, i
+        while j < len(shell_text) and depth:
+            nxt_open = shell_text.find("<div", j)
+            nxt_close = shell_text.find("</div>", j)
+            if nxt_close < 0:
+                break
+            if 0 <= nxt_open < nxt_close:
+                depth += 1
+                j = nxt_open + 4
+            else:
+                depth -= 1
+                j = nxt_close + len("</div>")
+        need(depth == 0, "template grid <div> never closes")
+        regions.append((i, j - len("</div>")))
+    need(len(regions) == 2,
+         f"expected exactly 2 template grids in the shell, found "
+         f"{len(regions)} -- the shelf's shape changed; re-harvest and review")
+    return regions
+
+
+def parse_tcard(seg):
+    m = TCARD.fullmatch(seg)
+    if not m:
+        return None
+    name, tc, gem, svg, brand, nut, detail = m.groups()
+    return {"key": normalize_template(name), "tc": tc, "gem": gem,
+            "svg": svg, "brand": brand, "nut": nut, "detail": detail}
+
+
+def harvest_templates(shell_text):
+    """Per-card presentation for the template shelf, from the shell. Both
+    grids must be byte-identical and tile exactly into parsed cards."""
+    regions = template_grid_regions(shell_text)
+    contents = [shell_text[a:b] for a, b in regions]
+    need(contents[0] == contents[1],
+         "the shell's two template grids differ -- the shelf has already "
+         "drifted; reconcile the shell before harvesting")
+    cards, order = {}, []
+    segs = contents[0].split("\n")
+    for seg in segs:
+        c = parse_tcard(seg)
+        need(c is not None,
+             f"template card does not parse to the harvested grammar: "
+             f"{seg[:80]}...")
+        name = re.match(r'<div class="tcard2" data-t="([^"]+)"', seg).group(1)
+        need(name not in cards, f"duplicate template card {name} in the grid")
+        cards[name] = c
+        order.append(name)
+    need("\n".join(segs) == contents[0], "grid does not tile into cards")
+    return {"template_order": order, "template_cards": cards}
+
+
+def load_registry(registry_path):
+    """The one registry + proof every templates entry has a real base. The
+    base resolves as the registry's own `file` field, relative to the
+    registry's folder (engine/)."""
+    reg = json.loads(pathlib.Path(registry_path).read_text(encoding="utf-8"))
+    need(isinstance(reg.get("templates"), dict) and reg["templates"],
+         "registry shape not recognized (no templates table)")
+    root = pathlib.Path(registry_path).resolve().parent
+    for key, e in sorted(reg["templates"].items()):
+        f = e.get("file")
+        need(f, f"registry template {key} names no base file")
+        need((root / f).is_file(),
+             f"registry template {key} has NO base at {f} -- no card without "
+             "a base; build the base or move the key to the registry's "
+             "missing table")
+    return reg
+
+
+def base_parts(base_text, store, canon):
+    """The canonical pieces a base carries, from the base's own bytes: piece
+    ids it names (slash rosters like NAYA-BTN-023/024/025/021 expanded) union
+    canonical pieces whose store html it embeds verbatim. Any part that is
+    not canonical in the store fails loud -- no fabricated part lists."""
+    named = set()
+    for m in PART_REF.finditer(base_text):
+        named.add(f"NAYA-{m.group(1)}-{m.group(2)}")
+        for part in m.group(3).split("/"):
+            if part:
+                named.add(f"NAYA-{m.group(1)}-{part}")
+    embedded = {pid for pid in canon
+                if store[pid]["html"] and store[pid]["html"] in base_text}
+    parts = named | embedded
+    unknown = sorted(parts - canon)
+    need(not unknown,
+         f"base names/embeds pieces that are not canonical in the store: "
+         f"{unknown} -- adjudicate them in the store first")
+    return sorted(parts)
+
+
+def resolve_template_shelf(reg, pmap, store, canon, registry_root):
+    """The reconciled shelf: one card per registry template, in the page's
+    own order (harvested cards keep their places; overrides insert after
+    their named anchor). Harvested cards whose key sits in the registry's
+    missing table come OUT -- they are returned as `excluded`, never silent.
+    Returns (offered, excluded): offered entries carry name/key/presentation
+    plus base (the registry file) and parts (censused from the base)."""
+    cards = pmap.get("template_cards")
+    need(cards is not None,
+         "presentation map has no template_cards -- re-run --harvest "
+         "(step 5 generates the template shelf from the registry)")
+    overrides = pmap.get("template_overrides", {})
+    offered, excluded = [], []
+    seen = set()
+    for name in pmap["template_order"]:
+        key = normalize_template(name)
+        if key in reg.get("missing", {}):
+            excluded.append((name, key))
+            continue
+        need(key in reg["templates"],
+             f"shelf card {name} (key {key}) is not in the registry -- the "
+             "registry is the one list; add it there or the card comes out "
+             "by hand, never by drift")
+        need(name in cards, f"{name}: in template_order but not harvested")
+        offered.append({"name": name, "key": key, **cards[name]})
+        seen.add(key)
+    for name, ov in overrides.items():
+        key = normalize_template(name)
+        need(key in reg["templates"],
+             f"template override {name} names no registry template")
+        need(name not in cards,
+             f"template override {name} duplicates a harvested card")
+        need(ov.get("reason"),
+             f"template override {name} carries no reason (addition rule)")
+        entry = {"name": name, "key": key,
+                 **{k: ov[k] for k in ("tc", "gem", "svg", "brand", "nut",
+                                       "detail")}}
+        at = next(i for i, o in enumerate(offered)
+                  if o["name"] == ov["after"])
+        offered.insert(at + 1, entry)
+        seen.add(key)
+    need(seen == set(reg["templates"]),
+         f"offered shelf != registry templates: registry-only "
+         f"{sorted(set(reg['templates']) - seen)}, shelf-only "
+         f"{sorted(seen - set(reg['templates']))} -- every registry "
+         "template gets exactly one card (harvested or override, with its "
+         "reason), and no card exists outside the registry")
+    for o in offered:
+        base_rel = reg["templates"][o["key"]]["file"]
+        base_text = (registry_root / base_rel).read_text(encoding="utf-8")
+        o["base"] = base_rel
+        o["parts"] = base_parts(base_text, store, canon)
+    return offered, excluded
+
+
+def tcard_html(o):
+    attrs = (f' data-base="{esc_attr(o["base"])}"'
+             f' data-parts="{esc_attr(",".join(o["parts"]))}"')
+    return (f'<div class="tcard2" data-t="{o["name"]}" '
+            f'style="--tc:{o["tc"]}"{attrs}>'
+            f'<span class="mini-gem {o["gem"]}" style="--tone:{o["tc"]}">'
+            f'{o["svg"]}</span>'
+            f'<div style="flex:1;min-width:0">'
+            f'<b class="tbrand">{o["brand"]}</b>'
+            f'<span class="tnut">{o["nut"]}</span>'
+            f'<div class="tdetail">{o["detail"]}</div></div>'
+            f'<button class="tview" type="button">VIEW</button></div>')
+
+
+def verify_templates(page, offered):
+    """The step-5 acceptance equation on the generated bytes: each grid
+    carries exactly the offered cards, in order, each annotated with its
+    registry base and its censused parts."""
+    names = re.findall(r'<div class="tcard2" data-t="([^"]+)"', page)
+    expect = [o["name"] for o in offered]
+    need(names == expect * 2,
+         f"template grids do not carry the offered shelf twice in order: "
+         f"{names} vs {expect} x2")
+    for o in offered:
+        frag = (f'data-t="{o["name"]}" style="--tc:{o["tc"]}" '
+                f'data-base="{o["base"]}" '
+                f'data-parts="{",".join(o["parts"])}"')
+        need(page.count(frag) == 2,
+             f"{o['name']}: annotated card header not found in both grids")
 
 
 # --------------------------------------------------------------------------
@@ -427,12 +670,23 @@ def piece_css(store, canon, factory_css, shell_text):
 STYLE_OPEN = '<style data-generated="factory-piece-css">'
 
 
-def build_page(shell_text, store, canon, pmap, factory_css):
+def build_page(shell_text, store, canon, pmap, factory_css, twin):
     pres, rails = resolve_presentations(pmap, canon)
     _, first_rb, s4end = split_step4(shell_text)
     region = "\n".join(railblock_html(r, store, pres, pmap["templates"])
                        for r in rails)
-    page = shell_text[:first_rb] + region + "\n" + shell_text[s4end:]
+    offered, _excluded = twin
+    tcards = "\n".join(tcard_html(o) for o in offered)
+    # Every generated region is located on the ORIGINAL shell, then all
+    # replacements are applied last-to-first so no region can shift another:
+    # the parts shelf keeps step 4's exact span and bytes, and each template
+    # grid's content is swapped for the registry-generated cards.
+    spans = [(first_rb, s4end, region + "\n")]
+    for a, b in template_grid_regions(shell_text):
+        spans.append((a, b, tcards))
+    page = shell_text
+    for a, b, text in sorted(spans, key=lambda s: s[0], reverse=True):
+        page = page[:a] + text + page[b:]
     css_body, css_classes = piece_css(store, canon, factory_css, shell_text)
     if css_body:
         need(page.count("</head>") == 1, "shell must carry exactly one </head>")
@@ -443,6 +697,7 @@ def build_page(shell_text, store, canon, pmap, factory_css):
                  " */\n" + css_body + "\n</style>\n")
         page = page.replace("</head>", style + "</head>", 1)
     verify_page(page, store, canon, pres, css_classes)
+    verify_templates(page, offered)
     return page
 
 
@@ -489,6 +744,7 @@ def main(argv=None):
     ap.add_argument("--map", type=pathlib.Path, default=DEFAULT_MAP)
     ap.add_argument("--out", type=pathlib.Path, default=DEFAULT_OUT)
     ap.add_argument("--css", type=pathlib.Path, default=CANON / "factory.css")
+    ap.add_argument("--registry", type=pathlib.Path, default=DEFAULT_REGISTRY)
     ap.add_argument("--check", action="store_true",
                     help="exit 0 iff --out is byte-identical to a fresh generation")
     ap.add_argument("--harvest", action="store_true",
@@ -501,6 +757,7 @@ def main(argv=None):
 
     if args.harvest:
         h = harvest(shell_text)
+        ht = harvest_templates(shell_text)
         old = {}
         if args.map.exists():
             old = json.loads(args.map.read_text(encoding="utf-8"))
@@ -520,12 +777,15 @@ def main(argv=None):
             "templates": h["templates"],
             "overrides": old.get("overrides", {}),
             "new_rails": old.get("new_rails", []),
+            "template_order": ht["template_order"],
+            "template_cards": ht["template_cards"],
+            "template_overrides": old.get("template_overrides", {}),
         }
         args.map.write_text(json.dumps(pmap, indent=1, ensure_ascii=False) + "\n",
                             encoding="utf-8")
         print(f"generate-factory-page: harvested {len(h['pieces'])} presentations, "
-              f"{len(h['rails'])} rails from shell sha256 {shell_sha[:12]}... "
-              f"-> {args.map}")
+              f"{len(h['rails'])} rails, {len(ht['template_cards'])} template "
+              f"cards from shell sha256 {shell_sha[:12]}... -> {args.map}")
         return 0
 
     try:
@@ -535,12 +795,23 @@ def main(argv=None):
              "shell sha256 != the map's harvested shell "
              f"({shell_sha[:12]}... vs {str(pmap.get('shell_sha256'))[:12]}...) -- "
              "the shell changed; re-run --harvest and review the presentation")
+        reg = load_registry(args.registry)
+        twin = resolve_template_shelf(reg, pmap, store, canon,
+                                      args.registry.resolve().parent)
         factory_css = read(args.css, "factory css").decode("utf-8")
-        page = build_page(shell_text, store, canon, pmap, factory_css)
+        page = build_page(shell_text, store, canon, pmap, factory_css, twin)
     except GenError as e:
         print(f"generate-factory-page: GENERATION FAILED: {e}", file=sys.stderr)
         return 2
 
+    offered, excluded = twin
+    for name, key in excluded:
+        print(f"generate-factory-page: shelf excludes {name} (registry key "
+              f"{key}: in the registry's missing table -- no base, no card)")
+    counts = (f"{len(canon)} canonical == {len(canon)} store == "
+              f"{len(canon)} cards; {len(offered)} registry == "
+              f"{len(offered)} bases == {len(offered)} template cards "
+              "x2 grids")
     data = page.encode("utf-8")
     if args.check:
         if not args.out.exists():
@@ -548,8 +819,7 @@ def main(argv=None):
             return 1
         if args.out.read_bytes() == data:
             print(f"CHECK PASS: {args.out.name} is byte-identical to a fresh "
-                  f"generation ({len(canon)} canonical == {len(canon)} store == "
-                  f"{len(canon)} cards)")
+                  f"generation ({counts})")
             return 0
         print(f"CHECK FAIL: {args.out.name} differs from a fresh generation -- "
               "regenerate it, never hand-edit it")
@@ -557,7 +827,7 @@ def main(argv=None):
 
     args.out.write_bytes(data)
     print(f"generate-factory-page: wrote {args.out} ({len(data)} bytes): "
-          f"{len(canon)} canonical == {len(canon)} store == {len(canon)} cards")
+          f"{counts}")
     return 0
 
 
