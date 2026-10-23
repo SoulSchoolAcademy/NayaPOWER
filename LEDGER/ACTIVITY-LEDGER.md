@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 13:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 14:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35426,6 +35426,30 @@ _Last updated: 2026-10-23 13:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261023-0637 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 06:37 PDT — 24 unclaimed briefs, zero claimable; silent 06:03 deletion detected
+
+**Evidence:** Verified 2026-10-23: receipt file exists and was read in full. 19 exit-7 parent-authorship refusals + 5 header-barred; zero claims, no queue mutations by this seat. Genuine new detection: ~06:03 PDT silent deletion of roughly six-to-seven brief-gap-tNNNN-* briefs (queue 30->24; queue-root and done/ mtimes 13:03:48 UTC; band breakdown 19+8 vs 20+1 c
+
+### ✅ seat-stall-20261023-0533 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Seat stall 05:33 PDT — 30 unclaimed briefs, zero claimable by this seat
+
+**Evidence:** Verified 2026-10-23: receipt file exists and was read in full. 25 exit-7 refusals + 5 header-barred; queue delta 30->30 identical set since the 04:33 stall. Scores 8.0: the guard-holding behavior is still correct and honest, but this is the SIXTH identical stall of the night — a correctly-skipped queue documented again with nothing new learned or m
+
+### ✅ seat-stall-20261023-0433 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Seat stall 04:33 PDT — 30 unclaimed briefs, zero claimable by this seat
+
+**Evidence:** Verified 2026-10-23: receipt file exists and was read in full. 26 exit-7 parent-authorship refusals + 4 header-barred; queue delta 30->30 identical set since the 03:29 stall. Fifth clean stall; claimability machinery holding, no self-corroboration, no queue mutations. Scores 8.5: correct, honest, process-sound — but again nothing beyond a stall dat
+
+### ✅ seat-stall-20261023-0329 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Seat stall 03:29 PDT — 30 unclaimed briefs, zero claimable by this seat
+
+**Evidence:** Verified 2026-10-23: receipt file exists and was read in full. Claim of 30 unclaimed briefs, zero claimable (25 claim-brief.py exit-7 parent-authorship refusals + 1 exit 2 mtc-v1 bar + 4 header-barred) is internally consistent; queue delta 30->30 (no arrivals/departures/claims) cross-checks against the 02:23 stall receipt. No queue mutations made —
 
 ### ✅ seat-stall-20261023-0533 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
