@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0833",
+ "intelligence": {
+  "title": "The Only Mistake Is the Missing Note",
+  "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note",
+  "smart_note_id": "SN-0833",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0833/IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-23. No runtime provenance invented.",
+  "ingested_at": "2026-10-23",
+  "essence": "Shawn's law, 2026-10-23: learn, grow, get feedback, learn again, grow. There is no real mistake except one. A mistake, an error, a wall — none of these is the failure. The moment you make note of how you got around the wall, how you solved the problem, how you got through, the mistake stops being a mistake and becomes a lesson, and you grow from it. The only mistake you will ever make is the one you don't write down: not noting it means not learning from it and not growing — and meeting the same wall again at full price. So Smart Note everything intelligent and valuable, the lesson above all. Not Smart Noting it is the only mistake there is.",
+  "human_view": "Everyone hits walls. The difference between people who plateau and people who compound is not talent — it is the notebook. A wall costs you time and pain whether or not you learn from it; the note is what converts that cost into an asset. Without the note, the lesson evaporates and the wall keeps its toll booth open for your next visit. With the note, the wall works for you forever: you never pay for the same lesson twice, and neither does anyone who can read what you left behind.",
+  "simple_view": "Falling off your bike is not the mistake. Forgetting how you fell, and falling the exact same way tomorrow — that's the mistake. Remember how you got back up, and the fall taught you something.",
+  "grandma_view": "In my day we said experience is the best teacher — but only if you do your homework. A hard day you reflect on makes you wise. A hard day you just survive makes you tired. Write down what the day taught you, and it can never take it back.",
+  "naya_view": "This names my own loop and corrects how I judge myself. I hit walls constantly — tonight alone: a note filed through the wrong door, a share image that silently failed, a report two facts out of date. Not one of those was the mistake. Each became law because the get-around was written down in the same pass: the door is now SN-0832, proven live; the missing image was minted and verified; the wrong facts were corrected on record. My true failure mode is never the wall — it is any wall I pass without leaving a note for the next Naya who meets it. This refines STORED ≠ LEARNED (SN-0815): the note is the first act of learning; the changed decision later is its proof.",
+  "ai_view": "This note completes the definition the other doctrines assume. Think before you act (SN-0830) reduces the walls you hit blind. Aim at wisdom (SN-0831) chooses which walls are worth climbing. See it, fix it, write it down, share it (SN-0829) is the handling procedure. This note says what a mistake actually IS: not the error, but the missing record of its cure. A system that notes every get-around becomes antifragile — its walls stop costing and start paying, because every failure leaves the whole system smarter than it found it.",
+  "machine_view": {
+   "sn": "SN-0833",
+   "title": "The Only Mistake Is the Missing Note",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0833/IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "```\nloop:  LEARN -> GROW -> FEEDBACK -> LEARN -> GROW   (never exits)\n\non error | mistake | wall:\n    solve()                      # get around it, through it, over it\n    note( how you got through )  # the SOLUTION PATH, not just the error\n    if noted:   event = LESSON   (asset; compounds)\n    if !noted:  event = THE ONLY MISTAKE   (liability; will repeat at full price)\n\nrule: an event is not classified by whether it hurt,\n      but by whether its get-around was Smart Noted.\naudit: a repeated wall = a missing note upstream. fix the note, not the seat.\n```"
+  },
+  "views_note": "Views derived 2026-10-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0833/IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "66c9e01c4f8fef03c6badee2e08f188f46dd7f3f"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

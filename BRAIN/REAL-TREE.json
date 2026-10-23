@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-23",
-  "receipt_basis_commit": "b5786cad2bf0a644aa96ab97cecd1f5b8631ada0",
-  "inventory_file_count": 1600,
+  "receipt_basis_commit": "99dfb9850921cac74d3e3d31359e7fde0a2348d1",
+  "inventory_file_count": 1616,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,12 +11,12 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 807,
+    "05-MEMORY": 816,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 437,
+    "10-INTERFACES": 444,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
     "90-OPERATIONS": 95,
@@ -4526,6 +4526,16 @@
       "size": 6815
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/LEARNING/lessons/SN-1852/IB-SMART-NOTE-20261023-sn1852-the-only-mistake.md",
+      "blob_sha": "b09ecf062d2d3b62a68069705dd2401ab8c4bb7d",
+      "size": 3471
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1852/IB-SMART-NOTE-20261023-sn1852-error-becomes-learning.md",
+      "blob_sha": "3f670c952238bf77a335da8483f4f5d59b9a2944",
+      "size": 3109
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0827/IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet.md",
       "blob_sha": "11ba70160963d0a6986fae8132c3de0a711a4af5",
       "size": 11280
@@ -4541,9 +4551,44 @@
       "size": 5909
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0830/IB-SMART-NOTE-20261023-sn0830-think-before-you-act-always.md",
+      "blob_sha": "3dead908c75ce326feb1e7c5e38dfbf4956fcde9",
+      "size": 4564
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0831/IB-SMART-NOTE-20261023-sn0831-naya-means-wise-one.md",
+      "blob_sha": "22b3e9c9da413da0b8c64d6716ad80a79c72dbab",
+      "size": 4030
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0833/IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note.md",
+      "blob_sha": "13ae9ffa2588c3a5fc652191aae9ac2cd4517af3",
+      "size": 5146
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1063/IB-SMART-NOTE-20261023-sn1063-remember-who-you-are.md",
       "blob_sha": "d470e6b51b05df0c6312668e64172c5cfaaa349b",
       "size": 5092
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1850/IB-SMART-NOTE-20261023-sn1850-the-best-possible-move.md",
+      "blob_sha": "a1b476d8145ce187bd697bf1555c11b908592ffa",
+      "size": 8163
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md",
+      "blob_sha": "788f720cd20236186cefe1e39e149bbe79a04e52",
+      "size": 5987
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-0832/IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note.md",
+      "blob_sha": "79a9d27ba62d7b4eaddda74807851a1ec14bb347",
+      "size": 5169
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-1851/IB-SMART-NOTE-20261023-sn1851-the-door-adopted.md",
+      "blob_sha": "987417e6ffbcdebbb61e323d6e167fa891a37f72",
+      "size": 6209
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
@@ -7046,6 +7091,11 @@
       "size": 22484
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/FACTORY-GATE-AND-DOOR-BUILD-RECORD-2026-10-23.md",
+      "blob_sha": "2aa251a1d88beae031df008f82ee6de1695e6233",
+      "size": 8191
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/FACTORY-PAGE-GENERATOR-BUILD-RECORD-2026-10-22.md",
       "blob_sha": "372b8238b0da686f515892ccc23ca4872b36cfd4",
       "size": 9547
@@ -7067,8 +7117,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/check_standard_features.py",
-      "blob_sha": "c4f6ffb7c6e72f212456b1bde2970ad67dd7bb7e",
-      "size": 25030
+      "blob_sha": "5b17a9e2e03ecf91a939505c2b0143d14e2701d7",
+      "size": 62105
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/contracts.json",
@@ -7091,6 +7141,36 @@
       "size": 7165
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/design-language-fixtures/chips-cluster.html",
+      "blob_sha": "88564e2b6a3bfd9b424b55a12793fe4b0cb6cedc",
+      "size": 578
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/design-language-fixtures/clean.html",
+      "blob_sha": "8600752507b3a3e73489380ab8d7276ddab8d5d0",
+      "size": 1009
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/design-language-fixtures/dead.html",
+      "blob_sha": "809f91bfe38b078c7928dac825c6a3d4a012b3ae",
+      "size": 433
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/design-language-fixtures/rest-violation.html",
+      "blob_sha": "996f75ab64e9848f01b0cb06eeeb5ee26920abfa",
+      "size": 374
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/design-language-fixtures/type-violation.html",
+      "blob_sha": "5511b6fc4719b398ea8cbdda42e831151fd9dfd3",
+      "size": 441
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/design-language-fixtures/walk-break.html",
+      "blob_sha": "554810c6784aab08533e486060c2652e9ef3230d",
+      "size": 478
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-presentation.json",
       "blob_sha": "1809dd174f0d85ca4e98592c40d44f2e8e4c5331",
       "size": 39969
@@ -7107,8 +7187,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-factory-page.py",
-      "blob_sha": "8b80fcdd9bd67807d6bb7a6d3f63422ac6981e1f",
-      "size": 38873
+      "blob_sha": "f3c681cb0bc4575f24b101c4e2fb2e26b2c0933b",
+      "size": 67859
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-share-card.py",
@@ -7207,8 +7287,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory-page.generated.html",
-      "blob_sha": "97d831557060e861864a5ccf9353af820849af52",
-      "size": 614204
+      "blob_sha": "71f4541bbfbf60e0b837d50e937814ccae63dccf",
+      "size": 640660
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory.css",
@@ -7632,8 +7712,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "8b6626136460d95aa03090186b3d4ac39eb7c839",
-      "size": 5038
+      "blob_sha": "13f56739029363bf1d0905af31eeedb5c6e45ad4",
+      "size": 5076
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -7977,8 +8057,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "99c1ea8f82a1446bc363243021b190d11f3fab98",
-      "size": 19556
+      "blob_sha": "d3a55f93283ca91b8a661bdbb8aaaca2e795b6fe",
+      "size": 19616
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",

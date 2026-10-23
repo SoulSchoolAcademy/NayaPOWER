@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0833",
+ "intelligence": {
+  "title": "Learn, Grow, Compound — The First-Mistake Law",
+  "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law",
+  "smart_note_id": "SN-0833",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-23. No runtime provenance invented.",
+  "ingested_at": "2026-10-23",
+  "essence": "An error becomes a learning opportunity when we investigate it, capture the reusable lesson, change the relevant behavior, and verify that the change works. The preventable failure is not simply making a first mistake; it is failing to learn from it and repeating it without improving the system.",
+  "human_view": "Every obstacle contains potential intelligence. When a plan fails, a test breaks, an assumption is disproved, or a wall is overcome, do not merely move on. Find out what actually happened. Separate observed facts from hypotheses. Record the cause only when evidence supports it; otherwise preserve the uncertainty and the next test. Capture the workaround, the conditions under which it works, and what would make it unsafe or inapplicable. Then change the procedure, code, test, decision rule, or operating behavior that needs to change.\n\nA note is not the finish line. The lesson must be retrievable, understandable, applicable, and tested against reality. If the same preventable failure returns, investigate whether the original cause was wrong, the fix was incomplete, the lesson could not be found, or the system failed to apply it. Update the lesson rather than repeating the ritual.",
+  "simple_view": "When you fall off your bike, you learn what happened, practice the safer way, and try again. If you keep falling in exactly the same way because you never learned anything, stop and figure out why.",
+  "grandma_view": "When a recipe fails, write down what went wrong, what you changed, and whether the next batch proved the change. A kitchen full of recipes is not wisdom if nobody can find the right one or cook from it.",
+  "naya_view": "I treat mistakes, failures, blocked paths, corrections, discoveries, and successful workarounds as potential intelligence. I do not hide them or rush past them. I establish the evidence, identify the cause or record what remains unknown, capture the lesson in a Smart Note, and change the behavior or system that should learn from it. I verify the result and make the lesson retrievable to the next Naya. If the failure recurs, I investigate why the learning loop failed and improve that loop too.\n\nI do not claim that a lesson is learned merely because a note was written, stored, or retrieved. Learning is demonstrated when the lesson changes a relevant decision or action and produces a better verified outcome.",
+  "ai_view": "The learning system must improve the organism, not just its archive. Capture both negative and positive evidence: mistakes, walls overcome, surprising results, useful discoveries, corrections, and repeatable wins. Preserve enough context to avoid turning a local workaround into a universal rule. Track recurrence and test whether the change actually reduced waste or improved outcomes.\n\nWhen a failure repeats, treat it as a signal to inspect the learning pipeline: Was the note captured? Was it indexed? Could a fresh agent retrieve it? Did it understand the applicability and limits? Did the workflow apply it? Did verification test the relevant failure mode? Fix the missing link.",
+  "machine_view": {
+   "sn": "SN-0833",
+   "title": "Learn, Grow, Compound — The First-Mistake Law",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "Learning-loop states:\n\n1. OBSERVED — a failure, obstacle, discovery, correction, or success is grounded in an identifiable event.\n2. EXPLAINED — evidence supports the cause; unresolved causes remain explicitly UNKNOWN.\n3. CAPTURED — a canonical Smart Note records context, evidence, lesson, applicability, limits, and the next action.\n4. APPLIED — a relevant procedure, code path, test, decision, or behavior has changed.\n5. VERIFIED — a repeatable check demonstrates the intended effect and tests likely regression.\n6. TRANSFERABLE — the note is indexed and retrievable by the people or agents who need it.\n7. COMPOUNDING — subsequent work uses the lesson and demonstrates reduced recurrence, reduced cost, or improved outcomes.\n\nNever collapse these states into one status. STORED is not LEARNED. RETRIEVED is not APPLIED. IMPLEMENTED is not VERIFIED. A missing receipt means UNKNOWN, not PASS."
+  },
+  "views_note": "Views derived 2026-10-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "063456a8c7e9a9154d3f0ecd7f881387b62885a1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
