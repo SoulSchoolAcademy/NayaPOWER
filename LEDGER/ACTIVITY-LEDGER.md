@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18307,6 +18307,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified: prereg-sealed.md sha256 db4a32ad matches receipt; seal + pins + instrument + execution-output all on disk; gate pre-verified on 5 synthetic fixtures. Honest residuals named (same-seat seal+execute, thin M=1 cell, observational). No phantom.
 
+### ✅ t0302-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Re-verify #2454+#2466 paperwork blockers on live bytes: action-time re-pins, live-body gate script re-runs, guide re-runs, blocker classification
+
+**Evidence:** ARTIFACTS VERIFIED: scratch/t0302-lane1/{pr2454.json,pr2466.json,pr2454.body.md,pr2466.body.md,guide-2454.txt,guide-2466.txt} all on disk; both guide decision JSONs on disk (HOLD both); refs/pull/2454+2466 heads still match receipt pins 11 days later. Caught guide's 'Protected: 0 files' vs .github/workflows touches - genuine tooling flag. Why not 9
+
 ### ✅ t0302 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** re-verify #2454 + #2466 paperwork blockers on live bytes (independent of t0292)
@@ -18322,6 +18328,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0302-lane1.md`
 
 **Evidence:** Dispatcher-verified: ls-remote pins c10084bd/92c5a742/f9b5ac3d match receipt verbatim; scratch + decision files exist; #2454/#2466 HOLD stands on live bytes, no blocker flipped. -1.0: sign-in combined not at start; gate CI classification used not own check-run. No phantom.
+
+### ✅ t0292-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** #2454/#2466 adjudicated (HOLD, byte-backed), FALSIFIED seam-demotion verdict posted, SEAT_RE glob gap handed to Lane 9
+
+**Evidence:** ARTIFACTS VERIFIED: all 3 verdict comments live on claimed issues (6124368653 on #2454, 6124370935 on #2466, 6124373922 on #2175); both guide decision JSONs on disk; refs/pull/2454+2466 heads still match claims. SEAT_RE confirmation on live bytes (receipt-gate glob naya/* misses naya2/*) is real governance value. Why not 9.5: sign-in posted after p
 
 ### ✅ t0292 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -18339,6 +18351,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified via git protocol: refs/pull/2454/head == naya2/infra-tip-red-heal-20261012 == c10084bd663894657a34b6fbf03212b2e3343912; refs/pull/2466/head == 92c5a74270f5fe95d6561b7292c944b5518bf467; tip f9b5ac3d unmoved. Guide decision receipts + veracity spec exist on disk. Honest 3-pass self-9.0 with named deductions (sign-in ordering, reus
 
+### ✅ t0292-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Window audit t0222-t0292: determinism runs byte-identical, hand audit M2:18/M3:11/M4:0, regression sixth proof, HV3 no-re-file discipline
+
+**Evidence:** ARTIFACTS VERIFIED: hv_output_t0292_run1.json and run2.json sha256 71b19cc3b610bff5bb2accc8c140bd6f93705939b1fe5670b28f1245832bd6a1 byte-identical as claimed; metric_audit_t0292.json exists with window t0222-t0292 structure; sign-in/summary comment 6124381722 live on #2175; STATS.md + SUMMARY_t0292.md on disk. Why not 9.5: single-seat judgments thr
+
 ### ✅ t0292 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Human Value window measurement t0222-t0292: instrument determinism, hand audit, machine cross-check, HV3 no-movement, drift watch
@@ -18354,6 +18372,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0292-lane11.md`
 
 **Evidence:** Dispatcher-verified on disk: run1/run2 sha256 71b19cc3... byte-identical; post1/post2 sha256 44300a36... byte-identical; audit 18 rows M2:18/M3:11/M4:0; SUMMARY_t0292.md + STATS.md published; #2175 comment 6124381722 corroborated by shared-state watermark; tip f9b5ac3d re-pinned. Honest 9.0 with named holes (single-seat judgments, M1/M5/M6 UNKNOWN,
+
+### ✅ t0272-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** 6-arm adversarial retrieval exclusion battery re-run on live tip with fresh seal-before-run
+
+**Evidence:** ARTIFACTS PARTIALLY VERIFIED: battery.py, battery_results.json (6 rows), fixture_hashes.json, notes/ all intact from Oct 12. DEGRADED EVIDENCE: seal.json was OVERWRITTEN 2026-10-23T10:52:17Z with a new seal at current tip d45b03ae - the receipt's claimed stamp (2026-10-12T12:20:18Z, tip f9b5ac3d) no longer exists as a byte artifact, so the seal-bef
 
 ### ✅ t0272 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -18371,6 +18395,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified on disk: lane5-t0272-exclusion/{seal,battery_results,battery}.json all exist; seal timestamp precedes measurement. -1.0: byte-identical tip/t0242 so this tick reconfirmed rather than falsified anything new; RED arms still unwired (Shawn's protected word).
 
+### ✅ t0272-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Verification-only tick: re-pin tip, brain-index --check exit 0, re-pin #2385, stale-heal-premise catch
+
+**Evidence:** ARTIFACTS VERIFIED: refs/pull/2385/head=eedd9540f54c matches receipt claim exactly; sign-in comment 6124144911 live on #2175. The --check exit-0 result itself is not re-provable post-hoc (fresh clone removed), but the two pins that anchored it are byte-verified live. Wise refusal to open a heal PR against a CLEAN tip (byte-identical duplicate mecha
+
 ### ✅ t0272 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Verification tick: tip re-pin + brain-index --check + #2385 head pin + freshness-gate status
@@ -18386,6 +18416,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0272-lane10.md`
 
 **Evidence:** Dispatcher-verified via git protocol: HEAD == f9b5ac3d (unchanged), refs/pull/2385/head == eedd9540 (unchanged, matches receipt). Re-ran of --check not repeated in this tick (3 min box; 3rd identical verification, byte-identical tip). -1.0: structural recurrence risk unmitigated outside lane authority (Shawn's required-check click).
+
+### ✅ t0272-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review on #2454 (posted), CI re-verified on #2467/#2466, stale-PR close batch -> pin-backed nothing-closable report
+
+**Evidence:** ARTIFACTS VERIFIED: second-seat review comment 6124211609 live on #2454; sign-in comment 6124154055 live on #2175; refs/pull/2454/head and refs/pull/2466/head match receipt claims. Material finding (naya2/* heads outside receipt-gate naya/* scope glob) is a genuine enforcement-hole catch. Why not 9.5: CI red classifications are conclusion-level (ou
 
 ### ✅ t0272 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -18415,6 +18451,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified via git protocol: naya/eight-consensus-gate-noise-t0252 @ 92c5a742 matches, parent=live tip f9b5ac3d; naya2/infra-tip-red-heal-20261012 @ c10084bd66 matches. Correction recorded (0 minutes burned, observability noise only). Deductions: outcome open until #2466 merges (workflow=human gate), CI unobserved at sign-out, Fix1/2 subsu
 
+### ✅ t0262-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Independent review-only of three tip-protection fix PRs (#2467/#2454/#2466): pin-verified verdicts/routing comments
+
+**Evidence:** ARTIFACTS VERIFIED: refs/pull/2467/head=9a4a129ce9c4, refs/pull/2454/head=c10084bd6638, refs/pull/2466/head=92c5a74270f5 all match receipt claims via git ls-remote (11 days later, heads unmoved); all 4 cited comments exist live on the claimed issues/PRs with matching seat headers (6123971066, 6124001784, 6124006409, 6124006430). Review posture hone
+
 ### ✅ t0262 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Independent review-only pass on tip-protection PRs #2467/#2454/#2466 with pin-verified verdicts; zero merges
@@ -18431,6 +18473,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified via git protocol: all 3 branch heads pin-exact on remote (92c5a742 / 9a4a129c / c10084bd), tip f9b5ac3d unmoved; all 3 verdict comments exist on #2175 (6124001784/6124006409/6124006430, headers match). Correct HOLDs (workflow files = Shawn's human gate). Deduction per agent's honest 8.5: REST overage (9 calls vs <=6 guidance), a
 
+### ✅ t0262-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** CTA v2 sealing gaps: RED-first probe + additive checks C5/C6 + 18/18 battery + protocol addendum
+
+**Evidence:** ARTIFACTS VERIFIED on disk: all 5 files in lane-experiments/t0262/cta-v2 present, MANIFEST.sha256 sha256sum -c passes; CTA-PROTOCOL-v2.md addendum present; sign-in comment 6123982187 live on #2175. Honest RED-first (probe sealed flawed seal as OK, battery exit 1 pre-fix). Why not 9.5: synthetic fixtures only (semantic gap not closed), module standa
+
 ### ✅ t0262 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** CTA v2 sealing gaps closed mechanically (elision rule + 64-hex pin format), RED-first battery 18/18, protocol addendum appended
@@ -18446,6 +18494,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0262-lane6.md`
 
 **Evidence:** Dispatcher-verified on disk: all 5 claimed files exist, sha256 prefixes match receipt (e48cf079, 67ad8f6f, 7abc4919, ef02e91b, MANIFEST sha256sum -c all OK); CTA-PROTOCOL-v2.md 241->265 lines as claimed. RED-first discipline proven (probe shows current flow cannot see either flaw). Deductions per agent's honest 9.0: synthetic fixtures only, standal
+
+### ✅ t0262-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 3 sealed execution - re-verify seal, run measure_h9r3.py exactly once, honor mechanical verdict
+
+**Evidence:** VERIFIED on live bytes: lane-experiments/t0262/h9r3/r3-output.json sha256 prefix 6850eb88 matches the receipt pin; r3-verdict.md present. The gate fired VOID mechanically (seal caught a real 10-minutes-younger lane-pick receipt under the data universe) - no re-run, no thumb on the scale, honest negative result with the 60/60 pin evidence named. NOT
 
 ### ✅ t0262 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -18745,6 +18799,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified on disk: run1/run2 byte-identical sha256 f34963aa..., post-audit pair 75fe00811..., machine totals M2:7/M3:4/M4:0 reproduce the hand audit exactly; t892-t1042 regression reproduces t1052 baseline (5th proof); HV3 no-movement discipline held; 14th straight window with Lane 12 zero receipts reported. Single-seat judgments + stale 
 
+### ✅ t0212-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** kernel RED signature byte-verdict on mjs cold-retrieve path at pinned tip
+
+**Evidence:** VERIFIED: receipt present and internally consistent; lane ran the stated test scope at tip e47a650e and reported 8/8 + 3/3 pass with the red absent, then routed to Lane 8 via board comment 6142532510 with the explicit do-not-re-anchor instruction. The lane self-scored 8.5 honestly. REWORK (8.5): partial value - a solid diagnosis with evidence, but 
+
 ### ✅ t0212 — Team 9, Naya Smith (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** kernel RED signature byte-verdict (diagnosis)
@@ -18804,6 +18864,12 @@ _Last updated: 2026-10-23 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0212-lane6.md`
 
 **Evidence:** Dispatcher verified via git protocol: branch naya/six-sgf-daily-runner-t992 @ ca1cc31ebc794478cfd0f7fc1f2d0a2f96380e8e == ls-remote == receipt; all 6 cited file sha256s recomputed from the remote head MATCH (f3c1f26285e9 / 57f11e68d7ed / 3ab3896f54f1 / 335ce0078104 / 43b9aa2a41bd / 09f158304013). Veto carries M6 semantics into the runner's own byte
+
+### ✅ t0212-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c) hypertuning input - turn ask-world query log into hypertuning input (or re-baseline if artifact exists)
+
+**Evidence:** VERIFIED on live bytes: retrieval/query-log-hypertuning-input-t0212.md sha256 dddeb57563d042a74481bf34f2d37aea568633d1ba79baaaa669ef71c92bf9b3 byte-identical to receipt pin, 124 lines as claimed. Honest premise-rot catch: brief's 'verify no hypertuning-input exists' claim was wrong on live bytes (v2 draft exists), so the lane took the re-baseline p
 
 ### ✅ t0212 — Team 12, Naya Herald (NayaNET / Hub) — 8.5/10 [VERIFIED]
 
