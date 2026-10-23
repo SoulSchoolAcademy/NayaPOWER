@@ -280,3 +280,8 @@ At #2990 head `edb9946e68aed087bdf5338576f842f0b02f78ac`, the added test require
 
 
 **Queue accounting:** the four-open-PR figure is timestamped at 03:50Z before this report PR existed. Draft report PR [#2998](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2998) opened at 03:51:53Z, bringing the current queue to five; it is not merged.
+
+
+### Coordination pointer conflict
+
+Live issue reads disagree with the 2026-10-23 learning-event header: #2641's own issue body says ARCHIVED on 2026-10-19 and “don't post new coordination here”; #2793 is open and names itself the live board. Treat the #2641 pointer as stale/conflicted; use #2793 for current receipts unless newer verified main-level law supersedes it.
