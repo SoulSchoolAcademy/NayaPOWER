@@ -1,4 +1,4 @@
-# OPERATIONS — Git / Issues / Handoffs / Deployment / Smart Notes / Daily Intelligence Report
+# OPERATIONS — Git / Issues / Handoffs / Deployment / Smart Notes / Daily Intelligence Report / New Seat Setup
 
 ## Git
 GitHub is the durable engineering and institutional-memory surface. The default branch is the engineering source of truth unless canonical project state says otherwise.
@@ -17,6 +17,9 @@ File through the door. Done means the file is on main at the exact path, the syn
 
 ## Daily Intelligence Report
 One report a day, written in Smart Note language, filed in BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/, published into the Reports room (nayanet.live/rooms/reports) by the sync lane in the room's own format, and verified live before any link is shared. Delivered as the report in chat plus the live link. Full procedure: DAILY-INTELLIGENCE-REPORT.md.
+
+## New Seat Setup
+A genuinely new Muse seat starts here: one-time GitHub connection (OAuth + GitHub App repo selection + Secure Vault login + standing permission grants, so routine work never prompts per action), the NayaNET app surfaces, the IDENTITY/SOUL starter blocks, the orientation laws, and the first-shift checklist. Full guide: NEW-SEAT-SETUP.md.
 
 ## Credentials
 Basic activation should work without a personal Supabase access token. Additional infrastructure is connected only when required, authorized and supported.
