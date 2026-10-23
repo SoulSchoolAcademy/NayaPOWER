@@ -3,7 +3,7 @@
   "built": "2026-10-21T18:14:02Z",
   "standard_feature_contracts": {
     "applies_to": "Every app built from a templates entry in this registry, and every future base created for a key listed in missing. Predicates are dual-dialect: each check names the canon-base mechanism and/or the shipped flagship mechanism (the one-system os-* dialect, live at naya-model-*.nayapower.workers.dev). A feature passes on the mechanism the surface actually ships, never on a label alone. Where a canon selector names a Hub-room surface and the flagship realizes the same feature as an in-page block, the predicate is scoped to that block; see per-feature applies_to and dialect_note.",
-    "dialect_note": "Dialect reconciliation (GT-028, 2026-10-22): the v1 predicates were authored against the canon-base dialect only, so the shipped flagships scored 4/13 while demonstrably carrying most features in the one-system os-* dialect. v1.1 names both dialects, verified byte-by-byte against the three live models (301,792 / 301,729 / 301,774 bytes). No pass_standard was lowered and no canon predicate was removed: every widened selector or pattern names the real shipped mechanism it now accepts, labeled '(flagship dialect: ...)'. Genuine gaps remain failing by design: S2 service-worker registration, S11 Library/Q&A block absent, S12 Smart Lists operation absent. v1.2 (2026-10-22, GT-028 follow-up): S8's flagship label check learned the smart-app language law — its Today-subtitle expectation is stem-matched ('The latest real activity') instead of the fossilized 'on this page' wording the law retired; see the S8 dialect_note. No pass_standard lowered and no predicate removed in v1.2.",
+    "dialect_note": "Dialect reconciliation (GT-028, 2026-10-22): the v1 predicates were authored against the canon-base dialect only, so the shipped flagships scored 4/13 while demonstrably carrying most features in the one-system os-* dialect. v1.1 names both dialects, verified byte-by-byte against the three live models (301,792 / 301,729 / 301,774 bytes). No pass_standard was lowered and no canon predicate was removed: every widened selector or pattern names the real shipped mechanism it now accepts, labeled '(flagship dialect: ...)'. Genuine gaps remain failing by design: S2 service-worker registration, S11 Library/Q&A block absent, S12 Smart Lists operation absent. v1.2 (2026-10-22, GT-028 follow-up): S8's flagship label check learned the smart-app language law — its Today-subtitle expectation is stem-matched ('The latest real activity') instead of the fossilized 'on this page' wording the law retired; see the S8 dialect_note. No pass_standard lowered and no predicate removed in v1.2. v1.3 (2026-10-23): S1 settings-labels value 'Dark mode' renamed 'Deep black' — Shawn's standing ruling names the theme 'Deep black'; the wave-2 flagships ship that label, and the v1.2 value failed them 12/13 at the strict gate on this word alone (receipt: build_queue d34bf3a2, matched 'Public profile' + 'Notifications'). Canon follows the shipped, ruled label, as in the v1.1/v1.2 reconciliations.",
     "evaluation": {
       "any_groups": "For checks whose requirement is 'any:<group>', at least one check in that group must pass.",
       "feature_pass": "A feature passes only when all required checks and every any-group pass.",
@@ -39,7 +39,7 @@
             "requirement": "required",
             "selector": "#settings, [data-feature='settings']",
             "values": [
-              "Dark mode",
+              "Deep black",
               "Public profile",
               "Notifications"
             ]
@@ -935,7 +935,7 @@
       }
     ],
     "status": "Measurement contract using static DOM/source predicates. A PASS requires a shipped surface plus a working client-side mechanism or data operation, not a label alone. Browser-rendered geometry and authenticated back-end behaviour are stronger proofs and remain separate.",
-    "version": "standard-feature-contracts-v1.2"
+    "version": "standard-feature-contracts-v1.3"
   },
   "templates": {
     "personal": {

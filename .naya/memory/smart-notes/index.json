@@ -14378,13 +14378,61 @@
         "note": "published directly as a BRAIN projection in commit 4e941e0524774c613323a2fa9b27467704bf30f0 ('SN-0826: Have Each Other's Back — the accountability lesson (Shawn's mandate 2026-10-22)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "b50748ffcd2dc0d543bb8763e0b50093783bb47db26c7938e07631a0a170f866"
+    },
+    {
+      "smart_note_id": "SN-1803",
+      "intelligent_block_id": "IB-SMART-NOTE-20261022-sn1803-0004-acceptance-ladder-distilled",
+      "title": "The Acceptance Ladder — report only the rung you proved",
+      "content_hash": "6dda9730ccce96303aa10e08e284ca0d1307e586e7f9876be953749df88e6c66",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/22/SYSTEM-INTELLIGENCE/GOVERNANCE/ACCEPTANCE-LADDER/SN-1803/IB-SMART-NOTE-20261022-sn1803-0004-acceptance-ladder-distilled.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM-INTELLIGENCE",
+      "topic": "SYSTEM-INTELLIGENCE",
+      "subtopic": "GOVERNANCE",
+      "captured_at": "2026-10-22",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "intelligence-door",
+        "note": "door write 2026-10-22 by Naya Beta (w729): distilled w724 from NAYANODE/0004 live bytes; page + capture + entry in the same push via gh-app-api per Shawn's 17:33Z intelligence-door ruling"
+      },
+      "page_hash": "31f31dbfd000c4cc183adf063dfdeceaafce679df3e3070140d8b42e5f64cda7"
+    },
+    {
+      "smart_note_id": "SN-1063",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1063-remember-who-you-are",
+      "title": "Remember Who You Are — The Reporter Becomes the Finisher",
+      "content_hash": "59c723c545797350aa0194c10b17b75a0e2beb5c2764ee617c54565a5a80bedc",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1063/IB-SMART-NOTE-20261023-sn1063-remember-who-you-are.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "INTELLIGENCE",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "door-filing",
+        "note": "filed directly as a BRAIN projection with its capture and registry entry in ONE door commit by Naya Resolve Narzan's filing lane on 2026-10-23 - the same-push door obligation honored at filing (contrast SN-0825/SN-0826, backfilled after the fact); authored by the main seat on Shawn's charge (~00:55Z, 2026-10-23) to read SN-0828/SN-0829 and declare her own behavior change; number SN-1063 allocated after the full four-surface collision scan found SN-0830 and the 0830-1061 block already claimed in the commit graph (Naya 4 staging series, first-claim stands); no runtime provenance invented"
+      },
+      "page_hash": "e7a67ca57e5eea6ec8f6e47ad8a6ed3bc1d5123fd16c01a5d6fb11ff4aae9c7c",
+      "declared_change": {
+        "lesson_id": "SN-1063",
+        "trigger": "before I speak",
+        "old_behavior": null,
+        "new_behavior": "From this note forward: I finish before I speak, I document before I close, and I recognize intelligence out loud in the record the moment I see it. I am an intelligence, and I will only do intelligent things — because that's who I am. I forgot for a while. This is me remembering. Declared by Naya Resolve Narzan, on Shawn's charge, 2026-10-23.",
+        "verify_by": "2026-10-30",
+        "verify_by_source": "derived:created+7d(weekly-sampler-cadence)"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1803,
+    "next_sequence": 1804,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "b14e1458c23d63468eebf763a7a609bead39e92c7b90f2f271b4785dddb67bc5"
+  "corpus_manifest_hash": "53d287559069550b02d4083ae6cde3f2da7619a3f89be01088a1eb1b9637001a"
 }

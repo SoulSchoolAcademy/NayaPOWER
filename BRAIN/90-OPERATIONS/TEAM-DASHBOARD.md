@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-21 22:18 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-23 00:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 50 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,59 +50,13 @@
 
 ## Open PRs by Area
 
-### LEARN (1)
-- [#2833](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2833) docs(brain): learning event 2026-10-20
+### BUILD (2)
+- [#2971](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2971) Naya/mission state
+- [#2955](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2955) Smart Lists — the one server store (Best-of-Best #16, step 15)
 
-### KNOW (4)
-- [#2836](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2836) cure(brain-index): regen index layer for SN-0808 landing (1-file drift
-- [#2816](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2816) fix(brain): preserve Windows long-path projection existence in drift a
-- [#2736](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2736) fix(brain-index): make regeneration line-ending deterministic on every
-- [#2385](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2385) feat(ci): dedicated brain-index-freshness required gate workflow (Shaw
-
-### PROVE (3)
-- [#2841](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2841) [NAYA 5] Safety: fail-closed VERIFY verdicts (revives #1944)
-- [#2825](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2825) The GitHub webhook receiving door — nayanet-github-intake (verify + ac
-- [#2776](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2776) fix(smart-note): verify actual projection commit SHA
-
-### BUILD (18)
-- [#2855](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2855) DESIGN: Standdown blast-radius redesign (API-STANDDOWN v2)
-- [#2851](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2851) SN-1772 — Opened Is Not Done: Land It, Close It, or Kill It
-- [#2848](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2848) SN-1771 — Already Built: Pick Your Model, Drive Away in Minutes
-- [#2846](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2846) fix(activation): pin Operating Code V2 LF in Windows checkouts (reland
-- [#2842](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2842) boot-pointer fix: indirect live-board references in BRAIN/00-ACTIVATIO
-- …and 13 more
-
-### WIRE (4)
-- [#2856](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2856) ci: introduce risk-tiered unified PR paperwork gate in shadow mode
-- [#2834](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2834) fix(readiness): C3 classifier no longer cries wolf on a healthy gate
-- [#2812](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2812) fix(activation): refuse undeclared cold starts at real admission gate
-- [#2552](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2552) Intelligence intake triage: the hive's ingestion gate
-
-### TEAM (2)
-- [#2803](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2803) [Team Verity] ops: THE NAYA TOOL DIRECTORY V1 — the catalog every Naya
-- [#2397](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2397) feat(dashboard): live Team Naya activity dashboard — markdown + machin
-
-### INFRA (5)
-- [#2809](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2809) docs(activation): reconcile oath guide with ratified protocol and live
-- [#2745](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2745) Visual Smart Contract v1 — the official machine contract for the smart
-- [#2716](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2716) Composer v1 + gap closure (43->39 mapping, feed specimen) — item 15b
-- [#2589](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2589) Add decision CLI front door to value_calculus (tools/decision_cli.py)
-- [#1130](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1130) ratify(governance): Governance Contract V1 — awaiting Human Director d 📝draft
-
-### PRODUCT (5)
-- [#2838](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2838) fix(feeds): land hub-feeds-emit via deploy key with scoped ruleset byp
-- [#2754](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2754) Hub↔Supabase persistence bridge (Smart Note flow leg 3) — t0800
-- [#2738](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2738) Hub deploy pipeline: GitHub → Cloudflare Workers
-- [#2685](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2685) HUB/BLUEPRINT.ai.md — canonical team reference: the complete system ma
-- [#2680](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2680) t0483: hourly schedule pump for NayaNET Agent Capture
-
-### GOVERN (8)
-- [#2850](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2850) 0025 — The Smart Note Protocol V1 (three tongues): the canonical Smart
-- [#2824](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2824) governance(0032): THE HOUSE STANDARD — take care of the house
-- [#2822](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2822) governance: 0031 NEVER AGAIN — The Reservoir Laws (Shawn, 2026-10-21)
-- [#2815](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2815) Viral Law — the headline standard (§22 of the Smart Note / IB Protocol
-- [#2810](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2810) fix(protocol): reject false independent approvals (case, dismissal, co
-- …and 3 more
+### PRODUCT (2)
+- [#2969](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2969) Ask Naya go-live port (ARTIFACT ONLY — do not merge) 📝draft
+- [#2968](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968) Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A 
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*

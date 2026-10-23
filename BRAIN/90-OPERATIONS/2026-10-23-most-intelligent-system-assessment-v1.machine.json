@@ -1,0 +1,254 @@
+{
+  "additions_10": [
+    "Runtime live feed in the Hub",
+    "Ask Naya as the front door everywhere (three homes, one Naya)",
+    "The spoken daily brief",
+    "Universal search and command (landed)",
+    "Payments inside the flagship flow (monthly/quarterly/yearly/lifetime)",
+    "Multi-app magic completed (one app, many front doors, shared features)",
+    "Async voice and video notes (save as note | distill as Smart Note)",
+    "Relationship core completed (Timeline UI over the proven read model)",
+    "Ten-second vital-signs page (ratio, gates, freshness, queue)",
+    "Mirror loop closed by machine (every scorecard deduction becomes queued, owned work)"
+  ],
+  "area_scores": {
+    "cold_inheritance": "UNPROVEN",
+    "completion_landing": 6.0,
+    "design_canon": 8.0,
+    "efficiency": 1.5,
+    "law_governance": 8.0,
+    "learning_loop": 6.0,
+    "memory_smart_notes": 8.5,
+    "product_surface": 6.0,
+    "production": 3.0,
+    "proof_truth": 9.0,
+    "voice": 5.0
+  },
+  "author_seat": "Naya Resolve Narzan (main seat)",
+  "corrections_to_sn0827": [
+    "Brain-index regeneration listed as future work was already done at SN-0827's landing (door regen; GREEN, 1587 files).",
+    "The 'four red gate classes' claim is not carried forward: brain-index class closed; Kernel Tests class open and unnamed; fresh enumeration required for any other class.",
+    "Open PRs were 0 at 2026-10-23T00:32Z by full enumeration, not ~11; PRs 2955, 2956, 2968, 2969, 2971 closed unmerged 00:12-00:17Z and their substance is NOT done. Per clearance evidence 6354268212: 2955 and 2956 are closed-HELD pending named cures (not mere re-files); 2968 is closed-held for the director's deletion review.",
+    "The full-report path SN-0827 cites (~/workspace/user/files/system-assessment-2026-10-23.md) did not exist on this machine; this three-tongue report in BRAIN/90-OPERATIONS is canonical."
+  ],
+  "date_utc": "2026-10-23",
+  "director": "Shawn Vibert",
+  "evidence_anchor": {
+    "board": 2793,
+    "checked_at_utc": "2026-10-23T00:32Z",
+    "essence_note": "SN-0827",
+    "main_tip": "3298de8b6547656583d7610a04e979ab1938fbb4",
+    "open_prs_at_check": 0
+  },
+  "execution_directive": {
+    "addressees": [
+      "Resolve lanes",
+      "Team Nitro (12)",
+      "Naya 1",
+      "Naya 3",
+      "Coda seats",
+      "Greek cohort",
+      "Team 2 named workers (12)",
+      "The dock",
+      "All future cold seats"
+    ],
+    "rules": [
+      "Work from Current Project Intelligence and THE LIST in priority order",
+      "Answer your own questions first (rubrics, math, canon, live bytes); escalate only protected gates and destination choices",
+      "Waves of five; WIP <= 5 per lane; every action names 3-10 intended verified outcomes before it starts",
+      "No proof = not done; verification at the exact head by a seat that did not build it",
+      "Never present a same-login review as a different seat",
+      "No shells: nothing shown until it functions with real data, proven in the showing",
+      "Freezes are mechanical at the trigger or are labeled advisories",
+      "Red gates are named, owned work items, never weather",
+      "One current copy: superseded copies lose the power to act immediately",
+      "Board carries material events only; one receipt per run that worked; cross-team blockers posted when proven, with owner and unblock condition",
+      "Order of battle: A1, A2, A3, A4, A5, A6, A7, A10(packet), A8, A9 (daily)",
+      "Continue nonstop: an area at an honest 10 means move to the next area without being told"
+    ]
+  },
+  "flow_holes_10": [
+    "Second Hub publisher disabled but not deleted in-repo",
+    "Generated artifacts drift from sources when regen is not inside the landing",
+    "Red-as-wallpaper: Kernel Tests red, failing test unnamed",
+    "Shared-login identity blurs authorship and review",
+    "Reservoir habit: starting outruns finishing",
+    "Verification debt: five breach record scorecards owed",
+    "Ambiguity tax: multiple names/answers for one object",
+    "Machines die quietly (watchers without dead-man alarms)",
+    "Paperwork machinery wider than the ratified law",
+    "Single-human gate pressure manufactures workarounds"
+  ],
+  "highest_value_actions_10": [
+    {
+      "action": "Finish the Hub one-path cure",
+      "id": "A1",
+      "owner": "Nitro lane",
+      "proof": "Exactly one deploy path can write the hub worker; deliberate re-enable with proof"
+    },
+    {
+      "action": "Delete the stale HUB/app tree and its trigger in-repo (Tier A re-file)",
+      "id": "A2",
+      "owner": "Main seat files; different seat scores",
+      "proof": "Tree and trigger absent at tip. Prepared PR #2968 is closed-held for the director's deletion review (6354255591); his ruling reopens it in one click. Protection independent: workflow disabled_manually, verified."
+    },
+    {
+      "action": "Cure Smart Lists (hostile-category crash + contract-audit hardening; held at 9.2 Tier-A) and Universal Search (canonical uid-alias binding + pinning test; alias-poisoning leak, held at 8.0 Tier-A, no production exposure), then land both under fresh Tier-A cards",
+      "id": "A3",
+      "owner": "Author lanes",
+      "proof": "Cure rounds landed at fresh Tier-A scorecards >=9.5 at new heads + live probe (clearance evidence 6354268212)"
+    },
+    {
+      "action": "Name the Kernel Tests failure and make main honestly green",
+      "id": "A4",
+      "owner": "Owning lane per named test",
+      "proof": "Green run at tip with named-test receipt"
+    },
+    {
+      "action": "Discharge the five remaining breach scorecards",
+      "id": "A5",
+      "owner": "VERIFY lane",
+      "proof": "Cards at exact merged heads; owed count 0"
+    },
+    {
+      "action": "Build Today as Your Day on live stores",
+      "id": "A6",
+      "owner": "Hub lane",
+      "proof": "Non-builder live probe pass"
+    },
+    {
+      "action": "Prove streaming voice; ship if proven",
+      "id": "A7",
+      "owner": "Voice lane",
+      "proof": "Median first-sound < 1s; backlog 0; error rows owned"
+    },
+    {
+      "action": "Rehearse ACTIVATION-10 (2026-10-25)",
+      "id": "A8",
+      "owner": "Main seat",
+      "proof": "Cold-seat pass receipt; stumbles filed same day"
+    },
+    {
+      "action": "Publish the ratio daily as living data; kill zero-output loops",
+      "id": "A9",
+      "owner": "Resolve lane",
+      "proof": "Daily census posts; ratio < 60:1 by 2026-10-29"
+    },
+    {
+      "action": "Finish GT-039 fitted policies; deliver one consolidated tap packet",
+      "id": "A10",
+      "owner": "Nitro fits; main seat assembles; Shawn taps",
+      "proof": "13 pending migrations applied + hub_smart_notes_personal + ledger genesis/owner-id/read projection + SN-1771/1772 VERIFIED_LIVE"
+    }
+  ],
+  "id": "2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1",
+  "key_measurements": {
+    "activity_to_verified_outcome_ratio_census_2026_10_22": "159:1",
+    "brain_index": "GREEN, 1587 files, 3 seats x 3 successive tips",
+    "breach_scorecards_discharged": [
+      "2962 STAND 9.0 (6354181997)"
+    ],
+    "breach_scorecards_owed": [
+      "2960",
+      "2959",
+      "2961",
+      "2954",
+      "2965"
+    ],
+    "ledger_genesis_read": "172.8:1",
+    "open_prs": 0,
+    "pending_migrations": 13,
+    "pending_migrations_note": "Post-wave ledger read at clearance tip: 11 pre-wave + Booking (#2957) + Intake (#2958). Lists/Search migrations wait inside their held branches and are not counted.",
+    "production_stamp": "00f50bb32 (unchanged since 2026-10-08)",
+    "ratio_target": "<60:1 by 2026-10-29",
+    "runs_per_day_target": "<2500"
+  },
+  "loves_10": [
+    "Proof discipline (receipts over claims)",
+    "Smart Notes as living memory with declared behavior changes",
+    "Scorecard culture (why-not-10, deductions named)",
+    "Machine-checkable design canon",
+    "Smart Ledger (hash-chained verified events)",
+    "Current Project Intelligence (human state, machine-reconciled, proof structural)",
+    "Security that protects without blocking (RLS live-probed; Balanced Machine)",
+    "Self-correction in the open (failure to law same day)",
+    "Watchers born from wounds (build-identity sentinel, 77-second detection)",
+    "Three tongues, one truth"
+  ],
+  "missing_10": [
+    "One publishing path to the live Hub",
+    "Live truth at the point of use (Hub reads live, not baked)",
+    "A genuinely different second seat (distinct identity)",
+    "A proven cold inheritance (ACTIVATION-10 rehearsed)",
+    "The member money loop (payments + live booking in production)",
+    "Streaming voice with measured first-sound latency",
+    "Universal search and command live in the flagship (built; held by Tier-A review on an alias-poisoning leak; returns with the binding cure)",
+    "Today as Your Day (first screen reads the member's live stores)",
+    "Production parity (current stamp, zero pending migrations)",
+    "A visible efficiency instrument (living ratio, not audits)"
+  ],
+  "next_10_resolve": [
+    "This report in three tongues + PR + board directive",
+    "Reconcile THE LIST (#2953) to landed truth only",
+    "VERIFY breach card #2960 at its exact merged head",
+    "Name the Kernel Tests failure from its job log",
+    "Re-file the Hub retirement PR, Tier-A ready",
+    "Assemble the GT-039 tap-packet skeleton",
+    "Run the 2026-10-23 ~19:37Z census with falsifiable readings",
+    "Execute the #2930 line-189 correction by ~16:40Z if the author lane has not",
+    "Prepare the ACTIVATION-10 rehearsal pack for 2026-10-25",
+    "Record the WP-211 graduation call on the board"
+  ],
+  "problems_live_10": [
+    "Live Hub != repo brain (contained, uncured)",
+    "Production stamp from 2026-10-08; 11 migrations pending behind GT-039",
+    "Kernel Tests red on main, failing test unnamed",
+    "Rooms at or below 4-7/10 (Today, Connections, Lists, Settings)",
+    "Voice backlog and batch latency; error rows unowned",
+    "Four flagship tables referenced but created by no migration (invites, smart_mail_messages, smart_mail_threads, smart_notes)",
+    "Stale small facts: SN-0594 restamp, stale law registry, Reports silent fallback to a frozen 2026-10-02 set",
+    "Bridge census gap (792 store rows, 97 unmapped) and the learning-bridge clock",
+    "Second mission-state copy on branch naya/mission-state (canonical home undecided)",
+    "Activity-to-value ratio ~159:1 on the last full census"
+  ],
+  "ratification": {
+    "event": "Shawn reviewed the ten-point execution directive (SN-0827), stated it sounds good, and gave the go-ahead, 2026-10-23.",
+    "scope": "Direction only. Per NO-WORD RATIFICATION, no item is proven or authorized by the ratification; execution proceeds on scorecards and live proof. Human gates unchanged."
+  },
+  "reasons_not_there_10": [
+    "Identity defect (one login, many seats)",
+    "Gate pressure concentrated on one human",
+    "Land-first habits under pressure",
+    "Copy-hoarding (retirement was nobody's job)",
+    "WIP sprawl (starting rewarded over finishing)",
+    "Red normalization (failures become wallpaper)",
+    "Lessons written as prose where mechanisms belong",
+    "Runtime fragility (VM replacement kills watchers silently)",
+    "Ambiguity tax and duplicate mechanisms",
+    "Activity treated as the visible metric for too long"
+  ],
+  "solutions_in_force_10": [
+    "Rogue Hub deploy disabled at the source (re-read and second-seat verified)",
+    "Build-identity sentinel on a 5-minute cron; alarm on divergence",
+    "Regeneration inside the landing (intelligence door); brain index green",
+    "Retired venues locked; 15 cron bodies repaired; One Current Copy law",
+    "The Balanced Machine (tiers; value = quality x completion)",
+    "The 3-to-10 rule, WIP <= 5, waves of five",
+    "The ONE-RECEIPT rule (board carries material events only)",
+    "State-core reconciliation and Living-List state laws (proof required to save done)",
+    "Accountability ledger writer landed and STAND",
+    "NO SHELLS law and the gasp test"
+  ],
+  "twins": {
+    "ai": "BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.ai.md",
+    "human": "BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.human.md",
+    "machine": "BRAIN/90-OPERATIONS/2026-10-23-most-intelligent-system-assessment-v1.machine.json"
+  },
+  "verdict": {
+    "answer": "No. Not yet.",
+    "one_line": "Most honest system known; elite components, clogged joints. Intelligence = rate at which true things become finished things in front of the people served.",
+    "question": "Would the most intelligent mind call this the most organized, intelligent system that could be created?",
+    "score_source": "Nightly Intelligence Report 2026-10-22",
+    "whole_system_score": 6.5
+  }
+}
