@@ -1,4 +1,4 @@
--- 20261022210000_universal_search_v1.sql
+-- 20261022214500_universal_search_v1.sql
 -- Best-of-Best Wave 1: Command + universal search (map element #12,
 -- build-order step 13 — the Linear lesson: one place to find and do
 -- anything).
@@ -50,6 +50,24 @@
 --                       created_at, updated_at
 -- Registered PENDING_REVIEW_NOT_PRODUCTION_APPLIED; applies at the
 -- human gate only.
+
+--
+-- CURE ROUND 4 (PR #2956, 2026-10-23) — two changes, both forced by
+-- evidence at the current main tip:
+--   1. RENUMBERED 20261022210000 -> 20261022214500. The 210000 version
+--      was taken on main by 20261022210000_booking_v1.sql (PR #2957,
+--      landed while this PR was held); two migrations may never share
+--      a version. Content otherwise unchanged by the renumber.
+--   2. SUPERSESSION NOTICE: the alias-set derivation in
+--      search_universal below (from free-text owner_alias on
+--      caller-owned rows) is REPLACED by migration
+--      20261022220000_alias_binding_v1.sql, which redefines
+--      search_universal to derive its alias set from the
+--      server-controlled binding public.owner_alias_claims ONLY.
+--      That replacement is the alias-poisoning cure (Tier-A card
+--      6354152883, 8.0 NOT APPROVED). The two files apply in version
+--      order in the same human-gated sitting, so the derivation below
+--      never governs an applied system.
 
 -- ——— Fail-loud source check ———
 do $$

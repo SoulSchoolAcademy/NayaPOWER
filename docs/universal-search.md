@@ -12,8 +12,9 @@ service, never re-derived privately by the surface.
 
 | Piece | Where | Job |
 |---|---|---|
-| Service | `public.search_universal(p_query, p_limit)` (migration `20261022210000_universal_search_v1.sql`) | The ranked merge over the five object types, behind the caller's JWT. Owner isolation and ranking live here and nowhere else. |
-| Ranking | `public.search_score(field, query)` (same migration) | ONE definition: 100 exact · 80 prefix · 60 word-start · 40 contains, case-insensitive. |
+| Service | `public.search_universal(p_query, p_limit)` (migration `20261022214500_universal_search_v1.sql`; final definition in `20261022220000_alias_binding_v1.sql`) | The ranked merge over the five object types, behind the caller's JWT. Owner isolation and ranking live here and nowhere else. |
+| Ranking | `public.search_score(field, query)` (migration `20261022214500`) | ONE definition: 100 exact · 80 prefix · 60 word-start · 40 contains, case-insensitive. |
+| Binding | `public.owner_alias_claims` + `public.claim_my_alias(p_alias)` (migration `20261022220000_alias_binding_v1.sql`) | The ONE server-controlled uid↔alias binding: a normalized alias belongs to exactly one owner, first claim wins. Every alias decision in the system reads this table and nothing else. |
 | Client | `HUB/app/js/naya-search.js` (`window.NayaSearch`) | Query/voice-intent parsing, the store, the command palette, Cmd-K. Holds no ranking and no identity logic of its own. |
 
 ## The result shape (every consumer reads exactly this)
@@ -34,9 +35,9 @@ service, never re-derived privately by the surface.
 | Type | Source | Searched fields | Owner predicate |
 |---|---|---|---|
 | `person` | `person_identities` | `display_name` | `owner_id = auth.uid()` |
-| `smart_note` | `smart_notes` | `content`, author name | `owner_alias` in the caller's alias set |
+| `smart_note` | `smart_notes` | `content`, author name | `owner_alias` (normalized) in the caller's bound alias set |
 | `naya_note` | `naya_notes` | `text`, `category`, `list_name` | `owner_id = auth.uid()` |
-| `mail_thread` | `smart_mail_threads` | `subject`, `participants` | `owner_alias` in the caller's alias set |
+| `mail_thread` | `smart_mail_threads` | `subject`, `participants` | `owner_alias` (normalized) in the caller's bound alias set |
 | `smart_link` | `smart_links` (active only) | `name`, `target_url` | `owner_id = auth.uid()` |
 
 Lists are deliberately NOT a source yet: there is no server-side list
@@ -52,11 +53,20 @@ a store that does not exist.
    The client's request body is `{ p_query, p_limit }` and nothing else.
 2. `SECURITY DEFINER` is required (the flagship tables carry no
    repo-governed RLS this function could lean on), so every source
-   branch carries its own owner predicate, listed above. The alias set
-   is derived inside the function from rows the caller owns by uid
-   across `person_identities` / `naya_notes` / `smart_links` — never
-   from input. An empty alias set means the alias-keyed sources return
-   nothing for that caller.
+   branch carries its own owner predicate, listed above. The alias
+   set is derived inside the function from the server-controlled
+   binding `public.owner_alias_claims` — the aliases bound to
+   `auth.uid()`, and nothing else. Free-text `owner_alias` on
+   caller-owned rows is never a binding: a BEFORE INSERT/UPDATE
+   guard on `person_identities` / `naya_notes` / `smart_links`
+   routes every such write through the binding and refuses a write
+   whose alias another owner claimed first
+   (`OWNER_ALIAS_ALREADY_CLAIMED`), and `claim_my_alias` is the
+   explicit claim path. (This is the cure round-4 fix for the
+   alias-poisoning defect: deriving the set from free text let one
+   permitted insert claiming a victim's alias leak the victim's
+   alias-keyed rows.) An empty alias set means the alias-keyed
+   sources return nothing for that caller.
 3. No identity (`auth.uid()` is null) returns **zero rows**. Fail
    closed, never open.
 4. EXECUTE is granted to `authenticated` only — revoked from `public`,

@@ -1605,11 +1605,11 @@
     },
     {
       "version": "20261022210000",
-      "name": "universal_search_v1",
-      "path": "supabase/migrations/20261022210000_universal_search_v1.sql",
-      "sha256": "16fa2b4feac7823b2600e4a900e802afa90527d53f9fbd4fa02b490c54aea27a",
-      "statement_count": 8,
-      "bytes": 10705,
+      "name": "booking_v1",
+      "path": "supabase/migrations/20261022210000_booking_v1.sql",
+      "sha256": "fa2029a7f8a6693f63e06f06c9f0540d62f95e144bc606990c5edb8606a6a086",
+      "statement_count": 52,
+      "bytes": 18023,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
@@ -1619,6 +1619,33 @@
       "sha256": "39f31a6e3eaf5f92551c03970a1953bbd532f83cb773727e86fcb384793acab2",
       "statement_count": 32,
       "bytes": 11224,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022213000",
+      "name": "conversational_intake_v1",
+      "path": "supabase/migrations/20261022213000_conversational_intake_v1.sql",
+      "sha256": "de8c6663e3d8f3308c74264c518666b1ccb17901a1a71525aa2da4cd6a9bec47",
+      "statement_count": 11,
+      "bytes": 3187,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022214500",
+      "name": "universal_search_v1",
+      "path": "supabase/migrations/20261022214500_universal_search_v1.sql",
+      "sha256": "5af193b0cf8913d058e1a07a78ee22f579f624558e291997df0c5681f4286595",
+      "statement_count": 8,
+      "bytes": 11698,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261022220000",
+      "name": "alias_binding_v1",
+      "path": "supabase/migrations/20261022220000_alias_binding_v1.sql",
+      "sha256": "13ceb1603b3755ccf8bdf72b4c48d52690ca0bdb74a8f04a6e7e8026ce3d9787",
+      "statement_count": 22,
+      "bytes": 14581,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
