@@ -55,3 +55,17 @@
 **ACT/Bridge and existing Project Intelligence integrator:** wire the real source `work_items`→existing `/projects` data read/publisher, with stable exact-source keys and `T-CONTENT` adverse tests. Keep all eight now-populated projects visible throughout a governed migration. Naya/VERIFY independently certifies the authenticated page and repeatable source update.
 
 **Conclusion:** first material content population COMPLETE at database level; user-facing rendering and sustainable machine operation UNKNOWN; do not declare 10/10.
+
+## Subsequent live drift falsifier — 2026-10-23T20:59:41Z
+
+During the *same collaborative cycle*, other Team Naya workers generated further canonical `work_items` and the parent began diverging again. The source-key diagnostic in this PR — `tools/reporting/project_content_parity.sql` — was fetched back from its actual GitHub blob and executed read-only against the live Supabase project. Its exact result:
+
+- **NayaPOWER root:** 133 canonical work records, 123 display *work* records (126 total display rows including **three non-work `production:` pseudo-records**). **Ten missing keys** and **eleven differing source/display state-or-proof cases**. Three pseudo-records disguise the missing-ten defect as a misleading gross count difference of seven.
+- **Eight sub-projects:** source and display exact item-key parity in the diagnostic for all 38 assigned records, zero missing/extra keys and zero mismatched state/proof labels at this timestamp.
+- Missing root classes: `journey-test-2026-10-23`, `q14-10`, and eight new `waste-...-2026-10-23` detector-generated work entries. The “waste” title is the *source claim*, not an independent finding that the watcher had zero human value; the efficiency owner must classify it correctly.
+
+**Why this matters:** one-time manual rehoming is not continuous intelligence. An ordinary count check is also insufficient: the release gate must compare the exact source-key sets, states and evidence on every change. No claim of automatic refresh can pass while this query shows `missing_keys>0`, `stale_extra_keys>0` or `differing_state_or_proof>0`. During eventual cutover, retire the `production:` pseudo-records through the separately governed existing migration, never count them as user tasks.
+
+Two additional *root* source links were also filed via the existing `object_links` table: the independently observed live SN-0840 master build note and the proposed implementation PR #3014; they are labeled so a reviewer can distinguish canon from proposed annex.
+
+**Required owner action:** Connect the actual publisher so `work_items` updates are projected without further SQL intervention, wire this read-only diagnostic into the existing verified monitoring path, then have a distinct reviewer rerun the exact query and an authenticated browser journey until both source and live display are in parity. Do not reduce or disguise the mismatch by suppressing legitimate new work.
