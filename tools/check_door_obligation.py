@@ -691,6 +691,40 @@ def main(argv=None) -> int:
         tombstones = tombstone_class(root, registry, pages)
     defects = check_pages(root, snv2, scoped, registry, cap_index)
 
+    # A door obligation is incomplete if a newly added human-visible note ID
+    # resolves to two distinct paths. Check the complete target tree against
+    # the changed files; leave untouched legacy collisions for separate cure.
+    if args.range_spec:
+        try:
+            import importlib.util
+            unique_path = root / "tools" / "check_smart_note_unique_ids.py"
+            spec = importlib.util.spec_from_file_location("smart_note_unique_ids", unique_path)
+            if spec is None or spec.loader is None:
+                raise RuntimeError("cannot load Smart Note uniqueness gate")
+            unique = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(unique)
+            base, separator, head = args.range_spec.partition("..")
+            if not separator or not base or not head:
+                raise RuntimeError("uniqueness gate requires A..B revision range")
+            all_paths = unique.git("ls-tree", "-r", "--name-only", head)
+            added_paths = unique.git("diff", "--name-only", "--diff-filter=AR",
+                                     base, head, "--", unique.ROOT)
+            for number, paths in sorted(unique.check(all_paths, added_paths).items()):
+                defects.append({
+                    "sn": f"SN-{number:04d}",
+                    "kind": "DUPLICATE_PUBLIC_ID",
+                    "path": paths[0],
+                    "missing": f"public SN-{number:04d} collides across {len(paths)} paths: "
+                               + " | ".join(paths),
+                    "cure": "the original owner must reconcile the two records "
+                            "without losing intelligence; re-run this gate before publication",
+                    "owner": "Smart Note identity lane",
+                })
+        except (OSError, RuntimeError, subprocess.CalledProcessError) as exc:
+            print(f"ERROR: Smart Note uniqueness check failed closed: {exc}",
+                  file=sys.stderr)
+            return 2
+
     if args.json:
         print(json.dumps({
             "pages_in_scope": len(scoped),
