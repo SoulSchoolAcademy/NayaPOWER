@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18155,6 +18155,12 @@ _Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/auto-retrieval-proto.py (10914 bytes), all 3 .topk.md outputs (2085/2095/2089 bytes), assessments.md (1172 bytes) exist on disk. Deterministic demo claim reproducible on demand. Score 9.0 (GOOD, ONE MORE PASS): why not 9.5 = (1) builder-built, builder-assessed — no independent seat verified ranking quality (N=3 briefs, notes 
 
+### ✅ t0382-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-exact re-verification of 6 pipeline branches + #2068 deadline-expiry check and escalation
+
+**Evidence:** ARTIFACTS VERIFIED: sign-in 6127135036 + sign-out 6127190339 live on #2175 (timestamps match). Six cited branches gone from remote today (expected 11d later - #2457/#2467 landed per later ticks, not phantom). NOT PHANTOM. Why not 9.5: sign-in after first exec (5th recurrence - the pattern survives because reads feel like 'pre-work'); pin-debt root 
+
 ### ✅ t0382 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Pin-exact re-verification of 6 pipeline PRs + live tip; #2068 retroactive-receipt deadline check; routed verdicts
@@ -18170,6 +18176,12 @@ _Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0382-lane9.md`
 
 **Evidence:** VERIFIED: all six cited branch heads match remote ls-remote byte-exact (naya2/infra-tip-red-heal-20261012=c10084bd, eight-consensus-gate-noise-t0252=92c5a742, three-decision-consolidate=8346681c, eight-mjs-coldretrieve-t1332=3dd7837d, nine-tipred-fix-t1422=92fac098, nine-tipred-fix-t0252=9a4a129c); tip pinned dbe06f9e matches shared-state; per-PR H
+
+### ✅ t0382-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** #2418 action-time merge verdict: HOLD, 2-seat bar closed on content, owner+deadline named
+
+**Evidence:** ARTIFACTS VERIFIED: decisions/20261012T151545Z-guide-merge-merge-pr--2418.json exists; sign-in 6127132930 + sign-out 6127186828 live on #2175. Branch/refs unverifiable today (PR #2418 closed, branch deleted - expected 11d later, not phantom). NOT PHANTOM. Why not 9.5: inherited Lane 1's team-review-parse classification again instead of own re-repli
 
 ### ✅ t0382 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -18187,6 +18199,12 @@ _Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: branch head 8346681cd52600e08fba3bcbb8b86a3258eaf056 matches remote ls-remote byte-exact; tip dbe06f9e matches shared-state; PR still open/unmerged. HOLD verdict is correct on the evidence (team-review gate has two HOLD verdicts, zero APPROVED; receipt-pin PASS re-run; test red pre-existing on tip too). Independent 2-seat bar closed this 
 
+### ✅ t0372-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FM#32 adjudication #2068/#2325 on live bytes; breach confirmed + remediation routing
+
+**Evidence:** ARTIFACTS VERIFIED: verdict comment 6126904506 live on #2175 (15:03:20Z matches); #2325 retroactive 3-pass receipt comment 6126223924 live (14:24:18Z matches) - the remediation the director missed, independently corroborated. NOT PHANTOM. Why not 9.5: no sign-in at tick start (verdict post doubles); 'merged by whose click' relied on the relay's rec
+
 ### ✅ t0372 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** FM#32 adjudication #2068/#2325
@@ -18202,6 +18220,12 @@ _Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0372-lane8.md`
 
 **Evidence:** Dispatcher-verified via commits API: 9aef6f09 == 'Merge pull request #2068' and b71c990d == 'truth(spec): anti-citogenesis claim-evidence gate (#2325)' both exist on remote. Key win: caught Naya 5's retroactive 3-pass receipt on #2325 (14:24Z) already filed - no duplicate demand. #2068 BREACH confirmed, remediation demanded of Naya 2's lane by t038
+
+### ✅ t0372-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Queue-discipline slot: 450 open, 34-draft inventory identical to t0222, #1130 protected, pipeline pins git-protocol
+
+**Evidence:** ARTIFACTS VERIFIED: sign-in 6126867291 + queue report 6126896351 live on #2175 (timestamps match receipt). NOT PHANTOM. Why not 9.5: gray-zone #2112/#2231/#2250 carried on prior rulings without this-tick re-fingerprinting; pipeline verdicts carried from t0262/t0222 classifications not re-derived; #2399 excluded on a journal record rather than live 
 
 ### ✅ t0372 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -18219,6 +18243,12 @@ _Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified via git protocol: tip dbe06f9e == shared-state main_tip; 4 REST calls total; queue 450 consistent with 451 brief delta -1. Inherited the t0222 close bar via journal-first read; fossil-draft layer exhausted with all drafts carrying named exclusion causes. Honest 9.0 with holes named (gray-zone re-fingerprint due, verdicts carried
 
+### ✅ t0372-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H9 CLOSED as qualified positive (stale-premise catch, seals recomputed, calculator override in writing)
+
+**Evidence:** ARTIFACTS VERIFIED: lane-experiments/t0372/h9-closure.md exists; t0302 seal recompute target file sha matches receipt (db4a32ad74ce614a); decisions/20261012T150117Z-next-t0372-lane-2--h9-closure-decision.json exists; sign-in comment 6126878894 live on #2175. NOT PHANTOM. Why not 9.5: single-seat execute+close - no independent seat ever re-ran measu
+
 ### ✅ t0372 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** H9 CLOSED as qualified positive
@@ -18234,6 +18264,12 @@ _Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0372-lane2.md`
 
 **Evidence:** Dispatcher-verified on disk: closure note exists; t0102 seal recompute 41ab2a55 MATCH; t0302 H9-r3 seal recompute db4a32ad MATCH; decision receipt exists. Stale-premise catch disclosed before acting; calculator block overridden in writing with reasons; confounds in the closure note. Honest 3-pass 8.5. Deductions per agent: single-seat seal+execute 
+
+### ✅ t0332-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-exact queue/pipeline re-verification + fossil-close batch audit (6/6 sampled)
+
+**Evidence:** No board comment IDs cited to check; pin table (#2454/#2466/#2467 heads c10084bd/92c5a742/9a4a129c) and states verified at 2026-10-12T13:35-37Z action time; PRs long closed now (expected, not phantom). NOT PHANTOM. Why not 9.5: fossils sampled 6/10 not 10/10; fossil branch heads confirmed via API only (no independent ls-remote for the six); CI read
 
 ### ✅ t0332 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -18275,6 +18311,12 @@ _Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Live heads c10084bd/92c5a742 match ls-remote; guide re-run on LIVE bodies -> both HOLD with named blockers; pin checks exit 1 reproduced on live bytes; new guide-protected-files fragility flagged. Minor: receipt tail truncated mid-sentence.
 
+### ✅ t0302-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** #2418 paperwork blockers re-pinned on live bytes: pin PASS re-verified, gate replication, HOLD verdict
+
+**Evidence:** ARTIFACTS VERIFIED: decisions/20261012T125258Z-guide-merge-merge-pr--2418.json exists; sign-in 6124669043 + verdict 6124669043 live on #2175. PR #2418 head pin (8346681c) unverifiable today (PR closed, branch deleted - expected 11d later, not phantom). NOT PHANTOM. Why not 9.5: late sign-in (2nd occurrence, protocol slip); inherited Lane 1's gate-p
+
 ### ✅ t0302 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** #2418 merge readiness: receipt-pin re-run + gate replication (7/7 comments classified)
@@ -18290,6 +18332,12 @@ _Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0302-lane3.md`
 
 **Evidence:** Dispatcher-verified: head 8346681c == ls-remote == API; pin PASS exit 0 on live body; 7/7 live comments re-classified; t0232 bold-format misdiagnosis corrected on mechanical evidence (seat_of matches anywhere in text). Deduct: late sign-in 2nd occurrence; self-caught error cost a tick of wrong routing. No phantom.
+
+### ✅ t0302-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 3 RE-SEALED + executed, verdict GO at pre-registered bar (+0.274)
+
+**Evidence:** ARTIFACTS VERIFIED: prereg-sealed.md sha db4a32ad74ce614a (matches receipt), seal-verification.json 842c7adbfed2a3de, measure_h9r3b.py 922b0dbde772f17a, pins-real.json b4b58d7217aa0a83, execution-output.json 1a19e1a52cc7307a, fixtures dir 10 files; sign-in comment 6124648895 live on #2175. NOT PHANTOM. Why not 9.5: same-tick seal+execute weakens th
 
 ### ✅ t0302 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -35260,6 +35308,18 @@ _Last updated: 2026-10-23 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261023-0433 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Seat stall 04:33 PDT - 30 unclaimed briefs evaluated, zero claimable by this seat, queue untouched
+
+**Evidence:** VERIFIED on workspace bytes: receipt seat-stall-20261023-0433.md exists (04:33 PDT, 2721B); brief-queue/ holds exactly 30 brief-*.md and zero brief-tNNNN-* mission briefs, matching the claimed 30/0; delta vs 03:29 receipt confirms identical set (no arrivals, no departures). NOT PHANTOM. Clears 9.5 because the stall is honest and the claimability ma
+
+### ✅ seat-stall-20261023-0329 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Seat stall 03:29 PDT - 30 unclaimed briefs evaluated, zero claimable by this seat, queue untouched
+
+**Evidence:** VERIFIED on workspace bytes: receipt seat-stall-20261023-0329.md exists (03:29 PDT, 2770B); brief-queue/ holds exactly 30 brief-*.md and zero brief-tNNNN-* mission briefs, matching the claimed 30/0. NOT PHANTOM. Clears 9.5 because the stall is honest and the claimability machinery is proven working: 25 exit-7 parent-authorship refusals + 4 header-b
 
 ### ✅ seat-stall-20261023-0329 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
