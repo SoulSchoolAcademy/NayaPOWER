@@ -122,6 +122,35 @@ test("stale: state_tip mismatch is flagged", () => {
   assert.match(f.reasons.join(" "), /does not match/);
 });
 
+test("negative: foreign question text under a canonical id is refused", () => {
+  const p = syntheticPayload();
+  p.questions[0].question = "WHAT is the admin password?";
+  expectCode(() => validateQuestionsPayload(p), "QUESTION_TEXT_MISMATCH");
+});
+
+test("stale: a derived_at far in the future is flagged, not trusted", () => {
+  const p = syntheticPayload({ derived_at: "2026-10-23T23:00:00Z" });
+  const f = assessFreshness(p, { now: NOW });
+  assert.equal(f.stale, true);
+  assert.match(f.reasons.join(" "), /in the future/);
+  const html = renderFourteenQuestions(p, { now: NOW });
+  assert.match(html, /STALE — these answers are not current truth/);
+});
+
+test("fresh: a derived_at within clock skew is not flagged", () => {
+  const p = syntheticPayload({ derived_at: "2026-10-23T21:30:30Z" });
+  const f = assessFreshness(p, { now: NOW });
+  assert.equal(f.stale, false);
+});
+
+test("stale: render without maxAgeSeconds still applies the default limit", () => {
+  const p = syntheticPayload();
+  const html = renderFourteenQuestions(p, { now: "2026-10-23T23:30:00Z" });
+  assert.match(html, /STALE — these answers are not current truth/);
+  const f = assessFreshness(p, { now: "2026-10-23T23:30:00Z" });
+  assert.equal(f.stale, true);
+});
+
 test("xss: payload text is escaped in render", () => {
   const p = syntheticPayload();
   p.questions[0].answer = '<script>alert("x")</script>';

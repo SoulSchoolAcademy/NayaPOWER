@@ -13,6 +13,10 @@
  *   assessFreshness(payload, opts)     — SN-0834's machine rule:
  *     STALE = INVALID. An answer sourced from an old derivation or a
  *     different state_tip is flagged stale, never shown as current truth.
+ *     Freshness is NOT opt-in: when the caller supplies no maxAgeSeconds,
+ *     DEFAULT_MAX_AGE_SECONDS applies, and a derived_at more than
+ *     MAX_CLOCK_SKEW_SECONDS in the future is stale too (a timestamp
+ *     from the future is not current truth either).
  *   renderFourteenQuestions(payload, opts) — pure string rendering
  *     (no DOM), every payload string HTML-escaped, so the face can drop
  *     the output into its page and Node tests can verify it headlessly.
@@ -32,7 +36,10 @@
  *     ]
  *   }
  * Exactly the 14 canonical ids, in canonical order — the order IS the
- * interface (briefing § THE 14 QUESTIONS).
+ * interface (briefing § THE 14 QUESTIONS). The canonical question TEXT
+ * is bound too: an id carrying foreign text is refused, because the
+ * text is part of each question's identity — the face must never render
+ * a foreign question under the board's valid seal.
  */
 "use strict";
 
@@ -54,6 +61,12 @@ const CANONICAL_QUESTIONS = [
 ];
 
 const CANONICAL_IDS = CANONICAL_QUESTIONS.map(([id]) => id);
+
+// Freshness defaults (VERIFY fix round on PR #3016, card 6375665310):
+// a caller that supplies no limit still gets one, and small clock skew
+// is tolerated but a materially future timestamp is stale.
+const DEFAULT_MAX_AGE_SECONDS = 900;
+const MAX_CLOCK_SKEW_SECONDS = 60;
 
 function fail(code, message) {
   const err = new Error(message);
@@ -108,6 +121,12 @@ function validateQuestionsPayload(payload) {
     if (typeof q.question !== "string" || q.question.trim().length === 0) {
       fail("QUESTION_TEXT", `questions[${i}].question must be non-empty text`);
     }
+    if (q.question !== CANONICAL_QUESTIONS[i][1]) {
+      fail(
+        "QUESTION_TEXT_MISMATCH",
+        `questions[${i}].question must be the canonical "${CANONICAL_QUESTIONS[i][1]}" for id "${expectedId}", got "${q.question}"`
+      );
+    }
     if (!Array.isArray(q.proof)) {
       fail("PROOF_NOT_ARRAY", `questions[${i}].proof must be an array`);
     }
@@ -147,10 +166,17 @@ function assessFreshness(payload, opts = {}) {
   const now = opts.now ? new Date(opts.now) : new Date();
   const derivedAt = new Date(payload.derived_at);
   const ageSeconds = (now.getTime() - derivedAt.getTime()) / 1000;
+  const maxAgeSeconds =
+    opts.maxAgeSeconds != null ? opts.maxAgeSeconds : DEFAULT_MAX_AGE_SECONDS;
   const reasons = [];
-  if (opts.maxAgeSeconds != null && ageSeconds > opts.maxAgeSeconds) {
+  if (ageSeconds < -MAX_CLOCK_SKEW_SECONDS) {
     reasons.push(
-      `derived_at is ${Math.round(ageSeconds)}s old (limit ${opts.maxAgeSeconds}s)`
+      `derived_at is ${Math.round(-ageSeconds)}s in the future (skew limit ${MAX_CLOCK_SKEW_SECONDS}s)`
+    );
+  }
+  if (ageSeconds > maxAgeSeconds) {
+    reasons.push(
+      `derived_at is ${Math.round(ageSeconds)}s old (limit ${maxAgeSeconds}s)`
     );
   }
   if (opts.expectedStateTip != null && payload.state_tip !== opts.expectedStateTip) {
@@ -217,6 +243,8 @@ function renderFourteenQuestions(payload, opts = {}) {
 const api = {
   CANONICAL_QUESTIONS,
   CANONICAL_IDS,
+  DEFAULT_MAX_AGE_SECONDS,
+  MAX_CLOCK_SKEW_SECONDS,
   validateQuestionsPayload,
   assessFreshness,
   renderFourteenQuestions,
