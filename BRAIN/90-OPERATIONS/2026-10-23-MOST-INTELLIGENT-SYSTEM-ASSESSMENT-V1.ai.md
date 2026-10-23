@@ -14,7 +14,7 @@ Most intelligent system creatable? NO. Most honest known system, elite component
 - product_surface 6.0 — flagship rooms ≤4–7/10 (Today/Connections/Lists/Settings).
 - completion_landing 6.0 rising — open PRs 662 (2026-10-20) → 0 (2026-10-23 ~00:32Z, full enumeration); 5 breach record scorecards still owed.
 - voice 5.0 — batch bakes; no measured streaming median; backlog + error rows.
-- production 3.0 — stamp `00f50bb32` unchanged since 2026-10-08; 11 migrations pending; GT-039 sole gate.
+- production 3.0 — stamp `00f50bb32` unchanged since 2026-10-08; 13 migrations pending (post-wave ledger read at clearance tip: 11 pre-wave + Booking + Intake; Lists/Search migrations wait inside their held branches, not counted); GT-039 sole gate.
 - efficiency 1.5 — census 2026-10-22: ~8,910 actions / 56 verified outcomes ≈ 159:1 (ledger genesis read 172.8:1). Targets: <60:1 by 2026-10-29; runs/day <2,500.
 - cold_inheritance UNPROVEN — ACTIVATION-10 unrehearsed; rehearsal due 2026-10-25.
 
@@ -31,7 +31,7 @@ M9 production parity → production stamp == recent main tip; pending migrations
 M10 visible efficiency instrument → vital-signs page shows ratio/runs/freshness, current < 15 min.
 
 ## FLOW HOLES (10) — mechanism required, not prose
-H1 second publisher exists (disabled, not deleted) → delete `HUB/app/**` tree + trigger in-repo (Tier A re-file of #2968).
+H1 second publisher exists (disabled, not deleted) → delete `HUB/app/**` tree + trigger in-repo. #2968 prepared deletion is CLOSED-HELD FOR THE DIRECTOR'S DELETION REVIEW (6354255591; branch @`7347902a` preserved, evidence body intact); Shawn's ruling reopens it for the full Tier-A bar. Protection independent: workflow `disabled_manually`, first-hand verified.
 H2 generated-file drift class → rule: every generated artifact regenerates inside its own landing; door pattern extended to all generators.
 H3 red-as-wallpaper (Kernel Tests red, test unnamed) → name test, owner, cure; status "unknown" forbidden.
 H4 shared-login identity → second identity mechanism or explicit Shawn-hand routing; never dress same-login as different seat.
@@ -48,14 +48,14 @@ L1 proof discipline · L2 Smart Notes living memory + Lesson Law declared-behavi
 ## HIGHEST-VALUE ACTIONS (10) — owner / done-proof
 A1 Hub one-path cure — Nitro — repo copy reads live feed OR bake sole path; deliberate re-enable w/ proof.
 A2 In-repo stale-Hub retirement — main seat files, different seat scores — tree+trigger deleted at tip.
-A3 Land Smart Lists + Universal Search — author lanes — fresh PRs from proven cured heads (#2955 `fad584d8`, #2956 `4bd60e44` class), scorecard at head, dock, live probe.
+A3 Cure-then-land Smart Lists + Universal Search — author lanes — both CLOSED-HELD by Tier-A review (clearance evidence, receipt 6354268212). Lists #2955 @`fad584d8` scored 9.2 NOT APPROVED: hostile-category crash (`groupListsByCategory` throws on `__proto__`/`constructor`/`hasOwnProperty`/`toString` names `validateList` accepts) + presence-only contract audit (passes 5/8 doctored variants); isolation fully proven; verifier: one small cure round clears 9.5. Search #2956 @`4bd60e44` scored 8.5/8.5/8.0 Tier-A NOT APPROVED: adversarial pass 23/24 classes, decisive defect alias poisoning (caller alias set derived from unbound free-text `owner_alias`; cross-owner leak on smart_notes/smart_mail_threads branches); NO production exposure (migrations pending, human-gated). Reopen: canonical uid↔alias binding + pinning contract test + fresh Tier-A card ≥9.5 at new head.
 A4 Main honestly green — owning lane per named test — Kernel Tests green at tip w/ named-test receipt.
 A5 Breach scorecards → 0 — VERIFY — cards at exact merged heads (#2960 `361e3949` next).
 A6 Today = Your Day — Hub lane — live-stores probe pass by non-builder.
 A7 Voice streaming ship-if-proven — voice lane — median + backlog 0 + error rows owned.
 A8 ACTIVATION-10 rehearsal 2026-10-25 — main seat — cold-seat pass receipt; stumbles filed same day.
 A9 Ratio as living data; zero-output loops killed — Resolve lane — daily census ~19:37Z publishes ratio; <60:1 by 2026-10-29.
-A10 GT-039 fitted policies → ONE tap packet — Nitro fits, main seat assembles, Shawn taps — 11 migrations + `hub_smart_notes_personal` + ledger genesis/owner-id/read-projection + SN-1771/1772 VERIFIED_LIVE (1771 first) + SLA-flag dispositions.
+A10 GT-039 fitted policies → ONE tap packet — Nitro fits, main seat assembles, Shawn taps — 13 pending migrations + `hub_smart_notes_personal` + ledger genesis/owner-id/read-projection + SN-1771/1772 VERIFIED_LIVE (1771 first) + SLA-flag dispositions.
 
 ## ADDITIONS (10)
 Runtime live feed · Ask as front door (3 homes, 1 Naya) · spoken daily brief · universal search & command (landed) · payments in flagship (monthly/quarterly/yearly/lifetime) · multi-app magic completed · async voice/video notes (save-as-note | smart-note) · Timeline UI over proven read model · 10-second vital-signs page · Mirror loop auto-queue (deduction → owned work item, mechanical).

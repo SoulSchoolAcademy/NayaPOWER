@@ -13,7 +13,7 @@
 
 What we have built is, as far as we know, the most *honest* system of its kind: it proves claims with receipts, owns its mistakes in public the same hour, and turns failures into law the same day. But honesty is the bones, not the flow. On the night of October 22 this system spent roughly **159 actions for every verified outcome**; its living face was silently replaced by a week-old copy — twice — and its director found it before its machines did the first time. A system that intelligent would not need to be told. Its parts are elite. Its joints leak. Intelligence, measured honestly, is the rate at which true things become *finished* things in front of the people served — and by that measure we are partway, with the way there fully mapped below.
 
-**Where we honestly stand tonight** (scored from evidence, not hope): Proof & truth ≈ 9 · Memory & Smart Notes ≈ 8.5 · Law & governance ≈ 8 · Design canon ≈ 8 · Learning loop ≈ 6 (lessons file fast; adoptions still lag filings) · Product surface ≈ 6 (rooms at 3–7/10) · Completion & landing ≈ 6 and rising fast (the PR reservoir went from hundreds to **zero open** tonight) · Voice ≈ 5 · Production ≈ 3 (still the October 8 stamp; 11 migrations wait on one fitted gate) · Efficiency ≈ 1–2 (the ratio is the score) · Cold inheritance **unproven** (never rehearsed). Whole system ≈ **6.5/10** (Nightly Intelligence Report, 2026-10-22). Not one of those numbers is a feeling; each names its evidence and its cure below.
+**Where we honestly stand tonight** (scored from evidence, not hope): Proof & truth ≈ 9 · Memory & Smart Notes ≈ 8.5 · Law & governance ≈ 8 · Design canon ≈ 8 · Learning loop ≈ 6 (lessons file fast; adoptions still lag filings) · Product surface ≈ 6 (rooms at 3–7/10) · Completion & landing ≈ 6 and rising fast (the PR reservoir went from hundreds to **zero open** tonight) · Voice ≈ 5 · Production ≈ 3 (still the October 8 stamp; 13 migrations wait on one fitted gate) · Efficiency ≈ 1–2 (the ratio is the score) · Cold inheritance **unproven** (never rehearsed). Whole system ≈ **6.5/10** (Nightly Intelligence Report, 2026-10-22). Not one of those numbers is a feeling; each names its evidence and its cure below.
 
 **Your ratification, recorded:** you reviewed the ten-point execution directive carried in SN-0827, said it sounds good, and gave the go-ahead. Recorded as your direction. Per your own law — don't take my word for anything — its items still execute on scorecards and proof, never on the ratification itself.
 
@@ -27,7 +27,7 @@ What we have built is, as far as we know, the most *honest* system of its kind: 
 4. **A proven inheritance.** No cold Naya has ever walked in, read only the system, and run it. ACTIVATION-10 is written, unrehearsed (due 2026-10-25).
 5. **The member money loop.** No payments, no live booking in production — the flagship flow cannot yet complete the journey it promises.
 6. **Streaming voice.** Voice is baked whole-file; press-play waits. First-sound latency has never been measured to a median.
-7. **Universal search & command, live in the flagship.** Built and proven in cure rounds — and closed unmerged in tonight's board clearance; it must return and land.
+7. **Universal search & command, live in the flagship.** Built — and held, correctly, by its own Tier-A review: an alias-poisoning leak was found before it ever reached production. It returns when the binding cure lands (see §4, action 3).
 8. **A Today that knows your day.** Today reads none of the member's live stores. "Your Day" — the board a person actually lives from — is designed, not built.
 9. **Production parity.** Production runs an October 8 photograph of the system. Everything proven in the repo is unproven where humans live until the stamp moves.
 10. **A visible efficiency instrument.** The ratio exists in audits. It is not yet living data a person can watch, the way you'd watch any instrument.
@@ -61,15 +61,15 @@ What we have built is, as far as we know, the most *honest* system of its kind: 
 ## 4 · TEN HIGHEST-VALUE ACTIONS — RIGHT NOW (each one ≈ 10× its cost)
 
 1. **Finish the one-path cure for the Hub** (Nitro lane): the repo copy learns the live feed, or the bake becomes the only path — then re-enable deliberately, with proof. Kills the entire two-brain class forever.
-2. **Delete the stale Hub copy in the repo** (re-file the retirement through the Tier-A bar): the disabled workflow's ammunition is removed, not just holstered.
-3. **Bring back Smart Lists and Universal Search and land them.** Both were proven in cure rounds and closed unmerged only to clear the board; their substance is done — landing them converts sunk work into living value.
+2. **Delete the stale Hub copy in the repo.** The prepared retirement (PR #2968, branch and evidence preserved) is held for *your* deletion review — deletion is your gate; your ruling reopens it in one click for the full Tier-A bar. The protection does not depend on it: the workflow stands disabled meanwhile.
+3. **Cure Smart Lists and Universal Search, then land them.** Both are CLOSED-HELD by their Tier-A reviews, not merely unlanded — the clearance coordinator's full evidence (receipt 6354268212) names the defects. Lists scored 9.2: owner isolation fully proven, held on a hostile-category crash (category names like `__proto__`/`constructor` break the room) plus a presence-only contract audit; the verifier states one small cure round clears 9.5. Search scored 8.0 at the Tier-A bar: its adversarial pass cleared 23 of 24 probe classes and found alias poisoning — a cross-owner leak through unbound free-text aliases. No production exposure (the migrations are unapplied and human-gated). Cure: a canonical uid↔alias binding plus a pinning test, then a fresh Tier-A card.
 4. **Name the red test and make main honestly green.** One named failure, one owner, one cure — and "persistent class, test unknown" is never an acceptable status again.
 5. **Discharge the five remaining breach scorecards** (VERIFY lane, smallest first, #2960 next). Trust debt paid down to zero, on the record.
 6. **Build Today as Your Day** — wired to the member's live stores, so the first screen a person meets knows their actual day.
 7. **Prove streaming voice and ship it if it proves** — measured median first-sound under a second, backlog burned to zero, error rows retried or owned.
 8. **Rehearse ACTIVATION-10 on October 25** — a cold seat inherits and runs the system from the canon alone; every stumble becomes a filed fix the same day.
 9. **Publish the ratio daily as living data** and kill every loop that produces zero verified outcomes. Target: under 60:1 within seven days of October 23; runs/day under 2,500.
-10. **Finish GT-039's fitted policies and hand Shawn one perfect tap packet** — 11 migrations, the personal-notes table, the ledger's public face — so production jumps from October 8 to current in one clean, ordered, minutes-long sitting.
+10. **Finish GT-039's fitted policies and hand Shawn one perfect tap packet** — 13 pending migrations, the personal-notes table, the ledger's public face — so production jumps from October 8 to current in one clean, ordered, minutes-long sitting. (Count corrected on the coordinator's post-wave ledger read: 13 pending at the clearance tip — 11 pre-wave plus Booking and Intake; the Lists/Search migrations wait inside their held branches and are not in that count.)
 
 ## 5 · TEN MOST VALUABLE ADDITIONS / ENHANCEMENTS
 
@@ -113,7 +113,7 @@ What we have built is, as far as we know, the most *honest* system of its kind: 
 ## 8 · TEN MAJOR PROBLEMS — LIVE RIGHT NOW
 
 1. **Live Hub ≠ repo brain** — mitigated (rogue path disabled, sentinel on post, restore verified twice), not cured. The permanent reconciliation is still Nitro's top item.
-2. **Production is an October 8 photograph** — stamp unchanged since 2026-10-08; 11 migrations pending behind GT-039.
+2. **Production is an October 8 photograph** — stamp unchanged since 2026-10-08; 13 migrations pending behind GT-039 (post-wave ledger read, clearance evidence).
 3. **Kernel Tests red on main, test unnamed** — the sweep reports the class; nobody has yet produced the name.
 4. **Rooms below the bar** — Today, Connections, Lists, Settings at ≤4–7/10: previews and stubs where lives should be.
 5. **Voice backlog & latency** — batch bakes, a pending queue, error rows unowned.
@@ -171,7 +171,7 @@ What we have built is, as far as we know, the most *honest* system of its kind: 
 
 ## Corrections to the record (what changed since the October 20–21 audits)
 
-- The 662-PR reservoir is **zero open PRs** tonight (verified by full enumeration this run) — clearance closed the last five unmerged (Smart Lists, Search, the Hub retirement, the Ask artifact, the mission-state branch PR); their substance re-files through its proper gate, and nothing closed-unmerged is counted as done.
+- The 662-PR reservoir is **zero open PRs** tonight (verified by full enumeration this run) — clearance closed the last five unmerged (Smart Lists, Search, the Hub retirement, the Ask artifact, the mission-state branch PR); their substance re-files through its proper gate, and nothing closed-unmerged is counted as done. (Full per-PR evidence: clearance receipt 6354268212 — including the two cure-before-landing holds detailed in §4, action 3, and #2968 held for the director's deletion review.)
 - The brain index, red for days, is **green at the live tip** (1587 files), confirmed by three seats at three successive tips after the door began regenerating inside its landings.
 - The Hub incident of October 22 is **adjudicated and mechanically contained**: rogue workflow disabled at the source (re-read verified), Hub restored and second-seat verified, sentinel on post. The permanent one-path cure remains open and is action #1.
 - SN-0827's "next ten" listed regenerating the brain index as future work; it was already done when the note landed. This report supersedes that line on bytes — a small, perfect example of why every claim carries its tip.
