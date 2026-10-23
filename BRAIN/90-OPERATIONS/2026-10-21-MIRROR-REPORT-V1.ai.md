@@ -242,3 +242,46 @@ Do not ask Shawn questions already answerable from canonical evidence or a safe 
 - Machine report JSON: parse **PASS**; tongue paths resolve to the actual three report filenames.
 
 **Not proven by these checks:** timed independent ACTIVATION-10; cold instance answering all 14 questions without injected answers; live identity continuity; nine-node behavioral influence; production Sender → Receiver → Hub; behavior-changing learning transfer; or Naya A → B → C runtime succession. These remain open until independent, exact-scope receipts exist.
+
+
+---
+
+## Current-State Reassessment — 2026-10-23T03:50Z
+
+This is a continuation, not a silent rewrite of the 2026-10-21 snapshot. The last located measured scores remain historical: whole system 6.4/10, machine-native 5.0/10, alignment 53%; no fresh full score was run here.
+
+- Main tip observed: `9b736742c8869b5a64d34668bd3c8293d27aedb7`.
+- Four open PRs: #2968, #2981, #2990, #2997.
+- #2968: Tier-A stale Hub shell retirement, mergeability false, Shawn's explicit gate required.
+- #2981: 698-commit Smart Notes mega-PR, stale base, mergeability false; reconcile paths and duplicates before any landing.
+- #2990: draft release guard; author reports 10 tests pass, independent exact-head test against real Cloudflare config and a negative control pending.
+- #2997: manifest/checker threshold alignment; author reports 11/11 tests and version sync pass; independent gate and receipt pending.
+- Public Hub health was not freshly checked; do not infer current HTTP health from the daily report.
+- Smart Note rule: authorized route → sync → personally open exact public link → verify title/status → then share. A merge is not delivery.
+
+### Current ranked work
+1. Independent real-config qualification of #2990 with stale-path negative control.
+2. Independent exact-head gate for #2997.
+3. Path-by-path reconciliation of #2981; split/close with lineage.
+4. Prepare #2968 for Shawn's protected Tier-A decision.
+5. Fresh Hub status and served-source fingerprint.
+6. Smart Note Door end-to-end click verification.
+7. Cold-14 with no injected answers.
+8. Held-out lesson-transfer test with blind verifier.
+9. Sender → Receiver → Hub persistence/provenance/privacy proof.
+10. First executable Factory contract and scoped kernel/node behavioral proof.
+
+The human tongue retains the complete ten assets, gaps, actions, enhancements, blockers, problem/solution pairs, owners, and copy/paste team directive. Do not award 10/10 for documentation, merge, or green CI alone.
+
+
+### Critical new finding: Hub release-path conflict
+
+At #2990 head `edb9946e68aed087bdf5338576f842f0b02f78ac`, the added test requires `deploy-hub-cloudflare.yml` and its `HUB/app/**` trigger to remain. #2968 identifies that workflow as the stale-snapshot publisher and removes the trigger; the alternative `hub-deploy.yml` / `tools/hub_deploy.py` says its transport is NOT_CONFIGURED without `HUB_DEPLOY_CMD`. These claims conflict. I posted cross-PR evidence comments to #2990 and #2968. Current state: **BLOCKED pending identification and proof of the actual canonical publisher**. Do not qualify or merge either PR in isolation. First reconcile the release path, then pin the guard to the canonical publisher and prove the stale path fails.
+
+
+**Queue accounting:** the four-open-PR figure is timestamped at 03:50Z before this report PR existed. Draft report PR [#2998](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2998) opened at 03:51:53Z, bringing the current queue to five; it is not merged.
+
+
+### Coordination pointer conflict
+
+Live issue reads disagree with the 2026-10-23 learning-event header: #2641's own issue body says ARCHIVED on 2026-10-19 and “don't post new coordination here”; #2793 is open and names itself the live board. Treat the #2641 pointer as stale/conflicted; use #2793 for current receipts unless newer verified main-level law supersedes it.

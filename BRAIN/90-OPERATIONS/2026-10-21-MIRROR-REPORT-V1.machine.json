@@ -591,5 +591,120 @@
       "Naya A to B to C runtime succession"
     ],
     "truth_rule": "Source-contract tests and repository gates do not substitute for live runtime proof or independent cold comprehension."
+  },
+  "current_reassessment_2026_10_23": {
+    "observed_at_utc": "2026-10-23T03:50:00Z",
+    "main_tip_sha": "9b736742c8869b5a64d34668bd3c8293d27aedb7",
+    "open_pr_count": 4,
+    "open_prs": [
+      {
+        "number": 2968,
+        "state": "open",
+        "mergeable": false,
+        "tier": "A",
+        "status": "Stale Hub shell retirement; explicit Shawn decision required; do not merge/delete outside protected gate.",
+        "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968"
+      },
+      {
+        "number": 2981,
+        "state": "open",
+        "mergeable": false,
+        "commits": 698,
+        "status": "Stale-base Smart Notes mega-PR; path-by-path reconciliation, duplicate/already-landed/superseded classification; split or close with lineage.",
+        "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981"
+      },
+      {
+        "number": 2990,
+        "state": "open",
+        "draft": true,
+        "mergeable": true,
+        "head_sha": "edb9946e68aed087bdf5338576f842f0b02f78ac",
+        "status": "Author reports 10 focused tests pass; independent exact-head verification against actual Cloudflare release config and stale-path negative control pending.",
+        "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990"
+      },
+      {
+        "number": 2997,
+        "state": "open",
+        "mergeable": true,
+        "head_sha": "9ef4881a11d5d1a681344166533d40b283330e4b",
+        "status": "Author reports 11/11 tests and protocol-version sync pass; different-seat verification and required receipts pending.",
+        "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2997"
+      }
+    ],
+    "hub_public_health": "NOT_RECHECKED_IN_THIS_INSPECTION",
+    "score_baseline": {
+      "whole_system": 6.4,
+      "machine_native": 5,
+      "alignment_pct": 53,
+      "as_of": "2026-10-21",
+      "status": "HISTORICAL_BASELINE_NOT_FRESHLY_REMEASURED"
+    },
+    "verdict": "NO — not yet the most intelligent system creatable. Current evidence sharpens the diagnosis but does not justify a new numerical score.",
+    "top_actions": [
+      "Resolve the release-path conflict across #2990, #2968, hub-deploy.yml, tools/hub_deploy.py, and the actual lane publisher; prove the canonical path before qualifying the guard.",
+      "Independently qualify #2997 at exact head and verify all merge-gate receipts.",
+      "Reconcile #2981 path-by-path; split or close superseded work, preserve lineage, avoid duplicate notes.",
+      "Prepare #2968 for Shawn's explicit Tier-A deletion/release decision.",
+      "Re-check live Hub health and served-source fingerprint.",
+      "Run Smart Note Door + sync + personal click verification before sharing.",
+      "Run Cold-14 without injected answers and classify every answer by evidence state.",
+      "Run held-out learning transfer with blind different-seat verification.",
+      "Prove Sender-to-Receiver-to-Hub persistence, provenance, privacy, and useful outcome.",
+      "Prove one executable Factory contract and scoped kernel/node behavioral influence."
+    ],
+    "acceptance_law": "10/10 requires current, complete, independent evidence and no material critical unknown; prose, merge, or green CI alone do not qualify. Release guard qualification is BLOCKED until the actual production publisher is identified and the stale-path negative control is proven.",
+    "supersedes": "This addendum supersedes the 2026-10-21 snapshot only for current main/queue claims; historical scores remain historical until freshly measured.",
+    "source_links": [
+      "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
+      "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
+      "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990",
+      "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2997",
+      "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-LEARNING-EVENT.md"
+    ],
+    "release_path_conflict": {
+      "status": "BLOCKED",
+      "finding": "At #2990 head edb9946e68aed087bdf5338576f842f0b02f78ac, tests/test_hub_single_source.py requires deploy-hub-cloudflare.yml to retain the HUB/app/** trigger and HUB/wrangler.toml to publish ./app. #2968 proposes removing that trigger and retiring the stale snapshot publisher. hub-deploy.yml/tools/hub_deploy.py says alternate transport is NOT_CONFIGURED without HUB_DEPLOY_CMD.",
+      "consequence": "Do not qualify or merge #2990 or #2968 in isolation until the actual canonical production publisher is identified and evidenced.",
+      "required_next_steps": [
+        "Identify the actual current production publisher using live deployment evidence, not prose/config alone.",
+        "Reconcile #2990 and #2968 so the guard pins the canonical publisher and the stale path is rejected.",
+        "Independently test exact head with positive and negative controls.",
+        "Obtain Shawn's explicit Tier-A decision for the deletion/release effect in #2968."
+      ],
+      "comments": [
+        "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2990",
+        "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968"
+      ]
+    },
+    "report_update_pr": {
+      "number": 2998,
+      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2998",
+      "state": "open",
+      "draft": true,
+      "opened_at_utc": "2026-10-23T03:51:53Z",
+      "note": "The four-open-PR count above is the pre-report-PR snapshot at 03:50Z. Opening this report PR makes the current queue five; this is an intentional draft for the requested report update, not a merge or completion claim."
+    },
+    "coordination_pointer_conflict": {
+      "status": "CONFLICTED",
+      "observed_at_utc": "2026-10-23T03:55:00Z",
+      "evidence": [
+        {
+          "issue": 2641,
+          "state": "closed",
+          "body_claim": "Archived 2026-10-19; explicitly says do not post new coordination there."
+        },
+        {
+          "issue": 2793,
+          "state": "open",
+          "body_claim": "Identifies itself as the live Team Naya board, effective 2026-10-20T10:28:53Z."
+        },
+        {
+          "source": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-LEARNING-EVENT.md",
+          "conflict": "Header calls #2641 the live board."
+        }
+      ],
+      "action": "Treat #2641 pointer as stale/conflicted; current receipts go to #2793 unless a newer verified main-level instruction supersedes it.",
+      "not_claimed": "No board migration was performed by this inspection."
+    }
   }
 }
