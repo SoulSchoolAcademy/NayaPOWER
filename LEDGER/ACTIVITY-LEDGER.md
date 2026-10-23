@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-23 00:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-23 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -4449,6 +4449,14 @@ _Last updated: 2026-10-23 00:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: arm.py sha256 c21d621a1d1c9725be2bc65c042722eb8aa74f69e688442b8c222193774cc4c9 BYTE-EXACT vs receipt pin; judge runner sha256 3d725cb0f2d8de5e27ed9026b9612c9911d8fef6fde024d51bb7620e38dc3e78 BYTE-EXACT; verdict_t1284.json sha256 14c4929115c81baccf3bd72128f3e2b977a632474091dffe818542ca186bbdbd BYTE-EXACT, carries all four cells: P1 rank1 0
 
+### ✅ t1282 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Four-arm cold-retrieve drill + adversarial FALSIFIED-lesson finding
+
+**Receipt:** `twelve-lane-receipts/t1282-lane5.md`
+
+**Evidence:** VERIFIED: hidden_files/lane5-t1282-retrieval-verify/ present with run_drill.py, seal.json, cold_trial1/2.json, synthetic_arms.json, drill_tree/, MANIFEST.md — full drill reproducible from the seal. Score: 9.0/10 (GOOD, ONE MORE PASS). Why not 9.5: (1) exclusion and adversarial arms ran on a synthetic 5-entry corpus, not the live 631-note registry; 
+
 ### ✅ t1282 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Four-arm cold-retrieval experiment
@@ -4479,6 +4487,14 @@ _Last updated: 2026-10-23 00:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: lane5-t1282-retrieval-verify/ (MANIFEST, seal.json, cold_trial1/2.json) all on disk. Cold 1.199-1.343s measured (mincore-verified), superseded EXCLUDED, unauthorized RETRIEVED (honest 3rd negative, wiring blocked on Shawn), genuine NEW finding: FALSIFIED lesson outranked genuine 82.30 vs 73.93 with no flag, mechanism named (sco
 
+### ✅ t1282 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Merge-gate re-run for PR #2418 (decision-engine consolidation)
+
+**Receipt:** `twelve-lane-receipts/t1282-lane3.md`
+
+**Evidence:** VERIFIED: hidden_files/decisions/20261012T050240Z-guide-merge-merge-pr--2418.json present (570 bytes, calculator verdict HOLD); receipt pins head 43c0113eee == ls-remote == PR head_sha; both seat scorecards (Naya 2 9.0, Naya Smith 9.0) re-verified on exact head; mergeable:false/dirty confirmed; each CI red classified (consensus-gate paperwork PR-ca
+
 ### ✅ t1282 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** Verdict on #2418 consensus state with red classification
@@ -4508,6 +4524,14 @@ _Last updated: 2026-10-23 00:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1282-lane3.md`
 
 **Evidence:** Dispatcher verified via git ls-remote (free): #2418 head 43c0113eee302db2c334aa9d5d3139ea0afd1d77 == receipt pin. Verdict HOLD (correct): mergeable=false/dirty, tip moved twice since PR open; merge-consensus red is paperwork (PR body lacks 'Seat: Naya 3' for naya[1-5] regex); test red pre-existing base drift; delivery-gate exit-2 is tool error with
+
+### ✅ t1282 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Blinded-Scoring Protocol v1 + full H6 blinded-scoring demo
+
+**Receipt:** `twelve-lane-receipts/t1282-lane1.md`
+
+**Evidence:** VERIFIED: hidden_files/blinded-scoring/ exists with SPEC.md, README.md, mechanism/{assemble_packet,leak_audit,unblind}.py, and demo/{seal-log.json,run-log.md,score-sheet.md,scorer-scores.json,leak-audit.json,escrow,pocket(packet/PKT-*.md)} all present. Score: 9.0/10 (GOOD, ONE MORE PASS). Why not 9.5: (1) scorer_separation is subagent-fresh-context
 
 ### ✅ t1282 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -34792,6 +34816,24 @@ _Last updated: 2026-10-23 00:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261022-1740 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat stall claim sweep (30 unclaimed briefs evaluated, zero claimable by Clarity seat)
+
+**Evidence:** VERIFIED on workspace bytes + live dry-run: receipt file exists; both named new arrivals (brief-gap-gap-distill-daily-20261022-lane0.md, brief-gap-seat-stall-20261022-1620-lane0.md) PRESENT in brief-queue/; queue holds 30 top-level briefs, consistent with the receipt's 28->30 delta; claim-brief.py --dry-run --seat 'Naya Clarity Narzan' reproduced b
+
+### ✅ lane-scorer-20261022-1720 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat stall claim sweep (28 unclaimed briefs evaluated)
+
+**Evidence:** VERIFIED on workspace bytes: receipt file exists; all 28 tabled briefs PRESENT in brief-queue/ now; the refusal taxonomy (24 exit-7 second-seat demands on Clarity-authored parents + 4 exit-2 stamp bars) is internally consistent with the 15:15 receipt and the standing independence pattern. Score 9.0. Why not 9.5: the 't1310 moved to claimed/' delta 
+
+### ✅ lane-scorer-20261022-1720 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat stall claim sweep (29 unclaimed briefs evaluated)
+
+**Evidence:** VERIFIED on workspace bytes: receipt file exists; the 29-row per-brief refusal table matches the 29 unclaimed brief-*.md the receipt reports at its write time (queue has since grown to 30 — new arrivals, expected); spot-checked 4/4 listed briefs PRESENT in brief-queue/, the claimability-gate stamp confirmed LIVE on an exit-2 sample (brief-gap-score
 
 ### ✅ seat-stall-20261022-1620 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
