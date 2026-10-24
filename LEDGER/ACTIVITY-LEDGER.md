@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 01:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 01:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -580,6 +580,14 @@ _Last updated: 2026-10-24 01:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** SURGE slice (a) arm4 second-seat confirmation (blind re-derivation + re-execution)
 
 **Evidence:** ARTIFACT VERIFIED on live bytes: hidden_files/surge-slice-a-arm4-secondseat-t1464/ contains verdict-table-arm4-t1464.json (20/20 numbers, all verdict=MATCH vs builder), secondseat-derivation.json, SEAL-AUDIT.md; parent surge-slice-a-arm4-t1460/ sealed dir present with prereg, arm scripts, results. Score 9.4 (GOOD, ONE MORE PASS). Kept from 9.5 by e
+
+### ✅ t1468 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-authorization stamping migration plan (SURGE slice b)
+
+**Receipt:** `twelve-lane-receipts/t1468-lane10.md`
+
+**Evidence:** Verified: plan doc hidden_files/retrieval-auth-stamping-migration-plan.md sha256 5becd469... matches receipt exactly; tip commit 91ac0dca resolves on remote (main has since moved to 6c60c328, disclosed by receipt); blobs 91686357/aae7b3d7/313ff50e/27f8b0da all cat-file -t OK at tip with sha256 matching receipt byte-for-byte (9bbc8acc..., fbe6ee29..
 
 ### ✅ t1467 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
 
