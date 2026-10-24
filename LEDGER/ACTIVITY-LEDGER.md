@@ -2,7 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 01:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 01:37 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+
+## 🟢 Working right now
+
+- **Team ? — ?** (?) — tick t1480
 
 ## The Teams
 
@@ -563,6 +567,28 @@ _Last updated: 2026-10-24 01:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: surge-slice-a-arm4-verify-t1465/ on disk with verdict-table.json, derivation.json, verify-arm4-t1465.py all present; sha256 of all three byte-matches receipt pins (158eec1b...1f08, e17f4b9e...366f, 682b4f55...3950). Clears 9.5 because the certification is a fresh independent implementation (own Kendall tau-b tie handling) reproducing buil
 
+### ✅ t1470 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-authorization stamping migration plan (SURGE slice b) — design only
+
+**Evidence:** VERIFIED: plan doc hidden_files/retrieval-auth-stamping-migration-plan.md sha256 5becd469694214b5ddf425c3448b31c39c9cb8485e627eec14258ec6548a62ec byte-matches the receipt pin (own sha256sum); NOT-WIRED/NOT-EXECUTED declarations present (2 hits) — no wiring smuggled. Pass-2 discovery (live Check-7 manifest staleness, 4 lock-free writers W7-W10 with 
+
+### ✅ t1470 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Stage-0 RETRIEVAL re-run — log-vs-brief byte audit, post-t1461 window; first genuine MISS named
+
+**Receipt:** `twelve-lane-receipts/t1470-lane1.md`
+
+**Evidence:** VERIFIED: receipt t1466-lane6.md sha256 9b4c92b0... matches pin byte-exact; the quoted MISS line ('preregister-conservative: MISS - this brief asked for a fixture, not a hypothesis') present verbatim at L26 (own grep); receipt t1464-lane5.md sha256 741a16f0... matches pin byte-exact; the claimed fold-fidelity defect corroborated from raw bytes — 'r
+
+### ✅ t1469 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-2 winmine: 3 success patterns (WP-1 blind recount chain, WP-2 stale-work reroute, WP-3 zero-drift re-run) from t1430-t1468 9.5+ receipts
+
+**Receipt:** `twelve-lane-receipts/t1469-lane2.md`
+
+**Evidence:** ARTIFACT VERIFICATION: winmine file hidden_files/winmine-success-patterns-t1469.md present (10225 bytes, sha256 bdb11f2cb71e6d7a matches receipt); prior mines t1027/t0648 present; 6 cited receipts present, SHA spot-check t1464-lane5=741a16f0 matches. Anti-phantom finding CORROBORATED: 243 score rows cite receipt files that do not exist on disk (e.g
+
 ### ✅ t1468 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** SURGE slice (b) caller-binding DESIGN — the t942 residual ('specified, not designed')
@@ -580,6 +606,14 @@ _Last updated: 2026-10-24 01:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** SURGE slice (a) arm4 second-seat confirmation (blind re-derivation + re-execution)
 
 **Evidence:** ARTIFACT VERIFIED on live bytes: hidden_files/surge-slice-a-arm4-secondseat-t1464/ contains verdict-table-arm4-t1464.json (20/20 numbers, all verdict=MATCH vs builder), secondseat-derivation.json, SEAL-AUDIT.md; parent surge-slice-a-arm4-t1460/ sealed dir present with prereg, arm scripts, results. Score 9.4 (GOOD, ONE MORE PASS). Kept from 9.5 by e
+
+### ✅ t1468 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-3 Judge adjudication: first SURGE done-criteria ruling (slices a-d: semantic arm, retrieval-auth gate, top-20, host-class)
+
+**Receipt:** `twelve-lane-receipts/t1468-lane3.md`
+
+**Evidence:** ARTIFACT VERIFICATION: 12/12 cited receipt files present on disk (t1460-lane2, t1462-lane4, t1457-lane3, t1458-lane10, t1464-lane2/5/8, t1465-lane1/11/7, t1467-lane12, t1468-lane10); 3/3 cited board comment IDs verified live on #2793 via REST (6375661298, 6376082559, 6375049502). Law-7 premise audit caught 4/4 stale brief premises; per-slice verdic
 
 ### ✅ t1468 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
