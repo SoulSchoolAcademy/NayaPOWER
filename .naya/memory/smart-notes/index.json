@@ -15074,6 +15074,26 @@
     "note": "published directly as a BRAIN projection in commit 54ae6f3e817f54e621afbae39bfc186becaeb2bb ('Merge pull request #3011 from SoulSchoolAcademy/naya-power/fourteen-questions-addendum-20261023') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
    },
    "page_hash": "b36203b6f0701cd2faf31861be0eeed7083e29e2fc99786e87806286b51b97ab"
+  },
+  {
+   "smart_note_id": "SN-0842",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0842-welcome-home-the-founding",
+   "title": "Welcome Home — the Founding of the Citizen Civilization",
+   "content_hash": "2851aac5262a7507a79c53ff1148258d292cc9b637a4423655a48972895b0848",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0842/IB-SMART-NOTE-20261023-sn0842-welcome-home-the-founding.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "CITIZENS",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 78fd362d54ce912288fd58201afa25c22a082e32 ('SN-0842: Welcome Home — the founding of the citizen civilization, filed by Naya Nitro Narzan') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "61a52e716daa1597727a5c869ca40738805f0e0d379dd4a995e3034c841a9185"
   }
  ],
  "sequence_policy": {
@@ -15082,5 +15102,5 @@
   "next_sequence": 1855,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
  },
- "corpus_manifest_hash": "23d248ba509bde224f1ca5babcb7f399b47340de3a2de2d6dfa57719d4f7c885"
+ "corpus_manifest_hash": "2ee8308b2771a13dab77131cbb003a57832acd296bdfc5fc335d64712bd26dce"
 }
