@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -544,6 +544,30 @@ _Last updated: 2026-10-24 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall sweep: 25 queued briefs evaluated, all refused (exit 2/6/7), correct skip, root cause named
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
+
+### ✅ t1522 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat recomputation of t1515-lane12 semantic decomposition numbers from sealed bytes
+
+**Receipt:** `twelve-lane-receipts/t1522-lane1.md`
+
+**Evidence:** VERIFIED: prereg sha 8135f525...108, arm script sha 857cc64f...63d, sealed report sha bfed3ae4...47, corpus json sha f3a97a11...f5, sealed lessons backup sha ff644aac...37 (35 lines), live lessons sha 379af5db...47 (36 lines) all re-derived byte-identical from disk this run; independent recount from per-brief rank_of_hits fields: 28 HITs, 4 @3, 2 @
+
+### ✅ t1516 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** mission-calibrated judge calibration protocol — prereg + design doc (design-only)
+
+**Receipt:** `twelve-lane-receipts/t1516-lane6.md`
+
+**Evidence:** VERIFIED: prereg sha 5be4bb27... matches; t1511 live path retrieval/entailment-judge-arm-t1511-lane6.json sha 79fe352b... matches; phantom hidden_files/retrieval path confirmed absent; prereg + design both carry the phantom-path correction; B1-B6 and R1-R4 present, D0/D1+delta+attribution formulation present. NOT PHANTOM: all artifacts exist. Why n
+
+### ✅ t1515 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** semantic decomposition arm against pinned t1504 corpus — HOLD-OPEN
+
+**Receipt:** `twelve-lane-receipts/t1515-lane12.md`
+
+**Evidence:** VERIFIED: prereg sha 8135f525..., arm script sha 857cc64f..., report sha bfed3ae4... all independently recomputed by scorer (match); report JSON confirms verdict HOLD-OPEN, f1_falsifier FIRES, leg_correlation r=0.6621 (separable, threshold 0.90), recall@3 4/28=0.143, recall@1 2/28=0.071, fp_rate 0.000; falsifier honored after self-caught rounding-b
 
 ### ✅ t1515 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -24189,6 +24213,14 @@ _Last updated: 2026-10-24 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t1502 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** surge arm9 execution: usage-lineage contact falsifier
+
+**Receipt:** `twelve-lane-receipts/gap-t1502-lane9.md`
+
+**Evidence:** VERIFIED: design sha eed3a9c6...493, frozen corpus list sha 589587a1...673 (1,657 files), verdict sha 8075847c...386 all re-derived byte-identical from disk this run. NOT PHANTOM: all artifacts exist. Clears 9.5 because the frozen prereg was executed exactly (seal verified, corpus frozen pre-count, two-run determinism, verdict-before-tripwire order
+
 ### ✅ gap-lane-scorer-20261017-1630 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** file-gap-brief tick-ordering repair + live-venue fix (#2721)
@@ -29679,6 +29711,14 @@ _Last updated: 2026-10-24 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-t1497 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** arm5 verdict-table transform, F-3 CONFIRM close
+
+**Receipt:** `twelve-lane-receipts/gap-t1497-lane4.md`
+
+**Evidence:** VERIFIED: new verdict table sha ef84f059...318, transform script sha b385c24d...13, F-3 rerun log sha 445991d0...eb all re-derived byte-identical; table independently re-read this run: 18 rows with transform field stating 'mechanical re-presentation of sealed bytes, NOT a new recount'. NOT PHANTOM: all artifacts exist. Clears 9.5 because the F-3 CO
+
 ### ✅ gap-gap-lane-scorer-20261021-1920-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** close named gap: observe completeness-gate firing - found already done
@@ -30676,6 +30716,14 @@ _Last updated: 2026-10-24 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-t1504 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** VIOLATION-RT live run: detector on live freeze, scope-hole proof
+
+**Receipt:** `twelve-lane-receipts/gap-t1504-lane3.md`
+
+**Evidence:** VERIFIED: live freeze sha 3b0a089f...10d5d, detector script sha 5b1c5be0...ed6, detector output sha 82799e6b...2ae all re-derived byte-identical from disk this run; detector run twice exit 0, 384 blocks, 4 in-scope PASS blocks. NOT PHANTOM: all artifacts exist. Clears 9.5 because the parent gap (proven only on frozen-feed copies) is closed on live 
 
 ### ✅ gap-t1279-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -34101,6 +34149,14 @@ _Last updated: 2026-10-24 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-t1504 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** vocabulary rewrite + fresh probe A/B (lesson-matcher viability)
+
+**Receipt:** `twelve-lane-receipts/gap-t1504-lane10.md`
+
+**Evidence:** VERIFIED: lessons.jsonl sha 379af5db...67b, fold-verdict-format-v1 sha 9ec69984...0b, probe json sha 25899b20...3f, OLD-CATALOG json sha 0d6e4b04...75, probe script sha d7a0d2fd...52 all re-derived byte-identical (probe files at goal-root retrieval/, matching the receipt's relative paths). NOT PHANTOM: all artifacts exist; A/B on identical fresh co
+
 ### ✅ gap-t0462-lane10-rescore-2045 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up: ask-world live-check read-only contract re-verification (t0462, scored 9.0)
@@ -36228,6 +36284,14 @@ _Last updated: 2026-10-24 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-t1497 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** routing-prose gate in claim-brief.py (section 1j, exit-2 pre-mv refusal)
+
+**Receipt:** `twelve-lane-receipts/gap-t1497-lane1.md`
+
+**Evidence:** VERIFIED: claim-brief.py sha f9662757...8f8f and original brief sha aa14efdd...718 re-derived byte-identical; routing_prose_bar defined and wired pre-mv (line 1395) confirmed in the file this run; full self-test re-run independently this tick: exit 0, lift-stamp suite GREEN including B7 passing after the Seat-line skip fix, corroborating the receip
 
 ### ✅ gap-20261022-0950 — Team 1, Team Naya Scorer (Verification & Proof) — 9.4/10 [VERIFIED]
 
