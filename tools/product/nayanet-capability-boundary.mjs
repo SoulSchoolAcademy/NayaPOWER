@@ -37,6 +37,21 @@ export function validateCapabilityCatalog(c) {
      welcome.empty_answers_are_never_invented!==true ||
      welcome.recommendation_never_implies_connect_send_or_join!==true)
     throw Error('invalid_first_citizen_journey');
+  const p=c.page_settings_contract||{};
+  if(p.canonical_file!=='HUB/nayanet-page-settings.v1.json' ||
+    JSON.stringify(p.independent_controls)!==JSON.stringify(['visibility','discoverability','installation']) ||
+    p.start_unpublished!==true || p.multiple_pages_per_category!==true ||
+    p.production_state!=='SPECIFIED_PROTOTYPED__SERVER_NOT_VERIFIED' ||
+    p.requires_server_side_authorization!==true ||
+    p.no_public_index_of_private_contents!==true ||
+    p.private_findable_requires_separately_approved_teaser!==true ||
+    p.all_installable_claim_requires_real_deployed_pwa_per_page!==true ||
+    p.no_auto_publish_on_visibility_toggle!==true ||
+    p.no_auto_connect_or_space_join_on_discoverability!==true ||
+    p.defaults?.personal!=='private/unlisted/install-enabled' ||
+    p.defaults?.business!=='public/findable/install-enabled' ||
+    p.defaults?.space!=='public/findable/install-enabled')
+    throw Error('unsafe_or_missing_page_settings');
   const truth=c.operational_truth_policy||{};
   if(truth.intended_unbounded_creation!==true ||
      truth.unlimited_capacity_production_verified!==false ||
@@ -73,6 +88,11 @@ export function validateCapabilityCatalog(c) {
   }
   function requires(id,key){const f=c.features.find(x=>x.id===id);
     if(!f||!f.required_verified_gates.includes(key))throw Error('missing_gate:'+id+':'+key);}
+  for(const id of ['personal_world','business_page','starter_space','page_addons','private_visibility','smart_app_builder']){
+    requires(id,'per_page_settings_owner_scope_verified');
+    requires(id,'per_page_visibility_and_discovery_server_verified');
+  }
+  requires('page_addons','per_page_pwa_installability_tested');
   requires('private_mail','real_a_b_c_denial_verified');
   requires('connections','recipient_consent_verified');
   requires('collective_contribution','explicit_share_verified');
