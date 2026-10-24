@@ -7,7 +7,9 @@ from urllib.error import HTTPError
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "tools" / "map-compiler"))
-from surface_readiness import QUALITY_DIMENSIONS, load_registry, grade_surface, audit_registry, probe_surface
+from surface_readiness import (QUALITY_DIMENSIONS, NORTH_STAR_DIMENSIONS,
+                               NORTH_STAR_LEVELS, north_star_gate, load_registry,
+                               grade_surface, audit_registry, probe_surface)
 
 REGISTRY = ROOT / "HUB" / "NETWORK-SURFACE-REGISTRY.json"
 
@@ -28,6 +30,14 @@ class SurfaceReadinessTests(unittest.TestCase):
         a["verified_receipts"] = ["receipt-locator-needs-external-validation"]
         a["positive_real_user_test"] = True
         a["adversarial_negative_test"] = True
+        a["north_star"]["score_by_level"] = {
+            level:{axis:9.5 for axis in NORTH_STAR_DIMENSIONS}
+            for level in NORTH_STAR_LEVELS
+        }
+        a["north_star"]["evidence_by_level"] = {
+            level:["external-scope-proof-pending"] for level in NORTH_STAR_LEVELS
+        }
+        a["north_star"]["cohorts_tested"] = ["authorized-human", "cold-Naya"]
         a["experience_proof"].update({
             "human_task_success":True,
             "human_experience_score":9.5,
@@ -138,6 +148,59 @@ class SurfaceReadinessTests(unittest.TestCase):
             self.assertTrue(row["naya_journey"])
             self.assertTrue(row["network_continuity_journey"])
             self.assertIsNone(row["assessments"]["experience_proof"]["human_experience_score"])
+
+    def test_registry_reuses_canonical_smart_note_six_by_three(self):
+        c = self.registry["north_star_operating_standard"]
+        self.assertIn("SN-0843/",c["authority_ref"])
+        self.assertEqual(tuple(c["six_dimensions"]),NORTH_STAR_DIMENSIONS)
+        self.assertEqual(tuple(c["three_levels"]),NORTH_STAR_LEVELS)
+        self.assertEqual(len(c["seven_question_loop"]),7)
+
+    def test_individual_perfect_but_no_journey_is_unassessed(self):
+        a = self.qualified_metadata()
+        a["north_star"]["score_by_level"]["individual"] = {
+            dim:10 for dim in NORTH_STAR_DIMENSIONS
+        }
+        a["north_star"]["score_by_level"]["journey"]["network_intelligence"] = None
+        self.assertEqual(grade_surface(self.item), "NORTH_STAR_UNASSESSED")
+
+    def test_component_and_journey_perfect_but_network_below_bar(self):
+        a = self.qualified_metadata()
+        for level in ("individual","journey"):
+            a["north_star"]["score_by_level"][level] = {
+                dim:10 for dim in NORTH_STAR_DIMENSIONS
+            }
+        a["north_star"]["score_by_level"]["network"]["trust_governance"]=8.5
+        self.assertEqual(grade_surface(self.item),"BELOW_9_5")
+
+    def test_each_north_star_dimension_blocks_when_weak_at_any_level(self):
+        a = self.qualified_metadata()
+        for level in NORTH_STAR_LEVELS:
+            for dimension in NORTH_STAR_DIMENSIONS:
+                with self.subTest(level=level,dimension=dimension):
+                    a["north_star"]["score_by_level"][level][dimension]=9.0
+                    self.assertEqual(grade_surface(self.item),"BELOW_9_5")
+                    a["north_star"]["score_by_level"][level][dimension]=9.5
+
+    def test_missing_independent_network_proof_not_nine_plus(self):
+        a = self.qualified_metadata()
+        a["north_star"]["evidence_by_level"]["network"] = []
+        self.assertEqual(grade_surface(self.item),"NORTH_STAR_UNVERIFIED")
+
+    def test_no_tested_human_or_naya_cohorts_not_nine_plus(self):
+        a = self.qualified_metadata()
+        a["north_star"]["cohorts_tested"] = []
+        self.assertEqual(grade_surface(self.item),"NORTH_STAR_UNVERIFIED")
+
+    def test_perfect_six_by_three_still_needs_external_acceptance(self):
+        a = self.qualified_metadata()
+        for level in NORTH_STAR_LEVELS:
+            a["north_star"]["score_by_level"][level] = {
+                d:10 for d in NORTH_STAR_DIMENSIONS
+            }
+        self.assertEqual(grade_surface(self.item),"READY_FOR_SHIP_REVIEW")
+        a["governed_release_approval"] = "claimed"
+        self.assertEqual(grade_surface(self.item),"EXTERNAL_ACCEPTANCE_VALIDATION_REQUIRED")
 
     def test_head_405_bounded_get_recovers_a_working_smartnote(self):
         class Response:
