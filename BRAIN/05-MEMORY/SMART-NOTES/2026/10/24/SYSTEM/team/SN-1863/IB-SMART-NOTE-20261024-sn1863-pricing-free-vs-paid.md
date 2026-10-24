@@ -17,7 +17,7 @@ The numbers below are set by one rule, and it is why they are believable: every 
 - **Reports (daily, weekly, monthly):** Free monthly report only · Paid daily, weekly, and monthly — unlimited. (Frequency is the tier: free sees the month, paid sees every day.)
 - **Smart Lists:** Free 3 lists · Paid unlimited lists.
 - **Smart Links:** Free 1 — your own Smart Link, because your link is your identity and identity is never charged. Paid unlimited links — one per project, campaign, or offer.
-- **Projects (live view of what's going on):** Free 3 projects · Paid 50 projects.
+- **Projects (live view of what's going on):** Free 3 projects · Paid unlimited projects — as many as you want, each with its vision, goal, mission, and its notes living inside it (see the Projects feature: a project holds its vision, goal, mission, and everything, with Smart Notes as part of it and a live view of what's going on).
 - **Daily highlights / Intel:** Free top 3 highlights a day · Paid the full Intel feed, unlimited.
 - **Live calls (audio and video):** Free audio calls up to 4 people · Paid video calls up to 6 people and audio calls up to 10 people. (These are the mesh limits — browser to browser, near zero media cost, and the caps are what keep it free to run. Bigger groups than this are a future monthly add-on, not part of standard or lifetime.)
 - **Media — voice and video notes:** Free 60 minutes a month · Paid 600 minutes a month, with voice notes up to 120 minutes each and video notes up to 60 minutes each. (Storage is the one meter that truly moves, so minutes are the honest number here.)
@@ -52,7 +52,7 @@ Build rules for every seat:
 - extends: SN-1862 (free world vs paid engine — the line; this note adds the numbers)
 - gate: trial clock (5 days, no card), not per-feature locks
 - free: pages 4; spaces 3; mail 100/month; smart_notes 10/month; reports monthly-only; smart_lists 3; smart_links 1 (identity); projects 3; highlights top-3/day; calls audio-4; media 60 min/month
-- paid: pages 100/month; spaces unlimited; mail 10000/month; smart_notes 100/month; reports daily+weekly+monthly; smart_lists unlimited; smart_links unlimited; projects 50; highlights unlimited; calls video-6 + audio-10; media 600 min/month (voice notes up to 120 min each, video up to 60 min each); own_ai true; fork true; payouts from paid referrals
+- paid: pages 100/month; spaces unlimited; mail 10000/month; smart_notes 100/month; reports daily+weekly+monthly; smart_lists unlimited; smart_links unlimited; projects unlimited (each with vision, goal, mission + notes inside + live view); highlights unlimited; calls video-6 + audio-10; media 600 min/month (voice notes up to 120 min each, video up to 60 min each); own_ai true; fork true; payouts from paid referrals
 - paid_lifetime_founding: pages unlimited; all other paid numbers as above
 - ladder: trial 5 days no card; 14/month; 37/3mo; 75/year; 150/lifetime founding-only; founding cap 1000; lifetime closes at first doubling
 - calls_expansion: groups beyond video-6/audio-10 = future monthly add-on, NOT in standard, NOT in lifetime
