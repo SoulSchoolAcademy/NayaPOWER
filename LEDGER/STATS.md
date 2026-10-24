@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-24 06:06 UTC_
+_Last updated: 2026-10-24 06:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 5867
-- ✅ Verified (8+): 5806
+- **Total scored actions:** 5877
+- ✅ Verified (8+): 5816
 - 🟡 Partial (5–7): 58
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -15,18 +15,18 @@ _Last updated: 2026-10-24 06:06 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 423 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 409 | 8.8 | 9.5 |
+| Team 1 | Naya Verity | 427 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 410 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 391 | 9.0 | 10 |
-| Team 4 | Naya Mason | 376 | 9.1 | 9.6 |
+| Team 4 | Naya Mason | 377 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 500 | 9.1 | 9.6 |
-| Team 6 | Naya Heir | 277 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 278 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 372 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 401 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 402 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 517 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 718 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 317 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 301 | 9.2 | 9.5 |
+| Team 12 | Naya Herald | 303 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -2166,14 +2166,16 @@ _Last updated: 2026-10-24 06:06 UTC_
 - **t1494:** 4 actions, avg 9.5/10
 - **t1495:** 2 actions, avg 9.5/10
 - **t1496:** 6 actions, avg 9.5/10
-- **t1497:** 10 actions, avg 9.3/10
+- **t1497:** 12 actions, avg 9.2/10
 - **t1498:** 7 actions, avg 9.4/10
 - **t1499:** 6 actions, avg 9.1/10
 - **t1500:** 2 actions, avg 9.2/10
 - **t1502:** 4 actions, avg 8.9/10
 - **t1503:** 2 actions, avg 9.2/10
 - **t1504:** 3 actions, avg 6.0/10
-- **t1505:** 2 actions, avg 9.2/10
+- **t1505:** 4 actions, avg 9.4/10
+- **t1506:** 4 actions, avg 9.5/10
+- **t1507:** 2 actions, avg 9.5/10
 - **t1530:** 7 actions, avg 9.0/10
 - **t1540:** 2 actions, avg 9.2/10
 - **t1541-gaesall:** 4 actions, avg 9.4/10
