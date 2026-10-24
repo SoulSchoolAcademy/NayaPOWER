@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-24 11:32 UTC_
+_Last updated: 2026-10-24 12:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 5937
-- ✅ Verified (8+): 5876
+- **Total scored actions:** 5941
+- ✅ Verified (8+): 5880
 - 🟡 Partial (5–7): 58
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -25,7 +25,7 @@ _Last updated: 2026-10-24 11:32 UTC_
 | Team 8 | Naya Sentinel | 403 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 521 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 722 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 333 | 9.1 | 9.6 |
+| Team 11 | Naya Heart | 336 | 9.1 | 9.6 |
 | Team 12 | Naya Herald | 314 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -457,6 +457,7 @@ _Last updated: 2026-10-24 11:32 UTC_
 - **seat-stall-20261024-0140:** 1 actions, avg 9.0/10
 - **seat-stall-20261024-0253:** 1 actions, avg 9.0/10
 - **seat-stall-20261024-0358:** 1 actions, avg 9.0/10
+- **seat-stall-20261024-0500:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -759,6 +760,7 @@ _Last updated: 2026-10-24 11:32 UTC_
 - **lane-scorer-20261022-1030:** 1 actions, avg 9.0/10
 - **gap-t1509:** 1 actions, avg 9.5/10
 - **gap-t1515:** 1 actions, avg 9.0/10
+- **gap-t1538-lane11:** 1 actions, avg 9.4/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
@@ -2215,10 +2217,10 @@ _Last updated: 2026-10-24 11:32 UTC_
 - **t1535:** 1 actions, avg 9.0/10
 - **t1536:** 1 actions, avg 9.3/10
 - **t1538:** 1 actions, avg 9.0/10
-- **t1540:** 2 actions, avg 9.2/10
+- **t1540:** 3 actions, avg 9.3/10
 - **t1541-gaesall:** 4 actions, avg 9.4/10
 - **t1541-gate0912:** 1 actions, avg 9.5/10
-- **t1541:** 2 actions, avg 9.2/10
+- **t1541:** 3 actions, avg 9.3/10
 - **t1541-0626:** 3 actions, avg 8.8/10
 - **t1541-0629:** 3 actions, avg 8.8/10
 - **t1541-0628:** 3 actions, avg 9.2/10
