@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
-Smart Match — current engine (v1.3). Naya Power, SET B (engine end), 2026-10-24.
+Smart Match — current engine (v1.4). Naya Power, SET B (engine end), 2026-10-24.
 History: v1 (literal tokens) -> v1.1 (concept layer) -> v1.2 (two-tier
 family scoring) -> v1.3 (word tier inside the raw score — citizen free
 vocabulary: "urban gardening" must see "gardening"; found by the Welcome
-Engine's first end-to-end demo, Loop 2). Scorecards in SCORECARD.md.
+Engine's first end-to-end demo, Loop 2) -> v1.4 (light stemming; word tier
+in cross scores — "chess partners" sees "chess"; validated 12/12 against
+the Golden Set, weights evidence-checked by calibrate.py).
 
 WHAT A MATCH % MEANS (published semantics):
   The weighted share of DECLARED signals that align between two profiles.
@@ -58,10 +60,24 @@ def _coeff(A, B):
     return len(shared) / min(len(A), len(B)), shared
 
 
+def stem(w):
+    """Light deterministic stemmer (Loop 4): unifies garden/gardens/gardening,
+    teach/teaching. Suffix rules only — no dictionary, no surprises."""
+    if len(w) > 5 and w.endswith("ing"):
+        w = w[:-3]
+        if len(w) > 3 and w[-1] == w[-2]:
+            w = w[:-1]
+    elif len(w) > 4 and w.endswith("ies"):
+        w = w[:-3] + "y"
+    elif len(w) > 3 and w.endswith("s") and not w.endswith("ss"):
+        w = w[:-1]
+    return w
+
+
 def _words(terms):
     out = set()
     for t in terms or []:
-        out |= {w for w in t.lower().replace(",", " ").split() if len(w) > 2}
+        out |= {stem(w) for w in t.lower().replace(",", " ").split() if len(w) > 2}
     return out
 
 
@@ -85,11 +101,20 @@ def family_score(a_terms, b_terms):
     return 0.5 * raw + 0.5 * con, raw_shared, con_shared
 
 
+CROSS_STOPWORDS = {"help", "want", "wants", "need", "needs", "people", "person",
+                   "someone", "others", "with", "from", "that", "this", "more"}
+
+
 def cross_score(a_terms, b_terms):
-    """Offers<->needs and wants keep the v1.1 signature overlap (raw+concepts)."""
-    A = set(a_terms or []) | concepts_of(a_terms)
-    B = set(b_terms or []) | concepts_of(b_terms)
-    return _coeff(A, B)
+    """Offers<->needs and wants: signature overlap (terms + concepts + stemmed
+    content words, Loop 4 — 'chess partners' must see 'chess'; generic glue
+    words are stoplisted so cross-fits stay meaningful)."""
+    def sig(terms):
+        words = {stem(w) for t in (terms or [])
+                 for w in t.lower().replace(",", " ").split()
+                 if len(w) > 3 and w not in CROSS_STOPWORDS}
+        return set(terms or []) | concepts_of(terms) | words
+    return _coeff(sig(a_terms), sig(b_terms))
 
 
 def score(a, b, value_b=None):
