@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-24T19:24:27Z",
-  "tip": "6ee127b9e3332f8f2730fc4d3489b6e7ad7a9fb8",
+  "generated_at": "2026-10-24T20:26:10Z",
+  "tip": "f41bf212b06d4b1dd8025e08c5b3033c42787cce",
   "prs": [
     {
       "number": 2968,
@@ -22,22 +22,13 @@
       "head": "5a149bbce2985930a11bef0173465acffb0cb851"
     },
     {
-      "number": 3000,
-      "title": "Naya/mission state",
+      "number": 3051,
+      "title": "Universal interfaces scaffold + corrected Hub worker (draft)",
       "tier": "B",
-      "action": "MERGE-NOW",
-      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "df80b8eb417ddec1c4f755ecf2e65da60d0b479d"
-    },
-    {
-      "number": 3036,
-      "title": "fix(retrieve): re-stamp SN-1854 page_hash after 211cff Filed-line addition",
-      "tier": "C",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): door-obligation; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "f88edf88f7d1648f6bc75506d44f2ba966d296c7"
+      "head": "23a0744b3cbe0c9ffada85bfa9405ea5632b135e"
     }
   ]
 }
