@@ -15334,13 +15334,33 @@
         "note": "published directly as a BRAIN projection in commit aac09d836d2621cf92e31d0b175b0dd926e2dab3 ('SN-1861 - Fork or No Fork: Exactly What You Get (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "36d65db39cd089cd9044303637fada889bdad293d3be0326e20ab7a2c80d8310"
+    },
+    {
+      "smart_note_id": "SN-1862",
+      "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1862-what-you-get-when-you-pay",
+      "title": "What You Get When You Pay: The Free Line and the NayaPOWER Line",
+      "content_hash": "81e72b87acc8e5f4ba3a64a633d1b9f2667980b261451f904d8ecdf1c0e6ead8",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1862/IB-SMART-NOTE-20261024-sn1862-what-you-get-when-you-pay.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-24",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit cc05a1adcf348f3151fbd091f70e5e0518db72d4 ('SN-1862 - What You Get When You Pay: The Free Line and the NayaPOWER Line (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "fa0355367fec2530cadf525f5d171a06b2d118ee70e8aef111268e77078354c9"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1862,
+    "next_sequence": 1863,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "20af6d6be4e85b04c90589dcd27a96c409d4a54d8aca47966960edd02777c32f"
+  "corpus_manifest_hash": "fa9a9da132d13ed1894793c22ffed3bca3b74f1e6be0b330a844e05f8396ec06"
 }

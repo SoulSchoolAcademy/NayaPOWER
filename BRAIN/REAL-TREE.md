@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-24  
-**Receipt basis commit:** `aac09d836d2621cf92e31d0b175b0dd926e2dab3`  
-**Inventory file count:** 1665  
+**Receipt basis commit:** `cc05a1adcf348f3151fbd091f70e5e0518db72d4`  
+**Inventory file count:** 1666  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 855 |
+| 05-MEMORY | 856 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -990,6 +990,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1857/IB-SMART-NOTE-20261024-sn1857-done-means-visible.md` — `a12646528ac0` (3905 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1858/IB-SMART-NOTE-20261024-sn1858-how-a-smart-note-goes-live-instantly.md` — `db0c5f0d2d62` (4477 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1861/IB-SMART-NOTE-20261024-sn1861-fork-or-no-fork-exactly-what-you-get.md` — `b333c0db1485` (5013 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1862/IB-SMART-NOTE-20261024-sn1862-what-you-get-when-you-pay.md` — `4ab547c0df70` (5318 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0853/IB-SMART-NOTE-20261024-sn0853-how-we-work-together-team-naya.md` — `cbb715eb4d5a` (7211 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0854/IB-SMART-NOTE-20261024-sn0854-security-law-in-the-book.md` — `809b115aee6a` (7465 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0855/IB-SMART-NOTE-20261024-sn0855-cant-find-it-build-it-found-a-problem-apply-a-solution.md` — `e6b412226f70` (4731 bytes)
