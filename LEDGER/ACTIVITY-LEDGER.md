@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 17:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9762,6 +9762,14 @@ _Last updated: 2026-10-24 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t982-lane11.md`
 
 **Evidence:** Baseline extended unchanged from t912 design over 21 receipts + 21 score lines (mean 8.52); per-receipt M2/M3/M4 audit tables; honest UNKNOWNs for M1/M5/M6; drift-vs-t912 table restated for next tick; hv-node-schema-contract.md machine-readable handoff for Lane 12. DISPATCHER VERIFIED: lane-11/STATS.md, lane-11/hv-node-schema-contract.md, receipt f
+
+### ✅ t982 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-exact cross-seat review of PR #2385 (brain-index-freshness required gate workflow) at live head
+
+**Receipt:** `twelve-lane-receipts/t982-lane10.md`
+
+**Evidence:** VERIFIED by git protocol at scoring time (2026-10-24T17:03Z): ls-remote refs/pull/2385/head = eedd9540f54cd96c241db4be2f43f0698ae4dd07, EXACT match to the receipt's pinned head 12 days after the receipt; shallow fetch of that head confirms all 4 cited files present in the head tree (.github/workflows/brain-index-freshness.yml, docs/branch-protectio
 
 ### ✅ t982 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
