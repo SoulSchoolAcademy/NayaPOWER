@@ -46,3 +46,21 @@ ready, here is what fails and who can verify the fix." Presenting a failing
 version is itself a failure. The design contract, laws, and rules live in the
 Smart Factory officially, in inventory, retrievable by any seat, before any
 build — see SN-0856: https://nayanet.live/s/sn0856
+
+## ACTIVE INTELLIGENCE — the design standard, locked 2026-10-17
+Shawn's name for the standard: everything active, alive, elevated, raised,
+lights up on touch, moves, micro-interactions, three-layered, high contrast,
+premium, perfect spacing, everything intentional, highest level possible.
+The 16 official laws (naya-design-laws-official-2026-10-17): white text
+always, hierarchy by size; gold earned, green=proven, gold=shown,
+blue=stated; chrome acts, text speaks, theme identifies; adjacent never
+share a hue; one board, one color; white at rest with visible rim, own
+color ignites on touch, edge+glow only, text stays white; boards are
+horizontal rectangles; restraint, no flood; verbatim N5 tokens only,
+Newsreader + Inter, no private hexes; one spectrum sequence per page;
+preview before pick; mobile IS the app; every control works or it does
+not ship; compose, don't create; depth before color, zero flat,
+three-layered elevation; size separates, color never does. Motion:
+breathing, drift, orb flow, ignition on the token clock, press + lift,
+calm off-switch required. Same-language check: 24 items, any single FAIL
+= does not ship.
