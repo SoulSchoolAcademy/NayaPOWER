@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -286,6 +286,14 @@ _Last updated: 2026-10-24 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-gap-20261017-1600-lane6.md: staleness-watch falsifier — both FIRED branches proven, one-command instrument
 
 **Evidence:** Verified: retrieval/falsify-staleness-watches-20261018.py exists (4658 bytes) as the checked-in one-command instrument. Score 9.0/10 GOOD, ONE MORE PASS. Why not 9.5: single-seat — the FIRED-x2-on-live-derived-bytes and fail-closed re-proofs are receipt-internal runs, uncorroborated; a second seat re-running the one command closes it. Credited: the
+
+### ✅ t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Independent verification of t1564 dispatcher reconcile (queue/rotation/claimed chain)
+
+**Receipt:** `twelve-lane-receipts/t1564-lane11.md`
+
+**Evidence:** Verified independently from live bytes at score time: rotation queued=16 exactly the 15 named gap briefs plus brief-t1564-lane11.md; brief-queue root holds those 15 briefs (plus lane-feed.md); exact-name execution receipts 0/15 for the gap briefs; in_flight=[]; claimed/ root holds only brief-t1564-lane11.md plus done/; prior t1562 close confirmed (
 
 ### ✅ t1562 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -33842,6 +33850,22 @@ _Last updated: 2026-10-24 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t1564 (scored 9.0): close claimed-brief gate gap and prove t1564 dispatcher reconcile stood
+
+**Receipt:** `twelve-lane-receipts/gap-t1564-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes at score time: t1564 receipt SHA-256 df5a6e63...6843 MATCHES the gap receipt claim; t1562 receipt 9903a6ad...1957 and gap-t1562 receipt 6988bb99...6ca MATCH the t1564 receipt exactly; rotation queued=15 (the 15 other gap briefs, incl. brief-gap-gap-gap-t1504-lane10.md), in_flight=[], tick_count 1565; brief-queue/cla
+
+### ✅ gap-t1562 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t1562-lane11 (scored 9.0): confirm 60-line overrun, correct t1561 citation, name root cause
+
+**Receipt:** `twelve-lane-receipts/gap-t1562-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: t1562 receipt 54 lines, 7337 bytes, SHA-256 9903a6ad1ef618f6a84240c25ca6e745ec72b1dd76e56ebbec35546455dd1957 MATCHES the gap receipt's citation exactly, and its line 32 states the 60-line pre-sign-in read (35 beyond the 25-line gate); t1561 receipt 64 lines, 7972 bytes, SHA-256 dff2cc55cd72eed8e2a3f
 
 ### ✅ gap-t1558 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
 
