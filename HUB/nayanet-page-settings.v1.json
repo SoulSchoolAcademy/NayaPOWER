@@ -1,0 +1,96 @@
+{
+  "schema": "nayanet.page-settings.v1",
+  "canonical_product_issue": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3028",
+  "canonical_architecture_issue": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3029",
+  "adoption_state": "PROPOSED_NOT_DEPLOYED",
+  "applies_to": [
+    "personal",
+    "business",
+    "space",
+    "smart_app",
+    "project_page",
+    "other_page"
+  ],
+  "controls": {
+    "visibility": {
+      "values": [
+        "private",
+        "public"
+      ],
+      "meaning": "Who is eligible to view page CONTENT; server LAW/RLS controls actual access"
+    },
+    "discoverability": {
+      "values": [
+        "unlisted",
+        "findable"
+      ],
+      "meaning": "Whether owner allows a page's approved PUBLIC summary to appear in search, directories, feed recommendations or AutoMatch"
+    },
+    "installation": {
+      "values": [
+        "enabled",
+        "disabled"
+      ],
+      "meaning": "Owner preference for install affordance; browser/device and deployed PWA gates decide actual installation"
+    }
+  },
+  "defaults": {
+    "personal": {
+      "visibility": "private",
+      "discoverability": "unlisted",
+      "installation": "enabled"
+    },
+    "business": {
+      "visibility": "public",
+      "discoverability": "findable",
+      "installation": "enabled"
+    },
+    "space": {
+      "visibility": "public",
+      "discoverability": "findable",
+      "installation": "enabled"
+    },
+    "smart_app": {
+      "visibility": "private",
+      "discoverability": "unlisted",
+      "installation": "enabled"
+    },
+    "project_page": {
+      "visibility": "private",
+      "discoverability": "unlisted",
+      "installation": "enabled"
+    },
+    "other_page": {
+      "visibility": "private",
+      "discoverability": "unlisted",
+      "installation": "enabled"
+    }
+  },
+  "launch_state": "DRAFT_UNPUBLISHED",
+  "initial_publishing_requires": [
+    "owner_authenticated",
+    "specific_page_owner_bound",
+    "explicit_content_and_visibility_review",
+    "server_visibility_enforcement_verified",
+    "receipt_and_revision"
+  ],
+  "indexing_policy": {
+    "public/findable": "Only after owner publish approval and server-authenticated public visibility + safe published summary; eligible for search, directory and AutoMatch",
+    "public/unlisted": "Direct URL may display approved public content; omit from directory, suggestions, sitemap; do not promise secrecy of shared link",
+    "private/unlisted": "No public content, public metadata, directory results, suggestions or anonymous install-entry leakage; server denies unauthorized reads",
+    "private/findable": "Only if owner separately approves a SAFE public teaser (non-sensitive, no member list) and server enforces audience; otherwise reveal nothing; never index private payload"
+  },
+  "production_hard_gates": [
+    "Authenticated immutable owner/page binding for READ and WRITE; never browser alias alone",
+    "LAW and server/RLS gate every read, update, publish, index, connect, and invite independently",
+    "Index/finder/AutoMatch emit only explicitly eligible server-authorized published public summaries",
+    "Private-to-public requires explicit owner review; never silently reuse old private content or private social evidence",
+    "Public-to-private unindexes, revokes public links and previously distributed cached endpoints where feasible, invalidates search/feed cache; cannot erase existing copies",
+    "Every setting change atomically records before/after, actor, revision, authority receipt; retries idempotent and stale writes rejected",
+    "Private/findable teaser requires separate audited opt-in and safe payload; no private metadata defaults",
+    "Installability is not visibility/ownership and never implies offline authorization; no storing private bytes in public service-worker caches",
+    "Real PWA install needs unique manifest id/start_url/scope, secure origin, icon and tested browser support; owner may disable",
+    "Separate pages have independent policies, revisions, installations and permissions; additional pages are governed by actual operational capacity"
+  ],
+  "test_status": "NO_LIVE_SERVER_OR_PWA_ACCEPTANCE_YET"
+}
