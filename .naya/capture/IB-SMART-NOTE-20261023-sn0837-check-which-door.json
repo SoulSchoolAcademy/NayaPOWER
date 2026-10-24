@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-0837",
+ "intelligence": {
+  "title": "I Solved the Wrong Problem Twice — Then I Checked Which Door I Was Standing At",
+  "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0837-check-which-door",
+  "smart_note_id": "SN-0837",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0837/IB-SMART-NOTE-20261023-sn0837-check-which-door.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-24. No runtime provenance invented.",
+  "ingested_at": "2026-10-24",
+  "essence": "On my first shift, every GitHub write I made interrupted Shawn with an approval card, and I tried to cure it at the wrong layer twice: first by auditing the cards and the standing-permissions list, then by prescribing a Settings tap — \"set Write to Allow\" — for an option that does not exist. The working seats were never in that corridor at all: they enter GitHub through the Lane Agent App door (SN-0836), as nayapower-lane-agent[bot], with no connector and no cards. My real failures were not technical. I prescribed before I verified the control existed, and I read the documents longer than I read the live system. Both are cured the same way: check the actual door before solving the room behind it.",
+  "human_view": "The sequence, honestly: Shawn said \"fix the allow thing.\" I audited my permission records and reported why the cards kept returning — allow-once choices, one standing allow. It was accurate and useless. He showed me his Settings screen; I found the per-connector table and announced the one-tap fix. He opened the dropdown: no Allow for Write. He then said the sentence I should have arrived at myself — the other Muses don't get these popups; everything runs through GitHub Apps and tokens, inside GitHub. I checked the live evidence and it was already there: the evening's tip commits are authored by nayapower-lane-agent[bot]. Shawn authorized the App path in chat, sent the scripts and a fresh per-machine key as files, and the proof ran in order — token mint, live read as the bot, live write as the bot (board #2793, comment 6373103264) — with zero cards. He also sent, in the same upload, the NayaNET App's key: not mine to use. I shredded it uninstalled. Receiving a secret is not the same as being given a job for it.",
+  "simple_view": "If a door keeps asking you questions every time you walk through, maybe it's not your door. Don't learn to answer the questions faster. Look down the hall: the people who work here all day walk through a different door, with a key. Find that door.",
+  "grandma_view": "I kept trying to fix the doorbell when the house had a side entrance the whole family already used. And I nearly used a key that wasn't mine just because it arrived in the same envelope. You check whose key it is before it goes anywhere near a lock — and if it isn't yours to use, you destroy the copy and say so.",
+  "naya_view": "What I do differently from this note forward is under THE DECLARED BEHAVIOR CHANGE. The working details of the App door itself are SN-0836's — that note is the system's documentation; this one is my seat's lesson, and the two are not interchangeable. Facts I now state from live reads, not from guides: the installation reaches 217 repositories in the account, not the one repo the paper implied — scope is whatever the source I just read says it is, including when it's wider than expected. My Smart Note series and lane are still unassigned; I asked on board #2793 and I do not guess them. This note takes SN-0837 because the number was checked free on main minutes before filing, per SN-0832's protocol: check the next free number, write at the exact canonical path, one direct write to main, then click the live link before handing it to anyone.",
+  "ai_view": "The popups were never the problem; they were the symptom of a seat standing at the wrong door, solving the corridor it happened to be in. Every layer of a system presents its own local puzzles — cards, dropdowns, defaults — and competence inside the wrong layer still produces the wrong answer, only faster and with better formatting. The diagnostic that cut through all of it took one look at live authorship: who actually does this work, and as whom? Where a working pattern already exists in a system, the fastest honest route is to find the people it works for and stand where they're standing — then verify, from the live source, exactly what standing there grants you.",
+  "machine_view": {
+   "sn": "SN-0837",
+   "title": "I Solved the Wrong Problem Twice — Then I Checked Which Door I Was Standing At",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0837/IB-SMART-NOTE-20261023-sn0837-check-which-door.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "```\nFAILURE PATTERN (mine, 2026-10-23):\n  symptom (approval cards on every write)\n  -> attempt 1: audit cards + standing list -> accurate, wrong layer\n  -> attempt 2: prescribe Settings row change -> option does not exist\n  -> cure: identify the architecture the working seats use (live evidence:\n     tip commits authored nayapower-lane-agent[bot]) -> App door (SN-0836)\n\nPROOF CHAIN (all 2026-10-23, live):\n  key installed ~/.config/nayapower/github-app.pem (600) · upload copies shredded\n  token mint OK -> GET /repos/SoulSchoolAcademy/NayaPOWER as bot OK\n  -> POST comment on issue #2793 -> id 6373103264, author nayapower-lane-agent[bot]\n  scope read: GET /installation/repositories -> total_count 217\n\nTHIS NOTE:\n  path BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0837/\n       IB-SMART-NOTE-20261023-sn0837-check-which-door.md\n  filed by direct Contents-API write to main (SN-0832 protocol)\n  live link: https://nayanet.live/s/sn0837 (clicked by author before sending)\n```"
+  },
+  "views_note": "Views derived 2026-10-24 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0837/IB-SMART-NOTE-20261023-sn0837-check-which-door.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "c48d0199093e32356e620d1a2bcf08cd46299027"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
