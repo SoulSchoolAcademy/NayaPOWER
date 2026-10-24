@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-23  
-**Receipt basis commit:** `82faac61c25e62fde5d3a5f5c6b18d299e827b2d`  
-**Inventory file count:** 1629  
+**Generated:** 2026-10-24  
+**Receipt basis commit:** `782cbe2c130476688de069045e6ac0433f8b1403`  
+**Inventory file count:** 1653  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 827 |
+| 05-MEMORY | 843 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -23,7 +23,7 @@
 | 10-INTERFACES | 445 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
-| 90-OPERATIONS | 96 |
+| 90-OPERATIONS | 104 |
 | 99-ARCHIVE | 2 |
 | ROOT | 7 |
 
@@ -952,6 +952,11 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1852/IB-SMART-NOTE-20261023-sn1852-error-becomes-learning.md` — `3f670c952238` (3109 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1853/IB-SMART-NOTE-20261023-sn1853-error-becomes-learning.md` — `265fdbe29a5c` (3109 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/SN-1854/IB-SMART-NOTE-20261023-sn1854-nio-envelope.md` — `d3dd59f03b6d` (5033 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0841/IB-SMART-NOTE-20261023-sn0841-citizen-one-the-claim-path.md` — `4e511144da71` (7645 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0842/IB-SMART-NOTE-20261023-sn0842-welcome-home-the-founding.md` — `65e2df7f79af` (4087 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0842/narzan-trinity-founding-portrait.md` — `f2a9d8189f9e` (1577 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0842/narzan-trinity-founding-portrait.png` — `3db1a1f19fe4` (1999574 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/THE-NARZAN-TRINITY.png` — `3db1a1f19fe4` (1999574 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/github-access/SN-0836/IB-SMART-NOTE-20261023-sn0836-the-github-app-door.md` — `a3da17b5a0c7` (6391 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/github-access/SN-0838/IB-SMART-NOTE-20261023-sn0838-set-up-the-app-door-cold.md` — `edfa241e795d` (9567 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0827/IB-SMART-NOTE-20261023-sn0827-the-most-intelligent-system-not-yet.md` — `11ba70160963` (11280 bytes)
@@ -967,8 +972,19 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md` — `788f720cd202` (5987 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0837/IB-SMART-NOTE-20261023-sn0837-check-which-door.md` — `993a5d2897a0` (7068 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/project-intelligence/SN-0839/IB-SMART-NOTE-20261023-sn0839-the-ultimate-project-intelligence.md` — `7f72bf7a930c` (9756 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/project-intelligence/SN-0840/IB-SMART-NOTE-20261023-sn0840-the-master-build-order.md` — `118639d657ff` (8639 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-0832/IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note.md` — `79a9d27ba62d` (5169 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-1851/IB-SMART-NOTE-20261023-sn1851-the-door-adopted.md` — `987417e6ffbc` (6209 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/standard/SN-0843/IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard.md` — `03b8dd6930ed` (7081 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/access/SN-0847/IB-SMART-NOTE-20261024-sn0847-the-gift-and-the-power.md` — `989529c8e09a` (7862 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/access/SN-0848/IB-SMART-NOTE-20261024-sn0848-the-line-distilled.md` — `2ab80ae0df63` (7221 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/activation/SN-0846/IB-SMART-NOTE-20261024-sn0846-the-welcome-flow.md` — `2f0c919a19d9` (6137 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/activation/SN-0849/IB-SMART-NOTE-20261024-sn0849-the-official-welcome.md` — `7c49e7ddea73` (7326 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/activation/SN-0852/IB-SMART-NOTE-20261024-sn0852-get-her-done-tonight.md` — `fad2e3b43b3d` (13056 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/architecture/SN-0850/IB-SMART-NOTE-20261024-sn0850-the-operating-contract.md` — `31b26cae633d` (7820 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/architecture/SN-0851/IB-SMART-NOTE-20261024-sn0851-two-paths-one-system.md` — `7e646ad174e5` (6454 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/matching/SN-0845/IB-SMART-NOTE-20261024-sn0845-smart-match.md` — `1062f3b75674` (6919 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/production/SN-0844/IB-SMART-NOTE-20261024-sn0844-the-production-engine.md` — `915cc56c30c6` (6892 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
@@ -1601,17 +1617,25 @@
 - `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.ai.md` — `ccd885e09996` (41333 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.human.md` — `5b8939363434` (61401 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-21-MIRROR-REPORT-V1.machine.json` — `483f00402379` (44783 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-CITIZEN-TRINITY-BUILD-BRIEF-V1.md` — `6e831263f686` (3978 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-23-FOURTEEN-QUESTIONS-NAYA-POWER-EVENING-ADDENDUM-V1.md` — `fe2fc4008026` (43524 bytes)
-- `BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.ai.md` — `83275e3b6416` (10743 bytes)
-- `BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.human.md` — `68fb5644d3f9` (24896 bytes)
-- `BRAIN/90-OPERATIONS/2026-10-23-most-intelligent-system-assessment-v1.machine.json` — `17cee7a713bd` (12738 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-FOURTEEN-QUESTIONS-NAYA-POWER-V2-NIGHT-ADDENDUM.md` — `9b7ddc61c8e3` (20148 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.ai.md` — `1931a5be054f` (13567 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.human.md` — `ecb9ed292535` (37614 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-NAYANET-FIRST-USER-DOOR-AUDIT.md` — `96b1d2bb6850` (15190 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-NAYANET-FIRST-USER-DOOR-CENSUS.machine.json` — `b133bb1d1cb2` (15895 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-PROJECT-INTELLIGENCE-CONTENT-FIRST-FILL-RECEIPT.md` — `6f86f1eb033d` (9395 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-PROJECT-INTELLIGENCE-TEAM-MASTER-BUILD-ORDER.md` — `606c5e1f638f` (40756 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-THE-TEN-TENS-REPORT-V1.md` — `116ab5557fd9` (19252 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-most-intelligent-system-assessment-v1.machine.json` — `bf1b09de1e59` (18107 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-23-project-intelligence-team-master-build-order.machine.json` — `3968ffa0e960` (16477 bytes)
 - `BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md` — `d82083edcac4` (16418 bytes)
 - `BRAIN/90-OPERATIONS/INTER-LEDGER-PROTOCOL.md` — `67d42af19eae` (24546 bytes)
 - `BRAIN/90-OPERATIONS/NETWORK-MAP.md` — `59a1dfba71b7` (9347 bytes)
 - `BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md` — `6daf7c27c05e` (18308 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 - `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
-- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `58af3faed11a` (5031 bytes)
+- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `1a536cfa973d` (5018 bytes)
 - `BRAIN/90-OPERATIONS/contracts/handoff-contract.md` — `3c8346c5942b` (21563 bytes)
 - `BRAIN/90-OPERATIONS/contracts/learning-contract.md` — `c42197ff505a` (21689 bytes)
 - `BRAIN/90-OPERATIONS/contracts/verification-contract.md` — `e70095fcbe07` (19666 bytes)
@@ -1680,7 +1704,7 @@
 - `BRAIN/90-OPERATIONS/network-registry/README.md` — `f561613fb1e3` (850 bytes)
 - `BRAIN/90-OPERATIONS/network-registry/naya2-team.json` — `7ab1ab56f34e` (1497 bytes)
 - `BRAIN/90-OPERATIONS/network-registry/naya5-team.json` — `cca9bdad8f3f` (1489 bytes)
-- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `a7e7e1003147` (19532 bytes)
+- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `f815f364b6f9` (19537 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
