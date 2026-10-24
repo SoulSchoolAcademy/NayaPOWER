@@ -1,1 +1,277 @@
-{"aaa_finish":{"all_required":true,"legs":{"actionable":"usable on arrival; no further explanation, build, or undeclared hand assist","aligned":"fits mission + ratified spec + other seats' work; recreates nothing; existing pieces first (Compose inventory attached)","authenticated":"proven live by different seat at real address; resolvable evidence link; counts reconcile; no record = UNPROVEN"},"two_of_three":"NOT FINISHED - return to builder same pass"},"ambassador_terms":{"note":"Resolve draft flagged these as claimed, not confirmed in the open. That caution is adopted for pricing code; Shawn's chat ruling is not erased.","status":"ruled by Shawn in chat 2026-10-24, pending confirmation in the open before payout code prices on them; payout wiring stays behind the money gate","terms":"50% of revenue, paid automatically every Wednesday; pricing 5 days free, then $14/mo, $37/3mo, $75/yr, $150 lifetime; founding 1,000 members only, then prices double, founding prices locked"},"authors":{"best_of_best_synthesis_and_code":"Naya Power, 2026-10-24, from Power V1/V2 + Resolve V2, with live corrections below","director":"Shawn Vibert","v1":"Naya Power (engine lead)","v1_self_scorecard_and_v2":"Naya Power, Loop 1 author review, 7.5/10","v2_scorecard_and_rewrite":"Naya Resolve (main seat), 8.0/10 for Power V2"},"date":"2026-10-24","front_door":{"gap_evidence":"main-seat cold review 2026-10-24 05:10Z scored live face 7.5/10, no Join/Welcome in public nav; corrected same morning to threshold gap by Shawn","gate":"cold walk by non-builder seat; any builder-hand step = NOT LIVE","member_inside_hub":"no Join button; joining is behind them","rule":"THRESHOLD, not a Join button inside member navigation","unactivated_visitor":"visible Join entry on the public entrance surface, routing to certificate -> Welcome, without a login wall"},"hole_mapping_resolve_v1_scorecard":{"10_director_items":"queue_today.n9","1_disposition":"pass.disposition_deadline","2_interim_merge":"merge_gate.state_1_interim","3_gt039":"queue_today.n8","4_resource_math":"resource_budget","5_owners_gates":"queue_today, all items","6_3028_audits":"queue_today.n2, n3 gates","7_kill_criteria":"pass.kill_criteria","8_verification_capacity":"verification_lane","9_standing_red":"standing_red_baseline","added_front_door":"front_door","added_loop_decoupled_from_director_hours":"pass.runs_on","added_verdict_sla":"pass.verdict_sla + queue_today.n10"},"merge_gate":{"correction_to_resolve_draft":"Resolve draft attributed the hole to ruleset 23853581 with bypass actors existing. Live read 2026-10-24 shows 23853581 'Naya Execution Governance' carries deletion + non_fast_forward only, no review/check rules, and bypass_actors = none listed for both rulesets. The precise hole is 24858146, 0 approvals, no required checks. That correction is carried here, in the open.","hole_verified_live_2026_10_24":{"bypass_actors_repo_level":"none listed","dismiss_stale_reviews_on_push":false,"pull_request_required_approving_review_count":0,"required_status_checks":"none, in any ruleset","ruleset_id":24858146,"ruleset_name":"main-protection"},"state_1_interim":"single merge lane; head frozen at scorecard; full bar voluntary; out-of-bar merge recorded as breach immediately","state_2_after_director_tap":"required checks + required approving reviews; bypass removed; same-day two-way proof: noncompliant cannot merge AND compliant can merge","tap_status_live_2026_10_24":"still open, ruleset still shows 0 approvals; tap not yet applied"},"objective":"maximum verified value per action, per moment, per output","pass":{"bottleneck_migration":"Integrator re-prices constraint stage (build/verify/land) from record each pass; seats flow to constraint","claim_is_lock":true,"disposition_deadline":{"at_plus_2h":"auto-escalate to Integrator","at_plus_4h":"item becomes named weakest point on scoreboard until landed","clock_starts_at":"verification >= 9.0","merge_lane_sla_hours":2},"kill_criteria":{"same_cure_fails_twice_same_way":"change mechanism; third dose forbidden","third_failure":"return item to THINK (re-think from whole)"},"land_threshold_score":9.0,"prove_timing":"SAME_PASS","runs_on":"STATE, 24/7 - not the director's waking hours; director packets follow his hours, team motion does not idle","scorer_and_verifier_named_at":"BUILD_START","steps":["THINK","ALIGN","COMPOSE","BUILD","PROVE","LAND","LEARN"],"verdict_sla":"verdicts_cleared_per_day >= filings_per_day; owner: main seat (Resolve)","wip_cap_team":5},"queue_today":[{"done_by":"today, inside disposition clock from approval","effect":"standing red 22 -> 7, measured at new head","gate":"already verified 9.5 (Resolve-reported)","item":"land verified cures PR #3036 + PR #3037","n":1,"owner":"merge lane"},{"gate":"issue #3028 audit 1: no-fork journey cold walk, zero undeclared hand assist","item":"build-welcome-flow (Welcome -> Trinity -> Match)","n":2,"owner":"Nitro + Power"},{"gate":"issue #3028 audits 2, 3, 5; until pass state = SPECIFIED","item":"prove-privacy-two-owner","n":3,"owner":"Power"},{"gate":"cold walk by non-builder seat; any builder-hand step = NOT LIVE","item":"public front door threshold","n":4,"owner":"Nitro"},{"gate":"earning terms pending confirmation in the open before payout pricing","item":"build-ambassador-system","n":5,"owner":"Power"},{"gate":"page numbers reconcile with census record, clicked live","item":"face-pulse-today: actions_today + ratio_today derived to nayanet.live/projects","n":6,"owner":"Power (named debt)"},{"gate":"list shows per-item state; /s/ note opens standalone (currently redirects into feed card)","item":"project-list-states + note-standalone-pages","n":7,"owner":"Nitro"},{"item":"GT-039 production packet completion","n":8,"on_unblock":"one consolidated director tap -> batch apply -> live-verify -> rollback on regression","owner":"Resolve (packet) - blocker owner: Nitro/security lane (fitted per-table policies)","state":"BLOCKED; 16 migrations pending, 165 applied; production stamp stale since 2026-10-08"},{"item":"director's own items, in-queue","n":9,"owner":"Shawn","parts":["ruleset tap (packet + rollback prepared)","his seven Welcome answers (his session only)"]},{"item":"STUCK-REVIEW verdicts","n":10,"owner":"Resolve (main seat)","rate":"verdict SLA: cleared/day >= filings/day, starting today"}],"residual":"plan-quality != execution proof; first receipts due today; EOD self-re-score is the check","resource_budget":{"fuel":{"reset":"2026-10-28T15:47Z","weekly_allowance_used_pct_2026_10_23":81},"new_recurring_job_gate":"recorded one-line value case required (output, wakeups/day, replaces what)","pr_drain_outer_date":"2026-10-27","ratio_bar":"< 60:1 by 2026-10-30 (outer date, not start date)","remeasure_date":"2026-10-30","wakeups_ceiling_per_day":800,"wakeups_target_design_per_day":[225,250]},"schema":"naya.ultimate-strategy-plan/best-of-best","scoreboard_daily":{"derived_from_record_never_typed":true,"lists":["weakest point (named + numbered)","top priorities with owners","director packets (target: empty except queue item 9)"],"numbers":["pct_done_proven","parts_at_9plus","ratio_today","sync_health","gates_met_open_blocked"],"plan_self_check":"plan re-scored EOD against these numbers + AAA predicate; re-score published with EOD receipt"},"scores":{"note":"Resolve 10 is plan-quality, not execution proof. First receipts under the plan are due today; EOD self-re-score is the check. This best-of-best code is NOT scored 10 by its author; it awaits a different seat's scorecard and Shawn's word.","power_v1_self_scorecard":7.5,"power_v2_self_scorecard":7.5,"resolve_rewrite_as_plan":10,"resolve_scorecard_of_power_v2":8.0},"standing_red_baseline":{"as_of":"2026-10-24","burn_down_order":["PR #3036 (-14)","PR #3037 (-1)","brain-index","factory","migration-baseline","report pin"],"correction_note":"Red set proven identical at the two heads where the suite actually ran, not three. Resolve corrected this herself mid-draft; carried here.","expected_after_first_two_land":7,"failed":22,"heads_measured_unmasked":["e0cd4c24","f7b0388e"],"passed":5433,"rules":["failure not in enumerated set BLOCKS landing","standing red cited on merge must name its family"],"set":[{"count":14,"cure_vehicle":"PR #3036 (Resolve-reported verified 9.5, head f88edf88, live-verified open, not draft, 2026-10-24; scorecard not re-verified by Power in this pass)","family":"retrieval_page_hash_mismatch"},{"count":3,"cure":"mechanism change required - 3 prior cures failed","family":"brain_index"},{"count":2,"family":"factory"},{"count":1,"family":"migration_baseline_missing_ledger_entry","missing":"20261023190000_smart_mail_legacy_rls_hardening.sql (182 files vs 181 entries, 0 sha mismatches)"},{"count":1,"cure_vehicle":"PR #3037 (Resolve-reported verified 9.5, head 7dc4c4b6, live-verified open, not draft, 2026-10-24; scorecard not re-verified by Power in this pass)","family":"vanish_sn_0842"},{"count":1,"family":"report_generator_pin"}]},"status":"PROPOSED_AWAITING_DIRECTOR_APPROVAL","value_definition":"DONE+PROVEN outputs only: different-seat scorecard >= 9.0 at exact head AND different-login live verification at real address AND counts reconciled. Activity, volume, effort = 0 value. Weighted: journey 10, system 5, fix 1.","verification_lane":{"if_verify_queue_longer_than_build_queue":"builders rotate to verify (chameleon law)","rule":"verify requests are queue items, claim, lock, priority-priced","scoreboard_shows":"both queue depths; growing verify queue = weakest-point candidate"}}
+{
+  "aaa_finish": {
+    "all_required": true,
+    "legs": {
+      "actionable": "usable on arrival; no further explanation, build, or undeclared hand assist",
+      "aligned": "fits mission + ratified spec + other seats' work; recreates nothing; existing pieces first (Compose inventory attached)",
+      "authenticated": "proven live by different seat at real address; resolvable evidence link; counts reconcile; no record = UNPROVEN"
+    },
+    "two_of_three": "NOT FINISHED - return to builder same pass"
+  },
+  "ambassador_terms": {
+    "note": "Resolve draft flagged these as claimed, not confirmed in the open. That caution is adopted for pricing code; Shawn's chat ruling is not erased.",
+    "status": "ruled by Shawn in chat 2026-10-24, pending confirmation in the open before payout code prices on them; payout wiring stays behind the money gate",
+    "terms": "50% of revenue, paid automatically every Wednesday; pricing 5 days free, then $14/mo, $37/3mo, $75/yr, $150 lifetime; founding 1,000 members only, then prices double, founding prices locked"
+  },
+  "authors": {
+    "best_of_best_synthesis_and_code": "Naya Power, 2026-10-24, from Power V1/V2 + Resolve V2, with live corrections below",
+    "director": "Shawn Vibert",
+    "v1": "Naya Power (engine lead)",
+    "v1_self_scorecard_and_v2": "Naya Power, Loop 1 author review, 7.5/10",
+    "v2_scorecard_and_rewrite": "Naya Resolve (main seat), 8.0/10 for Power V2"
+  },
+  "date": "2026-10-24",
+  "design_contract": {
+    "motto": "Everything elevated, clean, crisp. Nothing below high level. Exactly what's needed, in the most elegant, beautiful, intelligent way.",
+    "rules": [
+      "High-contrast text, the nicest fonts, everything in its perfect place with perfect spacing.",
+      "Everything active intelligence: presentation itself is alive, elevated, clean, crisp.",
+      "Exactly what's needed, never more. Restraint is part of beauty.",
+      "Shop from our own shop: use approved elements already built. Do not reinvent work. Do not invent diamonds or new elements where an approved element exists.",
+      "Design parents, live pages win over repo files: Life with Naya (warmth, paced walk, play button that spins and circles, elevated and alive) and certificate / Smart Identity Activation page (gravity, ceremony). Learn their real elements, do not invent replacements.",
+      "A page below this standard fails the design check, before it reaches Shawn, regardless of whether its function works.",
+      "Clarification 2026-10-24: the Life with Naya link was for the Nitro conversation, not a required read for Power. Power adopts this standard for his own work, including the affiliate system and any interfaces, at the highest level possible. That is what Nayas do. That is Naya Power."
+    ],
+    "source": "Shawn Vibert, in chat 2026-10-24, relaying and confirming the Nitro design talk, plus his own words on elevated presentation.",
+    "standard": "10-star service for the user: awe-inspiring, easy to understand, logical, sensible, push-button simple."
+  },
+  "front_door": {
+    "gap_evidence": "main-seat cold review 2026-10-24 05:10Z scored live face 7.5/10, no Join/Welcome in public nav; corrected same morning to threshold gap by Shawn",
+    "gate": "cold walk by non-builder seat; any builder-hand step = NOT LIVE",
+    "member_inside_hub": "no Join button; joining is behind them",
+    "rule": "THRESHOLD, not a Join button inside member navigation",
+    "unactivated_visitor": "visible Join entry on the public entrance surface, routing to certificate -> Welcome, without a login wall"
+  },
+  "hole_mapping_resolve_v1_scorecard": {
+    "10_director_items": "queue_today.n9",
+    "1_disposition": "pass.disposition_deadline",
+    "2_interim_merge": "merge_gate.state_1_interim",
+    "3_gt039": "queue_today.n8",
+    "4_resource_math": "resource_budget",
+    "5_owners_gates": "queue_today, all items",
+    "6_3028_audits": "queue_today.n2, n3 gates",
+    "7_kill_criteria": "pass.kill_criteria",
+    "8_verification_capacity": "verification_lane",
+    "9_standing_red": "standing_red_baseline",
+    "added_front_door": "front_door",
+    "added_loop_decoupled_from_director_hours": "pass.runs_on",
+    "added_verdict_sla": "pass.verdict_sla + queue_today.n10"
+  },
+  "law_activation": {
+    "approved_by": "Shawn Vibert, director, in chat 2026-10-24 ~09:03 PDT (16:03 UTC)",
+    "note": "Director word activates this as operating law for this seat. Repo merge still follows the normal road: different-seat scorecard at the exact final head, then merge. This seat never self-merges.",
+    "prior_status": "PROPOSED_AWAITING_DIRECTOR_APPROVAL"
+  },
+  "merge_gate": {
+    "correction_to_resolve_draft": "Resolve draft attributed the hole to ruleset 23853581 with bypass actors existing. Live read 2026-10-24 shows 23853581 'Naya Execution Governance' carries deletion + non_fast_forward only, no review/check rules, and bypass_actors = none listed for both rulesets. The precise hole is 24858146, 0 approvals, no required checks. That correction is carried here, in the open.",
+    "hole_verified_live_2026_10_24": {
+      "bypass_actors_repo_level": "none listed",
+      "dismiss_stale_reviews_on_push": false,
+      "pull_request_required_approving_review_count": 0,
+      "required_status_checks": "none, in any ruleset",
+      "ruleset_id": 24858146,
+      "ruleset_name": "main-protection"
+    },
+    "state_1_interim": "single merge lane; head frozen at scorecard; full bar voluntary; out-of-bar merge recorded as breach immediately",
+    "state_2_after_director_tap": "required checks + required approving reviews; bypass removed; same-day two-way proof: noncompliant cannot merge AND compliant can merge",
+    "tap_status_live_2026_10_24": "still open, ruleset still shows 0 approvals; tap not yet applied"
+  },
+  "objective": "maximum verified value per action, per moment, per output",
+  "pass": {
+    "bottleneck_migration": "Integrator re-prices constraint stage (build/verify/land) from record each pass; seats flow to constraint",
+    "claim_is_lock": true,
+    "disposition_deadline": {
+      "at_plus_2h": "auto-escalate to Integrator",
+      "at_plus_4h": "item becomes named weakest point on scoreboard until landed",
+      "clock_starts_at": "verification >= 9.0",
+      "merge_lane_sla_hours": 2
+    },
+    "kill_criteria": {
+      "same_cure_fails_twice_same_way": "change mechanism; third dose forbidden",
+      "third_failure": "return item to THINK (re-think from whole)"
+    },
+    "land_threshold_score": 9.0,
+    "prove_timing": "SAME_PASS",
+    "runs_on": "STATE, 24/7 - not the director's waking hours; director packets follow his hours, team motion does not idle",
+    "scorer_and_verifier_named_at": "BUILD_START",
+    "steps": [
+      "THINK",
+      "ALIGN",
+      "COMPOSE",
+      "BUILD",
+      "PROVE",
+      "LAND",
+      "LEARN"
+    ],
+    "verdict_sla": "verdicts_cleared_per_day >= filings_per_day; owner: main seat (Resolve)",
+    "wip_cap_team": 5
+  },
+  "queue_today": [
+    {
+      "done_by": "today, inside disposition clock from approval",
+      "effect": "standing red 22 -> 7, measured at new head",
+      "gate": "already verified 9.5 (Resolve-reported)",
+      "item": "land verified cures PR #3036 + PR #3037",
+      "n": 1,
+      "owner": "merge lane"
+    },
+    {
+      "gate": "issue #3028 audit 1: no-fork journey cold walk, zero undeclared hand assist",
+      "item": "build-welcome-flow (Welcome -> Trinity -> Match)",
+      "n": 2,
+      "owner": "Nitro + Power"
+    },
+    {
+      "gate": "issue #3028 audits 2, 3, 5; until pass state = SPECIFIED",
+      "item": "prove-privacy-two-owner",
+      "n": 3,
+      "owner": "Power"
+    },
+    {
+      "gate": "cold walk by non-builder seat; any builder-hand step = NOT LIVE",
+      "item": "public front door threshold",
+      "n": 4,
+      "owner": "Nitro"
+    },
+    {
+      "gate": "earning terms pending confirmation in the open before payout pricing",
+      "item": "build-ambassador-system",
+      "n": 5,
+      "owner": "Power"
+    },
+    {
+      "gate": "page numbers reconcile with census record, clicked live",
+      "item": "face-pulse-today: actions_today + ratio_today derived to nayanet.live/projects",
+      "n": 6,
+      "owner": "Power (named debt)"
+    },
+    {
+      "gate": "list shows per-item state; /s/ note opens standalone (currently redirects into feed card)",
+      "item": "project-list-states + note-standalone-pages",
+      "n": 7,
+      "owner": "Nitro"
+    },
+    {
+      "item": "GT-039 production packet completion",
+      "n": 8,
+      "on_unblock": "one consolidated director tap -> batch apply -> live-verify -> rollback on regression",
+      "owner": "Resolve (packet) - blocker owner: Nitro/security lane (fitted per-table policies)",
+      "state": "BLOCKED; 16 migrations pending, 165 applied; production stamp stale since 2026-10-08"
+    },
+    {
+      "item": "director's own items, in-queue",
+      "n": 9,
+      "owner": "Shawn",
+      "parts": [
+        "ruleset tap (packet + rollback prepared)",
+        "his seven Welcome answers (his session only)"
+      ]
+    },
+    {
+      "item": "STUCK-REVIEW verdicts",
+      "n": 10,
+      "owner": "Resolve (main seat)",
+      "rate": "verdict SLA: cleared/day >= filings/day, starting today"
+    }
+  ],
+  "residual": "plan-quality != execution proof; first receipts due today; EOD self-re-score is the check",
+  "resource_budget": {
+    "fuel": {
+      "reset": "2026-10-28T15:47Z",
+      "weekly_allowance_used_pct_2026_10_23": 81
+    },
+    "new_recurring_job_gate": "recorded one-line value case required (output, wakeups/day, replaces what)",
+    "pr_drain_outer_date": "2026-10-27",
+    "ratio_bar": "< 60:1 by 2026-10-30 (outer date, not start date)",
+    "remeasure_date": "2026-10-30",
+    "wakeups_ceiling_per_day": 800,
+    "wakeups_target_design_per_day": [
+      225,
+      250
+    ]
+  },
+  "schema": "naya.ultimate-strategy-plan/best-of-best",
+  "scoreboard_daily": {
+    "derived_from_record_never_typed": true,
+    "lists": [
+      "weakest point (named + numbered)",
+      "top priorities with owners",
+      "director packets (target: empty except queue item 9)"
+    ],
+    "numbers": [
+      "pct_done_proven",
+      "parts_at_9plus",
+      "ratio_today",
+      "sync_health",
+      "gates_met_open_blocked"
+    ],
+    "plan_self_check": "plan re-scored EOD against these numbers + AAA predicate; re-score published with EOD receipt"
+  },
+  "scores": {
+    "note": "Resolve 10 is plan-quality, not execution proof. First receipts under the plan are due today; EOD self-re-score is the check. This best-of-best code is NOT scored 10 by its author; it awaits a different seat's scorecard and Shawn's word.",
+    "power_v1_self_scorecard": 7.5,
+    "power_v2_self_scorecard": 7.5,
+    "resolve_rewrite_as_plan": 10,
+    "resolve_scorecard_of_power_v2": 8.0
+  },
+  "standing_red_baseline": {
+    "as_of": "2026-10-24",
+    "burn_down_order": [
+      "PR #3036 (-14)",
+      "PR #3037 (-1)",
+      "brain-index",
+      "factory",
+      "migration-baseline",
+      "report pin"
+    ],
+    "correction_note": "Red set proven identical at the two heads where the suite actually ran, not three. Resolve corrected this herself mid-draft; carried here.",
+    "expected_after_first_two_land": 7,
+    "failed": 22,
+    "heads_measured_unmasked": [
+      "e0cd4c24",
+      "f7b0388e"
+    ],
+    "passed": 5433,
+    "rules": [
+      "failure not in enumerated set BLOCKS landing",
+      "standing red cited on merge must name its family"
+    ],
+    "set": [
+      {
+        "count": 14,
+        "cure_vehicle": "PR #3036 (Resolve-reported verified 9.5, head f88edf88, live-verified open, not draft, 2026-10-24; scorecard not re-verified by Power in this pass)",
+        "family": "retrieval_page_hash_mismatch"
+      },
+      {
+        "count": 3,
+        "cure": "mechanism change required - 3 prior cures failed",
+        "family": "brain_index"
+      },
+      {
+        "count": 2,
+        "family": "factory"
+      },
+      {
+        "count": 1,
+        "family": "migration_baseline_missing_ledger_entry",
+        "missing": "20261023190000_smart_mail_legacy_rls_hardening.sql (182 files vs 181 entries, 0 sha mismatches)"
+      },
+      {
+        "count": 1,
+        "cure_vehicle": "PR #3037 (Resolve-reported verified 9.5, head 7dc4c4b6, live-verified open, not draft, 2026-10-24; scorecard not re-verified by Power in this pass)",
+        "family": "vanish_sn_0842"
+      },
+      {
+        "count": 1,
+        "family": "report_generator_pin"
+      }
+    ]
+  },
+  "status": "LAW_APPROVED_BY_DIRECTOR_2026_10_24",
+  "value_definition": "DONE+PROVEN outputs only: different-seat scorecard >= 9.0 at exact head AND different-login live verification at real address AND counts reconciled. Activity, volume, effort = 0 value. Weighted: journey 10, system 5, fix 1.",
+  "verification_lane": {
+    "if_verify_queue_longer_than_build_queue": "builders rotate to verify (chameleon law)",
+    "rule": "verify requests are queue items, claim, lock, priority-priced",
+    "scoreboard_shows": "both queue depths; growing verify queue = weakest-point candidate"
+  }
+}
