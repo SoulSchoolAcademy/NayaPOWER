@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-24T22:24:14Z",
-  "tip": "b1284d84a079bb92a73b9b5d979ed6d9268e02c5",
+  "generated_at": "2026-10-24T23:24:14Z",
+  "tip": "c5a560a450dba9ec064854aeaca4834913f58781",
   "open_pr_count": 3,
   "queue_by_tier_action": {
     "A": {
@@ -15,9 +15,7 @@
     }
   },
   "tip_failing_checks": [
-    "door-obligation",
     "promote-and-prove",
-    "resolve-current-truth",
     "test"
   ],
   "gauge": {
