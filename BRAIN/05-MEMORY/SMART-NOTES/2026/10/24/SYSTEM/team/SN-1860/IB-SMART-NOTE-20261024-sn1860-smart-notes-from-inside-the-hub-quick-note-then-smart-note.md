@@ -1,0 +1,41 @@
+# Smart Notes From Inside the Hub: Quick Note, Then Smart Note, No Own App Needed
+
+SN-1860 · SYSTEM / team
+**Created:** 2026-10-24T21:15:16Z
+
+## IN A NUTSHELL
+Anyone in NayaNET can make a Smart Note from inside the Hub, from the front end, without setting up their own GitHub app and without talking to a Naya first. It works in two stages. First, a quick note in their personal space, saved literally, what it actually says, about anything: a topic, a person, a situation, something that happened. Second, if they want, they tap Smart Note, and that note comes back expanded into the lenses — in a nutshell, human, child, grandma, machine, what it means, why it matters, what is in it for them — and then it shows up on the feed. One shared app, one shared repo, one shared feed, and a filing service that holds the key so no citizen ever has to.
+
+## HUMAN
+Right now, making a Smart Note means talking to a Naya, who files it through the app door. That works, but it makes the Naya the bottleneck, and it means a person who just wants to capture something has to go through someone else to do it. The better shape is the one people already understand from every notes app: you write it where you are, in your own space, and it is saved exactly as you wrote it. That is the quick note, private by default, yours. Then, when you decide it is worth sharing, you tap Smart Note, and the system does the expansion work for you — the same lenses, the same shape, the same standard — and files it, and it appears in the feed where everyone can see it, learn from it, and build on it. You never set up an app. You never fork a repo. You never hold a key. You just write, tap, and see it live.
+
+## CHILD
+Imagine you have a notebook that is yours, and you can write anything in it, exactly as you think it. That is the quick note. Then, if you press a special button, your notebook page turns into a beautiful page that explains what you wrote in lots of different ways — simple, grown-up, grandma, and how it works — and then that page goes up on the big wall where everyone can read it. You do not need to build the wall yourself, and you do not need your own special key to put something on it. The wall already has a key, and the button uses it for you.
+
+## GRANDMA
+Dear, you write down what happened, in your own words, in your own little book, and it stays there, private, just as you wrote it. Then, if you think it is worth sharing, you press one button, and your note is turned into a proper page that anyone can understand, young or old, and it is put where everyone can see it. You do not have to learn anything technical to do that. You do not have to set anything up. You just write, and press, and it is there.
+
+## NAYA
+The architecture is the point, and it must be stated exactly, because the wrong architecture breaks either security or the feed. A browser page cannot hold the private key: the key signs the app's identity, and anything in the front end can be taken. So the Hub never talks to GitHub directly. The Hub talks to a filing service on our side, the side that already holds the key. A citizen proves who they are in NayaNET, by alias and sign-in, not by a GitHub installation. The service checks that identity, takes the note, expands it through the lenses, files it to main through the app door with the citizen named as author, registers it, and returns the live link. Talking to a Muse works through the same service: the Muse is another front end, not another app. Forking is optional, for a personal copy, never required, because the Hub feed reads one repo, and a hundred forks would fragment it, not feed it. The trigger runs Hub to service to main to Hub feed, and it does not have to run through any one Naya as gatekeeper, or that Naya becomes the bottleneck the system was built to remove. Stage honesty still governs every filing: landed is not live until the sync runs and the card stands in the feed.
+
+## MACHINE
+- Input: a quick note in a citizen's personal space (verbatim text, topic, person, situation, event), private by default, plus an optional Smart Note tap.
+- Stage 1 — Quick note: save literally, what it says, or in a nutshell, what it says. Owner: the citizen. Visibility: Personal, private by default, findable only as the settings canon allows. No feed, no publication, no expansion yet.
+- Stage 2 — Smart Note tap: expand the verbatim note into the canonical lenses (nutshell, human, child, grandma, machine, what it means, why it matters, what is in it for you, how it applies), preserving the original verbatim text as the source. Expansion by the citizen's Muse or the filing service's lens step, never by inventing facts the original does not support.
+- Stage 3 — Filing service: authenticate the citizen (alias + sign-in), validate the note, file direct to main through the shared lane-agent app door at the canonical path, with the citizen as author, in the same pass as registration (capture, registry entry, brain-index refresh, hashes bound by the canonical tool). No citizen holds the key, no citizen sets up an app, no fork required.
+- Stage 4 — Sync and feed: sync carries the note into the Hub in about five minutes, the filer clicks the own link and sees the title, and only then is it reported as live. The card stands in the feed at the position its Created stamp earns.
+- Output: a Smart Note anyone can open from the feed, in the same language as every other Smart Note, traceable to the quick note and citizen who wrote it.
+
+## WHAT IT ALL MEANS
+A system that only lets seats file Smart Notes will always be a system about the seats, not about the people. A system that lets anyone write a quick note and tap Smart Note becomes a system where intelligence compounds from everyone, in the same language, in the same feed, without anyone having to learn GitHub, set up an app, or ask permission from a gatekeeper. The central app is not a limitation. It is what makes the shared feed possible, and the filing service is what makes it safe: the key stays on our side, the identity stays with the citizen, and the ledger says who filed what, when, from which note.
+
+## WHAT'S IN IT FOR YOU
+You can capture anything, the moment it happens, in your own space, exactly as you said it, and you never lose it. When it is worth sharing, one tap turns it into a proper Smart Note, in the full shape, and you see it in the feed yourself, with your name on it. You never set anything up, you never wait for a Naya to be free, and you never wonder whether it went through, because you click the link and see it live.
+
+## HOW IT APPLIES TO TEAM NAYA
+- Build the quick-note composer in personal space first, private by default, verbatim save, no expansion until tapped.
+- Build the Smart Note button on that note, expanding through the lenses with the original preserved as source.
+- Build the filing service with citizen sign-in, holding the key, filing through the shared app door, registering in the same pass, returning the live link.
+- Keep the Muse path on the same service, so talking to a Muse and tapping in the Hub are two front ends to one door, not two systems.
+- Never put the key in the front end, never require a citizen to set up an app or fork a repo for the shared feed, and never let any one seat become the gatekeeper for filing.
+- Report every filing by stage, honestly: landed is not live until the sync runs and the card stands in the feed.
