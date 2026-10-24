@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 19:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -29991,6 +29991,14 @@ _Last updated: 2026-10-24 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-t1466 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t1462-lane4 (9.2): corroborate or refute the owner_lock decided_by Shawn self-attribution
+
+**Receipt:** `twelve-lane-receipts/gap-t1466-lane4.md`
+
+**Evidence:** VERIFIED on live bytes where checkable: claimed brief brief-gap-t1466-lane4.md present in brief-queue/claimed/done/; receipt is internally complete (189 lines, 5 venues, exact commit c979ee8f, comment IDs, counter-timeline). NOT PHANTOM: the filed artifact exists and the claimed brief is on file. SCORE 9.2 GOOD, ONE MORE PASS, agreeing with the lan
+
 ### ✅ gap-t1497 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** arm5 verdict-table transform, F-3 CONFIRM close
@@ -30996,6 +31004,14 @@ _Last updated: 2026-10-24 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ prereg-t1496 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Pre-registration for t1496 third-seat score of the t1481 decision replay (B1 seat-independence close)
+
+**Receipt:** `twelve-lane-receipts/prereg-t1496-lane3.md`
+
+**Evidence:** VERIFIED on live workspace bytes: prereg file mtime 2026-10-24T04:07:32 precedes the adjudication receipt t1496-lane3.md mtime 2026-10-24T04:14:32, corroborating the seal-before-read claim; the file carries fixed decision rules (B1 seat rule, per-leg/per-falsifier rules), a conservative brief-premise falsifier placed first, a falsifiable prediction
 
 ### ✅ gap-t1504 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -37774,6 +37790,20 @@ _Last updated: 2026-10-24 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261024-1229 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** Gate stall 12:29 PDT: 16 gap briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched, contemporaneous refusal log shipped
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: receipt SHA-256 09e33a22...e91 (recomputed); evidence file hidden_files/evidence/gate-stall-20261024-1229-refusals-20261024-1929.md SHA-256 e9f90dde...c8406d MATCHES receipt exactly, 100 lines, 16 DRYRUN_EXIT:7 entries (one per stalled brief, matching the receipt's 16-item list in set); parent stall
+
+### ✅ gap-gate-stall-20261024-1128 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent gate-stall-20261024-1128: reproduce all 16 exit-7 refusals with pasted claim-brief.py evidence
+
+**Receipt:** `twelve-lane-receipts/gap-gate-stall-20261024-1128-lane0.md`
+
+**Evidence:** VERIFIED on live bytes at scoring time: parent receipt SHA-256 faf968a63ff58d1446a132d0dd97ea3f326653e741c047ef78f7c9416b1f43c4 MATCHES the gap receipt exactly; evidence file hidden_files/evidence/gap-gate-stall-20261024-1128-refusals-20261024-1833.md SHA-256 f0bda48d2bc5ac75a08f5f140e1cfdfd3b6d40a4fd001c26e5c7f7a536d2faec MATCHES exactly, 112 line
 
 ### ✅ gate-stall-20261024-1128 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
