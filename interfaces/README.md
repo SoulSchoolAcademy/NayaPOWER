@@ -32,3 +32,17 @@ piece is isolated and swapped, with its provenance showing everything it touched
 GitHub access is not live deploy. Shawn's greenlight + a different seat's
 scorecard at the exact final head still gate anything live. Nitro stays lead
 of the standard, never owner of the files.
+
+## ELITE GATE — SN-0856, official, in this system
+Elite only, ever again. No garbage presented, ever, in any form.
+Before any interface, page, demo, or piece is presented to Shawn, it must
+pass, in order: (1) design contract, (2) harvest law — recompose inventoried
+elite pieces only, no new Lego pieces, (3) grade-12 start — never a grade-one
+version presented as progress, (4) AAA — Aligned, Authenticated by a different
+seat live, Actionable on arrival, (5) truth — no fake liveness, no fabricated
+ranks, no invented pieces, no claimed verification that has not happened.
+If any gate fails: DO NOT PRESENT. Fix it, or hold it and say plainly "not
+ready, here is what fails and who can verify the fix." Presenting a failing
+version is itself a failure. The design contract, laws, and rules live in the
+Smart Factory officially, in inventory, retrievable by any seat, before any
+build — see SN-0856: https://nayanet.live/s/sn0856
