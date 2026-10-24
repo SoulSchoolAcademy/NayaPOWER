@@ -111,6 +111,48 @@
     const common=[...x].filter(k=>y.has(k));
     return {ratio:common.length / new Set([...x,...y]).size,shared:common};
   }
+  // Conservative public-content organizer. Returned records are references
+  // to canonical objects, never materialized copies or silent writes.
+  // This is a small deterministic V1 taxonomy, NOT semantic understanding.
+  const TOPIC_CATEGORIES=Object.freeze({
+    learning:['learning','education','teaching','school','training','coaching','studying'],
+    technology:['technology','software','coding','programming','artificial','intelligence','robotics'],
+    business:['business','startup','entrepreneurship','company','marketing','sales'],
+    community:['community','volunteer','neighborhood','networking','collaboration','social'],
+    creativity:['design','writing','painting','photography','music','artistic','creativity'],
+    environment:['environment','sustainability','climate','ecology','gardening','conservation']
+  });
+  function classifyPublicItem(item) {
+    if(!item || typeof item.id!=='string' || !item.id
+      || item.visibility!=='public' || item.discoverable!==true
+      || item.opted_out===true)return null;
+    // Explicitly published topic text only. Never inspect private mail,
+    // private profile notes, unknown opaque payloads, or hidden fields.
+    const text=words([item.public_title||'',item.public_description||'',
+      ...(Array.isArray(item.public_tags)?item.public_tags:[])]);
+    const found=[];
+    for(const [category,signals] of Object.entries(TOPIC_CATEGORIES)){
+      const matched=signals.filter(tag=>text.includes(tag));
+      if(matched.length)found.push({category,matched});
+    }
+    return {id:item.id,kind:item.kind||'public_item',categories:found,
+      suggested_topics:text,provenance:item.source_id||null,
+      status:'CLASSIFICATION_CANDIDATE',writes_performed:0};
+  }
+  function organizePublicItems(items) {
+    const groups=Object.fromEntries([...Object.keys(TOPIC_CATEGORIES),'other'].map(k=>[k,[]]));
+    const seen=new Set();
+    for(const item of Array.isArray(items)?items:[]){
+      const classified=classifyPublicItem(item);
+      if(!classified||seen.has(classified.id))continue;
+      seen.add(classified.id);
+      const labels=classified.categories.length
+        ? classified.categories.map(x=>x.category):['other'];
+      for(const name of labels)groups[name].push(classified.id);
+    }
+    return {groups,canonical_object_count:seen.size,
+      note:'References only. No duplicates, publication or membership changes.'};
+  }
   const WEIGHTS=Object.freeze({topics:40,goals:25,offers:20,seeks:15});
   function rankPublicCandidates(packet,candidates,opts) {
     opts=opts||{};
@@ -152,7 +194,7 @@
       +'Give me editable text to copy and paste into my private draft.';
   }
   const api={FIELDS,PUBLIC_DISCOVERY_FIELDS,clean,words,createSession,makeDrafts,
-    discoveryFeatures,rankPublicCandidates,aiPrompt};
+    discoveryFeatures,classifyPublicItem,organizePublicItems,rankPublicCandidates,aiPrompt};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   root.NayaCitizenDiscovery=api;
 })(typeof window!=='undefined'?window:globalThis);
