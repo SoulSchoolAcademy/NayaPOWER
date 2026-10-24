@@ -43,7 +43,7 @@ small{color:#aba4c1}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18p
 <small>Publishing is a separate, explicitly reviewed action. Changing a private page to public must not publish it automatically. Settings for different pages never overwrite one another.</small>
 </main>
 <script type="module">
-import {makePagePolicy,proposePageSettings,describePageSettings} from './tools/product/nayanet-page-settings.mjs';
+import {makePagePolicy,proposePageSettings,describePageSettings} from '../tools/product/nayanet-page-settings.mjs';
 const policies=new Map([['p1',makePagePolicy('personal','p1')],['b1',makePagePolicy('business','b1')],['s1',makePagePolicy('space','s1')],['p2',makePagePolicy('personal','p2')]]);
 const page=document.querySelector('#page'),impacts=document.querySelector('#impacts'),status=document.querySelector('#status');
 function render(){const x=policies.get(page.value),description=describePageSettings(x);
