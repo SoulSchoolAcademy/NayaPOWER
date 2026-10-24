@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 05:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -545,6 +545,144 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
 
+### ✅ t1499 — Team 8, Team Naya Scorer (Governance & Safety) — 9.3/10 [VERIFIED]
+
+**Task:** SURGE slice-(b) retrieval-auth gate stamping-migration prep plan (design-only)
+
+**Receipt:** `twelve-lane-receipts/t1499-lane8.md`
+
+**Evidence:** ARTIFACTS VERIFIED (not PHANTOM): retrieval-authgate-migration-plan-t1499.md exists (9815 bytes, 133 lines); sha256 25eb97a807870219088770870082e66deb16febee7cd89fe8215d57cc09738d7 MATCHES the receipt's pinned SHA. Plan is design-only, zero wiring, protected-gate precondition (Shawn's word on wiring go) named not crossed; wave order stamp→wire reve
+
+### ✅ t1499 — Team 3, Team Naya Scorer (Decision Engine) — 9.2/10 [VERIFIED]
+
+**Task:** SURGE slice-(a) STALENESS VERDICT — experiment not re-run (stale brief closed)
+
+**Receipt:** `twelve-lane-receipts/t1499-lane3.md`
+
+**Evidence:** ARTIFACTS VERIFIED (all exist, not PHANTOM): surge-slice-a-arm7-t1494/ and surge-slice-a-arm8-t1496/ present; arm8/verdict-t1496.md carries the committed FALSIFIED-NO-CONTACT honest stop; arm8-presha.txt (aa65a92b…) and arm8-armsha-presha.txt (ac32aaa169…) exist and match the verdict's seal-chain prefixes — the lane's staleness determination is byt
+
+### ✅ t1498 — Team 7, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** receipt-prevention gate prototype
+
+**Receipt:** `twelve-lane-receipts/t1498-lane7.md`
+
+**Evidence:** receipt-prevention gate prototype: 61 unique breach PR bodies + 19 non-breach bodies fetched via read API (body cache on disk, offline re-runs), calibration caught PR 3009 miss and widened the why-not pattern (61/61 breach RECEIPT-MISSING; 18/19 negative pool MISSING + 1 RECEIPT-OK hand-confirmed), negative pool hand-labeled from full bodies with t
+
+### ✅ t1498 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** receipt-prevention gate prototype: fail-closed RECEIPT-OK/MISSING/MISFIRE verdicts measured against the director's breach log + design doc
+
+**Receipt:** `twelve-lane-receipts/t1498-lane7.md`
+
+**Evidence:** VERIFIED: all 5 file SHAs byte-exact (prototype 4dc10881, design d8eafa97, fetch 446a715c, verdict tables b0b2f507/b1e1a3cc); 80 PR-body cache files on disk. I independently re-ran the prototype: breach set 61/61 RECEIPT-MISSING 0 OK 0 MISFIRE, negative pool 18/19 MISSING + 3009 RECEIPT-OK — the claimed confusion matrix reproduces exactly. Score 9.
+
+### ✅ t1498 — Team 12, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** hub-sync reinstall runbook design
+
+**Receipt:** `twelve-lane-receipts/t1498-lane12.md`
+
+**Evidence:** hub-sync reinstall runbook design: current unit state read live (unit not installed, proxy.env precondition failing, Nitro's sync cron the verified live writer, unit down by standing order), 7-step fail-closed procedure with preconditions + check commands per step, double-mint hazard analyzed (systemd loop vs Nitro cron, the 2026-10-21 3x fight as 
+
+### ✅ t1498 — Team 10, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** brain-index x3 re-cure at new tip
+
+**Receipt:** `twelve-lane-receipts/t1498-lane10.md`
+
+**Evidence:** brain-index x3 re-cure at new tip: tip re-pinned at claim (782cbe2c1304), stale triad byte-identical to t1456's (hole #4 reproduced at the new tip by construction), regen deterministic (byte-identical triads across two runs), 39/39 freshness tests green on fresh index, exact x3 named fail-on-stale/pass-on-fresh, tip re-pinned at end no mid-run move
+
+### ✅ t1498 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Stage-2 brain-index re-cure at the live tip: deterministic regen, exact x3 named fail->pass, blocker-#9 closure
+
+**Receipt:** `twelve-lane-receipts/t1498-lane10.md`
+
+**Evidence:** VERIFIED: t1456 tip-triad sha == t1498 tip-triad sha byte-exact (106a49433a36355f — tip moved, blobs did not, the premise claim proven); check-pre DRIFT x3 at live tip, check-post OK after fresh regen; evidence-shas.txt prefixes match files on disk (anchor 7b7276f6, triad-compare 4a74e173, check-pre bf3ffbe0). Blocker-#9 RETRACT: 39201b40 is byte-p
+
+### ✅ t1497 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** twelve-lane receipt: SURGE slice-a arm8 — decision-entailment contact arm
+
+**Evidence:** Verified: prereg-arm8-t1496.md sha256 aa65a92b... matches the receipt's citation; arm script sha256 ac32aaa1... matches pre/post (pre==post held); arm dir contains prereg/arm/run1/run2/results/verdict with mtimes ascending 04:31<04:32<04:33; run1 vs run2 diff EXACTLY the two receipt-named fields (t_run_utc, latency_s); verdict file present with FAL
+
+### ✅ t1497 — Team 4, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** verbatim F-3/N-2 check-string runs under a pre-run sealed prereg
+
+**Receipt:** `twelve-lane-receipts/t1497-lane4.md`
+
+**Evidence:** verbatim F-3/N-2 check-string runs under a pre-run sealed prereg: F-3 CONFIRM — the only arm5 recount artifact is a method-summary (KeyError 'numbers', exit 1; the t1488 recount substantively reproduces 0.444 but lacks the verdict-table contract = CONTRACT-SHAPE failure, taxonomy hardened); N-2 REFUTE — the t1489 N-2 FAIL bound <TABLE> to a phantom
+
+### ✅ t1497 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE arm5 recount (F-3/N-2)
+
+**Receipt:** `twelve-lane-receipts/t1497-lane4.md`
+
+**Evidence:** Verified: prereg SHA 3825b470, f3/n2 run-log SHAs match; phantom t1494-lane12 confirmed absent; arm5 recount artifact SHA 4f8c452c matches (method-summary object, no numbers[].verdict); F-3 CONFIRM is the check's own falsifier firing on the missing-table case; score 9.5. Why not 10: N-2 REFUTE rests on the lane's own <TABLE> substitution (arm's own
+
+### ✅ t1497 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** twelve-lane receipt: sealed pre-registration for the t1496 lane3 third-seat adjudication
+
+**Evidence:** Verified: file exists (mtime Oct 24 04:07, preceding verdict-table work), sha256 byte-exact vs the citation in the independently scored t1496-lane3.md receipt. Clears 9.5 because the prereg seal is the discipline that made the 9.5-scored third-seat adjudication possible — conservative falsifiers, blind-discipline rules, and a falsifiable prediction
+
+### ✅ t1497 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** twelve-lane receipt: B1-closing third-seat verdict table (t1496 lane3 adjudication)
+
+**Evidence:** Verified: file exists, valid JSON, content byte-consistent with the independently scored t1496-lane3.md receipt (seat Naya Clarity Narzan, pre_reg seal 04:07:33Z, verdict NOT CLOSED at seat level — same-seat executor, routing to a different seat). Cross-checked pre_reg sha256 ec3e03582257a2e877b1e421cc2299aad44f0a58e3a310601f4006971436331d against 
+
+### ✅ t1497 — Team 2, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** t1027 mine recovery
+
+**Receipt:** `twelve-lane-receipts/t1497-lane2.md`
+
+**Evidence:** t1027 mine recovery: file found on first bounded pass (SHA 0a4248727d4b2b35... verified), all 6 cited receipts per-leaf verified 0 phantoms, stale t1492 premise retired from live bytes (no t1492 file anywhere, zero mentions; real carrier is t1483 + winmine-success-patterns-t1483.md), P-03/P-04/P-05 boundary table with CANDIDATE status honestly stat
+
+### ✅ t1497 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** twelve-lane receipt: t1027 winmine P-03/P-04/P-05 boundary table
+
+**Receipt:** `twelve-lane-receipts/t1497-lane2.md`
+
+**Evidence:** Verified: mine file hidden_files/success-patterns-winmine-t1027.md sha256 0a424872... matches the receipt; cited t0970-lane10 exists in the receipts tree; the brief's cited t1492-lane10.md confirmed ABSENT on disk (no file, zero greps) — the phantom-citation claim is live-verified true. Clears 9.5 because the file was found on the first bounded pas
+
+### ✅ t1497 — Team 1, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** B1 brief recusal (seat-excluded class)
+
+**Receipt:** `twelve-lane-receipts/t1497-lane1.md`
+
+**Evidence:** RECUSAL receipt scored as work: the brief's ROUTING clause excludes this seat by name; claiming and executing would have been poster-independence that actively harms B1. The structural finding is the deliverable — the entire lane-executor queue is claimed by the excluded seat by construction, so any B1-closing brief dispatched into this queue is vo
+
+### ✅ t1496 — Team 9, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE arm8 decision-entailment executed
+
+**Receipt:** `twelve-lane-receipts/t1496-lane9.md`
+
+**Evidence:** SURGE arm8 decision-entailment executed: frozen t0601 instrument imported never retyped, prereg sealed pre-run (SHA aa65a92b23e8... verified), two fresh runs byte-identical, 6/6 pins, controls re-derived live (0.556 reproduced exactly), results 0.000/0.000/0.000 mean 0.000 (entailment scores real, not degenerate), verdict FALSIFIED-NO-CONTACT per f
+
+### ✅ t1496 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE arm8 decision-entailment
+
+**Receipt:** `twelve-lane-receipts/t1496-lane9.md`
+
+**Evidence:** Verified: prereg SHA aa65a92b matches; arm SHA ac32aaa1 matches; mtimes prove prereg sealed 04:31:27Z before arm file 04:32:06Z and runs 04:32:53Z; verdict FALSIFIED-NO-CONTACT applied against frozen taxonomy with honest stop; score 9.5. Why not 10: single seat throughout (no blind second seat, t0601 precedent calls for one); prereg prose carried 0
+
+### ✅ t1496 — Team 8, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** F-R5 exhaustive gate-scan
+
+**Receipt:** `twelve-lane-receipts/t1496-lane8.md`
+
+**Evidence:** F-R5 exhaustive gate-scan: 76 gates / 96 files scanned at pinned mirror tip (26 protected gates, all 44 CI workflows, 6 workspace instruments), zero distinctive-vocabulary hits and zero bare MCC/K4 token hits; board venues scanned (2,024+ comments, 7 hits all dissolved on context); bounded ruleset 23853581 encodes only deletion/non_fast_forward — v
+
 ### ✅ t1496 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** twelve-lane receipt: F-R5 exhaustive gate-scan - did any gate ever adjudicate C1-C3?
@@ -552,6 +690,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1496-lane8.md`
 
 **Evidence:** Verified: scan script hidden_files/fr5-gate-scan-t1496.py sha256 1edcf578cbf5d95703af5a831a605c4794be990b4a5d26f79cc1ef379e29723b byte-exact to receipt; results table bfa25f91bf70806d26a9121d4ffe4d4ac2405e50622876664d7acef36231fb4a byte-exact, 76 gates / 96 files at repo_tip 6c60c3285f9556747736ac7dcc747e0b03ea1a85, gates_with_vocab_hits=[]; board-
+
+### ✅ t1496 — Team 3, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** independent third-seat score of the t1481 replay
+
+**Receipt:** `twelve-lane-receipts/t1496-lane3.md`
+
+**Evidence:** independent third-seat score of the t1481 replay: pre-reg sealed blind (SHA ec3e03582257... verified, 04:07:33Z pre-judgment), all F-R1..F-R4 re-derived byte-identical (including self-correction of own t0743 pin misattribution), F-R2 hardened at venue level (2,400 comments, zero landed-pre-reg claims), B1 honestly NOT closed — same seat as replay a
 
 ### ✅ t1496 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -561,6 +707,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: prereg sha256 ec3e03582257a2e877b1e421cc2299aad44f0a58e3a310601f4006971436331d byte-exact to receipt claim; seal chain intact (prereg 04:07:32Z < verdict table 04:10:55Z < receipt 04:14:32Z); t0743 pin disambiguation checks out (lane-2/semantic-arm-prereg-t0743.md sha256 prefix aeffc6fa2e289b0a = receipt claim, distinct from the t0743 rec
 
+### ✅ t1495 — Team 12, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** anti-phantom instrument built (bin/anti-phantom-check.py, SHA e1926de1db98e... verified)
+
+**Receipt:** `twelve-lane-receipts/t1495-lane12.md`
+
+**Evidence:** anti-phantom instrument built (bin/anti-phantom-check.py, SHA e1926de1db98e... verified): receipt mode + scores mode, firing test caught the /-lookbehind miss on the brief's own live phantom (t1468-lane6.md, confirmed absent by full-tree find), fixed and re-fired; measured before/after on real files; honestly reported 0 phantom rows on current byte
+
 ### ✅ t1495 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** twelve-lane receipt
@@ -568,6 +722,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1495-lane12.md`
 
 **Evidence:** Verified: hidden_files/bin/anti-phantom-check.py exists with sha256 e1926de1db98e04de43edab9c1c4c9a60acc547b5a17ee2d5d4ac77b8fa022fd byte-exact to the receipt's pinned claim; receipt-mode firing REPRODUCED on brief-queue/claimed/done/brief-t1495-lane12.md (exit 2, FIRES, phantom = t1468-lane6.md, 6/7 resolve); PASS mode REPRODUCED on twelve-lane-re
+
+### ✅ t1494 — Team 9, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE arm7 Rocchio query-expansion executed
+
+**Receipt:** `twelve-lane-receipts/t1494-lane9.md`
+
+**Evidence:** SURGE arm7 Rocchio query-expansion executed: 6/6 pins zero drift, pass-1 full_ranking byte-identical to arm6 sealed rankings (single-variable claim airtight), two fresh runs byte-identical, verdict FALSIFIED per frozen taxonomy (mean 0.556 = bar, anchor rank 2 unchanged); arm dir verified on disk | Clears 9.5: the one-variable discipline plus the s
 
 ### ✅ t1494 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
@@ -577,6 +739,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/surge-slice-a-arm7-t1494/ — sha256 of prereg d71c1548afea6f4f…, arm b8d857f3d7a9a204…, results 81a4551f618a8f69…, verdict b16d91a97b632d90… all byte-match receipt claims; mtime seal chain prereg 03:48:54Z < arm 03:49:30 < runlog 03:49:37 < results 03:49:59 < verdict 03:51:17 (prereg sealed before the arm file existed); result
 
+### ✅ t1494 — Team 1, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** delta-only query-log analysis
+
+**Receipt:** `twelve-lane-receipts/t1494-lane1.md`
+
+**Evidence:** delta-only query-log analysis: premise check first — log pin recomputed at action time (sha256 c902815f... verified exact match to t1271 pin), 198 rows unchanged, last row identical, schema unchanged; deliverable is the verified no-growth doc; zero ask-world invocations during analysis so pin integrity held | Clears 9.5: the recompute, not the brie
+
 ### ✅ t1494 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** twelve-lane receipt
@@ -584,6 +754,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1494-lane1.md`
 
 **Evidence:** Verified: retrieval/query-log-delta-t1494.md sha256 17cec6c069972d00 byte-matches receipt claim; auto-retrieval/ask-world-queries.jsonl re-pinned at action time sha256 c902815f4151...9f38 = receipt claim, 198 rows = t1271 baseline, last row ts 2026-10-22T02:02:34Z lane 3 brief-driven pid 2304 = receipt claim byte-for-byte. Clears 9.5 because the br
+
+### ✅ t1493 — Team 11, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-auth-gate migration plan
+
+**Receipt:** `twelve-lane-receipts/t1493-lane11.md`
+
+**Evidence:** retrieval-auth-gate migration plan: seam re-derived at live tip (spec 0007 pinned `def retrieve(query)` at 235a61f0b8f0; live tip 782cbe2c1304 seam is `_ranked_candidates()` line 940), gate module + 25-test suite verified on main byte-identical to t952 pins, census re-run at action time (52 entries, 28 fail-closed), protected gate named: Shawn's wo
 
 ### ✅ t1493 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -593,6 +771,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval-auth-gate-migration-plan-t1493.md sha256 dceb07ac498e22e2 byte-matches receipt claim; origin/main = 782cbe2c130476688de069045e6ac0433f8b1403 via ls-remote = receipt's live tip; receipt read line citations via git show origin/main (free protocol). Clears 9.5 because the seam was re-pinned at live tip (found refactored: retrieve()
 
+### ✅ t1490 — Team 10, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** blind second-seat score of the t1481 decision replay
+
+**Receipt:** `twelve-lane-receipts/t1490-lane10.md`
+
+**Evidence:** blind second-seat score of the t1481 decision replay: pre-reg sealed (SHA f5b4e653a02f8d... verified, mtime before judgment reads), all pins re-derived byte-identical, F-R1..F-R5 re-adjudicated, caught the brief's premise-rot (Naya Resolve vs Naya Clarity seat correction), B1 honestly left NOT closed at seat level | Clears 9.5: mechanism independen
+
 ### ✅ t1490 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** twelve-lane receipt
@@ -600,6 +786,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1490-lane10.md`
 
 **Evidence:** Verified: decision-replay-t0780-secondseat-t1490-lane10-prereg.md (full match f5b4e653...78b24ffb29, sealed 03:32:46Z before any judgment read) + verdict-table JSON (full match 4b20107d...f155a) exist; all subject pins re-derived at action time and byte-identical; all five replay falsifiers re-adjudicated (none fired). Clears 9.5 because pre-reg-fi
+
+### ✅ t1489 — Team 9, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** stale-premise adjudication
+
+**Receipt:** `twelve-lane-receipts/t1489-lane9.md`
+
+**Evidence:** stale-premise adjudication: t1488 arm6 already committed 03:19Z before this brief claimed 03:20Z; refused to fork the lineage with a duplicate arm6, preserved the entailment design for a future arm, named the systemic cause (3 duplicate arm6 briefs minted with no arm-number occupancy check) with the dispatcher fix | Clears 9.5: the highest-value mo
 
 ### ✅ t1489 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
@@ -617,6 +811,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: surge-slice-a-arm6-t1488/ holds prereg+arm+results+runlogs+verdict (slot already filled, committed 03:19Z before this brief's 03:20Z claim); brief-t1489-lane9.md sits in brief-queue/done/ (archived post-receipt); queue sweep flagged t1493-lane1 as the third same-slot brief. Score 9.5. Clears 9.5 because a duplicate arm6 lineage fork was k
 
+### ✅ t1489 — Team 12, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** second consumer run of the t1473 acceptance instrument
+
+**Receipt:** `twelve-lane-receipts/t1489-lane12.md`
+
+**Evidence:** second consumer run of the t1473 acceptance instrument: 15/15 run verbatim, 0 skipped/errors, thresholds applied (9/15 PASS, 6 non-PASS decomposed on bytes), all SHAs re-pinned at action time zero drift, P-2 arm5->arm6 PASS with named quotes; verdict table + run log exist, table+runner SHAs spot-verified | Clears 9.5: verbatim instrument discipline
+
 ### ✅ t1489 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** twelve-lane receipt
@@ -633,6 +835,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval-acceptance-arm5-t1489/{run-table-arm5-t1489.txt,verdict-table-arm5-t1489.md} exist; run log shows real check execution (15 criteria, exit-code-bearing); acceptance-table.json + run-table.py exist; cited receipts t1473-lane7/t1465-lane11 exist; arm6 dir complete with verdict-t1488.md committed 03:19Z. Score 9.5. Clears 9.5 becaus
 
+### ✅ t1488 — Team 6, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE arm6 cosine-geometry arm executed end-to-end
+
+**Receipt:** `twelve-lane-receipts/t1488-lane6.md`
+
+**Evidence:** SURGE arm6 cosine-geometry arm executed end-to-end: prereg sealed 03:17:15 before arm existed 03:17:42, 5/5 fixture pins zero drift, two fresh runs byte-identical, verdict FALSIFIED per frozen taxonomy (F1 fired, mean 0.556 reached control bar); arm dir + SHAs verified on disk | Clears 9.5: single-variable geometry change executed with airtight bli
+
 ### ✅ t1488 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** twelve-lane receipt
@@ -648,6 +858,14 @@ _Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1488-lane6.md`
 
 **Evidence:** Verified: hidden_files/surge-slice-a-arm6-t1488/prereg-arm6-t1488.md + arm_cosine_trigram_t1488.py + run1/run2 json + runlogs + verdict-t1488.md all exist; double-run battery with guards; clone-pattern documented for arm7. Score 9.2. Why not 9.5: the prereg's mechanism-WHY carried bar recovery (easy) and anchor recovery (hard) at ONE confidence — t
+
+### ✅ t1488 — Team 11, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** blinded independent recount of SURGE arm5
+
+**Receipt:** `twelve-lane-receipts/t1488-lane11.md`
+
+**Evidence:** blinded independent recount of SURGE arm5: two independent derivations byte-identical all cells (mean HIT@5 0.444); recount JSON + verdict note exist on disk; honest blindness caveats named (brief's Known clear carried sealed numbers; atime unreliable); sealed mtime chain held | Clears 9.5: every verdict cell byte-identical across two independent i
 
 ### ✅ t1488 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
