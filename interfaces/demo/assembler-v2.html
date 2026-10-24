@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Universal Assembler — Smart Factory pieces</title>
+<style>
+:root{--obsidian:#0a0a0f;--deep:#020203;--raise:#10141d;--card:#141a28;--white:#ffffff;--paper:#f8f7fb;--silver:#c9c9d4;--slate:#8a8a99;--line:rgba(255,255,255,.12);--purple:#a06bff;--blue:#3fb8ff;--green:#2fe89e;--gold:#ffbf3d;--orange:#ff9a5a;--red:#ff5e6c;--magenta:#e84fff;--ease:cubic-bezier(.16,.84,.22,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--deep);color:var(--silver);font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+.kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#fff}
+h1,h2{color:#fff;font-family:Newsreader,Georgia,serif;font-weight:500;line-height:1.2}
+h1{font-size:clamp(30px,7vw,40px);margin:14px 0 10px}
+h2{font-size:clamp(20px,5vw,26px);margin:0 0 8px}
+p{margin:0 0 12px}
+.lede{font-size:17px;color:var(--paper);font-family:Newsreader,Georgia,serif}
+.hero{padding:40px 0 28px;border-bottom:1px solid var(--line);text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(160,107,255,.18),transparent 60%)}
+.orb{margin:0 auto 16px;width:120px;height:120px;border-radius:50%;position:relative;
+background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.30) 13%,transparent 30%),radial-gradient(circle at 50% 62%,rgba(255,255,255,.10) 0%,transparent 42%),radial-gradient(circle at 50% 50%,var(--purple) 0%,#5a2fb8 56%,#040406 100%);
+box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.50),inset 0 10px 18px rgba(255,255,255,.14),inset 0 -12px 24px rgba(0,0,0,.62),0 0 30px rgba(160,107,255,.55),0 0 74px -10px rgba(160,107,255,.42),0 24px 48px rgba(0,0,0,.65);
+animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+.orb::before{content:"";position:absolute;inset:-17px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 282deg,rgba(160,107,255,.85) 328deg,rgba(255,255,255,.95) 350deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:3px;animation:spin 6s linear infinite;opacity:.85}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stepnav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px 0;padding:10px;border:1px solid var(--line);border-radius:999px;background:var(--raise);box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.stepnav span{font-size:11px;letter-spacing:.14em;color:var(--silver)}
+.stepnav .dia{color:var(--purple)}
+section{padding:34px 0;border-bottom:1px solid var(--line)}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;margin:0 0 16px;box-shadow:0 18px 50px rgba(0,0,0,.55),0 6px 18px rgba(0,0,0,.4);transition:transform .25s var(--ease)}
+.card::before{content:"";position:absolute;top:0;left:22px;right:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--purple),var(--magenta),transparent);box-shadow:0 0 18px rgba(232,79,255,.7)}
+.card:hover{transform:translateY(-3px)}
+.card .corner{position:absolute;top:10px;right:14px;color:var(--purple);font-size:14px}
+.pill{display:inline-block;padding:12px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 0 0 1px rgba(255,255,255,.15),0 8px 20px rgba(0,0,0,.5);transition:all .25s var(--ease)}
+.pill:hover{border-color:var(--purple);box-shadow:0 0 22px rgba(160,107,255,.6),0 8px 20px rgba(0,0,0,.5);transform:translateY(-2px)}
+.pill.primary{background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);border-color:rgba(255,255,255,.6)}
+.iconbtn{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 0 18px rgba(255,255,255,.25),0 10px 24px rgba(0,0,0,.6);transition:all .25s var(--ease)}
+.iconbtn:hover{border-color:var(--purple);box-shadow:0 0 28px rgba(160,107,255,.7);transform:scale(1.06)}
+.jewel{display:inline-block;width:10px;height:10px;transform:rotate(45deg);margin-right:8px;vertical-align:middle}
+select,input{width:100%;padding:14px;border-radius:14px;border:1px solid var(--line);background:#050507;color:#fff;font-size:17px;margin:8px 0}
+.plan{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:14px;padding:14px;margin:10px 0;cursor:pointer;background:var(--raise)}
+.plan.selected{border-color:var(--purple);box-shadow:0 0 18px rgba(160,107,255,.45)}
+.plan b{color:#fff}
+.muted{color:var(--slate);font-size:14px}
+.partno{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.14em;color:var(--slate)}
+.handle{color:var(--green);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+</style></head><body>
+<div class="wrap">
+<header class="hero">
+<div class="orb" aria-hidden="true"></div>
+<span class="kicker">Smart Factory ◆ Pick your pieces</span>
+<h1>Universal Assembler</h1>
+<p class="lede">One system, for every Naya. Pick pieces already had, assemble a page at will, in the right format. Nothing rebuilt from scratch.</p>
+<p class="muted">Private by default · Shared by choice · Collective by consent</p>
+</header>
+
+<nav class="stepnav" aria-label="Steps"><span>INTENT</span><span class="dia">◆</span><span>PIECES</span><span class="dia">◆</span><span>ASSEMBLE</span><span class="dia">◆</span><span>CONTRACT</span></nav>
+
+<section>
+<span class="kicker">Step — Assemble</span>
+<h2>Pick a piece, it renders for real</h2>
+<p>Selecting a page below renders that actual piece, with working controls, not a summary of it.</p>
+<label class="kicker" for="page">Your page</label>
+<select id="page">
+<option value="dashboard">Dashboard + Ambassador row — NAYA-DASH-001</option>
+<option value="checkout">Checkout, test mode — NAYA-PAY-001</option>
+<option value="welcome">Welcome end slide — NAYA-WLK-001</option>
+</select>
+<div style="margin-top:14px"><button class="pill primary" onclick="assemble()">✦ Assemble it</button>
+<button class="pill" onclick="document.getElementById('out').innerHTML='<p class=muted>Assembled page cleared. Pick again, no rebuild needed.</p>'">Clear</button></div>
+<div id="out" class="card" style="margin-top:18px"><span class="corner">◆</span><p class="muted">Press Assemble it. The piece renders here, working, in Smart Factory language.</p></div>
+</section>
+
+<section>
+<span class="kicker">Piece catalog</span>
+<h2>What the system already has</h2>
+<p><span class="jewel" style="background:var(--magenta);box-shadow:0 0 10px var(--magenta)"></span>Dashboard ambassador row, beside My Smart Link</p>
+<p><span class="jewel" style="background:var(--purple);box-shadow:0 0 10px var(--purple)"></span>Plus-button share, Facebook / text / email / copy, Ask Naya post prompt</p>
+<p><span class="jewel" style="background:var(--blue);box-shadow:0 0 10px var(--blue)"></span>Leaderboard, alias only, honest empty state</p>
+<p><span class="jewel" style="background:var(--green);box-shadow:0 0 10px var(--green)"></span>Improved graphs, one derivation, no drift</p>
+<p><span class="jewel" style="background:var(--gold);box-shadow:0 0 10px var(--gold)"></span>Welcome end slide, verbatim, and checkout, test mode</p>
+<p class="muted">Settings on every page: installable ◆ visibility ◆ discoverability. Personal private + findable, Business public, Space public. Gate before, ledger after.</p>
+</section>
+</div>
+
+<template id="tpl-dashboard">
+<div><span class="partno">NAYA-DASH-001 ◆ DASHBOARD + AMBASSADOR</span>
+<h2>✦ You're hired — your ambassador link</h2>
+<p class="handle" id="link-line">nayanet.live/joinus?ref=your-alias</p>
+<p>Clicks 0 · Signups 0 · Sales 0 · Your Wednesday share $0.00</p>
+<p class="muted">Display-only until payout terms are confirmed in the open. Honest zeros, never fabricated ranks.</p>
+<label class="kicker">Your alias</label>
+<input class="alias-in" placeholder="your-alias" oninput="document.getElementById('link-line').textContent='nayanet.live/joinus?ref='+encodeURIComponent(this.value||'your-alias')">
+<button class="pill primary" onclick="navigator.clipboard&&navigator.clipboard.writeText('https://nayanet.live/joinus?ref='+encodeURIComponent(document.querySelector('.alias-in').value||'your-alias'));this.textContent='✓ Copied'">＋ Share / Copy link</button>
+<button class="iconbtn" title="Share">✦</button>
+<p style="margin-top:14px"><span class="jewel" style="background:var(--magenta);box-shadow:0 0 10px var(--magenta)"></span>Leaderboard: no ambassador activity recorded yet — be the first. Alias only, never real identity.</p>
+</div>
+</template>
+
+<template id="tpl-checkout">
+<div><span class="partno">NAYA-PAY-001 ◆ CHECKOUT</span>
+<h2>Your Smart App, ready to go</h2>
+<p>All the tools, your own Smart App, your personal space, your own dashboard. You're hired.</p>
+<div class="plan selected" onclick="selectPlan(this)"><span><b>Monthly</b><br><span class="muted">Billed monthly</span></span><span><b>$14 / mo</b></span></div>
+<div class="plan" onclick="selectPlan(this)"><span><b>3 months</b><br><span class="muted">Save with a quarter</span></span><span><b>$37 / 3 mo</b></span></div>
+<div class="plan" onclick="selectPlan(this)"><span><b>Yearly</b><br><span class="muted">Best regular value</span></span><span><b>$75 / yr</b></span></div>
+<div class="plan" onclick="selectPlan(this)"><span><b>Lifetime</b><br><span class="muted">One payment, forever</span></span><span><b>$150 once</b></span></div>
+<p class="muted">5 days free first. Founding first 1,000 locked forever. Test mode: no real charge until merchant keys land through the secure tap.</p>
+<button class="pill primary" onclick="this.textContent='✓ Test mode — plan selected, no charge taken'">Start my 5 free days</button>
+</div>
+</template>
+
+<template id="tpl-welcome">
+<div><span class="partno">NAYA-WLK-001 ◆ WELCOME END</span>
+<h2>Congratulations, you're hired.</h2>
+<p>Welcome to Naya. Welcome to the team. Welcome to the future.</p>
+<p>Your pages are built, your link is yours, and your dashboard is ready.</p>
+<p class="handle">nayanet.live/joinus?ref=your-alias</p>
+<p class="muted">Share it, and every person who joins through it is counted for you — 50% of revenue, paid every Wednesday.</p>
+<button class="pill primary">See your dashboard</button>
+</div>
+</template>
+
+<script>
+function assemble(){
+  const v = document.getElementById('page').value;
+  const tpl = document.getElementById(v==='dashboard'?'tpl-dashboard':v==='checkout'?'tpl-checkout':'tpl-welcome');
+  const out = document.getElementById('out');
+  out.innerHTML = '';
+  out.appendChild(tpl.content.cloneNode(true));
+}
+function selectPlan(el){
+  document.querySelectorAll('.plan').forEach(p=>p.classList.remove('selected'));
+  el.classList.add('selected');
+}
+</script>
+</body></html>
