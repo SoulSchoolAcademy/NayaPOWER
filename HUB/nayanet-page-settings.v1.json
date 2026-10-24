@@ -1,0 +1,159 @@
+{
+  "schema": "nayanet.page-settings.v1",
+  "canonical_product_issue": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3028",
+  "canonical_architecture_issue": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3029",
+  "adoption_state": "PROPOSED_NOT_DEPLOYED",
+  "applies_to": [
+    "personal",
+    "business",
+    "space",
+    "smart_app",
+    "project_page",
+    "other_page"
+  ],
+  "controls": {
+    "visibility": {
+      "values": [
+        "private",
+        "public"
+      ],
+      "meaning": "Who is eligible to view page CONTENT; server LAW/RLS controls actual access"
+    },
+    "discoverability": {
+      "values": [
+        "unlisted",
+        "findable"
+      ],
+      "meaning": "Whether an owner-approved ALIAS + EXPLICIT MATCH TOPICS Connect projection can be included in NayaNET search/AutoMatch. Independent from PAGE CONTENT visibility; never indexes real name, username, full content or private people."
+    },
+    "installation": {
+      "values": [
+        "enabled",
+        "disabled"
+      ],
+      "meaning": "Owner preference for install affordance; browser/device and deployed PWA gates decide actual installation"
+    }
+  },
+  "defaults": {
+    "personal": {
+      "visibility": "private",
+      "discoverability": "findable",
+      "installation": "enabled"
+    },
+    "business": {
+      "visibility": "public",
+      "discoverability": "findable",
+      "installation": "enabled"
+    },
+    "space": {
+      "visibility": "public",
+      "discoverability": "findable",
+      "installation": "enabled"
+    },
+    "smart_app": {
+      "visibility": "private",
+      "discoverability": "unlisted",
+      "installation": "enabled"
+    },
+    "project_page": {
+      "visibility": "private",
+      "discoverability": "unlisted",
+      "installation": "enabled"
+    },
+    "other_page": {
+      "visibility": "private",
+      "discoverability": "unlisted",
+      "installation": "enabled"
+    }
+  },
+  "launch_state": "DRAFT_UNPUBLISHED",
+  "initial_publishing_requires": [
+    "owner_authenticated",
+    "specific_page_owner_bound",
+    "explicit_content_and_visibility_review",
+    "server_visibility_enforcement_verified",
+    "receipt_and_revision"
+  ],
+  "indexing_policy": {
+    "public/findable": "After independently reviewed publish, public page content may be indexed separately; ALIAS+APPROVED TOPICS Connect discovery uses its own permissioned projection.",
+    "public/unlisted": "Page content may be visited by authorized/direct link after publish; omit ALL alias/topic discovery and page content from search/recommendations/sitemap; link is not a secrecy guarantee.",
+    "private/unlisted": "Owner and specifically authorized members may access page via known link; no stranger access, no Connect/alias/topic search suggestions, no private page content or membership indexing.",
+    "private/findable": "After a separately reviewed and authenticated ALIAS + owner-declared safe TOPICS discovery activation, include Connect card and calibrated matches by ALIAS ONLY. PAGE CONTENT, real name, username, private details, private posts, private circle and membership NEVER enter the discovery index; no stranger read regardless of direct URL."
+  },
+  "production_hard_gates": [
+    "Authenticated immutable owner/page binding for READ and WRITE; never browser alias alone",
+    "LAW and server/RLS gate every read, update, publish, index, connect, and invite independently",
+    "Private-to-public requires explicit owner review; never silently reuse old private content or private social evidence",
+    "Public-to-private unindexes, revokes public links and previously distributed cached endpoints where feasible, invalidates search/feed cache; cannot erase existing copies",
+    "Every setting change atomically records before/after, actor, revision, authority receipt; retries idempotent and stale writes rejected",
+    "Installability is not visibility/ownership and never implies offline authorization; no storing private bytes in public service-worker caches",
+    "Real PWA install needs unique manifest id/start_url/scope, secure origin, icon and tested browser support; owner may disable",
+    "Separate pages have independent policies, revisions, installations and permissions; additional pages are governed by actual operational capacity",
+    "TWO DISTINCT server-derived indexes: alias + separately reviewed topics (Connect) vs only-public-approved PAGE CONTENT; never infer contents from page visibility alone",
+    "PRIVATE+FINDABLE owner-approved alias/topic projection can participate in match while private page READ and private membership remain denied",
+    "Alias MUST NOT expose the protected real name, username, email or page contents; approved topics only; fail-closed when topic consent is missing",
+    "FINDABLE=false disables alias, Connect discovery and Match inclusion across all pages; direct private links never bypass authorization",
+    "Separate world ID, membership list, posts and scope per page; membership in public world never grants private world access and vice versa",
+    "Connection request/accept is separate from publishing/revealing the owner's private page, identifying data, or other worlds",
+    "Verify actual server RLS independently A/B/C + anonymous C denied all private content and memberships while legitimately Findable alias appears in authorized matcher"
+  ],
+  "test_status": "AUTHOR_PROTO_ONLY__SERVER_DISCOVERY_AND_ISOLATION_UNVERIFIED",
+  "canonical_lesson": {
+    "id": "SN-0852",
+    "authority": "Director's clarified maximum connection, minimum exposure and separate worlds/circles",
+    "reference": "https://nayanet.live/s/sn0852",
+    "citation_status": "DIRECTOR_SUPPLIED__REPO_PATH_NOT_INDEPENDENTLY_FOUND"
+  },
+  "privacy_philosophy": "MAXIMUM_CONNECTION_MINIMUM_EXPOSURE",
+  "worlds_and_circles": {
+    "canonical_rule": "ONE_PAGE_IS_ONE_WORLD_WITH_ITS_OWN_COMMUNITY",
+    "per_world_unique_id": true,
+    "separate_membership_per_world": true,
+    "default_private_membership_inheritance": false,
+    "cross_world_member_carryover": false,
+    "cross_world_post_replication": false,
+    "public_membership_does_not_grant_private_world_access": true,
+    "private_membership_does_not_auto_enroll_in_public_world": true,
+    "user_may_own_parallel_personal_pages": true,
+    "user_may_own_parallel_public_private_spaces": true,
+    "connect_is_user_interest_not_reciprocal_acceptance": true,
+    "connection_to_alias_does_not_expose_real_name_or_private_page": true,
+    "reveal_requires_owner_defined_scope_and_separate_action": true,
+    "direct_private_link_requires_member_or_owner_authorization": true
+  },
+  "alias_topic_discovery": {
+    "separate_from_page_content": true,
+    "activation_requires": [
+      "authenticated_issuer_owner",
+      "claimed_nonidentifying_alias",
+      "owner_reviewed_non_sensitive_declared_topic_tags",
+      "findable_true",
+      "explicit_discovery_audience",
+      "not_blocked_or_revoked",
+      "trusted_server_projection_evidence"
+    ],
+    "allowed_fields": [
+      "alias",
+      "approved_topics",
+      "calibrated_relevance_percent",
+      "matching_reasons"
+    ],
+    "forbidden_fields": [
+      "real_name",
+      "username",
+      "email",
+      "phone",
+      "private_page_text",
+      "private_posts",
+      "private_membership",
+      "private_community_roster",
+      "private_goal_or_mission_not_separately_approved",
+      "private_note"
+    ],
+    "percentage_truth": "Use only calibrated contextual estimated relevance with separately measured signal coverage/confidence; do not rate people as intrinsically valuable.",
+    "no_implicit_social_action": true,
+    "private_page_may_be_findable": true,
+    "unfindable_removes_alias_from_match": true,
+    "audience_controlled_by_server": true
+  }
+}
