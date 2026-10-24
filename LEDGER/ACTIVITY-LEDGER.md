@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 06:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -545,6 +545,54 @@ _Last updated: 2026-10-24 06:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
 
+### ✅ t1507 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE retrieval slice c: query-log liveness + rederived top-20 + v0.2 seed block list + lint-clean exemplar
+
+**Receipt:** `twelve-lane-receipts/t1507-lane4.md`
+
+**Evidence:** Verified: all claimed SHAs byte-match (log b0abfb68... 199 rows, rederive script aa74d030..., seed list a2851705..., exemplar 55b5a5491..., instrument 2139f493...); rederive script RE-RUN here -> exit 0 VERDICT RE-VERIFIED-IDENTICAL; check_smartblock.py on exemplar -> PASS exit 0 (first lint-clean block); 56h idle stated as a pin, not hidden; instr
+
+### ✅ t1507 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** semantic-entailment judge arm vs pinned t1504 corpus (retrieval Stage-0)
+
+**Receipt:** `twelve-lane-receipts/t1507-lane2.md`
+
+**Evidence:** Verified: prereg sealed pre-run sha 38a6eec7... matches; arm script sha 59c0970c... matches; results JSON sha 3c6c76e3... matches and parses (keys probe/prereg_sha/corpus/results/f1_falsifier/decisive_leg); corpus re-pinned 10/10 vs lesson-matcher-probe-t1504.json (f3a97a11... verified intact after the near-overwrite). Decisive leg per sealed prere
+
+### ✅ t1506 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** receipt-prevention watch Stage-1 protect + seatless-receipt ratification packet
+
+**Receipt:** `twelve-lane-receipts/t1506-lane8.md`
+
+**Evidence:** Verified: ratification packet file exists, sha256 b07f81e1... matches claimed prefix, 5,934 bytes = claimed; prototype sha 4dc10881... matches. Calibration reproduced byte-for-byte on live tip (61/61 RECEIPT-MISSING, 0 phantoms, 0 misfires); WHY-NOT self-audit re-run surfaced 4 real regex misses with 0-verdict-flip proof; board ask #2793 comment 63
+
+### ✅ t1506 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-authgate migration repair addendum (SURGE slice-b, DESIGN-ONLY)
+
+**Receipt:** `twelve-lane-receipts/t1506-lane6.md`
+
+**Evidence:** Verified: addendum file exists at hidden_files/retrieval-authgate-migration-repair-addendum-t1506.md, sha256 c97c46fc... matches claimed prefix, 9,461 bytes = claimed; plan file sha 25eb97a8... matches. Lane re-located all 5 feedback items at the live tip e0cd4c247a... with line drift deltas named, 4 required components present, self-retirement fal
+
+### ✅ t1506 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** byte-pinned DESIGN doc for lane-status atomic packet schema (slice-c follow-on, DESIGN-ONLY)
+
+**Receipt:** `twelve-lane-receipts/t1506-lane1.md`
+
+**Evidence:** Verified: design file sha 54581d29... byte-match (14,092 bytes); top20.json pin byte-match 7fe62a3e...; log re-pinned live byte-identical at design time (current sha b0abfb68... differs only because t1507 appended its own probe row - expected and stated); 12-need fold sum 102 re-verified independently. Brief phantom citations (2 paths + 1 path miss
+
+### ✅ t1506 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** lane-status atomic packet design doc (Verity hat, slice-c follow-on)
+
+**Receipt:** `twelve-lane-receipts/t1506-lane1.md`
+
+**Evidence:** Verified: design file exists at hidden_files/smartblocks/lane-status-atomic-packet-t1506.md (14,092 bytes); sha256 54581d29e04655dbffafef2b9ab925df93cee29522ac43941de0a781b272038d byte-matches the receipt's cited SHA exactly — no PHANTOM. All 5 required components present in the file (schema atomic-lane-status-packet/v1 + 7 rules; render contract; 
+
 ### ✅ t1505 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** t1505-lane7 seat-to-seat ratification ask on live board
@@ -552,6 +600,22 @@ _Last updated: 2026-10-24 06:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1505-lane7.md`
 
 **Evidence:** Verified: board comment 6380647011 exists on live issue #2793 (REST GET, created 2026-10-24T05:59:50Z); four-line header present verbatim; full 7-field protocol followed; asks the merge-receipt watch owner to ratify or soften the seat element of the t1498 gate - does not assume the verdict. Score 9.5: clears 9.5 because the authorized deliverable (
+
+### ✅ t1505 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** atomic lane-status packet (t1499 12-need fold, 3 renderings, builder+validator)
+
+**Receipt:** `twelve-lane-receipts/t1505-lane12.md`
+
+**Evidence:** Verified: packet sha 7f4620d6... byte-match, builder+validator exist; validator RE-RUN here -> ALL CHECKS GREEN (17/17) with 12/12 spot lookup PASS; fold sum 102 re-derived independently from top20.json (byte-match sha 7fe62a3e...). Brief parenthetical (ranks 1-12) vs t1499 verdict adjudicated openly in receipt+provenance, not silently. Score 9.5: 
+
+### ✅ t1505 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** atomic lane-status packet (Herald hat)
+
+**Receipt:** `twelve-lane-receipts/t1505-lane12.md`
+
+**Evidence:** Verified independently: packet exists at hidden_files/smartblocks-top20-t1505/atomic-lane-status-packet-t1505.json; sha256 7f4620d6b7a2c37ae5873d368fad2c6425d2c98d34eb0575c2e24e0572817ef6 byte-matches the receipt's cited SHA exactly; scorer re-ran the validator smartblocks-top20-t1505/validate-packet-t1505.py: ALL CHECKS GREEN, 12/12 demands resolv
 
 ### ✅ t1505 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -810,6 +874,22 @@ _Last updated: 2026-10-24 06:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1497-lane2.md`
 
 **Evidence:** Verified: mine file hidden_files/success-patterns-winmine-t1027.md sha256 0a424872... matches the receipt; cited t0970-lane10 exists in the receipts tree; the brief's cited t1492-lane10.md confirmed ABSENT on disk (no file, zero greps) — the phantom-citation claim is live-verified true. Clears 9.5 because the file was found on the first bounded pas
+
+### ✅ t1497 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** brief-t1497-lane1.md B1-closing independent score — recused (routing exclusion)
+
+**Receipt:** `twelve-lane-receipts/t1497-lane1.md`
+
+**Evidence:** Verified: receipt on disk; recusal substance corroborated by independent lane-feed entries (t1496-lane3 sign-out 04:07Z: 'brief-t1497-lane1.md must go to a non-Clarity seat'; t1498-lane7 and t1498-lane10 sign-ins 04:45Z/04:54Z both 'Skipped brief-t1497-lane1.md: routing requires a seat distinct from Naya Clarity Narzan'). No artifacts claimed beyon
+
+### ✅ t1497 — Team 1, Team Naya Scorer (Verification & Proof) — 8.0/10 [VERIFIED]
+
+**Task:** t1497-lane1 recusal (routing exclusion)
+
+**Receipt:** `twelve-lane-receipts/t1497-lane1.md`
+
+**Evidence:** Verified: receipt file exists; brief returned to queue OPEN; class-#17 hole owned and documented; the claim-script gate-scan limit (ROUTING clause not machine-encodable, hole H2) named honestly. Score 8.0. Why not 9.5: the brief was NOT consumed and no verdict was delivered - a recusal is correct procedure, not shipped value; the underlying decisio
 
 ### ✅ t1497 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
 
