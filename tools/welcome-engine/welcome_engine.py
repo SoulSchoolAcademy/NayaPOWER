@@ -132,8 +132,16 @@ def coverage(answers, has_business):
             "accounted_pct": round(100 * accounted / total) if total else 100}
 
 
+ALIAS_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{1,31}$")
+
+
 def issue_link_sql(alias):
-    """The activation issuance (pattern proven live 2026-10-24 on 9 citizens)."""
+    """The activation issuance (pattern proven live 2026-10-24 on 9 citizens).
+    v1.5 alias safety: the alias is interpolated into SQL, so it must match
+    the strict alias pattern — anything else (quotes, spaces, uppercase,
+    overlong, non-string) raises instead of reaching the SQL string."""
+    if not isinstance(alias, str) or not ALIAS_RE.match(alias):
+        raise ValueError(f"unsafe alias rejected: {alias!r}")
     return ("insert into public.ambassador_links (alias, link_url) values "
             f"('{alias}', 'https://nayanet.live/joinus?ref={alias}') on conflict (alias) do nothing;")
 
@@ -148,7 +156,7 @@ def activate(alias, answers, corpus, has_business=None):
     visible = {n: c for n, c in corpus.items() if c.get("_findable", True)}
     excluded = len(corpus) - len(visible)
     clean = {n: {k: v for k, v in c.items() if not k.startswith("_")} for n, c in visible.items()}
-    matches = rank_matches(vec, clean)
+    matches = rank_matches(vec, clean, self_name=alias)  # never match the citizen to themselves
     receipt = {
         "alias": alias,
         "pages": generate_pages(answers, has_business),
