@@ -6,7 +6,8 @@ import {validateCapabilityCatalog,assessClaim,intendedBenefits,recommendedPath,M
 const catalog=JSON.parse(readFileSync(new URL('../HUB/nayanet-capability-boundary.v1.json',import.meta.url),'utf8'));
 const feat=id=>catalog.features.find(x=>x.id===id);
 const change=fn=>{const c=structuredClone(catalog);fn(c);return c;};
-test('24 proposed benefits; no implicit live proof',()=>{assert.equal(validateCapabilityCatalog(catalog),true);assert.equal(catalog.features.length,24);});
+test('25 proposed benefits; no implicit live proof',()=>{assert.equal(validateCapabilityCatalog(catalog),true);assert.equal(catalog.features.length,25);});
+test('citizens may use a limited public-scope Naya guide without a fork when proven',()=>{const x=feat('public_naya_guide');assert.equal(x.offered_in.citizen,true);assert.ok(x.required_verified_gates.includes('rate_budget_limits_verified'));assert.equal(x.current_delivery,'UNKNOWN');});
 test('citizens never require GitHub',()=>assert.equal(catalog.audiences.citizen.requires_github,false));
 test('managed operator has no fork but is not deployed',()=>{assert.equal(catalog.audiences.managed_operator.requires_github,false);assert.equal(catalog.audiences.managed_operator.production_state,'NOT_VERIFIED');});
 test('fork path is implementation partial',()=>assert.equal(catalog.audiences.owner_fork.production_state,'IMPLEMENTATION_PARTIAL'));
@@ -25,7 +26,7 @@ test('invalid or failing independent proof remains blocked',()=>{assert.equal(as
 test('even a forged trusted callback can neither authorize nor advertise production',()=>{const r=assessClaim(catalog,'public_knowledge','citizen',{},()=>true);assert.equal(r.state,'INDEPENDENT_PUBLICATION_RECEIPT_REQUIRED');assert.equal(r.can_execute,false);assert.equal(r.marketing_claim_allowed,false);});
 test('citizen never gets personal private memory from UI marketing',()=>assert.equal(assessClaim(catalog,'owner_private_memory','citizen',{},()=>true).state,'NOT_IN_THIS_EXPERIENCE'));
 test('managed operator never inherits a personal fork',()=>assert.equal(assessClaim(catalog,'personal_fork_projection','managed_operator',{},()=>true).state,'NOT_IN_THIS_EXPERIENCE'));
-test('no feature advertised from proposed comparison data',()=>{const xs=intendedBenefits(catalog);assert.equal(xs.length,24);assert.ok(xs.every(x=>x.live_status==='UNKNOWN'&&!x.advertise_as_available));});
+test('no feature advertised from proposed comparison data',()=>{const xs=intendedBenefits(catalog);assert.equal(xs.length,25);assert.ok(xs.every(x=>x.live_status==='UNKNOWN'&&!x.advertise_as_available));});
 test('rejects duplicate feature ids',()=>assert.throws(()=>validateCapabilityCatalog(change(c=>c.features[1].id=c.features[0].id))));
 test('rejects unsafe user seat becoming owner',()=>assert.throws(()=>validateCapabilityCatalog(change(c=>c.boundaries.agent_seat_is_not_owner=false))));
 test('rejects fabricated production status in manifest',()=>assert.throws(()=>validateCapabilityCatalog(change(c=>c.features[0].current_delivery='PRODUCTION_PROVEN'))));
