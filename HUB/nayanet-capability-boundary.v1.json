@@ -155,6 +155,26 @@
       "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN"
     },
     {
+      "id": "public_naya_guide",
+      "label": "Public-scope Ask Naya guide",
+      "human_benefit": "Ask Naya for help navigating and understanding permitted public network content without a GitHub fork",
+      "offered_in": {
+        "citizen": true,
+        "managed_operator": true,
+        "owner_fork": true
+      },
+      "required_verified_gates": [
+        "public_assistant_service_verified",
+        "public_scope_only_verified",
+        "rate_budget_limits_verified"
+      ],
+      "current_delivery": "UNKNOWN",
+      "live_evidence": [],
+      "exact_deployed_sha": null,
+      "operator_requirement": false,
+      "ui_claim": "DO_NOT_ADVERTISE_AS_WORKING_UNTIL_PROVEN"
+    },
+    {
       "id": "public_discovery",
       "label": "Discover people, Spaces, projects",
       "human_benefit": "Explore relevant public network content",
