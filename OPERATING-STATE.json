@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-24T15:24:26Z",
-  "tip": "f7b0388eef0a6a500d9efb890a2da8a61c40ad72",
+  "generated_at": "2026-10-24T16:24:30Z",
+  "tip": "39796760e143dab3b6b10a3126bf7b123cd631ea",
   "open_pr_count": 5,
   "queue_by_tier_action": {
     "A": {
@@ -16,7 +16,6 @@
     }
   },
   "tip_failing_checks": [
-    "liveness",
     "promote-and-prove",
     "test"
   ],
