@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-24T08:15:34+00:00",
+ "generated_utc": "2026-10-24T09:15:55+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,8 +51,15 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3036,
+     "title": "fix(retrieve): re-stamp SN-1854 page_hash after 211cff Filed-line addition",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3036",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "act",
@@ -405,6 +412,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 3,
+ "open_pr_total": 4,
  "unassigned_prs": 2
 }

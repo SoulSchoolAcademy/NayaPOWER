@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-24 08:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-24 09:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 3 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -49,6 +49,9 @@
   - Run:** scheduled 2026-10-15 15:59:27Z · lane verify · 5/5 claims worked, ZERO DELTAS
 
 ## Open PRs by Area
+
+### KNOW (1)
+- [#3036](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3036) fix(retrieve): re-stamp SN-1854 page_hash after 211cff Filed-line addi
 
 ### BUILD (2)
 - [#3000](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000) Naya/mission state
