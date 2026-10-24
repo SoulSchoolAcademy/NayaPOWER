@@ -101,6 +101,29 @@ test('match ranking is stable, reasoned and does not mutate people',()=>{
   assert.ok(r[0].signal_coverage_percent>=60);
   assert.equal(r[0].uncalibrated,true);
 });
+test('editing or skipping previously shared answers revokes the old visibility grant',()=>{
+  const s=complete({interests:'astronomy learning',goals:'teach astronomy'},['interests','goals'],true);
+  assert.equal(s.packet().visibility.interests,'public');
+  s.edit('interests');s.answer('Private family subject');
+  assert.equal(s.packet().visibility.interests,'private');
+  assert.deepEqual(C.discoveryFeatures(s.packet()).topics,[]);
+  assert.equal(s.packet().visibility.goals,'public');
+  s.edit('goals');s.skip();
+  assert.equal(s.packet().answers.goals,'');
+  assert.equal(s.packet().visibility.goals,'private');
+  assert.deepEqual(C.discoveryFeatures(s.packet()).goals,[]);
+});
+test('mission vision and business enrich matches only with explicit field consent',()=>{
+  const s=complete({mission:'community science',vision:'education astronomy',
+    business:'science coaching',interests:'astronomy community'},['interests'],true);
+  const a=C.discoveryFeatures(s.packet());
+  assert.equal(a.goals.length,0);
+  assert.equal(a.offers.length,0);
+  for(const key of ['mission','vision','business'])assert.equal(s.setPublic(key,true),true);
+  const b=C.discoveryFeatures(s.packet());
+  assert.ok(b.goals.includes('science'));
+  assert.ok(b.offers.includes('coaching'));
+});
 test('AI prompt is explicitly for editable draft, no user data and no fake generation',()=>{
   assert.match(C.aiPrompt('vision'),/Do not invent information/);
   assert.match(C.aiPrompt('vision'),/copy and paste/);
