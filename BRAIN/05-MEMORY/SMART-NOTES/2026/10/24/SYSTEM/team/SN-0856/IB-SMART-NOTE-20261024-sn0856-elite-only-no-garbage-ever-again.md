@@ -43,3 +43,6 @@ You never waste a day looking at garbage, correcting garbage, or explaining why 
 - Never present garbage to Shawn, ever again. Not as a demo, not as a draft, not as "just to show the idea." An idea at a low level is still low level. Hold it, fix it, verify it, then show it.
 - This note is the official record of that law, and the Smart Factory must carry it with the design contract, so the next seat does not have to learn it by making the same mistake.
 - The three retired assembler demos of 2026-10-24 (v1 flat and summary-only, v2 new CSS even with harvested tokens, v3 sample-CSS but still presented before factory inventory existed) are the case study. All three were retired, on the record, and none of them should have been presented.
+
+## LIVE STATUS NOTE
+Filed to main 2026-10-24, verified on main by read-back (file SHA 7ea015f6, 5,958 bytes). The live link returned "Note not found" on first checks after filing, while SN-0855 on the same path pattern went live. This note was therefore re-filed as a fix to the same file on main, never a second copy, to trigger a fresh site sync. If the live link still does not resolve, the site sync itself, not this file, is the defect to fix, and it must be named as such, not smoothed over.
