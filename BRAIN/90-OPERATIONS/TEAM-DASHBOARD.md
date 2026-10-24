@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-24 03:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-24 04:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 5 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 7 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,7 +50,11 @@
 
 ## Open PRs by Area
 
-### BUILD (2)
+### LEARN (1)
+- [#3032](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3032) docs(brain): learning event 2026-10-23
+
+### BUILD (3)
+- [#3033](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3033) safety(door-obligation): backfill 19 orphaned Smart Note captures + re
 - [#3000](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000) Naya/mission state
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
 
