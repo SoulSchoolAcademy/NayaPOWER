@@ -64,3 +64,14 @@ three-layered elevation; size separates, color never does. Motion:
 breathing, drift, orb flow, ignition on the token clock, press + lift,
 calm off-switch required. Same-language check: 24 items, any single FAIL
 = does not ship.
+
+## EVERY PAGE, EVERY APP — SN-0857
+Forward: every new page and app is composed from inventoried parts only.
+Backward: every existing page below standard is brought up to standard, in
+place, by recomposition, dead or flat first — the dashboard and every
+current app are in scope. Understandability is part of the standard: if it
+is not understandable, make it understandable; if it cannot be read, make
+it readable; use visual language (icons, jewels, faces, shapes, pictures)
+when words fail, elegantly and beautifully, never as clutter. Readability
+is supreme: no glow, color, or effect may reduce it. Upgrade queue:
+workspace/your_files/2026-10-24-ACTIVE-INTELLIGENCE-UPGRADE-QUEUE.md
