@@ -11,10 +11,19 @@ Sources, in order of authority:
      resource budget, owners+gates, #3028 audit gates, kill criteria,
      sized verification lane, Shawn's items in-queue, front door, verdict SLA.
 
-Status: PROPOSED_AWAITING_DIRECTOR_APPROVAL. This code is a working method
-for this seat and a draft filing. It is NOT operating law in the repo until
-a different seat scorecards it and Shawn gives his word after that verification.
+Status: LAW, approved by Shawn Vibert, director, in chat 2026-10-24 ~09:03 PDT.
+This code is now operating law for this seat. Repo merge still follows the
+normal road: different-seat scorecard at the exact final head, then merge.
 It never merges itself, never writes production data, never touches a ruleset.
+
+Design contract, also law, same approval:
+  Everything elevated, clean, crisp. Nothing below high level. Exactly
+  what's needed, in the most elegant, beautiful, intelligent way.
+  High-contrast text, nicest fonts, perfect place and spacing, awe-inspiring
+  yet easy, logical, sensible, push-button simple. Shop from our own shop:
+  use approved elements, do not reinvent, do not invent diamonds.
+  Design parents are the live Life with Naya page and the certificate /
+  Smart Identity Activation page. Live pages win over repo files.
 
 Corrections applied in this best-of-best, with live verification 2026-10-24:
   - Merge-gate hole is ruleset 24858146 "main-protection": pull_request
@@ -219,6 +228,28 @@ def scoreboard(pct_done_proven: float, parts_at_9plus: int, parts_total: int,
 def thirty_second_test(knows_true: bool, knows_mine: bool, knows_next: bool) -> bool:
     """Shawn's screen test: all three yes, or the screen fails."""
     return bool(knows_true and knows_mine and knows_next)
+
+
+def design_check(elevated: bool, clean: bool, crisp: bool,
+                 high_contrast: bool, perfect_spacing: bool,
+                 exactly_needed: bool, push_button_simple: bool,
+                 approved_elements_only: bool) -> tuple[bool, list[str]]:
+    """Design contract, machine law. Every element must pass. A page below
+    this standard fails before it reaches Shawn, even if its function works.
+    Approved elements only means: no invented diamonds, no reinvented
+    elements where an approved Life with Naya / certificate element exists."""
+    checks = {
+        "ELEVATED": elevated,
+        "CLEAN": clean,
+        "CRISP": crisp,
+        "HIGH_CONTRAST": high_contrast,
+        "PERFECT_SPACING": perfect_spacing,
+        "EXACTLY_NEEDED": exactly_needed,
+        "PUSH_BUTTON_SIMPLE": push_button_simple,
+        "APPROVED_ELEMENTS_ONLY": approved_elements_only,
+    }
+    failed = [name for name, ok in checks.items() if not ok]
+    return (not failed, failed)
 
 
 # Today's first queue, best-of-best order (Resolve queue + Power V2 queue,
