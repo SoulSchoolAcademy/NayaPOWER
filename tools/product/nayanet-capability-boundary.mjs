@@ -44,11 +44,19 @@ export function validateCapabilityCatalog(c) {
     p.production_state!=='SPECIFIED_PROTOTYPED__SERVER_NOT_VERIFIED' ||
     p.requires_server_side_authorization!==true ||
     p.no_public_index_of_private_contents!==true ||
-    p.private_findable_requires_separately_approved_teaser!==true ||
+    p.private_findable_requires_separately_approved_teaser!==false ||
+    p.private_findable_alias_topic_connect_allowed!==true ||
+    p.connect_and_page_content_are_separate_indexes!==true ||
+    p.alias_and_owner_approved_topics_only!==true ||
+    p.real_identity_and_username_never_indexed!==true ||
+    p.per_page_world_circle_membership_isolated!==true ||
+    p.connect_and_share_and_reveal_are_separate_actions!==true ||
+    p.findable_off_removes_alias_topic_search!==true ||
+    p.canonical_lesson_id!=='SN-0852' ||
     p.all_installable_claim_requires_real_deployed_pwa_per_page!==true ||
     p.no_auto_publish_on_visibility_toggle!==true ||
     p.no_auto_connect_or_space_join_on_discoverability!==true ||
-    p.defaults?.personal!=='private/unlisted/install-enabled' ||
+    p.defaults?.personal!=='private/findable/install-enabled' ||
     p.defaults?.business!=='public/findable/install-enabled' ||
     p.defaults?.space!=='public/findable/install-enabled')
     throw Error('unsafe_or_missing_page_settings');
