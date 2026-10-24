@@ -30,6 +30,28 @@ Canonical product claim and acceptance owner: [Issue #3028](https://github.com/S
 
 **Machine-status precision:** `SPECIFIED` describes that a requirement exists. `UNKNOWN` in each feature's live-delivery field means this draft manifest has not yet authenticated current production evidence. Per-feature `delivery_evidence_contract` fields are explicitly null/unmeasured pending independent receipts, not secretly proven absence or confirmation of a functional endpoint. The schema NEVER makes a LAW grant or allows production marketing by client callback.
 
+## UNIVERSAL SMART PAGE SETTINGS — separate axes; independent per-page policy
+
+**Director's explicit page defaults (October 23 Vancouver / October 24 UTC):**
+
+| Page type | Visibility on owner-approved publish | Network discoverability | Install preference |
+|---|---|---|---|
+| Personal World | **Private** | **Unlisted** | Enabled where real PWA supported |
+| Business Page | **Public** | **Findable** | Enabled where real PWA supported |
+| Community / Project Space | **Public** | **Findable** | Enabled where real PWA supported |
+| All other generated Smart Apps/pages | Private (safe fallback) | Unlisted | Enabled where real PWA supported |
+
+**Defaults do not publish drafts.** Certificate/Welcome creates private, owner-reviewed drafts; the owner confirms what is made public. “Business public” or “Space public” describes the default *after explicit publish*, not automatic release of unsaved, generated, private or unreviewed answers. Business and Space remain optional when skipped. Users may make either one private, may turn Personal public, and may own multiple public/private pages of any type with **separate settings per page**. This is not a literal unbounded-capacity guarantee.
+
+**Three independent user controls in each page's Settings and the main Settings Room:**
+1. **Visibility**: PUBLIC means content is viewable through a governed public read once published; PRIVATE means owner/explicitly authorized readers only, checked by server scope/RLS on every request. A private URL is not accessible merely because someone guesses the link.
+2. **Findability**: FINDABLE means owner-approved public *safe summary* may appear in search, directories, Smart Match and recommendation feeds; UNLISTED means do not index, suggest, sitemap or expose to strangers. **Public+unlisted remains visible to someone with the link; unlisted is not a privacy guarantee.** Private+findable is a separate deliberate *public teaser* permission with an independently reviewed safe card; never expose full private content or member lists by index or as aggregate match data.
+3. **Installability**: every page type can *offer* a first-class installable Smart App. An opt-in preference alone does not generate a manifest, install on a device or prove PWA behavior. Each independently installable app needs correct unique manifest ID, start_url, scope, icons, secure origin, privacy-preserving service worker and actual browser/device test. No public offline caching of private page bytes.
+
+**Operations (mandatory server integration):** read actual authenticated owner/page ownership and expected revision; validate type/visibility/discovery/install choice and legitimate LAW scope; preview effect, especially PRIVATE→PUBLIC; persist idempotently with receipt and owner confirmation; immediately recalculate derived Feed/Directory/AutoMatch candidate projections and invalidate stale indexes/caches. Public→private must remove public search/sitemap and expire previously shared page-server access where feasible; cannot erase copies already held by others. Unknown scope/revocation/failure must leave the change pending/denied, not falsely green. Make settings accessible by keyboard and explain all consequences in human language.
+
+**Existing source and executable proposal:** [`HUB/nayanet-page-settings.v1.json`](../HUB/nayanet-page-settings.v1.json) defines independent defaults and hard gates; [`tools/product/nayanet-page-settings.mjs`](../tools/product/nayanet-page-settings.mjs) produces only a local setting *intent*, derived explanations, and a conditional discovery *candidate* which explicitly never grants authorization; [`HUB/page-settings-preview.html`](../HUB/page-settings-preview.html) is a visual control deck, **NOT a saved production Settings page**; [`tests/nayanet_page_settings.test.mjs`](../tests/nayanet_page_settings.test.mjs) blocks false publication, cross-page edits, privacy leaks, accidental indexing and misleading installation claims. Existing Settings Room specification in `HUB/ROOMS/11-SETTINGS.md` and Smart Builder's pre-existing privacy dial remain the composition origins—**do not build a competing settings system**. The current live Smart Spaces anonymous policies and Mail/connection exposure prevent claiming production privacy acceptance.
+
 ## User journey
 
 - A simple first Welcome, then the existing SN-0846 slide-by-slide *Life with Naya* discovery: tell Naya about you, your interests, mission, vision, goals, motto, business/project and community. Speak with editable transcript, type, or copy an AI-written response; Next/Skip/Back/Edit and a way to resume. No invented answer.
