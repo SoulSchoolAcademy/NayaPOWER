@@ -92,6 +92,21 @@ def test_empty_match_note_is_honest():
     assert r["first_matches"] == [] and "match_note" in r
 
 
+def test_edge_emoji_and_long_answers():
+    a = {"into": "🌱 gardening!! and " + "growing tomatoes on the balcony with my kids every single summer weekend " * 30}
+    r = w.activate("edge", a, CORPUS, has_business=False)
+    assert r["vector"]["topics"]  # survived, produced signal
+    assert r["coverage"]["fields"]["personal.topics"] == "filled"
+
+def test_edge_stopword_only_answer_is_thin_not_signal():
+    r = w.activate("edge2", {"into": "the and of"}, CORPUS, has_business=False)
+    assert r["coverage"]["fields"]["personal.topics"] in ("filled", "filled_thin")
+
+def test_edge_empty_corpus():
+    r = w.activate("edge3", MAYA, {})
+    assert r["first_matches"] == [] and "match_note" in r
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     for fn in fns:
