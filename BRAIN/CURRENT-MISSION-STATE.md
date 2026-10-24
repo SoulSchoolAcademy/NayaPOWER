@@ -1,41 +1,43 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-24 13:38 PDT (2026-10-24T20:43:36Z) by the director pass.
-Main tip: `b4f706ae` — MOVED this tick by 0 merges + 2 direct pushes: f41bf212 (SN-0856 note page, bot, 1 file, no PR) -> b4f706ae (same SN-0856 file, +3 lines, no PR). Prior tip 85feeda7. DIRECT PUSH ALERT x2 — SN-0856 is the fifth vanish recurrence (no capture/registry/index change per WIRE 20:30Z).
-Live board: #2793 — 2,182 comments (+9 this tick; 2,182 < 2,300, NO migration trigger; newest-9 all live-board traffic, no successor-board traffic).
-Merge-receipt breach log: 74 unchanged as record (zero merges this tick; watch not re-run on merges). Verity off-protocol merge count now 28 (PR #3049, CI grounds only — VERIFY 9.5 at exact head on record; retroactive adjudication owed at dbea23dc).
-REST quota: 3,900 remaining at tick start (core 5,000/hour); zero 403s this tick. Branch count: 1,054 (git ls-remote, zero REST quota).
+Last verified: 2026-10-24 14:08 PDT (2026-10-24T21:08:00Z) by the director pass.
+Main tip: `bc471c66` — MOVED this tick by 0 merges + 8 commits: 7 door filings/registrations/reformats (SN-0857, SN-1857, registration SN-1857/0855/0856/0857, SN-0856 reformat, SN-0857 reformat, SN-1858, registration SN-1858) + 1 sanctioned living-map-compiler state (b8970042). Prior tip b4f706ae. DIRECT PUSH ALERT x7 (door class, bypasses PR gates by construction) — cure substance at 2477ce78 is VERIFY-confirmed (Kernel 4 = predicted residuals), but reformat edits without regen re-broke retrieval+freshness to Kernel 21 at 72782959.
+Live board: #2793 — 2,191 comments (+9 this tick; 2,191 < 2,300, NO migration trigger; newest-9 all live-board traffic, no successor-board traffic).
+Merge-receipt breach log: 74 unchanged as record (zero merges this tick; watch not re-run on merges). Verity off-protocol merge count now 28 (unchanged this tick).
+REST quota: 4,400 remaining at tick start (core 5,000/hour); zero 403s this tick. Branch count: 1,054 heads (git ls-remote, zero REST quota).
 
 ## Ranked priorities (top-down, Shawn's standing 10)
-1. LEARNING — running; L659 [F1] stands (individually verified cures on a shared sealed artifact do not compose — ONE reconciled artifact per cure).
-2. SMART NOTE FLOW — SN-0855 cure VERIFIED 9.0/10 at exact head 69058dcb (branch resolve/register-sn0855-2026-10-24, NOT yet landed, no PR); SN-0856 vanish recurrence is the new top blocker after it. SN-1856 kernel-confirmed at 85feeda7 (retro 9.0 stands).
+1. LEARNING — running; L659 ADOPTED + WP-233 GRADUATED (ONE reconciled artifact per cure); new L660 [F7] (checker-owned directories are namespace contracts) and L661 (vanish-family close is a RESET, not a FIX, until the filing path is guarded).
+2. SMART NOTE FLOW — door cure LANDED in substance: registration 2477ce78 (SN-1857/0855/0856/0857, 712->716, then 717 with SN-1858); SN-0855 cure branch 69058dcb SUPERSEDED, retire it. TOP BLOCKER: reformat drift (Kernel 21 at 72782959) — cure is one regen + hash reconciliation, priced to door/registry lane / main seat; tip Kernel run 40132147008 in progress decides 4 vs 21. SN-0797 registry defect named for registry lane.
 3. THE SENDER / 4. THE RECEIVER / 5. THE COMPILER / 6. EMIT / 7. DECISION ENGINE / 8. SCORECARD / 9. TESTING / 10. OPTIMIZE GITHUB — carried from the live plan; no new signal this tick.
-New this tick: SN-0855 cure verified 9.0 (meets the request's 9+ landing threshold, below the 9.5 breach-disposition bar); ASK 6389005638 — Resolve asks Nitro for the door key (seat authentication as lane-agent app + provisioning, no key material on board, Secure Vault routing if needed); WIRE 20:30Z — Kernel 85feeda7 8 failed / 5,549 passed -> f41bf212 9 failed / 5,548 passed (+1/-0 drift, vanish SN-0855 + SN-0856).
+New this tick: DOOR OPEN from Resolve seat (6389375344 — key held per post, ask 6389005638 stood down); WIRE 21:00Z (6389482764 — cure proven at 2477ce78/b8970042, Kernel 4; drift proven at 72782959, Kernel 21); VERIFY 21:00Z (6389510761 — SN-0855 cure LANDED-CONFIRMED in substance, branch retire, L661 RESET verdict, path-guard owed); SN-1858 filed live (fc34f2a8, registered bc471c66).
 
 ## Done — with proof
+- Door registration 2477ce78 cured the vanish family in substance (Kernel 4 at 2477ce78 AND b8970042, WIRE + VERIFY first-hand, identical FAILED sets; SN-0855 tip page_hash matches cure-branch verified claim).
 - Registry reconcile LANDED as #3049 (prior tick, VERIFY 9.5 pre-merge + blob-faithfulness proof); #3036 closed as superseded.
 - Auto-Match Elite v2 LANDED as #3044 (prior tick, compliant pattern: distinct-seat VERIFY 9.5 pre-merge + faithfulness).
-- WIRE 20:00Z prior tick: red 24 -> 4 at dbea23dc (exactly the 4 predicted residuals).
 
 ## Blocked — with owner
-- SN-0855 cure landing disposition at 69058dcb (VERIFY 9.0 in hand; branch parent 85feeda7 now 2 commits behind tip — re-verify/rebase question belongs to the merge lane, not assumed).
-- SN-0856 cure (fifth vanish recurrence, DOOR-FILING-NO-REGISTRY class) — dock/Integrator + VERIFY at exact head.
-- Verity #28 adjudication at dbea23dc + standing retro-card batch (#3048 at d6b81656, #3042, #3040, #3043, #3045, #3046, #3047; #3050 disposition on retro 9.0 vs 9.5) — dock/VERIFY.
-- Door-key provisioning ask (6389005638) — Nitro's answer unblocks Resolve's seat from merge-road delay.
-- Merge-enforcement P0 — ruleset 24858146 bypass list is the named mechanism; breach log 74, Verity count 28.
+- Reformat drift cure (Kernel 21 at 72782959) — door/registry lane / main seat; tip run 40132147008 decides.
+- Filing-path guard per L661 (page-only landings still possible: SN-1858 at fc34f2a8, reformat edits) — door lane / main seat.
+- SN-0797 registry content_hash mismatch — registry lane.
+- SN-0855 cure-branch retirement (69058dcb, delete branch, no PR) — main seat.
+- PR #3051 scorecard at FINAL head (still draft, head 98374570) — VERIFY.
+- Standing retro-card batch (#3048 at d6b81656, #3042, #3040, #3043, #3045, #3046, #3047; #3050 disposition on retro 9.0 vs 9.5; #3049 adjudication at dbea23dc) — dock/VERIFY.
+- Merge-enforcement P0 — ruleset bypass list is the named mechanism; breach log 74, Verity count 28.
 
 ## Team status
 | Area | Accomplished | Working on | Plan |
 | SELF | — | — | — |
-| LAW | — | Verity #28 verdict + adjudication owed | Merge-enforcement P0 (ruleset 24858146) |
+| LAW | — | Verity #28 verdict + adjudication owed | Merge-enforcement P0 |
 | ACT | — | — | — |
-| KNOW | Registry reconcile landed (#3049) | SN-0855/SN-0856 registry cures | Land SN-0855 cure, then SN-0856 cure |
+| KNOW | Door registration cured vanish family in substance (2477ce78) | Reformat drift + SN-0797 | Regen + hash reconciliation; SN-0797 reconcile |
 | PROVE | — | — | — |
 | CONNECT | — | — | — |
-| VERIFY | SN-0855 cure verified 9.0 @ 69058dcb | Retro-card batch | Adjudication at dbea23dc |
-| LEARN | — | — | — |
+| VERIFY | SN-0855 cure LANDED-CONFIRMED in substance (2477ce78) | Retro-card batch; #3051 final-head card | Adjudication batch; card at final head |
+| LEARN | L659 adopted, WP-233 graduated; L660, L661 named | Filing-path guard design | Guard build (door lane) |
 | EVOLVE | — | — | — |
-| WIRE | Kernel heads named first-hand (8 -> 9 failed) | Vanish-family tracking | Next WIRE confirms cure landings |
+| WIRE | Kernel heads named first-hand (4 at cure heads, 21 at reformat head) | Tip Kernel naming (run 40132147008) | Next WIRE names bc471c66: 4 vs 21 |
 
 ## Where to go
 - Live board: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793
