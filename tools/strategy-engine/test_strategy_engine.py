@@ -8,7 +8,7 @@ from strategy_engine import (
     QueueItem, aaa_check, can_claim, can_land, disposition_status,
     kill_decision, verification_lane_action, verdict_sla_ok,
     resource_budget_ok, front_door_route, weighted_value, scoreboard,
-    thirty_second_test, STANDING_RED_TOTAL, TODAY_QUEUE, WIP_CAP_TEAM,
+    thirty_second_test, design_check, STANDING_RED_TOTAL, TODAY_QUEUE, WIP_CAP_TEAM,
 )
 
 
@@ -119,6 +119,14 @@ class TestLanesBudgetsAndDoor(unittest.TestCase):
     def test_thirty_second_test(self):
         self.assertTrue(thirty_second_test(True, True, True))
         self.assertFalse(thirty_second_test(True, False, True))
+
+    def test_design_contract_all_required(self):
+        ok, failed = design_check(True, True, True, True, True, True, True, True)
+        self.assertTrue(ok)
+        self.assertEqual(failed, [])
+        ok, failed = design_check(True, True, True, True, True, True, True, False)
+        self.assertFalse(ok)
+        self.assertEqual(failed, ["APPROVED_ELEMENTS_ONLY"])
 
 
 class TestBaseline(unittest.TestCase):

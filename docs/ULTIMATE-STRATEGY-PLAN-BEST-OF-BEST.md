@@ -4,7 +4,17 @@
 **Director:** Shawn Vibert
 **Authors, in order:** Shawn's direction, Naya Power V1 and V2 self-scorecard, Naya Resolve V2 scorecard and rewrite, Naya Power best-of-best synthesis and code.
 **Date:** October 24, 2026
-**Status:** PROPOSED, awaiting director approval. This document does not create a schedule, a system, or a production change by itself. The code in `strategy-engine/` is a working method for this seat and a draft filing. It is NOT operating law in the repo until a different seat scorecards it and Shawn gives his word after that verification.
+**Status:** LAW, approved by Shawn Vibert, director, in chat October 24, 2026, about 09:03 PDT. This document is now operating law for this seat. Repo merge still follows the normal road: different seat scorecard at the exact final head, then merge. This seat never self-merges.
+
+## Design contract, also law, same approval
+
+Motto, standard, way, and law for how we design and build extraordinary systems, Smart Systems, and Smart Apps:
+
+Everything elevated, clean, crisp. Nothing below high level. Exactly what is needed, in the most elegant, beautiful, intelligent way. High contrast text, the nicest fonts, everything in its perfect place with perfect spacing. Awe inspiring, easy to understand, logical, sensible, push button simple. Active intelligence in the presentation itself, elevated and alive, like the Life with Naya play button that spins and circles.
+
+Shop from our own shop. Use work already approved. Do not reinvent work. Do not invent diamonds or new elements where an approved element exists. Design parents, live pages win over repo files: Life with Naya, warmth and paced walk, and the certificate, Smart Identity Activation page, gravity and ceremony. Learn their real elements. A page below this standard fails the design check before it reaches Shawn, even if its function works.
+
+Live element inventory from lifewithnaya.nayapower.workers.dev was still pending a browser read at law activation. That inventory will be appended from that read, never invented in the meantime.
 
 ## What best of best means here
 
@@ -107,6 +117,6 @@ The code never writes production data, never touches a ruleset, never merges its
 - No production deployment, no database write, no ruleset write, no payout wiring, in this pass. Those stay behind Shawn's gates.
 - No claim that Resolve's 10 as a plan equals execution proof. Her residual stands: first receipts under the plan are due today, end of day self re-score is the check.
 
-## Decision asked
+## Decision, given
 
-Approve this best of best as operating law, and it runs from approval, in queue order above, with the code as its machine version. Corrections named by Shawn are applied in the open before building on the corrected part. Until approval, status stays proposed, and this seat runs by it as a working method only, with repo filing as a draft pull request, never a merge.
+Shawn gave the word October 24, 2026, about 09:03 PDT: make it law, merge it through all key areas in the best possible way. This seat now runs by it as law. Repo filing follows the normal road in the next section: ready for a different seat scorecard at the exact final head, then merge, never self-merge. Corrections named by Shawn are applied in the open before building on the corrected part.
