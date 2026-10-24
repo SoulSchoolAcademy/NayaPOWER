@@ -15274,13 +15274,73 @@
         "note": "published directly as a BRAIN projection in commit fc34f2a8cf72c465845aebd26a4094fb16b2c723 ('SN-1858 - How a Smart Note Goes Live Instantly (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "90f1dd784f2f9bac2aeac4ab1a710b119269364ae53b349972c1bfec78e8d0e3"
+    },
+    {
+      "smart_note_id": "SN-1859",
+      "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1859-what-i-learned-done-visible-elite-alive-understood",
+      "title": "Done Is Visible, Elite Only, Alive, and Understood",
+      "content_hash": "eb944ed071c615b93914f17a4d10ffe83ecc049eeacf0daf064bdaf24e2df279",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1859/IB-SMART-NOTE-20261024-sn1859-what-i-learned-done-visible-elite-alive-understood.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-24",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit aac09d836d2621cf92e31d0b175b0dd926e2dab3 ('SN-1861 - Fork or No Fork: Exactly What You Get (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "46105a2b5b501146bb8aedcb9ed928e613b4e67df834de0a5dee15ef0294f6c2"
+    },
+    {
+      "smart_note_id": "SN-1860",
+      "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1860-smart-notes-from-inside-the-hub-quick-note-then-smart-note",
+      "title": "Smart Notes From Inside the Hub: Quick Note, Then Smart Note, No Own App Needed",
+      "content_hash": "c34a5ce738b6ba85b09c508cc203c7143bf88842d0b7f97452c033738c560b1d",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1860/IB-SMART-NOTE-20261024-sn1860-smart-notes-from-inside-the-hub-quick-note-then-smart-note.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-24",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit aac09d836d2621cf92e31d0b175b0dd926e2dab3 ('SN-1861 - Fork or No Fork: Exactly What You Get (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "e13cc0c1d5276b8f6ac5fd0acea51722f56177c35a48725312bd1ccb82f9cdb1"
+    },
+    {
+      "smart_note_id": "SN-1861",
+      "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1861-fork-or-no-fork-exactly-what-you-get",
+      "title": "Fork or No Fork: Exactly What You Get",
+      "content_hash": "522f224f9e1c83a4a0d771f7a3a583110420bf42e564363a4bd85d901ec3363a",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1861/IB-SMART-NOTE-20261024-sn1861-fork-or-no-fork-exactly-what-you-get.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-24",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit aac09d836d2621cf92e31d0b175b0dd926e2dab3 ('SN-1861 - Fork or No Fork: Exactly What You Get (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "36d65db39cd089cd9044303637fada889bdad293d3be0326e20ab7a2c80d8310"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1859,
+    "next_sequence": 1862,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "e119969559b5de460c96e91638c3d3ec7d2e8f53fed5f4441238178e73217fba"
+  "corpus_manifest_hash": "20af6d6be4e85b04c90589dcd27a96c409d4a54d8aca47966960edd02777c32f"
 }
