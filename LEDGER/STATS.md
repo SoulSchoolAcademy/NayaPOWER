@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-24 18:31 UTC_
+_Last updated: 2026-10-24 19:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 5973
-- ✅ Verified (8+): 5912
+- **Total scored actions:** 5977
+- ✅ Verified (8+): 5916
 - 🟡 Partial (5–7): 58
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -17,8 +17,8 @@ _Last updated: 2026-10-24 18:31 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 434 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 411 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 395 | 9.0 | 10 |
-| Team 4 | Naya Mason | 379 | 9.1 | 9.6 |
+| Team 3 | Naya Judge | 396 | 9.0 | 10 |
+| Team 4 | Naya Mason | 380 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 500 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 281 | 9.1 | 9.6 |
 | Team 7 | Naya Conductor | 376 | 9.0 | 10 |
@@ -468,6 +468,8 @@ _Last updated: 2026-10-24 18:31 UTC_
 - **gate-stall-20261024-1023:** 1 actions, avg 9.0/10
 - **gap-gate-stall-20261024-1023:** 1 actions, avg 9.2/10
 - **gate-stall-20261024-1128:** 1 actions, avg 9.0/10
+- **gap-gate-stall-20261024-1128:** 1 actions, avg 9.2/10
+- **gate-stall-20261024-1229:** 1 actions, avg 9.2/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -933,6 +935,7 @@ _Last updated: 2026-10-24 18:31 UTC_
 - **lane-scorer-20261021-2215:** 1 actions, avg 9.5/10
 - **gap-t0818-lane3-decline2:** 2 actions, avg 9.0/10
 - **gap-t1279-lane3:** 2 actions, avg 9.5/10
+- **prereg-t1496:** 1 actions, avg 9.0/10
 - **coldnaya:** 11 actions, avg 9.0/10
 - **scorer-20261014-1910:** 2 actions, avg 9.2/10
 - **gap-scorer-20261015-0120:** 1 actions, avg 9.2/10
@@ -987,6 +990,7 @@ _Last updated: 2026-10-24 18:31 UTC_
 - **gap-gap-lane-scorer-20261021-1920:** 1 actions, avg 9.5/10
 - **gap-t1271:** 1 actions, avg 9.2/10
 - **gap-gap-lane-scorer-20261021-1920-lane4:** 2 actions, avg 9.2/10
+- **gap-t1466:** 1 actions, avg 9.2/10
 - **scorer-20261014-1600:** 2 actions, avg 9.2/10
 - **t-distill-chain:** 2 actions, avg 9.0/10
 - **scorer-20261014-1905:** 3 actions, avg 9.3/10
