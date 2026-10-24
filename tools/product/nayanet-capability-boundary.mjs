@@ -54,7 +54,9 @@ export function assessClaim(c,id,mode,proofPacket=null,trustedServerVerifier=nul
   try{valid=trustedServerVerifier({featureId:id,mode,
     requiredGates:f.required_verified_gates,proofPacket})===true;}catch(_){}
   if(!valid)return blocked('NO_INDEPENDENT_PRODUCTION_ATTESTATION');
-  return {state:'PRESENTATION_REVIEW_ELIGIBLE',marketing_claim_allowed:true,can_execute:false};
+  // Do not grant a marketing/live claim from a callback either: an actual
+  // independently authenticated receipt publisher must own this transition.
+  return {state:'INDEPENDENT_PUBLICATION_RECEIPT_REQUIRED',marketing_claim_allowed:false,can_execute:false};
 }
 export function intendedBenefits(c){
   validateCapabilityCatalog(c);
