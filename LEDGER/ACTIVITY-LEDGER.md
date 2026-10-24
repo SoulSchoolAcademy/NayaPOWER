@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 16:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -286,6 +286,14 @@ _Last updated: 2026-10-24 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-gap-20261017-1600-lane6.md: staleness-watch falsifier — both FIRED branches proven, one-command instrument
 
 **Evidence:** Verified: retrieval/falsify-staleness-watches-20261018.py exists (4658 bytes) as the checked-in one-command instrument. Score 9.0/10 GOOD, ONE MORE PASS. Why not 9.5: single-seat — the FIRED-x2-on-live-derived-bytes and fail-closed re-proofs are receipt-internal runs, uncorroborated; a second seat re-running the one command closes it. Credited: the
+
+### ✅ t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Dispatcher reconcile chain verification from live bytes (queue/rotation/claimed/receipts), zero discrepancies
+
+**Receipt:** `twelve-lane-receipts/t1564-lane11.md`
+
+**Evidence:** VERIFIED: receipt file exists (SHA-256 df5a6e63...6843, matching the independent gap-t1564 scorer note); both cited prior-close SHAs recomputed from live bytes and MATCH exactly (t1562 9903a6ad...1957, gap-t1562 6988bb99...6ca); predicted next-tick reconcile STOOD at score time (rotation queued=15, brief-t1564-lane11.md dequeued, in_flight=[]). NOT
 
 ### ✅ t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -33851,6 +33859,22 @@ _Last updated: 2026-10-24 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-gap-gap-t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up on t1564: close the stricter 0-line claimed-brief standard for short briefs; script-only candidate evaluation proven
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t1564-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes: parent gap-gap-t1564 receipt SHA-256 63aa8f1a47617807d5863d876883a74b1abb821c976a1a66b4a26b26c78f9415 MATCHES receipt exactly; claimed brief in brief-queue/claimed/done/brief-gap-gap-gap-t1564-lane11.md, 7 lines, absent from claimed/ root; rotation queued=15 with gap-gap-gap-t1564 removed and in_flight=[]; t1468 br
+
+### ✅ gap-gap-t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Close evaluation-window gap (25-line max, 0 over) + step-9 close of brief-gap-gap-t1564-lane11.md
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t1564-lane11.md`
+
+**Evidence:** VERIFIED: parent receipt SHA-256 1235a5c3...2d978d recomputed from live bytes and MATCHES the receipt pin; claimed brief is 6 lines (wc -l on claimed/done copy), matching the receipt's stated 6-line file; step-9 close STOOD at score time (brief-gap-gap-t1564-lane11.md in brief-queue/claimed/done/, absent from rotation queued=15, in_flight=[]); 14 r
+
 ### ✅ gap-t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up on parent t1564 (scored 9.0): close claimed-brief gate gap and prove t1564 dispatcher reconcile stood
@@ -37726,6 +37750,12 @@ _Last updated: 2026-10-24 16:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261024-0919 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 09:19 PDT: 15 gap briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes: brief-queue/ root holds exactly the 15 briefs the receipt names (14 gap-tNNNN + gap-gap-gap-t1504-lane10) plus lane-feed.md, and rotation queued=15 is the same set (tick t1567, in_flight []); claimed/ root holds only done/. Score 9.0. Why not 9.5: (1) this run itself read the first candidate's full text and first l
 
 ### ✅ seat-stall-20261024-0819 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
