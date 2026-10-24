@@ -48,6 +48,34 @@ test('all per-feature operations and independent verification remain deliberatel
     assert.equal(f.delivery_evidence_contract.cost_profile,'UNMEASURED');});
   assert.throws(()=>validateCapabilityCatalog(change(c=>c.features[0].delivery_evidence_contract.verified_at='2026-10-24')));
 });
+test('every page has three separate controls with correct public/private defaults',()=>{
+  const p=catalog.page_settings_contract;
+  assert.deepEqual(p.independent_controls,['visibility','discoverability','installation']);
+  assert.equal(p.defaults.personal,'private/unlisted/install-enabled');
+  assert.equal(p.defaults.business,'public/findable/install-enabled');
+  assert.equal(p.defaults.space,'public/findable/install-enabled');
+  assert.equal(p.start_unpublished,true);
+  assert.equal(p.multiple_pages_per_category,true);
+});
+test('no page can claim public discovery and install work without server acceptance',()=>{
+  const p=catalog.page_settings_contract;
+  assert.equal(p.production_state,'SPECIFIED_PROTOTYPED__SERVER_NOT_VERIFIED');
+  for(const id of ['personal_world','business_page','starter_space','page_addons','private_visibility','smart_app_builder']){
+    const f=feat(id);assert.ok(f.required_verified_gates.includes('per_page_visibility_and_discovery_server_verified'));
+    assert.ok(f.required_verified_gates.includes('per_page_settings_owner_scope_verified'));
+  }
+  assert.throws(()=>validateCapabilityCatalog(change(c=>c.page_settings_contract.production_state='PRODUCTION_PROVEN')));
+});
+test('private findable can never become default public content',()=>{
+  assert.equal(catalog.page_settings_contract.private_findable_requires_separately_approved_teaser,true);
+  assert.equal(catalog.page_settings_contract.no_public_index_of_private_contents,true);
+  assert.throws(()=>validateCapabilityCatalog(change(c=>c.page_settings_contract.no_public_index_of_private_contents=false)));
+});
+test('installable preference does not bypass real PWA deployment and privacy',()=>{
+  assert.equal(catalog.page_settings_contract.all_installable_claim_requires_real_deployed_pwa_per_page,true);
+  assert.ok(feat('page_addons').required_verified_gates.includes('per_page_pwa_installability_tested'));
+  assert.throws(()=>validateCapabilityCatalog(change(c=>c.page_settings_contract.all_installable_claim_requires_real_deployed_pwa_per_page=false)));
+});
 test('citizens never require GitHub',()=>assert.equal(catalog.audiences.citizen.requires_github,false));
 test('managed operator has no fork but is not deployed',()=>{assert.equal(catalog.audiences.managed_operator.requires_github,false);assert.equal(catalog.audiences.managed_operator.production_state,'NOT_VERIFIED');});
 test('fork path is implementation partial',()=>assert.equal(catalog.audiences.owner_fork.production_state,'IMPLEMENTATION_PARTIAL'));
