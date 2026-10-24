@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-24T19:15:07+00:00",
+ "generated_utc": "2026-10-24T20:15:31+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,15 +51,8 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [
-    {
-     "number": 3036,
-     "title": "fix(retrieve): re-stamp SN-1854 page_hash after 211cff Filed-line addition",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3036",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "act",
@@ -140,19 +133,13 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3000,
-     "title": "Naya/mission state",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000",
-     "draft": false
-    },
-    {
      "number": 2981,
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 1
   },
   {
    "id": "wire",
@@ -191,15 +178,8 @@
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
-   "open_prs": [
-    {
-     "number": 3043,
-     "title": "Affiliate system embedded in dashboard + checkout (draft)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3043",
-     "draft": true
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "infra",
@@ -240,13 +220,19 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
+     "number": 3051,
+     "title": "Universal interfaces scaffold + corrected Hub worker (draft)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3051",
+     "draft": true
+    },
+    {
      "number": 2968,
      "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
      "draft": false
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 2
   },
   {
    "id": "memory",
@@ -419,6 +405,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 5,
- "unassigned_prs": 2
+ "open_pr_total": 3,
+ "unassigned_prs": 1
 }
