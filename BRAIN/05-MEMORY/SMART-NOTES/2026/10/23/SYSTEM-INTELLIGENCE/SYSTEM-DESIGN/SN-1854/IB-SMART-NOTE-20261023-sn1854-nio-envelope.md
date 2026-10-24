@@ -1,6 +1,7 @@
 The NIO Envelope — Carry Identity, Never Invent It
 SN-1854 · SYSTEM-INTELLIGENCE / SYSTEM-DESIGN
 **Created:** 2026-10-23T16:55:00Z
+**Filed:** 2026-10-23T17:00:09Z (intelligence door, commit c60ff22c)
 
 ## IN A NUTSHELL
 A Naya Intelligence Object (NIO) is the machine-addressable envelope through which a meaningful intelligence object moves through NayaPOWER without losing identity, provenance, state, governance, or intended use. It is an object CONTRACT — not a new database, not a new intelligence layer. Every NIO exposes a 20-field envelope (identity, type, meaning, intent, truth state, authority context, evidence, event lineage, verification, learning state…); fields may be absent when genuinely unknown, but they must NEVER be fabricated. Nine canonical types: EXPERIENCE, EVENT, INTELLIGENCE, RULE, DECISION, ACTION, OUTCOME, EVIDENCE, LEARNING.
