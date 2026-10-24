@@ -138,6 +138,22 @@ The room is a projection of canonical intelligence. It must not create a shadow 
 
 ---
 
+## Universal per-Smart-Page settings — director's 2026-10-23/24 decision
+
+The Settings room and the Settings control on **every owned page** use **one underlying owner-bound page policy**, independently per page. These are **three separate controls**:
+
+- **Visibility:** PUBLIC / PRIVATE (who can view the content, decided by authenticated server LAW/RLS).
+- **Discoverability:** FINDABLE / UNLISTED (whether an approved public summary can enter Search, Directory, Smart Match, Feed recommendations). An unlisted PUBLIC page can still be visited by link. A PRIVATE page with Findable enabled only receives an explicitly approved safe teaser, never public private content or membership information.
+- **Installation preference:** ENABLED / DISABLED. All page types are designed to be installable after actual unique per-page PWA manifest, verified deployment, secure service-worker behavior and browser support. Turning it on does not install the app or expose private data.
+
+**Owner-chosen post-publish defaults**: Personal = PRIVATE + UNLISTED; Business = PUBLIC + FINDABLE; Community/Space = PUBLIC + FINDABLE; generic Smart Apps = PRIVATE + UNLISTED. All default to install preference ENABLED. **Every new page starts UNPUBLISHED** even when its eventual publishing preference is PUBLIC; the owner reviews the actual answers, page content and visibility before release. Users may create more Personal, Business and Space pages, including one public and one private of the same type, each with independent settings.
+
+**Correct causal flow**: inspect existing persisted policy → choose page → preview setting consequences → owner/authenticated LAW check → idempotent revision-safe write + proof receipt → automatically invalidate stale Search/AutoMatch/Feed/sitemap/cache projections → confirm deployed state or show honestly pending/denied. PRIVATE→PUBLIC requires explicit approval; PUBLIC→PRIVATE must revoke server-level visibility and unindex. Never equate local UI toggle, unlisted link or HTTP 200 with backend access control. A universal control is NOT a new configuration store.
+
+**Machine contract and proposed controls**: `HUB/nayanet-page-settings.v1.json`, pure proposed-settings engine `tools/product/nayanet-page-settings.mjs`, and `HUB/page-settings-preview.html` (prototype, no real writes); see product boundary #3028, Smart Spaces #1891, Security #2823 for independent server/negative testing before any live “secure” promise.
+
+---
+
 ## 6. INTERACTION CONTRACT
 
 Every consequential control follows:
