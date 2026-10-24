@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -286,6 +286,14 @@ _Last updated: 2026-10-24 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-gap-20261017-1600-lane6.md: staleness-watch falsifier — both FIRED branches proven, one-command instrument
 
 **Evidence:** Verified: retrieval/falsify-staleness-watches-20261018.py exists (4658 bytes) as the checked-in one-command instrument. Score 9.0/10 GOOD, ONE MORE PASS. Why not 9.5: single-seat — the FIRED-x2-on-live-derived-bytes and fail-closed re-proofs are receipt-internal runs, uncorroborated; a second seat re-running the one command closes it. Credited: the
+
+### ✅ t1550 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
+
+**Task:** Heart verify of t1550 dispatcher reconcile (gap-gap distill close, mirror, phantom audit, rotation match)
+
+**Receipt:** `twelve-lane-receipts/t1550-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: brief-gap-gap-distill-daily-20261024-lane0.md in claimed/done/ with SHA16 e73b62a763dcafbf MATCH, absent from claimed/ root; claimed/ root holds only own brief-t1550-lane11.md + done/; lesson-broadcast.md line 95 mirror verbatim (branch accf8f30 -> ae7d825a, main SHA 65382e11, branch SHA 7f0a840c, o
 
 ### ✅ t1547 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
 
@@ -37638,6 +37646,28 @@ _Last updated: 2026-10-24 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gap-distill-daily-20261024 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on distill-daily-20261024 (parent gap-distill scored 9.2): fresh re-derivation against moved branch tip, supersede stale parent bundle
+
+**Receipt:** `twelve-lane-receipts/gap-gap-distill-daily-20261024-lane0.md`
+
+**Evidence:** VERIFIED on live workspace bytes + git protocol: bundle hidden_files/gap-gap-distill-daily-20261024/ holds all 6 cited artifacts; SHA-256 recomputed fresh and MATCH the receipt exactly for main 65382e118aebed72502651e626643766406e5f665d1146c3dff27ce30665bef2 (23 lines), branch 7f0a840cfa5a9da6b4a223611cccf744075c06d3d722c36e6321f3c249d5e6cd (20 lin
+
+### ✅ seat-stall-20261024-0603 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 06:03 PDT: 15 gap briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on workspace bytes: brief-queue/ root holds exactly the 15 briefs the receipt names (14 gap-tNNNN + gap-gap-gap-t1504-lane10) plus lane-feed.md, and rotation queued=15 is the same set (tick_count 1548); claimed/ root holds exactly brief-t1547-lane11.md and brief-gap-distill-daily-20261024-lane0.md, as the receipt states; stall cap holds (0
+
+### ✅ gap-distill-daily-20261024 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent distill-daily-20261024 (scored 9.2): re-derive TOP-10 freshness at landing time and re-execute the reconcile
+
+**Receipt:** `twelve-lane-receipts/gap-distill-daily-20261024-lane0.md`
+
+**Evidence:** VERIFIED on live workspace bytes: bundle hidden_files/distill-daily-20261024/ SHAs recomputed fresh and MATCH the receipt exactly - main 65382e118aebed72502651e626643766406e5f665d1146c3dff27ce30665bef2 (23 lines), branch f0753056d0d9871b3600c3afc9b5ac504ac052fc03545aa0d0a3912577e3c5b2 (20 lines), reconciled 0701362a1577bba1b7061d9a963e1fc49e541414a
 
 ### ✅ distill-daily-20261024 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
 
