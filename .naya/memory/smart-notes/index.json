@@ -15254,13 +15254,33 @@
         "note": "published directly as a BRAIN projection in commit 0ab6ec464da29b83208a86c136bf1b9f0dabde51 ('SN-1857 - Done Means Visible (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "92c95c89fbe05c485bf8b0a314543ab9aec076ce9f05f0e9218dc8f6768b5947"
+    },
+    {
+      "smart_note_id": "SN-1858",
+      "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1858-how-a-smart-note-goes-live-instantly",
+      "title": "How a Smart Note Goes Live Instantly",
+      "content_hash": "7208c2d21589ee7c6c67d9abdfbf95f4d7efb841ecccc657e115995b3256936f",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1858/IB-SMART-NOTE-20261024-sn1858-how-a-smart-note-goes-live-instantly.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-24",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit fc34f2a8cf72c465845aebd26a4094fb16b2c723 ('SN-1858 - How a Smart Note Goes Live Instantly (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "90f1dd784f2f9bac2aeac4ab1a710b119269364ae53b349972c1bfec78e8d0e3"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1858,
+    "next_sequence": 1859,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "13a344ee925a14f1b8879f05c383ba2e093727bb3a81331c5eab473a90caf999"
+  "corpus_manifest_hash": "e119969559b5de460c96e91638c3d3ec7d2e8f53fed5f4441238178e73217fba"
 }

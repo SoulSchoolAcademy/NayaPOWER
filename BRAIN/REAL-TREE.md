@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-24  
-**Receipt basis commit:** `0ab6ec464da29b83208a86c136bf1b9f0dabde51`  
-**Inventory file count:** 1661  
+**Receipt basis commit:** `fc34f2a8cf72c465845aebd26a4094fb16b2c723`  
+**Inventory file count:** 1662  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 851 |
+| 05-MEMORY | 852 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -988,11 +988,12 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/matching/SN-0845/IB-SMART-NOTE-20261024-sn0845-smart-match.md` — `1062f3b75674` (6919 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/production/SN-0844/IB-SMART-NOTE-20261024-sn0844-the-production-engine.md` — `915cc56c30c6` (6892 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1857/IB-SMART-NOTE-20261024-sn1857-done-means-visible.md` — `a12646528ac0` (3905 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1858/IB-SMART-NOTE-20261024-sn1858-how-a-smart-note-goes-live-instantly.md` — `db0c5f0d2d62` (4477 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0853/IB-SMART-NOTE-20261024-sn0853-how-we-work-together-team-naya.md` — `cbb715eb4d5a` (7211 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0854/IB-SMART-NOTE-20261024-sn0854-security-law-in-the-book.md` — `809b115aee6a` (7465 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0855/IB-SMART-NOTE-20261024-sn0855-cant-find-it-build-it-found-a-problem-apply-a-solution.md` — `e6b412226f70` (4731 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0856/IB-SMART-NOTE-20261024-sn0856-elite-only-no-garbage-ever-again.md` — `a775e7fd5cc4` (6457 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0857/IB-SMART-NOTE-20261024-sn0857-active-intelligence-every-page-composed-brought-to-life.md` — `378ebd6800cc` (7427 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0856/IB-SMART-NOTE-20261024-sn0856-elite-only-no-garbage-ever-again.md` — `68179d2c8773` (5801 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0857/IB-SMART-NOTE-20261024-sn0857-active-intelligence-every-page-composed-brought-to-life.md` — `c92afc8f73ff` (7318 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
