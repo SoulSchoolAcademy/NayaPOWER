@@ -22,7 +22,7 @@ Canonical owner: [Issue #3028](https://github.com/SoulSchoolAcademy/NayaPOWER/is
 
 ## Machine contract and safe usage
 
-- [`HUB/nayanet-capability-boundary.v1.json`](../HUB/nayanet-capability-boundary.v1.json): **24 benefit capabilities**, the intended audience/mode, exact acceptance-gate names and all current runtime states `UNKNOWN` (no fake deployment SHA or receipts).
+- [`HUB/nayanet-capability-boundary.v1.json`](../HUB/nayanet-capability-boundary.v1.json): **25 benefit capabilities**, the intended audience/mode, exact acceptance-gate names and all current runtime states `UNKNOWN` (no fake deployment SHA or receipts).
 - [`tools/product/nayanet-capability-boundary.mjs`](../tools/product/nayanet-capability-boundary.mjs): validates the contract and produces **presentation-only** evidence labels. It can never grant an action, even when a trusted backend verifier marks a presentation claim eligible. Real access remains LAW + authenticated server RLS on every operation.
 - [`tests/nayanet_capability_boundary.test.mjs`](../tests/nayanet_capability_boundary.test.mjs): fail-closed automated policy/product language regressions.
 - A trusted evidence publisher must independently attach actual **exact deployed SHA**, positive service journeys, C/anon refusal, recovery/revocation, human-valued outcomes and measured costs. Marketing may say **available now** only for per-feature PRODUCTION-PROVEN/current independently attested evidence. The catalog is a *contract*, not a production capability oracle.
