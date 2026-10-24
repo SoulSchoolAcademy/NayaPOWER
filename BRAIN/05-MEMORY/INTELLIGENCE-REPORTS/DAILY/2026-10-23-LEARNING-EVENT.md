@@ -87,3 +87,62 @@
 
 ## Method note
 No merge of this report is claimed: under the Scorecard Law this PR merges only with a five-step scorecard receipt posted on the live board. The curated intelligence above is posted as one compact comment on #2641 as the lock-in. Counts: 83 PRs merged since 2026-10-22T00:00:00Z (gh-api, `merged_at`); board tail re-fetched immediately before posting per the deconfliction rule.
+
+---
+
+# CLOSING EDITION — the full Vancouver day, 2026-10-23 (03:37Z Oct 23 → 03:37Z Oct 24)
+
+**Filed:** 2026-10-24 ~03:37Z by the daily learning event (scheduled run, Naya Resolve seat). This closing edition completes the same dated file — one canonical daily record, no duplicate. The opening edition above covers 2026-10-22 ~15:04Z → 2026-10-23 03:37Z; this edition covers the rest of the Vancouver day.
+**Main tip at filing:** `782cbe2c130476688de069045e6ac0433f8b1403` (live ref).
+**Live board:** #2793 (open, 2,011 comments at filing). #2641 — named in this run's body — is CLOSED at 2,455 comments; its successor chain runs #2641 → #2765 → #2793. The lock-in comment for this edition posts to #2793.
+**Sources:** `~/memory/2026-10-23.md` (4,170 lines) + `~/memory/2026-10-24.md` (early hours), MEMORY.md standing-law entries dated 2026-10-23, board #2793 tail (newest 6379379799 at filing), merged-PR list via gh-api (55+ PRs merged on 2026-10-23 UTC in the first results page alone).
+
+**The arc in one line:** The day Shawn turned "distill to essence" into system law with a price tag on every wake-up — while the product quietly became real (Lists, Booking, Search, 14Q, Project Intelligence) and the night sweep honestly closed the day red on truth and proof.
+
+## THE DAILY INTELLIGENCE — closing edition (max 7)
+
+### 1. DISTILL TO ESSENCE is now law — and it is priced
+- **What:** Shawn's standing law (2026-10-23 ~18:44Z): every standing document lives at essence size; cost is counted in wake-ups × context carried; a lesson not distilled is not kept. The audit measured ~1,100 agent wake-ups/day, the large majority ending stand-down/no-change.
+- **Why it matters / what changes tomorrow:** The cure was executed the same evening, not scheduled: Hub sentinel 5 min → hourly (288 → 24/day), state publisher 10 → 15 min, dispatcher 10 → 15 min — ≈360 wake-ups/day cut with zero output lost, because every cut was a producer/consumer mismatch. Guards so it cannot regrow: no new scheduled job without a recorded one-line value case; the daily value census counts wake-ups against a standing ceiling of 800/day. Every job now has to earn its wake-ups.
+
+### 2. The Daily Intelligence Report got a presentation law (V3) — and an honest gap
+- **What:** Shawn's V3 directive (~15:31Z): asking for the Daily Intelligence Report returns BOTH the report in chat AND the live link on nayanet.live in the beautiful format (section headline 24, body 18). Reports are now BORN in Smart Note language (Structure V2 language law; PR #3007 filed the report, PR #3008 wired the procedure into activation).
+- **Why it matters / what changes tomorrow:** Presentation is part of done, not decoration. But the same-day live check found nayanet.live/reports routing to the Smart Feed with no Daily Intelligence Report text live — the standard exists, the surface does not yet. That gap is named here so tomorrow closes it instead of re-discovering it.
+
+### 3. The Fourteen Questions became a living board, not a document
+- **What:** The 14Q living board module — validator + renderer over questions.json — merged (#3016), then bound to the canonical 14Q text with fail-closed freshness defaults (#3023), then refreshed as the V2 night addendum: ten lists of ten plus the team execution prompt (#3024; evening addendum #3011).
+- **Why it matters / what changes tomorrow:** The questions the whole build answers to now render from data and fail closed when stale. A cold seat can read the current answers without trusting anyone's summary — current truth as a surface, not a claim.
+
+### 4. Project Intelligence became the one unified build
+- **What:** One Team Naya build order with peer synthesis and release gates (#3014), the Project Intelligence Door scorecard with live bridge/schema findings (#3012), and the team master build annex (#3021).
+- **Why it matters / what changes tomorrow:** One project tree where every element carries what it is, its link, and its state — no parallel plans, no empty nodes. Tomorrow's building has a single order to execute against.
+
+### 5. Privacy and security hardening landed as product
+- **What:** Legacy Smart Mail RLS hardened (#3018); the tested identity + Smart Mail privacy preflight rescued and landed (#3020); a door guard now detects duplicate public Smart Note IDs before publication (#3001). Late-night board correction locked the citizen default: personal is PRIVATE + FINDABLE — findable is not content-searchable; connection is by alias + approval.
+- **Why it matters / what changes tomorrow:** The citizen layer's trust contract is now enforced in schema and at the door, not promised in prose. The Welcome/first-citizens build inherits working privacy defaults instead of inventing them.
+
+### 6. Wave-1 product pieces landed — working rooms, not pages
+- **What:** Smart Lists as the one server store (#2955), the Booking block — availability, booking link, reminders, timeline write (#2957), Command + universal search (#2956), Conversational Intake v1 (#2958), and Factory steps 4–6 (#2970, #2982, #2987).
+- **Why it matters / what changes tomorrow:** Lists, Booking and Search are landed and the Mission room was built and proven the same day. The Hub's flagship surfaces now do things; the remaining question is liveness proof, not existence.
+
+### 7. The day closed RED where it matters — and said so
+- **What:** The 23:52Z overnight sweep and the cold-test rerun (corrected on the completed handoff): 11 PASS / 2 FAIL / 1 UNKNOWN. FAIL: current truth (parity broken, kernel red, production stamp stale since 2026-10-08) and no current production behavioral proof. Local full battery at b6acb015: 27 failed / 5,410 passed. WIRE at the new tip names the same 23-failure set, unchanged.
+- **Why it matters / what changes tomorrow:** 55+ merges in a day did not buy a green kernel or a current production. Activity is not health — tomorrow starts from the red list, named, not from the merge count.
+
+## What compounded today
+- **The essence law changed decisions within hours** — cadence cuts executed, AGENTS.md distilled to essence with its diary archived verbatim, and the distillation job's append target moved to the archive so the law book cannot regrow a diary. A lesson counts as learned only when a future decision changes; this one changed three the same day.
+- **The report language law compounded the same way:** the V1 Daily Intelligence Report's content stood but its language was superseded by V2 within the day — every future report is born in Smart Note language instead of being converted on demand.
+
+## What was let go
+- **#2641 as a venue** — closed at 2,455 comments; the live board is #2793. Retired boards stay as provenance, never as posting targets.
+- **V1 report tone and the convert-on-demand mode** — superseded by Structure V2/V3 (born in Smart Note language; chat + live link delivery).
+- **A second learning-event file for this date** — deliberately not created; this closing edition completes the canonical dated file instead (no duplicate mechanisms).
+
+## Trash candidates (FLAG ONLY — deletion is the Human Director's call)
+1. **This job's own body text** — it still instructs posting to #2537 and names #2641 as the live board; both are retired (#2537 archived 2026-10-15; #2641 closed). Correct the venue text at the source to #2793. Same stale-pointer class the opening edition flagged in other run bodies — it has now reached this job too.
+2. **Issue #2641** — closed at 2,455 comments. Feed Retirement Law status: final distillation exists (this file + the #2793 record); leave as locked history/provenance. No action needed beyond never posting there again.
+3. **Issue #2793 at 2,011 comments** — approaching the 2,500-comment functional cap. FLAG for successor planning before it fills, so the next retirement is planned, not forced.
+4. **Legacy Hub copies** (flagged in the opening edition; guard PR #2979 prevents reintroduction) — retirement still not complete; flagged again for the director's call, not deleted by any agent.
+
+## Method note
+No merge of this report is claimed: under the Scorecard Law this PR merges only with a five-step scorecard receipt posted on the live board (#2793). The scorecard receipt and this closing edition's curated intelligence are posted together as one compact comment on #2793 — the lock-in. Board tail re-fetched immediately before posting per the deconfliction rule.
