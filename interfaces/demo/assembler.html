@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Universal Assembler — Built From Pieces Already Had</title>
+<style>
+body{margin:0;background:#07070d;color:#fff;font-family:system-ui,-apple-system,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px}
+.frame{border:1px solid rgba(180,160,255,.5);border-radius:20px;padding:20px;box-shadow:0 0 28px rgba(140,120,255,.2);margin:14px 0}
+h1{font-size:28px;margin:0 0 6px} h2{font-size:20px;margin:0 0 8px}
+p{font-size:16px;line-height:1.5} .muted{opacity:.85;font-size:14px}
+button{border-radius:999px;padding:12px 20px;background:#8b7cff;color:#fff;border:none;font-size:16px;margin:6px 6px 6px 0}
+.ghost{background:transparent;border:1px solid rgba(255,255,255,.4)}
+.piece{border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:14px;margin:10px 0}
+input{width:100%;box-sizing:border-box;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:#11111c;color:#fff;font-size:16px}
+select{width:100%;padding:12px;border-radius:12px;background:#11111c;color:#fff;font-size:16px}
+</style></head><body><main>
+<div class="frame">
+<h1>✦ Universal Assembler</h1>
+<p>One system, for every Naya. Pick pieces already had, assemble a page at will, in the right format. Nothing rebuilt from scratch. This demo assembles, live in your browser, from the pieces in PR #3043 and the corrected Hub worker.</p>
+<label>Pick a page to assemble
+<select id="page">
+<option value="dashboard">Dashboard + Ambassador row</option>
+<option value="checkout">Checkout (test mode)</option>
+<option value="welcome">Welcome end slide — You're hired</option>
+</select></label>
+<div style="margin-top:10px">
+<button onclick="assemble()">Assemble it</button>
+<button class="ghost" onclick="document.getElementById('out').innerHTML='<p class=muted>Assembled page cleared. Pick again, no rebuild needed.</p>'">Clear</button>
+</div>
+<div id="out" class="piece"><p class="muted">Press Assemble it. The pieces below are the real pieces, not mockups: ambassador row beside My Smart Link, leaderboard, checkout plans, welcome slide.</p></div>
+</div>
+
+<div class="frame">
+<h2>Piece catalog — what the system already has</h2>
+<p>Dashboard ambassador row · Plus-button share (Facebook / text / email / copy) · Ask Naya post prompt · Leaderboard (alias only, honest empty) · Improved graphs, one derivation · Welcome end slide, verbatim · Checkout, test mode · Hub service worker, corrected shell ["/"] · Smart Factory piece library, 155 pieces in inventory v2</p>
+<p class="muted">Settings on every page: installable · visibility · discoverability. Personal private + findable, Business public, Space public. Gate before, ledger after. Friction automatic and reversible.</p>
+</div>
+
+<div class="frame">
+<h2>Assembled pieces, working</h2>
+<div class="piece">
+<h2>✦ You're hired — your ambassador link</h2>
+<p>https://nayanet.live/joinus?ref=<span id="alias">your-alias</span></p>
+<p>Clicks 0 · Signups 0 · Sales 0 · Your Wednesday share $0.00</p>
+<p class="muted">Display-only until payout terms are confirmed in the open. Honest zeros, never fabricated ranks.</p>
+<label>Your alias <input id="alias-in" placeholder="your-alias" oninput="document.getElementById('alias').textContent=this.value||'your-alias'"></label>
+<button onclick="navigator.clipboard&&navigator.clipboard.writeText('https://nayanet.live/joinus?ref='+encodeURIComponent(document.getElementById('alias-in').value||'your-alias'));this.textContent='Copied'">＋ Share / Copy link</button>
+</div>
+<div class="piece">
+<h2>🏆 Ambassador leaderboard</h2>
+<p>No ambassador activity recorded yet — be the first. Alias only, never real identity.</p>
+</div>
+<div class="piece">
+<h2>Checkout — 5 days free first</h2>
+<p>$14 / month · $37 / 3 months · $75 / year · $150 lifetime · Founding first 1,000 locked forever.</p>
+<p class="muted">Test mode. No real charge until merchant keys land through the secure tap.</p>
+</div>
+</div>
+<script>
+function assemble(){
+  const v = document.getElementById('page').value;
+  const out = document.getElementById('out');
+  if(v==='dashboard') out.innerHTML = '<h2>Dashboard assembled</h2><p>My Smart Link, beside it the ambassador row: link, clicks, signups, sales, Wednesday share, plus-button share. Reports, Pulse, Trend, Faces all fed by one derivation, so they cannot drift.</p><p class="muted">Source: tools/ambassador/dashboard_embed.html + dashboard_embed.js, PR #3043.</p>';
+  if(v==='checkout') out.innerHTML = '<h2>Checkout assembled</h2><p>5 days free, then your plan, referral carried from ?ref= through to the order, sale written only on a confirmed payment. Test mode until merchant keys land.</p><p class="muted">Source: tools/ambassador/checkout.html + checkout_config.json, PR #3043.</p>';
+  if(v==='welcome') out.innerHTML = '<h2>Welcome end slide assembled</h2><p>Congratulations, you\'re hired. Welcome to Naya. Welcome to the team. Welcome to the future. Plus your link, plus See your dashboard, rendered from the completion response, one wire.</p><p class="muted">Source: tools/ambassador/welcome_end_slide.html, PR #3043.</p>';
+}
+</script>
+</main></body></html>
