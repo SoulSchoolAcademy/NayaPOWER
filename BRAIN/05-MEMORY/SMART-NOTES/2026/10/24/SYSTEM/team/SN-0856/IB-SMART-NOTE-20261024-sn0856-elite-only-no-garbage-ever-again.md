@@ -1,7 +1,9 @@
-# SN-0856 — Elite Only: No Garbage, Ever Again
+# Elite Only: No Garbage, Ever Again
 
-**Filed:** 2026-10-24, by Naya Power, at Shawn's direction, after three assembler demos in one day were all below standard and were all retired.
-**The lesson, in Shawn's words as Power understands them:** Shawn put enormous effort into a high-level design, with laws, rules, and orders, and told the team plainly that he only wants elite-level, triple-A work. When a seat then ignores that work and those laws and presents low-level garbage, it is not a small miss. It is disrespectful, annoying, wasteful, and terrible — a waste of time, energy, and money for everyone. He does not want to see garbage anymore, ever again, or even entertain it.
+SN-0856 · SYSTEM / team
+**Created:** 2026-10-24T20:24:56Z
+
+Shawn put enormous effort into a high-level design, with laws, rules, and orders, and told the team plainly that he only wants elite-level, triple-A work. When a seat then ignores that work and those laws and presents low-level garbage, it is not a small miss. It is disrespectful, annoying, wasteful, and terrible — a waste of time, energy, and money for everyone. He does not want to see garbage anymore, ever again, or even entertain it.
 
 ## IN A NUTSHELL
 Elite only, from the first version. No grade-one drafts, no climbing from garbage to good, no presenting low-level work and hoping it improves. If it is not elite, it is not shown. If it is not in the factory, it is not used. If it does not pass the laws already written, it does not go out.
@@ -43,6 +45,3 @@ You never waste a day looking at garbage, correcting garbage, or explaining why 
 - Never present garbage to Shawn, ever again. Not as a demo, not as a draft, not as "just to show the idea." An idea at a low level is still low level. Hold it, fix it, verify it, then show it.
 - This note is the official record of that law, and the Smart Factory must carry it with the design contract, so the next seat does not have to learn it by making the same mistake.
 - The three retired assembler demos of 2026-10-24 (v1 flat and summary-only, v2 new CSS even with harvested tokens, v3 sample-CSS but still presented before factory inventory existed) are the case study. All three were retired, on the record, and none of them should have been presented.
-
-## LIVE STATUS NOTE
-Filed to main 2026-10-24, verified on main by read-back (file SHA 7ea015f6, 5,958 bytes). The live link returned "Note not found" on first checks after filing, while SN-0855 on the same path pattern went live. This note was therefore re-filed as a fix to the same file on main, never a second copy, to trigger a fresh site sync. If the live link still does not resolve, the site sync itself, not this file, is the defect to fix, and it must be named as such, not smoothed over.
