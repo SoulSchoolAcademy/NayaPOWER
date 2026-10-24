@@ -1,8 +1,9 @@
-# SN-0857 — Active Intelligence: Every Page, Every App, Composed From Inventory — Dead Pages Brought To Life
+# Active Intelligence: Every Page, Every App, Composed From Inventory — Dead Pages Brought To Life
 
-**Filed:** 2026-10-24, by Naya Power, at Shawn's direction.
-**The law, in Shawn's words as Power understands them:** every page, every app, going forward, must be designed this way and composed this way. The system must hold everything pre-created, pre-designed, organized, and inventoried, so any Smart App — any vehicle — can be created in a highly effective way, in the same design language. Anything already in the system that is not that way — the dashboard, any current app not up to standard — must be brought up to standard. That is part of the process. If something is not looking alive, if it looks dead or flat, bring life to it, and light to it.
-**Added the same day, same direction:** if it is not understandable, make it understandable. If it cannot be read, make it readable. Or use visual language if needed. But do it in an elegant, beautiful way.
+SN-0857 · SYSTEM / team
+**Created:** 2026-10-24T20:45:10Z
+
+Every page, every app, going forward, must be designed this way and composed this way. The system must hold everything pre-created, pre-designed, organized, and inventoried, so any Smart App — any vehicle — can be created in a highly effective way, in the same design language. Anything already in the system that is not that way — the dashboard, any current app not up to standard — must be brought up to standard. That is part of the process. If something is not looking alive, if it looks dead or flat, bring life to it, and light to it. If it is not understandable, make it understandable. If it cannot be read, make it readable. Or use visual language if needed. But do it in an elegant, beautiful way.
 
 ## IN A NUTSHELL
 Active Intelligence is not a style for new pages only. It is the standard for every page, every app, old and new. New things are composed from inventoried parts. Old things that fall short are upgraded, in place, to the same standard. Nothing dead or flat stays dead or flat. Nothing confusing stays confusing. Nothing unreadable stays unreadable. The fix is always elegant and beautiful, never a patch that breaks the language.
