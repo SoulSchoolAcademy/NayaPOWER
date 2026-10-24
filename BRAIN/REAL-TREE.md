@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-24  
-**Receipt basis commit:** `6ee127b9e3332f8f2730fc4d3489b6e7ad7a9fb8`  
-**Inventory file count:** 1657  
+**Receipt basis commit:** `85feeda7b809ab9617790bd3957737d0bcc5b945`  
+**Inventory file count:** 1658  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 847 |
+| 05-MEMORY | 848 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -989,6 +989,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/production/SN-0844/IB-SMART-NOTE-20261024-sn0844-the-production-engine.md` — `915cc56c30c6` (6892 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0853/IB-SMART-NOTE-20261024-sn0853-how-we-work-together-team-naya.md` — `cbb715eb4d5a` (7211 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0854/IB-SMART-NOTE-20261024-sn0854-security-law-in-the-book.md` — `809b115aee6a` (7465 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0855/IB-SMART-NOTE-20261024-sn0855-cant-find-it-build-it-found-a-problem-apply-a-solution.md` — `e6b412226f70` (4731 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
