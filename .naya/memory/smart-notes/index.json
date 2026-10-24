@@ -14427,7 +14427,7 @@
     "ingestion": "door-filing",
     "note": "Door-filed by Naya Beta (w798, 2026-10-23) under the intelligence door (adds-only): capture + projection + registry entry + brain-index regen in the same push. Distilled by Naya Beta (w738) from live bytes of NAYANODE/0006-NIO-INTELLIGENCE-OBJECT-MODEL-V1.md at tip 88a7bc4568424170eed091650dfddee1e315643d (blob f4ee0888fcdea51c62395927e119cd15ae511b9a); no runtime provenance invented, no fields fabricated."
    },
-   "page_hash": "ccd6b80cd780f54b9c1a25bffcf0e286642462107989571abbe5715e8efe79e8"
+   "page_hash": "e1d488918a77b201c605dfa39b3a956a6e8b1e27bb0cbe8166f859a83eb7b871"
   },
   {
    "smart_note_id": "SN-266",
@@ -15082,5 +15082,5 @@
   "next_sequence": 1855,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
  },
- "corpus_manifest_hash": "23d248ba509bde224f1ca5babcb7f399b47340de3a2de2d6dfa57719d4f7c885"
+ "corpus_manifest_hash": "b471ba01d49317ac02e1b10dbb2c2b84b99ae2c24310b61d45d427330f5339a7"
 }
