@@ -2,7 +2,7 @@
 
 **Generated:** 2026-10-24  
 **Receipt basis commit:** `6ee127b9e3332f8f2730fc4d3489b6e7ad7a9fb8`  
-**Inventory file count:** 1656  
+**Inventory file count:** 1657  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 846 |
+| 05-MEMORY | 847 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -976,6 +976,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-0832/IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note.md` — `79a9d27ba62d` (5169 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-1851/IB-SMART-NOTE-20261023-sn1851-the-door-adopted.md` — `987417e6ffbc` (6209 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/standard/SN-0843/IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard.md` — `03b8dd6930ed` (7081 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/DECISIONS/decision-engine/SN-1856/IB-SMART-NOTE-20261024-sn1856-all-things-considered.md` — `8976498e927a` (5515 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SECURITY/security-model/SN-1855/IB-SMART-NOTE-20261024-sn1855-security-is-light.md` — `442297db2ef5` (6113 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/access/SN-0847/IB-SMART-NOTE-20261024-sn0847-the-gift-and-the-power.md` — `989529c8e09a` (7862 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/access/SN-0848/IB-SMART-NOTE-20261024-sn0848-the-line-distilled.md` — `2ab80ae0df63` (7221 bytes)

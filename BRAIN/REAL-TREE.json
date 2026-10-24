@@ -2,7 +2,7 @@
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-24",
   "receipt_basis_commit": "6ee127b9e3332f8f2730fc4d3489b6e7ad7a9fb8",
-  "inventory_file_count": 1656,
+  "inventory_file_count": 1657,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 846,
+    "05-MEMORY": 847,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4679,6 +4679,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/standard/SN-0843/IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard.md",
       "blob_sha": "03b8dd6930ed1a44e1895b691cdc923eea559ca7",
       "size": 7081
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/DECISIONS/decision-engine/SN-1856/IB-SMART-NOTE-20261024-sn1856-all-things-considered.md",
+      "blob_sha": "8976498e927ae8f2adc01adcc81d46baddd6d12f",
+      "size": 5515
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SECURITY/security-model/SN-1855/IB-SMART-NOTE-20261024-sn1855-security-is-light.md",
