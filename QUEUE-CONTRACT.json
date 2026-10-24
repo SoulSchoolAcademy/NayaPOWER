@@ -1,6 +1,6 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-24T08:25:10Z",
+  "generated_at": "2026-10-24T09:24:23Z",
   "tip": "e0cd4c247abd441e292695c230977ea0f19c5e61",
   "prs": [
     {
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "23075f57bf99d55fefa15ef0da2926e9c4545572"
+      "head": "eee10f8b94c82e3eef576caf30e3424ce9700d30"
     },
     {
       "number": 3000,
@@ -28,7 +28,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "ebb6b423a9d86f5c97d8d0372ae412b693d48b57"
+      "head": "4eb327112dd94c65089207aae767ad2179ff1b1b"
+    },
+    {
+      "number": 3036,
+      "title": "fix(retrieve): re-stamp SN-1854 page_hash after 211cff Filed-line addition",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "f88edf88f7d1648f6bc75506d44f2ba966d296c7"
     }
   ]
 }
