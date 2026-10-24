@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Life with Naya — Discover your world</title>
+<style>
+:root{color-scheme:dark;--ink:#f7f6ff;--muted:#b7b6d1;--purple:#a978ff;--blue:#5aa9ff;--green:#55e39a}
+*{box-sizing:border-box}body{min-height:100vh;margin:0;background:radial-gradient(ellipse at 55% 5%,#3b196c 0,transparent 42%),radial-gradient(ellipse at 95% 100%,#0d2946 0,transparent 38%),#090912;color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+main{width:min(860px,95vw);margin:5vh auto 3rem}.eyebrow{text-transform:uppercase;letter-spacing:.22em;color:#c4a3ff;font-size:.75rem;font-weight:800}.shell{background:linear-gradient(140deg,#222039 0,#0e101f 52%,#1b1334);border:1px solid #5c418f;border-radius:26px;box-shadow:0 28px 95px #000b,inset 0 1px 0 #a98dcb45,0 0 58px #7b3fe315;overflow:hidden}.inner{padding:clamp(22px,5vw,50px)}.brand{display:flex;align-items:center;gap:14px;margin-bottom:25px}.orb{height:49px;width:49px;display:grid;place-items:center;border-radius:17px;background:linear-gradient(135deg,#fff,#ab9aff,#475ef9);color:#101126;font-size:1.3rem;font-weight:950;box-shadow:0 8px 35px #a978ff55,inset 0 1px 3px #fff}.sub{color:var(--muted);font-size:.93rem}.progress{height:8px;border-radius:100px;background:#343145;margin:1rem 0 2rem;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#fa64ce,#ad70ff,#61b7ff,#55e39a);transition:width .3s}h1{font-size:clamp(2rem,4.4vw,3.3rem);margin:.15rem 0 .8rem;line-height:1.12;letter-spacing:-.03em}h2{font-size:1.5rem;margin:0 0 .6rem}.hint{color:var(--muted);line-height:1.6;font-size:1rem}.answer{width:100%;min-height:160px;resize:vertical;border:1px solid #7251ae;background:linear-gradient(145deg,#11182b,#141027);border-radius:17px;color:white;font:inherit;line-height:1.65;padding:18px;margin-top:20px;box-shadow:inset 0 2px 10px #0008}.answer:focus,button:focus-visible,input:focus-visible{outline:3px solid #b994ff;outline-offset:3px}button{cursor:pointer;border:1px solid #8c76b5;border-radius:14px;padding:12px 17px;color:white;background:linear-gradient(145deg,#3e315b,#211932);font:inherit;font-weight:700;box-shadow:inset 0 1px 1px #fff4,0 7px 15px #0006}button:hover{filter:brightness(1.16);transform:translateY(-1px)}.primary{background:linear-gradient(110deg,#b877ef,#654cde,#307db4);border-color:#a6b6ff;box-shadow:inset 0 1px #fff7,0 13px 35px #683ad655}.controls{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.foot{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-top:22px}.status{min-height:24px;color:#b8eaf1;font-size:.9rem}.small{font-size:.8rem;color:var(--muted);line-height:1.5}.card{border:1px solid #554474;background:linear-gradient(130deg,#222338,#131325);border-radius:18px;padding:20px;margin:12px 0;box-shadow:0 10px 30px #0005}.card b{display:block;margin-bottom:6px}.answers{display:grid;gap:8px}.ansrow{display:grid;grid-template-columns:1fr auto;align-items:start;gap:12px;padding:12px 0;border-bottom:1px solid #ffffff18}.ansrow button{font-size:.82rem;padding:7px 12px}.tag{font-size:.73rem;color:#adf4cf;letter-spacing:.04em}.pill{display:flex;gap:9px;align-items:center;margin:.8rem 0}.pill input{height:19px;width:19px;accent-color:#9c70ef}.empty{color:var(--muted);font-style:italic}.phase{font-size:.8rem;color:#cdabff}.hidden{display:none!important}@media(prefers-reduced-motion:reduce){.bar,button{transition:none!important}button:hover{transform:none}}
+</style></head><body>
+<main><div class="brand"><div class="orb" aria-hidden="true">N</div><div><div class="eyebrow">Life with Naya</div><div class="sub">Create your world, one answer at a time</div></div></div>
+<section class="shell" aria-label="Citizen discovery"><div class="inner">
+<div class="phase" id="phase">Personal discovery · private by default</div><div class="progress" aria-label="Progress"><div id="bar" class="bar"></div></div>
+<div id="stage"></div><div class="status" id="status" role="status" aria-live="polite"></div></div></section>
+<p class="small">Prototype of the proposed post-Welcome discovery experience. No account, Business page, Space, connection, recommendation or publication is created here. Your words remain in this page's memory unless you explicitly copy them. Microphone availability and any speech processing depend on your browser and its voice service.</p></main>
+<script src="./citizen-discovery-core.js"></script>
+<script>
+(function(){
+'use strict';
+const core=window.NayaCitizenDiscovery;
+const session=core.createSession({alias:'',name:''});
+const stage=document.getElementById('stage'),bar=document.getElementById('bar'),phase=document.getElementById('phase'),status=document.getElementById('status');
+let recognition=null,previewMode=false;
+function el(tag,cls,text){const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x;}
+function add(parent,...items){items.forEach(x=>parent.appendChild(x));return parent;}
+function btn(label,fn,primary){const x=el('button',primary?'primary':'',label);x.type='button';x.addEventListener('click',fn);return x;}
+function note(message){status.textContent=message;}
+function copyValue(value){if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(value);return Promise.reject(Error('clipboard_unavailable'));}
+function editableCopyPrompt(question){
+const prompt=core.aiPrompt(question);const box=el('textarea','answer');box.value=prompt;box.setAttribute('aria-label','Copy this prompt into an AI you choose');
+add(stage,el('p','hint','Copy this prompt into an AI you choose. Edit the response, then paste it back here.'),box,
+btn('Copy prompt',()=>copyValue(box.value).then(()=>note('Prompt copied.')).catch(()=>{box.select();note('Copy the selected text manually.');})));
+}
+function stopRecognition(){if(recognition){try{recognition.stop();}catch(e){} recognition=null;}}
+function speak(area){
+const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!Speech){note('Voice dictation is not supported in this browser. Please type or paste instead.');return;}
+stopRecognition();const r=new Speech();recognition=r;r.lang=document.documentElement.lang||'en-US';r.interimResults=false;r.continuous=false;
+r.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++)if(e.results[i].isFinal){area.value=(area.value+' '+e.results[i][0].transcript).trim();} };
+r.onerror=e=>note('Microphone unavailable or interrupted. Typing remains available.');
+r.onend=()=>{recognition=null;note('Dictation ended. You can edit your answer before continuing.');};
+try{r.start();note('Listening. Your browser may process speech using its own service.');}catch(e){note('Microphone unavailable. Please type or paste.');}
+}
+function render(){
+stopRecognition();stage.replaceChildren();note('');
+const st=session.state();bar.style.width=((previewMode||st.at_review)?100:Math.round(st.step/st.total*100))+'%';
+phase.textContent=previewMode?'Unpublished Trinity preview':st.at_review?'Review your words and visibility':'Question '+(st.step+1)+' of '+st.total+' · private by default';
+if(previewMode){renderPreview();return;}
+if(st.at_review){renderReview();return;}
+const q=st.question;
+add(stage,el('div','eyebrow','Naya asks'),el('h1','',q.question),el('p','hint',q.hint));
+const input=el('textarea','answer');input.placeholder='Tell Naya in your own words, or skip this question.';input.value=st.answers[q.key]||'';
+input.setAttribute('aria-label',q.question);add(stage,input);
+const modes=el('div','controls');add(modes,
+btn('🎙 Speak',()=>speak(input)),btn('⌨ Type',()=>{input.focus();note('Type or paste your answer above.');}),
+btn('✦ Ask my AI to write it',()=>editableCopyPrompt(q)));
+add(stage,modes);
+const foot=el('div','foot'),back=btn('← Back',()=>{session.back();render();});back.disabled=st.step===0;
+add(foot,back,btn('Skip',()=>{session.skip();render();}),btn('Next →',()=>{
+const a=session.answer(input.value);if(!a.ok){note('That answer could not be saved in the draft.');return;}render();
+},true));add(stage,foot);
+}
+function renderReview(){
+add(stage,el('h1','','Your words. Your world.'),el('p','hint','Everything is a private draft. Choose which interests you want discoverable. No page will be published, no connection sent.'));
+const rows=el('div','answers');
+for(const q of core.FIELDS){
+const st=session.state(),value=st.answers[q.key]||'';
+const row=el('div','ansrow'),left=el('div');add(left,el('b','',q.question),el('p',value?'': 'empty',value||'Skipped'));
+const edit=btn('Edit',()=>{session.edit(q.key);render();});add(row,left,edit);add(rows,row);
+if(core.PUBLIC_DISCOVERY_FIELDS.has(q.key)&&value){
+const label=el('label','pill'),check=el('input');check.type='checkbox';check.checked=st.visibility[q.key]===true;
+check.addEventListener('change',()=>session.setPublic(q.key,check.checked));
+add(label,check,el('span','','Allow this answer to inform public discovery suggestions'));add(rows,label);
+}}
+add(stage,rows);
+const line=el('label','pill'),opt=el('input');opt.type='checkbox';opt.checked=session.state().discovery_opt_in;
+opt.addEventListener('change',()=>session.setDiscoveryOptIn(opt.checked));
+add(line,opt,el('span','','Opt in to recommendations using only the fields I marked discoverable'));add(stage,line);
+const footer=el('div','foot');add(footer,btn('← Back',()=>{session.back();render();}),
+btn('Preview my three worlds →',()=>{previewMode=true;render();},true));add(stage,footer);
+}
+function previewCard(title,obj){
+const card=el('section','card');add(card,el('h2','',title));
+let any=false;
+Object.entries(obj).forEach(([k,v])=>{if(k==='applicable')return;if(typeof v==='string'&&v.trim()){any=true;add(card,el('b','',k.replace(/_/g,' ')),el('p','',v));}});
+if(!any)add(card,el('p','empty','No details provided yet; no information has been invented.'));
+return card;
+}
+function renderPreview(){
+const drafts=session.preview();add(stage,el('h1','','Your NayaNET world — preview'),el('p','hint','The existing Personal, Business and Community flagship pages would be populated from these approved answers after authenticating and reviewing visibility.'));
+add(stage,previewCard('Personal',drafts.personal),previewCard('Business',drafts.business),previewCard('Community / Space',drafts.space));
+const info=core.discoveryFeatures(session.packet());
+add(stage,el('p','tag',info?'Discovery opted in. Public-safe topic tags prepared as candidate inputs. No users were matched or contacted.':'Discovery is off. No match suggestions are generated.'));
+const actions=el('div','controls');
+add(actions,btn('← Edit answers',()=>{previewMode=false;render();}),
+btn('Copy my private draft',()=>copyValue(JSON.stringify(drafts,null,2)).then(()=>note('Draft copied by your request. Paste only where you trust.')).catch(()=>note('Clipboard unavailable. Copying was not completed.'))));
+add(stage,actions);
+add(stage,el('p','small','NEXT GOVERNED STEP (not available in this prototype): authenticate the real owner, review each field and consent choice, save drafts idempotently through existing Trinity objects, then publish only by explicit action. AutoMatch will use visibility-filtered, permitted public candidates, not private answers.'));
+}
+render();
+})();
+</script></body></html>
