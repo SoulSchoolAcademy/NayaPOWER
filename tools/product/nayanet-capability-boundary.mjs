@@ -7,7 +7,7 @@ export const MODES = Object.freeze(['citizen','managed_operator','owner_fork']);
 export function validateCapabilityCatalog(c) {
   if (!c || c.schema!=='nayanet.capability-boundary.v1' ||
       c.state!=='PROPOSED_AND_UNVERIFIED' ||
-      !Array.isArray(c.features) || c.features.length!==24) throw Error('invalid_catalog');
+      !Array.isArray(c.features) || c.features.length!==25) throw Error('invalid_catalog');
   if(c.unit_economics?.cost_is_literally_zero!==false) throw Error('zero_cost_false');
   const b=c.boundaries||{};
   for(const key of ['one_network','agent_seat_is_not_owner',
