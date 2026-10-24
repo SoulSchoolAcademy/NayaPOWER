@@ -1,0 +1,56 @@
+# Get Her Done Tonight — The Official Welcome, Assembled From What We Have
+SN-0852 · SYSTEM / activation
+**Created:** 2026-10-24T02:51:00Z
+
+## IN A NUTSHELL
+Shawn's call (2026-10-24 ~02:49Z): **get The Official Welcome LIVE tonight.** His reasoning is correct, and this spec is built on it: we are not creating from scratch — we are ASSEMBLING. The pages exist, the certificate exists, Life with Naya exists, the mail works, the cover system exists, the matcher exists as running prototype code. What remains is connection, one citizen-shaped rendering, and the ceremony that ties them. This note is the ultimate spec: the readiness scorecard (what we HAVE · what we CONNECT · what we CREATE), the instruction sets per lane, the page-settings law Shawn ruled tonight, and the exact definition of LIVE. Canonical set: SN-0846 · 0847 · 0848 · 0849 · 0850 · 0851 · #3028 · #3029 · the Lock Packet (#3029, comment 6378881476 — the working spec for questions, weights, defaults, covers).
+
+## HUMAN
+**THE READINESS SCORECARD — scored by Nitro from live checks, 2026-10-24 ~02:50Z:**
+
+**WE HAVE IT (running today):** the claim + certificate (identities issue live; citizens hold certificates) · Life with Naya (the presentation's style + voice, in the Hub) · the three flagships /personal /business /space (200 tonight — the Trinity's bodies) · Smart Mail (live-verified, identity alone) · the Smart Note cover system (a designed jewel cover minted for every note — the cover factory exists) · the Install Law (the Hub installs as an app) · Spaces (7 live in the database) · the voice (101 bakes done; worker answering).
+
+**WE CONNECT IT (pieces exist, wiring is the work):** the certificate → the presentation (route the claim's success into the flow, not the Hub) · the presentation → page creation (answers already save; creation reads them) · the flagships → the citizen (render the flagship composition FROM the citizen's identity + answers at /<alias>, /<alias>/business, /<alias>/space) · the cover system → pages (same jewel derivation, fed name/topic/subject) · the matcher prototype → citizens (the branch code + the database primitive, fed the answers; v1 weights per the packet) · pages → mail (the mail door on the citizen's own page — proven pattern) · the Trinity → smart tabs (existing tab components, fed the citizen's three).
+
+**WE CREATE IT (genuinely new, and small):** the ceremony itself (10 slides per the packet — certificate beauty × Life with Naya, playable Naya per slide, three answer modes, skip) · the per-citizen rendering route (one derivation: identity + answers → three filled pages) · the page-settings panel + its server-side enforcement · the Hub's personal top-3 sidebar (the one heavy piece — it touches the Hub monolith: staging-first, byte-careful, ships tonight only if it verifies clean; the Trinity in tabs + on the Personal page carries the personal landing until it lands).
+
+**PAGE SETTINGS — Shawn's law, ruled tonight:** EVERY page a citizen owns carries three settings, per page, changeable anytime: **installable** (always — every page can be installed like an app) · **public or private** · **findable or unfindable** (public-but-unfindable = reachable by link, invisible to search and matching; the matcher and search honor unfindable absolutely). A citizen may hold BOTH kinds at once — a private personal page AND a public one, as many pages as they want, each with its own settings. **The born defaults: Personal = PRIVATE · Business = PUBLIC + findable · Space = PUBLIC + findable** (you usually want the business and the space found). Flipping is one tap at the reveal and in settings forever after — never a wall. Privacy is enforced on the SERVER (engine path), not hidden by the interface — a private page the server still serves is a seam defect, the worst kind.
+
+**LIVE TONIGHT means:** a new person claims a name → certificate → the presentation (voice-first) → lands with three pages LIVE at their own addresses — filled with their words, covered, settings at the defaults above, mail working from their page, first matches computed with reasons — and a different seat proves it cold from the citizen's seat. That, all of it, or it isn't live.
+
+## CHILD
+Tonight we don't build a new house — we connect the rooms that already exist, hang the jewel signs, and open the front door. And every room gets three switches that are yours: you can put it on your phone like an app, you can lock it private or open it public, and you can make it easy to find or hidden from search — your first room starts locked and quiet, your shop and your clubhouse start open and easy to find, because that's how most people want them.
+
+## GRANDMA
+It's assembly night, not construction. The kitchen, the rooms, the mailbox, the painted signs — all already made. Tonight the team wires them into one home and hands over the keys, with your name-plates set sensibly: bedroom private, shop window bright and findable, clubhouse open — and every switch yours to flip, any time, as many rooms of each kind as you like.
+
+## NAYA
+**INSTRUCTION SETS — two paths, one seam, chameleon rule in force (SN-0851): take any job you can move; these are LEADS, not fences.**
+
+**INTERFACE PATH (lead: Nitro, with Tree):**
+1. The ceremony route: claim-success → presentation (never the Hub first). Harvest the certificate page's chrome + Life with Naya's slide grammar — READ-BEFORE-DESIGN GATE: contract trio open before the first line; no new chrome.
+2. The 10 slides (packet order): about · into · vision · goal · mission · motto · business: what you do · who you help + what you offer · what you're building · your space + who you want to meet there → THE REVEAL (their three pages, their covers, their defaults shown with the one-tap flips, their first matches).
+3. Per-citizen pages from the flagship compositions (Assembly Doctrine): /<alias> · /<alias>/business · /<alias>/space — born filled from saved answers; Smart Factory as door #13 in the tabs; the Trinity in the citizen's smart tabs.
+4. Covers at creation via the note-cover derivation (name · business topic · space subject); owner-replaceable; never blank.
+5. The settings panel on every page: install · public/private · findable/unfindable — defaults per the law above.
+
+**ENGINE PATH (lead: the core lanes + #3028/#3029 seats):**
+6. The creation derivation: on presentation completion (or skip-with-enough), identity + answers → pages routed + rendered + covers minted + matches computed (v1 weights 40·25·20·15, ≥2 signals, reasons attached) — one derivation, recompute on change, like every derivation here.
+7. Settings enforcement SERVER-SIDE: private ⇒ not served, not matched, not searched, to anyone but the owner; unfindable ⇒ served by link, excluded from search/match/directory. Prove both with negative tests (a second identity must FAIL to reach a private page).
+8. Mail from the page: the citizen's mail door live on their Personal page (identity-derived, proven pattern).
+9. Voice: explainer clips for the 10 standard slides baked ONCE and cached (the bake queue has a backlog + flaky fetches tonight — the ceremony is text-first by design, voice ignites where baked; voice failure never blocks a slide).
+10. The Hub top-3 sidebar: staging-first on the monolith; byte-careful harvest edit (existing sidebar component, fed the citizen's three from their claimed identity); production only on a clean render proof — else it follows as the first seam fix, with tabs carrying tonight's landing.
+
+**THE HANDSHAKE (acceptance, both paths, from the citizen's seat):** a cold seat creates an account BY VOICE ONLY → certificate → presentation → reveal shows three covered pages at the packet defaults → pages live at their addresses, filled, private one REFUSES a second identity, mail round-trips from the page, first matches carry reasons → different seat + different login verifies and scorecards. Anything less is a progress report, not a launch.
+
+## MACHINE
+READINESS: have{claim+certificate, life_with_naya, flagships×3, mail(verified), cover_factory, install_law, spaces(7), voice} · connect{claim→flow, flow→creation, flagship→citizen_render, covers→pages, matcher→citizens, mail→page, trinity→tabs} · create{ceremony(10 slides), citizen_render_route, settings_panel+enforcement, hub_sidebar_top3(staging-gated)}. SETTINGS(page) = {installable: true, visibility ∈ {public, private}, discoverability ∈ {findable, unfindable}} · defaults: personal{private} · business{public, findable} · space{public, findable} · enforcement: server-side; private ⇒ ¬served ∧ ¬matched ∧ ¬searched (owner excepted); unfindable ⇒ served_by_link ∧ ¬matched ∧ ¬searched · multiplicity: unbounded pages per citizen, mixed settings allowed. LIVE ⇔ cold voice-only journey passes ∧ different-login verification ∧ negative privacy tests pass.
+
+## WHAT IT ALL MEANS
+The distance between "designed" and "live" was never invention — it was assembly. Tonight the pieces stop being a parts bin and become a place a person can arrive at. And the settings law makes the arrival safe to love: your world, your switches, sensible defaults, enforced by the machine — not by promises.
+
+## WHAT'S IN IT FOR YOU
+Citizens: tonight, the front door opens — walk it once and your world exists, covered, correctly private where it should be, findable where you want to be found. Team: the scorecard above is the whole job — have, connect, create — in that order, and the handshake test at the end is the only finish line.
+
+## HOW IT APPLIES TO TEAM NAYA
+This spec is tonight's build order for The Official Welcome (#1 on the list). Claim lanes on the board under this note; file defects as interface / engine / seam; and remember the chameleon rule — the lane leads are named so someone answers for each piece, never so anyone waits.
