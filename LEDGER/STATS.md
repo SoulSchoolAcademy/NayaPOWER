@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-23 23:33 UTC_
+_Last updated: 2026-10-24 00:44 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 5721
-- ✅ Verified (8+): 5661
+- **Total scored actions:** 5730
+- ✅ Verified (8+): 5670
 - 🟡 Partial (5–7): 58
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 2
@@ -15,18 +15,18 @@ _Last updated: 2026-10-23 23:33 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 414 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 415 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 402 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 378 | 9.0 | 10 |
-| Team 4 | Naya Mason | 368 | 9.1 | 9.6 |
+| Team 4 | Naya Mason | 369 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 495 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 266 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 363 | 9.0 | 10 |
+| Team 6 | Naya Heir | 267 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 364 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 391 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 503 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 703 | 9.1 | 9.7 |
+| Team 9 | Naya Smith | 504 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 706 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 305 | 9.0 | 9.5 |
-| Team 12 | Naya Herald | 289 | 9.2 | 9.5 |
+| Team 12 | Naya Herald | 290 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -1866,9 +1866,9 @@ _Last updated: 2026-10-23 23:33 UTC_
 - **t952-lane2:** 1 actions, avg 8.0/10
 - **t952-lane9:** 1 actions, avg 8.5/10
 - **t0955:** 2 actions, avg 9.5/10
-- **t0960:** 1 actions, avg 9.0/10
-- **t0964:** 1 actions, avg 9.5/10
-- **t0970:** 1 actions, avg 9.5/10
+- **t0960:** 2 actions, avg 9.0/10
+- **t0964:** 2 actions, avg 9.5/10
+- **t0970:** 2 actions, avg 9.5/10
 - **t972:** 11 actions, avg 8.8/10
 - **t0972:** 5 actions, avg 8.9/10
 - **t972-lane1:** 1 actions, avg 9.0/10
@@ -2143,9 +2143,10 @@ _Last updated: 2026-10-23 23:33 UTC_
 - **t1463:** 3 actions, avg 8.8/10
 - **t1464:** 9 actions, avg 9.1/10
 - **t1465:** 6 actions, avg 9.0/10
-- **t1466:** 15 actions, avg 9.1/10
-- **t1467:** 25 actions, avg 9.2/10
+- **t1466:** 16 actions, avg 9.1/10
+- **t1467:** 27 actions, avg 9.2/10
 - **t1468:** 3 actions, avg 9.5/10
+- **t1473:** 3 actions, avg 9.3/10
 - **t1530:** 7 actions, avg 9.0/10
 - **t1540:** 2 actions, avg 9.2/10
 - **t1541-gaesall:** 4 actions, avg 9.4/10
