@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-24 17:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-24 19:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 5 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -53,10 +53,12 @@
 ### KNOW (1)
 - [#3036](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3036) fix(retrieve): re-stamp SN-1854 page_hash after 211cff Filed-line addi
 
-### BUILD (3)
-- [#3037](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3037) fix(safety): backfill SN-0842 door capture + registry entry
+### BUILD (2)
 - [#3000](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000) Naya/mission state
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
+
+### TEAM (1)
+- [#3043](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3043) Affiliate system embedded in dashboard + checkout (draft) 📝draft
 
 ### PRODUCT (1)
 - [#2968](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968) Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A 

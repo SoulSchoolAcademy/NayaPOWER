@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-24T17:15:23+00:00",
+ "generated_utc": "2026-10-24T19:15:07+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -140,12 +140,6 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3037,
-     "title": "fix(safety): backfill SN-0842 door capture + registry entry",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3037",
-     "draft": false
-    },
-    {
      "number": 3000,
      "title": "Naya/mission state",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000",
@@ -158,7 +152,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 2
   },
   {
    "id": "wire",
@@ -197,8 +191,15 @@
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3043,
+     "title": "Affiliate system embedded in dashboard + checkout (draft)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3043",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "infra",
@@ -419,5 +420,5 @@
   }
  ],
  "open_pr_total": 5,
- "unassigned_prs": 3
+ "unassigned_prs": 2
 }
