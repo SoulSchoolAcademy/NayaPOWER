@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-24 02:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-24 03:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 5 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -53,6 +53,9 @@
 ### BUILD (2)
 - [#3000](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000) Naya/mission state
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
+
+### INFRA (1)
+- [#3031](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3031) feat(product): prove NayaNET citizen vs managed Naya vs owner-fork pro 📝draft
 
 ### PRODUCT (2)
 - [#3025](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3025) feat(living-map): 25-door NayaNET readiness registry and fail-closed 9 📝draft

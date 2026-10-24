@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-24T02:16:20+00:00",
+ "generated_utc": "2026-10-24T03:15:18+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -204,8 +204,15 @@
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3031,
+     "title": "feat(product): prove NayaNET citizen vs managed Naya vs owner-fork promises",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3031",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "product",
@@ -411,6 +418,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
+ "open_pr_total": 5,
  "unassigned_prs": 2
 }
