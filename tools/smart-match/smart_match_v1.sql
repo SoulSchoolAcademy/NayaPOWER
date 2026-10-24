@@ -1,3 +1,4 @@
+-- STATUS: v1 math - SUPERSEDED by smart_match.py v1.2 (two-tier family scoring). Regenerate before any deployment.
 -- Smart Match v1 — SQL twin of the reference implementation (smart_match_v1.py).
 -- Naya Power, SET B / engine end, 2026-10-24. NOT deployed — for the wiring lanes.
 --
