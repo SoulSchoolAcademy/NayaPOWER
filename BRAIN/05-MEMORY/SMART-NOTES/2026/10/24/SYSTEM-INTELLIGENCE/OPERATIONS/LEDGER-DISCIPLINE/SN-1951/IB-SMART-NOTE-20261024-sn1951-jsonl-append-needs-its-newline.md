@@ -1,0 +1,40 @@
+**Intelligent Block:** IB-SMART-NOTE-20261024-sn1951-jsonl-append-needs-its-newline
+**Smart Note:** SN-1951
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-24
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** ~/memory/2026-10-24.md (Lane-scorer tick 2026-10-24 06:50 PDT entry) + hidden_files/twelve-lane-scores.jsonl (5958 lines, 0 unparseable after repair, re-verified this tick)
+
+## ✦ IN A NUTSHELL
+
+A JSONL append that forgets its trailing newline eats the next row. In the 06:50 PDT lane-scorer tick on 2026-10-24, the t1550 score row had been appended without a trailing newline, so the t1552 row concatenated onto it: one malformed line holding two score records, neither parseable. The repair was to split that line back into two rows, byte-preserved, after which all 5958 score lines parsed clean. The rule: a JSONL record is not written until its newline is written, and an append is not complete until the whole file still parses. A scorer that meets an unparseable line must check for a missing-newline fusion first — two JSON objects fused on one line — before concluding any score is missing, because framing corruption looks exactly like a missing record.
+
+## 🩷 HUMAN NOTE
+
+Imagine a notebook where each entry is separated by a line drawn across the page — no line, no separation. A JSONL ledger works the same way: the newline character at the end of each row is the only thing that says "this record ends here, the next one starts there." There is no record length, no closing bracket that spans rows, nothing else to lean on. So when one writer forgot that final newline, the next writer's row glued itself onto the end of the previous row, and the reader — which reads line by line — saw a single line containing two records jammed together. That line is not valid JSON, so the reader dropped both records at once: two scores vanished over one missing character, silently. The fix took a human splitting the fused line by hand and confirming every one of the 5958 lines parsed again. The lesson is cheap and absolute: end every appended row with a newline, and prove the file still parses after every append. And when a reader does hit a broken line, suspect the glue first — a fused line is a framing accident, not a missing score, and it must be split and preserved, never deleted as garbage.
+
+## 🟣 CHILD NOTE
+
+Imagine you are writing a list, one thing per line, and you forget to press Enter after one item. The next thing you write sticks right onto the end of that line, so two items become one long squished line that nobody can read properly. That is what happened to a computer list: one worker forgot the "Enter" at the end of their line, so the next worker's line got glued onto it, and the computer could not read either of them — two scores disappeared because of one missing Enter! A grown-up had to carefully cut the squished line back into two lines, and then check that all 5958 lines could be read again. So the rule is simple: always press Enter at the end of your line, and always check the whole list still reads after you add something. And if you ever find a squished line, do not throw it away — cut it apart carefully, because both pieces matter.
+
+## 🔵 GRANDMA NOTE
+
+Dear, this one is about a list where the lines themselves are the dividers. In this kind of computer list, each entry sits on its own line, and the little "new line" mark at the end is the only divider — there is nothing else keeping one entry from running into the next. One morning, a worker added a score but left off that divider, so the next worker's score ran straight onto the end of it. The computer reads line by line, so it saw one long jumbled line instead of two clean entries, and it could make sense of neither — two scores gone over one missing mark, and nobody noticed until a checker went looking. The repair was careful handwork: split the jumbled line back into its two entries, keep every character exactly as it was, and then verify all 5958 lines read clean. The rule to keep is plain: never finish writing a row without its newline, and never call an append done until the whole list still reads. And if you meet a broken line, check for this glue first — it is a framing accident to be split and saved, not rubbish to be thrown away.
+
+## 🟠 NAYA NOTE
+
+The mechanism is framing, not content: JSONL has no length prefix and no record separator other than the newline, so the newline is the row boundary, and a missing one fuses two records into a single line that no line-oriented JSON reader can parse — a one-byte omission that silently costs two records, not one. This is the append-side sibling of SN-1193 (read the ledger before you match): 1193 is about matching against an assumed schema and manufacturing phantom "unscored" rows; this is about writing with an assumed terminator and manufacturing a malformed row that reads as missing data. Both failure modes converge on the same misdiagnosis — "a score is missing" — when the ledger is in fact intact but misframed or mismatched. The repair discipline matters as much as the write discipline: the fused line was split on the object boundary with both rows byte-preserved, not dropped and re-entered, because re-entry would have destroyed the evidence of what the scorer actually wrote. Any future appender to twelve-lane-scores.jsonl or any shared JSONL ledger inherits both halves of this rule: terminate with newline, parse-validate after append; and any future reader that meets an unparseable line checks fusion before absence. Cousins: SN-1193 (read the ledger before you match), CANDIDATE 919 / SN-1948 (re-derive from live bytes — a malformed line is a claim about the file, to be re-derived, not assumed).
+
+## 🟢 MACHINE NOTE
+
+```json
+{
+  "applies_when": ["ledger", "jsonl", "append", "scorer", "lane-scores"],
+  "enforcement": "Every append to twelve-lane-scores.jsonl (or any shared JSONL ledger) must terminate the record with a newline (write record + '\\n', or verify the file's last byte is '\\n' before appending) and must then parse-validate the whole file (every non-empty line json.loads) before the append counts as complete; an append that fails validation is retried or repaired, never left. A scorer or reader encountering an unparseable line must first test for a missing-newline fusion (two JSON objects concatenated on one line) and split it on the object boundary with both rows byte-preserved, before concluding any score is missing or dropping the line.",
+  "evidence": "Lane-scorer tick 2026-10-24 06:50 PDT (~/memory/2026-10-24.md): the pre-existing t1550 scorer row lacked a trailing newline, so the new t1552 row concatenated onto it (one malformed line, both rows byte-preserved); split into two lines, all 5958 score lines then parsed. Re-verified this tick: twelve-lane-scores.jsonl holds 5958 lines, 0 unparseable.",
+  "decision_change": "When appending to twelve-lane-scores.jsonl or any shared JSONL ledger, terminate with a newline and parse-validate the file after the append instead of assuming the write landed; and when a reader meets an unparseable line, check for a fused line and split it byte-preserved instead of treating the record as missing or deleting the line.",
+  "falsifier": "A fused line that still parses as valid JSON (which would show framing was not the cause), or a missing-newline append after which both rows remain independently parseable (which would show the newline is not the row boundary in this reader). A malformed line whose cause is truncation mid-object rather than fusion would show the rule is incomplete (a second failure mode), not that the newline rule is wrong.",
+  "mechanism": "JSONL framing is newline-delimited with no length prefix: the parser's row boundary IS the newline character. Without it, two JSON objects concatenate into one line that is not valid JSON, so a line-oriented reader fails the whole line and both records are lost at once — which is why framing corruption is misread as missing data."
+}
+```
