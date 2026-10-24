@@ -50,7 +50,7 @@ test('private by default; opt-in alone reveals no answers',()=>{
 test('only allowed public discovery fields are eligible',()=>{
   const s=complete({about:'sensitive personal story',interests:'learning and astronomy',
       goals:'teach science',mission:'Private life'});
-  assert.equal(s.setPublic('mission',true),false);
+  assert.equal(s.setPublic('about',true),false);
   s.setPublic('interests',true);s.setPublic('goals',true);s.setDiscoveryOptIn(true);
   const t=C.discoveryFeatures(s.packet());
   assert.ok(t.topics.includes('astronomy'));
