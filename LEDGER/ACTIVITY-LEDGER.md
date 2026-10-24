@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 07:21 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -544,6 +544,38 @@ _Last updated: 2026-10-24 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall sweep: 25 queued briefs evaluated, all refused (exit 2/6/7), correct skip, root cause named
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
+
+### ✅ t1510 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** retrieval-auth gate migration inventory (PREP ONLY, no wiring)
+
+**Receipt:** `twelve-lane-receipts/t1510-lane8.md`
+
+**Evidence:** VERIFIED: inventory doc exists at claimed path (10629b); corpus measured on live bytes claim 707 entries / 0 retrieval_authorized named (scorer did not re-derive; corpus file lives under retrieval/ per project layout); branch naya/five-retrieval-auth-gate-t942 absence claim accepted from receipt's ls-remote; explicit non-wiring boundary statement p
+
+### ✅ t1510 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** stemmed-phrase tuning probe vs pinned t1504 corpus (HOLDS-WITH-REGRESSION)
+
+**Receipt:** `twelve-lane-receipts/t1510-lane2.md`
+
+**Evidence:** VERIFIED: prereg file on disk sha 7af9637e74d3 matches receipt claim (seal 8ba07f0c); results JSON sha 2c31256f385f matches receipt claim; JSON aggregates match the verdict exactly (verdict HOLDS-WITH-REGRESSION, new_weak [], zero_hit [], retention_kept [rule-owns-its-verdict] = 1/3, false_positives 0, near_hit reported-not-counted, 10 brief result
+
+### ✅ t1510 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE slice c: ask-world query log + top-20 needs analysis
+
+**Receipt:** `twelve-lane-receipts/t1510-lane1.md`
+
+**Evidence:** VERIFIED INDEPENDENTLY: log 199 lines = 140 query + 58 probe + 1 init, exactly as claimed; 23 unique query_text; exactly 14 query rows carry the fixture timestamp 2026-10-12T17:17:32Z (fixture/organic split as claimed); analysis file exists at the claimed 4194 bytes; prior-art t1296 file exists. Real value: honest demand analysis that refused to pa
+
+### ✅ t1509 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Breaker #13 feature.scheduler: ALREADY DONE + independently verified
+
+**Receipt:** `twelve-lane-receipts/t1509-lane12.md`
+
+**Evidence:** VERIFIED INDEPENDENTLY: head pin e0cd4c247abd441e292695c230977ea0f19c5e61 == live remote HEAD via ls-remote and shared-state main_tip; all 4 blob sha256s byte-match at that head (feature_scheduler.py 1fc186ca.. / registry.json 0c5655d5.. / resolver.py 7437354c.. / test file cde7e61c..); registry 'feature' group = 17/17 built with feature.scheduler 
 
 ### ✅ t1509 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
