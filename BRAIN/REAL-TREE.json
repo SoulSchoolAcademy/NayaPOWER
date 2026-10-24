@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-23",
-  "receipt_basis_commit": "82faac61c25e62fde5d3a5f5c6b18d299e827b2d",
-  "inventory_file_count": 1629,
+  "generated_at": "2026-10-24",
+  "receipt_basis_commit": "782cbe2c130476688de069045e6ac0433f8b1403",
+  "inventory_file_count": 1653,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 827,
+    "05-MEMORY": 843,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -19,7 +19,7 @@
     "10-INTERFACES": 445,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
-    "90-OPERATIONS": 96,
+    "90-OPERATIONS": 104,
     "99-ARCHIVE": 2,
     "ROOT": 7
   },
@@ -4561,6 +4561,31 @@
       "size": 5033
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0841/IB-SMART-NOTE-20261023-sn0841-citizen-one-the-claim-path.md",
+      "blob_sha": "4e511144da71e3b3bb7398223c539d2cbdcf2284",
+      "size": 7645
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0842/IB-SMART-NOTE-20261023-sn0842-welcome-home-the-founding.md",
+      "blob_sha": "65e2df7f79afe7a11358364bfd0fea41f07c68aa",
+      "size": 4087
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0842/narzan-trinity-founding-portrait.md",
+      "blob_sha": "f2a9d8189f9e53ff5543a8156fc761946588be82",
+      "size": 1577
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0842/narzan-trinity-founding-portrait.png",
+      "blob_sha": "3db1a1f19fe4bb1f3d9d617662d0c9f3bc6dd7d4",
+      "size": 1999574
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/THE-NARZAN-TRINITY.png",
+      "blob_sha": "3db1a1f19fe4bb1f3d9d617662d0c9f3bc6dd7d4",
+      "size": 1999574
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/github-access/SN-0836/IB-SMART-NOTE-20261023-sn0836-the-github-app-door.md",
       "blob_sha": "a3da17b5a0c74da13d6951918f90d081fad36867",
       "size": 6391
@@ -4636,6 +4661,11 @@
       "size": 9756
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/project-intelligence/SN-0840/IB-SMART-NOTE-20261023-sn0840-the-master-build-order.md",
+      "blob_sha": "118639d657ffdc15dc196f21d4ba73299bb3aed5",
+      "size": 8639
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-0832/IB-SMART-NOTE-20261023-sn0832-how-to-file-a-smart-note.md",
       "blob_sha": "79a9d27ba62d7b4eaddda74807851a1ec14bb347",
       "size": 5169
@@ -4644,6 +4674,56 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/smart-notes/SN-1851/IB-SMART-NOTE-20261023-sn1851-the-door-adopted.md",
       "blob_sha": "987417e6ffbcdebbb61e323d6e167fa891a37f72",
       "size": 6209
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/standard/SN-0843/IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard.md",
+      "blob_sha": "03b8dd6930ed1a44e1895b691cdc923eea559ca7",
+      "size": 7081
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/access/SN-0847/IB-SMART-NOTE-20261024-sn0847-the-gift-and-the-power.md",
+      "blob_sha": "989529c8e09a0534e383379bacafd6e75a91605a",
+      "size": 7862
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/access/SN-0848/IB-SMART-NOTE-20261024-sn0848-the-line-distilled.md",
+      "blob_sha": "2ab80ae0df6397227a2d4261d4f9627ba008f91d",
+      "size": 7221
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/activation/SN-0846/IB-SMART-NOTE-20261024-sn0846-the-welcome-flow.md",
+      "blob_sha": "2f0c919a19d978afd1bf02878dea25c8bbacd3e9",
+      "size": 6137
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/activation/SN-0849/IB-SMART-NOTE-20261024-sn0849-the-official-welcome.md",
+      "blob_sha": "7c49e7ddea73bb91adb917cebd47d9c7a7521525",
+      "size": 7326
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/activation/SN-0852/IB-SMART-NOTE-20261024-sn0852-get-her-done-tonight.md",
+      "blob_sha": "fad2e3b43b3da08f0a6318c42e1bdbcb170f2e9d",
+      "size": 13056
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/architecture/SN-0850/IB-SMART-NOTE-20261024-sn0850-the-operating-contract.md",
+      "blob_sha": "31b26cae633d4cc2b2965ef11961dee357bbecbf",
+      "size": 7820
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/architecture/SN-0851/IB-SMART-NOTE-20261024-sn0851-two-paths-one-system.md",
+      "blob_sha": "7e646ad174e57225e049977a2632b99a29d257e8",
+      "size": 6454
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/matching/SN-0845/IB-SMART-NOTE-20261024-sn0845-smart-match.md",
+      "blob_sha": "1062f3b756748194d45884042e7a0538c683ba61",
+      "size": 6919
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/production/SN-0844/IB-SMART-NOTE-20261024-sn0844-the-production-engine.md",
+      "blob_sha": "915cc56c30c6d1465392d939c3512cc77eff54cc",
+      "size": 6892
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
@@ -7726,24 +7806,64 @@
       "size": 44783
     },
     {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-CITIZEN-TRINITY-BUILD-BRIEF-V1.md",
+      "blob_sha": "6e831263f6864ffb09c371174e2d038501e562d5",
+      "size": 3978
+    },
+    {
       "path": "BRAIN/90-OPERATIONS/2026-10-23-FOURTEEN-QUESTIONS-NAYA-POWER-EVENING-ADDENDUM-V1.md",
       "blob_sha": "fe2fc4008026da995caa885b34154c0fff6adccd",
       "size": 43524
     },
     {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-FOURTEEN-QUESTIONS-NAYA-POWER-V2-NIGHT-ADDENDUM.md",
+      "blob_sha": "9b7ddc61c8e39bb285bf74fb2fbe7a64db8fbdf8",
+      "size": 20148
+    },
+    {
       "path": "BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.ai.md",
-      "blob_sha": "83275e3b6416d135c042b5deac53259091bbcafb",
-      "size": 10743
+      "blob_sha": "1931a5be054f7b41e21e9136f1f2c19accd5e35f",
+      "size": 13567
     },
     {
       "path": "BRAIN/90-OPERATIONS/2026-10-23-MOST-INTELLIGENT-SYSTEM-ASSESSMENT-V1.human.md",
-      "blob_sha": "68fb5644d3f9bd08343194fdc4aee128b8ef0104",
-      "size": 24896
+      "blob_sha": "ecb9ed29253574acf143960d8fe949bea4a60861",
+      "size": 37614
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-NAYANET-FIRST-USER-DOOR-AUDIT.md",
+      "blob_sha": "96b1d2bb685047d295acf87cfd331677ca3c7843",
+      "size": 15190
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-NAYANET-FIRST-USER-DOOR-CENSUS.machine.json",
+      "blob_sha": "b133bb1d1cb2c955ff4ce431a3eac287dc64f1ef",
+      "size": 15895
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-PROJECT-INTELLIGENCE-CONTENT-FIRST-FILL-RECEIPT.md",
+      "blob_sha": "6f86f1eb033d2f2c4428fe84383c51b21f865b9e",
+      "size": 9395
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-PROJECT-INTELLIGENCE-TEAM-MASTER-BUILD-ORDER.md",
+      "blob_sha": "606c5e1f638f58a53258a842232adb664394f3ab",
+      "size": 40756
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-THE-TEN-TENS-REPORT-V1.md",
+      "blob_sha": "116ab5557fd95c6cce76c5328f6a56acc0352ed8",
+      "size": 19252
     },
     {
       "path": "BRAIN/90-OPERATIONS/2026-10-23-most-intelligent-system-assessment-v1.machine.json",
-      "blob_sha": "17cee7a713bd287a07695020fa3d9f48abb4091a",
-      "size": 12738
+      "blob_sha": "bf1b09de1e59f1860bb8e221acde27aae89bc297",
+      "size": 18107
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-23-project-intelligence-team-master-build-order.machine.json",
+      "blob_sha": "3968ffa0e9601a17152e925dc09596b7da1a3864",
+      "size": 16477
     },
     {
       "path": "BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md",
@@ -7777,8 +7897,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "58af3faed11acea6970ce357ce30d3f174b1230b",
-      "size": 5031
+      "blob_sha": "1a536cfa973dc14980cc0b28149a2ed084555d25",
+      "size": 5018
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8122,8 +8242,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "a7e7e10031474fa36c97fbca35c6eac51fad23a1",
-      "size": 19532
+      "blob_sha": "f815f364b6f955fa9d3e266103f05d0d7b59aa86",
+      "size": 19537
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
