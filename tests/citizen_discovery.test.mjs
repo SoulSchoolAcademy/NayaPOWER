@@ -124,6 +124,33 @@ test('mission vision and business enrich matches only with explicit field consen
   assert.ok(b.goals.includes('science'));
   assert.ok(b.offers.includes('coaching'));
 });
+test('topic classifier ignores nonpublic and nonconsented content',()=>{
+  assert.equal(C.classifyPublicItem({id:'x',visibility:'private',discoverable:true,public_description:'software teaching'}),null);
+  assert.equal(C.classifyPublicItem({id:'x',visibility:'public',discoverable:false,public_description:'software teaching'}),null);
+  assert.equal(C.classifyPublicItem({id:'x',visibility:'public',discoverable:true,opted_out:true,public_description:'software teaching'}),null);
+  const publicItem={id:'x',kind:'space',visibility:'public',discoverable:true,
+    public_title:'Software learning',secret_note:'PRIVATE MEDICAL HISTORY'};
+  const r=C.classifyPublicItem(publicItem);
+  assert.deepEqual(r.categories.map(x=>x.category),['learning','technology']);
+  assert.ok(!JSON.stringify(r).includes('MEDICAL'));
+  assert.equal(r.writes_performed,0);
+});
+test('organizer groups references without duplicating or moving objects',()=>{
+  const data=[
+    {id:'a',visibility:'public',discoverable:true,public_title:'Software design for community'},
+    {id:'a',visibility:'public',discoverable:true,public_title:'Software design for community'},
+    {id:'b',visibility:'public',discoverable:true,public_title:'Something unique'},
+    {id:'hidden',visibility:'private',discoverable:true,public_title:'Software learning'},
+  ];
+  const snapshot=JSON.stringify(data);
+  const result=C.organizePublicItems(data);
+  assert.equal(result.canonical_object_count,2);
+  assert.deepEqual(result.groups.technology,['a']);
+  assert.deepEqual(result.groups.community,['a']);
+  assert.deepEqual(result.groups.other,['b']);
+  assert.ok(!JSON.stringify(result).includes('hidden'));
+  assert.equal(JSON.stringify(data),snapshot);
+});
 test('AI prompt is explicitly for editable draft, no user data and no fake generation',()=>{
   assert.match(C.aiPrompt('vision'),/Do not invent information/);
   assert.match(C.aiPrompt('vision'),/copy and paste/);
