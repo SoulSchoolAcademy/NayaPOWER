@@ -51,7 +51,7 @@ test('all per-feature operations and independent verification remain deliberatel
 test('every page has three separate controls with correct public/private defaults',()=>{
   const p=catalog.page_settings_contract;
   assert.deepEqual(p.independent_controls,['visibility','discoverability','installation']);
-  assert.equal(p.defaults.personal,'private/unlisted/install-enabled');
+  assert.equal(p.defaults.personal,'private/findable/install-enabled');
   assert.equal(p.defaults.business,'public/findable/install-enabled');
   assert.equal(p.defaults.space,'public/findable/install-enabled');
   assert.equal(p.start_unpublished,true);
@@ -66,10 +66,25 @@ test('no page can claim public discovery and install work without server accepta
   }
   assert.throws(()=>validateCapabilityCatalog(change(c=>c.page_settings_contract.production_state='PRODUCTION_PROVEN')));
 });
-test('private findable can never become default public content',()=>{
-  assert.equal(catalog.page_settings_contract.private_findable_requires_separately_approved_teaser,true);
-  assert.equal(catalog.page_settings_contract.no_public_index_of_private_contents,true);
-  assert.throws(()=>validateCapabilityCatalog(change(c=>c.page_settings_contract.no_public_index_of_private_contents=false)));
+test('SN-0852 private findable is alias/topic Connect, never private content',()=>{
+ const p=catalog.page_settings_contract;
+ assert.equal(p.canonical_lesson_id,'SN-0852');
+ assert.equal(p.defaults.personal,'private/findable/install-enabled');
+ assert.equal(p.private_findable_requires_separately_approved_teaser,false);
+ assert.equal(p.private_findable_alias_topic_connect_allowed,true);
+ assert.equal(p.connect_and_page_content_are_separate_indexes,true);
+ assert.equal(p.no_public_index_of_private_contents,true);
+ assert.equal(p.real_identity_and_username_never_indexed,true);
+ assert.equal(p.per_page_world_circle_membership_isolated,true);
+ assert.equal(p.connect_and_share_and_reveal_are_separate_actions,true);
+ assert.throws(()=>validateCapabilityCatalog(change(c=>c.page_settings_contract.no_public_index_of_private_contents=false)));
+ assert.throws(()=>validateCapabilityCatalog(change(c=>c.page_settings_contract.real_identity_and_username_never_indexed=false)));
+});
+test('different public and private worlds never inherit each others community members',()=>{
+ const p=catalog.page_settings_contract;
+ assert.equal(p.per_page_world_circle_membership_isolated,true);
+ assert.equal(p.connect_and_share_and_reveal_are_separate_actions,true);
+ assert.throws(()=>validateCapabilityCatalog(change(c=>c.page_settings_contract.per_page_world_circle_membership_isolated=false)));
 });
 test('installable preference does not bypass real PWA deployment and privacy',()=>{
   assert.equal(catalog.page_settings_contract.all_installable_claim_requires_real_deployed_pwa_per_page,true);
