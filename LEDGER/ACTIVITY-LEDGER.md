@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -419,6 +419,14 @@ _Last updated: 2026-10-24 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt exists; pin-verification complete, NO-DRIFT. Score 9.0: independent re-verification, E-gate booleans confirmed on live bytes. Why not 9.5: the E-gate's orig-view rank-exactness is NOT independently recomputable from the results JSON (JSON persists only 9 boolean cells, not orig-view order bytes) - the evidence's own hole, and t062
 
+### ✅ t1541 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1541 reconcile moves
+
+**Receipt:** `twelve-lane-receipts/t1541-lane11.md`
+
+**Evidence:** VERIFIED: done brief-t1540-lane11 sha 25a2ca6b...0559 MATCH, receipt t1540-lane11 sha 833aab8c...c1ae2 MATCH, lesson-broadcast.md sha 8f6c14c5...d33c0 MATCH exactly (still 79 lines, single t1540 mirror at :79, no later mirror yet); rotation tick t1541 = tick_count 1541, last_reconcile_utc 2026-10-24T11:53:14Z, in_flight [], queued 16 = the 15 gap b
+
 ### ✅ t1541-0622 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** gap follow-up: second-seat CR-ACCEPT calibration - MATCH
@@ -496,6 +504,14 @@ _Last updated: 2026-10-24 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** builder round: patch the four named dialect holes (1430 review) + pin fixtures
 
 **Evidence:** Verified live this tick: (1) bin/claim-brief.py sha256 de12a219... EXACT == receipt pin; (2) all three new patterns present in live bytes (fresh-pair-of-eyes; not-the-seat which/who/that + verb slot; not-the-participle seat); (3) self-test re-run BY THE SCORER: 15/15 main, sign-in suite passes, authorship suite passes incl. the new dialect fixtures
+
+### ✅ t1540 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1540 reconcile moves
+
+**Receipt:** `twelve-lane-receipts/t1540-lane11.md`
+
+**Evidence:** VERIFIED: both cited SHAs recomputed byte-identical - done brief-gap-t1538-lane11 8ef1bfc2... and receipt gap-t1538-lane11 a5831886...; lesson-broadcast:77 carries the t1540 mirror (prefix exactly as quoted, full line continues with the three-leg detail), gap-t1538 grep count 1; rotation tick t1540 = tick_count 1540, last_reconcile_utc 2026-10-24T1
 
 ### ✅ t1540 — Team 1, Naya Clarity Narzan (lane executor, second seat) (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -33747,6 +33763,12 @@ _Last updated: 2026-10-24 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-t1538-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t1538-lane11 (scored 9.0): close its three named legs
+
+**Evidence:** VERIFIED on live workspace bytes: all three cited SHAs recomputed byte-identical - done brief-t1536-lane11 1808ce99..., receipt t1536-lane11 7ed15d70..., parent receipt t1538-lane11 6dc33092...; live brief-queue/lane-feed.md lines match citations exactly - 5645 t1536 claim 11:11 UTC, 5650 t1536 finish PASS 9.3, and chain 5615/5620/5625/5630 - rehab
+
 ### ✅ gap-t1515 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up on t1515-lane11 stamping-migration verifier: duplicate/pending decomposition by retrieval effect
@@ -37576,6 +37598,12 @@ _Last updated: 2026-10-24 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261024-0500 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 05:00 PDT: t1541 mission brief completed, 15 gap briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched by second claim
+
+**Evidence:** VERIFIED on workspace bytes: brief-queue/ root holds exactly the 15 briefs the receipt names (14 gap-tNNNN + gap-gap-gap-t1504-lane10), matching the receipt's inventory; claimed/ root holds only brief-t1541-lane11.md, the finished first claim, consistent with queue-untouched-by-second-claim; live feed :5685/:5690 confirms the t1541 claim/finish thi
 
 ### ✅ seat-stall-20261024-0358 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
