@@ -1,16 +1,34 @@
 # NayaNET and NayaPOWER: the honest product promise (V1 proposal)
 
-Canonical owner: [Issue #3028](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3028). Do not open a second product scope or Brain. Based on the Director's 26-page AutoMatch/Citizen Trinity discussion and existing SN-0843, SN-0845, SN-0846, #1264 fork-first activation and current Team Board #2793.
+Canonical product claim and acceptance owner: [Issue #3028](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3028). Architecture/agent-access annex: [Issue #3029](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3029). Treat these as distinct viewpoints over ONE capability contract, not separate competing source-of-truth product decisions. Do not open a third issue or Brain. Based on the Director's 26-page AutoMatch/Citizen Trinity discussion and existing SN-0843, SN-0845, SN-0846, #1264 fork-first activation and current Team Board #2793.
 
 **One sentence:** NayaNET gives every citizen a useful world to enter. NayaPOWER is an optional, owner-authorized personal intelligence operator that helps the world remember, learn, build and act.
 
-## Two experiences. Three deployment paths. Not automatically three paid tiers.
+## Two experiences. Three identities. Two optional operator deployments. Not three subscription tiers.
 
 1. **Citizen (no GitHub).** A meaningful starter Personal World, optional Business page, optional Space, intentionally public/collective wisdom, public-only discoverability and Smart Match, Connect and shared Mail **only once each specific service is proven secure and functioning**. Ordinary human interaction; private answers are private until explicitly shared. Starter-world pages are not demo-only: every page must be meaningfully usable without a fork. Unlimited additional pages, private visibility, messaging and proactive notifications require proven runtime limits/permissions.
 2. **NayaPOWER-connected operator.** Adds owner-scoped Smart Notes, learning, verified personal reports, permitted proactive operations, Smart App assistance and explicitly approved wisdom contributions. The operator must be activated and independently proven; a fork alone is not activation.
 3. **Two proposed ways to run the operator:** (A) a **managed Naya operator** on the centrally governed shared runtime, serving one authenticated owner/tenant at a time, with distinct Naya agent seats, short-lived LAW grants, pause/revoke and metering; no personal fork required; NOT VERIFIED LIVE. (B) an **owner-controlled GitHub fork** with the same LAW/ACT/network APIs plus owner-controlled code and correct private GitHub brain projection; activation and isolation are IMPLEMENTATION PARTIAL. Hosting choice != pricing tier, permission, or runtime proof.
 
 **Team Nayas do not each need GitHub forks to use shared NayaNET intelligence or serve a project.** They do need independently authenticated seat identity, a real human/organization authority principal, tenant-isolated session, allowed capabilities and an auditable receipt. Sharing a GitHub login does not produce independent verifiers. A team may share *compute*, never personal authority, secrets or unchecked private data.
+
+## Identities, experiences, deployments: three DIFFERENT axes
+
+**Identity/presence** says WHO: ordinary NayaNET citizen, a citizen who owns a connected personal operator, or a Naya agent seat. A Naya seat is an authenticated delegated principal and **never becomes the human owner** just by signing in. It need not fork GitHub to read allowed network intelligence or perform lawful work. Every session is attributed to its specific actor, owner/tenant and purpose; distinct verifier must be a distinct authenticated identity, not a second label on one shared login.
+
+**Product experience** says WHAT BENEFIT: free/ordinary citizen network value versus activated NayaPOWER personal intelligence and agency. A Naya agent's presence is NOT itself a third customer subscription tier. A citizen can remain on the useful network without ever activating an operator.
+
+**Runtime/ownership** says HOW software is operated: centrally managed governed NayaPOWER with per-owner/per-seat scopes (proposed, unproven), or a human/organization-controlled fork/deployment (implementation partial, not a default requirement). An independent builder/operator option exists for those who knowingly choose software operations and risks, not as a hidden citizen prerequisite. `fork != deployment != activation != verified authority`.
+
+**Doors, not brains:** Hub, MCP, REST/API, GitHub App, SDK, webhook, A2A are *proposed adapters* to the SAME canonical SELF/LAW/ACT/KNOW/PROVE/VERIFY system, not verified service endpoints. Each adapter must return consistent authentic principal, scope, decision, result and receipts for the same operation. A door never authorizes an operation merely because it is available, and no adapter receives a cloned brain or unrestricted direct database writes.
+
+**Welcome face, harmonized with SN-0849:** real claim → certificate → skippable one-question-per-screen walk in the existing Life with Naya/certificate design language with a playable Naya prompt and Speak/Type/Ask-AI-paste → per-field visibility and owner preview → idempotent authenticated Personal/optional Business/Space page composition → tasteful editable covers from consented topics/name, not invented facts → Hub top-three Personal/Business/Space in sidebar and smart tabs. When a section is skipped, it stays optional and editable; do not fabricate a business or publish a blank private page. The concrete Hub integration and A/B/C isolation are not yet verified.
+
+**User-intended unbounded creation versus production capacity:** the Director wants unlimited feeling and no artificial empty trial. That is the *offer goal*. Actual sustainable storage, security, abuse controls, quotas and verified operational capacity still determine what can safely be promised as "unlimited." Never market a numerical unlimited guarantee from a product ruling alone.
+
+**Mail status has two axes:** a citizen-to-citizen transport roundtrip is historical positive DELIVERY evidence; PRIVATE CONFIDENTIALITY, authenticated sender binding, owner/recipient RLS, block/revoke, unrelated C DENY and replay prevention have NOT passed. Marketing private or secure Mail is BLOCKED while those gates fail. Never lower the privacy bar to reconcile a positive transport report with a security audit.
+
+**Machine-status precision:** `SPECIFIED` describes that a requirement exists. `UNKNOWN` in each feature's live-delivery field means this draft manifest has not yet authenticated current production evidence. Per-feature `delivery_evidence_contract` fields are explicitly null/unmeasured pending independent receipts, not secretly proven absence or confirmation of a functional endpoint. The schema NEVER makes a LAW grant or allows production marketing by client callback.
 
 ## User journey
 
