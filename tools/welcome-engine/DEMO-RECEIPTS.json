@@ -1,0 +1,170 @@
+{
+ "note": "SYNTHETIC demo citizens \u2014 engine receipts, not real people. Generated 2026-10-24 by welcome_engine.activate().",
+ "maya-rivers": {
+  "alias": "maya-rivers",
+  "pages": {
+   "personal": {
+    "topics": "urban gardening, composting, teaching kids to grow food",
+    "values": "healthy neighborhoods, food people grow themselves",
+    "goal": "start a community garden on our block",
+    "vision": "every block grows its own food",
+    "mission": "make growing food normal again",
+    "motto": "Grow where you're planted.",
+    "what_i_do": "landscape designer",
+    "offers": "garden design, compost workshops"
+   },
+   "business": {
+    "description": "Rivers Greenworks, garden design for homes and schools",
+    "goal": "book 20 school gardens this year"
+   },
+   "space": {
+    "purpose": "Block Growers, neighbors growing food together"
+   },
+   "motto": "Grow where you're planted.",
+   "links": [
+    {
+     "url": "https://riversgreenworks.example.com",
+     "tracked": true
+    }
+   ]
+  },
+  "vector": {
+   "topics": [
+    "block growers",
+    "composting",
+    "garden design for homes",
+    "neighbors growing food together",
+    "rivers greenworks",
+    "schools",
+    "teaching kids to grow food",
+    "urban gardening"
+   ],
+   "goals": [
+    "book 20 school gardens this year",
+    "every block grows its own food",
+    "food people grow themselves",
+    "healthy neighborhoods",
+    "make growing food normal again",
+    "start a community garden on our block"
+   ],
+   "offers": [
+    "compost workshops",
+    "garden design",
+    "landscape designer"
+   ],
+   "needs": [
+    "a good photographer",
+    "accounting help"
+   ],
+   "wants": [
+    "local cafes",
+    "parents",
+    "school principals"
+   ]
+  },
+  "coverage": {
+   "fields": {
+    "personal.topics": "filled",
+    "personal.values": "filled",
+    "personal.goal": "filled",
+    "personal.vision": "filled",
+    "personal.mission": "filled",
+    "personal.motto": "filled",
+    "personal.what_i_do": "filled_thin",
+    "personal.offers": "filled",
+    "business.description": "filled",
+    "business.goal": "filled",
+    "space.purpose": "filled"
+   },
+   "thin": [
+    "personal.what_i_do"
+   ],
+   "filled_pct": 100,
+   "accounted_pct": 100
+  },
+  "ambassador_link": "https://nayanet.live/joinus?ref=maya-rivers",
+  "issue_link_sql": "insert into public.ambassador_links (alias, link_url) values ('maya-rivers', 'https://nayanet.live/joinus?ref=maya-rivers') on conflict (alias) do nothing;",
+  "first_matches": [
+   {
+    "name": "Green Thumbs Circle (space)",
+    "score": 35,
+    "rank": 35,
+    "signals": [
+     "topics",
+     "goals",
+     "offers_needs"
+    ],
+    "surface": true,
+    "parts": {
+     "topics": 0.42,
+     "goals": 0.33,
+     "offers_needs": 0.5,
+     "wants": 0.0
+    },
+    "reasons": [
+     "shared: composting, gardening, teaching",
+     "shared goals: food, grow",
+     "offer/need fit: garden design"
+    ]
+   }
+  ],
+  "corpus_excluded_unfindable": 0
+ },
+ "tom-okafor": {
+  "alias": "tom-okafor",
+  "pages": {
+   "personal": {
+    "topics": "chess, long walks",
+    "values": "Not yet shared",
+    "goal": "Not yet shared",
+    "vision": "Not yet shared",
+    "mission": "Not yet shared",
+    "motto": "Quiet moves win.",
+    "what_i_do": "Not yet shared",
+    "offers": "Not yet shared"
+   },
+   "business": {
+    "state": "not_started",
+    "note": "No business declared at the walk. This page wakes the day they start one."
+   },
+   "space": {
+    "purpose": "Not yet shared"
+   },
+   "motto": "Quiet moves win.",
+   "links": []
+  },
+  "vector": {
+   "topics": [
+    "chess",
+    "long walks"
+   ],
+   "goals": [],
+   "offers": [],
+   "needs": [],
+   "wants": [
+    "chess partners"
+   ]
+  },
+  "coverage": {
+   "fields": {
+    "personal.topics": "filled",
+    "personal.values": "missing",
+    "personal.goal": "missing",
+    "personal.vision": "missing",
+    "personal.mission": "missing",
+    "personal.motto": "filled",
+    "personal.what_i_do": "missing",
+    "personal.offers": "missing",
+    "space.purpose": "missing"
+   },
+   "thin": [],
+   "filled_pct": 22,
+   "accounted_pct": 22
+  },
+  "ambassador_link": "https://nayanet.live/joinus?ref=tom-okafor",
+  "issue_link_sql": "insert into public.ambassador_links (alias, link_url) values ('tom-okafor', 'https://nayanet.live/joinus?ref=tom-okafor') on conflict (alias) do nothing;",
+  "first_matches": [],
+  "corpus_excluded_unfindable": 0,
+  "match_note": "No surface matches yet \u2014 a match needs two independent signals. The corpus grows with every citizen; the matcher keeps watching."
+ }
+}
