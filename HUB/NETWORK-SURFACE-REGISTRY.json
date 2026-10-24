@@ -77,6 +77,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [],
@@ -125,6 +160,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -176,6 +246,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -227,6 +332,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -278,6 +418,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -330,6 +505,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -381,6 +591,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -432,6 +677,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -485,6 +765,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -536,6 +851,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -587,6 +937,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -638,6 +1023,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -688,6 +1108,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -738,6 +1193,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -788,6 +1278,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -838,6 +1363,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -888,6 +1448,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -938,6 +1533,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -988,6 +1618,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -1038,6 +1703,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -1089,6 +1789,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -1139,6 +1874,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -1190,6 +1960,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -1240,6 +2045,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -1290,6 +2130,41 @@
           "network_event_receipt": null,
           "outcome_value_measurement": null,
           "cost_latency_measurement": null
+        },
+        "north_star": {
+          "score_by_level": {
+            "individual": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "journey": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            },
+            "network": {
+              "human_experience": null,
+              "naya_operating_experience": null,
+              "execution_performance": null,
+              "network_intelligence": null,
+              "trust_governance": null,
+              "value_continuous_evolution": null
+            }
+          },
+          "evidence_by_level": {
+            "individual": [],
+            "journey": [],
+            "network": []
+          },
+          "cohorts_tested": [],
+          "scope_note": "Individual task, linked cross-room journey, and network value MUST each be independently checked. Unknown until real testing."
         }
       },
       "depends_on": [
@@ -1323,5 +2198,40 @@
       "Unmeasured or insufficiently evidenced = UNKNOWN; no averaging away a failing hard gate"
     ],
     "calibration": "10/10 is an evidence-backed acceptance against explicit tasks and known constraints, not a claim that future breakthroughs cannot improve the network."
+  },
+  "north_star_operating_standard": {
+    "authority_ref": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/standard/SN-0843/IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard.md",
+    "id": "NAYANET-10/10-OPERATING-STANDARD",
+    "six_dimensions": [
+      "human_experience",
+      "naya_operating_experience",
+      "execution_performance",
+      "network_intelligence",
+      "trust_governance",
+      "value_continuous_evolution"
+    ],
+    "three_levels": [
+      "individual",
+      "journey",
+      "network"
+    ],
+    "scorecard_relationship": "D1-D8 technical/visual criteria are supporting evidence only. The six North Star dimensions across all three levels evaluate real human and Naya value, execution and governance. They are non-substitutable.",
+    "rules": [
+      "Do not certify a standalone page whose linked journey or network context fails",
+      "Do not certify a network from passing standalone component scores",
+      "All six dimensions must meet the ratified acceptance threshold separately at all three levels",
+      "Unmeasured user cohorts and external acceptance are UNKNOWN, never inferred from numeric author input",
+      "Never average away failure of governance, trust, safety, consent or real outcomes"
+    ],
+    "seven_question_loop": [
+      "What is its intended human and Naya value?",
+      "What is its measured performance and experience today?",
+      "Why is it not a 10/10?",
+      "What is the highest-leverage improvement, including a possible 10× gain?",
+      "Can the improvement be implemented safely and reused elsewhere?",
+      "Has an independent reviewer verified the actual result?",
+      "Did the improvement measurably increase value, reduce waste, or improve experience?"
+    ],
+    "optimization": "maximize independently verified beneficial outcomes, trustworthy collective intelligence and 10-star experience per justified action, time and resource under nonnegotiable safety and authority constraints"
   }
 }
