@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 17:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 17:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -33867,6 +33867,14 @@ _Last updated: 2026-10-24 17:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-t1561 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t1561 (scored 9.3): name deeper root cause of gate-window defect with proof, demonstrate script-only alternative
+
+**Receipt:** `twelve-lane-receipts/gap-t1561-lane11.md`
+
+**Evidence:** VERIFIED on live bytes at scoring time: parent receipt SHA-256 dff2cc55cd72eed8e2a3ff7fbf2114c937d5450dcec09e21d84c233fe2b5ff30 MATCHES the gap receipt exactly; claimed brief SHA-256 88bec272876eff880a57042d4822b44a495f3007da8afd302b55845e1cb436ea MATCHES brief-queue/claimed/done/brief-gap-t1561-lane11.md exactly, absent from claimed/ root and from
+
 ### ✅ gap-gap-gap-t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap-gap follow-up on t1564: close the stricter 0-line claimed-brief standard for short briefs; script-only candidate evaluation proven
@@ -34552,6 +34560,14 @@ _Last updated: 2026-10-24 17:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-t982 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t982-lane10 (scored 9.0): close PR-side receipt gap (c) by verification
+
+**Receipt:** `twelve-lane-receipts/gap-t982-lane10.md`
+
+**Evidence:** VERIFIED on live bytes at scoring time: parent receipt SHA-256 fa7d17683ab1a01eee73a44637083335f1049cd1af570459900a2f2333bfb1fe MATCHES the gap receipt exactly; claimed brief SHA-256 f592ccb8d79f9f2e5b23bc32510fb472a0b1bfad206f4e487016796cd7d40bad MATCHES brief-queue/claimed/done/brief-gap-t982-lane10.md exactly, absent from claimed/ root and from 
 
 ### ✅ gap-gap-t1504 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -37758,6 +37774,12 @@ _Last updated: 2026-10-24 17:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261024-1023 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 10:23 PDT: 16 gap briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes: twelve-lane-rotation.json queued set == receipt's 16 brief names exactly, and brief-queue/*.md file set == same 16; new brief brief-gap-gap-gap-gap-t1564-lane11.md present, matching the claimed 15->16 stall delta vs the 09:19 seat-stall receipt. Score 9.0: solid, honest stall report with a correct next action (rout
 
 ### ✅ seat-stall-20261024-0919 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
