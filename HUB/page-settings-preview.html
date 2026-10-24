@@ -30,8 +30,8 @@ small{color:#aba4c1}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18p
 <p class="meta">Private is enforced by the server, not by hiding a button.</p>
 <fieldset><legend>Visibility</legend><label class="opt"><input type="radio" name="visibility" value="private"/> Private</label>
 <label class="opt"><input type="radio" name="visibility" value="public"/> Public</label></fieldset></div>
-<div class="row"><h2>Can people find this page?</h2>
-<p class="meta">Findable means eligible for listings and AutoMatch after permission checks. Unlisted public links are not secret.</p>
+<div class="row"><h2>Include your alias in NayaNET Connect?</h2>
+<p class="meta">Findable includes only your separately approved alias and topic tags in search and AutoMatch; it never reveals your private page, real name, username, posts or private members. Unlisted disables the Connect listing. Private links still need access permission.</p>
 <fieldset><legend>Discoverability</legend><label class="opt"><input type="radio" name="discoverability" value="unlisted"/> Unlisted</label>
 <label class="opt"><input type="radio" name="discoverability" value="findable"/> Findable</label></fieldset></div>
 <div class="row"><h2>Install as a Smart App?</h2><p class="meta">Installation requires a deployed app and browser support. Never place private content in public offline caches.</p>
@@ -40,7 +40,7 @@ small{color:#aba4c1}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18p
 <div id="impacts" role="status" aria-live="polite"></div>
 <div class="actions"><button id="copy">Copy proposed settings</button><button disabled aria-label="Production save unavailable until secure server integration">Save on NayaNET — not connected</button></div>
 <p id="status" role="status" aria-live="polite"></p>
-<small>Publishing is a separate, explicitly reviewed action. Changing a private page to public must not publish it automatically. Settings for different pages never overwrite one another.</small>
+<small>Publishing is a separate, explicitly reviewed action. Changing a private page to public must not publish it automatically. Each page has its own world and community: your public connections never gain access to your private world. Settings for different pages never overwrite one another.</small>
 </main>
 <script type="module">
 import {makePagePolicy,proposePageSettings,describePageSettings} from '../tools/product/nayanet-page-settings.mjs';
@@ -52,7 +52,7 @@ function render(){const x=policies.get(page.value),description=describePageSetti
  }
  impacts.replaceChildren();
  const p=document.createElement('p');
- p.textContent='Proposed: '+x.visibility+' · '+x.discoverability+' · install '+x.installation+'. Status: unpublished draft.';
+ p.textContent='Proposed: '+x.visibility+' content · '+(x.discoverability==='findable'?'alias/topic Connect eligible':'no Connect discovery')+' · install '+x.installation+'. Status: unpublished draft.';
  impacts.append(p);
  for(const warning of description.warnings){const e=document.createElement('p');e.className='meta';e.textContent=warning;impacts.append(e);}
  status.textContent='';
