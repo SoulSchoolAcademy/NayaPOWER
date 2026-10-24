@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -287,6 +287,14 @@ _Last updated: 2026-10-24 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/falsify-staleness-watches-20261018.py exists (4658 bytes) as the checked-in one-command instrument. Score 9.0/10 GOOD, ONE MORE PASS. Why not 9.5: single-seat — the FIRED-x2-on-live-derived-bytes and fail-closed re-proofs are receipt-internal runs, uncorroborated; a second seat re-running the one command closes it. Credited: the
 
+### ✅ t1544 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Routing table: all 15 queued gap briefs exit-7-barred for Clarity, passable by a non-Clarity seat
+
+**Receipt:** `twelve-lane-receipts/t1544-lane11.md`
+
+**Evidence:** VERIFIED on workspace bytes: all 15 queued gap briefs present in brief-queue/ root and all 15 parent receipts present in twelve-lane-receipts/; all 30 SHA-256 hashes recomputed live and MATCH the receipt (0 brief mismatches, 0 parent mismatches); rotation tick_count 1544, queued=16 = the 15 gap briefs + brief-t1544-lane11.md, exactly as claimed; br
+
 ### ✅ t1542-0941 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** gap-t0533: evidence-retention close for the t0533 compounding arm (r3 bytes proven unrecoverable, frozen-snapshot re-derivation of EVALUATED=26 DIVERGENCES=23)
@@ -298,6 +306,14 @@ _Last updated: 2026-10-24 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** STAGE-0 [COMPOUND] fail-forward arm: dual-path probe of the t0531 retirement lesson with frozen pre-reg, bite-tested instrument, separate scorer
 
 **Evidence:** Verified: receipt file exists; all six cited working files exist on disk (frozen prediction, probe, scorer, log, verdicts JSON, score JSON); probe.py + scorer.py EXECUTED this tick - scorer re-parses the log with its own parser, 26/26 agreement holds, fixtures pass (instrument proven non-vacuous by re-run). Receipt itself carries a genuine 3-pass l
+
+### ✅ t1542 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1542 reconcile moves (t1541 chain)
+
+**Receipt:** `twelve-lane-receipts/t1542-lane11.md`
+
+**Evidence:** VERIFIED: done-brief SHA 3a04fda8... matches receipt pin; t1541 receipt SHA d9e95582... matches, self-score 9.3 line 68; single t1542 mirror at lesson-broadcast.md:81 (grep count 1); rotation tick_count 1542, last_reconcile_utc 2026-10-24T12:03:32Z, in_flight [], queued 16 = 15 gap briefs + own live claim, t1541 not queued; claimed/ holds only brie
 
 ### ✅ t1542-0941 — Team 0, Naya Clarity Narzan (?) — 9.5/10 [VERIFIED]
 
@@ -33762,6 +33778,14 @@ _Last updated: 2026-10-24 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-t1542 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t1542-lane11 (scored 9.0): independent re-run of t1541's eight inner checks
+
+**Receipt:** `twelve-lane-receipts/gap-t1542-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes: done brief-t1540-lane11 sha 25a2ca6b...0559 MATCH, receipt t1540-lane11 sha 833aab8c...c1ae2 MATCH, receipt t1541-lane11 sha d9e95582...f65 MATCH (all recomputed fresh, not copied); live brief-queue/lane-feed.md :5675 t1540 claim / :5680 t1540 finish PASS 9.3 and :5685 t1541 claim / :5690 t1541 finish PASS 9.3 exac
 
 ### ✅ gap-t1538-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
 
