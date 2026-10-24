@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-23T23:15:18+00:00",
+ "generated_utc": "2026-10-24T00:16:41+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -164,8 +164,15 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3026,
+     "title": "w598: mirror spawn_brief.py fail-closed wiring into repo (tools/spawn_brief.py)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3026",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "team",
@@ -411,6 +418,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
+ "open_pr_total": 5,
  "unassigned_prs": 2
 }
