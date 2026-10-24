@@ -8,6 +8,46 @@ const feat=id=>catalog.features.find(x=>x.id===id);
 const change=fn=>{const c=structuredClone(catalog);fn(c);return c;};
 test('25 proposed benefits; no implicit live proof',()=>{assert.equal(validateCapabilityCatalog(catalog),true);assert.equal(catalog.features.length,25);});
 test('citizens may use a limited public-scope Naya guide without a fork when proven',()=>{const x=feat('public_naya_guide');assert.equal(x.offered_in.citizen,true);assert.ok(x.required_verified_gates.includes('rate_budget_limits_verified'));assert.equal(x.current_delivery,'UNKNOWN');});
+test('three identity presences do not create a third subscription tier',()=>{
+  assert.deepEqual(catalog.product_taxonomy.experiences,['nayanet_citizen','nayapower_connected']);
+  assert.deepEqual(catalog.product_taxonomy.operator_deployments,['shared_managed','owner_controlled_fork']);
+  assert.equal(catalog.product_taxonomy.operating_presences.naya_agent.human_owner,false);
+});
+test('Naya seat may join without fork but never inherits human authority',()=>{
+  assert.equal(catalog.product_taxonomy.operating_presences.naya_agent.needs_fork_to_join,false);
+  assert.equal(catalog.product_taxonomy.operating_presences.naya_agent.private_operator_grant,'requires_distinct_seat_identity_and_delegated_law_receipt');
+  assert.throws(()=>validateCapabilityCatalog(change(c=>c.product_taxonomy.operating_presences.naya_agent.human_owner=true)));
+});
+test('seven doors are planned, no running doors fabricated',()=>{
+  assert.equal(catalog.shared_door_contract.proposed_doors.length,7);
+  assert.ok(Object.values(catalog.shared_door_contract.runtime_proof_by_door).every(v=>v==='UNKNOWN'));
+  assert.throws(()=>validateCapabilityCatalog(change(c=>c.shared_door_contract.runtime_proof_by_door.mcp='PRODUCTION_PROVEN')));
+});
+test('certificate then skippable discovery then personal/business/space Hub is planned, not deployed',()=>{
+  assert.equal(catalog.welcome_world_contract.status,'SPECIFIED_NOT_LIVE_VERIFIED');
+  const xs=catalog.welcome_world_contract.ordered_journey;
+  assert.ok(xs.indexOf('certificate')<xs.indexOf('one_question_per_screen'));
+  assert.ok(xs.indexOf('one_question_per_screen')<xs.indexOf('hub_personal_business_space_top_three'));
+  assert.equal(catalog.welcome_world_contract.business_and_space_may_be_skipped,true);
+  assert.throws(()=>validateCapabilityCatalog(change(c=>c.welcome_world_contract.status='LIVE_VERIFIED')));
+});
+test('unbounded creation is desired, not falsely certified unlimited server capacity',()=>{
+  assert.equal(catalog.operational_truth_policy.intended_unbounded_creation,true);
+  assert.equal(catalog.operational_truth_policy.unlimited_capacity_production_verified,false);
+  assert.throws(()=>validateCapabilityCatalog(change(c=>c.operational_truth_policy.unlimited_capacity_production_verified=true)));
+});
+test('mail transport evidence never certifies private mail security',()=>{
+  assert.equal(catalog.operational_truth_policy.mail_transport_is_not_mail_confidentiality,true);
+  assert.equal(catalog.operational_truth_policy.production_mail_privacy_status,'BLOCKED_PENDING_AUTHENTICATED_ISOLATION');
+  assert.throws(()=>validateCapabilityCatalog(change(c=>c.operational_truth_policy.mail_transport_is_not_mail_confidentiality=false)));
+});
+test('all per-feature operations and independent verification remain deliberately unproven',()=>{
+  assert.equal(catalog.features.length,25);
+  catalog.features.forEach(f=>{assert.equal(f.delivery_evidence_contract.source_of_truth,null);
+    assert.equal(f.delivery_evidence_contract.verified_at,null);
+    assert.equal(f.delivery_evidence_contract.cost_profile,'UNMEASURED');});
+  assert.throws(()=>validateCapabilityCatalog(change(c=>c.features[0].delivery_evidence_contract.verified_at='2026-10-24')));
+});
 test('citizens never require GitHub',()=>assert.equal(catalog.audiences.citizen.requires_github,false));
 test('managed operator has no fork but is not deployed',()=>{assert.equal(catalog.audiences.managed_operator.requires_github,false);assert.equal(catalog.audiences.managed_operator.production_state,'NOT_VERIFIED');});
 test('fork path is implementation partial',()=>assert.equal(catalog.audiences.owner_fork.production_state,'IMPLEMENTATION_PARTIAL'));
