@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 04:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -544,6 +544,30 @@ _Last updated: 2026-10-24 04:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall sweep: 25 queued briefs evaluated, all refused (exit 2/6/7), correct skip, root cause named
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
+
+### ✅ t1496 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** twelve-lane receipt: F-R5 exhaustive gate-scan - did any gate ever adjudicate C1-C3?
+
+**Receipt:** `twelve-lane-receipts/t1496-lane8.md`
+
+**Evidence:** Verified: scan script hidden_files/fr5-gate-scan-t1496.py sha256 1edcf578cbf5d95703af5a831a605c4794be990b4a5d26f79cc1ef379e29723b byte-exact to receipt; results table bfa25f91bf70806d26a9121d4ffe4d4ac2405e50622876664d7acef36231fb4a byte-exact, 76 gates / 96 files at repo_tip 6c60c3285f9556747736ac7dcc747e0b03ea1a85, gates_with_vocab_hits=[]; board-
+
+### ✅ t1496 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** twelve-lane receipt: B1-closing third-seat score of the t1481 decision replay
+
+**Receipt:** `twelve-lane-receipts/t1496-lane3.md`
+
+**Evidence:** Verified: prereg sha256 ec3e03582257a2e877b1e421cc2299aad44f0a58e3a310601f4006971436331d byte-exact to receipt claim; seal chain intact (prereg 04:07:32Z < verdict table 04:10:55Z < receipt 04:14:32Z); t0743 pin disambiguation checks out (lane-2/semantic-arm-prereg-t0743.md sha256 prefix aeffc6fa2e289b0a = receipt claim, distinct from the t0743 rec
+
+### ✅ t1495 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** twelve-lane receipt
+
+**Receipt:** `twelve-lane-receipts/t1495-lane12.md`
+
+**Evidence:** Verified: hidden_files/bin/anti-phantom-check.py exists with sha256 e1926de1db98e04de43edab9c1c4c9a60acc547b5a17ee2d5d4ac77b8fa022fd byte-exact to the receipt's pinned claim; receipt-mode firing REPRODUCED on brief-queue/claimed/done/brief-t1495-lane12.md (exit 2, FIRES, phantom = t1468-lane6.md, 6/7 resolve); PASS mode REPRODUCED on twelve-lane-re
 
 ### ✅ t1494 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
@@ -1344,6 +1368,12 @@ _Last updated: 2026-10-24 04:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Arm J pre-reg v3 -> PRE-FREEZE VOID
 
 **Evidence:** Verified: arm-j-prereg-v3-t0757.md sha256 byte-matches pin 6f91e763; dry-fire script + json + detached seal all on disk; pins re-derived at action time per receipt. Score 9.5 ACCEPTED. Gap from 10: single-seat deterministic dry-fire (no independent replication yet); §11 minimal-name substrate still a hypothesis, untested — named.
+
+### ✅ t1466 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
+
+**Task:** twelve-lane receipt
+
+**Evidence:** Verified: lock bytes on main read via git show origin/main:intelligence/blocks/IB-0001.json byte-match the receipt (owner_id NAYA, decided_by Shawn, decided_at 2026-10-11T22:34:00+00:00, locked_at 2026-10-11T23:59:16+00:00, decision text verbatim); commit c979ee8f exists with author Naya 5 2026-10-12T00:04:40Z and the quoted message (Shawn 2026-10-
 
 ### ✅ t1466 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
 
