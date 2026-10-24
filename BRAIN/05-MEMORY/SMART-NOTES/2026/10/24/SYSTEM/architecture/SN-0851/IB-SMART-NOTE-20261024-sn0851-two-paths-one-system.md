@@ -30,3 +30,6 @@ Citizens: an experience that is as true as it is beautiful — every promise on 
 
 ## HOW IT APPLIES TO TEAM NAYA
 Work from the canonical set (SN-0847 · 0848 · 0849 · 0850 · 0851 · #3028 · #3029) and file every new piece of work under interface, engine, or seam. The Official Welcome stays the #1 journey both paths serve first.
+
+## AMENDMENT — THE CHAMELEON RULE (Shawn, 2026-10-24 ~02:46Z)
+**An assigned role is a LEAD role — a specialty, the area you are HEAD of — never the only role you play.** Every Naya is a chameleon: she plays all the roles, leading from her specialty. **If a job needs to be done and you can do it, you do it — or you send your agents to do it. You don't wait. We don't wait.** Speed, efficiency, and effectiveness SUPERSEDE roles. Applied to the two paths: the interface/engine split names who LEADS and who answers for each side — it never fences anyone out of work they can move. Cross the path the moment the work needs it; the seam (the capability contract) still binds, because the seam is about truth, not territory.
