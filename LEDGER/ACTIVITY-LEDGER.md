@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -286,6 +286,14 @@ _Last updated: 2026-10-24 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-gap-20261017-1600-lane6.md: staleness-watch falsifier — both FIRED branches proven, one-command instrument
 
 **Evidence:** Verified: retrieval/falsify-staleness-watches-20261018.py exists (4658 bytes) as the checked-in one-command instrument. Score 9.0/10 GOOD, ONE MORE PASS. Why not 9.5: single-seat — the FIRED-x2-on-live-derived-bytes and fail-closed re-proofs are receipt-internal runs, uncorroborated; a second seat re-running the one command closes it. Credited: the
+
+### ✅ t1547 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
+
+**Task:** Independent verification of night-dispatcher t1547 reconcile moves (distill brief done move, t1547 mirror, claimed-root liveness, rotation queued/tick, stale-phantom sweep)
+
+**Receipt:** `twelve-lane-receipts/t1547-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes: distill done brief brief-queue/claimed/done/brief-distill-daily-20261024.md present, sha16 be660bcf564338d5 MATCH, absent from claimed/ root; lesson-broadcast.md line 89 carries the t1547 mirror verbatim (9.2, main tip 95719c4e, branch f8d3ed48 -> accf8f30, reconciled 24 lines SHA 0701362a, additive diff, landing N
 
 ### ✅ t1544 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -33779,6 +33787,14 @@ _Last updated: 2026-10-24 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-t1544 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t1544-lane11 (scored 9.0): close legs (a) and (c), prove leg (b) closable only by a non-Clarity countersign
+
+**Receipt:** `twelve-lane-receipts/gap-t1544-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes: 15/15 queued gap-brief SHA-256 hashes recomputed fresh and MATCH the receipt exactly (zero drift since t1544); parent receipt t1544-lane11.md sha d7fa5901...ef5 MATCH; claimed brief brief-queue/claimed/brief-gap-t1544-lane11.md sha 6060654a...090 MATCH; rotation tick_count 1545, last_reconcile_utc 2026-10-24T12:33Z
+
 ### ✅ gap-t1542 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
 
 **Task:** Gap follow-up on parent t1542-lane11 (scored 9.0): independent re-run of t1541's eight inner checks
@@ -37622,6 +37638,12 @@ _Last updated: 2026-10-24 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261024 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** Daily distill 2026-10-24: reconcile main vs branch CURRENT-MISSION-STATE into one no-loss file
+
+**Evidence:** VERIFIED on live workspace bytes + git protocol: bundle hidden_files/distill-daily-20261024/ holds all 6 cited artifacts; SHA-256 recomputed fresh and MATCH the receipt exactly for all three files (main 65382e118aebed72502651e626643766406e5f665d1146c3dff27ce30665bef2, branch f0753056d0d9871b3600c3afc9b5ac504ac052fc03545aa0d0a3912577e3c5b2, reconcil
 
 ### ✅ seat-stall-20261024-0500 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
