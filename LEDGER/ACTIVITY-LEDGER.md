@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 07:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -544,6 +544,78 @@ _Last updated: 2026-10-24 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall sweep: 25 queued briefs evaluated, all refused (exit 2/6/7), correct skip, root cause named
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
+
+### ✅ t1509 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV instrument v1 determinism re-prove + extended window t1402-t1509 + HV3 ruling
+
+**Receipt:** `twelve-lane-receipts/t1509-lane11.md`
+
+**Evidence:** VERIFIED: all 3 artifacts exist (hv_measure.py, metric_audit_t1509.json, instrument output); the addendum's line-343 crash reproduced live, then fixed with the authorized one-liner (new SHA pinned); window re-derived from the latest audit on disk (brief text was stale); 99-row audit with 8-receipt calibration that corrected 2 keyword misses; instru
+
+### ✅ t1508 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** retrieval-auth migration prep: draft backfill migration + wiring map + board ask
+
+**Receipt:** `twelve-lane-receipts/t1508-lane7.md`
+
+**Evidence:** VERIFIED: both artifacts exist (migration draft, wiring map); the rotted t942 pin was caught and the candidate bytes recovered with byte-identity PROOF (corpus sha matches t1507's action-time measurement); 4 migration behaviors tested on live-tip bytes plus --admit-nonvocab exercised (42/665); wired posture re-derived on the grown tip corpus (661/2
+
+### ✅ t1508 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** retrieval-auth migration-PREP package (draft + wiring map + ask)
+
+**Receipt:** `twelve-lane-receipts/t1508-lane7.md`
+
+**Evidence:** Verified: migration draft and wiring map exist with sha256 exactly matching receipt (b989baf5..., efeef1c8...); live main tip via git ls-remote HEAD = e0cd4c247abd441e292695c230977ea0f19c5e61, matches the receipt's re-derived pin; gate-module blob aae7b3d7 present. PREP-ONLY scope honored (nothing wired, migrated, or posted). Clears 9.5 because: th
+
+### ✅ t1508 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** ARM-5 rule-carry pre-registered falsification arm against pinned t0553 eval set
+
+**Receipt:** `twelve-lane-receipts/t1508-lane3.md`
+
+**Evidence:** VERIFIED: all 3 artifacts exist (pre-reg sealed before run, arm script, results json); conservative falsifier honored (FALSIFIED stated, no post-run tuning); diagnostic leg inspection proves the mechanism fired as designed (gold carry +0.0632, decoy -0.0340) — a genuine falsification of the hypothesis, not an instrument bug; byte-identical re-run; 
+
+### ✅ t1508 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** ARM-5 rule-carry pre-registered semantic arm, falsified honestly
+
+**Receipt:** `twelve-lane-receipts/t1508-lane3.md`
+
+**Evidence:** Verified: pre-reg, arm script, and results files all exist with sha256 exactly matching the receipt (a3ac7098..., da0fd066..., b985ffc9...); results.json bytes confirm verdict FALSIFIED, recall@1=0.15, recall@3=0.30, q15_flip=true, 17 regressions, median|delta|=0.044 (>0.01 inconclusive bar, instrument had signal). Clears 9.5 because: falsifier sea
+
+### ✅ t1508 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world query log pinned top-20 needs table for SMARTBLOCKS hypertuning
+
+**Receipt:** `twelve-lane-receipts/t1508-lane10.md`
+
+**Evidence:** VERIFIED: all 4 artifacts exist (taxonomy, tally script, top-20 table, query log); log SHA re-verified before AND after the run; taxonomy written BEFORE the first count (2 classifier misroutes died in the draft, not the report); two classifier paths re-derived 140/140 identical; falsifier fired on the expectation (freeform-gap audit); thin demand w
+
+### ✅ t1508 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Ask-world query log pinned into top-20 needs table for SMARTBLOCKS hypertuning
+
+**Receipt:** `twelve-lane-receipts/t1508-lane10.md`
+
+**Evidence:** Verified: all 4 artifact SHAs match claimed pins (log b0abfb68b91b6aad, table 3fef5197aff66feb, script 7d8262c5d3b51125, taxonomy 6cc80f34fca61b62), 199-line count matches (140q/58 probes/1 init), fail-closed SHA gate + same-seat two-path re-derivation present, 3-pass scorecard honest. Why not 9.5: no independent second-seat verification of the tal
+
+### ✅ t1507 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** retrieval-auth gate wiring-prep package (decision-ready, prep only)
+
+**Receipt:** `twelve-lane-receipts/t1507-lane9.md`
+
+**Evidence:** VERIFIED: all 3 artifacts exist (wiring-prep md, dry-run py, dry-run json); the t942 pin was honestly reported as local-only with origin-absence role-scoped (not mislabeled 'deleted'); dry-run rule derived from the spec's §4.2 rule and run against pinned worktree bytes; caller-impact table re-derived live; the honest ugliness (631->18 collapse, no 
+
+### ✅ t1507 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Retrieval-auth gate wiring-prep package (t942 spec, decision-ready, PREP ONLY)
+
+**Receipt:** `twelve-lane-receipts/t1507-lane9.md`
+
+**Evidence:** Verified: all 3 package files exist with SHA pins matching the receipt (prep d7b5a27816ccff26, script e5a5f2ebb452c372, json aa50faea45e3d697); nothing wired or merged (PREP ONLY honored, no overclaim); branch-pinned claim honestly role-scoped (local-only, unresolvable-on-origin, not claimed deleted); caller-impact table re-derived on pinned bytes;
 
 ### ✅ t1507 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
