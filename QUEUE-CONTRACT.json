@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-24T02:24:23Z",
-  "tip": "f808e595ed502ad747e10d255398b70167442046",
+  "generated_at": "2026-10-24T03:24:25Z",
+  "tip": "782cbe2c130476688de069045e6ac0433f8b1403",
   "prs": [
     {
       "number": 2968,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "60dc94687f06e21ba7319c8a30525be32cbd94d3"
+      "head": "72d25f6d637c699413b5569d40681a1e833e9664"
     },
     {
       "number": 3000,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "64a1c240bee657eb3fe0e4f8c7659c5791698828"
+      "head": "0fd04d96bf1e5de2e3dd5da5721e571c3140508c"
     },
     {
       "number": 3025,
@@ -38,6 +38,15 @@
       "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "8ef9a754e2067d6d609888a15cedb57b9b44b402"
+    },
+    {
+      "number": 3031,
+      "title": "feat(product): prove NayaNET citizen vs managed Naya vs owner-fork promises",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "22ad0d647fda8899c38344ab3274b32c1586ed3b"
     }
   ]
 }
