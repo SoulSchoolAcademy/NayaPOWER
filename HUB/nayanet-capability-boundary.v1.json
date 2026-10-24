@@ -104,7 +104,9 @@
       "required_verified_gates": [
         "verified_identity",
         "owner_binding",
-        "profile_write_authorized"
+        "profile_write_authorized",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
       ],
       "current_delivery": "UNKNOWN",
       "live_evidence": [],
@@ -140,7 +142,9 @@
       "required_verified_gates": [
         "verified_identity",
         "owner_binding",
-        "profile_write_authorized"
+        "profile_write_authorized",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
       ],
       "current_delivery": "UNKNOWN",
       "live_evidence": [],
@@ -176,7 +180,9 @@
       "required_verified_gates": [
         "verified_identity",
         "owner_binding",
-        "space_membership_authorized"
+        "space_membership_authorized",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
       ],
       "current_delivery": "UNKNOWN",
       "live_evidence": [],
@@ -498,7 +504,9 @@
       "required_verified_gates": [
         "verified_identity",
         "owner_binding",
-        "server_visibility_rls_verified"
+        "server_visibility_rls_verified",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
       ],
       "current_delivery": "UNKNOWN",
       "live_evidence": [],
@@ -534,7 +542,10 @@
       "required_verified_gates": [
         "verified_identity",
         "owner_binding",
-        "capacity_limits_verified"
+        "capacity_limits_verified",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified",
+        "per_page_pwa_installability_tested"
       ],
       "current_delivery": "UNKNOWN",
       "live_evidence": [],
@@ -792,7 +803,9 @@
       "required_verified_gates": [
         "owner_binding",
         "operator_authorized",
-        "builder_functional_verified"
+        "builder_functional_verified",
+        "per_page_settings_owner_scope_verified",
+        "per_page_visibility_and_discovery_server_verified"
       ],
       "current_delivery": "UNKNOWN",
       "live_evidence": [],
@@ -1057,5 +1070,31 @@
     "mail_transport_is_not_mail_confidentiality": true,
     "production_mail_privacy_status": "BLOCKED_PENDING_AUTHENTICATED_ISOLATION",
     "source_note": "Historical no-fork message round-trip is a delivery-positive test only; test independent owner confidentiality, C/anon denial and revocation"
+  },
+  "page_settings_contract": {
+    "canonical_file": "HUB/nayanet-page-settings.v1.json",
+    "reusable_intent_engine": "tools/product/nayanet-page-settings.mjs",
+    "settings_room_preview": "HUB/page-settings-preview.html",
+    "scope": "Every owned Personal, Business, Space, generated Smart App and other Smart Page independently, with no mandatory fork",
+    "independent_controls": [
+      "visibility",
+      "discoverability",
+      "installation"
+    ],
+    "start_unpublished": true,
+    "defaults": {
+      "personal": "private/unlisted/install-enabled",
+      "business": "public/findable/install-enabled",
+      "space": "public/findable/install-enabled",
+      "other": "private/unlisted/install-enabled"
+    },
+    "multiple_pages_per_category": true,
+    "production_state": "SPECIFIED_PROTOTYPED__SERVER_NOT_VERIFIED",
+    "requires_server_side_authorization": true,
+    "no_public_index_of_private_contents": true,
+    "private_findable_requires_separately_approved_teaser": true,
+    "all_installable_claim_requires_real_deployed_pwa_per_page": true,
+    "no_auto_publish_on_visibility_toggle": true,
+    "no_auto_connect_or_space_join_on_discoverability": true
   }
 }
