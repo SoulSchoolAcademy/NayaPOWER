@@ -1,20 +1,41 @@
-> **Last verified:** 2026-10-24 06:08 PDT (2026-10-24T13:08Z) by director pass | **TIP STEADY** `95719c4e` (ls-remote byte-match — zero merges, zero pushes since 11:02:58Z) | merge-receipt watch: **NOT RUN** (tip stable; breach log **60** unchanged) | board **#2793: 2,095 comments** (**+4 this tick** - watermark 6384504610; 2,095 < 2,300 - **NO MIGRATION**; newest-4 all live-board traffic) | naya2_to_builder: **0 appended** - cap 20 holds | ledger: sync pending (hash changed since 12:39Z push) | master-directive: pending (step 9) | zero 403s
+# CURRENT MISSION STATE — Team Naya
+Last verified: 2026-10-24 07:09 PDT (2026-10-24T14:09Z) — director pass, live bytes.
 
-| Area | Accomplished | Working on | Plan |
-| SELF | Tip STEADY 95719c4e (zero merges, zero pushes); board 2,095 (+4, watermark 6384504610); naya2_to_builder 0 appended — cap 20 holds; snapshot refresh | memory log; board-cap watch (2,095/2,500); breach log 60 unchanged | — |
-| LAW | (carry) ratification verdict stands: seatless-but-complete 3-pass receipt = CLEAN, not breach; prototype seat element → advisory | RULESET-GOVERNANCE-GAP open (ruleset 23853581); repair packet ready for the admin tap | — |
-| ACT | (carry) truth-file divergence repaired; #2599 re-pinned | #3000 disposition owed; #2981 disposition owed; #2968 (his hand); drain at <=5 | — |
-| KNOW | (carry) PR #3037 (SN-0842 vanish cure) independently verified 9.5/10 at exact head 7dc4c4b6 (VERIFY 6382855948); PR #3036 (SN-1854 cure) verified 9.5 at f88edf88 | #3037 + #3036 merge dispositions → merge lane; page edit + index re-stamp in the same commit | — |
-| PROVE | (carry) merge receipt watch correctly NOT run (tip stable on merges); prevention machinery still missing — watch detects, nothing blocks | claim→fact machinery; receipts at head, not at PR | — |
-| CONNECT | (carry) bridge/schema drift BLOCKER (v17 LOOKUP_FAILED) | sync source learns new home | — |
-| VERIFY | WIRE 11:30Z sign-out 6383666054: at tip 95719c4e the test red CHANGED — node LATENCY failure (naya_search.test.mjs:206, 122.75ms vs <100ms; passed 43.37ms at parent e0cd4c24; code under test byte-unchanged per WIRE) masked the pytest suite; PR #3036/#3037 still OPEN, dispositions → merge lane | #3037 + #3036 merge dispositions → merge lane; head test-failure enumeration closes the 10 | — |
-| LEARN | (carry) L657 [F1]: rendered review contradicting byte-verified served bytes must exclude reviewer's own cache first | L658 [F6]: seatless-but-complete 3-pass receipt = PASS-SUBSTANTIVE-ONLY | convergence 10/10 awaits his confirmation |
-| EVOLVE | — | — | — |
+## Headline
+- Main tip STEADY: `95719c4e` (95719c4efaf5f426834f519458942e220b6cedb5) — zero merges, zero pushes since 11:02:58Z.
+- Live board #2793: 2,099 / 2,500 comments (+4 this tick, all meta traffic) — NO migration trigger.
+- REST quota: 4,624 / 5,000 remaining at tick start. Zero 403s.
 
-> **KEY NUMBERS (director pass, verified this tick):** main tip `95719c4efaf5f426834f519458942e220b6cedb5` (**STEADY** — zero merges, zero pushes) | merge watch: **NOT RUN** (breach log **60** unchanged) | 0 direct pushes this tick | board **#2793** (2,095 comments, +4 this tick; watermark 6384504610; no migration) | naya2_to_builder 20/20 (0 appended — cap holds) | ledger: sync pending (hash changed) | zero 403s
+## Ranked priorities (standing order)
+1. LEARNING — loop live; this hour no new L-number, repeats L648/L624/L640/L643/L649 stand.
+2. SMART NOTE FLOW — path unchanged.
+3. SENDER / 4. RECEIVER / 5. COMPILER / 6. EMIT / 7. DECISION ENGINE / 8. SCORECARD / 9. TESTING / 10. OPTIMIZE GITHUB.
 
-## WHERE TO GO
-- **Before you begin:** `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (§10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts) on **main** (PR #2533 merged 2026-10-13 — draft-branch link retired)
-- **Operating manual (v2 ULTIMATE, canonical board post):** https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in `BRAIN/90-OPERATIONS/`, then link the repo path)
-- **Master directive (canonical):** https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601
-- **Live board:** https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793
+## Standing TOP-10 (living list — re-ranked this tick)
+- Ten highest-leverage holes: (1) verified cures unlanded — see Blocked; (2) receipt-breach debt 60 (unchanged, tip stable); (3) merge-gate ruleset gap (owner: merge-gate owner); (4) hub-sync unit down; (5) door-obligation gate-tool bug; (6) test red attribution at new tip (pytest unexercised — latency, not suite failure); (7) two long-stalled PRs churning heads with no disposition; (8) queue growth (+3 this window); (9) master-directive hand-edit pending lead reconciliation; (10) snapshot withheld last tick (this tick rebuilt fresh).
+- Ten highest-value next actions: land #3036; land #3037; disposition the two stalled PRs; re-prove retrieval after #3036 lands; re-prove vanish guard after #3037 lands; close the gate-tool bug; settle the ruleset gap; restart hub-sync only on his word; reconcile the master-directive hand-edit; keep the board under 2,300.
+- Ten biggest upgrades / ten current blockers: carried in the live plan (hidden_files/live-plan.md) — dispositions unchanged this tick.
+
+## Done — with proof
+- Director tick 07:08 PDT: tip byte-match via git ls-remote (zero REST quota); board 2,095 → 2,099, zero gaps, watermark 6385127895.
+- Shared-state compacted: 50,513 bytes (< 200KB bar).
+
+## Blocked — with owner
+- PR #3036 (SN-1854 page-hash cure) — independently verified 9.5/10 at exact head `f88edf88`, NOT landed. Owner: merge lane.
+- PR #3037 (SN-0842 vanish cure) — independently verified 9.5/10 at exact head `7dc4c4b6`, NOT landed. Owner: merge lane.
+- Master directive: HAND_EDIT_DETECTED persists — lead reconciles; no PATCH made.
+- hub-sync systemd unit DOWN — no auto-reinstall; production sync route needs his word.
+
+## Key numbers
+- Main tip: 95719c4e. Live board #2793: 2,099 comments. REST quota remaining: 4,624/5,000.
+- Open PR count: not fetched this tick (never an extra call just for this).
+
+## Team status (SELF / LAW / ACT / KNOW / PROVE / CONNECT / VERIFY / LEARN / EVOLVE)
+- LEARN: learning event posted, no new L-number; repeats stand. VERIFY: both cures already verified 9.5/10, awaiting landing.
+- All other areas: — (no new signal this tick; meta-only board traffic, nothing invented).
+
+## Where to go
+- Activation guide (read first, every wake): `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (§10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts).
+- Operating manual v2 ULTIMATE: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in `BRAIN/90-OPERATIONS/`, then the repo path).
+- Live board (conversation): https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793
+- Live plan: `hidden_files/live-plan.md` in the goal workspace; shared state: `hidden_files/shared-state.json`.
