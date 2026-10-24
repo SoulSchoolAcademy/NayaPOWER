@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 07:21 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -544,6 +544,54 @@ _Last updated: 2026-10-24 07:21 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall sweep: 25 queued briefs evaluated, all refused (exit 2/6/7), correct skip, root cause named
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
+
+### ✅ t1515 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** stamping-migration dry-run verifier (design + verification only)
+
+**Receipt:** `twelve-lane-receipts/t1515-lane11.md`
+
+**Evidence:** Artifacts verified: script sha cfb662e8..., preview sha b618a698..., report sha 687563c9..., corpus sha 238ebe9c... — all independently recomputed by this scorer (match); preview JSON structure re-read: 688 preview rows, 16 pending_decision_ids, 19 duplicate_ids, 0 unresolvable, mirror_tip 6c60c328 matching the t1499 plan pin; script opens the corp
+
+### ✅ t1514 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** SN-1776 adoption evidence manifest for 6 UNWIRED-ADVISORY v1 shelf blocks
+
+**Receipt:** `twelve-lane-receipts/t1514-lane7.md`
+
+**Evidence:** Artifacts verified: manifest sha 53bc0a07..., checklist sha 1e38af65..., instrument ask-world.py sha 2139f493... — all three independently recomputed by this scorer (match); checklist SN-1776 section points at the manifest (line 40); manifest carries all 6 blocks with check + negatives + enforcer + invoked_by + firing_log; instrument lane branch li
+
+### ✅ t1512 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** hypertuning-input reconciled spec (RECONCILE-AGAINST-V2, CANDIDATE)
+
+**Receipt:** `twelve-lane-receipts/t1512-lane9.md`
+
+**Evidence:** VERIFIED: spec file exists at claimed sha256 705e6d06f133dd8961194ca7f1bc31d27cb3e2b54b60ba85aa97a609deedcd47; log auto-retrieval/ask-world-queries.jsonl re-hashed by scorer: sha256 b0abfb68b91b6aad68746587990e6826db884113185c715199a626fecbff6397 byte-matches the receipt's pin, 199 lines as claimed - the log-has-not-moved claim is independently pro
+
+### ✅ t1512 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** stamping-migration plan v2 (design-only, 4 t0638 corrections)
+
+**Receipt:** `twelve-lane-receipts/t1512-lane4.md`
+
+**Evidence:** VERIFIED: plan file exists at claimed sha256 51843865ea8139e5af710fbf947ef92539528f5086e4fe8fe2a9aeed9f9d8034 (361 lines; receipt said 356 - minor count drift); corrections present (W1b x11 refs, INDEX_CORRUPT:MANIFEST_STALE, 688-entry census PRIVATE 682/ALL_SEATS 1/scope-missing 5). Receipt's 14 re-derived line pins + 5 blob SHAs + four-channel ti
+
+### ✅ t1512 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice-(a) arm10 essence-anchored retrieval (FALSIFIED)
+
+**Receipt:** `twelve-lane-receipts/t1512-lane3.md`
+
+**Evidence:** VERIFIED: cited SHAs byte-match (arm script 52032c18.., carrier-diagnostic 3b9f989d.., results run1 72be491a.. / run2 a5db0378.., prereg 927f6004..); run1 vs run2 measurement payloads byte-equal (whole-file shas differ on run metadata only); runlog re-derived: recall@1=0.850, recall@3=0.900, regressions=3 [Q01,Q09,Q15], median_gap=20.03 - all match
+
+### ✅ t1511 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** entailment-judge arm vs the t0412 binding slice (JUDGE-UNCALIBRATED)
+
+**Receipt:** `twelve-lane-receipts/t1511-lane6.md`
+
+**Evidence:** VERIFIED: all 4 cited SHAs byte-match on disk (prereg c7763c0e.. / arm script 6cc5823a.. / results JSON 79fe352b.. / corpus f3a97a11..); results JSON re-derived: verdict JUDGE-UNCALIBRATED, POS 0/10 fires, NEG 0/2, binding 0/18, max p(entail)=0.4493, f1_falsifier DOES-NOT-FIRE, cites the sealed prereg sha. Sealed calibration gate did its job: judge
 
 ### ✅ t1510 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
