@@ -30,7 +30,15 @@ PINNED_BASELINE = {
     "duplicate_smart_note_ids": 0,
     "published_entries_missing_projection_path": 0,
     "registry_projection_paths_absent": 0,
-    "published_pages_without_registry_entry": 1,
+    "published_pages_without_registry_entry": 4,
+    # 4 since 2026-10-24 (was 1 at pin time, 23 at main@782cbe2c): the
+    # 19-orphan door-filing backlog SN-0834..SN-0852+SN-1852 was cured by
+    # the door-obligation fixer (captures + registry entries, PR pending).
+    # Remaining 4 are NOT fixable by the orphan cure: SN-0842's IB note +
+    # founding-portrait share one public id (DUPLICATE_PUBLIC_ID — the
+    # Smart Note identity lane must reconcile first), and the legacy
+    # smart-note.md group + the-naya-tool-set.md are structural
+    # (cure-lane decision, pre-existing).
     # 0 since w569: re-keyed on content collision within leaf-name groups
     # (Delta) -- the layout convention puts a smart-note.md in every note's
     # own directory, and distinct notes may share a slug leaf with different

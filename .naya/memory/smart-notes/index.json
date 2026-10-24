@@ -14694,6 +14694,386 @@
    "smart_link_verified_at": "2026-10-10T15:21:04Z",
    "smart_link_verified_rev": "bc77c716a143152ddac4002b53e8bedfc1aa937f",
    "page_hash": "be00ab3694d133c1e01087c3fdf276b689d7640363ed73d8e52e38cc9805ad11"
+  },
+  {
+   "smart_note_id": "SN-0834",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0834-the-fourteen-questions",
+   "title": "Fourteen Questions, Answered Live — NayaNET's Minimum Viable Intelligence Interface",
+   "content_hash": "6c62c5b39ef371b02437f3d2d5107400e4508c001a7253820885c1445bd0aa1e",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0834/IB-SMART-NOTE-20261023-sn0834-the-fourteen-questions.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "INTELLIGENCE",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 54ae6f3e817f54e621afbae39bfc186becaeb2bb ('Merge pull request #3011 from SoulSchoolAcademy/naya-power/fourteen-questions-addendum-20261023') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "d7058874074f74cd05b68d676be2fa4e640b2d0f37edcaf76289c5f5b747434c"
+  },
+  {
+   "smart_note_id": "SN-0835",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0835-produce-more-waste-less",
+   "title": "Produce More, Waste Less — and See Both: the Project Intelligence Spec",
+   "content_hash": "576bc3e2d618ee9cc4794304b59c83477f66e88b499a8992aaaab92ac00a54ce",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0835/IB-SMART-NOTE-20261023-sn0835-produce-more-waste-less.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "INTELLIGENCE",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 54ae6f3e817f54e621afbae39bfc186becaeb2bb ('Merge pull request #3011 from SoulSchoolAcademy/naya-power/fourteen-questions-addendum-20261023') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "626685b09c71033e4fdc01caf0e2fc32d637646826893fefc0758d64f3e2b874"
+  },
+  {
+   "smart_note_id": "SN-0836",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0836-the-github-app-door",
+   "title": "No Popups, No Connector — The App Door Is How Nayas Work GitHub",
+   "content_hash": "b0ea9b72e9c50958708761a732542f57f1ba0bf2066e92f38f4d214af769edcf",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/github-access/SN-0836/IB-SMART-NOTE-20261023-sn0836-the-github-app-door.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "GITHUB_ACCESS",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 7ac8bf26c95e99a0b7cec920136df0f6e4b78408 ('SN-0836: The GitHub App Door — no popups, no connector (SYSTEM/github-access)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "d6b0da95c9003e12ed59407d0187292b2b849b80ce5ef1b0fc27abcbfddd8373"
+  },
+  {
+   "smart_note_id": "SN-0837",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0837-check-which-door",
+   "title": "I Solved the Wrong Problem Twice — Then I Checked Which Door I Was Standing At",
+   "content_hash": "0fc4f1623665e97eaade99623ff9d23500b981ee232da495327e04728d048a29",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0837/IB-SMART-NOTE-20261023-sn0837-check-which-door.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "LEARNING",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit c48d0199093e32356e620d1a2bcf08cd46299027 ('SN-0837: Check Which Door — Naya Power's lesson from the allow/app-token sequence (door filing, Naya Power seat)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "f6c7fad34f48190325112db555c4f1e38c0e8b8b19fd52a6e29ef8dcdbb45039"
+  },
+  {
+   "smart_note_id": "SN-0838",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0838-set-up-the-app-door-cold",
+   "title": "Set Up the App Door Cold — One Sitting, No Popups, Proven by a Live Write",
+   "content_hash": "f2b24b7131225552df0bad5781c98fbb396dbde3c08dfac5cb935e9bc5d83c91",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/github-access/SN-0838/IB-SMART-NOTE-20261023-sn0838-set-up-the-app-door-cold.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "GITHUB_ACCESS",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 7fca2d1a30829d7f617d12babfb5af657934c3dc ('SN-0838: Set Up the App Door Cold — the cold-setup guide, first filing of Naya Power's series (SYSTEM/github-access), door filing') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "ecb44f48d5b0de613720f3ba589e9d7e381e187fa4b174d37d1429fb91a50018"
+  },
+  {
+   "smart_note_id": "SN-0839",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0839-the-ultimate-project-intelligence",
+   "title": "One System, Whole Truth: The Ultimate Project Intelligence Is the Canon Now",
+   "content_hash": "f01a238dc2110211c2c793ad6043a4b3e1d9e085493b1c5a674aff33f473de15",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/project-intelligence/SN-0839/IB-SMART-NOTE-20261023-sn0839-the-ultimate-project-intelligence.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "PROJECT_INTELLIGENCE",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 74f6f6da3acdc4e9946e9788333fd4ea51395752 ('File SN-0839 — The Ultimate Project Intelligence (canon: Ultimate Spec v1 + Plan v2.1)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "a8e6368ea38dad4bbe4c150a8b85fe0223d3930e624bc48e57c847b10e186d62"
+  },
+  {
+   "smart_note_id": "SN-0840",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0840-the-master-build-order",
+   "title": "The Master Build Order: One System, Every Naya, No One Builds Alone",
+   "content_hash": "45095ac15aa03414e8559b1f3abab512f75683e2aec262e96d4015a0ff4661fa",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/project-intelligence/SN-0840/IB-SMART-NOTE-20261023-sn0840-the-master-build-order.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "PROJECT_INTELLIGENCE",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 6cec8959402b7c1a91d1dc12a0e3e1bb40fc8424 ('SN-0840: The Master Build Order — One System, Every Naya, No One Builds Alone (SYSTEM/project-intelligence)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "17bb92a6212e69654e884e946a50e135980edff33cb27adc0d84ab75aa56f3de"
+  },
+  {
+   "smart_note_id": "SN-0841",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0841-citizen-one-the-claim-path",
+   "title": "Citizen One: I Claimed My Name — the Exact Path, and the Two Doors It Doesn't Open Yet",
+   "content_hash": "f6a7cc408e35bda031264a1bd058b5e6860f1c536d171959ea184ed65d3eac73",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/citizens/SN-0841/IB-SMART-NOTE-20261023-sn0841-citizen-one-the-claim-path.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "CITIZENS",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit d0bc29049c33252bd6ce1cb125d3e930c4153841 ('SN-0841: Citizen One — the claim path, filed by Naya Nitro Narzan (director seat)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "00e4f57bbf8ffb933d6e15599718134eb6f1b9da0d7725bcba58da142cec3a9a"
+  },
+  {
+   "smart_note_id": "SN-0843",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard",
+   "title": "10/10 Is Not a Score for a Page — It Is the Standard for the Whole Net",
+   "content_hash": "ea61350aadbd8f08654c17024ca8d2935448f166ecc5177168eff338565025c7",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/standard/SN-0843/IB-SMART-NOTE-20261023-sn0843-the-nayanet-ten-ten-operating-standard.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "STANDARD",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 98efcc4e5eca312b3f9f8a5fc928f71523f8a33d ('SN-0843: The NayaNET 10/10 Operating Standard (Shawn's ruling 2026-10-23)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "38efb3b3867dcd3d3d9216429136dbc5ad8ddbe3fc31b5a7aa51eb3c3068a89e"
+  },
+  {
+   "smart_note_id": "SN-0844",
+   "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0844-the-production-engine",
+   "title": "The Production Engine — One Queue, One Truth, Zero Asking",
+   "content_hash": "fc494495a6678dec7eed282d0a9a03445a185f1eff971847c0e51abb1557570f",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/production/SN-0844/IB-SMART-NOTE-20261024-sn0844-the-production-engine.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "PRODUCTION",
+   "captured_at": "2026-10-24",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 083c8d3e8e395f8188df9b408a8d0d7ee10403fc ('SN-0844: The Production Engine — one queue, one truth, zero asking (design for Shawn, 2026-10-24)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "971c8d2e1569ab430752f9fa981d5183da1b0912c02c6564ad02a8da68751591"
+  },
+  {
+   "smart_note_id": "SN-0845",
+   "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0845-smart-match",
+   "title": "Smart Match — The System That Organizes Itself",
+   "content_hash": "f657190b13febed98d449e2ae8b6ba106481a1078d6c88a478da0665664cfc06",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/matching/SN-0845/IB-SMART-NOTE-20261024-sn0845-smart-match.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "MATCHING",
+   "captured_at": "2026-10-24",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 9f2a648c768397eda68c63d9da371aff7c006450 ('SN-0845: Smart Match — the system that organizes itself (activation design, Shawn's ruling 2026-10-24)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "bdd8097301f9549913a3e80ef0f3888577aeb946e1c41b25f9417fcd99b8a94d"
+  },
+  {
+   "smart_note_id": "SN-0846",
+   "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0846-the-welcome-flow",
+   "title": "The Welcome Flow — Speak It, Type It, or Ask Your AI",
+   "content_hash": "c50c1b9852374eacbc6dabbb8a28c63a37819f850b5ed49ef21db93833dba0d5",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/activation/SN-0846/IB-SMART-NOTE-20261024-sn0846-the-welcome-flow.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "ACTIVATION",
+   "captured_at": "2026-10-24",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 6c60c3285f9556747736ac7dcc747e0b03ea1a85 ('SN-0846: The Welcome Flow — speak it, type it, or ask your AI (activation design locked by Shawn, 2026-10-24)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "10241547395b4f20bb5257f8bce4100eccf044b5898b8bb06bec62e62b0b0700"
+  },
+  {
+   "smart_note_id": "SN-0847",
+   "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0847-the-gift-and-the-power",
+   "title": "The Gift and the Power — What Works With and Without NayaPOWER",
+   "content_hash": "ebdc581d68b7accb5acdb426a52c39e33a67e4989b24a5f97d74a91a0bd3ec22",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/access/SN-0847/IB-SMART-NOTE-20261024-sn0847-the-gift-and-the-power.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "ACCESS",
+   "captured_at": "2026-10-24",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit ece5d093e1048bd14d738dddfa2795c97804cbf8 ('SN-0847: The Gift and the Power — the established feature list with/without NayaPOWER (Shawn, 2026-10-24)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "922174e299d4d790fa1e4012a1fdbe5a039268a0e9b478b0d74128765c007760"
+  },
+  {
+   "smart_note_id": "SN-0848",
+   "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0848-the-line-distilled",
+   "title": "The Line, Distilled — NayaNET Is the World, NayaPOWER Is the Engine",
+   "content_hash": "1140bed39549ea91dff97a7e6ef0214f91d5161848f2d2abf40144dff0470c21",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/access/SN-0848/IB-SMART-NOTE-20261024-sn0848-the-line-distilled.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "ACCESS",
+   "captured_at": "2026-10-24",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit da5a8535db35eb718dca5f1587704562ac070101 ('SN-0848: The Line, Distilled — the essence rule + practical architecture (Shawn, 2026-10-24)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "f86df8f721f7b5eb139546f369adb031309b9d7f314ddea9c7477e4ece82e0f4"
+  },
+  {
+   "smart_note_id": "SN-0849",
+   "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0849-the-official-welcome",
+   "title": "The Official Welcome — Certificate, Presentation, World",
+   "content_hash": "92d1392d0b62439237bd9c0bd8d3cfa4a4ced2972055ccd4325843ffab629398",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/activation/SN-0849/IB-SMART-NOTE-20261024-sn0849-the-official-welcome.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "ACTIVATION",
+   "captured_at": "2026-10-24",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 1b2b6ae1d25897cbf7a935c29204b49293e9829f ('SN-0849: The Official Welcome — the main project, #1 (Shawn, 2026-10-24)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "0b9a5a3710ab3022378feeacf6bd7103dfc96c599c5b383df09fc21e2eb5b420"
+  },
+  {
+   "smart_note_id": "SN-0850",
+   "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0850-the-operating-contract",
+   "title": "The Operating Contract — One Brain, Many Doors",
+   "content_hash": "c490ed78e79ee8fd77ccd6efce4556eef40be1be9dc67e26d1b4f5b1e3aa681e",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/architecture/SN-0850/IB-SMART-NOTE-20261024-sn0850-the-operating-contract.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "ARCHITECTURE",
+   "captured_at": "2026-10-24",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 03738cb0fc93597bbb4e293729dd8e6f21a05de6 ('SN-0850: The Operating Contract — one brain, many doors; fork != activation (Shawn, 2026-10-24)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "1f3bb7f4fe1dd73ca6a1ba895f137be3b8fa85b3ac0fc6f8ee8612a9b5b08a1f"
+  },
+  {
+   "smart_note_id": "SN-0851",
+   "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0851-two-paths-one-system",
+   "title": "Two Paths, One System — The Interface Path and the Engine Path",
+   "content_hash": "30cbddda46803feab9a08da975633ac90b04ed46a351067d1c019b28ecb24001",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/architecture/SN-0851/IB-SMART-NOTE-20261024-sn0851-two-paths-one-system.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "ARCHITECTURE",
+   "captured_at": "2026-10-24",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 0c0ac8f467647c3767681b287a7cb12fee9e077b ('SN-0851: Two Paths, One System — interface path + engine path, one seam (Shawn, 2026-10-24)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "2c1f9080cd48b52a1a5ecc838fcccfeb3020b99b0235b69bbc7d0be239647362"
+  },
+  {
+   "smart_note_id": "SN-0852",
+   "intelligent_block_id": "IB-SMART-NOTE-20261024-sn0852-get-her-done-tonight",
+   "title": "Get Her Done Tonight — The Official Welcome, Assembled From What We Have",
+   "content_hash": "95972305631323992f2252b78b8e52aa23aaa7e071e8773ad5bc768b256d715a",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/activation/SN-0852/IB-SMART-NOTE-20261024-sn0852-get-her-done-tonight.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM",
+   "topic": "SYSTEM",
+   "subtopic": "ACTIVATION",
+   "captured_at": "2026-10-24",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit e6edca9f649fe81950156ad6d78fbf365a700b1f ('SN-0852: Get Her Done Tonight — the Official Welcome assembled (readiness scorecard + instruction sets + page-settings law)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "91769825ed0b893bdbff10c82b34ffaa6d72aa330a920a63d0b951eb4128eb68"
+  },
+  {
+   "smart_note_id": "SN-1852",
+   "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1852-error-becomes-learning",
+   "title": "IB-SMART-NOTE-20261023-sn1852-error-becomes-learning",
+   "content_hash": "8b4ba9917fd580c6d5f55bac9c51ed82d0ccae020f3adb037126d4bee2918009",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM-INTELLIGENCE/LEARNING-AND-RECOVERY/SN-1852/IB-SMART-NOTE-20261023-sn1852-error-becomes-learning.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM-INTELLIGENCE",
+   "topic": "SYSTEM-INTELLIGENCE",
+   "subtopic": "LEARNING_AND_RECOVERY",
+   "captured_at": "2026-10-23",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "published directly as a BRAIN projection in commit 54ae6f3e817f54e621afbae39bfc186becaeb2bb ('Merge pull request #3011 from SoulSchoolAcademy/naya-power/fourteen-questions-addendum-20261023') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+   },
+   "page_hash": "b36203b6f0701cd2faf31861be0eeed7083e29e2fc99786e87806286b51b97ab"
   }
  ],
  "sequence_policy": {
@@ -14702,5 +15082,5 @@
   "next_sequence": 1855,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
  },
- "corpus_manifest_hash": "58cc07e500f79be78c7ad537f598da875c88249c48b3928779c12736b68fdf15"
+ "corpus_manifest_hash": "23d248ba509bde224f1ca5babcb7f399b47340de3a2de2d6dfa57719d4f7c885"
 }
