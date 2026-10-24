@@ -8,6 +8,41 @@ export function validateCapabilityCatalog(c) {
   if (!c || c.schema!=='nayanet.capability-boundary.v1' ||
       c.state!=='PROPOSED_AND_UNVERIFIED' ||
       !Array.isArray(c.features) || c.features.length!==25) throw Error('invalid_catalog');
+  const t=c.product_taxonomy||{};
+  if(JSON.stringify(t.experiences)!==JSON.stringify(['nayanet_citizen','nayapower_connected']) ||
+     JSON.stringify(t.operator_deployments)!==JSON.stringify(['shared_managed','owner_controlled_fork']) ||
+     !t.builder_is_optional_operational_role_not_required_subscription_tier ||
+     !t.product_mode_is_not_identity_or_authority ||
+     !t.hosting_location_does_not_grant_personal_intelligence_access)
+    throw Error('product_role_and_deployment_conflated');
+  const presences=t.operating_presences||{};
+  if(Object.keys(presences).sort().join(',')!=='citizen,connected_owner,naya_agent' ||
+     Object.values(presences).some(x=>x.needs_fork_to_join!==false) ||
+     presences.naya_agent.human_owner!==false ||
+     presences.naya_agent.private_operator_grant!=='requires_distinct_seat_identity_and_delegated_law_receipt')
+    throw Error('invalid_principal_role_model');
+  const doors=c.shared_door_contract||{};
+  const requiredDoors=['hub','mcp','rest_api','github_app','sdk','webhook','a2a'];
+  if(doors.proposed_doors?.join(',')!==requiredDoors.join(',') ||
+     Object.keys(doors.runtime_proof_by_door||{}).sort().join(',')!==[...requiredDoors].sort().join(',') ||
+     !Object.values(doors.runtime_proof_by_door).every(x=>x==='UNKNOWN') ||
+     !String(doors.canonical_operation_path||'').includes('LAW'))
+    throw Error('independent_unverified_one_brain_doors_required');
+  const welcome=c.welcome_world_contract||{};
+  if(welcome.status!=='SPECIFIED_NOT_LIVE_VERIFIED' ||
+     !welcome.ordered_journey?.includes('certificate') ||
+     !welcome.ordered_journey?.includes('hub_personal_business_space_top_three') ||
+     welcome.business_and_space_may_be_skipped!==true ||
+     welcome.app_and_space_creation_must_be_authenticated!==true ||
+     welcome.empty_answers_are_never_invented!==true ||
+     welcome.recommendation_never_implies_connect_send_or_join!==true)
+    throw Error('invalid_first_citizen_journey');
+  const truth=c.operational_truth_policy||{};
+  if(truth.intended_unbounded_creation!==true ||
+     truth.unlimited_capacity_production_verified!==false ||
+     truth.mail_transport_is_not_mail_confidentiality!==true ||
+     truth.production_mail_privacy_status!=='BLOCKED_PENDING_AUTHENTICATED_ISOLATION')
+    throw Error('unproven_operational_claim');
   if(c.unit_economics?.cost_is_literally_zero!==false) throw Error('zero_cost_false');
   const b=c.boundaries||{};
   for(const key of ['one_network','agent_seat_is_not_owner',
@@ -26,6 +61,13 @@ export function validateCapabilityCatalog(c) {
       throw Error('no_acceptance_gate:'+f.id);
     for(const mode of MODES)
       if(typeof f.offered_in?.[mode]!=='boolean')throw Error('invalid_mode:'+mode);
+    const e=f.delivery_evidence_contract||{};
+    if(e.canonical_operation!==null||e.source_of_truth!==null ||
+       e.server_authority_scope!==null||e.independent_verifier!==null ||
+       e.verified_at!==null||e.privacy_class!=='UNASSESSED' ||
+       e.cost_profile!=='UNMEASURED' ||
+       !Array.isArray(e.additional_evidence)||e.additional_evidence.length)
+      throw Error('unverified_runtime_metadata_fabricated:'+f.id);
     if(f.operator_requirement && f.offered_in.citizen)throw Error('operator_granted_to_citizen');
     if(f.offered_in.citizen && !f.offered_in.owner_fork)throw Error('base_world_removed');
   }
