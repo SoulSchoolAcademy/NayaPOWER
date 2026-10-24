@@ -152,7 +152,12 @@ def activate(alias, answers, corpus, has_business=None):
     receipt = {
         "alias": alias,
         "pages": generate_pages(answers, has_business),
+        "settings": {  # SN-0852 ratified defaults, bound at activation
+            "personal": {"visibility": "private", "findable": True, "installable": True},
+            "business": {"visibility": "public", "findable": True, "installable": True},
+            "space":    {"visibility": "public", "findable": True, "installable": True}},
         "vector": vec,
+        "corpus_entry": {"alias": alias, "vector": vec, "findable": True},
         "coverage": coverage(answers, has_business),
         "ambassador_link": f"https://nayanet.live/joinus?ref={alias}",
         "issue_link_sql": issue_link_sql(alias),
