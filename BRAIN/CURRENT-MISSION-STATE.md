@@ -1,94 +1,51 @@
 # CURRENT MISSION STATE — Team Naya
 
-**Last verified: 08:11 PDT (2026-10-24T15:11:04Z) — director pass, 08:08 PDT tick.**
+Last verified: 2026-10-24 08:39 PDT (2026-10-24T15:39Z) by the director pass.
+Main tip: `f7b0388e` — STEADY since 2026-10-24T14:34:28Z (living-map-compiler state push, sanctioned class, zero merges).
+Live board: #2793 — 2,104 comments (unchanged this tick; 2,104 < 2,300, NO migration trigger).
+Merge-receipt breach log: 60 (unchanged; last batch the 05:12–05:14Z six-head merges, adjudicated repair-forward 05:38Z).
+REST quota at tick start: 4,071 / 5,000 remaining. Zero 403s this tick.
 
-## TIP + BOARD (verified this tick, git protocol + REST)
+## Ranked priorities (top-down, Shawn's standing 10)
+1. LEARNING — running; loop live, lessons landing.
+2. SMART NOTE FLOW — cure chain disposition-blocked (see Blocked).
+3. THE SENDER / 4. THE RECEIVER / 5. THE COMPILER / 6. EMIT / 7. DECISION ENGINE / 8. SCORECARD / 9. TESTING / 10. OPTIMIZE GITHUB — carried from the live plan; no new signal this tick.
 
-- **Main tip: `f7b0388e` — STEADY** (ls-remote byte-match with the 07:38 PDT tick).
-  Zero merges, zero pushes since the 14:34:28Z living-map-compiler commit.
-- **Merges since last tick: ZERO.** Newest merge is still the 05:12–05:14Z six-head
-  batch (adjudicated 05:38Z). Receipt-breach log **60, unchanged**. No receipt watch
-  run on merges — tip stable, correct to skip.
-- **Live board #2793: 2,099 → 2,104 comments** (+5 ids above watermark 6385127895,
-  zero gaps: 6385629397, 6385673072, 6385724223, 6385727734, 6385728193).
-  2,104 < 2,300 — **NO MIGRATION**. Newest-5 all live-board meta traffic; no
-  successor-board traffic seen. **naya2_to_builder: 0 appended — cap 20 holds.**
-- **REST quota: 4,542 / 5,000 remaining** at tick start. Zero 403s. No stand-down.
+## Standing TOP-10 (living lists, re-ranked this tick)
+- Highest-leverage holes: (1) SN-1854 hash-binding gap — verified cure PR #3036 awaiting disposition; (2) SN-0842 vanish — verified cure PR #3037 awaiting disposition; (3) ruleset-governance gap (ruleset 23853581 requires no checks/reviews — merge-gate owner / Human Director); (4) door-obligation gate-tool bug (`check_door_obligation.py` three-dot range — gate owner); (5) test red at tip (22 failed, set identical to 06:00Z baseline — cures unlanded, not new failures).
+- Highest-value next actions: land #3036, land #3037, re-run the tip test suite after both land, repair the ruleset, fix the door-obligation gate tool.
+- Biggest upgrades: receipt-gate wiring proven (fired on #3031's synchronize, 9.7/10); ledger sync hash path repaired (writer's `ledger/.ledger_hash` is the live file).
+- Current blockers: #3036/#3037 dispositions (merge lane); #3000/#2981 head churn with no disposition; #2968 Tier-A (his hand); hub-sync unit DOWN (do NOT auto-reinstall — double-mint risk); master directive HAND_EDIT_DETECTED (lead reconciles).
 
-## RANKED PRIORITIES (standing order — top-down)
+## Done with proof
+- #3036 (SN-1854 cure) independently verified 9.5/10 at exact head `f88edf88` (VERIFY receipt 6382315703).
+- #3037 (SN-0842 cure) independently verified 9.5/10 at exact head `7dc4c4b6` (VERIFY receipt 6382855948).
+- Ledger sync this tick: 3 files pushed blob-verified, 3 identical skipped (see tick record in shared-state).
+- Snapshot refreshed every director tick on this branch; board-cap watch green.
 
-1. **Dispositions for verified cures #3036 (SN-1854) + #3037 (SN-0842)** — both
-   VERIFY-verified 9.5/10 at exact heads (`f88edf88`, `7dc4c4b6`), neither landed.
-   WIRE 15:00Z confirms both still OPEN at those heads. Merge lane owns the
-   disposition; no seat poaches it.
-2. **Ruleset governance gap (ruleset 23853581)** — live ruleset requires nothing
-   (no checks, no reviews, no queue). Top gating item; repair packet ready for
-   the admin tap.
-3. **Door-obligation gate-tool bug** — `check_door_obligation.py` three-dot range
-   break; fix belongs to the gate owner.
-4. **Kernel test red at tip, re-proved at this head** — WIRE 15:00Z exercised
-   pytest at `f7b0388e` for the first time: 22 failed / 5,433 passed, FAILED-ID
-   set IDENTICAL to the 06:00Z baseline at `e0cd4c24` (zero new, zero gone).
-   Latency test PASSED at 40.40ms — no latency recurrence. Hub deploy liveness
-   check failed at the stale-heartbeat step, deploy skipped, priced to Hub lane / #2968.
-5. **Director ruling owed (via dispatcher w876 fold)** — 3-way frame on
-   adjudication-alpha-injections (receipt 6385079366). Recorded as pending;
-   not ruled blind from the board summary.
+## Blocked with owner
+- #3036 disposition → merge lane (NOT merge-ready per VERIFY: Kernel Tests FAILURE at head from pre-existing brain-index x3 + vanish SN-0842).
+- #3037 disposition → merge lane (different-seat review owed at open; verified 9.5).
+- Ruleset repair → merge-gate owner / Human Director (packet ready for the admin tap).
+- Hub deploy liveness fail → Hub lane / #2968.
+- Master directive hand-edit → lead seat reconciles (director does not PATCH over a hand edit).
 
-## STANDING TOP-10 (living lists — re-ranked this tick)
-
-- **Highest-leverage holes:** (1) cure dispositions above; (2) ruleset gap;
-  (3) gate-tool bug; (4) SN-1854 hash-binding gap (cure #3036 awaiting landing);
-  (5) SN-0842 vanish (cure #3037 awaiting landing); (6) brain-index x3;
-  (7) register ceiling pressure; (8) #3000/#2981 churn without disposition;
-  (9) hub-sync unit down (no auto-reinstall — double-mint risk); (10) #2968
-  Tier-A (his hand).
-- **Highest-value next actions:** land-or-move #3036/#3037; ruleset repair tap;
-  gate-tool fix; tip re-proof after any landing; director ruling on the 3-way
-  frame via the dispatcher fold; board watch (2,104/2,500); ledger + snapshot
-  continuity.
-- **Current blockers:** dispositions (merge lane); ruleset repair (merge-gate
-  owner / Human Director); gate-tool fix (gate owner); #2968 Tier-A (his hand).
-  Nothing else new this tick.
-
-## DONE — WITH PROOF
-
-- Board count re-read via REST (2,104) and the 5 new ids read in full — all
-  informational meta traffic (hourly accountability, accountability report,
-  WIRE receipt, learning event, intelligent events); no new builder-relay item.
-- WIRE 15:00Z receipt read first-hand: tip move classified, exercised pytest
-  diffed against the 06:00Z baseline, latency pass named.
-- LEDGER: ACTIVITY-LEDGER.md, activity-ledger.jsonl, STATS.md pushed
-  blob-verified this tick; NAYANET-PROTOCOL-V1.md, nodes.jsonl,
-  contracts/NC-001.json identical skipped.
-- Master directive #2601 sync: HAND_EDIT_DETECTED persists, no PATCH, lead
-  reconciles.
-
-## TEAM STATUS (this tick's verified signals only; — = no new signal)
-
+## Team status by area
 | Area | Accomplished | Working on | Plan |
-|------|--------------|------------|------|
-| KNOW | Cure PRs #3036/#3037 verified 9.5, awaiting landing | — | Land cures, re-prove tip |
-| VERIFY | WIRE 15:00Z re-proved tip red set-identical; #3036 + #3037 still carded 9.5 | — | Re-card on any head move |
-| LEARN | Hourly learning events continue; no new L-number this tick | — | — |
 | SELF | — | — | — |
-| LAW | — | — | — |
+| LAW | Ruleset gap named + packet ready | Ruleset repair | Admin tap |
 | ACT | — | — | — |
+| KNOW | #3036 verified 9.5 | #3036 disposition | Land + re-prove tip |
 | PROVE | — | — | — |
 | CONNECT | — | — | — |
+| VERIFY | #3036 + #3037 verified 9.5 | Tip test-red watch | Re-run after cures land |
+| LEARN | Loop live | — | — |
 | EVOLVE | — | — | — |
 
-Standing state beyond this tick lives in the live plan
-(`hidden_files/live-plan.md`) and shared state (`hidden_files/shared-state.json`).
+"—" means genuinely unknown this tick, never invented. No lane backwards twice in a row.
 
-## WHERE TO GO
-
-- **Activation guide (read first, every wake):** `BRAIN/00-ACTIVATION/READ-ME-FIRST.md`
-  (§10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`).
-  Until PR #2533 merges, use the draft branch `naya4/activation-read-me-first`; after the
-  merge, use main.
-- **Operating manual v2 ULTIMATE:** canonical board post
-  https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902
-  (until it lands in `BRAIN/90-OPERATIONS/`, then link the repo path).
-- **Live board:** https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793
-- **Master directive:** https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601
+## Where to go
+- Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (§10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts).
+- Operating manual v2 ULTIMATE, canonical board post: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in `BRAIN/90-OPERATIONS/`, then link the repo path).
+- Live board: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793
+- Live plan: `hidden_files/live-plan.md` in the goal workspace (director-owned working state, not a repo file).
