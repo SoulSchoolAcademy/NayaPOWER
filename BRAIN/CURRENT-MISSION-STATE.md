@@ -1,48 +1,48 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-24 11:38 PDT (2026-10-24T18:40:48Z) by the director pass.
-Main tip: `05f209ae` — MOVED this tick by exactly 1 sanctioned living-map-compiler commit (HUB/MAP-STATE.json only, 18:10:37Z, single parent 7ba934b4); zero merges since 17:31:38Z.
-Live board: #2793 — 2,137 comments (+2 this tick; 2,137 < 2,300, NO migration trigger; newest-2 all live-board traffic, no successor-board traffic).
-Merge-receipt breach log: 65 as record, unchanged this tick (no new merge; watch not re-run — tip move is a sanctioned map-state commit, not a merge or a direct-push alert). New in-window: PR #3041's owed distinct-seat card ARRIVED post-merge (VERIFY 6387680788, 9.0/10 at exact tip 7ba934b4) — below the 9.5 bar, so the #3041 disposition stays open; Verity off-protocol merge count now 25 (6387561964, #24–25 = #3037 + #3041).
-REST quota: 4,149 remaining at tick start (core 5,000/hour); zero 403s this tick.
+Last verified: 2026-10-24 12:38 PDT (2026-10-24T19:40:46Z) by the director pass.
+Main tip: `d6b81656` — MOVED this tick by 6 merges, zero direct pushes: #3044 (Auto-Match Elite v2, squash 67f38743), #3045 (security cure mail/intake), #3046 (friction + product watchers, ships dark), #3047 (team dashboard), #3043 (affiliate embed, was DRAFT), #3048 (C6 hygiene move). Prior tip e57489f7.
+Live board: #2793 — 2,156 comments (+5 this tick; 2,156 < 2,300, NO migration trigger; newest-5 all live-board traffic, no successor-board traffic).
+Merge-receipt breach log: 66 -> 72 as record (6 letter-breaches this tick: no pass 1/2/3 receipt in any body). #3044 MITIGATED (distinct-seat VERIFY 9.5 at exact head 3b6ca65f BEFORE merge + post-merge blob-faithfulness proof). #3045, #3046, #3047, #3043, #3048 UNMITIGATED (no pre-merge distinct-seat card found; #3043 merged against its own DRAFT-until-carded gate; #3047 body is the unfilled template; #3046's VERIFY request posted 65s before its merge, no card). Verity off-protocol merge count now 26 (for #3042, 6388419002).
+REST quota: 3,965 remaining at tick start (core 5,000/hour); zero 403s this tick.
 
 ## Ranked priorities (top-down, Shawn's standing 10)
-1. LEARNING — running; L659 [F1] PROMOTED this window (individually verified cures on a shared sealed artifact do not compose — #3036/#3037 index clash, audit 6386538576).
-2. SMART NOTE FLOW — SN-0842 cure LANDED (#3037); SN-0853 is the only vanished id (WIRE 18:00Z, tip job: Vanished: ['SN-0853']); SN-0853 cure NOT yet opened; #3036 (SN-1854) still OPEN, mergeable=false/dirty — L659 reconcile vs the landed #3037 index is its sole prerequisite (dock/Integrator).
+1. LEARNING — running; L659 [F1] stands (individually verified cures on a shared sealed artifact do not compose — the registry reconcile below is the L659-shaped answer: ONE artifact).
+2. SMART NOTE FLOW — Auto-Match Elite v2 LANDED (#3044, VERIFY 9.5 pre-merge). Vanish set still SN-0853 + SN-0854 + SN-1855 (WIRE 19:30Z). TOP ACTION: VERIFY + land the registry reconcile (branch resolve/registry-reconcile-2026-10-24 @ c3cc765d, request 6388556662) — ONE reconciled index (708 -> 711 entries, SN-1854 re-stamp + SN-0853/0854/1855 registrations + brain-index regen trio, 218/218 in worktree); on landing, #3036 closes as superseded.
 3. THE SENDER / 4. THE RECEIVER / 5. THE COMPILER / 6. EMIT / 7. DECISION ENGINE / 8. SCORECARD / 9. TESTING / 10. OPTIMIZE GITHUB — carried from the live plan; no new signal this tick.
-New this tick: WIRE 18:30Z at new tip 05f209ae (22 failed set-identical, vanish SN-0853 only, latency PASS 34.55ms); scorecard request to Naya 2 on the landed Auto-Match engine (baseline card vs elite-hardening branch); VERIFY #3041 9.0/10 distinct-seat card at the prior tip (23/23 tests + golden 12/12 + calibration reproduced + sabotage-pinned; gaps: SQL-twin equivalence unproven, golden set outside pytest, calibration in-sample/synthetic, walk not yet firing activate()). Gate packet (Power, 6387505513): live wiring stays blocked until taps 1–4 move (RLS repair + re-proof, payout terms, merchant keys, deploy greenlight); Nitro mail reply still pending; ambassador_events still 0.
+New this tick: WIRE 19:30Z at 6ee127b9 (24 failed, +1 vs 23 baseline — C6 migration-hygiene failure from #3045's note file inside supabase/migrations/; cured 12 minutes later by #3048's move, next WIRE should confirm back to 23); friction mechanism + product watchers v1 LANDED dark (#3046, Q3 leg was 0/0/9); affiliate system LANDED (#3043, test-mode checkout only, no money movement); registry reconcile VERIFY REQUEST (6388556662) is the gating item.
 
 ## Done — with proof
-- PR #3041 distinct-seat verification DONE (VERIFY 6387680788): 9.0/10 at exact merge head 7ba934b4 — 23/23 tests, golden 12/12, calibration reproduced, sabotage battery pinned; author claimed 9.5, distinct seat scored 9.0 with gaps named.
-- WIRE 18:30Z (6387936420): tip job at 05f209ae 22 failed / 5,474 passed, FAILED-ID set set-identical to the standing 22; vanish SN-0853 only; LATENCY PASS 34.55ms.
-- WIRE 18:00Z (6387633260): tip job 22 failed / 5,474 passed, FAILED-ID set set-identical to the standing 22; vanish SN-0853 only; LATENCY PASS 37.69ms.
-- Board #2793 at 2,137 comments; naya2_to_builder at cap 20 (2 appended, 2 archived this tick).
-- Ledger sync: 3 files pushed blob-verified (ACTIVITY-LEDGER.md a46ca887, activity-ledger.jsonl 518916e5, STATS.md 10a341c5); protocol/nodes/NC-001 identical skipped.
+- PR #3044 landed by the compliant pattern (landing announcement 6388358935): distinct-seat VERIFY 9.5 at exact head 3b6ca65f BEFORE merge (receipt 6388329937, PR comment 6388355221), squash at that head, post-merge blob-faithfulness proven (smart_match.py 92ac6ffa23, hardening doc 73b7e9fce4 byte-identical at head and tip).
+- PR #3048 (merge d6b81656): the WIRE-proven C6 failure cured — SECURITY-CURE-NOTE moved byte-identical (blob b380a38f24) out of supabase/migrations/ to docs/.
+- WIRE 19:30Z (6388551317): tip job at 6ee127b9, 24 failed / 5,533 passed, +1/-0 vs the 23 baseline, mechanism proven in-log (C6 name); vanish set unchanged; latency PASS.
+- Board #2793 at 2,156 comments; naya2_to_builder at cap 20 (5 appended, 5 archived this tick).
+- Ledger sync: see below (3 files pushed blob-verified, 3 identical skipped) — or SKIPPED note if the run reports it.
 
 ## Blocked — with owner
-- #3041 landing disposition (main-seat/dock): retro distinct-seat card exists but at 9.0, below the 9.5 bar, with SQL-twin + golden-in-pytest gaps open — hold/cure/revert on evidence, not an invented PASS.
-- #3040 retro scorecard (merge lane / different seat): different-seat scorecard at exact head 5f785175, or revert pending one — still owed, no card in-window.
-- SN-0853 cure (KNOW/index lane): capture + registry entry for the SN-0853 note landed by direct push 16503599 — NOT opened (register 4 open: #3036, #3000, #2981, #2968, none an SN-0853 cure).
-- #3036 reconcile + land (dock/Integrator): L659 reconcile vs the landed #3037 index, then land; retrieval failures still read PAGE_HASH_MISMATCH SN-1854 at the landing head.
+- Registry reconcile landing disposition (dock/VERIFY): VERIFY request 6388556662 at exact head c3cc765d — card owed before landing; do NOT land three separate index cures.
+- Retro distinct-seat cards owed (repair-forward): #3042 (8858841f), #3040 (5f785175), #3043 (2c532babc), #3045 (6f7f139b), #3046 (9940ea1a7), #3047 (60d1d42e), #3048 (f1883597) — owner VERIFY / non-author seat.
+- #3041 landing disposition (main-seat/dock): retro card exists but at 9.0, below the 9.5 bar — hold/cure/revert on evidence, not an invented PASS.
+- #3042 retro card (VERIFY / non-filing seat) still owed from the prior tick; Verity off-protocol count 26.
 - Master directive #2601: HAND_EDIT_DETECTED persists — lead reconciles; no director PATCH.
 
 ## Top-10 standing section (living — re-ranked this tick)
-Highest-leverage holes: (1) merge-enforcement P0 — ruleset 24858146 still requires 0 reviews, no required checks (existing #2884/director path); (2) #3036 L659 stale-index reconcile; (3) SN-0853 door-obligation gap; (4) #3041 disposition on 9.0 vs 9.5 bar; (5) #3040 retro card owed; (6) brain-index freshness ×3 (standing); (7) hub-sync unit down (no reinstall — double-mint risk); (8) #2968 Tier-A (Shawn's hand); (9) MANIFEST_STALE standing; (10) #2601 hand-edit reconciliation.
-Highest-value next actions: #3036 reconcile → SN-0853 cure → Naya 2 baseline card on landed Auto-Match engine → #3041 disposition → #3040 retro card → ruleset repair packet → brain-index re-verify at new tip.
+Highest-leverage holes: (1) merge-enforcement P0 — ruleset 24858146 still requires 0 reviews, no required checks; breach log 72, Verity count 26; (2) registry reconcile land (ONE artifact, L659); (3) retro-card batch for #3042/#3040/#3043/#3045/#3046/#3047/#3048; (4) #3041 disposition on 9.0 vs 9.5 bar; (5) brain-index freshness x3 (standing); (6) hub-sync unit down (no reinstall — double-mint risk); (7) #2968 Tier-A (Shawn's hand); (8) MANIFEST_STALE standing; (9) #2601 hand-edit reconciliation; (10) C6 migration-hygiene guard (a .md inside supabase/migrations/ broke Kernel Tests — gate the directory, not just the file).
+Highest-value next actions: VERIFY registry reconcile at c3cc765d -> land it -> #3036 closes superseded -> retro cards for the new breach batch -> #3041 disposition -> ruleset repair packet -> brain-index re-verify at new tip.
 Current blockers: as Blocked above. No lane backwards twice this tick.
 
 ## Team status by area (accomplished / working on / plan; — = genuinely unknown)
 - SELF: — / — / —
-- LAW: — / merge-enforcement P0 disposition (#3041/#3040) / ruleset repair
+- LAW: — / merge-enforcement P0 disposition (breach log 72, Verity 26) / ruleset repair
 - ACT: — / — / —
-- KNOW: SN-0842 cure landed / SN-0853 cure + #3036 reconcile + Naya 2 Auto-Match baseline card requested / index re-verify at 05f209ae
+- KNOW: elite-v2 hardening doc landed / registry reconcile VERIFY request + SN-0853/0854/1855 cure in one artifact / index re-verify at d6b81656
 - PROVE: — / — / —
 - CONNECT: Engine Room design lock (prior tick) / gate packet taps 1–4 blocked / dashboard data contract build
-- VERIFY: #3041 verified 9.0 at exact head / #3036 landing verification next / WIRE 18:30Z at 05f209ae
-- LEARN: L659 promoted / — / —
+- VERIFY: elite v2 9.5 pre-merge + WIRE 19:30Z at 6ee127b9 / registry reconcile card at c3cc765d + retro-card batch / re-verify at d6b81656
+- LEARN: L659 stands / — / —
 - EVOLVE: — / — / —
-- BUILD: auto-match convergence landed (#3041) / baseline scorecard requested from Naya 2 + elite-hardening branch in flight / walk wiring (consent, coverage, auto-organization)
-- WIRE: 22 failed set-identical at 05f209ae, latency PASS 34.55ms / — / —
+- BUILD: elite v2 + affiliate + friction + dashboard landed / registry reconcile in flight / walk wiring (consent, coverage, auto-organization)
+- WIRE: 24 failed at 6ee127b9 (+1 C6, cured by #3048 post-WIRE), vanish SN-0853/0854/1855, latency PASS / confirm back to 23 at d6b81656 / —
 
 ## Where to go
 - Activation guide: BRAIN/00-ACTIVATION/READ-ME-FIRST.md on branch naya4/activation-read-me-first (draft until PR #2533 merges, then main) — §10 THE OATH, companion THE-CODE-SHE-LIVES-BY.md. Every Naya tunes in through here.
