@@ -18,7 +18,7 @@
     {key:'space_topics',question:'What would your community Space be about?',hint:'People and topics you want to bring together.',section:'space'},
     {key:'looking_for',question:'Who or what would you like to connect with?',hint:'Interests, skills, projects or communities.',section:'space'}
   ]);
-  const PUBLIC_DISCOVERY_FIELDS = new Set(['interests','goals','offer','space_topics','looking_for']);
+  const PUBLIC_DISCOVERY_FIELDS = new Set(['interests','mission','vision','goals','business','offer','space_topics','looking_for']);
   const MAX_ANSWER = 1800;
   const STOP = new Set(['and','the','with','for','are','but','that','this','you','your','our',
     'into','about','would','like','what','from','have','make','been','their','there','they',
@@ -59,9 +59,15 @@
       answer(input) {if(review)return {ok:false,reason:'at_review'};
         const v=clean(input);
         if(typeof input !== 'string')return {ok:false,reason:'invalid_input'};
-        answers[FIELDS[index].key]=v;
+        const key=FIELDS[index].key;
+        // Editing the actual words invalidates any earlier consent for them.
+        if(answers[key]!==v)publicFields[key]=false;
+        answers[key]=v;
         return this.next();},
-      skip(){if(review)return {ok:false,reason:'at_review'};return this.next();},
+      skip(){if(review)return {ok:false,reason:'at_review'};
+        const key=FIELDS[index].key;
+        delete answers[key];publicFields[key]=false;
+        return this.next();},
       next(){if(index === FIELDS.length-1){review=true;}else index++;
         return {ok:true,at_review:review};},
       back(){if(review){review=false;index=FIELDS.length-1;return true;}
@@ -96,7 +102,8 @@
     const take=(key)=>visibility[key]==='public' && PUBLIC_DISCOVERY_FIELDS.has(key)
       ? words(a[key]) : [];
     return {topics:[...new Set([...take('interests'),...take('space_topics')])],
-      goals:take('goals'),offers:take('offer'),seeks:take('looking_for')};
+      goals:[...new Set([...take('mission'),...take('vision'),...take('goals')])],
+      offers:[...new Set([...take('business'),...take('offer')])],seeks:take('looking_for')};
   }
   function overlap(a,b) {
     if(!a.length || !b.length)return null;
