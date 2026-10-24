@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-23T23:24:21Z",
-  "tip": "98efcc4e5eca312b3f9f8a5fc928f71523f8a33d",
+  "generated_at": "2026-10-24T00:24:31Z",
+  "tip": "083c8d3e8e395f8188df9b408a8d0d7ee10403fc",
   "prs": [
     {
       "number": 2968,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "b861ce0298158290c159dc16f683a6f08be1ab22"
+      "head": "5bf11258a9f943bf2c78d502dc9f328f9153379c"
     },
     {
       "number": 3000,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "43dd4e187e6ae919f74b322c16c2604969d25968"
+      "head": "178ab1745c6e1900248e79e91e21024bd2530393"
     },
     {
       "number": 3025,
@@ -38,6 +38,15 @@
       "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "1ecf20f768ca47ad959f0a0b965a5d20c6313bb7"
+    },
+    {
+      "number": 3026,
+      "title": "w598: mirror spawn_brief.py fail-closed wiring into repo (tools/spawn_brief.py)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "d43d6f6fc1a4b06a6d7164796bbadc887cf01990"
     }
   ]
 }
