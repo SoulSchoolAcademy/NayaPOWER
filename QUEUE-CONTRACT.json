@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-24T20:26:10Z",
-  "tip": "f41bf212b06d4b1dd8025e08c5b3033c42787cce",
+  "generated_at": "2026-10-24T21:25:30Z",
+  "tip": "f6e9d0f5b48ea310e092746fce3d19237ea71798",
   "prs": [
     {
       "number": 2968,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "5a149bbce2985930a11bef0173465acffb0cb851"
+      "head": "910a7b51bd10583ce4764018446414f1ffa10793"
     },
     {
       "number": 3051,
@@ -28,7 +28,7 @@
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "23a0744b3cbe0c9ffada85bfa9405ea5632b135e"
+      "head": "98374570391d1dc13b02ec8beedb8b0e47d54b74"
     }
   ]
 }
