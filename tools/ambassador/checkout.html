@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout — NayaNET</title>
+<style>
+body{margin:0;background:#07070d;color:#fff;font-family:system-ui,-apple-system,sans-serif}
+main{max-width:720px;margin:0 auto;padding:24px 16px}
+.frame{border:1px solid rgba(180,160,255,.5);border-radius:20px;padding:22px;box-shadow:0 0 28px rgba(140,120,255,.2)}
+h1{font-size:30px;margin:0 0 6px} h2{font-size:20px}
+p{font-size:16px;line-height:1.5} .muted{opacity:.85;font-size:14px}
+.plan{display:flex;justify-content:space-between;gap:12px;border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:14px;margin:10px 0;cursor:pointer}
+.plan.selected{border-color:#8b7cff;box-shadow:0 0 16px rgba(140,120,255,.35)}
+.plan b{font-size:18px} .price{font-size:20px}
+button{border-radius:999px;padding:14px 22px;background:#8b7cff;color:#fff;border:none;font-size:17px;width:100%}
+input{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:#11111c;color:#fff;font-size:16px;margin:6px 0}
+.test{border:1px dashed #f0c040;border-radius:12px;padding:12px;margin:14px 0}
+</style></head><body><main>
+<div class="frame">
+<h1>✦ Your Smart App, ready to go</h1>
+<p>All the tools, your own Smart App, your personal space, your own dashboard. You're hired — here's your link, all set up ready to go.</p>
+<p class="muted" id="ref-line">Shared with you by a NayaNET ambassador — their link is tracked, so they are credited fairly.</p>
+<h2>Choose your plan — 5 days free first</h2>
+<div class="plan selected" data-plan="monthly"><span><b>Monthly</b><br><span class="muted">Billed monthly</span></span><span class="price">$14 / mo</span></div>
+<div class="plan" data-plan="quarterly"><span><b>3 months</b><br><span class="muted">Save with a quarter</span></span><span class="price">$37 / 3 mo</span></div>
+<div class="plan" data-plan="yearly"><span><b>Yearly</b><br><span class="muted">Best regular value</span></span><span class="price">$75 / yr</span></div>
+<div class="plan" data-plan="lifetime"><span><b>Lifetime</b><br><span class="muted">One payment, forever</span></span><span class="price">$150 once</span></div>
+<p class="muted">Founding members — the first 1,000 only — keep these prices locked forever. After that, prices double.</p>
+<h2>Checkout</h2>
+<label>Your name <input id="buyer-name" placeholder="Your name"></label>
+<label>Email <input id="buyer-email" type="email" placeholder="you@example.com"></label>
+<div class="test"><b>Test mode.</b> Payments are not connected yet — Stripe and PayPal connect through Shawn's secure tap, and no real charge is taken by this page until then. Your ambassador referral is recorded with the order, so the credit is never lost.</div>
+<button id="pay-btn">Start my 5 free days</button>
+<p class="muted">Ambassadors earn 50% of revenue, paid automatically every Wednesday. Payout terms are confirmed in the open before any payout runs.</p>
+</div>
+<script>
+// Checkout wiring — ref carried from ?ref= (joinus link) through to the sale writer.
+// Sale writer payload (server, on confirmed payment ONLY):
+//   { kind: "sale", alias: <ref alias>, net: <order net>, order_ref, created_at }
+// No sale row is written from this page alone; only a confirmed payment writes it.
+const params = new URLSearchParams(location.search);
+const ref = params.get("ref");
+if (ref) document.getElementById("ref-line").textContent =
+  "Shared with you by @" + ref + " — their link is tracked, so they are credited fairly.";
+document.querySelectorAll(".plan").forEach(el => el.onclick = () => {
+  document.querySelectorAll(".plan").forEach(p => p.classList.remove("selected"));
+  el.classList.add("selected");
+});
+document.getElementById("pay-btn").onclick = () => {
+  alert("Test mode: payments connect through the secure tap before any real charge. Your plan and referral are ready to record.");
+};
+</script>
+</main></body></html>
