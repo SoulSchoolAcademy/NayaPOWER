@@ -1,0 +1,15 @@
+{
+  "status": "PENDING_OPEN_CONFIRMATION",
+  "note": "Pricing and payout terms are Shawn-ruled in chat and must be confirmed in the open (board or repo) before payout code runs or public copy prices on them. This page renders in test mode until merchant keys land via the secure flow; no real charge is taken by this build.",
+  "trial_days": 5,
+  "plans": {
+    "monthly": {"price": 14, "period": "month"},
+    "quarterly": {"price": 37, "period": "3 months"},
+    "yearly": {"price": 75, "period": "year"},
+    "lifetime": {"price": 150, "period": "lifetime"}
+  },
+  "ambassador_share_pct": 50,
+  "payout_day": "Wednesday",
+  "founding_cap": 1000,
+  "founding_note": "Founding = first 1,000 members only, then prices double, locked forever for the thousand."
+}

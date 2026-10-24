@@ -1,0 +1,39 @@
+<!-- Ambassador row — place BESIDE My Smart Link on /dashboard, by addition, never a new dashboard page.
+     Data: GET ambassador_links for the citizen's alias, GET ambassador_events for that alias.
+     Display-only until payout terms are confirmed in the open. Honest zeros when events are 0. -->
+<section class="ambassador-row" aria-label="Ambassador">
+  <div class="amb-frame">
+    <h2>✦ You're hired — your ambassador link</h2>
+    <p class="amb-link" id="amb-link">https://nayanet.live/joinus?ref=<span id="amb-alias">your-alias</span></p>
+    <p class="amb-stats" id="amb-stats">Clicks 0 · Signups 0 · Sales 0 · Your Wednesday share $0.00</p>
+    <p class="amb-note">You earn 50% of revenue, paid every Wednesday. Share shown here is display-only until payout terms are confirmed in the open.</p>
+    <div class="amb-actions">
+      <button class="amb-plus" id="amb-share" aria-label="Share">＋ Share</button>
+      <button class="amb-ghost" id="amb-copy">Copy link</button>
+      <a class="amb-ghost" href="/dashboard#growth">See your dashboard</a>
+    </div>
+    <div class="amb-share-sheet" id="amb-share-sheet" hidden>
+      <button data-channel="facebook">Facebook</button>
+      <button data-channel="sms">Text</button>
+      <button data-channel="email">Email</button>
+      <button data-channel="ask-naya">Ask Naya to write it</button>
+    </div>
+  </div>
+  <div class="amb-frame">
+    <h2>🏆 Ambassador leaderboard</h2>
+    <p class="amb-note">Alias only, never real identity. No events yet means an honest empty board, never fabricated ranks.</p>
+    <ol id="amb-leaderboard"><li>No ambassador activity recorded yet — be the first.</li></ol>
+    <p class="amb-note" id="amb-my-rank"></p>
+  </div>
+</section>
+<style>
+.ambassador-row{display:grid;gap:16px;margin:16px 0}
+.amb-frame{border:1px solid rgba(180,160,255,.45);border-radius:18px;padding:18px;background:#0a0a12;color:#fff;box-shadow:0 0 24px rgba(140,120,255,.18)}
+.amb-frame h2{margin:0 0 8px;font-size:20px}
+.amb-link{font-size:18px;word-break:break-all}
+.amb-stats{font-size:16px}
+.amb-note{opacity:.85;font-size:14px}
+.amb-actions{display:flex;gap:10px;flex-wrap:wrap}
+.amb-plus{border-radius:999px;padding:10px 18px;background:#8b7cff;color:#fff;border:none;font-size:16px}
+.amb-ghost{border-radius:999px;padding:10px 18px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);font-size:16px;text-decoration:none}
+</style>
