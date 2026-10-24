@@ -117,7 +117,7 @@ export function aliasTopicDiscoveryCandidate(policy,serverFacts){
   if(typeof alias!=='string'||!/^[a-zA-Z0-9][a-zA-Z0-9._-]{1,31}$/.test(alias) ||
     !Array.isArray(topics)||topics.length<1||topics.length>12||
     topics.some(t=>typeof t!=='string'||t.length<2||t.length>48||
-      !/^[\\p{L}\\p{N}][\\p{L}\\p{N} ._-]*$/u.test(t)))
+      !/^[\p{L}\p{N}][\p{L}\p{N} ._-]*$/u.test(t)))
     return {candidate:false,reason:'INVALID_SAFE_CONNECT_PROJECTION'};
   return {candidate:true,layer:'CONNECT_ALIAS_TOPICS',alias,topics:[...topics],
     reason:'CANDIDATE_RECHECK_ON_TRUSTED_SERVER',
