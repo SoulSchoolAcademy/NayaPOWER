@@ -17,10 +17,24 @@ QUALITY_DIMENSIONS = (
     "Performance", "Reliability & Continuity", "Accessibility", "Craft",
 )
 
+# Exact dimensions/levels from canonical Smart Note SN-0843. The D1-D8 visual
+# and technical rubric remains in force, but does not replace the North Star.
+NORTH_STAR_DIMENSIONS = (
+    "human_experience", "naya_operating_experience", "execution_performance",
+    "network_intelligence", "trust_governance", "value_continuous_evolution",
+)
+NORTH_STAR_LEVELS = ("individual", "journey", "network")
+
+
 
 def load_registry(path):
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     assert data["schema_version"] == "nayanet.surface-registry.proposed.v1"
+    north = data["north_star_operating_standard"]
+    assert north["id"] == "NAYANET-10/10-OPERATING-STANDARD"
+    assert tuple(north["six_dimensions"]) == NORTH_STAR_DIMENSIONS
+    assert tuple(north["three_levels"]) == NORTH_STAR_LEVELS
+    assert len(north["seven_question_loop"]) == 7
     rows = data["surfaces"]
     assert rows and len({r["id"] for r in rows}) == len(rows)
     assert len({r["path"] for r in rows}) == len(rows)
@@ -30,9 +44,46 @@ def load_registry(path):
         assert row["critical_journey"] and row["owner_area"]
         assert row["human_journey"] and row["naya_journey"] and row["network_continuity_journey"]
         assert "experience_proof" in row["assessments"]
+        ns = row["assessments"]["north_star"]
+        assert set(ns["score_by_level"]) == set(NORTH_STAR_LEVELS)
+        assert set(ns["evidence_by_level"]) == set(NORTH_STAR_LEVELS)
+        for level in NORTH_STAR_LEVELS:
+            assert set(ns["score_by_level"][level]) == set(NORTH_STAR_DIMENSIONS)
         assert set(row["assessments"]["dimension_scores"]) == set(QUALITY_DIMENSIONS)
         assert all(x in ids for x in row["depends_on"])
     return data
+
+
+def north_star_gate(assessment):
+    """No accepted 10-star page if journey/network six-axis evidence is missing.
+
+    Editable source values and receipt strings are never trusted by this
+    function; a result of None only permits *further external verification*.
+    """
+    north = assessment.get("north_star") or {}
+    scores = north.get("score_by_level") or {}
+    if set(scores) != set(NORTH_STAR_LEVELS):
+        return "NORTH_STAR_UNASSESSED"
+    measured = []
+    for level in NORTH_STAR_LEVELS:
+        row = scores.get(level)
+        if not isinstance(row, dict) or set(row) != set(NORTH_STAR_DIMENSIONS):
+            return "NORTH_STAR_UNASSESSED"
+        measured.extend(row.values())
+    if not all(isinstance(v, (int, float)) and not isinstance(v, bool)
+               and 0 <= v <= 10 for v in measured):
+        return "NORTH_STAR_UNASSESSED"
+    if any(v < 9.5 for v in measured):
+        return "BELOW_9_5"
+    proof = north.get("evidence_by_level") or {}
+    if set(proof) != set(NORTH_STAR_LEVELS) or not all(
+        isinstance(proof.get(level), list) and bool(proof[level])
+        for level in NORTH_STAR_LEVELS
+    ):
+        return "NORTH_STAR_UNVERIFIED"
+    if not north.get("cohorts_tested"):
+        return "NORTH_STAR_UNVERIFIED"
+    return None
 
 
 def grade_surface(item):
@@ -44,6 +95,9 @@ def grade_surface(item):
         return "UNASSESSED"
     if any(v < 9.5 for v in vals):
         return "BELOW_9_5"
+    north_gate = north_star_gate(a)
+    if north_gate:
+        return north_gate
     # Ten-star excellence is not a CSS/technical average. A valuable human
     # experience AND a cold Naya's operating/handoff experience are mandatory.
     # Never infer satisfaction or value from route hits and raw run counts.
@@ -126,7 +180,7 @@ def audit_registry(registry, probe=probe_surface):
                      "critical_journey":item["critical_journey"],
                      "quality_gate":grade_surface(item),**signal})
     reachable = sum(r["reachable"] is True for r in rows)
-    unknown = sum(r["quality_gate"] == "UNASSESSED" for r in rows)
+    unknown = sum(r["quality_gate"] in ("UNASSESSED", "NORTH_STAR_UNASSESSED") for r in rows)
     status = ("red" if any(r["reachable"] is False for r in rows)
               else "unknown" if any(r["reachable"] is None for r in rows)
               else "amber")  # Even 25/25 200 is never GREEN.
