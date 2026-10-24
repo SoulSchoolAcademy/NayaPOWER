@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -37790,6 +37790,14 @@ _Last updated: 2026-10-24 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gate-stall-20261024-1334 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent gate-stall-20261024-1334: reproduce all 16 exit-7 refusals with per-brief evidence so the stall claim no longer rests on a 3-of-16 spot check
+
+**Receipt:** `twelve-lane-receipts/gap-gate-stall-20261024-1334-lane0.md`
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: parent receipt SHA-256 4cef550d4d6dc3c5a25c0d4043f5edcb96dccedec48ccb06763c2ab64f1eeacc MATCHES the gap receipt's citation exactly; evidence file hidden_files/evidence/gap-gate-stall-20261024-1334-refusals-20261024-2043.md SHA-256 65a02ec2d3038a67565e43cd005d55ea4e948f5d8d73ffa868bdb8dce65d907a MATC
 
 ### ✅ gate-stall-20261024-1334 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
