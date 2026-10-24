@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-24T17:24:25Z",
-  "tip": "39796760e143dab3b6b10a3126bf7b123cd631ea",
+  "generated_at": "2026-10-24T18:24:26Z",
+  "tip": "05f209aed3829edeb44f27dd1cf1df88fa0fda16",
   "prs": [
     {
       "number": 2968,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "1c30dab9b1ea5ae4559d74ba8465733c5ea847e1"
+      "head": "d0c4b2a4ed7c61f88bce81db13c3663d88b16ec4"
     },
     {
       "number": 3000,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "51168dc459de5fe57df84de635d5b88b2da55fbe"
+      "head": "168c7145e58a6b02fbd02bba756be9c4e72d6d7d"
     },
     {
       "number": 3036,
@@ -38,15 +38,6 @@
       "cure": "Author cures the PR-caused red check(s): door-obligation; then re-derive at the new head.",
       "owner": "author lane",
       "head": "f88edf88f7d1648f6bc75506d44f2ba966d296c7"
-    },
-    {
-      "number": 3037,
-      "title": "fix(safety): backfill SN-0842 door capture + registry entry",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness, door-obligation; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "7dc4c4b6173f555934db7b323bf92c7938083291"
     }
   ]
 }
