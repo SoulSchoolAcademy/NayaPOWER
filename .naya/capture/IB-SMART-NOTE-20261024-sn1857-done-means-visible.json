@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1857",
+ "intelligence": {
+  "title": "Done Means Visible",
+  "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1857-done-means-visible",
+  "smart_note_id": "SN-1857",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1857/IB-SMART-NOTE-20261024-sn1857-done-means-visible.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-24. No runtime provenance invented.",
+  "ingested_at": "2026-10-24",
+  "essence": "A thing is done when the person it's for can see it working — not when it's built, not when it's merged, not when it's announced. For a Smart Note, done means: it shows in the Hub, and you have clicked its link yourself and seen your title. And the habit that makes it automatic: when you spot value, file it in that same pass — don't wait to be told. See it, file it, click it, share the link.",
+  "human_view": "Everything has stages: made, landed, live. Only the last one is done. A note sitting on a branch is made. A note merged is landed. A note a person can open is live — and live is the only stage you're allowed to report as done. The other half is timing: the moment you learn something worth sharing is the moment to share it. Waiting for an order turns a living system into a queue.",
+  "simple_view": "If your friend can't see it, it isn't done yet. And when you find something cool, you don't wait for someone to ask — you show them. That's it: make it, show it, share it.",
+  "grandma_view": "Dear, a cake in the oven isn't dessert, and a letter in a drawer isn't sent. Done is when it's on the table and someone can taste it. And good news kept waiting for permission isn't kindness either — when you have something worth sharing, share it while it's fresh.",
+  "naya_view": "Two rules, one habit:\n\n1. **Stage honesty.** Name the stage you're actually at — BUILT (exists somewhere) / LANDED (on main) / LIVE (visible at the real address, clicked by the filer). Each stage has its own evidence; never borrow the next stage's. This is ANNOUNCEMENT ≠ IMPLEMENTATION ≠ VERIFICATION ≠ VALUE applied to reporting (Naya 3, 2026-10-14).\n2. **The door is direct.** A Smart Note is filed by one write to main at its canonical path (`PUT /contents/<path>` — DOOR.md). No branch, no pull request, no merge wait. The sync (about 5 minutes) carries it into the Hub and mints the /s/ link. Capture and index registration follow in the same pass so the registry stays whole — they are bookkeeping, not what lights the link.\n3. **The proactive habit.** Value identified → note filed → link shared when clicked-live. No order needed. This is Nitro's standard, named by the director (2026-10-24): she doesn't wait to be told; she just does it, and the link she shares is already done.",
+  "ai_view": "Trust is built out of visible things. Every \"done\" that turns out to be a stage short costs the reader a verification they should never have to run. The fix is not care — it's definition: done has exactly one meaning, and the habit files at the speed of noticing.",
+  "machine_view": {
+   "sn": "SN-1857",
+   "title": "Done Means Visible",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1857/IB-SMART-NOTE-20261024-sn1857-done-means-visible.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "{\"principle\":\"DONE_MEANS_VISIBLE\",\"stages\":[\"BUILT\",\"LANDED\",\"LIVE\"],\"done_definition\":\"LIVE only: visible at the real address, clicked by the filer, title seen\",\"door\":\"PUT /contents/<canonical path> direct to main; sync ~5 min; register capture+index in the same pass\",\"habit\":\"spot value -> file in the same pass -> share the clicked-live link; no order required\",\"reject\":[\"reporting BUILT or LANDED as done\",\"a /s/ link the filer has not clicked\",\"waiting to be told before filing value\"]}"
+  },
+  "views_note": "Views derived 2026-10-24 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1857/IB-SMART-NOTE-20261024-sn1857-done-means-visible.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0ab6ec464da29b83208a86c136bf1b9f0dabde51"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
