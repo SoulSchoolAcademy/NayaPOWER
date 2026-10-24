@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-24T04:15:45+00:00",
+ "generated_utc": "2026-10-24T17:15:23+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,15 +31,8 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [
-    {
-     "number": 3032,
-     "title": "docs(brain): learning event 2026-10-23",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3032",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "know",
@@ -58,8 +51,15 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3036,
+     "title": "fix(retrieve): re-stamp SN-1854 page_hash after 211cff Filed-line addition",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3036",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "act",
@@ -140,9 +140,9 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3033,
-     "title": "safety(door-obligation): backfill 19 orphaned Smart Note captures + registry entries",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3033",
+     "number": 3037,
+     "title": "fix(safety): backfill SN-0842 door capture + registry entry",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3037",
      "draft": false
     },
     {
@@ -217,15 +217,8 @@
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
-   "open_prs": [
-    {
-     "number": 3031,
-     "title": "feat(product): prove NayaNET citizen vs managed Naya vs owner-fork promises",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3031",
-     "draft": true
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "product",
@@ -246,19 +239,13 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
-     "number": 3025,
-     "title": "feat(living-map): 25-door NayaNET readiness registry and fail-closed 9+ audit",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3025",
-     "draft": true
-    },
-    {
      "number": 2968,
      "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 1
   },
   {
    "id": "memory",
@@ -431,6 +418,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 7,
+ "open_pr_total": 5,
  "unassigned_prs": 3
 }
