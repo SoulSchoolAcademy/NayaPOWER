@@ -1,6 +1,6 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-24T03:24:25Z",
+  "generated_at": "2026-10-24T04:24:43Z",
   "tip": "782cbe2c130476688de069045e6ac0433f8b1403",
   "prs": [
     {
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "72d25f6d637c699413b5569d40681a1e833e9664"
+      "head": "74597eb0eb00a3d9e3f875e17daf0617c2ab90a7"
     },
     {
       "number": 3000,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "0fd04d96bf1e5de2e3dd5da5721e571c3140508c"
+      "head": "fd34f3d89d9b02495ccdd5d94285a387d1341911"
     },
     {
       "number": 3025,
@@ -47,6 +47,24 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "22ad0d647fda8899c38344ab3274b32c1586ed3b"
+    },
+    {
+      "number": 3032,
+      "title": "docs(brain): learning event 2026-10-23",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "4f162fa221461004c62328893e7edc62212455b9"
+    },
+    {
+      "number": 3033,
+      "title": "safety(door-obligation): backfill 19 orphaned Smart Note captures + registry entries",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "e8498df16110e85217a01f96a86fb9675a8a6a56"
     }
   ]
 }
