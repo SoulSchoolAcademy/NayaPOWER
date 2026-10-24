@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-24  
-**Receipt basis commit:** `cc05a1adcf348f3151fbd091f70e5e0518db72d4`  
-**Inventory file count:** 1666  
+**Receipt basis commit:** `1b128a3b98c068ca7a993f9521001b4a0fd29d80`  
+**Inventory file count:** 1668  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 856 |
+| 05-MEMORY | 858 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -991,6 +991,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1858/IB-SMART-NOTE-20261024-sn1858-how-a-smart-note-goes-live-instantly.md` — `db0c5f0d2d62` (4477 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1861/IB-SMART-NOTE-20261024-sn1861-fork-or-no-fork-exactly-what-you-get.md` — `b333c0db1485` (5013 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1862/IB-SMART-NOTE-20261024-sn1862-what-you-get-when-you-pay.md` — `4ab547c0df70` (5318 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1864/IB-SMART-NOTE-20261024-sn1864-smart-pricing-what-you-get-free-what-you-get-paid.md` — `65cc9c90a1ce` (5064 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0853/IB-SMART-NOTE-20261024-sn0853-how-we-work-together-team-naya.md` — `cbb715eb4d5a` (7211 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0854/IB-SMART-NOTE-20261024-sn0854-security-law-in-the-book.md` — `809b115aee6a` (7465 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0855/IB-SMART-NOTE-20261024-sn0855-cant-find-it-build-it-found-a-problem-apply-a-solution.md` — `e6b412226f70` (4731 bytes)
@@ -998,6 +999,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0857/IB-SMART-NOTE-20261024-sn0857-active-intelligence-every-page-composed-brought-to-life.md` — `c92afc8f73ff` (7318 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1859/IB-SMART-NOTE-20261024-sn1859-what-i-learned-done-visible-elite-alive-understood.md` — `6c83e1d7822f` (7107 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1860/IB-SMART-NOTE-20261024-sn1860-smart-notes-from-inside-the-hub-quick-note-then-smart-note.md` — `f23278c0832c` (7438 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1863/IB-SMART-NOTE-20261024-sn1863-pricing-free-vs-paid.md` — `35c2b386c7ac` (6664 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)

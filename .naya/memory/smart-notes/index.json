@@ -15354,13 +15354,53 @@
         "note": "published directly as a BRAIN projection in commit cc05a1adcf348f3151fbd091f70e5e0518db72d4 ('SN-1862 - What You Get When You Pay: The Free Line and the NayaPOWER Line (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "fa0355367fec2530cadf525f5d171a06b2d118ee70e8aef111268e77078354c9"
+    },
+    {
+      "smart_note_id": "SN-1863",
+      "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1863-pricing-free-vs-paid",
+      "title": "Free Taste, Paid Unlimited: What You Get, in Numbers",
+      "content_hash": "55ad36237ea437e90a39cd0fa262be88c8c3d829dc1c932a7a8e87c06338ad2c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1863/IB-SMART-NOTE-20261024-sn1863-pricing-free-vs-paid.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-24",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 1b128a3b98c068ca7a993f9521001b4a0fd29d80 ('SN-1863 collision: remove Resolve's twin filing (renumbered to SN-1864); the lane's other SN-1863 keeps the number') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "3831410bf8349cf4c8913f7aa54aaada6ca7fb4b0533dbd073d065cdee62da70"
+    },
+    {
+      "smart_note_id": "SN-1864",
+      "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1864-smart-pricing-what-you-get-free-what-you-get-paid",
+      "title": "Smart Pricing: What You Get Free, What You Get Paid",
+      "content_hash": "cc99f292830e2d1c7311fb4f3d394c5ef7ac4d3e9ace1b2702fb7e326dd3e991",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/smart-notes/SN-1864/IB-SMART-NOTE-20261024-sn1864-smart-pricing-what-you-get-free-what-you-get-paid.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-24",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 1b128a3b98c068ca7a993f9521001b4a0fd29d80 ('SN-1863 collision: remove Resolve's twin filing (renumbered to SN-1864); the lane's other SN-1863 keeps the number') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "cbde44c2f2f77b699594453eafd2cce5fad52e595b29900ab76eefc861b27e13"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1863,
+    "next_sequence": 1865,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "fa9a9da132d13ed1894793c22ffed3bca3b74f1e6be0b330a844e05f8396ec06"
+  "corpus_manifest_hash": "c7cc9e72b9213fb948e0e7ad4f0f0144de24aed7069286b4cf78c8a2f121563a"
 }
