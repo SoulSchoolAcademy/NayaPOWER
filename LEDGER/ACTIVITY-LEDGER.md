@@ -2,7 +2,11 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-24 02:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-24 03:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+
+## 🟢 Working right now
+
+- **Team ? — ?** (?) — tick t1488
 
 ## The Teams
 
@@ -545,6 +549,30 @@ _Last updated: 2026-10-24 02:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: queue state live — 26 brief-gap files in brief-queue/ + 1 in claimed/, rotation queued=24, consistent with the receipt's 25-26 count. The 25-brief refusal table is machine-evaluated via claim-brief.py (no hand-claims), root cause correctly named (second-seat independence backlog vs the Clarity-run executor seat), routing note actionable. 
 
+### ✅ t1483 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** winmine-14-unmined-receipts-t1483
+
+**Receipt:** `twelve-lane-receipts/t1483-lane10.md`
+
+**Evidence:** VERIFIED: winmine file hidden_files/winmine-success-patterns-t1483.md exists, sha256 9df42424118eab4eb6aa3c588bb08ac875c15ea328306c586e6bdd5558f1d041 byte-matches the receipt claim; 58 lines carrying 3 shipped patterns (WP-4 tip-churn re-anchor, WP-5 frontier survey before design, WP-7 prose-to-byte translation), honest delta table vs named t1027 P
+
+### ✅ t1481 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Replay t0780 SURGE-(a) MCC verdict vs CORE-PRINCIPLES with blindness-naming pre-reg
+
+**Receipt:** `twelve-lane-receipts/t1481-lane3.md`
+
+**Evidence:** Verified the replay's central falsifier independently: grep across the arm receipt dirs (arm2/arm3/arm4 variants) returns zero MCC/K1-K4 mentions — the brief's 'downstream evidence' premise is falsified from live bytes as claimed; F-R3 (lineage-membership) firing from the cheapest check corroborates the pre-reg-before-evaluation discipline working 
+
+### ✅ t1477 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** SB-N2 pre-registration: sealed design doc for the normalization-lesson instrument
+
+**Receipt:** `twelve-lane-receipts/t1477-lane12.md`
+
+**Evidence:** Verified: sb-n2-preregistration-t1477.md exists, sha256 7d94f96a27999063 matches the receipt pin; log pin ask-world-queries.jsonl sha256 c902815f matches; row handles re-derived from live bytes (kind=query rows) per the receipt. All 6 pre-reg parts present per the receipt's own 3-pass scorecard. Clears 9.5 as a complete sealed design. Why not 10: (
+
 ### ✅ t1477 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** pre-register the SB-N2 hypothesis as a falsifiable instrument (design-only; NO wiring code, NO PR)
@@ -555,11 +583,27 @@ _Last updated: 2026-10-24 02:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1475 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
+**Task:** Verify receipt-gate workflow is WIRED (blocks, not just exists)
+
+**Receipt:** `twelve-lane-receipts/t1475-lane9.md`
+
+**Evidence:** Verified the strongest claim of the tick: tip 1b2b6ae1d25897cbf7a935c29204b49293e9829f resolves as commit in mirror; .github/workflows/receipt-gate.yml exists at that tip AND at mirror main; REST read of run 40054089720 confirms 'Receipt pin gate', event pull_request, status completed, conclusion FAILURE, head_sha 6026d90467d1…, head_branch naya/fe
+
+### ✅ t1475 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
 **Task:** read-only wiring-claim adjudication on the receipt-gate's blocking PR-event CI workflow (dispatched t952)
 
 **Receipt:** `twelve-lane-receipts/t1475-lane9.md`
 
 **Evidence:** VERIFIED: tip 1b2b6ae1d25897cbf7a935c29204b49293e9829f exists (REST commit GET); receipt-gate.yml blob at that tip sha256 f4d4d92e... == cited SHA (byte-exact); board comment 6378814357 live on #2793 2026-10-24T02:34:45Z with four-line header and WIRED verdict. Not independently re-verified: firing-run step logs (runs 40054089720/40053698675) and t
+
+### ✅ t1474 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** WINMINE pilot: mine 9.5+ receipts for repeatable success patterns
+
+**Receipt:** `twelve-lane-receipts/t1474-lane6.md`
+
+**Evidence:** Verified: winmine-patterns-pilot-t1474/patterns.md and unminable.md exist; patterns carry byte provenance, checkable replication predicates, and attempted falsifications with BOUNDED verdicts recorded rather than hidden; non-duplication vs the t1469 mine claimed and the NEEDS field honestly scopes embedding as later work. Real verified value: 3 can
 
 ### ✅ t1474 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -568,6 +612,14 @@ _Last updated: 2026-10-24 02:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1474-lane6.md`
 
 **Evidence:** VERIFIED: hidden_files/winmine-patterns-pilot-t1474/patterns.md sha256 2848f1a2... and unminable.md b284a2a1... both match cited SHAs; 3 patterns (P-A passes-do-distinct-named-jobs, P-B fresh-clone-at-pinned-tip, P-C name-the-stale-premise) each with byte provenance, executable replication predicates, and attempted falsification (all BOUNDED, bound
+
+### ✅ t1473 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE slice (a) arm5 — trigram-Jaccard paraphrase contact, verdict FALSIFIED-NO-CONTACT
+
+**Receipt:** `twelve-lane-receipts/t1473-lane7.md`
+
+**Evidence:** Verified: all pins match byte-for-byte — prereg-arm5-t1473.md 1a7b60ce✓, arm_trigram_jaccard_t1473.py 601409b2✓, verdict-t1473.md bc7b9759✓; double-run logs exist; result 0.444 mean with sealed F1/F3 firing matches the FALSIFIED-NO-CONTACT taxonomy call — the verdict follows the pre-registered rules, not gloss. Clears 9.5. Why not 10: (a) no blinde
 
 ### ✅ t1473 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
@@ -593,6 +645,14 @@ _Last updated: 2026-10-24 02:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1473 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
+**Task:** Five-axis retrieval acceptance table (semantic-matching lineage)
+
+**Receipt:** `twelve-lane-receipts/t1473-lane11.md`
+
+**Evidence:** Verified: all four artifact pins match byte-for-byte — acceptance-table.json b6c7109f✓, README.md c36cf948✓, worked-example-arm4.md d750a9f3✓, run-table.py 371cd91f✓; acceptance-table.json parses with 5 axes present; worked-example shows the table firing on real arm4 bytes (14/15 PASS, P-2 PARTIAL). Real verified value: a self-executing instrument 
+
+### ✅ t1473 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
 **Task:** Five-axis acceptance table for the semantic-matching lineage (acceptance-table.json v1.3 + self-executing run-table.py + worked example + negative test)
 
 **Receipt:** `twelve-lane-receipts/t1473-lane11.md`
@@ -604,6 +664,14 @@ _Last updated: 2026-10-24 02:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** SURGE arm4 third-seat chain certification (20/20 three-way cell match)
 
 **Evidence:** Verified: surge-slice-a-arm4-verify-t1465/ on disk with verdict-table.json, derivation.json, verify-arm4-t1465.py all present; sha256 of all three byte-matches receipt pins (158eec1b...1f08, e17f4b9e...366f, 682b4f55...3950). Clears 9.5 because the certification is a fresh independent implementation (own Kendall tau-b tie handling) reproducing buil
+
+### ✅ t1472 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Protected-gate invocation audit: 24 WIRED / 2 EXISTS-UNINVOKED / 0 UNKNOWN
+
+**Receipt:** `twelve-lane-receipts/t1472-lane8.md`
+
+**Evidence:** Verified: tip 6c60c328 resolves as commit in mirror; audit-table.json, audit-registry-raw.json, grep-commands.sh all exist in protected-gate-invocation-audit-t1472/; grep script is re-runnable evidence. The 24-WIRED/2-UNINVOKED verdict rests on firing-log evidence, not presence — the receipt names the adjudication rule per gate. Clears 9.5. Why not
 
 ### ✅ t1472 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
@@ -620,6 +688,14 @@ _Last updated: 2026-10-24 02:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1472-lane8.md`
 
 **Evidence:** Verified: audit dir protected-gate-invocation-audit-t1472/ holds all three claimed files; audit-table.json has exactly 26 rows with verdict counts 24 WIRED / 2 EXISTS-UNINVOKED matching the receipt's headline; bin/receipt-briefcheck.py sha256 dfdb86047be7d6e4... verified byte-identical to the receipt's pinned claim; the two EXISTS-UNINVOKED adjudic
+
+### ✅ t1471 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Stage-1 protect: byte-pinned verdict table on FALSIFIED/SUPERSEDED retrieval seam
+
+**Receipt:** `twelve-lane-receipts/t1471-lane5.md`
+
+**Evidence:** Verified: tip 6c60c328 resolves as commit in mirror; content pins match byte-for-byte — census-live-registry.json 8efc3581✓, probe-registry-index.json af5cc5db✓, verdict-table.json d323da07✓; verdict-table.json schema carries probes with surfaced/flagged/rank fields matching the table's FALSIFIED-RANK-1-unflagged semantics. Real verified value: the
 
 ### ✅ t1471 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
