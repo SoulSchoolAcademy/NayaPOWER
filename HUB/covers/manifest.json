@@ -421,6 +421,72 @@
       "suits": "the combination: teal through violet into gold, a sunset inside one jewel - complete, harmonious, universal",
       "status": "ready",
       "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/lotus-palace-tree",
+      "file": "open/lotus-palace-tree.jpg",
+      "name": "Lotus Palace",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "a palace of crystal lotus flowers, waterfalls and still reflective water: serene, sacred, beautiful - wellness, spirit, gentle luxury",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/sky-jewels-tree",
+      "file": "open/sky-jewels-tree.jpg",
+      "name": "Sky Jewels",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "cosmos",
+      "suits": "the five jewels enthroned over floating waterfall kingdoms under two galaxies: the grandest jewel vista in the library",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/crystal-cathedral-tree",
+      "file": "open/crystal-cathedral-tree.jpg",
+      "name": "Crystal Cathedral",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "five jewels floating in a vault of black crystal, beams of light falling to a mirror floor: ceremony, membership, arrival",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/diamond-light-tree",
+      "file": "open/diamond-light-tree.jpg",
+      "name": "Diamond Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the white colorway at full radiance: a cathedral of clear diamond light - purity, clarity, premium minimal brands",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/river-of-light-tree",
+      "file": "open/river-of-light-tree.jpg",
+      "name": "River of Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "a canyon of teal and violet crystal with a river of light running to a bright heart: depth, journey, technology with soul",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/the-crown-tree",
+      "file": "open/the-crown-tree.jpg",
+      "name": "The Crown",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "abstract",
+      "suits": "the five jewels at poster scale, set in a crown of black crystal: the boldest jewel statement in the library",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
     }
   ],
   "assignment_on_page_creation": {
@@ -494,5 +560,56 @@
       "5. CUSTOM PATH: any cover can be used as-is, or as the reference for a Naya-made custom version."
     ],
     "organization": "three brand tiers (signature / jewel / open) x categories (abstract colorways, the-dimension, prosperity, sanctuary, celebration, craft, cosmos) - the manifest is the shelf data; featured = a rotating curated subset, seeded by Shawn's verdicts."
+  },
+  "library_organization": {
+    "designed_with": "Shawn Vibert, 2026-10-25",
+    "target": "60 citizen covers in five theme shelves of 12; the branded House collection (Naya signature covers + area covers) stands apart as its own shelf.",
+    "shelves": [
+      {
+        "theme": "The Facets",
+        "what": "abstract jewel-crystal colorways - the house design language",
+        "holds": "abstract category"
+      },
+      {
+        "theme": "Kingdoms & Worlds",
+        "what": "epic inner-dimension scenes: palaces, floating kingdoms, doorways",
+        "holds": "the-dimension category"
+      },
+      {
+        "theme": "Sanctuaries",
+        "what": "calm, beauty, nature, water, gardens",
+        "holds": "sanctuary category"
+      },
+      {
+        "theme": "The Cosmos",
+        "what": "galaxies, planets, starlight, the jewels at cosmic scale",
+        "holds": "cosmos category"
+      },
+      {
+        "theme": "Celebrations & Craft",
+        "what": "festivals, light, gatherings - and the makers: craft, work, building",
+        "holds": "celebration + craft + prosperity categories"
+      }
+    ],
+    "featured": {
+      "name": "The First Twelve",
+      "rule": "the chooser opens with these 12 only; the full library is one tap deeper (theme shelves + search). Curated by Shawn's favorites picks - chosen for broad appeal, not one taste. Proposed by Resolve from his verdicts so far; finalized by his picks.",
+      "proposed": [
+        "open/dimension-vista",
+        "open/jewel-facets",
+        "open/violet-facets",
+        "open/gold-facets",
+        "11-her-kingdom-tree",
+        "open/cosmic-jewels-tree",
+        "open/the-crown-tree",
+        "open/crystal-cathedral-tree",
+        "open/lotus-palace-tree",
+        "open/emerald-facets",
+        "open/twilight-blend",
+        "open/aurora-circuit"
+      ]
+    },
+    "discovery": "browse by theme shelf; search by name AND by mood - every cover carries mood tags (calm, bold, warm, radiant, cosmic, serene...) because people search feelings, not categories. The jewel/signature tiers act as a filter inside every shelf.",
+    "state_2026_10_25": "48 assets in the manifest; 29 citizen covers ready (23 + Tree set 3's 6); House collection 15 ready. Facets shelf nearly full (14); Sanctuaries and Cosmos healthy; Craft still empty; Celebrations thin - the remaining road to 60 fills shelves, theme by theme."
   }
 }
