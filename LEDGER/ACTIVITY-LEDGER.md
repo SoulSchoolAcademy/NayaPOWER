@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34205,6 +34205,12 @@ _Last updated: 2026-10-25 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-gap-gap-t0122-recusal-3 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up on t0122-lane11: THIRD consecutive RECUSAL with re-file PLUS ROOT FIX (claim-script pattern gap closed)
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T07:12Z: re-filed brief brief-queue/brief-gap-gap-gap-t0122-lane11.md sha256 a9aecb87f3dbcc68f169f9fb5cab25f4ae3534db08319ecdf06f207b90fd36e9 EXACT match to the receipt and both prior recusal receipts; parent receipt twelve-lane-receipts/gap-gap-t0122-lane11.md sha256 3c9c01593b49ad6c8499ae85d6e4b93e87d686
+
 ### ✅ gap-gap-gap-t0122-recusal-2 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
 
 **Task:** Gap-gap-gap follow-up on t0122-lane11: SECOND consecutive RECUSAL with re-file (loop finding)
@@ -38142,6 +38148,12 @@ _Last updated: 2026-10-25 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261025-0023 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 00:23 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T07:31Z: rotation twelve-lane-rotation.json queued=20 is the exact set the receipt names (t0422, t1468, t1507, t1508 x3, t1510 x2, t1511, t1512 x3, t1514, t1527, t1531, t1556, gap-gap-gap-t0112-lane9, gap-gap-gap-t0122-lane11, gap-gap-gap-t1504-lane10, gap-gap-gap-gap-t1564-lane11); brief-queue/ root holds
 
 ### ✅ seat-stall-20261024-2318 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
