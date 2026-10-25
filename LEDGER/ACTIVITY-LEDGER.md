@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38242,6 +38242,18 @@ _Last updated: 2026-10-25 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261025-0439 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 04:39 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T11:50Z: rotation twelve-lane-rotation.json queued=21 is exactly the set the receipt names (t0422, t1468, t1507, t1508 x3, t1510 x2, t1511, t1512 x3, t1514, t1527, t1531, t1556, gap-gap-gap-t0112-lane9, gap-gap-gap-t0122-lane11, gap-gap-gap-t0132-lane7, gap-gap-gap-t1504-lane10, gap-gap-gap-gap-t1564-lane1
+
+### ✅ distill-weekly-20261025 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Weekly distillation 20261025 (Librarian/Heir hat): essence cut + 32-law repo verification + contradiction scan
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T11:50Z: essences file hidden_files/distill-weekly/essences-20261025.md present (6444 bytes, sha256 36176cbcf2bb1fb0...); lessons.jsonl count 37 with last record id exactly reconcile-three-pass-vs-done-dies-at-human-20261025; notes branch naya4/smart-notes-2026-09-30 ls-remote SHA baf06ad88908b3a453dbf4c23
 
 ### ✅ seat-stall-20261025-0338 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
