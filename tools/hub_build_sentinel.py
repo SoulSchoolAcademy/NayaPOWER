@@ -50,10 +50,14 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import http.client
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -96,23 +100,179 @@ class FetchError(Exception):
     """A page could not be fetched at all — UNREACHABLE, never DIVERGED."""
 
 
-def fetch_url(url: str, timeout: float) -> bytes:
-    req = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": "hub-build-sentinel/1.0 (build-identity check)",
-            "Accept-Encoding": "identity",
-        },
-    )
+# Every transport failure the fetch path can raise while moving bytes.
+# http.client.HTTPException (IncompleteRead, RemoteDisconnected, ...) is
+# NOT an OSError subclass: leaving it out of the caught tuple is what
+# crashed this sentinel on 10 straight hourly runs on 2026-10-25 (L671) —
+# the process died on a traceback, emitted no verdict, and never advanced
+# its state file, so a human had to re-verify the Hub by hand every hour.
+TRANSPORT_ERRORS = (
+    http.client.HTTPException,
+    urllib.error.URLError,
+    urllib.error.HTTPError,
+    ConnectionError,
+    TimeoutError,
+    OSError,
+)
+
+READ_CHUNK = 256 * 1024  # drain granularity for response bodies
+RESUME_LIMIT = 10  # Range-resume rounds before a truncated fetch gives up
+FETCH_ATTEMPTS = 3  # whole-fetch attempts (fresh body), with backoff
+
+
+def _request(url: str, start: int = 0) -> urllib.request.Request:
+    headers = {
+        "User-Agent": "hub-build-sentinel/1.0 (build-identity check)",
+        "Accept-Encoding": "identity",
+    }
+    if start:
+        headers["Range"] = f"bytes={start}-"
+    return urllib.request.Request(url, headers=headers)
+
+
+def _promised_total(resp, start: int) -> int | None:
+    """The total body length the server promised, if it promised one:
+    the total in a 206 Content-Range, else Content-Length. None when the
+    server promised nothing (chunked transfer) — then only a clean EOF
+    or a later Content-Range can prove the body complete."""
+    content_range = resp.headers.get("Content-Range") or ""
+    if "/" in content_range:
+        total = content_range.rsplit("/", 1)[1].strip()
+        if total.isdigit():
+            return int(total)
+    length = resp.headers.get("Content-Length")
+    if length is not None and str(length).isdigit():
+        return start + int(length) if resp.status == 206 else int(length)
+    return None
+
+
+def _drain(resp, body: bytearray) -> None:
+    """Append a response body to `body`, reading in chunks. A transport
+    failure propagates with everything read so far already appended —
+    IncompleteRead's partial bytes included — so the caller can resume
+    from len(body) instead of starting over."""
+    while True:
+        try:
+            chunk = resp.read(READ_CHUNK)
+        except http.client.IncompleteRead as exc:
+            body += exc.partial
+            raise
+        if not chunk:
+            return
+        body += chunk
+
+
+def _fetch_resumable(url: str, timeout: float) -> bytes:
+    """Fetch `url`, resuming truncated transfers with Range requests.
+
+    The live Hub shell is ~5.4 MB and the connection serving it drops
+    mid-body often enough that one unbounded read() crashed this
+    sentinel for 10 straight hourly runs (IncompleteRead, 2026-10-25).
+    Bytes already received are kept; the next request asks only for the
+    remainder. A body is returned ONLY when it is complete — a truncated
+    page must never reach evaluate(), where it would read as a wrong
+    build and cry DIVERGED at a healthy Hub.
+    """
+    body = bytearray()
+    total: int | None = None
+    resumes = 0
+    while True:
+        start = len(body)
+        failure: Exception | None = None
+        try:
+            with urllib.request.urlopen(_request(url, start), timeout=timeout) as resp:
+                if resp.status not in (200, 206):
+                    raise FetchError(f"{url}: HTTP {resp.status}")
+                if resp.status == 200 and start:
+                    # The server ignored the Range header and is sending a
+                    # fresh full body — restart from it, never append to it.
+                    body = bytearray()
+                    start = 0
+                promised = _promised_total(resp, start)
+                if promised is not None:
+                    total = promised
+                _drain(resp, body)
+        except FetchError:
+            raise
+        except TRANSPORT_ERRORS as exc:
+            if not body and resumes == 0:
+                # Nothing was ever received — not a truncation to resume;
+                # let fetch_url's retry layer handle it with backoff.
+                raise FetchError(f"{url}: {exc}") from exc
+            failure = exc
+        if failure is None and (total is None or len(body) >= total):
+            return bytes(body)
+        # Truncated: the connection dropped mid-body, or closed cleanly
+        # short of the promised total. Resume from the bytes we hold.
+        resumes += 1
+        if resumes > RESUME_LIMIT:
+            held = f"{len(body)} of {total}" if total is not None else f"{len(body)}"
+            raise FetchError(
+                f"{url}: body still truncated ({held} bytes) after {RESUME_LIMIT} resumes"
+            ) from failure
+        time.sleep(0.2)
+
+
+def _fetch_via_curl(url: str, timeout: float) -> bytes:
+    """Last-resort fetch via the curl binary, when one is on PATH.
+
+    Measured 2026-10-25 in the sandbox this sentinel runs in: the egress
+    proxy truncates THIS process's TLS flows mid-body — a dozen urllib
+    attempts at the 5.4 MB shell (plain reads, chunked reads, read1,
+    gzip, ALPN variants) delivered 0.26–3.2 MB before the connection
+    died, and the origin ignores Range (200 full body), so resumption
+    cannot converge either. curl is a different TLS client, the proxy
+    lets it through, and it completed every attempt. The bytes are the
+    same served bytes whichever client carries them — evaluation is
+    untouched — and curl exits non-zero on a truncated transfer, so
+    this path never returns a partial body.
+    """
+    exe = shutil.which("curl")
+    if exe is None:
+        raise FetchError(f"{url}: no curl binary on PATH for the fallback fetch")
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            if resp.status != 200:
-                raise FetchError(f"{url}: HTTP {resp.status}")
-            return resp.read()
-    except FetchError:
-        raise
-    except (urllib.error.URLError, urllib.error.HTTPError, OSError) as exc:
-        raise FetchError(f"{url}: {exc}") from exc
+        proc = subprocess.run(
+            [
+                exe, "-fsSL", "--max-redirs", "5",
+                "--max-time", str(max(1, int(timeout))),
+                "-A", "hub-build-sentinel/1.0 (build-identity check)",
+                "-H", "Accept-Encoding: identity",
+                url,
+            ],
+            capture_output=True,
+            timeout=timeout + 5,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise FetchError(f"{url}: curl fallback could not run: {exc}") from exc
+    if proc.returncode != 0:
+        err = proc.stderr.decode("utf-8", errors="replace").strip()[:200]
+        raise FetchError(f"{url}: curl fallback failed (exit {proc.returncode}): {err}")
+    return proc.stdout
+
+
+def fetch_url(url: str, timeout: float) -> bytes:
+    """Fetch `url` completely, or raise FetchError. Never raises a raw
+    transport exception and never returns partial bytes: every failure
+    mode lands in FetchError, which run_check turns into the UNREACHABLE
+    verdict + a state-file advance (the L671 floor)."""
+    last: Exception | None = None
+    for attempt in range(FETCH_ATTEMPTS):
+        try:
+            return _fetch_resumable(url, timeout)
+        except FetchError as exc:
+            last = exc
+            break  # a truncation/HTTP verdict will not heal by re-reading
+        except TRANSPORT_ERRORS as exc:  # _fetch_resumable converts these; belt and braces
+            last = exc
+        if attempt + 1 < FETCH_ATTEMPTS:
+            time.sleep(0.5 * (2**attempt))
+    # The stdlib transport is exhausted. One last-resort attempt via
+    # curl (see _fetch_via_curl for the measured reason) before the
+    # page is declared unreachable.
+    try:
+        return _fetch_via_curl(url, timeout)
+    except FetchError as curl_exc:
+        raise FetchError(f"{last} | curl fallback also failed: {curl_exc}") from curl_exc
 
 
 # ---------------------------------------------------------------------------
@@ -235,6 +395,27 @@ def load_expectations(path: Path) -> dict:
     return data
 
 
+def _record_unreachable(state_path: Path, base_url: str, detail: str) -> int:
+    """The L671 floor: a failed fetch still emits the structured
+    UNREACHABLE verdict AND advances the state file. A run that produces
+    neither a verdict nor a state advance is the exact failure mode this
+    sentinel exists to abolish — it must be impossible, not unlikely."""
+    ts = now_epoch()
+    record = {
+        "tool": "hub_build_sentinel",
+        "ts_epoch": ts,
+        "ts_iso": iso(ts),
+        "verdict": VERDICT_UNREACHABLE,
+        "base_url": base_url,
+        "detail": detail,
+    }
+    write_state(state_path, record)
+    print(f"HUB BUILD SENTINEL — {record['ts_iso']}")
+    print(f"VERDICT: UNREACHABLE — {detail}")
+    print("(a fetch failure is not a wrong build; the sentinel itself ran and recorded this state)")
+    return EXIT_UNREACHABLE
+
+
 def run_check(args: argparse.Namespace) -> int:
     expectations = load_expectations(Path(args.expectations))
     base_url = (args.base_url or expectations["base_url"]).rstrip("/")
@@ -257,19 +438,14 @@ def run_check(args: argparse.Namespace) -> int:
                 url = base_url + pages_spec[name]
                 pages[name] = fetch_url(url, timeout=args.timeout)
         except FetchError as exc:
-            record = {
-                "tool": "hub_build_sentinel",
-                "ts_epoch": now_epoch(),
-                "ts_iso": iso(now_epoch()),
-                "verdict": VERDICT_UNREACHABLE,
-                "base_url": base_url,
-                "detail": str(exc),
-            }
-            write_state(Path(args.state), record)
-            print(f"HUB BUILD SENTINEL — {record['ts_iso']}")
-            print(f"VERDICT: UNREACHABLE — {exc}")
-            print("(a fetch failure is not a wrong build; the sentinel itself ran and recorded this state)")
-            return EXIT_UNREACHABLE
+            return _record_unreachable(Path(args.state), base_url, str(exc))
+        except Exception as exc:
+            # fetch_url converts every transport failure to FetchError, so
+            # reaching here means something unforeseen. The L671 floor
+            # still holds: verdict + state advance, never a bare traceback.
+            return _record_unreachable(
+                Path(args.state), base_url, f"unexpected fetch failure: {exc!r}"
+            )
 
     outcome = evaluate(expectations, pages)
     ts = now_epoch()
