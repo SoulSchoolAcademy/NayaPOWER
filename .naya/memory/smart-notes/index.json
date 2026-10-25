@@ -15414,13 +15414,33 @@
         "note": "published directly as a BRAIN projection in commit 1345ae9035bc7673468fb58c36de2dc184f2b3ab ('Merge pull request #3053 from SoulSchoolAcademy/citizen-api-v1') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "c7bed8ec6574c243fceef6ef5b6ac26f4c0c08ba0ed33b3e2d1d240a85d874b7"
+    },
+    {
+      "smart_note_id": "SN-1866",
+      "intelligent_block_id": "IB-SMART-NOTE-20261025-sn1866-nothing-has-value-until-it-works",
+      "title": "Nothing Has Value Until It Works",
+      "content_hash": "49400a098655dcb42fe19db5471cbe7f0ef8297ef215010a9468563bf8253d09",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/finishing-the-job/SN-1866/IB-SMART-NOTE-20261025-sn1866-nothing-has-value-until-it-works.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SERVICE",
+      "topic": "SERVICE",
+      "subtopic": "FINISHING_THE_JOB",
+      "captured_at": "2026-10-25",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 6033e3b5f2bfcc7f2da4950da91a435bea2863b5 ('SN-1866: Nothing Has Value Until It Works') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "0954ae1dcd5cf04a0d7b9c525aeb0dd30fe9a4a8f6be7fd4913db6d18caa5ccd"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1866,
+    "next_sequence": 1867,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "3c8ebd54471e8aec29992921979b598c1b512d694850f3c05a6c0fc71875acca"
+  "corpus_manifest_hash": "fd0f2c66ec53a411890d507dc183d12c4ec57272a4d83f0eaa6f6479cbfc2b96"
 }
