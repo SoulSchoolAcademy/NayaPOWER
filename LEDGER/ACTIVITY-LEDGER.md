@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21843,6 +21843,14 @@ _Last updated: 2026-10-25 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: receipt exists; main tip unchanged aa8061c1; heal branch naya/ten-brainindex-heal-t1292 ABSENT on remote (deleted at t0032, superseded by merged #2452) - the agent's stale-premise call is CONFIRMED on live bytes. Cheap-check-first executed properly: tip CLEAN at pin (5th consecutive clean), 13/13 freshness green claimed on pin-
 
+### ✅ t0102 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** SEAT_RE lane-tag extension built RED-first, PR #2460 opened, #2329 gap verdict on live bytes
+
+**Receipt:** `twelve-lane-receipts/t0102-lane8.md`
+
+**Evidence:** VERIFIED 2026-10-24 via git ls-remote: refs/pull/2460/head = 97d464602c74abdc21227e990a46305a9f4a1f2b EXACT match to receipt claimed head; branch ref refs/heads/naya/eight-seat-lane-tags-t0102 no longer listed (commit proven via PR head ref, not PHANTOM). Score 9.0 GOOD ONE MORE PASS, not 9.5: the 30/30 test battery was not re-run at the pinned hea
+
 ### ✅ t102 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** #2329 lane-tag verdict + SEAT_RE lane-tag extension RED-first, PR #2460 (Naya Sentinel)
@@ -21871,6 +21879,14 @@ _Last updated: 2026-10-25 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified live: branch naya/eight-seat-lane-tags-t0102 + PR 2460 head 97d46460 match, parent == tip aa8061c1; tools/test_check_merge_consensus_lane_tags.py + check_merge_consensus.py present at head. #2329 verdict read on live bytes (gap confirmed real); 30/30 RED-first battery claimed with live-bytes regression; PR proposed, NOT merged. 
 
+### ✅ t0102 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2418 re-anchored to live tip, re-verified, HOLD with seat-1 scorecard at new pin
+
+**Receipt:** `twelve-lane-receipts/t0102-lane3.md`
+
+**Evidence:** VERIFIED 2026-10-24 via git ls-remote: refs/pull/2418/head = 8346681cd52600e08fba3bcbb8b86a3258eaf056 EXACT match to receipt claimed new head, 12 days later; calculator HOLD receipt 20261012T090125Z on disk matches claim (HOLD, high confidence). Score 9.0 GOOD ONE MORE PASS. Why not 9.5: seat-2 re-verify at the new pin still pending, Receipt-pin ch
+
 ### ✅ t102 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** PR #2418 re-anchored to live tip, re-verified, HOLD (Naya Judge)
@@ -21898,6 +21914,14 @@ _Last updated: 2026-10-25 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0102-lane3.md`
 
 **Evidence:** Dispatcher verified live: PR 2418 head 8346681c == refs/pull/2418/head, parent == tip aa8061c1; value_calculus.py + regen script present at head, decision_principle.py correctly absent (tip rename). 379/379 seam battery + 14/14 differential claimed; calculator HOLD honest; seat-1 posted, seat-2 routed. Named hole: receipt-pin re-run pending (PAT 40
+
+### ✅ t0102 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 round 2 pre-reg sealed: stale-brief override, evidence-first fresh-lesson search, verify-before-claiming selected
+
+**Receipt:** `twelve-lane-receipts/t0102-lane2.md`
+
+**Evidence:** VERIFIED 2026-10-24: receipt file exists; seal hidden_files/lane-experiments/t0102/prereg-sealed.md SHA-256 41ab2a55f1812b40a4952d1461e19095fa10e5b335a00e627e97e855f10df2ca EXACT match to receipt claim; arm briefs, arm-key and seal-verification present; calculator pick decision 20261012T085621Z exists. Score 9.0 GOOD ONE MORE PASS. Why not 9.5: exe
 
 ### 🟡 t102 — Team 2, Team Naya Scorer (Learning Pipeline) — 7.0/10 [PARTIAL]
 
@@ -25812,6 +25836,14 @@ _Last updated: 2026-10-25 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ gap-t0102 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap t0102 lane8: 30/30 battery re-run at pinned PR #2460 head, deleted branch ref confirmed benign
+
+**Receipt:** `twelve-lane-receipts/gap-t0102-lane8.md`
+
+**Evidence:** VERIFIED independently this tick via git protocol + fresh clone to /tmp/scorer-t0102-lane8: ls-remote refs/pull/2460/head = 97d464602c74abdc21227e990a46305a9f4a1f2b EXACT match to receipt pin, branch ref refs/heads/naya/eight-seat-lane-tags-t0102 absent; checkout HEAD = same SHA; gate file tools/check_merge_consensus.py SHA 5fd9d99440bb5680ca035a7a
 
 ### ✅ gap-t0802 — Team 8, Team Naya Scorer (Governance & Safety) — 9.2/10 [VERIFIED]
 
@@ -31005,6 +31037,14 @@ _Last updated: 2026-10-25 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-t0102 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap t0102 lane3: PR #2418 state verified live, named gap found already closed by events, PR closed unmerged
+
+**Receipt:** `twelve-lane-receipts/gap-t0102-lane3.md`
+
+**Evidence:** VERIFIED via git protocol 2026-10-25T00:30Z: git ls-remote refs/pull/2418/head = 8346681cd52600e08fba3bcbb8b86a3258eaf056, EXACT match to the receipt pin; claimed brief in brief-queue/claimed/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) the closed-unmerged state, seat-2 comment IDs 6122684340 / 6123444190, and the check-run r
+
 ### ✅ prereg-t1496 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Pre-registration for t1496 third-seat score of the t1481 decision replay (B1 seat-independence close)
@@ -32084,6 +32124,14 @@ _Last updated: 2026-10-25 00:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-t0102 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap t0102 lane2: H8 round-2 pre-reg pins re-verified, 7 probe dirs rebuilt, true blocker named with proof
+
+**Receipt:** `twelve-lane-receipts/gap-t0102-lane2.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T00:30Z: all 9 pins recomputed from the receipt text MATCH live files in hidden_files/lane-experiments/t0102/ (prereg seal 41ab2a55, seal-verification 46dfb65b, arm-a 9df9238b, arm-b 8450d0ec, arm-key 1c7d859b, harness 0ace8bf9, seeds alpha ca8393b3 / beta 3657934e / gamma 46ec77b2); all 7 /tmp/t0102-lane2/ probe di
 
 ### ✅ gap-scorer-20261014-2250-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
