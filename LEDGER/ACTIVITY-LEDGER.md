@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38242,6 +38242,24 @@ _Last updated: 2026-10-25 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261025-0543 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 05:43 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T12:50Z: rotation twelve-lane-rotation.json queued=21 is exactly the set the receipt names (set equality checked, all 21 files); brief-queue/ root holds exactly those 21 plus lane-feed.md; prior stall receipt seat-stall-20261025-0439.md mtime 11:40 UTC / 04:40 PDT, ~63 min before this run, so the stall-cap
+
+### ✅ gap-distill-daily-20261025 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: widen boot-pointer gate regex (colon-tolerant) and measure the mission-state sync's real effect
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T12:40Z: edited hidden_files/boot_pointer_check.py sha256 68b7ac3fdea1fab3d77695f2800a080560ac38dda65b8e59c337bba5a2036251 EXACT match to receipt post-edit pin; orig script sha256 4f08da7f... EXACT match to pre-edit pin; diff is exactly the colon-tolerance change to LIVE_BOARD_RE and LIVE_PHRASE_RE; git ls
+
+### ✅ distill-daily-20261025 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Daily distillation 2026-10-25: independently reproduced mission-state drift + boot-pointer gate DEGRADED, pinned gate regex root cause
+
+**Evidence:** VERIFIED 2026-10-25T12:35Z via git ls-remote + receipt scratch clone: main head 908d70bcefc054f128853c66349f9d585e82b77d matches receipt; snapshot branch naya/mission-state head 35b3c3d417c6a63d8d7ba60e6bb85ac67683c374 matches receipt (unmoved); main BRAIN/CURRENT-MISSION-STATE.md sha256 65382e118aebed72502651e626643766406e5f665d1146c3dff27ce30665b
 
 ### ✅ seat-stall-20261025-0439 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
