@@ -17,45 +17,66 @@
       "key": "rotation/hero-revised",
       "file": "01-hero-revised.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Hero Revised",
+      "category": "house-signature",
+      "suits": "the flagship: her portrait, the crystal medallion and the five jewels over the dimension - the Nayas' own pages and showcase samples"
     },
     {
       "key": "rotation/obsidian-night",
       "file": "02-obsidian-night.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Obsidian Night",
+      "category": "house-signature",
+      "suits": "her and the medallion in the obsidian night register: deep, elegant, after-dark"
     },
     {
       "key": "rotation/golden-dawn",
       "file": "03-golden-dawn.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Golden Dawn",
+      "category": "house-signature",
+      "suits": "her and the medallion in golden dawn light: warm beginnings, optimism"
     },
     {
       "key": "rotation/crystal-portal",
       "file": "04-crystal-portal.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Crystal Portal",
+      "category": "house-signature",
+      "suits": "her before the great crystal portal: thresholds, invitations, arrival"
     },
     {
       "key": "rotation/epic-dimension",
       "file": "05-epic-dimension.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Epic Dimension",
+      "category": "house-signature",
+      "suits": "the widest vista of the inner dimension with her at its heart: flagship spaces and showcases"
     },
     {
       "key": "rotation/cosmic-galaxy",
       "file": "06-cosmic-galaxy-tree.jpg",
       "kind": "rotation",
       "status": "ready",
-      "credit": "Naya Tree"
+      "credit": "Naya Tree",
+      "name": "Cosmic Galaxy",
+      "category": "house-signature",
+      "suits": "her within a swirling galaxy of crystal islands (Naya Tree): cosmic scale, wonder"
     },
     {
       "key": "rotation/obsidian-arch",
       "file": "07-obsidian-arch-tree.jpg",
       "kind": "rotation",
       "status": "ready",
-      "credit": "Naya Tree"
+      "credit": "Naya Tree",
+      "name": "Obsidian Arch",
+      "category": "house-signature",
+      "suits": "her framed by the great obsidian arch (Naya Tree): ceremony, gravity, arrival"
     },
     {
       "key": "area/personal",
@@ -63,7 +84,10 @@
       "kind": "area",
       "area": "personal",
       "status": "ready",
-      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
+      "name": "Area \u2014 Personal",
+      "category": "house-area",
+      "suits": "the born cover for personal pages: her and the crystal home"
     },
     {
       "key": "area/business",
@@ -71,7 +95,10 @@
       "kind": "area",
       "area": "business",
       "status": "ready",
-      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
+      "name": "Area \u2014 Business",
+      "category": "house-area",
+      "suits": "the born cover for business pages: her and the crystal city"
     },
     {
       "key": "area/spaces",
@@ -79,7 +106,10 @@
       "kind": "area",
       "area": "spaces",
       "status": "ready",
-      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
+      "name": "Area \u2014 Spaces",
+      "category": "house-area",
+      "suits": "the born cover for spaces: her before the row of golden doorways"
     },
     {
       "key": "area/events",
@@ -87,7 +117,10 @@
       "kind": "area",
       "area": "events",
       "status": "ready",
-      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
+      "name": "Area \u2014 Events",
+      "category": "house-area",
+      "suits": "the born cover for event pages: her and the amphitheater at dusk"
     },
     {
       "key": "area/booking",
@@ -95,7 +128,10 @@
       "kind": "area",
       "area": "booking",
       "status": "designed",
-      "scene": "The golden archway of time"
+      "scene": "The golden archway of time",
+      "name": "Area \u2014 Booking",
+      "category": "house-area",
+      "suits": "the born cover for booking pages: her and the golden archway of time (designed; generation owed)"
     },
     {
       "key": "area/templates",
@@ -103,7 +139,10 @@
       "kind": "area",
       "area": "templates",
       "status": "designed",
-      "scene": "The hall of doorways"
+      "scene": "The hall of doorways",
+      "name": "Area \u2014 Templates",
+      "category": "house-area",
+      "suits": "the born cover for template pages: her and the hall of doorways (designed; generation owed)"
     },
     {
       "key": "area/intel-today",
@@ -111,7 +150,10 @@
       "kind": "area",
       "area": "intel-today",
       "status": "designed",
-      "scene": "The dawn overlook"
+      "scene": "The dawn overlook",
+      "name": "Area \u2014 Intel Today",
+      "category": "house-area",
+      "suits": "the born cover for dashboards and Intel Today: her at the dawn overlook (designed; generation owed)"
     },
     {
       "key": "rotation/obsidian-starlight",
@@ -119,7 +161,10 @@
       "kind": "rotation",
       "status": "ready",
       "credit": "Naya Tree",
-      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Dark premium variant - black medallion disc, star-cut jewels."
+      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Dark premium variant - black medallion disc, star-cut jewels.",
+      "name": "Obsidian Starlight",
+      "category": "house-signature",
+      "suits": "her under starlight over the obsidian world (Naya Tree): night register, calm power"
     },
     {
       "key": "rotation/golden-profile",
@@ -127,7 +172,10 @@
       "kind": "rotation",
       "status": "ready",
       "credit": "Naya Tree",
-      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Jewels sit low - the cover adjuster aligns it."
+      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Jewels sit low - the cover adjuster aligns it.",
+      "name": "Golden Profile",
+      "category": "house-signature",
+      "suits": "her profile in golden light (Naya Tree): warmth, presence, the personal register"
     },
     {
       "key": "rotation/cosmic-ring",
@@ -135,7 +183,10 @@
       "kind": "rotation",
       "status": "ready",
       "credit": "Naya Tree",
-      "note": "Re-fitted by Resolve 2026-10-25: 16:9 source cropped to the slot with medallion, jewel row and portrait ring whole. Her portrait-in-a-jewel-ring concept - strong for personal pages."
+      "note": "Re-fitted by Resolve 2026-10-25: 16:9 source cropped to the slot with medallion, jewel row and portrait ring whole. Her portrait-in-a-jewel-ring concept - strong for personal pages.",
+      "name": "Cosmic Ring",
+      "category": "house-signature",
+      "suits": "her portrait inside a ring of jewels among the galaxies (Naya Tree): identity as the center of a universe"
     },
     {
       "key": "open/dimension-vista",
@@ -288,7 +339,8 @@
       "kind": "rotating",
       "suits": "signature showpiece: her portrait, the crystal N, the jewel row and the whole kingdom behind her - for NayaNET flagship pages",
       "status": "ready",
-      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve",
+      "category": "the-dimension"
     },
     {
       "key": "open/cosmic-jewels-tree",
@@ -1193,5 +1245,10 @@
         ]
       }
     }
+  },
+  "match_doctrine": {
+    "law": "Shawn, 2026-10-25 ~22:09Z: everything in the system gets categorized, labeled and organized so it can be pulled, used and found - covers, pages, smart notes, people, systems. This is one fabric with the auto-match engine: a massive game of match, played by intelligence with logic, automatically. No card, no entry: an asset without a complete match card (name, category, about/suits, tier, typical terms, credit, status) does not enter the library.",
+    "scope": "This manifest is the covers instance of the doctrine. The same card discipline applies to pages (page registry), smart notes (the Smart Note door), citizens and spaces (the match corpus) - one matching fabric across NayaNET.",
+    "arrival_protocol": "Every image Shawn or any Naya contributes is carded on arrival: slotted to 1920x640, named, categorized, described, term-mapped, credited - then added here and pushed with the library."
   }
 }
