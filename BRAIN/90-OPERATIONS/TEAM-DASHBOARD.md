@@ -1,6 +1,6 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-25 03:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-25 06:15 UTC from live sources. Regenerated every wave (~10 min).*
 
 **Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 5 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
@@ -50,14 +50,12 @@
 
 ## Open PRs by Area
 
-### BUILD (4)
-- [#3055](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3055) Auto-match B1: intake-to-vector bridge (Welcome answers -> engine vect
-- [#3054](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3054) Cold retrieve: rebind 3 stale page hashes to live pages
+### BUILD (5)
+- [#3065](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3065) Register 3 pending migrations in production migration ledger (184-file
+- [#3064](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3064) Reporting cure: action-plan hold test follows w746 9.5 ship bar (Kerne
+- [#3063](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3063) Factory S1 cure: Personal base ships ruled 'Deep black' label (Kernel 
 - [#3052](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3052) Naya/mission state
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
-
-### PRODUCT (1)
-- [#2968](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968) Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A 
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*

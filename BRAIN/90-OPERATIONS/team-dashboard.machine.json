@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-25T03:15:21+00:00",
+ "generated_utc": "2026-10-25T06:15:56+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,15 +133,21 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3055,
-     "title": "Auto-match B1: intake-to-vector bridge (Welcome answers -> engine vectors)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3055",
+     "number": 3065,
+     "title": "Register 3 pending migrations in production migration ledger (184-file parity)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3065",
      "draft": false
     },
     {
-     "number": 3054,
-     "title": "Cold retrieve: rebind 3 stale page hashes to live pages",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3054",
+     "number": 3064,
+     "title": "Reporting cure: action-plan hold test follows w746 9.5 ship bar (Kernel residual 5)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3064",
+     "draft": false
+    },
+    {
+     "number": 3063,
+     "title": "Factory S1 cure: Personal base ships ruled 'Deep black' label (Kernel residuals 2+3)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3063",
      "draft": false
     },
     {
@@ -157,7 +163,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -236,15 +242,8 @@
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
-   "open_prs": [
-    {
-     "number": 2968,
-     "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "memory",
@@ -418,5 +417,5 @@
   }
  ],
  "open_pr_total": 5,
- "unassigned_prs": 4
+ "unassigned_prs": 5
 }
