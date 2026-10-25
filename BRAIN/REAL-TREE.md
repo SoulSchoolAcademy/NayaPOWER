@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-25  
-**Receipt basis commit:** `6033e3b5f2bfcc7f2da4950da91a435bea2863b5`  
-**Inventory file count:** 1670  
+**Receipt basis commit:** `b61f8ce6291069e9cce19f3d61a653b192185a48`  
+**Inventory file count:** 1672  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 860 |
+| 05-MEMORY | 862 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -263,6 +263,7 @@
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-22-LEARNING-EVENT.md` — `e57cf10ffba9` (16821 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-LEARNING-EVENT.md` — `f55d4ec4bc04` (24772 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md` — `a8a689bd600b` (13764 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-24-LEARNING-EVENT.md` — `a8caf5f5d5f4` (17474 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md` — `cb3d277c8117` (2359 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md` — `9a102af87000` (2091 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md` — `ef4f22f9e3c1` (2239 bytes)
@@ -1002,6 +1003,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1863/IB-SMART-NOTE-20261024-sn1863-pricing-free-vs-paid.md` — `20a6ab97600a` (10286 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/finishing-the-job/SN-1866/IB-SMART-NOTE-20261025-sn1866-nothing-has-value-until-it-works.md` — `fdcf748ec0bc` (4676 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/ten-star-service/SN-1865/IB-SMART-NOTE-20261025-sn1865-ten-star-service-is-choosing-whats-best.md` — `11f24647734a` (5324 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md` — `1a7e5ca989b0` (2599 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)

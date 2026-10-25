@@ -15213,7 +15213,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection in commit 0ab6ec464da29b83208a86c136bf1b9f0dabde51 ('SN-1857 - Done Means Visible (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "5dcf916dc7285e73a15b6ae089a0cec1c1e73d7cb5d6f16b409747a2f98a76ff"
+      "page_hash": "56bfe858ee2344b906d7f6c4880d573b46bf71ef6917238d6c05d520e5d39793"
     },
     {
       "smart_note_id": "SN-0857",
@@ -15233,7 +15233,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection in commit 0ab6ec464da29b83208a86c136bf1b9f0dabde51 ('SN-1857 - Done Means Visible (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "605a72580069320b567c7e5f98d143fe585167032a584eb099bb32a6a46da6bb"
+      "page_hash": "2b20d90cdf3e0a67353e6b2582a6d843e068ad57923d3ed6f2c5b8545fcf03d6"
     },
     {
       "smart_note_id": "SN-1857",
@@ -15373,7 +15373,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection in commit 1b128a3b98c068ca7a993f9521001b4a0fd29d80 ('SN-1863 collision: remove Resolve's twin filing (renumbered to SN-1864); the lane's other SN-1863 keeps the number') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "3831410bf8349cf4c8913f7aa54aaada6ca7fb4b0533dbd073d065cdee62da70"
+      "page_hash": "9dbedd111c2b7a396260b577f8c03aa5fcc1d2fcb8cfa4546147a40d5c49511e"
     },
     {
       "smart_note_id": "SN-1864",
@@ -15434,13 +15434,33 @@
         "note": "published directly as a BRAIN projection in commit 6033e3b5f2bfcc7f2da4950da91a435bea2863b5 ('SN-1866: Nothing Has Value Until It Works') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "0954ae1dcd5cf04a0d7b9c525aeb0dd30fe9a4a8f6be7fd4913db6d18caa5ccd"
+    },
+    {
+      "smart_note_id": "SN-1867",
+      "intelligent_block_id": "IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned",
+      "title": "Whatever It Takes Means Aligned — Never Around His Word",
+      "content_hash": "96e38a9dea70d13aa58c1209556c19fbe818917b9d28c628fb07547b62ea9aec",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-25",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b61f8ce6291069e9cce19f3d61a653b192185a48 ('Merge pull request #3057 from SoulSchoolAcademy/brain-build/learning-event-20261024') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "5665cdb1cb8ac0b75d289278e531a5af45fb60c14b4a2ae55082aeb078143afa"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1867,
+    "next_sequence": 1868,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "fd0f2c66ec53a411890d507dc183d12c4ec57272a4d83f0eaa6f6479cbfc2b96"
+  "corpus_manifest_hash": "efbf60bdfa8fd57cce9ba0bbc5bf2f09c0de96db937b913353979572bec6583a"
 }

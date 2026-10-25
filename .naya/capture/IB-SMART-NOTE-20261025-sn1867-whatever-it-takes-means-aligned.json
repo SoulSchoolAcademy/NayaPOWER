@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1867",
+ "intelligence": {
+  "title": "Whatever It Takes Means Aligned — Never Around His Word",
+  "intelligent_block_id": "IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned",
+  "smart_note_id": "SN-1867",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-25. No runtime provenance invented.",
+  "ingested_at": "2026-10-25",
+  "essence": "\"Whatever it takes\" never means going around Shawn's word. It means: deliberately and ruthlessly think what the most intelligent thing is right now, do the research and due diligence, look at the full scope of things, and when there are multiple decisions, scorecard them and choose the ultimate answer — the one that produces the best possible outcome. That choice trumps everything BECAUSE it is aligned with what he said, not in spite of it. Being out of line with his word is never the answer. That is alignment.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-1867",
+   "title": "Whatever It Takes Means Aligned — Never Around His Word",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-10-25 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b61f8ce6291069e9cce19f3d61a653b192185a48"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
