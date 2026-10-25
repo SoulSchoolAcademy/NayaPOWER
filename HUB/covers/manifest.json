@@ -509,6 +509,116 @@
       "suits": "pure energy: emerald and sunrise-gold facets bursting upward - fitness, health, coaching, any page about strength and a new morning",
       "status": "ready",
       "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/grand-hall-tree",
+      "file": "open/grand-hall-tree.jpg",
+      "name": "The Grand Hall",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "three arches onto a dawn kingdom, jewel pendants, a floor of light-rings: membership halls, flagship spaces, arrival",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/lotus-lake-tree",
+      "file": "open/lotus-lake-tree.jpg",
+      "name": "Lotus Lake",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "blossom trees and crystal lotus on a dawn lake between waterfall cliffs: serene personal pages, wellness, spirit",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/companions-arch-tree",
+      "file": "open/companions-arch-tree.jpg",
+      "name": "Companions at the Arch",
+      "kind": "open",
+      "tier": "open",
+      "category": "companions",
+      "suits": "a dog and a cat watching the dawn together under the great arch: the heart of the companions shelf - pet pages, rescues, memorials, beloved-animal businesses",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/the-study-tree",
+      "file": "open/the-study-tree.jpg",
+      "name": "The Study",
+      "kind": "open",
+      "tier": "open",
+      "category": "craft",
+      "suits": "a maker's desk in the dimension - crystal pens, scrolls, books, a planet rising through the arch: writers, coaches, creators, consultants",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/city-of-light-tree",
+      "file": "open/city-of-light-tree.jpg",
+      "name": "City of Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "prosperity",
+      "suits": "the grand crystal capital at dusk, bridges and floating citadels over a mirror lake: commerce, ambition, flagship businesses - the prosperity scene the shelf was missing",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/hall-of-arches-tree",
+      "file": "open/hall-of-arches-tree.jpg",
+      "name": "Hall of Arches",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "five arches, five colored worlds, one hall: spaces of spaces, template galleries, networks, doorways",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/feast-hall",
+      "file": "open/feast-hall.jpg",
+      "name": "The Feast Hall",
+      "kind": "open",
+      "tier": "open",
+      "category": "celebration",
+      "suits": "a banquet hall of obsidian and gold with crystal goblets and flower garlands: restaurants, caterers, weddings, celebrations, hospitality",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/crystal-boutique",
+      "file": "open/crystal-boutique.jpg",
+      "name": "The Crystal Boutique",
+      "kind": "open",
+      "tier": "open",
+      "category": "prosperity",
+      "suits": "rose-gold shelves of glowing jewel-bottles under silk drapes: beauty brands, perfumeries, salons, elegant shops",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/morning-light",
+      "file": "open/morning-light.jpg",
+      "name": "Morning Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "quiet dawn light through pale crystal arches over green hills: faith and spiritual communities, meditation, welcome pages - sacred to everyone, belonging to no single tradition",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/power-surge",
+      "file": "open/power-surge.jpg",
+      "name": "Power Surge",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "a crimson and gold crystal shockwave: pure power for fitness, sport, competition and drive",
+      "status": "ready",
+      "credit": "Naya Resolve"
     }
   ],
   "assignment_on_page_creation": {
