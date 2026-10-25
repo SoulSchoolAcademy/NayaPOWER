@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-25",
-  "receipt_basis_commit": "1345ae9035bc7673468fb58c36de2dc184f2b3ab",
-  "inventory_file_count": 1669,
+  "receipt_basis_commit": "b61f8ce6291069e9cce19f3d61a653b192185a48",
+  "inventory_file_count": 1672,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 859,
+    "05-MEMORY": 862,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -1114,6 +1114,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md",
       "blob_sha": "a8a689bd600b9842e6c4e7c0164835090d776332",
       "size": 13764
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-24-LEARNING-EVENT.md",
+      "blob_sha": "a8caf5f5d5f4b59b74d58768d8cd7cea598ac102",
+      "size": 17474
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -4801,9 +4806,19 @@
       "size": 10286
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/finishing-the-job/SN-1866/IB-SMART-NOTE-20261025-sn1866-nothing-has-value-until-it-works.md",
+      "blob_sha": "fdcf748ec0bc12263a4bfe1a736fd6acdeee93f2",
+      "size": 4676
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/ten-star-service/SN-1865/IB-SMART-NOTE-20261025-sn1865-ten-star-service-is-choosing-whats-best.md",
       "blob_sha": "11f24647734a44fd21eb6a89c8291866efa7c251",
       "size": 5324
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md",
+      "blob_sha": "1a7e5ca989b0c321ecaf3e14495c7f02f2d7b6c5",
+      "size": 2599
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",

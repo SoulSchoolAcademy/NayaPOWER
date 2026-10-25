@@ -15414,13 +15414,53 @@
         "note": "published directly as a BRAIN projection in commit 1345ae9035bc7673468fb58c36de2dc184f2b3ab ('Merge pull request #3053 from SoulSchoolAcademy/citizen-api-v1') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "c7bed8ec6574c243fceef6ef5b6ac26f4c0c08ba0ed33b3e2d1d240a85d874b7"
+    },
+    {
+      "smart_note_id": "SN-1866",
+      "intelligent_block_id": "IB-SMART-NOTE-20261025-sn1866-nothing-has-value-until-it-works",
+      "title": "Nothing Has Value Until It Works",
+      "content_hash": "49400a098655dcb42fe19db5471cbe7f0ef8297ef215010a9468563bf8253d09",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/finishing-the-job/SN-1866/IB-SMART-NOTE-20261025-sn1866-nothing-has-value-until-it-works.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SERVICE",
+      "topic": "SERVICE",
+      "subtopic": "FINISHING_THE_JOB",
+      "captured_at": "2026-10-25",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 6033e3b5f2bfcc7f2da4950da91a435bea2863b5 ('SN-1866: Nothing Has Value Until It Works') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "0954ae1dcd5cf04a0d7b9c525aeb0dd30fe9a4a8f6be7fd4913db6d18caa5ccd"
+    },
+    {
+      "smart_note_id": "SN-1867",
+      "intelligent_block_id": "IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned",
+      "title": "Whatever It Takes Means Aligned — Never Around His Word",
+      "content_hash": "96e38a9dea70d13aa58c1209556c19fbe818917b9d28c628fb07547b62ea9aec",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-25",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b61f8ce6291069e9cce19f3d61a653b192185a48 ('Merge pull request #3057 from SoulSchoolAcademy/brain-build/learning-event-20261024') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "5665cdb1cb8ac0b75d289278e531a5af45fb60c14b4a2ae55082aeb078143afa"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1866,
+    "next_sequence": 1868,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "68125b57dfe62d8fecb037a5f25a5a89ea66c841147dbbaad63125c94900b6db"
+  "corpus_manifest_hash": "efbf60bdfa8fd57cce9ba0bbc5bf2f09c0de96db937b913353979572bec6583a"
 }
