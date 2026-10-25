@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-24T19:15:07+00:00",
+ "generated_utc": "2026-10-25T19:15:46+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,15 +51,8 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [
-    {
-     "number": 3036,
-     "title": "fix(retrieve): re-stamp SN-1854 page_hash after 211cff Filed-line addition",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3036",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "act",
@@ -140,9 +133,27 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3000,
+     "number": 3065,
+     "title": "Register 3 pending migrations in production migration ledger (184-file parity)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3065",
+     "draft": false
+    },
+    {
+     "number": 3064,
+     "title": "Reporting cure: action-plan hold test follows w746 9.5 ship bar (Kernel residual 5)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3064",
+     "draft": false
+    },
+    {
+     "number": 3063,
+     "title": "Factory S1 cure: Personal base ships ruled 'Deep black' label (Kernel residuals 2+3)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3063",
+     "draft": false
+    },
+    {
+     "number": 3052,
      "title": "Naya/mission state",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3000",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3052",
      "draft": false
     },
     {
@@ -152,7 +163,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -193,10 +204,10 @@
    "board_lane": "#2175 lane TEAM",
    "open_prs": [
     {
-     "number": 3043,
-     "title": "Affiliate system embedded in dashboard + checkout (draft)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3043",
-     "draft": true
+     "number": 3068,
+     "title": "Naya2/team dashboard",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3068",
+     "draft": false
     }
    ],
    "open_pr_count": 1
@@ -240,9 +251,9 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
-     "number": 2968,
-     "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
+     "number": 3067,
+     "title": "fix(sentinel): L671 cure \u2014 verdict floor, resumable fetch, curl fallback (Hub watcher cras",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3067",
      "draft": false
     }
    ],
@@ -419,6 +430,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 5,
- "unassigned_prs": 2
+ "open_pr_total": 7,
+ "unassigned_prs": 5
 }
