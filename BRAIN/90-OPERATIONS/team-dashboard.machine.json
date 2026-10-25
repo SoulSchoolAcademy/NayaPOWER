@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-25T15:16:02+00:00",
+ "generated_utc": "2026-10-25T16:15:35+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -242,8 +242,15 @@
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3067,
+     "title": "fix(sentinel): L671 cure \u2014 verdict floor, resumable fetch, curl fallback (Hub watcher cras",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3067",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "memory",
@@ -416,6 +423,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 5,
+ "open_pr_total": 6,
  "unassigned_prs": 5
 }
