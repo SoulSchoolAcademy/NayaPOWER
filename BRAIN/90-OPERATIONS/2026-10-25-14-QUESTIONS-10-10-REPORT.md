@@ -1148,18 +1148,25 @@ not by rewriting SN-0834, but by superseding it:**
   own work, nobody presents a same-login review as a different
   seat. Those are kept, in Sections 8, 10, and 12.
 
-## GitHub update status
+## GitHub update status — updated after push, before delivery
 
-**To be updated after the push attempt in this turn, before
-delivery, not claimed before it.** A live repo search + branch
-push must confirm the target path and branch before any claim
-of "updated". If the push is blocked, or if review is owed,
-that block and that review are recorded here, plainly, with
-the exact tap needed, and the report is still delivered to
-Shawn in chat, because a file in workspace has not reached
-anyone until it is delivered, and a blocked push is not a
-landed report. The intended GitHub path, if pushed as a new
-file and not as an edit to SN-0834, is:
-BRAIN/90-OPERATIONS/2026-10-25-14-QUESTIONS-10-10-REPORT.md,
-as a branch + PR, never self-merged, different-seat review
-at exact head required before any merge.
+**Pushed as a branch, verified on that branch, NOT merged.**
+Branch: naya-power/14-questions-refresh-2026-10-25
+Path: BRAIN/90-OPERATIONS/2026-10-25-14-QUESTIONS-10-10-REPORT.md
+First push commit: 9417f6fc120a35d3e9e8d24164428c4a91d81a18,
+from main head b61f8ce6291069e9cce19f3d61a653b192185a48.
+Proposed path did not exist remotely before the push, confirmed
+by get_file_contents error, and the file was read back on the
+branch after the push. SN-0834 was NOT edited in place; this
+report is its refresh successor, as a new file.
+
+**PR status, to be filled with the exact PR number and exact
+final head after PR creation, and re-read after that commit,
+per the identifier law.** The PR body must name the final head,
+not an earlier head — the Oct 23 PR #3011 flaw (body naming
+dd7a70bb after head moved to 635cfe00) must not repeat here.
+This seat does NOT merge its own PR. Merge awaits a different
+seat's scorecard at the exact final head, plus Shawn's greenlight
+where a deploy or production step is involved. Until then, the
+report is delivered in chat as the user-facing copy, and the
+branch is the GitHub copy awaiting review.
