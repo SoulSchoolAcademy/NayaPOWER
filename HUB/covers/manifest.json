@@ -136,6 +136,50 @@
       "status": "ready",
       "credit": "Naya Tree",
       "note": "Re-fitted by Resolve 2026-10-25: 16:9 source cropped to the slot with medallion, jewel row and portrait ring whole. Her portrait-in-a-jewel-ring concept - strong for personal pages."
+    },
+    {
+      "key": "open/dimension-vista",
+      "file": "open/dimension-vista.jpg",
+      "name": "Dimension Vista",
+      "kind": "open",
+      "tier": "open",
+      "category": "the-dimension",
+      "suits": "any page: spaces, communities, personal pages that want pure wonder with zero branding",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/prosperity-city",
+      "file": "open/prosperity-city.jpg",
+      "name": "Prosperity City",
+      "kind": "open",
+      "tier": "open",
+      "category": "prosperity",
+      "suits": "businesses, coaches, finance, anyone whose page is about building and succeeding",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/jewel-whisper",
+      "file": "open/jewel-whisper.jpg",
+      "name": "Jewel Whisper",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "any page that wants the jewel signature without the face or the logo: premium brands, portfolios, quiet-luxury pages",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/sanctuary-garden",
+      "file": "open/sanctuary-garden.jpg",
+      "name": "Sanctuary Garden",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "wellness, healing, coaching, calm personal pages",
+      "status": "ready",
+      "credit": "Naya Resolve"
     }
   ],
   "assignment_on_page_creation": {
@@ -174,5 +218,27 @@
     "born_with_cover": "Every personal, business and space page is built with its area cover already in - no upload required, ever",
     "the_note_on_the_page": "Feel free to change your cover - or use it as a reference to get your own version made.",
     "principle": "Everything by standard, the whole system always beautiful - and keep it simple"
+  },
+  "open_library": {
+    "why": "Not every citizen wants Naya's face or the logo on THEIR page: it is their business, their space, their identity. The library therefore carries three brand tiers so every page can be extraordinary in a way that fits its owner.",
+    "tiers": {
+      "signature": "full Naya brand: her face + medallion + jewels (the rotating set + area covers; for NayaNET's own pages and the Nayas)",
+      "jewel": "the five jewels only: a whisper of the brand, no face, no logo",
+      "open": "pure design: no face, no logo, no jewels; the citizen's own brand carries the page"
+    },
+    "categories": {
+      "the-dimension": "epic inner/outer-dimension vistas: spaces, communities, big-vision pages",
+      "prosperity": "gold cities, dawn light, bridges of light: businesses, coaches, creators building something",
+      "sanctuary": "gardens, water, calm light: wellness, healing, gentle personal pages",
+      "celebration": "lanterns, gatherings, amphitheaters: events, creators, communities that celebrate",
+      "craft": "obsidian-and-crystal minimal luxury: premium brands, studios, portfolios",
+      "cosmos": "planets, galaxies, the arrival hall: visionaries, memberships, the big-dream pages"
+    },
+    "rules": [
+      "same slot discipline as every cover: 3:1, middle band, no baked text ever",
+      "every open template is also a reference for a Naya-made custom version",
+      "born-with-cover default stays the area cover; citizens may swap to any tier from the shelf"
+    ],
+    "plan": "build out to ~18 open covers (3 per category) in rounds; first 4 ready 2026-10-25"
   }
 }

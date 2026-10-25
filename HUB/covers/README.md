@@ -48,3 +48,27 @@ The library **ships inside the app itself** — the image files travel with the 
 Any cover — library or uploaded — can be **dragged up or down to align it** in the slot; the page saves the position (`cover_offset_y`) with the page. This is the cure for every fit problem at once: tall art (like Tree's cosmic set) becomes usable because the owner slides it until the medallion sits right. Spec: drag on the cover in edit mode (mouse + touch), the image moves vertically within its overflow, position persists per page, defaults to the composed center.
 
 *Set v1 — assembled 2026-10-25. Design direction: Shawn. Covers 1–5: Naya Resolve. Covers 6–7: Naya Tree (ChatGPT), re-fitted to the slot by Resolve.*
+
+---
+
+## The Open Library — extraordinary covers with no Naya in them
+
+Not every citizen wants Naya's face or the logo on *their* page — it's their business, their space, their identity.
+So the library carries **three brand tiers**:
+
+- **Signature** — her face, the medallion, the jewels (the rotating set + area covers above).
+- **Jewel** — the five jewels only: a whisper of the brand, no face, no logo. *Jewel Whisper.*
+- **Open** — pure design: no face, no logo, no jewels. The citizen's own brand carries the page.
+
+And **six categories**, by what people's pages actually are:
+
+| Category | For | First covers |
+|---|---|---|
+| The Dimension | spaces, communities, big visions | Dimension Vista · Jewel Whisper |
+| Prosperity | businesses, coaches, builders | Prosperity City |
+| Sanctuary | wellness, healing, calm pages | Sanctuary Garden |
+| Celebration | events, creators, gatherings | building |
+| Craft | premium brands, studios, portfolios | building |
+| Cosmos | visionaries, memberships | building (Tree's cosmic set feeds here) |
+
+Same rules as every cover: 3:1, middle-band composition, **no baked text** — and every open template doubles as a reference for a Naya-made custom version in the citizen's own world.
