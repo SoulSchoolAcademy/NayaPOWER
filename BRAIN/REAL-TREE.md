@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-24  
-**Receipt basis commit:** `1b128a3b98c068ca7a993f9521001b4a0fd29d80`  
-**Inventory file count:** 1668  
+**Generated:** 2026-10-25  
+**Receipt basis commit:** `1345ae9035bc7673468fb58c36de2dc184f2b3ab`  
+**Inventory file count:** 1669  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 858 |
+| 05-MEMORY | 859 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -999,7 +999,8 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-0857/IB-SMART-NOTE-20261024-sn0857-active-intelligence-every-page-composed-brought-to-life.md` — `c92afc8f73ff` (7318 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1859/IB-SMART-NOTE-20261024-sn1859-what-i-learned-done-visible-elite-alive-understood.md` — `6c83e1d7822f` (7107 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1860/IB-SMART-NOTE-20261024-sn1860-smart-notes-from-inside-the-hub-quick-note-then-smart-note.md` — `f23278c0832c` (7438 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1863/IB-SMART-NOTE-20261024-sn1863-pricing-free-vs-paid.md` — `35c2b386c7ac` (6664 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1863/IB-SMART-NOTE-20261024-sn1863-pricing-free-vs-paid.md` — `20a6ab97600a` (10286 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/ten-star-service/SN-1865/IB-SMART-NOTE-20261025-sn1865-ten-star-service-is-choosing-whats-best.md` — `11f24647734a` (5324 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)

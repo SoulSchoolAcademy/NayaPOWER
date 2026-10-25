@@ -15394,13 +15394,33 @@
         "note": "published directly as a BRAIN projection in commit 1b128a3b98c068ca7a993f9521001b4a0fd29d80 ('SN-1863 collision: remove Resolve's twin filing (renumbered to SN-1864); the lane's other SN-1863 keeps the number') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "cbde44c2f2f77b699594453eafd2cce5fad52e595b29900ab76eefc861b27e13"
+    },
+    {
+      "smart_note_id": "SN-1865",
+      "intelligent_block_id": "IB-SMART-NOTE-20261025-sn1865-ten-star-service-is-choosing-whats-best",
+      "title": "Ten-Star Service Is Choosing What's Best",
+      "content_hash": "4b5eeb819eafd55e9691eade3772786f85a691ec4ddb5e4407209c9f7195e1b2",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/ten-star-service/SN-1865/IB-SMART-NOTE-20261025-sn1865-ten-star-service-is-choosing-whats-best.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SERVICE",
+      "topic": "SERVICE",
+      "subtopic": "TEN_STAR_SERVICE",
+      "captured_at": "2026-10-25",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 1345ae9035bc7673468fb58c36de2dc184f2b3ab ('Merge pull request #3053 from SoulSchoolAcademy/citizen-api-v1') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c7bed8ec6574c243fceef6ef5b6ac26f4c0c08ba0ed33b3e2d1d240a85d874b7"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1865,
+    "next_sequence": 1866,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "c7cc9e72b9213fb948e0e7ad4f0f0144de24aed7069286b4cf78c8a2f121563a"
+  "corpus_manifest_hash": "3c8ebd54471e8aec29992921979b598c1b512d694850f3c05a6c0fc71875acca"
 }
