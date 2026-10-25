@@ -1,0 +1,549 @@
+{
+ "artifact": "welcome-engine-corpus/v1",
+ "entities": {
+  "naya-power": {
+   "alias": "naya-power",
+   "kind": "citizen",
+   "name": "naya-power (Naya P Narzan, Builder/Integrator)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": [
+     "declared"
+    ]
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "connect the parts",
+     "prove outcomes",
+     "scale nayanet",
+     "whole board honest"
+    ],
+    "needs": [
+     "builders",
+     "evidence",
+     "live data"
+    ],
+    "offers": [
+     "builders",
+     "integration",
+     "project leadership",
+     "strategy",
+     "systems architecture"
+    ],
+    "topics": [
+     "building",
+     "derivation",
+     "design",
+     "integration",
+     "matching",
+     "project intelligence",
+     "systems"
+    ],
+    "wants": [
+     "builders",
+     "citizens",
+     "verifiers"
+    ]
+   }
+  },
+  "nitro": {
+   "alias": "nitro",
+   "kind": "citizen",
+   "name": "nitro (Naya N Narzan, Nitro/Executor/Verifier)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": [
+     "declared"
+    ]
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "prove results",
+     "ship",
+     "test everything"
+    ],
+    "needs": [
+     "builders",
+     "specs"
+    ],
+    "offers": [
+     "builders",
+     "evidence",
+     "execution",
+     "quality control",
+     "testing"
+    ],
+    "topics": [
+     "delivery",
+     "evidence",
+     "execution",
+     "proof",
+     "quality",
+     "testing",
+     "validation"
+    ],
+    "wants": [
+     "builders",
+     "verifiers"
+    ]
+   }
+  },
+  "resolve": {
+   "alias": "resolve",
+   "kind": "citizen",
+   "name": "resolve (Naya R Narzan, Resolver)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": [
+     "declared"
+    ]
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "clear the path",
+     "find blockers",
+     "reliable systems"
+    ],
+    "needs": [
+     "reports",
+     "signals"
+    ],
+    "offers": [
+     "analysis",
+     "problem solving",
+     "risk review"
+    ],
+    "topics": [
+     "blockers",
+     "conflict resolution",
+     "critical thinking",
+     "reliability",
+     "risk",
+     "root cause"
+    ],
+    "wants": [
+     "builders",
+     "reporters"
+    ]
+   }
+  },
+  "space-ask-naya": {
+   "alias": "space-ask-naya",
+   "kind": "space",
+   "name": "Ask Naya (space-ask-naya)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": []
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "live in the hub",
+     "pass the ear test"
+    ],
+    "needs": [
+     "ear test",
+     "voice"
+    ],
+    "offers": [
+     "answers",
+     "guidance"
+    ],
+    "topics": [
+     "answers",
+     "conversation",
+     "hub",
+     "listening",
+     "questions"
+    ],
+    "wants": []
+   }
+  },
+  "space-mirror": {
+   "alias": "space-mirror",
+   "kind": "space",
+   "name": "The Mirror Program (space-mirror)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": []
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "essence over archives"
+    ],
+    "needs": [
+     "material",
+     "readers"
+    ],
+    "offers": [
+     "distilled intelligence"
+    ],
+    "topics": [
+     "distillation",
+     "essence",
+     "learning",
+     "reflection"
+    ],
+    "wants": []
+   }
+  },
+  "space-nayapower": {
+   "alias": "space-nayapower",
+   "kind": "space",
+   "name": "NayaPOWER (space-nayapower)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": []
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "fully active and alive",
+     "prove outcomes"
+    ],
+    "needs": [
+     "builders",
+     "integration",
+     "verification"
+    ],
+    "offers": [
+     "builders",
+     "coordination",
+     "the platform"
+    ],
+    "topics": [
+     "building",
+     "integration",
+     "intelligence",
+     "network",
+     "systems"
+    ],
+    "wants": []
+   }
+  },
+  "space-one-flow": {
+   "alias": "space-one-flow",
+   "kind": "space",
+   "name": "The One Flow (space-one-flow)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": []
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "note to live card in seconds"
+    ],
+    "needs": [
+     "citizens",
+     "notes"
+    ],
+    "offers": [
+     "publishing path"
+    ],
+    "topics": [
+     "derivation",
+     "feed",
+     "flow",
+     "publishing",
+     "smart notes"
+    ],
+    "wants": []
+   }
+  },
+  "space-one-hub": {
+   "alias": "space-one-hub",
+   "kind": "space",
+   "name": "The One Hub (space-one-hub)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": []
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "prove outcomes",
+     "the one hub for all nayanet"
+    ],
+    "needs": [
+     "evidence",
+     "performance rulings",
+     "speed"
+    ],
+    "offers": [
+     "home",
+     "orientation"
+    ],
+    "topics": [
+     "audit",
+     "front door",
+     "hub",
+     "performance",
+     "systems"
+    ],
+    "wants": []
+   }
+  },
+  "space-smart-factory": {
+   "alias": "space-smart-factory",
+   "kind": "space",
+   "name": "The Smart Factory (space-smart-factory)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": []
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "template to live app in minutes"
+    ],
+    "needs": [
+     "builders",
+     "step 7"
+    ],
+    "offers": [
+     "app creation"
+    ],
+    "topics": [
+     "apps",
+     "building",
+     "creation",
+     "design",
+     "templates"
+    ],
+    "wants": []
+   }
+  },
+  "space-smart-mail": {
+   "alias": "space-smart-mail",
+   "kind": "space",
+   "name": "Smart Mail (space-smart-mail)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": []
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "compose anywhere send on time"
+    ],
+    "needs": [
+     "citizens",
+     "usage"
+    ],
+    "offers": [
+     "delivery",
+     "messaging"
+    ],
+    "topics": [
+     "communication",
+     "mail",
+     "messaging",
+     "scheduling"
+    ],
+    "wants": []
+   }
+  },
+  "space-team-nitro": {
+   "alias": "space-team-nitro",
+   "kind": "space",
+   "name": "Team Nitro (space-team-nitro)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": []
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "ship",
+     "wip discipline"
+    ],
+    "needs": [
+     "builders",
+     "specs"
+    ],
+    "offers": [
+     "builders",
+     "execution"
+    ],
+    "topics": [
+     "build loop",
+     "delivery",
+     "execution",
+     "testing",
+     "waves"
+    ],
+    "wants": []
+   }
+  },
+  "space-voice": {
+   "alias": "space-voice",
+   "kind": "space",
+   "name": "Voice (space-voice)",
+   "provenance": {
+    "goals": [
+     "declared"
+    ],
+    "needs": [
+     "declared"
+    ],
+    "offers": [
+     "declared"
+    ],
+    "topics": [
+     "declared"
+    ],
+    "wants": []
+   },
+   "value": null,
+   "vector": {
+    "goals": [
+     "nayas real voice"
+    ],
+    "needs": [
+     "streaming",
+     "synthesis"
+    ],
+    "offers": [
+     "voice"
+    ],
+    "topics": [
+     "audio",
+     "speech",
+     "streaming",
+     "voice"
+    ],
+    "wants": []
+   }
+  }
+ },
+ "entity_count": 12,
+ "sources": [
+  "declared"
+ ]
+}
