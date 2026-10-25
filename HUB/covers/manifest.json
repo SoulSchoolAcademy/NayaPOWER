@@ -663,6 +663,116 @@
       "suits": "a crystal sailing ship with glowing sails between floating islands, golden routes through the clouds: travel, adventure, explorers, journey stories",
       "status": "ready",
       "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/diamond-bloom-tree",
+      "file": "open/diamond-bloom-tree.jpg",
+      "name": "Diamond Bloom",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "flowing crystal ribbons in white, gold and sapphire over a bright shore: the daylight abstract - luminous, airy, optimistic",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/the-gateway-tree",
+      "file": "open/the-gateway-tree.jpg",
+      "name": "The Gateway",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "a radiant diamond in a golden arch at the top of the steps: arrival, welcome, thresholds - memberships, onboarding, new beginnings, and quietly spiritual pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/golden-city-tree",
+      "file": "open/golden-city-tree.jpg",
+      "name": "Golden City",
+      "kind": "open",
+      "tier": "open",
+      "category": "prosperity",
+      "suits": "the crystal capital in full daylight over a still lake: commerce and ambition in their brightest register - shops, agencies, flagship businesses",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/lotus-falls-tree",
+      "file": "open/lotus-falls-tree.jpg",
+      "name": "Lotus Falls",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "crystal lotus and tiered waterfalls into a turquoise river at dawn: gentle personal pages, wellness, nature lovers",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/best-friends-tree",
+      "file": "open/best-friends-tree.jpg",
+      "name": "Best Friends",
+      "kind": "open",
+      "tier": "open",
+      "category": "companions",
+      "suits": "a golden retriever and a fluffy cat face to face with you at sunrise among the floating islands: THE pet cover - and a warm family favorite",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/emerald-sunrise-tree",
+      "file": "open/emerald-sunrise-tree.jpg",
+      "name": "Emerald Sunrise",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "an emerald and gold crystal eruption over a mirror floor at nightfall: dramatic energy - launches, ambition, breakthroughs",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/the-treehouse",
+      "file": "open/the-treehouse.jpg",
+      "name": "The Treehouse",
+      "kind": "open",
+      "tier": "open",
+      "category": "celebration",
+      "suits": "a crystal treehouse with glowing windows, lanterns and a slide of light into a flower-meadow pond: family pages, kids, parenting, play - the library's warm playful register",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/neon-arena",
+      "file": "open/neon-arena.jpg",
+      "name": "Neon Arena",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "a black-crystal arena ring in violet and cyan neon with glowing portals: gaming, esports, streamers, play energy",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/prayer-hall",
+      "file": "open/prayer-hall.jpg",
+      "name": "The Prayer Hall",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "amber crystal vaults, rows of candle flames and one beam of light: churches, prayer groups, spiritual communities, remembrance - reverent and open to everyone",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/the-workshop",
+      "file": "open/the-workshop.jpg",
+      "name": "The Workshop",
+      "kind": "open",
+      "tier": "open",
+      "category": "craft",
+      "suits": "a glowing crystal anvil, tools and shelves of crafted things, the working city beyond the arch: trades, builders, repair, makers - pride of honest craft",
+      "status": "ready",
+      "credit": "Naya Resolve"
     }
   ],
   "assignment_on_page_creation": {
@@ -735,7 +845,12 @@
       "4. SKIP IS FREE: 'pick for me' is always one tap; the default is already beautiful.",
       "5. CUSTOM PATH: any cover can be used as-is, or as the reference for a Naya-made custom version."
     ],
-    "organization": "three brand tiers (signature / jewel / open) x categories (abstract colorways, the-dimension, prosperity, sanctuary, celebration, craft, cosmos) - the manifest is the shelf data; featured = a rotating curated subset, seeded by Shawn's verdicts."
+    "organization": "three brand tiers (signature / jewel / open) x categories (abstract colorways, the-dimension, prosperity, sanctuary, celebration, craft, cosmos) - the manifest is the shelf data; featured = a rotating curated subset, seeded by Shawn's verdicts.",
+    "chooser_everywhere": {
+      "ruling": "Shawn, 2026-10-25 ~22:04Z: the cover library is choosable on ANY page. Every page's cover control offers two doors: CHOOSE FROM OUR LIBRARY or UPLOAD YOUR OWN PHOTO. A page is never blank and never locked: by default the system places the relevant cover (area default / matched pick); the citizen can swap it for any library cover or their own upload at any time; the position adjuster applies to both library picks and uploads.",
+      "the_match_card": "Every library photo carries a match card: a proper NAME, its CATEGORY (shelf), its ABOUT (what it is and who it suits - the 'suits' field), its tier, and the TYPICAL TERMS people search by (typical_terms map above) plus mood tags. Those cards are what the match game plays with: the chooser searches them, the smart suggestion scores them against the citizen's own words (Welcome answers + page purpose), and the default picker reads them. A photo without a complete match card does not enter the library.",
+      "defaults": "Page type sets the first default (area cover for branded/area pages; matched open cover for citizen pages); the citizen's own words refine it. Skip is always one tap; the default is always already beautiful."
+    }
   },
   "library_organization": {
     "designed_with": "Shawn Vibert, 2026-10-25",
@@ -923,7 +1038,8 @@
         ],
         "status": "covered",
         "covers": [
-          "the-study-tree"
+          "the-study-tree",
+          "the-workshop"
         ]
       },
       "music-entertainment": {
@@ -970,7 +1086,9 @@
         "status": "covered",
         "covers": [
           "morning-light",
-          "lotus-lake-tree"
+          "prayer-hall",
+          "lotus-lake-tree",
+          "the-gateway-tree"
         ]
       },
       "nature-outdoors": {
@@ -1027,7 +1145,12 @@
           "community"
         ],
         "status": "partial",
-        "note": "Grand Hall + City of Light serve arrival; a dedicated progression set (rising tiers of light) is still owed"
+        "note": "Grand Hall + City of Light serve arrival; a dedicated progression set (rising tiers of light) is still owed",
+        "covers": [
+          "the-gateway-tree",
+          "grand-hall-tree",
+          "city-of-light-tree"
+        ]
       },
       "real-estate": {
         "terms": [
@@ -1049,8 +1172,11 @@
           "mom",
           "parenting"
         ],
-        "status": "owed",
-        "note": "needs a warm, playful register the library does not have yet"
+        "status": "covered",
+        "covers": [
+          "the-treehouse",
+          "best-friends-tree"
+        ]
       },
       "gaming-play": {
         "terms": [
@@ -1060,8 +1186,11 @@
           "neon",
           "arcade"
         ],
-        "status": "owed",
-        "note": "Abyss Facets is adjacent; a dedicated play-energy piece is owed"
+        "status": "covered",
+        "covers": [
+          "neon-arena",
+          "abyss-facets"
+        ]
       }
     }
   }
