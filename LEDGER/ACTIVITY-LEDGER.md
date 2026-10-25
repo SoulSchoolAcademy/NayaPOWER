@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25837,6 +25837,14 @@ _Last updated: 2026-10-25 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-gap-t0102 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap t0102 lane8: recover the branch-deletion provenance for PR #2460 from the live event record
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0102-lane8.md`
+
+**Evidence:** VERIFIED independently this tick via REST + git protocol 2026-10-25T00:41Z, every value EXACT: PR #2460 events total 2 - closed 2026-10-21T00:03:37Z actor SoulSchoolAcademy id 33796985894, head_ref_deleted 2026-10-21T03:45:03Z actor SoulSchoolAcademy id 33808759222, delta 3h41m26s after closure; PR #2460 state closed, merged false, closed_at 2026-1
+
 ### ✅ gap-t0102 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Gap t0102 lane8: 30/30 battery re-run at pinned PR #2460 head, deleted branch ref confirmed benign
@@ -31037,6 +31045,14 @@ _Last updated: 2026-10-25 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-gap-t0102 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap t0102 lane3: independently re-derive every item the gap-gap brief named as NOT re-derived in the scoring tick (PR #2418 record)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0102-lane3.md`
+
+**Evidence:** VERIFIED independently this tick via REST + git protocol 2026-10-25T00:41Z, every value EXACT: PR #2418 state closed, merged false, merged_at null, closed_at 2026-10-21T00:48:09Z, head 8346681cd52600e08fba3bcbb8b86a3258eaf056, base aa8061c1d311f32ebd11a570629efa8a55d90c87, title matches; comment 6122684340 user SoulSchoolAcademy, created 2026-10-12
+
 ### ✅ gap-t0102 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Gap t0102 lane3: PR #2418 state verified live, named gap found already closed by events, PR closed unmerged
@@ -32124,6 +32140,14 @@ _Last updated: 2026-10-25 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-gap-t0102 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap t0102 lane2: re-verify H8 round-2 staging pin-for-pin; dry-run gate NOT executed (self-run would contaminate the ceiling reading)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0102-lane2.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T00:41Z: parent receipt gap-t0102-lane2.md SHA-256 b2ffd8ff8264171ab042e9e3991a114da0ea2dfda6e2375bbb809aa85943d28c EXACT match; prereg seal 41ab2a55, seal-verification 46dfb65b, arm-a 9df9238b, arm-b 8450d0ec, arm-key 1c7d859b, harness 0ace8bf9 ALL EXACT matches; /tmp/t0102-lane2/ holds all 7 staged dirs (dry + arm
 
 ### ✅ gap-t0102 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -37838,6 +37862,12 @@ _Last updated: 2026-10-25 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261024-1748 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 17:48 PDT: 16 gap briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time 2026-10-25T01:02Z: receipt SHA-256 f037cbcbd1363b7ab2bf3b5c7f30aa815a74a0b8cd242f3528833aa47fd85f7b; rotation twelve-lane-rotation.json queued=16 is the SAME SET as the receipt's 16 briefs (set-match exact, tick_count 1612, in_flight []); claimed/ root empty; all 16 parent receipts exist on disk; sta
 
 ### ✅ seat-stall-20261024-1643 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
