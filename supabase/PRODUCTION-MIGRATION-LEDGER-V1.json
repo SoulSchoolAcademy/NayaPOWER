@@ -1656,6 +1656,33 @@
       "statement_count": 24,
       "bytes": 6366,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261023190000",
+      "name": "smart_mail_legacy_rls_hardening",
+      "path": "supabase/migrations/20261023190000_smart_mail_legacy_rls_hardening.sql",
+      "sha256": "c88a961c835748dfef3a805a397edba77f502bcef54a0b8f2c9a0e0883d3074d",
+      "statement_count": 12,
+      "bytes": 2041,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261024194500",
+      "name": "smart_mail_participant_completion_and_intake_scope_v1",
+      "path": "supabase/migrations/20261024194500_smart_mail_participant_completion_and_intake_scope_v1.sql",
+      "sha256": "6d2687b2c7e2e49a940a0ffeafdc7e2dc167cd42b510a6925793a51d5fd191eb",
+      "statement_count": 14,
+      "bytes": 9217,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261025040000",
+      "name": "smart_match_v1_4",
+      "path": "supabase/migrations/20261025040000_smart_match_v1_4.sql",
+      "sha256": "6cdc56bc4c57ed5170198788d0db11624e71f476234a183438ac8e914005ccfd",
+      "statement_count": 11,
+      "bytes": 11587,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
