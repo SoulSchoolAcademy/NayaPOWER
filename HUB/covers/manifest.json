@@ -925,6 +925,28 @@
       "suits": "a crystal planet ringed with orbiting jewels over an obsidian sea, auroras above a golden terrace: space, sci-fi, big-vision pages, world builders",
       "status": "ready",
       "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/the-golden-overlook",
+      "file": "open/the-golden-overlook.jpg",
+      "name": "The Golden Overlook",
+      "kind": "open",
+      "tier": "open",
+      "category": "the-dimension",
+      "suits": "a sunlit crystal kingdom seen from a golden terrace: floating islands, waterfalls and towers over a mirror lake - worlds, travel dreams, kingdoms, arrival and wonder",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/moonrise-terrace",
+      "file": "open/moonrise-terrace.jpg",
+      "name": "Moonrise Terrace",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "a dusk terrace with an infinity pool and lounge above floating crystal castles, two moons rising: luxury calm, retreats, resorts, romance, evening sanctuary",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
     }
   ],
   "assignment_on_page_creation": {
@@ -1226,7 +1248,8 @@
         "status": "covered",
         "covers": [
           "sky-voyage",
-          "aurora-circuit"
+          "aurora-circuit",
+          "moonrise-terrace"
         ]
       },
       "faith-spirit": {
@@ -1289,7 +1312,10 @@
           "magical",
           "epic"
         ],
-        "status": "covered"
+        "status": "covered",
+        "covers": [
+          "the-golden-overlook"
+        ]
       },
       "membership": {
         "terms": [
@@ -1412,7 +1438,7 @@
       "depth": "solid"
     },
     "Kingdoms & Worlds": {
-      "ready": 13,
+      "ready": 14,
       "designed": 0,
       "retired": 0,
       "depth": "deep"
@@ -1424,7 +1450,7 @@
       "depth": "solid"
     },
     "Sanctuaries": {
-      "ready": 9,
+      "ready": 10,
       "designed": 0,
       "retired": 0,
       "depth": "deep"
