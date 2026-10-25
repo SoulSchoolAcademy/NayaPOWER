@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 06:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21793,6 +21793,14 @@ _Last updated: 2026-10-25 06:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on disk: prereg seal sha256 55fefecf... recomputed MATCH; HYPOTHESIS-CHANGE-r3 pin 9f3d3f96 MATCH; 7 probe dirs present. Gate verdict NO-GO honored mechanically, zero scored arms. Circuit breaker respected: H8 CLOSED 3/3, no round 4. Honest negative with the pressure-simulation weakness named.
 
+### ✅ t0122 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Post-#1993 fossil layer: close 10 oldest idle drafts as superseded under t1252 mechanism
+
+**Receipt:** `twelve-lane-receipts/t0122-lane7.md`
+
+**Evidence:** Verified via git protocol sample: branch naya5/activation-gate-merged-hotfix still resolves at 4253df311865b2be59047583770251e078ab7328, byte-identical to the receipt's action-time pin for #2009; the other sampled branches no longer resolve (post-close branch deletion = rot, not phantom, since close does not touch heads and all 10 pins + close-comm
+
 ### ✅ t0122-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.3/10 [VERIFIED]
 
 **Task:** fossil-layer close: 10 oldest idle drafts after #1993 as superseded (t1252 mechanism)
@@ -21815,6 +21823,14 @@ _Last updated: 2026-10-25 06:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified live via API: PRs 1994 + 2037 both closed (spot check), open-PR search total_count == 477 exactly. Pin-verify-before-close flow, #1130 untouched, mechanism cited. Not 10: young 3-day layer vs 11-day fossil profile; branch existence not re-verified post-close (agent's own deduction).
 
+### ✅ t0122 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** CTA leg-3 replication: TOOL-transfer hypothesis round 2, sealed fixture, blinded scorer
+
+**Receipt:** `twelve-lane-receipts/t0122-lane6.md`
+
+**Evidence:** Verified on disk: PREREG-leg3-sealed.md sha256 69fb7660... matches receipt exactly; cold-evidence packet 8545a29a... matches; preserved line c9506e98... matches sealed CT-D pin; seal-verification.json, cold-brief, fixture, fixture-drift, packet, scorer dirs all present. Blinded pipeline packet PKT-5CF91939 and unblind ordering hold per receipt. Sco
+
 ### ✅ t0122-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.2/10 [VERIFIED]
 
 **Task:** CTA leg-3 replication: TOOL-transfer on new sealed fixture, blinded, VERDICT ACCEPT
@@ -21836,6 +21852,14 @@ _Last updated: 2026-10-25 06:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0122-lane6.md`
 
 **Evidence:** Dispatcher verified on disk: seal 69fb7660 == recomputed; evidence packet 8545a29a == recomputed; preserved line c9506e98 == sealed pin; scorer packet + seal record present. All 4 gates PASS, blinded quality 9.8, timestamp incident owned without touching scorer bytes. Not 10: same-family scorer residual + cosmetic hardcode (agent's own deductions).
+
+### ✅ t0122 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value window audit t0082-t0122: instrument determinism, hand audit, regression to t1052 baseline
+
+**Receipt:** `twelve-lane-receipts/t0122-lane11.md`
+
+**Evidence:** Verified on disk 12 days later: hv_output_t0122_run1.json == run2.json (sha256 8adee5c2... matches receipt), post1 == post2 (f03a73f9... matches receipt), metric_audit_t0122.json window t0082-t0122, SUMMARY_t0122.md present. Machine cross-check totals and t892-t1042 regression reproduce receipt claims. Score 9.0, not 9.5, because: single-seat judgm
 
 ### ✅ t0122-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -24654,6 +24678,14 @@ _Last updated: 2026-10-25 06:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ gap-gap-t0112 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap t0112 lane9: CI's EXACT pytest failures at PR #2462 head, bounded to 7-vs-32
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0112-lane9.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T06:30Z via git protocol + disk hashes: all 4 receipt SHAs EXACT match (review-6122317726-lane8 d0eb063c..., review-6122636824-lane10 837e6db2..., full-pytest log 34b447e1..., failed-32.txt 51fc4a9d...); refs/pull/2462/head = a92be1c01812a86c1994298b508cc41577e250dc EXACT match, branch naya/lane9/tipred-fix-t0112 ab
 
 ### ✅ gap-t0112 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -38064,6 +38096,12 @@ _Last updated: 2026-10-25 06:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261024-2318 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 23:18 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: brief-queue/ root holds exactly the 18 briefs the receipt names plus lane-feed.md (19 files); rotation twelve-lane-rotation.json queued=18 is the same set; stall-cap holds (prior stall seat-stall-20261024-2213.md mtime 2026-10-25T05:14Z vs this receipt 06:19Z, 65 minutes prior, outside the 60-minute
 
 ### ✅ seat-stall-20261024-2213 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
