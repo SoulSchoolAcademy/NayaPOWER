@@ -2207,7 +2207,7 @@ button:hover{
 <div class="ph-card"><h3>⚙️ Your Preferences</h3>
 <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
 <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(255,255,255,.04);border-radius:12px;">
-<span style="font-size:14px;">🌙 Dark mode</span>
+<span style="font-size:14px;">🌙 Deep black</span>
 <button class="ph-msg" style="padding:8px 16px;" type="button">On</button></div>
 <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(255,255,255,.04);border-radius:12px;">
 <span style="font-size:14px;">🔒 Public profile</span>
@@ -2985,7 +2985,7 @@ NF.register(UNIT, {
 
   // SETTINGS - real functionality
   (function(){
-    // Dark mode (already dark, but toggle adjusts)
+    // Deep black (already dark, but toggle adjusts)
     var darkBtns = document.querySelectorAll('#settings .ph-msg');
     darkBtns.forEach(function(btn){
       var label = btn.parentElement.querySelector('span').textContent;
@@ -2997,8 +2997,8 @@ NF.register(UNIT, {
           localStorage.setItem('naya.setting.' + label, isOn ? 'off' : 'on');
         } catch(e) {}
         
-        // Dark mode actually does something
-        if(label.includes('Dark mode')) {
+        // Deep black actually does something
+        if(label.includes('Deep black')) {
           document.body.style.filter = isOn ? 'brightness(1.2)' : '';
         }
       });

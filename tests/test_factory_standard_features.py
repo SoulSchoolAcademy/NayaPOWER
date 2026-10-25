@@ -200,7 +200,7 @@ def test_build_api_uses_registry_and_returns_ledger():
     assert receipt["url"].endswith("example.workers.dev")
     assert receipt["worker"] == "naya-app-testbistro"
     assert receipt["template_file"] == "templates/personal.html"
-    assert receipt["template_md5"] == "1b44636b7758dba0b95356211f8b042b"
+    assert receipt["template_md5"] == "d32eb252f2922f77b7b032020f8de21b"
     ledger = {row["field"]: row["status"] for row in receipt["ledger"]}
     assert ledger["name"] == "APPLIED"
     assert ledger["about"] == "APPLIED"
