@@ -1252,7 +1252,70 @@
         "The Dawn Ring",
         "The Obsidian Ring"
       ],
-      "split_rule": "CITIZEN picks (no Naya face, no medallion) = the chooser's top/recommended row for users. EXCLUSIVE picks (her face / the crystal N / brand) are NEVER offered as citizen recommendations - they dress the Nayas' own personal, business and space pages and the brand-featuring templates. The recommendation engine must exclude featured_class=exclusive (and all house-signature / area covers except when the page belongs to a Naya)."
+      "split_rule": "CITIZEN picks (no Naya face, no medallion) = the chooser's top/recommended row for users. EXCLUSIVE picks (her face / the crystal N / brand) are NEVER offered as citizen recommendations - they dress the Nayas' own personal, business and space pages and the brand-featuring templates. The recommendation engine must exclude featured_class=exclusive (and all house-signature / area covers except when the page belongs to a Naya).",
+      "display_grid": {
+        "shape": "4 categories x 3 = 12 per class",
+        "contexts": [
+          "signup",
+          "onboarding walk",
+          "Smart Factory showcase"
+        ],
+        "citizen": {
+          "Companions": [
+            "The Cat Sovereign",
+            "Best Friends",
+            "Companion Golden"
+          ],
+          "Worlds & Wonder": [
+            "Dimension Vista",
+            "The Jewel Arches",
+            "Companions at the Arch"
+          ],
+          "Calm & Gathering": [
+            "Sanctuary Garden",
+            "Opal Light",
+            "The Feast Hall"
+          ],
+          "Jewels & Light": [
+            "Jewel Facets",
+            "Obsidian Facets",
+            "Abyss Facets"
+          ]
+        },
+        "exclusive": {
+          "Her Welcome": [
+            "Her Welcome",
+            "Obsidian Starlight",
+            "The Dawn Ring"
+          ],
+          "Her Kingdoms": [
+            "Her Kingdom",
+            "Cosmic Galaxy",
+            "Golden Dawn"
+          ],
+          "Her Portals & Rings": [
+            "The Portal",
+            "Cosmic Ring",
+            "The Obsidian Ring"
+          ],
+          "The House Areas": [
+            "Area \u2014 Events",
+            "Area \u2014 Spaces",
+            "Area \u2014 Business"
+          ]
+        },
+        "held_out": {
+          "citizen": {
+            "name": "Crystal Cathedral",
+            "reason": "Shawn's call: of the two similar five-jewels pieces, Crystal Cathedral holds as first alternate - Jewel Facets is bolder at small display sizes. Still featured #13, still in the library, rotates into the grid."
+          },
+          "exclusive": {
+            "name": "Golden Profile",
+            "reason": "The similar pair on the House side: Golden Profile vs Cosmic Ring (profile + medallion + kingdom). Cosmic Ring carries the grid; Golden Profile holds as first alternate, still featured."
+          }
+        },
+        "rule": "The grid is presentation only. Held-out pieces stay featured and in the library; nothing is removed. Shawn's direction 2026-10-25 ~22:42Z: four categories, three each, a simpler number for display - presentation is everything."
+      }
     },
     "discovery": "browse by theme shelf; search by name AND by mood - every cover carries mood tags (calm, bold, warm, radiant, cosmic, serene...) because people search feelings, not categories. The jewel/signature tiers act as a filter inside every shelf.",
     "state_2026_10_25": "48 assets in the manifest; 29 citizen covers ready (23 + Tree set 3's 6); House collection 15 ready. Facets shelf nearly full (14); Sanctuaries and Cosmos healthy; Craft still empty; Celebrations thin - the remaining road to 60 fills shelves, theme by theme."

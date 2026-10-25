@@ -107,6 +107,15 @@
       "exclusive"
     ],
     "citizen_row": "featured_class=citizen, in featured_order",
-    "status": "complete - Shawn's picks, locked 2026-10-25"
+    "status": "complete - Shawn's picks, locked 2026-10-25",
+    "display_grid": {
+      "categories_per_class": 4,
+      "per_category": 3,
+      "contexts": [
+        "signup",
+        "onboarding",
+        "smart-factory"
+      ]
+    }
   }
 }
