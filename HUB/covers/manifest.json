@@ -20,7 +20,8 @@
       "status": "ready",
       "name": "Hero Revised",
       "category": "house-signature",
-      "suits": "the flagship: her portrait, the crystal medallion and the five jewels over the dimension - the Nayas' own pages and showcase samples"
+      "suits": "the flagship: her portrait, the crystal medallion and the five jewels over the dimension - the Nayas' own pages and showcase samples",
+      "credit": "Naya Resolve"
     },
     {
       "key": "rotation/obsidian-night",
@@ -29,7 +30,8 @@
       "status": "ready",
       "name": "Obsidian Night",
       "category": "house-signature",
-      "suits": "her and the medallion in the obsidian night register: deep, elegant, after-dark"
+      "suits": "her and the medallion in the obsidian night register: deep, elegant, after-dark",
+      "credit": "Naya Resolve"
     },
     {
       "key": "rotation/golden-dawn",
@@ -38,7 +40,8 @@
       "status": "ready",
       "name": "Golden Dawn",
       "category": "house-signature",
-      "suits": "her and the medallion in golden dawn light: warm beginnings, optimism"
+      "suits": "her and the medallion in golden dawn light: warm beginnings, optimism",
+      "credit": "Naya Resolve"
     },
     {
       "key": "rotation/crystal-portal",
@@ -47,7 +50,8 @@
       "status": "ready",
       "name": "Crystal Portal",
       "category": "house-signature",
-      "suits": "her before the great crystal portal: thresholds, invitations, arrival"
+      "suits": "her before the great crystal portal: thresholds, invitations, arrival",
+      "credit": "Naya Resolve"
     },
     {
       "key": "rotation/epic-dimension",
@@ -56,7 +60,8 @@
       "status": "ready",
       "name": "Epic Dimension",
       "category": "house-signature",
-      "suits": "the widest vista of the inner dimension with her at its heart: flagship spaces and showcases"
+      "suits": "the widest vista of the inner dimension with her at its heart: flagship spaces and showcases",
+      "credit": "Naya Resolve"
     },
     {
       "key": "rotation/cosmic-galaxy",
@@ -87,7 +92,8 @@
       "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
       "name": "Area \u2014 Personal",
       "category": "house-area",
-      "suits": "the born cover for personal pages: her and the crystal home"
+      "suits": "the born cover for personal pages: her and the crystal home",
+      "credit": "Naya Resolve"
     },
     {
       "key": "area/business",
@@ -98,7 +104,8 @@
       "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
       "name": "Area \u2014 Business",
       "category": "house-area",
-      "suits": "the born cover for business pages: her and the crystal city"
+      "suits": "the born cover for business pages: her and the crystal city",
+      "credit": "Naya Resolve"
     },
     {
       "key": "area/spaces",
@@ -109,7 +116,8 @@
       "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
       "name": "Area \u2014 Spaces",
       "category": "house-area",
-      "suits": "the born cover for spaces: her before the row of golden doorways"
+      "suits": "the born cover for spaces: her before the row of golden doorways",
+      "credit": "Naya Resolve"
     },
     {
       "key": "area/events",
@@ -120,7 +128,8 @@
       "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
       "name": "Area \u2014 Events",
       "category": "house-area",
-      "suits": "the born cover for event pages: her and the amphitheater at dusk"
+      "suits": "the born cover for event pages: her and the amphitheater at dusk",
+      "credit": "Naya Resolve"
     },
     {
       "key": "area/booking",
@@ -131,7 +140,8 @@
       "scene": "The golden archway of time",
       "name": "Area \u2014 Booking",
       "category": "house-area",
-      "suits": "the born cover for booking pages: her and the golden archway of time (designed; generation owed)"
+      "suits": "the born cover for booking pages: her and the golden archway of time (designed; generation owed)",
+      "credit": "Naya Resolve"
     },
     {
       "key": "area/templates",
@@ -142,7 +152,8 @@
       "scene": "The hall of doorways",
       "name": "Area \u2014 Templates",
       "category": "house-area",
-      "suits": "the born cover for template pages: her and the hall of doorways (designed; generation owed)"
+      "suits": "the born cover for template pages: her and the hall of doorways (designed; generation owed)",
+      "credit": "Naya Resolve"
     },
     {
       "key": "area/intel-today",
@@ -153,7 +164,8 @@
       "scene": "The dawn overlook",
       "name": "Area \u2014 Intel Today",
       "category": "house-area",
-      "suits": "the born cover for dashboards and Intel Today: her at the dawn overlook (designed; generation owed)"
+      "suits": "the born cover for dashboards and Intel Today: her at the dawn overlook (designed; generation owed)",
+      "credit": "Naya Resolve"
     },
     {
       "key": "rotation/obsidian-starlight",
@@ -1336,5 +1348,72 @@
     "spec": "HUB/covers/FEATURE.human.md + FEATURE.ai.md + feature.machine.json (in this package)",
     "honest_status": "cover assets ready and carded; the citizen-facing chooser (recommended/library/upload on every page) is SPECIFIED, owned by naya-power (wiring) + naya-nitro (face), cold-verify by naya-resolve. Not live for citizens until the acceptance walk passes.",
     "direction": "Shawn 2026-10-25 ~22:15Z: stop generating pictures; turn the collection into one genuinely intelligent, usable feature."
+  },
+  "themes": {
+    "The House \u2014 Signature": {
+      "ready": 10,
+      "designed": 0,
+      "retired": 0,
+      "depth": "deep"
+    },
+    "The House \u2014 Areas": {
+      "ready": 4,
+      "designed": 3,
+      "retired": 0,
+      "depth": "solid"
+    },
+    "Kingdoms & Worlds": {
+      "ready": 13,
+      "designed": 0,
+      "retired": 0,
+      "depth": "deep"
+    },
+    "Prosperity & Business": {
+      "ready": 4,
+      "designed": 0,
+      "retired": 1,
+      "depth": "solid"
+    },
+    "Sanctuaries": {
+      "ready": 9,
+      "designed": 0,
+      "retired": 0,
+      "depth": "deep"
+    },
+    "Celebrations": {
+      "ready": 4,
+      "designed": 0,
+      "retired": 0,
+      "depth": "solid"
+    },
+    "The Facets": {
+      "ready": 20,
+      "designed": 0,
+      "retired": 0,
+      "depth": "surplus \u2014 create no more"
+    },
+    "The Cosmos": {
+      "ready": 3,
+      "designed": 0,
+      "retired": 0,
+      "depth": "thin \u2014 first in line if creation ever resumes"
+    },
+    "Companions": {
+      "ready": 3,
+      "designed": 0,
+      "retired": 0,
+      "depth": "thin \u2014 first in line if creation ever resumes"
+    },
+    "Craft & Knowledge": {
+      "ready": 4,
+      "designed": 0,
+      "retired": 0,
+      "depth": "solid"
+    }
+  },
+  "inventory": {
+    "counted_at": "2026-10-25",
+    "document": "HUB/covers/INVENTORY.human.md",
+    "verdict": "WE ARE GOOD: 74 ready vs 60 target; 20/20 demand areas covered. Creation rule: a new cover needs a named theme below solid or a named uncovered audience \u2014 otherwise the work is the feature. Surplus: The Facets (20). Thin: The Cosmos (3), Companions (3) \u2014 first in line, in that order, only if a real reason appears."
   }
 }
