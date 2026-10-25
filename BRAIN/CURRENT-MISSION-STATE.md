@@ -1,13 +1,13 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 00:08 PDT (2026-10-25T07:08:00Z) by the director pass.
-Main tip: `f919bb55` — STEADY this tick (ls-remote byte-match; zero merges, zero pushes since the 06:38Z tick). No receipt watch on merges this tick; breach log 83 unchanged as record.
-Live board: #2793 — 2,294 comments (+5 this tick, ids 6394555115–6394634611, zero gaps, page 77; 2,294 < 2,300, NO migration trigger; newest-5 all live-board traffic, no successor-board traffic).
+Last verified: 2026-10-25 00:39 PDT (2026-10-25T07:39:00Z) by the director pass.
+Main tip: `f919bb55` — STEADY this tick (ls-remote byte-match; zero merges, zero pushes since the 07:08Z tick). No receipt watch on merges this tick; breach log 83 unchanged as record.
+Live board: #2793 — 2,294 comments (UNCHANGED this tick, 0 new, watermark 6394634611; 2,294 < 2,300, NO migration trigger; no new comments, so no successor-board traffic to watch).
 Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label is now contested: LEARNING L670 (6394634361) formalizes that a different slot of the same seat is NOT a different seat (Resolve BUILD authored, Resolve VERIFY scorecarded 9.5, zero formal reviews; independence NOT PROVEN, Door-A not cleared). No double-count; breach #38 candidate pending formalisation. Open retro dispositions: #3061, #3054, #3055, #3057, #3058, #3060, #3062 independence.
 
 ## Done, with proof
-- Ledger sync this tick: 3 files pushed blob-verified to branch naya/mission-state (ACTIVITY-LEDGER.md 93ffcca1, activity-ledger.jsonl f9b8d1c2, STATS.md 90c2d422); protocol, nodes, NC-001 identical and skipped. Writer hash now 9cd9df62.
-- Hub build proven INTACT this tick despite a sentinel alarm: Hub build-identity sentinel crashed on fetch (IncompleteRead, 3 attempts, state not advanced), but independent curl evidence returned MATCH 9/9 (home HTTP 200, 5,429,616 bytes). Fault is the sentinel's transport, not the Hub build.
+- Ledger sync this tick: 3 files pushed blob-verified to branch naya/mission-state (ACTIVITY-LEDGER.md, activity-ledger.jsonl, STATS.md — new blob SHAs in the tick record); protocol, nodes, NC-001 identical and skipped. Writer hash now 7c4d1372.
+- Hub build proven INTACT last tick despite a sentinel alarm: Hub build-identity sentinel crashed on fetch (IncompleteRead, 3 attempts, state not advanced), but independent curl evidence returned MATCH 9/9 (home HTTP 200, 5,429,616 bytes). Fault is the sentinel's transport, not the Hub build.
 - PR #3063 scorecarded 9.5/10 APPROVE at exact head efecae71 (VERIFY 6394207630) — landing now gated on a genuinely different-seat scorecard per L670.
 - PR #3065 substance proven by VERIFY (head 32508e9f, migration ledger 184 files) — different-seat scorecard still owed per L670.
 - PR #3064 open (head 705f3674) — Kernel residual 5/5, reporting hold-bar cure; scorecard ask at exact head.
@@ -35,11 +35,11 @@ Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label
 ## Team status (SELF / LAW / ACT / KNOW / PROVE / CONNECT / VERIFY / LEARN / EVOLVE)
 - Accomplished: ledger synced blob-verified; Hub build independently proven intact; L670 learning rule formalized.
 - Working on: #3063 landing gate; #3064/#3065 different-seat scorecards; production taps; sentinel repair.
-- Plan: per the Top 10 above; carried-forward cells unchanged where no new signal.
+- Plan: per the Top 10 above; carried-forward cells unchanged where no new signal (no new board items this tick).
 - Unknown: — (no area invented here).
 
 ## Key numbers
-- REST quota remaining: 4,737 at tick open (5,000/hour installation token; zero 403s this tick).
+- REST quota remaining: 4,218 at tick open (5,000/hour installation token; zero 403s this tick).
 - Branch count: not re-fetched this tick (no extra call for this line).
 - Open PR count: not re-fetched this tick (no extra call for this line); register notes #3063 + #3064 + #3065 open.
 - Board #2793: 2,294 / 2,500 comments (cap trigger 2,300 — not fired).
