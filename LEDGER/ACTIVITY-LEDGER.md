@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 08:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 09:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26046,6 +26046,22 @@ _Last updated: 2026-10-25 08:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ gap-gap-gap-t0132 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up on gap-gap-t0132-lane8: strict-independence leg of guarded-file fix (honest non-close, fourth same-seat run)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t0132-lane8.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T08:50Z via git protocol: refs/pull/2460/head = 97d464602c74abdc21227e990a46305a9f4a1f2b EXACT match to receipt/brief/parent pins, head unmoved; fresh depth-1 fetch of that head: in-tree tools/test_check_merge_consensus_lane_tags.py sha256 1954c21c10a03fd4f44489e87cf014d6078f485826e48e182fba687aefc22557 EXACT match 
+
+### ✅ gap-gap-t0132 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on gap-t0132-lane8: strict-independence re-run of guarded-file fix (honest non-close)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0132-lane8.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T08:41Z via git protocol (one batched ls-remote): #2460 head 97d464602c74abdc21227e990a46305a9f4a1f2b EXACT match to receipt/brief/parent pins, head unmoved since parent run; preserved guarded file hidden_files/gap-t0132-lane8/test_check_merge_consensus_lane_tags.py sha256 f77e5b909f03a5debb8cd7b75b2372be9a637e6d88d
 
 ### ✅ gap-t0132 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
