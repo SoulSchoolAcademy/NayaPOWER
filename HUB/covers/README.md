@@ -72,3 +72,17 @@ And **six categories**, by what people's pages actually are:
 | Cosmos | visionaries, memberships | building (Tree's cosmic set feeds here) |
 
 Same rules as every cover: 3:1, middle-band composition, **no baked text** — and every open template doubles as a reference for a Naya-made custom version in the citizen's own world.
+
+---
+
+## Smart Covers — the chooser (Shawn, 2026-10-25)
+
+The library is a product, not a folder. In the **Smart Factory** it is a browsable shelf; at **page creation** it becomes a gentle chooser:
+
+1. **We pick for you by default.** Every page is born with a cover (its area cover) — nobody faces a blank page or a forced decision.
+2. **Want to choose?** Open Smart Covers: categories and search, *featured* covers first — never the whole shelf dumped at once.
+3. **Smart suggestions.** From what you told us (your Welcome answers, your page's purpose), we suggest the covers that fit you best, first.
+4. **Skip anytime.** "Pick for me" is always one tap — and the default is already beautiful.
+5. **Make it yours.** Use any cover as-is, or as the reference for a Naya-made custom version.
+
+People love beautiful parts that are done for them *and* theirs to pick. That's the feeling Smart Covers is built to give.

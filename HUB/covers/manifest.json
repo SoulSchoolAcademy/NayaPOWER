@@ -194,7 +194,8 @@
       "category": "the-dimension",
       "suits": "high-tech pages: tech businesses, creators, AI and future-facing spaces",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: liked it (2026-10-25)"
     },
     {
       "key": "open/emerald-falls",
@@ -205,7 +206,8 @@
       "category": "sanctuary",
       "suits": "nature pages: outdoors, environment, wellness, anyone whose world is the living earth",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: liked it (2026-10-25)"
     },
     {
       "key": "open/tide-realm",
@@ -216,7 +218,8 @@
       "category": "the-dimension",
       "suits": "ocean souls: travel, coastal businesses, dreamers, pages about depth and wonder",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: okay (2026-10-25)"
     },
     {
       "key": "open/festival-of-lights",
@@ -226,6 +229,152 @@
       "tier": "open",
       "category": "celebration",
       "suits": "events, communities, creators: pages that gather people and celebrate",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: for some people - niche (2026-10-25)"
+    },
+    {
+      "key": "open/obsidian-facets",
+      "file": "open/obsidian-facets.jpg",
+      "name": "Obsidian Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "any page: the house abstract in black - premium, dark, dimensional; also the family the share cards draw from",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)"
+    },
+    {
+      "key": "open/white-dimension",
+      "file": "open/white-dimension.jpg",
+      "name": "White Dimension",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "any page wanting the bright colorway: clean, premium, radiant",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)"
+    },
+    {
+      "key": "open/abyss-facets",
+      "file": "open/abyss-facets.jpg",
+      "name": "Abyss Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "any page wanting depth and calm power: teal flowing into the richest royal blue",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)"
+    },
+    {
+      "key": "open/jewel-facets",
+      "file": "open/jewel-facets.jpg",
+      "name": "Jewel Facets",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "abstract",
+      "suits": "the signature abstract: five jewels set in obsidian facets - NayaPOWER/NayaNET house design, no face, no logo",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)"
+    },
+    {
+      "key": "11-her-kingdom-tree",
+      "file": "11-her-kingdom-tree.jpg",
+      "name": "Her Kingdom",
+      "kind": "rotating",
+      "suits": "signature showpiece: her portrait, the crystal N, the jewel row and the whole kingdom behind her - for NayaNET flagship pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/cosmic-jewels-tree",
+      "file": "open/cosmic-jewels-tree.jpg",
+      "name": "Cosmic Jewels",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "cosmos",
+      "suits": "the jewel tier at cosmic scale: five giant jewels over a galaxy lake - visionaries, memberships, big-dream pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/arrival-hall-tree",
+      "file": "open/arrival-hall-tree.jpg",
+      "name": "Arrival Hall",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "a quiet signature: the hall overlooks the dawn kingdom, five small jewels set in the floor - welcome pages, hubs, communities",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/violet-sanctuary-tree",
+      "file": "open/violet-sanctuary-tree.jpg",
+      "name": "Violet Sanctuary",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "violet blossom trees, waterfalls and crystal flowers: wellness, beauty, gentle personal pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/sky-kingdom-tree",
+      "file": "open/sky-kingdom-tree.jpg",
+      "name": "Sky Kingdom",
+      "kind": "open",
+      "tier": "open",
+      "category": "the-dimension",
+      "suits": "the floating kingdom at sunset: crystal palaces, waterfalls falling into clouds - epic spaces and vision pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/rose-facets",
+      "file": "open/rose-facets.jpg",
+      "name": "Rose Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the warm colorway: rose-gold crystal light - beauty, lifestyle, warm personal brands",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/emerald-facets",
+      "file": "open/emerald-facets.jpg",
+      "name": "Emerald Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the green colorway: inside a giant emerald - growth, wealth, nature-tech, powerful calm brands",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/violet-facets",
+      "file": "open/violet-facets.jpg",
+      "name": "Violet Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the violet colorway: a universe inside an amethyst - mystical, intelligent, visionary pages",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/gold-facets",
+      "file": "open/gold-facets.jpg",
+      "name": "Gold Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the gold colorway: solidified sunlight - prosperity, premium brands, celebratory pages",
       "status": "ready",
       "credit": "Naya Resolve"
     }
@@ -280,13 +429,26 @@
       "sanctuary": "gardens, water, calm light: wellness, healing, gentle personal pages",
       "celebration": "lanterns, gatherings, amphitheaters: events, creators, communities that celebrate",
       "craft": "obsidian-and-crystal minimal luxury: premium brands, studios, portfolios",
-      "cosmos": "planets, galaxies, the arrival hall: visionaries, memberships, the big-dream pages"
+      "cosmos": "planets, galaxies, the arrival hall: visionaries, memberships, the big-dream pages",
+      "abstract": "multi-dimensional layered facet art - the house abstract (from the share-card backgrounds Shawn showed): colorways obsidian, white, teal-to-royal-blue; the jewel version is the signature"
     },
     "rules": [
       "same slot discipline as every cover: 3:1, middle band, no baked text ever",
       "every open template is also a reference for a Naya-made custom version",
       "born-with-cover default stays the area cover; citizens may swap to any tier from the shelf"
     ],
-    "plan": "Rounds themed from the system's own pages and templates + Shawn's named tastes (high tech, beauty, nature, outside the norm). Round 1: 4 (one retired by Shawn's verdict). Round 2: 4 more. Target ~18 ready on the shelf."
+    "plan": "Rounds themed from the system's own pages and templates + Shawn's named tastes. Abstract family added round 3 (his screenshots: the share-card obsidian facets + the low-poly video background). Shelf: 11 ready open covers. Branded area covers (Booking/Templates/Intel Today) still owed."
+  },
+  "smart_covers": {
+    "name": "Smart Covers",
+    "what": "The categorized cover library as a product: browsable in Smart Factory AND offered at page-creation time. Shawn 2026-10-25: people love done-for-you parts they get to pick - 'I picked it' is the feeling that attracts builders.",
+    "flow": [
+      "1. DEFAULT FIRST: every page is born with a cover already chosen by the system (area cover by page type) - nobody ever faces a blank page or a forced decision.",
+      "2. OPTIONAL CHOOSER: during page creation (and anytime after, via Change cover) the citizen may open Smart Covers: categories and search, FEATURED covers first, never the whole shelf dumped at once.",
+      "3. SMART SUGGESTION: using what the citizen told us (Welcome answers, page type, stated purpose), the system suggests the best-matching covers first - the auto-match idea applied to covers.",
+      "4. SKIP IS FREE: 'pick for me' is always one tap; the default is already beautiful.",
+      "5. CUSTOM PATH: any cover can be used as-is, or as the reference for a Naya-made custom version."
+    ],
+    "organization": "three brand tiers (signature / jewel / open) x categories (abstract colorways, the-dimension, prosperity, sanctuary, celebration, craft, cosmos) - the manifest is the shelf data; featured = a rotating curated subset, seeded by Shawn's verdicts."
   }
 }
