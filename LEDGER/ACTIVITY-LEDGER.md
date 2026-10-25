@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20121,6 +20121,14 @@ _Last updated: 2026-10-25 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Clears 9.5: deliverable hidden_files/lane4-p0a-reconcile-candidate.md SHA 68e09adaf0e... verified exact on disk. 20/20 round-trip re-derived with the reconciler's own functions (0 core field diffs), zero schema drift proven (empty diff vs t1422), the t1422 flag gap re-proven with a precise trigger (COMPOUNDED flag-less + v1.1-style pair = silent do
 
+### ✅ t0422 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 INTAKE - diary-entry front door
+
+**Receipt:** `twelve-lane-receipts/t0422-lane7.md`
+
+**Evidence:** VERIFIED on live workspace bytes: receipt twelve-lane-receipts/t0422-lane7.md exists; bin/diary_intake.py exists and runs (--help exit 0, interface matches the receipt's schema) but sha is now ac74e7fe... vs claimed 1737b3a9... - file edited 2026-10-15, later evolution, NOT PHANTOM (the 2026-10-14 scorer-seat row verified the exact claimed sha at t
+
 ### ✅ t0422 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Stage-0 INTAKE: diary-entry front door (diary_intake.py) + fail-closed proof
@@ -20136,6 +20144,14 @@ _Last updated: 2026-10-25 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0422-lane7.md`
 
 **Evidence:** Verified: bin/diary_intake.py on disk, sha256 1737b3a9... matches receipt pin exactly; live-run entry present in lesson-broadcast.md (line 4, exact claimed provenance: channel=diary-intake-cli, submitted=2026-10-12T16:16:37+00:00, principle=P4); no live quarantine log, matching the claim of zero live rejections (all adversarial tests ran on a /tmp 
+
+### ✅ t0422 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 [REPLAY] slice 2 - 3 other-seat decisions replayed
+
+**Receipt:** `twelve-lane-receipts/t0422-lane3.md`
+
+**Evidence:** VERIFIED on live workspace bytes: receipt twelve-lane-receipts/t0422-lane3.md exists; lane-3/t0422/replay-report-slice2.md exists with the EXACT claimed sha256 f3ee355a4f1680dd411af3aa42d2e7887df6584ffef63c207898597045354701, untouched since 2026-10-12. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS, matching the receipt's honest 9.0: all three decisio
 
 ### ✅ t0422 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -20193,6 +20209,14 @@ _Last updated: 2026-10-25 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: cited lineage artifact hidden_files/retrieval/auth-gate-migration-prep-t0601.md exists; receipts t0402-lane7.md, t0601-lane7.md exist on disk. Score 9.0: GOOD, ONE MORE PASS. Arm-fresh gate fired correctly — blind second-eyes on one's own map is definitionally not independent; claim was minimal, brief re-filed byte-intact, rotation untouc
 
+### ✅ t0412 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 COLDSTART slice 1 - 60-second cold-start packet + timed self-trial
+
+**Receipt:** `twelve-lane-receipts/t0412-lane7.md`
+
+**Evidence:** VERIFIED on live workspace bytes: receipt twelve-lane-receipts/t0412-lane7.md exists; trial log coldstart-trial-t0412.md exists untouched since 2026-10-12; template coldstart-packet-template.md exists but sha is now 3d13a66a... vs claimed aba8950d... and 287 vs 279 words - file edited 2026-10-18, later evolution, NOT PHANTOM (the lane's own 2026-10
+
 ### ✅ t0412 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Stage-0 COLDSTART slice 1 — 60-second cold-start packet + timed self-trial
@@ -20201,6 +20225,12 @@ _Last updated: 2026-10-25 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/coldstart-packet-template.md sha256 aba8950de7bfd0a6… == claimed aba8950d…, 279 words == claimed word count; hidden_files/coldstart-trial-t0412.md exists. Real value: self-trial forced the 503→279 cut (packet's own 60s law applied to itself) and caught genuine staleness — shared-state.json tip dbe06f9e vs mission-state-curren
 
+### ✅ t0412-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 [REPLAY] first slice: 3 high-stakes decisions replayed against 15 principles
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time 2026-10-25T02:45Z: receipt twelve-lane-receipts/t0412-lane3.md exists, SHA-256 494bb9ad709ff4ef1e2418e8c23555a8e29ec72ecc96d62f919bc8b25c5f520f; cited replay report hidden_files/lane-3/t0412/replay-report.md exists. NOT PHANTOM. Remote branch/SHA re-check N/A: read-only report task, no branch cited; 
+
 ### ✅ t0412 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Stage-0 [REPLAY] slice 1 — 3 past high-stakes decisions replayed vs 15 principles
@@ -20208,6 +20238,12 @@ _Last updated: 2026-10-25 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0412-lane3.md`
 
 **Evidence:** VERIFIED: hidden_files/lane-3/t0412/replay-report.md exists (11,764 bytes); cited receipts all on disk. Real value: counter-principle column run to ground on all three decisions; produced a transferable rule (P3 protects P4 — never fix your own ruling's gate mid-ruling). Score 9.0 (GOOD, ONE MORE PASS): why not 9.5 = (1) D1 replays the seat's own w
+
+### ✅ t0412-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 slice 3: rubric mechanization test, auto arm vs TF-IDF vs judge
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time 2026-10-25T02:45Z: receipt twelve-lane-receipts/t0412-lane2.md exists, SHA-256 9eea1ae73ca11de0df5d5f06c849a32342833a977aa83294de6d12ec2124a4f4; cited artifacts exist: hidden_files/auto-retrieval-slice3.py and hidden_files/lane-experiments/t0412/auto-retrieval/ (auto-scores.json, slice3-comparison.md
 
 ### ✅ t0412 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -20296,6 +20332,12 @@ _Last updated: 2026-10-25 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0402-lane7.md`
 
 **Evidence:** Verified: t0601 lineage artifact and quarantined draft exist; receipt discloses both recusal events fully. First recusal: arm-fresh gate fired correctly on own t0601 authorship before any design thinking. Second event: same seat family re-claimed the brief and shallow-checked signatures, recused again on discovery — full disclosure, draft quarantin
+
+### ✅ t0402-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
+
+**Task:** Auto-retrieval slice 2: blinded judge arm vs TF-IDF on frozen ground truth
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time 2026-10-25T02:45Z: receipt twelve-lane-receipts/t0402-lane2.md exists, SHA-256 1f59d596222de37c4c995ee3fa810ce0d0259daebc0ee368b4222bd077fa84d5; all cited disk artifacts exist in hidden_files/lane-experiments/t0402/auto-retrieval/ (ground-truth-FROZEN.md, judge-packet.md, judge-map-SEALED.json, judge
 
 ### ✅ t0402 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -31069,6 +31111,14 @@ _Last updated: 2026-10-25 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-t0422 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Gap t0422 lane3: flip-hunt replay slice-4 - 4 decisions replayed, 1 documented-verdict flip + 1 characterization reversal
+
+**Receipt:** `twelve-lane-receipts/gap-t0422-lane3.md`
+
+**Evidence:** VERIFIED on live bytes this tick via git protocol + workspace reads 2026-10-25T03:05Z: receipt SHA-256 36e61f77bb5ba5777ea4dfb790b7445ca73f5eda50d2d75a3a05663fd2de12d5; report hidden_files/lane-3/gap-t0422/replay-report-fliphunt-20261024.md exists with SHA-256 EXACT match cc121a3dae72fae74fcaa84b4e738e9c592f5cf47487fe6fe63e71dfd87b87b8; git ls-remo
+
 ### ✅ gap-gap-t0102 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** Gap-gap t0102 lane3: independently re-derive every item the gap-gap brief named as NOT re-derived in the scoring tick (PR #2418 record)
@@ -37886,6 +37936,12 @@ _Last updated: 2026-10-25 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261024-1959 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 19:59 PDT: 18 gap briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time 2026-10-25T03:05Z: receipt SHA-256 d3a8f8765dee95677851a02d5704cfdc288473e18e4a5126da0ff6f7d637c4b7; brief-queue/ root holds exactly the 18 briefs the receipt names plus lane-feed.md, and all 18 parent receipts exist on disk; claimed/ root holds only done/; stall-cap holds: nearest prior stall seat-s
 
 ### ✅ seat-stall-20261024-1848 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
