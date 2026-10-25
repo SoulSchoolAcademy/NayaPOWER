@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-25T21:25:10Z",
-  "tip": "af1907c9a9de03b88c76ccfc8c024a12354eb69a",
+  "generated_at": "2026-10-25T22:24:58Z",
+  "tip": "00f545e0f9c9e322ae049b47fd98448b77c6aeb4",
   "prs": [
     {
       "number": 2981,
@@ -19,7 +19,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "1fc5978f24fffcddfbdda9e6d13a9223267087a4"
+      "head": "00c63e32108d55aadb36f9e2debca331d8fff940"
+    },
+    {
+      "number": 3072,
+      "title": "Resolve/cover library v1 2026 10 25",
+      "tier": "B",
+      "action": "MERGE-NOW",
+      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "f073ac4bf640c325747d4cd13f98b88fe44fb5a3"
     }
   ]
 }
