@@ -923,10 +923,22 @@ def test_action_plan_names_top_hole_and_priority():
 def test_action_plan_hold_when_above_nine():
     sec = TeamSection(
         name="Proving/Verifying", manager="Naya 1", feed="#1723",
+        scores=[ScorePoint("Truth", 9.5, NOW, "w", "claim")],
+    )
+    plan = action_plan_text(sec)
+    assert "hold 9.5+" in plan
+
+
+def test_action_plan_rescore_below_ship_bar():
+    # w746 flipped the below-bar carrier to the 9.5 ship bar: a 9.0 is
+    # documented-minimum, not a hold — it goes back for re-score.
+    sec = TeamSection(
+        name="Proving/Verifying", manager="Naya 1", feed="#1723",
         scores=[ScorePoint("Truth", 9.0, NOW, "w", "claim")],
     )
     plan = action_plan_text(sec)
-    assert "hold 9.0+" in plan
+    assert "re-score toward 10" in plan
+    assert "hold" not in plan
 
 
 def test_action_plan_empty_is_honest():
