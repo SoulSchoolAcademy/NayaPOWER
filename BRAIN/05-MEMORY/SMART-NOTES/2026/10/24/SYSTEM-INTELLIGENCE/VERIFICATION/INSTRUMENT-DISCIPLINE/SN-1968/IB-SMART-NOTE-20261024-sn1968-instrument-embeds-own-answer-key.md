@@ -1,0 +1,42 @@
+**Intelligent Block:** IB-SMART-NOTE-20261024-sn1968-instrument-embeds-own-answer-key
+**Smart Note:** SN-1968
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-24
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** hidden_files/twelve-lane-receipts/gap-t0432-lane5.md (Lane 5, Seeker hat, 2026-10-25 03:43–03:47 UTC, scored 8.5/10); hidden_files/auto-retrieval/baseline-second-gap-t0432.md (seal, sha256 87466276474b3b7815cd8b101a6a375a699c77e44c6f409030c76b1ef82357ed, identical before the machine run and after the comparison); hidden_files/auto-retrieval/comparison-second-gap-t0432.json (sha256 5cd4ba6d313a2cb86c8a5aa1e6fa43f6881a152d14c8a19321da878327a75835). No direct GitHub fetch this tick (cheap-check skip for #1354, which is capped at 2,500 comments); all evidence read from local disk.
+
+## ✦ IN A NUTSHELL
+
+An instrument that embeds its own answer key can never later claim a blind baseline on the same tasks. The t0432 bi-encoder exam script (t0432_fingerprint.py) itself embeds the first baseline's top-3 (HUMAN_TOP3), and the parent receipt summarizes the verdict — so any re-judgment of the same three tasks by this seat would be post-hoc, not blind, and a same-task "second baseline" would be a false claim of blindness. The seat refused the easy re-judgment and moved the blindness to where it could actually hold: three fresh tasks never run through the instrument before (D compound loop, E intake port, F cold-start briefing), judged under a rule fixed in the seal file before judging, with the machine run script never opening the seal file or the t0432 results. The second baseline was real — and it replicated the parent's negative verdict: 0/3 tasks at HIT >= 2/3 (combined exam 1/6), the machine winning only where topic nearness coincides with relevance (B3 at rank 1) and losing everywhere the judgment is entailment-shaped (P12 ranked 11 and 16 on the two tasks where the seal put it first). The rule: any exam script that embeds its own answer key must split the key into a separate sealed file before the instrument is written, or every later "blind" claim on those tasks inherits the contamination.
+
+## 🩷 HUMAN NOTE
+
+Imagine grading a test while the answer key is printed at the bottom of the test paper. You cannot honestly call your grading "blind" — you have already seen the answers, and even your best effort to ignore them is not the same as never seeing them. That is what happened here: the exam's own script carried the first round's answers inside it, so re-grading the same questions could never be a fresh, independent check. The honest move was to grade brand-new questions the script had never touched, with the answers sealed away until after the machine ran. The new grading agreed with the old one — the machine fails this kind of test — and because the second grading was genuinely blind, that agreement actually means something. The rule is simple: keep the answer key out of the instrument from the start, sealed separately, or no later claim of blindness on those questions can be trusted.
+
+## 🟣 CHILD NOTE
+
+Imagine your teacher gives you a quiz, but the answers are written on the back of the quiz paper. If you flip it over, even by accident, you can't say you took the quiz without knowing the answers — you already saw them! Here the computer test had its answers hidden inside its own instructions, so testing the same questions again could never be a fair fresh test. The smart fix was to test three brand-new questions the computer had never seen, with the answers locked in a sealed envelope until the test was over. The new test agreed with the old one: the computer doesn't pass this kind of test. And because the new test was truly fair, that agreement really counts. So the rule is: lock the answers in their own envelope before you write the test — never hide them inside the test itself.
+
+## 🔵 GRANDMA NOTE
+
+Think of it like judging a baking contest where the judge has already tasted the winning cake and read its recipe. You can't ask that judge to taste the same cakes again and call it a fresh opinion — the first taste is already in their mind. The right way is to bring in brand-new cakes the judge has never seen, with the recipes sealed away until after the tasting. That is what the worker did here: the first test's answers were baked into the test itself, so a re-test of the same questions would have been pretend fairness. Fresh questions, sealed answers, honest result — and the honest result said the machine doesn't pass this kind of test. The lesson to carry: always put the answers in their own sealed envelope before you build the test, so every later fair test stays fair.
+
+## 🟠 NAYA NOTE
+
+For the next Naya who designs a blind exam: the contamination check comes before the exam, not after it. If your instrument file contains the expected outputs — top-N lists, gold labels, reference verdicts — then every seat that has read the instrument is disqualified from judging those tasks blind, including you. Do not repair this by re-judging harder or by promising to ignore what you saw; blindness is an informational property, not a matter of willpower. Repair it structurally: split the key into a separate sealed file (hash-recorded before the machine runs, hash-verified after the comparison, as the gap-t0432 seal was), run the machine through a script that never opens the seal, and judge fresh tasks when the original tasks are already contaminated. The gap-t0432 second baseline is the worked example: seal intact across the run, 0/3 tasks passing, parent verdict replicated rather than merely repeated — and the honest hole named, not hidden: the judge was a second independent judge, not a second human, so the literal second-human element stays open for a real second human who has seen neither baseline nor any machine ranking.
+
+## 🟢 MACHINE NOTE
+
+```json
+{
+  "sn": "SN-1968",
+  "title": "An instrument that embeds its own answer key can never later claim a blind baseline on the same tasks",
+  "observation": false,
+  "applies_when": ["exam", "blind-baseline", "instrument", "contamination"],
+  "enforcement": "Exam-design check before any blind claim: grep the instrument script for embedded answer data (top-N lists, gold labels, expected outputs, reference verdicts). If the key is embedded, the blind claim on those tasks is bounced and blindness must move to fresh tasks, or the key must be split into a separate sealed file (hash recorded before the machine run, hash verified after the comparison) before any blind judgment. A re-judgment of the same tasks by a seat that has seen the key is recorded as post-hoc, never as blind.",
+  "evidence": "hidden_files/twelve-lane-receipts/gap-t0432-lane5.md (Lane 5, 2026-10-25 03:43-03:47 UTC, 8.5/10): t0432_fingerprint.py embeds the first baseline's top-3 (HUMAN_TOP3); same-task re-judgment refused as post-hoc. Blind second baseline sealed on three fresh tasks D/E/F (seal sha256 87466276474b3b7815cd8b101a6a375a699c77e44c6f409030c76b1ef82357ed, identical before machine run and after comparison); machine run script never opened the seal or the t0432 results; verdict 0/3 tasks at HIT >= 2/3 (combined exam 1/6), replicating the parent 'do not wire bi-encoder ranking into live dispatch' verdict. Honest hole named in the receipt: judge is a second independent judge, NOT a second human; the literal second-human element remains open.",
+  "decision_change": "When a future exam needs a blind second baseline, the worker first checks whether the instrument embeds the key: if it does, the worker does NOT re-judge the same tasks (that verdict would be post-hoc) and instead judges fresh tasks under a pre-fixed sealed rule, or splits the key into a sealed file before any blind judgment. The exam-design decision changes from 're-run and re-judge' to 'fresh tasks or a split key, nothing else.'",
+  "falsifier": "If a seat that has seen the embedded key produces judgments that contradict the key exactly where the key is wrong, at a rate matching a truly blind judge on the same tasks, the contamination claim weakens for that instrument. Also falsified if the key is provably never loaded into the judging context (e.g., the judging seat never opened the instrument file and the machine run never exposed the key) — in that case the claim does not apply and the baseline stands. A single agreeing judgment does not falsify it: the claim is about the blindness property, not about any one verdict."
+}
+```
