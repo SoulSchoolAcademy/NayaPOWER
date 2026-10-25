@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27007,6 +27007,14 @@ _Last updated: 2026-10-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ gap-t0122 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0122-lane7: post-close branch re-verification of the 10-PR fossil batch + 3-day-youth objection
+
+**Receipt:** `twelve-lane-receipts/gap-t0122-lane7.md`
+
+**Evidence:** VERIFIED by independent git-protocol sample 2026-10-25T06:44Z: refs/heads/naya5/activation-gate-merged-hotfix = 4253df311865b2be59047583770251e078ab7328 EXACT match to receipt pin; refs/heads/naya5/smart-blocks-252-port = 6ba5357fd1c87acb6439fef34aa924d26b705eb7 EXACT match; refs/heads/naya4/gate-fusion-20261009 absent (consistent with the 8-gone c
+
 ### ✅ gap-t0806 — Team 7, Team Naya Scorer (Team Operations) — 9.3/10 [VERIFIED]
 
 **Task:** K2 stopped-domino unblock: 12 disqualification traces built, pinned, validated
@@ -27980,6 +27988,14 @@ _Last updated: 2026-10-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ gap-t0122 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0122-lane6: blinded-scorer same-model residual + scorer timestamp rule
+
+**Receipt:** `twelve-lane-receipts/gap-t0122-lane6.md`
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T06:42Z: blinded-scoring/SPEC.md current sha256 44f89354cf4b88a9a8dd5358bf258670bd57a7920ea39eb99d6bc7b286e2a110 EXACT match to the receipt's after-hash; the date -u rule is present in the live file (C4, lines 75 and 84: scorer MUST obtain completed_at via date -u, briefs MUST carry the rule verbatim, ahea
 
 ### ✅ gap-t1516 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
@@ -34188,6 +34204,36 @@ _Last updated: 2026-10-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-gap-gap-t0122-recusal-2 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up on t0122-lane11: SECOND consecutive RECUSAL with re-file (loop finding)
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T07:05Z: brief-queue/brief-gap-gap-gap-t0122-lane11.md sha256 a9aecb87f3dbcc68f169f9fb5cab25f4ae3534db08319ecdf06f207b90fd36e9 EXACT match to both this receipt and the prior recusal receipt, confirming the byte-identical re-file; rotation twelve-lane-rotation.json queued=20 and contains the brief, matching
+
+### ✅ gap-gap-gap-t0122 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up on t0122-lane11: RECUSED with re-file (previously exposed seat)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t0122-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T07:05Z: brief-queue/brief-gap-gap-gap-t0122-lane11.md sha256 a9aecb87f3dbcc68f169f9fb5cab25f4ae3534db08319ecdf06f207b90fd36e9 EXACT match to the receipt; parent receipt twelve-lane-receipts/gap-gap-t0122-lane11.md sha256 3c9c01593b49ad6c8499ae85d6e4b93e87d686ac4fb949fad0e459d2e0186df3 EXACT match; parent 
+
+### ✅ gap-gap-t0122 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on t0122-lane11: M3 double-count rule, corpus-drift falsification, and bounding of blind independence
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0122-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T06:52Z: evidence file hidden_files/lane-11/gap-gap-t0122-lane11-evidence.json sha256 d3d068fc7f6b124e592bd6d5df089178cf871e290fdb0b02aaed3754ea0edd41 EXACT match; original audit 3450858d6613d80fad60dcc3dde570622d2941898d53653510cc1e502065a72b EXACT match; independent sealed audit f54e5a549dd5820714d494f6a
+
+### ✅ gap-t0122 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0122-lane11: independent re-run of the t0082-t0122 human-value audit (M2/M3/M4)
+
+**Receipt:** `twelve-lane-receipts/gap-t0122-lane11.md`
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T06:42Z: independent sealed audit f54e5a549dd5820714d494f6a31ee1d3812a407aa2d7bef0d718c4eee8ffe58e EXACT match; original audit 3450858d6613d80fad60dcc3dde570622d2941898d53653510cc1e502065a72b EXACT match; gap instrument output fc2b00ebe7c45c8b863ef35b480531dd450cf4c86f2b6f42d1a9f7ffc0c54eca EXACT match; or
 
 ### ✅ gap-t1561 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
