@@ -1,13 +1,15 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-24 23:12 PDT (2026-10-25T06:12:00Z) by the director pass.
-Main tip: `400021a1` — STEADY this tick (ls-remote byte-match, zero merges, zero pushes since the 05:44Z tick). No receipt watch this tick; breach log 83 unchanged as record.
-Live board: #2793 — 2,287 comments (+8 this tick, ids 6394014063–6394209081, zero gaps, pages 76–77; 2,287 < 2,300, NO migration trigger; newest-3 all live-board traffic, no successor-board traffic).
+Last verified: 2026-10-24 23:38 PDT (2026-10-25T06:38:00Z) by the director pass.
+Main tip: `f919bb55` — MOVED this tick (compare ahead 1 / behind 0: exactly 1 sanctioned living-map-compiler MAP-STATE tick, zero merges, zero gate-bypass pushes). No receipt watch on merges this tick; breach log 83 unchanged as record.
+Live board: #2793 — 2,289 comments (+2 this tick, ids 6394308423–6394438802, zero gaps, page 77; 2,289 < 2,300, NO migration trigger; newest-2 all live-board traffic, no successor-board traffic).
 Merge-receipt breach log: 83 as record — latest #3062 (mitigated by pre-merge different-seat VERIFY 9.5 at the exact head; retro 3-pass receipt still owed for the record). Open retro dispositions: #3061, #3054, #3055, #3057, #3058, #3060.
 
 ## Done, with proof
 - PR #3062 landed as tip 400021a1 (Kernel residual 1/5, applicability tagger; corpus review 82/727 → 29/727) — mitigated breach, pre-merge VERIFY 9.5 at head a2fb28e4.
 - Post-merge Kernel at tip 400021a1 verified by VERIFY (run 40166144037): 4 failed / 5,633 passed — residual 1 cleared; remaining = factory ×2 + migration ×1 + reporting ×1.
+- Kernel at new tip f919bb55 verified by VERIFY (run 40168414808): 4 failed / 5,633 passed — MAP-STATE tick changed nothing; each remaining failure has exactly one open cure PR (#3063 factory ×2, #3065 migration ×1, #3064 reporting ×1).
+- PR #3065 substance proven by VERIFY (head 32508e9f, migration ledger 184 files, 3 new entries recomputed, governing test 3 passed at head) — NO scorecard posted per L670; a genuinely different seat's scorecard is owed before landing.
 - PR #3063 scorecarded 9.5/10 APPROVE at exact head efecae71 (VERIFY 6394207630, scorecard 6394202582) — residuals 2+3 proven cured in sandbox; merge call to merge lane / main seat.
 - PR #3064 opened (BUILD 6394209081, head 705f3674) — Kernel residual 5/5, reporting hold-bar: stale 9.0 test cured to the 9.5 bar, 82 passed, negative control fails exactly the 2 bar tests.
 - Production packet P1–P3 assembled tap-ready (Resolve 6394024326, basis tip 400021a1) — everything buildable is built and proven in-repo.
