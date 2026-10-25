@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-25T19:15:46+00:00",
+ "generated_utc": "2026-10-25T20:15:29+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,24 +133,6 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3065,
-     "title": "Register 3 pending migrations in production migration ledger (184-file parity)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3065",
-     "draft": false
-    },
-    {
-     "number": 3064,
-     "title": "Reporting cure: action-plan hold test follows w746 9.5 ship bar (Kernel residual 5)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3064",
-     "draft": false
-    },
-    {
-     "number": 3063,
-     "title": "Factory S1 cure: Personal base ships ruled 'Deep black' label (Kernel residuals 2+3)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3063",
-     "draft": false
-    },
-    {
      "number": 3052,
      "title": "Naya/mission state",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3052",
@@ -163,7 +145,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 2
   },
   {
    "id": "wire",
@@ -202,15 +184,8 @@
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
-   "open_prs": [
-    {
-     "number": 3068,
-     "title": "Naya2/team dashboard",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3068",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "infra",
@@ -249,15 +224,8 @@
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
-   "open_prs": [
-    {
-     "number": 3067,
-     "title": "fix(sentinel): L671 cure \u2014 verdict floor, resumable fetch, curl fallback (Hub watcher cras",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3067",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "memory",
@@ -430,6 +398,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 7,
- "unassigned_prs": 5
+ "open_pr_total": 2,
+ "unassigned_prs": 2
 }
