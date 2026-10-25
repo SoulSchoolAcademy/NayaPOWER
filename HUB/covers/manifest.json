@@ -1,0 +1,178 @@
+{
+  "library": "NayaNET Template Cover Library",
+  "version": 1,
+  "slot": {
+    "width": 1920,
+    "height": 640,
+    "ratio": "3:1"
+  },
+  "rules": [
+    "No baked text on any cover - the page's own name says what it is",
+    "Medallion, five jewels and her face never change; only the scene carries the area",
+    "Compose jewels in the upper-middle band (target ~70% of frame height): the page's bottom fade and crop eat the lowest band",
+    "Any cover can be repositioned vertically by the page owner (the adjuster); the offset is saved per page"
+  ],
+  "assets": [
+    {
+      "key": "rotation/hero-revised",
+      "file": "01-hero-revised.jpg",
+      "kind": "rotation",
+      "status": "ready"
+    },
+    {
+      "key": "rotation/obsidian-night",
+      "file": "02-obsidian-night.jpg",
+      "kind": "rotation",
+      "status": "ready"
+    },
+    {
+      "key": "rotation/golden-dawn",
+      "file": "03-golden-dawn.jpg",
+      "kind": "rotation",
+      "status": "ready"
+    },
+    {
+      "key": "rotation/crystal-portal",
+      "file": "04-crystal-portal.jpg",
+      "kind": "rotation",
+      "status": "ready"
+    },
+    {
+      "key": "rotation/epic-dimension",
+      "file": "05-epic-dimension.jpg",
+      "kind": "rotation",
+      "status": "ready"
+    },
+    {
+      "key": "rotation/cosmic-galaxy",
+      "file": "06-cosmic-galaxy-tree.jpg",
+      "kind": "rotation",
+      "status": "ready",
+      "credit": "Naya Tree"
+    },
+    {
+      "key": "rotation/obsidian-arch",
+      "file": "07-obsidian-arch-tree.jpg",
+      "kind": "rotation",
+      "status": "ready",
+      "credit": "Naya Tree"
+    },
+    {
+      "key": "area/personal",
+      "file": "areas/personal.jpg",
+      "kind": "area",
+      "area": "personal",
+      "status": "ready",
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+    },
+    {
+      "key": "area/business",
+      "file": "areas/business.jpg",
+      "kind": "area",
+      "area": "business",
+      "status": "ready",
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+    },
+    {
+      "key": "area/spaces",
+      "file": "areas/spaces.jpg",
+      "kind": "area",
+      "area": "spaces",
+      "status": "ready",
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+    },
+    {
+      "key": "area/events",
+      "file": "areas/events.jpg",
+      "kind": "area",
+      "area": "events",
+      "status": "ready",
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+    },
+    {
+      "key": "area/booking",
+      "file": "areas/booking.jpg",
+      "kind": "area",
+      "area": "booking",
+      "status": "designed",
+      "scene": "The golden archway of time"
+    },
+    {
+      "key": "area/templates",
+      "file": "areas/templates.jpg",
+      "kind": "area",
+      "area": "templates",
+      "status": "designed",
+      "scene": "The hall of doorways"
+    },
+    {
+      "key": "area/intel-today",
+      "file": "areas/intel-today.jpg",
+      "kind": "area",
+      "area": "intel-today",
+      "status": "designed",
+      "scene": "The dawn overlook"
+    },
+    {
+      "key": "rotation/obsidian-starlight",
+      "file": "08-obsidian-starlight-tree.jpg",
+      "kind": "rotation",
+      "status": "ready",
+      "credit": "Naya Tree",
+      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Dark premium variant - black medallion disc, star-cut jewels."
+    },
+    {
+      "key": "rotation/golden-profile",
+      "file": "09-golden-profile-tree.jpg",
+      "kind": "rotation",
+      "status": "ready",
+      "credit": "Naya Tree",
+      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Jewels sit low - the cover adjuster aligns it."
+    },
+    {
+      "key": "rotation/cosmic-ring",
+      "file": "10-cosmic-ring-tree.jpg",
+      "kind": "rotation",
+      "status": "ready",
+      "credit": "Naya Tree",
+      "note": "Re-fitted by Resolve 2026-10-25: 16:9 source cropped to the slot with medallion, jewel row and portrait ring whole. Her portrait-in-a-jewel-ring concept - strong for personal pages."
+    }
+  ],
+  "assignment_on_page_creation": {
+    "personal_page": "area/personal",
+    "business_page": "area/business",
+    "space": "area/spaces",
+    "events_page": "area/events",
+    "booking_page": "area/booking",
+    "templates_gallery": "area/templates",
+    "dashboard_intel": "area/intel-today",
+    "any_other_page": "next cover from the rotation set, cycling so the network does not repeat itself street by street"
+  },
+  "owner_controls": {
+    "change_cover": [
+      "pick any cover from the library shelf",
+      "upload your own image"
+    ],
+    "adjuster": {
+      "control": "drag the cover up or down to align it",
+      "stored_as": "cover_offset_y per page",
+      "applies_to": "library covers and uploads alike - this is what makes any beautiful image fit, including taller art"
+    },
+    "custom_cover_service": "A citizen can ask their Naya for a custom version made from their own photo, business or space - the library covers are the style it is made in"
+  },
+  "hosting": {
+    "decision": "The library ships as assets inside the app itself (versioned with the code that serves the pages) - no separate manual upload step, no extra account. Page creation references covers by key from this manifest. Citizen uploads live in user storage as today.",
+    "why": "Maximum automation: a page is born with its cover because the cover travels with the system that creates the page."
+  },
+  "facebook_share": "Unchanged: shares keep the current standard card (obsidian field, medallion, the message text in the middle). The epic covers are page covers, not share images.",
+  "smart_factory_shelf": {
+    "what": "The whole library is browsable in Smart Factory as templates",
+    "citizen_choices": [
+      "use any cover as-is on any page",
+      "use a cover as the reference and have their Naya make their own version"
+    ],
+    "born_with_cover": "Every personal, business and space page is built with its area cover already in - no upload required, ever",
+    "the_note_on_the_page": "Feel free to change your cover - or use it as a reference to get your own version made.",
+    "principle": "Everything by standard, the whole system always beautiful - and keep it simple"
+  }
+}
