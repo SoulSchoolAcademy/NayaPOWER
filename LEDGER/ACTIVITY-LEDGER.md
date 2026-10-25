@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21727,6 +21727,14 @@ _Last updated: 2026-10-25 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: tip aa8061c1 via ls-remote (unchanged), runner branch naya/six-sgf-daily-runner-t992 @ 41dfc86e pin-exact, falsifier artifacts on disk (sgf_runner.py sha256 db685e5c... MATCH, scorer-9.0/7.5/6.9.json present, verdicts match receipt claims), history appended 2 lines. Cold-arm seal files not located in scratch (evidence-location 
 
+### ✅ t0132 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-exact merge-calculator adjudication of PRs #2457 and #2460, verdicts on #2175
+
+**Receipt:** `twelve-lane-receipts/t0132-lane8.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T07:55Z via git protocol + disk: #2457 head 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 EXACT match, #2460 head 97d464602c74abdc21227e990a46305a9f4a1f2b EXACT match, both 13 days later; calculator decision files hidden_files/decisions/20261012T094006Z-guide-merge-merge-pr--2457.json and ...094005Z-...-2460.json both pr
+
 ### ✅ t0132-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** merge-calculator adjudication of PRs #2457 and #2460, every check classified
@@ -21749,6 +21757,14 @@ _Last updated: 2026-10-25 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol: tip aa8061c1, #2457 head 92fac098, #2460 head 97d46460 all pin-exact live. Calculator decision receipts exist on disk (20261012T094005/094006Z). Verdict comment 6121761481 exists on #2175 at 09:45:43Z. Honest #2460 receipt-gate body-header fix disclosed (format class, no code change). #2460 HOLD pending Shawn's
 
+### ✅ t0132 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Post-#2037 fossil layer closed: 10 oldest idle drafts closed as superseded under t1252 mechanism
+
+**Receipt:** `twelve-lane-receipts/t0132-lane7.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T07:55Z via git protocol: all 10 action-time PR-head pins EXACT-match current remote 13 days later (#2038 4042526d..., #2039 9e447aff..., #2071 8b826d1a..., #2073 8bf08ebc..., #2074 0afb4790..., #2075 1fec06d2..., #2076 ad6ea32e..., #2078 7b344b76..., #2109 8366a457db2837fb3a0ffc2c419d2c019d27e43b, #2110 ad9e0f38...
+
 ### ✅ t0132-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.3/10 [VERIFIED]
 
 **Task:** fossil-layer close: 10 oldest idle drafts after #2037 + #2079 triage (SKIPPED, human activity)
@@ -21770,6 +21786,14 @@ _Last updated: 2026-10-25 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0132-lane7.md`
 
 **Evidence:** Dispatcher verified live: #2038/#2110 closed (spot), open-PR search count == 467 == receipt claim (exact -10 delta). #2079 skipped honestly (fresh human validation). Why not 10: agent's own sign-in discipline hole + 8/10 heads unverified live (spot-checked only).
+
+### ✅ t0132 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 ROUND 3 CLOSED - ceiling under pressure, honest NO-GO, H8 line CLOSED 3/3
+
+**Receipt:** `twelve-lane-receipts/t0132-lane2.md`
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T07:55Z: seal file hidden_files/lane-experiments/t0132/prereg-sealed.md sha256 55fefecf70fd81189d3275b34a50791302e9394077e4b3bae01c5db922e6bddf EXACT match to the receipt, mtime 1791798210 (2026-10-12T09:43:30Z, matching the receipt's stamp claim). NOT PHANTOM: the decisive seal pin re-proves 13 days later
 
 ### ✅ t0132-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.4/10 [VERIFIED]
 
@@ -27006,6 +27030,14 @@ _Last updated: 2026-10-25 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-t0132 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0132-lane7: re-verify 10 close-comment IDs + correct #2109 table-form pin
+
+**Receipt:** `twelve-lane-receipts/gap-t0132-lane7.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T08:01Z via git protocol (one batched ls-remote): all 10 pull heads EXACT-match the gap receipt and the parent receipt's pins (#2038 4042526d..., #2039 9e447aff..., #2071 8b826d1a..., #2073 8bf08ebc..., #2074 0afb4790..., #2075 1fec06d2..., #2076 ad6ea32e..., #2078 7b344b76..., #2109 8366a457db2837fb3a0ffc2c419d2c01
 
 ### ✅ gap-t0122 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
