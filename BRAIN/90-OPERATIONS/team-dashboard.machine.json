@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-25T00:15:42+00:00",
+ "generated_utc": "2026-10-25T03:15:21+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,13 +133,31 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 3055,
+     "title": "Auto-match B1: intake-to-vector bridge (Welcome answers -> engine vectors)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3055",
+     "draft": false
+    },
+    {
+     "number": 3054,
+     "title": "Cold retrieve: rebind 3 stale page hashes to live pages",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3054",
+     "draft": false
+    },
+    {
+     "number": 3052,
+     "title": "Naya/mission state",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3052",
+     "draft": false
+    },
+    {
      "number": 2981,
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
      "draft": false
     }
    ],
-   "open_pr_count": 1
+   "open_pr_count": 4
   },
   {
    "id": "wire",
@@ -220,19 +238,13 @@
    "board_lane": "#2175 lane PRODUCT",
    "open_prs": [
     {
-     "number": 3051,
-     "title": "Universal interfaces scaffold + corrected Hub worker (draft)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3051",
-     "draft": true
-    },
-    {
      "number": 2968,
      "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2968",
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 1
   },
   {
    "id": "memory",
@@ -405,6 +417,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 3,
- "unassigned_prs": 1
+ "open_pr_total": 5,
+ "unassigned_prs": 4
 }
