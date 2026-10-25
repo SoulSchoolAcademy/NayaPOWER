@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-25",
-  "receipt_basis_commit": "41d7704d3cdc0faa8338c4beb01d0bc4dec7f4af",
+  "receipt_basis_commit": "e20faf7284319f405432e22ec9910308200a9b8d",
   "inventory_file_count": 1674,
   "domain_counts": {
     "00-ACTIVATION": 19,
@@ -7462,7 +7462,7 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json",
-      "blob_sha": "02c8c3dc94796cd2327a723d7edb6e9d8a0c94b8",
+      "blob_sha": "755441cfc74be3c00150a76be9c5bb89f20babd8",
       "size": 50263
     },
     {
@@ -7507,8 +7507,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/personal.html",
-      "blob_sha": "4f4192dbaeb9bf9fcfdfb7a30d0c07a94f7b9b97",
-      "size": 229830
+      "blob_sha": "a7ece917d452ef13e38a3b29cce46e49a76f04e4",
+      "size": 229834
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/portfolio.html",
@@ -8002,8 +8002,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "5c2070e1283505a0b598a1ab4e065651fa0dd996",
-      "size": 5172
+      "blob_sha": "4eb8da8d7c3a8bc67628a07a3f2436c4df05549c",
+      "size": 5391
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8347,8 +8347,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "efe332e92b3cb45df935b56777f389e307a68d3a",
-      "size": 19741
+      "blob_sha": "cc289a7633010742d7bfaa074d76d3325ef93998",
+      "size": 20162
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
