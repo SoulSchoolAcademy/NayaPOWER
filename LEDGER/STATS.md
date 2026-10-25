@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-25 18:31 UTC_
+_Last updated: 2026-10-25 19:01 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6060
-- ✅ Verified (8+): 5999
+- **Total scored actions:** 6061
+- ✅ Verified (8+): 6000
 - 🟡 Partial (5–7): 58
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -495,6 +495,7 @@ _Last updated: 2026-10-25 18:31 UTC_
 - **seat-stall-20261025-0848:** 1 actions, avg 9.0/10
 - **seat-stall-20261025-0953:** 1 actions, avg 9.0/10
 - **seat-stall-20261025-1058:** 1 actions, avg 9.0/10
+- **seat-stall-20261025-1158:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
