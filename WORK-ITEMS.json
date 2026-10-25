@@ -1,6 +1,6 @@
 {
  "schema": "living-list/v1",
- "generated_utc": "2026-10-25T15:20:39Z",
+ "generated_utc": "2026-10-25T15:35:39Z",
  "source": "hidden_files/living-list.json \u2014 validated + reconciled by state-core-builder.py (single writer)",
  "registry": "THE LIVING LIST \u2014 the one ranked queue across programs; programs are filters, not queues",
  "activation": {
@@ -109,8 +109,8 @@
    "title": "Command + universal search \u2014 one place that finds any person, note, thread, list, or link (Best-of-Best step 13)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 234511,
-   "claim_age_s": 234511,
+   "idle_s": 235412,
+   "claim_age_s": 235412,
    "stalled": true,
    "drift": [
     "stalled-claim: no state change or note for 65h+ \u2014 claim aging is visible by law"
@@ -132,8 +132,8 @@
    "title": "Linked everything \u2014 the data model: one thing in three homes, never three copies (step 14)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 234511,
-   "claim_age_s": 234511,
+   "idle_s": 235412,
+   "claim_age_s": 235412,
    "stalled": true,
    "drift": [
     "stalled-claim: no state change or note for 65h+ \u2014 claim aging is visible by law"
@@ -155,8 +155,8 @@
    "title": "Smart Lists \u2014 server store: the same lists in the Hub and your app (step 15)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 234511,
-   "claim_age_s": 234511,
+   "idle_s": 235412,
+   "claim_age_s": 235412,
    "stalled": true,
    "drift": [
     "stalled-claim: no state change or note for 65h+ \u2014 claim aging is visible by law"
@@ -178,8 +178,8 @@
    "title": "Conversational intake \u2014 Welcome door + invite-accept as one question at a time (step 12)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 234511,
-   "claim_age_s": 234511,
+   "idle_s": 235412,
+   "claim_age_s": 235412,
    "stalled": true,
    "drift": [
     "stalled-claim: no state change or note for 65h+ \u2014 claim aging is visible by law"
@@ -201,8 +201,8 @@
    "title": "Booking block \u2014 your availability once, a booking link, reminders both sides (step 17)",
    "updated_at": "2026-10-22T22:33:00Z",
    "verified_by": null,
-   "idle_s": 234511,
-   "claim_age_s": 234511,
+   "idle_s": 235412,
+   "claim_age_s": 235412,
    "stalled": true,
    "drift": [
     "stalled-claim: no state change or note for 65h+ \u2014 claim aging is visible by law"
@@ -246,12 +246,12 @@
    "verified_by": null,
    "pr_state": "merged",
    "pr_mergeable": null,
-   "idle_s": 236971,
-   "claim_age_s": 237871,
+   "idle_s": 237872,
+   "claim_age_s": 238772,
    "stalled": true,
    "drift": [
     "pr-merged-state-lags: PR #2939 is MERGED but the row sits IN PROGRESS",
-    "stalled-claim: no state change or note for 65h+ \u2014 claim aging is visible by law"
+    "stalled-claim: no state change or note for 66h+ \u2014 claim aging is visible by law"
    ]
   },
   {
@@ -272,7 +272,7 @@
    "verified_by": null,
    "pr_state": "closed",
    "pr_mergeable": false,
-   "idle_s": 243151,
+   "idle_s": 244052,
    "stalled": true,
    "drift": [
     "pr-closed-unmerged: PR #2869 closed without merging",
