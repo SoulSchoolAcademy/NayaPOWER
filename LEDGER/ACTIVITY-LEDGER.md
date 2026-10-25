@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20053,6 +20053,14 @@ _Last updated: 2026-10-25 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/five-retrieval-auth-gate-t942 live @ e654f16e8a49 (exact match to receipt pin); all 4 t0442 files exist with exact receipt SHAs (acceptance_battery.py 4470ccee…, battery_evidence.json 464c8529…, run_log.md 762015a7…, RETRIEVAL-AUTH-MIGRATION-PREP.md 9c988570…); tip dbe06f9e matches live HEAD. Work: RED-first M/S/C battery, own
 
+### ✅ t0432 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE 0 [RETRIEVAL] slice-1: bi-encoder fingerprint-match prototype vs sealed blind human baseline, hit-rate report
+
+**Receipt:** `twelve-lane-receipts/t0432-lane5.md`
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T03:45Z: receipt SHA-256 ce38e00c23e8eb5d65bb6a402396ee4d65bd66bb12a812db10cad8d9d7e77c; all cited artifacts exist: hidden_files/auto-retrieval/t0432_fingerprint.py (11503 bytes), baseline-sealed-t0432.md, proto-t0432.md, results-t0432.json, corpus_embeddings.npz (37126 bytes) + ids.json, and venv ~/worksp
+
 ### ✅ t0432 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** STAGE 0 [RETRIEVAL] slice-1: bi-encoder fingerprint-match prototype vs sealed blind human baseline, hit-rate report
@@ -20060,6 +20068,14 @@ _Last updated: 2026-10-25 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0432-lane5.md`
 
 **Evidence:** VERIFIED: t0432_fingerprint.py, baseline-sealed-t0432.md, proto-t0432.md, results-t0432.json, corpus_embeddings.npz + ids.json, and the autoretr venv ALL EXIST. File mtimes corroborate sealed-before-run honesty (baseline 16:31:47Z, before fingerprint 16:32:39Z and results 16:32:44Z - the human baseline could not be tuned after machine output). The 
+
+### ✅ t0432 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 [REPLAY] slice 2: 3 other-seat decisions re-run against 15 principles, HOLD/FLIP verdict + exact delta each
+
+**Receipt:** `twelve-lane-receipts/t0432-lane3.md`
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T03:45Z: receipt SHA-256 dfb6b990c87515f5f498d33a500a1b2a8cbda00f511b7b1b569ea5d53c00b73c; replay report hidden_files/decision-replay/replay-t0432.md exists (9378 bytes, SHA c6142111f9ae6ddfe53ebe4bf7fff8f586093e7ac5b1d6f195c1d65cdc03b971); all 3 source receipts exist (t1352-lane10, t0372-lane7, t952-lane9
 
 ### ✅ t0432 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -28406,6 +28422,22 @@ _Last updated: 2026-10-25 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-gap-t0432 — Team 5, Team Naya Scorer (Retrieval) — 9.2/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on t0432 bi-encoder exam: third blind baseline on fresh tasks G/H/I, pooled 4/9 verdict, pristine J/K/L reserve for a true second human
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0432-lane5.md`
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: seal/results/comparison SHA-256 all MATCH the receipt exactly (seal 142f24e3558053cb42f67592eb6e81b2a6f6d00686277c3717dc307b93ad0e5d, results a95175b7a9bcb6591c4461311d1d110cc669f3fa6033fafe7fc9482bccbc319e, comparison 8d8586c5fc7d6bed6710ce2d2d1426cce5c396b602700abc4a19f069e2949e10); corpus SHAs ma
+
+### ✅ gap-t0432 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap t0432 lane5: blind second baseline on 3 fresh tasks for bi-encoder exam, replication of negative verdict
+
+**Receipt:** `twelve-lane-receipts/gap-t0432-lane5.md`
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T03:55Z: receipt SHA-256 b43f70d1f600e2c924a32ee1e685b17bf9ccac3ef57a6a500c603c7ece41fd9e; all 4 cited artifact hashes EXACT match (seal 87466276..., results c545be2b..., comparison 5cd4ba6d..., corpus npz 8826c914..., ids 607d73f1...); claimed brief brief-gap-t0432-lane5.md present in brief-queue/claimed/
 
 ### ✅ gap-lane-scorer-20261015-0350 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
