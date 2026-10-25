@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-25 08:34 UTC_
+_Last updated: 2026-10-25 09:01 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6042
-- ✅ Verified (8+): 5981
+- **Total scored actions:** 6044
+- ✅ Verified (8+): 5983
 - 🟡 Partial (5–7): 58
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -22,7 +22,7 @@ _Last updated: 2026-10-25 08:34 UTC_
 | Team 5 | Naya Seeker | 505 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 284 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 386 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 409 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 411 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 524 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 725 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 363 | 9.1 | 9.6 |
@@ -1162,7 +1162,7 @@ _Last updated: 2026-10-25 08:34 UTC_
 - **triage-20261017-0745-diary-battery-0140:** 1 actions, avg 9.0/10
 - **triage-20261017-1434-redgreen-battery:** 1 actions, avg 9.0/10
 - **gap-t0132:** 2 actions, avg 9.0/10
-- **gap-gap-t0132:** 1 actions, avg 9.0/10
+- **gap-gap-t0132:** 2 actions, avg 9.0/10
 - **gap-t0426-lane8:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261015-0440-lane8:** 1 actions, avg 9.0/10
 - **gap-t0636-lane8:** 1 actions, avg 9.2/10
@@ -1200,6 +1200,7 @@ _Last updated: 2026-10-25 08:34 UTC_
 - **triage-20261017-1444-eqprobe-fullcorpus:** 1 actions, avg 8.5/10
 - **gap-lane-scorer-20261017-1100-lane8-b:** 1 actions, avg 9.2/10
 - **gap-gap-t1012-lane8:** 1 actions, avg 9.5/10
+- **gap-gap-gap-t0132:** 1 actions, avg 8.5/10
 - **gap-t0776:** 3 actions, avg 9.0/10
 - **scorer-20261014-1830:** 1 actions, avg 9.5/10
 - **gap-scorer-20261015-0050:** 1 actions, avg 9.5/10
