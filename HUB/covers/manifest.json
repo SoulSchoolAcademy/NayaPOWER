@@ -487,6 +487,28 @@
       "suits": "the five jewels at poster scale, set in a crown of black crystal: the boldest jewel statement in the library",
       "status": "ready",
       "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/companion-golden",
+      "file": "open/companion-golden.jpg",
+      "name": "Companion Golden",
+      "kind": "open",
+      "tier": "open",
+      "category": "companions",
+      "suits": "a golden retriever enthroned in the golden kingdom: pet pages, groomers, breeders, trainers, rescues, every beloved-dog business and personal page",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/vitality-rise",
+      "file": "open/vitality-rise.jpg",
+      "name": "Vitality Rise",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "pure energy: emerald and sunrise-gold facets bursting upward - fitness, health, coaching, any page about strength and a new morning",
+      "status": "ready",
+      "credit": "Naya Resolve"
     }
   ],
   "assignment_on_page_creation": {
@@ -611,5 +633,17 @@
     },
     "discovery": "browse by theme shelf; search by name AND by mood - every cover carries mood tags (calm, bold, warm, radiant, cosmic, serene...) because people search feelings, not categories. The jewel/signature tiers act as a filter inside every shelf.",
     "state_2026_10_25": "48 assets in the manifest; 29 citizen covers ready (23 + Tree set 3's 6); House collection 15 ready. Facets shelf nearly full (14); Sanctuaries and Cosmos healthy; Craft still empty; Celebrations thin - the remaining road to 60 fills shelves, theme by theme."
+  },
+  "demand_map": {
+    "source": "Deep research 2026-10-25 (SBA 2025 profile, Shopify/StoreInspect, Etsy, GoDaddy, APPA, HFA, ICF, Reddit/Facebook community sizes) - full report in research notes.",
+    "headline_findings": [
+      "Offline, services dominate: professional services/coaching is the #1 small-business sector (4.88M US firms); construction/trades 3.66M; real estate 3.51M; health care 2.95M; retail 2.81M.",
+      "Online inverts it: Shopify stores are Fashion 25.5%, Home & Garden 13.3%, Beauty 8.3%, Food & Beverage 6.6%, Health & Wellness 5.2%, Sports & Fitness 3.5%.",
+      "Communities run on humour, pets (r/aww 38M members), food (multiple 3-6M groups), and faith (multi-million-member groups).",
+      "Pets: 94M US pet-owning households, $152B spend (APPA). Health & fitness: 81M US facility members; wellness economy $6.8T. Coaching: $5.34B, ~123k practitioners (ICF). Food: 1M+ US outlets, $1.5T sales.",
+      "AI/SaaS is tiny by firm count (Information sector 1.3%) but ~90% of YC 2025 batches - small numbers, highest growth and pay intent; the abstract facet family already speaks its language."
+    ],
+    "lock_in": "Build the road to 60 by demand cluster, not by taste: Companions (pets) NEW shelf direction x4-6 - professional services/coaching scenes x3 - health & energy x3 more - food & hospitality x3 - craft & makers x4 - earthly nature/outdoors x3 - commerce/prosperity scenes x3 - clean professional register x3 - celebrations +2 - faith & community welcome x2 - membership progression set x2.",
+    "likely_missed_by_others": "other-services invisibles (salons, repair, pet care - 3.86M firms), skilled trades (creator demand +103% YoY), weddings/events vendors (~900k), solo real-estate agents, churches/non-profits (373k congregations)."
   }
 }
