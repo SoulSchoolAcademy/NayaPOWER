@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 11:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28060,6 +28060,12 @@ _Last updated: 2026-10-25 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
+
+### ✅ gap-t0092-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Leg 3 SEALED, not executed: leg-3 fixture + drift arm + ground-truth runs + prereg seal + cold brief
+
+**Evidence:** VERIFIED on disk 2026-10-25T11:13Z: all 8 receipt pins recompute MATCH (fixture-leg3 scores 0aa9cb77..., stub 51b0b0ad..., drift d769d9f5..., groundtruth meta-trend d2a0687a..., PREREG-leg3-SEALED b430a8a3..., seal-verification ef2d45f8..., cold-brief 8ecebad4..., build script 026a9452...); live tip f919bb55 matches git ls-remote HEAD exactly; drif
 
 ### ✅ gap-t0122 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
