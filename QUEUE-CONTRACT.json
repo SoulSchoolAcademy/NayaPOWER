@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-25T02:24:21Z",
-  "tip": "d7abb8e77c247cccb4f9ced4f36c48a14c415399",
+  "generated_at": "2026-10-25T03:24:28Z",
+  "tip": "1d1ea39008592de3c76db31f712e2bbf324729a7",
   "prs": [
     {
       "number": 2968,
@@ -28,7 +28,25 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "622c1d91e84dbe4dffe7590a3b0d2d437fa87e46"
+      "head": "8bd3209d7a6318837ee0c71477e44e1374ae8751"
+    },
+    {
+      "number": 3054,
+      "title": "Cold retrieve: rebind 3 stale page hashes to live pages",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): door-obligation; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "d9c783080251af3ab1716b677547e1c994f952d6"
+    },
+    {
+      "number": 3055,
+      "title": "Auto-match B1: intake-to-vector bridge (Welcome answers -> engine vectors)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "52c75f526f4a583e67a8c634729f6dd2f1c3ec05"
     }
   ]
 }
