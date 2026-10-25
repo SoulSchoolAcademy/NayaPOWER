@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-25T05:24:19Z",
-  "tip": "08c66329bede76b70315ecc659a5bdfbd430b7c5",
+  "generated_at": "2026-10-25T06:24:34Z",
+  "tip": "f919bb5524817a3628e35a9f2e77eb35335053f5",
   "prs": [
     {
       "number": 2981,
@@ -19,16 +19,34 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "f72869068c6f9cd84668461c6f1d5c9d2c4cf2a7"
+      "head": "37dd6f2d7d77617449fd8e2d7703f018c57addf4"
     },
     {
-      "number": 3062,
-      "title": "Applicability tagger: subtopic rules for the current filing taxonomy (Kernel residual 1 of 5)",
+      "number": 3063,
+      "title": "Factory S1 cure: Personal base ships ruled 'Deep black' label (Kernel residuals 2+3)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "efecae71c6fec66f7f6260a862f5d2d8c44aa567"
+    },
+    {
+      "number": 3064,
+      "title": "Reporting cure: action-plan hold test follows w746 9.5 ship bar (Kernel residual 5)",
       "tier": "B",
       "action": "CURE",
       "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
-      "head": "a2fb28e42d86c8c8cc421d1eaa556e37ec0595b1"
+      "head": "705f3674f24d5f06d1226edbc28550d63f7f9c39"
+    },
+    {
+      "number": 3065,
+      "title": "Register 3 pending migrations in production migration ledger (184-file parity)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "32508e9fdeeaedd5f15474635d82a0d45b43c6f3"
     }
   ]
 }
