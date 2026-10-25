@@ -881,6 +881,50 @@
       "suits": "a crystal dome and golden telescope under two galaxies, star charts drawn in light: science, astronomy, curiosity, cosmic wonder",
       "status": "ready",
       "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/the-cat-sovereign",
+      "file": "open/the-cat-sovereign.jpg",
+      "name": "The Cat Sovereign",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "companions",
+      "suits": "a silver cat with emerald eyes wearing a collar of the five jewels, enthroned on crystal: cats, cat lovers, regal pets, pet royalty pages",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/dawn-runners",
+      "file": "open/dawn-runners.jpg",
+      "name": "Dawn Runners",
+      "kind": "open",
+      "tier": "open",
+      "category": "companions",
+      "suits": "two horses with manes of streaming light galloping at dawn beneath a waterfall of light: horses, equestrian, ranches, freedom and wild hearts",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/nebula-garden",
+      "file": "open/nebula-garden.jpg",
+      "name": "Nebula Garden",
+      "kind": "open",
+      "tier": "open",
+      "category": "cosmos",
+      "suits": "a garden of starlight trees and flowers under two spiral galaxies, mirrored in a still lake: cosmos wonder, dreamers, astrology, cosmic calm",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/the-ringed-world",
+      "file": "open/the-ringed-world.jpg",
+      "name": "The Ringed World",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "cosmos",
+      "suits": "a crystal planet ringed with orbiting jewels over an obsidian sea, auroras above a golden terrace: space, sci-fi, big-vision pages, world builders",
+      "status": "ready",
+      "credit": "Naya Resolve"
     }
   ],
   "assignment_on_page_creation": {
@@ -1049,8 +1093,11 @@
         ],
         "status": "covered",
         "covers": [
-          "companions-arch-tree",
-          "companion-golden"
+          "companion-golden",
+          "companions-at-the-arch",
+          "best-friends",
+          "the-cat-sovereign",
+          "dawn-runners"
         ]
       },
       "health-fitness": {
@@ -1334,7 +1381,9 @@
         "covers": [
           "the-observatory",
           "cosmic-jewels",
-          "sky-jewels"
+          "sky-jewels",
+          "nebula-garden",
+          "the-ringed-world"
         ]
       }
     }
@@ -1393,16 +1442,16 @@
       "depth": "surplus \u2014 create no more"
     },
     "The Cosmos": {
-      "ready": 3,
+      "ready": 5,
       "designed": 0,
       "retired": 0,
-      "depth": "thin \u2014 first in line if creation ever resumes"
+      "depth": "solid"
     },
     "Companions": {
-      "ready": 3,
+      "ready": 5,
       "designed": 0,
       "retired": 0,
-      "depth": "thin \u2014 first in line if creation ever resumes"
+      "depth": "solid"
     },
     "Craft & Knowledge": {
       "ready": 4,
@@ -1414,6 +1463,6 @@
   "inventory": {
     "counted_at": "2026-10-25",
     "document": "HUB/covers/INVENTORY.human.md",
-    "verdict": "WE ARE GOOD: 74 ready vs 60 target; 20/20 demand areas covered. Creation rule: a new cover needs a named theme below solid or a named uncovered audience \u2014 otherwise the work is the feature. Surplus: The Facets (20). Thin: The Cosmos (3), Companions (3) \u2014 first in line, in that order, only if a real reason appears."
+    "verdict": "Thin-shelf round landed (22:24Z): Companions 3->5, Cosmos 3->5 - every citizen shelf now >=4, seven of eight >=5 after the finishing round. FINISHING ROUND (planned, 5): Companions +1 (->6), Cosmos +1 (->6), Celebrations +1 (->5), Craft +1 (->5), Prosperity +1 (->5) = every shelf >=5, ~83 ready. Then creation CLOSES; the work is the feature. Elite bar is the gate: a merely pretty piece does not enter."
   }
 }
