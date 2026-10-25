@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-25T22:24:58Z",
-  "tip": "00f545e0f9c9e322ae049b47fd98448b77c6aeb4",
+  "generated_at": "2026-10-25T23:24:20Z",
+  "tip": "f5677da35078b5e422d6d1eebec426806d501992",
   "prs": [
     {
       "number": 2981,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "00c63e32108d55aadb36f9e2debca331d8fff940"
+      "head": "3b3edab5023ee6d330318f418961c3ee1b17c16c"
     },
     {
       "number": 3072,
@@ -29,6 +29,15 @@
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
       "head": "f073ac4bf640c325747d4cd13f98b88fe44fb5a3"
+    },
+    {
+      "number": 3073,
+      "title": "Cover Library v2: full collection (89) + feature spec + Shawn's Featured",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
+      "owner": "author lane",
+      "head": "e802d90da58f1bf461225dcb4f812e3747da9c6d"
     }
   ]
 }
