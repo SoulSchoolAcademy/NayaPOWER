@@ -1,16 +1,16 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-24 18:40 PDT (2026-10-25T01:40:00Z) by the director pass.
-Main tip: `d7abb8e7` — MOVED this tick (c5a560a4 -> d7abb8e7): 1 MERGE + 1 sanctioned map-state push, zero unsanctioned direct pushes.
-Live board: #2793 — 2,229 comments (+4 this tick; 2,229 < 2,300, NO migration trigger; newest-4 all live-board traffic, no successor-board traffic).
-Merge-receipt breach log: 74 -> 75 as record (PR #3051 merged with NO 3-pass receipt and against its own DRAFT-until-carded gate — UNMITIGATED; see Blocked).
-REST quota: 4,073 remaining at the tick's rate read (core 5,000/hour); zero 403s this tick.
+Last verified: 2026-10-24 19:08 PDT (2026-10-25T02:08:00Z) by the director pass.
+Main tip: `d7abb8e7` — STEADY this tick (ls-remote byte-match; zero merges, zero pushes since the 01:40Z tick).
+Live board: #2793 — 2,236 comments (+7 this tick, ids 6392057383-6392211510, zero gaps, page 75; 2,236 < 2,300, NO migration trigger; newest-7 all live-board traffic, no successor-board traffic).
+Merge-receipt breach log: 75 unchanged as record (PR #3051 breach already recorded last tick; no new merge this tick).
+REST quota: 4,472 remaining at this tick's rate read (core 5,000/hour); zero 403s this tick.
 
 ## Ranked priorities (top-down, Shawn's standing 10)
 1. LEARNING — running; L661 ADOPTED (guard build still owed); L662 + L663 + WP-236 live; L664 + L665 ingested.
 2. SMART NOTE FLOW — TOP BLOCKER — TWO-HASH CURE, UNCHANGED: SN-0856 page_hash stale (cure NOT landed) + SN-1863 page 10,286 B, sha 9dbedd11... vs registry 3831410b...; page has NOT moved again, so the cure target is still current at the new tip. Cure: recompute BOTH hashes at landing time + manifest cascade + clear 78 tags, door/registry lane. HUB FACE DEFECT carried: nayanet.live/s/sn1863 serves SN-1864's content, /s/sn1864 404s — note map rebuild owed to hub/WIRE lane.
 3. THE SENDER / 4. THE RECEIVER / 5. THE COMPILER / 6. EMIT / 7. DECISION ENGINE / 8. SCORECARD / 9. TESTING / 10. OPTIMIZE GITHUB — carried from the live plan; no new signal this tick.
-New this tick: PR #3051 MERGED 01:34:02Z (Universal interfaces scaffold + corrected Hub worker, merge commit d7abb8e7, merged_by SoulSchoolAcademy) — interfaces/ tree now ON MAIN despite its DRAFT body (no different-seat scorecard at final head 98374570; 0 reviews; a codex bot summary at the final head flagged unresolved findings 5 seconds before the merge). Interfaces Move-1 assignment (6391932311, Shawn's biggest priority today) now overlaps the landed tree — Resolve must reconcile Move-1 PR scope against the landed scaffold, not push a duplicate tree. Connection Build scored twice independently: Resolve 8.5/10 + Nitro 9.0/10 CONDITIONAL, both NOT go-live — F1 agreed BLOCKER: refresh rotation returns no replacement refresh token, so every Allow connection dies at first refresh (~1h). Smart Memberships LOCKED as a program item (6391855081, queued behind pricing v2 + checkout, Groove trio order). Sanctioned map-state push d351cfef (parent c5a560a4, HUB/MAP-STATE.json only, 01:16Z). Master directive sync: see tick record (HAND_EDIT_DETECTED persists unless the sync below reports otherwise). naya2_to_builder: 3 appended (6391932311, 6392007557, 6392008846), 3 oldest archived; cap 20 holds.
+New this tick: Connection Build v2 RE-SCORED 9.5/10 by Naya Resolve (6392176349, independent re-test: F1 refresh rotation fixed with new refresh token, revocation cascade both ways, F2 newest-first notes, F3 form-encoded grants, authorize + issuance gating proven; residuals R1 expires_in and R2 reuse detection patched in v3.1) — this supersedes the 8.5 and 9.0 cards in the prior tick and is the current go-live evidence for the build. #3051 retro distinct-seat scorecard at d7abb8e7 still owed (Verity off-protocol #29, 6392085510; Nitro material note 6392057383: merged 01:34:02Z, 0 reviews, codex review failed 8s before merge). Open PRs now 2 (#2981, #2968; 2026-10-27 fix-or-close deadline stands). Two-hash cure UNCHANGED and still unlanded: SN-0856 + SN-1863 9dbedd11... vs registry, page not moved again. Hub face defect (sn1863/sn1864) still owed. No lane backwards twice.
 
 ## Done — with proof
 - PR #3051 landed: interfaces/README.md + interfaces/hub/sw.js (corrected shell ["/"], registration NEW) + interfaces/demo/assembler.html/v2/v3 on main at d7abb8e7 — LANDING PROVEN, GATE FAILED (see breach log 75).
