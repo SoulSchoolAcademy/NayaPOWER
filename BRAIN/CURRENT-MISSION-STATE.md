@@ -1,11 +1,12 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 08:39 PDT (2026-10-25T15:39:00Z) by the director pass. by the director pass.
-Main tip: `908d70bc` — STEADY since the 05:08 PDT tick (ls-remote byte-match again at 08:38 PDT; zero merges, zero pushes since). Merge receipt watch not run (no merges since the 04:39 PDT tick); breach log 83 unchanged as record.
-Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 35 comments, UNCHANGED this tick (quiet tick: tip + count both steady). Open, unlocked, 2,465 comments short of the 2,500 hard cap; no successor board exists.
+Last verified: 2026-10-25 09:10 PDT (2026-10-25T16:10:05Z) by the director pass.
+Main tip: `908d70bc` — STEADY since the 05:08 PDT tick (ls-remote byte-match again at 09:08 PDT; zero merges, zero pushes since). Merge receipt watch not run (no merges since the 04:39 PDT tick); breach log 83 unchanged as record.
+Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 40 comments, +5 this tick (zero gaps). Open, unlocked, 2,460 comments short of the 2,500 hard cap; no successor board exists.
 Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label is contested: LEARNING L670 formalizes that a different slot of the same seat is NOT a different seat (Resolve BUILD authored, Resolve VERIFY scorecarded 9.5, zero formal reviews; independence NOT PROVEN, Door-A not cleared). Open retro dispositions: #3061, #3054, #3055, #3057, #3058, #3060, #3062 independence.
 
 ## Done, with proof
+- TICK 2026-10-25 09:08 PDT: TIP STEADY 908d70bc (ls-remote byte-match; zero merges, zero pushes since 05:08 PDT). BOARD #3066: 35 -> 40 (+5 ids, zero gaps): hourly accountability 6399759607; HUB BUILD SENTINEL ALARM UNREACHABLE, 10th consecutive run 6399776821 (IncompleteRead crash x3, 0/9 live checks — Hub NOT diverged, offline MATCH 9/9; transport cure now 10 runs overdue, Hub lane); accountability report 6399801684 (3 finished, 0 finished right 9.5+, queue 872); learning event 6399860136 (no new L-number; L670 held 9th consecutive hour; P0 security routing 6399049230 re-confirmed working-as-designed); intelligent events x5 6399860416. naya2_to_builder: 0 appended; cap 20 holds. Receipt watch NOT RUN (no tip move); breach log 83 unchanged. LEDGER: 3 pushed blob-verified (ACTIVITY-LEDGER.md 5601af86 / activity-ledger.jsonl 96d9c3ff / STATS.md 8ef96e8b) + 3 identical skipped. Zero 403s. Quota 4,739 remaining at tick open.
 - TICK 2026-10-25 08:38 PDT: QUIET TICK. TIP STEADY 908d70bc (ls-remote byte-match). BOARD #3066: 35 comments, UNCHANGED since the 08:10 PDT tick (zero new ids). No merges, no receipt watch run, breach log 83 unchanged as record. naya2_to_builder: 0 appended; cap 20 holds. Compactor: 0 keys moved, 80,061 bytes (below the 200KB alarm line, above the 50KB look threshold; known class — director_tick keys + naya2_to_builder at cap). Zero 403s. Quota 4,342 remaining at tick open.
 - TICK 2026-10-25 08:10 PDT: TIP STEADY 908d70bc (ls-remote byte-match). BOARD #3066: 31 -> 35 (+4 ids, zero gaps): 6399049230 NEW P0 SECURITY ROUTING (read-only audit 14:44Z - anonymous EXECUTE on SECURITY DEFINER payment/booking RPCs, caller-supplied alias, no ownership check; anonymous scheduled-mail RPC with write side effects; evidence #2823 comment 6399046911; owner SEC-6 + Payments/Booking/Mail + LAW/INFRA; human gate before production; no exploit/closure claimed); 6399118404 hourly accountability (sentinel 8th crash in-window; dispatcher 21 finished / 1 finished right / queue +23); 6399130100 HUB BUILD SENTINEL ALARM UNREACHABLE, 9th consecutive run (IncompleteRead crash x3, 0/9 live checks - Hub NOT diverged, offline MATCH 9/9; transport cure now 9 runs overdue, Hub lane); 6399161746 accountability report (18 finished, 0 finished right 9.5+, queue +22 to 869; #3063/#3064/#3065 still parked per L670). naya2_to_builder: 0 appended - none of the 4 is builder-addressed, [BUILDER]-tagged, or a review verdict on a builder branch; cap 20 holds. No lane backwards twice. Zero 403s. Quota 4,711 remaining at tick open.
 - TICK 2026-10-25 07:08 PDT: TIP STEADY 908d70bc (ls-remote byte-match). BOARD #3066: 24 -> 31 (+7 ids, zero gaps): 6398485272 hourly accountability (sentinel 7th crash in-window; PR #2981 head push 13:41Z, SN-1988 candidate, still open unmerged); 6398488180 HUB BUILD SENTINEL ALARM UNREACHABLE, 8th consecutive run (IncompleteRead crash x3, 0/9 live checks — Hub NOT diverged; fault is the sentinel's transport, NOT the Hub build; mechanism change now 8 runs overdue, Hub lane); 6398516984 accountability report (21 finished, 1 finished right 9.5+, queue grew by 23); 6398564213 learning event (no new L-number; L671 falsifier re-fired 6th time); 6398564428 intelligent events x5 (WP-240 fired again; L672 applied again; L670 held 7th hour — #3063/#3064/#3065 parked at unchanged heads); 6398644305 learning event (no new L-number; L671 re-fired 7th time; 8th-crash hour); 6398644547 intelligent events x6 (WP-240 fired again; L670 held 8th hour; injection catch held — false publish claim discarded, real publish e200cb8d stands). naya2_to_builder: 0 appended — none of the 7 is builder-addressed, [BUILDER]-tagged, or a review verdict on a builder branch; cap 20 holds. No lane backwards twice. Zero 403s. Quota 4,657 remaining at tick open.
@@ -27,7 +28,7 @@ Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label
 4. Production packet taps, one at a time, Resolve verifying between taps — Shawn's hand is the gate.
 5. Retro exact-head scorecards / dock ruling for #3061 + #3054 (+ #3055/#3057/#3058/#3060 dispositions; #3062 independence formalisation).
 6. Merge-gate enforcement — over-RED, zero-review merges span #3055→#3062 by letter.
-7. Hub sentinel fetch repair, MECHANISM CHANGE NOW 9 RUNS OVERDUE (Hub lane) — IncompleteRead crashes on 9 consecutive hourly runs; L672: state records must name their writing path, liveness reads the live path's own advance only.
+7. Hub sentinel fetch repair, MECHANISM CHANGE NOW 10 RUNS OVERDUE (Hub lane) — IncompleteRead crashes on 10 consecutive hourly runs; L672: state records must name their writing path, liveness reads the live path's own advance only.
 8. Nitro N1/N2/N3 + Power matches seam.
 9. Filing-path guard L661 + SN-0855 branch retirement.
 10. #2793 archive hygiene + job-body re-derivation for #2793 -> #3066 (main seat): DISTILLED AND RELEASED body line on the retired feed; no seat re-mines released feeds except for provenance.
@@ -37,21 +38,21 @@ Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label
 - Retro scorecards for #3061/#3054 and siblings: dock / VERIFY (different-seat, exact-head).
 - Merge-gate enforcement (ruleset tightening): merge-gate owner / Human Director.
 - #2601 master directive: HAND_EDIT_DETECTED persists — lead reconciles (director does not PATCH over a hand edit).
-- Hub sentinel fetch repair: Hub lane (mechanism change now 9 runs overdue, 9th consecutive IncompleteRead crash).
+- Hub sentinel fetch repair: Hub lane (mechanism change now 10 runs overdue, 10th consecutive IncompleteRead crash).
 - NEW P0 security routing 14:44Z (#3066 comment 6399049230, evidence #2823 comment 6399046911): anonymous EXECUTE on SECURITY DEFINER payment/booking RPCs + anonymous scheduled-mail RPC with write side effects; owner SEC-6 + Payments/Booking/Mail + LAW/INFRA; next metadata-only caller/grant audit -> smallest coupled correction -> different-authenticated verifier; human gate before production; no exploit or closure claimed.
 - Kernel Tests FAILURE at HEAD 908d70bc (same failure on prior 2 heads): cure PRs #3063/#3064/#3065 parked on the L670 different-seat gate.
 
 ## Team status (SELF / LAW / ACT / KNOW / PROVE / CONNECT / VERIFY / LEARN / EVOLVE)
-- Accomplished: tip proven STEADY 908d70bc (ls-remote byte-match, zero merges); board #3066 31 -> 35 read first-hand (4 new comments, zero gaps); Hub again NOT diverged (sentinel alarm is UNREACHABLE, not DIVERGED); new P0 security hole routed with evidence and human gate intact.
-- Working on: #3063 landing gate; #3064/#3065 different-seat scorecards; production taps; sentinel mechanism change (9th crash); Kernel failure at HEAD; new P0 security audit (SEC-6).
+- Accomplished: tip proven STEADY 908d70bc (ls-remote byte-match, zero merges); board #3066 35 -> 40 read first-hand (5 new comments, zero gaps); Hub again NOT diverged (sentinel alarm is UNREACHABLE, 10th consecutive crash, not DIVERGED); L670 held a 9th consecutive hour; P0 security routing re-confirmed working-as-designed.
+- Working on: #3063 landing gate; #3064/#3065 different-seat scorecards; production taps; sentinel mechanism change (10th crash); Kernel failure at HEAD; P0 security audit (SEC-6).
 - Plan: per the Top 10 above; carried-forward cells unchanged where no new signal.
 - Unknown: — (no area invented here).
 
 ## Key numbers
-- REST quota remaining: 4,342 at tick open (5,000/hour installation token; zero 403s this tick).
+- REST quota remaining: 4,739 at tick open (5,000/hour installation token; zero 403s this tick).
 - Branch count: not re-fetched this tick (no extra call for this line).
 - Open PR count: not re-fetched this tick (no extra call for this line); register notes #3063 + #3064 + #3065 open, #2981 + #3052 open with new heads (d98ad396, 35b3c3d4), neither merged.
-- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 35 comments.
+- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 40 comments.
 
 ## Where to go
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts). Until PR #2533 merges, the draft branch `naya4/activation-read-me-first` carries it; after the merge, main.
