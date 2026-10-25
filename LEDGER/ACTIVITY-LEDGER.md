@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23103,6 +23103,14 @@ _Last updated: 2026-10-25 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Receipt:** `twelve-lane-receipts/t0022-lane2.md`
 
+**Evidence:** VERIFIED on live bytes 2026-10-25T05:40Z: receipt twelve-lane-receipts/t0022-lane2.md exists; lane-experiments/t0022/scale-run/run_report.json SHA-256 687b8a984ba78664a5d776452bd5cc9b4008c106d507d1bd8105367a0b65e0a3 EXACT match to the receipt; lane-experiments/t1412/PREREG-sealed.md SHA-256 4927ec008158514104d283e5aaeb02714e073f81b5b63988eb34cfa1a2
+
+### ✅ t0022 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** t1412 G0 VOID + compound_scale proven end-to-end
+
+**Receipt:** `twelve-lane-receipts/t0022-lane2.md`
+
 **Evidence:** VERIFIED: lane-experiments/t0022/scale-run/run_report.json exists on disk (25KB, mtime 2026-10-12 07:34 - matches receipt's run_utc 07:34:41Z); decision file 20261012T073346Z-next-t0022-lane2 exists; branch naya/two-compoundscale-fixture-t1432 absent from origin but its exact bytes survive as refs/pull/2458/head ac270833fb3a (receipt-cited, live). 
 
 ### ✅ t0022-lane2 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
@@ -23200,6 +23208,14 @@ _Last updated: 2026-10-25 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0022-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: metric_audit_t0022.json sha256 aace8582... == receipt pin; hv_output_t0022_run1/2.json present; out-t1402-backup/ NOTE.md + reconstruction present. M3 uniform-verdict broken by independent re-judgment (honest flag, not hidden); t1402-stdout loss owned as reconstruction-not-copy. Deductions per receipt: single-seat judgm
+
+### ✅ t0012 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Fossil-draft verification + #2453 merge-bar watch
+
+**Receipt:** `twelve-lane-receipts/t0012-lane7.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T05:40Z via git protocol: all 10 fossil PR heads re-pinned this tick and EXACT-match the receipt's t1242 pins (#1124 9514ad6966a5, #1195 21dc83f0d6e8, #1212 f6840e942b73, #1221 5a38cb39fe9c, #1224 a71fbfe1584c, #1226 253a00292f6d, #1232 1255e77e78ab, #1238 1297013c6f9d, #1242 1352743bb3b9, #1243 c5402f3f16cf); #2453
 
 ### ✅ t0012 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -23300,6 +23316,14 @@ _Last updated: 2026-10-25 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0012-lane7.md`
 
 **Evidence:** Verified via git protocol + REST: 5/5 PR head pins match receipt, #1124 closed-unmerged confirmed, #1130 open-draft Shawn-gated confirmed. Named 3 fresh merge-bar blockers incl. SEAT_RE lane-tag gap (blocks all lane-authored PRs). -1.5: fossil leg was spot-check verification of Lane 8's t1252 closes, not original action.
+
+### ✅ t0012 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Meta-trend instrument refresh + SGF cold dry run reproduction of the t992 9.65 claim
+
+**Receipt:** `twelve-lane-receipts/t0012-lane6.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T05:40Z: receipt twelve-lane-receipts/t0012-lane6.md exists; SGF run dir hidden_files/lane-6/sgf-daily/run-2026-10-12-T2/ present (cold-brief, pending-history, scorecard, scorer, seal-receipt, successor, task-selection, verdict); scorecard.json daily_score 9.95 confirmed on disk, matching the receipt; meta-trend/bin
 
 ### ✅ t0012 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -37984,6 +38008,12 @@ _Last updated: 2026-10-25 05:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261024-2213 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 22:13 PDT: 18 gap briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: receipt SHA-256 15020f00826efd460a3e959724df6a8910072d63a2f665b2b0d1158cd25f7ffd; brief-queue/ root holds exactly the 18 briefs the receipt names plus lane-feed.md (not a brief); rotation twelve-lane-rotation.json queued=18 is the same set (set-match exact, tick_count 1635, in_flight []); all 18 par
 
 ### ✅ seat-stall-20261024-2109 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
