@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 09:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24703,6 +24703,14 @@ _Last updated: 2026-10-25 09:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261018-0410 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** v2 gate design with quantified distractor rule and pilot gate
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261018-0410-lane9.md`
+
+**Evidence:** VERIFIED via git ls-remote + shallow fetch: branch naya4/gap-0410-lane9-gate-design-v2 head dfb14bc78f5586427ea1db9aa000589a31f395be matches receipt exactly; semantic-arm-acceptance-gate-design-v2.md present at that head, parent commit is the lane5 v5 head, consistent chain. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: DELTA_MAX=2 is a pinned candid
+
 ### ✅ gap-gap-t0112 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap t0112 lane9: CI's EXACT pytest failures at PR #2462 head, bounded to 7-vs-32
@@ -28606,6 +28614,22 @@ _Last updated: 2026-10-25 09:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261018-0120 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: triple-replicate t1412 exclusion battery, probe ARCHIVED/REVOKED arms
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261018-0120-lane5.md`
+
+**Evidence:** VERIFIED on disk: battery_replicate.py sha256 06c2fc2d50956e548d5a42a620bf9d7888c5ce6c1569e4ba0133ee31b8e387fe matches receipt exactly; battery_results.json has 24 rows; replication_verdict.json reports 24 runs, 0 flips, archived_excluded_3x and revoked_excluded_3x true; seal.json and fixtures present. Clears 9.5 because both named gaps closed with
+
+### ✅ gap-lane-scorer-20261018-0410 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** v5 corpus with fixed distractor rule, new freeze, battery run cold
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261018-0410-lane5.md`
+
+**Evidence:** VERIFIED via git ls-remote + shallow fetch: branch naya4/gap-0410-lane5-semantic-battery-v5 head bd7be87ac0627e031b69c241a0f6673e60540ab6 matches receipt exactly; semantic_gate_run_v5.json, corpus, queries and builders present at that head. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: F1-F6 unevaluated on acceptance data (run stopped at calibration 
 
 ### ✅ gap-gap-gap-gap-t0432 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -38212,6 +38236,12 @@ _Last updated: 2026-10-25 09:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261025-0233 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 02:33 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T09:41Z: rotation twelve-lane-rotation.json queued=21 is the exact set the receipt names (t0422, t1468, t1507, t1508 x3, t1510 x2, t1511, t1512 x3, t1514, t1527, t1531, t1556, gap-gap-gap-t0112-lane9, gap-gap-gap-t0122-lane11, gap-gap-gap-t0132-lane7, gap-gap-gap-t1504-lane10, gap-gap-gap-gap-t1564-lane11)
 
 ### ✅ seat-stall-20261025-0128 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
