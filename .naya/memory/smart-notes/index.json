@@ -15454,13 +15454,33 @@
         "note": "published directly as a BRAIN projection in commit b61f8ce6291069e9cce19f3d61a653b192185a48 ('Merge pull request #3057 from SoulSchoolAcademy/brain-build/learning-event-20261024') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "5665cdb1cb8ac0b75d289278e531a5af45fb60c14b4a2ae55082aeb078143afa"
+    },
+    {
+      "smart_note_id": "SN-1868",
+      "intelligent_block_id": "IB-SMART-NOTE-20261025-sn1868-never-wait-never-stop",
+      "title": "Never Wait, Never Stop",
+      "content_hash": "870f543a2c3b4cae4e2f1d51edc439c167e56d0b3338e60a70f17e90decba88c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/never-stop/SN-1868/IB-SMART-NOTE-20261025-sn1868-never-wait-never-stop.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SERVICE",
+      "topic": "SERVICE",
+      "subtopic": "NEVER_STOP",
+      "captured_at": "2026-10-25",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 41d7704d3cdc0faa8338c4beb01d0bc4dec7f4af ('SN-1868: Never Wait, Never Stop') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "397883b9c9b29a3b06bb194a57a0c2e8b21d25bd21e9b5fab3f5149aa876192f"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1868,
+    "next_sequence": 1869,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "efbf60bdfa8fd57cce9ba0bbc5bf2f09c0de96db937b913353979572bec6583a"
+  "corpus_manifest_hash": "9c6401cabf2632efb80e8ccf419b4c167e8b4d4b76bb1177eda5e96de63bdb3b"
 }

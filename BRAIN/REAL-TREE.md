@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-25  
-**Receipt basis commit:** `b61f8ce6291069e9cce19f3d61a653b192185a48`  
-**Inventory file count:** 1672  
+**Receipt basis commit:** `41d7704d3cdc0faa8338c4beb01d0bc4dec7f4af`  
+**Inventory file count:** 1674  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 862 |
+| 05-MEMORY | 863 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -23,7 +23,7 @@
 | 10-INTERFACES | 445 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
-| 90-OPERATIONS | 104 |
+| 90-OPERATIONS | 105 |
 | 99-ARCHIVE | 2 |
 | ROOT | 7 |
 
@@ -1002,6 +1002,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1860/IB-SMART-NOTE-20261024-sn1860-smart-notes-from-inside-the-hub-quick-note-then-smart-note.md` — `f23278c0832c` (7438 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/24/SYSTEM/team/SN-1863/IB-SMART-NOTE-20261024-sn1863-pricing-free-vs-paid.md` — `20a6ab97600a` (10286 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/finishing-the-job/SN-1866/IB-SMART-NOTE-20261025-sn1866-nothing-has-value-until-it-works.md` — `fdcf748ec0bc` (4676 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/never-stop/SN-1868/IB-SMART-NOTE-20261025-sn1868-never-wait-never-stop.md` — `2075f9decb3c` (3165 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/ten-star-service/SN-1865/IB-SMART-NOTE-20261025-sn1865-ten-star-service-is-choosing-whats-best.md` — `11f24647734a` (5324 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md` — `1a7e5ca989b0` (2599 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
@@ -1648,6 +1649,7 @@
 - `BRAIN/90-OPERATIONS/2026-10-23-THE-TEN-TENS-REPORT-V1.md` — `116ab5557fd9` (19252 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-23-most-intelligent-system-assessment-v1.machine.json` — `bf1b09de1e59` (18107 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-23-project-intelligence-team-master-build-order.machine.json` — `3968ffa0e960` (16477 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-25-14-QUESTIONS-10-10-REPORT.md` — `6382eb28a1ba` (59944 bytes)
 - `BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md` — `d82083edcac4` (16418 bytes)
 - `BRAIN/90-OPERATIONS/INTER-LEDGER-PROTOCOL.md` — `67d42af19eae` (24546 bytes)
 - `BRAIN/90-OPERATIONS/NETWORK-MAP.md` — `59a1dfba71b7` (9347 bytes)

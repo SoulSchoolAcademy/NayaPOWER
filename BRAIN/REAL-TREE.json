@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-25",
-  "receipt_basis_commit": "b61f8ce6291069e9cce19f3d61a653b192185a48",
-  "inventory_file_count": 1672,
+  "receipt_basis_commit": "41d7704d3cdc0faa8338c4beb01d0bc4dec7f4af",
+  "inventory_file_count": 1674,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 862,
+    "05-MEMORY": 863,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -19,7 +19,7 @@
     "10-INTERFACES": 445,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
-    "90-OPERATIONS": 104,
+    "90-OPERATIONS": 105,
     "99-ARCHIVE": 2,
     "ROOT": 7
   },
@@ -4811,6 +4811,11 @@
       "size": 4676
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/never-stop/SN-1868/IB-SMART-NOTE-20261025-sn1868-never-wait-never-stop.md",
+      "blob_sha": "2075f9decb3c0cb92942f2334e4df6e62449bf22",
+      "size": 3165
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/ten-star-service/SN-1865/IB-SMART-NOTE-20261025-sn1865-ten-star-service-is-choosing-whats-best.md",
       "blob_sha": "11f24647734a44fd21eb6a89c8291866efa7c251",
       "size": 5324
@@ -7959,6 +7964,11 @@
       "path": "BRAIN/90-OPERATIONS/2026-10-23-project-intelligence-team-master-build-order.machine.json",
       "blob_sha": "3968ffa0e9601a17152e925dc09596b7da1a3864",
       "size": 16477
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-25-14-QUESTIONS-10-10-REPORT.md",
+      "blob_sha": "6382eb28a1bac6d6fd137ad99a964d3356dfb6f2",
+      "size": 59944
     },
     {
       "path": "BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md",
