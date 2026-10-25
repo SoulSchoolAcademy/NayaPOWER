@@ -1,17 +1,8 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-25T03:24:28Z",
-  "tip": "1d1ea39008592de3c76db31f712e2bbf324729a7",
+  "generated_at": "2026-10-25T04:24:28Z",
+  "tip": "37a7321906227a36e0dcf140b74a780c15176d5e",
   "prs": [
-    {
-      "number": 2968,
-      "title": "Retire the stale HUB/app snapshot + disarm its deploy trigger (Tier A \u2014 director's order)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): No silent deletions, delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "7347902a932075c574e93e3132aedd13d7b2763b"
-    },
     {
       "number": 2981,
       "title": "Naya4/smart notes 2026 09 30",
@@ -19,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "f882bec05db2a4cb3623eb6ad57adeca2693e5df"
+      "head": "471a1ae9c4e4c7de74874e3a9b8400007b82d7e0"
     },
     {
       "number": 3052,
@@ -28,25 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "8bd3209d7a6318837ee0c71477e44e1374ae8751"
-    },
-    {
-      "number": 3054,
-      "title": "Cold retrieve: rebind 3 stale page hashes to live pages",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): door-obligation; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "d9c783080251af3ab1716b677547e1c994f952d6"
-    },
-    {
-      "number": 3055,
-      "title": "Auto-match B1: intake-to-vector bridge (Welcome answers -> engine vectors)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "52c75f526f4a583e67a8c634729f6dd2f1c3ec05"
+      "head": "dd1b25b1e31302a0e63563fb6b8b5204b88d30e3"
     }
   ]
 }
