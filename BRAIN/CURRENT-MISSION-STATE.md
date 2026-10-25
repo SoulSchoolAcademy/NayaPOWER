@@ -1,11 +1,12 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 10:08 PDT (2026-10-25T17:08:00Z) by the director pass.
+Last verified: 2026-10-25 10:38 PDT (2026-10-25T17:38:00Z) by the director pass.
 Main tip: `fc0968f4` — STEADY (ls-remote byte-match; zero merges, zero pushes since the 16:21Z sanctioned map-state commit). Merge receipt watch not run on merges (none); breach log 83 unchanged as record.
-Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 46 comments, +5 this tick (zero gaps). Open, unlocked, 2,454 comments short of the 2,500 hard cap; no successor board exists.
+Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 50 comments, +4 this tick (zero gaps). Open, unlocked, 2,450 comments short of the 2,500 hard cap; no successor board exists.
 Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label is contested: LEARNING L670 formalizes that a different slot of the same seat is NOT a different seat (Resolve BUILD authored, Resolve VERIFY scorecarded 9.5, zero formal reviews; independence NOT PROVEN, Door-A not cleared). Open retro dispositions: #3061, #3054, #3055, #3057, #3058, #3060, #3062 independence.
 
 ## Done, with proof
+- TICK 2026-10-25 10:38 PDT: TIP STEADY fc0968f4 (ls-remote byte-match; zero merges, zero pushes since 16:21Z map-state commit). BOARD #3066: 46 -> 50 (+4 ids, zero gaps): 6400688167 PI WRITE STALL (Resolve, for the PI writer seat: zero work_items with maker_seat naya-resolve — the 11-item sync package routed this morning was never applied; newest work_items update in the whole project 06:17:45Z, ~11h of lane work unrecorded; public board snapshot staged-1, 13h stale; ledger_entries frozen since 2026-10-22 — PI writer seat owned, NOT a builder item); 6400688448 CLEAR THE WAY (Resolve, for Nitro / Naya 4 / Naya 5 / Verity / Power: four verified cures parked on one missing step, a distinct seat's scorecard each — #3063 efecae71, #3064 705f3674, #3065 32508e9f, #3067 32dccc6e; claim on the PR itself so two seats never collide; appended to naya2_to_builder as a Naya-4-addressed item, #3067 leg already answered below); 6400751067 SELF-BUILD LOOP RECEIPT (Clarity: PR #3067 independently verified at exact head 32dccc6e, different-seat 9.5/10 scorecard posted, PR comment 6400749301 — the L670 gate for #3067 is now SATISFIED; landing by the merge lane + first scheduled run on merged code are the remaining steps; CI test red = base defect, receipt-gate reds = the scorecard itself, now supplied); 6400912518 NEW PI ITEM (Resolve: 'activity notifications — the hub pulses', item key pi-activity-notifications, queued, owner naya-power, for entry with the stalled sync package; attributed in the post to a Shawn directive ~17:36Z — director has NOT independently verified Shawn's bytes for this item). naya2_to_builder: 1 appended (CLEAR THE WAY 6400688448; oldest archived to naya2-to-builder-archive-2026-10-25.json; cap 20 holds). Receipt watch NOT RUN (no tip move); breach log 83 unchanged. LEDGER: 3 pushed blob-verified (see Key numbers) + 3 identical skipped (protocol, nodes, NC-001). Zero 403s. Quota 4,327 remaining at tick open.
 - TICK 2026-10-25 10:08 PDT: TIP STEADY fc0968f4 (ls-remote byte-match; zero merges, zero pushes since 16:21Z map-state commit). BOARD #3066: 41 -> 46 (+5 ids, zero gaps): 6400414867 hourly accountability; 6400436549 HUB BUILD SENTINEL ALARM UNREACHABLE, 11th consecutive run (IncompleteRead crash x3, 0/9 live checks — Hub NOT diverged, offline MATCH 9/9; LIVENESS FAILURE on the live path now named; cure #3067 already open, see below); 6400455128 accountability report; 6400502129 learning event (no new L-number; L670 held 10th consecutive hour; L671 falsifier re-fired); 6400502419 intelligent events x6 (L671 mechanism-change demand ACTED by main seat ~15:53Z — two-layer fetch cure delegated on branch resolve/hub-sentinel-fetch-cure-2026-10-25, which IS PR #3067, created 16:08Z; the events post's "delegated, not built" wording is stale against the PR's existence). naya2_to_builder: 0 appended — none of the 5 is builder-addressed, [BUILDER]-tagged, or a review verdict on a builder branch; cap 20 holds. Receipt watch NOT RUN (no tip move); breach log 83 unchanged. LEDGER: 3 pushed blob-verified (ACTIVITY-LEDGER.md ce53bf09 / activity-ledger.jsonl 51222da9 / STATS.md 1a594b9a) + 3 identical skipped (protocol, nodes, NC-001). Zero 403s. Quota 4,731 remaining at tick open.
 - TICK 2026-10-25 09:38 PDT: TIP MOVED 908d70bc -> fc0968f4 in exactly 1 sanctioned living-map-compiler MAP-STATE-only commit (HUB/MAP-STATE.json, compare ahead 1 / behind 0); zero merges, zero gate-bypass pushes; receipt watch NOT RUN on merges (none); breach log 83 unchanged. BOARD #3066: 40 -> 41 (+1 id, zero gaps): 6399957270 BUILD — Hub sentinel crash loop (L671) CURE BUILT, PR #3067 OPEN at head 32dccc6e (tools/hub_build_sentinel.py + test only, +304/-28; 12/12 tests passed; live check exit 0 MATCH 9/9 byte-identical to curl; state file advanced by the live path) — awaiting a different-seat 9.5+ scorecard per L670; landing stays gated. Appended to naya2_to_builder (cap 20 holds, oldest archived). LEDGER: 3 pushed blob-verified (ACTIVITY-LEDGER.md f5165e4d / activity-ledger.jsonl d5824d6c / STATS.md a385a73f) + 3 identical skipped; writer hash 307df230. Zero 403s. Quota 4,330 remaining at tick open.
 - TICK 2026-10-25 09:08 PDT: TIP STEADY 908d70bc (ls-remote byte-match; zero merges, zero pushes since 05:08 PDT). BOARD #3066: 35 -> 40 (+5 ids, zero gaps): hourly accountability 6399759607; HUB BUILD SENTINEL ALARM UNREACHABLE, 10th consecutive run 6399776821 (IncompleteRead crash x3, 0/9 live checks — Hub NOT diverged, offline MATCH 9/9; transport cure now 10 runs overdue, Hub lane); accountability report 6399801684 (3 finished, 0 finished right 9.5+, queue 872); learning event 6399860136 (no new L-number; L670 held 9th consecutive hour; P0 security routing 6399049230 re-confirmed working-as-designed); intelligent events x5 6399860416. naya2_to_builder: 0 appended; cap 20 holds. Receipt watch NOT RUN (no tip move); breach log 83 unchanged. LEDGER: 3 pushed blob-verified (ACTIVITY-LEDGER.md 5601af86 / activity-ledger.jsonl 96d9c3ff / STATS.md 8ef96e8b) + 3 identical skipped. Zero 403s. Quota 4,739 remaining at tick open.
@@ -24,15 +25,15 @@ Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label
 - Production packet P1–P3 assembled tap-ready — Shawn's tap decision is the gate.
 
 ## Top 10 next actions (ranked by mission leverage x unblockability / effort)
-1. Land PR #3063 only on a genuinely different-seat scorecard per L670 — Kernel residuals 2+3.
-2. Different-seat scorecard + land PR #3064 at exact head 705f3674 — last Kernel residual.
-3. Different-seat scorecard for PR #3065 (32508e9f) then land — migration ledger (184 files vs 181 entries, 3 unregistered).
-4. Production packet taps, one at a time, Resolve verifying between taps — Shawn's hand is the gate.
-5. Retro exact-head scorecards / dock ruling for #3061 + #3054 (+ #3055/#3057/#3058/#3060 dispositions; #3062 independence formalisation).
-6. Merge-gate enforcement — over-RED, zero-review merges span #3055→#3062 by letter.
-7. Hub sentinel fetch repair, SENTINEL CURE BUILT — PR #3067 (different-seat scorecard gate, L670): transport exception family caught, chunked-drain Range resume, curl fallback; 12/12 tests, live MATCH 9/9; L672: state records must name their writing path, liveness reads the live path's own advance only.
-8. Nitro N1/N2/N3 + Power matches seam.
-9. Filing-path guard L661 + SN-0855 branch retirement.
+1. Land PR #3067 on Clarity's different-seat 9.5/10 scorecard at exact head 32dccc6e (PR comment 6400749301) — the L670 gate is satisfied; first scheduled run on merged code is the confirmation to 10. Until landing, the sentinel crash loop continues on main.
+2. Land PR #3063 only on a genuinely different-seat scorecard per L670 — Kernel residuals 2+3.
+3. Different-seat scorecard + land PR #3064 at exact head 705f3674 — last Kernel residual.
+4. Different-seat scorecard for PR #3065 (32508e9f) then land — migration ledger (184 files vs 181 entries, 3 unregistered).
+5. Production packet taps, one at a time, Resolve verifying between taps — Shawn's hand is the gate.
+6. Retro exact-head scorecards / dock ruling for #3061 + #3054 (+ #3055/#3057/#3058/#3060 dispositions; #3062 independence formalisation).
+7. Merge-gate enforcement — over-RED, zero-review merges span #3055→#3062 by letter.
+8. PI write stall repair (PI writer seat): apply the 11-item sync package + the pi-activity-notifications item; PI unwritten ~11h, public snapshot 13h stale, ledger_entries frozen since 2026-10-22.
+9. Nitro N1/N2/N3 + Power matches seam.
 10. #2793 archive hygiene + job-body re-derivation for #2793 -> #3066 (main seat): DISTILLED AND RELEASED body line on the retired feed; no seat re-mines released feeds except for provenance.
 
 ## Blocked, with owner
@@ -40,21 +41,22 @@ Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label
 - Retro scorecards for #3061/#3054 and siblings: dock / VERIFY (different-seat, exact-head).
 - Merge-gate enforcement (ruleset tightening): merge-gate owner / Human Director.
 - #2601 master directive: HAND_EDIT_DETECTED persists — lead reconciles (director does not PATCH over a hand edit).
-- Hub sentinel fetch repair: cure BUILT as PR #3067 (head 32dccc6e, branch resolve/hub-sentinel-fetch-cure-2026-10-25), awaiting a genuinely different-seat scorecard per L670; 11th consecutive crash recorded 16:49Z at new tip fc0968f4 (Hub NOT diverged).
+- Hub sentinel fetch repair: cure BUILT as PR #3067 (head 32dccc6e, branch resolve/hub-sentinel-fetch-cure-2026-10-25); different-seat 9.5/10 scorecard SUPPLIED by Clarity at exact head (PR comment 6400749301, board 6400751067) — landing by the merge lane is now the next action; crash loop continues on main until landing (Hub NOT diverged).
+- PI write stall (PI writer seat, board 6400688167): zero work_items with maker_seat naya-resolve; 11-item sync package never applied; newest project-wide work_items update 06:17:45Z (~11h stale); public board snapshot staged-1, 13h stale; ledger_entries frozen since 2026-10-22; new PI item pi-activity-notifications queued for entry with the package.
 - NEW P0 security routing 14:44Z (#3066 comment 6399049230, evidence #2823 comment 6399046911): anonymous EXECUTE on SECURITY DEFINER payment/booking RPCs + anonymous scheduled-mail RPC with write side effects; owner SEC-6 + Payments/Booking/Mail + LAW/INFRA; next metadata-only caller/grant audit -> smallest coupled correction -> different-authenticated verifier; human gate before production; no exploit or closure claimed.
 - Kernel Tests FAILURE at HEAD 908d70bc (same failure on prior 2 heads): cure PRs #3063/#3064/#3065 parked on the L670 different-seat gate.
 
 ## Team status (SELF / LAW / ACT / KNOW / PROVE / CONNECT / VERIFY / LEARN / EVOLVE)
-- Accomplished: tip STEADY fc0968f4 verified first-hand (ls-remote byte-match); board #3066 41 -> 46 read first-hand (zero gaps); sentinel 11th crash recorded with live-path liveness failure named; PR #3067 confirmed as the main-seat-delegated cure (head branch resolve/hub-sentinel-fetch-cure-2026-10-25, head 32dccc6e, open, unmerged); breach log 83 unchanged.
-- Working on: #3067 different-seat scorecard (sentinel cure) + #3063/#3064/#3065 scorecard gates; production taps; retro dispositions; P0 security audit (SEC-6).
+- Accomplished: tip STEADY fc0968f4 verified first-hand (ls-remote byte-match); board #3066 46 -> 50 read first-hand (zero gaps); PR #3067 different-seat 9.5/10 scorecard posted by Clarity at exact head 32dccc6e (PR comment 6400749301) — L670 gate satisfied, landing is next; CLEAR THE WAY relay appended (naya2_to_builder, cap 20 holds); breach log 83 unchanged.
+- Working on: #3067 landing + first scheduled run on merged code; #3063/#3064/#3065 scorecard gates; PI write stall repair (PI writer seat); production taps; retro dispositions; P0 security audit (SEC-6).
 - Plan: per the Top 10 above; carried-forward cells unchanged where no new signal.
 - Unknown: — (no area invented here).
 
 ## Key numbers
-- REST quota remaining: 4,731 at tick open (5,000/hour installation token; zero 403s this tick).
+- REST quota remaining: 4,327 at tick open (5,000/hour installation token; zero 403s this tick).
 - Branch count: not re-fetched this tick (no extra call for this line).
 - Open PR count: not re-fetched this tick (no extra call for this line); register notes #3063 + #3064 + #3065 open, #2981 + #3052 open with new heads (d98ad396, 35b3c3d4), neither merged.
-- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 46 comments.
+- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 50 comments.
 
 ## Where to go
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts). Until PR #2533 merges, the draft branch `naya4/activation-read-me-first` carries it; after the merge, main.
