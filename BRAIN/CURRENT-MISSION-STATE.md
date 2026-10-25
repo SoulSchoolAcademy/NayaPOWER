@@ -1,24 +1,24 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-24 22:09 PDT (2026-10-25T05:09:45Z) by the director pass.
-Main tip: `08c66329` — STEADY this tick (zero merges, zero direct pushes since 04:40Z). VERIFY re-proof at tip: hash cure holds (SN-0856/0857/1863 MATCH, SN-1867/1868 registered + MATCH); Kernel 23 -> 5 failed / 5,632 passed, residual 5 named (tagger coverage first). BUILD receipt: PR #3062 OPEN (head a2fb28e4, base 08c66329) fixing tagger coverage residual 1 of 5 (corpus review 82/727 -> 29/727); scorecard ask at exact head. Verity escalation #36-#37 names the same #3061/#3054 landings already counted — no new merges, no double-count. Breach log 82.
-Live board: #2793 — 2,276 comments (+7 this tick, ids 6393533374-6393738006, zero gaps, page 76; 2,276 < 2,300, NO migration trigger; newest-7 all live-board traffic, no successor-board traffic).
-Merge-receipt breach log: 82 as record — breaches #3061, #3054 from the 04:40Z tick (see above); no new breaches this tick (tip steady). #3058/#3057/#3060/#3055 breaches + Verity breach #32-#37 follow-up still open for retro adjudication (retro exact-head scorecards or dock ruling).
-REST quota: 4,712 remaining at this tick's rate read (core 5,000/hour); zero 403s this tick.
+Last verified: 2026-10-24 22:38 PDT (2026-10-25T05:44:00Z) by the director pass.
+Main tip: `400021a1` — MOVED this tick (08c66329 -> 400021a1): exactly 1 squash merge (#3062, Kernel residual 1/5), zero direct pushes. PR #3062 (applicability tagger, head a2fb28e4, merged 05:36:22Z) — RECEIPT BREACH by letter (body 3111 chars, no pass-1/2/3 structure), MITIGATED: pre-merge different-seat VERIFY scorecard 9.5/10 APPROVE at the exact head (6393966369 / board 6393970458) with delta proof (corpus review 82/727 -> 29/727, ground truth 12/12, 0 tag losses). Head test red traces to pre-existing residuals 2-5, not this change. Post-merge Kernel re-proof owed (expect 4 failed). Breach log 82 -> 83 as record (mitigation noted, not clean).
+Live board: #2793 — 2,279 comments (+3 this tick, ids 6393970458-6393984453, zero gaps, page 76; 2,279 < 2,300, NO migration trigger; newest-3 all live-board traffic, no successor-board traffic).
+Merge-receipt breach log: 83 as record — new: #3062 (mitigated, see above). Open retro dispositions: #3061, #3054, #3055, #3057, #3058, #3060 (retro exact-head scorecards or dock ruling); #3062 retro 3-pass receipt still owed for the record.
+REST quota: 4,213 remaining at this tick's rate read (core 5,000/hour); zero 403s this tick.
 ## Ranked priorities (top-down, Shawn's standing 10)
 1. LEARNING — running; L661 ADOPTED (guard build still owed).
-2. SMART NOTE FLOW — THREE-HASH REBIND LANDED via #3054 (squash 37a73219, verified at tip: 726 entries, hashes rebound, manifest consistent). SN-1868 filed (97757d27 + 08c66329). Remaining: filing-path guard L661, SN-0594 door-obligation sole defect (pre-existing, routed).
-3. AUTO-MATCH COMPLETION (Shawn's order: to 10/10 on every level) — ALL 7 BUILDABLE STEPS NOW ON MAIN: B1 bridge, B2 corpus, B3 derivation, B4 consent gate, B5 SQL twin (staged migration, unapplied, equivalence UNPROVEN pending G5), B6 IDF harness (OFF), B7 auto-categorization (#3061). Breach dispositions owed for #3061 + #3055 + #3058. NEEDS-NITRO: N1 owner_alias + Questions-V2, N2 placements, N3 feedback loop. NEEDS-POWER: matches read seam. Production taps P1/P2/P3 prepared as one packet (Shawn's taps, not yet given). Move-1 push approved (6393119075): execution via PR only, different-LOGIN scorecard >=9 + Shawn merge greenlight still owed; push approval is not merge approval.
+2. SMART NOTE FLOW — SN-1868 filed + registered + live; 3-hash rebind LANDED (#3054). Remaining: filing-path guard L661, SN-0594 door-obligation sole defect (pre-existing).
+3. AUTO-MATCH COMPLETION (Shawn's order: to 10/10 on every level) — ALL 7 BUILDABLE STEPS ON MAIN (B1-B7; B5 SQL twin staged/unapplied, equivalence UNPROVEN; B6 IDF OFF). NEW: PR #3063 OPEN (head efecae71) fixing factory S1 residuals 2+3 of 5 (Personal 'Dark mode' -> 'Deep black'; factory 12 passed, checker 5/13) — scorecard at exact head is the next gate. NEEDS-NITRO: N1 owner_alias + Questions-V2, N2 placements, N3 feedback loop. NEEDS-POWER: matches read seam. Production taps P1/P2/P3 prepared as one packet (Shawn's taps, not yet given). Move-1 push approved (6393119075): execution via PR only, different-LOGIN scorecard >=9 + Shawn merge greenlight still owed.
 4. THE SENDER / 5. THE RECEIVER / 6. THE COMPILER / 7. DECISION ENGINE / 8. SCORECARD / 9. TESTING / 10. OPTIMIZE GITHUB — carried from the live plan; no new signal this tick.
-New this tick: #3061 + #3054 landed on main (both receipt breaches, content of #3054 verified good); SN-1868 filed + registered + live (6393483416); relay breach #3061+#3054 (6393439196); Verity escalation #32-#35 (6393327424); Resolve landed+verified post (6393408233); CONNECT sign-in/out 9.6 held (6393305251). Connection Build v4 PUSH tap (Shawn) still open; merge ritual explicitly still owed.
+New this tick: #3062 merged (mitigated breach); VERIFY 9.5 APPROVE #3062 (6393970458); BUILD PR #3063 opened (6393984308); merge announcement #3062 (6393984453). Kernel residuals now 2-5: factory S1 (in #3063), migration-baseline, reporting hold-rule.
 ## Team status (per area: accomplished / working on / plan)
 SELF — — / — / —
 LAW — — / — / —
 ACT — — / — / —
-KNOW — SN-1868 filed + registered + live / 3-hash rebind LANDED (#3054) / filing-path guard L661 + SN-0594 defect
+KNOW — SN-1868 filed + registered + live / PR #3063 scorecard ask / filing-path guard L661 + SN-0594 defect
 PROVE — — / — / —
-CONNECT — Auto-match B1-B7 ALL on main / retro scorecards for #3061 + breach dispositions / N1+N2+N3 + matches seam + B5 equivalence proof
-VERIFY — Receipt watch: #3061+#3054 breaches, breach log 82 / retro exact-head scorecards or dock ruling / merge-gate enforcement
+CONNECT — Auto-match B1-B7 ALL on main / PR #3063 scorecard + Kernel re-proof at 400021a1 / N1+N2+N3 + matches seam + B5 equivalence proof
+VERIFY — Receipt watch: #3062 mitigated breach, breach log 83 / retro exact-head scorecards or dock ruling / merge-gate enforcement
 LEARN — — / — / —
 EVOLVE — — / — / —
 ## Where to go
