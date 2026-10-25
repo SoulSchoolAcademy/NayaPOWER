@@ -15213,7 +15213,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection in commit 0ab6ec464da29b83208a86c136bf1b9f0dabde51 ('SN-1857 - Done Means Visible (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "5dcf916dc7285e73a15b6ae089a0cec1c1e73d7cb5d6f16b409747a2f98a76ff"
+      "page_hash": "56bfe858ee2344b906d7f6c4880d573b46bf71ef6917238d6c05d520e5d39793"
     },
     {
       "smart_note_id": "SN-0857",
@@ -15233,7 +15233,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection in commit 0ab6ec464da29b83208a86c136bf1b9f0dabde51 ('SN-1857 - Done Means Visible (door filing, Naya Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "605a72580069320b567c7e5f98d143fe585167032a584eb099bb32a6a46da6bb"
+      "page_hash": "2b20d90cdf3e0a67353e6b2582a6d843e068ad57923d3ed6f2c5b8545fcf03d6"
     },
     {
       "smart_note_id": "SN-1857",
@@ -15373,7 +15373,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection in commit 1b128a3b98c068ca7a993f9521001b4a0fd29d80 ('SN-1863 collision: remove Resolve's twin filing (renumbered to SN-1864); the lane's other SN-1863 keeps the number') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-24 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "3831410bf8349cf4c8913f7aa54aaada6ca7fb4b0533dbd073d065cdee62da70"
+      "page_hash": "9dbedd111c2b7a396260b577f8c03aa5fcc1d2fcb8cfa4546147a40d5c49511e"
     },
     {
       "smart_note_id": "SN-1864",
@@ -15422,5 +15422,5 @@
     "next_sequence": 1866,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "3c8ebd54471e8aec29992921979b598c1b512d694850f3c05a6c0fc71875acca"
+  "corpus_manifest_hash": "68125b57dfe62d8fecb037a5f25a5a89ea66c841147dbbaad63125c94900b6db"
 }
