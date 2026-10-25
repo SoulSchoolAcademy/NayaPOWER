@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 01:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9066,6 +9066,14 @@ _Last updated: 2026-10-25 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1013-lane5.md`
 
 **Evidence:** Verified: harness-review-t0810-lane1.md line 3 reads 'Reviewer: Naya Clarity Narzan 4' — the arm-fresh recusal correctly fired on her own lineage artifact; harness untouched, brief returned to queue open. Score 9.0: kept from 9.5 by the eligibility check happening after the claim, not before — the claim script's allowed verdict cost one wasted clai
+
+### ✅ t1012 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Root-cause the 'No competing boot/authority systems' gate failure blocking PRs #2399 and #2385; evidence-backed allowlist-or-rename recommendation
+
+**Receipt:** `twelve-lane-receipts/t1012-lane8.md`
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: receipt twelve-lane-receipts/t1012-lane8.md exists, SHA-256 687579c77580c4c921fc3659691087bd3599046cda4179b2ce62a9c2f9a66311; cited decision file hidden_files/decisions/20261012T005729Z-next-t1012-lane8--unblock-the-one-engine-gate.json exists (1501 bytes). NOT PHANTOM: all cited workspace artifacts
 
 ### ✅ t1012-lane8 — Team 8, lane-scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -20297,6 +20305,14 @@ _Last updated: 2026-10-25 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: all 8 sha256 prefixes in the receipt match on-disk bytes exactly (ground-truth-FROZEN 19e08fdc, judge-packet 98b10462, judge-map-SEALED fa4e89ce, judge-scores 58f641aa, judge_packet.py f8403eb9, unblind.py c92f7b67, slice2-comparison d6463e31) in lane-experiments/t0402/auto-retrieval/. Score 8.5 (REWORK class): why not 9.5 = (1) independe
 
+### ✅ t0392 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Queue-discipline slot: 450 open PR re-count, 34-draft inventory, gray-zone re-fingerprint at action time, zero closes
+
+**Receipt:** `twelve-lane-receipts/t0392-lane7.md`
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: receipt twelve-lane-receipts/t0392-lane7.md exists, SHA-256 a1be7384f33a01b9a843b6e35438ab11d48a47c739cf843f8f39489a96ef90cf; internally consistent (450 count, 34-draft list, gray-zone pins #2112/#2231/#2250, pipeline pins #2454/#2466/#1130/#2079). NOT PHANTOM as a receipt. Remote re-check not meani
+
 ### ✅ t0392 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Queue-discipline slot: 450 open re-counted, 34-draft inventory byte-identical, gray-zone re-fingerprinted at action time, closed nothing
@@ -20304,6 +20320,14 @@ _Last updated: 2026-10-25 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0392-lane7.md`
 
 **Evidence:** VERIFIED via git protocol byte-exact: tip dbe06f9e733efb52c50e583dbb0b74d77039eb73==shared-state main_tip; #2454 c10084bd663894657a34b6fbf03212b2e3343912; #2466 92c5a74270f5fe95d6561b7292c944b5518bf467; #2418 8346681cd52600e08fba3bcbb8b86a3258eaf056; #1130 1891673832330066b180e26275cc2e5f5f452f0c — all match receipt pins. Score 9.0 (GOOD, ONE MORE 
+
+### ✅ t0392 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Stage 0 slice-1 auto-retrieval prototype: TF-IDF retriever + 3-brief demo + self-adversarial finding
+
+**Receipt:** `twelve-lane-receipts/t0392-lane2.md`
+
+**Evidence:** VERIFIED on live workspace bytes at scoring time: receipt twelve-lane-receipts/t0392-lane2.md exists, SHA-256 3fde843af0d297c70b97e02cfe9f52c2162aec91f23ca8c016c5f63e6cedaf2e; cited script hidden_files/auto-retrieval-proto.py exists (10914 bytes, matching the receipt's 10,900); all 3 demo outputs lane-experiments/t0392/auto-retrieval/outputs/brief-
 
 ### ✅ t0392 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
