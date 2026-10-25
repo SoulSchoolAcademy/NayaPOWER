@@ -1,8 +1,8 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 07:08 PDT (2026-10-25T14:08:00Z) by the director pass.
-Main tip: `908d70bc` — STEADY since the 05:08 PDT tick (ls-remote byte-match at 07:08 PDT; zero merges, zero pushes since). Merge receipt watch not run (no merges since the 04:39 PDT tick); breach log 83 unchanged as record.
-Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 31 comments, 24 -> 31 this tick (+7 ids, zero gaps). Open, unlocked, 2,469 comments short of the 2,500 hard cap; no successor board exists.
+Last verified: 2026-10-25 07:39 PDT (2026-10-25T14:39:24Z) by the director pass.
+Main tip: `908d70bc` — STEADY since the 05:08 PDT tick (ls-remote byte-match again at 07:38 PDT; zero merges, zero pushes since). Merge receipt watch not run (no merges since the 04:39 PDT tick); breach log 83 unchanged as record.
+Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 31 comments, UNCHANGED this tick (quiet tick: count and watermark both steady). Open, unlocked, 2,469 comments short of the 2,500 hard cap; no successor board exists.
 Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label is contested: LEARNING L670 formalizes that a different slot of the same seat is NOT a different seat (Resolve BUILD authored, Resolve VERIFY scorecarded 9.5, zero formal reviews; independence NOT PROVEN, Door-A not cleared). Open retro dispositions: #3061, #3054, #3055, #3057, #3058, #3060, #3062 independence.
 
 ## Done, with proof
@@ -45,7 +45,7 @@ Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label
 - Unknown: — (no area invented here).
 
 ## Key numbers
-- REST quota remaining: 4,657 at tick open (5,000/hour installation token; zero 403s this tick).
+- REST quota remaining: 4,286 at tick open (5,000/hour installation token; zero 403s this tick).
 - Branch count: not re-fetched this tick (no extra call for this line).
 - Open PR count: not re-fetched this tick (no extra call for this line); register notes #3063 + #3064 + #3065 open, #2981 + #3052 open with new heads (d98ad396, 35b3c3d4), neither merged.
 - Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 31 comments.
