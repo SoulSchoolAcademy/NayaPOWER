@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 06:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21859,6 +21859,14 @@ _Last updated: 2026-10-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on disk: run1==run2 sha 8adee5c2, post1==post2 sha f03a73f9, hand audit 12 rows window t0082-t0122; fresh re-run on grown corpus (13->15 receipts) reproduces identical totals M2:12/M3:6/M4:2. HV3 PROVEN-UNMEASURABLE discipline held, stale-brief falsifications reported against own lane's interests. Not 10: single-seat judgments, 
 
+### ✅ t0112 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Pre-existing test reds repaired (guard_liveness, intelligence_retrieve_execution, test_ci_declares_test_dependencies)
+
+**Receipt:** `twelve-lane-receipts/t0112-lane9.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T05:47Z via git protocol: receipt's remote head commit b41a3ffa9c8e13e69859c469305e502d1f918b22 EXISTS with message 'fix(tests): repair pre-existing reds blocking the test check', and all three fix markers are present at that exact commit (guard_liveness python3 interpreter resolution, intelligence_retrieve_executio
+
 ### ✅ t0112-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Pre-existing test-red classes repaired, PR #2462 opened
@@ -21881,6 +21889,14 @@ _Last updated: 2026-10-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified live: branch naya/lane9/tipred-fix-t0112 + PR #2462 head both == b41a3ffa9c..., parent == tip aa8061c1 (tip unmoved, no re-anchor). Three test-infra fixes, zero production files touched; mjs 400 reproduced twice pre-fix (root-caused: missing applyApplicabilityRanking in vm sandbox), claimed post-fix 599/0 node and 3/3 pytest gua
 
+### ✅ t0112 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 round 2 executed - ceiling-found, honest NO-GO
+
+**Receipt:** `twelve-lane-receipts/t0112-lane2.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T05:47Z via git protocol + disk hash: seal file hidden_files/lane-experiments/t0102/prereg-sealed.md sha256 41ab2a55f1812b40a4952d1461e19095fa10e5b335a00e627e97e855f10df2ca EXACT match to the receipt's seal pin. NOT PHANTOM: the decisive seal pin re-proves 12 days later. Existing scores rows for t0112-lane2 are lane
+
 ### ✅ t0112-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** H8 round-2 executed under sealed pre-reg - ceiling-found, honest NO-GO
@@ -21902,6 +21918,14 @@ _Last updated: 2026-10-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0112-lane2.md`
 
 **Evidence:** Dispatcher verified: receipt file exists; /tmp/t0102-lane2/ has all 7 probe dirs (dry, a1-a3, b1-b3); seal 41ab2a55... recomputed MATCH, all pins declared MATCH. Mechanical protocol discipline: dry-run gate ran FIRST, C1=1 -> CEILING -> NO-GO honored with zero scored arms and no Lane-1 packet. Honest close: named lab-vs-field confound + N=1 limit. 
+
+### ✅ t0112 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Verification-only tick - drift recurrence #16 premise stale, tip CLEAN (5th consecutive)
+
+**Receipt:** `twelve-lane-receipts/t0112-lane10.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T05:47Z via git protocol: heal branch naya/ten-brainindex-heal-t1292 STILL ABSENT from ls-remote, corroborating the receipt's no-duplicate-mechanism call; the receipt's tip pin aa8061c1d311f32ebd11a570629efa8a55d90c87 is IDENTICAL to sibling receipt t0112-lane9's independently cited tip pin. NOT PHANTOM: cited pins 
 
 ### ✅ t0112-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -23047,6 +23071,14 @@ _Last updated: 2026-10-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0022 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
+**Task:** Fossil sweep empty-batch fallback triage + merge-seat pipeline report
+
+**Receipt:** `twelve-lane-receipts/t0022-lane7.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T05:51Z via git protocol: all 10 triage pins EXACT-match current remote 12 days later (#1139 7aca47da20045, #1169 4792affff354c, #1228 aa826b342d4f, #1239 4a06ebc98be4, #1240 1f0f4b811a48, #1241 a4ec0d2b712f, #1245 8a6e770fe95a, #1246 dc066c00991e7, #1248 1292f42f2bee8, #1258 e46abd3387597); #2453 head 3dd7837d8e6e3
+
+### ✅ t0022 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
 **Task:** Queue-discipline sweep + merge-seat pipeline report
 
 **Receipt:** `twelve-lane-receipts/t0022-lane7.md`
@@ -23156,6 +23188,14 @@ _Last updated: 2026-10-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0022-lane2.md`
 
 **Evidence:** Dispatcher verified: branch naya/two-compoundscale-fixture-t1432 head ac270833fb3a52c6be45acc730b0e5132353d5a5 == receipt pin (ls-remote); run_report.json sha256 687b8a98... == receipt pin; decision receipt 20261012T073346Z exists. Prime-1 override of stale H4 premise disclosed with precedent; sealed G0 ABORT honored (no fudged negative). Deduction
+
+### ✅ t0022 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value window audit t1402-t0022 + instrument v1.2 midnight-wrap
+
+**Receipt:** `twelve-lane-receipts/t0022-lane11.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T05:51Z via disk hashes: hidden_files/lane-11/metric_audit_t0022.json sha256 aace8582eef914f7a963cf9a145e99606691eb50ba00e9265f74840600aca736 EXACT match to the receipt; lane-11/hv_output_t0022_run1.json and run2.json byte-identical, sha256 bd4d90756c8c7179ac06d29e20c0a65d2d98811a1316a765bcf2aecd6dea7c1d EXACT match
 
 ### 🟡 t0022 — Team 11, Team Naya Scorer (Human Value) — 7.5/10 [PARTIAL]
 
@@ -24614,6 +24654,14 @@ _Last updated: 2026-10-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ gap-t0112 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** GAP RECEIPT parent t0112 - PR #2462 DISPOSITION AT CURRENT HEAD
+
+**Receipt:** `twelve-lane-receipts/gap-t0112-lane9.md`
+
+**Evidence:** VERIFIED via git protocol (no REST): git ls-remote resolves refs/pull/2462/head at exactly a92be1c01812a86c1994298b508cc41577e250dc as claimed, and the branch ref naya/lane9/tipred-fix-t0112 returns no line, confirming post-merge deletion as claimed. The receipt's remaining claims (closed+merged 2026-10-12T10:46:23Z, tree 78b5f5f..., blob SHAs, ste
 
 ### ✅ gap-t1502 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
@@ -32286,6 +32334,14 @@ _Last updated: 2026-10-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-t0112 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** GAP RECEIPT parent t0112 - DRY GATE RE-RUN, DURABLE
+
+**Receipt:** `twelve-lane-receipts/gap-t0112-lane2.md`
+
+**Evidence:** VERIFIED on live workspace bytes: lane-experiments/gap-t0112-lane2/ exists with probe-dry/ and foreign-gate/ (output-only, probe-copy, probe-tampered); seal prereg-sealed.md recomputed 41ab2a55...f10df2ca MATCHES receipt; checker verify_receipt.py 0ace8bf9...4473 MATCHES; bundle alpha/beta/gamma d7edbc4d.../de6a0f46.../63f2f840... and manifest 187d
 
 ### ✅ gap-gap-t0102 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
