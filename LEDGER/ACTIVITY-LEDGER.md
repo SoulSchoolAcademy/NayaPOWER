@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 16:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38242,6 +38242,12 @@ _Last updated: 2026-10-25 16:30 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261025-0953 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 09:53 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T17:02Z: rotation twelve-lane-rotation.json queued=22 is exactly the set the receipt names (set equality checked, zero diff either way: t0422, t1468, t1507, t1508 x3, t1510 x2, t1511, t1512 x3, t1514, t1527, t1531, t1552, t1556, gap-gap-gap t0112, t0122, t0132, t1504, gap-gap-gap-gap t1564); brief-queue/ r
 
 ### ✅ seat-stall-20261025-0848 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
