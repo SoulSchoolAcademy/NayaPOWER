@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-25T04:24:28Z",
-  "tip": "37a7321906227a36e0dcf140b74a780c15176d5e",
+  "generated_at": "2026-10-25T05:24:19Z",
+  "tip": "08c66329bede76b70315ecc659a5bdfbd430b7c5",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "471a1ae9c4e4c7de74874e3a9b8400007b82d7e0"
+      "head": "9069a2cce70fa5ad9a01706641d48781608d24e4"
     },
     {
       "number": 3052,
@@ -19,7 +19,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "dd1b25b1e31302a0e63563fb6b8b5204b88d30e3"
+      "head": "f72869068c6f9cd84668461c6f1d5c9d2c4cf2a7"
+    },
+    {
+      "number": 3062,
+      "title": "Applicability tagger: subtopic rules for the current filing taxonomy (Kernel residual 1 of 5)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "a2fb28e42d86c8c8cc421d1eaa556e37ec0595b1"
     }
   ]
 }
