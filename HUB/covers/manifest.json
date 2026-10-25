@@ -619,6 +619,50 @@
       "suits": "a crimson and gold crystal shockwave: pure power for fitness, sport, competition and drive",
       "status": "ready",
       "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/crystal-garden",
+      "file": "open/crystal-garden.jpg",
+      "name": "The Crystal Garden",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "a crystal cottage with warm windows in a terraced garden of glowing flowers: home and garden pages, homemakers, gardeners, cozy businesses",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/quiet-office",
+      "file": "open/quiet-office.jpg",
+      "name": "The Quiet Office",
+      "kind": "open",
+      "tier": "open",
+      "category": "craft",
+      "suits": "the clean register exemplar: a serene pale-crystal workspace, one desk, dawn hills - deliberately calm and uncluttered for consultants, professionals, agencies and anyone who wants trust over spectacle",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/crystal-stage",
+      "file": "open/crystal-stage.jpg",
+      "name": "The Crystal Stage",
+      "kind": "open",
+      "tier": "open",
+      "category": "celebration",
+      "suits": "a black-crystal amphitheater stage with instruments of light floating in arcs of music: musicians, performers, venues, entertainment",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/sky-voyage",
+      "file": "open/sky-voyage.jpg",
+      "name": "The Sky Voyage",
+      "kind": "open",
+      "tier": "open",
+      "category": "the-dimension",
+      "suits": "a crystal sailing ship with glowing sails between floating islands, golden routes through the clouds: travel, adventure, explorers, journey stories",
+      "status": "ready",
+      "credit": "Naya Resolve"
     }
   ],
   "assignment_on_page_creation": {
@@ -755,5 +799,270 @@
     ],
     "lock_in": "Build the road to 60 by demand cluster, not by taste: Companions (pets) NEW shelf direction x4-6 - professional services/coaching scenes x3 - health & energy x3 more - food & hospitality x3 - craft & makers x4 - earthly nature/outdoors x3 - commerce/prosperity scenes x3 - clean professional register x3 - celebrations +2 - faith & community welcome x2 - membership progression set x2.",
     "likely_missed_by_others": "other-services invisibles (salons, repair, pet care - 3.86M firms), skilled trades (creator demand +103% YoY), weddings/events vendors (~900k), solo real-estate agents, churches/non-profits (373k congregations)."
+  },
+  "typical_terms": {
+    "purpose": "Shawn's rule (2026-10-25 ~21:58Z): every area of life people build pages around must be findable by the TYPICAL words they would type. This map is the coverage contract: area -> plain search terms -> the covers that answer them. Status: covered / partial / owed. The chooser searches these terms plus the mood tags.",
+    "areas": {
+      "personal": {
+        "terms": [
+          "calm",
+          "peaceful",
+          "dreamy",
+          "radiant",
+          "beautiful",
+          "me"
+        ],
+        "status": "covered"
+      },
+      "companions-pets": {
+        "terms": [
+          "dog",
+          "cat",
+          "puppy",
+          "kitten",
+          "pets",
+          "animals",
+          "golden retriever"
+        ],
+        "status": "covered",
+        "covers": [
+          "companions-arch-tree",
+          "companion-golden"
+        ]
+      },
+      "health-fitness": {
+        "terms": [
+          "gym",
+          "fitness",
+          "workout",
+          "energy",
+          "power",
+          "strength",
+          "wellness",
+          "health"
+        ],
+        "status": "covered",
+        "covers": [
+          "vitality-rise",
+          "power-surge"
+        ]
+      },
+      "food-drink": {
+        "terms": [
+          "restaurant",
+          "cafe",
+          "coffee",
+          "food",
+          "dining",
+          "bakery",
+          "chef"
+        ],
+        "status": "covered",
+        "covers": [
+          "feast-hall"
+        ]
+      },
+      "beauty-fashion": {
+        "terms": [
+          "beauty",
+          "salon",
+          "perfume",
+          "fashion",
+          "elegant",
+          "boutique",
+          "style"
+        ],
+        "status": "covered",
+        "covers": [
+          "crystal-boutique",
+          "rose-facets",
+          "opal-light"
+        ]
+      },
+      "home-garden": {
+        "terms": [
+          "home",
+          "house",
+          "garden",
+          "interior",
+          "plants",
+          "cozy"
+        ],
+        "status": "covered",
+        "covers": [
+          "crystal-garden"
+        ]
+      },
+      "business-professional": {
+        "terms": [
+          "office",
+          "business",
+          "consulting",
+          "professional",
+          "clean",
+          "minimal",
+          "agency",
+          "coach"
+        ],
+        "status": "covered",
+        "covers": [
+          "quiet-office",
+          "the-study-tree",
+          "facets family"
+        ]
+      },
+      "craft-makers": {
+        "terms": [
+          "art",
+          "studio",
+          "workshop",
+          "handmade",
+          "creator",
+          "writer",
+          "maker"
+        ],
+        "status": "covered",
+        "covers": [
+          "the-study-tree"
+        ]
+      },
+      "music-entertainment": {
+        "terms": [
+          "music",
+          "concert",
+          "stage",
+          "band",
+          "party",
+          "entertainment",
+          "show"
+        ],
+        "status": "covered",
+        "covers": [
+          "crystal-stage",
+          "festival-of-lights"
+        ]
+      },
+      "travel-adventure": {
+        "terms": [
+          "travel",
+          "adventure",
+          "journey",
+          "explore",
+          "wander",
+          "trip"
+        ],
+        "status": "covered",
+        "covers": [
+          "sky-voyage",
+          "aurora-circuit"
+        ]
+      },
+      "faith-spirit": {
+        "terms": [
+          "church",
+          "faith",
+          "prayer",
+          "spiritual",
+          "meditation",
+          "peace",
+          "sacred"
+        ],
+        "status": "covered",
+        "covers": [
+          "morning-light",
+          "lotus-lake-tree"
+        ]
+      },
+      "nature-outdoors": {
+        "terms": [
+          "nature",
+          "forest",
+          "waterfall",
+          "mountains",
+          "earth",
+          "wild",
+          "ocean"
+        ],
+        "status": "covered",
+        "covers": [
+          "emerald-falls",
+          "tide-realm",
+          "morning-light"
+        ]
+      },
+      "celebrations-weddings": {
+        "terms": [
+          "wedding",
+          "celebration",
+          "party",
+          "event",
+          "feast",
+          "gathering"
+        ],
+        "status": "covered",
+        "covers": [
+          "feast-hall",
+          "festival-of-lights",
+          "crystal-stage"
+        ]
+      },
+      "spaces-worlds": {
+        "terms": [
+          "world",
+          "kingdom",
+          "dimension",
+          "portal",
+          "magical",
+          "epic"
+        ],
+        "status": "covered"
+      },
+      "membership": {
+        "terms": [
+          "membership",
+          "levels",
+          "tiers",
+          "journey",
+          "ascension",
+          "community"
+        ],
+        "status": "partial",
+        "note": "Grand Hall + City of Light serve arrival; a dedicated progression set (rising tiers of light) is still owed"
+      },
+      "real-estate": {
+        "terms": [
+          "real estate",
+          "realtor",
+          "property",
+          "homes",
+          "keys"
+        ],
+        "status": "partial",
+        "note": "Crystal Garden + Hall of Arches answer loosely; a dedicated doorway/keys piece is owed"
+      },
+      "family-kids": {
+        "terms": [
+          "family",
+          "kids",
+          "children",
+          "playful",
+          "mom",
+          "parenting"
+        ],
+        "status": "owed",
+        "note": "needs a warm, playful register the library does not have yet"
+      },
+      "gaming-play": {
+        "terms": [
+          "gaming",
+          "esports",
+          "play",
+          "neon",
+          "arcade"
+        ],
+        "status": "owed",
+        "note": "Abyss Facets is adjacent; a dedicated play-energy piece is owed"
+      }
+    }
   }
 }
