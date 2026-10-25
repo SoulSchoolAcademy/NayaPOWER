@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 22:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 22:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -35029,6 +35029,12 @@ _Last updated: 2026-10-25 22:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-t0112-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-prove prevention claim on fresh pinned bytes and re-anchor stale tip claim to live tip (no heal shipped)
+
+**Evidence:** VERIFIED by independent scorer re-run 2026-10-25T22:25Z: git ls-remote HEAD is 00f545e0f9c9e322ae049b47fd98448b77c6aeb4, exactly the receipt-time tip, so the re-anchored live-tip claim is still current at scoring time; heal branch naya/ten-brainindex-heal-t1292 absent from ls-remote at every check, matching the receipt; scorer's own depth-1 fetch o
+
 ### ✅ gap-t982 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up on parent t982-lane10 (scored 9.0): close PR-side receipt gap (c) by verification
@@ -38242,6 +38248,12 @@ _Last updated: 2026-10-25 22:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261025-1509 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 15:09 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T22:25Z: rotation twelve-lane-rotation.json queued=23 is exactly the 23 brief files the receipt names (18 brief-gap-t*, 4 brief-gap-gap-gap-*, 1 brief-gap-gap-gap-gap-t1564-lane11), all present in hidden_files/brief-queue/ (24th .md file there is lane-feed.md, not a brief); new arrival brief-gap-t1541-lane
 
 ### ✅ seat-stall-20261025-1404 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
