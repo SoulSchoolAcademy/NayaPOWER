@@ -377,6 +377,50 @@
       "suits": "the gold colorway: solidified sunlight - prosperity, premium brands, celebratory pages",
       "status": "ready",
       "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/sapphire-depths",
+      "file": "open/sapphire-depths.jpg",
+      "name": "Sapphire Depths",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the richest blue, pushed deeper: sapphire facets with teal fire - technology, intelligence, calm power",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/opal-light",
+      "file": "open/opal-light.jpg",
+      "name": "Opal Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the soft colorway: opal strata with rainbow fire inside - gentle, luminous, one-of-a-kind personal pages",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/crimson-ember",
+      "file": "open/crimson-ember.jpg",
+      "name": "Crimson Ember",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the bold colorway: ruby facets with a living ember heart - passionate brands, performers, fighters",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/twilight-blend",
+      "file": "open/twilight-blend.jpg",
+      "name": "Twilight Blend",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the combination: teal through violet into gold, a sunset inside one jewel - complete, harmonious, universal",
+      "status": "ready",
+      "credit": "Naya Resolve"
     }
   ],
   "assignment_on_page_creation": {
