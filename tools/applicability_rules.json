@@ -160,6 +160,13 @@
   }
  ],
  "subtopic_rules": {
+  "ACCESS": [
+   "HUMAN_VALUE"
+  ],
+  "ACTIVATION": [
+   "SUCCESSOR",
+   "HUMAN_VALUE"
+  ],
   "ACTIVE-INTELLIGENCE": [
    "ACT",
    "KNOW"
@@ -175,12 +182,19 @@
   "APPLICATION-COMPLETION": [
    "ACT"
   ],
+  "ARCHITECTURE": [
+   "KNOW",
+   "DECISION"
+  ],
   "ARCHIVE-RECOVERY": [
    "KNOW",
    "SUCCESSOR"
   ],
   "CI-TRIAGE": [
    "INFRA"
+  ],
+  "CITIZENS": [
+   "HUMAN_VALUE"
   ],
   "COLD_14": [
    "SUCCESSOR",
@@ -199,6 +213,10 @@
    "KNOW",
    "DECISION"
   ],
+  "DECLARATION": [
+   "LAW",
+   "TEAM"
+  ],
   "DESIGN-MASTERY": [
    "HUMAN_VALUE"
   ],
@@ -216,6 +234,10 @@
   "EXECUTION": [
    "ACT"
   ],
+  "GITHUB_ACCESS": [
+   "INFRA",
+   "KNOW"
+  ],
   "GOVERNANCE": [
    "LAW",
    "TEAM"
@@ -230,15 +252,28 @@
   "HUMAN-UNDERSTANDING": [
    "HUMAN_VALUE"
   ],
+  "INTELLIGENCE": [
+   "KNOW"
+  ],
   "INTELLIGENCE-CONTINUITY": [
    "SUCCESSOR",
    "KNOW"
+  ],
+  "INTELLIGENT_OBEDIENCE": [
+   "DECISION"
+  ],
+  "LEARNING": [
+   "LEARN"
   ],
   "LEARNING-PIPELINE": [
    "LEARN"
   ],
   "MEMORY-DISCIPLINE": [
    "KNOW"
+  ],
+  "MERGE_DISCIPLINE": [
+   "INFRA",
+   "LAW"
   ],
   "NAYA-1-DISTILLED-INTELLIGENCE": [
    "KNOW",
@@ -252,6 +287,10 @@
   ],
   "NAYAPOWER-NAYANET-CORE-MAGIC": [
    "HUMAN_VALUE"
+  ],
+  "NORTH_STAR": [
+   "LEARN",
+   "LAW"
   ],
   "OPERATING-DOCTRINE": [
    "LAW",
@@ -275,17 +314,32 @@
    "TEAM",
    "INFRA"
   ],
+  "PROJECT_INTELLIGENCE": [
+   "KNOW",
+   "DECISION"
+  ],
   "PROMOTION": [
    "LAW",
    "VERIFY"
   ],
+  "PROTOCOL": [
+   "LAW",
+   "TEAM"
+  ],
   "SMART-NOTE-REFINEMENT": [
+   "LEARN",
+   "KNOW"
+  ],
+  "SMART_NOTES": [
    "LEARN",
    "KNOW"
   ],
   "SYSTEM-DESIGN": [
    "KNOW",
    "DECISION"
+  ],
+  "TEAM": [
+   "TEAM"
   ],
   "TEAM-DOCTRINE": [
    "TEAM"
