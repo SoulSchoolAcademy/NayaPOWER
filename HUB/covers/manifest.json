@@ -194,7 +194,8 @@
       "category": "the-dimension",
       "suits": "high-tech pages: tech businesses, creators, AI and future-facing spaces",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: liked it (2026-10-25)"
     },
     {
       "key": "open/emerald-falls",
@@ -205,7 +206,8 @@
       "category": "sanctuary",
       "suits": "nature pages: outdoors, environment, wellness, anyone whose world is the living earth",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: liked it (2026-10-25)"
     },
     {
       "key": "open/tide-realm",
@@ -216,7 +218,8 @@
       "category": "the-dimension",
       "suits": "ocean souls: travel, coastal businesses, dreamers, pages about depth and wonder",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: okay (2026-10-25)"
     },
     {
       "key": "open/festival-of-lights",
@@ -226,6 +229,51 @@
       "tier": "open",
       "category": "celebration",
       "suits": "events, communities, creators: pages that gather people and celebrate",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: for some people - niche (2026-10-25)"
+    },
+    {
+      "key": "open/obsidian-facets",
+      "file": "open/obsidian-facets.jpg",
+      "name": "Obsidian Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "any page: the house abstract in black - premium, dark, dimensional; also the family the share cards draw from",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/white-dimension",
+      "file": "open/white-dimension.jpg",
+      "name": "White Dimension",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "any page wanting the bright colorway: clean, premium, radiant",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/abyss-facets",
+      "file": "open/abyss-facets.jpg",
+      "name": "Abyss Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "any page wanting depth and calm power: teal flowing into the richest royal blue",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/jewel-facets",
+      "file": "open/jewel-facets.jpg",
+      "name": "Jewel Facets",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "abstract",
+      "suits": "the signature abstract: five jewels set in obsidian facets - NayaPOWER/NayaNET house design, no face, no logo",
       "status": "ready",
       "credit": "Naya Resolve"
     }
@@ -280,13 +328,14 @@
       "sanctuary": "gardens, water, calm light: wellness, healing, gentle personal pages",
       "celebration": "lanterns, gatherings, amphitheaters: events, creators, communities that celebrate",
       "craft": "obsidian-and-crystal minimal luxury: premium brands, studios, portfolios",
-      "cosmos": "planets, galaxies, the arrival hall: visionaries, memberships, the big-dream pages"
+      "cosmos": "planets, galaxies, the arrival hall: visionaries, memberships, the big-dream pages",
+      "abstract": "multi-dimensional layered facet art - the house abstract (from the share-card backgrounds Shawn showed): colorways obsidian, white, teal-to-royal-blue; the jewel version is the signature"
     },
     "rules": [
       "same slot discipline as every cover: 3:1, middle band, no baked text ever",
       "every open template is also a reference for a Naya-made custom version",
       "born-with-cover default stays the area cover; citizens may swap to any tier from the shelf"
     ],
-    "plan": "Rounds themed from the system's own pages and templates + Shawn's named tastes (high tech, beauty, nature, outside the norm). Round 1: 4 (one retired by Shawn's verdict). Round 2: 4 more. Target ~18 ready on the shelf."
+    "plan": "Rounds themed from the system's own pages and templates + Shawn's named tastes. Abstract family added round 3 (his screenshots: the share-card obsidian facets + the low-poly video background). Shelf: 11 ready open covers. Branded area covers (Booking/Templates/Intel Today) still owed."
   }
 }
