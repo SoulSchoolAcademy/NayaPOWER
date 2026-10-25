@@ -940,8 +940,8 @@
   "templates": {
     "personal": {
       "file": "templates/personal.html",
-      "md5": "1b44636b7758dba0b95356211f8b042b",
-      "bytes": 229830,
+      "md5": "d32eb252f2922f77b7b032020f8de21b",
+      "bytes": 229834,
       "source": "local: ~/workspace/personal-app/personal-v5.html (pipeline source of truth)",
       "base_identity": {
         "name": "Alex Morgan",
