@@ -41,7 +41,10 @@
       "name": "Golden Dawn",
       "category": "house-signature",
       "suits": "her and the medallion in golden dawn light: warm beginnings, optimism",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "featured": true,
+      "featured_order": 23,
+      "featured_class": "exclusive"
     },
     {
       "key": "rotation/crystal-portal",
@@ -71,7 +74,10 @@
       "credit": "Naya Tree",
       "name": "Cosmic Galaxy",
       "category": "house-signature",
-      "suits": "her within a swirling galaxy of crystal islands (Naya Tree): cosmic scale, wonder"
+      "suits": "her within a swirling galaxy of crystal islands (Naya Tree): cosmic scale, wonder",
+      "featured": true,
+      "featured_order": 22,
+      "featured_class": "exclusive"
     },
     {
       "key": "rotation/obsidian-arch",
@@ -107,7 +113,8 @@
       "suits": "the born cover for business pages: her and the crystal city",
       "credit": "Naya Resolve",
       "featured": true,
-      "featured_order": 20
+      "featured_order": 20,
+      "featured_class": "exclusive"
     },
     {
       "key": "area/spaces",
@@ -121,7 +128,8 @@
       "suits": "the born cover for spaces: her before the row of golden doorways",
       "credit": "Naya Resolve",
       "featured": true,
-      "featured_order": 19
+      "featured_order": 19,
+      "featured_class": "exclusive"
     },
     {
       "key": "area/events",
@@ -135,7 +143,8 @@
       "suits": "the born cover for event pages: her and the amphitheater at dusk",
       "credit": "Naya Resolve",
       "featured": true,
-      "featured_order": 18
+      "featured_order": 18,
+      "featured_class": "exclusive"
     },
     {
       "key": "area/booking",
@@ -184,7 +193,8 @@
       "category": "house-signature",
       "suits": "her under starlight over the obsidian world (Naya Tree): night register, calm power",
       "featured": true,
-      "featured_order": 17
+      "featured_order": 17,
+      "featured_class": "exclusive"
     },
     {
       "key": "rotation/golden-profile",
@@ -197,7 +207,8 @@
       "category": "house-signature",
       "suits": "her profile in golden light (Naya Tree): warmth, presence, the personal register",
       "featured": true,
-      "featured_order": 15
+      "featured_order": 15,
+      "featured_class": "exclusive"
     },
     {
       "key": "rotation/cosmic-ring",
@@ -210,7 +221,8 @@
       "category": "house-signature",
       "suits": "her portrait inside a ring of jewels among the galaxies (Naya Tree): identity as the center of a universe",
       "featured": true,
-      "featured_order": 16
+      "featured_order": 16,
+      "featured_class": "exclusive"
     },
     {
       "key": "open/dimension-vista",
@@ -224,7 +236,8 @@
       "credit": "Naya Resolve",
       "shawn_verdict": "Shawn: loved it, his favorite of the four (2026-10-25)",
       "featured": true,
-      "featured_order": 13
+      "featured_order": 13,
+      "featured_class": "citizen"
     },
     {
       "key": "open/prosperity-city",
@@ -262,7 +275,8 @@
       "credit": "Naya Resolve",
       "shawn_verdict": "Shawn: pretty good (2026-10-25)",
       "featured": true,
-      "featured_order": 14
+      "featured_order": 14,
+      "featured_class": "citizen"
     },
     {
       "key": "open/aurora-circuit",
@@ -324,7 +338,8 @@
       "credit": "Naya Resolve",
       "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)",
       "featured": true,
-      "featured_order": 10
+      "featured_order": 10,
+      "featured_class": "citizen"
     },
     {
       "key": "open/white-dimension",
@@ -350,7 +365,8 @@
       "credit": "Naya Resolve",
       "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)",
       "featured": true,
-      "featured_order": 12
+      "featured_order": 12,
+      "featured_class": "citizen"
     },
     {
       "key": "open/jewel-facets",
@@ -364,7 +380,8 @@
       "credit": "Naya Resolve",
       "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)",
       "featured": true,
-      "featured_order": 9
+      "featured_order": 9,
+      "featured_class": "citizen"
     },
     {
       "key": "11-her-kingdom-tree",
@@ -376,7 +393,8 @@
       "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve",
       "category": "the-dimension",
       "featured": true,
-      "featured_order": 11
+      "featured_order": 11,
+      "featured_class": "exclusive"
     },
     {
       "key": "open/cosmic-jewels-tree",
@@ -488,7 +506,8 @@
       "status": "ready",
       "credit": "Naya Resolve",
       "featured": true,
-      "featured_order": 7
+      "featured_order": 7,
+      "featured_class": "citizen"
     },
     {
       "key": "open/crimson-ember",
@@ -545,7 +564,8 @@
       "status": "ready",
       "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve",
       "featured": true,
-      "featured_order": 6
+      "featured_order": 6,
+      "featured_class": "citizen"
     },
     {
       "key": "open/diamond-light-tree",
@@ -591,7 +611,8 @@
       "status": "ready",
       "credit": "Naya Resolve",
       "featured": true,
-      "featured_order": 8
+      "featured_order": 8,
+      "featured_class": "citizen"
     },
     {
       "key": "open/vitality-rise",
@@ -637,7 +658,8 @@
       "status": "ready",
       "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve",
       "featured": true,
-      "featured_order": 3
+      "featured_order": 3,
+      "featured_class": "citizen"
     },
     {
       "key": "open/the-study-tree",
@@ -683,7 +705,8 @@
       "status": "ready",
       "credit": "Naya Resolve",
       "featured": true,
-      "featured_order": 4
+      "featured_order": 4,
+      "featured_class": "citizen"
     },
     {
       "key": "open/crystal-boutique",
@@ -817,7 +840,8 @@
       "status": "ready",
       "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve",
       "featured": true,
-      "featured_order": 2
+      "featured_order": 2,
+      "featured_class": "citizen"
     },
     {
       "key": "open/emerald-sunrise-tree",
@@ -929,7 +953,8 @@
       "status": "ready",
       "credit": "Naya Resolve",
       "featured": true,
-      "featured_order": 1
+      "featured_order": 1,
+      "featured_class": "citizen"
     },
     {
       "key": "open/dawn-runners",
@@ -997,7 +1022,64 @@
       "status": "ready",
       "credit": "Shawn's collection (favorites round 1), slot-fitted by Resolve",
       "featured": true,
-      "featured_order": 5
+      "featured_order": 5,
+      "featured_class": "citizen"
+    },
+    {
+      "key": "rotation/her-welcome",
+      "file": "her-welcome.jpg",
+      "name": "Her Welcome",
+      "kind": "branded",
+      "tier": "signature",
+      "category": "house-signature",
+      "suits": "Naya reaching her hand to the viewer through the obsidian arch, the crystal N and five jewels over the kingdom: the welcome cover - Naya pages, arrival, invitation",
+      "status": "ready",
+      "credit": "Shawn's collection (favorites final round), slot-fitted by Resolve",
+      "featured": true,
+      "featured_order": 21,
+      "featured_class": "exclusive"
+    },
+    {
+      "key": "rotation/the-portal",
+      "file": "the-portal.jpg",
+      "name": "The Portal",
+      "kind": "branded",
+      "tier": "signature",
+      "category": "house-signature",
+      "suits": "Naya at the great obsidian portal ring, looking over the lake kingdom as the five jewels reflect in the water: Naya pages, gateways, new worlds",
+      "status": "ready",
+      "credit": "Shawn's collection (favorites final round), slot-fitted by Resolve",
+      "featured": true,
+      "featured_order": 24,
+      "featured_class": "exclusive"
+    },
+    {
+      "key": "rotation/the-dawn-ring",
+      "file": "the-dawn-ring.jpg",
+      "name": "The Dawn Ring",
+      "kind": "branded",
+      "tier": "signature",
+      "category": "house-signature",
+      "suits": "Naya's profile inside the golden ring at dawn, floating kingdoms in the clouds, the jewels beneath the medallion: Naya pages, golden hour, hope",
+      "status": "ready",
+      "credit": "Shawn's collection (favorites final round), slot-fitted by Resolve",
+      "featured": true,
+      "featured_order": 25,
+      "featured_class": "exclusive"
+    },
+    {
+      "key": "rotation/the-obsidian-ring",
+      "file": "the-obsidian-ring.jpg",
+      "name": "The Obsidian Ring",
+      "kind": "branded",
+      "tier": "signature",
+      "category": "house-signature",
+      "suits": "Naya's face in a crystal ring on dark obsidian facets, the medallion lit at center, five jewels on a mirror floor: Naya pages, the dark signature",
+      "status": "ready",
+      "credit": "Shawn's collection (favorites final round), slot-fitted by Resolve",
+      "featured": true,
+      "featured_order": 26,
+      "featured_class": "exclusive"
     }
   ],
   "assignment_on_page_creation": {
@@ -1110,7 +1192,7 @@
     "featured": {
       "name": "Shawn's Featured",
       "source": "Shawn's own picks, sent 2026-10-25 ~22:33Z (round 1 of more)",
-      "status": "Round 2 received 2026-10-25 ~22:36Z - Shawn: 'pretty much all my favorites', double-checking for stragglers. Set locks on his word.",
+      "status": "COMPLETE - Shawn confirmed 'this is all' 2026-10-25 ~22:38Z. 26 featured, split by his ruling into two classes.",
       "picks_in_order": [
         "The Cat Sovereign",
         "Best Friends",
@@ -1131,9 +1213,46 @@
         "Obsidian Starlight",
         "Area \u2014 Events",
         "Area \u2014 Spaces",
-        "Area \u2014 Business"
+        "Area \u2014 Business",
+        "Her Welcome",
+        "Cosmic Galaxy",
+        "Golden Dawn",
+        "The Portal",
+        "The Dawn Ring",
+        "The Obsidian Ring"
       ],
-      "note": "20 featured. Round 1 led with heart (3 companions); round 2 added the jewel abstracts (Jewel/Obsidian/Abyss Facets), her signature pieces (Her Kingdom, Golden Profile, Cosmic Ring, Obsidian Starlight), Dimension Vista, Sanctuary Garden, and three born-with area covers (Events, Spaces, Business) - Shawn featured the system's own defaults, not just citizen picks."
+      "note": "20 featured. Round 1 led with heart (3 companions); round 2 added the jewel abstracts (Jewel/Obsidian/Abyss Facets), her signature pieces (Her Kingdom, Golden Profile, Cosmic Ring, Obsidian Starlight), Dimension Vista, Sanctuary Garden, and three born-with area covers (Events, Spaces, Business) - Shawn featured the system's own defaults, not just citizen picks.",
+      "citizen_picks": [
+        "The Cat Sovereign",
+        "Best Friends",
+        "Companions at the Arch",
+        "The Feast Hall",
+        "The Jewel Arches",
+        "Crystal Cathedral",
+        "Opal Light",
+        "Companion Golden",
+        "Jewel Facets",
+        "Obsidian Facets",
+        "Abyss Facets",
+        "Dimension Vista",
+        "Sanctuary Garden"
+      ],
+      "exclusive_picks": [
+        "Her Kingdom",
+        "Golden Profile",
+        "Cosmic Ring",
+        "Obsidian Starlight",
+        "Area \u2014 Events",
+        "Area \u2014 Spaces",
+        "Area \u2014 Business",
+        "Her Welcome",
+        "Cosmic Galaxy",
+        "Golden Dawn",
+        "The Portal",
+        "The Dawn Ring",
+        "The Obsidian Ring"
+      ],
+      "split_rule": "CITIZEN picks (no Naya face, no medallion) = the chooser's top/recommended row for users. EXCLUSIVE picks (her face / the crystal N / brand) are NEVER offered as citizen recommendations - they dress the Nayas' own personal, business and space pages and the brand-featuring templates. The recommendation engine must exclude featured_class=exclusive (and all house-signature / area covers except when the page belongs to a Naya)."
     },
     "discovery": "browse by theme shelf; search by name AND by mood - every cover carries mood tags (calm, bold, warm, radiant, cosmic, serene...) because people search feelings, not categories. The jewel/signature tiers act as a filter inside every shelf.",
     "state_2026_10_25": "48 assets in the manifest; 29 citizen covers ready (23 + Tree set 3's 6); House collection 15 ready. Facets shelf nearly full (14); Sanctuaries and Cosmos healthy; Craft still empty; Celebrations thin - the remaining road to 60 fills shelves, theme by theme."
@@ -1487,7 +1606,7 @@
   },
   "themes": {
     "The House \u2014 Signature": {
-      "ready": 10,
+      "ready": 14,
       "designed": 0,
       "retired": 0,
       "depth": "deep"

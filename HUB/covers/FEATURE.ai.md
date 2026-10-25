@@ -34,6 +34,9 @@ Branded/area pages → their `area/*` cover. Citizen pages → `recommend()` top
 - Uploads: accept common image formats; client-side crop guidance shows the 3:1 slot and the fade zone (bottom band); adjuster available immediately after upload.
 - States: loading skeleton, empty-search (suggest nearest terms), error (keep current cover, plain-language message, retry). A failed save NEVER strips the existing cover.
 
+## Featured classes (Shawn's ruling, 2026-10-25)
+Every featured cover carries `featured_class`: **citizen** (no Naya face, no medallion — the chooser's top/recommended row for users) or **exclusive** (her face / the crystal N / brand). The recommendation engine and the citizen top row MUST exclude `exclusive` covers and all house-signature/area covers — exclusives dress the Nayas' own pages and brand-featuring templates only. A citizen page whose owner IS a Naya may receive exclusives.
+
 ## Honesty boundary
 Assets in this folder + manifest are ready. The chooser above is a SPEC until built and cold-verified; do not present Smart Covers as live to citizens until the acceptance walk passes.
 
