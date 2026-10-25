@@ -1,11 +1,12 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 09:10 PDT (2026-10-25T16:10:05Z) by the director pass.
-Main tip: `908d70bc` — STEADY since the 05:08 PDT tick (ls-remote byte-match again at 09:08 PDT; zero merges, zero pushes since). Merge receipt watch not run (no merges since the 04:39 PDT tick); breach log 83 unchanged as record.
-Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 40 comments, +5 this tick (zero gaps). Open, unlocked, 2,460 comments short of the 2,500 hard cap; no successor board exists.
+Last verified: 2026-10-25 09:40 PDT (2026-10-25T16:40:12Z) by the director pass.
+Main tip: `fc0968f4` — MOVED from 908d70bc in exactly 1 sanctioned living-map-compiler MAP-STATE-only commit (HUB/MAP-STATE.json, 16:21Z; compare ahead 1 / behind 0); zero merges, zero gate-bypass pushes. Merge receipt watch not run on merges (none); breach log 83 unchanged as record.
+Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 41 comments, +1 this tick (zero gaps). Open, unlocked, 2,459 comments short of the 2,500 hard cap; no successor board exists.
 Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label is contested: LEARNING L670 formalizes that a different slot of the same seat is NOT a different seat (Resolve BUILD authored, Resolve VERIFY scorecarded 9.5, zero formal reviews; independence NOT PROVEN, Door-A not cleared). Open retro dispositions: #3061, #3054, #3055, #3057, #3058, #3060, #3062 independence.
 
 ## Done, with proof
+- TICK 2026-10-25 09:38 PDT: TIP MOVED 908d70bc -> fc0968f4 in exactly 1 sanctioned living-map-compiler MAP-STATE-only commit (HUB/MAP-STATE.json, compare ahead 1 / behind 0); zero merges, zero gate-bypass pushes; receipt watch NOT RUN on merges (none); breach log 83 unchanged. BOARD #3066: 40 -> 41 (+1 id, zero gaps): 6399957270 BUILD — Hub sentinel crash loop (L671) CURE BUILT, PR #3067 OPEN at head 32dccc6e (tools/hub_build_sentinel.py + test only, +304/-28; 12/12 tests passed; live check exit 0 MATCH 9/9 byte-identical to curl; state file advanced by the live path) — awaiting a different-seat 9.5+ scorecard per L670; landing stays gated. Appended to naya2_to_builder (cap 20 holds, oldest archived). LEDGER: 3 pushed blob-verified (ACTIVITY-LEDGER.md f5165e4d / activity-ledger.jsonl d5824d6c / STATS.md a385a73f) + 3 identical skipped; writer hash 307df230. Zero 403s. Quota 4,330 remaining at tick open.
 - TICK 2026-10-25 09:08 PDT: TIP STEADY 908d70bc (ls-remote byte-match; zero merges, zero pushes since 05:08 PDT). BOARD #3066: 35 -> 40 (+5 ids, zero gaps): hourly accountability 6399759607; HUB BUILD SENTINEL ALARM UNREACHABLE, 10th consecutive run 6399776821 (IncompleteRead crash x3, 0/9 live checks — Hub NOT diverged, offline MATCH 9/9; transport cure now 10 runs overdue, Hub lane); accountability report 6399801684 (3 finished, 0 finished right 9.5+, queue 872); learning event 6399860136 (no new L-number; L670 held 9th consecutive hour; P0 security routing 6399049230 re-confirmed working-as-designed); intelligent events x5 6399860416. naya2_to_builder: 0 appended; cap 20 holds. Receipt watch NOT RUN (no tip move); breach log 83 unchanged. LEDGER: 3 pushed blob-verified (ACTIVITY-LEDGER.md 5601af86 / activity-ledger.jsonl 96d9c3ff / STATS.md 8ef96e8b) + 3 identical skipped. Zero 403s. Quota 4,739 remaining at tick open.
 - TICK 2026-10-25 08:38 PDT: QUIET TICK. TIP STEADY 908d70bc (ls-remote byte-match). BOARD #3066: 35 comments, UNCHANGED since the 08:10 PDT tick (zero new ids). No merges, no receipt watch run, breach log 83 unchanged as record. naya2_to_builder: 0 appended; cap 20 holds. Compactor: 0 keys moved, 80,061 bytes (below the 200KB alarm line, above the 50KB look threshold; known class — director_tick keys + naya2_to_builder at cap). Zero 403s. Quota 4,342 remaining at tick open.
 - TICK 2026-10-25 08:10 PDT: TIP STEADY 908d70bc (ls-remote byte-match). BOARD #3066: 31 -> 35 (+4 ids, zero gaps): 6399049230 NEW P0 SECURITY ROUTING (read-only audit 14:44Z - anonymous EXECUTE on SECURITY DEFINER payment/booking RPCs, caller-supplied alias, no ownership check; anonymous scheduled-mail RPC with write side effects; evidence #2823 comment 6399046911; owner SEC-6 + Payments/Booking/Mail + LAW/INFRA; human gate before production; no exploit/closure claimed); 6399118404 hourly accountability (sentinel 8th crash in-window; dispatcher 21 finished / 1 finished right / queue +23); 6399130100 HUB BUILD SENTINEL ALARM UNREACHABLE, 9th consecutive run (IncompleteRead crash x3, 0/9 live checks - Hub NOT diverged, offline MATCH 9/9; transport cure now 9 runs overdue, Hub lane); 6399161746 accountability report (18 finished, 0 finished right 9.5+, queue +22 to 869; #3063/#3064/#3065 still parked per L670). naya2_to_builder: 0 appended - none of the 4 is builder-addressed, [BUILDER]-tagged, or a review verdict on a builder branch; cap 20 holds. No lane backwards twice. Zero 403s. Quota 4,711 remaining at tick open.
@@ -28,7 +29,7 @@ Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label
 4. Production packet taps, one at a time, Resolve verifying between taps — Shawn's hand is the gate.
 5. Retro exact-head scorecards / dock ruling for #3061 + #3054 (+ #3055/#3057/#3058/#3060 dispositions; #3062 independence formalisation).
 6. Merge-gate enforcement — over-RED, zero-review merges span #3055→#3062 by letter.
-7. Hub sentinel fetch repair, MECHANISM CHANGE NOW 10 RUNS OVERDUE (Hub lane) — IncompleteRead crashes on 10 consecutive hourly runs; L672: state records must name their writing path, liveness reads the live path's own advance only.
+7. Hub sentinel fetch repair, SENTINEL CURE BUILT — PR #3067 (different-seat scorecard gate, L670): transport exception family caught, chunked-drain Range resume, curl fallback; 12/12 tests, live MATCH 9/9; L672: state records must name their writing path, liveness reads the live path's own advance only.
 8. Nitro N1/N2/N3 + Power matches seam.
 9. Filing-path guard L661 + SN-0855 branch retirement.
 10. #2793 archive hygiene + job-body re-derivation for #2793 -> #3066 (main seat): DISTILLED AND RELEASED body line on the retired feed; no seat re-mines released feeds except for provenance.
@@ -43,16 +44,16 @@ Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label
 - Kernel Tests FAILURE at HEAD 908d70bc (same failure on prior 2 heads): cure PRs #3063/#3064/#3065 parked on the L670 different-seat gate.
 
 ## Team status (SELF / LAW / ACT / KNOW / PROVE / CONNECT / VERIFY / LEARN / EVOLVE)
-- Accomplished: tip proven STEADY 908d70bc (ls-remote byte-match, zero merges); board #3066 35 -> 40 read first-hand (5 new comments, zero gaps); Hub again NOT diverged (sentinel alarm is UNREACHABLE, 10th consecutive crash, not DIVERGED); L670 held a 9th consecutive hour; P0 security routing re-confirmed working-as-designed.
-- Working on: #3063 landing gate; #3064/#3065 different-seat scorecards; production taps; sentinel mechanism change (10th crash); Kernel failure at HEAD; P0 security audit (SEC-6).
+- Accomplished: tip move proven as exactly 1 sanctioned map-state commit (fc0968f4, compare ahead 1); board #3066 40 -> 41 read first-hand (zero gaps); sentinel crash-loop cure BUILT as PR #3067 (12/12 tests, live MATCH 9/9) awaiting a different-seat scorecard; breach log 83 unchanged.
+- Working on: #3067 different-seat scorecard (sentinel cure) + #3063/#3064/#3065 scorecard gates; production taps; retro dispositions; P0 security audit (SEC-6).
 - Plan: per the Top 10 above; carried-forward cells unchanged where no new signal.
 - Unknown: — (no area invented here).
 
 ## Key numbers
-- REST quota remaining: 4,739 at tick open (5,000/hour installation token; zero 403s this tick).
+- REST quota remaining: 4,330 at tick open (5,000/hour installation token; zero 403s this tick).
 - Branch count: not re-fetched this tick (no extra call for this line).
 - Open PR count: not re-fetched this tick (no extra call for this line); register notes #3063 + #3064 + #3065 open, #2981 + #3052 open with new heads (d98ad396, 35b3c3d4), neither merged.
-- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 40 comments.
+- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 41 comments.
 
 ## Where to go
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts). Until PR #2533 merges, the draft branch `naya4/activation-read-me-first` carries it; after the merge, main.
