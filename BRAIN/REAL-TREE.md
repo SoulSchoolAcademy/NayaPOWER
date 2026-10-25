@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-25  
-**Receipt basis commit:** `41d7704d3cdc0faa8338c4beb01d0bc4dec7f4af`  
+**Receipt basis commit:** `e20faf7284319f405432e22ec9910308200a9b8d`  
 **Inventory file count:** 1674  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -1542,7 +1542,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/manifest.json` — `6381822d4c87` (1317 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/sw.js` — `6e6077330368` (1454 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py` — `2951c74ee95f` (37549 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `02c8c3dc9479` (50263 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `755441cfc74b` (50263 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/booking.html` — `fda0ef13aeab` (229469 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business-hub.html` — `9d527e73f762` (229479 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/business.html` — `3d8b82bcd6bf` (229489 bytes)
@@ -1551,7 +1551,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/event.html` — `7f3c09aedfbf` (229481 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/menu.html` — `7717e6aac01c` (229476 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/personal-hub.html` — `a564517e0d05` (229486 bytes)
-- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/personal.html` — `4f4192dbaeb9` (229830 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/personal.html` — `a7ece917d452` (229834 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/portfolio.html` — `ad5a4e8e03e8` (229486 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/product.html` — `3b4b17d2301c` (229496 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/signup.html` — `c9a8ebfa907e` (229469 bytes)
@@ -1656,7 +1656,7 @@
 - `BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md` — `6daf7c27c05e` (18308 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 - `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
-- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `5c2070e12835` (5172 bytes)
+- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `4eb8da8d7c3a` (5391 bytes)
 - `BRAIN/90-OPERATIONS/contracts/handoff-contract.md` — `3c8346c5942b` (21563 bytes)
 - `BRAIN/90-OPERATIONS/contracts/learning-contract.md` — `c42197ff505a` (21689 bytes)
 - `BRAIN/90-OPERATIONS/contracts/verification-contract.md` — `e70095fcbe07` (19666 bytes)
@@ -1725,7 +1725,7 @@
 - `BRAIN/90-OPERATIONS/network-registry/README.md` — `f561613fb1e3` (850 bytes)
 - `BRAIN/90-OPERATIONS/network-registry/naya2-team.json` — `7ab1ab56f34e` (1497 bytes)
 - `BRAIN/90-OPERATIONS/network-registry/naya5-team.json` — `cca9bdad8f3f` (1489 bytes)
-- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `efe332e92b3c` (19741 bytes)
+- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `cc289a763301` (20162 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
