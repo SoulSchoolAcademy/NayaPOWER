@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-25T18:05:40Z",
+ "generated_utc": "2026-10-25T18:20:38Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
   "sha": "fc0968f4bf910b4849af06bb414ee5f18b5fdcd4",
   "short": "fc0968f4bf91",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-25T18:05:05Z"
+  "checked_utc": "2026-10-25T18:20:03Z"
  },
  "venue": {
   "live": 2793,
