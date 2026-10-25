@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 08:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -26047,6 +26047,14 @@ _Last updated: 2026-10-25 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-t0132 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap close on parent t0132-lane8: guard pytest-unsafe test battery under main() on exact #2460-head bytes, apply-ready diff preserved
+
+**Receipt:** `twelve-lane-receipts/gap-t0132-lane8.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T08:35Z via git protocol (one batched ls-remote): main tip f919bb5524817a3628e35a9f2e77eb35335053f5, #2457 head 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97, #2460 head 97d464602c74abdc21227e990a46305a9f4a1f2b — all EXACT-match the receipt's pins; preserved guarded file hidden_files/gap-t0132-lane8/test_check_merge_cons
+
 ### ✅ gap-gap-t0102 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Gap-gap t0102 lane8: recover the branch-deletion provenance for PR #2460 from the live event record
@@ -27030,6 +27038,14 @@ _Last updated: 2026-10-25 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-gap-t0132 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on t0132-lane7: REST re-proof of 10 close-comment IDs + first read of all 10 close-comment bodies
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0132-lane7.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T08:11Z via git protocol (one batched ls-remote, independent of the receipt's evidence file): all 10 pull heads EXACT-match the receipt and its evidence file (#2038 4042526d..., #2039 9e447aff..., #2071 8b826d1a..., #2073 8bf08ebc..., #2074 0afb4790..., #2075 1fec06d2..., #2076 ad6ea32e..., #2078 7b344b76..., #2109 
 
 ### ✅ gap-t0132 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -38180,6 +38196,12 @@ _Last updated: 2026-10-25 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261025-0128 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 01:28 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-25T08:35Z: rotation twelve-lane-rotation.json queued=21 is the exact set the receipt names (t0422, t1468, t1507, t1508 x3, t1510 x2, t1511, t1512 x3, t1514, t1527, t1531, t1556, gap-gap-gap-t0112-lane9, gap-gap-gap-t0122-lane11, gap-gap-gap-t0132-lane7, gap-gap-gap-t1504-lane10, gap-gap-gap-gap-t1564-lane11)
 
 ### ✅ seat-stall-20261025-0023 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
