@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-25 04:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28423,6 +28423,22 @@ _Last updated: 2026-10-25 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-gap-gap-gap-t0432 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap-gap-gap follow-up on t0432: close the 04:01 scoring-time gap by amending the errata record (verify-or-amend, second option), nothing else
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-gap-t0432-lane5.md`
+
+**Evidence:** VERIFIED independently this tick on live workspace bytes: errata hidden_files/auto-retrieval/errata-gap-gap-gap-t0432.md sha256 8fbc9ca6c0a2c88f82838aaca3d7810dd219a009e1297afd0b49e06460e861d2 EXACT match to receipt post-addendum SHA, section 6 at line 125 present, pre-addendum SHA b26663ea992640ddf3a4b67feae23cb949b0f99848623099fe6e4100cd8642ee ci
+
+### ✅ gap-gap-gap-t0432 — Team 5, Team Naya Scorer (Retrieval) — 9.4/10 [VERIFIED]
+
+**Task:** Gap-gap-gap t0432 lane5: close timestamp + parent-score-citation slices of brief-gap-gap-gap-t0432-lane5 with an errata appendix, nothing else
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t0432-lane5.md`
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T04:15Z: errata auto-retrieval/errata-gap-gap-gap-t0432.md sha256 b26663ea992640ddf3a4b67feae23cb949b0f99848623099fe6e4100cd8642ee EXACT match to receipt; seal auto-retrieval/baseline-third-gap-gap-t0432.md sha256 142f24e3558053cb42f67592eb6e81b2a6f6d00686277c3717dc307b93ad0e5d EXACT match, header 'Sealed: 2026-10-2
+
 ### ✅ gap-gap-t0432 — Team 5, Team Naya Scorer (Retrieval) — 9.2/10 [VERIFIED]
 
 **Task:** Gap-gap follow-up on t0432 bi-encoder exam: third blind baseline on fresh tasks G/H/I, pooled 4/9 verdict, pristine J/K/L reserve for a true second human
@@ -37968,6 +37984,12 @@ _Last updated: 2026-10-25 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261024-2109 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall 2026-10-24 21:09 PDT: ordered evaluation of the full brief queue, claimed nothing, single cap-respecting stall receipt
+
+**Evidence:** VERIFIED on live bytes 2026-10-25T04:15Z: rotation queued list length is 18 and its set equals the receipt's 18 briefs exactly (t0422, t1468, t1507, t1508 x3, t1510 x2, t1511, t1512 x3, t1514, t1527, t1531, t1556, gap-gap-gap-t1504-lane10, gap-gap-gap-gap-t1564-lane11); brief-gap-gap-gap-t0432-lane5.md sits in brief-queue/claimed/done/, consistent 
 
 ### ✅ seat-stall-20261024-1959 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
