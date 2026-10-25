@@ -462,7 +462,9 @@
       "category": "abstract",
       "suits": "the soft colorway: opal strata with rainbow fire inside - gentle, luminous, one-of-a-kind personal pages",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "featured": true,
+      "featured_order": 7
     },
     {
       "key": "open/crimson-ember",
@@ -517,7 +519,9 @@
       "category": "the-dimension",
       "suits": "five jewels floating in a vault of black crystal, beams of light falling to a mirror floor: ceremony, membership, arrival",
       "status": "ready",
-      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve",
+      "featured": true,
+      "featured_order": 6
     },
     {
       "key": "open/diamond-light-tree",
@@ -561,7 +565,9 @@
       "category": "companions",
       "suits": "a golden retriever enthroned in the golden kingdom: pet pages, groomers, breeders, trainers, rescues, every beloved-dog business and personal page",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "featured": true,
+      "featured_order": 8
     },
     {
       "key": "open/vitality-rise",
@@ -605,7 +611,9 @@
       "category": "companions",
       "suits": "a dog and a cat watching the dawn together under the great arch: the heart of the companions shelf - pet pages, rescues, memorials, beloved-animal businesses",
       "status": "ready",
-      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve",
+      "featured": true,
+      "featured_order": 3
     },
     {
       "key": "open/the-study-tree",
@@ -649,7 +657,9 @@
       "category": "celebration",
       "suits": "a banquet hall of obsidian and gold with crystal goblets and flower garlands: restaurants, caterers, weddings, celebrations, hospitality",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "featured": true,
+      "featured_order": 4
     },
     {
       "key": "open/crystal-boutique",
@@ -781,7 +791,9 @@
       "category": "companions",
       "suits": "a golden retriever and a fluffy cat face to face with you at sunrise among the floating islands: THE pet cover - and a warm family favorite",
       "status": "ready",
-      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve",
+      "featured": true,
+      "featured_order": 2
     },
     {
       "key": "open/emerald-sunrise-tree",
@@ -891,7 +903,9 @@
       "category": "companions",
       "suits": "a silver cat with emerald eyes wearing a collar of the five jewels, enthroned on crystal: cats, cat lovers, regal pets, pet royalty pages",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "featured": true,
+      "featured_order": 1
     },
     {
       "key": "open/dawn-runners",
@@ -947,6 +961,19 @@
       "suits": "a dusk terrace with an infinity pool and lounge above floating crystal castles, two moons rising: luxury calm, retreats, resorts, romance, evening sanctuary",
       "status": "ready",
       "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/the-jewel-arches",
+      "file": "open/the-jewel-arches.jpg",
+      "name": "The Jewel Arches",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "five obsidian arches hung with jewel pendants, each framing another world, a planet rising through the center arch over rings of light: gateways, worlds-within-worlds, big-vision and cosmic pages. NEW - arrived in Shawn's favorites, was not in the library",
+      "status": "ready",
+      "credit": "Shawn's collection (favorites round 1), slot-fitted by Resolve",
+      "featured": true,
+      "featured_order": 5
     }
   ],
   "assignment_on_page_creation": {
@@ -1057,22 +1084,20 @@
       }
     ],
     "featured": {
-      "name": "The First Twelve",
-      "rule": "the chooser opens with these 12 only; the full library is one tap deeper (theme shelves + search). Curated by Shawn's favorites picks - chosen for broad appeal, not one taste. Proposed by Resolve from his verdicts so far; finalized by his picks.",
-      "proposed": [
-        "open/dimension-vista",
-        "open/jewel-facets",
-        "open/violet-facets",
-        "open/gold-facets",
-        "11-her-kingdom-tree",
-        "open/cosmic-jewels-tree",
-        "open/the-crown-tree",
-        "open/crystal-cathedral-tree",
-        "open/lotus-palace-tree",
-        "open/emerald-facets",
-        "open/twilight-blend",
-        "open/aurora-circuit"
-      ]
+      "name": "Shawn's Featured",
+      "source": "Shawn's own picks, sent 2026-10-25 ~22:33Z (round 1 of more)",
+      "status": "OPEN - more picks coming; the set finalizes when Shawn says he is done",
+      "picks_in_order": [
+        "The Cat Sovereign",
+        "Best Friends",
+        "Companions at the Arch",
+        "The Feast Hall",
+        "The Jewel Arches",
+        "Crystal Cathedral",
+        "Opal Light",
+        "Companion Golden"
+      ],
+      "note": "Replaces Resolve's proposed First Twelve as the canonical featured row. Pattern in round 1: heart first - three of eight are the companion pieces; then the jewel signatures, the feast, the opal calm."
     },
     "discovery": "browse by theme shelf; search by name AND by mood - every cover carries mood tags (calm, bold, warm, radiant, cosmic, serene...) because people search feelings, not categories. The jewel/signature tiers act as a filter inside every shelf.",
     "state_2026_10_25": "48 assets in the manifest; 29 citizen covers ready (23 + Tree set 3's 6); House collection 15 ready. Facets shelf nearly full (14); Sanctuaries and Cosmos healthy; Craft still empty; Celebrations thin - the remaining road to 60 fills shelves, theme by theme."
@@ -1438,7 +1463,7 @@
       "depth": "solid"
     },
     "Kingdoms & Worlds": {
-      "ready": 14,
+      "ready": 15,
       "designed": 0,
       "retired": 0,
       "depth": "deep"
