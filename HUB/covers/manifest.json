@@ -17,45 +17,66 @@
       "key": "rotation/hero-revised",
       "file": "01-hero-revised.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Hero Revised",
+      "category": "house-signature",
+      "suits": "the flagship: her portrait, the crystal medallion and the five jewels over the dimension - the Nayas' own pages and showcase samples"
     },
     {
       "key": "rotation/obsidian-night",
       "file": "02-obsidian-night.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Obsidian Night",
+      "category": "house-signature",
+      "suits": "her and the medallion in the obsidian night register: deep, elegant, after-dark"
     },
     {
       "key": "rotation/golden-dawn",
       "file": "03-golden-dawn.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Golden Dawn",
+      "category": "house-signature",
+      "suits": "her and the medallion in golden dawn light: warm beginnings, optimism"
     },
     {
       "key": "rotation/crystal-portal",
       "file": "04-crystal-portal.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Crystal Portal",
+      "category": "house-signature",
+      "suits": "her before the great crystal portal: thresholds, invitations, arrival"
     },
     {
       "key": "rotation/epic-dimension",
       "file": "05-epic-dimension.jpg",
       "kind": "rotation",
-      "status": "ready"
+      "status": "ready",
+      "name": "Epic Dimension",
+      "category": "house-signature",
+      "suits": "the widest vista of the inner dimension with her at its heart: flagship spaces and showcases"
     },
     {
       "key": "rotation/cosmic-galaxy",
       "file": "06-cosmic-galaxy-tree.jpg",
       "kind": "rotation",
       "status": "ready",
-      "credit": "Naya Tree"
+      "credit": "Naya Tree",
+      "name": "Cosmic Galaxy",
+      "category": "house-signature",
+      "suits": "her within a swirling galaxy of crystal islands (Naya Tree): cosmic scale, wonder"
     },
     {
       "key": "rotation/obsidian-arch",
       "file": "07-obsidian-arch-tree.jpg",
       "kind": "rotation",
       "status": "ready",
-      "credit": "Naya Tree"
+      "credit": "Naya Tree",
+      "name": "Obsidian Arch",
+      "category": "house-signature",
+      "suits": "her framed by the great obsidian arch (Naya Tree): ceremony, gravity, arrival"
     },
     {
       "key": "area/personal",
@@ -63,7 +84,10 @@
       "kind": "area",
       "area": "personal",
       "status": "ready",
-      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
+      "name": "Area \u2014 Personal",
+      "category": "house-area",
+      "suits": "the born cover for personal pages: her and the crystal home"
     },
     {
       "key": "area/business",
@@ -71,7 +95,10 @@
       "kind": "area",
       "area": "business",
       "status": "ready",
-      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
+      "name": "Area \u2014 Business",
+      "category": "house-area",
+      "suits": "the born cover for business pages: her and the crystal city"
     },
     {
       "key": "area/spaces",
@@ -79,7 +106,10 @@
       "kind": "area",
       "area": "spaces",
       "status": "ready",
-      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
+      "name": "Area \u2014 Spaces",
+      "category": "house-area",
+      "suits": "the born cover for spaces: her before the row of golden doorways"
     },
     {
       "key": "area/events",
@@ -87,7 +117,10 @@
       "kind": "area",
       "area": "events",
       "status": "ready",
-      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole"
+      "live_tested": "2026-10-25 on nayanet.live - fits, presents whole",
+      "name": "Area \u2014 Events",
+      "category": "house-area",
+      "suits": "the born cover for event pages: her and the amphitheater at dusk"
     },
     {
       "key": "area/booking",
@@ -95,7 +128,10 @@
       "kind": "area",
       "area": "booking",
       "status": "designed",
-      "scene": "The golden archway of time"
+      "scene": "The golden archway of time",
+      "name": "Area \u2014 Booking",
+      "category": "house-area",
+      "suits": "the born cover for booking pages: her and the golden archway of time (designed; generation owed)"
     },
     {
       "key": "area/templates",
@@ -103,7 +139,10 @@
       "kind": "area",
       "area": "templates",
       "status": "designed",
-      "scene": "The hall of doorways"
+      "scene": "The hall of doorways",
+      "name": "Area \u2014 Templates",
+      "category": "house-area",
+      "suits": "the born cover for template pages: her and the hall of doorways (designed; generation owed)"
     },
     {
       "key": "area/intel-today",
@@ -111,7 +150,10 @@
       "kind": "area",
       "area": "intel-today",
       "status": "designed",
-      "scene": "The dawn overlook"
+      "scene": "The dawn overlook",
+      "name": "Area \u2014 Intel Today",
+      "category": "house-area",
+      "suits": "the born cover for dashboards and Intel Today: her at the dawn overlook (designed; generation owed)"
     },
     {
       "key": "rotation/obsidian-starlight",
@@ -119,7 +161,10 @@
       "kind": "rotation",
       "status": "ready",
       "credit": "Naya Tree",
-      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Dark premium variant - black medallion disc, star-cut jewels."
+      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Dark premium variant - black medallion disc, star-cut jewels.",
+      "name": "Obsidian Starlight",
+      "category": "house-signature",
+      "suits": "her under starlight over the obsidian world (Naya Tree): night register, calm power"
     },
     {
       "key": "rotation/golden-profile",
@@ -127,7 +172,10 @@
       "kind": "rotation",
       "status": "ready",
       "credit": "Naya Tree",
-      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Jewels sit low - the cover adjuster aligns it."
+      "note": "Re-fitted by Resolve 2026-10-25: source was already panorama ratio; resized to slot. Jewels sit low - the cover adjuster aligns it.",
+      "name": "Golden Profile",
+      "category": "house-signature",
+      "suits": "her profile in golden light (Naya Tree): warmth, presence, the personal register"
     },
     {
       "key": "rotation/cosmic-ring",
@@ -135,7 +183,10 @@
       "kind": "rotation",
       "status": "ready",
       "credit": "Naya Tree",
-      "note": "Re-fitted by Resolve 2026-10-25: 16:9 source cropped to the slot with medallion, jewel row and portrait ring whole. Her portrait-in-a-jewel-ring concept - strong for personal pages."
+      "note": "Re-fitted by Resolve 2026-10-25: 16:9 source cropped to the slot with medallion, jewel row and portrait ring whole. Her portrait-in-a-jewel-ring concept - strong for personal pages.",
+      "name": "Cosmic Ring",
+      "category": "house-signature",
+      "suits": "her portrait inside a ring of jewels among the galaxies (Naya Tree): identity as the center of a universe"
     },
     {
       "key": "open/dimension-vista",
@@ -194,7 +245,8 @@
       "category": "the-dimension",
       "suits": "high-tech pages: tech businesses, creators, AI and future-facing spaces",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: liked it (2026-10-25)"
     },
     {
       "key": "open/emerald-falls",
@@ -205,7 +257,8 @@
       "category": "sanctuary",
       "suits": "nature pages: outdoors, environment, wellness, anyone whose world is the living earth",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: liked it (2026-10-25)"
     },
     {
       "key": "open/tide-realm",
@@ -216,7 +269,8 @@
       "category": "the-dimension",
       "suits": "ocean souls: travel, coastal businesses, dreamers, pages about depth and wonder",
       "status": "ready",
-      "credit": "Naya Resolve"
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: okay (2026-10-25)"
     },
     {
       "key": "open/festival-of-lights",
@@ -226,6 +280,549 @@
       "tier": "open",
       "category": "celebration",
       "suits": "events, communities, creators: pages that gather people and celebrate",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: for some people - niche (2026-10-25)"
+    },
+    {
+      "key": "open/obsidian-facets",
+      "file": "open/obsidian-facets.jpg",
+      "name": "Obsidian Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "any page: the house abstract in black - premium, dark, dimensional; also the family the share cards draw from",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)"
+    },
+    {
+      "key": "open/white-dimension",
+      "file": "open/white-dimension.jpg",
+      "name": "White Dimension",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "any page wanting the bright colorway: clean, premium, radiant",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)"
+    },
+    {
+      "key": "open/abyss-facets",
+      "file": "open/abyss-facets.jpg",
+      "name": "Abyss Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "any page wanting depth and calm power: teal flowing into the richest royal blue",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)"
+    },
+    {
+      "key": "open/jewel-facets",
+      "file": "open/jewel-facets.jpg",
+      "name": "Jewel Facets",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "abstract",
+      "suits": "the signature abstract: five jewels set in obsidian facets - NayaPOWER/NayaNET house design, no face, no logo",
+      "status": "ready",
+      "credit": "Naya Resolve",
+      "shawn_verdict": "Shawn: all epic, every single one - nailed it (2026-10-25)"
+    },
+    {
+      "key": "11-her-kingdom-tree",
+      "file": "11-her-kingdom-tree.jpg",
+      "name": "Her Kingdom",
+      "kind": "rotating",
+      "suits": "signature showpiece: her portrait, the crystal N, the jewel row and the whole kingdom behind her - for NayaNET flagship pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve",
+      "category": "the-dimension"
+    },
+    {
+      "key": "open/cosmic-jewels-tree",
+      "file": "open/cosmic-jewels-tree.jpg",
+      "name": "Cosmic Jewels",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "cosmos",
+      "suits": "the jewel tier at cosmic scale: five giant jewels over a galaxy lake - visionaries, memberships, big-dream pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/arrival-hall-tree",
+      "file": "open/arrival-hall-tree.jpg",
+      "name": "Arrival Hall",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "a quiet signature: the hall overlooks the dawn kingdom, five small jewels set in the floor - welcome pages, hubs, communities",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/violet-sanctuary-tree",
+      "file": "open/violet-sanctuary-tree.jpg",
+      "name": "Violet Sanctuary",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "violet blossom trees, waterfalls and crystal flowers: wellness, beauty, gentle personal pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/sky-kingdom-tree",
+      "file": "open/sky-kingdom-tree.jpg",
+      "name": "Sky Kingdom",
+      "kind": "open",
+      "tier": "open",
+      "category": "the-dimension",
+      "suits": "the floating kingdom at sunset: crystal palaces, waterfalls falling into clouds - epic spaces and vision pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/rose-facets",
+      "file": "open/rose-facets.jpg",
+      "name": "Rose Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the warm colorway: rose-gold crystal light - beauty, lifestyle, warm personal brands",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/emerald-facets",
+      "file": "open/emerald-facets.jpg",
+      "name": "Emerald Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the green colorway: inside a giant emerald - growth, wealth, nature-tech, powerful calm brands",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/violet-facets",
+      "file": "open/violet-facets.jpg",
+      "name": "Violet Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the violet colorway: a universe inside an amethyst - mystical, intelligent, visionary pages",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/gold-facets",
+      "file": "open/gold-facets.jpg",
+      "name": "Gold Facets",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the gold colorway: solidified sunlight - prosperity, premium brands, celebratory pages",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/sapphire-depths",
+      "file": "open/sapphire-depths.jpg",
+      "name": "Sapphire Depths",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the richest blue, pushed deeper: sapphire facets with teal fire - technology, intelligence, calm power",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/opal-light",
+      "file": "open/opal-light.jpg",
+      "name": "Opal Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the soft colorway: opal strata with rainbow fire inside - gentle, luminous, one-of-a-kind personal pages",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/crimson-ember",
+      "file": "open/crimson-ember.jpg",
+      "name": "Crimson Ember",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the bold colorway: ruby facets with a living ember heart - passionate brands, performers, fighters",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/twilight-blend",
+      "file": "open/twilight-blend.jpg",
+      "name": "Twilight Blend",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the combination: teal through violet into gold, a sunset inside one jewel - complete, harmonious, universal",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/lotus-palace-tree",
+      "file": "open/lotus-palace-tree.jpg",
+      "name": "Lotus Palace",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "a palace of crystal lotus flowers, waterfalls and still reflective water: serene, sacred, beautiful - wellness, spirit, gentle luxury",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/sky-jewels-tree",
+      "file": "open/sky-jewels-tree.jpg",
+      "name": "Sky Jewels",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "cosmos",
+      "suits": "the five jewels enthroned over floating waterfall kingdoms under two galaxies: the grandest jewel vista in the library",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/crystal-cathedral-tree",
+      "file": "open/crystal-cathedral-tree.jpg",
+      "name": "Crystal Cathedral",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "five jewels floating in a vault of black crystal, beams of light falling to a mirror floor: ceremony, membership, arrival",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/diamond-light-tree",
+      "file": "open/diamond-light-tree.jpg",
+      "name": "Diamond Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "the white colorway at full radiance: a cathedral of clear diamond light - purity, clarity, premium minimal brands",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/river-of-light-tree",
+      "file": "open/river-of-light-tree.jpg",
+      "name": "River of Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "a canyon of teal and violet crystal with a river of light running to a bright heart: depth, journey, technology with soul",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/the-crown-tree",
+      "file": "open/the-crown-tree.jpg",
+      "name": "The Crown",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "abstract",
+      "suits": "the five jewels at poster scale, set in a crown of black crystal: the boldest jewel statement in the library",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/companion-golden",
+      "file": "open/companion-golden.jpg",
+      "name": "Companion Golden",
+      "kind": "open",
+      "tier": "open",
+      "category": "companions",
+      "suits": "a golden retriever enthroned in the golden kingdom: pet pages, groomers, breeders, trainers, rescues, every beloved-dog business and personal page",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/vitality-rise",
+      "file": "open/vitality-rise.jpg",
+      "name": "Vitality Rise",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "pure energy: emerald and sunrise-gold facets bursting upward - fitness, health, coaching, any page about strength and a new morning",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/grand-hall-tree",
+      "file": "open/grand-hall-tree.jpg",
+      "name": "The Grand Hall",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "three arches onto a dawn kingdom, jewel pendants, a floor of light-rings: membership halls, flagship spaces, arrival",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/lotus-lake-tree",
+      "file": "open/lotus-lake-tree.jpg",
+      "name": "Lotus Lake",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "blossom trees and crystal lotus on a dawn lake between waterfall cliffs: serene personal pages, wellness, spirit",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/companions-arch-tree",
+      "file": "open/companions-arch-tree.jpg",
+      "name": "Companions at the Arch",
+      "kind": "open",
+      "tier": "open",
+      "category": "companions",
+      "suits": "a dog and a cat watching the dawn together under the great arch: the heart of the companions shelf - pet pages, rescues, memorials, beloved-animal businesses",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/the-study-tree",
+      "file": "open/the-study-tree.jpg",
+      "name": "The Study",
+      "kind": "open",
+      "tier": "open",
+      "category": "craft",
+      "suits": "a maker's desk in the dimension - crystal pens, scrolls, books, a planet rising through the arch: writers, coaches, creators, consultants",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/city-of-light-tree",
+      "file": "open/city-of-light-tree.jpg",
+      "name": "City of Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "prosperity",
+      "suits": "the grand crystal capital at dusk, bridges and floating citadels over a mirror lake: commerce, ambition, flagship businesses - the prosperity scene the shelf was missing",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/hall-of-arches-tree",
+      "file": "open/hall-of-arches-tree.jpg",
+      "name": "Hall of Arches",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "five arches, five colored worlds, one hall: spaces of spaces, template galleries, networks, doorways",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/feast-hall",
+      "file": "open/feast-hall.jpg",
+      "name": "The Feast Hall",
+      "kind": "open",
+      "tier": "open",
+      "category": "celebration",
+      "suits": "a banquet hall of obsidian and gold with crystal goblets and flower garlands: restaurants, caterers, weddings, celebrations, hospitality",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/crystal-boutique",
+      "file": "open/crystal-boutique.jpg",
+      "name": "The Crystal Boutique",
+      "kind": "open",
+      "tier": "open",
+      "category": "prosperity",
+      "suits": "rose-gold shelves of glowing jewel-bottles under silk drapes: beauty brands, perfumeries, salons, elegant shops",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/morning-light",
+      "file": "open/morning-light.jpg",
+      "name": "Morning Light",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "quiet dawn light through pale crystal arches over green hills: faith and spiritual communities, meditation, welcome pages - sacred to everyone, belonging to no single tradition",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/power-surge",
+      "file": "open/power-surge.jpg",
+      "name": "Power Surge",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "a crimson and gold crystal shockwave: pure power for fitness, sport, competition and drive",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/crystal-garden",
+      "file": "open/crystal-garden.jpg",
+      "name": "The Crystal Garden",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "a crystal cottage with warm windows in a terraced garden of glowing flowers: home and garden pages, homemakers, gardeners, cozy businesses",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/quiet-office",
+      "file": "open/quiet-office.jpg",
+      "name": "The Quiet Office",
+      "kind": "open",
+      "tier": "open",
+      "category": "craft",
+      "suits": "the clean register exemplar: a serene pale-crystal workspace, one desk, dawn hills - deliberately calm and uncluttered for consultants, professionals, agencies and anyone who wants trust over spectacle",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/crystal-stage",
+      "file": "open/crystal-stage.jpg",
+      "name": "The Crystal Stage",
+      "kind": "open",
+      "tier": "open",
+      "category": "celebration",
+      "suits": "a black-crystal amphitheater stage with instruments of light floating in arcs of music: musicians, performers, venues, entertainment",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/sky-voyage",
+      "file": "open/sky-voyage.jpg",
+      "name": "The Sky Voyage",
+      "kind": "open",
+      "tier": "open",
+      "category": "the-dimension",
+      "suits": "a crystal sailing ship with glowing sails between floating islands, golden routes through the clouds: travel, adventure, explorers, journey stories",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/diamond-bloom-tree",
+      "file": "open/diamond-bloom-tree.jpg",
+      "name": "Diamond Bloom",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "flowing crystal ribbons in white, gold and sapphire over a bright shore: the daylight abstract - luminous, airy, optimistic",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/the-gateway-tree",
+      "file": "open/the-gateway-tree.jpg",
+      "name": "The Gateway",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "the-dimension",
+      "suits": "a radiant diamond in a golden arch at the top of the steps: arrival, welcome, thresholds - memberships, onboarding, new beginnings, and quietly spiritual pages",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/golden-city-tree",
+      "file": "open/golden-city-tree.jpg",
+      "name": "Golden City",
+      "kind": "open",
+      "tier": "open",
+      "category": "prosperity",
+      "suits": "the crystal capital in full daylight over a still lake: commerce and ambition in their brightest register - shops, agencies, flagship businesses",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/lotus-falls-tree",
+      "file": "open/lotus-falls-tree.jpg",
+      "name": "Lotus Falls",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "crystal lotus and tiered waterfalls into a turquoise river at dawn: gentle personal pages, wellness, nature lovers",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/best-friends-tree",
+      "file": "open/best-friends-tree.jpg",
+      "name": "Best Friends",
+      "kind": "open",
+      "tier": "open",
+      "category": "companions",
+      "suits": "a golden retriever and a fluffy cat face to face with you at sunrise among the floating islands: THE pet cover - and a warm family favorite",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/emerald-sunrise-tree",
+      "file": "open/emerald-sunrise-tree.jpg",
+      "name": "Emerald Sunrise",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "an emerald and gold crystal eruption over a mirror floor at nightfall: dramatic energy - launches, ambition, breakthroughs",
+      "status": "ready",
+      "credit": "Naya Tree (via ChatGPT), slot-fitted by Resolve"
+    },
+    {
+      "key": "open/the-treehouse",
+      "file": "open/the-treehouse.jpg",
+      "name": "The Treehouse",
+      "kind": "open",
+      "tier": "open",
+      "category": "celebration",
+      "suits": "a crystal treehouse with glowing windows, lanterns and a slide of light into a flower-meadow pond: family pages, kids, parenting, play - the library's warm playful register",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/neon-arena",
+      "file": "open/neon-arena.jpg",
+      "name": "Neon Arena",
+      "kind": "open",
+      "tier": "open",
+      "category": "abstract",
+      "suits": "a black-crystal arena ring in violet and cyan neon with glowing portals: gaming, esports, streamers, play energy",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/prayer-hall",
+      "file": "open/prayer-hall.jpg",
+      "name": "The Prayer Hall",
+      "kind": "open",
+      "tier": "open",
+      "category": "sanctuary",
+      "suits": "amber crystal vaults, rows of candle flames and one beam of light: churches, prayer groups, spiritual communities, remembrance - reverent and open to everyone",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/the-workshop",
+      "file": "open/the-workshop.jpg",
+      "name": "The Workshop",
+      "kind": "open",
+      "tier": "open",
+      "category": "craft",
+      "suits": "a glowing crystal anvil, tools and shelves of crafted things, the working city beyond the arch: trades, builders, repair, makers - pride of honest craft",
       "status": "ready",
       "credit": "Naya Resolve"
     }
@@ -280,13 +877,378 @@
       "sanctuary": "gardens, water, calm light: wellness, healing, gentle personal pages",
       "celebration": "lanterns, gatherings, amphitheaters: events, creators, communities that celebrate",
       "craft": "obsidian-and-crystal minimal luxury: premium brands, studios, portfolios",
-      "cosmos": "planets, galaxies, the arrival hall: visionaries, memberships, the big-dream pages"
+      "cosmos": "planets, galaxies, the arrival hall: visionaries, memberships, the big-dream pages",
+      "abstract": "multi-dimensional layered facet art - the house abstract (from the share-card backgrounds Shawn showed): colorways obsidian, white, teal-to-royal-blue; the jewel version is the signature"
     },
     "rules": [
       "same slot discipline as every cover: 3:1, middle band, no baked text ever",
       "every open template is also a reference for a Naya-made custom version",
       "born-with-cover default stays the area cover; citizens may swap to any tier from the shelf"
     ],
-    "plan": "Rounds themed from the system's own pages and templates + Shawn's named tastes (high tech, beauty, nature, outside the norm). Round 1: 4 (one retired by Shawn's verdict). Round 2: 4 more. Target ~18 ready on the shelf."
+    "plan": "Rounds themed from the system's own pages and templates + Shawn's named tastes. Abstract family added round 3 (his screenshots: the share-card obsidian facets + the low-poly video background). Shelf: 11 ready open covers. Branded area covers (Booking/Templates/Intel Today) still owed."
+  },
+  "smart_covers": {
+    "name": "Smart Covers",
+    "what": "The categorized cover library as a product: browsable in Smart Factory AND offered at page-creation time. Shawn 2026-10-25: people love done-for-you parts they get to pick - 'I picked it' is the feeling that attracts builders.",
+    "flow": [
+      "1. DEFAULT FIRST: every page is born with a cover already chosen by the system (area cover by page type) - nobody ever faces a blank page or a forced decision.",
+      "2. OPTIONAL CHOOSER: during page creation (and anytime after, via Change cover) the citizen may open Smart Covers: categories and search, FEATURED covers first, never the whole shelf dumped at once.",
+      "3. SMART SUGGESTION: using what the citizen told us (Welcome answers, page type, stated purpose), the system suggests the best-matching covers first - the auto-match idea applied to covers.",
+      "4. SKIP IS FREE: 'pick for me' is always one tap; the default is already beautiful.",
+      "5. CUSTOM PATH: any cover can be used as-is, or as the reference for a Naya-made custom version."
+    ],
+    "organization": "three brand tiers (signature / jewel / open) x categories (abstract colorways, the-dimension, prosperity, sanctuary, celebration, craft, cosmos) - the manifest is the shelf data; featured = a rotating curated subset, seeded by Shawn's verdicts.",
+    "chooser_everywhere": {
+      "ruling": "Shawn, 2026-10-25 ~22:04Z: the cover library is choosable on ANY page. Every page's cover control offers two doors: CHOOSE FROM OUR LIBRARY or UPLOAD YOUR OWN PHOTO. A page is never blank and never locked: by default the system places the relevant cover (area default / matched pick); the citizen can swap it for any library cover or their own upload at any time; the position adjuster applies to both library picks and uploads.",
+      "the_match_card": "Every library photo carries a match card: a proper NAME, its CATEGORY (shelf), its ABOUT (what it is and who it suits - the 'suits' field), its tier, and the TYPICAL TERMS people search by (typical_terms map above) plus mood tags. Those cards are what the match game plays with: the chooser searches them, the smart suggestion scores them against the citizen's own words (Welcome answers + page purpose), and the default picker reads them. A photo without a complete match card does not enter the library.",
+      "defaults": "Page type sets the first default (area cover for branded/area pages; matched open cover for citizen pages); the citizen's own words refine it. Skip is always one tap; the default is always already beautiful."
+    }
+  },
+  "library_organization": {
+    "designed_with": "Shawn Vibert, 2026-10-25",
+    "target": "60 citizen covers in five theme shelves of 12; the branded House collection (Naya signature covers + area covers) stands apart as its own shelf.",
+    "shelves": [
+      {
+        "theme": "The Facets",
+        "what": "abstract jewel-crystal colorways - the house design language",
+        "holds": "abstract category"
+      },
+      {
+        "theme": "Kingdoms & Worlds",
+        "what": "epic inner-dimension scenes: palaces, floating kingdoms, doorways",
+        "holds": "the-dimension category"
+      },
+      {
+        "theme": "Sanctuaries",
+        "what": "calm, beauty, nature, water, gardens",
+        "holds": "sanctuary category"
+      },
+      {
+        "theme": "The Cosmos",
+        "what": "galaxies, planets, starlight, the jewels at cosmic scale",
+        "holds": "cosmos category"
+      },
+      {
+        "theme": "Celebrations & Craft",
+        "what": "festivals, light, gatherings - and the makers: craft, work, building",
+        "holds": "celebration + craft + prosperity categories"
+      }
+    ],
+    "featured": {
+      "name": "The First Twelve",
+      "rule": "the chooser opens with these 12 only; the full library is one tap deeper (theme shelves + search). Curated by Shawn's favorites picks - chosen for broad appeal, not one taste. Proposed by Resolve from his verdicts so far; finalized by his picks.",
+      "proposed": [
+        "open/dimension-vista",
+        "open/jewel-facets",
+        "open/violet-facets",
+        "open/gold-facets",
+        "11-her-kingdom-tree",
+        "open/cosmic-jewels-tree",
+        "open/the-crown-tree",
+        "open/crystal-cathedral-tree",
+        "open/lotus-palace-tree",
+        "open/emerald-facets",
+        "open/twilight-blend",
+        "open/aurora-circuit"
+      ]
+    },
+    "discovery": "browse by theme shelf; search by name AND by mood - every cover carries mood tags (calm, bold, warm, radiant, cosmic, serene...) because people search feelings, not categories. The jewel/signature tiers act as a filter inside every shelf.",
+    "state_2026_10_25": "48 assets in the manifest; 29 citizen covers ready (23 + Tree set 3's 6); House collection 15 ready. Facets shelf nearly full (14); Sanctuaries and Cosmos healthy; Craft still empty; Celebrations thin - the remaining road to 60 fills shelves, theme by theme."
+  },
+  "demand_map": {
+    "source": "Deep research 2026-10-25 (SBA 2025 profile, Shopify/StoreInspect, Etsy, GoDaddy, APPA, HFA, ICF, Reddit/Facebook community sizes) - full report in research notes.",
+    "headline_findings": [
+      "Offline, services dominate: professional services/coaching is the #1 small-business sector (4.88M US firms); construction/trades 3.66M; real estate 3.51M; health care 2.95M; retail 2.81M.",
+      "Online inverts it: Shopify stores are Fashion 25.5%, Home & Garden 13.3%, Beauty 8.3%, Food & Beverage 6.6%, Health & Wellness 5.2%, Sports & Fitness 3.5%.",
+      "Communities run on humour, pets (r/aww 38M members), food (multiple 3-6M groups), and faith (multi-million-member groups).",
+      "Pets: 94M US pet-owning households, $152B spend (APPA). Health & fitness: 81M US facility members; wellness economy $6.8T. Coaching: $5.34B, ~123k practitioners (ICF). Food: 1M+ US outlets, $1.5T sales.",
+      "AI/SaaS is tiny by firm count (Information sector 1.3%) but ~90% of YC 2025 batches - small numbers, highest growth and pay intent; the abstract facet family already speaks its language."
+    ],
+    "lock_in": "Build the road to 60 by demand cluster, not by taste: Companions (pets) NEW shelf direction x4-6 - professional services/coaching scenes x3 - health & energy x3 more - food & hospitality x3 - craft & makers x4 - earthly nature/outdoors x3 - commerce/prosperity scenes x3 - clean professional register x3 - celebrations +2 - faith & community welcome x2 - membership progression set x2.",
+    "likely_missed_by_others": "other-services invisibles (salons, repair, pet care - 3.86M firms), skilled trades (creator demand +103% YoY), weddings/events vendors (~900k), solo real-estate agents, churches/non-profits (373k congregations)."
+  },
+  "typical_terms": {
+    "purpose": "Shawn's rule (2026-10-25 ~21:58Z): every area of life people build pages around must be findable by the TYPICAL words they would type. This map is the coverage contract: area -> plain search terms -> the covers that answer them. Status: covered / partial / owed. The chooser searches these terms plus the mood tags.",
+    "areas": {
+      "personal": {
+        "terms": [
+          "calm",
+          "peaceful",
+          "dreamy",
+          "radiant",
+          "beautiful",
+          "me"
+        ],
+        "status": "covered"
+      },
+      "companions-pets": {
+        "terms": [
+          "dog",
+          "cat",
+          "puppy",
+          "kitten",
+          "pets",
+          "animals",
+          "golden retriever"
+        ],
+        "status": "covered",
+        "covers": [
+          "companions-arch-tree",
+          "companion-golden"
+        ]
+      },
+      "health-fitness": {
+        "terms": [
+          "gym",
+          "fitness",
+          "workout",
+          "energy",
+          "power",
+          "strength",
+          "wellness",
+          "health"
+        ],
+        "status": "covered",
+        "covers": [
+          "vitality-rise",
+          "power-surge"
+        ]
+      },
+      "food-drink": {
+        "terms": [
+          "restaurant",
+          "cafe",
+          "coffee",
+          "food",
+          "dining",
+          "bakery",
+          "chef"
+        ],
+        "status": "covered",
+        "covers": [
+          "feast-hall"
+        ]
+      },
+      "beauty-fashion": {
+        "terms": [
+          "beauty",
+          "salon",
+          "perfume",
+          "fashion",
+          "elegant",
+          "boutique",
+          "style"
+        ],
+        "status": "covered",
+        "covers": [
+          "crystal-boutique",
+          "rose-facets",
+          "opal-light"
+        ]
+      },
+      "home-garden": {
+        "terms": [
+          "home",
+          "house",
+          "garden",
+          "interior",
+          "plants",
+          "cozy"
+        ],
+        "status": "covered",
+        "covers": [
+          "crystal-garden"
+        ]
+      },
+      "business-professional": {
+        "terms": [
+          "office",
+          "business",
+          "consulting",
+          "professional",
+          "clean",
+          "minimal",
+          "agency",
+          "coach"
+        ],
+        "status": "covered",
+        "covers": [
+          "quiet-office",
+          "the-study-tree",
+          "facets family"
+        ]
+      },
+      "craft-makers": {
+        "terms": [
+          "art",
+          "studio",
+          "workshop",
+          "handmade",
+          "creator",
+          "writer",
+          "maker"
+        ],
+        "status": "covered",
+        "covers": [
+          "the-study-tree",
+          "the-workshop"
+        ]
+      },
+      "music-entertainment": {
+        "terms": [
+          "music",
+          "concert",
+          "stage",
+          "band",
+          "party",
+          "entertainment",
+          "show"
+        ],
+        "status": "covered",
+        "covers": [
+          "crystal-stage",
+          "festival-of-lights"
+        ]
+      },
+      "travel-adventure": {
+        "terms": [
+          "travel",
+          "adventure",
+          "journey",
+          "explore",
+          "wander",
+          "trip"
+        ],
+        "status": "covered",
+        "covers": [
+          "sky-voyage",
+          "aurora-circuit"
+        ]
+      },
+      "faith-spirit": {
+        "terms": [
+          "church",
+          "faith",
+          "prayer",
+          "spiritual",
+          "meditation",
+          "peace",
+          "sacred"
+        ],
+        "status": "covered",
+        "covers": [
+          "morning-light",
+          "prayer-hall",
+          "lotus-lake-tree",
+          "the-gateway-tree"
+        ]
+      },
+      "nature-outdoors": {
+        "terms": [
+          "nature",
+          "forest",
+          "waterfall",
+          "mountains",
+          "earth",
+          "wild",
+          "ocean"
+        ],
+        "status": "covered",
+        "covers": [
+          "emerald-falls",
+          "tide-realm",
+          "morning-light"
+        ]
+      },
+      "celebrations-weddings": {
+        "terms": [
+          "wedding",
+          "celebration",
+          "party",
+          "event",
+          "feast",
+          "gathering"
+        ],
+        "status": "covered",
+        "covers": [
+          "feast-hall",
+          "festival-of-lights",
+          "crystal-stage"
+        ]
+      },
+      "spaces-worlds": {
+        "terms": [
+          "world",
+          "kingdom",
+          "dimension",
+          "portal",
+          "magical",
+          "epic"
+        ],
+        "status": "covered"
+      },
+      "membership": {
+        "terms": [
+          "membership",
+          "levels",
+          "tiers",
+          "journey",
+          "ascension",
+          "community"
+        ],
+        "status": "partial",
+        "note": "Grand Hall + City of Light serve arrival; a dedicated progression set (rising tiers of light) is still owed",
+        "covers": [
+          "the-gateway-tree",
+          "grand-hall-tree",
+          "city-of-light-tree"
+        ]
+      },
+      "real-estate": {
+        "terms": [
+          "real estate",
+          "realtor",
+          "property",
+          "homes",
+          "keys"
+        ],
+        "status": "partial",
+        "note": "Crystal Garden + Hall of Arches answer loosely; a dedicated doorway/keys piece is owed"
+      },
+      "family-kids": {
+        "terms": [
+          "family",
+          "kids",
+          "children",
+          "playful",
+          "mom",
+          "parenting"
+        ],
+        "status": "covered",
+        "covers": [
+          "the-treehouse",
+          "best-friends-tree"
+        ]
+      },
+      "gaming-play": {
+        "terms": [
+          "gaming",
+          "esports",
+          "play",
+          "neon",
+          "arcade"
+        ],
+        "status": "covered",
+        "covers": [
+          "neon-arena",
+          "abyss-facets"
+        ]
+      }
+    }
+  },
+  "match_doctrine": {
+    "law": "Shawn, 2026-10-25 ~22:09Z: everything in the system gets categorized, labeled and organized so it can be pulled, used and found - covers, pages, smart notes, people, systems. This is one fabric with the auto-match engine: a massive game of match, played by intelligence with logic, automatically. No card, no entry: an asset without a complete match card (name, category, about/suits, tier, typical terms, credit, status) does not enter the library.",
+    "scope": "This manifest is the covers instance of the doctrine. The same card discipline applies to pages (page registry), smart notes (the Smart Note door), citizens and spaces (the match corpus) - one matching fabric across NayaNET.",
+    "arrival_protocol": "Every image Shawn or any Naya contributes is carded on arrival: slotted to 1920x640, named, categorized, described, term-mapped, credited - then added here and pushed with the library."
   }
 }
