@@ -1,0 +1,1539 @@
+{
+ "artifact": "welcome-engine-idf-decision/v1",
+ "engine": "smart_match v1.5",
+ "generated_from": {
+  "corpus_hash": "62107e3c8f675527137f855ccac95ae0031e04f3c5e015601b6aef4d51a00303",
+  "corpus_path": "corpus.json",
+  "entity_count": 12,
+  "sources": [
+   "declared"
+  ]
+ },
+ "idf": {
+  "factor": 0.25,
+  "threshold_default": 0.5,
+  "threshold_ge50_rule": "(ceil(n/2) - 0.5) / n per population \u2014 tokens in at least half the population are down-weighted"
+ },
+ "labeled_sets": {
+  "golden": {
+   "accuracy_off": 1.0,
+   "accuracy_on_default": 1.0,
+   "accuracy_on_ge50": 1.0,
+   "agreement_on_default": 1.0,
+   "agreement_on_ge50": 1.0,
+   "cases": [
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "Nitro is Team Nitro's own",
+     "off": {
+      "score": 62,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 62,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 62,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "Power is the mothership's integrator",
+     "off": {
+      "score": 57,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 57,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 57,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": null,
+     "informational": true,
+     "kind": "pair",
+     "label": "Resolve hears the Mirror (THINKING)",
+     "off": {
+      "score": 20,
+      "signals": [
+       "topics"
+      ],
+      "surface": false
+     },
+     "on_default": {
+      "score": 20,
+      "signals": [
+       "topics"
+      ],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 20,
+      "signals": [
+       "topics"
+      ],
+      "surface": false
+     },
+     "passed_off": null,
+     "passed_on_default": null,
+     "passed_on_ge50": null
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "Power and Nitro are complementary",
+     "off": {
+      "score": 18,
+      "signals": [
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 18,
+      "signals": [
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 18,
+      "signals": [
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": false,
+     "informational": false,
+     "kind": "pair",
+     "label": "Resolve does not belong in Voice",
+     "off": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_default": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": false,
+     "informational": false,
+     "kind": "pair",
+     "label": "Nitro does not belong in Smart Mail",
+     "off": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_default": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "Maya finds the gardeners",
+     "off": {
+      "score": 38,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 38,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 38,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": false,
+     "informational": false,
+     "kind": "pair",
+     "label": "Maya is not a Voice citizen",
+     "off": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_default": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "Tom finds the chess players",
+     "off": {
+      "score": 19,
+      "signals": [
+       "topics",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 19,
+      "signals": [
+       "topics",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 19,
+      "signals": [
+       "topics",
+       "wants"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": false,
+     "informational": false,
+     "kind": "pair",
+     "label": "Tom is not a Factory citizen",
+     "off": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_default": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_top1": "Team Nitro (space-team-nitro)",
+     "informational": false,
+     "kind": "ranking",
+     "label": "Nitro's top project is Team Nitro",
+     "must_beat": null,
+     "off": {
+      "score": 62,
+      "top1": "Team Nitro (space-team-nitro)"
+     },
+     "on_default": {
+      "score": 62,
+      "top1": "Team Nitro (space-team-nitro)"
+     },
+     "on_ge50": {
+      "score": 62,
+      "top1": "Team Nitro (space-team-nitro)"
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_top1": "NayaPOWER (space-nayapower)",
+     "informational": false,
+     "kind": "ranking",
+     "label": "Power's top project is NayaPOWER",
+     "must_beat": null,
+     "off": {
+      "score": 57,
+      "top1": "NayaPOWER (space-nayapower)"
+     },
+     "on_default": {
+      "score": 57,
+      "top1": "NayaPOWER (space-nayapower)"
+     },
+     "on_ge50": {
+      "score": 57,
+      "top1": "NayaPOWER (space-nayapower)"
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_top1": "Green Thumbs Circle (space)",
+     "informational": false,
+     "kind": "ranking",
+     "label": "Maya's top is the garden space",
+     "must_beat": null,
+     "off": {
+      "score": 38,
+      "top1": "Green Thumbs Circle (space)"
+     },
+     "on_default": {
+      "score": 38,
+      "top1": "Green Thumbs Circle (space)"
+     },
+     "on_ge50": {
+      "score": 38,
+      "top1": "Green Thumbs Circle (space)"
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    }
+   ],
+   "idf_downweighted_default": [],
+   "idf_downweighted_ge50": [],
+   "passed_off": 12,
+   "passed_on_default": 12,
+   "passed_on_ge50": 12,
+   "population_size": 16,
+   "scored_cases": 12,
+   "total_cases": 13
+  },
+  "holdout": {
+   "accuracy_off": 1.0,
+   "accuracy_on_default": 1.0,
+   "accuracy_on_ge50": 1.0,
+   "agreement_on_default": 1.0,
+   "agreement_on_ge50": 1.0,
+   "cases": [
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "baker finds the cafe",
+     "off": {
+      "score": 40,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 40,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 40,
+      "signals": [
+       "topics",
+       "goals",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "swim coach finds the triathlon club",
+     "off": {
+      "score": 18,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 18,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 18,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "beekeeper finds the orchard",
+     "off": {
+      "score": 21,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 21,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 21,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "tutor finds the homeschool co-op",
+     "off": {
+      "score": 14,
+      "signals": [
+       "topics",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 14,
+      "signals": [
+       "topics",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 14,
+      "signals": [
+       "topics",
+       "offers_needs",
+       "wants"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "photographer finds the wedding venue",
+     "off": {
+      "score": 8,
+      "signals": [
+       "topics",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 8,
+      "signals": [
+       "topics",
+       "wants"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 8,
+      "signals": [
+       "topics",
+       "wants"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "yoga teacher finds the wellness studio",
+     "off": {
+      "score": 29,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 29,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 29,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "accountant finds the freelancers group",
+     "off": {
+      "score": 35,
+      "signals": [
+       "goals",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 35,
+      "signals": [
+       "goals",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 35,
+      "signals": [
+       "goals",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "electrician finds the makerspace",
+     "off": {
+      "score": 19,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 19,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 19,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "dog trainer finds the animal shelter",
+     "off": {
+      "score": 7,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 7,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 7,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "translator finds the book club",
+     "off": {
+      "score": 25,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 25,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 25,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "carpenter finds the furniture store",
+     "off": {
+      "score": 6,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 6,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 6,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "astronomer finds the stargazing club",
+     "off": {
+      "score": 15,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 15,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 15,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": true,
+     "informational": false,
+     "kind": "pair",
+     "label": "meal-prep cook finds the gym (borderline)",
+     "off": {
+      "score": 9,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_default": {
+      "score": 9,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "on_ge50": {
+      "score": 9,
+      "signals": [
+       "topics",
+       "offers_needs"
+      ],
+      "surface": true
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": false,
+     "informational": false,
+     "kind": "pair",
+     "label": "chess person is not a gardener",
+     "off": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_default": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": false,
+     "informational": false,
+     "kind": "pair",
+     "label": "physicist is not a plumbers union",
+     "off": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_default": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": false,
+     "informational": false,
+     "kind": "pair",
+     "label": "poet is not a tax firm",
+     "off": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_default": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": false,
+     "informational": false,
+     "kind": "pair",
+     "label": "surfer is not a chess club",
+     "off": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_default": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 0,
+      "signals": [],
+      "surface": false
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_surface": false,
+     "informational": false,
+     "kind": "pair",
+     "label": "violin teacher vs luthier: one signal only, bar holds (borderline)",
+     "off": {
+      "score": 7,
+      "signals": [
+       "topics"
+      ],
+      "surface": false
+     },
+     "on_default": {
+      "score": 7,
+      "signals": [
+       "topics"
+      ],
+      "surface": false
+     },
+     "on_ge50": {
+      "score": 7,
+      "signals": [
+       "topics"
+      ],
+      "surface": false
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_top1": "Bakery Cafe (space)",
+     "informational": false,
+     "kind": "ranking",
+     "label": "rosa's top match is the bakery cafe",
+     "must_beat": "Garden Space (space)",
+     "off": {
+      "score": 47,
+      "top1": "Bakery Cafe (space)"
+     },
+     "on_default": {
+      "score": 47,
+      "top1": "Bakery Cafe (space)"
+     },
+     "on_ge50": {
+      "score": 47,
+      "top1": "Bakery Cafe (space)"
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    },
+    {
+     "expected_top1": "Data Bootcamp (space)",
+     "informational": false,
+     "kind": "ranking",
+     "label": "dev's top match is the data bootcamp",
+     "must_beat": null,
+     "off": {
+      "score": 35,
+      "top1": "Data Bootcamp (space)"
+     },
+     "on_default": {
+      "score": 35,
+      "top1": "Data Bootcamp (space)"
+     },
+     "on_ge50": {
+      "score": 35,
+      "top1": "Data Bootcamp (space)"
+     },
+     "passed_off": true,
+     "passed_on_default": true,
+     "passed_on_ge50": true
+    }
+   ],
+   "idf_downweighted_default": [],
+   "idf_downweighted_ge50": [],
+   "passed_off": 20,
+   "passed_on_default": 20,
+   "passed_on_ge50": 20,
+   "population_size": 41,
+   "scored_cases": 20,
+   "total_cases": 20
+  }
+ },
+ "real_corpus": {
+  "aggregates": {
+   "entities": 12,
+   "most_deflated_ge50": [
+    {
+     "delta": -8,
+     "pair": "nitro <-> space-team-nitro",
+     "score_off": 62,
+     "score_on": 54
+    },
+    {
+     "delta": -8,
+     "pair": "naya-power <-> nitro",
+     "score_off": 18,
+     "score_on": 10
+    },
+    {
+     "delta": -8,
+     "pair": "naya-power <-> space-team-nitro",
+     "score_off": 14,
+     "score_on": 6
+    },
+    {
+     "delta": -7,
+     "pair": "nitro <-> space-nayapower",
+     "score_off": 15,
+     "score_on": 8
+    },
+    {
+     "delta": -6,
+     "pair": "space-nayapower <-> space-team-nitro",
+     "score_off": 12,
+     "score_on": 6
+    }
+   ],
+   "never_surfaced_pairs": 51,
+   "pairs_changed_ge50": 14,
+   "pairs_gained_default": [],
+   "pairs_gained_ge50": [],
+   "pairs_lost_default": [],
+   "pairs_lost_ge50": [],
+   "pairs_surfaced_off": 15,
+   "pairs_surfaced_on_default": 15,
+   "pairs_surfaced_on_ge50": 15,
+   "pairs_total": 66,
+   "top2_off": [
+    {
+     "pair": "nitro <-> space-team-nitro",
+     "score": 62
+    },
+    {
+     "pair": "naya-power <-> space-nayapower",
+     "score": 57
+    }
+   ],
+   "top2_on_default": [
+    {
+     "pair": "nitro <-> space-team-nitro",
+     "score": 62
+    },
+    {
+     "pair": "naya-power <-> space-nayapower",
+     "score": 57
+    }
+   ],
+   "top2_on_ge50": [
+    {
+     "pair": "nitro <-> space-team-nitro",
+     "score": 54
+    },
+    {
+     "pair": "naya-power <-> space-nayapower",
+     "score": 53
+    }
+   ],
+   "top2_order_stable_on_default": true,
+   "top2_order_stable_on_ge50": true,
+   "top2_set_stable_on_default": true,
+   "top2_set_stable_on_ge50": true
+  },
+  "aliases": [
+   "naya-power",
+   "nitro",
+   "resolve",
+   "space-ask-naya",
+   "space-mirror",
+   "space-nayapower",
+   "space-one-flow",
+   "space-one-hub",
+   "space-smart-factory",
+   "space-smart-mail",
+   "space-team-nitro",
+   "space-voice"
+  ],
+  "entity_count": 12,
+  "identity_check": {
+   "entities_checked": 12,
+   "identical": true,
+   "legs": {
+    "off": {
+     "identical": true,
+     "mismatches": [],
+     "rows_compared": 30
+    },
+    "on_default": {
+     "identical": true,
+     "mismatches": [],
+     "rows_compared": 30
+    },
+    "on_ge50": {
+     "identical": true,
+     "mismatches": [],
+     "rows_compared": 30
+    }
+   },
+   "method": "rank_matches_indexed vs rank_matches \u2014 exact row equality, every entity, every leg",
+   "rankings_match_pair_matrix": true
+  },
+  "idf_downweighted_default": [],
+  "idf_downweighted_ge50": [
+   "builder",
+   "builders"
+  ],
+  "pairs": [
+   {
+    "a": "nitro",
+    "b": "space-team-nitro",
+    "delta": -8,
+    "delta_default": 0,
+    "pair": "nitro <-> space-team-nitro",
+    "score_off": 62,
+    "score_on": 54,
+    "score_on_default": 62,
+    "score_on_ge50": 54,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "naya-power",
+    "b": "space-nayapower",
+    "delta": -4,
+    "delta_default": 0,
+    "pair": "naya-power <-> space-nayapower",
+    "score_off": 57,
+    "score_on": 53,
+    "score_on_default": 57,
+    "score_on_ge50": 53,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "naya-power",
+    "b": "space-smart-factory",
+    "delta": -3,
+    "delta_default": 0,
+    "pair": "naya-power <-> space-smart-factory",
+    "score_off": 32,
+    "score_on": 29,
+    "score_on_default": 32,
+    "score_on_ge50": 29,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "naya-power",
+    "b": "space-one-hub",
+    "delta": 0,
+    "delta_default": 0,
+    "pair": "naya-power <-> space-one-hub",
+    "score_off": 27,
+    "score_on": 27,
+    "score_on_default": 27,
+    "score_on_ge50": 27,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "space-nayapower",
+    "b": "space-one-hub",
+    "delta": 0,
+    "delta_default": 0,
+    "pair": "space-nayapower <-> space-one-hub",
+    "score_off": 25,
+    "score_on": 25,
+    "score_on_default": 25,
+    "score_on_ge50": 25,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "naya-power",
+    "b": "nitro",
+    "delta": -8,
+    "delta_default": 0,
+    "pair": "naya-power <-> nitro",
+    "score_off": 18,
+    "score_on": 10,
+    "score_on_default": 18,
+    "score_on_ge50": 10,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "space-nayapower",
+    "b": "space-smart-factory",
+    "delta": -3,
+    "delta_default": 0,
+    "pair": "space-nayapower <-> space-smart-factory",
+    "score_off": 18,
+    "score_on": 15,
+    "score_on_default": 18,
+    "score_on_ge50": 15,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "nitro",
+    "b": "space-nayapower",
+    "delta": -7,
+    "delta_default": 0,
+    "pair": "nitro <-> space-nayapower",
+    "score_off": 15,
+    "score_on": 8,
+    "score_on_default": 15,
+    "score_on_ge50": 8,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "naya-power",
+    "b": "resolve",
+    "delta": -2,
+    "delta_default": 0,
+    "pair": "naya-power <-> resolve",
+    "score_off": 14,
+    "score_on": 12,
+    "score_on_default": 14,
+    "score_on_ge50": 12,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "naya-power",
+    "b": "space-team-nitro",
+    "delta": -8,
+    "delta_default": 0,
+    "pair": "naya-power <-> space-team-nitro",
+    "score_off": 14,
+    "score_on": 6,
+    "score_on_default": 14,
+    "score_on_ge50": 6,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "nitro",
+    "b": "space-one-hub",
+    "delta": 0,
+    "delta_default": 0,
+    "pair": "nitro <-> space-one-hub",
+    "score_off": 14,
+    "score_on": 14,
+    "score_on_default": 14,
+    "score_on_ge50": 14,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "space-nayapower",
+    "b": "space-team-nitro",
+    "delta": -6,
+    "delta_default": 0,
+    "pair": "space-nayapower <-> space-team-nitro",
+    "score_off": 12,
+    "score_on": 6,
+    "score_on_default": 12,
+    "score_on_ge50": 6,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "space-smart-factory",
+    "b": "space-team-nitro",
+    "delta": -3,
+    "delta_default": 0,
+    "pair": "space-smart-factory <-> space-team-nitro",
+    "score_off": 7,
+    "score_on": 4,
+    "score_on_default": 7,
+    "score_on_ge50": 4,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "space-ask-naya",
+    "b": "space-one-hub",
+    "delta": 0,
+    "delta_default": 0,
+    "pair": "space-ask-naya <-> space-one-hub",
+    "score_off": 6,
+    "score_on": 6,
+    "score_on_default": 6,
+    "score_on_ge50": 6,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   },
+   {
+    "a": "nitro",
+    "b": "space-ask-naya",
+    "delta": 0,
+    "delta_default": 0,
+    "pair": "nitro <-> space-ask-naya",
+    "score_off": 4,
+    "score_on": 4,
+    "score_on_default": 4,
+    "score_on_ge50": 4,
+    "surfaced_any": true,
+    "surfaced_off": true,
+    "surfaced_on_default": true,
+    "surfaced_on_ge50": true,
+    "survived_at_ge50": true
+   }
+  ],
+  "ubiquity_summary": {
+   "distinct_tokens": 199,
+   "tokens_at_or_over_50pct": [
+    "builder",
+    "builders"
+   ],
+   "tokens_over_50pct_strict": []
+  },
+  "ubiquity_table": [
+   {
+    "df": 6,
+    "share": 0.5,
+    "token": "builder"
+   },
+   {
+    "df": 6,
+    "share": 0.5,
+    "token": "builders"
+   },
+   {
+    "df": 5,
+    "share": 0.417,
+    "token": "PROVING"
+   },
+   {
+    "df": 4,
+    "share": 0.333,
+    "token": "PEOPLE"
+   },
+   {
+    "df": 4,
+    "share": 0.333,
+    "token": "THINKING"
+   },
+   {
+    "df": 4,
+    "share": 0.333,
+    "token": "build"
+   },
+   {
+    "df": 4,
+    "share": 0.333,
+    "token": "live"
+   },
+   {
+    "df": 4,
+    "share": 0.333,
+    "token": "prove"
+   },
+   {
+    "df": 4,
+    "share": 0.333,
+    "token": "system"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "CONNECTING"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "GUIDING"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "MAKING"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "SHIPPING"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "building"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "citizen"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "citizens"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "delivery"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "evidence"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "intelligence"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "outcome"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "prove outcomes"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "systems"
+   },
+   {
+    "df": 3,
+    "share": 0.25,
+    "token": "test"
+   }
+  ]
+ },
+ "summary": {
+  "decision_made": false,
+  "default_changed": false,
+  "facts": [
+   "Golden set (12 scored cases): accuracy OFF 1.0, ON at shipped defaults 1.0, ON at >=50% 1.0.",
+   "Holdout (20 scored cases, synthetic): accuracy OFF 1.0, ON at shipped defaults 1.0, ON at >=50% 1.0.",
+   "Real corpus (12 entities, 66 pairs): IDF at shipped defaults down-weights 0 token(s) (none) and surfaces 15 pairs vs 15 OFF (lost 0, gained 0).",
+   "Real corpus at the >=50% threshold: down-weights 2 token(s) (builder, builders); 15 pairs surface (lost 0, gained 0); 14 pair score(s) move; top-2 set stable.",
+   "Indexed rankings are identical to naive rankings on this corpus in every leg: True."
+  ],
+  "recommendation_rule": "HARDENING-ELITE-V2 \u00a75, standing: ADOPT IDF as an available mode, default OFF. Whether production flips the default (or the threshold to >=50%) is a wiring-step calibration decision to make with real citizen data \u2014 the golden set + identity tests are its gate. This harness supplies the measured facts for that decision; it does not make it, and it flips no default."
+ }
+}
