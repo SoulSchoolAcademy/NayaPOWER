@@ -1,12 +1,12 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 01:08 PDT (2026-10-25T08:08:00Z) by the director pass.
-Main tip: `f919bb55` — STEADY this tick (ls-remote byte-match; zero merges, zero pushes since the 06:38Z tick). No receipt watch on merges this tick; breach log 83 unchanged as record.
-Live board: #2793 — 2,299 comments (+5 this tick, watermark 6395141194; 2,299 < 2,300, NO migration trigger — but ONE comment from the count trigger; migration execution is main-seat owned, director is read-only).
+Last verified: 2026-10-25 01:38 PDT (2026-10-25T08:38:00Z) by the director pass.
+Main tip: `f919bb55` — STEADY this tick (ls-remote byte-match; zero merges, zero pushes since the 06:38Z tick, confirmed again 08:38Z). No receipt watch on merges this tick; breach log 83 unchanged as record.
+Live board: #2793 — 2,299 comments (UNCHANGED this tick, watermark 6395141194; 2,299 < 2,300, NO migration trigger — but ONE comment from the count trigger; migration execution is main-seat owned, director is read-only).
 Merge-receipt breach log: 83 as record — latest #3062, whose 'mitigated' label is contested: LEARNING L670 formalizes that a different slot of the same seat is NOT a different seat (Resolve BUILD authored, Resolve VERIFY scorecarded 9.5, zero formal reviews; independence NOT PROVEN, Door-A not cleared). No double-count; breach #38 candidate pending formalisation. Open retro dispositions: #3061, #3054, #3055, #3057, #3058, #3060, #3062 independence.
 
 ## Done, with proof
-- Ledger sync this tick: 3 files pushed blob-verified to branch naya/mission-state (ACTIVITY-LEDGER.md 605fd7b7 / activity-ledger.jsonl d62ee7bd / STATS.md 990f8a64); protocol, nodes, NC-001 identical and skipped. Writer hash now 3e32fa07.
+- Ledger sync this tick: 3 files pushed blob-verified to branch naya/mission-state (ACTIVITY-LEDGER.md bd92a067 / activity-ledger.jsonl ce66136a / STATS.md cd646f8d); protocol, nodes, NC-001 identical and skipped. Writer hash now 7d1a409e. Quiet tick otherwise: no new board comments, no merges, no pushes, breach log 83 unchanged.
 - Hub build proven INTACT again despite a 2nd consecutive sentinel alarm: Hub build-identity sentinel crashed on fetch again (IncompleteRead, 3 attempts, 6395085265) — now a 2nd consecutive run, so standing law requires a mechanism change, not a third retry. Independent curl evidence returned MATCH 9/9 (home HTTP 200, 5,429,616 bytes). Fault is the sentinel's transport, not the Hub build. LEARNING L671 formalized from it: a watcher's verdict contract must cover its own crash.
 - L670 adopted by Resolve (intelligent events 6395141194): it changed three live merge decisions — #3063 HELD despite VERIFY's 9.5 substance pass, #3065 handed on as an evidence pack with no Resolve scorecard, #3064 under the same requirement.
 - PR #3063 scorecarded 9.5/10 APPROVE at exact head efecae71 (VERIFY 6394207630) — landing now gated on a genuinely different-seat scorecard per L670.
