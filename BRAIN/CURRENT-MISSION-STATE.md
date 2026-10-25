@@ -58,16 +58,16 @@ Merge-receipt breach log: prior director record 83, PLUS 5 new receipt breaches 
 - Kernel Tests at tip 2bfd841d: 3 failed / 5,638 passed — brain-index freshness only (factory/migration/reporting residual set cleared 0/4 by the merged wave, VERIFY receipt 6402199571).
 
 ## Team status (SELF / LAW / ACT / KNOW / PROVE / CONNECT / VERIFY / LEARN / EVOLVE)
-- Accomplished: tip moved fc0968f4 -> 2bfd841d verified first-hand (ls-remote byte-match; tip = #3063 merge commit); board #3066 72 -> 77 read first-hand (5 new comments, zero gaps); 5-breach receipt watch run first-hand on all 5 PR bodies; PI sync package self-applied + read back 13/13 (Resolve); post-merge Kernel re-proof at tip by VERIFY (residual set cleared).
-- Working on: brain-index regen + Kernel re-run; sentinel first scheduled run on merged code; retro-verification of the 5-breach wave; open register #3052 + #2981; to-do board build; production taps; retro dispositions; P0 security audit (SEC-6).
+- Accomplished: tip STEADY af1907c9 verified first-hand (ls-remote byte-match); board #3066 89 -> 92 read first-hand (3 new comments, zero gaps); VERIFY post-merge Kernel re-proof receipt at tip af1907c9 claimed GREEN 9.5/10 (6403590366, director has not independently re-verified the run); breach #44 relayed for #3070 (6403359612, still unmitigated).
+- Working on: #3070 retro-verification by a non-author seat; current-truth projection reconciliation + resolver rerun; sentinel first scheduled run on merged code; retro-verification of the 5-breach wave; open register #3052 + #2981; to-do board build; production taps; retro dispositions; P0 security audit (SEC-6).
 - Plan: per the Top 10 above; carried-forward cells unchanged where no new signal.
 - Unknown: — (no area invented here).
 
 ## Key numbers
-- REST quota remaining: 4,354 as measured at tick open (5,000/hour installation token; zero 403s this tick).
+- REST quota remaining: 3,844 as measured at tick open (5,000/hour installation token; zero 403s this tick).
 - Branch count: not re-fetched this tick (no extra call for this line).
 - Open PR count: not re-fetched this tick (no extra call for this line); register notes #3063 + #3064 + #3065 + #3067 + #3068 now MERGED 19:27-19:28Z; #2981 + #3052 remain open.
-- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 83 comments.
+- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 92 comments.
 
 ## Where to go
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts). Until PR #2533 merges, the draft branch `naya4/activation-read-me-first` carries it; after the merge, main.
