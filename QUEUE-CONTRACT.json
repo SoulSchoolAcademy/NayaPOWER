@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-25T15:24:21Z",
-  "tip": "908d70bcefc054f128853c66349f9d585e82b77d",
+  "generated_at": "2026-10-25T16:24:29Z",
+  "tip": "fc0968f4bf910b4849af06bb414ee5f18b5fdcd4",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "5b627429b586894739a6e7fbc6d14f7d1a93cc3b"
+      "head": "26d7f1afb535cd6dbc9560dab9f7d649c09cf615"
     },
     {
       "number": 3052,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "618646ea9c83db308fe49e3a6f09361cba014f3b"
+      "head": "e2d6fb45fac0e8aff1378ed131a1349cdb050d71"
     },
     {
       "number": 3063,
@@ -47,6 +47,15 @@
       "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "32508e9fdeeaedd5f15474635d82a0d45b43c6f3"
+    },
+    {
+      "number": 3067,
+      "title": "fix(sentinel): L671 cure \u2014 verdict floor, resumable fetch, curl fallback (Hub watcher crash loop)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "32dccc6e7a3dd93a6fb49b7f7899fc7036ae673c"
     }
   ]
 }
