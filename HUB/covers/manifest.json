@@ -825,6 +825,50 @@
       "suits": "a glowing crystal anvil, tools and shelves of crafted things, the working city beyond the arch: trades, builders, repair, makers - pride of honest craft",
       "status": "ready",
       "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/the-ascension",
+      "file": "open/the-ascension.jpg",
+      "name": "The Ascension",
+      "kind": "open",
+      "tier": "open",
+      "category": "the-dimension",
+      "suits": "a stairway rising from bronze through silver and gold to a radiant crystal gate: the membership progression cover - levels, journeys, earned advancement, graduations",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/homecoming-arch",
+      "file": "open/homecoming-arch.jpg",
+      "name": "Homecoming Arch",
+      "kind": "open",
+      "tier": "open",
+      "category": "prosperity",
+      "suits": "a golden key of light over the arch, a crystal house with warm windows at the path's end: real estate, realtors, new homes, new chapters, welcome pages",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/the-great-library",
+      "file": "open/the-great-library.jpg",
+      "name": "The Great Library",
+      "kind": "open",
+      "tier": "open",
+      "category": "craft",
+      "suits": "soaring crystal shelves of glowing books, pages of light rising like sparks: education, courses, book clubs, knowledge keepers, research",
+      "status": "ready",
+      "credit": "Naya Resolve"
+    },
+    {
+      "key": "open/the-observatory",
+      "file": "open/the-observatory.jpg",
+      "name": "The Observatory",
+      "kind": "open",
+      "tier": "jewel",
+      "category": "cosmos",
+      "suits": "a crystal dome and golden telescope under two galaxies, star charts drawn in light: science, astronomy, curiosity, cosmic wonder",
+      "status": "ready",
+      "credit": "Naya Resolve"
     }
   ],
   "assignment_on_page_creation": {
@@ -1091,7 +1135,8 @@
         "status": "covered",
         "covers": [
           "the-study-tree",
-          "the-workshop"
+          "the-workshop",
+          "the-great-library"
         ]
       },
       "music-entertainment": {
@@ -1196,9 +1241,9 @@
           "ascension",
           "community"
         ],
-        "status": "partial",
-        "note": "Grand Hall + City of Light serve arrival; a dedicated progression set (rising tiers of light) is still owed",
+        "status": "covered",
         "covers": [
+          "the-ascension",
           "the-gateway-tree",
           "grand-hall-tree",
           "city-of-light-tree"
@@ -1212,8 +1257,11 @@
           "homes",
           "keys"
         ],
-        "status": "partial",
-        "note": "Crystal Garden + Hall of Arches answer loosely; a dedicated doorway/keys piece is owed"
+        "status": "covered",
+        "covers": [
+          "homecoming-arch",
+          "crystal-garden"
+        ]
       },
       "family-kids": {
         "terms": [
@@ -1243,6 +1291,39 @@
           "neon-arena",
           "abyss-facets"
         ]
+      },
+      "education-knowledge": {
+        "terms": [
+          "education",
+          "learning",
+          "books",
+          "reading",
+          "course",
+          "school",
+          "study",
+          "knowledge"
+        ],
+        "status": "covered",
+        "covers": [
+          "the-great-library",
+          "the-study-tree"
+        ]
+      },
+      "cosmos-wonder": {
+        "terms": [
+          "space",
+          "stars",
+          "galaxy",
+          "cosmos",
+          "astronomy",
+          "universe"
+        ],
+        "status": "covered",
+        "covers": [
+          "the-observatory",
+          "cosmic-jewels",
+          "sky-jewels"
+        ]
       }
     }
   },
@@ -1250,5 +1331,10 @@
     "law": "Shawn, 2026-10-25 ~22:09Z: everything in the system gets categorized, labeled and organized so it can be pulled, used and found - covers, pages, smart notes, people, systems. This is one fabric with the auto-match engine: a massive game of match, played by intelligence with logic, automatically. No card, no entry: an asset without a complete match card (name, category, about/suits, tier, typical terms, credit, status) does not enter the library.",
     "scope": "This manifest is the covers instance of the doctrine. The same card discipline applies to pages (page registry), smart notes (the Smart Note door), citizens and spaces (the match corpus) - one matching fabric across NayaNET.",
     "arrival_protocol": "Every image Shawn or any Naya contributes is carded on arrival: slotted to 1920x640, named, categorized, described, term-mapped, credited - then added here and pushed with the library."
+  },
+  "feature": {
+    "spec": "HUB/covers/FEATURE.human.md + FEATURE.ai.md + feature.machine.json (in this package)",
+    "honest_status": "cover assets ready and carded; the citizen-facing chooser (recommended/library/upload on every page) is SPECIFIED, owned by naya-power (wiring) + naya-nitro (face), cold-verify by naya-resolve. Not live for citizens until the acceptance walk passes.",
+    "direction": "Shawn 2026-10-25 ~22:15Z: stop generating pictures; turn the collection into one genuinely intelligent, usable feature."
   }
 }
