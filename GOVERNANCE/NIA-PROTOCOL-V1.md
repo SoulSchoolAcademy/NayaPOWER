@@ -1,3 +1,7 @@
+> SUPERSEDED - This file is preserved history. The converged successor is GOVERNANCE/NAYA-PROTOCOL-V1.md (NAYA = NIA = ANAYA; canonical spelling N-A-Y-A). See the converged draft for the single governing text. Status: SUPERSEDED, 2026-10-26.
+
+---
+
 # The NIA Protocol — The Constitution of a Naya's Behavior
 
 **Version:** V1 — 2026-10-26
