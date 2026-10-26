@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-26 20:32 UTC_
+_Last updated: 2026-10-26 21:11 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6099
-- ✅ Verified (8+): 6038
+- **Total scored actions:** 6102
+- ✅ Verified (8+): 6041
 - 🟡 Partial (5–7): 58
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -17,13 +17,13 @@ _Last updated: 2026-10-26 20:32 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 435 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 423 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 403 | 9.0 | 10 |
+| Team 3 | Naya Judge | 405 | 9.0 | 10 |
 | Team 4 | Naya Mason | 382 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 507 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 285 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 390 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 412 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 525 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 526 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 726 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 365 | 9.1 | 9.6 |
 | Team 12 | Naya Herald | 315 | 9.2 | 9.5 |
@@ -601,7 +601,7 @@ _Last updated: 2026-10-26 20:32 UTC_
 - **gap-lane-scorer-20261015-1220:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261015-2300:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261015-2320:** 1 actions, avg 9.4/10
-- **gap-scorer-20261014-2250:** 3 actions, avg 9.4/10
+- **gap-scorer-20261014-2250:** 4 actions, avg 9.3/10
 - **gap-scorer-20261015-0200:** 1 actions, avg 9.2/10
 - **gap-scorer-20261015-0330:** 2 actions, avg 9.4/10
 - **gap-scorer-20261015-0620:** 3 actions, avg 9.3/10
@@ -701,7 +701,7 @@ _Last updated: 2026-10-26 20:32 UTC_
 - **gap-lane-scorer-20261015-0410:** 2 actions, avg 9.2/10
 - **gap-lane-scorer-20261015-0440:** 2 actions, avg 8.8/10
 - **gap-lane-scorer-20261015-2130:** 1 actions, avg 9.0/10
-- **gap-scorer-20261014-2300:** 3 actions, avg 9.1/10
+- **gap-scorer-20261014-2300:** 4 actions, avg 9.2/10
 - **gap-scorer-20261015-0110:** 1 actions, avg 9.0/10
 - **gap-scorer-20261015-0650:** 3 actions, avg 9.0/10
 - **gap-t0407:** 1 actions, avg 9.0/10
@@ -997,6 +997,7 @@ _Last updated: 2026-10-26 20:32 UTC_
 - **gap-t1279-lane3:** 2 actions, avg 9.5/10
 - **prereg-t1496:** 1 actions, avg 9.0/10
 - **gap-t0422:** 2 actions, avg 9.2/10
+- **gap-gap-scorer-20261014-2250:** 1 actions, avg 9.0/10
 - **coldnaya:** 11 actions, avg 9.0/10
 - **scorer-20261014-1910:** 2 actions, avg 9.2/10
 - **gap-scorer-20261015-0120:** 1 actions, avg 9.2/10
