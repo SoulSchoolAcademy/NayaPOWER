@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-26T02:15:07+00:00",
+ "generated_utc": "2026-10-26T04:15:38+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,8 +31,15 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3082,
+     "title": "docs(brain): learning event 2026-10-26",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3082",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "know",
@@ -224,15 +231,8 @@
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
-   "open_prs": [
-    {
-     "number": 3075,
-     "title": "Move 1: interfaces + Smart Factory into GitHub (Hub-app scope)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3075",
-     "draft": false
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "memory",
