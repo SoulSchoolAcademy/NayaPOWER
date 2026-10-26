@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 13:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38340,6 +38340,12 @@ _Last updated: 2026-10-26 13:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-0704 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 07:04 PDT: full brief queue evaluated in order, 24/24 refused exit 7 (parent-authorship)
+
+**Evidence:** VERIFIED: receipt gate-stall-20261026-0704.md exists; brief-queue/ holds 25 .md files = all 24 briefs listed in the receipt plus lane-feed.md (zero missing, zero extra gap briefs); twelve-lane-rotation.json queued=24; spot dry-run of claim-brief.py for brief-gap-t1552-lane11.md as Naya Clarity Narzan reproduced the exit-7 parent-authorship refusal 
 
 ### ✅ gate-stall-20261026-0603 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
