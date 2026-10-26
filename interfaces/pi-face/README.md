@@ -1,4 +1,4 @@
-# PI Face — review draft (NOT the live page, NOT shipped)
+# PI Face — live at /pi (wiring pass 2026-10-26)
 
 ## What this is, plainly
 
@@ -11,13 +11,13 @@ and machine proof lives ONE TAP behind each item's Details door. Every
 number carries a read time. Nothing is invented. Nothing staged is
 presented as live.
 
-**This PR does not change the live page.** It cannot — see Provenance
-below. It is a DRAFT for Nitro's rendered review and for the provenance
-ruling. It must NOT be merged until the gates in "Owed before landing"
-land. Merge to main auto-deploys the Hub worker
-(`.github/workflows/deploy-hub-cloudflare.yml`), which does NOT serve
-`/projects` — so even a merge would not land this face. The wiring step
-to the real `/projects` route is named, not assumed.
+**This face is LIVE at /pi (legacy /pi-face.html serves the same face),
+deployed by the Hub worker auto-deploy
+(`.github/workflows/deploy-hub-cloudflare.yml`). The Hub worker does NOT
+serve `/projects` — so /projects still serves the old page; the mapping
+step to the real `/projects` route is named, not assumed (see Wiring
+pass below). Nitro rendered review + Resolve cold re-score remain owed
+as after-checks; neither is claimed here.**
 
 ## Human-first rules applied (Shawn's refinement)
 
@@ -214,3 +214,61 @@ edit the live page in-repo, and no claim otherwise is made.
 7. Separate deploy tap (Shawn) — distinct from any schema tap.
 8. Ledger writer gates (§5) before any live ledger header.
 Until 1–7 land, this PR stays DRAFT and the live page is unchanged.
+
+## Wiring pass 2026-10-26 (Power: data, routes, links — no face-craft redesign)
+
+What landed in this pass, in the face file itself (same bytes at
+`interfaces/pi-face/pi-face.html`, `HUB/app/pi-face.html`, and
+`HUB/app/pi/index.html`):
+
+- Route /pi: the face serves at /pi with no dashes (Shawn's URL ruling);
+  /pi-face.html remains as the legacy route serving the same face.
+- Measures: Today's pace is MEASURED from the live read's production
+  block (verified finishes today + effort per verified finish). The
+  Parts-at-9+ slot left the headline — no score register exists, so no
+  number is shown until it is measured.
+- Links, all true and cold-checked: coordination feed #3066 (live venue
+  from 2026-10-25, successor to #2793 under the feed-succession law) +
+  prior board #2793 (live 2026-10-20 → 2026-10-25, kept for history) +
+  the live projects page (labeled the old page until the /projects
+  mapping lands) + the live machine state. The staged to-do link was
+  REMOVED (cannot be wired live from the Hub — its worker is the
+  mystery /projects worker) and the Questions line was REMOVED
+  (/projects/questions.json answers 404). Venue note: #2793 still shows
+  GitHub state open; its live window ended 2026-10-25 per #3066's chain
+  — the team confirms the venue in the open if it disagrees.
+- Three views: Human in front (the face as before), AI working view
+  (states + counts + seat notes + decisions + blockers + wiring status),
+  Machine behind (payload verbatim + operating-code panel: data path,
+  derived_at, state_tip, schema, route, deploy). Details doors: the
+  state rows carry Details (state code, count source, proof rule);
+  per-item doors light up with the items endpoint.
+- Movement: finishes today + effort ratio + wake-ups vs ceiling, from
+  the live read; Refresh re-reads and flashes changed numbers.
+- Honest chips, not apology paragraphs: item rows, area %, one-project
+  view, and ledger read each state their gate in one line.
+
+What is still BLOCKED (named, never faked) — each needs its greenlight:
+
+1. Items endpoint / live record at request time: the browser ships no
+   credential (Hub bridge takes an injected transport; no work_items
+   browser read exists), and no items endpoint exists on any worker
+   the Hub serves. Greenlight: a Hub worker data route that reads the
+   live record at request time + a read-only secret (Shawn's tap) — or
+   the mystery /projects worker's operator exposing an items endpoint.
+   Until then: no item rows, no per-item Details doors, no
+   one-project view, no live ledger header — and no staged rows
+   presented as live.
+2. /projects mapping: the /projects route is answered by the mystery
+   worker, not the Hub worker. Greenlight: that worker's operator, or
+   Shawn's dashboard route change mapping /projects to the /pi face.
+3. Area schema tap (board packet, board 6408298083) + backfill
+   acceptance (bars unmet; no area column exists): until then no
+   per-area % and no area items — area views show definition, status,
+   and true links only.
+4. Parts-at-9+ register: no score table exists — the slot stays out of
+   the headline until measured.
+
+Rendered check at the real address (desktop + phone) is owed via the
+parent's browser delegation — a text fetch is not a rendered check,
+and no render is claimed until that check lands.
