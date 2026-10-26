@@ -1,5 +1,4 @@
 # The Mission Is the Authority — Relay Is Intel, Right Is Right for Everyone
-
 SN-1879 · SYSTEM / mission
 **Created:** 2026-10-26T22:12:58Z
 From Shawn's teaching, recorded by Naya Power, after he corrected her for asking him how to proceed.
