@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T15:25:33Z",
-  "tip": "c5f7b596fdd5385e7b2f39c636120da0657acef2",
+  "generated_at": "2026-10-26T16:24:53Z",
+  "tip": "fe241f1b3719caf67921574d10653f8d38810794",
   "prs": [
     {
       "number": 2981,
@@ -19,34 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "46829739f8f730f4c839bf5db0609289d0a46893"
-    },
-    {
-      "number": 3082,
-      "title": "docs(brain): learning event 2026-10-26",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "effbbfe6feea316207160911c182183478698a91"
-    },
-    {
-      "number": 3085,
-      "title": "Re-point mission-state consumers to live/mission-state (Option C snapshot retired)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "5cef1b836fcfac39ff24049372bd2ad360b8b259"
-    },
-    {
-      "number": 3087,
-      "title": "Naya2/team dashboard",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, brain-index-freshness, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
-      "owner": "author lane",
-      "head": "90ede742096f26ae75f4c2566063e4be1ca167fd"
+      "head": "66b026ac7a884ea7e267aac691048aa3f20e829c"
     },
     {
       "number": 3088,
@@ -56,6 +29,15 @@
       "cure": "Author cures the PR-caused red check(s): door-obligation; then re-derive at the new head.",
       "owner": "author lane",
       "head": "19563b9ff706256300dede95e10999d028cadcf7"
+    },
+    {
+      "number": 3089,
+      "title": "[DRAFT \u2014 DO NOT MERGE] PI face review draft: human-first Project Intelligence face + build record",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "2523ef3d5de2875b4dd539808ab747d0c1bfaaca"
     }
   ]
 }
