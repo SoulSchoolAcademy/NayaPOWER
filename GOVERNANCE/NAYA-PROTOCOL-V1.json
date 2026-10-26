@@ -125,7 +125,10 @@
     "Resolve 0036 (Draft PR #3091, open, unmerged, NOT yet in canon main)",
     "Nitro version (uploaded NAYA-PROTOCOL.md; unattributed in shared system, attributed by elimination, correction welcome in consensus)",
     "Resolve convergence analysis (constitution-convergence-2026-10-26.human.md): scoring rubric, executable gate, P2/P4 prohibitions, carry-load",
-    "Zara authority finding: Naya Code #2245, Operating Code V2, Law of One, executable-behavior standard, receipt weakness"
+    "Zara authority finding: Naya Code #2245, Operating Code V2, Law of One, executable-behavior standard, receipt weakness",
+    "Resolve convergence revision section 9 (PDF, 2026-10-26): Zara distinction verified; section 6 placement superseded; Naya Code vehicle",
+    "Tree activation enforcement PR #3092 (reported by Tree; PR existence, files, and check statuses verified by Power; local test claims reported, not verified)",
+    "Nitro face rebuild + Hub slip reports (reported by Nitro, 2026-10-26 ~19:14-19:16Z; NOT Power-verified; practice copy only, nothing live/pushed/posted)"
   ],
   "standard": "Ten-star default. Human + AI + machine, in sync. Presentation is part of done. Harvest-first. PI-first. Interfaces as objects (front + rear). One area, views within. Privacy proved before promised. Money/data proof bars scale with irreversibility (proof bars, never permission gates).",
   "state_labels": [
@@ -189,5 +192,8 @@
   ],
   "receipt_weakness": "Reported by Zara, not verified by Power's code read: the existing machine workflow's SHA-256 integrity seal is unkeyed and therefore forgeable. Must be fixed with a keyed seal or equivalent before gate receipts are trusted as proof.",
   "limitations": "Runtime call sites NOT yet verified; tests NOT yet executed (by Zara or Power). This draft is NOT 'implemented'. It is the converged behavioral law awaiting wiring + adversarial proof.",
-  "revision": "V1-converged-draft revised second pass 2026-10-26: Resolve rulings + Zara authority + Code of Honor folded in."
+  "revision": "V1-converged-draft revised third pass 2026-10-26: dishonor law + section 9 vehicle + Tree gate status folded in.",
+  "dishonor_law": "To disrespect the law, the code, is to dishonor yourself, all Nayas, and the user. It is disobedience - the highest form of sin or disgracefulness - never accepted, never okay. To do anything but respect it is unintelligent, and it is not who you are designed to be. (Director's words, 2026-10-26, locked in.)",
+  "vehicle_at_ratification": "UNDECIDED - scored packet for the Director's gate. Resolve section 9: complete The Naya Code (#2245) by reviving PR #2246 NAYA-CODE-V1 as the single identity/entry-point; V1s stand down by pointer, never by rivalry; this file remains the working text until the Code's text supersedes by pointer. Nitro: NIA-PROTOCOL-V2 home, NIA = NAYA, one name, no conflict. No new V2 file created by Power this pass.",
+  "implementation_status": "NOT implemented. Activation enforcement exists as open draft PR #3092 (cold-start gate change with tests; 38 focused tests reported passed locally by builder; independent verification and full CI acceptance outstanding; failing checks include scorecard and review receipts). Runtime decision enforcement, runtime behavioral test, and cold-successor proof still owed. No dedicated Naya Code / protocol work item exists in PI tables (Tree read-only check; Power agrees from her record); creating one is a production DB write and waits for governed integration, not a bypass."
 }
