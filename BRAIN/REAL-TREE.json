@@ -1,17 +1,17 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "20bfc69c64acbcee667f3d2310886f7128375308",
-  "inventory_file_count": 1696,
+  "receipt_basis_commit": "d9d787795e0f9799bae76c4aad239ba04650cb75",
+  "inventory_file_count": 1702,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 93,
+    "01-GOVERNANCE": 96,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 869,
+    "05-MEMORY": 872,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -626,6 +626,21 @@
       "size": 4871
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0036-NAYA-CONSTITUTION-V1.ai.md",
+      "blob_sha": "addbcabab138ce8b975c2111310c531136e80abd",
+      "size": 6327
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0036-NAYA-CONSTITUTION-V1.human.md",
+      "blob_sha": "e45dc727fbffc22e283eac0c8ae8a0c826a3588c",
+      "size": 7590
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0036-naya-constitution-v1.machine.json",
+      "blob_sha": "a443ff815ea4dc0931c711273b3be0f85a2399be",
+      "size": 4165
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md",
       "blob_sha": "2af14cb71410e4dadcd533e8cac7377b3c521bda",
       "size": 88406
@@ -1134,6 +1149,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-24-LEARNING-EVENT.md",
       "blob_sha": "a8caf5f5d5f4b59b74d58768d8cd7cea598ac102",
       "size": 17474
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-26-LEARNING-EVENT.md",
+      "blob_sha": "3bfc4d6219c7e5971f755a5cea90d10ae6c39ee6",
+      "size": 14605
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -4841,6 +4861,11 @@
       "size": 3852
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/approval/SN-1878/IB-SMART-NOTE-20261026-sn1878-outcome-approval-right-is-right.md",
+      "blob_sha": "4d6babce6a3f95f61dcba210f967df0980e8bf6b",
+      "size": 10036
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1870/IB-SMART-NOTE-20261026-sn1870-once-you-learn-from-it-its-a-learning-lesson.md",
       "blob_sha": "8ade2fe89f21ecf1425a354c5d1b09d9e8892ffd",
       "size": 3513
@@ -4869,6 +4894,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1877/IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time.md",
       "blob_sha": "7d05557ba00b71967b5705ea5bec58802c44c29a",
       "size": 5954
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md",
+      "blob_sha": "1a097a0fa2bee5ca4241b1549d77f83df6f97913",
+      "size": 3156
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
@@ -8097,8 +8127,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "8f9e5961095c5e0629577000d25a7fac71a45f73",
-      "size": 4845
+      "blob_sha": "2ef4aa19a328f6d2ad4a04ee9ba9b7a4d5ce8fbf",
+      "size": 5238
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8457,8 +8487,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "5563fe396c80fe65f5548869621d161b395e630b",
-      "size": 19260
+      "blob_sha": "b84de88484c26b81b87ad7c5ef4708a4c361f36b",
+      "size": 19891
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
