@@ -9,12 +9,13 @@ live.
 Standing (edit STANDING as the world changes; the director owns it):
   live_board: the one live coordination board — INDIRECTED: no number is
               printed here (numbers rot within 24h). The live board number
-              is named in the mission-state snapshot
-              (BRAIN/CURRENT-MISSION-STATE.md on branch naya/mission-state):
+              is named in the mission-state snapshot (STATE-CORE.json,
+              "venue"."live", on branch live/mission-state):
               read the snapshot first, then go to the board it names.
   dead_boards: capped archives — may be named only with dead/capped/archive/
                redirect/former nearby
-  canonical_snapshot_branch: the one home of CURRENT-MISSION-STATE.md
+  canonical_snapshot_branch: the one home of the mission-state snapshot
+              (STATE-CORE.json)
 
 A dead-board number is a violation UNLESS the same line carries one of the
 DEAD_WORDS. That allows "never post to #2175 (capped archive)" while catching
@@ -26,6 +27,7 @@ Usage: python3 boot_pointer_check.py [--self-test] <dir> [more dirs...]
        --self-test pins the regression seeds (VERIFY lane's adversarial
        phrasings from PR #2842 head 88bf85d3) — no directory needed.
 """
+import json
 import os
 import re
 import sys
@@ -35,10 +37,13 @@ STANDING = {
     # here — board numbers rot within 24h (2537 -> 2641 -> 2721 -> 2765
     # since 2026-10-15), so a bare number in standing is stale-by-design.
     # The live board number is named in the mission-state snapshot
-    # (BRAIN/CURRENT-MISSION-STATE.md on branch naya/mission-state) — read
-    # the snapshot first, then go to the board it names. Indirection added
-    # 2026-10-19 (gap-t-distill-daily-20261019 follow-up; parent PR #2782
-    # indirected BRAIN/00-ACTIVATION/ the same way).
+    # (STATE-CORE.json, "venue"."live", on branch live/mission-state) —
+    # read the snapshot first, then go to the board it names. Indirection
+    # added 2026-10-19 (gap-t-distill-daily-20261019 follow-up; parent
+    # PR #2782 indirected BRAIN/00-ACTIVATION/ the same way); re-pointed
+    # 2026-10-26 (PR #3085) when the Option C markdown snapshot on
+    # naya/mission-state was retired and the state-core tick's
+    # STATE-CORE.json on live/mission-state became the living snapshot.
     # History (NOT standing): migrated 2026-10-17 ~06:48Z: #2641 -> #2721
     # (announce comment 6230827986, redirect 6230827688;
     # shared-state.json live_board: "2721", watermark 6233699369;
@@ -52,17 +57,17 @@ STANDING = {
     # venue is #2793 (successor to #2765, retired 2026-10-20; chain in
     # #2793's body). The boot bytes name #2793 as the ratified live venue
     # alongside this indirection: the snapshot still wins on rotation.
-    "live_board": "BRAIN/CURRENT-MISSION-STATE.md @ naya/mission-state "
+    "live_board": "STATE-CORE.json (venue.live) @ live/mission-state "
                   "— read the snapshot first; board numbers rotate, "
                   "no printed number is canonical",
     # dead_boards: the HARDCODED FLOOR. The effective dead set is
     # floor UNION snapshot-derived (see snapshot_dead_boards) — the machine
     # gate tracks migrations automatically; a new retirement enters the
-    # snapshot's own words and the checker picks it up without a code
-    # change. Class killed 2026-10-20 (distill-daily brief): hardcoded
+    # snapshot's own archive list and the checker picks it up without a
+    # code change. Class killed 2026-10-20 (distill-daily brief): hardcoded
     # board numbers rotted 3 generations running.
     "dead_boards": ("2175", "1354", "2537", "2641", "2721", "2765"),
-    "canonical_snapshot_branch": "naya/mission-state",
+    "canonical_snapshot_branch": "live/mission-state",
 }
 
 DEAD_WORDS = re.compile(
@@ -71,11 +76,6 @@ DEAD_WORDS = re.compile(
 BOARD_RE = re.compile(r"#(\d{3,5})")
 BOOT_FILES = ("READ-ME-FIRST.md", "THE-CODE-SHE-LIVES-BY.md",
               "THE-14-QUESTIONS.md", "CURRENT-MISSION-STATE.md")
-LIVE_BOARD_RE = re.compile(r"LIVE BOARD\s*#(\d{3,5})")
-RETIRED_RE = re.compile(
-    r"capped|archived|distilled|released|retired|former|hard-capped|"
-    r"readable for provenance|history only|read-only",
-    re.I)
 
 
 def find_repo_root(start):
@@ -91,8 +91,9 @@ def find_repo_root(start):
 
 
 def snapshot_text(repo_root):
-    """Fetch the mission-state snapshot from origin/naya/mission-state via
-    git protocol (read path — free). Returns bytes or None."""
+    """Fetch the mission-state snapshot (STATE-CORE.json) from
+    origin/live/mission-state via git protocol (read path — free).
+    Returns the file text or None."""
     if not repo_root:
         return None
     import subprocess
@@ -108,40 +109,49 @@ def snapshot_text(repo_root):
         pass
     try:
         out = subprocess.run(
-            ["git", "-C", repo_root, "show", "origin/%s:BRAIN/CURRENT-MISSION-STATE.md" % ref],
+            ["git", "-C", repo_root, "show", "origin/%s:STATE-CORE.json" % ref],
             capture_output=True, text=True, timeout=30)
     except Exception:
         return None
     return out.stdout if out.returncode == 0 else None
 
 
-def snapshot_live_board(text):
-    """The live-board number the snapshot names (or None)."""
+def snapshot_state_core(text):
+    """Parse the snapshot (STATE-CORE.json) — dict, or None when the text
+    is missing or not a JSON object."""
     if not text:
         return None
-    m = LIVE_BOARD_RE.search(text)
-    return m.group(1) if m else None
+    try:
+        data = json.loads(text)
+    except ValueError:
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def snapshot_live_board(text):
+    """The live-board number the snapshot names (or None). The living
+    snapshot is structured: STATE-CORE.json carries it at
+    "venue"."live" (published ~every 15 min by the state-core tick)."""
+    data = snapshot_state_core(text)
+    if not data:
+        return None
+    live = (data.get("venue") or {}).get("live")
+    return str(live) if live is not None else None
 
 
 def snapshot_dead_boards(text, live_board):
-    """Retired boards the snapshot itself declares: a #NNNN whose *forward
-    segment* (this number up to the next board number — the retirement
-    phrase belongs to the number it follows) carries retirement phrasing.
-    The snapshot is the migration log — when the live board rotates, the
-    old one lands here by its own words. Non-board references (e.g. the
-    #2601 master directive) are excluded by the directive guard."""
+    """Retired boards the snapshot itself declares: STATE-CORE.json's
+    "venue"."archive" list — the publisher's own record of retired
+    boards. The snapshot is the migration log — when the live board
+    rotates, the old one lands in the archive list and the checker
+    picks it up without a code change."""
     dead = set()
-    if not text:
+    data = snapshot_state_core(text)
+    if not data:
         return dead
-    directive_re = re.compile(r"directive", re.I)
-    matches = list(BOARD_RE.finditer(text))
-    for i, m in enumerate(matches):
-        num = m.group(1)
-        if num == live_board:
-            continue
-        seg_end = matches[i + 1].start() if i + 1 < len(matches) else m.end() + 48
-        segment = text[m.end():seg_end]
-        if RETIRED_RE.search(segment) and not directive_re.search(segment):
+    for num in (data.get("venue") or {}).get("archive") or []:
+        num = str(num)
+        if num != live_board:
             dead.add(num)
     return dead
 
@@ -169,10 +179,10 @@ REGRESSION_SEEDS = (
 FIXED_LINES = (
     "**The circle:** every document in this system links to its "
     "relatives and back here. [The live coordination board]"
-    "(https://github.com/SoulSchoolAcademy/NayaPOWER/blob/naya/mission-state/"
-    "BRAIN/CURRENT-MISSION-STATE.md)",
+    "(https://github.com/SoulSchoolAcademy/NayaPOWER/blob/live/mission-state/"
+    "STATE-CORE.json)",
     "7. **Learn the coordination board.** The live coordination board "
-    "(resolve via `BRAIN/CURRENT-MISSION-STATE.md` @ `naya/mission-state` "
+    "(resolve via `STATE-CORE.json` (venue.live) @ `live/mission-state` "
     "— read the snapshot first; board numbers rotate, so no printed "
     "number is canonical)",
 )
@@ -270,8 +280,8 @@ def main():
         sys.exit(2)
     # The board-number list reads the LIVE BOARD from the snapshot
     # (machine-read via git protocol, not a printed constant) — the
-    # retired-board set derives from the snapshot's own retirement
-    # phrasing, so the gate tracks migrations automatically.
+    # retired-board set derives from the snapshot's own archive list
+    # (venue.archive), so the gate tracks migrations automatically.
     repo_root = find_repo_root(sys.argv[1])
     snap = snapshot_text(repo_root)
     live_board = snapshot_live_board(snap)
