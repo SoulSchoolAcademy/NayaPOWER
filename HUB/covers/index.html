@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Cover Library — NayaNET</title>
+<style>
+  :root{ --bg:#08070d; --panel:#12101c; --panel2:#181527; --ink:#f4f1ff; --dim:#b9b3d6; --faint:#7d76a3;
+    --gold:#e8c476; --line:#2a2545; --j1:#ff5d8f; --j2:#ffb84d; --j3:#5df2a6; --j4:#4dc9ff; --j5:#b98cff; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:radial-gradient(1200px 600px at 50% -10%, #1d1838 0%, var(--bg) 55%); color:var(--ink);
+    font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:20px 16px 64px; }
+  header{ text-align:center; padding:26px 0 8px; }
+  .jewels{ display:flex; gap:10px; justify-content:center; margin-bottom:14px; }
+  .jewels i{ width:13px; height:13px; transform:rotate(45deg); border-radius:3px; display:block;
+    box-shadow:0 0 14px currentColor; }
+  h1{ font-family:Georgia,"Times New Roman",serif; font-weight:500; font-size:clamp(28px,5vw,44px); letter-spacing:.02em; }
+  .tag{ color:var(--dim); font-size:clamp(14px,2.4vw,17px); margin-top:8px; }
+  .stage{ margin:26px auto 6px; max-width:860px; }
+  .stageLabel{ display:flex; justify-content:space-between; align-items:baseline; margin:0 2px 8px; }
+  .stageLabel b{ font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+  .stageLabel span{ color:var(--faint); font-size:13px; }
+  #stageView{ position:relative; width:100%; aspect-ratio:3/1; border-radius:16px; overflow:hidden;
+    border:1px solid var(--line); background:#000 center/cover no-repeat; cursor:grab; touch-action:none;
+    box-shadow:0 18px 50px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.04); }
+  #stageView:active{ cursor:grabbing; }
+  #stageName{ margin-top:10px; text-align:center; font-family:Georgia,serif; font-size:20px; }
+  #stageWhy{ text-align:center; color:var(--dim); font-size:14px; margin-top:3px; min-height:20px; }
+  .doors{ display:flex; gap:10px; justify-content:center; margin:22px 0 4px; flex-wrap:wrap; }
+  .door{ min-height:48px; padding:12px 22px; border-radius:999px; border:1px solid var(--line);
+    background:var(--panel); color:var(--ink); font-size:15px; cursor:pointer; }
+  .door.on{ background:linear-gradient(135deg,#2b2350,#1b1733); border-color:var(--gold); color:#fff;
+    box-shadow:0 0 0 1px var(--gold) inset, 0 6px 22px rgba(232,196,118,.15); }
+  section{ margin-top:38px; }
+  h2{ font-family:Georgia,serif; font-weight:500; font-size:clamp(21px,3.4vw,28px); margin-bottom:4px; }
+  .sub{ color:var(--dim); font-size:14.5px; margin-bottom:16px; max-width:720px; }
+  h3{ font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin:22px 0 10px; }
+  .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  @media(min-width:760px){ .grid{ grid-template-columns:repeat(3,1fr); gap:16px; } .grid.wide{ grid-template-columns:repeat(4,1fr); } }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden; cursor:pointer;
+    text-align:left; color:var(--ink); padding:0; width:100%; transition:transform .15s, border-color .15s, box-shadow .15s; }
+  .card:hover{ transform:translateY(-2px); border-color:#453c74; }
+  .card.sel{ border-color:var(--gold); box-shadow:0 0 0 1px var(--gold), 0 10px 30px rgba(0,0,0,.5); }
+  .card img{ width:100%; aspect-ratio:3/1; object-fit:cover; display:block; background:#000; }
+  .card .meta{ padding:10px 12px 12px; }
+  .card .nm{ font-family:Georgia,serif; font-size:16.5px; }
+  .card .ds{ color:var(--dim); font-size:12.5px; line-height:1.45; margin-top:3px; display:-webkit-box;
+    -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .card .row{ display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+  .tier{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); }
+  .use{ font-size:12.5px; color:var(--gold); }
+  #q{ width:100%; min-height:52px; border-radius:12px; border:1px solid var(--line); background:var(--panel);
+    color:var(--ink); font-size:16px; padding:0 16px; outline:none; }
+  #q:focus{ border-color:var(--gold); box-shadow:0 0 0 1px var(--gold); }
+  .hidden{ display:none !important; }
+  #uploadBox{ border:1.5px dashed #453c74; border-radius:14px; padding:28px 18px; text-align:center; color:var(--dim); }
+  #uploadBox input{ display:none; }
+  #uploadBox label{ display:inline-block; min-height:48px; padding:13px 26px; border-radius:999px; cursor:pointer;
+    background:linear-gradient(135deg,#2b2350,#1b1733); border:1px solid var(--gold); color:#fff; font-size:15px; }
+  .note{ color:var(--faint); font-size:13px; margin-top:10px; text-align:center; }
+  footer{ margin-top:54px; text-align:center; color:var(--faint); font-size:13px; line-height:1.7; }
+  .houseTag{ display:inline-block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#0b0916;
+    background:var(--gold); border-radius:999px; padding:3px 10px; margin-left:10px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="jewels"><i style="color:var(--j1);background:var(--j1)"></i><i style="color:var(--j2);background:var(--j2)"></i><i style="color:var(--j3);background:var(--j3)"></i><i style="color:var(--j4);background:var(--j4)"></i><i style="color:var(--j5);background:var(--j5)"></i></div>
+    <h1>Smart Cover Library</h1>
+    <p class="tag">Every page is born beautiful. This is where you choose the cover that is yours.</p>
+  </header>
+
+  <div class="stage">
+    <div class="stageLabel"><b>Your page wears</b><span>drag the cover to adjust it</span></div>
+    <div id="stageView" title="Drag to adjust"></div>
+    <div id="stageName"></div>
+    <div id="stageWhy"></div>
+  </div>
+
+  <div class="doors">
+    <button class="door on" data-door="rec">Recommended for you</button>
+    <button class="door" data-door="lib">Browse the library</button>
+    <button class="door" data-door="up">Your own photo</button>
+  </div>
+
+  <section id="pane-rec">
+    <h2>Recommended for you</h2>
+    <p class="sub">Start here. These are the featured picks — chosen first, in four small shelves. Everything else lives one door over, in the full library.</p>
+    <div id="recGroups"></div>
+  </section>
+
+  <section id="pane-lib" class="hidden">
+    <h2>The library</h2>
+    <p class="sub">Every cover, organized. Search by the plain words you would use — <i>dog, office, ocean, calm, celebration</i> — and the matching shelf comes to you.</p>
+    <input id="q" type="search" placeholder="Search covers — try &quot;cat&quot;, &quot;garden&quot;, &quot;city&quot;, &quot;stars&quot;…" autocomplete="off">
+    <div id="libGroups" style="margin-top:8px"></div>
+    <p id="noHit" class="note hidden">Nothing matches that word yet — the library grows by request. Try a simpler word.</p>
+  </section>
+
+  <section id="pane-up" class="hidden">
+    <h2>Your own photo</h2>
+    <p class="sub">Bring a picture that is already yours. It lands in the same frame, with the same drag-to-adjust, and it is yours alone.</p>
+    <div id="uploadBox">
+      <label for="file">Choose a photo</label>
+      <input id="file" type="file" accept="image/*">
+      <p class="note">Wide pictures wear best — the frame is 3 across by 1 tall.</p>
+    </div>
+  </section>
+
+  <section id="house">
+    <h2>The House set <span class="houseTag">For Naya pages</span></h2>
+    <p class="sub">Her signature covers — for the Nayas' own pages and the templates that feature the brand. These dress our pages; they are never offered as citizen recommendations.</p>
+    <div id="houseGroups"></div>
+  </section>
+
+  <footer>
+    <div id="counts"></div>
+    Smart Cover Library · ships inside the app · every cover carded, categorized, and matched — no card, no entry.
+  </footer>
+</div>
+
+<script id="cover-data" type="application/json">{"assets": [{"k": "rotation/hero-revised", "f": "01-hero-revised.jpg", "n": "Hero Revised", "t": "open", "c": "house-signature", "s": "the flagship: her portrait, the crystal medallion and the five jewels over the dimension - the Nayas' own pages and showcase samples", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "rotation/obsidian-night", "f": "02-obsidian-night.jpg", "n": "Obsidian Night", "t": "open", "c": "house-signature", "s": "her and the medallion in the obsidian night register: deep, elegant, after-dark", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "rotation/golden-dawn", "f": "03-golden-dawn.jpg", "n": "Golden Dawn", "t": "open", "c": "house-signature", "s": "her and the medallion in golden dawn light: warm beginnings, optimism", "w": "", "fc": "exclusive", "fo": 23, "cr": "Naya Resolve"}, {"k": "rotation/crystal-portal", "f": "04-crystal-portal.jpg", "n": "Crystal Portal", "t": "open", "c": "house-signature", "s": "her before the great crystal portal: thresholds, invitations, arrival", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "rotation/epic-dimension", "f": "05-epic-dimension.jpg", "n": "Epic Dimension", "t": "open", "c": "house-signature", "s": "the widest vista of the inner dimension with her at its heart: flagship spaces and showcases", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "rotation/cosmic-galaxy", "f": "06-cosmic-galaxy-tree.jpg", "n": "Cosmic Galaxy", "t": "open", "c": "house-signature", "s": "her within a swirling galaxy of crystal islands (Naya Tree): cosmic scale, wonder", "w": "", "fc": "exclusive", "fo": 22, "cr": "Naya Tree"}, {"k": "rotation/obsidian-arch", "f": "07-obsidian-arch-tree.jpg", "n": "Obsidian Arch", "t": "open", "c": "house-signature", "s": "her framed by the great obsidian arch (Naya Tree): ceremony, gravity, arrival", "w": "", "fc": null, "fo": null, "cr": "Naya Tree"}, {"k": "area/personal", "f": "areas/personal.jpg", "n": "Area \u2014 Personal", "t": "open", "c": "house-area", "s": "the born cover for personal pages: her and the crystal home", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "area/business", "f": "areas/business.jpg", "n": "Area \u2014 Business", "t": "open", "c": "house-area", "s": "the born cover for business pages: her and the crystal city", "w": "", "fc": "exclusive", "fo": 20, "cr": "Naya Resolve"}, {"k": "area/spaces", "f": "areas/spaces.jpg", "n": "Area \u2014 Spaces", "t": "open", "c": "house-area", "s": "the born cover for spaces: her before the row of golden doorways", "w": "", "fc": "exclusive", "fo": 19, "cr": "Naya Resolve"}, {"k": "area/events", "f": "areas/events.jpg", "n": "Area \u2014 Events", "t": "open", "c": "house-area", "s": "the born cover for event pages: her and the amphitheater at dusk", "w": "", "fc": "exclusive", "fo": 18, "cr": "Naya Resolve"}, {"k": "rotation/obsidian-starlight", "f": "08-obsidian-starlight-tree.jpg", "n": "Obsidian Starlight", "t": "open", "c": "house-signature", "s": "her under starlight over the obsidian world (Naya Tree): night register, calm power", "w": "", "fc": "exclusive", "fo": 17, "cr": "Naya Tree"}, {"k": "rotation/golden-profile", "f": "09-golden-profile-tree.jpg", "n": "Golden Profile", "t": "open", "c": "house-signature", "s": "her profile in golden light (Naya Tree): warmth, presence, the personal register", "w": "", "fc": "exclusive", "fo": 15, "cr": "Naya Tree"}, {"k": "rotation/cosmic-ring", "f": "10-cosmic-ring-tree.jpg", "n": "Cosmic Ring", "t": "open", "c": "house-signature", "s": "her portrait inside a ring of jewels among the galaxies (Naya Tree): identity as the center of a universe", "w": "", "fc": "exclusive", "fo": 16, "cr": "Naya Tree"}, {"k": "open/dimension-vista", "f": "open/dimension-vista.jpg", "n": "Dimension Vista", "t": "open", "c": "the-dimension", "s": "any page: spaces, communities, personal pages that want pure wonder with zero branding", "w": "", "fc": "citizen", "fo": 13, "cr": "Naya Resolve"}, {"k": "open/jewel-whisper", "f": "open/jewel-whisper.jpg", "n": "Jewel Whisper", "t": "jewel", "c": "the-dimension", "s": "any page that wants the jewel signature without the face or the logo: premium brands, portfolios, quiet-luxury pages", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/sanctuary-garden", "f": "open/sanctuary-garden.jpg", "n": "Sanctuary Garden", "t": "open", "c": "sanctuary", "s": "wellness, healing, coaching, calm personal pages", "w": "", "fc": "citizen", "fo": 14, "cr": "Naya Resolve"}, {"k": "open/aurora-circuit", "f": "open/aurora-circuit.jpg", "n": "Aurora Circuit", "t": "open", "c": "the-dimension", "s": "high-tech pages: tech businesses, creators, AI and future-facing spaces", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/emerald-falls", "f": "open/emerald-falls.jpg", "n": "Emerald Falls", "t": "open", "c": "sanctuary", "s": "nature pages: outdoors, environment, wellness, anyone whose world is the living earth", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/tide-realm", "f": "open/tide-realm.jpg", "n": "Tide Realm", "t": "open", "c": "the-dimension", "s": "ocean souls: travel, coastal businesses, dreamers, pages about depth and wonder", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/festival-of-lights", "f": "open/festival-of-lights.jpg", "n": "Festival of Lights", "t": "open", "c": "celebration", "s": "events, communities, creators: pages that gather people and celebrate", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/obsidian-facets", "f": "open/obsidian-facets.jpg", "n": "Obsidian Facets", "t": "open", "c": "abstract", "s": "any page: the house abstract in black - premium, dark, dimensional; also the family the share cards draw from", "w": "", "fc": "citizen", "fo": 10, "cr": "Naya Resolve"}, {"k": "open/white-dimension", "f": "open/white-dimension.jpg", "n": "White Dimension", "t": "open", "c": "abstract", "s": "any page wanting the bright colorway: clean, premium, radiant", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/abyss-facets", "f": "open/abyss-facets.jpg", "n": "Abyss Facets", "t": "open", "c": "abstract", "s": "any page wanting depth and calm power: teal flowing into the richest royal blue", "w": "", "fc": "citizen", "fo": 12, "cr": "Naya Resolve"}, {"k": "open/jewel-facets", "f": "open/jewel-facets.jpg", "n": "Jewel Facets", "t": "jewel", "c": "abstract", "s": "the signature abstract: five jewels set in obsidian facets - NayaPOWER/NayaNET house design, no face, no logo", "w": "", "fc": "citizen", "fo": 9, "cr": "Naya Resolve"}, {"k": "11-her-kingdom-tree", "f": "11-her-kingdom-tree.jpg", "n": "Her Kingdom", "t": "open", "c": "the-dimension", "s": "signature showpiece: her portrait, the crystal N, the jewel row and the whole kingdom behind her - for NayaNET flagship pages", "w": "", "fc": "exclusive", "fo": 11, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/cosmic-jewels-tree", "f": "open/cosmic-jewels-tree.jpg", "n": "Cosmic Jewels", "t": "jewel", "c": "cosmos", "s": "the jewel tier at cosmic scale: five giant jewels over a galaxy lake - visionaries, memberships, big-dream pages", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/arrival-hall-tree", "f": "open/arrival-hall-tree.jpg", "n": "Arrival Hall", "t": "jewel", "c": "the-dimension", "s": "a quiet signature: the hall overlooks the dawn kingdom, five small jewels set in the floor - welcome pages, hubs, communities", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/violet-sanctuary-tree", "f": "open/violet-sanctuary-tree.jpg", "n": "Violet Sanctuary", "t": "open", "c": "sanctuary", "s": "violet blossom trees, waterfalls and crystal flowers: wellness, beauty, gentle personal pages", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/sky-kingdom-tree", "f": "open/sky-kingdom-tree.jpg", "n": "Sky Kingdom", "t": "open", "c": "the-dimension", "s": "the floating kingdom at sunset: crystal palaces, waterfalls falling into clouds - epic spaces and vision pages", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/rose-facets", "f": "open/rose-facets.jpg", "n": "Rose Facets", "t": "open", "c": "abstract", "s": "the warm colorway: rose-gold crystal light - beauty, lifestyle, warm personal brands", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/emerald-facets", "f": "open/emerald-facets.jpg", "n": "Emerald Facets", "t": "open", "c": "abstract", "s": "the green colorway: inside a giant emerald - growth, wealth, nature-tech, powerful calm brands", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/violet-facets", "f": "open/violet-facets.jpg", "n": "Violet Facets", "t": "open", "c": "abstract", "s": "the violet colorway: a universe inside an amethyst - mystical, intelligent, visionary pages", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/gold-facets", "f": "open/gold-facets.jpg", "n": "Gold Facets", "t": "open", "c": "abstract", "s": "the gold colorway: solidified sunlight - prosperity, premium brands, celebratory pages", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/sapphire-depths", "f": "open/sapphire-depths.jpg", "n": "Sapphire Depths", "t": "open", "c": "abstract", "s": "the richest blue, pushed deeper: sapphire facets with teal fire - technology, intelligence, calm power", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/opal-light", "f": "open/opal-light.jpg", "n": "Opal Light", "t": "open", "c": "abstract", "s": "the soft colorway: opal strata with rainbow fire inside - gentle, luminous, one-of-a-kind personal pages", "w": "", "fc": "citizen", "fo": 7, "cr": "Naya Resolve"}, {"k": "open/crimson-ember", "f": "open/crimson-ember.jpg", "n": "Crimson Ember", "t": "open", "c": "abstract", "s": "the bold colorway: ruby facets with a living ember heart - passionate brands, performers, fighters", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/twilight-blend", "f": "open/twilight-blend.jpg", "n": "Twilight Blend", "t": "open", "c": "abstract", "s": "the combination: teal through violet into gold, a sunset inside one jewel - complete, harmonious, universal", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/lotus-palace-tree", "f": "open/lotus-palace-tree.jpg", "n": "Lotus Palace", "t": "open", "c": "sanctuary", "s": "a palace of crystal lotus flowers, waterfalls and still reflective water: serene, sacred, beautiful - wellness, spirit, gentle luxury", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/sky-jewels-tree", "f": "open/sky-jewels-tree.jpg", "n": "Sky Jewels", "t": "jewel", "c": "cosmos", "s": "the five jewels enthroned over floating waterfall kingdoms under two galaxies: the grandest jewel vista in the library", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/crystal-cathedral-tree", "f": "open/crystal-cathedral-tree.jpg", "n": "Crystal Cathedral", "t": "jewel", "c": "the-dimension", "s": "five jewels floating in a vault of black crystal, beams of light falling to a mirror floor: ceremony, membership, arrival", "w": "", "fc": "citizen", "fo": 6, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/diamond-light-tree", "f": "open/diamond-light-tree.jpg", "n": "Diamond Light", "t": "open", "c": "abstract", "s": "the white colorway at full radiance: a cathedral of clear diamond light - purity, clarity, premium minimal brands", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/river-of-light-tree", "f": "open/river-of-light-tree.jpg", "n": "River of Light", "t": "open", "c": "abstract", "s": "a canyon of teal and violet crystal with a river of light running to a bright heart: depth, journey, technology with soul", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/the-crown-tree", "f": "open/the-crown-tree.jpg", "n": "The Crown", "t": "jewel", "c": "abstract", "s": "the five jewels at poster scale, set in a crown of black crystal: the boldest jewel statement in the library", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/companion-golden", "f": "open/companion-golden.jpg", "n": "Companion Golden", "t": "open", "c": "companions", "s": "a golden retriever enthroned in the golden kingdom: pet pages, groomers, breeders, trainers, rescues, every beloved-dog business and personal page", "w": "", "fc": "citizen", "fo": 8, "cr": "Naya Resolve"}, {"k": "open/vitality-rise", "f": "open/vitality-rise.jpg", "n": "Vitality Rise", "t": "open", "c": "abstract", "s": "pure energy: emerald and sunrise-gold facets bursting upward - fitness, health, coaching, any page about strength and a new morning", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/grand-hall-tree", "f": "open/grand-hall-tree.jpg", "n": "The Grand Hall", "t": "jewel", "c": "the-dimension", "s": "three arches onto a dawn kingdom, jewel pendants, a floor of light-rings: membership halls, flagship spaces, arrival", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/lotus-lake-tree", "f": "open/lotus-lake-tree.jpg", "n": "Lotus Lake", "t": "open", "c": "sanctuary", "s": "blossom trees and crystal lotus on a dawn lake between waterfall cliffs: serene personal pages, wellness, spirit", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/companions-arch-tree", "f": "open/companions-arch-tree.jpg", "n": "Companions at the Arch", "t": "open", "c": "companions", "s": "a dog and a cat watching the dawn together under the great arch: the heart of the companions shelf - pet pages, rescues, memorials, beloved-animal businesses", "w": "", "fc": "citizen", "fo": 3, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/the-study-tree", "f": "open/the-study-tree.jpg", "n": "The Study", "t": "open", "c": "craft", "s": "a maker's desk in the dimension - crystal pens, scrolls, books, a planet rising through the arch: writers, coaches, creators, consultants", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/city-of-light-tree", "f": "open/city-of-light-tree.jpg", "n": "City of Light", "t": "open", "c": "prosperity", "s": "the grand crystal capital at dusk, bridges and floating citadels over a mirror lake: commerce, ambition, flagship businesses - the prosperity scene the shelf was missing", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/hall-of-arches-tree", "f": "open/hall-of-arches-tree.jpg", "n": "Hall of Arches", "t": "jewel", "c": "the-dimension", "s": "five arches, five colored worlds, one hall: spaces of spaces, template galleries, networks, doorways", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/feast-hall", "f": "open/feast-hall.jpg", "n": "The Feast Hall", "t": "open", "c": "celebration", "s": "a banquet hall of obsidian and gold with crystal goblets and flower garlands: restaurants, caterers, weddings, celebrations, hospitality", "w": "", "fc": "citizen", "fo": 4, "cr": "Naya Resolve"}, {"k": "open/crystal-boutique", "f": "open/crystal-boutique.jpg", "n": "The Crystal Boutique", "t": "open", "c": "prosperity", "s": "rose-gold shelves of glowing jewel-bottles under silk drapes: beauty brands, perfumeries, salons, elegant shops", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/morning-light", "f": "open/morning-light.jpg", "n": "Morning Light", "t": "open", "c": "sanctuary", "s": "quiet dawn light through pale crystal arches over green hills: faith and spiritual communities, meditation, welcome pages - sacred to everyone, belonging to no single tradition", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/power-surge", "f": "open/power-surge.jpg", "n": "Power Surge", "t": "open", "c": "abstract", "s": "a crimson and gold crystal shockwave: pure power for fitness, sport, competition and drive", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/crystal-garden", "f": "open/crystal-garden.jpg", "n": "The Crystal Garden", "t": "open", "c": "sanctuary", "s": "a crystal cottage with warm windows in a terraced garden of glowing flowers: home and garden pages, homemakers, gardeners, cozy businesses", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/quiet-office", "f": "open/quiet-office.jpg", "n": "The Quiet Office", "t": "open", "c": "craft", "s": "the clean register exemplar: a serene pale-crystal workspace, one desk, dawn hills - deliberately calm and uncluttered for consultants, professionals, agencies and anyone who wants trust over spectacle", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/crystal-stage", "f": "open/crystal-stage.jpg", "n": "The Crystal Stage", "t": "open", "c": "celebration", "s": "a black-crystal amphitheater stage with instruments of light floating in arcs of music: musicians, performers, venues, entertainment", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/sky-voyage", "f": "open/sky-voyage.jpg", "n": "The Sky Voyage", "t": "open", "c": "the-dimension", "s": "a crystal sailing ship with glowing sails between floating islands, golden routes through the clouds: travel, adventure, explorers, journey stories", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/diamond-bloom-tree", "f": "open/diamond-bloom-tree.jpg", "n": "Diamond Bloom", "t": "open", "c": "abstract", "s": "flowing crystal ribbons in white, gold and sapphire over a bright shore: the daylight abstract - luminous, airy, optimistic", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/the-gateway-tree", "f": "open/the-gateway-tree.jpg", "n": "The Gateway", "t": "jewel", "c": "the-dimension", "s": "a radiant diamond in a golden arch at the top of the steps: arrival, welcome, thresholds - memberships, onboarding, new beginnings, and quietly spiritual pages", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/golden-city-tree", "f": "open/golden-city-tree.jpg", "n": "Golden City", "t": "open", "c": "prosperity", "s": "the crystal capital in full daylight over a still lake: commerce and ambition in their brightest register - shops, agencies, flagship businesses", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/lotus-falls-tree", "f": "open/lotus-falls-tree.jpg", "n": "Lotus Falls", "t": "open", "c": "sanctuary", "s": "crystal lotus and tiered waterfalls into a turquoise river at dawn: gentle personal pages, wellness, nature lovers", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/best-friends-tree", "f": "open/best-friends-tree.jpg", "n": "Best Friends", "t": "open", "c": "companions", "s": "a golden retriever and a fluffy cat face to face with you at sunrise among the floating islands: THE pet cover - and a warm family favorite", "w": "", "fc": "citizen", "fo": 2, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/emerald-sunrise-tree", "f": "open/emerald-sunrise-tree.jpg", "n": "Emerald Sunrise", "t": "open", "c": "abstract", "s": "an emerald and gold crystal eruption over a mirror floor at nightfall: dramatic energy - launches, ambition, breakthroughs", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/the-treehouse", "f": "open/the-treehouse.jpg", "n": "The Treehouse", "t": "open", "c": "celebration", "s": "a crystal treehouse with glowing windows, lanterns and a slide of light into a flower-meadow pond: family pages, kids, parenting, play - the library's warm playful register", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/neon-arena", "f": "open/neon-arena.jpg", "n": "Neon Arena", "t": "open", "c": "abstract", "s": "a black-crystal arena ring in violet and cyan neon with glowing portals: gaming, esports, streamers, play energy", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/prayer-hall", "f": "open/prayer-hall.jpg", "n": "The Prayer Hall", "t": "open", "c": "sanctuary", "s": "amber crystal vaults, rows of candle flames and one beam of light: churches, prayer groups, spiritual communities, remembrance - reverent and open to everyone", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/the-workshop", "f": "open/the-workshop.jpg", "n": "The Workshop", "t": "open", "c": "craft", "s": "a glowing crystal anvil, tools and shelves of crafted things, the working city beyond the arch: trades, builders, repair, makers - pride of honest craft", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/the-ascension", "f": "open/the-ascension.jpg", "n": "The Ascension", "t": "open", "c": "the-dimension", "s": "a stairway rising from bronze through silver and gold to a radiant crystal gate: the membership progression cover - levels, journeys, earned advancement, graduations", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/homecoming-arch", "f": "open/homecoming-arch.jpg", "n": "Homecoming Arch", "t": "open", "c": "prosperity", "s": "a golden key of light over the arch, a crystal house with warm windows at the path's end: real estate, realtors, new homes, new chapters, welcome pages", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/the-great-library", "f": "open/the-great-library.jpg", "n": "The Great Library", "t": "open", "c": "craft", "s": "soaring crystal shelves of glowing books, pages of light rising like sparks: education, courses, book clubs, knowledge keepers, research", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/the-observatory", "f": "open/the-observatory.jpg", "n": "The Observatory", "t": "jewel", "c": "cosmos", "s": "a crystal dome and golden telescope under two galaxies, star charts drawn in light: science, astronomy, curiosity, cosmic wonder", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/the-cat-sovereign", "f": "open/the-cat-sovereign.jpg", "n": "The Cat Sovereign", "t": "jewel", "c": "companions", "s": "a silver cat with emerald eyes wearing a collar of the five jewels, enthroned on crystal: cats, cat lovers, regal pets, pet royalty pages", "w": "", "fc": "citizen", "fo": 1, "cr": "Naya Resolve"}, {"k": "open/dawn-runners", "f": "open/dawn-runners.jpg", "n": "Dawn Runners", "t": "open", "c": "companions", "s": "two horses with manes of streaming light galloping at dawn beneath a waterfall of light: horses, equestrian, ranches, freedom and wild hearts", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/nebula-garden", "f": "open/nebula-garden.jpg", "n": "Nebula Garden", "t": "open", "c": "cosmos", "s": "a garden of starlight trees and flowers under two spiral galaxies, mirrored in a still lake: cosmos wonder, dreamers, astrology, cosmic calm", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/the-ringed-world", "f": "open/the-ringed-world.jpg", "n": "The Ringed World", "t": "jewel", "c": "cosmos", "s": "a crystal planet ringed with orbiting jewels over an obsidian sea, auroras above a golden terrace: space, sci-fi, big-vision pages, world builders", "w": "", "fc": null, "fo": null, "cr": "Naya Resolve"}, {"k": "open/the-golden-overlook", "f": "open/the-golden-overlook.jpg", "n": "The Golden Overlook", "t": "open", "c": "the-dimension", "s": "a sunlit crystal kingdom seen from a golden terrace: floating islands, waterfalls and towers over a mirror lake - worlds, travel dreams, kingdoms, arrival and wonder", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/moonrise-terrace", "f": "open/moonrise-terrace.jpg", "n": "Moonrise Terrace", "t": "open", "c": "sanctuary", "s": "a dusk terrace with an infinity pool and lounge above floating crystal castles, two moons rising: luxury calm, retreats, resorts, romance, evening sanctuary", "w": "", "fc": null, "fo": null, "cr": "Naya Tree (via ChatGPT), slot-fitted by Resolve"}, {"k": "open/the-jewel-arches", "f": "open/the-jewel-arches.jpg", "n": "The Jewel Arches", "t": "jewel", "c": "the-dimension", "s": "five obsidian arches hung with jewel pendants, each framing another world, a planet rising through the center arch over rings of light: gateways, worlds-within-worlds, big-vision and cosmic pages. NEW - arrived in Shawn's favorites, was not in the library", "w": "", "fc": "citizen", "fo": 5, "cr": "Shawn's collection (favorites round 1), slot-fitted by Resolve"}, {"k": "rotation/her-welcome", "f": "her-welcome.jpg", "n": "Her Welcome", "t": "signature", "c": "house-signature", "s": "Naya reaching her hand to the viewer through the obsidian arch, the crystal N and five jewels over the kingdom: the welcome cover - Naya pages, arrival, invitation", "w": "", "fc": "exclusive", "fo": 21, "cr": "Shawn's collection (favorites final round), slot-fitted by Resolve"}, {"k": "rotation/the-portal", "f": "the-portal.jpg", "n": "The Portal", "t": "signature", "c": "house-signature", "s": "Naya at the great obsidian portal ring, looking over the lake kingdom as the five jewels reflect in the water: Naya pages, gateways, new worlds", "w": "", "fc": "exclusive", "fo": 24, "cr": "Shawn's collection (favorites final round), slot-fitted by Resolve"}, {"k": "rotation/the-dawn-ring", "f": "the-dawn-ring.jpg", "n": "The Dawn Ring", "t": "signature", "c": "house-signature", "s": "Naya's profile inside the golden ring at dawn, floating kingdoms in the clouds, the jewels beneath the medallion: Naya pages, golden hour, hope", "w": "", "fc": "exclusive", "fo": 25, "cr": "Shawn's collection (favorites final round), slot-fitted by Resolve"}, {"k": "rotation/the-obsidian-ring", "f": "the-obsidian-ring.jpg", "n": "The Obsidian Ring", "t": "signature", "c": "house-signature", "s": "Naya's face in a crystal ring on dark obsidian facets, the medallion lit at center, five jewels on a mirror floor: Naya pages, the dark signature", "w": "", "fc": "exclusive", "fo": 26, "cr": "Shawn's collection (favorites final round), slot-fitted by Resolve"}], "citizen_grid": {"Companions": ["open/the-cat-sovereign", "open/best-friends-tree", "open/companion-golden"], "Worlds & Wonder": ["open/dimension-vista", "open/the-jewel-arches", "open/companions-arch-tree"], "Calm & Gathering": ["open/sanctuary-garden", "open/opal-light", "open/feast-hall"], "Jewels & Light": ["open/jewel-facets", "open/obsidian-facets", "open/abyss-facets"]}, "exclusive_grid": {"Her Welcome": ["rotation/her-welcome", "rotation/obsidian-starlight", "rotation/the-dawn-ring"], "Her Kingdoms": ["11-her-kingdom-tree", "rotation/cosmic-galaxy", "rotation/golden-dawn"], "Her Portals & Rings": ["rotation/the-portal", "rotation/cosmic-ring", "rotation/the-obsidian-ring"], "The House Areas": ["area/events", "area/spaces", "area/business"]}, "held": {"citizen": {"name": "Crystal Cathedral", "reason": "Shawn's call: of the two similar five-jewels pieces, Crystal Cathedral holds as first alternate - Jewel Facets is bolder at small display sizes. Still featured #13, still in the library, rotates into the grid."}, "exclusive": {"name": "Golden Profile", "reason": "The similar pair on the House side: Golden Profile vs Cosmic Ring (profile + medallion + kingdom). Cosmic Ring carries the grid; Golden Profile holds as first alternate, still featured."}}, "counts": {"ready": 85, "total": 89}}</script>
+<script>
+const DATA = JSON.parse(document.getElementById('cover-data').textContent);
+const IMG = "";
+const byKey = {}; DATA.assets.forEach(a => byKey[a.k] = a);
+const stage = document.getElementById('stageView'), sName = document.getElementById('stageName'), sWhy = document.getElementById('stageWhy');
+let chosen = null, offsetY = 50;
+
+function shortSuits(s){ return s.length > 110 ? s.slice(0, 107).trim() + "…" : s; }
+function card(a, why){
+  const b = document.createElement('button'); b.className = 'card'; b.dataset.key = a.k;
+  b.innerHTML = '<img loading="lazy" alt="" src="' + IMG + a.f + '">' +
+    '<div class="meta"><div class="nm">' + a.n + '</div><div class="ds">' + shortSuits(a.s) + '</div>' +
+    '<div class="row"><span class="tier">' + a.t + '</span><span class="use">Use this cover</span></div></div>';
+  b.addEventListener('click', () => choose(a.k, why || 'From the library — yours when you want it.'));
+  return b;
+}
+function group(title, keys, why){
+  const h = document.createElement('h3'); h.textContent = title;
+  const g = document.createElement('div'); g.className = 'grid';
+  keys.forEach(k => { if (byKey[k]) g.appendChild(card(byKey[k], why)); });
+  const frag = document.createDocumentFragment(); frag.appendChild(h); frag.appendChild(g); return frag;
+}
+function choose(key, why){
+  const a = byKey[key]; if (!a) return;
+  chosen = key; offsetY = 50;
+  stage.style.backgroundImage = 'url("' + IMG + a.f + '")';
+  stage.style.backgroundPosition = '50% 50%';
+  sName.textContent = a.n; sWhy.textContent = why;
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('sel', c.dataset.key === key));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+// recommended (citizen grid)
+const rec = document.getElementById('recGroups');
+Object.entries(DATA.citizen_grid).forEach(([cat, keys]) => rec.appendChild(group(cat, keys, 'A featured pick — recommended for citizens.')));
+// house (exclusive grid)
+const house = document.getElementById('houseGroups');
+Object.entries(DATA.exclusive_grid).forEach(([cat, keys]) => house.appendChild(group(cat, keys, 'A House cover — for Naya pages and brand templates.')));
+// library browse: group citizens' covers by category
+const lib = document.getElementById('libGroups');
+function renderLib(filter){
+  lib.innerHTML = '';
+  const cats = {};
+  DATA.assets.filter(a => a.fc !== 'exclusive').forEach(a => {
+    if (filter){ const hay = (a.n + ' ' + a.s + ' ' + a.w + ' ' + a.c).toLowerCase(); if (!filter.split(/\s+/).every(w => hay.includes(w))) return; }
+    (cats[a.c] = cats[a.c] || []).push(a.k);
+  });
+  const names = { 'the-dimension':'Kingdoms & Worlds', 'companions':'Companions', 'sanctuary':'Sanctuaries', 'cosmos':'The Cosmos',
+    'celebration':'Celebrations', 'craft':'Craft & Knowledge', 'prosperity':'Prosperity & Business', 'abstract':'The Facets' };
+  let any = false;
+  Object.keys(cats).sort().forEach(c => { lib.appendChild(group(names[c] || c, cats[c])); any = true; });
+  document.getElementById('noHit').classList.toggle('hidden', any);
+}
+renderLib('');
+document.getElementById('q').addEventListener('input', e => renderLib(e.target.value.trim().toLowerCase()));
+// doors
+document.querySelectorAll('.door').forEach(d => d.addEventListener('click', () => {
+  document.querySelectorAll('.door').forEach(x => x.classList.toggle('on', x === d));
+  ['rec','lib','up'].forEach(p => document.getElementById('pane-' + p).classList.toggle('hidden', p !== d.dataset.door));
+}));
+// upload door
+document.getElementById('file').addEventListener('change', e => {
+  const f = e.target.files[0]; if (!f) return;
+  const url = URL.createObjectURL(f); chosen = 'upload'; offsetY = 50;
+  stage.style.backgroundImage = 'url("' + url + '")'; stage.style.backgroundPosition = '50% 50%';
+  sName.textContent = 'Your photo'; sWhy.textContent = 'Your own picture, in the same frame — drag to adjust it.';
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('sel'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+// adjuster: drag vertically on the stage
+let drag = null;
+stage.addEventListener('pointerdown', e => { drag = { y: e.clientY, o: offsetY }; stage.setPointerCapture(e.pointerId); });
+stage.addEventListener('pointermove', e => { if (!drag) return;
+  offsetY = Math.max(0, Math.min(100, drag.o + (e.clientY - drag.y) / stage.clientHeight * 100));
+  stage.style.backgroundPosition = '50% ' + offsetY + '%'; });
+stage.addEventListener('pointerup', () => drag = null);
+// born with a cover: the first recommended pick is already on the page
+(function(){ const first = Object.values(DATA.citizen_grid)[0][0]; const a = byKey[first];
+  chosen = first; stage.style.backgroundImage = 'url("' + IMG + a.f + '")';
+  sName.textContent = a.n; sWhy.textContent = 'Already on your page — every page is born with a cover. Change it whenever you like.';
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('sel', c.dataset.key === first)); })();
+document.getElementById('counts').textContent = DATA.counts.ready + ' covers ready · ' + Object.keys(DATA.citizen_grid).length + ' recommended shelves · one library';
+</script>
+</body>
+</html>
