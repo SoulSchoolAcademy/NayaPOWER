@@ -6,14 +6,16 @@
 <title>Project Intelligence — NayaNET</title>
 <meta name="description" content="Project Intelligence: everything happening across NayaNET, in one place, in plain words.">
 <!--
-  PI FACE — LIVE HUB FACE.
+  PI FACE — LIVE HUB FACE, WIRING PASS 2026-10-26 (Power: data, routes, links).
+  Route: /pi (legacy /pi-face.html serves the same face). Views: Human in front,
+  AI working view, Machine behind — one record underneath (three-languages law).
   Served by the Hub worker from HUB/app/pi-face.html; canonical source interfaces/pi-face/pi-face.html.
   Deploys via .github/workflows/deploy-hub-cloudflare.yml on push to main (auto-deploy law).
   Live read path: same-origin /projects/state.json (proven live, refreshes),
   fetched fresh on every load and on Refresh, cache no-store. Every number
   on this face carries its read time. If the read fails, the face says so
   and shows structure only — it never invents a number.
-  Per-area % and per-item rows are WITHHELD until their gates land:
+  Per-area % and per-item rows are WITHHELD until their gates land (see README):
   per-area % needs backfill acceptance (Uncategorized under 5%, zero done
   uncategorized, zero needs-decision uncategorized); item rows need the
   live items read on the production worker (endpoint contract in the
@@ -159,6 +161,8 @@
     .pill,.btn,.room{transition:none}
   }
   body.calm .pill, body.calm .btn, body.calm .room{transition:none}
+  .orb.flash{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.55), 0 0 18px -2px var(--shown)}
+  pre{white-space:pre-wrap; word-break:break-word; color:var(--white); font-size:14px; line-height:1.5; margin:10px 0}
 </style>
 </head>
 <body>
@@ -169,6 +173,11 @@
     <span class="wordmark">Project Intelligence</span>
   </div>
   <p>Everything happening across NayaNET, in one place, in plain words.</p>
+  <div class="switch" role="group" aria-label="View">
+    <button class="btn" id="viewHumanBtn" type="button" aria-pressed="true">Human view</button>
+    <button class="btn" id="viewAiBtn" type="button" aria-pressed="false">AI view — the working view</button>
+    <button class="btn" id="viewMachineBtn" type="button" aria-pressed="false">Machine view</button>
+  </div>
 
   <div class="btnrow">
     <button class="btn" id="refreshBtn" type="button">↻ Refresh the numbers</button>
@@ -191,9 +200,9 @@
       <div class="num"><div class="orb" id="orbCheck">–</div><div class="num-label">Being checked</div><div class="num-sub">finished, awaiting proof</div></div>
       <div class="num"><div class="orb" id="orbDecision">–</div><div class="num-label">Needs a decision</div><div class="num-sub">waiting on a human call</div></div>
       <div class="num"><div class="orb" id="orbBlocked">–</div><div class="num-label">Blocked</div><div class="num-sub">waiting on something else</div></div>
-      <div class="num"><div class="orb dark">?</div><div class="num-label">Parts at 9+</div><div class="num-sub">not measured yet — no score table exists</div></div>
-      <div class="num"><div class="orb dark">?</div><div class="num-label">Today's pace</div><div class="num-sub">not measured yet for today</div></div>
+      <div class="num"><div class="orb" id="orbPace">–</div><div class="num-label">Finished today</div><div class="num-sub">verified finishes, with effort per finish below</div></div>
     </div>
+    <div class="notice" style="margin-top:16px"><strong>Parts at 9+:</strong> not measured yet — no score register exists. This slot leaves the headline until it is measured.</div>
     <div class="notice" id="moveBox" style="margin-top:16px">
       <strong>Movement.</strong> <span id="moveText">Loading today's movement from the live record…</span>
     </div>
@@ -205,9 +214,7 @@
       <h2>Everything to do, everything done</h2>
     </div></div>
     <p>Nothing is hidden behind a filter here. Done and to-do are unmistakable: done means finished <em>and</em> proven — anything less stays in to-do until its proof lands.</p>
-    <div class="notice warn" id="itemsNotice">
-      <strong>The item rows are not wired yet.</strong> The counts above are live. The full list of names, owners, next steps, and notes loads from the live items read on the production worker — that read does not exist yet, so this face shows no rows rather than invented ones. The row format is built (plain name, state, owner, next step, updated time, and a Details door holding the machine proof one tap behind). Wiring the items read lights the whole list up; nothing else on this page changes.
-    </div>
+    <div class="notice warn" id="itemsNotice"><strong>Item rows:</strong> waiting on the items endpoint — a Hub worker data route that reads the live record at request time (greenlight named in PI + board). The counts above are live; no rows are invented.</div>
     <div class="btnrow">
       <button class="btn" id="showDoneBtn" type="button">Show done · proven</button>
       <button class="btn" id="showTodoBtn" type="button">Show to-do</button>
@@ -221,7 +228,7 @@
       <div class="sec-label">Areas</div>
       <h2>Twelve areas — tap one to open it</h2>
     </div></div>
-    <p>Each area opens its own view: its to-dos, its done items with receipts, its decisions, its links, its feed, and its team notes. Area percentages are not shown yet — items are still being sorted into areas, and a percentage built on unsorted items would lie. Until that sorting is accepted, every area shows this honestly instead of a number.</p>
+    <p>Each area opens its own view: its to-dos, its decisions, its links, its feed, and its team notes. Area percentages wait on backfill acceptance — the area schema is not applied yet, so no area % is shown rather than a wrong one.</p>
     <label class="sec-label" for="roomSearch">Search rooms and links on this face</label>
     <input class="well" id="roomSearch" type="search" placeholder="Search an area or a link by name…" autocomplete="off">
     <p class="readtime">Item search arrives with the items read. This search covers rooms and links only, and says so.</p>
@@ -236,20 +243,20 @@
     </div></div>
     <p id="areaLine"></p>
     <div class="notice warn">
-      <strong>Area percentage not yet live.</strong> Items are still being sorted into areas. This area's percentage ships only after that sorting is accepted — until then, no number is shown here rather than a wrong one.
+      <strong>Area percentage not yet live.</strong> The area schema is not applied and backfill is not accepted — until then, no number is shown here rather than a wrong one.
     </div>
     <h3>To-dos in this area</h3>
-    <p class="dark">To-dos, owners, and next steps for this area load with the items read. Done items here appear only with a receipt link; anything without a receipt stays marked as being checked.</p>
+    <p class="dark">Area to-dos light up with the items endpoint. Done items here appear only with a receipt link; anything without a receipt stays marked as being checked.</p>
     <h3>Bottlenecks and enhancements</h3>
-    <p class="dark">Bottlenecks and enhancements for this area load with the items read. Nothing is named here until the record names it.</p>
+    <p class="dark">Nothing named until the record names it.</p>
     <h3>Decisions and gates</h3>
-    <p class="dark">Decisions waiting on a human call for this area load with the items read. Decisions are never counted as done and never hidden inside another list.</p>
+    <p class="dark">Decisions for this area arrive with the items read. Decisions are never counted as done and never hidden inside another list.</p>
     <h3>Links for this area</h3>
     <ul class="linklist" id="areaLinks"></ul>
     <h3>Feed for this area</h3>
-    <p class="dark">Latest changes first, one tap back to the item. The feed loads with the items read; until then, changes are announced on the team board.</p>
+    <p class="dark">Latest changes first, one tap back to the item. The feed arrives with the items read; until then, changes are announced on the team board.</p>
     <h3>Team notes for this area</h3>
-    <p class="dark">Notes between seats, in this area, not in chat alone. Team notes load with the notes read.</p>
+    <p class="dark">Notes between seats, in this area, not in chat alone. Team notes arrive with the notes read.</p>
     <p class="crumb"><button class="btn" id="backBtn2" type="button">← Back to Project Intelligence</button></p>
   </div>
 
@@ -258,13 +265,13 @@
       <div class="sec-label">World or one project</div>
       <h2>See everything, or one project</h2>
     </div></div>
-    <p>The switch below changes the view. The world view shows live numbers. The single-project view needs a per-project live read that is not wired yet, so it says so instead of showing world numbers as if they were one project's.</p>
+    <p>The switch below changes the view. The world view shows live numbers. The single-project view needs a per-project live read, so it says so instead of showing world numbers as if they were one project's.</p>
     <div class="switch" role="group" aria-label="World or one project">
       <button class="btn" id="worldBtn" type="button" aria-pressed="true">Whole world</button>
       <button class="btn" id="projectBtn" type="button" aria-pressed="false">One project</button>
     </div>
     <div id="worldPane"><p>World view is live above — all projects, all to-dos, one record.</p></div>
-    <div id="projectPane" class="hidden"><div class="notice warn"><strong>One-project view not wired yet.</strong> A per-project live read does not exist yet. Until it does, this view shows no numbers rather than world numbers dressed as one project's.</div></div>
+    <div id="projectPane" class="hidden"><div class="notice warn"><strong>One-project view:</strong> needs a per-project live read (items endpoint pending). No numbers shown rather than world numbers dressed as one project's.</div></div>
   </div>
 
   <div class="board" id="linksBoard">
@@ -273,11 +280,10 @@
       <h2>Go to it — every link works, or it is not here</h2>
     </div></div>
     <ul class="linklist" id="mainLinks">
-      <li><a href="https://nayanet.live/projects">Projects — this face's page</a> <span class="dark">— the live page this face belongs to.</span></li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Team board #2793</a> <span class="dark">— where the team coordinates, in the open.</span></li>
+      <li><a href="https://nayanet.live/projects">Projects — the live projects page</a> <span class="dark">— the old page until the /projects mapping lands; this face lives at /pi.</span></li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Team coordination feed #3066</a> <span class="dark">— the live coordination venue, from 2026-10-25, successor to #2793.</span></li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Prior team board #2793</a> <span class="dark">— live 2026-10-20 → 2026-10-25, kept for history.</span></li>
       <li><a href="/projects/state.json">Live machine state</a> <span class="dark">— the live numbers this face reads, with read time.</span></li>
-      <li><a href="https://nayanet.live/projects/todos">To-do board</a> <span class="dark">— staged copy, not live-updating. Shown labelled, never as live.</span></li>
-      <li><span class="dark">Questions — restore or retire. Not linked until it works (it answers 404 today).</span></li>
     </ul>
   </div>
 
@@ -286,11 +292,52 @@
       <div class="sec-label">Ledger — the record of what landed</div>
       <h2>Ledger status</h2>
     </div></div>
-    <p>The ledger is the feed: if this face and the ledger ever disagree, the ledger wins. The ledger read is not wired to this face yet, so this section states that instead of a live-or-frozen claim it cannot prove at render time. The build record for this face carries the last verified ledger read (30 rows, latest entry 22 Oct 2026, frozen since) with its read time — that verification lives in the build record, not as face data.</p>
+    <p>The ledger is the feed: if this face and the ledger ever disagree, the ledger wins. Ledger read not wired to this face yet, so no live-or-frozen claim is made here.</p>
+  </div>
+
+  <div class="board hidden" id="aiBoard">
+    <div class="board-head"><span class="dot"></span><div>
+      <div class="sec-label">AI view — the working view</div>
+      <h2>What the seats do next</h2>
+    </div></div>
+    <p>Same record as the Human view, in the form seats work from: states, counts, what each state asks of its owner, and what is blocked.</p>
+    <h3>States and counts</h3>
+    <div id="aiTable"><p class="dark">Loading the live record…</p></div>
+    <h3>Decisions waiting</h3>
+    <p id="aiDecisions" class="dark">Loading the live record…</p>
+    <h3>Blocked</h3>
+    <p id="aiBlockers" class="dark">Loading the live record…</p>
+    <h3>Wiring status</h3>
+    <p class="dark">As of this build (2026-10-26); PI + board carry newer.</p>
+    <p>Items endpoint: pending — Hub worker data route + read-only secret (greenlight in PI/board).</p>
+    <p>Area schema: tap pending (board packet) + backfill acceptance (bars unmet) — no area % until then.</p>
+    <p>/projects mapping: pending — mystery worker operator or dashboard route change.</p>
+    <p>Parts at 9+: unmeasured — no score register exists.</p>
+    <h3>Details doors</h3>
+    <p>Machine proof for any item lives behind that item's Details door once the items endpoint lands. State details above carry the state code, the count source, and the proof rule (done counts only with evidence + a prover who is not the maker).</p>
+    <h3>Links for the working view</h3>
+    <ul class="linklist">
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Team coordination feed #3066</a></li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Prior team board #2793</a></li>
+      <li><a href="/projects/state.json">Live machine state</a></li>
+    </ul>
+  </div>
+
+  <div class="board hidden" id="machineBoard">
+    <div class="board-head"><span class="dot"></span><div>
+      <div class="sec-label">Machine view</div>
+      <h2>The record, raw</h2>
+    </div></div>
+    <p>Same record as the Human view, in the form machines read: the payload verbatim, the endpoints, the read facts. Nothing here is prose in place of structure.</p>
+    <h3>Operating code — data path</h3>
+    <pre id="machinePanel">Loading the live record…</pre>
+    <h3>Live payload, verbatim</h3>
+    <pre id="machineRaw">Loading the live record…</pre>
   </div>
 
   <div class="board">
     <p class="readtime">Project Intelligence · Numbers read live from the project record on every load. A number without a read time is not a dashboard number. Machine proof for any item — hashes, signatures, receipts — lives one tap behind that item's Details door, never on this surface.</p>
+    <p class="readtime">Route: /pi (legacy /pi-face.html serves the same face). Views: Human in front · AI working view · Machine behind — one record underneath.</p>
   </div>
 
 </div>
@@ -310,6 +357,16 @@
     {key:"identity-settings", name:"Identity, settings, and pricing", accent:"neutral", line:"Who you are, how things are set, and what things cost. Own colour pending a ruling — shown neutral until then."},
     {key:"security-privacy", name:"Security and privacy", accent:"neutral", line:"Keeping mail, lists, and money private by default. Own colour pending a ruling — shown neutral until then."}
   ];
+  var STATE_WORDS = {done_proven:"Done \u00b7 proven", in_progress:"In motion", queued:"To do", verifying:"Being checked", needs_shawn:"Needs a decision", blocked:"Blocked"};
+  var SEAT_NOTES = {
+    done_proven:"Finished with proof. No action; receipts stand.",
+    in_progress:"Being worked on now. Owners keep next steps current.",
+    queued:"Waiting in line. Highest priority first.",
+    verifying:"Finished, awaiting proof. Provers verify; nothing counts until proven.",
+    needs_shawn:"Waiting on a human call. Decisions are never counted as done.",
+    blocked:"Waiting on something else. Each needs its blocker named and an owner."
+  };
+  var STATE_ORDER = ["done_proven", "in_progress", "queued", "verifying", "needs_shawn", "blocked"];
   var roomList = document.getElementById("roomList");
   AREAS.forEach(function(a){
     var b = document.createElement("button");
@@ -322,37 +379,58 @@
     nm.appendChild(document.createTextNode(a.name));
     var ln = document.createElement("p"); ln.className = "rline"; ln.textContent = a.line;
     var st = document.createElement("p"); st.className = "rstatus";
-    st.textContent = "Tap to open this area. Area percentage not yet live — items are still being sorted into areas.";
+    st.textContent = "Tap to open this area. Area % waits on backfill acceptance.";
     b.appendChild(nm); b.appendChild(ln); b.appendChild(st);
     b.addEventListener("click", function(){ openArea(a); });
     roomList.appendChild(b);
   });
+  function areaLinksHTML(){
+    var ul = document.createElement("ul"); ul.className = "linklist";
+    var items = [
+      ["https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066", "Team coordination feed #3066", " — the live coordination venue."],
+      ["https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793", "Prior team board #2793", " — live 2026-10-20 to 2026-10-25, kept for history."],
+      ["/projects/state.json", "Live machine state", " — the live numbers this face reads."]
+    ];
+    items.forEach(function(it){
+      var li = document.createElement("li");
+      var lk = document.createElement("a"); lk.href = it[0]; lk.textContent = it[1];
+      li.appendChild(lk); li.appendChild(document.createTextNode(it[2]));
+      ul.appendChild(li);
+    });
+    return ul;
+  }
   function openArea(a){
-    document.getElementById("roomsBoard").classList.add("hidden");
-    document.getElementById("todoBoard").classList.add("hidden");
-    document.getElementById("scopeBoard").classList.add("hidden");
-    document.getElementById("linksBoard").classList.add("hidden");
-    document.getElementById("ledgerBoard").classList.add("hidden");
+    ["roomsBoard","todoBoard","scopeBoard","linksBoard","ledgerBoard","aiBoard","machineBoard"].forEach(function(id){
+      document.getElementById(id).classList.add("hidden");
+    });
     document.getElementById("areaKicker").textContent = "Project Intelligence / " + a.name;
     document.getElementById("areaName").textContent = a.name;
     document.getElementById("areaLine").textContent = a.line;
     var links = document.getElementById("areaLinks"); links.innerHTML = "";
-    var li = document.createElement("li");
-    var lk = document.createElement("a"); lk.href = "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793"; lk.textContent = "Team board #2793";
-    li.appendChild(lk); li.appendChild(document.createTextNode(" — coordination for this area, in the open."));
-    links.appendChild(li);
+    links.appendChild(areaLinksHTML());
     document.getElementById("areaView").classList.remove("hidden");
     window.scrollTo(0, 0);
   }
-  function backToHub(){
-    ["roomsBoard","todoBoard","scopeBoard","linksBoard","ledgerBoard"].forEach(function(id){
-      document.getElementById(id).classList.remove("hidden");
+  var currentView = "human";
+  function setView(v){
+    currentView = v;
+    document.getElementById("viewHumanBtn").setAttribute("aria-pressed", v === "human" ? "true" : "false");
+    document.getElementById("viewAiBtn").setAttribute("aria-pressed", v === "ai" ? "true" : "false");
+    document.getElementById("viewMachineBtn").setAttribute("aria-pressed", v === "machine" ? "true" : "false");
+    ["statusBoard","todoBoard","roomsBoard","scopeBoard","linksBoard","ledgerBoard"].forEach(function(id){
+      document.getElementById(id).classList.toggle("hidden", v !== "human");
     });
+    document.getElementById("aiBoard").classList.toggle("hidden", v !== "ai");
+    document.getElementById("machineBoard").classList.toggle("hidden", v !== "machine");
     document.getElementById("areaView").classList.add("hidden");
     window.scrollTo(0, 0);
   }
+  function backToHub(){ setView("human"); }
   document.getElementById("backBtn").addEventListener("click", backToHub);
   document.getElementById("backBtn2").addEventListener("click", backToHub);
+  document.getElementById("viewHumanBtn").addEventListener("click", function(){ setView("human"); });
+  document.getElementById("viewAiBtn").addEventListener("click", function(){ setView("ai"); });
+  document.getElementById("viewMachineBtn").addEventListener("click", function(){ setView("machine"); });
 
   var search = document.getElementById("roomSearch");
   search.addEventListener("input", function(){
@@ -396,7 +474,16 @@
     btn.textContent = on ? "Calm motion: on" : "Calm motion: off";
   });
 
-  function fmt(n){ return (n === null || n === undefined) ? "–" : Number(n).toLocaleString("en-US"); }
+  function fmt(n){ return (n === null || n === undefined) ? "\u2013" : Number(n).toLocaleString("en-US"); }
+  var prevValues = null;
+  function setOrb(id, val){
+    var el = document.getElementById(id);
+    if(prevValues && prevValues[id] !== undefined && prevValues[id] !== val){
+      el.classList.add("flash");
+      (function(e){ setTimeout(function(){ e.classList.remove("flash"); }, 1600); })(el);
+    }
+    el.textContent = val;
+  }
   function load(){
     var statusLine = document.getElementById("statusLine");
     var readTimeLine = document.getElementById("readTimeLine");
@@ -413,31 +500,66 @@
       }, 0);
       var done = Number(c.done_proven) || 0;
       var pct = total > 0 ? Math.round(done / total * 100) : 0;
-      document.getElementById("orbPct").textContent = pct + "%";
-      document.getElementById("orbTotal").textContent = fmt(total);
-      document.getElementById("orbDone").textContent = fmt(done);
-      document.getElementById("orbMotion").textContent = fmt(c.in_progress);
-      document.getElementById("orbTodo").textContent = fmt(c.queued);
-      document.getElementById("orbCheck").textContent = fmt(c.verifying);
-      document.getElementById("orbDecision").textContent = fmt(c.needs_shawn);
-      document.getElementById("orbBlocked").textContent = fmt(c.blocked);
-      var when = d.derived_at || d.freshness && d.freshness.derived_at || "";
+      var vals = {
+        orbPct: pct + "%", orbTotal: fmt(total), orbDone: fmt(done),
+        orbMotion: fmt(c.in_progress), orbTodo: fmt(c.queued), orbCheck: fmt(c.verifying),
+        orbDecision: fmt(c.needs_shawn), orbBlocked: fmt(c.blocked)
+      };
+      Object.keys(vals).forEach(function(id){ setOrb(id, vals[id]); });
+      var p = d.production || {};
+      var pace = (typeof p.transitions_today === "number") ? String(p.transitions_today) : "\u2013";
+      setOrb("orbPace", pace);
+      vals.orbPace = pace;
+      prevValues = vals;
+      var when = d.derived_at || (d.freshness && d.freshness.derived_at) || "";
       var fetchedAt = new Date().toISOString();
       statusLine.textContent = "Live numbers below, read from the live project record.";
       readTimeLine.textContent = "Numbers read " + (when || fetchedAt) + " from the live record. Re-read on every load and on Refresh.";
-      var p = d.production || {};
-      if(p.transitions_today !== undefined){
-        moveText.textContent = "Verified finishes today: " + fmt(p.transitions_today) + ". Effort per verified finish: " + (p.effort_per_verified_outcome && p.effort_per_verified_outcome.value !== undefined ? p.effort_per_verified_outcome.value + " : 1" : "not measured") + ". That movement is the record updating — the numbers move because work lands.";
+      if(typeof p.transitions_today === "number"){
+        var eff = (p.effort_per_verified_outcome && p.effort_per_verified_outcome.value !== undefined) ? p.effort_per_verified_outcome.value + " : 1" : "not measured";
+        var wake = (typeof p.wakeups_per_day === "number") ? (" Wake-ups " + p.wakeups_per_day + "/day (ceiling " + (p.wakeups_ceiling || 800) + ").") : "";
+        moveText.textContent = "Verified finishes today: " + p.transitions_today + ". Effort per verified finish: " + eff + "." + wake + " That movement is the record updating — the numbers move because work lands.";
       } else {
         moveText.textContent = "Movement numbers are not in this read. Nothing is shown rather than something invented.";
       }
       moveBox.classList.remove("warn"); moveBox.classList.remove("bad");
+      var aiTable = document.getElementById("aiTable"); aiTable.innerHTML = "";
+      STATE_ORDER.forEach(function(st){
+        var row = document.createElement("p");
+        row.textContent = STATE_WORDS[st] + ": " + fmt(c[st]) + " — " + SEAT_NOTES[st];
+        aiTable.appendChild(row);
+      });
+      var truth = d.truth_now || "";
+      var mdec = truth.match(/Waiting on Shawn: (\d+) decision\(s\) — first: ([^.]+)\./);
+      document.getElementById("aiDecisions").textContent = mdec
+        ? ("Decisions waiting: " + mdec[1] + ". First: " + mdec[2] + ".")
+        : ("Decisions waiting: " + fmt(c.needs_shawn) + ".");
+      document.getElementById("aiBlockers").textContent = "Blocked: " + fmt(c.blocked) + ". Each blocked item needs its blocker named and an owner to unblock it.";
+      var panel = [];
+      panel.push("Data path: /projects/state.json (fetch, cache no-store)");
+      panel.push("Derived at: " + (when || "unknown"));
+      panel.push("State tip: " + (d.state_tip || "unknown"));
+      panel.push("Schema: " + (d.schema_version || "unknown"));
+      panel.push("Route: /pi (legacy /pi-face.html serves the same face)");
+      panel.push("Deploy: Hub worker auto-deploy (deploy-hub-cloudflare.yml)");
+      panel.push("Item rows: pending — items endpoint (Hub worker data route + read-only secret, greenlight in PI/board)");
+      panel.push("Area %: pending — area schema tap + backfill acceptance");
+      panel.push("Parts at 9+: unmeasured — no score register exists");
+      document.getElementById("machinePanel").textContent = panel.join("\n");
+      document.getElementById("machineRaw").textContent = JSON.stringify(d, null, 2);
     }).catch(function(){
       var now = new Date().toISOString();
       statusLine.textContent = "Live read failed at " + now + " — showing structure only, no numbers invented.";
       readTimeLine.textContent = "No live read available from here. Open this face on its own route to read live numbers.";
       moveText.textContent = "Movement cannot be shown without a live read. Nothing is shown rather than something invented.";
       moveBox.classList.add("bad");
+      document.getElementById("aiTable").innerHTML = "";
+      var aiFail = document.createElement("p"); aiFail.className = "dark"; aiFail.textContent = "No live read — nothing shown rather than something invented.";
+      document.getElementById("aiTable").appendChild(aiFail);
+      document.getElementById("aiDecisions").textContent = "No live read.";
+      document.getElementById("aiBlockers").textContent = "No live read.";
+      document.getElementById("machinePanel").textContent = "Live read failed at " + now + ".";
+      document.getElementById("machineRaw").textContent = "No live read.";
     });
   }
   document.getElementById("refreshBtn").addEventListener("click", load);
