@@ -8320,5 +8320,64 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
 })();
 </script>
 
+<!-- Universal search is ONE existing engine. Private reads require an actual
+     authenticated session; no dev switch, public token, or invented result. -->
+<script src="js/naya-search.js"></script>
+<script>
+(function () {
+  'use strict';
+  if (!window.NayaSearch || !document.body) return;
+  var NayaSearch = window.NayaSearch;
+  // Read the session at query time, not at page load: a user may sign in
+  // after the Hub renders. An absent/invalid session performs ZERO network I/O.
+  var searchStore = {
+    search: function (query) {
+      try {
+        var session = window.NayaSearchSession;
+        if (!session || typeof session.getAccessToken !== 'function'
+            || typeof session.supabaseUrl !== 'string'
+            || !/^https:\/\//.test(session.supabaseUrl)
+            || typeof session.anonKey !== 'string' || !session.anonKey) {
+          return Promise.resolve({ not_verified: true, reason: 'no_session', results: [] });
+        }
+        var token = session.getAccessToken();
+        if (typeof token !== 'string' || !token) {
+          return Promise.resolve({ not_verified: true, reason: 'no_session', results: [] });
+        }
+        return NayaSearch.createStore({
+          supabaseUrl: session.supabaseUrl,
+          anonKey: session.anonKey,
+          getAccessToken: function () { return token; }
+        }).search(query);
+      } catch (err) {
+        return Promise.resolve({ not_verified: true, reason: 'session_unavailable', results: [] });
+      }
+    }
+  };
+  var palette = NayaSearch.mountPalette(document.body, { store: searchStore });
+  NayaSearch.installHotkey(document, function () { palette.open(); });
+  // Accessible mobile entry: do not make Ctrl-K the only way in.
+  var button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'primo theme-purple elev-2 naya-command-trigger';
+  button.textContent = 'Search';
+  button.setAttribute('aria-label', 'Search your world');
+  button.setAttribute('aria-keyshortcuts', 'Control+K Meta+K');
+  button.addEventListener('click', function () { palette.open(); });
+  var style = document.createElement('style');
+  style.textContent = '.naya-command-trigger{position:fixed;right:16px;'
+    + 'bottom:calc(105px + env(safe-area-inset-bottom,0px));z-index:900;'
+    + 'border-radius:999px;min-height:43px;padding:0 20px;'
+    + 'box-shadow:0 10px 26px rgba(0,0,0,.35);'
+    + 'border:1px solid rgba(200,180,255,.5)}'
+    + '@media(max-width:600px){.naya-command-trigger{right:12px;'
+    + 'bottom:calc(110px + env(safe-area-inset-bottom,0px));'
+    + 'min-height:44px;padding:0 16px}}';
+  document.head.appendChild(style);
+  document.body.appendChild(button);
+  window.NayaSearchPalette = { open: function () { palette.open(); } };
+})();
+</script>
+
 </body>
 </html>
