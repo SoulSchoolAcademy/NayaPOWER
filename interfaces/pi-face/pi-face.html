@@ -6,7 +6,9 @@
 <title>Project Intelligence — NayaNET</title>
 <meta name="description" content="Project Intelligence: everything happening across NayaNET, in one place, in plain words.">
 <!--
-  PI FACE — REVIEW DRAFT, NOT THE LIVE PAGE.
+  PI FACE — LIVE HUB FACE.
+  Served by the Hub worker from HUB/app/pi-face.html; canonical source interfaces/pi-face/pi-face.html.
+  Deploys via .github/workflows/deploy-hub-cloudflare.yml on push to main (auto-deploy law).
   Live read path: same-origin /projects/state.json (proven live, refreshes),
   fetched fresh on every load and on Refresh, cache no-store. Every number
   on this face carries its read time. If the read fails, the face says so
