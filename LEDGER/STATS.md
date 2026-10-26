@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-26 21:11 UTC_
+_Last updated: 2026-10-26 21:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6102
-- ✅ Verified (8+): 6041
-- 🟡 Partial (5–7): 58
+- **Total scored actions:** 6105
+- ✅ Verified (8+): 6043
+- 🟡 Partial (5–7): 59
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
 - **Verification rate:** 99% of actions fully verified
@@ -16,14 +16,14 @@ _Last updated: 2026-10-26 21:11 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 435 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 423 | 8.8 | 9.5 |
+| Team 2 | Naya Sage | 424 | 8.8 | 9.5 |
 | Team 3 | Naya Judge | 405 | 9.0 | 10 |
 | Team 4 | Naya Mason | 382 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 507 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 285 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 390 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 412 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 526 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 528 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 726 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 365 | 9.1 | 9.6 |
 | Team 12 | Naya Herald | 315 | 9.2 | 9.5 |
@@ -1308,6 +1308,8 @@ _Last updated: 2026-10-26 21:11 UTC_
 - **gap-lane-scorer-20261017-1630:** 1 actions, avg 9.0/10
 - **gap-t1502:** 1 actions, avg 9.5/10
 - **gap-gap-t0112:** 1 actions, avg 9.0/10
+- **gap-lane-scorer-20261018-0230:** 1 actions, avg 9.0/10
+- **gap-gap-lane-scorer-20261018-0230:** 1 actions, avg 9.0/10
 - **lane-scorer-20261018-0940:** 1 actions, avg 9.0/10
 - **lane-scorer-20261018-0950:** 1 actions, avg 9.4/10
 - **lane-scorer-20261018-1000:** 1 actions, avg 9.0/10
@@ -2145,7 +2147,7 @@ _Last updated: 2026-10-26 21:11 UTC_
 - **t1253:** 1 actions, avg 10.0/10
 - **t1256:** 1 actions, avg 9.2/10
 - **t1257:** 4 actions, avg 9.1/10
-- **t1262:** 16 actions, avg 8.6/10
+- **t1262:** 17 actions, avg 8.5/10
 - **t1262-lane2:** 1 actions, avg 9.0/10
 - **t1262-lane4:** 1 actions, avg 9.0/10
 - **t1262-lane9:** 1 actions, avg 9.5/10
