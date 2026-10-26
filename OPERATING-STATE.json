@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-26T12:24:20Z",
-  "tip": "724f4b80e8801f808a7946af3c152e9e6f3aed74",
+  "generated_at": "2026-10-26T13:24:19Z",
+  "tip": "c5f7b596fdd5385e7b2f39c636120da0657acef2",
   "open_pr_count": 4,
   "queue_by_tier_action": {
     "C": {
@@ -15,10 +15,7 @@
       "CURE": 1
     }
   },
-  "tip_failing_checks": [
-    "liveness",
-    "resolve-current-truth"
-  ],
+  "tip_failing_checks": [],
   "gauge": {
     "source": "files/balanced-machine/GAUGE-READ-2026-10-22.md",
     "read_anchor": null,
