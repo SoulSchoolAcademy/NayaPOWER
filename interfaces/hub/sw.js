@@ -1,84 +1,42 @@
-/* NayaNET Hub service worker — BUILT, not recovered.
-   The original sw.js source was not found on any box, so this file was
-   built from the Hub's known structure: a single-page Hub shell with
-   Hub rooms, dashboard, mail, and Supabase-backed data.
-   Rules, in order:
-   1. Never cache anything that moves money, mail, identity, or live data.
-      API, Supabase, auth, and mail requests are network-only, always.
-   2. Navigations are network-first, with a cached shell fallback.
-   3. Same-origin static assets are cache-first, updated in the background.
-   4. No secrets, no keys, no hardcoded service URLs in this file.
-   Registration is NEW, not existing: Nitro checked the Hub file and it has
-   NO service worker registration at all, so there is no existing line to
-   confirm against. Adding registration is Shawn's call, and the landing seat
-   adds this line once, only on that call:
-     if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");
-*/
-const CACHE = "nayanet-hub-v1";
-// CORRECTED by Nitro's check (2026-10-24): the Hub's own shell is just its
-// front page. Hub pages inside it are states inside the app, not separate
-// documents, and the dashboard is served separately — so neither /hub/ nor
-// /dashboard belongs in this shell list. Do not re-add them without a check.
-const SHELL = ["/"];
+/* NayaNET Hub service worker — naya-hub-shell-v2 (CURE 2026-10-25).
+   Precache the shell + manifest + icons; serve same-scope GETs cache-first
+   with network fallback. Scope-guarded to "/" — never touches /rooms/* workers. */
+const CACHE = 'naya-hub-shell-v2';
+const SHELL = ['/', '/manifest.json', '/icons/naya-icon-192.png', '/icons/naya-icon-512.png', '/icons/apple-touch-icon.png'];
 
-const NETWORK_ONLY = ["/api/", "supabase.co", "/auth/", "/smart-mail", "/mail/send"];
-function isNetworkOnly(url) {
-  return NETWORK_ONLY.some((p) => url.includes(p));
-}
-function isStatic(url, dest) {
-  return dest === "style" || dest === "script" || dest === "font" ||
-    /\.(css|js|png|jpg|jpeg|webp|svg|woff2?)$/i.test(url.pathname);
-}
-const OFFLINE_HTML = "<!doctype html><title>NayaNET Hub — offline</title>" +
-  "<body style=\"background:#07070d;color:#fff;font-family:system-ui;padding:24px\">" +
-  "<h1>You're offline</h1><p>The Hub will reload the moment your connection returns. " +
-  "Nothing was lost — your mail, notes, and pages live in the system, not on this device.</p></body>";
+self.addEventListener('install', function (e) {
+  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));
+});
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(SHELL).catch(() => {}))
-      .then(() => self.skipWaiting())
+self.addEventListener('activate', function (e) {
+  e.waitUntil(
+    caches.keys().then(function (keys) {
+      return Promise.all(keys.map(function (k) { return k === CACHE ? null : caches.delete(k); }));
+    }).then(function () { return self.clients.claim(); })
   );
 });
 
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
-    ).then(() => self.clients.claim())
-  );
-});
-
-self.addEventListener("fetch", (event) => {
-  const req = event.request;
-  if (req.method !== "GET") return;
-  const url = new URL(req.url);
-  if (isNetworkOnly(req.url)) return; // network-only, no cache read, no cache write
-
-  if (req.mode === "navigate") {
-    event.respondWith(
-      fetch(req).then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
+self.addEventListener('fetch', function (e) {
+  if (e.request.method !== 'GET') return;
+  var url = new URL(e.request.url);
+  if (url.origin !== self.location.origin) return;
+  // CURE 2026-10-25: live surfaces never serve from cache — the old v1
+  // worker served stale /welcome, /world and /api responses, and a stale
+  // Hub shell to returning visitors after deploys. These pass through.
+  var path = url.pathname;
+  if (path === '/welcome' || path.indexOf('/welcome/') === 0 ||
+      path.indexOf('/world/') === 0 ||
+      path.indexOf('/api/') === 0) return;
+  e.respondWith(
+    caches.match(e.request, { ignoreSearch: false }).then(function (hit) {
+      var network = fetch(e.request).then(function (res) {
+        if (res && (res.status === 200 || res.status === 0)) {
+          var copy = res.clone();
+          caches.open(CACHE).then(function (c) { c.put(e.request, copy); });
+        }
         return res;
-      }).catch(() => caches.match(req).then((hit) => hit ||
-        new Response(OFFLINE_HTML, { headers: { "Content-Type": "text/html" } })))
-    );
-    return;
-  }
-
-  if (url.origin === self.location.origin && isStatic(url, req.destination)) {
-    event.respondWith(
-      caches.match(req).then((hit) => {
-        const net = fetch(req).then((res) => {
-          if (res.ok) {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
-          }
-          return res;
-        }).catch(() => hit);
-        return hit || net;
-      })
-    );
-  }
+      }).catch(function () { return hit; });
+      return hit || network;
+    })
+  );
 });

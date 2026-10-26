@@ -1,0 +1,259 @@
+{
+ "about_page": {
+  "behavior": "About block renders the page's about text (processor replaces the baked about string from the contract)",
+  "css_required": [],
+  "desc": "About block carrying the contract's about content",
+  "dom": [
+   "#about",
+   "#abouttext"
+  ],
+  "verify": "static"
+ },
+ "automated_posting": {
+  "backend_table": "smart_notes",
+  "behavior": "window.osAnnounce(text) inserts a [[fm-auto]]-marked wall post only when no marked row exists for the page alias; boot calls it once. The marker is a stored-data token kept verbatim from the first flagship build — live rows carry it; renaming it would re-fire the post.",
+  "css_required": [],
+  "desc": "Programmatic post function fires once (welcome/announcement)",
+  "dom": [],
+  "strings": [
+   "osAnnounce",
+   "[[fm-auto]]"
+  ],
+  "verify": "live"
+ },
+ "cross_page_sync": {
+  "backend_table": "smart_notes + smart_mail_threads",
+  "behavior": "wall post / message / profile photo written via PostgREST is returned by an independent read (fresh fetch or SQL read-back); profile photo + settings persist server-side in smart_notes where the schema allows",
+  "css_required": [],
+  "desc": "State written on one surface is read back on another (server round-trip)",
+  "dom": [],
+  "verify": "live"
+ },
+ "growth_invites": {
+  "backend_table": "invites",
+  "behavior": "invites stay hash-only + record-only (dry_run, no send), and the journey is now VISIBLE: a Journey Funnel (Recorded → Joined, tapered spectrum bars) computed from the invites table's own status values with the conversion % between stages, plus a truth sentence — while every invite is record-only it says so plainly ('Joined honestly reads 0 until sending is switched on'); the recorded-invite list renders below",
+  "css_required": [],
+  "desc": "Smart Growth invites: email -> invites row, sha256 hash only, record-only (no send)",
+  "dom": [
+   "#os-inv-btn",
+   "#os-inv-email",
+   "#os-invite-list",
+   "#os-funnel"
+  ],
+  "strings": [
+   "invitee_email_hash",
+   "crypto.subtle",
+   "renderFunnel"
+  ],
+  "verify": "static+live"
+ },
+ "install_in_settings": {
+  "behavior": "beforeinstallprompt captured to window.__osInstallPrompt; the ONLY install UI in the app is the Settings block's install card; appinstalled + display-mode standalone cement localStorage nayanet.installed=1; when installed the state text says so and the button hides; never nags; no install markup above the fold or outside Settings",
+  "css_required": [],
+  "desc": "Install-as-app inside the Settings block only, with installed-state memory (Hub pattern)",
+  "dom": [
+   "#os-install-btn",
+   "#os-install-state",
+   ".os-view[data-os-view=\"settings\"]"
+  ],
+  "strings": [
+   "beforeinstallprompt",
+   "nayanet.installed",
+   "appinstalled",
+   "__osInstallPrompt"
+  ],
+  "verify": "static+live"
+ },
+ "intel_today": {
+  "behavior": "the page's own pulse, read live at block-open from its own tables: the latest wall posts (smart_notes, wall-kind), messages (smart_mail_threads) and invites, merged newest-first, each kind-labeled in its spectrum color with a real timestamp stamp, under a generated pulse sentence ('The latest: a message, 2h ago. Today so far: 1 post · 2 messages.') — an honest quiet-page sentence when there is nothing; no fixtures, ever",
+  "css_required": [],
+  "desc": "Intel/Today block: today's date + the page's real latest activity",
+  "dom": [
+   "#os-today-date",
+   "#os-today-list",
+   ".os-view[data-os-view=\"today\"]",
+   "#os-today-pulse"
+  ],
+  "verify": "static+live",
+  "strings": [
+   "loadToday"
+  ]
+ },
+ "live_wall_home": {
+  "behavior": "home = cover + the live wall; wall posts render inhabited: a spectrum initial avatar per author (stable name hash; the page owner in the soul color, marked PAGE OWNER), a glowing ring for authors active within the last day, and the wall's count never stands naked — #os-wall-meta states posts + voices + the newest moment ('12 posts on this wall — the newest landed 2h ago, across 4 voices.'). The Connections Faces Board (#os-faces, loadFaces) is fed by the same wall rows plus mail senders and invitees",
+  "css_required": [
+   ".os-date{color:#2fe89e",
+   ".os-time{color:#ffbf3d"
+  ],
+  "desc": "Home = cover + the live wall, newest first, Smart Note timestamp standard",
+  "dom": [
+   "#os-wall-list",
+   ".os-view[data-os-view=\"home\"]",
+   "#os-wall-meta",
+   "#os-faces"
+  ],
+  "strings": [
+   "os-date",
+   "os-time",
+   "loadFaces",
+   "colorFor"
+  ],
+  "verify": "static+live"
+ },
+ "messaging_smartmail": {
+  "backend_table": "smart_mail_threads + smart_mail_messages",
+  "behavior": "visitor messages land in smart_mail_threads + smart_mail_messages for the page alias; the inbox reads as conversations: sender face (spectrum initial avatar), subject, a snippet of the latest message, the full thread, and the latest activity in relative + stamped time; threads with activity since the visitor's last inbox visit on this device glow NEW (per-device localStorage baseline — the tables carry no read flag, and the summary line labels it as this device's memory); a summary sentence counts conversations + new; a dot on the Inbox nav tab mirrors the unseen count unless Notifications is off in Settings",
+  "css_required": [],
+  "desc": "Visitor Message block -> Smart Mail thread+message; owner Inbox block reads them back",
+  "dom": [
+   "#os-msg-btn",
+   "#os-msg-body",
+   "#os-inbox-list",
+   ".os-view[data-os-view=\"inbox\"]",
+   "#os-inbox-meta"
+  ],
+  "verify": "static+live",
+  "strings": [
+   "refreshInboxBadge",
+   "INBOX_SEEN_KEY"
+  ]
+ },
+ "profile_picture": {
+  "backend_table": "smart_notes",
+  "behavior": "file pick (the Settings block's picker, or the Identity Head's own avatar picker — one pipeline) -> canvas downscale (max 256) -> localStorage os.photo + smart_notes {k:'profile'} row -> renders in the Identity Head and Settings immediately and after reload (loadProfile reads latest profile row)",
+  "css_required": [],
+  "desc": "Profile/main picture changeable from the Settings block, downsized in-page, persists locally and server-side",
+  "dom": [
+   "#os-photo-input",
+   "#os-photo-btn",
+   ".os-avatar-img"
+  ],
+  "verify": "static+live"
+ },
+ "reports": {
+  "backend_table": "smart_notes + smart_mail_threads + invites",
+  "behavior": "computed at block-open from smart_notes (wall-kind rows), smart_mail_threads and invites filtered by page alias, WITH created_at timestamps: the donut shows the posts/messages/invites mix in spectrum colors (harvested .donut/donutFill, pulseGlow ring), 7-day bars grow from real per-day counts (harvested .bar/barGrow), the three counts count up, and each stat carries one generated human sentence — a true week-over-week comparison when the data supports it, an honest 'the story starts now' when it does not; no baked numbers, no fixtures, no invented history",
+  "css_required": [],
+  "desc": "Reports block: a living dashboard — donut activity mix, 7-day bars, counting-up numbers, one human sentence per stat — all computed live from the page's own real data",
+  "dom": [
+   "#os-rep-posts",
+   "#os-rep-messages",
+   "#os-rep-invites",
+   ".os-view[data-os-view=\"reports\"]",
+   "#os-rep-donut",
+   "#os-rep-week",
+   "#os-rep-posts-note"
+  ],
+  "verify": "static+live"
+ },
+ "settings_everywhere": {
+  "behavior": "every control is real: it flips, persists on this device, produces its effect immediately, and reports what it did in #os-set-status. Page behaviour card: Smart Tabs drift (strips/rebuilds the ribbon clones via osTabsDrift.setEnabled), Motion & glow (html.os-calm stills entrances/breathing/pulse), Wall auto-refresh (60s re-read of Home/Today while open). Legacy Preferences: Dark mode brightens (its own script, persisted naya.setting.*), Public profile OFF genuinely disables the wall composer + message form with an explanatory note (applyPrivacy, persisted), Notifications gates the Inbox tab's new-mail dot. Profile picture + install-as-app live inside this block only, as before",
+  "css_required": [],
+  "desc": "Settings reachable in one tap from every block, via the app's single navigation",
+  "dom": [
+   ".ph-navtab[data-view=\"settings\"]",
+   ".os-view[data-os-view=\"settings\"]",
+   "#os-set-status"
+  ],
+  "verify": "static+live",
+  "strings": [
+   "applyPrivacy",
+   "data-os-set",
+   "os-calm"
+  ]
+ },
+ "smart_tabs_scroll": {
+  "behavior": "the os layer duplicates the ribbon's pill set until the track always overflows the viewport (clones marked data-os-clone, aria-hidden, clicks delegated to the real pills), then advances scrollLeft gently in ONE direction, wrapping by exactly one set width — never ping-pong; pauses while touched and for a few seconds after; stands down entirely for prefers-reduced-motion (fully lit, static, still scrollable by hand). The app's own nav tab row scrolls horizontally too (flex, nowrap, no crush).",
+  "css_required": [
+   "#navtabs{display:flex",
+   "overflow-x:auto",
+   ".ph-navtab{flex:none"
+  ],
+  "desc": "Smart Tabs ribbon provably drifts one-way; the app's navigation row scrolls horizontally",
+  "dom": [
+   "#navtabs",
+   ".ph-navtab[data-view=\"settings\"]"
+  ],
+  "verify": "static+live",
+  "strings": [
+   "osTabsDrift",
+   "data-os-clone"
+  ]
+ },
+ "twin_plus": {
+  "behavior": "rooms-plus opens drawer with the Hub's 14 rooms (Start Here, Smart Feed, Smart Factory, Ask Naya, Smart Spaces, Today's Intel, Smart Growth, Your Reports, Intelligent Library, Smart Ledger, Your Connections, Smart Lists, Smart Mail, Settings) linking nayanet.live/#/hub/<id>; eco-plus opens the Hub's 12 ECO_LINKS verbatim (labels + URLs + colors)",
+  "css_required": [
+   ".rooms-plus",
+   ".eco-plus",
+   ".eco-menu"
+  ],
+  "desc": "Twin-plus standard — the app's ONLY plus system: rooms-plus top-left (NayaNET areas drawer), eco-plus top-right (owner ecosystem menu), Hub contents verbatim, 48x48",
+  "dom": [
+   "#os-rooms-plus",
+   "#os-drawer",
+   "#os-eco-plus",
+   "#os-eco-menu"
+  ],
+  "strings": [
+   "NAYANET AREAS",
+   "NAYANET ECOSYSTEM",
+   "NAYA POWER",
+   "MEMBER LOGIN",
+   "Start Here",
+   "Intelligent Library"
+  ],
+  "verify": "static+live"
+ },
+ "wall_posts": {
+  "backend_table": "smart_notes",
+  "behavior": "insert into smart_notes (owner_alias=page alias, content JSON {k:'wall',a,b}); wall reads back ordered created_at desc. No server table in the schema is wall-shaped; smart_notes is the schema's generic content store (its own file defines it for page content) — closest real table, named honestly",
+  "css_required": [],
+  "desc": "Wall block: visitor + owner post to the page; posts persist server-side",
+  "dom": [
+   "#os-post-btn",
+   "#os-post-body",
+   "#os-wall-list"
+  ],
+  "verify": "static+live",
+  "strings": [
+   "avatarHTML"
+  ]
+ },
+ "dashboard_front": {
+  "backend_table": "smart_notes + smart_mail_threads + smart_mail_messages + invites (page alias)",
+  "behavior": "the Cover block's front composition ('Your World, Live'), computed live at load (and on return Home) from the page's own tables: hero strip with the world's name, a Health Gauge (semicircle arc in the spectrum; score = this week's pulse + people around the world + the invite journey, recipe printed on the card) and one generated health sentence; a Pulse Strip of four counting-up stats each with a generated sentence (posts, messages, invites, people); the Trend Panel (7-day bars from real created_at), the invite Journey Funnel and the activity Mix Donut — the same Living Data math as Reports/Growth; a Faces Board of real people from the page's own tables with one-tap message; an Insight Feed whose sentences are GENERATED from the data by rules (journey state, momentum, inbox waiting, quiet wall, warm faces), each with evidence and an action door; the latest conversations; and the Connections/Plug-ins strip — the native app and the NayaNET community LIVE with real counts/faces (born connected), while website, social feeds and AIs show as honest invitations with a how-connecting-works note and NO numbers. Simplified throughout: full data, plain sentences",
+  "css_required": [
+   ".os-dash-gauge-arc",
+   ".os-src-chip",
+   ".os-insight"
+  ],
+  "desc": "Dashboard front: Your World, Live — gauge, pulse, trend/funnel/donut, faces, generated insights, conversations, plug-ins (honest states)",
+  "dom": [
+   "#os-dash",
+   "#os-dash-hero",
+   "#os-dash-gauge",
+   "#os-dash-gauge-num",
+   "#os-dash-health-note",
+   "#os-dash-pulse",
+   "#os-dash-n-posts",
+   "#os-dash-n-people",
+   "#os-dash-week",
+   "#os-dash-funnel",
+   "#os-dash-donut",
+   "#os-dash-faces",
+   "#os-dash-insights",
+   "#os-dash-convos",
+   "#os-dash-plugins",
+   "#os-dash-src-native",
+   "#os-dash-src-community"
+  ],
+  "strings": [
+   "loadDashboard",
+   "buildInsights",
+   "healthScore",
+   "BORN CONNECTED",
+   "NOT CONNECTED"
+  ],
+  "verify": "static+live"
+ }
+}

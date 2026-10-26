@@ -1,0 +1,311 @@
+<!-- ═══ NAMED BLOCKS — one-system flagship app ═══
+     Each block is an official building block: named (data-block), self-contained,
+     placed where it was designed to go. Blocks render in the page's own ph-*
+     grammar; the app router (os-script) shows one block at a time.
+     Delimiters: <!--BLOCK:name--> … <!--/BLOCK-->                        -->
+
+<!--BLOCK:wall-->
+<div class="ph-sec os-view on" id="os-wall" data-os-view="home" data-block="wall">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> Live Wall</div>
+<div class="ph-card" style="--ac:#a06bff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> Post to this wall</h3>
+<input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
+<textarea class="os-textarea" id="os-post-body" rows="3" placeholder="Post to this app&rsquo;s wall&hellip;"></textarea>
+<div class="ph-actions"><button class="ph-connect" id="os-post-btn" type="button">Post to wall</button></div>
+<div class="os-status" id="os-post-status"></div>
+</div>
+<div class="os-status" id="os-wall-meta"></div>
+<div id="os-wall-list"><div class="os-skel"></div></div>
+</div>
+<!--/BLOCK-->
+
+<!--BLOCK:today-->
+<div class="ph-sec os-view" data-os-view="today" data-block="today">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Today</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">☀️</span> Today</h3>
+<div id="os-today-date" style="font-size:24px;font-weight:900;color:#fff;">&hellip;</div>
+<p>The latest real activity in this app &mdash; newest first, live.</p>
+<div class="os-note" id="os-today-pulse">Reading this app&rsquo;s pulse&hellip;</div>
+</div>
+<div id="os-today-brief"></div>
+<div id="os-today-list"><div class="os-skel"></div></div>
+<div id="os-today-faces"></div>
+</div>
+<!--/BLOCK-->
+
+<!--BLOCK:message-->
+<div class="ph-sec os-view" data-os-view="message" data-block="message">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#ffbf3d;color:#ffbf3d;"></span> Message</div>
+<div class="ph-card" style="--ac:#ffbf3d;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">✉️</span> Message this app</h3>
+<div class="os-fieldwrap"><input class="os-input" id="os-msg-name" type="text" placeholder="Your name" autocomplete="name"><button class="os-mic" type="button" data-os-mic="os-msg-name" aria-label="Dictate your name" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="os-fieldwrap"><input class="os-input" id="os-msg-subject" type="text" placeholder="Subject"><button class="os-mic" type="button" data-os-mic="os-msg-subject" aria-label="Dictate the subject" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="os-fieldwrap"><textarea class="os-textarea" id="os-msg-body" rows="4" placeholder="Your message&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-msg-body" aria-label="Dictate your message" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-connect" id="os-msg-btn" type="button">Send message</button></div>
+<div class="os-status" id="os-msg-status">Your message goes to the owner&rsquo;s Smart Mail inbox in this app.</div>
+</div>
+</div>
+<!--/BLOCK-->
+
+<!--BLOCK:inbox-->
+<div class="ph-sec os-view" data-os-view="inbox" data-block="inbox">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#ff9a5a;color:#ff9a5a;"></span> Smart Mail Inbox</div>
+<div class="os-status" id="os-inbox-meta"></div>
+<div id="os-inbox-list"><div class="os-skel"></div></div>
+<div id="os-inbox-pulse"></div>
+</div>
+<!--/BLOCK-->
+
+<!--BLOCK:growth-->
+<div class="ph-sec os-view" data-os-view="growth" data-block="growth">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#ff5e6c;color:#ff5e6c;"></span> Smart Growth &middot; Invites</div>
+<div class="ph-card" style="--ac:#ff5e6c;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">🌱</span> Invite a friend</h3>
+<input class="os-input" id="os-inv-name" type="text" placeholder="Friend&rsquo;s name" autocomplete="off">
+<input class="os-input" id="os-inv-email" type="email" placeholder="Friend&rsquo;s email" autocomplete="off">
+<div class="ph-actions"><button class="ph-connect" id="os-inv-btn" type="button">Record invite</button></div>
+<div class="os-status" id="os-inv-status">Privacy law: only a SHA-256 hash of the email is stored &mdash; never the address. Record-only: no email is sent.</div>
+</div>
+<div class="ph-card" style="--ac:#ff5e6c;" id="os-sl-card">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">✦</span> My Smart Link<button class="os-info-btn" id="os-sl-info-btn" type="button" aria-expanded="false" aria-label="What is a Smart Link?">ⓘ</button></h3>
+<div class="os-info-panel" id="os-sl-info" hidden>A Smart Link is your own short NayaNET address — nayanet.live/your-name — that sends people to any link you choose and counts every click on the way through. Paste any link you want tracked — a video, a product page, your ambassador link — claim a name, then share the short address everywhere. Every click is counted, and when someone who arrived through it joins NayaNET, that join is credited to your link too. You choose where it sends people, and NayaNET never changes that. Pick your name carefully — a claimed name can&rsquo;t be renamed later.</div>
+<p>One short address for everything you share — and every click on it, counted. Paste the link you share today, pick the name you want instead, and your short link is live — with every click on it counted.</p>
+<div id="os-sl-mine"><div class="os-status">Reading your Smart Links&hellip;</div></div>
+<div class="os-fieldwrap"><input class="os-input" id="os-sl-url" type="url" placeholder="Paste any link to track — https://…" autocomplete="off"></div>
+<div class="os-fieldwrap"><input class="os-input" id="os-sl-name" type="text" placeholder="Pick your name — for example: yourname" autocomplete="off"></div>
+<div class="os-status" id="os-sl-verdict">Your short address will be nayanet.live/ + the name you pick. Start typing — we&rsquo;ll tell you right away if it&rsquo;s free.</div>
+<div class="ph-actions"><button class="ph-connect" id="os-sl-claim" type="button">Claim this name</button></div>
+<div class="os-status" id="os-sl-status"></div>
+</div>
+<div id="os-inv-share"></div>
+<div id="os-funnel"></div>
+<div id="os-invite-list"></div>
+</div>
+<!--/BLOCK-->
+
+<!--BLOCK:reports-->
+<div class="ph-sec os-view" data-os-view="reports" data-block="reports">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Reports</div>
+<div class="ph-card stat-card" style="--ac:#e84fff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">📊</span> The report &mdash; the counts first</h3>
+<div class="os-rcirc-row">
+<div class="os-rcirc-cell"><span class="os-rcirc" style="--ac:#a06bff"><b id="os-rep-posts">&hellip;</b></span><span class="os-rcirc-l">WALL POSTS</span></div>
+<div class="os-rcirc-cell"><span class="os-rcirc" style="--ac:#3fb8ff"><b id="os-rep-messages">&hellip;</b></span><span class="os-rcirc-l">MESSAGES</span></div>
+<div class="os-rcirc-cell"><span class="os-rcirc" style="--ac:#2fe89e"><b id="os-rep-invites">&hellip;</b></span><span class="os-rcirc-l">INVITES</span></div>
+<div class="os-rcirc-cell"><span class="os-rcirc" style="--ac:#ffbf3d"><b id="os-rep-people">&hellip;</b></span><span class="os-rcirc-l">PEOPLE</span></div>
+<div class="os-rcirc-cell"><span class="os-rcirc" style="--ac:#ff9a5a"><b id="os-rep-today">&hellip;</b></span><span class="os-rcirc-l">TODAY</span></div>
+<div class="os-rcirc-cell"><span class="os-rcirc" style="--ac:#ff5e6c"><b id="os-rep-week7">&hellip;</b></span><span class="os-rcirc-l">LAST 7 DAYS</span></div>
+<div class="os-rcirc-cell"><span class="os-rcirc" style="--ac:#e84fff"><b id="os-rep-busiest">&hellip;</b></span><span class="os-rcirc-l">BUSIEST DAY</span></div>
+</div>
+<p class="os-note" id="os-rep-posts-note">Reading this app&rsquo;s own numbers&hellip;</p>
+</div>
+<div class="ph-card stat-card" style="--ac:#e84fff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">◉</span> The mix &mdash; where the life is</h3>
+<div class="os-mix">
+<div class="os-donut-wrap os-litobj" style="--ac:#e84fff;"><span class="os-donut-sheen"></span><div class="donut" id="os-rep-donut"></div><div class="os-donut-hole"><span class="donut-center" id="os-rep-total">&hellip;</span><span class="os-donut-cap">TOTAL</span></div></div>
+<div class="os-legend os-legend-bars">
+<div class="os-leg" style="--lc:#a06bff"><span class="os-leg-dot" style="background:#a06bff;color:#a06bff;"></span><span class="os-leg-name">Wall posts</span><b id="os-rep-leg-posts">&hellip;</b><span class="os-leg-bar"><i id="os-rep-bar-posts"></i></span></div>
+<div class="os-leg" style="--lc:#3fb8ff"><span class="os-leg-dot" style="background:#3fb8ff;color:#3fb8ff;"></span><span class="os-leg-name">Messages received</span><b id="os-rep-leg-messages">&hellip;</b><span class="os-leg-bar"><i id="os-rep-bar-messages"></i></span></div>
+<div class="os-leg" style="--lc:#2fe89e"><span class="os-leg-dot" style="background:#2fe89e;color:#2fe89e;"></span><span class="os-leg-name">Invites recorded</span><b id="os-rep-leg-invites">&hellip;</b><span class="os-leg-bar"><i id="os-rep-bar-invites"></i></span></div>
+<div class="os-leg" style="--lc:#ffbf3d"><span class="os-leg-dot" style="background:#ffbf3d;color:#ffbf3d;"></span><span class="os-leg-name">People around you</span><b id="os-rep-leg-people">&hellip;</b><span class="os-leg-bar"><i id="os-rep-bar-people"></i></span></div>
+</div>
+</div>
+</div>
+<div class="ph-card stat-card" style="--ac:#e84fff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">📈</span> The trend</h3>
+<div class="os-period" data-period-for="rep"><button type="button" class="on" data-period="7" style="--pc:#e84fff;">7 days</button><button type="button" data-period="30" style="--pc:#e84fff;">30 days</button><button type="button" data-period="0" style="--pc:#e84fff;">All</button></div>
+<div class="os-well os-well-grid" data-beamwell="rep">
+<div class="os-week-counts" id="os-rep-week-counts"></div>
+<div class="os-week" id="os-rep-week"><div class="os-skel"></div></div>
+<div class="os-week-days" id="os-rep-week-days"></div>
+<i class="os-beam"></i>
+</div>
+<p class="os-note" id="os-rep-week-note">Reading this app&rsquo;s own activity&hellip;</p>
+</div>
+<div class="ph-card" style="--ac:#2fe89e;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">👥</span> The people in this report</h3>
+<div id="os-rep-faces"><div class="os-skel"></div></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-go="people">See everyone</button></div>
+</div>
+<div class="os-status" id="os-rep-status">Computed live from this app&rsquo;s own tables &mdash; no fixtures.</div>
+</div>
+<!--/BLOCK-->
+
+<!--BLOCK:settings-->
+<div class="ph-sec os-view" id="settings" data-os-view="settings" data-block="settings">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Settings</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">⚙️</span> Your Preferences</h3>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">🌙</span><span class="os-setrow-main"><b>Deep black</b><span class="os-setrow-sub">This app&rsquo;s deep-black theme.</span></span><span class="os-switch-wrap" style="--jc:#3fb8ff"><button class="os-switch on" id="os-set-dark" data-os-set="dark" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">🔔</span><span class="os-setrow-main"><b>Notifications</b><span class="os-setrow-sub">Kept on this device &mdash; nothing is sent yet.</span></span><span class="os-switch-wrap" style="--jc:#ffbf3d"><button class="os-switch on" id="os-set-notif" data-os-set="notifications" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> App behaviour</h3>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">🎞️</span><span class="os-setrow-main"><b>Smart Tabs drift</b><span class="os-setrow-sub">The tab ribbon glides slowly, one way &mdash; the NayaNET standard.</span></span><span class="os-switch-wrap" style="--jc:#a06bff"><button class="os-switch on" id="os-set-drift" data-os-set="drift" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">💫</span><span class="os-setrow-main"><b>Motion &amp; glow</b><span class="os-setrow-sub">Breathing light and living motion across the app.</span></span><span class="os-switch-wrap" style="--jc:#e84fff"><button class="os-switch on" id="os-set-motion" data-os-set="motion" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">🔄</span><span class="os-setrow-main"><b>Auto-refresh</b><span class="os-setrow-sub">Quietly re-reads whichever board is open — wall, today, inbox, reports or dashboard — every minute.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch" id="os-set-refresh" data-os-set="refresh" type="button" role="switch" aria-checked="false"><span class="os-knob"></span></button><span class="os-switch-cap">Off</span></span></div>
+<div class="os-status" id="os-set-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">👤</span> Identity</h3>
+<p style="margin:0 0 6px">Owner: <span class="os-owner-name">Alex Morgan</span></p>
+<p id="os-id-line" style="margin:0 0 6px;">The name, face and story visitors see are this app&rsquo;s own data. Tap your picture on Home to change it &mdash; the story is edited in About.</p>
+<div class="os-setrow"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">🔒</span><span class="os-setrow-main"><b>Public profile</b><span class="os-setrow-sub">On &mdash; visitors can see your profile, post on your wall and message you. Off &mdash; this app is private.</span></span><span class="os-switch-wrap" style="--jc:#2fe89e"><button class="os-switch on" id="publictoggle" data-os-set="public" type="button" role="switch" aria-checked="true"><span class="os-knob"></span></button><span class="os-switch-cap">On</span></span></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-go="about">Your story</button><button class="ph-msg" type="button" data-os-go="home">Your wall</button></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;" id="os-install-card">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">📲</span> Install as app</h3>
+<p>Put this app on your home screen &mdash; it opens like any other app, no browser bars.</p>
+<p id="os-install-state">Checking install state&hellip;</p>
+<button class="ph-connect" id="os-install-btn" type="button">Install this app</button>
+</div>
+</div>
+<!--/BLOCK-->
+
+
+<!--BLOCK:notes-->
+<div class="ph-sec os-view" id="feed" data-os-view="notes" data-block="smart-notes">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> Smart Notes</div>
+<div class="ph-card" style="--ac:#a06bff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> Quick Capture</h3>
+<p>Smart note this &mdash; capture a thought, and it lands here as a card in this app.</p>
+<div style="display:flex;gap:10px;margin-top:12px;">
+<input class="os-input" id="os-note-capture" type="text" placeholder="What&rsquo;s on your mind?" style="flex:1;margin:0;">
+<button class="ph-connect" id="os-note-capture-btn" type="button" style="padding:12px 24px;">Note it</button>
+</div>
+<div class="os-status" id="os-note-capture-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;" id="os-nn-card">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">📝</span> Naya Notes</h3>
+<p>Your private notes to Naya — the same store your Hub home reads, here in this app. Not Smart Notes: these never enter any feed. Messages you save from the Inbox land here too.</p>
+<div class="os-fieldwrap"><input class="os-input" id="os-nn-title" type="text" placeholder="Title (optional)" autocomplete="off"><button class="os-mic" type="button" data-os-mic="os-nn-title" aria-label="Dictate the title" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="os-fieldwrap"><textarea class="os-textarea" id="os-nn-body" rows="3" placeholder="Write a note to Naya&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-nn-body" aria-label="Dictate the note" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div id="os-nn-catchips" style="margin-top:10px;"></div>
+<div class="os-fieldwrap"><input class="os-input" id="os-nn-newcat" type="text" placeholder="&hellip;or name a new category" autocomplete="off"></div>
+<div class="ph-actions"><button class="ph-connect" id="os-nn-save" type="button">Save note</button></div>
+<div class="os-status" id="os-nn-status"></div>
+<div id="os-nn-filter" style="margin-top:14px;"></div>
+<div id="os-nn-list" style="margin-top:10px;"><div class="os-skel"></div></div>
+</div>
+<div id="os-note-saved"></div>
+<div id="os-note-list"><div class="os-skel"></div></div>
+<div id="os-note-samples"></div>
+</div>
+<!--/BLOCK-->
+
+<!--BLOCK:connections-->
+<div class="ph-sec os-view" id="people" data-os-view="people" data-block="connections">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#2fe89e;color:#2fe89e;"></span> Connections</div>
+<div id="os-faces"><div class="os-skel"></div></div>
+<div id="os-members"></div>
+<div id="os-born"></div>
+<div id="os-timeline" hidden></div>
+</div>
+<!--/BLOCK-->
+
+<!--BLOCK:lists-->
+<div class="ph-sec os-view" id="lists" data-os-view="lists" data-block="lists">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#2fe89e;color:#2fe89e;"></span> Lists</div>
+<div class="ph-card" style="--ac:#2fe89e;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">📋</span> Smart Lists</h3>
+<p class="os-note" style="margin-top:8px;">A list is a category you file things into — your Smart Notes, your Naya Notes and your people, together. The same lists on every door and device.</p>
+<div id="os-sl-chips" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;"></div>
+<div id="os-sl-newrow" style="display:none;gap:10px;margin-top:12px;">
+<input class="os-input" id="os-sl-newname" type="text" placeholder="Name the new list&hellip;" maxlength="80" style="flex:1;margin:0;">
+<button class="ph-connect" id="os-sl-newcreate" type="button" style="padding:12px 22px;">Create</button>
+</div>
+<div style="display:flex;gap:10px;margin-top:14px;">
+<input class="os-input" id="os-list-input" type="text" placeholder="Add something that matters&hellip;" style="flex:1;margin:0;">
+<button class="ph-connect" id="os-list-add" type="button" style="padding:12px 22px;">Add</button>
+</div>
+<div id="os-list-rows" style="display:flex;flex-direction:column;gap:10px;margin-top:14px;"></div>
+<div class="os-status" id="os-list-status"></div>
+<div id="os-sl-delrow"></div>
+</div>
+</div>
+<!--/BLOCK-->
+
+
+<!--BLOCK:about-->
+<div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">❝</span> My motto</h3>
+<p id="os-sec-motto-text" class="os-note" style="margin:0;">No motto yet &mdash; tap Edit and put it in one line.</p>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-motto-edit" rows="2" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-motto-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="motto">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="motto" style="display:none;">Save</button></div>
+<div class="os-status" id="os-sec-motto-status"></div>
+</div>
+
+<div class="ph-card" style="--ac:#3fb8ff;"><h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">👋</span> My story</h3>
+<p id="abouttext">Founder and creator. I build intelligent systems that help people achieve their maximum. Passionate about AI, design, and human potential.</p>
+<div class="os-fieldwrap"><textarea class="ph-about-edit" id="aboutedit" style="display:none;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="aboutedit" aria-label="Dictate your story" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions">
+<button class="ph-msg" id="editabout" type="button">✏️ Edit</button>
+<button class="ph-msg" id="nayaabout" type="button" style="display:none;">Start from a template line</button>
+<button class="ph-connect" id="saveabout" type="button" style="display:none;">Save</button>
+</div>
+<div class="os-status" id="os-about-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;" data-feature="qa-library">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">📚</span> Questions &amp; answers</h3>
+<p class="os-note" id="os-lib-meta">Reading the library&hellip;</p>
+<input class="os-input" id="os-lib-q" type="text" placeholder="Ask this library &mdash; type to search its answers&hellip;" style="margin-top:12px;">
+<div id="os-lib-list"><div class="os-skel"></div></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;" data-feature="qa-library">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✎</span> Add a question &amp; answer</h3>
+<input class="os-input" id="os-lib-nq" type="text" placeholder="The question">
+<textarea class="os-textarea" id="os-lib-na" rows="3" placeholder="The answer &mdash; in plain words"></textarea>
+<div class="ph-actions"><button class="ph-connect" id="os-lib-add" type="button">Add to the library</button></div>
+<div class="os-status" id="os-lib-status">Entries save onto this app, for every visitor &mdash; the library fills in one answer at a time.</div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🧭</span> About</h3>
+<p id="os-sec-about-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and write the first line about this app.</p>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-about-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-about-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="about">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="about" style="display:none;">Save</button></div>
+<div class="os-status" id="os-sec-about-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🎯</span> My goals</h3>
+<p id="os-sec-goals-text" class="os-note" style="margin:0;">No goals written yet &mdash; tap Edit and name the first one.</p>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-goals-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-goals-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="goals">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="goals" style="display:none;">Save</button></div>
+<div class="os-status" id="os-sec-goals-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🚀</span> My mission</h3>
+<p id="os-sec-mission-text" class="os-note" style="margin:0;">No mission written yet &mdash; tap Edit and say what this app is here to do.</p>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-mission-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-mission-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="mission">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="mission" style="display:none;">Save</button></div>
+<div class="os-status" id="os-sec-mission-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🔭</span> My vision</h3>
+<p id="os-sec-vision-text" class="os-note" style="margin:0;">No vision written yet &mdash; tap Edit and describe where this is heading.</p>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-vision-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-vision-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="vision">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="vision" style="display:none;">Save</button></div>
+<div class="os-status" id="os-sec-vision-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">♥</span> What I love</h3>
+<p id="os-sec-love-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and add the first thing.</p>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-love-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-love-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="love">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="love" style="display:none;">Save</button></div>
+<div class="os-status" id="os-sec-love-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✕</span> What I don&rsquo;t</h3>
+<p id="os-sec-dont-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and be honest about the first one.</p>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-dont-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-dont-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="dont">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="dont" style="display:none;">Save</button></div>
+<div class="os-status" id="os-sec-dont-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> My facts</h3>
+<div id="os-about-facts"><p class="os-note">Reading this app&rsquo;s facts&hellip;</p></div>
+<div id="os-about-faces"></div>
+</div></div>
+<!--/BLOCK-->

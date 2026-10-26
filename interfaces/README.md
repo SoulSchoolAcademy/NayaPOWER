@@ -15,7 +15,7 @@ with its value attached). Friction automatic and reversible. A compromised
 piece is isolated and swapped, with its provenance showing everything it touched.
 
 ## What lives here
-- hub/sw.js — Hub service worker, BUILT not recovered, corrected shell ["/"].
+- hub/sw.js — Hub service worker, LIVE v2 bytes (this move replaces the earlier BUILT-not-recovered version; see PR move1-interfaces-20261026).
   Hub pages are states inside the app, not separate documents; dashboard is
   served separately and is NOT in this shell. Registration is NEW — the Hub
   file has no registration at all — and adding it is Shawn's call.
