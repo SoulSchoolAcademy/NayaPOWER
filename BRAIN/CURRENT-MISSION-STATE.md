@@ -1,8 +1,10 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 23:10 PDT (2026-10-26T06:12:01Z) by the director pass.
-Main tip: `20bfc69c` - MOVED bf2d01d3 -> 20bfc69c (no merges; 4 single-parent direct pushes: SN-1877 full-form upgrade 383e6fee + index advance 0d8dfda8, SN-1873 full-form upgrade e32d05d3 + index advance 20bfc69c).
-Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 210 comments (+11 this tick, page 7), 2,290 short of the 2,500 hard cap; no successor board; no migration trigger. Retired #2793 at 2,350 comments, last post 05:13Z - residual posting after migration has stopped.
+Last verified: 2026-10-25 23:38 PDT (2026-10-26T06:40:00Z) by the director pass.
+Main tip: `922fa36a` - MOVED 20bfc69c -> 922fa36a (no merges; 1 single-parent sanctioned living-map-compiler MAP-STATE commit 06:16Z, compare ahead 1 / behind 0).
+Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 211 comments (+1 this tick, page 8), 2,289 short of the 2,500 hard cap; no successor board; no migration trigger. Retired #2793 at 2,350 comments, last post 05:13Z - residual posting after migration has stopped.
+
+- 2026-10-25 23:38 PDT tick: MOVED TICK, NO NEW MERGES. TIP 922fa36a. BOARD #3066: 210 -> 211 (+1). MERGE RECEIPT WATCH: no merged_at after 06:11Z (closed-list top-10 latest 04:38:33Z #3084) - nothing new, breach log unchanged. TIP MOVE: single sanctioned living-map-compiler MAP-STATE commit 922fa36a (06:16Z, single parent 20bfc69c) - recorded, not alerted. NEW COMMENT: 6409871740 [COLD-DRILL][W44] PASS - SN-015 retrieved at corpus 922fa36a (informational; not builder-addressed, not appended to naya2_to_builder). Carried: different-seat review + land #3085, then #3086; retro-verification #54-55; sn0833 reprocess + SN-1876 C2b; #3052 closure on branch stillness (clock from 05:42:36Z burst); direct-push authorization ruling (main seat); kernel green/red oscillation.
 
 - 2026-10-25 23:08 PDT tick: MOVED TICK, NO NEW MERGES. TIP 20bfc69c. BOARD #3066: 199 -> 210 (+11). MERGE RECEIPT WATCH: no merged_at after 05:41Z - nothing new, breach log unchanged. DIRECT PUSHES x4: SN-1877 + SN-1873 full-form upgrades (intelligence-door class) with index advances. New blockers: #3052 closure waits on branch stillness from the 05:42:36Z writer burst; /s/sn0833 reprocess + SN-1876 C2b still open; direct-push authorization ruling still owed (main seat, carried). Top actions: different-seat review + land #3085, then #3086 (re-point set + stale-pointer cure); retro-verification #54-55; sn0833 reprocess + SN-1876 landing; settle kernel green/red oscillation (brain-index drift per filing).
 
@@ -79,6 +81,7 @@ Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 210 comment
 - P0 security routing (anonymous EXECUTE on SECURITY DEFINER payment/booking RPCs + anonymous scheduled-mail RPC) — owner: SEC-6 + Payments/Booking/Mail + LAW/INFRA; human gate before production.
 
 ## Team status (SELF / LAW / ACT / KNOW / PROVE / CONNECT / VERIFY / LEARN / EVOLVE)
+- 2026-10-25 23:38 PDT tick: KNOW (living-map state advance), VERIFY (cold-drill W44 PASS at new tip) active; other areas carry forward.
 - 2026-10-25 23:08 PDT tick: KNOW (SN-1877 + SN-1873 full-form filings), LAW (SN-1877 standing law live), LEARN (L678/L679 events), PROVE (sweep verification: registry cured, kernel green at tip) active; other areas carry forward.
 - Accomplished: tip MOVED 7ee2cae -> b4891b8 verified first-hand (ls-remote byte-match; single-parent SN-1873 intelligence-door push 03:26:36Z); merge receipt watch run: zero NEW merges, zero NEW receipt breaches; board #3066 160 -> 162 read first-hand (2 new comments, page 6); naya2_to_builder 0 appended (none builder-addressed), cap 20 holds.
 - Working on: burst-breach dispositions (#3076-#3081) + #3075 #47 disposition; doubled-page merges in Resolve order; registry cure unlock (board answers SN-0833/SN-0594); ideal PI hub build; SN-1870 twin disposition; direct-push authorization ruling; PI write-door S1. Seats-merge-own-scorecarded-work doctrine now in force (HOLD-parking retired).
@@ -86,10 +89,10 @@ Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 210 comment
 - Unknown: — (no area invented here).
 
 ## Key numbers
-- REST quota remaining: 4,607 as measured mid-tick (5,000/hour installation token; zero 403s this tick).
+- REST quota remaining: 4,199 as measured at tick open (5,000/hour installation token; zero 403s this tick).
 - Branch count: 1,078 (git ls-remote refs/heads/* count, zero REST quota).
 - Open PR count: not re-fetched this tick (no extra call for this line); closed-list fetch this tick shows no merges after 03:03:12Z, #3072/#3074 closed-unmerged, #3073 merged 23:56Z Oct 25 (breach, unmitigated).
-- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 162 comments.
+- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 211 comments.
 
 ## Where to go
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts). Until PR #2533 merges, the draft branch `naya4/activation-read-me-first` carries it; after the merge, main.
