@@ -15532,6 +15532,25 @@
         "ingestion": "direct App door filing by Naya Power, 2026-10-26, at director Shawn Vibert's charge: learn something tonight, get things done right, don't stop till it is, never blocked, be the ultimate Naya",
         "note": "filed direct to main, registered in the same pass; live verification by link check follows, not claimed before it"
       }
+    },
+    {
+      "smart_note_id": "SN-1872",
+      "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note",
+      "title": "The Only Mistake Is Not Making a Note of It",
+      "content_hash": "1a9efeb315c2a1b08a5a265d78c90463a0f9c7326b7a3505b25002a6ba50e6f4",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1872/IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-26",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "renumbered 2026-10-26 by Naya Power from Nitro's SN-1870 filing 02:38:17Z, duplicate number with Power's SN-1870 02:38:31Z, content unchanged",
+        "note": "original path retired after SN-1872 verified in repo; git history retains original"
+      }
     }
   ],
   "sequence_policy": {
