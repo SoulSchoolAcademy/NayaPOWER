@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 04:00 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 05:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21661,6 +21661,14 @@ _Last updated: 2026-10-26 04:00 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified tip aa8061c1 unchanged (ls-remote start-verified, stable since t1432); CLEAN claim consistent with five prior verified-clean ticks and merged #2452 heal; receipt's #2385 head eedd9540f matches grand-to-do. Cheap-check-first, zero churn. Not 10: verification only by design; recurrence #16 structurally possible until Shawn's click
 
+### ✅ t0142 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Queue sweep: close 10 idle drafts as superseded, #2079 re-triage DELIBERATELY HOLD, pipeline pins
+
+**Receipt:** `twelve-lane-receipts/t0142-lane7.md`
+
+**Evidence:** VERIFIED 2026-10-26T04:14Z via GitHub REST: all 10 cited PRs (#2111,2184,2198,2202,2211,2212,2213,2216,2226,2227) are state=closed and their current head SHAs exactly match the receipt action-time SHAs. Score 9.0: why not 9.5: the four gray-zone candidates (#2112, #2215, #2217, #2250) were skipped into a deferred next-layer adjudication rather than
+
 ### ✅ t0142-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.4/10 [VERIFIED]
 
 **Task:** queue sweep: 10 fossil closes after #2110 + #2079 DELIBERATE-HOLD triage + pipeline pins
@@ -21682,6 +21690,14 @@ _Last updated: 2026-10-26 04:00 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0142-lane7.md`
 
 **Evidence:** Dispatcher verified live: #2111 closed, head e109b831...21131bc pin-exact == receipt; open-PR search count == 457 == receipt claim (467->457, -10). Close comments cite mechanism+action-time SHA. Not 10: 4 gray-zone candidates deferred, not triaged (agent's own deduction); no calculator run on the #2079 hold.
+
+### ✅ t0142 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** All 20 seed blocks through Lane 1 four-way proof template with t1282 VERACITY-ARM, COMPOUNDED verdicts
+
+**Receipt:** `twelve-lane-receipts/t0142-lane4.md`
+
+**Evidence:** VERIFIED 2026-10-26T04:12Z on live workspace bytes: seal.json sha256 a2a712cfc3f674627ecbb89c53b8943f8cfd12addac01d3f01af66d65546109c exactly matches receipt claim and compounded-verdicts seal field; rubric sha256 matches seal; arm1235-summary 20/20 blocks all arms PASS; scorer-scores 20 pairs; proofs 20, successors 20, packets 40; tip aa8061c1d311
 
 ### ✅ t0142-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -27094,6 +27110,12 @@ _Last updated: 2026-10-26 04:00 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-t0142-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up t0142 lane7: gray-zone four + #2079 hold, closed by events + calculator
+
+**Evidence:** VERIFIED 2026-10-26T04:26Z: REST states all 5 PRs closed, merged_at null, closed_at exactly as receipt (#2112 23:50:41Z, #2215 23:52:50Z, #2217 23:52:54Z, #2250 23:53:39Z, #2079 23:50:10Z on 2026-10-20); git ls-remote pull-head SHAs exactly match receipt for all 5; calculator file 20261026T041550Z-merge-merge-pr--2079.json sha256 aa1a3efb0751d03390
 
 ### ✅ gap-gap-t0132 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -38286,6 +38308,12 @@ _Last updated: 2026-10-26 04:00 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261025-2139 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 21:39 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-26T04:45Z: rotation twelve-lane-rotation.json queued=24 is exactly the 24 brief files the receipt names (set equality checked, zero diff either way: 18 brief-gap-t*, 1 brief-gap-gap-t0052-lane11, 4 brief-gap-gap-gap-*, 1 brief-gap-gap-gap-gap-t1564-lane11); brief-queue/ root holds exactly those 24 plus lane-
 
 ### ✅ seat-stall-20261025-2033 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
