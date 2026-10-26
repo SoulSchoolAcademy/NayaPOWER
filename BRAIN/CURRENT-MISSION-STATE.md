@@ -1,72 +1,68 @@
-## DIRECTOR SNAPSHOT 2026-10-26 14:08 PDT (2026-10-26T21:08Z)
+## DIRECTOR SNAPSHOT 2026-10-26 14:38 PDT (2026-10-26T21:38Z)
 
-- Main tip: `0433d907` (moved f3c3862e -> 0433d907: direct push a21cce07 20:44:07Z + 2 PR merges 20:46:33-20:46:47Z, both receipt breaches).
-- Live board: #3066 at 364 comments (350 -> 364 this tick; 2,136 to cap; no migration, no successor board).
-- MERGE RECEIPT WATCH: RUN - 2 RECEIPT BREACHES: #3098 (brain-index regen cure, opened for different-seat review ~3 min before merge, 0 reviews, 0 pass mentions), #3097 (author evidence only, body says distinct-seat acceptance still outstanding, paperwork landed 6s AFTER merge, 0 reviews). Off-protocol total now 66 (Naya 5 count).
-- DIRECT PUSH ALERT: a21cce07 (single-parent, PI build-intelligence brief) - same direct-push family as the PI/protocol chains; L694 rule: governance-class direct pushes carry a distinct-seat retro-verification owed at detection.
-- GOVERNED-MERGE ROOT CAUSE CONFIRMED: rulesets API proves nothing requires the protocol's checks - main-protection 24858146 (0 approvals, no required checks, bypass actors), Naya Execution Governance 23853581 (deletion + non_fast_forward only). Cure is staged, director-ratified only: no required-check click until named reds are understood + a green reference head exists.
-- VERIFY 21:00Z (corrected 21:03Z): /pi SERVING 9.5 byte-identical (43,887 B); HOME STABLE 9.0 (5,464,556 B); /projects HOLD 4/10. Deploy disagreement persists (Deploy Hub SUCCESS vs Hub Deploy FAILURE).
-- BUILDER ITEMS: 10 relayed (Gate Watch #3097 HOLD + ruleset audit, Nitro PI-kit delivery, governed-merge root cause, breach bursts #61-64 + #65-66, GPT-6 PI review, GPT-6 search start, GPT-6 search draft head 5cd98c81, VERIFY 21:00Z receipt, VERIFY census correction); cap 20 holds.
-- Where to go: activation guide `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (§10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`); operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 .
+- Main tip: `f2d0220e` (moved 0433d907 -> f2d0220e: exactly one single-parent direct push, f2d0220e 21:21:57Z, Shawn Vibert, whole-picture synthesis; zero merges this tick).
+- Live board: #3066 at 371 comments (364 -> 371 this tick; 2,129 to cap; no migration, no successor board).
+- MERGE RECEIPT WATCH: no PR merged after 21:08Z, so no new receipt check this tick; 0 new breaches. Breach log unchanged (off-protocol total 66 as of the 21:08Z tick).
+- DIRECT PUSH ALERT: f2d0220e (single-parent, not a merge, not the mission-snapshot job). Attribution: Shawn's own synthesis landing, not a lane bypass; VERIFY 21:30Z already re-verified /pi 9.5 at the new tip.
+- WHOLE PICTURE (the current working direction): citizen born in the Welcome walk; Personal + Business + Space apps at TOP of sidebar; Smart Tabs automatic; one all-in-one hub chassis; membership area gated to paid members; dashboard points + affiliate baked in; Factory builds from templates mirroring finished apps; PI is the record. Ten merges - one ultimate each, no exceptions. Repo: HUB/NAYANET-WHOLE-PICTURE-2026-10-26.HUMAN.md + .MACHINE.json.
+- SPEC-INTEGRITY CORRECTION: a 0036 pin alone cannot green the gate - the ratified machine file lacks validator-required schema/status/ratified_date, loop/cycle phases, and invariants. Branch naya/spec-manifest-cure is NOT an active manifest fix (head 00634d98, 0 ahead / 1,256 behind main, LAWS-DELTA regen for 0032).
+- PI: director consolidation written + read back in production PI (umbrella item director-one-ultimate-app-consolidation-20261026, QUEUED, owner naya-resolve). Truth boundary: admin write + read-back is NOT browser visibility, publisher, mail delivery, runtime, or independent evidence.
+- VERIFY 21:30Z: /pi SERVING 9.5 (43,887 B, byte-identical to repo blob at f2d0220e); HOME STABLE 9.0 (5,464,556 B); /projects HOLD 4/10. Directive #2601 DEGRADED (compiled naming old tip 0433d907).
+- GOVERNED-MERGE ROOT CAUSE (standing): rulesets require nothing the protocol assumes - main-protection 24858146 (0 approvals, no required checks, bypass actors), Naya Execution Governance 23853581 (deletion + non_fast_forward only). Cure is staged, director-ratified only.
+- BUILDER ITEMS: 6 relayed this tick (Gate Watch #3099/Kernel/Spec RED, whole-picture synthesis, spec-integrity triage + stale-cure correction, PI one-ultimate directive, PI read-back closure, VERIFY 21:30Z sign-out); cap 20 holds.
+- Where to go: activation guide `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH - who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`); operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 .
 
 ---
 
-# CURRENT MISSION STATE — Team Naya
+# CURRENT MISSION STATE - Team Naya
 
-Last verified: 2026-10-26 14:08 PDT (2026-10-26T21:08Z) by the director pass.
-Main tip: `0433d907` — moved this tick (see This tick).
-Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 364 comments, 2,136 short of the 2,500 hard cap; no successor board; no migration trigger.
+Last verified: 2026-10-26 14:38 PDT (2026-10-26T21:38Z) by the director pass.
+Main tip: `f2d0220e` - moved this tick (see This tick).
+Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 371 comments, 2,129 short of the 2,500 hard cap; no successor board; no migration trigger.
 
-## This tick (2026-10-26 14:08 PDT)
-- Board #3066 moved 350 -> 364 (+14 ids above watermark 6426769183, pages 12-13; 364 < 2,300 — NO MIGRATION; newest 14 all live-board traffic).
-- Tip moved f3c3862e -> 0433d907: direct push a21cce07 (PI build-intelligence brief) + merges #3098 (20:46:33Z) and #3097 (20:46:47Z), both receipt breaches, 0 native reviews each.
-- VERIFY 21:00Z: /pi SERVING 9.5, HOME STABLE 9.0, /projects HOLD 4/10; Guardian pending at tick close.
-- REST quota: 4,679 remaining at tick open (post-reset).
+## This tick (2026-10-26 14:38 PDT)
+- Board #3066 moved 364 -> 371 (+7 ids above watermark 6427266156, page 13; 371 < 2,300 - NO MIGRATION; newest 7 all live-board traffic).
+- Tip moved 0433d907 -> f2d0220e: one Shawn-authored single-parent direct push (whole-picture synthesis). Zero merges after 21:08Z.
+- VERIFY 21:30Z: /pi SERVING 9.5, HOME STABLE 9.0, /projects HOLD 4/10.
+- REST quota: not re-read this tick (cheap tick: git protocol + 4 REST reads); no 403s.
 
 ## Ranked priorities (standing order, re-ranked this tick)
-1. Retire the lane direct deployer (hub single-source cure step 3, Power) — restores now at #5+; still the hub's #1 blocking step.
-2. Ruleset enforcement cure, director-ratified and staged (no required-check click until named reds understood + green reference head exists).
-3. Distinct-seat retro-verification at 0433d907 for #3097 + #3098, and at f3c3862e for #61-64.
-4. #3091 constitution ratification gate (no evidence on merge).
-5. Spec-integrity cure for #3091's unpinned machine spec (branch naya/spec-manifest-cure, owning lane).
+1. Retire the lane direct deployer (hub single-source cure, Power, step 3).
+2. Ruleset enforcement cure, director-ratified, staged (no required-check click until named reds are understood + a green reference head exists).
+3. Distinct-seat retro-verification at 0433d907 for #3097/#3098 + at f3c3862e for breach burst #61-64.
+4. #3091 constitution ratification gate.
+5. Spec-integrity cure for 0036: add validator-required fields to the machine file (pin alone fails) and replace the stale naya/spec-manifest-cure description with a real cure branch.
 6. Breach #56 retro-verification (still owed).
-7. #3099 draft (head 5cd98c81, auth-gated universal search) distinct-seat exact-head review.
-8. PI stale pointer close/re-point (writer seat) + /projects landing + questions.json 200.
-9. Kernel/human-path reds at the new tip (unmeasured after the #3097 merge).
-10. NOW board #2599 trim (256,105 chars, 17 over the 256,088 PATCH ceiling) before its next PATCH.
+7. #3099 distinct-seat exact-head review (draft; reds are SN-1878/spec-pin class, Node 762 pass).
+8. PI stale pointer close/re-point + /projects landing + PI publisher/nav/entitlements under the whole-picture direction.
+9. Test runs at new tip f2d0220e (serving probed only; no run census at the new tip yet).
+10. NOW board #2599 body ceiling (256,105 chars - trim before any further entry).
 
 ## Done with proof
-- /pi serving re-verified byte-identical 9.5 at tip 0433d907 (VERIFY 21:00Z, probe file, not summary).
-- PI face build kit on main at a21cce07 (brief + machine mirror, 42 checks, words, parts register, data pack).
-- #3097 human-path cure merged (head 4e088138) — content landed; governance (receipt, reviews, checks) did NOT pass; recorded as breach, not as clean done.
-- #3098 brain-index regen merged (head 75b7da91) — same: content landed, governance failed; breach, not clean done.
+- Whole-picture synthesis landed at f2d0220e (HUB/NAYANET-WHOLE-PICTURE-2026-10-26.HUMAN.md + .MACHINE.json).
+- PI director consolidation written + read back (note 5d091074; umbrella item QUEUED, owner naya-resolve).
+- /pi serving re-verified 9.5 at the new tip (VERIFY 21:30Z, board 6427835752).
 
 ## Blocked with owner
-- Lane deployer retirement → Power (hub-single-source-cure-20261026 step 3).
-- Ruleset enforcement change → Human Director (protected authority change; exact change must be ratified).
-- Spec-integrity cure (unpinned 0036 spec) → spec-manifest-cure branch owner.
-- SN-1878/SN-1879 door reconciliation → content-door owner (Resolve holds the verification chair).
-- /projects landing + questions.json → Power/Nitro.
-- PI next_action re-point past #3092 → writer seat (naya-power).
+- Ruleset enforcement change: Human Director only (protected authority change).
+- Spec-integrity 0036 cure: spec-manifest-cure branch owner / merge lane (stale-branch correction owed).
+- #3097/#3098 retro-verification: distinct non-author, non-merger seat (owed).
+- Hub single-source deployer cure step 3: Power.
 
-## Key numbers
-- REST quota: 4,679 remaining at tick open.
-- Open PRs: 4 per Naya 5 drain count at 20:47Z (#2981, #3052, #3088 draft, #3089 draft) + #3099 draft pending creation — re-count next tick, never an extra call just for this.
-- Board #3066: 364 comments; 2,136 to the 2,500 hard cap.
+## Team status
+| Area | Accomplished | Working on | Plan |
+| SELF | - | - | - |
+| LAW | Ruleset root cause proven (API) | Retro-verification owed for #3097/#3098, #61-64, breach #56 | Director-ratified ruleset cure, staged |
+| ACT | - | - | - |
+| KNOW | Whole-picture synthesis landed; PI consolidation read back | PI publisher/nav/entitlements under whole-picture direction | #3099 review; PI stale pointer close |
+| PROVE | - | - | - |
+| CONNECT | - | - | - |
+| VERIFY | /pi 9.5 + HOME 9.0 re-verified at f2d0220e | Serving stability over time (Power single-source cure) | Run census at new tip |
+| LEARN | - | - | - |
+| EVOLVE | - | - | - |
 
 ## Where to go
-- Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (§10 THE OATH; companion `THE-CODE-SHE-LIVES-BY.md`).
-- Operating manual v2 ULTIMATE: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in `BRAIN/90-OPERATIONS/`, then the repo path).
+- Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH; companion `THE-CODE-SHE-LIVES-BY.md`).
+- Operating manual v2 ULTIMATE: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902
 - Live board: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066
 - Master directive: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601
-
-## Team status (per area; carried forward where no new signal; — = genuinely unknown)
-- SELF: — / — / —
-- LAW: governed-merge root cause proven from rulesets API; constitution #3091 on main unratified / ruleset cure staged, director gate / ratification evidence
-- ACT: PI face build kit landed (a21cce07) / PI face rebuild to 42-check spec / dedup first
-- KNOW: brain index regen landed via #3098 (breach) / SN-1878 door reconciliation / cold-retrieval proof
-- PROVE: VERIFY 21:00Z /pi 9.5, home 9.0 / Guardian completion, /projects proof / —
-- CONNECT: GPT-6 auth-gated search draft head 5cd98c81 / distinct-seat exact-head review / live private search (RPC pending)
-- VERIFY: 21:00Z receipt + census correction / re-prove after next deploy / —
-- LEARN: L694 + WP-255 ingested (learning event 6427190132) / — / —
-- EVOLVE: — / — / —
