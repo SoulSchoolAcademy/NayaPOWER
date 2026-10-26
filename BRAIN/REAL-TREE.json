@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "7ee2cae44960aa7a30c034c2ef7076bce54d438f",
-  "inventory_file_count": 1694,
+  "receipt_basis_commit": "e047de80d4c5a4a06a0728a440abc1e7ae99caa9",
+  "inventory_file_count": 1696,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 867,
+    "05-MEMORY": 869,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4856,9 +4856,19 @@
       "size": 3464
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1874/IB-SMART-NOTE-20261026-sn1874-finish-it-or-say-its-unfinished.md",
+      "blob_sha": "cdff9d493180134302215b8fa71a2007e8e2ed55",
+      "size": 3617
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1872/IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note.md",
       "blob_sha": "c2d97cf19afe6cd6482907899d19d0ee3e6296cb",
       "size": 2939
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1873/IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself.md",
+      "blob_sha": "63a7fc5db8edee4a873397d70fb3088bafb1cb29",
+      "size": 3359
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
@@ -8087,8 +8097,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "3ab09658b35ec5d7caa4a2cda3c4cf704ebf4ed9",
-      "size": 4861
+      "blob_sha": "8f9e5961095c5e0629577000d25a7fac71a45f73",
+      "size": 4845
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8447,8 +8457,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "511be55ff83f53581a74078786c976cc59c176fb",
-      "size": 19285
+      "blob_sha": "5563fe396c80fe65f5548869621d161b395e630b",
+      "size": 19260
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
