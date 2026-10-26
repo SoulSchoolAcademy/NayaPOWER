@@ -125,8 +125,8 @@ test("Hub rooms have honest fallbacks and deliberate same-origin destinations", 
   // An obsolete requirement that EVERY room render inside Hub would hide the
   // real contract. Assert router and sidebar agree; disallow old .html stubs,
   // cross-origin jumps, traversal, or unrecognized URL shapes.
-  function extractMap(name) {
-    const match = src.match(new RegExp(`const ${name} = \\{([\\s\\S]*?)\\};`));
+  function extractMap(name, source = src) {
+    const match = source.match(new RegExp(`const ${name} = \\{([\\s\\S]*?)\\};`));
     assert.ok(match, `missing ${name} room route map`);
     const pairs = [...match[1].matchAll(/([a-z]+):\s*'([^']+)'/g)];
     assert.ok(pairs.length >= 7, `${name} has too few routed rooms`);
@@ -136,6 +136,13 @@ test("Hub rooms have honest fallbacks and deliberate same-origin destinations", 
   const sidebar = extractMap("EXTERNAL");
   assert.deepEqual([...router].sort(), [...sidebar].sort(),
     "sidebar and hash router must not disagree about where rooms lead");
+  // Adversarial negative control: drift ONE destination while the other
+  // stays unchanged. The comparator must detect the planted mismatch.
+  const tampered = src.replace("today: '/rooms/today'", "today: '/rooms/forged-destination'");
+  assert.notEqual(tampered, src, "the planted route falsifier must actually modify the bundle");
+  assert.notDeepEqual([...extractMap("EXTERNAL_ROOMS", tampered)].sort(),
+    [...extractMap("EXTERNAL", tampered)].sort(),
+    "a divergent route map must be observable by the acceptance check");
   for (const [room, path] of router) {
     assert.ok(path === "/smartfactory" || /^\/rooms\/[a-z-]+$/.test(path),
       `${room} has an invalid destination: ${path}`);
