@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "1b0b584c21962c5791c4fa59d691758fc02ed6af",
-  "inventory_file_count": 1676,
+  "receipt_basis_commit": "10cb6d9c8728632ca842576613a54a33923ae9d0",
+  "inventory_file_count": 1677,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 863,
+    "05-MEMORY": 864,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4824,6 +4824,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md",
       "blob_sha": "1a7e5ca989b0c321ecaf3e14495c7f02f2d7b6c5",
       "size": 2599
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SERVICE/showing-gate/SN-1869/IB-SMART-NOTE-20261026-sn1869-done-right-or-not-shown.md",
+      "blob_sha": "42a4258b6df18a1cd712c191585d8bd822cda042",
+      "size": 3852
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
