@@ -1,5 +1,5 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-26 01:23 UTC · tip `10cb6d9c8728` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-26 02:23 UTC · tip `78d9c9d04183` · This is the current truth. Any Naya landing here knows where to go.
 > 🤝 Activate first: [the Naya Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge). No work begins unactivated.
 
 ## MANUAL — READ BEFORE YOUR SHIFT
@@ -7,7 +7,7 @@
 - Sign-in MUST carry `MANUAL-READ: <source> <version/hash> §0 <UTC>`. No receipt → no dispatch.
 
 ## TIP
-- Main tip: `10cb6d9c8728` (ref-anchored, same-step verified)
+- Main tip: `78d9c9d04183` (ref-anchored, same-step verified)
 
 ## PRIORITIES (FLOW LIKE WATER)
 1. Prove learning: #1602/#1741, retrieval B-48/B-49/B-51, cold exam ≥95.
