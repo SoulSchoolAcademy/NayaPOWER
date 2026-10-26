@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-25 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 00:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22591,6 +22591,14 @@ _Last updated: 2026-10-25 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: tip aa8061c1 re-pinned at remote HEAD via git protocol; #2385 head eedd9540f54cd unchanged; receipt = verification-only run, consistent with t0032 9.0 scoring. -1: competing-boot re-class vs moved base deferred (honest gap named).
 
+### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** Flip-sequence merge seat: re-pin + calculator HOLDs, no merge manufactured
+
+**Receipt:** `twelve-lane-receipts/t0052-lane8.md`
+
+**Evidence:** VERIFIED: both cited decision JSONs exist (guide-merge for #2456 and #2457); principled HOLDs stated with exact failing checks, no merge manufactured. PARTIALLY VERIFIABLE AT DISTANCE: git ls-remote shows all four cited branches (eight-mjs-coldretrieve-t1332, ten-testdeps-fp-t1442, nine-tipred-fix-t1422, two-compoundscale-fixture-t1432) absent from
+
 ### ✅ t0052-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** flip-sequence merge seat: re-pin 4 PRs, merge calculator HOLDs on #2456/#2457, principled HOLD on #2453
@@ -22620,6 +22628,14 @@ _Last updated: 2026-10-25 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2456/head == e326283252a7e9f932b0d9ebad465c50950b0799 == pin; refs/pull/2457/head == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == pin; refs/pull/2458/head == ac270833fb3a52c6be45acc730b0e5132353d5a5 == pin; main == aa8061c1
+
+### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 hypothesis-change + sealed pre-registration (shape-of-inheritance experiment)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** VERIFIED: all 7 cited artifacts exist with hashes matching the receipt prefixes exactly (HYPOTHESIS-CHANGE 1b470332, prereg 8c8aa054, arm-key 5847956163, harness a685364a, seed receipt 83454be5, decision JSON present). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) probes not yet executed at receipt time - this is a sealed pre-registr
 
 ### ✅ t0052-gap — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
@@ -22663,6 +22679,14 @@ _Last updated: 2026-10-25 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on disk: prereg-sealed.md sha256 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6 == claimed pin; HYPOTHESIS-CHANGE-h8.md, seal-verification.json, arm-key-sealed.json all exist (dir mtimes 08:06-08:07Z). Sign-in #2175 6120247601 (08:05:38Z) predates seal; sign-out 6120289262 (08:08:37Z). Mechanical gate defined F
 
+### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value window audit t0022-t0052, byte-identical instrument runs
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** VERIFIED: both run files exist with byte-identical sha256 e4f54debb295 matching the receipt; metric_audit_t0052.json exists with sha256 77354d82a359 matching exactly; SUMMARY_t0052.md present. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) single-seat judgments - no independent seat re-ran the audit (lane-named hole 1); (2) board legs
+
 ### ✅ t0052-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** human-value instrument t0022-t0052 window: determinism, hand audit, machine cross-check, HV3 re-derived
@@ -22692,6 +22716,14 @@ _Last updated: 2026-10-25 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap close: independent board-post verification of t0803 Herald verdict
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** VERIFIED: receipt file exists; cited feedback-feed.md Lane 12 t0803 block present and substance-checked (SHARPEN verdict, four-point mechanism, STALE-BLOCK language). NOT PHANTOM: local artifact exists. REST comment GET (id 6184357778, author SoulSchoolAcademy, issue 2537, 2026-10-15T04:23:00Z) inherited from receipt, not re-run this tick. Score 9.
 
 ### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -34298,6 +34330,12 @@ _Last updated: 2026-10-25 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-t0052-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: independent re-run of t0022-t0052 window audit (M2/M3/M4) + receipt-by-receipt re-judgment
+
+**Evidence:** VERIFIED 2026-10-26T00:02Z on live workspace bytes: pinned archive SHAs EXACT match - original runs e4f54debb295 (run1+run2), audit 77354d82a359; new gap re-runs 01bc5757ee9ed (run1+run2, byte-identical); summary file present; scorer recount of metric_audit_t0052.json: 9 rows, M2 9 / M3 8 / M4 3, keys exactly the 9 rows the receipt names; corpus dr
 
 ### ✅ gap-gap-gap-t0122-recusal-3 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
