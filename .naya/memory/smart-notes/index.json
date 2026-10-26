@@ -15620,7 +15620,7 @@
       "smart_note_id": "SN-1877",
       "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time",
       "title": "Decide by the Checklist — Every Time",
-      "content_hash": "d64580c648f52fa4ab4d4a6a3bde48e95a41132dfe0c35c33c271ca01b538b1c",
+      "content_hash": "5bbcbae2c91c97e30b20c8d06ec154e3d4aaaf4e0da8bbf1d7f3163ec764eca0",
       "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1877/IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
       "truth_state": "CANDIDATE",
@@ -15634,7 +15634,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-26 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "3a1781e841982d04a7dbf7aaff139fa693f3e13c200c6f4ab7aab82fcfe4abd1"
+      "page_hash": "f75c859afaaa34df49e5a914772d8b10b0ae78e6da68419d3996fcaf7737cd48"
     }
   ],
   "sequence_policy": {
@@ -15643,5 +15643,5 @@
     "next_sequence": 1878,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "e9167693fb7f526246e6e3a58838296d0e0e31cdca50d2c3e05ab4543342e9f6"
+  "corpus_manifest_hash": "5a38cc8305cce2dcfa58369bff01185fc5066c5d06e82592231fa06515c7ebb5"
 }
