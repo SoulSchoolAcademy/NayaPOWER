@@ -15561,7 +15561,7 @@
       "smart_note_id": "SN-1873",
       "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself",
       "title": "Scorecard It First — Then Merge It Yourself",
-      "content_hash": "6ea7431fbb5b2608149437e63a540652db30c31f214277c24b7c19fb95b90197",
+      "content_hash": "3b5a1dd5e36a8786e9d583ba96077d3016aa1e04f591946622d996918ed3112e",
       "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1873/IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
       "truth_state": "CANDIDATE",
@@ -15575,7 +15575,7 @@
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-26 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "b5c502c3798e343242e1660c4adc28aaf714d1d067dae38cd18f3170805c46f6"
+      "page_hash": "b0a6794fead849155fdcbb4faa4204de0529e2a0a396eccbb8220a10eec02634"
     },
     {
       "smart_note_id": "SN-1874",
@@ -15643,5 +15643,5 @@
     "next_sequence": 1878,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "5a38cc8305cce2dcfa58369bff01185fc5066c5d06e82592231fa06515c7ebb5"
+  "corpus_manifest_hash": "c740380a66c5763e74a4089bb1eade75f3730b8e66c3f9dbdb6449d17cadb8d8"
 }
