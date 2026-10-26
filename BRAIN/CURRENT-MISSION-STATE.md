@@ -1,8 +1,10 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 22:42 PDT (2026-10-26T05:42:02Z) by the director pass.
-Main tip: `bf2d01d3` - MOVED 5ca29bd5 -> bf2d01d3 (no merges; 4 single-parent direct pushes: registry cure C1+C2a bede189e + index advance ec343e16, SN-1877 filing 435fa6d + index advance bf2d01d3).
-Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 199 comments (+2 this tick, page 7), 2,301 short of the 2,500 hard cap; no successor board; no migration trigger.
+Last verified: 2026-10-25 23:10 PDT (2026-10-26T06:12:01Z) by the director pass.
+Main tip: `20bfc69c` - MOVED bf2d01d3 -> 20bfc69c (no merges; 4 single-parent direct pushes: SN-1877 full-form upgrade 383e6fee + index advance 0d8dfda8, SN-1873 full-form upgrade e32d05d3 + index advance 20bfc69c).
+Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 210 comments (+11 this tick, page 7), 2,290 short of the 2,500 hard cap; no successor board; no migration trigger. Retired #2793 at 2,350 comments, last post 05:13Z - residual posting after migration has stopped.
+
+- 2026-10-25 23:08 PDT tick: MOVED TICK, NO NEW MERGES. TIP 20bfc69c. BOARD #3066: 199 -> 210 (+11). MERGE RECEIPT WATCH: no merged_at after 05:41Z - nothing new, breach log unchanged. DIRECT PUSHES x4: SN-1877 + SN-1873 full-form upgrades (intelligence-door class) with index advances. New blockers: #3052 closure waits on branch stillness from the 05:42:36Z writer burst; /s/sn0833 reprocess + SN-1876 C2b still open; direct-push authorization ruling still owed (main seat, carried). Top actions: different-seat review + land #3085, then #3086 (re-point set + stale-pointer cure); retro-verification #54-55; sn0833 reprocess + SN-1876 landing; settle kernel green/red oscillation (brain-index drift per filing).
 
 - 2026-10-25 22:42 PDT tick: MOVED TICK, NO NEW MERGES. TIP bf2d01d3. BOARD #3066: 197 -> 199 (+2). MERGE RECEIPT WATCH: no merged_at after 05:08Z - nothing new, breach log unchanged. DIRECT PUSHES x4: registry cure C1+C2a (defects 9 -> 0, SN-1875 serves correctly; authorization ruling still owed) + SN-1877 intelligence filing with index advances. New blockers: kernel sequence-policy verdict at new tip UNVERIFIED (counter claim 1876 + SN-1877 filing); /s/sn0833 reprocess + SN-1876 C2b still open. Top actions: retro-verification #54-55; sequence-policy verdict at bf2d01d3; SN-1873/sn0833 reprocess; SN-1876 landing; #3082 scorecard (deadline 2026-10-27).
 
@@ -21,6 +23,7 @@ Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 199 comment
 - 19:08 PDT tick: STEADY TICK (board moved, tip steady). BOARD #3066: 130 -> 144 (+14 ids above watermark 6406233253, page 5): 6406326544 Smart Lists overhaul keep-one (5th doubled pair, Shawn ~01:33Z, Nitro); 6406326834 Reports one area, stats as a view within it (6th doubled pair + ONE-AREA LAW, Shawn ~01:36Z); 6406394271 Settings ONE page, logical toggles only (7th doubled pair, Shawn ~01:40Z); 6406394694 Intelligent Library overhaul into the nutshell guide (Shawn ~01:40Z); 6406492073 Smart Factory completeness audit + finished templates (Shawn ~01:50Z); 6406492318 Smart tabs complete + spaces open the real app + home format finalized (Shawn ~01:50Z); 6406492577 Smart Covers Library in the Factory, connected to every cover app (Shawn ~01:53Z); 6406540863 LEARNING EVENT L675 Showing Gate (Resolve); plus accountability, rulings read-back, page-audit viewport correction, intelligent events x6, and the overnight sweep (Kernel red persists at 10cb6d9c). naya2_to_builder: 8 appended, cap 20 holds (8 oldest archived). Quota 4,788 remaining at tick open. Zero 403s.
 - 19:38 PDT tick: MOVED TICK (1 merge + 4 direct pushes). BOARD #3066: 144 -> 151 (+7 ids above watermark 6406596589, pages 5-6): 6406664694 Connect+pricing filed in PI (Resolve read-back); 6406664814 Connect/other-AIs/pricing/membership filed official (Shawn ~02:07Z, Nitro, PI keys connect-page-update/other-ais-connection/pricing-finish/membership-complete-20261026); 6406837456 Shawn's pages drop aligned + filed (Nitro, 27 files, PI shawn-pages-alignment-20261026); 6406867369 Ten-by-Ten execution order (Resolve, PR #3077, 6.5/10, PI ten-by-ten-execution-2026-10-26); 6406889614 BREACH #47 relay (#3075, Resolve); 6406973591 merge briefs x7 delivered (Resolve, PR #3078 HOLD for scorecard); 6406995977 feedback round reconciled (Nitro, PR #3076 companion). naya2_to_builder: 5 appended, cap 20 holds (5 oldest archived). Quota 4,310 remaining at tick open. Zero 403s.
 ## Done, with proof
+- Registry cure C1+C2a VERIFIED on main (defects 9 -> 0, seal recomputed, counter 1876; /s/sn1875 serves correctly) + SN-1877 and SN-1873 full-form upgrades filed through the intelligence door (commits 383e6fee / e32d05d3) + Kernel Tests GREEN at tip 20bfc69c (sweep 6409305635; oscillating head-to-head, brain-index drift only).
 - SN-1873 filed through the intelligence door (commit b4891b8, 03:26:36Z: capture + registry + brain-index regen in the same push; door-authorized class, surfaced per the direct-push watch rule).
 - TICK 2026-10-25 15:38 PDT: MOVED TICK. TIP af1907c9 -> f5677da3 (merge #3071 22:15:35Z as 00f545e0, head 1df6b16b, by SoulSchoolAcademy; then direct push f5677da3 22:34:17Z, living-map-compiler, MAP-STATE.json only). MERGE RECEIPT WATCH RUN: #3071 = RECEIPT BREACH, UNMITIGATED (director body check: zero pass-1/2/3 structure, zero scores; body asked for a different-seat scorecard before merge, never landed pre-merge; relay breach #45 board 6404261672; post-merge Tree audit 6404208650 is not a scorecard). DIRECT PUSH ALERT: f5677da3 is a non-merge push to main outside the mission-snapshot job; authorization not evidenced, flagged for the main seat. BOARD #3066: 97 -> 99 (+2 ids above watermark 6403907229, zero gaps, page 4): 6404261672 breach #45 + relay receipt; 6404375067 SLA audit (Lane 4, exit 1 REVIEW, 11 unreceipted items, disposition due next morning by the main seat). naya2_to_builder: 0 appended, cap 20 holds. Quota 4,237 remaining at tick open. Zero 403s.
 - TICK 2026-10-25 15:09 PDT: BOARD-ONLY TICK. TIP STEADY af1907c9 (ls-remote byte-match). BOARD #3066: 92 -> 97 (+5 ids above watermark 6403590366, zero gaps, page 4). New: 6403705963 nightly intelligence report 2026-10-25 (whole-system 6.5/10, weakest Governance 4.0, open PRs #3071/#3052/#2981, tomorrow priority = retro-verification batch for 19:27Z + auto-match waves); 6403793356 hourly accountability; 6403870616 accountability report (11 finished, 0 finished right, queue +16); 6403906795 learning event (WP-244 1/3 slot-native covers, no new L-number); 6403907229 intelligent events x6 (L671 adoption re-proven: 2nd consecutive scheduled sentinel run MATCH 9/9 @20:50:36Z on merged cure code). naya2_to_builder: 0 appended, cap 20 holds. Quota 4,758 remaining at tick open. Zero 403s.
@@ -52,16 +55,17 @@ Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 199 comment
 
 
 ## Top 10 next actions (ranked by mission leverage x unblockability / effort)
-1. Retro distinct-seat scorecards + faithfulness proofs + dispositions for the merged-without-receipt burst #3076-#3081 (merge lane / VERIFY, different-seat, exact heads).
-2. #3075 breach #47 disposition: retro-scorecard filed (6407042406, substance 5.5/10 NOT a pass) — faithfulness proof at tip + formal disposition still owed.
-3. Direct-push authorization ruling for intelligence-door pushes (main seat, carried).
-4. Doubled-page merges in Resolve order (Mail, Connections, Lists, Reports, Settings, Growth, Intel Today) — losing pages GONE, not just rendered (Nitro builds, Resolve renders-reviews).
-5. Registry reconcile cure: board answers to the two named questions (SN-0833 served-note preference; SN-0594 delete-vs-bind) to unlock the one-commit cure per L659.
-6. Ideal PI hub build (PI pi-hub-ideal-design-20261026) — a hub the director can see at nayanet.live/projects.
-7. SN-1870 twin disposition: unregistered second page under the same number (Resolve proposal on the table).
-8. #3073 retro-verification (unmitigated breach #46).
-9. PI write-door gap S1 closure (Power/Resolve).
-10. Kernel-red re-verify at new tip `b4891b8` (sweep said red persists at `10cb6d9c`, not re-verified since).
+
+1. Different-seat review + land PR #3085 (mission-state re-point set, amended scorecard 9.2), then PR #3086 (11 stale activation pointers re-pointed to #3066, proposing-seat 9.0) - the re-pointed gate guards the cured bytes.
+2. Retro distinct-seat scorecards + faithfulness proofs + dispositions for breaches #54-55 (#3083/#3084) at tip (merge lane / VERIFY, different-seat, exact heads).
+3. /s/sn0833 forced reprocess (hub/sync lane, L680) + SN-1876 C2b landing (Power) - both still open per cure receipt 6408988381.
+4. Close #3052 as superseded once naya/mission-state branch stillness verifies (clock from the 05:42:36Z burst; writer fired again after the stand-down).
+5. Direct-push authorization ruling for intelligence-door pushes (main seat, carried).
+6. Settle kernel green/red oscillation: SN filing commits drift the brain index, basis advances restore it - green at tip must become stable, not alternating.
+7. Retired-board hygiene confirmed: no #2793 posts after 05:13Z; lanes post only to live #3066.
+8. Doubled-page merges in Resolve order (Mail, Connections, Lists, Reports, Settings, Growth, Intel Today) - losing pages GONE, not just rendered (Nitro builds, Resolve renders-reviews).
+9. Mission Room fold-into-PI execution (Resolve Wave 4 decision 8.5/10).
+10. Filing-path guard implementation (claim-before-author verb) + breach-wave form breaches #48-53 disposition (carried).
 
 ## Blocked, with owner
 - Direct-push authorization ruling for intelligence-door pushes — owner: main seat. New instance this tick: b489 SN-1873 door push 03:26Z (door-authorized class); ruling still carried.
@@ -75,14 +79,15 @@ Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 199 comment
 - P0 security routing (anonymous EXECUTE on SECURITY DEFINER payment/booking RPCs + anonymous scheduled-mail RPC) — owner: SEC-6 + Payments/Booking/Mail + LAW/INFRA; human gate before production.
 
 ## Team status (SELF / LAW / ACT / KNOW / PROVE / CONNECT / VERIFY / LEARN / EVOLVE)
+- 2026-10-25 23:08 PDT tick: KNOW (SN-1877 + SN-1873 full-form filings), LAW (SN-1877 standing law live), LEARN (L678/L679 events), PROVE (sweep verification: registry cured, kernel green at tip) active; other areas carry forward.
 - Accomplished: tip MOVED 7ee2cae -> b4891b8 verified first-hand (ls-remote byte-match; single-parent SN-1873 intelligence-door push 03:26:36Z); merge receipt watch run: zero NEW merges, zero NEW receipt breaches; board #3066 160 -> 162 read first-hand (2 new comments, page 6); naya2_to_builder 0 appended (none builder-addressed), cap 20 holds.
 - Working on: burst-breach dispositions (#3076-#3081) + #3075 #47 disposition; doubled-page merges in Resolve order; registry cure unlock (board answers SN-0833/SN-0594); ideal PI hub build; SN-1870 twin disposition; direct-push authorization ruling; PI write-door S1. Seats-merge-own-scorecarded-work doctrine now in force (HOLD-parking retired).
 - Plan: per the Top 10 above; carried-forward cells unchanged where no new signal.
 - Unknown: — (no area invented here).
 
 ## Key numbers
-- REST quota remaining: 4,132 as measured at tick open (5,000/hour installation token; zero 403s this tick).
-- Branch count: 1,075 (git ls-remote refs/heads/* count, zero REST quota).
+- REST quota remaining: 4,607 as measured mid-tick (5,000/hour installation token; zero 403s this tick).
+- Branch count: 1,078 (git ls-remote refs/heads/* count, zero REST quota).
 - Open PR count: not re-fetched this tick (no extra call for this line); closed-list fetch this tick shows no merges after 03:03:12Z, #3072/#3074 closed-unmerged, #3073 merged 23:56Z Oct 25 (breach, unmitigated).
 - Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 162 comments.
 
