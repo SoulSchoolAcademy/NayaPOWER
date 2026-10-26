@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Project Intelligence — NayaNET</title>
+<meta name="description" content="Project Intelligence: everything happening across NayaNET, in one place, in plain words.">
+<!--
+  PI FACE — REVIEW DRAFT, NOT THE LIVE PAGE.
+  Live read path: same-origin /projects/state.json (proven live, refreshes),
+  fetched fresh on every load and on Refresh, cache no-store. Every number
+  on this face carries its read time. If the read fails, the face says so
+  and shows structure only — it never invents a number.
+  Per-area % and per-item rows are WITHHELD until their gates land:
+  per-area % needs backfill acceptance (Uncategorized under 5%, zero done
+  uncategorized, zero needs-decision uncategorized); item rows need the
+  live items read on the production worker (endpoint contract in the
+  companion README). Until then the face shows the gate honestly, never
+  a staged number presented as live.
+  Machine proof (hashes, SHAs, entry IDs, raw receipts) lives ONE TAP
+  behind each item's Details door — never on the surface.
+  Design: verbatim N5 tokens only, white text always, white rim at rest,
+  own colour ignites on touch (edge + glow only), horizontal rectangles,
+  three-layered elevation, mobile first. See README in this folder.
+-->
+<style>
+  :root{
+    --obsidian:#050507; --deep:#020203; --white:#ffffff; --paper:#F8F7FB;
+    --magenta:#e84fff; --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e;
+    --shown:#ffbf3d; --red:#ff5e6c; --teal:#40d3bb; --indigo:#6675ff;
+    --lime:#b8ee57; --orange:#ff9a5a;
+  }
+  *{box-sizing:border-box}
+  html{background:var(--obsidian)}
+  body{
+    margin:0; width:100%; background:linear-gradient(180deg,#050507,#020203);
+    color:var(--white);
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:17px; line-height:1.6;
+  }
+  h1,h2,h3{color:var(--white); line-height:1.25; margin:0}
+  h1{font-family:Newsreader,Georgia,serif; font-size:clamp(30px,5vw,44px); font-weight:700}
+  h2{font-size:24px; font-weight:700}
+  h3{font-size:18px; font-weight:700}
+  p{color:var(--paper); margin:8px 0}
+  a{color:var(--white)}
+  .wrap{width:100%; padding:20px 16px 40px}
+  @media(min-width:700px){ .wrap{padding:28px 28px 48px} }
+
+  /* Top bar: back pill + wordmark. Pattern: Hub top bar, reworded. */
+  .topbar{display:flex; align-items:center; gap:14px; width:100%}
+  .pill{
+    display:inline-flex; align-items:center; gap:8px; min-height:48px; padding:0 20px;
+    border:2px solid var(--white); border-radius:999px; background:linear-gradient(180deg,#050507,#020203);
+    color:var(--white); text-decoration:none; font-weight:700; font-size:16px; cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55);
+    transition:transform .18s cubic-bezier(.16,.84,.22,1), border-color .18s, box-shadow .18s;
+  }
+  .pill:hover,.pill:focus-visible{transform:translateY(-2px); border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--purple); outline:none}
+  .wordmark{font-family:Newsreader,Georgia,serif; font-size:clamp(26px,4vw,34px); font-weight:700; color:var(--white)}
+
+  /* Boards: horizontal rectangles, three-layered elevation, never flat. */
+  .board{
+    width:100%; margin:20px 0; padding:22px 20px; border:2px solid rgba(255,255,255,.55); border-radius:20px;
+    background:linear-gradient(180deg,#050507,#020203);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 28px rgba(0,0,0,.6);
+  }
+  .board-head{display:flex; align-items:flex-start; gap:12px}
+  .dot{flex:0 0 auto; width:14px; height:14px; margin-top:7px; border-radius:50%; background:var(--white); box-shadow:0 0 10px rgba(255,255,255,.55)}
+  .sec-label{font-size:13px; letter-spacing:.16em; font-weight:800; color:var(--paper); text-transform:uppercase}
+  .readtime{font-size:14px; color:var(--paper)}
+  .notice{
+    width:100%; padding:14px 16px; border:2px solid var(--white); border-radius:14px;
+    background:linear-gradient(180deg,#050507,#020203); color:var(--white);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 6px 16px rgba(0,0,0,.5);
+  }
+  .notice.warn{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 6px 16px rgba(0,0,0,.5), 0 0 18px -4px var(--shown)}
+  .notice.bad{border-color:var(--red); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 6px 16px rgba(0,0,0,.5), 0 0 18px -4px var(--red)}
+
+  /* Numbers: lit circles carry numbers; labels beneath. */
+  .nums{display:flex; flex-wrap:wrap; gap:16px; width:100%; margin-top:16px}
+  .num{flex:1 1 130px; text-align:center; padding:10px 6px}
+  .orb{
+    width:84px; height:84px; margin:0 auto; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    border:2px solid var(--white); background:linear-gradient(180deg,#050507,#020203);
+    font-size:26px; font-weight:900; color:var(--white);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.55);
+  }
+  .orb.big{width:104px; height:104px; font-size:34px}
+  .orb.proven{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.55), 0 0 18px -2px var(--green)}
+  .orb.dark{border-style:dashed; color:var(--paper)}
+  .num-label{margin-top:8px; font-size:14px; font-weight:700; color:var(--white)}
+  .num-sub{font-size:13px; color:var(--paper)}
+
+  /* Buttons: black center, white text, white rim at rest, own colour on touch, edge + glow only. */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:52px; padding:0 22px;
+    border:2px solid var(--white); border-radius:999px; background:linear-gradient(180deg,#050507,#020203);
+    color:var(--white); font:inherit; font-weight:700; font-size:16px; cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55);
+    transition:transform .18s cubic-bezier(.16,.84,.22,1), border-color .18s, box-shadow .18s;
+  }
+  .btn:hover,.btn:focus-visible{transform:translateY(-2px); border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--purple); outline:none}
+  .btn:active{transform:translateY(2px)}
+  .btnrow{display:flex; flex-wrap:wrap; gap:12px; margin-top:14px}
+
+  /* Rooms: horizontal rectangles, one after another. Colour on rim + dot only, never on text. */
+  .room{
+    width:100%; text-align:left; padding:18px 20px; margin:14px 0; border:2px solid var(--white); border-radius:20px;
+    background:linear-gradient(180deg,#050507,#020203); color:var(--white); cursor:pointer; font:inherit;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6);
+    transition:transform .18s cubic-bezier(.16,.84,.22,1), border-color .18s, box-shadow .18s;
+  }
+  .room:hover,.room:focus-visible{transform:translateY(-2px); outline:none}
+  .room .rname{font-size:22px; font-weight:700; color:var(--white); display:flex; align-items:center; gap:12px}
+  .room .rdot{width:14px; height:14px; border-radius:50%; background:var(--white); flex:0 0 auto; box-shadow:0 0 10px rgba(255,255,255,.55)}
+  .room .rline{color:var(--paper); margin:6px 0 0}
+  .room .rstatus{font-size:14px; color:var(--paper); margin:8px 0 0}
+  .room[data-accent="magenta"]{border-color:var(--white)}
+  .room[data-accent="magenta"]:hover{border-color:var(--magenta); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--magenta)}
+  .room[data-accent="magenta"] .rdot{background:var(--magenta); box-shadow:0 0 10px var(--magenta)}
+  .room[data-accent="purple"]:hover{border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--purple)}
+  .room[data-accent="purple"] .rdot{background:var(--purple); box-shadow:0 0 10px var(--purple)}
+  .room[data-accent="blue"]:hover{border-color:var(--blue); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--blue)}
+  .room[data-accent="blue"] .rdot{background:var(--blue); box-shadow:0 0 10px var(--blue)}
+  .room[data-accent="green"]:hover{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--green)}
+  .room[data-accent="green"] .rdot{background:var(--green); box-shadow:0 0 10px var(--green)}
+  .room[data-accent="shown"]:hover{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--shown)}
+  .room[data-accent="shown"] .rdot{background:var(--shown); box-shadow:0 0 10px var(--shown)}
+  .room[data-accent="red"]:hover{border-color:var(--red); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--red)}
+  .room[data-accent="red"] .rdot{background:var(--red); box-shadow:0 0 10px var(--red)}
+  .room[data-accent="teal"]:hover{border-color:var(--teal); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--teal)}
+  .room[data-accent="teal"] .rdot{background:var(--teal); box-shadow:0 0 10px var(--teal)}
+  .room[data-accent="indigo"]:hover{border-color:var(--indigo); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--indigo)}
+  .room[data-accent="indigo"] .rdot{background:var(--indigo); box-shadow:0 0 10px var(--indigo)}
+  .room[data-accent="lime"]:hover{border-color:var(--lime); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--lime)}
+  .room[data-accent="lime"] .rdot{background:var(--lime); box-shadow:0 0 10px var(--lime)}
+  .room[data-accent="orange"]:hover{border-color:var(--orange); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--orange)}
+  .room[data-accent="orange"] .rdot{background:var(--orange); box-shadow:0 0 10px var(--orange)}
+
+  /* Search + switch: wells recessed, text white. */
+  .well{
+    width:100%; min-height:52px; padding:12px 18px; border:2px solid rgba(255,255,255,.55); border-radius:14px;
+    background:linear-gradient(180deg,#020203,#050507); color:var(--white); font:inherit; font-size:16px;
+    box-shadow:inset 0 2px 8px rgba(0,0,0,.6), inset 0 -1px 0 rgba(255,255,255,.12);
+  }
+  .well::placeholder{color:var(--paper)}
+  .switch{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+  .switch .btn[aria-pressed="true"]{border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--purple)}
+  .hidden{display:none !important}
+  .linklist{margin:10px 0 0; padding:0; list-style:none}
+  .linklist li{margin:10px 0}
+  .crumb{font-size:14px; color:var(--paper)}
+  .dark{color:var(--paper)}
+  .bigpct{font-family:Newsreader,Georgia,serif; font-size:clamp(44px,8vw,64px); font-weight:700; color:var(--white); line-height:1.1}
+  @media (prefers-reduced-motion: reduce){
+    .pill,.btn,.room{transition:none}
+  }
+  body.calm .pill, body.calm .btn, body.calm .room{transition:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="pill" href="/">← Hub</a>
+    <span class="wordmark">Project Intelligence</span>
+  </div>
+  <p>Everything happening across NayaNET, in one place, in plain words.</p>
+
+  <div class="btnrow">
+    <button class="btn" id="refreshBtn" type="button">↻ Refresh the numbers</button>
+    <button class="btn" id="calmBtn" type="button" aria-pressed="false">Calm motion: off</button>
+  </div>
+
+  <div class="board" id="statusBoard">
+    <div class="board-head"><span class="dot"></span><div>
+      <div class="sec-label">Live record</div>
+      <h2>What is happening right now</h2>
+    </div></div>
+    <p id="statusLine">Reading the live record…</p>
+    <p class="readtime" id="readTimeLine"></p>
+    <div class="nums" id="hubNums">
+      <div class="num"><div class="orb big" id="orbPct">–</div><div class="num-label">Done</div><div class="num-sub">share of all to-dos finished and proven</div></div>
+      <div class="num"><div class="orb" id="orbTotal">–</div><div class="num-label">All to-dos</div><div class="num-sub">everything tracked</div></div>
+      <div class="num"><div class="orb proven" id="orbDone">–</div><div class="num-label">Done · proven</div><div class="num-sub">finished, with proof</div></div>
+      <div class="num"><div class="orb" id="orbMotion">–</div><div class="num-label">In motion</div><div class="num-sub">being worked on now</div></div>
+      <div class="num"><div class="orb" id="orbTodo">–</div><div class="num-label">To do</div><div class="num-sub">waiting in line</div></div>
+      <div class="num"><div class="orb" id="orbCheck">–</div><div class="num-label">Being checked</div><div class="num-sub">finished, awaiting proof</div></div>
+      <div class="num"><div class="orb" id="orbDecision">–</div><div class="num-label">Needs a decision</div><div class="num-sub">waiting on a human call</div></div>
+      <div class="num"><div class="orb" id="orbBlocked">–</div><div class="num-label">Blocked</div><div class="num-sub">waiting on something else</div></div>
+      <div class="num"><div class="orb dark">?</div><div class="num-label">Parts at 9+</div><div class="num-sub">not measured yet — no score table exists</div></div>
+      <div class="num"><div class="orb dark">?</div><div class="num-label">Today's pace</div><div class="num-sub">not measured yet for today</div></div>
+    </div>
+    <div class="notice" id="moveBox" style="margin-top:16px">
+      <strong>Movement.</strong> <span id="moveText">Loading today's movement from the live record…</span>
+    </div>
+  </div>
+
+  <div class="board" id="todoBoard">
+    <div class="board-head"><span class="dot"></span><div>
+      <div class="sec-label">The whole to-do list</div>
+      <h2>Everything to do, everything done</h2>
+    </div></div>
+    <p>Nothing is hidden behind a filter here. Done and to-do are unmistakable: done means finished <em>and</em> proven — anything less stays in to-do until its proof lands.</p>
+    <div class="notice warn" id="itemsNotice">
+      <strong>The item rows are not wired yet.</strong> The counts above are live. The full list of names, owners, next steps, and notes loads from the live items read on the production worker — that read does not exist yet, so this face shows no rows rather than invented ones. The row format is built (plain name, state, owner, next step, updated time, and a Details door holding the machine proof one tap behind). Wiring the items read lights the whole list up; nothing else on this page changes.
+    </div>
+    <div class="btnrow">
+      <button class="btn" id="showDoneBtn" type="button">Show done · proven</button>
+      <button class="btn" id="showTodoBtn" type="button">Show to-do</button>
+    </div>
+    <div id="donePane" class="hidden"><p class="dark">Done · proven rows appear here once the items read is wired. Count is live above.</p></div>
+    <div id="todoPane" class="hidden"><p class="dark">To-do rows appear here once the items read is wired — in motion, to-do, being checked, needs a decision, and blocked, each with owner and next step. Count is live above.</p></div>
+  </div>
+
+  <div class="board" id="roomsBoard">
+    <div class="board-head"><span class="dot"></span><div>
+      <div class="sec-label">Areas</div>
+      <h2>Twelve areas — tap one to open it</h2>
+    </div></div>
+    <p>Each area opens its own view: its to-dos, its done items with receipts, its decisions, its links, its feed, and its team notes. Area percentages are not shown yet — items are still being sorted into areas, and a percentage built on unsorted items would lie. Until that sorting is accepted, every area shows this honestly instead of a number.</p>
+    <label class="sec-label" for="roomSearch">Search rooms and links on this face</label>
+    <input class="well" id="roomSearch" type="search" placeholder="Search an area or a link by name…" autocomplete="off">
+    <p class="readtime">Item search arrives with the items read. This search covers rooms and links only, and says so.</p>
+    <div id="roomList"><!-- rooms injected by script --></div>
+  </div>
+
+  <div class="board hidden" id="areaView">
+    <p class="crumb"><button class="btn" id="backBtn" type="button">← Back to Project Intelligence</button></p>
+    <div class="board-head"><span class="dot" id="areaDot"></span><div>
+      <div class="sec-label" id="areaKicker">Area</div>
+      <h2 id="areaName">Area</h2>
+    </div></div>
+    <p id="areaLine"></p>
+    <div class="notice warn">
+      <strong>Area percentage not yet live.</strong> Items are still being sorted into areas. This area's percentage ships only after that sorting is accepted — until then, no number is shown here rather than a wrong one.
+    </div>
+    <h3>To-dos in this area</h3>
+    <p class="dark">To-dos, owners, and next steps for this area load with the items read. Done items here appear only with a receipt link; anything without a receipt stays marked as being checked.</p>
+    <h3>Bottlenecks and enhancements</h3>
+    <p class="dark">Bottlenecks and enhancements for this area load with the items read. Nothing is named here until the record names it.</p>
+    <h3>Decisions and gates</h3>
+    <p class="dark">Decisions waiting on a human call for this area load with the items read. Decisions are never counted as done and never hidden inside another list.</p>
+    <h3>Links for this area</h3>
+    <ul class="linklist" id="areaLinks"></ul>
+    <h3>Feed for this area</h3>
+    <p class="dark">Latest changes first, one tap back to the item. The feed loads with the items read; until then, changes are announced on the team board.</p>
+    <h3>Team notes for this area</h3>
+    <p class="dark">Notes between seats, in this area, not in chat alone. Team notes load with the notes read.</p>
+    <p class="crumb"><button class="btn" id="backBtn2" type="button">← Back to Project Intelligence</button></p>
+  </div>
+
+  <div class="board" id="scopeBoard">
+    <div class="board-head"><span class="dot"></span><div>
+      <div class="sec-label">World or one project</div>
+      <h2>See everything, or one project</h2>
+    </div></div>
+    <p>The switch below changes the view. The world view shows live numbers. The single-project view needs a per-project live read that is not wired yet, so it says so instead of showing world numbers as if they were one project's.</p>
+    <div class="switch" role="group" aria-label="World or one project">
+      <button class="btn" id="worldBtn" type="button" aria-pressed="true">Whole world</button>
+      <button class="btn" id="projectBtn" type="button" aria-pressed="false">One project</button>
+    </div>
+    <div id="worldPane"><p>World view is live above — all projects, all to-dos, one record.</p></div>
+    <div id="projectPane" class="hidden"><div class="notice warn"><strong>One-project view not wired yet.</strong> A per-project live read does not exist yet. Until it does, this view shows no numbers rather than world numbers dressed as one project's.</div></div>
+  </div>
+
+  <div class="board" id="linksBoard">
+    <div class="board-head"><span class="dot"></span><div>
+      <div class="sec-label">Links</div>
+      <h2>Go to it — every link works, or it is not here</h2>
+    </div></div>
+    <ul class="linklist" id="mainLinks">
+      <li><a href="https://nayanet.live/projects">Projects — this face's page</a> <span class="dark">— the live page this face belongs to.</span></li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Team board #2793</a> <span class="dark">— where the team coordinates, in the open.</span></li>
+      <li><a href="/projects/state.json">Live machine state</a> <span class="dark">— the live numbers this face reads, with read time.</span></li>
+      <li><a href="https://nayanet.live/projects/todos">To-do board</a> <span class="dark">— staged copy, not live-updating. Shown labelled, never as live.</span></li>
+      <li><span class="dark">Questions — restore or retire. Not linked until it works (it answers 404 today).</span></li>
+    </ul>
+  </div>
+
+  <div class="board" id="ledgerBoard">
+    <div class="board-head"><span class="dot"></span><div>
+      <div class="sec-label">Ledger — the record of what landed</div>
+      <h2>Ledger status</h2>
+    </div></div>
+    <p>The ledger is the feed: if this face and the ledger ever disagree, the ledger wins. The ledger read is not wired to this face yet, so this section states that instead of a live-or-frozen claim it cannot prove at render time. The build record for this face carries the last verified ledger read (30 rows, latest entry 22 Oct 2026, frozen since) with its read time — that verification lives in the build record, not as face data.</p>
+  </div>
+
+  <div class="board">
+    <p class="readtime">Project Intelligence · Numbers read live from the project record on every load. A number without a read time is not a dashboard number. Machine proof for any item — hashes, signatures, receipts — lives one tap behind that item's Details door, never on this surface.</p>
+  </div>
+
+</div>
+<script>
+(function(){
+  var AREAS = [
+    {key:"pi-hub", name:"Project Intelligence itself", accent:"magenta", line:"The hub itself: the face, the record, the wiring, and the notices that make the hub live."},
+    {key:"welcome", name:"Welcome walk", accent:"purple", line:"The walk that welcomes a new citizen and opens their world."},
+    {key:"connection", name:"Citizen connection", accent:"blue", line:"How citizens connect to each other and to the network."},
+    {key:"mail-notifications", name:"Smart Mail and notices", accent:"green", line:"Mail and the notices that tell the team what changed."},
+    {key:"match", name:"Smart Match", accent:"shown", line:"Matching people, projects, and spaces that belong together."},
+    {key:"factory-interfaces", name:"Smart Factory and interfaces", accent:"red", line:"The parts and templates every page is built from."},
+    {key:"membership-money", name:"Memberships, ambassadors, and money", accent:"teal", line:"Joining, belonging, and getting paid fairly."},
+    {key:"hub-dashboard", name:"Hub and dashboard", accent:"indigo", line:"The front doors: the hub, the dashboard, the one hub."},
+    {key:"projects-spaces", name:"Projects and spaces", accent:"lime", line:"Projects people build, and the spaces they gather in."},
+    {key:"voice-audio", name:"Voice and audio", accent:"orange", line:"Speaking, hearing, and sound across the network."},
+    {key:"identity-settings", name:"Identity, settings, and pricing", accent:"neutral", line:"Who you are, how things are set, and what things cost. Own colour pending a ruling — shown neutral until then."},
+    {key:"security-privacy", name:"Security and privacy", accent:"neutral", line:"Keeping mail, lists, and money private by default. Own colour pending a ruling — shown neutral until then."}
+  ];
+  var roomList = document.getElementById("roomList");
+  AREAS.forEach(function(a){
+    var b = document.createElement("button");
+    b.className = "room"; b.type = "button";
+    b.setAttribute("data-accent", a.accent);
+    b.setAttribute("data-name", a.name.toLowerCase());
+    b.setAttribute("data-key", a.key);
+    var dot = document.createElement("span"); dot.className = "rdot";
+    var nm = document.createElement("span"); nm.className = "rname"; nm.appendChild(dot);
+    nm.appendChild(document.createTextNode(a.name));
+    var ln = document.createElement("p"); ln.className = "rline"; ln.textContent = a.line;
+    var st = document.createElement("p"); st.className = "rstatus";
+    st.textContent = "Tap to open this area. Area percentage not yet live — items are still being sorted into areas.";
+    b.appendChild(nm); b.appendChild(ln); b.appendChild(st);
+    b.addEventListener("click", function(){ openArea(a); });
+    roomList.appendChild(b);
+  });
+  function openArea(a){
+    document.getElementById("roomsBoard").classList.add("hidden");
+    document.getElementById("todoBoard").classList.add("hidden");
+    document.getElementById("scopeBoard").classList.add("hidden");
+    document.getElementById("linksBoard").classList.add("hidden");
+    document.getElementById("ledgerBoard").classList.add("hidden");
+    document.getElementById("areaKicker").textContent = "Project Intelligence / " + a.name;
+    document.getElementById("areaName").textContent = a.name;
+    document.getElementById("areaLine").textContent = a.line;
+    var links = document.getElementById("areaLinks"); links.innerHTML = "";
+    var li = document.createElement("li");
+    var lk = document.createElement("a"); lk.href = "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793"; lk.textContent = "Team board #2793";
+    li.appendChild(lk); li.appendChild(document.createTextNode(" — coordination for this area, in the open."));
+    links.appendChild(li);
+    document.getElementById("areaView").classList.remove("hidden");
+    window.scrollTo(0, 0);
+  }
+  function backToHub(){
+    ["roomsBoard","todoBoard","scopeBoard","linksBoard","ledgerBoard"].forEach(function(id){
+      document.getElementById(id).classList.remove("hidden");
+    });
+    document.getElementById("areaView").classList.add("hidden");
+    window.scrollTo(0, 0);
+  }
+  document.getElementById("backBtn").addEventListener("click", backToHub);
+  document.getElementById("backBtn2").addEventListener("click", backToHub);
+
+  var search = document.getElementById("roomSearch");
+  search.addEventListener("input", function(){
+    var q = search.value.toLowerCase();
+    var rooms = roomList.querySelectorAll(".room");
+    rooms.forEach(function(r){
+      var hay = (r.getAttribute("data-name") + " " + r.textContent).toLowerCase();
+      r.classList.toggle("hidden", q !== "" && hay.indexOf(q) === -1);
+    });
+    var links = document.getElementById("mainLinks").querySelectorAll("li");
+    links.forEach(function(li){
+      var hay = li.textContent.toLowerCase();
+      li.classList.toggle("hidden", q !== "" && hay.indexOf(q) === -1);
+    });
+  });
+
+  document.getElementById("worldBtn").addEventListener("click", function(){
+    document.getElementById("worldBtn").setAttribute("aria-pressed", "true");
+    document.getElementById("projectBtn").setAttribute("aria-pressed", "false");
+    document.getElementById("worldPane").classList.remove("hidden");
+    document.getElementById("projectPane").classList.add("hidden");
+  });
+  document.getElementById("projectBtn").addEventListener("click", function(){
+    document.getElementById("projectBtn").setAttribute("aria-pressed", "true");
+    document.getElementById("worldBtn").setAttribute("aria-pressed", "false");
+    document.getElementById("projectPane").classList.remove("hidden");
+    document.getElementById("worldPane").classList.add("hidden");
+  });
+  document.getElementById("showDoneBtn").addEventListener("click", function(){
+    document.getElementById("donePane").classList.remove("hidden");
+    document.getElementById("todoPane").classList.add("hidden");
+  });
+  document.getElementById("showTodoBtn").addEventListener("click", function(){
+    document.getElementById("todoPane").classList.remove("hidden");
+    document.getElementById("donePane").classList.add("hidden");
+  });
+  document.getElementById("calmBtn").addEventListener("click", function(){
+    var btn = document.getElementById("calmBtn");
+    var on = document.body.classList.toggle("calm");
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+    btn.textContent = on ? "Calm motion: on" : "Calm motion: off";
+  });
+
+  function fmt(n){ return (n === null || n === undefined) ? "–" : Number(n).toLocaleString("en-US"); }
+  function load(){
+    var statusLine = document.getElementById("statusLine");
+    var readTimeLine = document.getElementById("readTimeLine");
+    var moveText = document.getElementById("moveText");
+    var moveBox = document.getElementById("moveBox");
+    statusLine.textContent = "Reading the live record…";
+    fetch("/projects/state.json", {cache: "no-store"}).then(function(r){
+      if(!r.ok){ throw new Error("state read " + r.status); }
+      return r.json();
+    }).then(function(d){
+      var c = d.counts || {};
+      var total = ["queued","blocked","claimed","verifying","done_proven","in_progress","needs_shawn"].reduce(function(s, k){
+        return s + (Number(c[k]) || 0);
+      }, 0);
+      var done = Number(c.done_proven) || 0;
+      var pct = total > 0 ? Math.round(done / total * 100) : 0;
+      document.getElementById("orbPct").textContent = pct + "%";
+      document.getElementById("orbTotal").textContent = fmt(total);
+      document.getElementById("orbDone").textContent = fmt(done);
+      document.getElementById("orbMotion").textContent = fmt(c.in_progress);
+      document.getElementById("orbTodo").textContent = fmt(c.queued);
+      document.getElementById("orbCheck").textContent = fmt(c.verifying);
+      document.getElementById("orbDecision").textContent = fmt(c.needs_shawn);
+      document.getElementById("orbBlocked").textContent = fmt(c.blocked);
+      var when = d.derived_at || d.freshness && d.freshness.derived_at || "";
+      var fetchedAt = new Date().toISOString();
+      statusLine.textContent = "Live numbers below, read from the live project record.";
+      readTimeLine.textContent = "Numbers read " + (when || fetchedAt) + " from the live record. Re-read on every load and on Refresh.";
+      var p = d.production || {};
+      if(p.transitions_today !== undefined){
+        moveText.textContent = "Verified finishes today: " + fmt(p.transitions_today) + ". Effort per verified finish: " + (p.effort_per_verified_outcome && p.effort_per_verified_outcome.value !== undefined ? p.effort_per_verified_outcome.value + " : 1" : "not measured") + ". That movement is the record updating — the numbers move because work lands.";
+      } else {
+        moveText.textContent = "Movement numbers are not in this read. Nothing is shown rather than something invented.";
+      }
+      moveBox.classList.remove("warn"); moveBox.classList.remove("bad");
+    }).catch(function(){
+      var now = new Date().toISOString();
+      statusLine.textContent = "Live read failed at " + now + " — showing structure only, no numbers invented.";
+      readTimeLine.textContent = "No live read available from here. Open this face on its own route to read live numbers.";
+      moveText.textContent = "Movement cannot be shown without a live read. Nothing is shown rather than something invented.";
+      moveBox.classList.add("bad");
+    });
+  }
+  document.getElementById("refreshBtn").addEventListener("click", load);
+  load();
+})();
+</script>
+</body>
+</html>
