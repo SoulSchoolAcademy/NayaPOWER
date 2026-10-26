@@ -68,6 +68,17 @@ export default {
     if (url.pathname.startsWith("/pi/api/")) {
       return jsonResponse({ error: "unknown_api_route" }, 404);
     }
+    // /pi MUST serve the PI face, deterministically. The assets config uses
+    // single-page-application fallback, so a bare /pi request can fall
+    // through to the Hub shell instead of pi/index.html (observed 2026-10-26:
+    // /pi rendered the Smart Feed while /pi-face.html rendered the face).
+    // Rewrite /pi and /pi/ to the face asset explicitly; never rely on
+    // directory-index behavior for the route Shawn opens.
+    if (url.pathname === "/pi" || url.pathname === "/pi/") {
+      const faceUrl = new URL(request.url);
+      faceUrl.pathname = "/pi/index.html";
+      return env.ASSETS.fetch(new Request(faceUrl, request));
+    }
     return env.ASSETS.fetch(request);
   },
 };
