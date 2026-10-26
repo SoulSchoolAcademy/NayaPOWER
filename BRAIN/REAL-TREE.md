@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-26  
-**Receipt basis commit:** `383e6fee4c5cc95d7782abe9dcd6497ec590d38e`  
+**Receipt basis commit:** `e32d05d3f8e132dbe4c98beab36b0d2304e389ae`  
 **Inventory file count:** 1696  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -1012,7 +1012,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1871/IB-SMART-NOTE-20261026-sn1871-be-intelligent-get-out-of-your-own-way.md` — `4294c8cb8e0c` (3464 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1874/IB-SMART-NOTE-20261026-sn1874-finish-it-or-say-its-unfinished.md` — `cdff9d493180` (3617 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1872/IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note.md` — `c2d97cf19afe` (2939 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1873/IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself.md` — `63a7fc5db8ed` (3359 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1873/IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself.md` — `4c3341ab046d` (6276 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1877/IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time.md` — `7d05557ba00b` (5954 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)

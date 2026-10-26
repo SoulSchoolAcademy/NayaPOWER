@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "383e6fee4c5cc95d7782abe9dcd6497ec590d38e",
+  "receipt_basis_commit": "e32d05d3f8e132dbe4c98beab36b0d2304e389ae",
   "inventory_file_count": 1696,
   "domain_counts": {
     "00-ACTIVATION": 19,
@@ -4862,8 +4862,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1873/IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself.md",
-      "blob_sha": "63a7fc5db8edee4a873397d70fb3088bafb1cb29",
-      "size": 3359
+      "blob_sha": "4c3341ab046d5427430cf38e3bc2688f0847f260",
+      "size": 6276
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1877/IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time.md",
