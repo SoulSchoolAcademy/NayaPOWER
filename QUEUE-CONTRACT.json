@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T21:24:27Z",
-  "tip": "f2d0220e1a3ab49eadf2fc191419736305018aa3",
+  "generated_at": "2026-10-26T22:24:28Z",
+  "tip": "20aa4090a4602965e1a9e7c6bdd900e6286a406b",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "ee6177d99d5cfae3c11c54499ca49c450777faec"
+      "head": "2037641be5f35e10e89f80200296868298396669"
     },
     {
       "number": 3052,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "f23f0e3d7e62b0ec06fef4a76c6aabdee92ca449"
+      "head": "5393c2c09ba92afe663efc0a438db1c724055a4b"
     },
     {
       "number": 3088,
@@ -38,15 +38,6 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "2523ef3d5de2875b4dd539808ab747d0c1bfaaca"
-    },
-    {
-      "number": 3099,
-      "title": "feat(hub): wire universal search through existing auth-gated module",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "5cd98c811df672d9ce367eb8f152647d9f7f1088"
     }
   ]
 }
