@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T00:25:17Z",
-  "tip": "1b0b584c21962c5791c4fa59d691758fc02ed6af",
+  "generated_at": "2026-10-26T01:24:15Z",
+  "tip": "10cb6d9c8728632ca842576613a54a33923ae9d0",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "6a5764274f0cd4e34e018e00c8ec232b83d0bfd0"
+      "head": "f9762f2683c12c554fdd4e7c3ffbe77bfd6caa7a"
     },
     {
       "number": 3052,
@@ -19,16 +19,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "4a0e74e982220583db26190547b3852b91d5b238"
+      "head": "7dabcd57642a64f6d85292858c77351f56171c24"
     },
     {
-      "number": 3072,
-      "title": "Resolve/cover library v1 2026 10 25",
-      "tier": "B",
-      "action": "MERGE-NOW",
-      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "f073ac4bf640c325747d4cd13f98b88fe44fb5a3"
+      "number": 3075,
+      "title": "Move 1: interfaces + Smart Factory into GitHub (Hub-app scope)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "a2eda7d2bb7e8aed81890e066e78d4aaec48597a"
     }
   ]
 }
