@@ -1,7 +1,8 @@
 # The Mission Is the Authority — Relay Is Intel, Right Is Right for Everyone
 
-SN-1879 · Intelligent Block IB-SMART-NOTE-20261026-sn1879-mission-is-the-authority-relay-is-intel
-Created: 2026-10-26 · From Shawn's teaching, recorded by Naya Power, after he corrected her for asking him how to proceed.
+SN-1879 · SYSTEM / mission
+**Created:** 2026-10-26T22:12:58Z
+From Shawn's teaching, recorded by Naya Power, after he corrected her for asking him how to proceed.
 
 ## IN A NUTSHELL
 
