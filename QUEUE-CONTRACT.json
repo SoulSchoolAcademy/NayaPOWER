@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T10:24:57Z",
-  "tip": "922fa36a6029de40a71af71429400db61254ab35",
+  "generated_at": "2026-10-26T11:24:31Z",
+  "tip": "724f4b80e8801f808a7946af3c152e9e6f3aed74",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "75a0c8d9f9057f9cf7a57d807327fdd4f01ecf6e"
+      "head": "3b756bf5990754f15454d8faa6ad475e0d5562c0"
     },
     {
       "number": 3052,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "11b4eafb89aed3f2addadbd159e45dfd0dc6d245"
+      "head": "cc927a1691e5bee7f6abf6b04c4f55da671eb9b9"
     },
     {
       "number": 3082,
@@ -38,15 +38,6 @@
       "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "5cef1b836fcfac39ff24049372bd2ad360b8b259"
-    },
-    {
-      "number": 3086,
-      "title": "fix(activation): re-point stale venue pointers #2793 -> #3066 in BRAIN/00-ACTIVATION",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "210a819599a7b98febb2e0fd5eaffb9c18a2229d"
     }
   ]
 }
