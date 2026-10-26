@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T03:24:21Z",
-  "tip": "7ee2cae44960aa7a30c034c2ef7076bce54d438f",
+  "generated_at": "2026-10-26T04:24:27Z",
+  "tip": "a966a6f97cccb048984363b5cdbc3e952a5fb974",
   "prs": [
     {
       "number": 2981,
@@ -19,7 +19,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "5f7f6171cf6e9521df794061290bd79ba543a192"
+      "head": "25e4e31fa0239d0fd2fd8200368a02cccdf2833e"
+    },
+    {
+      "number": 3082,
+      "title": "docs(brain): learning event 2026-10-26",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "effbbfe6feea316207160911c182183478698a91"
     }
   ]
 }
