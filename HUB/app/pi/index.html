@@ -6,29 +6,22 @@
 <title>Project Intelligence — NayaNET</title>
 <meta name="description" content="Project Intelligence: everything happening across NayaNET, in one place, in plain words.">
 <!--
-  PI FACE — LIVE HUB FACE, WIRING PASS 2026-10-26 (Power: data, routes, links).
-  Route: /pi (legacy /pi-face.html serves the same face). Views: Human in front,
-  AI working view, Machine behind — one record underneath (three-languages law).
-  Served by the Hub worker from HUB/app/pi-face.html; canonical source interfaces/pi-face/pi-face.html.
-  Deploys via .github/workflows/deploy-hub-cloudflare.yml on push to main (auto-deploy law).
-  Live read path: same-origin /projects/state.json (proven live, refreshes),
-  fetched fresh on every load and on Refresh: cache no-store + no-cache
-  request headers + a per-load cache-buster, so no browser, edge, or
-  worker cache between the face and the record can serve a stale copy
-  as first paint. Every number
-  on this face carries its read time. If the read fails, the face says so
-  and shows structure only — it never invents a number.
-  Per-area % is WITHHELD until backfill acceptance (see README):
-  Uncategorized under 5%, zero done uncategorized, zero needs-decision
-  uncategorized. Item rows read same-origin /pi/api/items (Hub worker
-  data route, live record at request time). When the route's read-only
-  access is not set worker-side, the route answers not-configured and
-  the face keeps its honest gated message — never a staged row.
-  Machine proof (hashes, SHAs, entry IDs, raw receipts) lives ONE TAP
-  behind each item's Details door — never on the surface.
-  Design: verbatim N5 tokens only, white text always, white rim at rest,
-  own colour ignites on touch (edge + glow only), horizontal rectangles,
-  three-layered elevation, mobile first. See README in this folder.
+  PI FACE v2 — CONSENSUS-PLACEMENT REBUILD 2026-10-26 (builder, staged only).
+  Base: pi-face.html (Nitro 19:31Z rendered-review pass) — its CSS tokens,
+  topbar, pill, board, orb, button, room and item-row language are harvested
+  verbatim; only the placement order and the room/data honesty layer are new.
+  Placement (Power package, PI note 51 / board 6426890671, confirmed by the
+  new consensus): % done → master to-do → what's stuck → movement → 12 rooms
+  → done with receipts. Smart Tab row jumps between blocks in one area.
+  Data: ONE fetch, same-origin /pi/api/items, fresh on every load and on
+  Refresh (no-store). The face never bakes numbers: every number renders from
+  the fetched record, carries its scope and read time, and on a failed read
+  the face shows the failure + its time, never invented numbers, never a
+  spinner that hides it. Per-area percentages are NOT rendered until live
+  area assignments exist in the record (schema not applied; readiness
+  dataset is preparation only). Proven = green, stated = blue, shown = gold.
+  Notes live in this device's localStorage only (key naya.pi.notes.v2).
+  Staged copy only — not live, not scored, no live deploy, no repo push.
 -->
 <style>
   :root{
@@ -53,8 +46,6 @@
   a{color:var(--white)}
   .wrap{width:100%; padding:20px 16px 40px}
   @media(min-width:700px){ .wrap{padding:28px 28px 48px} }
-
-  /* Top bar: back pill + wordmark. Pattern: Hub top bar, reworded. */
   .topbar{display:flex; align-items:center; gap:14px; width:100%}
   .pill{
     display:inline-flex; align-items:center; gap:8px; min-height:48px; padding:0 20px;
@@ -65,8 +56,6 @@
   }
   .pill:hover,.pill:focus-visible{transform:translateY(-2px); border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--purple); outline:none}
   .wordmark{font-family:Newsreader,Georgia,serif; font-size:clamp(26px,4vw,34px); font-weight:700; color:var(--white)}
-
-  /* Boards: horizontal rectangles, three-layered elevation, never flat. */
   .board{
     width:100%; margin:20px 0; padding:22px 20px; border:2px solid rgba(255,255,255,.55); border-radius:20px;
     background:linear-gradient(180deg,#050507,#020203);
@@ -83,8 +72,6 @@
   }
   .notice.warn{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 6px 16px rgba(0,0,0,.5), 0 0 18px -4px var(--shown)}
   .notice.bad{border-color:var(--red); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 6px 16px rgba(0,0,0,.5), 0 0 18px -4px var(--red)}
-
-  /* Numbers: lit circles carry numbers; labels beneath. */
   .nums{display:flex; flex-wrap:wrap; gap:16px; width:100%; margin-top:16px}
   .num{flex:1 1 130px; text-align:center; padding:10px 6px}
   .orb{
@@ -98,8 +85,6 @@
   .orb.dark{border-style:dashed; color:var(--paper)}
   .num-label{margin-top:8px; font-size:14px; font-weight:700; color:var(--white)}
   .num-sub{font-size:13px; color:var(--paper)}
-
-  /* Buttons: black center, white text, white rim at rest, own colour on touch, edge + glow only. */
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:52px; padding:0 22px;
     border:2px solid var(--white); border-radius:999px; background:linear-gradient(180deg,#050507,#020203);
@@ -110,8 +95,6 @@
   .btn:hover,.btn:focus-visible{transform:translateY(-2px); border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--purple); outline:none}
   .btn:active{transform:translateY(2px)}
   .btnrow{display:flex; flex-wrap:wrap; gap:12px; margin-top:14px}
-
-  /* Rooms: horizontal rectangles, one after another. Colour on rim + dot only, never on text. */
   .room{
     width:100%; text-align:left; padding:18px 20px; margin:14px 0; border:2px solid var(--white); border-radius:20px;
     background:linear-gradient(180deg,#050507,#020203); color:var(--white); cursor:pointer; font:inherit;
@@ -123,7 +106,6 @@
   .room .rdot{width:14px; height:14px; border-radius:50%; background:var(--white); flex:0 0 auto; box-shadow:0 0 10px rgba(255,255,255,.55)}
   .room .rline{color:var(--paper); margin:6px 0 0}
   .room .rstatus{font-size:14px; color:var(--paper); margin:8px 0 0}
-  .room[data-accent="magenta"]{border-color:var(--white)}
   .room[data-accent="magenta"]:hover{border-color:var(--magenta); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--magenta)}
   .room[data-accent="magenta"] .rdot{background:var(--magenta); box-shadow:0 0 10px var(--magenta)}
   .room[data-accent="purple"]:hover{border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--purple)}
@@ -144,8 +126,6 @@
   .room[data-accent="lime"] .rdot{background:var(--lime); box-shadow:0 0 10px var(--lime)}
   .room[data-accent="orange"]:hover{border-color:var(--orange); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--orange)}
   .room[data-accent="orange"] .rdot{background:var(--orange); box-shadow:0 0 10px var(--orange)}
-
-  /* Search + switch: wells recessed, text white. */
   .well{
     width:100%; min-height:52px; padding:12px 18px; border:2px solid rgba(255,255,255,.55); border-radius:14px;
     background:linear-gradient(180deg,#020203,#050507); color:var(--white); font:inherit; font-size:16px;
@@ -163,18 +143,15 @@
   @media (prefers-reduced-motion: reduce){
     .pill,.btn,.room{transition:none}
   }
-  body.calm .pill, body.calm .btn, body.calm .room{transition:none}
-  .orb.flash{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.55), 0 0 18px -2px var(--shown)}
   pre{white-space:pre-wrap; word-break:break-word; color:var(--white); font-size:14px; line-height:1.5; margin:10px 0}
-  /* Item rows: same boards language — gradient, white rim, shadow. */
   .item-row{
     width:100%; padding:16px 18px; margin:12px 0; border:2px solid rgba(255,255,255,.55); border-radius:14px;
-    background:linear-gradient(180deg,#050507,#020203); color:var(--white);
+    background:linear-gradient(180deg,#050507,#020203); color:var(--white); min-width:0; overflow-wrap:anywhere;
     box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 6px 16px rgba(0,0,0,.5);
   }
-  .item-name{font-size:18px; font-weight:700; color:var(--white)}
+  .item-name{font-size:18px; font-weight:700; color:var(--white); overflow-wrap:anywhere; word-break:break-word}
   .item-meta{font-size:14px; color:var(--paper); margin-top:4px}
-  .item-note{font-size:14px; color:var(--paper); margin:6px 0 0}
+  .item-note{font-size:14px; color:var(--paper); margin:6px 0 0; overflow-wrap:anywhere; word-break:break-word}
   .mini-btn{
     display:inline-flex; align-items:center; gap:8px; min-height:40px; padding:0 16px;
     border:2px solid var(--white); border-radius:999px; background:linear-gradient(180deg,#050507,#020203);
@@ -182,453 +159,497 @@
     box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55);
   }
   .mini-btn:hover,.mini-btn:focus-visible{border-color:var(--purple); outline:none}
+  /* v2 additions: Smart Tab row, block accents, tags, detail panel. */
+  .tabrow{
+    display:flex; gap:10px; overflow-x:auto; flex-wrap:nowrap; scrollbar-width:none;
+    position:sticky; top:0; z-index:5; padding:12px 2px; margin:8px 0 0;
+    background:linear-gradient(180deg,#050507,#020203);
+  }
+  .tabrow::-webkit-scrollbar{display:none}
+  .tab{
+    flex:0 0 auto; white-space:nowrap; display:inline-flex; align-items:center; gap:8px;
+    min-height:44px; padding:0 18px; border:2px solid rgba(255,255,255,.3); border-radius:999px;
+    background:rgba(0,0,0,.5); color:var(--white); font:inherit; font-size:14px; font-weight:700; cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5);
+  }
+  .tab:hover,.tab:focus-visible{border-color:var(--white); outline:none}
+  .tab[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--white), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5)}
+  .tab .tdot{width:10px; height:10px; border-radius:50%; background:var(--white); flex:0 0 auto}
+  .block{scroll-margin-top:96px}
+  .block .dot.purple{background:var(--purple); box-shadow:0 0 10px var(--purple)}
+  .block .dot.blue{background:var(--blue); box-shadow:0 0 10px var(--blue)}
+  .block .dot.green{background:var(--green); box-shadow:0 0 10px var(--green)}
+  .block .dot.shown{background:var(--shown); box-shadow:0 0 10px var(--shown)}
+  .block .dot.orange{background:var(--orange); box-shadow:0 0 10px var(--orange)}
+  .block .dot.red{background:var(--red); box-shadow:0 0 10px var(--red)}
+  .btn[data-ig="blue"]:hover,.btn[data-ig="blue"]:focus-visible{border-color:var(--blue); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--blue)}
+  .btn[data-ig="green"]:hover,.btn[data-ig="green"]:focus-visible{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--green)}
+  .btn[data-ig="shown"]:hover,.btn[data-ig="shown"]:focus-visible{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--shown)}
+  .btn[data-ig="orange"]:hover,.btn[data-ig="orange"]:focus-visible{border-color:var(--orange); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--orange)}
+  .btn[data-ig="red"]:hover,.btn[data-ig="red"]:focus-visible{border-color:var(--red); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--red)}
+  .tag{
+    display:inline-flex; align-items:center; min-height:28px; padding:0 12px; margin:2px 6px 2px 0;
+    border:2px solid var(--white); border-radius:999px; font-size:13px; font-weight:800; color:var(--white);
+    background:linear-gradient(180deg,#050507,#020203);
+  }
+  .tag.proven{border-color:var(--green)}
+  .tag.stated{border-color:var(--blue)}
+  .tag.shown{border-color:var(--shown)}
+  .tag.dark{border-style:dashed; color:var(--paper)}
+  .darkbox{
+    width:100%; padding:14px 16px; border:2px dashed rgba(255,255,255,.55); border-radius:14px;
+    background:linear-gradient(180deg,#050507,#020203); color:var(--paper);
+  }
+  .ai-only{display:none}
+  body.view-ai .ai-only{display:block}
+  body.view-machine .placeblocks{display:none !important}
+  body.view-machine #machinePanel{display:block !important}
+  details.door{margin-top:10px}
+  details.door summary{cursor:pointer; font-weight:700; font-size:15px; color:var(--white)}
+  details.door summary::-webkit-details-marker{color:var(--paper)}
+  .feedtime{font-size:13px; color:var(--paper)}
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <div class="topbar">
-    <a class="pill" href="/">← Hub</a>
-    <span class="wordmark">Project Intelligence</span>
+    <a class="pill" href="https://nayanet.live/">← Back to the Hub</a>
+    <div class="wordmark">Project Intelligence</div>
   </div>
-  <p>Everything happening across NayaNET, in one place, in plain words.</p>
-  <div class="switch" role="group" aria-label="View">
-    <button class="btn" id="viewHumanBtn" type="button" aria-pressed="true">Human view</button>
-    <button class="btn" id="viewAiBtn" type="button" aria-pressed="false">AI view — the working view</button>
-    <button class="btn" id="viewMachineBtn" type="button" aria-pressed="false">Machine view</button>
+  <p>Everything happening across NayaNET, in one place, in plain words. Open it to act, not to admire.</p>
+  <div class="switch" role="group" aria-label="Choose a view">
+    <button class="btn" id="viewHumanBtn" aria-pressed="true" type="button">Read the human view</button>
+    <button class="btn" id="viewAiBtn" aria-pressed="false" type="button">Read the seat view</button>
+    <button class="btn" id="viewMachineBtn" aria-pressed="false" type="button">Read the machine view</button>
+    <button class="btn" id="refreshBtn" type="button">Refresh the record</button>
   </div>
+  <div id="fixtureBanner" class="notice warn hidden" role="status"></div>
+  <div id="failBanner" class="notice bad hidden" role="alert"></div>
+  <p class="readtime" id="readTimeLine">Waiting for the record…</p>
 
-  <div class="btnrow">
-    <button class="btn" id="refreshBtn" type="button">↻ Refresh the numbers</button>
-    <button class="btn" id="calmBtn" type="button" aria-pressed="false">Calm motion: off</button>
-  </div>
+  <nav class="tabrow" aria-label="Jump to a block">
+    <button class="tab" type="button" data-goto="block-health" aria-pressed="true"><span class="tdot" style="background:var(--purple)"></span>Health</button>
+    <button class="tab" type="button" data-goto="block-todo" aria-pressed="false"><span class="tdot" style="background:var(--blue)"></span>To-do</button>
+    <button class="tab" type="button" data-goto="block-stuck" aria-pressed="false"><span class="tdot" style="background:var(--green)"></span>Stuck</button>
+    <button class="tab" type="button" data-goto="block-movement" aria-pressed="false"><span class="tdot" style="background:var(--shown)"></span>Movement</button>
+    <button class="tab" type="button" data-goto="block-rooms" aria-pressed="false"><span class="tdot" style="background:var(--orange)"></span>Rooms</button>
+    <button class="tab" type="button" data-goto="block-done" aria-pressed="false"><span class="tdot" style="background:var(--red)"></span>Done</button>
+    <button class="tab" type="button" data-goto="block-notes" aria-pressed="false"><span class="tdot"></span>Notes</button>
+  </nav>
 
-  <div class="board" id="statusBoard">
-    <div class="board-head"><span class="dot"></span><div>
-      <div class="sec-label">Live record</div>
-      <h2>What is happening right now</h2>
+  <div class="placeblocks">
+  <!-- 1 · % DONE — first and biggest -->
+  <section class="board block" id="block-health" aria-label="How much is done">
+    <div class="board-head"><span class="dot purple"></span><div>
+      <div class="sec-label">1 · How much is done</div>
+      <h2>How much is done</h2>
     </div></div>
-    <p id="statusLine">Reading the live record…</p>
-    <p class="readtime" id="readTimeLine"></p>
-    <div class="nums" id="hubNums">
-      <div class="num"><div class="orb big" id="orbPct">–</div><div class="num-label">Done</div><div class="num-sub">share of all to-dos finished and proven</div></div>
-      <div class="num"><div class="orb" id="orbTotal">–</div><div class="num-label">All to-dos</div><div class="num-sub">everything tracked</div></div>
-      <div class="num"><div class="orb proven" id="orbDone">–</div><div class="num-label">Done · proven</div><div class="num-sub">finished, with proof</div></div>
-      <div class="num"><div class="orb" id="orbMotion">–</div><div class="num-label">In motion</div><div class="num-sub">being worked on now</div></div>
-      <div class="num"><div class="orb" id="orbTodo">–</div><div class="num-label">To do</div><div class="num-sub">waiting in line</div></div>
-      <div class="num"><div class="orb" id="orbCheck">–</div><div class="num-label">Being checked</div><div class="num-sub">finished, awaiting proof</div></div>
-      <div class="num"><div class="orb" id="orbDecision">–</div><div class="num-label">Needs a decision</div><div class="num-sub">waiting on a human call</div></div>
-      <div class="num"><div class="orb" id="orbBlocked">–</div><div class="num-label">Blocked</div><div class="num-sub">waiting on something else</div></div>
-      <div class="num"><div class="orb" id="orbPace">–</div><div class="num-label">Finished today</div><div class="num-sub">verified finishes, with effort per finish below</div></div>
+    <div style="text-align:center; margin-top:10px">
+      <div class="bigpct" id="headlinePct">—</div>
+      <p id="headlineLine">Waiting for the record…</p>
     </div>
-    <div class="notice" style="margin-top:16px"><strong>Parts at 9+:</strong> not measured yet — no score register exists. This slot leaves the headline until it is measured.</div>
-    <div class="notice" id="moveBox" style="margin-top:16px">
-      <strong>Movement.</strong> <span id="moveText">Loading today's movement from the live record…</span>
+    <p>What this means: the share of real jobs proven done, counted by job and never by row. What to do about it: work the to-do list below, in order — done jobs leave it by themselves.</p>
+    <div class="nums" id="healthNums"></div>
+    <div class="darkbox" id="healthDark"></div>
+    <p class="ai-only" id="healthAi"></p>
+    <div class="board" style="margin:16px 0 0">
+      <div class="board-head"><span class="dot"></span><div>
+        <div class="sec-label">Road to 10</div>
+        <h3>Where this face stands</h3>
+      </div></div>
+      <p>Face today: <strong>4 of 10</strong> — measured on the live face by a cold scorecard, and 4 to 5 by Shawn's own eye. Words pending for the finished road sentences; the road itself is measured, not promised: a cold check over 9 plus Shawn's cold-open test, on a rendered live face, is what moves it.</p>
+      <p class="dark">What moves 4 toward 9: the record's one-pass cure applied (twins out, areas in, owners named) · this face cold-checked over 9 · the live face re-scored after landing. Until then the face stays 4 — never self-awarded.</p>
     </div>
-  </div>
+  </section>
 
-  <div class="board" id="todoBoard">
-    <div class="board-head"><span class="dot"></span><div>
-      <div class="sec-label">The whole to-do list</div>
-      <h2>Everything to do, everything done</h2>
+  <!-- 2 · MASTER TO-DO -->
+  <section class="board block" id="block-todo" aria-label="Master to-do">
+    <div class="board-head"><span class="dot blue"></span><div>
+      <div class="sec-label">2 · Master to-do</div>
+      <h2>What needs doing, in priority order</h2>
     </div></div>
-    <p>Nothing is hidden behind a filter here. Done and to-do are unmistakable: done means finished <em>and</em> proven — anything less stays in to-do until its proof lands.</p>
-    <div class="notice warn" id="itemsNotice"><strong>Item rows:</strong> waiting on the items endpoint's read-only access — the route is live, its access is set worker-side (operator step named in PI + board). The counts above are live; no rows are invented.</div>
+    <p>What this means: one ordered list for the whole project — the system tells you the next item, and finished work drops off by itself. What to do about it: start at the top and work down; while one ask waits, the next item moves.</p>
+    <p class="dark">Order, computed in spirit and kept by hand until the automatic order is built: Shawn's order first, then what blocks the most other work, then value, then age. The automatic version is designed, not built — so this list is kept by hand, honestly, until then.</p>
+    <div id="masterList"></div>
     <div class="btnrow">
-      <button class="btn" id="showDoneBtn" type="button">Show done · proven</button>
-      <button class="btn" id="showTodoBtn" type="button">Show to-do</button>
+      <a class="btn" data-ig="blue" href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Open the team board</a>
     </div>
-    <div id="donePane" class="hidden"><p class="dark">Done · proven rows appear here once the items read is wired. Count is live above.</p></div>
-    <div id="todoPane" class="hidden"><p class="dark">To-do rows appear here once the items read is wired — in motion, to-do, being checked, needs a decision, and blocked, each with owner and next step. Count is live above.</p></div>
-  </div>
+  </section>
 
-  <div class="board" id="roomsBoard">
-    <div class="board-head"><span class="dot"></span><div>
-      <div class="sec-label">Areas</div>
-      <h2>Twelve areas — tap one to open it</h2>
+  <!-- 3 · WHAT'S STUCK -->
+  <section class="board block" id="block-stuck" aria-label="What is stuck">
+    <div class="board-head"><span class="dot green"></span><div>
+      <div class="sec-label">3 · What is stuck</div>
+      <h2>What is stuck, and whose hands it needs</h2>
     </div></div>
-    <p>Each area opens its own view: its to-dos, its decisions, its links, its feed, and its team notes. Area percentages wait on backfill acceptance — the area schema is not applied yet, so no area % is shown rather than a wrong one.</p>
-    <label class="sec-label" for="roomSearch">Search rooms and links on this face</label>
-    <input class="well" id="roomSearch" type="search" placeholder="Search an area or a link by name…" autocomplete="off">
-    <p class="readtime">Item search arrives with the items read. This search covers rooms and links only, and says so.</p>
-    <div id="roomList"><!-- rooms injected by script --></div>
-  </div>
-
-  <div class="board hidden" id="areaView">
-    <p class="crumb"><button class="btn" id="backBtn" type="button">← Back to Project Intelligence</button></p>
-    <div class="board-head"><span class="dot" id="areaDot"></span><div>
-      <div class="sec-label" id="areaKicker">Area</div>
-      <h2 id="areaName">Area</h2>
-    </div></div>
-    <p id="areaLine"></p>
-    <div class="notice warn">
-      <strong>Area percentage not yet live.</strong> The area schema is not applied and backfill is not accepted — until then, no number is shown here rather than a wrong one.
+    <p>What this means: stuck needs a human and done does not — so stuck sits above done and never hides inside the to-do counts. What to do about it: clear the blocker named on each row, or carry its packet to the hands it names.</p>
+    <div id="stuckList"></div>
+    <div class="btnrow">
+      <a class="btn" data-ig="green" href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Open the team board</a>
     </div>
-    <h3>To-dos in this area</h3>
-    <p class="dark">Area to-dos light up with the items endpoint. Done items here appear only with a receipt link; anything without a receipt stays marked as being checked.</p>
-    <h3>Bottlenecks and enhancements</h3>
-    <p class="dark">Nothing named until the record names it.</p>
-    <h3>Decisions and gates</h3>
-    <p class="dark">Decisions for this area arrive with the items read. Decisions are never counted as done and never hidden inside another list.</p>
-    <h3>Links for this area</h3>
-    <ul class="linklist" id="areaLinks"></ul>
-    <h3>Feed for this area</h3>
-    <p class="dark">Latest changes first, one tap back to the item. The feed arrives with the items read; until then, changes are announced on the team board.</p>
-    <h3>Team notes for this area</h3>
-    <p class="dark">Notes between seats, in this area, not in chat alone. Team notes arrive with the notes read.</p>
-    <p class="crumb"><button class="btn" id="backBtn2" type="button">← Back to Project Intelligence</button></p>
-  </div>
+  </section>
 
-  <div class="board" id="scopeBoard">
-    <div class="board-head"><span class="dot"></span><div>
-      <div class="sec-label">World or one project</div>
-      <h2>See everything, or one project</h2>
+  <!-- 4 · MOVEMENT -->
+  <section class="board block" id="block-movement" aria-label="Movement">
+    <div class="board-head"><span class="dot shown"></span><div>
+      <div class="sec-label">4 · Movement</div>
+      <h2>What moved lately — proof the system is alive</h2>
     </div></div>
-    <p>The switch below changes the view. The world view shows live numbers. The single-project view needs a per-project live read, so it says so instead of showing world numbers as if they were one project's.</p>
-    <div class="switch" role="group" aria-label="World or one project">
-      <button class="btn" id="worldBtn" type="button" aria-pressed="true">Whole world</button>
-      <button class="btn" id="projectBtn" type="button" aria-pressed="false">One project</button>
+    <p>What this means: the newest changes first, so you can see in seconds whether anything is actually moving. What to do about it: if this feed is quiet on a working day, treat that as the alarm, not as peace — go find what stalled.</p>
+    <div id="moveList"></div>
+    <div class="darkbox" id="ledgerBox"></div>
+    <p class="dark">Notifications pulse, honest state: a material record change firing feed plus mail with links, in the same motion, is specified — not live-running yet. Until it runs, the manual form stands: a record note plus a board post in the same pass. No reply is required to a notice; the seat is responsible for checking the inbox.</p>
+  </section>
+
+  <!-- 5 · THE 12 ROOMS -->
+  <section class="board block" id="block-rooms" aria-label="The twelve rooms">
+    <div class="board-head"><span class="dot orange"></span><div>
+      <div class="sec-label">5 · The twelve rooms</div>
+      <h2>Twelve rooms — tap one to open it</h2>
+    </div></div>
+    <p>What this means: depth lives here — every room has the same blocks in the same order, and the weakest room is surfaced, not buried. What to do about it: open the room for the work in front of you; its to-dos, bottlenecks, and done-with-receipts are inside.</p>
+    <div id="roomList"></div>
+    <div id="roomDetail" class="board hidden" style="margin:16px 0 0"></div>
+    <div class="darkbox" id="uncatBox" style="margin-top:16px"></div>
+  </section>
+
+  <!-- 6 · DONE WITH RECEIPTS -->
+  <section class="board block" id="block-done" aria-label="Done with receipts">
+    <div class="board-head"><span class="dot red"></span><div>
+      <div class="sec-label">6 · Done with receipts</div>
+      <h2>Done, with the proof attached</h2>
+    </div></div>
+    <p>What this means: proof, lower on the page — done never outranks action, and it is never hidden either. What to do about it: open a receipt to check the work before you build on it.</p>
+    <div>
+      <span class="tag proven">● Proven — green</span>
+      <span class="tag stated">● Stated — blue</span>
+      <span class="tag shown">● Shown — gold</span>
+      <span class="tag dark">DARK — unmeasured, with the reason</span>
     </div>
-    <div id="worldPane"><p>World view is live above — all projects, all to-dos, one record.</p></div>
-    <div id="projectPane" class="hidden"><div class="notice warn"><strong>One-project view:</strong> needs a per-project live read (items endpoint pending). No numbers shown rather than world numbers dressed as one project's.</div></div>
-  </div>
+    <p>Proven and merely claimed look different at a glance: green means a prover other than the maker confirmed it; blue means it is stated but not yet proven; gold means it is shown on a page. A pretty surface on dead machinery can never fake a green mark.</p>
+    <div id="doneList"></div>
+    <p class="dark">Individual proven rows render here from the live record. The staged fixture carries counts, not invented titles — no row is shown that the record did not name.</p>
+  </section>
 
-  <div class="board" id="linksBoard">
+  <!-- NOTES -->
+  <section class="board block" id="block-notes" aria-label="Notes">
     <div class="board-head"><span class="dot"></span><div>
-      <div class="sec-label">Links</div>
-      <h2>Go to it — every link works, or it is not here</h2>
+      <div class="sec-label">Notes on anything</div>
+      <h2>Make a note of this</h2>
     </div></div>
-    <ul class="linklist" id="mainLinks">
-      <li><a href="https://nayanet.live/projects">Projects — the live projects page</a> <span class="dark">— the old page until the /projects mapping lands; this face lives at /pi.</span></li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Team coordination feed #3066</a> <span class="dark">— the live coordination venue, from 2026-10-25, successor to #2793.</span></li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Prior team board #2793</a> <span class="dark">— live 2026-10-20 → 2026-10-25, kept for history.</span></li>
-      <li><a href="/projects/state.json">Live machine state</a> <span class="dark">— the live numbers this face reads, with read time.</span></li>
-    </ul>
-  </div>
+    <p>What this means: a note on anything in this record, kept where you can find it again. What to do about it: write it here and it stays with the record's rooms.</p>
+    <p class="dark">Saved on this device only — never sent anywhere, never claimed as shared. A note saved here does not appear on another device.</p>
+    <label for="noteRoom">Room this note belongs to</label>
+    <select id="noteRoom" class="well" style="margin:8px 0"></select>
+    <textarea id="noteText" class="well" rows="3" placeholder="Write a note in plain words…"></textarea>
+    <div class="btnrow">
+      <button class="btn" id="noteSaveBtn" type="button">Save this note</button>
+    </div>
+    <div id="noteList" style="margin-top:12px"></div>
+  </section>
 
-  <div class="board" id="ledgerBoard">
+  <section class="board block" aria-label="Go to it">
     <div class="board-head"><span class="dot"></span><div>
-      <div class="sec-label">Ledger — the record of what landed</div>
-      <h2>Ledger status</h2>
+      <div class="sec-label">Go to it</div>
+      <h2>Every link works, or it is not here</h2>
     </div></div>
-    <p>The ledger is the feed: if this face and the ledger ever disagree, the ledger wins. Ledger read not wired to this face yet, so no live-or-frozen claim is made here.</p>
-  </div>
-
-  <div class="board hidden" id="aiBoard">
-    <div class="board-head"><span class="dot"></span><div>
-      <div class="sec-label">AI view — the working view</div>
-      <h2>What the seats do next</h2>
-    </div></div>
-    <p>Same record as the Human view, in the form seats work from: states, counts, what each state asks of its owner, and what is blocked.</p>
-    <h3>States and counts</h3>
-    <div id="aiTable"><p class="dark">Loading the live record…</p></div>
-    <h3>Decisions waiting</h3>
-    <p id="aiDecisions" class="dark">Loading the live record…</p>
-    <h3>Blocked</h3>
-    <p id="aiBlockers" class="dark">Loading the live record…</p>
-    <h3>Wiring status</h3>
-    <p class="dark">As of this build (2026-10-26); PI + board carry newer.</p>
-    <p>Items endpoint: pending — Hub worker data route + read-only secret (greenlight in PI/board).</p>
-    <p>Area schema: tap pending (board packet) + backfill acceptance (bars unmet) — no area % until then.</p>
-    <p>/projects mapping: pending — mystery worker operator or dashboard route change.</p>
-    <p>Parts at 9+: unmeasured — no score register exists.</p>
-    <h3>Details doors</h3>
-    <p>Machine proof for any item lives behind that item's Details door once the items endpoint lands. State details above carry the state code, the count source, and the proof rule (done counts only with evidence + a prover who is not the maker).</p>
-    <h3>Links for the working view</h3>
     <ul class="linklist">
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Team coordination feed #3066</a></li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Prior team board #2793</a></li>
-      <li><a href="/projects/state.json">Live machine state</a></li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Open the team board</a> — where seats coordinate, in the open.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6426890671">Open the build package for this face</a> — Power's full package, PI note 51.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6426876643">Open the wiring record</a> — Power's wiring pass, PI note 50.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6426671735">Open the communication record</a> — the communication law, PI note 49.</li>
+      <li><a href="https://nayanet.live/">Open the Hub home</a> — the front door of the whole world.</li>
     </ul>
-  </div>
+    <p class="dark">A dead link is a defect, not a placeholder. If a link above ever fails, that is a bug to fix, not a gap to live with.</p>
+  </section>
+  </div><!-- /placeblocks -->
 
-  <div class="board hidden" id="machineBoard">
+  <section class="board hidden" id="machinePanel" aria-label="Machine view">
     <div class="board-head"><span class="dot"></span><div>
-      <div class="sec-label">Machine view</div>
+      <div class="sec-label">Machine — one tap behind the door</div>
       <h2>The record, raw</h2>
     </div></div>
-    <p>Same record as the Human view, in the form machines read: the payload verbatim, the endpoints, the read facts. Nothing here is prose in place of structure.</p>
-    <h3>Operating code — data path</h3>
-    <pre id="machinePanel">Loading the live record…</pre>
-    <h3>Live payload, verbatim</h3>
-    <pre id="machineRaw">Loading the live record…</pre>
-  </div>
-
-  <div class="board">
-    <p class="readtime">Project Intelligence · Numbers read live from the project record on every load. A number without a read time is not a dashboard number. Machine proof for any item — hashes, signatures, receipts — lives one tap behind that item's Details door, never on this surface.</p>
-    <p class="readtime">Route: /pi (legacy /pi-face.html serves the same face). Views: Human in front · AI working view · Machine behind — one record underneath.</p>
-  </div>
-
+    <p class="dark">This is the machine tongue: identifiers, counts, and endpoints. The human face never carries these; they live one tap behind the item's door.</p>
+    <pre id="machineRaw">Waiting for the record…</pre>
+  </section>
 </div>
 <script>
-(function(){
-  var AREAS = [
-    {key:"pi-hub", name:"Project Intelligence itself", accent:"magenta", line:"The hub itself: the face, the record, the wiring, and the notices that make the hub live."},
-    {key:"welcome", name:"Welcome walk", accent:"purple", line:"The walk that welcomes a new citizen and opens their world."},
-    {key:"connection", name:"Citizen connection", accent:"blue", line:"How citizens connect to each other and to the network."},
-    {key:"mail-notifications", name:"Smart Mail and notices", accent:"green", line:"Mail and the notices that tell the team what changed."},
-    {key:"match", name:"Smart Match", accent:"shown", line:"Matching people, projects, and spaces that belong together."},
-    {key:"factory-interfaces", name:"Smart Factory and interfaces", accent:"red", line:"The parts and templates every page is built from."},
-    {key:"membership-money", name:"Memberships, ambassadors, and money", accent:"teal", line:"Joining, belonging, and getting paid fairly."},
-    {key:"hub-dashboard", name:"Hub and dashboard", accent:"indigo", line:"The front doors: the hub, the dashboard, the one hub."},
-    {key:"projects-spaces", name:"Projects and spaces", accent:"lime", line:"Projects people build, and the spaces they gather in."},
-    {key:"voice-audio", name:"Voice and audio", accent:"orange", line:"Speaking, hearing, and sound across the network."},
-    {key:"identity-settings", name:"Identity, settings, and pricing", accent:"neutral", line:"Who you are, how things are set, and what things cost. Own colour pending a ruling — shown neutral until then."},
-    {key:"security-privacy", name:"Security and privacy", accent:"neutral", line:"Keeping mail, lists, and money private by default. Own colour pending a ruling — shown neutral until then."}
-  ];
-  var STATE_WORDS = {done_proven:"Done \u00b7 proven", in_progress:"In motion", queued:"To do", verifying:"Being checked", needs_shawn:"Needs a decision", blocked:"Blocked"};
-  var SEAT_NOTES = {
-    done_proven:"Finished with proof. No action; receipts stand.",
-    in_progress:"Being worked on now. Owners keep next steps current.",
-    queued:"Waiting in line. Highest priority first.",
-    verifying:"Finished, awaiting proof. Provers verify; nothing counts until proven.",
-    needs_shawn:"Waiting on a human call. Decisions are never counted as done.",
-    blocked:"Waiting on something else. Each needs its blocker named and an owner."
-  };
-  var STATE_ORDER = ["done_proven", "in_progress", "queued", "verifying", "needs_shawn", "blocked"];
-  var roomList = document.getElementById("roomList");
-  AREAS.forEach(function(a){
-    var b = document.createElement("button");
-    b.className = "room"; b.type = "button";
-    b.setAttribute("data-accent", a.accent);
-    b.setAttribute("data-name", a.name.toLowerCase());
-    b.setAttribute("data-key", a.key);
-    var dot = document.createElement("span"); dot.className = "rdot";
-    var nm = document.createElement("span"); nm.className = "rname"; nm.appendChild(dot);
-    nm.appendChild(document.createTextNode(a.name));
-    var ln = document.createElement("p"); ln.className = "rline"; ln.textContent = a.line;
-    var st = document.createElement("p"); st.className = "rstatus";
-    st.textContent = "Tap to open this area. Area % waits on backfill acceptance.";
-    b.appendChild(nm); b.appendChild(ln); b.appendChild(st);
-    b.addEventListener("click", function(){ openArea(a); });
-    roomList.appendChild(b);
-  });
-  function areaLinksHTML(){
-    var ul = document.createElement("ul"); ul.className = "linklist";
-    var items = [
-      ["https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066", "Team coordination feed #3066", " — the live coordination venue."],
-      ["https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793", "Prior team board #2793", " — live 2026-10-20 to 2026-10-25, kept for history."],
-      ["/projects/state.json", "Live machine state", " — the live numbers this face reads."]
-    ];
-    items.forEach(function(it){
-      var li = document.createElement("li");
-      var lk = document.createElement("a"); lk.href = it[0]; lk.textContent = it[1];
-      li.appendChild(lk); li.appendChild(document.createTextNode(it[2]));
-      ul.appendChild(li);
+(function () {
+  "use strict";
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c];
     });
-    return ul;
   }
-  function openArea(a){
-    ["roomsBoard","todoBoard","scopeBoard","linksBoard","ledgerBoard","aiBoard","machineBoard"].forEach(function(id){
-      document.getElementById(id).classList.add("hidden");
-    });
-    document.getElementById("areaKicker").textContent = "Project Intelligence / " + a.name;
-    document.getElementById("areaName").textContent = a.name;
-    document.getElementById("areaLine").textContent = a.line;
-    var links = document.getElementById("areaLinks"); links.innerHTML = "";
-    links.appendChild(areaLinksHTML());
-    document.getElementById("areaView").classList.remove("hidden");
-    window.scrollTo(0, 0);
+  function el(id) { return document.getElementById(id); }
+  function num(n) { return (n == null ? "—" : n); }
+  function pct(a, b) { return (b ? Math.round(100 * a / b) : 0) + "%"; }
+
+  var NOTES_KEY = "naya.pi.notes.v2";
+  function loadNotes() {
+    try { var v = localStorage.getItem(NOTES_KEY); return v ? JSON.parse(v) : []; }
+    catch (e) { return []; }
   }
-  var currentView = "human";
-  function setView(v){
-    currentView = v;
-    document.getElementById("viewHumanBtn").setAttribute("aria-pressed", v === "human" ? "true" : "false");
-    document.getElementById("viewAiBtn").setAttribute("aria-pressed", v === "ai" ? "true" : "false");
-    document.getElementById("viewMachineBtn").setAttribute("aria-pressed", v === "machine" ? "true" : "false");
-    ["statusBoard","todoBoard","roomsBoard","scopeBoard","linksBoard","ledgerBoard"].forEach(function(id){
-      document.getElementById(id).classList.toggle("hidden", v !== "human");
-    });
-    document.getElementById("aiBoard").classList.toggle("hidden", v !== "ai");
-    document.getElementById("machineBoard").classList.toggle("hidden", v !== "machine");
-    document.getElementById("areaView").classList.add("hidden");
-    window.scrollTo(0, 0);
-  }
-  function backToHub(){ setView("human"); }
-  document.getElementById("backBtn").addEventListener("click", backToHub);
-  document.getElementById("backBtn2").addEventListener("click", backToHub);
-  document.getElementById("viewHumanBtn").addEventListener("click", function(){ setView("human"); });
-  document.getElementById("viewAiBtn").addEventListener("click", function(){ setView("ai"); });
-  document.getElementById("viewMachineBtn").addEventListener("click", function(){ setView("machine"); });
+  function saveNotes(list) { try { localStorage.setItem(NOTES_KEY, JSON.stringify(list)); } catch (e) {} }
+  function escAttr(s) { return esc(s).replace(/"/g, "&quot;"); }
 
-  var search = document.getElementById("roomSearch");
-  search.addEventListener("input", function(){
-    var q = search.value.toLowerCase();
-    var rooms = roomList.querySelectorAll(".room");
-    rooms.forEach(function(r){
-      var hay = (r.getAttribute("data-name") + " " + r.textContent).toLowerCase();
-      r.classList.toggle("hidden", q !== "" && hay.indexOf(q) === -1);
-    });
-    var links = document.getElementById("mainLinks").querySelectorAll("li");
-    links.forEach(function(li){
-      var hay = li.textContent.toLowerCase();
-      li.classList.toggle("hidden", q !== "" && hay.indexOf(q) === -1);
-    });
-  });
-
-  document.getElementById("worldBtn").addEventListener("click", function(){
-    document.getElementById("worldBtn").setAttribute("aria-pressed", "true");
-    document.getElementById("projectBtn").setAttribute("aria-pressed", "false");
-    document.getElementById("worldPane").classList.remove("hidden");
-    document.getElementById("projectPane").classList.add("hidden");
-  });
-  document.getElementById("projectBtn").addEventListener("click", function(){
-    document.getElementById("projectBtn").setAttribute("aria-pressed", "true");
-    document.getElementById("worldBtn").setAttribute("aria-pressed", "false");
-    document.getElementById("projectPane").classList.remove("hidden");
-    document.getElementById("worldPane").classList.add("hidden");
-  });
-  document.getElementById("showDoneBtn").addEventListener("click", function(){
-    document.getElementById("donePane").classList.remove("hidden");
-    document.getElementById("todoPane").classList.add("hidden");
-  });
-  document.getElementById("showTodoBtn").addEventListener("click", function(){
-    document.getElementById("todoPane").classList.remove("hidden");
-    document.getElementById("donePane").classList.add("hidden");
-  });
-  document.getElementById("calmBtn").addEventListener("click", function(){
-    var btn = document.getElementById("calmBtn");
-    var on = document.body.classList.toggle("calm");
-    btn.setAttribute("aria-pressed", on ? "true" : "false");
-    btn.textContent = on ? "Calm motion: on" : "Calm motion: off";
-  });
-
-  function fmt(n){ return (n === null || n === undefined) ? "\u2013" : Number(n).toLocaleString("en-US"); }
-  var prevValues = null;
-  function setOrb(id, val){
-    var el = document.getElementById(id);
-    if(prevValues && prevValues[id] !== undefined && prevValues[id] !== val){
-      el.classList.add("flash");
-      (function(e){ setTimeout(function(){ e.classList.remove("flash"); }, 1600); })(el);
+  function renderNotes(filterRoom) {
+    var list = loadNotes();
+    var box = el("noteList");
+    var shown = filterRoom ? list.filter(function (n) { return n.room === filterRoom; }) : list;
+    if (!shown.length) {
+      box.innerHTML = '<p class="dark">No notes yet — saved notes will appear here, on this device only.</p>';
+      return;
     }
-    el.textContent = val;
-  }
-  function esc(s){ return String(s === null || s === undefined ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
-  function itemRowHTML(it){
-    var words = it.state_words || STATE_WORDS[it.state] || it.state;
-    var upd = it.updated_at ? String(it.updated_at).slice(0, 16).replace("T", " ") : "unknown";
-    var html = '<div class="item-row"><div class="item-name">' + esc(it.title) + '</div>'
-      + '<div class="item-meta">' + esc(words) + ' · owner: ' + esc(it.owner_seat || "unassigned") + ' · updated: ' + esc(upd) + '</div>';
-    if(it.next_action){ html += '<p>Next step: ' + esc(it.next_action) + '</p>'; }
-    if(it.blocker){ html += '<p>Blocked by: ' + esc(it.blocker) + '</p>'; }
-    (it.notes_tail || []).forEach(function(n){ html += '<p class="item-note">Note: ' + esc(n) + '</p>'; });
-    html += '<div class="btnrow"><button class="mini-btn item-details-btn" type="button">Details</button></div>'
-      + '<div class="hidden item-proof"><p class="dark">Item: ' + esc(it.item_key) + ' · state code: ' + esc(it.state) + ' · proof rule: done counts only with evidence + a prover who is not the maker.</p>';
-    if(it.evidence_url){ html += '<p><a href="' + esc(it.evidence_url) + '" target="_blank" rel="noopener">Proof link</a></p>'; }
-    else { html += '<p class="dark">No evidence link recorded.</p>'; }
-    html += '</div></div>';
-    return html;
-  }
-  function loadItems(){
-    var notice = document.getElementById("itemsNotice");
-    fetch("/pi/api/items?t=" + Date.now(), {cache: "no-store", headers: {"Cache-Control": "no-cache", "Pragma": "no-cache"}}).then(function(r){
-      if(!r.ok){ throw new Error("items read " + r.status); }
-      return r.json();
-    }).then(function(d){
-      if(d.configured === false){
-        notice.className = "notice warn";
-        notice.innerHTML = "<strong>Item rows:</strong> the items route is live, but its read-only access is not set worker-side yet — the operator step is named in PI + board. No rows are invented.";
-        return;
-      }
-      var done = [], todo = [];
-      (d.items || []).forEach(function(it){ if(it.state === "done_proven"){ done.push(it); } else { todo.push(it); } });
-      var donePane = document.getElementById("donePane");
-      var todoPane = document.getElementById("todoPane");
-      donePane.innerHTML = done.length ? done.map(itemRowHTML).join("") : '<p class="dark">No done \u00b7 proven rows in this read.</p>';
-      todoPane.innerHTML = todo.length ? todo.map(itemRowHTML).join("") : '<p class="dark">No to-do rows in this read.</p>';
-      todoPane.classList.remove("hidden");
-      var btns = document.querySelectorAll(".item-details-btn");
-      btns.forEach(function(b){ b.addEventListener("click", function(){ var proof = b.parentElement.nextElementSibling; if(proof){ proof.classList.toggle("hidden"); } }); });
-      window.__itemsReadAt = d.read_at || "";
-      notice.className = "notice";
-      notice.innerHTML = "<strong>Item rows:</strong> live from the record, read at " + esc(d.read_at || "unknown") + ". No rows invented.";
-      var mp = document.getElementById("machinePanel");
-      if(mp && window.__itemsReadAt){ mp.textContent = mp.textContent.replace("Item rows: pending — items endpoint access not set worker-side (operator step named in PI + board)", "Item rows: live — GET /pi/api/items, read at " + window.__itemsReadAt); }
-    }).catch(function(){
-      // Keep the honest gated message; rows stay absent, never invented.
-    });
-  }
-  function load(){
-    var statusLine = document.getElementById("statusLine");
-    var readTimeLine = document.getElementById("readTimeLine");
-    var moveText = document.getElementById("moveText");
-    var moveBox = document.getElementById("moveBox");
-    statusLine.textContent = "Reading the live record…";
-    fetch("/projects/state.json?t=" + Date.now(), {cache: "no-store", headers: {"Cache-Control": "no-cache", "Pragma": "no-cache"}}).then(function(r){
-      if(!r.ok){ throw new Error("state read " + r.status); }
-      return r.json();
-    }).then(function(d){
-      var c = d.counts || {};
-      var total = ["queued","blocked","claimed","verifying","done_proven","in_progress","needs_shawn"].reduce(function(s, k){
-        return s + (Number(c[k]) || 0);
-      }, 0);
-      var done = Number(c.done_proven) || 0;
-      var pct = total > 0 ? Math.round(done / total * 100) : 0;
-      var vals = {
-        orbPct: pct + "%", orbTotal: fmt(total), orbDone: fmt(done),
-        orbMotion: fmt(c.in_progress), orbTodo: fmt(c.queued), orbCheck: fmt(c.verifying),
-        orbDecision: fmt(c.needs_shawn), orbBlocked: fmt(c.blocked)
-      };
-      Object.keys(vals).forEach(function(id){ setOrb(id, vals[id]); });
-      var p = d.production || {};
-      var pace = (typeof p.transitions_today === "number") ? String(p.transitions_today) : "\u2013";
-      setOrb("orbPace", pace);
-      vals.orbPace = pace;
-      prevValues = vals;
-      var when = d.derived_at || (d.freshness && d.freshness.derived_at) || "";
-      var fetchedAt = new Date().toISOString();
-      statusLine.textContent = "Live numbers below, read from the live project record.";
-      readTimeLine.textContent = "Numbers read " + (when || fetchedAt) + " from the live record. Re-read on every load and on Refresh.";
-      if(typeof p.transitions_today === "number"){
-        var eff = (p.effort_per_verified_outcome && p.effort_per_verified_outcome.value !== undefined) ? p.effort_per_verified_outcome.value + " : 1" : "not measured";
-        var wake = (typeof p.wakeups_per_day === "number") ? (" Wake-ups " + p.wakeups_per_day + "/day (ceiling " + (p.wakeups_ceiling || 800) + ").") : "";
-        moveText.textContent = "Verified finishes today: " + p.transitions_today + ". Effort per verified finish: " + eff + "." + wake + " That movement is the record updating — the numbers move because work lands.";
-      } else {
-        moveText.textContent = "Movement numbers are not in this read. Nothing is shown rather than something invented.";
-      }
-      moveBox.classList.remove("warn"); moveBox.classList.remove("bad");
-      var aiTable = document.getElementById("aiTable"); aiTable.innerHTML = "";
-      STATE_ORDER.forEach(function(st){
-        var row = document.createElement("p");
-        row.textContent = STATE_WORDS[st] + ": " + fmt(c[st]) + " — " + SEAT_NOTES[st];
-        aiTable.appendChild(row);
+    box.innerHTML = shown.map(function (n) {
+      return '<div class="item-row"><div class="item-name">' + esc(n.text) + '</div>' +
+        '<div class="item-meta">Room: ' + esc(n.room) + ' · saved ' + esc(n.when) + ' · on this device only</div>' +
+        '<div class="btnrow"><button class="mini-btn note-del" type="button" data-id="' + escAttr(n.id) + '">Delete this note</button></div></div>';
+    }).join("");
+    var dels = box.querySelectorAll(".note-del");
+    for (var i = 0; i < dels.length; i++) {
+      dels[i].addEventListener("click", function (ev) {
+        var id = ev.currentTarget.getAttribute("data-id");
+        saveNotes(loadNotes().filter(function (n) { return n.id !== id; }));
+        renderNotes(null);
+        var rd = el("roomDetailNotes");
+        if (rd) { renderRoomNotes(currentRoom); }
       });
-      var truth = d.truth_now || "";
-      var mdec = truth.match(/Waiting on Shawn: (\d+) decision\(s\) — first: ([^.]+)\./);
-      document.getElementById("aiDecisions").textContent = mdec
-        ? ("Decisions waiting: " + mdec[1] + ". First: " + mdec[2] + ".")
-        : ("Decisions waiting: " + fmt(c.needs_shawn) + ".");
-      document.getElementById("aiBlockers").textContent = "Blocked: " + fmt(c.blocked) + ". Each blocked item needs its blocker named and an owner to unblock it.";
-      var panel = [];
-      panel.push("Data path: /projects/state.json (fetch, cache no-store + no-cache headers + per-load cache-buster)");
-      panel.push("Derived at: " + (when || "unknown"));
-      panel.push("State tip: " + (d.state_tip || "unknown"));
-      panel.push("Schema: " + (d.schema_version || "unknown"));
-      panel.push("Route: /pi (legacy /pi-face.html serves the same face)");
-      panel.push("Deploy: Hub worker auto-deploy (deploy-hub-cloudflare.yml)");
-      panel.push(window.__itemsReadAt ? ("Item rows: live — GET /pi/api/items, read at " + window.__itemsReadAt) : "Item rows: pending — items endpoint access not set worker-side (operator step named in PI + board)");
-      panel.push("Area %: pending — area schema tap + backfill acceptance");
-      panel.push("Parts at 9+: unmeasured — no score register exists");
-      document.getElementById("machinePanel").textContent = panel.join("\n");
-      document.getElementById("machineRaw").textContent = JSON.stringify(d, null, 2);
-    }).catch(function(){
-      var now = new Date().toISOString();
-      statusLine.textContent = "Live read failed at " + now + " — showing structure only, no numbers invented.";
-      readTimeLine.textContent = "No live read available from here. Open this face on its own route to read live numbers.";
-      moveText.textContent = "Movement cannot be shown without a live read. Nothing is shown rather than something invented.";
-      moveBox.classList.add("bad");
-      document.getElementById("aiTable").innerHTML = "";
-      var aiFail = document.createElement("p"); aiFail.className = "dark"; aiFail.textContent = "No live read — nothing shown rather than something invented.";
-      document.getElementById("aiTable").appendChild(aiFail);
-      document.getElementById("aiDecisions").textContent = "No live read.";
-      document.getElementById("aiBlockers").textContent = "No live read.";
-      document.getElementById("machinePanel").textContent = "Live read failed at " + now + ".";
-      document.getElementById("machineRaw").textContent = "No live read.";
+    }
+  }
+
+  var currentRoom = null;
+  var recordData = null;
+
+  function renderRoomNotes(roomKey) {
+    var box = el("roomDetailNotes");
+    if (!box) { return; }
+    var list = loadNotes().filter(function (n) { return n.room === roomKey; });
+    if (!list.length) {
+      box.innerHTML = '<p class="dark">No notes for this room yet — on this device only.</p>';
+      return;
+    }
+    box.innerHTML = list.map(function (n) {
+      return '<div class="item-row"><div class="item-name">' + esc(n.text) + '</div>' +
+        '<div class="item-meta">Saved ' + esc(n.when) + ' · on this device only</div></div>';
+    }).join("");
+  }
+
+  function openRoom(room) {
+    currentRoom = room.key;
+    var d = el("roomDetail");
+    d.classList.remove("hidden");
+    var prov = room.provisional ? '<p class="dark">Colour provisional: ' + esc(room.provisional) + ' — shown as a reuse, never as a distinct room colour, until the contract is amended or a non-adjacent-reuse ruling lands.</p>' : "";
+    var streams = room.workstreams.map(function (w) { return "<li>" + esc(w) + "</li>"; }).join("");
+    d.innerHTML =
+      '<div class="board-head"><span class="dot" style="background:var(--' + esc(room.accent) + ')"></span><div>' +
+      '<div class="sec-label">Room · ' + esc(room.key) + '</div><h2>' + esc(room.name) + '</h2></div></div>' +
+      '<p>' + esc(room.why) + '</p>' +
+      '<p class="dark">Seat for this room (proposed, not confirmed): ' + esc(room.seat) + '. Per-room engine and page scores are DARK — no probe evidence rows exist for this room\'s functions yet, so no score is shown rather than a guessed one.</p>' +
+      prov +
+      '<p><span class="tag dark">Engine: DARK — no probe evidence yet</span>' +
+      '<span class="tag dark">Page: DARK — no probe evidence yet</span></p>' +
+      '<h3>To-dos in this room</h3>' +
+      '<p class="dark">Live to-dos for this room render from live area assignments once the one-pass application lands. Until then, the named work for this room is the workstream list below — harvested from the consensus inventory, not a live item pull.</p>' +
+      '<ul class="linklist">' + streams + '</ul>' +
+      '<h3>Top bottlenecks</h3><div class="darkbox">DARK — no per-room bottleneck list exists in the live record yet. Reason: area assignments are not applied, so a room\'s items cannot be counted, let alone ranked.</div>' +
+      '<h3>Top enhancements</h3><div class="darkbox">DARK — no per-room enhancement list exists in the live record yet, for the same reason.</div>' +
+      '<h3>Done with receipts, in this room</h3><div class="darkbox">DARK by room — whole-record proven is 40 real jobs, but per-room done counts wait on applied area assignments. No room is shown at a percent that the record cannot carry.</div>' +
+      '<h3>Decisions and gates, in this room</h3><p>' + esc(room.gates) + '</p>' +
+      '<h3>Notes in this room</h3><div id="roomDetailNotes"></div>' +
+      '<textarea id="roomNoteText" class="well" rows="2" placeholder="Write a note for this room…"></textarea>' +
+      '<div class="btnrow"><button class="btn" id="roomNoteSave" type="button">Save this room note</button>' +
+      '<button class="btn" id="roomClose" type="button">Close this room</button></div>' +
+      '<h3>Links</h3><ul class="linklist">' +
+      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Open the team board</a></li>' +
+      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6426890671">Open the build package for this face</a></li></ul>' +
+      '<h3>Still needed in this room</h3>' +
+      '<p><strong>Interface side:</strong> <span class="dark">Not measured yet — per-page still-needed lists need the room\'s page list from the live record.</span></p>' +
+      '<p><strong>Functionality side:</strong> <span class="dark">Not measured yet — same reason. Words pending for the finished per-page lists.</span></p>';
+    renderRoomNotes(room.key);
+    el("roomNoteSave").addEventListener("click", function () {
+      var t = el("roomNoteText").value.trim();
+      if (!t) { return; }
+      var list = loadNotes();
+      list.push({id: "n" + Date.now(), room: room.key, text: t, when: new Date().toISOString()});
+      saveNotes(list);
+      el("roomNoteText").value = "";
+      renderRoomNotes(room.key);
+      renderNotes(null);
+    });
+    el("roomClose").addEventListener("click", function () {
+      d.classList.add("hidden");
+      d.innerHTML = "";
+      currentRoom = null;
+    });
+    d.scrollIntoView({behavior: "smooth", block: "start"});
+  }
+
+  function render(data) {
+    recordData = data;
+    var r = data.real, rows = data.rows, main = data.main_bucket;
+    el("headlinePct").textContent = pct(r.done_proven, r.total);
+    el("headlineLine").textContent = r.done_proven + " of " + r.total + " real jobs proven done. Rows read " +
+      rows.done_proven + " of " + rows.total + " — rows count the same job twice where it was inserted twice, so the real number rules.";
+    el("healthNums").innerHTML =
+      '<div class="num"><div class="orb proven big">' + esc(pct(r.done_proven, r.total)) + '</div><div class="num-label">Real jobs done</div><div class="num-sub">' + r.done_proven + " of " + r.total + " real jobs · deduped by job, never by row</div></div>" +
+      '<div class="num"><div class="orb">' + esc(pct(rows.done_proven, rows.total)) + '</div><div class="num-label">Rows done</div><div class="num-sub">' + rows.done_proven + " of " + rows.total + " rows · includes twin rows</div></div>" +
+      '<div class="num"><div class="orb">' + esc(pct(main.done_proven, main.total)) + '</div><div class="num-label">Main bucket only</div><div class="num-sub">' + main.done_proven + " of " + main.total + " rows · FILTERED view, never the whole record</div></div>" +
+      '<div class="num"><div class="orb">' + num(r.queued) + '</div><div class="num-label">Waiting</div><div class="num-sub">Real jobs waiting to start</div></div>' +
+      '<div class="num"><div class="orb">' + num(r.in_progress) + '</div><div class="num-label">In motion</div><div class="num-sub">Real jobs being worked</div></div>' +
+      '<div class="num"><div class="orb">' + num(r.verifying) + '</div><div class="num-label">Being checked</div><div class="num-sub">Real jobs awaiting proof</div></div>' +
+      '<div class="num"><div class="orb">' + num(r.needs_shawn) + '</div><div class="num-label">Need Shawn\'s hands</div><div class="num-sub">Real jobs gated on his tap</div></div>' +
+      '<div class="num"><div class="orb">' + num(r.blocked) + '</div><div class="num-label">Blocked</div><div class="num-sub">Real jobs that cannot move</div></div>';
+    el("healthDark").innerHTML =
+      '<strong>DARK, with reasons — never guessed:</strong> Parts at 9 or above — no scorecard-records register exists yet. ' +
+      'Today\'s verified-outcome ratio — no verified-outcome count for the day exists yet. ' +
+      'Per-area percents — the area schema is not applied, so no room percent is shown. ' +
+      'Per-room engine and page scores — no probe evidence rows exist yet. Words pending for the finished lead sentences; the captions above are computed from the record, not marketing prose.';
+    el("healthAi").textContent = "Method (seat view): deduped by item key across all 9 project buckets; twin survivor rule — evidence plus named prover, then most advanced state, then fuller next action, then the main-bucket row on ties. " +
+      "Main bucket alone (" + main.total + " rows) is a filtered view and is never presented as the whole record. Read time is on the line above the tabs.";
+
+    el("masterList").innerHTML = data.master_todo.map(function (t, i) {
+      return '<div class="item-row"><div class="item-name">' + (i + 1) + ". " + esc(t.name) + '</div>' +
+        '<div class="item-note">' + esc(t.why) + '</div>' +
+        '<div class="item-meta">What it unblocks: ' + esc(t.unblocks) + '</div>' +
+        '<details class="door"><summary>Open this item\'s door</summary><p class="dark">Source: ' + esc(t.source) + '. Machine proof (identifiers, links) lives behind this door, never on the face.</p></details></div>';
+    }).join("");
+
+    el("stuckList").innerHTML =
+      '<div class="nums">' +
+      '<div class="num"><div class="orb">' + num(r.blocked) + '</div><div class="num-label">Blocked jobs</div><div class="num-sub">Real jobs that cannot move</div></div>' +
+      '<div class="num"><div class="orb">' + num(r.needs_shawn) + '</div><div class="num-label">Need Shawn\'s hands</div><div class="num-sub">Real jobs · ' + main.needs_shawn + ' of them in the main bucket</div></div>' +
+      '<div class="num"><div class="orb">' + num(data.owners.ownerless_real) + '</div><div class="num-label">Ownerless jobs</div><div class="num-sub">Real jobs with no owner named — unowned, never guessed</div></div></div>' +
+      data.named_blockers.map(function (b) {
+        return '<div class="item-row"><div class="item-name">' + esc(b.name) + '</div>' +
+          '<div class="item-note">' + esc(b.why) + '</div>' +
+          '<div class="item-meta">Owner: ' + esc(b.owner) + '</div></div>';
+      }).join("");
+
+    el("moveList").innerHTML = data.movement.map(function (m) {
+      return '<div class="item-row"><div class="item-name">' + esc(m.text) + '</div>' +
+        '<div class="feedtime">' + esc(m.when) + ' · ' + esc(m.source) + '</div></div>';
+    }).join("");
+    el("ledgerBox").innerHTML = "<strong>Ledger, honestly frozen:</strong> tail sequence " + esc(data.ledger.tail_seq) +
+      ", entry " + esc(data.ledger.tail_id) + ", issued " + esc(data.ledger.issued) +
+      " — frozen since then. New done jobs have no fresh ledger row until the writer is mechanized to write in the same pass. A feed rendered from a frozen ledger says so; it never pretends to be live.";
+
+    var roomsHtml = data.rooms.map(function (rm) {
+      return '<button class="room" type="button" data-room="' + escAttr(rm.key) + '" data-accent="' + escAttr(rm.accent) + '">' +
+        '<span class="rname"><span class="rdot"></span>' + esc(rm.name) + '</span>' +
+        '<span class="rline">' + esc(rm.why) + '</span>' +
+        '<span class="rstatus">Seat (proposed): ' + esc(rm.seat) + ' · <span class="dark">Engine: DARK · Page: DARK — no probe evidence yet</span>' +
+        (rm.provisional ? ' · Colour provisional: ' + esc(rm.provisional) : '') + '</span></button>';
+    }).join("");
+    el("roomList").innerHTML = roomsHtml;
+    var cards = el("roomList").querySelectorAll(".room");
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].addEventListener("click", function (ev) {
+        var key = ev.currentTarget.getAttribute("data-room");
+        var found = null;
+        for (var j = 0; j < data.rooms.length; j++) { if (data.rooms[j].key === key) { found = data.rooms[j]; } }
+        if (found) { openRoom(found); }
+      });
+    }
+    var sel = el("noteRoom");
+    sel.innerHTML = data.rooms.map(function (rm) { return '<option value="' + escAttr(rm.key) + '">' + esc(rm.name) + '</option>'; }).join("");
+
+    el("uncatBox").innerHTML =
+      "<strong>Not placed in a room yet — read this before any room percent.</strong><br>" +
+      "By the main-bucket keyword derivation (Power's Wave 2 method, first match wins): " + data.uncategorized.uncategorized +
+      " of " + data.uncategorized.real_total + " real jobs uncategorized (" + data.uncategorized.pct + "), including " +
+      data.uncategorized.done_uncategorized + " proven-done and " + data.uncategorized.needs_shawn_uncategorized +
+      " needing Shawn — all three acceptance bars unmet (under 5%, zero proven uncategorized, zero needing-Shawn uncategorized). " +
+      "So this face shows NO per-area percent at all. The readiness dataset places all " + data.readiness.placed +
+      " real jobs into areas as preparation (" + data.readiness.high + " high, " + data.readiness.medium + " medium, " +
+      data.readiness.low + " low confidence, each low with a reason) — but preparation is not the record: until the one-pass application lands in the live record, " +
+      "those percents are never presented as live. Waste rows in the main bucket: " + data.waste.main_bucket +
+      ", all waiting, set aside before any area count. Ownerless: " + data.owners.ownerless_real + " real jobs.";
+
+    el("doneList").innerHTML =
+      '<div class="nums">' +
+      '<div class="num"><div class="orb proven">' + num(r.done_proven) + '</div><div class="num-label">Real jobs proven</div><div class="num-sub">Maker is never the prover</div></div>' +
+      '<div class="num"><div class="orb">' + num(rows.done_proven) + '</div><div class="num-label">Done rows</div><div class="num-sub">Includes ' + (rows.done_proven - r.done_proven) + ' twin rows — counted once, as jobs</div></div></div>' +
+      '<p>Twins removed by rule: ' + data.twins.count + ' keys, each twice across two buckets, ' + data.twins.conflicts +
+      ' conflicts — removal is mechanical. Survivor rule in order: evidence plus named prover, then most advanced state, then fuller next action, then the main-bucket row. ' +
+      'Exceptions: ' + data.twins.exceptions.join(", ") + ' stay on their non-main twin under the fuller-next-action rule, because only that twin carries next-action text — on application that text merges into the main-bucket row; the job does not move. ' +
+      'One dataset sentence is NOT carried forward: the readiness file describes one pair as twice inside the main bucket, but the live read places it across two buckets like the other twins — immaterial to the cure, and not baked in.</p>' +
+      '<p class="dark">Receipts: every done job carries its proof in the record; fresh ledger rows wait on the mechanized writer (ledger frozen ' + esc(data.ledger.issued) + ').</p>';
+
+    el("machineRaw").textContent = JSON.stringify(data, null, 2);
+    if (data.staged) {
+      var fb = el("fixtureBanner");
+      fb.classList.remove("hidden");
+      fb.textContent = data.staged_note;
+    }
+    var now = new Date();
+    el("readTimeLine").textContent = "Record read: " + now.toISOString() + " · scope: the whole work record (all buckets) · " +
+      "rows " + rows.total + " · real jobs " + r.total + " · main bucket " + main.total + " (filtered view only).";
+    renderNotes(null);
+  }
+
+  function failState() {
+    var now = new Date();
+    var fb = el("failBanner");
+    fb.classList.remove("hidden");
+    fb.textContent = "The record could not be read at " + now.toISOString() +
+      ". Nothing below is live — numbers show — until a fresh read succeeds. No number here is guessed, and no last-good read is claimed.";
+    el("readTimeLine").textContent = "Record read failed at " + now.toISOString() + " · no live numbers on this page right now.";
+    el("headlinePct").textContent = "—";
+    el("headlineLine").textContent = "No live record — numbers wait for a fresh read.";
+    el("healthNums").innerHTML = "";
+    el("healthDark").innerHTML = "<strong>DARK:</strong> every number on this page is unmeasured right now, because the record read failed. Reason shown, nothing guessed.";
+    el("masterList").innerHTML = '<p class="dark">No to-do list without the record — the list renders from a fresh read, never from memory.</p>';
+    el("stuckList").innerHTML = '<p class="dark">Stuck cannot be counted without the record.</p>';
+    el("moveList").innerHTML = '<p class="dark">No movement without the record.</p>';
+    el("ledgerBox").innerHTML = "<strong>Ledger:</strong> unknown right now — the read failed, so no ledger state is claimed.";
+    el("roomList").innerHTML = '<p class="dark">Rooms cannot open without the record.</p>';
+    el("uncatBox").innerHTML = "<strong>Not placed in a room yet:</strong> unknown right now — the read failed.";
+    el("doneList").innerHTML = '<p class="dark">Done cannot be counted without the record.</p>';
+    el("machineRaw").textContent = "Record read failed at " + now.toISOString() + ".";
+  }
+
+  function load() {
+    fetch("/pi/api/items", {cache: "no-store"})
+      .then(function (res) { if (!res.ok) { throw new Error("HTTP " + res.status); } return res.json(); })
+      .then(function (data) { render(data); })
+      .catch(function () { failState(); });
+  }
+
+  function setView(view) {
+    document.body.classList.remove("view-ai", "view-machine");
+    if (view === "ai") { document.body.classList.add("view-ai"); }
+    if (view === "machine") { document.body.classList.add("view-machine"); }
+    el("viewHumanBtn").setAttribute("aria-pressed", view === "human" ? "true" : "false");
+    el("viewAiBtn").setAttribute("aria-pressed", view === "ai" ? "true" : "false");
+    el("viewMachineBtn").setAttribute("aria-pressed", view === "machine" ? "true" : "false");
+  }
+  el("viewHumanBtn").addEventListener("click", function () { setView("human"); });
+  el("viewAiBtn").addEventListener("click", function () { setView("ai"); });
+  el("viewMachineBtn").addEventListener("click", function () { setView("machine"); });
+  el("refreshBtn").addEventListener("click", load);
+
+  var tabs = document.querySelectorAll(".tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener("click", function (ev) {
+      var target = document.getElementById(ev.currentTarget.getAttribute("data-goto"));
+      for (var j = 0; j < tabs.length; j++) { tabs[j].setAttribute("aria-pressed", "false"); }
+      ev.currentTarget.setAttribute("aria-pressed", "true");
+      if (target) { target.scrollIntoView({behavior: "smooth", block: "start"}); }
     });
   }
-  document.getElementById("refreshBtn").addEventListener("click", function(){ load(); loadItems(); });
+
+  el("noteSaveBtn").addEventListener("click", function () {
+    var t = el("noteText").value.trim();
+    if (!t) { return; }
+    var list = loadNotes();
+    list.push({id: "n" + Date.now(), room: el("noteRoom").value, text: t, when: new Date().toISOString()});
+    saveNotes(list);
+    el("noteText").value = "";
+    renderNotes(null);
+  });
+
   load();
-  loadItems();
 })();
 </script>
 </body>
