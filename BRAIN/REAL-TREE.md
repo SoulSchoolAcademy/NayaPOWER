@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-26  
-**Receipt basis commit:** `d9d787795e0f9799bae76c4aad239ba04650cb75`  
+**Receipt basis commit:** `f3c3862eb3c6a3c4081c131c26037e0690114489`  
 **Inventory file count:** 1702  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -1681,7 +1681,7 @@
 - `BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md` — `6daf7c27c05e` (18308 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 - `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
-- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `2ef4aa19a328` (5238 bytes)
+- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `4e9f96329f7b` (5398 bytes)
 - `BRAIN/90-OPERATIONS/contracts/handoff-contract.md` — `3c8346c5942b` (21563 bytes)
 - `BRAIN/90-OPERATIONS/contracts/learning-contract.md` — `c42197ff505a` (21689 bytes)
 - `BRAIN/90-OPERATIONS/contracts/verification-contract.md` — `e70095fcbe07` (19666 bytes)
@@ -1753,7 +1753,7 @@
 - `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.ai.md` — `48bad3d15186` (18185 bytes)
 - `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.human.md` — `bb9bf4d00fb2` (7891 bytes)
 - `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/spec.machine.json` — `250fbff919a6` (25435 bytes)
-- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `b84de88484c2` (19891 bytes)
+- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `a615c49af63a` (20229 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
