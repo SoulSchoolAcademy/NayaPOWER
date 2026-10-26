@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-26T18:15:51+00:00",
+ "generated_utc": "2026-10-26T19:15:24+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,6 +133,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 3091,
+     "title": "0036 \u2014 THE NAYA CONSTITUTION V1: the behavior constitution (three tongues + executable gat",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3091",
+     "draft": true
+    },
+    {
      "number": 3089,
      "title": "[DRAFT \u2014 DO NOT MERGE] PI face review draft: human-first Project Intelligence face + build",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3089",
@@ -157,7 +163,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -176,8 +182,15 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3092,
+     "title": "feat(activation): machine-pin NIA Protocol V1 in real cold-start gate",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3092",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "team",
@@ -410,6 +423,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
- "unassigned_prs": 4
+ "open_pr_total": 6,
+ "unassigned_prs": 5
 }
