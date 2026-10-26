@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "10cb6d9c8728632ca842576613a54a33923ae9d0",
-  "inventory_file_count": 1677,
+  "receipt_basis_commit": "41573abe8a79ff905bf1f28f9b15f379bf06bc9b",
+  "inventory_file_count": 1679,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 864,
+    "05-MEMORY": 866,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4829,6 +4829,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SERVICE/showing-gate/SN-1869/IB-SMART-NOTE-20261026-sn1869-done-right-or-not-shown.md",
       "blob_sha": "42a4258b6df18a1cd712c191585d8bd822cda042",
       "size": 3852
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1870/IB-SMART-NOTE-20261026-sn1870-once-you-learn-from-it-its-a-learning-lesson.md",
+      "blob_sha": "8ade2fe89f21ecf1425a354c5d1b09d9e8892ffd",
+      "size": 3513
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1870/IB-SMART-NOTE-20261026-sn1870-the-only-mistake-is-not-making-a-note.md",
+      "blob_sha": "88eea31a1fa99b99d889fc3bb6dda44f40f9f66b",
+      "size": 2329
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
