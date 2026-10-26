@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T19:24:29Z",
-  "tip": "a6dca55662f24074b354dc574b78944996e90a93",
+  "generated_at": "2026-10-26T20:24:36Z",
+  "tip": "9fa018a5b02c80382ce8a29968ca0a55d9d37ee1",
   "prs": [
     {
       "number": 2981,
@@ -19,16 +19,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "b951e7cfd3dc56edffc271b6c9fab61a3707f07c"
+      "head": "a47d90ea345438785453637d3cebd8ac71ca3e94"
     },
     {
       "number": 3088,
       "title": "feat(sn-guard): Smart Note filing-path collision guard \u2014 claim-before-author via the existing allocator",
       "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): door-obligation; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "19563b9ff706256300dede95e10999d028cadcf7"
+      "action": "MERGE-NOW",
+      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "7fd6f124d60c5cf2ab48510dd85b78a5a8f52b1a"
     },
     {
       "number": 3089,
@@ -47,6 +47,24 @@
       "cure": "Author cures the PR-caused red check(s): completeness, spec-integrity; then re-derive at the new head.",
       "owner": "author lane",
       "head": "646e76631ff86d7e6d3acffbde90ff30f71d2eab"
+    },
+    {
+      "number": 3093,
+      "title": "fix(protocol): fail closed on inadmissible decisions and fake protected approval",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "c0261d2b48fc0e3cba29e1fba0c19017d987adc4"
+    },
+    {
+      "number": 3095,
+      "title": "Fail closed on missing author identity and non-approval reviews",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "a772e113f06d3cb5e7e87318c4ea2c87968220e4"
     }
   ]
 }
