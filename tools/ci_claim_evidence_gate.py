@@ -31,28 +31,22 @@ independent evidence, so they cannot change the verdict.
 
 WHAT THIS DOES NOT DO (D32 honesty -- read before trusting this gate)
 ---------------------------------------------------------------------
-1. Pooled evidence (inherited from the gate): one admissible item covers
-   EVERY attestation in the body. Per-attestation linkage is future work.
-2. Seat tags are parsed TEXT, not identity. All GitHub activity shares one
-   login; anyone can write "Seat: Naya 4" in a review body and this caller
-   trusts it. Tag spoofing is not detected.
-3. Review STATE is not adjudicated (beyond excluding DISMISSED). An
-   APPROVED, COMMENTED, or CHANGES_REQUESTED review from a different seat
-   counts the same. A changes-requested review is scrutiny, not
-   verification -- the gate does not distinguish. Tightening this is a
-   spec change to check_claim_evidence.py, not a caller tweak.
+1. Pooled evidence remains a limitation: one admissible item can cover
+   EVERY attestation in the body. Per-attestation linkage is not implemented.
+2. Seat tags are parsed TEXT, not authenticated identity. Anyone can write
+   "Seat: Naya 4" in a review body; this caller cannot establish that the
+   claimed seat maps to a distinct human or authenticated agent.
+3. Only APPROVED, non-dismissed reviews are collected. This avoids treating
+   COMMENTED or CHANGES_REQUESTED reviews as verification, but approval
+   alone does not establish what the reviewer actually verified.
 4. CI runs: a green run proves the machines ran green, not WHAT they
    verified. Only the run's existence + success is checked.
 5. Test paths are extracted heuristically from body text. A path that looks
    like a test but isn't one is still checked for existence; existence is
    all the gate claims.
-6. Missing author seat tag: when the body declares no "Seat:", the gate
-   treats ANY seated review as independent (normalize_seat("") matches
-   nothing, so seat != author is vacuously true). Bodies should declare
-   their seat; without it, a same-seat review can pass as independent.
-7. Only the first 100 reviews and first 100 check runs are considered
+6. Only the first 100 reviews and first 100 check runs are considered
    (API pagination cap). PRs beyond that are out of scope.
-8. Infrastructure failure (API unreachable, body unfetchable) fails CLOSED
+7. Infrastructure failure (API unreachable, body unfetchable) fails CLOSED
    (exit 1, GATE_BLIND). A gate that passes when blind is theater.
 """
 
@@ -157,13 +151,12 @@ def build_evidence(body, reviews, check_runs, path_exists) -> list:
     # including this gate's own in-progress run) contributes nothing.
 
     for rv in reviews or []:
-        if rv.get("state") == "DISMISSED":
-            continue  # retracted reviews are not reviews
+        # Only an explicit approval can contribute review evidence.
+        # COMMENTED and CHANGES_REQUESTED are not verification approvals.
+        if rv.get("state") != "APPROVED":
+            continue
         seat = parse_seat_tag(rv.get("body") or "")
         evidence.append(Evidence(kind="seat_review", seat=seat, ref=f"review-{rv.get('id')}"))
-    # Reviews without a parseable seat tag are kept with seat="": the gate
-    # marks them unattributable (inadmissible). Reviews from the author's
-    # own seat are kept too: the gate marks them self-attestation.
 
     return evidence
 
