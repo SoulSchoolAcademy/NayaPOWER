@@ -2719,6 +2719,21 @@ body.ask-reading:has(.naya-ask-room) .eco-bottombar{transform:translateY(calc(10
   body:has(.naya-ask-room) .notif-bar,body:has(.naya-ask-room) .eco-bottombar{transition:none}
 }
 </style>
+<style id="naya-provenance-style">
+.feed-provenance {
+  max-width: 960px;
+  margin: 12px auto 14px;
+  padding: 11px 16px;
+  border: 1px solid rgba(166, 137, 255, 0.36);
+  border-radius: 12px;
+  background: linear-gradient(125deg, rgba(126, 72, 210, 0.16), rgba(48, 48, 86, 0.16));
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.13);
+  color: #ded4f0;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+</style>
 </head>
 <body>
 
@@ -4747,6 +4762,27 @@ function HubView(params) {
      keeps working everywhere else untouched. */
   const outlet = el('div', 'room-outlet');
   if (room.id === 'feed') {
+    // Show the snapshot's OWN capture time, never the browser's current date
+    // as a proxy for freshness. Missing/future metadata is openly UNKNOWN.
+    const capturedAt = window.NayaContent && window.NayaContent.meta
+      ? window.NayaContent.meta.as_of : null;
+    const capturedDate = capturedAt ? new Date(capturedAt) : null;
+    const trustworthyDate = capturedDate
+      && Number.isFinite(capturedDate.getTime())
+      && capturedDate.getTime() <= Date.now();
+    const ageDays = trustworthyDate
+      ? Math.floor((Date.now() - capturedDate.getTime()) / 86400000)
+      : null;
+    const provenance = el('p', 'feed-provenance');
+    provenance.setAttribute('role', 'status');
+    provenance.textContent = 'Intelligence as of '
+      + (trustworthyDate
+        ? capturedDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+        : 'unknown')
+      + ' — ' + (ageDays === null ? 'capture time unavailable'
+        : ageDays + ' day' + (ageDays === 1 ? '' : 's') + ' old')
+      + ' · repository snapshot, not live';
+    outlet.appendChild(provenance);
     outlet.appendChild(mainShow(room, C, feedStream || 'collective', searchWrap));
   } else if (room.id === 'connect' || room.id === 'ask') {
     // Start Here: hero + four steps only. No head, no search.
