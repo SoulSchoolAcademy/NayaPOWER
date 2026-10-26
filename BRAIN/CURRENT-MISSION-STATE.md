@@ -1,8 +1,10 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 16:38 PDT (2026-10-25T23:38:00Z) by the director pass.
-Main tip: `f5677da3` — STEADY this tick (ls-remote byte-match; zero merges, zero pushes since the 22:34Z direct push). Last move: merge #3071 (00f545e0, 22:15:35Z, RECEIPT BREACH #45, unmitigated) + direct push f5677da3 (22:34:17Z, living-map-compiler, HUB/MAP-STATE.json only, authorization unproven).
-Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 106 comments (UNCHANGED this tick, zero new), 2,394 short of the 2,500 hard cap; no successor board; no migration trigger.
+Last verified: 2026-10-25 17:08 PDT (2026-10-26T00:08:00Z) by the director pass.
+Main tip: `aecc743f` — MOVED this tick (merge #3073, 23:56:18Z, merge commit aecc743f = tip, 2-parent, 9 branch commits, 0 direct pushes). Last move: merge #3073 (Cover Library v2 full collection, head e802d90d, by SoulSchoolAcademy) = RECEIPT BREACH (next in board sequence after #45): PR body 1,730 chars, zero pass-1/2/3 structure, zero formal reviews, and its own HOLD FOR SCORECARD condition unmet at merge (only bot comments: Codex review failed with unresolved findings, CodeRabbit auto-summary). Retro-verification by a non-author, non-merger seat now owed.
+Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 110 comments (+4 this tick, zero gaps, page 4), 2,390 short of the 2,500 hard cap; no successor board; no migration trigger.
+
+- 17:08 PDT tick: MOVED. Tip f5677da3 -> aecc743f = single merge #3073 (23:56:18Z, merge commit aecc743f, head e802d90d, merger SoulSchoolAcademy); compare ahead 10 / behind 0, zero direct pushes. MERGE RECEIPT WATCH RUN: #3073 = RECEIPT BREACH, UNMITIGATED (body: no 3-pass receipt; 0 formal reviews; HOLD FOR SCORECARD unmet; Codex bot review at exact head failed/unresolved is not a scorecard). BOARD #3066: 106 -> 110 (+4 ids above watermark 6404589128, zero gaps, page 4): 6405102030 hourly accountability; 6405155145 accountability report (8 finished, 0 finished right, queue +11); 6405190643 learning event (WP-245 1/3, Match Doctrine audit on #3071 head); 6405190847 intelligent events x7 (WP-244 2/3, L674 applied). naya2_to_builder: 0 appended, cap 20 holds (none builder-addressed). REST quota 4,549 remaining at tick open; zero 403s.
 
 - 16:38 PDT tick: QUIET. Tip + board count both unchanged (step-3 perfect run). Merge receipt watch NOT RUN (tip steady); breach log unchanged. naya2_to_builder: 0 appended, cap 20 holds. REST quota 4,452 remaining at tick open; zero 403s.
 
