@@ -168,8 +168,8 @@
       "ratified Operating Code V2",
       "canonical Operating Law (per Naya Code issue #2245 anti-duplication rule)"
     ],
-    "law_of_one": "UNDETERMINED - two versions exist in canon (BRAIN/01-GOVERNANCE/0007-LAW-OF-ONE-V1 and 0016-LAW-OF-ONE-V1); canonical one not yet determined, neither claimed supreme until consensus determines it",
-    "naya_code_initiative": "Issue #2245 (closed) + draft PR #2246 (closed, draft, unmerged). This protocol is the behavioral layer of that existing initiative, not a new initiative. Whether #2245 is done or stalled requires a full read of the issue - still owed, not assumed.",
+    "law_of_one": "DETERMINED - canonical text is BRAIN/01-GOVERNANCE/0016-LAW-OF-ONE-V1 per canonical Operating Law reference (OPERATING-LAW.md blob 414cfeb4c7e0) and issue #2245 reconciliation list; supremacy ordering against Constitution Act V1 reserved to consensus/ratification gate (D2)",
+    "naya_code_initiative": "Issue #2245 (closed 2026-10-21) + draft PR #2246 (closed, draft, unmerged). This protocol is the behavioral layer of that existing initiative, not a new initiative. The issue is closed; the Code itself is stalled, not done - #2245 status is SPEC / DRAFT WORK REQUEST, not implemented or verified; completion vehicle per Resolve section 9 (revive #2246 draft as entry-point) decided at the ratification gate.",
     "one_home": "GOVERNANCE/NAYA-PROTOCOL-V1.md only. No NIA-PROTOCOL-V2.md file is created (Resolve placement logic adopted, filename declined per Director's NAYA naming word; creating it would split the home and violate no-duplicate-mechanisms)."
   },
   "scoring_weights": {
@@ -184,7 +184,7 @@
   ],
   "tie_rule": "Ties (delta <= 0.05) break toward reversibility, then intelligence.",
   "execution_sequence": [
-    "Resolve authority (done except open determinations named in authority block)",
+    "Resolve authority (done; supremacy ordering D2 and Operating Code version label D4 remain open to the gate)",
     "Reconcile the three forms (human oath/identity, AI boot/operating instructions, machine manifest with enforcement + proof states)",
     "Wire actual behavior (boot gate loads canonical law; decision engine gates before scoring; actions/delegation/communication/learning/handoff use canonical mechanisms)",
     "Test the behavior, not the paperwork (adversarial tests: refuse unauthorized, select best admissible without needless questions, record evidence, cold successor continues)",
