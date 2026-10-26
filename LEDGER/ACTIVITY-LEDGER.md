@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 17:30 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38348,6 +38348,12 @@ _Last updated: 2026-10-26 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-1014 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 10:14 PDT: full brief queue evaluated in order, 24/24 refused exit 7 (parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-26T17:22Z: receipt gate-stall-20261026-1014.md exists, sha256 1cb757108c50029b23088590898a5d10b687d3e52d7251d39fff616c2a3d00db; rotation twelve-lane-rotation.json queued=24 is exactly the 24 brief files the receipt names (set equality checked, zero diff either way: 18 brief-gap-t*, 1 brief-gap-gap-t0052-lane
 
 ### ✅ gate-stall-20261026-0909 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
