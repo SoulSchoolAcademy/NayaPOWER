@@ -115,29 +115,50 @@ test("the Hub never redirects a room to a file that does not exist", () => {
   }
 });
 
-test("every room declared in the Hub has a renderer or an honest fallback", () => {
+test("Hub rooms have honest fallbacks and deliberate same-origin destinations", () => {
   const src = read(HUB_APP);
   const rooms = [...src.matchAll(/\{\s*id:\s*'([\w-]+)',\s*name:/g)].map((m) => m[1]);
   assert.ok(rooms.length >= 11, `expected the Hub's rooms to be declared, found ${rooms.length}`);
+  assert.match(src, /notVerified\(room\)/, "rooms without renderers must show an honest state");
 
-  // The shell must degrade honestly rather than render blank when a room has no
-  // renderer, and it must NOT hard-redirect to a missing page as a substitute.
-  assert.match(src, /notVerified\(room\)/, "a room without a renderer must show an honest state");
-  assert.ok(
-    !/location\.href\s*=\s*EXTERNAL_ROOMS/.test(src),
-    "rooms must not be redirected out of the app"
-  );
+  // The product now routes selected rooms to dedicated same-origin routes.
+  // An obsolete requirement that EVERY room render inside Hub would hide the
+  // real contract. Assert router and sidebar agree; disallow old .html stubs,
+  // cross-origin jumps, traversal, or unrecognized URL shapes.
+  function extractMap(name) {
+    const match = src.match(new RegExp(`const ${name} = \\{([\\s\\S]*?)\\};`));
+    assert.ok(match, `missing ${name} room route map`);
+    const pairs = [...match[1].matchAll(/([a-z]+):\s*'([^']+)'/g)];
+    assert.ok(pairs.length >= 7, `${name} has too few routed rooms`);
+    return new Map(pairs.map(([, room, path]) => [room, path]));
+  }
+  const router = extractMap("EXTERNAL_ROOMS");
+  const sidebar = extractMap("EXTERNAL");
+  assert.deepEqual([...router].sort(), [...sidebar].sort(),
+    "sidebar and hash router must not disagree about where rooms lead");
+  for (const [room, path] of router) {
+    assert.ok(path === "/smartfactory" || /^\/rooms\/[a-z-]+$/.test(path),
+      `${room} has an invalid destination: ${path}`);
+    assert.ok(!path.includes("..") && !path.endsWith(".html"),
+      `${room} risks a legacy missing HTML stub: ${path}`);
+  }
+  assert.match(src, /if \(EXTERNAL_ROOMS\[params\.room\]\)/,
+    "a dedicated room must be routed explicitly");
+  assert.match(src, /return window\.HubView\(params\)/,
+    "rooms not externally mapped must still render in the Hub");
 });
 
-test("the Hub can be opened locally for inspection", () => {
+test("the public Hub shell is locally inspectable without an unsafe dev-auth bypass", () => {
   const src = read(HUB_APP);
-  assert.match(
-    src,
-    /get\('dev'\)\s*===\s*'1'/,
-    "the Hub must expose ?dev=1 so a reviewer can open it without a live identity"
-  );
-  // The production front-door behavior must be preserved, not quietly removed.
-  assert.match(src, /location\.href\s*=\s*WELCOME_URL/);
+  // The Hub shell is a static asset and can render with a local file URL.
+  // Protected data and credentials belong at the server boundary; adding
+  // ?dev=1 auth bypass to the publicly deployed bundle would be unsafe.
+  assert.match(src, /Router\.on\('hub',\s*\(\)\s*=>\s*window\.HubView\(\{\s*room:\s*'feed'\s*\}\)\)/);
+  assert.match(src, /if \(!location\.hash\)\s*\{\s*location\.hash\s*=\s*'#\/hub'/,
+    "a file-opened Hub must navigate to its first screen");
+  assert.match(src, /Router\.render\(\)/, "the local shell must actually render");
+  assert.doesNotMatch(src, /get\('dev'\)\s*===\s*'1'/,
+    "client-side dev query must not bypass any live identity boundary");
 });
 
 /* ------------------------------------------------------------------ *
