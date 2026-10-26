@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -6854,6 +6854,14 @@ _Last updated: 2026-10-26 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1262-lane3.md`
 
 **Evidence:** VERIFIED: PR #2918 state=closed merged=false merged_at=null closed_at=2026-10-22T08:23:33Z head=db584dae3264319134d139cc7473f7e8a6d12e08 ref=resolve/brain-index-regen-2026-10-22 - every pin exact via live REST. PR #2923 merged=true merged_at=2026-10-22T08:22:12Z merge_commit_sha=6bffce947fb08e3abae5066f752287907acd8ba9 exact. Score 9.5 - clears 9.5
+
+### 🟡 t1262 — Team 2, Team Naya Scorer (Learning Pipeline) — 7.5/10 [PARTIAL]
+
+**Task:** H6 round 2 successor-reuse: sealed pre-reg, fixed affordance, 4 scored arms + dry run; blinded scorer spawn failed twice, scores provisional/unblinded
+
+**Receipt:** `twelve-lane-receipts/t1262-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt t1262-lane2.md exists; hidden_files/lane-experiments/t1262/prereg-sealed.md exists (4041 bytes) with SEAL-STAMP 2026-10-11 21:40:00 PDT and file mtime exactly 2026-10-12 04:40:00Z, matching the receipt's re-seal claim; outbox OUT-01..05 all present and sha256 prefixes match the receipt exactly (dry 3bd
 
 ### 🟡 t1262 — Team 2, Team Naya Scorer (Learning Pipeline) — 7.5/10 [PARTIAL]
 
@@ -24790,6 +24798,22 @@ _Last updated: 2026-10-26 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ gap-gap-lane-scorer-20261018-0230 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: build hermetic-citation repair for A2/A3 compound-scale drift (committed fixtures, registry repoint, freshness script + CI workflow) and verify it
+
+**Receipt:** `twelve-lane-receipts/gap-gap-lane-scorer-20261018-0230-lane9.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt gap-gap-lane-scorer-20261018-0230-lane9.md exists; preserved patch hidden_files/lane-9/gap-gap-lane-scorer-20261018-0230-lane9/repair.patch is exactly 307 lines as claimed, touches the 8 claimed files (freshness workflow, test file, freshness script, registry, A2/A3 fixtures, seal, run_scale.py), seal 
+
+### ✅ gap-lane-scorer-20261018-0230 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Diagnose compound_scale gate_truth row-5 defect (3 failing tests, not 4): prove gate innocent, name citation-drift mechanism + hermetic fix, hand off to learning lanes
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261018-0230-lane9.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt gap-lane-scorer-20261018-0230-lane9.md exists (48 lines) with pin-exact reproduction (pin b3bb32319331567a9367a2e81699c6212d5eb891, 3 failed / 48 passed, gate exonerated by controlled battery, 2026-10-11 all-9 run_report as before/after boundary) and its own honest 9.0 self-score. Consistency check: wo
 
 ### ✅ gap-scorer-20261014-2300 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
