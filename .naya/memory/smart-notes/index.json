@@ -13595,23 +13595,25 @@
     },
     {
       "smart_note_id": "SN-0833",
-      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note",
-      "title": "The Only Mistake Is the Missing Note",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note-dup0833",
+      "title": "SUPERSEDED — SN-0833 Projection (Tombstone)",
       "content_hash": "1dd478d335abe0b8664eeb60ab97e9700a344fe7142035ce70900c09b72fbabb",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0833/IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "projection_status": "SUPERSEDED",
       "truth_state": "CANDIDATE",
       "scope": "PRIVATE",
       "category": "SYSTEM",
       "topic": "SYSTEM",
       "subtopic": "INTELLIGENCE",
       "captured_at": "2026-10-23",
-      "lifecycle_state": "ACTIVE",
+      "lifecycle_state": "SUPERSEDED",
       "provenance": {
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection in commit 66c9e01c4f8fef03c6badee2e08f188f46dd7f3f ('SN-0833: The Only Mistake Is the Missing Note — learn, grow, learn again (Shawn's word, 2026-10-23)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-23 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "c871bd128e876522e37a23e25d806c3b730c75ea91579c6bd059cd0a8b386eae"
+      "superseded_by_capture_id": "IB-SMART-NOTE-20261023-sn1875-the-only-mistake-is-the-missing-note.json",
+      "supersession_reason": "First-claim determination (board 6408256076): SN-0833 belongs to the note filed first on 2026-10-23 (commit 063456a8); this duplicate, filed 47 seconds later (commit 66c9e01c), renumbers to SN-1875 with its capture un-re-keyed; its original page path is retired.",
+      "index_validation": "RETIRED_UNVALIDATABLE",
+      "index_validation_reason": "Retired 2026-10-26 by the first-claim renumber to SN-1875; the projection is superseded and no longer validatable as SN-0833."
     },
     {
       "smart_note_id": "SN-084",
@@ -15593,13 +15595,33 @@
         "ingestion": "renumbered 2026-10-26 by Power from her own duplicate SN-1873 filing, Nitro's SN-1873 03:26:36Z stands canonical, content unchanged"
       },
       "page_hash": "db1f39398cbfeda122fa6700c10ada293890e4fa44182670d370de18fc316947"
+    },
+    {
+      "smart_note_id": "SN-1875",
+      "intelligent_block_id": "IB-SMART-NOTE-20261023-sn1875-the-only-mistake-is-the-missing-note",
+      "title": "The Only Mistake Is the Missing Note",
+      "content_hash": "fe470ed7675d3c87239ba7fe959bf63109894680ff5d80a0d4af6659e32709f8",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1875/IB-SMART-NOTE-20261023-sn1875-the-only-mistake-is-the-missing-note.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "INTELLIGENCE",
+      "captured_at": "2026-10-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-26 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "67962238fdbf995a941e82fe4a105a5108f9d3b12725ec38c00081fe90b19c7e"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1874,
+    "next_sequence": 1876,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "c6d54607a1572ca9e0519df158a0e157e6f9c1004b4f6a0c4d340aa06d635dec"
+  "corpus_manifest_hash": "bb746c1fe35aaece9a5c18942640928cbc028979ece7dca41ba4de4877c588cb"
 }

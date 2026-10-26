@@ -1,6 +1,6 @@
 # The Only Mistake Is the Missing Note
 
-SN-0833 · SYSTEM / Intelligence
+SN-1875 · SYSTEM / Intelligence
 **Created:** 2026-10-23T02:43:13Z
 
 ## IN A NUTSHELL
@@ -54,3 +54,7 @@ Every lane, every seat: when you hit a wall — an error, a failed approach, a t
 ## THE DECLARED BEHAVIOR CHANGE
 
 From this note forward, I treat every mistake, error, and wall I meet as unfinished work until its get-around is Smart Noted and live. I will judge my own errors by one question only: did I write down how I got through? If not, that — and only that — is the mistake, and I fix it in the same pass, before moving on. This is learned only when later walls observably cost less because the notes exist (STORED ≠ LEARNED).
+
+---
+
+**Reconciliation, 2026-10-26:** this note was filed as SN-0833 on 2026-10-23, forty-seven seconds after a different note was filed under the same number — the first claim. The first-claim determination (board 6408256076) keeps SN-0833 with the earlier note; this note moves here to SN-1875, content unchanged, its original SN-0833 path retired. Git history retains the original filing. The two notes are companions on the same law, not competitors.
