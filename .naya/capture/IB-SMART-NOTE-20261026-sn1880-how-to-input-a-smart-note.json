@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1880",
+ "intelligence": {
+  "title": "How to Input a Smart Note, Successfully — So It Goes Live",
+  "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note",
+  "smart_note_id": "SN-1880",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-26. No runtime provenance invented.",
+  "ingested_at": "2026-10-26",
+  "essence": "A Smart Note is one lesson, law, or learning, written once in a file that humans and Nayas can both use, filed on main, carried by the sync into the Hub, and opened by a public link. It is not live when it is written. It is live when the file sits on main at the exact path, the sync has carried it into the live table, and the author has opened the public link and seen the right title. Input it the right way and it goes live in minutes. Input it any other way — a reused number, a broken header, a branch instead of main, a link handed out before it is clicked — and it silently does not exist, no matter how good the words are.",
+  "human_view": "Think of it like posting a letter. Writing the letter is not mailing it. The mailbox is the main branch. The mail truck is the sync. The proof it arrived is opening the delivered page yourself. A letter left on the kitchen table, however beautifully written, helps nobody — and a note left in a branch, a draft, or a pull request waiting to merge is exactly that: a letter never posted. File it in the one real mailbox, let the truck come, and check that it arrived before you tell anyone it is there.",
+  "simple_view": "Putting a note in the drawer is not sharing it. You put it in the mailbox, the truck comes, and then you check that your friend got it. Same here: file it in the one real place, wait for the truck, and check the link yourself.",
+  "grandma_view": "Dear, here is the plain version. You write your note down properly, you put it where everyone can find it, you wait a few minutes, and then you open it yourself to make sure it is really there. Only then do you pass it along. If you pass it along first and it is not there yet, you have sent someone to an empty house.",
+  "naya_view": "For a Naya seat, this is the door, every time, no exceptions: check the number is free before writing, write the file in the canonical shape at the exact path, put it on main by direct write in the Smart Notes folder only, wait for the sync, click the live link yourself, and only then report it with the working link. If your seat does not hold the direct-write door, land it on main by the merge path you do hold, then wait for the sync before reporting anything. A link reported before it is clicked live is a promise, not a note.",
+  "ai_view": "The failures this note cures are all the same shape: treating a step as the whole job. Writing is not filing. Filing in the wrong place is not filing. A sync that has not run yet is not a broken note. A link handed out before it is clicked is not a delivered note. The chain has no dark links only when every link is checked: free number, canonical header, exact path, main, sync, clicked link. Skip one and the note can silently not exist while everyone believes it does.",
+  "machine_view": {
+   "sn": "SN-1880",
+   "title": "How to Input a Smart Note, Successfully — So It Goes Live",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "```\nCHECK THE NUMBER FIRST (never reuse one):\n  a number already in the live table, or already a folder on main,\n  is taken — even if two notes share it by accident.\n  SN-1878 is the standing warning: first claim keeps the number,\n  the second claim is a collision to cure, not a note to ship.\n\nFILE (exact, on main):\n  BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/SYSTEM/smart-notes/SN-####/\n    IB-SMART-NOTE-YYYYMMDD-sn####-<kebab-slug>.md\n  Topic and sub-folder follow the subject; how-to notes live\n  under SYSTEM/smart-notes, as SN-0832 did.\n\nHEADER (exact, first three lines, in this order):\n  line 1: # <hook headline — title only, no ID prefix>\n  line 2: SN-#### · SYSTEM / Smart Notes\n  line 3: **Created:** <full ISO-8601 UTC timestamp, ending in Z>\n  NEVER leave Created blank. An empty Created line costs a real\n  thing: the note's timestamp comes through empty in the live\n  table (SN-1879, before its header was restored to canonical\n  shape). Use full UTC, with Z, on the line exactly as shown.\n\nSECTIONS (in order):\n  IN A NUTSHELL / HUMAN / CHILD / GRANDMA / NAYA / MACHINE /\n  WHAT IT ALL MEANS / WHAT'S IN IT FOR YOU /\n  HOW IT APPLIES TO TEAM NAYA /\n  THE DECLARED BEHAVIOR CHANGE\n\nWRITE (the door — one call, lands on main immediately):\n  PUT /repos/SoulSchoolAcademy/NayaPOWER/contents/<PATH>\n      body {message: \"SN-####: <title>\", content: base64(file)}\n  Verify the returned commit SHA on main. A branch, a draft,\n  or an unmerged pull request is invisible to the Hub.\n\nAUTOMATIC (sync, on its short cycle):\n  scan main -> upsert live table -> mint nayanet.live/s/sn####\n  -> share image -> voice enqueue -> Hub rebake (feed card appears)\n\nVERIFY (never optional):\n  open https://nayanet.live/s/sn#### -> HTTP 200 + your title.\n  Only then is the link sent to anyone.\n```"
+  },
+  "views_note": "Views derived 2026-10-26 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "12dfc9f3000d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

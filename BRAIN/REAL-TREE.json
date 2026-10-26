@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "f3c3862eb3c6a3c4081c131c26037e0690114489",
-  "inventory_file_count": 1702,
+  "receipt_basis_commit": "5af6d2ee4cdcc34722e58c21dec36dcf554239c1",
+  "inventory_file_count": 1705,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,12 +11,12 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 872,
+    "05-MEMORY": 874,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 454,
+    "10-INTERFACES": 455,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
     "90-OPERATIONS": 109,
@@ -4881,6 +4881,16 @@
       "size": 3617
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/mission/SN-1879/IB-SMART-NOTE-20261026-sn1879-mission-is-the-authority-relay-is-intel.md",
+      "blob_sha": "ebeb51955789be671cd298e91a7b6f35a2f94871",
+      "size": 10434
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md",
+      "blob_sha": "4d0fb5fcc7572b8f1b418d943a51cf29e9cb5a07",
+      "size": 7024
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1872/IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note.md",
       "blob_sha": "c2d97cf19afe6cd6482907899d19d0ee3e6296cb",
       "size": 2939
@@ -7336,6 +7346,11 @@
       "size": 925
     },
     {
+      "path": "BRAIN/10-INTERFACES/DESIGN-LANGUAGE.md",
+      "blob_sha": "d71c2cd07c7eefe5fc97b9068a9f8c366b70efcf",
+      "size": 51035
+    },
+    {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
       "blob_sha": "7e1e336df17b2f81c6f4235b243c12ae8ac72933",
       "size": 8020
@@ -8127,8 +8142,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "4e9f96329f7bebd040b4b5e2ec3f7da246243785",
-      "size": 5398
+      "blob_sha": "b4afc7574cb7db57b197963061d11089c7297637",
+      "size": 5155
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8487,8 +8502,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "a615c49af63ae4c4fc9acd08f07506e765ad71d5",
-      "size": 20229
+      "blob_sha": "6339df86560b4d86838867c7bf3c4a6823b4a584",
+      "size": 19767
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",

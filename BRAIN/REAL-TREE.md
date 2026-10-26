@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-26  
-**Receipt basis commit:** `f3c3862eb3c6a3c4081c131c26037e0690114489`  
-**Inventory file count:** 1702  
+**Receipt basis commit:** `5af6d2ee4cdcc34722e58c21dec36dcf554239c1`  
+**Inventory file count:** 1705  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,12 +15,12 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 872 |
+| 05-MEMORY | 874 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 454 |
+| 10-INTERFACES | 455 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
 | 90-OPERATIONS | 109 |
@@ -1016,6 +1016,8 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1870/IB-SMART-NOTE-20261026-sn1870-once-you-learn-from-it-its-a-learning-lesson.md` — `8ade2fe89f21` (3513 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1871/IB-SMART-NOTE-20261026-sn1871-be-intelligent-get-out-of-your-own-way.md` — `4294c8cb8e0c` (3464 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1874/IB-SMART-NOTE-20261026-sn1874-finish-it-or-say-its-unfinished.md` — `cdff9d493180` (3617 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/mission/SN-1879/IB-SMART-NOTE-20261026-sn1879-mission-is-the-authority-relay-is-intel.md` — `ebeb51955789` (10434 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md` — `4d0fb5fcc757` (7024 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1872/IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note.md` — `c2d97cf19afe` (2939 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1873/IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself.md` — `4c3341ab046d` (6276 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1877/IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time.md` — `7d05557ba00b` (5954 bytes)
@@ -1517,6 +1519,7 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/MANIFEST.md` — `fb4326693d95` (2260 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/index.html` — `8226325770ba` (1134115 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/tokens.css` — `caac347591eb` (925 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-LANGUAGE.md` — `d71c2cd07c7e` (51035 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — `7e1e336df17b` (8020 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-LESSON.md` — `36ccfc24ae4f` (9104 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-TOOLKIT.md` — `9bf8e446cfd1` (6546 bytes)
@@ -1681,7 +1684,7 @@
 - `BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md` — `6daf7c27c05e` (18308 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 - `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
-- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `4e9f96329f7b` (5398 bytes)
+- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `b4afc7574cb7` (5155 bytes)
 - `BRAIN/90-OPERATIONS/contracts/handoff-contract.md` — `3c8346c5942b` (21563 bytes)
 - `BRAIN/90-OPERATIONS/contracts/learning-contract.md` — `c42197ff505a` (21689 bytes)
 - `BRAIN/90-OPERATIONS/contracts/verification-contract.md` — `e70095fcbe07` (19666 bytes)
@@ -1753,7 +1756,7 @@
 - `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.ai.md` — `48bad3d15186` (18185 bytes)
 - `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.human.md` — `bb9bf4d00fb2` (7891 bytes)
 - `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/spec.machine.json` — `250fbff919a6` (25435 bytes)
-- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `a615c49af63a` (20229 bytes)
+- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `6339df86560b` (19767 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)

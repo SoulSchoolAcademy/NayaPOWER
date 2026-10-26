@@ -1,6 +1,6 @@
 # Outcome Approval and Right Is Right
 
-SN-1878 · SYSTEM / approval
+SN-1881 · SYSTEM / approval
 
 **Created:** 2026-10-26T17:40:00Z
 
@@ -49,7 +49,7 @@ Correction history, owned plainly: the first filing of this note, 2026-10-26, wa
 
 ~~~json
 {
-  "law": "SN-1878",
+  "law": "SN-1881",
   "name": "outcome_approval_and_right_is_right",
   "applies_to": ["every Naya seat", "every approval question", "every done claim", "every citizen of NayaNET"],
   "outcome_approval": "Shawn approves the OUTCOME in advance and in full: the most intelligent thing, done right, fully functional, in the way already discussed",
@@ -61,7 +61,7 @@ Correction history, owned plainly: the first filing of this note, 2026-10-26, wa
   "forbidden": ["means-approval questions", "staged work presented as live", "credential values in repo, client code, PI, or board"],
   "pass_mark_as_measurement": ["Resolve cold re-score over 9", "Shawn cold-open test"],
   "origin": "Shawn's correction in chat, 2026-10-26, after the items-endpoint secret tap question",
-  "filed": "SN-1878, full-form upgrade same day at the director's challenge"
+  "filed": "filed as SN-1878 (second claim on the number), full-form upgrade same day at the director's challenge; renumbered to SN-1881 by the SN-1878 reconciliation pass (Resolve, 2026-10-26) — SN-1878 stands with the first-claim team note per SN-033, and SN-1879 was claimed by a complete filing in the interim"
 }
 ~~~
 
