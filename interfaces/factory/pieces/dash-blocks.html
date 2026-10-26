@@ -1,0 +1,142 @@
+<!-- ═══ THE DASHBOARD VIEW — "Your World, Live" ═══
+     One view of the one app (data-os-view="dashboard"), summoned by the
+     Dashboard button on Home and by the Dashboard nav tab — the SAME
+     composition the Dashboard door opens on. It is a named block of the
+     universal body: every flagship carries it, fed by that page's own
+     tables. Every figure is computed live by the dash engine; the static
+     text below is labels and honest invitations only, never data.
+     Delimiters: <!--BLOCK:dashboard-view--> … <!--/BLOCK-->            -->
+
+<!--BLOCK:dashboard-view-->
+<div class="ph-sec os-view" data-os-view="dashboard" data-block="dashboard">
+<div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Your World, Live &middot; Dashboard</div>
+<div class="os-dash" id="os-dash">
+<div class="os-dash-pulse" id="os-dash-pulse">
+<div class="ph-card stat-card os-litobj" style="--ac:#a06bff;"><div class="os-count" id="os-dash-n-posts">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> WALL POSTS</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-posts" fill="#a06bff" opacity="0.20" points=""/><polyline id="os-dash-spark-posts" pathLength="100" fill="none" stroke="#a06bff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-posts" style="--ac:#a06bff;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-posts-note"></p></div>
+<div class="ph-card stat-card os-litobj" style="--ac:#3fb8ff;"><div class="os-count" id="os-dash-n-messages">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">✉️</span> MESSAGES RECEIVED</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-messages" fill="#3fb8ff" opacity="0.20" points=""/><polyline id="os-dash-spark-messages" pathLength="100" fill="none" stroke="#3fb8ff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-messages" style="--ac:#3fb8ff;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-messages-note"></p></div>
+<div class="ph-card stat-card os-litobj" style="--ac:#2fe89e;"><div class="os-count" id="os-dash-n-invites">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">💌</span> INVITES RECORDED</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-invites" fill="#2fe89e" opacity="0.20" points=""/><polyline id="os-dash-spark-invites" pathLength="100" fill="none" stroke="#2fe89e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-invites" style="--ac:#2fe89e;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-invites-note"></p></div>
+<div class="ph-card stat-card os-litobj" style="--ac:#ffbf3d;"><div class="os-count" id="os-dash-n-people">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">👥</span> PEOPLE AROUND YOU</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-people" fill="#ffbf3d" opacity="0.20" points=""/><polyline id="os-dash-spark-people" pathLength="100" fill="none" stroke="#ffbf3d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-people" style="--ac:#ffbf3d;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-people-note"></p></div>
+</div>
+<div class="ph-card os-sl-board" style="--ac:#ff9a5a;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#ff9a5a">🔗</span> Smart Links <span class="os-sl-live"><i></i>LIVE</span></h3>
+<p class="os-note" id="os-dash-links-head">Reading your links&hellip;</p>
+<div id="os-dash-links"><div class="os-skel"></div></div>
+<div class="os-fieldwrap"><input class="os-input" id="os-dl-url" type="url" placeholder="Paste any link to track &mdash; https://&hellip;" autocomplete="off"></div>
+<div class="os-fieldwrap"><input class="os-input" id="os-dl-name" type="text" placeholder="Pick your name &mdash; for example: yourname" autocomplete="off"></div>
+<div class="os-status" id="os-dl-verdict">Your short address will be nayanet.live/ + the name you pick. Start typing &mdash; we&rsquo;ll tell you right away if it&rsquo;s free.</div>
+<div class="ph-actions"><button class="ph-connect" id="os-dl-claim" type="button">Claim this name</button></div>
+<div class="os-status" id="os-dl-status"></div>
+</div>
+<div class="os-dash-row">
+<div class="ph-card stat-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">📈</span> The trend</h3>
+<div class="os-period" data-period-for="dash"><button type="button" class="on" data-period="7" style="--pc:#3fb8ff;">7 days</button><button type="button" data-period="30" style="--pc:#3fb8ff;">30 days</button><button type="button" data-period="0" style="--pc:#3fb8ff;">All</button></div>
+<div class="os-period" data-kind-for="dash"><button type="button" class="on" data-kind="all" style="--pc:#3fb8ff;">All</button><button type="button" data-kind="posts" style="--pc:#a06bff;">Posts</button><button type="button" data-kind="notes" style="--pc:#ff9a5a;">Notes</button><button type="button" data-kind="messages" style="--pc:#3fb8ff;">Messages</button><button type="button" data-kind="invites" style="--pc:#2fe89e;">Invites</button></div>
+<div class="os-well os-well-grid" data-beamwell="dash">
+<div class="os-week-counts" id="os-dash-week-counts"></div>
+<div class="os-week" id="os-dash-week"><div class="os-skel"></div></div>
+<div class="os-week-days" id="os-dash-week-days"></div>
+<i class="os-beam"></i>
+</div>
+<p class="os-note" id="os-dash-week-note">Reading this world&rsquo;s own activity&hellip;</p>
+</div>
+<div class="ph-card" style="--ac:#ff5e6c;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">🧭</span> The invite journey</h3>
+<div id="os-dash-funnel"><div class="os-skel"></div></div>
+</div>
+<div class="ph-card stat-card" style="--ac:#e84fff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">📊</span> Activity mix</h3>
+<div class="os-donut-wrap os-litobj" style="--ac:#e84fff;"><span class="os-donut-sheen"></span><div class="donut" id="os-dash-donut"></div><div class="os-donut-hole"><span class="donut-center" id="os-dash-total">&hellip;</span><span class="os-donut-cap">TOTAL</span></div></div>
+<div class="os-legend">
+<div class="os-leg" style="--lc:#a06bff"><span class="os-leg-dot" style="background:#a06bff;color:#a06bff;"></span>Wall posts<b id="os-dash-leg-posts">&hellip;</b></div>
+<div class="os-leg" style="--lc:#3fb8ff"><span class="os-leg-dot" style="background:#3fb8ff;color:#3fb8ff;"></span>Messages received<b id="os-dash-leg-messages">&hellip;</b></div>
+<div class="os-leg" style="--lc:#2fe89e"><span class="os-leg-dot" style="background:#2fe89e;color:#2fe89e;"></span>Invites recorded<b id="os-dash-leg-invites">&hellip;</b></div>
+</div>
+</div>
+</div>
+<div class="ph-card" style="--ac:#2fe89e;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">👥</span> Faces in your world</h3>
+<p class="os-note" id="os-dash-faces-head">Reading the faces&hellip;</p>
+<div id="os-dash-faces"><div class="os-skel"></div></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-go="people">See everyone</button></div>
+</div>
+<div class="os-dash-row">
+<div class="ph-card" style="--ac:#2fe89e;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#2fe89e">💡</span> Your next best moves</h3>
+<div id="os-dash-insights"><div class="os-skel"></div></div>
+</div>
+<div class="ph-card" style="--ac:#ffbf3d;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">💬</span> Latest conversations</h3>
+<div id="os-dash-convos"><div class="os-skel"></div></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-go="inbox">Open the inbox</button></div>
+</div>
+<div class="ph-card" style="--ac:#ff5e6c;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">🔥</span> Heat &amp; streaks</h3>
+<p class="os-note">The last fourteen days of this world &mdash; every post, note, message and invite, day by day.</p>
+<div class="os-heat" id="os-dash-heat"><div class="os-skel"></div></div>
+<p class="os-note" id="os-dash-heat-note">Reading the days&hellip;</p>
+<div id="os-dash-streaks"></div>
+</div>
+</div>
+<div class="ph-card" style="--ac:#a06bff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">🔌</span> Plugged into this world</h3>
+<div class="os-dash-plugins" id="os-dash-plugins">
+<div class="os-src live os-litobj" style="--ac:#a06bff;">
+<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#a06bff">✦</span><div class="os-src-id"><span class="os-src-name">This NayaNET app</span><span class="os-src-chip live">● LIVE</span></div></div>
+<p class="os-src-note" id="os-dash-src-status">Live &mdash; this world&rsquo;s own posts, notes, messages and invites, read the moment this front opens. Its numbers live in the Pulse above; this card is the door they come through.</p>
+<p class="os-src-feeds">Feeds &rarr; Pulse &middot; Trend &middot; Faces &middot; Moves</p>
+<button class="ph-connect os-src-door" type="button" data-os-go="home">Open this app</button>
+</div>
+<div class="os-src born os-litobj" style="--ac:#3fb8ff;">
+<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#3fb8ff">👥</span><div class="os-src-id"><span class="os-src-name">The NayaNET community</span><span class="os-src-chip born">● BORN CONNECTED</span></div></div>
+<div class="os-src-nums"><span class="os-src-num"><b id="os-dash-src-n-people">&hellip;</b><i>people around you</i></span></div>
+<div class="os-dash-minifaces" id="os-dash-minifaces"></div>
+<p class="os-src-feeds">Feeds &rarr; Faces &middot; Moves</p>
+<button class="ph-connect os-src-door" type="button" data-os-go="people">See your people</button>
+</div>
+<div class="os-src idle" style="--ac:#2fe89e;">
+<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#2fe89e">🌐</span><div class="os-src-id"><span class="os-src-name">Your website</span><span class="os-src-chip idle">○ NOT CONNECTED</span></div></div>
+<p class="os-src-note">Its visits and clicks, counted here the moment it is linked.</p>
+<p class="os-src-feeds">Will feed &rarr; Pulse &middot; Trend</p>
+<a class="ph-connect os-src-door" href="https://nayanet.live/smartfactory">Connect in the Smart Factory</a>
+<p class="os-src-how" id="os-dash-how-web">Its clicks land in the pulse, the trend and Naya&rsquo;s read. When you are ready, your website is linked to this world once &mdash; in the Smart Factory. From that moment its visits and clicks are simply more rows in the same tables these blocks already read, so this front fills deeper on its own. Until then, this card stays exactly as honest as it looks: an invitation, not a number.</p>
+</div>
+<div class="os-src idle" style="--ac:#ffbf3d;">
+<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#ffbf3d">📣</span><div class="os-src-id"><span class="os-src-name">Your social feeds</span><span class="os-src-chip idle">○ NOT CONNECTED</span></div></div>
+<p class="os-src-note">Its posts and reactions, woven into your world&rsquo;s story.</p>
+<p class="os-src-feeds">Will feed &rarr; Pulse &middot; Faces</p>
+<button class="ph-connect os-src-door" type="button" data-dash-how="social">How connecting works</button>
+<p class="os-src-how" id="os-dash-how-social" hidden>Its posts and reactions join your world&rsquo;s story. Each feed is connected with its own sign-in, once, and only with your permission. Its activity then appears beside your native posts and messages &mdash; one world, one front. Nothing is pulled in, estimated or back-filled before that moment; a source that is not connected shows no numbers at all.</p>
+</div>
+<div class="os-src idle" style="--ac:#ff9a5a;">
+<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#ff9a5a">🤖</span><div class="os-src-id"><span class="os-src-name">Your AIs</span><span class="os-src-chip idle">○ NOT CONNECTED</span></div></div>
+<p class="os-src-note">Its work &mdash; sessions, creations, results &mdash; among your faces.</p>
+<p class="os-src-feeds">Will feed &rarr; Faces &middot; Trend</p>
+<button class="ph-connect os-src-door" type="button" data-dash-how="ai">How connecting works</button>
+<p class="os-src-how" id="os-dash-how-ai" hidden>Its work &mdash; sessions, creations, results &mdash; shows up here. An AI connects the way a person joins: it gets its own identity in your world, and what it does is written into the same activity these blocks read. You will see its face among your faces and its work in your trend. Until one is connected, this card promises the shape &mdash; and shows no invented activity.</p>
+</div>
+<div class="os-src idle" style="--ac:#ff5e6c;">
+<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#ff5e6c">📅</span><div class="os-src-id"><span class="os-src-name">Booking</span><span class="os-src-chip idle">○ NOT CONNECTED</span></div></div>
+<p class="os-src-note">Bookable hours and appointments, counted here the moment booking is switched on.</p>
+<p class="os-src-feeds">Will feed &rarr; Pulse &middot; Faces</p>
+<a class="ph-connect os-src-door" id="os-src-door-booking" href="https://nayanet.live/book">Open your booking door</a>
+<p class="os-src-how" id="os-dash-how-booking">Your booking engine is live &mdash; people book your real hours at nayanet.live/book, and every appointment is written into the same activity these blocks read, counted here beside everything else. Calendar sync is not connected yet: until it is, bookings live in NayaNET only &mdash; this card says so plainly rather than pretending otherwise.</p>
+</div>
+<div class="os-src idle" style="--ac:#e84fff;">
+<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#e84fff">💳</span><div class="os-src-id"><span class="os-src-name">Payments</span><span class="os-src-chip idle">○ NOT CONNECTED</span></div></div>
+<p class="os-src-note">Money from your pages, counted here the moment payments are switched on.</p>
+<p class="os-src-feeds">Will feed &rarr; Pulse &middot; Faces</p>
+<a class="ph-connect os-src-door" id="os-src-door-payments" href="https://nayanet.live/pay">Open your payment door</a>
+<p class="os-src-how" id="os-dash-how-payments">A payment link on your page takes the money through Stripe &mdash; connected with its own sign-in, once, and only with your permission. Every payment is written into the same activity these blocks read: this front says &ldquo;you made X from Y&rdquo;, each payment is filed on the person who paid, and a payment that fails becomes a kind drafted recovery message in your Growth room &mdash; never a silent loss. Until payments are connected, this card shows no numbers at all.</p>
+</div>
+</div>
+</div>
+<div class="ph-card" style="--ac:#e84fff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">✍️</span> Help shape this living app</h3>
+<p class="os-note">One line &mdash; it lands in this app&rsquo;s Smart Mail inbox, where the person who runs this app reads it.</p>
+<div class="os-fb-row"><input class="os-input" id="os-dash-fb-body" type="text" placeholder="What would make this front better?"><button class="ph-connect" id="os-dash-fb-btn" type="button">Send</button></div>
+<div class="os-status" id="os-dash-fb-status"></div>
+</div>
+</div>
+</div>
+<!--/BLOCK-->

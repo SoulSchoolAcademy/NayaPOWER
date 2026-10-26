@@ -1,0 +1,438 @@
+<style id="os-style">
+/* ═══ ONE-SYSTEM APP LAYER — the flagship functions as named blocks inside
+   the page's own system (ph-* grammar). One chrome (twin-plus), one
+   navigation (the page's navtabs, now the block router), blocks shown one
+   at a time. Geometry values harvested from the verified flagship layer;
+   no second shell, no second hero, no second settings. ═══ */
+/* — Blocks: one visible at a time, opened by the app's own doors — */
+.os-view{display:none}
+.os-view.on{display:block}
+/* — Twin-plus chrome (Hub geometry: rooms-plus top-left, eco-plus top-right,
+     48×48, extreme corners — the app's two doors, above every block) — */
+#os-chrome .rooms-plus,#os-chrome .eco-plus{position:fixed;top:12px;z-index:900;width:48px;height:48px;flex:none;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;background:linear-gradient(180deg,#1b1b24,#07070b);border:1.5px solid #fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 8px rgba(0,0,0,.6),0 8px 20px rgba(0,0,0,.55);transition:border-color .25s,box-shadow .25s,transform .25s}
+#os-chrome .rooms-plus{left:12px;--jewel:#a06bff}
+#os-chrome .eco-plus{right:12px;--jewel:#e84fff}
+#os-chrome .rooms-plus svg,#os-chrome .eco-plus svg{width:20px;height:20px}
+#os-chrome .rooms-plus:hover,#os-chrome .eco-plus:hover{transform:translateY(-2px) scale(1.04);border-color:var(--jewel);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px var(--jewel),0 12px 28px rgba(0,0,0,.6)}
+/* — Rooms drawer (rooms-plus door) — contents verbatim from the Hub — */
+.os-drawer{position:fixed;top:0;left:0;bottom:0;width:min(300px,84vw);z-index:960;background:#12151D;transform:translateX(-106%);transition:transform .32s cubic-bezier(.16,.84,.22,1);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),24px 0 60px rgba(0,0,0,.6);padding:18px 14px;overflow-y:auto}
+.os-drawer.open{transform:none}
+.os-drawer .os-drawer-head{font-size:11px;letter-spacing:.18em;color:#E8E8EC;margin:2px 6px 12px;font-weight:800}
+.os-drawer a{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:14.5px;border:1.5px solid rgba(255,255,255,.85);background:linear-gradient(180deg,#17171f,#0a0a0f);margin-bottom:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 6px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.5)}
+.os-drawer a:hover{border-color:var(--rc,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.5),0 0 22px var(--rc,#a06bff),0 8px 20px rgba(0,0,0,.55)}
+.os-backdrop{position:fixed;inset:0;z-index:950;background:rgba(3,3,6,.6);display:none}
+.os-backdrop.open{display:block}
+/* — Ecosystem menu (eco-plus door) — contents verbatim from the Hub ECO_LINKS — */
+#os-chrome .eco-menu{position:fixed;top:72px;right:12px;z-index:960;width:min(320px,88vw);background:#171B25;border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:10px;display:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 24px 60px rgba(0,0,0,.65)}
+#os-chrome .eco-menu.open{display:block}
+#os-chrome .eco-menu .eco-head{font-size:10.5px;letter-spacing:.16em;color:#E8E8EC;padding:6px 8px 10px;font-weight:800}
+#os-chrome .eco-menu a{display:flex;align-items:center;gap:10px;padding:10px 8px;border-radius:10px;color:#fff;text-decoration:none;font-weight:700;font-size:13.5px;letter-spacing:.04em}
+#os-chrome .eco-menu a:hover{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1.5px var(--eco,#a06bff),0 0 18px -4px var(--eco,#a06bff)}
+#os-chrome .eco-menu .eco-ico{width:26px;height:26px;flex:none;display:grid;place-items:center;border-radius:8px;background:#0b0b11;color:var(--eco,#a06bff);font-size:13px}
+#os-chrome .eco-menu .ext{margin-left:auto;color:#E8E8EC}
+/* — Form controls inside blocks (values harvested from the verified
+     flagship forms; the base page styles its own inputs inline) — */
+.os-input,.os-textarea{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.55);border-radius:12px;color:#fff;font-size:14.5px;padding:12px 14px;font-family:inherit;margin:0 0 10px;box-sizing:border-box}
+.os-input:focus,.os-textarea:focus{outline:none;border-color:#a06bff;box-shadow:0 0 18px -4px #a06bff}
+/* — Block pieces in the page's own grammar — */
+.os-stamp{font-size:12px;margin-top:10px;color:#E8E8EC}
+.os-date{color:#2fe89e;font-weight:800}
+.os-time{color:#ffbf3d;font-weight:800}
+.os-status{font-size:13px;color:#E8E8EC;min-height:18px;margin-top:8px}
+#os-sl-verdict{font-size:15.5px;color:#fff;line-height:1.5}
+#os-sl-status{font-size:15px;color:#fff;line-height:1.5}
+.os-group-h{font-size:15px;font-weight:800;color:#fff;letter-spacing:.02em;margin:16px 0 8px}
+.os-avatar-img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid #fff;background:#0b0b11;box-shadow:0 0 18px -4px #a06bff}
+.os-count{font-size:34px;font-weight:900;color:#fff}
+/* — The app's navigation scrolls (the page's own bars, cured once here) — */
+#navtabs{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;flex-wrap:nowrap!important;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#navtabs::-webkit-scrollbar{display:none}
+.ph-navtab{flex:none!important}
+#smarttabs .nf-tabs-row{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;flex-wrap:nowrap!important;-webkit-overflow-scrolling:touch}
+#smarttabs .nf-tabs-row>*{flex:none!important}
+/* — Reports: the LIVING dashboard — layout scoped here; the life itself is
+     harvested from the page's own elite layer (.donut + donutFill, .bar +
+     barGrow, .stat-card fadeUp + hover lift, pulseGlow). The donutFill
+     keyframes hold rotate(-90deg) at both ends, so the ring carries that
+     as its base transform (no end-of-animation snap) and the conic
+     gradient starts from 90deg to compensate — segments begin at top. — */
+.os-donut-wrap{position:relative;width:120px;height:120px;margin:18px auto 8px;border-radius:50%;--bc:#e84fff;animation:pulseGlow 3s infinite}
+.os-donut-wrap .donut{margin:0;transform:rotate(-90deg)}
+.os-donut-hole{position:absolute;inset:17px;border-radius:50%;background:linear-gradient(180deg,#14141c,#0a0a10);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3)}
+.os-donut-cap{font-size:9px;letter-spacing:.18em;color:#E8E8EC;font-weight:800;margin-top:2px}
+.os-legend{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+.os-leg{display:flex;align-items:center;gap:9px;font-size:13.5px;color:#E8E8EC}
+.os-leg b{margin-left:auto;color:#fff;font-size:15px}
+.os-leg-dot{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:0 0 10px -1px currentColor}
+.os-week{display:flex;align-items:flex-end;height:92px;padding:12px 2px 0}
+.os-week .bar{min-width:0;margin:0 4px;border-radius:5px 5px 2px 2px}
+.os-week-counts,.os-week-days{display:flex;padding:0 2px}
+.os-week-counts span,.os-week-days span{flex:1;text-align:center}
+.os-week-counts span{font-size:12px;font-weight:800;color:#fff}
+.os-week-counts span.zero{color:#E8E8EC;opacity:.45;font-weight:600}
+.os-week-days span{font-size:11px;color:#E8E8EC;letter-spacing:.03em}
+.os-week-days span.today{color:#fff;font-weight:800}
+.os-note{font-size:13.5px;color:#E8E8EC;line-height:1.5;margin-top:8px}
+/* — BATCH 2 (ten-star items 3–10): faces, the invite journey, conversation
+     inbox, and ONE LIFE PASS over every block. All life is the page's own
+     harvested machinery: fadeUp entrances, pulseGlow breathing (fed by
+     --bc), spectrum colors per author/stage, ignite in the card's own
+     --ac. Nothing invented; composed. — */
+/* life pass: a block's children rise in, staggered, every time it opens */
+.os-view.on>*{animation:fadeUp .55s cubic-bezier(.2,.7,.2,1) backwards}
+.os-view.on>*:nth-child(2){animation-delay:.05s}
+.os-view.on>*:nth-child(3){animation-delay:.10s}
+.os-view.on>*:nth-child(4){animation-delay:.15s}
+.os-view.on>*:nth-child(5){animation-delay:.20s}
+.os-view.on>*:nth-child(6){animation-delay:.25s}
+.os-view.on>*:nth-child(7){animation-delay:.30s}
+.os-view.on>*:nth-child(8){animation-delay:.35s}
+/* breathing accents: section dots breathe in their own color */
+.ph-dot{--bc:currentColor;animation:pulseGlow 3s infinite}
+/* ignite on hover/touch — EDGE ONLY (Shawn's hover law, EYE-PASS CURE
+   2026-10-22): the border + glow light in the board's own spectrum
+   position (--igc, assigned by board order in each view by osIgnite —
+   Addition B: boards walk purple → blue → green → gold → orange → red
+   → magenta, never all one color); the TEXT never changes color. */
+.os-view .ph-card{transition:border-color .25s ease,box-shadow .25s ease}
+.os-view .ph-card:hover{border-color:var(--igc,var(--ac,#a06bff));box-shadow:0 0 22px -6px var(--igc,var(--ac,#a06bff)),inset 0 1px 0 rgba(255,255,255,.14)}
+.os-view .ph-card:active{border-color:var(--igc,var(--ac,#a06bff));box-shadow:0 0 30px -4px var(--igc,var(--ac,#a06bff)),inset 0 1px 0 rgba(255,255,255,.20)}
+/* people, present: spectrum initial avatars; active-in-a-day = glowing ring */
+.os-av{position:relative;width:42px;height:42px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:16px;color:#fff;background:linear-gradient(180deg,#17171f,#0a0a0f);border:2px solid var(--avc,#a06bff);box-shadow:0 0 12px -3px var(--avc,#a06bff)}
+.os-av.hot{animation:pulseGlow 3s infinite}
+.os-who{display:flex;gap:12px;align-items:flex-start}
+.os-who-main{flex:1;min-width:0}
+/* faces board (Connections): faces first — full-width horizontal rows
+   stacked vertically (EYE-PASS CURE: Shawn's connections-2.html layout
+   standard; the mini-box grid is retired) */
+.os-faces{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.os-face{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:14px 8px;border-radius:14px;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.14)}
+.os-face .os-av{width:52px;height:52px;font-size:19px}
+.os-face-name{font-weight:800;color:#fff;font-size:13.5px;line-height:1.25;word-break:break-word}
+.os-face-fact{font-size:11.5px;color:#E8E8EC;line-height:1.35}
+.os-face-msg{margin-top:2px;padding:6px 13px;font-size:12px}
+/* journey funnel (Growth): the invite journey as tapered stages */
+.os-funnel{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+.os-fbar{height:40px;border-radius:10px;background:linear-gradient(90deg,var(--fc,#ff5e6c),rgba(255,255,255,.05));display:flex;align-items:center;padding:0 14px;color:#fff;font-weight:800;font-size:13.5px;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 16px rgba(0,0,0,.4)}
+.os-fconv{font-size:12px;color:#E8E8EC;padding-left:6px}
+.os-fconv b{color:#fff}
+/* inbox, conversational: snippets, relative times, an honest NEW glow */
+.os-thread-new{border-color:#ff9a5a!important;box-shadow:0 0 22px -6px #ff9a5a}
+.os-newchip{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.12em;color:#0b0b11;background:#ff9a5a;border-radius:6px;padding:2px 7px;margin-left:8px;vertical-align:2px}
+.os-snippet{color:#E8E8EC;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.ph-navtab .os-badge{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff9a5a;margin-left:7px;box-shadow:0 0 10px 1px #ff9a5a;vertical-align:2px}
+/* calm mode: the Settings "Motion & glow" control, made real */
+html.os-calm .os-view.on>*,html.os-calm .ph-dot,html.os-calm .os-donut-wrap,html.os-calm .os-av.hot{animation:none!important}
+@media (prefers-reduced-motion: reduce){
+.os-view.on>*{animation:none}
+.ph-dot{animation:none}
+}
+/* — LIVING GRAPHICS PASS (2026-10-22): the data objects themselves become
+     lit, physical, moving things. Wells are recessed stages; bars are lit
+     objects with value pills; numerals are light, never print; the donut
+     is a beveled jewel with a traveling sheen; funnel stages are slabs
+     joined by flowing light; faces are coins with rotating hot arcs.
+     Calm / reduced-motion = the same scene, lit and static. — */
+.os-well{position:relative;border-radius:14px;padding:14px 10px 10px;background:linear-gradient(180deg,#08080d,#10101a);box-shadow:inset 0 3px 10px rgba(0,0,0,.75),inset 0 -1px 0 rgba(255,255,255,.28),0 1px 0 rgba(255,255,255,.05);overflow:hidden}
+.os-well-grid{background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 1px,transparent 1px 23px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 46px);background-color:#0a0a12}
+.os-beam{position:absolute;top:0;bottom:0;width:44px;left:0;opacity:0;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);transition:opacity .25s}
+.os-week-counts:empty{display:none}
+.os-week .bar{animation:osBarGrow .8s cubic-bezier(.2,.7,.2,1) both,osBarBreathe 3.4s ease-in-out .9s infinite;position:relative;transform-origin:50% 100%;background:linear-gradient(180deg,#fff 0,color-mix(in srgb,var(--barc,#e84fff) 88%,#fff) 12%,var(--barc,#e84fff) 55%,color-mix(in srgb,var(--barc,#e84fff) 42%,#000) 100%);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.85),inset 1px 0 0 rgba(255,255,255,.18),0 6px 12px rgba(0,0,0,.55),0 0 14px -4px var(--barc,#e84fff);animation-delay:calc(var(--i,0)*60ms),calc(var(--i,0)*60ms + .9s)}
+@keyframes osBarGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes osBarBreathe{0%,100%{filter:brightness(1)}50%{filter:brightness(1.22)}}
+.os-week .bar.today{animation:osBarGrow .8s cubic-bezier(.2,.7,.2,1) both,osBarPulse 2.6s ease-in-out .9s infinite}
+@keyframes osBarPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.45)}}
+.os-bar-pill{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:10.5px;font-weight:900;line-height:1;color:#0b0b11;background:linear-gradient(180deg,#fff,var(--barc,#e84fff));border-radius:7px;padding:3px 6px;box-shadow:0 0 12px -2px var(--barc,#e84fff),inset 0 1px 0 rgba(255,255,255,.8);white-space:nowrap}
+.os-lit-num,.os-count,.os-donut-hole .donut-center{background:linear-gradient(180deg,#fff 18%,var(--ac,#a06bff) 135%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 9px var(--ac,#a06bff))}
+.os-donut-wrap .donut{filter:drop-shadow(0 10px 18px rgba(0,0,0,.55));box-shadow:inset 0 2px 3px rgba(255,255,255,.5),inset 0 -6px 12px rgba(0,0,0,.45)}
+.os-donut-sheen{position:absolute;inset:0;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 68%,rgba(255,255,255,.5) 78%,transparent 88%);-webkit-mask:radial-gradient(circle,transparent 0 69%,#000 71% 97%,transparent 99%);mask:radial-gradient(circle,transparent 0 69%,#000 71% 97%,transparent 99%);animation:osSheenSpin 9s linear infinite;z-index:2}
+@keyframes osSheenSpin{to{transform:rotate(360deg)}}
+.os-donut-hole{z-index:3;box-shadow:inset 0 2px 0 rgba(255,255,255,.22),inset 0 -4px 10px rgba(0,0,0,.5),0 0 0 1.5px rgba(255,255,255,.14)}
+.os-donut-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 0 8px 1px rgba(255,255,255,.75);z-index:2;pointer-events:none}
+.os-fbar{position:relative;background:linear-gradient(180deg,color-mix(in srgb,var(--fc,#ff5e6c) 72%,#fff) 0,var(--fc,#ff5e6c) 34%,color-mix(in srgb,var(--fc,#ff5e6c) 45%,#000) 100%);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.65),inset 0 -5px 9px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.5),0 0 16px -6px var(--fc,#ff5e6c);animation:osSlabIn .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+.os-fbar::before{content:"";position:absolute;top:0;left:0;right:0;height:9px;border-radius:10px 10px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent)}
+.os-fbar::after{content:"";position:absolute;inset:0;border-radius:10px;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.32) 50%,transparent 70%);background-size:250% 100%;animation:osSlabSheen 3.8s ease-in-out infinite}
+@keyframes osSlabSheen{0%{background-position:130% 0}55%,100%{background-position:-130% 0}}
+@keyframes osSlabIn{from{transform:translateX(-14px);opacity:0}to{transform:none;opacity:1}}
+.os-fbar-n{display:inline-block;background:linear-gradient(180deg,#fff,var(--fc,#ff5e6c));color:#0b0b11;border-radius:7px;padding:2px 8px;margin-left:2px;box-shadow:0 0 12px -2px var(--fc,#ff5e6c),inset 0 1px 0 rgba(255,255,255,.85);font-weight:900}
+.os-fconv{display:flex;align-items:center;gap:8px}
+.os-farrow{flex:none;width:3px;height:24px;border-radius:2px;background:repeating-linear-gradient(180deg,var(--fc,#ff9a5a) 0 5px,transparent 5px 10px);background-size:100% 20px;animation:osFlow 1s linear infinite;box-shadow:0 0 8px -1px var(--fc,#ff9a5a)}
+@keyframes osFlow{to{background-position:0 20px}}
+.os-av{background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 42%),radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--avc,#a06bff) 55%,#101014) 0%,color-mix(in srgb,var(--avc,#a06bff) 28%,#060607) 78%);border:2px solid color-mix(in srgb,var(--avc,#a06bff) 80%,white);box-shadow:0 0 24px -4px var(--avc,#a06bff),inset 0 2px 3px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.55);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+/* THE ORB (EYE-PASS CURE, Shawn 2026-10-22 — the standard is his
+   connections-2.html .cx-ava): a light sweep flows around the initial,
+   forever — the initial is a jewel, not a letter in a flat disc. */
+.os-av::after{content:"";position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.35) 40deg,transparent 90deg);animation:osOrbFlow 7s linear infinite;pointer-events:none}
+@keyframes osOrbFlow{to{transform:rotate(360deg)}}
+.os-av-arc{position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 55%,var(--avc,#a06bff) 78%,#fff 88%,transparent 100%);-webkit-mask:radial-gradient(circle,transparent 0 78%,#000 80% 94%,transparent 96%);mask:radial-gradient(circle,transparent 0 78%,#000 80% 94%,transparent 96%);animation:osArcSpin 3.2s linear infinite}
+@keyframes osArcSpin{to{transform:rotate(360deg)}}
+.os-face .os-av{width:60px;height:60px;font-size:22px}
+.os-face{border-color:rgba(255,255,255,.26)}
+.os-skel{position:relative;overflow:hidden;min-height:84px;border-radius:12px;background:linear-gradient(180deg,#10101a,#0a0a12);box-shadow:inset 0 2px 8px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.18)}
+.os-skel::after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent);animation:osSkel 1.3s ease-in-out infinite}
+@keyframes osSkel{from{transform:translateX(-110%)}to{transform:translateX(240%)}}
+.os-period{display:flex;gap:7px;margin:10px 0 2px}
+.os-period button{flex:none;padding:6px 14px;border-radius:999px;font-size:12px;font-weight:800;color:#E8E8EC;background:linear-gradient(180deg,#17171f,#0a0a0f);border:1.5px solid rgba(255,255,255,.3);cursor:pointer;font-family:inherit;box-shadow:inset 0 2px 5px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.15)}
+.os-period button{position:relative;transition:box-shadow .25s,border-color .25s,text-shadow .25s}
+.os-period button.on{color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.04) 46%,rgba(0,0,0,.34)),#0a0a10;border:1.5px solid var(--pc,#e84fff);text-shadow:0 0 10px var(--pc,#e84fff);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -9px 15px -8px var(--pc,#e84fff),0 0 18px -2px var(--pc,#e84fff),0 6px 14px rgba(0,0,0,.5)}
+.os-flare{animation:osFlare .7s ease-out!important}
+@keyframes osFlare{0%{filter:brightness(1)}35%{filter:brightness(1.65) drop-shadow(0 0 18px var(--ac,#a06bff))}100%{filter:brightness(1)}}
+.os-view .ph-card{box-shadow:inset 0 2px 0 rgba(255,255,255,.13),inset 0 -5px 13px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.07),0 16px 44px rgba(0,0,0,.55),0 5px 18px rgba(0,0,0,.45)}
+.ph-sec-t,.os-view h3{text-shadow:0 1px 0 rgba(255,255,255,.22),0 3px 10px rgba(0,0,0,.65)}
+.os-note{color:#F0F0F4}
+.os-week-days span{color:rgba(255,255,255,.85)}
+.os-spark-wrap{position:relative;display:block}
+.os-spark-dot{position:absolute;width:9px;height:9px;border-radius:50%;background:#fff;transform:translate(50%,-50%);box-shadow:0 0 10px 2px var(--ac,#a06bff);--bc:var(--ac,#a06bff);animation:pulseGlow 2.4s infinite;pointer-events:none}
+html.os-calm .os-donut-sheen,html.os-calm .os-av-arc,html.os-calm .os-av::after,html.os-calm .os-farrow,html.os-calm .os-skel::after,html.os-calm .os-week .bar,html.os-calm .os-fbar::after,html.os-calm .os-spark-dot{animation:none!important}
+@media (prefers-reduced-motion: reduce){
+.os-donut-sheen,.os-av-arc,.os-av::after,.os-farrow,.os-skel::after,.os-week .bar,.os-fbar::after,.os-spark-dot{animation:none}
+.os-week .bar,.os-fbar{animation:none}
+}
+.os-changed{animation:osChanged 1.25s ease-out!important}
+@keyframes osChanged{0%{filter:brightness(1)}30%{filter:brightness(1.8) drop-shadow(0 0 20px var(--ac,#a06bff))}100%{filter:brightness(1)}}
+.os-xchip{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.1em;color:#0b0b11;background:linear-gradient(180deg,#fff,#3fb8ff);border-radius:6px;padding:2px 7px;margin-left:8px;vertical-align:2px;box-shadow:0 0 10px -2px #3fb8ff}
+html.os-calm .os-changed{animation:none!important}
+/* ═══ FRONT CURE (2026-10-22 — Shawn's verdicts: icons 3D everywhere,
+   elevation recursive) ═══
+   THE ICON JEWEL SYSTEM: every icon sits in a raised lit tile — inset
+   top highlight + inset bottom shade + drop shadow + an own-color rim
+   and glow; the glyph itself is lit in its own spectrum color. One
+   class family, used by the dashboard, Reports, Growth, tabs, doors. */
+.os-jewel{--jc:#a06bff;display:inline-grid;place-items:center;flex:none;line-height:1;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,0) 48%),linear-gradient(180deg,#262633,#0b0b12 80%);border:1.5px solid var(--jc);border-radius:9px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 14px -3px var(--jc);text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+/* nav jewels ride larger + richer (EYE-PASS CURE #11: instantly legible) */
+.ph-navtab .os-jewel-sm{width:27px;height:27px;font-size:14px;border-radius:8px;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6),inset 0 -3px 6px rgba(0,0,0,.6),0 5px 12px rgba(0,0,0,.55),0 0 16px -2px var(--jc)}
+.os-jewel-lg{width:46px;height:46px;font-size:22px;border-radius:13px}
+.os-jewel-md{width:36px;height:36px;font-size:17px;border-radius:11px}
+.os-jewel-h{width:28px;height:28px;font-size:14.5px;border-radius:8px;vertical-align:-7px;margin-right:3px}
+.os-jewel-sm{width:23px;height:23px;font-size:12px;border-radius:7px;vertical-align:-5px;margin-right:2px}
+.ph-navtab .os-jewel{vertical-align:-6px}
+h3 .os-jewel{text-shadow:0 0 9px var(--jc),0 1px 2px rgba(0,0,0,.65)}
+/* section markers: the breathing dots become lit spheres */
+.ph-dot{border:1.5px solid rgba(255,255,255,.8);box-shadow:inset 0 1px 1px rgba(255,255,255,.65),inset 0 -2px 4px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.5),0 0 10px -1px currentColor}
+/* the eco-menu's icon chips: raised jewels in the entry's own color */
+.eco-ico{background:linear-gradient(180deg,#2a2a3a,#0d0d15 80%);border:1.5px solid var(--eco,#a06bff);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.55),0 0 12px -3px var(--eco,#a06bff);text-shadow:0 0 8px var(--eco,#a06bff)}
+/* RECURSIVE ELEVATION — boards within boards, every level raised:
+   the Faces board's tiles sit ON the board, not in it */
+.os-face{background:#020203;border:1.5px solid rgba(255,255,255,.3);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -3px 7px rgba(0,0,0,.45),0 8px 18px rgba(0,0,0,.45)}
+/* donut legend dots: tiny jewels, rim + inset + glow in their own color */
+.os-leg-dot{width:13px;height:13px;background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.95),currentColor 62%);border:1.5px solid rgba(255,255,255,.75);box-shadow:inset 0 -2px 3px rgba(0,0,0,.4),0 2px 5px rgba(0,0,0,.5),0 0 9px -1px currentColor}
+/* sparklines sit in a lit mini-well inside their stat board (nesting) */
+.os-spark-wrap{background:linear-gradient(180deg,#0a0a12,#10101a);border:1px solid rgba(255,255,255,.14);border-radius:10px;box-shadow:inset 0 3px 8px rgba(0,0,0,.7),inset 0 -1px 0 rgba(255,255,255,.22);padding:7px 9px 3px;margin-top:11px}
+
+/* ══ INTERROGATION CURE + SHAWN'S FRONT STEER (2026-10-22) ══ */
+/* #11/#12 — cover: tightened hero with spectrum art; the Change-cover
+   button rides the cover's top-right, clear of the name and the plus. */
+/* THE COVER GEOMETRY (EYE ROUND 3, decided 2026-10-22 21:51Z —
+   Phi's round-2 scorecard item 1, closed by name): the cover is a
+   BAND with fixed geometry: aspect-ratio 16/9 (Shawn's ruled 1.7778,
+   embodied in the bytes) with a max-height cap of 360px on wide
+   screens. Phones get the true 16:9 band (≈219px at 390 wide);
+   desktops get a cinematic ≈3.5:1 window instead of a full-screen
+   wall. The photo fills the band (object-fit: cover, never
+   distorted) and the owner drags it to choose the window — the
+   position persists (the engine's cover-drag, fm.coverPos). The
+   identity composition anchors to the band's bottom edge. */
+.ph-cover{height:auto;aspect-ratio:16/9;max-height:360px;background:radial-gradient(560px 240px at 12% -10%,rgba(160,107,255,.5),transparent 60%),radial-gradient(520px 260px at 88% 0%,rgba(232,79,255,.32),transparent 60%),radial-gradient(640px 300px at 55% 118%,rgba(63,184,255,.34),transparent 62%),linear-gradient(135deg,#1a1a3e,#2d1b4e 30%,#4a2b7a 55%,#0f3460 80%,#16537e)}
+.ph-cover:has(>img){cursor:grab}
+.ph-cover.os-dragging{cursor:grabbing;user-select:none}
+.ph-cover>img{-webkit-user-drag:none;touch-action:pan-y}
+.ph-cover-btn{top:16px;bottom:auto;right:16px}
+/* Faces (steer 1 + EYE-PASS CURE): full-width rows, one after another,
+   the full width of the board; color comes from position in the
+   spectrum walk, set inline per tile. A row ignites at its edge in the
+   face's own color; its text stays white (hover law). */
+.os-faces{gap:14px}
+.os-face{transition:border-color .25s ease,box-shadow .25s ease}
+.os-face:hover{border-color:var(--avc,#a06bff);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -3px 7px rgba(0,0,0,.45),0 8px 18px rgba(0,0,0,.45),0 0 22px -6px var(--avc,#a06bff)}
+.os-face{flex-direction:row;align-items:center;text-align:left;gap:14px;padding:16px 18px;border-radius:16px}
+.os-face-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.os-face-name{font-size:15.5px}
+.os-pres{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.05em;color:#2fe89e}
+.os-pres i{width:8px;height:8px;flex:none;border-radius:50%;background:#2fe89e;box-shadow:0 0 9px #2fe89e;animation:osSparkPulse 2s ease-in-out infinite}
+.os-pres.dim{color:#9a9ab0}
+.os-pres.dim i{background:#9a9ab0;box-shadow:none;animation:none}
+.os-face-msg{flex:none;margin-top:0}
+/* Domed medallions (steer 2) — the gloss cap RETIRED by the EYE-PASS
+   CURE: the orb's own radial dome light + flowing sheen (above, the
+   connections-2.html standard) replaced it; one treatment everywhere. */
+.os-face .os-av{box-shadow:0 0 26px -4px var(--avc,#a06bff),inset 0 2px 3px rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.45),0 10px 22px rgba(0,0,0,.55)}
+/* Reports stat circles (steer 3b): lit rings across the full width. */
+.os-rcirc-row{display:flex;flex-wrap:wrap;gap:14px 8px;margin-top:14px}
+.os-rcirc-cell{flex:1 1 76px;min-width:76px;display:flex;flex-direction:column;align-items:center;gap:7px}
+.os-rcirc{position:relative;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.16),rgba(255,255,255,0) 46%),linear-gradient(180deg,#15151d,#08080d);border:2px solid var(--ac);box-shadow:inset 0 2px 3px rgba(255,255,255,.4),inset 0 -6px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.5),0 0 16px -3px var(--ac)}
+.os-rcirc::before{content:"";position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(from -90deg,var(--ac) calc(var(--p,0)*1turn),rgba(255,255,255,.09) 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px))}
+.os-rcirc b{font-size:21px;color:#fff;text-shadow:0 0 12px var(--ac)}
+.os-rcirc-l{font-size:10.5px;font-weight:800;letter-spacing:.07em;color:#E8E8EC;text-align:center}
+/* Mix composition (steer 3c): donut + legend + proportion bars fill the width. */
+.os-mix{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-top:6px}
+.os-mix .os-donut-wrap{flex:none;margin:4px auto}
+.os-legend-bars{flex:1 1 230px;margin-top:0}
+.os-leg{flex-wrap:wrap}
+.os-leg b{color:var(--lc,#fff);text-shadow:0 0 9px var(--lc,transparent)}
+.os-leg-bar{flex-basis:100%;height:7px;border-radius:99px;background:rgba(255,255,255,.08);box-shadow:inset 0 1px 3px rgba(0,0,0,.7);overflow:hidden;margin:2px 0 4px 23px}
+.os-leg-bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,color-mix(in srgb,var(--lc,#fff) 55%,#000),var(--lc,#fff));box-shadow:0 0 10px -1px var(--lc,#fff);transition:width .9s cubic-bezier(.22,1,.36,1)}
+/* Lists (wave #3/#28): rows are raised tiles in the common grammar. */
+.os-list-row{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:14px;background:#020203;border:1.5px solid rgba(255,255,255,.26);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.38),inset 0 -3px 7px rgba(0,0,0,.45),0 8px 18px rgba(0,0,0,.45)}
+.os-list-check{width:30px;height:30px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:15px;color:#fff;background:linear-gradient(180deg,#17171f,#0a0a0f);border:2px solid #2fe89e;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 10px -3px #2fe89e;cursor:pointer;font-family:inherit;padding:0}
+.os-list-row.done .os-list-check{background:radial-gradient(circle at 34% 28%,#baffd9,#2fe89e 60%,#0d7a4c);color:#04240f}
+.os-list-text{flex:1;font-size:15px;color:#fff;min-width:0}
+.os-list-row.done .os-list-text{color:#9a9ab0;text-decoration:line-through}
+.os-list-x{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.05);color:#E8E8EC;font-size:14px;cursor:pointer;font-family:inherit;padding:0}
+.os-list-edit{flex:1;background:#050508;border:1.5px solid #2fe89e;border-radius:10px;color:#fff;font-size:15px;padding:8px 10px;font-family:inherit;margin:0}
+.os-sl-tag{flex:none;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ac,#2fe89e);border:1.5px solid var(--ac,#2fe89e);border-radius:99px;padding:3px 9px;box-shadow:0 0 10px -3px var(--ac,#2fe89e);white-space:nowrap}
+.os-sl-open{display:grid;place-items:center;text-decoration:none}
+.os-sl-in{font-size:12px;color:#9a9ab0;margin-top:8px}
+.os-sl-in:empty{margin-top:0}
+.os-sl-picker{margin-top:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:10px}
+.os-sl-plabel{font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;opacity:.6;margin-bottom:8px}
+#os-sl-chips .os-like{margin:0}
+#os-sl-delrow{margin-top:10px}
+#os-sl-delrow:empty{margin-top:0}
+/* Smart Notes (wave #1): honest sample tag, like + save in the grammar. */
+.os-sample-tag{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.08em;color:#ffbf3d;border:1.5px solid #ffbf3d;border-radius:99px;padding:2px 9px;text-shadow:0 0 8px rgba(255,191,61,.55)}
+.sn-actions{display:flex;align-items:center;gap:8px;margin-top:10px}
+.os-like{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:99px;font-size:13px;font-weight:800;color:#E8E8EC;background:linear-gradient(180deg,#17171f,#0a0a0f);border:1.5px solid rgba(255,255,255,.3);cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.4)}
+.os-like.on{color:#fff;border-color:var(--ac,#a06bff);text-shadow:0 0 9px var(--ac,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 14px -3px var(--ac,#a06bff),0 4px 10px rgba(0,0,0,.4)}
+.os-savebtn{padding:7px 16px;border-radius:99px;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--ac,#a06bff) 62%,#fff),var(--ac,#a06bff));border:1.5px solid rgba(255,255,255,.5);cursor:pointer;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 0 12px -3px var(--ac,#a06bff),0 5px 12px rgba(0,0,0,.45)}
+.os-savebtn.saved{background:linear-gradient(180deg,#17171f,#0a0a0f);color:#2fe89e;border-color:#2fe89e;text-shadow:0 0 9px rgba(46,232,158,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 12px -3px #2fe89e,0 5px 12px rgba(0,0,0,.45)}
+/* Draw-on-arrival for JS-rendered rows (wave #17). */
+.os-draw-in{animation:fadeUp .55s cubic-bezier(.22,1,.36,1) backwards}
+/* Calm + reduced-motion still the cure's motion too. */
+html.os-calm .os-pres i{animation:none!important}
+@media (prefers-reduced-motion:reduce){.os-pres i{animation:none}.os-draw-in{animation:none}.os-leg-bar i{transition:none}}
+
+/* ══ STEER 2 (2026-10-22): lit switches · the ORB CIRCLE system · composed rooms ══ */
+/* Settings rows: full elevation, jewel icons, a real lit switch. */
+.os-setrow{display:flex;align-items:center;gap:13px;padding:13px 2px;border-top:1px solid rgba(255,255,255,.07)}
+.os-setrow-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.os-setrow-main b{color:#fff;font-size:15px}
+.os-setrow-sub{font-size:14px;color:#d7d7e0;line-height:1.45}
+.os-switch-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:none}
+.os-switch{position:relative;width:56px;height:32px;border-radius:99px;border:1.5px solid rgba(255,255,255,.35);background:linear-gradient(180deg,#050508,#101018);box-shadow:inset 0 3px 7px rgba(0,0,0,.85),inset 0 -1px 0 rgba(255,255,255,.12),0 4px 10px rgba(0,0,0,.45);cursor:pointer;padding:0;transition:border-color .25s,box-shadow .25s;font-family:inherit}
+.os-knob{position:absolute;top:2px;left:3px;width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 34% 28%,#3a3a48,#17171f 65%);border:1.5px solid rgba(255,255,255,.4);box-shadow:inset 0 1px 2px rgba(255,255,255,.35),0 3px 7px rgba(0,0,0,.6);transition:left .25s cubic-bezier(.22,1,.36,1),background .25s,box-shadow .25s}
+.os-switch.on{border-color:var(--jc,#a06bff);box-shadow:inset 0 3px 7px rgba(0,0,0,.85),inset 0 0 12px -2px var(--jc,#a06bff),0 0 14px -3px var(--jc,#a06bff),0 4px 10px rgba(0,0,0,.45)}
+.os-switch.on .os-knob{left:26px;background:radial-gradient(circle at 34% 28%,#fff,var(--jc,#a06bff) 55%,color-mix(in srgb,var(--jc,#a06bff) 45%,#000));border-color:rgba(255,255,255,.85);box-shadow:inset 0 1px 2px rgba(255,255,255,.6),0 0 12px -1px var(--jc,#a06bff),0 3px 7px rgba(0,0,0,.5)}
+.os-switch-cap{font-size:11px;font-weight:800;letter-spacing:.06em;color:#9a9ab0}
+.os-switch.on ~ .os-switch-cap{color:#fff;text-shadow:0 0 8px var(--jc,#a06bff)}
+/* THE ORB CIRCLE SYSTEM (NAYA-ORB-002 concept): a lit circle that carries a
+   number — it breathes, it glows in its own color, size follows the data. */
+.os-orb-row{display:flex;flex-wrap:wrap;gap:12px 6px;margin-top:12px}
+.os-orb-cell{flex:1 1 64px;min-width:64px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.os-orb{position:relative;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.22),rgba(255,255,255,0) 48%),linear-gradient(180deg,#15151d,#08080d);border:2px solid var(--ac);box-shadow:inset 0 2px 3px rgba(255,255,255,.4),inset 0 -6px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.5),0 0 15px -2px var(--ac);animation:osOrbBreath 4.6s ease-in-out infinite}
+.os-orb b{font-size:19px;color:#fff;text-shadow:0 0 10px var(--ac)}
+.os-orb-l{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#E8E8EC;text-align:center}
+.os-orb.hot::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--ac);opacity:.65;animation:osSparkPulse 2s ease-in-out infinite;pointer-events:none}
+@keyframes osOrbBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+/* Reports: seven day-orbs (steer 2 §1a). */
+.os-dayorbs{display:flex;gap:5px;margin-top:14px}
+.os-dayorb-cell{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px}
+.os-dayorb-cell .os-orb b{font-size:14px;letter-spacing:.02em}
+.os-dayorb-n{font-size:13px;font-weight:800;color:#fff}
+.os-dayorb-cell .os-orb-l{color:#9a9ab0;font-size:9.5px}
+/* Mix legend counts ride as mini-orbs beside the donut (steer 2 §1). */
+.os-legend-bars .os-leg b{width:36px;height:36px;flex:none;border-radius:50%;display:grid;place-items:center;border:2px solid var(--lc);background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.16),rgba(255,255,255,0) 48%),linear-gradient(180deg,#15151d,#08080d);box-shadow:inset 0 1px 2px rgba(255,255,255,.35),inset 0 -4px 7px rgba(0,0,0,.5),0 0 11px -2px var(--lc);font-size:14px}
+/* Today + Inbox: cards sized to their content (steer 2 §3/§4). */
+.os-tcard{padding:14px 16px}
+.os-convo{padding:13px 15px}
+.os-convo-subj{font-size:16px}
+html.os-calm .os-orb{animation:none!important}
+html.os-calm .os-orb.hot::after{animation:none!important}
+@media (prefers-reduced-motion:reduce){.os-orb{animation:none}.os-orb.hot::after{animation:none}}
+
+/* ═══ EYE-PASS CURE (2026-10-22 — Shawn's screenshot walk) ═══
+   THE HOVER LAW, enforced over the base template's own rules: on
+   hover/touch ONLY the edge ignites (border + glow, in the element's
+   own spectrum color); the text NEVER highlights — it stays white.
+   The base .ph-navtab:hover colored its text var(--tc); cured here. */
+.ph-navtab:hover{color:#fff}
+.ph-cover-btn:hover{color:#fff}
+.eco-bb-btn:hover{color:#fff}
+/* BUTTONS, DEEPER (cure #6): the factory recipe at full strength —
+   bright rim, near-black fill, inset top shade, white lip line, rest
+   glow — so every action reads clearly against the deep-black boards.
+   (!important because the base template's own elevation pass used it;
+   this layer is later in the document and wins the tie.) */
+.ph-connect{background:linear-gradient(180deg,#1b1b24,#050507)!important;border:2px solid #a06bff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px #a06bff,0 10px 22px rgba(0,0,0,.55)!important}
+.ph-connect:hover{background:linear-gradient(180deg,#1b1b24,#050507)!important;border-color:#c09aff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 36px -2px #a06bff,0 12px 26px rgba(0,0,0,.6)!important;color:#fff}
+.ph-msg{background:linear-gradient(180deg,#17171f,#0a0a0f)!important;border:2px solid rgba(255,255,255,.5);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -4px 8px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.5)!important}
+.ph-msg:hover{border-color:var(--ac,#a06bff);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -4px 8px rgba(0,0,0,.45),0 0 24px -4px var(--ac,#a06bff),0 10px 22px rgba(0,0,0,.55)!important;color:#fff}
+.os-face .ph-msg:hover{border-color:var(--avc,#a06bff);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -4px 8px rgba(0,0,0,.45),0 0 24px -4px var(--avc,#a06bff),0 10px 22px rgba(0,0,0,.55)!important}
+/* the next-best-moves action buttons were "barely visible" — now they
+   carry the full button stack in miniature, edge lit in the move's
+   own walk color */
+.os-insight-act{border:1.5px solid rgba(255,255,255,.55)!important;background:linear-gradient(180deg,#1b1b24,#07070b)!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.5),0 6px 14px rgba(0,0,0,.5)!important;color:#fff}
+.os-insight-act:hover{border-color:var(--igc,var(--ic,#a06bff))!important;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -3px 6px rgba(0,0,0,.45),0 0 20px -3px var(--igc,var(--ic,#a06bff)),0 8px 16px rgba(0,0,0,.55)!important;color:#fff}
+
+
+/* ═══ ROUND 2 (Shawn's eye, 2026-10-22): cover integrity — the picture
+   displays WHOLE, the identity overlays its bottom band, and the tabs
+   sit level with the picture's bottom edge. Plus the dictation mic and
+   the auto-growing message box. ═══ */
+[data-block=cover]{position:relative}
+.ph-cover:has(>img){min-height:0}
+#cvr>img{height:100%}
+[data-block=cover] .ph-head{position:absolute;left:0;right:0;bottom:0;margin-top:0;padding:0 24px 20px;z-index:6}
+@media (max-width:640px){[data-block=cover] .ph-head{padding:0 16px 16px}}
+.os-fieldwrap{position:relative;margin:0 0 10px}
+.os-fieldwrap .os-input,.os-fieldwrap .os-textarea,.os-fieldwrap textarea{margin-bottom:0}
+.os-fieldwrap input,.os-fieldwrap textarea{padding-right:54px}
+.os-mic{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#0a0a10;border:1.5px solid rgba(232,232,236,.35);color:#E8E8EC;cursor:pointer;z-index:3;padding:0}
+.os-mic svg{width:18px;height:18px}
+.os-mic-top{top:8px;transform:none}
+.os-mic[hidden]{display:none}
+.os-mic:hover{color:var(--ac,#ffbf3d);border-color:var(--ac,#ffbf3d)}
+.os-mic.live{color:var(--ac,#ffbf3d);border-color:var(--ac,#ffbf3d);animation:osMicPulse 1.6s ease-in-out infinite}
+@keyframes osMicPulse{0%,100%{box-shadow:0 0 0 0 rgba(232,232,236,.35)}50%{box-shadow:0 0 0 7px rgba(232,232,236,0)}}
+@keyframes osMicPulseC{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ac,#ffbf3d) 45%,transparent)}50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--ac,#ffbf3d) 0%,transparent)}}
+.os-mic.live{animation-name:osMicPulseC}
+@media (prefers-reduced-motion:reduce){.os-mic.live{animation:none}}
+#os-msg-body{overflow-y:hidden;min-height:106px}
+
+/* ── EXPLANATION STANDARD (round 2d, the system's first instance):
+   .os-info-btn + .os-info-panel — reuse verbatim. A small circular ⓘ
+   rides the card's title row; at rest silver, on hover/active it
+   ignites in the card's own spectrum colour (var(--ac)); tapping it
+   toggles the panel beneath: an elevated lit well at readable size. ── */
+.os-info-btn{margin-left:auto;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#0a0a10;border:1.5px solid rgba(232,232,236,.4);color:#E8E8EC;font-size:15px;line-height:1;cursor:pointer;padding:0;flex:none}
+.os-info-btn:hover,.os-info-btn.on{color:var(--ac,#a06bff);border-color:var(--ac,#a06bff)}
+.os-info-panel{margin-top:10px;padding:12px 14px;border-radius:12px;background:#07070b;border:1px solid rgba(232,232,236,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 -8px 16px rgba(0,0,0,.55);color:#E8E8EC;font-size:14.5px;line-height:1.55}
+.os-info-panel[hidden]{display:none}
+
+/* ═══ EYE ROUND 3 (2026-10-22 — Shawn's eye on the flagship header) ═══
+   THE IDENTITY COMPOSITION SITS INSIDE THE COVER: a deep scrim rises
+   from the cover's bottom edge so picture + name + tagline + Connect
+   read as one aligned composition over any cover, photo or art (the
+   head overlays the cover's bottom; the tabs sit level with the
+   cover's bottom edge — the seam measures 0).
+   SELECTION IS WHITE (Design Contract §2): the tab you are on
+   carries a subtle white indicator only — NO permanent color glow;
+   its own spectrum color still ignites on hover/touch, exactly like
+   every other tab. This section sits last in the layer and cures the
+   base template's .ph-navtab.on color rule. */
+[data-block=cover] .ph-cover::before{content:'';position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,rgba(2,2,6,0) 0%,rgba(2,2,6,.38) 52%,rgba(2,2,6,.78) 100%);pointer-events:none;z-index:1}
+/* Dictation speaks (EYE ROUND 3 steer, 2026-10-22 21:53Z): the note
+   that appears by a composer when dictation starts or fails — a lit
+   panel in the board's own colour, never silent, never a code. */
+.os-mic-note{margin-top:8px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-left:3px solid var(--ac,#a06bff);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 20px rgba(0,0,0,.35);color:#fff;font-size:13.5px;line-height:1.45}
+/* Phone band (EYE ROUND 3): the band is 219px tall and the identity
+   head fills its lower 165px — Change cover rides the band's top
+   strip (6px), the only zone clear of the name and motto at this
+   height. At desktop height it keeps the corner (top:16px). */
+@media (max-width:640px){.ph-cover-btn{top:6px;right:10px}}
+.ph-navtab.on{border-color:rgba(255,255,255,.92)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 12px -1px rgba(255,255,255,.5),0 12px 32px rgba(0,0,0,.5)!important}
+.ph-navtab.on:hover{border-color:var(--tc)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 10px -1px var(--tc),0 12px 32px rgba(0,0,0,.5)!important}
+/* ENTRANCE FILL (same round): fadeUp's fill is backwards in this
+   layer (see the entrance rules) — a finished forwards-filled
+   animation pins transform:translateY(0) forever and kills the
+   boards' hover lift; backwards keeps the identical entrance and
+   lets go. Restated here so the intent survives future edits. */
+/* THE AVATAR'S CORNER CAMERA (steer, 21:19Z): "Change picture" as
+   words is dead — a small camera button rides the profile picture's
+   own corner. The wrap holds it OUTSIDE the avatar's
+   overflow:hidden, so a photo change (which rewrites the avatar's
+   innerHTML) can never wipe it; its #avedit wiring is unchanged. */
+.ph-avwrap{position:relative;flex-shrink:0}
+.ph-av-edit{position:absolute;right:-4px;bottom:-4px;width:36px;height:36px;border-radius:50%;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid rgba(255,255,255,.65);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -3px 6px rgba(0,0,0,.55),0 6px 14px rgba(0,0,0,.55);font-size:15px;line-height:1;display:grid;place-items:center;cursor:pointer;z-index:3;padding:0}
+.ph-av-edit:hover{border-color:#a06bff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -3px 6px rgba(0,0,0,.5),0 0 18px -2px #a06bff,0 8px 16px rgba(0,0,0,.55)}
+
+</style>

@@ -1,0 +1,935 @@
+<script id="os-dash-script">
+/* ═══ THE DASHBOARD DOOR ENGINE — "Your World, Live" (Mirror B5).
+   A door layer over the same one-system app: it reads EXACTLY the tables
+   the page's own engine reads (smart_notes wall rows, smart_mail_threads +
+   smart_mail_messages, invites — all filtered by this page's alias) and
+   composes the front from the Living Data blocks, stats first (the
+   FRONT CURE, Shawn's verdict 2026-10-22): Pulse Strip, Trend Panel,
+   Journey Funnel, Mix Donut, Faces Board, Your Next Best Moves (the
+   former Spotlight pick leads it as move #1 — the banner and the
+   synthetic Health Gauge are retired), latest conversations, Heat &
+   Streaks, the Smart Links board, and the Connections/Plug-ins strip.
+   THE DASHBOARD + TIMELINE STAGE (2026-10-22) adds: the trend kind
+   switcher (Posts / Notes / Messages / Invites, one series at a time —
+   the loader keeps note rows), the truth pass (Messages Received counts
+   real smart_mail_messages rows, waiting-for-reply rides the Pulse,
+   the donut legend speaks share only, the "This app" plug-in card
+   carries status instead of re-printing the Pulse), insight evidence
+   shown by default with the oldest-unanswered and best-by-saves rules,
+   Heat & Streaks from the fetched timestamps, and Smart Links ranked
+   from the aggregate view. The pulse treatment is ACTIVE
+   INTELLIGENCE: counting-up lit numerals, living sparklines with a
+   breathing head, a verified-change flash when a number truly moves,
+   and boards with ambient light of their own.
+   HONESTY LAW: every number, sentence and insight below is computed from
+   the fetched rows at load. Sources with no real connection are shown as
+   invitations and carry NO numbers — none are invented, ever. ═══ */
+(function(){
+  var PAGE_ALIAS = '__ALIAS__';
+  var SB_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
+  var SB_ANON = '__SUPABASE_ANON_KEY__';
+  var sb = null;
+  try { if (typeof supabase !== 'undefined') sb = supabase.createClient(SB_URL, SB_ANON); } catch(e) {}
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
+  function presenceOf(iso){
+    if (!iso) return {on:false, txt:'Around this app'};
+    var mins=(Date.now()-new Date(iso).getTime())/60000;
+    if (mins<60) return {on:true, txt:'Around now'};
+    if (mins<1440) return {on:true, txt:'Active '+relLabel(iso)};
+    return {on:false, txt:'Last active '+relLabel(iso)};
+  }
+  function faceTileHTML(name, fact, at, ix, you){
+    var c=SPECTRUM[ix%SPECTRUM.length];
+    var pres=presenceOf(at);
+    return '<div class="os-face os-draw-in" data-face-tile="'+esc(name)+'" style="--avc:'+c+';animation-delay:'+Math.min(ix*0.06, 0.5)+'s">'+avatarHTML(name, at, c)+'<span class="os-face-main"><span class="os-face-name">'+esc(name)+(you?'<span class="os-you" style="display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;border:1px solid '+c+';color:'+c+';font-size:9px;font-weight:900;letter-spacing:.12em;vertical-align:2px">You</span>':'')+'</span><span class="os-face-fact">'+esc(fact)+'</span><span class="os-pres'+(pres.on?'':' dim')+'"><i></i>'+esc(pres.txt)+'</span></span>'+(you?'':'<button class="ph-msg os-face-msg" type="button" data-dash-msg="'+esc(name)+'">Message</button>')+'</div>';
+  }
+  function relLabel(iso){ var ms=Date.now()-new Date(iso).getTime(); if(ms<60000) return 'just now'; var m=Math.floor(ms/60000); if(m<60) return m+'m ago'; var h=Math.floor(m/60); if(h<24) return h+'h ago'; var d=Math.floor(h/24); return d+'d ago'; }
+  function parseRow(r){ try { var j=JSON.parse(r.content); if(j && j.k) return j; } catch(e){} return {k:'wall', a:'', b:r.content}; }
+  function humanize(slug){ var s=String(slug||'').replace(/[-_]+/g,' ').trim(); return s?(s.charAt(0).toUpperCase()+s.slice(1)):'Guest'; }
+  /* parity helpers — same math as the page's own Reports/Growth/Faces code */
+  var SPECTRUM=['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff'];
+  /* a WALL author's color is their identity (the canon contract's
+     own words: 'a spectrum initial avatar per author (stable name
+     hash; the page owner in the soul color)'). Ordered SETS —
+     faces, conversation lists, circles, moves — walk by POSITION
+     (EYE-PASS CURE #3); a person's color down their own wall
+     stays theirs. */
+  function colorFor(name){ var s=String(name||'?'), h=0, i; for (i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return SPECTRUM[h%SPECTRUM.length]; }
+  function hotAt(iso){ return !!iso && (Date.now()-new Date(iso).getTime())<864e5; }
+  function avatarHTML(name, iso, c){ c=c||colorFor(name); var s=String(name||'?').trim(); var ini=s?s.charAt(0).toUpperCase():'?'; var hot=hotAt(iso); return '<div class="os-av'+(hot?' hot':'')+'" style="--avc:'+c+';--bc:'+c+'">'+(hot?'<span class="os-av-arc"></span>':'')+esc(ini)+'</div>'; }
+  function countUp(el, target){
+    if (!el) return;
+    if (!target) { el.textContent='0'; return; }
+    var t0=null;
+    function step(ts){ if (!t0) t0=ts; var k=Math.min(1,(ts-t0)/900); el.textContent=Math.round(target*(1-Math.pow(1-k,3))); if (k<1) requestAnimationFrame(step); else el.textContent=target; }
+    requestAnimationFrame(step);
+  }
+  function weekSplit(times){
+    var now=Date.now(), wk=0, pv=0;
+    times.forEach(function(t){ var age=now-new Date(t).getTime(); if (age<7*864e5) wk++; else if (age<14*864e5) pv++; });
+    return {wk:wk, pv:pv};
+  }
+  function statSentence(noun, plural, times, zeroText){
+    var total=times.length;
+    if (!total) return zeroText;
+    var s=weekSplit(times), word=total===1?noun:plural;
+    if (s.pv>0){
+      if (s.wk>s.pv) return total+' '+word+' in total — '+s.wk+' this week, up from '+s.pv+' the week before.';
+      if (s.wk<s.pv) return total+' '+word+' in total — '+s.wk+' this week, down from '+s.pv+' the week before. A quieter week.';
+      return total+' '+word+' in total — '+s.wk+' this week, the same pace as last week.';
+    }
+    if (s.wk>0){
+      if (s.wk===total) return 'All '+total+' '+word+' landed in the last 7 days — the story starts now.';
+      return total+' '+word+' in total — '+s.wk+' this week, and none the week before. The momentum is new.';
+    }
+    return total+' '+word+' in total — the latest came '+relLabel(times[0])+'. A fresh one restarts the story.';
+  }
+  /* — LIVING GRAPHICS shared helpers (parity in both engines): period
+       buckets, lit bars, jewel donut, living sparklines, change-flash. — */
+  function bucketize(times, period){
+    var today=new Date(); today.setHours(0,0,0,0);
+    var buckets=[], i, start;
+    if (period===7 || period===30){
+      var n=period; start=new Date(today.getTime()-(n-1)*864e5);
+      for (i=0;i<n;i++) buckets.push({d:new Date(start.getTime()+i*864e5), n:0, label:'', note:'', today:false});
+      times.forEach(function(t){ var td=new Date(t); td.setHours(0,0,0,0); var idx=Math.round((td-start)/864e5); if (idx>=0 && idx<n) buckets[idx].n++; });
+      buckets.forEach(function(b, ix){
+        var last=ix===buckets.length-1;
+        b.label=last?'Today':(period===7?b.d.toLocaleDateString('en-US',{weekday:'short'}):(ix%5===0?String(b.d.getDate()):''));
+        b.note=b.d.toLocaleDateString('en-US',{weekday:'long'})+': '+b.n+(b.n===1?' event':' events')+'.';
+        b.today=last;
+      });
+    } else {
+      var oldest=today.getTime();
+      times.forEach(function(t){ var td=new Date(t); td.setHours(0,0,0,0); if (td.getTime()<oldest) oldest=td.getTime(); });
+      var weeks=Math.min(260, Math.max(1, Math.ceil((today.getTime()-oldest)/(7*864e5))+1));
+      start=new Date(today.getTime()-(weeks-1)*7*864e5);
+      for (i=0;i<weeks;i++) buckets.push({d:new Date(start.getTime()+i*7*864e5), n:0, label:'', note:'', today:false});
+      times.forEach(function(t){ var td=new Date(t); var idx=Math.floor((td-start)/(7*864e5)); if (idx>=0 && idx<weeks) buckets[idx].n++; });
+      buckets.forEach(function(b, ix){
+        var last=ix===buckets.length-1;
+        b.label=last?'This week':b.d.toLocaleDateString('en-US',{month:'short', day:'numeric'});
+        b.note='Week of '+b.d.toLocaleDateString('en-US',{month:'long', day:'numeric'})+': '+b.n+(b.n===1?' event':' events')+'.';
+        b.today=last;
+      });
+    }
+    return buckets;
+  }
+  function renderBars(wrap, countsEl, daysEl, note, buckets, color, subject, quiet){
+    if (!wrap) return;
+    var max=1; buckets.forEach(function(x){ if (x.n>max) max=x.n; });
+    wrap.innerHTML=buckets.map(function(x, i){
+      var h=x.n?Math.max(12, Math.round(x.n/max*100)):3;
+      return '<div class="bar os-litobj'+(x.today?' today':'')+'" style="height:'+h+'%;--barc:'+(x.n?(color||SPECTRUM[i%SPECTRUM.length]):'#3a3a46')+';--i:'+i+'" data-note="'+esc(x.note)+'">'+(x.n?'<span class="os-bar-pill">'+x.n+'</span>':'')+'</div>';
+    }).join('');
+    if (countsEl) countsEl.innerHTML='';
+    if (daysEl) daysEl.innerHTML=buckets.map(function(x){ return '<span class="'+(x.today?'today':'')+'">'+esc(x.label)+'</span>'; }).join('');
+    var bi=0; buckets.forEach(function(x, k){ if (x.n>buckets[bi].n) bi=k; });
+    if (note) note.textContent=buckets[bi].n?('Busiest: '+buckets[bi].note+' '+(subject||'Posts, notes, messages and invites together.')):('A quiet stretch so far — the chart is waiting. '+(quiet||'The next post, note, message or invite lights the first bar.'));
+    wrap.querySelectorAll('.bar').forEach(function(bar){
+      bar.addEventListener('click', function(){ if (note) note.textContent=bar.getAttribute('data-note'); });
+    });
+    var well=wrap.closest?wrap.closest('.os-well'):null;
+    if (well && !well._beamWired){
+      well._beamWired=true;
+      var beam=well.querySelector('.os-beam');
+      well.addEventListener('pointermove', function(e){ if (!beam) return; var r=well.getBoundingClientRect(); beam.style.left=(e.clientX-r.left-22)+'px'; beam.style.opacity='1'; });
+      well.addEventListener('pointerleave', function(){ if (beam) beam.style.opacity='0'; });
+    }
+  }
+  function donutSegs(el, vals, colors){
+    var wrap=el.closest?el.closest('.os-donut-wrap'):null;
+    var t=0; vals.forEach(function(v){ t+=v; });
+    if (!t){ el.style.background='conic-gradient(from 90deg, rgba(255,255,255,.10) 0 100%)'; }
+    else {
+      var gap=1.4, cursor=0, parts=[], lastIdx=-1;
+      vals.forEach(function(v, idx){ if (v>0) lastIdx=idx; });
+      vals.forEach(function(v, idx){
+        if (!v) return;
+        var share=v/t*100, end=cursor+share;
+        var ge=(idx===lastIdx)?end:Math.max(cursor, end-gap);
+        parts.push(colors[idx]+' '+cursor.toFixed(2)+'% '+ge.toFixed(2)+'%');
+        cursor=end;
+      });
+      el.style.background='conic-gradient(from 90deg, '+parts.join(', ')+')';
+      if (wrap){
+        Array.prototype.slice.call(wrap.querySelectorAll('.os-donut-dot')).forEach(function(dn){ dn.parentNode.removeChild(dn); });
+        var cur=0;
+        vals.forEach(function(v, idx){
+          if (!v) return;
+          var share=v/t*100, mid=(cur+share/2)/100, ang=mid*2*Math.PI;
+          cur+=share;
+          var dot=document.createElement('span'); dot.className='os-donut-dot';
+          dot.style.left=(50+47*Math.sin(ang))+'%'; dot.style.top=(50-47*Math.cos(ang))+'%';
+          dot.style.background=colors[idx]; dot.style.boxShadow='0 0 8px 1px '+colors[idx];
+          wrap.appendChild(dot);
+        });
+      }
+    }
+    el.style.animation='none'; void el.offsetWidth; el.style.animation='';
+  }
+  function sparkPoints(times){
+    var start=new Date(); start.setHours(0,0,0,0); start=new Date(start.getTime()-6*864e5);
+    var days=[0,0,0,0,0,0,0];
+    times.forEach(function(t){
+      var td=new Date(t); td.setHours(0,0,0,0);
+      var idx=Math.round((td-start)/864e5);
+      if (idx>=0 && idx<7) days[idx]++;
+    });
+    var max=1; days.forEach(function(n){ if (n>max) max=n; });
+    return days.map(function(n, i){ return (i*(100/6)).toFixed(1)+','+(25-(n/max)*21).toFixed(1); }).join(' ');
+  }
+  function renderSpark(idBase, times){
+    var line=$(idBase); if (!line) return;
+    var fill=$(idBase.replace('spark-', 'sparkfill-')), dot=$(idBase.replace('spark-', 'sparkdot-'));
+    var pts=sparkPoints(times);
+    line.setAttribute('points', pts);
+    if (fill) fill.setAttribute('points', pts+' 100,28 0,28');
+    if (dot){ var last=pts.split(' ').pop().split(','); dot.style.top=(parseFloat(last[1])/28*100)+'%'; }
+    var svg=line.closest?line.closest('svg'):null;
+    if (svg){ svg.classList.remove('os-draw'); void svg.getBoundingClientRect(); svg.classList.add('os-draw'); }
+  }
+  var osPrev={};
+  function flashChange(key, el, val){
+    if (!el) return;
+    if (Object.prototype.hasOwnProperty.call(osPrev, key) && osPrev[key]!==val){
+      el.classList.remove('os-changed'); void el.offsetWidth; el.classList.add('os-changed');
+    }
+    osPrev[key]=val;
+  }
+  function cardOf(id){ var e=$(id); return e?(e.closest?e.closest('.ph-card'):null):null; }
+  function wirePeriod(scope, cb){
+    document.querySelectorAll('[data-period-for="'+scope+'"] button').forEach(function(b){
+      b.addEventListener('click', function(){
+        Array.prototype.slice.call(b.parentElement.querySelectorAll('button')).forEach(function(x){ x.classList.toggle('on', x===b); });
+        cb(parseInt(b.getAttribute('data-period'), 10));
+      });
+    });
+  }
+  function wireKind(scope, cb){
+    document.querySelectorAll('[data-kind-for="'+scope+'"] button').forEach(function(b){
+      b.addEventListener('click', function(){
+        Array.prototype.slice.call(b.parentElement.querySelectorAll('button')).forEach(function(x){ x.classList.toggle('on', x===b); });
+        cb(b.getAttribute('data-kind'));
+      });
+    });
+  }
+  function shortStat(noun, plural, times, zeroText){
+    var total=times.length;
+    if (!total) return zeroText;
+    var sp=weekSplit(times), word=total===1?noun:plural;
+    var t=total+' '+word+' — '+sp.wk+' this week';
+    if (sp.pv>0) t+= sp.wk>sp.pv ? ', up from '+sp.pv+'.' : (sp.wk<sp.pv ? ', down from '+sp.pv+'.' : ', same pace as last.');
+    else t+='.';
+    return t;
+  }
+  function rowsOf(p){ return p.then(function(r){ return (r && r.data)||[]; }, function(){ return []; }); }
+
+  function renderPulse(d){
+    countUp($('os-dash-n-posts'), d.postTimes.length);
+    countUp($('os-dash-n-messages'), d.msgTimes.length);
+    countUp($('os-dash-n-invites'), d.invTimes.length);
+    countUp($('os-dash-n-people'), d.peopleAround.length);
+    flashChange('p-posts', cardOf('os-dash-n-posts'), d.postTimes.length);
+    flashChange('p-messages', cardOf('os-dash-n-messages'), d.msgTimes.length);
+    flashChange('p-invites', cardOf('os-dash-n-invites'), d.invTimes.length);
+    flashChange('p-people', cardOf('os-dash-n-people'), d.peopleAround.length);
+    var np=$('os-dash-n-posts-note'), nm=$('os-dash-n-messages-note'), ni=$('os-dash-n-invites-note'), nf=$('os-dash-n-people-note');
+    if (np) np.textContent=shortStat('post','posts',d.postTimes,'No posts yet — the wall speaks first.');
+    if (nm){ nm.textContent=shortStat('message','messages',d.msgTimes,'No messages yet — the inbox is listening.'); if (d.waitingCount) nm.textContent+=' '+d.waitingCount+(d.waitingCount===1?' conversation is':' conversations are')+' waiting for your reply.'; }
+    if (ni) ni.textContent=shortStat('invite','invites',d.invTimes,'No invites yet — the first starts the growth story.');
+    if (nf){
+      if (!d.peopleList.length) nf.textContent='No faces yet — the first post, message or invite brings the first face.';
+      else {
+        var hot=d.peopleAround.filter(function(f){ return hotAt(f.at); }).length;
+        nf.textContent=d.peopleAround.length+(d.peopleAround.length===1?' person has':' people have')+' posted, messaged or been invited here'+(hot?(' — '+hot+' in the last day.'):'');
+      }
+    }
+  }
+  var dashPeriod=7, dashCache=null, dashKind='all';
+  /* the trend switcher (Shawn's Smart Links ruling, same sitting): the
+     trend reads ONE kind at a time — posts / notes / messages / invites —
+     or all of them blended. The loader keeps note rows for exactly this:
+     notes are a first-class series now, not a discarded kind. */
+  var KIND_META={
+    all:{subject:'Posts, notes, messages and invites together.', color:null, quiet:'The next post, note, message or invite lights the first bar.'},
+    posts:{subject:'Wall posts only.', color:'#a06bff', quiet:'The next wall post lights the first bar.'},
+    notes:{subject:'Smart Notes only.', color:'#ff9a5a', quiet:'The first Smart Note lights the first bar.'},
+    messages:{subject:'Messages received only.', color:'#3fb8ff', quiet:'The next message lights the first bar.'},
+    invites:{subject:'Invites recorded only.', color:'#2fe89e', quiet:'The next invite lights the first bar.'}
+  };
+  function trendTimes(d){
+    if (!d) return [];
+    if (dashKind==='posts') return d.postTimes;
+    if (dashKind==='notes') return d.noteTimes;
+    if (dashKind==='messages') return d.msgTimes;
+    if (dashKind==='invites') return d.invTimes;
+    return d.allTimes;
+  }
+  function renderWeekFront(d){
+    var wrap=$('os-dash-week'), countsEl=$('os-dash-week-counts'), daysEl=$('os-dash-week-days'), note=$('os-dash-week-note');
+    if (!wrap) return;
+    var meta=KIND_META[dashKind]||KIND_META.all;
+    renderBars(wrap, countsEl, daysEl, note, bucketize(trendTimes(d), dashPeriod), meta.color, meta.subject, meta.quiet);
+  }
+  function renderFunnelFront(rows, stats){
+    var box=$('os-dash-funnel'); if (!box) return;
+    var total=rows.length;
+    function isStatus(r, set){ return set.indexOf(String(r.status||'').toLowerCase())>=0; }
+    var joined=rows.filter(function(r){ return isStatus(r, ['joined','accepted','converted','member']); }).length;
+    var clicks=0, sJoins=0;
+    (stats||[]).forEach(function(s){ clicks+=Number(s.clicks||0); sJoins+=Number(s.joins||0); });
+    var hasStats=!!(stats&&stats.length);
+    var joinedAll=Math.max(joined, sJoins);
+    var allDry=total>0 && rows.every(function(r){ return !!r.dry_run; });
+    function pct(a, b){ return b?Math.round(a/b*100):0; }
+    var maxV=Math.max(total, clicks, joinedAll, 1);
+    function width(n){ if (!total && !clicks) return 100; if (!n) return 16; return Math.max(16, Math.round(n/maxV*100)); }
+    function stage(label, n, color, idx){ return '<div class="os-fbar os-litobj" style="--fc:'+color+';--ac:'+color+';width:'+width(n)+'%;--d:'+(idx*0.12)+'s">'+label+' &middot; <span class="os-fbar-n">'+n+'</span></div>'; }
+    function conv(a, b, what, nc){ return '<div class="os-fconv"><span class="os-farrow" style="--fc:'+(nc||'#ff9a5a')+'"></span><b>'+pct(a,b)+'%</b> '+what+'</div>'; }
+    var truth;
+    if (!total && !clicks) truth='No invites yet — record the first one in Growth.';
+    else if (allDry && !joinedAll) truth='Record-only mode: saved, never sent — Joined honestly reads 0 until a friend connects.';
+    else if (!joinedAll) truth='Invites are recorded'+(clicks?' and your links are being clicked':'')+' — the first join is the milestone ahead.';
+    else truth=joinedAll+(joinedAll===1?' person has':' people have')+' walked the whole journey.';
+    var mid;
+    if (hasStats){
+      mid='<div class="os-fconv"><span class="os-farrow" style="--fc:#2fe89e"></span><b>'+clicks+'</b> '+(clicks===1?'click':'clicks')+' counted on your Smart Links</div>'
+        +stage('Clicked', clicks, '#2fe89e', 1)
+        +conv(joinedAll, clicks, 'of clicks joined', '#3fb8ff')
+        +stage('Joined', joinedAll, '#3fb8ff', 2);
+    } else {
+      mid=conv(joined, total, 'of recorded invites joined', '#3fb8ff')
+        +stage('Joined', joined, '#3fb8ff', 1);
+    }
+    box.innerHTML='<div class="os-funnel">'
+      +stage('Recorded', total, '#a06bff', 0)
+      +mid
+      +'</div><p class="os-note">'+truth+'</p>';
+    flashChange('dash-funnel', box, total+'/'+clicks+'/'+joinedAll);
+  }
+  function renderDonutFront(p, m, i){
+    var el=$('os-dash-donut'); if (!el) return;
+    var tot=$('os-dash-total');
+    if (tot) tot.textContent=p+m+i;
+    /* the legend speaks SHARE only — the raw counts already live in the
+       Pulse above; repeating them here was the duplication the truth
+       pass removes. */
+    var sum=p+m+i;
+    function share(n){ return sum?Math.round(n/sum*100)+'%':'0%'; }
+    var lp=$('os-dash-leg-posts'), lm=$('os-dash-leg-messages'), li=$('os-dash-leg-invites');
+    if (lp) lp.textContent=share(p); if (lm) lm.textContent=share(m); if (li) li.textContent=share(i);
+    donutSegs(el, [p, m, i], ['#a06bff', '#3fb8ff', '#2fe89e']);
+  }
+  function renderFacesFront(d){
+    var head=$('os-dash-faces-head'), box=$('os-dash-faces');
+    if (!box) return;
+    var list=d.peopleList.slice(0,6);
+    if (head) head.textContent = !d.peopleList.length ? 'No faces yet — the first post, message or invite brings one.'
+      : d.peopleAround.length+(d.peopleAround.length===1?' person':' people')+' around this world.';
+    box.innerHTML = list.length ? '<div class="os-faces">'+list.map(function(f, ix){ return faceTileHTML(f.name, f.fact, f.at, ix, String(f.name).toLowerCase()==='this page'); }).join('')+'</div>' : '';
+    box.querySelectorAll('[data-dash-msg]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var s=$('os-msg-subject'); if (s) s.value='Hello '+b.getAttribute('data-dash-msg');
+        if (window.osShowView) window.osShowView('message');
+      });
+    });
+    var mini=$('os-dash-minifaces');
+    if (mini) mini.innerHTML=d.peopleList.slice(0,5).map(function(f, ix){ return avatarHTML(f.name, f.at, SPECTRUM[ix%SPECTRUM.length]); }).join('');
+  }
+  /* — The Insight Feed: Naya reads the numbers and speaks. Every sentence
+       is generated from the fetched rows by the rules below — change the
+       data and the sentences change. Each carries its evidence and one
+       action, a door into the block it talks about. — */
+  function buildInsights(d){
+    var out=[];
+    var allTimes=d.postTimes.concat(d.msgTimes, d.invTimes);
+    var ws=weekSplit(allTimes);
+    /* oldest-unanswered (step 6): when a queue exists, name its size
+       and the age of its oldest member. The #1 move carries the newest
+       waiting thread itself, so this rule speaks only of the queue —
+       and only when there IS one (two or more waiting). */
+    if (d.waiting && d.waiting.length>=2){
+      var ow=d.waiting[0];
+      out.push({c:'#ffbf3d', t:d.waiting.length+' conversations are waiting for your reply — the oldest unanswered is '+ow.name+'’s, waiting since '+relLabel(ow.at)+'.', e:d.waiting.length+' waiting · oldest '+relLabel(ow.at), go:'inbox', label:'Answer in the inbox'});
+    }
+    if (d.invRows.length && d.joined>0){
+      out.push({c:'#2fe89e', t:d.joined+(d.joined===1?' person has':' people have')+' walked the whole invite journey in this world — recorded and joined. Growth here has already happened.', e:'From '+d.invRows.length+' recorded invites', go:'growth', label:'See the journey'});
+    } else if (d.invRows.length && d.allDry){
+      out.push({c:'#ff5e6c', t:d.invRows.length+(d.invRows.length===1?' invite is':' invites are')+' recorded and waiting — record-only by design; nothing has gone out yet.', e:'Joined 0 — stated honestly', go:'growth', label:'Open Growth'});
+    } else if (d.invRows.length && !d.joined){
+      out.push({c:'#ff9a5a', t:'Invites are recorded — the first join is the milestone ahead.', e:d.invRows.length+' recorded · 0 joined', go:'growth', label:'Open Growth'});
+    }
+    if (ws.wk+ws.pv>0){
+      if (ws.pv>0 && ws.wk>ws.pv) out.push({c:'#a06bff', t:'Your world is speeding up — '+ws.wk+' events this week against '+ws.pv+' the week before.', e:ws.wk+' this week · '+ws.pv+' last week', go:'reports', label:'See Reports'});
+      else if (ws.pv>0 && ws.wk<ws.pv) out.push({c:'#a06bff', t:'A quieter week — '+ws.wk+' events against '+ws.pv+' the week before.', e:ws.wk+' this week · '+ws.pv+' last week', go:'reports', label:'See Reports'});
+      else if (ws.pv>0) out.push({c:'#a06bff', t:'Steady as she goes — '+ws.wk+' events this week, the same pace as last.', e:ws.wk+' this week · '+ws.pv+' last week', go:'reports', label:'See Reports'});
+      else out.push({c:'#a06bff', t:'Every event in this world landed in the last 7 days — '+ws.wk+' of them.', e:ws.wk+' events, all this week', go:'reports', label:'See Reports'});
+    }
+    if (d.postTimes.length){
+      if (Date.now()-new Date(d.postTimes[0]).getTime()>2*864e5) out.push({c:'#3fb8ff', t:'The wall has been quiet since '+relLabel(d.postTimes[0])+'.', e:'Latest post '+relLabel(d.postTimes[0]), go:'home', label:'Post on the wall'});
+    } else {
+      out.push({c:'#3fb8ff', t:'The wall is empty — the first post is its first heartbeat.', e:'0 posts so far', go:'home', label:'Start with the wall'});
+    }
+    var hot=d.peopleAround.filter(function(f){ return hotAt(f.at); }).length;
+    if (hot>0) out.push({c:'#ff9a5a', t:hot+(hot===1?' person has':' people have')+' been around your world in the last day — say hello while it is warm.', e:hot+' active in the last 24 hours', go:'people', label:'See the faces'});
+    /* best content by saves (step 6): save records are rows on this
+       app's own store ({k:'save', ref}) — the most-saved note is the
+       content this world has voted for with its keeps. Silent when
+       nobody has saved anything: no saves, no claim. */
+    if (d.bestSave){
+      out.push({c:'#ff9a5a', t:'Your most-saved note: \u201C'+d.bestSave.title+'\u201D — saved '+d.bestSave.n+(d.bestSave.n===1?' time':' times')+' in this app. What gets kept is what this world values.', e:'Counted from this app\u2019s own save records', go:'notes', label:'See Smart Notes'});
+    }
+    if (!out.length) out.push({c:'#a06bff', t:'Your world is brand new. Post on the wall, send the first message, record the first invite — and this front starts telling your story in sentences like these.', e:'Nothing to read yet — honestly', go:'home', label:'Start with the wall'});
+    return out.slice(0,3);
+  }
+  function renderInsights(d){
+    var box=$('os-dash-insights'); if (!box) return;
+    var pick=pickMove(d);
+    var list=buildInsights(d);
+    if (pick && pick.drop) list=list.filter(function(x){ return x.t.indexOf(pick.drop)<0; });
+    var moves=[];
+    if (pick) moves.push({c:pick.c, t:pick.body, e:pick.title, go:pick.go, label:pick.label});
+    list.slice(0, 3).forEach(function(x){ moves.push(x); });
+    /* the moves are an ordered set: their accents take the spectrum
+       walk BY ROW POSITION (EYE-PASS CURE #3) — the semantic color each
+       insight was born with no longer paints the row. */
+    box.innerHTML=moves.map(function(x, ix){
+      var wc=SPECTRUM[ix%SPECTRUM.length];
+      return '<div class="os-insight" style="--ic:'+wc+'"><span class="os-insight-dot os-insight-gem" style="--ic:'+wc+'">✦</span><div class="os-insight-main"><p>'+esc(x.t)+'</p><div class="os-insight-evi">'+esc(x.e)+'</div></div><button class="ph-msg os-insight-act" type="button" data-dash-go="'+x.go+'">'+esc(x.label)+'</button></div>';
+    }).join('');
+    flashChange('insights', box, moves.map(function(x){ return x.t; }).join('|'));
+    box.querySelectorAll('[data-dash-go]').forEach(function(b){
+      b.addEventListener('click', function(){ if (window.osShowView) window.osShowView(b.getAttribute('data-dash-go')); });
+    });
+  }
+  /* — THE #1 MOVE (the Spotlight rule, kept; the banner retired by the
+       FRONT CURE): the single most important thing becomes the first of
+       Your next best moves — one row, button inline. Rule, in order:
+       (1) a conversation is waiting → newest waiting thread; (2) the invite
+       journey completed → joined milestone; (3) invites recorded and
+       waiting → nearest milestone; (4) the wall spoke → newest post;
+       (5) a brand-new world → the invitation to begin. `drop` names the
+       insight text the pick supersedes, so the feed never says it twice. — */
+  function pickMove(d){
+    var pick=null;
+    if (d.waiting && d.waiting.length){ var w=d.waiting[d.waiting.length-1]; pick={c:'#ffbf3d', title:'A conversation is waiting', body:w.name+' wrote \u201C'+(w.subject||'(no subject)')+'\u201D '+relLabel(w.at)+' — it is waiting for your reply.', go:'inbox', label:'Open the inbox', drop:null}; }
+    else if (d.joined>0){ pick={c:'#2fe89e', title:'The journey completed', body:d.joined+(d.joined===1?' person has':' people have')+' walked the whole invite journey in this world.', go:'growth', label:'See the journey', drop:'walked the whole invite journey in this world'}; }
+    else if (d.invRows.length){ pick={c:'#ff5e6c', title:'Invites recorded and waiting', body:d.invRows.length+(d.invRows.length===1?' invite is':' invites are')+' recorded — the next milestone is a first open.', go:'growth', label:'Open Growth', drop:'recorded and waiting'}; }
+    else if (d.posts.length){ var p0=d.posts[0]; pick={c:'#a06bff', title:'The newest voice on the wall', body:(p0.j.a||'Guest')+' posted '+relLabel(p0.at)+': \u201C'+String(p0.j.b||'').slice(0, 90)+'\u201D', go:'home', label:'See the wall', drop:null}; }
+    else { pick={c:'#a06bff', title:'A brand-new world', body:'The first post, message or invite becomes this world\u2019s first move.', go:'home', label:'Start with the wall', drop:null}; }
+    return pick;
+  }
+  function renderConvos(d){
+    var box=$('os-dash-convos'); if (!box) return;
+    if (!d.threads.length){ box.innerHTML='<div class="os-status">No conversations yet — the first message opens one here.</div>'; return; }
+    box.innerHTML=d.threads.slice(0,3).map(function(t, ix){
+      var msgs=d.msgsByThread[t.id]||[];
+      var latest=msgs.length?msgs[msgs.length-1]:null;
+      var snip=latest?latest.body:(t.preview||'');
+      var at=latest?latest.created_at:t.created_at;
+      return '<div class="os-convo" data-dash-go="inbox">'+avatarHTML(humanize(t.from_alias), at, SPECTRUM[ix%SPECTRUM.length])+'<div class="os-convo-main"><div class="os-convo-subj">'+esc(t.subject||'(no subject)')+'</div><div class="os-convo-snip">'+esc(humanize(t.from_alias))+': '+esc(snip)+'</div></div><span class="os-convo-when">'+esc(relLabel(at))+'</span></div>';
+    }).join('');
+    box.querySelectorAll('[data-dash-go]').forEach(function(el){
+      el.addEventListener('click', function(){ if (window.osShowView) window.osShowView('inbox'); });
+    });
+  }
+  /* — PLUG-INS, FIRST LIVE SOURCE: BOOKING (#21) — the strip's Booking
+     tile reads the booking store the way the booking page does, by RPC,
+     and prints only what the store reports. Pages exist -> the tile is
+     LIVE with the real upcoming count and the next appointment; the
+     calendar sync state is the store's own word, printed as-is. No pages
+     -> the invitation below stands exactly as written. A failed read
+     says so on the tile — a state is never faked. Refreshed at the same
+     moment renderPluginsNative runs (every dashboard load). — */
+  var plugBookingSeq = 0;
+  function plugWhenLabel(iso){
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) +
+        ' \u00b7 ' + d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+    } catch(e) { return ''; }
+  }
+  function renderPluginsBooking(){
+    var seq = ++plugBookingSeq;
+    var door = document.getElementById('os-src-door-booking');
+    var card = door ? door.closest('.os-src') : null;
+    if (!card) return;
+    var chip = card.querySelector('.os-src-chip');
+    var note = card.querySelector('.os-src-note');
+    var feeds = card.querySelector('.os-src-feeds');
+    function unread(){ if (note) note.textContent = 'The booking state could not be read just now.'; }
+    if (!sb) { unread(); return; }
+    function late(){ return seq !== plugBookingSeq; }
+    try {
+      Promise.resolve(sb.rpc('get_plugin_booking_state', { p_owner_alias: PAGE_ALIAS })).then(function(res){
+        if (late()) return;
+        if (!res || res.error || !res.data) { unread(); return; }
+        var st = res.data[0] || null;
+        if (!st || !st.pages) return; /* no booking page yet — the honest invitation stands */
+        var upcoming = st.upcoming || 0;
+        var syncs = st.sync_states || [];
+        var synced = syncs.length > 0 && syncs.every(function(s){ return s === 'connected'; });
+        card.classList.remove('idle'); card.classList.add('live');
+        if (chip) { chip.classList.remove('idle'); chip.classList.add('live'); chip.textContent = '\u25cf LIVE'; }
+        if (door && st.first_slug) door.href = 'https://nayanet.live/book?book=' + encodeURIComponent(st.first_slug);
+        var line = upcoming === 1 ? '1 appointment coming' : upcoming + ' appointments coming';
+        if (st.next_at) line += ' \u00b7 next ' + plugWhenLabel(st.next_at) + (st.next_title ? ' \u2014 ' + st.next_title : '');
+        if (note) note.textContent = (st.pages > 1 ? 'Your booking pages are live \u2014 ' : 'Your booking page is live \u2014 ') + line + '.';
+        if (feeds) feeds.innerHTML =
+          '<div class="os-feeds-row">\ud83d\udcc5 <span>' + esc(synced
+            ? 'Calendar sync is connected \u2014 bookings also land on your calendar.'
+            : 'Calendar sync: not connected yet \u2014 bookings live in NayaNET only, and every one is filed on the person it belongs to.') + '</span></div>' +
+          (st.first_slug ? '<div class="os-feeds-row">\ud83d\udd17 <span>Your booking door: <b>nayanet.live/book?book=' + esc(st.first_slug) + '</b></span></div>' : '');
+      }, function(){ if (!late()) unread(); });
+    } catch(e) { unread(); }
+  }
+  /* — PLUG-INS, SECOND LIVE SOURCE: PAYMENTS (#22) — the strip's
+     Payments tile reads the payments store by RPC and prints only
+     what the store reports: the connection word, the live link, and
+     \u2014 once payments connect \u2014 the revenue sentence ("you made
+     X from Y"), computed from the store's own sums so the Dashboard
+     and the Reports view never disagree. Not connected and no links
+     -> the invitation below stands exactly as written. A failed read
+     says so on the tile \u2014 a state is never faked. The same read
+     fills the Reports money line. Refreshed at the same moment
+     renderPluginsNative runs (every dashboard load). \u2014 */
+  var plugPaySeq = 0;
+  function plugMoney(cents){
+    var n = Number(cents || 0);
+    return '$' + (n / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function plugRevenue(st){
+    var paid = Number(st.paid_count || 0);
+    if (!paid) return 'Payments are connected \u2014 nothing has come in yet. The first payment lands here as a sentence, not a spreadsheet.';
+    var s = 'You made ' + plugMoney(st.gross_cents) + ' from ' + paid + (paid === 1 ? ' payment' : ' payments');
+    if (st.best_title && Number(st.best_cents || 0) > 0) s += ' \u2014 best earner \u201c' + st.best_title + '\u201d (' + plugMoney(st.best_cents) + ')';
+    return s + '.';
+  }
+  function renderPluginsPayments(){
+    var seq = ++plugPaySeq;
+    var door = document.getElementById('os-src-door-payments');
+    var card = door ? door.closest('.os-src') : null;
+    var repLine = document.getElementById('os-rep-revenue');
+    if (!card && !repLine) return;
+    var chip = card ? card.querySelector('.os-src-chip') : null;
+    var note = card ? card.querySelector('.os-src-note') : null;
+    var feeds = card ? card.querySelector('.os-src-feeds') : null;
+    function unread(){ if (note) note.textContent = 'The payments state could not be read just now.'; }
+    if (!sb) { unread(); return; }
+    function late(){ return seq !== plugPaySeq; }
+    try {
+      Promise.resolve(sb.rpc('get_payment_state', { p_owner_alias: PAGE_ALIAS })).then(function(res){
+        if (late()) return;
+        if (!res || res.error || !res.data) { unread(); return; }
+        var st = res.data[0] || null;
+        if (!st) { unread(); return; }
+        var state = st.connection_state || 'not_connected';
+        var live = state === 'connected' || state === 'test';
+        if (repLine) repLine.textContent = live
+          ? 'Money so far: ' + plugRevenue(st)
+          : (st.links
+            ? 'Money: your payment link is live, but payments are not connected yet \u2014 there is no revenue to report until they are.'
+            : 'Money: payments are not connected yet, so there is no revenue to report \u2014 the sentence lands here the day they are.');
+        if (!card) return;
+        if (!st.links && !live) return; /* no payment link yet \u2014 the honest invitation stands */
+        if (live) {
+          card.classList.remove('idle'); card.classList.add('live');
+          if (chip) { chip.classList.remove('idle'); chip.classList.add('live'); chip.textContent = '\u25cf LIVE'; }
+          if (door && st.first_slug) door.href = 'https://nayanet.live/pay?pay=' + encodeURIComponent(st.first_slug);
+          if (note) note.textContent = (state === 'test' ? 'Test mode. ' : '') + plugRevenue(st);
+        } else if (note) {
+          note.textContent = (st.links > 1 ? 'Your payment links are live' : 'Your payment link is live') + ' \u2014 the door shows the real price and says plainly that payments are not switched on. The money starts the day you connect Stripe.';
+        }
+        if (feeds) {
+          var rows = '';
+          if (!live) rows += '<div class="os-feeds-row">\ud83d\udcb3 <span>Payments: not connected yet \u2014 connecting Stripe is one sign-in, and it is yours to make.</span></div>';
+          if (Number(st.failed_count || 0) > 0) rows += '<div class="os-feeds-row">\u26a0\ufe0f <span>' + st.failed_count + (st.failed_count === 1 ? ' payment didn\u2019t go through' : ' payments didn\u2019t go through') + ' \u2014 a recovery draft is waiting in your Growth room.</span></div>';
+          if (st.first_slug) rows += '<div class="os-feeds-row">\ud83d\udd17 <span>Your payment door: <b>nayanet.live/pay?pay=' + esc(st.first_slug) + '</b></span></div>';
+          if (rows) feeds.innerHTML = rows;
+        }
+      }, function(){ if (!late()) unread(); });
+    } catch(e) { unread(); }
+  }
+  function renderPluginsNative(d){
+    /* the "This app" plug-in card no longer re-prints the Pulse counts
+       (step 5 dedupe): it carries status + what it feeds, in its block.
+       The community card's people numeral is its own fact, kept. */
+    countUp($('os-dash-src-n-people'), d.peopleAround.length);
+    renderPluginsBooking();
+    renderPluginsPayments();
+  }
+  /* — HEAT & STREAKS (step 6): the shape of the last fourteen days and
+       the runs inside all the fetched timestamps. A day counts when at
+       least one event landed in it; the current streak runs to today,
+       or to yesterday when today is still quiet — it breaks only after
+       a fully silent day. Every figure is counted from d.allTimes at
+       render; nothing is stored, estimated or carried over. — */
+  function dayCounts(times, n){
+    var today=new Date(); today.setHours(0,0,0,0);
+    var start=new Date(today.getTime()-(n-1)*864e5), counts=[], i;
+    for (i=0;i<n;i++) counts.push(0);
+    times.forEach(function(t){ var td=new Date(t); td.setHours(0,0,0,0); var idx=Math.round((td-start)/864e5); if (idx>=0 && idx<n) counts[idx]++; });
+    return counts.map(function(c, ix){
+      var d=new Date(start.getTime()+ix*864e5);
+      return {n:c, d:d, today:ix===n-1, note:d.toLocaleDateString('en-US',{weekday:'long', month:'long', day:'numeric'})+': '+c+(c===1?' event':' events')+'.'};
+    });
+  }
+  function renderHeat(d){
+    var box=$('os-dash-heat'); if (!box) return;
+    var days=dayCounts(d.allTimes, 14);
+    var max=1; days.forEach(function(x){ if (x.n>max) max=x.n; });
+    box.innerHTML=days.map(function(x, i){
+      var c=SPECTRUM[i%SPECTRUM.length];
+      return '<div class="os-heat-day'+(x.today?' today':'')+'" style="background:#020203;--hc:'+c+'" data-heat-note="'+esc(x.note)+'" title="'+esc(x.note)+'">'+(x.n?'<span style="color:'+c+';text-shadow:0 0 9px '+c+'">'+x.n+'</span>':'')+'</div>';
+    }).join('');
+    var note=$('os-dash-heat-note');
+    var total=0; days.forEach(function(x){ total+=x.n; });
+    if (note) note.textContent=total?('Fourteen days, '+total+(total===1?' event':' events')+' — tap a day to read it.'):'A quiet fourteen days — the next post, note, message or invite lights the first cell.';
+    box.querySelectorAll('.os-heat-day').forEach(function(cell){
+      cell.addEventListener('click', function(){ if (note) note.textContent=cell.getAttribute('data-heat-note'); });
+    });
+    var sbx=$('os-dash-streaks'); if (!sbx) return;
+    var daySet={};
+    d.allTimes.forEach(function(t){ var td=new Date(t); td.setHours(0,0,0,0); daySet[td.getTime()]=1; });
+    var today=new Date(); today.setHours(0,0,0,0);
+    var cursor=daySet[today.getTime()]?today.getTime():today.getTime()-864e5;
+    var cur=0; while (daySet[cursor]){ cur++; cursor-=864e5; }
+    var keys=Object.keys(daySet).map(Number).sort(function(a, b){ return a-b; });
+    var longest=0, run=0, prev=null;
+    keys.forEach(function(k){ run=(prev!==null && k-prev===864e5)?run+1:1; if (run>longest) longest=run; prev=k; });
+    var active30=keys.filter(function(k){ return today.getTime()-k<30*864e5 && k<=today.getTime(); }).length;
+    var lines=[];
+    if (cur>0) lines.push('On a '+cur+'-day streak — something landed '+cur+(cur===1?' day':' days')+' running.');
+    else lines.push('No streak running — the next event starts one.');
+    if (longest>cur) lines.push('Longest streak so far: '+longest+(longest===1?' day':' days')+'.');
+    lines.push(active30+(active30===1?' active day':' active days')+' in the last thirty.');
+    sbx.innerHTML=lines.map(function(t){ return '<p class="os-note">'+esc(t)+'</p>'; }).join('');
+    flashChange('dash-heat', box, days.map(function(x){ return x.n; }).join(','));
+  }
+  /* — SMART LINKS IN THE DASHBOARD (step 5 of the stage plan): this
+       app's own links, ranked, with their counted clicks and attributed
+       joins. Reads the two anon doors the feature itself opened:
+       smart_links (resolve read) + smart_link_daily_stats (the
+       aggregate view — raw click/join rows are never anon-readable).
+       A link with no stats rows honestly reads 0 / 0. — */
+  /* — SMART LINK BREAKDOWN: where a link's counted clicks came
+       from — the dimension rollup (smart_link_dimension_stats: link ×
+       day × referrer class × device class × country), summed across
+       every recorded day. The same click events the board's totals
+       count; nothing estimated, nothing invented. A link with no
+       dimension rows gets no Breakdown button. — */
+  function dimLabel(kind, v){
+    if (v===null || v===undefined || v==='' || v==='unknown' || v==='null' || v==='undefined') return 'Not recorded';
+    var m={
+      referrer:{direct:'Direct', external:'Other sites', internal:'Inside NayaNET', social:'Social', search:'Search', email:'Email', referral:'Other sites'},
+      device:{desktop:'Desktop', mobile:'Phone', tablet:'Tablet', bot:'Bots'}
+    }[kind]||{};
+    return m[v]||(String(v).charAt(0).toUpperCase()+String(v).slice(1));
+  }
+  function dimFor(r, dims){
+    var mine=(dims||[]).filter(function(d){ return d.name===r.name; });
+    if (!mine.length) return null;
+    function sum(key){ var o={}; mine.forEach(function(d){ var k=d[key]; o[k]=(o[k]||0)+Number(d.clicks||0); }); return o; }
+    var days=mine.map(function(d){ return d.day; }).sort();
+    return {from:sum('referrer_class'), on:sum('user_agent_class'), country:sum('country'), first:days[0], last:days[days.length-1]};
+  }
+  function dimGroup(lab, o, kind){
+    var keys=Object.keys(o).sort(function(a, b){ return o[b]-o[a]; });
+    if (!keys.length) return '';
+    return '<div class="os-dim-group"><span class="os-dim-lab">'+lab+'</span><span class="os-link-nums">'+keys.map(function(k){ return '<span class="os-link-num"><b>'+o[k]+'</b><i>'+esc(dimLabel(kind, k))+'</i></span>'; }).join('')+'</span></div>';
+  }
+  function dimPanel(r, dim){
+    if (!dim) return '';
+    var when=dim.first===dim.last?('on '+dim.first):('from '+dim.first+' to '+dim.last);
+    return '<div class="os-link-dim" data-dim-for="'+esc(r.name)+'" hidden><p class="os-note">Every counted click on this link, '+when+' — where it came from, what it arrived on, and where in the world it was.</p>'+dimGroup('Came from', dim.from, 'referrer')+dimGroup('Arrived on', dim.on, 'device')+dimGroup('From', dim.country, 'country')+'</div>';
+  }
+  /* — LIVING NUMBERS + PER-LINK GRAPHS (Flagship Pass, 2026-10-23):
+       the board's counted numbers animate to their real values —
+       from the value last shown, so a quiet re-read visibly MOVES
+       them — and every link carries its own graph: real clicks per
+       day for the last fourteen days, lit bars in a recessed well
+       (the Trend Panel's .os-week bar grammar, DESIGN-LANGUAGE
+       §7.3/§7.4). A link with no clicks shows the flat honest
+       baseline and says so — activity is never invented. — */
+  var slPrevNums = {};
+  function slCountTo(el, from, to){
+    if (!el) return;
+    from = Number(from || 0); to = Number(to || 0);
+    if (from === to){ el.textContent = to; return; }
+    var t0 = null;
+    function step(ts){
+      if (!t0) t0 = ts;
+      var k = Math.min(1, (ts - t0) / 750);
+      el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) requestAnimationFrame(step); else el.textContent = to;
+    }
+    requestAnimationFrame(step);
+  }
+  function slDayBuckets(rows){
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var out = [], i;
+    for (i = 13; i >= 0; i--){
+      var d = new Date(today.getTime() - i * 864e5);
+      out.push({ key: d.toISOString().slice(0, 10), n: 0, j: 0, today: i === 0,
+        lab: d.toLocaleDateString('en-US', { weekday: 'short' }),
+        note: d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) });
+    }
+    var byKey = {};
+    out.forEach(function(b){ byKey[b.key] = b; });
+    (rows || []).forEach(function(r){
+      var b = byKey[r.day]; if (!b) return;
+      b.n += Number(r.clicks || 0); b.j += Number(r.joins || 0);
+    });
+    out.forEach(function(b){ b.note += ': ' + b.n + (b.n === 1 ? ' click' : ' clicks') + (b.j ? ', ' + b.j + (b.j === 1 ? ' join' : ' joins') : '') + '.'; });
+    return out;
+  }
+  function slGraphHTML(buckets, c){
+    var max = 1; buckets.forEach(function(b){ if (b.n > max) max = b.n; });
+    var total = 0; buckets.forEach(function(b){ total += b.n; });
+    var bars = buckets.map(function(b, i){
+      var h = b.n ? Math.max(12, Math.round(b.n / max * 100)) : 3;
+      return '<div class="bar' + (b.today ? ' today' : '') + '" style="height:' + h + '%;--barc:' + (b.n ? c : '#3a3a46') + ';--i:' + i + '" data-note="' + esc(b.note) + '">' + (b.n ? '<span class="os-bar-pill">' + b.n + '</span>' : '') + '</div>';
+    }).join('');
+    var days = buckets.map(function(b){ return '<span class="' + (b.today ? 'today' : '') + '">' + esc(b.lab) + '</span>'; }).join('');
+    var bi = 0; buckets.forEach(function(b, k){ if (b.n > buckets[bi].n) bi = k; });
+    var note = total ? ('Busiest: ' + buckets[bi].note + ' Tap a bar to read its day.') : 'No clicks yet — this graph wakes with the first click.';
+    return '<div class="os-sl-graph os-spark-wrap"><div class="os-week">' + bars + '</div><div class="os-sl-graph-days">' + days + '</div><p class="os-sl-graph-note">' + esc(note) + '</p></div>';
+  }
+  function renderLinks(links, stats, linksErr, dims){
+    var head=$('os-dash-links-head'), box=$('os-dash-links'); if (!box) return;
+    if (linksErr){
+      if (head) head.textContent='Your links couldn’t be read — tap to retry.';
+      box.innerHTML='<div class="ph-actions"><button class="ph-msg" type="button" data-dash-retry-links="1">Retry</button></div>';
+      return;
+    }
+    var byId={}, byDay={};
+    (stats||[]).forEach(function(s){
+      var a=byId[s.link_id]=byId[s.link_id]||{clicks:0, joins:0}; a.clicks+=Number(s.clicks||0); a.joins+=Number(s.joins||0);
+      (byDay[s.link_id]=byDay[s.link_id]||[]).push(s);
+    });
+    var rows=(links||[]).map(function(l){ var a=byId[l.id]||{clicks:0, joins:0}; return {id:l.id, name:l.name, url:l.target_url, clicks:a.clicks, joins:a.joins}; });
+    rows.sort(function(a, b){ return (b.clicks-a.clicks)||(b.joins-a.joins)||(a.name<b.name?-1:1); });
+    var tc=0, tj=0; rows.forEach(function(r){ tc+=r.clicks; tj+=r.joins; });
+    if (head) head.textContent=!rows.length?'No Smart Links yet — claim a name and every click through it starts counting here.'
+      :(rows.length+(rows.length===1?' link':' links')+' out in the world — '+tc+(tc===1?' click':' clicks')+' counted, '+tj+(tj===1?' join':' joins')+' attributed.');
+    if (!rows.length){ box.innerHTML=''; return; }
+    box.innerHTML=rows.map(function(r, ix){
+      var c=SPECTRUM[ix%SPECTRUM.length];
+      var host=r.url; try { host=new URL(r.url).hostname; } catch(e){}
+      var dim=dimFor(r, dims);
+      return '<div class="os-link-row os-litobj" style="--ac:'+c+'"><div class="os-link-main"><span class="os-link-name">nayanet.live/'+esc(r.name)+'</span><span class="os-link-host">'+esc(host)+'</span></div><span class="os-link-nums"><span class="os-link-num"><b data-sl-num="'+esc(r.name)+':clicks">0</b><i>clicks</i></span><span class="os-link-num"><b data-sl-num="'+esc(r.name)+':joins">0</b><i>joins</i></span></span><button class="ph-msg" type="button" data-sl-copy="'+esc(r.name)+'">Copy the link</button><button class="ph-msg" type="button" data-sl-open="'+esc(r.name)+'">Open it</button>'+(dim?'<button class="ph-msg" type="button" data-sl-dim="'+esc(r.name)+'">Breakdown</button>':'')+slGraphHTML(slDayBuckets(byDay[r.id]), c)+'</div>'+dimPanel(r, dim);
+    }).join('')+(tc>0?'<p class="os-note">Clicked &rarr; Joined: '+tc+(tc===1?' click':' clicks')+' became '+tj+(tj===1?' join':' joins')+(tj?(' — '+Math.round(tj/tc*100)+'% of clicks joined.'):' — the first join is the milestone ahead.')+'</p>':'<p class="os-note">No clicks yet — share a link and the first click lands here.</p>');
+    rows.forEach(function(r){
+      ['clicks', 'joins'].forEach(function(k){
+        var el=box.querySelector('[data-sl-num="'+r.name+':'+k+'"]');
+        var key=r.name+':'+k;
+        slCountTo(el, slPrevNums[key]||0, r[k]);
+        slPrevNums[key]=r[k];
+      });
+    });
+    box.querySelectorAll('.os-sl-graph .bar').forEach(function(bar){
+      bar.addEventListener('click', function(){
+        var g=bar.closest('.os-sl-graph'); var n=g?g.querySelector('.os-sl-graph-note'):null;
+        if (n) n.textContent=bar.getAttribute('data-note');
+      });
+    });
+    flashChange('dash-links', box, tc+'/'+tj);
+  }
+  /* — the board stays alive while the Dashboard is open: every
+     30 seconds the links trio is quietly re-read and the board
+     re-renders — the numbers move, the graphs grow, nothing else
+     on the page reloads. Same selector the quiet-refresh uses. — */
+  function loadLinksOnly(){
+    if (!sb) return;
+    var linkErr={v:false};
+    var linkP=sb.from('smart_links').select('id,name,target_url,created_at').eq('owner_alias', PAGE_ALIAS).eq('active', true).order('created_at',{ascending:true}).limit(100).then(function(r){ if (r.error) linkErr.v=true; return (r&&r.data)||[]; }, function(){ linkErr.v=true; return []; });
+    var statsP=rowsOf(sb.from('smart_link_daily_stats').select('link_id,day,clicks,joins').eq('owner_alias', PAGE_ALIAS).limit(1000));
+    var dimsP=rowsOf(sb.from('smart_link_dimension_stats').select('link_id,name,day,referrer_class,user_agent_class,country,clicks').eq('owner_alias', PAGE_ALIAS).limit(1000));
+    Promise.all([linkP, statsP, dimsP]).then(function(out){ renderLinks(out[0], out[1], linkErr.v, out[2]); });
+  }
+  setInterval(function(){
+    if (document.hidden) return;
+    if (!document.querySelector('[data-block="dashboard"].on')) return;
+    loadLinksOnly();
+  }, 30000);
+  function loadDashboard(){
+    var front=$('os-dash'); if (!front) return;
+    if (!sb){
+      var n=$('os-dash-n-posts-note'); if (n) n.textContent='Connection unavailable — this front reads live data only, so it shows nothing rather than something invented.';
+      var lh=$('os-dash-links-head'); if (lh) lh.textContent='Connection unavailable — Smart Links read live data only.';
+      return;
+    }
+    var wallP=(window.osNotesRows ? window.osNotesRows() : rowsOf(sb.from('smart_notes').select('id,content,created_at').eq('owner_alias', PAGE_ALIAS).order('created_at',{ascending:false}).limit(500)));
+    var thrP=rowsOf(sb.from('smart_mail_threads').select('id,subject,from_alias,preview,created_at').eq('to_alias', PAGE_ALIAS).order('created_at',{ascending:false}).limit(30));
+    var invP=rowsOf(sb.from('invites').select('invitee_name,status,dry_run,created_at').eq('inviter_alias', PAGE_ALIAS).order('created_at',{ascending:false}).limit(200));
+    var linkErr={v:false};
+    var linkP=sb.from('smart_links').select('id,name,target_url,created_at').eq('owner_alias', PAGE_ALIAS).eq('active', true).order('created_at',{ascending:true}).limit(100).then(function(r){ if (r.error) linkErr.v=true; return (r&&r.data)||[]; }, function(){ linkErr.v=true; return []; });
+    var statsP=rowsOf(sb.from('smart_link_daily_stats').select('link_id,day,clicks,joins').eq('owner_alias', PAGE_ALIAS).limit(1000));
+    var dimsP=rowsOf(sb.from('smart_link_dimension_stats').select('link_id,name,day,referrer_class,user_agent_class,country,clicks').eq('owner_alias', PAGE_ALIAS).limit(1000));
+    Promise.all([wallP, thrP, invP, linkP, statsP, dimsP]).then(function(out){
+      /* the loader KEEPS the note rows now (step 4): one fetch of this
+         app's smart_notes carries wall posts (the Posts series), notes
+         (the Notes series) and save records (the best-content rule) —
+         the old k==='wall' filter threw two of the three away. */
+      var allNoteRows=out[0].map(function(r){ return {id:r.id, j:parseRow(r), at:r.created_at}; });
+      var wallRows=allNoteRows.filter(function(x){ return x.j.k==='wall'; });
+      var noteRows=allNoteRows.filter(function(x){ return x.j.k==='note'; });
+      var saveRows=allNoteRows.filter(function(x){ return x.j.k==='save'; });
+      var threads=out[1], invRows=out[2];
+      var ids=threads.map(function(t){ return t.id; });
+      var msgP=ids.length?rowsOf(sb.from('smart_mail_messages').select('thread_id,from_alias,body,created_at').in('thread_id', ids).order('created_at',{ascending:true})):Promise.resolve([]);
+      msgP.then(function(msgs){
+        var byThread={};
+        msgs.forEach(function(m){ (byThread[m.thread_id]=byThread[m.thread_id]||[]).push(m); });
+        /* TRUTH PASS (step 5): "messages received" counts real rows in
+           smart_mail_messages, never threads. Direction follows the
+           timeline read model's rule exactly: a message whose
+           from_alias is the thread's to_alias (this app) was SENT by
+           the owner; every other message in the thread was received. */
+        var received=msgs.filter(function(m){ return m.from_alias!==PAGE_ALIAS; });
+        var msgTimes=received.map(function(m){ return m.created_at; }).sort(function(x, y){ return new Date(y)-new Date(x); });
+        /* waiting-for-reply (step 5): a thread waits when its latest
+           message is inbound — the same rule the timeline model's
+           acceptance query (c) proves. Oldest first. */
+        var waiting=[];
+        threads.forEach(function(t){
+          var ms=byThread[t.id]||[];
+          if (!ms.length) return;
+          var latest=ms[ms.length-1];
+          if (latest.from_alias!==PAGE_ALIAS) waiting.push({name:humanize(t.from_alias), subject:t.subject, at:latest.created_at, threadId:t.id});
+        });
+        waiting.sort(function(x, y){ return new Date(x.at)-new Date(y.at); });
+        /* best content by saves (step 6): save rows carry {ref} = the
+           saved note's row id; the most-saved note on this app's own
+           store is the fact. No saves → no claim (bestSave stays null). */
+        var saveCounts={};
+        saveRows.forEach(function(r){ if (r.j.ref) saveCounts[r.j.ref]=(saveCounts[r.j.ref]||0)+1; });
+        var bestSave=null;
+        noteRows.forEach(function(r){ var n=saveCounts[r.id]||0; if (n>0 && (!bestSave || n>bestSave.n)) bestSave={title:r.j.t||'Untitled note', n:n}; });
+        /* people, derived exactly as the Faces Board derives them */
+        var faces={};
+        function add(name, fact, at){
+          if (!name || !at) return;
+          var k=String(name).toLowerCase();
+          if (!faces[k]) faces[k]={name:name, fact:fact, at:at};
+          else if (new Date(at)>new Date(faces[k].at)) { faces[k].at=at; faces[k].fact=fact; }
+        }
+        var postCounts={};
+        wallRows.forEach(function(p){ var a=p.j.a||'Guest'; postCounts[a.toLowerCase()]=(postCounts[a.toLowerCase()]||0)+1; });
+        wallRows.forEach(function(p){ var a=p.j.a||'Guest'; var n=postCounts[a.toLowerCase()]; add(a, n+(n===1?' wall post':' wall posts'), p.at); });
+        threads.forEach(function(t){ add(humanize(t.from_alias), 'Sent a message', t.created_at); });
+        invRows.forEach(function(v){ add(v.invitee_name, 'Invited', v.created_at); });
+        var peopleList=Object.keys(faces).map(function(k){ return faces[k]; });
+        peopleList.sort(function(a,b){ return new Date(b.at)-new Date(a.at); });
+        /* "people around you" EXCLUDES the owner (one definition on every
+           surface — Phi re-audit §4): peopleList keeps every face for the
+           boards (the owner's tile renders, badged "You"); peopleAround is
+           the set every people numeral + sentence on this front speaks. */
+        var peopleAround=peopleList.filter(function(f){ return String(f.name).toLowerCase()!=='this page'; });
+        function isStatus(r, set){ return set.indexOf(String(r.status||'').toLowerCase())>=0; }
+        var postTimes=wallRows.map(function(p){ return p.at; });
+        var noteTimes=noteRows.map(function(p){ return p.at; });
+        var invTimes=invRows.map(function(v){ return v.created_at; });
+        var d={
+          posts:wallRows,
+          postTimes:postTimes,
+          noteTimes:noteTimes,
+          msgTimes:msgTimes,
+          invTimes:invTimes,
+          allTimes:postTimes.concat(noteTimes, msgTimes, invTimes),
+          invRows:invRows,
+          threads:threads,
+          msgsByThread:byThread,
+          waiting:waiting,
+          waitingCount:waiting.length,
+          bestSave:bestSave,
+          peopleList:peopleList,
+          peopleAround:peopleAround,
+          opened:invRows.filter(function(r){ return isStatus(r, ['opened','clicked','viewed']); }).length,
+          joined:invRows.filter(function(r){ return isStatus(r, ['joined','accepted','converted','member']); }).length,
+          allDry:invRows.length>0 && invRows.every(function(r){ return !!r.dry_run; })
+        };
+        renderPulse(d);
+        renderSparks(d);
+        renderWeekFront(d);
+        renderFunnelFront(invRows, out[4]);
+        renderDonutFront(d.postTimes.length, d.msgTimes.length, d.invTimes.length);
+        renderFacesFront(d);
+        renderInsights(d);
+        renderConvos(d);
+        renderHeat(d);
+        renderLinks(out[3], out[4], linkErr.v, out[5]);
+        renderPluginsNative(d);
+        dashCache=d;
+        if (!loadDashboard._wired){ loadDashboard._wired=true; wirePeriod('dash', function(pd){ dashPeriod=pd; if (dashCache) renderWeekFront(dashCache); }); wireKind('dash', function(k){ dashKind=k; if (dashCache) renderWeekFront(dashCache); }); }
+      });
+    });
+  }
+  window.osLoadDashboard = loadDashboard;
+
+  /* plug-in invitation cards: the "how it works" note is a real toggle —
+     the card promises a shape and explains it; it never fakes a connect. */
+  /* the Smart Links board's retry door: a failed read is named, never
+     dressed as an empty board — tapping re-runs the whole loader. */
+  document.addEventListener('click', function(e){
+    var rl=e.target && e.target.closest ? e.target.closest('[data-dash-retry-links]') : null;
+    if (rl) loadDashboard();
+  });
+
+  /* the breakdown toggle: the panel rides directly under its row */
+  document.addEventListener('click', function(e){
+    var b=e.target && e.target.closest ? e.target.closest('[data-sl-dim]') : null;
+    if (!b) return;
+    var row=b.closest('.os-link-row'); var p=row?row.nextElementSibling:null;
+    if (!p || !p.classList.contains('os-link-dim')) return;
+    var open=p.hasAttribute('hidden');
+    if (open) p.removeAttribute('hidden'); else p.setAttribute('hidden','');
+    b.textContent=open?'Hide breakdown':'Breakdown';
+  });
+
+  document.querySelectorAll('[data-dash-how]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p=$('os-dash-how-'+b.getAttribute('data-dash-how'));
+      if (!p) return;
+      var open=p.hasAttribute('hidden');
+      if (open) p.removeAttribute('hidden'); else p.setAttribute('hidden','');
+      b.textContent=open?'Hide how it works':'How connecting works';
+    });
+  });
+
+  /* sparklines: living lines — area fill, glowing stroke, breathing
+     head dot — from the same real per-day buckets as the Trend Panel */
+  function renderSparks(d){
+    renderSpark('os-dash-spark-posts', d.postTimes);
+    renderSpark('os-dash-spark-messages', d.msgTimes);
+    renderSpark('os-dash-spark-invites', d.invTimes);
+    renderSpark('os-dash-spark-people', d.peopleList.map(function(f){ return f.at; }));
+  }
+
+  /* HELP-SHAPE-IT (v3 harvest): a REAL door — feedback lands as a thread
+     in this page's own Smart Mail, through the same tables the Message
+     block writes. No dead buttons. */
+  var fbBtn=$('os-dash-fb-btn');
+  if (fbBtn) fbBtn.addEventListener('click', function(){
+    var inp=$('os-dash-fb-body'), st=$('os-dash-fb-status');
+    var body=inp?inp.value.trim():'';
+    if (!body){ if (st) st.textContent='Write one line first.'; return; }
+    if (!sb){ if (st) st.textContent='Connection unavailable — feedback not sent.'; return; }
+    if (st) st.textContent='Sending…';
+    sb.from('smart_mail_threads').insert({subject:'Feedback — help shape this app', from_alias:'dashboard-feedback', to_alias:PAGE_ALIAS, preview:body.slice(0, 120)}).select().single().then(function(res){
+      if (res.error){ if (st) st.textContent='Send failed: '+res.error.message; return; }
+      sb.from('smart_mail_messages').insert({thread_id:res.data.id, from_alias:'dashboard-feedback', body:body}).then(function(r2){
+        if (r2.error){ if (st) st.textContent='Send failed: '+r2.error.message; return; }
+        inp.value=''; if (st) st.textContent='Sent — it is in this app’s Smart Mail inbox, for the person who runs this app. Thank you.';
+      });
+    });
+  });
+
+  /* the app router calls osLoadDashboard when the Dashboard view opens
+     (showView hook in the page engine); boot also loads once, so the
+     front is already alive the moment the button is tapped. */
+  loadDashboard();
+})();
+</script>
