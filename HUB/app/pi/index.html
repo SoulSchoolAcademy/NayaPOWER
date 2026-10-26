@@ -6,7 +6,7 @@
 <title>Project Intelligence — NayaNET</title>
 <meta name="description" content="Project Intelligence: everything happening across NayaNET, in one place, in plain words.">
 <!--
-  PI FACE v2 — CONSENSUS-PLACEMENT REBUILD 2026-10-26 (builder, staged only).
+  PI FACE v3 — DESIGN-LAW OVERHAUL 2026-10-26 (Nitro face craft, branch only, not live).
   Base: pi-face.html (Nitro 19:31Z rendered-review pass) — its CSS tokens,
   topbar, pill, board, orb, button, room and item-row language are harvested
   verbatim; only the placement order and the room/data honesty layer are new.
@@ -21,7 +21,7 @@
   area assignments exist in the record (schema not applied; readiness
   dataset is preparation only). Proven = green, stated = blue, shown = gold.
   Notes live in this device's localStorage only (key naya.pi.notes.v2).
-  Staged copy only — not live, not scored, no live deploy, no repo push.
+  Branch copy only — not live, not scored, no live deploy. v3: jewels replace the old round markers; buttons carry a jewel and ignite in their own colour; tabs switch views (plus All); headline orbs are doors to their view; operating-code panel at top; pages cards; board links re-pointed to the live board (deep-link anchors dropped — those comments live on the retired board, a live-board URL carrying them would be a fake deep link).
 -->
 <style>
   :root{
@@ -62,7 +62,7 @@
     box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 28px rgba(0,0,0,.6);
   }
   .board-head{display:flex; align-items:flex-start; gap:12px}
-  .dot{flex:0 0 auto; width:14px; height:14px; margin-top:7px; border-radius:50%; background:var(--white); box-shadow:0 0 10px rgba(255,255,255,.55)}
+  .jewel{flex:0 0 auto; width:14px; height:14px; margin-top:7px; transform:rotate(45deg); border-radius:3px; background:var(--white); box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 0 12px rgba(255,255,255,.55)}
   .sec-label{font-size:13px; letter-spacing:.16em; font-weight:800; color:var(--paper); text-transform:uppercase}
   .readtime{font-size:14px; color:var(--paper)}
   .notice{
@@ -94,6 +94,13 @@
   }
   .btn:hover,.btn:focus-visible{transform:translateY(-2px); border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--purple); outline:none}
   .btn:active{transform:translateY(2px)}
+  .btn::before{content:"◆"; font-size:13px; line-height:1}
+  .btn:hover::before,.btn:focus-visible::before{color:var(--purple)}
+  .btn[data-ig="blue"]:hover::before,.btn[data-ig="blue"]:focus-visible::before{color:var(--blue)}
+  .btn[data-ig="green"]:hover::before,.btn[data-ig="green"]:focus-visible::before{color:var(--green)}
+  .btn[data-ig="shown"]:hover::before,.btn[data-ig="shown"]:focus-visible::before{color:var(--shown)}
+  .btn[data-ig="orange"]:hover::before,.btn[data-ig="orange"]:focus-visible::before{color:var(--orange)}
+  .btn[data-ig="red"]:hover::before,.btn[data-ig="red"]:focus-visible::before{color:var(--red)}
   .btnrow{display:flex; flex-wrap:wrap; gap:12px; margin-top:14px}
   .room{
     width:100%; text-align:left; padding:18px 20px; margin:14px 0; border:2px solid var(--white); border-radius:20px;
@@ -103,29 +110,29 @@
   }
   .room:hover,.room:focus-visible{transform:translateY(-2px); outline:none}
   .room .rname{font-size:22px; font-weight:700; color:var(--white); display:flex; align-items:center; gap:12px}
-  .room .rdot{width:14px; height:14px; border-radius:50%; background:var(--white); flex:0 0 auto; box-shadow:0 0 10px rgba(255,255,255,.55)}
+  .room .rjewel{width:14px; height:14px; transform:rotate(45deg); border-radius:3px; background:var(--white); flex:0 0 auto; box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 0 12px rgba(255,255,255,.55)}
   .room .rline{color:var(--paper); margin:6px 0 0}
   .room .rstatus{font-size:14px; color:var(--paper); margin:8px 0 0}
   .room[data-accent="magenta"]:hover{border-color:var(--magenta); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--magenta)}
-  .room[data-accent="magenta"] .rdot{background:var(--magenta); box-shadow:0 0 10px var(--magenta)}
+  .room[data-accent="magenta"] .rjewel{background:var(--magenta); box-shadow:0 0 10px var(--magenta)}
   .room[data-accent="purple"]:hover{border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--purple)}
-  .room[data-accent="purple"] .rdot{background:var(--purple); box-shadow:0 0 10px var(--purple)}
+  .room[data-accent="purple"] .rjewel{background:var(--purple); box-shadow:0 0 10px var(--purple)}
   .room[data-accent="blue"]:hover{border-color:var(--blue); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--blue)}
-  .room[data-accent="blue"] .rdot{background:var(--blue); box-shadow:0 0 10px var(--blue)}
+  .room[data-accent="blue"] .rjewel{background:var(--blue); box-shadow:0 0 10px var(--blue)}
   .room[data-accent="green"]:hover{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--green)}
-  .room[data-accent="green"] .rdot{background:var(--green); box-shadow:0 0 10px var(--green)}
+  .room[data-accent="green"] .rjewel{background:var(--green); box-shadow:0 0 10px var(--green)}
   .room[data-accent="shown"]:hover{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--shown)}
-  .room[data-accent="shown"] .rdot{background:var(--shown); box-shadow:0 0 10px var(--shown)}
+  .room[data-accent="shown"] .rjewel{background:var(--shown); box-shadow:0 0 10px var(--shown)}
   .room[data-accent="red"]:hover{border-color:var(--red); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--red)}
-  .room[data-accent="red"] .rdot{background:var(--red); box-shadow:0 0 10px var(--red)}
+  .room[data-accent="red"] .rjewel{background:var(--red); box-shadow:0 0 10px var(--red)}
   .room[data-accent="teal"]:hover{border-color:var(--teal); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--teal)}
-  .room[data-accent="teal"] .rdot{background:var(--teal); box-shadow:0 0 10px var(--teal)}
+  .room[data-accent="teal"] .rjewel{background:var(--teal); box-shadow:0 0 10px var(--teal)}
   .room[data-accent="indigo"]:hover{border-color:var(--indigo); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--indigo)}
-  .room[data-accent="indigo"] .rdot{background:var(--indigo); box-shadow:0 0 10px var(--indigo)}
+  .room[data-accent="indigo"] .rjewel{background:var(--indigo); box-shadow:0 0 10px var(--indigo)}
   .room[data-accent="lime"]:hover{border-color:var(--lime); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--lime)}
-  .room[data-accent="lime"] .rdot{background:var(--lime); box-shadow:0 0 10px var(--lime)}
+  .room[data-accent="lime"] .rjewel{background:var(--lime); box-shadow:0 0 10px var(--lime)}
   .room[data-accent="orange"]:hover{border-color:var(--orange); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--orange)}
-  .room[data-accent="orange"] .rdot{background:var(--orange); box-shadow:0 0 10px var(--orange)}
+  .room[data-accent="orange"] .rjewel{background:var(--orange); box-shadow:0 0 10px var(--orange)}
   .well{
     width:100%; min-height:52px; padding:12px 18px; border:2px solid rgba(255,255,255,.55); border-radius:14px;
     background:linear-gradient(180deg,#020203,#050507); color:var(--white); font:inherit; font-size:16px;
@@ -174,14 +181,14 @@
   }
   .tab:hover,.tab:focus-visible{border-color:var(--white); outline:none}
   .tab[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--white), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5)}
-  .tab .tdot{width:10px; height:10px; border-radius:50%; background:var(--white); flex:0 0 auto}
+  .tab .tjewel{width:10px; height:10px; transform:rotate(45deg); border-radius:2px; background:var(--white); flex:0 0 auto; box-shadow:0 0 8px rgba(255,255,255,.55)}
   .block{scroll-margin-top:96px}
-  .block .dot.purple{background:var(--purple); box-shadow:0 0 10px var(--purple)}
-  .block .dot.blue{background:var(--blue); box-shadow:0 0 10px var(--blue)}
-  .block .dot.green{background:var(--green); box-shadow:0 0 10px var(--green)}
-  .block .dot.shown{background:var(--shown); box-shadow:0 0 10px var(--shown)}
-  .block .dot.orange{background:var(--orange); box-shadow:0 0 10px var(--orange)}
-  .block .dot.red{background:var(--red); box-shadow:0 0 10px var(--red)}
+  .block .jewel.purple{background:var(--purple); box-shadow:0 0 10px var(--purple)}
+  .block .jewel.blue{background:var(--blue); box-shadow:0 0 10px var(--blue)}
+  .block .jewel.green{background:var(--green); box-shadow:0 0 10px var(--green)}
+  .block .jewel.shown{background:var(--shown); box-shadow:0 0 10px var(--shown)}
+  .block .jewel.orange{background:var(--orange); box-shadow:0 0 10px var(--orange)}
+  .block .jewel.red{background:var(--red); box-shadow:0 0 10px var(--red)}
   .btn[data-ig="blue"]:hover,.btn[data-ig="blue"]:focus-visible{border-color:var(--blue); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--blue)}
   .btn[data-ig="green"]:hover,.btn[data-ig="green"]:focus-visible{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--green)}
   .btn[data-ig="shown"]:hover,.btn[data-ig="shown"]:focus-visible{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--shown)}
@@ -208,6 +215,31 @@
   details.door summary{cursor:pointer; font-weight:700; font-size:15px; color:var(--white)}
   details.door summary::-webkit-details-marker{color:var(--paper)}
   .feedtime{font-size:13px; color:var(--paper)}
+  .tab[data-tone="purple"]:hover,.tab[data-tone="purple"]:focus-visible{border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--purple)}
+  .tab[data-tone="purple"][aria-pressed="true"]{border-color:var(--purple); box-shadow:inset 0 -3px 0 var(--purple), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--purple)}
+  .tab[data-tone="blue"]:hover,.tab[data-tone="blue"]:focus-visible{border-color:var(--blue); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--blue)}
+  .tab[data-tone="blue"][aria-pressed="true"]{border-color:var(--blue); box-shadow:inset 0 -3px 0 var(--blue), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--blue)}
+  .tab[data-tone="green"]:hover,.tab[data-tone="green"]:focus-visible{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--green)}
+  .tab[data-tone="green"][aria-pressed="true"]{border-color:var(--green); box-shadow:inset 0 -3px 0 var(--green), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--green)}
+  .tab[data-tone="shown"]:hover,.tab[data-tone="shown"]:focus-visible{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--shown)}
+  .tab[data-tone="shown"][aria-pressed="true"]{border-color:var(--shown); box-shadow:inset 0 -3px 0 var(--shown), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--shown)}
+  .tab[data-tone="orange"]:hover,.tab[data-tone="orange"]:focus-visible{border-color:var(--orange); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--orange)}
+  .tab[data-tone="orange"][aria-pressed="true"]{border-color:var(--orange); box-shadow:inset 0 -3px 0 var(--orange), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--orange)}
+  .tab[data-tone="red"]:hover,.tab[data-tone="red"]:focus-visible{border-color:var(--red); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--red)}
+  .tab[data-tone="red"][aria-pressed="true"]{border-color:var(--red); box-shadow:inset 0 -3px 0 var(--red), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--red)}
+  .tab[data-tone="magenta"]:hover,.tab[data-tone="magenta"]:focus-visible{border-color:var(--magenta); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--magenta)}
+  .tab[data-tone="magenta"][aria-pressed="true"]{border-color:var(--magenta); box-shadow:inset 0 -3px 0 var(--magenta), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--magenta)}
+  .tab[data-tone="teal"]:hover,.tab[data-tone="teal"]:focus-visible{border-color:var(--teal); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--teal)}
+  .tab[data-tone="teal"][aria-pressed="true"]{border-color:var(--teal); box-shadow:inset 0 -3px 0 var(--teal), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--teal)}
+  .orbdoor{background:none; border:none; padding:0; margin:0 auto; display:block; cursor:pointer}
+  .orbdoor:focus-visible{outline:3px solid var(--white); outline-offset:4px; border-radius:50%}
+  .orbdoor:hover .orb{transform:translateY(-2px)}
+  .pagecard{display:block; width:100%; text-align:left; padding:16px 18px; margin:12px 0; border:2px solid rgba(255,255,255,.55); border-radius:20px; background:linear-gradient(180deg,#050507,#020203); color:var(--white); font:inherit; cursor:pointer; box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5)}
+  .pagecard:hover,.pagecard:focus-visible{border-color:var(--magenta); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--magenta); outline:none}
+  .pagecard-name{display:block; font-weight:700; font-size:18px}
+  .pagecard-num{display:block; font-size:28px; font-weight:900; margin-top:4px}
+  .pagecard-sub{display:block; font-size:14px; color:var(--paper); margin-top:2px}
+  .pagecard-open{display:block; font-size:14px; font-weight:700; margin-top:8px}
 </style>
 </head>
 <body>
@@ -227,20 +259,38 @@
   <div id="failBanner" class="notice bad hidden" role="alert"></div>
   <p class="readtime" id="readTimeLine">Waiting for the record…</p>
 
-  <nav class="tabrow" aria-label="Jump to a block">
-    <button class="tab" type="button" data-goto="block-health" aria-pressed="true"><span class="tdot" style="background:var(--purple)"></span>Health</button>
-    <button class="tab" type="button" data-goto="block-todo" aria-pressed="false"><span class="tdot" style="background:var(--blue)"></span>To-do</button>
-    <button class="tab" type="button" data-goto="block-stuck" aria-pressed="false"><span class="tdot" style="background:var(--green)"></span>Stuck</button>
-    <button class="tab" type="button" data-goto="block-movement" aria-pressed="false"><span class="tdot" style="background:var(--shown)"></span>Movement</button>
-    <button class="tab" type="button" data-goto="block-rooms" aria-pressed="false"><span class="tdot" style="background:var(--orange)"></span>Rooms</button>
-    <button class="tab" type="button" data-goto="block-done" aria-pressed="false"><span class="tdot" style="background:var(--red)"></span>Done</button>
-    <button class="tab" type="button" data-goto="block-notes" aria-pressed="false"><span class="tdot"></span>Notes</button>
+  <nav class="tabrow" aria-label="Switch view">
+    <button class="tab" type="button" data-goto="block-health" data-tone="purple" aria-pressed="true"><span class="tjewel" style="background:var(--purple)"></span>Health</button>
+    <button class="tab" type="button" data-goto="block-todo" data-tone="blue" aria-pressed="false"><span class="tjewel" style="background:var(--blue)"></span>To-do</button>
+    <button class="tab" type="button" data-goto="block-stuck" data-tone="green" aria-pressed="false"><span class="tjewel" style="background:var(--green)"></span>Stuck</button>
+    <button class="tab" type="button" data-goto="block-movement" data-tone="shown" aria-pressed="false"><span class="tjewel" style="background:var(--shown)"></span>Movement</button>
+    <button class="tab" type="button" data-goto="block-rooms" data-tone="orange" aria-pressed="false"><span class="tjewel" style="background:var(--orange)"></span>Rooms</button>
+    <button class="tab" type="button" data-goto="block-done" data-tone="red" aria-pressed="false"><span class="tjewel" style="background:var(--red)"></span>Done</button>
+    <button class="tab" type="button" data-goto="block-notes" data-tone="teal" aria-pressed="false"><span class="tjewel" style="background:var(--teal)"></span>Notes</button>
+    <button class="tab" type="button" data-goto="block-pages" data-tone="magenta" aria-pressed="false"><span class="tjewel" style="background:var(--magenta)"></span>Pages</button>
+    <button class="tab" type="button" data-goto="all" data-tone="white" aria-pressed="false"><span class="tjewel" style="background:var(--white)"></span>All views</button>
   </nav>
 
   <div class="placeblocks">
+  <section class="board" id="block-code" aria-label="The operating code">
+    <div class="board-head"><span class="jewel purple"></span><div>
+      <div class="sec-label">The operating code</div>
+      <h2>How this system works, in seven steps</h2>
+    </div></div>
+    <p>Plain words, no jargon. Every seat follows the same code:</p>
+    <ol>
+      <li>See what is real.</li>
+      <li>Think it through.</li>
+      <li>List the real choices.</li>
+      <li>Score them — seven questions, best wins.</li>
+      <li>Act on the best choice.</li>
+      <li>Prove it with receipts.</li>
+      <li>Report it plainly, with a link.</li>
+    </ol>
+  </section>
   <!-- 1 · % DONE — first and biggest -->
   <section class="board block" id="block-health" aria-label="How much is done">
-    <div class="board-head"><span class="dot purple"></span><div>
+    <div class="board-head"><span class="jewel purple"></span><div>
       <div class="sec-label">1 · How much is done</div>
       <h2>How much is done</h2>
     </div></div>
@@ -253,7 +303,7 @@
     <div class="darkbox" id="healthDark"></div>
     <p class="ai-only" id="healthAi"></p>
     <div class="board" style="margin:16px 0 0">
-      <div class="board-head"><span class="dot"></span><div>
+      <div class="board-head"><span class="jewel"></span><div>
         <div class="sec-label">Road to 10</div>
         <h3>Where this face stands</h3>
       </div></div>
@@ -264,7 +314,7 @@
 
   <!-- 2 · MASTER TO-DO -->
   <section class="board block" id="block-todo" aria-label="Master to-do">
-    <div class="board-head"><span class="dot blue"></span><div>
+    <div class="board-head"><span class="jewel blue"></span><div>
       <div class="sec-label">2 · Master to-do</div>
       <h2>What needs doing, in priority order</h2>
     </div></div>
@@ -272,26 +322,26 @@
     <p class="dark">Order, computed in spirit and kept by hand until the automatic order is built: Shawn's order first, then what blocks the most other work, then value, then age. The automatic version is designed, not built — so this list is kept by hand, honestly, until then.</p>
     <div id="masterList"></div>
     <div class="btnrow">
-      <a class="btn" data-ig="blue" href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Open the team board</a>
+      <a class="btn" data-ig="blue" href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a>
     </div>
   </section>
 
   <!-- 3 · WHAT'S STUCK -->
   <section class="board block" id="block-stuck" aria-label="What is stuck">
-    <div class="board-head"><span class="dot green"></span><div>
+    <div class="board-head"><span class="jewel green"></span><div>
       <div class="sec-label">3 · What is stuck</div>
       <h2>What is stuck, and whose hands it needs</h2>
     </div></div>
     <p>What this means: stuck needs a human and done does not — so stuck sits above done and never hides inside the to-do counts. What to do about it: clear the blocker named on each row, or carry its packet to the hands it names.</p>
     <div id="stuckList"></div>
     <div class="btnrow">
-      <a class="btn" data-ig="green" href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Open the team board</a>
+      <a class="btn" data-ig="green" href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a>
     </div>
   </section>
 
   <!-- 4 · MOVEMENT -->
   <section class="board block" id="block-movement" aria-label="Movement">
-    <div class="board-head"><span class="dot shown"></span><div>
+    <div class="board-head"><span class="jewel shown"></span><div>
       <div class="sec-label">4 · Movement</div>
       <h2>What moved lately — proof the system is alive</h2>
     </div></div>
@@ -303,7 +353,7 @@
 
   <!-- 5 · THE 12 ROOMS -->
   <section class="board block" id="block-rooms" aria-label="The twelve rooms">
-    <div class="board-head"><span class="dot orange"></span><div>
+    <div class="board-head"><span class="jewel orange"></span><div>
       <div class="sec-label">5 · The twelve rooms</div>
       <h2>Twelve rooms — tap one to open it</h2>
     </div></div>
@@ -314,8 +364,16 @@
   </section>
 
   <!-- 6 · DONE WITH RECEIPTS -->
+  <section class="board block" id="block-pages" aria-label="Pages">
+    <div class="board-head"><span class="jewel magenta"></span><div>
+      <div class="sec-label">Pages</div>
+      <h2>Every view, on its own card</h2>
+    </div></div>
+    <p>Tap a card to open that view. A percent is shown only where the record carries it; the rest show live counts, never a guessed percent.</p>
+    <div id="pagesList"></div>
+  </section>
   <section class="board block" id="block-done" aria-label="Done with receipts">
-    <div class="board-head"><span class="dot red"></span><div>
+    <div class="board-head"><span class="jewel red"></span><div>
       <div class="sec-label">6 · Done with receipts</div>
       <h2>Done, with the proof attached</h2>
     </div></div>
@@ -333,7 +391,7 @@
 
   <!-- NOTES -->
   <section class="board block" id="block-notes" aria-label="Notes">
-    <div class="board-head"><span class="dot"></span><div>
+    <div class="board-head"><span class="jewel"></span><div>
       <div class="sec-label">Notes on anything</div>
       <h2>Make a note of this</h2>
     </div></div>
@@ -349,15 +407,15 @@
   </section>
 
   <section class="board block" aria-label="Go to it">
-    <div class="board-head"><span class="dot"></span><div>
+    <div class="board-head"><span class="jewel"></span><div>
       <div class="sec-label">Go to it</div>
       <h2>Every link works, or it is not here</h2>
     </div></div>
     <ul class="linklist">
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Open the team board</a> — where seats coordinate, in the open.</li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6426890671">Open the build package for this face</a> — Power's full package, PI note 51.</li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6426876643">Open the wiring record</a> — Power's wiring pass, PI note 50.</li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6426671735">Open the communication record</a> — the communication law, PI note 49.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a> — where seats coordinate, in the open.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the build package for this face</a> — Power's full package, PI note 51.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the wiring record</a> — Power's wiring pass, PI note 50.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the communication record</a> — the communication law, PI note 49.</li>
       <li><a href="https://nayanet.live/">Open the Hub home</a> — the front door of the whole world.</li>
     </ul>
     <p class="dark">A dead link is a defect, not a placeholder. If a link above ever fails, that is a bug to fix, not a gap to live with.</p>
@@ -365,7 +423,7 @@
   </div><!-- /placeblocks -->
 
   <section class="board hidden" id="machinePanel" aria-label="Machine view">
-    <div class="board-head"><span class="dot"></span><div>
+    <div class="board-head"><span class="jewel"></span><div>
       <div class="sec-label">Machine — one tap behind the door</div>
       <h2>The record, raw</h2>
     </div></div>
@@ -442,7 +500,7 @@
     var prov = room.provisional ? '<p class="dark">Colour provisional: ' + esc(room.provisional) + ' — shown as a reuse, never as a distinct room colour, until the contract is amended or a non-adjacent-reuse ruling lands.</p>' : "";
     var streams = room.workstreams.map(function (w) { return "<li>" + esc(w) + "</li>"; }).join("");
     d.innerHTML =
-      '<div class="board-head"><span class="dot" style="background:var(--' + esc(room.accent) + ')"></span><div>' +
+      '<div class="board-head"><span class="jewel" style="background:var(--' + esc(room.accent) + ')"></span><div>' +
       '<div class="sec-label">Room · ' + esc(room.key) + '</div><h2>' + esc(room.name) + '</h2></div></div>' +
       '<p>' + esc(room.why) + '</p>' +
       '<p class="dark">Seat for this room (proposed, not confirmed): ' + esc(room.seat) + '. Per-room engine and page scores are DARK — no probe evidence rows exist for this room\'s functions yet, so no score is shown rather than a guessed one.</p>' +
@@ -461,8 +519,8 @@
       '<div class="btnrow"><button class="btn" id="roomNoteSave" type="button">Save this room note</button>' +
       '<button class="btn" id="roomClose" type="button">Close this room</button></div>' +
       '<h3>Links</h3><ul class="linklist">' +
-      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793">Open the team board</a></li>' +
-      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6426890671">Open the build package for this face</a></li></ul>' +
+      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a></li>' +
+      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the build package for this face</a></li></ul>' +
       '<h3>Still needed in this room</h3>' +
       '<p><strong>Interface side:</strong> <span class="dark">Not measured yet — per-page still-needed lists need the room\'s page list from the live record.</span></p>' +
       '<p><strong>Functionality side:</strong> <span class="dark">Not measured yet — same reason. Words pending for the finished per-page lists.</span></p>';
@@ -492,14 +550,14 @@
     el("headlineLine").textContent = r.done_proven + " of " + r.total + " real jobs proven done. Rows read " +
       rows.done_proven + " of " + rows.total + " — rows count the same job twice where it was inserted twice, so the real number rules.";
     el("healthNums").innerHTML =
-      '<div class="num"><div class="orb proven big">' + esc(pct(r.done_proven, r.total)) + '</div><div class="num-label">Real jobs done</div><div class="num-sub">' + r.done_proven + " of " + r.total + " real jobs · deduped by job, never by row</div></div>" +
-      '<div class="num"><div class="orb">' + esc(pct(rows.done_proven, rows.total)) + '</div><div class="num-label">Rows done</div><div class="num-sub">' + rows.done_proven + " of " + rows.total + " rows · includes twin rows</div></div>" +
-      '<div class="num"><div class="orb">' + esc(pct(main.done_proven, main.total)) + '</div><div class="num-label">Main bucket only</div><div class="num-sub">' + main.done_proven + " of " + main.total + " rows · FILTERED view, never the whole record</div></div>" +
-      '<div class="num"><div class="orb">' + num(r.queued) + '</div><div class="num-label">Waiting</div><div class="num-sub">Real jobs waiting to start</div></div>' +
-      '<div class="num"><div class="orb">' + num(r.in_progress) + '</div><div class="num-label">In motion</div><div class="num-sub">Real jobs being worked</div></div>' +
-      '<div class="num"><div class="orb">' + num(r.verifying) + '</div><div class="num-label">Being checked</div><div class="num-sub">Real jobs awaiting proof</div></div>' +
-      '<div class="num"><div class="orb">' + num(r.needs_shawn) + '</div><div class="num-label">Need Shawn\'s hands</div><div class="num-sub">Real jobs gated on his tap</div></div>' +
-      '<div class="num"><div class="orb">' + num(r.blocked) + '</div><div class="num-label">Blocked</div><div class="num-sub">Real jobs that cannot move</div></div>';
+      '<div class="num"><button class="orbdoor" type="button" data-view="block-done" aria-label="Open the done view"><div class="orb proven big">' + esc(pct(r.done_proven, r.total)) + '</div></button><div class="num-label">Real jobs done</div><div class="num-sub">' + r.done_proven + " of " + r.total + " real jobs · deduped by job, never by row</div></div>" +
+      '<div class="num"><button class="orbdoor" type="button" data-view="block-done" aria-label="Open the done view"><div class="orb">' + esc(pct(rows.done_proven, rows.total)) + '</div></button><div class="num-label">Rows done</div><div class="num-sub">' + rows.done_proven + " of " + rows.total + " rows · includes twin rows</div></div>" +
+      '<div class="num"><button class="orbdoor" type="button" data-view="block-done" aria-label="Open the done view"><div class="orb">' + esc(pct(main.done_proven, main.total)) + '</div></button><div class="num-label">Main bucket only</div><div class="num-sub">' + main.done_proven + " of " + main.total + " rows · FILTERED view, never the whole record</div></div>" +
+      '<div class="num"><button class="orbdoor" type="button" data-view="block-todo" aria-label="Open the to-do view"><div class="orb">' + num(r.queued) + '</div></button><div class="num-label">Waiting</div><div class="num-sub">Real jobs waiting to start</div></div>' +
+      '<div class="num"><button class="orbdoor" type="button" data-view="block-todo" aria-label="Open the to-do view"><div class="orb">' + num(r.in_progress) + '</div></button><div class="num-label">In motion</div><div class="num-sub">Real jobs being worked</div></div>' +
+      '<div class="num"><button class="orbdoor" type="button" data-view="block-todo" aria-label="Open the to-do view"><div class="orb">' + num(r.verifying) + '</div></button><div class="num-label">Being checked</div><div class="num-sub">Real jobs awaiting proof</div></div>' +
+      '<div class="num"><button class="orbdoor" type="button" data-view="block-stuck" aria-label="Open the stuck view"><div class="orb">' + num(r.needs_shawn) + '</div></button><div class="num-label">Need Shawn\'s hands</div><div class="num-sub">Real jobs gated on his tap</div></div>' +
+      '<div class="num"><button class="orbdoor" type="button" data-view="block-stuck" aria-label="Open the stuck view"><div class="orb">' + num(r.blocked) + '</div></button><div class="num-label">Blocked</div><div class="num-sub">Real jobs that cannot move</div></div>';
     el("healthDark").innerHTML =
       '<strong>DARK, with reasons — never guessed:</strong> Parts at 9 or above — no scorecard-records register exists yet. ' +
       'Today\'s verified-outcome ratio — no verified-outcome count for the day exists yet. ' +
@@ -536,7 +594,7 @@
 
     var roomsHtml = data.rooms.map(function (rm) {
       return '<button class="room" type="button" data-room="' + escAttr(rm.key) + '" data-accent="' + escAttr(rm.accent) + '">' +
-        '<span class="rname"><span class="rdot"></span>' + esc(rm.name) + '</span>' +
+        '<span class="rname"><span class="rjewel"></span>' + esc(rm.name) + '</span>' +
         '<span class="rline">' + esc(rm.why) + '</span>' +
         '<span class="rstatus">Seat (proposed): ' + esc(rm.seat) + ' · <span class="dark">Engine: DARK · Page: DARK — no probe evidence yet</span>' +
         (rm.provisional ? ' · Colour provisional: ' + esc(rm.provisional) : '') + '</span></button>';
@@ -566,6 +624,17 @@
       "those percents are never presented as live. Waste rows in the main bucket: " + data.waste.main_bucket +
       ", all waiting, set aside before any area count. Ownerless: " + data.owners.ownerless_real + " real jobs.";
 
+    el("pagesList").innerHTML = [
+      {view: "block-health", name: "How much is done", num: pct(r.done_proven, r.total), sub: r.done_proven + " of " + r.total + " real jobs proven done"},
+      {view: "block-todo", name: "What needs doing", num: data.master_todo.length, sub: "Master to-do items, in priority order"},
+      {view: "block-stuck", name: "What is stuck", num: data.named_blockers.length, sub: "Named blockers, with owners"},
+      {view: "block-movement", name: "What moved lately", num: data.movement.length, sub: "Movement entries, newest first"},
+      {view: "block-rooms", name: "Twelve rooms", num: data.rooms.length, sub: "Rooms, each with its own card"},
+      {view: "block-done", name: "Done, with proof", num: r.done_proven, sub: "Real jobs proven done"},
+      {view: "block-notes", name: "Notes", num: loadNotes().length, sub: "Notes on this device only — notes to the record arrive with the data layer"}
+    ].map(function (p) {
+      return '<button class="pagecard" type="button" data-page="' + escAttr(p.view) + '"><span class="pagecard-name">' + esc(p.name) + '</span><span class="pagecard-num">' + esc(String(p.num)) + '</span><span class="pagecard-sub">' + esc(p.sub) + '</span><span class="pagecard-open">Open this view →</span></button>';
+    }).join("");
     el("doneList").innerHTML =
       '<div class="nums">' +
       '<div class="num"><div class="orb proven">' + num(r.done_proven) + '</div><div class="num-label">Real jobs proven</div><div class="num-sub">Maker is never the prover</div></div>' +
@@ -605,6 +674,7 @@
     el("ledgerBox").innerHTML = "<strong>Ledger:</strong> unknown right now — the read failed, so no ledger state is claimed.";
     el("roomList").innerHTML = '<p class="dark">Rooms cannot open without the record.</p>';
     el("uncatBox").innerHTML = "<strong>Not placed in a room yet:</strong> unknown right now — the read failed.";
+    el("pagesList").innerHTML = '<p class="dark">Pages cannot be counted without the record.</p>';
     el("doneList").innerHTML = '<p class="dark">Done cannot be counted without the record.</p>';
     el("machineRaw").textContent = "Record read failed at " + now.toISOString() + ".";
   }
@@ -630,14 +700,29 @@
   el("refreshBtn").addEventListener("click", load);
 
   var tabs = document.querySelectorAll(".tab");
+  function showView(id) {
+    var blocks = document.querySelectorAll("section.block[id]");
+    for (var k = 0; k < blocks.length; k++) {
+      if (id === "all" || blocks[k].id === id) { blocks[k].classList.remove("hidden"); }
+      else { blocks[k].classList.add("hidden"); }
+    }
+    for (var j = 0; j < tabs.length; j++) { tabs[j].setAttribute("aria-pressed", tabs[j].getAttribute("data-goto") === id ? "true" : "false"); }
+    window.scrollTo(0, 0);
+  }
   for (var i = 0; i < tabs.length; i++) {
     tabs[i].addEventListener("click", function (ev) {
-      var target = document.getElementById(ev.currentTarget.getAttribute("data-goto"));
-      for (var j = 0; j < tabs.length; j++) { tabs[j].setAttribute("aria-pressed", "false"); }
-      ev.currentTarget.setAttribute("aria-pressed", "true");
-      if (target) { target.scrollIntoView({behavior: "smooth", block: "start"}); }
+      showView(ev.currentTarget.getAttribute("data-goto"));
     });
   }
+  el("healthNums").addEventListener("click", function (ev) {
+    var b = ev.target.closest ? ev.target.closest(".orbdoor") : null;
+    if (b) { showView(b.getAttribute("data-view")); }
+  });
+  el("pagesList").addEventListener("click", function (ev) {
+    var b = ev.target.closest ? ev.target.closest("[data-page]") : null;
+    if (b) { showView(b.getAttribute("data-page")); }
+  });
+  showView("block-health");
 
   el("noteSaveBtn").addEventListener("click", function () {
     var t = el("noteText").value.trim();
