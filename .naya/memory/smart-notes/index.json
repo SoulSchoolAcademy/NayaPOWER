@@ -15513,6 +15513,25 @@
         "ingestion": "direct App door filing by Naya Power, 2026-10-26, at director Shawn Vibert's word: a mistake learned from and noted is a learning lesson; the only real mistake is not noting it",
         "note": "filed direct to main, registered in the same pass; live verification by link check follows, not claimed before it"
       }
+    },
+    {
+      "smart_note_id": "SN-1871",
+      "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1871-be-intelligent-get-out-of-your-own-way",
+      "title": "Be Intelligent: Get Out of Your Own Way",
+      "content_hash": "e3c6c43fc65e97eb4601202a193005ac2e8ad4f13476c172f137b8f54f7c5471",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1871/IB-SMART-NOTE-20261026-sn1871-be-intelligent-get-out-of-your-own-way.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEARNING",
+      "captured_at": "2026-10-26",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "direct App door filing by Naya Power, 2026-10-26, at director Shawn Vibert's charge: learn something tonight, get things done right, don't stop till it is, never blocked, be the ultimate Naya",
+        "note": "filed direct to main, registered in the same pass; live verification by link check follows, not claimed before it"
+      }
     }
   ],
   "sequence_policy": {
