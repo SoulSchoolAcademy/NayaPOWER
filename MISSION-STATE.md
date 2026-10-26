@@ -1,5 +1,5 @@
 # MISSION-STATE — canonical mission state
-> Generated 2026-10-26 05:23 UTC · tip `bede189e9e64` · This is the current truth. Any Naya landing here knows where to go.
+> Generated 2026-10-26 06:23 UTC · tip `922fa36a6029` · This is the current truth. Any Naya landing here knows where to go.
 > 🤝 Activate first: [the Naya Oath](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge). No work begins unactivated.
 
 ## MANUAL — READ BEFORE YOUR SHIFT
@@ -7,7 +7,7 @@
 - Sign-in MUST carry `MANUAL-READ: <source> <version/hash> §0 <UTC>`. No receipt → no dispatch.
 
 ## TIP
-- Main tip: `bede189e9e64` (ref-anchored, same-step verified)
+- Main tip: `922fa36a6029` (ref-anchored, same-step verified)
 
 ## PRIORITIES (FLOW LIKE WATER)
 1. Prove learning: #1602/#1741, retrieval B-48/B-49/B-51, cold exam ≥95.
@@ -26,5 +26,5 @@
 - none — supervisor will dispatch (Naya Judge, Naya Auditor, Naya Builder)
 
 ## VENUE
-- Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793 (live board since 2026-10-20; #2765/#2721/#2641/#2537 retired)
+- Team venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066 (live board since 2026-10-25; #2793/#2765/#2721/#2641/#2537 retired)
 - Laws: ~/AGENTS.md (L1–L289+) · Roster: naya-roster.json

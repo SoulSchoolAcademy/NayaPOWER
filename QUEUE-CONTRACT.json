@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T05:24:25Z",
-  "tip": "bede189e9e64c71b9fbfa69415d9ea235c5ae470",
+  "generated_at": "2026-10-26T06:24:26Z",
+  "tip": "922fa36a6029de40a71af71429400db61254ab35",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "09e81c2fe75eb6ca6e1cad2800d4725c4be2815b"
+      "head": "75a0c8d9f9057f9cf7a57d807327fdd4f01ecf6e"
     },
     {
       "number": 3052,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "8c82e230dd58f65c483da40fe66569d1152cd70a"
+      "head": "ba76a697d0bae0d070e93d0c952355e1d53e0d11"
     },
     {
       "number": 3082,
@@ -29,6 +29,24 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "effbbfe6feea316207160911c182183478698a91"
+    },
+    {
+      "number": 3085,
+      "title": "Re-point mission-state consumers to live/mission-state (Option C snapshot retired)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "5cef1b836fcfac39ff24049372bd2ad360b8b259"
+    },
+    {
+      "number": 3086,
+      "title": "fix(activation): re-point stale venue pointers #2793 -> #3066 in BRAIN/00-ACTIVATION",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, test; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "3ec8efc7c343d5e54ee6a5fdf2b756e488bd9b7d"
     }
   ]
 }

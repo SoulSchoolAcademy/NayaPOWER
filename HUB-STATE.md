@@ -1,12 +1,12 @@
 # 🐝 HUB-STATE — The Living Hub
-> Generated 2026-10-26 05:23 UTC · tip `bede189e9e64` · This is the current truth. Any Naya landing here knows everything.
+> Generated 2026-10-26 06:23 UTC · tip `922fa36a6029` · This is the current truth. Any Naya landing here knows everything.
 
 ## IN A NUTSHELL
 Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionable** missions and **0 awaiting triage**. The hive distills every lesson, hourly.
 
 ## WHAT'S HAPPENING NOW
 - Active wave: **none — supervisor will dispatch** (Naya Judge, Naya Auditor, Naya Builder)
-- Main tip: `bede189e9e64`
+- Main tip: `922fa36a6029`
 - Queue: 0 actionable · 0 proposed
 
 ## WHAT MATTERS MOST
@@ -37,7 +37,7 @@ Team Naya's 12 named bees cycle 3-at-a-time, 24/7. The queue holds **0 actionabl
 - 🤝 Oath: [the Naya Oath + Manifesto + Code](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2534/files) — who she is, how she operates, her dos and don'ts (repo-canonical at `BRAIN/01-GOVERNANCE/0021-0023` on merge; no work begins unactivated)
 - Laws: `~/AGENTS.md` (L1–L248+) · Manifesto V2: PR #2474 (proposed)
 - Queue: `bottleneck-queue.md` · Roster: `naya-roster.json`
-- Venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793 (live board since 2026-10-20; #2765/#2721/#2641/#2537 retired)
+- Venue: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066 (live board since 2026-10-25; #2793/#2765/#2721/#2641/#2537 retired)
 - Repo: https://github.com/SoulSchoolAcademy/NayaPOWER
 
 ---
