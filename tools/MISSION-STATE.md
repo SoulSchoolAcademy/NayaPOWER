@@ -3,6 +3,14 @@
 **What this is.** `BRAIN/CURRENT-MISSION-STATE.md` is the canonical mission
 snapshot — prose, hand-refreshed by the director pass ("Snapshot refresh"
 commits, ~30 min cadence; there is no code builder behind it).
+
+> **SUPERSEDED (2026-10-26, board comment 6409001863).** The Option C
+> snapshot described in this document is RETIRED as the canonical mission
+> state, and the director-pass refresh role named here no longer operates.
+> The one canonical mission state is branch `live/mission-state`:
+> `STATE-CORE.json` (state-core tick, ~15 min) and `MISSION-STATE.md` /
+> `HUB-STATE.md` (hub refresh, hourly). This document and the twin builder
+> remain as the retired snapshot's design record.
 `tools/build_mission_state.py` emits its machine-readable twin,
 `BRAIN/MISSION-STATE.json` (schema: `tools/mission_state.schema.json`,
 `$id: naya.mission-state/1`), deriving every fact in one run from the same
@@ -60,7 +68,10 @@ both are other lanes' single-writer surfaces (L16: no duplicate
 publishers), so this PR ships the tool + the first twin and names the
 adoptions rather than seizing them:
 
-1. **Director pass (owner of the .md).** After each snapshot refresh
+1. **Director pass (owner of the .md).** *(Superseded 2026-10-26 — see
+   the note at the top of this file: the director-pass snapshot refresh
+   is retired and this adoption step no longer applies.)* After each
+   snapshot refresh
    commit, run `python3 tools/build_mission_state.py emit` and land the
    regenerated `BRAIN/MISSION-STATE.json` in the same commit. Until the
    director adopts this step, the drift check failing on a refreshed .md
