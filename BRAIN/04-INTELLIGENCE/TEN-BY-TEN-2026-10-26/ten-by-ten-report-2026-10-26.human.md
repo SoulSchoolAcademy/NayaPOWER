@@ -137,4 +137,12 @@
 
 ---
 
+---
+
+## CORRECTIONS — appended 2026-10-26 ~02:45Z (from the PR #3075 evidence pack; the record corrects itself)
+
+1. **The "404 pieces" figure was wrong — mine included.** No artifact carries 404 as a piece count. Counted at the exact head: the moved inventory holds **155 pieces**, all 155 pre-existing in the canon index on main, which declares a **571-piece union (413 retired)**. Every place this report or the toolkit said "404 parts" should read 155/571 as above. (The number survives in the record only as this correction.)
+2. **PR #3075 has MERGED** (2026-10-26 02:24:29Z, head `a2eda7d2bb`, zero reviews) — recorded as **breach #47** in the form ledger. The Factory material is on main, current to SN-1869 — and it landed as a **second factory authority** beside the pre-existing `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/`, against the no-duplicate-mechanisms law. Resolve's retro-scorecard (substance **5.5/10**, form breach standing) is on board #3066; the reconciliation (one canon home, the 3 PR-only models carried over, twin generators and the three service-worker variants reconciled) is filed in PI as `factory-single-authority-reconcile-20261026`.
+3. Hole #5 above is therefore reworded by events: the shop is no longer on one person's machine — there are now **two shops**, which is the same disease in a new shape. The cure is the reconciliation, not another move.
+
 *Evidence base: the 2026-10-26 page audit (32 pages probed live), PI read-backs of tonight's 22 items, the Oct 25 value-density census (554:1), kernel state at 78d9c9d0 (CI green; Current Truth Resolver residual open), the breach ledger (#39–#46), and the director's own page review of 2026-10-26. Scores are mine, by the rubric, and falsifiable against those sources.*
