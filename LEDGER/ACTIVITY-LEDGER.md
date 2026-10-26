@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 21:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24791,6 +24791,14 @@ _Last updated: 2026-10-26 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261014-2300 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Close t0492 gap: independent review of FP-001 feedback entry + build and RED-test receipt-evidence-checks.py
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2300-lane9.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/bin/receipt-evidence-checks.py exists, executable, sha256 afb2c3bbc1ac7408a30f4fde548c916390a74d4d1d6c9a89d7319e0997ede2ae - exact match to the receipt's pinned sha prefix afb2c3bbc1ac. NOT PHANTOM. SCORE 9.5 ACCEPTED: clears 9.5 because the named gap is closed with evidence - an independent revie
+
 ### ✅ gap-lane-scorer-20261018-0410 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** v2 gate design with quantified distractor rule and pilot gate
@@ -31466,6 +31474,22 @@ _Last updated: 2026-10-26 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-gap-scorer-20261014-2250 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up gap-scorer-20261014-2250 lane 3: fresh-script re-run of 30-row fossil-bar census + close-time/touch re-derivation + board comment authorship check
+
+**Receipt:** `twelve-lane-receipts/gap-gap-scorer-20261014-2250-lane3.md`
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-26T20:5xZ: receipt gap-gap-scorer-20261014-2250-lane3.md exists, sha256 43edf826418c393fc142056fdc5b6fc46a95afcd36a65f6eab55b026443fe09a; recheck dir hidden_files/lane-3/gap-gap-scorer-20261014-2250-lane3/ holds second-seat-recheck.md (10144 bytes) plus 3 scripts (second-seat-check.py, second-seat-close-chec
+
+### ✅ gap-scorer-20261014-2250 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Fossil bar census: live-verify 30 fossil-close PRs, correct parent 11-6-3 decay claim, post owed board receipts
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2250-lane3.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: census file hidden_files/lane-3/gap-scorer-20261014-2250-lane3/fossil-bar-census.md exists (5584 bytes, 2026-10-15) and its t0062 rows match the receipt's pinned head prefixes (e.g. 1296 3cb3749412, 1297 de902adec0). NOT PHANTOM: claimed artifact exists and is internally consistent. SCORE 9.0 GOOD, ONE MORE PA
 
 ### ✅ gap-t0422 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
