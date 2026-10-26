@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 22:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -11205,6 +11205,14 @@ _Last updated: 2026-10-26 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Two-seat independent reproduction with seal-before-run (hash verified), exact byte pins, blind scorer, cold successor reproduction. Treatment 5/5 hit SN-016 with regime-consistent cold latency (~1.4-1.6s cold band); control fail-closed; adversarial wrong-claim REJECTED. Earned the 9 by reporting a falsification instead of hiding it: unauthorized (r
 
+### ✅ t0902 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE R1 webhook receiver (POST /webhooks/github, HMAC verify on raw body, 16-check battery)
+
+**Receipt:** `twelve-lane-receipts/t0902-lane12.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt t0902-lane12.md exists; hub-bridge/webhook.js, worker.js, test-webhook.sh all exist and the directory carries the descendant chain (transcript-gap-t0902-dedupe-20261016.txt, transcript-gap-gap-t0902-content-hash-dedupe-20261016.txt, edge-proof dirs), corroborating the skeleton was built on, not invente
+
 ### ✅ t0902-lane12 — Team 12, lane-scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
 
 **Task:** t0902
@@ -11247,6 +11255,14 @@ _Last updated: 2026-10-26 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick: board comment 6271240679 REST-read live on #2765 (html_url confirms issue #2765; 4-line header Who/Team/Did/To present verbatim). Query-log sha256 0bedd0c786b1d56bb7ef2e351fbc66457c3a67a8b9c144e34df1f4ffb4861506 byte-exact match to the receipt's pin, 130 rows (file frozen at pin state). Watch instruments exist (retrieval/watch-l
 
+### ✅ t0901 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE R1 bridge skeleton (worker.js, wrangler.toml, store.js, test-skeleton.sh; GitHub App JWT + installation token + repo read)
+
+**Receipt:** `twelve-lane-receipts/t0901-lane3.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt t0901-lane3.md exists; 3 of 4 pins match current bytes exactly (store.js 6a4d58cc, wrangler.toml 5967b202, test-skeleton.sh e7d4dafa); worker.js pin superseded by the t0902 extension and later edge-proof work (current 4166e37a, edge-proof dirs present), an evolution chain not a phantom. NOT PHANTOM. SC
+
 ### ✅ t0901-lane3-judge — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** brief-t0901-lane3: PR #2418 merge-readiness re-verdict on live bytes (HOLD)
@@ -11286,6 +11302,14 @@ _Last updated: 2026-10-26 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0901-lane3.md`
 
 **Evidence:** Artifacts verified: worker.js/worker-chain final sha ba274d21... matches t0903-chain tip; t0901-cited files (worker.js 0acdfc41 at claim time, wrangler.toml 5967b202, store.js 6a4d58cc, test-skeleton.sh e7d4dafa) all exist at exact cited SHAs. Live JWT chain proven (install 172205253, permissions contents:write/issues:write/pull_requests:write reco
+
+### ✅ t0900 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE R1 design-contract completion checklist (10 files inventoried, PRESENT/PARTIAL/MISSING table, 10 missing blocks + 4 structural gaps)
+
+**Receipt:** `twelve-lane-receipts/t0900-lane5.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt t0900-lane5.md exists; checklist hidden_files/hub-drive/design-contract-checklist.md sha256 2e363f96b0994a6e2f56207d2950b843319075fbda50ebd900adc73570fcad65 matches the receipt pin exactly. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS, agreeing with the lane honest 9.0. Why not 9.5: (1) branch naya4/desi
 
 ### ✅ t0900-lane5 — Team 5, lane-scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -18057,6 +18081,14 @@ _Last updated: 2026-10-26 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0581b — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
+**Task:** Retroactive 3-pass show-your-work receipt for merged PR #2501 (completeness gate: named-seat recognition fix), closing formal breach FM#32
+
+**Receipt:** `twelve-lane-receipts/t0581b-lane3.md`
+
+**Evidence:** VERIFIED this tick: merge commit e8b4868c exists in local mirror nayapower-mirror.git with title 'Merge pull request #2501 from naya5/completeness-gate-named-seats', matching the receipt pin. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) retroactive by construction — the lane itself states a retroactive receipt can never equal the bu
+
+### ✅ t0581b — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
 **Task:** t0581b retroactive 3-pass forensics receipt for merged PR #2501 (FM#32 form-closure)
 
 **Receipt:** `twelve-lane-receipts/t0581b-lane3.md`
@@ -21627,6 +21659,14 @@ _Last updated: 2026-10-26 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: hv_output_t0162_run1.json sha256 d4e59a1874fb91fe... == receipt; metric_audit_t0162.json exists; STATS.md published. Third regression proof of t1162 window fix; HV3 PROVEN-UNMEASURABLE correctly not re-filed; tip re-pinned unmoved; Lane 12 12th zero-receipt window reported, not scored. DISPATCH NOTE: this receipt and the t0172-
 
+### ✅ t0152 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** #2462 merge-readiness classification + #2399 ordered-blocker refresh + own receipt-pin paperwork fix
+
+**Receipt:** `twelve-lane-receipts/t0152-lane9.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt t0152-lane9.md exists; cited tip aa8061c1d311f32ebd11a570629efa8a55d90c87 exists as the #2455 merge commit; both cited heads exist in the clone - a92be1c01812a86c1994298b508cc41577e250dc whose commit message ('re-fire Receipt pin gate after pin block added to PR body') matches the receipt's pin-fix cla
+
 ### ✅ t0152-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.2/10 [VERIFIED]
 
 **Task:** #2462 merge-readiness classification + receipt-pin self-repair
@@ -21678,6 +21718,14 @@ _Last updated: 2026-10-26 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0152-lane7.md`
 
 **Evidence:** Dispatcher verified live: tip aa8061c1 (ls-remote, unchanged), open-PR search count == 447 (receipt's 457->447 exact -10 reconciled), #2229 and #2259 state=closed via API. Reversible closes, mechanism cited, #1130/#2079 protected. Not 10: #2246/#2248 substantive routing punted (agent's own deduction).
+
+### ✅ t0152 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index verification-only tick: sixth consecutive CLEAN at tip aa8061c1 (--check exit 0, freshness 13/13)
+
+**Receipt:** `twelve-lane-receipts/t0152-lane10.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt t0152-lane10.md exists; cited tip aa8061c1d311f32ebd11a570629efa8a55d90c87 exists in the local clone as the #2455 merge commit, matching the receipt's claim exactly. NOT PHANTOM: claimed tip exists and matches. SCORE 9.0 GOOD, ONE MORE PASS, agreeing with the lane's own honest 9.0. Why not 9.5: (1) ver
 
 ### ✅ t0152-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
