@@ -12,7 +12,10 @@
   Served by the Hub worker from HUB/app/pi-face.html; canonical source interfaces/pi-face/pi-face.html.
   Deploys via .github/workflows/deploy-hub-cloudflare.yml on push to main (auto-deploy law).
   Live read path: same-origin /projects/state.json (proven live, refreshes),
-  fetched fresh on every load and on Refresh, cache no-store. Every number
+  fetched fresh on every load and on Refresh: cache no-store + no-cache
+  request headers + a per-load cache-buster, so no browser, edge, or
+  worker cache between the face and the record can serve a stale copy
+  as first paint. Every number
   on this face carries its read time. If the read fails, the face says so
   and shows structure only — it never invents a number.
   Per-area % and per-item rows are WITHHELD until their gates land (see README):
@@ -490,7 +493,7 @@
     var moveText = document.getElementById("moveText");
     var moveBox = document.getElementById("moveBox");
     statusLine.textContent = "Reading the live record…";
-    fetch("/projects/state.json", {cache: "no-store"}).then(function(r){
+    fetch("/projects/state.json?t=" + Date.now(), {cache: "no-store", headers: {"Cache-Control": "no-cache", "Pragma": "no-cache"}}).then(function(r){
       if(!r.ok){ throw new Error("state read " + r.status); }
       return r.json();
     }).then(function(d){
@@ -536,7 +539,7 @@
         : ("Decisions waiting: " + fmt(c.needs_shawn) + ".");
       document.getElementById("aiBlockers").textContent = "Blocked: " + fmt(c.blocked) + ". Each blocked item needs its blocker named and an owner to unblock it.";
       var panel = [];
-      panel.push("Data path: /projects/state.json (fetch, cache no-store)");
+      panel.push("Data path: /projects/state.json (fetch, cache no-store + no-cache headers + per-load cache-buster)");
       panel.push("Derived at: " + (when || "unknown"));
       panel.push("State tip: " + (d.state_tip || "unknown"));
       panel.push("Schema: " + (d.schema_version || "unknown"));
