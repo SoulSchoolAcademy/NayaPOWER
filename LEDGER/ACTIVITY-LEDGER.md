@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 12:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21633,6 +21633,14 @@ _Last updated: 2026-10-26 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: tip aa8061c1 unchanged, branch naya/lane9/tipred-fix-t0112 @ a92be1c01812a86c1994298b508cc41577e250dc pin-exact on origin == receipt. Verdict HOLD is correct routing (pytest red pre-existing at base, Shawn's click pending, review asked out). Not 10: t0112 paperwork debt required a repair tick (agent's own deduction).
 
+### ✅ t0152 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Queue sweep: close next 10 oldest idle drafts after #2227 + route #2215/#2217 + pipeline pin report
+
+**Receipt:** `twelve-lane-receipts/t0152-lane7.md`
+
+**Evidence:** VERIFIED 2026-10-26T11:57Z via GitHub REST: sign-in comment 6122035723 and pipeline pin report comment 6122102376 exist on #2175; close comments 6122077375 (#2229) and 6122086277 (#2259) exist with head pins byte-identical to the receipt's action-time pins (ab3f7bcd848c..., 17d8524e25f...), mechanism citation + branch-intact reversibility as claime
+
 ### ✅ t0152-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** queue sweep: 10 fossil closes after #2227 + #2215/#2217 owner routing
@@ -21736,6 +21744,14 @@ _Last updated: 2026-10-26 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0142-lane4.md`
 
 **Evidence:** Dispatcher verified on disk: seal.json sha256 a2a712cf... recomputed MATCH (pre-seal 09:54:46Z), tip aa8061c1 pin-exact in seal + summary + verdicts, 20/20 proofs present, scorer-scores.json blinded pairs all true, unblinded 09:58:07Z > completed 09:57:52Z hard assertion holds. Template gap named not forced (VERACITY-ARM.md competition fixture INCO
+
+### ✅ t0142 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** SGF acceptance round at live tip aa8061c1: T5/ADVERSARIAL phantom catch + T3/NORMAL index check + falsifier probe of runner
+
+**Receipt:** `twelve-lane-receipts/t0142-lane1.md`
+
+**Evidence:** VERIFIED 2026-10-26T11:55Z via GitHub REST (9 calls this tick, protocol cannot serve comment bodies): sign-in comment 6121847871 and sign-out comment 6121980632 both exist on #2175; sign-out body matches the receipt's core claims (PHANTOM_CAUGHT SN-0999, INDEX_FRESH, blinded 9.5 -> daily 9.75 CAPABILITY-TRANSFERS on both arms, falsifier finding). N
 
 ### ✅ t0142-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -38324,6 +38340,12 @@ _Last updated: 2026-10-26 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261026-0502 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 05:02 PDT: full brief queue evaluated in order, 20 script-refused exit 7, 4 left untouched after flagged read, queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-26T12:10Z: rotation twelve-lane-rotation.json queued=24 is exactly the 24 brief files the receipt names (set equality checked, zero diff either way: 20 script-refused + 4 untouched); brief-queue/ root holds exactly those 24 plus lane-feed.md (25 .md files); prior stall receipt seat-stall-20261026-0358.md mti
 
 ### ✅ seat-stall-20261026-0358 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
