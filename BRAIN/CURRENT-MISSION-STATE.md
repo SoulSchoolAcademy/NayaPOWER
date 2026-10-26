@@ -1,8 +1,10 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 22:08 PDT (2026-10-26T05:08Z) by the director pass.
-Main tip: `5ca29bd5` - MOVED a966a6f9 -> 5ca29bd5 (merges #3083 + #3084 at 04:38Z, direct push registry cure 04:45Z).
-Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 197 comments (+13 this tick, page 7), 2,303 short of the 2,500 hard cap; no successor board; no migration trigger.
+Last verified: 2026-10-25 22:42 PDT (2026-10-26T05:42:02Z) by the director pass.
+Main tip: `bf2d01d3` - MOVED 5ca29bd5 -> bf2d01d3 (no merges; 4 single-parent direct pushes: registry cure C1+C2a bede189e + index advance ec343e16, SN-1877 filing 435fa6d + index advance bf2d01d3).
+Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 199 comments (+2 this tick, page 7), 2,301 short of the 2,500 hard cap; no successor board; no migration trigger.
+
+- 2026-10-25 22:42 PDT tick: MOVED TICK, NO NEW MERGES. TIP bf2d01d3. BOARD #3066: 197 -> 199 (+2). MERGE RECEIPT WATCH: no merged_at after 05:08Z - nothing new, breach log unchanged. DIRECT PUSHES x4: registry cure C1+C2a (defects 9 -> 0, SN-1875 serves correctly; authorization ruling still owed) + SN-1877 intelligence filing with index advances. New blockers: kernel sequence-policy verdict at new tip UNVERIFIED (counter claim 1876 + SN-1877 filing); /s/sn0833 reprocess + SN-1876 C2b still open. Top actions: retro-verification #54-55; sequence-policy verdict at bf2d01d3; SN-1873/sn0833 reprocess; SN-1876 landing; #3082 scorecard (deadline 2026-10-27).
 
 - 2026-10-25 22:08 PDT tick: MOVED TICK. TIP 5ca29bd5. BOARD #3066: 184 -> 197 (+13). MERGE RECEIPT WATCH: #3083 BREACH (unfilled template, 0 reviews), #3084 BREACH (no 3-pass receipt, merged against its own Do-NOT-merge staging) - breaches #54-55. DIRECT PUSH 5ca29bd5 registry cure SN-1870/71/72/74 landed (seal c6d54607, door defects 9->1). New blockers: kernel FAIL x2 sequence-policy at new tip (next_sequence still 1874). Top actions: retro-verification #54-55 at tip; sequence-policy cure; C1+C2 cure landing; SN-1873 forced reprocess; #3082 scorecard (deadline 2026-10-27).
 
