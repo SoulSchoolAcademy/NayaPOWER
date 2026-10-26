@@ -298,10 +298,13 @@ def test_action_log_hard_fail_gate_without_approval():
     assert any("HARD FAIL" in x for x in r["reasons"])
 
 
-def test_action_log_passes_gate_with_approval():
+def test_action_log_rejects_self_attested_approval():
+    # Text in an action record is not proof of an externally verified LAW grant.
     r = action_log.check(_good_action(
         protected_gate_touched=True, shawn_approval="2026-10-08: go"))
-    assert r["pass"] is True, r["reasons"]
+    assert r["pass"] is False
+    assert r["details"]["may_act"] is False
+    assert r["details"]["violation"] == "NAYA_CODE_AUTHORITY_BREACH"
 
 
 def test_action_log_takeover_requires_owner_notified():
