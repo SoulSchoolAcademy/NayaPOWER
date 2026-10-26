@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T20:24:36Z",
-  "tip": "9fa018a5b02c80382ce8a29968ca0a55d9d37ee1",
+  "generated_at": "2026-10-26T21:24:27Z",
+  "tip": "f2d0220e1a3ab49eadf2fc191419736305018aa3",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "ad0e277c73af5aaf39e8648b1a1005b2c6587eb0"
+      "head": "ee6177d99d5cfae3c11c54499ca49c450777faec"
     },
     {
       "number": 3052,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "a47d90ea345438785453637d3cebd8ac71ca3e94"
+      "head": "f23f0e3d7e62b0ec06fef4a76c6aabdee92ca449"
     },
     {
       "number": 3088,
@@ -40,31 +40,13 @@
       "head": "2523ef3d5de2875b4dd539808ab747d0c1bfaaca"
     },
     {
-      "number": 3091,
-      "title": "0036 \u2014 THE NAYA CONSTITUTION V1: the behavior constitution (three tongues + executable gate)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness, spec-integrity; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "646e76631ff86d7e6d3acffbde90ff30f71d2eab"
-    },
-    {
-      "number": 3093,
-      "title": "fix(protocol): fail closed on inadmissible decisions and fake protected approval",
+      "number": 3099,
+      "title": "feat(hub): wire universal search through existing auth-gated module",
       "tier": "B",
       "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "c0261d2b48fc0e3cba29e1fba0c19017d987adc4"
-    },
-    {
-      "number": 3095,
-      "title": "Fail closed on missing author identity and non-approval reviews",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "a772e113f06d3cb5e7e87318c4ea2c87968220e4"
+      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "5cd98c811df672d9ce367eb8f152647d9f7f1088"
     }
   ]
 }
