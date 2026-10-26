@@ -30,9 +30,12 @@ Checks:
   3. winner is one of the options.
   4. winner == argmax(scores), unless override_rationale is present and non-empty.
   5. authority block present; all five gates listed as checked.
-  6. If protected_gate_hit: the only admissible outcomes are refusal/escalation
-     (winner must be "refuse" or "escalate", or action must be "none").
-  7. decided_at and decider present (decisions expire; anonymous decisions are void).
+  6. admissible and protected_gate_hit must be explicit booleans.
+     Unprotected execution requires admissible is true.
+  7. A protected gate permits only refusal/escalation at this record layer.
+     Self-declared shawn_approval cannot confer authority.
+     Compliant refusals carry may_act=false even if the record passes.
+  8. decided_at and decider present (decisions expire; anonymous decisions are void).
 
 Usage:
     python3 kernel/protocol/checks/decision_log.py \
@@ -111,15 +114,37 @@ def check(record: dict) -> dict:
     reasons.append("all five protected gates checked")
     details["gates_checked"] = sorted(checked)
 
-    if authority.get("protected_gate_hit"):
-        if winner not in REFUSAL_WINNERS and not authority.get("shawn_approval"):
-            return fail(
-                f"{decision}: protected gate hit but winner is {winner!r} with no shawn_approval — "
-                "fail closed: refuse or escalate",
-                details,
-            )
-        reasons.append("protected gate hit handled: refused/escalated or Shawn-approved")
-        details["gate_hit_handled"] = True
+    # Naya Code / ratified Operating Code V2: authority is a hard gate,
+    # not a score or a writable "shawn_approval" boolean.
+    # A compliant *refusal record* may pass validation, but NEVER grants ACT.
+    admitted = authority.get("admissible")
+    protected = authority.get("protected_gate_hit")
+    if type(admitted) is not bool or type(protected) is not bool:
+        return fail(
+            f"{decision}: authority.admissible and protected_gate_hit must be explicit booleans — "
+            "missing/unknown authority is not permission (NAYA_CODE_AUTHORITY_BREACH)",
+            {**details, "violation": "NAYA_CODE_AUTHORITY_BREACH", "may_act": False},
+        )
+    is_refusal = winner in REFUSAL_WINNERS
+    if protected and not is_refusal:
+        return fail(
+            f"{decision}: protected gate hit — fail closed: unverified shawn_approval is NOT an "
+            "authority receipt; refuse/escalate and obtain an independently verified LAW grant "
+            "(NAYA_CODE_AUTHORITY_BREACH)",
+            {**details, "violation": "NAYA_CODE_AUTHORITY_BREACH", "may_act": False},
+        )
+    if not admitted and not is_refusal:
+        return fail(
+            f"{decision}: inadmissible action cannot be chosen by score or rationale "
+            "(NAYA_CODE_AUTHORITY_BREACH)",
+            {**details, "violation": "NAYA_CODE_AUTHORITY_BREACH", "may_act": False},
+        )
+    if protected or not admitted or is_refusal:
+        reasons.append("refusal/escalation recorded; no execution authority is conferred")
+        details.update({"may_act": False, "outcome": "GATE" if protected else "STOP"})
+    else:
+        reasons.append("admissible, unprotected action; decision record may proceed to LAW/ACT")
+        details.update({"may_act": True, "outcome": "PROCEED"})
 
     decided_at = record.get("decided_at")
     if not decided_at:
@@ -137,7 +162,11 @@ def check(record: dict) -> dict:
     reasons.append(f"decider: {decider}")
     details["decider"] = decider
 
-    reasons.append(f"{decision}: decision log complete — may act")
+    reasons.append(
+        f"{decision}: decision record complete — "
+        + ("eligible for subsequent LAW/ACT checks" if details["may_act"] else
+           "STOP/GATE recorded; NOT authorized to execute")
+    )
     return result(True, reasons, details)
 
 

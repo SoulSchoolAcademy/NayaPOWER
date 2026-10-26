@@ -171,6 +171,20 @@ def adjudicate(
     attestations = find_attestations(text)
     verdicts: List[Verdict] = []
 
+    # A missing author identity must never make every differently tagged
+    # review appear independent by vacuous inequality. Fail closed before
+    # considering any evidence; text-only reviewer labels are not enough.
+    author_identity = normalize_seat(author_seat)
+    if attestations and not author_identity:
+        for att in attestations:
+            verdicts.append(Verdict(
+                attestation=att,
+                admissible=False,
+                reasons=["author identity missing; independent evidence cannot be established"],
+                admissible_evidence=[],
+            ))
+        return {"verdicts": verdicts, "pass": False}
+
     for att in attestations:
         independent: List[Evidence] = []
         reasons: List[str] = []
