@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-26 10:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-26 11:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 5 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -53,8 +53,7 @@
 ### LEARN (1)
 - [#3082](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3082) docs(brain): learning event 2026-10-26 📝draft
 
-### BUILD (4)
-- [#3086](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3086) fix(activation): re-point stale venue pointers #2793 -> #3066 in BRAIN
+### BUILD (3)
 - [#3085](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3085) Re-point mission-state consumers to live/mission-state (Option C snaps
 - [#3052](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3052) Naya/mission state
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
