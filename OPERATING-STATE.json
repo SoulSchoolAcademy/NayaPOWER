@@ -1,15 +1,16 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-26T14:24:28Z",
+  "generated_at": "2026-10-26T15:25:33Z",
   "tip": "c5f7b596fdd5385e7b2f39c636120da0657acef2",
-  "open_pr_count": 4,
+  "open_pr_count": 6,
   "queue_by_tier_action": {
     "C": {
       "MERGE-NOW": 1,
       "CURE": 1
     },
     "B": {
-      "MERGE-NOW": 1
+      "MERGE-NOW": 1,
+      "CURE": 2
     },
     "A": {
       "CURE": 1
