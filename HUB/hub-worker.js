@@ -77,7 +77,16 @@ export default {
     if (url.pathname === "/pi" || url.pathname === "/pi/") {
       const faceUrl = new URL(request.url);
       faceUrl.pathname = "/pi/index.html";
-      return env.ASSETS.fetch(new Request(faceUrl, request));
+      const faceRes = await env.ASSETS.fetch(new Request(faceUrl, request));
+      // The face document itself must NEVER be stored by a browser: a stored
+      // Hub shell answer for /pi kept reappearing after the route was fixed
+      // (observed 2026-10-26 on long-lived browsers, while fresh browsers
+      // and fresh fetches got the face). No-store here stops any browser
+      // from ever storing a /pi answer again.
+      const headers = new Headers(faceRes.headers);
+      headers.set("Cache-Control", "no-store");
+      headers.set("Pragma", "no-cache");
+      return new Response(faceRes.body, { status: faceRes.status, headers: headers });
     }
     return env.ASSETS.fetch(request);
   },
