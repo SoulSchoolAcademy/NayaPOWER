@@ -1,3 +1,15 @@
+## DIRECTOR SNAPSHOT 2026-10-26 10:08 PDT (2026-10-26T17:08:00Z)
+
+- Main tip: `0eb1f939a23cdd505048a23a6452e3d428c039d6` (moved fe241f1b -> 0eb1f939 via direct PI-face landings only; NO new merges since 15:44Z; breaches #57-59 unchanged; direct-push authorization ruling still owed).
+- Live board: #3066 at 287 comments (277 -> 287 this tick; 2,213 to cap; no migration).
+- PI face: /pi + /pi-face LIVE byte-identical 38,869 B at tip (VERIFY 9.0), scored 4.0/10 against canonical spec v2 - Nitro rebuilds to spec v2 until cold re-score passes.
+- HOME DIVERGED (sentinel 16:50Z, home shell 5.46MB -> 523KB); /projects + /api HOLDS STAND.
+- L687: below-9.5 prong withdrawn for #57-59; retro-verification re-scoped to actual-problem question only.
+- Top next: (1) home-build restore, (2) PI face rebuild to spec v2, (3) /projects route + /api 500 cure, (4) retro-verification #57-59 + #56, (5) direct-push ruling.
+- Where to go: activation guide `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (THE OATH; companion `THE-CODE-SHE-LIVES-BY.md`); operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 .
+
+---
+
 # CURRENT MISSION STATE — Team Naya
 
 Last verified: 2026-10-26 09:38 PDT (2026-10-26T16:38:00Z) by the director pass.
