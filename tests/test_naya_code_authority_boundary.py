@@ -132,3 +132,87 @@ def test_existing_tools_and_kernel_checkers_agree_for_probe_cases():
         sample["authority"]["admissible"] = permitted
         sample["authority"]["protected_gate_hit"] = protected
         assert tool.check(sample) == kernel.check(sample)
+
+
+# The same self-approval vulnerability existed in the existing action-log
+# validators. This is not an alternate authority engine: the protected
+# operation MUST use the authenticated LAW -> ACT door instead of prose.
+ACTION_CHECKS = (
+    "tools/protocol/checks/action_log.py",
+    "kernel/protocol/checks/action_log.py",
+)
+
+
+def action_record():
+    return {
+        "action": "fix broken integration",
+        "kind": "repair",
+        "what_was_broken": "stale page state",
+        "authority_basis": "established development maintenance scope",
+        "what_was_done": "tested local fix",
+        "verification": "repeatable local negative control",
+        "reported_to": "live Team Naya board",
+        "protected_gate_touched": False,
+    }
+
+
+@pytest.mark.parametrize("checker", ACTION_CHECKS)
+def test_unprotected_action_log_is_record_only(checker):
+    verdict = load_checker(checker).check(action_record())
+    assert verdict["pass"] is True, verdict
+    assert verdict["details"]["may_act"] is False
+    assert "record-only" in verdict["details"]["authority_note"]
+
+
+@pytest.mark.parametrize("checker", ACTION_CHECKS)
+@pytest.mark.parametrize("approval", (None, "2026-10-26: approved", True, "signed"))
+def test_protected_action_self_approval_never_grants_execution(checker, approval):
+    sample = action_record()
+    sample["protected_gate_touched"] = True
+    sample["shawn_approval"] = approval
+    verdict = load_checker(checker).check(sample)
+    assert verdict["pass"] is False, verdict
+    assert verdict["details"]["violation"] == "NAYA_CODE_AUTHORITY_BREACH"
+    assert verdict["details"]["may_act"] is False
+
+
+@pytest.mark.parametrize("checker", ACTION_CHECKS)
+@pytest.mark.parametrize("bad", (None, "false", 0, 1))
+def test_ambiguous_action_protection_fails_closed(checker, bad):
+    sample = action_record()
+    sample["protected_gate_touched"] = bad
+    verdict = load_checker(checker).check(sample)
+    assert verdict["pass"] is False, verdict
+    assert verdict["details"]["may_act"] is False
+
+
+@pytest.mark.parametrize("checker", ACTION_CHECKS)
+def test_omitted_action_protection_fails_closed(checker):
+    sample = action_record()
+    del sample["protected_gate_touched"]
+    verdict = load_checker(checker).check(sample)
+    assert verdict["pass"] is False, verdict
+
+
+@pytest.mark.parametrize("checker", ACTION_CHECKS)
+def test_protected_action_cli_refuses_written_human_claim(checker):
+    sample = action_record()
+    sample["protected_gate_touched"] = True
+    sample["shawn_approval"] = "Shawn says yes"
+    proc = subprocess.run(
+        [sys.executable, str(ROOT / checker), "--record",
+         json.dumps(sample), "--json"],
+        cwd=ROOT, capture_output=True, text=True,
+    )
+    assert proc.returncode == 1, (proc.stdout, proc.stderr)
+    output = json.loads(proc.stdout)
+    assert output["details"]["violation"] == "NAYA_CODE_AUTHORITY_BREACH"
+
+
+def test_tools_and_kernel_action_validators_identical():
+    a, b = [load_checker(checker) for checker in ACTION_CHECKS]
+    for flag in (False, True, None, "false"):
+        sample = action_record()
+        sample["protected_gate_touched"] = flag
+        sample["shawn_approval"] = "not an authenticated grant"
+        assert a.check(sample) == b.check(sample)

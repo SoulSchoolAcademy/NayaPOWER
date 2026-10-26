@@ -20,7 +20,7 @@ Input record:
       "verification": "<how the fix was verified to work>",
       "reported_to": "<feed, issue, or surface where it was reported>",
       "protected_gate_touched": false,
-      "shawn_approval": "<required iff protected_gate_touched>",
+      // shawn_approval is NOT accepted as a grant; protected actions use LAW->ACT
       // takeover-only:
       "original_owner": "<seat that owned the stalled work>",
       "owner_notified": true,
@@ -33,7 +33,8 @@ Checks:
   3. authority_basis cites something (law id / grant); "I felt like it" fails.
   4. verification present — a fix without verification is a claim (Evidence Law).
   5. reported_to present — "report after" is part of the law, not optional.
-  6. If protected_gate_touched: shawn_approval required, else FAIL (hard line).
+  6. protected_gate_touched must be an explicit boolean. If true, fail closed;
+     even a claimed approval string cannot authenticate a LAW grant.
   7. If kind == "takeover": original_owner and owner_notified required, plus
      stall_evidence (take over stalled work, never active work).
 
@@ -82,18 +83,31 @@ def check(record: dict) -> dict:
     reasons.append(f"authority basis cited: {basis.strip()[:80]}")
     details["authority_basis"] = basis.strip()
 
-    if record.get("protected_gate_touched"):
-        approval = record.get("shawn_approval")
-        if not _nonempty(approval):
-            return fail(
-                f"{action}: protected gate touched WITHOUT Shawn's explicit approval — "
-                "HARD FAIL. Value never creates authority. Revert and escalate.",
-                details,
-            )
-        reasons.append("protected gate touched WITH Shawn's approval on record")
-        details["shawn_approval"] = approval.strip()
-    else:
-        reasons.append("no protected gate touched")
+    # A record is not an identity-provider or LAW grant. A self-declared
+    # "shawn_approval" string is never independent authority evidence.
+    # Governed protected operations must traverse the real LAW -> ACT door,
+    # where grants are re-resolved before the executor fires.
+    protected = record.get("protected_gate_touched")
+    if type(protected) is not bool:
+        return fail(
+            f"{action}: protected_gate_touched must be an explicit boolean — "
+            "HARD FAIL: unknown is not unprotected (NAYA_CODE_AUTHORITY_BREACH)",
+            {**details, "violation": "NAYA_CODE_AUTHORITY_BREACH",
+             "may_act": False},
+        )
+    if protected:
+        return fail(
+            f"{action}: protected gate touched — HARD FAIL: approval text in "
+            "an action log cannot authenticate Shawn's authorization. "
+            "Use a freshly verified LAW grant at the governed ACT door; "
+            "no action-log self-attestation can override that boundary. "
+            "(NAYA_CODE_AUTHORITY_BREACH)",
+            {**details, "violation": "NAYA_CODE_AUTHORITY_BREACH",
+             "may_act": False},
+        )
+    reasons.append("no protected gate claimed; actual scope still requires LAW verification")
+    details["may_act"] = False  # A completed-action record never grants execution.
+    details["authority_note"] = "record-only; independently verify LAW/ACT grants"
 
     if kind == "takeover":
         owner = record.get("original_owner")
@@ -115,7 +129,7 @@ def check(record: dict) -> dict:
         reasons.append(f"takeover of stalled work owned by {owner}; owner notified")
         details["original_owner"] = owner.strip()
 
-    reasons.append(f"{action}: fix-it-first / take-over record complete — fix stood, report filed")
+    reasons.append(f"{action}: action record structurally complete — independent execution/verification proof still required")
     return result(True, reasons, details)
 
 
