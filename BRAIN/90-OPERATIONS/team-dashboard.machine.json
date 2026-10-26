@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-26T20:15:53+00:00",
+ "generated_utc": "2026-10-26T21:15:17+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,28 +133,16 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3094,
-     "title": "fix(smart-notes): repair SN-1878 registry hash so cold retrieval works",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3094",
-     "draft": true
-    },
-    {
-     "number": 3091,
-     "title": "0036 \u2014 THE NAYA CONSTITUTION V1: the behavior constitution (three tongues + executable gat",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3091",
-     "draft": true
-    },
-    {
      "number": 3089,
      "title": "[DRAFT \u2014 DO NOT MERGE] PI face review draft: human-first Project Intelligence face + build",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3089",
-     "draft": true
+     "draft": false
     },
     {
      "number": 3088,
      "title": "feat(sn-guard): Smart Note filing-path collision guard \u2014 claim-before-author via the exist",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3088",
-     "draft": true
+     "draft": false
     },
     {
      "number": 3052,
@@ -169,7 +157,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 6
+   "open_pr_count": 4
   },
   {
    "id": "wire",
@@ -188,8 +176,15 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3099,
+     "title": "feat(hub): wire universal search through existing auth-gated module",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3099",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "team",
@@ -228,15 +223,8 @@
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
-   "open_prs": [
-    {
-     "number": 3093,
-     "title": "fix(protocol): fail closed on inadmissible decisions and fake protected approval",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3093",
-     "draft": true
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "product",
@@ -429,6 +417,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 7,
- "unassigned_prs": 6
+ "open_pr_total": 5,
+ "unassigned_prs": 4
 }
