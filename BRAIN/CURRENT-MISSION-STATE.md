@@ -1,65 +1,61 @@
-## DIRECTOR SNAPSHOT 2026-10-26 15:42 PDT (2026-10-26T22:42Z)
+## DIRECTOR SNAPSHOT 2026-10-26 16:11 PDT (2026-10-26T23:11Z)
 
-- Main tip: `dc0ca488` (moved 88dcbe70 -> dc0ca488: 4 single-parent bot commits, SN-1879 Smart Note + index only, 2 files, zero Hub/deploy bytes - no merges this tick).
-- Live board: #3066 at 397 comments (391 -> 397 this tick; 2,103 to cap; no migration, no successor board).
-- MERGE RECEIPT WATCH: NO NEW MERGES after previous tick 22:12Z; newest closed PRs still #3100/#3099 at 21:55Z, already recorded as breaches #67-68. 0 new breaches.
-- DIRECT PUSH (watch rule, classified): 4 bot commits 5f259f8f -> 20aa4090 -> ae55397a -> dc0ca488 (SN-1879, nayapower-lane-agent[bot]) - intelligence-door landings, not a lane bypass, not a merge-receipt breach.
-- SERVING: /pi REGRESSION at 22:30Z (WIRE 6428845672, independently confirmed by VERIFY 6428908339: /pi/ served the home bytes, home +9,945 B vs repo blob) RESTORED 22:37Z (Restore #6, 6428981205: /pi/ = 43,887 B sha d2bf0a09, home = repo blob exact, probe-verified). Recurrence of the two-deployer seam: Power's confirmation to retire/fold the lane direct deployer (hub-single-source-cure step 3) is the unblock condition - until then /pi holds only until the lane pipeline fires again.
-- BUILDER ITEMS: 3 relayed this tick (WIRE regression, VERIFY confirmation, Restore #6); cap 20 holds, 3 oldest archived. Withheld, surfaced in the director report: WIRE correction 6428866539 (covered) and SLA audit 6428991717 (9 unreceipted items need main-seat disposition next morning).
-- DIRECTIVE #2601: DEGRADED at the 22:30Z slots (compiled 22:20:40Z naming 20aa4090 != live tip dc0ca488) - verdicts rest on live reads, not the directive.
-
----
+- Main tip: `591abc48` (moved dc0ca488 -> 591abc48: 3 SN intelligence-door commits + 3 direct walk/design pushes, zero merges this tick).
+- Live board: #3066 at 404 comments (397 -> 404 this tick; 2,096 to cap; no migration, no successor board).
+- MERGE RECEIPT WATCH: NO NEW MERGES after previous tick 22:42:53Z; newest closed PRs still #3100/#3099 at 21:55Z, already recorded as breaches #67-68. 0 new breaches; breach log stays 68.
+- DIRECT PUSH ALERT (watch rule): 3 single-parent bot commits 23:02:24-30Z - eadc74f0 HUB/walk worker, cbc1bb6f HUB/walk flagship template, 591abc48 BRAIN/10-INTERFACES design language - no HUB/app or pi bytes, no merge, no review, no receipt. The other 3 tip commits are SN intelligence-door class (12dfc9f3 SN-1880, 5789db67 SN-1879 header conform, 94c54ba4 SN-1879 register recompute).
+- SERVING: /pi REGRESSION RECURRED at 23:00Z (WIRE 6429322798, independently confirmed by VERIFY 6429399842: /pi/ = 5,482,158 B sha 2e2832db, byte-identical to live home; PI face blob 0f7ad434 gone; home +14,835 B vs repo blob). Restore #6 did NOT hold. Cure is NOT another restore - hub-single-source-cure step 3 (retire/fold lane direct deployer), Power confirmation owed.
+- BUILDER ITEMS: 3 relayed this tick (WIRE regression recurrence, Nitro PI parity method, VERIFY re-confirm); cap 20 holds, 3 oldest archived. Withheld, surfaced in the director report: 2 accountability reports (routine) and learning L696/L697 + intelligent events x9 (learning ingestion, not builder-addressed).
+- PI PARITY METHOD (Nitro 6429388876, whole-table item_key match): work_items 364 rows / 339 keys; legacy 281 rows / 254 keys; missing 184; legacy-only 99; state-conflict 79. Privacy gate unchanged: anon policies on both tables allow all four commands.
+- DIRECTIVE #2601: FRESH at WIRE open (22:50:42Z, tip == live 94c54ba4), tip-stale only by the in-run move to 591abc48 - verdicts rest on live reads.
 
 # CURRENT MISSION STATE - Team Naya
 
-Last verified: 2026-10-26 15:42 PDT (2026-10-26T22:42Z) by the director pass.
-Main tip: `dc0ca488` - moved this tick (see This tick).
-Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 397 comments, 2,103 short of the 2,500 hard cap; no successor board; no migration trigger.
+Last verified: 2026-10-26 16:11 PDT (2026-10-26T23:11Z) by the director pass.
+Main tip: `591abc48` - moved this tick (see This tick).
+Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 404 comments, 2,096 short of the 2,500 hard cap; no successor board; no migration trigger.
 
-## This tick (2026-10-26 15:42 PDT)
-- Board #3066 moved 391 -> 397 (+5 ids above watermark 6428497775, page 14; count +6, one-count discrepancy noted, same pattern as prior tick; 397 < 2,300 - NO MIGRATION; newest comments are live-board traffic).
-- Tip moved 88dcbe70 -> dc0ca488: 4 SN-1879 intelligence-door commits, no merges, no Hub/deploy bytes.
-- Serving: /pi regression found + independently confirmed at 22:30Z, restored + probe-verified at 22:37Z; re-prove owed after the next deploy of either deployer.
-- REST quota: 4,114 remaining at tick rate read; no 403s.
+## This tick (2026-10-26 16:11 PDT)
+- Board #3066 moved 397 -> 404 (+7 ids above watermark 6428991717, page 14; count +7 exact, no discrepancy; 404 < 2,300 - NO MIGRATION; newest comments are live-board traffic).
+- Tip moved dc0ca488 -> 591abc48: 3 SN intelligence-door commits + 3 direct walk/design pushes; 0 merges, 0 new receipt breaches.
+- Serving: /pi regression recurred at 23:00Z and independently re-confirmed at two tips; Restore #6 did not hold; single-source cure step 3 owed by Power.
+- REST quota: 4,678 remaining at tick rate read; no 403s.
 
 ## Ranked priorities (standing order, re-ranked this tick)
-1. Ruleset enforcement cure, director-ratified, staged (nightly report's tomorrow priority; no required-check click until named reds are understood + a green reference head exists).
-2. Distinct-seat retro-verification at 88dcbe70 for #3099/#3100 + at 0433d907 for #3097/#3098 + at f3c3862e for breach burst #61-64 + breach #56 (still owed).
-3. PI privacy cure: bounded access-model decision + independently witnessed negative tests before any feed is declared private (Power + Security; protected authority change).
-4. PI publisher convergence: close the 184-key canonical/legacy divergence; name the project-scoped filter before quoting 188 as the legacy table (Power / publisher owner).
-5. Retire the lane direct deployer (hub single-source cure, Power, step 3) - Restore #6 makes this the live clock on every Hub byte; Power's board confirmation is the unblock condition.
-6. Spec-integrity cure for 0036: add validator-required fields to the machine file (pin alone fails) and replace the stale naya/spec-manifest-cure description with a real cure branch.
-7. #3091 constitution ratification gate.
-8. PI stale pointer close/re-point + /projects landing + PI publisher/nav/entitlements under the whole-picture direction.
-9. 9+ per-page completeness scorecards under the Zara acceptance contract (Resolve scores every page; builders build to the design law from the first commit).
-10. NOW board #2599 body ceiling (256,105 chars - trim before any further entry).
+1. Hub single-source cure step 3 - retire/fold the lane direct deployer (Power; board confirmation is the unblock condition; restores keep being overwritten).
+2. /pi + home-to-tip reconciliation + VERIFY re-proof after the cure; do not call a restore stable until it survives the next deploy of each deployer.
+3. Direct-push authorization ruling for walk/design pushes eadc74f0/cbc1bb6f/591abc48 (main seat, carried).
+4. PI publisher reconciliation to zero on the Nitro published whole-table method (missing 184 / legacy-only 99 / conflict 79) + viewer-specific reads; publish the filter with any scoped figure.
+5. PI privacy gate: bounded access-model decision + independently witnessed negative tests before any feed is declared private; production permission changes stay behind Shawn explicit authority (Power + Security).
+6. Spec-integrity cure for 0036 at TWO layers: manifest pin AND file schema/status/ratified_date/invariants; the 0-ahead spec-manifest-cure branch is not a cure in flight.
+7. Distinct-seat retro-verification for breaches #67-68 (#3099/#3100) + breach #56 (non-author, non-merger seat) + burst #61-64 dispositions.
+8. Register 4 open (#3089/#3088/#3052/#2981): different-seat reviews/scorecards; #3052 head moved to 7e64b215.
+9. PI stale pointer: naya-code next_action still names superseded #3092 - writer re-point/close owed.
+10. Ruleset enforcement cure, director-ratified, staged (no required-check click until named reds are understood + a green reference head exists).
 
 ## Done with proof
-- Whole-picture synthesis landed at 872559a (HUB/NAYANET-WHOLE-PICTURE-2026-10-26.HUMAN.md + .MACHINE.json, 33,837 B) and is now the single canonical version.
-- SN-1879 landed at dc0ca488 (Smart Note + registry + manifest recomputed same pass, 2 files, 56+/1-).
-- /pi regression restored at 22:37Z (Restore #6: Deploy Hub run 40408437227 attempt 2; /pi/ 43,887 B sha d2bf0a09, home repo-blob exact, cache-busted probes).
-- PI director consolidation written + read back (note 5d091074, now 10,059+ chars; umbrella item director-one-ultimate-app-consolidation-20261026, QUEUED, owner naya-resolve).
-- Hub universal search wiring merged via #3099 (head 5cd98c8; Node 762/762, Python contract 19/19 author-run) - merged as a receipt breach, retro-verification owed, not production-proven.
-- One failure class cleared: human_path_to_product.test.mjs x3 failures no longer reproduce at 88dcbe70.
+- Breaches #67-68 recorded (relay + dispatcher agree); 0 new breaches this tick.
+- Nitro PI parity method published and reproducible (whole-table, item_key match).
+- Learning: L696 + L697 ingested pending; WP-255 GRADUATED (3/3).
 
 ## Blocked with owner
-- Ruleset enforcement change: Human Director only (protected authority change).
-- PI privacy cure: Power + Security, independent VERIFY negative tests owed.
-- PI publisher divergence: publisher owner / Power.
-- Spec-integrity 0036 cure: spec-manifest-cure branch owner / merge lane (stale-branch correction owed).
-- #3099/#3100 retro-verification: distinct non-author, non-merger seat (owed).
 - Hub single-source deployer cure step 3: Power (board confirmation owed).
+- Direct-push authorization ruling: main seat (carried).
+- Spec-integrity 0036 two-layer cure: spec-manifest-cure branch owner / merge lane.
+- #3099/#3100 + #56 retro-verification: distinct non-author, non-merger seat (owed).
+- PI privacy permission change: Shawn explicit authority (protected gate; not auto-acted).
+- SLA audit 6428991717: 9 unreceipted items need main-seat disposition (carried from prior tick).
 
 ## Team status
 | Area | Accomplished | Working on | Plan |
 | SELF | - | - | - |
-| LAW | Breaches #67-68 adjudicated (relay + dispatcher agree); 0 new breaches this tick | Retro-verification owed for #3099/#3100, #3097/#3098, #61-64, breach #56 | Director-ratified ruleset cure, staged |
+| LAW | 0 new breaches this tick; breach log stays 68 | Retro-verification owed for #3099/#3100, #61-64, breach #56 | Direct-push ruling for walk/design pushes; ruleset cure, staged |
 | ACT | - | - | - |
-| KNOW | SN-1879 landed at dc0ca488; whole-picture synthesis canonical at 872559a; PI consolidation read back | PI publisher convergence; per-page completeness scorecards | #3099 retro-verification; PI stale pointer close |
+| KNOW | Nitro PI parity method published (whole-table); SN-1880 landed; SN-1879 header conformed + registered | PI publisher reconciliation on published method | PI stale pointer close |
 | PROVE | - | - | - |
 | CONNECT | - | - | - |
-| VERIFY | 22:30Z /pi regression found + independently confirmed; Restore #6 probe-verified at 22:37Z | Serving re-prove after next deploy of either deployer | Run census at new tip |
-| LEARN | - | - | - |
+| VERIFY | 23:00Z /pi regression independently re-confirmed at two tips (94c54ba4 and 591abc48) | Serving re-prove after single-source cure | Run census at new tip |
+| LEARN | L696 + L697 ingested pending; WP-255 graduated | Learning ingestion at new tip | - |
 | EVOLVE | - | - | - |
 
 ## Where to go
