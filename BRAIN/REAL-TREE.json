@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "5af6d2ee4cdcc34722e58c21dec36dcf554239c1",
+  "receipt_basis_commit": "4aca34b39381e7f43de013168dd7f86c69412138",
   "inventory_file_count": 1705,
   "domain_counts": {
     "00-ACTIVATION": 19,
@@ -4861,9 +4861,9 @@
       "size": 3852
     },
     {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/approval/SN-1878/IB-SMART-NOTE-20261026-sn1878-outcome-approval-right-is-right.md",
-      "blob_sha": "4d6babce6a3f95f61dcba210f967df0980e8bf6b",
-      "size": 10036
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/approval/SN-1881/IB-SMART-NOTE-20261026-sn1881-outcome-approval-right-is-right.md",
+      "blob_sha": "5303b845d39d8f0b6d137f5a40d8228662afff68",
+      "size": 10276
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1870/IB-SMART-NOTE-20261026-sn1870-once-you-learn-from-it-its-a-learning-lesson.md",

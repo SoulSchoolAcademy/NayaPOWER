@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-26  
-**Receipt basis commit:** `5af6d2ee4cdcc34722e58c21dec36dcf554239c1`  
+**Receipt basis commit:** `4aca34b39381e7f43de013168dd7f86c69412138`  
 **Inventory file count:** 1705  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -1012,7 +1012,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/ten-star-service/SN-1865/IB-SMART-NOTE-20261025-sn1865-ten-star-service-is-choosing-whats-best.md` — `11f24647734a` (5324 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md` — `1a7e5ca989b0` (2599 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SERVICE/showing-gate/SN-1869/IB-SMART-NOTE-20261026-sn1869-done-right-or-not-shown.md` — `42a4258b6df1` (3852 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/approval/SN-1878/IB-SMART-NOTE-20261026-sn1878-outcome-approval-right-is-right.md` — `4d6babce6a3f` (10036 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/approval/SN-1881/IB-SMART-NOTE-20261026-sn1881-outcome-approval-right-is-right.md` — `5303b845d39d` (10276 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1870/IB-SMART-NOTE-20261026-sn1870-once-you-learn-from-it-its-a-learning-lesson.md` — `8ade2fe89f21` (3513 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1871/IB-SMART-NOTE-20261026-sn1871-be-intelligent-get-out-of-your-own-way.md` — `4294c8cb8e0c` (3464 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1874/IB-SMART-NOTE-20261026-sn1874-finish-it-or-say-its-unfinished.md` — `cdff9d493180` (3617 bytes)
