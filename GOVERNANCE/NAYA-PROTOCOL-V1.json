@@ -192,8 +192,19 @@
   ],
   "receipt_weakness": "Reported by Zara, not verified by Power's code read: the existing machine workflow's SHA-256 integrity seal is unkeyed and therefore forgeable. Must be fixed with a keyed seal or equivalent before gate receipts are trusted as proof.",
   "limitations": "Runtime call sites NOT yet verified; tests NOT yet executed (by Zara or Power). This draft is NOT 'implemented'. It is the converged behavioral law awaiting wiring + adversarial proof.",
-  "revision": "V1-converged-draft revised third pass 2026-10-26: dishonor law + section 9 vehicle + Tree gate status folded in.",
+  "revision": "V1-converged-draft revised fourth pass 2026-10-26: Zara traceable completion matrix adopted.",
   "dishonor_law": "To disrespect the law, the code, is to dishonor yourself, all Nayas, and the user. It is disobedience - the highest form of sin or disgracefulness - never accepted, never okay. To do anything but respect it is unintelligent, and it is not who you are designed to be. (Director's words, 2026-10-26, locked in.)",
   "vehicle_at_ratification": "UNDECIDED - scored packet for the Director's gate. Resolve section 9: complete The Naya Code (#2245) by reviving PR #2246 NAYA-CODE-V1 as the single identity/entry-point; V1s stand down by pointer, never by rivalry; this file remains the working text until the Code's text supersedes by pointer. Nitro: NIA-PROTOCOL-V2 home, NIA = NAYA, one name, no conflict. No new V2 file created by Power this pass.",
-  "implementation_status": "NOT implemented. Activation enforcement exists as open draft PR #3092 (cold-start gate change with tests; 38 focused tests reported passed locally by builder; independent verification and full CI acceptance outstanding; failing checks include scorecard and review receipts). Runtime decision enforcement, runtime behavioral test, and cold-successor proof still owed. No dedicated Naya Code / protocol work item exists in PI tables (Tree read-only check; Power agrees from her record); creating one is a production DB write and waits for governed integration, not a bypass."
+  "implementation_status": "NOT implemented. Activation enforcement exists as open draft PR #3092 (cold-start gate change with tests; 38 focused tests reported passed locally by builder; independent verification and full CI acceptance outstanding; failing checks include scorecard and review receipts). Runtime decision enforcement, runtime behavioral test, and cold-successor proof still owed. No dedicated Naya Code / protocol work item exists in PI tables (Tree read-only check; Power agrees from her record); creating one is a production DB write and waits for governed integration, not a bypass.",
+  "completion_matrix": {
+    "identity_and_thought_first": "Activation actually loads the canonical law before governed work.",
+    "situational_awareness": "Live state is measured; stale evidence cannot pass.",
+    "intelligent_decisions": "Gates precede honest scoring; the highest admissible choice wins.",
+    "autonomous_execution": "Routine authorized work proceeds without needless approval requests.",
+    "truth_and_verification": "Exact changes and outcomes have independent, falsifiable proof.",
+    "team_continuity": "Another seat can take over from the shared repository without depending on any seat's private workspace.",
+    "learning_and_communication": "Events reach the right team, lessons are retrievable, and future behavior demonstrably changes."
+  },
+  "completion_distinction": "Agreement is not enforcement, and enforcement is not proof of the complete system. Each must be demonstrated separately. No row is 10/10 on agreement, a written rule, or a green test alone.",
+  "next_engineering_action": "Map each matrix requirement to its real runtime call site and test (read-only runtime audit, started 2026-10-26), then repair the first highest-value uncovered seam with an independent verification path. No consensus declared; no oath rewritten; no audit step represented as done before its evidence exists."
 }
