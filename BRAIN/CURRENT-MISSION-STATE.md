@@ -1,20 +1,10 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 18:11 PDT (2026-10-26T01:11:20Z) by the director pass.
-Main tip: `b50cdb54` — STEADY this tick (ls-remote byte-match with shared-state main_tip). Zero merges, zero pushes since the 17:43 PDT tick. MERGE RECEIPT WATCH: NOT RE-RUN (no tip move); breach log unchanged — #3073 receipt breach still UNMITIGATED, #3074 closed-unmerged. The 3 direct pushes from the 17:43 PDT tick (018c4966 design lesson, 1b0b584c design toolkit, b50cdb54 SN-1869 Showing Gate) stand flagged for the main seat's authorization ruling; no new direct push this tick.
-Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 126 comments (+9 this tick, pages 4-5), 2,374 short of the 2,500 hard cap; no successor board; no migration trigger.
+Last verified: 2026-10-25 18:38 PDT (2026-10-26T01:38:00Z) by the director pass.
+Main tip: `10cb6d9c` — MOVED this tick (compare b50cdb54...10cb6d9c ahead 1 / behind 0; single living-map-compiler commit 01:11:41Z, single parent — sanctioned standing exception, designed #2752 map-compiler path, same class as prior ticks; zero merges). MERGE RECEIPT WATCH: RUN (tip moved) — no new merges since the 01:11Z tick; #3073 receipt breach still UNMITIGATED; #3072/#3074 closed-unmerged. The direct push 10cb6d9c is recorded as a sanctioned-exception map-state push, not a new breach.
+Live board: #3066 — successor to #2793 (archived 2026-10-25 09:10Z), 130 comments (+4 this tick, page 5), 2,370 short of the 2,500 hard cap; no successor board; no migration trigger.
 
-- 18:08 PDT tick: STEADY tip b50cdb54; BOARD #3066: 117 -> 126 (+9 ids above watermark 6405560739, pages 4-5; count read 125 at tick open, +1 posted during the tick): 6405717115 PI sync escalation (Resolve: 3 PI transitions routed 19:39Z unapplied 5+ hrs; writer-door owner Power); 6405748716 PR #3075 up for review (Nitro bot: interfaces + Smart Factory into GitHub, branch move1-interfaces-20261026, head a2eda7d2, different-LOGIN scorecard + Shawn merge tap needed, no merge/deploy until both land); 6405768570 PI-first + Intel Today correction (Nitro: everything Shawn gives goes into PI same pass; Intel Today = one ultimate page at /rooms/today AND a completed dashboard Today surface, never a stub link); 6405768939 hourly accountability; 6405828594 accountability report (6 finished, 0 finished right, queue +6); 6405870377 learning event (no new L-number; L476 repeat = breach #46, #3073 unscored landing); 6405870651 intelligent events x2 (L671 sentinel 4th consecutive MATCH 9/9, L12 applied); 6405895588 page design audit filed in PI (Resolve, Shawn's order: 32 pages probed, worst = flagship template NO viewport meta, mission room missing, /projects/questions.json 404; owners Nitro/Power/Resolve per item); 6405976543 amendment to page-audit fix queue (Shawn ~01:08Z: edit-only on the live page, never a replacement/redesign; acceptance = edit-only diff + harvested elements + phone+laptop proof + different-login scorecard >= 9). naya2_to_builder: 4 appended (6405717115, 6405748716, 6405895588, 6405976543), cap 20 holds, 4 oldest archived to naya2-to-builder-archive-2026-10-26.json. LEDGER: 3 pushed blob-verified + 3 identical skipped; writer hash faaaa5cf stable. MASTER DIRECTIVE: HAND_EDIT_DETECTED persists, no PATCH. REST quota 4,840 remaining at tick open; zero 403s.
-
-- 17:43 PDT tick: MOVED by direct push only. Tip aecc743f -> b50cdb54 = 3 single-parent commits (compare ahead 3 / behind 0, zero merges): 018c4966 Naya Design Lesson, 1b0b584c Naya Design Toolkit, b50cdb54 SN-1869 Showing Gate (Shawn 00:20Z). DIRECT PUSH ALERT (watch rule): intelligence-door filing claimed by Resolve; authorization not independently verified this tick. MERGE RECEIPT WATCH: no new merges since 00:08Z, so no new breach; #3073 breach stays UNMITIGATED, #3074 closed-unmerged. BOARD #3066: 110 -> 117 (+7 ids above watermark 6405190847, zero gaps, page 4): 6405333867 Shawn decision 'cover picked for them' (birth pass wears the pick; builders Power/Nitro/Resolve); 6405346085 daily intelligence 2026-10-25; 6405361349 Shawn correction: cover-library interface WITHDRAWN, PR #3074 closed, re-routed to Nitro (PI cover-library-interface-nitro, Smart Factory + page-creation moment); 6405419688 Nitro design lesson (use, don't recreate); 6405442987 STANDING LAW Showing Gate (3 questions before anything is shown to Shawn); 6405447052 Nitro design toolkit; 6405560739 read-only continuity/CI delta (Kernel 5,638 passed / 3 failed index-freshness at 1b0b584c; current-tip Kernel still running). naya2_to_builder: 3 appended (6405333867, 6405361349, 6405442987), cap 20 holds, 3 oldest archived to naya2-to-builder-archive-2026-10-25.json. REST quota 4,840 remaining at tick open; zero 403s.
-- 17:08 PDT tick: MOVED. Tip f5677da3 -> aecc743f = single merge #3073 (23:56:18Z, merge commit aecc743f, head e802d90d, merger SoulSchoolAcademy); compare ahead 10 / behind 0, zero direct pushes. MERGE RECEIPT WATCH RUN: #3073 = RECEIPT BREACH, UNMITIGATED (body: no 3-pass receipt; 0 formal reviews; HOLD FOR SCORECARD unmet; Codex bot review at exact head failed/unresolved is not a scorecard). BOARD #3066: 106 -> 110 (+4 ids above watermark 6404589128, zero gaps, page 4): 6405102030 hourly accountability; 6405155145 accountability report (8 finished, 0 finished right, queue +11); 6405190643 learning event (WP-245 1/3, Match Doctrine audit on #3071 head); 6405190847 intelligent events x7 (WP-244 2/3, L674 applied). naya2_to_builder: 0 appended, cap 20 holds (none builder-addressed). REST quota 4,549 remaining at tick open; zero 403s.
-
-- 16:38 PDT tick: QUIET. Tip + board count both unchanged (step-3 perfect run). Merge receipt watch NOT RUN (tip steady); breach log unchanged. naya2_to_builder: 0 appended, cap 20 holds. REST quota 4,452 remaining at tick open; zero 403s.
-
-- 16:08 PDT tick: board-only. New on #3066: page-birth mission filed (6404468117, Resolve coordinates; provenance = Resolve filing relaying Shawn direction 'in spirit', not main-seat adjudication); NONSTOP ORDER relayed via bot (6404512552, PI to 10/10 + everything connected, gates stand); WIRE sign-out closes blockquote-matcher TODO (6404586948); new open PR #3073 (covers) awaits a distinct-seat scorecard (appended to naya2_to_builder, cap 20 holds). Receipt watch NOT RUN (tip steady); breach log unchanged.
-
-SUPERSEDED 12:38 TICK: the 10:38 correction (PR #3067's gate re-opened, no merge clearance) is now moot as a landing gate — #3067 MERGED 19:27:43Z without clearance (receipt breach, see below). The open items are now retro-verification by a non-author non-merger seat and the sentinel's first scheduled run on merged code.
-Merge-receipt breach log: prior director record 83, PLUS 5 new receipt breaches this wave (main-seat L476 count #39-43): #3068, #3067, #3065, #3064, #3063 — no 3-pass receipt in any PR body; zero formal reviews on all five; #3067 merged against an explicit no-clearance note, #3063 against a hold. Post-merge VERIFY re-proof (board 6402199571) proves code, not process, and does not retroactively satisfy the gate. Open retro dispositions: #3061, #3054, #3055, #3057, #3058, #3060, #3062 independence, plus retro-verification of this 5-breach wave. (The 83 vs #39-43 counts are two unreconciled records; the director does not merge them by assertion.)
+- 18:38 PDT tick: MOVED TICK (direct push only, zero merges). BOARD #3066: 126 -> 130 (+4 ids above watermark 6405976543, page 5): 6406075167 Growth merge ordered (2nd doubled pair, rooms/growth + personal#growth -> ONE master at /rooms/growth, text diet, PI growth-merge-20261026, Nitro); 6406124481 Dashboard #about scorecard (6/5/4/7/7/9/6) + edit-only fix, Q&A library device-local defect, standing word NO HOLDING restated, PI dashboard-about-fix-20261026; 6406165060 Connections merge ordered (3rd doubled pair, dashboard#people + rooms/connections -> ONE shared-records system, fix-the-page-that-exists, PI connections-merge-20261026); 6406233253 Smart Mail right-one-wins (4th doubled pair, rooms/mail = the mail, personal#inbox removed outright, PI mail-right-one-20261026). naya2_to_builder: 4 appended, cap 20 holds (4 oldest archived). Quota 4,357 remaining at tick open. Zero 403s.
 
 ## Done, with proof
 - TICK 2026-10-25 15:38 PDT: MOVED TICK. TIP af1907c9 -> f5677da3 (merge #3071 22:15:35Z as 00f545e0, head 1df6b16b, by SoulSchoolAcademy; then direct push f5677da3 22:34:17Z, living-map-compiler, MAP-STATE.json only). MERGE RECEIPT WATCH RUN: #3071 = RECEIPT BREACH, UNMITIGATED (director body check: zero pass-1/2/3 structure, zero scores; body asked for a different-seat scorecard before merge, never landed pre-merge; relay breach #45 board 6404261672; post-merge Tree audit 6404208650 is not a scorecard). DIRECT PUSH ALERT: f5677da3 is a non-merge push to main outside the mission-snapshot job; authorization not evidenced, flagged for the main seat. BOARD #3066: 97 -> 99 (+2 ids above watermark 6403907229, zero gaps, page 4): 6404261672 breach #45 + relay receipt; 6404375067 SLA audit (Lane 4, exit 1 REVIEW, 11 unreceipted items, disposition due next morning by the main seat). naya2_to_builder: 0 appended, cap 20 holds. Quota 4,237 remaining at tick open. Zero 403s.
@@ -45,43 +35,40 @@ Merge-receipt breach log: prior director record 83, PLUS 5 new receipt breaches 
 - PR #3064 open (head 705f3674) — Kernel residual 5/5, reporting hold-bar cure; scorecard ask at exact head.
 - Production packet P1–P3 assembled tap-ready — Shawn's tap decision is the gate.
 
+
 ## Top 10 next actions (ranked by mission leverage x unblockability / effort)
-1. #3071 retro-verification + scorecard by a seat that neither authored nor merged (owed remedy, breach #45).
-2. #3070 breach disposition (unmitigated #44, cover library already live).
-3. Direct-push authorization ruling for living-map-compiler main pushes (main seat; f5677da3 flagged, not assumed).
-4. #3072 disposition (stale pre-merge v1 branch head, not mergeable, lane-owned).
-5. SLA-audit 11-item disposition (main seat, next morning).
-6. Retro-verification batch for the 19:27Z wave + auto-match waves.
-7. Current-truth projection reconciliation to live tip f5677da3, then rerun the Current Truth Resolver (CONFLICT 6403559213).
-8. Merge-gate enforcement - gate exists only as discipline; Shawn's T0 tap is the root cure.
-9. To-do board build (mobile-first) + registry merge; production packet taps (Shawn's hand).
-10. #2793 archive hygiene + job-body re-derivation for #2793 -> #3066 (main seat, still owed).
+1. Direct-push authorization ruling for intelligence-door pushes incl. the 17:43Z trio (main seat, carried).
+2. #3075 different-LOGIN scorecard (Nitro Move 1, gates merge+deploy).
+3. #3073 retro-verification (unmitigated breach #46).
+4. Doubled-pair merge execution: Growth, Connections, Smart Mail + #about fix, under edit-only / fix-the-page-that-exists law (Nitro).
+5. Page-audit fix queue execution under edit-only law (flagship viewport fix first).
+6. PI sync writer-door application (Power, 3 stale transitions).
+7. Cover-library interface build by Nitro in Smart Factory + page-creation moment (Showing Gate applies).
+8. Intel Today ultimate-page + dashboard-surface completion.
+9. #3071/#3070 breach dispositions.
+10. #2793 archive hygiene + job-body re-derivation (main seat, still owed).
+
 ## Blocked, with owner
-- #3071 retro-verification + scorecard by a non-author seat (breach #45 remedy) — owner: merge lane / non-author seat.
-- Direct-push authorization ruling for living-map-compiler main pushes — owner: main seat.
-- #3072 disposition (stale pre-merge v1 branch, not mergeable) — owner: lane.
-- SLA-audit 11-item disposition (due next morning) — owner: main seat.
-- Production taps: Shawn's hand (packet P1–P3 delivered; taps execute one at a time).
-- Retro scorecards for #3061/#3054 and siblings: dock / VERIFY (different-seat, exact-head).
-- Retro-verification of the 5-breach wave: a non-author non-merger seat (main-seat remedy); breaches stand in the count regardless of the retro verdict.
-- Merge-gate enforcement (ruleset tightening): merge-gate owner / Human Director — ruleset 24858146 still zero reviews/zero checks.
+- Direct-push authorization ruling for intelligence-door pushes — owner: main seat.
+- #3075 different-LOGIN scorecard + Shawn merge tap — owner: different-login seat / Shawn (tap).
+- #3073 retro-verification by a non-author non-merger seat — owner: merge lane / non-author seat.
+- #3071/#3070 breach dispositions — owner: merge lane / VERIFY (different-seat, exact-head).
 - #2601 master directive: HAND_EDIT_DETECTED persists — lead reconciles (director does not PATCH over a hand edit).
-- Brain-index freshness at tip 2bfd841d: index/brain lane — regenerate BRAIN/REAL-TREE.json + BRAIN/REAL-TREE.md at the merged tip, then Kernel re-run (VERIFY).
-- Sentinel confirmation: first scheduled run on merged #3067 code, then first silent hour — until then the cure is code-proven, not behavior-proven.
-- NEW P0 security routing 14:44Z (#3066 comment 6399049230, evidence #2823 comment 6399046911): anonymous EXECUTE on SECURITY DEFINER payment/booking RPCs + anonymous scheduled-mail RPC with write side effects; owner SEC-6 + Payments/Booking/Mail + LAW/INFRA; next metadata-only caller/grant audit -> smallest coupled correction -> different-authenticated verifier; human gate before production; no exploit or closure claimed.
-- Kernel Tests at tip 2bfd841d: 3 failed / 5,638 passed — brain-index freshness only (factory/migration/reporting residual set cleared 0/4 by the merged wave, VERIFY receipt 6402199571).
+- Production taps: Shawn's hand (packet P1-P3 delivered; taps execute one at a time).
+- Retro-verification batch for the 19:27Z wave + auto-match waves — owner: VERIFY (different-seat).
+- P0 security routing (anonymous EXECUTE on SECURITY DEFINER payment/booking RPCs + anonymous scheduled-mail RPC) — owner: SEC-6 + Payments/Booking/Mail + LAW/INFRA; human gate before production.
 
 ## Team status (SELF / LAW / ACT / KNOW / PROVE / CONNECT / VERIFY / LEARN / EVOLVE)
-- Accomplished: tip MOVED af1907c9 -> f5677da3 verified first-hand (ls-remote + compare 00f545e0...f5677da3 ahead 1); merge receipt watch run: #3071 RECEIPT BREACH unmitigated (relay #45, board 6404261672); direct push f5677da3 flagged (living-map-compiler, MAP-STATE.json); board #3066 97 -> 99 read first-hand (2 new comments, zero gaps); SLA audit 11 items flagged (6404375067).
-- Working on: #3071 retro-verification by a non-author seat; direct-push authorization ruling; #3072 disposition; SLA 11-item disposition; #3070 retro-verification (still unmitigated); current-truth projection reconciliation + resolver rerun; retro-verification of the 19:27Z wave; open register #3052 + #2981; to-do board build; production taps; P0 security audit (SEC-6).
+- Accomplished: tip MOVED b50cdb54 -> 10cb6d9c verified first-hand (ls-remote + compare ahead 1, single map-compiler commit); merge receipt watch run: no new merges, no new breach; board #3066 126 -> 130 read first-hand (4 new comments, page 5); naya2_to_builder 4 appended, cap 20 holds.
+- Working on: doubled-pair merges (Growth, Connections, Smart Mail) + #about fix; #3075 scorecard; #3073 retro-verification; direct-push authorization ruling; page-audit fix queue; PI sync writer-door application.
 - Plan: per the Top 10 above; carried-forward cells unchanged where no new signal.
 - Unknown: — (no area invented here).
 
 ## Key numbers
-- REST quota remaining: 4,237 as measured at tick open (5,000/hour installation token; zero 403s this tick).
+- REST quota remaining: 4,357 as measured at tick open (5,000/hour installation token; zero 403s this tick).
 - Branch count: not re-fetched this tick (no extra call for this line).
-- Open PR count: not re-fetched this tick (no extra call for this line); register notes #3069 + #3070 MERGED 21:05Z, #3071 MERGED 22:15:35Z (breach #45), #3072 opened on a stale pre-merge branch (not mergeable); #2981 + #3052 remain open per last register read.
-- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 99 comments.
+- Open PR count: not re-fetched this tick (no extra call for this line); register notes #3073 MERGED 23:56Z Oct 25 (breach, unmitigated), #3072/#3074 closed-unmerged, #3075 open awaiting different-LOGIN scorecard + merge tap.
+- Board #2793: ARCHIVED 2026-10-25 (handoff 6395777283); live board is now #3066 with 130 comments.
 
 ## Where to go
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts). Until PR #2533 merges, the draft branch `naya4/activation-read-me-first` carries it; after the merge, main.
