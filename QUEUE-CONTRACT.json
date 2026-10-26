@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T18:24:20Z",
-  "tip": "8253b70587401ec3118b1e1c6a6f205c72dabb30",
+  "generated_at": "2026-10-26T19:24:29Z",
+  "tip": "a6dca55662f24074b354dc574b78944996e90a93",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "bf75c4ae940d9cd6f9677dad6f947159d8723999"
+      "head": "ad0e277c73af5aaf39e8648b1a1005b2c6587eb0"
     },
     {
       "number": 3052,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "b9455e7f988aa4070baffc7bf91989a28996aa23"
+      "head": "b951e7cfd3dc56edffc271b6c9fab61a3707f07c"
     },
     {
       "number": 3088,
@@ -38,6 +38,15 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "2523ef3d5de2875b4dd539808ab747d0c1bfaaca"
+    },
+    {
+      "number": 3091,
+      "title": "0036 \u2014 THE NAYA CONSTITUTION V1: the behavior constitution (three tongues + executable gate)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): completeness, spec-integrity; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "646e76631ff86d7e6d3acffbde90ff30f71d2eab"
     }
   ]
 }
