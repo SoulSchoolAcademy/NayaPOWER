@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "41573abe8a79ff905bf1f28f9b15f379bf06bc9b",
-  "inventory_file_count": 1679,
+  "receipt_basis_commit": "7ee2cae44960aa7a30c034c2ef7076bce54d438f",
+  "inventory_file_count": 1694,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -10,16 +10,16 @@
     "01-GOVERNANCE": 93,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
-    "04-INTELLIGENCE": 25,
-    "05-MEMORY": 866,
+    "04-INTELLIGENCE": 28,
+    "05-MEMORY": 867,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 447,
+    "10-INTERFACES": 454,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
-    "90-OPERATIONS": 105,
+    "90-OPERATIONS": 109,
     "99-ARCHIVE": 2,
     "ROOT": 7
   },
@@ -989,6 +989,21 @@
       "path": "BRAIN/04-INTELLIGENCE/SMART-NODE-PROTOCOL-V1.json",
       "blob_sha": "8e70ac3fac7e8f0ba496ca6dd823f990628a0ef6",
       "size": 4661
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/TEN-BY-TEN-2026-10-26/ten-by-ten-report-2026-10-26.ai.md",
+      "blob_sha": "30f4588bdf1a58309863606d648568a0ae958be5",
+      "size": 3889
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/TEN-BY-TEN-2026-10-26/ten-by-ten-report-2026-10-26.human.md",
+      "blob_sha": "0b2ffd12c98247da385e0be06107266f6f293e3d",
+      "size": 17607
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/TEN-BY-TEN-2026-10-26/ten-by-ten-report-2026-10-26.machine.json",
+      "blob_sha": "4cfda75f2aac81ee86191926b6f65892f2716cc3",
+      "size": 7702
     },
     {
       "path": "BRAIN/05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md",
@@ -4836,9 +4851,14 @@
       "size": 3513
     },
     {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1870/IB-SMART-NOTE-20261026-sn1870-the-only-mistake-is-not-making-a-note.md",
-      "blob_sha": "88eea31a1fa99b99d889fc3bb6dda44f40f9f66b",
-      "size": 2329
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1871/IB-SMART-NOTE-20261026-sn1871-be-intelligent-get-out-of-your-own-way.md",
+      "blob_sha": "4294c8cb8e0c25e38ebe40289ede37ce84121808",
+      "size": 3464
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1872/IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note.md",
+      "blob_sha": "c2d97cf19afe6cd6482907899d19d0ee3e6296cb",
+      "size": 2939
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
@@ -7681,6 +7701,41 @@
       "size": 2792
     },
     {
+      "path": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-01-mail.md",
+      "blob_sha": "f9932e649ac67b8b4047c2558ba7b630fa1066aa",
+      "size": 6897
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-02-connections.md",
+      "blob_sha": "162473034227f75029afc66a4777969a621b72cc",
+      "size": 6542
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-03-lists.md",
+      "blob_sha": "4dd879e35a64be661eadd45dc61c70e55e42656a",
+      "size": 7895
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-04-reports.md",
+      "blob_sha": "cbd0b1b78cc52fbb6185dfe9efe360728a5bf7aa",
+      "size": 6178
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-05-settings.md",
+      "blob_sha": "da3d7b27e63684e4af296aa097ae63b9ad3585ea",
+      "size": 7541
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-06-growth.md",
+      "blob_sha": "e471a3ab07adaeeb138add06a9fb10cf7cd97f52",
+      "size": 7647
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-07-intel-today.md",
+      "blob_sha": "26c38692074daffaccb7225ba32c41564e26be95",
+      "size": 8519
+    },
+    {
       "path": "BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3",
       "blob_sha": "569dd0afe7c278940dd82970e6118862c9c5b643",
       "size": 33837
@@ -7996,6 +8051,11 @@
       "size": 59944
     },
     {
+      "path": "BRAIN/90-OPERATIONS/2026-10-26-10-10-REPORT.md",
+      "blob_sha": "6537281ef185d74a3f78b804ea53e0e155213cc7",
+      "size": 14258
+    },
+    {
       "path": "BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md",
       "blob_sha": "d82083edcac4fb0641c7f4d6a4c6878dfd5c4215",
       "size": 16418
@@ -8027,8 +8087,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "4eb8da8d7c3a8bc67628a07a3f2436c4df05549c",
-      "size": 5391
+      "blob_sha": "3ab09658b35ec5d7caa4a2cda3c4cf704ebf4ed9",
+      "size": 4861
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8371,9 +8431,24 @@
       "size": 1489
     },
     {
+      "path": "BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.ai.md",
+      "blob_sha": "48bad3d1518679a5cac77e2fe9bad8aac6427cef",
+      "size": 18185
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.human.md",
+      "blob_sha": "bb9bf4d00fb28513364b1630af9f6841ab12a54b",
+      "size": 7891
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/spec.machine.json",
+      "blob_sha": "250fbff919a677dc912a5271251746e3f3aaa6c1",
+      "size": 25435
+    },
+    {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "cc289a7633010742d7bfaa074d76d3325ef93998",
-      "size": 20162
+      "blob_sha": "511be55ff83f53581a74078786c976cc59c176fb",
+      "size": 19285
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",

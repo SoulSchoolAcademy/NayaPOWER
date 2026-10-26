@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-26  
-**Receipt basis commit:** `41573abe8a79ff905bf1f28f9b15f379bf06bc9b`  
-**Inventory file count:** 1679  
+**Receipt basis commit:** `7ee2cae44960aa7a30c034c2ef7076bce54d438f`  
+**Inventory file count:** 1694  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -14,16 +14,16 @@
 | 01-GOVERNANCE | 93 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
-| 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 866 |
+| 04-INTELLIGENCE | 28 |
+| 05-MEMORY | 867 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 447 |
+| 10-INTERFACES | 454 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
-| 90-OPERATIONS | 105 |
+| 90-OPERATIONS | 109 |
 | 99-ARCHIVE | 2 |
 | ROOT | 7 |
 
@@ -236,6 +236,9 @@
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-PERSONA-V1.json` — `566168f324eb` (3567 bytes)
 - `BRAIN/04-INTELLIGENCE/README.md` — `6bd1a6ab1572` (3827 bytes)
 - `BRAIN/04-INTELLIGENCE/SMART-NODE-PROTOCOL-V1.json` — `8e70ac3fac7e` (4661 bytes)
+- `BRAIN/04-INTELLIGENCE/TEN-BY-TEN-2026-10-26/ten-by-ten-report-2026-10-26.ai.md` — `30f4588bdf1a` (3889 bytes)
+- `BRAIN/04-INTELLIGENCE/TEN-BY-TEN-2026-10-26/ten-by-ten-report-2026-10-26.human.md` — `0b2ffd12c982` (17607 bytes)
+- `BRAIN/04-INTELLIGENCE/TEN-BY-TEN-2026-10-26/ten-by-ten-report-2026-10-26.machine.json` — `4cfda75f2aac` (7702 bytes)
 ### 05-MEMORY — Memory
 
 - `BRAIN/05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md` — `1dad3e9d1c45` (1937 bytes)
@@ -1007,7 +1010,8 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md` — `1a7e5ca989b0` (2599 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SERVICE/showing-gate/SN-1869/IB-SMART-NOTE-20261026-sn1869-done-right-or-not-shown.md` — `42a4258b6df1` (3852 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1870/IB-SMART-NOTE-20261026-sn1870-once-you-learn-from-it-its-a-learning-lesson.md` — `8ade2fe89f21` (3513 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1870/IB-SMART-NOTE-20261026-sn1870-the-only-mistake-is-not-making-a-note.md` — `88eea31a1fa9` (2329 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1871/IB-SMART-NOTE-20261026-sn1871-be-intelligent-get-out-of-your-own-way.md` — `4294c8cb8e0c` (3464 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1872/IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note.md` — `c2d97cf19afe` (2939 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
@@ -1586,6 +1590,13 @@
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/06-living-counter.html` — `2608daf58143` (2347 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/07-orbit-dial.html` — `09f2d62e08e2` (1980 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/sg-chrome.css` — `70a99d8a7cbf` (2792 bytes)
+- `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-01-mail.md` — `f9932e649ac6` (6897 bytes)
+- `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-02-connections.md` — `162473034227` (6542 bytes)
+- `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-03-lists.md` — `4dd879e35a64` (7895 bytes)
+- `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-04-reports.md` — `cbd0b1b78cc5` (6178 bytes)
+- `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-05-settings.md` — `da3d7b27e636` (7541 bytes)
+- `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-06-growth.md` — `e471a3ab07ad` (7647 bytes)
+- `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-07-intel-today.md` — `26c38692074d` (8519 bytes)
 - `BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3` — `569dd0afe7c2` (33837 bytes)
 ### 11-KNOWLEDGE — Knowledge
 
@@ -1655,13 +1666,14 @@
 - `BRAIN/90-OPERATIONS/2026-10-23-most-intelligent-system-assessment-v1.machine.json` — `bf1b09de1e59` (18107 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-23-project-intelligence-team-master-build-order.machine.json` — `3968ffa0e960` (16477 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-25-14-QUESTIONS-10-10-REPORT.md` — `6382eb28a1ba` (59944 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-26-10-10-REPORT.md` — `6537281ef185` (14258 bytes)
 - `BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md` — `d82083edcac4` (16418 bytes)
 - `BRAIN/90-OPERATIONS/INTER-LEDGER-PROTOCOL.md` — `67d42af19eae` (24546 bytes)
 - `BRAIN/90-OPERATIONS/NETWORK-MAP.md` — `59a1dfba71b7` (9347 bytes)
 - `BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md` — `6daf7c27c05e` (18308 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 - `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
-- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `4eb8da8d7c3a` (5391 bytes)
+- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `3ab09658b35e` (4861 bytes)
 - `BRAIN/90-OPERATIONS/contracts/handoff-contract.md` — `3c8346c5942b` (21563 bytes)
 - `BRAIN/90-OPERATIONS/contracts/learning-contract.md` — `c42197ff505a` (21689 bytes)
 - `BRAIN/90-OPERATIONS/contracts/verification-contract.md` — `e70095fcbe07` (19666 bytes)
@@ -1730,7 +1742,10 @@
 - `BRAIN/90-OPERATIONS/network-registry/README.md` — `f561613fb1e3` (850 bytes)
 - `BRAIN/90-OPERATIONS/network-registry/naya2-team.json` — `7ab1ab56f34e` (1497 bytes)
 - `BRAIN/90-OPERATIONS/network-registry/naya5-team.json` — `cca9bdad8f3f` (1489 bytes)
-- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `cc289a763301` (20162 bytes)
+- `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.ai.md` — `48bad3d15186` (18185 bytes)
+- `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.human.md` — `bb9bf4d00fb2` (7891 bytes)
+- `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/spec.machine.json` — `250fbff919a6` (25435 bytes)
+- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `511be55ff83f` (19285 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
