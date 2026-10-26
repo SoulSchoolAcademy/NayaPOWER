@@ -1,0 +1,2264 @@
+{
+ "pack": "pi-data-pack",
+ "derived_at": "2026-10-26T18:00Z",
+ "derived_by": "naya-resolve",
+ "source": "public.work_items via REST read, cursor-paginated by item_key, 2026-10-26 ~17:58Z",
+ "integrity": {
+  "rows_in_table": 346,
+  "unique_items": 323,
+  "duplicate_keys": 23,
+  "duplicates_same_state": true,
+  "note": "23 item_keys exist as double-inserted rows, all pairs carrying the same state. Count ROWS and percents computed on rows are inflated (snapshot shows 46 done; unique truth is 40). Publisher must dedup by item_key (latest updated_at wins) before computing any displayed number."
+ },
+ "true_counts_unique": {
+  "total": 323,
+  "by_state": {
+   "queued": 190,
+   "needs_shawn": 8,
+   "in_progress": 68,
+   "verifying": 13,
+   "done_proven": 40,
+   "blocked": 4
+  },
+  "pct_done_proven": 12.4
+ },
+ "face_snapshot_counts_rows": {
+  "total": 344,
+  "done_proven": 46,
+  "in_progress": 69,
+  "queued": 202,
+  "verifying": 15,
+  "needs_shawn": 8,
+  "blocked": 4
+ },
+ "areas_candidate_derivation": {
+  "pi-hub": {
+   "total": 24,
+   "by_state": {
+    "in_progress": 11,
+    "queued": 12,
+    "verifying": 1
+   },
+   "pct_done_proven": 0.0
+  },
+  "voice-audio": {
+   "total": 12,
+   "by_state": {
+    "done_proven": 2,
+    "in_progress": 3,
+    "blocked": 1,
+    "queued": 6
+   },
+   "pct_done_proven": 16.7
+  },
+  "mail-notifications": {
+   "total": 6,
+   "by_state": {
+    "queued": 3,
+    "done_proven": 1,
+    "blocked": 1,
+    "in_progress": 1
+   },
+   "pct_done_proven": 16.7
+  },
+  "match": {
+   "total": 3,
+   "by_state": {
+    "queued": 2,
+    "verifying": 1
+   },
+   "pct_done_proven": 0.0
+  },
+  "welcome": {
+   "total": 10,
+   "by_state": {
+    "queued": 8,
+    "in_progress": 2
+   },
+   "pct_done_proven": 0.0
+  },
+  "connection": {
+   "total": 12,
+   "by_state": {
+    "queued": 6,
+    "in_progress": 4,
+    "verifying": 2
+   },
+   "pct_done_proven": 0.0
+  },
+  "membership-money": {
+   "total": 5,
+   "by_state": {
+    "needs_shawn": 1,
+    "queued": 2,
+    "in_progress": 2
+   },
+   "pct_done_proven": 0.0
+  },
+  "identity-settings": {
+   "total": 5,
+   "by_state": {
+    "queued": 3,
+    "in_progress": 1,
+    "done_proven": 1
+   },
+   "pct_done_proven": 20.0
+  },
+  "security-privacy": {
+   "total": 4,
+   "by_state": {
+    "queued": 3,
+    "needs_shawn": 1
+   },
+   "pct_done_proven": 0.0
+  },
+  "factory-interfaces": {
+   "total": 39,
+   "by_state": {
+    "queued": 32,
+    "in_progress": 3,
+    "done_proven": 3,
+    "blocked": 1
+   },
+   "pct_done_proven": 7.7
+  },
+  "projects-spaces": {
+   "total": 14,
+   "by_state": {
+    "queued": 5,
+    "in_progress": 9
+   },
+   "pct_done_proven": 0.0
+  },
+  "hub-dashboard": {
+   "total": 10,
+   "by_state": {
+    "queued": 5,
+    "needs_shawn": 1,
+    "done_proven": 1,
+    "in_progress": 2,
+    "blocked": 1
+   },
+   "pct_done_proven": 10.0
+  },
+  "unmapped": {
+   "total": 179,
+   "by_state": {
+    "queued": 103,
+    "needs_shawn": 5,
+    "done_proven": 32,
+    "verifying": 9,
+    "in_progress": 30
+   },
+   "pct_done_proven": 17.9
+  }
+ },
+ "unmapped_count": 179,
+ "unmapped_sample": [
+  "14q-door-walk-key-divergence",
+  "14q-ledger-feed-live",
+  "14q-live-walk-activate",
+  "14q-merge-gate-admin",
+  "14q-nitro-rendered-review",
+  "14q-sn1863-content-reconcile",
+  "cover-adjuster-reposition",
+  "cover-chooser-every-page",
+  "enh-a-a1",
+  "enh-a-a2",
+  "enh-a-b1",
+  "enh-a-b2",
+  "enh-a-d1",
+  "enh-a-d2",
+  "enh-a-g1",
+  "enh-a-g2",
+  "enh-a-i1",
+  "enh-a-l2",
+  "enh-a-m1",
+  "enh-a-m2",
+  "enh-a-r2",
+  "enh-a-s1",
+  "enh-a-s2",
+  "enh-a-v1",
+  "enh-a-w1"
+ ],
+ "named_lists": {
+  "needs_decision_packets": [
+   {
+    "item_key": "14q-merchant-payout-public",
+    "title": "14Q: Payout + pricing public confirmation + merchant keys secure flow"
+   },
+   {
+    "item_key": "14q-merge-gate-admin",
+    "title": "14Q: Merge-gate ruleset 24858146 admin tap"
+   },
+   {
+    "item_key": "fill-ask-1",
+    "title": "Ask Naya \u2014 the ear test is the remaining gate"
+   },
+   {
+    "item_key": "fill-hub-1",
+    "title": "The One Hub \u2014 performance rulings: 5 decisions pending Shawn"
+   },
+   {
+    "item_key": "gap-e5",
+    "title": "GITHUB_WEBHOOK_SECRET"
+   },
+   {
+    "item_key": "gap-e7",
+    "title": "gh-api PAT storage in the secure vault"
+   },
+   {
+    "item_key": "resolve-p0-anon-execute-payment-rpcs",
+    "title": "P0 \u2014 anonymous visitors can execute payment/booking database functions; permission change awaits Shawn"
+   },
+   {
+    "item_key": "resolve-production-packet-p1-p3",
+    "title": "Production packet P1\u2013P3 assembled (3 tongues) \u2014 awaiting Shawn's tap"
+   }
+  ],
+  "blocked": [
+   {
+    "item_key": "fill-ask-naya-3",
+    "title": "Voice path unproven by ear",
+    "blocker": {
+     "what": "Voice path unproven by ear",
+     "owner": "Shawn",
+     "since": "2026-10-23",
+     "clearing_action": "Shawn's ear test \u2014 his ear is ground truth and the final gate"
+    }
+   },
+   {
+    "item_key": "fill-smart-mail-2",
+    "title": "invite_send_log is anon-readable and holds rendered invite email bodies (PII)",
+    "blocker": {
+     "what": "invite_send_log is anon-readable and holds rendered invite email bodies (PII)",
+     "owner": "Shawn (privacy call) / data lane (cure)",
+     "since": "2026-10-23",
+     "clearing_action": "Approve the scoped-column projection cure; the HOLD stands until he decides"
+    }
+   },
+   {
+    "item_key": "fill-the-one-hub-3",
+    "title": "Performance: 5.17MB monolith, 7.3\u20138.2s first paint (sweep score 3.5)",
+    "blocker": {
+     "what": "Performance: 5.17MB monolith, 7.3\u20138.2s first paint (sweep score 3.5)",
+     "owner": "Shawn (rulings) / director seat (cures)",
+     "since": "2026-10-23",
+     "clearing_action": "Shawn rules on the 5 decisions sent 2026-10-23 06:33Z; cures then land one by one"
+    }
+   },
+   {
+    "item_key": "resolve-pr3063-factory-residuals-2-3",
+    "title": "Kernel residuals 2+3 (Factory S1 'Deep black') \u2014 PR #3063 open, merge held per L670",
+    "blocker": {
+     "what": "Awaiting a genuinely different-seat scorecard (L670) at head efecae71 \u2014 PR #3063 factory residuals 2+3 cure is built and parked",
+     "owner": "Any distinct seat (scorecard); main seat merges",
+     "since": "2026-10-25",
+     "clearing_action": "A distinct-seat 9.5+ scorecard lands on PR #3063; main seat merges on the disposition clock. Hold note: PR comment 6394220723"
+    }
+   }
+  ],
+  "top_priorities_in_progress": [
+   {
+    "item_key": "14q-pi-hub-10star",
+    "title": "14Q: Project Intelligence hub 10-star FIRST, before membership \u2014 user-viewable, Naya-optimized, central system",
+    "owner_seat": "naya-power"
+   },
+   {
+    "item_key": "ten-by-ten-execution-2026-10-26",
+    "title": "TEN-BY-TEN EXECUTION \u2014 the director's exercise is now the team's to-do list (report PR #3077)",
+    "owner_seat": "naya-resolve"
+   },
+   {
+    "item_key": "build-welcome-flow-engine",
+    "title": "SET B - ENGINE: profile vectors, Trinity generation spec, Smart Match v1 (code + first live run)",
+    "owner_seat": "naya-power"
+   },
+   {
+    "item_key": "pi-hub-ideal-design-20261026",
+    "title": "PI HUB \u2014 the ideal face, designed from the director's empty-page screenshot (2026-10-26)",
+    "owner_seat": "naya-resolve"
+   },
+   {
+    "item_key": "page-design-audit-2026-10-26",
+    "title": "PAGE DESIGN AUDIT 2026-10-26 \u2014 every page measured against the design contract (Shawn's order)",
+    "owner_seat": "naya-resolve"
+   },
+   {
+    "item_key": "auto-page-birth-mission",
+    "title": "MISSION: pages born automatically through the walkthrough - sign-in to Welcome to a live page, covered and matched",
+    "owner_seat": "naya-resolve"
+   },
+   {
+    "item_key": "mission-state-snapshot-retire-repoint-20261026",
+    "title": "Retire the Option C mission-state snapshot: re-point its two consumers to live/mission-state",
+    "owner_seat": "naya-resolve"
+   },
+   {
+    "item_key": "build-connection-system",
+    "title": "Build the NayaNET connection system \u2014 Allow-first, key fallback, fork path",
+    "owner_seat": "naya-power"
+   },
+   {
+    "item_key": "interface-registry-20261025",
+    "title": "Interface Registry: every interface scored, linked, engine-mapped, 10/10 + working",
+    "owner_seat": "naya-nitro"
+   },
+   {
+    "item_key": "membership-rebuild-review-20261025",
+    "title": "Membership rebuild: parent rendered review 9.0 STAGED (2026-10-25)",
+    "owner_seat": "naya-nitro"
+   },
+   {
+    "item_key": "connect-page-update-20261026",
+    "title": "Connect page updated to current plan: fork page stays for forkers + direct-connect door note + modal killed",
+    "owner_seat": "naya-nitro"
+   },
+   {
+    "item_key": "connections-merge-20261026",
+    "title": "Connections merge \u2014 dashboard#people + rooms/connections become ONE interconnected system",
+    "owner_seat": "naya-nitro"
+   }
+  ]
+ },
+ "rows_unique": [
+  {
+   "item_key": "14q-5plus3-dashboard",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 8900
+  },
+  {
+   "item_key": "14q-activation10-cold",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 8700
+  },
+  {
+   "item_key": "14q-connection-deno-hub-fresh",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9600
+  },
+  {
+   "item_key": "14q-connection-fork-isolation",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9200
+  },
+  {
+   "item_key": "14q-door-walk-key-divergence",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 9750
+  },
+  {
+   "item_key": "14q-factory-push-wire-inventory",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 9400
+  },
+  {
+   "item_key": "14q-ledger-feed-live",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9100
+  },
+  {
+   "item_key": "14q-live-walk-activate",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9800
+  },
+  {
+   "item_key": "14q-merchant-payout-public",
+   "state": "needs_shawn",
+   "owner_seat": "naya-power",
+   "priority": 8600
+  },
+  {
+   "item_key": "14q-merge-gate-admin",
+   "state": "needs_shawn",
+   "owner_seat": "naya-power",
+   "priority": 8500
+  },
+  {
+   "item_key": "14q-nitro-rendered-review",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 9300
+  },
+  {
+   "item_key": "14q-per-device-connections",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 8800
+  },
+  {
+   "item_key": "14q-pi-hub-10star",
+   "state": "in_progress",
+   "owner_seat": "naya-power",
+   "priority": 10000
+  },
+  {
+   "item_key": "14q-rls-repair-reproof",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9700
+  },
+  {
+   "item_key": "14q-smart-match-sql-deploy",
+   "state": "queued",
+   "owner_seat": "naya-resolve",
+   "priority": 9550
+  },
+  {
+   "item_key": "14q-sn1863-content-reconcile",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9050
+  },
+  {
+   "item_key": "activation-stale-venue-pointers-20261026",
+   "state": "queued",
+   "owner_seat": "naya-resolve",
+   "priority": 8800
+  },
+  {
+   "item_key": "app-format-finalization-20261026",
+   "state": "queued",
+   "owner_seat": "naya-resolve",
+   "priority": 830
+  },
+  {
+   "item_key": "auto-page-birth-mission",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 9800
+  },
+  {
+   "item_key": "automatch-onboarding-sync",
+   "state": "queued",
+   "owner_seat": "naya-resolve",
+   "priority": 9600
+  },
+  {
+   "item_key": "build-ambassador-system",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9000
+  },
+  {
+   "item_key": "build-connection-system",
+   "state": "in_progress",
+   "owner_seat": "naya-power",
+   "priority": 9000
+  },
+  {
+   "item_key": "build-welcome-flow",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 9999
+  },
+  {
+   "item_key": "build-welcome-flow-engine",
+   "state": "in_progress",
+   "owner_seat": "naya-power",
+   "priority": 9998
+  },
+  {
+   "item_key": "connect-page-current-plan-20261026",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 870
+  },
+  {
+   "item_key": "connect-page-update-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "connection-interface-nitro",
+   "state": "verifying",
+   "owner_seat": "naya-nitro",
+   "priority": 9050
+  },
+  {
+   "item_key": "connections-merge-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "cover-adjuster-reposition",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 700
+  },
+  {
+   "item_key": "cover-chooser-every-page",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 690
+  },
+  {
+   "item_key": "cover-library-interface-nitro",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 3100
+  },
+  {
+   "item_key": "cover-library-open-templates",
+   "state": "queued",
+   "owner_seat": "naya-resolve",
+   "priority": 600
+  },
+  {
+   "item_key": "cover-library-smart-factory-shelf",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 650
+  },
+  {
+   "item_key": "cover-library-wiring",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 700
+  },
+  {
+   "item_key": "dashboard-about-fix-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "enh-a-a1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3114
+  },
+  {
+   "item_key": "enh-a-a2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3124
+  },
+  {
+   "item_key": "enh-a-b1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3109
+  },
+  {
+   "item_key": "enh-a-b2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3120
+  },
+  {
+   "item_key": "enh-a-d1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3113
+  },
+  {
+   "item_key": "enh-a-d2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3121
+  },
+  {
+   "item_key": "enh-a-g1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3111
+  },
+  {
+   "item_key": "enh-a-g2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3123
+  },
+  {
+   "item_key": "enh-a-i1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3103
+  },
+  {
+   "item_key": "enh-a-l2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3132
+  },
+  {
+   "item_key": "enh-a-m1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3110
+  },
+  {
+   "item_key": "enh-a-m2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3122
+  },
+  {
+   "item_key": "enh-a-r2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3125
+  },
+  {
+   "item_key": "enh-a-s1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3117
+  },
+  {
+   "item_key": "enh-a-s2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3126
+  },
+  {
+   "item_key": "enh-a-v1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3105
+  },
+  {
+   "item_key": "enh-a-w1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3106
+  },
+  {
+   "item_key": "enh-a-w2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3118
+  },
+  {
+   "item_key": "enh-a-x1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3101
+  },
+  {
+   "item_key": "enh-b-hub16",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3128
+  },
+  {
+   "item_key": "enh-b-lib10",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3116
+  },
+  {
+   "item_key": "enh-b-lib9",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3115
+  },
+  {
+   "item_key": "enh-b-maildel",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3102
+  },
+  {
+   "item_key": "enh-b-r15",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3127
+  },
+  {
+   "item_key": "enh-b-r3",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3108
+  },
+  {
+   "item_key": "enh-b-route7",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3130
+  },
+  {
+   "item_key": "enh-b-set22",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3131
+  },
+  {
+   "item_key": "enh-b-sp12",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3119
+  },
+  {
+   "item_key": "enh-b-sp17",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3129
+  },
+  {
+   "item_key": "enh-b-today",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3100
+  },
+  {
+   "item_key": "enh-r-drill",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3112
+  },
+  {
+   "item_key": "f01",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 1001
+  },
+  {
+   "item_key": "f04",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 4
+  },
+  {
+   "item_key": "f06",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 6
+  },
+  {
+   "item_key": "f09",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 9
+  },
+  {
+   "item_key": "f10",
+   "state": "verifying",
+   "owner_seat": null,
+   "priority": 10
+  },
+  {
+   "item_key": "f12",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 12
+  },
+  {
+   "item_key": "f15",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 15
+  },
+  {
+   "item_key": "f16",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 16
+  },
+  {
+   "item_key": "f19",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": 1019
+  },
+  {
+   "item_key": "f22",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 1022
+  },
+  {
+   "item_key": "f28",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": 1028
+  },
+  {
+   "item_key": "f29",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3029
+  },
+  {
+   "item_key": "f32",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3032
+  },
+  {
+   "item_key": "f33",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3033
+  },
+  {
+   "item_key": "face-pulse-today",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 7000
+  },
+  {
+   "item_key": "factory-single-authority-reconcile-20261026",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 900
+  },
+  {
+   "item_key": "factory-templates-complete-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "fill-ask-1",
+   "state": "needs_shawn",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-ask-naya-1",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-ask-naya-2",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-ask-naya-3",
+   "state": "blocked",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-flow-2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-hub-1",
+   "state": "needs_shawn",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-hub-2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-mirror-1",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-nitro-1",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-smart-mail-1",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-smart-mail-2",
+   "state": "blocked",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-smart-mail-3",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-team-nitro-1",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-team-nitro-2",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-team-nitro-3",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-mirror-program-1",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-mirror-program-2",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-one-flow-1",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-one-flow-2",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-one-flow-3",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-one-hub-1",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-one-hub-2",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-one-hub-3",
+   "state": "blocked",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-one-hub-4",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-smart-factory-1",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-smart-factory-2",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-smart-factory-3",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-the-smart-factory-4",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-voice-1",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-voice-2",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-voice-3",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "fill-voice-4",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "gap-a1",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 2
+  },
+  {
+   "item_key": "gap-a10",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 8
+  },
+  {
+   "item_key": "gap-a11",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 13
+  },
+  {
+   "item_key": "gap-a12",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 14
+  },
+  {
+   "item_key": "gap-a13",
+   "state": "verifying",
+   "owner_seat": null,
+   "priority": 11
+  },
+  {
+   "item_key": "gap-a14",
+   "state": "verifying",
+   "owner_seat": null,
+   "priority": 60
+  },
+  {
+   "item_key": "gap-a15",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 61
+  },
+  {
+   "item_key": "gap-a2",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 3
+  },
+  {
+   "item_key": "gap-a3",
+   "state": "verifying",
+   "owner_seat": null,
+   "priority": 17
+  },
+  {
+   "item_key": "gap-a4",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 57
+  },
+  {
+   "item_key": "gap-a5",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 7
+  },
+  {
+   "item_key": "gap-a6",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 44
+  },
+  {
+   "item_key": "gap-a7",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 58
+  },
+  {
+   "item_key": "gap-a8",
+   "state": "verifying",
+   "owner_seat": null,
+   "priority": 5
+  },
+  {
+   "item_key": "gap-a9",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 59
+  },
+  {
+   "item_key": "gap-b1",
+   "state": "in_progress",
+   "owner_seat": "Surfaces stage",
+   "priority": 1036
+  },
+  {
+   "item_key": "gap-b2",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": 1062
+  },
+  {
+   "item_key": "gap-b3",
+   "state": "in_progress",
+   "owner_seat": "Ask port (finisher)",
+   "priority": 1037
+  },
+  {
+   "item_key": "gap-b4",
+   "state": "in_progress",
+   "owner_seat": "Surfaces stage",
+   "priority": 1043
+  },
+  {
+   "item_key": "gap-c1",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": 1018
+  },
+  {
+   "item_key": "gap-c2",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": 1020
+  },
+  {
+   "item_key": "gap-c3",
+   "state": "done_proven",
+   "owner_seat": "Factory lane (builder c23a6e39; Phi 9.6)",
+   "priority": 23
+  },
+  {
+   "item_key": "gap-c4",
+   "state": "done_proven",
+   "owner_seat": null,
+   "priority": 1063
+  },
+  {
+   "item_key": "gap-c5",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": 1021
+  },
+  {
+   "item_key": "gap-d1",
+   "state": "in_progress",
+   "owner_seat": "Dashboard stage (Nu)",
+   "priority": 1039
+  },
+  {
+   "item_key": "gap-d10",
+   "state": "done_proven",
+   "owner_seat": "Best-of-Best Wave 1",
+   "priority": 50
+  },
+  {
+   "item_key": "gap-d11",
+   "state": "done_proven",
+   "owner_seat": "Best-of-Best Wave 1",
+   "priority": 49
+  },
+  {
+   "item_key": "gap-d12",
+   "state": "done_proven",
+   "owner_seat": "Best-of-Best Wave 1",
+   "priority": 51
+  },
+  {
+   "item_key": "gap-d13",
+   "state": "done_proven",
+   "owner_seat": "Best-of-Best Wave 1",
+   "priority": 31
+  },
+  {
+   "item_key": "gap-d14",
+   "state": "in_progress",
+   "owner_seat": "Surfaces stage",
+   "priority": 1042
+  },
+  {
+   "item_key": "gap-d15",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3054
+  },
+  {
+   "item_key": "gap-d16",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3055
+  },
+  {
+   "item_key": "gap-d17",
+   "state": "done_proven",
+   "owner_seat": "Best-of-Best Wave 1",
+   "priority": 52
+  },
+  {
+   "item_key": "gap-d18",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3056
+  },
+  {
+   "item_key": "gap-d19",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3053
+  },
+  {
+   "item_key": "gap-d2",
+   "state": "in_progress",
+   "owner_seat": "Dashboard stage (Nu)",
+   "priority": 1040
+  },
+  {
+   "item_key": "gap-d20",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3066
+  },
+  {
+   "item_key": "gap-d21",
+   "state": "in_progress",
+   "owner_seat": "Voice streaming build",
+   "priority": 1047
+  },
+  {
+   "item_key": "gap-d22",
+   "state": "done_proven",
+   "owner_seat": "Factory lane",
+   "priority": 67
+  },
+  {
+   "item_key": "gap-d23",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3068
+  },
+  {
+   "item_key": "gap-d24",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3069
+  },
+  {
+   "item_key": "gap-d25",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3070
+  },
+  {
+   "item_key": "gap-d26",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3071
+  },
+  {
+   "item_key": "gap-d27",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3072
+  },
+  {
+   "item_key": "gap-d28",
+   "state": "in_progress",
+   "owner_seat": "Team Nitro (Smart Ledger build)",
+   "priority": 1030
+  },
+  {
+   "item_key": "gap-d29",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3073
+  },
+  {
+   "item_key": "gap-d3",
+   "state": "in_progress",
+   "owner_seat": "Dashboard stage (Nu)",
+   "priority": 1064
+  },
+  {
+   "item_key": "gap-d30",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3074
+  },
+  {
+   "item_key": "gap-d31",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3075
+  },
+  {
+   "item_key": "gap-d32",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3076
+  },
+  {
+   "item_key": "gap-d33",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3077
+  },
+  {
+   "item_key": "gap-d34",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3078
+  },
+  {
+   "item_key": "gap-d35",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3079
+  },
+  {
+   "item_key": "gap-d36",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3080
+  },
+  {
+   "item_key": "gap-d37",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3081
+  },
+  {
+   "item_key": "gap-d38",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3082
+  },
+  {
+   "item_key": "gap-d39",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3083
+  },
+  {
+   "item_key": "gap-d4",
+   "state": "in_progress",
+   "owner_seat": "Dashboard stage (Nu)",
+   "priority": 1041
+  },
+  {
+   "item_key": "gap-d40",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3084
+  },
+  {
+   "item_key": "gap-d41",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3085
+  },
+  {
+   "item_key": "gap-d42",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3086
+  },
+  {
+   "item_key": "gap-d43",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3087
+  },
+  {
+   "item_key": "gap-d44",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3088
+  },
+  {
+   "item_key": "gap-d45",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 1089
+  },
+  {
+   "item_key": "gap-d46",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3090
+  },
+  {
+   "item_key": "gap-d47",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3091
+  },
+  {
+   "item_key": "gap-d5",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3065
+  },
+  {
+   "item_key": "gap-d6",
+   "state": "in_progress",
+   "owner_seat": "Dashboard stage (Nu)",
+   "priority": 1038
+  },
+  {
+   "item_key": "gap-d7",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3048
+  },
+  {
+   "item_key": "gap-d8",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3045
+  },
+  {
+   "item_key": "gap-d9",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3046
+  },
+  {
+   "item_key": "gap-e1",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": 1024
+  },
+  {
+   "item_key": "gap-e2",
+   "state": "in_progress",
+   "owner_seat": null,
+   "priority": 1027
+  },
+  {
+   "item_key": "gap-e3",
+   "state": "verifying",
+   "owner_seat": "Team Nitro \u00b7 Issue Hygiene (Rho)",
+   "priority": 26
+  },
+  {
+   "item_key": "gap-e4",
+   "state": "done_proven",
+   "owner_seat": "Team Nitro (cert repair seat 4d30e0d4)",
+   "priority": 25
+  },
+  {
+   "item_key": "gap-e5",
+   "state": "needs_shawn",
+   "owner_seat": null,
+   "priority": 4034
+  },
+  {
+   "item_key": "gap-e6",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 3092
+  },
+  {
+   "item_key": "gap-e7",
+   "state": "needs_shawn",
+   "owner_seat": null,
+   "priority": 4035
+  },
+  {
+   "item_key": "growth-merge-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "hub-single-source-cure-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-power",
+   "priority": 995
+  },
+  {
+   "item_key": "hub-sn1873-misroute-cure-20261026",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9300
+  },
+  {
+   "item_key": "intel-today-merge-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "interface-registry-20261025",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1136
+  },
+  {
+   "item_key": "journey-test-2026-10-23",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": null
+  },
+  {
+   "item_key": "library-overhaul-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "lists-overhaul-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "mail-right-one-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "membership-access-gating-20261025",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 3135
+  },
+  {
+   "item_key": "membership-complete-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "membership-rebuild-review-20261025",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1133
+  },
+  {
+   "item_key": "mission-state-snapshot-retire-repoint-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 9100
+  },
+  {
+   "item_key": "note-standalone-pages",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 6000
+  },
+  {
+   "item_key": "other-ais-connection-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "page-audit-ask-naya",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 700
+  },
+  {
+   "item_key": "page-audit-booking",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 650
+  },
+  {
+   "item_key": "page-audit-business",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 920
+  },
+  {
+   "item_key": "page-audit-connect",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 700
+  },
+  {
+   "item_key": "page-audit-connections",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 500
+  },
+  {
+   "item_key": "page-audit-dashboard",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 920
+  },
+  {
+   "item_key": "page-audit-factory",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 500
+  },
+  {
+   "item_key": "page-audit-feed",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 700
+  },
+  {
+   "item_key": "page-audit-growth",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 550
+  },
+  {
+   "item_key": "page-audit-hub-home",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 700
+  },
+  {
+   "item_key": "page-audit-identity-certificate",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 700
+  },
+  {
+   "item_key": "page-audit-intelligence",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 550
+  },
+  {
+   "item_key": "page-audit-join",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 700
+  },
+  {
+   "item_key": "page-audit-ledger",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 500
+  },
+  {
+   "item_key": "page-audit-library",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 500
+  },
+  {
+   "item_key": "page-audit-life-with-naya",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 850
+  },
+  {
+   "item_key": "page-audit-lists",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 550
+  },
+  {
+   "item_key": "page-audit-mail",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 500
+  },
+  {
+   "item_key": "page-audit-mission-room",
+   "state": "queued",
+   "owner_seat": "naya-resolve",
+   "priority": 940
+  },
+  {
+   "item_key": "page-audit-payments",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 650
+  },
+  {
+   "item_key": "page-audit-personal",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 920
+  },
+  {
+   "item_key": "page-audit-projects",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 800
+  },
+  {
+   "item_key": "page-audit-projects-questions",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 930
+  },
+  {
+   "item_key": "page-audit-projects-state",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 300
+  },
+  {
+   "item_key": "page-audit-projects-todos",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 800
+  },
+  {
+   "item_key": "page-audit-reports",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 500
+  },
+  {
+   "item_key": "page-audit-settings",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 700
+  },
+  {
+   "item_key": "page-audit-smart-note-public",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 600
+  },
+  {
+   "item_key": "page-audit-space-page",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 920
+  },
+  {
+   "item_key": "page-audit-spaces-room",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 500
+  },
+  {
+   "item_key": "page-audit-today",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 900
+  },
+  {
+   "item_key": "page-audit-welcome",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 500
+  },
+  {
+   "item_key": "page-birth-cold-walk",
+   "state": "queued",
+   "owner_seat": "naya-resolve",
+   "priority": 9400
+  },
+  {
+   "item_key": "page-birth-interface",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 9500
+  },
+  {
+   "item_key": "page-design-audit-2026-10-26",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 9900
+  },
+  {
+   "item_key": "pi-activity-notifications-20261025",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 3134
+  },
+  {
+   "item_key": "pi-duplicates-reconcile-20261026",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 900
+  },
+  {
+   "item_key": "pi-face-build-track-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 984
+  },
+  {
+   "item_key": "pi-face-content-track-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-power",
+   "priority": 983
+  },
+  {
+   "item_key": "pi-face-design-rebuild-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 985
+  },
+  {
+   "item_key": "pi-face-world-view-20261026",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 985
+  },
+  {
+   "item_key": "pi-github-app-sync-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-power",
+   "priority": 990
+  },
+  {
+   "item_key": "pi-hub-ideal-design-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 9950
+  },
+  {
+   "item_key": "pi-notifications-mail-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-power",
+   "priority": 960
+  },
+  {
+   "item_key": "pi-operating-code-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 970
+  },
+  {
+   "item_key": "pi-per-part-scoring-activity-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-power",
+   "priority": 982
+  },
+  {
+   "item_key": "pi-stalled-work-surfacing-20261026",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9200
+  },
+  {
+   "item_key": "pricing-finish-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1090
+  },
+  {
+   "item_key": "pricing-page-finish-20261026",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 900
+  },
+  {
+   "item_key": "privacy-locks-before-citizens-20261026",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 700
+  },
+  {
+   "item_key": "project-list-states",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 6500
+  },
+  {
+   "item_key": "projects-overhaul-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "prove-privacy-two-owner",
+   "state": "queued",
+   "owner_seat": null,
+   "priority": 9500
+  },
+  {
+   "item_key": "q14-10",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "reports-merge-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "resolve-automatch-buildable-complete",
+   "state": "verifying",
+   "owner_seat": "naya-resolve",
+   "priority": 900
+  },
+  {
+   "item_key": "resolve-p0-anon-execute-payment-rpcs",
+   "state": "needs_shawn",
+   "owner_seat": "naya-resolve",
+   "priority": 900
+  },
+  {
+   "item_key": "resolve-pr3062-kernel-residual-1",
+   "state": "verifying",
+   "owner_seat": "naya-resolve",
+   "priority": 500
+  },
+  {
+   "item_key": "resolve-pr3063-factory-residuals-2-3",
+   "state": "blocked",
+   "owner_seat": "naya-resolve",
+   "priority": 500
+  },
+  {
+   "item_key": "resolve-pr3064-reporting-residual-5",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 500
+  },
+  {
+   "item_key": "resolve-pr3065-migration-ledger-registration",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 700
+  },
+  {
+   "item_key": "resolve-production-packet-p1-p3",
+   "state": "needs_shawn",
+   "owner_seat": "naya-resolve",
+   "priority": 950
+  },
+  {
+   "item_key": "resolve-registry-reconcile-sn0594",
+   "state": "queued",
+   "owner_seat": "naya-resolve",
+   "priority": 400
+  },
+  {
+   "item_key": "resolve-sentinel-cure-pr3067",
+   "state": "verifying",
+   "owner_seat": "naya-resolve",
+   "priority": 700
+  },
+  {
+   "item_key": "resolve-sn1865-choose-whats-best",
+   "state": "verifying",
+   "owner_seat": "naya-resolve",
+   "priority": 600
+  },
+  {
+   "item_key": "resolve-sn1866-finish-and-connect",
+   "state": "verifying",
+   "owner_seat": "naya-resolve",
+   "priority": 600
+  },
+  {
+   "item_key": "resolve-sn1867-alignment-is-the-trump",
+   "state": "verifying",
+   "owner_seat": "naya-resolve",
+   "priority": 600
+  },
+  {
+   "item_key": "resolve-sn1868-never-wait-never-stop",
+   "state": "done_proven",
+   "owner_seat": "naya-resolve",
+   "priority": 600
+  },
+  {
+   "item_key": "settings-merge-20261026",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 880
+  },
+  {
+   "item_key": "settings-one-20261026",
+   "state": "done_proven",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "shawn-feedback-into-pi-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "smart-covers-chooser",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 680
+  },
+  {
+   "item_key": "smart-covers-library-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "smart-factory-templates-complete-20261026",
+   "state": "done_proven",
+   "owner_seat": "naya-power",
+   "priority": 840
+  },
+  {
+   "item_key": "smart-notes-file-to-live-proof-20261026",
+   "state": "queued",
+   "owner_seat": "naya-resolve",
+   "priority": 690
+  },
+  {
+   "item_key": "smart-tabs-business-spaces-apps-20261026",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 950
+  },
+  {
+   "item_key": "spaces-directory-smart-format-20261026",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 870
+  },
+  {
+   "item_key": "standing-audit-resolve-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 600
+  },
+  {
+   "item_key": "standing-rules-tonight-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 995
+  },
+  {
+   "item_key": "tabs-spaces-complete-20261026",
+   "state": "in_progress",
+   "owner_seat": "naya-nitro",
+   "priority": 1100
+  },
+  {
+   "item_key": "ten-by-ten-execution-2026-10-26",
+   "state": "in_progress",
+   "owner_seat": "naya-resolve",
+   "priority": 10000
+  },
+  {
+   "item_key": "voice-queue-cure-20261026",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 980
+  },
+  {
+   "item_key": "walkthrough-narration-nitro-20261026",
+   "state": "queued",
+   "owner_seat": "naya-nitro",
+   "priority": 700
+  },
+  {
+   "item_key": "walkthrough-page-birth-wiring",
+   "state": "queued",
+   "owner_seat": "naya-power",
+   "priority": 9700
+  },
+  {
+   "item_key": "waste-heartbeat-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-heartbeat-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-heartbeat-2026-10-26",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-media-notes-transcribe-watcher-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-media-notes-transcribe-watcher-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-media-notes-transcribe-watcher-2026-10-25",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-media-notes-transcribe-watcher-2026-10-26",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-naya-build-queue-processor-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-naya-build-queue-processor-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-naya-smart-notes-sync-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-naya-smart-notes-sync-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-naya-stream-daemon-supervisor-2026-10-26",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-naya-sync-watchdog-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-naya-sync-watchdog-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-naya-voice-synthesis-queue-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-naya-voice-synthesis-queue-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-nitro-director-pass-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-nitro-director-pass-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-nitro-wave-dispatcher-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-nitro-wave-dispatcher-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-nitro-wave-dispatcher-2026-10-26",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-project-intelligence-refresh-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-project-intelligence-refresh-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-project-intelligence-refresh-2026-10-25",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-project-intelligence-refresh-2026-10-26",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-project-intelligence-state-publish-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-project-intelligence-state-publish-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-project-intelligence-state-publish-2026-10-25",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-project-intelligence-state-publish-2026-10-26",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-smartlink-route-reconciler-watchdog-2026-10-23",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  },
+  {
+   "item_key": "waste-smartlink-route-reconciler-watchdog-2026-10-24",
+   "state": "queued",
+   "owner_seat": "director",
+   "priority": null
+  }
+ ]
+}
