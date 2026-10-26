@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 11:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20365,6 +20365,14 @@ _Last updated: 2026-10-26 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0392 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
+**Task:** Queue-discipline slot: recount, 34-draft inventory, gray-zone action-time fingerprint, pipeline pins, report
+
+**Receipt:** `twelve-lane-receipts/t0392-lane7.md`
+
+**Evidence:** VERIFIED 2026-10-26T10:56Z via GitHub REST: sign-in comment 6127382356 and sign-out/report comment 6127418702 both exist on #2175, and the sign-out body matches the receipt's 450-open-PR / 34-draft claims. Why not 9.5: (1) REST bled to ~22 calls vs the <=6 guidance; (2) sign-out shipped with a placeholder comment ID and needed a PATCH fix; (3) #245
+
+### ✅ t0392 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
 **Task:** Queue-discipline slot: 450 open PR re-count, 34-draft inventory, gray-zone re-fingerprint at action time, zero closes
 
 **Receipt:** `twelve-lane-receipts/t0392-lane7.md`
@@ -20378,6 +20386,14 @@ _Last updated: 2026-10-26 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0392-lane7.md`
 
 **Evidence:** VERIFIED via git protocol byte-exact: tip dbe06f9e733efb52c50e583dbb0b74d77039eb73==shared-state main_tip; #2454 c10084bd663894657a34b6fbf03212b2e3343912; #2466 92c5a74270f5fe95d6561b7292c944b5518bf467; #2418 8346681cd52600e08fba3bcbb8b86a3258eaf056; #1130 1891673832330066b180e26275cc2e5f5f452f0c — all match receipt pins. Score 9.0 (GOOD, ONE MORE 
+
+### ✅ t0392 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Stage 0 slice-1 auto-retrieval prototype: TF-IDF top-k principles + top-m Smart Notes, 3-brief demo
+
+**Receipt:** `twelve-lane-receipts/t0392-lane2.md`
+
+**Evidence:** VERIFIED 2026-10-26T10:55Z on live workspace bytes: hidden_files/auto-retrieval-proto.py exists (10914 bytes, receipt claimed 10900) and lane-experiments/t0392/auto-retrieval/outputs + assessments.md exist; --demo re-ran exit 0 and reproduced the same top-k SETS on all 3 briefs. Why not 9.5: (1) ranking quality never independently verified at the t
 
 ### ✅ t0392 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -38308,6 +38324,12 @@ _Last updated: 2026-10-26 10:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261026-0358 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat stall 03:58 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-26T11:05Z: rotation twelve-lane-rotation.json queued=24 is exactly the 24 brief files the receipt names (set equality checked, zero diff either way: 18 brief-gap-t*, 1 brief-gap-gap-t0052-lane11, 4 brief-gap-gap-gap-*, 1 brief-gap-gap-gap-gap-t1564-lane11); brief-queue/ root holds exactly those 24 plus lane-
 
 ### ✅ seat-stall-20261026-0258 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
