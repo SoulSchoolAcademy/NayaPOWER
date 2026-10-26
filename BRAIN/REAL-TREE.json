@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "435fa6da25fb2aadf61b657b67808d6d20fdeb2c",
+  "receipt_basis_commit": "383e6fee4c5cc95d7782abe9dcd6497ec590d38e",
   "inventory_file_count": 1696,
   "domain_counts": {
     "00-ACTIVATION": 19,
@@ -4867,8 +4867,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1877/IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time.md",
-      "blob_sha": "494c2ded2be90db1d5fc2867cbce791a0c222bce",
-      "size": 4080
+      "blob_sha": "7d05557ba00b71967b5705ea5bec58802c44c29a",
+      "size": 5954
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
