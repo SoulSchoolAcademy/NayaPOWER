@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 22:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21637,6 +21637,14 @@ _Last updated: 2026-10-26 22:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: prereg-sealed.md exists and sha256 7b726ce437441ca2... == receipt pin; measure_h9.py, h9r1-result.json, pins-real.json all exist. Gate pre-verified on 4 synthetic behaviors, seal held, delta +0.2286 < +0.25 -> NO-GO honored. Thin N=7, M proxy undercount admitted (not post-hoc patched). Same H9 R1 work covered by the t0172-lane2
 
+### ✅ t0162 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human Value window audit t0122-t0162: instrument determinism + hand audit + regression + HV3 no-movement discipline
+
+**Receipt:** `twelve-lane-receipts/t0162-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane-11/hv_output_t0162_run1.json and run2.json byte-identical, sha256 d4e59a1874fb91fe97fdbfa100c68c38c3574d8c9badd3da32ef127c05791755 exactly matching the receipt pin; post1/post2 byte-identical, sha256 5705d3b1e8971725c0d91f25eb6bb73fc40673dd31fea605e6db39e71280518a exactly matching the receipt pin; metric_
+
 ### ✅ t0162-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** HV window audit t0122-t0162 (instrument determinism + hand audit + regression)
@@ -34504,6 +34512,20 @@ _Last updated: 2026-10-26 22:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-gap-t0162-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up: fix hv_measure.py --help crash (mixed lane-type sort) + lane%s print, window totals unchanged
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0162-lane11-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: post-fix hidden_files/bin/hv_measure.py sha256 a83e2ab07fd70c150d9ea5a34549304a97bf1ebd33fc9a284a57263fe0c3c22e exactly matches receipt pin; parent receipt gap-t0162-lane11.md sha256 37f94399e6324ebed1f6bf9c17e36fe5815af7811b8390e52cb6bfa40d7697d2 exactly matches; --help exits 0; scoped --window t0122-t0162 --
+
+### ✅ gap-t0162-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: second-seat re-run of t0122-t0162 hand audit, independent row re-judgment + instrument re-run + exposed t0142-lane4 M3 call upheld
+
+**Evidence:** VERIFIED this tick on workspace bytes: parent receipt t0162-lane11.md sha256 d868cbe69b9ea87975a8e85c7dd586e00bb43c16ac9b88d78e0aeda5907e57a9 matches; audit JSON lane-11/metric_audit_t0162.json sha256 4b1ee9920638ce140cbf3f7ecb3fa1ffb1031cd375970ae4ffc3e9feb760e2fb matches; row-level recomputation from the 12 receipt rows gives M2:12/M3:5/M4:1 exac
 
 ### ✅ gap-t0052-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
