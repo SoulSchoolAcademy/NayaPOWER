@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34512,6 +34512,22 @@ _Last updated: 2026-10-26 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-gap-gap-gap-t0162-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap-gap-gap follow-up: independently re-execute hv_measure.py landing-path repo-tree leg at parent HEAD and current tip + PR search re-run
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-gap-t0162-lane11-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes and by fresh independent re-execution: saved tree-HEAD-4316bc72.txt sha256 63c7ee4371b6e22fbda1d36ce18fd0bafb3ced30ffe65b8aabb6e6eac52291bc (5087 paths) and tree-parentHEAD-5af6d2ee.txt sha256 a1c12170da1e3652ace25cf1b216364c63ccac5cb90012e553cbf8ffaab73a23 (5083 paths) both exactly match receipt pins, with 0 h
+
+### ✅ gap-gap-gap-t0162-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up: decide hv_measure.py landing path (repo copy existence + in-flight vehicle + frozen pin + decision note)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t0162-lane11-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: live bin/hv_measure.py sha256 a83e2ab07fd70c150d9ea5a34549304a97bf1ebd33fc9a284a57263fe0c3c22e exactly matches parent post-fix pin; frozen pin lane-11/gap-gap-gap-t0162-lane11-lane11/hv_measure-postfix.py identical sha; --help exits 0, 24 lines, output sha256 56b73cfed862bc9ef74c8012100c863713af581bb06129dceb8
 
 ### ✅ gap-gap-t0162-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
