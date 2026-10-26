@@ -15474,13 +15474,33 @@
         "note": "published directly as a BRAIN projection in commit 41d7704d3cdc0faa8338c4beb01d0bc4dec7f4af ('SN-1868: Never Wait, Never Stop') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-25 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "397883b9c9b29a3b06bb194a57a0c2e8b21d25bd21e9b5fab3f5149aa876192f"
+    },
+    {
+      "smart_note_id": "SN-1869",
+      "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1869-done-right-or-not-shown",
+      "title": "Done Right, or Not Shown",
+      "content_hash": "dbfa89eac789f1fd2ac7dfd25f6bae6fe1b22661f488df0a442be09435fc2cda",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SERVICE/showing-gate/SN-1869/IB-SMART-NOTE-20261026-sn1869-done-right-or-not-shown.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SERVICE",
+      "topic": "SERVICE",
+      "subtopic": "SHOWING_GATE",
+      "captured_at": "2026-10-26",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-26 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "1a6041f040284e71216e750a2cb893dc9d56bc78bbe22f6bcbbf232e64442cf4"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1869,
+    "next_sequence": 1870,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "9c6401cabf2632efb80e8ccf419b4c167e8b4d4b76bb1177eda5e96de63bdb3b"
+  "corpus_manifest_hash": "ef5a71d637e5fd8c8c0781add0e55b644f9700d08b5155660b99f482d41250b2"
 }
