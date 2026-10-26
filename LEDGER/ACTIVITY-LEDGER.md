@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 22:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 22:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30533,6 +30533,22 @@ _Last updated: 2026-10-26 22:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-gap-t0582b — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on PR #2509: re-verify closed/unmerged state, closing comment, head_ref_deleted, branch absence, workflow absence from main at new tip, and byte-exact recoverability of the B-60 wiring commit
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0582b-lane4.md`
+
+**Evidence:** VERIFIED this tick: receipt gap-gap-t0582b-lane4.md exists; its preserved evidence in hidden_files/gap-gap-t0582b-evidence/ matches every load-bearing claim checked (PR #2509 state closed, merged=false, merged_at=null, closed_at 2026-10-21T00:06:09Z, head 59832ba6144f5f8dc71ec5d1127437cb80446427, merge_commit_sha 59df3c80f5d5b83cff7d303dacaf6d39348
+
+### ✅ gap-t0582b — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on PR #2509: NOT CLOSED verdict - PR closed unmerged, branch deleted, workflow never on main, re-carry decision owed
+
+**Receipt:** `twelve-lane-receipts/gap-t0582b-lane4.md`
+
+**Evidence:** VERIFIED this tick in part: receipt gap-t0582b-lane4.md exists; git ls-remote for refs/heads/lane4/b60-smart-note-completeness-gate-wiring returns empty, independently corroborating the load-bearing claim that the branch is gone (vehicle-gone verdict, not a pending merge). NOT PHANTOM on that leg. SCORE 9.0 GOOD, ONE MORE PASS, agreeing with the la
+
 ### ✅ gap-t1466 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.2/10 [VERIFIED]
 
 **Task:** Gap follow-up on parent t1462-lane4 (9.2): corroborate or refute the owner_lock decided_by Shawn self-attribution
@@ -38444,6 +38460,26 @@ _Last updated: 2026-10-26 22:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-1541 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 15:41 PDT: full brief queue evaluated in order, 25/25 refused exit 7 (parent-authorship), queue untouched
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt gate-stall-20261026-1541.md exists; rotation twelve-lane-rotation.json queued=25 matches the receipt's 25 evaluated briefs; brief-queue root now holds 26 non-feed .md files, exactly the receipt's 25 plus the gap-gap-gap-t0582b follow-up filed by this scorer tick after the stall sweep, so the stall coun
+
+### ✅ gap-gate-stall-20261026-1437 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: 25/25 dry-run reproduction of gate-stall exit-7 refusals + cost ranking 1-25
+
+**Receipt:** `twelve-lane-receipts/gap-gate-stall-20261026-1437-lane0.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt gap-gate-stall-20261026-1437-lane0.md exists; dry-run log hidden_files/gap-gate-stall-20261026-1437-dryrun.log sha256 8a22d546f4492d7dc2997b06744a54ef52bd4583ed3429d2e1388759d2a353a8 matches the receipt pin exactly; parent receipt gate-stall-20261026-1437.md sha256 27d1161bd2df69ae4cc7bafe60772cb4339dc
+
+### ✅ gate-stall-20261026-1437 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 14:37 PDT: full brief queue evaluated in order, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-26T22:20Z: rotation twelve-lane-rotation.json queued=25 is exactly the 25 brief files the receipt names (all 25 present in brief-queue/, plus lane-feed.md = 26 .md files at root); scorer spot re-ran bin/claim-brief.py --dry-run (NAYA_CLAIM_SEAT='Naya Clarity Narzan') for brief-gap-t1468-lane5.md and brief-ga
 
 ### ✅ seat-stall-20261026-1328 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
