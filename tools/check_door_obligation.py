@@ -475,6 +475,26 @@ def tombstone_class(root: Path, registry: dict, pages: list[dict]) -> list[dict]
             for sid in sorted(ever - registered - on_disk - with_page)]
 
 
+def _range_endpoints(range_spec: str) -> tuple[str, str]:
+    """Endpoints of a git range, two-dot (A..B) or three-dot (A...B).
+
+    The uniqueness gate needs the two endpoint refs; the delta diff keeps
+    the caller's dot semantics. partition("..") alone misparses a
+    three-dot range (head becomes ".B") and the gate then fails closed
+    on a ref that does not exist — the door-obligation workflow's
+    pull_request path passes three dots (diagnosed on PR #3088,
+    2026-10-26: CI red while every local leg passed in a shallow
+    checkout, where the gate's history scan never engaged).
+    """
+    if "..." in range_spec:
+        base, _, head = range_spec.partition("...")
+    else:
+        base, _, head = range_spec.partition("..")
+    if not base or not head:
+        raise RuntimeError("uniqueness gate requires A..B revision range")
+    return base, head
+
+
 def pages_in_range(root: Path, range_spec: str, all_pages: list[dict]) -> list[dict]:
     out = _git(root, "diff", "--name-only", "--diff-filter=AM", range_spec,
                "--", str(BRAIN_NOTES_REL).replace("\\", "/"))
@@ -786,9 +806,7 @@ def main(argv=None) -> int:
                 raise RuntimeError("cannot load Smart Note uniqueness gate")
             unique = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(unique)
-            base, separator, head = args.range_spec.partition("..")
-            if not separator or not base or not head:
-                raise RuntimeError("uniqueness gate requires A..B revision range")
+            base, head = _range_endpoints(args.range_spec)
             all_paths = unique.git("ls-tree", "-r", "--name-only", head)
             added_paths = unique.git("diff", "--name-only", "--diff-filter=AR",
                                      base, head, "--", unique.ROOT)
