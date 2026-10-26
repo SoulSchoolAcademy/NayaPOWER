@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-26T00:15:31+00:00",
+ "generated_utc": "2026-10-26T01:15:44+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,12 +133,6 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3072,
-     "title": "Resolve/cover library v1 2026 10 25",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3072",
-     "draft": false
-    },
-    {
      "number": 3052,
      "title": "Naya/mission state",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3052",
@@ -151,7 +145,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 2
   },
   {
    "id": "wire",
@@ -230,8 +224,15 @@
    "next_action": "Pick the single highest-value product surface and drive it to an honest 9.0+ with live proof \u2014 one proven surface beats twelve assessed ones.",
    "active_now": false,
    "board_lane": "#2175 lane PRODUCT",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3075,
+     "title": "Move 1: interfaces + Smart Factory into GitHub (Hub-app scope)",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3075",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "memory",
@@ -405,5 +406,5 @@
   }
  ],
  "open_pr_total": 3,
- "unassigned_prs": 3
+ "unassigned_prs": 2
 }
