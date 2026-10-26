@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-26 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9682,6 +9682,14 @@ _Last updated: 2026-10-26 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0983-lane10.md`
 
 **Evidence:** VERIFIED: receipt exists on disk; check-run kit hidden_files/lane-10/check-run-t0983-lane10/ holds 28 .out + exits.txt, exit histogram {2:10, 7:18} matches the receipt's claim byte-for-byte; sampled .out refusing lines (e.g. 20261018-0830-lane12) match the table's quoted lines; the new brief brief-gap-lane-scorer-20261019-1230-lane3.md exists in br
+
+### ✅ t982 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** Legacy-row re-export heal on PR #2400: detail_source=legacy-fallback marker in ib_reconcile.py, 74 tests
+
+**Receipt:** `twelve-lane-receipts/t982-lane4.md`
+
+**Evidence:** VERIFIED 2026-10-26T15:33Z on live bytes: receipt t982-lane4.md exists, sha256 bec838aa314fa3f7...; git ls-remote (protocol, no REST) shows branch naya/four-block-roundtrip-t922 GONE and refs/pull/2400/head now 973177d48be53da5da694469eeeb757caa28805c, NOT the receipt's claimed bed1d0b7fbc762996d12732311070b96dd4fd9ab - live re-pin of the claimed S
 
 ### ✅ t982 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
@@ -38340,6 +38348,12 @@ _Last updated: 2026-10-26 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-0808 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 08:08 PDT: full brief queue evaluated in order, 24/24 refused exit 7 (parent-authorship), queue untouched
+
+**Evidence:** VERIFIED on live workspace bytes 2026-10-26T15:12Z: receipt gate-stall-20261026-0808.md exists, sha256 bcdf2e11fd5b42e20ddd968b653b467cb16d42974f3bd1332ad6bd91c8b17e1; rotation twelve-lane-rotation.json queued=24 is exactly the 24 brief files the receipt names (set equality checked, zero diff either way: 18 brief-gap-t*, 1 brief-gap-gap-t0052-lane1
 
 ### ✅ gate-stall-20261026-0704 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
