@@ -178,6 +178,21 @@ def check_protocol_pin() -> tuple[bool, str]:
         return False, f"protocol pin check failed ({e}) — boot refused (fail closed)"
 
 
+def check_nia_protocol() -> tuple[bool, str]:
+    """Bind the NIA behavioral law to cold activation, fail closed on drift."""
+    try:
+        import importlib.util
+        path = ROOT / "kernel" / "protocol" / "nia_protocol_gate.py"
+        spec = importlib.util.spec_from_file_location("naya_nia_protocol_gate", path)
+        if spec is None or spec.loader is None:
+            return False, "NIA behavior gate not loadable — boot refused"
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.check_contract(ROOT)
+    except Exception as e:
+        return False, f"NIA protocol integrity error — boot refused: {e}"
+
+
 def run_gate(agent_id: str = "unknown") -> dict:
     manifest = load_manifest()
     checks = []
@@ -191,6 +206,7 @@ def run_gate(agent_id: str = "unknown") -> dict:
         ("never_do_complete", lambda: check_never_do_nonempty(manifest)),
         ("activation_checklist", check_activation_checklist),
         ("protocol_pin", check_protocol_pin),
+        ("nia_protocol_integrity", check_nia_protocol),
     ]
 
     all_pass = True

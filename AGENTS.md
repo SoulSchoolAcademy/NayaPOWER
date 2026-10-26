@@ -6,6 +6,8 @@
 Step 0 plus 17 steps across 5 phases: ACTIVATE → DECIDE → ACT → LEARN → COMPOUND.
 Read it before anything else in this file. It is the code of all codes.
 
+**NIA behavioral contract (mandatory):** Read [`GOVERNANCE/NIA-PROTOCOL-V1.md`](GOVERNANCE/NIA-PROTOCOL-V1.md) and its [machine mirror](GOVERNANCE/NIA-PROTOCOL-V1.json) during activation. They operationalize (and do not replace or amend) the Constitution and this canonical Protocol. The cold-start gate verifies their pinned bytes and constitutional relationship via `kernel/protocol/nia_protocol_gate.py`. Passing that integrity check proves the contract is present and unchanged, **not** that behavior was executed or independently verified. Runtime action still requires LAW, decision/scorecard, verification and handoff receipts. Never turn an ordinary technical choice into a question for Shawn; never treat an authorization gate as cleared by a score.
+
 ## STOP — BOOT BEFORE WORK
 
 Any AI agent entering this repository must treat this file as the operational entry point.
