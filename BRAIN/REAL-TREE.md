@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-26  
-**Receipt basis commit:** `5ca29bd5326003585f9ec9a1cfba2321fd73b4d4`  
-**Inventory file count:** 1696  
+**Receipt basis commit:** `bede189e9e64c71b9fbfa69415d9ea235c5ae470`  
+**Inventory file count:** 1695  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 869 |
+| 05-MEMORY | 868 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -666,7 +666,6 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-0595/IB-SMART-NOTE-20261001-sn0595-complete-the-app-doctrine.md` — `f1149459829e` (8651 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-0596/IB-SMART-NOTE-20261001-sn0596-naya-signature-design-mastery.md` — `b63c66afc291` (7470 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-0597/IB-SMART-NOTE-20261002-sn0597-human-centered-design-intelligence.md` — `6b4757cc65c1` (7294 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0594/IB-SMART-NOTE-20261001-hub-is-intelligence-projection-dup0594.md` — `0a9d960c6d2e` (1688 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/03/SYSTEM-INTELLIGENCE/CI-TRIAGE/TEST-DEFECT-CLASSIFICATION/SN-0232/IB-SMART-NOTE-20261003-sn0232-test-that-pins-the-bug-is-the-defect.md` — `6bf858c49f3e` (7164 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/03/SYSTEM-INTELLIGENCE/HUMAN-UNDERSTANDING/INTENT-READING/SN-0229/IB-SMART-NOTE-20261003-sn0229-tune-to-intent-not-to-words.md` — `0e2f8a6e71b1` (6348 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/03/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CLASSIFICATION-INTEGRITY/SN-0231/IB-SMART-NOTE-20261003-sn0231-repair-by-predeclared-closed-registry.md` — `fc7f4286bdd6` (6733 bytes)
@@ -968,11 +967,11 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0829/IB-SMART-NOTE-20261023-sn0829-see-it-fix-it-write-it-down.md` — `f6a32d155cf4` (5909 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0830/IB-SMART-NOTE-20261023-sn0830-think-before-you-act-always.md` — `3dead908c75c` (4564 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0831/IB-SMART-NOTE-20261023-sn0831-naya-means-wise-one.md` — `22b3e9c9da41` (4030 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0833/IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note.md` — `13ae9ffa2588` (5146 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0834/IB-SMART-NOTE-20261023-sn0834-the-fourteen-questions.md` — `a05fe40cd3d2` (9600 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0835/IB-SMART-NOTE-20261023-sn0835-produce-more-waste-less.md` — `4d25d3da8487` (6950 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1063/IB-SMART-NOTE-20261023-sn1063-remember-who-you-are.md` — `d470e6b51b05` (5092 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1850/IB-SMART-NOTE-20261023-sn1850-the-best-possible-move.md` — `a1b476d8145c` (8163 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1875/IB-SMART-NOTE-20261023-sn1875-the-only-mistake-is-the-missing-note.md` — `ff5cdb3ca69a` (5603 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md` — `788f720cd202` (5987 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0837/IB-SMART-NOTE-20261023-sn0837-check-which-door.md` — `993a5d2897a0` (7068 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/project-intelligence/SN-0839/IB-SMART-NOTE-20261023-sn0839-the-ultimate-project-intelligence.md` — `7f72bf7a930c` (9756 bytes)

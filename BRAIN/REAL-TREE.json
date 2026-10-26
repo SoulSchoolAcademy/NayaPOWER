@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "5ca29bd5326003585f9ec9a1cfba2321fd73b4d4",
-  "inventory_file_count": 1696,
+  "receipt_basis_commit": "bede189e9e64c71b9fbfa69415d9ea235c5ae470",
+  "inventory_file_count": 1695,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 869,
+    "05-MEMORY": 868,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -3131,11 +3131,6 @@
       "size": 7294
     },
     {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0594/IB-SMART-NOTE-20261001-hub-is-intelligence-projection-dup0594.md",
-      "blob_sha": "0a9d960c6d2e76ec080f21caa74f31f565fd4f86",
-      "size": 1688
-    },
-    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/03/SYSTEM-INTELLIGENCE/CI-TRIAGE/TEST-DEFECT-CLASSIFICATION/SN-0232/IB-SMART-NOTE-20261003-sn0232-test-that-pins-the-bug-is-the-defect.md",
       "blob_sha": "6bf858c49f3eb8bd2f6332db82e502d2050e1fad",
       "size": 7164
@@ -4641,11 +4636,6 @@
       "size": 4030
     },
     {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0833/IB-SMART-NOTE-20261023-sn0833-the-only-mistake-is-the-missing-note.md",
-      "blob_sha": "13ae9ffa2588c3a5fc652191aae9ac2cd4517af3",
-      "size": 5146
-    },
-    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-0834/IB-SMART-NOTE-20261023-sn0834-the-fourteen-questions.md",
       "blob_sha": "a05fe40cd3d230f818e0ed3b6d73746cc9e0dcfe",
       "size": 9600
@@ -4664,6 +4654,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1850/IB-SMART-NOTE-20261023-sn1850-the-best-possible-move.md",
       "blob_sha": "a1b476d8145ce187bd697bf1555c11b908592ffa",
       "size": 8163
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/intelligence/SN-1875/IB-SMART-NOTE-20261023-sn1875-the-only-mistake-is-the-missing-note.md",
+      "blob_sha": "ff5cdb3ca69ae06622f4939cbf72638a164d87c7",
+      "size": 5603
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM/learning/SN-0833/IB-SMART-NOTE-20261023-sn0833-learn-grow-compound-first-mistake-law.md",
