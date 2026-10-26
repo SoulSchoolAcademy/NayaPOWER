@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T02:24:24Z",
-  "tip": "78d9c9d041831df3361ec7168c82a5ba9cb2bcb3",
+  "generated_at": "2026-10-26T03:24:21Z",
+  "tip": "7ee2cae44960aa7a30c034c2ef7076bce54d438f",
   "prs": [
     {
       "number": 2981,
@@ -19,16 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "c26345c08f83732cd3a834eb6435926132e77135"
-    },
-    {
-      "number": 3075,
-      "title": "Move 1: interfaces + Smart Factory into GitHub (Hub-app scope)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "a2eda7d2bb7e8aed81890e066e78d4aaec48597a"
+      "head": "5f7f6171cf6e9521df794061290bd79ba543a192"
     }
   ]
 }
