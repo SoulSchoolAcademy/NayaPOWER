@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-25T22:15:49+00:00",
+ "generated_utc": "2026-10-26T00:15:31+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,6 +133,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 3072,
+     "title": "Resolve/cover library v1 2026 10 25",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3072",
+     "draft": false
+    },
+    {
      "number": 3052,
      "title": "Naya/mission state",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3052",
@@ -145,7 +151,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 3
   },
   {
    "id": "wire",
@@ -398,6 +404,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 2,
- "unassigned_prs": 2
+ "open_pr_total": 3,
+ "unassigned_prs": 3
 }
