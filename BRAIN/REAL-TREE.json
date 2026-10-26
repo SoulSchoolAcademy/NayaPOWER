@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-26",
-  "receipt_basis_commit": "e32d05d3f8e132dbe4c98beab36b0d2304e389ae",
+  "receipt_basis_commit": "20bfc69c64acbcee667f3d2310886f7128375308",
   "inventory_file_count": 1696,
   "domain_counts": {
     "00-ACTIVATION": 19,
@@ -37,13 +37,13 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.ai.md",
-      "blob_sha": "df6e070645957b62696090a15ce707bc93d2a0e4",
-      "size": 5642
+      "blob_sha": "951efeb02792419849b9e7f9ab22df0934d3d411",
+      "size": 5643
     },
     {
       "path": "BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md",
-      "blob_sha": "755003f08bad21c4ace2cbc5e161ad08d4f99ec0",
-      "size": 11781
+      "blob_sha": "287629a768e52d419092003100b8153bc05e6bac",
+      "size": 11783
     },
     {
       "path": "BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.ai.md",
@@ -57,13 +57,13 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.ai.md",
-      "blob_sha": "8bb994e9c15f5279e7dfc43dc3ac59fb7d19f599",
-      "size": 12606
+      "blob_sha": "98cc3ce50195205029329f4a59a5aab46cf5278a",
+      "size": 12607
     },
     {
       "path": "BRAIN/00-ACTIVATION/READ-ME-FIRST.md",
-      "blob_sha": "db3218d6ef30f3a7ea404d208ce2927b949c3899",
-      "size": 18794
+      "blob_sha": "78affe3d417aa408c9f1aad7759f5236a8249b6b",
+      "size": 18797
     },
     {
       "path": "BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.ai.md",
@@ -87,8 +87,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/activation-packet.machine.json",
-      "blob_sha": "ac3de67735a556be53578949e6ad7dc0665f5e25",
-      "size": 3588
+      "blob_sha": "e96c1a2ba23d7ae49a0ccb3203250013897cfcf6",
+      "size": 3621
     },
     {
       "path": "BRAIN/00-ACTIVATION/design-activation.machine.json",
@@ -102,7 +102,7 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md",
-      "blob_sha": "944bd28661ece5d33e902c81105db722ad87201b",
+      "blob_sha": "36d8118202c0b1b0128e200d51c924c555432c56",
       "size": 2669
     },
     {
@@ -112,8 +112,8 @@
     },
     {
       "path": "BRAIN/00-ACTIVATION/read-me-first.machine.json",
-      "blob_sha": "74eaecc296bcb2683fd969b1f7622e19bca0db49",
-      "size": 6081
+      "blob_sha": "6d834b48fd0ab35a471fcef725f95a9412363415",
+      "size": 6046
     },
     {
       "path": "BRAIN/00-ACTIVATION/the-code-she-lives-by.machine.json",

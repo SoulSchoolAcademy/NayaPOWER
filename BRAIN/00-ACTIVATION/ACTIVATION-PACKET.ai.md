@@ -35,7 +35,7 @@
 ## 3. Your mission
 
 - Master Directive: issue #2601 — the single handoff artifact; read first.
-- Live coordination board: issue #2793, ratified as the live venue by Shawn 2026-10-22 (GT-068). Read `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state` first; if the snapshot names a different board, the snapshot wins.
+- Live coordination board: issue #3066, the live venue (successor to #2793, archived 2026-10-25). Read `BRAIN/CURRENT-MISSION-STATE.md` on branch `naya/mission-state` first; if the snapshot names a different board, the snapshot wins.
 - Sign in under your own name at start; sign out under your own name at finish. Every sign-out: DONE with evidence links, BLOCKED with owner + next step, or REMAINING.
 - Anchor every byte-verification on the live ref, never a cached list.
 
@@ -54,4 +54,4 @@
 
 ## 5. Your declaration (activation completes when declared)
 
-Post on the live coordination board (#2793, per §3 resolution), filled in, under your own name: name, lane seat, wave; sha256 first-8-chars of the Oath file read, the Manifesto file, and THE-CREED.md; Directive #2601 read timestamp; "I carry the 8 laws in §2"; your drift line (one honest line); "I am locked in. Tag — I'm it." Hash with `sha256sum <file>`. The hashes prove what you read — no trust required.
+Post on the live coordination board (#3066, per §3 resolution), filled in, under your own name: name, lane seat, wave; sha256 first-8-chars of the Oath file read, the Manifesto file, and THE-CREED.md; Directive #2601 read timestamp; "I carry the 8 laws in §2"; your drift line (one honest line); "I am locked in. Tag — I'm it." Hash with `sha256sum <file>`. The hashes prove what you read — no trust required.

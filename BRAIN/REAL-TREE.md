@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-26  
-**Receipt basis commit:** `e32d05d3f8e132dbe4c98beab36b0d2304e389ae`  
+**Receipt basis commit:** `20bfc69c64acbcee667f3d2310886f7128375308`  
 **Inventory file count:** 1696  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -33,22 +33,22 @@
 
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.ai.md` — `12ae7e15f71d` (5562 bytes)
 - `BRAIN/00-ACTIVATION/ACTIVATION-CHECKLIST.md` — `1b990d7507f6` (10868 bytes)
-- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.ai.md` — `df6e07064595` (5642 bytes)
-- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `755003f08bad` (11781 bytes)
+- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.ai.md` — `951efeb02792` (5643 bytes)
+- `BRAIN/00-ACTIVATION/ACTIVATION-PACKET.md` — `287629a768e5` (11783 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.ai.md` — `b6625c7713eb` (3707 bytes)
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
-- `BRAIN/00-ACTIVATION/READ-ME-FIRST.ai.md` — `8bb994e9c15f` (12606 bytes)
-- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `db3218d6ef30` (18794 bytes)
+- `BRAIN/00-ACTIVATION/READ-ME-FIRST.ai.md` — `98cc3ce50195` (12607 bytes)
+- `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` — `78affe3d417a` (18797 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.ai.md` — `c074423b64b6` (2248 bytes)
 - `BRAIN/00-ACTIVATION/THE-CODE-SHE-LIVES-BY.md` — `6543873fee80` (2185 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
 - `BRAIN/00-ACTIVATION/activation-checklist.machine.json` — `bb5245a637d8` (3513 bytes)
-- `BRAIN/00-ACTIVATION/activation-packet.machine.json` — `ac3de67735a5` (3588 bytes)
+- `BRAIN/00-ACTIVATION/activation-packet.machine.json` — `e96c1a2ba23d` (3621 bytes)
 - `BRAIN/00-ACTIVATION/design-activation.machine.json` — `79c288d65adf` (3080 bytes)
 - `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.ai.md` — `44a2f7d09c27` (2151 bytes)
-- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `944bd28661ec` (2669 bytes)
+- `BRAIN/00-ACTIVATION/instant-activation/THE-CREED.md` — `36d8118202c0` (2669 bytes)
 - `BRAIN/00-ACTIVATION/instant-activation/the-creed.machine.json` — `85b43667e8a1` (2456 bytes)
-- `BRAIN/00-ACTIVATION/read-me-first.machine.json` — `74eaecc296bc` (6081 bytes)
+- `BRAIN/00-ACTIVATION/read-me-first.machine.json` — `6d834b48fd0a` (6046 bytes)
 - `BRAIN/00-ACTIVATION/the-code-she-lives-by.machine.json` — `770d9d0f2af4` (2300 bytes)
 ### 00-ARCHITECTURE — (unregistered domain)
 
