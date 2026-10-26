@@ -18,12 +18,12 @@
   as first paint. Every number
   on this face carries its read time. If the read fails, the face says so
   and shows structure only — it never invents a number.
-  Per-area % and per-item rows are WITHHELD until their gates land (see README):
-  per-area % needs backfill acceptance (Uncategorized under 5%, zero done
-  uncategorized, zero needs-decision uncategorized); item rows need the
-  live items read on the production worker (endpoint contract in the
-  companion README). Until then the face shows the gate honestly, never
-  a staged number presented as live.
+  Per-area % is WITHHELD until backfill acceptance (see README):
+  Uncategorized under 5%, zero done uncategorized, zero needs-decision
+  uncategorized. Item rows read same-origin /pi/api/items (Hub worker
+  data route, live record at request time). When the route's read-only
+  access is not set worker-side, the route answers not-configured and
+  the face keeps its honest gated message — never a staged row.
   Machine proof (hashes, SHAs, entry IDs, raw receipts) lives ONE TAP
   behind each item's Details door — never on the surface.
   Design: verbatim N5 tokens only, white text always, white rim at rest,
@@ -166,6 +166,22 @@
   body.calm .pill, body.calm .btn, body.calm .room{transition:none}
   .orb.flash{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.55), 0 0 18px -2px var(--shown)}
   pre{white-space:pre-wrap; word-break:break-word; color:var(--white); font-size:14px; line-height:1.5; margin:10px 0}
+  /* Item rows: same boards language — gradient, white rim, shadow. */
+  .item-row{
+    width:100%; padding:16px 18px; margin:12px 0; border:2px solid rgba(255,255,255,.55); border-radius:14px;
+    background:linear-gradient(180deg,#050507,#020203); color:var(--white);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 6px 16px rgba(0,0,0,.5);
+  }
+  .item-name{font-size:18px; font-weight:700; color:var(--white)}
+  .item-meta{font-size:14px; color:var(--paper); margin-top:4px}
+  .item-note{font-size:14px; color:var(--paper); margin:6px 0 0}
+  .mini-btn{
+    display:inline-flex; align-items:center; gap:8px; min-height:40px; padding:0 16px;
+    border:2px solid var(--white); border-radius:999px; background:linear-gradient(180deg,#050507,#020203);
+    color:var(--white); font:inherit; font-size:14px; font-weight:700; cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55);
+  }
+  .mini-btn:hover,.mini-btn:focus-visible{border-color:var(--purple); outline:none}
 </style>
 </head>
 <body>
@@ -217,7 +233,7 @@
       <h2>Everything to do, everything done</h2>
     </div></div>
     <p>Nothing is hidden behind a filter here. Done and to-do are unmistakable: done means finished <em>and</em> proven — anything less stays in to-do until its proof lands.</p>
-    <div class="notice warn" id="itemsNotice"><strong>Item rows:</strong> waiting on the items endpoint — a Hub worker data route that reads the live record at request time (greenlight named in PI + board). The counts above are live; no rows are invented.</div>
+    <div class="notice warn" id="itemsNotice"><strong>Item rows:</strong> waiting on the items endpoint's read-only access — the route is live, its access is set worker-side (operator step named in PI + board). The counts above are live; no rows are invented.</div>
     <div class="btnrow">
       <button class="btn" id="showDoneBtn" type="button">Show done · proven</button>
       <button class="btn" id="showTodoBtn" type="button">Show to-do</button>
@@ -487,6 +503,51 @@
     }
     el.textContent = val;
   }
+  function esc(s){ return String(s === null || s === undefined ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function itemRowHTML(it){
+    var words = it.state_words || STATE_WORDS[it.state] || it.state;
+    var upd = it.updated_at ? String(it.updated_at).slice(0, 16).replace("T", " ") : "unknown";
+    var html = '<div class="item-row"><div class="item-name">' + esc(it.title) + '</div>'
+      + '<div class="item-meta">' + esc(words) + ' · owner: ' + esc(it.owner_seat || "unassigned") + ' · updated: ' + esc(upd) + '</div>';
+    if(it.next_action){ html += '<p>Next step: ' + esc(it.next_action) + '</p>'; }
+    if(it.blocker){ html += '<p>Blocked by: ' + esc(it.blocker) + '</p>'; }
+    (it.notes_tail || []).forEach(function(n){ html += '<p class="item-note">Note: ' + esc(n) + '</p>'; });
+    html += '<div class="btnrow"><button class="mini-btn item-details-btn" type="button">Details</button></div>'
+      + '<div class="hidden item-proof"><p class="dark">Item: ' + esc(it.item_key) + ' · state code: ' + esc(it.state) + ' · proof rule: done counts only with evidence + a prover who is not the maker.</p>';
+    if(it.evidence_url){ html += '<p><a href="' + esc(it.evidence_url) + '" target="_blank" rel="noopener">Proof link</a></p>'; }
+    else { html += '<p class="dark">No evidence link recorded.</p>'; }
+    html += '</div></div>';
+    return html;
+  }
+  function loadItems(){
+    var notice = document.getElementById("itemsNotice");
+    fetch("/pi/api/items?t=" + Date.now(), {cache: "no-store", headers: {"Cache-Control": "no-cache", "Pragma": "no-cache"}}).then(function(r){
+      if(!r.ok){ throw new Error("items read " + r.status); }
+      return r.json();
+    }).then(function(d){
+      if(d.configured === false){
+        notice.className = "notice warn";
+        notice.innerHTML = "<strong>Item rows:</strong> the items route is live, but its read-only access is not set worker-side yet — the operator step is named in PI + board. No rows are invented.";
+        return;
+      }
+      var done = [], todo = [];
+      (d.items || []).forEach(function(it){ if(it.state === "done_proven"){ done.push(it); } else { todo.push(it); } });
+      var donePane = document.getElementById("donePane");
+      var todoPane = document.getElementById("todoPane");
+      donePane.innerHTML = done.length ? done.map(itemRowHTML).join("") : '<p class="dark">No done \u00b7 proven rows in this read.</p>';
+      todoPane.innerHTML = todo.length ? todo.map(itemRowHTML).join("") : '<p class="dark">No to-do rows in this read.</p>';
+      todoPane.classList.remove("hidden");
+      var btns = document.querySelectorAll(".item-details-btn");
+      btns.forEach(function(b){ b.addEventListener("click", function(){ var proof = b.parentElement.nextElementSibling; if(proof){ proof.classList.toggle("hidden"); } }); });
+      window.__itemsReadAt = d.read_at || "";
+      notice.className = "notice";
+      notice.innerHTML = "<strong>Item rows:</strong> live from the record, read at " + esc(d.read_at || "unknown") + ". No rows invented.";
+      var mp = document.getElementById("machinePanel");
+      if(mp && window.__itemsReadAt){ mp.textContent = mp.textContent.replace("Item rows: pending — items endpoint access not set worker-side (operator step named in PI + board)", "Item rows: live — GET /pi/api/items, read at " + window.__itemsReadAt); }
+    }).catch(function(){
+      // Keep the honest gated message; rows stay absent, never invented.
+    });
+  }
   function load(){
     var statusLine = document.getElementById("statusLine");
     var readTimeLine = document.getElementById("readTimeLine");
@@ -545,7 +606,7 @@
       panel.push("Schema: " + (d.schema_version || "unknown"));
       panel.push("Route: /pi (legacy /pi-face.html serves the same face)");
       panel.push("Deploy: Hub worker auto-deploy (deploy-hub-cloudflare.yml)");
-      panel.push("Item rows: pending — items endpoint (Hub worker data route + read-only secret, greenlight in PI/board)");
+      panel.push(window.__itemsReadAt ? ("Item rows: live — GET /pi/api/items, read at " + window.__itemsReadAt) : "Item rows: pending — items endpoint access not set worker-side (operator step named in PI + board)");
       panel.push("Area %: pending — area schema tap + backfill acceptance");
       panel.push("Parts at 9+: unmeasured — no score register exists");
       document.getElementById("machinePanel").textContent = panel.join("\n");
@@ -565,8 +626,9 @@
       document.getElementById("machineRaw").textContent = "No live read.";
     });
   }
-  document.getElementById("refreshBtn").addEventListener("click", load);
+  document.getElementById("refreshBtn").addEventListener("click", function(){ load(); loadItems(); });
   load();
+  loadItems();
 })();
 </script>
 </body>
