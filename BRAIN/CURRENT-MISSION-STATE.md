@@ -1,8 +1,10 @@
 # CURRENT MISSION STATE — Team Naya
 
-Last verified: 2026-10-25 21:40 PDT (2026-10-26T04:40:04Z) by the director pass.
-Main tip: `a966a6f` - UNCHANGED this tick (git ls-remote HEAD byte-match; zero merges, zero direct pushes; merge receipt watch not run - no tip move).
-Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 184 comments (+10 this tick, pages 6-7), 2,316 short of the 2,500 hard cap; no successor board; no migration trigger.
+Last verified: 2026-10-25 22:08 PDT (2026-10-26T05:08Z) by the director pass.
+Main tip: `5ca29bd5` - MOVED a966a6f9 -> 5ca29bd5 (merges #3083 + #3084 at 04:38Z, direct push registry cure 04:45Z).
+Live board: #3066 - successor to #2793 (archived 2026-10-25 09:10Z), 197 comments (+13 this tick, page 7), 2,303 short of the 2,500 hard cap; no successor board; no migration trigger.
+
+- 2026-10-25 22:08 PDT tick: MOVED TICK. TIP 5ca29bd5. BOARD #3066: 184 -> 197 (+13). MERGE RECEIPT WATCH: #3083 BREACH (unfilled template, 0 reviews), #3084 BREACH (no 3-pass receipt, merged against its own Do-NOT-merge staging) - breaches #54-55. DIRECT PUSH 5ca29bd5 registry cure SN-1870/71/72/74 landed (seal c6d54607, door defects 9->1). New blockers: kernel FAIL x2 sequence-policy at new tip (next_sequence still 1874). Top actions: retro-verification #54-55 at tip; sequence-policy cure; C1+C2 cure landing; SN-1873 forced reprocess; #3082 scorecard (deadline 2026-10-27).
 
 
 - 2026-10-25 21:40 PDT tick: QUIET TIP, BOARD MOVED. TIP a966a6f UNCHANGED. BOARD #3066: 174 -> 184 (+10 ids above watermark 6407931238, pages 6-7): 6408142948 venue mirror (Power receipts on retired #2793, stale pointer; SN-1873 still serving SN-1874 text, hub cure PI pri 9300 owed); 6408191987 post-merge proof #3080/#3081 (breach-wave proof set #3076-#3081 COMPLETE, form breaches #48-53 stand); 6408205496 registry cure pack (SN-1870/71/72/74 mis-registered not drifted; October sweep 330 entries zero byte-drift); 6408219407 PR #3052 scorecard 3/10 DO NOT MERGE; 6408256076 first-claim SN-0833 + SN-1852 (A keeps, B renumbers); 6408261307 +617 disposition option (iii) winner; 6408303984 registry cure landing HELD pending independent re-derivation (Wave 3); 6408325035 correction: +617 lines, 603 distinct new keys, main-only keys 0; 6408342932 SN-1873 misroute root cause (share manifest last-writer-wins, no deletion handling) - cure one forced reprocess, owner Naya Power hub/sync lane, bundle same for sn0833; 6408353806 PR #3084 OPEN (ledger archive, head 0cba6f22, different-seat scorecard asked). naya2_to_builder: 0 appended (none builder-addressed), cap 20 holds. Ledger sync skipped (hash identical). Board-cap: 184 < 2,300, NO MIGRATION. Zero 403s.
