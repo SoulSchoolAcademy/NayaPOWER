@@ -76,6 +76,15 @@ def _load_snv2(root: Path):
     return mod
 
 
+def _load_sn_claims(root: Path):
+    """Load tools/sn_claims.py from the target root (single claim authority)."""
+    spec = importlib.util.spec_from_file_location(
+        "sn_claims", root / "tools" / "sn_claims.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
 def _git(root: Path, *args: str) -> str | None:
     try:
         r = subprocess.run(["git", *args], cwd=root, capture_output=True,
@@ -343,6 +352,80 @@ def check_pages(root: Path, snv2, pages: list[dict], registry: dict,
                     "owner": "cure lane",
                 })
     return defects
+
+
+def filing_warnings(root: Path, registry: dict, scoped_pages: list[dict],
+                    range_spec: str | None) -> list[dict]:
+    """WARN-level (P1) filing-guard checks — they never change the exit
+    code; they name drift while it is still cheap to cure.
+
+    COUNTER_STALE: the registry's next_sequence counter points at or
+    below an occupied number. The counter is advisory display only (the
+    allocator in tools/smart_note_v2.py, claimed through
+    tools/sn_claims.py, is the numbering authority) — a stale counter is
+    how hand-numbering lanes reissue an occupied id.
+
+    UNCLAIMED_NUMBER (range mode only — a filing in flight): a page in
+    the range carries a number with no claim anchored on the sn-claims
+    branch, i.e. claim-before-author was skipped. The pre-guard corpus
+    is not re-litigated: full-tree mode does not raise this warning.
+    """
+    warnings: list[dict] = []
+    try:
+        claims_mod = _load_sn_claims(root)
+    except Exception as exc:  # guard unreadable: warn, never fail the door
+        return [{"kind": "CLAIMS_UNREADABLE",
+                 "detail": f"tools/sn_claims.py could not be loaded ({exc}) — "
+                           f"filing-guard warnings skipped this run",
+                 "cure": "restore tools/sn_claims.py; the filing guard must "
+                         "not run blind",
+                 "owner": "SN lane"}]
+    occupied = claims_mod.occupied_numbers(registry)
+    if claims_mod.counter_is_stale(registry):
+        warnings.append({
+            "kind": "COUNTER_STALE",
+            "detail": f"registry next_sequence "
+                      f"{claims_mod.counter_value(registry)} points at or "
+                      f"below occupied SN-{max(occupied):03d} — the counter "
+                      f"is advisory only; the allocator is the numbering "
+                      f"authority",
+            "cure": "never hand-number from the counter; claim via "
+                    "tools/sn_claims.py (repair display with "
+                    "`sn_claims.py repair-counter`)",
+            "owner": "SN lane",
+        })
+    if range_spec:
+        try:
+            claims = claims_mod.read_claims(root)
+        except Exception as exc:
+            warnings.append({
+                "kind": "CLAIMS_UNREADABLE",
+                "detail": f"the sn-claims branch could not be read ({exc}) — "
+                          f"unclaimed-number check skipped this run",
+                "cure": "restore the sn-claims branch; claims are the "
+                        "filing door's occupancy anchor",
+                "owner": "SN lane",
+            })
+            return warnings
+        seen = set()
+        for page in scoped_pages:
+            number = claims_mod.sn_number(page["sn"])
+            if number is None or number in claims or page["sn"] in seen:
+                continue
+            seen.add(page["sn"])
+            warnings.append({
+                "kind": "UNCLAIMED_NUMBER",
+                "sn": page["sn"],
+                "detail": f"{page['sn']} is being filed in this range with "
+                          f"no claim anchored on the sn-claims branch — "
+                          f"claim-before-author was skipped",
+                "cure": "claim the number first: python3 tools/sn_claims.py "
+                        "claim --ib <IB> --seat <seat>; for an id that "
+                        "predates the guard, the SN lane anchors a "
+                        "retro-claim instead",
+                "owner": "SN lane",
+            })
+    return warnings
 
 
 _HISTORY_SN_RE = re.compile(r"(?i)sn[-_]?(\d{3,4})")
@@ -725,11 +808,14 @@ def main(argv=None) -> int:
                   file=sys.stderr)
             return 2
 
+    warnings = filing_warnings(root, registry, scoped, args.range_spec)
+
     if args.json:
         print(json.dumps({
             "pages_in_scope": len(scoped),
             "defects": defects,
             "tombstones": tombstones,
+            "warnings": warnings,
             "twins": twins if not args.range_spec else [],
             "ok": not defects and not tombstones,
         }, indent=2))
@@ -737,6 +823,9 @@ def main(argv=None) -> int:
         for d in defects + tombstones:
             print(f"MISSING: {d['missing']} — CURE: {d['cure']} "
                   f"(owner: {d['owner']})")
+        for w in warnings:
+            print(f"WARN {w['kind']}: {w['detail']} — CURE: {w['cure']} "
+                  f"(owner: {w['owner']})")
         for t in twins:
             if not args.range_spec and (ids is None or t["sn"] in ids):
                 print(f"TWIN: {t['ib']} is also published at {t['twin']} — "
