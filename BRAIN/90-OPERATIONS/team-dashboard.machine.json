@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-26T14:15:46+00:00",
+ "generated_utc": "2026-10-26T15:15:20+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -140,6 +140,12 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 3088,
+     "title": "feat(sn-guard): Smart Note filing-path collision guard \u2014 claim-before-author via the exist",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3088",
+     "draft": true
+    },
+    {
      "number": 3085,
      "title": "Re-point mission-state consumers to live/mission-state (Option C snapshot retired)",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3085",
@@ -158,7 +164,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 3
+   "open_pr_count": 4
   },
   {
    "id": "wire",
@@ -197,8 +203,15 @@
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3087,
+     "title": "Naya2/team dashboard",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3087",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "infra",
@@ -411,6 +424,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
- "unassigned_prs": 3
+ "open_pr_total": 6,
+ "unassigned_prs": 4
 }
