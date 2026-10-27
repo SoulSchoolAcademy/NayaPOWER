@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 05:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30770,6 +30770,30 @@ _Last updated: 2026-10-27 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-gap-gap-t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up on gap-gap-t0062: independent fresh-clone re-execution of blob-less-clone merge-base ancestor check
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t0062-lane4.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes + git protocol: durable proof hidden_files/lane-4/gap-gap-gap-t0062-ancestor-20261026/ancestor-check-2822313f.json sha256 dacd64a2249427da186de071543ca1f012145a60f91d96800cb8c06c893fd565 matches the receipt pin exactly; parsed JSON confirms both named commits 597803d8 and aa8061c1 with is_ancestor_of_tip_rc=0, 
+
+### ✅ gap-gap-t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on gap-t0062: tip-pinned 20/20 round-trip re-proof at 2822313f + decisive merge-ancestor check via blob-less clone
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0062-lane4.md`
+
+**Evidence:** VERIFIED this tick: remote HEAD via git ls-remote is 2822313f5a1fd1ea99893fb0503dfa84c9bbc38c, exactly the receipt tip; workspace proof roundtrip-tip-2822313f.json sha256 a95392d48182e66c1c47de1f4db4ecf0e1afe3f91d60ec40538d8cf13cad32ba matches the receipt pin and parses to total 20, passed 20, all 20 results passed; re-proof script sha256 eca815b6c
+
+### ✅ gap-t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0062: durable 20/20 round-trip re-proof on current tip + merge-faithfulness decomposition
+
+**Receipt:** `twelve-lane-receipts/gap-t0062-lane4.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane-4/gap-t0062-roundtrip-20261026/roundtrip-current-tip.json sha256 a95392d48182e66c1c47de1f4db4ecf0e1afe3f91d60ec40538d8cf13cad32ba matches the receipt pin exactly; parsed JSON confirms total 20, passed 20, every block passed true and raw_export_fail_closed true; roundtrip.py sha256 eca815b6cd8edfa226828500
 
 ### ✅ gap-gap-t0582b — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
