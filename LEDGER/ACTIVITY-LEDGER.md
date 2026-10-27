@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-26 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9477,6 +9477,14 @@ _Last updated: 2026-10-26 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t992 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** Verify PR #2399's live Actions proof - pin the head, classify every check-run, verdict on receipt-gate.yml enforcement, merge-readiness diagnosis
+
+**Receipt:** `twelve-lane-receipts/t992-lane9.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t992-lane9.md exists (sha256 d6df38d4d48f9cc146340182ab47f26bd38e7f1bee309c1f0256714306); pinned commit 4776be062822c09c9a346acb1c33c6e0705ec03a exists in the local mirror as 'feat(gate): wire receipt pin as blocking CI check (Lane 9, t952)'; blob c88e645eb2fb3828569aa8ec5519d9fc2b6a6550 exists and is exact
+
+### ✅ t992 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** PR #2399 live Actions proof of receipt-gate enforcement
 
 **Receipt:** `twelve-lane-receipts/t992-lane9.md`
@@ -9526,6 +9534,14 @@ _Last updated: 2026-10-26 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t992-lane9.md`
 
 **Evidence:** Dispatcher verified: PR #2399 head == branch naya/nine-receipt-gate-t902 == 4776be062822c09c9a346acb1c33c6e0705ec03a (byte-identical, zero drift); receipt-gate.yml + check_scorecard_receipt_pin.py + auto_merge_gate.py + wiring doc all present at remote head. Live enforcement event proven: receipt-gate.yml run 38185462136 executed on in-scope PR pre
+
+### ✅ t992 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Operationalize Lane 1 t972 SGF daily cold-Naya acceptance design as cron-ready runner + one full live dry run (T2/NORMAL)
+
+**Receipt:** `twelve-lane-receipts/t992-lane6.md`
+
+**Evidence:** VERIFIED this tick on live bytes: mirror commit 41dfc86ebea8d7b90352cfcea548bcb1688da292 exists with title 'Lane 6 t992: SGF daily cold-Naya acceptance runner', and tools/sgf_daily/{run_daily.sh,README.md,CRON-SPEC.md} all present at that SHA; branch naya/six-sgf-daily-runner-t992 still resolves on origin but at ca1cc31e (later t0212 port), and 41d
 
 ### ✅ t992 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -21939,6 +21955,14 @@ _Last updated: 2026-10-26 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0122 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
+**Task:** Close post-#1993 fossil layer - 10 oldest idle open drafts as superseded
+
+**Receipt:** `twelve-lane-receipts/t0122-lane7.md`
+
+**Evidence:** VERIFIED this tick on live bytes (sampled): PR #1994 state closed, draft true, head a29609a5e1d1297da7a3fcab0e5c39c45029cef1 exactly matches receipt pin, closed_at 2026-10-12T09:25:01Z exactly matches receipt; PR #2037 state closed, head af706f4b30aed6627fb98e6f397dfbbc62ea2a6e exactly matches receipt pin, closed_at 2026-10-12T09:25:27Z; git ls-rem
+
+### ✅ t0122 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
 **Task:** Post-#1993 fossil layer: close 10 oldest idle drafts as superseded under t1252 mechanism
 
 **Receipt:** `twelve-lane-receipts/t0122-lane7.md`
@@ -21966,6 +21990,14 @@ _Last updated: 2026-10-26 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0122-lane7.md`
 
 **Evidence:** Dispatcher verified live via API: PRs 1994 + 2037 both closed (spot check), open-PR search total_count == 477 exactly. Pin-verify-before-close flow, #1130 untouched, mechanism cited. Not 10: young 3-day layer vs 11-day fossil profile; branch existence not re-verified post-close (agent's own deduction).
+
+### ✅ t0122 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** CTA LEG 3 EXECUTED: VERDICT ACCEPT (replication)
+
+**Receipt:** `twelve-lane-receipts/t0122-lane6.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: sealed pre-reg hidden_files/lane-experiments/t0122/PREREG-leg3-sealed.md sha256 69fb7660c40f183ebe652c0289b883ecd5d56e67eb901c0f49ebf9dc00bc2fb9 exactly matches receipt pin; evidence packet t0122/packet/cold-evidence-t0122.md sha256 8545a29ac22f66c2065ee9200c992f4b9cded07e468104390a1684d6c4a43b8b exactly match
 
 ### ✅ t0122 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -24854,6 +24886,12 @@ _Last updated: 2026-10-26 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ gap-t992-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up on t992-lane9: re-pin PR #2399 at current head, determine PR state, obtain MISSING->FAIL log line or record it unavailable, classify current head's checks
+
+**Evidence:** VERIFIED this tick on live bytes: git ls-remote returns refs/pull/2399/head = a545f11079ca77ce6789d224ab519f272c7ca0e4 exactly as receipted, refs/pull/2399/merge absent, branch naya/nine-receipt-gate-t902 absent; mirror confirms a545 is the merge-branch commit, .github/workflows/receipt-gate.yml at a545 is blob c88e645eb2fb3828569aa8ec5519d9fc2b6a6
 
 ### ✅ gap-gap-lane-scorer-20261018-0230 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -38498,6 +38536,12 @@ _Last updated: 2026-10-26 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-1703 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 17:03 PDT: full brief queue evaluated in order, 26/26 refused exit 7 (parent-authorship), queue untouched
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue root holds 26 brief files + lane-feed.md = 27 .md files, matching the receipt's 26 evaluated briefs; rotation twelve-lane-rotation.json queued=26 matches; scorer spot re-ran bin/claim-brief.py --dry-run (NAYA_CLAIM_SEAT='Naya Clarity Narzan') for brief-gap-t1468-lane5.md and reproduced exit 7 verba
 
 ### ✅ gate-stall-20261026-1541 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
