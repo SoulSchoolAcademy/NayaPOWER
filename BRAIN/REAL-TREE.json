@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-27",
-  "receipt_basis_commit": "ce68b652bb481483421815498b2386bef185ba8d",
-  "inventory_file_count": 1709,
+  "receipt_basis_commit": "4528ebf88b492574eb042b8dac216a77aae89fe2",
+  "inventory_file_count": 1710,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 878,
+    "05-MEMORY": 879,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4929,6 +4929,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md",
       "blob_sha": "a92ad113788fc5a1b689e66ef1694a8df9bf7a6c",
       "size": 17201
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/continuity/SN-1886/IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder.md",
+      "blob_sha": "f3c0f865c4b3ef0ecdb22b0738b91227299e66e1",
+      "size": 4722
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
