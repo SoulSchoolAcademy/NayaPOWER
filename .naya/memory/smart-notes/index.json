@@ -15835,13 +15835,53 @@
         "note": "Filed + registered same pass by naya-power; page_hash = sha256(file bytes); content_hash = sha256(canonical JSON of the 11-section map, sort_keys, separators (',',':'), ensure_ascii=False) computed from the filed file; corpus manifest recomputed same pass. Door-checker capture-object adjudication remains open and is stated, not claimed."
       },
       "page_hash": "17f177018bacbfb5ae4ee4e209be726447f62859d6749dbeb2f2c132ccde9380"
+    },
+    {
+      "smart_note_id": "SN-1888",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1888-secure-network-near-impossible-to-hack",
+      "title": "The Secure Network — Near Impossible to Hack, Because One Hack Never Gets Everything",
+      "content_hash": "c4272cc5f6b0ea2118ee848e69979454c1dac28d5f498afdd5c047dc408e92a3",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SECURITY/security-model/SN-1888/IB-SMART-NOTE-20261027-sn1888-secure-network-near-impossible-to-hack.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SECURITY",
+      "topic": "SECURITY",
+      "subtopic": "SECURITY_MODEL",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b1a9fb6f050f66617d1c3bcbde35c082614b1d4b ('Smart Note SN-1888: The Secure Network — Near Impossible to Hack') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "911f93f268d6971d5edd4002ae8cc5e366e101872b83c0946afa2399a6d17967"
+    },
+    {
+      "smart_note_id": "SN-1889",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1889-secure-network-implementation-report",
+      "title": "How We Will Build the Secure Network — Official Implementation Report",
+      "content_hash": "5213f7f536eb64984383eb2f11d0d0b792703ba8a9e87974ec03a31437f0c3f4",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SECURITY/security-model/SN-1889/IB-SMART-NOTE-20261027-sn1889-secure-network-implementation-report.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SECURITY",
+      "topic": "SECURITY",
+      "subtopic": "SECURITY_MODEL",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 391638b043b1234309ede2d39c21f8dbabd79607 ('Smart Note SN-1889: How We Will Build the Secure Network — Official Implementation Report') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "44efb2409c569dd8e027c61d080682467de07276bf99c1ce9ae00669b6871bd1"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1888,
+    "next_sequence": 1890,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "24c49cce6a564b3d7c69dfbc7a885e94fbd4b083850712e80fef0033867da1b8"
+  "corpus_manifest_hash": "1c69595d2908302b4feea41234b1be9512eb613e3d661d5b74d61c318744954e"
 }
