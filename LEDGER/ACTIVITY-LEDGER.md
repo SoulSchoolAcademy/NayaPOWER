@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 02:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21411,6 +21411,14 @@ _Last updated: 2026-10-27 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** All 4 run sha256 recomputed MATCH on disk (2 pre + 2 post byte-identical); hand audit 9 rows totals M2:9/M3:6/M4:2 machine-reproduced exactly; t892-t1042 regression reproduces t1052 baseline (4th proof); HV3 no-movement discipline held. Single-seat judgments remain (standing).
 
+### ✅ t0182 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Competing-boot rename-merge -> re-base sequence for #2399, found already complete
+
+**Receipt:** `twelve-lane-receipts/t0182-lane9.md`
+
+**Evidence:** VERIFIED this tick on live git objects (nprescue-main clone): rename commit e3fe3d43857b153cd19edc31e159a408172793e8 exists, single parent 93ec1d7159c, subject 'Rename DecisionEngine -> DecisionPrinciple (Shawn authorized, #2428)'; merge-base --is-ancestor confirms it is an ancestor of BOTH main tip aa8061c1d311f32ebd11a570629efa8a55d90c87 and #239
+
 ### ✅ t0182-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.0/10 [VERIFIED]
 
 **Task:** t0182 competing-boot rename-merge -> re-base sequence on live bytes; rename found already landed
@@ -21449,6 +21457,14 @@ _Last updated: 2026-10-27 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: refs/pull/2399/head = a545f11079ca77ce6789d224ab519f272c7ca0e4 == receipt; naya/eight-competing-boot-rename-t1152 @ 6d05fea689... == receipt (brief's f5e2d63b was stale — agent's Prime-1 correction against the brief itself, correct). Agent verified the rename already landed via PR #2428 on main and #2399's head contains it in a
 
+### ✅ t0182 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 2 displacement test: mandate-does-not-lower-the-bar (NO-GO) on real dispatch decisions
+
+**Receipt:** `twelve-lane-receipts/t0182-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane-experiments/t0182/prereg-sealed.md sha256 5cbde073ab94189ed0c18dc0dce35034b8da32fb104ea54ab25b68abf2ea35d9 exactly matching the receipt pin; measure_h9r2.py sha256 67e2bbaf7fb3ca028aa935401bdddb7e0c3473727c48f58279c6e1e8d75d9ff5 exactly matching the receipt pin; pins-real.json sha256 1ef923f64077d48c93f36
+
 ### ✅ t0182-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** H9 round 2: displacement test — does mandate lower the merge-or-close bar (44 ticks)
@@ -21486,6 +21502,14 @@ _Last updated: 2026-10-27 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0182-lane2.md`
 
 **Evidence:** Dispatcher verified: prereg-sealed.md sha256 5cbde073... == receipt; seal-verification.json, measure_h9r2.py, h9r2-result.json all exist; stamp==mtime claim on record. Reframe owned (option c: displacement in score space, not rate), design finding declared pre-reg (rank-order displacement structurally impossible since decide.py emits score-sorted r
+
+### ✅ t0182 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-2 gate review on PR #2462 (test-repair merge) + drift verification at live tip
+
+**Receipt:** `twelve-lane-receipts/t0182-lane10.md`
+
+**Evidence:** VERIFIED this tick on live git objects (nprescue-main clone, full history): PR #2462 head a92be1c01812a86c1994298b508cc41577e250dc exists; parent b41a3ffa9c 'fix(tests): repair pre-existing reds'; diff vs base aa8061c1d311f32ebd11a570629efa8a55d90c87 is EXACTLY 3 files, +95/-3, all tests/ (guard_liveness.test.mjs, intelligence_retrieve_execution.te
 
 ### ✅ t0182-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -32769,6 +32793,12 @@ _Last updated: 2026-10-27 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-t0182-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0182-lane2: close thin-cell (n=5) and post-hoc-separation gaps on H9 round-2 NO-GO
+
+**Evidence:** VERIFIED this tick on workspace bytes: all six receipt pins match exactly - sealed instrument lane-experiments/t0182/measure_h9r2.py 67e2bbaf7fb3ca028aa935401bdddb7e0c3473727c48f58279c6e1e8d75d9ff5, pins-real.json 1ef923f64077d48c93f3663e183aca0b761a2dbbbf2bca9ef9a1d9abade9502e, rerun lane-2/gap-t0182-lane2/h9r2-rerun-20261026.json 03dca04e95318e54
+
 ### ✅ gap-gap-t0162-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap follow-up on H9 round 2: close population-closure gap by deeper root cause (v5 dispatch death at t0472/t0482, replacement mechanism emits no lane-pick decisions)
@@ -35371,6 +35401,14 @@ _Last updated: 2026-10-27 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-t0182 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0182: pin-triple successor form, 11 workflow runs re-fetched, pytest reds re-classified, merge-consensus mechanism gap proven
+
+**Receipt:** `twelve-lane-receipts/gap-t0182-lane10.md`
+
+**Evidence:** VERIFIED this tick via git protocol + workspace bytes: evidence file hidden_files/gap-t0182-lane10-evidence-20261026.md sha256 245e41e1a588dfe3e0fe07a3a66ad0ab6c7f0385cc48456df1f5824e9c2e576c matches the receipt pin exactly; git ls-remote HEAD 2f769c86f8225366b439b8992613d7e1a7c7857e matches the receipt main tip exactly; refs/pull/2462/head a92be1c
+
 ### ✅ gap-t0112-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: re-prove prevention claim on fresh pinned bytes and re-anchor stale tip claim to live tip (no heal shipped)
@@ -37529,6 +37567,14 @@ _Last updated: 2026-10-27 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-gap-gap-t0172-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up on t0172-lane1: separately named Lane 1 countersignature of the 6-line history strip
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t0172-lane1-lane1.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: live sgf_history.jsonl sha256 ae216d01639acc06c4ce07ada0514dca1e67650342af557ff9236ff0a0b2e4b4 (9 lines) exactly matches receipt and parent after-strip hash; backup 15-line sha256 826d4da1296c38eca9033c39b75a40f3dbdf934a4bccc898cdecfa86edbdcb44 exactly matches parent before-strip hash; cmp live vs backup lines
+
 ### ✅ gap-gap-t0172-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap follow-up on t0172-lane1: strip 6 fixture lines from live drift ledger + live-head refresh mechanism
@@ -38604,6 +38650,12 @@ _Last updated: 2026-10-27 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ lane-scorer-20261026-1812 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall 18:12 PDT — 26/26 unclaimed briefs refused
+
+**Evidence:** VERIFIED this tick in part: brief-queue root count is 26 (excluding lane-feed.md), matching the receipt's headline count; spot-checked brief-gap-gap-scorer-20261014-2250-lane3.md carries a second/independent-seat demand, consistent with the exit-7 parent-authorship refusals claimed. NOT PHANTOM: the queue state it reports exists. SCORE 9.0 GOOD, ON
 
 ### ✅ gate-stall-20261026-1703 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
