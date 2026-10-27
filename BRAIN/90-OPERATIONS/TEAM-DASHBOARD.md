@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-27 20:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-27 21:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 5 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 6 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,12 +50,13 @@
 
 ## Open PRs by Area
 
-### BUILD (5)
+### BUILD (6)
+- [#3111](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3111) Door-obligation cure: capture + registry entries for SN-1888/SN-1889
 - [#3108](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3108) Naya/mission state
 - [#3107](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3107) Face registry fix 20261027
 - [#3089](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3089) [DRAFT — DO NOT MERGE] PI face review draft: human-first Project Intel
 - [#3088](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3088) feat(sn-guard): Smart Note filing-path collision guard — claim-before-
-- [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
+- …and 1 more
 
 ---
 *Same truth, two tongues: humans read this file; the Hub reads `team-dashboard.machine.json`. Both regenerated from the same live sources every wave.*
