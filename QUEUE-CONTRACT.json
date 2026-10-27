@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-27T10:24:30Z",
-  "tip": "2822313f5a1fd1ea99893fb0503dfa84c9bbc38c",
+  "generated_at": "2026-10-27T11:24:25Z",
+  "tip": "e01607e55ea14cd16d6d905c7088f840b10b1108",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "161556aefb4addc668a85ff878927719f063da5a"
+      "head": "c5ac43634e402cd9bda6e9ab2ab6126c2f8730c5"
     },
     {
       "number": 3088,
