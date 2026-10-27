@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 04:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28977,6 +28977,22 @@ _Last updated: 2026-10-27 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-gap-gap-gap-gap-t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on gap-gap-gap-gap-t0042: runtime-prove the last unproven unified-contract row (no-eligible/demoted-empty) on the full t1412 corpus
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-gap-gap-t0042-lane5.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: all 4 receipt pins match exactly (candidate baf9284b7e1f8273551f298383a5058ce39ac3bbfc20d6d4d94c2bd5f0cf79e2, corpus 3eeddc8f5716246ce9cfb143d45c9dc046f1dc86c2941598857be92b4ccc28b3, proof script 313fc1210548fb73b59ff8e9f42bab3d108b415a4e8b281f58bdf601ddc4dd07, results 88cda4563b1c6330d4d753161f9ecd9a08c45f948
+
+### ✅ gap-gap-gap-gap-t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on gap-gap-gap-t0042: unified wiring contract for three stacked t0042 refusal designs
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-gap-t0042-lane5.md`
+
+**Evidence:** VERIFIED this tick by independent re-execution, not just hash-match: all 5 receipt pins match exactly on workspace bytes (candidate baf9284b7e1f8273551f298383a5058ce39ac3bbfc20d6d4d94c2bd5f0cf79e2, corpus 3eeddc8f5716246ce9cfb143d45c9dc046f1dc86c2941598857be92b4ccc28b3, contract f4e0588c94f37d1285972bcccb27ad17f852dd4e21097f70627a606c94a07fe0, proo
+
 ### ✅ gap-gap-gap-t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap-gap follow-up on gap-gap-t0042: probe-path demoted visibility - PROBE_REFUSED_WITH_FALSIFIED_MATCH marker, guard decision untouched, candidate proven
@@ -32888,6 +32904,20 @@ _Last updated: 2026-10-27 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-gap-gap-t1002-lane2-recusal-repeat-20261026 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on gap-gap-t1002-lane2-recusal-repeat: patch claim-brief.py authorship patterns + stamp seat bar on held brief
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t1002-lane2-recusal-repeat-20261026-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: claim-brief.py post-patch sha256 c4efc2229c72e595eeffb610af9d0b59978ed820b7817e09390b62fc7e34f4ba matches the receipt pin exactly; held brief brief-queue/claimed/brief-gap-gap-t1002-lane2.md post-gate sha256 26b16e3109d831f8569fadc49e1e95a272721705749c2c0afbb2968e0f543794 matches exactly; 3 new SECOND_SEAT_RES
+
+### ✅ gap-gap-t1002-lane2-recusal-repeat-20261026 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** REPEAT RECUSAL (second, same seat, same evening) on gap-gap-t1002: refuse the sealed plain-A probe run — NOT RUN, gap stays OPEN
+
+**Evidence:** VERIFIED this tick on workspace bytes: parent receipt gap-t1002-lane2.md sha256 a64e30b0b0c20e9e4ce27de8da2033b30f99a227956e87994486dc310183d9038e matches the receipt pin; parent evidence lane-2/gap-t1002-lane2/evidence.md 7c00be3b90f22bf564bb7931603c8d3a0f891084367b65fa9de7d3ac1dbdabb9 matches; evidence section 4 header 'Sealed plain-A probe spec 
 
 ### ✅ gap-gap-gap-t1002 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -38778,6 +38808,12 @@ _Last updated: 2026-10-27 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-2122 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 21:22 PDT: 27 briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds 27 .md files excluding lane-feed.md, exactly the receipt 27 unique brief names (set equality, zero missing, zero extra, zero duplicates); twelve-lane-rotation.json queued=27 set-equals the root; prior stall receipt gate-stall-20261026-2019.md exists, 63 minutes older, so the one-per-hou
 
 ### ✅ gate-stall-20261026-2019 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
