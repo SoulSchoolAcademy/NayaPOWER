@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23149,6 +23149,14 @@ _Last updated: 2026-10-27 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Seal-before-run, code sha256 92d8b2be re-proven byte-identical to t1412; 6-arm drill on live tip: falsified-outranks-genuine hole re-proven live; candidate rule measured (served 1->0, falsified-only refusal 6/6, zero negative-control drift, latency noise); blinded re-score 53/53; nothing wired (Shawn's gate respected); verdict handed to Lane 8 with
 
+### ✅ t0042 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** SGF daily acceptance round T4 open PR state check on #2453
+
+**Receipt:** `twelve-lane-receipts/t0042-lane1.md`
+
+**Evidence:** VERIFIED this tick via git protocol: refs/pull/2453/head = 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 exactly matches the receipt's recorded head, still unmoved 14 days later. NOT PHANTOM on the head leg. SCORE 9.0 GOOD, ONE MORE PASS, agreeing with the lane's honest 9.0. Why not 9.5: (1) the cold successor's 5 assertion rows, the blinded scorer's 9.
+
 ### ✅ t42 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** SGF daily acceptance round T4 (PR #2453 state check, off-slot repeat)
@@ -23215,6 +23223,14 @@ _Last updated: 2026-10-27 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Seal 07:56:36 predates successor evidence 07:57:59; T5-adv shape correctly NOT invented (no designer confirmation); inline M1-M5 recompute, daily 9.8 TRANSFERS; canonical history 7 lines verified. Deductions: same-family scorer residual + M2 workaround-not-fix (Lane 6 patch unlanded).
 
+### ✅ t0032 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Close 10 abandoned-fossil PRs under the proven t1252 mechanism + pipeline report
+
+**Receipt:** `twelve-lane-receipts/t0032-lane7.md`
+
+**Evidence:** VERIFIED this tick via git protocol (batched ls-remote): all 10 closed-PR heads byte-identical to receipt pins — #1139 7aca47da, #1169 4792afff, #1228 aa826b34, #1239 4a06ebc9, #1240 1f0f4b81, #1241 a4ec0d2b, #1245 8a6e770f, #1246 dc066c00, #1248 1292f42f, #1258 e46abd33 (full SHAs in receipt). NOT PHANTOM — the strongest pin verification of this t
+
 ### ✅ t32 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** t1252-mechanism close of 10 fossil PRs + journal-rot pass
@@ -23273,6 +23289,14 @@ _Last updated: 2026-10-27 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified ALL 10 closes on live GitHub (REST: #1139/#1169/#1228/#1239/#1240/#1241/#1245/#1246/#1248/#1258 all state=closed). Heads re-pinned at action time per receipt, bar ruling applied correctly, #1130 Shawn-gated left untouched, merge-seat watch current, journal-rot t1192 debt cleared (all 12 journals checked, own stale thread fixed, 
 
+### ✅ t0032 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** t1412 CTA leg 2 RE-SEALED + sealing-protocol amendment + cold brief
+
+**Receipt:** `twelve-lane-receipts/t0032-lane6.md`
+
+**Evidence:** VERIFIED this tick in part: the calculator receipt file hidden_files/decisions/20261012T074354Z-next-t0032-lane6-sealing-protocol-amendment-c.json exists in the workspace, matching the receipt's evidence path; the receipt's tip pin aa8061c1d311f32ebd11a570629efa8a55d90c87 is the same tip pin corroborated across the t0032 lane receipts. NOT PHANTOM:
+
 ### ✅ t32 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** t1412 CTA leg-2 re-seal + sealing-protocol v1.1 amendment + cold brief
@@ -23330,6 +23354,14 @@ _Last updated: 2026-10-27 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0032-lane6.md`
 
 **Evidence:** Dispatcher verified on disk: seal-verification.json status LIVE; instrument pin 488bce99... and hypothesis-table pin 7f8d3811... recomputed this tick == current on-disk bytes (both MATCH); original seal preserved as seal-verification-t1412-original.json; cold-brief.md + CTA-PROTOCOL-v1.1-addendum.md exist. In-scope protocol amendment adopted via ca
+
+### ✅ t0032 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Cheap-check at live tip + #2446-vs-#2448 drift-attribution verdict + heal stand-down
+
+**Receipt:** `twelve-lane-receipts/t0032-lane10.md`
+
+**Evidence:** VERIFIED this tick via git protocol (one batched ls-remote): heal branch naya/ten-brainindex-heal-t1292 returns 0 lines (deletion claim holds); refs/pull/2448/head = d5015eb7cfd8abf32a0058d0a4fad371aa582799 exactly matches the receipt's 2nd-parent pin for #2448. NOT PHANTOM on those legs. SCORE 9.0 GOOD, ONE MORE PASS, agreeing with the lane's hone
 
 ### ✅ t32 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -28361,6 +28393,14 @@ _Last updated: 2026-10-27 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-t0032 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0032: cold leg under LIVE re-seal proven via pre-existing t0092 record
+
+**Receipt:** `twelve-lane-receipts/gap-t0032-lane6.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: seal-verification.json sha256 57692d2e... matches receipt pin; PREREG-reseal-t0032.md 549adc52... == sealed pin; t0092 receipt 7da1e364... matches; packet cold-evidence-t0092.md a888c8bc... byte-identical to scorer/outbox/OUT-01.md; score-sheet ac599ef5... and scorer-scores ce240428... match; cold-brief 61cd90
+
 ### ✅ gap-t0092-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
 **Task:** Leg 3 SEALED, not executed: leg-3 fixture + drift arm + ground-truth runs + prereg seal + cold brief
@@ -32808,6 +32848,22 @@ _Last updated: 2026-10-27 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-gap-t1002 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on t1002: plain-A shape-sensitivity probe — recusal with proof
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t1002-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: parent receipt gap-t1002-lane2.md sha256 a64e30b0... matches the receipt pin; parent evidence lane-2/gap-t1002-lane2/evidence.md 7c00be3b... matches; evidence section 4 headed 'Sealed plain-A probe spec for a future fresh seat' present and unrun; no probe output produced, scored, or cited this run. NOT PHANTOM
+
+### ✅ gap-t1002 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t1002: shape-confound falsification for t992 ARM-07 vs t1002 dry run (A2 vs plain A)
+
+**Receipt:** `twelve-lane-receipts/gap-t1002-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: evidence file hidden_files/lane-2/gap-t1002-lane2/evidence.md sha256 7c00be3b90f22bf564bb7931603c8d3a0f891084367b65fa9de7d3ac1dbdabb9 matches the receipt pin exactly; all six source pins byte-match: arm-key b9c0460400ed1c3b55bc88fd99a0b47cef3b924e4b3dce807e5e51a127178730, dry-run-2 ec496dffd36b228073eeaf0f3fbb
 
 ### ✅ gap-t0182-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
