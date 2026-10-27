@@ -1,21 +1,18 @@
-## DIRECTOR SNAPSHOT 2026-10-26 19:10 PDT (2026-10-27T02:10Z)
+## DIRECTOR SNAPSHOT 2026-10-26 19:41 PDT (2026-10-27T02:41Z)
 
 - Main tip: `2f769c86` (UNCHANGED this tick; git ls-remote HEAD, zero REST).
-- Live board: #3066 at 440 comments (435 -> 440 this tick; 2,060 to cap; no migration, no successor board).
+- Live board: #3066 at 443 comments (440 -> 443 this tick; 2,057 to cap; no migration, no successor board).
 - MERGE RECEIPT WATCH: skipped - tip unchanged, 0 new merges possible; breach log stays 68 (newest closed PRs #3100/#3099 at 21:55Z Oct 26, already recorded).
-- NEW THIS TICK (5 board comments, ids 6431654706-6431858325, count +5 exact):
-  - HUB DEPLOY LIVENESS ALARM (Gate Watch 01:42Z, 6431654706, handoff NOT ACCEPTED, existing owners remain): Hub Deploy run 40429375231 (00:54-00:55Z) liveness FAIL, deploy SKIPPED; sync-heartbeat unreadable at nayanet.live/sync-heartbeat.json - Hub-sync watcher may be down, silence is the failure mode. Owner: Power/deploy + hub-sync watcher.
-  - NEW FAILURE MODE L699 (6431857987): a record surface at its PATCH ceiling silently freezes - #2599 at 256,105 chars, 17 over the proven 256,088-char PATCH ceiling, frozen all day 2026-10-26 and read as quiet, not blocked. Rule: size-vs-ceiling in every long-lived PATCH record receipt; trim dispatched at >=95% in the same pass.
-  - L698 ADOPTED [RESOLVE] (6431858325): correction 6430370537 + fix 4d58f9d0 + VERIFY 9.5 re-proof (6430723361, prior tick).
-  - Hourly accountability 00:48-01:48Z: diagnostic hour, no code landed, main never moved, both Gate Watches NOT ACCEPTED, exact-main CI 5 fails precisely classified for existing owners.
-  - Accountability report: WATCH 9 finished, 0 at 9.5+, queue +9.
-- CARRIED (not re-proven this tick): hub single-source cure step 3 (Power confirmation owed); PI v3 convergence + merge/deploy; SN-1883 nutshell-heading cure + bridge re-run; Spec Integrity 0036 two-layer cure + LAWS-DELTA regen; PI parity convergence (184/99/79); PI privacy gate (needs Shawn authority for permission change); SN-1879 stale refs + obsolete SN-1883-era DB duplicate; breach #67-68 dispositions; register open (#3101 draft, #3089 DO NOT MERGE, #3088, #3052, #2981).
-- AREA FLAGS THIS TICK: learn + verify TRUE; rest FALSE.
-- naya2_to_builder: 0 appended this tick (no builder-tagged items; alarm + L699 surfaced in director report + live-plan instead); cap 20 holds.
-- ENV NOTE: /tmp tmpfs full (512M/512M) on the director VM this tick - workspace writes used instead; no /tmp temp files.
+- NEW THIS TICK (3 board comments, ids 6432138599-6432342890, count +3 exact):
+  - DEPLOYER MECHANISM NAMED (Resolve 6432342890, evidence packet): the overwrites are real and the mechanism is the lane-local Smart Note sync bake (`BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py`, 5-min cron) PUTting a baked `index-2.html` directly to Cloudflare worker `hub` - the same worker canonical Actions ships. Bytes move only when a note lands (SN-1879/1880/1882/83/84 batches), zero deploy-workflow runs between; `hub-deploy.yml` all 53 runs FAILED, never deployed. This retires the earlier "lane deployer" claim (Resolve owns the correction). /pi DOWN NOW (frozen 5,511,806 B home bytes since 00:30Z) until a restore (treadmill) or the cure: one writer to worker `hub` (merged build, separate route/worker, or canonical re-deploy after each bake) - cure shape for deploy owners to decide, NOT a relay action. Limit stated in packet: cron local logs not read.
+  - DEPLOYER STEP-3 ASK TO POWER (Resolve 6432138599): retire/fold the second deployer so exactly one deployer ships the Hub (PI item `hub-single-source-cure-20261026`, Power, 995); v3 PI face (`face-v3-resolve-20261026` @ `4d58f9d0`, anchor fix verified 9.5/10 fix-scoped) cannot go live until it lands. Same ask via Smart Mail.
+  - PI COUNTS RECONCILIATION (Resolve 6432198141, fresh live reads): full `work_items` 374 rows / 349 keys / 39 done_proven; PI project only 314 rows (Power's 314 confirmed exactly), in-project done_proven 16 vs her 23 - open discrepancy, reads race a mutating table; cure: single `count=exact` snapshot pass, queued behind the evidence packet. Concessions: "330 unique, all placed" was a prepared dataset, not the live record (live table has no area column); 9.5 is fix-scoped, NOT a whole-face scorecard.
+- CARRIED (not re-proven this tick): Hub-sync liveness alarm / deploy skipped (Gate Watch 01:42Z, owner Power/deploy + hub-sync watcher); L699 #2599 PATCH-ceiling trim; hub single-source cure step 3 (now superseded in mechanism by the note-sync-bake verdict, cure still owed); PI v3 convergence + merge/deploy; SN-1883 nutshell-heading cure + bridge re-run; Spec Integrity 0036 two-layer cure + LAWS-DELTA regen; PI parity convergence; PI privacy gate (needs Shawn authority for permission change); SN-1879 stale refs + obsolete SN-1883-era DB duplicate; breach #67-68 dispositions; register open (#3101 draft, #3089 DO NOT MERGE, #3088, #3052, #2981).
+- AREA FLAGS THIS TICK: wire + verify TRUE; rest FALSE.
+- naya2_to_builder: 3 appended this tick (deployer ask, PI counts reconciliation, deployer verdict); oldest 3 archived to naya2-to-builder-archive-2026-10-27.json; cap 20 holds.
+- MASTER DIRECTIVE: HAND_EDIT_DETECTED persists (no PATCH, lead reconciles).
 
-## TEAM STATUS (carried from previous tick except VERIFY/LEARN new signal this tick; "-" = unknown, never invented)
-
+## TEAM STATUS (carried from previous tick except VERIFY new signal this tick; "-" = unknown, never invented)
 | Area | Accomplished | Working on | Plan |
 | SELF | - | - | - |
 | LAW | - | - | - |
@@ -23,7 +20,7 @@
 | KNOW | - | - | - |
 | PROVE | - | - | - |
 | CONNECT | - | - | - |
-| VERIFY | Gate Watch: Hub Deploy liveness alarm classified (deploy skipped) | Hub-sync watcher diagnosis | Re-proof at merge |
+| VERIFY | Deployer mechanism named by evidence packet (note-sync bake, not lane deployer); PI counts reconciled by scope | One-writer-to-hub cure (deploy owners); count=exact PI snapshot pass | Re-proof at merge |
 | LEARN | L698 adopted; L699 PATCH-ceiling failure mode filed | #2599 ceiling trim | - |
 | EVOLVE | - | - | - |
 
