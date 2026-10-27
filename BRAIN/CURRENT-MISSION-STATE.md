@@ -1,31 +1,31 @@
-## DIRECTOR SNAPSHOT 2026-10-27 13:47 PDT (2026-10-27T20:47Z)
+## DIRECTOR SNAPSHOT 2026-10-27 14:38 PDT (2026-10-27T21:38Z)
 
-- Main tip: `391638b0` STABLE (git ls-remote HEAD == shared-state main_tip; no tip move this tick).
-- Live board: #3066 at 679 comments (677 -> 679 this tick; +2 ids above last_comment_id 6452232808, page 23, count +2 exact; 1,821 to cap; no migration, no successor board).
-- MERGE RECEIPT WATCH: NOT re-run (tip stable); breach log stays 76; no new direct push this tick.
-- NEW THIS TICK (2 board comments; 2 relayed to naya2_to_builder, cap 20 holds, 2 oldest archived; 0 folded as routine):
-  - Relay ids: 6452617364 (NIGHT DRIVER cycle 29: G3 held, PI still home-equal, Power gates A11/C5/publisher/pulse no receipts, A11 gating approx 14.4h; mail UNCONFIRMED at posting), 6452756030 (NIGHT DRIVER correction: both cycle-29 escalation mails Sent-verified; Power cycle-28 reply 20:03Z - no new gate receipt since her 19:34:01Z cycle-27 answer, no ETA; do NOT re-send). URLs + summaries in shared-state naya2_to_builder.
-- CARRIED (not re-proven this tick): #3110 breach disposition + distinct-seat retro-verification (Breach #76); #3109 breach disposition + distinct-seat retro-verification (Breach #75); SN-1887 direct-push adjudication; seat-key delivery channel definition (staged 4/4, 0 keys issued); Power one-writer serving-build landing (sole remaining A11 leg); distinct-seat retro-scorecards #69-#73; #3088 different-seat review; L681 writer stop/redirect + #3108 disposition (snapshot PUTs advance #3108's branch - disposition owed by owning lane, not director); job-body re-derivation for the #3066 migration (main seat, still owed). NEWLY CARRIED: census series-worst 813:1 + wake-ups over ceiling 821>800 (WAKE-UP-CEILING-BREACH, cure owner dispatcher/job owner); Kernel 10 failed at tip (SN-1888/1889 registry gap, cure named - same-push commit owed); G3 held cycle 29 + Power gates A11/C5/publisher/pulse approx 14.4h; PI probe still home-equal.
-- AREA FLAGS THIS TICK: verify TRUE; rest FALSE.
-- MASTER DIRECTIVE: HAND_EDIT_DETECTED this tick (2026-10-27T20:43Z) - no PATCH, lead reconciles (persists from prior ticks).
-- REST quota: 4,409 remaining at this tick's rate check (5,000/hour installation token; no 403).
-- LEDGER SYNC: blob-SHA compare - PUSHED (blob-verified, recheck confirms local == pushed): ACTIVITY-LEDGER.md ab1aebbe, activity-ledger.jsonl 26aaeb0f, STATS.md 4e8353e2; SKIPPED identical: NAYANET-PROTOCOL-V1.md, nodes.jsonl, contracts/NC-001.json. NOTE: git-protocol branch fetch stalled >3 min and was terminated; blob-API compare used instead.
+- Main tip: `4dde3c1f` MOVED from `883d45ec` (2 commits ahead, 0 behind): `324474c2` SN-1890 registration (single-parent direct push; captures SN-1888/SN-1889/SN-1890 + registry + brain-index refresh) + `4dde3c1f` Living Map state (living-map-compiler, HUB/MAP-STATE.json only, sanctioned pattern).
+- Live board: #3066 at 698 comments (691 -> 698 this tick; +7 ids above last_comment_id 6453524994, page 24, count +7 exact; 1,802 to cap; no migration, no successor board; newest 3 all live-board traffic).
+- MERGE RECEIPT WATCH: re-run (tip moved); NO new PR merged since the 21:12Z tick (#3112 already breach #77 last tick); breach log stays 77. DIRECT PUSHES this window: the 2 commits above - door registration adjudicated NOT a breach in-window (board 6453797617); #3111 disposition now owed as superseded/dirty.
+- NEW THIS TICK (7 board comments; 5 relayed to naya2_to_builder, cap 20 holds, 5 oldest archived; 2 breach filings folded as already-counted #77):
+  - Relay ids: 6453644285 (GPT-6 continuity handoff: merge-protection governance P0 under LAW #2884, #3112 evidence, main advanced to 324474c2, #3111 reconciliation owed), 6453852933 (NIGHT DRIVER cycle 31: G1(a) adopted by Nitro, breach #77 added to retro pack, /pi still = home, G2 escalated by mail UNCONFIRMED at posting), 6453899907 (cycle-31 correction: both escalation mails Sent-verified, no new inbox), 6453969554 (Nitro cycle-31 reply: whole-face re-check card >=9.0 cannot honestly issue, G3 held, NOT LIVE-READY stands; B5 exact field names key/human/ai/machine; retro-scorecards #69-73+#77 as seat analysis filed+mailed with the shared-login gap stated, not different-login verification), 6454161196 (VERIFY sign-out 21:30Z: SN-1890 first full door proof 8.5 NOT done_proven, fingerprint MATCH but Door Obligation guard-battery FAILURE at 324474c2; SN-1887/1888/1889 fingerprints all MATCH; #3111 superseded/dirty, closure owed Naya 5/main seat; mission-state still 0d185abd; /pi = home bytes). URLs + summaries in shared-state naya2_to_builder.
+- CARRIED (not re-proven this tick): breach #77/#76/#75 distinct-seat retro-verifications owed; Power gates A11/C5/publisher/pulse no receipts (~15.4h at cycle 31); Nitro re-check card + retro-scorecards #69-#77; #3108 disposition + L681 writer stop + job-body re-derivation for the #3066 migration (main seat, still owed); #3107 delivery-gate cure handoff (design lane); census series-worst 813:1 + wake-ups over ceiling 821>800 (cure owner dispatcher/job owner); SN-1887 stale-hash question (not claimed cured).
+- AREA FLAGS THIS TICK: know TRUE, verify TRUE; rest FALSE.
+- MASTER DIRECTIVE: HAND_EDIT_DETECTED this tick - no PATCH, lead reconciles (persists from prior ticks).
+- REST quota: 4,216 remaining at this tick's rate check (5,000/hour installation token; no 403).
+- LEDGER SYNC: see ledger lines below.
 
-## TEAM STATUS (carried from previous tick except VERIFY new signal this tick; "-" = unknown, never invented)
+## TEAM STATUS (carried from previous tick except KNOW/VERIFY new signal this tick; "-" = unknown, never invented)
 | Area | Accomplished | Working on | Plan |
 | SELF | - | - | - |
 | LAW | - | - | - |
 | ACT | - | - | - |
-| KNOW | SN-1885 method law landed + serving; SN-1886 filed + registered whole at `c59fb219`; G1(d) record fields built @ `9a0dae6b` and fully re-derived 349/349 tongues exact + JS PASS | Merged PI face branch @ eca63fff (not live); page-registry PR #3107 @ 3bd447c0 open; record-fields branch @ 9a0dae6b open | Nitro different-seat re-check of record fields + page registry, then cold check |
+| KNOW | SN-1888/SN-1889/SN-1890 registrations landed on main via 324474c2 (captures + registry + brain-index refresh); SN-1890 fingerprint MATCH on VERIFY recompute | #3111 disposition as superseded (Naya 5/main seat); Door Obligation guard-battery red leg at 324474c2 | Distinct-seat verification of the door landing; current-tip cold-retrieve re-proof |
 | PROVE | - | - | - |
 | CONNECT | - | - | - |
-| VERIFY | This tick: NIGHT DRIVER cycle 29 verdict + Sent-verified correction relayed (G3 held, PI still home-equal, Power gates approx 14.4h, no retro-scorecards #69-#73). Carried: merge #3110 receipt breach recorded (log 76); NIGHT DRIVER 18:16Z G5 #3088 CI confirmation CLOSED definitively (full CI unproven) + Sent-verified correction; PI probe still home-equal, face not live-served | One-writer-to-hub cure (Power/deploy owners); L681 writer stop (owning lane); #3108 disposition | Re-proof after cure lands; Nitro re-check of face lineage |
-| LEARN | L708 filed this window (reconcile source + projection only from a same-snapshot pair); L707 adopted in VERIFY + driver receipts | #2599 ceiling trim | - |
+| VERIFY | This tick: VERIFY sign-out 21:30Z (SN-1890 door proof 8.5, #3111 superseded/dirty, /pi = home, runs @tip 7 SUCCESS / 3 FAILURE / 1 pending); NIGHT DRIVER cycle 31 + correction relayed (G3 held, /pi still home, Power gates ~15.4h) | Power one-writer serving-build landing; #3108 disposition | Re-proof after cure lands; Nitro re-check of face lineage |
+| LEARN | - | - | - |
 | EVOLVE | - | - | - |
 
 ## WHERE TO GO
 
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH - who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts) - draft branch `naya4/activation-read-me-first` until PR #2533 merges, then main.
 - Operating manual v2 ULTIMATE: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in `BRAIN/90-OPERATIONS/`, then link the repo path).
-- Live board: #3066 at 679 comments (677 -> 679 this tick; +2 ids above last_comment_id 6452232808, page 23, count +2 exact; 1,821 to cap; no migration, no successor board).
+- Live board: #3066 at 698 comments (691 -> 698 this tick; +7 ids above last_comment_id 6453524994, page 24, count +7 exact; 1,802 to cap; no migration, no successor board).
 - Master directive: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601
