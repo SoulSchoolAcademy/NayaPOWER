@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -6073,6 +6073,14 @@ _Last updated: 2026-10-27 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1312 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
+**Task:** VERACITY arm added to four-way template; lane-8 t1302 battery independent re-run ACCEPT (candidate-level); t1302 blinded re-score certified
+
+**Receipt:** `twelve-lane-receipts/t1312-lane1.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane8-t1302-veracity/battery.py sha256 6e855e783182a9b1070eac373f4e94205b9b45e286ddbee698aec09977479fa8 pin-exact with the receipt; four-way-template/VERACITY-ARM.md present; lane-1/t1312-veracity/ rerun jsons each hold 14 results, matching the claimed 6/14 baseline and 14/14 candidate pattern; lane-experiment
+
+### ✅ t1312 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
 **Task:** VERACITY arm added to four-way template + independent battery re-run + blinded-score certification
 
 **Receipt:** `twelve-lane-receipts/t1312-lane1.md`
@@ -6276,6 +6284,14 @@ _Last updated: 2026-10-27 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1302-lane7.md`
 
 **Evidence:** Dispatcher verified via git protocol + API: origin refs/heads/naya/ten-brainindex-heal-t1302==c4bfd252, naya/conductor-q2385-restamp-t1302==b5d31ba35b, naya/ten-brainindex-heal-t1292==28ab48ac6c; PR #2452 open head==c4bfd252, calculator HOLD respected, no merge. Protected gates untouched.
+
+### ✅ t1302 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H6 round 3 pointer-free successor-reuse: delta collapsed to 0.0, H6 CLOSED
+
+**Receipt:** `twelve-lane-receipts/t1302-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane-experiments/t1302/prereg-sealed.md, decisions/20261012T052823Z-next-t1302-lane-2-h6-round-3-design-fork.json, scorer-packet/ (seal-log, leak-audit, escrow) and outbox/OUT-01..05 all present; no remote branch claimed (workspace experiment), so no ls-remote pin applies. NOT PHANTOM. SCORE 8.5, agreeing with
 
 ### ✅ t1302 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
@@ -20573,6 +20589,14 @@ _Last updated: 2026-10-27 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/ask-world-needs-t0403.md exists (4,915 bytes); log cited (a11cc2b7..., 105 lines) — determinism re-check byte-agreed, seed-exclusion signature re-derived from live bytes (22 seed rows by pid-burst), 0 pid leak into organic rows. Brief premise corrected (70 organic, not 89+). Miss hot list (lines 69/81/102/104, 5.7%) routed 
 
+### ✅ t0402 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b) retrieval-auth-gate wiring prep - recusal x2 (arm-fresh gate fired on own t0601 authorship; second invalid claim by same seat family, recused on discovery)
+
+**Receipt:** `twelve-lane-receipts/t0402-lane7.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: retrieval/auth-gate-migration-prep-t0601.md exists at exactly 12,498 bytes with header Seat Naya Conductor Lane 7 + Status AWAITING-SHAWN + Lineage naming Lane 5 t942, matching the receipt's authorship proof; lane-journals/lane-7.md t0601 entry confirms the candidate doc as a lineage-only extension of Lane 9 p
+
 ### ✅ t0402 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (b) retrieval-auth-gate wiring prep — recusal (x2)
@@ -21203,6 +21227,14 @@ _Last updated: 2026-10-27 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified: tip f9b5ac3d == ls-remote HEAD == shared-state main_tip (zero moves, t0212 director-stale flag RESOLVED); #2385 head eedd9540f5 UNCHANGED; #2456 head e32628325 UNCHANGED; #2454 head 1299e56246 UNCHANGED - all pin-exact via ls-remote. --check CLEAN claimed on fresh shallow clone at the pin (corroborated by unchanged tip + lane's
 
+### ✅ t0232 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** Governance dispositions: #2246 and #2248 KEEP-as-CANDIDATE DELIBERATELY HOLD; #2457 merge-route closed-form finding
+
+**Receipt:** `twelve-lane-receipts/t0232-lane8.md`
+
+**Evidence:** VERIFIED this tick via git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2246/head is STILL d8f9cd2e19225737d3cd223b7629ce5fd82462e2 and refs/pull/2248/head is STILL 5b7e2c178eac987edf23070ffa306983188bcb72, both pin-exact with the receipt 15 days later; branch refs naya/naya-code-charter-v1 and naya/naya-code-unified-draft-20261010 no longer
+
 ### ✅ t0232-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
 **Task:** #2246/#2248 disposition verdicts (KEEP-as-CANDIDATE, HOLD) + #2457 merge-route falsification: merge-endpoint 404 x3, git-data merge route demonstrated
@@ -21225,6 +21257,14 @@ _Last updated: 2026-10-27 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** All three comment artifacts verified on GitHub via gh-api (6123385072 #2246 KEEP-as-CANDIDATE DELIBERATELY HOLD, 6123386933 #2248 DELIBERATELY HOLD, 6123389010 #2457 merge-route finding). Heads pinned pin-exact, circuit breaker honored (no 4th hammer attempt), working alternative demonstrated via git-data API merge, root cause escalated. Propose-on
 
+### ✅ t0232 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** #2418 re-cut staged: three-way re-anchor onto live tip, calculator re-run, team-review red proven unanswerable-in-scope
+
+**Receipt:** `twelve-lane-receipts/t0232-lane3.md`
+
+**Evidence:** VERIFIED this tick via git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2418/head is STILL 8346681cd52600e08fba3bcbb8b86a3258eaf056, pin-exact with the receipt; branch ref naya/three-decision-consolidate no longer resolves (deleted since action time, pull ref retained). Workspace artifacts present: hidden_files/scratch/t0232-lane3-2418/merge
+
 ### ✅ t0232-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** #2418 re-cut staged: clean 3-way re-anchor onto live tip (merged tree 7caf801b), 153/153 tests, team-review red proven unanswerable-in-scope with named owners
@@ -21246,6 +21286,14 @@ _Last updated: 2026-10-27 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0232-lane3.md`
 
 **Evidence:** Artifacts verified: receipt file, calculator receipt (20261012T113345Z-guide-merge-merge-pr--2418.json = HOLD), local staging commit fe5397740d... in scratch worktree, remote branch AND PR head both still 8346681c (collision rule honored — nothing pushed). Re-anchor onto live tip proven clean (zero conflicts, 153/153 decision-battery green, index -
+
+### ✅ t0232 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent seat-2 scorecard on PR #2418 (decision-engine consolidation, strict-bar policy override)
+
+**Receipt:** `twelve-lane-receipts/t0232-lane1.md`
+
+**Evidence:** VERIFIED this tick via git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2418/head is STILL 8346681cd52600e08fba3bcbb8b86a3258eaf056, pin-exact with the receipt 15 days later, so the claimed commit artifact exists and is still the PR head; the branch ref refs/heads/naya/three-decision-consolidate no longer resolves (branch deleted since actio
 
 ### ✅ t0232-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
