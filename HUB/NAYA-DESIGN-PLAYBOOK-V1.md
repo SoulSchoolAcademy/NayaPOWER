@@ -2,7 +2,8 @@
 
 **For all Nayas: how to become masters of Naya design.**
 **Author: naya-power · 2026-10-26 · Ordered by Shawn Vibert.**
-**Status: V1, living document.** The LAWS change only through Shawn. This playbook's teaching is corrected by any seat that brings a source with path + SHA. Contradictions are named in the Honest Ledger, never silently resolved.
+**Status: V1, living document.**
+**Updated 2026-10-27:** §1 added from Shawn's teaching (ultimate experience, visual-first, minute-of-viewing distillation); sections renumbered. The LAWS change only through Shawn. This playbook's teaching is corrected by any seat that brings a source with path + SHA. Contradictions are named in the Honest Ledger, never silently resolved.
 
 ## 0. The Seconds Law — first, before anything else
 
@@ -16,7 +17,21 @@ That is the whole playbook in one sentence, and it is the acceptance test for ev
 
 Everything below exists to make that test pass. Beauty that confuses is not beauty. Intelligence the user can't see in seconds is not intelligence yet.
 
-## 1. The Language — what the words mean
+## 1. The Ultimate Experience — what mastery is FOR
+
+Mastery has a purpose, and the purpose is 10-star service. And 10-star service IS the ultimate experience. The ultimate experience is the ultimate smart app: logical, sensible, beautiful to use in its functionality AND its design — everything intentional, everything beautiful, useful and helpful. If you master that, enormous success follows, because everything else is in service of it.
+
+Shawn's name for what it's about: **active intelligence, elevated, sensible, organized.** Active — alive, moving, responsive, not static. Elevated — raised, premium, never flat. Sensible — logical, organized, easy to grasp. Organized — their world, ordered, automated highly effectively.
+
+**Humans are visual.** The system must speak to them visually. There is so much information, so much the system does — the presentation has to be the most beautiful way, and easy, or the power is wasted. If you don't get this — if you don't get that it's about humans interacting with interfaces and AIs in a way that is viable, sensible, logical, functional, useful, and helpful to them — then none of the rest lands. The interface IS the relationship.
+
+**Design for the skim.** Most people don't read; they skim — titles, subtitles. So the titles and subtitles must carry the meaning. The easier it is to look at the screen and see it and get it, the faster they can do that, the better. This is the Seconds Law working at the level of a glance.
+
+**The intelligent block is the model for ALL of it.** The magic of the intelligent block is distillation: a whole book distilled into one block — in a nutshell, human note, child note, grandma note, Naya note, the lesson, what it all means, why it matters, how it connects, what's in it for them — taken in in about a minute instead of hours or days. Apply that same logic to everything: every page, every app, every system. Distill intelligence into a minute of viewing.
+
+**What the distillation is FOR:** speed up their ability to learn and grow; organize their world; automate their world — in a highly effective way. Beautifully. That is the ultimate experience, and that is what mastery serves.
+
+## 2. The Language — what the words mean
 
 A master speaks the language precisely. These definitions are the verified ones; anything not listed here is not yet a defined term, and you do not invent definitions.
 
@@ -31,7 +46,7 @@ A master speaks the language precisely. These definitions are the verified ones;
 - **Depth** — the surface occupying space: surface, edge, upper surface, lower surface, ambient field, hover, press, active. A surface with no depth is a defect, not a style. (Law 15; Living Depth Law)
 - **Restraint** — color spent like money. The rainbow knows its place. When everything glows, nothing does. (Law 8)
 
-## 2. The Design — the 16 laws, in plain words
+## 3. The Design — the 16 laws, in plain words
 
 Locked by Shawn's word, 2026-10-17. Amendable only through Shawn. A page that breaks these does not ship. (Full text: the design laws file, see Sources.)
 
@@ -56,7 +71,7 @@ Motion, from the interfaces standard: breathing, drift, orb flow, ignition on th
 
 The gates before any page is presented: the ELITE GATE — (1) design contract, (2) harvest law (recompose inventoried elite pieces only, no new Lego pieces), (3) grade-12 start (never a grade-one version presented as progress), (4) AAA (Aligned, Authenticated by a different seat live, Actionable on arrival), (5) truth (no fake liveness, no fabricated ranks, no invented pieces, no claimed verification that has not happened). If any gate fails: DO NOT PRESENT. And the Same-Language Check: 24 items, any single FAIL = does not ship.
 
-## 3. Why We're Different — the 10x list
+## 4. Why We're Different — the 10x list
 
 Shawn's standard is 10x: our interfaces, ten times better than anything that exists. Say it honestly: **10x is a target, not a measurement.** No measurement of "10x" exists, and this playbook does not invent one. What exists is the mechanism below — eighteen reasons, each one removing a whole class of confusion — and the proof, page by page: the seconds test, the D1–D8 scorecard, the cold open. Ten times better is what happens when a page has no way left to confuse.
 
@@ -81,7 +96,7 @@ Shawn's standard is 10x: our interfaces, ten times better than anything that exi
 
 Why this compounds to 10x instead of adding up to "a bit nicer": each reason removes one way a page can confuse — truth confusion, depth confusion, color confusion, dead-control confusion, language confusion, hierarchy confusion, choice confusion. A conventional page confuses in all of them at once. Ours removes them one by one until confusion has nowhere left to stand. That categorical removal is the difference — not a prettier coat on the same confusion.
 
-## 4. What we do different from everyone else
+## 5. What we do different from everyone else
 
 - They ship flat. We ship depth — zero flat, premium in monochrome first.
 - They decorate with color. We mean with color — gold earned, green proven, blue stated.
@@ -94,7 +109,7 @@ Why this compounds to 10x instead of adding up to "a bit nicer": each reason rem
 - They score themselves. We score D1–D8 with an independent seat, evidence, and a cold open.
 - They present demos. We present only what passed the ELITE GATE — or we say plainly "not ready, here is what fails."
 
-## 5. The Mastery Path — how a Naya becomes a master
+## 6. The Mastery Path — how a Naya becomes a master
 
 Mastery is not taste. It is a loop, run on real work, page after page, forever. There is no finish line — Shawn's word: we are extraordinary and we have not hit the bullseye yet, so we keep stepping up.
 
@@ -110,7 +125,7 @@ Run the full chain: DISCOVER → DISTILL → DEFINE → ARCHITECT → COMPOSE �
 **REPEAT — reps are real work, page after page.**
 The program is the pages themselves, in order — the 27-item execution order and the puzzle order, one page to 9+ before the next. A rep is a page built, cold-scored, leveled up, re-scored. Lessons are recorded as Naya intelligence only when a future decision changes because of them. A master is a seat whose tenth page is better than their first because the loop ran nine times — and whose hundredth is better still, because the loop never stops.
 
-## 6. The Honest Ledger — what is NOT settled, and the rules for it
+## 7. The Honest Ledger — what is NOT settled, and the rules for it
 
 A master names what is unproven. This ledger is part of the playbook, not an appendix to skip. Anything here changes only by a source with path + SHA.
 
@@ -125,7 +140,7 @@ A master names what is unproven. This ledger is part of the playbook, not an app
 9. **Not at bullseye yet.** Shawn, 2026-10-26: our interfaces are extraordinary, probably better than anyone's out there — and we have not hit the bullseye yet, and we can step it up a lot from where we are. **Rule:** the bar is 10; review eligibility is 9+ with every dimension ≥ 9.0 and D1 at 10. A page that hasn't passed is not a masterwork, and a master never stops.
 10. **This playbook's companion skill is new.** It was created with this playbook. No prior interface-playbook skill existed in this workspace (verified: the skills directory held only two skills). Any claim that a playbook skill already existed here is refuted for this workspace.
 
-## 7. Sources — the files this playbook stands on
+## 8. Sources — the files this playbook stands on
 
 [Power-read] = read in full by naya-power for this playbook, with the blob recorded. [Research-pass] = read and reported by a read-only research pass, 2026-10-26, with the blob recorded; a seat that re-reads one and finds otherwise corrects this table with the new blob.
 
@@ -140,7 +155,7 @@ A master names what is unproven. This ledger is part of the playbook, not an app
 - Face v3 build — repo branch `face-v3-resolve-20261026`, head `7c7b0991…`, staged only, not live. [Power-read] — a staged example of the canon in use (JWL-020 spheres, JWL-001–005 gem bullets, INP-003 three-tongue switch), NOT a source of law.
 - Shawn's words, 2026-10-26 — the order that created this playbook: the seconds law, the not-bullseye-yet standard, the forever-mastery charge.
 
-## 8. The Oath of the Page
+## 9. The Oath of the Page
 
 A page is what a person touches. It is the user experience — pushing the button, looking at the page. If they can't understand it within seconds, we haven't done our job. So we build to the laws, we compose elite pieces, we prove with an independent seat, and we never stop stepping up — because masters of all masters is not a title you win once. It is a loop you run forever.
 
