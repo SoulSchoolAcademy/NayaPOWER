@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-27 22:08 UTC_
+_Last updated: 2026-10-27 22:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6328
-- ✅ Verified (8+): 6264
+- **Total scored actions:** 6335
+- ✅ Verified (8+): 6271
 - 🟡 Partial (5–7): 61
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -17,7 +17,7 @@ _Last updated: 2026-10-27 22:08 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 457 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 453 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 420 | 9.0 | 10 |
+| Team 3 | Naya Judge | 421 | 9.0 | 10 |
 | Team 4 | Naya Mason | 399 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 524 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 296 | 9.0 | 9.6 |
@@ -25,7 +25,7 @@ _Last updated: 2026-10-27 22:08 UTC_
 | Team 8 | Naya Sentinel | 425 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 547 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 743 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 382 | 9.1 | 9.6 |
+| Team 11 | Naya Heart | 384 | 9.1 | 9.6 |
 | Team 12 | Naya Herald | 319 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -543,7 +543,10 @@ _Last updated: 2026-10-27 22:08 UTC_
 - **gate-stall-20261027-1123:** 1 actions, avg 9.0/10
 - **gate-stall-20261027-1224:** 1 actions, avg 9.0/10
 - **gate-stall-20261027-1330:** 1 actions, avg 9.0/10
-- **gate-stall-20261027-1436:** 1 actions, avg 9.0/10
+- **gate-stall-20261027-1436:** 2 actions, avg 9.0/10
+- **gate-stall-20261026-1812:** 1 actions, avg 9.0/10
+- **distill-weekly-20261025-librarian-heir:** 1 actions, avg 9.0/10
+- **gate-stall-20261027-1538:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -875,6 +878,8 @@ _Last updated: 2026-10-27 22:08 UTC_
 - **gap-gap-gap-gap-t0162-lane11:** 1 actions, avg 9.5/10
 - **gap-t0052:** 2 actions, avg 9.2/10
 - **gap-t0082:** 1 actions, avg 9.3/10
+- **gap-gap-gap-t0122-lane11-recusal-2:** 1 actions, avg 9.0/10
+- **gap-gap-gap-t0122-lane11-recusal-3:** 1 actions, avg 9.0/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
@@ -1043,6 +1048,7 @@ _Last updated: 2026-10-27 22:08 UTC_
 - **prereg-t1496:** 1 actions, avg 9.0/10
 - **gap-t0422:** 2 actions, avg 9.2/10
 - **gap-gap-scorer-20261014-2250:** 1 actions, avg 9.0/10
+- **decision-replay-t0780-thirdseat-t1496-lane3-verdict-table.json:** 1 actions, avg 9.0/10
 - **coldnaya:** 11 actions, avg 9.0/10
 - **scorer-20261014-1910:** 2 actions, avg 9.2/10
 - **gap-scorer-20261015-0120:** 1 actions, avg 9.2/10
