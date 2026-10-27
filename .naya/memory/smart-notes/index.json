@@ -15775,13 +15775,33 @@
         "note": "published directly as a BRAIN projection in commit 629ee6f728ef ('SN-1883: The Ultimate Experience Is the App Itself — mastery, distill-a-minute, sharing-with-all-Nayas practice (Shawn's doctrine, 2026-10-27)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "2ce20e394e289cfdd8e4a55f6acd787770b1f12b4aa1925a4553e103389f0e9e"
+    },
+    {
+      "smart_note_id": "SN-1885",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method",
+      "title": "A Verdict Is Only as Good as Its Method",
+      "content_hash": "9baea9be11cd5fe4f8d60f82905895842694e264d79b39443013d05d15899685",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "VERIFICATION",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 0a8eabe4f1b2 ('method-law door filing (Resolve, 2026-10-27); page lands in this pass's content commit, whose parent is the scanned tip') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "323ec36fee1bc06f354abf615dab3c80673cae4ae997d974bfd8625d533605c7"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1885,
+    "next_sequence": 1886,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "796fa8ddd892fdb50d38df8c0f900ee3874613728de8f205c604785f6c06f734"
+  "corpus_manifest_hash": "10d7663d46b9a48ddc9ef5b95ebd9adcf811c3ccd41d562f37103df5730729c3"
 }

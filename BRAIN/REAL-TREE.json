@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-27",
-  "receipt_basis_commit": "d9c1ff2d7d7a32289c559d2ae7e40e847a4fb933",
+  "receipt_basis_commit": "0a8eabe4f1b2809b12df15fa13bff1fe6814c153",
   "inventory_file_count": 1708,
   "domain_counts": {
     "00-ACTIVATION": 19,
@@ -1152,8 +1152,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-26-LEARNING-EVENT.md",
-      "blob_sha": "3bfc4d6219c7e5971f755a5cea90d10ae6c39ee6",
-      "size": 14605
+      "blob_sha": "525455efb7022cfd9037ab5f1604e97d8d85b0c1",
+      "size": 15722
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -8157,8 +8157,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "b4afc7574cb7db57b197963061d11089c7297637",
-      "size": 5155
+      "blob_sha": "30797f887a8d0a61ba9882c09f36e8a49c4643ac",
+      "size": 5450
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8517,8 +8517,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "6339df86560b4d86838867c7bf3c4a6823b4a584",
-      "size": 19767
+      "blob_sha": "3a36c3dbc5c7c82d7d8618b487811778f7978fea",
+      "size": 20215
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
