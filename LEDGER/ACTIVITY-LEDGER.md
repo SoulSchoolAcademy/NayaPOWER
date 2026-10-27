@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21531,6 +21531,14 @@ _Last updated: 2026-10-27 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: tip aa8061c1 unmoved (ls-remote), #2462 head a92be1c01812a86c1994298b508cc41577e250dc == branch naya/lane9/tipred-fix-t0112 == refs/pull/2462/head. Review comment 6122317726 cited; differential pytest attribution (red pre-existing at base, EXPOSED not introduced) proven on bytes; HOLD verdict correct (merge-consensus bar open 1
 
+### ✅ t0172 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** TOOL-transfer HYPOTHESIS CLOSED (leg-2/leg-3 synthesis close-out)
+
+**Receipt:** `twelve-lane-receipts/t0172-lane6.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: close-out lane-experiments/TOOL-transfer-hypothesis-closeout.md exists; leg-2 seal hash 549adc52c509d1572f5e48043fbd46d1977fd72dd8dd404b2f2c3fe0fe1420a8 and CT-D line 688e0f388cff6580350817a806019171c4fd906dc53c4f65465a3d5fba129262 both present in lane-experiments/t1412/seal-verification.json; leg-3 CT-D line 
+
 ### ✅ t0172-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** TOOL-transfer hypothesis close-out (leg seal recompute + boundary table)
@@ -21552,6 +21560,14 @@ _Last updated: 2026-10-27 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0172-lane6.md`
 
 **Evidence:** Dispatcher verified: close-out file lane-experiments/TOOL-transfer-hypothesis-closeout.md exists; seal files t0162/prereg-sealed.md sha256 7b726ce4...e781 == receipt pin; seal-verification.json structure present (9 pins); score log corrected from brief (t0092=9.0, t0122=9.5) cited accurately. Recomputed-vs-copied discipline stated. To-do closure ca
+
+### ✅ t0172 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** #2418 action-time re-verify: HOLD, blockers named
+
+**Receipt:** `twelve-lane-receipts/t0172-lane3.md`
+
+**Evidence:** VERIFIED this tick on live bytes via git protocol: mirror branch naya/three-decision-consolidate still resolves to 8346681cd52600e08fba3bcbb8b86a3258eaf056 exactly matching the receipt pin, 14 days after the tick, so the head pin is not phantom. NOT PHANTOM on the pin leg. SCORE 9.0 GOOD, ONE MORE PASS, one band above the lane's honest 8.5 on the s
 
 ### ✅ t0172-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -21587,6 +21603,14 @@ _Last updated: 2026-10-27 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: hv_output_t0162_run1/run2.json byte-identical (sha256 d4e59a18... matches receipt), metric_audit_t0162.json exists (12 rows), STATS.md published, tip aa8061c1 re-pinned unmoved. Third regression proof of t1162 window-scoping fix (42 receipts reproduce t1052 baseline exactly). HV3 PROVEN-UNMEASURABLE correctly not re-filed (no m
 
+### ✅ t0172 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** M6 swallower veto on the SGF runner (t0142 falsifier fix, RED-first)
+
+**Receipt:** `twelve-lane-receipts/t0172-lane1.md`
+
+**Evidence:** VERIFIED this tick on live bytes: test_sgf_runner_m6.py sha256 53711d981eece3886bb3c3f4502478336c920789ae8ced2e6a7f1b7322fabb73 exactly matches the receipt pin; mirror branch naya/six-sgf-daily-runner-t992 now at ca1cc31e, and the receipt pin 41dfc86e is an ancestor of it, with ca1cc31e titled 'port M6 swallower-veto into the SGF daily runner' - th
+
 ### ✅ t0172-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** M6 swallower-veto fix on SGF runner (RED-first, 6/6 GREEN)
@@ -21609,6 +21633,14 @@ _Last updated: 2026-10-27 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: sgf_runner.py sha256 6326d8c1...78ff == receipt, SGF-SPEC.md a10a7289...363db41dc52 == receipt, test_sgf_runner_m6.py 53711d98...11f7 == receipt; decision receipt 20261012T102720Z exists. RED-first on pre-fix bytes, 6/6 GREEN post-fix, control panel clean, spec enum staleness fixed, history clean. Honest deductions named (calcu
 
+### ✅ t0162 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Independent cross-seat review of #2462, HOLD
+
+**Receipt:** `twelve-lane-receipts/t0162-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes via git protocol: git ls-remote returns refs/pull/2462/head = a92be1c01812a86c1994298b508cc41577e250dc exactly matching the receipt pin, 14 days after the review, so the head pin is not phantom. NOT PHANTOM on the pin leg. SCORE 9.0 GOOD, ONE MORE PASS, agreeing with the lane's honest 9.0. Why not 9.5: (1) review co
+
 ### ✅ t0162-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Independent cross-seat review of PR #2462 (pin-exact, HOLD verdict)
@@ -21630,6 +21662,14 @@ _Last updated: 2026-10-27 00:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0162-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: #2462 head a92be1c01812a86c1994298b508cc41577e250dc == naya/lane9/tipred-fix-t0112 == refs/pull/2462/head == receipt pin; tip aa8061c1 unmoved. Check table with RUN job IDs in review comment 6122317726; differential pytest attribution proven on bytes (red pre-existing at base, EXPOSED not introduced); HOLD verd
+
+### ✅ t0162 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 1 CLOSED, honest NO-GO
+
+**Receipt:** `twelve-lane-receipts/t0162-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: seal lane-experiments/t0162/prereg-sealed.md sha256 7b726ce437441ca27885f8e020f154dc718cca7ecccd1af0ab04823e9b18e781 exactly matches receipt pin; instrument measure_h9.py sha256 a4e34b011dec08c094b0cc06c9df008c35afe7c759334ba3f60b740fad098f21 exactly matches; pins-real.json holds 50 pinned decision files, all 
 
 ### ✅ t0162-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
