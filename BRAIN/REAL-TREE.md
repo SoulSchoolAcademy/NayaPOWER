@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-26  
-**Receipt basis commit:** `4aca34b39381e7f43de013168dd7f86c69412138`  
-**Inventory file count:** 1705  
+**Generated:** 2026-10-27  
+**Receipt basis commit:** `629ee6f728efc21d2bc41a95ccf6a682c0aa5e85`  
+**Inventory file count:** 1707  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 874 |
+| 05-MEMORY | 876 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -1017,11 +1017,13 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1871/IB-SMART-NOTE-20261026-sn1871-be-intelligent-get-out-of-your-own-way.md` — `4294c8cb8e0c` (3464 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1874/IB-SMART-NOTE-20261026-sn1874-finish-it-or-say-its-unfinished.md` — `cdff9d493180` (3617 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/mission/SN-1879/IB-SMART-NOTE-20261026-sn1879-mission-is-the-authority-relay-is-intel.md` — `ebeb51955789` (10434 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/safety/SN-1882/IB-SMART-NOTE-20261026-sn1882-when-a-safety-check-flags-your-read-set-it-aside-and-go-around.md` — `db92ec00f109` (6898 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md` — `4d0fb5fcc757` (7024 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1872/IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note.md` — `c2d97cf19afe` (2939 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1873/IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself.md` — `4c3341ab046d` (6276 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1877/IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time.md` — `7d05557ba00b` (5954 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md` — `1a097a0fa2be` (3156 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/team/SN-1883/IB-SMART-NOTE-20261027-sn1883-ultimate-experience-active-intelligence.md` — `478b64856aa1` (4078 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)

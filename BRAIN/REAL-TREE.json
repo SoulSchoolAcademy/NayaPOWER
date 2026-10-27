@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-26",
-  "receipt_basis_commit": "4aca34b39381e7f43de013168dd7f86c69412138",
-  "inventory_file_count": 1705,
+  "generated_at": "2026-10-27",
+  "receipt_basis_commit": "629ee6f728efc21d2bc41a95ccf6a682c0aa5e85",
+  "inventory_file_count": 1707,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 874,
+    "05-MEMORY": 876,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4886,6 +4886,11 @@
       "size": 10434
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/safety/SN-1882/IB-SMART-NOTE-20261026-sn1882-when-a-safety-check-flags-your-read-set-it-aside-and-go-around.md",
+      "blob_sha": "db92ec00f109ab8b6b272bc2132f3c698d8120b9",
+      "size": 6898
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md",
       "blob_sha": "4d0fb5fcc7572b8f1b418d943a51cf29e9cb5a07",
       "size": 7024
@@ -4909,6 +4914,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md",
       "blob_sha": "1a097a0fa2bee5ca4241b1549d77f83df6f97913",
       "size": 3156
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/team/SN-1883/IB-SMART-NOTE-20261027-sn1883-ultimate-experience-active-intelligence.md",
+      "blob_sha": "478b64856aa1c8b3f0028accf2797b85691e3117",
+      "size": 4078
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
