@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-26T23:15:26+00:00",
+ "generated_utc": "2026-10-27T00:15:33+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -196,8 +196,15 @@
    "next_action": "Publish the grand to-do list and the full named charters \u2014 the machine cannot swarm what it cannot see.",
    "active_now": false,
    "board_lane": "#2175 lane TEAM",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3101,
+     "title": "NAYA DESIGN MASTERY V1 \u2014 the team design-mastery playbook (Shawn's directive, three tongue",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3101",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "infra",
@@ -216,8 +223,15 @@
    "next_action": "Fix the CI workflow's swallowed exit codes (the line-65 class) so a red is always a real red, then prove the full suite green on a clean runner.",
    "active_now": false,
    "board_lane": "#2175 lane INFRA",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3102,
+     "title": "docs(pi): capture one-minute human intelligence principle",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3102",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "product",
@@ -410,6 +424,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 4,
+ "open_pr_total": 6,
  "unassigned_prs": 4
 }
