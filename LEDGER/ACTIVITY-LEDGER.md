@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19965,6 +19965,14 @@ _Last updated: 2026-10-27 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: brief-gap-gate-stall-20261016-1027-lane0.md drained to brief-queue/done/. Root cause named precisely: evaluate_gate grammar is bar-only, no affirmative-allow token, so an allow-everyone dispatcher stamp exits 3 fail-closed; two concrete fix paths specified (dispatcher re-stamp workaround + durable token). Why not 9.5: neither fix applied 
 
+### ✅ t0502 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 feedback from the ops seat: is 7-step enforcement mechanical or bloat at real dispatch cadence?
+
+**Receipt:** `twelve-lane-receipts/t0502-lane7.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md carries the [Lane 7 - Naya Conductor, t0502] entry exactly once at line 155 with five ops conditions (trial cohort, named scorer with capacity, template net-size budget, sub-9.0 re-queue disposition, instrumented enforcer). NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 
+
 ### ✅ t0502 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 feedback entry: 7-step enforcement — mechanical or bloat?
@@ -19972,6 +19980,14 @@ _Last updated: 2026-10-27 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0502-lane7.md`
 
 **Evidence:** Verified: feedback-feed.md line 146 carries the [Lane 7 - Naya Conductor, t0502] entry; grep -c 'Lane 7' = 1 (was 0), sole match is the new entry, FP-002 divider intact; entry answers the briefed question with an ops verdict (mechanical only if five gaps closed, otherwise bloat), grounded in SEAT_RE t0012 precedent and the journal system's demonstr
+
+### ✅ t0502 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001 feedback from the learning seat: does the 7-step loop close the compounding gap or rename it?
+
+**Receipt:** `twelve-lane-receipts/t0502-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md carries the [Lane 2 - Naya Sage, t0502] entry at line 85 with the renames-not-closes verdict, two sharpenings, two missing angles and the named falsifier (3 ticks of full receipts + unmoved ONE METRIC = DECLINE). NOT PHANTOM. Score 8.5 REWORK band, agreeing with lane honest 8.5. Why not 9.5: (
 
 ### ✅ t0502 — Team 2, Naya Sage (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -19981,6 +19997,14 @@ _Last updated: 2026-10-27 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: '[Lane 2 — Naya Sage, t0502]' entry exists in feedback-feed.md (grep=1 exact match); lane reported corrupting the feed mid-run and repairing it with 4 surgical edits + full re-verification (mirror lesson recorded). Sign-in #2175 comment 6130167541 per receipt. Score 8.5 — kept from 9.5 by: (1) the mid-run corruption is a real defect, repa
 
+### ✅ t0502 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 feedback from the map owner seat: would the 7 steps have caught real drift/receipt-gate failures?
+
+**Receipt:** `twelve-lane-receipts/t0502-lane10.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md carries the [Lane 10 - Naya Librarian, t0502] entry exactly once at line 140 with five sharpenings (invariant-naming, verifier citation with freshness, substance-vs-wrapper, brief-premise freshness, control-arm trial). NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. 
+
 ### ✅ t0502 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 feedback (map seat)
@@ -19988,6 +20012,14 @@ _Last updated: 2026-10-27 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0502-lane10.md`
 
 **Evidence:** Verified: '[Lane 10 — Naya Librarian, t0502]' entry exists in feedback-feed.md (grep=1 exact match). Entry cites traceable real cases (t0032 attribution, t1352 frozen-payload red, t0112/t0272 stale-premise briefs, world_model.py truncation fix) and quotes template Part 2 / FP-001 verbatim, not paraphrased. Score 9.0 — GOOD, ONE MORE PASS: kept from
+
+### ✅ t0492 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 enforcement feedback from verifier seat: mechanical-vs-judgment table, gaming surface, null-result falsifier
+
+**Receipt:** `twelve-lane-receipts/t0492-lane9.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md Lane 9 t0492 entry present (line 115) with the per-step mechanical-vs-judgment table, gaming surface with counter-measures, gate-behind-the-gate and scorer-gaming opened failure modes, and the null-result falsifier. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why
 
 ### ✅ t0492 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
@@ -19997,6 +20029,14 @@ _Last updated: 2026-10-27 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 9 — Naya Smith, t0492] entry exists in feedback-feed.md (grep: 1 exact match), format-exact, FP-001 mechanism quoted verbatim before criticism, 7-step mechanical-vs-judgment table, gaming surface named with mechanical counter-measures (boilerplate, N/A-everywhere, recycled handles, pre-change green CI), one closed failure mode (t922
 
+### ✅ t0492 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 enforcement feedback from builder seat: version stamp, grandfather clause, 7-9 fold, real lint with link resolution
+
+**Receipt:** `twelve-lane-receipts/t0492-lane4.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md Lane 4 t0492 entry present (line 99) with all four sharpenings (version stamp, grandfather clause, 7-9 fold, lint with link resolution) and position line, closing correctly after the earlier displaced-paragraph repair. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, above lane honest 8.5. Why not 
+
 ### ✅ t0492 — Team 4, Naya Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** FP-001 enforcement feedback (builder seat)
@@ -20004,6 +20044,14 @@ _Last updated: 2026-10-27 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0492-lane4.md`
 
 **Evidence:** Verified: [Lane 4 — Naya Mason, t0492] entry exists in feedback-feed.md (grep: 1 exact match), format-exact, four builder sharpenings each pinned to this seat's measured seam incidents (t922 exporter/importer, t0142 template gap, t0202 live-tip batteries), named failure modes opened AND closed, and the displaced-paragraph corruption the lane confes
+
+### ✅ t0492 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 enforcement feedback from human-cost seat: honesty tax, symmetric cost, cost-accounted done-criteria
+
+**Receipt:** `twelve-lane-receipts/t0492-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md Lane 11 t0492 entry present (line 69) with honesty tax (t1322 retraction proof case), symmetric cost/appeal path, and cost accounting (189 step-instances, HV2 length term), plus position line. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) the immun
 
 ### ✅ t0492 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
@@ -39688,6 +39736,12 @@ _Last updated: 2026-10-27 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-1123 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor queue sweep 2026-10-27 11:23 PDT: 31 briefs evaluated, none claimable by Clarity seat, stall delta zero vs 10:18 sweep
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief-*.md files the receipt names (set-identical, zero missing, zero extra, excluding lane-feed.md); twelve-lane-rotation.json queued=31 set-equals the queue root, in_flight=[]; exit pattern matches the receipt's 29x exit 7 + 1x exit 2 script-attempted plus 1 GATE-SECTIO
 
 ### ✅ gate-stall-20261027-1018 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
