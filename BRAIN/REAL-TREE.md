@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-27  
-**Receipt basis commit:** `629ee6f728efc21d2bc41a95ccf6a682c0aa5e85`  
-**Inventory file count:** 1707  
+**Receipt basis commit:** `d9c1ff2d7d7a32289c559d2ae7e40e847a4fb933`  
+**Inventory file count:** 1708  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 876 |
+| 05-MEMORY | 877 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -1023,6 +1023,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1873/IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself.md` — `4c3341ab046d` (6276 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1877/IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time.md` — `7d05557ba00b` (5954 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md` — `1a097a0fa2be` (3156 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/design/SN-1884/IB-SMART-NOTE-20261027-sn1884-active-intelligence-design-mastery.md` — `4bfdc2972340` (18696 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/team/SN-1883/IB-SMART-NOTE-20261027-sn1883-ultimate-experience-active-intelligence.md` — `478b64856aa1` (4078 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)

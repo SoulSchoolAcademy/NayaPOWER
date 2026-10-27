@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-27",
-  "receipt_basis_commit": "629ee6f728efc21d2bc41a95ccf6a682c0aa5e85",
-  "inventory_file_count": 1707,
+  "receipt_basis_commit": "d9c1ff2d7d7a32289c559d2ae7e40e847a4fb933",
+  "inventory_file_count": 1708,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 876,
+    "05-MEMORY": 877,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4914,6 +4914,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md",
       "blob_sha": "1a097a0fa2bee5ca4241b1549d77f83df6f97913",
       "size": 3156
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/design/SN-1884/IB-SMART-NOTE-20261027-sn1884-active-intelligence-design-mastery.md",
+      "blob_sha": "4bfdc29723402dd61dc71a6793357e7c8bc0c066",
+      "size": 18696
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/team/SN-1883/IB-SMART-NOTE-20261027-sn1883-ultimate-experience-active-intelligence.md",
