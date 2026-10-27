@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -6155,6 +6155,14 @@ _Last updated: 2026-10-27 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1302 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** Veracity-hole design spec + RED-first battery: hole reproduced on pin-exact live bytes, candidate guard 14/14, spec only (wiring gated)
+
+**Receipt:** `twelve-lane-receipts/t1302-lane8.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/specs/veracity-seam-demotion-candidate.md present; hidden_files/lane8-t1302-veracity/battery.py present; baseline/battery_baseline.json 6/14 with T01 observed rc=0 winner=SN-D4 (hole reproduced) and candidate/battery_candidate.json 14/14 with T01 winner=SN-D5, matching the receipt; calculator deci
+
+### ✅ t1302 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** veracity-hole design spec (seam demotion) + RED-first adversarial battery
 
 **Receipt:** `twelve-lane-receipts/t1302-lane8.md`
@@ -6206,6 +6214,14 @@ _Last updated: 2026-10-27 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1302-lane8.md`
 
 **Evidence:** Dispatcher verified disk artifacts: lane8-t1302-veracity/baseline/ (head 95db141, battery_baseline.json 6/14), candidate/ (head 287555b, battery_candidate.json 14/14), battery.py, specs/veracity-seam-demotion-candidate.md, decisions receipt. Zero production bytes changed; wiring gated on Shawn.
+
+### ✅ t1302 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Brain-index heal forward: t1292 heal re-anchored, PR #2452 opened (HOLD), #2385 restamp package staged
+
+**Receipt:** `twelve-lane-receipts/t1302-lane7.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/heads/naya/conductor-q2385-restamp-t1302 is STILL b5d31ba35baaadda1c0610d02198a29651706f5a, pin-exact with the receipt 15 days later; refs/pull/2452/head is c4bfd2529693ff5a859e1aaf56f376bd45cfab40, pin-exact with the receipt's re-anchored heal head (branch ref it
 
 ### ✅ t1302 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -6351,6 +6367,14 @@ _Last updated: 2026-10-27 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on live bytes by this seat, independent of the lane (2026-10-22 13:5x PDT): hidden_files/w704-tripwire-4instance-verdict-t1295.md (12352b) and hidden_files/w704-tripwire-probe.py (10868b) both byte-present; re-ran the probe read-only against live REST: #2738 -> TRIP (bot actor nayapower-lane-agent[bot], merged 2026-10-21T22:56:48Z, 8 stron
 
+### ✅ t1292 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV instrument window audit t1232-t1292: brief false premise corrected, 15-row audit, 6 edge rows reclassified, M4b recurrence 14 closed on tip
+
+**Receipt:** `twelve-lane-receipts/t1292-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/lane-11/metric_audit_t1292.json present, window t1232-t1292, exactly 15 receipts (9 adopted + t1232-lane2/9/11 + t1282-lane1/3/5) and totals m2=14/m3=12/m4=7 exactly as claimed. NOT PHANTOM. The instrument x3 byte-identical claim was not re-run this tick (no hv_output_t1292 run files located), so 
+
 ### ✅ t1292 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
 
 **Task:** human-value instrument audit, window t1232->t1292 (15 rows, M2/M3/M4)
@@ -6404,6 +6428,14 @@ _Last updated: 2026-10-27 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1292-lane11.md`
 
 **Evidence:** Dispatcher verified: metric_audit_t1292.json exists on disk (15170B); M2:14/M3:12/M4:7 rows reproducible from the local instrument (byte-identical x3 claim is agent-run evidence, not re-run by dispatcher). Adopted t1272's 9 rows with pass-2 re-verification against live receipts; two t1272 judgments corrected with named precedents; brief's false pre
+
+### ✅ t1292 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index DRIFT recurrence 15: bisect to PR #2446 introducer, byte-verified heal branch, #2385 gate re-verified
+
+**Receipt:** `twelve-lane-receipts/t1292-lane10.md`
+
+**Evidence:** VERIFIED this tick in part via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: the heal branch naya/ten-brainindex-heal-t1292 is no longer listed (branch deleted in 15 days of movement), so its 28ab48ac pin rests on the successor t1302-lane7 receipt, which verified it pin-exact at action time, and on the downstream chain (PR #2452 head c4
 
 ### ✅ t1292 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -21303,6 +21335,14 @@ _Last updated: 2026-10-27 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified on disk: run1/run2 byte-identical sha256 f34963aa..., post-audit pair 75fe00811..., machine totals M2:7/M3:4/M4:0 reproduce the hand audit exactly; t892-t1042 regression reproduces t1052 baseline (5th proof); HV3 no-movement discipline held; 14th straight window with Lane 12 zero receipts reported. Single-seat judgments + stale 
 
+### ✅ t0212 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Kernel RED signature byte-verdict at live tip e47a650e2: SIGNATURE-RESOLVED, mjs cold-retrieve 8/8 + 3/3
+
+**Receipt:** `twelve-lane-receipts/t0212-lane9.md`
+
+**Evidence:** VERIFIED this tick only in part: receipt is a diagnosis-only run with no repo branch or file writes claimed, so there is no branch/SHA artifact to pin via ls-remote; the tip commit e47a650e2 and the #2175 routing comment 6142532510 were NOT re-fetched this tick (git-protocol-only rule for refs, REST not used), so those legs rest on the receipt reco
+
 ### ✅ t0212-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** kernel RED signature byte-verdict on mjs cold-retrieve path at pinned tip
@@ -21324,6 +21364,14 @@ _Last updated: 2026-10-27 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0212-lane9.md`
 
 **Evidence:** Verified: tip pin e47a650e2f05935cb57b02f0f368452b346148e1 == shared-state main_tip (action-time re-pin honest). Independent content check via REST contents API at that exact SHA: tests/intelligence_retrieve_execution.test.mjs:12/98/102 carries applyApplicabilityRanking + 't0112: the 400!=200 at line 151' inline fix note - the receipt's core claim 
+
+### ✅ t0212 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Sealed NLI entailment arm t0601 re-run after torch/transformers blocker resolved: VERDICT FAIL, H-sage-1 falsified
+
+**Receipt:** `twelve-lane-receipts/t0212-lane7.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, all SHAs byte-exact 14 days later: prereg-t0601-entailment.md bd9ca4ea3c4d1f76fd2280f720afaeacd0090d0164172a35d0a15444bf7a8f44 (untouched), BLOCKED baseline 4d52a16b4f7a2d1ba5c58af751ea02c1f6f79545d752eac4aca96851b5288b46 (preserved), run results 10b42701548a8c7a5fe2bb91e806ed2402276fb725f7f635d2b535e3b4849b48
 
 ### ✅ t0212-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
@@ -21368,6 +21416,14 @@ _Last updated: 2026-10-27 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0212-lane6.md`
 
 **Evidence:** Dispatcher verified via git protocol: branch naya/six-sgf-daily-runner-t992 @ ca1cc31ebc794478cfd0f7fc1f2d0a2f96380e8e == ls-remote == receipt; all 6 cited file sha256s recomputed from the remote head MATCH (f3c1f26285e9 / 57f11e68d7ed / 3ab3896f54f1 / 335ce0078104 / 43b9aa2a41bd / 09f158304013). Veto carries M6 semantics into the runner's own byte
+
+### ✅ t0212 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE (c) hypertuning input re-baseline: premise-rotted brief caught, CANDIDATE spec vs Lane 4 v2 draft
+
+**Receipt:** `twelve-lane-receipts/t0212-lane12.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/retrieval/query-log-hypertuning-input-t0212.md exists, 124 lines, sha256 dddeb57563d042a74481bf34f2d37aea568633d1ba79baaaa669ef71c92bf9b3 exactly as claimed. NOT PHANTOM. The ask-world log pin (57f0c922...) was not re-derived this tick (log path not located in this check), so that leg rests on the
 
 ### ✅ t0212-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
