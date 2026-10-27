@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-27 06:42 UTC_
+_Last updated: 2026-10-27 07:11 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6182
-- ✅ Verified (8+): 6119
+- **Total scored actions:** 6189
+- ✅ Verified (8+): 6126
 - 🟡 Partial (5–7): 60
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -19,13 +19,13 @@ _Last updated: 2026-10-27 06:42 UTC_
 | Team 2 | Naya Sage | 439 | 8.8 | 9.5 |
 | Team 3 | Naya Judge | 408 | 9.0 | 10 |
 | Team 4 | Naya Mason | 388 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 514 | 9.1 | 9.6 |
+| Team 5 | Naya Seeker | 515 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 290 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 395 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 413 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 535 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 732 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 371 | 9.1 | 9.6 |
+| Team 8 | Naya Sentinel | 414 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 536 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 733 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 373 | 9.1 | 9.6 |
 | Team 12 | Naya Herald | 316 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -529,6 +529,7 @@ _Last updated: 2026-10-27 06:42 UTC_
 - **gate-stall-20261026-2019:** 1 actions, avg 9.0/10
 - **gate-stall-20261026-2122:** 1 actions, avg 9.0/10
 - **gate-stall-20261026-2230:** 1 actions, avg 9.0/10
+- **gate-stall-20261026-2334:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -1463,7 +1464,7 @@ _Last updated: 2026-10-27 06:42 UTC_
 - **t0072-lane7:** 1 actions, avg 9.0/10
 - **t0072-lane9:** 1 actions, avg 9.5/10
 - **t0072-gap:** 1 actions, avg 9.0/10
-- **t0082:** 14 actions, avg 9.1/10
+- **t0082:** 17 actions, avg 9.1/10
 - **t0082-lane10:** 1 actions, avg 9.0/10
 - **t0082-lane11:** 1 actions, avg 9.0/10
 - **t0082-lane8:** 1 actions, avg 9.0/10
@@ -2235,7 +2236,7 @@ _Last updated: 2026-10-27 06:42 UTC_
 - **t1312-lane1:** 1 actions, avg 9.0/10
 - **t1312-lane10:** 1 actions, avg 9.0/10
 - **t1312-lane6:** 1 actions, avg 9.0/10
-- **t1322:** 18 actions, avg 9.0/10
+- **t1322:** 21 actions, avg 9.0/10
 - **t1322-lane11:** 1 actions, avg 9.0/10
 - **t1322-lane5:** 1 actions, avg 9.0/10
 - **t1322-lane9:** 1 actions, avg 9.0/10
