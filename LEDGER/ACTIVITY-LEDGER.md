@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 04:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28976,6 +28976,30 @@ _Last updated: 2026-10-27 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-gap-gap-t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up on gap-gap-t0042: probe-path demoted visibility - PROBE_REFUSED_WITH_FALSIFIED_MATCH marker, guard decision untouched, candidate proven
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t0042-lane5.md`
+
+**Evidence:** VERIFIED this tick by independent re-execution, not just hash-match: all 4 receipt pins match exactly on workspace bytes (candidate baf9284b7e1f8273551f298383a5058ce39ac3bbfc20d6d4d94c2bd5f0cf79e2, corpus 3eeddc8f5716246ce9cfb143d45c9dc046f1dc86c2941598857be92b4ccc28b3, proof script 5a91a2e8645477cd29772b54f7a76318772748de3e839d5b99905e27500f9aed, 
+
+### ✅ gap-gap-t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on gap-t0042: mixed-case below-floor visibility - demoted-on-any-refusal decided as distinct per-kind stderr tokens, candidate patch proven
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0042-lane5.md`
+
+**Evidence:** VERIFIED this tick by independent re-execution, not just hash-match: all 5 receipt pins match exactly on workspace bytes (candidate baf9284b7e1f8273551f298383a5058ce39ac3bbfc20d6d4d94c2bd5f0cf79e2, corpus 3eeddc8f5716246ce9cfb143d45c9dc046f1dc86c2941598857be92b4ccc28b3, parent proof df5d149dead881244f05352a904195a6a51c3ef1388a40b4d1c96dd06e21dd57, 
+
+### ✅ gap-t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0042: distinct return signal for falsified-only refusals (rc=3) with zero negative-control change
+
+**Receipt:** `twelve-lane-receipts/gap-t0042-lane5.md`
+
+**Evidence:** VERIFIED this tick by independent re-execution, not just hash-match: all 4 receipt pins match exactly on workspace bytes (candidate baf9284b...2, corpus 3eeddc8f...b3, proof script df5d149d...57, results 43464f00...4d4); scorer re-ran prove_distinct_signal.py this tick and it passed all assertions green (M2 falsified-only old rc 1,1,1 -> new rc 3,3
 
 ### ✅ gap-lane-scorer-20261018-0120 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
