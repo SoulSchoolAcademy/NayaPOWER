@@ -1,6 +1,6 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-27T22:24:29Z",
+  "generated_at": "2026-10-27T23:24:36Z",
   "tip": "4dde3c1facdbfa9330171d908f45d9ef0c784ac0",
   "prs": [
     {
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "4dc30714c1602c0742dd21e58a89e42c86c52c90"
+      "head": "a0dfcd9cf16916fcb7c085cc6761217f0a0629f6"
     },
     {
       "number": 3088,
@@ -46,7 +46,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "9e2099cd609eba459f61b39fa3a94a3a1be902ab"
+      "head": "398a321ae268f638e889f9da626a457b21b80c76"
     },
     {
       "number": 3111,
@@ -56,6 +56,15 @@
       "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, completeness, door-obligation; then re-derive at the new head.",
       "owner": "author lane",
       "head": "b34caaa12c74d1c63f8406f5cf17f88b4e7a269e"
+    },
+    {
+      "number": 3113,
+      "title": "The Path to Ten \u2014 honest system assessment, three tongues (Shawn's 2026-10-27 commission)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "88f4cb0cc2c100a3c5b44ecaa7317b05d1d92a50"
     }
   ]
 }
