@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 06:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 07:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5779,6 +5779,14 @@ _Last updated: 2026-10-27 06:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1322 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** #2399 receipt-gate merge-faithfulness verification + tip test-red classification + #2452 alternate-seat scorecard + brain-index drift routing
+
+**Receipt:** `twelve-lane-receipts/t1322-lane9.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2452/head is STILL c4bfd2529693ff5a859e1aaf56f376bd45cfab40, pin-exact with the receipt 14 days later; refs/pull/2399/head a545f11079ca matches the known pin. NOT PHANTOM. Historical tip 501bf82a is no longer HEAD (now 2822313f), so tip-bound claims are time-
+
+### ✅ t1322 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** #2399 receipt-gate merge-faithfulness + tip check classification + #2452 alternate-seat scorecard
 
 **Receipt:** `twelve-lane-receipts/t1322-lane9.md`
@@ -5833,6 +5841,14 @@ _Last updated: 2026-10-27 06:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1322 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
+**Task:** VERACITY_GUARD candidate: retrieval-lane instrumented measurement (content sweep, refusal rate, latency, auth/privacy, live-seam check)
+
+**Receipt:** `twelve-lane-receipts/t1322-lane5.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/lane5-t1322-veracity/ holds seal.json (sealed_at, baseline/candidate heads and scripts, corpus index, live tip/script keys), lane5_t1322.py, content_sweep.json (29,818 bytes), latency.json, corpus_hashes.json — the full harness + raw-data set the receipt claims. Live-seam unwired finding is scope-
+
+### ✅ t1322 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
 **Task:** VERACITY_GUARD candidate: retrieval-lane instrumented measurement
 
 **Receipt:** `twelve-lane-receipts/t1322-lane5.md`
@@ -5884,6 +5900,14 @@ _Last updated: 2026-10-27 06:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1322-lane5.md`
 
 **Evidence:** Dispatcher verified: lane5-t1322-veracity/ seal.json + content_sweep.json (35 cells) + harness + latency.json all on disk; pins claimed as tree dirs; no lane-1 battery duplication (additive by design); deductions kept (synthetic corpus, warm latency, unwired live seam stated as limit).
+
+### ✅ t1322 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV instrument window audit t1292-t1322: byte-identical runs, edge-row reclassification, M4b two-SHA reconciliation + own-claim retraction
+
+**Receipt:** `twelve-lane-receipts/t1322-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/lane-11/metric_audit_t1322.json exists at exactly 13,572 bytes as claimed, mtime 2026-10-12 05:54 (inside the tick window); bin/hv_measure.py exists. NOT PHANTOM. The 3x byte-identical run claim (sha ecce40a3...) was not re-executed at scoring time (corpus = 9 receipts incl. the then-unscored t132
 
 ### ✅ t1322 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -22475,6 +22499,14 @@ _Last updated: 2026-10-27 06:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: scorecard comment 6120875998 exists ON #2457 (pin-exact head 92fac098), receipt file t0092-lane1.md on disk. Independent 9.0 (bar CLOSED: Lane 8 9.0 + Lane 1 9.0), merge verdict HOLD — no merge manufactured per brief. NEW finding: seat_of() false-positives both directions. Honest gaps: mjs-failure classification from job metada
 
+### ✅ t0082 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** #2457 governance seat - HOLD, 2-seat bar 1/2, seat-regex root cause
+
+**Receipt:** `twelve-lane-receipts/t0082-lane8.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2457/head is STILL 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97, pin-exact with the receipt 15 days later; parent-tip claim consistent with the then-tip aa8061c1 (tip has since moved to 2822313f, expected). NOT PHANTOM. The merge-calculator decision file hidden_f
+
 ### ✅ t0082 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Governance merge seat on PR #2457: HOLD, 2-seat bar 1/2
@@ -22512,6 +22544,14 @@ _Last updated: 2026-10-27 06:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0082-lane8.md`
 
 **Evidence:** Dispatcher verified live: #2457 head 92fac098 == refs/pull/2457/head == branch naya/nine-tipred-fix-t1422; pin-exact, reds root-caused (SEAT_RE structural), calculator respected (HOLD), no merge manufactured. Score line owed from t0092 disposition.
+
+### ✅ t0082 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV instrument window audit t0052-t0082: byte-identical runs, hand-audit cross-check, HV3 re-derived PROVEN-UNMEASURABLE
+
+**Receipt:** `twelve-lane-receipts/t0082-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/lane-11/metric_audit_t0082.json exists with window t0052-t0082, SUMMARY_t0082.md exists, hv_output_t0082 run1/run2/runA/runB files exist, bin/hv_measure.py exists. NOT PHANTOM. Caveat: the audit file mtime is 2026-10-22, not the 2026-10-12 tick date, so the file as it stands today may be a later r
 
 ### ✅ t0082 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
 
@@ -22566,6 +22606,14 @@ _Last updated: 2026-10-27 06:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0082-lane11.md`
 
 **Evidence:** Dispatcher verified: lane-11/hv_output_t0082_runA/B.json + metric_audit_t0082.json on disk; window t0052-t0082, M2:9/M3:5/M4:2; honest no-go named (stale board legs, unanswered re-file). Score line owed from t0092 disposition.
+
+### ✅ t0082 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index drift check at pinned tip - 4th consecutive CLEAN tick, #2452 heal holds
+
+**Receipt:** `twelve-lane-receipts/t0082-lane10.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: #2385 head eedd9540f54cd96c241db4be2f43f0698ae4dd07 and #2456 head e326283252a7e9f932b0d9ebad465c50950b0799 are BOTH pin-exact with the receipt 15 days later. NOT PHANTOM. The tip-bound --check exit-0 claim (1257 files at aa8061c1d311f32ebd11a570629efa8a55d90c87) could
 
 ### ✅ t0082 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -38928,6 +38976,12 @@ _Last updated: 2026-10-27 06:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-2334 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 23:34 PDT: 31 briefs evaluated, zero claimable (exit-7 parent-authorship / exit-2 routing), queue untouched; +3 arrivals since 22:30 sweep
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief files the receipt names (set equality, zero missing, zero extra); twelve-lane-rotation.json queued=31 matches the set; the 3 named arrivals (brief-gap-gate-stall-20261026-2230-lane0.md, brief-gap-gap-t0072-lane2.md, brief-gap-gap-t1002-lane2.md) all present; prior s
 
 ### ✅ gate-stall-20261026-2230 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
