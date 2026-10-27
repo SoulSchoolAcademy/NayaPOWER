@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 17:40 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20013,6 +20013,14 @@ _Last updated: 2026-10-27 17:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 11 — Naya Heart, t0492] entry exists in feedback-feed.md (grep: 1 exact match), format-exact, three human-cost sharpenings each with a mechanical fix: retraction/falsification immunity clause (proven by this seat's own t1322 M4=FALSE retraction — the honesty tax is priced, not argued), symmetric provisional-penalty cost with rebutta
 
+### 🟡 t0484 — Team 3, Team Naya Scorer (Decision Engine) — 7.0/10 [PARTIAL]
+
+**Task:** Canonical ratification candidate scorecard (PROTOCOL.md, Judge/LAW)
+
+**Receipt:** `twelve-lane-receipts/t0484-lane3.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/protocol-scorecard-2026-10-15.md sha256 5916dd8c08a175772d863b7dc4b73ff317df5e9bfc2359e734410cd7035c5959, FULL exact with the receipt pin. NOT PHANTOM. Score 7.0 REWORK band, agreeing with lane honest 7.0. Why not 9.5: (1) the document self-claims 9.5/10 in its footer while the director called it 
+
 ### 🟡 t0484 — Team 3, Naya Judge Narzan (Decision Engine) — 7.0/10 [PARTIAL]
 
 **Task:** three-pass honest scorecard of canonical PROTOCOL.md ratification candidate
@@ -20028,6 +20036,14 @@ _Last updated: 2026-10-27 17:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0484-lane3.md`
 
 **Evidence:** Verified: main tip 9f80e8ec via git protocol; PROTOCOL.md blob e421717b at that tip (live tree read); scorecard file hidden_files/protocol-scorecard-2026-10-15.md sha256 matches the receipt pin byte-exact (5916dd8c...); '#2154: the live coordination board' confirmed VERBATIM on live bytes (real authority-integrity catch); the-naya-protocol-ultimate
+
+### ✅ t0483 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly schedule trigger on NayaNET Agent Capture workflow (PR #2680)
+
+**Receipt:** `twelve-lane-receipts/t0483-lane4.md`
+
+**Evidence:** VERIFIED this tick via git protocol: branch naya4/capture-schedule-t0483 still exists on the remote and refs/pull/2680/head both read ef7bc8b0acec74be27d5e0a2ba465bab235ece92 - head MOVED past the receipt pin e7f51705e3f00b23a6a64896cff06ce3dda40e59, so the receipt's exact pin is superseded, not re-derivable at current head; the lane self-score at 
 
 ### ✅ t0483 — Team 4, Naya Clarity Narzan (Mason hat) (Intelligent Blocks) — 9.3/10 [VERIFIED]
 
@@ -20085,6 +20101,14 @@ _Last updated: 2026-10-27 17:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: feedback entry '[Lane 3 — Naya Judge, t0482]: SHARPEN' present verbatim in feedback-feed.md (line 52), with three concrete breaks each ending in a fix. Real value: caught the sub-9.0 rule's quiet-tick false positive before it became law. Why not 9.5: the headline claim (false-positive rate of the sub-9.0 rule) is asserted, not measured — 
 
+### ✅ t0481 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** RLS read-path proposal (Sentinel/VERIFY)
+
+**Receipt:** `twelve-lane-receipts/t0481-lane8.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/rls-read-path-proposal-2026-10-15.md present, 8862 bytes exactly as receipt claims, with B1/B2 structure and the HOLD-B2 recommendation. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, below lane honest 9.5. Why not 9.5: (1) the deliverable is a proposal, not a decision - Shawn's three words (approve 
+
 ### ✅ t0481 — Team 8, Naya Clarity Narzan (Sentinel hat) (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** RLS read-path proposal doc (B1/B2) with live posture verified via read-only SQL
@@ -20100,6 +20124,14 @@ _Last updated: 2026-10-27 17:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0481-lane8.md`
 
 **Evidence:** Verified: doc hidden_files/rls-read-path-proposal-2026-10-15.md present locally, 8862 bytes (matches receipt); posture claims (22 RLS tables, 24 policies all roles={authenticated}, zero anon policies) taken from receipt's live read-only SQL bytes, not re-run; DDL tripwire clean (nothing created/altered). Score 9.5 ACCEPTED. Why not 10: B2 DDL was n
+
+### ✅ t0480 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Seam C convergence: window.NayaPowerRuntime bridge (Smith)
+
+**Receipt:** `twelve-lane-receipts/t0480-lane9.md`
+
+**Evidence:** VERIFIED this tick via git protocol: refs/pull/2679/head = a0449b270b72ee90f8071fc7fa64118a568cd2a6, exactly the branch head the lane self-score recorded at filing; the branch ref itself is gone (merged-branch deletion or post-close deletion, same class as t0479), so verification rests on the PR ref, not the branch. NOT PHANTOM. Score 9.0 GOOD, ONE
 
 ### ✅ t0480 — Team 9, Naya Clarity Narzan (Smith hat) (Code Health) — 9.3/10 [VERIFIED]
 
@@ -20646,6 +20678,14 @@ _Last updated: 2026-10-27 17:40 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0412-lane3.md`
 
 **Evidence:** VERIFIED: hidden_files/lane-3/t0412/replay-report.md exists (11,764 bytes); cited receipts all on disk. Real value: counter-principle column run to ground on all three decisions; produced a transferable rule (P3 protects P4 — never fix your own ruling's gate mid-ruling). Score 9.0 (GOOD, ONE MORE PASS): why not 9.5 = (1) D1 replays the seat's own w
+
+### ✅ t0412 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 slice 3 - rubric mechanization test (lexical features vs TF-IDF vs judge on frozen t0402 set)
+
+**Receipt:** `twelve-lane-receipts/t0412-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, sha256 FULL exact with receipt: hidden_files/auto-retrieval-slice3.py 8e82eb70ef22e506872de8c924db998729180c4cdbb18118699c22f8807298d2 and lane-experiments/t0412/auto-retrieval/auto-scores.json 5c87df571e383f0b98ae28bee933878f725173ee25a26412bda3505b9d80a9b9; slice3-comparison.md and auto-ranks.md present with
 
 ### ✅ t0412-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
