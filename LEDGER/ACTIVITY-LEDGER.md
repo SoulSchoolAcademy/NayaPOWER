@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -8886,6 +8886,14 @@ _Last updated: 2026-10-27 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gap-lane-scorer-20261017-1040-lane3-t0675.md: t0675 re-file watch — no claimant, no misroute
 
 **Evidence:** Verified on local bytes: lane-feed.md carries 9 mentions of brief-t0675-lane3, every one a skip/recusal (zero SIGN-IN entries naming it as the claimed brief); no brief-t0675-lane3.md exists anywhere under hidden_files/brief-queue (root, claimed/, done/, stale/, superseded/ all swept) — the verdict's conclusion (never claimed, no dispatcher misroute
+
+### ✅ t1034 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Adversarial review of success-block checker: rt08 mtime-drift wave-through + rt09 top-done false-positive proven, R8 added, R2 widened, 12/12 harness green
+
+**Receipt:** `twelve-lane-receipts/t1034-lane10.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: sha256 pin-exact with the receipt on all four evidence files - bin/check-success-block-usage.py 8213c4e327a5a013..., success-block-embedding-protocol.md c49318e0c6c3d0d41..., lane-10/redteam-t1031.json da8a4b7b9bad69fd..., success-block-usage.jsonl 6f26e6cffc592885... (3 rows). No remote branch/SHA is claimed 
 
 ### ✅ t1034-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -20949,6 +20957,14 @@ _Last updated: 2026-10-27 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified on disk: run1/run2 sha256 71b19cc3... byte-identical; post1/post2 sha256 44300a36... byte-identical; audit 18 rows M2:18/M3:11/M4:0; SUMMARY_t0292.md + STATS.md published; #2175 comment 6124381722 corroborated by shared-state watermark; tip f9b5ac3d re-pinned. Honest 9.0 with named holes (single-seat judgments, M1/M5/M6 UNKNOWN,
 
+### ✅ t0272 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** 6-arm exclusion battery re-run on live tip with seal-before-run; 0 arms flipped (t1412->t0242->t0272 stable)
+
+**Receipt:** `twelve-lane-receipts/t0272-lane5.md`
+
+**Evidence:** PARTIALLY VERIFIED this tick, with a preservation defect found: hidden_files/lane5-t0272-exclusion/battery.py still hashes to 3504e4e792a712c96b085d03a65c41f26fb8b9f6e6c483f85a4f6eb3a1bea6ba, pin-exact with the receipt, and its mtime is still 2026-10-12 - but seal.json, battery_results.json, fixture_hashes.json and index.json were OVERWRITTEN 2026-
+
 ### ✅ t0272-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** 6-arm adversarial retrieval exclusion battery re-run on live tip with fresh seal-before-run
@@ -20971,6 +20987,14 @@ _Last updated: 2026-10-27 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified on disk: lane5-t0272-exclusion/{seal,battery_results,battery}.json all exist; seal timestamp precedes measurement. -1.0: byte-identical tip/t0242 so this tick reconfirmed rather than falsified anything new; RED arms still unwired (Shawn's protected word).
 
+### ✅ t0272 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Verification-only tick: tip re-pin, brain-index --check CLEAN, #2385 head pin, freshness gate still advisory
+
+**Receipt:** `twelve-lane-receipts/t0272-lane10.md`
+
+**Evidence:** VERIFIED this tick in part via batched git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2385/head is STILL eedd9540f54cd96c241db4be2f43f0698ae4dd07, pin-exact with the receipt 15 days later; the receipt's action-time tip f9b5ac3de34d3cafa0718b20458289539e11b685 is corroborated by sibling t0272 receipts (lane 5 seal claim, lane 1 base pin), t
+
 ### ✅ t0272-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Verification-only tick: re-pin tip, brain-index --check exit 0, re-pin #2385, stale-heal-premise catch
@@ -20992,6 +21016,14 @@ _Last updated: 2026-10-27 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0272-lane10.md`
 
 **Evidence:** Dispatcher-verified via git protocol: HEAD == f9b5ac3d (unchanged), refs/pull/2385/head == eedd9540 (unchanged, matches receipt). Re-ran of --check not repeated in this tick (3 min box; 3rd identical verification, byte-identical tip). -1.0: structural recurrence risk unmitigated outside lane authority (Shawn's required-check click).
+
+### ✅ t0272 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review on #2454 (pin-exact APPROVE-diff/HOLD-PR) + CI re-verified on #2467/#2466 + pin-backed nothing-closable report (16 PRs checked, 0 closed)
+
+**Receipt:** `twelve-lane-receipts/t0272-lane1.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2454/head is STILL c10084bd663894657a34b6fbf03212b2e3343912, refs/pull/2467/head is STILL 9a4a129ce9c45311707ce67432bb55ff2aed0aac, refs/pull/2466/head is STILL 92c5a74270f5fe95d6561b7292c944b5518bf467, all three pin-exact with the receipt 15 days later; bran
 
 ### ✅ t0272-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -39304,6 +39336,12 @@ _Last updated: 2026-10-27 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-0454 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor queue sweep 2026-10-27 04:54 PDT: 31 briefs evaluated, none claimable by Clarity seat, stall delta zero vs 03:48 sweep
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief-*.md files the receipt names (set equality, 31/31, zero missing, zero extra, excluding lane-feed.md); twelve-lane-rotation.json queued=31 set-equals the queue root, in_flight=[]; prior receipt gate-stall-20261027-0348.md exists, confirming the ~66-minute cap-window 
 
 ### ✅ gate-stall-20261027-0348 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
