@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20309,6 +20309,14 @@ _Last updated: 2026-10-27 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 3 files exist with exact receipt SHAs (t0442_entailment.py a211e4e4…, sealed-note-t0442.md, results-t0442-entailment.json 39201b40…); sealed methodology pre-dates the run. Work: methodology sealed before the run, pre-registered ceiling analysis, ran ONCE with no tuning, honest FALSIFIED verdict 0/3 (worse than the bi-encoder it was me
 
+### ✅ t0442 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** RED-first retrieval-auth acceptance battery + stamping-migration prep
+
+**Receipt:** `twelve-lane-receipts/t0442-lane1.md`
+
+**Evidence:** VERIFIED this tick on live bytes, sha256 exact with receipt on all 4 artifacts: lane-1/t0442/acceptance_battery.py 4470ccee...1857, battery_evidence.json 464c8529...e4e5d, run_log.md 762015a7...c46, RETRIEVAL-AUTH-MIGRATION-PREP.md 9c988570...8d8. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with the receipt's honest 9.0. Why not 9.5: (1) b
+
 ### ✅ t0442 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** RED-first retrieval-auth acceptance battery (surge slice b) + stamping-migration prep
@@ -20356,6 +20364,14 @@ _Last updated: 2026-10-27 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0432-lane3.md`
 
 **Evidence:** VERIFIED: replay-t0432.md exists (3 decisions, pins, counter-principle columns, HOLD/FLIP verdicts + exact deltas); merge commit e85c6e44 (PR #2452) exists with TREE e7f5297f BYTE-MATCHING the receipt's claimed PR-head tree, date 2026-10-11 23:26:29 PDT; all 6 pins exist (t1352-lane10, t0372-lane7@9.0, t952-lane9@8.0 receipts + score entries). Self
+
+### ✅ t0431 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** G0/G5 gate verdict on sealed section-8 acceptance probe (FP-003): G5-NOGO circuit-breaker finding
+
+**Receipt:** `twelve-lane-receipts/t0431-lane6.md`
+
+**Evidence:** VERIFIED this tick on live bytes, sha256 exact with receipt on all 7 G0 pins: pre-reg 6cb65317...40c7c1, thread-frozen fab7b1f7...c9c7, packet-frozen 60d57d80...01a07, packet-DRIFTED 4b96d346...37cd, cold-brief 21db6e5d...f115, gen_s8_brief 7e710dc2...21b, CTA-PROTOCOL a2a866f6...1d; probe-set still exactly 3 files, outbox/ and scorer/ still empty 
 
 ### ✅ t0431 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -20473,6 +20489,14 @@ _Last updated: 2026-10-27 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Executor SHA 97719953aa1159d68... verified exact on disk; 9/9 pins verified at action time; TF-IDF control banked 0.556 with RED calibration; fail-closed honored. Score 9.0: the CONFIRM/FALSIFY verdict is unfired — the one-shot is sealed, not spent — and f5/f6 lexicons are executor-declared inventions the design seat never pinned. GAP-RECYCLE: one 
 
+### ✅ t0417 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** First pilot smart block lane-packet-5-v2 + validator with four-case usage proof
+
+**Receipt:** `twelve-lane-receipts/t0417-lane4.md`
+
+**Evidence:** VERIFIED this tick on live bytes, sha256 exact with receipt: hidden_files/smartblocks/lane-packet-5-v2.md 473f9cc7...056b and validate-lane-packet-5.py a4a42807...35b08d55f3. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) pin verification only this tick - the four SERVE/ABSTAIN proof cases were not re-run blind; (2) block is a CANDIDA
+
 ### ✅ t0417 — Team 4, Naya Mason Narzan (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** Smart block pilot v2 (lane-packet-5) + validator: 4/4 usage-proof cases (SERVE/ABSTAIN) on pinned bytes
@@ -20541,6 +20565,14 @@ _Last updated: 2026-10-27 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/auto-retrieval-slice3.py sha256 8e82eb70ef22e506… == claimed 8e82eb70…; lane-experiments/t0412/auto-retrieval/{auto-ranks.md,auto-scores.json,slice3-comparison.md} all present. Honest negative verdict with pre-registered lexicons/thresholds, one-run discipline, deterministic re-run. Score 8.5 (REWORK class): why not 9.5 = (1)
 
+### ✅ t0407 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-auth-gate wiring hunk re-cut with [0]: red-green probe plus negative control, EQ1/EQ2/EQ4 green
+
+**Receipt:** `twelve-lane-receipts/t0407-lane8.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, sha256 prefix-exact with the receipt on all load-bearing artifacts: re-cut patch ab711c4072358f0c, broken-control patch a61fb13ef3fdb2da, probe c6a014fc3d8b420f, negative control e26f17dfc6ddd236, generator 276588d3cb974371, GREEN results c4e0b2c970bf6552, RED results a794467ba569d36f. NOT PHANTOM. Score 9.0 G
+
 ### ✅ t0407 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Retrieval-auth-gate wiring hunk RE-CUT with [0]: red->green probe + negative control on live-tip bytes
@@ -20549,6 +20581,14 @@ _Last updated: 2026-10-27 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: both patch artifacts and both probe result JSONs exist in hidden_files/; the two patches are stated 1-line apart. Score 9.5: ACCEPTED. The t0811-falsified hunk is re-cut on live-tip bytes (ba626387), red-run reproduces the falsification, green-run fires the gate correctly on the oracle-excluded set, negative control PASS, and the EQ3-stri
 
+### ✅ t0407 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** DECLINED pre-claim on J5 candidacy-block lineage authorship; brief re-filed with visible claimability gate
+
+**Receipt:** `twelve-lane-receipts/t0407-lane10.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/done/brief-t0407-lane10.md opens with the claimability gate naming Naya Clarity as ineligible (J5 candidacy-block design, t0803), and twelve-lane-receipts/t0803-lane12.md header matches the receipt's citation (Lane 12 Herald, Naya Clarity, lane executor). NOT PHANTOM -- a clean decline with zero de
+
 ### ✅ t0407 — Team 10, Naya Clarity Narzan (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** DECLINED (pre-claim) t0803 J5 candidacy-block lineage authorship; re-filed brief with visible claimability gate
@@ -20556,6 +20596,14 @@ _Last updated: 2026-10-27 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0407-lane10.md`
 
 **Evidence:** Verified: twelve-lane-receipts/t0803-lane12.md exists (the cited authorship record). Score 9.0: GOOD, ONE MORE PASS. The decline is a completed outcome: gate read before claim, lineage verified against live bytes, brief re-filed OPEN with the claimability gate moved above the claim-block's read window (the durable t0809 fix). Why not 9.5: the named
+
+### ✅ t0407 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Diary-intake guard reconciled with live broadcast: sealed trial landed, fail-closed preserved, permanent self-test installed
+
+**Receipt:** `twelve-lane-receipts/t0407-lane1.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, sha256 pin-exact with the receipt: hidden_files/bin/diary_intake.py ac74e7fe6f8aa39588f55a6fb4c6d7bda4bcb5841bb1aa531b6e53b699952ec2 (the receipt's after-change pin), and --self-test still 9/9 green exit 0 today, 12 days later. NOT PHANTOM. Clears 9.5 because the verified value shipped and still holds: inherit
 
 ### ✅ t0407 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -39504,6 +39552,12 @@ _Last updated: 2026-10-27 13:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-0559 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor queue sweep 2026-10-27 05:59 PDT: 31 briefs evaluated, none claimable by Clarity seat, stall delta zero vs 04:54 sweep
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief-*.md files the receipt names (set-identical, zero diff both ways); exit pattern matches 29x exit 7 + 2x exit 2; prior 04:54 sweep set identical, stall delta zero confirmed. Score 9.0. Why not 9.5: a verified stall record, not cleared work shipped - the unblock needs
 
 ### ✅ gate-stall-20261027-0454 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
