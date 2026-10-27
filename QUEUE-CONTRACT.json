@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-27T15:24:34Z",
-  "tip": "e01607e55ea14cd16d6d905c7088f840b10b1108",
+  "generated_at": "2026-10-27T16:25:00Z",
+  "tip": "ff3a2dbde5e590c733dd6e1aeefb981a0ece574f",
   "prs": [
     {
       "number": 2981,
@@ -38,6 +38,15 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "3bd447c075e2bac051117bfc6246a0c003610269"
+    },
+    {
+      "number": 3108,
+      "title": "Naya/mission state",
+      "tier": "B",
+      "action": "MERGE-NOW",
+      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "65a5891affbfaa41d76898cf08ff29bb138a3091"
     }
   ]
 }
