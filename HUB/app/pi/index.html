@@ -1,5 +1,6 @@
 <!-- MERGED FACE — overnight push 2026-10-27. Base: Resolve v3 index.html at 9a4f3963, verbatim except the surgical additions below. Harvests from Nitro v3 (face-v2-shared-20261026): pages view-index cards (structure + .pagecard geometry; counts computed from the snapshot) + parts register (embedded verbatim). Merged additions: director packets board (computed), per-area freshness stamps (computed max updated_at), per-area link rows. No score claimed, not live, awaits Nitro's own rendered review + verdict. -->
 <!-- REGISTRY FIX — 2026-10-27, branch face-registry-fix-20261027 off merged face eca63fff. The Pages board gains the page registry: every real NayaNET page on its own card, rendered from pages.json — per-page percent counted from this snapshot's record areas, live route probes (a route serving the Hub home document is named as such, never as its page), real-route links only where the route truly serves the page, and per-page still-needed lists from the record. The view-index cards above the registry are unchanged. Answers Nitro's cold-check fails B14 / C1 / C2 / C3 for the page layer; B18's measurement half is answered for pages (per-part percent in the Parts register remains the register owner's probe work). No score claimed; awaits Nitro's re-check. -->
+<!-- RECORD-FIELDS FIX — 2026-10-27, branch face-record-fields-20261027 off registry successor 3bd447c0 (merged face eca63fff). G1(d): the record fields Nitro's cold-check ruled FAIL at the read side (6433223716) are now carried beside the face in record-fields.json, derived from the face's own snapshot (items blob 54a1b170) + the page registry (pages blob 3eb75d4a) — nothing invented: B3 movement entries carry the contract's distinct fields {item, text, from, to, actor, time} with to = the snapshot state and from = null with its reason (the record carries no prior-state history; the cure is the publisher/ledger history feed, Power's layer); B5 every one of the 349 items carries read-side human / ai / machine tongues derived by a stated rule from its own fields; C6 every item carries the connections the record honestly supports (area, project, owner seat, page via the registry's area map, evidence link) — item-to-item dependencies stay DARK with the reason, because no dependency field exists in the record. The Movement board renders the enriched movement rows and a record-fields box with the exact counts. No score claimed; awaits Nitro's re-check. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -365,6 +366,7 @@
     <div id="moveList"></div>
     <div class="darkbox" id="sinceBox"></div>
     <div class="darkbox" id="ledgerBox" style="margin-top:12px"></div>
+    <div class="darkbox" id="recordFieldsBox" style="margin-top:12px">Record fields (B3 movement · B5 tongues · C6 connections) are loading…</div>
     <p class="dark">Notifications pulse, honest state: a material record change firing feed plus mail with links, in the same motion, is specified — not live-running yet. Until it runs, the manual form stands: a record note plus a board post in the same pass. No reply is required to a notice; the seat is responsible for checking the inbox.</p>
   </section>
 
@@ -970,10 +972,43 @@ function render(data) {
       .catch(function () { renderRegistry(null); });
   }
 
+
+  /* RECORD-FIELDS FIX: B3/B5/C6 read-side fields from record-fields.json (2026-10-27). */
+  function renderRecordFields(rec) {
+    var box = el("recordFieldsBox");
+    if (!box) { return; }
+    if (!rec) {
+      box.innerHTML = "<strong>Record fields:</strong> DARK — record-fields.json did not load, so no B3/B5/C6 state is claimed here.";
+      return;
+    }
+    var c = rec.counts;
+    box.innerHTML = "<strong>Record fields, carried read-side in record-fields.json:</strong> " +
+      "B3 movement — " + c.movement_entries + " entries carry item / text / to / actor / time; <em>from</em> is carried on " + c.movement_with_from +
+      " of them because the record holds no prior-state history — the reason travels with every entry, never a guessed from. " +
+      "B5 tongues — all " + c.tongues_complete + " jobs carry human / ai / machine tongues derived from their own record fields. " +
+      "C6 connections — " + c.items_with_area + " jobs connect to their area and page, " + c.items_with_project + " to their project (" + c.projects +
+      " projects), " + c.items_with_owner + " to a named owner seat, " + c.items_with_evidence_url + " carry an evidence link; " +
+      c.items_unplaced + " jobs are honestly unplaced. Item-to-item dependencies stay DARK: no dependency field exists in the record.";
+    if (rec.movement && rec.movement.length) {
+      el("moveList").innerHTML = rec.movement.map(function (m) {
+        return '<div class="item-row"><div class="item-name">' + esc(m.text) + '</div>' +
+          '<div class="feedtime">from: ' + (m.from ? esc(STATE_LABEL[m.from] || m.from) : 'not carried in the record — prior state is not in the snapshot') +
+          ' · to: ' + esc(STATE_LABEL[m.to] || m.to) + ' · actor: ' + esc(m.actor || "not carried in the snapshot") +
+          ' · ' + esc(m.time) + ' · source: record-fields.json (B3)</div></div>';
+      }).join("");
+    }
+  }
+  function loadRecordFields() {
+    fetch("record-fields.json", {cache: "no-store"})
+      .then(function (res) { if (!res.ok) { throw new Error("HTTP " + res.status); } return res.json(); })
+      .then(function (rec) { renderRecordFields(rec); })
+      .catch(function () { renderRecordFields(null); });
+  }
+
   function load() {
     fetch("items.json", {cache: "no-store"})
       .then(function (res) { if (!res.ok) { throw new Error("HTTP " + res.status); } return res.json(); })
-      .then(function (data) { render(data); loadRegistry(); })
+      .then(function (data) { render(data); loadRegistry(); loadRecordFields(); })
       .catch(function () { failState(); });
   }
 
