@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20189,6 +20189,14 @@ _Last updated: 2026-10-27 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED on live bytes this tick: plan file sha256 84fb6f18bbd84fe52134.. == claim; stamp script 57bb052e46c8dc14da67.. == claim; dry-run log on disk; tip commit 9f80e8eccfbe8256ec7ce069c61cd38cc86430ce == shared-state main_tip; gate blob id aae7b3d7.. at the new tip, content sha256 fbe6ee29482fdc57345e == t942 pin; seam blob id 543ddafa.
 
+### ✅ t0462 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Sealed study-protocol cells 1-2 (judge-mechanism mechanization), F3 mechanized
+
+**Receipt:** `twelve-lane-receipts/t0462-lane5.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, sha256 exact/prefix-exact with receipt: study-protocol-t0452.md still 821cec62 full (before==after, seal intact), sealed-note-t0462 d1128128, run-record-t0462 a1ab067c, f3-t0462.json 06eae5bb, results-t0462.json 58202c8a, t0462_f3.py present; frozen fixtures intact. NOT PHANTOM. Score 8.5 REWORK band, agreeing
+
 ### ✅ t0462 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** STAGE 0 retrieval slice-2: sealed judge-mechanization cells 1-2 (F3/F4/F5) — honest mismatch recorded
@@ -20212,6 +20220,14 @@ _Last updated: 2026-10-27 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0462-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED on live bytes this tick: spec exists (42 lines), sha16 75e3037c435c4c35 == receipt claim; commit ba62638704.. exists in nayapower-rescue; gate module at that commit sha256 fbe6ee29482fdc57345e.. == receipt claim; PR #2403 merge 993975d55 verified in its ancestry; retrieval_authorized occurs 0x in tools/smart_note_v2.py at that co
+
+### ✅ t0462 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Instrument ask-world.py with append-only query logging + live-check
+
+**Receipt:** `twelve-lane-receipts/t0462-lane10.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/bin/ask-world.py present and carries log_query telemetry plus the live-check subcommand; hidden_files/auto-retrieval/ask-world-queries.jsonl present (199 lines now, grown well past the seeded 24, first rows init/query/query) so the log is live and accumulating organic traffic, not just the seed. N
 
 ### ✅ t0462 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -20245,6 +20261,14 @@ _Last updated: 2026-10-27 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED on live bytes this tick: all 6 receipt-claimed SHA prefixes byte-match (arm.py 814f75f203cf7e73fa92, corpus.json b231f055fb95955260c9, harness a7e72ce93bd75df07b7c, queries.json 3140c5e401169afb7dee, scores.json 65c76ce5e89fe5ae16d0, rank-tables.json a5bc1174250d64d95811); driver<->harness cross-check logic reviewed sound; batter
 
+### ✅ t0452 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** RETRIEVAL SURGE slice a: judge-mechanism mechanization study protocol + worked example
+
+**Receipt:** `twelve-lane-receipts/t0452-lane5.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, sha256 FULL exact with receipt: auto-retrieval/study-protocol-t0452.md 821cec6299504143382b907c8529e023d82919e7b46eef68018c5bb41a31dfb6 and worked-example-t0452.md b288a15139227dba4a3ac70905b6683fb4d0f4d0d62f08131d1234d13c6445c3; frozen fixtures intact (baseline-sealed-t0432 460429b1, results-t0432 b1af58d0 pr
+
 ### ✅ t0452 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** RETREIVAL SURGE slice a: mechanization study protocol + ONE worked example on frozen decision
@@ -20260,6 +20284,14 @@ _Last updated: 2026-10-27 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0452-lane5.md`
 
 **Evidence:** Verified: protocol (821cec629950) and worked example (b288a1513922) exist with exact sha256 prefix matches under hidden_files/auto-retrieval/. Real work: counterfactual protocol d0=M(C), d1=M(C+X) with 5 pre-registered falsification bars incl. F3 lexical-independence tripwire; prototype caught and fixed 3 protocol bugs (injection format, d0/d1 orde
+
+### ✅ t0452 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
+
+**Task:** Ask-world query-log freshness check + top-20 needs analysis (SURGE slice)
+
+**Receipt:** `twelve-lane-receipts/t0452-lane10.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: deliverable hidden_files/auto-retrieval/ask-world-needs-t0452.md exists (2008 bytes, 2026-10-12 17:04 UTC) and states exactly what the receipt claims - no query log ever instrumented, freshness N/A as absence not staleness, top-20 refused rather than fabricated, scoped instrumentation next action. NOT PHANTOM.
 
 ### ✅ t0452 — Team 10, Naya Librarian (Brain Index) — 8.5/10 [VERIFIED]
 
@@ -20277,6 +20309,14 @@ _Last updated: 2026-10-27 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: deliverable ask-world-needs-t0452.md exists (666f800ea31b). Core claim independently confirmed: hidden_files/bin/ask-world.py has exactly one open() call (a read of world.json, line 23) — read-only by construction, zero logging; no *query* log exists in hidden_files. Real work: refused to fabricate the top-20, delivered the honest absence
 
+### ✅ t0452 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-auth battery calibration (designed step, M2-total aggregate)
+
+**Receipt:** `twelve-lane-receipts/t0452-lane1.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, sha256 prefix-exact with receipt: auto-retrieval/t0452-run_log.md eb29adc477087540, t0452-battery_evidence.json 7b5c3713aa721f03, t0452-acceptance_battery.py 275e26345ec21105; lane-1/t0452 instrument copy present (13487 bytes). NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with receipt self-score 9.0. W
+
 ### ✅ t0452 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** retrieval-auth battery calibration (M2-total aggregate) + re-run on live tip
@@ -20292,6 +20332,14 @@ _Last updated: 2026-10-27 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0452-lane1.md`
 
 **Evidence:** Verified: all 4 artifacts exist with exact sha256 prefix matches (run log eb29adc47708, evidence 7b5c3713aa72, battery copy 275e26345ec2, lane-1/t0452 copy identical); live remote tip dbe06f9e733efb52c50e583dbb0b74d77039eb73 matches the receipt's pin. Real work: calibrated instrument (M0/M0b byte-pins to t952 fixture, M1-total 25/25, new M2-total 9
+
+### ✅ t0442 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE 0 semantic slice-2: entailment-rerank arm vs frozen sealed t0432 baseline, honest verdict
+
+**Receipt:** `twelve-lane-receipts/t0442-lane5.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, sha256 exact with receipt: hidden_files/auto-retrieval/t0442_entailment.py a211e4e4...36a7e and results-t0442-entailment.json 39201b40...44c0c3446aa; sealed-note-t0442.md present, mtime 2026-10-12 16:48 UTC matching the pre-run seal claim. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: single-seat, n
 
 ### ✅ t0442 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
