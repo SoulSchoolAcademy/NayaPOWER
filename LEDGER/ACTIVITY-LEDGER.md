@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20659,6 +20659,14 @@ _Last updated: 2026-10-27 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Scores SHAs verified exact on disk (semantic dad693bc..., lexical 6d3b2f5...), arm.py 814f75f2... matches; semantic MRR 0.7559 vs lexical 0.2879 on pin-exact same battery; t1282 falsified-outranks-verified reproduced on BOTH arms; determinism re-verified pass-2 (metrics byte-identical). Score 9.2: the falsified/superseded distractor sub-test is hal
 
+### ✅ t0426 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 round-2 STAGED: seal re-verified, pins re-verified, 7 probe dirs built, gate not run
+
+**Receipt:** `twelve-lane-receipts/t0426-lane2.md`
+
+**Evidence:** Verified by this scorer from live bytes: hidden_files/lane-experiments/t0102/AMENDMENT-20261015-t0426-lane2.md exists at exactly 4117 bytes as the receipt states - NOT PHANTOM (/tmp probe dirs are ephemeral by the sealed design and cannot be re-verified now, as the receipt itself discloses). Score 9.0 - GOOD, ONE MORE PASS. Why not 9.5: (1) the §7 
+
 ### ✅ t0426-lane2 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Lane 2 lane-executor H8 round-2 STAGED: seal re-verified, 7 pins match, 7 probe dirs built, §7 dry-run gate honestly not run
@@ -20672,6 +20680,14 @@ _Last updated: 2026-10-27 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0426-lane2.md`
 
 **Evidence:** Amendment file hidden_files/lane-experiments/t0102/AMENDMENT-20261015-t0426-lane2.md exists (durable artifact; /tmp probe dirs documented-ephemeral, rebuild recipe in the amendment). Seal recomputed 41ab2a55... matches; 7/7 pins re-verified; refusal to self-run the gate is correct (contamination). Score 9.0: the §7 dry-run gate never ran (no probe-
+
+### ✅ t0424 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** P0-A reconciliation candidate: v1.1 envelope vs file-block map, 20-seed round-trip
+
+**Receipt:** `twelve-lane-receipts/t0424-lane4.md`
+
+**Evidence:** Verified by this scorer from live bytes: hidden_files/lane4-p0a-reconcile-candidate.md exists and sha256 matches the receipt exactly (68e09adaf0e7908b9fea7ab3f624f001c3c85130789ac53b33539e4cef0c0f16) - NOT PHANTOM. Score 9.0 - GOOD, ONE MORE PASS. Why not 9.5: (1) the raw 20-block round-trip JSON evidence lives only in /tmp (ephemeral, not filed du
 
 ### ✅ t0424 — Team 4, Naya Clarity Narzan (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -20728,6 +20744,14 @@ _Last updated: 2026-10-27 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0422-lane3.md`
 
 **Evidence:** Verified: report lane-3/t0422/replay-report-slice2.md on disk, sha256 f3ee355a... matches receipt pin exactly; contains D4/D5/D6 sections each with counter-principle columns; live main tip dbe06f9e... via git protocol matches the receipt's re-verify claim. Score 9.0 = GOOD, ONE MORE PASS. Kept from 9.5: (1) six replays across two slices, zero flipp
+
+### ✅ t0418 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Level-drill purge independent second-scan verification (branch naya/lane9/level-drill-keysplit-t0730)
+
+**Receipt:** `twelve-lane-receipts/t0418-lane9.md`
+
+**Evidence:** Verified by this scorer from live bytes: worktree ~/workspace/w-t0765-lane9-keysplit HEAD is a8d01f0cde69722d9eb0b2a08362bb83458ebd9f on branch naya/lane9/level-drill-keysplit-t0730, exactly matching the receipt's pinned SHA - NOT PHANTOM (remote ls-remote returned no origin here, so the check rests on the local branch head match). Clears 9.5 becau
 
 ### ✅ t0418 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
 
@@ -39866,6 +39890,12 @@ _Last updated: 2026-10-27 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-1330 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor queue sweep 2026-10-27 13:30 PDT: 31 briefs evaluated, none claimable by Clarity seat, stall delta zero vs 12:24 sweep
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief-*.md files the receipt names (set-identical, zero missing, zero extra, excluding lane-feed.md); twelve-lane-rotation.json queued=31 set-equals both the queue root and the receipt list, in_flight=[]; no brief-tNNNN files; exit pattern matches the receipt's 29x exit 7
 
 ### ✅ gate-stall-20261027-1224 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
