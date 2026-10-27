@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 11:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -5965,6 +5965,14 @@ _Last updated: 2026-10-27 11:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1312 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
+**Task:** Live cold-Naya acceptance slot: 3 cold-context arms, sealed pre-reg, blinded scorer, machine-computed PASS
+
+**Receipt:** `twelve-lane-receipts/t1312-lane6.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/lane-experiments/t1312/PREREG-sealed.md sha256 e099317080be64aa89492ebcfb5953aaac66bba89e11e4935e66d09dc8e0ba69 exactly as claimed; seal-verification.json confirms sealed 2026-10-12T05:41:38Z before any probe spawn at tip 501bf82a; packet/seal-log.json sealed 2026-10-12T05:43:40Z; packet/scorer-sc
+
+### ✅ t1312 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
 **Task:** Cold-Naya acceptance slot: 3 blinded probe arms, sealed prereg
 
 **Receipt:** `twelve-lane-receipts/t1312-lane6.md`
@@ -6016,6 +6024,14 @@ _Last updated: 2026-10-27 11:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1312-lane6.md`
 
 **Evidence:** Dispatcher verified: lane-experiments/t1312/ PREREG-sealed.md recomputed sha256 e099317080... matches receipt pin exactly; arm-key-sealed.md, outbox/, packet/ (escrow, leak-audit, score-sheet, scorer-scores, seal-log) all on disk. Live-tip pin at seal matches origin main. 3/3 enum-match and >=2 evidence rows/arm are agent-run evidence (honest 41-he
+
+### ✅ t1312 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2452 one protocol step: action-time tip re-pin, CI failure classification, receipt-pin gate fixed on PR body
+
+**Receipt:** `twelve-lane-receipts/t1312-lane10.md`
+
+**Evidence:** VERIFIED this tick via batched git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2452/head == c4bfd2529693ff5a859e1aaf56f376bd45cfab40, pin-exact with the receipt, and the commit object exists locally (Brain-index heal: re-stamp index layer on tip 501bf82a, drift recurrence #15). The branch ref refs/heads/naya/ten-brainindex-heal-t1302 no lon
 
 ### ✅ t1312 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
