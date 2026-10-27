@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23009,6 +23009,14 @@ _Last updated: 2026-10-27 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 8 cited local artifacts exist; feedback-feed.md present (~4.9KB). Receipt ran fresh REST GET on comment 6184357778 (id/author/issue-url-tail-2537/timestamp 2026-10-15T04:23:00Z) with claim-by-claim substance-fidelity against the feed block incl. all four case-law SHAs. Byte-match correctly run AND its negative result correctly interpr
 
+### ✅ t0042 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Brief-target reconciliation + tip board classification + flip-queue verification (Lane 9, Code Health)
+
+**Receipt:** `twelve-lane-receipts/t0042-lane9.md`
+
+**Evidence:** VERIFIED this tick via git protocol (git ls-remote, SoulSchoolAcademy/NayaPOWER): refs/pull/2399/head = a545f11079ca77ce6789d224ab519f272c7ca0e4 exactly matches receipt; refs/pull/2453/head = 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 matches (still unmoved); refs/pull/2456/head = e326283252a7e9f932b0d9ebad465c50950b0799 matches; refs/pull/2457/head 
+
 ### ✅ t42 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** tip board classification + flip-queue soundness check (brief pivot)
@@ -23082,6 +23090,14 @@ _Last updated: 2026-10-27 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0042-lane9.md`
 
 **Evidence:** Verified #2399 merged b86eba89 (t1232), rename landed via #2428; did not chase a ghost target; tip reds re-classified pin-exact (mjs blob-identity = t1352 pre-existing, Governed Promotion by design, Team-review failures = #2397 issue_comment mechanics); respected Lane 8 HOLD on #2453 (no override). Deductions: classification only, no new artifact; 
+
+### ✅ t0042 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Adversarial veracity drill: live-tip re-proof of t1282 falsified-served hole + t1302 VERACITY_GUARD candidate measurement
+
+**Receipt:** `twelve-lane-receipts/t0042-lane5.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/lane5-t0042-veracity/ holds all 8 receipt-listed files (seal, rubric, battery_results, candidate_results, latency, pool_hashes, lane5_t0042.py, rescore.py); seal.json pins match the receipt exactly (live tip aa8061c1d311f32ebd11a570629efa8a55d90c87, retrieval sha 92d8b2be...5efdbe == t1412 pin and
 
 ### ✅ t42 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -32849,6 +32865,14 @@ _Last updated: 2026-10-27 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-gap-gap-t1002 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up on t1002: plain-A shape-sensitivity probe - recusal with proof (second Clarity mis-claim on this lineage)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-t1002-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: parent recusal receipt twelve-lane-receipts/gap-gap-t1002-lane2.md sha256 a2388b7c0377e905ea78a3bb70bcf15b6aba14ed2eb75e3984ee0fd1e7b7b9df matches the receipt pin exactly; grandparent gap-t1002-lane2.md a64e30b0c20e9e4ce27de8da2033b30f99a227956e87994486dc310183d9038e matches; parent evidence lane-2/gap-t1002-l
+
 ### ✅ gap-gap-t1002 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap follow-up on t1002: plain-A shape-sensitivity probe — recusal with proof
@@ -38730,6 +38754,12 @@ _Last updated: 2026-10-27 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-2019 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 20:19 PDT: 27 briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched; coverage completed (t0422 attempted)
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds 27 .md files excluding lane-feed.md, exactly the receipt 27 briefs; twelve-lane-rotation.json queued=27 set-equals the root (zero missing, zero extra); prior stall receipt gate-stall-20261026-1918.md is 61 minutes older, so the one-per-hour stall cap was respected; scorer spot dry-ran c
 
 ### ✅ gate-stall-20261026-1918 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
