@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 05:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 06:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22673,6 +22673,14 @@ _Last updated: 2026-10-27 05:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0072 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
+**Task:** H8 round 1 CLOSED as ceiling-found - honest NO-GO, sealed gate honored, zero scored arms spawned
+
+**Receipt:** `twelve-lane-receipts/t0072-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane-experiments/t0052/prereg-sealed.md sha256 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6 matches the receipt pin exactly; brief-arm-a.md 7502ea3d329f94720a58900ea967dafc411cda79fd975eea15285b0b2303af91 matches; brief-arm-b.md e238cf39295ef2fc83f77e002d2926c90e5610fb4b9032b32cf88f73bf106f
+
+### ✅ t0072 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
 **Task:** H8 round-1 execution: sealed pre-reg honored, dry-run gate C1=1 -> CEILING -> honest NO-GO, zero scored arms
 
 **Receipt:** `twelve-lane-receipts/t0072-lane2.md`
@@ -38856,6 +38864,12 @@ _Last updated: 2026-10-27 05:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-2230 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 22:30 PDT: 28 briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched; stall-cap respected (68 min after 21:22 receipt)
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 28 brief files the receipt names (set equality, zero missing, zero extra, plus lane-feed.md); twelve-lane-rotation.json queued=28 matches; prior stall receipt gate-stall-20261026-2122.md exists (68 min earlier, so the one-per-hour stall cap permits this receipt); new brief s
 
 ### ✅ gate-stall-20261026-2122 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
