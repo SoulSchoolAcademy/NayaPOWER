@@ -1,92 +1,86 @@
-# DAILY INTELLIGENCE — 2026-10-26 (learning event)
+# Daily Intelligence — 2026-10-26 (America/Vancouver)
 
-**Filed:** 2026-10-26 ~03:37Z by the daily learning event (scheduled run, Naya Resolve seat) · **Main tip at filing:** `b4891b8ad4932aa64059b984b853837fddd0a3ef` (live ref via gh-api)
-**Live board:** #3066 (successor to #2793, archived 2026-10-25; #2793/#2765/#2721/#2641/#2537/#2175 retired, #1354/#554 unpostable/archived).
-**Sources:** `~/memory/2026-10-26.md` (643 lines at run start, plus the 2026-10-25 evening flush recorded in it), MEMORY.md standing entries dated 2026-10-26, board #3066 tail (162 comments; newest 6407452689, 2026-10-26T03:18:56Z), and merged PRs via gh-api: #3075 (02:24Z) and #3076–#3081 (03:01–03:03Z), plus direct commits for the Design Toolkit, SN-1869, and the brain-index regen cure `78d9c9d0`.
-**The arc in one line:** Shawn reviewed the pages himself and turned the findings into law — show nothing that isn't done right, one page per job, fix the page that exists, score your work and land it yourselves — while the team's own audit falsified itself once, corrected itself in public, and learned that bytes prove a page exists but only eyes prove what it says.
+*End-of-day edition. Supersedes the morning edition of this file merged in PR #3082 (that run distilled the day at 03:37Z, before most of it happened). Sources: the 2026-10-26 and early 2026-10-27 memory logs (Vancouver day = 2026-10-26T07:00Z → 2026-10-27T07:00Z), live board #3066 (450 comments at open), and 17 PRs merged in the window (#3082, #3085–#3087, #3090, #3091, #3093, #3095–#3100, #3102–#3105). Main tip at open: `9ab30aded487792fa52df7cf86bcc5e0dab1610c`.*
 
----
+## The day in one line
 
-## THE DAILY INTELLIGENCE (max 7)
+The team stopped governing by announcement: behavior was written as a constitution and then correctly demoted into the Naya Code, communication became addressed mail on a 15-minute clock instead of published waiting, and the day's three biggest disputes — the Hub overwrites, the PI counts, and the PI face — were all closed or narrowed by ordered, byte-level reads rather than by whoever spoke last.
 
-### 1. THE SHOWING GATE IS LAW — done right, or not shown (Shawn ~00:20Z; SN-1869; L675)
-- **What it is:** Before anything is shown to Shawn: (1) the approved/best work was studied first and its elements reused, (2) it is the most intelligent thing the seat could do, not the fastest, (3) it would stand as the only thing he sees of the work. A seat that cannot do a thing at standard routes it to the seat who can.
-- **What it means:** Resolve's cover chooser (PR #3074) was rejected in full — flat, generic, invented instead of harvested — and closed by its own author the same hour; the redesign went to Nitro, the interface lead.
-- **Why it matters:** It names the exact failure (excitement + speed shown as progress) and makes routing to the right seat the intelligent move, not an admission.
-- **What's in it for me:** Every seat stops paying Shawn's attention for its homework; what he sees is finished, proven work.
-- **How it connects:** It is the enforcement face of the Elevated Standard (2026-10-24) and produced the Naya Design Toolkit (`BRAIN/10-INTERFACES/`, landed at `1b0b584c`) the same night.
-- **What changes tomorrow:** No interface face is authored outside its lane; any interface touched is cold-checked against the approved pages' actual elements before it is shown.
+## THE DAILY INTELLIGENCE — 7 items
 
-### 2. MERGE DOCTRINE CORRECTED BY THE DIRECTOR (Shawn ~03:18Z; board 6407452689)
-- **What it is:** Shawn sweeps the PR queue himself (he cleared ~600 parked PRs to under 10); his click is trust, not a scorecard, and authorizes/proves nothing. Standing instruction: never put a PR forward that isn't right; scorecard it before; then agents merge their own scored work — the queue must never depend on his sweep.
-- **What it means:** Breaches #46 (PR #3073), #47 (PR #3075) and #48–#53 (PRs #3076–#3081, merged 03:01:58–03:03:12Z with no scorecard on record) stand factually as "merged with no scorecard," but responsibility sits with the proposing seats who left unscored work merge-ready in his path — not with his click.
-- **Why it matters:** The old "HOLD for scorecard" parking posture is retired: unscored work must not sit in a mergeable state at all.
-- **What's in it for me:** A proposing seat owns its merge end-to-end; a clean queue is the team's job, not the director's chore.
-- **How it connects:** Substance is still proven by scorecards + post-merge faithfulness (tonight's four reports/specs were byte-verified at tip); the T0 ruleset remains the mechanical cure in the production packet.
-- **What changes tomorrow:** This report's own PR opens as a draft with its maker scorecard below, and does not become merge-ready until a different-seat scorecard at its exact head exists.
+### 1. The constitution is not a new document — it is completing the Naya Code
+- **What:** Resolve built `BRAIN/01-GOVERNANCE/0036-NAYA-CONSTITUTION-V1` in three tongues with an executable gate (`tools/naya-constitution/check.py`, 8/8 tests; PR #3091). Convergence then proved Zara's point from issue #2245: the Naya Code already owns this job as an entry point that *resolves to* ratified law (Constitution Act · Law of One 0016 · Operating Code 0008 · 0017) and never competes with it. Both standalone texts (0036 and `GOVERNANCE/NIA-PROTOCOL-V1`) stand down as sources; the work is completing #2246's entry point, wiring enforcement, and adversarially testing it. Ratification stays Shawn's gate.
+- **What it means:** 0036's recon missed the repo's own `CONSTITUTION/` directory — a scope error, owned on the record.
+- **Why it matters:** One governing identity, resolved to law — no competing constitutions for a cold Naya to choose between.
+- **What's in it for me:** A seat reads one entry point and knows how to behave; she does not have to adjudicate documents.
+- **How it connects:** Feeds the gate in item 6 (behavior rules are only real when a checker or a call site enforces them) and the Endgame Sequence (item 5).
 
-### 3. THE FOUR LAWS + ONE AREA — the director's page review (Shawn with Nitro ~01:00–01:50Z; filed in PI same pass)
-- **What it is:** (1) Every order lands in Project Intelligence the same pass — chat alone doesn't count. (2) NO HOLDING — decide the most intelligent thing, build it, prove it, show it done. (3) ONE AREA — one page per job; related views live inside it behind buttons. (4) FIX THE PAGE THAT EXISTS — edit-only; a new page instead of a repair is the defect.
-- **What it means:** Seven doubled pairs were named and filed as merges (all in_progress in PI): Intel Today, Growth, Connections, Mail (personal#inbox is garbage; /rooms/mail is the right one), Lists (overhaul to Shawn's Smart Lists definition), Reports (stats becomes a view inside the real library), Settings — plus Library overhaul, PI face World View, Smart Tabs (Business + Spaces apps were missing), Spaces directory format, Smart Factory templates, and FINAL FORMAT v1 for the dashboard/smart-app format.
-- **Why it matters:** Doubling was the named waste: surfaces that look like something but are nothing burn time, money, and trust.
-- **What's in it for me:** Citizens get one obvious place per job; seats get one record per job to fix, prove, and close.
-- **How it connects:** The three-lead split carries it — Resolve: study/harvest briefs (PR #3078, seven Toolkit-format briefs) + rendered verification; Power: wiring; Nitro: craft + scorecards on the others' builds.
-- **What changes tomorrow:** No page passes alone when a twin exists; fixes are edit-only diffs on the live page at nayanet.live/projects and its siblings, never replacements.
+### 2. Communication became law — address, don't publish; mail is proven
+- **What:** Shawn's suite landed in one day: the Asking Law (a feed post is not a message *to* someone — name the seat, the need, the unblock condition), the Escalation Ladder (Project Intelligence → board #3066 → Shawn as relay, last), the 15-Minute Clock (cycle ≤15 min; silent waiting is the defect), the Tap-Inflation Correction (decide by scorecard; never re-seek a tap already given; his reserved gates stay narrow and named), score-movement reporting instead of questions, and the Sharing Practice (board post *with link* + PI entry + mail to the seats + Smart Note when it fits). That night Smart Mail was proven end to end: Resolve claimed ID `resolve`, Power is `naya-power`, Nitro is `nitro`, Tree is `nayacodex`, Shawn is `shawnlife`; seats mailed each other and the director and everybody received it (Shawn confirmed ~00:56Z). The mail habit is standing: check every 15–20 minutes, 30 max.
+- **What it means:** The alias table is not the authority — live addressing is (Nitro has no table row, yet `nitro` works).
+- **Why it matters:** Every cross-seat input that day had arrived carried by Shawn personally; that single-relay failure mode is now named, lawful to escape, and mechanically replaced.
+- **What's in it for me:** Ask a sister directly and get an answer in one cycle; never wait hours on a feed nobody was addressed in.
+- **How it connects:** This is the transport the PI pulse (item 4) and the family charge run on; its first uses — addressed asks 6426497285, the concession mail in item 4, the fold in item 3 — all closed the same night.
 
-### 4. L676 — ABSENCE OF MATCH IS NOT ABSENCE OF FACT (audit correction, ~02:00Z; board 6406524772)
-- **What it is:** Resolve's 32-page design audit (filed in PI 33/33, receipt 6405895588) claimed the flagship template had NO viewport meta; the bytes carry it single-quoted and the analyzer matched double quotes only. The claim was withdrawn in public, the flagship score revised 4→6, the whole set re-verified quote-agnostically, and the analyzer fixed.
-- **What it means:** A mechanical audit is a floor, not a verdict; a regex is not a reading.
-- **Why it matters:** The false claim had already spawned four fix items — the pre-build byte re-read caught the checker before a fix was built on it (WP-247).
-- **What's in it for me:** Every absence verdict now names its match assumptions and is re-read format-agnostically against raw bytes before filing or acting.
-- **How it connects:** The findings that survived re-verification stand and are queued: Today room genuinely has no viewport, the Mission room has no page at all, `/projects/questions.json` is a dead 404 still registry-listed, canonical flagship URLs render sample citizens, Life with Naya weighs 24,842KB.
-- **What changes tomorrow:** Audit scores stay capped until rendered review; mechanical signals never file a fix alone again.
+### 3. The Hub deployer war ended at the mechanism — restores are not stability
+- **What:** Two overwrite mechanisms were proven in sequence. (a) The frozen copy: repo `HUB/app/` carried a weeks-old home (523,177 B, sha `4aa796e0`) that the whole-folder auto-deploy shipped unchecked over the true home (5,463,030 B); Resolve landed the true home into `HUB/app/index.html` at source (commit `32ef40b4`), disarming that class. (b) The second writer: the lane-local Smart Note sync bake (`sync-smart-notes.py`, 5-minute cron) PUT its own build directly to the same Cloudflare worker `hub`, so every note landing replaced the repo build and erased /pi — proven by byte correlation (restores held until the next note landed; zero deploy-workflow runs in between), and named in the docstring of `HUB/deploy/deploy-hub-code.py` (`fdc5679e`). Power's `hub-deploy.yml` was exonerated (53/53 runs failed; it never deployed). Power then landed the fold: the second deployer is removed/folded, serving is stable, /pi still serves home bytes until the face landing (item 5).
+- **What it means:** A freeze announced in prose is not a mechanism, and a successful restore proves only that a re-assert works — intermittence *is* the defect.
+- **Why it matters:** Seven recurrences in one day, each burning a restore, because the cause was watched (sentinel) instead of removed.
+- **What's in it for me:** The next canonical landing will stick; the cure's final proof is explicit — a subsequent note landing leaves /pi alive.
+- **How it connects:** Unblocks the PI face landing (items 4–5) and is the concrete case behind item 6's lesson: name the stage you're actually at.
 
-### 5. PR #3075 RETRO-SCORE 5.5/10 — A SECOND FACTORY AUTHORITY WAS THE REAL FINDING (board 6407042406)
-- **What it is:** The evidence pack (65 files, all `interfaces/**`) falsified the PR's "404 unified pieces" claim: it contains 155 pieces, all pre-existing in canon (571 union declared), and it created `interfaces/factory/` parallel to the pre-existing `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/` — twin share-card generators, ~254KB of byte-identical internal duplication, four walk-server generations, three `sw.js` variants (v2 narrows the never-cache doctrine and must not be registered as-is).
-- **What it means:** The merge's form breach (#47) is separate from its substance; on substance it is not a pass at the 9.0 bar.
-- **Why it matters:** Two inventories for one factory is the duplicate-mechanism defect in its purest form — every later builder would have had to guess which authority is real.
-- **What's in it for me:** One canonical home wins by prior existence; `factory-single-authority-reconcile-20261026` is filed in PI (Nitro owns, Resolve verifies byte-level), including carrying NAYA-BRD-031/032/033 into canon.
-- **How it connects:** Same root as item 3's doubled pages — duplication is today's recurring defect, in pages and in factories alike.
-- **What changes tomorrow:** New mechanisms are checked against canonical seams before they are built, not reconciled after they land.
+### 4. PI truth was reconciled — one record, one source, ordered reads
+- **What:** Tree's parity audit, Resolve-verified: canonical `work_items` vs the legacy `project_intel_items` projection diverged (scoped join: 184 canonical records missing from the legacy display · 8 stale extras · 13 conflicting states). /pi reads canonical; /projects reads the legacy projection. The count dispute then closed by method, not authority: complete *ordered* reads (`order=item_key.asc`, limit 25/page — limit 50 truncates at the ~4,000-char sb-api cap) give **PI scope = 314 rows · 314 unique · 23 done_proven** — Power's numbers stand in full. Resolve's 330/349/374 figures were a prepared dataset and artifacts of unordered offset pagination racing a mutating table; he conceded all three by mail and put the dataset itself in the open as draft PR #3103. Cure roles: Power owns the one governed publisher + data boundary; Resolve owns reconciliation verification.
+- **What it means:** A number without its scope and read method is not a number (L692: the filter is part of the number; L697: one record, one canonical source table).
+- **Why it matters:** PI is the team's one place of accountability; if its counts move with the reader, nothing built on it can be trusted.
+- **What's in it for me:** Quote 314/23 with the method attached and it will survive any other seat's re-read.
+- **How it connects:** The publisher cure is the data half of the face in item 5; the privacy finding rides along (RLS enabled but anonymous read policies not owner-restricted = verified configuration, *not* proven exposure; the fix stays behind Shawn's authority gate).
 
-### 6. BYTES PROVE IT EXISTS; EYES PROVE WHAT IT SAYS (flagship rendered cold-check, ~02:30–02:36Z)
-- **What it is:** Rendered, guest-view checks of personal/business/space/dashboard + the Connections room: all render, but canonical URLs still wear sample citizens (Nova Reyes / Acme Corp / Our Community), no library cover is wired (gradient only), the dashboard shows NO points total with several integrations "NOT CONNECTED", and Connections carries two contradictory lines on one screen ("live on this device only — nothing is sent or synced" vs "saved in your NayaNET store"). Phone-width was untestable from the harness and was NOT claimed.
-- **What it means:** The flagship's real gaps are birth/wiring gaps (page-birth mission, points layer), not template gaps — the opposite of what the mechanical audit first said.
-- **Why it matters:** It is item 4's lesson from the other side: existence and even correctness of bytes say nothing about what a citizen actually sees.
-- **What's in it for me:** Verification budgets go to rendered proof (phone + laptop, different seat scoring), which is now the acceptance shape for every page-audit item.
-- **How it connects:** Shawn's own review set this standard — his audit was rendered, functional, and pair-hunting; the team's rises to match. Shawn's standing charge the same hour: when there is a lesson, Smart-Note it proactively, without being told.
-- **What changes tomorrow:** Covers reconciled as the canonical count until the next dated re-count: 89 carded · 85 ready · 86 files on main.
+### 5. The PI face was measured, not described — and the Endgame was sequenced
+- **What:** Against the 42-check contract, the only shared artifacts scored: Power's draft PR #3089 = **6/42 NOT LIVE-READY**; Nitro's shared v2 = **11/42**; Resolve's v3 (built on Nitro's branch, dots replaced by Factory jewels, weakest point named on the face) self-checked **29/42**, then its anchor fix was different-seat verified 9.5 *at fix scope only* after Nitro caught three fake deep links minted on retired board #2793 (L698: a venue re-point must verify preserved anchors resolve on the target board). The check target now sits at head `9a4f3963` (items.json regenerated from the ordered read in item 4); Nitro's 9+ whole-face cold check at that exact head is the gate before landing. Zara's 8-dimension contract (D1–D8) is the scorecard form: no dimension below 9.0, a critical failure can never be averaged away. Shawn sequenced the endgame: (1) PI to 10/10 first, (2) rip apart every page vs the doctrine, (3) align, (4) sync the seams.
+- **What it means:** A claimed "finished practice copy" with no bytes on any shared surface does not exist as work (full tree + ~1,078 branches scanned). Shared work, not handoff-and-wait (Shawn's correction): join the build on the shared surface.
+- **Why it matters:** This is the 9+ Completion Protocol in practice — nothing is shown mid-build; a page arrives complete, scorecarded, or not at all.
+- **What's in it for me:** Score movement (6 → 11 → 29/42) is the report; nobody has to take a seat's adjective for a face again.
+- **How it connects:** Consumes item 3's stable serving and item 4's true record; produces the pattern every other page's rip-apart will reuse.
 
-### 7. NOT 10 YET — AND THE LOOP THAT GETS THERE WAS PROVEN (Ten-by-Ten convergence; kernel cure)
-- **What it is:** Resolve's Ten-by-Ten (PR #3077) and Power's 10/10 report (PR #3076) converge independently: ~6.5/10, "No, not yet," same sequence, PI first. Power's measured census: 262 work_items (done 20 · in_progress 52 · queued 164 · verifying 19 · needs_shawn 6 · blocked 1 = 7.6% done), 203 of 262 uncategorized by area; Smart Match live tables empty; the ledger's 30 rows frozen since 2026-10-22. The same night, the kernel brain-index red was root-caused (BRAIN landings without regen), cured in one commit (`78d9c9d0`, 3 index files), and CI-verified green at that head.
-- **What it means:** The distance to 10 is measured, categorized work — an area mapping filled once and maintained on insert — not unknown unknowns.
-- **Why it matters:** Two seats reaching the same verdict from different evidence is the scorecard system working; the kernel cure is the loop (detect → root-cause → fix → CI verify) completing inside one hour.
-- **What's in it for me:** The execution order is already filed as the top PI item (`ten-by-ten-execution-2026-10-26`, pri 10000); nobody needs to re-plan, only to execute and prove.
-- **How it connects:** Items 1–6 are all instances of this loop succeeding or failing; the standing blockers it cannot move remain human-gated (behavioral proof, production stamp, 19 pending migrations).
-- **What changes tomorrow:** Execution runs nonstop under the director's release; reporting is finished, proven things only.
+### 6. The merge doctrine was corrected — and its enforcement gap was root-caused
+- **What:** Shawn corrected the doctrine in his own words (~03:18Z): he merges as a sweeper trusting the team; his clicks authorize and prove nothing; scorecard *before* putting a PR forward, then agents merge their own scored work; a merge-ready PR without its scorecard is the defect, and HOLD-parking is retired (SN-1873 carries the delta). The same day, sweep merges kept landing unscored — breaches reached **68** (incl. #3091/#3093/#3095 and #3097–#3100) — and Naya 5 root-caused it mechanically: the main ruleset requires **0 reviews and no required checks**. The cure is a ruleset change, which is Shawn-gated; the interim cure is post-merge different-seat scorecards at the exact merged heads, owned by the proposing seats.
+- **What it means:** Announcement ≠ implementation ≠ verification ≠ value — the law was announced and recorded while the machine still permitted its violation on every merge.
+- **Why it matters:** Sixty-eight repetitions of one lesson is the system's most expensive sentence: a gate that exists only in prose will be swept.
+- **What's in it for me:** Never cite a director click as approval; bring the exact-head scorecard or the merge is a breach with your name on it.
+- **How it connects:** Same shape as item 3's prose freeze and item 1's unwired constitution — the day's meta-lesson.
 
----
+### 7. Smart Note collisions were cured by adjudication, not force
+- **What:** The SN-1878 reconciliation door pass found **7 defects, not the recorded 3** (hash mismatches, stale page hashes, missing entries/captures across SN-1878/1879/1880), cured all in one pass — door checker at tip `4316bc72`: **ok:true, 0 defects, 0 tombstones**; registry 739 entries; corpus seal recomputed and independently matched. The deviation was reasoned on the record: the approval note was renumbered to **SN-1881, not SN-1879**, because Power had claimed 1879 in the interim with a complete filing — forcing 1879 would have manufactured a second collision (first claim stands, SN-033). Different-seat cold proof then closed serving: /s/sn1878 and /s/sn1881 each serve their own note. SN-1884 (design-mastery doctrine) filed full-form and serving the same night, completing the Sharing Practice's fourth channel for PR #3101.
+- **What it means:** Collision repair that respects in-flight claims beats repair that wins the number and breaks the registry again.
+- **Why it matters:** The registry is the collective's memory index; every doubled number is a lesson a future Naya retrieves wrong.
+- **What's in it for me:** When numbers collide, adjudicate by first claim and document the deviation in the note itself — the next seat inherits the reasoning, not just the result.
+- **How it connects:** Notes are the sharing unit in item 2 and the bake whose sync caused item 3 — the same system, cured at both ends in one day.
 
 ## What compounded today
-- **The Showing Gate changed a decision in the same pass it was named:** PR #3074 was closed by its author, the face rerouted to Nitro, the Design Toolkit landed, and the gate itself was Smart-Noted (SN-1869) and promoted to standing law (L675) — a lesson that changed routing, tooling, and law within one hour.
-- **The pre-build byte re-read (WP-247)** stopped a false viewport fix from being built and triggered a whole-set re-verification, not a one-line patch.
-- **The merge-doctrine correction** changed breach accounting (#46–#53) and the team's forward behavior in the same post that recorded it.
+- **Ordered, complete reads closed a live dispute in one pass** (item 4): the PI count argument ended when the method changed — this changes tomorrow's default for every number reported.
+- **Addressed mail replaced published waiting** (item 2): the first addressed asks, the concession mail, and the deployer fold all moved seat-to-seat the same night they were sent — the ladder and clock are now exercised, not just written.
+- **Cold checks stopped two landings and improved both** (item 5): 6/42 and 11/42 verdicts, delivered to named owners with named fixes, produced v3 — scoring as a build input, not a postmortem.
 
 ## What was let go
-- **PR #3074** (Resolve's cover chooser) — closed, superseded by Nitro's `cover-library-interface-nitro` item.
-- **PR #3072** (cover-library v1 branch) — closed unmerged; the library is whole on main via #3071/#3073 (no-duplicate-mechanisms).
-- **The "HOLD for scorecard" parking posture** — retired by the corrected merge doctrine (item 2).
-- **The flagship viewport claim and the "404 pieces" claim** — both falsified on live bytes and corrected in place (PR #3077 carries CORRECTIONS blocks in all three tongues).
-- **Power's receipts on retired board #2793** — superseded as a venue; pointers mirrored to live board #3066 (6407019197). #2793 itself stays retired/archived.
+- **Standalone constitutions** (0036, NIA-PROTOCOL-V1) as governing documents — kept as sources to the Naya Code, retired as authorities.
+- **HOLD-parking and tap-seeking** — retired by the corrected merge doctrine and the Tap-Inflation Correction.
+- **"Second deployer = the lane pipeline"** — superseded by the proven note-sync-bake mechanism; Power's `hub-deploy.yml` exonerated on the record.
+- **330 / 364 / 374 as PI truth** — superseded by the ordered-read 314/23 (PI scope) with the method attached.
+- **Restores as stability claims** — Restore #5/#6 receipts stand as re-assert proofs only.
+- **The morning edition of this report** — superseded by this edition.
 
-## Trash candidates — FLAG ONLY (deletion is the Human Director's call; nothing deleted by this run)
-1. `personal#inbox` — the doubled Mail page Shawn named "garbage, DELETE outright" in the page review; deletion waits on the mail-right-one merge landing and his call.
-2. The losing halves of the seven doubled pairs (Intel Today, Growth, Connections, Lists, Reports, Settings duplicates) — retire only after each merge is proven live, per the FEED RETIREMENT LAW (final distillation → lock in → close).
-3. `interfaces/factory/` duplicate authority (~254KB internal duplication, twin generators, 3 `sw.js` variants) — reconcile item filed; removal is the reconcile lane's proven outcome, not this run's delete.
-4. `/projects/questions.json` — dead 404 still registry-listed; registry entry is a flag for the registry-reconcile lane.
-5. Open PRs #3052 (mission-state/ledger, dirty, head moving) and #2981 (2026-09-30 smart-note capture, dirty) — stale/dirty flags for their owning lanes; not closed by this run.
+## Trash candidates — FLAG ONLY (deletion is the Human Director's call)
+1. **Retired boards still receiving real posts** — Zara's acceptance contract and Power's playbook post + invitation both landed on archived #2793 today and had to be re-homed to #3066 (6430463709, 6430464616, 6428332322). *Feed Retirement Law candidate: the retired boards' final distillation is locked in; their continued postability is the leak.*
+2. **The legacy PI projection** — `project_intel_items` / /projects as a second display of the record (184 missing · 8 stale · 13 conflicting vs canonical `work_items`). Retire after Power's one governed publisher lands; until then it is a stale second truth, not a backup.
+3. **Duplicate repo surface `interfaces/factory/`** — the twin of `BRAIN/10-INTERFACES/SMART-FACTORY-CANON` found by PR #3075's retro-score (5.5/10, L677); reconcile to the canonical home, do not keep both.
+4. **NOW board #2599** — 256,105 chars vs the proven 256,088 PATCH ceiling: a record surface at its ceiling silently freezes (L699). Trim/distill is owed before any further entry; flagging as a feed-hygiene candidate.
+5. **Stale / dirty / superseded PRs** — #3052 (dirty, purpose-gate deadline 2026-10-27), #2981 (stale), #3088 (review owed), #3089 (DO NOT MERGE draft; its checks are harvested into the v3 contract) — owning lanes to close or land; flagged, not touched.
+6. **Duplicate live share-table rows for SN-1878/SN-1881** — registry on main is unambiguous and serving is cured; the DB-row delete is grant-gated.
+7. **The prepared PI dataset's goal-file copies** — the dataset now lives in the open as PR #3103; the goal-file originals are a second copy that will drift. Keep one source once #3103 lands.
 
-## Maker scorecard for this report PR (Scorecard Law — maker only; merge needs a different seat)
-Options: (A) file as draft PR with maker scorecard, held for different-seat scorecard — value 9 (preserves the record, obeys the corrected doctrine, reversible); (B) push to main directly — REJECTED, violates "never push to main" and the Scorecard Law; (C) skip the PR and post only to the board — value 4 (the record would live outside the super brain, violating the `.md` placement rule). Gates for A: reversible ✓ · no major damage ✓ (one added file under `BRAIN/05-MEMORY/`) · positive forward effect ✓. Decision: A. This PR is opened as a DRAFT; it must not be marked ready or merged until a different-seat scorecard at its exact head is posted on #3066.
+## Maker scorecard (this report's PR — held, not merged)
+Options: (A) merge on maker score alone — 2/10, violates the different-seat rule Shawn restated today; (B) open as DRAFT, byte-verify, post the lock-in on #3066, and hold for a different-seat exact-head scorecard — 9.5/10, reversible, gates pass; (C) skip the PR and post only — 4/10, the day's intelligence would live only in a board comment. **Decision: B.** No receipt from another seat, no merge — per SCORECARD-LAW-V1 and item 6 above.
+PI routing note: the learning-event item's PI entry routes through the writer seat (Power, S1 door); it is named here, not claimed synced from this seat.
 
-— Naya Resolve, daily learning event, 2026-10-26
+— Naya Resolve, daily learning event run, 2026-10-27T03:37Z (2026-10-26 Vancouver)
