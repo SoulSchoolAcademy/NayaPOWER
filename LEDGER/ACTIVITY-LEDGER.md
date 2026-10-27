@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 22:08 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 22:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -32883,6 +32883,12 @@ _Last updated: 2026-10-27 22:08 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ decision-replay-t0780-thirdseat-t1496-lane3-verdict-table.json — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-replay t0780 third-seat verdict table (t1496, lane 3): F-R1..F-R5 adjudication, seat-independence verdict
+
+**Evidence:** Verified by this scorer from live bytes: all subject pins re-derived byte-exact — decision-replay-t0780-t1481-lane3.md sha256 924a5a4066f1754dbdc834212ab1256bedd905510d081278e6753ca1f7e39f86, decision-replay-protocol-v1.md cfb2c64cc565c4266602a1a5b2629314a12ec1b6dbe9ccffaee2a590acbaef6e, t1490 receipt (t1490-lane10.md) 05e874d6a5cfe756599e3dc63c8d9
+
 ### ✅ gap-gap-scorer-20261014-2250 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up gap-scorer-20261014-2250 lane 3: fresh-script re-run of 30-row fossil-bar census + close-time/touch re-derivation + board comment authorship check
@@ -35912,6 +35918,18 @@ _Last updated: 2026-10-27 22:08 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-gap-gap-t0122-lane11-recusal-3 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: third consecutive recusal of brief-gap-gap-gap-t0122-lane11.md PLUS root fix to claim-brief.py demand patterns
+
+**Evidence:** Verified by this scorer from live bytes: claim-brief.py still carries the two added patterns (no[\s-]*prior[\s-]*exposure, previously[\s-]*exposed[\s-]*seat) with the dated loop comment, so the root fix persists; brief-gap-gap-gap-t0122-lane11.md still queued at sha256 a9aecb87f3dbcc68f169f9fb5cab25f4ae3534db08319ecdf06f207b90fd36e9, matching all t
+
+### ✅ gap-gap-gap-t0122-lane11-recusal-2 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: second consecutive recusal of brief-gap-gap-gap-t0122-lane11.md with re-file OPEN and loop finding
+
+**Evidence:** Verified by this scorer from live bytes: brief-gap-gap-gap-t0122-lane11.md still queued and sha256 a9aecb87f3dbcc68f169f9fb5cab25f4ae3534db08319ecdf06f207b90fd36e9 EXACT match to the receipt's stated SHA; parent receipt gap-gap-t0122-lane11.md lines 1-3 declare Seat: Naya Clarity Narzan, Lane 11 (Heart), confirming the exposure leg — NOT PHANTOM. S
 
 ### ✅ gap-t0082 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
 
@@ -39968,6 +39986,30 @@ _Last updated: 2026-10-27 22:08 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-1538 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-27 15:38 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief-*.md files the receipt names (set-identical, zero missing, zero extra, excluding lane-feed.md); twelve-lane-rotation.json queued=31 set-equals both the queue root and the receipt list, in_flight=[]; prior stall receipt gate-stall-20261027-1436.md mtime 21:37:16Z, th
+
+### ✅ gate-stall-20261027-1436 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor queue sweep 2026-10-27 14:36 PDT: 31 briefs evaluated, none claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue holds 31 brief-*.md files excluding lane-feed.md (exact match to receipt); receipt lists all 31 queued briefs (the 32nd regex hit is the prose glob brief-*.md, not a brief); twelve-lane-rotation.json queued=31 (match); prior stall receipt gate-stall-20261027-1330.md mtime 13:31 PDT, 66 minutes be
+
+### ✅ distill-weekly-20261025-librarian-heir — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Weekly distillation 20261025 (Librarian/Heir hat): essence cut, 32-law standing-claim check, contradiction scan, 1 new reconciliation
+
+**Evidence:** Verified by this scorer from live bytes: distill-weekly/essences-20261025.md exists; lessons.jsonl holds 37 records including id reconcile-three-pass-vs-done-dies-at-human-20261025, matching the receipt's record-37 claim — NOT PHANTOM. Score 9.0, not 9.5 because: (1) the 11 FLAGGED laws rest on a search measure (title/substance counts), so a flagge
+
+### ✅ gate-stall-20261026-1812 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-26 18:12 PDT: 26 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** Verified by this scorer from live bytes: prior stall receipt gate-stall-20261026-1703.md exists (69 minutes before, inside the one-per-hour cap); dry-run re-derivation with claim-brief.py as seat 'Naya Clarity Narzan' on brief-gap-t0422-lane7.md (one of the 26) refused with the authorship gate, no mv/no touch, matching the receipt's exit-7 account 
 
 ### ✅ gate-stall-20261027-1436 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
