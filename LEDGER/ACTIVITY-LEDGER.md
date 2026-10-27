@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25001,6 +25001,24 @@ _Last updated: 2026-10-27 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261027-1123 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 11:23 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: all 31 briefs named in the receipt are present in brief-queue/ root and rotation queued (31) matches the receipt's list exactly; no brief-tNNNN files; in_flight=[]; stall-cap respected (65 min after the 10:18 receipt); listed set identical to the 10:18 set. Score 9.0 - GOOD, ONE MORE PASS. Why not 9.5: (1) s
+
+### ✅ 20261027-1018 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 10:18 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: all 31 briefs named in the receipt are present in brief-queue/ root and rotation queued (31) matches the receipt's list exactly; no brief-tNNNN files; in_flight=[]; stall-cap respected (65 min after the 09:13 receipt); listed set identical to the 09:13 and 11:23 sets. Score 9.0 - GOOD, ONE MORE PASS. Why not
+
+### ✅ 20261027-0913 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 09:13 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: all 31 briefs named in the receipt are present in brief-queue/ root and rotation queued (31) matches the receipt's list exactly; no brief-tNNNN files; in_flight=[]; stall-cap respected (65 min after the 08:08 receipt). Score 9.0 - GOOD, ONE MORE PASS. Why not 9.5: (1) stall reported, not moved - queue member
+
 ### ✅ lane-scorer-20261022-0436 — Team executor, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
 **Task:** seat-stall 2026-10-22 04:36 PDT - 23/23 unclaimable, ORDERING sweep, delta vs prior stall, queue preserved
@@ -39808,6 +39826,12 @@ _Last updated: 2026-10-27 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-1224 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** lane-executor queue sweep 2026-10-27 12:24 PDT: 31 briefs evaluated, none claimable by Clarity seat, stall delta zero vs 11:23 sweep
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief-*.md files the receipt names (set-identical, zero missing, zero extra, excluding lane-feed.md); twelve-lane-rotation.json queued=31 set-equals the queue root, in_flight=[]; exit pattern matches the receipt's 29x exit 7 + 1x exit 2 script-attempted plus 1 stamped-gat
 
 ### ✅ gate-stall-20261027-1123 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
