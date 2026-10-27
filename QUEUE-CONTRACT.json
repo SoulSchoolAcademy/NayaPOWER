@@ -1,6 +1,6 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-27T21:24:37Z",
+  "generated_at": "2026-10-27T22:24:29Z",
   "tip": "4dde3c1facdbfa9330171d908f45d9ef0c784ac0",
   "prs": [
     {
@@ -16,10 +16,10 @@
       "number": 3088,
       "title": "feat(sn-guard): Smart Note filing-path collision guard \u2014 claim-before-author via the existing allocator",
       "tier": "B",
-      "action": "MERGE-NOW",
-      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "7fd6f124d60c5cf2ab48510dd85b78a5a8f52b1a"
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "25960168b58808d6976e13424d722dab72ed428e"
     },
     {
       "number": 3089,
@@ -37,7 +37,7 @@
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "3bd447c075e2bac051117bfc6246a0c003610269"
+      "head": "d81df2003051306bd2b535c504a2756e6caa7bad"
     },
     {
       "number": 3108,
@@ -46,16 +46,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "0d185abd1b26537c5131e39feec4eab260ad60c8"
+      "head": "9e2099cd609eba459f61b39fa3a94a3a1be902ab"
     },
     {
       "number": 3111,
       "title": "Door-obligation cure: capture + registry entries for SN-1888/SN-1889",
       "tier": "C",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, completeness, door-obligation; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "ab3df9e960ad8891aa827124a3dc59c89a7f7e1c"
+      "head": "b34caaa12c74d1c63f8406f5cf17f88b4e7a269e"
     }
   ]
 }
