@@ -1,3 +1,4 @@
+<!-- MERGED FACE — overnight push 2026-10-27. Base: Resolve v3 index.html at 9a4f3963, verbatim except the surgical additions below. Harvests from Nitro v3 (face-v2-shared-20261026): pages view-index cards (structure + .pagecard geometry; counts computed from the snapshot) + parts register (embedded verbatim). Merged additions: director packets board (computed), per-area freshness stamps (computed max updated_at), per-area link rows. No score claimed, not live, awaits Nitro's own rendered review + verdict. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,22 +7,21 @@
 <title>Project Intelligence — NayaNET</title>
 <meta name="description" content="Project Intelligence: everything happening across NayaNET, in one place, in plain words.">
 <!--
-  PI FACE v3 — DESIGN-LAW OVERHAUL 2026-10-26 (Nitro face craft, branch only, not live).
-  Base: pi-face.html (Nitro 19:31Z rendered-review pass) — its CSS tokens,
-  topbar, pill, board, orb, button, room and item-row language are harvested
-  verbatim; only the placement order and the room/data honesty layer are new.
-  Placement (Power package, PI note 51 / board 6426890671, confirmed by the
-  new consensus): % done → master to-do → what's stuck → movement → 12 rooms
-  → done with receipts. Smart Tab row jumps between blocks in one area.
-  Data: ONE fetch, same-origin /pi/api/items, fresh on every load and on
-  Refresh (no-store). The face never bakes numbers: every number renders from
-  the fetched record, carries its scope and read time, and on a failed read
-  the face shows the failure + its time, never invented numbers, never a
-  spinner that hides it. Per-area percentages are NOT rendered until live
-  area assignments exist in the record (schema not applied; readiness
-  dataset is preparation only). Proven = green, stated = blue, shown = gold.
-  Notes live in this device's localStorage only (key naya.pi.notes.v2).
-  Branch copy only — not live, not scored, no live deploy. v3: jewels replace the old round markers; buttons carry a jewel and ignite in their own colour; tabs switch views (plus All); headline orbs are doors to their view; operating-code panel at top; pages cards; board links re-pointed to the live board (deep-link anchors dropped — those comments live on the retired board, a live-board URL carrying them would be a fake deep link).
+  PI FACE v3 — RESOLVE BUILD ON NITRO'S v2, 2026-10-26 (branch face-v3-resolve-20261026, staged only).
+  Base: v2 @ 02bcf967 (Nitro, shared branch face-v2-shared-20261026) — placement, CSS language and
+  honesty discipline are hers; this pass builds ON it per Shawn's shared-work ruling (no more waiting).
+  What v3 changes: (1) every board link re-pointed from the retired board to the live board #3066;
+  (2) the flat-dot marker system is dead — markers are canon Smart Factory pieces: JWL-020 meaning
+  spheres carrying ICO sprite glyphs (sprite: BRAIN/10-INTERFACES/SMART-FACTORY-CANON, 39 symbols,
+  inlined verbatim), JWL-001-005 gem bullets in the legend; (3) the view switch is INP-003, the canon
+  segmented control (Human / Naya / Machine); (4) tabs are NAV-001 smarttabs and SWITCH views — no
+  smooth-scroll; (5) every number orb is a button opening its real filtered list; (6) the weakest
+  points are named in their own board, with the needs-Shawn packets; (7) the operating code panel
+  carries the B10 seven steps verbatim; (8) the face renders REAL ROWS from items.json — a dated
+  snapshot of public.work_items (read-only GET), deduped under the readiness survivor rule, areas
+  joined from the readiness mapping (preparation, not applied — labelled wherever used). The live publisher endpoint (/pi/api/items) remains Power's publisher work; the parts register travels with this face (see the Parts board); where the record
+  cannot carry a claim, the face renders DARK with the reason. Notes remain device-local and say so.
+  Not live, not self-scored: this merged face awaits Nitro's own cold check at its exact commit.
 -->
 <style>
   :root{
@@ -62,7 +62,6 @@
     box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 28px rgba(0,0,0,.6);
   }
   .board-head{display:flex; align-items:flex-start; gap:12px}
-  .jewel{flex:0 0 auto; width:14px; height:14px; margin-top:7px; transform:rotate(45deg); border-radius:3px; background:var(--white); box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 0 12px rgba(255,255,255,.55)}
   .sec-label{font-size:13px; letter-spacing:.16em; font-weight:800; color:var(--paper); text-transform:uppercase}
   .readtime{font-size:14px; color:var(--paper)}
   .notice{
@@ -76,7 +75,7 @@
   .num{flex:1 1 130px; text-align:center; padding:10px 6px}
   .orb{
     width:84px; height:84px; margin:0 auto; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    border:2px solid var(--white); background:linear-gradient(180deg,#050507,#020203);
+    border:2px solid var(--white); background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.5),transparent 42%),linear-gradient(180deg,#050507,#020203);
     font-size:26px; font-weight:900; color:var(--white);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.55);
   }
@@ -94,13 +93,6 @@
   }
   .btn:hover,.btn:focus-visible{transform:translateY(-2px); border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--purple); outline:none}
   .btn:active{transform:translateY(2px)}
-  .btn::before{content:"◆"; font-size:13px; line-height:1}
-  .btn:hover::before,.btn:focus-visible::before{color:var(--purple)}
-  .btn[data-ig="blue"]:hover::before,.btn[data-ig="blue"]:focus-visible::before{color:var(--blue)}
-  .btn[data-ig="green"]:hover::before,.btn[data-ig="green"]:focus-visible::before{color:var(--green)}
-  .btn[data-ig="shown"]:hover::before,.btn[data-ig="shown"]:focus-visible::before{color:var(--shown)}
-  .btn[data-ig="orange"]:hover::before,.btn[data-ig="orange"]:focus-visible::before{color:var(--orange)}
-  .btn[data-ig="red"]:hover::before,.btn[data-ig="red"]:focus-visible::before{color:var(--red)}
   .btnrow{display:flex; flex-wrap:wrap; gap:12px; margin-top:14px}
   .room{
     width:100%; text-align:left; padding:18px 20px; margin:14px 0; border:2px solid var(--white); border-radius:20px;
@@ -110,37 +102,24 @@
   }
   .room:hover,.room:focus-visible{transform:translateY(-2px); outline:none}
   .room .rname{font-size:22px; font-weight:700; color:var(--white); display:flex; align-items:center; gap:12px}
-  .room .rjewel{width:14px; height:14px; transform:rotate(45deg); border-radius:3px; background:var(--white); flex:0 0 auto; box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 0 12px rgba(255,255,255,.55)}
   .room .rline{color:var(--paper); margin:6px 0 0}
   .room .rstatus{font-size:14px; color:var(--paper); margin:8px 0 0}
   .room[data-accent="magenta"]:hover{border-color:var(--magenta); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--magenta)}
-  .room[data-accent="magenta"] .rjewel{background:var(--magenta); box-shadow:0 0 10px var(--magenta)}
   .room[data-accent="purple"]:hover{border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--purple)}
-  .room[data-accent="purple"] .rjewel{background:var(--purple); box-shadow:0 0 10px var(--purple)}
   .room[data-accent="blue"]:hover{border-color:var(--blue); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--blue)}
-  .room[data-accent="blue"] .rjewel{background:var(--blue); box-shadow:0 0 10px var(--blue)}
   .room[data-accent="green"]:hover{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--green)}
-  .room[data-accent="green"] .rjewel{background:var(--green); box-shadow:0 0 10px var(--green)}
   .room[data-accent="shown"]:hover{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--shown)}
-  .room[data-accent="shown"] .rjewel{background:var(--shown); box-shadow:0 0 10px var(--shown)}
   .room[data-accent="red"]:hover{border-color:var(--red); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--red)}
-  .room[data-accent="red"] .rjewel{background:var(--red); box-shadow:0 0 10px var(--red)}
   .room[data-accent="teal"]:hover{border-color:var(--teal); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--teal)}
-  .room[data-accent="teal"] .rjewel{background:var(--teal); box-shadow:0 0 10px var(--teal)}
   .room[data-accent="indigo"]:hover{border-color:var(--indigo); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--indigo)}
-  .room[data-accent="indigo"] .rjewel{background:var(--indigo); box-shadow:0 0 10px var(--indigo)}
   .room[data-accent="lime"]:hover{border-color:var(--lime); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--lime)}
-  .room[data-accent="lime"] .rjewel{background:var(--lime); box-shadow:0 0 10px var(--lime)}
   .room[data-accent="orange"]:hover{border-color:var(--orange); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -4px 0 rgba(0,0,0,.55), 0 10px 26px rgba(0,0,0,.6), 0 0 22px -2px var(--orange)}
-  .room[data-accent="orange"] .rjewel{background:var(--orange); box-shadow:0 0 10px var(--orange)}
   .well{
     width:100%; min-height:52px; padding:12px 18px; border:2px solid rgba(255,255,255,.55); border-radius:14px;
     background:linear-gradient(180deg,#020203,#050507); color:var(--white); font:inherit; font-size:16px;
     box-shadow:inset 0 2px 8px rgba(0,0,0,.6), inset 0 -1px 0 rgba(255,255,255,.12);
   }
   .well::placeholder{color:var(--paper)}
-  .switch{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
-  .switch .btn[aria-pressed="true"]{border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--purple)}
   .hidden{display:none !important}
   .linklist{margin:10px 0 0; padding:0; list-style:none}
   .linklist li{margin:10px 0}
@@ -173,22 +152,12 @@
     background:linear-gradient(180deg,#050507,#020203);
   }
   .tabrow::-webkit-scrollbar{display:none}
-  .tab{
     flex:0 0 auto; white-space:nowrap; display:inline-flex; align-items:center; gap:8px;
     min-height:44px; padding:0 18px; border:2px solid rgba(255,255,255,.3); border-radius:999px;
     background:rgba(0,0,0,.5); color:var(--white); font:inherit; font-size:14px; font-weight:700; cursor:pointer;
     box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5);
   }
-  .tab:hover,.tab:focus-visible{border-color:var(--white); outline:none}
-  .tab[aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--white), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5)}
-  .tab .tjewel{width:10px; height:10px; transform:rotate(45deg); border-radius:2px; background:var(--white); flex:0 0 auto; box-shadow:0 0 8px rgba(255,255,255,.55)}
   .block{scroll-margin-top:96px}
-  .block .jewel.purple{background:var(--purple); box-shadow:0 0 10px var(--purple)}
-  .block .jewel.blue{background:var(--blue); box-shadow:0 0 10px var(--blue)}
-  .block .jewel.green{background:var(--green); box-shadow:0 0 10px var(--green)}
-  .block .jewel.shown{background:var(--shown); box-shadow:0 0 10px var(--shown)}
-  .block .jewel.orange{background:var(--orange); box-shadow:0 0 10px var(--orange)}
-  .block .jewel.red{background:var(--red); box-shadow:0 0 10px var(--red)}
   .btn[data-ig="blue"]:hover,.btn[data-ig="blue"]:focus-visible{border-color:var(--blue); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--blue)}
   .btn[data-ig="green"]:hover,.btn[data-ig="green"]:focus-visible{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--green)}
   .btn[data-ig="shown"]:hover,.btn[data-ig="shown"]:focus-visible{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 0 rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.55), 0 0 22px -2px var(--shown)}
@@ -215,111 +184,154 @@
   details.door summary{cursor:pointer; font-weight:700; font-size:15px; color:var(--white)}
   details.door summary::-webkit-details-marker{color:var(--paper)}
   .feedtime{font-size:13px; color:var(--paper)}
-  .tab[data-tone="purple"]:hover,.tab[data-tone="purple"]:focus-visible{border-color:var(--purple); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--purple)}
-  .tab[data-tone="purple"][aria-pressed="true"]{border-color:var(--purple); box-shadow:inset 0 -3px 0 var(--purple), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--purple)}
-  .tab[data-tone="blue"]:hover,.tab[data-tone="blue"]:focus-visible{border-color:var(--blue); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--blue)}
-  .tab[data-tone="blue"][aria-pressed="true"]{border-color:var(--blue); box-shadow:inset 0 -3px 0 var(--blue), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--blue)}
-  .tab[data-tone="green"]:hover,.tab[data-tone="green"]:focus-visible{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--green)}
-  .tab[data-tone="green"][aria-pressed="true"]{border-color:var(--green); box-shadow:inset 0 -3px 0 var(--green), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--green)}
-  .tab[data-tone="shown"]:hover,.tab[data-tone="shown"]:focus-visible{border-color:var(--shown); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--shown)}
-  .tab[data-tone="shown"][aria-pressed="true"]{border-color:var(--shown); box-shadow:inset 0 -3px 0 var(--shown), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--shown)}
-  .tab[data-tone="orange"]:hover,.tab[data-tone="orange"]:focus-visible{border-color:var(--orange); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--orange)}
-  .tab[data-tone="orange"][aria-pressed="true"]{border-color:var(--orange); box-shadow:inset 0 -3px 0 var(--orange), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--orange)}
-  .tab[data-tone="red"]:hover,.tab[data-tone="red"]:focus-visible{border-color:var(--red); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--red)}
-  .tab[data-tone="red"][aria-pressed="true"]{border-color:var(--red); box-shadow:inset 0 -3px 0 var(--red), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--red)}
-  .tab[data-tone="magenta"]:hover,.tab[data-tone="magenta"]:focus-visible{border-color:var(--magenta); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--magenta)}
-  .tab[data-tone="magenta"][aria-pressed="true"]{border-color:var(--magenta); box-shadow:inset 0 -3px 0 var(--magenta), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--magenta)}
-  .tab[data-tone="teal"]:hover,.tab[data-tone="teal"]:focus-visible{border-color:var(--teal); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--teal)}
-  .tab[data-tone="teal"][aria-pressed="true"]{border-color:var(--teal); box-shadow:inset 0 -3px 0 var(--teal), inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--teal)}
-  .orbdoor{background:none; border:none; padding:0; margin:0 auto; display:block; cursor:pointer}
-  .orbdoor:focus-visible{outline:3px solid var(--white); outline-offset:4px; border-radius:50%}
-  .orbdoor:hover .orb{transform:translateY(-2px)}
-  .pagecard{display:block; width:100%; text-align:left; padding:16px 18px; margin:12px 0; border:2px solid rgba(255,255,255,.55); border-radius:20px; background:linear-gradient(180deg,#050507,#020203); color:var(--white); font:inherit; cursor:pointer; box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5)}
-  .pagecard:hover,.pagecard:focus-visible{border-color:var(--magenta); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px var(--magenta); outline:none}
+
+  /* v3 canon pieces — JWL-020 spheres · JWL-001-005 gem bullets · INP-003 segmented · NAV-001 smarttabs · MRK-005 spectrum · DESIGN-BLOCKS .jw chips (factory.css / pieces.json, BRAIN/10-INTERFACES/SMART-FACTORY-CANON). */
+  .icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .pill .icon{width:18px;height:18px}
+  .sphere{--tone:#a06bff;--rgb:160,107,255;position:relative;width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:50%;color:#fff;background:radial-gradient(circle at 32% 23%,rgba(255,255,255,.55),rgba(var(--rgb),.5) 22%,rgba(var(--rgb),.18) 48%,#050507 78%);border:1px solid rgba(255,255,255,.6);box-shadow:inset -6px -8px 12px rgba(0,0,0,.5),inset 4px 4px 8px rgba(255,255,255,.1),0 8px 16px rgba(0,0,0,.35),0 0 18px rgba(var(--rgb),.3)}
+  .sphere .icon{width:22px;height:22px}
+  .sphere.sm{width:30px;height:30px}.sphere.sm .icon{width:15px;height:15px}
+  .sphere.lg{width:52px;height:52px}.sphere.lg .icon{width:26px;height:26px}
+  .gem-bullet{--tone:#a06bff;width:22px;height:22px;flex:none;display:inline-block;transform:rotate(45deg);background:linear-gradient(140deg,#fff,var(--tone) 45%,#0a0a10);border:1.5px solid rgba(255,255,255,.8);box-shadow:inset 0 1px 2px rgba(255,255,255,.7),0 0 18px var(--tone);vertical-align:-4px}
+  .gem-bullet.xs{width:12px;height:12px;vertical-align:-1px}
+  .segmented{display:inline-flex;padding:4px;border:1px solid rgba(255,255,255,.35);border-radius:15px;background:#050507;box-shadow:inset 0 2px 8px #000,0 12px 24px rgba(0,0,0,.4)}
+  .segmented button{padding:8px 15px;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--paper);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;min-height:44px}
+  .segmented button[aria-selected="true"]{color:#fff;border-color:rgba(255,255,255,.65);background:linear-gradient(180deg,#20172e,#100b18);box-shadow:inset 0 1px rgba(255,255,255,.2),0 0 12px rgba(157,117,255,.32)}
+  .switchrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:12px}
+  .tab{display:inline-flex;align-items:center;gap:9px;padding:7px 16px 7px 9px;border-radius:20px;border:1px solid rgba(255,255,255,.2);background:#101016;color:#fff;font-size:13px;font-weight:700;cursor:pointer;min-height:44px;font-family:inherit;flex:0 0 auto;white-space:nowrap}
+  .tab:hover,.tab:focus-visible{border-color:#fff;outline:none}
+  .tab.on{border-color:#a06bff;box-shadow:0 0 12px -2px #a06bff}
+  button.orb{font:inherit;cursor:pointer;transition:transform .18s cubic-bezier(.16,.84,.22,1),border-color .18s,box-shadow .18s}
+  button.orb:hover,button.orb:focus-visible{transform:translateY(-2px);border-color:var(--purple);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 0 rgba(0,0,0,.55),0 8px 20px rgba(0,0,0,.55),0 0 22px -2px var(--purple);outline:none}
+  .board[hidden]{display:none !important}
+  .seat-line{display:none;font-size:14px;color:var(--paper);margin:6px 0 0}
+  body.view-ai .seat-line{display:block}
+  .machine-line{font-size:12.5px;color:var(--paper);max-height:260px;overflow:auto}
+  .tag.blocked{border-color:var(--red)}
+  .jw{--j:#a06bff;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:13px;font-weight:900;color:#fff;flex:none;background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.85),transparent 42%),radial-gradient(circle at 50% 55%,var(--j),#000 130%);border:1px solid rgba(255,255,255,.4);box-shadow:0 0 14px var(--j)}
+  .step{display:flex;gap:14px;align-items:flex-start;margin:14px 0}
+  .step p{margin:2px 0}
+  .spectrum-bar{display:flex;height:10px;border-radius:99px;overflow:hidden;max-width:560px;margin:14px auto 0;box-shadow:0 4px 24px rgba(0,0,0,.5);width:100%}
+  .spectrum-bar span{flex:1}
+  @media (prefers-reduced-motion: reduce){ button.orb{transition:none} }
+  /* HARVESTED from Nitro v3 — .pagecard (view-index cards). Geometry verbatim; tokens resolved to walk literals (#e84fff magenta, #fff, #E8E8EC). */
+  .pagecard{display:block; width:100%; text-align:left; padding:16px 18px; margin:12px 0; border:2px solid rgba(255,255,255,.55); border-radius:20px; background:linear-gradient(180deg,#050507,#020203); color:#fff; font:inherit; cursor:pointer; box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5)}
+  .pagecard:hover,.pagecard:focus-visible{border-color:#e84fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px #e84fff; outline:none}
   .pagecard-name{display:block; font-weight:700; font-size:18px}
   .pagecard-num{display:block; font-size:28px; font-weight:900; margin-top:4px}
-  .pagecard-sub{display:block; font-size:14px; color:var(--paper); margin-top:2px}
+  .pagecard-sub{display:block; font-size:14px; color:#E8E8EC; margin-top:2px}
   .pagecard-open{display:block; font-size:14px; font-weight:700; margin-top:8px}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6c-3-2-6-2-9-1v13c3-1 6-1 9 1m0-13c3-2 6-2 9-1v13c-3-1-6-1-9 1V6Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5.5 5.5L20 6"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></symbol>
+<symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2c0-6 12-6 12 0v2M17 5a3 3 0 0 1 0 6m1 4c2 0 3 2 3 4v1"/></symbol>
+<symbol id="i-pulse" viewBox="0 0 24 24"><path d="M2 12h5l2-6 4 12 2-6h7"/></symbol>
+<symbol id="i-door" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 12h9m-4-4 4 4-4 4"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol id="i-bars" viewBox="0 0 24 24"><path d="M4 19v-8m5 8V5m5 14V9m5 10V3"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 5-3.5 8.2-9 10-5.5-1.8-9-5-9-10V6l9-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-17-2 20"/></symbol>
+<symbol id="i-diamond" viewBox="0 0 24 24"><path d="M6 4h12l5 6-11 12L1 10 6 4Zm-5 6h22M6 4l6 18L18 4"/></symbol>
+<symbol id="i-orbit" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="5"/><path d="M5 5c4-3 10-3 14 0M5 19c4 3 10 3 14 0"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></symbol><symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol><symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20H5a1 1 0 0 1-1-1v-7L15 1l8 8-11 11Z"/><path d="m14 3 7 7M4 16h7"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 21h16"/></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M4 21h16"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0 1 5M20 4v7h-7"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .5-5.5 4.7L18 22l-6-4-6 4 1.5-7.8L2 9.5 9 9Z"/></symbol><symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 8-3 8-3 10h18c0-2-3-2-3-10M10 21h4"/></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M3 5h18M6 12h12M10 19h4"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol><symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></symbol><symbol id="i-comment" viewBox="0 0 24 24"><path d="M4 4h16v13H9l-5 4Z"/></symbol><symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol><symbol id="i-back" viewBox="0 0 24 24"><path d="m11 5-7 7 7 7M4 12h16"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="m3 3 18 9-18 9 4-9Z"/><path d="M7 12h14"/></symbol><symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4 10 14"/><path d="M18 13v7H4V6h7"/></symbol><symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M19 5l-2 2M7 17l-2 2"/></symbol><symbol id="i-profile" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-6 16-6 16 0"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18M12 3c-5 5-5 13 0 18"/></symbol>
+</defs></svg>
 <div class="wrap">
   <div class="topbar">
-    <a class="pill" href="https://nayanet.live/">← Back to the Hub</a>
+    <a class="pill" href="https://nayanet.live/"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg>Back to the Hub</a>
     <div class="wordmark">Project Intelligence</div>
   </div>
   <p>Everything happening across NayaNET, in one place, in plain words. Open it to act, not to admire.</p>
-  <div class="switch" role="group" aria-label="Choose a view">
-    <button class="btn" id="viewHumanBtn" aria-pressed="true" type="button">Read the human view</button>
-    <button class="btn" id="viewAiBtn" aria-pressed="false" type="button">Read the seat view</button>
-    <button class="btn" id="viewMachineBtn" aria-pressed="false" type="button">Read the machine view</button>
-    <button class="btn" id="refreshBtn" type="button">Refresh the record</button>
+  <div class="switchrow">
+    <div class="segmented" role="tablist" aria-label="Choose a view">
+      <button role="tab" id="viewHumanBtn" aria-selected="true" type="button">Human</button>
+      <button role="tab" id="viewAiBtn" aria-selected="false" type="button">Naya</button>
+      <button role="tab" id="viewMachineBtn" aria-selected="false" type="button">Machine</button>
+    </div>
+    <button class="btn" id="refreshBtn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>Refresh the record</button>
   </div>
   <div id="fixtureBanner" class="notice warn hidden" role="status"></div>
   <div id="failBanner" class="notice bad hidden" role="alert"></div>
   <p class="readtime" id="readTimeLine">Waiting for the record…</p>
 
-  <nav class="tabrow" aria-label="Switch view">
-    <button class="tab" type="button" data-goto="block-health" data-tone="purple" aria-pressed="true"><span class="tjewel" style="background:var(--purple)"></span>Health</button>
-    <button class="tab" type="button" data-goto="block-todo" data-tone="blue" aria-pressed="false"><span class="tjewel" style="background:var(--blue)"></span>To-do</button>
-    <button class="tab" type="button" data-goto="block-stuck" data-tone="green" aria-pressed="false"><span class="tjewel" style="background:var(--green)"></span>Stuck</button>
-    <button class="tab" type="button" data-goto="block-movement" data-tone="shown" aria-pressed="false"><span class="tjewel" style="background:var(--shown)"></span>Movement</button>
-    <button class="tab" type="button" data-goto="block-rooms" data-tone="orange" aria-pressed="false"><span class="tjewel" style="background:var(--orange)"></span>Rooms</button>
-    <button class="tab" type="button" data-goto="block-done" data-tone="red" aria-pressed="false"><span class="tjewel" style="background:var(--red)"></span>Done</button>
-    <button class="tab" type="button" data-goto="block-notes" data-tone="teal" aria-pressed="false"><span class="tjewel" style="background:var(--teal)"></span>Notes</button>
-    <button class="tab" type="button" data-goto="block-pages" data-tone="magenta" aria-pressed="false"><span class="tjewel" style="background:var(--magenta)"></span>Pages</button>
-    <button class="tab" type="button" data-goto="all" data-tone="white" aria-pressed="false"><span class="tjewel" style="background:var(--white)"></span>All views</button>
+  <nav class="tabrow" aria-label="Switch the view — one board at a time">
+    <button class="tab smarttab on" type="button" data-view="all" aria-pressed="true"><span class="sphere sm" style="--tone:#ffffff;--rgb:255,255,255"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span>All</button>
+    <button class="tab smarttab" type="button" data-view="block-health" aria-pressed="false"><span class="sphere sm" style="--tone:#a06bff;--rgb:160,107,255"><svg class="icon" aria-hidden="true"><use href="#i-pulse"/></svg></span>Health</button>
+    <button class="tab smarttab" type="button" data-view="block-weak" aria-pressed="false"><span class="sphere sm" style="--tone:#ff5e6c;--rgb:255,94,108"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>Weakest</button>
+    <button class="tab smarttab" type="button" data-view="block-todo" aria-pressed="false"><span class="sphere sm" style="--tone:#3fb8ff;--rgb:63,184,255"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></span>To-do</button>
+    <button class="tab smarttab" type="button" data-view="block-stuck" aria-pressed="false"><span class="sphere sm" style="--tone:#2fe89e;--rgb:47,232,158"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span>Stuck</button>
+    <button class="tab smarttab" type="button" data-view="block-movement" aria-pressed="false"><span class="sphere sm" style="--tone:#ffbf3d;--rgb:255,191,61"><svg class="icon" aria-hidden="true"><use href="#i-orbit"/></svg></span>Movement</button>
+    <button class="tab smarttab" type="button" data-view="block-rooms" aria-pressed="false"><span class="sphere sm" style="--tone:#ff9a5a;--rgb:255,154,90"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span>Areas</button>
+    <button class="tab smarttab" type="button" data-view="block-done" aria-pressed="false"><span class="sphere sm" style="--tone:#2fe89e;--rgb:47,232,158"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Done</button>
+    <button class="tab smarttab" type="button" data-view="block-notes" aria-pressed="false"><span class="sphere sm" style="--tone:#e84fff;--rgb:232,79,255"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></span>Notes</button>
+    <button class="tab smarttab" type="button" data-view="block-code" aria-pressed="false"><span class="sphere sm" style="--tone:#a06bff;--rgb:160,107,255"><svg class="icon" aria-hidden="true"><use href="#i-diamond"/></svg></span>The code</button>
+    <button class="tab smarttab" type="button" data-view="block-director" aria-pressed="false"><span class="sphere sm" style="--tone:#ffbf3d;--rgb:255,191,61"><svg class="icon" aria-hidden="true"><use href="#i-diamond"/></svg></span>Director</button>
+    <button class="tab smarttab" type="button" data-view="block-pages" aria-pressed="false"><span class="sphere sm" style="--tone:#e84fff;--rgb:232,79,255"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span>Pages</button>
+    <button class="tab smarttab" type="button" data-view="block-parts" aria-pressed="false"><span class="sphere sm" style="--tone:#a06bff;--rgb:160,107,255"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></span>Parts</button>
   </nav>
 
   <div class="placeblocks">
-  <section class="board" id="block-code" aria-label="The operating code">
-    <div class="board-head"><span class="jewel purple"></span><div>
-      <div class="sec-label">The operating code</div>
-      <h2>How this system works, in seven steps</h2>
-    </div></div>
-    <p>Plain words, no jargon. Every seat follows the same code:</p>
-    <ol>
-      <li>See what is real.</li>
-      <li>Think it through.</li>
-      <li>List the real choices.</li>
-      <li>Score them — seven questions, best wins.</li>
-      <li>Act on the best choice.</li>
-      <li>Prove it with receipts.</li>
-      <li>Report it plainly, with a link.</li>
-    </ol>
-  </section>
   <!-- 1 · % DONE — first and biggest -->
   <section class="board block" id="block-health" aria-label="How much is done">
-    <div class="board-head"><span class="jewel purple"></span><div>
+    <div class="board-head"><span class="sphere " style="--tone:#a06bff;--rgb:160,107,255"><svg class="icon" aria-hidden="true"><use href="#i-pulse"/></svg></span><div>
       <div class="sec-label">1 · How much is done</div>
       <h2>How much is done</h2>
     </div></div>
     <div style="text-align:center; margin-top:10px">
       <div class="bigpct" id="headlinePct">—</div>
       <p id="headlineLine">Waiting for the record…</p>
+      <div class="spectrum-bar" aria-label="Spectrum — Shawn's standing order"><span style="background:#a06bff"></span><span style="background:#6675ff"></span><span style="background:#3fb8ff"></span><span style="background:#40d3bb"></span><span style="background:#2fe89e"></span><span style="background:#b8ee57"></span><span style="background:#ffbf3d"></span><span style="background:#ff9a5a"></span><span style="background:#e84fff"></span></div>
     </div>
     <p>What this means: the share of real jobs proven done, counted by job and never by row. What to do about it: work the to-do list below, in order — done jobs leave it by themselves.</p>
     <div class="nums" id="healthNums"></div>
     <div class="darkbox" id="healthDark"></div>
     <p class="ai-only" id="healthAi"></p>
     <div class="board" style="margin:16px 0 0">
-      <div class="board-head"><span class="jewel"></span><div>
+      <div class="board-head"><span class="sphere " style="--tone:#ffbf3d;--rgb:255,191,61"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span><div>
         <div class="sec-label">Road to 10</div>
         <h3>Where this face stands</h3>
       </div></div>
-      <p>Face today: <strong>4 of 10</strong> — measured on the live face by a cold scorecard, and 4 to 5 by Shawn's own eye. Words pending for the finished road sentences; the road itself is measured, not promised: a cold check over 9 plus Shawn's cold-open test, on a rendered live face, is what moves it.</p>
-      <p class="dark">What moves 4 toward 9: the record's one-pass cure applied (twins out, areas in, owners named) · this face cold-checked over 9 · the live face re-scored after landing. Until then the face stays 4 — never self-awarded.</p>
+      <p>Face today: <strong>4 of 10</strong> — the live face's last cold score (and 4 to 5 by Shawn's own eye). This v3 build is staged on a shared branch and has <strong>not</strong> been cold-scored yet — its number is inherited, not earned, until a different seat measures the new build. The road itself is measured, not promised: a cold check over 9 plus Shawn's cold-open test, on a rendered live face, is what moves it.</p>
+      <p class="dark">What moves 4 toward 9, per the road in the words file: the real list appears (v3: real rows, from the snapshot) → every number opens its list (v3: the orbs are doors) → every part shows its percent done (areas do; parts wait on the register) → icons you can read at a glance (v3: canon jewel spheres, no dots) → words that explain themselves → light and depth so the eye lands where it matters → it moves, and shows what changed (v3: since-you-last-looked) → every link takes you to the real work (board links cured to #3066). Then: this face cold-checked over 9 · the live face re-scored after landing. Until then the face stays 4 — never self-awarded.</p>
     </div>
   </section>
 
-  <!-- 2 · MASTER TO-DO -->
-  <section class="board block" id="block-todo" aria-label="Master to-do">
-    <div class="board-head"><span class="jewel blue"></span><div>
-      <div class="sec-label">2 · Master to-do</div>
+  <!-- 2 · NEEDS YOUR HANDS — the weakest points, named -->
+  <section class="board block" id="block-weak" aria-label="Needs your hands">
+    <div class="board-head"><span class="sphere " style="--tone:#ff5e6c;--rgb:255,94,108"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span><div>
+      <div class="sec-label">2 · Needs your hands</div>
+      <h2>The weakest points, named — and the decisions waiting</h2>
+    </div></div>
+    <p>What this means: the ground furthest from done, and the calls only Shawn can make, sit near the top where they cannot be missed or averaged away. What to do about it: work the weakest area first; carry each packet below to its decision.</p>
+    <div id="weakList"></div>
+  </section>
+
+  <!-- 3 · MASTER TO-DO -->
+    <section class="board block" id="block-director" aria-label="Director packets">
+    <div class="board-head"><span class="sphere " style="--tone:#ffbf3d;--rgb:255,191,61"><svg class="icon" aria-hidden="true"><use href="#i-diamond"/></svg></span><div>
+      <div class="sec-label">Director packets</div>
+      <h2>What needs a decision, in one place</h2>
+    </div></div>
+    <p>What this means: the weakest ground, the top priorities, and the decisions waiting on Shawn's hands — computed from this snapshot, in one packet. No packet is kept by hand. What to do about it: decide the waiting items first; the top priorities are the next work.</p>
+    <div id="directorList"></div>
+  </section>
+
+<section class="board block" id="block-todo" aria-label="Master to-do">
+    <div class="board-head"><span class="sphere " style="--tone:#3fb8ff;--rgb:63,184,255"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></span><div>
+      <div class="sec-label">3 · Master to-do</div>
       <h2>What needs doing, in priority order</h2>
     </div></div>
     <p>What this means: one ordered list for the whole project — the system tells you the next item, and finished work drops off by itself. What to do about it: start at the top and work down; while one ask waits, the next item moves.</p>
-    <p class="dark">Order, computed in spirit and kept by hand until the automatic order is built: Shawn's order first, then what blocks the most other work, then value, then age. The automatic version is designed, not built — so this list is kept by hand, honestly, until then.</p>
+    <p class="dark">Order, computed from the record itself: the record's own priority value first, then the work already in motion, then age of last touch. Nothing on this list is kept by hand — it renders from the same snapshot as every number above, and finished work drops off by itself.</p>
     <div id="masterList"></div>
     <div class="btnrow">
       <a class="btn" data-ig="blue" href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a>
@@ -328,11 +340,12 @@
 
   <!-- 3 · WHAT'S STUCK -->
   <section class="board block" id="block-stuck" aria-label="What is stuck">
-    <div class="board-head"><span class="jewel green"></span><div>
-      <div class="sec-label">3 · What is stuck</div>
+    <div class="board-head"><span class="sphere " style="--tone:#2fe89e;--rgb:47,232,158"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><div>
+      <div class="sec-label">4 · What is stuck</div>
       <h2>What is stuck, and whose hands it needs</h2>
     </div></div>
     <p>What this means: stuck needs a human and done does not — so stuck sits above done and never hides inside the to-do counts. What to do about it: clear the blocker named on each row, or carry its packet to the hands it names.</p>
+    <div class="nums" id="stuckNums"></div>
     <div id="stuckList"></div>
     <div class="btnrow">
       <a class="btn" data-ig="green" href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a>
@@ -341,57 +354,59 @@
 
   <!-- 4 · MOVEMENT -->
   <section class="board block" id="block-movement" aria-label="Movement">
-    <div class="board-head"><span class="jewel shown"></span><div>
-      <div class="sec-label">4 · Movement</div>
+    <div class="board-head"><span class="sphere " style="--tone:#ffbf3d;--rgb:255,191,61"><svg class="icon" aria-hidden="true"><use href="#i-orbit"/></svg></span><div>
+      <div class="sec-label">5 · Movement</div>
       <h2>What moved lately — proof the system is alive</h2>
     </div></div>
     <p>What this means: the newest changes first, so you can see in seconds whether anything is actually moving. What to do about it: if this feed is quiet on a working day, treat that as the alarm, not as peace — go find what stalled.</p>
     <div id="moveList"></div>
-    <div class="darkbox" id="ledgerBox"></div>
+    <div class="darkbox" id="sinceBox"></div>
+    <div class="darkbox" id="ledgerBox" style="margin-top:12px"></div>
     <p class="dark">Notifications pulse, honest state: a material record change firing feed plus mail with links, in the same motion, is specified — not live-running yet. Until it runs, the manual form stands: a record note plus a board post in the same pass. No reply is required to a notice; the seat is responsible for checking the inbox.</p>
   </section>
 
   <!-- 5 · THE 12 ROOMS -->
   <section class="board block" id="block-rooms" aria-label="The twelve rooms">
-    <div class="board-head"><span class="jewel orange"></span><div>
-      <div class="sec-label">5 · The twelve rooms</div>
-      <h2>Twelve rooms — tap one to open it</h2>
+    <div class="board-head"><span class="sphere " style="--tone:#ff9a5a;--rgb:255,154,90"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span><div>
+      <div class="sec-label">6 · The twelve areas</div>
+      <h2>Twelve areas — tap one to open it</h2>
     </div></div>
-    <p>What this means: depth lives here — every room has the same blocks in the same order, and the weakest room is surfaced, not buried. What to do about it: open the room for the work in front of you; its to-dos, bottlenecks, and done-with-receipts are inside.</p>
+    <p>What this means: depth lives here — every area carries the same truth in the same order (jobs · proven share · ownerless count), and the weakest area is tagged, not buried. What to do about it: open the area for the work in front of you; its real jobs, in priority order, are inside.</p>
     <div id="roomList"></div>
-    <div id="roomDetail" class="board hidden" style="margin:16px 0 0"></div>
     <div class="darkbox" id="uncatBox" style="margin-top:16px"></div>
   </section>
 
   <!-- 6 · DONE WITH RECEIPTS -->
-  <section class="board block" id="block-pages" aria-label="Pages">
-    <div class="board-head"><span class="jewel magenta"></span><div>
+    <section class="board block" id="block-pages" aria-label="Pages">
+    <div class="board-head"><span class="sphere " style="--tone:#e84fff;--rgb:232,79,255"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span><div>
       <div class="sec-label">Pages</div>
       <h2>Every view, on its own card</h2>
     </div></div>
-    <p>Tap a card to open that view. A percent is shown only where the record carries it; the rest show live counts, never a guessed percent.</p>
+    <p>Tap a card to open that view. A percent is shown only where the record carries it; the rest show live counts, never a guessed percent. Per-page percent and real-page Open wait on the page registry + applied areas — these cards open views inside this face, not real pages.</p>
     <div id="pagesList"></div>
   </section>
-  <section class="board block" id="block-done" aria-label="Done with receipts">
-    <div class="board-head"><span class="jewel red"></span><div>
-      <div class="sec-label">6 · Done with receipts</div>
+
+<section class="board block" id="block-done" aria-label="Done with receipts">
+    <div class="board-head"><span class="sphere " style="--tone:#2fe89e;--rgb:47,232,158"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><div>
+      <div class="sec-label">7 · Done with receipts</div>
       <h2>Done, with the proof attached</h2>
     </div></div>
     <p>What this means: proof, lower on the page — done never outranks action, and it is never hidden either. What to do about it: open a receipt to check the work before you build on it.</p>
     <div>
-      <span class="tag proven">● Proven — green</span>
-      <span class="tag stated">● Stated — blue</span>
-      <span class="tag shown">● Shown — gold</span>
-      <span class="tag dark">DARK — unmeasured, with the reason</span>
+      <span class="tag proven"><span class="gem-bullet xs" style="--tone:#2fe89e"></span> Proven — green</span>
+      <span class="tag stated"><span class="gem-bullet xs" style="--tone:#3fb8ff"></span> Stated — blue</span>
+      <span class="tag shown"><span class="gem-bullet xs" style="--tone:#ffbf3d"></span> Shown — gold</span>
+      <span class="tag dark"><span class="gem-bullet xs" style="--tone:#555560"></span> DARK — unmeasured, with the reason</span>
     </div>
     <p>Proven and merely claimed look different at a glance: green means a prover other than the maker confirmed it; blue means it is stated but not yet proven; gold means it is shown on a page. A pretty surface on dead machinery can never fake a green mark.</p>
+    <div class="nums" id="doneNums"></div>
     <div id="doneList"></div>
-    <p class="dark">Individual proven rows render here from the live record. The staged fixture carries counts, not invented titles — no row is shown that the record did not name.</p>
+    <p class="dark">Every proven row renders below from the snapshot — each one a job the record named, with its prover and its proof link where the record carries one. No row is shown that the record did not name.</p>
   </section>
 
   <!-- NOTES -->
   <section class="board block" id="block-notes" aria-label="Notes">
-    <div class="board-head"><span class="jewel"></span><div>
+    <div class="board-head"><span class="sphere " style="--tone:#e84fff;--rgb:232,79,255"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></span><div>
       <div class="sec-label">Notes on anything</div>
       <h2>Make a note of this</h2>
     </div></div>
@@ -406,24 +421,51 @@
     <div id="noteList" style="margin-top:12px"></div>
   </section>
 
+  <!-- THE OPERATING CODE (B10) -->
+  <section class="board block" id="block-code" aria-label="The operating code">
+    <div class="board-head"><span class="sphere " style="--tone:#a06bff;--rgb:160,107,255"><svg class="icon" aria-hidden="true"><use href="#i-diamond"/></svg></span><div>
+      <div class="sec-label">The operating code</div>
+      <h2>How this team works — the code every job here runs on</h2>
+    </div></div>
+    <div class="step"><span class="jw" style="--j:#a06bff">1</span><p>Think before acting.</p></div>
+    <div class="step"><span class="jw" style="--j:#6675ff">2</span><p>See the full scope — the whole picture, not the piece in front of you.</p></div>
+    <div class="step"><span class="jw" style="--j:#3fb8ff">3</span><p>Deliberate — weigh the choices honestly.</p></div>
+    <div class="step"><span class="jw" style="--j:#40d3bb">4</span><p>Choose the best possible action, all things considered.</p></div>
+    <div class="step"><span class="jw" style="--j:#2fe89e">5</span><p>Make it — completely, not almost.</p></div>
+    <div class="step"><span class="jw" style="--j:#ffbf3d">6</span><p>Best action, best outcome — done right, not just done.</p></div>
+    <div class="step"><span class="jw" style="--j:#e84fff">7</span><p>The result must be valuable, verifiable, and visible.</p></div>
+    <p><em>If a step was skipped, the work isn't finished — it's started.</em></p>
+    <p class="dark">Source: the team's operating law (BRAIN/01-GOVERNANCE/OPERATING-LAW.md), in the plain form carried verbatim from the face words file (B10). Every job on this page runs on these seven steps — including the building of this page.</p>
+  </section>
+
   <section class="board block" aria-label="Go to it">
-    <div class="board-head"><span class="jewel"></span><div>
+    <div class="board-head"><span class="sphere " style="--tone:#40d3bb;--rgb:64,211,187"><svg class="icon" aria-hidden="true"><use href="#i-door"/></svg></span><div>
       <div class="sec-label">Go to it</div>
       <h2>Every link works, or it is not here</h2>
     </div></div>
     <ul class="linklist">
       <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a> — where seats coordinate, in the open.</li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the build package for this face</a> — Power's full package, PI note 51.</li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the wiring record</a> — Power's wiring pass, PI note 50.</li>
-      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the communication record</a> — the communication law, PI note 49.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the live team board</a> — Power's full build package (PI note 51) sits on the retired board; no live-board deep link to it exists, so this opens the live board.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the live team board</a> — Power's wiring pass (PI note 50) sits on the retired board; no live-board deep link to it exists, so this opens the live board.</li>
+      <li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066#issuecomment-6426678760">Open the communication record</a> — the communication law, PI note 49.</li>
       <li><a href="https://nayanet.live/">Open the Hub home</a> — the front door of the whole world.</li>
     </ul>
     <p class="dark">A dead link is a defect, not a placeholder. If a link above ever fails, that is a bug to fix, not a gap to live with.</p>
   </section>
+    <section class="board block" id="block-parts" aria-label="Parts of this face">
+    <div class="board-head"><span class="sphere " style="--tone:#a06bff;--rgb:160,107,255"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></span><div>
+      <div class="sec-label">Parts of this face</div>
+      <h2>Every part, with its owner</h2>
+    </div></div>
+    <p>What this means: the register of everything this face is made of — each part, who built it, when it was last touched, what changed. A percent is shown only where probe evidence carries it. What to do about it: a part with no percent is unmeasured, not failing — it waits on probe evidence, and says so.</p>
+    <div id="partsList"></div>
+  </section>
+
+<section class="board block hidden" id="block-list" aria-label="The list behind the number"></section>
   </div><!-- /placeblocks -->
 
   <section class="board hidden" id="machinePanel" aria-label="Machine view">
-    <div class="board-head"><span class="jewel"></span><div>
+    <div class="board-head"><span class="sphere " style="--tone:#6675ff;--rgb:102,117,255"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg></span><div>
       <div class="sec-label">Machine — one tap behind the door</div>
       <h2>The record, raw</h2>
     </div></div>
@@ -440,8 +482,36 @@
     });
   }
   function el(id) { return document.getElementById(id); }
-  function num(n) { return (n == null ? "—" : n); }
   function pct(a, b) { return (b ? Math.round(100 * a / b) : 0) + "%"; }
+  function icon(name, cls) {
+    return '<svg class="icon ' + (cls || "") + '" aria-hidden="true"><use href="#' + name + '"/></svg>';
+  }
+  function gem(tone, rgb, name, shape, size) {
+    return '<span class="sphere ' + (size || "") + '" style="--tone:' + tone + ';--rgb:' + rgb + '">' + icon(name) + '</span>';
+  }
+
+  var STATE_LABEL = {
+    queued: "Waiting", in_progress: "In motion", verifying: "Being checked",
+    needs_shawn: "Needs Shawn's hands", blocked: "Blocked", done_proven: "Proven done"
+  };
+  var STATE_TAG = {
+    queued: "stated", in_progress: "stated", verifying: "shown",
+    needs_shawn: "shown", blocked: "blocked", done_proven: "proven"
+  };
+  var STATE_RANK = { in_progress: 0, verifying: 1, blocked: 2, needs_shawn: 3, queued: 4, done_proven: 5 };
+  var AREA_ICON = {
+    "pi-hub": "i-pulse", "hub-dashboard": "i-grid", "factory-interfaces": "i-code",
+    "voice-audio": "i-play", "membership-money": "i-star", "welcome": "i-door",
+    "connection": "i-people", "mail-notifications": "i-mail", "projects-spaces": "i-copy",
+    "security-privacy": "i-shield", "identity-settings": "i-profile", "match": "i-orbit",
+    "unplaced": "i-more"
+  };
+  var TONES = [
+    ["#e84fff", "232,79,255"], ["#a06bff", "160,107,255"], ["#6675ff", "102,117,255"],
+    ["#3fb8ff", "63,184,255"], ["#40d3bb", "64,211,187"], ["#2fe89e", "47,232,158"],
+    ["#b8ee57", "184,238,87"], ["#ffbf3d", "255,191,61"], ["#ff9a5a", "255,154,90"],
+    ["#ff5e6c", "255,94,108"], ["#e84fff", "232,79,255"], ["#a06bff", "160,107,255"]
+  ];
 
   var NOTES_KEY = "naya.pi.notes.v2";
   function loadNotes() {
@@ -451,9 +521,49 @@
   function saveNotes(list) { try { localStorage.setItem(NOTES_KEY, JSON.stringify(list)); } catch (e) {} }
   function escAttr(s) { return esc(s).replace(/"/g, "&quot;"); }
 
+  var DATA = null;
+  var currentArea = null;
+
+  function areaLabel(key) {
+    if (!key) { return "Not placed yet"; }
+    if (DATA && DATA.area_labels && DATA.area_labels[key]) { return DATA.area_labels[key]; }
+    return key;
+  }
+  function byState(items, st) { return items.filter(function (it) { return it.state === st; }); }
+  function sortWork(a, b) {
+    var pa = (a.priority == null ? -1 : a.priority), pb = (b.priority == null ? -1 : b.priority);
+    if (pb !== pa) { return pb - pa; }
+    var ra = STATE_RANK[a.state], rb = STATE_RANK[b.state];
+    if (ra !== rb) { return ra - rb; }
+    return String(b.updated_at || "").localeCompare(String(a.updated_at || ""));
+  }
+
+  function itemRow(it) {
+    var owner = it.owner ? esc(it.owner) : '<span class="dark">Ownerless — unowned, never guessed</span>';
+    var next = it.next_action ? '<div class="item-note">Next: ' + esc(it.next_action) + '</div>' : "";
+    var blocker = (it.state === "blocked" && it.blocker) ? '<div class="item-note">Blocker: ' + esc(it.blocker) + '</div>' : "";
+    var proof = "";
+    if (it.state === "done_proven") {
+      proof = it.evidence_url
+        ? '<div class="item-meta">Prover: ' + esc(it.prover || "named in the record") + ' · <a href="' + escAttr(it.evidence_url) + '">Open the proof</a></div>'
+        : '<div class="item-meta">Prover: ' + esc(it.prover || "named in the record") + ' · proof carried in the record; no link on this row.</div>';
+    }
+    var seat = '<p class="seat-line">Seat view — state code ' + esc(it.state) + ' · maker ' + esc(it.maker || "—") +
+      ' · prover ' + esc(it.prover || "—") + ' · blocker: ' + esc(it.blocker || "none recorded") +
+      ' · next_action verbatim: ' + esc(it.next_action || "—") + '</p>';
+    var machine = '<pre class="machine-line">' + esc(JSON.stringify(it, null, 1)) + '</pre>';
+    return '<div class="item-row"><div class="item-name">' + esc(it.title) + '</div>' +
+      '<div class="item-meta"><span class="tag ' + (STATE_TAG[it.state] || "stated") + '">' + esc(STATE_LABEL[it.state] || it.state) + '</span> ' +
+      'Owner: ' + owner + ' · Area: ' + esc(areaLabel(it.area)) + '</div>' +
+      next + blocker + proof +
+      '<details class="door"><summary>Open this item\'s door — full state, seat view, machine record</summary>' +
+      seat + machine + '</details></div>';
+  }
+
   function renderNotes(filterRoom) {
     var list = loadNotes();
     var box = el("noteList");
+    if (!box) { return; }
     var shown = filterRoom ? list.filter(function (n) { return n.room === filterRoom; }) : list;
     if (!shown.length) {
       box.innerHTML = '<p class="dark">No notes yet — saved notes will appear here, on this device only.</p>';
@@ -461,7 +571,7 @@
     }
     box.innerHTML = shown.map(function (n) {
       return '<div class="item-row"><div class="item-name">' + esc(n.text) + '</div>' +
-        '<div class="item-meta">Room: ' + esc(n.room) + ' · saved ' + esc(n.when) + ' · on this device only</div>' +
+        '<div class="item-meta">Area: ' + esc(areaLabel(n.room)) + ' · saved ' + esc(n.when) + ' · on this device only</div>' +
         '<div class="btnrow"><button class="mini-btn note-del" type="button" data-id="' + escAttr(n.id) + '">Delete this note</button></div></div>';
     }).join("");
     var dels = box.querySelectorAll(".note-del");
@@ -470,21 +580,17 @@
         var id = ev.currentTarget.getAttribute("data-id");
         saveNotes(loadNotes().filter(function (n) { return n.id !== id; }));
         renderNotes(null);
-        var rd = el("roomDetailNotes");
-        if (rd) { renderRoomNotes(currentRoom); }
+        if (currentArea) { renderAreaNotes(currentArea); }
       });
     }
   }
 
-  var currentRoom = null;
-  var recordData = null;
-
-  function renderRoomNotes(roomKey) {
-    var box = el("roomDetailNotes");
+  function renderAreaNotes(areaKey) {
+    var box = el("drawerNotes");
     if (!box) { return; }
-    var list = loadNotes().filter(function (n) { return n.room === roomKey; });
+    var list = loadNotes().filter(function (n) { return n.room === areaKey; });
     if (!list.length) {
-      box.innerHTML = '<p class="dark">No notes for this room yet — on this device only.</p>';
+      box.innerHTML = '<p class="dark">No notes for this area yet — on this device only.</p>';
       return;
     }
     box.innerHTML = list.map(function (n) {
@@ -493,167 +599,280 @@
     }).join("");
   }
 
-  function openRoom(room) {
-    currentRoom = room.key;
-    var d = el("roomDetail");
-    d.classList.remove("hidden");
-    var prov = room.provisional ? '<p class="dark">Colour provisional: ' + esc(room.provisional) + ' — shown as a reuse, never as a distinct room colour, until the contract is amended or a non-adjacent-reuse ruling lands.</p>' : "";
-    var streams = room.workstreams.map(function (w) { return "<li>" + esc(w) + "</li>"; }).join("");
-    d.innerHTML =
-      '<div class="board-head"><span class="jewel" style="background:var(--' + esc(room.accent) + ')"></span><div>' +
-      '<div class="sec-label">Room · ' + esc(room.key) + '</div><h2>' + esc(room.name) + '</h2></div></div>' +
-      '<p>' + esc(room.why) + '</p>' +
-      '<p class="dark">Seat for this room (proposed, not confirmed): ' + esc(room.seat) + '. Per-room engine and page scores are DARK — no probe evidence rows exist for this room\'s functions yet, so no score is shown rather than a guessed one.</p>' +
-      prov +
-      '<p><span class="tag dark">Engine: DARK — no probe evidence yet</span>' +
-      '<span class="tag dark">Page: DARK — no probe evidence yet</span></p>' +
-      '<h3>To-dos in this room</h3>' +
-      '<p class="dark">Live to-dos for this room render from live area assignments once the one-pass application lands. Until then, the named work for this room is the workstream list below — harvested from the consensus inventory, not a live item pull.</p>' +
-      '<ul class="linklist">' + streams + '</ul>' +
-      '<h3>Top bottlenecks</h3><div class="darkbox">DARK — no per-room bottleneck list exists in the live record yet. Reason: area assignments are not applied, so a room\'s items cannot be counted, let alone ranked.</div>' +
-      '<h3>Top enhancements</h3><div class="darkbox">DARK — no per-room enhancement list exists in the live record yet, for the same reason.</div>' +
-      '<h3>Done with receipts, in this room</h3><div class="darkbox">DARK by room — whole-record proven is 40 real jobs, but per-room done counts wait on applied area assignments. No room is shown at a percent that the record cannot carry.</div>' +
-      '<h3>Decisions and gates, in this room</h3><p>' + esc(room.gates) + '</p>' +
-      '<h3>Notes in this room</h3><div id="roomDetailNotes"></div>' +
-      '<textarea id="roomNoteText" class="well" rows="2" placeholder="Write a note for this room…"></textarea>' +
-      '<div class="btnrow"><button class="btn" id="roomNoteSave" type="button">Save this room note</button>' +
-      '<button class="btn" id="roomClose" type="button">Close this room</button></div>' +
-      '<h3>Links</h3><ul class="linklist">' +
-      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a></li>' +
-      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the build package for this face</a></li></ul>' +
-      '<h3>Still needed in this room</h3>' +
-      '<p><strong>Interface side:</strong> <span class="dark">Not measured yet — per-page still-needed lists need the room\'s page list from the live record.</span></p>' +
-      '<p><strong>Functionality side:</strong> <span class="dark">Not measured yet — same reason. Words pending for the finished per-page lists.</span></p>';
-    renderRoomNotes(room.key);
-    el("roomNoteSave").addEventListener("click", function () {
-      var t = el("roomNoteText").value.trim();
-      if (!t) { return; }
-      var list = loadNotes();
-      list.push({id: "n" + Date.now(), room: room.key, text: t, when: new Date().toISOString()});
-      saveNotes(list);
-      el("roomNoteText").value = "";
-      renderRoomNotes(room.key);
-      renderNotes(null);
-    });
-    el("roomClose").addEventListener("click", function () {
-      d.classList.add("hidden");
-      d.innerHTML = "";
-      currentRoom = null;
-    });
-    d.scrollIntoView({behavior: "smooth", block: "start"});
+  function showView(name) {
+    var boards = document.querySelectorAll(".placeblocks .board");
+    for (var i = 0; i < boards.length; i++) {
+      var b = boards[i];
+      if (name === "all") { b.classList.toggle("hidden", b.id === "block-list"); }
+      else { b.classList.toggle("hidden", b.id !== name); }
+    }
+    var tabs = document.querySelectorAll(".tab");
+    for (var j = 0; j < tabs.length; j++) {
+      var on = tabs[j].getAttribute("data-view") === name;
+      tabs[j].setAttribute("aria-pressed", on ? "true" : "false");
+      tabs[j].classList.toggle("on", on);
+    }
+    window.scrollTo(0, 0);
   }
 
-  function render(data) {
-    recordData = data;
-    var r = data.real, rows = data.rows, main = data.main_bucket;
-    el("headlinePct").textContent = pct(r.done_proven, r.total);
-    el("headlineLine").textContent = r.done_proven + " of " + r.total + " real jobs proven done. Rows read " +
-      rows.done_proven + " of " + rows.total + " — rows count the same job twice where it was inserted twice, so the real number rules.";
+  function openList(title, items, sub) {
+    currentArea = null;
+    var d = el("block-list");
+    d.innerHTML =
+      '<div class="board-head">' + gem("#3fb8ff", "63,184,255", "i-bars", "square") + '<div>' +
+      '<div class="sec-label">The list behind the number</div><h2>' + esc(title) + '</h2></div></div>' +
+      '<p>' + esc(sub || "") + '</p>' +
+      (items.length ? items.map(itemRow).join("") : '<p class="dark">Nothing in this list — the record holds no jobs in this state.</p>') +
+      '<div class="btnrow"><button class="btn" id="listClose" type="button">Back to the whole face</button></div>';
+    showView("block-list");
+    el("listClose").addEventListener("click", function () { showView("all"); });
+  }
+
+  function openArea(area) {
+    currentArea = area.area;
+    var items = DATA.items.filter(function (it) { return it.area === area.area; });
+    var unplaced = area.area === "unplaced" ? DATA.items.filter(function (it) { return !it.area; }) : null;
+    if (unplaced) { items = unplaced; }
+    var bySt = {};
+    items.forEach(function (it) { bySt[it.state] = (bySt[it.state] || 0) + 1; });
+    var counts = Object.keys(bySt).map(function (st) {
+      return esc(STATE_LABEL[st] || st) + ": " + bySt[st];
+    }).join(" · ");
+    var streams = (DATA.workstreams && DATA.workstreams[area.area]) || [];
+    var streamsHtml = streams.length
+      ? '<h3>Named work in this area (curated inventory)</h3><ul class="linklist">' + streams.map(function (w) {
+          return "<li><strong>" + esc(w.name) + "</strong> — " + esc(w.why) + ' <span class="dark">(' + esc(w.pi_status) + ")</span></li>";
+        }).join("") + "</ul>"
+      : "";
+    var sorted = items.slice().sort(sortWork);
+    var linksHtml = '<h3>Links in this area</h3><ul class="linklist">' +
+      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a> — where seats coordinate, in the open.</li>' +
+      '<li><a href="https://nayanet.live/">Open the Hub home</a> — the live front door.</li>' +
+      '<li class="dark">Per-project links: DARK — no project page route exists yet, so no link is invented here.</li></ul>';
+    var shown = sorted.slice(0, 30);
+    var d = el("block-list");
+    d.innerHTML =
+      '<div class="board-head">' + gem(TONES[area.tone_idx % TONES.length][0], TONES[area.tone_idx % TONES.length][1], AREA_ICON[area.area] || "i-more", "square", "lg") + '<div>' +
+      '<div class="sec-label">Area · ' + esc(area.area) + '</div><h2>' + esc(areaLabel(area.area)) + '</h2></div></div>' +
+      '<p><strong>' + pct(area.done_proven, area.items) + ' proven done</strong> — ' + area.done_proven + ' of ' + area.items +
+      ' jobs proven, counted from the record snapshot. ' + esc(counts) + '.</p>' +
+      '<p class="dark">Area placement comes from the readiness mapping (preparation, not yet applied to the live record); placement confidence for this area\'s jobs rides in each item\'s machine record behind its door. Engine and page scores for this area are DARK — no probe evidence rows exist yet, so no score is shown rather than a guessed one.</p>' +
+      linksHtml + streamsHtml +
+      '<h3>Jobs in this area, in the record\'s priority order</h3>' +
+      (shown.length ? shown.map(itemRow).join("") : '<p class="dark">No jobs placed here in this snapshot.</p>') +
+      (sorted.length > shown.length ? '<p class="dark">…and ' + (sorted.length - shown.length) + ' more jobs in this area, in the full snapshot behind the machine view.</p>' : "") +
+      '<h3>Still needed in this area</h3>' +
+      '<p><strong>Interface side:</strong></p><div class="darkbox">DARK — per-page still-needed lists need per-page probe evidence (every part inside this area, with its own percent). The parts register travels with this face (see the Parts board); probe evidence does not exist yet. No list is invented here.</div>' +
+      '<p><strong>Functionality side:</strong></p><div class="darkbox">DARK — same reason: a part\'s functional completeness can only be checked against per-part probe evidence, which does not exist yet.</div>' +
+      '<h3>Notes in this area</h3><div id="drawerNotes"></div>' +
+      '<textarea id="drawerNoteText" class="well" rows="2" placeholder="Write a note for this area…"></textarea>' +
+      '<div class="btnrow"><button class="btn" id="drawerNoteSave" type="button">Save this note</button>' +
+      '<button class="btn" id="listClose" type="button">Back to the whole face</button></div>';
+    showView("block-list");
+    renderAreaNotes(area.area);
+    el("drawerNoteSave").addEventListener("click", function () {
+      var t = el("drawerNoteText").value.trim();
+      if (!t) { return; }
+      var list = loadNotes();
+      list.push({id: "n" + Date.now(), room: area.area, text: t, when: new Date().toISOString()});
+      saveNotes(list);
+      el("drawerNoteText").value = "";
+      renderAreaNotes(area.area);
+      renderNotes(null);
+    });
+    el("listClose").addEventListener("click", function () { showView("all"); });
+  }
+
+  function wireOrbs() {
+    var orbs = document.querySelectorAll("[data-filter]");
+    for (var i = 0; i < orbs.length; i++) {
+      orbs[i].addEventListener("click", function (ev) {
+        var f = ev.currentTarget.getAttribute("data-filter");
+        var title = ev.currentTarget.getAttribute("data-title");
+        var items;
+        if (f === "ownerless") { items = DATA.items.filter(function (it) { return !it.owner && it.state !== "done_proven"; }); }
+        else if (f === "open") { items = DATA.items.filter(function (it) { return it.state !== "done_proven"; }).sort(sortWork); }
+        else { items = DATA.items.filter(function (it) { return it.state === f; }); }
+        openList(title, items, "Every row below is a real job from the record snapshot — nothing here is a count pretending to be a list.");
+      });
+    }
+  }
+
+    var PARTS = {"note": "Percent is 'not measured yet' wherever no probe evidence rows exist. That is the honest form, never a guessed score. Owner is the seat that built the part; last touch is the v3 branch pass; movement names what v3 changed.", "parts": [{"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "topbar + wordmark", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "view switch (human / seat / machine)", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "tabs now switch views (plus All); jewels replace round markers; each tab ignites in its own tone", "owner": "Naya Nitro Narzan", "part": "tab row (Smart Tabs)", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "new in v3: seven steps in plain words, always visible", "owner": "Naya Nitro Narzan", "part": "operating-code panel", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "orbs are now doors to their view (done / to-do / stuck); filtered row lists arrive with the rows endpoint", "owner": "Naya Nitro Narzan", "part": "health board + headline orbs", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2; computed list arrives with the data layer", "owner": "Naya Nitro Narzan", "part": "master to-do board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "stuck board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2; distinct movement fields arrive with the rows endpoint", "owner": "Naya Nitro Narzan", "part": "movement board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "jewels replace round markers; board links re-pointed to the live board", "owner": "Naya Nitro Narzan", "part": "rooms board + room detail", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "new in v3: one card per view, live counts, Open switches to that view; per-page percent and real-page Open wait on the page registry + applied areas", "owner": "Naya Nitro Narzan", "part": "pages board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "done board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2; notes still device-only, notes-to-record is a separate privacy-proved build", "owner": "Naya Nitro Narzan", "part": "notes board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "all links re-pointed to the live board; stale deep-link anchors dropped (those comments live on the retired board)", "owner": "Naya Nitro Narzan", "part": "links board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "machine panel", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "new in v3: rotated-square jewels with facet highlight + own-colour glow replace all round markers", "owner": "Naya Nitro Narzan", "part": "jewel markers", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "new in v3: every button carries a jewel that ignites in the button's own colour on hover/focus", "owner": "Naya Nitro Narzan", "part": "buttons (alive)", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2; full text + full state behind the door arrives with the rows endpoint", "owner": "Naya Nitro Narzan", "part": "item door", "percent": "not measured yet"}], "register": "PI face parts register — starter, face v3 (2026-10-26)"};
+
+function render(data) {
+    DATA = data;
+    var c = data.counts, items = data.items;
+    /* MERGED: per-area latest touch, computed from the snapshot items. */
+    var freshByArea = {};
+    items.forEach(function (it) {
+      var k = it.area || "unplaced";
+      if (it.updated_at && (!freshByArea[k] || it.updated_at > freshByArea[k])) { freshByArea[k] = it.updated_at; }
+    });
+
+    el("headlinePct").textContent = pct(c.done_proven, c.unique);
+    el("headlineLine").textContent = c.done_proven + " of " + c.unique + " real jobs proven done. The record was read as " +
+      c.rows_read + " rows — rows count the same job twice where it was inserted twice, so the real number rules.";
+
+    function orb(filter, toneCls, big, value, label, sub) {
+      return '<div class="num"><button class="orb ' + toneCls + (big ? " big" : "") + '" type="button" data-filter="' + filter +
+        '" data-title="' + escAttr(label) + '">' + esc(value) + '</button><div class="num-label">' + esc(label) +
+        '</div><div class="num-sub">' + esc(sub) + '</div></div>';
+    }
     el("healthNums").innerHTML =
-      '<div class="num"><button class="orbdoor" type="button" data-view="block-done" aria-label="Open the done view"><div class="orb proven big">' + esc(pct(r.done_proven, r.total)) + '</div></button><div class="num-label">Real jobs done</div><div class="num-sub">' + r.done_proven + " of " + r.total + " real jobs · deduped by job, never by row</div></div>" +
-      '<div class="num"><button class="orbdoor" type="button" data-view="block-done" aria-label="Open the done view"><div class="orb">' + esc(pct(rows.done_proven, rows.total)) + '</div></button><div class="num-label">Rows done</div><div class="num-sub">' + rows.done_proven + " of " + rows.total + " rows · includes twin rows</div></div>" +
-      '<div class="num"><button class="orbdoor" type="button" data-view="block-done" aria-label="Open the done view"><div class="orb">' + esc(pct(main.done_proven, main.total)) + '</div></button><div class="num-label">Main bucket only</div><div class="num-sub">' + main.done_proven + " of " + main.total + " rows · FILTERED view, never the whole record</div></div>" +
-      '<div class="num"><button class="orbdoor" type="button" data-view="block-todo" aria-label="Open the to-do view"><div class="orb">' + num(r.queued) + '</div></button><div class="num-label">Waiting</div><div class="num-sub">Real jobs waiting to start</div></div>' +
-      '<div class="num"><button class="orbdoor" type="button" data-view="block-todo" aria-label="Open the to-do view"><div class="orb">' + num(r.in_progress) + '</div></button><div class="num-label">In motion</div><div class="num-sub">Real jobs being worked</div></div>' +
-      '<div class="num"><button class="orbdoor" type="button" data-view="block-todo" aria-label="Open the to-do view"><div class="orb">' + num(r.verifying) + '</div></button><div class="num-label">Being checked</div><div class="num-sub">Real jobs awaiting proof</div></div>' +
-      '<div class="num"><button class="orbdoor" type="button" data-view="block-stuck" aria-label="Open the stuck view"><div class="orb">' + num(r.needs_shawn) + '</div></button><div class="num-label">Need Shawn\'s hands</div><div class="num-sub">Real jobs gated on his tap</div></div>' +
-      '<div class="num"><button class="orbdoor" type="button" data-view="block-stuck" aria-label="Open the stuck view"><div class="orb">' + num(r.blocked) + '</div></button><div class="num-label">Blocked</div><div class="num-sub">Real jobs that cannot move</div></div>';
+      orb("done_proven", "proven", true, pct(c.done_proven, c.unique), "Real jobs done", c.done_proven + " of " + c.unique + " real jobs · deduped by job, never by row") +
+      orb("in_progress", "", false, byState(items, "in_progress").length, "In motion", "Real jobs being worked right now") +
+      orb("verifying", "", false, byState(items, "verifying").length, "Being checked", "Real jobs awaiting proof") +
+      orb("queued", "", false, byState(items, "queued").length, "Waiting", "Real jobs waiting to start") +
+      orb("needs_shawn", "", false, byState(items, "needs_shawn").length, "Need Shawn's hands", "Real jobs gated on his tap") +
+      orb("blocked", "", false, byState(items, "blocked").length, "Blocked", "Real jobs that cannot move") +
+      orb("ownerless", "", false, c.ownerless_open, "Ownerless", "Open jobs with no owner named — unowned, never guessed") +
+      orb("open", "", false, c.unique - c.done_proven, "Still open", "Every job not yet proven done");
+
     el("healthDark").innerHTML =
-      '<strong>DARK, with reasons — never guessed:</strong> Parts at 9 or above — no scorecard-records register exists yet. ' +
+      '<strong>DARK, with reasons — never guessed:</strong> Parts at 9 or above — the parts register travels with this face (see the Parts board), but no per-part probe evidence rows exist yet, so no part carries a percent. ' +
+      'Per-area engine and page scores — no probe evidence rows exist yet. ' +
       'Today\'s verified-outcome ratio — no verified-outcome count for the day exists yet. ' +
-      'Per-area percents — the area schema is not applied, so no room percent is shown. ' +
-      'Per-room engine and page scores — no probe evidence rows exist yet. Words pending for the finished lead sentences; the captions above are computed from the record, not marketing prose.';
-    el("healthAi").textContent = "Method (seat view): deduped by item key across all 9 project buckets; twin survivor rule — evidence plus named prover, then most advanced state, then fuller next action, then the main-bucket row on ties. " +
-      "Main bucket alone (" + main.total + " rows) is a filtered view and is never presented as the whole record. Read time is on the line above the tabs.";
+      'Per-area percents ARE shown on this build — computed from the readiness mapping (preparation, not applied to the live record) and labelled as such wherever they appear.';
+    el("healthAi").textContent = "Method (seat view): snapshot generated " + data.generated_at + " from public.work_items via read-only GET; deduped by item key under the readiness survivor rule — evidence plus named prover, then most advanced state, then fuller next action, then the canonical-project row. Areas joined from the readiness dataset area_mapping (330 keys placed; preparation only). Every number on this face recomputes from the items array in the same file; the machine view carries the whole payload.";
 
-    el("masterList").innerHTML = data.master_todo.map(function (t, i) {
-      return '<div class="item-row"><div class="item-name">' + (i + 1) + ". " + esc(t.name) + '</div>' +
-        '<div class="item-note">' + esc(t.why) + '</div>' +
-        '<div class="item-meta">What it unblocks: ' + esc(t.unblocks) + '</div>' +
-        '<details class="door"><summary>Open this item\'s door</summary><p class="dark">Source: ' + esc(t.source) + '. Machine proof (identifiers, links) lives behind this door, never on the face.</p></details></div>';
+    if (data.snapshot_note) {
+      var fb = el("fixtureBanner");
+      fb.classList.remove("hidden");
+      fb.textContent = data.snapshot_note;
+    }
+
+    /* Weakest + needs-your-hands */
+    var weak = data.weakest.map(function (a) {
+      return '<div class="item-row"><div class="item-name">' + esc(areaLabel(a.area)) + ' — ' + pct(a.done_proven, a.items) + ' proven</div>' +
+        '<div class="item-meta">' + a.done_proven + ' of ' + a.items + ' jobs proven done · the weakest ground in the record</div>' +
+        '<div class="btnrow"><button class="mini-btn weak-open" type="button" data-area="' + escAttr(a.area) + '">Open this area</button></div></div>';
     }).join("");
-
-    el("stuckList").innerHTML =
-      '<div class="nums">' +
-      '<div class="num"><div class="orb">' + num(r.blocked) + '</div><div class="num-label">Blocked jobs</div><div class="num-sub">Real jobs that cannot move</div></div>' +
-      '<div class="num"><div class="orb">' + num(r.needs_shawn) + '</div><div class="num-label">Need Shawn\'s hands</div><div class="num-sub">Real jobs · ' + main.needs_shawn + ' of them in the main bucket</div></div>' +
-      '<div class="num"><div class="orb">' + num(data.owners.ownerless_real) + '</div><div class="num-label">Ownerless jobs</div><div class="num-sub">Real jobs with no owner named — unowned, never guessed</div></div></div>' +
-      data.named_blockers.map(function (b) {
-        return '<div class="item-row"><div class="item-name">' + esc(b.name) + '</div>' +
-          '<div class="item-note">' + esc(b.why) + '</div>' +
-          '<div class="item-meta">Owner: ' + esc(b.owner) + '</div></div>';
-      }).join("");
-
-    el("moveList").innerHTML = data.movement.map(function (m) {
-      return '<div class="item-row"><div class="item-name">' + esc(m.text) + '</div>' +
-        '<div class="feedtime">' + esc(m.when) + ' · ' + esc(m.source) + '</div></div>';
+    var packets = byState(items, "needs_shawn").map(function (it) {
+      return '<div class="item-row"><div class="item-name">' + esc(it.title) + '</div>' +
+        '<div class="item-note">What it decides: ' + esc(it.next_action || "the record carries no next action for this packet") + '</div>' +
+        '<div class="item-meta">Owner: ' + esc(it.owner || "—") + '</div></div>';
     }).join("");
-    el("ledgerBox").innerHTML = "<strong>Ledger, honestly frozen:</strong> tail sequence " + esc(data.ledger.tail_seq) +
-      ", entry " + esc(data.ledger.tail_id) + ", issued " + esc(data.ledger.issued) +
-      " — frozen since then. New done jobs have no fresh ledger row until the writer is mechanized to write in the same pass. A feed rendered from a frozen ledger says so; it never pretends to be live.";
-
-    var roomsHtml = data.rooms.map(function (rm) {
-      return '<button class="room" type="button" data-room="' + escAttr(rm.key) + '" data-accent="' + escAttr(rm.accent) + '">' +
-        '<span class="rname"><span class="rjewel"></span>' + esc(rm.name) + '</span>' +
-        '<span class="rline">' + esc(rm.why) + '</span>' +
-        '<span class="rstatus">Seat (proposed): ' + esc(rm.seat) + ' · <span class="dark">Engine: DARK · Page: DARK — no probe evidence yet</span>' +
-        (rm.provisional ? ' · Colour provisional: ' + esc(rm.provisional) : '') + '</span></button>';
-    }).join("");
-    el("roomList").innerHTML = roomsHtml;
-    var cards = el("roomList").querySelectorAll(".room");
-    for (var i = 0; i < cards.length; i++) {
-      cards[i].addEventListener("click", function (ev) {
-        var key = ev.currentTarget.getAttribute("data-room");
+    el("weakList").innerHTML =
+      '<h3>The weakest ground — lowest proven share</h3>' + weak +
+      '<h3>Decisions waiting on Shawn\'s hands (' + byState(items, "needs_shawn").length + ')</h3>' + packets;
+    var wo = el("weakList").querySelectorAll(".weak-open");
+    for (var wi = 0; wi < wo.length; wi++) {
+      wo[wi].addEventListener("click", function (ev) {
+        var key = ev.currentTarget.getAttribute("data-area");
         var found = null;
-        for (var j = 0; j < data.rooms.length; j++) { if (data.rooms[j].key === key) { found = data.rooms[j]; } }
-        if (found) { openRoom(found); }
+        for (var j = 0; j < DATA.areas.length; j++) { if (DATA.areas[j].area === key) { found = DATA.areas[j]; } }
+        if (found) { openArea(found); }
+      });
+    }
+
+    /* Master to-do — computed from the record */
+    var open = items.filter(function (it) { return it.state !== "done_proven"; }).sort(sortWork);
+    var top = open.slice(0, 30);
+    el("masterList").innerHTML = top.map(function (it, i) {
+      var row = itemRow(it);
+      return row.replace('<div class="item-name">', '<div class="item-name">' + (i + 1) + '. ');
+    }).join("") +
+      '<p class="dark">First 30 of ' + open.length + ' open jobs, in the record\'s own priority order. Every open job lives in its area below — nothing is only on this list.</p>';
+
+    /* Stuck */
+    el("stuckNums").innerHTML =
+      orb("blocked", "", false, byState(items, "blocked").length, "Blocked jobs", "Real jobs that cannot move") +
+      orb("needs_shawn", "", false, byState(items, "needs_shawn").length, "Need Shawn's hands", "Real jobs gated on his tap") +
+      orb("ownerless", "", false, c.ownerless_open, "Ownerless jobs", "Open jobs with no owner named");
+    el("stuckList").innerHTML = byState(items, "blocked").map(itemRow).join("") ||
+      '<p class="dark">No blocked jobs in this snapshot.</p>';
+
+    /* Movement */
+    el("moveList").innerHTML = data.movement.map(function (m) {
+      return '<div class="item-row"><div class="item-name">' + esc(m.title) + '</div>' +
+        '<div class="feedtime">State now: ' + esc(STATE_LABEL[m.state] || m.state) + ' · actor: ' + esc(m.actor || "not carried in the snapshot") +
+        ' · ' + esc(m.when) + ' · source: the work record</div></div>';
+    }).join("");
+    var LOOK_KEY = "naya.pi.lastlook.v3";
+    var lastLook = null;
+    try { lastLook = localStorage.getItem(LOOK_KEY); } catch (e) {}
+    var changed = lastLook ? items.filter(function (it) { return (it.updated_at || "") > lastLook; }) : [];
+    el("sinceBox").innerHTML = lastLook
+      ? '<strong>Changed since you last looked</strong> (' + esc(lastLook) + '): <strong>' + changed.length + ' jobs</strong> in the record carry a newer touch. ' +
+        (changed.length ? 'Newest: ' + changed.slice().sort(function (a, b) { return String(b.updated_at).localeCompare(String(a.updated_at)); }).slice(0, 5).map(function (it) { return esc(it.title); }).join(" · ") : 'Nothing moved since — on a working day, treat quiet as the alarm.')
+      : '<strong>First look from this device:</strong> your baseline is set now — the next visit shows exactly what changed since this one.';
+    try { localStorage.setItem(LOOK_KEY, new Date().toISOString()); } catch (e) {}
+    el("ledgerBox").innerHTML = "<strong>Ledger:</strong> DARK in this snapshot — the Smart Ledger tail is a separate stream and is not part of the items file, so no ledger state is claimed here. A feed rendered from a frozen ledger would say so; this one renders record activity and labels it.";
+
+    /* Areas */
+    el("roomList").innerHTML = data.areas.map(function (a, idx) {
+      var tone = TONES[idx % TONES.length];
+      var isWeak = data.weakest.some(function (w) { return w.area === a.area; });
+      return '<button class="room" type="button" data-area="' + escAttr(a.area) + '">' +
+        '<span class="rname">' + gem(tone[0], tone[1], AREA_ICON[a.area] || "i-more", "square") + esc(areaLabel(a.area)) + '</span>' +
+        '<span class="rline">' + a.items + ' jobs · ' + a.done_proven + ' proven done · <strong>' + pct(a.done_proven, a.items) + '</strong>' +
+        (isWeak ? ' · <span class="tag blocked">Weakest ground</span>' : '') + '</span>' +
+        '<span class="rstatus">Ownerless here: ' + a.ownerless + ' · Engine: DARK · Page: DARK — no probe evidence yet · Last touch: ' + esc(freshByArea[a.area] || 'none in this snapshot') + '</span></button>';
+    }).join("");
+    var cards = el("roomList").querySelectorAll(".room");
+    for (var ci = 0; ci < cards.length; ci++) {
+      cards[ci].addEventListener("click", function (ev) {
+        var key = ev.currentTarget.getAttribute("data-area");
+        var found = null;
+        for (var j = 0; j < DATA.areas.length; j++) { if (DATA.areas[j].area === key) { found = DATA.areas[j]; } }
+        if (found) { openArea(found); }
       });
     }
     var sel = el("noteRoom");
-    sel.innerHTML = data.rooms.map(function (rm) { return '<option value="' + escAttr(rm.key) + '">' + esc(rm.name) + '</option>'; }).join("");
+    sel.innerHTML = data.areas.map(function (a) { return '<option value="' + escAttr(a.area) + '">' + esc(areaLabel(a.area)) + '</option>'; }).join("");
 
-    el("uncatBox").innerHTML =
-      "<strong>Not placed in a room yet — read this before any room percent.</strong><br>" +
-      "By the main-bucket keyword derivation (Power's Wave 2 method, first match wins): " + data.uncategorized.uncategorized +
-      " of " + data.uncategorized.real_total + " real jobs uncategorized (" + data.uncategorized.pct + "), including " +
-      data.uncategorized.done_uncategorized + " proven-done and " + data.uncategorized.needs_shawn_uncategorized +
-      " needing Shawn — all three acceptance bars unmet (under 5%, zero proven uncategorized, zero needing-Shawn uncategorized). " +
-      "So this face shows NO per-area percent at all. The readiness dataset places all " + data.readiness.placed +
-      " real jobs into areas as preparation (" + data.readiness.high + " high, " + data.readiness.medium + " medium, " +
-      data.readiness.low + " low confidence, each low with a reason) — but preparation is not the record: until the one-pass application lands in the live record, " +
-      "those percents are never presented as live. Waste rows in the main bucket: " + data.waste.main_bucket +
-      ", all waiting, set aside before any area count. Ownerless: " + data.owners.ownerless_real + " real jobs.";
+    var unplaced = items.filter(function (it) { return !it.area; });
+    el("uncatBox").innerHTML = unplaced.length
+      ? '<strong>Not placed in an area yet: ' + unplaced.length + ' jobs.</strong> These keys are newer than the readiness mapping (derived 2026-10-26 ~20:40Z) or were never placed by it — they are counted in every total above and shown here by name rather than silently dropped: ' +
+        unplaced.slice(0, 8).map(function (it) { return esc(it.title); }).join(" · ") + (unplaced.length > 8 ? " · …" : "")
+      : '<strong>Every job in this snapshot is placed in an area</strong> by the readiness mapping — no unplaced remainder is hiding under the percents.';
 
+    /* Done */
+    el("doneNums").innerHTML =
+      orb("done_proven", "proven", false, c.done_proven, "Real jobs proven", "Maker is never the prover") +
+      '<div class="num"><div class="orb">' + c.rows_read + '</div><div class="num-label">Rows read</div><div class="num-sub">Includes ' + (c.rows_read - c.unique) + ' twin rows — counted once, as jobs</div></div>';
+    el("doneList").innerHTML = byState(items, "done_proven").map(itemRow).join("");
+
+    el("machineRaw").textContent = JSON.stringify(data, null, 2);
+    el("readTimeLine").textContent = "Snapshot generated: " + data.generated_at + " · source: the whole work record (public.work_items, read-only) · rows " +
+      c.rows_read + " · real jobs " + c.unique + " · areas from the readiness mapping (preparation, not applied). This face shows that snapshot and says so.";
+    /* MERGED: director packets — computed from this snapshot. */
+    var needsShawn = byState(items, "needs_shawn");
+    var openItems = items.filter(function (it) { return it.state !== "done_proven"; }).sort(sortWork);
+    el("directorList").innerHTML =
+      '<p class="dark">Director packet, computed from this snapshot — weakest ground + top priorities + decisions waiting. No packet is kept by hand.</p>' +
+      '<h3>Weakest ground</h3>' + data.weakest.map(function (w) {
+        var ar = null;
+        for (var wi = 0; wi < data.areas.length; wi++) { if (data.areas[wi].area === w.area) { ar = data.areas[wi]; } }
+        var d = ar ? ar.done_proven : 0, t = ar ? ar.items : 0;
+        return '<p><strong>' + esc(areaLabel(w.area)) + '</strong> — ' + d + ' of ' + t + ' proven done (' + pct(d, t) + ')</p>';
+      }).join("") +
+      '<h3>Decisions waiting on Shawn\'s hands (' + needsShawn.length + ')</h3>' +
+      (needsShawn.length ? needsShawn.map(itemRow).join("") : '<p class="dark">None in this snapshot.</p>') +
+      '<h3>Top priorities — first 10 of ' + openItems.length + ' still open</h3>' +
+      openItems.slice(0, 10).map(itemRow).join("");
+    /* MERGED: pages view-index cards — Nitro v3 structure, counts computed from this snapshot. */
     el("pagesList").innerHTML = [
-      {view: "block-health", name: "How much is done", num: pct(r.done_proven, r.total), sub: r.done_proven + " of " + r.total + " real jobs proven done"},
-      {view: "block-todo", name: "What needs doing", num: data.master_todo.length, sub: "Master to-do items, in priority order"},
-      {view: "block-stuck", name: "What is stuck", num: data.named_blockers.length, sub: "Named blockers, with owners"},
+      {view: "block-health", name: "How much is done", num: pct(c.done_proven, c.unique), sub: c.done_proven + " of " + c.unique + " real jobs proven done"},
+      {view: "block-weak", name: "The weakest points", num: data.weakest.length, sub: "Weakest areas, named"},
+      {view: "block-director", name: "Director packets", num: needsShawn.length, sub: "Decisions waiting on Shawn's hands"},
+      {view: "block-todo", name: "What needs doing", num: openItems.length, sub: "Real jobs still open, in priority order"},
+      {view: "block-stuck", name: "What is stuck", num: byState(items, "blocked").length, sub: "Named blockers, with owners"},
       {view: "block-movement", name: "What moved lately", num: data.movement.length, sub: "Movement entries, newest first"},
-      {view: "block-rooms", name: "Twelve rooms", num: data.rooms.length, sub: "Rooms, each with its own card"},
-      {view: "block-done", name: "Done, with proof", num: r.done_proven, sub: "Real jobs proven done"},
-      {view: "block-notes", name: "Notes", num: loadNotes().length, sub: "Notes on this device only — notes to the record arrive with the data layer"}
+      {view: "block-rooms", name: "Areas", num: data.areas.length, sub: "Areas, each with its own card"},
+      {view: "block-parts", name: "Parts of this face", num: PARTS.parts.length, sub: "Every part, with its owner — percent not measured yet"},
+      {view: "block-done", name: "Done, with proof", num: c.done_proven, sub: "Real jobs proven done"},
+      {view: "block-notes", name: "Notes", num: loadNotes().length, sub: "Notes on this device only — notes to the record arrive with the data layer"},
+      {view: "block-code", name: "The code", num: 7, sub: "Seven steps every job here runs on"}
     ].map(function (p) {
       return '<button class="pagecard" type="button" data-page="' + escAttr(p.view) + '"><span class="pagecard-name">' + esc(p.name) + '</span><span class="pagecard-num">' + esc(String(p.num)) + '</span><span class="pagecard-sub">' + esc(p.sub) + '</span><span class="pagecard-open">Open this view →</span></button>';
     }).join("");
-    el("doneList").innerHTML =
-      '<div class="nums">' +
-      '<div class="num"><div class="orb proven">' + num(r.done_proven) + '</div><div class="num-label">Real jobs proven</div><div class="num-sub">Maker is never the prover</div></div>' +
-      '<div class="num"><div class="orb">' + num(rows.done_proven) + '</div><div class="num-label">Done rows</div><div class="num-sub">Includes ' + (rows.done_proven - r.done_proven) + ' twin rows — counted once, as jobs</div></div></div>' +
-      '<p>Twins removed by rule: ' + data.twins.count + ' keys, each twice across two buckets, ' + data.twins.conflicts +
-      ' conflicts — removal is mechanical. Survivor rule in order: evidence plus named prover, then most advanced state, then fuller next action, then the main-bucket row. ' +
-      'Exceptions: ' + data.twins.exceptions.join(", ") + ' stay on their non-main twin under the fuller-next-action rule, because only that twin carries next-action text — on application that text merges into the main-bucket row; the job does not move. ' +
-      'One dataset sentence is NOT carried forward: the readiness file describes one pair as twice inside the main bucket, but the live read places it across two buckets like the other twins — immaterial to the cure, and not baked in.</p>' +
-      '<p class="dark">Receipts: every done job carries its proof in the record; fresh ledger rows wait on the mechanized writer (ledger frozen ' + esc(data.ledger.issued) + ').</p>';
-
-    el("machineRaw").textContent = JSON.stringify(data, null, 2);
-    if (data.staged) {
-      var fb = el("fixtureBanner");
-      fb.classList.remove("hidden");
-      fb.textContent = data.staged_note;
-    }
-    var now = new Date();
-    el("readTimeLine").textContent = "Record read: " + now.toISOString() + " · scope: the whole work record (all buckets) · " +
-      "rows " + rows.total + " · real jobs " + r.total + " · main bucket " + main.total + " (filtered view only).";
+    /* MERGED: parts register — carried verbatim, percent honestly unmeasured. */
+    el("partsList").innerHTML = '<ul class="linklist">' + PARTS.parts.map(function (p) {
+      return "<li><strong>" + esc(p.part) + "</strong> — owner " + esc(p.owner) + " · last touch " + esc(p.last_touch) + " · " + esc(p.movement) + " · Percent: " + esc(p.percent) + "</li>";
+    }).join("") + "</ul>" + '<p class="dark">' + esc(PARTS.note) + "</p>";
+    wireOrbs();
     renderNotes(null);
   }
 
@@ -661,26 +880,32 @@
     var now = new Date();
     var fb = el("failBanner");
     fb.classList.remove("hidden");
-    fb.textContent = "The record could not be read at " + now.toISOString() +
+    fb.textContent = "The record snapshot could not be read at " + now.toISOString() +
       ". Nothing below is live — numbers show — until a fresh read succeeds. No number here is guessed, and no last-good read is claimed.";
-    el("readTimeLine").textContent = "Record read failed at " + now.toISOString() + " · no live numbers on this page right now.";
+    el("readTimeLine").textContent = "Snapshot read failed at " + now.toISOString() + " · no live numbers on this page right now.";
     el("headlinePct").textContent = "—";
-    el("headlineLine").textContent = "No live record — numbers wait for a fresh read.";
+    el("headlineLine").textContent = "No record — numbers wait for a fresh read.";
     el("healthNums").innerHTML = "";
-    el("healthDark").innerHTML = "<strong>DARK:</strong> every number on this page is unmeasured right now, because the record read failed. Reason shown, nothing guessed.";
-    el("masterList").innerHTML = '<p class="dark">No to-do list without the record — the list renders from a fresh read, never from memory.</p>';
+    el("healthDark").innerHTML = "<strong>DARK:</strong> every number on this page is unmeasured right now, because the snapshot read failed. Reason shown, nothing guessed.";
+    el("weakList").innerHTML = '<p class="dark">The weakest point cannot be named without the record.</p>';
+    el("masterList").innerHTML = '<p class="dark">No to-do list without the record — the list renders from the snapshot, never from memory.</p>';
+    el("stuckNums").innerHTML = "";
     el("stuckList").innerHTML = '<p class="dark">Stuck cannot be counted without the record.</p>';
     el("moveList").innerHTML = '<p class="dark">No movement without the record.</p>';
+    el("sinceBox").innerHTML = "<strong>Changed since you last looked:</strong> unknown right now — the read failed.";
     el("ledgerBox").innerHTML = "<strong>Ledger:</strong> unknown right now — the read failed, so no ledger state is claimed.";
-    el("roomList").innerHTML = '<p class="dark">Rooms cannot open without the record.</p>';
-    el("uncatBox").innerHTML = "<strong>Not placed in a room yet:</strong> unknown right now — the read failed.";
+    el("roomList").innerHTML = '<p class="dark">Areas cannot open without the record.</p>';
+    el("directorList").innerHTML = '<p class="dark">Director packets cannot be computed without the record.</p>';
     el("pagesList").innerHTML = '<p class="dark">Pages cannot be counted without the record.</p>';
+    el("partsList").innerHTML = '<p class="dark">Parts cannot be listed without the register.</p>';
+    el("uncatBox").innerHTML = "<strong>Not placed in an area yet:</strong> unknown right now — the read failed.";
+    el("doneNums").innerHTML = "";
     el("doneList").innerHTML = '<p class="dark">Done cannot be counted without the record.</p>';
-    el("machineRaw").textContent = "Record read failed at " + now.toISOString() + ".";
+    el("machineRaw").textContent = "Snapshot read failed at " + now.toISOString() + ".";
   }
 
   function load() {
-    fetch("/pi/api/items", {cache: "no-store"})
+    fetch("items.json", {cache: "no-store"})
       .then(function (res) { if (!res.ok) { throw new Error("HTTP " + res.status); } return res.json(); })
       .then(function (data) { render(data); })
       .catch(function () { failState(); });
@@ -690,9 +915,9 @@
     document.body.classList.remove("view-ai", "view-machine");
     if (view === "ai") { document.body.classList.add("view-ai"); }
     if (view === "machine") { document.body.classList.add("view-machine"); }
-    el("viewHumanBtn").setAttribute("aria-pressed", view === "human" ? "true" : "false");
-    el("viewAiBtn").setAttribute("aria-pressed", view === "ai" ? "true" : "false");
-    el("viewMachineBtn").setAttribute("aria-pressed", view === "machine" ? "true" : "false");
+    el("viewHumanBtn").setAttribute("aria-selected", view === "human" ? "true" : "false");
+    el("viewAiBtn").setAttribute("aria-selected", view === "ai" ? "true" : "false");
+    el("viewMachineBtn").setAttribute("aria-selected", view === "machine" ? "true" : "false");
   }
   el("viewHumanBtn").addEventListener("click", function () { setView("human"); });
   el("viewAiBtn").addEventListener("click", function () { setView("ai"); });
@@ -700,29 +925,16 @@
   el("refreshBtn").addEventListener("click", load);
 
   var tabs = document.querySelectorAll(".tab");
-  function showView(id) {
-    var blocks = document.querySelectorAll("section.block[id]");
-    for (var k = 0; k < blocks.length; k++) {
-      if (id === "all" || blocks[k].id === id) { blocks[k].classList.remove("hidden"); }
-      else { blocks[k].classList.add("hidden"); }
-    }
-    for (var j = 0; j < tabs.length; j++) { tabs[j].setAttribute("aria-pressed", tabs[j].getAttribute("data-goto") === id ? "true" : "false"); }
-    window.scrollTo(0, 0);
-  }
   for (var i = 0; i < tabs.length; i++) {
     tabs[i].addEventListener("click", function (ev) {
-      showView(ev.currentTarget.getAttribute("data-goto"));
+      showView(ev.currentTarget.getAttribute("data-view"));
     });
   }
-  el("healthNums").addEventListener("click", function (ev) {
-    var b = ev.target.closest ? ev.target.closest(".orbdoor") : null;
-    if (b) { showView(b.getAttribute("data-view")); }
-  });
+
   el("pagesList").addEventListener("click", function (ev) {
     var b = ev.target.closest ? ev.target.closest("[data-page]") : null;
     if (b) { showView(b.getAttribute("data-page")); }
   });
-  showView("block-health");
 
   el("noteSaveBtn").addEventListener("click", function () {
     var t = el("noteText").value.trim();
