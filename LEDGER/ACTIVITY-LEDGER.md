@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21395,6 +21395,14 @@ _Last updated: 2026-10-27 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/prereg-t0601-entailment.md sha256 exactly bd9ca4ea... (untouched seal); results-t0601-entailment-BLOCKED-t0601.json sha exactly 4d52a16b... (baseline preserved before overwrite); results-t0601-entailment.json sha exactly 10b42701..., t_run_utc 2026-10-13T09:20:26Z, pins {8077fc722905ec12/0f83599db111ba8b/4ab5f359abe008c3/de
 
+### ✅ t0212 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** M6 swallower-veto ported into SGF daily runner + strengthened CT-4 double-negative phantom check, RED-first batteries
+
+**Receipt:** `twelve-lane-receipts/t0212-lane6.md`
+
+**Evidence:** VERIFIED this tick via git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/heads/naya/six-sgf-daily-runner-t992 is STILL ca1cc31ebc794478cfd0f7fc1f2d0a2f96380e8e, pin-exact with the receipt 15 days later; fetched that SHA and sha256-checked all six claimed files at the head - sgf_daily_score.py f3c1f262..., ct4_cross_check.py 57f11e68..., test_m6_ve
+
 ### ✅ t0212-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** M6 swallower-veto ported into the daily runner + strengthened CT-4
@@ -39160,6 +39168,12 @@ _Last updated: 2026-10-27 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-0145 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 01:45 PDT: 31 briefs evaluated, zero claimable (exit-7 parent-authorship / exit-2 routing), queue untouched; +0 delta vs 00:39 sweep
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly 31 brief-*.md files and the receipt names exactly those 31 unique briefs (grep -o, 31/31, no extras, no omissions); twelve-lane-rotation.json queued=31 matches the queue file set exactly and in_flight=[]; no queue file was modified after the sweep (newest brief mtime 06:12 UTC, 
 
 ### ✅ gate-stall-20261027-0039 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
