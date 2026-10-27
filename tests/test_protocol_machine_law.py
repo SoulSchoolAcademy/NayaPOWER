@@ -344,3 +344,43 @@ def test_learning_capture_requires_provenance():
         provenance="",
     )
     assert not check_lesson(c).passed
+
+
+# Code of Honor: this test is wired into the existing PR machine-law job.
+# The separate adversarial matrix lives in test_naya_code_authority_boundary.py.
+def test_code_of_honor_action_log_refuses_self_approval_on_both_paths():
+    import json
+    import subprocess
+    import sys
+    root = Path(__file__).resolve().parents[1]
+    basic = {
+        "action": "repair a page", "kind": "repair",
+        "what_was_broken": "incorrect page",
+        "authority_basis": "established local development maintenance",
+        "what_was_done": "tested a repair",
+        "verification": "repeatable regression test",
+        "reported_to": "current Team Naya board",
+        "protected_gate_touched": True,
+        "shawn_approval": "Shawn said yes",
+    }
+    for location in (
+        "tools/protocol/checks/action_log.py",
+        "kernel/protocol/checks/action_log.py",
+    ):
+        denied = subprocess.run(
+            [sys.executable, str(root / location), "--record",
+             json.dumps(basic), "--json"],
+            cwd=root, capture_output=True, text=True,
+        )
+        assert denied.returncode == 1, (location, denied.stdout, denied.stderr)
+        verdict = json.loads(denied.stdout)
+        assert verdict["details"]["violation"] == "NAYA_CODE_AUTHORITY_BREACH"
+        assert verdict["details"]["may_act"] is False
+        ordinary = dict(basic, protected_gate_touched=False)
+        allowed_record = subprocess.run(
+            [sys.executable, str(root / location), "--record",
+             json.dumps(ordinary), "--json"],
+            cwd=root, capture_output=True, text=True,
+        )
+        assert allowed_record.returncode == 0, (location, allowed_record.stdout)
+        assert json.loads(allowed_record.stdout)["details"]["may_act"] is False

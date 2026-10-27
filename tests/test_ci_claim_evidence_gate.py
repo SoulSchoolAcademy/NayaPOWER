@@ -160,6 +160,22 @@ def test_dismissed_review_excluded():
     assert r["pass"] is False
 
 
+def test_commented_review_does_not_count_as_verification():
+    body = "Seat: Naya 5\nIndependently verified."
+    reviews = [{"id": 8, "state": "COMMENTED", "body": "Seat: Naya 4\nNeeds more work."}]
+    r, ev = _run(body, "Naya 5", reviews, [], [])
+    assert not any(e.kind == "seat_review" for e in ev)
+    assert r["pass"] is False
+
+
+def test_changes_requested_review_does_not_count_as_verification():
+    body = "Seat: Naya 5\nIndependently verified."
+    reviews = [{"id": 9, "state": "CHANGES_REQUESTED", "body": "Seat: Naya 4\nBlocking issue."}]
+    r, ev = _run(body, "Naya 5", reviews, [], [])
+    assert not any(e.kind == "seat_review" for e in ev)
+    assert r["pass"] is False
+
+
 def test_no_attestations_vacuous_pass():
     body = "Seat: Naya 5\nShipped the re-stamp. Three files."
     r, _ = _run(body, "Naya 5", [], [], [])
@@ -167,12 +183,13 @@ def test_no_attestations_vacuous_pass():
     assert r["verdicts"] == []
 
 
-def test_undeclared_author_seat_documented_behavior():
-    """No 'Seat:' tag: any seated review counts (limitation 6)."""
+def test_undeclared_author_seat_fails_closed():
+    """A missing author identity must not make a review independent by default."""
     body = "Independently verified by Naya 4."
     reviews = [{"id": 7, "state": "APPROVED", "body": "Seat: Naya 4\nOK."}]
     r, _ = _run(body, "", reviews, [], [])
-    assert r["pass"] is True
+    assert r["pass"] is False
+    assert "author identity missing" in r["verdicts"][0].reasons[0]
 
 
 # --- IO fail-closed (the "gate that passes when blind is theater" claim) ---

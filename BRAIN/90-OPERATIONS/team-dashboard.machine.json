@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-26T04:15:38+00:00",
+ "generated_utc": "2026-10-27T20:15:58+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -31,15 +31,8 @@
    "next_action": "Run the four-arm experiment's first real cycle: take one captured lesson, inject it to a treatment lane, measure the outcome difference. One proven loop beats ten more specs.",
    "active_now": false,
    "board_lane": "#2175 lane LEARN",
-   "open_prs": [
-    {
-     "number": 3082,
-     "title": "docs(brain): learning event 2026-10-26",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3082",
-     "draft": true
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "know",
@@ -140,9 +133,27 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3052,
+     "number": 3108,
      "title": "Naya/mission state",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3052",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3108",
+     "draft": false
+    },
+    {
+     "number": 3107,
+     "title": "Face registry fix 20261027",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3107",
+     "draft": false
+    },
+    {
+     "number": 3089,
+     "title": "[DRAFT \u2014 DO NOT MERGE] PI face review draft: human-first Project Intelligence face + build",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3089",
+     "draft": false
+    },
+    {
+     "number": 3088,
+     "title": "feat(sn-guard): Smart Note filing-path collision guard \u2014 claim-before-author via the exist",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3088",
      "draft": false
     },
     {
@@ -152,7 +163,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 2
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -405,6 +416,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 3,
- "unassigned_prs": 2
+ "open_pr_total": 5,
+ "unassigned_prs": 5
 }

@@ -1,9 +1,11 @@
 name: Mission State Watch
 
-# Is the director alive? The canonical mission snapshot
-# (BRAIN/CURRENT-MISSION-STATE.md on the naya/mission-state branch) is
-# refreshed by the director ~every 30 min. If it goes stale, workers are
-# tuning into old orders — this posts an alert to #2793 (the live coordination board).
+# Is canonical mission state being published? The one canonical mission
+# state lives on the live/mission-state branch (ruling 2026-10-26, board
+# comment 6409001863; the Option C snapshot on naya/mission-state is
+# retired). The watch tracks STATE-CORE.json there, published by the
+# state-core tick ~every 15 min. If it goes stale, workers are tuning
+# into old orders — this posts an alert to #3066 (the live coordination board).
 #
 # Report-only. Cheap: 2-4 API calls per run, sparse checkout of the watch
 # script only, no CI burn (the snapshot branch triggers no workflows).

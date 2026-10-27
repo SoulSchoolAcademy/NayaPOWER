@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1878",
+ "intelligence": {
+  "title": "Every Block, Presented Right — One Shared Style Fixes Old and New",
+  "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1878-every-block-presented-right",
+  "smart_note_id": "SN-1878",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-26. No runtime provenance invented.",
+  "ingested_at": "2026-10-26",
+  "essence": "The Intelligent Blocks get one readable presentation, and because every\nblock on the board is drawn by the same page through the same style, one\nchange fixes every block already there and every block that arrives\nlater. There is no one-by-one fixing job, and nothing extra to do per\nnew note. Play buttons come off the blocks entirely; her voice stays\nwhere it already plays instantly.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-1878",
+   "title": "Every Block, Presented Right — One Shared Style Fixes Old and New",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-10-26 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "df2a5c43695b"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

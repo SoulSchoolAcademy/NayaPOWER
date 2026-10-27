@@ -5,7 +5,15 @@ WHY: BRAIN/CURRENT-MISSION-STATE.md is the canonical mission snapshot, and
 it is prose — hand-refreshed by the director pass in "Snapshot refresh"
 commits (~30 min cadence). There is NO code builder behind it (verified at
 f7bd39ca: the snapshot's git history is director commits, and no repo tool
-writes it). A machine reader gets nothing structured from it: it parses
+writes it).
+
+SUPERSEDED IN PART (2026-10-26, board comment 6409001863): the Option C
+snapshot this twin derives from is RETIRED as the canonical mission state.
+The one canonical mission state is branch `live/mission-state` —
+STATE-CORE.json (state-core tick, ~15 min) and MISSION-STATE.md /
+HUB-STATE.md (hub refresh, hourly). The director-pass refresher role named
+here and in the error strings below no longer operates; this builder
+remains the retired snapshot's twin tool. A machine reader gets nothing structured from it: it parses
 markdown like a human, at human speed, and two seats can read the same
 paragraph and derive different numbers. This tool is the missing builder
 for the twin: it derives BRAIN/MISSION-STATE.json from the SAME sources

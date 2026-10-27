@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-26  
-**Receipt basis commit:** `20bfc69c64acbcee667f3d2310886f7128375308`  
-**Inventory file count:** 1696  
+**Generated:** 2026-10-27  
+**Receipt basis commit:** `883d45ec1b820d9f2a168dc89d5f6475bc336b17`  
+**Inventory file count:** 1714  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,16 +11,16 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 93 |
+| 01-GOVERNANCE | 96 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 869 |
+| 05-MEMORY | 883 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 454 |
+| 10-INTERFACES | 455 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
 | 90-OPERATIONS | 109 |
@@ -157,6 +157,9 @@
 - `BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.ai.md` — `faabf8359e9e` (5023 bytes)
 - `BRAIN/01-GOVERNANCE/0035-DESIGN-LAW-RATIFICATION-V1.human.md` — `566711d0c16d` (19899 bytes)
 - `BRAIN/01-GOVERNANCE/0035-design-law-ratification-v1.machine.json` — `0992eb9c81c7` (4871 bytes)
+- `BRAIN/01-GOVERNANCE/0036-NAYA-CONSTITUTION-V1.ai.md` — `addbcabab138` (6327 bytes)
+- `BRAIN/01-GOVERNANCE/0036-NAYA-CONSTITUTION-V1.human.md` — `e45dc727fbff` (7590 bytes)
+- `BRAIN/01-GOVERNANCE/0036-naya-constitution-v1.machine.json` — `a443ff815ea4` (4165 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md` — `2af14cb71410` (88406 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json` — `ab627b25a96b` (513665 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
@@ -267,6 +270,7 @@
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-LEARNING-EVENT.md` — `f55d4ec4bc04` (24772 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md` — `a8a689bd600b` (13764 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-24-LEARNING-EVENT.md` — `a8caf5f5d5f4` (17474 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-26-LEARNING-EVENT.md` — `525455efb702` (15722 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md` — `cb3d277c8117` (2359 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md` — `9a102af87000` (2091 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md` — `ef4f22f9e3c1` (2239 bytes)
@@ -1008,12 +1012,25 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SERVICE/ten-star-service/SN-1865/IB-SMART-NOTE-20261025-sn1865-ten-star-service-is-choosing-whats-best.md` — `11f24647734a` (5324 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/25/SYSTEM/team/SN-1867/IB-SMART-NOTE-20261025-sn1867-whatever-it-takes-means-aligned.md` — `1a7e5ca989b0` (2599 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SERVICE/showing-gate/SN-1869/IB-SMART-NOTE-20261026-sn1869-done-right-or-not-shown.md` — `42a4258b6df1` (3852 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/approval/SN-1881/IB-SMART-NOTE-20261026-sn1881-outcome-approval-right-is-right.md` — `5303b845d39d` (10276 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1870/IB-SMART-NOTE-20261026-sn1870-once-you-learn-from-it-its-a-learning-lesson.md` — `8ade2fe89f21` (3513 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1871/IB-SMART-NOTE-20261026-sn1871-be-intelligent-get-out-of-your-own-way.md` — `4294c8cb8e0c` (3464 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/learning/SN-1874/IB-SMART-NOTE-20261026-sn1874-finish-it-or-say-its-unfinished.md` — `cdff9d493180` (3617 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/mission/SN-1879/IB-SMART-NOTE-20261026-sn1879-mission-is-the-authority-relay-is-intel.md` — `ebeb51955789` (10434 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/safety/SN-1882/IB-SMART-NOTE-20261026-sn1882-when-a-safety-check-flags-your-read-set-it-aside-and-go-around.md` — `db92ec00f109` (6898 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md` — `4d0fb5fcc757` (7024 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1872/IB-SMART-NOTE-20261026-sn1872-the-only-mistake-is-not-making-a-note.md` — `c2d97cf19afe` (2939 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1873/IB-SMART-NOTE-20261026-sn1873-scorecard-it-first-then-merge-it-yourself.md` — `4c3341ab046d` (6276 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1877/IB-SMART-NOTE-20261026-sn1877-decide-by-the-checklist-every-time.md` — `7d05557ba00b` (5954 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md` — `1a097a0fa2be` (3156 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SECURITY/security-model/SN-1888/IB-SMART-NOTE-20261027-sn1888-secure-network-near-impossible-to-hack.md` — `ef2ff5840100` (3587 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SECURITY/security-model/SN-1889/IB-SMART-NOTE-20261027-sn1889-secure-network-implementation-report.md` — `2c5110e2c575` (3672 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/design/SN-1884/IB-SMART-NOTE-20261027-sn1884-active-intelligence-design-mastery.md` — `4bfdc2972340` (18696 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/ownership/SN-1887/IB-SMART-NOTE-20261027-sn1887-no-ego-do-whats-right-not-just-whats-said.md` — `f57777cffbdb` (6314 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/team/SN-1883/IB-SMART-NOTE-20261027-sn1883-ultimate-experience-active-intelligence.md` — `478b64856aa1` (4078 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md` — `a92ad113788f` (17201 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/continuity/SN-1886/IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder.md` — `f3c0f865c4b3` (4722 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/truth-seeking/SN-1890/IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity.md` — `02909055f8fc` (7858 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
@@ -1511,6 +1528,7 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/MANIFEST.md` — `fb4326693d95` (2260 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/index.html` — `8226325770ba` (1134115 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/tokens.css` — `caac347591eb` (925 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-LANGUAGE.md` — `d71c2cd07c7e` (51035 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — `7e1e336df17b` (8020 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-LESSON.md` — `36ccfc24ae4f` (9104 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-TOOLKIT.md` — `9bf8e446cfd1` (6546 bytes)
@@ -1675,7 +1693,7 @@
 - `BRAIN/90-OPERATIONS/OPEN-PR-TIER-AUDIT-2026-10-21.md` — `6daf7c27c05e` (18308 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 - `BRAIN/90-OPERATIONS/SMART-LEDGER-PROTOCOL.md` — `dc85d2694699` (15869 bytes)
-- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `8f9e5961095c` (4845 bytes)
+- `BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md` — `319a81594362` (5090 bytes)
 - `BRAIN/90-OPERATIONS/contracts/handoff-contract.md` — `3c8346c5942b` (21563 bytes)
 - `BRAIN/90-OPERATIONS/contracts/learning-contract.md` — `c42197ff505a` (21689 bytes)
 - `BRAIN/90-OPERATIONS/contracts/verification-contract.md` — `e70095fcbe07` (19666 bytes)
@@ -1747,7 +1765,7 @@
 - `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.ai.md` — `48bad3d15186` (18185 bytes)
 - `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/SPEC.human.md` — `bb9bf4d00fb2` (7891 bytes)
 - `BRAIN/90-OPERATIONS/registry-reconcile-2026-10-26/spec.machine.json` — `250fbff919a6` (25435 bytes)
-- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `5563fe396c80` (19260 bytes)
+- `BRAIN/90-OPERATIONS/team-dashboard.machine.json` — `a6792557205a` (19724 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)

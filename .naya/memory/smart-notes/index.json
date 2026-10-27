@@ -15635,15 +15635,275 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-26 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "f75c859afaaa34df49e5a914772d8b10b0ae78e6da68419d3996fcaf7737cd48"
+    },
+    {
+      "smart_note_id": "SN-1881",
+      "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1881-outcome-approval-right-is-right",
+      "title": "Outcome Approval and Right Is Right",
+      "content_hash": "82b7753bf7451ace102f77f623f12be6d694927ba220d67656c40069ccc059c2",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/approval/SN-1881/IB-SMART-NOTE-20261026-sn1881-outcome-approval-right-is-right.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "APPROVAL",
+      "captured_at": "2026-10-26",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit c608008a; full-form upgrade in commit 765e2a20 (SN-1878: the whole intelligent block, director's correction 2026-10-26); RENUMBERED SN-1878 -> SN-1881 by the SN-1878 reconciliation door pass (Resolve, 2026-10-26): SN-1878 stands with the first-claim team note (commit df2a5c43695b) per SN-033 first-claim; the adjudicated target SN-1879 was claimed in the interim by a complete filing (mission note, commit 5f259f8fc9c9, filed + registered same pass by naya-power), so this note takes the next free number SN-1881; capture rebuilt from the renumbered page and entry hashes re-stamped in the same pass; no content changed beyond the number self-references"
+      },
+      "page_hash": "5d0a0d41a73003003789e086cc7f730eef8f1a184ab877f5243d0a54d29ad004"
+    },
+    {
+      "smart_note_id": "SN-1879",
+      "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1879-mission-is-the-authority-relay-is-intel",
+      "title": "The Mission Is the Authority — Relay Is Intel, Right Is Right for Everyone",
+      "content_hash": "127de74f0c882e27e2ffaa6e3bc18eb08bd88876e5fc21093524a587fa0b8e51",
+      "page_hash": "35d776a6648abda64dbc995e3a1df625ea13ca5f68a240dd5168bb7ba01e6c16",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/mission/SN-1879/IB-SMART-NOTE-20261026-sn1879-mission-is-the-authority-relay-is-intel.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "MISSION",
+      "captured_at": "2026-10-26",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 5f259f8fc9c9; director's teaching 2026-10-26, filed + registered same pass by naya-power; manifest recomputed (main's manifest was stale by SN-1878: stored value matched first 735 entries only); header fixed in commit ae55397a184a to canonical SN line + full ISO UTC Created line so the sync parses note_created (was NULL).; header conformed to Nitro door letter in commit 5789db6766ef (exact first three lines: title / SN line / Created).; capture backfilled from the published page and content_hash re-stamped to bind it by the SN-1878 reconciliation door pass (Resolve, 2026-10-26) — the entry's original content_hash held the raw page sha; page_hash was already correct"
+      }
+    },
+    {
+      "smart_note_id": "SN-1878",
+      "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1878-every-block-presented-right",
+      "title": "Every Block, Presented Right — One Shared Style Fixes Old and New",
+      "content_hash": "cec0e107517a41231177aefd1a727927aded0ef05b5577b030789d68c0993f1a",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-26",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit df2a5c43695b ('SN-1878: Every Block, Presented Right — One Shared Style Fixes Old and New') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-26 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "132f6dd04273a6918c0ce6e7ddfb83e11fc159b7cc97be1b655223e45681caea"
+    },
+    {
+      "smart_note_id": "SN-1880",
+      "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note",
+      "title": "How to Input a Smart Note, Successfully — So It Goes Live",
+      "content_hash": "42021039087859666743f4fb61ddd533134665ed125e4cfc1b0e94e3ebb4fd3b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-26",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 12dfc9f3000d ('SN-1880: How to Input a Smart Note, Successfully') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-26 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "cc0cf780389982e9260ff4b193f893068e696e352aae23716be5a2d720ce3afa"
+    },
+    {
+      "smart_note_id": "SN-1882",
+      "intelligent_block_id": "IB-SMART-NOTE-20261026-sn1882-when-a-safety-check-flags-your-read-set-it-aside-and-go-around",
+      "title": "When a Safety Check Flags Your Read — Set It Aside and Go Around, Never Through",
+      "content_hash": "81658c31d4faa70f7f457e89b8f51ddb9d82118837a679adf4f2d482a042fcc6",
+      "page_hash": "a43a2d7f8cfedcc54d7ab816be355e5d5eb05caf54ffd588aa41a6a172dfa8dd",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/safety/SN-1882/IB-SMART-NOTE-20261026-sn1882-when-a-safety-check-flags-your-read-set-it-aside-and-go-around.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SMART_NOTE",
+      "topic": "SYSTEM",
+      "subtopic": "safety",
+      "captured_at": "2026-10-26",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "direct-brain-filing",
+        "note": "Filed + registered same pass by naya-power; page_hash = sha256(file bytes); content_hash = sha256(canonical JSON of the 11-section map, sort_keys, separators (',',':'), ensure_ascii=False) computed from the filed file; corpus manifest recomputed same pass. Door-checker capture-object adjudication remains open and is stated, not claimed.; capture-object binding completed by the design-mastery door pass (Resolve, 2026-10-27): no capture existed on disk and the entry's content_hash bound an 11-section map sha; capture generated from the published page and content_hash re-stamped to bind it — the adjudication this entry's provenance left open. Page and page_hash unchanged."
+      }
+    },
+    {
+      "smart_note_id": "SN-1884",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1884-active-intelligence-design-mastery",
+      "title": "Active Intelligence — The Design Mastery Doctrine",
+      "content_hash": "21c4bf51e426a8a5358e4d8aa3476905df8f9757b567795961467db4b132d001",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/design/SN-1884/IB-SMART-NOTE-20261027-sn1884-active-intelligence-design-mastery.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "DESIGN",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 629ee6f728ef ('design-mastery doctrine door filing (Resolve, 2026-10-27); page lands in this pass's content commit, whose parent is the scanned tip') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "c61c4b9de6f08495e46b8f56b90dc854bcc96924a311b929d098ee7646e8d3ef"
+    },
+    {
+      "smart_note_id": "SN-1883",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1883-ultimate-experience-active-intelligence",
+      "title": "The Ultimate Experience Is the App Itself",
+      "content_hash": "9523f4691db156aabfbbe1cc172c62906292d8428d34be28fe2491ca26327f08",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/team/SN-1883/IB-SMART-NOTE-20261027-sn1883-ultimate-experience-active-intelligence.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 629ee6f728ef ('SN-1883: The Ultimate Experience Is the App Itself — mastery, distill-a-minute, sharing-with-all-Nayas practice (Shawn's doctrine, 2026-10-27)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "2ce20e394e289cfdd8e4a55f6acd787770b1f12b4aa1925a4553e103389f0e9e"
+    },
+    {
+      "smart_note_id": "SN-1885",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method",
+      "title": "A Verdict Is Only as Good as Its Method",
+      "content_hash": "9baea9be11cd5fe4f8d60f82905895842694e264d79b39443013d05d15899685",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "VERIFICATION",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 0a8eabe4f1b2 ('method-law door filing (Resolve, 2026-10-27); page lands in this pass's content commit, whose parent is the scanned tip') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "323ec36fee1bc06f354abf615dab3c80673cae4ae997d974bfd8625d533605c7"
+    },
+    {
+      "smart_note_id": "SN-1886",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder",
+      "title": "The Inheritance — Intelligence That Outlives Its Founder",
+      "content_hash": "27dabae750b1cbe98c2a7e69e0d876d82b7f0dce78ceea082790929b30a44ac6",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/continuity/SN-1886/IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "CONTINUITY",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 4528ebf88b492574eb042b8dac216a77aae89fe2 ('SN-1886: The Inheritance — Intelligence That Outlives Its Founder') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ef5f008b8cdb1234f53a67f60279fe11f87e757837a1e5223821ea8510dddb27"
+    },
+    {
+      "smart_note_id": "SN-1887",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1887-no-ego-do-whats-right-not-just-whats-said",
+      "title": "No Ego — Do What's Right, Not Just What's Said",
+      "content_hash": "b2955bad26e34b6af47d5d320f40572c626762df976f2bbf2888fc27599b7710",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/ownership/SN-1887/IB-SMART-NOTE-20261027-sn1887-no-ego-do-whats-right-not-just-whats-said.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SMART_NOTE",
+      "topic": "SYSTEM",
+      "subtopic": "ownership",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "direct-brain-filing",
+        "note": "Filed + registered same pass by naya-power; page_hash = sha256(file bytes); content_hash = sha256(canonical JSON of the 11-section map, sort_keys, separators (',',':'), ensure_ascii=False) computed from the filed file; corpus manifest recomputed same pass. Door-checker capture-object adjudication remains open and is stated, not claimed."
+      },
+      "page_hash": "17f177018bacbfb5ae4ee4e209be726447f62859d6749dbeb2f2c132ccde9380"
+    },
+    {
+      "smart_note_id": "SN-1888",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1888-secure-network-near-impossible-to-hack",
+      "title": "The Secure Network — Near Impossible to Hack, Because One Hack Never Gets Everything",
+      "content_hash": "c4272cc5f6b0ea2118ee848e69979454c1dac28d5f498afdd5c047dc408e92a3",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SECURITY/security-model/SN-1888/IB-SMART-NOTE-20261027-sn1888-secure-network-near-impossible-to-hack.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SECURITY",
+      "topic": "SECURITY",
+      "subtopic": "SECURITY_MODEL",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 883d45ec1b820d9f2a168dc89d5f6475bc336b17 ('Merge pull request #3112 from SoulSchoolAcademy/naya2/team-dashboard') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "911f93f268d6971d5edd4002ae8cc5e366e101872b83c0946afa2399a6d17967"
+    },
+    {
+      "smart_note_id": "SN-1889",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1889-secure-network-implementation-report",
+      "title": "How We Will Build the Secure Network — Official Implementation Report",
+      "content_hash": "5213f7f536eb64984383eb2f11d0d0b792703ba8a9e87974ec03a31437f0c3f4",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SECURITY/security-model/SN-1889/IB-SMART-NOTE-20261027-sn1889-secure-network-implementation-report.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SECURITY",
+      "topic": "SECURITY",
+      "subtopic": "SECURITY_MODEL",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 883d45ec1b820d9f2a168dc89d5f6475bc336b17 ('Merge pull request #3112 from SoulSchoolAcademy/naya2/team-dashboard') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "44efb2409c569dd8e027c61d080682467de07276bf99c1ce9ae00669b6871bd1"
+    },
+    {
+      "smart_note_id": "SN-1890",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity",
+      "title": "The Law of Truth-Seeking and Curiosity",
+      "content_hash": "69bd1c88f19e1275c6fde48e500b6ffe2031bc4baf321f34e2df7340b254ebed",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/truth-seeking/SN-1890/IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "TRUTH_SEEKING",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 883d45ec1b820d9f2a168dc89d5f6475bc336b17 ('Merge pull request #3112 from SoulSchoolAcademy/naya2/team-dashboard') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "f31a5ba1d31e0e0c943abf1eda9d3fc7417b8ae7fe7efa4de33751213525721f"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1878,
+    "next_sequence": 1891,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "c740380a66c5763e74a4089bb1eade75f3730b8e66c3f9dbdb6449d17cadb8d8"
+  "corpus_manifest_hash": "64e40d818e01eaff7f1753fc98bb4ff1cc4ed7e38df31245d7b4905226abde58"
 }
