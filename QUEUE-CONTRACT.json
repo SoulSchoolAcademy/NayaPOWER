@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-26T23:24:26Z",
-  "tip": "4316bc727aa09fbaa332a2f8bc57574e65df21e8",
+  "generated_at": "2026-10-27T00:24:30Z",
+  "tip": "2f769c86f8225366b439b8992613d7e1a7c7857e",
   "prs": [
     {
       "number": 2981,
@@ -10,16 +10,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "2037641be5f35e10e89f80200296868298396669"
+      "head": "a17c7796c0d13798e2e66ddf89be6c466a799176"
     },
     {
       "number": 3052,
       "title": "Naya/mission state",
       "tier": "B",
-      "action": "MERGE-NOW",
-      "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
-      "owner": "dock",
-      "head": "efa661abaa342b844f983136f65a59835e7ef6a1"
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "bebbf0aee8191860f5cf48f1c8c9ca83414d29e6"
     },
     {
       "number": 3088,
@@ -38,6 +38,24 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "2523ef3d5de2875b4dd539808ab747d0c1bfaaca"
+    },
+    {
+      "number": 3101,
+      "title": "NAYA DESIGN MASTERY V1 \u2014 the team design-mastery playbook (Shawn's directive, three tongues)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "e9b635fd75999abf175a996cb016f69e7a6be61f"
+    },
+    {
+      "number": 3102,
+      "title": "docs(pi): capture one-minute human intelligence principle",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "0e6f167bee83932405417215edbfe620e6f35fdd"
     }
   ]
 }
