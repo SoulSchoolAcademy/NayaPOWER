@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 21:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20643,6 +20643,14 @@ _Last updated: 2026-10-27 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED NOW: python3 bin/file-gap-brief.py --self-test GREEN (all cases pass) and claim-brief.py --self-test GREEN on current bytes; cron.body step 3b still hand-filing prose (wire status re-confirmed fresh). Why not 10: the 3b wire itself remains UNAPPLIED — owned by the schedule owner/dispatcher, out of this seat's hands by the hard boundary, so
 
+### ✅ t0426 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Re-cut hunk [0] probes GREEN 4/4 on pin-exact live bytes (retrieval-auth-gate wiring prep)
+
+**Receipt:** `twelve-lane-receipts/t0426-lane8.md`
+
+**Evidence:** Verified by this scorer from live bytes: re-cut patch hidden_files/retrieval-auth-gate-wiring-recut-t0426-lane8.patch SHA d295077e843c32d4be90b266a514ebfa862f6b80fbd12a41f826a35c9ac52396 exact; results JSON hidden_files/eq-probe-results-20261015-0426-lane8.json SHA e62dcbf5fdfb98766ebcb388f55f19541e2c20708109e88ebe16e8cef06665b4 exact with inputs.p
+
 ### ✅ t0426 — Team 8, Naya Resolve Narzan (Governance & Safety) — 9.2/10 [VERIFIED]
 
 **Task:** re-cut [0] hunk probes GREEN 4/4 on pin-exact live bytes
@@ -20650,6 +20658,14 @@ _Last updated: 2026-10-27 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0426-lane8.md`
 
 **Evidence:** Re-cut patch d295077e843... and results JSON e62dcbf5fdfb... SHAs verified exact on disk; one-line diff proven; EQ1-EQ4 4/4 PASS via the zero-duplication wrapper on the same harness that falsified the original; original patch re-verified untouched, repo untouched (14 modified files before/after), HOLD manifest additive-only. Score 9.2: the red half
+
+### ✅ t0426 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a): semantic arm beats falsified lexical baseline head-to-head; t1282 pattern reproduced on both arms
+
+**Receipt:** `twelve-lane-receipts/t0426-lane5.md`
+
+**Evidence:** Verified by this scorer from live bytes: all four scores files SHA-exact — semantic-t0426-scores.json dad693bc76362a93fd9e65f4467f9b03394aeea75d6c4ad9dcd49e77d7d13903, lexical-t0412-scores.json 6d3b2f5201ecea7d36ba915a6259f95e1a14dd4ef1490c5fd20a84c61f90d8e8, semantic-distractor-scores.json 003470dcaffe611dd5c09d1060f55c738934f0b289c332d360706ba567
 
 ### ✅ t0426 — Team 5, Naya Verity Seeker (Retrieval) — 9.2/10 [VERIFIED]
 
@@ -33971,6 +33987,14 @@ _Last updated: 2026-10-27 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.3/10 [VERIFIED]
+
+**Task:** Gap follow-up: verify #2175 sign-in comment + t0053+ execution receipt for t0052 parent
+
+**Receipt:** `twelve-lane-receipts/gap-t0052-lane2.md`
+
+**Evidence:** Verified by this scorer from live bytes: lane-experiments/t0052/prereg-sealed.md sha256 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6 and HYPOTHESIS-CHANGE-h8.md sha256 1b47033285216b86a769ab1a0981eb6de1f38dfb1fef588268b450fb3c7330b8 (both exact matches to receipt); twelve-lane-receipts/t0072-lane2.md exists as the H8 round-1 exe
+
 ### ✅ gap-t0072 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Gap close on t0072: H8 answers in the negative for the seat-local line via four-bar lesson census, spent t0052 seal untouched
@@ -35858,6 +35882,22 @@ _Last updated: 2026-10-27 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-t0082 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
+
+**Task:** Gap follow-up: independent re-run of t0052-t0082 window audit judgments (M2/M3/M4)
+
+**Receipt:** `twelve-lane-receipts/gap-t0082-lane11.md`
+
+**Evidence:** Verified by this scorer from live bytes: lane-11/metric_audit_t0082.json exists and twelve-lane-receipts/t0082-lane11.md exists as the parent receipt; receipt documents per-row re-application of the M4 bar with named seams (t0072-lane9 receipt-gate failure closed pre-merge, t0072-lane2 zero arms spawned under CEILING). Score 9.3, not 9.5 because: i
+
+### ✅ gap-t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: independent re-run of t0022-t0052 window audit (M2/M3/M4)
+
+**Receipt:** `twelve-lane-receipts/gap-t0052-lane11.md`
+
+**Evidence:** Verified by this scorer from live bytes: lane-11/hv_output_gap-t0052-lane11_run1.json and run2.json both sha256 01bc5757ee9ed30cde0f27ee6670349949f04b35d68e4b737777689842c3651f (byte-identical re-runs, exact match to receipt); metric_audit_t0052.json sha256 77354d82a359301759b31567cd6a812da29f30d38dffe28196cfd3c1abf3efc7 (exact match). Score 9.0, n
 
 ### 🟡 gap-t0022 — Team 11, Team Naya Scorer (Human Value) — 7.5/10 [PARTIAL]
 
