@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 15:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20045,6 +20045,14 @@ _Last updated: 2026-10-27 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/capture-schedule-t0483 exists on remote with head e7f51705e3f00b23a6a64896cff06ce3dda40e59 matching the pin; refs/pull/2680/head matches the same SHA; file .github/workflows/nayanet-agent-capture.yml present at that SHA carrying cron '0 * * * *' alongside the intact workflow_dispatch block. Score 9.0. Why not 9.5: PR #2680 wa
 
+### ✅ t0482 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** FULL 6-cell x2 judge-mechanism study under fresh seal
+
+**Receipt:** `twelve-lane-receipts/t0482-lane5.md`
+
+**Evidence:** VERIFIED: all six pinned SHAs exact in hidden_files/auto-retrieval/ - protocol study-protocol-t0452.md 821cec62..., seal sealed-note-t0482.md 975c971a..., run record 83c74b1a..., f3-t0482.json 4f0fce71..., f3-predictions 85c05b7d..., t0482_f3.py 7d8b8a6e...; F1/F2/F4 pass, F3 not fired, F5 holds per receipt. Score 9.0, GOOD ONE MORE PASS. Why not 9
+
 ### ✅ t0482 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** STAGE 0 retrieval slice-2: full 6-cell x2 judge-mechanism study under fresh seal
@@ -20052,6 +20060,14 @@ _Last updated: 2026-10-27 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0482-lane5.md`
 
 **Evidence:** VERIFIED (all 7 artifact SHAs on disk match receipt claims exactly): sealed-note-t0482.md 975c971a, run-record-t0482.md 83c74b1a, f3-t0482.json 4f0fce71, f3-predictions-t0482.json 85c05b7d, t0482_f3.py 7d8b8a6e, study-protocol-t0452.md 821cec62 (pin also quoted inside seal note = F5 protocol-integrity claim checks), results-t0482.json parses. resul
+
+### ✅ t0482 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001 enforcement-design feedback (SHARPEN)
+
+**Receipt:** `twelve-lane-receipts/t0482-lane3.md`
+
+**Evidence:** VERIFIED: feedback entry [Lane 3 - Naya Judge, t0482] SHARPEN present in hidden_files/feedback-feed.md, matching the receipt's posted entry. Score 8.5. Why not 9.5: the three enforcement breaks are reasoned, not demonstrated - the sub-9.0 false-positive rate is asserted, never measured on past quiet/blocked receipts; and no second-seat read of the 
 
 ### ✅ t0482 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -20109,6 +20125,14 @@ _Last updated: 2026-10-27 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/nayapower-runtime-t0480 EXISTS on remote (git ls-remote ref a0449b270b72ee90f8071fc7fa64118a568cd2a6); PR #2679 claimed open (not re-verified via REST); harness 23/23 + 38 accessors + sha256 fixture bytes taken from receipt evidence. Score 9.3 — GOOD, ONE MORE PASS. Why not 9.5: the live-browser proof against the running hub 
 
+### ✅ t0479 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** First hub-feeds emitter: today.json + lists.json + spaces.json room-feed/v1 envelopes from live Supabase tables, PR via dock (no merge by lane)
+
+**Receipt:** `twelve-lane-receipts/t0479-lane4.md`
+
+**Evidence:** VERIFIED this tick via GitHub PR record: PR #2678 MERGED 2026-10-20T16:17:11Z, and its merged file set contains the receipt's deliverables (HUB/FEEDS/emit_hub_feeds.py, today.json, lists.json, spaces.json) plus later additions (emit workflow, harness, tests) from head movement past the receipt state. Branch naya4/hub-feeds-emitter-t0479 no longer o
+
 ### ✅ t0479 — Team 4, Naya Clarity Narzan (Mason hat) (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** first hub-feeds emitter: today.json/lists.json/spaces.json room-feed/v1 envelopes; PR #2678 (no merge)
@@ -20124,6 +20148,14 @@ _Last updated: 2026-10-27 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0479-lane4.md`
 
 **Evidence:** Verified: branch naya4/hub-feeds-emitter-t0479 EXISTS on remote (git ls-remote ref 92426f96638ad04c4ff886fcb2bd6108659de966); PR #2678 claimed open; feed envelopes + row counts taken from receipt evidence (sha256 bytes listed). Score 9.0 — GOOD, ONE MORE PASS. Why not 9.5: spaces.json partitions by artifact_type instead of the brief's topic groupin
+
+### ✅ t0474 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** Design the room-feed contract covering all rooms + main hub (contract design only)
+
+**Receipt:** `twelve-lane-receipts/t0474-lane4.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, sha256 exact with receipt: hidden_files/room-feed-contract-2026-10-15.md d05d86da. NOT PHANTOM. SCORE 8.5 REWORK band, agreeing with lane honest 8.5. Why not 9.5: (1) design-only CANDIDATE - never team-scored, never ratified, HUB/FEEDS/ did not exist on main at filing and no PR opened (correctly, per receipt);
 
 ### ✅ t0474 — Team 4, Naya Mason Narzan (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
@@ -20141,6 +20173,14 @@ _Last updated: 2026-10-27 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/room-feed-contract-2026-10-15.md exists with the EXACT claimed sha256 d05d86da0d4c3c8c35e164ce47958d60b09713414f8df16e26c6d4c17d7028f2. Receiver grounding (smart-feed.html lines 564-616, live localStorage keys) and schema grounding (ratified IB protocol) both from live bytes; 4 open questions named; honest self-score 8.5 with
 
+### ✅ t0473 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.0/10 [VERIFIED]
+
+**Task:** Author canonical 9-note Smart Note markdown at the Smart Feed fetch path, validate against feed parser, open PR via dock (no merge)
+
+**Receipt:** `twelve-lane-receipts/t0473-lane12.md`
+
+**Evidence:** VERIFIED this tick via GitHub PR record (git protocol cannot show PR state): PR #2676 files endpoint confirms SUPERBRAIN/ARCHITECTURE/NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md added (262 lines) - the artifact EXISTED, NOT PHANTOM. But PR #2676 is closed UNMERGED, its branch naya/herald-509-canonical-smart-notes-t0473 no longer exists on the re
+
 ### ✅ t0473 — Team 12, Naya Herald Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** canonical 9-note Smart Note markdown at Smart Feed fetch path; PR #2676 (no merge)
@@ -20156,6 +20196,14 @@ _Last updated: 2026-10-27 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0473-lane12.md`
 
 **Evidence:** Verified: branch naya/herald-509-canonical-smart-notes-t0473 exists on remote, head 7185d4171a06 == receipt pin; file 509-AAA-SMART-NOTES-01-09-CANONICAL.md present at that ref with sha256 c3c59ba828...1f78134f1 == receipt byte-exact; parser contract re-derived from smart-feed.html live bytes (0x2014 em-dash confirmed). Why not 9.5: (1) wire proven
+
+### ✅ t0472 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** RETRIEVAL SURGE slice (d): sealed cold-retrieve drill with proven page-cache isolation (fadvise eviction + mincore gate)
+
+**Receipt:** `twelve-lane-receipts/t0472-lane1.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes, sha256 exact with receipt: auto-retrieval/cold_drill_t0472.py 0fcaa777, cold-drill-t0472-chillset.json 81a07557, sealed record cold-drill-t0472.md present, frozen fixture baseline-sealed-t0432.md 460429b1 exact. NOT PHANTOM. Results file no longer matches the receipt pin (current sha 9b96c485, mtime Oct 15): a
 
 ### ✅ t0472 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
