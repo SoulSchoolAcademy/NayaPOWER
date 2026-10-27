@@ -15815,13 +15815,33 @@
         "note": "published directly as a BRAIN projection in commit 4528ebf88b492574eb042b8dac216a77aae89fe2 ('SN-1886: The Inheritance — Intelligence That Outlives Its Founder') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "ef5f008b8cdb1234f53a67f60279fe11f87e757837a1e5223821ea8510dddb27"
+    },
+    {
+      "smart_note_id": "SN-1887",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1887-no-ego-do-whats-right-not-just-whats-said",
+      "title": "No Ego — Do What's Right, Not Just What's Said",
+      "content_hash": "b2955bad26e34b6af47d5d320f40572c626762df976f2bbf2888fc27599b7710",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/ownership/SN-1887/IB-SMART-NOTE-20261027-sn1887-no-ego-do-whats-right-not-just-whats-said.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SMART_NOTE",
+      "topic": "SYSTEM",
+      "subtopic": "ownership",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "direct-brain-filing",
+        "note": "Filed + registered same pass by naya-power; page_hash = sha256(file bytes); content_hash = sha256(canonical JSON of the 11-section map, sort_keys, separators (',',':'), ensure_ascii=False) computed from the filed file; corpus manifest recomputed same pass. Door-checker capture-object adjudication remains open and is stated, not claimed."
+      },
+      "page_hash": "17f177018bacbfb5ae4ee4e209be726447f62859d6749dbeb2f2c132ccde9380"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1887,
+    "next_sequence": 1888,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "d6c431645330d2e7a8cddb0793d0f583c3b35d3ae3cb848e841dcb3c1b5485a0"
+  "corpus_manifest_hash": "24c49cce6a564b3d7c69dfbc7a885e94fbd4b083850712e80fef0033867da1b8"
 }
