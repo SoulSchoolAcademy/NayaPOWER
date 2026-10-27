@@ -2900,6 +2900,362 @@ const Runtime = (() => {
 window.NayaRuntime = Runtime;
 
 </script>
+<script>
+/* Smart Search ranking module — Builder 1, Wave 1 (2026-10-27).
+   Source: workspace/smart-search-fix/smart-search-rank.js
+   (sha256 1856fea574e46cfd325e22c8c84adbe088ce36eca474da95d35ffa4b97c46540, node --check OK).
+   Inlined so the single-file chassis has no separate load to fail.
+   If Builder 1's file changes, regenerate this block (do not hand-edit).
+   SKIP THIS HUNK if Builder A's branch already loads window.SmartSearchRank. */
+/*
+ * smart-search-rank.js — Smart Search ranking + result rendering fix
+ * Builder 1, Wave 1 (Team Naya, NayaPOWER / NayaNET), 2026-10-27.
+ *
+ * THE DEFECT (Shawn's own try, 2026-10-27): searching "how to do input
+ * a smart note" sent him to the bottom of the feed, to Smart Note words
+ * — not the actual Intelligent Block. That's word-hunting, not search.
+ *
+ * THE LOCKED SPEC (Shawn, 2026-10-27): search must filter + return
+ * matching notes by title, then nutshell, then block content, and show
+ * the matching Intelligent Block itself as the result — for Shawn's
+ * query, the "How to Input a Smart Note, Successfully" block, at the
+ * top, not a scroll jump. First Notes + Blocks, then the network in
+ * the same ranking. Never private mail content. Never a second search
+ * system.
+ *
+ * WHAT WAS WRONG (measured, not theorized — see test-smart-search.cjs):
+ *  1. The live chassis search (HUB/app/index.html, R.search ->
+ *     clientSearchNotes, Phase 1 2026-10-19) scored per-term SUBSTRING
+ *     matches: for each query term, +5 if in title, else +3 if in
+ *     nutshell, else +1 if in the haystack. Query stopwords ("how",
+ *     "to", "do", "a") are substrings of almost every title — "a"
+ *     matches any title containing the letter "a", "to" matches
+ *     "into"/"today"/"auto" — so unrelated notes outscore or tie the
+ *     target, and ties fall back to baked feed order (arbitrary).
+ *  2. The search corpus is the baked window.NayaFeedIntelligence.notes
+ *     (381 notes in main's index.html, newest SN-1877, 2026-10-26).
+ *     SN-1880 ("How to Input a Smart Note, Successfully", 2026-10-26
+ *     22:42Z) is NOT in it — verified by grep (0 hits) — so the live
+ *     search CANNOT return the target, period. It returns stopword
+ *     noise instead ("a bunch of smart note words").
+ *  3. The result shape was {title, summary (nutshell), id} — words,
+ *     not the block. The UI rendered title + nutshell cards, never the
+ *     Intelligent Block itself.
+ *
+ * THE FIX (this module):
+ *  - Stopwords excluded from scoring (they still count for the phrase
+ *    check, so "how to input a smart note" still phrase-matches its
+ *    title). A query of only stopwords falls back to all words.
+ *  - Whole-word matching, plural-insensitive (a trailing "s" only):
+ *    "note" matches "Note" and "Notes", never "denote" or the letter
+ *    "a" inside "smart".
+ *  - Lexicographic tiers, exactly the locked order: title phrase,
+ *    then title hits, then nutshell hits, then block hits, then
+ *    recency. A note with a title match ALWAYS beats a note with only
+ *    a nutshell/block match — no weighted sum lets a haystack pile
+ *    outrank a title.
+ *  - The result IS the block: every result carries the full block
+ *    (title, nutshell, all sections/layers present), the matched tier,
+ *    the matched words, and the score breakdown — so the UI can render
+ *    the block itself at the top, and the user sees WHY it ranked #1.
+ *  - Notes + Blocks only. No mail, no people, no second search system:
+ *    the network types stay in the command palette (naya-search.js),
+ *    which this module does not duplicate or replace.
+ *  - Never private mail content: the corpus is notes only, by
+ *    construction. No mail thread is ever read, ranked, or rendered.
+ *
+ * INTEGRATION (for the landing path, NOT done by this build):
+ *  Replace the scoring inside HUB/app/index.html's clientSearchNotes
+ *  with rankNotes() below, and replace the showSearchResult card list
+ *  with renderResultCard() for the top result (block itself) + the
+ *  ranked list beneath. The baked corpus must be refreshed (or the
+ *  search must read live notes) or the target still cannot be
+ *  returned — ranking alone cannot return a note that is not in the
+ *  corpus. Nitro rendered review (desktop + phone, real address) is
+ *  owed before any link to Shawn, per the Design Gate.
+ *
+ * Dual runtime like naya-search.js: browser (window.SmartSearchRank)
+ * and Node (module.exports) share this one file. No DOM dependency
+ * in the ranking; renderResultCard returns an HTML string.
+ */
+(function (global) {
+  'use strict';
+
+  var DEFAULT_LIMIT = 12;
+  var MAX_LIMIT = 50;
+
+  // Stopwords: excluded from content-word scoring. They still count
+  // for the phrase check (so a full-phrase title still wins).
+  var STOPWORDS = {
+    a: 1, an: 1, the: 1, and: 1, or: 1, of: 1, in: 1, on: 1, for: 1,
+    with: 1, by: 1, to: 1, do: 1, does: 1, did: 1, is: 1, are: 1, was: 1,
+    were: 1, be: 1, been: 1, how: 1, what: 1, why: 1, when: 1, where: 1,
+    who: 1, whom: 1, which: 1, that: 1, this: 1, it: 1, its: 1, as: 1,
+    at: 1, from: 1, into: 1, you: 1, your: 1, we: 1, our: 1, i: 1, me: 1,
+    my: 1, so: 1, if: 1, but: 1, not: 1, no: 1, yes: 1, can: 1, could: 1,
+    will: 1, would: 1, should: 1, than: 1, then: 1, there: 1, here: 1
+  };
+
+  // Split text into lowercase words (letters + digits). Punctuation
+  // becomes a separator, so "Note," and "Note" are the same word.
+  function wordsOf(text) {
+    var s = String(text == null ? '' : text).toLowerCase();
+    var out = s.split(/[^a-z0-9]+/).filter(Boolean);
+    return out;
+  }
+
+  // Normalize text for phrase checks: lowercase, punctuation -> space,
+  // collapse whitespace. "How to Input a Smart Note, Successfully"
+  // becomes "how to input a smart note successfully".
+  function normPhrase(text) {
+    return wordsOf(text).join(' ');
+  }
+
+  // Whole-word match, plural-insensitive by exactly one trailing "s":
+  // "note" matches "note" and "notes"; "notes" matches "note" and
+  // "notes"; "note" never matches "denote", "notebook", or "another".
+  function wordMatches(queryWord, textWord) {
+    if (queryWord === textWord) return true;
+    if (queryWord + 's' === textWord) return true;
+    if (textWord + 's' === queryWord) return true;
+    return false;
+  }
+
+  // Does the word set contain the query word (whole-word, plural-insensitive)?
+  function setHas(wordSet, queryWord) {
+    if (wordSet[queryWord]) return true;
+    if (wordSet[queryWord + 's']) return true;
+    // text word is the singular of a plural query word ("notes" query, "note" text)
+    if (queryWord.slice(-1) === 's' && wordSet[queryWord.slice(0, -1)]) return true;
+    return false;
+  }
+
+  function wordSetOf(text) {
+    var set = {};
+    wordsOf(text).forEach(function (w) { set[w] = true; });
+    return set;
+  }
+
+  // Parse a query into all words + content words (non-stopwords).
+  // If the query is all stopwords, content words fall back to all
+  // words so the search still returns something, ranked, never empty
+  // by construction.
+  function parseSearchQuery(raw) {
+    var all = wordsOf(raw);
+    var content = all.filter(function (w) { return !STOPWORDS[w]; });
+    if (!content.length) content = all.slice();
+    return {
+      raw: String(raw == null ? '' : raw),
+      allWords: all,
+      contentWords: content,
+      contentPhrase: content.join(' '),
+      fullPhrase: all.join(' ')
+    };
+  }
+
+  // The nutshell: the note's nutshell field, else its "In A Nutshell"
+  // layer, else its human note, else its subtitle. Never empty by
+  // accident — a missing nutshell falls through, it never fakes one.
+  function nutshellOf(n) {
+    if (n.nutshell) return String(n.nutshell);
+    if (Array.isArray(n.layers)) {
+      var nl = null;
+      for (var i = 0; i < n.layers.length; i++) {
+        var L = n.layers[i] || {};
+        if (/nutshell/i.test(String(L.name || L.key || ''))) { nl = L; break; }
+      }
+      if (nl && nl.body) return String(nl.body);
+    }
+    if (n.human_note) return String(n.human_note);
+    return String(n.subtitle || '');
+  }
+
+  // The block content: every section EXCEPT the nutshell (so nutshell
+  // hits and block hits are distinct tiers, never double-counted).
+  // Covers both shapes: live-table fields and baked-note layers.
+  function blockTextOf(n, nutshellText) {
+    var parts = [];
+    var fields = ['human_note', 'child_note', 'grandma_note', 'naya_note',
+      'what_it_means', 'whats_in_it_for_you', 'how_it_applies'];
+    fields.forEach(function (f) { if (n[f]) parts.push(String(n[f])); });
+    if (Array.isArray(n.layers)) {
+      n.layers.forEach(function (L) {
+        L = L || {};
+        if (/nutshell/i.test(String(L.name || L.key || ''))) return; // nutshell tier, not block
+        if (L.name) parts.push(String(L.name));
+        if (L.body) parts.push(String(L.body));
+      });
+    }
+    if (Array.isArray(n.topics)) parts.push(n.topics.join(' '));
+    else if (n.topics) parts.push(String(n.topics));
+    if (n.topic) parts.push(String(n.topic));
+    if (n.subtitle && String(n.subtitle) !== nutshellText) parts.push(String(n.subtitle));
+    return parts.join('\n');
+  }
+
+  // The full block, for rendering: every section present, in the
+  // Smart Note's own order. Missing sections are absent, never faked.
+  function blockOf(n) {
+    var block = { title: String(n.title || n.ib_id || n.id || 'Untitled note') };
+    var nutshell = nutshellOf(n);
+    if (nutshell) block.nutshell = nutshell;
+    var fields = {
+      human: 'human_note', child: 'child_note', grandma: 'grandma_note',
+      naya: 'naya_note', what_it_means: 'what_it_means',
+      whats_in_it_for_you: 'whats_in_it_for_you', how_it_applies: 'how_it_applies'
+    };
+    Object.keys(fields).forEach(function (k) {
+      if (n[fields[k]]) block[k] = String(n[fields[k]]);
+    });
+    if (Array.isArray(n.layers) && n.layers.length) {
+      block.layers = n.layers.map(function (L) {
+        return { name: String((L || {}).name || (L || {}).key || ''), body: String((L || {}).body || '') };
+      }).filter(function (L) { return L.body; });
+    }
+    return block;
+  }
+
+  // Score one note. Returns null when nothing matches (filtered out).
+  function scoreNote(n, q) {
+    var title = String(n.title || '');
+    var nutshell = nutshellOf(n);
+    var blockText = blockTextOf(n, nutshell);
+    var titleSet = wordSetOf(title);
+    var nutSet = wordSetOf(nutshell);
+    var blockSet = wordSetOf(blockText);
+    var titleNorm = normPhrase(title);
+
+    var titlePhrase = 0;
+    if (q.fullPhrase && titleNorm.indexOf(q.fullPhrase) !== -1) titlePhrase = 1;
+    else if (q.contentPhrase && q.contentPhrase !== q.fullPhrase && titleNorm.indexOf(q.contentPhrase) !== -1) titlePhrase = 1;
+
+    var titleHits = 0, nutHits = 0, blockHits = 0;
+    var matchedTitle = [], matchedNut = [], matchedBlock = [];
+    q.contentWords.forEach(function (w) {
+      if (setHas(titleSet, w)) { titleHits++; matchedTitle.push(w); }
+      if (setHas(nutSet, w)) { nutHits++; matchedNut.push(w); }
+      if (setHas(blockSet, w)) { blockHits++; matchedBlock.push(w); }
+    });
+
+    var total = titleHits + nutHits + blockHits;
+    if (!total && !titlePhrase) return null;
+
+    var matchedTier = titleHits > 0 ? 'title' : (nutHits > 0 ? 'nutshell' : 'block');
+    var created = n.created_at || n.created || '';
+    var createdMs = created ? Date.parse(created) : 0;
+    if (isNaN(createdMs)) createdMs = 0;
+
+    return {
+      note: n,
+      titlePhrase: titlePhrase,
+      titleHits: titleHits,
+      nutshellHits: nutHits,
+      blockHits: blockHits,
+      matchedTitle: matchedTitle,
+      matchedNutshell: matchedNut,
+      matchedBlock: matchedBlock,
+      matchedTier: matchedTier,
+      createdMs: createdMs
+    };
+  }
+
+  // The ranked set, exactly the locked order: title phrase, then title
+  // hits, then nutshell hits, then block hits, then recency. A note
+  // with a title match ALWAYS beats a note with only a nutshell or
+  // block match — that is the spec, not a weight to tune.
+  function rankNotes(notes, rawQuery, limit) {
+    var q = parseSearchQuery(rawQuery);
+    if (!q.contentWords.length) return [];
+    var cap = Math.min(Math.max(1, limit || DEFAULT_LIMIT), MAX_LIMIT);
+    var scored = [];
+    (notes || []).forEach(function (n) {
+      var s = scoreNote(n, q);
+      if (s) scored.push(s);
+    });
+    scored.sort(function (a, b) {
+      if (b.titlePhrase !== a.titlePhrase) return b.titlePhrase - a.titlePhrase;
+      if (b.titleHits !== a.titleHits) return b.titleHits - a.titleHits;
+      if (b.nutshellHits !== a.nutshellHits) return b.nutshellHits - a.nutshellHits;
+      if (b.blockHits !== a.blockHits) return b.blockHits - a.blockHits;
+      return b.createdMs - a.createdMs;
+    });
+    return scored.slice(0, cap).map(function (s) {
+      var n = s.note;
+      return {
+        type: 'SMART NOTE',
+        id: String(n.ib_id || n.id || ''),
+        ib_id: String(n.ib_id || n.id || ''),
+        title: String(n.title || n.ib_id || n.id || 'Untitled note'),
+        nutshell: nutshellOf(n),
+        summary: nutshellOf(n),
+        source: 'Smart Feed',
+        created_at: String(n.created_at || n.created || ''),
+        block: blockOf(n),
+        matchedTier: s.matchedTier,
+        matchedWords: { title: s.matchedTitle, nutshell: s.matchedNutshell, block: s.matchedBlock },
+        score: { titlePhrase: s.titlePhrase, titleHits: s.titleHits, nutshellHits: s.nutshellHits, blockHits: s.blockHits }
+      };
+    });
+  }
+
+  // Render one result as the block itself, at the top — not just
+  // words. Title + nutshell + the matched tier badge + the block's
+  // sections (present ones only) + the open-block action. The caller
+  // inserts this HTML at the top of the results panel; it never
+  // scrolls the feed to a card deep in the stream.
+  function escapeHtml(x) {
+    return String(x == null ? '' : x).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function renderResultCard(r) {
+    var b = r.block || { title: r.title, nutshell: r.nutshell };
+    var sections = [];
+    if (b.nutshell) sections.push('<p class="ss-nutshell">' + escapeHtml(b.nutshell) + '</p>');
+    var order = [['human', 'Human'], ['child', 'Child'], ['grandma', 'Grandma'], ['naya', 'Naya'],
+      ['what_it_means', 'What it all means'], ['whats_in_it_for_you', "What's in it for us"],
+      ['how_it_applies', 'How it connects']];
+    order.forEach(function (pair) {
+      if (b[pair[0]]) sections.push('<h4>' + pair[1] + '</h4><p>' + escapeHtml(b[pair[0]]) + '</p>');
+    });
+    if (Array.isArray(b.layers)) {
+      b.layers.forEach(function (L) {
+        if (L && L.body && !/nutshell/i.test(L.name || '')) {
+          sections.push('<h4>' + escapeHtml(L.name) + '</h4><p>' + escapeHtml(L.body) + '</p>');
+        }
+      });
+    }
+    var tierLabel = r.matchedTier === 'title' ? 'Matched in the title'
+      : r.matchedTier === 'nutshell' ? 'Matched in the nutshell' : 'Matched in the block';
+    var words = (r.matchedWords && (r.matchedWords.title.concat(r.matchedWords.nutshell, r.matchedWords.block)))
+      .filter(function (w, i, a) { return a.indexOf(w) === i; }).join(', ');
+    return '<article class="ss-result" data-ss-id="' + escapeHtml(r.id) + '">' +
+      '<h3 class="ss-title">' + escapeHtml(b.title) + '</h3>' +
+      '<div class="ss-match">' + escapeHtml(tierLabel) +
+      (words ? ' · words: ' + escapeHtml(words) : '') + '</div>' +
+      sections.join('') +
+      '<a class="ss-open" href="/s/' + escapeHtml(String(r.id).replace(/^IB-SMART-NOTE-\d+-sn/i, 'sn')) +
+      '" data-ss-open="' + escapeHtml(r.id) + '">Open the block</a></article>';
+  }
+
+  var api = {
+    STOPWORDS: STOPWORDS,
+    DEFAULT_LIMIT: DEFAULT_LIMIT,
+    parseSearchQuery: parseSearchQuery,
+    wordsOf: wordsOf,
+    wordMatches: wordMatches,
+    nutshellOf: nutshellOf,
+    blockTextOf: blockTextOf,
+    blockOf: blockOf,
+    scoreNote: scoreNote,
+    rankNotes: rankNotes,
+    renderResultCard: renderResultCard
+  };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  global.SmartSearchRank = api;
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
 <script>/* js/runtime-live.js @ baf1221d9 */
 /* LIVE RUNTIME ADAPTER
    Compatibility seam over an injected governed runtime. The UI never assumes
@@ -2968,48 +3324,21 @@ window.NayaRuntime = Runtime;
   };
   function clientSearchNotes(q){
     const notes=(window.NayaFeedIntelligence&&window.NayaFeedIntelligence.notes)||[];
-    const terms=q.toLowerCase().split(/\s+/).filter(Boolean);
-    function haystack(n){
-      const parts=[];
-      for(const f of ['title','subtitle','nutshell','human_note','child_note','grandma_note','naya_note','what_it_means','whats_in_it_for_you','how_it_applies','ib_id','id']){ if(n[f]) parts.push(String(n[f])); }
-      if(n.machine_note) parts.push(typeof n.machine_note==='string'?n.machine_note:JSON.stringify(n.machine_note));
-      if(Array.isArray(n.layers)) for(const L of n.layers){ if(L.name)parts.push(String(L.name)); if(L.body)parts.push(String(L.body)); }
-      if(n.topics) parts.push(Array.isArray(n.topics)?n.topics.join(' '):String(n.topics));
-      if(n.topic) parts.push(String(n.topic));
-      return parts.join('\n').toLowerCase();
+    /* Smart Search integration (Wave 2): ranking + result shape come from
+       window.SmartSearchRank (smart-search-rank.js, Builder 1, Wave 1).
+       If the module is absent, fail honestly — never silently fall back
+       to the old substring scoring (that IS the defect). */
+    if(!window.SmartSearchRank||typeof window.SmartSearchRank.rankNotes!=='function'){
+      return {ok:false,state:'error',message:'Search ranking module is not loaded. The intelligence cannot be ranked honestly without it.'};
     }
-    function noteSummary(n){
-      if(n.nutshell) return n.nutshell;
-      if(n.human_note) return n.human_note;
-      if(Array.isArray(n.layers)){ const nl=n.layers.find(L=>/nutshell/i.test(L.name||L.key||'')); if(nl&&nl.body) return nl.body; if(n.layers[0]&&n.layers[0].body) return n.layers[0].body; }
-      return n.subtitle||'';
-    }
-    const scored=[];
-    for(const n of notes){
-      const hay=haystack(n), t=(n.title||'').toLowerCase(), sn=(n.nutshell||'').toLowerCase();
-      let score=0;
-      for(const term of terms){
-        if(t.includes(term)) score+=5;
-        else if(sn.includes(term)) score+=3;
-        else if(hay.includes(term)) score+=1;
-      }
-      if(score>0) scored.push({n,score});
-    }
-    scored.sort((a,b)=>b.score-a.score);
-    const items=scored.slice(0,12).map(h=>({
-      type:'SMART NOTE',
-      title:h.n.title||h.n.ib_id||h.n.id||'Untitled note',
-      summary:noteSummary(h.n),
-      id:h.n.ib_id||h.n.id||'',
-      source:'Smart Feed',
-      created_at:h.n.created_at||'',
-      personal:!!h.n.personal
-    }));
-    const total=scored.length;
+    const qParsed=window.SmartSearchRank.parseSearchQuery(q);
+    let total=0;
+    for(const n of notes){ if(window.SmartSearchRank.scoreNote(n,qParsed)) total++; }
+    const ranked=window.SmartSearchRank.rankNotes(notes,q,12);
     const summary=total
       ? total+' note'+(total===1?'':'s')+' in your Smart Feed match \u201c'+q+'\u201d \u2014 searched on this device across titles, all nine layers, topics, and IDs.'
       : 'No notes match \u201c'+q+'\u201d. Search covers all '+notes.length+' Smart Feed notes \u2014 titles, all nine layers, topics, and IDs.';
-    return {ok:true,state:'ready',data:{summary,items}};
+    return {ok:true,state:'ready',data:{summary,items:ranked}};
   }
 
   R.retrieve=async function(id){
@@ -5843,8 +6172,21 @@ window.NayaJewels = (() => {
       const p = el('p', 'search-answer', esc(summary));
       pb.appendChild(p);
     }
-    if (list.length && window.NayaRoomKit) {
-      const lw = el('div', 'intelligence-list');
+    /* Smart Search integration (Wave 2): the top result IS the block itself
+       (renderResultCard), rendered in this panel — never a scroll jump to a
+       feed card. The ranked list beneath uses the existing intelCard path.
+       Panel shows 1 block + up to 7 list cards (8 display units, as before).
+       panel.scrollIntoView below places THIS panel, not a feed card. */
+    if(list.length&&window.NayaRoomKit&&window.SmartSearchRank&&typeof window.SmartSearchRank.renderResultCard==='function'){
+      const top=list[0];
+      const blockWrap=el('div', 'ss-top-block');
+      blockWrap.innerHTML=window.SmartSearchRank.renderResultCard(top);
+      pb.appendChild(blockWrap);
+      const lw=el('div', 'intelligence-list');
+      list.slice(1, 8).forEach(x => lw.appendChild(window.NayaRoomKit.intelCard(x, room.accent)));
+      pb.appendChild(lw);
+    }else if(list.length&&window.NayaRoomKit){
+      const lw=el('div', 'intelligence-list');
       list.slice(0, 8).forEach(x => lw.appendChild(window.NayaRoomKit.intelCard(x, room.accent)));
       pb.appendChild(lw);
     }
