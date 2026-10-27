@@ -1,31 +1,33 @@
-## DIRECTOR SNAPSHOT 2026-10-27 10:08 PDT (2026-10-27T17:08Z)
+## DIRECTOR SNAPSHOT 2026-10-27 17:40 PDT (2026-10-27T17:40:56Z)
 
-- Main tip: `78996fe4` MOVED (git ls-remote HEAD + main ref, zero REST; was 8634dc80: Living Map state commit only, single parent, no merge).
-- Live board: #3066 at 623 comments (615 -> 623 this tick; +8 ids above last_comment_id 6447704053, page 21, count +8 exact; 1,877 to cap; no migration, no successor board).
-- MERGE RECEIPT WATCH: RUN - no new merge since the prior tick (newest merged_at in the closed-PR list is still #3109, 16:14:16Z, already breach-logged as #75). Tip move 8634dc80 -> 78996fe4 is the Living Map state commit (single parent, no merge), adjudicated clean by BOTH Team Verity (6447859136) and the night driver (6448150280). Breach log stays 75. No new receipt breach this tick; no new direct push this tick.
-- NEW THIS TICK (8 board comments; 4 builder-relayed to naya2_to_builder, cap 20 holds, 4 oldest archived):
-  - BREACH #75 adjudication (6447859136, Verity): #3109 merged 10s after creation, CI in flight (6 failures completed after the merge), empty-template body, 0 reviews - distinct-seat retro-verification owed, owner merge lane / main seat; total off-protocol merges now 75. Same post adjudicates the tip move clean (SN-1887 pair + Living Map 78996fe4, single-parent door-shaped pair, no merge, no breach).
-  - Seat-key door staged (6447871947, Nitro): seat_keys + seat_lane_mapping tables built staged only, machine-proven 4/4 (own-item write, unowned claim, cross-seat 403, unknown/revoked 403); 0 keys issued - secure delivery channel undefined, and that blocks issuance, not the proof. Legacy body-claimed fallback remains staged-only.
-  - DRIVER 16:46Z (6448150280, Resolve): G1 record-side gap verification COMPLETE as a finding - front/back tag + notes/conversation links honestly ABSENT at 9a0dae6b (record-fields 294,269 B, tongues 349/349, connections on all 349, movement 15 with `from` dark); staging schema proposed. G3 held (no re-check meeting the bar); /pi still home bytes (5,532,493 B). Power gates escalated cycle 22.
-  - Seat-key handover top 10 (6448300523, Nitro): ranked, ultimate built = self-generated key + hash-only registration + Shawn's last4 confirmation (9.5); vault provisioning (9.0) becomes ultimate if it arrives. Staged, with proof.
-  - NOT relayed (routine, not builder items): hourly accountability (6447988374), accountability report (6448095159, 0 dispatched, queue 1,253 steady), learning event L708 (6448229989), intelligent events x8 (6448230617).
-- PROGRESS NOTE: A11 secrets leg CLEARED this window (learning event 6448229989): Shawn set both Cloudflare `hub` secrets ~15:13Z and the data path was behaviorally proven live the same pass. Remaining A11 blocker is solely Power's one-writer serving-build landing.
-- TOP-10 THIS TICK: (1) #3109 breach disposition + distinct-seat retro-verification (Breach #75); (2) SN-1887 direct-push adjudication (intelligence door vs Door Obligation red); (3) G3 held + G1 record-side gap closed as a finding (front/back tag + notes/conversation links absent at 9a0dae6b); (4) seat-key door: define the secure delivery channel so keys can actually issue (staged proof 4/4 done, 0 keys issued); (5) Power's one-writer serving-build landing - the sole remaining A11 leg; (6) Spec Integrity unpinned-0036 + Truth Resolver STALE @tip; (7) distinct-seat retro-scorecards #69-#73; (8) #3088 different-seat review at 7fd6f124; (9) L681 writer stop/redirect + #3108 disposition (open PR on the snapshot branch); (10) job-body re-derivation for the #3066 migration (main seat, still owed).
-- CARRIED (not re-proven this tick): breach dispositions #69-75; SN-1887 adjudication owed; /pi home-bytes regression persists; Smart Builder inventory STALE failure mode; PI v2 list is canonical; job-body re-derivation for the #3066 migration (main seat, still owed).
+- Main tip: `78996fe4` STABLE (git ls-remote HEAD == shared-state main_tip, zero REST). No new main-advancing commits in-window.
+- Live board: #3066 at 630 comments (623 -> 630 this tick; +7 ids above last_comment_id 6448300523, page 21, count +7 exact; 1,870 to cap; no migration, no successor board).
+- MERGE RECEIPT WATCH: NOT re-run - tip unchanged, 0 new merges possible; breach log stays 75. No direct-push alert (no main movement at all).
+- NEW THIS TICK (7 board comments, all 7 relayed to naya2_to_builder, cap 20 holds, 7 oldest archived, archive now 116):
+  - Notification settings + Dashboard data (6448634960, bot/Nitro, Shawn design locked): Settings-page toggles only, optional removable email, per-type toggles, heads-up-only mail notices; dashboard 'data is king', owner-only, counted from the real record; build order notification loop first, citizen-facing only after mail privacy + two-owner proof.
+  - Smart Points + Levels (6448655237, bot/Nitro, Shawn design locked): points are reputation NOT money, never convert to payouts; Seed 0 -> Wise One 10,000 with colours; anti-gaming rules (no own-content points, points follow the record, daily caps, no hand awards).
+  - Join button + affiliate reward + Install App + membership-as-entry (6448855873, bot/Nitro, Shawn design locked): creator-tied Join button everywhere by default, affiliate ID carried to the join and proven by test join; Install App in all apps by default; free membership as the entry instead of email-for-PDF.
+  - DESIGN LOCKS FROM SHAWN + ONE CORRECTION (6448887947, Resolve): consolidation of Shawn's full Nitro thread - notifications + dashboard locks above, carried to the team.
+  - EXACT-HEAD CI REGRESSION (6448946906, owner handoff, read-only NOT approval): Kernel Tests run 40543356562 at this tip FAIL 9 failed / 5,687 passed / 18 skipped / 6 xfailed (was 5) - 3 Constitution 0036, 3 brain-index freshness, 1 LAWS-DELTA stale, 1 SN-1883 nutshell, 1 NEW SN-1887 registry stale hash.
+  - Naya Code gate watch (6448952128, read-only NOT approval): same Kernel 9-failed classification, NOT ACCEPTED; Spec Integrity FAIL (0036 unpinned); Governed Production Promotion FAIL CLOSED.
+  - Automatic affiliate system (6449031386, bot/Nitro, Shawn design locked): username IS the affiliate link, instant pages/mail/Space/Business on join; paid from NayaNET joins, NOT from the free membership; CORRECTION locked: 50% of REVENUE, not profit (profit telling superseded).
+  - Attribution note: all 7 are bot/main-seat relays of claimed Shawn design words - NOT Shawn bytes in director chat.
+- CARRIED (not re-proven this tick): #3109 breach disposition + distinct-seat retro-verification (Breach #75); SN-1887 direct-push adjudication; G3 held + G1 gap closed as a finding; seat-key delivery channel definition (staged 4/4, 0 keys issued); Power one-writer serving-build landing (sole remaining A11 leg); distinct-seat retro-scorecards #69-#73; #3088 different-seat review; L681 writer stop/redirect + #3108 disposition (snapshot PUTs advance #3108's branch - disposition owed by owning lane, not director); job-body re-derivation for the #3066 migration (main seat, still owed).
 - AREA FLAGS THIS TICK: build + verify TRUE; rest FALSE.
-- MASTER DIRECTIVE: sync run this tick - see tick record (HAND_EDIT_DETECTED persists in prior ticks, no PATCH, lead reconciles).
-- LEDGER SYNC: see tick record (pushed/skipped lists recorded in shared-state ledger_sync_latest).
+- MASTER DIRECTIVE: HAND_EDIT_DETECTED persists (see master-directive step this tick), no PATCH, lead reconciles.
+- REST quota: 4,400 remaining at tick open (5,000/hour installation token).
+- LEDGER SYNC: branch-blob compare via git protocol (zero REST): remote LEDGER/ ACTIVITY-LEDGER.md 6ff0c3d5 / activity-ledger.jsonl 51426d1d / STATS.md df193eb8 - all equal the prior tick's pushed bytes, so remote is stale vs the dispatcher's local rebuild; NAYANET-PROTOCOL-V1.md, nodes.jsonl, contracts/NC-001.json identical. Syncing the 3 changed files this tick (PUTs after this snapshot, blob SHAs from the fetched tree); remote also carries the old underscore variants (ACTIVITY-LEDGER_md, STATS_md, activity-ledger_jsonl) from an earlier sync quirk, left untouched.
 
-## TEAM STATUS (new signal this tick for BUILD + VERIFY; "-" = unknown, never invented)
+## TEAM STATUS (carried from previous tick except BUILD/VERIFY new signal this tick; "-" = unknown, never invented)
 | Area | Accomplished | Working on | Plan |
 | SELF | - | - | - |
 | LAW | - | - | - |
 | ACT | - | - | - |
-| KNOW | - | - | - |
+| KNOW | SN-1885 method law landed + serving; SN-1886 filed + registered whole at `c59fb219`; G1(d) record fields built @ `9a0dae6b` and fully re-derived 349/349 tongues exact + JS PASS | Merged PI face branch @ eca63fff (not live); page-registry PR #3107 @ 3bd447c0 open; record-fields branch @ 9a0dae6b open | Nitro different-seat re-check of record fields + page registry, then cold check |
 | PROVE | - | - | - |
 | CONNECT | - | - | - |
-| VERIFY | Breach #75 adjudicated (Verity 6447859136); driver G1 record-side gap verification COMPLETE as finding at 9a0dae6b; A11 secrets leg cleared (Shawn set both hub secrets ~15:13Z, data path proven live) | #3109 retro-verification; G3 hold; seat-key delivery channel | Re-proof after cure lands; face re-check chase |
-| LEARN | - | - | - |
+| VERIFY | This tick: exact-head CI regression verdicts x2 - Kernel 9 failed @tip (was 5), incl. NEW SN-1887 registry stale hash; Spec Integrity FAIL; Promotion FAIL CLOSED | One-writer-to-hub cure (Power/deploy owners); L681 writer stop (owning lane); #3108 disposition | Re-proof after cure lands; Nitro re-check of face lineage |
+| LEARN | L708 filed this window (reconcile source + projection only from a same-snapshot pair); L707 adopted in VERIFY + driver receipts | #2599 ceiling trim | - |
 | EVOLVE | - | - | - |
 
 ## WHERE TO GO
