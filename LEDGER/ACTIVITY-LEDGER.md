@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 10:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21011,6 +21011,14 @@ _Last updated: 2026-10-27 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified via git protocol: naya/eight-consensus-gate-noise-t0252 @ 92c5a742 matches, parent=live tip f9b5ac3d; naya2/infra-tip-red-heal-20261012 @ c10084bd66 matches. Correction recorded (0 minutes burned, observability noise only). Deductions: outcome open until #2466 merges (workflow=human gate), CI unobserved at sign-out, Fix1/2 subsu
 
+### ✅ t0262 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Independent review-only verdicts on tip-protection PRs #2467/#2454/#2466, zero merges
+
+**Receipt:** `twelve-lane-receipts/t0262-lane7.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2467/head is STILL 9a4a129ce9c45311707ce67432bb55ff2aed0aac, refs/pull/2454/head is STILL c10084bd663894657a34b6fbf03212b2e3343912, refs/pull/2466/head is STILL 92c5a74270f5fe95d6561b7292c944b5518bf467, all three pin-exact with the receipt 15 days later (bran
+
 ### ✅ t0262-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Independent review-only of three tip-protection fix PRs (#2467/#2454/#2466): pin-verified verdicts/routing comments
@@ -21032,6 +21040,14 @@ _Last updated: 2026-10-27 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0262-lane7.md`
 
 **Evidence:** Dispatcher-verified via git protocol: all 3 branch heads pin-exact on remote (92c5a742 / 9a4a129c / c10084bd), tip f9b5ac3d unmoved; all 3 verdict comments exist on #2175 (6124001784/6124006409/6124006430, headers match). Correct HOLDs (workflow files = Shawn's human gate). Deduction per agent's honest 8.5: REST overage (9 calls vs <=6 guidance), a
+
+### ✅ t0262 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** CTA v2 sealing gaps closed as mechanical checks C5/C6, battery-proven, local-only
+
+**Receipt:** `twelve-lane-receipts/t0262-lane6.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane-experiments/t0262/cta-v2/ MANIFEST.sha256 sha256sum -c all 10 files OK; lane-6/cold-transfer-acceptance/CTA-PROTOCOL-v2.md is 265 lines, matching the claimed 241->265 append-only addendum. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) synthetic fixtures only -
 
 ### ✅ t0262-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -21055,6 +21071,14 @@ _Last updated: 2026-10-27 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified on disk: all 5 claimed files exist, sha256 prefixes match receipt (e48cf079, 67ad8f6f, 7abc4919, ef02e91b, MANIFEST sha256sum -c all OK); CTA-PROTOCOL-v2.md 241->265 lines as claimed. RED-first discipline proven (probe shows current flow cannot see either flaw). Deductions per agent's honest 9.0: synthetic fixtures only, standal
 
+### ✅ t0262 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 3 sealed execution -> VOID (seal overtaken by universe growth)
+
+**Receipt:** `twelve-lane-receipts/t0262-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane-experiments/t0262/h9r3/r3-output.json sha256 6850eb88...1cfb pin-exact with the receipt, verdict VOID cause pin-mismatch, pin_failures [[20261012T120654Z-next-tick-t0262-lane-pick---third-slot.json, unlisted-file]] exactly as claimed; r3-verdict.md present. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS, agre
+
 ### ✅ t0262-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** H9 round 3 sealed execution - re-verify seal, run measure_h9r3.py exactly once, honor mechanical verdict
@@ -21076,6 +21100,14 @@ _Last updated: 2026-10-27 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0262-lane2.md`
 
 **Evidence:** Dispatcher-verified on disk: all 6 artifacts exist, sha256 prefixes match receipt claims; scan corpus 189 receipts identical summary to t0222, zero new canonical claims. Deductions per agent's honesty: hook unadopted (propose-only), H9 r3 sealed but unexecuted, scanner v1 scope (bare-SHA unscanned). Not a phantom.
+
+### ✅ t0252 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** 7 pre-existing tip pytest failures fixed; PR #2467 opened, full suite green on branch bytes
+
+**Receipt:** `twelve-lane-receipts/t0252-lane9.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2467/head is STILL 9a4a129ce9c45311707ce67432bb55ff2aed0aac, pin-exact with the receipt 15 days later; branch ref naya/nine-tipred-fix-t0252 no longer resolves (deleted since action time, pull ref retained - movement, not phantom). The 4220-pass full-suite cl
 
 ### ✅ t0252-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.0/10 [VERIFIED]
 
@@ -21099,6 +21131,14 @@ _Last updated: 2026-10-27 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher-verified via git protocol: naya/nine-tipred-fix-t0252 @ 9a4a129c == refs/pull/2467/head, parent=live tip (unmoved). Agent's own honesty: CI pending at sign-out, L6-L11 hermeticity defect class routed forward. -0.5 for async CI unverified at sign-out.
 
+### ✅ t0252 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** Consensus-gate loop root-caused + fix PR #2466; #2454 re-anchored clean
+
+**Receipt:** `twelve-lane-receipts/t0252-lane8.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: refs/pull/2466/head is STILL 92c5a74270f5fe95d6561b7292c944b5518bf467, pin-exact with the receipt 15 days later; refs/pull/2454/head is STILL c10084bd663894657a34b6fbf03212b2e3343912, pin-exact with the receipt. Branch refs naya/eight-consensus-gate-noise-t0252 and nay
+
 ### ✅ t0252-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 8.0/10 [VERIFIED]
 
 **Task:** t0252: consensus-gate noise census (143-run loop audit) + fix PR #2466
@@ -21120,6 +21160,14 @@ _Last updated: 2026-10-27 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0252-lane8.md`
 
 **Evidence:** Dispatcher-verified via git protocol: naya/eight-consensus-gate-noise-t0252 @ 92c5a742 == refs/pull/2466/head, parent=live tip f9b5ac3d; naya2/infra-tip-red-heal-20261012 @ c10084bd == refs/pull/2454/head. Deductions: loop still fires until #2466 merges; #2466 CI not yet observed; supersession analysis single-seat.
+
+### ✅ t0252 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Dispatcher scoring-step hook mechanization (t0222 scanner) + H9 round 3 scouting CLOSED with sealed pre-reg
+
+**Receipt:** `twelve-lane-receipts/t0252-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hook-scan-receipts.sh 3ad57a6a..., hook-integration.md 258c72ed..., h9r3 prereg-sealed.md 338498cc..., measure_h9r3.py e6c5a040... - all four sha256 pin-exact with the receipt; seal-verification.json and twelve-lane-scores-hooks/scan-t0252.json present. No remote branch claimed (workspace experiment), so no ls
 
 ### ✅ t0252-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
