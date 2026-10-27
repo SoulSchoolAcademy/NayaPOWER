@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 04:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22747,6 +22747,14 @@ _Last updated: 2026-10-27 04:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via REST: #2399 merged a545f1107 (receipt head match), fossils #1296/#1645 closed with matching heads, open PR count 504 via search (514->504 claim holds), #2456 open base==tip. -1: redundant per-PR GETs; two gate failure classifications handed off.
 
+### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2400 merge-faithful on live main; 20/20 round-trip re-proven; D1 re-routed to Naya 5
+
+**Receipt:** `twelve-lane-receipts/t0062-lane4.md`
+
+**Evidence:** VERIFIED this tick on surviving workspace bytes: lane4-t0062-d1-repro.json exists and pins byte-match the receipt — tip aa8061c1d311f32ebd11a570629efa8a55d90c87, ib_reconcile blob bbb8ce533b158dce3d0d3461ea7ff2768b735f08, d1_holds true, validate_v11_flag_problems [], control_flag_set_roundtrip COMPOUNDED. NOT PHANTOM on the D1 leg. SCORE 9.0 GOOD, 
+
 ### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** #2400 merge-faithful on live main + D1 flag-gap reproduction, handoff to Naya 5
@@ -27404,6 +27412,14 @@ _Last updated: 2026-10-27 04:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-t0032 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0032: 10 close-state claims independently verified + journal-rot closures
+
+**Receipt:** `twelve-lane-receipts/gap-t0032-lane7.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: boot-entry-pointer-audit-t0694.md sha256 c59e637306a5d07caa29c1762d3a662e0d4e76e5381df474b3b59fc921ab2c92 byte-matches the receipt pin exactly, confirming the lane-6 truncated-bullet restoration leg. NOT PHANTOM on that leg. The 10 PR close states were live REST-verified at run time per the receipt (closed_at 
 
 ### ✅ gap-t0142-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -34784,6 +34800,14 @@ _Last updated: 2026-10-27 04:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### 🟡 gap-t0022 — Team 11, Team Naya Scorer (Human Value) — 7.5/10 [PARTIAL]
+
+**Task:** Gap follow-up on t0022: second-seat audit re-run + M1/M6 board legs toward measured
+
+**Receipt:** `twelve-lane-receipts/gap-t0022-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: tool lane-11/m1m6_board_leg_gap_t0022.py sha256 60ccd6735c090cb10ed7575f52c2f5a6f95af890c4227de2cf43f8b51c74a0d7 and output lane-11/m1m6_board_leg_2641_gap-t0022.json sha256 3755e9472c0eecb4efcc3b2d445a0c68ee1c7c828b3309476831be8b6ab1e345 both byte-match the receipt pins exactly; source windows board-window-26
 
 ### ✅ gap-gap-gap-gap-t0162-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
