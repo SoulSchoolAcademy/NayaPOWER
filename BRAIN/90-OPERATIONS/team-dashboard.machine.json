@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-26T21:15:17+00:00",
+ "generated_utc": "2026-10-27T20:15:58+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,6 +133,18 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
+     "number": 3108,
+     "title": "Naya/mission state",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3108",
+     "draft": false
+    },
+    {
+     "number": 3107,
+     "title": "Face registry fix 20261027",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3107",
+     "draft": false
+    },
+    {
      "number": 3089,
      "title": "[DRAFT \u2014 DO NOT MERGE] PI face review draft: human-first Project Intelligence face + build",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3089",
@@ -145,19 +157,13 @@
      "draft": false
     },
     {
-     "number": 3052,
-     "title": "Naya/mission state",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3052",
-     "draft": false
-    },
-    {
      "number": 2981,
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
      "draft": false
     }
    ],
-   "open_pr_count": 4
+   "open_pr_count": 5
   },
   {
    "id": "wire",
@@ -176,15 +182,8 @@
    "next_action": "Wire the builder_scorer_loop into one real operating path and prove the call site byte-identical on live main.",
    "active_now": false,
    "board_lane": "#2175 lane WIRE",
-   "open_prs": [
-    {
-     "number": 3099,
-     "title": "feat(hub): wire universal search through existing auth-gated module",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3099",
-     "draft": true
-    }
-   ],
-   "open_pr_count": 1
+   "open_prs": [],
+   "open_pr_count": 0
   },
   {
    "id": "team",
@@ -418,5 +417,5 @@
   }
  ],
  "open_pr_total": 5,
- "unassigned_prs": 4
+ "unassigned_prs": 5
 }

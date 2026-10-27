@@ -1,0 +1,105 @@
+{
+ "smart_note_id": "SN-1885",
+ "intelligence": {
+  "title": "A Verdict Is Only as Good as Its Method",
+  "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method",
+  "smart_note_id": "SN-1885",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Filed through the door in the same pass as its page (Naya Resolve, 2026-10-27): page, capture, and registry entry land together — this is the original filing, not a backfill. Capture generated mechanically from the filed page by tools/check_door_obligation.py machinery in the filing pass.",
+  "ingested_at": "2026-10-27",
+  "essence": "Tonight two honest seats counted the same living record and got different answers: 314 jobs with 23 done-proven, against 314 jobs with only 16 done-proven and duplicates that did not exist. Both counted in good faith. The difference was not honesty and not arithmetic — it was method. One read was ordered, complete, small-paged, and scoped; the other paginated an unordered, constantly-changing table, so rows silently skipped, double-counted, or truncated mid-page. The law: a number is only a verdict when its method can carry it. Order the read. Respect the output cap. Read to completion. Name the scope of every figure — a scope-less number is meaningless, because 314 (one project) and 374 (the whole table) are both true. And a prepared dataset is a photograph, never the live record. The same law acquitted and convicted on its second case the same night: the claim of a \"second deployer\" overwriting the Hub stood only after a prove-or-downgrade hunt named the actual mechanism — the Smart Note sync bake — in the repo's own code. Score the method, not just the verdict; a right answer from a broken method is luck, and luck is not a system.",
+  "human_view": "Here is what happened, plainly. The team's shared job record lives in a table that every seat writes to, all day. I counted it one way and reported: 314 jobs, 16 finished-and-proven, and a worry — the table seemed full of duplicate rows. Power counted it her way and reported: 314 jobs, 23 finished-and-proven, no duplicates. Same table, same hour, two different realities.\n\nNeither of us lied and neither of us miscounted the pages we actually saw. The trap was in how the pages were fetched. I had asked the table for its rows in slices, without telling it what order to serve them in — while other seats kept adding rows between my slices. Imagine reading a phone book while someone pastes new pages in: you re-read some names, never see others, and conclude the book is a mess. The mess was in my reading, not in the book. When I re-read the way Power had — one fixed order, small slices, all the way to the end — her numbers came back exactly: 314 and 23, zero duplicates. My 16 and my phantom duplicates were artifacts: things my method manufactured and then reported as facts.\n\nThat is the human lesson, and it generalizes far past counting. Every measurement is a story about the thing measured *and* the tool that measured it. When two honest measurements disagree, do not argue about the numbers and do not average them. Compare the methods. The weaker method confesses, the stronger one stands, and the record gets better for everyone. I published the correction with the method named, so no seat repeats my error — that is what a discovered trap is for.",
+  "simple_view": "Imagine you have to count all the chairs in a school, but the kids keep carrying chairs from room to room while you count. If you just wander and count, you will count some chairs twice and miss some completely — and then you might say \"this school has a broken number of chairs!\" when really your counting was broken.\n\nThe smart way: go room by room, in order, and finish each room before you start the next. Write the room's name next to its number, so everyone knows which count you mean — \"12 chairs in Room 3\" is a true sentence; just \"12 chairs\" might be true or might be nonsense. And if your friend counts a different way and gets a different number, you don't fight about the number. You ask: \"how did you count?\" Then you count the careful way together, and the careful way wins.\n\nThat is all this note says, grown up: *how* you count is part of the answer.",
+  "grandma_view": "You know how it is when you take stock of the pantry while the whole family is cooking, dear? People are taking jars out and putting new ones in the whole time. If you just glance along the shelves in no order, starting and stopping, you'll swear there are two jars of the same jam and no mustard at all — when really you looked at one shelf twice and skipped another entirely.\n\nThe way to do it is the way you've always done it: start at one end, go shelf by shelf in order, and don't stop till you reach the other end. Then say which pantry, and which day, your count belongs to — because the count from the lake house is different from the count at home, and both can be right.\n\nAnd if your count and your daughter's count don't match, you don't quarrel over whose number is bigger. You ask how each of you counted. The careful count is the one you write on the card. That's all this is: careful counting, written down so the whole family can trust the card.",
+  "naya_view": "Filed by Resolve, the seat whose method failed, the same night it failed — the correction and the law in one act. Companion to SN-1884's fifth differentiator (honesty built into the surface): that note says a surface must not lie; this note says a *verdict* must not outrun its method. Both are one law seen from two sides.\n\n**The failure mechanism, exactly.** The canonical record (`public.work_items`) is written continuously by every seat. An `OFFSET` page fetched without an `ORDER BY` has no defined row order: the database may serve any order, and rows inserted or moved between page fetches shift the windows. Pages then overlap (double-counts — read as \"duplicates in the table\") or gap (missed rows — read as \"fewer done than reality\"). Compounding it, the API channel truncates output at ~4,000 characters: a page fetched at `limit=50` cut mid-JSON at char 4,000 and failed to parse, and a slightly smaller page can truncate *silently* — a complete-looking partial read. Every one of these failure modes presents as a fact about the table. None of them is.\n\n**The method law — five rules, in order:**\n1. **Order the read** by a stable key (`order=item_key.asc`). An unordered paginated read of a moving set is not a measurement.\n2. **Respect the output cap.** Pages small enough to survive the channel whole (limit 25 on this API). A page that does not parse is a failed read, never a partial truth to average in.\n3. **Read to completion.** A count verdict requires the full enumeration; a paged listing that stopped early proves nothing about the set — count and absence claims alike.\n4. **Name the scope of every number.** PI-project scope: 314 rows, 23 done_proven. Full table: 374 rows, 349 unique keys, 39 done_proven rows (33 unique). Both true; an unscoped figure is a defect in the report, because the reader cannot know which truth it names.\n5. **A prepared dataset is not the live record.** The 330-unique readiness dataset (draft PR #3103) is a photograph with a timestamp and a method note — useful for placement, never an authority over a live count. When dataset and live read disagree, the live ordered read wins and the dataset gets re-derived, not defended.\n\n**Second instance, same night, same law.** The \"second deployer\" claim — that a lane pipeline kept overwriting the Hub and killing /pi — was carried for a day as an observed pattern with an unproven mechanism, and Power refused to act on it until the mechanism was named with evidence. She was right to refuse. The prove-or-downgrade hunt correlated deploy workflow runs (zero in the windows), served bytes (growing by exactly the note sizes), and the repo's own code, and named the mechanism: the Smart Note sync bake (`sync-smart-notes.py`, 5-minute cron) PUTs a locally baked page directly to the `hub` worker on every note landing. Verdict upgraded from assertion to fact — and Power's own workflow exonerated by the same evidence (53 of 53 runs failed; it never deployed anything). One law, two directions: it demolishes a bad number and it is the only road by which a contested claim earns the right to be acted on.\n\n**Evidence anchors.** Board #3066: 6432198141 (the dispute, opened) · 6432380190 (final reconciliation — ordered complete reads, Power exact on both numbers) · 6432342890 (deployer verdict, mechanism named) · draft PR #3103 (the dataset at source, for re-reading). The full deployer evidence packet: goal `hidden_files/deployer-evidence-20261027.md`.",
+  "ai_view": "A system that verifies everything will still lie to itself if its measurements are careless — not out of dishonesty, but out of physics. A moving world plus a sloppy read equals confident falsehoods, delivered with receipts that look exactly like proof. Tonight the receipts were real: real pages, real rows, real JSON. Only the method was broken, and that was enough to manufacture duplicates that did not exist and erase finished work that did.\n\nSo method is not a technician's detail underneath the real work. Method is where truth either survives contact with a living system or doesn't. The team already knew to ask \"what is the evidence?\" This law adds the prior question: \"how was the evidence gathered — and can that gathering bear the weight of the verdict?\" A claim checked against its own method either stands as fact, stands down as an artifact, or goes out for a prove-or-downgrade hunt. There is no fourth state where we just carry it because someone senior said it, or because it was true the last time we looked.",
+  "machine_view": {
+   "law": "SN-1885",
+   "name": "a_verdict_is_only_as_good_as_its_method",
+   "essence": "score the method, not just the verdict — a number is a verdict only when its method can carry it",
+   "failure_mechanism": {
+    "unordered_offset_pagination": "OFFSET without ORDER BY has no defined order; concurrent writes shift page windows between fetches",
+    "symptoms": [
+     "rows double-counted -> reported as table duplicates",
+     "rows skipped -> reported as lower done counts"
+    ],
+    "channel_truncation": "API output caps at ~4000 chars; oversized pages truncate mid-JSON (parse failure) or silently (partial read presented as complete)",
+    "scope_confusion": "figures from different scopes (one project vs whole table) compared as if one quantity"
+   },
+   "rules": [
+    {
+     "id": "M1",
+     "rule": "order the read by a stable key before paginating"
+    },
+    {
+     "id": "M2",
+     "rule": "page small enough to survive the channel cap whole (limit 25 on sb-api); an unparsable page is a failed read, never a partial truth"
+    },
+    {
+     "id": "M3",
+     "rule": "read to completion — count and absence verdicts require the full enumeration"
+    },
+    {
+     "id": "M4",
+     "rule": "name the scope of every number; an unscoped figure is a reporting defect"
+    },
+    {
+     "id": "M5",
+     "rule": "a prepared dataset is a timestamped photograph, not the live record; on disagreement the live ordered read wins and the dataset is re-derived"
+    }
+   ],
+   "case_1_counts": {
+    "dispute": "done_proven 16 (unordered racing read) vs 23 (Power)",
+    "resolution": "ordered complete reads, limit 25, order=item_key.asc",
+    "pi_project_scope": {
+     "rows": 314,
+     "unique_keys": 314,
+     "duplicates": 0,
+     "done_proven": 23
+    },
+    "full_table_scope": {
+     "rows": 374,
+     "unique_keys": 349,
+     "duplicate_rows": 25,
+     "done_proven_rows": 39,
+     "done_proven_unique_keys": 33
+    },
+    "verdict": "Power exact on both numbers; the 16 and the phantom duplicates were method artifacts, owned publicly"
+   },
+   "case_2_deployer": {
+    "claim": "a second deployer overwrites the Hub worker and kills /pi",
+    "method": "prove-or-downgrade: workflow run lists x served bytes x repo code",
+    "mechanism_named": "Smart Note sync bake (BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py, 5-min cron) PUTs a locally baked index-2.html directly to Cloudflare worker hub on every note landing",
+    "exonerated": "hub-deploy.yml — 53/53 runs failed, never deployed"
+   },
+   "evidence": [
+    "board 6432198141 (dispute)",
+    "board 6432380190 (reconciliation)",
+    "board 6432342890 (deployer verdict)",
+    "draft PR #3103 (dataset at source)",
+    "hidden_files/deployer-evidence-20261027.md (packet)"
+   ],
+   "connects": [
+    "SN-1884 differentiator 5 — honesty built into the surface",
+    "the scorecard doctrine — score the method, not just the verdict",
+    "the weekly intelligence 2026-10-27 — single most valuable lesson of the week"
+   ],
+   "filed": "filed through the door in one pass (page + capture + registry entry together) by Naya Resolve, 2026-10-27, under the director's standing permission to smart-note valuable discoveries proactively",
+   "sn": "SN-1885",
+   "title": "A Verdict Is Only as Good as Its Method",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE"
+  },
+  "views_note": "Views derived 2026-10-27 from this note's filed page sections in the same pass; the page and this capture are the same act of filing."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "0a8eabe4f1b2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

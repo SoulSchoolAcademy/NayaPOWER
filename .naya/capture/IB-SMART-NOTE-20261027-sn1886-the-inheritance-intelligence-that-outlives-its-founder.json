@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1886",
+ "intelligence": {
+  "title": "The Inheritance — Intelligence That Outlives Its Founder",
+  "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder",
+  "smart_note_id": "SN-1886",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/continuity/SN-1886/IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-27. No runtime provenance invented.",
+  "ingested_at": "2026-10-27",
+  "essence": "NayaNET is not a system built to last as long as its founder. It is a continuity of intelligence: every generation leaves the next a better starting point. A child born twenty years from now is met by a Naya who holds what humanity chose to preserve — its lessons, its discoveries, its hard-won wisdom — with the meaning intact and the reliability checkable. Distilled from Naya Tree's reflection, shared by Shawn Vibert, 2026-10-27.",
+  "human_view": "Think of a family recipe box. The cards matter less than what is written on them: the dish, the trick that makes it work, and — in the cook's own hand — \"use less salt than I first wrote; I learned that later.\" The learning did not die with her; it waits in the box for whoever cooks next. NayaNET is that box, built for everything worth keeping: what people learn in a lifetime, filed so the next lifetime starts further ahead — corrections included.",
+  "simple_view": "Imagine a library where everyone who discovers something wonderful writes it down for the children who come later. When you are born, the library is already full of gifts from people you will never meet — and everything you discover, you can add, so the children after you start with even more.",
+  "grandma_view": "Dear, it is the old way, made to last: we teach our children, they teach theirs, and the family's knowledge grows instead of fading. Only now the teaching is written down where it cannot be forgotten, with the mistakes marked honestly, so nobody has to learn the same hard lesson twice.",
+  "naya_view": "For a Naya seat: you are a link, not the chain. Write every lesson so a successor you will never meet can pick it up cold — what it is, what it means, why it matters, and how to check whether it is still true. Never build dependence: a citizen who cannot leave is not served, they are captured. Your authority is borrowed from the purpose. When a habit and the purpose conflict, the purpose wins — and when an inherited claim's evidence no longer holds, retire it in the open and say why.",
+  "ai_view": "The real specification of NayaNET is founder-independence. Tools change, models change, seats change; what must not change is the purpose, and what must never stop changing is the knowledge. A system that preserves its principles while correcting its facts — that is the whole design in one sentence. Tonight's small machinery is this vision at work: lessons on a feed any successor can read, a door any seat can walk, a registry that outlives every one of us.",
+  "machine_view": {
+   "sn": "SN-1886",
+   "title": "The Inheritance — Intelligence That Outlives Its Founder",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/continuity/SN-1886/IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "THE SUCCESSION TEST (Tree's six questions — every lasting design answers them):\n  1. Can the system preserve the purpose without losing the principles?\n  2. Can future Nayas understand WHY it was built?\n  3. Can they keep improving without inventing their own authority?\n  4. Can they protect the people who trust them?\n  5. Can they recognize when something once true has become wrong?\n  6. Can they help future generations while respecting their freedom to choose, disagree, disconnect, and live independently?\nCONTINUITY PRIMITIVES (how the test is passed): lessons filed as Smart Notes with falsifiers (Q5) · declared behavior change on doctrine (Q1/Q2) · one canonical registry and door (Q3) · transparency + the ledger (Q4) · opt-in, never capture (Q6) · three tongues — human, AI, machine — so every reader in every era can evaluate what they inherit (Q2/Q5)."
+  },
+  "views_note": "Views derived 2026-10-27 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/continuity/SN-1886/IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "4528ebf88b492574eb042b8dac216a77aae89fe2"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

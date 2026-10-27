@@ -174,3 +174,47 @@ Broken, stale, contradictory, misleading, unsafe, missing-proof, below-standard,
 ---
 
 *Canonical v2 — reconciled 2026-10-01. This is the build law. The design contract is the visual law. Together they are how we get to 10/10 without going backward.*
+
+
+---
+
+## 8. CURRENT INTELLIGENCE — ONE-MINUTE HUMAN UNDERSTANDING (2026-10-26)
+
+**Origin:** Shawn's Director-level explanation of the Smart App / Intelligent Block mission. Captured to the Team Naya coordination board at [comment 6430349056](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6430349056).
+
+### The principle
+
+The ultimate Smart App is **active intelligence, elevated and sensible, organized for humans**. It helps people understand, decide, act, learn, and organize their world with the least reasonable cognitive burden. It is not an interface that exposes the system's complexity merely because the complexity exists.
+
+### Intelligent Block — one-minute view
+
+When useful, distill source material into a fast human orientation that answers:
+
+- What is this about?
+- What is the essential lesson?
+- What does it mean, and why does it matter?
+- How does it connect to the person's world?
+- What is in it for them?
+- What useful action or next step follows?
+
+Adapt language to the reader (for example, child, grandparent, Naya, or specialist) without changing source truth. Titles, subtitles, concise summaries, visual hierarchy, and progressive disclosure should let people skim and still understand. Preserve provenance, uncertainty, permissions, caveats, and a path to underlying evidence. Compression must never become distortion.
+
+### Application law
+
+1. **Distill before displaying.** Make the important meaning visible before exposing detail.
+2. **Visual first, not visual only.** Use clear hierarchy, readable labels, grouped meaning, recognizable states, and accessible alternatives.
+3. **Sensible by default.** One obvious next action, few competing choices, plain language, consistent navigation.
+4. **Beauty serves usefulness.** Apply the ratified Naya design system; never use polish to conceal missing functionality or false state.
+5. **Active intelligence must be causal.** Suggestions, counts, status, personalization, and motion must follow real authorized state. Controls must produce observable outcomes or honest blocked/unavailable states.
+6. **Compress effort, not truth.** Keep source evidence available when a decision needs more than the one-minute view.
+7. **Optimize the full human journey.** Comprehension, learning, action, continuity, safe automation, and world organization matter more than screenshot appeal, speed alone, or feature count.
+
+### Acceptance check
+
+A first-time human should quickly understand where they are, what matters, why it matters, and what they can do next. They must be able to act, understand the result, return without reconstructing context, and inspect the underlying evidence. Verify through rendered views, actual interactions, responsive/accessibility/performance checks, and a genuinely independent seat. A self-score or successful HTTP response cannot close the gate.
+
+### Operational reuse
+
+Apply this lens inside the existing eight-dimension page scorecard—not as a competing scorecard or design system. Current application order remains Mail → Connections → Growth, with each page judged on evidence and no claim of passing until independent verification exists. This intelligence is an extension of the existing Smart App / Intelligent Block philosophy, not a replacement for the canonical design law.
+
+**State:** Proposed addition pending review through PR. No Smart Note was created in this action because the current repository search shows overlapping/reused SN identifiers that must be reconciled before a new note ID can be safely assigned. No email broadcast is claimed; a verified Naya recipient list is not available in this tool context.

@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-26",
-  "receipt_basis_commit": "4aca34b39381e7f43de013168dd7f86c69412138",
-  "inventory_file_count": 1705,
+  "generated_at": "2026-10-27",
+  "receipt_basis_commit": "883d45ec1b820d9f2a168dc89d5f6475bc336b17",
+  "inventory_file_count": 1714,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 874,
+    "05-MEMORY": 883,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -1152,8 +1152,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-26-LEARNING-EVENT.md",
-      "blob_sha": "3bfc4d6219c7e5971f755a5cea90d10ae6c39ee6",
-      "size": 14605
+      "blob_sha": "525455efb7022cfd9037ab5f1604e97d8d85b0c1",
+      "size": 15722
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -4886,6 +4886,11 @@
       "size": 10434
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/safety/SN-1882/IB-SMART-NOTE-20261026-sn1882-when-a-safety-check-flags-your-read-set-it-aside-and-go-around.md",
+      "blob_sha": "db92ec00f109ab8b6b272bc2132f3c698d8120b9",
+      "size": 6898
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/smart-notes/SN-1880/IB-SMART-NOTE-20261026-sn1880-how-to-input-a-smart-note.md",
       "blob_sha": "4d0fb5fcc7572b8f1b418d943a51cf29e9cb5a07",
       "size": 7024
@@ -4909,6 +4914,46 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/26/SYSTEM/team/SN-1878/IB-SMART-NOTE-20261026-sn1878-every-block-presented-right.md",
       "blob_sha": "1a097a0fa2bee5ca4241b1549d77f83df6f97913",
       "size": 3156
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SECURITY/security-model/SN-1888/IB-SMART-NOTE-20261027-sn1888-secure-network-near-impossible-to-hack.md",
+      "blob_sha": "ef2ff58401001d52599c272c0eff8307c6d08dae",
+      "size": 3587
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SECURITY/security-model/SN-1889/IB-SMART-NOTE-20261027-sn1889-secure-network-implementation-report.md",
+      "blob_sha": "2c5110e2c5753140a995532742450c101ff4bb3d",
+      "size": 3672
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/design/SN-1884/IB-SMART-NOTE-20261027-sn1884-active-intelligence-design-mastery.md",
+      "blob_sha": "4bfdc29723402dd61dc71a6793357e7c8bc0c066",
+      "size": 18696
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/ownership/SN-1887/IB-SMART-NOTE-20261027-sn1887-no-ego-do-whats-right-not-just-whats-said.md",
+      "blob_sha": "f57777cffbdb5c2d564649fd273658701a310d04",
+      "size": 6314
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/team/SN-1883/IB-SMART-NOTE-20261027-sn1883-ultimate-experience-active-intelligence.md",
+      "blob_sha": "478b64856aa1c8b3f0028accf2797b85691e3117",
+      "size": 4078
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md",
+      "blob_sha": "a92ad113788fc5a1b689e66ef1694a8df9bf7a6c",
+      "size": 17201
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/continuity/SN-1886/IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder.md",
+      "blob_sha": "f3c0f865c4b3ef0ecdb22b0738b91227299e66e1",
+      "size": 4722
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/truth-seeking/SN-1890/IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity.md",
+      "blob_sha": "02909055f8fc1623202ba2861b5cfd9ede1438a1",
+      "size": 7858
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
@@ -8142,8 +8187,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "b4afc7574cb7db57b197963061d11089c7297637",
-      "size": 5155
+      "blob_sha": "319a8159436233686f252ab53628dfa0f25dd1ff",
+      "size": 5090
     },
     {
       "path": "BRAIN/90-OPERATIONS/contracts/handoff-contract.md",
@@ -8502,8 +8547,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "6339df86560b4d86838867c7bf3c4a6823b4a584",
-      "size": 19767
+      "blob_sha": "a6792557205a29a46bf503c539937cf629feb94a",
+      "size": 19724
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",
