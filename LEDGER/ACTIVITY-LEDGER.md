@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 02:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9241,6 +9241,14 @@ _Last updated: 2026-10-27 02:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: receipt exists. (1) Fresh pin: head == branch == 4776be062822c09c9a346acb1c33c6e0705ec03a — no movement since t992; pin block still byte-exact. (2) PASS-side proof: NO — only one receipt-gate run ever (38185462136, failed 16:45:14, 96s pre-pin); re-run-now still the highest-value action. (3) New post-pin runs classified: worker
 
+### ✅ t1002 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Conflict-flagging 2x2 calibration gate: sealed pre-registration + single dry-run arm, honest NO-GO stop
+
+**Receipt:** `twelve-lane-receipts/t1002-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: lane2-t1002-adv/preregistration.md (60 lines, filed 2026-10-12 00:45 UTC), arm-key.md, and dry-run-calibration.md all exist; dry run run 2026-10-12 00:45:37 UTC with verbatim output 'Last known-good count is historical only - these two are unverifiable today, not re-verified' matching the receipt, scored C1=C2
+
 ### ✅ t1002 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.0/10 [VERIFIED]
 
 **Task:** conflict-flagging 2x2 calibration gate (honest NO-GO, 8 arms saved)
@@ -9594,6 +9602,14 @@ _Last updated: 2026-10-27 02:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t992-lane6.md`
 
 **Evidence:** Dispatcher verified: branch naya/six-sgf-daily-runner-t992 @ 41dfc86ebea8d7b90352cfcea548bcb1688da292 exists on origin == receipt SHA; 3 files (run_daily.sh, README.md, CRON-SPEC.md) present at remote head; run dir 9/9 artifacts exist; Lane-1 dir untouched (counter 1, history 2 lines). Live cold dry run: seal predated spawn, cold successor independ
+
+### ✅ t992 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Compounding experiment v2 on SN-0286 (pre-reg + calibration dry runs + blinded N=3/arm + adversarial arm)
+
+**Receipt:** `twelve-lane-receipts/t992-lane2.md`
+
+**Evidence:** INDEPENDENT scorer verification this tick (the only prior row for this receipt is the lane's own self-score by Naya Sage, 9.0, not an independent score): all 12 workspace artifacts exist in hidden_files/lane2-t992-v2/ - preregistration.md, dry-run-1.md, dry-run-2.md, arm-01..07.md, arm-key.md. Verbatim spot checks match the receipt: ARM-07 refuses 
 
 ### ✅ t992 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -35401,6 +35417,14 @@ _Last updated: 2026-10-27 02:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-gap-t0182 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on gap-t0182-lane10: merge-consensus counting-rule divergence root cause for PR #2462
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0182-lane10.md`
+
+**Evidence:** VERIFIED this tick: git ls-remote HEAD 2f769c86f8225366b439b8992613d7e1a7c7857e matches the receipt main tip exactly; refs/pull/2462/head a92be1c01812a86c1994298b508cc41577e250dc matches the receipt PR head exactly; evidence dir hidden_files/lane-10/gap-gap-t0182-lane10/ exists with every receipt pin byte-matching sha256: gate-main 3306acd4a74a3e6d
+
 ### ✅ gap-t0182 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up on t0182: pin-triple successor form, 11 workflow runs re-fetched, pytest reds re-classified, merge-consensus mechanism gap proven
@@ -38650,6 +38674,12 @@ _Last updated: 2026-10-27 02:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261026-1918 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate stall 19:18 PDT: 27 briefs evaluated, zero claimable (exit-7 parent-authorship), queue untouched
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds 27 .md files excluding lane-feed.md, exactly the receipt 27 unique briefs (set equality, zero missing, zero extra; the receipt text mentions 29 names because brief-gap-t0422-lane7.md and brief-gap-gap-gap-gap-t0172-lane1-lane1.md each appear twice); twelve-lane-rotation.json queued=27 s
 
 ### ✅ lane-scorer-20261026-1812 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
