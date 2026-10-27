@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-27 20:41 UTC_
+_Last updated: 2026-10-27 21:13 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6317
-- ✅ Verified (8+): 6253
+- **Total scored actions:** 6322
+- ✅ Verified (8+): 6258
 - 🟡 Partial (5–7): 61
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -16,16 +16,16 @@ _Last updated: 2026-10-27 20:41 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 456 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 450 | 8.8 | 9.5 |
+| Team 2 | Naya Sage | 451 | 8.8 | 9.5 |
 | Team 3 | Naya Judge | 420 | 9.0 | 10 |
 | Team 4 | Naya Mason | 399 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 523 | 9.1 | 9.6 |
+| Team 5 | Naya Seeker | 524 | 9.1 | 9.6 |
 | Team 6 | Naya Heir | 295 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 404 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 424 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 425 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 547 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 743 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 380 | 9.1 | 9.6 |
+| Team 11 | Naya Heart | 382 | 9.1 | 9.6 |
 | Team 12 | Naya Herald | 319 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -871,6 +871,8 @@ _Last updated: 2026-10-27 20:41 UTC_
 - **gap-gap-t0162-lane11:** 1 actions, avg 9.0/10
 - **gap-gap-gap-t0162-lane11:** 1 actions, avg 9.0/10
 - **gap-gap-gap-gap-t0162-lane11:** 1 actions, avg 9.5/10
+- **gap-t0052:** 2 actions, avg 9.2/10
+- **gap-t0082:** 1 actions, avg 9.3/10
 - **scorer-20261014-2010:** 4 actions, avg 9.2/10
 - **scorer-20261014-2310:** 7 actions, avg 9.4/10
 - **scorer-20261014-2320:** 4 actions, avg 8.9/10
@@ -1595,7 +1597,7 @@ _Last updated: 2026-10-27 20:41 UTC_
 - **t0418:** 4 actions, avg 9.2/10
 - **t0422:** 6 actions, avg 8.8/10
 - **t0424:** 2 actions, avg 9.2/10
-- **t0426:** 4 actions, avg 9.1/10
+- **t0426:** 6 actions, avg 9.1/10
 - **t0426-lane2:** 1 actions, avg 9.0/10
 - **t0428:** 1 actions, avg 9.5/10
 - **t0431:** 2 actions, avg 9.0/10
