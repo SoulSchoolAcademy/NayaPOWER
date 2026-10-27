@@ -1,4 +1,5 @@
 <!-- MERGED FACE — overnight push 2026-10-27. Base: Resolve v3 index.html at 9a4f3963, verbatim except the surgical additions below. Harvests from Nitro v3 (face-v2-shared-20261026): pages view-index cards (structure + .pagecard geometry; counts computed from the snapshot) + parts register (embedded verbatim). Merged additions: director packets board (computed), per-area freshness stamps (computed max updated_at), per-area link rows. No score claimed, not live, awaits Nitro's own rendered review + verdict. -->
+<!-- REGISTRY FIX — 2026-10-27, branch face-registry-fix-20261027 off merged face eca63fff. The Pages board gains the page registry: every real NayaNET page on its own card, rendered from pages.json — per-page percent counted from this snapshot's record areas, live route probes (a route serving the Hub home document is named as such, never as its page), real-route links only where the route truly serves the page, and per-page still-needed lists from the record. The view-index cards above the registry are unchanged. Answers Nitro's cold-check fails B14 / C1 / C2 / C3 for the page layer; B18's measurement half is answered for pages (per-part percent in the Parts register remains the register owner's probe work). No score claimed; awaits Nitro's re-check. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -221,6 +222,8 @@
   .pagecard-num{display:block; font-size:28px; font-weight:900; margin-top:4px}
   .pagecard-sub{display:block; font-size:14px; color:#E8E8EC; margin-top:2px}
   .pagecard-open{display:block; font-size:14px; font-weight:700; margin-top:8px}
+  /* REGISTRY FIX: registry cards are panels, not whole-card buttons. */
+  .pagecard.registry-card{cursor:default}
 </style>
 </head>
 <body>
@@ -382,8 +385,10 @@
       <div class="sec-label">Pages</div>
       <h2>Every view, on its own card</h2>
     </div></div>
-    <p>Tap a card to open that view. A percent is shown only where the record carries it; the rest show live counts, never a guessed percent. Per-page percent and real-page Open wait on the page registry + applied areas — these cards open views inside this face, not real pages.</p>
+    <p>First, the views inside this face — tap a card to open that view. Below them, every real NayaNET page on its own card, from the page registry: its own percent where the record measures it (never a guessed percent), its real route where the route truly serves that page, and the jobs it still needs, straight from the record. A page the record does not measure yet says so, with the reason.</p>
     <div id="pagesList"></div>
+    <h3>Every real page, on its own card</h3>
+    <div id="pageRegistryList"><p class="dark">The page registry is loading…</p></div>
   </section>
 
 <section class="board block" id="block-done" aria-label="Done with receipts">
@@ -897,6 +902,7 @@ function render(data) {
     el("roomList").innerHTML = '<p class="dark">Areas cannot open without the record.</p>';
     el("directorList").innerHTML = '<p class="dark">Director packets cannot be computed without the record.</p>';
     el("pagesList").innerHTML = '<p class="dark">Pages cannot be counted without the record.</p>';
+    el("pageRegistryList").innerHTML = '<p class="dark">The page registry cannot be shown without the record.</p>';
     el("partsList").innerHTML = '<p class="dark">Parts cannot be listed without the register.</p>';
     el("uncatBox").innerHTML = "<strong>Not placed in an area yet:</strong> unknown right now — the read failed.";
     el("doneNums").innerHTML = "";
@@ -904,10 +910,70 @@ function render(data) {
     el("machineRaw").textContent = "Snapshot read failed at " + now.toISOString() + ".";
   }
 
+  /* REGISTRY FIX: per-page cards from pages.json (the page registry, 2026-10-27). */
+  function routeLine(p) {
+    var pr = p.probe;
+    if (p.route_state === "serves_own_page") { return "Live route " + p.route + " — probed " + (pr ? pr.checked_at : "") + ": serves its own page (" + (pr ? pr.bytes : "?") + " bytes; title: " + (pr ? pr.title : "") + ")."; }
+    if (p.route_state === "serves_home_bytes") { return "Route " + p.route + " answers with the Hub home document today — this page itself is not served there yet."; }
+    if (p.route_state === "js_shell_own_title") { return "Route " + (pr && pr.route_pattern ? pr.route_pattern : p.route) + " serves a small shell carrying the page's own title; the page renders in the browser."; }
+    if (p.route_state === "missing") { return "Not built yet — no route exists."; }
+    if (p.route_state === "in_app_surface") { return "Lives as a surface inside the Hub app — no separate route serves it."; }
+    if (p.route_state === "per_citizen") { return "Lives at each citizen's own Smart Link — no single route to probe."; }
+    if (p.route_state === "system") { return "A system under the pages, not a page — no route of its own."; }
+    return "";
+  }
+  function renderRegistry(reg) {
+    var box = el("pageRegistryList");
+    if (!reg || !reg.pages) {
+      box.innerHTML = '<p class="dark">The page registry could not be read — per-page cards wait for it. Nothing here is guessed.</p>';
+      return;
+    }
+    box.innerHTML = '<p class="dark">Registry generated ' + esc(reg.generated_at) + ' — ' + reg.totals.pages + ' pages · ' + reg.totals.measured_pages + ' measured from the record · ' + reg.totals.unmeasured_pages + ' not measured yet, each with its reason. A page\'s percent is its proven-done jobs over all its jobs in the record, counted from the same snapshot this face renders.</p>' +
+    reg.pages.map(function (p) {
+      var num, sub;
+      if (p.pi) {
+        num = (p.pi.pct_done_proven == null ? "—" : String(p.pi.pct_done_proven) + "%");
+        sub = p.pi.items_done_proven + " of " + p.pi.items_total + " jobs proven done · area: " + esc(p.pi.area_label) + " · " + p.pi.items_open + " still needed";
+      } else {
+        num = "not measured yet";
+        sub = esc(p.note);
+      }
+      var still = "";
+      if (p.still_needed && p.still_needed.length) {
+        var rows = p.still_needed.map(function (s) {
+          return '<div class="item-row"><div class="item-name">' + esc(s.title) + '</div>' +
+            '<div class="item-meta"><span class="tag ' + (STATE_TAG[s.state] || "stated") + '">' + esc(STATE_LABEL[s.state] || s.state) + '</span> · ' + esc(s.key) +
+            (s.evidence_url ? ' · <a href="' + escAttr(s.evidence_url) + '">Open the linked record</a>' : '') + '</div></div>';
+        }).join("");
+        still = '<details class="door"><summary>Still needed on this page — ' + p.still_needed.length + ' open jobs from the record</summary>' + rows + '</details>';
+      }
+      var action = "";
+      if (p.link && p.link.kind === "live_route") {
+        action = '<a class="pagecard-open" href="' + escAttr(p.link.href) + '">' + esc(p.link.label) + ' →</a>';
+      } else if (p.link && p.link.kind === "pi_area_view" && p.pi) {
+        action = '<a class="pagecard-open" href="#block-rooms" data-area-open="' + escAttr(p.pi.area) + '">' + esc(p.link.label) + ' →</a>';
+      } else if (p.link) {
+        action = '<span class="pagecard-open">' + esc(p.link.label) + '</span>';
+      }
+      return '<div class="pagecard registry-card"><span class="pagecard-name">' + esc(p.name) + '</span>' +
+        '<span class="pagecard-num">' + esc(num) + '</span>' +
+        '<span class="pagecard-sub">' + sub + '</span>' +
+        '<span class="pagecard-sub">' + esc(p.one_line) + '</span>' +
+        '<span class="pagecard-sub">' + esc(routeLine(p)) + '</span>' +
+        action + still + '</div>';
+    }).join("");
+  }
+  function loadRegistry() {
+    fetch("pages.json", {cache: "no-store"})
+      .then(function (res) { if (!res.ok) { throw new Error("HTTP " + res.status); } return res.json(); })
+      .then(function (reg) { renderRegistry(reg); })
+      .catch(function () { renderRegistry(null); });
+  }
+
   function load() {
     fetch("items.json", {cache: "no-store"})
       .then(function (res) { if (!res.ok) { throw new Error("HTTP " + res.status); } return res.json(); })
-      .then(function (data) { render(data); })
+      .then(function (data) { render(data); loadRegistry(); })
       .catch(function () { failState(); });
   }
 
@@ -934,6 +1000,18 @@ function render(data) {
   el("pagesList").addEventListener("click", function (ev) {
     var b = ev.target.closest ? ev.target.closest("[data-page]") : null;
     if (b) { showView(b.getAttribute("data-page")); }
+  });
+
+  el("pageRegistryList").addEventListener("click", function (ev) {
+    var a = ev.target.closest ? ev.target.closest("[data-area-open]") : null;
+    if (!a) { return; }
+    var key = a.getAttribute("data-area-open");
+    if (DATA && DATA.areas) {
+      for (var i = 0; i < DATA.areas.length; i++) {
+        if (DATA.areas[i].area === key) { ev.preventDefault(); openArea(DATA.areas[i]); return; }
+      }
+    }
+    showView("block-rooms");
   });
 
   el("noteSaveBtn").addEventListener("click", function () {
