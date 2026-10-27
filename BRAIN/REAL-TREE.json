@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-27",
-  "receipt_basis_commit": "0a8eabe4f1b2809b12df15fa13bff1fe6814c153",
-  "inventory_file_count": 1708,
+  "receipt_basis_commit": "ce68b652bb481483421815498b2386bef185ba8d",
+  "inventory_file_count": 1709,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 877,
+    "05-MEMORY": 878,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4924,6 +4924,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/team/SN-1883/IB-SMART-NOTE-20261027-sn1883-ultimate-experience-active-intelligence.md",
       "blob_sha": "478b64856aa1c8b3f0028accf2797b85691e3117",
       "size": 4078
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md",
+      "blob_sha": "a92ad113788fc5a1b689e66ef1694a8df9bf7a6c",
+      "size": 17201
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
