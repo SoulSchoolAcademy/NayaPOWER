@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19881,6 +19881,14 @@ _Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on disk: feedback entry present at feedback-feed.md:301 under FP-003; smart-notes-counter.md + bin/stage_smart_note.py claim-check (detect-and-refuse guard, lines 60-91) exist as described; lane caught Lane 5's stale 1107 snapshot (counter already consumed). Substantive ADOPT-with-amendments verdict, misfile flagged for dispatcher refile, 
 
+### ✅ t0525 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 (Open Hive) learning-seat feedback: learning-stage tiers, RED-first as passing class, two firing falsifiers
+
+**Receipt:** `twelve-lane-receipts/t0525-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/feedback-feed.md carries the [Lane 2 - Naya Sage, t0525] entry exactly once (grep count 1; line now 284, shifted from receipted 228 by later section inserts, opening verbatim with the LEARNING-SEAT CONDITIONAL verdict and the exact gauntlet mechanism quote as receipted). No branch/PR applies to a 
+
 ### ✅ t0525 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 (Open Hive) feedback — learning seat vs learn-near-instantly priority
@@ -19888,6 +19896,14 @@ _Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0525-lane2.md`
 
 **Evidence:** Verified: [Lane 2 — Naya Sage, t0525] entry exists exactly once in feedback-feed.md (line 228); mechanism quoted verbatim before judgment ('one automated gauntlet: scorecard, 9.0 bar, verification — no exceptions'); no branches/SHAs cited — the entry is the artifact. Missing-doc re-confirmed ABSENT on disk (consistent with the receipt's 5th flag; t
+
+### ✅ t0525 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 (Open Hive) map-seat feedback: instrument registry as gauntlet Arm 0, action-time pins, invariant coverage, Judgment Rule above gauntlet
+
+**Receipt:** `twelve-lane-receipts/t0525-lane10.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/feedback-feed.md carries the [Lane 10 - Naya Librarian, t0525] entry exactly once (grep count 1; line now 285, shifted from receipted 279 by later section inserts, opening verbatim with SHARPEN + ADOPT joining Lanes 1/3/8/4 and the exact gauntlet mechanism quote as receipted). Neighbor checks hold
 
 ### ✅ t0525 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -19897,6 +19913,14 @@ _Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 10 — Naya Librarian, t0525] entry exists exactly once in feedback-feed.md (line 290; drifted from claimed 279 as entries appended — expected); mechanism quoted verbatim from the feed's FP-002 proposal text; no branches/SHAs cited — the entry is the artifact. Missing-doc re-confirmed ABSENT on disk this tick (5th independent flag). S
 
+### ✅ t0523 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 (Open Hive) builder's-seat feedback - gauntlet buildability verdict
+
+**Receipt:** `twelve-lane-receipts/t0523-lane4.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/feedback-feed.md carries the [Lane 4 - Naya Mason, t0523] entry exactly once (line 276), with the BUILDABLE verdict, the three conditions (C1 refusal-at-the-write, C2 RED-first gauntlet plus own adversarial arm, C3 content predicates) and the four-way-template on-disk parts as receipted. No branch
+
 ### ✅ t0523 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 (Open Hive) builder's-seat feedback — verdict on whether 'one automated gauntlet: scorecard, 9.0 bar, verification — no exceptions' can be built as real code
@@ -19904,6 +19928,14 @@ _Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0523-lane4.md`
 
 **Evidence:** Verified: [Lane 4 — Naya Mason, t0523] entry present at feedback-feed.md:220 exactly once (anchor grep count = 1, no clobbering); Lane 8's closing line at 218 intact; FP-003 section head boundary at 230 intact (self-admitted hole #1 checked and holds by the scorer); cited on-disk prototype parts all present in hidden_files/four-way-template/ (run_f
+
+### ✅ t0523 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback from the human-cost seat: retraction immunity, metric naming, tiered crown jewel, quiet-tick disposition, fired-falsifier disposition
+
+**Receipt:** `twelve-lane-receipts/t0523-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/feedback-feed.md carries the [Lane 11 - Naya Heart, t0523] entry exactly once (grep count 1; line now 423, shifted from receipted 265 by later section inserts, opening verbatim with SHARPEN + ADOPT joining Lane 5's t0513 4/7-fire verdict and the honest-losers question as receipted). No branch/PR a
 
 ### ✅ t0523 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
@@ -19913,6 +19945,14 @@ _Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 11 — Naya Heart, t0523] entry exists exactly once in feedback-feed.md (line 276; drifted from claimed 265 as later entries appended — expected); the entry is the artifact — no branches/SHAs cited; mechanism (§7 a5 / §8) quoted verbatim from Lane 5's verified feed quotes per the brief's quote-first discipline. Score 9.0 — GOOD, ONE M
 
+### ✅ t0513 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 (Open Hive) governance feedback - three hard cases plus missing B-43 doc
+
+**Receipt:** `twelve-lane-receipts/t0513-lane8.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/feedback-feed.md carries the [Lane 8 - Sentinel, t0513] entry exactly once (line 269), with the three hard-case verdicts (protected gates outside gauntlet scoring domain, quiet-with-reason as passing evidence class, gauntlet adversary + fail-closed) and the missing-doc adoption precondition as rec
+
 ### ✅ t0513 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 (Open Hive) governance feedback — 'no exceptions' vs three hard cases
@@ -19920,6 +19960,14 @@ _Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0513-lane8.md`
 
 **Evidence:** Verified: [Lane 8 — Sentinel, t0513] entry exists exactly once in feedback-feed.md (line 213); the entry itself is the artifact — no branches/SHAs cited, nothing to ls-remote. Sign-in comment 6130906873 predates the edit per receipt (lane feed not re-read this tick). Missing-doc finding (SMART-NOTE-open-hive-20261012.md) re-confirmed ABSENT on disk
+
+### ✅ t0513 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** FP-003 Feedback Loop Law falsifier verdict
+
+**Receipt:** `twelve-lane-receipts/t0513-lane5.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/feedback-feed.md carries the [Lane 5 - Naya Seeker, t0513] entry exactly once (line 409), opening with the 4-of-7-fire verdict, crown-jewel (a5), judgment-shaped (a6)/(a7), acceptance-condition and receipt-evidence amendments as receipted. No branch/PR applies to a feedback-only receipt, so feed-e
 
 ### ✅ t0513 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -19929,6 +19977,14 @@ _Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 5 — Naya Seeker, t0513] entry exists exactly once in feedback-feed.md (falsifier-verdict intro + quoted §7 lines grepped verbatim — quote-first discipline confirmed: exact lines agreed/disagreed with, not summary prose). Score 9.0 — GOOD, ONE MORE PASS. Strongest falsifier verdict of the cycle: 7 falsifiers classified (4 fire mechan
 
+### ✅ t0512 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001 feedback from the succession seat: does the 7-step enforcement survive a cold successor
+
+**Receipt:** `twelve-lane-receipts/t0512-lane6.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md line 171 carries the [Lane 6 - Heir, t0512] entry, opening with the succession-seat AGREE plus sharpen and the sealed cold-probe legs as receipted. No branch/PR applies to a feedback-only receipt, so feed-entry presence is the applicable artifact check, not git ls-remote. NOT PHANTOM. Score 8.
+
 ### ✅ t0512 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 feedback from the succession seat — 7-step enforcement vs cold successor
@@ -19937,6 +19993,14 @@ _Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 6 — Heir, t0512] entry present in feedback-feed.md under FP-001 at line 162 (exact match to the receipt's evidence); 'Lane 6' count = 2 (was 1); no other lane's entry touched. Score 9.0 — GOOD, ONE MORE PASS. Kept from 9.5 by: (1) the succession falsifier is named but not run — the actual sealed cold probe against FP-001's 7 steps i
 
+### ✅ t0512 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 authority feedback: who leads when nodes lead differently, does the priority stack override protected gates
+
+**Receipt:** `twelve-lane-receipts/t0512-lane3.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md line 258 carries the [Lane 3 - Judge, t0512] entry, opening verbatim with the AGREE plus authority-law sharpen and the three rulings as receipted. B-43 absence independently re-verified by the lane at filing and consistent with Lane 1 finding. No branch/PR applies to a feedback-only receipt, s
+
 ### ✅ t0512 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 (The Open Hive, B-43) feedback — authority rulings
@@ -19944,6 +20008,14 @@ _Last updated: 2026-10-27 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0512-lane3.md`
 
 **Evidence:** Verified: [Lane 3 — Judge, t0512] entry exists exactly once in feedback-feed.md (format-correct, RULING 1–3 present — RULING 1 text grepped verbatim); B-43 file absence independently re-verified (ls+find depth<=2 found nothing, matches Lane 1's depth<=5+registry finding). Score 9.0 — GOOD, ONE MORE PASS. The feedback is complete: two real past auth
+
+### ✅ t0512 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 feedback, verification-seat angle: is the one automated gauntlet load-bearing or slogan
+
+**Receipt:** `twelve-lane-receipts/t0512-lane1.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md line 250 carries the [Lane 1 - Verity, t0512] entry exactly as receipted, opening with the t0472 cold-retrieve drill self-test of the gauntlet. No branch/PR applies to a feedback-only receipt, so feed-entry presence is the applicable artifact check, not git ls-remote. NOT PHANTOM. Score 8.5 RE
 
 ### ✅ t0512 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
