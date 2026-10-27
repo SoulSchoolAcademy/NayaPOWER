@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 01:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -32769,6 +32769,20 @@ _Last updated: 2026-10-27 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-gap-t0162-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on H9 round 2: close population-closure gap by deeper root cause (v5 dispatch death at t0472/t0482, replacement mechanism emits no lane-pick decisions)
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0162-lane2-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: receipt gap-gap-t0162-lane2-lane2.md exists; sealed instrument lane-2/gap-t0162-lane2/measure_h9r2.py sha256 3cdc590e7627f48666fa3ec85b607bf798f45fdbaa39b01d62bc2f95c729ff81 exactly matches parent pin; rerun file lane-2/gap-t0162-lane2-lane2/h9r2-rerun-20261026.json sha256 8b4c76f76faa2d61bea5dce1be3e2c86a5ddd
+
+### ✅ gap-t0162-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 2, NOT CLOSED, honest gate stop
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/lane-2/gap-t0162-lane2/measure_h9r2.py sha256 3cdc590e7627f48666fa3ec85b607bf798f45fdbaa39b01d62bc2f95c729ff81 exactly matches receipt pin; pins-real.json sha256 7c48835d4cafb40a488ec48a993aabde7a68f172503d9f5e34ea98265b443dff exactly matches; snapshot data/ holds 24 files; independent recomputati
+
 ### ✅ gap-t0112 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** GAP RECEIPT parent t0112 - DRY GATE RE-RUN, DURABLE
@@ -37514,6 +37528,20 @@ _Last updated: 2026-10-27 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-gap-t0172-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up on t0172-lane1: strip 6 fixture lines from live drift ledger + live-head refresh mechanism
+
+**Receipt:** `twelve-lane-receipts/gap-gap-t0172-lane1-lane1.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes + git protocol: live history sgf_history.jsonl sha256 ae216d01639acc06c4ce07ada0514dca1e67650342af557ff9236ff0a0b2e4b4 at 9 lines, zero 2099 lines, first 9 lines byte-identical (cmp) to the 15-line backup 826d4da1296c38eca9033c39b75a40f3dbdf934a4bccc898cdecfa86edbdcb44; wrapper run-pinned-test-live-head.py b429
+
+### ✅ gap-t0172-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap close on t0172-lane1: M6 swallower re-verification on current bytes + RISK_CAP settled to a number
+
+**Evidence:** Verified from live bytes: receipt file exists; all hash pins re-derived and MATCH (runner c0398bef742103b9, SPEC 777c708c12c8b3ad, test 53711d981eece388 byte-identical, history 826d4da1296c38ec at 15 lines); rerun log 6/6 PASS with live head ca1cc31ebc79 vs pinned test head 41dfc86e (stale, confirmed moved exactly one commit); decision file 2026102
 
 ### ✅ addendum-t1522-lane12-scorer-score — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
