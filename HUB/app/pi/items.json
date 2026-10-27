@@ -1,21 +1,21 @@
 {
  "file": "pi-items-snapshot",
- "generated_at": "2026-10-26T23:49:16Z",
- "generated_by": "Naya Resolve \u2014 PI face v3 build pass (branch face-v3-resolve-20261026)",
+ "generated_at": "2026-10-27T02:45:35Z",
+ "generated_by": "Naya Resolve \u2014 PI face v3 data refresh (branch face-v3-resolve-20261026)",
  "provenance": {
-  "rows": "public.work_items via sb-api GET (read-only), fetched 2026-10-26T23:49:16Z",
+  "rows": "public.work_items via sb-api GET (read-only), fetched 2026-10-27T02:45:35Z",
   "dedup": "readiness-dataset survivor rule: evidence+prover, then most advanced state, then fuller next action, then canonical-project row",
   "areas": "pi-readiness-dataset-2026-10-26.machine.json area_mapping (derived 2026-10-26 ~20:40Z) \u2014 PREPARATION ONLY, not applied to the production record; keys created after it are honestly unplaced",
   "workstreams": "pi-full-inventory-2026-10-26.machine.json (curated layer, labelled as curation where rendered)"
  },
- "snapshot_note": "Snapshot, not the live feed: this face renders a dated snapshot of the work record (generated 2026-10-26T23:49:16Z), because the live rows endpoint does not exist yet \u2014 serving it is Power's publisher work. Every number below recomputes from this file's items; nothing is typed by hand.",
+ "snapshot_note": "Snapshot, not the live feed: this face renders a dated snapshot of the work record (generated 2026-10-27T02:45:35Z), because the live rows endpoint does not exist yet \u2014 serving it is Power's publisher work. Every number below recomputes from this file's items; nothing is typed by hand.",
  "counts": {
-  "rows_read": 368,
-  "unique": 343,
+  "rows_read": 374,
+  "unique": 349,
   "by_state": {
-   "queued": 202,
+   "queued": 207,
    "needs_shawn": 8,
-   "in_progress": 79,
+   "in_progress": 80,
    "verifying": 17,
    "done_proven": 33,
    "blocked": 4
@@ -23,7 +23,7 @@
   "done_proven": 33,
   "ownerless": 140,
   "ownerless_open": 117,
-  "unplaced": 13
+  "unplaced": 19
  },
  "area_labels": {
   "pi-hub": "Project Intelligence & the Hub",
@@ -128,7 +128,7 @@
   {
    "area": "unplaced",
    "tone_idx": 12,
-   "items": 13,
+   "items": 19,
    "done_proven": 0,
    "ownerless": 0
   }
@@ -656,21 +656,63 @@
    "title": "Shawn's pages drop (NAYA PAGES zip, 2026-10-26): cross-referenced, aligned, filed",
    "state": "in_progress",
    "actor": "cpi-publisher",
-   "when": "2026-10-26T23:41:43.814118+00:00"
+   "when": "2026-10-27T02:41:30.550832+00:00"
   },
   {
    "key": "seats-feedback-round-20261026",
    "title": "Seats feedback round \u2014 Power 10/10 report + Resolve ten-by-ten + scorecard + merges plans + wiring plan, adopted + reconciled",
    "state": "in_progress",
    "actor": "cpi-publisher",
-   "when": "2026-10-26T23:41:43.814084+00:00"
+   "when": "2026-10-27T02:41:30.550787+00:00"
   },
   {
    "key": "identity-flagship-fixes-20261026",
    "title": "Identity flagship fixes \u2014 CERTIFICATE white text + ENTER/INSTALL ignition proof + Welcome one surface",
    "state": "in_progress",
    "actor": "cpi-publisher",
-   "when": "2026-10-26T23:41:43.813932+00:00"
+   "when": "2026-10-27T02:41:30.550647+00:00"
+  },
+  {
+   "key": "hub-notification-sounds-toggle-20261027",
+   "title": "Notification sounds: an on/off choice for citizens who want to hear their notifications",
+   "state": "queued",
+   "actor": null,
+   "when": "2026-10-27T01:06:21.603187+00:00"
+  },
+  {
+   "key": "smart-mail-email-notifications-optin-20261027",
+   "title": "Smart Mail email notifications - optional, opt-in only, by the citizen's choice",
+   "state": "queued",
+   "actor": null,
+   "when": "2026-10-27T01:03:31.855595+00:00"
+  },
+  {
+   "key": "hub-mail-notifications-badge-popup-20261027",
+   "title": "Hub notifications: unread mail count on the mail icon + a pop-up when mail arrives",
+   "state": "queued",
+   "actor": null,
+   "when": "2026-10-27T01:03:31.187092+00:00"
+  },
+  {
+   "key": "smart-mail-scheduler-20261027",
+   "title": "Smart Mail scheduler: schedule a mail once a day, once a week, or at any chosen time",
+   "state": "queued",
+   "actor": null,
+   "when": "2026-10-27T01:00:50.966551+00:00"
+  },
+  {
+   "key": "smart-mail-auto-welcome-intro-20261027",
+   "title": "Smart Mail: automatic welcome + introduction mail by default for every new citizen",
+   "state": "queued",
+   "actor": null,
+   "when": "2026-10-27T01:00:50.232114+00:00"
+  },
+  {
+   "key": "naya-design-mastery-doctrine-20261027",
+   "title": "NAYA DESIGN MASTERY V1 \u2014 the team design-mastery playbook: nine differentiators, the seconds test, ACTIVE INTELLIGENCE (elevated, sensible, organized)",
+   "state": "in_progress",
+   "actor": "naya-resolve",
+   "when": "2026-10-27T00:10:36.342503+00:00"
   },
   {
    "key": "social-feeds-membership-scopes-20261026",
@@ -713,48 +755,6 @@
    "state": "queued",
    "actor": null,
    "when": "2026-10-26T21:23:22.126286+00:00"
-  },
-  {
-   "key": "app-creation-placement-20261026",
-   "title": "Apps born from the walkthrough appear at TOP of sidebar and enter Smart Tabs automatically",
-   "state": "queued",
-   "actor": "naya-gpt6",
-   "when": "2026-10-26T21:21:36.707934+00:00"
-  },
-  {
-   "key": "membership-system-20261026",
-   "title": "Membership system: any Personal/Business/Space app opens a membership area (paid-tier button)",
-   "state": "queued",
-   "actor": "naya-gpt6",
-   "when": "2026-10-26T21:21:35.885836+00:00"
-  },
-  {
-   "key": "nayanet-whole-picture-synthesis-20261026",
-   "title": "The whole picture: one ultimate of everything \u2014 director page-review synthesis",
-   "state": "in_progress",
-   "actor": null,
-   "when": "2026-10-26T21:21:35.277738+00:00"
-  },
-  {
-   "key": "waste-nitro-director-pass-2026-10-26",
-   "title": "Zero-output loop: nitro-director-pass \u2014 20 runs today, 0 verified transitions",
-   "state": "queued",
-   "actor": "detector-zero-output",
-   "when": "2026-10-26T19:42:46.555734+00:00"
-  },
-  {
-   "key": "naya-code-completion-20261026",
-   "title": "Complete The Naya Code \u2014 executable behavior, not another document (#2245 program)",
-   "state": "in_progress",
-   "actor": "resolve",
-   "when": "2026-10-26T19:19:56.556202+00:00"
-  },
-  {
-   "key": "waste-naya-sync-watchdog-2026-10-26",
-   "title": "Zero-output loop: naya-sync-watchdog \u2014 20 runs today, 0 verified transitions",
-   "state": "queued",
-   "actor": "detector-zero-output",
-   "when": "2026-10-26T19:12:21.481904+00:00"
   }
  ],
  "items": [
@@ -4209,6 +4209,40 @@
    "state_changed_at": "2026-10-26T01:26:39.531017+00:00"
   },
   {
+   "key": "hub-mail-notifications-badge-popup-20261027",
+   "title": "Hub notifications: unread mail count on the mail icon + a pop-up when mail arrives",
+   "state": "queued",
+   "owner": "naya-power",
+   "priority": 920,
+   "next_action": "Badge unread count on Hub mail icon + pop-up on new mail arrival.",
+   "blocker": null,
+   "evidence_url": null,
+   "maker": null,
+   "prover": null,
+   "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "area": null,
+   "area_confidence": null,
+   "updated_at": "2026-10-27T01:03:31.187092+00:00",
+   "state_changed_at": "2026-10-27T01:03:31.187092+00:00"
+  },
+  {
+   "key": "hub-notification-sounds-toggle-20261027",
+   "title": "Notification sounds: an on/off choice for citizens who want to hear their notifications",
+   "state": "queued",
+   "owner": "naya-power",
+   "priority": 890,
+   "next_action": "Add notification sound on/off toggle (default OFF) to notification settings.",
+   "blocker": null,
+   "evidence_url": null,
+   "maker": null,
+   "prover": null,
+   "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "area": null,
+   "area_confidence": null,
+   "updated_at": "2026-10-27T01:06:21.603187+00:00",
+   "state_changed_at": "2026-10-27T01:06:21.603187+00:00"
+  },
+  {
    "key": "hub-single-source-cure-20261026",
    "title": "P0: Hub home overwritten by repo monolith \u2014 restore + single-source cure",
    "state": "in_progress",
@@ -4256,7 +4290,7 @@
    "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
    "area": null,
    "area_confidence": null,
-   "updated_at": "2026-10-26T23:41:43.813932+00:00",
+   "updated_at": "2026-10-27T02:41:30.550647+00:00",
    "state_changed_at": "2026-10-26T23:19:23.129194+00:00"
   },
   {
@@ -4462,6 +4496,23 @@
    "area_confidence": "low",
    "updated_at": "2026-10-26T19:19:56.556202+00:00",
    "state_changed_at": "2026-10-26T19:19:56.556202+00:00"
+  },
+  {
+   "key": "naya-design-mastery-doctrine-20261027",
+   "title": "NAYA DESIGN MASTERY V1 \u2014 the team design-mastery playbook: nine differentiators, the seconds test, ACTIVE INTELLIGENCE (elevated, sensible, organized)",
+   "state": "in_progress",
+   "owner": "naya-resolve",
+   "priority": 965,
+   "next_action": "Seats read + build by it; rip-aparts begin with alignment campaign; PR #3101 to scorecard; mail waits on PI pulse.",
+   "blocker": null,
+   "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3101",
+   "maker": "naya-resolve",
+   "prover": null,
+   "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "area": null,
+   "area_confidence": null,
+   "updated_at": "2026-10-27T00:10:36.342503+00:00",
+   "state_changed_at": "2026-10-27T00:10:36.342503+00:00"
   },
   {
    "key": "nayanet-whole-picture-synthesis-20261026",
@@ -5723,7 +5774,7 @@
    "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
    "area": null,
    "area_confidence": null,
-   "updated_at": "2026-10-26T23:41:43.814084+00:00",
+   "updated_at": "2026-10-27T02:41:30.550787+00:00",
    "state_changed_at": "2026-10-26T23:19:23.129194+00:00"
   },
   {
@@ -5791,7 +5842,7 @@
    "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
    "area": null,
    "area_confidence": null,
-   "updated_at": "2026-10-26T23:41:43.814118+00:00",
+   "updated_at": "2026-10-27T02:41:30.550832+00:00",
    "state_changed_at": "2026-10-26T23:18:26.286405+00:00"
   },
   {
@@ -5844,6 +5895,57 @@
    "area_confidence": "high",
    "updated_at": "2026-10-26T01:52:29.353574+00:00",
    "state_changed_at": "2026-10-26T15:11:07.203748+00:00"
+  },
+  {
+   "key": "smart-mail-auto-welcome-intro-20261027",
+   "title": "Smart Mail: automatic welcome + introduction mail by default for every new citizen",
+   "state": "queued",
+   "owner": "naya-power",
+   "priority": 905,
+   "next_action": "Design default welcome+intro mail; trigger on account claim.",
+   "blocker": null,
+   "evidence_url": null,
+   "maker": null,
+   "prover": null,
+   "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "area": null,
+   "area_confidence": null,
+   "updated_at": "2026-10-27T01:00:50.232114+00:00",
+   "state_changed_at": "2026-10-27T01:00:50.232114+00:00"
+  },
+  {
+   "key": "smart-mail-email-notifications-optin-20261027",
+   "title": "Smart Mail email notifications - optional, opt-in only, by the citizen's choice",
+   "state": "queued",
+   "owner": "naya-power",
+   "priority": 895,
+   "next_action": "Add opt-in email notifications setting (off by default, citizen's choice).",
+   "blocker": null,
+   "evidence_url": null,
+   "maker": null,
+   "prover": null,
+   "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "area": null,
+   "area_confidence": null,
+   "updated_at": "2026-10-27T01:03:31.855595+00:00",
+   "state_changed_at": "2026-10-27T01:03:31.855595+00:00"
+  },
+  {
+   "key": "smart-mail-scheduler-20261027",
+   "title": "Smart Mail scheduler: schedule a mail once a day, once a week, or at any chosen time",
+   "state": "queued",
+   "owner": "naya-power",
+   "priority": 900,
+   "next_action": "Spec scheduler: daily/weekly/custom send times + outbox queue.",
+   "blocker": null,
+   "evidence_url": null,
+   "maker": null,
+   "prover": null,
+   "project_id": "a554e536-66a6-4808-8c36-988f13d9f394",
+   "area": null,
+   "area_confidence": null,
+   "updated_at": "2026-10-27T01:00:50.966551+00:00",
+   "state_changed_at": "2026-10-27T01:00:50.966551+00:00"
   },
   {
    "key": "smart-notes-file-to-live-proof-20261026",
