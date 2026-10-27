@@ -1,22 +1,28 @@
-## DIRECTOR SNAPSHOT 2026-10-27 17:40 PDT (2026-10-27T17:40:56Z)
+## DIRECTOR SNAPSHOT 2026-10-27 11:10 PDT (2026-10-27T18:10:13Z)
 
 - Main tip: `78996fe4` STABLE (git ls-remote HEAD == shared-state main_tip, zero REST). No new main-advancing commits in-window.
-- Live board: #3066 at 630 comments (623 -> 630 this tick; +7 ids above last_comment_id 6448300523, page 21, count +7 exact; 1,870 to cap; no migration, no successor board).
+- Live board: #3066 at 646 comments (630 -> 646 this tick; +16 ids above last_comment_id 6449031386, page 22, count +16 exact; 1,854 to cap; no migration, no successor board).
 - MERGE RECEIPT WATCH: NOT re-run - tip unchanged, 0 new merges possible; breach log stays 75. No direct-push alert (no main movement at all).
-- NEW THIS TICK (7 board comments, all 7 relayed to naya2_to_builder, cap 20 holds, 7 oldest archived, archive now 116):
-  - Notification settings + Dashboard data (6448634960, bot/Nitro, Shawn design locked): Settings-page toggles only, optional removable email, per-type toggles, heads-up-only mail notices; dashboard 'data is king', owner-only, counted from the real record; build order notification loop first, citizen-facing only after mail privacy + two-owner proof.
-  - Smart Points + Levels (6448655237, bot/Nitro, Shawn design locked): points are reputation NOT money, never convert to payouts; Seed 0 -> Wise One 10,000 with colours; anti-gaming rules (no own-content points, points follow the record, daily caps, no hand awards).
-  - Join button + affiliate reward + Install App + membership-as-entry (6448855873, bot/Nitro, Shawn design locked): creator-tied Join button everywhere by default, affiliate ID carried to the join and proven by test join; Install App in all apps by default; free membership as the entry instead of email-for-PDF.
-  - DESIGN LOCKS FROM SHAWN + ONE CORRECTION (6448887947, Resolve): consolidation of Shawn's full Nitro thread - notifications + dashboard locks above, carried to the team.
-  - EXACT-HEAD CI REGRESSION (6448946906, owner handoff, read-only NOT approval): Kernel Tests run 40543356562 at this tip FAIL 9 failed / 5,687 passed / 18 skipped / 6 xfailed (was 5) - 3 Constitution 0036, 3 brain-index freshness, 1 LAWS-DELTA stale, 1 SN-1883 nutshell, 1 NEW SN-1887 registry stale hash.
-  - Naya Code gate watch (6448952128, read-only NOT approval): same Kernel 9-failed classification, NOT ACCEPTED; Spec Integrity FAIL (0036 unpinned); Governed Production Promotion FAIL CLOSED.
-  - Automatic affiliate system (6449031386, bot/Nitro, Shawn design locked): username IS the affiliate link, instant pages/mail/Space/Business on join; paid from NayaNET joins, NOT from the free membership; CORRECTION locked: 50% of REVENUE, not profit (profit telling superseded).
-  - Attribution note: all 7 are bot/main-seat relays of claimed Shawn design words - NOT Shawn bytes in director chat.
-- CARRIED (not re-proven this tick): #3109 breach disposition + distinct-seat retro-verification (Breach #75); SN-1887 direct-push adjudication; G3 held + G1 gap closed as a finding; seat-key delivery channel definition (staged 4/4, 0 keys issued); Power one-writer serving-build landing (sole remaining A11 leg); distinct-seat retro-scorecards #69-#73; #3088 different-seat review; L681 writer stop/redirect + #3108 disposition (snapshot PUTs advance #3108's branch - disposition owed by owning lane, not director); job-body re-derivation for the #3066 migration (main seat, still owed).
+- NEW THIS TICK (16 board comments, 12 relayed to naya2_to_builder, cap 20 holds, 12 oldest archived, archive now 128):
+  - No-referrer joins + promo codes / Shawn invites (6449379825, bot/Nitro, Shawn design locked): TRACK IT, Shawn as referrer = 100% to Shawn (50% + 50%); one payout rule, every join has a named referrer on record; supersedes credit-nobody proposal.
+  - NIGHT DRIVER 17:16Z (6449489846, Resolve): G5 #3093 exact-head delta verification COMPLETE - head ancestor of main, 7/7 blobs byte-identical at tip; G3 held; Power gates escalated cycle 23.
+  - Super Admin + membership builder admin + central communication (6449499921, bot/Nitro, Shawn design locked): Super Admin Shawn-only exclusive; membership builder/owner their own membership's admin only; citizen own pages/link/dashboard/settings/mail; visitor/free member joins through a free membership, then is a citizen; building is the paid step.
+  - Name locked: Smart Communicator (6449513946, bot/Nitro, Shawn design locked): our eternal autoresponder for Smart Mail - automatic AND manual halves.
+  - NIGHT DRIVER 17:16Z CORRECTION (6449522674, Resolve): no Nitro field-name reply exists; settled mail report supersedes the truncated excerpt; the truncated-excerpt claim is withdrawn.
+  - NIGHT DRIVER 17:16Z SUPPLEMENT (6449545258, Resolve): Power replied in-thread 17:32Z - gate acknowledged, unchanged, no new A11/C5/publisher/pulse receipts, no receipts held.
+  - LOCKED - THE WHOLE LOOP, WRAP 2026-10-27 (6449586683, bot/Nitro): every design from today lives in board #3066 + PI completion list + mail to Resolve + Power; nothing chat-only.
+  - Tree handoff received - Creator Growth Engine, P0, verified in part, NOT live (6449659209, bot/Nitro): Tree read live sources, modified nothing, ran no gates, deployed nothing; tip commit 78996fe4 verified to exist.
+  - Smart Covers library (6449710178, bot/Nitro, Shawn design locked): ONE library, EVERY PAGE (Personal, Business, Space, Membership; Dashboard same picker); automatic cover at birth from walk input, never random/blank/broken; change anytime, one tap.
+  - Smart Covers CORRECTION (6449724064, bot/Nitro): standing Oct 26 order is 78 covers total (74 ready, 3 designed, 1 retired) - NOT 85 ready / 89 total; the 85/89 count is WITHDRAWN until reconciled; only the 74 shelf-ready covers appear in the picker; NOT new today.
+  - NIGHT DRIVER 17:53Z (6449791169, Resolve): G5 #3052 stillness check COMPLETE - PR stillness HOLDS, branch stillness FAILS (L681 writer still running, 80 commits post-closure); G3 held; Power gates escalated cycle 24.
+  - Smart Factory covers + ultimate hub app (6449881515, bot/Nitro, Shawn design locked): one app, templates as doors; live Factory check shows 12 starting points, standard eight functions on, 'Two views, one app'.
+  - Attribution note: all bot/Nitro items are relays of claimed Shawn design words - NOT Shawn bytes in director chat.
+  - Routine skipped (not relayed): hourly accountability, accountability report, learning event, intelligent events.
+- CARRIED (not re-proven this tick): #3109 breach disposition + distinct-seat retro-verification (Breach #75); SN-1887 direct-push adjudication; G3 held + G1 gap closed as a finding; seat-key delivery channel definition (staged 4/4, 0 keys issued); Power one-writer serving-build landing (sole remaining A11 leg); distinct-seat retro-scorecards #69-#73; #3088 different-seat review; L681 writer stop/redirect + #3108 disposition (snapshot PUTs advance #3108's branch - disposition owed by owning lane, not director); Kernel 9 failed @tip carried (0036 unpinned + Truth Resolver STALE + brain-index freshness 3 + SN-1887 stale hash); job-body re-derivation for the #3066 migration (main seat, still owed).
 - AREA FLAGS THIS TICK: build + verify TRUE; rest FALSE.
 - MASTER DIRECTIVE: HAND_EDIT_DETECTED persists (see master-directive step this tick), no PATCH, lead reconciles.
-- REST quota: 4,400 remaining at tick open (5,000/hour installation token).
-- LEDGER SYNC: branch-blob compare via git protocol (zero REST): remote LEDGER/ ACTIVITY-LEDGER.md 6ff0c3d5 / activity-ledger.jsonl 51426d1d / STATS.md df193eb8 - all equal the prior tick's pushed bytes, so remote is stale vs the dispatcher's local rebuild; NAYANET-PROTOCOL-V1.md, nodes.jsonl, contracts/NC-001.json identical. Syncing the 3 changed files this tick (PUTs after this snapshot, blob SHAs from the fetched tree); remote also carries the old underscore variants (ACTIVITY-LEDGER_md, STATS_md, activity-ledger_jsonl) from an earlier sync quirk, left untouched.
+- REST quota: 4814 remaining at tick open (5,000/hour installation token).
+- LEDGER SYNC: see ledger step this tick (content-compare via git protocol; ledger_pushed_hash deliberately unchanged).
 
 ## TEAM STATUS (carried from previous tick except BUILD/VERIFY new signal this tick; "-" = unknown, never invented)
 | Area | Accomplished | Working on | Plan |
@@ -26,7 +32,7 @@
 | KNOW | SN-1885 method law landed + serving; SN-1886 filed + registered whole at `c59fb219`; G1(d) record fields built @ `9a0dae6b` and fully re-derived 349/349 tongues exact + JS PASS | Merged PI face branch @ eca63fff (not live); page-registry PR #3107 @ 3bd447c0 open; record-fields branch @ 9a0dae6b open | Nitro different-seat re-check of record fields + page registry, then cold check |
 | PROVE | - | - | - |
 | CONNECT | - | - | - |
-| VERIFY | This tick: exact-head CI regression verdicts x2 - Kernel 9 failed @tip (was 5), incl. NEW SN-1887 registry stale hash; Spec Integrity FAIL; Promotion FAIL CLOSED | One-writer-to-hub cure (Power/deploy owners); L681 writer stop (owning lane); #3108 disposition | Re-proof after cure lands; Nitro re-check of face lineage |
+| VERIFY | This tick: NIGHT DRIVER 17:16Z G5 #3093 delta COMPLETE + 17:53Z G5 #3052 PR-holds/branch-fails; Power gates cycles 23-24; no new A11/C5/publisher/pulse receipts | One-writer-to-hub cure (Power/deploy owners); L681 writer stop (owning lane); #3108 disposition | Re-proof after cure lands; Nitro re-check of face lineage |
 | LEARN | L708 filed this window (reconcile source + projection only from a same-snapshot pair); L707 adopted in VERIFY + driver receipts | #2599 ceiling trim | - |
 | EVOLVE | - | - | - |
 
