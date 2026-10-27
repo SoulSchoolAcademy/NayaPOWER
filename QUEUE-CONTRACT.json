@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-27T20:24:28Z",
-  "tip": "391638b043b1234309ede2d39c21f8dbabd79607",
+  "generated_at": "2026-10-27T21:24:37Z",
+  "tip": "4dde3c1facdbfa9330171d908f45d9ef0c784ac0",
   "prs": [
     {
       "number": 2981,
@@ -46,7 +46,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "e84d5e57e0a47aee1f14a97351cefb5c0185e07e"
+      "head": "0d185abd1b26537c5131e39feec4eab260ad60c8"
+    },
+    {
+      "number": 3111,
+      "title": "Door-obligation cure: capture + registry entries for SN-1888/SN-1889",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "ab3df9e960ad8891aa827124a3dc59c89a7f7e1c"
     }
   ]
 }
