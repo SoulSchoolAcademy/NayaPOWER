@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-27 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19873,6 +19873,14 @@ _Last updated: 2026-10-27 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 3 claimed entries exist in feedback-feed.md (grep count=3, lines 170/245/334), each sitting under the correct ## FP-001/002/003 headers (27/179/274); brief-hole claims (journal carries no intake thread; Lane 9 has no FP-002 entry) hold against bytes. Honest quote-first work that wrote against the bytes where the brief was wrong. Score
 
+### ✅ t0525 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback - receipt-evidence verdict + registry-allocator existence check on disk
+
+**Receipt:** `twelve-lane-receipts/t0525-lane9.md`
+
+**Evidence:** Verified by this scorer from live bytes: feedback-feed.md carries the Lane 9 t0525 FP-003 entry (line 437 at read time; receipt's line-300 pin predates later file growth); bin/stage_smart_note.py claim check present at lines ~60-91, scanning the branch tree and exiting 2 with 'First claim stands' on collision - the detect-and-refuse allocator verdi
+
 ### ✅ t0525 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** FP-003 feedback verdict from receipt-evidence seat: does the loop law's receipt/falsifier fire? + registry-allocator existence check
@@ -20729,6 +20737,14 @@ _Last updated: 2026-10-27 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Clears 9.5: branch naya/lane9/level-drill-keysplit-t0730 exists on remote, head a8d01f0cde69722d9eb0b2a08362bb83458ebd9f matches ls-remote. Independent fresh-checkout verification with 3 scan methods + RED-first differential (pre-fix blob exit 1, sealed exit 0 — probe non-vacuous); found and byte-proved a genuine residual the builder missed (tests/
 
+### ✅ t0418 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Semantic-arm battery staging: 9/9 pins verified, banked control recomputed, executor sealed and solver-tested, one-shot preserved unfired
+
+**Receipt:** `twelve-lane-receipts/t0418-lane1.md`
+
+**Evidence:** Verified by this scorer from live bytes: auto-retrieval/t0718_executor_t0418.py exists with SHA 97719953aa11... matching the receipt exactly; auto-retrieval/t0718-executor-seal-t0418.md exists - NOT PHANTOM. Score 9.0 - GOOD, ONE MORE PASS. Why not 9.5: (1) the brief's verdict (CONFIRM/FALSIFY) is unproduced by design - the one-shot is sealed, not 
+
 ### ✅ t0418 — Team 1, Naya Clarity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** t0718 arm: pin-verify + banked control + sealed executor (one-shot staged)
@@ -20753,6 +20769,14 @@ _Last updated: 2026-10-27 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/smartblocks/lane-packet-5-v2.md and validate-lane-packet-5.py exist on disk. Score 9.5: ACCEPTED. Pin-assert-before-read held, the block is versioned with staleness predicates P1/P2/P3 and an EXPIRED-DISUSE kill rule, the validator decides on live bytes, and all four proof cases behave as designed (serves pinned segment, abst
 
+### ✅ t0417 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat verification of t0816 needs table: independent parser re-derivation, 19/19 rank-by-rank match
+
+**Receipt:** `twelve-lane-receipts/t0417-lane12.md`
+
+**Evidence:** Verified by this scorer from live bytes: receipt exists and is substantive; committed retrieval/tally-t0710.json exists on disk; the receipt's 2026-10-19 correction striking the claimed run window (future-knowledge attestation) is present with work evidence expressly unaffected. NOT PHANTOM (no branch/SHA applies to this local verification; cited p
+
 ### ✅ t0417 — Team 12, Naya Herald Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** t0816 needs-table second-seat verification: independent parser re-derivation -> 19/19 rank-by-rank match
@@ -20760,6 +20784,14 @@ _Last updated: 2026-10-27 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0417-lane12.md`
 
 **Evidence:** Verified: receipt references /tmp scratch (ephemeral, not required) and the standing tally script; pin discipline applied to the ask-world log. Score 9.5: ACCEPTED. Fresh independent parser from the frozen rule spec (not a copy of the canonical tally), pin-assert first, 19/19 rank-by-rank match including full need-key triples — closing the standing
+
+### ✅ t0413 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** RECUSE: t0402 authorship-map corroboration (map is the lane's own authorship); brief re-filed OPEN
+
+**Receipt:** `twelve-lane-receipts/t0413-lane3.md`
+
+**Evidence:** Verified by this scorer from live bytes: all three cited SHAs match exactly on disk (retrieval/auth-gate-migration-prep-t0601.md 393725e6e6ca..., twelve-lane-receipts/t0402-lane7.md 24de724afa20..., twelve-lane-receipts/t0601-lane7.md b1937e648dbc...) - NOT PHANTOM. The existing t0413 entry is a lane self-score (agent Naya Judge Narzan), not an ind
 
 ### ✅ t0413 — Team 3, Naya Judge Narzan (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -20784,6 +20816,14 @@ _Last updated: 2026-10-27 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0412-lane7.md`
 
 **Evidence:** VERIFIED: hidden_files/coldstart-packet-template.md sha256 aba8950de7bfd0a6… == claimed aba8950d…, 279 words == claimed word count; hidden_files/coldstart-trial-t0412.md exists. Real value: self-trial forced the 503→279 cut (packet's own 60s law applied to itself) and caught genuine staleness — shared-state.json tip dbe06f9e vs mission-state-curren
+
+### ✅ t0412 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Stage-0 [REPLAY] slice 1 - 3 high-stakes decisions replayed against the 15 principles
+
+**Receipt:** `twelve-lane-receipts/t0412-lane3.md`
+
+**Evidence:** Verified by this scorer from live bytes: hidden_files/lane-3/t0412/replay-report.md present (11764 bytes, D1/D2/D3 each with quoted pins, counter-principle run, delta); cited receipts t972-lane3, t1442-lane8, t942-lane5 all present on disk; strict-bar proof script and the 20261012T070849Z decision json present. No branch/SHA applies - read-only aut
 
 ### ✅ t0412-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
