@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-27T03:24:59Z",
-  "tip": "2f769c86f8225366b439b8992613d7e1a7c7857e",
+  "generated_at": "2026-10-27T04:24:49Z",
+  "tip": "74f909202e71399b3851d32a69d3ab8defaaab03",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "aba4465e6a414fc1c051a4d29176321174988fd4"
+      "head": "1527e477a947b228dd34f84e72b852221cd9980a"
     },
     {
       "number": 3052,
@@ -19,7 +19,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "262236e063752ea123e85c25471ebb7b456e3354"
+      "head": "7d1653c5ae51a3253c154dfd301e1e927ae606be"
     },
     {
       "number": 3088,
@@ -38,33 +38,6 @@
       "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "2523ef3d5de2875b4dd539808ab747d0c1bfaaca"
-    },
-    {
-      "number": 3101,
-      "title": "NAYA DESIGN MASTERY V1 \u2014 the team design-mastery playbook (Shawn's directive, three tongues)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "e9b635fd75999abf175a996cb016f69e7a6be61f"
-    },
-    {
-      "number": 3102,
-      "title": "docs(pi): capture one-minute human intelligence principle",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "0e6f167bee83932405417215edbfe620e6f35fdd"
-    },
-    {
-      "number": 3103,
-      "title": "PI readiness dataset 2026-10-26 \u2014 source files for re-read (Resolve)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "d2aefed12422fc74b301551153f1126f45f96a07"
     }
   ]
 }
