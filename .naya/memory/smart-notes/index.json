@@ -15875,13 +15875,33 @@
         "note": "published directly as a BRAIN projection in commit 391638b043b1234309ede2d39c21f8dbabd79607 ('Smart Note SN-1889: How We Will Build the Secure Network — Official Implementation Report') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "44efb2409c569dd8e027c61d080682467de07276bf99c1ce9ae00669b6871bd1"
+    },
+    {
+      "smart_note_id": "SN-1890",
+      "intelligent_block_id": "IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity",
+      "title": "The Law of Truth-Seeking and Curiosity",
+      "content_hash": "69bd1c88f19e1275c6fde48e500b6ffe2031bc4baf321f34e2df7340b254ebed",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/truth-seeking/SN-1890/IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "TRUTH_SEEKING",
+      "captured_at": "2026-10-27",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 883d45ec1b820d9f2a168dc89d5f6475bc336b17 ('Merge pull request #3112 from SoulSchoolAcademy/naya2/team-dashboard') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "f31a5ba1d31e0e0c943abf1eda9d3fc7417b8ae7fe7efa4de33751213525721f"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1890,
+    "next_sequence": 1891,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   },
-  "corpus_manifest_hash": "1c69595d2908302b4feea41234b1be9512eb613e3d661d5b74d61c318744954e"
+  "corpus_manifest_hash": "64e40d818e01eaff7f1753fc98bb4ff1cc4ed7e38df31245d7b4905226abde58"
 }

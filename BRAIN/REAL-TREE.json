@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-27",
-  "receipt_basis_commit": "391638b043b1234309ede2d39c21f8dbabd79607",
-  "inventory_file_count": 1713,
+  "receipt_basis_commit": "883d45ec1b820d9f2a168dc89d5f6475bc336b17",
+  "inventory_file_count": 1714,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 882,
+    "05-MEMORY": 883,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4951,6 +4951,11 @@
       "size": 4722
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/truth-seeking/SN-1890/IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity.md",
+      "blob_sha": "02909055f8fc1623202ba2861b5cfd9ede1438a1",
+      "size": 7858
+    },
+    {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
       "blob_sha": "7e5bbf440cac2c677e626ba4280cc0cbab8cb3bf",
       "size": 7193
@@ -8182,7 +8187,7 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "f0c3c7f5fbea9b2729cae8da44c4d1d14398fbc9",
+      "blob_sha": "319a8159436233686f252ab53628dfa0f25dd1ff",
       "size": 5090
     },
     {
@@ -8542,7 +8547,7 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "309ebc2e6897b5338e9d4724e5b3f7dffe3ff778",
+      "blob_sha": "a6792557205a29a46bf503c539937cf629feb94a",
       "size": 19724
     },
     {
