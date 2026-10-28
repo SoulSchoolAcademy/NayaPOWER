@@ -15901,7 +15901,9 @@
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
     "next_sequence": 1891,
-    "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
+    "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
+    "counter_role": "advisory",
+    "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
   "corpus_manifest_hash": "64e40d818e01eaff7f1753fc98bb4ff1cc4ed7e38df31245d7b4905226abde58"
 }

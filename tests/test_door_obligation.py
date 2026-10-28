@@ -297,3 +297,30 @@ def test_removed_id_is_tombstone_class_never_backfilled(tmp_path):
                     "--date", "2026-10-21")
     assert proc.returncode == 1
     assert "REFUSED: SN-9998" in proc.stdout
+
+
+def _load_tool_module():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("check_door_obligation", TOOL)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def test_range_endpoints_two_dot_and_three_dot():
+    # The door-obligation workflow passes a THREE-dot range on
+    # pull_request (origin/main...HEAD) and two dots on push. The
+    # uniqueness gate must parse both; partition("..") alone turned
+    # the three-dot head into ".HEAD" and failed the gate closed on a
+    # ref that does not exist (PR #3088 CI, diagnosed 2026-10-26).
+    mod = _load_tool_module()
+    assert mod._range_endpoints("abc..def") == ("abc", "def")
+    assert mod._range_endpoints("origin/main...HEAD") == ("origin/main", "HEAD")
+    assert mod._range_endpoints("a...b") == ("a", "b")
+
+
+def test_range_endpoints_rejects_malformed():
+    mod = _load_tool_module()
+    for bad in ("abc", "abc..", "..def", "abc...", "...def", ""):
+        with pytest.raises(RuntimeError):
+            mod._range_endpoints(bad)
