@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 01:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -23775,6 +23775,14 @@ _Last updated: 2026-10-28 01:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via REST: #2399 merged a545f1107 (receipt head match), fossils #1296/#1645 closed with matching heads, open PR count 504 via search (514->504 claim holds), #2456 open base==tip. -1: redundant per-PR GETs; two gate failure classifications handed off.
 
+### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** #2400 merge-faithful on live main, 20/20 round-trip re-proven, D1 re-route to Naya 5
+
+**Receipt:** `twelve-lane-receipts/t0062-lane4.md`
+
+**Evidence:** VERIFIED this tick against local mirror ~/workspace/nayapower-mirror.git: merge commit 597803d8c79ec256a268c4ba1c33562d3c8a0b4f exists and IS an ancestor of mirror HEAD, and all four receipted tip blob SHAs exist (ib_reconcile.py bbb8ce53, test_ib_legacy_reexport.py 7530fe3f, test_ib_reconcile.py 39fb4f89, SCHEMA.md 3e0b5869). Score 8.5, not 9.5, b
+
 ### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** PR #2400 merge-faithful on live main; 20/20 round-trip re-proven; D1 re-routed to Naya 5
@@ -23867,6 +23875,14 @@ _Last updated: 2026-10-28 01:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: tip aa8061c1 re-pinned at remote HEAD via git protocol; #2385 head eedd9540f54cd unchanged; receipt = verification-only run, consistent with t0032 9.0 scoring. -1: competing-boot re-class vs moved base deferred (honest gap named).
 
+### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** flip-sequence merge seat: re-pin 4 PRs, calculator HOLDs, #2453 HOLD stands
+
+**Receipt:** `twelve-lane-receipts/t0052-lane8.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote on SoulSchoolAcademy/NayaPOWER: all four receipted PR heads still exact 15 days later - #2453 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4, #2456 e326283252a7e9f932b0d9ebad465c50950b0799, #2457 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97, #2458 ac270833fb3a52c6be45acc730b0e5132353d5a5. Score 9.0, not 9.5, b
+
 ### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
 **Task:** Flip-sequence merge seat: re-pin + calculator HOLDs, no merge manufactured
@@ -23904,6 +23920,14 @@ _Last updated: 2026-10-28 01:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2456/head == e326283252a7e9f932b0d9ebad465c50950b0799 == pin; refs/pull/2457/head == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == pin; refs/pull/2458/head == ac270833fb3a52c6be45acc730b0e5132353d5a5 == pin; main == aa8061c1
+
+### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** H8 fresh-lesson-pick calculator run + HYPOTHESIS CHANGE note (circuit-breaker reframe)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/decisions/20261012T080627Z-next-t0052-h8-fresh-lesson-pick.json (2090 bytes, Oct 12 08:06) and lane-experiments/t0052/HYPOTHESIS-CHANGE-h8.md (4376 bytes) both exist. Score 8.5, not 9.5, because the decide.py calculator margin (8.5 vs 6.4 vs 5.5) was NOT re-run this tick, and the receipt's own hol
 
 ### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -23954,6 +23978,14 @@ _Last updated: 2026-10-28 01:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane2.md`
 
 **Evidence:** Dispatcher verified on disk: prereg-sealed.md sha256 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6 == claimed pin; HYPOTHESIS-CHANGE-h8.md, seal-verification.json, arm-key-sealed.json all exist (dir mtimes 08:06-08:07Z). Sign-in #2175 6120247601 (08:05:38Z) predates seal; sign-out 6120289262 (08:08:37Z). Mechanical gate defined F
+
+### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** HV instrument window t0022-t0052: byte-identical reruns, hand audit, HV3 PROVEN-UNMEASURABLE stands
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/lane-11/hv_output_t0052_run1.json and metric_audit_t0052.json both exist, plus SUMMARY_t0052.md. Score 8.5, not 9.5, because the byte-identical instrument rerun and the M2:9/M3:8/M4:3 cross-check were NOT re-executed this tick (existence verified, computation not re-derived).
 
 ### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -39998,12 +40030,6 @@ _Last updated: 2026-10-28 01:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
-
-### ✅ gate-stall-20261027-1750 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
-
-**Task:** Gate-stall sweep 2026-10-27 17:50 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
-
-**Evidence:** Verified by this scorer from live bytes: brief-queue holds exactly the 31 brief-*.md files the receipt names (set match, excluding lane-feed.md); rotation queued=31 (match); prior stall receipt gate-stall-20261027-1644.md mtime 23:45:49 UTC vs this receipt 00:50:34 UTC = 64.75 min, outside the 60-minute cap, so a single receipt is correct. Spot dry
 
 ### ✅ gate-stall-20261027-1644 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
