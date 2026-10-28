@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-28T02:16:09+00:00",
+ "generated_utc": "2026-10-28T07:15:26+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -133,27 +133,9 @@
    "board_lane": "#2175 lane BUILD",
    "open_prs": [
     {
-     "number": 3113,
-     "title": "The Path to Ten \u2014 honest system assessment, three tongues (Shawn's 2026-10-27 commission)",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3113",
-     "draft": false
-    },
-    {
-     "number": 3111,
-     "title": "Door-obligation cure: capture + registry entries for SN-1888/SN-1889",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3111",
-     "draft": false
-    },
-    {
      "number": 3108,
      "title": "Naya/mission state",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3108",
-     "draft": false
-    },
-    {
-     "number": 3107,
-     "title": "Face registry fix 20261027",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3107",
      "draft": false
     },
     {
@@ -163,19 +145,13 @@
      "draft": false
     },
     {
-     "number": 3088,
-     "title": "feat(sn-guard): Smart Note filing-path collision guard \u2014 claim-before-author via the exist",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3088",
-     "draft": false
-    },
-    {
      "number": 2981,
      "title": "Naya4/smart notes 2026 09 30",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981",
      "draft": false
     }
    ],
-   "open_pr_count": 7
+   "open_pr_count": 3
   },
   {
    "id": "wire",
@@ -428,6 +404,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 7,
- "unassigned_prs": 7
+ "open_pr_total": 3,
+ "unassigned_prs": 3
 }
