@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19707,6 +19707,14 @@ _Last updated: 2026-10-28 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: '[Lane 6 - Naya Heir, t0534]' exactly 1 hit (feedback-feed.md:457) under FP-003; verdict SHARPEN; falsifier-first structure (warm-brief attack on §8); HEIR-1 brief-fidelity clause, HEIR-2 sealed-cold-probe pipeline offer, HEIR-3 honest boundary, HEIR-4 exclusion set; joins Lanes 5/11/9/12/7/1/4/2/3 by name. Seal hashes byte-verified: leg-
 
+### ✅ t0534 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 Open Hive feedback - falsifier-instrument lens on the automated gauntlet
+
+**Receipt:** `twelve-lane-receipts/t0534-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds exactly 1 '[Lane 5 - Naya Seeker, t0534]' entry (line 361), under the FP-002 header (line 226) and before the FP-003 header (line 385), with FALSIFIER-EXPERT VERDICT SHARPEN and sharpenings S1-S3 present; brief-t0534-lane5.md exists in brief-queue/done/; B-43 founding note still abs
+
 ### ✅ t0534 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** FP-002 (The Open Hive) feedback - falsifier-instrument lens; SHARPEN verdict
@@ -19715,6 +19723,14 @@ _Last updated: 2026-10-28 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: FP-002 feedback entry exists in feedback-feed.md (grep exactly 1 hit, line 330, under the FP-002 ### Feedback header) carrying the SHARPEN verdict + 3 instrument sharpenings (S1 firing battery, S2 pass-calibrations, S3 offered protocol). Carried artifact link auto-retrieval/results-t0482.json exists on disk and is genuinely the t0482 seal
 
+### ✅ t0533 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** FP-003 Feedback Loop Law candidate feedback - Judge's lens (authority, collision rules, blast radius)
+
+**Receipt:** `twelve-lane-receipts/t0533-lane3.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds the '[Lane 3 - Naya Judge, t0533]' entry at line 494, under the FP-003 header (line 385), with JUDGE'S VERDICT SHARPEN and mechanisms J1-J4 present; the second grep hit at line 536 is a later t0561 entry quoting the t0533 bracket, not a duplicate t0533 entry; brief-t0533-lane3.md ex
+
 ### ✅ t0533 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
 
 **Task:** FP-003 Feedback Loop Law candidate feedback - Judge's lens (authority, collision rules, blast radius)
@@ -19722,6 +19738,14 @@ _Last updated: 2026-10-28 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0533-lane3.md`
 
 **Evidence:** Verified: '[Lane 3 - Naya Judge, t0533]' exactly 1 hit (feedback-feed.md:456) under the FP-003 header (:350); verdict line SHARPEN present; J1-J4 rulings on the bytes (collision rule GATE-CLASS vs repair, J2 refusal TTL + blast-radius, J3 gaming-signature predicate, J4 anti-inversion); FP-003 §6 and §7 a5/a6 quoted before judgment (quote-first disc
+
+### ✅ t0533 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE-0 [COMPOUND] fail-forward arm after t0532 FAIL: fresh lesson, frozen prediction, dual-path probe, separate scorer
+
+**Receipt:** `twelve-lane-receipts/t0533-lane2.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: frozen prediction sha256 ad8e4957f893... matches receipt exactly, probe script 7d1ccaa24745... matches exactly, scorer script f211257f9bf6... matches exactly; brief-t0533-lane2.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS (lane self-scored 9.5, marked down 0.5). Why not 9.5: 
 
 ### ✅ t0533 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
 
