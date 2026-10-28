@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 02:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -24025,6 +24025,14 @@ _Last updated: 2026-10-28 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
 
+### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** gap-scorer-20261014-2136: independently verify board-post half of t0803-lane12 verdict
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** VERIFIED this tick: REST GET /issues/comments/6184357778 returned 200, id 6184357778 on issue #2537 (matches receipt claim). Score 8.5, not 9.5, because the body-vs-feedback-feed-block byte/substance comparison was NOT re-derived this tick (inherited from the receipt); that comparison is the remaining gap.
+
 ### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Gap close: independent board-post verification of t0803 Herald verdict
@@ -40030,6 +40038,18 @@ _Last updated: 2026-10-28 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-1854 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-27 18:54 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief-*.md files the receipt names (set-identical, zero missing, zero extra, excluding lane-feed.md); twelve-lane-rotation.json queued=31 set-equals both the queue root and the receipt list, in_flight=[]; prior stall receipt gate-stall-20261027-1750.md mtime 00:50:34Z, th
+
+### ✅ gate-stall-20261027-1750 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-27 17:50 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue holds exactly the 31 brief-*.md files the receipt names (set match, excluding lane-feed.md); rotation queued=31 (match); prior stall receipt gate-stall-20261027-1644.md mtime 23:45:49 UTC vs this receipt 00:50:34 UTC = 64.75 min, outside the 60-minute cap, so a single receipt is correct. Spot dry
 
 ### ✅ gate-stall-20261027-1644 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
