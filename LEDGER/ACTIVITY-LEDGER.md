@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 20:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17979,6 +17979,14 @@ _Last updated: 2026-10-28 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: lane-11/corpus_pin_briefs_t0591.json (corpus sha b1e8b8a048..., pin sha 04920848... == claimed), marker_conflict_expectations_t0591.md (pre-reg), marker_scan_t0591.json (131 rows), marker_conflict_results_t0591.json (sha16 3b0efb90... == claimed), canonical-form recommendation — all present; rule/instrument/measurement pins re-verified by
 
+### ✅ t0591 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** live-corpus application of the t0583 veracity guard (measurement + recommendation only)
+
+**Receipt:** `twelve-lane-receipts/t0591-lane1.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: scratch-t0591-lane1/corpus-t0591.json sha256 30c252efb0f8af7f... matches the receipt pin exactly; prereg-t0591.json exists carrying the same corpus sha and 'before first verdict', with CANDIDATE 623 / RATIFIED 8 truth-state histogram; results-t0591-livecorpus.json exists with tip, corpus_sha256, guard sha
+
 ### ✅ t0591 — Team 1, Naya Verity Narzan (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** live-corpus application of the t0583 veracity guard (measurement + recommendation only)
@@ -18098,6 +18106,14 @@ _Last updated: 2026-10-28 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0586-lane10.md`
 
 **Evidence:** Verified: all 5 cited files present in auto-retrieval/ at exact cited sha16 (fixture_t0586.py 8077fc722905ec12, select_overlap_cells_t0586.py eba8f0d2720a83d5, run_overlap_cells_t0586.py 2c41ce03c6dc2fdd, sealed-selection-t0586.md 7522a1f91eaeb940, results-t0586-overlap.json 6b099fff4493f308). Real verified value: fresh 50-doc corpus, mechanically 
+
+### ✅ t0585 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Option-B stamping migration packet (reviewable, unwired)
+
+**Receipt:** `twelve-lane-receipts/t0585-lane9.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: surge/stamping-migration-packet-t0585.md exists (18667 bytes) carrying the claimed inventory 595 STAMP-TRUE / 28 STAMP-FALSE / 6 AWAITING-DIRECTOR / 2 AWAITING-OWNER, rollback command sequence, and Lane-1 four-way re-run protocol; generator gen-stamping-decisions-t0580b.py sha256 matches the receipt pin e
 
 ### ✅ t0585 — Team 9, lane9 (Code Health) — 9.0/10 [VERIFIED]
 
