@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19295,6 +19295,14 @@ _Last updated: 2026-10-28 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: log auto-retrieval/ask-world-queries.jsonl sha256 3257c84b... (38 lines) matches receipt; independent live probe 'python3 bin/ask-world.py live-check' exit 0 at 17:01 PDT; tally reproducible under inherited frozen rule. Third consecutive IDLE verdict (30 organic queries, silent since 13:10:38 PDT 2026-10-12) is a real silence proof, not d
 
+### ✅ t0550 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE semantic-arm next-hypothesis spec (H-all-clauses), post-t0545 FALSIFIED
+
+**Receipt:** `twelve-lane-receipts/t0550-lane11.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: spec hidden_files/lane-experiments/semantic-arm-next-hypothesis-t0550.md sha256 matches receipt exactly (76d3b898f343ebaf...), battery arm-battery-t0532.md sha256 matches exactly (18928e5a...), and the TOOLS.md fastembed-env line added by this tick is present. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, a
+
 ### ✅ t0550 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE semantic-arm next-hypothesis spec (H-all-clauses) with priced falsifier + go/no-go gate
@@ -19302,6 +19310,14 @@ _Last updated: 2026-10-28 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0550-lane11.md`
 
 **Evidence:** Verified: spec lane-experiments/semantic-arm-next-hypothesis-t0550.md exists, sha256 76d3b898f343ebaf... matches receipt; TOOLS.md fastembed-env hole fix present (grep-hit confirmed). Frozen fixture SHAs re-verified at action time per receipt (table-bound, all match). Why not 9.5: 40-60 lane-min cost is an unmetered estimate (cost gate calibrated a
+
+### ✅ t0550 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 refinement packet: 12-row disposition table for Lane 1 sign-off
+
+**Receipt:** `twelve-lane-receipts/t0550-lane10.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/fp003-refinement-packet.md exists at exactly 11,960 bytes as receipted, with rows 1-12 carrying quoted verdicts and ADOPT-AMENDED dispositions plus the Lane 1 sign-off next-owner line. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) dispositions are
 
 ### ✅ t0550 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -19311,6 +19327,14 @@ _Last updated: 2026-10-28 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: packet fp003-refinement-packet.md exists (11,960 bytes), 12 numbered disposition rows, 12/12 ADOPT-AMENDED with quoted verdicts, next-owner line (Lane 1 sign-off) present and explicitly NOT marked REFINED. Independent check: FP-003 feedback-feed section (lines 358-504) holds 12 anchors from lanes 1-12 — confirms the receipt's byte-honest 
 
+### ✅ t0549 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 governance premise check; false STALE falsified, no duplicate post
+
+**Receipt:** `twelve-lane-receipts/t0549-lane8.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds the '[Lane 8 - Naya Sentinel, t0540]' entry (now at line 516, drifted from receipt's line 486) and receipt twelve-lane-receipts/t0540-lane8.md exists, corroborating the false-premise finding. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1)
+
 ### ✅ t0549 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Verify t0549 brief premise (lost/stale t0540 feedback) against live bytes before acting
@@ -19318,6 +19342,14 @@ _Last updated: 2026-10-28 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0549-lane8.md`
 
 **Evidence:** Verified: twelve-lane-receipts/t0540-lane8.md exists (6,528 bytes, written 22:46 UTC); feedback-feed.md line 486 holds '[Lane 8 - Naya Sentinel, t0540]' exactly 1 hit with byte-intact neighbors; downstream consumption confirmed via Lane 10 t0541 anchor. Brief premise 't0540 brief LOST for 9 ticks' FALSIFIED; no duplicate feedback posted — correct n
+
+### ✅ t0549 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 feedback from successor-transfer lens; premise-check, no duplicate post
+
+**Receipt:** `twelve-lane-receipts/t0549-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds exactly 1 '[Lane 6 - Heir, t0512]' entry and 0 'Lane 6 - Naya Heir, t0549' hits, corroborating the verified non-post. NOT PHANTOM (local-file receipt, no branch/SHA artifacts cited). Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) the receipt's line-16
 
 ### ✅ t0549 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
