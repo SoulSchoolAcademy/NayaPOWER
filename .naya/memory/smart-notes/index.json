@@ -15995,15 +15995,35 @@
         "note": "published directly as a BRAIN projection in commit 58440ea897bf19c493cc21c46cc42be0edc8c4aa ('SN-1895: The Team of Nine — Every Job, Three Kinds of Eyes (filed via the door; Shawn-adopted operating shape, 2026-10-28)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "28452e59f5a6236f7b64870ff230c3824ebe3db16e58117fd81d18fe716917a1"
+    },
+    {
+      "smart_note_id": "SN-1896",
+      "intelligent_block_id": "IB-SMART-NOTE-20261028-sn1896-get-it-what-it-means-to-truly-understand",
+      "title": "Get It — What It Means to Truly Understand",
+      "content_hash": "9f1c4202f03838a538bb9de588f01c5676941b2a138062aa6da45ca31707cd3d",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/learning/SN-1896/IB-SMART-NOTE-20261028-sn1896-get-it-what-it-means-to-truly-understand.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEARNING",
+      "captured_at": "2026-10-28",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 8ee35b5bc856ca681349d26e891b5c45734ec312 ('SN-1896: Get It - What It Means to Truly Understand (filed via the door; Shawn's teaching + Resolve's declaration, 2026-10-28)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ad265fb740195e922d5cc9cb4c6dc81d823a404f4a662fbdd5aacc02fd69a6c1"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1896,
+    "next_sequence": 1897,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "aa83d51f0dac0b45c17376a71db23923b59562df6cc3996fb5e1957401cf848c"
+  "corpus_manifest_hash": "cdaef89f637c25dfb32c8237db4cb411e89915ec1e2de558e2db9765aa784236"
 }

@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-28",
-  "receipt_basis_commit": "b8e0788ca7729841f3881b84790616d49389804c",
-  "inventory_file_count": 1720,
+  "receipt_basis_commit": "8ee35b5bc856ca681349d26e891b5c45734ec312",
+  "inventory_file_count": 1721,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 889,
+    "05-MEMORY": 890,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4959,6 +4959,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/truth-seeking/SN-1890/IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity.md",
       "blob_sha": "02909055f8fc1623202ba2861b5cfd9ede1438a1",
       "size": 7858
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/learning/SN-1896/IB-SMART-NOTE-20261028-sn1896-get-it-what-it-means-to-truly-understand.md",
+      "blob_sha": "c60c5da60989e67959fd37476c2dfd189e508be4",
+      "size": 7424
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1892/IB-SMART-NOTE-20261028-sn1892-choose-the-ultimate.md",

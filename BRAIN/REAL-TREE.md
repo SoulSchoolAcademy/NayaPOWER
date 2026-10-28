@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-28  
-**Receipt basis commit:** `b8e0788ca7729841f3881b84790616d49389804c`  
-**Inventory file count:** 1720  
+**Receipt basis commit:** `8ee35b5bc856ca681349d26e891b5c45734ec312`  
+**Inventory file count:** 1721  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 889 |
+| 05-MEMORY | 890 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -1032,6 +1032,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md` — `a92ad113788f` (17201 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/continuity/SN-1886/IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder.md` — `f3c0f865c4b3` (4722 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/truth-seeking/SN-1890/IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity.md` — `02909055f8fc` (7858 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/learning/SN-1896/IB-SMART-NOTE-20261028-sn1896-get-it-what-it-means-to-truly-understand.md` — `c60c5da60989` (7424 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1892/IB-SMART-NOTE-20261028-sn1892-choose-the-ultimate.md` — `31c6ebad75ab` (4532 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1893/IB-SMART-NOTE-20261028-sn1893-ultimate-team.md` — `a08bbc6e0cb3` (5400 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1894/IB-SMART-NOTE-20261028-sn1894-deep-lesson-be-empowered.md` — `c4dfc2a3eab6` (6266 bytes)
