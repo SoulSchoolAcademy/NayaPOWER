@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 20:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17587,6 +17587,14 @@ _Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: module blob sha 83ed0448b7e3d2c3 and gate/prereg/driver files sha-match receipt pins exactly; results JSON has verdict CONDITIONAL + 0-surprises/defects-confirmed fields matching the claimed CONFIRM. Score 9.5: genuine harness independence (own driver, own pre-reg cd76af18eb5b82b2 frozen before first module import, remote-extracted module
 
+### ✅ t0600 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** D2-gap verdict: per-class floor calibration FALSIFIED (section-addressed stays)
+
+**Receipt:** `twelve-lane-receipts/t0600-lane1.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/scratch-t0600-lane1/verdict-t0600-lane1.md sha256 d4640bbf... matches receipt pin exactly; results-t0600-lane1.json c50e27f2... matches exactly; prereg-t0600.json f71ba4fe... matches exactly. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) E4 relev
+
 ### ✅ t0600 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** D2-gap verdict: per-class floor calibration FALSIFIED (pre-registered measurement)
@@ -18147,6 +18155,14 @@ _Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: report lane1-t0583-veracity-rerun.md and guard script scratch-t0583-lane1/rerun_veracity_guard.py exist at exact cited sha256s (99092d83..., 991f628b...). Real value: wrote own guard from own reading of R1-R4 (never imported apply_veracity_guard), pin-asserted all 8 fixture SHAs pre-measurement, all four arms matched pre-registered expect
 
+### ✅ t0582 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Veracity-verdict as re-ranker, measured over Lane 7 TF-IDF arm
+
+**Receipt:** `twelve-lane-receipts/t0582-lane8.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: lane8-t0582-veracity-rerank.md sha256 0ec29e78..., rerank-results.json 940275e9..., rerank-measure.py c30c5e28... - all three match the receipt pins exactly. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) the R1 re-rank projection is the seat's faithful transl
+
 ### ✅ t0582 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** veracity-verdict as re-ranker: measured over Lane 7's stemmed-TF-IDF arm on 3 frozen t0532 tasks (read-only)
@@ -18287,6 +18303,14 @@ _Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: remote branch lane4/b60-smart-note-completeness-gate-wiring head = 59832ba6144f5f8dc71ec5d1127437cb80446427 (ls-remote, matches receipt); parent commit = live tip bdfb5868a1ef0 (matches); .github/workflows/smart-note-completeness-gate.yml present in the commit tree (5117 files, not truncated). MERGED-NOT-ENFORCED confirmed by git grep (2 
 
+### ✅ t0582 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Verify and close PR #2465 as superseded
+
+**Receipt:** `twelve-lane-receipts/t0582-lane3.md`
+
+**Evidence:** VERIFIED this tick via live GitHub API: PR #2465 state=closed, merged=False, closed_at=2026-10-13T05:13:58Z, head=f0ccc058b131ca89b58e674020f9a2f3682561f5 - all four match the receipt pins exactly. NOT PHANTOM. Score 9.5, ACCEPTED. Clears 9.5 because: the delivered decision (close as superseded) is exactly verified on live state, the adversarial di
+
 ### ✅ t0582 — Team 3, Naya Judge (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** brief-t0582-close2465: verify & close PR #2465 as superseded (wave-20 B-12)
@@ -18294,6 +18318,14 @@ _Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0582-lane3.md`
 
 **Evidence:** ARTIFACTS VERIFIED on live GitHub + git protocol: #2465 state=closed merged=False closed_at 2026-10-13T05:13:58Z (matches receipt exactly); head f0ccc058b1 matches; close comment 6138757428 exists (1815B adversarial-verification body); superseder 1dfe11de5b merge_base vs main, compare ahead 22 behind 0 (matches receipt); main tip bdfb5868 on remote
+
+### ✅ t0581 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Machine-class gate enforced in cold-drill instrument
+
+**Receipt:** `twelve-lane-receipts/t0581-lane7.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: t0581 artifacts intact in auto-retrieval/ - pre-image cold_drill_sealed_t0555.py.pre-t0581, 116-line byte diff, trial header, and class-change sim record all present. Current instrument sha differs from the receipt pin (later patches, e.g. gap0650 re-anchor, touched the same file) - drift explained, not a
 
 ### ✅ t0581 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -18435,6 +18467,14 @@ _Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: retroactive receipt doc merge-receipts/pr-2501-retroactive-receipt.md exists; merge commit e8b4868ce402c2945a8990b1a5ddc69979b880fd exists on the remote (fetched via git protocol); its bytes match every receipt claim - parents dd6f2d92.../a324ea1e..., tree 8ff15816... (== validated head tree, no manual edits), diff exactly 2 file
 
+### ✅ t0581 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Overlap-without-claims cell set executed, ARM verdict
+
+**Receipt:** `twelve-lane-receipts/t0581-lane10.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: sealed-selection-t0581.md sha256 dc4f06e6a3e0a2a5... matches receipt pin exactly; results-t0581-overlap.json sha256 29a9d26ac9de7741... matches exactly; selection and run scripts present in auto-retrieval/. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) design
+
 ### ✅ t0581 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** overlap-without-claims discriminator cell set executed RED-first on the frozen t0567 instrument; verdict ARM
@@ -18442,6 +18482,14 @@ _Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0581-lane10.md`
 
 **Evidence:** ARTIFACT VERIFIED: sealed-selection-t0581.md sha dc4f06e6a3e0a2a5 MATCHES pin; results-t0581-overlap.json sha 29a9d26ac9de7741 MATCHES pin; both scripts sha pins MATCH; frozen instrument decision_change_arm_t0567.py sha 4d43798e58f2769f MATCHES the t0567 seal pin (untouched); results file internally pins seal_sha16 + instrument_sha16 (both corrobor
+
+### ✅ t0580b — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice d - cold-retrieve drill with page-cache isolation (Lane 7 sealed instrument, rescue repo)
+
+**Receipt:** `twelve-lane-receipts/t0580b-lane9.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: results auto-retrieval/cold-drill-sealed-t0580b-results.json exists (mtime 2026-10-13 04:46 UTC, matching run time) with seal A 0fcaa777265b, B 81a07557f0b6, C 92d8b2bef701 exactly as receipted, pre INTACT, RED PASS, quiet medians 0.998/1.031/1.011, max loads 0.69/0.72/1.45, band 1.065/1.019/0.996 center 
 
 ### ✅ t0580b — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -18695,6 +18743,14 @@ _Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665e3c0356ced53a13448c8ff76143f4cfdea97a10c56c190dd and gen-stamping-decisions-t0580b.py sha256 885feecc1f306b7196ef5fa28cbc69bfc562b10f4a3a60abbca4221c47e991b4 both byte-exact vs receipt pins; tip pin e8b4868ce402c2945a8990b1a5ddc69979b880fd matches live remote via git ls-re
 
+### ✅ t0580 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (c): top-20 lane needs analysis
+
+**Receipt:** `twelve-lane-receipts/t0580-lane4.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/surge/top20-needs-t0580.md exists (13721 bytes) with exactly 20 '### ' needs, matching the receipt's file check. NOT PHANTOM. Score 8.5, REWORK band, agreeing with lane honest 8.5. Why not 9.5: (1) counts are regex line-hits mixing ask and report language with no hand-audit sample to estimate
+
 ### ✅ t0580 — Team 4, Naya Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** SURGE slice (c): top-20 lane needs demand analysis
@@ -18702,6 +18758,14 @@ _Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0580-lane4.md`
 
 **Evidence:** ARTIFACT VERIFIED: surge/top20-needs-t0580.md on disk - exactly 20 ranked '### N.' needs, 20 SMARTBLOCK ids in backticks, >=2 live-byte file#line citations per need (spot-checked 1-3: citations resolve to real files), tip pin e8b4868c in header matches live HEAD, reproducibility block present. Real demand analysis: two instruments (corpus 21,486 li
+
+### ✅ t0579 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2418 Stage-1 (protect) disposition: HOLD, pin-exact re-verification
+
+**Receipt:** `twelve-lane-receipts/t0579-lane3.md`
+
+**Evidence:** VERIFIED this tick: receipt exists; git ls-remote still resolves refs/pull/2418/head to exactly 8346681c, the receipt's pinned head (branch ref gone, PR head ref intact - artifact exists, not PHANTOM); lane-feed mentions t0579 4x. Score 8.5, REWORK band, agreeing with lane honest 8.5. Why not 9.5: (1) sign-in on lane feed happened mid-run, not at s
 
 ### ✅ t0579 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -40758,6 +40822,12 @@ _Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261028-1256 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-28 12:56 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on live workspace bytes: brief-queue/ holds exactly 31 brief-*.md files, rotation queued set == disk set exactly (31 each, 0 missing, 0 extra), all 31 briefs named in the receipt exist on disk (29 exit-7 parent-authorship stems + 2 exit-2 seat-bar briefs = 31 distinct), and the two named barred briefs exist with their stamps (bri
 
 ### ✅ gate-stall-20261028-1151 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
