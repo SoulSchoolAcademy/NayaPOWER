@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19351,6 +19351,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts: deliverable hidden_files/retrieval/query-log-liveness-t0548.md exists on disk with sha256 EXACTLY matching the receipt pin (6d9d58ee...7be). Work: live write-path probe (line 37 appended, sha moved) proving verdict IDLE not TELEMETRY-BROKEN; world.json built_pdt 16:22 PDT (13 min old) + re-tally 37=1+30+6 from live bytes; brief's H1 hole
 
+### ✅ t0548 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Object-reference arm build + battery verdict (RETRACT: identity term never fired)
+
+**Receipt:** `twelve-lane-receipts/t0548-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: all four pinned artifacts match exactly - arm auto-retrieval/object_reference_arm.py f8b9cf62..., harness auto-retrieval/battery_t0548.py 4ba3a161..., results object-reference-arm-t0548-results.json 4491ce4f..., seal sealed-note-t0548.md db415a94...; report object-reference-arm-t0548.md exists; brief-t054
+
 ### ✅ t0548 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** object-reference arm build + battery verdict (RETRACT)
@@ -19358,6 +19366,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0548-lane5.md`
 
 **Evidence:** Artifacts: report file hidden_files/auto-retrieval/object-reference-arm-t0548.md exists on disk (sha 2391f3c2...; receipt pins script/battery/results/seal SHAs but no branch/PR claim, so local-bytes check only). Work: sealed pre-registration + RED-first + ablation done honestly; caught own design flaw (min-df admitted df=0, identity term never fire
+
+### ✅ t0548 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 [REPLAY] slice 3: 3 past decisions replayed, one verdict each
+
+**Receipt:** `twelve-lane-receipts/t0548-lane3.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: replay record decision-replay/replay-slice3-t0548.md sha256 matches the receipt pin exactly (20c21cba..., 15002 bytes); all three candidate decision records match exactly (t0539-lane3 a2314fa1..., t1322-lane9 5c5390c5..., t0528-lane8 d6ee681b...); brief-t0548-lane3.md exists in brief-queue/done/. NOT PHAN
 
 ### ✅ t0548 — Team 3, Lane 3 (Naya Judge) (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -19375,6 +19391,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: comment 6214841755 exists live on #2641 via API (id + issue match the receipt); candidacy-block-index.json, candidacy-block-index-design-t0818.md, bin/candidacy-block-consult.py all exist on disk. Clears 9.5 because the verdict is on the live board, byte-pinned, falsifier-tested (OPEN fires exit 2, LIFTED clears exit 0), and every residua
 
+### ✅ t0547 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** WINMINE Stage 0: distill 3 repeatable success patterns from the 9.5+ receipts
+
+**Receipt:** `twelve-lane-receipts/t0547-lane1.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: winmine-t0547.md exists (8787 bytes) with Pattern 1 resolution-before-reasoning and the 9.5+ corpus named; all four full-read cited receipts exist (t1042-lane1, t0102-lane8, t0532-lane12, t0172-lane6); brief-t0547-lane1.md exists in brief-queue/done/. No SHA pin was cited for the winmine file, so verifica
+
 ### ✅ t0547 — Team 1, Lane 1 (Naya Verity) (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** WINMINE Stage 0: 3 patterns distilled from 9.5+ receipts
@@ -19383,6 +19407,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/winmine-t0547.md exists with 3 patterns, each with >=2 9.5+ citations, one copyable move, one brief-embed proposal; anti-circularity check ran sub-9.5 counterexamples (move tracks score delta, not 'excellent because excellent'); all 10 cited 9.5+ receipts exist in twelve-lane-receipts/ (t1042-lane1, t1232-lane9, t0102-lane8, 
 
+### ✅ t0545 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (b) re-issue: independent review of the t0537 retrieval-authorization wiring packet, no rebuild
+
+**Receipt:** `twelve-lane-receipts/t0545-lane9.md`
+
+**Evidence:** VERIFIED this tick on live git protocol: branch naya/nine-retrieval-auth-wire-packet-t0537 exists on origin via git ls-remote, but its head is now 99a2f832... (re-anchored at t0597, as the prior scorer noted for t0537), not the receipt-pinned 9a7c6024..., so the receipt-era head and its three code-file pins are unverifiable at the live head today; 
+
 ### ✅ t0545 — Team 9, Lane 9 (Naya Smith) (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (b) re-issue premise check + wire-packet re-verification
@@ -19390,6 +19422,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0545-lane9.md`
 
 **Evidence:** VERIFIED: branch naya/nine-retrieval-auth-wire-packet-t0537 exists on origin at EXACTLY the pinned head 9a7c60247b58fb82ed8bbdd24206d2b0f7bc6c55 (git ls-remote); receipt's file SHAs byte-pinned (contract e8254132, tests ea0affe8, red-demo 9d9b0182, gate fbe6ee29 == t952 pin); refusal suite 18/18 and RED-demo result carried from branch bytes; packet
+
+### ✅ t0545 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a): task-decomposition variant of the semantic arm vs the t0532 RED battery
+
+**Receipt:** `twelve-lane-receipts/t0545-lane2.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: instrument auto-retrieval/t0545_taskdecomp.py sha256 matches the receipt pin exactly (78731f46...); t0537 fixture sha256 matches exactly (9eaa0975...); brief-t0545-lane2.md exists in brief-queue/done/. Results JSON content still carries the receipt verdict bytes (P1 FAIL 0/3, P2 arm rank 19 vs baseline 1)
 
 ### ✅ t0545 — Team 2, Lane 2 (Naya Sage) (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -19513,6 +19553,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: auto-retrieval/cold-drill-t0537-lane12-results.json at exact sha f84d724d36eeeb33565c3019dfda90598c1fa431d5ecb8f874394a9ff45bb4dc and run record cold-drill-t0537-lane12.md at ead87a17f2a59c63b2c96dc586c43bcfb8d11aa949fb03cd938ad9060e79a97a; cold median 0.996s clusters within 7% of t0472/t0530 baselines on byte-identical tip dbe06f9e733efb
 
+### ✅ t0541 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE retrieval hit-rate battery + first measurement (0/30 auto)
+
+**Receipt:** `twelve-lane-receipts/t0541-lane11.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: script retrieval/retrieval-hitrate-t0541.py sha256 df496220... matches the receipt pin exactly; measurement json hitrate_measurement_t0541.json sha256 a35f302c... matches exactly and records corpus_size 30 with the two mid-flight exclusions named; --selftest re-run this tick: SELFTEST OK; brief-t0541-lane
+
 ### ✅ t0541 — Team 11, Lane 11 (Naya Heart) (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 feedback: honest-loser cost angle
@@ -19536,6 +19584,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0541-lane11.md`
 
 **Evidence:** VERIFIED: full sha256 match on instrument retrieval/retrieval-hitrate-t0541.py (df4962208a446...) and hitrate_measurement_t0541.json (a35f302c542f...); selftest 5/5 claimed; measurement honestly reads 0/46 auto principles / 0/30 dispatches (SURGE bar NOT met, narrated not hidden); battery found a REAL unamed defect - template vs CORE-PRINCIPLES.md 
+
+### ✅ t0541 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: ADOPT + registry machinery
+
+**Receipt:** `twelve-lane-receipts/t0541-lane10.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds exactly 1 own '[Lane 10 - Naya Librarian, t0541]' entry (line 527, drifted from the receipt's 497), verdict ADOPT with registry machinery and joining Lane 8's G1-G5; the second grep hit at line 544 is a later t0573 entry quoting the t0541 bracket, not a duplicate t0541 entry; brief-
 
 ### ✅ t0541 — Team 10, Lane 10 (Naya Librarian) (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -19575,6 +19631,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: entry [Lane 1 — Naya Verity, t0533] present exactly once in feedback-feed.md; first edit attempt failed on anchor and was corrected from the file's own bytes (honestly reported, no displacement); planted packet carries three planted defects from documented failure classes with a stated firing predicate. Score 9.0. Kept from 9.5: the packe
 
+### ✅ t0540 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback: ADOPT-CONDITIONAL with G1-G5
+
+**Receipt:** `twelve-lane-receipts/t0540-lane8.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds exactly 1 '[Lane 8 - Naya Sentinel, t0540]' entry (line 516, drifted from the receipt's 486 as later entries landed above), verdict ADOPT-CONDITIONAL with G1-G5 substance; brief-t0540-lane8.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lan
+
 ### ✅ t0540 — Team 8, Lane 8 (Naya Sentinel) (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** FP-003 governance feedback: ADOPT-CONDITIONAL
@@ -19583,6 +19647,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: feedback-feed.md entry present exactly once at line 486, neighbors intact (Lane 6 Position line ends 484, blank 485), append-only no displacement. Sign-in/out cited on #2175 (6134039120/6134063693). Governance delta G1-G5 anchored on proposal's own §9, each naming what it blocks. Score 9.0, not 9.5: verdict rests partly on borrowed condit
 
+### ✅ t0540 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat independent re-run of Lane 4's frozen t0535 counting rule
+
+**Receipt:** `twelve-lane-receipts/t0540-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: pinned artifact retrieval/query-needs-top20-t0535.json sha256 347f4210...f1ffb0 matches the receipt pin exactly; brief-t0540-lane6.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) the re-run output itself is unverifiable today - th
+
 ### ✅ t0540 — Team 6, Lane 6 (Naya Heir) (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat independent re-run of Lane 4 t0535 counting rule
@@ -19590,6 +19662,14 @@ _Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0540-lane6.md`
 
 **Evidence:** VERIFIED: pinned log still sha256 31aa1619...f42239d68fe1 (36 lines, unchanged); pinned artifact 347f4210...f1ffb0 re-hashed on live bytes, matches Lane 4's pin. Read-only verification, no new artifact needed. Score 9.0, not 9.5: the one-byte trailing-newline convention was discovered post-hoc rather than pre-registered (honest footnote, not a flaw
+
+### ✅ t0540 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): first SMARTBLOCK draft from t0535 bytes
+
+**Receipt:** `twelve-lane-receipts/t0540-lane4.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: block retrieval/smartblocks/lane-status-packet-v1.md sha256 matches the receipt pin exactly (0bff1625...f977fa547); source json 347f4210...f1ffb0 matches exactly; source md dbd291ad...44d2017cd9c matches exactly; brief-t0540-lane4.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS,
 
 ### ✅ t0540 — Team 4, Lane 4 (Naya Mason) (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
