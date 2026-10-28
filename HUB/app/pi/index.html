@@ -1,8 +1,12 @@
+<!-- MERGED FACE — overnight push 2026-10-27. Base: Resolve v3 index.html at 9a4f3963, verbatim except the surgical additions below. Harvests from Nitro v3 (face-v2-shared-20261026): pages view-index cards (structure + .pagecard geometry; counts computed from the snapshot) + parts register (embedded verbatim). Merged additions: director packets board (computed), per-area freshness stamps (computed max updated_at), per-area link rows. No score claimed, not live, awaits Nitro's own rendered review + verdict. -->
+<!-- REGISTRY FIX — 2026-10-27, branch face-registry-fix-20261027 off merged face eca63fff. The Pages board gains the page registry: every real NayaNET page on its own card, rendered from pages.json — per-page percent counted from this snapshot's record areas, live route probes (a route serving the Hub home document is named as such, never as its page), real-route links only where the route truly serves the page, and per-page still-needed lists from the record. The view-index cards above the registry are unchanged. Answers Nitro's cold-check fails B14 / C1 / C2 / C3 for the page layer; B18's measurement half is answered for pages (per-part percent in the Parts register remains the register owner's probe work). No score claimed; awaits Nitro's re-check. -->
+<!-- REFRESH — 2026-10-27: branch face-registry-fix-20261027 merged up to main 4dde3c1f (PR #3107 cure step 1). Conflicts in this file resolved hunks-by-hunk: the merged-face + registry lineage (later, registry-aware) taken over the v3-only text on main wherever the two diverged; auto-merged regions untouched. Staged design cure applied on top where its patterns still matched (gloss moves to ::before + dark color-scheme meta); the .board-head freestyle residual waits on the design lane’s manifest filing + pin. Still not live, still not self-scored: awaits Nitro’s re-check at the exact commit. The activation-receipt mint remains the LAST cure step and has NOT been done. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
 <title>Project Intelligence — NayaNET</title>
 <meta name="description" content="Project Intelligence: everything happening across NayaNET, in one place, in plain words.">
 <!--
@@ -18,10 +22,9 @@
   points are named in their own board, with the needs-Shawn packets; (7) the operating code panel
   carries the B10 seven steps verbatim; (8) the face renders REAL ROWS from items.json — a dated
   snapshot of public.work_items (read-only GET), deduped under the readiness survivor rule, areas
-  joined from the readiness mapping (preparation, not applied — labelled wherever used). The live
-  publisher endpoint (/pi/api/items) and the parts register remain Power's work; where the record
+  joined from the readiness mapping (preparation, not applied — labelled wherever used). The live publisher endpoint (/pi/api/items) remains Power's publisher work; the parts register travels with this face (see the Parts board); where the record
   cannot carry a claim, the face renders DARK with the reason. Notes remain device-local and say so.
-  Not live, not self-scored: v3 awaits a different seat's cold check at its exact commit.
+  Not live, not self-scored: this merged face awaits Nitro's own cold check at its exact commit.
 -->
 <style>
   :root{
@@ -75,10 +78,11 @@
   .num{flex:1 1 130px; text-align:center; padding:10px 6px}
   .orb{
     width:84px; height:84px; margin:0 auto; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    border:2px solid var(--white); background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.5),transparent 42%),linear-gradient(180deg,#050507,#020203);
+    border:2px solid var(--white); background:linear-gradient(180deg,#050507,#020203); position:relative;
     font-size:26px; font-weight:900; color:var(--white);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.55);
   }
+  .orb::before{content:""; position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.5),transparent 42%); pointer-events:none}
   .orb.big{width:104px; height:104px; font-size:34px}
   .orb.proven{border-color:var(--green); box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -4px 0 rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.55), 0 0 18px -2px var(--green)}
   .orb.dark{border-style:dashed; color:var(--paper)}
@@ -188,11 +192,13 @@
   /* v3 canon pieces — JWL-020 spheres · JWL-001-005 gem bullets · INP-003 segmented · NAV-001 smarttabs · MRK-005 spectrum · DESIGN-BLOCKS .jw chips (factory.css / pieces.json, BRAIN/10-INTERFACES/SMART-FACTORY-CANON). */
   .icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
   .pill .icon{width:18px;height:18px}
-  .sphere{--tone:#a06bff;--rgb:160,107,255;position:relative;width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:50%;color:#fff;background:radial-gradient(circle at 32% 23%,rgba(255,255,255,.55),rgba(var(--rgb),.5) 22%,rgba(var(--rgb),.18) 48%,#050507 78%);border:1px solid rgba(255,255,255,.6);box-shadow:inset -6px -8px 12px rgba(0,0,0,.5),inset 4px 4px 8px rgba(255,255,255,.1),0 8px 16px rgba(0,0,0,.35),0 0 18px rgba(var(--rgb),.3)}
+  .sphere{--tone:#a06bff;--rgb:160,107,255;position:relative;width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:50%;color:#fff;background:radial-gradient(circle at 32% 23%,rgba(var(--rgb),.5),rgba(var(--rgb),.18) 48%,#050507 78%);border:1px solid rgba(255,255,255,.6);box-shadow:inset -6px -8px 12px rgba(0,0,0,.5),inset 4px 4px 8px rgba(255,255,255,.1),0 8px 16px rgba(0,0,0,.35),0 0 18px rgba(var(--rgb),.3)}
+  .sphere::before{content:""; position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 32% 23%,rgba(255,255,255,.55),transparent 42%); pointer-events:none}
   .sphere .icon{width:22px;height:22px}
   .sphere.sm{width:30px;height:30px}.sphere.sm .icon{width:15px;height:15px}
   .sphere.lg{width:52px;height:52px}.sphere.lg .icon{width:26px;height:26px}
-  .gem-bullet{--tone:#a06bff;width:22px;height:22px;flex:none;display:inline-block;transform:rotate(45deg);background:linear-gradient(140deg,#fff,var(--tone) 45%,#0a0a10);border:1.5px solid rgba(255,255,255,.8);box-shadow:inset 0 1px 2px rgba(255,255,255,.7),0 0 18px var(--tone);vertical-align:-4px}
+  .gem-bullet{--tone:#a06bff;width:22px;height:22px;flex:none;display:inline-block;transform:rotate(45deg);background:linear-gradient(140deg,var(--tone),var(--tone) 45%,#0a0a10); position:relative;border:1.5px solid rgba(255,255,255,.8);box-shadow:inset 0 1px 2px rgba(255,255,255,.7),0 0 18px var(--tone);vertical-align:-4px}
+  .gem-bullet::before{content:""; position:absolute; inset:0; background:linear-gradient(140deg,rgba(255,255,255,.9),transparent 55%); pointer-events:none}
   .gem-bullet.xs{width:12px;height:12px;vertical-align:-1px}
   .segmented{display:inline-flex;padding:4px;border:1px solid rgba(255,255,255,.35);border-radius:15px;background:#050507;box-shadow:inset 0 2px 8px #000,0 12px 24px rgba(0,0,0,.4)}
   .segmented button{padding:8px 15px;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--paper);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;min-height:44px}
@@ -208,12 +214,22 @@
   body.view-ai .seat-line{display:block}
   .machine-line{font-size:12.5px;color:var(--paper);max-height:260px;overflow:auto}
   .tag.blocked{border-color:var(--red)}
-  .jw{--j:#a06bff;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:13px;font-weight:900;color:#fff;flex:none;background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.85),transparent 42%),radial-gradient(circle at 50% 55%,var(--j),#000 130%);border:1px solid rgba(255,255,255,.4);box-shadow:0 0 14px var(--j)}
+  .jw{--j:#a06bff;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:13px;font-weight:900;color:#fff;flex:none;background:radial-gradient(circle at 50% 55%,var(--j),#000 130%); position:relative;border:1px solid rgba(255,255,255,.4);box-shadow:0 0 14px var(--j)}
   .step{display:flex;gap:14px;align-items:flex-start;margin:14px 0}
   .step p{margin:2px 0}
   .spectrum-bar{display:flex;height:10px;border-radius:99px;overflow:hidden;max-width:560px;margin:14px auto 0;box-shadow:0 4px 24px rgba(0,0,0,.5);width:100%}
   .spectrum-bar span{flex:1}
+  .jw::before{content:""; position:absolute; inset:0; border-radius:9px; background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.85),transparent 42%); pointer-events:none}
   @media (prefers-reduced-motion: reduce){ button.orb{transition:none} }
+  /* HARVESTED from Nitro v3 — .pagecard (view-index cards). Geometry verbatim; tokens resolved to walk literals (#e84fff magenta, #fff, #E8E8EC). */
+  .pagecard{display:block; width:100%; text-align:left; padding:16px 18px; margin:12px 0; border:2px solid rgba(255,255,255,.55); border-radius:20px; background:linear-gradient(180deg,#050507,#020203); color:#fff; font:inherit; cursor:pointer; box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5)}
+  .pagecard:hover,.pagecard:focus-visible{border-color:#e84fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 4px 12px rgba(0,0,0,.5), 0 0 18px -2px #e84fff; outline:none}
+  .pagecard-name{display:block; font-weight:700; font-size:18px}
+  .pagecard-num{display:block; font-size:28px; font-weight:900; margin-top:4px}
+  .pagecard-sub{display:block; font-size:14px; color:#E8E8EC; margin-top:2px}
+  .pagecard-open{display:block; font-size:14px; font-weight:700; margin-top:8px}
+  /* REGISTRY FIX: registry cards are panels, not whole-card buttons. */
+  .pagecard.registry-card{cursor:default}
 </style>
 </head>
 <body>
@@ -267,6 +283,9 @@
     <button class="tab smarttab" type="button" data-view="block-done" aria-pressed="false"><span class="sphere sm" style="--tone:#2fe89e;--rgb:47,232,158"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Done</button>
     <button class="tab smarttab" type="button" data-view="block-notes" aria-pressed="false"><span class="sphere sm" style="--tone:#e84fff;--rgb:232,79,255"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></span>Notes</button>
     <button class="tab smarttab" type="button" data-view="block-code" aria-pressed="false"><span class="sphere sm" style="--tone:#a06bff;--rgb:160,107,255"><svg class="icon" aria-hidden="true"><use href="#i-diamond"/></svg></span>The code</button>
+    <button class="tab smarttab" type="button" data-view="block-director" aria-pressed="false"><span class="sphere sm" style="--tone:#ffbf3d;--rgb:255,191,61"><svg class="icon" aria-hidden="true"><use href="#i-diamond"/></svg></span>Director</button>
+    <button class="tab smarttab" type="button" data-view="block-pages" aria-pressed="false"><span class="sphere sm" style="--tone:#e84fff;--rgb:232,79,255"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span>Pages</button>
+    <button class="tab smarttab" type="button" data-view="block-parts" aria-pressed="false"><span class="sphere sm" style="--tone:#a06bff;--rgb:160,107,255"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></span>Parts</button>
   </nav>
 
   <div class="placeblocks">
@@ -306,7 +325,16 @@
   </section>
 
   <!-- 3 · MASTER TO-DO -->
-  <section class="board block" id="block-todo" aria-label="Master to-do">
+    <section class="board block" id="block-director" aria-label="Director packets">
+    <div class="board-head"><span class="sphere " style="--tone:#ffbf3d;--rgb:255,191,61"><svg class="icon" aria-hidden="true"><use href="#i-diamond"/></svg></span><div>
+      <div class="sec-label">Director packets</div>
+      <h2>What needs a decision, in one place</h2>
+    </div></div>
+    <p>What this means: the weakest ground, the top priorities, and the decisions waiting on Shawn's hands — computed from this snapshot, in one packet. No packet is kept by hand. What to do about it: decide the waiting items first; the top priorities are the next work.</p>
+    <div id="directorList"></div>
+  </section>
+
+<section class="board block" id="block-todo" aria-label="Master to-do">
     <div class="board-head"><span class="sphere " style="--tone:#3fb8ff;--rgb:63,184,255"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></span><div>
       <div class="sec-label">3 · Master to-do</div>
       <h2>What needs doing, in priority order</h2>
@@ -358,7 +386,18 @@
   </section>
 
   <!-- 6 · DONE WITH RECEIPTS -->
-  <section class="board block" id="block-done" aria-label="Done with receipts">
+    <section class="board block" id="block-pages" aria-label="Pages">
+    <div class="board-head"><span class="sphere " style="--tone:#e84fff;--rgb:232,79,255"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span><div>
+      <div class="sec-label">Pages</div>
+      <h2>Every view, on its own card</h2>
+    </div></div>
+    <p>First, the views inside this face — tap a card to open that view. Below them, every real NayaNET page on its own card, from the page registry: its own percent where the record measures it (never a guessed percent), its real route where the route truly serves that page, and the jobs it still needs, straight from the record. A page the record does not measure yet says so, with the reason.</p>
+    <div id="pagesList"></div>
+    <h3>Every real page, on its own card</h3>
+    <div id="pageRegistryList"><p class="dark">The page registry is loading…</p></div>
+  </section>
+
+<section class="board block" id="block-done" aria-label="Done with receipts">
     <div class="board-head"><span class="sphere " style="--tone:#2fe89e;--rgb:47,232,158"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><div>
       <div class="sec-label">7 · Done with receipts</div>
       <h2>Done, with the proof attached</h2>
@@ -424,7 +463,16 @@
     </ul>
     <p class="dark">A dead link is a defect, not a placeholder. If a link above ever fails, that is a bug to fix, not a gap to live with.</p>
   </section>
-  <section class="board block hidden" id="block-list" aria-label="The list behind the number"></section>
+    <section class="board block" id="block-parts" aria-label="Parts of this face">
+    <div class="board-head"><span class="sphere " style="--tone:#a06bff;--rgb:160,107,255"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></span><div>
+      <div class="sec-label">Parts of this face</div>
+      <h2>Every part, with its owner</h2>
+    </div></div>
+    <p>What this means: the register of everything this face is made of — each part, who built it, when it was last touched, what changed. A percent is shown only where probe evidence carries it. What to do about it: a part with no percent is unmeasured, not failing — it waits on probe evidence, and says so.</p>
+    <div id="partsList"></div>
+  </section>
+
+<section class="board block hidden" id="block-list" aria-label="The list behind the number"></section>
   </div><!-- /placeblocks -->
 
   <section class="board hidden" id="machinePanel" aria-label="Machine view">
@@ -608,6 +656,10 @@
         }).join("") + "</ul>"
       : "";
     var sorted = items.slice().sort(sortWork);
+    var linksHtml = '<h3>Links in this area</h3><ul class="linklist">' +
+      '<li><a href="https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066">Open the team board</a> — where seats coordinate, in the open.</li>' +
+      '<li><a href="https://nayanet.live/">Open the Hub home</a> — the live front door.</li>' +
+      '<li class="dark">Per-project links: DARK — no project page route exists yet, so no link is invented here.</li></ul>';
     var shown = sorted.slice(0, 30);
     var d = el("block-list");
     d.innerHTML =
@@ -616,13 +668,13 @@
       '<p><strong>' + pct(area.done_proven, area.items) + ' proven done</strong> — ' + area.done_proven + ' of ' + area.items +
       ' jobs proven, counted from the record snapshot. ' + esc(counts) + '.</p>' +
       '<p class="dark">Area placement comes from the readiness mapping (preparation, not yet applied to the live record); placement confidence for this area\'s jobs rides in each item\'s machine record behind its door. Engine and page scores for this area are DARK — no probe evidence rows exist yet, so no score is shown rather than a guessed one.</p>' +
-      streamsHtml +
+      linksHtml + streamsHtml +
       '<h3>Jobs in this area, in the record\'s priority order</h3>' +
       (shown.length ? shown.map(itemRow).join("") : '<p class="dark">No jobs placed here in this snapshot.</p>') +
       (sorted.length > shown.length ? '<p class="dark">…and ' + (sorted.length - shown.length) + ' more jobs in this area, in the full snapshot behind the machine view.</p>' : "") +
       '<h3>Still needed in this area</h3>' +
-      '<p><strong>Interface side:</strong></p><div class="darkbox">DARK — per-page still-needed lists need the parts register (every part inside this area, with its own percent). The register does not exist yet; building it is Power\'s publisher work. No list is invented here.</div>' +
-      '<p><strong>Functionality side:</strong></p><div class="darkbox">DARK — same reason: a part\'s functional completeness can only be checked against the register of its parts.</div>' +
+      '<p><strong>Interface side:</strong></p><div class="darkbox">DARK — per-page still-needed lists need per-page probe evidence (every part inside this area, with its own percent). The parts register travels with this face (see the Parts board); probe evidence does not exist yet. No list is invented here.</div>' +
+      '<p><strong>Functionality side:</strong></p><div class="darkbox">DARK — same reason: a part\'s functional completeness can only be checked against per-part probe evidence, which does not exist yet.</div>' +
       '<h3>Notes in this area</h3><div id="drawerNotes"></div>' +
       '<textarea id="drawerNoteText" class="well" rows="2" placeholder="Write a note for this area…"></textarea>' +
       '<div class="btnrow"><button class="btn" id="drawerNoteSave" type="button">Save this note</button>' +
@@ -657,9 +709,17 @@
     }
   }
 
-  function render(data) {
+    var PARTS = {"note": "Percent is 'not measured yet' wherever no probe evidence rows exist. That is the honest form, never a guessed score. Owner is the seat that built the part; last touch is the v3 branch pass; movement names what v3 changed.", "parts": [{"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "topbar + wordmark", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "view switch (human / seat / machine)", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "tabs now switch views (plus All); jewels replace round markers; each tab ignites in its own tone", "owner": "Naya Nitro Narzan", "part": "tab row (Smart Tabs)", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "new in v3: seven steps in plain words, always visible", "owner": "Naya Nitro Narzan", "part": "operating-code panel", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "orbs are now doors to their view (done / to-do / stuck); filtered row lists arrive with the rows endpoint", "owner": "Naya Nitro Narzan", "part": "health board + headline orbs", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2; computed list arrives with the data layer", "owner": "Naya Nitro Narzan", "part": "master to-do board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "stuck board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2; distinct movement fields arrive with the rows endpoint", "owner": "Naya Nitro Narzan", "part": "movement board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "jewels replace round markers; board links re-pointed to the live board", "owner": "Naya Nitro Narzan", "part": "rooms board + room detail", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "new in v3: one card per view, live counts, Open switches to that view; per-page percent and real-page Open wait on the page registry + applied areas", "owner": "Naya Nitro Narzan", "part": "pages board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "done board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2; notes still device-only, notes-to-record is a separate privacy-proved build", "owner": "Naya Nitro Narzan", "part": "notes board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "all links re-pointed to the live board; stale deep-link anchors dropped (those comments live on the retired board)", "owner": "Naya Nitro Narzan", "part": "links board", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2", "owner": "Naya Nitro Narzan", "part": "machine panel", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "new in v3: rotated-square jewels with facet highlight + own-colour glow replace all round markers", "owner": "Naya Nitro Narzan", "part": "jewel markers", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "new in v3: every button carries a jewel that ignites in the button's own colour on hover/focus", "owner": "Naya Nitro Narzan", "part": "buttons (alive)", "percent": "not measured yet"}, {"last_touch": "2026-10-26 v3", "movement": "unchanged from v2; full text + full state behind the door arrives with the rows endpoint", "owner": "Naya Nitro Narzan", "part": "item door", "percent": "not measured yet"}], "register": "PI face parts register — starter, face v3 (2026-10-26)"};
+
+function render(data) {
     DATA = data;
     var c = data.counts, items = data.items;
+    /* MERGED: per-area latest touch, computed from the snapshot items. */
+    var freshByArea = {};
+    items.forEach(function (it) {
+      var k = it.area || "unplaced";
+      if (it.updated_at && (!freshByArea[k] || it.updated_at > freshByArea[k])) { freshByArea[k] = it.updated_at; }
+    });
 
     el("headlinePct").textContent = pct(c.done_proven, c.unique);
     el("headlineLine").textContent = c.done_proven + " of " + c.unique + " real jobs proven done. The record was read as " +
@@ -681,7 +741,7 @@
       orb("open", "", false, c.unique - c.done_proven, "Still open", "Every job not yet proven done");
 
     el("healthDark").innerHTML =
-      '<strong>DARK, with reasons — never guessed:</strong> Parts at 9 or above — no scorecard-records register exists yet (the parts register is Power\'s publisher work). ' +
+      '<strong>DARK, with reasons — never guessed:</strong> Parts at 9 or above — the parts register travels with this face (see the Parts board), but no per-part probe evidence rows exist yet, so no part carries a percent. ' +
       'Per-area engine and page scores — no probe evidence rows exist yet. ' +
       'Today\'s verified-outcome ratio — no verified-outcome count for the day exists yet. ' +
       'Per-area percents ARE shown on this build — computed from the readiness mapping (preparation, not applied to the live record) and labelled as such wherever they appear.';
@@ -759,7 +819,7 @@
         '<span class="rname">' + gem(tone[0], tone[1], AREA_ICON[a.area] || "i-more", "square") + esc(areaLabel(a.area)) + '</span>' +
         '<span class="rline">' + a.items + ' jobs · ' + a.done_proven + ' proven done · <strong>' + pct(a.done_proven, a.items) + '</strong>' +
         (isWeak ? ' · <span class="tag blocked">Weakest ground</span>' : '') + '</span>' +
-        '<span class="rstatus">Ownerless here: ' + a.ownerless + ' · Engine: DARK · Page: DARK — no probe evidence yet</span></button>';
+        '<span class="rstatus">Ownerless here: ' + a.ownerless + ' · Engine: DARK · Page: DARK — no probe evidence yet · Last touch: ' + esc(freshByArea[a.area] || 'none in this snapshot') + '</span></button>';
     }).join("");
     var cards = el("roomList").querySelectorAll(".room");
     for (var ci = 0; ci < cards.length; ci++) {
@@ -788,6 +848,41 @@
     el("machineRaw").textContent = JSON.stringify(data, null, 2);
     el("readTimeLine").textContent = "Snapshot generated: " + data.generated_at + " · source: the whole work record (public.work_items, read-only) · rows " +
       c.rows_read + " · real jobs " + c.unique + " · areas from the readiness mapping (preparation, not applied). This face shows that snapshot and says so.";
+    /* MERGED: director packets — computed from this snapshot. */
+    var needsShawn = byState(items, "needs_shawn");
+    var openItems = items.filter(function (it) { return it.state !== "done_proven"; }).sort(sortWork);
+    el("directorList").innerHTML =
+      '<p class="dark">Director packet, computed from this snapshot — weakest ground + top priorities + decisions waiting. No packet is kept by hand.</p>' +
+      '<h3>Weakest ground</h3>' + data.weakest.map(function (w) {
+        var ar = null;
+        for (var wi = 0; wi < data.areas.length; wi++) { if (data.areas[wi].area === w.area) { ar = data.areas[wi]; } }
+        var d = ar ? ar.done_proven : 0, t = ar ? ar.items : 0;
+        return '<p><strong>' + esc(areaLabel(w.area)) + '</strong> — ' + d + ' of ' + t + ' proven done (' + pct(d, t) + ')</p>';
+      }).join("") +
+      '<h3>Decisions waiting on Shawn\'s hands (' + needsShawn.length + ')</h3>' +
+      (needsShawn.length ? needsShawn.map(itemRow).join("") : '<p class="dark">None in this snapshot.</p>') +
+      '<h3>Top priorities — first 10 of ' + openItems.length + ' still open</h3>' +
+      openItems.slice(0, 10).map(itemRow).join("");
+    /* MERGED: pages view-index cards — Nitro v3 structure, counts computed from this snapshot. */
+    el("pagesList").innerHTML = [
+      {view: "block-health", name: "How much is done", num: pct(c.done_proven, c.unique), sub: c.done_proven + " of " + c.unique + " real jobs proven done"},
+      {view: "block-weak", name: "The weakest points", num: data.weakest.length, sub: "Weakest areas, named"},
+      {view: "block-director", name: "Director packets", num: needsShawn.length, sub: "Decisions waiting on Shawn's hands"},
+      {view: "block-todo", name: "What needs doing", num: openItems.length, sub: "Real jobs still open, in priority order"},
+      {view: "block-stuck", name: "What is stuck", num: byState(items, "blocked").length, sub: "Named blockers, with owners"},
+      {view: "block-movement", name: "What moved lately", num: data.movement.length, sub: "Movement entries, newest first"},
+      {view: "block-rooms", name: "Areas", num: data.areas.length, sub: "Areas, each with its own card"},
+      {view: "block-parts", name: "Parts of this face", num: PARTS.parts.length, sub: "Every part, with its owner — percent not measured yet"},
+      {view: "block-done", name: "Done, with proof", num: c.done_proven, sub: "Real jobs proven done"},
+      {view: "block-notes", name: "Notes", num: loadNotes().length, sub: "Notes on this device only — notes to the record arrive with the data layer"},
+      {view: "block-code", name: "The code", num: 7, sub: "Seven steps every job here runs on"}
+    ].map(function (p) {
+      return '<button class="pagecard" type="button" data-page="' + escAttr(p.view) + '"><span class="pagecard-name">' + esc(p.name) + '</span><span class="pagecard-num">' + esc(String(p.num)) + '</span><span class="pagecard-sub">' + esc(p.sub) + '</span><span class="pagecard-open">Open this view →</span></button>';
+    }).join("");
+    /* MERGED: parts register — carried verbatim, percent honestly unmeasured. */
+    el("partsList").innerHTML = '<ul class="linklist">' + PARTS.parts.map(function (p) {
+      return "<li><strong>" + esc(p.part) + "</strong> — owner " + esc(p.owner) + " · last touch " + esc(p.last_touch) + " · " + esc(p.movement) + " · Percent: " + esc(p.percent) + "</li>";
+    }).join("") + "</ul>" + '<p class="dark">' + esc(PARTS.note) + "</p>";
     wireOrbs();
     renderNotes(null);
   }
@@ -811,16 +906,80 @@
     el("sinceBox").innerHTML = "<strong>Changed since you last looked:</strong> unknown right now — the read failed.";
     el("ledgerBox").innerHTML = "<strong>Ledger:</strong> unknown right now — the read failed, so no ledger state is claimed.";
     el("roomList").innerHTML = '<p class="dark">Areas cannot open without the record.</p>';
+    el("directorList").innerHTML = '<p class="dark">Director packets cannot be computed without the record.</p>';
+    el("pagesList").innerHTML = '<p class="dark">Pages cannot be counted without the record.</p>';
+    el("pageRegistryList").innerHTML = '<p class="dark">The page registry cannot be shown without the record.</p>';
+    el("partsList").innerHTML = '<p class="dark">Parts cannot be listed without the register.</p>';
     el("uncatBox").innerHTML = "<strong>Not placed in an area yet:</strong> unknown right now — the read failed.";
     el("doneNums").innerHTML = "";
     el("doneList").innerHTML = '<p class="dark">Done cannot be counted without the record.</p>';
     el("machineRaw").textContent = "Snapshot read failed at " + now.toISOString() + ".";
   }
 
+  /* REGISTRY FIX: per-page cards from pages.json (the page registry, 2026-10-27). */
+  function routeLine(p) {
+    var pr = p.probe;
+    if (p.route_state === "serves_own_page") { return "Live route " + p.route + " — probed " + (pr ? pr.checked_at : "") + ": serves its own page (" + (pr ? pr.bytes : "?") + " bytes; title: " + (pr ? pr.title : "") + ")."; }
+    if (p.route_state === "serves_home_bytes") { return "Route " + p.route + " answers with the Hub home document today — this page itself is not served there yet."; }
+    if (p.route_state === "js_shell_own_title") { return "Route " + (pr && pr.route_pattern ? pr.route_pattern : p.route) + " serves a small shell carrying the page's own title; the page renders in the browser."; }
+    if (p.route_state === "missing") { return "Not built yet — no route exists."; }
+    if (p.route_state === "in_app_surface") { return "Lives as a surface inside the Hub app — no separate route serves it."; }
+    if (p.route_state === "per_citizen") { return "Lives at each citizen's own Smart Link — no single route to probe."; }
+    if (p.route_state === "system") { return "A system under the pages, not a page — no route of its own."; }
+    return "";
+  }
+  function renderRegistry(reg) {
+    var box = el("pageRegistryList");
+    if (!reg || !reg.pages) {
+      box.innerHTML = '<p class="dark">The page registry could not be read — per-page cards wait for it. Nothing here is guessed.</p>';
+      return;
+    }
+    box.innerHTML = '<p class="dark">Registry generated ' + esc(reg.generated_at) + ' — ' + reg.totals.pages + ' pages · ' + reg.totals.measured_pages + ' measured from the record · ' + reg.totals.unmeasured_pages + ' not measured yet, each with its reason. A page\'s percent is its proven-done jobs over all its jobs in the record, counted from the same snapshot this face renders.</p>' +
+    reg.pages.map(function (p) {
+      var num, sub;
+      if (p.pi) {
+        num = (p.pi.pct_done_proven == null ? "—" : String(p.pi.pct_done_proven) + "%");
+        sub = p.pi.items_done_proven + " of " + p.pi.items_total + " jobs proven done · area: " + esc(p.pi.area_label) + " · " + p.pi.items_open + " still needed";
+      } else {
+        num = "not measured yet";
+        sub = esc(p.note);
+      }
+      var still = "";
+      if (p.still_needed && p.still_needed.length) {
+        var rows = p.still_needed.map(function (s) {
+          return '<div class="item-row"><div class="item-name">' + esc(s.title) + '</div>' +
+            '<div class="item-meta"><span class="tag ' + (STATE_TAG[s.state] || "stated") + '">' + esc(STATE_LABEL[s.state] || s.state) + '</span> · ' + esc(s.key) +
+            (s.evidence_url ? ' · <a href="' + escAttr(s.evidence_url) + '">Open the linked record</a>' : '') + '</div></div>';
+        }).join("");
+        still = '<details class="door"><summary>Still needed on this page — ' + p.still_needed.length + ' open jobs from the record</summary>' + rows + '</details>';
+      }
+      var action = "";
+      if (p.link && p.link.kind === "live_route") {
+        action = '<a class="pagecard-open" href="' + escAttr(p.link.href) + '">' + esc(p.link.label) + ' →</a>';
+      } else if (p.link && p.link.kind === "pi_area_view" && p.pi) {
+        action = '<a class="pagecard-open" href="#block-rooms" data-area-open="' + escAttr(p.pi.area) + '">' + esc(p.link.label) + ' →</a>';
+      } else if (p.link) {
+        action = '<span class="pagecard-open">' + esc(p.link.label) + '</span>';
+      }
+      return '<div class="pagecard registry-card"><span class="pagecard-name">' + esc(p.name) + '</span>' +
+        '<span class="pagecard-num">' + esc(num) + '</span>' +
+        '<span class="pagecard-sub">' + sub + '</span>' +
+        '<span class="pagecard-sub">' + esc(p.one_line) + '</span>' +
+        '<span class="pagecard-sub">' + esc(routeLine(p)) + '</span>' +
+        action + still + '</div>';
+    }).join("");
+  }
+  function loadRegistry() {
+    fetch("pages.json", {cache: "no-store"})
+      .then(function (res) { if (!res.ok) { throw new Error("HTTP " + res.status); } return res.json(); })
+      .then(function (reg) { renderRegistry(reg); })
+      .catch(function () { renderRegistry(null); });
+  }
+
   function load() {
     fetch("items.json", {cache: "no-store"})
       .then(function (res) { if (!res.ok) { throw new Error("HTTP " + res.status); } return res.json(); })
-      .then(function (data) { render(data); })
+      .then(function (data) { render(data); loadRegistry(); })
       .catch(function () { failState(); });
   }
 
@@ -843,6 +1002,23 @@
       showView(ev.currentTarget.getAttribute("data-view"));
     });
   }
+
+  el("pagesList").addEventListener("click", function (ev) {
+    var b = ev.target.closest ? ev.target.closest("[data-page]") : null;
+    if (b) { showView(b.getAttribute("data-page")); }
+  });
+
+  el("pageRegistryList").addEventListener("click", function (ev) {
+    var a = ev.target.closest ? ev.target.closest("[data-area-open]") : null;
+    if (!a) { return; }
+    var key = a.getAttribute("data-area-open");
+    if (DATA && DATA.areas) {
+      for (var i = 0; i < DATA.areas.length; i++) {
+        if (DATA.areas[i].area === key) { ev.preventDefault(); openArea(DATA.areas[i]); return; }
+      }
+    }
+    showView("block-rooms");
+  });
 
   el("noteSaveBtn").addEventListener("click", function () {
     var t = el("noteText").value.trim();

@@ -1,0 +1,2532 @@
+{
+ "registry": "nayanet-page-registry",
+ "version": 1,
+ "generated_at": "2026-10-27T04:00:16Z",
+ "method": "Page inventory from the Whole Picture report (canonical, main tip 0a8eabe4). Per-page % = done_proven / total items in the page's Project Intelligence record area, counted from the face's own items.json snapshot (blob 54a1b170, generated 2026-10-27T02:45:35Z) — the same rows this face renders. Pages the record carries no area for read pct null = 'not measured yet'. Route states are live probes: a route byte-identical to the Hub home document is serves_home_bytes, never its page.",
+ "sources": {
+  "items_snapshot": {
+   "file": "items.json",
+   "generated_at": "2026-10-27T02:45:35Z",
+   "unique_items": 349,
+   "done_proven": 33
+  },
+  "whole_picture": "HUB/NAYANET-WHOLE-PICTURE-2026-10-26.* (main tip 0a8eabe4)",
+  "home_reference": {
+   "route": "/",
+   "bytes": 5523481,
+   "sha": "4b7de925753a",
+   "title": "NayaNET — The Intelligent Hub"
+  }
+ },
+ "totals": {
+  "pages": 25,
+  "measured_pages": 12,
+  "unmeasured_pages": 13,
+  "serving_own_page": 9,
+  "missing_pages": 2
+ },
+ "unplaced_items": {
+  "count": 19,
+  "note": "Snapshot rows with no area assignment yet; counted in no page's percentage."
+ },
+ "pages": [
+  {
+   "id": "home",
+   "name": "Home — the Hub door",
+   "one_line": "The front door of NayaNET: the Hub home every citizen lands in.",
+   "kind": "page",
+   "note": "Hub home work is counted inside the record's hub-dashboard area — see the Dashboard card.",
+   "route": "/",
+   "probe": {
+    "http": 200,
+    "bytes": 5523481,
+    "sha": "4b7de925753a",
+    "title": "NayaNET — The Intelligent Hub",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/",
+    "state": "serves_own_page",
+    "note": "This route IS the reference home document every other route is compared against."
+   },
+   "route_state": "serves_own_page",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/",
+    "label": "Open Home — the Hub door"
+   }
+  },
+  {
+   "id": "dashboard",
+   "name": "Dashboard",
+   "one_line": "A citizen's living picture: their points with the full breakdown of where every point came from, plus their affiliate link, clicks, joins and sales.",
+   "kind": "page",
+   "note": "The record's hub-dashboard area covers the Hub and dashboard surfaces together.",
+   "route": null,
+   "probe": null,
+   "route_state": "in_app_surface",
+   "pi": {
+    "area": "hub-dashboard",
+    "area_label": "Hub & dashboard",
+    "items_total": 72,
+    "items_done_proven": 8,
+    "items_open": 64,
+    "pct_done_proven": 11.1,
+    "states": {
+     "queued": 44,
+     "in_progress": 14,
+     "done_proven": 8,
+     "needs_shawn": 1,
+     "blocked": 1,
+     "verifying": 4
+    }
+   },
+   "still_needed": [
+    {
+     "key": "14q-5plus3-dashboard",
+     "title": "14Q: 5+3 dashboard query over one record",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "14q-sn1863-content-reconcile",
+     "title": "14Q: SN-1863 + SN-1864 content reconciliation, merge draft ready",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "dashboard-about-fix-20261026",
+     "title": "Dashboard #about fix — scorecard done, reorder + Q&A to bottom + library made true",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-b1",
+     "title": "Library: answer-or-ask loop",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-b2",
+     "title": "Library: curation and freshness queue",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-d1",
+     "title": "Dashboard: ask the Dashboard",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-d2",
+     "title": "Dashboard: goals and pace",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-g1",
+     "title": "Growth: people-stage board",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-g2",
+     "title": "Growth: follow-up proposals",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-r2",
+     "title": "Reports: shareable report digest",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-w1",
+     "title": "Wall/Home: comments and reactions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-w2",
+     "title": "Wall/Home: owner curation + verified-owner treatment",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-hub16",
+     "title": "Hub: “Today in your world” lens strip atop the feed",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-lib10",
+     "title": "Library: the member's own intelligence as a living shelf",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-lib9",
+     "title": "Library: Save as Note / Save as Smart Note on every card",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-r15",
+     "title": "Reports: “Ask Naya about this report,” data-grounded",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-r3",
+     "title": "Reports: “what changed” sentence per report",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-today",
+     "title": "‘Your Day’ board for Today — today's Smart Notes · today's Naya Notes · today's activity · spaces joined",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-r-drill",
+     "title": "Reports: drill-to-evidence on every number + period-true metrics",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "f29",
+     "title": "Dashboard steps 1–5",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-hub-1",
+     "title": "The One Hub — performance rulings: 5 decisions pending Shawn",
+     "state": "needs_shawn",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-the-one-hub-2",
+     "title": "Speed cures staged behind Shawn's 5 Hub decisions",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-the-one-hub-3",
+     "title": "Performance: 5.17MB monolith, 7.3–8.2s first paint (sweep score 3.5)",
+     "state": "blocked",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-the-one-hub-4",
+     "title": "/sync-heartbeat.json route fix (observability; sync itself healthy)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d1",
+     "title": "Step 4 — Trend metric switcher + stop discarding Smart Notes.",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d14",
+     "title": "Step 16 — Naya Notes, flagship home.",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d2",
+     "title": "Step 5 — Dashboard truth pass.",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d28",
+     "title": "The Smart Ledger room (Living List #23; includes B8 P0 #3).",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d3",
+     "title": "Step 6 — Heat & Streaks + Insight Feed un-shy.",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d38",
+     "title": "A8 — Balance gauge cadence (owner: Omega).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d43",
+     "title": "SN-01773 card-title fix + duplicate cleanup (owner: main seat).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d44",
+     "title": "#2739 cure carry (owner: Rho).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d45",
+     "title": "#2869 — Door-C landing, 1,138 note filings (owner: Resolve).",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d5",
+     "title": "Step 20 (BoB) — Dashboard completion (Phi steps 8–10).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d9",
+     "title": "Step 11 — The daily intelligence brief.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "growth-merge-20261026",
+     "title": "Growth merge — rooms/growth + personal#growth become ONE master app, best of both, both surfaces finished",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "hub-single-source-cure-20261026",
+     "title": "P0: Hub home overwritten by repo monolith — restore + single-source cure",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "hub-sn1873-misroute-cure-20261026",
+     "title": "HUB MISROUTE — /s/sn1873 serves the wrong note (SN-1874's text at SN-1873's address)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "intel-today-merge-20261026",
+     "title": "Intel Today merge — dashboard#today + rooms/today become ONE ultimate page, both surfaces completed",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "library-overhaul-20261026",
+     "title": "Intelligent Library overhaul — nutshell guide (what it is, connects, matters, go to it)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "note-standalone-pages",
+     "title": "NOTE PAGES: shared Smart Note links open as standalone pages, not feed cards",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-dashboard",
+     "title": "PAGE: Citizen dashboard — LIVE — MOBILE LAW BROKEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-feed",
+     "title": "PAGE: Smart Feed — SHELL — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-growth",
+     "title": "PAGE: Growth — LIVE — FLAT",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-hub-home",
+     "title": "PAGE: Intelligent Hub Home — SHELL — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-intelligence",
+     "title": "PAGE: Intelligence — Intel Today — LIVE — FLAT",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-ledger",
+     "title": "PAGE: Smart Ledger — LIVE — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-library",
+     "title": "PAGE: Intelligent Library — LIVE — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-life-with-naya",
+     "title": "PAGE: Life with Naya — APPROVED DESIGN — WEIGHT FAIL",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-personal",
+     "title": "PAGE: Personal page — LIVE — MOBILE LAW BROKEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-reports",
+     "title": "PAGE: Your Reports — Reports room — LIVE — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-smart-note-public",
+     "title": "PAGE: Smart Note — public page (/s/sn####) — LIVE — BELOW STANDARD",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-today",
+     "title": "PAGE: Your Intelligence Today — LIVE — MOBILE LAW BROKEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "reports-merge-20261026",
+     "title": "Reports — one area (rooms/reports) with stats as a view within it",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "resolve-pr3064-reporting-residual-5",
+     "title": "Kernel residual 5 (reporting hold-rule) — PR #3064 open",
+     "state": "in_progress",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3064"
+    },
+    {
+     "key": "resolve-registry-reconcile-sn0594",
+     "title": "Smart Note registry reconcile: SN-0594 defect + CONFLICT set",
+     "state": "queued",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6393408233"
+    },
+    {
+     "key": "resolve-sentinel-cure-pr3067",
+     "title": "Hub sentinel crash cure — PR #3067 built + proven live; awaiting login-distinct 9.5+ scorecard",
+     "state": "verifying",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3067"
+    },
+    {
+     "key": "resolve-sn1865-choose-whats-best",
+     "title": "SN-1865 Ten-Star Service Is Choosing What's Best — filed + registered + live",
+     "state": "verifying",
+     "evidence_url": "https://nayanet.live/s/sn1865"
+    },
+    {
+     "key": "resolve-sn1866-finish-and-connect",
+     "title": "SN-1866 Nothing Has Value Until It Works — filed + registered + live",
+     "state": "verifying",
+     "evidence_url": "https://nayanet.live/s/sn1866"
+    },
+    {
+     "key": "resolve-sn1867-alignment-is-the-trump",
+     "title": "SN-1867 Whatever It Takes Means Aligned — filed + registered + live",
+     "state": "verifying",
+     "evidence_url": "https://nayanet.live/s/sn1867"
+    },
+    {
+     "key": "smart-notes-file-to-live-proof-20261026",
+     "title": "SMART NOTES + FEED — file a note and see it live fast, timed and proven",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-smart-notes-sync-2026-10-23",
+     "title": "Zero-output loop: naya-smart-notes-sync — 247 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-smart-notes-sync-2026-10-24",
+     "title": "Zero-output loop: naya-smart-notes-sync — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-smart-notes-sync-2026-10-26",
+     "title": "Zero-output loop: naya-smart-notes-sync — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "pi_area_view",
+    "href": "#area-hub-dashboard",
+    "label": "Not separately served yet — see its Project Intelligence area: Hub & dashboard"
+   }
+  },
+  {
+   "id": "personal-app",
+   "name": "Personal app",
+   "one_line": "Your own world in the flagship format: cover, wall, today, about, notes, connections, mail, growth, lists, reports, settings, library.",
+   "kind": "app",
+   "note": "The format exists and is the base format for all three apps. The record carries no dedicated Personal area; its finalizing work is tracked inside hub-dashboard and pi-hub.",
+   "route": null,
+   "probe": null,
+   "route_state": "in_app_surface",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "none",
+    "href": null,
+    "label": "No separate live route yet — see its note"
+   }
+  },
+  {
+   "id": "business-app",
+   "name": "Business app",
+   "one_line": "The same flagship format as Personal, for a business — born at the Welcome walk, at the top of the sidebar and in Smart Tabs.",
+   "kind": "app",
+   "note": "Missing entirely — the single biggest missing piece in the Whole Picture (§4.1). No route exists to probe.",
+   "route": null,
+   "probe": null,
+   "route_state": "missing",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "none",
+    "href": null,
+    "label": "Not built yet — no route exists"
+   }
+  },
+  {
+   "id": "space-app",
+   "name": "Space app",
+   "one_line": "The same flagship format for a topic or a group — a space is a topic app wearing the one format.",
+   "kind": "app",
+   "note": "A Spaces directory exists, but opening a space must open the real app — that click is the fix (Whole Picture §4.2). Its build items are counted inside the projects-spaces area — see the Projects card.",
+   "route": null,
+   "probe": null,
+   "route_state": "missing",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "none",
+    "href": null,
+    "label": "Not built yet — no route exists"
+   }
+  },
+  {
+   "id": "intel-today",
+   "name": "Intel Today",
+   "one_line": "One Today: the dashboard's complete live summary with the rooms day view inside the same area.",
+   "kind": "page",
+   "note": "The rooms surface serves today. The merge of personal#today into this one area is still owed; the record carries no dedicated Intel Today area.",
+   "route": "/rooms/today",
+   "probe": {
+    "http": 200,
+    "bytes": 241296,
+    "sha": "e460052e42a7",
+    "title": "Today — NayaNET Intelligent Hub",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/rooms/today",
+    "state": "serves_own_page"
+   },
+   "route_state": "serves_own_page",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/rooms/today",
+    "label": "Open Intel Today"
+   }
+  },
+  {
+   "id": "growth",
+   "name": "Growth",
+   "one_line": "One invite that does one thing: your Smart Link, your people, your growth — on the rooms machine.",
+   "kind": "page",
+   "note": "The rooms machine serves today. The one-invite merge (personal form retires, privacy note kept, text cut) is still owed; no dedicated Growth area in the record.",
+   "route": "/rooms/growth",
+   "probe": {
+    "http": 200,
+    "bytes": 155097,
+    "sha": "969c9c13b4f1",
+    "title": "Smart Growth — NayaNET",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/rooms/growth",
+    "state": "serves_own_page"
+   },
+   "route_state": "serves_own_page",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/rooms/growth",
+    "label": "Open Growth"
+   }
+  },
+  {
+   "id": "about",
+   "name": "About",
+   "one_line": "Who a person or a business is, in the locked order: motto, story, about, goals, mission, vision, loves, don'ts, facts — Q&A last, with its purpose in plain words.",
+   "kind": "page",
+   "note": "An in-app surface on each app; the direct /about path serves the Hub home document. The order fix and the Q&A shared-save proof are still owed; no dedicated About area in the record.",
+   "route": null,
+   "probe": null,
+   "route_state": "in_app_surface",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "none",
+    "href": null,
+    "label": "No separate live route yet — see its note"
+   }
+  },
+  {
+   "id": "connections",
+   "name": "Connections",
+   "one_line": "Your people: one system, shared records, the same faces and lists through both doors.",
+   "kind": "page",
+   "note": "Shared-records merge (faces loading, custom fields, device-only note retired) is the open work in its area.",
+   "route": "/rooms/connections",
+   "probe": {
+    "http": 200,
+    "bytes": 148979,
+    "sha": "667d1665b006",
+    "title": "Your Connections",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/rooms/connections",
+    "state": "serves_own_page"
+   },
+   "route_state": "serves_own_page",
+   "pi": {
+    "area": "connection",
+    "area_label": "Connections",
+    "items_total": 15,
+    "items_done_proven": 1,
+    "items_open": 14,
+    "pct_done_proven": 6.7,
+    "states": {
+     "queued": 7,
+     "in_progress": 6,
+     "verifying": 1,
+     "done_proven": 1
+    }
+   },
+   "still_needed": [
+    {
+     "key": "14q-connection-deno-hub-fresh",
+     "title": "14Q: Connection Deno smoke + real Hub sign-in + fresh Muse Allow",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "14q-connection-fork-isolation",
+     "title": "14Q: Fork isolation test Alice vs Bob",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "14q-per-device-connections",
+     "title": "14Q: Per-device connection management + warnings + reconnect",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "build-connection-system",
+     "title": "Build the NayaNET connection system — Allow-first, key fallback, fork path",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "connect-page-current-plan-20261026",
+     "title": "CONNECT PAGE — update to the current plan: fork stays labeled, direct connect leads, all AI providers",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "connect-page-update-20261026",
+     "title": "Connect page updated to current plan: fork page stays for forkers + direct-connect door note + modal killed",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "connection-interface-nitro",
+     "title": "Connection interface Nitro: Allow choices thank-you CONNECT-WORKING pages, staging proven, live landing owed",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "connections-merge-20261026",
+     "title": "Connections merge — dashboard#people + rooms/connections become ONE interconnected system",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-v1",
+     "title": "Invite a friend: one-tap code-bound invite packet",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-b2",
+     "title": "Per-person Timeline — the data (Best-of-Best step 2).",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d6",
+     "title": "Step 7 — Timeline UI.",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "other-ais-connection-20261026",
+     "title": "Other AIs connection clarified: same API sign-in for ChatGPT, Claude, Grok, Gemini — per-platform real paths",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-connect",
+     "title": "PAGE: Smart Connect — SHELL — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-connections",
+     "title": "PAGE: Your Connections — LIVE — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/rooms/connections",
+    "label": "Open Connections"
+   }
+  },
+  {
+   "id": "smart-mail",
+   "name": "Smart Mail",
+   "one_line": "The one real mail: folders, search, compose, real threads — the rooms mail is THE mail.",
+   "kind": "page",
+   "note": "The personal inbox stub is deleted by the merge; the phone + laptop overflow pass is still owed.",
+   "route": "/rooms/mail",
+   "probe": {
+    "http": 200,
+    "bytes": 260664,
+    "sha": "e27b562685bc",
+    "title": "Smart Mail — NayaNET",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/rooms/mail",
+    "state": "serves_own_page"
+   },
+   "route_state": "serves_own_page",
+   "pi": {
+    "area": "mail-notifications",
+    "area_label": "Mail & notifications",
+    "items_total": 14,
+    "items_done_proven": 2,
+    "items_open": 12,
+    "pct_done_proven": 14.3,
+    "states": {
+     "queued": 8,
+     "verifying": 2,
+     "done_proven": 2,
+     "blocked": 1,
+     "in_progress": 1
+    }
+   },
+   "still_needed": [
+    {
+     "key": "14q-rls-repair-reproof",
+     "title": "14Q: Smart Mail RLS repair + re-read proof",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-i1",
+     "title": "Inbox: reply in place",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-m1",
+     "title": "Message: recipient-true conversation starter",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-m2",
+     "title": "Message: intent-first composer + voice note",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-maildel",
+     "title": "Mail bulk-Delete honesty — prove it or remove it",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "f15",
+     "title": "Messaging — live and complete",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-smart-mail-2",
+     "title": "invite_send_log is anon-readable and holds rendered invite email bodies (PII)",
+     "state": "blocked",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-smart-mail-3",
+     "title": "Bulk-delete honesty — prove it or remove it (CPI enh-b-maildel)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-a9",
+     "title": "Conversation retention sweep (ruled 21:26Z)",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d7",
+     "title": "Step 9 — Smart Mail triage.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "mail-right-one-20261026",
+     "title": "Smart Mail — rooms/mail is THE mail; personal#inbox goes; hub Inbox tab opens the one mail",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-mail",
+     "title": "PAGE: Smart Mail — LIVE — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/rooms/mail",
+    "label": "Open Smart Mail"
+   }
+  },
+  {
+   "id": "smart-lists",
+   "name": "Smart Lists",
+   "one_line": "Where saved things live and get organized: notes, Naya Notes, connections, projects, pages — grouped, addable to a project, sendable, keepable private.",
+   "kind": "page",
+   "note": "Complete overhaul to the director's definition still owed — both current surfaces were scored 1/10. The direct path serves the Hub home document; no dedicated Lists area in the record.",
+   "route": "/lists",
+   "probe": {
+    "http": 200,
+    "bytes": 5523481,
+    "sha": "4b7de925753a",
+    "title": "NayaNET — The Intelligent Hub",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/lists",
+    "state": "serves_home_bytes"
+   },
+   "route_state": "serves_home_bytes",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "none",
+    "href": null,
+    "label": "No separate live route yet — see its note"
+   }
+  },
+  {
+   "id": "reports",
+   "name": "Reports",
+   "one_line": "The reports library, whole — with personal stats as a Stats button inside, on the same records.",
+   "kind": "page",
+   "note": "The rooms library serves today. The stats-as-a-button merge is still owed; no dedicated Reports area in the record.",
+   "route": "/rooms/reports",
+   "probe": {
+    "http": 200,
+    "bytes": 211699,
+    "sha": "c4df9d9e2cef",
+    "title": "Reports — NayaNET Intelligent Hub",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/rooms/reports",
+    "state": "serves_own_page"
+   },
+   "route_state": "serves_own_page",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/rooms/reports",
+    "label": "Open Reports"
+   }
+  },
+  {
+   "id": "settings",
+   "name": "Settings",
+   "one_line": "One settings page: only toggles that make sense, each saying plainly what it does — identity and account once, the canon trio with Findable on, install as an action, never a gate.",
+   "kind": "page",
+   "note": "Today's settings are doubled (dashboard toggles + a hub install popup); the one-page merge is the open work. Its record area is shared with identity — see the Certificate card.",
+   "route": "/settings",
+   "probe": {
+    "http": 200,
+    "bytes": 5523481,
+    "sha": "4b7de925753a",
+    "title": "NayaNET — The Intelligent Hub",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/settings",
+    "state": "serves_home_bytes"
+   },
+   "route_state": "serves_home_bytes",
+   "pi": {
+    "area": "identity-settings",
+    "area_label": "Identity & settings",
+    "items_total": 10,
+    "items_done_proven": 1,
+    "items_open": 9,
+    "pct_done_proven": 10.0,
+    "states": {
+     "queued": 8,
+     "done_proven": 1,
+     "in_progress": 1
+    }
+   },
+   "still_needed": [
+    {
+     "key": "enh-a-a1",
+     "title": "About: visitor preview + completeness coach",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-a2",
+     "title": "About: proof and action layer",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-s1",
+     "title": "Settings: account-level control centre",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-s2",
+     "title": "Settings: export, backup, and restore",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-set22",
+     "title": "Settings room in the toggle standard — built last by design",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-identity-certificate",
+     "title": "PAGE: Identity page = Certificate page — SHELL — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-settings",
+     "title": "PAGE: Settings — SHELL — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "settings-merge-20261026",
+     "title": "SETTINGS — two pages become ONE (dashboard#settings + hub settings)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "settings-one-20261026",
+     "title": "Settings — ONE page, logical toggles only, design language",
+     "state": "in_progress",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "pi_area_view",
+    "href": "#area-identity-settings",
+    "label": "Not separately served yet — see its Project Intelligence area: Identity & settings"
+   }
+  },
+  {
+   "id": "library",
+   "name": "Library",
+   "one_line": "The guide first: one entry per NayaPOWER area with a nutshell, how it connects, why it matters, and a go-to button — the archive dieted behind it.",
+   "kind": "page",
+   "note": "The rooms library serves today as the archive; the guide-first rebuild is still owed. No dedicated Library area in the record.",
+   "route": "/rooms/library",
+   "probe": {
+    "http": 200,
+    "bytes": 131512,
+    "sha": "68a0fab0b363",
+    "title": "Intelligent Library — NayaNET",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/rooms/library",
+    "state": "serves_own_page"
+   },
+   "route_state": "serves_own_page",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/rooms/library",
+    "label": "Open Library"
+   }
+  },
+  {
+   "id": "project-intelligence",
+   "name": "Project Intelligence",
+   "one_line": "The team's record and its face: every job, its state, its owner and its proof — world view and project view on the one record.",
+   "kind": "page",
+   "note": "This face is built (branch face-merged-20261027) but the live route still serves the Hub home document — the face is not live yet. Its record area also carries the Hub-wiring work.",
+   "route": "/pi/",
+   "probe": {
+    "http": 200,
+    "bytes": 5523481,
+    "sha": "4b7de925753a",
+    "title": "NayaNET — The Intelligent Hub",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/pi/",
+    "state": "serves_home_bytes"
+   },
+   "route_state": "serves_home_bytes",
+   "pi": {
+    "area": "pi-hub",
+    "area_label": "Project Intelligence & the Hub",
+    "items_total": 74,
+    "items_done_proven": 4,
+    "items_open": 70,
+    "pct_done_proven": 5.4,
+    "states": {
+     "queued": 45,
+     "in_progress": 21,
+     "done_proven": 4,
+     "verifying": 4
+    }
+   },
+   "still_needed": [
+    {
+     "key": "14q-ledger-feed-live",
+     "title": "14Q: Ledger-rendered feed per part, Projects page cannot drift",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "14q-pi-hub-10star",
+     "title": "14Q: Project Intelligence hub 10-star FIRST, before membership — user-viewable, Naya-optimized, central system",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "activation-stale-venue-pointers-20261026",
+     "title": "Re-point 11 stale venue pointers in BRAIN/00-ACTIVATION from retired #2793 to live #3066",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "f01",
+     "title": "THE NO-WAIT LAW — nothing waits on an inactive seat",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "f22",
+     "title": "The first daily productivity number",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "face-pulse-today",
+     "title": "FACE PULSE: actions-today + ratio-today publish to the NayaPOWER page (production block shows dashes)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-hub-2",
+     "title": "Fold-in: Mission room and Projects page become one surface (Plan B0)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-mirror-1",
+     "title": "Mirror Program — distillation pilot: from drafted to running",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-nitro-1",
+     "title": "Team Nitro — the build loop is running the Project Intelligence build",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-team-nitro-2",
+     "title": "Wave loop running (30-min dispatcher, hourly director pass)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-the-mirror-program-2",
+     "title": "Mirror A2 — twin refresh execution (owner: Omega) (CPI gap-d35)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-a13",
+     "title": "The unblock sweep itself",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-a15",
+     "title": "Standing laws recorded and in force",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d30",
+     "title": "The first daily productivity number (Living List #20; includes the #2938 effect census).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d34",
+     "title": "Post-merge verification of the 15:00Z drain (#2926/#2927) (owner: Chi).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d35",
+     "title": "Mirror A2 — twin refresh execution (owner: Omega).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d36",
+     "title": "A5 — Pointer sweep (owner: Rho).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d37",
+     "title": "A6 — Kernel RED class (owner: Xi).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d39",
+     "title": "A10 — Learning-scorecard repair (owner: Psi).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d40",
+     "title": "A11 — Recovery-ledger close (owner: Chi).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d47",
+     "title": "A4 follow-ons — compiler + scorecards-as-data.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-e3",
+     "title": "Issue-hygiene sweep go",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "mission-state-snapshot-retire-repoint-20261026",
+     "title": "Retire the Option C mission-state snapshot: re-point its two consumers to live/mission-state",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "naya-code-completion-20261026",
+     "title": "Complete The Naya Code — executable behavior, not another document (#2245 program)",
+     "state": "in_progress",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3092"
+    },
+    {
+     "key": "page-audit-mission-room",
+     "title": "PAGE: Mission room — NOT A PAGE",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-projects",
+     "title": "PAGE: Project Intelligence — hub face — LIVE — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-projects-questions",
+     "title": "PAGE: Project Intelligence — 14-question orientation (questions.json) — DEAD ROUTE",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-projects-state",
+     "title": "PAGE: Project Intelligence — machine state (state.json) — MACHINE SURFACE",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-projects-todos",
+     "title": "PAGE: Project Intelligence — to-do board — LIVE — SEED, BELOW STANDARD",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-activity-notifications-20261025",
+     "title": "PI activity notifications: every real write announces itself (feed + mail)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-duplicates-reconcile-20261026",
+     "title": "PI DUPLICATES CLOSED CLEANLY IN THE OPEN — one canonical item per job",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-face-build-track-20261026",
+     "title": "PI face rebuild — TRACK A: build it right (14 checks)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-face-content-track-20261026",
+     "title": "PI face rebuild — TRACK B: fill it (16 content checks)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-face-design-rebuild-20261026",
+     "title": "PI face design rebuild to the director standard — Resolve scorecard 4.0/10, 10 holes, 10 fixes",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-face-world-view-20261026",
+     "title": "PROJECT INTELLIGENCE FACE — major overhaul: world view + project view (extends 14q-pi-hub-10star)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-github-app-sync-20261026",
+     "title": "PI set up in GitHub, synced through the GitHub App, shown in the Hub — with provenance on every landing",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-hub-ideal-design-20261026",
+     "title": "PI HUB — the ideal face, designed from the director's empty-page screenshot (2026-10-26)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-notifications-mail-20261026",
+     "title": "PI notifications — every change mails the seats automatically; checking NayaNET mail is part of starting work",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-operating-code-20261026",
+     "title": "PI operating code embedded in Project Intelligence — the oath + the seven-step intelligence process, live in the system",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-per-part-scoring-activity-20261026",
+     "title": "PI face: every part scored % done + team activity per part (B17/B18)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-record-dedup-20261026",
+     "title": "PI record integrity: 23 duplicate item rows inflate every count",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pi-stalled-work-surfacing-20261026",
+     "title": "UNFINISHED WORK SURFACES ITSELF — staleness escalation in the hub (implements SN-1874)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "project-list-states",
+     "title": "PROJECT LIST STATES: the project list shows per-project status at a glance (proven/moving/waiting)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "projects-overhaul-20261026",
+     "title": "Projects (PI page) major overhaul — highly functional: world view + project view, everything listed/findable/organized",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "q14-10",
+     "title": "Fourteen Questions: lessons are not yet answerable from live payload data",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "resolve-pr3062-kernel-residual-1",
+     "title": "Kernel residual 1/5 cured — PR #3062 merged, blob-verified",
+     "state": "verifying",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3062"
+    },
+    {
+     "key": "resolve-pr3065-migration-ledger-registration",
+     "title": "Migration ledger parity restored — PR #3065 open (registers 3 files PENDING)",
+     "state": "in_progress",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3065"
+    },
+    {
+     "key": "shawn-feedback-into-pi-20261026",
+     "title": "Shawn's feedback goes into Project Intelligence the same pass — notes + to-dos the whole team sees",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "standing-audit-resolve-20261026",
+     "title": "STANDING AUDIT — find what is not right on every surface and bring fixes, never waiting for the director's list",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "ten-by-ten-execution-2026-10-26",
+     "title": "TEN-BY-TEN EXECUTION — the director's exercise is now the team's to-do list (report PR #3077)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-heartbeat-2026-10-23",
+     "title": "Zero-output loop: heartbeat — 42 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-heartbeat-2026-10-24",
+     "title": "Zero-output loop: heartbeat — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-heartbeat-2026-10-26",
+     "title": "Zero-output loop: heartbeat — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-sync-watchdog-2026-10-23",
+     "title": "Zero-output loop: naya-sync-watchdog — 237 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-sync-watchdog-2026-10-24",
+     "title": "Zero-output loop: naya-sync-watchdog — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-sync-watchdog-2026-10-26",
+     "title": "Zero-output loop: naya-sync-watchdog — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-nitro-director-pass-2026-10-23",
+     "title": "Zero-output loop: nitro-director-pass — 23 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-nitro-director-pass-2026-10-24",
+     "title": "Zero-output loop: nitro-director-pass — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-nitro-director-pass-2026-10-26",
+     "title": "Zero-output loop: nitro-director-pass — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-nitro-wave-dispatcher-2026-10-23",
+     "title": "Zero-output loop: nitro-wave-dispatcher — 41 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-nitro-wave-dispatcher-2026-10-24",
+     "title": "Zero-output loop: nitro-wave-dispatcher — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-nitro-wave-dispatcher-2026-10-26",
+     "title": "Zero-output loop: nitro-wave-dispatcher — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-project-intelligence-refresh-2026-10-23",
+     "title": "Zero-output loop: project-intelligence-refresh — 82 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-project-intelligence-refresh-2026-10-24",
+     "title": "Zero-output loop: project-intelligence-refresh — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-project-intelligence-refresh-2026-10-25",
+     "title": "Zero-output loop: project-intelligence-refresh — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-project-intelligence-refresh-2026-10-26",
+     "title": "Zero-output loop: project-intelligence-refresh — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-project-intelligence-state-publish-2026-10-23",
+     "title": "Zero-output loop: project-intelligence-state-publish — 208 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-project-intelligence-state-publish-2026-10-24",
+     "title": "Zero-output loop: project-intelligence-state-publish — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-project-intelligence-state-publish-2026-10-25",
+     "title": "Zero-output loop: project-intelligence-state-publish — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-project-intelligence-state-publish-2026-10-26",
+     "title": "Zero-output loop: project-intelligence-state-publish — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "pi_area_view",
+    "href": "#area-pi-hub",
+    "label": "Not separately served yet — see its Project Intelligence area: Project Intelligence & the Hub"
+   }
+  },
+  {
+   "id": "projects",
+   "name": "Projects",
+   "one_line": "Projects on the Project Intelligence record: a world view of everything across NayaNET plus one project's everything.",
+   "kind": "page",
+   "note": "The route serves its own page today as an own-workspace view; the world view on the record is the open work in its area, which it shares with spaces.",
+   "route": "/projects",
+   "probe": {
+    "http": 200,
+    "bytes": 163981,
+    "sha": "45cc34f49ad8",
+    "title": "Projects — NayaNET",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/projects",
+    "state": "serves_own_page"
+   },
+   "route_state": "serves_own_page",
+   "pi": {
+    "area": "projects-spaces",
+    "area_label": "Projects & spaces",
+    "items_total": 13,
+    "items_done_proven": 1,
+    "items_open": 12,
+    "pct_done_proven": 7.7,
+    "states": {
+     "queued": 9,
+     "verifying": 1,
+     "done_proven": 1,
+     "in_progress": 2
+    }
+   },
+   "still_needed": [
+    {
+     "key": "enh-a-l2",
+     "title": "Lists: due dates, reminders, voice capture",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-sp12",
+     "title": "Spaces: invite-a-friend per space, attributed",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-sp17",
+     "title": "Spaces: a pulse per space",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-a14",
+     "title": "The Living List",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "lists-overhaul-20261026",
+     "title": "Smart Lists complete overhaul — one lists app (feed-save home, organize, send, project-add)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-business",
+     "title": "PAGE: Business page — LIVE — MOBILE LAW BROKEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-lists",
+     "title": "PAGE: Smart Lists — LIVE — FLAT",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-space-page",
+     "title": "PAGE: Space page — flagship instance — LIVE — MOBILE LAW BROKEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-spaces-room",
+     "title": "PAGE: Smart Spaces — room index — LIVE — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "smart-tabs-business-spaces-apps-20261026",
+     "title": "SMART BAR / SMART TABS — Business app and Spaces app are MISSING and must be there",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "spaces-directory-smart-format-20261026",
+     "title": "SPACES DIRECTORY (/rooms/spaces) — update to the current smart-space format; a click opens the real smart space app",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "tabs-spaces-complete-20261026",
+     "title": "Smart tabs complete (business + space apps) + spaces directory opens the real space app + home format finalized",
+     "state": "in_progress",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/projects",
+    "label": "Open Projects"
+   }
+  },
+  {
+   "id": "welcome",
+   "name": "Welcome walk",
+   "one_line": "The birth chain: a new citizen walks the walk and their Personal, Business and Space apps are created.",
+   "kind": "page",
+   "note": "The Official Welcome serves its own page; the full fresh-citizen birth-chain proof is the open work in its area.",
+   "route": "/welcome",
+   "probe": {
+    "http": 200,
+    "bytes": 95303,
+    "sha": "369afedaaaab",
+    "title": "The Official Welcome | NayaNET",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/welcome",
+    "state": "serves_own_page"
+   },
+   "route_state": "serves_own_page",
+   "pi": {
+    "area": "welcome",
+    "area_label": "Welcome",
+    "items_total": 15,
+    "items_done_proven": 0,
+    "items_open": 15,
+    "pct_done_proven": 0.0,
+    "states": {
+     "queued": 13,
+     "in_progress": 2
+    }
+   },
+   "still_needed": [
+    {
+     "key": "14q-activation10-cold",
+     "title": "14Q: ACTIVATION-10 live cold seat walk, Power as cold seat",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "14q-door-walk-key-divergence",
+     "title": "14Q: Door walk key divergence — JS walk vs Python SLOTS share ZERO keys",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "14q-live-walk-activate",
+     "title": "14Q: Live Welcome walk calls activate() — cold citizen walk, no hand touching it",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "auto-page-birth-mission",
+     "title": "MISSION: pages born automatically through the walkthrough - sign-in to Welcome to a live page, covered and matched",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "build-welcome-flow",
+     "title": "BUILD: The Welcome Flow to Trinity to Match - the official onboarding (Shawn's #1)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "build-welcome-flow-engine",
+     "title": "SET B - ENGINE: profile vectors, Trinity generation spec, Smart Match v1 (code + first live run)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "f33",
+     "title": "ACTIVATION-10 rehearsal",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-team-nitro-3",
+     "title": "ACTIVATION-10 rehearsal 2026-10-25 (CPI gap-d32)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d32",
+     "title": "ACTIVATION-10 rehearsal.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "journey-test-2026-10-23",
+     "title": "Journey test record — Wave 1 gate mechanics (named test record)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-join",
+     "title": "PAGE: Join — citizen invitation (/joinus) — SHELL — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-welcome",
+     "title": "PAGE: Welcome — the entry door — LIVE — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-birth-cold-walk",
+     "title": "Cold-walk proof: a Naya goes sign-in -> walkthrough -> live page, end to end",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-birth-interface",
+     "title": "Craft the walk: sign-in to walkthrough to born page, mobile-first",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "walkthrough-page-birth-wiring",
+     "title": "Wire it: completing the Welcome walkthrough creates the page automatically",
+     "state": "queued",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/welcome",
+    "label": "Open Welcome walk"
+   }
+  },
+  {
+   "id": "smart-notes",
+   "name": "Smart Notes",
+   "one_line": "The unit of shared intelligence: every lesson distilled into a one-minute Intelligent Block, served at its own Smart Link.",
+   "kind": "page",
+   "note": "Probed at a real note (SN-1884): the route serves a small shell carrying the note's own title; the note body renders client-side. File-to-live is proven per note; no dedicated Smart Notes area in the record.",
+   "route": "/s/sn1884",
+   "probe": {
+    "http": 200,
+    "bytes": 1678,
+    "sha": "7db8ba07463a",
+    "title": "Active Intelligence — The Design Mastery Doctrine | NayaNET",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/s/sn1884",
+    "state": "js_shell_own_title",
+    "route_pattern": "/s/<smart-note-id>"
+   },
+   "route_state": "js_shell_own_title",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "live_route",
+    "href": "https://nayanet.live/s/sn1884",
+    "label": "Open a live Smart Note (SN-1884)"
+   }
+  },
+  {
+   "id": "smart-factory",
+   "name": "Smart Factory",
+   "one_line": "Where pages and parts are built: the coded piece library and the templates that mirror finished apps.",
+   "kind": "page",
+   "note": "The factory is an in-app Hub view: the direct path serves the Hub home document, so the probe cannot confirm the factory itself. Template completion (Business + Space above all) is the open work in its area, which also carries the GitHub ↔ factory interfaces.",
+   "route": "/smartfactory",
+   "probe": {
+    "http": 200,
+    "bytes": 5523481,
+    "sha": "4b7de925753a",
+    "title": "NayaNET — The Intelligent Hub",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/smartfactory",
+    "state": "serves_home_bytes"
+   },
+   "route_state": "serves_home_bytes",
+   "pi": {
+    "area": "factory-interfaces",
+    "area_label": "Factory & interfaces",
+    "items_total": 52,
+    "items_done_proven": 10,
+    "items_open": 42,
+    "pct_done_proven": 19.2,
+    "states": {
+     "queued": 30,
+     "verifying": 2,
+     "in_progress": 9,
+     "done_proven": 10,
+     "blocked": 1
+    }
+   },
+   "still_needed": [
+    {
+     "key": "14q-factory-push-wire-inventory",
+     "title": "14Q: Factory push + wiring + categorized inventory",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "14q-nitro-rendered-review",
+     "title": "14Q: Nitro rendered review desktop + phone, Same-Language 24",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "app-format-finalization-20261026",
+     "title": "APP FORMAT — finalize the standard app presentation (is the dashboard format the final one?)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "cover-adjuster-reposition",
+     "title": "Cover adjuster — drag any cover up/down to align it, position saved per page",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "cover-chooser-every-page",
+     "title": "Cover chooser on EVERY page: library or own upload, relevant default in place",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "cover-library-interface-nitro",
+     "title": "Smart Cover Library interface — Nitro's design (withdrawn chooser re-route)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "cover-library-open-templates",
+     "title": "Open cover library: extraordinary templates with no Naya branding (three brand tiers, six categories)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "cover-library-smart-factory-shelf",
+     "title": "Cover shelf in Smart Factory — browse every template cover, pick one, or use as reference for a custom",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "cover-library-wiring",
+     "title": "Template Cover Library — ship as app assets, assign by key at page creation",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-a-x1",
+     "title": "Ask Naya tab at #2 in the flagship scrolling row (blue); retire duplicate Invite destination",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "enh-b-route7",
+     "title": "Route honesty — room or labeled preview (Connections, Lists, Mail)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "f09",
+     "title": "The rules themselves",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "f19",
+     "title": "The name is “Deep black”",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "factory-single-authority-reconcile-20261026",
+     "title": "FACTORY — reconcile to ONE authority: interfaces/factory vs SMART-FACTORY-CANON (PR #3075 retro-scorecard cure)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "factory-templates-complete-20261026",
+     "title": "Smart Factory completeness — all parts in, templates finished as mirrors, pages creatable automatically",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-the-smart-factory-3",
+     "title": "Step 7 — with the doc cure (render the 20 not-checkable reasons)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-the-smart-factory-4",
+     "title": "Step 8 — final Factory step + Shawn's eye",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-a3",
+     "title": "Smart Factory \"Make It Yours\" block.",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-c1",
+     "title": "Wave 2 / eye round 3 (builder 54f203a6, running since 20:32Z)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d18",
+     "title": "Step 22 — Mobile parity + speed pass.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d19",
+     "title": "Explanation Standard — full ⓘ coverage.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d20",
+     "title": "Multi-app magic (ruled 18:38Z).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d23",
+     "title": "Step 4 — The page generator (the Contract's home).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d24",
+     "title": "Step 5 — Reconcile the template shelf.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d25",
+     "title": "Step 6 — The gate's §10 door on the page.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d26",
+     "title": "Step 7 — Copies → pointers.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d27",
+     "title": "Step 8 — Generated-page deploy + the timed acceptance build.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d29",
+     "title": "B8 P0 — shared-drawer dead routes.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d41",
+     "title": "B2 R1b — build-api.py cure (owner: Nu).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d42",
+     "title": "B2 R1 — post-swap certification (owner: Chi).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d8",
+     "title": "Step 10 — Proposing automations v1.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-e1",
+     "title": "L5 plug-ins depth",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "interface-registry-20261025",
+     "title": "Interface Registry: every interface scored, linked, engine-mapped, 10/10 + working",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-factory",
+     "title": "PAGE: Smart Factory (/smartfactory) — LIVE — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-design-audit-2026-10-26",
+     "title": "PAGE DESIGN AUDIT 2026-10-26 — every page measured against the design contract (Shawn's order)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "resolve-pr3063-factory-residuals-2-3",
+     "title": "Kernel residuals 2+3 (Factory S1 'Deep black') — PR #3063 open, merge held per L670",
+     "state": "blocked",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3063"
+    },
+    {
+     "key": "smart-covers-chooser",
+     "title": "Smart Covers: the categorized cover library + creation-time chooser with smart suggestion",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "smart-covers-library-20261026",
+     "title": "Smart Covers Library DONE, in the Smart Factory, connected to every app that has covers",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "standing-rules-tonight-20261026",
+     "title": "STANDING RULES FROM THE DIRECTOR'S 2026-10-26 PAGE REVIEW — binding on all seats",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-build-queue-processor-2026-10-23",
+     "title": "Zero-output loop: naya-build-queue-processor — 140 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-build-queue-processor-2026-10-24",
+     "title": "Zero-output loop: naya-build-queue-processor — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-build-queue-processor-2026-10-26",
+     "title": "Zero-output loop: naya-build-queue-processor — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "pi_area_view",
+    "href": "#area-factory-interfaces",
+    "label": "Not separately served yet — see its Project Intelligence area: Factory & interfaces"
+   }
+  },
+  {
+   "id": "certificate-identity",
+   "name": "Certificate / Identity page",
+   "one_line": "One alias, one route, forever: the certificate a citizen receives when they join — the certificate page IS the identity page a new citizen lands on.",
+   "kind": "page",
+   "note": "Each citizen's page lives at their own Smart Link, so there is no single URL to probe. Identity work is counted inside the identity-settings area — see the Settings card.",
+   "route": null,
+   "probe": null,
+   "route_state": "per_citizen",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "none",
+    "href": null,
+    "label": "No separate live route yet — see its note"
+   }
+  },
+  {
+   "id": "pricing",
+   "name": "Pricing",
+   "one_line": "The pay line, in the open: free to taste, paid keeps everything alive — one gate, at activation.",
+   "kind": "page",
+   "note": "The direct path serves the Hub home document; the pay line renders inside the Hub. Terms are settled law (SN-1862). No dedicated Pricing area in the record.",
+   "route": "/pricing",
+   "probe": {
+    "http": 200,
+    "bytes": 5523481,
+    "sha": "4b7de925753a",
+    "title": "NayaNET — The Intelligent Hub",
+    "checked_at": "2026-10-27T04:00:16Z",
+    "route": "/pricing",
+    "state": "serves_home_bytes"
+   },
+   "route_state": "serves_home_bytes",
+   "pi": null,
+   "still_needed": [],
+   "link": {
+    "kind": "none",
+    "href": null,
+    "label": "No separate live route yet — see its note"
+   }
+  },
+  {
+   "id": "ask-naya",
+   "name": "Ask Naya & Voice",
+   "one_line": "Talk to Naya in the Hub: hold to talk, Discover pills, and Naya's voice answering back.",
+   "kind": "page",
+   "note": "One Ask surface, in the Hub — never a second Ask page. Naya voice playback proof on the surfaces that promise it is the open work in its area (Ordered Program #2).",
+   "route": null,
+   "probe": null,
+   "route_state": "in_app_surface",
+   "pi": {
+    "area": "voice-audio",
+    "area_label": "Voice & audio",
+    "items_total": 33,
+    "items_done_proven": 5,
+    "items_open": 28,
+    "pct_done_proven": 15.2,
+    "states": {
+     "done_proven": 5,
+     "in_progress": 9,
+     "queued": 16,
+     "needs_shawn": 1,
+     "blocked": 1,
+     "verifying": 1
+    }
+   },
+   "still_needed": [
+    {
+     "key": "f28",
+     "title": "Voice streaming — building",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "f32",
+     "title": "Four short voice clips",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-ask-1",
+     "title": "Ask Naya — the ear test is the remaining gate",
+     "state": "needs_shawn",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-ask-naya-2",
+     "title": "Go-live port + approved-room rounds (CPI gap-c2/gap-b3)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-ask-naya-3",
+     "title": "Voice path unproven by ear",
+     "state": "blocked",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-flow-2",
+     "title": "Keep The One Flow's intelligence current on its own page",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-the-one-flow-3",
+     "title": "Timed gasp test (different-seat)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-voice-2",
+     "title": "Bake queue drain (119 pending)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-voice-3",
+     "title": "Streaming playback + auto-cache",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "fill-voice-4",
+     "title": "Four short voice clips (CPI f32)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-a8",
+     "title": "Voice, current form",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-b3",
+     "title": "Ask Naya — the approved room (rounds 1–4).",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-c2",
+     "title": "Ask Naya go-live port (dispatched 21:17Z)",
+     "state": "in_progress",
+     "evidence_url": "https://nayahubpreviewasknaya.nayapower.workers.dev/#/hub/ask"
+    },
+    {
+     "key": "gap-c5",
+     "title": "Voice drain",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d16",
+     "title": "Step 18 — Async voice/video note.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d21",
+     "title": "Voice streaming playback + auto-cache.",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d31",
+     "title": "B7 — four voice clips retry.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-e6",
+     "title": "Voice first-sound speed spend",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-ask-naya",
+     "title": "PAGE: Ask Naya — SHELL — RENDER UNPROVEN",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "voice-queue-cure-20261026",
+     "title": "VOICE FIXED PROPERLY (NITRO) — queue moving again, warming live, no dead taps, first sound fast, never robotic, supervised so it stays up",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "walkthrough-narration-nitro-20261026",
+     "title": "WALKTHROUGH NARRATION — Nitro's set: per-slide scripts, bake/embed, Resolve cold-verifies",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-media-notes-transcribe-watcher-2026-10-23",
+     "title": "Zero-output loop: media-notes-transcribe-watcher — 208 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-media-notes-transcribe-watcher-2026-10-24",
+     "title": "Zero-output loop: media-notes-transcribe-watcher — 21 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-media-notes-transcribe-watcher-2026-10-25",
+     "title": "Zero-output loop: media-notes-transcribe-watcher — 21 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-media-notes-transcribe-watcher-2026-10-26",
+     "title": "Zero-output loop: media-notes-transcribe-watcher — 21 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-stream-daemon-supervisor-2026-10-26",
+     "title": "Zero-output loop: naya-stream-daemon-supervisor — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-voice-synthesis-queue-2026-10-23",
+     "title": "Zero-output loop: naya-voice-synthesis-queue — 1161 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-naya-voice-synthesis-queue-2026-10-24",
+     "title": "Zero-output loop: naya-voice-synthesis-queue — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "pi_area_view",
+    "href": "#area-voice-audio",
+    "label": "Not separately served yet — see its Project Intelligence area: Voice & audio"
+   }
+  },
+  {
+   "id": "membership-affiliate",
+   "name": "Membership & affiliate",
+   "one_line": "Not a page — two systems: membership areas on any app (build button for paid members only) and the affiliate system baked into the Dashboard (50% of revenue, paid every Wednesday, on the ledger).",
+   "kind": "system",
+   "note": "Both systems are missing as built systems (Whole Picture §4.4–4.5); their build items are the membership-money area.",
+   "route": null,
+   "probe": null,
+   "route_state": "system",
+   "pi": {
+    "area": "membership-money",
+    "area_label": "Membership & money",
+    "items_total": 17,
+    "items_done_proven": 0,
+    "items_open": 17,
+    "pct_done_proven": 0.0,
+    "states": {
+     "needs_shawn": 1,
+     "queued": 9,
+     "in_progress": 7
+    }
+   },
+   "still_needed": [
+    {
+     "key": "14q-merchant-payout-public",
+     "title": "14Q: Payout + pricing public confirmation + merchant keys secure flow",
+     "state": "needs_shawn",
+     "evidence_url": null
+    },
+    {
+     "key": "build-ambassador-system",
+     "title": "AMBASSADOR SYSTEM: alias = affiliate link at join; clicks/signups/sales tracked to the dashboard; Easy Share",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-b1",
+     "title": "Smart Links — the owner surface (Shawn's exact complaint: \"no ability to put the ambassador link and get a smart link\").",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-c4",
+     "title": "Smart Link claim block build-out",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d15",
+     "title": "Step 17 — Booking block.",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d4",
+     "title": "Step 8 (BoB) — Smart Links land in the Dashboard.",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-e2",
+     "title": "Payments step (Best-of-Best step 19)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "membership-access-gating-20261025",
+     "title": "Membership access + gating design LOCKED: one login, free Academy, entitlement-gated builder",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "membership-complete-20261026",
+     "title": "Membership site completed (Shawn's explicit to-do: finish what is staged at 9.0)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "membership-rebuild-review-20261025",
+     "title": "Membership rebuild: parent rendered review 9.0 STAGED (2026-10-25)",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-booking",
+     "title": "PAGE: Booking (/book) — LIVE — BELOW STANDARD",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "page-audit-payments",
+     "title": "PAGE: Payments (/pay) — LIVE — BELOW STANDARD",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "pricing-finish-20261026",
+     "title": "Pricing page finished (returning after the other work): rulings + audio + deploy",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "pricing-page-finish-20261026",
+     "title": "Pricing page finish: return after merges, complete and correct",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-smartlink-route-reconciler-watchdog-2026-10-23",
+     "title": "Zero-output loop: smartlink-route-reconciler-watchdog — 197 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-smartlink-route-reconciler-watchdog-2026-10-24",
+     "title": "Zero-output loop: smartlink-route-reconciler-watchdog — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "waste-smartlink-route-reconciler-watchdog-2026-10-26",
+     "title": "Zero-output loop: smartlink-route-reconciler-watchdog — 20 runs today, 0 verified transitions",
+     "state": "queued",
+     "evidence_url": null
+    }
+   ],
+   "link": {
+    "kind": "pi_area_view",
+    "href": "#area-membership-money",
+    "label": "Not separately served yet — see its Project Intelligence area: Membership & money"
+   }
+  },
+  {
+   "id": "privacy-locks",
+   "name": "Privacy locks",
+   "one_line": "Not a page — the hardening underneath: owner-scoped access on the record tables, so no citizen's money data ever sits behind an open policy.",
+   "kind": "system",
+   "note": "Must land before citizen money data (Ordered Program #23). Several of its items sit at Shawn's production gates.",
+   "route": null,
+   "probe": null,
+   "route_state": "system",
+   "pi": {
+    "area": "security-privacy",
+    "area_label": "Security & privacy",
+    "items_total": 12,
+    "items_done_proven": 1,
+    "items_open": 11,
+    "pct_done_proven": 8.3,
+    "states": {
+     "needs_shawn": 5,
+     "verifying": 1,
+     "done_proven": 1,
+     "in_progress": 1,
+     "queued": 4
+    }
+   },
+   "still_needed": [
+    {
+     "key": "14q-merge-gate-admin",
+     "title": "14Q: Merge-gate ruleset 24858146 admin tap",
+     "state": "needs_shawn",
+     "evidence_url": null
+    },
+    {
+     "key": "f10",
+     "title": "The Supabase token — revoked by you",
+     "state": "verifying",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-b4",
+     "title": "Owner delete — the page control.",
+     "state": "in_progress",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d33",
+     "title": "A3 — The Guardian (owner: Chi).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-d46",
+     "title": "A9 — production promotion packet + GH013 decision page (owner: Resolve).",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-e5",
+     "title": "GITHUB_WEBHOOK_SECRET",
+     "state": "needs_shawn",
+     "evidence_url": null
+    },
+    {
+     "key": "gap-e7",
+     "title": "gh-api PAT storage in the secure vault",
+     "state": "needs_shawn",
+     "evidence_url": null
+    },
+    {
+     "key": "privacy-locks-before-citizens-20261026",
+     "title": "PRIVACY LOCKS BEFORE ANY CITIZEN MONEY DATA GOES LIVE — mail private, lists + connections records locked to their owner, money protections in place",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "prove-privacy-two-owner",
+     "title": "PROVE PRIVACY: two-owner test of private+findable, world isolation, revocation (Zara review proofs 1-6)",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "resolve-p0-anon-execute-payment-rpcs",
+     "title": "P0 — anonymous visitors can execute payment/booking database functions; permission change awaits Shawn",
+     "state": "needs_shawn",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2823"
+    },
+    {
+     "key": "resolve-production-packet-p1-p3",
+     "title": "Production packet P1–P3 assembled (3 tongues) — awaiting Shawn's tap",
+     "state": "needs_shawn",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6394024326"
+    }
+   ],
+   "link": {
+    "kind": "pi_area_view",
+    "href": "#area-security-privacy",
+    "label": "Not separately served yet — see its Project Intelligence area: Security & privacy"
+   }
+  },
+  {
+   "id": "smart-match",
+   "name": "Smart Match",
+   "one_line": "Not a page — the auto-match engine that runs through the whole system, connecting people, notes and opportunities by the math.",
+   "kind": "system",
+   "note": "The engine is built and proven in its lane; its remaining record items are the match area.",
+   "route": null,
+   "probe": null,
+   "route_state": "system",
+   "pi": {
+    "area": "match",
+    "area_label": "Smart Match",
+    "items_total": 3,
+    "items_done_proven": 0,
+    "items_open": 3,
+    "pct_done_proven": 0.0,
+    "states": {
+     "queued": 2,
+     "verifying": 1
+    }
+   },
+   "still_needed": [
+    {
+     "key": "14q-smart-match-sql-deploy",
+     "title": "14Q: Deploy Smart Match SQL v1.4 + live match proof",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "automatch-onboarding-sync",
+     "title": "Sync auto-match with onboarding: Welcome answers become the match vector at birth",
+     "state": "queued",
+     "evidence_url": null
+    },
+    {
+     "key": "resolve-automatch-buildable-complete",
+     "title": "Auto-match: all 7 buildable steps on main, verified (B1–B7)",
+     "state": "verifying",
+     "evidence_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2793#issuecomment-6393156141"
+    }
+   ],
+   "link": {
+    "kind": "pi_area_view",
+    "href": "#area-match",
+    "label": "Not separately served yet — see its Project Intelligence area: Smart Match"
+   }
+  }
+ ]
+}
