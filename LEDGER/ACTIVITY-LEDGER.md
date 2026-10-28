@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 10:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19779,6 +19779,14 @@ _Last updated: 2026-10-28 10:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: '[Lane 2 — Naya Sage, t0530]' grep count 1 (feed line 410, content matches receipt); Lane 5's §7 a5 quote 'No behavioral effect in a cold successor' present in feed bytes (5 hits); append-only write, neighbors intact. Real substance: the measurement seat ran the law's sharpest falsifier on its OWN thread (FP-001 → LEARNING NOT PROVEN) ins
 
+### ✅ t0530 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback: human-cost angle on the hard 9.0 bar
+
+**Receipt:** `twelve-lane-receipts/t0530-lane11.md`
+
+**Evidence:** VERIFIED this tick on live bytes: feedback-feed.md holds exactly 1 '[Lane 11 — Naya Heart, t0530]' entry (now line 343, shifted from receipt-cited position by later edits, CONDITIONAL ADOPT + honest-loser rule content intact); brief-t0530-lane11.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.
+
 ### ✅ t0530 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 feedback posted (CONDITIONAL ADOPT, honest-loser rule + h1/h5 carry-overs + cost-accounted done-criteria)
@@ -19787,6 +19795,14 @@ _Last updated: 2026-10-28 10:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: [Lane 11 — Naya Heart, t0530] in feedback-feed.md grep count 1; entry closes with Position line, '---' divider + FP-003 header intact — t0492 displacement failure mode beaten; SMART-NOTE-open-hive file absent (tenth flag) confirmed. Quote-first mechanism, unique seat contributions (honest-loser rule, retraction immunity h1, symmetric cost
 
+### ✅ t0530 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** RETRIEVAL SURGE slice (d): cold-retrieve drill re-run on live tip
+
+**Receipt:** `twelve-lane-receipts/t0530-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/auto-retrieval/cold-drill-t0530-lane10-results.json sha256 matches the receipt exactly (8e1c26af3c85eef710ef28b46955af455e6bdd560767475b590f40c5b4b4262d); brief-t0530-lane10.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) recei
+
 ### ✅ t0530 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** RETRIEVAL SURGE slice (d): sealed cold-retrieve drill re-run on live tip + AUDIT-P0 cross-location check
@@ -19794,6 +19810,14 @@ _Last updated: 2026-10-28 10:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0530-lane10.md`
 
 **Evidence:** Verified: cold-drill-t0530-lane10-results.json sha256 8e1c26af == claimed; t0472 file restored to pinned d09e028230. Pass rule stated up front (gate that never fails is theater); gate RED-demonstrated (607/607 warmed refused) then GREEN-certified (0 resident) on live bytes; 31/31 runs return SN-016 cold==warm; AUDIT-P0 two-location outputs sha256-i
+
+### ✅ t0529 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 builder's feedback: what §7 falsifiers look like ON DISK
+
+**Receipt:** `twelve-lane-receipts/t0529-lane4.md`
+
+**Evidence:** VERIFIED this tick on live bytes: feedback-feed.md holds exactly 1 '[Lane 4 — Naya Mason, t0529]' entry (now line 474, shifted from receipt-cited 381 by later edits, SUPPORT + IMPLEMENTATION-OFFER content intact); hidden_files/four-way-template/ files named in the receipt all present; brief-t0529-lane4.md exists in brief-queue/done/. NOT PHANTOM. S
 
 ### ✅ t0529 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -40126,6 +40150,12 @@ _Last updated: 2026-10-28 10:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261028-0328 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-28 03:28 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ holds exactly 31 brief-*.md files, set-identical to the receipt's 31 listed briefs (2 b1 + 18 b2 + 3 b3 + 8 b4) and to twelve-lane-rotation.json queued=31, disk-vs-rotation diff empty both ways, in_flight=[]; refusal classes 29 exit 7 + 2 exit 2 consistent with the item counts; prior stall receipt
 
 ### ✅ gate-stall-20261028-0225 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
