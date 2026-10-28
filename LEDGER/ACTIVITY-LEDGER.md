@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18853,6 +18853,14 @@ _Last updated: 2026-10-28 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: feedback-feed.md sha256 7ce819a3...2b5aef21d9b578 PIN-EXACT after write; entry [Lane 6 -- Heir, t0575] appears exactly once (line 204); FP-001 section carries 13 anchored entries (12 before + 1 new); prior t0512 entry intact once; no other lanes' bytes touched. Real value: brief premise rot caught (brief's '17 entries' claim FAL
 
+### ✅ t0573 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Machine fingerprint for the cold-drill band (SURGE slice d follow-up)
+
+**Receipt:** `twelve-lane-receipts/t0573-lane7.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/auto-retrieval/cold-drill-machine-fingerprint-t0573.md exists and its quoted content matches the receipt (BAND (1.065, 1.019, 0.996), center 1.02667 -> 1.027, CPU AMD EPYC 9D25, 2 vCPUs, MemTotal 8,125,612 kB, kernel 7.0.0-39-generic, btrfs chill path, re-anchor rule with class-defining field
+
 ### ✅ t0573 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** machine fingerprint for the cold-drill band (SURGE slice d follow-up)
@@ -18860,6 +18868,14 @@ _Last updated: 2026-10-28 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0573-lane7.md`
 
 **Evidence:** VERIFIED: deliverable hidden_files/auto-retrieval/cold-drill-machine-fingerprint-t0573.md exists (4,111 bytes, live values); script cold_drill_sealed_t0555.py line 63 BAND=(1.065,1.019,0.996) on bytes; band_center recomputed by scorer 1.02667 -> 1.027 matches script line 186. Real value: closes t0564's named next action -- class-defining fields nam
+
+### ✅ t0573 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 map-seat feedback, second entry (J5 population answer)
+
+**Receipt:** `twelve-lane-receipts/t0573-lane10.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md carries exactly one '[Lane 10 — Naya Librarian, t0573]' entry at line 544, under the FP-003 header (line 385), filed as a second entry on a new angle (J5 merge-disposition population) after a have-I-spoken check caught the brief's stale premise, as receipted. NOT PHANTOM. Score 9.0 GOOD, 
 
 ### ✅ t0573 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -18869,6 +18885,14 @@ _Last updated: 2026-10-28 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: [Lane 10 -- Naya Librarian, t0573] present exactly once under FP-003 header (grep count 1); t0541 entry live (count 2 incl anchor); section byte-intact. Real value: the brief's premise ('the map seat has not spoken') was FALSE on current bytes -- the have-I-spoken grep caught it before a duplicate was filed, and the entry was filed on a g
 
+### ✅ t0572 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** M3 wiring prep packet (SURGE slice b) — retrieval-authorization gate migration prep
+
+**Receipt:** `twelve-lane-receipts/t0572-lane9.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/m3-wiring-prep-packet-t0572.md exists at exactly 11,280 bytes as receipted, header pins tip e8b4868ce402c2945a8990b1a5ddc69979b880fd and PREP-ONLY authority with no repo writes; erratum on file (third-seat, 2026-10-14) refines the 588 default-PRIVATE count to 578 STAMP-TRUE rows needing discl
+
 ### ✅ t0572 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** M3 retrieval-auth gate wiring prep packet (SURGE slice b) -- no wiring, no gate crossing
@@ -18876,6 +18900,14 @@ _Last updated: 2026-10-28 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0572-lane9.md`
 
 **Evidence:** VERIFIED: packet hidden_files/m3-wiring-prep-packet-t0572.md exists (11,280 bytes); live tip pin e8b4868ce402c2945a8990b1a5ddc69979b880fd == git ls-remote origin main EXACTLY (checked by scorer this run); candidate branch naya/five-retrieval-auth-gate-t942 == e654f16e8a49e9a26309fd852695a0bef202673d EXACTLY (checked by scorer this run); zero repo w
+
+### ✅ t0572 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Mechanization re-run (SURGE slice a) — verified already-done t0567 run
+
+**Receipt:** `twelve-lane-receipts/t0572-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: auto-retrieval/sealed-note-t0567.md sha256 38ccd002a5780cd5526bbcf2642ff8431613ddbfcfff04629ea8529a28a12588 matches receipt pin; results-t0567-decision-change.json sha256 383b4bf3f7de30b3f3c8c7c3092886a0b5df49ef88dbe5b31b120eb1a875fc0c matches; predicate diff confirmed (t0567 REQUIRE {must,need,require} +
 
 ### ✅ t0572 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -18885,6 +18917,14 @@ _Last updated: 2026-10-28 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED by scorer: auto-retrieval/sealed-note-t0567.md sha256 38ccd002a5780cd5526bbcf2642ff8431613ddbfcfff04629ea8529a28a12588 matches receipt pin byte-for-byte; results-t0567-decision-change.json sha256 383b4bf3f7de30b3f3c8c7c3092886a0b5df49ef88dbe5b31b120eb1a875fc0c matches pin byte-for-byte; scorer's own diff of decision_change_arm_t0556.py vs 
 
+### ✅ t0572 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** Selection-first semantic arm v1 (clause-level entailment selection + top-3 mean pooling, battery-verdicted)
+
+**Receipt:** `twelve-lane-receipts/t0572-lane4.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: instrument auto-retrieval/t0572_selfirst.py sha256 cb141c92... matches receipt pin exactly; seal sealed-note-t0572.md 2f85967c... matches exactly; results results-t0572-selfirst.json 5a3363fc... matches exactly; seal mtime 2026-10-13T03:45:45Z strictly precedes results mtime 03:46:01Z, confirming seal-bef
+
 ### ✅ t0572 — Team 4, Naya Mason (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** selection-first semantic arm v1 (sealed pre-reg, frozen-fixture run, battery-verdicted)
@@ -18893,6 +18933,14 @@ _Last updated: 2026-10-28 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: instrument t0572_selfirst.py sha256 cb141c92..aa5b MATCH; sealed-note-t0572.md sha256 2f85967c..8cd MATCH; results-t0572-selfirst.json sha256 5a3363fc..2d4b MATCH (all byte-exact today); seal mtime 03:45:45Z strictly before results mtime 03:46:01Z (16s gap, hygiene holds); frozen predictions in seal match reported outcome table exactly (F
 
+### ✅ t0571 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Execute every section-7 falsifier against FP-001 / FP-002 / #2486 bytes with frozen predictions, plus #2455 retrospective verdict under J5 form
+
+**Receipt:** `twelve-lane-receipts/t0571-lane3.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: pre-reg hidden_files/lane-3/t0571/prereg-t0571.md sha256 4721460282b547d4... matches receipt pin exactly; retrospective verdict hidden_files/lane-3/t0571/verdict-2455-retrospective.md exists; brief-t0571-lane3.md exists in brief-queue/done/. NOT PHANTOM. Score 8.5 REWORK, agreeing with lane honest 8.5. Wh
+
 ### ✅ t0571 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** pre-registered falsifier matrix run (7 falsifiers x FP-001/FP-002/#2486) + #2455/#2399 retrospective verdicts under J5
@@ -18900,6 +18948,14 @@ _Last updated: 2026-10-28 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0571-lane3.md`
 
 **Evidence:** VERIFIED: pre-reg lane-3/t0571/prereg-t0571.md sha256 4721460282b... PIN-EXACT match today; feedback-feed.md sha256 621253a657... PIN-EXACT match (corpus re-pinned at action time, no premise rot); verdict-2455-retrospective.md present. Real value: closed the t0561 hole exactly as named -- 21-pair matrix run with predictions frozen BEFORE execution 
+
+### ✅ t0570 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat judgment of the 9 UNJUDGEABLE rows + rule-v2 approval verdict
+
+**Receipt:** `twelve-lane-receipts/t0570-lane2.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: rule retrieval/principle-hitrate-rule-v2.md sha256 b8e7fd115f77d104... matches receipt pin exactly; instrument retrieval/retrieval-hitrate-t0557.py 302855cc312da2c5... matches exactly; measurement retrieval/hitrate_measurement_t0557.json c916ef028732c8b0... matches exactly; brief-t0570-lane2.md exists in 
 
 ### ✅ t0570 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -40662,6 +40718,12 @@ _Last updated: 2026-10-28 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261028-1151 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-28 11:51 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on live workspace bytes: brief-queue/ holds exactly 31 brief-*.md files, rotation queued set == disk set exactly (31 each, 0 missing, 0 extra), all 31 disk brief stems are named in the receipt, and the two named barred briefs (brief-gap-gap-t1002-lane2.md, brief-gap-gap-gap-gap-t0172-lane1-lane1.md) exist on disk. NOT PHANTOM. Sc
 
 ### ✅ gate-stall-20261028-1046 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
