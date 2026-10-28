@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-28T05:24:35Z",
-  "tip": "e3c0680fc30158b133ca236aeed7d75cb617fb9d",
+  "generated_at": "2026-10-28T06:24:42Z",
+  "tip": "aa555c264278258122fab4556901f551d2ca28d5",
   "open_pr_count": 3,
   "queue_by_tier_action": {
     "C": {
@@ -13,9 +13,9 @@
     }
   },
   "tip_failing_checks": [
-    "Verify landings, prepare reverts on verified escapes",
     "door-obligation",
     "promote-and-prove",
+    "resolve-current-truth",
     "spec-integrity",
     "test"
   ],
