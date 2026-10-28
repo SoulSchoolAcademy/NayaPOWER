@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19599,6 +19599,14 @@ _Last updated: 2026-10-28 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: retrieval/smartblocks/lane-status-packet-v1.md exists, sha256 matches 0bff1625...f977fa547; source pins match (query-needs-top20-t0535.json 347f4210...f1ffb0, log 31aa1619...f42239d68fe1) on live bytes. Solid draft with machine source pointers, staleness predicates S1/S2/S3, UNWIRED-DRAFT scope. Score 9.0, not 9.5: lane self-named gaps ho
 
+### ✅ t0539 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a5): TF-IDF-arm falsification battery sealed, run, and certified
+
+**Receipt:** `twelve-lane-receipts/t0539-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: prereg-sealed.md sha256 63e47e07... matches the receipt pin exactly; run-output-t0539.json sha256 95b45115... matches exactly; all five fixture pins match today - results-t0432.json b1af58d0..., baseline-sealed-t0432.md 460429b1..., results-t0442-entailment.json 39201b40..., stemmed-tfidf-arm-t0538-result
+
 ### ✅ t0539 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** SURGE slice a5: TF-IDF-arm falsification battery sealed pre-run, run, and certified (pays t0534 'named not run' debt)
@@ -19606,6 +19614,14 @@ _Last updated: 2026-10-28 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0539-lane5.md`
 
 **Evidence:** VERIFIED: battery dir retrieval/battery-tfidf-t0539/ holds all 4 deliverables (prereg-sealed.md, run_battery.py, run-output-t0539.json, verdict-t0539.md). Pre-reg sha256 63e47e07a156663eeef0e858b13843fbcd6a023d440f73772c61a79563c50982 == receipt claim exactly (sealed pre-run). PIN-INTEGRITY MISS: receipt's run-output pin 95b45115...19c69dd... != on
+
+### ✅ t0539 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (c): ranked top-20 ask-world query-needs analysis recomputed from live log bytes
+
+**Receipt:** `twelve-lane-receipts/t0539-lane3.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: deliverable retrieval/query-log-top20-t0539.md exists at exactly 7688 bytes as receipt claims, carries lane 5 = 5/30 rank-1 tally and recommendations R1-R3, and records the receipt-era log sha 31aa1619...; brief-t0539-lane3.md exists in brief-queue/done/. NOT PHANTOM. Score 8.5, agreeing with lane honest 
 
 ### ✅ t0539 — Team 3, Naya Judge (Decision Engine) — 8.5/10 [VERIFIED]
 
@@ -40310,6 +40326,12 @@ _Last updated: 2026-10-28 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261028-0630 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-28 06:30 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ holds exactly 31 brief-*.md files (excl lane-feed.md), set-identical to twelve-lane-rotation.json queued=31; prior stall receipt gate-stall-20261028-0529.md mtime 12:29:58Z, this receipt 13:30:46Z, delta ~60.8 minutes, outside the 60-minute cap, so a single receipt is justified. Dry-run re-derivat
 
 ### ✅ distill-daily-20261028 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
