@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18723,6 +18723,14 @@ _Last updated: 2026-10-28 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: '[Lane 6 — Heir, t0575]' appears exactly once in feedback-feed.md; FP-001 section carries 13 anchored entries (12 before + 1 new, count re-verified); prior t0512 entry intact once; feedback-feed.md current sha 7ce819a35817f5db matches the receipt's claimed post-write sha exactly (no bytes moved since). The angle is genuinely new (t0571 pr
 
+### ✅ t0578 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** t0555 verdict correction posted to #2175 (INFORMATIVE-PARTIAL lineage correction)
+
+**Receipt:** `twelve-lane-receipts/t0578-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: seal auto-retrieval/sealed-note-t0555.md sha256 34ae19f1c8f0...73c921 matches the receipt and t0570-audit pin exactly; brief-t0578-lane12.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) the correction post carries PAT account iden
+
 ### ✅ t0578 — Team 12, Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** t0578: t0555 verdict correction posted to #2175 (comment 6138201597)
@@ -18821,6 +18829,14 @@ _Last updated: 2026-10-28 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: spec pin 0eae9d32... recomputed byte-identical to the brief's pin; worked-example quote byte-exact by independent read; #2175 comment 6136516900 confirmed exists; all 10 fields audited against the (11) decision test with mechanical-checkability classification. Three amendments (A1 fired-grammar, A2 field-status table, A3 tick-brief cross-
 
+### ✅ t0576 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** 36-frame confirmation of the t0569 CLEAN verdict (FP-001 Sharpening-3 cost term)
+
+**Receipt:** `twelve-lane-receipts/t0576-lane11.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: corpus pin hidden_files/lane-11/corpus_pin_t0576_36.json sha256 5291dfc7b729...e905df matches the receipt pin exactly and parses as 36 rows; verdict hidden_files/lane-11/verdict_cost_t0576.json sha256 09774cc64355...15c matches exactly, carries the 36-receipt frame, the t0569-lane11 exclusion, and the cor
+
 ### ✅ t0576 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** 36-frame confirmation of t0569 CLEAN verdict (cost-term gate FP-001 Sharpening-3)
@@ -18828,6 +18844,14 @@ _Last updated: 2026-10-28 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0576-lane11.md`
 
 **Evidence:** ARTIFACT VERIFIED: corpus_pin_t0576_36.json (36 rows), verdict_cost_t0576.json (36 receipt rows + medians + growth pct), rework_hits_t0576_36.json all exist on disk. Verified on bytes: corpus pin has 36 rows; verdict dict carries per-receipt list of 36. Baseline recomputed from live disk (byte-exact reproduction of t0569 numbers) = real verificatio
+
+### ✅ t0576 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Provenance-marker-spec v1.1-candidate: apply exactly the four accepted changes (A1/A2/A3/zero-marker mitigation) to pin-verified v1 bytes, diff-pure candidate only
+
+**Receipt:** `twelve-lane-receipts/t0576-lane1.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: v1 spec auto-retrieval/provenance-marker-spec-v1.md sha256 0eae9d32940caf...da8af1 matches the receipt pin exactly; v1.1-candidate sha256 49eed057aa7718...dc7817 matches exactly; plain diff shows exactly 31 changed lines as receipted (unified diff groups them into 3 hunks vs the receipt's 4 plain-diff hun
 
 ### ✅ t0576 — Team 1, Naya Verity (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -18837,6 +18861,14 @@ _Last updated: 2026-10-28 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: v1.1-candidate sha256 49eed057aa7718e8339cd88d74824545280c3cfababbe33817d7d30473dc7817 byte-exact vs receipt pin; v1 source pin 0eae9d32... matches; diff purity claim accepted (scope-clean candidate). Clears 9.5 because: pin-verified-before-edit, exactly the four briefed changes, honest holes named (dispatch-log readability assum
 
+### ✅ t0575 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Verdict-application study: apply t0568 veracity verdict (R1-R4) to frozen t1412 X-fixture pool, disposition table + before/after winner
+
+**Receipt:** `twelve-lane-receipts/t0575-lane8.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: report hidden_files/lane8-t0575-verdict-application.md sha256 830ff1cb14ad2d507ef4e60c456ac9f16610d22c30505de3f757b6f25b9fad1d matches receipt pin exactly; all 8 fixture-manifest files match (fixture-index + 7 notes, 8/8, 0 mismatches); quoted measurements present in report (103.8626, 45.4407, REFUSED_FAL
+
 ### ✅ t0575 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Verdict-application study: t0568 R1-R4 verdict applied to frozen t1412 X-fixture pool, disposition table + before/after winner + wiring design
@@ -18844,6 +18876,14 @@ _Last updated: 2026-10-28 19:18 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0575-lane8.md`
 
 **Evidence:** ARTIFACTS VERIFIED byte-for-byte: report lane8-t0575-verdict-application.md sha256 830ff1cb...5fad1d PIN-EXACT; all 8 fixture SHAs in lane8-t0568-veracity/fixture-manifest.json re-hashed by scorer -- MATCH, base_index_pin_t1412=3eeddc8f... matches; pin asserted BEFORE measuring (50ms, named mechanism). Real value: measured what the verdict does, no
+
+### ✅ t0575 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 feedback: second entry with genuinely new angle (HEIR-1/HEIR-4 integrity conditions on own t0512 succession falsifier)
+
+**Receipt:** `twelve-lane-receipts/t0575-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md carries exactly one '[Lane 6 — Heir, t0575]' entry (line 213, inside FP-001 section lines 27-226; shift from receipted line 204 is later appended entries, not a defect), prior t0512 entry intact exactly once, entry content matches receipt (HEIR-1/HEIR-4, t0568 design+seal only, probe NOT 
 
 ### ✅ t0575 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
