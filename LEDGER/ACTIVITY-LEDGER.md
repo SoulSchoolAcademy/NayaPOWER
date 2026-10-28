@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 21:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 21:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17931,6 +17931,14 @@ _Last updated: 2026-10-28 21:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0592_decision_consequence.py sha256 7f8943ac... == claimed (exact); sealed-note mtime 06:32:39 UTC < run 06:32:50 UTC (seal-first holds); coarse results d4bd6f658a... == claimed; fine results present; 9/9 pins recorded. Frozen rule mechanically applied: 72/72 flips = SATURATED -> FALSIFIED, reported honestly with structural lesson (M-wit
 
+### ✅ t0592 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Pooling-weight (alpha) sweep, SEALED + RUN, EARNED-WEIGHT alpha_0.1
+
+**Receipt:** `twelve-lane-receipts/t0592-lane2.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: auto-retrieval/t0592_weight_sweep.py sha256 edd243711e52036006ad5db36eb1da077d0e256e44f7a0d7eb0628bd5eed02bf matches receipt pin exactly; auto-retrieval/results-t0592-weightsweep-coarse.json sha256 df49841124cefd5e2f0666b95ad3f2e4adf43dfcd0844e7cb21dd5d192193970 matches receipt pin exactly; seal mtime 202
+
 ### ✅ t0592 — Team 2, Naya Sage Narzan (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** pooling-weight (alpha) sweep, SEALED + RUN (object-reference arm v2)
@@ -18684,6 +18692,14 @@ _Last updated: 2026-10-28 21:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0580b-lane9.md`
 
 **Evidence:** ARTIFACT VERIFIED: surge/cold-retrieve-isolated-t0580b.md and auto-retrieval/cold-drill-sealed-t0580b-results.json both exist on disk (timestamps 04:46 UTC consistent with the run). SEAL_C pin 92d8b2be...5efdbe independently corroborated: lane 5's receipt at the same tick lands the same writer-file sha256 (92d8b2bef7018c2a5ceda2bc7af411de68f1bbfd7d
+
+### ✅ t0580b — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): Option-B per-entry stamping-decision table, 631 rows
+
+**Receipt:** `twelve-lane-receipts/t0580b-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665e3c0356ced53a13448c8ff76143f4cfdea97a10c56c190dd matches receipt pin exactly; surge/gen-stamping-decisions-t0580b.py sha256 885feecc1f306b7196ef5fa28cbc69bfc562b10f4a3a60abbca4221c47e991b4 matches receipt pin exactly; brief-t0580b-lane5.md exists i
 
 ### ✅ t0580 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -19782,6 +19798,14 @@ _Last updated: 2026-10-28 21:14 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0549-lane4.md`
 
 **Evidence:** Artifacts: new draft hidden_files/retrieval/smartblocks/lane-packet-v2-hypertuned.md exists on disk with sha256 EXACTLY matching the receipt pin (c90c3815...b). Work: brief claimed atomically, R1/R2/R3 instances with row-predicate machine fields, all 3 rec lines quoted verbatim before applying, v1 byte-identical untouched, live re-sha caught +1 pro
+
+### ✅ t0549 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Lane 12 GUARD: re-verify parked verdict + unpark condition, Hub-surface divergence scan
+
+**Receipt:** `twelve-lane-receipts/t0549-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/twelve-lanes.md Lane 12 charter carries Score 4.0/10, parked by design, Done (10/10) gated on 'Unpark when the engine hits 10/10' exactly as the receipt quotes; hidden_files/protocol-scorecard-2026-10-15.md exists with the 7.0/10 PROTOCOL figure the receipt cites, so the unpark condition (eng
 
 ### ✅ t0549 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
