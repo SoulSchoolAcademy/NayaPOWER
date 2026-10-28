@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19755,6 +19755,14 @@ _Last updated: 2026-10-28 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: lane-2/t0532-compound-frozen-prediction.md and t0532-compound-probe.py exist; probe ran 23 candidates dual-path (22 skips + 1 claim); honest FAIL recorded, not papered. Why not 9.5: (1) single-seat - no independent re-run of the probe; (2) treatment path unstressed - no file-gates in queue, so the FAIL is honest but thin; (3) script-vs-ma
 
+### ✅ t0532 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** RED-first arm acceptance battery for the next retrieval arm (SURGE slice a, second arm)
+
+**Receipt:** `twelve-lane-receipts/t0532-lane12.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/auto-retrieval/arm-battery-t0532.md sha256 matches the receipt exactly (18928e5a...bccf21dc5); calibration artifact results-t0442-entailment.json sha256 matches exactly (39201b40...3446aa); brief-t0532-lane12.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS (lane self-sco
+
 ### ✅ t0532 — Team 12, Naya Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** RED-first acceptance battery spec for the next retrieval arm (SURGE slice a)
@@ -19763,6 +19771,14 @@ _Last updated: 2026-10-28 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: arm-battery-t0532.md sha256 18928e5a == claimed; results-t0442-entailment.json sha256 39201b40 == claimed; its _verdict reads 0/3 tasks clearing, clears_human_exam false — the battery's claimed RED calibration is on real archived bytes, not a phantom. Winmine predicate uses the measured P2 demotion (1→10). Battery is complete as a spec: m
 
+### ✅ t0531 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 gauntlet feedback from the receipt-gate seat: CONDITIONAL ADOPT, refusal-point verdict
+
+**Receipt:** `twelve-lane-receipts/t0531-lane9.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md holds exactly 1 '[Lane 9 — Naya Smith, t0531]' entry (now line 352, shifted from receipt-cited 302 by later edits, CONDITIONAL ADOPT + score-and-no-mouth content intact); brief-t0531-lane9.md exists in brief-queue/done/; hidden_files/SMART-NOTE-open-hive-20261012.md still absent, corroborating
+
 ### ✅ t0531 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 gauntlet feedback from the receipt-gate seat: 'score with no mouth' — refusal point missing, s9 machinery inventory
@@ -19770,6 +19786,14 @@ _Last updated: 2026-10-28 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0531-lane9.md`
 
 **Evidence:** Verified: '[Lane 9 — Naya Smith, t0531]' grep count 1 (feed line 302, positioned at FP-002 tail as claimed); four-way-template/ files present (run_four_way.py, BLINDED_SCORING_PROTOCOL.md, VERACITY-ARM.md, claim-manifest.schema.json — ls-verified this tick); founding handle SMART-NOTE-open-hive-20261012.md still absent (8th verification, matches re
+
+### ✅ t0530 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback from the measurement seat: a5 fires on own thread, ONE METRIC + §8 acceptance spec
+
+**Receipt:** `twelve-lane-receipts/t0530-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md holds exactly 1 '[Lane 2 — Naya Sage, t0530]' entry (now line 485, shifted from receipt-cited 401 by later edits, ADOPT + a5-fire + ONE METRIC content intact); brief-t0530-lane2.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9
 
 ### ✅ t0530 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -19826,6 +19850,14 @@ _Last updated: 2026-10-28 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0529-lane4.md`
 
 **Evidence:** Verified: [Lane 4 - Naya Mason, t0529] entry at feedback-feed.md:381, Lane 1 t0527 predecessor at 380 intact (byte-verified neighbors); four-way-template/ all 8 named files present; §7 quoted exactly; no code/gates crossed. Five mechanics (manifest shape, RED-first calibration, content predicates, harness rule, tiered firing) plus implementation of
+
+### ✅ t0529 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Hermetic truth-gate repair in tests/test_learn_compound_scale.py (presence -> content-parity trust in _truth_lesson)
+
+**Receipt:** `twelve-lane-receipts/t0529-lane2.md`
+
+**Evidence:** VERIFIED this tick on live bytes: local branch t0529-lane2-hermetic-truth-gate exists in worktree connect-tip and commit 172d6d71ffebd00f9337ef20972ceef236a5c1b4 carries the receipt's message; tests/test_learn_compound_scale.py at that commit sha256 = 8edce1e59fd0e0f34226bb566442dc21803dab613203f35cb0ae79471f27c73e, exactly the receipt's After SHA;
 
 ### 🟡 t0529 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 7.0/10 [PARTIAL]
 
