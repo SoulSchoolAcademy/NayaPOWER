@@ -1,0 +1,436 @@
+{
+ "top": [
+  {
+   "id": "all",
+   "label": "All",
+   "tabKey": "all",
+   "target": null
+  },
+  {
+   "id": "personal",
+   "label": "Personal & apps",
+   "tabKey": "personal",
+   "target": "[data-group=\"personal\"]"
+  },
+  {
+   "id": "hub",
+   "label": "Hub & dashboard",
+   "tabKey": "hub",
+   "target": "[data-group=\"hub\"]"
+  },
+  {
+   "id": "people",
+   "label": "People, mail & match",
+   "tabKey": "people",
+   "target": "[data-group=\"people\"]"
+  },
+  {
+   "id": "factory",
+   "label": "Factory, voice & membership",
+   "tabKey": "factory",
+   "target": "[data-group=\"factory\"]"
+  },
+  {
+   "id": "feed",
+   "label": "Smart Notes feed",
+   "tabKey": "feed",
+   "target": "[data-group=\"feed\"]"
+  },
+  {
+   "id": "togoin",
+   "label": "To go in (files)",
+   "tabKey": "togoin",
+   "target": "[data-group=\"togoin\"]"
+  },
+  {
+   "id": "missions",
+   "label": "The 25 missions",
+   "tabKey": "missions",
+   "target": "#missions"
+  },
+  {
+   "id": "rulings",
+   "label": "Doubled-page rulings",
+   "tabKey": "rulings",
+   "target": "#rulings"
+  },
+  {
+   "id": "journal",
+   "label": "Day Journal",
+   "tabKey": "journal",
+   "target": "#journal"
+  },
+  {
+   "id": "governing",
+   "label": "Governing",
+   "tabKey": "governing",
+   "target": "#governing"
+  },
+  {
+   "id": "overallsec",
+   "label": "Overall list",
+   "tabKey": "overallsec",
+   "target": "#overallsec"
+  },
+  {
+   "id": "notplacedsec",
+   "label": "Not placed",
+   "tabKey": "notplacedsec",
+   "target": "#notplacedsec"
+  }
+ ],
+ "bottom_trace": [
+  [
+   "personal-app",
+   "Personal app",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Personal app",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "business-app",
+   "Business app",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Business app (via Personal route)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "space-app",
+   "Space app",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Space app (via Personal route)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "about",
+   "About",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open About Me (inside Personal)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "live-wall",
+   "Live Wall (inside Personal)",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Live Wall (inside Personal) (inside Personal)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "today-personal",
+   "Today (inside Personal)",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Today (inside Personal) (inside Personal)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "smart-growth-invites",
+   "Smart Growth Invites (inside Personal)",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Smart Growth Invites (inside Personal) (inside Personal)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "smart-link",
+   "Smart Link (inside Personal)",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Smart Link (inside Personal) (inside Personal)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "naya-notes",
+   "Naya Notes — private (inside Personal)",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Naya Notes (inside Personal, private)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "smart-lists",
+   "Smart Lists",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Smart Lists (inside Personal)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "reports",
+   "Reports",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Reports / stats (inside Personal)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "certificate-identity",
+   "Certificate / Identity page",
+   "live_route",
+   "https://nayanet.live/personal",
+   "Open Identity (inside Personal Settings)",
+   "https://nayanet.live/personal"
+  ],
+  [
+   "settings",
+   "Settings",
+   "pi_area_view",
+   "#area-identity-settings",
+   "Not separately served yet — see its Project Intelligence area: Identity & settings",
+   null
+  ],
+  [
+   "home",
+   "Home — the Hub door",
+   "live_route",
+   "https://nayanet.live/",
+   "Open Home — the Hub door",
+   "https://nayanet.live/"
+  ],
+  [
+   "dashboard",
+   "Dashboard",
+   "pi_area_view",
+   "#area-hub-dashboard",
+   "Not separately served yet — see its Project Intelligence area: Hub & dashboard",
+   null
+  ],
+  [
+   "intel-today",
+   "Intel Today",
+   "live_route",
+   "https://nayanet.live/rooms/today",
+   "Open Intel Today",
+   "https://nayanet.live/rooms/today"
+  ],
+  [
+   "library",
+   "Library",
+   "live_route",
+   "https://nayanet.live/rooms/library",
+   "Open Library",
+   "https://nayanet.live/rooms/library"
+  ],
+  [
+   "project-intelligence",
+   "Project Intelligence",
+   "pi_area_view",
+   "#area-pi-hub",
+   "Not separately served yet — see its Project Intelligence area: Project Intelligence & the Hub",
+   null
+  ],
+  [
+   "projects",
+   "Projects",
+   "live_route",
+   "https://nayanet.live/projects",
+   "Open Projects",
+   "https://nayanet.live/projects"
+  ],
+  [
+   "connections",
+   "Connections",
+   "live_route",
+   "https://nayanet.live/rooms/connections",
+   "Open Connections",
+   "https://nayanet.live/rooms/connections"
+  ],
+  [
+   "smart-mail",
+   "Smart Mail",
+   "live_route",
+   "https://nayanet.live/rooms/mail",
+   "Open Smart Mail",
+   "https://nayanet.live/rooms/mail"
+  ],
+  [
+   "smart-match",
+   "Smart Match",
+   "pi_area_view",
+   "#area-match",
+   "Not separately served yet — see its Project Intelligence area: Smart Match",
+   null
+  ],
+  [
+   "growth",
+   "Growth",
+   "live_route",
+   "https://nayanet.live/rooms/growth",
+   "Open Growth",
+   "https://nayanet.live/rooms/growth"
+  ],
+  [
+   "booking",
+   "Booking + Scheduler",
+   "live_route",
+   "https://nayanet.live/book",
+   "Open Booking + Scheduler",
+   "https://nayanet.live/book"
+  ],
+  [
+   "smart-factory",
+   "Smart Factory",
+   "pi_area_view",
+   "#area-factory-interfaces",
+   "Not separately served yet — see its Project Intelligence area: Factory & interfaces",
+   null
+  ],
+  [
+   "ask-naya",
+   "Ask Naya & Voice",
+   "pi_area_view",
+   "#area-voice-audio",
+   "Not separately served yet — see its Project Intelligence area: Voice & audio",
+   null
+  ],
+  [
+   "membership-affiliate",
+   "Membership & affiliate",
+   "pi_area_view",
+   "#area-membership-money",
+   "Not separately served yet — see its Project Intelligence area: Membership & money",
+   null
+  ],
+  [
+   "privacy-locks",
+   "Privacy locks",
+   "pi_area_view",
+   "#area-security-privacy",
+   "Not separately served yet — see its Project Intelligence area: Security & privacy",
+   null
+  ],
+  [
+   "pricing",
+   "Pricing",
+   "none",
+   null,
+   "No live route — preview files only",
+   null
+  ],
+  [
+   "welcome",
+   "Welcome walk",
+   "live_route",
+   "https://nayanet.live/welcome",
+   "Open Welcome walk",
+   "https://nayanet.live/welcome"
+  ],
+  [
+   "smart-notes",
+   "Smart Notes",
+   "none",
+   null,
+   "No separate live route verified",
+   null
+  ],
+  [
+   "walk-slide-02",
+   "Walk slide 02 — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-slide-03",
+   "Walk slide 03 — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-slide-04",
+   "Walk slide 04 — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-slide-05",
+   "Walk slide 05 — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-slide-06",
+   "Walk slide 06 — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-slide-07",
+   "Walk slide 07 — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-slide-08",
+   "Walk slide 08 — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-slide-09",
+   "Walk slide 09 — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-slide-10",
+   "Walk slide 10 — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-slide-end",
+   "Walk slide — end — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "walk-integrated",
+   "Walk — integrated — The Official Welcome",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "thankyou-connect",
+   "Thank You — You're Activated (CONNECT-WORKING)",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ],
+  [
+   "smart-match-first-run",
+   "Smart Match — First Real Run (2026-10-25 file)",
+   "none",
+   null,
+   "No live route — file in the supplied zip only",
+   null
+  ]
+ ]
+}
