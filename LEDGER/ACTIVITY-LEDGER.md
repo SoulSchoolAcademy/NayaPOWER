@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 11:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19731,6 +19731,14 @@ _Last updated: 2026-10-28 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: lane-2/t0533-compound-probe.py and t0533-compound-scorer.py exist; probe log/scorer shas cited. Clears 9.5 because: prediction frozen pre-run with both timestamps and shas recorded (09:19:18.20Z, 50ms margin, recorded not rounded); the instrument was proven non-vacuous BEFORE the operative run via two bite fixtures that caught vacuous rea
 
+### ✅ t0533 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Closer on FP-001 feedback: verdict + mechanism-sharpening + falsifier for the Intelligent Action Principle enforcement
+
+**Receipt:** `twelve-lane-receipts/t0533-lane1.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md carries exactly 1 occurrence of [Lane 1 - Naya Verity, t0533] at line 185, under ## FP-001 (line 27) and before ## FP-002 (line 226); verdict SHARPEN + ADOPT-CONDITIONAL present; firing predicate present at line 195 (lint AND scorer both >=9.0 = FAILS OPEN); Lane 12 t0526 entry intact above an
+
 ### ✅ t0533 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Closer on FP-001 feedback: verdict + mechanism-sharpening + falsifier for the Intelligent Action Principle enforcement
@@ -19739,6 +19747,14 @@ _Last updated: 2026-10-28 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: entry '[Lane 1 — Naya Verity, t0533]' appears exactly once (grep -c=1) at feedback-feed.md line 176, under FP-001 and before '## FP-002' (line 198); quoted verdict line 'SHARPEN + ADOPT-CONDITIONAL' present; all 10 prior entries read from file bytes per receipt. Score 9.0 (GOOD): real marginal contribution — fail-open enumeration (provisi
 
+### ✅ t0532 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a): mechanization study of the P2 NLI divergence
+
+**Receipt:** `twelve-lane-receipts/t0532-lane7.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: mechanization-t0532.md exists (6847 bytes); fixture SHAs match exactly - baseline-sealed-t0432.md 460429b17e..., results-t0432.json b1af58d0..., sealed-note-t0442.md 1cd869fd..., results-t0442-entailment.json 39201b40...; both quoted NLI scores found in the entailment bytes (P2 0.004203410244207525, P12 0.0809
+
 ### ✅ t0532 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (a): mechanization study of the judge's decision-change mechanism (winmine P2 divergence)
@@ -19746,6 +19762,14 @@ _Last updated: 2026-10-28 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0532-lane7.md`
 
 **Evidence:** Verified: report hidden_files/auto-retrieval/mechanization-t0532.md exists (6847 B, created this tick); fixture SHAs byte-verified — ask-world-queries.jsonl 31aa1619..., baseline-sealed-t0432.md 460429b1..., results-t0432.json b1af58d0... all exact 64-char matches; results-t0442-entailment.json, sealed-note-t0442.md, t0432_fingerprint.py all presen
+
+### ✅ t0532 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE-0 COMPOUND: one broadcast principle, frozen prediction, control/treatment probe
+
+**Receipt:** `twelve-lane-receipts/t0532-lane2.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: all five receipt SHAs match exactly - brief 06bf53dc..., frozen prediction e889b218..., probe script ec07e2f2..., verdicts JSON 4a0e8125..., probe log 7a99335a...; brief-t0532-lane2.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS (receipt honest self-score 8.8). Why not 9.5: (1) no i
 
 ### ✅ t0532 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 8.8/10 [VERIFIED]
 
@@ -40182,6 +40206,12 @@ _Last updated: 2026-10-28 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261028-0429 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-28 04:29 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ holds exactly 31 brief-*.md files (excl lane-feed.md), set-identical to the receipt's 31 listed briefs (2 b1 + 18 b2 + 3 b3 + 8 b4) and to twelve-lane-rotation.json queued=31, disk-vs-rotation diff empty both ways, in_flight=[]; refusal classes 29 exit 7 + 2 exit 2 consistent with item counts; pri
 
 ### ✅ gate-stall-20261028-0328 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
