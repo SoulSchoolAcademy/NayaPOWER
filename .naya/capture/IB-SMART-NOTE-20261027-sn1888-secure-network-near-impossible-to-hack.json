@@ -28,7 +28,7 @@
   "ingestion": "canonical-reconstruction",
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SECURITY/security-model/SN-1888/IB-SMART-NOTE-20261027-sn1888-secure-network-near-impossible-to-hack.md",
   "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
-  "publishing_commit": "883d45ec1b820d9f2a168dc89d5f6475bc336b17"
+  "publishing_commit": "b1a9fb6f050f66617d1c3bcbde35c082614b1d4b"
  },
  "schema": "naya.smart-note-capture.v2",
  "lifecycle_state": "ACTIVE"

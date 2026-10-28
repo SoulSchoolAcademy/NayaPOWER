@@ -15852,7 +15852,7 @@
       "lifecycle_state": "ACTIVE",
       "provenance": {
         "ingestion": "canonical-reconstruction",
-        "note": "published directly as a BRAIN projection in commit 883d45ec1b820d9f2a168dc89d5f6475bc336b17 ('Merge pull request #3112 from SoulSchoolAcademy/naya2/team-dashboard') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+        "note": "published directly as a BRAIN projection in commit b1a9fb6f050f66617d1c3bcbde35c082614b1d4b ('Smart Note SN-1888: The Secure Network — Near Impossible to Hack') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "911f93f268d6971d5edd4002ae8cc5e366e101872b83c0946afa2399a6d17967"
     },
@@ -15872,7 +15872,7 @@
       "lifecycle_state": "ACTIVE",
       "provenance": {
         "ingestion": "canonical-reconstruction",
-        "note": "published directly as a BRAIN projection in commit 883d45ec1b820d9f2a168dc89d5f6475bc336b17 ('Merge pull request #3112 from SoulSchoolAcademy/naya2/team-dashboard') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+        "note": "published directly as a BRAIN projection in commit 391638b043b1234309ede2d39c21f8dbabd79607 ('Smart Note SN-1889: How We Will Build the Secure Network — Official Implementation Report') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "44efb2409c569dd8e027c61d080682467de07276bf99c1ce9ae00669b6871bd1"
     },
