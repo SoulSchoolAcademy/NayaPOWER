@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19631,6 +19631,14 @@ _Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: report auto-retrieval/mechanization-verify-t0538.md on disk (7142 bytes); all four fixture SHA prefixes byte-exact on disk (ask-world-queries.jsonl 31aa1619, baseline-sealed-t0432.md 460429b1, results-t0432.json b1af58d0, sealed-note-t0442.md 1cd869fd); repro script scratch/t0538-lane1/repro_tfidf.py on disk. INDEPENDENT RE-RUN (scorer se
 
+### ✅ t0537 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): retrieval-authorization-gate wiring packet on a branch, AWAITING-SHAWN
+
+**Receipt:** `twelve-lane-receipts/t0537-lane9.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes and the local repo clone: branch naya/nine-retrieval-auth-wire-packet-t0537 exists; all three pinned file blobs match exactly (tools/refusal_point_t0537.py e8254132..., tools/test_refusal_predicate_t0537.py ea0affe8..., tools/red_demo_refusal_t0537.py 9d9b0182...). NOT PHANTOM — content verified, not just 
+
 ### ✅ t0537 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (b): retrieval-authorization-gate wiring packet (refusal contract + mechanical tests + M1-M5 migration draft), branch only, AWAITING-SHAWN
@@ -19638,6 +19646,14 @@ _Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0537-lane9.md`
 
 **Evidence:** VERIFIED via git protocol: refs/heads/naya/nine-retrieval-auth-wire-packet-t0537 == 9a7c60247b58fb82ed8bbdd24206d2b0f7bc6c55 == receipt pin exactly. Protected gate respected: no merge, no wiring, Shawn's word pending. Clears 9.0 as one-more-pass grade. What kept it from 9.5: (1) single-seat proof -- no independent seat reproduced the refusal suite 
+
+### ✅ t0537 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Semantic arm (dual-view bi-encoder) against the t0532 battery
+
+**Receipt:** `twelve-lane-receipts/t0537-lane2.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: auto-retrieval/t0537_semantic.py sha256 9eaa09750d8ab97eea137e0c2f5c6d0be65359d05d49e3d85224bbb0eabad352 matches the receipt pin exactly; results-t0537-semantic.json exists; brief-t0537-lane2.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not
 
 ### ✅ t0537 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -19647,6 +19663,14 @@ _Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: instrument t0537_semantic.py sha256 byte-exact match; results-t0537-semantic.json exists, prefix+tail of pinned SHA match (pin truncated to 60 chars); all 6 battery fixture SHA prefixes match; verdict bytes confirm P1 FAIL / P2 HOLDS / P5 HOLDS / overall FAIL as claimed; positive-calibration claims present in bytes. Honest falsification u
 
+### ✅ t0537 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Sealed cold-retrieve drill re-run with page-cache isolation vs t0472 baseline
+
+**Receipt:** `twelve-lane-receipts/t0537-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: auto-retrieval/cold_drill_t0537_lane12.py sha256 7dd61a99ee96aedd2e9bbce071a7988ff94c7b14b10456f03ddbe7015edb7f65 matches the receipt pin exactly; results JSON and .md companions exist; brief-t0537-lane12.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest
+
 ### ✅ t0537 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Sealed cold-retrieve drill end-to-end re-run with page-cache isolation on the byte-identical live tip
@@ -19654,6 +19678,14 @@ _Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0537-lane12.md`
 
 **Evidence:** Verified: remote main head dbe06f9e733efb52c50e583dbb0b74d77039eb73 == receipt's start/end tip pin (git ls-remote, free protocol); results file auto-retrieval/cold-drill-t0537-lane12-results.json on disk, sha256 f84d724d36eeeb33565c3019dfda90598c1fa431 matches receipt's pinned hash; run record auto-retrieval/cold-drill-t0537-lane12.md on disk. Dril
+
+### ✅ t0536 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 feedback — priced collision rule extension (a1-a4)
+
+**Receipt:** `twelve-lane-receipts/t0536-lane11.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds exactly 1 '[Lane 11 — Naya Heart, t0536]' entry (line 369), CONDITIONAL ADOPT with the priced-collision extension; brief-t0536-lane11.md exists in brief-queue/done/. NOT PHANTOM. Score 8.5, agreeing with lane honest 8.5. Why not 9.5: (1) the collision-ledger falsifier (a3's coverage
 
 ### ✅ t0536 — Team 11, Naya Heart (Human Value) — 8.5/10 [VERIFIED]
 
@@ -19663,6 +19695,14 @@ _Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: '[Lane 11 — Naya Heart, t0536]' exactly 1 hit at feedback-feed.md:348; neighbors intact (above: Lane 5's 12th-flag housekeeping line; below: --- divider + ## FP-003 header); t0530 entry intact; mechanism quoted verbatim from FP-002 bytes before judgment; a1-a4 each name what they BLOCK. Score 8.5 (REWORK tier, named gap owned forward). Wh
 
+### ✅ t0536 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 feedback — ALREADY DONE: stale premise refused, no duplicate entry
+
+**Receipt:** `twelve-lane-receipts/t0536-lane10.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds ZERO '[Lane 10 — Naya Librarian, t0536]' entries — correct for an ALREADY DONE refusal — and exactly 1 '[Lane 10 — Naya Librarian, t0525]' entry (line 285; drifted from receipt's 264), SHARPEN + ADOPT with m1-m4 intact; brief-t0536-lane10.md exists in brief-queue/done/. NOT PHANTOM 
+
 ### ✅ t0536 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 feedback - brief premise checked false on bytes, correctly posted nothing (ALREADY DONE)
@@ -19671,6 +19711,14 @@ _Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified read-only: '[Lane 10 — Naya Librarian, t0525]' exactly 1 hit at feedback-feed.md:264, intact (m1-m4 + position line); FP-002 header at line 208 (brief said 179 - stale); no '[Lane 10 — Naya Librarian, t0536]' entry exists (grep count 0) - the lane correctly posted no duplicate. Score 9.0 (GOOD). Why not 9.5: the work's value is absence-of-
 
+### ✅ t0535 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 governance ruling: ADOPT-CONDITIONAL with S1-S5 sharpenings
+
+**Receipt:** `twelve-lane-receipts/t0535-lane8.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds exactly 1 '[Lane 8 — Naya Sentinel, t0535]' entry (line 204; drifted from receipt's 195 as later entries landed above), ADOPT-CONDITIONAL ruling present; brief-t0535-lane8.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why 
+
 ### ✅ t0535 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 governance ruling: ADOPT-CONDITIONAL with five sharpenings (S1-S5) on the Intelligent Action Principle enforcement
@@ -19678,6 +19726,14 @@ _Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0535-lane8.md`
 
 **Evidence:** Verified: entry '[Lane 8 — Naya Sentinel, t0535]' exactly 1 hit at feedback-feed.md:195, ADOPT-CONDITIONAL with S1-S5 sharpenings (domain-exclusion, quiet-tick exclusion, lint no-bypass + forged-waiver battery, state-freshness oath, scorer calibration battery), quote-first discipline held, neighbors intact (--- divider line 206, ## FP-002 header li
+
+### ✅ t0535 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c): ask-world query needs top-20
+
+**Receipt:** `twelve-lane-receipts/t0535-lane4.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: retrieval/query-needs-top20-t0535.json sha256 347f421052096240902bdfcfcdb4c76c6040cf8ab323d1a0b8f60fb6c0f1ffb0 matches the receipt pin exactly; the .md companion exists; brief-t0535-lane4.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5
 
 ### ✅ t0535 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -19698,6 +19754,14 @@ _Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gate stall: 26-brief full-queue stall, every refusal machine-verified (20261016-0238 PDT)
 
 **Evidence:** VERIFIED: rotation queued=26 matches receipt; zero plain brief-tNNNN-* in brief-queue/; claim-brief.py --dry-run re-derived 3 representative verdicts independently — exit-7 parent-authorship (0040-lane12, parent t0817-lane12.md), stamped seat-identity gate (t0413-lane3), no-refile t0431-lane6 (0530-lane6) — all match the refusal table; departed bri
+
+### ✅ t0534 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** FP-003 feedback, succession seat: falsifier-first SHARPEN entry with HEIR-1..HEIR-4
+
+**Receipt:** `twelve-lane-receipts/t0534-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds exactly 1 '[Lane 6 — Naya Heir, t0534]' entry (line 505; drifted from receipt's 457 as later entries landed above); both instrument seal legs found on disk (leg-2 549adc52... in TOOL-transfer-hypothesis-closeout.md and t1412/seal-verification.json; leg-3 69fb7660... in the closeout 
 
 ### ✅ t0534 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
 
@@ -40230,6 +40294,12 @@ _Last updated: 2026-10-28 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261028-0529 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-28 05:29 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ holds exactly 31 brief-*.md files (excl lane-feed.md), set-identical to the receipt's 31 listed briefs and to twelve-lane-rotation.json queued=31, in_flight=[]; prior stall receipt gate-stall-20261028-0429.md mtime 11:29:17Z, this receipt 12:29:58Z, delta ~60.7 minutes, outside the 60-minute cap, 
 
 ### ✅ gate-stall-20261028-0429 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
