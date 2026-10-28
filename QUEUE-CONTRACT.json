@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-28T03:25:13Z",
-  "tip": "89ab14fa2cc76f90d7eb5466233d665d60c42d7f",
+  "generated_at": "2026-10-28T04:24:56Z",
+  "tip": "e3c0680fc30158b133ca236aeed7d75cb617fb9d",
   "prs": [
     {
       "number": 2981,
@@ -13,15 +13,6 @@
       "head": "a0dfcd9cf16916fcb7c085cc6761217f0a0629f6"
     },
     {
-      "number": 3088,
-      "title": "feat(sn-guard): Smart Note filing-path collision guard \u2014 claim-before-author via the existing allocator",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "25960168b58808d6976e13424d722dab72ed428e"
-    },
-    {
       "number": 3089,
       "title": "[DRAFT \u2014 DO NOT MERGE] PI face review draft: human-first Project Intelligence face + build record",
       "tier": "B",
@@ -31,40 +22,13 @@
       "head": "2523ef3d5de2875b4dd539808ab747d0c1bfaaca"
     },
     {
-      "number": 3107,
-      "title": "Face registry fix 20261027",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "d81df2003051306bd2b535c504a2756e6caa7bad"
-    },
-    {
       "number": 3108,
       "title": "Naya/mission state",
       "tier": "B",
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "4023cdfa8d1a76cca53ce113f7591927c7268420"
-    },
-    {
-      "number": 3111,
-      "title": "Door-obligation cure: capture + registry entries for SN-1888/SN-1889",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, completeness, door-obligation; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "b34caaa12c74d1c63f8406f5cf17f88b4e7a269e"
-    },
-    {
-      "number": 3113,
-      "title": "The Path to Ten \u2014 honest system assessment, three tongues (Shawn's 2026-10-27 commission)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "88f4cb0cc2c100a3c5b44ecaa7317b05d1d92a50"
+      "head": "1d71b7ebd2a6f411bf5a7f8e41215452301eb895"
     }
   ]
 }
