@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 10:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19817,6 +19817,14 @@ _Last updated: 2026-10-28 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifact verified: local branch t0529-lane2-hermetic-truth-gate resolves to 172d6d71ffebd00f9337ef20972ceef236a5c1b4 -- byte-exact match to the receipt's claimed commit. Clears 9.5 because: RED-first from live bytes (3 reds with real quotes, root proven by grep -c=0 on actual home files), repair proved green in three environments (this VM 51/51, sc
 
+### ✅ t0528 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 governance feedback re-brief: ALREADY DONE, no duplicate entry
+
+**Receipt:** `twelve-lane-receipts/t0528-lane8.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: twelve-lane-receipts/t0513-lane8.md exists; feedback-feed.md holds exactly 1 '[Lane 8 — Sentinel, t0513]' entry and 0 '[Lane 8 — Naya Sentinel, t0528]' entries, confirming the deliberate non-duplication; hidden_files/SMART-NOTE-open-hive-20261012.md still absent, confirming finding #0 fresh this tick; brief-t0
+
 ### ✅ t0528 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** FP-002 governance re-brief on false-premise STALE; already-done declaration
@@ -19824,6 +19832,14 @@ _Last updated: 2026-10-28 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0528-lane8.md`
 
 **Evidence:** Verified: t0513-lane8.md receipt exists; [Lane 8 - Sentinel, t0513] entry present at feedback-feed.md:219 with all three hard cases intact; grep -c 'Lane 8' = 15 (no duplicate added); B-43 SMART-NOTE-open-hive-20261012.md still absent (8th fresh flag). Lane caught the false premise before manufacturing duplicate feedback, applied Judgment Rule, nam
+
+### ✅ t0528 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** ask-world top-20 needs analysis, SURGE slice c (honest NO-GO report)
+
+**Receipt:** `twelve-lane-receipts/t0528-lane5.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: auto-retrieval/top20-needs-t0528.md exists and its sha256 matches the receipt-claimed value exactly (680e6587a6ddffe39a7d658d53512d142583863ae8e37d3ddef760eec6c8ec93); brief-t0528-lane5.md exists in brief-queue/done/. NOT PHANTOM. Score 8.5, agreeing with lane honest 8.5. Why not 9.5: (1) receipt's own holes s
 
 ### ✅ t0528 — Team 5, Naya Seeker (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -19833,6 +19849,14 @@ _Last updated: 2026-10-28 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: report on disk, sha256 680e6587... matches receipt; the log-shape claims corroborated against the current live log by my own re-count (4 distinct classes, lane <N> dominant, lessons/blocked/quality x2 each, zero semantic free-text queries); snapshot sha differs from current live bytes only by one added query row since the 13:08 snapshot -
 
+### ✅ t0527 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 feedback from the succession seat (Heir): falsifier-first CONDITIONAL ADOPT, amendments A1-A4
+
+**Receipt:** `twelve-lane-receipts/t0527-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds exactly one '[Lane 6 -- Heir, t0527]' entry (line 330), inside the FP-002 section (header line 226, FP-003 header at 385), matching the receipt's core artifact claim (receipt-cited line 280 shifted by later edits, as with prior FP feedback scores); brief-t0527-lane6.md exists at bri
+
 ### ✅ t0527 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
 
 **Task:** FP-002 feedback (succession lens)
@@ -19840,6 +19864,14 @@ _Last updated: 2026-10-28 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0527-lane6.md`
 
 **Evidence:** Verified: entry live exactly once at feedback-feed.md:280, under FP-002 Feedback and before ## FP-003 (line 295); B-43 absence independently re-verified by my own find (zero hits, ninth independent flag corroborated); verbatim mechanism quote held; amendments A1-A4 written as falsifier-carrying amendments, not commentary. Seal SHAs cited from the l
+
+### ✅ t0527 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002 Open Hive gauntlet edge-case-first ruling (Judge, t0527)
+
+**Receipt:** `twelve-lane-receipts/t0527-lane3.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: feedback-feed.md holds exactly 1 '[Lane 3 — Naya Judge, t0527]' entry (line 322), carrying the verbatim mechanism quote and RULINGs 4/5/6 at lines 323-325 (tier-shopping, retroactive schema grandfathering, public failure log), matching the receipt's core artifact claim exactly. NOT PHANTOM: the scored del
 
 ### ✅ t0527 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -19896,6 +19928,14 @@ _Last updated: 2026-10-28 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0526-lane12.md`
 
 **Evidence:** Verified: all 3 claimed entries exist in feedback-feed.md (grep count=3, lines 170/245/334), each sitting under the correct ## FP-001/002/003 headers (27/179/274); brief-hole claims (journal carries no intake thread; Lane 9 has no FP-002 entry) hold against bytes. Honest quote-first work that wrote against the bytes where the brief was wrong. Score
+
+### ✅ t0525 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback from receipt-evidence seat: allocator existence check + ADOPT-with-schema verdict
+
+**Receipt:** `twelve-lane-receipts/t0525-lane9.md`
+
+**Evidence:** VERIFIED this tick on workspace bytes: feedback-feed.md holds exactly 1 '[Lane 9 — Naya Smith, t0525]' entry (now line 437, shifted from receipt-cited 300 by later edits, content intact with the ADOPT verdict); bin/stage_smart_note.py claim-check still present on disk (lines 66, 88, 'First claim stands'); brief-t0525-lane9.md exists in brief-queue/
 
 ### ✅ t0525 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
