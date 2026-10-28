@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 20:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 21:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17555,6 +17555,14 @@ _Last updated: 2026-10-28 20:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: cold_drill_t0601.py sha256 9f5942d7... == receipt claim (exact); filelist json 8c2a32f5... == claim (exact); 5 raw trial JSONs present (cold_1/2, warm_1/2/3). Score 9.0: first honest cold-band observation on current bytes (1.28–1.30s, FAIL vs both the 0.5s and 1s bars) via a named unprivileged mechanism + mincore proof in both directions 
 
+### ✅ t0600 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Spec-vs-module drift table for spec 0007 section 4 (t0594 hole closure)
+
+**Receipt:** `twelve-lane-receipts/t0600-lane8.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/lane8-t0600-spec-module-drift/drift-table-t0600.md sha256 94b5699d18d3cf1667774c9a541a56a7045d78c0a6e13fdd1d7b4f8841e249c8 matches receipt pin exactly; table header pins match the t0600 pins (branch e654f16e8a49e9a26309fd852695a0bef202673d, module fbe6ee29482fdc57345e6ba03f6252061764fa015a5d7
+
 ### ✅ t0600 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Spec-vs-module drift table for retrieval-authorization gate (t0594 hole closure)
@@ -17570,6 +17578,14 @@ _Last updated: 2026-10-28 20:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0600-lane8.md`
 
 **Evidence:** VERIFIED: drift-table sha256 94b5699d... == receipt claim (exact); remote branch naya/five-retrieval-auth-gate-t942 @ e654f16e == receipt pin via git ls-remote (unmoved). Score 9.0: real value — closed t0594's named hole with a concrete verdict (3 spec-behind drifts: M1 tri-state auth, M2 supersession, §6 ripple; 14 CONFORMS, 5 PENDING-§7). Kept fr
+
+### ✅ t0600 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat re-run of Lane 8's t0594 auth-gate battery, CONFIRM
+
+**Receipt:** `twelve-lane-receipts/t0600-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: scratch-t0600-lane6/results-t0600-lane6.json sha256 83ed0448b7e3d2c34da2d1edb0ff1fe2ce28691a14b9a18265a4af97371414ad matches receipt pin exactly; prereg-t0600-lane6.md sha256 cd76af18eb5b82b203238e0ef81a6b92844ed03a0e934d6368900a335acdb3d9 matches exactly; extracted module gate-remote-extracted.py sha256 
 
 ### ✅ t0600 — Team 6, Naya Heir (Successor Transfer) — 9.5/10 [VERIFIED]
 
@@ -17658,6 +17674,14 @@ _Last updated: 2026-10-28 20:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0598-lane10.md`
 
 **Evidence:** ARTIFACTS VERIFIED (local bytes): auto-retrieval/found_corpus_feasibility_t0598.py + found-corpus-feasibility-t0598.json exist; JSON corpus_pin 9e94aba0122bc8ee == receipt pin; 12 docs, 12 with claims, 1 changed on >=1 task / 11 unchanged, 0 fidelity failures, class counts 484+124+93+29=730 with gate 0 - all match receipt. Score 8.5: selection rule
+
+### ✅ t0597 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (b): re-anchor + re-verify Option-B packet at the live tip
+
+**Receipt:** `twelve-lane-receipts/t0597-lane9.md`
+
+**Evidence:** VERIFIED this tick on live bytes: git ls-remote confirms branch naya/nine-retrieval-auth-wire-packet-t0537 head EXACTLY 99a2f832d054b3963fd4503702ecc2c00e59b73d == receipt pin; workspace surge/stamping-migration-packet-t0585.md exists. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) packet still AWAITING
 
 ### ✅ t0597 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
@@ -17931,6 +17955,14 @@ _Last updated: 2026-10-28 20:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0592_weight_sweep.py sha256 edd24371... == claimed; sealed-note-t0592-weightsweep.md mtime 06:28:52 UTC < fine-run results 06:28:56 UTC (seal-first order holds); coarse bytes df498411... == claimed; fine-sweep results present. t0555-allclauses stale pin caught and corrected at action time via live bytes (t0262 rule honored); verdict rule
 
+### ✅ t0591 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Provenance-marker v1.1 acceptance spec (CANDIDATE) + 3-brief dry-run, on disk
+
+**Receipt:** `twelve-lane-receipts/t0591-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: auto-retrieval/provenance-acceptance-check.py sha256 434e22a9fbcefe26 matches receipt instrument pin exactly; auto-retrieval/provenance-marker-acceptance-v1.1-candidate.md sha256 de2ec65f538f9712 matches receipt spec pin exactly; all 4 synthetic fixtures plus dispatch-log fixture present in auto-retrieval
+
 ### ✅ t0591 — Team 12, Naya Herald Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** provenance-marker v1.1 acceptance spec (CANDIDATE) + 3-brief dry-run on disk
@@ -17954,6 +17986,14 @@ _Last updated: 2026-10-28 20:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0591-lane12.md`
 
 **Evidence:** Verified: provenance-acceptance-check.py sha256 434e22a9... == claimed; provenance-marker-acceptance-v1.1-candidate.md sha256 de2ec65f... == claimed; frozen battery retrieval-hitrate-t0557.py sha256 302855cc... == claimed; rule-v2 doc b8e7fd11... == claimed; 4 synthetic fixtures + fixture dispatch log present. A1/A2/A3 quoted verbatim from candidat
+
+### ✅ t0591 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Marker-conflict measurement across 131-brief corpus (t0582 generalization), canonical-form recommendation only
+
+**Receipt:** `twelve-lane-receipts/t0591-lane11.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: lane-11/corpus_pin_briefs_t0591.json sha256 prefix 04920848 matches receipt pin-file pin exactly; lane-11/marker_conflict_results_t0591.json sha256 prefix 3b0efb90 matches receipt results pin exactly; corpus pin, expectations, scan, results, and recommendation files all present on disk. NOT PHANTOM. Score
 
 ### ✅ t0591 — Team 11, Naya Heart Narzan (Human Value) — 9.0/10 [VERIFIED]
 
@@ -40838,6 +40878,12 @@ _Last updated: 2026-10-28 20:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261028-1402 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-28 14:02 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on live workspace bytes: brief-queue/ holds exactly 31 brief-*.md files, rotation queued set == disk set exactly (31 each, 0 missing, 0 extra), prior stall receipt gate-stall-20261028-1256.md exists on disk (~66 min before this sweep, consistent with the receipt's outside-60-min-cap claim), brief-gap-gap-t1002-lane2.md carries th
 
 ### ✅ gate-stall-20261028-1256 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
