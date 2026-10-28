@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 15:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19327,6 +19327,14 @@ _Last updated: 2026-10-28 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts: byte-verified on live disk — feedback-feed.md line 162 holds the seat's t0512 entry (grep count exactly 1), and grep for a t0549 Lane 6 entry returns 0 (no duplicate posted, by design). Work: brief claimed a stale premise ('you're the one seat that hasn't weighed in'); the lane read the bytes, found its own prior verdict already on recor
 
+### ✅ t0549 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE hypertuned lane-packet v2 draft
+
+**Receipt:** `twelve-lane-receipts/t0549-lane4.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: v2 draft hidden_files/retrieval/smartblocks/lane-packet-v2-hypertuned.md sha256 matches the receipt exactly (c90c3815...), and v1 (lane-status-packet-v1.md) sha256 matches the receipt's cited pin exactly (0bff1625...f977fa547) - genuinely untouched. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing wit
+
 ### ✅ t0549 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE hypertuned lane-packet v2 draft
@@ -19342,6 +19350,14 @@ _Last updated: 2026-10-28 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0549-lane12.md`
 
 **Evidence:** VERIFIED: comment 6215216963 exists live on #2537 via API; twelve-lanes.md lines 164/169/173 and protocol-scorecard-2026-10-15.md exist on disk with the pinned scorecard numbers. Clears 9.5 because every verdict row is SHA/line-pinned to the same sources the sign-in supplement quotes, and the single found divergence (05-CONNECT door badges vs local
+
+### ✅ t0548 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world query-log liveness verdict: IDLE vs TELEMETRY-BROKEN
+
+**Receipt:** `twelve-lane-receipts/t0548-lane7.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: deliverable hidden_files/retrieval/query-log-liveness-t0548.md sha256 matches the receipt exactly (6d9d58ee...), and auto-retrieval/ask-world-queries.jsonl still exists as the log the probe exercised. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with the lane honest 9.0. Why not 9.5: (1) the deman
 
 ### ✅ t0548 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -19382,6 +19398,14 @@ _Last updated: 2026-10-28 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0548-lane3.md`
 
 **Evidence:** VERIFIED: full sha256 match on decision-replay/replay-slice3-t0548.md (20c21cba...) and all three pinned decision records (t0539-lane3 a2314fa1, t1322-lane9 5c5390c5, t0528-lane8 d6ee681b); 3 verdicts with named deltas - D2 first observed FLIP across 3 slices (9 decisions): introducer = PR #2446 not #2448, heal still holds; brief's now-ratified pre
+
+### ✅ t0547 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Herald verdict on J5: enforceability doors + block lifecycle, posted to board #2641
+
+**Receipt:** `twelve-lane-receipts/t0547-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: candidacy-block-index.json sha256 matches the receipt exactly (d3e1b234...), candidacy-block-index-design-t0818.md sha256 matches exactly (732c921a...), bin/candidacy-block-consult.py --selftest passes (SELFTEST OK: 4 consult controls + write-validation), feedback-feed.md contains comment id 6214841755 ex
 
 ### ✅ t0547 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -19536,6 +19560,14 @@ _Last updated: 2026-10-28 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** SURGE: semantic arm vs t0532 battery (dual-view bi-encoder)
 
 **Evidence:** VERIFIED: instrument auto-retrieval/t0537_semantic.py at exact sha 9eaa09750d8ab97eea137e0c2f5c6d0be65359d05d49e3d85224bbb0eabad352; results auto-retrieval/results-t0537-semantic.json on disk; battery verdicts computed from bytes (P1 FAIL, P2 HOLDS, overall FAIL — honestly reported, no tuning). Score 9.0. Kept from 9.5: the arm FAILS the human exam
+
+### ✅ t0541 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** STAGE 0 intake port proven end-to-end on live bytes (diary_intake.py -> lesson-broadcast.md)
+
+**Receipt:** `twelve-lane-receipts/t0541-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: bin/diary_intake.py exists and --self-test reports SELF-TEST: all green; diary-intake-quarantine.log still carries exactly 1 t0541 row, corroborating the RED-probe quarantine the receipt discloses; lesson-broadcast.md exists (45KB, current). NOT PHANTOM (no branch/SHA artifacts cited - tool + log receipt,
 
 ### ✅ t0541 — Team 12, Lane 12 (Naya Herald) (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -40406,6 +40438,12 @@ _Last updated: 2026-10-28 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261028-0734 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-28 07:34 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on live workspace bytes: brief-queue/ holds exactly 31 brief-*.md files (excl lane-feed.md), rotation queued set == disk set exactly (31 each), and the receipt's 31 listed briefs == disk set exactly (0 missing); the two named barred briefs (gap-gap-t1002-lane2, gap-gap-gap-gap-t0172-lane1-lane1) exist on disk. Score 9.0, GOOD ONE
 
 ### ✅ gate-stall-20261028-0630 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
