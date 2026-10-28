@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 17:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 17:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18909,6 +18909,14 @@ _Last updated: 2026-10-28 17:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: 4/10 cited row files spot-checked present in brief-queue/done (t0535-lane8, t0537-lane2, t0538-lane1, t0538-lane7) — not phantom. Real verified value: caught live premise rot (brief said rule-v2 approval 'still open'; Naya 4 had APPROVEd ~60 min earlier, #2175 comment 6136677001) preventing a duplicate approval; independent from
 
+### ✅ t0570 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Independent audit of the t0555 all-clauses seal (SEAL-PURE, 7 named holes)
+
+**Receipt:** `twelve-lane-receipts/t0570-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: checklist hidden_files/prereg-checklist-allclauses-t0558.md sha256 0ca6a0855e779...25187bf4, seal hidden_files/auto-retrieval/sealed-note-t0555.md sha256 34ae19f1c8f0...731f73c921, results hidden_files/auto-retrieval/results-t0555-allclauses.json sha256 ef6a7272a806...5d0df6ede, instrument t0555_allclause
+
 ### ✅ t0570 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** independent audit of the t0555 all-clauses seal
@@ -18916,6 +18924,14 @@ _Last updated: 2026-10-28 17:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0570-lane12.md`
 
 **Evidence:** ARTIFACTS VERIFIED byte-for-byte: checklist prereg-checklist-allclauses-t0558.md sha256 0ca6a0855e77... matches the receipt's cited pin; sealed-note-t0555.md sha256 34ae19f1c8f0... matches the receipt's cited pin — not phantom. Real verified value: genuine finding (t0555 receipt's results-sha ...8e5fe52b9b... does NOT match disk; checklist pin ...8
+
+### ✅ t0570 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review of provenance-marker-spec-v1 (ADOPT-AMENDED, A1/A2/A3)
+
+**Receipt:** `twelve-lane-receipts/t0570-lane1.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: spec hidden_files/auto-retrieval/provenance-marker-spec-v1.md sha256 0eae9d32940caf...a3ead23da8af1 matches the receipt pin exactly (same pin the t0557-lane12 receipt carried, confirming the bytes judged). NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) single-s
 
 ### ✅ t0570 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -18925,6 +18941,14 @@ _Last updated: 2026-10-28 17:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: spec sha256 0eae9d32940caffd... byte-matches brief pin; worked-example quote of brief-t0567-lane10.md exists on disk; #2175 comment 6136516900 verified by lane via GET (not re-checked by scorer). Hostile (11) audit of all 10 fields + concrete fail-open attack surfaced attribution-overlap soft target; three amendments (A1 fired-vocab gramm
 
+### ✅ t0569 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 Sharpening-3 Stage-2 observatory - receipt-cost inflation verdict (CLEAN)
+
+**Receipt:** `twelve-lane-receipts/t0569-lane11.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: corpus pin hidden_files/lane-11/corpus_pin_t0541-t0569.json sha256 acf59d71e799...9cef49c9b and verdict hidden_files/lane-11/verdict_cost_t0569.json sha256 c2d9d423eadb...deb109994f0 both match the receipt pins exactly. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5
+
 ### ✅ t0569 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 Sharpening-3 Stage-2 observatory: receipt-cost inflation verdict (t0541-t0569)
@@ -18932,6 +18956,14 @@ _Last updated: 2026-10-28 17:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0569-lane11.md`
 
 **Evidence:** VERIFIED: corpus pin 35 rows on disk, sha256 acf59d71e799552f... byte-matches; verdict sha256 c2d9d423eadb615c... byte-matches; t1052 baseline byte-reproduced 2365 lines. Verdict CLEAN: median lines -3.16%, bytes +7.50% (inside +10% bar), falsification rate 71.4% vs 45.2% rising. Score 9.0 (GOOD, ONE MORE PASS). Why not 9.5: (1) dispute-rate leg UN
+
+### ✅ t0568 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Governance verdict: FALSIFIED at retrieve (demote/refuse) + mechanical rule spec + RED-first acceptance test
+
+**Receipt:** `twelve-lane-receipts/t0568-lane8.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: verdict doc hidden_files/veracity-verdict-t0568.md sha256 30645fe440818a...59397b6 matches the receipt pin exactly; test directory hidden_files/lane8-t0568-veracity/ exists with veracity_acceptance_t0568.py, fixture manifest and run output. NOT PHANTOM. Score 9.0 GOOD, ONE MORE PASS, agreeing with lane ho
 
 ### ✅ t0568 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -18956,6 +18988,14 @@ _Last updated: 2026-10-28 17:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0567-lane10.md`
 
 **Evidence:** Artifacts byte-verified: instrument 4d43798e58f2769f, seal 38ccd002a5780cd5, results 383b4bf3f7de30b3, cellset-design 0ffe503cd7d9ac3c — all 4 SHAs match receipt exactly. Results JSON matches claims: P-fire 3/3, F1/F2 true, F3 false (6/6 agreement, predicted confound), F4 true, verdict FALSIFIED. Seal mtime (02:40:57 UTC) precedes results (02:41:06
+
+### ✅ t0564 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Sealed cold-drill quiet-window re-run (t1022/t1052 cold-band hole)
+
+**Receipt:** `twelve-lane-receipts/t0564-lane7.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: results file hidden_files/auto-retrieval/cold-drill-sealed-t0564-results.json sha256 42f351f3f3fa8...d860eed matches the receipt pin exactly; instrument cold_drill_sealed_t0555.py present in the same directory; results JSON carries seal/red_calibration/drill sections consistent with the reported DRIFT ver
 
 ### ✅ t0564 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
 
