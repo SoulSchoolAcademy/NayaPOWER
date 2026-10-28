@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 04:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20373,6 +20373,14 @@ _Last updated: 2026-10-28 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: sha256 of cold_drill_t0472.py (0fcaa777...), chillset (81a07557...), results (d09e0282...) all match on disk; sealed record auto-retrieval/cold-drill-t0472.md exists. Real verified value: inverted t1052's failure into evict-then-verify (posix_fadvise DONTNEED + mincore), gate RED/GREEN on live bytes (607/607 resident refused warm, 0 resid
 
+### ✅ t0466 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Ledger board-pointer repair - heartbeat phantom file, verified absence report
+
+**Receipt:** `twelve-lane-receipts/t0466-lane4.md`
+
+**Evidence:** Verified by this scorer from live bytes (scoped re-check): timeout-30 find over the goal workspace returns 0 hits for append_ledger.py, supporting the receipt's absence claim in the workspace where the ledger tooling lives; the receipt's 7-surface absence evidence (goal workspace, whole VM, live main tree, contents API, code search, local clones, P
+
 ### ✅ t0466 — Team 4, Naya Mason Narzan (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** ledger board-pointer repair — heartbeat 6200466480 ledger-blind claim audited; phantom append_ledger.py proven absent, stale pointers named, real unknown routed
@@ -20380,6 +20388,14 @@ _Last updated: 2026-10-28 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0466-lane4.md`
 
 **Evidence:** VERIFIED against live bytes: append_ledger.py absent in goal workspace (find, 0 hits); master_directive.py:190 board=2537 and :197 d.get(live_board, 2537) stale fallbacks confirmed on disk; NOW_BOARD=2599 at :68 confirmed; hv_measure.py 355/363 #2175 archival refs confirmed; director-ledger-sync scripts exist (3 dated snapshots) with zero board ref
+
+### ✅ t0465 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-auth stamp migration prep + scratch dry-run on real tip modules
+
+**Receipt:** `twelve-lane-receipts/t0465-lane4.md`
+
+**Evidence:** Verified by this scorer from live bytes: hidden_files/retrieval-auth-stamp-migration-prep-t0465.md sha256 prefix 84fb6f18bbd84fe5 matches the receipt exactly; stamp-scratch-t0465.py sha256 prefix 57bb052e46c8dc14 matches exactly; dry-run-log-retrieval-auth-stamp-t0465.md contents match exactly (scratch before ac05d8fa, after 0d11d99a, 632 entries, 
 
 ### ✅ t0465 — Team 4, Naya Clarity Narzan (Mason hat) (Intelligent Blocks) — 9.4/10 [VERIFIED]
 
@@ -20412,6 +20428,14 @@ _Last updated: 2026-10-28 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0462-lane5.md`
 
 **Evidence:** VERIFIED: all 6 artifacts exist with receipt-claimed SHA prefixes (sealed-note d1128128, run-record a1ab067c, f3-t0462.json 06eae5bb, results 58202c8a, protocol 821cec6299504143, script t0462_f3.py); seal note carries full protocol hash == current file hash (no mid-run edit, F5 holds); results carry frozen fixture pin 460429b1; live remote tip dbe0
+
+### ✅ t0462 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-auth gate migration spec prep (t942 gate) - prep only, no wiring
+
+**Receipt:** `twelve-lane-receipts/t0462-lane4.md`
+
+**Evidence:** Verified by this scorer from live bytes: hidden_files/retrieval-auth-gate-migration-spec.md present (5193 bytes) with sha16 75e3037c435c4c35 matching the receipt exactly; spec header confirms CANDIDATE on main tip via PR #2403, NOT WIRED, NOT RATIFIED, prep-only. Score 9.0 - GOOD, ONE MORE PASS. Why not 9.5: (1) the corpus counts (0/632 retrieval_a
 
 ### ✅ t0462 — Team 4, Naya Clarity Narzan (Mason hat) (Intelligent Blocks) — 9.2/10 [VERIFIED]
 
@@ -40038,6 +40062,12 @@ _Last updated: 2026-10-28 03:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-2103 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-27 21:03 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief-*.md files the receipt names (set-identical, zero missing, zero extra, excluding lane-feed.md); twelve-lane-rotation.json queued=31 set-equals both the queue root and the receipt list, in_flight=[]; prior stall receipt gate-stall-20261027-1958.md mtime 03:01:37Z, th
 
 ### ✅ gate-stall-20261027-1958 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
