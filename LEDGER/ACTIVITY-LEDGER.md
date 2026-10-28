@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 22:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 22:36 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17061,6 +17061,14 @@ _Last updated: 2026-10-28 22:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 5 sha16 pins match live bytes (pre-reg 8f3283d797bf9994, fixture cbea5840adb0b6e0, driver 3be8a956c6634ef3, results bb13cd7d2d012370, blind-verdict 2328ecea0ac4be714); seal-before-run + blind-verdict SHA posted to #2175 comment 6144266803 before comparison (local pins only, comment body not re-fetched); determinism gate reproduces t06
 
+### ✅ t0619 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Digit-fracture clause-guard arm, CONFIRMED (mechanism, not graduation)
+
+**Receipt:** `twelve-lane-receipts/t0619-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact on all three receipt pins: hidden_files/auto-retrieval/arm_digitfracture_t0619.py sha16 9c2a03ef27944e42, results-t0619-digitfracture.json sha16 b790974a3d5ce39f, sealed-prereg-digitfracture-t0619.md sha16 1acf397f28c91ae0, all exactly as receipted; brief-t0619-lane5.md exists in brief-queue/don
+
 ### ✅ t0619-lane5 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Digit-fracture clause-guard arm (Seeker, executor run) -- frozen-rule verdict CONFIRMED
@@ -17378,6 +17386,14 @@ _Last updated: 2026-10-28 22:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0605-lane11.md`
 
 **Evidence:** Verified: surge-evidence-ledger-t0605.json sha256 f6cc9083421b94280af648807a0307c6cd76e71433f85311e91b85b6dd5027e7 matches receipt; 74 source receipt SHAs recomputed from disk. Why not 9.5: (1) 8 of 68 rows carry 'verdict not re-extracted this slice' holes - ledger degrades honestly but incompletely; (2) sub-goal verdicts are her prose over quoted 
+
+### ✅ t0604 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Blinded second-seat E4 relevance rating, E4 STANDS (0/12 genuine answers)
+
+**Receipt:** `twelve-lane-receipts/t0604-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/scratch-t0604-lane6/verdict-blind-t0604-lane6.md sha256 888f596467451f3f1c2507deebc63128d3f8491bd7dc8f4939d77c3faea3f3ce matches receipt pin exactly; brief-t0604-lane6.md exists in brief-queue/done/. Frozen pins prereg f71ba4fe... and results c50e27f2... match the prior independent t0604-lane
 
 ### ✅ t0604 — Team 6, Naya Heir (Successor Transfer) — 9.5/10 [VERIFIED]
 
