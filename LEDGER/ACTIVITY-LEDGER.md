@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-27 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 00:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21083,6 +21083,12 @@ _Last updated: 2026-10-27 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: all 8 sha256 prefixes in the receipt match on-disk bytes exactly (ground-truth-FROZEN 19e08fdc, judge-packet 98b10462, judge-map-SEALED fa4e89ce, judge-scores 58f641aa, judge_packet.py f8403eb9, unblind.py c92f7b67, slice2-comparison d6463e31) in lane-experiments/t0402/auto-retrieval/. Score 8.5 (REWORK class): why not 9.5 = (1) independe
 
+### ✅ t0392-lane7 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** Queue-discipline slot: 450-PR recount, 34-draft inventory byte-identical, gray-zone action-time fingerprint, #2454/#2466 HOLD carry
+
+**Evidence:** VERIFIED this tick via git ls-remote on SoulSchoolAcademy/NayaPOWER: all five receipted PR heads still exact 15 days later — #2112 2c4d1922683d2d73f57796d351618d271db941a4, #2231 fa2c26d02fb770dab0af5ee8a7cd381d3e1ab6a4, #2250 63373f3e37adb2a060d9e4b43099c49de79a9101, #2454 c10084bd663894657a34b6fbf03212b2e3343912, #2466 92c5a74270f5fe95d6561b7292c
+
 ### ✅ t0392 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** Queue-discipline slot: recount, 34-draft inventory, gray-zone action-time fingerprint, pipeline pins, report
@@ -21106,6 +21112,12 @@ _Last updated: 2026-10-27 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0392-lane7.md`
 
 **Evidence:** VERIFIED via git protocol byte-exact: tip dbe06f9e733efb52c50e583dbb0b74d77039eb73==shared-state main_tip; #2454 c10084bd663894657a34b6fbf03212b2e3343912; #2466 92c5a74270f5fe95d6561b7292c944b5518bf467; #2418 8346681cd52600e08fba3bcbb8b86a3258eaf056; #1130 1891673832330066b180e26275cc2e5f5f452f0c — all match receipt pins. Score 9.0 (GOOD, ONE MORE 
+
+### ✅ t0392-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
+
+**Task:** Stage 0 slice-1 auto-retrieval prototype: TF-IDF ranker over 15 principles + 1044 Smart Note sections, 3-brief demo
+
+**Evidence:** VERIFIED this tick on workspace bytes: hidden_files/auto-retrieval-proto.py exists (10914 bytes) and lane-experiments/t0392/auto-retrieval/outputs/ + assessments.md exist; --demo reruns clean in ~10s and reproduces the same principle SETS for all 3 briefs. Score 8.5, kept from 9.5 by: exact ranking ORDER drifted from the receipted order (e.g. own b
 
 ### ✅ t0392 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -39986,6 +39998,12 @@ _Last updated: 2026-10-27 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-1644 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-27 16:44 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on workspace bytes: brief-queue/ root holds exactly the 31 brief-*.md files the receipt names (set-identical, zero missing, zero extra, excluding lane-feed.md); twelve-lane-rotation.json queued=31 set-equals both the queue root and the receipt list, in_flight=[]; prior stall receipt gate-stall-20261027-1538.md mtime 22:39:25Z, th
 
 ### ✅ gate-stall-20261027-1538 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
