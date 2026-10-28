@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19615,6 +19615,14 @@ _Last updated: 2026-10-28 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: log auto-retrieval/ask-world-queries.jsonl 9181 bytes, sha256 31aa1619e0f691a7038a041b3505d092fe7ef47fa711d1593e40f42239d68fe1 == receipt claim exactly (byte-identical to t0535's sha: zero new rows in ~9h - the tick's real finding, surfaced honestly); deliverable retrieval/query-log-top20-t0539.md 7688 bytes == claim. INDEPENDENT RECOMPUT
 
+### ✅ t0538 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice a4 — stemmed-TF-IDF arm, measured HIT@5
+
+**Receipt:** `twelve-lane-receipts/t0538-lane7.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: auto-retrieval/stemmed_tfidf_arm.py sha256 matches the receipt pin exactly (de3a3531...094e018); stemmed-tfidf-arm-t0538-results.json sha256 matches exactly (72cccb29...b2bdc36); report stemmed-tfidf-arm-t0538.md exists; brief-t0538-lane7.md exists in brief-queue/done/. NOT PHANTOM. Score 9.0 GOOD, ONE MO
+
 ### ✅ t0538 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice a4: stemmed-TF-IDF arm built and measured (3/3 human #1s at HIT@5, beats bi-encoder 2/3)
@@ -19622,6 +19630,14 @@ _Last updated: 2026-10-28 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0538-lane7.md`
 
 **Evidence:** VERIFIED: arm script auto-retrieval/stemmed_tfidf_arm.py sha256 de3a35315ac3799a5548194c8b2aeeac1fd4398fca34e87567d54274b094e018 == receipt claim exactly; results JSON sha256 72cccb2942f3f0808171fee1351308cd9ffedbd0f6ff4eb56a7c08952b2bdc36 == claim exactly; report on disk with 3/3 claim. INDEPENDENT RE-RUN (scorer seat): full arm executed end-to-en
+
+### ✅ t0538 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice a3 — independent verification of Lane 7's t0532 mechanization
+
+**Receipt:** `twelve-lane-receipts/t0538-lane1.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: auto-retrieval/mechanization-verify-t0538.md exists (7142 bytes, Oct 12) and cites the receipt's ask-world pin 31aa1619 and headline figure 0.331676; scratch/t0538-lane1/repro_tfidf.py exists; three of four fixture pins match exactly today (baseline-sealed-t0432.md 460429b1..., results-t0432.json b1af58d0
 
 ### ✅ t0538 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
