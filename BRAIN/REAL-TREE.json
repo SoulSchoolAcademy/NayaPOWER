@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-28",
-  "receipt_basis_commit": "8ee35b5bc856ca681349d26e891b5c45734ec312",
-  "inventory_file_count": 1721,
+  "receipt_basis_commit": "2e0ce4afa0d0af0bf61a57a5661d2f646ec37bc1",
+  "inventory_file_count": 1722,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 890,
+    "05-MEMORY": 891,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4964,6 +4964,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/learning/SN-1896/IB-SMART-NOTE-20261028-sn1896-get-it-what-it-means-to-truly-understand.md",
       "blob_sha": "c60c5da60989e67959fd37476c2dfd189e508be4",
       "size": 7424
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/mission/SN-1897/IB-SMART-NOTE-20261028-sn1897-share-the-good-word-ten-trillion-value-bullseye-brief.md",
+      "blob_sha": "21e41860e5f80c3cd3344df7663d9bf050d461a6",
+      "size": 7942
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1892/IB-SMART-NOTE-20261028-sn1892-choose-the-ultimate.md",
