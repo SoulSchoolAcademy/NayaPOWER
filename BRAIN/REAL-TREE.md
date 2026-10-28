@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-27  
-**Receipt basis commit:** `883d45ec1b820d9f2a168dc89d5f6475bc336b17`  
-**Inventory file count:** 1714  
+**Generated:** 2026-10-28  
+**Receipt basis commit:** `1128d1ae27899ef560f19b9c13786b1a54c161e2`  
+**Inventory file count:** 1719  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 883 |
+| 05-MEMORY | 888 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -271,6 +271,7 @@
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-23-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md` — `a8a689bd600b` (13764 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-24-LEARNING-EVENT.md` — `a8caf5f5d5f4` (17474 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-26-LEARNING-EVENT.md` — `525455efb702` (15722 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-27-LEARNING-EVENT.md` — `5aa3e9caf3c2` (16510 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md` — `cb3d277c8117` (2359 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md` — `9a102af87000` (2091 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md` — `ef4f22f9e3c1` (2239 bytes)
@@ -1031,6 +1032,10 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/SYSTEM/verification/SN-1885/IB-SMART-NOTE-20261027-sn1885-a-verdict-is-only-as-good-as-its-method.md` — `a92ad113788f` (17201 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/continuity/SN-1886/IB-SMART-NOTE-20261027-sn1886-the-inheritance-intelligence-that-outlives-its-founder.md` — `f3c0f865c4b3` (4722 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/truth-seeking/SN-1890/IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity.md` — `02909055f8fc` (7858 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1892/IB-SMART-NOTE-20261028-sn1892-choose-the-ultimate.md` — `31c6ebad75ab` (4532 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1893/IB-SMART-NOTE-20261028-sn1893-ultimate-team.md` — `a08bbc6e0cb3` (5400 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1894/IB-SMART-NOTE-20261028-sn1894-deep-lesson-be-empowered.md` — `c4dfc2a3eab6` (6266 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/VISION/collective-agreement/SN-1891/IB-SMART-NOTE-20261028-sn1891-the-collective-agreement.md` — `d36f78c589d6` (4856 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)

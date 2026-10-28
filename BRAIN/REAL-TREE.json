@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-27",
-  "receipt_basis_commit": "883d45ec1b820d9f2a168dc89d5f6475bc336b17",
-  "inventory_file_count": 1714,
+  "generated_at": "2026-10-28",
+  "receipt_basis_commit": "1128d1ae27899ef560f19b9c13786b1a54c161e2",
+  "inventory_file_count": 1719,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 883,
+    "05-MEMORY": 888,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -1154,6 +1154,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-26-LEARNING-EVENT.md",
       "blob_sha": "525455efb7022cfd9037ab5f1604e97d8d85b0c1",
       "size": 15722
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-27-LEARNING-EVENT.md",
+      "blob_sha": "5aa3e9caf3c2d97ce9f2725b5651de7f6eb0d923",
+      "size": 16510
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -4954,6 +4959,26 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/27/VISION/truth-seeking/SN-1890/IB-SMART-NOTE-20261027-sn1890-the-law-of-truth-seeking-and-curiosity.md",
       "blob_sha": "02909055f8fc1623202ba2861b5cfd9ede1438a1",
       "size": 7858
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1892/IB-SMART-NOTE-20261028-sn1892-choose-the-ultimate.md",
+      "blob_sha": "31c6ebad75ab698977a5622aebbdcdadf1de4be8",
+      "size": 4532
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1893/IB-SMART-NOTE-20261028-sn1893-ultimate-team.md",
+      "blob_sha": "a08bbc6e0cb332031ea71a1f2c26b1ab01b2a676",
+      "size": 5400
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1894/IB-SMART-NOTE-20261028-sn1894-deep-lesson-be-empowered.md",
+      "blob_sha": "c4dfc2a3eab65e5c5245754ecf2fa53346687d3f",
+      "size": 6266
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/VISION/collective-agreement/SN-1891/IB-SMART-NOTE-20261028-sn1891-the-collective-agreement.md",
+      "blob_sha": "d36f78c589d63e50aa742b17cab06c2ea64dade2",
+      "size": 4856
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",

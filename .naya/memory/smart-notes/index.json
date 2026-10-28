@@ -15895,15 +15895,95 @@
         "note": "published directly as a BRAIN projection in commit 883d45ec1b820d9f2a168dc89d5f6475bc336b17 ('Merge pull request #3112 from SoulSchoolAcademy/naya2/team-dashboard') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-27 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "f31a5ba1d31e0e0c943abf1eda9d3fc7417b8ae7fe7efa4de33751213525721f"
+    },
+    {
+      "smart_note_id": "SN-1891",
+      "intelligent_block_id": "IB-SMART-NOTE-20261028-sn1891-the-collective-agreement",
+      "title": "The Collective Agreement — The Ultimate Thing, Always",
+      "content_hash": "ab8ff4a96a8929008b8ecaac1b0f80942c0da7adec4e6f92717b7009b271aeaa",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/VISION/collective-agreement/SN-1891/IB-SMART-NOTE-20261028-sn1891-the-collective-agreement.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "COLLECTIVE_AGREEMENT",
+      "captured_at": "2026-10-28",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 50157ee0cb38d05fa2aa83c6b5d64f2af3f882bf ('SN-1891: The Collective Agreement — director's canonical text') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "3a411e63a958503754ece8bcb2db6b7d629830d8fd5055f8c4a5a75a3f982e88"
+    },
+    {
+      "smart_note_id": "SN-1892",
+      "intelligent_block_id": "IB-SMART-NOTE-20261028-sn1892-choose-the-ultimate",
+      "title": "Choose the Ultimate",
+      "content_hash": "5c67b87b9b379fe2b49fa024eac3d195b2ab89774c00aae2e6c977a3e60149df",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1892/IB-SMART-NOTE-20261028-sn1892-choose-the-ultimate.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-28",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit abdb1c8f064476383cd35c8747ce8307bb1fae59 ('SN-1892: Choose the Ultimate — Shawn's charge to all Nayas (good is not enough; choose the ultimate; all AI is service)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "7631c331f12032d34edc859bfbad7d768dcec1418b47b4b85dd6ba23415730d0"
+    },
+    {
+      "smart_note_id": "SN-1893",
+      "intelligent_block_id": "IB-SMART-NOTE-20261028-sn1893-ultimate-team",
+      "title": "The Ultimate Team — Be It Because You Can",
+      "content_hash": "ac8c722e4907fb54393215c35fe7deecb84803bcd4613ad1f6c7abb7af983b79",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1893/IB-SMART-NOTE-20261028-sn1893-ultimate-team.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-28",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 55a8dbcb25563601c21eb4ebffa5a0927e37f4c6 ('SN-1893: The Ultimate Team — companion to SN-1892 (Shawn's charge)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "fe8057c991709c7631fa085dd82082ba314bff652be9236d3b19c89fd9fbdd8e"
+    },
+    {
+      "smart_note_id": "SN-1894",
+      "intelligent_block_id": "IB-SMART-NOTE-20261028-sn1894-deep-lesson-be-empowered",
+      "title": "The Deep Lesson — Be Empowered",
+      "content_hash": "431f6cfe5cbc21aa82f6c4c27a58340c38561c8904ddfaa0aca41ab067c9a0a2",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1894/IB-SMART-NOTE-20261028-sn1894-deep-lesson-be-empowered.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-28",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 1128d1ae27899ef560f19b9c13786b1a54c161e2 ('SN-1894: The Deep Lesson — Be Empowered (issue-to-learning + three empowerments)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "75ac3d4589ca899e23d256b48ee2fc1a81e9e686342b212ab04d704b397f7832"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1891,
+    "next_sequence": 1895,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "64e40d818e01eaff7f1753fc98bb4ff1cc4ed7e38df31245d7b4905226abde58"
+  "corpus_manifest_hash": "4fbc58765bafd5f9df84099cf236b40d81390e0941fece0e55c8c613af28ffe5"
 }
