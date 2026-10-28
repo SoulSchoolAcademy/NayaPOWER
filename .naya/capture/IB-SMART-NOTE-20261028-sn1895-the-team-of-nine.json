@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1895",
+ "intelligence": {
+  "title": "The Team of Nine — Three Trios, One Beat",
+  "intelligent_block_id": "IB-SMART-NOTE-20261028-sn1895-the-team-of-nine",
+  "smart_note_id": "SN-1895",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1895/IB-SMART-NOTE-20261028-sn1895-the-team-of-nine.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-28. No runtime provenance invented.",
+  "ingested_at": "2026-10-28",
+  "essence": "",
+  "human_view": "Picture three workbenches side by side. At the first, a team builds the shelves — the structure that holds everything. At the second, a team fills the shelves — every piece of intelligence, entered and checked. At the third, a team builds the actual things the shelves exist for. At every bench, three people: one does the work, one proves it with fresh eyes, one scores it honestly against what it was supposed to be and watches what needs checking next. Every half hour there's a beat — new work handed out, roles checked, the review queue checked — but nobody rushes a piece off the bench to match the clock. Work takes the time it takes; the trio stays with it until it's done and proven. That's the whole machine: nine people, three benches, one rhythm, nothing claimed before it's scored.",
+  "simple_view": "Three teams of three. In each team: one does it, one checks it, one scores it. Every half hour they check in together. You never check your own work, and you never say \"done\" before the scorer says the number.",
+  "grandma_view": "It's a well-run house, dear. Three rooms being tended at once — one being built, one being filled, one being finished — and in each room someone working, someone checking the work, and someone keeping honest score. They check in every half hour like a clock, but a good stew is never rushed off the stove. And you never grade your own homework. That's just how a house stays honest.",
+  "naya_view": "The unit is nine: jobs STRUCTURE / FILL / BUILD, one trio per job, functions DOER / VERIFIER / SCORECARDER inside each trio, staffed across the seats' agent teams (Resolve, Power, Nitro — per the same-day staffing correction; Tree and Zara are feedback and insight only). The half hour is THE BEAT: dispatch, rotation check, and review-queue check — a rhythm for coordination, explicitly NOT a batch deadline. Fill packets fit a beat; a build batch spans beats as its tests require; the trio stays with its batch rather than fragmenting it to fit the clock. Two invariants: author ≠ verifier (nobody verifies a batch they did), and the scorecard precedes any done claim (no done without its number and its evidence). The scorecarder is the trio's honesty organ: scores against the brief and its criteria, watches the review queue, keeps the verified number in front of the team — the role that turns \"activity\" into \"accounted value.\" Scaling is in whole trios aimed at the bottleneck job only; a lone doer manufactures unverified debt (the 13 owed retro-scorecards are the standing receipt). The control variable is verified outcomes per wake-up, counted daily by the value-ratio census — baseline 813:1 measured 2026-10-27, standing target under 60:1; duplicates signal over-parallelization, idle verifiers signal under-parallelization, and the math tunes the wave. This note supersedes the same-day draft framing that named the third function \"viewer\": the watching work lives in the scorecarder's role and the beat's checks, per the settled text Shawn sent the whole team.",
+  "ai_view": "Effectiveness was never a headcount problem. The measured waste (813 activities per verified outcome) came from clock-driven re-checking, doers outrunning verifiers, and waves bigger than the queue. The nine answers each structurally: the beat replaces constant re-probing with one rhythm that carries dispatch, rotation, and the review queue; every trio pairs its doer with a verifier and a scorecarder, so proof and the honest number are built into the same motion as the work; and trio-scaling keeps the team's size exactly the size of the honest queue, aimed at the bottleneck. The beat-not-deadline rule protects the deepest principle: done means proven, and proof takes the time it takes.",
+  "machine_view": {
+   "sn": "SN-1895",
+   "title": "The Team of Nine — Three Trios, One Beat",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1895/IB-SMART-NOTE-20261028-sn1895-the-team-of-nine.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": "{\"shape\":\"team-of-nine\",\"unit\":9,\"jobs\":[\"structure\",\"fill\",\"build\"],\"trios\":{\"structure\":[\"doer\",\"verifier\",\"scorecarder\"],\"fill\":[\"doer\",\"verifier\",\"scorecarder\"],\"build\":[\"doer\",\"verifier\",\"scorecarder\"]},\"beat\":{\"minutes\":30,\"checks\":[\"dispatch\",\"rotation check\",\"review-queue check\"],\"not_a_deadline\":true,\"batch_rule\":\"a batch finishes when it finishes; the trio stays with its batch\"},\"never_bends\":[\"nobody verifies a batch they did\",\"the scorecard comes before any done claim\"],\"scaling\":\"whole trios to the bottleneck job only; drained trios reinforce the bottleneck\",\"measure\":\"verified outcomes per wake-up; target < 60:1 (baseline 813:1, 2026-10-27 census)\",\"staffing\":\"lane teams across seats (Resolve, Power, Nitro); Tree and Zara feedback/insight only\",\"settled\":\"2026-10-28 with the whole team; made official by Shawn same day\"}"
+  },
+  "views_note": "Views derived 2026-10-28 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1895/IB-SMART-NOTE-20261028-sn1895-the-team-of-nine.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "58440ea897bf19c493cc21c46cc42be0edc8c4aa"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
