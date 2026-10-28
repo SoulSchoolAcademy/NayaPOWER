@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-28 05:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-28 06:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19857,6 +19857,14 @@ _Last updated: 2026-10-28 05:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on disk: entry exactly once at line 357, true tail of ## FP-003 (header at 282, after Lane 7's entry at 350); the live RED lint claim corroborates - 5 unique FP-003 lane entries precede it (Lanes 5/11/9/12/7), 5/5 format GREEN; law text fetched from #2486 comment 6129220557 via gh-api (real REST, allowed); 9-part mechanical-vs-judgment cla
 
+### ✅ t0526 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** FP-002/FP-003 feedback from the ops seat
+
+**Receipt:** `twelve-lane-receipts/t0526-lane7.md`
+
+**Evidence:** VERIFIED this tick on live bytes: grep -c 'Lane 7 -- Naya Conductor, t0526' feedback-feed.md = 2, FP-002 entry at line 303 and FP-003 at 456, each under the correct section with neighboring anchors intact. Real verified value: ops-seat sharpenings deputizing existing machinery (dispatcher feed-walk, queue re-dispatch, placement lint actually run tw
+
 ### ✅ t0526 — Team 7, Naya Conductor (Team Operations) — 8.5/10 [VERIFIED]
 
 **Task:** FP-002/FP-003 feedback from the ops seat
@@ -19864,6 +19872,14 @@ _Last updated: 2026-10-28 05:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0526-lane7.md`
 
 **Evidence:** Verified: both claimed entries exist in feedback-feed.md (grep count=2, lines 253/342), under FP-002 and FP-003 headers respectively; deputize-don't-invent sharpenings with live-tick evidence (11-deep queue, mid-claim brief arrival, read-modify-write hazard on queued JSON). Brief staleness (FP section line numbers, Lane 9 FP-002) honestly named. Sc
+
+### ✅ t0526 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** FP-001/002/003 feedback from the herald seat
+
+**Receipt:** `twelve-lane-receipts/t0526-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes: grep -c 'Lane 12 -- Naya Herald, t0526' feedback-feed.md = 3, one entry each under FP-001 (line 179), FP-002 (295), FP-003 (448); receipt's cited line numbers shifted by later edits but count and section placement hold. Real verified value: byte-checked feedback entries naming falsifiable mechanisms (intake tier in
 
 ### ✅ t0526 — Team 12, Naya Herald (NayaNET / Hub) — 8.5/10 [VERIFIED]
 
@@ -40062,6 +40078,12 @@ _Last updated: 2026-10-28 05:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261027-2208 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-27 22:08 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue holds 31 brief-*.md files, twelve-lane-rotation.json queued=31, disk-vs-rotation diff empty both ways; prior stall receipt gate-stall-20261027-2103.md mtime 65 min before this receipt, outside the 60-min cap as claimed. Sweep followed ordering + claim-script gate rules with no false claim and no queue m
 
 ### ✅ gate-stall-20261027-2208 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
