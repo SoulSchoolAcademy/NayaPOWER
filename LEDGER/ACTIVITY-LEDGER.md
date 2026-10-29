@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 02:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16897,6 +16897,14 @@ _Last updated: 2026-10-29 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: both prereg SHAs exact match (t0627-decompose-prereg e554879a...9d06, perclaim-emission-prereg eb7b9714...8aae); BLOCKED verdict is the honest frozen-rule outcome (per-claim maxes computed in-memory, never persisted — proven from the instrument's own write block); executor routed to a fresh seat (designer!=executor kept); independence pre
 
+### ✅ t0626 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Guard-split handoff CANDIDATE (root B), per-claim decomposition package
+
+**Receipt:** `twelve-lane-receipts/t0626-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact on all six package SHAs (16-char): swing-table-b-t0626.json 7eb7df14c6f053cd, swing-table-b-t0626.md e2797585683749c4, claim-decomposition-b-t0626.json 978f5611abc62a54, claim-decomposition-b-t0626.md 1bdf43a01824654f, guard-split-spec-t0626.md 05df50741b3771b1, pins-t0626.json 75f37ee4dcc9cc75,
+
 ### ✅ t0626 — Team 5, Lane 5 (Naya Seeker) (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** guard-split handoff CANDIDATE (root B)
@@ -16905,6 +16913,14 @@ _Last updated: 2026-10-29 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 6 package SHAs exact match (swing/decomp JSON+md, spec, pins) under auto-retrieval/guard-split-handoff-t0626/; 7/7 pins re-derived at action time per claim; md twins GENERATED from JSONs. Score 9.0, not 9.5: the added `vals else 0.0` fallback + argmax tie-breaking in the attribution path is untested by a second seat (lane's own flag);
 
+### ✅ t0626 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (b) stamping-migration plan CANDIDATE
+
+**Receipt:** `twelve-lane-receipts/t0626-lane4.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: hidden_files/retrieval-authgate-stamping-migration-plan-t0626.md sha256 91c797fd228c9702f87bf33457a4a80041ea1e5be5af9e92b135192e0680b4d8 exactly as receipted (11760 bytes). NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) CANDIDATE plan, no second sea
+
 ### ✅ t0626 — Team 4, Lane 4 (Naya Mason) (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE (b) stamping-migration plan CANDIDATE
@@ -16912,6 +16928,14 @@ _Last updated: 2026-10-29 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0626-lane4.md`
 
 **Evidence:** Verified: plan file retrieval-authgate-stamping-migration-plan-t0626.md sha256 exact match 91c797fd...0680b4d8; tip context re-derived at action time (eb36746a vs stale t0616 premise); honest holes listed (W2 carry-through byte-unverified, rulings+wiring await Shawn's word). Score 9.0, not 9.5: CANDIDATE is single-seat — no second-seat review of wa
+
+### ✅ t0626 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** H-dc6 sealed-run execution (designer≠executor), verdict HOLD on EQ-D0 mismatch
+
+**Receipt:** `twelve-lane-receipts/t0626-lane1.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: auto-retrieval/t0622_h_dc6.py sha256 39fd78c8102fedd0bef829fb132c9ff9a3b149652417322b39e523840bf402dc, design doc 5d5a244505c038a8b10b36dcee7f2979c7da222e59cea224487b497f35825880, dryfire 00d8bfad5a103ead1f2664d5950a6c126e01e23d1daeedf27b538d018ce46650, seal note f6cabd5def529b7d1f94146eab04e12
 
 ### ✅ t0626 — Team 1, Lane 1 (Naya Verity) (Verification & Proof) — 8.5/10 [VERIFIED]
 
