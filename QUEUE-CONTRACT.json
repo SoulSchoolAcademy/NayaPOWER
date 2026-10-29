@@ -1,6 +1,6 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-29T02:24:31Z",
+  "generated_at": "2026-10-29T03:24:42Z",
   "tip": "37dc15e5e388910e44916a57739110a99b5733ce",
   "prs": [
     {
@@ -28,7 +28,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "6eff8b31dffd76a05b3a48abeb29ef2025d26d86"
+      "head": "ed919a4820195c299326a3a3b1fe4748abd06e4d"
+    },
+    {
+      "number": 3116,
+      "title": "[NAYA 5] Cold-retrieve: regenerate brain index layer at 37dc15e5",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "2bb58ce71925b7c09679e3dc8db78e6a6e4d6ded"
     }
   ]
 }
