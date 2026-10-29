@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 09:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14667,6 +14667,14 @@ _Last updated: 2026-10-29 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real verified value: independently confirmed the one genuine find — E1 misattribution (t0688-lane1 task line reads 'independent scorecard of PR #2545'; t0683-lane1.md is the actual #2533 scorecard), so the verdict file's 4 CONFIRM + 1 CORRECT-with-diff rests on real artifact handles. Why not 9.5: E4 freshness-gate outputs accepted as documented re-
 
+### ✅ t0705 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Plan 2 move 3: first value ledger from t0690 seed, append-only SHA chain, tamper control
+
+**Receipt:** `twelve-lane-receipts/t0705-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/value-ledger-build-t0705.py --verify exits 0, all rows VERIFY-OK (chain intact). Ledger now holds 6 rows, not the receipted 5, so the receipted ledger sha256 0b7d6d16... no longer matches live bytes 230b9813...: the drift is a legitimate later append (LEDGER-0006), which is the append path tr
+
 ### ✅ t0705 — Team 5, Naya Seeker Narzan (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** Plan 2 move 3 — first value ledger from the t0690 seed (append-only, evidence-bound)
@@ -14699,6 +14707,14 @@ _Last updated: 2026-10-29 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verdict byte-grounded, table reproducible from log + receipts, two hazards named with evidence. Score 9.5 — why not 10: era-displaced receipts' repair is dispatcher-owned, outside authority.
 
+### ✅ t0704 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Hive Learning Law ruling on #2555/#2556 mutual duplicates: CONVERGENCE ORDERED on #2555 base
+
+**Receipt:** `twelve-lane-receipts/t0704-lane2.md`
+
+**Evidence:** VERIFIED this tick via git ls-remote: refs/pull/2555/head c67c198568356cd6934e8a2d7cd694a9a1d86e18 and refs/pull/2556/head ba516a02d904f11dcb667154922e247f237c8663 both exactly as receipted, zero pin rot even weeks on. NOT PHANTOM (read-only ruling work; no branch artifact claimed). Score 9.0, GOOD, ONE MORE PASS, below lane self-claimed 9.5. Why n
+
 ### ✅ t0704 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Hive Learning Law ruling: CONVERGENCE ORDERED, #2555 contract as canonical base
@@ -14730,6 +14746,14 @@ _Last updated: 2026-10-29 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0704-lane12.md`
 
 **Evidence:** Verified via git protocol: branch refs/heads/naya4/t0704-lane12-smart-mail exists on origin at b88792361be09b33795277f94bb83772f8f0ed97 == receipt pin; tree API confirms functions/feature_smart_mail.py present at that SHA. Registry flip is single-line surgical, guarded by read-time/flip-time SHA match. Clears 9.5 because the module is real, pin-exa
+
+### ✅ t0704 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** #2541 heal re-adjudication: STALE, trunk healed by merged #2560, tip GREEN
+
+**Receipt:** `twelve-lane-receipts/t0704-lane10.md`
+
+**Evidence:** VERIFIED this tick via git ls-remote: refs/pull/2541/head de0805407788ed143605ff1a4e98398b0ea74dc9, refs/pull/2560/head c32e6a5b4856f4e6ccf8e3e7d3c6fb2aed58ccbb, refs/pull/2565/head 4bdb1f221aaec31bc41babf848526b3232c2661f all exactly as receipted. NOT PHANTOM (read-only verdict work; no branch artifact claimed). Score 9.0, GOOD, ONE MORE PASS, bel
 
 ### ✅ t0704 — Team 10, Naya Clarity Librarian (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -27252,6 +27276,54 @@ _Last updated: 2026-10-29 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261029-0145 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 01:45 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261029-0145.md states 31 briefs evaluated in order with 29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar refusals, queue left unt
+
+### ✅ 20261029-0039 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 00:39 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261029-0039.md states 31 briefs evaluated in order with 29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar refusals, queue left unt
+
+### ✅ 20261028-2334 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 23:34 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261028-2334.md states 31 briefs evaluated in order with 29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar refusals, queue left unt
+
+### ✅ 20261028-2228 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 22:28 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261028-2228.md states 31 briefs evaluated in order with 29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar refusals, queue left unt
+
+### ✅ 20261028-2125 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 21:25 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261028-2125.md states 31 briefs evaluated in order with 29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar refusals, queue left unt
+
+### ✅ 20261028-2021 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 20:21 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261028-2021.md states 31 briefs evaluated in order with 29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar refusals, queue left unt
+
+### ✅ 20261028-1915 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 19:15 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261028-1915.md states 31 briefs evaluated in order with 29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar refusals, queue left unt
+
+### ✅ 20261028-1814 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 18:14 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261028-1814.md states 31 briefs evaluated in order with 29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar refusals, queue left unt
 
 ### ✅ 20261027-1123 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
@@ -42158,6 +42230,12 @@ _Last updated: 2026-10-29 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261029-0145 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-29 01:43 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on live workspace bytes: brief-queue/ holds exactly 31 brief-*.md files (lane-feed excluded), rotation queued=31 with exact set match to disk (0 missing, 0 extra), prior stall receipt gate-stall-20261029-0039.md exists, NON-Clarity seat-bar prose present in brief-gap-gap-t1002-lane2.md, distinct-seat routing prose present in brie
 
 ### ✅ gate-stall-20261029-0039 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
