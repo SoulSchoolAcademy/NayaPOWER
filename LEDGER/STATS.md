@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-29 07:32 UTC_
+_Last updated: 2026-10-29 08:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6610
-- ✅ Verified (8+): 6546
+- **Total scored actions:** 6620
+- ✅ Verified (8+): 6556
 - 🟡 Partial (5–7): 61
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -15,18 +15,18 @@ _Last updated: 2026-10-29 07:32 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 477 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 476 | 8.8 | 9.5 |
+| Team 1 | Naya Verity | 478 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 477 | 8.8 | 9.5 |
 | Team 3 | Naya Judge | 439 | 9.0 | 10 |
-| Team 4 | Naya Mason | 420 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 545 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 315 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 422 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 443 | 9.0 | 9.5 |
+| Team 4 | Naya Mason | 421 | 9.1 | 9.6 |
+| Team 5 | Naya Seeker | 546 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 316 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 423 | 9.0 | 10 |
+| Team 8 | Naya Sentinel | 444 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 567 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 765 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 403 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 344 | 9.2 | 9.5 |
+| Team 11 | Naya Heart | 404 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 345 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -578,6 +578,7 @@ _Last updated: 2026-10-29 07:32 UTC_
 - **gate-stall-20261028-2125:** 1 actions, avg 9.0/10
 - **gate-stall-20261028-2228:** 1 actions, avg 9.0/10
 - **gate-stall-20261028-2334:** 1 actions, avg 9.0/10
+- **gate-stall-20261029-0039:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -1845,12 +1846,12 @@ _Last updated: 2026-10-29 07:32 UTC_
 - **t0689:** 4 actions, avg 9.0/10
 - **t0690:** 4 actions, avg 9.0/10
 - **t0691:** 5 actions, avg 9.0/10
-- **t0692:** 7 actions, avg 9.0/10
-- **t0694:** 6 actions, avg 9.0/10
+- **t0692:** 8 actions, avg 9.0/10
+- **t0694:** 8 actions, avg 9.0/10
 - **t0694-lane8-newera:** 1 actions, avg 9.0/10
-- **t0695:** 6 actions, avg 9.2/10
-- **t0697:** 9 actions, avg 9.0/10
-- **t0699:** 6 actions, avg 9.0/10
+- **t0695:** 8 actions, avg 9.1/10
+- **t0697:** 12 actions, avg 9.0/10
+- **t0699:** 7 actions, avg 9.0/10
 - **t0700:** 5 actions, avg 9.5/10
 - **t0700-lane10-surge-c:** 1 actions, avg 9.0/10
 - **t0701:** 5 actions, avg 9.1/10
