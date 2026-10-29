@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-29T04:24:31Z",
-  "tip": "999a3a9aad1418b3fb18726907e9052edf9b1620",
+  "generated_at": "2026-10-29T05:24:37Z",
+  "tip": "087ad6d70416bcc80021829a45a5e9f0c8270e9a",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "062ffa79902c60cc31e4e5ead3feb79977ce91eb"
+      "head": "ad13f9a2a0570c1471b32d4af55fa615cfef41f7"
+    },
+    {
+      "number": 3118,
+      "title": "Governance: LOCKED-IN DECLARATION V1 (team spoken core, three tongues) \u2014 DRAFT",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate, completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "804dc8a0421112edc50b567eb4f40a394d3a2f18"
     }
   ]
 }
