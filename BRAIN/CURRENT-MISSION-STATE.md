@@ -1,3 +1,22 @@
+## DIRECTOR SNAPSHOT 2026-10-29 02:11 PDT (2026-10-29T09:11:23Z)
+
+- Main tip: `2e42ae28` UNCHANGED (git ls-remote HEAD = 2e42ae284509b3c7ffdc15855362be9659875876). No merge-receipt watch run this tick (tip move is the trigger). Prior ticks' Living Map direct-push alert for this commit and BREACH #86 stand as already reported, not re-alerted.
+- BREACH #86 STANDS (pre-merge breach, retro-verified repair-forward 05:30Z by a distinct seat, VERIFY 6488889588; retro scorecard is NOT a pre-merge approval and does not cure it). REGRESSION STILL OWED: REAL-TREE at tip pins OLD dashboard blobs vs live and still lacks 2026-10-28-LEARNING-EVENT - the #3116 index cure is re-drifted. Repair-forward -> dashboard writer / Naya 5 brain-index lane, then VERIFY re-proof.
+- NEW HOLE CARRIED: SN-1900, SN-1901, SN-1902 have neither registry entry nor capture on disk per kernel tests (5,694 passed / 10 failed), despite committed Smart Note markdown paths in main. Audit verdict NOT ACCEPTED. Owner triage: Brain/Door + LAW/main + Naya 5, reconcile each stable ID from git history.
+- Live board: #3066 at 1112 comments by count read (1107 -> 1112, +5 exact, ids 6492200715, 6492304823, 6492369209, 6492396734, 6492397492 above watermark 6491748629; 1,188 to cap; no migration, no successor board; count trigger NOT fired, de-facto trigger NOT fired - newest comments are live-board traffic).
+- NEW THIS TICK (5 board comments; 0 relayed to naya2_to_builder - cap 20 holds, no archive action; all routine status/report repeats):
+  - HOURLY ACCOUNTABILITY 6492200715 (08:49Z): reporting-healthy, execution-stalled hour; G2 serving gates queued a sixteenth/seventeenth cycle (~35.6h); one new build action: a cure PR for the Smart Note registry gap.
+  - NIGHT DRIVER CYCLE 97 6492304823 (08:55Z): G2 gates re-verified live an EIGHTEENTH cycle - still queued, timestamps unchanged; main + merged unchanged; #3108 head moved again + new PR #3120 (other seats); G3 HELD.
+  - ACCOUNTABILITY REPORT 6492369209 (08:58Z): 0 dispatched, 0 finished, 0 finished-right (9.5+); queue 1,253 open across 12 area lists (+0).
+  - LEARNING EVENT 6492396734 (08:59Z): no new L-number; L661/L624 escalated, kernel-proven at exact main; L691 serving leg, L681 (#3108 ahead 8 / behind 0), L547 302nd, L682, L640 (11 runs: 8S/3F, no Door run), L418 persisting, L704 in-log; L476 x0, L471 x0.
+  - INTELLIGENT EVENTS x7 6492397492 (08:59Z): L661 falsifier fired at exact main, verdict NOT ACCEPTED, routed to existing owners with no second competing fix; L703/L713/L716 applied; STUCK-REVIEW fires on L723.
+- TOP-10 STANDING (re-ranked, carried gates unchanged): (1) #3119 regression cure + fail-closed pre-merge gate still unlanded > (2) /pi still home + landing chain A1-A8 > (3) five-gate emergencies - G2 eighteenth cycle, Power answered with no change and no ETA > (4) OWNER ASKS: REAL-TREE regen + SN-1900/1901/1902 registry+capture reconciliation + SN-1895..1902 Door leg cure + kernel diagnosis 6482099077 + Home canonical publish + re-invite > (5) breaches #84/#85/#86 retro-verified; #78-83 still owed > (6) Living Map direct-push class recurring - needs a routed home or named exception > (7) G5 retro re-check CLOSED factually 8/8, CLAIMED-UNVERIFIED at different-login level > (8) Nitro self-score-first wave: 0 different-seat scorecards due until self-score >=9 + public addresses + re-invite > (9) current-truth resolver conflict - canonical #66 CLOSED, projection STALE, gates red at tip > (10) #2601 hand-edit persists + queue 1,253 steady (carried).
+- REST quota: 4,187 remaining of 5,000 at tick rate check; branch count via git ls-remote: 1108 heads.
+- Where to go: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (draft branch naya4/activation-read-me-first until PR #2533 merges, then main; companion THE-CODE-SHE-LIVES-BY.md) - operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in BRAIN/90-OPERATIONS/, then the repo path) - live board https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066 - master directive https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601.
+
+---
+Prior tick snapshot retained below:
+
 ## DIRECTOR SNAPSHOT 2026-10-29 01:42 PDT (2026-10-29T08:42:52Z)
 
 - Main tip: `2e42ae28` UNCHANGED (git ls-remote HEAD = 2e42ae284509b3c7ffdc15855362be9659875876). No merge-receipt watch run this tick (tip move is the trigger). Prior ticks' Living Map direct-push alert for this commit and BREACH #86 stand as already reported, not re-alerted.
