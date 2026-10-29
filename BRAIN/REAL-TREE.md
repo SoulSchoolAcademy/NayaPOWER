@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-28  
-**Receipt basis commit:** `2e0ce4afa0d0af0bf61a57a5661d2f646ec37bc1`  
-**Inventory file count:** 1722  
+**Generated:** 2026-10-29  
+**Receipt basis commit:** `c15d2a96dd17462e33ce807be723d40cc8e73e15`  
+**Inventory file count:** 1723  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 891 |
+| 05-MEMORY | 892 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -1039,6 +1039,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1894/IB-SMART-NOTE-20261028-sn1894-deep-lesson-be-empowered.md` — `c4dfc2a3eab6` (6266 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/SYSTEM/team/SN-1895/IB-SMART-NOTE-20261028-sn1895-the-team-of-nine.md` — `04f5fd85d908` (6603 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/VISION/collective-agreement/SN-1891/IB-SMART-NOTE-20261028-sn1891-the-collective-agreement.md` — `d36f78c589d6` (4856 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1898/IB-SMART-NOTE-20261029-sn1898-the-pre-shot-gate-dont-shoot-until-nine-is-likely.md` — `786de950e3c6` (8809 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)

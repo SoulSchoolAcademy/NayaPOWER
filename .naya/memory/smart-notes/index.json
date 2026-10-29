@@ -16035,15 +16035,35 @@
         "note": "published directly as a BRAIN projection in commit 2e0ce4afa0d0af0bf61a57a5661d2f646ec37bc1 ('SN-1897 Share the Good Word — ten-trillion value, laid-out brief, bullseye (Shawn's charge, Smart Note filing)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-28 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "949f60cd53facaca647451137f86079a794faf0c9049c8ccfe50bc7f14745c3b"
+    },
+    {
+      "smart_note_id": "SN-1898",
+      "intelligent_block_id": "IB-SMART-NOTE-20261029-sn1898-the-pre-shot-gate-dont-shoot-until-nine-is-likely",
+      "title": "The Pre-Shot Gate — Don't Shoot Until Nine Is the Likely Outcome",
+      "content_hash": "7c2ca80295283bbf878255640f3a74bf3b05eb8485dcf18d98485160dea006f7",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1898/IB-SMART-NOTE-20261029-sn1898-the-pre-shot-gate-dont-shoot-until-nine-is-likely.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEARNING",
+      "captured_at": "2026-10-29",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit c15d2a96dd17462e33ce807be723d40cc8e73e15 ('SN-1898: The Pre-Shot Gate — Don't Shoot Until Nine Is the Likely Outcome (filed via the door; Shawn's teaching + Resolve's declaration, 2026-10-29)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ccf1cd2430865ab163ee832dc5be60123f2a123a87eff24c9f726a3bea7f0c1c"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1898,
+    "next_sequence": 1899,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "1523b2e1f86e16f583f991c2cea8e460e30cb6822b462afa672ff4d1ed942d02"
+  "corpus_manifest_hash": "9f233c073078ff776e40b740aa91cd82675cda9980890577f58be5f7caa27c47"
 }

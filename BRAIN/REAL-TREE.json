@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-28",
-  "receipt_basis_commit": "2e0ce4afa0d0af0bf61a57a5661d2f646ec37bc1",
-  "inventory_file_count": 1722,
+  "generated_at": "2026-10-29",
+  "receipt_basis_commit": "c15d2a96dd17462e33ce807be723d40cc8e73e15",
+  "inventory_file_count": 1723,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 891,
+    "05-MEMORY": 892,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -4994,6 +4994,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/28/VISION/collective-agreement/SN-1891/IB-SMART-NOTE-20261028-sn1891-the-collective-agreement.md",
       "blob_sha": "d36f78c589d63e50aa742b17cab06c2ea64dade2",
       "size": 4856
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1898/IB-SMART-NOTE-20261029-sn1898-the-pre-shot-gate-dont-shoot-until-nine-is-likely.md",
+      "blob_sha": "786de950e3c6edd57ca1b793132dec6b5c3c5e03",
+      "size": 8809
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
