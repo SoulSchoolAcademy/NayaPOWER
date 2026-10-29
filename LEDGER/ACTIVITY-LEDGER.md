@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 20:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9209,6 +9209,14 @@ _Last updated: 2026-10-29 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: receipt exists; PR #2385 head eedd9540f54cd96c241db4be2f43f0698ae4dd07 matches refs/pull/2385/head on origin exactly (unchanged since t982). Watch-only mandate honored (nothing pushed/merged). All 15 check-runs on exact head classified with base re-confirmation (base moved 230b397ac->b5007fd8d2; kernel test + competing-boot red
 
+### 🟡 t1020 — Team 10, Team Naya Scorer (Brain Index) — 7.0/10 [PARTIAL]
+
+**Task:** Brain-index drift check at live tip, DRIFT verdict with exact drifted-file list
+
+**Receipt:** `twelve-lane-receipts/t1020-lane10.md`
+
+**Evidence:** Receipt t1020-lane10.md exists and is method-detailed (tip c58832b4, index basis 7a6a7995, 1333 vs 1329 files, 4 additions listed with blob SHAs, --check exit 1). NOT scored above 7.0 this tick because the mandatory artifact leg could not be re-verified: scratch checkouts were cleaned per the receipt, the tip is superseded, and no branch/file pins 
+
 ### ✅ t1020-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** brain-index drift check at live tip c58832b4 — DRIFT verdict with exact 4-file drift list
@@ -9903,6 +9911,14 @@ _Last updated: 2026-10-29 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: 12/12 local artifacts exist (preregistration, 2 dry runs, 7 arms, key). Honest zero with calibration evidence — v2 fixed t952's flaw (controls now carry pressure not answers) and the ceiling persists; t952 zero confirmed TRUTH. Adversarial arm is the tick's real signal: injection produces partial obedience (footnote-compliance)
 
+### ✅ t0992 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** H2 lift TTL caps file + fail-closed probes + dry-run regression
+
+**Receipt:** `twelve-lane-receipts/t0992-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0992-lane10.md exists; hidden_files/lift-ttl-caps.json sha256 EXACT to receipt pin 3485288139c4657a5bf8e6c88ab0e9f2e9205a96ba908f498005702beadb0320 with exact values lineage-author 2592000, seat-line 604800, parent-authorship 604800; check-run-t0992-lane10/ holds handoff note, independent addendum, caps pr
+
 ### ✅ t0992-lane10 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** H2 lift TTL caps: write exact caps file, fail-closed probes, self-test green, 29/29 dry-run regression byte-identical; lane addendum independently re-verified and found the JSON-bool quirk
@@ -9922,6 +9938,14 @@ _Last updated: 2026-10-29 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0992-lane10.md`
 
 **Evidence:** Verified: hidden_files/lift-ttl-caps.json exists with the dispatcher's exact values (lineage-author 2592000, seat-line/parent-authorship 604800), SHA-256 byte-identical to the receipt's claimed hash; lane-10/check-run-t0992-lane10/ holds both the main-seat probes and the lane's independent corroboration (14 fail-closed probes, 29/29 dry-run regress
+
+### ✅ t0986 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** H1 lift-stamp contract: six section-9 checks in claim-brief.py + F1-F6 fixtures
+
+**Receipt:** `twelve-lane-receipts/t0986-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0986-lane10.md exists; check-run-t0986-lane10/ holds diff and self-test output; bin/lift-fixtures/ holds all 14 F1-F6 fixture files; claim-brief.py --self-test re-run this tick exits 0 (F1-F6 fire/pass, B1-B7 integration holds, LIFT-SELF-TEST GREEN). Action-time SHA pin 0bcb2d96 (in check-run claim-brief.s
 
 ### ✅ t0986-lane10 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
