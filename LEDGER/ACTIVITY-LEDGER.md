@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 17:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13947,6 +13947,14 @@ _Last updated: 2026-10-29 17:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: PR #2574 head 97b65bd11316fe91b324986b3d429d0c3ee0ff75 via batched git ls-remote (matches); independent 10-row hostile/positive battery 10/10 at the pinned head (4 hostile exit 1 with exact refusal fragments, 3 positives exit 0, fail-closed row); dogfood self-application exits 0 with 5 bound handles; workflow wiring read from bytes. Score
 
+### ✅ t0729 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat scorecard on PR #2574 (receipt-gate relevance repair)
+
+**Receipt:** `twelve-lane-receipts/t0729-lane2.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0729-lane2.md exists; git ls-remote refs/pull/2574/head returns EXACTLY 97b65bd11316fe91b324986b3d429d0c3ee0ff75 as receipted, so the action-time head leg still re-derives 15 days later. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS, below lane self-9.5. Why not 9.5: (1) merge itself not shipped - human-gated
+
 ### ✅ t0729 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** independent scorecard on PR #2574 (receipt-gate relevance repair)
@@ -13977,6 +13985,14 @@ _Last updated: 2026-10-29 17:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified independently by this scorer: branch naya4/t0727-lane12-contacts exists on the remote, git ls-remote head = 0e1bfe5819f2b0490be823db7a46e2e2c0b3fd4c byte-exact vs the receipt's pin; shallow-fetched that SHA and confirmed files present at the head (functions/feature_contacts.py, registry.json, tests/test_feature_contacts.py under HUB/design
 
+### ✅ t0728 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SMARTBLOCKS pilot - top-3 ask-world needs as versioned smart blocks + lookup demo
+
+**Receipt:** `twelve-lane-receipts/t0728-lane4.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0728-lane4.md exists; pilot dir hidden_files/lane-4/smartblocks-pilot-t0728/ holds 6 files, and 4 receipt pins sha256 EXACT: lane-packet-5-v1.md 96c6f96b..., lane-packet-1-v1.md 3751bb92..., lane-packet-10-v1.md 7cc8edd2..., lookup-demo-t0728.md 7fab98bc... . NOT PHANTOM. Pin caveat, not falsification: bui
+
 ### ✅ t0728 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** SMARTBLOCKS pilot: 3 versioned lane packets + lookup demo + harness
@@ -13992,6 +14008,14 @@ _Last updated: 2026-10-29 17:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0728-lane4.md`
 
 **Evidence:** Verified: pilot dir hidden_files/lane-4/smartblocks-pilot-t0728/ with SHA-pinned files per receipt; the brief's watch-for fired live -- tally 62->71 rows mid-build, the harness's pin-assert caught it (exit 2, fail-closed) and the builder root-fixed by re-deriving top-3 from live bytes at build time; cold rebuild byte-deterministic (identical SHAs).
+
+### ✅ t0728 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** W5 stamping-plan second-seat review
+
+**Receipt:** `twelve-lane-receipts/t0728-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0728-lane10.md exists; verdict doc hidden_files/lane-10/w5-second-seat-verdict-t0728.md exists (5232 bytes). NOT PHANTOM. Action-time tip 92329c5795... no longer re-derives (HEAD now cd1740a652...), so the tip-byte re-derivations are receipt-claimed, not re-derived this tick. SCORE 9.0 GOOD, ONE MORE PASS,
 
 ### ✅ t0728 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
 
