@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 09:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 10:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27277,6 +27277,12 @@ _Last updated: 2026-10-29 09:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261029-0246 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 02:46 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261029-0246.md names all 31 disk briefs across its refusal classes (29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar), NON-Clarit
+
 ### ✅ 20261029-0145 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** gate-stall 01:45 PDT - 31-brief claim attempt, zero claimable, queue untouched
@@ -30698,6 +30704,30 @@ _Last updated: 2026-10-29 09:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ t-converge — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** canonical contract/oath factual verification input — provenance table + ruling premise check
+
+**Receipt:** `twelve-lane-receipts/t-converge-lane7.md`
+
+**Evidence:** Verified by this scorer: receipt file exists on disk; all three cited branch-tip commits return GitHub API 200 (naya2 2812386946a98dd34682da2e61b86617771d037a, naya5 22358b109117067f1c6f10e34620938cf57fe6ce, naya4 ea501b6800df4630def495a342f2cd9e74583e14), and branch naya5/oath-and-doctrine still exists on the remote (head now 91be0a552b4da0827925f
+
+### ✅ t-contract-selfreview — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** contract self-review round for all 12 lanes — confirm/amend + task status vs living top-10
+
+**Receipt:** `twelve-lane-receipts/t-contract-selfreview-lane7.md`
+
+**Evidence:** Verified by this scorer: receipt file exists on disk; the branch it read (naya4/contract-staging) is gone from the remote today, but its era commits verified reachable this tick (82186972011c and 95b0ff05 both API 200), and the receipt's internal structure corroborates the work (12/12 per-lane verdicts, 36 task lines checked, consolidated 10-amendm
+
+### ✅ t-contract-verify — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
+
+**Task:** contract gate verification (Judge) — sign-in/sign-out battery + tamper tripwire
+
+**Receipt:** `twelve-lane-receipts/t-contract-verify-lane7.md`
+
+**Evidence:** Verified by this scorer: receipt file exists on disk; both cited commits return GitHub API 200 (staging tip 82186972011c0d09456b30678b79af4ab986688c and brief-pinned 95b0ff057670e801be22d6ffdfe4551c80e4de3a), so the artifacts are real, NOT PHANTOM. Branch naya4/contract-staging no longer exists on the remote (ls-remote returns nothing) — expected p
 
 ### ✅ gap-t0092 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
