@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-29T15:24:45Z",
-  "tip": "cd1740a6524502f1433b54377f28840ae62b3e94",
+  "generated_at": "2026-10-29T21:49:25Z",
+  "tip": "e445a597d6f1ead7da104e5051ba9751fdc7ed4f",
   "prs": [
     {
       "number": 2981,
@@ -28,25 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "5e473878ef58b0310c84a6e7338039383b3df67d"
-    },
-    {
-      "number": 3118,
-      "title": "Governance: LOCKED-IN DECLARATION V1 (team spoken core, three tongues) \u2014 DRAFT",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate, completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "804dc8a0421112edc50b567eb4f40a394d3a2f18"
-    },
-    {
-      "number": 3120,
-      "title": "[NAYA 5] Cold-retrieve: door backfill SN-1900..1902 + index regen at 2e42ae28",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate, completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "151ca3202680249c1fd3a3db05561b00e274fbdd"
+      "head": "22958da9b658e12dcb85f8bb5e0b9b55d5dfb4d4"
     }
   ]
 }
