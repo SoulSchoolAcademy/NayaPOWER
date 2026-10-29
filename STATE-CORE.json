@@ -1,12 +1,12 @@
 {
  "schema": "nayapower-state-core/v1",
- "generated_utc": "2026-10-29T00:35:42Z",
+ "generated_utc": "2026-10-29T00:50:43Z",
  "writer": "state-core-builder.py (single writer; all others read-only)",
  "tip": {
-  "sha": "53fb1eec1bd127dc3224bd40ef8475da51831ebd",
-  "short": "53fb1eec1bd1",
+  "sha": "5e62373967530d9ce066a51a408db162f6e44165",
+  "short": "5e6237396753",
   "verified_how": "ref+commits-agree",
-  "checked_utc": "2026-10-29T00:35:06Z"
+  "checked_utc": "2026-10-29T00:50:07Z"
  },
  "venue": {
   "live": 3066,
@@ -307,31 +307,31 @@
  "sections": {
   "tip": {
    "source": "git/refs/heads/main (+commits cross-check)",
-   "age_s": 38
+   "age_s": 37
   },
   "waves_lanes": {
    "source": "wave-state.json + naya-roster.json + area-staleness.json",
-   "age_s": 38
+   "age_s": 37
   },
   "queue": {
    "source": "bottleneck-queue.md",
-   "age_s": 38
+   "age_s": 37
   },
   "living_list": {
    "source": "living-list.json + github-api reconciliation",
-   "age_s": 38
+   "age_s": 37
   },
   "wip": {
    "source": "github-api: pulls + check-runs at exact heads",
-   "age_s": 38
+   "age_s": 37
   },
   "gates_tip": {
    "source": "github-api: check-runs at tip",
-   "age_s": 38
+   "age_s": 37
   },
   "blockers": {
    "source": "curated from venue + worker sign-outs this hour",
-   "age_s": 38
+   "age_s": 37
   }
  }
 }
