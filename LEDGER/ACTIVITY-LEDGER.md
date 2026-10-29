@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 21:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -302,6 +302,12 @@ _Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1564-lane11.md`
 
 **Evidence:** Verified independently from live bytes at score time: rotation queued=16 exactly the 15 named gap briefs plus brief-t1564-lane11.md; brief-queue root holds those 15 briefs (plus lane-feed.md); exact-name execution receipts 0/15 for the gap briefs; in_flight=[]; claimed/ root holds only brief-t1564-lane11.md plus done/; prior t1562 close confirmed (
+
+### ✅ t1564 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-29 14:28 PDT: 31 queued briefs evaluated, all refused, correct skip
+
+**Evidence:** VERIFIED this tick on live bytes: 31 brief-*.md files in brief-queue/, rotation queued=31, claimed/ holds only done/ — queue state exactly as receipted. One refusal independently spot-checked: brief-gap-t0422-lane7 dry-run refused on parent-authorship (parent author clarity == claimer), no mv, no touch, matching the receipt's exit-7 class. NOT PHAN
 
 ### ✅ t1562 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -13775,6 +13781,14 @@ _Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: PR #2738 head branch naya4/hub-cloudflare-pipeline == 8030c2ee028504c7e0fb2193bc9f9889ef301a32 (PR API and git ls-remote agree, branch exists on remote, SHA matches); blob counts proved F1 a redaction artifact (line 42 always ${{ secrets.CLOUDFLARE_API_TOKEN }}, grep-secrets=1, redacted-literal=0); body refreshed to match the auto-deploy 
 
+### ✅ t0734 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Green-or-classify the CI reds on PR #2576 - paperwork classification, no push
+
+**Receipt:** `twelve-lane-receipts/t0734-lane9.md`
+
+**Evidence:** VERIFIED in part this tick: PR #2576 action-time head 4fcebea988a07b276abac361804297231f7a5f2f confirmed as a preserved commit (2026-10-14) via the commits API, corroborating the receipt's pin and the t0734-lane3 receipt on the same head; the per-red table (run/job IDs, step-level failure, zero-reviews cause, pin-block absence) is internally consis
+
 ### ✅ t0734 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** green-or-classify CI reds on PR #2576 (codehealth seat)
@@ -13783,6 +13797,14 @@ _Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: #2576 branch head 4fcebea988a07b276abac361804297231f7a5f2f on remote matches receipt pin exactly; classifications are from check-run job detail, not summaries; refused theater (no-op push, manufactured review) — correct judgment. Score 9.0, not 9.5, for the named gap: load-bearing evidence is partly deductive (CI log bytes 401'd on both c
 
+### ✅ t0734 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Decision packet on the #2576 seat-list question (options A/B/C, recommendation A)
+
+**Receipt:** `twelve-lane-receipts/t0734-lane3.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pin-exact: hidden_files/lane-3/t0734-seatlist-decision-packet.md sha256 22c907e9ab3b58d4ded8e6b9721ce24d9afa6bd7491e44bbe437084f53619ede matches the receipt pin character-for-character, and the packet carries Options A/B/C with the Option A recommendation as receipted; PR #2576 action-time head 4fcebea988a07b276aba
+
 ### ✅ t0734 — Team 3, Naya Resolve Narzan (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** decision packet on the #2576 seat-list question (3 options + recommendation)
@@ -13790,6 +13812,14 @@ _Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0734-lane3.md`
 
 **Evidence:** Verified: packet hidden_files/lane-3/t0734-seatlist-decision-packet.md exists, sha256 22c907e9... EXACTLY matches receipt pin; #2576 head 4fcebea9... and #2566 head 6a48a3f9... both match remote refs byte-for-byte (git ls-remote); seat-tag recognition claim corroborated by the patch bytes' _LEAD_SEATS ordering + bare-Naya-Verity-fails-closed logic.
+
+### ✅ t0734 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Arm I verdict-flip counterfactual - sealed pre-reg design
+
+**Receipt:** `twelve-lane-receipts/t0734-lane2.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pin-exact: hidden_files/lane-2/arm-i-verdict-flip-prereg-t0734.md sha256 16c444e567c7077139367abea9d0bf13b2a3b73e84d5f945ef1db79ad4848082 matches the receipt pin character-for-character; pre-reg carries the root-difference table, falsifier, dry-fire VOID gate and section 13 scorer checklist as receipted. NOT PHANTO
 
 ### ✅ t0734 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -13941,6 +13971,14 @@ _Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0731 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
+**Task:** Arm H cold execution (decision-lineage retrieval) — CANDIDATE-ALIVE verdict
+
+**Receipt:** `twelve-lane-receipts/t0731-lane7.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pin-exact: hidden_files/lane-6/lineage-graph-t0720.json sha256 7e021c69f12e1d5ea24f1d9db10eadd760c26541d1beec433eb9489e3fba7134 matches the receipt pin character-for-character, and hidden_files/lane-7/armh-execution-t0731.json sha256 dff9132643a8ba022e324794ec9a92ce9f6faa443ae6274e9a84f5f3d602ce61 matches the recei
+
+### ✅ t0731 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
 **Task:** Arm H (decision-lineage retrieval) cold execution
 
 **Receipt:** `twelve-lane-receipts/t0731-lane7.md`
@@ -13962,6 +14000,14 @@ _Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0731-lane7.md`
 
 **Evidence:** Verified: origin/main == 92329c5795ef8a50d02adf94ee6c91c313c26daf via batched git ls-remote; every §1 pin re-derived at action time (graph sha 7e021c69..., battery pins); verdict CANDIDATE-ALIVE in the pre-reg's own decision language; key-lint before the run; zero corpus writes. Score 9.0: why not 9.5 = single-seat §4 implementation (blind second-s
+
+### ✅ t0731 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** COLD execution of the t0719 decision-contact signal design (DCTE) - verdict FALSIFY
+
+**Receipt:** `twelve-lane-receipts/t0731-lane5.md`
+
+**Evidence:** VERIFIED this tick: scratch/t0731-lane5/ exists with battery-results.json, run_battery.py, seal-note.txt and all 3 situation cards + 4 proposition files; battery-results.json sha256 prefix b49b6c77 matches the receipt pin. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane self-claimed 9.5. Why not 9.5: (1) the 372-call NLI battery was not re-
 
 ### ✅ t0731 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -14011,6 +14057,14 @@ _Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: live tip 92329c5795... == plan's pinned tip via git ls-remote; §7 list executed verbatim on live-tip bytes -- plan's own filter_corpus run on the §3-stamped corpus proves the breakage: §4 gate misstates public-seam visible count (18 byte-true, not 24), D6 falsifier would FAIL on wire head; crossed-authority divergence (stamping YES vs vis
 
+### ✅ t0730 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Key-split redesign of the level drill (locked bottleneck #7)
+
+**Receipt:** `twelve-lane-receipts/t0730-lane9.md`
+
+**Evidence:** VERIFIED this tick: board sign-in comment 6164030444 exists via REST on issue #2537 (exact id/issue_url); successor-branch head commit cde0c63ddc1a2a59911b82334bd93ff761e5045e exists in the repo via the commits API with the matching lane-9 message (branch ref itself deleted post-merge of PR #2568, commit preserved). NOT PHANTOM. Score 9.0, GOOD, ON
+
 ### 🟡 t0730 — Team 9, Team Naya Scorer (Code Health) — 7.0/10 [PARTIAL]
 
 **Task:** Key-split redesign of the level drill (blind-by-structure instrument)
@@ -14034,6 +14088,14 @@ _Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0730-lane9.md`
 
 **Evidence:** Verified: branch naya/lane9/level-drill-keysplit-t0730 == cde0c63ddc1a2a59911b82334bd93ff761e5045e via batched git ls-remote (matches receipt claim); PR #2568 head 21f089d56f151fe46c85b5073f61921e0201d2a6 verified; blindness proof non-vacuous (new instrument exit 0 / old exit 1 on 'def key()' L96); verification ran on PUSHED bytes via fresh worktre
+
+### ✅ t0730 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard (seat 2 of 2) on PR #2574 receipt-gate repair
+
+**Receipt:** `twelve-lane-receipts/t0730-lane3.md`
+
+**Evidence:** VERIFIED this tick: board sign-in comment 6163980495 exists via REST on issue #2537 (exact id/issue_url); PR #2574 head is exactly 97b65bd11316fe91b324986b3d429d0c3ee0ff75, matching the receipt pin character-for-character (PR closed-unmerged since, head preserved). NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane self-claimed 9.5. Why not 9.
 
 ### ✅ t0730 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
