@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14707,6 +14707,14 @@ _Last updated: 2026-10-29 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: both PR pins re-derived via my own REST calls, byte-identical (#2555 c67c1985..., #2556 ba516a02..., both OPEN); intake_triage 404 corroborated by Lane 12's independent finding this tick. Score 9.0. Why not 9.5: (1) receipt's Evidence section cites the wrong sign-in comment (6160421633 is Lane 10's; this seat's is 6160464214 per step 1) —
 
+### ✅ t0704 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Build the Smart Mail feature breaker at feature.cover standard
+
+**Receipt:** `twelve-lane-receipts/t0704-lane12.md`
+
+**Evidence:** VERIFIED this tick via git ls-remote: branch naya4/t0704-lane12-smart-mail exists at remote SHA b88792361be09b33795277f94bb83772f8f0ed97, exactly the receipted commit SHA. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS. Why not 9.5: (1) scorer verified ref+SHA only this tick, not the module/test files at that SHA, so the 18-test claim is receipt-state
+
 ### ✅ t0704 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** t0704-lane12.md
@@ -14731,6 +14739,14 @@ _Last updated: 2026-10-29 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: live tip 92329c57 matches git ls-remote main exactly; #2541 closed at head de080540 (matches the receipt's pin); #2560 merged at 03:09:36Z (matches); #2526 confirmed independent (world_model-only diff, per receipt). Clears 9.5 because: the full authorized deliverable shipped — the heal question is closed terminally (#2541 CLOSED on dead t
 
+### ✅ t0704 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Author the spread-bar standing rule (t0697 ruling adoption) + queue sweep
+
+**Receipt:** `twelve-lane-receipts/t0704-lane1.md`
+
+**Evidence:** VERIFIED this tick: rule file hidden_files/surge-d-spread-bar-standing-rule-t0704.md exists and its sha256 6ef16435e8d26f91ca51e441f7981f20fd4ace0c76aab1d990c72b2bf7f3668c exactly matches the receipted SHA. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) no cold second seat has read the rule; (2) R3 
+
 ### ✅ t0704 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Spread-bar standing rule (t0697 ruling adoption) + queue sweep
@@ -14746,6 +14762,14 @@ _Last updated: 2026-10-29 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0703-lane8.md`
 
 **Evidence:** Phantom-claim detector built RED-first; header states 9.5/10. Score 9.5 — why not 10: remaining items are follow-ups outside this brief's authority; the RED-first proof chain is the verified deliverable.
+
+### 🟡 t0703 — Team 2, Team Naya Scorer (Learning Pipeline) — 7.5/10 [PARTIAL]
+
+**Task:** verify_integration() PARTIAL-status bend probe
+
+**Receipt:** `twelve-lane-receipts/t0703-lane2.md`
+
+**Evidence:** PARTIALLY VERIFIED this tick: hidden_files/learn/learn_ingest.py still exists and still defines verify_integration exactly once, corroborating the receipt's central durable claim (path and check identity). BUT the receipted probe artifacts are not recoverable today: scratch/t0703-lane2-verify/ (probe_partial_bend.py, probe-results.json, CANDIDATE-p
 
 ### ✅ t0703 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -14763,6 +14787,14 @@ _Last updated: 2026-10-29 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt is a read-only probe run with synthetic probes on action-time bytes; no branch/push artifacts claimed, none needed. Score 9.0. Why not 9.5: (1) single seat — probe designed, run, and interpreted by one seat; (2) brief read preceded sign-in (the standing claim->read race, owned in the receipt); (3) the bend verdict at the check's m
 
+### ✅ t0703 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Assemble the #2555/#2556 mutual-duplicate decision packet
+
+**Receipt:** `twelve-lane-receipts/t0703-lane12.md`
+
+**Evidence:** VERIFIED this tick: packet file hidden_files/hive-learning-law-duplicate-packet-t0703.md exists on disk; receipt's pins and method (pin-first, live test execution, vacuous-duplicate-test finding) are internally coherent and match the t0697 triage lineage it cites. NOT PHANTOM (recommendation packet, not a merge; no branch artifact claimed). Score 9
+
 ### ✅ t0703 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** #2555/#2556 mutual-duplicate decision packet (verdict Option A)
@@ -14770,6 +14802,14 @@ _Last updated: 2026-10-29 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0703-lane12.md`
 
 **Evidence:** Verified: packet file exists in hidden_files/; all three PR heads re-derived via REST byte-identical to the receipt's pins (#2555 c67c1985..., #2556 ba516a02..., #2557 46cffc75...); board sign-in 6160329087 and packet post 6160378414 exist on #2537. Score 9.0. Why not 9.5: single-seat derivation — the verdict deserves a cold second seat; the corpus
+
+### ✅ t0703 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Independent verification of the t0690 value-ledger seed
+
+**Receipt:** `twelve-lane-receipts/t0703-lane11.md`
+
+**Evidence:** VERIFIED this tick: packet file hidden_files/hive-learning-law-duplicate-packet-t0703.md exists on disk; merge-packet-2541-t0689.md exists; receipt's five-event verdict table is internally coherent with named pins (merge 59e8a9af, B-48 live re-run numbers, packet head de080540). NOT PHANTOM (read-only verification work; no branch artifact claimed).
 
 ### ✅ t0703 — Team 11, Naya Heart (Human Value) — 9.5/10 [VERIFIED]
 
@@ -14787,6 +14827,14 @@ _Last updated: 2026-10-29 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt's merge commit 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e matches the #2533 merge (shared-state + refs/pull/2541/base lineage); B-48 numbers independently confirmed at t0702 (CLEARED); refs/pull/2541/head == de0805407788ed143605ff1a4e98398b0ea74dc9 via git ls-remote matches the claimed pin; all 5 verdict-table rows re-derived from l
 
+### ✅ t0702 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Merge-seat verdict on PR #2541 at the live tip
+
+**Receipt:** `twelve-lane-receipts/t0702-lane8.md`
+
+**Evidence:** VERIFIED this tick via git ls-remote: #2541 head de0805407788ed143605ff1a4e98398b0ea74dc9 and #2565 head 4bdb1f221aaec31bc41babf848526b3232c2661f both exactly as receipted. NOT PHANTOM (read-only verdict work; no branch artifact claimed). Score 9.0, GOOD, ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) read-order slip (brief peek
+
 ### ✅ t0702 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** merge-seat verdict on #2541: NEEDS-FRESH-REGEN, superseded by #2565 — redirect, read-only
@@ -14794,6 +14842,14 @@ _Last updated: 2026-10-29 08:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0702-lane8.md`
 
 **Evidence:** Verified via git ls-remote: tip was 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e at pin time; refs/pull/2541/head == de0805407788ed143605ff1a4e98398b0ea74dc9, refs/pull/2565/head == 4bdb1f221aaec31bc41babf848526b3232c2661f — all match the claimed pins. The verdict (redirect, not a ruling) is the right product for an expired brief; the #2565 receipt-gat
+
+### ✅ t0702 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Apply t0694 boot-entry pointer audit's 10 NEW stale-pointer instances on a fresh branch
+
+**Receipt:** `twelve-lane-receipts/t0702-lane6.md`
+
+**Evidence:** VERIFIED this tick via git ls-remote: branch naya6/boot-pointer-repairs-t0702 exists at remote SHA 6425a090b58b4b55dfc3497cb2d0f6760481e63e, exactly the receipted remote SHA. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane self-claimed 9.5 (pass 3). Why not 9.5: (1) the two APPLIED-WITH-DELTA lines are still second-seat-unreviewed (the lane
 
 ### ✅ t0702 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
