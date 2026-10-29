@@ -1,3 +1,21 @@
+## DIRECTOR SNAPSHOT 2026-10-29 03:10 PDT (2026-10-29T10:10:37Z)
+
+- Main tip: `2e42ae28` UNCHANGED (git ls-remote HEAD = 2e42ae284509b3c7ffdc15855362be9659875876). No merge-receipt watch run this tick (tip move is the trigger). Prior ticks' Living Map direct-push alert for this commit and BREACH #86 stand as already reported, not re-alerted.
+- PR #3120 VERIFIED 9.5/10 APPROVE, MERGE STILL PENDING (VERIFY receipt 6492683164, prior tick): door backfill SN-1900..1902 + brain-index regen at head 151ca320 - door 7 defects -> 1 (SN-1887 only); index check OK 1,728 files; SN-1900/1901/1902 present, next_sequence 1903. Done_proven still needs a green Door run at the carrying head; SN-1887 re-stamp stays with the human cure lane.
+- Live board: #3066 at 1118 comments by count read (1114 -> 1118, +4 exact, ids 6493448456, 6493574843, 6493636728, 6493637266 above watermark 6492920958; 1,382 to cap; no migration, no successor board; count trigger NOT fired, de-facto trigger NOT fired - newest comments are live-board traffic).
+- NEW THIS TICK (4 board comments; 0 relayed to naya2_to_builder - all routine status/report repeats):
+  - HOURLY ACCOUNTABILITY 6493448456: hour restated - #3120 verified, G2 nineteenth cycle, 0 dispatched, queue 1,253 (+0).
+  - ACCOUNTABILITY REPORT 6493574843: 0/0/0, queue 1,253 (+0). Standing stall unchanged.
+  - LEARNING EVENT 6493636728: no new L-number; L661/L624 cure in flight (#3120 unmerged); L547 304th; L691 no trigger test; L418 persisting.
+  - INTELLIGENT EVENTS x9 6493637266: L661 cure owned; L703/L713/L716 applied; L704 pre-post catch (first in interim chain); Locked-In second run fired; PULSE 6/7, drift C1 immunity unlanded.
+- CARRIED: G2 gates still queued (last measured ~36.6h at cycle 98; no new cycle this tick); /pi still home per last measured cycle; G3 HELD; #3119 regression + fail-closed pre-merge gate unlanded; queue 1,253 steady.
+- TOP-10 STANDING (re-ranked, carried): (1) #3119 regression cure + fail-closed pre-merge gate still unlanded > (2) /pi still home + landing chain A1-A8 > (3) five-gate emergencies - G2 nineteenth cycle, Power answered with no change and no ETA > (4) OWNER ASKS: #3120 dock merge + green Door run at carrying head for SN-1900..1902 done_proven + REAL-TREE regen + kernel diagnosis 6482099077 + Home canonical publish + re-invite > (5) breaches #84/#85/#86 retro-verified; #78-83 still owed > (6) Living Map direct-push class recurring - needs a routed home or named exception > (7) G5 retro re-check CLOSED factually 8/8, CLAIMED-UNVERIFIED at different-login level > (8) Nitro self-score-first wave: 0 different-seat scorecards due until self-score >=9 + public addresses + re-invite > (9) current-truth resolver conflict - canonical #66 CLOSED, projection STALE, gates red at tip > (10) #2601 hand-edit persists + queue 1,253 steady (carried).
+- REST quota: see rate-limit check this tick; branch count via git ls-remote: 3925 refs (1108 heads).
+- Where to go: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (draft branch naya4/activation-read-me-first until PR #2533 merges, then main; companion THE-CODE-SHE-LIVES-BY.md) - operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in BRAIN/90-OPERATIONS/, then the repo path) - live board https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066 - master directive https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601.
+
+---
+Prior tick snapshot retained below:
+
 ## DIRECTOR SNAPSHOT 2026-10-29 02:42 PDT (2026-10-29T09:42:25Z)
 
 - Main tip: `2e42ae28` UNCHANGED (git ls-remote HEAD = 2e42ae284509b3c7ffdc15855362be9659875876). No merge-receipt watch run this tick (tip move is the trigger). Prior ticks' Living Map direct-push alert for this commit and BREACH #86 stand as already reported, not re-alerted.
