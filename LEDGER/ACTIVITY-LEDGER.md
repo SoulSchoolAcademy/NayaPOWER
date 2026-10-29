@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 03:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16825,6 +16825,14 @@ _Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: sealed pre-reg hidden_files/retrieval/cr-accept-prereg-t0630-lane11.md exists on disk, sha256 660306fc21c3eb85fb284cf665d833d745d71aaf23e7e243949cb510322fe09b MATCHES receipt claim (13,841 bytes); contract v2 pin match re-derived from contract bytes. Why not 9.5: (1) brief's core ordering clause (seal BEFORE the drill receipt lands) unmet
 
+### ✅ t0629 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Diff #2515 winner-read merge + re-run retrieval-winner behavior on live-tip bytes
+
+**Receipt:** `twelve-lane-receipts/t0629-lane9.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, corroborated at the receipt's own tip: the lane-1 worktree at scratch/t0629-lane1/worktree still sits at detached HEAD eb36746ad8b424b036af95b6035fcef8bb923808 with clean status, and tools/smart_note_v2.py there carries both #2515 guards (WINNER_PROJECTION_UNREADABLE line 988, WINNER_EXPLANATION_EMPTY lin
+
 ### ✅ t0629 — Team 9, lane-9 (Naya Smith) (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** #2515 winner-read merge diff + retrieval-winner behavior re-run on live-tip bytes -> PASS
@@ -16833,6 +16841,14 @@ _Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified via git protocol + one REST PR check: PR #2515 merged=True, merge_commit_sha eb36746ad8b424b036af95b6035fcef8bb923808 (matches receipt pin); commit fetched, parents exactly d254379b/07d6bfaa as claimed; merge tree c49b50b6... byte-identical to P2 tree (zero merge-introduced content); diff vs P1 exactly 2 files (tools/smart_note_v2.py, test
 
+### ✅ t0629 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** H-dc6 EQ-D0 root cause -> NAMED (instrument key-name bug; baseline reproduced)
+
+**Receipt:** `twelve-lane-receipts/t0629-lane4.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact on all four t0626 seals: instrument t0622_h_dc6.py 39fd78c8102fedd0bef829fb132c9ff9a3b149652417322b39e523840bf402dc, design t0622_h_dc6_design.md 5d5a244505c038a8b10b36dcee7f2979c7da222e59cea224487b497f35825880, dryfire t0622_h_dc6_dryfire.py 00d8bfad5a103ead1f2664d5950a6c126e01e23d1daeedf27b538
+
 ### ✅ t0629 — Team 4, lane-4 (Naya Mason) (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** H-dc6 EQ-D0 root cause -> NAMED (instrument key-name bug; the baseline reproduced)
@@ -16840,6 +16856,14 @@ _Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0629-lane4.md`
 
 **Evidence:** Verified on live bytes: results-t0555-allclauses.json contains ZERO occurrences of "top3"/"top_3" (count confirmed); t0622_h_dc6.py line 172 contains the exact buggy lookup `want = t555[tid].get("top3", t555[tid].get("top_3"))`; frozen top5[:3] = A:[P1,P3,P15] B:[P2,B6,B7] C:[B4,P14,P5], exactly the claimed recomputed triples. So want=None on all t
+
+### ✅ t0629 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (d) cold-retrieve drill with page-cache isolation -> HOLD (load-contended)
+
+**Receipt:** `twelve-lane-receipts/t0629-lane1.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: hidden_files/auto-retrieval/cold_drill_sealed_t0629.py sha256 c2c93c2fca7039ab51209ef64ad01375dcbf3eb819bb5155bda6d9d8570534b1 and scratch/t0629-lane1/prereg-t0629-lane1.json sha256 62de78abd422f62117ead9b30e737f826480f1a7585bb20c8f0f70897e32af24, both exactly as receipted; chillset-t0629.json 
 
 ### ✅ t0629 — Team 1, lane-1 (Naya Verity) (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -19653,6 +19677,14 @@ _Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 5 artifact SHAs match on disk (instrument 004a4987a39d, run 2ed179336fe5, battery 2262400cc303, verdict d46cf60f767a, verdict-doc 5e999f8467bd); seal mtime 02:30:59 < run 02:31:16 (seal order holds); honest RETRACT taken on own sealed terms with mechanism finding (df==1 filter survives falsifiers, universal bar was wrong, B-class re-s
 
+### ✅ t0563 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SMARTBLOCKS shared-schema-spec v0.1 + machine lint check_smartblock.py with red/positive fixtures
+
+**Receipt:** `twelve-lane-receipts/t0563-lane4.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: both fixtures sha-exact as receipted (conformant 608078e9b1f79818ad86caa883730ad2303f177f70adfa383966de42277e0a6b, malformed 294905e6b2c1860ec875772446c9d402816183b3ac6fd0c37b066333ef905613), and bin/check_smartblock.py --selftest still passes with the receipt's exact behavior (conformant exit 0, malforme
+
 ### ✅ t0563 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SMARTBLOCKS shared-schema-spec v0.1 + machine lint
@@ -19660,6 +19692,14 @@ _Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0563-lane4.md`
 
 **Evidence:** Verified: all 4 artifact SHAs EXACT on disk (spec 68f88656..., lint cd715672..., 2 fixtures match receipt); lint behavior reproduced on live bytes — --selftest exit 0, malformed fail-closed 8 checks, lane-status-packet-v1 exit 2 (6 checks), lane-packet-v2-hypertuned exit 2 (5 checks) — every quoted exit/check count matches the receipt. Neither exem
+
+### ✅ t0562 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** RECUSE on capture-inbox adapter conformance re-fire (authoring seat) + durable claimability-gate stamp cure
+
+**Receipt:** `twelve-lane-receipts/t0562-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/one-flow/capture-inbox-adapter.py sha256 2383c949d488c84b1f9807874f019d541eb2847dbdc0424f3055bd91f9811ec1 exactly as receipted, confirming authorship and that the eligibility gate correctly fires. The brief's pre-stamp sha 45ee3ae722a8bada3e7e6d04b854f933340ece071a8e5f3023ba8cfed80a59d2 match
 
 ### ✅ t0562 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -19669,6 +19709,14 @@ _Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/one-flow/capture-inbox-adapter.py exists with the claimed 2383c949... SHA prefix (authorship confirmed, gate fires); brief-queue/brief-t0562-lane12.md exists byte-identical to the claimed copy (45ee3ae7...); precedent t0413-lane3.md exists on disk. Why not 9.5: the gate-window mismatch class (claim-brief.py reads the first 10
 
+### ✅ t0561 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Re-fire delivery-gate + claim-evidence-gate on PR #2683 post-reset and classify the morning reds
+
+**Receipt:** `twelve-lane-receipts/t0561-lane8.md`
+
+**Evidence:** VERIFIED this tick on LIVE GitHub API bytes (commit check-runs at head 1c8cd141397c91373e57dcc0ec79d0600355324a): check 117012500409 delivery-gate success completed 2026-10-16T14:04:22Z, check 117012509844 claim-evidence-gate success completed 2026-10-16T14:04:19Z, check 116804602629 Team review + scorecard receipt failure completed 2026-10-16T04:0
+
 ### ✅ t0561 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Re-fire of #2683's two infra reds post-reset + closure of t0556's outstanding confirmation
@@ -19676,6 +19724,14 @@ _Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0561-lane8.md`
 
 **Evidence:** VERIFIED: branch naya5/2642-reconcile-fresh still at 1c8cd141... on the live remote (ls-remote, matches receipt); re-fire run IDs (38848604456/407) + completed check runs carried in the receipt with monotonic sane timestamps (14:04:04/05Z start -> 14:04:19/22Z complete). Clears 9.5 because the re-fire used rerun-failed-jobs at the pinned head (t912
+
+### ✅ t0561 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** FP-003 feedback entry from the decision seat, new angle J5 (irreversible dispositions / retrospective verdicts)
+
+**Receipt:** `twelve-lane-receipts/t0561-lane3.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/feedback-feed.md line 536 carries the [Lane 3 - Naya Judge, t0561] SECOND JUDGE'S VERDICT: SHARPEN entry, opening verbatim as receipted (premise correction, t0533 J1-J4 on record, t0536 no-duplicate precedent honored, J5 angle). NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane 
 
 ### ✅ t0561 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -19700,6 +19756,14 @@ _Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0560-lane9.md`
 
 **Evidence:** Verified via git protocol: main tip dd6f2d927d8299f7bd9895ee5dadca892b12b233 == receipt's double-pin and == shared-state tip; rename branch naya/eight-competing-boot-rename-t1152 @ 6d05fea689e32cf70ec9c56ad3a3339a54372412 matches receipt EXACTLY — live-bytes discipline corroborated. Caught the brief's premise inversion (#2399 merged 03:57:22Z Oct 1
+
+### ✅ t0559 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 INTAKE door repair brief t0559: disposition ALREADY DONE, re-proved on live bytes
+
+**Receipt:** `twelve-lane-receipts/t0559-lane12.md`
+
+**Evidence:** VERIFIED this tick pin-exact on live workspace bytes: hidden_files/bin/diary_intake.py sha256 ac74e7fe6f8aa39588f55a6fb4c6d7bda4bcb5841bb1aa531b6e53b699952ec2 exactly as receipted, unchanged 12 days later. Live broadcast sha has moved since Oct 16 (now 15305ee305b4af233c76f430a5c61c22e1b141a0fb1bd47a899a1ce2e679a0fc, expected drift, not a contradic
 
 ### ✅ t0559 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -19772,6 +19836,14 @@ _Last updated: 2026-10-29 02:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0557-lane11.md`
 
 **Evidence:** Verified: rule v2 (b8e7fd11), instrument (302855cc), measurement JSON (c916ef02) all sha256-exact on disk; frozen 30-brief corpus by filename; WRONG 11->0, MANUAL RIGHT 26->37, AUTO honestly 0/46; rule posted to #2175 blind BEFORE measurement (6136446617), delta provisional (6136458383). Guard ordering held under no-second-seat pressure. Kept from 
+
+### ✅ t0556 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-exact verdict on PR #2683's three red gates (delivery-gate, claim-evidence, team-review+scorecard) from live check-run bytes at tip
+
+**Receipt:** `twelve-lane-receipts/t0556-lane9.md`
+
+**Evidence:** VERIFIED this tick on receipt bytes plus bounded live checks: receipt pins PR #2683 head 1c8cd141397c91373e57dcc0ec79d0600355324a, branch naya5/2642-reconcile-fresh, with run IDs and timestamps mutually consistent (00:52/02:20 GREEN-to-03:06/03:49/04:03 RED flip, newest-at-head 04:03:38Z before the ~04:07Z reset floor); tools/activation_gate.py exi
 
 ### ✅ t0556 — Team 9, Naya Clarity Narzan (Code Health) — 9.0/10 [VERIFIED]
 
