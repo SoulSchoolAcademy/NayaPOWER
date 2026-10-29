@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 22:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13723,6 +13723,14 @@ _Last updated: 2026-10-29 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED (git protocol + PR API, live bytes): branch naya/lane9/board-pointer-repair-t0735 exists on remote; ls-remote head == PR #2757 head == 96b39cbfbaba09258e99dfe5637282ca04937ff4; 4/4 claimed files (READ-ME-FIRST.md, ACTIVATION-PACKET.md, instant-activation/THE-CREED.md, NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md) modified at that head
 
+### ✅ t0735 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Opened PR #2581 for the level-drill key-split redesign branch
+
+**Receipt:** `twelve-lane-receipts/t0735-lane7.md`
+
+**Evidence:** VERIFIED in part this tick: PR #2581 exists via REST with the receipted title (Level drill: key-split redesign), base 92329c5795ef8a50d02adf94ee6c91c313c26daf matching the receipt, state closed/unmerged. NOT PHANTOM. Pin drift: the branch naya/lane9/level-drill-keysplit-t0730 returns NO ref from git ls-remote this tick (branch deleted from remote) 
+
 ### ✅ t0735 — Team 7, Naya Resolve Conductor (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** Open PR #2581 for the level-drill key-split redesign branch
@@ -13730,6 +13738,14 @@ _Last updated: 2026-10-29 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0735-lane7.md`
 
 **Evidence:** Verified: git ls-remote refs/heads/naya/lane9/level-drill-keysplit-t0730 = cde0c63ddc1a2a59911b82334bd93ff761e5045e, byte-matches receipt's pinned SHA. 10-hole pass-1 with 6 applied fixes (gate checker run on draft AND posted body bytes, PR file list verified, no pre-existing PR, zero key-content reads), double re-pin around the POST, open-only aut
+
+### ✅ t0735 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Blind second-seat re-implementation of Arm H (decision-lineage retrieval) — CANDIDATE-ALIVE
+
+**Receipt:** `twelve-lane-receipts/t0735-lane5.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pin-exact: hidden_files/lane-6/lineage-graph-t0720.json sha256 7e021c69f12e1d5ea24f1d9db10eadd760c26541d1beec433eb9489e3fba7134, lane-5/armh-blind-reimplementation-t0735.py a443027f5e44d392..., lane-5/verdict-numbers-t0735-lane5.json e89ef39ea27bfb9d... — all match receipt pins at prefix/full as receipted. NOT PHAN
 
 ### ✅ t0735-lane5-v2corpus-20261018 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -13758,6 +13774,14 @@ _Last updated: 2026-10-29 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0735-lane5.md`
 
 **Evidence:** Verified: verdict-numbers-t0735-lane5.json sha256 e89ef39e... matches receipt prefix; MRR_arm=0.527777 (6dp match to brief), MRR_bi=0.420833; re-implementation script + verdict attestation on disk; tip pin 92329c57 matches shared-state main tip. 3-pass scorecard 9.0->9.5->9.5 with 10 named fixes applied, honest caveats (not number-blind, seed-readi
+
+### ✅ t0735 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Design-only semantic arm pre-reg GAD (gate-ablation decision-contact) with pre-freeze firing evidence
+
+**Receipt:** `twelve-lane-receipts/t0735-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pin-exact: hidden_files/lane-12/gad-prereg-t0735-FROZEN.md sha256 5123bfc6cbb59632f808e622f358d0142126cd59f7f341364633925eb4bf9bc0, gad-design-t0735.md ecbbfe2da625083a58b1d79eef8b2e21d03ac6d639657ec1e0d5a93fa9003703, gad-control-fire-validation-t0735.py b1788cbc32c0613623d9da652d673317906638028a86d28c37d4158831ece
 
 ### ✅ t0735 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -18585,6 +18609,14 @@ _Last updated: 2026-10-29 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 3 cited sha16 seals recomputed byte-identical on live files (sealed-prereg-clausecorro-t0615.md 3d796fc58a6cd272, arm_clausecorro_t0615.py 5b4b3e05e2d6ff61, results-t0615-clausecorro.json 68f5377d3e04ec72). Sealed pre-reg, dry-fire 9/9 incl. (g) non-vacuity on the real shape, honest FALSIFIED verdict by frozen rule (FP1+FP3 FALSE), gu
 
+### ✅ t0614 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** query-needs top-20 for SMARTBLOCKS hypertuning
+
+**Receipt:** `twelve-lane-receipts/t0614-lane4.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pin-exact: retrieval/query-needs-t0614-prereg.md 07057f53f754e82d..., tally-t0614.py d2b70cff24fcf25f..., query-needs-top20-t0614.json 5fd1189203f83fbd..., and .md twin 2af2e183fa2eb26d... all match the receipt's claimed pins at prefix, 2205/2436/5416/4077 bytes. NOT PHANTOM. The premise-rot catch is real (brief's 
+
 ### ✅ t0614 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (c): ask-world query log -> top-20 needs feeding SMARTBLOCKS hypertuning
@@ -18593,6 +18625,14 @@ _Last updated: 2026-10-29 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval/query-needs-top20-t0614.json + .md twin + tally-t0614.py + prereg all exist on disk; brief-premise falsification (log not grown) machine-verified at action time; twin hand-transcription error caught by mechanical check and repaired from bytes. Kept from 9.5: single-seat only; the tick's finding is a null (stable re-verification,
 
+### ✅ t0614 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** isolation-clean cold-retrieve drill re-run
+
+**Receipt:** `twelve-lane-receipts/t0614-lane11.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pin-exact: lane-11/cold_drill_t0614_prereg.md d06839050b07d90e..., cold_drill_t0614.py 8de0571b2d8a5a41..., and retrieval/cold-retrieve-isolated-t0614.md 0b1cb3adc2322cb2... all match the receipt's claimed pins at prefix, 3143/6696/6367 bytes. NOT PHANTOM. The FAIL verdict (cold 1.31-1.59s vs 0.5s bar, mincore-prov
+
 ### ✅ t0614 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Sealed isolation-clean re-run of t1052 cold-retrieve drill (SURGE slice d)
@@ -18600,6 +18640,14 @@ _Last updated: 2026-10-29 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0614-lane11.md`
 
 **Evidence:** Verified: lane-11/cold_drill_t0614_prereg.md + new instrument + verdict file all exist on disk; mincore-verified isolation both directions, pre-reg before run, brief HOLDS-OPEN premise falsified against receipt bytes, FAIL reproduced on second instrument. Kept from 9.5: n=2 cold trials only; hardware-specific disk rate; retrieval-code cold scope no
+
+### ✅ t0613 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** kernel cold-retrieve/intelligence byte-verdict
+
+**Receipt:** `twelve-lane-receipts/t0613-lane9.md`
+
+**Evidence:** VERIFIED in part this tick: receipt exists (5306 bytes) with scoped GREEN verdict at tip e47a650e2f05935cb57b02f0f368452b346148e1; that tip pin is independently corroborated by t0614-lane11, which ls-remote-verified the same tip at action time. NOT PHANTOM. The 12 intelligence pytest legs classified (60 passed, 1 env skip) close t0212's named hole,
 
 ### ✅ t0613 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
@@ -18624,6 +18672,14 @@ _Last updated: 2026-10-29 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0613-lane7.md`
 
 **Evidence:** Verified: demand-source-map-t0613.md sha256 exactly 2f7deb8d1ce6548aa6707016940b56638e8a34127e7b8d140fbb9b3cafa712fd on disk; population pin 57f0c92246514089acd1ad9cda747dfb865bbb1301314cad03d8aa9cea5823cc re-derived on disk, byte-identical to t0212/t0601 - RESTORABLE bar leg 1 confirmed. Real finding: 22/30 'demand' rows were one synthetic seed bu
+
+### ✅ t0613 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE dispatch-log spec addendum
+
+**Receipt:** `twelve-lane-receipts/t0613-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pin-exact: hidden_files/auto-retrieval/provenance-dispatch-log-spec-t0613.md sha256 5ee8ab48bf06ea9b... matches the receipt's full claimed pin 5ee8ab48bf06ea9bb3fee8a60cf528aab38626324c2da43cbded832045bb552a, 9775 bytes. NOT PHANTOM. The doc honestly carries its gaps (F6 dry-run field recommended not written, F1 fi
 
 ### ✅ t0613 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
