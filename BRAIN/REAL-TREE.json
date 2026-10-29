@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-29",
-  "receipt_basis_commit": "37dc15e5e388910e44916a57739110a99b5733ce",
-  "inventory_file_count": 1724,
+  "receipt_basis_commit": "2e42ae284509b3c7ffdc15855362be9659875876",
+  "inventory_file_count": 1728,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 893,
+    "05-MEMORY": 897,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -1159,6 +1159,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-27-LEARNING-EVENT.md",
       "blob_sha": "5aa3e9caf3c2d97ce9f2725b5651de7f6eb0d923",
       "size": 16510
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-28-LEARNING-EVENT.md",
+      "blob_sha": "38d8f1616f5ae686869897c230e2df5299b8011f",
+      "size": 15078
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -5006,6 +5011,21 @@
       "size": 7004
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1901/IB-SMART-NOTE-20261029-sn1901-the-lock-in-declaration-and-its-gate.md",
+      "blob_sha": "bda26d2aec1c301ce3eccc3d8c5b251e30fb79b3",
+      "size": 1907
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1902/IB-SMART-NOTE-20261029-sn1902-why-misses-still-happen-systems-not-intentions.md",
+      "blob_sha": "8d277e9922ade313036dbd785f6c2cdb05deac2f",
+      "size": 1891
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md",
+      "blob_sha": "1f9c9b0062a613566a4e570f3f2acea6691c1622",
+      "size": 1302
+    },
+    {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
       "blob_sha": "7e5bbf440cac2c677e626ba4280cc0cbab8cb3bf",
       "size": 7193
@@ -8237,7 +8257,7 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/TEAM-DASHBOARD.md",
-      "blob_sha": "5638293bd11d3177762403a903ddc96004c45f8c",
+      "blob_sha": "6c6e42fb5a1e1e4e0f0d6c706ebf45dcb7a51ead",
       "size": 4854
     },
     {
@@ -8597,7 +8617,7 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/team-dashboard.machine.json",
-      "blob_sha": "61cb72e39a4a020df1c31b43b0a944a68d3e0c32",
+      "blob_sha": "a6e517ccf31d0d25df7bdbb96a535469bc1b1ce7",
       "size": 19315
     },
     {
