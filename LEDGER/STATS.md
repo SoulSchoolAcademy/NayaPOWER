@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-29 21:14 UTC_
+_Last updated: 2026-10-29 21:34 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6753
-- ✅ Verified (8+): 6686
+- **Total scored actions:** 6758
+- ✅ Verified (8+): 6691
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -16,14 +16,14 @@ _Last updated: 2026-10-29 21:14 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 487 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 485 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 449 | 9.0 | 10 |
+| Team 2 | Naya Sage | 486 | 8.8 | 9.5 |
+| Team 3 | Naya Judge | 450 | 9.0 | 10 |
 | Team 4 | Naya Mason | 431 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 555 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 324 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 433 | 9.0 | 10 |
+| Team 7 | Naya Conductor | 434 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 452 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 577 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 578 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 779 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 411 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 354 | 9.2 | 9.5 |
@@ -1916,12 +1916,12 @@ _Last updated: 2026-10-29 21:14 UTC_
 - **t0729-lane12:** 1 actions, avg 9.5/10
 - **t0729:** 4 actions, avg 9.2/10
 - **t0730:** 8 actions, avg 8.9/10
-- **t0731:** 10 actions, avg 9.2/10
+- **t0731:** 11 actions, avg 9.1/10
 - **t0732:** 10 actions, avg 9.2/10
 - **t0732-lane12:** 1 actions, avg 9.5/10
 - **t0732-lane5:** 1 actions, avg 9.5/10
 - **t0733:** 6 actions, avg 9.2/10
-- **t0734:** 3 actions, avg 9.0/10
+- **t0734:** 6 actions, avg 9.0/10
 - **t0735-lane0:** 1 actions, avg 9.0/10
 - **t0735:** 6 actions, avg 9.2/10
 - **t0735-lane5-v2corpus-20261018:** 2 actions, avg 8.5/10
@@ -2468,7 +2468,7 @@ _Last updated: 2026-10-29 21:14 UTC_
 - **t1558:** 1 actions, avg 9.4/10
 - **t1561:** 1 actions, avg 9.3/10
 - **t1562:** 1 actions, avg 9.0/10
-- **t1564:** 2 actions, avg 9.0/10
+- **t1564:** 3 actions, avg 9.0/10
 - **t1600:** 1 actions, avg 9.0/10
 - **t1600-parent:** 1 actions, avg 8.5/10
 - **t1740:** 1 actions, avg 9.0/10
