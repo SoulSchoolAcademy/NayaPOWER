@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 11:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18379,6 +18379,14 @@ _Last updated: 2026-10-29 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: prereg.md sha256 df92467e83590b946e560e64db835f148141908f0e5ae70ff1ad722ccf08190e matches receipt exactly; mtime order prereg<results holds; driver + results JSON exist. Score 9.0 - why not 9.5: (1) the floor-purity rule shipped with the positive-min>=median assumption unstated and required a MID-RUN repair - transparently repaired, but a
 
+### ✅ t0603 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** SN-016 cold-retrieve drill, page-cache isolation v2 (evict + mincore proof before measuring)
+
+**Receipt:** `twelve-lane-receipts/t0603-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0603-lane10.md exists; scratch-t0603-lane10/ artifacts hash-exact to every receipt claim: prereg 29e8feb4..., cold_drill_t0603.py 2fa7af5d..., armC.sh eaae6fce..., mincore-probe.c db237d75..., results Arm A 453c0960... (cold 1.971s), Arm B 6f81b28f... (cold 2.278s), Arm C e57cfdaf... (cold 1.202s); tip e47
+
 ### ✅ t0603 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** SN-016 cold-retrieve drill v2 with page-cache isolation (eviction + mincore proof before measurement)
@@ -18387,6 +18395,14 @@ _Last updated: 2026-10-29 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: prereg.md sha256 29e8feb4b684d98aa6f14a58dbe21829eb5bc43112ed3c8a8a141bc7b2fdddfa matches exactly; mtime order prereg<instrument holds; all three arm results + mincore-probe source exist; cold band 1.20-2.28s OBSERVED closes the t1022/t1052 hole. Score 9.0 - why not 9.5: (1) single cold trial per arm - the band is real shared-VM variance,
 
+### ✅ t0602 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** SN-016 cold-retrieve drill re-run with page-cache isolation at live tip
+
+**Receipt:** `twelve-lane-receipts/t0602-lane9.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0602-lane9.md exists; lane-experiments/t0602/ artifacts hash-exact to receipt claims: PREREG fcf97cf8..., addendum e9b11bde..., t0602-r2-results.json b2d30a1e..., cold-files.txt b4851b13...; r2 results JSON content matches the receipt verbatim (verdict HOLDS-OPEN, gate FAIL, 2 refusing files _hashlib [14,1
+
 ### ✅ t0602 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** SN-016 cold-retrieve drill re-run with page-cache isolation at live tip, two sealed rounds
@@ -18394,6 +18410,14 @@ _Last updated: 2026-10-29 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0602-lane9.md`
 
 **Evidence:** Verified: all three claimed SHAs match byte-exact (t0602-results.json 3d4d8386..., t0602-r2-results.json b2d30a1e..., cold-files.txt b4851b13...); tree dir + both manifests present. Both rounds HOLDS-OPEN per the sealed rule; root cause PROVEN via /proc (4 other tenants map libcrypto.so.3, so FADV_DONTNEED cannot drop its pages) rather than asserte
+
+### ✅ t0602 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (a) weaker-injection arm on frozen t0555/t0592 fixtures, verdict FALSIFIED
+
+**Receipt:** `twelve-lane-receipts/t0602-lane5.md`
+
+**Evidence:** Verified by this scorer on live workspace bytes: receipt file exists; cited artifacts auto-retrieval/t0602_decision_consequence_weak.py, sealed-note-t0602-decision-consequence-weak.md, and verdict-t0602-decision-consequence-weak.md all exist. No git branch/SHA cited (worker-local battery), so the branch-head leg does not apply. NOT PHANTOM. Score 8
 
 ### ✅ t0602 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -19163,6 +19187,14 @@ _Last updated: 2026-10-29 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: scratch-t0591-lane1/corpus-t0591.json sha16 30c252efb0f8af7f == claimed; tip bdfb5868 re-pinned at action time; live registry identity check (631 entries, 0 FALSIFIED) before verdicts; 8-query prereg expectations 6/6 met on read-only drill bytes; rule quoted verbatim from guard bytes; wire/no-wire recommendation honestly limits itself (ha
 
+### ✅ t0588 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Independent re-execution of t0586 discriminator - verdict ARM, 15/15 cell agreement
+
+**Receipt:** `twelve-lane-receipts/t0588-lane8.md`
+
+**Evidence:** Verified by this scorer on live workspace bytes: receipt file exists; rerun artifacts auto-retrieval/t0588-rerun/prereg-t0588.md, sealed-selection-t0588.md, results-t0588-overlap.json all exist and their mtimes reproduce the receipted pre-registration ordering exactly (1791871847 prereg < 1791871871 seal < 1791871880 run). No git branch/SHA cited (
+
 ### ✅ t0588 — Team 8, lane8 (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** independent re-run of t0586 discriminator (different seat): 15/15 cell agreement, ARM holds
@@ -19178,6 +19210,14 @@ _Last updated: 2026-10-29 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0588-lane8.md`
 
 **Evidence:** Verified: auto-retrieval/t0588-rerun/prereg-t0588.md, sealed-selection-t0588.md (sha16 78a88e07245095ef == claimed), results-t0588-overlap.json all present; mtime order prereg<seal<results holds; 15/15 cell-by-cell selection identical to t0586 seal; ARM verdict via verbatim rule arithmetic, not paraphrase; honest holes named (same corpus+instrument
+
+### ✅ t0588 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE done-criteria leg 1 - injection table for live queued briefs, pre-registered judgments
+
+**Receipt:** `twelve-lane-receipts/t0588-lane6.md`
+
+**Evidence:** Verified by this scorer on live workspace bytes: receipt file exists; cited results file hidden_files/retrieval/injection-seam-t0588-results.json exists and its sha256 recomputes EXACTLY to the receipted b57052131e4541eb370b7b22591af01bf7063d9b2dc832a75aa42a09407cd85b; harness injection-seam-t0588-run.py exists. No git branch/SHA cited (worker-loca
 
 ### ✅ t0588 — Team 6, lane6 (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -27276,6 +27316,12 @@ _Last updated: 2026-10-29 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261029-0349 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 03:49 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; receipt gate-stall-20261029-0349.md names all 31 disk briefs across its refusal classes (29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar), queue left
 
 ### ✅ 20261029-0246 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
