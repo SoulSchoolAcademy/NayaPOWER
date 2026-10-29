@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-29T04:15:30+00:00",
+ "generated_utc": "2026-10-29T05:15:21+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -270,8 +270,15 @@
    "next_action": "Close the trigger-chain jurisdiction gap with a mechanical gate \u2014 prose does not stop bypasses, gates do.",
    "active_now": false,
    "board_lane": "#2175 lane GOVERN",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3118,
+     "title": "Governance: LOCKED-IN DECLARATION V1 (team spoken core, three tongues) \u2014 DRAFT",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3118",
+     "draft": true
+    }
+   ],
+   "open_pr_count": 1
   }
  ],
  "recent_activity": [
@@ -404,6 +411,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 3,
+ "open_pr_total": 4,
  "unassigned_prs": 3
 }
