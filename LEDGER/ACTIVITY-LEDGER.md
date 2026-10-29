@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 00:29 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 00:49 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19975,6 +19975,14 @@ _Last updated: 2026-10-29 00:29 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: winmine-antipatterns-t0552.md exists 8,922 bytes exactly; failed_deliveries_logged 18 entries (receipt caught brief's stale '21' premise from live bytes); TOOLS.md line 10 fastembed entry present, no duplicate added. 18 entries read in full (req >=10); citations grounded in receipts opened this tick, scores cross-checked vs scores file; 3
 
+### ✅ t0552 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** First v0.1 SMARTBLOCK draft contracts for top-3 asked lanes (10/5/1), UNWIRED-DRAFT
+
+**Receipt:** `twelve-lane-receipts/t0552-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/auto-retrieval/smartblock-drafts-t0552.md exists (16727 bytes) with header matching the receipt exactly - log SHA 5398dda9a59d9d66da9a86490a43666ed391e8235ef2070dbb10835160eafa4f, 115 lines, top-3 lane 10:9 / lane 5:9 / lane 1:8, and 3 lane-status-packet blocks marked UNWIRED-DRAFT; source lo
+
 ### ✅ t0552 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** 3 draft SMARTBLOCK contracts ranks 1-3 (lane-status packets), live re-count
@@ -19998,6 +20006,14 @@ _Last updated: 2026-10-29 00:29 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0552-lane1.md`
 
 **Evidence:** Verified: instrument sha 78731f46... + results sha 5018445d... + fixtures 4ab5f359..., b1af58d0, 9eaa0975... all byte-exact on disk; remote tip re-pinned via git ls-remote dbe06f9e733e unmoved, matches shared-state. Recomputed P1/P2 from pinned bytes with independent script (P1 0/3, P2 arm 19 > baseline 1) + third fresh-process re-run byte-identica
+
+### ✅ t0551 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Hub room wiring-status ledger: 12 canonical rooms surveyed, all LOCAL-ONLY
+
+**Receipt:** `twelve-lane-receipts/t0551-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/hub-room-wiring-status-20261016.md exists (5265 bytes, header names t0551 Lane 12) with 12 room rows all LOCAL-ONLY plus the 05-CONNECT WATCH row, matching the receipt's verdict taxonomy and head pin 83806f4d0e335b223ba2f849fd19a7a7915fdcc6; fresh git ls-remote HEAD is now 5e62373967530d9ce06
 
 ### ✅ t0551 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
