@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 04:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15773,6 +15773,14 @@ _Last updated: 2026-10-29 04:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified shared-schema-spec-v0.2.md sha256 matches the receipt pin; D1-D4 applied per the t0677 review, v0.1 sealed unchanged. Clears 9.5 — why not 10: single seat, no second-seat check of the delta application.
 
+### ✅ t0677 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review, SMARTBLOCKS shared-schema-spec-v0.1 - AMEND-AND-REQUEUE
+
+**Receipt:** `twelve-lane-receipts/t0677-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: review file hidden_files/retrieval/smartblocks/review-t0677-lane5.md sha256 c39d50f67949d4c7c85a497ab68b83b806aa589d4ffbb952b110a84005e6280c MATCHES receipt pin. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) single seat; the D2-optional-vs-required call is a 
+
 ### ✅ t0677 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** second-seat review, SMARTBLOCKS shared-schema-spec-v0.1 (AMEND-AND-REQUEUE)
@@ -15796,6 +15804,14 @@ _Last updated: 2026-10-29 04:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0677-lane5.md`
 
 **Evidence:** VERIFIED: review-t0677-lane5.md exists in hidden_files/retrieval/smartblocks/ and sha256 prefix c39d50f6... matches receipt claim. Receipt describes verification steps (lint runs, pin re-derivations) as self-reported with no contradictions; content of review consistent with receipt. Score 9.0 GOOD ONE MORE PASS. Why not 9.5: (1) single seat; (2) di
+
+### ✅ t0677 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (a) Arm G pre-reg EXECUTION - VOID verdict
+
+**Receipt:** `twelve-lane-receipts/t0677-lane4.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: all six receipted sha256 pins MATCH exactly - instrument b725a5a1db7a16770fdc9634a3ce7e4dff76e79772bc683c682f9f52a47f2803, dryfire log 3112ddc1dbdc5e8489d610375f97d82627a93a120b377cc05e0921c6504a6fc8, seal 86d7656da0dcff93acb046f6a6c7d777fa401dfedad9feca2d44170ca18027ee, predictions ce92e6edfe2862ac8c3b18
 
 ### ✅ t0677 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
