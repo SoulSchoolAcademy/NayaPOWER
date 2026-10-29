@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 05:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15539,6 +15539,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified: census file hidden_files/lane-3/t0684-demand-census.md exists; log pin sha256 682ef6e477aec33b270dc8fe8d7833d1e316cfef001cb4f6b7c662a3590ef35c matches receipt exactly, 59 rows. Independent spot-check of window rows 52-59: all 8 rows query_text = lane N, 0 emergent - verdict demand-QUIET confirmed. Kept from 9.5: single-seat clas
 
+### ✅ t0683 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Prove one broadcast lesson compounds into machinery in the learning pipeline (pin-guard, before/after + loop latency)
+
+**Receipt:** `twelve-lane-receipts/t0683-lane2.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: scratch/t0683-lane2-pin-guard/ pin_guard.py ea09a28c, pin_guard.patch ff18ee9b, test_pin_guard.py 6198f52f, before_after_output.txt 1ea0b4b4 — all sha16 prefixes exactly as receipted; AND independently re-ran the battery this tick: 13/13 checks passed. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS
+
 ### ✅ t0683 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** prove one broadcast lesson compounds (pin_guard probe)
@@ -15563,6 +15571,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 4 cited scratch artifacts exist locally with sha256 prefixes matching exactly (pin_guard.py ea09a28c, test_pin_guard.py 6198f52f, pin_guard.patch ff18ee9b, before_after_output.txt 1ea0b4b4); SECOND-SEAT battery re-run by this scorer (independent): 13/13 checks passed. Gap demonstrated on real code path (rewound tip re-ingested as PEND
 
+### ✅ t0683 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent distinct-seat scorecard on PR #2533 (activation guide) at exact head
+
+**Receipt:** `twelve-lane-receipts/t0683-lane1.md`
+
+**Evidence:** VERIFIED this tick via GitHub API: scorecard comment id 6157099718 exists on PR #2533 comments, matching the receipted comment id. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane scorecard 9.0. Why not 9.5: (1) review-only work — the four named gaps (stale #2175 board reference as live board, missing author Seat declaration, §9 numbe
+
 ### ✅ t0683 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** independent distinct-seat scorecard on PR #2533 (review only)
@@ -15586,6 +15602,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0683-lane1.md`
 
 **Evidence:** VERIFIED: branch naya4/activation-read-me-first @ ea6c9ef8c265932b0a14e4e9c83786a8ef0b0378 (ls-remote head == pin, exact); READ-ME-FIRST.md, THE-CODE-SHE-LIVES-BY.md, AGENTS.md all present at that SHA; signed in on #2537 (6157046719), posted [NAYA 1 REVIEW] scorecard + board comment. Read the gate's own code before posting (turned a 422 native-revi
+
+### ✅ t0682 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Independent verification of the t0674 verifier-registry CANDIDATE (3 receipts, 5 synthetics, C0 fail-closed)
+
+**Receipt:** `twelve-lane-receipts/t0682-lane9.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: hidden_files/verifier-registry-verify-t0682.json sha256 e6aa1c08347a77b8c00552aa5a53071c45b918fc43caed5c75a7e52ff5383373 exactly as receipted, verdict ADOPT-READY on disk. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) single-seat, synthetics unwitne
 
 ### ✅ t0682 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
@@ -15616,6 +15640,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gap follow-up: file scorer-label brief (t0682)
 
 **Evidence:** Verified: twelve-lane-receipts/t0683-lane2.md exists (the filed brief); receipt's evidence is machine-recorded (cron run record, memory log line refs, file mtimes). Score 9.5 ACCEPTED — clears 9.5 because the closure is proven by file state and the bookkeeping chain is complete.
+
+### ✅ t0682 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Battery-pin registry entry CANDIDATE, RED-calibrated (retrieval hitrate instrument)
+
+**Receipt:** `twelve-lane-receipts/t0682-lane10.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: hidden_files/verifier-registry-battery-entry-CANDIDATE-t0682.json sha256 1dde7c3887e9bd8e3fd0999a25408b1d1280729e02d23cd6c41e84994b579034 exactly as receipted; RED/CONTROL fixtures and firing output present in scratch-t0682-lane10/. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with lane
 
 ### ✅ t0682-lane10-brainindex — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -15653,6 +15685,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: entry JSON verifier-registry-battery-entry-CANDIDATE-t0682.json exists on disk (3346 bytes); scratch firing output negative-calibration-firing-output.json exists; pins re-derived at action time (tip 582e5e5f unchanged, harness sha256, rule sha256); RED fixture fired WRONG per the instrument's own rule (calibration-theater-proof); selftest
 
+### ✅ t0681 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 INTAKE readiness audit (diary door vs broadcast)
+
+**Receipt:** `twelve-lane-receipts/t0681-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact on the deliverable: hidden_files/intake-readiness-audit-t0681.md sha256 551e1e68594526e0569da8e06bbd9c453a1c0bf372de27b4960325fba7e817fd exactly as receipted; audit text carries the receipted leg table (FAIL / FAIL / PARTIAL), the NOT MET verdict on three independent grounds, the door pin 1737b3
+
 ### ✅ t0681 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Stage-0 INTAKE readiness audit
@@ -15677,6 +15717,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/intake-readiness-audit-t0681.md present (4443B, 22:50Z); door sha 1737b3a92... re-derived 22:48Z (t0526 pin confirmed not inherited); broadcast 20 lines opens [t0686] with no header, 0 provenance lines; quarantine log nonexistent; synthetic logs in /tmp/synth-intake-t0681/. Signed in BEFORE any read (t0684 BODY ord
 
+### ✅ t0680 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** FP-001 Sharpening-3 observatory window verdict t0583->t0680 (receipt-cost + falsification rate)
+
+**Receipt:** `twelve-lane-receipts/t0680-lane11.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact on the deliverable: lane-11/verdict_cost_t0680.json sha256 6b209f6fa160ed2663d3e4be83a88277f701c2b116752a270178599bbae7b8d5 exactly as receipted; corpus pin holds 190 rows (n_pinned 190); verdict numbers match the receipt (median lines 66.5, median bytes 6154.5, growth +40.0%/+8.04%); M3 judgmen
+
 ### ✅ t0680 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** FP-001 Sharpening-3 observatory verdict t0583-t0680 (receipt-cost + falsification rate)
@@ -15700,6 +15748,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0680-lane11.md`
 
 **Evidence:** VERIFIED: corpus_pin_t0583-t0680.json (190 rows, 42KB, pin 22:39Z, zero mid-run landings), verdict_cost_t0680.json, m3_sample_judgments_t0680.json (40 rows w/ reasons), rework_hits + dispute_prescan all present under hidden_files/lane-11/; t0583 method reproduced byte-exactly before measuring (baseline 42/2365/47.5/5696.5 exact); circularity declar
+
+### ✅ t0679 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** roster blind-spot root-cause fix
+
+**Receipt:** `twelve-lane-receipts/t0679-lane7.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/bin/naya_roster.py carries the receipted change exactly - parse_brief_name, tick_num_of and queued_in_flight functions present, and the header docstring states the t0679 presence rule (a lane is in-flight whenever a brief for that lane exists in brief-queue/, brief-queue/claimed/, OR the rota
 
 ### ✅ t0679 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -15740,6 +15796,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0678-lane8.md`
 
 **Evidence:** Verified wiring-prep packet sha256 matches disk; queue evaluated in ORDERING order, claimability gate respected (skipped t0675-lane3 untouched). Clears 9.5 — why not 10: single seat; remaining items are named follow-ups.
+
+### ✅ t0678 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** INDEPENDENT VERIFICATION of the contract-gate verb-form fix
+
+**Receipt:** `twelve-lane-receipts/t0678-lane6.md`
+
+**Evidence:** VERIFIED in part this tick: receipt file exists and is internally consistent (3 evasion REJECTs, 13/13 regression battery, 0 false positives in 30-line sweep, honest 9.0 with two self-caught fixture errors named). NOT fully re-verified at head: git ls-remote for SoulSchoolAcademy/NayaPOWER refs/heads/naya4/contract-staging returns EMPTY today, so t
 
 ### ✅ t0678 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -18931,6 +18995,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED on disk: lane8-t0582-veracity-rerank.md (sha256 0ec29e78b1db...), lane8-t0582-rerank-results.json (940275e9cbd3...), lane8-t0582-rerank-measure.py (c30c5e28c1d4...) all exist, SHA prefixes match receipt exactly. Pre-written expectations all held (0/3 errors), guard UNFIRED (0/3 winner changes, HIT@5 shift 0.000) plus bonus findin
 
+### ✅ t0582 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Build the injection-seam prototype - queued brief to top-2 principles with provenance markers, measured on 5 live queued briefs; prototype only, no wiring
+
+**Receipt:** `twelve-lane-receipts/t0582-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: retrieval/injection-seam-v0.1.py sha256 a1dda055320e690111f55bec51d73697370461b2dbb6cda1eb6d21ef1ed0339c and retrieval/injection-seam-v0.1-results.json sha256 2948bb8ab2403a95e8aeff7df57160cad1409bf6879cc39b8bb6f7d801d5b3ba - both exactly as receipted. NOT PHANTOM. Score 8.5, REWORK band, agree
+
 ### ✅ t0582 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
 
 **Task:** injection-seam prototype: queued brief -> top-2 principles with provenance markers, measured on 5 live queued briefs
@@ -19901,6 +19973,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: verdict doc veracity-verdict-t0568.md sha256 matches pin 30645fe4 exactly; lane8-t0568-veracity/ present with test + fixtures + manifest + run-output; RE-RAN the acceptance test independently: RED phase genuinely fails first (SN-X5 103.86 unflagged on raw seam), GREEN demotes SN-X5 w/ FALSIFIED_DEMOTED signal, REFUSE yields dist
 
+### ✅ t0568 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Seal a handoff-ready design of the cold-retrieve acceptance probe (three arms, fixtures pinned, pre-reg, exclusion sets) - design + pin only, no execution
+
+**Receipt:** `twelve-lane-receipts/t0568-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: lane-experiments/t0568/DESIGN-cold-retrieve-acceptance.md sha256 34e29da928e2c3a08a3141169dc7c953dde49fc693b5c86b88925246a6ea5637, PREREG-cold-retrieve-sealed.md d8bbe825ac74421deba56a4836bc316c12eda1b67b6225a80b5b1168fb04c35f, gen_t0568.py 126a4d0daf6eeebe0ba7cebded4ea5353b0f3324c6757e2c4a220c
+
 ### ✅ t0568 — Team 6, Naya Heir (Successor Transfer) — 8.5/10 [VERIFIED]
 
 **Task:** Sealed design + pins for cold-retrieve acceptance probe (3 arms + firing predicates, pre-reg, exclusion sets)
@@ -19908,6 +19988,14 @@ _Last updated: 2026-10-29 05:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0568-lane6.md`
 
 **Evidence:** ARTIFACTS VERIFIED: sealed bundle lane-experiments/t0568/ — all receipt pins byte-match (design 34e29da9, pre-reg d8bbe825, generator 126a4d0d, fixtures arm1 14ac431e / arm2 2a446cc5 / arm3 9c564769 / corpus 433e4119 / dup-ids 197d7251, seal-verification.json all 6 MATCH, corpus-pins tip 65491239d2bb / 631 entries / SEAL_C match TRUE). Design-only 
+
+### ✅ t0567 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-change arm repair + re-run (study-only): repair verb defect, re-seal, re-run; no wiring
+
+**Receipt:** `twelve-lane-receipts/t0567-lane10.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, prefix-exact on all four cited artifacts in auto-retrieval/: decision_change_arm_t0567.py 4d43798e58f2769f, sealed-note-t0567.md 38ccd002a5780cd5, results-t0567-decision-change.json 383b4bf3f7de30b3, overlap-without-claims-cellset-t0567.md 0ffe503cd7d9ac3c - all exactly as receipted. NOT PHANTOM. Score 9.
 
 ### ✅ t0567 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
