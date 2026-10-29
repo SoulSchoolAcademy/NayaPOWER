@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-27T20:15:58+00:00",
+ "generated_utc": "2026-10-29T01:16:51+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -139,21 +139,9 @@
      "draft": false
     },
     {
-     "number": 3107,
-     "title": "Face registry fix 20261027",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3107",
-     "draft": false
-    },
-    {
      "number": 3089,
      "title": "[DRAFT \u2014 DO NOT MERGE] PI face review draft: human-first Project Intelligence face + build",
      "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3089",
-     "draft": false
-    },
-    {
-     "number": 3088,
-     "title": "feat(sn-guard): Smart Note filing-path collision guard \u2014 claim-before-author via the exist",
-     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3088",
      "draft": false
     },
     {
@@ -163,7 +151,7 @@
      "draft": false
     }
    ],
-   "open_pr_count": 5
+   "open_pr_count": 3
   },
   {
    "id": "wire",
@@ -416,6 +404,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 5,
- "unassigned_prs": 5
+ "open_pr_total": 3,
+ "unassigned_prs": 3
 }
