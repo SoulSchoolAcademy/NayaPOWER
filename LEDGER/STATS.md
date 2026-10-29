@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-29 20:04 UTC_
+_Last updated: 2026-10-29 20:43 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6733
-- ✅ Verified (8+): 6667
-- 🟡 Partial (5–7): 63
+- **Total scored actions:** 6744
+- ✅ Verified (8+): 6677
+- 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
 - **Verification rate:** 99% of actions fully verified
@@ -15,18 +15,18 @@ _Last updated: 2026-10-29 20:04 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 485 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 486 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 484 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 447 | 9.0 | 10 |
-| Team 4 | Naya Mason | 429 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 553 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 322 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 432 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 451 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 575 | 9.0 | 9.5 |
+| Team 3 | Naya Judge | 448 | 9.0 | 10 |
+| Team 4 | Naya Mason | 430 | 9.1 | 9.6 |
+| Team 5 | Naya Seeker | 554 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 323 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 433 | 9.0 | 10 |
+| Team 8 | Naya Sentinel | 452 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 576 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 778 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 409 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 353 | 9.2 | 9.5 |
+| Team 11 | Naya Heart | 410 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 354 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -1501,6 +1501,7 @@ _Last updated: 2026-10-29 20:04 UTC_
 - **20261029-1118:** 1 actions, avg 9.0/10
 - **20261028-1151:** 1 actions, avg 9.0/10
 - **20261029-1218:** 1 actions, avg 9.0/10
+- **20261029-1327:** 1 actions, avg 9.0/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
 - **t0012:** 37 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
@@ -1774,7 +1775,7 @@ _Last updated: 2026-10-29 20:04 UTC_
 - **t0606:** 4 actions, avg 9.0/10
 - **t0607:** 4 actions, avg 9.0/10
 - **t0608:** 4 actions, avg 9.0/10
-- **t0609:** 2 actions, avg 9.2/10
+- **t0609:** 4 actions, avg 9.1/10
 - **t0610:** 3 actions, avg 9.0/10
 - **t0611:** 2 actions, avg 8.8/10
 - **t0612:** 3 actions, avg 8.8/10
@@ -1914,9 +1915,9 @@ _Last updated: 2026-10-29 20:04 UTC_
 - **t0728:** 7 actions, avg 9.2/10
 - **t0729-lane12:** 1 actions, avg 9.5/10
 - **t0729:** 4 actions, avg 9.2/10
-- **t0730:** 4 actions, avg 9.2/10
-- **t0731:** 6 actions, avg 9.2/10
-- **t0732:** 7 actions, avg 9.3/10
+- **t0730:** 6 actions, avg 8.9/10
+- **t0731:** 9 actions, avg 9.2/10
+- **t0732:** 10 actions, avg 9.2/10
 - **t0732-lane12:** 1 actions, avg 9.5/10
 - **t0732-lane5:** 1 actions, avg 9.5/10
 - **t0733:** 3 actions, avg 9.3/10
