@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-29 21:34 UTC_
+_Last updated: 2026-10-29 22:12 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6758
-- ✅ Verified (8+): 6691
+- **Total scored actions:** 6768
+- ✅ Verified (8+): 6701
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -15,18 +15,18 @@ _Last updated: 2026-10-29 21:34 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 487 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 488 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 486 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 450 | 9.0 | 10 |
+| Team 3 | Naya Judge | 451 | 9.0 | 10 |
 | Team 4 | Naya Mason | 431 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 555 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 324 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 434 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 452 | 9.0 | 9.5 |
+| Team 5 | Naya Seeker | 556 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 325 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 435 | 9.0 | 10 |
+| Team 8 | Naya Sentinel | 454 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 578 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 779 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 411 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 354 | 9.2 | 9.5 |
+| Team 10 | Naya Librarian | 780 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 412 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 355 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -1777,9 +1777,9 @@ _Last updated: 2026-10-29 21:34 UTC_
 - **t0608:** 4 actions, avg 9.0/10
 - **t0609:** 4 actions, avg 9.1/10
 - **t0610:** 6 actions, avg 9.0/10
-- **t0611:** 2 actions, avg 8.8/10
-- **t0612:** 3 actions, avg 8.8/10
-- **t0613:** 3 actions, avg 8.8/10
+- **t0611:** 4 actions, avg 8.9/10
+- **t0612:** 6 actions, avg 8.9/10
+- **t0613:** 4 actions, avg 8.9/10
 - **t0614:** 2 actions, avg 9.0/10
 - **t0615:** 3 actions, avg 8.8/10
 - **t0616:** 3 actions, avg 9.0/10
@@ -1916,8 +1916,8 @@ _Last updated: 2026-10-29 21:34 UTC_
 - **t0729-lane12:** 1 actions, avg 9.5/10
 - **t0729:** 4 actions, avg 9.2/10
 - **t0730:** 8 actions, avg 8.9/10
-- **t0731:** 11 actions, avg 9.1/10
-- **t0732:** 10 actions, avg 9.2/10
+- **t0731:** 12 actions, avg 9.1/10
+- **t0732:** 13 actions, avg 9.2/10
 - **t0732-lane12:** 1 actions, avg 9.5/10
 - **t0732-lane5:** 1 actions, avg 9.5/10
 - **t0733:** 6 actions, avg 9.2/10
