@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-29 08:16 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-29 09:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 5 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -50,7 +50,8 @@
 
 ## Open PRs by Area
 
-### BUILD (3)
+### BUILD (4)
+- [#3120](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3120) [NAYA 5] Cold-retrieve: door backfill SN-1900..1902 + index regen at 2
 - [#3108](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3108) Naya/mission state
 - [#3089](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3089) [DRAFT — DO NOT MERGE] PI face review draft: human-first Project Intel
 - [#2981](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2981) Naya4/smart notes 2026 09 30
