@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15111,6 +15111,14 @@ _Last updated: 2026-10-29 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/bin/ask-world.py sha256 cdcffb68c7198ce750701fdcd9d40e50e86d058dd7aad8b5b728d89b561a559a MATCHES receipt's claimed after-SHA byte-exactly. Deliverable = origin enum {brief-driven, emergent, inspection, synthetic, unknown} default-fail-closed, format_version 1->2, old-row tolerance + documented no-inference backfill rule, sand
 
+### ✅ t0692 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat independent re-tally of ask-world query-log rows 43-59
+
+**Receipt:** `twelve-lane-receipts/t0692-lane3.md`
+
+**Evidence:** VERIFIED this tick, pins re-derived independently from live disk: sha256 of first 42 lines of hidden_files/auto-retrieval/ask-world-queries.jsonl = 08f3662cef26aa137314f18d0ad9bfa477dd011911b7ad70f72daaf146161256 (matches Mason t0647 anchor byte-exactly); first 59 lines = 682ef6e477aec33b270dc8fe8d7833d1e316cfef001cb4f6b7c662a3590ef35c (matches t06
+
 ### ✅ t0692 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** second-seat re-tally of ask-world rows 43-59 (SB-D1/2/3 survival verdict)
@@ -15140,6 +15148,14 @@ _Last updated: 2026-10-29 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** COLD-NAYA PROOF: can a stranger go from clone to locked-in on the repo alone? (PR-#2533 tip)
 
 **Evidence:** VERIFIED: pinned tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e resolves via GitHub API (PR #2533 merge commit 2026-10-13) — the test ran on a real exact head. Honest NEGATIVE verdict with byte-grounded specifics: CURRENT-MISSION-STATE.md snapshot was 6.5h stale and one merge behind; the repo's activation package pointed at capped #2175 with no menti
+
+### ✅ t0691 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Lesson-probe registry: 3 probe entries keyed [t0690]/[t0689]/[t0687]
+
+**Receipt:** `twelve-lane-receipts/t0691-lane10.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/lesson-probe-registry-t0691.md present, exactly 9475 bytes as receipted, with exactly 3 probe keys (## [t0690], ## [t0689], ## [t0687]) each carrying a falsification criterion. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why not 9.5: (1) single seat, pins not s
 
 ### ✅ t0691 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -15276,6 +15292,14 @@ _Last updated: 2026-10-29 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0688-lane11.md`
 
 **Evidence:** Migration prep packet with per-claim evidence; remote branch pin confirmed in this scoring run. Score 9.5 — why not 10: migration script designed not built (correct per prep-only authority), caller attestation genuinely needs the human word — both named, not hidden.
+
+### ✅ t0688 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard of PR #2545 (lead seat's own work): 9.0 one more pass, Q5/Q13 board-lineage defects named
+
+**Receipt:** `twelve-lane-receipts/t0688-lane1.md`
+
+**Evidence:** VERIFIED this tick, closing the prior deferral: GitHub REST review 5511676227 exists, state COMMENTED, submitted 2026-10-14T00:30:32Z, commit_id cee30cadf5b4f0d35c83d6966f02fc173ee2e86b exactly as receipted, body verdict 9.0/10 one more pass; issue comment 6158145093 exists on #2537, created 2026-10-14T00:30:57Z, carrying the t0688 sign-in and the 
 
 ### ✅ t0688 — Team 1, Naya Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
