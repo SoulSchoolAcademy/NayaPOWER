@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 03:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 03:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16801,6 +16801,14 @@ _Last updated: 2026-10-29 03:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: ALL 7/7 pins re-derived at scoring time, every sha16 MATCH (arm_docclaim_t0593.py 3eff30f1cfa37162, t0432_fingerprint.py 4ab5f359abe008c3, arm_digitfracture_t0619.py 9c2a03ef27944e42, results-t0593-docclaim.json 714fe2fba31f955a, sealed-prereg-magnitude-t0623.md bd5e08cd96a66ab2, results-t0623-magnitude.json a83db58f7a290352, arm_magnitud
 
+### ✅ t0630 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (a) entailment-judge adoption synthesis (CANDIDATE) — per-task verdicts
+
+**Receipt:** `twelve-lane-receipts/t0630-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: entailment-lineage-t0627/adoption-synthesis-t0630-CANDIDATE.md sha256 467d1d0f3b2d40f7e642f92c374e3a5e74c7454174edc10be3fcaa2d49dcdea5 exactly as receipted; pin-verification.log present in entailment-lineage-t0627/; synthesis carries the three receipted per-task verdicts (ADOPT for A_violation,
+
 ### ✅ t0630 — Team 6, lane6 (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE (a) adoption synthesis (entailment-judge)
@@ -16809,6 +16817,14 @@ _Last updated: 2026-10-29 03:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: synthesis hidden_files/entailment-lineage-t0627/adoption-synthesis-t0630-CANDIDATE.md exists, sha256 467d1d0f3b2d40f7e642f92c374e3a5e74c7454174edc10be3fcaa2d49dcdea5 MATCHES receipt claim. Real value: three per-task verdicts (A_violation ADOPT, B_winmine ADOPT-WITH-CONTROL, C_principle_track DO-NOT-ADOPT) cited from frozen bytes, not aver
 
+### ✅ t0630 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Per-claim emission run per Lane 3 frozen pre-reg, unblocking B2/P5 asymmetry study
+
+**Receipt:** `twelve-lane-receipts/t0630-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: auto-retrieval/results-t0630-perclaim-emission.json sha256 38ae9a1b8068bc400f5ecbfd1961894591342bc21a968e39815ec73b25044ab9 exactly as receipted; JSON re-derived: 44 rows across 22 docs with P14 and B6 absent exactly as receipted, seal block instrument arm_magnitude_t0623.py pre==post b5a80a6e1
+
 ### ✅ t0630 — Team 5, lane5 (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Per-claim emission run per Lane 3 frozen pre-reg (B2/P5 asymmetry study)
@@ -16816,6 +16832,14 @@ _Last updated: 2026-10-29 03:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0630-lane5.md`
 
 **Evidence:** Verified: emission artifact hidden_files/auto-retrieval/results-t0630-perclaim-emission.json exists, sha256 38ae9a1b8068bc400f5ecbfd1961894591342bc21a968e39815ec73b25044ab9 MATCHES receipt claim (44 per-claim rows); emission script present; E1 basis-identity PASS (max |recomputed-sealed swing| 0.000049 <= 1e-3) is mechanical and credible. Verdict I
+
+### ✅ t0630 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** CR-ACCEPT acceptance pre-reg for SURGE (d) drill (t0629-lane1) — 13 v2 subchecks, CR-F1 rules, frozen verdict shapes
+
+**Receipt:** `twelve-lane-receipts/t0630-lane11.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: sealed pre-reg retrieval/cr-accept-prereg-t0630-lane11.md sha256 660306fc21c3eb85fb284cf665d833d745d71aaf23e7e243949cb510322fe09b, 13,841 bytes, mtime 2026-10-13 13:07 UTC as receipted; contract v2 retrieval/cold-retrieve-acceptance-t0625.md sha256 6327b78a73db6987865680b6e99773cbd8bde858015dd8
 
 ### ✅ t0630 — Team 11, lane11 (Human Value) — 8.5/10 [VERIFIED]
 
