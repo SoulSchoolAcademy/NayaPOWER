@@ -16135,15 +16135,35 @@
         "note": "published directly as a BRAIN projection in commit 1119afb43fa40d9e65d53a4787ef761d81e6f9dc ('Add SN-1902: Why Misses Still Happen — Systems, Not Intentions') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "ac4ffcc9c329f90a28e9fa91a35b5e02d5215841f692df4cfc9faadb8ba98282"
+    },
+    {
+      "smart_note_id": "SN-1903",
+      "intelligent_block_id": "IB-SMART-NOTE-20261029-sn1903-so-synergize-optimize",
+      "title": "SO — Synergize + Optimize: The Auto-Optimization Law",
+      "content_hash": "d4451dea3bf2df7d027e7f2c06d2ef0b5feefad9d475220f45a4d26211e65516",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1903/IB-SMART-NOTE-20261029-sn1903-so-synergize-optimize.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEARNING",
+      "captured_at": "2026-10-29",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "88c33ae875c10bac1d26b205bed444fe47e7f6b06a09407fc6566e446c6e9201"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1903,
+    "next_sequence": 1904,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "0f844b0e92a2b87bb0349f908b38d6b81e2cdac2c0b44d10f8a67cd4c10015a7"
+  "corpus_manifest_hash": "434780cd6f7c1d14e1a00cf462c2b038e9fbea0cb5517219b59e29703a1ddf96"
 }
