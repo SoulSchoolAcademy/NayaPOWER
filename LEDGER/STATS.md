@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-29 09:12 UTC_
+_Last updated: 2026-10-29 09:41 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6641
-- ✅ Verified (8+): 6576
+- **Total scored actions:** 6652
+- ✅ Verified (8+): 6587
 - 🟡 Partial (5–7): 62
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -16,15 +16,15 @@ _Last updated: 2026-10-29 09:12 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 480 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 478 | 8.8 | 9.5 |
+| Team 2 | Naya Sage | 479 | 8.8 | 9.5 |
 | Team 3 | Naya Judge | 441 | 9.0 | 10 |
 | Team 4 | Naya Mason | 423 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 547 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 548 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 318 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 425 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 445 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 568 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 768 | 9.1 | 9.7 |
+| Team 10 | Naya Librarian | 769 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 405 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 347 | 9.2 | 9.5 |
 
@@ -1479,6 +1479,14 @@ _Last updated: 2026-10-29 09:12 UTC_
 - **20261027-0913:** 1 actions, avg 9.0/10
 - **20261027-1018:** 1 actions, avg 9.0/10
 - **20261027-1123:** 1 actions, avg 9.0/10
+- **20261028-1814:** 1 actions, avg 9.0/10
+- **20261028-1915:** 1 actions, avg 9.0/10
+- **20261028-2021:** 1 actions, avg 9.0/10
+- **20261028-2125:** 1 actions, avg 9.0/10
+- **20261028-2228:** 1 actions, avg 9.0/10
+- **20261028-2334:** 1 actions, avg 9.0/10
+- **20261029-0039:** 1 actions, avg 9.0/10
+- **20261029-0145:** 1 actions, avg 9.0/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
 - **t0012:** 37 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
@@ -1858,8 +1866,8 @@ _Last updated: 2026-10-29 09:12 UTC_
 - **t0701:** 8 actions, avg 9.1/10
 - **t0702:** 6 actions, avg 9.0/10
 - **t0703:** 9 actions, avg 8.9/10
-- **t0704:** 8 actions, avg 9.2/10
-- **t0705:** 5 actions, avg 9.3/10
+- **t0704:** 10 actions, avg 9.2/10
+- **t0705:** 6 actions, avg 9.2/10
 - **t0706:** 3 actions, avg 9.3/10
 - **t0707:** 6 actions, avg 9.2/10
 - **t0708:** 2 actions, avg 9.5/10
