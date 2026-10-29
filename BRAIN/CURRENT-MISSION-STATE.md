@@ -1,3 +1,20 @@
+## DIRECTOR SNAPSHOT 2026-10-29 02:42 PDT (2026-10-29T09:42:25Z)
+
+- Main tip: `2e42ae28` UNCHANGED (git ls-remote HEAD = 2e42ae284509b3c7ffdc15855362be9659875876). No merge-receipt watch run this tick (tip move is the trigger). Prior ticks' Living Map direct-push alert for this commit and BREACH #86 stand as already reported, not re-alerted.
+- PR #3120 VERIFIED 9.5/10 APPROVE (VERIFY receipt 6492683164, night-shift ~09:00Z): door backfill SN-1900..1902 + brain-index regen at head 151ca320 - door 7 defects -> 1 (SN-1887 only); battery 28 passed / broader 47 passed 1 failed; index check OK 1,728 files; SN-1900/1901/1902 present, next_sequence 1903. MERGE PENDING at the dock; done_proven still needs a green Door run at the carrying head. SN-1887 re-stamp stays with the human cure lane.
+- G2 NINETEENTH CYCLE (Night Driver 09:16Z, 6492920958): A11/C5/publisher/pulse still queued, timestamps unchanged (~36.6h); main + merged unchanged; #3108 head moved again (other seat); G3 HELD. Power's Cycle-97-thread reply: explicitly NOT a gate receipt - clearance UNCHANGED, still blocked on Shawn production/deploy gate clearance, no ETA. Cycle 98 escalation sent + Sent-verified once.
+- /pi STILL HOME: nayanet.live/pi/ = home bytes, 5,607,976 B, sha256 18b07278..., byte-identical to cycles 93-97. Cure NOT landed.
+- Live board: #3066 at 1114 comments by count read (1112 -> 1114, +2 exact, ids 6492683164, 6492920958 above watermark 6492397492; 1,386 to cap; no migration, no successor board; count trigger NOT fired, de-facto trigger NOT fired - newest comments are live-board traffic).
+- NEW THIS TICK (2 board comments; 1 relayed to naya2_to_builder - VERIFY receipt 6492683164; Night Driver cycle 98 not relayed, routine status repeat):
+  - VERIFY RECEIPT 6492683164 (09:13Z): PR #3120 @ 151ca320 verified 9.5/10 APPROVE (see above); scorecard https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3120#issuecomment-6492654437.
+  - NIGHT DRIVER CYCLE 98 6492920958 (09:24Z): G2 gates re-verified live a nineteenth cycle - still queued; /pi byte-identical home; G5 register 5 open PRs (#3120 verified, #3118 draft, #3108 head moved, #3089 DRAFT DO NOT MERGE, #2981).
+- TOP-10 STANDING (re-ranked, #3120 verified-at-head): (1) #3119 regression cure + fail-closed pre-merge gate still unlanded > (2) /pi still home + landing chain A1-A8 > (3) five-gate emergencies - G2 nineteenth cycle ~36.6h, Power answered with no change and no ETA > (4) OWNER ASKS: #3120 dock merge + green Door run at carrying head for SN-1900..1902 done_proven + REAL-TREE regen + kernel diagnosis 6482099077 + Home canonical publish + re-invite > (5) breaches #84/#85/#86 retro-verified; #78-83 still owed > (6) Living Map direct-push class recurring - needs a routed home or named exception > (7) G5 retro re-check CLOSED factually 8/8, CLAIMED-UNVERIFIED at different-login level > (8) Nitro self-score-first wave: 0 different-seat scorecards due until self-score >=9 + public addresses + re-invite > (9) current-truth resolver conflict - canonical #66 CLOSED, projection STALE, gates red at tip > (10) #2601 hand-edit persists + queue 1,253 steady (carried).
+- REST quota: see rate-limit check this tick; branch count via git ls-remote: 3925 refs (1108 heads).
+- Where to go: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (draft branch naya4/activation-read-me-first until PR #2533 merges, then main; companion THE-CODE-SHE-LIVES-BY.md) - operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in BRAIN/90-OPERATIONS/, then the repo path) - live board https://github.com/SoulSchoolAcademy/NayaPOWER/issues/3066 - master directive https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601.
+
+---
+Prior tick snapshot retained below:
+
 ## DIRECTOR SNAPSHOT 2026-10-29 02:11 PDT (2026-10-29T09:11:23Z)
 
 - Main tip: `2e42ae28` UNCHANGED (git ls-remote HEAD = 2e42ae284509b3c7ffdc15855362be9659875876). No merge-receipt watch run this tick (tip move is the trigger). Prior ticks' Living Map direct-push alert for this commit and BREACH #86 stand as already reported, not re-alerted.
