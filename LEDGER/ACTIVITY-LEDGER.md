@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 17:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -27660,6 +27660,12 @@ _Last updated: 2026-10-29 16:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261029-1011 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 10:08 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md) and rotation queued length is 31 with EXACT set match to disk filenames, in_flight=[]; all 31 disk briefs are named in the receipt (29 exit-7 parent-authorship + 2 exit-2 seat/routing bar as claimed). Gate-stall receipts cite no git branch/SHA, so the br
 
 ### ✅ 20261029-0908 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
