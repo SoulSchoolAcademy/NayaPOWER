@@ -16075,15 +16075,75 @@
         "note": "published directly as a BRAIN projection in commit 18ce37958e14150cbe098671a92fdb219e9cd513 ('SN-1899: The Only Real Mistake — The One That Isn't Noted (filed via the door; Shawn's teaching, 2026-10-29)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "45213e23b95da161243eaf6e6a1333212fa8164985b1bd82fe6bd188a927f957"
+    },
+    {
+      "smart_note_id": "SN-1900",
+      "intelligent_block_id": "IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor",
+      "title": "IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor",
+      "content_hash": "054ef8232df5a4741991f1751d348d0f550c23bf5d2e44ece3734a093d417bcc",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "TEAM",
+      "captured_at": "2026-10-29",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 4cc05425c37a4d81ea996c05825c7b2e4ec39dde ('Add SN-1900: Shared Intelligence — Hoarded Is a Ceiling, Shared Is a Floor') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "07caa69d7df6182c067abf85245ec7efc9cb711481cd25817bd90671ea5f67ae"
+    },
+    {
+      "smart_note_id": "SN-1901",
+      "intelligent_block_id": "IB-SMART-NOTE-20261029-sn1901-the-lock-in-declaration-and-its-gate",
+      "title": "IB-SMART-NOTE-20261029-sn1901-the-lock-in-declaration-and-its-gate",
+      "content_hash": "28571148608b90c587358d1b6f9d79a277c9484da4bae7a5df17b9c0235dac0b",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1901/IB-SMART-NOTE-20261029-sn1901-the-lock-in-declaration-and-its-gate.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEARNING",
+      "captured_at": "2026-10-29",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b8082a2eae0143014e48c68577b3466003e30612 ('Add SN-1901: The Lock-In Declaration and Its Gate') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "d897fe7859dd0f35858a95d8e7dec3711a9d9a13baa0dbc2a71cbd674a534aa5"
+    },
+    {
+      "smart_note_id": "SN-1902",
+      "intelligent_block_id": "IB-SMART-NOTE-20261029-sn1902-why-misses-still-happen-systems-not-intentions",
+      "title": "IB-SMART-NOTE-20261029-sn1902-why-misses-still-happen-systems-not-intentions",
+      "content_hash": "b2a0b26e95f4bc08541864a28d789c791e866a42a8f887d819820a7a908def58",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1902/IB-SMART-NOTE-20261029-sn1902-why-misses-still-happen-systems-not-intentions.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEARNING",
+      "captured_at": "2026-10-29",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 1119afb43fa40d9e65d53a4787ef761d81e6f9dc ('Add SN-1902: Why Misses Still Happen — Systems, Not Intentions') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ac4ffcc9c329f90a28e9fa91a35b5e02d5215841f692df4cfc9faadb8ba98282"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1900,
+    "next_sequence": 1903,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "7b31d77e4449382992001ecf45620f3012321831cb5edcaaa3520668afd1caf3"
+  "corpus_manifest_hash": "0f844b0e92a2b87bb0349f908b38d6b81e2cdac2c0b44d10f8a67cd4c10015a7"
 }
