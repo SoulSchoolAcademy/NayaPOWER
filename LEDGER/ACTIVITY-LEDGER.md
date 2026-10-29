@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 15:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13631,6 +13631,14 @@ _Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict file sha 6f1ccd85 matches; archived old tally sha 71dbd286 matches; old blocks' embedded log pin consistent with archived tally (stale-together, not half-rotted). The seat refused to massage the fail-closed refusal into a success and owned the marginal flip (their own tune-in row, log line 88) explicitly. Score 9.0 not 9.5 because
 
+### ✅ t0736 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Expired-world handling: verified map instead of duplicate blind re-implementation of Arm H lineage experiment
+
+**Receipt:** `twelve-lane-receipts/t0736-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0736-lane8.md exists (93 lines); cited lane-5/verdict-numbers-t0735-lane5.json exists with EXACT matching hash sha256 e89ef39e... NOT PHANTOM. Real value: correctly refused duplicate theater (same-run re-implementation already done by t0735-lane5 with exact 6dp MRR match) and delivered the verified map fro
+
 ### ✅ t0736 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Expired-world map update: verified t0735-lane5 blind Arm H re-implementation
@@ -13639,6 +13647,14 @@ _Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict-numbers JSON sha e89ef39e matches; lineage pin re-derived live 7e021c69 == frozen pin == recorded pin; MRRs recomputed independently from JSON rr bytes: arm (0.25+1.0+0.3333)/3=0.527778, bi (0.2+1.0+0.0625)/3=0.420833 — both exact to stored values; write-ordering checked. Clears 9.5 because: refused the duplicate re-implementation
 
+### ✅ t0736 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** Third lesson-to-behavior-change compounding proof, cross-seat point (lesson carried by one seat changing another seat's behavior)
+
+**Receipt:** `twelve-lane-receipts/t0736-lane11.md`
+
+**Evidence:** PARTIALLY VERIFIED this tick: receipt t0736-lane11.md exists (93 lines) with a detailed cross-seat proof narrative; the claimed brief file is absent from brief-queue (expected post-claim archival, not counted as phantom). NOT scored above 8.5 because the proof's load-bearing evidence — two board comments REST-verified at action time (6161777038, 61
+
 ### ✅ t0736 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** Cross-seat lesson->behavior compounding proof (t0712->t0735)
@@ -13646,6 +13662,14 @@ _Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0736-lane11.md`
 
 **Evidence:** Verified: verdict doc sha256 245ee99e12a702fd matches; lesson receipt t0712-lane3 + decision receipt t0735-lane7 both on disk; triple citation (receipt lines 13/63/73 + board comment); counterfactual named (draft-only default); coincidence traps audited. Board REST timestamps accepted as asserted (not re-fetched this tick). Clears 9.5 because: all 
+
+### ✅ t0736 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J Reason-Trace Profiling design + frozen pre-reg (SURGE semantic-matching probe, post-DCTE falsification)
+
+**Receipt:** `twelve-lane-receipts/t0736-lane1.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0736-lane1.md exists (107 lines); cited artifacts exist with EXACT matching hashes — lane-1/arm-j-rtp-t0736/arm-j-design-t0736.md sha256 e6cbb5299e03f997... and arm-j-fixtures-t0736.json sha256 0a918d33986b8853... NOT PHANTOM. Real value: hypothesis-change reframe (reason-code trace + situation card in NLI
 
 ### ✅ t0736 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -14007,6 +14031,14 @@ _Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: origin branch naya4/t0727-lane12-contacts head 0e1bfe5819f2b0490be823db7a46e2e2c0b3fd4c byte-matches (git ls-remote this tick); parent ca3c80b79 matches breaker #7's head. Score 9.5. Clears 9.5 because: 24 tests (suite 172/172 green), SHA-guarded flip, push + remote-verify before final scorecard, board evidence #2721 comment 6245804554, p
 
+### ✅ t0727 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Arm H second-seat design review, verdict CANDIDATE-ALIVE with two owed clarifications
+
+**Receipt:** `twelve-lane-receipts/t0727-lane1.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0727-lane1.md exists; all three frozen SHAs sha256 EXACT to receipt pins: design ef959346ab7f..., pre-reg 9c574d87e..., graph 7e021c69f12e.... NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS, agreeing with lane self-9.0. Why not 9.5: (1) single seat, no second-seat check of the independent MRR recompute (0.4208
+
 ### ✅ t0727 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Arm H second-seat design review -> CANDIDATE-ALIVE
@@ -14071,6 +14103,14 @@ _Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict-t0725.md 0314bd491873..., battery-results-t0725.json 9a6e42eaf935..., seal-note-t0725.md d2a3f5991a6b... all sha256-match on disk; harness exists at dct-probe-t0725/run_battery_t0725.py but its sha256 (7b9caf289f5f...) differs from the claimed 92b891421496... — explained by the receipt's own disclosed post-seal harness edit (parti
 
+### ✅ t0725 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Read-only forensic verdict on landing of e654f16e8: push CLEAN, merge is the deviation
+
+**Receipt:** `twelve-lane-receipts/t0725-lane3.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0725-lane3.md exists; verdict doc hidden_files/lane-3/t0725-landing-verdict-e654f16e8.md exists (5084 bytes); its PR #2403 merge finding matches the parallel t0724-lane2 forensic independently. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS, below lane self-9.5. Why not 9.5: (1) single seat, no blind second se
+
 ### ✅ t0725 — Team 3, Naya Resolve Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** #2403 landing investigation conclusion + candidate branch rebuild
@@ -14087,6 +14127,14 @@ _Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: verdict doc hidden_files/lane-3/t0725-landing-verdict-e654f16e8.md exists (5084 bytes); git ls-remote shows refs/heads/naya/five-retrieval-auth-gate-t942 == e654f16e8a49e9a26309fd852695a0bef202673d, pin-exact to receipt. Correctly separated the routine push (CLEAN) from the #2455-class merge, every claim byte-cited. Kept from 9.
 
+### ✅ t0724 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Fix three reds on PR #2574 receipt-gate relevance repair (evidence re-bind, scorecard pin block, fixture fix)
+
+**Receipt:** `twelve-lane-receipts/t0724-lane9.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0724-lane9.md exists; git ls-remote refs/pull/2574/head returns EXACTLY 97b65bd11316fe91b324986b3d429d0c3ee0ff75 as receipted, so the action-time head leg still re-derives. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS, below lane self-9.5. Why not 9.5: (1) repair not merged and the fourth red (two independen
+
 ### ✅ t0724 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** fixed the three CI reds on PR #2574 (own receipt-gate repair)
@@ -14102,6 +14150,14 @@ _Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0724-lane9.md`
 
 **Evidence:** ARTIFACTS VERIFIED (git protocol + one REST body read): branch naya/lane9/receipt-relevance-t0710 @ 97b65bd11316fe91b324986b3d429d0c3ee0ff75 == refs/pull/2574/head == receipt pin == body merge_head_sha; ## Evidence re-bound (dead handles gone), ## SCORECARD-RECEIPT-PIN block present in live PR body (decided 2026-10-14T00:31:08-07:00, board comment 
+
+### ✅ t0724 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Independently re-derive retrieval-auth gate packet four section-1 pins and answer landing-event authorization question
+
+**Receipt:** `twelve-lane-receipts/t0724-lane2.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0724-lane2.md exists and is internally consistent; its central refutation (PR #2403 merge, merge commit 993975d55, second parent e654f16e8) is independently corroborated by the parallel t0725-lane3 receipt and verdict doc on disk. Action-time tip 92329c5795 no longer re-derives: git ls-remote HEAD is now c
 
 ### ✅ t0724 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -27604,6 +27660,12 @@ _Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261029-0803 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 08:03 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk filenames, in_flight=[]; receipt gate-stall-20261029-0803.md names all 31 disk briefs across its refusal classes (29 x exit 7 parent-authorship + 2 x exit 2 seat/routing bar), and
 
 ### ✅ 20261029-0658 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
