@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-29",
-  "receipt_basis_commit": "2e42ae284509b3c7ffdc15855362be9659875876",
-  "inventory_file_count": 1728,
+  "receipt_basis_commit": "36bbe35494d5c0882e8d54d3e01e241b85bf7ee5",
+  "inventory_file_count": 1729,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 897,
+    "05-MEMORY": 898,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -5414,6 +5414,11 @@
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json",
       "blob_sha": "0fc11ff78dc94e3ca8d05d1cdac346916d253673",
       "size": 4099
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/NAYANET-GRAND-MISSION-AND-PROJECT-HIERARCHY.md",
+      "blob_sha": "5fae1f2dfbb8736d61352988aae5527fd6b633d4",
+      "size": 9474
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md",
