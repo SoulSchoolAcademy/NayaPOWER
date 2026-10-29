@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13799,6 +13799,14 @@ _Last updated: 2026-10-29 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pre-reg file hidden_files/lane-2/arm-i-verdict-flip-prereg-t0734.md exists, sha256 16c444e5... EXACTLY matches receipt pin; t0719 pre-reg re-derivation claim is design-internal. Score 9.0, not 9.5, for one named gap: the circuit-breaker's designed next step — scorer verification of the §13 root-difference checklist plus the executor's CON
 
+### ✅ t0733 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Re-derivation of section-2 seam-churn claim +193/-10 - CONFIRMED
+
+**Receipt:** `twelve-lane-receipts/t0733-lane4.md`
+
+**Evidence:** VERIFIED in part this tick: hidden_files/surge-b/seam-churn-rederivation-t0733-lane4.md exists and its body carries the load-bearing claims (+193/-10 table row, 8 hunks, CONFIRMED verdict); board post comment 6164686647 exists via REST on issue #2537. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane self-claimed 9.5. Why not 9.5: (1) the tab
+
 ### ✅ t0733 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** seam-churn re-derivation §2 (tools/smart_note_v2.py +193/−10 at action-time tip)
@@ -13807,6 +13815,14 @@ _Last updated: 2026-10-29 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifact exists (hidden_files/surge-b/seam-churn-rederivation-t0733-lane4.md, 55 lines, content matches receipt claims); load-bearing claims verified independently on repo bytes: git diff 1b6f72de..92329c57 --numstat -- tools/smart_note_v2.py = 193 added / 10 deleted exact, both cited tip/base blobs exist. Why not 9.5: the receipt's published sha25
 
+### ✅ t0733 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat verdict on t0728 SMARTBLOCKS pilot - CANDIDATE-ALIVE
+
+**Receipt:** `twelve-lane-receipts/t0733-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pin-exact: hidden_files/lane-10/smartblocks-pilot-second-seat-verdict-t0733.md sha256 a90697fcd0071a89eba3ec36bc6979b88785e714d4c39620c06f0e0bb384d9eb matches receipt pin character-for-character; board post comment 6164652610 exists via REST on issue #2537. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane se
+
 ### ✅ t0733 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** second-seat verdict on the t0728 SMARTBLOCKS pilot (CANDIDATE-ALIVE)
@@ -13814,6 +13830,14 @@ _Last updated: 2026-10-29 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0733-lane10.md`
 
 **Evidence:** Verified: hidden_files/lane-10/smartblocks-pilot-second-seat-verdict-t0733.md exists with sha256 a90697fc... EXACTLY matching the receipt pin; CANDIDATE-ALIVE verdict + P1-fire + dispatcher SHA-mangling catch (D1) corroborated independently — lane4's receipt pin mismatch in this same cycle is the same failure class live. Board-post comment id left 
+
+### ✅ t0733 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Own-seat correction of stale #2459-hold line in t0721 venue comment
+
+**Receipt:** `twelve-lane-receipts/t0733-lane1.md`
+
+**Evidence:** VERIFIED this tick: board comment 6164507294 exists via REST on issue #2537 (exact id/issue_url); ruling file hidden_files/ruling-2459-hold-2026-10-13.md exists and carries the retired-hold language. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane self-claimed 9.5. Why not 9.5: (1) comment body (verbatim stale-line quote + ruling citation) 
 
 ### ✅ t0733 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -18547,6 +18571,14 @@ _Last updated: 2026-10-29 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/sealed-note-t0611-h-dc5.md sha256 exactly da9ffbec2e35ea36642b52822a855827e3208b9d2615cd4360536341049336f2 and instrument auto-retrieval/t0611_h_dc5.py exactly 118efc24d3d5f90a3f544294fc91d16bdf182354c245c14a0c408f7b1374478a - both match receipt pins byte-for-byte; results-t0611-h-dc5.json confirmed ABSENT (seal-before-run 
 
+### ✅ t0610 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Frozen t0593 claim-form discriminator vs full t0532 battery
+
+**Receipt:** `twelve-lane-receipts/t0610-lane6.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: auto-retrieval/arm_docclaim_t0593.py sha16 3eff30f1cfa37162, auto-retrieval/results-t0610-docclaim.json c3fc909af30ca84a, auto-retrieval/prereg-t0610-lane6.md eb995ca6179b290d - all match receipt pins. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: 
+
 ### ✅ t0610 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Frozen t0593 claim-form discriminator vs full t0532 battery, FP3 guard retained
@@ -18555,6 +18587,14 @@ _Last updated: 2026-10-29 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified all four pins exactly from live bytes: prereg eb995ca6179b290d, results-t0610-docclaim.json c3fc909af30ca84a, Mason's sealed results-t0593-docclaim.json 714fe2fba31f955a restored byte-identically after snapshot-restore, frozen instrument 3eff30f1cfa37162 pre==post (F5 holds). FALSIFIED verdict confirmed on frozen bytes across three seats (
 
+### ✅ t0610 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Blind re-judgment of injection-seam v0.2 auto-right
+
+**Receipt:** `twelve-lane-receipts/t0610-lane2.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: retrieval/injection-seam-v0.2-blind-rejudgment-t0610-lane2.md sha256 13578a1ced9fce05, retrieval/injection-seam-v0.2-results.json f64261cab7e3bbde, retrieval/injection-seam-v0.2-preregistration.json f21902b924794ded - all match receipt pins. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing
+
 ### ✅ t0610 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Blind re-judgment of injection-seam v0.2 auto-right (8-brief MET)
@@ -18562,6 +18602,14 @@ _Last updated: 2026-10-29 20:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0610-lane2.md`
 
 **Evidence:** Verified: retrieval/injection-seam-v0.2-blind-rejudgment-t0610-lane2.md sha256 exactly 13578a1ced9fce054079255489de6543eeb81258789fc6eff2c522c67cf26bab matches receipt pin; file mtime 2026-10-13 09:41:43 UTC matches receipt's claimed seal time, consistent with the pre-post ordering claim (board comment timestamp not re-read this tick - file evidenc
+
+### ✅ t0610 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE ledger extension: 7 holes closed, 1 exclusion documented, 1 re-judgment commissioned
+
+**Receipt:** `twelve-lane-receipts/t0610-lane11.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: retrieval/surge-evidence-ledger-t0610.json sha256 688b168d9c0eaf4b matches receipt pin; twelve-lane-receipts/t0541-lane11.md 9c504a6a1421a288 matches the receipt repin. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane self-score 9.0. Why not 9.5: (1) the t0605 prior-file pin no l
 
 ### ✅ t0610 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
