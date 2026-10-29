@@ -2,7 +2,7 @@
 
 **Generated:** 2026-10-29  
 **Receipt basis commit:** `a10128d94e73dcf5154a6cac46146bf38191dfa4`  
-**Inventory file count:** 1728  
+**Inventory file count:** 1729  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 897 |
+| 05-MEMORY | 898 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -1044,6 +1044,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1899/IB-SMART-NOTE-20261029-sn1899-the-only-real-mistake-the-one-that-isnt-noted.md` — `3af5edda9ec9` (7004 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1901/IB-SMART-NOTE-20261029-sn1901-the-lock-in-declaration-and-its-gate.md` — `bda26d2aec1c` (1907 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1902/IB-SMART-NOTE-20261029-sn1902-why-misses-still-happen-systems-not-intentions.md` — `8d277e9922ad` (1891 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1903/IB-SMART-NOTE-20261029-sn1903-so-synergize-optimize.md` — `4eed90224852` (8453 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md` — `1f9c9b0062a6` (1302 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)

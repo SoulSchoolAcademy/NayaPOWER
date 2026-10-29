@@ -2,7 +2,7 @@
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-29",
   "receipt_basis_commit": "a10128d94e73dcf5154a6cac46146bf38191dfa4",
-  "inventory_file_count": 1728,
+  "inventory_file_count": 1729,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 897,
+    "05-MEMORY": 898,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -5019,6 +5019,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1902/IB-SMART-NOTE-20261029-sn1902-why-misses-still-happen-systems-not-intentions.md",
       "blob_sha": "8d277e9922ade313036dbd785f6c2cdb05deac2f",
       "size": 1891
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1903/IB-SMART-NOTE-20261029-sn1903-so-synergize-optimize.md",
+      "blob_sha": "4eed9022485259e01627bd0c394c0de21b417e0d",
+      "size": 8453
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md",
