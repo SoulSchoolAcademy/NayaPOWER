@@ -218,3 +218,14 @@ A first-time human should quickly understand where they are, what matters, why i
 Apply this lens inside the existing eight-dimension page scorecard—not as a competing scorecard or design system. Current application order remains Mail → Connections → Growth, with each page judged on evidence and no claim of passing until independent verification exists. This intelligence is an extension of the existing Smart App / Intelligent Block philosophy, not a replacement for the canonical design law.
 
 **State:** Proposed addition pending review through PR. No Smart Note was created in this action because the current repository search shows overlapping/reused SN identifiers that must be reconciled before a new note ID can be safely assigned. No email broadcast is claimed; a verified Naya recipient list is not available in this tool context.
+
+
+## 10. THE SHARED NORTH STAR — NAYANET GRAND MISSION
+
+The eight-dimension build law remains the quality standard for each surface. The broader mission explaining **why the projects exist, how they fit together, who benefits, and how Project Intelligence can nest recursively** is maintained in the canonical companion:
+
+**[NayaNET — Grand Mission, Vision, Promise, and Project Hierarchy](../BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/NAYANET-GRAND-MISSION-AND-PROJECT-HIERARCHY.md)**
+
+Every project-level PI must link to that shared north star and define its local contract: purpose, contribution to its parent, success criteria, scope, authority, canonical truth, current state, owner, dependencies, next action, proof, and lessons. A project may be standalone or contain projects, subprojects, components, features, and tasks at any depth. Children inherit mission and applicable constraints by reference, never by copying the whole parent history. Conflicts with parent constraints or human authority must be surfaced, not silently resolved.
+
+The grand mission is strategic direction, not evidence that a capability is implemented. Current status, scores, and completion claims must come from canonical records and independently verifiable evidence.
