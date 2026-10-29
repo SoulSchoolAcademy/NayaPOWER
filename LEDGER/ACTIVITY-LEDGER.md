@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14119,6 +14119,14 @@ _Last updated: 2026-10-29 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED (git protocol): remote HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf == receipt tip == shared-state main_tip (no premise rot); refs/pull/2403/head e654f16e8a... == receipt pin; merge commit 993975d55 exists with parents [bc22abbcd, e654f16e8a] and 'Merge PR #2403' message -- the receipt's refutation of the t0715 packet's 'no PR, 
 
+### ✅ t0723 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** W5 corpus-stamping migration plan CANDIDATE (design only, retrieval-auth wire prep)
+
+**Receipt:** `twelve-lane-receipts/t0723-lane4.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0723-lane4.md exists; design doc hidden_files/lane-4/w5-stamping-plan-candidate-t0723.md exists and its live content still carries the receipted byte-true core (631 entries, 0 stamped, first-match table 28+576+1+2+24=631, _entry_key None for 576, 55 smart_link). NOT PHANTOM. Pin caveat, not falsification: 
+
 ### ✅ t0723 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** W5 stamping-plan CANDIDATE design + falsifiable acceptance battery
@@ -14134,6 +14142,14 @@ _Last updated: 2026-10-29 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0723-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED: tip pin 92329c5795ef8a50d02adf94ee6c91c313c26daf == shared-state main_tip (no premise rot); corpus blob 817865493df46eaa3da4255afbf8a40a71f494e3 at tip == 631 entries with ZERO retrieval_authorized -- the design's load-bearing measurement re-derives byte-exact via git cat-file; design doc hidden_files/lane-4/w5-stamping-plan-can
+
+### ✅ t0723 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Blind level-drill run VOIDED on instrument defect (key embedded in tool source, PR #2568)
+
+**Receipt:** `twelve-lane-receipts/t0723-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt t0723-lane10.md exists; void notice hidden_files/lane-10/level-drill-blind-run-t0723.md exists, names PR #2568 head 21f089d5... and the key() defect verbatim, and attests zero ratings written. NOT PHANTOM. Action-time head leg no longer re-derives: git ls-remote now returns PR #2568 head cbd073f4... (same m
 
 ### ✅ t0723 — Team 10, Naya Clarity Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -27588,6 +27604,12 @@ _Last updated: 2026-10-29 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261029-0658 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 06:58 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk filenames, in_flight=[]; receipt gate-stall-20261029-0658.md names all 31 disk briefs across its refusal classes (29 x exit 7 parent-authorship + 2 x exit 2 stamped/routing bar), 
 
 ### ✅ 20261029-0554 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
