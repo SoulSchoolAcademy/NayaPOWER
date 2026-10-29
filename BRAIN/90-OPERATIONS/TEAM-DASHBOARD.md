@@ -1,8 +1,8 @@
 # 🔱 Team Naya — Live Activity Dashboard
 
-*Don't tell me, show me. Generated 2026-10-29 02:15 UTC from live sources. Regenerated every wave (~10 min).*
+*Don't tell me, show me. Generated 2026-10-29 03:15 UTC from live sources. Regenerated every wave (~10 min).*
 
-**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 3 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
+**Team average:** 7.08/10 &nbsp;|&nbsp; **Open PRs:** 4 &nbsp;|&nbsp; **Active wave:** #49 (LAW, PROVE, BUILD)
 
 ## The Twelve
 
@@ -49,6 +49,9 @@
   - Run:** scheduled 2026-10-15 15:59:27Z · lane verify · 5/5 claims worked, ZERO DELTAS
 
 ## Open PRs by Area
+
+### KNOW (1)
+- [#3116](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3116) [NAYA 5] Cold-retrieve: regenerate brain index layer at 37dc15e5
 
 ### BUILD (3)
 - [#3108](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3108) Naya/mission state

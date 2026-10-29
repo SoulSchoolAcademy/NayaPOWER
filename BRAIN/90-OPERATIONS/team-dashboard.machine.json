@@ -1,6 +1,6 @@
 {
  "schema": "naya.team-dashboard.v1",
- "generated_utc": "2026-10-29T02:15:55+00:00",
+ "generated_utc": "2026-10-29T03:16:00+00:00",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "team_average": 7.08,
  "scorecard_edition": 1,
@@ -51,8 +51,15 @@
    "next_action": "Get the brain-index freshness law (PR #2388) merged, then prove a full day with zero drift recurrences.",
    "active_now": false,
    "board_lane": "#2175 lane KNOW",
-   "open_prs": [],
-   "open_pr_count": 0
+   "open_prs": [
+    {
+     "number": 3116,
+     "title": "[NAYA 5] Cold-retrieve: regenerate brain index layer at 37dc15e5",
+     "url": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/3116",
+     "draft": false
+    }
+   ],
+   "open_pr_count": 1
   },
   {
    "id": "act",
@@ -404,6 +411,6 @@
    "summary": "6/6 CLAIMS WORKED, ZERO DELTAS \u2014 15/15 tracked heads PINNED"
   }
  ],
- "open_pr_total": 3,
+ "open_pr_total": 4,
  "unassigned_prs": 3
 }
