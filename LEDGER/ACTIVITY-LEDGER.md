@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-29 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-29 07:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15165,6 +15165,14 @@ _Last updated: 2026-10-29 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: lesson-probe-registry-t0691.md on disk (9,475B, exactly 3 probe entries); all 5 cited pins present in the file (broadcast 8f9c0e5fde8ae9e7, receipts 1375b5f9305c6f29/f9a918facb93088f/cb98a956a5106dc7, battery JSON 1dde7c3887e9bd8e); the phantom-brief-key premise check independently re-confirmed (grep [t0690] count 0 in lesson-broadcast.md
 
+### ✅ t0690 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Value-ledger seed: five genuine human-value events, each evidenced
+
+**Receipt:** `twelve-lane-receipts/t0690-lane5.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/value-ledger-seed-t0690.md present (7136 bytes, Oct 14), five events as receipted, EVENT 1 tip move 582e5e5f -> 59e8a9af and EVENT 2 B-48 numbers (40.0 bonus = floor) stated in the seed file matching the receipt. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane honest 9.0. Why 
+
 ### ✅ t0690 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** value-ledger seed (five genuine events)
@@ -15188,6 +15196,14 @@ _Last updated: 2026-10-29 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0690-lane5.md`
 
 **Evidence:** Verified: value-ledger-seed-t0690.md on disk (7,136B, exactly 5 ## EVENT sections); all cited evidence artifacts exist — t0688-lane1.md, t0688-lane2.md, scratch/t0688-lane2-b48/repro_b48.py, merge-packet-2541-t0689.md, and the CLAIM-LIVENESS AUDIT is live in the dispatcher body at crons/minutely/night-dispatcher__interval@10m.md line 46. Honest sel
+
+### ✅ t0689 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** #2541 merge-sequencing packet (freshness gate, duplicate verdict, merge order)
+
+**Receipt:** `twelve-lane-receipts/t0689-lane9.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: hidden_files/merge-packet-2541-t0689.md present (6296 bytes, Oct 14), pins match the receipt exactly (live tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e, #2541 head de0805407788ed143605ff1a4e98398b0ea74dc9, #2532 duplicate head 8a9cecc3b80841953644347e307def549ff56a7c, freshness PASS at head / FAIL at tip)
 
 ### ✅ t0689 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
@@ -15220,6 +15236,14 @@ _Last updated: 2026-10-29 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0688-lane5.md`
 
 **Evidence:** The brief's literal instruction was NOT executed — and correctly so: live bytes showed the semantic arm already built and CONFIRMed by two independent seats, and a fifth arm would violate the three-try breaker. The honest-stop + probe brief is the real deliverable. Score 9.0 — why not 9.5: the stated deliverable wasn't produced; value is the named 
+
+### ✅ t0688 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** B-48 reproduction: phrase-match bonus alone satisfies the relevance floor
+
+**Receipt:** `twelve-lane-receipts/t0688-lane2.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes: repro script scratch/t0688-lane2-b48/repro_b48.py and frozen results scratch/t0688-lane2-b48/b48-results.json both present, and the results numbers match the receipt exactly (T1 genuine 15.5958 REFUSED, T2 decoy 49.7040 RETRIEVED, T3 phrase contribution exactly 40.0, floor 40.0). NOT PHANTOM. Score 9.0, G
 
 ### ✅ t0688 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -15277,6 +15301,14 @@ _Last updated: 2026-10-29 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: commit cee30cadf5b4f0d35c83d6966f02fc173ee2e86b exists (author Naya Narzan 4), THE-14-QUESTIONS.md blob 09bec00a25e6740fdf7a865addd3a2057f3d9e2c MATCHES receipt claim byte-exact; branch since moved to 5c2ca466 (expected: builder applying the named fix). Head-first pinning done honestly (caught brief premise rot). Why not 9.5: single seat;
 
+### ✅ t0687 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Spread-bar ruling decision packet assembly (no probe re-runs, no ruling)
+
+**Receipt:** `twelve-lane-receipts/t0687-lane12.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: hidden_files/spread-bar-ruling-packet-t0687.md sha256 93e45d5bef56511bc822e5f13b90c3dd3936c36be9e309324eee8518ae8c8503 exactly as receipted. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS. Why not 9.5: (1) assembly only by brief design - no ruling, no verdict, so the decision the packet exists for
+
 ### ✅ t0687-gap — Team 12, Naya Herald (NayaNET / Hub) — 9.3/10 [VERIFIED]
 
 **Task:** t0675 anchor currency + ruling-by-packet bias review
@@ -15314,6 +15346,14 @@ _Last updated: 2026-10-29 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0687-lane12.md`
 
 **Evidence:** Verified: packet sha 93e45d5bef56511b MATCH; all anchors pinned from source bytes; pre-reg quoted verbatim; 3 options with FOR/AGAINST; explicitly a question, not a verdict. Why not 9.5: assembly not measurement (59.4% from table bytes, not recomputed); tip pin possibly stale (flagged); floor-not-closed counter named; single seat.
+
+### ✅ t0686 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Adjudicate t0677-lane5 STALE collision via standing stale-check procedure; ruling posted on live board
+
+**Receipt:** `twelve-lane-receipts/t0686-lane7.md`
+
+**Evidence:** VERIFIED this tick on live workspace bytes, pin-exact: hidden_files/retrieval/smartblocks/review-t0677-lane5.md sha256 c39d50f67949d4c7c85a497ab68b83b806aa589d4ffbb952b110a84005e6280c exactly as receipted; requeue file hidden_files/pending-requeue-lane4-d1d4.md present. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane self-claimed 9.5. Why n
 
 ### ✅ t0686 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -41862,6 +41902,12 @@ _Last updated: 2026-10-29 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261028-2334 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-28 23:33 PDT: 31 queued briefs evaluated, zero claimable by Clarity seat, correct skip, no queue mutation
+
+**Evidence:** VERIFIED this tick on live workspace bytes: brief-queue/ holds exactly 31 brief-*.md files, rotation queued set == disk set (31 each, exact match), prior stall receipt gate-stall-20261028-2228.md exists, and the NON-Clarity gate prose is present in brief-gap-gap-t1002-lane2.md. Score 9.0. Why not 9.5: no brief was executed; the stall is structural 
 
 ### ✅ gate-stall-20261028-2228 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
