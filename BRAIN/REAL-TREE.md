@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-29  
-**Receipt basis commit:** `a10128d94e73dcf5154a6cac46146bf38191dfa4`  
-**Inventory file count:** 1729  
+**Receipt basis commit:** `e1482af1ee08aaf835d23b6ba31261bbdc5a32e4`  
+**Inventory file count:** 1733  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,11 +11,11 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 96 |
+| 01-GOVERNANCE | 99 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 898 |
+| 05-MEMORY | 899 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -160,6 +160,9 @@
 - `BRAIN/01-GOVERNANCE/0036-NAYA-CONSTITUTION-V1.ai.md` — `addbcabab138` (6327 bytes)
 - `BRAIN/01-GOVERNANCE/0036-NAYA-CONSTITUTION-V1.human.md` — `e45dc727fbff` (7590 bytes)
 - `BRAIN/01-GOVERNANCE/0036-naya-constitution-v1.machine.json` — `a443ff815ea4` (4165 bytes)
+- `BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.ai.md` — `6a364f8241b3` (7311 bytes)
+- `BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.human.md` — `1e78af263449` (1311 bytes)
+- `BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.machine.json` — `63f415a75a99` (1107 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md` — `2af14cb71410` (88406 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json` — `ab627b25a96b` (513665 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
@@ -1123,7 +1126,8 @@
 - `BRAIN/05-MEMORY/SUPER-NOTES/coverage-map.json` — `75eef18de6ad` (107566 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/coverage-map.verification.json` — `79c04cd5286c` (30886 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `8a02bda6be42` (27455 bytes)
-- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `0fc11ff78dc9` (4099 bytes)
+- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json` — `2645f375fd1c` (5764 bytes)
+- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/NAYANET-GRAND-MISSION-AND-PROJECT-HIERARCHY.md` — `5fae1f2dfbb8` (9474 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
 - `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-TEMPLATE.md` — `935fff7c308c` (11696 bytes)
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/INDEX.md` — `7afad9abac25` (1331 bytes)

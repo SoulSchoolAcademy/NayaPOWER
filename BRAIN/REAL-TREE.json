@@ -1,17 +1,17 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-29",
-  "receipt_basis_commit": "a10128d94e73dcf5154a6cac46146bf38191dfa4",
-  "inventory_file_count": 1729,
+  "receipt_basis_commit": "e1482af1ee08aaf835d23b6ba31261bbdc5a32e4",
+  "inventory_file_count": 1733,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 96,
+    "01-GOVERNANCE": 99,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 898,
+    "05-MEMORY": 899,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -639,6 +639,21 @@
       "path": "BRAIN/01-GOVERNANCE/0036-naya-constitution-v1.machine.json",
       "blob_sha": "a443ff815ea4dc0931c711273b3be0f85a2399be",
       "size": 4165
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.ai.md",
+      "blob_sha": "6a364f8241b3290f55b2e3f45b453c997a768817",
+      "size": 7311
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.human.md",
+      "blob_sha": "1e78af263449ba1ed16a74a3ffcef61875de3605",
+      "size": 1311
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.machine.json",
+      "blob_sha": "63f415a75a993879e2f0498593d4c9d860aed53a",
+      "size": 1107
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md",
@@ -5417,8 +5432,13 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/MANIFEST.json",
-      "blob_sha": "0fc11ff78dc94e3ca8d05d1cdac346916d253673",
-      "size": 4099
+      "blob_sha": "2645f375fd1cca53a5ea69a1add07e85868cdcf7",
+      "size": 5764
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/NAYANET-GRAND-MISSION-AND-PROJECT-HIERARCHY.md",
+      "blob_sha": "5fae1f2dfbb8736d61352988aae5527fd6b633d4",
+      "size": 9474
     },
     {
       "path": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md",
