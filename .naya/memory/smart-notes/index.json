@@ -16155,15 +16155,35 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-29 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "88c33ae875c10bac1d26b205bed444fe47e7f6b06a09407fc6566e446c6e9201"
+    },
+    {
+      "smart_note_id": "SN-1904",
+      "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1904-beneficial-intelligence",
+      "title": "Beneficial Intelligence — Capability With Judgment, Proven by Value",
+      "content_hash": "a7a8f65d63b7d287e4ee37a7ea26f04865b916e63a7a2a03f98724e48641e900",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/learning/SN-1904/IB-SMART-NOTE-20261030-sn1904-beneficial-intelligence.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEARNING",
+      "captured_at": "2026-10-30",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 05f104d9cec9aaf500f44e4a989342dbd83b8181 ('SN-1904: Beneficial Intelligence — capability with judgment, proven by value (door filing, Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-30 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "2994b8c2f0a11e7879e96c87334bd6e7c857ef5a88e43217463ed79a613e7703"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1904,
+    "next_sequence": 1905,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "434780cd6f7c1d14e1a00cf462c2b038e9fbea0cb5517219b59e29703a1ddf96"
+  "corpus_manifest_hash": "5843e6ff4d9c82858ee7b2686b899952d5d22f2e324a6737c7651f19139eb084"
 }

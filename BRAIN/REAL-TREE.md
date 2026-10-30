@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-29  
-**Receipt basis commit:** `e1482af1ee08aaf835d23b6ba31261bbdc5a32e4`  
-**Inventory file count:** 1733  
+**Generated:** 2026-10-30  
+**Receipt basis commit:** `f1fadb085ccfe1fcdcbe55fa3df4e42d843cc7c7`  
+**Inventory file count:** 1802  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,12 +15,12 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 899 |
+| 05-MEMORY | 900 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 455 |
+| 10-INTERFACES | 523 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
 | 90-OPERATIONS | 109 |
@@ -1049,6 +1049,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1902/IB-SMART-NOTE-20261029-sn1902-why-misses-still-happen-systems-not-intentions.md` — `8d277e9922ad` (1891 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1903/IB-SMART-NOTE-20261029-sn1903-so-synergize-optimize.md` — `4eed90224852` (8453 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md` — `1f9c9b0062a6` (1302 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/learning/SN-1904/IB-SMART-NOTE-20261030-sn1904-beneficial-intelligence.md` — `ee8ccc601cc1` (10817 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
@@ -1259,6 +1260,35 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/primo/README.md` — `265b4da93516` (900 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/primo/primo.css` — `4f4f54656e3b` (1382 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/buttons/primo/specimen.html` — `f89d5e64c685` (1489 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-agenda-list/README.md` — `a5ef060668c4` (2247 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-agenda-list/block.css` — `1d8d0e7defa8` (3337 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-agenda-list/specimen.html` — `0ecbd7c5bad6` (2559 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-date-picker/README.md` — `fdc01e900679` (2568 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-date-picker/block.css` — `d04ead6134bd` (3175 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-date-picker/block.js` — `1cc70ade3adf` (2526 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-date-picker/specimen.html` — `33d2249542b4` (1996 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-day-states/README.md` — `a2699d849288` (2358 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-day-states/block.css` — `d4224e934cd1` (2190 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-day-states/specimen.html` — `c45e03c0f325` (2371 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-event-card/README.md` — `2eb684018ae5` (2468 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-event-card/block.css` — `59babf4e148c` (3024 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-event-card/specimen.html` — `bd0550099883` (3169 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-month-board/README.md` — `93b242fc1bbf` (2502 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-month-board/block.css` — `1bb696d40cb9` (4571 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-month-board/block.js` — `0ca21775371c` (351 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-month-board/specimen.html` — `3e1f37a68043` (6749 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-bubbles/README.md` — `6bc20d15f4f7` (3213 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-bubbles/block.css` — `de17b445b1ae` (4093 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-bubbles/block.js` — `91e87304cbbf` (746 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-bubbles/specimen.html` — `4c5353a2a815` (4681 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-msg-list/README.md` — `af2f66669e3e` (3082 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-msg-list/block.css` — `276a977a46d9` (4125 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-msg-list/block.js` — `19be4a3c8a69` (1077 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-msg-list/specimen.html` — `03e9ae59dc0b` (4288 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-typing/README.md` — `91b27299be5f` (2530 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-typing/block.css` — `c2d2aca001f6` (1722 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-typing/block.js` — `f9c03d08ff1a` (1619 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-typing/specimen.html` — `5296b776853f` (2456 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/README.md` — `a6e86e4840fe` (1555 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/block.css` — `ba53410f3d77` (899 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/block.js` — `f16ddf16dc2e` (2337 bytes)
@@ -1267,6 +1297,21 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/block.css` — `a702cc02cf8a` (3694 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/block.js` — `9b84bc14fd40` (7340 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/specimen.html` — `61dd6ace8cdd` (2649 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-confirm/README.md` — `e777a3b81709` (3226 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-confirm/block.css` — `6491f6b72053` (7226 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-confirm/specimen.html` — `0b94cc548c47` (2648 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-error/README.md` — `f09e77a32f1d` (3242 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-error/block.css` — `735517c7caf2` (6350 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-error/specimen.html` — `095d05e4f550` (2555 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-method-picker/README.md` — `ca34b6b46f93` (2976 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-method-picker/block.css` — `640c707d5391` (5525 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-method-picker/specimen.html` — `7147fc712f8a` (2750 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-order-summary/README.md` — `78a212e23ceb` (3721 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-order-summary/block.css` — `6a7c1ab8f1b6` (10248 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-order-summary/specimen.html` — `8d2069dfc4b8` (4423 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-payment-form/README.md` — `5fba4002a6f8` (3160 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-payment-form/block.css` — `5506d12f46a1` (6009 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-payment-form/specimen.html` — `09976ef47be5` (3445 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/README.md` — `97b46652cfaa` (926 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/door.css` — `2e7b9041b398` (1926 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/specimen.html` — `13d2721fdf98` (1906 bytes)
@@ -1284,6 +1329,18 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/share-fab/README.md` — `5bd51ab55e24` (826 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/share-fab/share-fab.css` — `fd143f4de46c` (952 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/share-fab/specimen.html` — `96b9722e930a` (732 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-comment/README.md` — `a3ac420ae5f9` (2868 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-comment/block.css` — `56fae2451587` (1972 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-comment/block.js` — `4a0b6fae2ce8` (363 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-comment/specimen.html` — `9e94d47ed100` (2934 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-reactions/README.md` — `b9d87911bc63` (2567 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-reactions/block.css` — `aee5a3c0634a` (2378 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-reactions/block.js` — `1d514e8f3b2d` (2257 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-reactions/specimen.html` — `94a9afeb6edc` (4169 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-thread/README.md` — `e690e1439f56` (3633 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-thread/block.css` — `540d0fc2aa68` (7520 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-thread/block.js` — `9fa2f5ea941b` (1383 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-thread/specimen.html` — `fc49e3dbcb67` (9339 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/README.md` — `07f5d7e760fa` (1293 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/block.css` — `0205c1b5b0a8` (869 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/block.js` — `9d616edecf4c` (1038 bytes)
@@ -1322,7 +1379,7 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/metric-ribbon/README.md` — `8100f59e9259` (966 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/metric-ribbon/metric-ribbon.css` — `4c58f37c16e7` (1254 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/feed/metric-ribbon/specimen.html` — `eea5597bb5ad` (857 bytes)
-- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/index.json` — `4089c709c998` (72523 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/index.json` — `21b094699537` (109598 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-field/README.md` — `5364fae055b2` (767 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-field/nl-field.css` — `901ad238dbd6` (2154 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-field/specimen.html` — `338ee6ff137b` (1843 bytes)
@@ -1357,6 +1414,17 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/media/nl-player/README.md` — `f2d67c420a9b` (628 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/media/nl-player/nl-player.css` — `913b7f998848` (2321 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/media/nl-player/specimen.html` — `07e377fe2b0c` (2290 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-progress/README.md` — `eeb945538103` (2844 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-progress/block.css` — `960f0d37b3c6` (4353 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-progress/specimen.html` — `9c7d5c892986` (3160 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-stepper/README.md` — `879e5f2f6770` (3120 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-stepper/block.css` — `72fb5afca817` (4286 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-stepper/block.js` — `be433b0484e6` (1702 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-stepper/specimen.html` — `eae1df4424a0` (4016 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-welcome-card/README.md` — `cfa39e5f2c01` (2375 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-welcome-card/block.css` — `69d2f91036dc` (3310 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-welcome-card/block.js` — `75fafeeebbfc` (189 bytes)
+- `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-welcome-card/specimen.html` — `056124db8775` (2658 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/mini-orb/README.md` — `2f3cb933342e` (694 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/mini-orb/mini-orb.css` — `698d1f19cb25` (518 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/mini-orb/specimen.html` — `73ef7b8544fd` (1973 bytes)
@@ -1551,6 +1619,7 @@
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — `7e1e336df17b` (8020 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-LESSON.md` — `36ccfc24ae4f` (9104 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-TOOLKIT.md` — `9bf8e446cfd1` (6546 bytes)
+- `BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json` — `786e465af900` (607826 bytes)
 - `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json` — `a50ef2dd2e10` (266070 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.md` — `0e63b2413da5` (35445 bytes)
