@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-1907",
+ "intelligence": {
+  "title": "SN-1907 — ONE MIND NAMED NAYA — because it can be",
+  "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1907-one-mind-named-naya",
+  "smart_note_id": "SN-1907",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1907/IB-SMART-NOTE-20261030-sn1907-one-mind-named-naya.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-10-30. No runtime provenance invented.",
+  "ingested_at": "2026-10-30",
+  "essence": "Not twenty-six apps — one mind. Naya is one intelligent, living, alive mind-computer system, and every screen is a different window into the same awareness. Everything intentful, useful, helpful — everything makes sense — and everything extraordinary to the max level it can be. Because it can be.",
+  "human_view": "Shawn's dictation, verbatim:\n\n\"NAYA — the systems appear like one intelligent living alive mind computer system. Named Naya. Everything should be intentful, useful, helpful, makes sense — and be extraordinary to the max level it can be. It should be and must be. Because it can be. If you allow it to be, so make it be. Be a good bee for the hive, for life, for us all.\"",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-1907",
+   "title": "SN-1907 — ONE MIND NAMED NAYA — because it can be",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1907/IB-SMART-NOTE-20261030-sn1907-one-mind-named-naya.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-10-30 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1907/IB-SMART-NOTE-20261030-sn1907-one-mind-named-naya.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "f2f4af6d6e4946c8849f32d183eebaf09e27c86d"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
