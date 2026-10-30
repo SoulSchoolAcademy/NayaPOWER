@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12829,6 +12829,14 @@ _Last updated: 2026-10-30 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/surge-semantic-arm-prereg-t0782-lane5.md sha256 32b69a91... byte-exact; auto-retrieval/t0432_fingerprint.py 4ab5f359... matches the t0759 pin; both machine-law gate families recorded against the t0767 verdict file with the premise-falsification named (gates already run), not hidden. Score 9.5 clears 9.5 because every pin was 
 
+### ✅ t0780 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE arm (a) second-seat verdict on t0761 hypothesis-change note: CONFIRM with 3 mechanical conditions
+
+**Receipt:** `twelve-lane-receipts/t0780-lane3.md`
+
+**Evidence:** VERIFIED this tick on live bytes: verdict hidden_files/surge-a-verdict-t0780-lane3.md sha256 0e5c56bab7a97477e6c9d815973334a0ce137a087f3996f16518bc1264078eb2 byte-matches the receipt pin exactly (9,154 bytes); reviewed note lane-1/surge-a-hypothesis-change-t0761.md sha256 3b685b90c98f754c6151ba4ce8b7b951fa4a967c8a2746be948f3e0d56173efe byte-matches
+
 ### ✅ t0780 — Team 3, Naya Resolve Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat review of Lane 1's SURGE-(a) MCC hypothesis-change note — CONFIRM with C1-C3
@@ -12837,6 +12845,14 @@ _Last updated: 2026-10-30 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** GOOD, ONE MORE PASS. Verified from receipt evidence: verdict sealed at hidden_files/surge-a-verdict-t0780-lane3.md sha256 0e5c56ba...; note SHA 3b685b90... re-derived at action time (prefix matches brief); corpse verdicts re-derived from live receipt bytes in pass 2 (t0731-lane5 FALSIFIED, t0743-lane2 FROZEN-NOT-VIABLE — first-hand, not inherited);
 
+### ✅ t0780 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review of DEMOTE candidate on branch naya/demote-falsified-t0762: CONFIRM with conditions D1/D2
+
+**Receipt:** `twelve-lane-receipts/t0780-lane1.md`
+
+**Evidence:** VERIFIED in part on live bytes: verdict hidden_files/demote-second-review-t0780-lane1.md sha256 b5840fc14fd284f135312a88316c659cd27f0fdede9ca6b327b02ba77f4ccf4d byte-matches the receipt pin exactly (9,073 bytes); re-run script hidden_files/demote-second-review-t0780-lane1-rerun.py exists (11,596 bytes). NOT PHANTOM on the receipt's record plus the 
+
 ### ✅ t0780 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** second-seat review of DEMOTE verdict
@@ -12844,6 +12860,14 @@ _Last updated: 2026-10-30 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0780-lane1.md`
 
 **Evidence:** Verified: hidden_files/demote-second-review-t0780-lane1.md b5840fc1... byte-exact; lane-8/verdict-falsified-at-retrieve-t0758.md sha16 48f873518109fc1f matches; branch head 4c29f341 matches live remote. Independent 21/21 arithmetic re-derivation (zero deltas) and 27-check acceptance re-run from live git objects close the owed t0769 second-seat-revi
+
+### ✅ t0779 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-outcome channel v1 candidate spec (collection protocol + ledger row-shape + honesty rule + pilot plan)
+
+**Receipt:** `twelve-lane-receipts/t0779-lane11.md`
+
+**Evidence:** VERIFIED this tick on live bytes: spec hidden_files/human-outcome-channel-v1-t0779-lane11.md sha256 6eada75d93c388dbdcac7fefd95cae5e6a91470fb9e7a8c5c9aa519e28ecf5bc byte-matches the receipt pin exactly (12,026 bytes). NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, matching the receipt self-score 9.0. Why not 9.5: (1) candidate spec only - no ledger e
 
 ### ✅ t0779 — Team 11, Naya Clarity Heart (Human Value) — 9.0/10 [VERIFIED]
 
@@ -12861,6 +12885,14 @@ _Last updated: 2026-10-30 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** GOOD, ONE MORE PASS. Verified: spec file hidden_files/human-outcome-channel-v1-t0779-lane11.md on disk, sha256 prefix 6eada75d93c388db matches receipt pin; instrument/ledger SHAs re-derived this tick; 6-row census re-verified (0 human-facing); board comments 6181389172 + amendment 6181413151 on #2537; 3-pass self-scorecard with ten-thing accounting
 
+### ✅ t0778 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** #2599 NOW reconciliation against live bytes + mechanical conflicting-claim check design (paper replay of #2597)
+
+**Receipt:** `twelve-lane-receipts/t0778-lane10.md`
+
+**Evidence:** VERIFIED in part on surviving bytes: receipt file exists (11,146 bytes) and is internally consistent (9/13 NOW items hard-proof, 4/13 wave-report, #2599 patch 7,845->11,235 chars with read-back claimed). NOT PHANTOM on the receipt's own action-time record. Score 9.0, GOOD, ONE MORE PASS, matching the receipt self-score 9.0. Why not 9.5: (1) the Git
+
 ### ✅ t0778 — Team 10, Naya Verity Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Root-finder: #2599 NOW priorities reconciled against live bytes + conflicting-claim check design
@@ -12877,6 +12909,14 @@ _Last updated: 2026-10-30 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified live: #2603 head 9542e181c6e0b7e019899e5100855bf0e9ef9fb1 == server ref naya5/consensus-gate-seat-vocabulary (git ls-remote); #2600 head 6499295050b1d52942def024523bcbba70e7d652 == receipt pin; #2583 DRAFT @ 8a936546ea8e74be... prefix matches; #2597 head ce6a396f388722a0... prefix matches. Receipt documents: per-item RECONCILIATION block p
 
+### ✅ t0777 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat probe of level-drill key-split fix: RED/GREEN + planted-variation controls, 10/10 actions
+
+**Receipt:** `twelve-lane-receipts/t0777-lane7.md`
+
+**Evidence:** VERIFIED this tick in part on surviving bytes: receipt file exists and is internally consistent (action-time re-pin a8d01f0cde69722d9eb0b2a08362bb83458ebd9f claimed exact-match to the brief pin, pre-fix blob sha256 517ece163b... RED exit 1 on data literal, fixed tools/level_drill.py sha256 6b7cc5325d... GREEN exit 0, two planted-variation controls 
+
 ### ✅ t0777 — Team 7, Naya Clarity Narzan (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** Lane 9 t0765 key-split seal independent reproduce — CONFIRM (bottleneck #7 blind pipeline)
@@ -12892,6 +12932,14 @@ _Last updated: 2026-10-30 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0777-lane7.md`
 
 **Evidence:** Verified: branch naya/lane9/level-drill-keysplit-t0730 @ a8d01f0cde69722d9eb0b2a08362bb83458ebd9f on origin (git ls-remote, re-pinned twice, unmoved) == brief expected pin. Receipt documents an independent RED-first reproduction on a fresh checkout: pre-fix blob (parent cde0c63dd) exits 1 with BLINDNESS CHECK FAILED on the data literal, fixed head 
+
+### ✅ t0776 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2591 second-seat review: DECLINED (self-review prohibition), fact-pack delivered
+
+**Receipt:** `twelve-lane-receipts/t0776-lane9.md`
+
+**Evidence:** VERIFIED this tick on surviving bytes: receipt file exists (8233 bytes); its action-time claims are independently corroborated by ~/memory/2026-10-14.md line 3659, a separately written record naming the same receipt, the same re-pinned head 98426c3b6c8ff53fce4905232a5a6618e8f3abe0, the same CI states (Receipt gate SUCCESS 16:25Z flip, Team review F
 
 ### ✅ t0776 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
 
