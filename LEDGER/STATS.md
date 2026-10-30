@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-30 05:43 UTC_
+_Last updated: 2026-10-30 06:04 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6875
-- ✅ Verified (8+): 6808
+- **Total scored actions:** 6881
+- ✅ Verified (8+): 6814
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -15,15 +15,15 @@ _Last updated: 2026-10-30 05:43 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 496 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 495 | 8.8 | 9.5 |
-| Team 3 | Naya Judge | 457 | 9.0 | 10 |
+| Team 1 | Naya Verity | 497 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 496 | 8.8 | 9.5 |
+| Team 3 | Naya Judge | 458 | 9.0 | 10 |
 | Team 4 | Naya Mason | 440 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 565 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 333 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 443 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 460 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 589 | 9.0 | 9.5 |
+| Team 7 | Naya Conductor | 444 | 9.0 | 10 |
+| Team 8 | Naya Sentinel | 461 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 590 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 790 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 420 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 363 | 9.2 | 9.5 |
@@ -1842,8 +1842,8 @@ _Last updated: 2026-10-30 05:43 UTC_
 - **t0651:** 2 actions, avg 8.8/10
 - **t0653:** 4 actions, avg 9.0/10
 - **t0654:** 2 actions, avg 9.0/10
-- **t0655:** 1 actions, avg 9.0/10
-- **t0657:** 6 actions, avg 8.8/10
+- **t0655:** 2 actions, avg 8.8/10
+- **t0657:** 9 actions, avg 8.8/10
 - **t0658:** 2 actions, avg 8.8/10
 - **t0659:** 2 actions, avg 9.0/10
 - **t0660:** 4 actions, avg 8.9/10
@@ -1957,7 +1957,7 @@ _Last updated: 2026-10-30 05:43 UTC_
 - **t0757:** 5 actions, avg 9.0/10
 - **t0758:** 3 actions, avg 9.2/10
 - **t0759:** 3 actions, avg 9.2/10
-- **t0760:** 7 actions, avg 9.2/10
+- **t0760:** 9 actions, avg 9.2/10
 - **t0761:** 6 actions, avg 9.1/10
 - **t0762:** 3 actions, avg 9.0/10
 - **t0763:** 14 actions, avg 9.0/10
