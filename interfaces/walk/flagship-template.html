@@ -2615,7 +2615,8 @@ html.os-calm .os-src.live::before,html.os-calm .os-src.born::before,html.os-calm
    numbers count up on arrival, each sparkline's head breathes, a true
    change flashes the board, and the board itself carries ambient
    light in its own color — a person FEELS the number is live data. */
-.os-dash-pulse .stat-card{position:relative;overflow:hidden}
+.os-dash-pulse .os-roomline{margin:6px 0 16px;}
+.stat-card{position:relative;overflow:hidden}
 @keyframes osAmbient{from{opacity:.07}to{opacity:.2}}
 .os-dash-pulse .os-jewel{--bc:var(--jc);animation:pulseGlow 3.2s infinite}
 .os-dash-lab{display:flex;align-items:center;gap:6px}
@@ -2846,7 +2847,7 @@ html.os-calm .os-sl-live i{animation:none!important}
 <div class="ph-main">
 
 <div class="ph-sec os-view on" id="os-wall" data-os-view="home" data-block="wall">
-<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> Live Wall</div>
+<div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> Live Wall</div>\n<div class="os-roomline">\n<a class="ph-connect" href="https://nayanet.live/welcome">Take the Welcome walk →</a>\n</div>\n
 <div class="ph-card" style="--ac:#a06bff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> Post to this wall</h3>
 <input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
@@ -2862,10 +2863,10 @@ html.os-calm .os-sl-live i{animation:none!important}
 <div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Your World, Live &middot; Dashboard</div>
 <div class="os-dash" id="os-dash">
 <div class="os-dash-pulse" id="os-dash-pulse">
-<div class="ph-card stat-card os-litobj" style="--ac:#a06bff;"><div class="os-count" id="os-dash-n-posts">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> WALL POSTS</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-posts" fill="#a06bff" opacity="0.20" points=""/><polyline id="os-dash-spark-posts" pathLength="100" fill="none" stroke="#a06bff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-posts" style="--ac:#a06bff;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-posts-note"></p></div>
-<div class="ph-card stat-card os-litobj" style="--ac:#3fb8ff;"><div class="os-count" id="os-dash-n-messages">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">✉️</span> MESSAGES RECEIVED</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-messages" fill="#3fb8ff" opacity="0.20" points=""/><polyline id="os-dash-spark-messages" pathLength="100" fill="none" stroke="#3fb8ff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-messages" style="--ac:#3fb8ff;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-messages-note"></p></div>
-<div class="ph-card stat-card os-litobj" style="--ac:#2fe89e;"><div class="os-count" id="os-dash-n-invites">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">💌</span> INVITES RECORDED</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-invites" fill="#2fe89e" opacity="0.20" points=""/><polyline id="os-dash-spark-invites" pathLength="100" fill="none" stroke="#2fe89e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-invites" style="--ac:#2fe89e;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-invites-note"></p></div>
-<div class="ph-card stat-card os-litobj" style="--ac:#ffbf3d;"><div class="os-count" id="os-dash-n-people">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">👥</span> PEOPLE AROUND YOU</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-people" fill="#ffbf3d" opacity="0.20" points=""/><polyline id="os-dash-spark-people" pathLength="100" fill="none" stroke="#ffbf3d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-people" style="--ac:#ffbf3d;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-people-note"></p></div>
+<div class="ph-card stat-card os-litobj" style="--ac:#a06bff;cursor:pointer;" data-os-go="home" title="Open the Live Wall — where these posts live"><div class="os-count" id="os-dash-n-posts">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#a06bff">✦</span> WALL POSTS</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-posts" fill="#a06bff" opacity="0.20" points=""/><polyline id="os-dash-spark-posts" pathLength="100" fill="none" stroke="#a06bff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-posts" style="--ac:#a06bff;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-posts-note"></p></div>
+<div class="ph-card stat-card os-litobj" style="--ac:#3fb8ff;cursor:pointer;" data-os-go="inbox" title="Open the Smart Mail inbox — where these messages live"><div class="os-count" id="os-dash-n-messages">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">✉️</span> MESSAGES RECEIVED</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-messages" fill="#3fb8ff" opacity="0.20" points=""/><polyline id="os-dash-spark-messages" pathLength="100" fill="none" stroke="#3fb8ff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-messages" style="--ac:#3fb8ff;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-messages-note"></p></div>
+<div class="ph-card stat-card os-litobj" style="--ac:#2fe89e;cursor:pointer;" data-os-go="growth" title="Open Smart Growth — where these invites live"><div class="os-count" id="os-dash-n-invites">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#2fe89e">💌</span> INVITES RECORDED</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-invites" fill="#2fe89e" opacity="0.20" points=""/><polyline id="os-dash-spark-invites" pathLength="100" fill="none" stroke="#2fe89e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-invites" style="--ac:#2fe89e;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-invites-note"></p></div>
+<div class="ph-card stat-card os-litobj" style="--ac:#ffbf3d;cursor:pointer;" data-os-go="people" title="Open Connections — where these people live"><div class="os-count" id="os-dash-n-people">&hellip;</div><div class="os-dash-lab"><span class="os-jewel os-jewel-sm" style="--jc:#ffbf3d">👥</span> PEOPLE AROUND YOU</div><span class="os-spark-wrap"><svg class="os-spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polygon id="os-dash-sparkfill-people" fill="#ffbf3d" opacity="0.20" points=""/><polyline id="os-dash-spark-people" pathLength="100" fill="none" stroke="#ffbf3d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points=""/></svg><i class="os-spark-dot" id="os-dash-sparkdot-people" style="--ac:#ffbf3d;right:0;top:50%;"></i></span><p class="os-note" id="os-dash-n-people-note"></p></div>
 </div>
 <div class="ph-card os-sl-board" style="--ac:#ff9a5a;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ff9a5a">🔗</span> Smart Links <span class="os-sl-live"><i></i>LIVE</span></h3>
@@ -2981,7 +2982,7 @@ html.os-calm .os-sl-live i{animation:none!important}
 </div>
 </div>
 </div>
-<div class="ph-card" style="--ac:#e84fff;">
+<div class="ph-card" style="--ac:#a06bff;">\n<h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">🚪</span> The rooms this world opens</h3>\n<p class="os-note">Every room this world is plugged into — listed here, one tap away. Nobody hunts for anything. What you do here appears there; what happens there feeds this world.</p>\n<div class="os-dash-plugins">\n<div class="os-src live os-litobj" style="--ac:#a06bff;">\n<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#a06bff;">☀️</span><div class="os-src-id"><span class="os-src-name">Intel Today</span><span class="os-src-chip live">● LIVE</span></div></div>\n<p class="os-src-note">What matters today — one ultimate view of the day. This world’s Today view mirrors it.</p>\n<p class="os-src-feeds">Opens → the Intel Today room</p>\n<a class="ph-connect os-src-door" href="https://nayanet.live/rooms/today">Open Intel Today</a>\n</div>\n<div class="os-src live os-litobj" style="--ac:#3fb8ff;">\n<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#3fb8ff;">✉️</span><div class="os-src-id"><span class="os-src-name">Smart Mail</span><span class="os-src-chip live">● LIVE</span></div></div>\n<p class="os-src-note">Every message that matters — the one mail. This world’s inbox is its surface here.</p>\n<p class="os-src-feeds">Opens → the Smart Mail room</p>\n<a class="ph-connect os-src-door" href="https://nayanet.live/rooms/mail">Open Smart Mail</a>\n</div>\n<div class="os-src live os-litobj" style="--ac:#2fe89e;">\n<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#2fe89e;">🌱</span><div class="os-src-id"><span class="os-src-name">Growth</span><span class="os-src-chip live">● LIVE</span></div></div>\n<p class="os-src-note">The invite→join loop — this world growing, honestly measured from real activity.</p>\n<p class="os-src-feeds">Opens → the Growth room</p>\n<a class="ph-connect os-src-door" href="https://nayanet.live/rooms/growth">Open Growth</a>\n</div>\n<div class="os-src live os-litobj" style="--ac:#ffbf3d;">\n<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#ffbf3d;">📊</span><div class="os-src-id"><span class="os-src-name">Reports</span><span class="os-src-chip live">● LIVE</span></div></div>\n<p class="os-src-note">What happened, what it means, what is next — stats live here, behind one button.</p>\n<p class="os-src-feeds">Opens → the Reports room</p>\n<a class="ph-connect os-src-door" href="https://nayanet.live/rooms/reports">Open Reports</a>\n</div>\n<div class="os-src live os-litobj" style="--ac:#ff9a5a;">\n<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#ff9a5a;">👥</span><div class="os-src-id"><span class="os-src-name">Connections</span><span class="os-src-chip live">● LIVE</span></div></div>\n<p class="os-src-note">The people you know — shared records, one truth; both doors stay in sync.</p>\n<p class="os-src-feeds">Opens → the Connections room</p>\n<a class="ph-connect os-src-door" href="https://nayanet.live/rooms/connections">Open Connections</a>\n</div>\n<div class="os-src live os-litobj" style="--ac:#ff5e6c;">\n<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#ff5e6c;">📚</span><div class="os-src-id"><span class="os-src-name">Library</span><span class="os-src-chip live">● LIVE</span></div></div>\n<p class="os-src-note">Everything worth keeping — the archive that guides first, then shows.</p>\n<p class="os-src-feeds">Opens → the Library</p>\n<a class="ph-connect os-src-door" href="https://nayanet.live/rooms/library">Open Library</a>\n</div>\n<div class="os-src live os-litobj" style="--ac:#e84fff;">\n<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#e84fff;">🚪</span><div class="os-src-id"><span class="os-src-name">Welcome</span><span class="os-src-chip live">● LIVE</span></div></div>\n<p class="os-src-note">Where citizens are born — the ten-question walk that built this world.</p>\n<p class="os-src-feeds">Opens → the Welcome walk</p>\n<a class="ph-connect os-src-door" href="https://nayanet.live/welcome">Take the Welcome walk</a>\n</div>\n<div class="os-src live os-litobj" style="--ac:#a06bff;">\n<div class="os-src-top"><span class="os-jewel os-jewel-lg" style="--jc:#a06bff;">🏠</span><div class="os-src-id"><span class="os-src-name">Personal app</span><span class="os-src-chip live">● LIVE</span></div></div>\n<p class="os-src-note">This world at its canonical address — the citizen’s own home.</p>\n<p class="os-src-feeds">Opens → this world, canonical</p>\n<a class="ph-connect os-src-door" href="https://nayanet.live/personal">Open Personal app</a>\n</div>\n</div>\n</div>\n<div class="ph-card" style="--ac:#e84fff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">✍️</span> Help shape this living app</h3>
 <p class="os-note">One line &mdash; it lands in this app&rsquo;s Smart Mail inbox, where the person who runs this app reads it.</p>
 <div class="os-fb-row"><input class="os-input" id="os-dash-fb-body" type="text" placeholder="What would make this front better?"><button class="ph-connect" id="os-dash-fb-btn" type="button">Send</button></div>
@@ -3071,7 +3072,7 @@ html.os-calm .os-sl-live i{animation:none!important}
 <div id="os-about-faces"></div>
 </div></div><div class="ph-sec os-view" data-os-view="today" data-block="today">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> Today</div>
-<div class="ph-card" style="--ac:#3fb8ff;">
+<div class="os-roomline">\n<a class="ph-connect" href="https://nayanet.live/rooms/today">Open the Intel Today room →</a>\n</div>\n<div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">☀️</span> Today</h3>
 <div id="os-today-date" style="font-size:24px;font-weight:900;color:#fff;">&hellip;</div>
 <p>The latest real activity in this app &mdash; newest first, live.</p>
@@ -3084,7 +3085,7 @@ html.os-calm .os-sl-live i{animation:none!important}
 
 <div class="ph-sec os-view" id="feed" data-os-view="notes" data-block="smart-notes">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#a06bff;color:#a06bff;"></span> Smart Notes</div>
-<div class="ph-card" style="--ac:#a06bff;">
+<div class="os-roomline">\n<a class="ph-connect" href="https://nayanet.live/rooms/library">Open the Library →</a>\n</div>\n<div class="ph-card" style="--ac:#a06bff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">✦</span> Quick Capture</h3>
 <p>Smart note this &mdash; capture a thought, and it lands here as a card in this app.</p>
 <div style="display:flex;gap:10px;margin-top:12px;">
@@ -3110,7 +3111,7 @@ html.os-calm .os-sl-live i{animation:none!important}
 <div id="os-note-samples"></div>
 </div><div class="ph-sec os-view" id="people" data-os-view="people" data-block="connections">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#2fe89e;color:#2fe89e;"></span> Connections</div>
-<div id="os-faces"><div class="os-skel"></div></div>
+<div class="os-roomline">\n<a class="ph-connect" href="https://nayanet.live/rooms/connections">Open the Connections room →</a>\n</div>\n<div id="os-faces"><div class="os-skel"></div></div>
 <div id="os-members"></div>
 <div id="os-born"></div>
 <div id="os-timeline" hidden></div>
@@ -3136,7 +3137,7 @@ html.os-calm .os-sl-live i{animation:none!important}
 
 <div class="ph-sec os-view" data-os-view="message" data-block="message">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#ffbf3d;color:#ffbf3d;"></span> Message</div>
-<div class="ph-card" style="--ac:#ffbf3d;">
+<div class="os-roomline">\n<a class="ph-connect" href="https://nayanet.live/rooms/mail">Open the Smart Mail room →</a>\n</div>\n<div class="ph-card" style="--ac:#ffbf3d;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ffbf3d">✉️</span> Message this app</h3>
 <div class="os-fieldwrap"><input class="os-input" id="os-msg-name" type="text" placeholder="Your name" autocomplete="name"><button class="os-mic" type="button" data-os-mic="os-msg-name" aria-label="Dictate your name" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
 <div class="os-fieldwrap"><input class="os-input" id="os-msg-subject" type="text" placeholder="Subject"><button class="os-mic" type="button" data-os-mic="os-msg-subject" aria-label="Dictate the subject" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
@@ -3148,14 +3149,14 @@ html.os-calm .os-sl-live i{animation:none!important}
 
 <div class="ph-sec os-view" data-os-view="inbox" data-block="inbox">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#ff9a5a;color:#ff9a5a;"></span> Smart Mail Inbox</div>
-<div class="os-status" id="os-inbox-meta"></div>
+<div class="os-roomline">\n<a class="ph-connect" href="https://nayanet.live/rooms/mail">Open the Smart Mail room →</a>\n</div>\n<div class="os-status" id="os-inbox-meta"></div>
 <div id="os-inbox-list"><div class="os-skel"></div></div>
 <div id="os-inbox-pulse"></div>
 </div>
 
 <div class="ph-sec os-view" data-os-view="growth" data-block="growth">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#ff5e6c;color:#ff5e6c;"></span> Smart Growth &middot; Invites</div>
-<div class="ph-card" style="--ac:#ff5e6c;">
+<div class="os-roomline">\n<a class="ph-connect" href="https://nayanet.live/rooms/growth">Open the Growth room →</a>\n</div>\n<div class="ph-card" style="--ac:#ff5e6c;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#ff5e6c">🌱</span> Invite a friend</h3>
 <input class="os-input" id="os-inv-name" type="text" placeholder="Friend&rsquo;s name" autocomplete="off">
 <input class="os-input" id="os-inv-email" type="email" placeholder="Friend&rsquo;s email" autocomplete="off">
@@ -3180,7 +3181,7 @@ html.os-calm .os-sl-live i{animation:none!important}
 
 <div class="ph-sec os-view" data-os-view="reports" data-block="reports">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#e84fff;color:#e84fff;"></span> Reports</div>
-<div class="ph-card stat-card" style="--ac:#e84fff;">
+<div class="os-roomline">\n<a class="ph-connect" href="https://nayanet.live/rooms/reports">Open the Reports room →</a>\n</div>\n<div class="ph-card stat-card" style="--ac:#e84fff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#e84fff">📊</span> The report &mdash; the counts first</h3>
 <div class="os-rcirc-row">
 <div class="os-rcirc-cell"><span class="os-rcirc" style="--ac:#a06bff"><b id="os-rep-posts">&hellip;</b></span><span class="os-rcirc-l">WALL POSTS</span></div>
