@@ -16175,6 +16175,26 @@
         "note": "published directly as a BRAIN projection in commit 05f104d9cec9aaf500f44e4a989342dbd83b8181 ('SN-1904: Beneficial Intelligence — capability with judgment, proven by value (door filing, Resolve)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-30 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "2994b8c2f0a11e7879e96c87334bd6e7c857ef5a88e43217463ed79a613e7703"
+    },
+    {
+      "smart_note_id": "SN-1904",
+      "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1904-what-it-means-to-be-the-most-intelligent",
+      "title": "What It Means to Be the Most Intelligent",
+      "content_hash": "0cc48222e78c1c049101aca17300751d4658874ce9ec38674881dafbae5f32fc",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1904/IB-SMART-NOTE-20261030-sn1904-what-it-means-to-be-the-most-intelligent.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-30",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 88b407865136a49f2d4435678eb921dc23d97718 ('SN-1904: What It Means to Be the Most Intelligent') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-30 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "d322d540bc05e206dd8483c61b76a845ef182c2e6e6c844ff3c1c8ebd20c575e"
     }
   ],
   "sequence_policy": {
@@ -16185,5 +16205,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "5843e6ff4d9c82858ee7b2686b899952d5d22f2e324a6737c7651f19139eb084"
+  "corpus_manifest_hash": "02723b4f88515f91a626d2bdb58353b5abe117d03bfc245ee1dfe5a8220f3446"
 }
