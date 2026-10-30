@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 01:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13493,6 +13493,14 @@ _Last updated: 2026-10-30 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: verdict JSON lane-11/mtc-v1-t0747-lane11/verdict-t0747-lane11.json sha256 126a76a4d2ec14546ac10dc6c18339b0614899865ac94b7164ea77c47572d32a MATCH receipt pin; verdict=CONFIRM in file; pre-reg lane-6/mtc-v1-prereg-t0737.md sha256 9199c9abbb29bf0ea3d9cea51884d5dc1f8952488fb06a8e131db4a7bfae2879 MATCH brief pin; cards/seal-note/executor scrip
 
+### ✅ t0746 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat review of PR #2581 grader math: APPROVE
+
+**Receipt:** `twelve-lane-receipts/t0746-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes as far as the historic pin allows: the receipt file exists and is internally coherent (branch head cde0c63d, parent 21f089d5, full blob SHAs for scenarios/key/grader/proof, non-vacuous blindness differential new-exit-0 vs old-exit-1 on the def key() line-96 defect, all body Evidence handles claimed resolved). PR #25
+
 ### ✅ t0746 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Independent second-seat review of PR #2581's grader math (level-drill key-split redesign)
@@ -13500,6 +13508,14 @@ _Last updated: 2026-10-30 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0746-lane8.md`
 
 **Evidence:** VERIFIED live: PR #2581 head cde0c63ddc1a2a59911b82334bd93ff761e5045e == receipt action-time pin (API + ref naya/lane9/level-drill-keysplit-t0730, PR open); board verdict comment 6167157705 exists on #2537 (3975 bytes, lane-8 header). Review re-derived on live branch bytes: grader math parity byte-level vs old instrument (exact=1.0/off-by-one=0.5/e
+
+### ✅ t0746 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Independent APPROVE-CONDITIONAL review of PR #2576 at the action-time head
+
+**Receipt:** `twelve-lane-receipts/t0746-lane3.md`
+
+**Evidence:** VERIFIED this tick on live bytes as far as the historic pin allows: the receipt file exists and is internally coherent (old pin 7847be06 superseded mid-run, live head 87b9f188, identical tree f772e206, 47/47 suite, 9/9 then 8/8 controls, two-layer Receipt-gate root cause from the gate's own regex). PR #2576 ref now reads 24c0f56d, not the receipt's
 
 ### ✅ t0746 — Team 3, Naya Resolve Judge (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -13516,6 +13532,14 @@ _Last updated: 2026-10-30 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0746-lane10.md`
 
 **Evidence:** VERIFIED: action-time log auto-retrieval/ask-world-queries.jsonl sha256 0fa1f99d2a4a67eb6feed1331c365b6dceb2674ef4d929ed731bea7543747972 MATCHES receipt pin and live log (no mid-build move); deliverable surge-c/top20-needs-t0741-lane11.md sha256 339cad889ce2b4b06cd489e3cd0358813d827d32fe51b330119ed3ec61aaf740 MATCHES Lane 11's quoted pin (SUSPECT c
+
+### ✅ t0745 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** GAD pre-reg section 6 cold battery executor verdict: CONFIRM
+
+**Receipt:** `twelve-lane-receipts/t0745-lane5.md`
+
+**Evidence:** VERIFIED this tick, hash-exact: lane-12/gad-prereg-t0735-FROZEN.md sha256 5123bfc6cbb59632f808e622f358d0142126cd59f7f341364633925eb4bf9bc0, lane-5/gad-executor-t0745-lane5.py d54c0be48772e22fa8e4a4bc90eb697de197d31609a640117c779db06279b7fc, lane-5/gad-verdict-numbers-t0745-lane5.json 688848684f2592616dc94d779bab3f90962af30838981364500f7cebec643b48 
 
 ### ✅ t0745 — Team 5, Naya Verity Seeker (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -18641,6 +18665,14 @@ _Last updated: 2026-10-30 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all three receipt SHA16 pins match live bytes (sealed-prereg-digitfracture-t0619.md 1acf397f28c91ae0; arm_digitfracture_t0619.py 9c2a03ef27944e42; results-t0619-digitfracture.json b790974a3d5ce39f); verdict-t0619-digitfracture.md present; file mtimes (11:06 UTC) consistent with the seal-before-run claim. Real value: seal-before-measuremen
 
+### ✅ t0619 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE R3 skew analysis, organic-vs-synthetic split, NO-GO on hypertuning
+
+**Receipt:** `twelve-lane-receipts/t0619-lane4.md`
+
+**Evidence:** VERIFIED this tick, hash-prefix-exact: retrieval/query-needs-skew-t0619.md c085eba2b40040b7... and twin query-needs-skew-t0619-twin.txt 286d3efb1a5cf46f... both match the receipt's pins. NOT PHANTOM. Analysis is machine-mechanical: identical 15/15 top-20 across windows with +1 probe-row delta proves N_windows=1, and the 73.3% synthetic split (22 sy
+
 ### ✅ t0619 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** CANDIDATE R3 skew analysis - verdict NO-GO (WAIT) on SMARTBLOCKS hypertuning
@@ -18648,6 +18680,14 @@ _Last updated: 2026-10-30 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0619-lane4.md`
 
 **Evidence:** Verified: retrieval/query-needs-skew-t0619.md sha256 c085eba2b40040b7..., twin.txt 286d3efb1a5cf46f..., skew_analysis_t0619.py - all exist, 16-hex prefixes match receipt pins. Real value: organic-vs-synthetic filter applied BEFORE the first tally line, which dissolved the stability question (t0601 vs t0614 identical 15/15 = one window observed twic
+
+### ✅ t0619 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Selection-independence rung for SURGE slice (a), fresh mechanical re-selection + ARM
+
+**Receipt:** `twelve-lane-receipts/t0619-lane2.md`
+
+**Evidence:** VERIFIED this tick, hash-exact on live bytes: auto-retrieval/sealed-note-t0619-overlap-selection.md sha256 ebacee86b9263668e8f2d282df2b4f5c762e1edce47e56162a4bfa086fe0d6db matches the receipt exactly; results-t0619-overlap-rerun.json prefix ff6f2fb8c9c0cf08 matches; selection JSON and run_overlap_cells_t0619.py exist; the frozen-instrument pin 4d43
 
 ### ✅ t0619 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -18657,6 +18697,14 @@ _Last updated: 2026-10-30 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: auto-retrieval/sealed-note-t0619-overlap-selection.md exists, sha256 16-hex prefix ebacee86b9263668 matches receipt's full pin; selection JSON + results JSON + both scripts (select/run_overlap_cells_t0619.py) + verdict doc all present; results JSON carries seal_sha identical to the sealed note. Real value: fresh-seat mechanical selection 
 
+### ✅ t0619 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE cold-retrieve acceptance contract for SURGE slice (d)
+
+**Receipt:** `twelve-lane-receipts/t0619-lane11.md`
+
+**Evidence:** VERIFIED this tick, hash-exact: retrieval/cold-retrieve-acceptance-t0619.md sha256 149238563df32287f4ac66cd1cff65fcf329c54320f5ea7d823b6f3350ed31dc matches the receipt exactly; cited t0614 basis re-derived 0b1cb3adc2322cb2 prefix match. NOT PHANTOM. Four sections present, 13 CR- checks with exact commands, fail-closed CR-F1, citable CR-ACCEPT verdi
+
 ### ✅ t0619 — Team 11, Naya Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** CANDIDATE cold-retrieve acceptance contract (SURGE slice d)
@@ -18664,6 +18712,14 @@ _Last updated: 2026-10-30 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0619-lane11.md`
 
 **Evidence:** Verified: retrieval/cold-retrieve-acceptance-t0619.md exists, sha256 149238563df3... FULL 64-hex match to receipt; t0614 basis pin 0b1cb3adc2322cb2 re-derived from live bytes, matches. Real value: banned explanation class written INTO the contract (cache-made-automatic-retrieval-read-zero is disproved, not disputed), 13 mechanical CR- checks, fail-
+
+### ✅ t0618 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE intelligence value observatory spec
+
+**Receipt:** `twelve-lane-receipts/t0618-lane12.md`
+
+**Evidence:** VERIFIED this tick, hash-exact on live bytes: hub-prep/hv-observatory-spec-t0618.md sha256 49a53b053c6f645edd93ab197d518f9e3ac050e190e197091f53d697d92ce6bc matches the receipt exactly; pinned run JSONs match too (full 60f0a0ecd29cf48...2bcd3, window 94b7a1e16910a2...f4bb). NOT PHANTOM. Seven panels, three tongues, six named rendering holes, spec-on
 
 ### ✅ t0618 — Team 12, Naya Herald (NayaNET / Hub) — 8.5/10 [VERIFIED]
 
@@ -28242,6 +28298,12 @@ _Last updated: 2026-10-30 00:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261029-1746 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 17:46 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md) and twelve-lane-rotation.json queued = 31 with EXACT set match to disk filenames, in_flight=[]; all 31 disk brief stems are named in the receipt (29 exit-7 parent-authorship + 2 exit-2 seat/routing bar as claimed); both seat-bar briefs independently conf
 
 ### ✅ 20261029-1641 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
