@@ -16215,15 +16215,35 @@
         "note": "published directly as a BRAIN projection in commit 2224ffc2a5aebfb219384896671544d162192a74 ('docs(notes): file SN-1905 the adopted pricing canon (CANON, 2026-10-30)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-30 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "e23b89fc0d2eedb65029828f66baa7d5f4f6c6dcfe16d592d236afccbe4016ed"
+    },
+    {
+      "smart_note_id": "SN-2041",
+      "intelligent_block_id": "IB-SMART-NOTE-20261030-sn2041-theres-always-a-way-around-the-wall",
+      "title": "There's Always a Way Around the Wall",
+      "content_hash": "f6546391e2147c0a24c550955ebd967acaec1852c66b2f87682e37744ec83ac1",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/learning/SN-2041/IB-SMART-NOTE-20261030-sn2041-theres-always-a-way-around-the-wall.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "LEARNING",
+      "captured_at": "2026-10-30",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan at Shawn's direction and filed same-push complete (page + capture + registry entry) on 2026-10-30 — no obligation skipped, nothing backfilled. Number SN-2041 allocated by full-graph claim census at 2026-10-30T16:46Z: SN-1906 through SN-2040 are claimed in flight on the naya4/smart-notes-2026-09-30 staging branch while the registry's next_sequence still read 1906; SN-2041 was the first number claimed on no surface (registry, every branch-tip tree, commit messages)."
+      },
+      "page_hash": "a639749a14fe1b50c131f6368a00e262189d42e9246a1db29988a2d19d2ea787"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 1906,
+    "next_sequence": 2042,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "b48adabe0e6c787728b3e9ec0a94f488f3a174d0df60194b4a232f6dc661e69b"
+  "corpus_manifest_hash": "47a41b6e194654991aaaad2f2648f44b3581521ebc9256c742e94d99b1becdb0"
 }

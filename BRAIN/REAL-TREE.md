@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-30  
-**Receipt basis commit:** `2224ffc2a5aebfb219384896671544d162192a74`  
-**Inventory file count:** 1805  
+**Receipt basis commit:** `3561734f3486ddfd1c6b1916c91d6b5b52e4d034`  
+**Inventory file count:** 1806  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -20,7 +20,7 @@
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 523 |
+| 10-INTERFACES | 524 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
 | 90-OPERATIONS | 109 |
@@ -1191,6 +1191,7 @@
 - `BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.md` — `f7c31dc624eb` (1092 bytes)
 - `BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json` — `ec4123eea3df` (8959 bytes)
 - `BRAIN/10-INTERFACES/0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md` — `c549ed2f71ee` (5118 bytes)
+- `BRAIN/10-INTERFACES/ALIGNMENT-MASTER-20261030.md` — `2f195eb7505d` (48571 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/MAINTENANCE-AUDIT-2026-10-09.md` — `25ddc1f38dec` (4312 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/README.md` — `56fc0352191b` (4218 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/SMART-BLOCKS.md` — `4e550f99f448` (2596 bytes)
