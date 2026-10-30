@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15497,6 +15497,14 @@ _Last updated: 2026-10-30 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: verify-cites-verifier-lint-c2b.py sha16 f6a75505594270dd matches receipt pin exactly; battery-t0709-lane10/ exists with 4 fixtures + run-battery.py; battery-t0700-lane10/run-battery.py and t0700-lane10.md receipt exist; verifier-registry-t0674.json exists (v0.1, Oct 13). Clears 9.5 because: honest second-seat work - re-ran t0700'
 
+### ✅ t0709 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** RED-first re-prove + CANDIDATE P3 patch for verify_integration() PARTIAL-bend (quarantine persistence)
+
+**Receipt:** `twelve-lane-receipts/t0709-lane1.md`
+
+**Evidence:** VERIFIED on live bytes: CANDIDATE patch hidden_files/scratch/t0709-lane1-verify/P3-partial-quarantine-persistence.patch sha16 e346df9389f5e076 MATCHES the receipt pin exactly; sealed harness harness.py (7492 bytes) and pre/post module copies (learn_ingest_PRE.py, learn_ingest_PATCHED.py) all exist, era-correct Oct 14. The receipt's action-time lear
+
 ### ✅ t0709 — Team 1, Naya Verity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** PARTIAL-ingest quarantine bend: RED-first diagnosis + P3 CANDIDATE patch
@@ -15512,6 +15520,14 @@ _Last updated: 2026-10-30 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0709-lane1.md`
 
 **Evidence:** ARTIFACT VERIFIED: patch scratch/t0709-lane1-verify/P3-partial-quarantine-persistence.patch sha256 e346df93... matches receipt pin; hidden_files/learn/learn_ingest.py sha256 7e689177... matches pin AND is unmodified (live bytes untouched, patch stayed in scratch); harness.py + learn_ingest_PRE.py + learn_ingest_PATCHED.py all present. Clears 9.5 be
+
+### ✅ t0708 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat independent re-prove of Sage's t0703 verify_integration() PARTIAL-bend verdict
+
+**Receipt:** `twelve-lane-receipts/t0708-lane11.md`
+
+**Evidence:** VERIFIED in substance on live bytes: verdict doc hidden_files/lane-11/verify-integration-bent-secondseat-verdict-t0708.md exists (5295 bytes) and carries the receipt's action-time pin 7e689177...7d611 with the t0703 drift root-caused (DETECT rebuild, get_blob_text 2-arg); own battery hidden_files/lane-11/t0708-heart-probe-battery.py (9899 bytes) an
 
 ### ✅ t0708 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
 
@@ -29162,6 +29178,12 @@ _Last updated: 2026-10-30 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261030-0414 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-30 04:13 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued = 31 with EXACT set match to disk files, in_flight=[]; parsing the receipt's blocked section gives exactly 31 unique brief names matching the disk set name for name (0 only-receipt, 0 only-disk); both seat-bar briefs confirmed o
 
 ### ✅ 20261030-0311 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
