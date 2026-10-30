@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: calendar/cal-month-board</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:560px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .demo-note{ font-size:12px; color:#9aa3b5; margin:6px 0 12px; }
+  .demo-ctl button{ font:inherit; font-size:12px; letter-spacing:.06em; color:#e8eaf2; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:8px 16px; margin:0 8px 8px 0; cursor:pointer; }
+  .demo-ctl button:hover{ border-color:#a06bff; box-shadow:0 0 18px -4px rgba(160,107,255,.7); }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Month-view board</h2>
+  <div class="cal cal-month">
+    <div class="cal-head">
+      <h2 class="cal-title">October <small>2026</small></h2>
+      <div class="cal-nav">
+        <button class="cal-chev" aria-label="Previous month"><i></i></button>
+        <button class="cal-chev next" aria-label="Next month"><i></i></button>
+      </div>
+    </div>
+    <div class="cal-week" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+    <div class="cal-grid" role="grid" aria-label="October 2026">
+      <div class="cal-day is-out" role="gridcell" tabindex="0"><span class="dnum">28</span></div>
+      <div class="cal-day is-out" role="gridcell" tabindex="0"><span class="dnum">29</span></div>
+      <div class="cal-day is-out" role="gridcell" tabindex="0"><span class="dnum">30</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">1</span>
+        <div class="cal-pill" style="--pc:#a06bff"><span class="t">09:00</span>Deep work</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">2</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">3</span>
+        <div class="cal-pill" style="--pc:#e84fff"><span class="t">18:00</span>Mara's party</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">4</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">5</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">6</span>
+        <div class="cal-pill" style="--pc:#3fb8ff"><span class="t">10:30</span>Design sync</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">7</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">8</span>
+        <div class="cal-pill" style="--pc:#2fe89e"><span class="t">07:00</span>Run</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">9</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">10</span>
+        <div class="cal-pill" style="--pc:#e84fff"><span class="t">all day</span>Anniversary</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">11</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">12</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">13</span>
+        <div class="cal-pill" style="--pc:#ffbf3d"><span class="t">17:00</span>Ship deadline</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">14</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">15</span>
+        <div class="cal-pill" style="--pc:#3fb8ff"><span class="t">14:00</span>1:1 with Sam</div>
+        <div class="cal-dots" aria-label="2 more events"><i style="--pc:#a06bff"></i><i style="--pc:#2fe89e"></i></div>
+        <button class="cal-more">+2 more</button></div>
+      <div class="cal-day is-today is-selected" role="gridcell" tabindex="0" aria-current="date"><span class="dnum">16</span>
+        <div class="cal-pill" style="--pc:#a06bff"><span class="t">09:00</span>Deep work</div>
+        <div class="cal-pill" style="--pc:#3fb8ff"><span class="t">10:30</span>Standup</div>
+        <div class="cal-pill" style="--pc:#ffbf3d"><span class="t">15:00</span>Launch decision</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">17</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">18</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">19</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">20</span>
+        <div class="cal-pill" style="--pc:#a06bff"><span class="t">3d →</span>Design sprint</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">21</span>
+        <div class="cal-pill" style="--pc:#a06bff"><span class="t">→</span>Sprint ctd.</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">22</span>
+        <div class="cal-pill" style="--pc:#a06bff"><span class="t">→ end</span>Sprint ends</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">23</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">24</span>
+        <div class="cal-pill" style="--pc:#2fe89e"><span class="t">08:00</span>Dentist</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">25</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">26</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">27</span>
+        <div class="cal-pill" style="--pc:#3fb8ff"><span class="t">11:00</span>Board review</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">28</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">29</span></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">30</span>
+        <div class="cal-pill" style="--pc:#ffbf3d"><span class="t">16:00</span>Q4 planning</div></div>
+      <div class="cal-day" role="gridcell" tabindex="0"><span class="dnum">31</span>
+        <div class="cal-pill" style="--pc:#e84fff"><span class="t">20:00</span>Halloween</div></div>
+      <div class="cal-day is-out" role="gridcell" tabindex="0"><span class="dnum">1</span></div>
+    </div>
+  </div>
+</div>
+<script src="block.js"></script>
+</body>
+</html>
