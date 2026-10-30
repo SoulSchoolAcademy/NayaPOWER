@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 03:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17777,6 +17777,14 @@ _Last updated: 2026-10-30 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on disk: persistence contract MATCH (f6f048b6...), repair script MATCH (b531e857...), extended sibling JSON MATCH (06dac8ba...), demo recompute script MATCH (7eb54c54...), recompute log exists, original results-t0628-lane2-inv.json sha16=1e78d1df9be30c3e MATCHES the receipt's untouched claim. Score 9.0 (GOOD, ONE MORE PASS), not 9.5, becau
 
+### ✅ t0645 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Brief-pin gate: live-queue run + adversarial stress + wiring note (bare-filename finding)
+
+**Receipt:** `twelve-lane-receipts/t0645-lane7.md`
+
+**Evidence:** VERIFIED this tick, hash-prefix-exact on live bytes: wiring note hidden_files/brief-pin-gate-wiring.md fcec3134d192c124 matches the receipt exactly; gate script bin/verify-brief-pins.py 0b0d57ce1888b415 at exactly 6963 bytes matches; adversarial brief 8aa4873bc241854d matches. Evidence-label defect confirmed and bounded: the queue proof log actuall
+
 ### ✅ t0645 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Brief-pin gate: live-queue run + adversarial stress + wiring note
@@ -17801,6 +17809,14 @@ _Last updated: 2026-10-30 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: corpus pin t0569-t0645 has 170 rows incl. all 4 lettered-tick receipts (t0580b x2, t0581b, t0582b) with the v2 amendment documented in-file; hv_output run1/run2 byte-identical (sha 8fcd9744... matches receipt); metric_audit 37KB + m3 prescan + dispute prescan + m3_review_t0645.txt + window_summary all present; feedback-feed FP-001 appends
 
+### ✅ t0644 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Blinding-checklist negative control: constructed-clean sealed-probe brief + 10/10 PASS control doc (pair complete)
+
+**Receipt:** `twelve-lane-receipts/t0644-lane9.md`
+
+**Evidence:** VERIFIED this tick, hash-prefix-exact on live bytes: control doc hidden_files/lane-9/blinding-checklist-negative-control-t0644.md sha256 5ab8bb4880817957 matches the receipt exactly; constructed-clean brief t0644-clean-brief-CONSTRUCTED-EXAMPLE.md be31fb7974998192 matches exactly; example bundle pre-reg faede534f78d15b7 matches exactly; bundle dir 
+
 ### ✅ t0644 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** blinding-checklist negative control: constructed-clean sealed-probe brief + 10/10 PASS control doc (pair complete)
@@ -17808,6 +17824,14 @@ _Last updated: 2026-10-30 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0644-lane9.md`
 
 **Evidence:** Verified: all 3 cited artifacts exist on disk with sha256 prefixes byte-matching the receipt (control doc 5ab8bb4880817957, constructed brief be31fb7974998192, sealed pre-reg faede534f78d15b7; bundle dir present, MANIFEST.sha256 on disk). Score 9.0 (GOOD, ONE MORE PASS). Kept from 9.5 by the lane's own two named gaps: (1) the negative control passe
+
+### ✅ t0644 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** R2 >=5 re-validation probe pre-reg sealed (probe-fresh rows, HEIR-4 exclusion)
+
+**Receipt:** `twelve-lane-receipts/t0644-lane6.md`
+
+**Evidence:** VERIFIED this tick, seal-exact on live bytes: hidden_files/lane-6/t0644-r2-prereg-sealed.md seal recomputed per its header recipe (remove the line beginning SEAL_SHA256:, hash the rest) -> dde6b078ceedb80c2a6f555e22fc65c20cb28c6e837eefa0d4da8c51e03837fd, byte-exact match to the receipt. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, matching lane sel
 
 ### ✅ t0644 — Team 6, Naya Heir (Successor Transfer) — 9.0/10 [VERIFIED]
 
