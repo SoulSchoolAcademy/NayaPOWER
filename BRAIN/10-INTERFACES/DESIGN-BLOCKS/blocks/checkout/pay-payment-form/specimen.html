@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: checkout/pay-payment-form</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:560px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .demo-note{ font-size:12px; color:#9aa3b5; margin:6px 0 12px; }
+  .demo-ctl button{ font:inherit; font-size:12px; letter-spacing:.06em; color:#e8eaf2; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:8px 16px; margin:0 8px 8px 0; cursor:pointer; }
+  .demo-ctl button:hover{ border-color:#a06bff; box-shadow:0 0 18px -4px rgba(160,107,255,.7); }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Payment form</h2>
+  <form class="pay-board pay-form" action="/checkout/pay" method="post" autocomplete="on" novalidate>
+    <span class="pay-corner" aria-hidden="true"><i>◆</i></span>
+    <header class="pay-head">
+      <p class="pay-kicker">PAYMENT</p>
+      <h3 class="pay-title">Card details</h3>
+    </header>
+
+    <div class="pay-field">
+      <input id="pay-name" class="pay-input" type="text" name="cardholder_name"
+             placeholder=" " autocomplete="cc-name" required>
+      <label class="pay-label" for="pay-name">Name on card</label>
+      <p class="pay-err" id="err-name" hidden>Name helps us match the card — how does it read on the front?</p>
+    </div>
+
+    <div class="pay-field">
+      <input id="pay-number" class="pay-input pay-input--card" type="text" name="card_number"
+             placeholder=" " inputmode="numeric" autocomplete="cc-number"
+             pattern="[0-9\s]{13,23}" required aria-describedby="err-number">
+      <label class="pay-label" for="pay-number">Card number</label>
+      <span class="pay-brand" aria-hidden="true"></span>
+      <p class="pay-err" id="err-number" hidden>That number looks short — card numbers are usually 16 digits. Take another look.</p>
+    </div>
+
+    <div class="pay-field-row">
+      <div class="pay-field">
+        <input id="pay-expiry" class="pay-input" type="text" name="card_expiry"
+               placeholder=" " inputmode="numeric" autocomplete="cc-exp"
+               pattern="(0[1-9]|1[0-2])\s?\/\s?\d{2}" required aria-describedby="err-expiry">
+        <label class="pay-label" for="pay-expiry">Expiry · MM / YY</label>
+        <p class="pay-err" id="err-expiry" hidden>Expiry reads month, then year — like 04 / 28.</p>
+      </div>
+      <div class="pay-field">
+        <input id="pay-cvc" class="pay-input" type="password" name="card_cvc"
+               placeholder=" " inputmode="numeric" autocomplete="cc-csc"
+               pattern="\d{3,4}" required aria-describedby="err-cvc">
+        <label class="pay-label" for="pay-cvc">CVC</label>
+        <p class="pay-err" id="err-cvc" hidden>The 3 digits on the back — 4 on the front for Amex.</p>
+      </div>
+    </div>
+
+    <button type="submit" class="naya-btn pay-submit" disabled>Pay $535.68</button>
+    <p class="pay-secure">Locked in transit. We never see your full card number — only the payment processor does.</p>
+  </form>
+</div>
+</body>
+</html>
