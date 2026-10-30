@@ -1,0 +1,132 @@
+/* Smart Block CSS: checkout/pay-method-picker
+ * Source: gap-blocks/checkout-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-PAY-005
+ */
+
+/* Shared PAY board shell (Law 3 board formula) — carried from PAY-001 so this family is self-contained */
+
+.pay-board{
+  --ground:#050507; --ink:#fbfbfd;
+  --magenta:#e84fff; --purple:#a06bff; --indigo:#6675ff; --blue:#3fb8ff;
+  --emerald:#35e0a1; --green:#2fe89e; --lime:#b8ee57; --gold:#ffbf3d;
+  --orange:#ff9a5a; --red:#ff5e6c;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --tone:#a06bff; --tone-rgb:160,107,255; /* default: choosing intelligence */
+  background:linear-gradient(160deg,#1a171f 0%,#09090d 55%,#030304 100%);
+  border:1.5px solid rgba(160,107,255,.38);
+  border-radius:24px;
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,.12),
+    inset 0 -8px 18px rgba(0,0,0,.55),
+    0 5px 0 #020203,
+    0 17px 0 -8px rgba(160,107,255,.16),
+    0 35px 75px rgba(0,0,0,.7),
+    0 0 40px -17px rgba(160,107,255,.5);
+  padding:28px 30px 26px;
+  position:relative;
+  transition:border-color .28s var(--ease), box-shadow .28s var(--ease), transform .28s var(--ease);
+}
+
+.pay-board:hover{
+  transform:translateY(-5px);
+  border-color:rgba(160,107,255,.8);
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,.14),
+    inset 0 -8px 18px rgba(0,0,0,.55),
+    0 5px 0 #020203,
+    0 17px 0 -8px rgba(160,107,255,.2),
+    0 35px 75px rgba(0,0,0,.7),
+    0 0 46px -14px rgba(160,107,255,.85);
+}
+
+.pay-corner{
+  position:absolute; top:14px; right:16px; font-size:22px; color:#fff;
+  text-shadow:0 0 14px rgba(160,107,255,.9); opacity:.9;
+}
+
+.pay-head{ margin:0 0 20px; }
+
+.pay-kicker{
+  margin:0 0 6px; font-size:12px; letter-spacing:.32em; color:rgba(255,255,255,.72);
+}
+
+.pay-title{
+  margin:0; font-family:Georgia,'Times New Roman',serif; font-size:24px;
+  font-weight:600; color:var(--ink);
+  text-shadow:0 2px 8px rgba(0,0,0,.6), 0 0 22px rgba(160,107,255,.35);
+}
+
+/* ---------- PAY-005 method picker ---------- */
+.pay-methods{ --tone:#a06bff; --tone-rgb:160,107,255; }
+.pay-method{
+  --jc:#a06bff; --jc-rgb:160,107,255;
+  display:flex; align-items:center; gap:14px; width:100%;
+  padding:14px 16px; margin-bottom:10px; border-radius:16px; cursor:pointer;
+  background:rgba(255,255,255,.03);
+  border:1.5px solid rgba(255,255,255,.55);
+  color:#fbfbfd; font:inherit; text-align:left;
+  transition:border-color .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s cubic-bezier(.16,.84,.22,1), transform .18s cubic-bezier(.16,.84,.22,1);
+}
+.pay-method input[type="radio"]{
+  position:absolute; opacity:0; width:1px; height:1px; /* the row IS the control */
+}
+.pay-method:hover{
+  transform:translateY(-2px);
+  border-color:rgba(var(--jc-rgb),.8);
+  box-shadow:0 0 26px -6px rgba(var(--jc-rgb),.7);
+}
+.pay-method:active{ transform:translateY(1px); }
+.pay-method:focus-within{ outline:2px solid #fff; outline-offset:3px; }
+
+/* selected: the choice ignites purple — choosing intelligence */
+.pay-method.is-selected{
+  border-color:#a06bff;
+  background:linear-gradient(160deg, rgba(160,107,255,.14) 0%, rgba(255,255,255,.03) 70%);
+  box-shadow:0 0 32px -6px rgba(160,107,255,.8), inset 0 1px 0 rgba(255,255,255,.12);
+}
+.pay-method.is-selected:hover{ transform:translateY(-2px); box-shadow:0 0 38px -4px rgba(160,107,255,.9), inset 0 1px 0 rgba(255,255,255,.12); }
+.pay-mcheck{
+  margin-left:auto; width:30px; height:30px; border-radius:50%;
+  display:grid; place-items:center; font-size:15px; color:#fff;
+  border:1.5px solid rgba(255,255,255,.4);
+  opacity:0; transform:scale(.7);
+  transition:opacity .18s cubic-bezier(.16,.84,.22,1), transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s cubic-bezier(.16,.84,.22,1);
+}
+.pay-method.is-selected .pay-mcheck{
+  opacity:1; transform:scale(1);
+  border-color:#a06bff; box-shadow:0 0 20px -2px rgba(160,107,255,.9);
+}
+
+/* brand jewels — identity in the brand's own color */
+.pay-mbrand{
+  flex:0 0 40px; width:40px; height:40px; border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.6);
+  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.85) 0%, transparent 45%),
+             radial-gradient(circle at 50% 50%, var(--bc,#444) 0%, #050507 100%);
+  box-shadow:0 0 16px -2px var(--bc,#444);
+}
+.pay-mbrand.is-visa{ --bc:#3fb8ff; }
+.pay-mbrand.is-mastercard{ --bc:#ff9a5a; }
+.pay-mbrand.is-amex{ --bc:#35e0a1; }
+.pay-mbrand--plus{
+  --bc:#a06bff; display:grid; place-items:center;
+  font-size:20px; color:#fff; font-weight:300;
+}
+.pay-mbody{ flex:1 1 auto; min-width:0; }
+.pay-mname{ display:block; font-size:15px; font-weight:700; color:#fbfbfd; font-variant-numeric:tabular-nums; }
+.pay-mdefault{
+  font-style:normal; font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+  color:#ffbf3d; border:1px solid rgba(255,191,61,.5); border-radius:999px;
+  padding:2px 9px; margin-left:8px; vertical-align:2px;
+}
+.pay-mmeta{ display:block; font-size:13px; color:rgba(255,255,255,.68); margin-top:3px; }
+.pay-method--new{ --jc:#a06bff; --jc-rgb:160,107,255; background:transparent; border-style:dashed; }
+.pay-method--new:hover{ border-style:solid; }
+.pay-mgo{ margin-left:auto; font-size:18px; color:rgba(255,255,255,.7); transition:transform .18s cubic-bezier(.16,.84,.22,1), color .18s; }
+.pay-method--new:hover .pay-mgo{ transform:translateX(4px); color:#a06bff; }
+.pay-methods-note{ margin:14px 2px 0; font-size:13px; color:rgba(255,255,255,.68); text-align:center; }
+
+@media (prefers-reduced-motion:reduce){
+  .pay-method,.pay-mcheck,.pay-mgo{ transition:none; }
+  .pay-method:hover{ transform:none; }
+}
