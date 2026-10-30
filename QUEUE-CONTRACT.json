@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-29T21:49:25Z",
-  "tip": "e445a597d6f1ead7da104e5051ba9751fdc7ed4f",
+  "generated_at": "2026-10-30T03:53:14Z",
+  "tip": "c1bbce5db1bcc229cf519c7964caf8450e7a6e54",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,34 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "22958da9b658e12dcb85f8bb5e0b9b55d5dfb4d4"
+      "head": "3e163b71ddab1faddda90a528d667a377199aae4"
+    },
+    {
+      "number": 3126,
+      "title": "Regenerate brain index at basis c1bbce5d (post-3125 freshness cure)",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "ecbb9175d87f465bcaff65fee0574c3293572949"
+    },
+    {
+      "number": 3127,
+      "title": "Door cure: SN-1904 What-It-Means capture + registry entry (backfill)",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "f07f7a790cb9da0d3c6c0a2fb4e0db8e15a23bc3"
+    },
+    {
+      "number": 3128,
+      "title": "docs(brain): learning event 2026-10-29",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "6e4cd6e026b51c36020e62189a996659afd879ad"
     }
   ]
 }
