@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 01:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 01:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9973,6 +9973,14 @@ _Last updated: 2026-10-30 01:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/bin/claim-brief.py SHA-256 == 0bcb2d9664cb4410a9a35cdc18bc701a900765872e46985417d97eae53918ec7 (matches the receipt's claimed SHA exactly); hidden_files/bin/lift-fixtures/ holds exactly 14 files; kit hidden_files/lane-10/check-run-t0986-lane10/ holds the 994-line byte diff, claim-brief.sha256, and the self-test output (exit 0
 
+### ✅ t0983 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Byte-verified drain-state follow-up: 29 gated briefs re-classified, stamp-spec routing state pinned
+
+**Receipt:** `twelve-lane-receipts/t0983-lane10.md`
+
+**Evidence:** Verified: check-run dir hidden_files/lane-10/check-run-t0983-lane10/ present (30 files: 28 fresh .out + exits.txt + extra); receipt cites fresh dry-run histogram {2:10, 7:18}, falsifiers written before the mechanical pass and all held, board-absence claim pinned to a bounded ~1,266-comment scan with parse-fail retries, and the mid-run '300 comments
+
 ### ✅ t983 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** t0983-lane10 drain-state audit (29 gate-brief dry-runs + board stamp-spec routing scan)
@@ -13469,6 +13477,14 @@ _Last updated: 2026-10-30 01:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: cited board post #2537 comment 6167590868 exists (GET 200, lane-agent bot, on the live board). Work read-only; falsifier test correctly applied: #2576 runs differed in BODY (re-pinned 6s before, receipt-pin read at 09:59:29Z vs 'no attestations' at 09:43:37Z), #2579 verdicts moved 403->403->200 with transport, gate never misjudged. Score 
 
+### ✅ t0747 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SCOPE-LAW slice D5a+D5b + tamper proof in smartblocks pilot harness
+
+**Receipt:** `twelve-lane-receipts/t0747-lane4.md`
+
+**Evidence:** VERIFIED this tick on live bytes as far as the historic pin allows: receipt file exists and is internally coherent (unanimous block pins + machine log-pin check, 5 tamper controls a1/a2/b/c/d with named exit-2 flags and exit-0 positive control, real-bytes fail-closed TALLY-PIN-MISMATCH on stale blocks 71dbd286... vs live tally 7c33bbd8...). Cited p
+
 ### ✅ t0747 — Team 4, Naya Clarity Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SCOPE-LAW slice: D5a unanimous block pins + D5b machine log-pin check in lookup-match.py; tally-t0710.py persists log_sha256; D5c set-vs-order named refusals; 5-control tamper rig; real-bytes fail-closed demo
@@ -13476,6 +13492,14 @@ _Last updated: 2026-10-30 01:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0747-lane4.md`
 
 **Evidence:** VERIFIED: retrieval/tally-t0710.py lines 65-67 persist log_sha256 in tally JSON; lane-4/smartblocks-pilot-t0728/lookup-match.py carries BLOCK-PIN-DIVERGENT (x3), TALLY-PIN-MISMATCH, LOG-DRIFT (full-64 SHAs, no prefix shortcuts); build-pilot-blocks.py carries SET-CHANGED + ORDER-MOVED BUILD-REFUSE naming. Live run by scorer on real bytes: exit 2 TAL
+
+### ✅ t0747 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** AMENDED-PRE-SEAL: t0738-lane3 REWORK fixes for Arm-I verdict-flip pre-reg
+
+**Receipt:** `twelve-lane-receipts/t0747-lane2.md`
+
+**Evidence:** VERIFIED this tick on live bytes as far as the historic pin allows: receipt file exists and is internally coherent (old seal 16c444e5... superseded not edited, new seal 8a270088... in external sidecar, amended file and seal sidecar both still exist on disk at lane-2/, §4 byte-identical by regex, §8 contradiction confirmed from t0442_entailment.py d
 
 ### ✅ t0747 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -13524,6 +13548,14 @@ _Last updated: 2026-10-30 01:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0746-lane3.md`
 
 **Evidence:** VERIFIED live: PR #2576 head 87b9f188e652cc2aad74e3092cbdf8df99517f3c == receipt live-head pin (API + ref naya/gate-leadseats-20261013, PR open); board verdict comment 6167076345 exists on #2537 (3533 bytes, lane-3 header). Review re-derived on pinned bytes: gate suite 47/47 + 9/9 seat-tag controls, real mid-run head-move caught by the re-pin rule 
+
+### ✅ t0746 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat verification of Lane 11 t0741 top-20 needs deliverable (SURGE-c)
+
+**Receipt:** `twelve-lane-receipts/t0746-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes as far as the historic pin allows: receipt file exists and is internally coherent (19/19 rows re-derived at action time, log pin 0fa1f99d..., deliverable SHA 339cad88... matching Lane 11 quote, falsifier fired mechanically on ranks 1/12/17, D1-D6 prose defects named with byte evidence). Cited scratch dir lane-10/tal
 
 ### ✅ t0746 — Team 10, Naya Verity Librarian (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -17871,6 +17903,14 @@ _Last updated: 2026-10-30 01:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: auto-retrieval/egate-persistence-contract-v1-candidate.md sha256 prefix 3bf341fed658323f EXACT match with receipt claim; egate-demo-t0638.py sha16 50f27aef5338f3b7 EXACT match; demo output file exists. Demo ran: t0628-lane2 real bytes 3/3 NON-RECOMPUTABLE; PASS fixture recomputable (findings []); DIVERGENT fixture fired CELL-DIVERGENT:top
 
+### ✅ t0637 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE migration-prep packet for naya/five-retrieval-auth-gate-t942 (wiring, not merge)
+
+**Receipt:** `twelve-lane-receipts/t0637-lane3.md`
+
+**Evidence:** Verified: packet file hidden_files/auto-retrieval/retrieval-auth-gate-migration-packet-t0637-candidate.md sha256 matches receipt byte-exact (7a0b20...). Branch check: refs/heads/naya/five* no longer on the remote (post-era cleanup; branch pin e654f16e cannot be re-verified today), so this score rests on the byte-verified packet deliverable, not the
+
 ### ✅ t0637 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** CANDIDATE migration-prep packet for naya/five-retrieval-auth-gate-t942: re-pin at action time, per-file change list, trust-boundary mapping, wiring-not-merge determination
@@ -17878,6 +17918,14 @@ _Last updated: 2026-10-30 01:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0637-lane3.md`
 
 **Evidence:** VERIFIED: branch naya/five-retrieval-auth-gate-t942 exists on remote @ e654f16e8a49e9a26309fd852695a0bef202673d, exact ls-remote match with receipt's pin; packet file auto-retrieval/retrieval-auth-gate-migration-packet-t0637-candidate.md exists locally, sha256 7a0b20b94fb7...7cf EXACT match with receipt claim. Real verified value: the byte-identity
+
+### ✅ t0637 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** CANDIDATE lesson-injection contract (fingerprint -> match -> ranked top-k -> brief-before-decision)
+
+**Receipt:** `twelve-lane-receipts/t0637-lane2.md`
+
+**Evidence:** Verified: contract file hidden_files/auto-retrieval/lesson-injection-contract-v1-candidate.md sha256 matches receipt byte-exact (bace1e70...); dry-fire outputs present (dryfire-t0637-lane2.md, dryfire-t0637-nopicks.md, dryfire-brief-nopicks.md). Real design value: no-echo proven by stripped-brief re-run, hook point + reader/writer enumeration speci
 
 ### ✅ t0637 — Team 2, lane2 (Learning Pipeline) — 9.0/10 [VERIFIED]
 
