@@ -1,19 +1,20 @@
 {
  "registry": "Naya Parts Registry",
- "version": "1.0",
- "generated_utc": "2026-10-30T00:08:47Z",
+ "version": "1.1",
+ "generated_utc": "2026-10-30T00:35:17Z",
  "repo": "SoulSchoolAcademy/NayaPOWER",
  "path": "BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json",
  "counts": {
-  "interface_parts": 478,
+  "interface_parts": 542,
   "functional_parts": 24,
-  "total": 502
+  "total": 566
  },
  "method": "Harvest-first. 478 interface entries deduped from the 478-row harvest (66 duplicate human names resolved: winner keeps the clean name, losers marked variant; all model IDs and html preserved). Every source_repo_path read-verified on origin/main. 19 workspace-only orphans landed as governed DESIGN-BLOCKS families (index.json v1.5, 95 blocks). 24 functional parts harvested from live repo contracts (NAYA-FN-001..024), all evidenced, none invented.",
  "notes": [
   "The 152-vs-478 count question is NOT ruled here — ruling pack at workspace/parts-run/ruling-pack-152-vs-478.md, decision is Shawn's.",
   "The repo's older design-library catalog under HUB/design-system/library/ is a DIFFERENT artifact and was not touched.",
-  "Bar: the Awesome Law — best of the best, nothing less."
+  "Bar: the Awesome Law — best of the best, nothing less.",
+  "v1.1 (2026-10-30, Lane 4 coverage proof): +64 harvested parts from SMART-FACTORY-CANON/pieces.json (OVL 5, INP 9, ICO 26, MRK 7, ROW 4, HDR 3, HRO 1, BRD 9). 26 legacy overlay IDs retired as stale duplicates/variants (documented in lane-4 report; canon file untouched). No existing model ID renamed, removed, or re-identified."
  ],
  "interface_parts": [
   {
@@ -19947,6 +19948,2110 @@
    ],
    "source_repo_path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-reactions/specimen.html",
    "source_status": "landed 2026-10-30 — governed DESIGN-BLOCKS family",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-001",
+   "name": "Toast system",
+   "category": "OVL",
+   "tags": [
+    "mail",
+    "booking",
+    "feed",
+    "settings",
+    "notifications"
+   ],
+   "use_cases": [
+    "mail",
+    "booking",
+    "feed",
+    "settings",
+    "notifications"
+   ],
+   "html": "<div class=\"naya-toast show is-verified\"><span class=\"jw\" style=\"--j:#2fe89e;font-size:14px\">◆</span><span class=\"naya-toast-msg\">Saved — your note is safe</span>",
+   "css_classes": [
+    "is-verified",
+    "jw",
+    "naya-toast",
+    "naya-toast-msg",
+    "show"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-002",
+   "name": "Mini modal",
+   "category": "OVL",
+   "tags": [
+    "mail",
+    "spaces",
+    "business",
+    "settings"
+   ],
+   "use_cases": [
+    "mail",
+    "spaces",
+    "business",
+    "settings"
+   ],
+   "html": "<div class=\"modal-mini\"><span class=\"modal-gem\">✦</span><span><strong>Publish this space?</strong><small>Everyone with the link can read it. You can unpublish anytime.</small></span><button class=\"naya-btn small\" type=\"button\">Publish</button>",
+   "css_classes": [
+    "modal-gem",
+    "modal-mini",
+    "naya-btn",
+    "small"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-003",
+   "name": "Share sheet",
+   "category": "OVL",
+   "tags": [
+    "smart-link",
+    "feed",
+    "spaces",
+    "share"
+   ],
+   "use_cases": [
+    "smart-link",
+    "feed",
+    "spaces",
+    "share"
+   ],
+   "html": "<div><div class=\"smart-link\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-globe\"/></svg><span><strong>Public view</strong><small>Who can open this is explicit.</small></span></div><div class=\"share-actions\"><button class=\"naya-btn small\" type=\"button\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-people\"/></svg>People</button><button class=\"naya-btn small\" type=\"button\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-lock\"/></svg>Private</button><button class=\"naya-btn small\" type=\"button\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-copy\"/></svg>Copy link</button>",
+   "css_classes": [
+    "icon",
+    "naya-btn",
+    "share-actions",
+    "small",
+    "smart-link"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-004",
+   "name": "Command palette",
+   "category": "OVL",
+   "tags": [
+    "smart-search",
+    "dashboard",
+    "navigation"
+   ],
+   "use_cases": [
+    "smart-search",
+    "dashboard",
+    "navigation"
+   ],
+   "html": "<div class=\"naya-palette\" role=\"dialog\" aria-label=\"Command palette\"><div class=\"naya-palette-search\"><svg viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/><path d=\"M11 11l3.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg><input class=\"naya-palette-input\" type=\"text\" placeholder=\"Ask Naya, or jump somewhere…\" autocomplete=\"off\" spellcheck=\"false\"><span class=\"naya-kbd\">esc</span></div><div class=\"naya-palette-list\" role=\"listbox\"><div class=\"naya-palette-item active\" role=\"option\" aria-selected=\"true\"><span class=\"naya-palette-label\">Go to Buttons</span><span class=\"naya-palette-hint\">01</span></div><div class=\"naya-palette-item\" role=\"option\" aria-selected=\"false\"><span class=\"naya-palette-label\">Go to Inputs</span><span class=\"naya-palette-hint\">02</span></div><div class=\"naya-palette-item\" role=\"option\" aria-selected=\"false\"><span class=\"naya-palette-label\">Copy the canonical button</span><span class=\"naya-palette-hint\">action</span></div><div class=\"naya-palette-item\" role=\"option\" aria-selected=\"false\"><span class=\"naya-palette-label\">Summon Naya</span><span class=\"naya-palette-hint\">action</span>",
+   "css_classes": [
+    "active",
+    "naya-kbd",
+    "naya-palette",
+    "naya-palette-hint",
+    "naya-palette-input",
+    "naya-palette-item",
+    "naya-palette-label",
+    "naya-palette-list",
+    "naya-palette-search"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-OVL-005",
+   "name": "Notification drawer",
+   "category": "OVL",
+   "tags": [
+    "mail",
+    "notifications",
+    "dashboard"
+   ],
+   "use_cases": [
+    "mail",
+    "notifications",
+    "dashboard"
+   ],
+   "html": "<aside class=\"naya-drawer\" aria-label=\"Notifications\" style=\"max-width:420px;width:100%\"><div class=\"naya-drawer-head\"><h2>Notifications</h2><button class=\"naya-btn icon micro\" type=\"button\" aria-label=\"Close\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-close\"/></svg></button></div><div class=\"naya-drawer-list\"><div class=\"naya-note is-unread\"><span class=\"naya-avatar xs\" style=\"--av-hue:#35e0a1\">N4</span><div class=\"naya-note-body\"><strong>Naya 4</strong> opened a PR for your review.<div class=\"naya-note-time\">12 min ago",
+   "css_classes": [
+    "icon",
+    "is-unread",
+    "micro",
+    "naya-avatar",
+    "naya-btn",
+    "naya-drawer",
+    "naya-drawer-head",
+    "naya-drawer-list",
+    "naya-note",
+    "naya-note-body",
+    "naya-note-time",
+    "xs"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ovl-005",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship-template.html uses naya-toast 4x, modal-mini 3x, naya-palette 8x, naya-drawer 4x; Hub index-2.html uses naya-drawer 2x; fills cite OVL gap (about, connections, smart-lists)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-001",
+   "name": "Search bar",
+   "category": "INP",
+   "tags": [
+    "smart-search",
+    "connections",
+    "library",
+    "dashboard"
+   ],
+   "use_cases": [
+    "smart-search",
+    "connections",
+    "library",
+    "dashboard"
+   ],
+   "html": "<div class=\"search-wrap\"><input class=\"search-input\" type=\"search\" placeholder=\"Search today…\" aria-label=\"Search\">",
+   "css_classes": [
+    "search-input",
+    "search-wrap"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-002",
+   "name": "Alias field",
+   "category": "INP",
+   "tags": [
+    "welcome",
+    "onboarding",
+    "settings",
+    "identity"
+   ],
+   "use_cases": [
+    "welcome",
+    "onboarding",
+    "settings",
+    "identity"
+   ],
+   "html": "<div class=\"alias-input-box\"><label class=\"alias-label\">Your handle</label><div class=\"alias-field-wrapper\"><input type=\"text\" class=\"alias-field-input\" placeholder=\"pioneer\" autocomplete=\"off\">",
+   "css_classes": [
+    "alias-field-input",
+    "alias-field-wrapper",
+    "alias-input-box",
+    "alias-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-003",
+   "name": "Segmented control",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "dashboard",
+    "smart-lists"
+   ],
+   "use_cases": [
+    "settings",
+    "dashboard",
+    "smart-lists"
+   ],
+   "html": "<div class=\"segmented\" role=\"tablist\" aria-label=\"Voice\"><button role=\"tab\" aria-selected=\"true\" type=\"button\">Human</button><button role=\"tab\" aria-selected=\"false\" type=\"button\">Naya</button><button role=\"tab\" aria-selected=\"false\" type=\"button\">Machine</button>",
+   "css_classes": [
+    "segmented"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-004",
+   "name": "Toggle switch",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "profile"
+   ],
+   "use_cases": [
+    "settings",
+    "profile"
+   ],
+   "html": "<div style=\"display:flex;gap:14px;align-items:center;justify-content:center\"><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Voice replies\" type=\"button\"><span></span></button><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"false\" aria-label=\"Weekly digest\" type=\"button\"><span></span></button>",
+   "css_classes": [
+    "naya-toggle"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-005",
+   "name": "Recessed field",
+   "category": "INP",
+   "tags": [
+    "welcome",
+    "smart-notes",
+    "settings",
+    "forms"
+   ],
+   "use_cases": [
+    "welcome",
+    "smart-notes",
+    "settings",
+    "forms"
+   ],
+   "html": "<label class=\"recessed-field\"><span>What should Naya remember?</span><input type=\"text\" placeholder=\"Type it like you are telling a friend…\"></label>",
+   "css_classes": [
+    "recessed-field"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-005",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-006",
+   "name": "Jeweled checkbox",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "forms",
+    "checklists"
+   ],
+   "use_cases": [
+    "settings",
+    "forms",
+    "checklists"
+   ],
+   "html": "<div style=\"display:flex;flex-direction:column;gap:10px\"><label class=\"naya-check\"><input type=\"checkbox\" checked><span class=\"box\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\"><path d=\"M3 8.5l3.5 3.5L13 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"txt\">Screenshot reviewed, not assumed</span></label><label class=\"naya-check\"><input type=\"checkbox\"><span class=\"box\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\"><path d=\"M3 8.5l3.5 3.5L13 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"txt\">One spectrum color per board</span></label>",
+   "css_classes": [
+    "box",
+    "naya-check",
+    "txt"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-006",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-007",
+   "name": "Settings row",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "profile"
+   ],
+   "use_cases": [
+    "settings",
+    "profile"
+   ],
+   "html": "<div class=\"setting-row\"><span><strong>Living motion</strong><small>Buttons breathe and lift while you look.</small></span><button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Living motion\" type=\"button\"><span></span></button>",
+   "css_classes": [
+    "naya-toggle",
+    "setting-row"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-007",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-008",
+   "name": "Reference Well",
+   "category": "INP",
+   "tags": [
+    "welcome",
+    "onboarding",
+    "smart-notes",
+    "forms"
+   ],
+   "use_cases": [
+    "welcome",
+    "onboarding",
+    "smart-notes",
+    "forms"
+   ],
+   "html": "<label class=\"ref-well\" style=\"--wc:#a06bff;--wc-rgb:160,107,255\"><span class=\"ref-well-label\">What should Naya remember?</span><span class=\"ref-well-box\"><input type=\"text\" placeholder=\"Type it like you are telling a friend…\"></span></label>",
+   "css_classes": [
+    "ref-well",
+    "ref-well-box",
+    "ref-well-label"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-008",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-INP-009",
+   "name": "Reference Select",
+   "category": "INP",
+   "tags": [
+    "settings",
+    "welcome",
+    "forms"
+   ],
+   "use_cases": [
+    "settings",
+    "welcome",
+    "forms"
+   ],
+   "html": "<div class=\"ref-select\" style=\"--wc:#3fb8ff;--wc-rgb:63,184,255\"><span class=\"ref-select-label\">Voice</span><button class=\"ref-select-btn\" type=\"button\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><span class=\"ref-select-value\">Human</span><span class=\"ref-select-chev\" aria-hidden=\"true\"></span></button><ul class=\"ref-select-panel\" role=\"listbox\" aria-label=\"Voice\" hidden><li role=\"option\" aria-selected=\"true\" data-value=\"human\"><span class=\"ref-select-jewel\"></span>Human</li><li role=\"option\" aria-selected=\"false\" data-value=\"naya\"><span class=\"ref-select-jewel\"></span>Naya</li><li role=\"option\" aria-selected=\"false\" data-value=\"machine\"><span class=\"ref-select-jewel\"></span>Machine</li></ul></div>",
+   "css_classes": [
+    "ref-select",
+    "ref-select-btn",
+    "ref-select-chev",
+    "ref-select-jewel",
+    "ref-select-label",
+    "ref-select-panel",
+    "ref-select-value"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-inp-009",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses naya-toggle 6x, naya-check 9x; Hub uses search-wrap 2x, segmented 15x; fills cite INP gap (about, connections, smart-search, settings, welcome)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-001",
+   "name": "Today · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;transform:rotate(45deg);border-radius:8px;background:radial-gradient(circle at 35% 30%,#e84fff55,#0a0a0e 75%);border:1.5px solid #e84fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #e84fff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l2.2 6.6L21 12l-6.8 2.4L12 21l-2.2-6.6L3 12l6.8-2.4z\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-002",
+   "name": "Spaces · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a06bff55,#0a0a0e 75%);border:1.5px solid #a06bff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #a06bff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"4\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"13\" y=\"4\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"4\" y=\"13\" width=\"7\" height=\"7\" rx=\"1.5\"/><rect x=\"13\" y=\"13\" width=\"7\" height=\"7\" rx=\"1.5\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-003",
+   "name": "Reports · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:10px;background:radial-gradient(circle at 35% 30%,#6675ff55,#0a0a0e 75%);border:1.5px solid #6675ff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #6675ff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 19v-6m5 6V5m5 14v-9m4 9H3\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-004",
+   "name": "Mail · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;transform:rotate(45deg);border-radius:8px;background:radial-gradient(circle at 35% 30%,#3fb8ff55,#0a0a0e 75%);border:1.5px solid #3fb8ff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #3fb8ff,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-005",
+   "name": "Ask · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#40d3bb55,#0a0a0e 75%);border:1.5px solid #40d3bb;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #40d3bb,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M16.5 16.5L21 21\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-005",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-006",
+   "name": "Doors · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:10px;background:radial-gradient(circle at 35% 30%,#2fe89e55,#0a0a0e 75%);border:1.5px solid #2fe89e;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #2fe89e,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"1\"/><circle cx=\"15\" cy=\"12\" r=\"1.2\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-006",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-007",
+   "name": "People · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2fe89e55,#0a0a0e 75%);border:1.5px solid #2fe89e;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #2fe89e,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"9\" cy=\"8\" r=\"3\"/><path d=\"M3 20v-2c0-6 12-6 12 0v2M17 5a3 3 0 0 1 0 6m1 4c2 0 3 2 3 4v1\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-007",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-008",
+   "name": "Ledger · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;transform:rotate(45deg);border-radius:8px;background:radial-gradient(circle at 35% 30%,#ffbf3d55,#0a0a0e 75%);border:1.5px solid #ffbf3d;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #ffbf3d,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19v-8m5 8V5m5 14V9m5 10V3\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-008",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-009",
+   "name": "Grow · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff9a5a55,#0a0a0e 75%);border:1.5px solid #ff9a5a;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #ff9a5a,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M12 4v16M4 12h16\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-009",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-010",
+   "name": "Guard · dual",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span style=\"width:54px;height:54px;border-radius:10px;background:radial-gradient(circle at 35% 30%,#ff5e6c55,#0a0a0e 75%);border:1.5px solid #ff5e6c;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 16px -4px #ff5e6c,inset 0 1px 0 rgba(255,255,255,.3)\"><span style=\"width:30px;height:30px;display:flex\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z\"/></svg></span></span>",
+   "css_classes": [],
+   "sources": [
+    {
+     "temp_id": "naya-ico-010",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-011",
+   "name": "Home · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#a06bff\" title=\"Home\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 11l9-8 9 8\"/><path d=\"M5 10v10h5v-6h4v6h5V10\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-011",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-012",
+   "name": "Pulse · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#3fb8ff\" title=\"Pulse\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 2L4 14h6l-1 8 9-12h-6l1-8z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-012",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-013",
+   "name": "People · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#2fe89e\" title=\"People\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"3.5\"/><path d=\"M5 20v-1c0-7 14-7 14 0v1\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-013",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-014",
+   "name": "Calendar · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#ffbf3d\" title=\"Calendar\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18M8 3v4M16 3v4\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-014",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-015",
+   "name": "Docs · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#e84fff\" title=\"Docs\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 2h9l5 5v15H6z\"/><path d=\"M14 2v6h6\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-015",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-016",
+   "name": "Vision · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#6675ff\" title=\"Vision\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-016",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-017",
+   "name": "Saved · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#40d3bb\" title=\"Saved\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 3h12v18l-6-4-6 4z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-017",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-018",
+   "name": "Explore · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#ff9a5a\" title=\"Explore\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M15 9l-2 5-4 1 2-5z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-018",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-019",
+   "name": "Favorite · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#ff5e6c\" title=\"Favorite\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-019",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-020",
+   "name": "Reports · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#b8ee57\" title=\"Reports\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19v-8m5 8V5m5 14V9m5 10V3\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-020",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-021",
+   "name": "Love · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#e84fff\" title=\"Love\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21C7 16.5 2 12.8 2 8.5 2 5.5 4.5 3 7.5 3c1.8 0 3.4.9 4.5 2.3C13.1 3.9 14.7 3 16.5 3 19.5 3 22 5.5 22 8.5c0 4.3-5 8-10 12.5z\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-021",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-022",
+   "name": "Share · dock",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<a class=\"eco-bb-btn elev-1\" style=\"--eco:#a06bff\" title=\"Share\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"12\" r=\"2.5\"/><circle cx=\"18\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6\"/></svg></a>",
+   "css_classes": [
+    "eco-bb-btn",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-022",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-023",
+   "name": "Icon socket",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span class=\"ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 11l9-8 9 8\"/></svg></span>",
+   "css_classes": [
+    "ico"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-023",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-024",
+   "name": "App Tile · Mail",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span class=\"app-tile\" style=\"--nc:#3fb8ff\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5.5\" width=\"18\" height=\"13\" rx=\"2.5\"/><path d=\"M4 8l8 5.5L20 8\"/></svg></span>",
+   "css_classes": [
+    "app-tile"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-024",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-025",
+   "name": "App Tile · Pulse",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span class=\"app-tile\" style=\"--nc:#2fe89e\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2.5 12h4.5l2.8-7 4.2 14 2.8-7h4.7\"/></svg></span>",
+   "css_classes": [
+    "app-tile"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-025",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ICO-026",
+   "name": "App Tile · Hearth",
+   "category": "ICO",
+   "tags": [
+    "dashboard"
+   ],
+   "use_cases": [
+    "dashboard"
+   ],
+   "html": "<span class=\"app-tile\" style=\"--nc:#ffbf3d\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 11l8-7.5L20 11\"/><path d=\"M6 9.5V20h12V9.5\"/><path d=\"M12 12.4l2.2 2.7L12 17.6l-2.2-2.5z\"/></svg></span>",
+   "css_classes": [
+    "app-tile"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-ico-026",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub index-2.html uses rotated-diamond dual icons 2x; DESIGN-LANGUAGE.md App.B cites NAYA-ICO-001; registry held only 2-3 icon specimens",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-001",
+   "name": "Status pill",
+   "category": "MRK",
+   "tags": [
+    "mail",
+    "booking",
+    "dashboard",
+    "status"
+   ],
+   "use_cases": [
+    "mail",
+    "booking",
+    "dashboard",
+    "status"
+   ],
+   "html": "<span class=\"pill live marker-live\"><span class=\"dot\" style=\"animation:marker-pulse 2s infinite\"></span>Live</span>",
+   "css_classes": [
+    "dot",
+    "live",
+    "marker-live",
+    "pill"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-002",
+   "name": "Done mark",
+   "category": "MRK",
+   "tags": [
+    "dashboard",
+    "tasks",
+    "smart-lists"
+   ],
+   "use_cases": [
+    "dashboard",
+    "tasks",
+    "smart-lists"
+   ],
+   "html": "<div class=\"done-mark\"><span class=\"tick\"><span class=\"marker-ready\">✓</span></span> AI ready",
+   "css_classes": [
+    "done-mark",
+    "marker-ready",
+    "tick"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-003",
+   "name": "Search highlight",
+   "category": "MRK",
+   "tags": [
+    "smart-search",
+    "library"
+   ],
+   "use_cases": [
+    "smart-search",
+    "library"
+   ],
+   "html": "<div style=\"font-size:15px\">quarterly <mark class=\"hl\">report</mark> ready",
+   "css_classes": [
+    "hl"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-004",
+   "name": "Divider bar",
+   "category": "MRK",
+   "tags": [
+    "feed",
+    "forms",
+    "layout"
+   ],
+   "use_cases": [
+    "feed",
+    "forms",
+    "layout"
+   ],
+   "html": "<div style=\"display:flex;align-items:center;width:100%\"><div class=\"bar\">",
+   "css_classes": [
+    "bar"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-005",
+   "name": "Spectrum bar",
+   "category": "MRK",
+   "tags": [
+    "dashboard",
+    "design-system",
+    "reports"
+   ],
+   "use_cases": [
+    "dashboard",
+    "design-system",
+    "reports"
+   ],
+   "html": "<div class=\"spectrum-bar\" aria-label=\"Spectrum — Shawn's standing order\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>",
+   "css_classes": [
+    "spectrum-bar"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-005",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-006",
+   "name": "Count badge",
+   "category": "MRK",
+   "tags": [
+    "mail",
+    "notifications",
+    "dashboard"
+   ],
+   "use_cases": [
+    "mail",
+    "notifications",
+    "dashboard"
+   ],
+   "html": "<span class=\"naya-badge\">3</span>",
+   "css_classes": [
+    "naya-badge"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-006",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-MRK-007",
+   "name": "Skeleton loading",
+   "category": "MRK",
+   "tags": [
+    "feed",
+    "dashboard",
+    "loading"
+   ],
+   "use_cases": [
+    "feed",
+    "dashboard",
+    "loading"
+   ],
+   "html": "<div class=\"naya-skel\" style=\"height:22px;width:42%\"></div><div class=\"naya-skel\" style=\"height:14px\"></div><div class=\"naya-skel\" style=\"height:14px;width:78%\"></div><div class=\"naya-skel\" style=\"height:64px;border-radius:22px\">",
+   "css_classes": [
+    "naya-skel"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-mrk-007",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: flagship uses spectrum-bar 11x, naya-skel 3x; fills cite status/skeleton needs (mail, dashboard, search)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ROW-001",
+   "name": "Meta row",
+   "category": "ROW",
+   "tags": [
+    "settings",
+    "dashboard",
+    "profile"
+   ],
+   "use_cases": [
+    "settings",
+    "dashboard",
+    "profile"
+   ],
+   "html": "<div class=\"meta-row\"><span>Today</span><span>Evidence-based</span><span>3 plays</span>",
+   "css_classes": [
+    "meta-row"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-row-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: fills: \"Inputs are wells, lists are rows\" (settings); registry LST held no settings/menu rows",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ROW-002",
+   "name": "Action row",
+   "category": "ROW",
+   "tags": [
+    "settings",
+    "spaces",
+    "dashboard"
+   ],
+   "use_cases": [
+    "settings",
+    "spaces",
+    "dashboard"
+   ],
+   "html": "<div class=\"action-row\"><button class=\"btn btn-ghost mini\" type=\"button\"><span>Open</span></button><button class=\"btn btn-ghost mini\" type=\"button\"><span>Share</span></button>",
+   "css_classes": [
+    "action-row",
+    "btn",
+    "btn-ghost",
+    "mini"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-row-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: fills: \"Inputs are wells, lists are rows\" (settings); registry LST held no settings/menu rows",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ROW-003",
+   "name": "Menu item",
+   "category": "ROW",
+   "tags": [
+    "navigation",
+    "settings",
+    "spaces"
+   ],
+   "use_cases": [
+    "navigation",
+    "settings",
+    "spaces"
+   ],
+   "html": "<div style=\"min-width:220px\"><div class=\"mi\">Smart Lists</div><div class=\"mi\">Spaces</div><div class=\"mi\">Reports",
+   "css_classes": [
+    "mi"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-row-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: fills: \"Inputs are wells, lists are rows\" (settings); registry LST held no settings/menu rows",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-ROW-004",
+   "name": "Method row",
+   "category": "ROW",
+   "tags": [
+    "settings",
+    "smart-factory",
+    "docs"
+   ],
+   "use_cases": [
+    "settings",
+    "smart-factory",
+    "docs"
+   ],
+   "html": "<div class=\"im-row\"><span class=\"im-jewel\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><rect x=\"7\" y=\"2.5\" width=\"10\" height=\"19\" rx=\"2.5\"/></svg></span><div><strong>iPhone</strong><ol class=\"im-steps\"><li>Open Settings</li><li>Tap your name</li></ol>",
+   "css_classes": [
+    "im-jewel",
+    "im-row",
+    "im-steps"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-row-004",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: fills: \"Inputs are wells, lists are rows\" (settings); registry LST held no settings/menu rows",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-HDR-001",
+   "name": "Eyebrow",
+   "category": "HDR",
+   "tags": [
+    "landing",
+    "rooms",
+    "reports"
+   ],
+   "use_cases": [
+    "landing",
+    "rooms",
+    "reports"
+   ],
+   "html": "<div class=\"eyebrow\">NAYANET · HUMAN-FACING INTELLIGENCE",
+   "css_classes": [
+    "eyebrow"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-hdr-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses eyebrow 8x, intel-type 10x; Intel Today briefing header; welcome stepper labels",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-HDR-002",
+   "name": "Intelligence trio",
+   "category": "HDR",
+   "tags": [
+    "intel-today",
+    "dashboard",
+    "reports"
+   ],
+   "use_cases": [
+    "intel-today",
+    "dashboard",
+    "reports"
+   ],
+   "html": "<div><div class=\"intel-type\">Briefing</div><div class=\"intel-title\">What today became</div><div class=\"intel-summary\">Three plays finished, two spaces gained members.",
+   "css_classes": [
+    "intel-summary",
+    "intel-title",
+    "intel-type"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-hdr-002",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses eyebrow 8x, intel-type 10x; Intel Today briefing header; welcome stepper labels",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-HDR-003",
+   "name": "Step number",
+   "category": "HDR",
+   "tags": [
+    "welcome",
+    "onboarding"
+   ],
+   "use_cases": [
+    "welcome",
+    "onboarding"
+   ],
+   "html": "<div class=\"num\" style=\"--c:#a06bff\"><span class=\"jewel\"></span>Step One",
+   "css_classes": [
+    "jewel",
+    "num"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-hdr-003",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses eyebrow 8x, intel-type 10x; Intel Today briefing header; welcome stepper labels",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-HRO-001",
+   "name": "Reference Hero",
+   "category": "HRO",
+   "tags": [
+    "home",
+    "welcome",
+    "landing"
+   ],
+   "use_cases": [
+    "home",
+    "welcome",
+    "landing"
+   ],
+   "html": "<section class=\"ref-hero\" style=\"--sc:#a06bff;--sc-rgb:160,107,255\"><div class=\"ref-hero-mark\">N</div><div class=\"ref-hero-eyebrow\">NAYANET · CONTEXT WORLDS</div><h2 class=\"ref-hero-title\">Smart Spaces</h2><p class=\"ref-hero-sub\">A space changes the context — and the context changes everything.</p><p class=\"ref-hero-desc\">Rooms of living intelligence, each one burning in its own color.</p><div class=\"ref-hero-actions\"><button class=\"primo theme-purple elev-2\" type=\"button\">Enter the space</button></div></section>",
+   "css_classes": [
+    "elev-2",
+    "primo",
+    "ref-hero",
+    "ref-hero-actions",
+    "ref-hero-desc",
+    "ref-hero-eyebrow",
+    "ref-hero-mark",
+    "ref-hero-sub",
+    "ref-hero-title",
+    "theme-purple"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-hro-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Home door + welcome walk need a first-class hero block; registry held only hero buttons",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-001",
+   "name": "Feature board",
+   "category": "BRD",
+   "tags": [
+    "rooms",
+    "dashboard",
+    "spaces"
+   ],
+   "use_cases": [
+    "rooms",
+    "dashboard",
+    "spaces"
+   ],
+   "html": "<div class=\"board-h\" style=\"--bc:#40d3bb\"><div class=\"bh-icon\">◆</div><div class=\"bh-text\"><h3>Feature board</h3><p>one color, one world</p></div><button class=\"bh-btn\" type=\"button\">Open</button>",
+   "css_classes": [
+    "bh-btn",
+    "bh-icon",
+    "bh-text",
+    "board-h"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-001",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-025",
+   "name": "Orbital five",
+   "category": "BRD",
+   "tags": [
+    "dashboard",
+    "spaces",
+    "landing"
+   ],
+   "use_cases": [
+    "dashboard",
+    "spaces",
+    "landing"
+   ],
+   "html": "<div class=\"orbital\" style=\"--bc:#e84fff\">\n          <div class=\"orbital-ring\" style=\"width:200px;height:200px\"></div>\n          <div class=\"orbital-center\" style=\"--bc:#e84fff\">✦</div>\n          <div class=\"orbital-sat\" style=\"--sc:#a06bff;left:calc(50.0% - 28px);top:calc(14.0% - 28px)\">◆</div>\n<div class=\"orbital-sat\" style=\"--sc:#6675ff;left:calc(84.2% - 28px);top:calc(38.9% - 28px)\">★</div>\n<div class=\"orbital-sat\" style=\"--sc:#3fb8ff;left:calc(71.2% - 28px);top:calc(79.1% - 28px)\">✓</div>\n<div class=\"orbital-sat\" style=\"--sc:#2fe89e;left:calc(28.8% - 28px);top:calc(79.1% - 28px)\">◉</div>\n<div class=\"orbital-sat\" style=\"--sc:#40d3bb;left:calc(15.8% - 28px);top:calc(38.9% - 28px)\">◎</div>\n        </div>",
+   "css_classes": [
+    "orbital",
+    "orbital-center",
+    "orbital-ring",
+    "orbital-sat"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-025",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-030",
+   "name": "Feature circle",
+   "category": "BRD",
+   "tags": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "use_cases": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "html": "<div class=\"stat-grid\">\n<div class=\"stat-card\" style=\"--bc:#a06bff\"><div class=\"stat-value\">12.4K</div><div class=\"stat-label\">Active users</div><div class=\"stat-trend up\">↑ 18%",
+   "css_classes": [
+    "stat-card",
+    "stat-grid",
+    "stat-label",
+    "stat-trend",
+    "stat-value",
+    "up"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-030",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-034",
+   "name": "Bar chart",
+   "category": "BRD",
+   "tags": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "use_cases": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "html": "<div class=\"bar-chart\"><div class=\"bar\" style=\"--bc:#a06bff;height:60px\"></div><div class=\"bar\" style=\"--bc:#6675ff;height:85px\"></div><div class=\"bar\" style=\"--bc:#3fb8ff;height:45px\"></div><div class=\"bar\" style=\"--bc:#2fe89e;height:100px\"></div><div class=\"bar\" style=\"--bc:#40d3bb;height:70px\"></div><div class=\"bar\" style=\"--bc:#ffd45a;height:90px\"></div><div class=\"bar\" style=\"--bc:#ff9a5a;height:55px\">",
+   "css_classes": [
+    "bar",
+    "bar-chart"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-034",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-035",
+   "name": "Donut chart",
+   "category": "BRD",
+   "tags": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "use_cases": [
+    "dashboard",
+    "reports",
+    "growth"
+   ],
+   "html": "<div class=\"donut\" style=\"background: conic-gradient(#a06bff 0% 35%, #3fb8ff 35% 60%, #2fe89e 60% 80%, #ffd45a 80% 100%);\"><div style=\"position:absolute;inset:18px;background:#0a0a0f;border-radius:50%;display:flex;align-items:center;justify-content:center;\"><div class=\"donut-center\">68%",
+   "css_classes": [
+    "donut",
+    "donut-center"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-035",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-041",
+   "name": "Product card",
+   "category": "BRD",
+   "tags": [
+    "memberships",
+    "shop",
+    "pricing"
+   ],
+   "use_cases": [
+    "memberships",
+    "shop",
+    "pricing"
+   ],
+   "html": "<div class=\"product-card\" style=\"--bc:#ffd45a\"><div class=\"product-img\" style=\"--bc:#ffd45a\">◆</div><div class=\"product-title\">Naya Power</div><div class=\"product-price\" style=\"--bc:#ffd45a\">$29/mo</div><button class=\"btn-select elev-1\" type=\"button\" style=\"width:100%\">Get Started</button>",
+   "css_classes": [
+    "btn-select",
+    "elev-1",
+    "product-card",
+    "product-img",
+    "product-price",
+    "product-title"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-041",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-042",
+   "name": "Pricing tiers",
+   "category": "BRD",
+   "tags": [
+    "pricing",
+    "memberships"
+   ],
+   "use_cases": [
+    "pricing",
+    "memberships"
+   ],
+   "html": "<div style=\"display:flex;padding:12px;--bc:#a06bff\">\n<div class=\"pricing-tier\"><div class=\"tier-name\">STARTER</div><div class=\"tier-price\">$9</div><div class=\"tier-features\">5 projects<br>Basic support",
+   "css_classes": [
+    "pricing-tier",
+    "tier-features",
+    "tier-name",
+    "tier-price"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-042",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-043",
+   "name": "Countdown",
+   "category": "BRD",
+   "tags": [
+    "booking",
+    "events",
+    "growth"
+   ],
+   "use_cases": [
+    "booking",
+    "events",
+    "growth"
+   ],
+   "html": "<div class=\"countdown\" style=\"--bc:#ff5e6c\"><div class=\"cd-unit\"><div class=\"cd-num\" style=\"--bc:#ff5e6c\">12</div><div class=\"cd-label\">DAYS",
+   "css_classes": [
+    "cd-label",
+    "cd-num",
+    "cd-unit",
+    "countdown"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-043",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
+   "part_type": "interface"
+  },
+  {
+   "model": "NAYA-BRD-044",
+   "name": "Post composer",
+   "category": "BRD",
+   "tags": [
+    "smart-mail",
+    "feed",
+    "posts"
+   ],
+   "use_cases": [
+    "smart-mail",
+    "feed",
+    "posts"
+   ],
+   "html": "<div class=\"composer\"><div class=\"composer-input\" contenteditable=\"true\">Share something with the community...</div><div style=\"display:flex;gap:8px;justify-content:flex-end\"><button class=\"btn-notes carve-1\" type=\"button\">Cancel</button><button class=\"btn-select elev-1\" type=\"button\">Post</button>",
+   "css_classes": [
+    "btn-notes",
+    "btn-select",
+    "carve-1",
+    "composer",
+    "composer-input",
+    "elev-1"
+   ],
+   "sources": [
+    {
+     "temp_id": "naya-brd-044",
+     "source_file": "pieces.json"
+    }
+   ],
+   "notes": "v1.1 harvest: legacy overlay ID promoted to the registry (Lane 4 coverage proof). Evidence: Hub uses board-h 20x, composer 1x; flagship uses orbital 13x, countdown 2x, pricing-tier 5x; fills cite DAT gap (dashboard, growth, reports, library)",
+   "name_status": "canonical",
+   "source_repo_paths": [
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json"
+   ],
+   "source_repo_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+   "source_status": "verified",
    "part_type": "interface"
   }
  ],
