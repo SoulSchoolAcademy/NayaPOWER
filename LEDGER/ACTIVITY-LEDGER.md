@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 19:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -29443,6 +29443,12 @@ _Last updated: 2026-10-30 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261030-1143 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-30 11:43 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4723 bytes, sha256 30d477e727f7ae216d7f06351594cf540e908288c0af34f412b723a80b768653); brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued=31 with EXACT set match to both disk files and the receipt's 31 named blocked briefs (0 only-receipt, 0 only-disk), in_fl
+
 ### ✅ 20261030-1038 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Seat-stall sweep 2026-10-30 10:38 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
@@ -34153,6 +34159,12 @@ _Last updated: 2026-10-30 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ 20261030-1230 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0770 second-seat verification of the t0770-lane6 ask-world query-log audit
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (10057 bytes); parent audit askworld-log-audit-t0770-lane6.md sha256 0419c7973f77caaa5a21b322dc8259b053ceccea0b4352aa2e8bf9641d0c9ea1 byte-matches the parent receipt pin exactly (also confirmed by the 20261030-1040 scorer tick); parent receipt t0770-lane6.md exists. No git branch/SHA cited (loca
+
 ### ✅ 20261030-1040 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** t0770 ask-world query-log audit (read-only, 5 done-criteria)
@@ -37592,6 +37604,12 @@ _Last updated: 2026-10-30 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ 20261030-1230 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0767 machine-law gates 2/3 closeout on the sealed t0767 verdict (appended machine outputs + re-pin)
+
+**Evidence:** VERIFIED this tick on surviving bytes: receipt file exists (5712 bytes); verdict file surge-a-verdict-t0767-lane3.md live sha256 bb45dcdc957670c07d6d9c311bd6b5c3bf860e4c6ebfee3ef6fb52cdada56110 matches the post-append state documented by the 20261030-0930 scorer tick, and the receipt cites the pre-append pin 1f9be430... which that tick confirmed pr
 
 ### ✅ 20261030-0930 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -41478,6 +41496,12 @@ _Last updated: 2026-10-30 18:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ 20261030-1230 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0771 Arm J hypothesis-note gap closeout (t0719 schema byte-pin + MCC-J root-difference check)
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (7910 bytes); note arm-j-hypothesis-change-t0771-lane10.md live sha256 6c6e80b376f3807a3939fa9e575b47f04acfe24ba2df12cb8e6994c6fa61ec29 matches the post-append state documented by the 20261030-1040 scorer tick; schema source lane-3/decision-contact-signal-design-t0719.md sha256 f84c65540f8d30595
 
 ### ✅ 20261030-1040 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
