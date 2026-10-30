@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-30  
-**Receipt basis commit:** `3561734f3486ddfd1c6b1916c91d6b5b52e4d034`  
-**Inventory file count:** 1806  
+**Receipt basis commit:** `fba34a004f331073f04a242ef8449d2c55152aad`  
+**Inventory file count:** 1808  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 903 |
+| 05-MEMORY | 905 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -1051,8 +1051,10 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1903/IB-SMART-NOTE-20261029-sn1903-so-synergize-optimize.md` — `4eed90224852` (8453 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md` — `1f9c9b0062a6` (1302 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/learning/SN-1904/IB-SMART-NOTE-20261030-sn1904-beneficial-intelligence.md` — `ee8ccc601cc1` (10817 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/learning/SN-2041/IB-SMART-NOTE-20261030-sn2041-theres-always-a-way-around-the-wall.md` — `0dd4d9baad9c` (9202 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1904/IB-SMART-NOTE-20261030-sn1904-what-it-means-to-be-the-most-intelligent.md` — `c5a5598c7d57` (8692 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1905/IB-SMART-NOTE-20261030-sn1905-the-adopted-pricing-canon.md` — `66fb8611c8a6` (8062 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1906/IB-SMART-NOTE-20261030-sn1906-the-related-bar-law.md` — `b11563dff306` (2135 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)

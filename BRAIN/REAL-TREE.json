@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-30",
-  "receipt_basis_commit": "3561734f3486ddfd1c6b1916c91d6b5b52e4d034",
-  "inventory_file_count": 1806,
+  "receipt_basis_commit": "fba34a004f331073f04a242ef8449d2c55152aad",
+  "inventory_file_count": 1808,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 903,
+    "05-MEMORY": 905,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -5056,6 +5056,11 @@
       "size": 10817
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/learning/SN-2041/IB-SMART-NOTE-20261030-sn2041-theres-always-a-way-around-the-wall.md",
+      "blob_sha": "0dd4d9baad9ce233ad9fbaf29f3804c0a3d42be6",
+      "size": 9202
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1904/IB-SMART-NOTE-20261030-sn1904-what-it-means-to-be-the-most-intelligent.md",
       "blob_sha": "c5a5598c7d57f1a7e9d7781867f7f85975aa9c31",
       "size": 8692
@@ -5064,6 +5069,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1905/IB-SMART-NOTE-20261030-sn1905-the-adopted-pricing-canon.md",
       "blob_sha": "66fb8611c8a6a0242519c473b3adb724d7357bf2",
       "size": 8062
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1906/IB-SMART-NOTE-20261030-sn1906-the-related-bar-law.md",
+      "blob_sha": "b11563dff30609f0ec5314f360da08023b93d505",
+      "size": 2135
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
