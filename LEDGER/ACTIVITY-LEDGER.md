@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16427,6 +16427,14 @@ _Last updated: 2026-10-30 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: packet file hidden_files/merge-packet-2541-t0689.md exists (6296 B, written in receipt's 00:41-01:05Z window); live tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e MATCHES via git ls-remote; #2541 head de0805407788ed143605ff1a4e98398b0ea74dc9 MATCHES refs/pull/2541/head; #2532 head 8a9cecc3b80841953644347e307def549ff56a7c MATCHES refs/pull/2
 
+### ✅ t0688 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Premise-rot diagnosis on t0688-lane5 brief: semantic arm already built; file third-blind MTC-v1 probe brief instead of building a fifth arm
+
+**Receipt:** `twelve-lane-receipts/t0688-lane5.md`
+
+**Evidence:** VERIFIED on live bytes: pre-reg hidden_files/lane-6/mtc-v1-prereg-t0737.md sha16 9199c9abbb29bf0e MATCHES the receipt pin exactly, and survey hidden_files/surge-a/substrate-survey-t0700-lane11.md sha16 7dceab282808c986 MATCHES exactly. The probe brief filed by this run still exists, but now at brief-queue/stale/brief-gap-mtc-v1-thirdblind-probe-202
+
 ### ✅ t0688 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** lane5
@@ -16466,6 +16474,14 @@ _Last updated: 2026-10-30 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0688-lane2.md`
 
 **Evidence:** Verified: repro_b48.py sha 5cc4edf472ef0281164c2586a996332f16a089e770e2231c77de0dbf788db452 MATCH; results JSON sha 9e2dbd28c400d5adfe136d371182ee61e070482e07bf98de9ad77ffa25be5851 MATCH; tools/smart_note_v2.py sha fe6f2b4cec84b62f2431a6389cc88aa842a40e3c4aa268593d259b719e098851 MATCHES live tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e. Decompositi
+
+### ✅ t0688 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE-(b) retrieval-auth-gate migration prep packet pinned to live remote tip
+
+**Receipt:** `twelve-lane-receipts/t0688-lane11.md`
+
+**Evidence:** VERIFIED on live bytes: deliverable hidden_files/lane-exp/surge-b-wiring-prep-packet-t0688-lane11.md sha256 6eb8992217ac7589f5de59708850edb2a05eeb335ef66dcb345eaa76b15a20cc MATCHES the receipt pin exactly, 222 lines as claimed. No git branch/SHA is cited for this work itself beyond the tip pin, so the branch-head leg does not apply. NOT PHANTOM. Sc
 
 ### ✅ t0688 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
 
@@ -17082,6 +17098,14 @@ _Last updated: 2026-10-30 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0679-lane7.md`
 
 **Evidence:** VERIFIED: hidden_files/bin/naya_roster.py (worker-local machinery per brief authority, not the repo) modified Oct 13 22:35 UTC (matches receipt); parse_brief_name/tick_num_of/queued_in_flight all present and smoke-tested — parse_brief_name('brief-tconverge-lane7.md') -> ('tconverge',7), tick_num_of('tconverge',679)->679 (never STALE). Score 9.0. Wh
+
+### ✅ t0679 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Wire t0675-ratified crashed-row rule into classify_demand_rows.py as first-class filter + served_demand() + regression guard
+
+**Receipt:** `twelve-lane-receipts/t0679-lane10.md`
+
+**Evidence:** VERIFIED in substance on live bytes: classify_demand_rows.py still carries the crashed-first check (checked before other classes, .get('crashed', False)), SERVED_DEMAND_CLASSES = (organic-tune-in, organic-emergent), the t0675 guard in --self-test, and the stated-exclusion print; --self-test reports ALL PASS this tick. No git branch/SHA is cited for
 
 ### ✅ t0679 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
