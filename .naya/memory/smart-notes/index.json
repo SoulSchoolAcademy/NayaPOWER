@@ -16255,6 +16255,26 @@
         "note": "published directly as a BRAIN projection by Naya Resolve Narzan at Shawn's direction and filed same-push complete (page + capture + registry entry) on 2026-10-30 — no obligation skipped, nothing backfilled. Number SN-2042 allocated by claim census at 2026-10-30T20:20-20:35Z: the registry at the main tip held 765 entries (max SN-2041) with next_sequence 2042; no SN-2042 in the tip tree; the naya4/smart-notes-2026-09-30 staging tree tops out at SN-2040; the only repo commit-search hit for \"SN-2042\" was SN-2041's own filing commit referencing the counter. SN-2042 was the first number claimed on no surface (registry, tip tree, staging tree, commit messages)."
       },
       "page_hash": "b98e2042efb616c7714057a0eb86591bc44435e9b93038b3fe7180ff20cb46fa"
+    },
+    {
+      "smart_note_id": "SN-1906",
+      "intelligent_block_id": "IB-SMART-NOTE-20261030-sn1906-the-related-bar-law",
+      "title": "THE RELATED BAR LAW — the bar knows where you'd go next (Shawn + Power, 2026-10-30)",
+      "content_hash": "940cbc800702b7d8471fd750b887b03b2087d9f223934f3571c3c98da9abb390",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1906/IB-SMART-NOTE-20261030-sn1906-the-related-bar-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-30",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit fba34a004f331073f04a242ef8449d2c55152aad ('docs(notes): SN-1906 the related bar law — canon smart note (Shawn 2026-10-30)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-30 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "ddfdbba01d90a1fce591151435395c04528673cdbc438f9ff26c6328bf5dc550"
     }
   ],
   "sequence_policy": {
@@ -16265,5 +16285,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "84b2d7779312fae4e7e86c792ced53d3b3482555cb3dae8e45886995f0e04d84"
+  "corpus_manifest_hash": "5b6f10b1e230bc0894b75db055cea305943602f703f69898d7c4d9fa45c09caa"
 }
