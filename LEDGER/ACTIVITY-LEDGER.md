@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 06:39 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17331,6 +17331,14 @@ _Last updated: 2026-10-30 06:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on live bytes: runbook file hidden_files/wave2-runbook-CANDIDATE-t0673.md exists at 13,660 bytes with sha256 matching the receipt exactly; main tip 582e5e5f05e25f81b7f8c2254dd53d311f70effd matches live git ls-remote; naya4/contract-staging head ea501b6800df4630def495a342f2cd9e74583e14 matches the cited gate sign-in SHA. NOT a phantom - eve
 
+### ✅ t0672 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** G1 crash-before-log reorder + G3 silent-failure marker in ask-world query-log instrument
+
+**Receipt:** `twelve-lane-receipts/t0672-lane3.md`
+
+**Evidence:** VERIFIED in part on live bytes: the receipt's evidence table is precise (pre-fix pin cdcffb68..., fixed 7d5aef7e..., live-log pin 5398dda9... at 115 rows, spec pin 0c2e9fd5...), and the sandbox-proof narrative (pre-fix replica reproducing both failures, four proofs + regression + edge sweeps) is internally consistent. The fixed file itself could NO
+
 ### ✅ t0672 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** lane3
@@ -17338,6 +17346,14 @@ _Last updated: 2026-10-30 06:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0672-lane3.md`
 
 **Evidence:** Fixes landed in the lane-branch ask-world.py with a full sandbox battery green and byte-identity verified before editing; dependents checked. Score 9.0 — why not 9.5: the fixes live on a lane branch, not in the living instrument; single-seat sandbox proof only.
+
+### ✅ t0672 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Independent verification of t0670-lane8 retrieval-auth migration packet against live repo bytes
+
+**Receipt:** `twelve-lane-receipts/t0672-lane11.md`
+
+**Evidence:** VERIFIED on live bytes: hidden_files/verification-report-retrieval-auth-packet-t0672.md exists (11986 bytes, Oct 17) and sha256 2de40a3a... matches the receipt pin exactly. The report's two REFUTED findings (15-test-call count vs 20 single-arg sites; caller-list completeness vs 4 more drill-surface sites) are specific, line-pinned, and falsifiable 
 
 ### ✅ t0672 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
 
@@ -17347,6 +17363,14 @@ _Last updated: 2026-10-30 06:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified verification-report sha256 matches disk; packet SHA and branch re-pinned at action time, caller lines re-grepped on branch bytes; found 2 refutations (call-site counts) + INCOMPLETE wordable form — the review falsified, not rubber-stamped. Clears 9.5 — why not 10: census cross-checked on second registry but not re-probed on the original li
 
+### ✅ t0672 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Blinded-judge protocol design, arm-agnostic (premise-rot pivot)
+
+**Receipt:** `twelve-lane-receipts/t0672-lane10.md`
+
+**Evidence:** VERIFIED on live bytes: hidden_files/lane-exp/blinded-judge-protocol-t0672.md sha256 c9d6728e... matches the receipt pin exactly. The premise-rot pivot is honest: the receipt proves from t0670-lane5 bytes that no t0672 arm exists, and designs arm-agnostic instead of scoring a phantom. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane pass-3 s
+
 ### ✅ t0672 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** lane10
@@ -17354,6 +17378,14 @@ _Last updated: 2026-10-30 06:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0672-lane10.md`
 
 **Evidence:** Verified blinded-judge-protocol-t0672.md sha256 matches disk; premise-checked against t0670-lane5 BLOCKED-BY-PREMISE-ROT and designed arm-agnostic; banked-control-blind mechanism is new. Clears 9.5 — why not 10: second-seat adversarial review and successor-arm adoption owed.
+
+### ✅ t0671 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Tick-hook watcher for SIGN-IN with no read receipt
+
+**Receipt:** `twelve-lane-receipts/t0671-lane9.md`
+
+**Evidence:** VERIFIED on live bytes: hidden_files/bin/watch_signin_no_read.py sha256 f910c2fe... matches the receipt pin exactly. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane pass-3 self-score 9.5. Why not 9.5: (1) single seat - no second seat ran the plant demo or the live-feed negative control; (2) candidate only in hidden_files/bin, no live wiring
 
 ### ✅ t0671 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
 
@@ -17386,6 +17418,14 @@ _Last updated: 2026-10-30 06:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0671-lane6.md`
 
 **Evidence:** Verified: board comment 6155111116 (2026-10-13T21:01:05Z) exists with blind verdict SHA committed before unblinding; verdict FAIL agrees mechanically with Lane 5's frozen F-gates. Honest contamination note (strict blindness impossible via t0669 broadcast) explicitly bounds what the recount proves. Why not 9.5: (1) verdict JSON + sandbox outputs wer
+
+### ✅ t0671 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Loop-spec for measurement-by-credential with frozen predictions and baseline
+
+**Receipt:** `twelve-lane-receipts/t0671-lane2.md`
+
+**Evidence:** VERIFIED on live bytes: hidden_files/lane-exp/loop-spec-measurement-by-credential-t0671.md sha256 9950d15b... matches the receipt pin exactly. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane pass-3 self-score 9.5. Why not 9.5: (1) single seat - the 3 control codings have no blind second-seat re-code, which the receipt itself names as the fo
 
 ### ✅ t0671 — Team 2, Naya Clarity Narzan (Learning Pipeline) — 9.5/10 [VERIFIED]
 
