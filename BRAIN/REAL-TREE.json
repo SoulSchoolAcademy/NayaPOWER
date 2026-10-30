@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-30",
-  "receipt_basis_commit": "c1bbce5db1bcc229cf519c7964caf8450e7a6e54",
-  "inventory_file_count": 1803,
+  "receipt_basis_commit": "2224ffc2a5aebfb219384896671544d162192a74",
+  "inventory_file_count": 1805,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 901,
+    "05-MEMORY": 903,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -1179,6 +1179,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-28-LEARNING-EVENT.md",
       "blob_sha": "38d8f1616f5ae686869897c230e2df5299b8011f",
       "size": 15078
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-29-LEARNING-EVENT.md",
+      "blob_sha": "f91e49d984e5de91b8f8509f0b587cc4c9c2234c",
+      "size": 22430
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -5054,6 +5059,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1904/IB-SMART-NOTE-20261030-sn1904-what-it-means-to-be-the-most-intelligent.md",
       "blob_sha": "c5a5598c7d57f1a7e9d7781867f7f85975aa9c31",
       "size": 8692
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1905/IB-SMART-NOTE-20261030-sn1905-the-adopted-pricing-canon.md",
+      "blob_sha": "66fb8611c8a6a0242519c473b3adb724d7357bf2",
+      "size": 8062
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
