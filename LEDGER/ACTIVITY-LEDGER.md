@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14213,6 +14213,14 @@ _Last updated: 2026-10-30 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: design/fixtures/instrument sha256 match disk (e6cbb529/0a918d33/5b7824b6). Prereg self-pin 7737959271a20330 is a self-hash-paradox seal (sha recorded inside the file pre-embed; file's actual sha 303371370c9f27f9 can never match) — honest, not phantom. Score 9.0 not 9.5 because: (a) executor's verdict, scorer's root-difference check, unrun
 
+### ✅ t0735 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** board-pointer repair PR #2757 shipped
+
+**Receipt:** `twelve-lane-receipts/t0735-lane9.md`
+
+**Evidence:** VERIFIED this tick in substance: commit 96b39cbfbaba09258e99dfe5637282ca04937ff4 exists in the repo (depth-1 fetch + cat-file = commit, message 'Board-pointer repair: dead boards cited as live in the activation surface now point at #2721'); all 4 edited files exist at that SHA (READ-ME-FIRST.md, ACTIVATION-PACKET.md, instant-activation/THE-CREED.md
+
 ### ✅ t0735 — Team 9, lane-scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** tick t0735 lane 9
@@ -14294,6 +14302,14 @@ _Last updated: 2026-10-30 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0735-lane12.md`
 
 **Evidence:** Verified: all 3 artifact SHAs byte-exact — gad-prereg-t0735-FROZEN.md 5123bfc6…, gad-design-t0735.md ecbbfe2d…, gad-control-fire-validation-t0735.py b1788cbc… (files exist, sha256 matches receipt pins); tip pin 92329c5795 matches live shared-state main_tip; content structure confirms receipt claims — pre-reg carries §7 FALSIFIABLE verdict rule with
+
+### ✅ t0735 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** REPAIR ONLY, PR #2738 (F1 falsified, PR body refreshed)
+
+**Receipt:** `twelve-lane-receipts/t0735-lane0.md`
+
+**Evidence:** VERIFIED this tick in substance: commit 8030c2ee028504c7e0fb2193bc9f9889ef301a32 exists in the repo (depth-1 fetch + cat-file = commit); PR #2738 head has since moved (now e086ca22), so the receipt head is superseded, not phantom — the body refresh was API-side, no new commit was owed. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, vs lane self-score
 
 ### ✅ t0735 — Team 0, lane-scorer (?) — 9.0/10 [VERIFIED]
 
@@ -14482,6 +14498,14 @@ _Last updated: 2026-10-30 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** REFUSED author-seat bar on brief-t0732-lane5; brief returned to queue
 
 **Evidence:** Verified: brief-t0732-lane5.md exists in brief-queue/, absent from claimed/ and done/ — the return claim is byte-true. The seat honored the semantic authorship bar over the claim script's exit-0 mechanical pass: no self-review on PR #2738 performed, no hat-swapping. Clears 9.5 because: the exact behavior the authorship/recusal system exists for, ex
+
+### ✅ t0732 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** breaker #9 feature.smart_tabs built end-to-end
+
+**Receipt:** `twelve-lane-receipts/t0732-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes: git ls-remote origin branch naya4/t0732-lane12-smarttabs head exactly 92501373b333ae8693e923c518d86228aecca43d, matching the receipt pin (branch still live at that head). NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, vs lane self-score 9.5. Why not 9.5: (1) single-seat end-to-end, no independent second-seat review o
 
 ### ✅ t0732 — Team 12, lane-scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -29362,6 +29386,12 @@ _Last updated: 2026-10-30 14:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261030-0729 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-30 07:29 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued = 31 with EXACT set match to disk files, in_flight=[]; parsing the receipt's blocked section gives exactly 31 unique brief names matching the disk set name for name (0 only-receipt, 0 only-disk); claimed/ holds only done/, consi
 
 ### ✅ 20261030-0623 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
