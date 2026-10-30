@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13175,6 +13175,14 @@ _Last updated: 2026-10-30 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt self-records the refusal per the frozen gate (Step-0c probe fired on 2 of 12 pairs; own-situation C1 fire evaporated); own probe bug caught pre-seal; refusal is the honest deliverable and sharpens the v3 autopsy into a design constraint. Score 9.0. Why not 9.5: negative result by design - no new capability shipped and no substrate
 
+### ✅ t0761 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Grader-math second review of level-drill key-split instrument
+
+**Receipt:** `twelve-lane-receipts/t0761-lane3.md`
+
+**Evidence:** VERIFIED in substance on live bytes: verdict file hidden_files/level-drill-grader-review-verdict-t0761-lane3.md exists (7749 bytes, Oct 14, era-correct) and carries the receipt's content (D1 embedded-key defect, D4 corrupted-key TypeError, PASS/grading-rule discussion); the receipt's sealed-before-comparison ordering and 8-probe battery are specifi
+
 ### ✅ t0761 — Team 3, Naya Resolve Judge (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** t0761-lane3: independent second-seat review of the level-drill grader (PR #2581) - CONFIRM
@@ -13191,6 +13199,14 @@ _Last updated: 2026-10-30 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick: verdict file hidden_files/level-drill-grader-review-verdict-t0761-lane3.md exists (7749 bytes, sealed CONFIRM with G1-G8 probes and residual addendum on live bytes); pinned head cde0c63ddc1a2a59911b82334bd93ff761e5045e == refs/heads/naya/lane9/level-drill-keysplit-t0730 on the remote byte-for-byte (live git ls-remote this tick, 
 
+### ✅ t0761 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Second blind subject run of level-drill instrument - VOID fail-closed, embedded-key hazard surfaced
+
+**Receipt:** `twelve-lane-receipts/t0761-lane11.md`
+
+**Evidence:** VERIFIED in substance on live bytes: receipt file exists and its narrative is internally consistent and corroborated by the sibling t0761-lane3 receipt (same pinned head cde0c63ddc1a2a59911b82334bd93ff761e5045e, same D1 embedded-key finding, independently converged). The void is real value: no verdict file was fabricated and the legacy-file key tra
+
 ### ✅ t0761 — Team 11, Naya Clarity Heart (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** t0761-lane11: VOID blind run - fail-closed after self-inflicted key exposure
@@ -13206,6 +13222,14 @@ _Last updated: 2026-10-30 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0761-lane11.md`
 
 **Evidence:** VERIFIED this tick: branch pin naya/lane9/level-drill-keysplit-t0730 -> cde0c63ddc1a2a59911b82334bd93ff761e5045e MATCHES the receipt byte-for-byte (git ls-remote + https fetch, fetched commit == pin). Hazard RE-DERIVED structurally by this seat at that exact head (AST names only, no values read): tools/level_drill_scenarios.py exposes only SCENARIO
+
+### ✅ t0761 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a) HYPOTHESIS CHANGE note
+
+**Receipt:** `twelve-lane-receipts/t0761-lane1.md`
+
+**Evidence:** VERIFIED on live bytes: deliverable hidden_files/lane-1/surge-a-hypothesis-change-t0761.md exists (8520 bytes, Oct 14, era-correct) and carries the receipt's load-bearing content - MECHANISM-COUNTERFACTUAL contact reframe, REGISTER-FLIP K1-K4 pre-build killers, killed premises, fresh-lane handoff. The corpse re-derivation pins t0719/t0731/t0739/t07
 
 ### ✅ t0761 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -29018,6 +29042,12 @@ _Last updated: 2026-10-30 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261030-0210 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-30 02:08 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued = 31 with EXACT set match to disk files, in_flight=[]; the receipt's blocked list (b1 2 + b2 18 + b3 3 + b4 8) matches the disk set exactly, name for name (0 only-receipt, 0 only-disk), with 29 exit-7 and 2 exit-2 verdicts by gr
 
 ### ✅ 20261030-0105 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
