@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: comments/cmt-reactions</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:560px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .demo-note{ font-size:12px; color:#9aa3b5; margin:6px 0 12px; }
+  .demo-ctl button{ font:inherit; font-size:12px; letter-spacing:.06em; color:#e8eaf2; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:8px 16px; margin:0 8px 8px 0; cursor:pointer; }
+  .demo-ctl button:hover{ border-color:#a06bff; box-shadow:0 0 18px -4px rgba(160,107,255,.7); }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Reaction row</h2>
+  <div class="cmt rx-wrap">
+    <div class="cmt-rx" role="group" aria-label="Reactions">
+      <button class="rx is-mine" aria-pressed="true" data-rx="love" style="--rc:#ed58cd;--rc-glow:rgba(237,88,205,.5);--rc-dim:rgba(237,88,205,.14)" title="Loved by you, June, Theo and 9 others">
+        <svg viewBox="0 0 24 24"><path d="M12 21C7 16.5 3 13 3 8.9 3 6 5.2 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.8 4 21 6 21 8.9c0 4.1-4 7.6-9 12.1z"/></svg><b>12</b><span hidden>Love</span>
+      </button>
+      <button class="rx" aria-pressed="false" data-rx="celebrate" style="--rc:#e84fff;--rc-glow:rgba(232,79,255,.5);--rc-dim:rgba(232,79,255,.14)" title="Celebrated by Rin and 4 others">
+        <svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.4l6.1-.8z"/></svg><b>5</b><span hidden>Celebrate</span>
+      </button>
+      <button class="rx" aria-pressed="false" data-rx="thoughtful" style="--rc:#a06bff;--rc-glow:rgba(160,107,255,.5);--rc-dim:rgba(160,107,255,.14)" title="Thoughtful to Amara and 2 others">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4"/></svg><b>3</b><span hidden>Thoughtful</span>
+      </button>
+      <button class="rx-add" aria-label="Add a reaction" aria-expanded="false" aria-haspopup="true">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+    <div class="rx-pop" hidden role="menu" aria-label="Choose a reaction">
+      <button class="rx" role="menuitem" aria-pressed="false" data-rx="love" style="--rc:#ed58cd;--rc-glow:rgba(237,88,205,.5);--rc-dim:rgba(237,88,205,.14)" title="Love"><svg viewBox="0 0 24 24"><path d="M12 21C7 16.5 3 13 3 8.9 3 6 5.2 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.8 4 21 6 21 8.9c0 4.1-4 7.6-9 12.1z"/></svg></button>
+      <button class="rx" role="menuitem" aria-pressed="false" data-rx="celebrate" style="--rc:#e84fff;--rc-glow:rgba(232,79,255,.5);--rc-dim:rgba(232,79,255,.14)" title="Celebrate"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.4l6.1-.8z"/></svg></button>
+      <button class="rx" role="menuitem" aria-pressed="false" data-rx="thoughtful" style="--rc:#a06bff;--rc-glow:rgba(160,107,255,.5);--rc-dim:rgba(160,107,255,.14)" title="Thoughtful"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4"/></svg></button>
+      <button class="rx" role="menuitem" aria-pressed="false" data-rx="agree" style="--rc:#3fb8ff;--rc-glow:rgba(63,184,255,.5);--rc-dim:rgba(63,184,255,.14)" title="Agree"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg></button>
+      <button class="rx" role="menuitem" aria-pressed="false" data-rx="laugh" style="--rc:#2fe89e;--rc-glow:rgba(47,232,158,.5);--rc-dim:rgba(47,232,158,.14)" title="Laugh"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 14.2c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8"/><circle cx="9.2" cy="9.6" r=".9"/><circle cx="14.8" cy="9.6" r=".9"/></svg></button>
+    </div>
+  </div>
+</div>
+<script src="block.js"></script>
+</body>
+</html>
