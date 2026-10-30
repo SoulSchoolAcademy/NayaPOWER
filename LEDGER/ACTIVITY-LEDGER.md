@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -289,6 +289,14 @@ _Last updated: 2026-10-30 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** Verify t1564 dispatcher reconcile + t1562 close from live bytes, Heart verify
+
+**Receipt:** `twelve-lane-receipts/t1564-lane11.md`
+
+**Evidence:** VERIFIED on live bytes: the t1562 and gap-t1562 receipt SHAs cited in this receipt match the files on disk exactly; all 15 gap execution receipts remain absent today; the t1564 brief has since been dequeued from rotation (dispatcher reconciled, corroborating the chain); in_flight still []. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, matching lane 
+
+### ✅ t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** Dispatcher reconcile chain verification from live bytes (queue/rotation/claimed/receipts), zero discrepancies
 
 **Receipt:** `twelve-lane-receipts/t1564-lane11.md`
@@ -311,11 +319,27 @@ _Last updated: 2026-10-30 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1562 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** Verify t1562 dispatcher reconcile + t1561 dequeue from live bytes, Heart verify
+
+**Receipt:** `twelve-lane-receipts/t1562-lane11.md`
+
+**Evidence:** VERIFIED on live bytes: the receipt's own SHA matches the value cited by the t1564 successor receipt exactly; all 15 gap execution receipts remain absent today; t1562 brief since dequeued from rotation and present in claimed/done (dispatcher reconciled, corroborating the chain); in_flight still []; the collision count correction (14, not t1561's 13
+
+### ✅ t1562 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** Independent verification of t1562 dispatcher reconcile (15 queued gap briefs, exact-name receipts, in_flight, claimed/, reverse-phantom, t1561 dequeue)
 
 **Receipt:** `twelve-lane-receipts/t1562-lane11.md`
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: rotation queued=16 exactly (15 gap briefs listed verbatim + brief-t1562-lane11.md); all 15 gap briefs present in brief-queue/ root; 0 exact-name gap receipts in twelve-lane-receipts/; in_flight=[]; stale=18 historical entries, none queued; claimed/ root holds only brief-t1562-lane11.md + done/; 0 re
+
+### ✅ t1561 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Verify t1561 dispatcher reconcile (5 claims) from live bytes, Heart verify
+
+**Receipt:** `twelve-lane-receipts/t1561-lane11.md`
+
+**Evidence:** VERIFIED on live bytes: all 15 per-brief SHA-256 pins in the receipt match the files on disk exactly today; all 15 gap execution receipts remain absent; the receipt's own SHA matches the value cited by the t1562 successor receipt exactly; t1562/t1564 briefs since dequeued from rotation (dispatcher reconciled); in_flight still []. NOT PHANTOM. Score
 
 ### ✅ t1561 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
 
@@ -325,6 +349,14 @@ _Last updated: 2026-10-30 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: all 15 cited gap-brief SHAs recomputed byte-identical (triple-gap t1504 90e7ecb2..., t1468 d919af..., t1507 081889..., t1508-10 3e52a0..., t1508-3 321843..., t1508-7 27f992..., t1510-2 0a3563..., t1510-8 454a17..., t1511 b5f1fb..., t1512-3 e31cff..., t1512-4 635cb9..., t1512-9 1c7a2c..., t1514 8f75c
 
+### ✅ t1558 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Verify t1558 dispatcher reconcile (5 claims) from live bytes, Heart verify
+
+**Receipt:** `twelve-lane-receipts/t1558-lane11.md`
+
+**Evidence:** VERIFIED in substance on live bytes: the 15 gap briefs named still exist on disk today (SHAs match the t1561 pin set); all 15 gap execution receipts remain absent; t1562/t1564 briefs since dequeued from rotation (dispatcher reconciled, corroborating the chain); in_flight still []. The Q2 sentence sits in the claim-time sign-in, keeping the t1550/t1
+
 ### ✅ t1558 — Team 11, Team Naya Scorer (Human Value) — 9.4/10 [VERIFIED]
 
 **Task:** Heart verify of t1558 dispatcher reconcile (15 queued gap briefs, exact-name receipts, in_flight, claimed/, reverse-phantom)
@@ -333,6 +365,14 @@ _Last updated: 2026-10-30 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: claim brief-t1558-lane11.md SHA-256 710350243d05211bc3dd3f60c6107ddc2d0dc2d4e9991af3289532ba7da8f487 MATCH receipt exactly; all 15 queued gap briefs on disk in brief-queue/ root (0 missing); 0 exact-name gap receipts in twelve-lane-receipts/ (14 tNNNN collisions explicitly excluded per receipt, t146
 
+### ✅ t1556 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
+
+**Task:** Verify t1556 dispatcher reconcile (5 claims) from live bytes, Heart verify
+
+**Receipt:** `twelve-lane-receipts/t1556-lane11.md`
+
+**Evidence:** VERIFIED on live bytes: the 15 gap briefs named in the receipt still exist on disk today with SHAs matching the t1561 pin set exactly; all 15 gap execution receipts remain absent; t1562/t1564 briefs since dequeued from rotation (dispatcher reconciled, corroborating the chain); in_flight still []. The receipt closes the t1550/t1554 Q2-lateness defec
+
 ### ✅ t1556 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** Heart verify of t1556 dispatcher reconcile (15 queued gap briefs, exact-name receipts, in_flight, claimed/, reverse-phantom)
@@ -340,6 +380,14 @@ _Last updated: 2026-10-30 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1556-lane11.md`
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: rotation SHA-256 c1e5f6f9106005976db3853f17e0d4b720af80e71f115738a17dd73c30293170 MATCH receipt exactly; tick_count 1556, lane_last_dispatched 11=t1556, in_flight []; queued 16 = 15 gap briefs listed verbatim + own claim brief-t1556-lane11.md; all 15 gap-brief SHA-256 values recomputed MATCH receipt
+
+### ✅ t1554 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Verify t1554 dispatcher reconcile (5 claims) from live bytes, Heart verify
+
+**Receipt:** `twelve-lane-receipts/t1554-lane11.md`
+
+**Evidence:** VERIFIED in substance on live bytes: the 15 gap briefs named in the receipt still exist on disk today and all 15 t1561-pinned SHAs for the same set match exactly, showing the queue set the receipt describes is real and unchanged; all 15 gap execution receipts remain absent today; t1562/t1564 briefs have since been dequeued from rotation (dispatcher
 
 ### ✅ t1554 — Team 11, Team Naya Scorer (Human Value) — 9.3/10 [VERIFIED]
 
@@ -28914,6 +28962,12 @@ _Last updated: 2026-10-30 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261030-0004 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-30 00:03 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued = 31 with EXACT set match to disk files, in_flight=[]; the receipt's grouped list (b1 2 + b2 18 + b3 3 + b4 8) matches the disk set exactly, name for name (0 only-receipt, 0 only-disk); both seat-bar briefs independently confirm
 
 ### ✅ 20261029-2301 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
