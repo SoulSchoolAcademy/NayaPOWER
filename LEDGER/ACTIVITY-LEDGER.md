@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 17:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 17:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12972,6 +12972,14 @@ _Last updated: 2026-10-30 17:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0770-lane6.md`
 
 **Evidence:** Verified: audit file hidden_files/askworld-log-audit-t0770-lane6.md exists on disk, sha256 0419c7973f77caaa5a21b322dc8259b053ceccea0b4352aa2e8bf9641d0c9ea1 == receipt pin byte-for-byte (11,797 bytes). Receipt documents a read-only audit with all 8 log_query call sites cited by live line, two-direction count re-derivation (json.loads per line 89/89 
+
+### ✅ t0769 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** INFRA packet 2 (body-hash logging) candidate text, closing the t0754 three-packet verdict-instability prevention set
+
+**Receipt:** `twelve-lane-receipts/t0769-lane5.md`
+
+**Evidence:** VERIFIED on live bytes this tick: packet file hidden_files/infra-packet-2-bodyhash-t0769-lane5.md exists (7956 bytes, matching the receipt's 7.9 KB claim), contains the source comment sha256 prefix 260d8893 and CANDIDATE marking. NOT PHANTOM. Current sha16 7451021956ed9833 differs from the receipt's pre-edit pin ad806408d049e4be, which the receipt 
 
 ### ✅ t0769 — Team 5, Naya Verity Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
