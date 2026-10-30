@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: chat/cht-bubbles</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:560px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .demo-note{ font-size:12px; color:#9aa3b5; margin:6px 0 12px; }
+  .demo-ctl button{ font:inherit; font-size:12px; letter-spacing:.06em; color:#e8eaf2; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:8px 16px; margin:0 8px 8px 0; cursor:pointer; }
+  .demo-ctl button:hover{ border-color:#a06bff; box-shadow:0 0 18px -4px rgba(160,107,255,.7); }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Chat bubbles (in/out)</h2>
+  <div class="chat" aria-label="Conversation">
+    <div class="chat-row grp-first">
+      <div class="chat-ava in" aria-hidden="true"></div>
+      <div>
+        <div class="chat-bub in">The Hub is live. Watch the feed.</div>
+        <div class="chat-meta"><span class="chat-name">Sam</span><span class="chat-time">21:02</span></div>
+      </div>
+    </div>
+    <div class="chat-row grp">
+      <div class="chat-ava in" aria-hidden="true"></div>
+      <div><div class="chat-bub in">Compiler ticked green on the hour.</div></div>
+    </div>
+    <div class="chat-row out grp-first">
+      <div class="chat-ava" aria-hidden="true"></div>
+      <div>
+        <div class="chat-bub out">Seeing it. Smart Note landed in seconds.</div>
+        <div class="chat-meta">
+          <span class="chat-time">21:04</span>
+          <span class="chat-ticks" data-state="read" role="img" aria-label="Read">
+            <span class="sr">Read</span>
+            <svg viewBox="0 0 24 24"><path d="M2.5 12.5l4.5 4.5L14 9.5"/><path d="M10 15.5l1.8 1.8L21 8"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="chat-row out grp">
+      <div class="chat-ava" aria-hidden="true"></div>
+      <div><div class="chat-bub out">Ship it.<span class="chat-edited">edited</span></div>
+        <div class="chat-meta">
+          <span class="chat-time">21:05</span>
+          <span class="chat-ticks" data-state="delivered" role="img" aria-label="Delivered">
+            <span class="sr">Delivered</span>
+            <svg viewBox="0 0 24 24"><path d="M2.5 12.5l4.5 4.5L14 9.5"/><path d="M10 15.5l1.8 1.8L21 8"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="chat-row out">
+      <div class="chat-ava" aria-hidden="true"></div>
+      <div><div class="chat-bub out">One more thing — check the now-line on the agenda.</div>
+        <div class="chat-meta">
+          <span class="chat-time">21:06</span>
+          <span class="chat-ticks" data-state="sent" role="img" aria-label="Sent">
+            <span class="sr">Sent</span>
+            <svg viewBox="0 0 24 24"><path d="M3 12.5l4.5 4.5L15 9"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Receipt states (driven by window.chatReceipt)</h2>
+  <p class="demo-note">The demo bubble's receipt is written only through <code>chatReceipt(el, state)</code> — the block's single writer. States move forward only, never backward.</p>
+  <div class="chat" aria-label="Receipt demo">
+    <div class="chat-row out">
+      <div class="chat-ava" aria-hidden="true"></div>
+      <div>
+        <div class="chat-bub out">Watch this bubble's receipt.</div>
+        <div class="chat-meta">
+          <span class="chat-time">now</span>
+          <span class="chat-ticks" id="demoTicks" data-state="sending" role="img" aria-label="Sending">
+            <span class="sr">Sending</span>
+            <svg viewBox="0 0 24 24"><path d="M2.5 12.5l4.5 4.5L14 9.5"/><path d="M10 15.5l1.8 1.8L21 8"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo-ctl">
+    <button type="button" data-r="sending">Sending</button>
+    <button type="button" data-r="sent">Sent</button>
+    <button type="button" data-r="delivered">Delivered</button>
+    <button type="button" data-r="read">Read</button>
+  </div>
+</div>
+<script src="block.js"></script>
+<script>
+  var ticks = document.getElementById('demoTicks');
+  document.querySelectorAll('[data-r]').forEach(function(btn){
+    btn.addEventListener('click', function(){ window.chatReceipt(ticks, btn.getAttribute('data-r')); });
+  });
+</script>
+</body>
+</html>
