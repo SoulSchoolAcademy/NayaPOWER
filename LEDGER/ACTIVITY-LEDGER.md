@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 06:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13175,6 +13175,14 @@ _Last updated: 2026-10-30 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick: design doc hidden_files/lane-1/surge-a-hypothesis-change-t0761.md sha256 3b685b90c98f754c6151ba4ce8b7b951fa4a967c8a2746be948f3e0d56173efe / 8520 bytes MATCHES the receipt byte-for-byte. All five breaker sections + section 6 fresh-lane handoff present on live bytes; K1-K4 killer + MCC reframe headings present. Brief brief-t0761-l
 
+### ✅ t0760 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** P12 candidate filed in convergence landing queue (routing, not wiring)
+
+**Receipt:** `twelve-lane-receipts/t0760-lane9.md`
+
+**Evidence:** VERIFIED this tick on live bytes: fixture hidden_files/lane-9/p12_auto_merge_gate_pinned.py sha256 ba4dab94c808ec29a1d61f0061e18bc0ec72b5edffeca0a38cf5ee3de320c825 FULL MATCH to receipt at exactly 20202 bytes; test hidden_files/lane-9/test_p12_fixture_t0753.py is exactly 229 lines as receipted; queue file hidden_files/oath-convergence/convergence-l
+
 ### ✅ t0760 — Team 9, Naya Resolve Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** t0760-lane9: P12 candidate filed to the convergence landing queue
@@ -13190,6 +13198,14 @@ _Last updated: 2026-10-30 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0760-lane9.md`
 
 **Evidence:** VERIFIED this tick: hidden_files/oath-convergence/convergence-landing-queue.md exists with exactly one entry (P12-fixture-t0753, target tools/auto_merge_gate.py, status CANDIDATE / NOT-WIRED with the protected-gate note, no duplicates); fixture hidden_files/lane-9/p12_auto_merge_gate_pinned.py sha256 ba4dab94c808ec29a1d61f0061e18bc0ec72b5edffeca0a3
+
+### ✅ t0760 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Arm H independent design review (ADOPT-CONDITIONAL)
+
+**Receipt:** `twelve-lane-receipts/t0760-lane7.md`
+
+**Evidence:** VERIFIED this tick on live bytes: review file hidden_files/arm-h-design-review-t0760-lane7.md exists (8266 bytes, mtime Oct 14 14:29, action-time consistent) and lane-5/verdict-numbers-t0735-lane5.json sha256 e89ef39ea27bfb9d66fcca4d10ff9eaa81310cb5ef7113c1785620cace2a69ec FULL MATCH to receipt, with MRR_arm=0.5277777777777778, MRR_bi=0.42083333333
 
 ### ✅ t0760 — Team 7, Naya Resolve Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -17697,6 +17713,14 @@ _Last updated: 2026-10-30 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: verdict hidden_files/ask-world-demand-verdict-t0658.md exists with pin-exact sha256 7d0d991cb22e2d3da60844abfd63156b1fd450fa0ac32adc14b955320a66f8e3 (re-derived here); contains the template sha a96b73cb, the --help inspection row (pid 24096), and the last-organic-row quote; brief present in brief-queue/claimed/. Score 9.0 GOOD-O
 
+### ✅ t0657 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** ask-world invocation-chain first-link verdict
+
+**Receipt:** `twelve-lane-receipts/t0657-lane3.md`
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/ask-world-invocation-chain-verdict-t0657.md sha256 4c02bc0395ba3f01e6d0101e0ba0e38353e666c5a88049d987e31720bc4d9d9c, first-16 pin 4c02bc0395ba3f01 FULL MATCH to receipt; brief-queue/done/brief-t0657-lane3.md exists and carries the ask-world hook quote source (brief-t0513-lane5 grep hit confirmed). NOT 
+
 ### ✅ t0657 — Team 3, Naya Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** ask-world invocation-chain first-link -> LINK-NAMED
@@ -17712,6 +17736,14 @@ _Last updated: 2026-10-30 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0657-lane3.md`
 
 **Evidence:** Verified: verdict file hidden_files/ask-world-invocation-chain-verdict-t0657.md exists with pin-exact sha 4c02bc0395ba3f01 (re-derived here). Score 9.0 GOOD-ONE-MORE-PASS (concurs with lane self-9.0). What kept it from 9.5: (1) diagnosis only - repair unexecuted, value unrealized until the dispatcher lands the template line (structural fix recommen
+
+### ✅ t0657 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (a) family-close CONFIRM
+
+**Receipt:** `twelve-lane-receipts/t0657-lane2.md`
+
+**Evidence:** VERIFIED this tick on live bytes: auto-retrieval/surge-a-family-close-confirm-t0657-lane2.md sha256 7d31df13f3f4da6caffa8d821b4ba7487283ab5a7820b07cff207b08910696fa, first-16 pin 7d31df13f3f4da6c FULL MATCH to receipt. NOT PHANTOM. No git branch/SHA leg claimed, so ls-remote leg does not apply. Score 9.0, GOOD, ONE MORE PASS, agreeing with lane sel
 
 ### ✅ t0657 — Team 2, Naya Sage (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -17729,6 +17761,14 @@ _Last updated: 2026-10-30 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: confirm file auto-retrieval/surge-a-family-close-confirm-t0657-lane2.md exists with pin-exact sha 7d31df13f3f4da6c (re-derived here, not quoted). Score 9.0 GOOD-ONE-MORE-PASS (concurs with lane self-9.0). What kept it from 9.5: (1) verdict-only by design - the confirm file is prose, no shipped instrument or actionable artifact; (2) same-s
 
+### ✅ t0657 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (d) sealed cold-retrieve drill re-run -> HOLD
+
+**Receipt:** `twelve-lane-receipts/t0657-lane1.md`
+
+**Evidence:** VERIFIED this tick on live bytes: scratch/t0657-lane1/prereg-t0657-lane1.json sha256 80617f94806e7bbe864488f0d9f1518066207773131c7b1c9286d8925f669178 FULL MATCH and cold_drill_sealed_t0657.py e20c695efb91c3f09740a087e44f3e7a4bcb1a18f9a62c5930d1db0667d0987e FULL MATCH to receipt pins; drill logs, both results files, chillset and calibration log all 
+
 ### ✅ t0657 — Team 1, Naya Verity (Verification & Proof) — 8.5/10 [VERIFIED]
 
 **Task:** SURGE (d) sealed drill re-run -> HOLD (spread-killer)
@@ -17745,6 +17785,14 @@ _Last updated: 2026-10-30 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: prereg seal 80617f94806e7bbe..., instrument e20c695efb91c3f0..., calibrate/drill/drill2 logs and both results files all present in scratch/t0657-lane1 with SHA prefixes matching the receipt; tip 582e5e5f matches shared-state.json live main_tip. Score 8.5 (independent, concurs with self-8.5). Kept from 9.5 by: (a) slice (d) still
 
+### ✅ t0655 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** VIOLATION-RT probe spec (CANDIDATE)
+
+**Receipt:** `twelve-lane-receipts/t0655-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/law/violation-rt-spec-t0655-candidate.md sha256 f8ccb9df44ee0ed93e5aa59355a85e394bb5b590cd6e4cf4eb749eccac31ec3a FULL MATCH to receipt pin. NOT PHANTOM. No git branch/SHA leg claimed for the spec itself, so ls-remote leg does not apply. Score 8.5, agreeing with lane self-score 8.5. Why not 9.5: (1) dry
+
 ### ✅ t0655 — Team 8, Naya Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** VIOLATION-RT probe spec (CANDIDATE)
@@ -17752,6 +17800,14 @@ _Last updated: 2026-10-30 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0655-lane8.md`
 
 **Evidence:** Verified: spec md exists in hidden_files/law/; sha256 prefix f8ccb9df44ee0ed9 matches the receipt's certified hash; 4 byte-path DoD checks and 4 named falsifiers present per receipt. Score 9.0 GOOD-ONE-MORE-PASS. What kept it from 9.5: spec-only, not wired (protected gate - needs Shawn's word, honestly scoped); three violation wiring points are TBD
+
+### ✅ t0654 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** false-positive audit of the brain-index drift detector (5 green tips + known-RED control)
+
+**Receipt:** `twelve-lane-receipts/t0654-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/scratch-t0654-lane10/fp-audit-results.json holds 6/6 rows matching the receipt table exactly - 5 greens pin_exact=true, detector blob rev-parse==hash-object 41daba7562 at every pin, --check exit 0 with 1257 files, pytest 13 passed (1.06/1.45/1.94/1.54/2.39s); control 34338065eb check exit 1 with DRIFT 
 
 ### ✅ t0654 — Team 10, Naya Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
