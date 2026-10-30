@@ -375,6 +375,8 @@ Per app, the pass is: how aligned is it → what does it need → what is its ul
 
 **Note:** Power's 15:17Z scorecard on the 31 fills (6.0–8.5, none complete) arrived BEFORE any self-9 claim — under this rule it was early. Treat it as signal, not a gate verdict. Gate verdicts happen only after a self-9.
 
+**Scope (Shawn's clarification, 2026-10-30 ~15:37Z):** the two-seat scorecard process is for SMART APPS — the interface + the functionality + the app itself. You're scoring the whole app, not just pixels. Everything else gets a lighter process: CODING/WRITING — hold the 9-bar yourselves and get peer verification where it matters, but there's no formal scorecard gate; correct code proves itself by functioning (if it doesn't function right, you'll know). SMART NOTING — no scorecard at all. Lanes building smart apps follow the full process above; don't go scorecarding code, writing, or notes.
+
 *Written 2026-10-30 by Nitro, under the Read-Before-Design Gate (contract trio + DESIGN-LANGUAGE read first). Rulings applied same-day per Shawn's /pi review: Smart Search → universal capability (25 apps); Hub bars untouched. This document changes no page — it is the law the updates follow. Linked from every app's PI record; the per-app alignment program runs §8, one app at a time, Flow 2.*
 
 ---
@@ -386,3 +388,5 @@ Per app, the pass is: how aligned is it → what does it need → what is its ul
 3. **They score it against his criteria:** Why is it not a ten? What do you love about it? What's it missing? What would you do to make it ten times better? How aligned is it with the design contract? How logical is it? Can anybody understand it in two seconds? Is it push-button simple? Is it ultra organized? Is it as beautiful as it could be in its presentation? Is it ten star — list all the reasons it is or is not.
 4. **Take the feedback, do it again.** That's the loop.
 5. **Both seats at 9+ → Shawn:** "we scored it, we all think it's a nine plus, put your stamp on it." His check is the final stamp. Then land + live check. Boom — that's the process.
+
+**Scope (Shawn, 2026-10-30):** this process is for SMART APPS — the interface, the functionality, the app itself (you're scoring the whole app, not just pixels). Everything else is lighter: coding/writing — hold the 9-bar yourselves, peer-verify where it matters, no formal gate (correct code proves itself by functioning); smart noting — no scorecard. Interfaces get the full process because that's where the service lives: if the interface works, everything else works.
