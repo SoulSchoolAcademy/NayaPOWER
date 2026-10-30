@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-30",
-  "receipt_basis_commit": "f1fadb085ccfe1fcdcbe55fa3df4e42d843cc7c7",
-  "inventory_file_count": 1802,
+  "receipt_basis_commit": "c1bbce5db1bcc229cf519c7964caf8450e7a6e54",
+  "inventory_file_count": 1803,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 900,
+    "05-MEMORY": 901,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -5051,6 +5051,11 @@
       "size": 10817
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1904/IB-SMART-NOTE-20261030-sn1904-what-it-means-to-be-the-most-intelligent.md",
+      "blob_sha": "c5a5598c7d57f1a7e9d7781867f7f85975aa9c31",
+      "size": 8692
+    },
+    {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
       "blob_sha": "7e5bbf440cac2c677e626ba4280cc0cbab8cb3bf",
       "size": 7193
@@ -7847,8 +7852,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json",
-      "blob_sha": "786e465af90086368b462ce22b578d30a432aac3",
-      "size": 607826
+      "blob_sha": "5d371c0cb091cf86e0eb0ac3f08bb99c31abcf3c",
+      "size": 687429
     },
     {
       "path": "BRAIN/10-INTERFACES/README.md",
