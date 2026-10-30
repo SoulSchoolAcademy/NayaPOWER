@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: comments/cmt-comment</title>
+<link rel="stylesheet" href="block.css">
+<link rel="stylesheet" href="../cmt-thread/block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:560px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .demo-note{ font-size:12px; color:#9aa3b5; margin:6px 0 12px; }
+  .demo-ctl button{ font:inherit; font-size:12px; letter-spacing:.06em; color:#e8eaf2; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:8px 16px; margin:0 8px 8px 0; cursor:pointer; }
+  .demo-ctl button:hover{ border-color:#a06bff; box-shadow:0 0 18px -4px rgba(160,107,255,.7); }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Single comment</h2>
+  <article class="cmt cmt-one" aria-label="Comment by June Okafor">
+    <div class="cmt-av" style="--ac:#e84fff;--ac-glow:rgba(232,79,255,.45)" aria-hidden="true"><b>JO</b></div>
+    <div class="cmt-main">
+      <div class="cmt-head">
+        <h4 class="cmt-name">June Okafor</h4>
+        <time class="cmt-time" datetime="2026-10-16T21:28:00Z" title="Oct 16, 2026, 21:28 UTC">2h ago</time>
+      </div>
+      <p class="cmt-body is-clamped" id="cmtBody1">A single comment is the atom the thread is built from — same avatar jewel, same serif name, same plain-words timestamp, same action row. Long bodies clamp at four lines with an honest "Show more" — the full text is in the markup, nothing is cut, nothing is hidden from assistive tech. The love toggle here and the love pill in the reaction row are the same object: one count, one truth. Toggle it here and the pill agrees, because there was never a second number to disagree with.</p>
+      <button class="cmt-morebtn" aria-expanded="false" aria-controls="cmtBody1">Show more</button>
+      <div class="cmt-actions">
+        <button class="cmt-act cmt-reply"><svg viewBox="0 0 24 24"><path d="M9 14l-4-4 4-4"/><path d="M5 10h9a6 6 0 0 1 0 12h-3"/></svg>Reply</button>
+        <button class="cmt-act cmt-love is-on" aria-pressed="true"><svg viewBox="0 0 24 24"><path d="M12 21C7 16.5 3 13 3 8.9 3 6 5.2 4 7.8 4c1.7 0 3.2.9 4.2 2.3C13 4.9 14.5 4 16.2 4 18.8 4 21 6 21 8.9c0 4.1-4 7.6-9 12.1z"/></svg><span class="cmt-count">12</span></button>
+        <button class="cmt-act cmt-share"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/></svg>Share</button>
+      </div>
+    </div>
+  </article>
+</div>
+<script src="block.js"></script>
+</body>
+</html>
