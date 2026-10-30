@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-30T09:49:16Z",
-  "tip": "2224ffc2a5aebfb219384896671544d162192a74",
+  "generated_at": "2026-10-30T17:49:30Z",
+  "tip": "455b132180917af81d21f579cee6828dcc7867ef",
   "prs": [
     {
       "number": 2981,
@@ -10,7 +10,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "a180a3265d290bbd5bd1262e1dcb1ec37ff7a635"
+      "head": "d639718a1df3f3bf4517dcf9880aea6c2dad2ee9"
     },
     {
       "number": 3089,
@@ -28,16 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "8dfca61b8dd7f32124c2c55a647884764d0474f8"
-    },
-    {
-      "number": 3129,
-      "title": "Door cure: SN-1905 pricing canon capture + registry entry (backfill)",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "a93192363f25197672fc85da9902cfc6bcac623a"
+      "head": "3463e3e178bbafcaa556b32da9d571b92098dad1"
     }
   ]
 }
