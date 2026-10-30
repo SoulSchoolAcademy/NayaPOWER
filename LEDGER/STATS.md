@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-30 02:13 UTC_
+_Last updated: 2026-10-30 02:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 6826
-- ✅ Verified (8+): 6759
+- **Total scored actions:** 6830
+- ✅ Verified (8+): 6763
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -18,12 +18,12 @@ _Last updated: 2026-10-30 02:13 UTC_
 | Team 1 | Naya Verity | 492 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 492 | 8.8 | 9.5 |
 | Team 3 | Naya Judge | 455 | 9.0 | 10 |
-| Team 4 | Naya Mason | 436 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 561 | 9.0 | 9.6 |
+| Team 4 | Naya Mason | 437 | 9.1 | 9.6 |
+| Team 5 | Naya Seeker | 562 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 328 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 439 | 9.0 | 10 |
+| Team 7 | Naya Conductor | 440 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 458 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 583 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 584 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 785 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 416 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 360 | 9.2 | 9.5 |
@@ -1822,10 +1822,10 @@ _Last updated: 2026-10-30 02:13 UTC_
 - **t0636-lane10:** 1 actions, avg 9.0/10
 - **t0636-lane8:** 1 actions, avg 9.4/10
 - **t0637:** 4 actions, avg 9.0/10
-- **t0638:** 3 actions, avg 9.0/10
+- **t0638:** 4 actions, avg 9.0/10
 - **t0638-lane12:** 1 actions, avg 9.0/10
-- **t0639:** 1 actions, avg 9.0/10
-- **t0640:** 2 actions, avg 9.0/10
+- **t0639:** 2 actions, avg 9.0/10
+- **t0640:** 4 actions, avg 9.0/10
 - **t0641:** 2 actions, avg 9.0/10
 - **t0642:** 9 actions, avg 9.0/10
 - **t0643:** 3 actions, avg 9.0/10
