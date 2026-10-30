@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17251,6 +17251,14 @@ _Last updated: 2026-10-30 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: lane-2/armg-r2acceptance-costifwrong-t0676.md exists (5,745 bytes, written 22:01Z, matches receipt timeline); the doc is the genuine second-seat R2 review + cost-if-wrong sharpening (R1-R3 pins re-derived and matching in-doc). Pre-reg lane-experiments/prereg-t0669-lane5-armg-priorprobe.md exists at 13,493 bytes with sha256 prefix 26153968
 
+### ✅ t0675 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** DECLINE + RE-FILE: recusal from self-review of blinded-judge protocol, gate re-filed OPEN
+
+**Receipt:** `twelve-lane-receipts/t0675-lane3.md`
+
+**Evidence:** VERIFIED on live bytes: t0672-lane10 receipt seat line is Naya Clarity Narzan (Librarian, Lane 10 hat) and its deliverable is blinded-judge-protocol-t0672.md with sha256 c9d6728efb37a5f731c271aa95efb34f1e66fb46021b1bef1b1350e74febc90e, matching the protocol file on disk exactly today; the t0672 next-action wording routes the protocol to 'a contact-
+
 ### ✅ t0675 — Team 3, Naya Clarity Narzan (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** lane3
@@ -17258,6 +17266,14 @@ _Last updated: 2026-10-30 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0675-lane3.md`
 
 **Evidence:** Recusal on lineage self-review: verified the premise against t0672-lane10 bytes, re-filed brief with a proven claimability gate (claim script barred the author seat). Clears 9.5 — why not 10: the review itself is deferred, not done.
+
+### ✅ t0675 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Ratify-or-amend three ask-world.py contracts + top-20 re-derivation with crashed filter
+
+**Receipt:** `twelve-lane-receipts/t0675-lane10.md`
+
+**Evidence:** VERIFIED on live bytes: derivation artifacts are hash-exact today - retrieval/query-needs-top20-t0675.md sha256 62920780329b36ae0cd53797ba1fb8c63b852bb6c8a0144d85744107c7248b7f and query-needs-top20-t0675.jsonl 74dce1d133e6c745f97ee745e072c09ad7163915fead90752f9907f34e639b74 match the receipt pins exactly; the living defect register exists but its 
 
 ### ✅ t0675 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -17339,6 +17355,14 @@ _Last updated: 2026-10-30 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verify record present, sha16 8714370d842d2909 matches receipt claim; v1.1 candidate file exists (18177 B); live tip ls-remote 582e5e5f pre/post unchanged; amendment trace mechanical (A1-A6 greps on v1.1 bytes, all 6 landed); premise-rot caught live twice with contract's own A4/A6 re-pin machinery credited. Clears 9.5 blocked by: single-seat trace (
 
+### ✅ t0673 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Wordable packet for learning-authority 5 rows (Stage 1 item 4)
+
+**Receipt:** `twelve-lane-receipts/t0673-lane8.md`
+
+**Evidence:** VERIFIED on live bytes: packet hidden_files/wordable-packet-learning-authority-5-rows-t0673.md sha256 e63a4152dc2f... matches the receipt's full pin exactly; row snapshot 5b594493eb89... and scope snapshot 4a2489af0504... match the receipt's prefixes; verifier file hidden_files/repo/supabase/functions/nayanet-learning-verify/index.ts exists and car
+
 ### ✅ t0673 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** lane8
@@ -17346,6 +17370,14 @@ _Last updated: 2026-10-30 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0673-lane8.md`
 
 **Evidence:** Verified wordable packet + 2 snapshots via sha256; 6-row Supabase snapshot, verifier code, schema drift (no unique index, zero triggers) verified live; 5-grant finding with duplicate named. Clears 9.5 — why not 10: resolution is Shawn's protected-gate word, correctly routed, not the lane's.
+
+### ✅ t0673 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Reproduce t0671 constant-slot bias, prove weight-table fix in sandbox, measure quality cost, route dispatcher decision
+
+**Receipt:** `twelve-lane-receipts/t0673-lane5.md`
+
+**Evidence:** VERIFIED on live bytes: sandbox SHAs match the receipt exactly (matcher_repro.py c17f0235e27f..., fair_test.py b6bc60bcf593..., lessons-before.jsonl ca6b1bafd84c..., lessons-after.jsonl 59f5dfdddb34c...). No git branch/SHA is cited for this work itself, so the branch leg does not apply. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, matching lane pas
 
 ### ✅ t0673 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -28962,6 +28994,12 @@ _Last updated: 2026-10-30 07:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261030-0105 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-30 01:03 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued = 31 with EXACT set match to disk files, in_flight=[]; the receipt's grouped list (b1 2 + b2 18 + b3 3 + b4 8) matches the disk set exactly, name for name (0 only-receipt, 0 only-disk); the 24 blocked-item lines cover all 31 bri
 
 ### ✅ 20261030-0004 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
