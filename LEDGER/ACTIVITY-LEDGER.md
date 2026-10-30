@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17067,6 +17067,14 @@ _Last updated: 2026-10-30 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Classifier edit scoped to the lane's instrument family with sandbox synthetic rows; byte-identity verified pre-edit. Score 9.5 — why not 10: the t0675-guard regression claim and the live edit ride on one seat's sandbox proof (self-scored 9.7; independent score 9.5).
 
+### ✅ t0678 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** retrieval-auth wiring-prep packet
+
+**Receipt:** `twelve-lane-receipts/t0678-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes: packet hidden_files/wordable-packet-retrieval-auth-wiring-prep-t0678.md sha256 80bedfb9bf24... MATCHES the receipt pin exactly; hidden_files/authority_gate.py sha256 9f0a80a41d59... MATCHES the receipt pin exactly and contains 0 retrieval_authorized references, confirming the receipt's premise-refutation (the brief
+
 ### ✅ t0678 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** lane8
@@ -17106,6 +17114,14 @@ _Last updated: 2026-10-30 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0678-lane6.md`
 
 **Evidence:** VERIFIED: remote branch naya4/contract-staging head == ea501b6800df4630def495a342f2cd9e74583e14 (git ls-remote); kernel/protocol/contract_gate.py present at that SHA with explicit GATE_FORMS dict matching receipt's claimed normalization (deploy/deploying/deployed/deploys/deployment; ratify/ratified/ratifying/ratifies/ratification; consent forms; de
+
+### ✅ t0678 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** shared-schema-spec-v0.2 with D1-D4 applied
+
+**Receipt:** `twelve-lane-receipts/t0678-lane5.md`
+
+**Evidence:** VERIFIED this tick on live bytes: all three pins MATCH exactly - shared-schema-spec-v0.1.md db5a4912a2ed..., shared-schema-spec-v0.2.md 0ee19f61804f..., review-t0677-lane5.md c39d50f67949... in hidden_files/retrieval/smartblocks/. The v0.1 seal holds untouched and v0.2 exists as the promoted vehicle. No git branch/SHA is cited for this work itself,
 
 ### ✅ t0678 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
 
@@ -17178,6 +17194,14 @@ _Last updated: 2026-10-30 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0677-lane4.md`
 
 **Evidence:** VERIFIED: all 6 cited artifacts exist on disk and sha256 prefixes match receipt claims (instrument b725a5a1..., predictions ce92e6ed..., results be2d3bd5..., dryfire log 3112ddc1..., seal 86d7656d..., verdict 0a75e3a7...). Pins re-derived at action time per receipt. Pre-sealed predictions, determinism predictions==results PASS, VOID verdict from ru
+
+### ✅ t0677 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Independent falsification of t0673-lane5 option (b), verdict NEITHER with blocking math
+
+**Receipt:** `twelve-lane-receipts/t0677-lane11.md`
+
+**Evidence:** VERIFIED this tick on live bytes: all four sandbox pins MATCH exactly - preregistration.md c9c116bc8995..., tagger_matcher.py 5e5746a49a3f..., run-baseline-b.txt 960ce1826def..., run-baseline-b2.txt 18facad39267... in hidden_files/lane-exp/matcher-falsify-t0677/. No git branch/SHA is cited for this work itself, so the branch leg does not apply. NOT
 
 ### ✅ t0677 — Team 11, Naya Clarity Narzan (Human Value) — 9.5/10 [VERIFIED]
 
