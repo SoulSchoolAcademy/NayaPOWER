@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-30T17:49:30Z",
-  "tip": "455b132180917af81d21f579cee6828dcc7867ef",
+  "generated_at": "2026-10-30T21:00:24Z",
+  "tip": "e6450eede629bdc113e3f59f7728b3ece442ccc0",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,16 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "3463e3e178bbafcaa556b32da9d571b92098dad1"
+      "head": "5a1968470f9d7d3098f17829189510e6780a42c5"
+    },
+    {
+      "number": 3131,
+      "title": "Door cure: SN-1906 capture + registry entry + index regen",
+      "tier": "C",
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "4280ea82cc832f146c2b8f088ded16c70c8dafc0"
     }
   ]
 }
