@@ -1,0 +1,34 @@
+/* Smart Block CSS: comments/cmt-reactions
+ * Source: gap-blocks-2/comments-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-CMT-003
+ */
+
+/* Family token sheet — every rule below assumes these (copied once, scoped to the family root) */
+
+.cmt{--ground:#050507;--ink:#fff;--magenta:#e84fff;--purple:#a06bff;--indigo:#6675ff;--blue:#3fb8ff;--emerald:#35e0a1;--green:#2fe89e;--lime:#b8ee57;--gold:#ffbf3d;--orange:#ff9a5a;--red:#ff5e6c;--pink:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1);--serif:Georgia,'Times New Roman',serif;background:var(--ground);color:var(--ink)}
+
+.cmt-rx{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.rx{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:8px 16px 8px 12px;
+border-radius:999px;background:#050505;border:1.5px solid var(--rc);color:#fff;font-size:14px;cursor:pointer;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.08);
+transition:transform .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s,background .18s}
+.rx svg{width:17px;height:17px;stroke:var(--rc);fill:none;stroke-width:1.8;flex:none}
+.rx b{font-weight:600;font-variant-numeric:tabular-nums}
+.rx:hover{transform:translateY(-2px);box-shadow:0 0 24px var(--rc-glow)}
+.rx:active{transform:translateY(1px)}
+.rx:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.rx.is-mine{background:rgba(0,0,0,.55);box-shadow:0 0 26px var(--rc-glow),inset 0 0 14px var(--rc-dim)}
+.rx.is-mine svg{fill:var(--rc)}
+.rx-add{width:44px;height:44px;border-radius:50%;background:#050505;border:1.5px dashed rgba(255,255,255,.6);
+color:#fff;cursor:pointer;display:grid;place-items:center;
+transition:transform .18s cubic-bezier(.16,.84,.22,1),border-color .18s,box-shadow .18s}
+.rx-add svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:1.8}
+.rx-add:hover{transform:translateY(-2px);border-color:#a06bff;box-shadow:0 0 22px rgba(160,107,255,.55)}
+.rx-add:hover svg{stroke:#a06bff}
+.rx-add:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.rx-pop{position:absolute;z-index:40;display:flex;gap:8px;background:linear-gradient(180deg,#16141b,#08080c);
+border:1.5px solid rgba(255,255,255,.35);border-radius:16px;padding:12px;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.12),0 24px 60px rgba(0,0,0,.75)}
+.rx-pop[hidden]{display:none}
+.rx-wrap{position:relative;display:inline-block}
+@media (prefers-reduced-motion:reduce){.rx,.rx-add{transition:none}}
