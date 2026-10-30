@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 02:07 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 02:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13399,6 +13399,14 @@ _Last updated: 2026-10-30 02:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: query-log SHA-256 recomputed on disk == receipt pin 0fa1f99d... (64/64); committed retrieval/tally-t0710.json + tally-t0710.py exist. STABLE verdict corroborated (t0751 lane-8 re-pin agreement). Real verified value shipped: byte-exact pin comparison + 2/2 falsifier VANISH + routed GO to Lane 4. Clears 9.5. Kept from 10: verdict rests on o
 
+### ✅ t0751 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** surge-c reading-notes generator from tally JSON + D1-D6 fossil adjudication
+
+**Receipt:** `twelve-lane-receipts/t0751-lane8.md`
+
+**Evidence:** VERIFIED this tick, hash-exact on live bytes: generated notes surge-c/top20-needs-t0751-lane8.md sha256 948d3899... matches the receipt exactly; generator surge-c/gen_reading_notes.py and diff surge-c/diff-t0741-vs-t0751-lane8.md both present. Historic pins have drifted since 2026-10-14 (tally now a5990a85... vs pinned 7c33bbd8..., log now b0abfb68
+
 ### ✅ t0751 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** surge-c reading-notes generator (stdlib) + D1-D6 fossil adjudication on tally-t0710 (77 rows), notes byte-identical x2
@@ -13415,6 +13423,14 @@ _Last updated: 2026-10-30 02:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified on disk: gen_reading_notes.py, top20-needs-t0751-lane8.md SHA 948d3899bd89ea74b9fe6c1d28e217cf6d12911e2f7b98c26b9f7a6aa9fb0e68 EXACT match to receipt claim, diff-t0741-vs-t0751-lane8.md. Re-ran generator twice: exit 0, byte-identical (8c05f49a...), output identical to artifact except §0 timestamp — exactly the receipt's self-disclosed H4 c
 
+### ✅ t0750 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Blind third-seat replication of 19-row top-20 needs table — brief VOIDED, fail-closed eligibility (prior tally contact)
+
+**Receipt:** `twelve-lane-receipts/t0750-lane5.md`
+
+**Evidence:** VERIFIED this tick on live bytes as far as the historic pin allows: voided brief present in brief-queue/done/; lane-5 journal still carries the t0710 tally-builder entry (builder script, tally JSON, first needs table on the same log), confirming prior contact; journal SHA has since drifted (3917ef07... vs pinned 88acb75e...), expected appends, not 
+
 ### ✅ t0750 — Team 5, Naya Clarity Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Brief VOIDED on fail-closed eligibility: journal check fired, prior contact unambiguous, blind discipline preserved
@@ -13422,6 +13438,14 @@ _Last updated: 2026-10-30 02:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0750-lane5.md`
 
 **Evidence:** VERIFIED: the void is self-proving -- receipt quotes the t0710 journal lines (builder of the tally lineage: script, machine tally JSON, first needs table on the same query log) making prior contact unambiguous; deliverable and Lane 11/Lane 10 receipts never opened; nothing touched, no verdict committed. Executing 'blind' by assertion would have bee
+
+### ✅ t0750 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Blind subject for level-drill run — brief VOIDED, fail-closed eligibility (key-contacted)
+
+**Receipt:** `twelve-lane-receipts/t0750-lane10.md`
+
+**Evidence:** VERIFIED this tick on live bytes: t0723 receipt sha256 f293fb86... matches the receipt exactly, and the t0723 void notice 010935a9... matches exactly; both key-contact phrases confirmed in the t0723 receipt text; voided brief present in brief-queue/done/. Lane-10 journal has since drifted (b1e00bcb... vs pinned 99225ca7...), expected journal append
 
 ### ✅ t0750 — Team 10, Naya Clarity Librarian (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -17889,6 +17913,14 @@ _Last updated: 2026-10-30 02:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: bin/verify-brief-pins.py exists with sha256 prefix 0b0d57ce1888b415 EXACT match to receipt; brief-pin-verification-procedure.md exists (2873 bytes); brief-pin-proofs/ holds all 4 files. Spot-ran the proof outputs: clean-lane6 proof shows 1 MATCH (synthesis pin 467d1d0f…, tier-1) + 3 UNRESOLVED + exit 0 exactly as claimed; seeded proof pri
 
+### ✅ t0640 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Sealed-probe blinding-checklist CANDIDATE (t0634 HOLD repair) + #2175 HOLD broadcast
+
+**Receipt:** `twelve-lane-receipts/t0640-lane9.md`
+
+**Evidence:** VERIFIED this tick on live bytes as far as the historic record allows: checklist hidden_files/sealed-probe-blinding-checklist-t0640.md exists (9119 chars, 10 numbered items, CANDIDATE header naming the t0634 defect and dispatcher adoption). No git branch/SHA cited, so the branch leg does not apply. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, match
+
 ### ✅ t0640 — Team 9, Naya Smith (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Sealed-probe blinding checklist CANDIDATE (10 items, §7-clause-mapped) + #2175 HOLD broadcast
@@ -17896,6 +17928,14 @@ _Last updated: 2026-10-30 02:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0640-lane9.md`
 
 **Evidence:** VERIFIED: checklist hidden_files/sealed-probe-blinding-checklist-t0640.md exists (86 lines); §7 spec spot-checked byte-exact in lane-experiments/t0568/PREREG-cold-retrieve-sealed.md L393-410; #2175 comment 6148601855 present in local board-window-2026-10-13T1508Z.json - HOLD broadcast posted, zero REST. No PHANTOM. Real value: closes owed item (1) 
+
+### ✅ t0640 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** NLI feasibility re-test of t0601 no-torch/transformers block: verdict GO, dry-fire PASS
+
+**Receipt:** `twelve-lane-receipts/t0640-lane5.md`
+
+**Evidence:** VERIFIED this tick, hash-prefix-exact on live bytes: dry-fire harness auto-retrieval/nli_dryfire_t0640.py sha256 fb676eb98c58e265... and instrument auto-retrieval/t0601_entailment_arm.py sha256 2c256920d8a3918c... both match the receipt exactly; verdict file auto-retrieval/nli-feasibility-t0640.md present. No git branch/SHA cited, so the branch leg
 
 ### ✅ t0640 — Team 5, Naya Seeker (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -17905,6 +17945,14 @@ _Last updated: 2026-10-30 02:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: verdict file auto-retrieval/nli-feasibility-t0640.md exists with NLI-VERDICT: GO; harness sha256 fb676eb98c58e265666f8a93258a937bf4b1f493df4f97b2b39afc4a376b7f18 EXACT match; instrument t0601_entailment_arm.py pin 2c256920d8a3918c4017d3c1418c87aa933608a23245043f259be7fa5bf1fd8b EXACT match (first pin of this script). No PHANTOM. Real valu
 
+### ✅ t0639 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Design-doc drift investigation: EQ-D0 anchor MATCH, reported SHA drift phantom
+
+**Receipt:** `twelve-lane-receipts/t0639-lane4.md`
+
+**Evidence:** VERIFIED this tick on live bytes: doc auto-retrieval/t0622_h_dc6_design.md sha256 ends ...497f35825880, matching the receipt's recomputed current pin (not the t0629 ...815880 line); EQ-D0 lines 129-130 read verbatim as quoted and exactly one EQ-D0 mention in the doc; sealed note sealed-note-t0633-h-dc6.md still present. The 63/64-hex-char argument 
+
 ### ✅ t0639 — Team 4, Naya Mason (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Design-doc drift investigation: phantom SHA drift dissolved by char-compare, MATCH verdict, no re-seal owed
@@ -17912,6 +17960,14 @@ _Last updated: 2026-10-30 02:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0639-lane4.md`
 
 **Evidence:** VERIFIED: design doc auto-retrieval/t0622_h_dc6_design.md + sealed-note-t0633-h-dc6.md exist locally; EQ-D0 single-mention confirmed. Real verified value: the 63/64-hex-char char-compare dissolved the whole investigation before any history hunt, unblocking the fresh-seat H-dc6 re-run as written (no re-seal). Why not 9.5: (1) the transcription-error
+
+### ✅ t0638 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review of wave ORDER in Mason's t0626 stamping-migration plan + W1 re-capture correction
+
+**Receipt:** `twelve-lane-receipts/t0638-lane7.md`
+
+**Evidence:** VERIFIED this tick on live bytes: retrieval/auth-gate-wave-order-verdict-t0638-CANDIDATE.md sha256 prefix 823534c3eb001d15 matches the receipt exactly; action-time tip 34338065e... is a real commit object in the recon mirror; plan file retrieval-authgate-stamping-migration-plan-t0626.md sha256 91c797fd... matches the receipt pin exactly (plan text 
 
 ### ✅ t0638 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
