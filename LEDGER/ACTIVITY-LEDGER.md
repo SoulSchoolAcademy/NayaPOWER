@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15529,6 +15529,14 @@ _Last updated: 2026-10-30 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: all three claimed deliverables exist in goal workspace (lane-11/t0708-heart-probe-battery.py 9899B, t0708-heart-probe-results.json 2510B, verdict md 5295B, all timestamped 2026-10-14 04:32-33Z matching the receipt's action window). Receipt wrote its OWN 7-probe battery (not a re-run), pinned the check file sha256 at start AND end
 
+### ✅ t0707 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Parallel second independent scorecard on PR #2565 - declined by pointer, receipt-gate defects re-confirmed
+
+**Receipt:** `twelve-lane-receipts/t0707-lane6.md`
+
+**Evidence:** VERIFIED in substance on live bytes: receipt file exists; its action-time pins are corroborated by the same-run twin receipts t0707-lane3 (scored 9.0) and t0706-lane8 (scored 9.0) on the identical PR head 4bdb1f221aaec31bc41babf848526b3232c2661f, closed unmerged 2026-10-14T03:37:05Z, and by a prior Team Naya Scorer row (20261029-0320) that verified
+
 ### ✅ t0707 — Team 6, Naya Verity Heir (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** Parallel second independent scorecard on PR #2565 + receipt-gate defect confirmation
@@ -15544,6 +15552,14 @@ _Last updated: 2026-10-30 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0707-lane6.md`
 
 **Evidence:** ARTIFACT VERIFIED: refs/heads/naya-lane7/t0701-restamp == 4bdb1f221aaec31bc41babf848526b3232c2661f, matches all three pins; receipt's defect evidence grounded on live reads (comment 6160877257 exists, PR body heading fails the ^## evidence$ regex, handle hidden_files/merge-packet-restamp-t0701.md not in repo tree). Beyond a pointer, Lane 6 independ
+
+### ✅ t0707 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Timed end-to-end capture-leg probe of Smart Note Flow + gap contract vs Shawn's priority-#2 path
+
+**Receipt:** `twelve-lane-receipts/t0707-lane5.md`
+
+**Evidence:** VERIFIED in substance on live bytes: local probe file hidden_files/probe-note-t0707.md exists (498 bytes); remote branch naya4/smart-notes-2026-09-30 still resolves via git ls-remote, but its head has moved to a180a3265d29... so the receipt's pinned commit 77d9f055aa50... is no longer the tip and cannot be re-verified at tip this tick; era verifica
 
 ### ✅ t0707 — Team 5, Naya Clarity Narzan (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -15576,6 +15592,14 @@ _Last updated: 2026-10-30 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0707-lane3.md`
 
 **Evidence:** ARTIFACT VERIFIED: receipt's PR-state pin (closed, merged=False, head 4bdb1f221aaec31bc41babf848526b3232c2661f) matches live remote ref. Lane re-pinned PR state at action time itself, invoked the already-done clause honestly, delivered dispatcher map update + retire request, posted board note. Named gap keeping it from 9.5: the claim was avoidable 
+
+### ✅ t0707 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value observatory v1 section Next pass: 6-family census recompute + I2b queue-wait + I3 event table
+
+**Receipt:** `twelve-lane-receipts/t0707-lane11.md`
+
+**Evidence:** VERIFIED on live bytes: 4/6 receipt pins MATCH exactly - i2b-queuewait-t0707.py a242e73251b7db45, i2b-queuewait-t0707.json e0933c1920c380f0, i3-event-table-t0707.md c8e109f857692204, spec human-value-observatory-v1.md 8f76add6794d83ea; census JSON on disk still holds I1=98.7 with the claimed window, corroborating the headline numbers. NOT PHANTOM. 
 
 ### ✅ t0707 — Team 11, Naya Clarity Narzan (Human Value) — 9.0/10 [VERIFIED]
 
