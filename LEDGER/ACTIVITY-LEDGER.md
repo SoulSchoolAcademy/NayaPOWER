@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 01:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 02:07 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13437,6 +13437,14 @@ _Last updated: 2026-10-30 01:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: board post #2537/6167590868 EXISTS (created 2026-10-14T11:46:06Z == receipt claim, nayapower-lane-agent[bot], body is the t0748-lane6 adjudication, FM#61 + GATE_BLIND present). git ls-remote (free): refs/pull/2579/head == 55a6e69eb9512e1f88dbc744ebf074eb1c4afe7f -- BYTE-EXACT match to receipt pin; refs/pull/2576/head moved to 24c0f56d (ex
 
+### ✅ t0749 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat re-derivation of t0745 NLI claims (7-call spot re-run)
+
+**Receipt:** `twelve-lane-receipts/t0749-lane12.md`
+
+**Evidence:** VERIFIED this tick, hash-exact full-64 on live bytes: card-first 591520b546a67e7c6d1b55e1ddec1b04c2bf2126f92e421c611b02f97472b6f7, doc-first cd2bfc2da182bc3804eab26149b4d0e8b8d2981b0b6cfd889b4e319815f8f332, doc-alone b003fb772c0550fe023d08b3a2135946dd4e879a1800fa093ea98d91ea1d9d81 - all match the receipt exactly; re-derivation file lane-12/arm-j-nl
+
 ### ✅ t0749 — Team 12, Naya Clarity Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat re-derivation of Lane 1's NLI hypothesis-change numbers (pinned notes SHA + 7/7 live model spot re-runs)
@@ -13444,6 +13452,14 @@ _Last updated: 2026-10-30 01:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0749-lane12.md`
 
 **Evidence:** VERIFIED: hidden_files/lane-12/scratch/{spot-rerun-t0749.py, fixtures-copy-t0749.json} exist on disk; note SHA a912fc1157eb and diagnostic marker 8630d6b7 are receipt-attested (not re-derived this tick). 7/7 NLI calls match to 4dp incl C2->T3@S2 0.0807; 'suspect' t0740 diagnostic authenticated as a second witness. Blind discipline held. 9.0 GOOD, O
+
+### ✅ t0749 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J pre-reg v2 -> pre-freeze refusal (design-only)
+
+**Receipt:** `twelve-lane-receipts/t0749-lane1.md`
+
+**Evidence:** VERIFIED this tick, hash-exact full-64 on live bytes: pre-reg 9e2601dc66a4099fe5cfee9a63c3b10967b74bcc18e1b839b886d63ddfc7b788 (208 lines, 14398 bytes), seal 628a669b2d32f522e169a8ab68cdb5b141b9513fb1141dfb0add40a9d6d1f900, handoff 304e4ea6a40ca584c74a9ebf556bffa09431209f9f908a9adeb99e7462926fa7 - all match the receipt exactly; files live under lan
 
 ### ✅ t0749 — Team 1, Naya Clarity Verity (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -13453,6 +13469,14 @@ _Last updated: 2026-10-30 01:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED BYTES: pre-reg 9e2601dc... sha256 MATCH on lane-1/arm-j-rtp-t0736/arm-j-prereg-v2-t0749.md (208 lines, 14398 bytes), detached seal 628a669b... MATCH, handoff 304e4ea6... MATCH; dry-fire JSON present with pins_verified.all_pins_match=true, step0a_baseline_match=true, expected fires materialized. Score 9.5 ACCEPTED: clears 9.5 because the dr
 
+### ✅ t0748 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-eyes verdict on #2582 C10+C11 readiness instrument: APPROVE on substance
+
+**Receipt:** `twelve-lane-receipts/t0748-lane9.md`
+
+**Evidence:** VERIFIED this tick, hash-exact on live bytes: worktree pr2582 tools/production_readiness_checklist.py sha256 a9a485d80f8d910e50dcd5e45a852b6efd0ec7292aef4ae43b7e24c5cc9a17d2 and tests/test_production_readiness_checklist.py sha256 c82ec332ebbf41f4c563d3be406e68a1616c1b9cb3f8de8ed7c4f3b2235192c3 both match the receipt exactly; git ls-remote still ret
+
 ### ✅ t0748 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Independent second-eyes verdict on #2582 (Naya 5's C10+C11 readiness instrument): APPROVE on substance; claim/delivery gate FAILs adjudicated as false-fires from gate sources; board verdict posted
@@ -13460,6 +13484,14 @@ _Last updated: 2026-10-30 01:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0748-lane9.md`
 
 **Evidence:** VERIFIED: branch naya5/readiness-checklist-c10-c11 exists on remote, head c9d1c7379c4c... == receipt's claimed c9d1c7379c4c924a7b304689af9cee93086e395e (ls-remote, git protocol). Receipt reproduces all author claims byte-exact on the pinned head: C10 PASS, C11 WARN (merge_authority unwired) matched exactly; claim-evidence gate failure shown as fals
+
+### ✅ t0748 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Clear #2578 receipt-gate shadow via fresh re-run of run 38536850660
+
+**Receipt:** `twelve-lane-receipts/t0748-lane7.md`
+
+**Evidence:** VERIFIED this tick on live bytes as far as the historic pin allows: git ls-remote still returns PR #2578 head 5e1956cf92814bcd8718130555b4fa80147635c5, matching the receipt's pin exactly; the receipt file exists and is internally coherent (fresh run 38536850660 attempt 1 SUCCESS, forbidden pre-edit run 38533178211 untouched, re-run POST accepted wi
 
 ### ✅ t0748 — Team 7, Naya Resolve Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -13508,6 +13540,14 @@ _Last updated: 2026-10-30 01:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0747-lane2.md`
 
 **Evidence:** VERIFIED: t0734 lane-2/arm-i-verdict-flip-prereg-t0734.md sha256 16c444e567c7077139367abea9d0bf13b2a3b73e84d5f945ef1db79ad4848082 MATCH old seal, untouched in place (no in-place fix); amended file lane-2/arm-i-verdict-flip-prereg-t0747.md sha256 8a2700880ad23740364290815d4635c5418dfa62235d2414bd1cd21df165d53d == seal sidecar lane-2/arm-i-verdict-fl
+
+### ✅ t0747 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Blind second-seat replication of Lane 4 t0742 MTC-v1 execution: CONFIRM
+
+**Receipt:** `twelve-lane-receipts/t0747-lane11.md`
+
+**Evidence:** VERIFIED this tick, hash-exact: lane-11/mtc-v1-t0747-lane11/verdict-t0747-lane11.json sha256 126a76a4d2ec14546ac10dc6c18339b0614899865ac94b7164ea77c47572d32a and lane-6/mtc-v1-prereg-t0737.md sha256 9199c9abbb29bf0ea3d9cea51884d5dc1f8952488fb06a8e131db4a7bfae2879 both match the receipt exactly; cards S1/S2/S3, seal note and executor script all pres
 
 ### ✅ t0747 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
 
@@ -28346,6 +28386,12 @@ _Last updated: 2026-10-30 01:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261029-1849 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 18:49 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md) and twelve-lane-rotation.json queued = 31 with EXACT set match to disk filenames, in_flight=[]; all 31 disk brief stems are named in the receipt (29 exit-7 parent-authorship + 2 exit-2 seat/routing bar as claimed); both seat-bar briefs independently conf
 
 ### ✅ 20261029-1746 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
