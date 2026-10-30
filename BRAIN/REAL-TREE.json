@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-29",
-  "receipt_basis_commit": "e1482af1ee08aaf835d23b6ba31261bbdc5a32e4",
-  "inventory_file_count": 1733,
+  "generated_at": "2026-10-30",
+  "receipt_basis_commit": "f1fadb085ccfe1fcdcbe55fa3df4e42d843cc7c7",
+  "inventory_file_count": 1802,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,12 +11,12 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 899,
+    "05-MEMORY": 900,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 455,
+    "10-INTERFACES": 523,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
     "90-OPERATIONS": 109,
@@ -5046,6 +5046,11 @@
       "size": 1302
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/learning/SN-1904/IB-SMART-NOTE-20261030-sn1904-beneficial-intelligence.md",
+      "blob_sha": "ee8ccc601cc178232ada5e65aa5ea70ddb3cd748",
+      "size": 10817
+    },
+    {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
       "blob_sha": "7e5bbf440cac2c677e626ba4280cc0cbab8cb3bf",
       "size": 7193
@@ -6046,6 +6051,151 @@
       "size": 1489
     },
     {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-agenda-list/README.md",
+      "blob_sha": "a5ef060668c470be574a0cece321615c32416100",
+      "size": 2247
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-agenda-list/block.css",
+      "blob_sha": "1d8d0e7defa895e3f44c7e4f25376aba288bf2f5",
+      "size": 3337
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-agenda-list/specimen.html",
+      "blob_sha": "0ecbd7c5bad62c7a2ba4086e17383bb6336a3cda",
+      "size": 2559
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-date-picker/README.md",
+      "blob_sha": "fdc01e9006791ebc05a24f03e407ad64db3266fd",
+      "size": 2568
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-date-picker/block.css",
+      "blob_sha": "d04ead6134bd18b2169c5c5a738bed62839267b3",
+      "size": 3175
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-date-picker/block.js",
+      "blob_sha": "1cc70ade3adf303961dad8b03b07fd8b41ae4938",
+      "size": 2526
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-date-picker/specimen.html",
+      "blob_sha": "33d2249542b431a489920242adc9c4de662d0563",
+      "size": 1996
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-day-states/README.md",
+      "blob_sha": "a2699d84928845d57f662e57d9a86d0e5710d883",
+      "size": 2358
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-day-states/block.css",
+      "blob_sha": "d4224e934cd132a9f7de90fe29c7e478e81ea699",
+      "size": 2190
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-day-states/specimen.html",
+      "blob_sha": "c45e03c0f3250ced07a5678804ea7a8b34d874f8",
+      "size": 2371
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-event-card/README.md",
+      "blob_sha": "2eb684018ae523871a7dcbca1e274466a7198486",
+      "size": 2468
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-event-card/block.css",
+      "blob_sha": "59babf4e148ca3e2c117d269254d9d0182dc566a",
+      "size": 3024
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-event-card/specimen.html",
+      "blob_sha": "bd0550099883793404ae97c3508dc579ebc96510",
+      "size": 3169
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-month-board/README.md",
+      "blob_sha": "93b242fc1bbf524df4108cce4ec3c8a20ac3dae4",
+      "size": 2502
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-month-board/block.css",
+      "blob_sha": "1bb696d40cb92105743dda5e225c9533b8a0776f",
+      "size": 4571
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-month-board/block.js",
+      "blob_sha": "0ca21775371cd67aee76edf77b23528fc6decbbb",
+      "size": 351
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/calendar/cal-month-board/specimen.html",
+      "blob_sha": "3e1f37a68043db1eb23465c7d6cea8d9dfc39b4b",
+      "size": 6749
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-bubbles/README.md",
+      "blob_sha": "6bc20d15f4f7b55d196b29efce65ca3b2572f65e",
+      "size": 3213
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-bubbles/block.css",
+      "blob_sha": "de17b445b1aeb068d0b6d8931cf71a40d5c09f13",
+      "size": 4093
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-bubbles/block.js",
+      "blob_sha": "91e87304cbbf87868bd1e8eda0c9de70da4aacb6",
+      "size": 746
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-bubbles/specimen.html",
+      "blob_sha": "4c5353a2a815a1e89e1a6f2c624acef9d8503706",
+      "size": 4681
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-msg-list/README.md",
+      "blob_sha": "af2f66669e3e6aa5fb7c6b8a9454a8dadbfc1960",
+      "size": 3082
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-msg-list/block.css",
+      "blob_sha": "276a977a46d9648c8e738855b00635180b7ed954",
+      "size": 4125
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-msg-list/block.js",
+      "blob_sha": "19be4a3c8a69fd24eb9b6cf4bdd327ab66257231",
+      "size": 1077
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-msg-list/specimen.html",
+      "blob_sha": "03e9ae59dc0b08efb6fcff3dc3dfb613d96a6251",
+      "size": 4288
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-typing/README.md",
+      "blob_sha": "91b27299be5f6ee8a52fb4ed2aea0ef2c315d32c",
+      "size": 2530
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-typing/block.css",
+      "blob_sha": "c2d2aca001f6f7975881f830a6b21446c505a29d",
+      "size": 1722
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-typing/block.js",
+      "blob_sha": "f9c03d08ff1a17b59ddb07f5690b5ce8c50901ab",
+      "size": 1619
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/cht-typing/specimen.html",
+      "blob_sha": "5296b776853f810c9a7e41c7c47466caa44c83f9",
+      "size": 2456
+    },
+    {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-audio-msg/README.md",
       "blob_sha": "a6e86e4840fe447765905fc7d64f9f43f37d1b4e",
       "size": 1555
@@ -6084,6 +6234,81 @@
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chat/sp-chat/specimen.html",
       "blob_sha": "61dd6ace8cdd28e7a2633a9886db9138a6431ba7",
       "size": 2649
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-confirm/README.md",
+      "blob_sha": "e777a3b81709440238a7b788d5434f9f6b27eb4e",
+      "size": 3226
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-confirm/block.css",
+      "blob_sha": "6491f6b72053156ffc0e750387734b631df45771",
+      "size": 7226
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-confirm/specimen.html",
+      "blob_sha": "0b94cc548c47194226e8cd9fd75d70adba32507e",
+      "size": 2648
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-error/README.md",
+      "blob_sha": "f09e77a32f1d0b974a1d9ab42d9708d3f7258633",
+      "size": 3242
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-error/block.css",
+      "blob_sha": "735517c7caf2933a524efdef1e19521a9b6b9c7f",
+      "size": 6350
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-error/specimen.html",
+      "blob_sha": "095d05e4f550d67c224c41beadd594d875b7950c",
+      "size": 2555
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-method-picker/README.md",
+      "blob_sha": "ca34b6b46f9327737caf7fc3fec08c21ab00a790",
+      "size": 2976
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-method-picker/block.css",
+      "blob_sha": "640c707d5391f90c4b186fd8b640fe15b1f5a05e",
+      "size": 5525
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-method-picker/specimen.html",
+      "blob_sha": "7147fc712f8a2f59d4e662e0ba8151d0acd4cb91",
+      "size": 2750
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-order-summary/README.md",
+      "blob_sha": "78a212e23cebd88e5cd39b240229076d07903c61",
+      "size": 3721
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-order-summary/block.css",
+      "blob_sha": "6a7c1ab8f1b6adcfbfad43aa5e8db7d8b83a25f7",
+      "size": 10248
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-order-summary/specimen.html",
+      "blob_sha": "8d2069dfc4b89476f65e5a67fffdbf5b0aa0ca04",
+      "size": 4423
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-payment-form/README.md",
+      "blob_sha": "5fba4002a6f87281dc62f95f360ed1416daa0ab7",
+      "size": 3160
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-payment-form/block.css",
+      "blob_sha": "5506d12f46a10a3c229adcc7648e1a3d0b3bbc04",
+      "size": 6009
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/checkout/pay-payment-form/specimen.html",
+      "blob_sha": "09976ef47be548f8b8288d64b5e223d37ee4b26e",
+      "size": 3445
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/door/README.md",
@@ -6169,6 +6394,66 @@
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/chrome/share-fab/specimen.html",
       "blob_sha": "96b9722e930a413d716498eef9054150e0fb11a6",
       "size": 732
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-comment/README.md",
+      "blob_sha": "a3ac420ae5f9e64a0b3bdf78d9c5758e47907342",
+      "size": 2868
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-comment/block.css",
+      "blob_sha": "56fae2451587859baab1b2f6534fca13ee70cc80",
+      "size": 1972
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-comment/block.js",
+      "blob_sha": "4a0b6fae2ce8e7f0ebe3fd7464a99d449ff379e7",
+      "size": 363
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-comment/specimen.html",
+      "blob_sha": "9e94d47ed1006a0c920aca0263b28315d458e13a",
+      "size": 2934
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-reactions/README.md",
+      "blob_sha": "b9d87911bc63199a4dc6aa23696e3b1afbbf8974",
+      "size": 2567
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-reactions/block.css",
+      "blob_sha": "aee5a3c0634ab7866834599f4416be9ab53bcbb2",
+      "size": 2378
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-reactions/block.js",
+      "blob_sha": "1d514e8f3b2d3e28bde68491560c0d2336c58de4",
+      "size": 2257
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-reactions/specimen.html",
+      "blob_sha": "94a9afeb6edcf7c2b3d580c57a34a59d91fedca2",
+      "size": 4169
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-thread/README.md",
+      "blob_sha": "e690e1439f56b63800fb4a95af6fd7c0d43a1fcd",
+      "size": 3633
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-thread/block.css",
+      "blob_sha": "540d0fc2aa68a8623ece52848a2a61615c9b5cd2",
+      "size": 7520
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-thread/block.js",
+      "blob_sha": "9fa2f5ea941be1f50d43de004f41796eb189613e",
+      "size": 1383
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/comments/cmt-thread/specimen.html",
+      "blob_sha": "fc49e3dbcb6729bb2142d859a69dd29b695ca645",
+      "size": 9339
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/data/li-day/README.md",
@@ -6362,8 +6647,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/index.json",
-      "blob_sha": "4089c709c9985f99f304ec37446961a08e5bf2bc",
-      "size": 72523
+      "blob_sha": "21b094699537c5b4a32bd7fb5cfb7da5c54627a3",
+      "size": 109598
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/inputs/nl-field/README.md",
@@ -6534,6 +6819,61 @@
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/media/nl-player/specimen.html",
       "blob_sha": "07e377fe2b0c095f7e75871cfa10ecc7bfd3fa90",
       "size": 2290
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-progress/README.md",
+      "blob_sha": "eeb94553810361661ec6f5bc59db3f910234fd0c",
+      "size": 2844
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-progress/block.css",
+      "blob_sha": "960f0d37b3c60fc63c6f1dc6d5d00d9f07dbc006",
+      "size": 4353
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-progress/specimen.html",
+      "blob_sha": "9c7d5c892986aed6b388678486e9dff18c2509e9",
+      "size": 3160
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-stepper/README.md",
+      "blob_sha": "879e5f2f6770bf44a760b4a46a562780ed5df267",
+      "size": 3120
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-stepper/block.css",
+      "blob_sha": "72fb5afca817eaec3d0b50a63c6889304306f232",
+      "size": 4286
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-stepper/block.js",
+      "blob_sha": "be433b0484e62e5d972165c89722891f99ea12b5",
+      "size": 1702
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-stepper/specimen.html",
+      "blob_sha": "eae1df4424a0116cf90ed672fb36fd307f74042c",
+      "size": 4016
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-welcome-card/README.md",
+      "blob_sha": "cfa39e5f2c019f03e8dc29556388fed742d65499",
+      "size": 2375
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-welcome-card/block.css",
+      "blob_sha": "69d2f91036dc6c5b952013d82fde2b7a82a6929c",
+      "size": 3310
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-welcome-card/block.js",
+      "blob_sha": "75fafeeebbfcf67fea34bf1333b65870c415b201",
+      "size": 189
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/onboarding/onb-welcome-card/specimen.html",
+      "blob_sha": "056124db87751dc94067dcf7e42daaebd2756b54",
+      "size": 2658
     },
     {
       "path": "BRAIN/10-INTERFACES/DESIGN-BLOCKS/blocks/orbs/mini-orb/README.md",
@@ -7504,6 +7844,11 @@
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-TOOLKIT.md",
       "blob_sha": "9bf8e446cfd1feae52714d158d06c79e0196d2cd",
       "size": 6546
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json",
+      "blob_sha": "786e465af90086368b462ce22b578d30a432aac3",
+      "size": 607826
     },
     {
       "path": "BRAIN/10-INTERFACES/README.md",
