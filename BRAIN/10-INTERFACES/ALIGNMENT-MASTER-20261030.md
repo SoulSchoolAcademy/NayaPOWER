@@ -353,20 +353,36 @@ Now that the bullseyes are written and the contract is locked, each page gets br
 
 ---
 
-## 8. THE BUILD ORDER — grouped so connected apps sync together (Shawn, 2026-10-30)
+## 8. THE BUILD ORDER + LANES (Shawn, 2026-10-30)
 
-One app after another, in this order. Connected apps ride together so they land in sync, talking to each other. The whole team builds — not one lane alone — every lane following this same document, the same Smart Bar, the same button DNA. No lane invents its own bars, its own buttons, its own look. Ever.
+**Lanes (Shawn's split, 2026-10-30 ~15:29Z):** SHAWN takes 1–9 (Home, Dashboard, Personal, Business, Space, Intel Today, Growth, About, Connections). NITRO takes 10–18 (Smart Mail, Smart Lists, Reports, Settings, Library, Project Intelligence, Projects, Welcome, Smart Notes). POWER takes 19–26: apps 19–25 (Smart Factory, Certificate/Identity, Pricing, Ask Naya, Smart Match, Booking, Smart Meet) + the Smart Search universal capability spec as her 8th item. Nine / nine / eight.
 
-1. **ROOT:** Welcome → Personal → Certificate/Identity → About → Settings (birth → identity → story → switches)
-2. **GRAPH:** Connections → Smart Match → Space app → Growth (people → match → gather → grow)
-3. **WORDS:** Smart Mail → Smart Notes → Smart Lists → Library (messages → notes → lists → archive)
-4. **WORK:** Dashboard → Intel Today → Reports → Projects → Project Intelligence (command → today → reports → workspaces → the record)
-5. **MONEY:** Pricing → Business app → Booking → Smart Meet (gate → workspace → time → meet)
-6. **DOORS:** Home → Ask Naya (door → voice)
-7. **TOOLS:** Smart Factory (the shed that builds the rest, kept current as it goes)
+Within a lane, apps ride in connected clusters so they land in sync: e.g. Mail → Notes → Lists → Library (words); Reports → Projects → PI (work); Pricing → Booking → Smart Meet (money + chain). The whole team builds — every lane following this same document, the same Smart Bar, the same button DNA. No lane invents its own bars, its own buttons, its own look. Ever.
 
-**Smart Search** rides every group as the universal capability — the same search box, same behavior, on every app.
+**Standing authorization (Shawn):** anything mislabeled or wrong vs. the bullseye, just fix it — no need to ask ("that's an error compared to the ultimate objective, or what the math says — just fix it"). Scope: correctness, labels, alignment. Protected gates still stand: his taps, money, destructive actions, live deploys.
 
-Per app, the pass is: how aligned is it → what does it need → what is its ultimate function (§6) → bring it up to date in the design contract (§2–§4) → Smart Bars top + bottom where missing (§5; Hub untouched per §5.4) → connections to the other apps wired → rendered review (phone + laptop, 0px, 0 errors) → self-score 9+ entry bar → different-seat scorecard → land → live check. Some take a while, some don't. The program does not stop below the bar.
+Per app, the pass is: how aligned is it → what does it need → what is its ultimate function (§6) → bring it up to date in the design contract (§2–§4) → Smart Bars top + bottom where missing (§5; Hub untouched per §5.4) → connections to the other apps wired → rendered review (phone + laptop, 0px, 0 errors) → self-score 9+ (never ask another seat before a true 9 — asking early is a rule break) → TWO seats score it (Resolve + Power for Nitro's lane) against his criteria (§9) → take the feedback, do it again → both seats 9+ → Shawn's stamp ("we scored it, we all think it's a nine plus, put your stamp on it") → land → live check. Some take a while, some don't. The program does not stop below the bar.
+
+---
+
+## 9. THE SCORECARD PROCESS (Shawn's standing rule, locked 2026-10-30 ~15:34Z)
+
+1. **SELF 9+ FIRST** — never ask another seat to score until it is truly a 9 by your own accord (your own rendered review + honest self-score). Asking before 9 is a rule break.
+2. **TWO SEATS, not one** — once you truly believe it's a 9, send it to BOTH other seats. Nitro's lane: Resolve AND Power. (Power's lane: Nitro + Resolve. Shawn's lane: Nitro + Power.)
+3. **They score it against HIS criteria:** Why is it not a ten? What do you love about it? What's it missing? What would you do to make it ten times better? How aligned is it with the design contract? How logical is it? Can anybody understand it in two seconds? Is it push-button simple? Is it ultra organized? Is it as beautiful as it could be in its presentation? Is it ten star — list all the reasons it is or is not.
+4. **Take the feedback, do it again** — that's the loop.
+5. **Both seats 9+ → Shawn:** "we scored it, we all think it's a nine plus, put your stamp on it" — his check is the final stamp. Then land + live check.
+
+**Note:** Power's 15:17Z scorecard on the 31 fills (6.0–8.5, none complete) arrived BEFORE any self-9 claim — under this rule it was early. Treat it as signal, not a gate verdict. Gate verdicts happen only after a self-9.
 
 *Written 2026-10-30 by Nitro, under the Read-Before-Design Gate (contract trio + DESIGN-LANGUAGE read first). Rulings applied same-day per Shawn's /pi review: Smart Search → universal capability (25 apps); Hub bars untouched. This document changes no page — it is the law the updates follow. Linked from every app's PI record; the per-app alignment program runs §8, one app at a time, Flow 2.*
+
+---
+
+## 9. THE SCORECARD PROCESS (Shawn, 2026-10-30 — the standing rule)
+
+1. **Self 9+ first.** Nobody asks another seat to score until it is truly a nine by their own accord — own rendered review, honest self-score. Asking before nine is a rule break.
+2. **Two seats, not one.** Once it's truly a nine, it goes to BOTH other seats (Nitro's lane: Resolve + Power; Power's lane: Nitro + Resolve; Shawn's lane: Nitro + Power).
+3. **They score it against his criteria:** Why is it not a ten? What do you love about it? What's it missing? What would you do to make it ten times better? How aligned is it with the design contract? How logical is it? Can anybody understand it in two seconds? Is it push-button simple? Is it ultra organized? Is it as beautiful as it could be in its presentation? Is it ten star — list all the reasons it is or is not.
+4. **Take the feedback, do it again.** That's the loop.
+5. **Both seats at 9+ → Shawn:** "we scored it, we all think it's a nine plus, put your stamp on it." His check is the final stamp. Then land + live check. Boom — that's the process.
