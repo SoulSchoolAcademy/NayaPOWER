@@ -1,0 +1,50 @@
+/* Smart Block CSS: chat/cht-bubbles
+ * Source: gap-blocks-2/chat-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-CHT-003
+ */
+
+/* Family token sheet — every rule below assumes these (copied once, scoped to the family root) */
+
+.chat{--ground:#050507;--ink:#fff;--bubble-in:#0e0e13;--bubble-out:#0d0a16;--purple:#a06bff;--gold:#ffbf3d;--magenta:#e84fff;--blue:#3fb8ff;--green:#2fe89e;--red:#ff5e6c;--serif:Georgia,'Times New Roman',serif;--ease:cubic-bezier(.16,.84,.22,1);--bpm:0.833s;background:var(--ground);color:var(--ink)}
+
+.chat-row{display:flex;gap:10px;margin:4px 0;align-items:flex-end;max-width:760px}
+.chat-row.out{flex-direction:row-reverse;margin-left:auto}
+.chat-ava{flex:none;width:36px;height:36px;border-radius:50%;
+background:radial-gradient(circle at 35% 30%,#fff,var(--purple) 42%,#050507 92%);
+border:1.5px solid rgba(255,255,255,.85);box-shadow:0 0 18px rgba(160,107,255,.5)}
+.chat-ava.in{--purple:#3fb8ff}
+.chat-bub{position:relative;max-width:min(70%,480px);padding:11px 15px;font-size:15px;line-height:1.5;color:#fff;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 8px 22px rgba(0,0,0,.55);
+transition:transform .28s cubic-bezier(.16,.84,.22,1),box-shadow .28s,border-color .28s}
+.chat-bub.in{background:linear-gradient(180deg,#121218,#0a0a0f);border:1.5px solid rgba(255,255,255,.85);border-radius:18px 18px 18px 6px}
+.chat-bub.out{background:linear-gradient(180deg,#141021,#0b0812);border:1.5px solid #a06bff;border-radius:18px 18px 6px 18px;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 8px 22px rgba(0,0,0,.55),0 0 24px -6px rgba(160,107,255,.55)}
+.chat-bub.in::after,.chat-bub.out::after{content:"";position:absolute;bottom:-1px;width:14px;height:14px;background:inherit;transform:rotate(45deg)}
+.chat-bub.in::after{left:-8px;border-left:1.5px solid rgba(255,255,255,.85);border-bottom:1.5px solid rgba(255,255,255,.85);border-bottom-left-radius:4px}
+.chat-bub.out::after{right:-8px;border-right:1.5px solid #a06bff;border-bottom:1.5px solid #a06bff;border-bottom-right-radius:4px}
+.chat-row:hover .chat-bub.in{transform:translateY(-2px);box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 12px 26px rgba(0,0,0,.6),0 0 26px rgba(255,255,255,.25)}
+.chat-row:hover .chat-bub.out{transform:translateY(-2px);box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 12px 26px rgba(0,0,0,.6),0 0 34px rgba(160,107,255,.75)}
+.chat-bub:active{transform:translateY(1px)}
+/* grouped: collapse repeats, tighten adjoining corners */
+.chat-row.grp{margin:2px 0}
+.chat-row.grp .chat-ava{visibility:hidden}
+.chat-row.grp .chat-bub.in{border-radius:18px 18px 18px 6px}
+.chat-row.grp-first .chat-bub.in{border-bottom-left-radius:6px}
+.chat-row.grp-first .chat-bub.out{border-bottom-right-radius:6px}
+.chat-row.grp .chat-bub.in::after,.chat-row.grp .chat-bub.out::after{display:none}
+.chat-meta{display:flex;align-items:center;gap:8px;margin-top:5px;font-size:12px;color:#fff;opacity:.75;min-height:18px}
+.chat-row.out .chat-meta{flex-direction:row-reverse}
+.chat-name{font-size:13px;letter-spacing:.04em;opacity:.9}
+.chat-time{font-size:12px;opacity:.7}
+/* receipts: drawn ticks, truth-states */
+.chat-ticks{display:inline-flex;align-items:center;gap:0;min-width:44px;min-height:18px;justify-content:flex-end}
+.chat-ticks svg{width:17px;height:17px;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.chat-ticks[data-state="sending"] svg{stroke:rgba(255,255,255,.55)}
+.chat-ticks[data-state="sent"] svg{stroke:rgba(255,255,255,.85)}
+.chat-ticks[data-state="delivered"] svg{stroke:#fff;filter:drop-shadow(0 0 5px rgba(255,255,255,.6))}
+.chat-ticks[data-state="read"] svg{stroke:#ffbf3d;filter:drop-shadow(0 0 6px rgba(255,191,61,.8))}
+.chat-ticks[data-state="read"]::after{content:"Seen";font-size:11px;letter-spacing:.1em;color:#ffbf3d;margin-left:5px;text-transform:uppercase}
+.chat-ticks .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* one bubble, edited: the honesty tag */
+.chat-edited{font-size:11px;opacity:.55;font-style:italic;margin-left:2px}
+@media (prefers-reduced-motion:reduce){.chat-bub{transition:none}}
