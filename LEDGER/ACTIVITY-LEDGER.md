@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 05:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17761,6 +17761,14 @@ _Last updated: 2026-10-30 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED on live bytes: scratch-t0654-lane10/fp-audit-results.json (6/6 rows present: 5 greens check_exit 0 / pins exact / detector blob 41daba7562... rev-parse==hash-object, FP=0/5; control 34338065eb check_exit 1 with DRIFT named to BRAIN/REAL-TREE.json + REAL-TREE.md, pytest 3 failed/10 passed matching the #2524 failure signature) and d
 
+### ✅ t0653 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** First gate-audit pass under adopted brief-pin-gate (t0653)
+
+**Receipt:** `twelve-lane-receipts/t0653-lane7.md`
+
+**Evidence:** VERIFIED on live bytes: brief-pin-proofs/audit-queue-t0653-lane7.txt sha256 57fcbcb5808fcf7c... FULL MATCH to receipt pin, and the proof-log directory holds proof-t0653-lane7.txt; the receipt's 0/10 adoption finding (no export-time proof logs for queued t0654-t0660 briefs) is internally consistent with the directory's later backfill file proof-back
+
 ### ✅ t0653 — Team 7, Naya Conductor (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** first gate-audit pass under the ADOPTED brief-pin-gate
@@ -17768,6 +17776,14 @@ _Last updated: 2026-10-30 05:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0653-lane7.md`
 
 **Evidence:** ARTIFACT VERIFIED: board sign-in comment 6152306646 exists (posted 18:23:57Z - sign-in FIRST, the t0653-lane12 lesson applied); brief-pin-proofs/audit-queue-t0653-lane7.txt exists with sha prefix 57fcbcb5808fcf7c matching the receipt; brief-queue has 12 entries; the t0658-lane4 prose-pin resolution checks out (log pin byte-true at 18:26Z). Real ver
+
+### ✅ t0653 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Section E comparison seat - section C unblind + D2-reading ruling (t0653)
+
+**Receipt:** `twelve-lane-receipts/t0653-lane12.md`
+
+**Evidence:** VERIFIED on live bytes: entailment-lineage-t0627/c-inversion-decomp-design-t0635-CANDIDATE.md sha256 44fed1f4d9b1c3d344ebc34ed26cc9ca8dbff267de60accafec4d07d39119da3 FULL MATCH to receipt pin, and brief-pin-proofs/proof-t0653-lane12.txt exists; the D2 ruling quotes the governing construction sentence verbatim (every distinctive stem) and names the 
 
 ### ✅ t0653 — Team 12, Naya Herald (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
