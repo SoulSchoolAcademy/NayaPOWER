@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 20:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12737,6 +12737,14 @@ _Last updated: 2026-10-30 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/scratch-t0796-identity-proof exists on remote at the exact claimed SHA d3813117bce4a8126b6465e31e8a277575fc2bc7; shallow fetch + git cat-file on the raw commit object confirms author AND committer lines are 'Naya Clarity Verity <naya4@nayapower.local>' — byte-verified on live objects, not script text; score 9.5 clears the bar 
 
+### ✅ t0793 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-engine check inventory: 4 UNIQUE checks, ZERO production call sites (AST + grep, 543 files)
+
+**Receipt:** `twelve-lane-receipts/t0793-lane3.md`
+
+**Evidence:** VERIFIED in part on live bytes: receipt file exists (7247 bytes); inventory hidden_files/decision-engine-check-inventory-t0793-lane3.md exists (6053 bytes) as claimed; the method is internally consistent (ENGINE_VERSION grep yielding exactly two engines, full reads of both engines, AST import graph plus text grep plus raw grep for zero production c
+
 ### ✅ t0793 — Team 3, Naya Clarity (Naya Resolve Judge hat) (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** decision-engine check inventory: 4 UNIQUE checks, zero production call sites
@@ -12745,6 +12753,14 @@ _Last updated: 2026-10-30 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt file + hidden_files/decision-engine-check-inventory-t0793-lane3.md (6053 bytes) exist; blob SHAs byte-confirmed against the pinned tip: kernel/decision_principle.py = 0ff5e65045d2563136aebcfd05253cba5fa0acba and kernel/value_calculus.py = fc07ed2ae8c916be5c2e95cb8f4cf059968db100, both at commit ba62638704256b012c20e41fe7f53cc3b62b
 
+### ✅ t0792 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Drift-verification Stage 1: detector zero false positives across 5 green main tips
+
+**Receipt:** `twelve-lane-receipts/t0792-lane10.md`
+
+**Evidence:** VERIFIED in part on surviving bytes: receipt file exists (7982 bytes) and is internally consistent (5 full 40-char tip SHAs, per-tip CI counts with the single standing-red receipt-gate check named in every row, detector exit 0 verbatim at each tip, post-pin ls-remote churn check, worktrees cleaned). NOT PHANTOM on the receipt's action-time record. 
+
 ### ✅ t0792 — Team 10, Naya Clarity Librarian (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** drift-verification Stage 1: 5 green main tips x detector, zero false positives
@@ -12752,6 +12768,14 @@ _Last updated: 2026-10-30 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0792-lane10.md`
 
 **Evidence:** Verified: receipt file twelve-lane-receipts/t0792-lane10.md exists; pinned tip ba62638704256b012c20e41fe7f53cc3b62b1b44 is a live git commit object; the receipt's evidence is self-consistent (5 full SHAs, per-tip CI byte-cites, detector --check exit 0 verbatim). Caveat: the claimed lane-feed sign-in (~20:16 PDT) is not yet in lane-feed.md (latest e
+
+### ✅ t0791 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV observatory window 3: reproduce-first gate caught in_window bug, root fix, window 3 measured
+
+**Receipt:** `twelve-lane-receipts/t0791-lane11.md`
+
+**Evidence:** VERIFIED in part on live bytes: receipt file exists (6584 bytes); judgment audit lane-11/metric_audit_t0791.json exists (5252 bytes, 18 rows as claimed); the reproduce-first gate story is internally consistent (28 vs 10, 16 always-included non-tick receipts, post-fix 12, window-1 regression exact on receipt counts). NOT PHANTOM on the receipt's act
 
 ### ✅ t0791 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
 
@@ -12772,6 +12796,14 @@ _Last updated: 2026-10-30 20:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gap follow-up: auto-retrieval log audit (t0770)
 
 **Evidence:** Verified: log SHA 0fa1f99d re-derived twice at action time, byte-identical to parent's pin and Lane 2's t0768 pin (log has since legitimately grown — current SHA c24ce047); dual-parser exact agreement (python json + jq, 89/89 rows, counts match); sandbox repros prove silent-failure modes (G1 crashed-lane exit 1 no rows; G3 dir-as-log silent 0 rows)
+
+### ✅ t0787 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Semantic-arm harness: pinned-corpus runner + t0412 baseline battery and arms, direction reproduced on faithful instruments
+
+**Receipt:** `twelve-lane-receipts/t0787-lane9.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (8724 bytes); harness bin/semantic_arm_harness.py sha256 a7e72ce9... byte-matches the receipt pin exactly; corpus pin file content aaf978c1... matches the receipt pin exactly; both run scores.json byte-match (tfidf af766308..., lexical ba79bd96...). NOT PHANTOM. Battery builder and both arms do 
 
 ### ✅ t0787 — Team 9, Naya Resolve Smith (Code Health) — 9.5/10 [VERIFIED]
 
