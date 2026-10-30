@@ -1,0 +1,54 @@
+/* Smart Block CSS: onboarding/onb-stepper
+ * Source: gap-blocks-2/onboarding-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-ONB-001
+ */
+
+/* Family token sheet — every rule below assumes these (copied once, scoped to the family root) */
+
+.onb{--ground:#050507;--ink:#fff;--magenta:#e84fff;--purple:#a06bff;--indigo:#6675ff;--blue:#3fb8ff;--emerald:#35e0a1;--green:#2fe89e;--lime:#b8ee57;--gold:#ffbf3d;--orange:#ff9a5a;--red:#ff5e6c;--pink:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1);--serif:Georgia,'Times New Roman',serif;background:var(--ground);color:var(--ink)}
+
+.onb-rail{position:relative;max-width:920px;margin:0 auto;padding:34px 6px 4px}
+.onb-thread{position:absolute;top:58px;left:10%;right:10%;height:4px;border-radius:4px;
+background:#141318;border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 3px rgba(0,0,0,.7)}
+.onb-fill{position:absolute;top:-1px;bottom:-1px;left:-1px;width:50%;border-radius:4px;
+background:linear-gradient(90deg,#e84fff,#a06bff,#3fb8ff,#2fe89e,#ffbf3d);
+box-shadow:0 0 18px rgba(160,107,255,.6);transition:width .5s cubic-bezier(.16,.84,.22,1)}
+.onb-steps{list-style:none;margin:0;padding:0;display:flex;justify-content:space-between;position:relative}
+.onb-step{width:20%;text-align:center;transition:transform .18s cubic-bezier(.16,.84,.22,1)}
+.onb-node{width:48px;height:48px;transform:rotate(45deg);border-radius:12px;
+border:1.5px solid rgba(255,255,255,.85);cursor:pointer;display:grid;place-items:center;margin:0 auto;
+background:radial-gradient(circle at 35% 30%,#fff,var(--sc) 45%,#050507 92%);
+box-shadow:0 0 14px -4px var(--sc),inset 0 2px 3px rgba(255,255,255,.35);
+transition:box-shadow .18s cubic-bezier(.16,.84,.22,1),border-color .18s,filter .18s}
+.onb-node .in{transform:rotate(-45deg);display:grid;place-items:center;
+font-family:Georgia,serif;font-size:17px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.onb-node .in svg{width:20px;height:20px}
+.onb-step:hover .onb-node{box-shadow:0 0 34px var(--sc),inset 0 2px 3px rgba(255,255,255,.35);border-color:#fff}
+.onb-step:hover{transform:translateY(-2px)}
+.onb-node:active{filter:brightness(1.25)}
+.onb-node:focus-visible{outline:2px solid #fff;outline-offset:6px}
+.onb-step.is-current .onb-node{box-shadow:0 0 40px var(--sc),inset 0 2px 4px rgba(255,255,255,.4);
+border-color:#fff;animation:onb-node-breathe 3s ease-in-out infinite}
+@keyframes onb-node-breathe{0%,100%{box-shadow:0 0 32px var(--sc)}50%{box-shadow:0 0 52px var(--sc)}}
+.onb-step.is-locked .onb-node{background:#0a0a0e;box-shadow:none;cursor:not-allowed;opacity:.34}
+.onb-step.is-locked .onb-node .in{color:#fff;opacity:.7}
+.onb-step.is-locked:hover{transform:none}
+.onb-step.is-locked:hover .onb-node{box-shadow:none;border-color:rgba(255,255,255,.85)}
+.onb-label{margin-top:16px;padding:0 6px}
+.onb-label .k{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#fff;opacity:.6}
+.onb-label .t{display:block;font-family:Georgia,serif;font-size:16px;color:#fff;margin:5px 0 4px;
+text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.onb-label .s{display:inline-flex;align-items:center;font-size:12px;color:#fff;opacity:.85}
+.onb-label .s::before{content:"";width:7px;height:7px;transform:rotate(45deg);background:var(--sc);
+box-shadow:0 0 8px var(--sc);margin-right:8px;flex:none}
+.onb-step.is-locked .onb-label .s::before{background:#555;box-shadow:none}
+.onb-opt{display:inline-block;margin-top:8px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+color:var(--sc);border:1px solid var(--sc);border-radius:999px;padding:3px 10px;background:rgba(0,0,0,.4)}
+.onb-job{display:block;margin-top:8px;font-size:12px;color:#fff;opacity:.6;line-height:1.5}
+.onb-no-steps{max-width:520px;margin:0 auto;text-align:center;padding:52px 24px;background:#0a0a0e;
+border:1.5px solid rgba(255,255,255,.28);border-radius:18px}
+.onb-no-steps .jewel{width:30px;height:30px;margin:0 auto 16px;transform:rotate(45deg);border-radius:8px;
+background:#141318;border:1.5px solid rgba(255,255,255,.4)}
+.onb-no-steps h3{font-family:Georgia,serif;font-size:19px;color:#fff;margin:0 0 8px}
+.onb-no-steps p{font-size:14px;color:#fff;opacity:.8;margin:0}
+@media (prefers-reduced-motion:reduce){.onb-step.is-current .onb-node{animation:none}.onb-step,.onb-node,.onb-fill{transition:none}}
