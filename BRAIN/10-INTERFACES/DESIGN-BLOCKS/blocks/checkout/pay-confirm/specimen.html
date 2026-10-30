@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Block specimen: checkout/pay-confirm</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#e8eaf2; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:32px 20px; }
+  .demo{ max-width:560px; margin:0 auto; }
+  .demo h2{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:#8a8a96; margin:34px 0 12px; }
+  .demo h2:first-child{ margin-top:0; }
+  .demo-note{ font-size:12px; color:#9aa3b5; margin:6px 0 12px; }
+  .demo-ctl button{ font:inherit; font-size:12px; letter-spacing:.06em; color:#e8eaf2; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:8px 16px; margin:0 8px 8px 0; cursor:pointer; }
+  .demo-ctl button:hover{ border-color:#a06bff; box-shadow:0 0 18px -4px rgba(160,107,255,.7); }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h2>Confirmation state</h2>
+  <section class="pay-board pay-confirm" aria-label="Payment confirmed">
+    <span class="pay-corner" aria-hidden="true"><i>◆</i></span>
+    <header class="pay-head">
+      <p class="pay-kicker">CONFIRMED</p>
+      <h3 class="pay-title">Payment complete</h3>
+    </header>
+
+    <div class="pay-holo" aria-label="Amount paid: $535.68">
+      <span class="pay-holo-amount">$535.68</span>
+      <span class="pay-holo-sub">charged to Visa ···· 4242</span>
+    </div>
+
+    <ul class="pay-receipt">
+      <li class="pay-receipt-row">
+        <span class="pay-receipt-jewel" data-tone="magenta" aria-hidden="true"><i>◆</i></span>
+        <span class="pay-receipt-k">What</span>
+        <span class="pay-receipt-v">Naya MAXIS AI Score, AI Masterclass ×2, Powercast bundle</span>
+      </li>
+      <li class="pay-receipt-row">
+        <span class="pay-receipt-jewel" data-tone="blue" aria-hidden="true"><i>◆</i></span>
+        <span class="pay-receipt-k">When</span>
+        <span class="pay-receipt-v">Oct 16, 2026 · 10:52 PM UTC</span>
+      </li>
+      <li class="pay-receipt-row">
+        <span class="pay-receipt-jewel" data-tone="green" aria-hidden="true"><i>◆</i></span>
+        <span class="pay-receipt-k">Receipt</span>
+        <span class="pay-receipt-v pay-receipt-sent">✓ Sent to you@nayanet.live</span>
+      </li>
+    </ul>
+
+    <div class="pay-confirm-actions">
+      <button type="button" class="naya-btn">Back to the Hub</button>
+      <button type="button" class="naya-btn naya-btn--quiet">Download receipt</button>
+    </div>
+  </section>
+</div>
+</body>
+</html>
