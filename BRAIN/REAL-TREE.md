@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-30  
-**Receipt basis commit:** `f1fadb085ccfe1fcdcbe55fa3df4e42d843cc7c7`  
-**Inventory file count:** 1802  
+**Receipt basis commit:** `c1bbce5db1bcc229cf519c7964caf8450e7a6e54`  
+**Inventory file count:** 1803  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 900 |
+| 05-MEMORY | 901 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -1050,6 +1050,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/learning/SN-1903/IB-SMART-NOTE-20261029-sn1903-so-synergize-optimize.md` — `4eed90224852` (8453 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/29/SYSTEM/team/SN-1900/IB-SMART-NOTE-20261029-sn1900-shared-intelligence-hoarded-is-a-ceiling-shared-is-a-floor.md` — `1f9c9b0062a6` (1302 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/learning/SN-1904/IB-SMART-NOTE-20261030-sn1904-beneficial-intelligence.md` — `ee8ccc601cc1` (10817 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1904/IB-SMART-NOTE-20261030-sn1904-what-it-means-to-be-the-most-intelligent.md` — `c5a5598c7d57` (8692 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)
@@ -1619,7 +1620,7 @@
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — `7e1e336df17b` (8020 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-LESSON.md` — `36ccfc24ae4f` (9104 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-TOOLKIT.md` — `9bf8e446cfd1` (6546 bytes)
-- `BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json` — `786e465af900` (607826 bytes)
+- `BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json` — `5d371c0cb091` (687429 bytes)
 - `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json` — `a50ef2dd2e10` (266070 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.md` — `0e63b2413da5` (35445 bytes)
