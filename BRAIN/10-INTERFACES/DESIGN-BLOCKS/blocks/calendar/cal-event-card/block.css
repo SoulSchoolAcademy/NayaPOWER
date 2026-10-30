@@ -1,0 +1,40 @@
+/* Smart Block CSS: calendar/cal-event-card
+ * Source: gap-blocks/calendar-blocks.md (harvested, never restyled)
+ * Catalog: NAYA-CAL-002
+ */
+
+/* Family token sheet — every rule below assumes these (copied once, scoped to the family root) */
+
+.cal{--ground:#050507;--ink:#fff;--magenta:#e84fff;--purple:#a06bff;--indigo:#6675ff;--blue:#3fb8ff;--emerald:#35e0a1;--green:#2fe89e;--lime:#b8ee57;--gold:#ffbf3d;--orange:#ff9a5a;--red:#ff5e6c;--pink:#ed58cd;--ease:cubic-bezier(.16,.84,.22,1);--serif:Georgia,'Times New Roman',serif;background:var(--ground);color:var(--ink)}
+
+.cal-event{display:flex;gap:0;max-width:560px;background:linear-gradient(180deg,#141318,#08080c);
+border:1.5px solid rgba(255,255,255,.3);border-radius:18px;overflow:hidden;cursor:pointer;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.1),0 12px 30px rgba(0,0,0,.6);
+transition:transform .28s cubic-bezier(.16,.84,.22,1),border-color .28s,box-shadow .28s}
+.cal-event:hover{transform:translateY(-6px);border-color:var(--ec);box-shadow:0 0 40px var(--ec-glow),0 22px 44px rgba(0,0,0,.7)}
+.cal-event:active{transform:translateY(-2px)}
+.cal-event:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.cal-rail{flex:none;width:86px;padding:18px 0 18px 18px;border-right:1px solid rgba(255,255,255,.12);
+display:flex;flex-direction:column;gap:2px}
+.cal-rail .t{font-family:Georgia,serif;font-size:18px;color:#fff}
+.cal-rail .dur{font-size:11px;letter-spacing:.1em;color:#fff;opacity:.6;text-transform:uppercase}
+.cal-body{flex:1;padding:16px 18px;position:relative}
+.cal-body::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:3px;
+background:var(--ec);box-shadow:0 0 12px var(--ec)}
+.cal-type{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ec);
+border:1px solid var(--ec);border-radius:999px;padding:3px 11px;margin-bottom:9px;background:rgba(0,0,0,.4)}
+.cal-title{font-family:Georgia,serif;font-size:18px;color:#fff;margin:0 0 8px;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.cal-meta{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:#fff}
+.cal-meta span{display:inline-flex;align-items:center;gap:7px;opacity:.92}
+.cal-meta svg{width:14px;height:14px;stroke:var(--ec);fill:none;stroke-width:1.8;flex:none}
+/* all-day: the rail becomes a band */
+.cal-event.is-allday .cal-rail{width:10px;padding:0;background:var(--ec);border-right:none;box-shadow:0 0 16px var(--ec)}
+.cal-event.is-allday .cal-rail .t,.cal-event.is-allday .cal-rail .dur{display:none}
+.cal-event.is-allday .cal-body{padding-left:22px}
+.cal-allday-flag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ec);margin-bottom:6px}
+/* multi-day: the rail carries the span */
+.cal-event.is-span .cal-rail .t{font-size:15px}
+.cal-span-note{font-size:12px;color:#fff;opacity:.75;margin-top:8px;letter-spacing:.04em}
+/* tentative: dashed edge = honest uncertainty */
+.cal-event.is-tentative{border-style:dashed}
+.cal-event.is-tentative .cal-rail .t::after{content:" ~";color:var(--ec)}
