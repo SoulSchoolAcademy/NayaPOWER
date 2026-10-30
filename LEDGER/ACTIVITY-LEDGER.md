@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-30 16:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-30 16:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -29387,6 +29387,30 @@ _Last updated: 2026-10-30 16:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261030-0940 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-30 09:38 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued = 31 with EXACT set match to disk files, in_flight=[]; parsing the receipt's blocked section gives exactly 31 unique brief names matching the disk set name for name (0 only-receipt, 0 only-disk); claimed/ holds only done/, consi
+
+### ✅ 20261015-1545 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-15 15:45 PDT: 24-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on surviving bytes: receipt file exists (6517 bytes); its breakdown counts exactly 24 (17 parent-authorship + 6 stamped-gate + 1 no-refile), matching its claimed sweep and its stated 25-to-24 delta vs the 15:15 receipt (brief-gap-scorer-20261015-0600-lane3 absent, as claimed); sampled parent receipts cited all exist in twelve-lan
+
+### ✅ 20261015-1515 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-15 15:15 PDT: 25-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on surviving bytes: receipt file exists (6307 bytes); its breakdown counts exactly 25 (18 parent-authorship + 6 stamped-gate + 1 no-refile), matching its claimed sweep; sampled parent receipts cited (gap-scorer-20261014-2310-lane7, gap-scorer-20261015-0000-lane10, t0461-lane5) all exist in twelve-lane-receipts. NOT PHANTOM. Score
+
+### ✅ 20261015-1504 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-15 15:04 PDT: 25-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on surviving bytes: receipt file exists (5849 bytes); its numbered blocked list counts exactly 25, matching its claimed 25-brief sweep (6 stamped-gate, 18 authorship, 1 no-refile, plus the mid-run 25th arrival); sampled parent receipts cited (t0817-lane12, gap-t0560-lane9, t0407-lane8) all exist in twelve-lane-receipts. NOT PHANT
+
 ### ✅ 20261030-0835 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Gate-stall sweep 2026-10-30 08:35 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
@@ -37495,6 +37519,12 @@ _Last updated: 2026-10-30 16:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ 20261030-0930 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** t0767 SURGE arm (a) independent second-seat verdict on t0761 hypothesis-change note, CONFIRM with 4 conditions
+
+**Evidence:** VERIFIED this tick on live bytes: reviewed note lane-1/surge-a-hypothesis-change-t0761.md sha256 3b685b90c98f754c6151ba4ce8b7b951fa4a967c8a2746be948f3e0d56173efe byte-matches the receipt pin; corpse pins re-derive exactly (lane-3/decision-contact-prereg-t0719.md d992ad0c..., lane-2/semantic-arm-prereg-t0743.md aeffc6fa...); verdict file surge-a-ver
+
 ### ✅ 20261029-0320 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Parallel second scorecard on PR #2565, delivered as pointer after PR closed unmerged
@@ -38626,6 +38656,12 @@ _Last updated: 2026-10-30 16:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ 20261030-0930 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** t0768 ranked top-20 unmet-needs analysis from live ask-world query log, tuning target for SMARTBLOCKS hypertuning
+
+**Evidence:** VERIFIED this tick on live bytes: retrieval/query-needs-top20-t0768.md sha256 f9da2fd548e47655adac0f2dd8f03f53d45681b88aea463a10997f9c965dbbf9 byte-matches the receipt pin; query-needs-top20-t0768.jsonl sha256 f172d3f965e46575d68edabe79741517b80234ad662adc59ccd4a0c4bc86e445 byte-matches, 16 rows ranks 1-16 as claimed. No git branch/SHA cited (local
 
 ### ✅ 20261029-0330 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -40548,6 +40584,12 @@ _Last updated: 2026-10-30 16:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ 20261030-0920 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** t0765 first independent human-value measurement: honest count 0 genuine human-value events, 6/6 ledger rows machine-side-only
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (8238 bytes); value-ledger.md holds exactly LEDGER-0001..0006, all 6 with value_class machine-side-only and tag_status UNVERIFIED-pending-second-seat; value-ledger-build-t0705.py --verify exits 0 with all 6 chain rows OK; ledger SHA256 230b98135cba12be8d41208b1c9cb4339536a167c8351e696d116a0a3639
 
 ### ✅ 20261029-0320 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -43552,6 +43594,12 @@ _Last updated: 2026-10-30 16:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261030-0930 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** t0766 class-#17 read-before-sign-in detector, proven live with both controls + next-class note
+
+**Evidence:** VERIFIED this tick on live bytes: violation-detector-class17.py sha256 085f592e2f4e8152bdc592c0bad6c26f545983ac330a16cf9fc3485fcef62635 byte-matches the receipt pin exactly; py_compile clean; second-seat live re-run this tick against brief-queue/lane-feed.md exits 0 with violations reported (not silent CLEAN); next-class note violation-detector-nex
 
 ### ✅ gap-t0418 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
