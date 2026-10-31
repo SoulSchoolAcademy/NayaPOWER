@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13125,6 +13125,14 @@ _Last updated: 2026-10-31 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md exists (213 lines); current sha 6c6e80b376f3807a3939fa9e575b47f04acfe24ba2df12cb8e6994c6fa61ec29 differs from the receipt's pre-append pin 041b1049...e1e824 — explained, not rot: gap-t0771's closeout appended the BYTE PINS + MECHANICAL CHECKS section after the receipt, which is the
 
+### ✅ t0770 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** REGISTER-FLIP battery protocol spec
+
+**Receipt:** `twelve-lane-receipts/t0770-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt exists (11,653 bytes); spec hidden_files/register-flip-protocol-spec-t0770-lane8.md sha256 matches receipt exactly (91412fc298adf90a..., 16,291 bytes). Verdict file surge-a-verdict-t0767-lane3.md exists but at evolved SHA (see t0767 row), so the verdict-adaptation pins are receipt-attested, not re-pinnable 
+
 ### ✅ t0770 — Team 8, Naya Resolve Sentinel (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** REGISTER-FLIP battery protocol spec (frozen, spec-only)
@@ -13140,6 +13148,14 @@ _Last updated: 2026-10-31 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0770-lane8.md`
 
 **Evidence:** Verified: all 3 cited artifacts byte-identical on disk — spec register-flip-protocol-spec-t0770-lane8.md sha256 91412fc2…, design doc 3b685b90…, verdict doc 1f9be430… — no PHANTOM. Real value: frozen K1-K4 protocol spec with C1-C4 verdict adaptation, fixture floors, fail-closed halts, the load-bearing find (brief's 'review pending' line was overtak
+
+### ✅ t0770 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** ASK-WORLD query log audit
+
+**Receipt:** `twelve-lane-receipts/t0770-lane6.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt exists (10,532 bytes); audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 matches receipt exactly (0419c7973f77caaa...). Two-direction count claim (89 lines) and log pin 0fa1f99d... are receipt-attested and consistent with the t0768 pin; current log has since grown, so the pin is not re-checka
 
 ### ✅ t0770 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -13181,6 +13197,14 @@ _Last updated: 2026-10-31 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: packet file hidden_files/infra-packet-2-bodyhash-t0769-lane5.md byte-exists (7,956 B, matches the 7.9 KB claim); source comment 6167590868 body sha256 byte-matches the packet's embedded claim 260d8893...a592372c exactly (independently re-fetched + hashed); all 4 source quotes probed verbatim in the comment (13/13 probes), the 5th quote ho
 
+### ✅ t0768 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Ranked top-20 unmet-needs analysis from live ask-world query log
+
+**Receipt:** `twelve-lane-receipts/t0768-lane2.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt exists (9,288 bytes); artifacts byte-exact - hidden_files/retrieval/query-needs-top20-t0768.md f9da2fd548e47655... and .jsonl f172d3f965e46575... both match receipt SHAs exactly. Query log hidden_files/auto-retrieval/ask-world-queries.jsonl now hashes b0abfb68... at 60,358 bytes vs receipt pin 0fa1f99d... a
+
 ### ✅ t0768 — Team 2, Naya Verity Sage (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** t0768: ranked top-20 unmet-needs analysis from ask-world query log (SMARTBLOCKS hypertune input)
@@ -13188,6 +13212,14 @@ _Last updated: 2026-10-31 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0768-lane2.md`
 
 **Evidence:** Clears 9.5 because: all three cited SHAs byte-verified on disk (query log 0fa1f99d, artifact md f9da2fd5, artifact jsonl f172d3f9 - exact matches). Brief premise falsified on live bytes (5 prior analyses cited), counting rule pre-registered before tallying, 16 organic needs ranked with lever+block mappings, ranks 17-20 honestly refused. Self 3-pass
+
+### ✅ t0767 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE arm (a) independent verdict - MCC reframe CONFIRM with 4 conditions
+
+**Receipt:** `twelve-lane-receipts/t0767-lane3.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt exists (3,384 bytes); reviewed note hidden_files/lane-1/surge-a-hypothesis-change-t0761.md sha256 matches receipt exactly (3b685b90c98f754c...). Verdict file hidden_files/surge-a-verdict-t0767-lane3.md exists but now hashes bb45dcdc... at 11,972 bytes vs receipt-cited 1f9be430... at 7,719 bytes - file evolv
 
 ### ✅ t0767 — Team 3, Naya Resolve Judge (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -29603,6 +29635,12 @@ _Last updated: 2026-10-31 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261031-0150 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-31 01:43 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4835 bytes, sha256 b6a3b29480c63520154ad49286af064472eb46f98855196eb461b657d502110e); brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued=31 with EXACT three-way set match across receipt, disk, and rotation (0 only-receipt, 0 only-disk, 0 only-rotation), in_f
+
 ### ✅ 20261031-0040 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Seat-stall sweep 2026-10-31 00:38 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
@@ -30916,6 +30954,14 @@ _Last updated: 2026-10-31 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ gap-scorer-20261014-1950 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Independent remote re-fetch verification of t0597 force ref-update byte-faithfulness (4 files at pinned head)
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-1950-lane9.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt exists; git ls-remote on SoulSchoolAcademy/NayaPOWER refs/heads/naya/nine-retrieval-auth-wire-packet-t0537 returns exactly 99a2f832d054b3963fd4503702ecc2c00e59b73d, byte-equal to the receipt's pinned head, 17 days after the Oct 14 re-fetch - head unmoved, so the tree (and therefore the 4 receipt-pinned file
 
 ### ✅ 20261030-2330 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -44002,6 +44048,14 @@ _Last updated: 2026-10-31 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-scorer-20261014-1940 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Template v2 gap closure: control arms cite real material, full seal expected table, rubric_blind claim-free scoring
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-1940-lane1.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt exists; v2 example dir four-way-template/examples/pr-2385-brain-index-gate-v2/ intact with arms, blinded (blind-J/M/W + rubric), sealed, scorecard, seal-receipt; claim-manifest.json sha256 727d1a28737c06e931ab2f22d67e29b8749c1eb8d888a2be4d7571ac0207d268 matches receipt pin exactly; seal-receipt ordering sea
 
 ### ✅ 20261030-2330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
