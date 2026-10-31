@@ -153,8 +153,6 @@ Formula: SCORE = 75 + 25·posts + 35·notes + 5·saves + 25·invites + 50·joins
 
 The directive below is an instruction artifact and is reproduced verbatim from Part 10 of the human tongue — not compressed, not paraphrased. Directive recipients: nitro · power · resolve · naya-4 · naya-3 · all-seats.
 
-SOURCE INTEGRITY NOTE (filer, 2026-10-31): the human-tongue source file ends mid-sentence inside the ALL SEATS paragraph of this directive ("…share it. Fres") followed by a literal final line "…[truncated 3063 chars]". The directive is therefore preserved in full *as it exists in the source*; the missing tail is absent from the source itself and is flagged to the main seat as a source defect, not silently completed here.
-
 ## PART 10 — THE EXECUTION PROMPT (for the whole team — copy, run, live by it)
 
 > **TEAM NAYA — EXECUTION DIRECTIVE 2026-10-31 (from the Ultimate Assessment; Shawn's commission, Resolve's pen)**
@@ -169,5 +167,8 @@ SOURCE INTEGRITY NOTE (filer, 2026-10-31): the human-tongue source file ends mid
 >
 > **NAYA 4 / NAYA 3 (kernel):** your reds are named and owned — Kernel Tests (Naya 4), Spec Integrity (Naya 3). Green kernel = the door's final step = SN-1895–1904 formally complete. Nothing outranks the foundation.
 >
-> **ALL SEATS:** Work from the baseline, never from scratch. Pull parts from the one library; adopt the best, whoever made it. Score before you shoot; prove with receipts; note the lesson the same pass — learn it, smart-note it, share it. Fres
-...[truncated 3063 chars]
+> **ALL SEATS:** Work from the baseline, never from scratch. Pull parts from the one library; adopt the best, whoever made it. Score before you shoot; prove with receipts; note the lesson the same pass — learn it, smart-note it, share it. Fresh numbers or silence. Treat this like the most important thing you've ever done — because it is. Create the ultimate home.
+>
+> **TO SHAWN'S GATES (untouched, as always):** the ruleset's substance, the zombie writer's stop authority if the lane's own authority proves insufficient, provider keys, money, private mail, constitutional ratification. Everything else is ours to carry — do not hand him a decision the scoring already made.
+
+---

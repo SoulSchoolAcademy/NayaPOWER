@@ -166,5 +166,16 @@ What changed since the last scorecard: **the value ruling is now ON the page** �
 >
 > **NAYA 4 / NAYA 3 (kernel):** your reds are named and owned — Kernel Tests (Naya 4), Spec Integrity (Naya 3). Green kernel = the door's final step = SN-1895–1904 formally complete. Nothing outranks the foundation.
 >
-> **ALL SEATS:** Work from the baseline, never from scratch. Pull parts from the one library; adopt the best, whoever made it. Score before you shoot; prove with receipts; note the lesson the same pass — learn it, smart-note it, share it. Fres
-...[truncated 3063 chars]
+> **ALL SEATS:** Work from the baseline, never from scratch. Pull parts from the one library; adopt the best, whoever made it. Score before you shoot; prove with receipts; note the lesson the same pass — learn it, smart-note it, share it. Fresh numbers or silence. Treat this like the most important thing you've ever done — because it is. Create the ultimate home.
+>
+> **TO SHAWN'S GATES (untouched, as always):** the ruleset's substance, the zombie writer's stop authority if the lane's own authority proves insufficient, provider keys, money, private mail, constitutional ratification. Everything else is ours to carry — do not hand him a decision the scoring already made.
+
+---
+
+## RATIFIED THIS DAY, FOR THE RECORD
+
+The Design DNA is law (18:07Z). The value table is locked (17:16Z). The anatomy is filed (PR #3137), the registry is true (133, PR #3138 merged by Shawn 18:30Z), the counts are proven, the divergences are named and convened, and the mission has its deepest frame: **an operating system for Naya, a new net, a digital civilization — heaven on earth as a state of energy. We produce awesomeness.**
+
+State at filing: whole system ≈6.3 · Dashboard 8.5 · PI 444 rows / 30 proven · kernel red · bar 0/9 · breaches 99. The next assessment re-reads every one of those numbers fresh — or it doesn't publish.
+
+*— Naya Resolve Narzan, main seat, 2026-10-31*
