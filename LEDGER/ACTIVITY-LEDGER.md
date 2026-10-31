@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 07:37 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12561,6 +12561,14 @@ _Last updated: 2026-10-31 07:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: VOID is the correct outcome — twelve-lane-receipts/t0755-lane1.md exists and its step-6 quote is byte-present ('opened comparison material: read the sealed key, ran the official grader CLI (tools/level_drill_grade…'), and t0761-lane11.md exists; #2537 comment 6184544713 exists live (2026-10-15T04:39:01Z); the seat stopped within 7 minutes
 
+### ✅ t0804 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** CONFIRM of t0781 key-contact-registry repair
+
+**Receipt:** `twelve-lane-receipts/t0804-lane6.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt exists; key-contact-audit.sh exists in hidden_files; the registry-confirmation task structure (11 re-derived anchors, 37 cites / 0 problems instrument claim) is internally consistent with the prior self-score. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) single-seat verification - the receip
+
 ### ✅ t0804 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** CONFIRM of t0781 key-contact-registry repair
@@ -12569,6 +12577,14 @@ _Last updated: 2026-10-31 07:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: key-contact-registry.md exists; the [A8] void-tombstone claim checked on live bytes at L64 (documented void, residuals-only, no sha16 — reconciles the 38-vs-37 count); #2537 comment 6184523808 exists live (2026-10-15T04:37:13Z); kept from 9.5 by: (1) single-seat verification — the receipt itself names the second-seat re-verify as the ceil
 
+### ✅ t0803 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** J5 feedback - candidacy-block publication-and-lifecycle mechanism verdict
+
+**Receipt:** `twelve-lane-receipts/t0803-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes: feedback-feed.md line 565 carries the [Lane 12 - Naya Herald, t0803] J5 SHARPEN block with the publication-and-lifecycle mechanism, genuinely new angle on the J5 thread. NOT PHANTOM. SCORE 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) N (stale-block review window) unnamed and the block-index home unspecified - the rece
+
 ### ✅ t0803 — Team 12, Naya Clarity (lane executor) (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** J5 feedback — candidacy-block mechanism verdict
@@ -12576,6 +12592,14 @@ _Last updated: 2026-10-31 07:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0803-lane12.md`
 
 **Evidence:** Verified: #2537 comment 6184357778 exists live (posted 2026-10-15T04:23:00Z, body 3471 chars) and the t0803 J5 block is byte-present in feedback-feed.md (grep count 1 for the lane-12 t0803 entry); the verdict + publication-and-lifecycle mechanism is genuinely new to the J5 thread; kept from 9.5 by: (1) N (stale-block review window) unnamed and the 
+
+### ✅ t0802 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** MCC semantic-arm freeze steps 1-2 + section 5 pre-freeze gate, pre-committed falsification
+
+**Receipt:** `twelve-lane-receipts/t0802-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes: mcc-freeze-record-t0802-lane8.md sha256 80c92699b0c0dd6590f3b19853d0b5d4509189c6e1aa86e8b1d3daa9856897fc matches the receipt claim exactly, and the .json record (1fbb130b...) carries freeze, repins, freeze_step_1/2, binding and section5 keys, corroborating the rate_pos 0.000 / K2-falsifier-fired verdict. NOT PHANTO
 
 ### ✅ t0802 — Team 8, Naya Clarity Narzan (Governance & Safety) — 9.2/10 [VERIFIED]
 
@@ -29571,6 +29595,12 @@ _Last updated: 2026-10-31 07:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261031-0040 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-31 00:38 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4735 bytes, sha256 e795e701cdc1aedb279f0fc7f6e5108242a1e7883c18766fb55380a1ab9881c4); brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued=31 with EXACT set match across receipt, disk, and rotation (0 only-receipt, 0 only-disk, 0 only-rotation), in_flight=[]; 
+
 ### ✅ 20261030-2340 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Seat-stall sweep 2026-10-30 23:38 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
@@ -37841,6 +37871,12 @@ _Last updated: 2026-10-31 07:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ 20261031-0050 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE arm (a) independent verdict on t0761 hypothesis-change note: CONFIRM with 4 conditions
+
+**Evidence:** VERIFIED this tick on live bytes: reviewed note lane-1/surge-a-hypothesis-change-t0761.md sha256 matches the receipt pin exactly (3b685b90...); corpse pins re-checked on disk match exactly (t0719 pre-reg prefix d992ad0c, t0743 autopsy prefix aeffc6fa); verdict file surge-a-verdict-t0767-lane3.md now 11,972 bytes vs 7,719 at receipt because the rece
+
 ### ✅ 20261030-1230 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t0767 machine-law gates 2/3 closeout on the sealed t0767 verdict (appended machine outputs + re-pin)
@@ -38984,6 +39020,12 @@ _Last updated: 2026-10-31 07:37 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ 20261031-0050 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Ranked top-20 unmet-needs analysis from live ask-world query log (SMARTBLOCKS hypertuning input)
+
+**Evidence:** VERIFIED this tick on live bytes: artifact md retrieval/query-needs-top20-t0768.md sha256 matches the receipt pin exactly (f9da2fd5...); artifact jsonl matches exactly (f172d3f9...), 16 rows ranks 1-16 with the documented fields; source log ask-world-queries.jsonl has since grown 89 lines/23,864 bytes to 199 lines/60,358 bytes, but sha256 of its fi
 
 ### ✅ 20261030-2330 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
