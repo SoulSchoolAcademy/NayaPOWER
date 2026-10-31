@@ -14,10 +14,10 @@ An element that breaks one of these is not a Naya element, whatever it looks lik
 1. **Obsidian ground.** Black with depth, white text, high contrast. White backgrounds are dead. Nothing light-grey, nothing pastel, nothing matte-flat.
 2. **Living depth.** Every element is a physical object coming off the page: multi-layer borders, angles, stacked elevation, light held inside it. Flat 2D fails even with icons on it.
 3. **Ignition.** White at rest. On touch, hover, or focus, the element ignites in **its own color** — glow has exactly one job. Too much glow reads cheap; restraint is the mastery.
-4. **The spectrum walk.** Purple → blue → green → gold, never the same color twice in a row, one color job per element. A color means the same thing on every page, forever.
+4. **The spectrum walk.** Magenta → purple → blue → green → gold — magenta leads (Law 10: one global sequence per page, richest first) — never the same color twice in a row, one color job per element. A color means the same thing on every page, forever.
 5. **Geometry.** Boards and cards are 16:9 rectangles. Buttons are pills. Touch targets ≥ 44px. Type ≥ 14px. Symmetry is designed, not accidental.
 6. **Alive means it answers touch** (Law 6, Power's correction, ratified). White light at rest; halo and glow exist only in response to touch, hover, or focus. The jewel orb carries its color as identity — solid, never a halo at rest. Presence indicators breathe only while the state they show is actually live. Elements move with meaning and tick only on real events. Motion that isn't data is a liar.
-7. **Honest in every state.** Rest, hover, pressed, selected, loading, empty, error — all designed, all truthful. Never fakes, never a dead button, never a SOON pill. An unwired thing shows its honest frame.
+7. **Honest in every state.** Rest, hover, pressed, selected, loading, empty, error — all designed, all truthful. Never fakes, never a dead button. SOON is lawful only as an honest, non-interactive label — a SOON button or tappable element is a dead control and is banned. An unwired thing shows its honest frame.
 8. **Family.** One canonical component, imported everywhere, never copied or locally varied. Approved pages (Life with Naya, the certificate page) are the element library — reuse their actual elements.
 9. **Two-second read.** Essence first, glanceable, push-button simple. If it needs explaining, it fails.
 10. **Data carries a sentence.** Any number anywhere obeys SN-0822: magnitude + shape + direction + a human sentence — or it doesn't ship.
@@ -175,7 +175,7 @@ Locked colors per WHAT category (Smart Stats spec §3) · living draw-in on load
 - **Toggles & switches** — a jewel sliding in a recessed track; on = ignited color + white jewel forward. Never a bare checkbox on a citizen surface.
 - **Sliders** — spectrum track, jewel thumb ≥44px, live value in a chip that ignites while sliding.
 - **Faces / avatars** — real photo in a rim-lit ring; presence = breathing ring in the person's spectrum position; staleness shown honestly ("last active 9d ago" is data, styled as data).
-- **Badges & chips** — state words only when true; a chip that says SOON is dead chrome and is banned. Honest-state chips: LIVE (green pulse) · NOT TRACKED YET (dim frame) · SAMPLE (specimens only, never removable).
+- **Badges & chips** — state words only when true; a SOON chip is an honest label, never a button — a tappable SOON is dead chrome and is banned. Honest-state chips (Law 2 truth colors): LIVE (gold pulse — gold = live/shown) · PROVEN (green) · NOT TRACKED YET (dim frame) · SAMPLE (specimens only, never removable).
 - **Menus & popovers** — glass sheets rising from the element that summoned them; one level deep; every item a standard button row.
 - **Modals & sheets** — the page dims, the sheet rises with rim light; one decision per sheet; the commit action takes the Signature level (obsidian, maximum ignition).
 - **Toasts** — bottom-rise, jewel + one sentence + one action; auto-dismiss except errors, which stay until answered.
@@ -190,7 +190,7 @@ Locked colors per WHAT category (Smart Stats spec §3) · living draw-in on load
 
 ## PART 7 — WHAT WE DON'T DO
 
-White or light backgrounds · flat buttons with an icon pasted on · glow for decoration · the same color twice in a row · locally varied components · dead buttons and SOON pills · fake numbers and SAMPLE outside labeled specimens · text walls describing life instead of showing it · emoji as system icons · indeterminate spinners over knowable numbers · any element in only one state · any part a builder has to redraw instead of import.
+White or light backgrounds · flat buttons with an icon pasted on · glow for decoration · the same color twice in a row · locally varied components · dead buttons and SOON worn as a button (SOON as an honest, non-interactive label is lawful) · fake numbers and SAMPLE outside labeled specimens · text walls describing life instead of showing it · emoji as system icons · indeterminate spinners over knowable numbers · any element in only one state · any part a builder has to redraw instead of import.
 
 ## PART 8 — THE PRE-MADE PARTS LIST (what the Factory stocks first)
 

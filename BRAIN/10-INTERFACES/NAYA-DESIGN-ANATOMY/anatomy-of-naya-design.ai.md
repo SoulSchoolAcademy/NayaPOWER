@@ -13,10 +13,10 @@
 | G1 | Obsidian ground: black-with-depth background, white text, high contrast. No white/light/pastel/matte-flat surfaces. | Computed background + text contrast measured on the served page |
 | G2 | Living depth: every interactive element is layered (shadow + base + multi-line rim). Flat 2D = fail. | Layer/rim presence via computed styles |
 | G3 | Ignition: white light at rest; on hover/touch/focus the element ignites in its own color only. Glow has no other job. | State inspection: rest vs hover/focus |
-| G4 | Spectrum walk: purple → blue → green → gold; never the same color twice in a row; one color job per element; a color means the same thing on every page. | Adjacency scan of colored elements in DOM order |
+| G4 | Spectrum walk: magenta → purple → blue → green → gold (magenta leads — Law 10, one global sequence per page, richest first); never the same color twice in a row; one color job per element; a color means the same thing on every page. | Adjacency scan of colored elements in DOM order |
 | G5 | Geometry: boards/cards 16:9; buttons pill-shaped; touch targets ≥ 44px; type ≥ 14px. | Measured bounding boxes + computed font sizes |
 | G6 | Alive honestly: motion only from real events/data. Decorative ticking = fail. | Every animated element bound to a real event kind |
-| G7 | State completeness: rest, hover, pressed, selected, loading, empty, error — all designed and truthful. No dead buttons, no SOON pills, no fakes; unwired renders its honest frame. | State matrix walk per element |
+| G7 | State completeness: rest, hover, pressed, selected, loading, empty, error — all designed and truthful. No dead buttons, no fakes; SOON lawful only as an honest, non-interactive label — a SOON button/tappable element is a dead control and fails; unwired renders its honest frame. | State matrix walk per element |
 | G8 | Family: one canonical component, imported everywhere; never copied, never locally varied. Approved pages are the element library. | Part identity vs Factory registry (byte/class match) |
 | G9 | Two-second read: essence first, glanceable, push-button simple. | Cold-read review (human judgment, recorded) |
 | G10 | Every number carries magnitude + shape + direction + a human sentence (SN-0822), or it does not ship. | DOM scan for bare numerals on stats surfaces |
@@ -77,7 +77,7 @@
 - **Toggle (`.naya-toggle`):** jewel sliding in a recessed track; on = ignited color + white jewel forward. Never a bare checkbox on a citizen surface.
 - **Slider (`.naya-slider`):** spectrum track, jewel thumb ≥ 44px, live value in a chip that ignites while sliding.
 - **Face (`.naya-face`):** real photo in a rim-lit ring; presence = breathing ring in the person's spectrum position; staleness shown honestly as data ("last active 9d ago").
-- **Badges & chips:** state words only when true. SOON chips are banned dead chrome. Honest-state chips: LIVE (green pulse) · NOT TRACKED YET (dim frame) · SAMPLE (labeled specimens only, never removable).
+- **Badges & chips:** state words only when true. A SOON chip is an honest label, never a button — a tappable SOON is banned dead chrome. Honest-state chips (Law 2 truth colors): LIVE (gold pulse — gold = live/shown) · PROVEN (green) · NOT TRACKED YET (dim frame) · SAMPLE (labeled specimens only, never removable).
 - **Menus & popovers:** glass sheets rising from the summoning element; one level deep; every item a standard button row.
 - **Modals & sheets (`.naya-sheet`):** page dims, sheet rises with rim light; one decision per sheet; commit action at the Signature level (obsidian, maximum ignition).
 - **Toasts (`.naya-toast`):** bottom-rise; jewel + one sentence + one action; auto-dismiss except errors, which stay until answered.
@@ -90,7 +90,7 @@
 
 ## 7. BANNED (hard fails)
 
-White or light backgrounds · flat buttons with an icon pasted on · glow for decoration · the same color twice in a row · locally varied components · dead buttons and SOON pills · fake numbers and SAMPLE outside labeled specimens · text walls describing life instead of showing it · emoji as system icons · indeterminate spinners over knowable numbers · any element in only one state · any part a builder must redraw instead of import.
+White or light backgrounds · flat buttons with an icon pasted on · glow for decoration · the same color twice in a row · locally varied components · dead buttons and SOON worn as a button (SOON as an honest, non-interactive label is lawful) · fake numbers and SAMPLE outside labeled specimens · text walls describing life instead of showing it · emoji as system icons · indeterminate spinners over knowable numbers · any element in only one state · any part a builder must redraw instead of import.
 
 ## 8. FACTORY STOCK LIST (first stocking — all imports, no redraws)
 
