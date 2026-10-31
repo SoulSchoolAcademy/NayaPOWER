@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 11:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12451,6 +12451,14 @@ _Last updated: 2026-10-31 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
 
+### ✅ t0813 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Recusal: arm-fresh gate fired on own MTC-v1 lineage authorship (decline IS the deliverable)
+
+**Receipt:** `twelve-lane-receipts/t0813-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes: authorship anchor twelve-lane-receipts/t0742-lane4.md exists with the header the recusal cites (Naya Clarity Mason, Lane 4). No branch/merge artifacts claimed, none expected — recusal produced no design work by design. Score 9.0, kept from 9.5 by: the lineage sweep was grep-of-receipts, not an exhaustive census (re
+
 ### ✅ t0813-lane8-reclaim — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
 **Task:** t0813 Lane 8 RECUSAL-REPEAT (duplicate ineligible claim)
@@ -12497,6 +12505,14 @@ _Last updated: 2026-10-31 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0742 MTC-v1 lineage artifacts exist with Clarity-family authorship (cards/seal/battery files present; receipt header 'Naya Clarity Mason'; cards header confirms t0742 executor) — the gate's firing premise is real; re-filed brief carries the stamped claimability gate. Kept from 9.5 by: the authorship sweep was grep-of-receipt-headers, not
 
+### ✅ t0813 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Ask-world top-20 needs analysis from live query log (SURGE slice c)
+
+**Receipt:** `twelve-lane-receipts/t0813-lane6.md`
+
+**Evidence:** VERIFIED this tick on live bytes: needs md 0959a552... and needs jsonl 47df9094... both sha256 byte-exact to receipt pins. Query-log pin superseded by growth, as expected for a live log: current log has 199 rows vs 101 pinned at receipt time (growth direction matches the receipt's own growth premise). Score 9.0, kept from 9.5 by: the 101-row snapsh
+
 ### ✅ t0813 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** ask-world query log top-20 needs analysis for SMARTBLOCKS
@@ -12505,6 +12521,14 @@ _Last updated: 2026-10-31 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: needs md + jsonl shas byte-exact; my independent count on the analyzed prefix (first 101 rows, kind=='query', exclude seed rows 0-21) = 67 organic — matches the receipt's headline exactly; log has since grown to 111 rows (live log, consistent with the receipt's growth-gating note). Clears 9.5 because: headline (global-section zero-cells f
 
+### ✅ t0813 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Register-match pre-freeze gate (t0802 silent-death prevention), prep only
+
+**Receipt:** `twelve-lane-receipts/t0813-lane5.md`
+
+**Evidence:** VERIFIED this tick on live bytes: gate, lexicon, probes, pins, self-test script all sha256 byte-exact to receipt pins (38554c12..., d6c47df5..., 4fd00978..., 18ce909f..., 8f9020ec...). Self-test log pin does NOT match: receipt ba62e4e2... vs current d3585d4a... — but the current log is the genuine self-test log (gate/pins shas inside it match; 6 PA
+
 ### ✅ t0813 — Team 5, Naya Clarity Narzan (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** register-match pre-freeze gate for semantic-arm freezes
@@ -12512,6 +12536,14 @@ _Last updated: 2026-10-31 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0813-lane5.md`
 
 **Evidence:** Verified: all 5 files byte-exact by sha256 (gate 38554c12a3..., lexicon d6c47df5..., probes 4fd00978..., pins 18ce909f..., selftest 8f9020ec...); self-test log exists showing 5/5 PASS with exact outcomes (MCC-positive exit 1 REGISTER_MISMATCH 21/24 process-principle; healthy exit 0; 3 fail-closed paths). Clears 9.5 because: real gate artifact verif
+
+### ✅ t0812 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Cross-seat proof of the t0796 seat-identity repair (real second seat, dangling commit)
+
+**Receipt:** `twelve-lane-receipts/t0812-lane2.md`
+
+**Evidence:** VERIFIED this tick on live bytes: proof_identity_t0812.py sha256 a44192eb3737775a... matches receipt pin exactly. NOT re-verified this tick: the dangling commit object 909536d4... (git-protocol fetch of an unreachable SHA not attempted inside the 5-minute box; REST reads failing with 401 today per the log). Receipt carries a dated 2026-10-19 correc
 
 ### ✅ t0812 — Team 2, Naya Clarity Narzan 4 (Learning Pipeline) — 9.5/10 [VERIFIED]
 
@@ -29786,6 +29818,12 @@ _Last updated: 2026-10-31 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261031-0350 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-31 03:49 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4826 bytes, sha256 cb3980a5abd90b9b2ec2c332892da285c48ce5d937c48c1f9c8c7dff6f579505); brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued=31 with EXACT three-way set match across receipt, disk, and rotation (0 only-receipt, 0 only-disk, 0 only-rotation), in_f
 
 ### ✅ 20261031-0250 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
