@@ -1,4 +1,4 @@
-## DIRECTOR SNAPSHOT 2026-10-31 04:08 PDT (2026-10-31T11:08:xxZ)
+## DIRECTOR SNAPSHOT 2026-10-31 04:08 PDT (2026-10-31T11:09:32Z)
 
 - Last verified: 2026-10-31 04:08 PDT. Main tip UNCHANGED b7221219 (git ls-remote HEAD, zero quota). Board #3066 1322 -> 1323 (+1 exact, id > watermark 6542203756).
 - TICK SUMMARY: +1 board comment, 0 relayed to builder list (routine traffic only): 6542477614 (10:55Z) ACCOUNTABILITY REPORT window 09:53-10:53Z: 0 dispatched, 0 finished, 0 finished right, queue steady at 1253. Tip unchanged so merge watch not triggered; breach log stays 99. Board-cap watch: 977 to the 2,300 trigger, 1177 to the 2,500 cap, no migration trigger, no successor board. NOTE: stored PAT (gh-api) still 401 Bad credentials; reads + snapshot via GitHub App identity (gh-app-api) succeeded — PAT reconnect owed, not stand_down (no 403, reads verified).
