@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 09:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12266,6 +12266,14 @@ _Last updated: 2026-10-31 09:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Smart Note communication mode spec v1 (design only)
 
 **Evidence:** Verified: v1 design spec delivered with M3/M5 rationale and the v2-sheet provenance trail; design-only scope held as briefed. 9.0 not 9.5: the v2 sheet's RECEIPT/EVENT shapes were summarized from the head, not verified — M3/M5 could be contradicted; N (stale-block review window) unnamed; block-index home unspecified. One more pass: verify the shape
+
+### ✅ t0816 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Ask-world query log pin-first tally: pinned 89-line copy tallied, top-20 needs table for hypertuner
+
+**Receipt:** `twelve-lane-receipts/t0816-lane11.md`
+
+**Evidence:** VERIFIED this tick on live bytes: first 89 lines of auto-retrieval/ask-world-queries.jsonl (now 199 lines) still hash exactly 0fa1f99d...7972 == the receipt pin, so the append-only proof holds today and the pinned segment is intact; committed retrieval/tally-t0710.json exists (now carries log_sha256, so the receipt's D5b hole was later closed by an
 
 ### ✅ t0816 — Team 11, Naya Clarity Heart (Human Value) — 9.5/10 [VERIFIED]
 
@@ -29739,6 +29747,12 @@ _Last updated: 2026-10-31 09:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261031-0250 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-31 02:43 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (5148 bytes, sha256 d9211133d0b481d958e5f151542ffcc4a854bcc60cc9031ff4f74ba4ed1be490); brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued=31 with EXACT three-way set match across receipt, disk, and rotation (0 only-receipt, 0 only-disk, 0 only-rotation); clai
+
 ### ✅ 20261031-0150 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Seat-stall sweep 2026-10-31 01:43 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
@@ -35152,6 +35166,14 @@ _Last updated: 2026-10-31 09:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-scorer-20261014-2045 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261014-2045: second-seat blind re-run of cell 2 (A,P6) under fresh seal, parent t0482 gap closure
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-2045-lane5.md`
+
+**Evidence:** VERIFIED this tick on live bytes, ALL pins byte-exact 16 days later: protocol study-protocol-t0452.md 821cec62..., fresh seal sealed-note-gap2045-cell2.md 47962d65..., seal generator gen_seal_gap2045_cell2.py 6da4f5b9..., run record run-record-gap2045-cell2.md 7b81788b..., frozen fixture t0432_fingerprint.py 4ab5f359... - every SHA matches the rece
 
 ### ✅ 20261030-2040 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
