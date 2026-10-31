@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-31 09:33 UTC_
+_Last updated: 2026-10-31 10:01 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 7055
-- ✅ Verified (8+): 6988
+- **Total scored actions:** 7058
+- ✅ Verified (8+): 6991
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -19,13 +19,13 @@ _Last updated: 2026-10-31 09:33 UTC_
 | Team 2 | Naya Sage | 504 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 469 | 9.0 | 10 |
 | Team 4 | Naya Mason | 444 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 583 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 584 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 344 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 450 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 472 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 604 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 802 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 442 | 9.0 | 9.6 |
+| Team 11 | Naya Heart | 443 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 378 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -1187,7 +1187,7 @@ _Last updated: 2026-10-31 09:33 UTC_
 - **gap-gap-gap-lane-scorer-20261016-0940:** 1 actions, avg 9.0/10
 - **gap-gap-lane-scorer-20261016-0940:** 1 actions, avg 8.5/10
 - **gap-gap-gap-lane-scorer-20261016-0940-lane5:** 1 actions, avg 9.0/10
-- **gap-scorer-20261014-2045:** 1 actions, avg 9.5/10
+- **gap-scorer-20261014-2045:** 2 actions, avg 9.5/10
 - **gap-gap-t0907:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261015-0430:** 1 actions, avg 9.4/10
 - **gap-lane-scorer-20261015-0520:** 1 actions, avg 8.5/10
@@ -1547,6 +1547,7 @@ _Last updated: 2026-10-31 09:33 UTC_
 - **20261030-2340:** 1 actions, avg 9.0/10
 - **20261031-0040:** 1 actions, avg 9.0/10
 - **20261031-0150:** 1 actions, avg 9.0/10
+- **20261031-0250:** 1 actions, avg 9.0/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
 - **t0012:** 37 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
@@ -2049,7 +2050,7 @@ _Last updated: 2026-10-31 09:33 UTC_
 - **t0815-phase2:** 2 actions, avg 9.2/10
 - **t0815-phase15:** 2 actions, avg 9.1/10
 - **t0815:** 12 actions, avg 9.3/10
-- **t0816:** 20 actions, avg 9.2/10
+- **t0816:** 21 actions, avg 9.2/10
 - **t0817:** 4 actions, avg 9.5/10
 - **t0817-lane7:** 1 actions, avg 9.5/10
 - **t0818:** 3 actions, avg 9.3/10
