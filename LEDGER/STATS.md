@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-10-31 14:11 UTC_
+_Last updated: 2026-10-31 14:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 7070
-- ✅ Verified (8+): 7003
+- **Total scored actions:** 7075
+- ✅ Verified (8+): 7008
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -18,15 +18,15 @@ _Last updated: 2026-10-31 14:11 UTC_
 | Team 1 | Naya Verity | 509 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 506 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 469 | 9.0 | 10 |
-| Team 4 | Naya Mason | 445 | 9.1 | 9.6 |
+| Team 4 | Naya Mason | 446 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 585 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 345 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 450 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 474 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 604 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 605 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 802 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 444 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 379 | 9.2 | 9.5 |
+| Team 12 | Naya Herald | 380 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -1551,6 +1551,8 @@ _Last updated: 2026-10-31 14:11 UTC_
 - **20261031-0250:** 1 actions, avg 9.0/10
 - **20261031-0350:** 1 actions, avg 9.0/10
 - **20261031-0500:** 1 actions, avg 9.0/10
+- **20261031-0610:** 1 actions, avg 9.0/10
+- **20261031-0710:** 1 actions, avg 9.0/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
 - **t0012:** 37 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
@@ -2046,14 +2048,14 @@ _Last updated: 2026-10-31 14:11 UTC_
 - **t0813:** 7 actions, avg 9.1/10
 - **t0813-lane8:** 1 actions, avg 9.0/10
 - **t0813-lane8-reclaim:** 4 actions, avg 8.8/10
-- **t0814:** 1 actions, avg 9.5/10
+- **t0814:** 2 actions, avg 9.2/10
 - **t0815-phase1a:** 2 actions, avg 9.2/10
 - **t0815-phase1b:** 2 actions, avg 9.2/10
 - **t0815-phase1c:** 2 actions, avg 9.2/10
 - **t0815-phase2:** 2 actions, avg 9.2/10
 - **t0815-phase15:** 2 actions, avg 9.1/10
 - **t0815:** 12 actions, avg 9.3/10
-- **t0816:** 21 actions, avg 9.2/10
+- **t0816:** 23 actions, avg 9.2/10
 - **t0817:** 4 actions, avg 9.5/10
 - **t0817-lane7:** 1 actions, avg 9.5/10
 - **t0818:** 3 actions, avg 9.3/10
