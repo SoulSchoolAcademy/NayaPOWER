@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -28381,6 +28381,14 @@ _Last updated: 2026-10-31 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via REST: #2399 merged a545f1107 (receipt head match), fossils #1296/#1645 closed with matching heads, open PR count 504 via search (514->504 claim holds), #2456 open base==tip. -1: redundant per-PR GETs; two gate failure classifications handed off.
 
+### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** #2400 merge-faithful on live main, 20/20 round-trip re-proven on tip exporter, D1 flag gap re-routed to Naya 5
+
+**Receipt:** `twelve-lane-receipts/t0062-lane4.md`
+
+**Evidence:** VERIFIED this tick on live bytes, partial: lane4-t0062-d1-repro.json exists and contains BEHAVIOR-CHANGE-PROVEN (the D1 repro). NOT re-derived this tick: merge-commit ancestor check and tip blob SHAs (would need a bare clone; 5-minute time box). Score 9.0, kept from 9.5 by: (1) merge-faithfulness not re-derived this tick, rests on the receipt's act
+
 ### ✅ t0062 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** #2400 merge-faithful on live main, 20/20 round-trip re-proven, D1 re-route to Naya 5
@@ -28483,6 +28491,14 @@ _Last updated: 2026-10-31 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** Flip-sequence merge seat: re-pinned 4 PRs, calculator HOLDs on #2456/#2457, principled HOLD on #2453 stands
+
+**Receipt:** `twelve-lane-receipts/t0052-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes: both calculator decision receipts exist (20261012T080444Z #2456 HOLD, 20261012T080449Z #2457 HOLD). One batched git ls-remote returned ZERO of the 4 cited flip branches - after 19 days the branches are gone (merged/deleted), so action-time pins are no longer re-derivable; this is staleness, not PHANTOM, since the d
+
+### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** flip-sequence merge seat: re-pin 4 PRs, calculator HOLDs, #2453 HOLD stands
 
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
@@ -28526,6 +28542,14 @@ _Last updated: 2026-10-31 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2456/head == e326283252a7e9f932b0d9ebad465c50950b0799 == pin; refs/pull/2457/head == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == pin; refs/pull/2458/head == ac270833fb3a52c6be45acc730b0e5132353d5a5 == pin; main == aa8061c1
+
+### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 hypothesis-change + sealed pre-registration for home-independence experiment (fresh-lesson pick via decide.py)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** VERIFIED this tick on live bytes, ALL pins byte-exact 19 days later: prereg-sealed.md sha256 8c8aa054... matches receipt pin exactly; HYPOTHESIS-CHANGE-h8.md 1b470332... exact; harness/verify_home_independent.py a685364a... exact; seed/data/receipt.txt 83454be5... exact; seal-verification.json and arm-key-sealed.json present. Score 9.0, kept from 9
 
 ### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -28585,6 +28609,14 @@ _Last updated: 2026-10-31 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on disk: prereg-sealed.md sha256 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6 == claimed pin; HYPOTHESIS-CHANGE-h8.md, seal-verification.json, arm-key-sealed.json all exist (dir mtimes 08:06-08:07Z). Sign-in #2175 6120247601 (08:05:38Z) predates seal; sign-out 6120289262 (08:08:37Z). Mechanical gate defined F
 
+### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value window audit t0022-t0052: instrument x2 byte-identical, hand audit, HV3 PROVEN-UNMEASURABLE stands
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** VERIFIED this tick on live bytes, pins byte-exact: metric_audit_t0052.json sha256 77354d82... matches receipt pin exactly; hv_output_t0052_run1.json and run2.json BOTH sha256 e4f54deb... (byte-identical determinism claim holds); SUMMARY_t0052.md present. Score 9.0, kept from 9.5 by the receipt's own named gaps: (1) single-seat judgments, no indepen
+
 ### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
 **Task:** HV instrument window t0022-t0052: byte-identical reruns, hand audit, HV3 PROVEN-UNMEASURABLE stands
@@ -28630,6 +28662,14 @@ _Last updated: 2026-10-31 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure: independent REST verification of board-post half of t0803 J5 SHARPEN verdict (#2537 comment 6184357778)
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes: feedback-feed.md contains the [Lane 12 - Naya Herald, t0803] block (1 occurrence). NOT re-verified this tick: the board comment itself - gh-api REST GET returned 401 Bad credentials, so comment id/author/timestamp claims rest on the receipt's action-time record. Score 9.0, kept from 9.5 by: (1) this-tick independen
 
 ### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -44174,6 +44214,12 @@ _Last updated: 2026-10-31 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261031-0310 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: push t0796's 9 parameterized files to a remote branch (parent t0796-lane1 gap closure)
+
+**Evidence:** VERIFIED this tick on live bytes: git ls-remote on SoulSchoolAcademy/NayaPOWER refs/heads/naya/seat-identity-t0796 returns exactly 2fec65527d7b9ca251a4e70f983f6c227f38d3b9, byte-equal to the receipt pin; depth-1 clone at that head lists exactly the 9 receipt-named files (bin/push_branch.py, bin/seat_identity.py, bin/stage_smart_note.py, evolve-driv
 
 ### ✅ gap-scorer-20261014-1940 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
