@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-31T03:49:54Z",
-  "tip": "3f8203b818c4cf7b68d711713f58ed57ca4a2e51",
+  "generated_at": "2026-10-31T09:50:13Z",
+  "tip": "b72212191f9b74a8df1b95346a10e0db8c95a2e3",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "150218b295ee650f8dcbedd213006e9dc479dedd"
+      "head": "be04248a75da322da4ec5d6e99feab8b0d9991d6"
     },
     {
       "number": 3131,
@@ -56,6 +56,15 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "e834db439b1a42b9b33db8c81c74bf8828ec961c"
+    },
+    {
+      "number": 3135,
+      "title": "Door cure: SN-1908 capture + registry entry + index regen",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "e97fa5c8a16d13f3a0ba88273e266e2b7e99bd5b"
     }
   ]
 }
