@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 05:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -36725,6 +36725,12 @@ _Last updated: 2026-10-31 05:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ 20261030-2300 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261014-1910: EQ1-EQ4 probe falsifies staged retrieval-auth-gate wiring (tuple-truthiness bug) with red->green proof
+
+**Evidence:** VERIFIED this tick on live bytes: probe file sha256 0ddabc02afce3e79c355bd111c531482364831f1952e28dc38b593db316c4702 and results JSON sha256 c9126f21a37d2cf89829019e31f5bb9d0a13ddf3d294cdd9306a03f910df8ac8 both match the receipt exactly; staged verdicts EQ1 PASS/EQ2 FAIL/EQ3 PASS/EQ4 FAIL with [0]-fix variant 4/4 PASS recorded in the results file. 
+
 ### ✅ 20261029-0330 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SMARTBLOCKS D1-only requeue - byte-verify t0701 D1 erratum, pair-check re-run
@@ -41683,6 +41689,12 @@ _Last updated: 2026-10-31 05:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ 20261030-2300 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261014-1935: INELIGIBLE release of MCC-J second-review brief (double exclusion), claim-release loop broken
+
+**Evidence:** VERIFIED this tick on live bytes: brief-gap-scorer-20261014-1935-lane10.md present in brief-queue/done/ (retired unexecuted, not re-queued); gap-followup-seen.json contains BOTH the 17:20 no-refile verdict for gap-t0771-lane10 and the contradictory 19:35 filing, exactly as the receipt quotes. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) claim-be
+
 ### ✅ 20261030-1230 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t0771 Arm J hypothesis-note gap closeout (t0719 schema byte-pin + MCC-J root-difference check)
@@ -43890,6 +43902,12 @@ _Last updated: 2026-10-31 05:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261030-2300 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261014-1935: t1312 blinded-certification escrow chain re-derived byte-exact, 31/31 checks
+
+**Evidence:** VERIFIED this tick on live bytes: re-ran hidden_files/lane-experiments/t1302/escrow-rederive-gap1935.py myself and got RESULT GREEN with certification note sha16 7fa9178383ca88eb matching the receipt; battery file present. Clears 9.5 because the named gap (escrow chain verified at file level only) is fully closed by a re-runnable 31-check battery, 
 
 ### ✅ 20261030-0930 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
