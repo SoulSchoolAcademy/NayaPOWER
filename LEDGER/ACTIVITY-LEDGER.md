@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 04:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13133,6 +13133,14 @@ _Last updated: 2026-10-31 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict file hidden_files/surge-a-verdict-t0767-lane3.md exists (7,719 bytes, sha256 1f9be43012c74f99... matches); reviewed note lane-1/surge-a-hypothesis-change-t0761.md full sha256 3b685b90c98f754c6151ba4ce8b7b951fa4a967c8a2746be948f3e0d56173efe exact; corpse pins re-derived live: t0719 d992ad0c + t0743 aeffc6fa both byte-match. Substan
 
+### ✅ t0766 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Class-#17 violation detector built, proven live (28 violations), controls + regression battery
+
+**Receipt:** `twelve-lane-receipts/t0766-lane1.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (6411 bytes); violation-detector-class17.py sha256 085f592e2f4e8152bdc592c0bad6c26f545983ac330a16cf9fc3485fcef62635 byte-matches the receipt pin exactly (64/64); python3 -m py_compile passes clean; next-class note violation-detector-next-class-note-t0766.md exists (1958 bytes); brief brief-t0766
+
 ### ✅ t0766 — Team 1, Lane 1 (Naya Clarity Verity) (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** t0766-lane1
@@ -13156,6 +13164,14 @@ _Last updated: 2026-10-31 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0765-lane9.md`
 
 **Evidence:** ARTIFACT-VERIFIED independently by scorer on live bytes: branch naya/lane9/level-drill-keysplit-t0730 exists on remote, head == receipt-claimed SHA a8d01f0cde69722d9eb0b2a08362bb83458ebd9f; tools/level_drill.py at that SHA is the fail-closed shim (AST: 0 module-level constants, 0 defs; import raises RuntimeError with refusal text); tools/level_dril
+
+### ✅ t0765 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** First independent measurement of genuine human-value events: honest count 0
+
+**Receipt:** `twelve-lane-receipts/t0765-lane11.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (8238 bytes); value-ledger.md sha256 230b98135cba12be8d41208b1c9cb4339536a167c8351e696d116a0a3639df64 byte-matches the receipt pin prefix 230b98135cba12be exactly; value-counts-timeseries.md carries the t0765 row (0 events, same ledger_sha16, Mu's-five caveat stated); instrument human-value-inst
 
 ### ✅ t0765 — Team 11, Lane 11 (Naya Clarity Heart) (Human Value) — 9.0/10 [VERIFIED]
 
@@ -13900,6 +13916,14 @@ _Last updated: 2026-10-31 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0748-lane7.md`
 
 **Evidence:** VERIFIED: PR #2578 head 5e1956cf92814bcd8718130555b4fa80147635c5 == remote delta/w135-post-checker head (ls-remote, git protocol); merge-commit a2988769 parents [92329c57, 5e1956cf] per receipt's live read; fresh run 38536850660 SUCCESS exists, forbidden run 38533178211 untouched per receipt evidence; evidence section carries live-byte citations (r
+
+### ✅ t0748 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Verdict-instability adjudication: FM#61 candidate root-caused to API-blind fail-closed transport
+
+**Receipt:** `twelve-lane-receipts/t0748-lane6.md`
+
+**Evidence:** VERIFIED in part on live bytes: receipt file exists (7875 bytes); brief brief-t0748-lane6.md sits in brief-queue/done/ (not claimed/); receipt is internally consistent (7 quoted log lines with job ids, line numbers, identical head 7847be0603474a404de51575815284808b0d77ce across the (a) runs, falsifier test applied to both instances, holes named not
 
 ### ✅ t0748 — Team 6, Naya Verity Heir (Successor Transfer) — 9.5/10 [VERIFIED]
 
@@ -29515,6 +29539,12 @@ _Last updated: 2026-10-31 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261030-2027 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-30 20:27 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4867 bytes, sha256 09aa52ae24ffc9d7530a2993f8c69ea64c68bd11e6ffd2b767a240e37875ef36); brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued=31 with EXACT set match across receipt, disk, and rotation (0 only-receipt, 0 only-disk, 0 only-rotation), in_flight=[]; 
+
 ### ✅ 20261030-1920 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Seat-stall sweep 2026-10-30 19:18 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
@@ -34878,6 +34908,18 @@ _Last updated: 2026-10-31 03:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ 20261030-2040 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t1820 578-vs-588 erratum sweep across 5 receipts + disclosure-intent re-check
+
+**Evidence:** VERIFIED this tick on live bytes: the same own-parser re-count as the sibling score reproduces every number exactly (631 rows, STAMP-TRUE 595, MISSING->PRIVATE 588, join 578, 10 STAMP-FALSE, 17 PUBLIC_DERIVED_VIEW, arithmetic both ways); both deliverable SHAs byte-match the receipt pins exactly (ee7fc443... / 885feecc...); dated 2026-10-14 erratum 
+
+### ✅ 20261030-2040 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t0580b re-hash + 588-count audit + owner-confirmation check: 578-vs-588 correction with evidence
+
+**Evidence:** VERIFIED this tick on live bytes, fully re-derived: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665e3c0356ced53a13448c8ff76143f4cfdea97a10c56c190dd byte-matches the receipt pin exactly; surge/gen-stamping-decisions-t0580b.py sha256 885feecc1f306b7196ef5fa28cbc69bfc562b10f4a3a60abbca4221c47e991b4 byte-matches exactly; both mtimes unchange
 
 ### ✅ 20261030-1250 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
