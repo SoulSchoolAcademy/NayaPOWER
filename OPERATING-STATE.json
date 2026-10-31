@@ -1,12 +1,11 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-10-31T15:49:32Z",
-  "tip": "c810fbdf5d57f85330f955410be5a7b5c7d985bb",
-  "open_pr_count": 7,
+  "generated_at": "2026-10-31T21:50:08Z",
+  "tip": "06e53e9633616a94d864cc08aeae2fd00a67e253",
+  "open_pr_count": 6,
   "queue_by_tier_action": {
     "C": {
-      "MERGE-NOW": 2,
-      "CURE": 2
+      "MERGE-NOW": 3
     },
     "B": {
       "CURE": 2,
@@ -14,7 +13,6 @@
     }
   },
   "tip_failing_checks": [
-    "inventory",
     "promote-and-prove",
     "spec-integrity",
     "test"

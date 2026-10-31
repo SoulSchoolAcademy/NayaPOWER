@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-31T15:49:32Z",
-  "tip": "c810fbdf5d57f85330f955410be5a7b5c7d985bb",
+  "generated_at": "2026-10-31T21:50:08Z",
+  "tip": "06e53e9633616a94d864cc08aeae2fd00a67e253",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "7309aaf55c601ab1b35819a10903a1047394b044"
+      "head": "c79ff27141b0f3917ecef03614404b2f0ea98ce0"
     },
     {
       "number": 3131,
@@ -40,31 +40,22 @@
       "head": "4280ea82cc832f146c2b8f088ded16c70c8dafc0"
     },
     {
-      "number": 3133,
-      "title": "[DRAFT] Naya ultra-intelligent brand experience: 25 AI-native proposals + AAA proof contract",
+      "number": 3142,
+      "title": "Factory: file blessed-05 briefing strip (Tell-Me-My-Stats) spec",
       "tier": "B",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, delivery-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "6d26b7254d51da9b0e9f45d7425663575e737a5d"
+      "head": "cdc7402d5e3e31a44e2f9ca696b04e8b863242d0"
     },
     {
-      "number": 3134,
-      "title": "docs(brain): learning event 2026-10-30",
+      "number": 3143,
+      "title": "chore(brain): regenerate index layer at tip 77041508",
       "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "e834db439b1a42b9b33db8c81c74bf8828ec961c"
-    },
-    {
-      "number": 3135,
-      "title": "Door cure: SN-1908 capture + registry entry + index regen",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): completeness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "e97fa5c8a16d13f3a0ba88273e266e2b7e99bd5b"
+      "action": "MERGE-NOW",
+      "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
+      "owner": "dock",
+      "head": "bb5a39bc927acc4b990391f1e60606b0ce24761e"
     }
   ]
 }
