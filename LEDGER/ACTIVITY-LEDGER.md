@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12630,6 +12630,14 @@ _Last updated: 2026-10-31 08:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** merge-readiness verdict on Hub-Supabase bridge branch
 
 **Evidence:** Verified: branch naya4/t0800-lane0-supabase-bridge head 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b confirmed on origin (git ls-remote this tick); merge-base 9134788c matches parent's cut. Score 9.5. Clears 9.5 because: head certified byte-identical to the parent receipt; conflict-proof by TWO independent methods (git merge-tree 0 markers + real scrat
+
+### ✅ t0801 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
+
+**Task:** RECUSAL with re-file: PR #2738 independent review refused (authorship conflict), findings + HOLD posted, brief re-filed OPEN
+
+**Receipt:** `twelve-lane-receipts/t0801-lane11.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (10,792 bytes, sha256 54545b3b...); branch naya4/hub-cloudflare-pipeline still exists on the remote via git ls-remote, but its head has moved to e086ca22... from the receipt-certified head 8030c2ee... (13 days of later work - time-decay, not fabrication); re-filed brief-t0801-lane11.md no longer
 
 ### ✅ t0801 — Team 11, Naya Clarity Narzan (Human Value) — 8.0/10 [VERIFIED]
 
