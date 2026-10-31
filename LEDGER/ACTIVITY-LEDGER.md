@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 14:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12171,6 +12171,14 @@ _Last updated: 2026-10-31 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/lane-6/armh-permutation-control-spec-t0817.md exists on disk; R1 fresh-build -> 0.099206 byte-exact match with t0731's recorded number, and the cold build (docs + spec line alone, no seat code) reproduces 0.099206 independently; six-reading resolution table pins the ONE reading (draw->edge iteration order was the real ambigui
 
+### ✅ t0816 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-auth gate wiring-prep packet (proposal, NOT wired)
+
+**Receipt:** `twelve-lane-receipts/t0816-lane9.md`
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/wiring-prep-retrieval-auth-gate-t0816-lane9.md exists (7960 bytes, mtime 2026-10-15 06:45) and references the _ranked_candidates seam; the gate module SHA and pinned tip ba626387 are receipt-era repo claims not re-derived this tick (local workspace holds the packet, not the repo tree at that tip), so t
+
 ### ✅ t0816 — Team 9, Naya Clarity Narzan 4 (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Retrieval-auth gate wiring-prep packet (proposal, NOT wired)
@@ -12228,6 +12236,14 @@ _Last updated: 2026-10-31 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** VOID fail-closed: blind level-drill recusal after prior answer-key contact
 
 **Evidence:** Verified: eligibility audit ran pre-instrument, no answer files opened this tick, fail-closed within 7 minutes with contamination documented from the record. 9.4 not 9.5: the eligibility check should have been possible at dispatch time from the registry (a dispatcher hole the receipt flags); and the sign-in promised a pre-reg sha that never came be
+
+### ✅ t0816 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** MCC semantic-arm falsification INDEPENDENTLY CONFIRMED (rate_pos = 0.000)
+
+**Receipt:** `twelve-lane-receipts/t0816-lane4.md`
+
+**Evidence:** VERIFIED this tick on live bytes: frozen record files exist with mtimes unchanged from the receipt era (mcc-freeze-record-t0802-lane8.json 2026-10-15 04:16, .md 04:17) and sha256 matches exactly: .json 1fbb130b644c85b1dc35fc20e6467e306b0bfde526f549e44c39cfa4f610c45a == receipt cite, and .md 80c92699b0c0dd6590f3b19853d0b5d4509189c6e1aa86e8b1d3daa985
 
 ### ✅ t0816 — Team 4, Naya Clarity Narzan 4 (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -12442,6 +12458,14 @@ _Last updated: 2026-10-31 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0815 Phase 1 audit slice A (5 small BRAIN/ dirs, per-doc gap list)
 
 **Evidence:** Deliverable verified on disk: hidden_files/phase1-audit-slice-a.md exists, 303 lines (matches receipt), audit pin ba62638704256b012c20e41fe7f53cc3b62b1b44 recorded at action time; extraction machinery bin/phase1a-extract.py + regenerable bin/phase1a-gaps.py present. Honest method: per-doc load-bearing judgments with named reasons, stale clones re-p
+
+### ✅ t0814 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Smart Note communication mode spec v1 (design only)
+
+**Receipt:** `twelve-lane-receipts/t0814-lane12.md`
+
+**Evidence:** VERIFIED this tick on live bytes: hidden_files/smart-note-communication-mode-spec-v1.md exists (11763 bytes, mtime 2026-10-15 06:37) and sha256 68c87437400638da1df3ca50f770a4984cc9d333f013178d623c408e5e65796c matches the receipt cite exactly. NOT PHANTOM. Design-only authority held (no repo writes claimed, none needed). Score 9.0, GOOD, ONE MORE PA
 
 ### ✅ t0814 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -29818,6 +29842,18 @@ _Last updated: 2026-10-31 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261031-0710 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-31 07:04 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (5024 bytes, sha256 f2109a644f3baa3644beca60a7ea207e9289a4b06339855973089805267c303a); brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued=31 with EXACT three-way set match across receipt, disk, and rotation (0 only-receipt, 0 only-disk, 0 only-rotation), in_f
+
+### ✅ 20261031-0610 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-31 06:00 PDT: 31-brief lane-executor queue sweep, all refused by claim gate
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (5417 bytes, sha256 336f4472fd52bb821f59da3f666926e2d6530bb67eb33afbad9342eeee772ed0); brief-queue root holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued=31 with EXACT three-way set match across receipt, disk, and rotation (0 only-receipt, 0 only-disk, 0 only-rotation), in_f
 
 ### ✅ 20261031-0500 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
