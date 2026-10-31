@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 06:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30841,6 +30841,12 @@ _Last updated: 2026-10-31 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ 20261030-2330 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261014-1905: pre-claim claimability gate mechanized (claim-brief.py, --self-test 4/4)
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists; gap-followup-seen.json entry scorer-20261014-1905-lane9 -> CLOSED with matching receipt path; brief-gap-scorer-20261014-1905-lane9.md present in brief-queue/done/; bin/claim-brief.py present and --self-test GREEN today (expanded suite incl. F1-F6 lift-stamp). NOT PHANTOM. Score 9.0, GOOD, ONE M
+
 ### ✅ 20261030-1250 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t0580b cold-retrieve drill gap follow-up: live main tip re-run, seal fired on moved retrieval code, t1052 HOLDS-OPEN closed in bytes
@@ -38941,6 +38947,12 @@ _Last updated: 2026-10-31 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ 20261030-2330 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** t0802 STALE BRIEF VERIFIED-DONE: retrieval-auth EQ1-EQ4 gap already closed, independent re-run reproduces byte-identical results
+
+**Evidence:** VERIFIED this tick on live bytes: probe SHA 0ddabc02afce3e79c355bd111c531482364831f1952e28dc38b593db316c4702 and results SHA c9126f21a37d2cf89829019e31f5bb9d0a13ddf3d294cdd9306a03f910df8ac8 both match the receipt exactly (same pins re-verified at the 2300 tick for the parent receipt); gap-followup-seen.json entry scorer-20261014-1910-lane4 -> CLOSE
+
 ### ✅ 20261030-0930 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** t0768 ranked top-20 unmet-needs analysis from live ask-world query log, tuning target for SMARTBLOCKS hypertuning
@@ -43902,6 +43914,12 @@ _Last updated: 2026-10-31 06:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261030-2330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t0796 forensics root fix: parameterized all 8 live push-script copies via fail-closed seat_identity helper, proof on live commit objects
+
+**Evidence:** VERIFIED in part on live bytes: receipt file exists; bin/seat_identity.py present (era-consistent 2026-10-15) and --self-test PASS fail-closed + round-trip today. NOT PHANTOM on the action-time record. Git legs could NOT be re-executed this tick: proof branch d3813117bce4a8126b6465e31e8a277575fc2bc7, dangling probe commit 3576161f8a177d99f60d29a8a7
 
 ### ✅ 20261030-2300 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
