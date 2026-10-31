@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-30  
-**Receipt basis commit:** `aaa9d0ff83f89a8a398f2ab1690c57ebbc01f54f`  
-**Inventory file count:** 1810  
+**Generated:** 2026-10-31  
+**Receipt basis commit:** `b72212191f9b74a8df1b95346a10e0db8c95a2e3`  
+**Inventory file count:** 1811  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 907 |
+| 05-MEMORY | 908 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
@@ -1057,6 +1057,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1905/IB-SMART-NOTE-20261030-sn1905-the-adopted-pricing-canon.md` — `66fb8611c8a6` (8062 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1906/IB-SMART-NOTE-20261030-sn1906-the-related-bar-law.md` — `b11563dff306` (2135 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1907/IB-SMART-NOTE-20261030-sn1907-one-mind-named-naya.md` — `b8307c37c1c6` (1259 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/31/SYSTEM/smart-notes/SN-1908/IB-SMART-NOTE-20261031-sn1908-the-full-circle.md` — `20acbfb7cae1` (2035 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/REPAIR-LOG.md` — `15b158962767` (54800 bytes)

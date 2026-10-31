@@ -16275,6 +16275,26 @@
         "note": "published directly as a BRAIN projection in commit f2f4af6d6e4946c8849f32d183eebaf09e27c86d ('SN-1907: One Mind Named Naya — because it can be (Shawn 2026-10-30)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-30 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "e910f9c549975b7cd849bc06b8721874d76839f61062a16f15788371e026c084"
+    },
+    {
+      "smart_note_id": "SN-1908",
+      "intelligent_block_id": "IB-SMART-NOTE-20261031-sn1908-the-full-circle",
+      "title": "SN-1908 — THE FULL CIRCLE — welcome home, not fill this room",
+      "content_hash": "a929ba85d0f69a245898eafc184d0286045fdb6b0ef1c7942d58017b0dad3afd",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/31/SYSTEM/smart-notes/SN-1908/IB-SMART-NOTE-20261031-sn1908-the-full-circle.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-10-31",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit c65fe46105c371088df3af8349469f23f808ec07 ('SN-1908 — The Full Circle (welcome home, not fill this room)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-31 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "a1c568dfca8696b6c49b064ce8f79fad799003e277928582127ee0f6bedfca9b"
     }
   ],
   "sequence_policy": {
@@ -16285,5 +16305,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "05843361a8133b241a1cd9810dfcb5ed46046b54c0338845c4b962821e7fb225"
+  "corpus_manifest_hash": "414fe6f97a90eff091a6e48b4e8e0824fdf4ea8f5b4baa888581b5b6ac088624"
 }
