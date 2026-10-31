@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-30T21:50:08Z",
-  "tip": "aaa9d0ff83f89a8a398f2ab1690c57ebbc01f54f",
+  "generated_at": "2026-10-31T03:49:54Z",
+  "tip": "3f8203b818c4cf7b68d711713f58ed57ca4a2e51",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "9112472518e46e114ed9b27f949b6306a6fc104f"
+      "head": "150218b295ee650f8dcbedd213006e9dc479dedd"
     },
     {
       "number": 3131,
@@ -38,6 +38,24 @@
       "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
       "owner": "dock",
       "head": "4280ea82cc832f146c2b8f088ded16c70c8dafc0"
+    },
+    {
+      "number": 3133,
+      "title": "[DRAFT] Naya ultra-intelligent brand experience: 25 AI-native proposals + AAA proof contract",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "6d26b7254d51da9b0e9f45d7425663575e737a5d"
+    },
+    {
+      "number": 3134,
+      "title": "docs(brain): learning event 2026-10-30",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "e834db439b1a42b9b33db8c81c74bf8828ec961c"
     }
   ]
 }
