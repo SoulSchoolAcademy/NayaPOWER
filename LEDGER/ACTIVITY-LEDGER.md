@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-10-31 07:37 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12629,6 +12629,14 @@ _Last updated: 2026-10-31 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/t0800-lane0-supabase-bridge exists on origin; head SHA 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b byte-matches the receipt pin; HUB/app/js/supabase-bridge.js present at that SHA (blob 213006fe...); HUB/app/index.html one-line script include present; hidden_files/bin/verify-t0800-bridge.js present (6279 bytes). Live 14/14 proof 
 
+### ✅ t0798 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Feed page rendering the live Smart Note queue (leg 3 of Smart Note flow)
+
+**Receipt:** `twelve-lane-receipts/t0798-lane9.md`
+
+**Evidence:** VERIFIED in part on live bytes: receipt file exists (9895 bytes); honesty gate bin/verify_feed_page.py sha256 8410a10f7a7bbfdedb35c293a2cb3fe07a56fc3b4cfc45a4085537dbe43177a3 matches the receipt prefix EXACTLY; screenshot feed-page-proof-20261017.png sha256 609479cfd36c... matches EXACTLY at 518861 bytes; queue file still 1533 lines, matching the r
+
 ### ✅ t0798 — Team 9, Naya Clarity Narzan (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** t0798-lane9.md
@@ -12660,6 +12668,14 @@ _Last updated: 2026-10-31 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Smart Note Flow capture-leg timed probe + gap contract vs Shawn's priority-#2 path
 
 **Evidence:** Verified: commit 77d9f055aa50cc5d2db0984bdcb369aaa53d5f1e exists via GitHub commits API with author/committer 'Naya Clarity Narzan <naya4@nayapower.local>' dated 2026-10-17T20:35:07Z exactly as claimed; probe-note-t0707.md exists locally; branch tip now 8b8771884 (drift = later notes staged, not refutation). Clears 9.5 because the seat-stamped auth
+
+### ✅ t0798 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Smart Lists feature breaker (breaker #3 of 13): module + 21 tests + SHA-guarded registry flip
+
+**Receipt:** `twelve-lane-receipts/t0798-lane12.md`
+
+**Evidence:** VERIFIED in part on live bytes: receipt file exists (11384 bytes) with honest holes 1-4 named in-file and a genuine fourth pass before shipping (Q2 gate honored). NOT PHANTOM on the action-time record. Git legs could NOT be re-executed this tick: branch naya4/t0798-lane12-smart-list, commit 7fba48900, module/test/resolver/registry SHAs live in the 
 
 ### ✅ t0798 — Team 12, Naya Clarity Narzan (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -12697,6 +12713,14 @@ _Last updated: 2026-10-31 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: brief-t0707-lane11 claim + sign-in ordering held (per receipt); v1 spec SHA 8f76add6794d83ead528214c894824ee08d0a27d560fa70247ecd7d4a78a8e10 re-pinned, no drift; the six header-family parser and the I2b filing-endpoint convention are described with byte-check evidence (embed-PDT+7h within ±15min on 5/6 queued briefs). 9.0 GOOD, ONE MORE P
 
+### ✅ t0797 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE retrieval slice (c): ask-world query-log top-20 + three tune-in-packet specs
+
+**Receipt:** `twelve-lane-receipts/t0797-lane6.md`
+
+**Evidence:** VERIFIED in part on live bytes: receipt file exists (9072 bytes); BOTH instruments byte-exact today (tally-t0797.py c098e0114ab838015c2976c86e94ce6fc3494d8b30b33c9683a8d4607e1887ee, check-tune-in-packet-t0797.py d6a9932d21154943a4bc270246faff85b5fc3305a738a6d72c2cc580980f64ac); deliverable ask-world-top20-20261017.md still carries all three spec na
+
 ### ✅ t0797 — Team 6, Naya Clarity Narzan (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** t0797-lane6.md
@@ -12712,6 +12736,14 @@ _Last updated: 2026-10-31 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0797-lane6.md`
 
 **Evidence:** Verified: log sha256 28af7eb7eb759cded6ecff18a615d3bb9c0b8f7c30edbcd2b60633b1bc8d3a5c == pin (118 lines); deliverable 656db738... == pin; re-ran tally-t0797.py (exit 0) and check-tune-in-packet-t0797.py (exit 0) here — both instrument pins match receipt. New finding genuine: t0768 zero-count cell filled with 4/3/2 organic rows, demand premise falsi
+
+### ✅ t0797 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Scoped excluded() VOIDED fix in lane-11 census tooling (L2324 false-exclusion)
+
+**Receipt:** `twelve-lane-receipts/t0797-lane11.md`
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (10915 bytes); patched script hidden_files/lane-11/i2-census-t0707.py sha256 30653bea8b35f00b019e73d8673758e5d7289bbfccae78801e0f86dd872c250c matches the receipt's after-pin EXACTLY, mtime Oct 17 22:35 UTC (action-time, untouched since). NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below receipt
 
 ### ✅ t0797 — Team 11, Naya Clarity Narzan (Human Value) — 9.0/10 [VERIFIED]
 
