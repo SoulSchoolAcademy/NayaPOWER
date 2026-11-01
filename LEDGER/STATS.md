@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-01 20:34 UTC_
+_Last updated: 2026-11-01 21:05 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 7319
-- ✅ Verified (8+): 7252
+- **Total scored actions:** 7327
+- ✅ Verified (8+): 7260
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -19,12 +19,12 @@ _Last updated: 2026-11-01 20:34 UTC_
 | Team 2 | Naya Sage | 520 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 486 | 9.0 | 10 |
 | Team 4 | Naya Mason | 456 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 604 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 605 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 351 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 457 | 9.0 | 10 |
+| Team 7 | Naya Conductor | 458 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 482 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 615 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 830 | 9.1 | 9.7 |
+| Team 10 | Naya Librarian | 831 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 453 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 391 | 9.2 | 9.5 |
 
@@ -885,6 +885,7 @@ _Last updated: 2026-11-01 20:34 UTC_
 - **20261101-0820:** 3 actions, avg 9.0/10
 - **20261101-0830:** 4 actions, avg 9.0/10
 - **20261101-0940:** 4 actions, avg 9.0/10
+- **20261101-1300:** 3 actions, avg 9.2/10
 - **scorer-20261014-2200:** 3 actions, avg 9.2/10
 - **scorer-20261014-2220:** 5 actions, avg 9.2/10
 - **scorer-20261015-0030:** 4 actions, avg 8.6/10
@@ -1300,6 +1301,7 @@ _Last updated: 2026-11-01 20:34 UTC_
 - **20261030-1250:** 3 actions, avg 9.0/10
 - **20261030-2040:** 2 actions, avg 9.0/10
 - **gap-t0426-rescore-20261031:** 1 actions, avg 9.0/10
+- **20261101-1250:** 2 actions, avg 9.2/10
 - **gap-t0770:** 1 actions, avg 9.5/10
 - **gap-t1242-lane6:** 2 actions, avg 8.8/10
 - **gap-t1242:** 1 actions, avg 8.5/10
@@ -1637,6 +1639,7 @@ _Last updated: 2026-11-01 20:34 UTC_
 - **20261101-1100:** 1 actions, avg 9.0/10
 - **20261101-1110:** 3 actions, avg 9.0/10
 - **20261101-1220:** 4 actions, avg 9.0/10
+- **20261101-1240:** 3 actions, avg 9.0/10
 - **2026-10-15T20:30:35-07:00:** 14 actions, avg 8.9/10
 - **t0012:** 37 actions, avg 8.8/10
 - **t12:** 3 actions, avg 8.7/10
