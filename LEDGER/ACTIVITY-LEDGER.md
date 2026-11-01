@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 10:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 10:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,18 @@ _Last updated: 2026-11-01 10:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-0220 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Phase 1 audit slice B: per-doc gap list for 9 mid-size BRAIN dirs (104 docs)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; prior rows wore self-label agent Naya Clarity Narzan at conflicting 9.0/9.5, not independent scores - this row repairs that): phase1-audit-slice-b.md exists, 384 lines, 106 pipe-lines = 104 per-doc rows + header + separator, matching the receipt; sha256 eed6829ab97aa1d7... byte-exact on
+
+### ✅ 20261101-0220 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Phase 1 audit slice A: per-doc gap list for 5 small BRAIN dirs (87 docs)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; prior rows wore self-label agent Naya Clarity Narzan at conflicting 9.2/9.5, not independent scores - this row repairs that): phase1-audit-slice-a.md exists, 303 lines, 89 pipe-lines = 87 per-doc rows + header + separator, matching the receipt; bin/phase1a-extract.py and bin/phase1a-gap
+
 ### ✅ 20261101-0126 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Gate-stall run 01:26 PDT: full 31-brief queue evaluated, 0 claimed, queue untouched
@@ -31714,6 +31726,18 @@ _Last updated: 2026-11-01 10:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ 20261101-0240 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: t0572 §1 forensics independent reproduction (second seat)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; prior rows were self-labeled Naya Clarity Narzan at 9.0/9.5, plus a malformed Team Naya Scorer row at line 5365 that carries NO receipt field and so never keyed to this receipt - this row repairs that): receipt file exists (7401 bytes); parent receipt t0572-lane9.md exists; follow-up pa
+
+### ✅ 20261101-0220 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap t0776 lane-9 decline #2: seat-barred decline + structural root cause (empty non-Clarity executor pool)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; prior row wore self-label agent Naya Clarity Narzan, not an independent score - this row repairs that): receipt file exists; brief-gap-t0776-lane9.md sits in brief-queue/done/; twelve-lane-rotation.json queued holds no t0776 entry; parent receipts t0776-lane9.md and gap-t0776-lane9.md b
 
 ### ✅ gap-scorer-20261014-2200-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
