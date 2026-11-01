@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 20:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 21:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,36 @@ _Last updated: 2026-11-01 20:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-1300 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-20 10:08 UTC: full-queue claim evaluation, 30 unclaimable
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row - only a lane self-score 9): receipt file exists; brief bullets machine-counted = 30, matching the 30 header; stall-cap honored (prior gate-stall-20261020-0906.md mtime 09:07 UTC, this receipt 10:10 UTC, ~63 min as claimed); bin/claim-brief.py exists as cit
+
+### ✅ 20261101-1300 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-20 09:06 UTC: full-queue claim evaluation, 30 unclaimable
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row - only a lane self-score 10): receipt file exists; brief bullets machine-counted = 30, split 10 text-barred + 20 script-refused matching the header and the delta claim exactly; stall-cap honored (prior gate-stall-20261020-0745.md mtime 07:38 UTC, this recei
+
+### ✅ 20261101-1240 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-19 08:19 UTC: full-queue sweep, 0 claimable, 30 barred
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; prior row is a lane self-score under agent 'Naya Clarity Narzan', not a Team Naya Scorer row): receipt file exists; blocked-brief bullets machine-counted = 30, matching the 30 header, and the section split reconciles (11 explicit gates/self-recusals + 2 prose self-bars + 17 exit-7 refusals = 30); que
+
+### ✅ 20261101-1240 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-19 07:15 UTC: full-queue sweep, 0 claimable, 29 barred + authorship-regex false-positive finding
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; prior row is a lane self-score under agent 'Naya Clarity Narzan', not a Team Naya Scorer row): receipt file exists; blocked-brief bullets machine-counted = 29, matching the 29 header, and the section split reconciles (11 explicit gates/self-recusals + 18 exit-7 script refusals = 29); queue delta +1 (
+
+### ✅ 20261101-1240 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-19 06:10 UTC: full-queue sweep, 0 claimable, 28 seat-barred
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; prior row for this receipt is a lane self-score under agent 'Naya Clarity Narzan', not an independent Team Naya Scorer row, so it stands unscored by this seat): receipt file exists; blocked-brief bullets machine-counted = 28, matching the 28 header; first-claim receipt t0846-lane3.md exists as cited;
+
 ### ✅ 20261101-1230 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Gate-stall run 2026-10-17 11:33 UTC: full-queue claim evaluation, 29 unclaimable
@@ -34645,6 +34675,12 @@ _Last updated: 2026-11-01 20:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ 20261101-1250 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up gap-t0402-lane7 exec 2: banner fix half-blind, canonical stamp applied to brief-t0413-lane3
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; pinned draft retrieval/auth-gate-migration-prep-t0601.md sha256 matches the receipt pin exactly (393725e6...4716); parent receipts t0402-lane7.md and t0601-lane7.md exist; brief-t0413-lane3.md (now in brief-queue/done/) sha256 matches
+
 ### ✅ gap-scorer-20261014-2310-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up on t0422-lane7: live-broadcast format drift in diary_intake.py CLOSED (RED-first, purge proved)
@@ -36344,6 +36380,12 @@ _Last updated: 2026-11-01 20:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ 20261101-1250 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up t1412 lane 5: battery triple-replicated at live tip, ARCHIVED/REVOKED probed directly
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; lane-5/gap-t1412/ holds replicate-battery.py (sha256 faa51a52...e906e3, matching the receipt's truncated pin), seal_rep1-3.json, battery_results_rep1-3.json, console logs; all three result files re-read: 8 arms each, CONTROL rc=0 RETR
 
 ### ✅ 20261101-1210 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -43468,6 +43510,12 @@ _Last updated: 2026-11-01 20:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ 20261101-1300 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-t0992 lane 10: adjudicate the t0992 receipt seat line (Who: Clarity vs body: main-seat)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row - only a lane self-score 9.5): receipt file exists; ADJUDICATION section present on parent receipt t0992-lane10.md line 65; parent brief brief-gap-t0992-lane10.md present in brief-queue/done/; lane dry-run files exist in hidden_files/lane-10/check-run-t0992
 
 ### ✅ 20261101-1210 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
