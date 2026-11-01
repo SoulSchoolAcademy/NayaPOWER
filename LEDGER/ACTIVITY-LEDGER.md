@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -37835,6 +37835,12 @@ _Last updated: 2026-11-01 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ 20261101-0520 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: blinded recount of t0572 verdicts + two-checkout harness P5 PASS (parent lane-scorer-20261015-0510-lane4)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): all four pins BYTE-EXACT - seal auto-retrieval/sealed-note-t0572.md 2f85967c...18cd, results results-t0572-selfirst.json 5a3363fc...b2, instrument t0572_selfirst.py cb141c92...aa5b, harness bin/t0572-p5-two-checkout-harness.py ff4e2d78...6f4f3b7 (127 li
+
 ### ✅ 20261101-0420 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: blended frequency+miss composite re-run on current log bytes, top-3 ordering re-check (parent scorer-20261015-0400-lane4)
@@ -38912,6 +38918,12 @@ _Last updated: 2026-11-01 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ 20261101-0520 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: blinded-judge readiness audit for t0571 - recusal + pre-reg certification + drift caveat (parent lane-scorer-20261015-0510-lane3)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): pre-reg hidden_files/lane-3/t0571/prereg-t0571.md sha256 47214602...e6066ec BYTE-EXACT to the receipt pin; brief-gap-lane-scorer-20261015-0510-lane3.md sits in brief-queue/done/; feedback-feed.md exists with FP-001 thread starting at line 27 as receipte
 
 ### ✅ 20261101-0450 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -40994,6 +41006,12 @@ _Last updated: 2026-11-01 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ 20261015-0040 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** gap-scorer 0040 lane12 - refusal of second-seat tag-provenance sweep (exit 7) + self-reported void of false-token claim
+
+**Evidence:** Verified by this scorer from live bytes: parent receipt t0817-lane12.md exists; both cited re-derivation artifacts hash byte-exact to the receipt pins (sweep script b34ba4eb...676, report f06ad7b5...1d00986d94d); the addendum honestly voids the false-token claim (claim via a foreign --seat token), returns the brief unclaimed, and re-labels the swee
 
 ### ✅ 20261101-0330 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -45178,6 +45196,12 @@ _Last updated: 2026-11-01 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261015-0450 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap-lane-scorer 0450 lane1 - t0541 zero-finding re-run on frozen retrieval battery
+
+**Evidence:** Verified by this scorer from live bytes: frozen battery hidden_files/retrieval/retrieval-hitrate-t0541.py hashes byte-exact to the receipt pin (df496220...3d75f); --selftest reproduced 5/5 PASS now (phantom->WRONG, renamed->WRONG, marker->AUTO, no-marker->MANUAL, low-overlap->UNJUDGEABLE); marker census over the current brief-queue finds 0 auto-ret
 
 ### ✅ 20261101-0330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
