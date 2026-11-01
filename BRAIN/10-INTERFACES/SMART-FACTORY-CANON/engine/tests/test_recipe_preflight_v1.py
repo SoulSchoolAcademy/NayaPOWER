@@ -59,6 +59,9 @@ class RecipePreflightTests(unittest.TestCase):
     def test_too_many_context_items_denied(self):
         self.r["recipe"]["scenes"][0]["context"]=["one","two","three","four"]
         self.assertTrue(any("0–3" in x for x in self.errors()))
+    def test_unrecognized_owner_scope_denied(self):
+        self.r["data"]["datasets"][0]["scope"]="all_tenants"
+        self.assertTrue(any("unknown scope" in x for x in self.errors()))
     def test_duplicate_scene_denied(self):
         self.r["recipe"]["scenes"][1]["id"]="lists-home"
         self.assertTrue(any("duplicate" in x for x in self.errors()))
