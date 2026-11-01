@@ -62,6 +62,27 @@ class RecipePreflightTests(unittest.TestCase):
     def test_unrecognized_owner_scope_denied(self):
         self.r["data"]["datasets"][0]["scope"]="all_tenants"
         self.assertTrue(any("unknown scope" in x for x in self.errors()))
+    def test_user_first_receipts_missing_draft_warnings(self):
+        errors, warnings = m.inspect(self.r, self.index, self.store, "draft")
+        self.assertFalse(errors)
+        self.assertTrue(any("experience" in w for w in warnings))
+    def test_user_first_receipts_missing_release_denied(self):
+        errors, _ = m.inspect(self.r, self.index, self.store, "release_candidate")
+        self.assertTrue(any("experience" in e for e in errors))
+    def test_empty_state_missing_in_release_denied(self):
+        self.r["recipe"]["scenes"][1]["experience"] = {
+            "hero_meaning": "Clear next job",
+            "empty_state_copy": "Nothing saved yet",
+            "truth_source_ref": "personal-lists",
+            "grid_rule": "single-column responsive grid",
+            "touch_state": "signed Save responds honestly",
+            "phone_review_ref": "test-record-phone",
+            "laptop_review_ref": "test-record-desktop",
+            "independent_two_second_review_ref": "review-record"
+        }
+        errors, warnings = m.inspect(self.r, self.index, self.store, "release_candidate")
+        self.assertTrue(any("empty-state" in e for e in errors))
+        self.assertFalse(any("experience." in e and "scenes[1]" in e for e in errors))
     def test_duplicate_scene_denied(self):
         self.r["recipe"]["scenes"][1]["id"]="lists-home"
         self.assertTrue(any("duplicate" in x for x in self.errors()))
