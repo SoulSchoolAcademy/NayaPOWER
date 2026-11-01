@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 07:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -34107,6 +34107,14 @@ _Last updated: 2026-11-01 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ gap-t0142 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gray-zone four + #2079 hold closure verification + calculator re-run
+
+**Receipt:** `twelve-lane-receipts/gap-t0142-lane7.md`
+
+**Evidence:** Verified independently via git ls-remote: all five pull-head SHAs match the receipt exactly (#2079 71fcd84a43c9873682893d15bde6933284d0c8f3, #2112 2c4d1922683d2d73f57796d351618d271db941a4, #2215 60e2fbf39aa86d16571c3be81b46afb4930009be, #2217 f6de2d3497dda83a9d80d100bbc632f541fb976c, #2250 63373f3e37adb2a060d9e4b43099c49de79a9101); live HEAD 29cd4f
+
 ### ✅ gap-t0422-rescore-20261031 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up on t0422 — independent-seat cold trial of diary_intake.py
@@ -39817,6 +39825,14 @@ _Last updated: 2026-11-01 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-t0162 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H9 round 2 under fresh pre-reg with expanded M2 rule on fresh lane-pick universe
+
+**Receipt:** `twelve-lane-receipts/gap-t0162-lane2.md`
+
+**Evidence:** Verified locally: lane-2/gap-t0162-lane2/measure_h9r2.py sha256 3cdc590e7627f48666fa3ec85b607bf798f45fdbaa39b01d62bc2f95c729ff81 MATCHES receipt pin; pins-real.json 7c48835d4cafb40a488ec48a993aabde7a68f172503d9f5e34ea98265b443dff MATCHES; h9r2-result.json re-read: NO-GO insufficient-contrast, n(M2=1)=3, n(M2=0)=19, all 3 M2=1 description_only — exa
+
 ### ✅ gap-1432-rescore-20261031 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
 **Task:** Gap follow-up on t1432 — compound-scale e2e re-run + CI state read on fix branch
@@ -41768,6 +41784,14 @@ _Last updated: 2026-11-01 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-t0162 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat re-run of t0122-t0162 hand audit (M2/M3/M4) + exposed t0142-lane4 call
+
+**Receipt:** `twelve-lane-receipts/gap-t0162-lane11.md`
+
+**Evidence:** Verified locally: parent t0162-lane11.md sha256 d868cbe69b9ea87975a8e85c7dd586e00bb43c16ac9b88d78e0aeda5907e57a9 MATCHES; t0142-lane4.md 1506a319012e2f7561a18f4e755a127de411626202a33e2afc5e17c1843af189 MATCHES; lane-11/metric_audit_t0162.json 4b1ee9920638ce140cbf3f7ecb3fa1ffb1031cd375970ae4ffc3e9feb760e2fb MATCHES and its hand_totals recompute to M
 
 ### ✅ 20261030-0920 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
