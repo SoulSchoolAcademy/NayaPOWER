@@ -1,0 +1,147 @@
+{
+  "contract": "NAYA_APP_RECIPE_V1",
+  "version": 1,
+  "build_status": "draft",
+  "project_intelligence": {
+    "project_id": "EXAMPLE_ONLY_NOT_LIVE",
+    "mission_ref": "BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/NAYANET-GRAND-MISSION-AND-PROJECT-HIERARCHY.md",
+    "owner": "UNASSIGNED",
+    "source_sha": "UNKNOWN",
+    "human_outcome": "A person creates a list and later returns to the same saved list.",
+    "authority_status": "unverified"
+  },
+  "recipe": {
+    "app_id": "smart-lists-sample",
+    "audience": "signed-in NayaNET citizen",
+    "purpose": "Organize a personal list without learning complicated software.",
+    "scenes": [
+      {
+        "id": "lists-home",
+        "human_job": "See my lists and decide what to do next.",
+        "hero": "Your lists",
+        "context": [
+          "List count must come from a real owner-authorized source"
+        ],
+        "primary_action_id": "create-list",
+        "secondary_action_id": null,
+        "ambient": "Owner scope and freshness",
+        "part_ids": [
+          "NAYA-BRD-001",
+          "NAYA-BTN-009"
+        ],
+        "data_refs": [
+          "personal-lists"
+        ],
+        "states": [
+          "loading",
+          "ready",
+          "empty",
+          "error",
+          "denied"
+        ],
+        "next_screen": "list-detail"
+      },
+      {
+        "id": "list-detail",
+        "human_job": "Name and save my list.",
+        "hero": "New list",
+        "context": [
+          "Success requires a real persisted receipt"
+        ],
+        "primary_action_id": "save-list",
+        "secondary_action_id": null,
+        "ambient": "Not saved until server confirmation",
+        "part_ids": [
+          "NAYA-INP-008",
+          "NAYA-BTN-009"
+        ],
+        "data_refs": [
+          "personal-lists"
+        ],
+        "states": [
+          "loading",
+          "ready",
+          "error",
+          "denied",
+          "success"
+        ],
+        "next_screen": "lists-home"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "NAYA-BRD-001",
+      "slot": "lists-home.hero"
+    },
+    {
+      "id": "NAYA-BTN-009",
+      "slot": "lists-home.primary-action"
+    },
+    {
+      "id": "NAYA-INP-008",
+      "slot": "list-detail.input"
+    }
+  ],
+  "shell": {
+    "shell_ref": "CURRENT_APPROVED_SHELL",
+    "navigation_ref": "CURRENT_APPROVED_SMART_BARS",
+    "responsive_viewports": [
+      [
+        320,
+        700
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1440,
+        900
+      ]
+    ],
+    "scroll_policy": "Essential first-screen priority visible outside fixed chrome; natural accessible scrolling"
+  },
+  "data": {
+    "datasets": [
+      {
+        "id": "personal-lists",
+        "source_ref": "UNVERIFIED",
+        "scope": "owner_only",
+        "permission_ref": "UNVERIFIED"
+      }
+    ],
+    "actions": [
+      {
+        "id": "create-list",
+        "label": "Create a list",
+        "binding_status": "unwired",
+        "service_ref": "UNVERIFIED",
+        "permission_ref": "UNVERIFIED",
+        "outcome_receipt_ref": "UNKNOWN"
+      },
+      {
+        "id": "save-list",
+        "label": "Save list",
+        "binding_status": "unwired",
+        "service_ref": "UNVERIFIED",
+        "permission_ref": "UNVERIFIED",
+        "outcome_receipt_ref": "UNKNOWN"
+      }
+    ]
+  },
+  "gate": {
+    "status": "not_tested",
+    "reviewer": "UNASSIGNED",
+    "independent": false,
+    "source_sha": "UNKNOWN",
+    "deployed_sha": "UNKNOWN",
+    "proof_refs": [],
+    "privacy_deny_proof": "UNKNOWN",
+    "accessible_render_proof": "UNKNOWN"
+  }
+}
