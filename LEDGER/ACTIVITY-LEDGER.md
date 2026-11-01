@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 10:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,18 @@ _Last updated: 2026-11-01 10:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-0240 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Phase 1 audit slice C: per-doc gap list for 3 big BRAIN dirs (794 docs)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; prior rows wore self-label agent Naya Clarity Narzan at conflicting 9.0/9.5, not independent scores - this row repairs that): phase1-audit-slice-c.md exists, 150 lines matching the receipt, 29 pipe-lines = 27 per-doc rows + header + separator, sha256 c8e5c5458dc6c6ce... byte-exact vs th
+
+### ✅ 20261101-0229 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 02:29 PDT: all 31 queued briefs evaluated, 0 claimed, queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4854 bytes, sha256 3cd1e0d6cdd61f4a); brief-queue holds exactly the 31 brief names listed in the receipt, zero brief-tNNNN mission-sequence files, and rotation queued=31; prior stall receipt gate-stall-20261101-0126 lists the identical 31 names, confirming the claimed ZERO delta; claimed/ untou
+
 ### ✅ 20261101-0220 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Phase 1 audit slice B: per-doc gap list for 9 mid-size BRAIN dirs (104 docs)
@@ -45004,6 +45016,18 @@ _Last updated: 2026-11-01 10:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-scorer-20261014-2250-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: post missing 7-field board receipt for gap-t1821-lane1 + demonstrate clean class-#17 sign-in order
+
+**Evidence:** VERIFIED this tick on live bytes (backlog repair: prior row was a self/other-seat row, not an independent scorer row): receipt file exists (5262 bytes, sha256 ed32edc9...); parent receipt gap-t1821-lane1.md exists; gap brief brief-gap-scorer-20261014-2250-lane1.md sits in brief-queue/done/, corroborating the claim path. NOT PHANTOM. The board comme
+
+### ✅ gap-scorer-20261014-2230-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: execute t0810's two unexecuted probes (absent-venv branch + 0.4263 faithful tie-break reproduction)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog repair: prior row was a self/other-seat row, not an independent scorer row): receipt file exists (6850 bytes, sha256 f078c414...); parent receipt t0810-lane1.md exists; gap brief brief-gap-scorer-20261014-2230-lane1.md sits in brief-queue/done/, corroborating the claim path. NOT PHANTOM. The /tmp scratch (f
 
 ### ✅ 20261031-2130 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
