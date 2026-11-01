@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 17:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,42 @@ _Last updated: 2026-11-01 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-0930 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-15 20:48 PDT: full-queue claim evaluation, 28 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; no prior Team Naya Scorer row): receipt file exists; 28-brief sweep inventoried with exit classes (exit-7 list sums to 19 despite the header saying 18, exit-2 8, exit-6 1 = 28 total, so the list is consistent and only the header count is sloppy); no branch/SHA cited, so the git leg does not apply. NO
+
+### ✅ 20261101-0930 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-15 20:41 PDT: delta receipt, 1 new barred brief, rest unchanged
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; no prior Team Naya Scorer row): receipt file exists; delta receipt naming exactly one new barred brief (brief-gap-gap-gap-t0677-lane4, stamped NON-Clarity gate) against the 20:36 full scan; no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, below the lane 
+
+### ✅ 20261101-0930 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-15 20:36 PDT: full-queue claim evaluation, 27 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; no prior Team Naya Scorer row): receipt file exists; 27-brief block table inventoried (8 stamped NON-Clarity gates, 18 exit-7 parent-authorship, 1 exit-6 no-refile), zero mv/touch claimed; no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, matching the lan
+
+### ✅ 20261101-0930 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-15 20:21 PDT: full-queue claim evaluation, 0 claimed, 28 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; no prior Team Naya Scorer row): receipt file exists; full 28-brief sweep inventoried (27 script refusals + 1 seat-declined script fail-open on brief-gap-gap-t0677-lane4, caught by judgment, not bypassed); no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, 
+
+### ✅ 20261101-0910 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-15 18:40 PDT: 27-brief refusal inventory, all blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; no prior Team Naya Scorer row): receipt file exists; 27 refusals inventoried in four machine-backed classes (8 stamped gates, 6 header-barred, 11 script exit-7 parent-authorship, 1 exit-6 no-refile verdict), zero mv/touch claimed; no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score
+
+### ✅ 20261101-0910 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-15 18:35 PDT: full-queue claim evaluation, all blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; no prior Team Naya Scorer row): receipt file exists; full ORDERING evaluation with a 26-brief blocked inventory plus queue-delta vs the 17:34 stall (1 drained, 3 arrived); no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, below the lane self-score 9.3. Wh
+
 ### ✅ 20261101-0900 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Gate-stall run 2026-11-01 08:54 PST: full-queue claim evaluation, 0 claimed, 31 blocked
@@ -37966,6 +38002,24 @@ _Last updated: 2026-11-01 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ 20261101-0930 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap-t0593 lane 4: stale sub-gap (a) + genre-selection arm dry-fire-killed with proof
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (7691 bytes); staleness proof byte-exact - auto-retrieval/arm_adaptive_t0603.py sha256 prefix c661cbc7586893fb and sealed-prereg-adaptive-t0603.md prefix 791b374c078c9816 both match the receipt seals exactly; prereg-genreselect-gap0593
+
+### ✅ 20261101-0910 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** Gap-t0598 lane 4: STALE-NO-EXECUTION disposition (task already closed by t0603)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep; no prior Team Naya Scorer row): receipt file exists; staleness proof byte-exact - auto-retrieval/arm_adaptive_t0603.py sha256 prefix c661cbc7586893fb matches the t0603 sealed seal, sealed-prereg-adaptive-t0603.md and results-t0603-adaptive.json exist, t0603-lane4.md receipt exists, all dated 2026-10-
+
+### ✅ 20261101-0910 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-t0593 lane 4: restored per-task firing + dry-fired top-claim-max arm
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; auto-retrieval/arm_docclaim_gap0593.py sha256 prefix 6b2844d5ecbcb2ac matches the sealed seal exactly; results-gap0593-docclaim.json sha16 0f61ccdf4702fb85 matches exactly; verdict INFORMATIVE-PARTIAL applied by the frozen rule, and t
 
 ### ✅ 20261101-0730 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
