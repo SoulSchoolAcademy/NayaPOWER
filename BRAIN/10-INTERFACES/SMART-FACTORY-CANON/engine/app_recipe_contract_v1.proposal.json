@@ -1,0 +1,100 @@
+{
+  "contract": "NAYA_APP_RECIPE_V1",
+  "status": "PROPOSAL_NOT_RATIFIED_NOT_PRODUCTION_PROVEN",
+  "version": 1,
+  "source_precedence": [
+    "PROTOCOL.md",
+    "AGENTS.md",
+    "NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md",
+    "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
+    "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.human.md",
+    "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json",
+    "current Project Intelligence and exact current source"
+  ],
+  "parts": {
+    "index_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json",
+    "store_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+    "allowed_new_build_status": "canonical",
+    "must_exist_in_store": true,
+    "do_not_delete_historic_part_refs": true,
+    "note": "eligible means structurally selectable, not independently qualified"
+  },
+  "required_keys": [
+    "contract",
+    "version",
+    "build_status",
+    "project_intelligence",
+    "recipe",
+    "parts",
+    "shell",
+    "data",
+    "gate"
+  ],
+  "statuses": [
+    "draft",
+    "release_candidate"
+  ],
+  "scene_fields": [
+    "id",
+    "human_job",
+    "hero",
+    "context",
+    "primary_action_id",
+    "secondary_action_id",
+    "ambient",
+    "part_ids",
+    "data_refs",
+    "states",
+    "next_screen"
+  ],
+  "max_context": 3,
+  "states": [
+    "loading",
+    "ready",
+    "empty",
+    "error",
+    "denied",
+    "offline",
+    "success"
+  ],
+  "required_viewports": [
+    [
+      320,
+      700
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "gate_dimensions": [
+    "visual",
+    "functionality",
+    "intelligence",
+    "honesty",
+    "performance",
+    "reliability",
+    "accessibility",
+    "craft"
+  ],
+  "preflight_limits": "Machine checks shape/lifecycle references, not actual frontend beauty, source auth, release approval or production health",
+  "no_go": [
+    "retired/superseded/missing part",
+    "unwired primary action in release candidate",
+    "missing independent reviewer",
+    "unknown privacy grant",
+    "unproven LIVE/earnings claims",
+    "source and deployment mismatch",
+    "mobile primary action obscured"
+  ],
+  "draft_policy": "May contain explicit UNKNOWN and unwired actions; they must remain not-verified, never called live.",
+  "release_candidate_policy": "Requires positive evidence pointers for actual services, permissions, visual/accessibility test, cross-account denial, independent verdict and exact version. Preflight still requires independent verification."
+}
