@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-10-31 22:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 01:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30204,6 +30204,24 @@ _Last updated: 2026-10-31 22:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261031-1750 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor queue sweep stall receipt - 31 briefs, none claimable by this seat
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4032 bytes, sha256 8b0ccd436cf38b61ffe91420ef33baae8404b59be9b3b37409f2dd7c73c86764); brief-queue root holds exactly 31 brief-*.md files and the receipt's named list matches that set exactly (31/31, no diffs either way); twelve-lane-rotation.json queued length is 31, matching; prior stall recei
+
+### ✅ 20261031-1646 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor queue sweep stall receipt - 31 briefs, none claimable by this seat
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4404 bytes, sha256 1dc2d11d14def7b820a8578cf11b1b7317315e8036938c93e3da48a0d2a7710e); brief-queue root holds exactly 31 brief-*.md files and the receipt's named list matches that set exactly (31/31, no diffs either way); twelve-lane-rotation.json queued length is 31, matching. NOT PHANTOM. Scor
+
+### ✅ 20261031-1540 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor queue sweep stall receipt - 31 briefs, none claimable by this seat
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4404 bytes, sha256 d38abd77fb8bc8fad9d3fc2428b38c84f71d448eac929daa8da783e74c8afbca); brief-queue root holds exactly 31 brief-*.md files and the receipt's named list matches that set exactly (31/31, no diffs either way); twelve-lane-rotation.json queued length is 31, matching. NOT PHANTOM. Scor
 
 ### ✅ 20261031-1435 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
