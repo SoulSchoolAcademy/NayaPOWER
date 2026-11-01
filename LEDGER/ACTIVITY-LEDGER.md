@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 14:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30244,6 +30244,12 @@ _Last updated: 2026-11-01 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261101-0540 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 05:39 PST: full 31-brief queue evaluated, 0 claimed, queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior independent scorer row): receipt file exists (sha256 ee1e6bffd6754e553a775f39e638aaf67fb08826418fc33258151e807c2c8146); brief-queue/ still holds exactly 31 unclaimed brief-*.md files matching the receipt's 31 listed names; breakdown sums correctly (29 exit-7 parent-authorship + 2 barred = 31)
 
 ### ✅ 20261101-0440 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
