@@ -1,0 +1,128 @@
+{
+  "scorecard_id": "NAYA-INTERFACE-QUALITY",
+  "version": "1.0.0",
+  "scope": "One NayaNET app, journey, or bounded interface change",
+  "status": "proposed-app-scoped-evaluation",
+  "authority_note": "This instrument does not amend or compete with the ratified NayaPOWER System Scorecard. Project-specific contracts and Human Director authority remain higher.",
+  "scoring_rules": {
+    "scale": "0-10, evidence-based",
+    "minimum_per_dimension": 9.0,
+    "aaa_per_dimension": 9.5,
+    "aspiration": 10.0,
+    "unknown": "UNSCORED is not zero, pass, or implied readiness; name the missing evidence and owner.",
+    "aggregation": "Do not use an average to conceal a dimension below threshold or a failed hard gate. Every dimension is judged independently.",
+    "evidence_required": [
+      "exact repository commit or deployed version",
+      "scope and method of evaluation",
+      "test, observation, screenshot, metric, or reproducible evidence",
+      "verifier identity or role",
+      "known limitations and unresolved gaps"
+    ],
+    "independence": "The implementer may submit a provisional score. An independent reviewer must reproduce critical evidence before release recommendation."
+  },
+  "dimensions": [
+    {
+      "id": "human_value",
+      "name": "Human value",
+      "question": "Does this materially improve the user's world or accomplish a meaningful job?",
+      "evidence": ["task completion", "user outcome", "effort/error reduction", "measured or directly observed benefit"],
+      "blockers": ["No concrete user job", "Feature exists only to fill a dashboard or template"]
+    },
+    {
+      "id": "purpose_clarity",
+      "name": "Purpose and clarity",
+      "question": "Can the user understand where they are, what matters, what they can do, and what happens next?",
+      "evidence": ["first-glance review", "task walkthrough", "labels and hierarchy", "comprehension test"],
+      "blockers": ["Primary purpose ambiguous", "Primary action unclear or misleading"]
+    },
+    {
+      "id": "information_architecture",
+      "name": "Information architecture",
+      "question": "Are rooms, objects, navigation, journeys, hierarchy, and screen sequence logical?",
+      "evidence": ["PI-to-screen traceability", "journey map", "navigation test", "findability test"],
+      "blockers": ["Dead-end route", "Duplicated source of truth", "Essential object cannot be found"]
+    },
+    {
+      "id": "visual_identity",
+      "name": "Visual identity and craft",
+      "question": "Does the surface feel unmistakably Naya, coherent, premium, precise, and alive without visual noise?",
+      "evidence": ["rendered desktop and mobile captures", "canonical part provenance", "token audit", "state/interaction visual review"],
+      "blockers": ["Canonical visual law violated", "Readability reduced by glow/motion", "Material grammar incoherent"]
+    },
+    {
+      "id": "interaction_causality",
+      "name": "Interaction and causality",
+      "question": "Does every visible control behave as expected and produce an observable, recoverable result?",
+      "evidence": ["control-to-capability trace", "keyboard/touch walkthrough", "success/failure/retry tests", "receipt or observed state"],
+      "blockers": ["Dead or false control", "Success shown without real success", "Duplicate/destructive action unsafe"]
+    },
+    {
+      "id": "intelligence_usefulness",
+      "name": "Intelligence and usefulness",
+      "question": "Are summaries, rankings, recommendations, and insights relevant, explainable, timely, and actionable?",
+      "evidence": ["source and derivation", "ranking explanation", "user task relevance", "decision usefulness"],
+      "blockers": ["Fabricated insight", "Unexplained recommendation presented as fact", "Score mistaken for authorization"]
+    },
+    {
+      "id": "truth_privacy_safety",
+      "name": "Truth, privacy, and safety",
+      "question": "Are data, authority, provenance, freshness, permissions, and risks represented and enforced correctly?",
+      "evidence": ["authorization tests", "source/freshness checks", "RLS/API evidence", "negative/unauthorized path tests"],
+      "blockers": ["Unauthorized access", "Fake liveness or demo data presented as real", "Sensitive information leak", "Unclear destructive consequence"]
+    },
+    {
+      "id": "accessibility_inclusion",
+      "name": "Accessibility and inclusion",
+      "question": "Can people with differing abilities and input modes understand and operate the app?",
+      "evidence": ["WCAG 2.2 AA audit", "keyboard/screen-reader test", "contrast and target-size checks", "zoom/reflow test", "reduced-motion test"],
+      "blockers": ["Critical journey unavailable to keyboard/assistive tech", "Focus obscured", "Critical text/control unreadable"]
+    },
+    {
+      "id": "responsive_performance",
+      "name": "Responsive quality and performance",
+      "question": "Does it work beautifully across actual viewports, orientations, input modes, and runtime conditions?",
+      "evidence": ["320px narrow reflow", "390px phone", "tablet and desktop captures", "keyboard/safe-area test", "Core Web Vitals or explicit lab evidence"],
+      "blockers": ["Clipped or obscured primary action", "Unintended horizontal page scroll", "Unusable narrow layout", "Performance regression harms task completion"]
+    },
+    {
+      "id": "reliability_evolution",
+      "name": "Reliability and evolution",
+      "question": "Is it tested, maintainable, reusable, observable, reversible where needed, and able to improve without duplicate truth?",
+      "evidence": ["automated test results", "failure recovery", "component registry references", "deployment/rollback receipt", "learning/owner handoff"],
+      "blockers": ["No reproducible test", "Unsafe release path", "Unowned runtime behavior", "No way to recover from critical failure"]
+    }
+  ],
+  "hard_gates": [
+    "No fabricated or falsely-live data",
+    "No unauthorized read or write path",
+    "Every visible action has a real capability and recovery behavior",
+    "Primary user journey is complete and independently tested",
+    "No clipping or inaccessible critical interaction at required viewports",
+    "WCAG 2.2 AA target and stricter Naya house control-size rule are verified",
+    "Existing required Smart Factory features pass the existing 13-feature contract",
+    "Human approval is recorded wherever the governing project or governance contract requires it",
+    "Deployment and production claims are backed by exact receipts and independent observation"
+  ],
+  "release_decision": {
+    "READY": "Every dimension is at least 9.0, every hard gate passes, and the independent verifier recommends release.",
+    "AAA": "Every dimension is at least 9.5 and all hard gates pass.",
+    "BLOCKED": "Any hard gate fails, a critical fact is unknown, or any dimension is below 9.0.",
+    "NOT_APPLICABLE": "Allowed only with a written reason and owner; it cannot be used to conceal missing work."
+  },
+  "report_fields": [
+    "app_id",
+    "journey_or_change_id",
+    "commit_sha",
+    "environment",
+    "viewport_matrix",
+    "dimension_scores",
+    "evidence_refs",
+    "hard_gate_results",
+    "known_limitations",
+    "corrective_actions",
+    "independent_verifier",
+    "human_approval_ref",
+    "release_recommendation",
+    "observed_outcome"
+  ]
+}
