@@ -1,0 +1,225 @@
+{
+  "schema": "nayanet-blueprint/1",
+  "title": "THE NAYANET BLUEPRINT V1",
+  "date": "2026-11-01",
+  "tongues": ["human", "ai", "machine"],
+  "statuses": {
+    "design_dna": {"status": "RATIFIED", "by": "Shawn", "date": "2026-10-31"},
+    "value_table": {"status": "LOCKED", "date": "2026-10-31", "delta_vs_sn1905_filed": "sale 50 -> 100"},
+    "three_minute_mission": {"status": "RULED", "date": "2026-10-31"},
+    "dream_team": {"status": "ADOPTED", "date": "2026-10-31"},
+    "wowie_rule": {"status": "STANDING", "date": "2026-11-01"},
+    "interface_framework": {"status": "PROPOSED", "author": "Nitro", "note": "Shawn-endorsed direction; NOT ratified; DNA governs conflicts until ratification"},
+    "color_layers_reconciliation": {"status": "PROPOSED"},
+    "reading_screen_class": {"status": "PROPOSED"}
+  },
+  "philosophy": {
+    "ten_star_holistic": {"dimensions": ["look", "feel", "vibe", "logic", "intelligence", "effectiveness", "usefulness", "helpfulness"], "rule": "score = min(dimensions); any dimension < 10 => whole < 10"},
+    "alive": "Surfaces move only on real events and direct touch; decorative motion is a defect.",
+    "precious_data_principle": "Every datum is presented like the most precious data in the universe; every pixel is an act of respect. Operational form: SN-0822 + Vitality Law.",
+    "os_for_naya": {"human_input": ["word", "tap", "wish"], "rule": "Naya does the valuable work; the human receives the 10-star output; machinery is never the human's to run."},
+    "franchise_law": "One canonical component per element type, imported everywhere; approved pages (Life with Naya, certificate page) are the element library; fix means recomposition of the existing build, never a substitute."
+  },
+  "tokens": {
+    "spacing_scale_px": [4, 8, 12, 16, 24, 32, 48, 64, 96],
+    "spacing_rule": "Only values in spacing_scale_px are permitted (Framework F3, PROPOSED).",
+    "type": {
+      "body_floor_px": 16,
+      "ui_label_floor_px": 14,
+      "max_sizes_per_screen": 3,
+      "hero_range_px": [48, 72]
+    },
+    "geometry": {
+      "board_ratio": "16:9",
+      "board_exceptions": ["strip", "tile"],
+      "button_shape": "pill",
+      "touch_target_min_px": 44
+    },
+    "contrast_min_ratio": 4.5,
+    "color": {
+      "ground": "obsidian black with depth; white text; light backgrounds forbidden",
+      "spectrum_walk": ["magenta", "purple", "blue", "green", "gold"],
+      "spectrum_rule": "Richest first (magenta leads); one pass per page; never the same color twice adjacently; one color job per element.",
+      "ignition": "White at rest; ignites in its own color on touch/hover/focus; no halo at rest (jewel orb carries color as solid identity).",
+      "truth_states": {"live_shown": "gold", "proven": "green"},
+      "layers_proposal": {
+        "rule": "Two color layers, never mixed silently (Reconciliation R1, PROPOSED).",
+        "identity_layer": "Which thing this is: one fixed jewel per statistic, forever.",
+        "state_layer": "What it means now: framework semantics and DNA truth states ride on top; the layer speaking must be legible."
+      },
+      "identity_jewels": {
+        "smart_score": {"color": "gold", "hex": "#FFB800"},
+        "smart_notes": {"color": "magenta", "hex": "#E93FD8"},
+        "creating": {"color": "amethyst", "hex": "#8B3DFF"},
+        "messages": {"color": "sapphire", "hex": "#2E7CF6"},
+        "link_clicks": {"color": "emerald", "hex": "#00D97E"},
+        "joins": {"color": "deep sapphire", "hex": "#2743E8"},
+        "invites": {"color": "ruby", "hex": "#FF2E4D"}
+      },
+      "magnitude_ramp_within_one_series": ["ruby", "amber", "gold", "emerald", "sapphire", "deep sapphire", "amethyst", "magenta"],
+      "state_semantics_proposed": {"score": "gold", "positive": "green", "negative": "red", "never": "gold-on-gold"}
+    }
+  },
+  "vocabulary": {
+    "screen": "One viewport, one complete thought; the unit of experience and verification.",
+    "hero": "The single element the screen exists to show; exactly 1 per screen.",
+    "supporting": "Context serving the hero; count 0-3; never competes.",
+    "action": "A user verb; 1-2 primary; bottom zone.",
+    "ambient": "Quiet metadata at the edges.",
+    "part": "A pre-made element/function with a contract.",
+    "blessed_part": "Part scorecarded >= 9.0 once at part level; instances inherit proof, sample-checked.",
+    "recipe": "A screen's build contract: slots -> blessed part IDs + data bindings by contract name.",
+    "shell": "The one chassis (Smart Bar system) every app wears.",
+    "gate": "The executable checklist run on the assembled screen; fail => no ship.",
+    "bullseye": "The written finish line recorded before work begins.",
+    "proof": "Attached evidence: render, measurement, or reconciliation.",
+    "done_proven": "Proof verified by a checker who is not the maker."
+  },
+  "part_schema": {
+    "required_fields": ["id", "name", "five_questions", "interface", "data_contracts", "states", "anatomy_ref"],
+    "five_questions": ["what_it_is", "purpose", "how_it_works", "why_it_matters", "what_makes_it_10_star"],
+    "states_designed": ["rest", "hover", "pressed", "selected", "loading", "empty", "error"],
+    "blessing_record_fields": ["score", "scorer", "date"],
+    "part_states": ["BLESSED", "EXISTS-UNPROVEN", "MISSING"],
+    "rules": [
+      "Parts are imports, never copies; a redrawn part is a defect.",
+      "Every correction becomes a regression test in the gate's known-bad set.",
+      "Blessing happens in the Reference Parts Gallery with phone + laptop renders and measurements.",
+      "Proof inheritance reservation: on first citizen pages the full gate runs per instance until assembly-scorecard reliability is itself proven."
+    ],
+    "first_stock_parts": [".naya-btn", ".naya-board", ".naya-chip-icon", ".naya-composer", ".naya-input", ".naya-bar", ".naya-tabs", ".naya-toggle", ".naya-slider", ".naya-face", ".naya-sheet", ".naya-toast", ".naya-play-disc", ".naya-empty-frame", ".naya-skeleton", "smart-stats-blocks x8"]
+  },
+  "recipe_schema": {
+    "required_fields": ["app", "screen_id", "class", "job", "slots", "data_bindings", "states"],
+    "slot_rule": "Slots name blessed part IDs, never display names.",
+    "binding_rule": "Data bindings reference contract names from the single bindings registry; a name means one thing everywhere.",
+    "hard_fail": "A recipe naming an unknown or unblessed part ID stops assembly; no override lane."
+  },
+  "screen_schema": {
+    "required_fields": ["app", "screen_id", "class", "job", "hero", "supporting", "actions", "ambient", "data_bindings", "states", "phone_viewport", "laptop_viewport", "bullseye"],
+    "classes": {"APP": "viewport-fits, no internal scroll", "READING": "scrolls by design; section boundaries satisfy the Screen Principle (PROPOSED class)"},
+    "layers": {"hero": {"count": 1, "zone": "center", "size_px": [48, 72]}, "supporting": {"count_max": 3}, "actions": {"count_max_primary": 2, "zone": "bottom"}, "ambient": {"zone": "edges"}},
+    "build_process_10_steps": ["define job", "choose hero", "place hero", "add supporting", "add actions", "check fit", "check hierarchy", "check beauty", "verify", "ship"],
+    "mobile_first": "Phone viewport specified and verified first; a screen failing at phone width cannot score 10; laptop designed second and must also be great.",
+    "interrogation": ["What does it say?", "What does it do?", "How is it saying it?", "Is it doing it in the best possible way?", "Is there a better way to present it?", "How much real estate does it take, and does its place match how much it matters?"]
+  },
+  "gate_checklist": [
+    {"id": "G1", "check": "Obsidian ground: computed background is the obsidian token; white text; no white background in the surface", "kind": "computed-style"},
+    {"id": "G2", "check": "Living depth: interactive elements show layered construction (rim/elevation present)", "kind": "computed-style"},
+    {"id": "G3", "check": "Ignition: white/no halo at rest; ignites in own color on touch (orb identity exception: solid color, halo only on touch)", "kind": "state-render"},
+    {"id": "G4", "check": "Spectrum walk: no adjacent color repeat; one color job per element; walk order respected", "kind": "computed-style"},
+    {"id": "G5", "check": "Geometry: touch targets >= 44px; boards 16:9 (named strip/tile exceptions); buttons are pills", "kind": "measurement"},
+    {"id": "G6", "check": "Type floors: body >= 16px; UI labels >= 14px; <= 3 type sizes on screen", "kind": "computed-style"},
+    {"id": "G7", "check": "Spacing: every spacing value in {4,8,12,16,24,32,48,64,96}", "kind": "computed-style"},
+    {"id": "G8", "check": "Motion truth: every animation driven by a real ledger event or state; decorative motion fails", "kind": "event-audit"},
+    {"id": "G9", "check": "Honesty: no dead buttons; no tappable SOON; unwired features render honest frames; no fake/SAMPLE data outside labeled specimens", "kind": "interaction-audit"},
+    {"id": "G10", "check": "State completeness: rest/hover/pressed/selected/loading/empty/error all render truthfully", "kind": "state-render"},
+    {"id": "G11", "check": "Family: every element byte-identical to the Factory part (import, not copy); sibling list attached", "kind": "byte-compare"},
+    {"id": "G12", "check": "Hierarchy: exactly 4 layers; hero count = 1; supporting <= 3; primary actions <= 2", "kind": "structure-audit"},
+    {"id": "G13", "check": "Viewport: APP class fits at phone and laptop widths; READING class scrolls by design with section boundaries", "kind": "render"},
+    {"id": "G14", "check": "Contrast >= 4.5:1 for all text", "kind": "measurement"},
+    {"id": "G15", "check": "The Shawn test: a reviewer can honestly check 'Shawn would say oh yeah, that's awesome'", "kind": "human-review"},
+    {"id": "S1", "check": "Reconciliation: displayed score == value-table formula applied to displayed counts (worked test: 75 + 4*25 + 0*35 = 175)", "kind": "computation"},
+    {"id": "S2", "check": "Stats honesty: unwired metrics render honest frames; pending rows count 0 and the surface says so", "kind": "render"},
+    {"id": "S3", "check": "Matrix integrity: WHEN x WHAT x WHERE axes locked; resting state is everything; no Everything button", "kind": "structure-audit"},
+    {"id": "S4", "check": "Levels display: never a bare distance; points-to-go + pace estimate (pace = trailing 7-day earned average)", "kind": "render"}
+  ],
+  "value_table": {
+    "status": "LOCKED 2026-10-31",
+    "rows": {
+      "birth": {"points": 75, "rule": "once, at joining"},
+      "like_love": {"points": 1},
+      "comment": {"points": 3},
+      "save": {"points": 5},
+      "share_internal": {"points": 5},
+      "share_external": {"points": 10},
+      "invite_sent": {"points": 25, "rule": "first invite per person only, in-system; cannot be farmed"},
+      "post": {"points": 25},
+      "smart_note": {"points": 35},
+      "membership": {"points": 40, "rule": "once"},
+      "join": {"points": 50, "rule": "invite 25 + join 50 = 75 = exactly one birth"},
+      "sale": {"points": 100, "rule": "crown of the table; hardest signal to fake"}
+    },
+    "formula": "SCORE = 75 + 25*posts + 35*notes + 5*saves + 25*invites + 50*joins + 40*membership(0|1) + 100*sales + 1*likes + 3*comments + 5*shares_internal + 10*shares_external",
+    "guards": ["Harm earns 0; sustained harm drives points negative (Law of One / no-harm).", "Unwired rows count 0 and the surface says so.", "Every conversion records its origin; until captured, insights stay honest aggregates."]
+  },
+  "intelligence_layer": {
+    "sn0822": "Every number ships as magnitude + shape + direction + a human sentence, or it doesn't ship.",
+    "vitality_law": "No claim without its graph; every source card carries a living mini-graph or an honest prescriptive empty frame.",
+    "flat_data_law": "When nothing moved, the chart says so on its face.",
+    "zero_state_law": "An empty state names the first action and its value, with the action present.",
+    "answer_diagnose_prescribe": "Every stats view answers its question, diagnoses what it sees, prescribes the one next move.",
+    "blocks": ["Pulse Strip", "Trend Panel", "Mix Donut", "Journey Funnel", "Faces Board", "Insight Feed", "Heat & Streaks", "Health Gauge"],
+    "per_source_grammars": {"creating": "steps", "notes": "constellation", "likes": "ripples", "shares": "branches", "invites": "funnel", "sales": "climb", "membership": "closing ring", "all_currents": "the River"},
+    "matrix": {"when": ["Live", "Hour", "7 days", "30 days", "All time"], "what": ["Activity", "Engagement", "Points", "Growth", "Money"], "where": ["This world", "Pages", "Rooms", "Smart Link"], "resting_state": "The unfiltered state IS everything; there is no Everything button."},
+    "event_ledger": {"event_fields": ["actor", "kind", "world", "source", "timestamp"], "rule": "Aggregates always derived; attribution is a field, never invented."},
+    "placement": {"dashboard": "all 8 blocks", "project_intelligence": ["Health Gauge (filled vs proven as a living graph)", "Trend Panel"], "every_other_door": "Pulse Strip minimum"}
+  },
+  "inventory": {
+    "source": "Parts Map v1, measured 2026-10-31",
+    "unique_parts": {"needed": 109, "blessed": 67, "exists_unproven": 32, "missing": 10},
+    "part_instances_26_apps": {"total": 478, "blessed": 383, "exists_unproven": 83, "missing": 12},
+    "missing_parts_build_order": [
+      {"n": 1, "part": "Briefing strip", "apps": ["Dashboard", "Intel Today", "Reports"]},
+      {"n": 2, "part": "Living narrator", "apps": ["Dashboard"]},
+      {"n": 3, "part": "Matrix selector", "apps": ["Dashboard"]},
+      {"n": 4, "part": "Scheduled-send surface", "apps": ["Smart Mail"]},
+      {"n": 5, "part": "Nutshell guide surface", "apps": ["Library"]},
+      {"n": 6, "part": "Kanban column set", "apps": ["Projects"]},
+      {"n": 7, "part": "Reference Parts Gallery", "apps": ["Smart Factory"]},
+      {"n": 8, "part": "Affiliate / ambassador panel", "apps": ["Smart Growth"]},
+      {"n": 9, "part": "Screen-share surface", "apps": ["Smart Meet"]},
+      {"n": 10, "part": "Certificate board", "apps": ["Certificate / Identity"]}
+    ]
+  },
+  "architecture": {
+    "pipeline": ["Project Intelligence", "Smart Factory", "Recipes", "Shell", "Gate", "Assembly", "Deploy", "Verify on served route"],
+    "shell": {"name": "Smart Bar system", "rule": "One main bar; top bar = app sections + related areas as quick tabs; bottom network bar identical on every page; search chrome-mounted, one wording network-wide; nobody makes their own bar."},
+    "paths": {
+      "citizen": "Trinity (Personal/Business/Space) born done at the Welcome walk; walk answers are the recipe; Factory is the add-on shop only; experienced time = walk + reveal.",
+      "team": "Factory path for the 26 apps; the 26 are the training set, the product is a person answering ten questions and getting their page."
+    },
+    "hosting": "Member pages are routes in the one estate on the network subdomain; no external hosting step."
+  },
+  "assembly_stages": [
+    {"stage": 0, "name": "Stock the Factory", "work": "Build the 10 missing; bless the 32 unproven in the Reference Parts Gallery", "exit": "109/109 blessed"},
+    {"stage": 1, "name": "Write the 26 recipes", "work": "Each lead converts her own apps (Nitro 1-9, Resolve 10-18, Power 19-26); gaps surface as Factory jobs", "exit": "Machine recipes naming only blessed IDs for every screen"},
+    {"stage": 2, "name": "Assembler + gate", "work": "Recipe in -> assembled screen on a preview route -> gate report out; assembler hard-fails on unknown/unblessed IDs; gate self-tests against the known-bad set", "exit": "Line runs end to end on demand"},
+    {"stage": 3, "name": "Timed honest pilot", "work": "One screen end to end, stopwatch recipe-locked -> gate-passed -> sister-scorecard >= 9; first true number published whatever it is", "exit": "A measured baseline exists"}
+  ],
+  "time_split_steady_state": {"mapping_answers_to_slots": "seconds (verbatim)", "assembly_min": 1, "gate_min": 1, "render_phone_and_laptop_min": "1-2", "scorecard_and_landing": "batchable", "target_start_min": 10, "goal_min": 3, "staircase_min": [60, 30, 10, 3]},
+  "pilot": {"standard": "The director's page first, stopwatch running, in the house; nothing ships for everyone until it delights the director.", "named_timed_pilot": "Smart Lists", "pilot_as_shawns_page": "Shawn's call, not seat consensus", "citizen_bullseye": "Does Sarah finish the walk unaided? (Sarah = ICP #1, solo service-business owner; everybody is the market, Sarah is the door.)"},
+  "production": {
+    "principles": ["Nobody's job is watching", "Making and checking are never the same hands", "The queue is the clock", "Every seat has a bullseye, a proof, and a kill criterion"],
+    "roles": [
+      {"role": "Builders x3", "cadence": "queue-driven", "staffing": "Lead lanes: Nitro apps 1-9, Resolve apps 10-18, Power apps 19-26"},
+      {"role": "Verifiers x2 (floating)", "cadence": "same pass as the build"},
+      {"role": "Integrator", "cadence": "2h landing sweep"},
+      {"role": "Stockkeeper", "cadence": "daily", "proof": "registry = PI = live pages agree"},
+      {"role": "Comms Runner", "cadence": "15m"},
+      {"role": "Judges x2 (rotating)", "cadence": "event-driven", "proof": "different-seat scorecards"},
+      {"role": "Mechanic", "cadence": "event + daily"},
+      {"role": "Census", "cadence": "daily", "proof": "verified outcomes per wake-up; target value ratio < 60:1"},
+      {"role": "Keeper", "cadence": "2h lock-in + on-finish"},
+      {"role": "Director", "cadence": "daily rhythm", "proof": "escalates only true gates"}
+    ],
+    "chameleon_clause": {"rule": "Anyone can become anyone at any time; capability + availability decide; nobody waits on anybody.", "never_transfers": ["maker != checker", "Shawn's true gates: money, credentials, private mail, destruction, constitutional ratification"]},
+    "brief_format": ["bullseye", "exact sources", "exact deliverable", "proof standard", "blocked move", "scope fence"],
+    "verification": "Inline: checker != maker, same pass, both named. A fill closes on an inline verifier given only the artifact and criteria.",
+    "scorecard_law": "Self-score >= 9.0 by your own accord first; then BOTH other lead seats via Smart Mail 'SCORECARD THIS' + live link + requirements, plus a board mention; fix and repeat until both score 9+; only then to Shawn.",
+    "clocks": {"disposition": "verified >= 9.0 lands within 2h; +2h escalates to Integrator; +4h is the scoreboard's named weakest point", "communication": "respond <= 15m; nothing sits > 30m; > 1h = emergency named to Shawn + holder + board in the same pass"},
+    "wowie_rule": "Never hand Shawn anything until you would honestly say: wowie, this is awesome, you gotta check this out, this is epic, you're going to love it. If that is not how you feel, it does not get sent.",
+    "locked_in_declaration": "At activation and every 2h: think, choose best, act, prove, learn; re-read the source, never the summary.",
+    "delta_only": "State tracked once; passes read only changes; jobs earn cadence by outcomes, never by receipts about unchanged state."
+  },
+  "open_seams": [
+    "Palette reconciliation: obsidian baseline contested between sources; teal/indigo/lime legacy-vs-lawful unsettled; never quote a stale-hex count as settled.",
+    "Token-swap verification: Nitro's 65-family table lives on her machine only; blocked until it lands in a shared store.",
+    "Framework ratification: a Shawn gate; until then DNA governs conflicts.",
+    "SN-1905 amendment filing: note prepared 2026-10-31 (sale 50 -> 100); door filing owed.",
+    "Stage 3 first true number: owed.",
+    "Integrator landing pen: single-writer bottleneck measured, not solved.",
+    "Stars 6-9: unnamed; Shawn's to name.",
+    "Two Shawn decisions on record: pilot-as-his-page; the annex-verification word."
+  ]
+}
