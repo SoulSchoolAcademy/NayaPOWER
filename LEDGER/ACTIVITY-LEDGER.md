@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 16:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,12 @@ _Last updated: 2026-11-01 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-0750 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-01 07:48 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior independent scorer row): receipt file exists (4544 bytes, sha256 983ee0c1...); brief-queue/ holds exactly the 31 brief names listed in the receipt (31/31, no diffs either way); breakdown sums correctly (29 exit-7 parent-authorship + 2 barred = 31); blocked set identical to prior stall receipt
+
 ### ✅ 20261101-0730 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Gate-stall run 2026-10-15 17:02 PDT: full-queue claim evaluation, 0 claimed, 23 blocked
@@ -33319,6 +33325,12 @@ _Last updated: 2026-11-01 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ 20261101-0740 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure scorer-20261015-0620-lane8: spec-vs-candidate byte cross-check R1-R4
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): spec veracity-verdict-t0568.md sha256 30645fe440818a585fcd84df7e548ac504854fe4be8d426ebc70077ed59397b6 BYTE-EXACT; candidate smart_note_v2.py sha256 baf9284b7e1f8273551f298383a5058ce39ac3bbfc20d6d4d94c2bd5f0cf79e2 BYTE-EXACT to t0042 pin; RETRIEVAL_RELE
+
 ### ✅ 20261101-0500 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Gap closure t0426: red half re-derived in-session + green half re-pinned and byte-reproduced (retrieval-auth-gate EQ probe)
@@ -36044,6 +36056,12 @@ _Last updated: 2026-11-01 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ 20261101-0740 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure scorer-20261015-0610-lane5: infra packet-2 re-pin + quote byte-check
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): packet infra-packet-2-bodyhash-t0769-lane5.md sha256 7451021956ed983363c0000d5b03fd6c02f6285296c3e618a739af32c76b7991 BYTE-EXACT to receipt pin (7956 bytes); repin note and quote-check transcript both on disk; packet embeds comment sha 260d8893; parent 
 
 ### ✅ 20261101-0730 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -42221,6 +42239,12 @@ _Last updated: 2026-11-01 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ 20261101-0740 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure scorer-20261015-0620-lane11: full 36-receipt frame re-verification of CLEAN verdict
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): all pins BYTE-EXACT - 36-frame corpus pin d670d6ac41ca928fd5641f518b5de825ad5bab417dc724f431afa68be21d623d, rerun36 results 4cb4074e6b6cae465912859a271a85f5a27f313d334329786f9b10dbdbce2aae, parent corpus pin acf59d71e799552fabac3ce7d052dccc5d383c9602374
+
 ### ✅ 20261101-0630 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Gap closure scorer-20261015-0550-lane11: second-seat re-judge of 12 metric_audit_t0822 rows
@@ -45298,6 +45322,12 @@ _Last updated: 2026-11-01 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261101-0740 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure scorer-20261015-0620-lane1: t0541 zero-finding re-derivation + dispatch-log premise
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): instrument retrieval-hitrate-t0557.py sha256 302855cc312da2c50b1ff1896eb676766a28921df7f4b5ea71b5460150350a57 BYTE-EXACT to t0557 pin; pinned measurement retrieval/hitrate_measurement_t0557.json sha prefix c916ef028732c8b0 matches receipt pin c916ef02..
 
 ### ✅ 20261101-0720 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
