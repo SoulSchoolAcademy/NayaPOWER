@@ -3,6 +3,8 @@
 **2026-10-31 · Shawn's design direction, interpreted as a bounded engineering interface · NOT RATIFIED · NOT DEPLOYED.**
 **Current owner:** existing Nitro / Resolve / Power Factory, Design DNA and Dashboard lanes. **No new renderer, database, component library, agent bus or Hub is authorized by this file.**
 
+**Experience companion:** `AI-INTERFACE-EXPERIENCE-OPERATING-DETAILS-V1.PROPOSAL.md` expands the screen-by-screen design grammar, Naya visual anatomy use, responsive/viewport composition, data/interaction truth, team handoffs, and evidence review. It is an additive proposal: the existing RECIPE, SCENE, PARTS, SHELL, DATA, GATE, schema, and preflight remain the single assembly path.
+
 ## What we are creating
 
 A human describes a useful goal. NayaPOWER supplies governed intelligence, identity, permission and continuity. NayaNET supplies one connected Personal/Business/Space world. The **existing Smart Factory** uses current approved parts to construct a beautiful, working, useful app, while an independent verifier proves the real result. This is a proposed **interoperability language**, not a competing implementation.
