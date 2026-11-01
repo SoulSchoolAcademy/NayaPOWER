@@ -1,0 +1,478 @@
+{
+  "contract_id": "NAYA-INTERFACE-BRIEF",
+  "contract_version": "1.0.0",
+  "status": "draft",
+  "project": {
+    "id": "nayanet-personal-world-example",
+    "name": "NayaNET Personal World — Illustrative Factory Brief",
+    "pi_ref": "Resolve the current Personal World Project Intelligence before dispatch",
+    "source_of_truth": "Current NayaNET PI, canonical design law, app data contracts, and verified repository/runtime state",
+    "owner": "Product owner to be confirmed during PI restoration"
+  },
+  "outcome": {
+    "primary_user": "A person organizing their own life, work, relationships, and interests",
+    "job": "See what matters now in their world and move naturally to the next useful action",
+    "success": "The person can identify the important current state, understand why it matters, and complete a permitted next action without searching across disconnected apps",
+    "non_goals": [
+      "Do not fabricate personal data, relationships, activity, recommendations, or scores",
+      "Do not claim private memory, automation, or cloud synchronization until the corresponding capability is verified",
+      "Do not duplicate canonical identity, events, notes, or ledger records"
+    ],
+    "measures": [
+      "Task completion on the primary Today journey",
+      "Time to locate the next relevant item",
+      "User comprehension of source and freshness",
+      "Error and recovery rate"
+    ]
+  },
+  "design_authority": {
+    "design_contract_ref": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
+    "design_standard_ref": "NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-STANDARD-V1.md",
+    "app_contract_ref": "Resolve the current NayaNET product boundary and Personal World PI before build",
+    "human_director_decisions": [
+      "Preserve the canonical Naya visual and interaction grammar",
+      "One dominant focal point per screen; use progressive disclosure",
+      "Do not claim a feature or data source is live without evidence"
+    ]
+  },
+  "app_shell": {
+    "navigation_model": "Shared NayaNET shell with contextual Personal World rooms; navigation is a projection, not a second source of truth",
+    "global_context": "The currently authenticated person and their authorized Personal World scope",
+    "search_policy": "Expose universal search only when the actual search capability is integrated and permission-aware; otherwise show a truthful unavailable or scoped state",
+    "persistent_elements": [
+      "Clear app identity and current room",
+      "Reachable primary navigation",
+      "Accessible global search entry when available",
+      "User-controlled account and settings access"
+    ]
+  },
+  "data_contracts": [
+    {
+      "id": "priority-items",
+      "entity": "Items requiring the person's attention",
+      "source_ref": "PI and canonical owner-scoped work-item source must be resolved before implementation",
+      "authority": "unknown",
+      "truth_state": "unknown",
+      "freshness": "Unknown until a verified read path and refresh policy are identified",
+      "owner_scope": "Authenticated owner only unless explicit sharing grants access",
+      "permission_ref": "Resolve current authorization/RLS contract before build",
+      "derivation": "Priority ranking must cite the source fields and ranking rule; no invented score",
+      "empty_state": "Nothing requiring attention is currently available from the connected source.",
+      "error_state": "The source could not be read. No items or counts are inferred.",
+      "privacy_class": "private"
+    },
+    {
+      "id": "connections",
+      "entity": "People and spaces the person is permitted to discover or manage",
+      "source_ref": "Resolve canonical people/space records and public/private search rules",
+      "authority": "unknown",
+      "truth_state": "unknown",
+      "freshness": "Unknown until current source and cache policy are proven",
+      "owner_scope": "Publicly discoverable fields plus explicitly authorized private relationship fields",
+      "permission_ref": "Resolve discovery, consent, and relationship authorization rules",
+      "derivation": "Match scores, if present, must expose real reasons and never imply consent or a connection",
+      "empty_state": "No discoverable connections are available in this scope yet.",
+      "error_state": "Connections could not be loaded. Existing relationships are not changed.",
+      "privacy_class": "private"
+    },
+    {
+      "id": "progress-summary",
+      "entity": "A summary of meaningful activity and progress",
+      "source_ref": "Resolve the canonical event/ledger/read model and exact aggregation windows",
+      "authority": "unknown",
+      "truth_state": "unknown",
+      "freshness": "Unknown until the source's update cadence is verified",
+      "owner_scope": "Owner-authorized aggregates only",
+      "permission_ref": "Resolve current owner-scope and field-level access rules",
+      "derivation": "Every metric must define units, time window, deduplication, and source",
+      "empty_state": "There is not enough verified activity to show this report yet.",
+      "error_state": "The report source is unavailable. No fallback or demo values are presented as real.",
+      "privacy_class": "private"
+    }
+  ],
+  "component_manifest": [
+    {
+      "piece_id": "NAYA-HRO-001",
+      "registry_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+      "role": "Reference hero composition for orientation and one dominant first-glance purpose",
+      "use_when": "A screen genuinely needs a prominent title/orientation block",
+      "avoid_when": "A task-first screen or compact mobile view would benefit from a direct focal object instead",
+      "registry_status": "reference",
+      "verification": "not_checked",
+      "override_policy": "Preserve the canonical specimen and adapt only its documented content slots"
+    },
+    {
+      "piece_id": "NAYA-BRD-001",
+      "registry_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+      "role": "Reference content board for a meaningful grouped surface",
+      "use_when": "Several related data elements need one coherent, readable context",
+      "registry_status": "reference",
+      "verification": "not_checked",
+      "override_policy": "Preserve the source material and interaction invariants"
+    },
+    {
+      "piece_id": "NAYA-BTN-009",
+      "registry_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+      "role": "Reference high-emphasis action button",
+      "use_when": "One consequential primary action deserves the strongest action treatment",
+      "registry_status": "reference",
+      "verification": "not_checked",
+      "override_policy": "Bind to a real action contract; do not use as decoration"
+    },
+    {
+      "piece_id": "NAYA-INP-008",
+      "registry_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+      "role": "Reference input well",
+      "use_when": "The person must enter or edit text",
+      "registry_status": "reference",
+      "verification": "not_checked",
+      "override_policy": "Preserve labels, validation, focus, keyboard, and input semantics"
+    },
+    {
+      "piece_id": "NAYA-INP-009",
+      "registry_path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json",
+      "role": "Reference select well",
+      "use_when": "The person must choose from a known, bounded set",
+      "registry_status": "reference",
+      "verification": "not_checked",
+      "override_policy": "Preserve accessible expanded, selected, disabled, and error states"
+    }
+  ],
+  "viewport_matrix": [
+    { "id": "narrow-320", "width": 320, "height": 640, "orientation": "portrait", "input_mode": "touch", "zoom_percent": 100 },
+    { "id": "phone-390", "width": 390, "height": 844, "orientation": "portrait", "input_mode": "mixed", "zoom_percent": 100 },
+    { "id": "tablet-768", "width": 768, "height": 1024, "orientation": "portrait", "input_mode": "mixed", "zoom_percent": 100 },
+    { "id": "desktop-1440", "width": 1440, "height": 900, "orientation": "landscape", "input_mode": "mixed", "zoom_percent": 100 },
+    { "id": "desktop-1920", "width": 1920, "height": 1080, "orientation": "landscape", "input_mode": "mouse", "zoom_percent": 100 }
+  ],
+  "screens": [
+    {
+      "id": "today",
+      "route": "/personal/today",
+      "job": "Help the person see the most important current item and decide what to do next",
+      "entry_context": "The person enters their Personal World or selects Today from the shared navigation",
+      "exit_condition": "The person opens an item, completes a permitted action, or moves to another room",
+      "back_behavior": "Return to the prior context without losing the selected item or unsaved work",
+      "first_view": {
+        "orientation": "Show the room identity and explain the current scope in one short line",
+        "focal_point": "The most important verified item requiring attention, with a reason and source freshness",
+        "supporting_items": [
+          "A concise summary of other waiting work",
+          "A clear last-updated/source indicator"
+        ],
+        "primary_action": "Open the highest-priority item",
+        "secondary_actions": ["Create a note, only when the real capture capability is wired"]
+      },
+      "sections": [
+        {
+          "id": "priority",
+          "purpose": "Present the single most relevant item and explain why it is first",
+          "priority": "focal",
+          "data_ref": "priority-items",
+          "disclosure_rule": "Show the reasoning summary first; expose source fields and history on demand"
+        },
+        {
+          "id": "waiting",
+          "purpose": "Show the remaining waiting items in a scannable list",
+          "priority": "supporting",
+          "data_ref": "priority-items",
+          "disclosure_rule": "Show a useful preview and open the full list when requested"
+        }
+      ],
+      "actions": [
+        {
+          "id": "open-priority",
+          "label": "Open item",
+          "intent": "Inspect the selected item and its evidence",
+          "actor": "Authenticated owner",
+          "scope": "The owner's permitted item scope",
+          "authority": "Must resolve the current read authorization and route contract before implementation",
+          "preconditions": ["The item exists in the canonical source", "The owner is permitted to read it"],
+          "effect": "Navigate to the canonical item detail view without duplicating the item",
+          "success_signal": "The exact item and its source metadata are visible",
+          "failure_recovery": "Show a truthful unavailable/forbidden state and preserve navigation context",
+          "reversible": true,
+          "requires_confirmation": false
+        },
+        {
+          "id": "create-note",
+          "label": "Create note",
+          "intent": "Capture a thought related to the current work",
+          "actor": "Authenticated owner",
+          "scope": "The owner's private note scope unless explicitly shared",
+          "authority": "Must resolve the canonical Smart Note capture and owner-scope authorization before implementation",
+          "preconditions": ["The note capture capability is available", "The user has permission to create a note"],
+          "effect": "Create one canonical note and return its authoritative reference",
+          "success_signal": "The saved note can be reopened by its canonical reference",
+          "failure_recovery": "Preserve the draft and report the failure without claiming the note was saved",
+          "reversible": true,
+          "requires_confirmation": false
+        }
+      ],
+      "data_dependencies": ["priority-items"],
+      "states": [
+        { "state": "loading", "presentation": "A calm loading state explains that today's items are being retrieved", "recovery": "Keep the user in context and announce completion" },
+        { "state": "unavailable", "presentation": "The source is not connected or not yet proven; no sample items or counts are shown", "recovery": "Explain what connection or decision is required" },
+        { "state": "empty", "presentation": "No items requiring attention are currently available from the verified source", "recovery": "Offer a relevant next step only when that capability is real" },
+        { "state": "error", "presentation": "The source could not be read; show the scope and time of the failure", "recovery": "Allow a safe retry without duplicating work" }
+      ],
+      "responsive": {
+        "small": "Single-column task-first composition; focal item first; navigation must not cover the action or keyboard",
+        "medium": "One main column with an optional supporting column only when both remain readable",
+        "large": "Use available width for a deliberate main/support composition, not oversized empty margins",
+        "scroll_policy": "page-scroll",
+        "horizontal_overflow": "none",
+        "safe_area": true,
+        "keyboard_safe": true,
+        "no_clipping": true
+      },
+      "accessibility": {
+        "target_standard": "WCAG-2.2-AA",
+        "minimum_target_px": 44,
+        "contrast_checked": false,
+        "keyboard_complete": false,
+        "focus_visible": false,
+        "focus_not_obscured": false,
+        "reduced_motion": false,
+        "screen_reader_semantics": false,
+        "zoom_reflow_checked": false
+      },
+      "acceptance": [
+        "At first glance, the person can identify the room, the focal item, and why it matters",
+        "An unknown or unavailable data source never displays invented live items or counts",
+        "The open-item action resolves to the same canonical item and preserves owner scope",
+        "The note action is hidden or honestly disabled until its real capability and authorization are verified",
+        "The first viewport remains useful at 320, 390, 768, and 1440 CSS px without clipping or obscured actions",
+        "The page does not require horizontal scrolling except an explicitly specified two-dimensional data region"
+      ]
+    },
+    {
+      "id": "connections",
+      "route": "/personal/connections",
+      "job": "Help the person discover and manage relevant people and spaces without confusing a suggestion with a relationship or consent",
+      "entry_context": "The person opens Connections from the Personal World navigation",
+      "exit_condition": "The person inspects a person/space or performs a permitted connection action",
+      "back_behavior": "Return to the previous room with the search/filter context preserved",
+      "first_view": {
+        "orientation": "Explain what can be discovered in the person's current permission scope",
+        "focal_point": "A useful, permission-aware discovery/search surface",
+        "supporting_items": [
+          "Clear filters and match explanation",
+          "Visible distinction between suggestions and established connections"
+        ],
+        "primary_action": "Search within the available discoverable scope",
+        "secondary_actions": ["Open a suggested profile"]
+      },
+      "sections": [
+        {
+          "id": "discover",
+          "purpose": "Find people and spaces the user is allowed to discover",
+          "priority": "focal",
+          "data_ref": "connections",
+          "disclosure_rule": "Explain each result and why it is shown; do not expose private content"
+        },
+        {
+          "id": "existing",
+          "purpose": "Show established relationships separately from suggestions",
+          "priority": "supporting",
+          "data_ref": "connections",
+          "disclosure_rule": "Use an explicit relationship state and consent record"
+        }
+      ],
+      "actions": [
+        {
+          "id": "search-connections",
+          "label": "Search",
+          "intent": "Find a person or space by permitted public/discoverable fields",
+          "actor": "Authenticated user",
+          "scope": "Only the discoverable fields and objects authorized for the user",
+          "authority": "Must resolve the live Smart Search and privacy contract before implementation",
+          "preconditions": ["Search capability is integrated", "The query is scoped and authorized"],
+          "effect": "Return ranked, explainable results without exposing private fields",
+          "success_signal": "Results show clear names, context, and match reasons",
+          "failure_recovery": "Show unavailable/error state and retain the query",
+          "reversible": true,
+          "requires_confirmation": false
+        },
+        {
+          "id": "request-connection",
+          "label": "Request connection",
+          "intent": "Ask another person to establish a relationship",
+          "actor": "Authenticated user",
+          "scope": "The target relationship and consent workflow",
+          "authority": "Must resolve the current relationship, consent, and invitation capability before implementation",
+          "preconditions": ["The target is eligible", "The user has authority to request", "No duplicate active request exists"],
+          "effect": "Create a request that remains distinct from an accepted connection",
+          "success_signal": "The request status is visible and attributable",
+          "failure_recovery": "Show the reason and allow retry only when safe",
+          "reversible": true,
+          "requires_confirmation": true
+        }
+      ],
+      "data_dependencies": ["connections"],
+      "states": [
+        { "state": "loading", "presentation": "Show a concise search/loading state", "recovery": "Announce when results are ready" },
+        { "state": "empty", "presentation": "No discoverable results match this query", "recovery": "Offer editable query/filters" },
+        { "state": "unavailable", "presentation": "Discovery is not available in this scope yet", "recovery": "Explain the missing integration or access decision" },
+        { "state": "forbidden", "presentation": "The requested profile or field is not visible to this user", "recovery": "Return to the safe results view" },
+        { "state": "error", "presentation": "The search service failed; do not substitute a demo result", "recovery": "Retain the query and offer retry" }
+      ],
+      "responsive": {
+        "small": "Single-column results with touch-sized filters and no hover-only menus",
+        "medium": "Search and results use a split layout only where the content remains readable",
+        "large": "Optional persistent filter/context column with results as the dominant work area",
+        "scroll_policy": "page-scroll",
+        "horizontal_overflow": "none",
+        "safe_area": true,
+        "keyboard_safe": true,
+        "no_clipping": true
+      },
+      "accessibility": {
+        "target_standard": "WCAG-2.2-AA",
+        "minimum_target_px": 44,
+        "contrast_checked": false,
+        "keyboard_complete": false,
+        "focus_visible": false,
+        "focus_not_obscured": false,
+        "reduced_motion": false,
+        "screen_reader_semantics": false,
+        "zoom_reflow_checked": false
+      },
+      "acceptance": [
+        "Suggestions are visually and semantically distinct from established connections",
+        "Search results include a meaningful explanation and never expose unauthorized private fields",
+        "A request remains pending until a real acceptance event occurs",
+        "No action silently creates a connection or implies consent",
+        "The screen remains usable with touch, keyboard, narrow reflow, and zoom"
+      ]
+    },
+    {
+      "id": "reports",
+      "route": "/personal/reports",
+      "job": "Help the person understand meaningful progress and make a better decision from it",
+      "entry_context": "The person opens Reports from the Personal World navigation or an explicit insight link",
+      "exit_condition": "The person understands a finding, changes a date range, or opens supporting evidence",
+      "back_behavior": "Return to the prior context and restore the selected date range",
+      "first_view": {
+        "orientation": "Name the question and exact time window the report answers",
+        "focal_point": "The most useful verified trend or finding for the selected period",
+        "supporting_items": [
+          "Comparison/baseline and direction",
+          "Source and last-updated time"
+        ],
+        "primary_action": "Open supporting evidence",
+        "secondary_actions": ["Change reporting period"]
+      },
+      "sections": [
+        {
+          "id": "headline",
+          "purpose": "State the principal finding in human language",
+          "priority": "focal",
+          "data_ref": "progress-summary",
+          "disclosure_rule": "Show the answer first, then the metric definition and source"
+        },
+        {
+          "id": "trend",
+          "purpose": "Show change over the selected time range",
+          "priority": "supporting",
+          "data_ref": "progress-summary",
+          "disclosure_rule": "Keep labels readable and offer a text/data alternative"
+        },
+        {
+          "id": "method",
+          "purpose": "Explain the definition, calculation, exclusions, and source",
+          "priority": "secondary",
+          "data_ref": "progress-summary",
+          "disclosure_rule": "Available on demand without hiding critical caveats"
+        }
+      ],
+      "actions": [
+        {
+          "id": "open-evidence",
+          "label": "View evidence",
+          "intent": "Inspect the canonical records behind a finding",
+          "actor": "Authenticated owner",
+          "scope": "Only evidence within the report's permission scope",
+          "authority": "Must resolve the source record read contract before implementation",
+          "preconditions": ["Evidence references exist and are readable"],
+          "effect": "Open the authoritative records without creating duplicate report data",
+          "success_signal": "The source records, definitions, and time window can be inspected",
+          "failure_recovery": "State that evidence is unavailable rather than implying the finding is proven",
+          "reversible": true,
+          "requires_confirmation": false
+        },
+        {
+          "id": "change-period",
+          "label": "Change period",
+          "intent": "Compare a different time range",
+          "actor": "Authenticated owner",
+          "scope": "The current report view",
+          "authority": "Local view state only; source permission must be preserved",
+          "preconditions": ["The selected period is supported by the data source"],
+          "effect": "Recompute the same report definition for the selected period",
+          "success_signal": "The report labels and data update together",
+          "failure_recovery": "Restore the prior valid period and show why the selection failed",
+          "reversible": true,
+          "requires_confirmation": false
+        }
+      ],
+      "data_dependencies": ["progress-summary"],
+      "states": [
+        { "state": "loading", "presentation": "Show the metric/report is being assembled", "recovery": "Announce when the selected range is ready" },
+        { "state": "empty", "presentation": "There is not enough verified data for this range", "recovery": "Offer another valid range if available" },
+        { "state": "stale", "presentation": "Show the time of the last successful refresh", "recovery": "Offer an explicit refresh when supported" },
+        { "state": "unavailable", "presentation": "The source or metric definition is not yet verified", "recovery": "Do not substitute a synthetic chart" },
+        { "state": "error", "presentation": "The data could not be loaded or calculated", "recovery": "Preserve the selected period and allow safe retry" }
+      ],
+      "responsive": {
+        "small": "One chart/insight at a time, readable labels, accessible data table or summary, page scroll",
+        "medium": "One main visualization with a concise supporting insight column",
+        "large": "Main trend and supporting breakdown in a clear grid with generous readable spacing",
+        "scroll_policy": "page-scroll",
+        "horizontal_overflow": "none",
+        "safe_area": true,
+        "keyboard_safe": true,
+        "no_clipping": true
+      },
+      "accessibility": {
+        "target_standard": "WCAG-2.2-AA",
+        "minimum_target_px": 44,
+        "contrast_checked": false,
+        "keyboard_complete": false,
+        "focus_visible": false,
+        "focus_not_obscured": false,
+        "reduced_motion": false,
+        "screen_reader_semantics": false,
+        "zoom_reflow_checked": false
+      },
+      "acceptance": [
+        "Every displayed metric has a definition, unit, time window, and authoritative source",
+        "A chart has a text/data alternative and meaningful axis labels",
+        "A missing or stale source is not presented as live",
+        "Opening evidence resolves to canonical source records",
+        "Changing the period updates the chart, labels, summary, and comparison consistently",
+        "The report works at 320 CSS px reflow without horizontal page scrolling"
+      ]
+    }
+  ],
+  "quality_gates": {
+    "minimum_dimension_score": 9.0,
+    "aaa_target": 9.5,
+    "independent_verification_required": true,
+    "human_approval_required_for": [
+      "changes to ratified design or governance law",
+      "privacy policy or data visibility changes",
+      "financial, destructive, external-send, publication, or permission-changing actions",
+      "production promotion where the release contract requires approval"
+    ],
+    "hard_gates": [
+      "No fabricated or falsely-live data",
+      "No unauthorized read or write path",
+      "Every visible action has a real capability and recovery behavior",
+      "Primary user journey is complete and independently tested",
+      "No clipping or inaccessible critical interaction at required viewports",
+      "WCAG 2.2 AA target and stricter Naya house control-size rule are verified",
+      "All required app standard features are evaluated by the existing 13-feature gate"
+    ]
+  }
+}
