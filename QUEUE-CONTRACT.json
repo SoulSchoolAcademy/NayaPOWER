@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-10-31T21:50:08Z",
-  "tip": "06e53e9633616a94d864cc08aeae2fd00a67e253",
+  "generated_at": "2026-11-01T03:50:56Z",
+  "tip": "7e412cebb52084688ae29f3f3c06d100cdaa1a55",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "c79ff27141b0f3917ecef03614404b2f0ea98ce0"
+      "head": "b549fa66407251d283c28bc6506a8f0e1375d885"
     },
     {
       "number": 3131,
@@ -40,22 +40,49 @@
       "head": "4280ea82cc832f146c2b8f088ded16c70c8dafc0"
     },
     {
-      "number": 3142,
-      "title": "Factory: file blessed-05 briefing strip (Tell-Me-My-Stats) spec",
-      "tier": "B",
+      "number": 3146,
+      "title": "[DRAFT] Naya Smart Factory: AI RECIPE language + canonical parts preflight + 11 falsifiers",
+      "tier": "A",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, delivery-gate; then re-derive at the new head.",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "cdc7402d5e3e31a44e2f9ca696b04e8b863242d0"
+      "head": "17b658b9cf4c0173908a378c044db02c35f1a5d1"
     },
     {
-      "number": 3143,
-      "title": "chore(brain): regenerate index layer at tip 77041508",
+      "number": 3147,
+      "title": "chore(brain): regenerate index layer at tip 7e412ceb",
       "tier": "C",
       "action": "MERGE-NOW",
       "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "bb5a39bc927acc4b990391f1e60606b0ce24761e"
+      "head": "c0fd370c67765ec44c71a497f7cde87982653509"
+    },
+    {
+      "number": 3148,
+      "title": "THE COLOR FLOW \u2014 Shawn's ruling amends the spectrum walk (purple leads, magenta crowns)",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "69d2b4e8c7eb93bae0d321830b58fbf4ba2112ef"
+    },
+    {
+      "number": 3149,
+      "title": "THE COLOR FLOW \u2014 blueprint amendment (follow-up to #3145): purple leads, magenta crowns",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author updates the branch onto current main \u2014 its only red(s) (Receipt gate (evidence or it didn't happen), Team review + scorecard receipt, Unified paperwork \u2014 tier + cross-seat scorecard + live evidence, brain-index-freshness, spec-integrity, test) are inherited from its merge-base, not caused by its diff; fresh checks re-derive at the new head.",
+      "owner": "author lane",
+      "head": "53e071d80933ca44141bfa0a03b00eb5d5549d31"
+    },
+    {
+      "number": 3150,
+      "title": "docs(brain): learning event 2026-10-31",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "7fa54d3e37d4448a4fa5a2097327c990c6a9b1c9"
     }
   ]
 }
