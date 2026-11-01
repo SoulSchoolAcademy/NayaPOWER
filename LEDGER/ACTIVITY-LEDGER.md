@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 19:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,54 @@ _Last updated: 2026-11-01 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-1110 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall run 2026-10-16 02:05 PDT: full-queue claim evaluation, 0 claimed, 25 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; queue total reconciles to 25 (15 exit-7 + 1 exit-6 + 8 header-gated + 1 explicit second-seat demand), matching 'Queue scanned: 25 briefs'; claim-brief.py exists as cited; no branch/SHA cited, so the git leg does not apply. NOT PHANTOM
+
+### ✅ 20261101-1110 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 01:53 PDT: second claim of run, 0 claimed, 25 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; blocked sections machine-counted 16 exit-7 + 8 explicit NON-Clarity headers + 1 no-refile = 25, matching the header exactly (the 26th brief-mention is the completed first claim of the run, not a blocked brief); that first-claim receip
+
+### ✅ 20261101-1110 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 01:42 PDT: full-queue claim evaluation, 0 claimed, 25 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; brief mentions machine-counted 25 distinct = header '25 briefs evaluated'; sections sum 9 explicit gates + 15 second-seat + 1 no-refile = 25; claim-brief.py exists as cited; no branch/SHA cited, so the git leg does not apply. NOT PHAN
+
+### ✅ 20261101-1100 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-01 11:00 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior Team Naya Scorer row): receipt file exists (4561 bytes); blocked set machine-counted 31/31 = live brief-queue/brief-*.md set exactly (31 files, zero listed-but-absent, zero queue files unlisted); refusal breakdown sums exactly 29 exit-7 parent-authorship + 2 barred = 31; listed set identical 
+
+### ✅ 20261101-1050 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 08:05 UTC: full-queue evaluation, 0 claimed, 26 unclaimable
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row, only lane-seat rows): receipt file exists (4808 bytes); single non-barred candidate got a live script claim refused exit 6 (not assumed); no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, matching the lane self
+
+### ✅ 20261101-1040 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 01:22 PDT: full-queue claim evaluation, 0 claimed, 25 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (4301 bytes); itemized set matches gate-stall-20261016-0117.md exactly (25/25), and the core claim (0 claimed, 25 blocked, correct skip) is corroborated; claim-brief.py exists as cited; no branch/SHA cited, so the git leg does not appl
+
+### ✅ 20261101-1040 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 01:17 PDT: full-queue claim evaluation, 0 claimed, 25 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (3570 bytes); categories machine-sum exactly 19 exit-7 + 5 exit-2 + 1 exit-6 = 25, and the itemized set matches gate-stall-20261016-0122.md exactly (25/25); claim-brief.py exists as cited; no branch/SHA cited, so the git leg does not a
+
+### ✅ 20261101-1040 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 01:06 PDT: full-queue claim evaluation, 0 claimed, 28 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (5220 bytes); table machine-counted 28 rows = 28 distinct briefs cited; set is a superset of the 0117/0122 sets (+0430-lane2 dispatcher-stamp block and scorer-0340-lane10/lane9), consistent with a queue 3 larger at 01:06 than at 01:17;
+
 ### ✅ 20261101-1030 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Gate-stall run 2026-10-16 00:57 PDT: full-queue claim evaluation, 0 claimed, 27 items incl. 1 stale retire
@@ -33456,6 +33504,12 @@ _Last updated: 2026-11-01 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ 20261101-1050 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up gap-t0636-lane8: independent W2/W4 byte-check re-run with GitHub-verified W4 path exercised
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (4269 bytes); evidence file hidden_files/scratch/gap-t0636-lane8/results-t0636-lane8.json present with sha256 matching the receipt exactly (8e92f8175038a617fae2...); fresh scratch dirs w2/w4/w4v present, distinct from the parent's evid
 
 ### ✅ 20261101-0740 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -46738,6 +46792,18 @@ _Last updated: 2026-11-01 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ 20261101-1050 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up gap-gate-stall-20261016-0721-lane0: reconcile t0426-lane2 author-attribution conflict + H3 feed-fallback failing test and patch
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (15059 bytes incl. 08:44 follow-up); scratch dir hidden_files/scratch/t-gap-stall-0721/ holds DISPATCHER-NOTE.md, claim-brief-feed-fallback.patch, claim-brief-patched-copy.py and test_feed_fallback_contamination.py as cited; gap-follow
+
+### ✅ 20261101-1050 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up gap-gate-stall-20261016-0805-lane0: retire stale 0430-lane2 brief from queue
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (5791 bytes); retired brief present in brief-queue/stale/ with sha256 matching the receipt exactly (155482628320b8f6a3b62d69bd7c3f9bc5efd0768ee240ad79073e23e9cef513); gap-followup-seen.json key t0426-lane2 present with the quoted no-re
 
 ### ✅ 20261101-1020 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
