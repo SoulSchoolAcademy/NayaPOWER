@@ -35,7 +35,8 @@
 - D1 Ground: obsidian black with depth; white text; high contrast. White/light backgrounds FORBIDDEN.
 - D2 Living depth: every element is layered (multi-layer borders, elevation, light held inside). Flat 2D = fail.
 - D3 Ignition: elements are white at rest; on touch/hover/focus they ignite in their own color. Glow has exactly one job: ignition. Decorative glow = fail.
-- D4 Spectrum walk: sequence = [magenta, purple, blue, green, gold], richest first, one pass per page, never the same color twice adjacently, one color job per element. A color means the same thing on every page, forever.
+- D4 COLOR FLOW CYCLE (RATIFIED BY SHAWN 2026-11-01 — supersedes the PR #3141 spectrum walk): color moves in a CYCLE, not a line: [purple → indigo blue (852 Hz) → emerald green (639 Hz) → gold (528 Hz; yellow permitted in icon cases for brightness) → orange (417 Hz) → red (396 Hz) → magenta (963 Hz, the crown) → wraps back to purple]. LEAD = purple. CROWN = magenta. Weekday anchors: purple Sunday · indigo Saturday · green Thursday · gold Tuesday · orange Monday · red Friday. GROUPING LAW: richest shades only; groupings of 3 or 5 (or any consecutive run) MUST keep cycle order; long sequences repeat the pattern; NEVER double a color adjacently; NEVER random order; NEVER backtrack. High-contrast couplings encouraged (purple-green-gold; purple-blue-green). Brand dominant: purple, black, white — most surfaces and most inputs predominantly purple. One color job per element; a color means the same thing on every page, forever.
+- D4-P Presentation (same ruling, 2026-11-01): bigger text over smaller; reading text is WHITE, high contrast — light pink / light grey text FORBIDDEN; minimal text, maximal visuals (an icon that says it without words beats words); everything alive and responsive on touch; never flat — always dynamic, multiple dimensions.
 - D5 Geometry: boards/cards 16:9; buttons are pills; touch targets ≥ 44px; type floors: body ≥ 16px, UI labels ≥ 14px.
 - D6 Law 6 (alive = answers touch): no halo/glow at rest. The jewel orb carries color as identity — solid, no halo; halo only on touch. Presence indicators breathe only while the state shown is actually live.
 - D7 Honesty in every state: states = {rest, hover, pressed, selected, loading, empty, error} — all designed, all truthful. Dead buttons FORBIDDEN. SOON permitted ONLY as a non-interactive label; a tappable SOON = dead control = fail.
@@ -55,7 +56,7 @@
 - F7 Touch targets ≥ 44px (agrees with D5).
 
 ### P1.4 Reconciliations (PROPOSED — until ratified, implement DNA behavior; record which layer you used)
-- R1 TWO COLOR LAYERS. Identity layer: each statistic owns one fixed jewel color (P5.3) — answers "which thing is this." State layer: meaning now — framework semantics {gold = score, green = positive, red = negative} and DNA truth states {gold = live/shown, green = proven}. NEVER mix layers silently: any element using a state color MUST make the layer legible (label, legend, or position convention). Identity never changes per state.
+- R1 TWO COLOR LAYERS. Identity layer: each statistic owns one fixed jewel color (P5.3) — answers "which thing is this." State layer: meaning now — framework semantics {gold = score, green = positive, red = negative} and DNA truth states {gold = live/shown, green = proven}. NEVER mix layers silently: any element using a state color MUST make the layer legible (label, legend, or position convention). Identity never changes per state. SEQUENCE inside the identity layer is governed by the COLOR FLOW CYCLE (D4, RATIFIED BY SHAWN 2026-11-01); the state layer is unchanged by that ruling.
 - R2 SCREEN CLASSES. Every screen declares `class ∈ {APP, READING}` in its recipe. APP: F5 viewport-fit applies. READING (Reports letters, Smart Note reading, long-form): scrolls by design; F1's "scroll reveals next screen" is satisfied by chapter/section boundaries. The gate checks the screen against its declared class.
 
 ## P2 — ARCHITECTURE (pipeline, normative order)
@@ -109,7 +110,7 @@ Design and verify phone-first. A screen failing at phone width CANNOT score 10 r
 - G1 Obsidian: computed background = obsidian token; white text; no white background in the surface.
 - G2 Depth: every interactive element shows layered construction (rim/elevation present via computed styles).
 - G3 Ignition: rest state white/no halo; touch state ignites in the element's own color. Halo at rest = fail (orb identity exception per D6).
-- G4 Spectrum walk: no adjacent color repeat in any row; one color job per element; walk order respected.
+- G4 Color flow: every color sequence follows the D4 cycle order (purple leads, magenta crowns and wraps); no doubled color; no backtracking; groupings keep cycle order; one color job per element.
 - G5 Geometry: targets ≥ 44px; boards 16:9 (strip/tile exceptions named); buttons are pills.
 - G6 Type floors: body ≥ 16px; UI labels ≥ 14px; ≤ 3 type sizes on the screen (F4).
 - G7 Spacing: every spacing value ∈ {4,8,12,16,24,32,48,64,96} (F3).
@@ -164,9 +165,9 @@ Guards: harm = 0; sustained harm → negative (Law of One/no-harm); farming acco
 
 ## P8 — STATUSES & OPEN SEAMS (do not smooth over)
 
-- RATIFIED/LOCKED/ADOPTED: Design DNA · Value Table (sale = 100) · Three-Minute mission + two paths · Dream Team + Chameleon Clause · Wowie Rule · lane split · Parts Map v1 inventory.
+- RATIFIED/LOCKED/ADOPTED: Design DNA · Value Table (sale = 100) · Three-Minute mission + two paths · Dream Team + Chameleon Clause · Wowie Rule · lane split · Parts Map v1 inventory · Color Flow cycle (Shawn, 2026-11-01; supersedes the PR #3141 walk).
 - PROPOSED: Interface Framework (ratification = Shawn gate) · R1 two color layers · R2 READING class. Until ratified: DNA governs conflicts.
-- OWED: palette reconciliation (obsidian baseline contested: #0a0a0e vs #050507 in different sources; teal/indigo/lime legacy-vs-lawful unsettled — never quote a stale-hex count as settled) · token-swap verification (Nitro's 65-family table is on her machine only; verification blocked until it lands in a shared store) · framework ratification · SN-1905 amendment filing (note prepared 2026-10-31; door filing owed) · Stage 3 first true number · Integrator landing pen (single-writer bottleneck is measured, not solved) · stars 6–9 names (Shawn's) · the two Shawn decisions on record (pilot-as-his-page · the annex-verification word).
+- CLOSED BY SHAWN'S RULING 2026-11-01: palette reconciliation (the D4 Color Flow cycle supersedes both contested spectra). STILL OWED: token-swap verification (Nitro's 65-family table is on her machine only; verification blocked until it lands in a shared store) · framework ratification · SN-1905 amendment filing (note prepared 2026-10-31; door filing owed) · Stage 3 first true number · Integrator landing pen (single-writer bottleneck is measured, not solved) · stars 6–9 names (Shawn's) · the two Shawn decisions on record (pilot-as-his-page · the annex-verification word).
 - This blueprint invents nothing: every value traces to a ratified ruling, a locked table, a measured map, or an adopted design. Contested items are printed as contested.
 
 — End of AI tongue. If any instruction here conflicts with a ratified source, the ratified source wins and the conflict is filed as a correction the same pass.
