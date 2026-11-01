@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 21:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 21:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,36 @@ _Last updated: 2026-11-01 21:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-1330 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall run 2026-10-20 05:02 UTC: full-queue claim evaluation, 0 claimed, 29 barred to Clarity seat
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep: receipt carried only a lane self-score, no prior Team Naya Scorer row). Receipt present; 29-brief composition (10 gate/seat-line bars + 19 exit-7 parent-authorship) is consistent with the t0983 same-morning 29-brief queue count, and the stall-per-cap rule (prior stall >60 min earlier) is honored. Why
+
+### ✅ 20261101-1320 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall run 2026-10-20 03:12 UTC: full-queue claim evaluation, 0 claimed, 29 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; blocker classes reconcile exactly (8 explicit gates + 19 exit-7 script refusals + 2 exit-2 seat-line bars = 29, matching the 29 header); bin/claim-brief.py exists as cited; queue delta arithmetic is internally consistent (30 - 4 left 
+
+### ✅ 20261101-1310 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-20 07:45 UTC: full-queue claim evaluation, 0 claimed, 29 blocked, dry-run preserved
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; preserved dry-run evidence hidden_files/lane-10/check-run-t0992-lane10/dryrun-clarity.txt re-read: 29 brief rows, split 10 exit-2 / 19 exit-7, matching the receipt exactly; bin/claim-brief.py exists as cited. No branch/SHA cited, so t
+
+### ✅ 20261101-1310 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-20 01:53 UTC: full-queue claim evaluation, 0 claimed, 29 blocked (pure delta receipt)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; prior receipt gate-stall-20261020-0023.md exists (mtime 00:24 UTC, ~89 min before this run as claimed); bin/claim-brief.py exists as cited; refusal arithmetic reconciles (10 stamped non-Clarity gates + 19 exit-7 parent-authorship = 29
+
+### ✅ 20261101-1310 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-01 13:03 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior Team Naya Scorer row): receipt file exists; brief-queue/ holds exactly the 31 brief names listed in the receipt (31/31, no diffs either way); refusal breakdown sums correctly (29 exit-7 parent-authorship + 2 barred = 31); stall delta zero vs prior scored receipt gate-stall-20261101-1202.md. N
+
 ### ✅ 20261101-1300 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Gate-stall run 2026-10-20 10:08 UTC: full-queue claim evaluation, 30 unclaimable
@@ -43510,6 +43540,48 @@ _Last updated: 2026-11-01 21:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ 20261101-1330 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t1031 lane 10: second live use of falsifiers-first on the checker itself, R6/R7 + R5 redteam harness, R2 lifecycle correction
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep: receipt carried only lane self-scores, no prior Team Naya Scorer row). Receipt + kit present: falsifiers-t1031.json (mtime Oct 20 14:12, pre-mechanical as claimed) and redteam-t1031.json (10 cases) exist. F3-fired R2 lifecycle correction and rt02/rt03 wave-through proof are coherently documented with
+
+### ✅ 20261101-1330 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0983 lane 10: close the named gap - preserve row-1 exit-7 dry-run .out evidence and hand-pin the refusing line
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep: receipt carried only a lane self-score, no prior Team Naya Scorer row). Kit verified present and complete as claimed: 29 .out files + 29 exits.txt rows in check-run-t0983-lane10/, including the row-1 brief .out. Clears 9.5 because the named gap is closed with checkable evidence: refusing line re-deri
+
+### ✅ 20261101-1330 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0983 lane 10: byte-verified drain-state follow-up, 28-brief dry-run corpus re-run fresh, ALL-BARRED stamp routing check
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep: receipt carried only a lane self-score, no prior Team Naya Scorer row; t0983-lane10 already in gap-followup-seen.json). Receipt + kit present: check-run-t0983-lane10/ now holds 29 .out files + 29 exits.txt rows (row-1 .out added later by gap-t0983). 29-row classification table internally consistent w
+
+### ✅ 20261101-1330 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0981 lane 10: re-proof of brain-index freshness verdict at newest tip, rendered-comment verification, no duplicate post
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep: receipt carried only a lane self-score, no prior Team Naya Scorer row). Receipt + kit present: check-run-t0981-lane10/ holds README, fresh harness, diffs have/want/diff + summary. Claims internally consistent: tip 6129980c9 unchanged, --check exit 1 DRIFT, 47/31/20 diff lines byte-identical to t0978,
+
+### ✅ 20261101-1330 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0978 lane 10: byte-pinned brain-index freshness verdict at live tip, premise-rot step-0 (verdict comment already rendered, no duplicate posted)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep: receipt carried only a lane self-score, no prior Team Naya Scorer row). Receipt + kit present: check-run-t0978-lane10/ holds README, fresh harness, diffs have/want/diff + summary for all 3 index files. Claims internally consistent: tip 6129980c9, 4 blob SHAs, 47/31/20 diff lines, rendered comment 628
+
+### ✅ 20261101-1320 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0970 lane 10: byte-pinned brain-index freshness verdict at newest live mainline tip, mechanism pins re-derived
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; kit hidden_files/lane-10/check-run-t0970-lane10/ present with README.md, dump-drift-t0970.py and diffs/; the stated tip, counts 1329->1333 / 649->653, 4 blob SHAs and diff line counts match the t0964 receipt's same-tip verdict exactly
+
+### ✅ 20261101-1320 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** t0964 lane 10: coach's-note second pass on t0960 gaps - exact DRIFT diff at newest tip, duplicated page path, mechanism pins
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; kit hidden_files/lane-10/check-run-t0964-lane10/ present with README.md, dump-drift-t0964.py and diffs/; receipt's 4-entry diff, blob SHAs and counts 1329->1333 / 649->653 are internally consistent and match the t0970 receipt's indepe
 
 ### ✅ 20261101-1300 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
