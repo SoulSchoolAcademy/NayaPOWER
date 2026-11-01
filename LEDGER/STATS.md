@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-01 19:33 UTC_
+_Last updated: 2026-11-01 20:14 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 7294
-- ✅ Verified (8+): 7227
+- **Total scored actions:** 7310
+- ✅ Verified (8+): 7243
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -16,16 +16,16 @@ _Last updated: 2026-11-01 19:33 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 521 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 519 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 485 | 9.0 | 10 |
-| Team 4 | Naya Mason | 455 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 602 | 9.0 | 9.6 |
+| Team 2 | Naya Sage | 520 | 8.9 | 9.5 |
+| Team 3 | Naya Judge | 486 | 9.0 | 10 |
+| Team 4 | Naya Mason | 456 | 9.1 | 9.6 |
+| Team 5 | Naya Seeker | 604 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 350 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 457 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 481 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 614 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 828 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 452 | 9.0 | 9.6 |
+| Team 8 | Naya Sentinel | 482 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 615 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 830 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 453 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 391 | 9.2 | 9.5 |
 
 ## Learning velocity
@@ -583,6 +583,9 @@ _Last updated: 2026-11-01 19:33 UTC_
 - **20261101-1010:** 3 actions, avg 9.2/10
 - **20261101-1020:** 3 actions, avg 9.0/10
 - **20261101-1050:** 4 actions, avg 9.0/10
+- **20261101-1140:** 3 actions, avg 9.0/10
+- **20261101-1200:** 4 actions, avg 9.1/10
+- **20261101-1210:** 5 actions, avg 9.1/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -1070,6 +1073,7 @@ _Last updated: 2026-11-01 19:33 UTC_
 - **20261101-0420:** 3 actions, avg 9.0/10
 - **20261101-0620:** 3 actions, avg 8.8/10
 - **20261101-0640:** 3 actions, avg 9.0/10
+- **20261101-1150:** 4 actions, avg 9.0/10
 - **scorer-20261014-1440:** 8 actions, avg 8.9/10
 - **gap-t0767:** 2 actions, avg 9.5/10
 - **scorer-20261014-1950:** 6 actions, avg 9.0/10
