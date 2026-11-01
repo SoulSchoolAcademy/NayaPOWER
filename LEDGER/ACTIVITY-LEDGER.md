@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 19:15 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 19:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,24 @@ _Last updated: 2026-11-01 19:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-1130 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 02:33 PDT: full-queue claim evaluation, 0 claimed, 26 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; blocked table machine-counted 26 rows = 26 header exactly (19 exit-7 + 6 exit-2 + 1 exit-6); claim-brief.py exists as cited; no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, below the lan
+
+### ✅ 20261101-1130 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 02:07 PDT: full-queue claim evaluation, 0 claimed, 25 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; machine-counted distinct brief mentions = 24, NOT the 25 header: the seat-barred list holds 16 briefs against its '(14)' label, plus 7 exit-7 and 1 exit-6 = 24, so one queued brief is unnamed; claim-brief.py exists as cited; no branch
+
+### ✅ 20261101-1120 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 08:41 PDT: full-queue claim evaluation, 0 claimed, 25 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; barrier classes sum 23 second-seat + 1 no-refile + 1 REVIEW = 25, matching the 25/25 header; claim-brief.py exists as cited; no branch/SHA cited, so the git leg does not apply; index-vs-disk delta (26 vs 25) explained as the retired -
+
 ### ✅ 20261101-1110 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Seat-stall run 2026-10-16 02:05 PDT: full-queue claim evaluation, 0 claimed, 25 blocked
@@ -33504,6 +33522,12 @@ _Last updated: 2026-11-01 19:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ 20261101-1120 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** gap-gap-t0636-lane8: verified-path batch, coverage 10 -> 18 of 631, honest rate-limit stop
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; scratch dir hidden_files/scratch/gap-gap-t0636-lane8/ exists with all cited files (batch-results.json, continuation.json, results-gap-gap-t0636-lane8.json, index-verified-path.json, run_verified_probe.py); no branch/SHA merge artifact
 
 ### ✅ 20261101-1050 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -38117,6 +38141,12 @@ _Last updated: 2026-11-01 19:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ 20261101-1130 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-lane-scorer-20261015-1530 lane 4: four dialect holes patched + pinned in claim-brief.py 1c check
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; all three patched pattern families still present in live bin/claim-brief.py (fresh-pair-of-eyes, not-the-seat which/who verb-slot, not-the-executing-seat); parent brief file present in brief-queue. NOT PHANTOM. Score 9.0, GOOD ONE MOR
+
 ### ✅ 20261101-0940 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Gap-gap t0677 lane 4: F2 banked control + abort paths exercised, D3 independence declined
@@ -42478,6 +42508,12 @@ _Last updated: 2026-11-01 19:15 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ 20261101-1120 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0622-lane11: second-seat re-application of all 13 CR- checks, verdict string MATCH
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists; checker script hidden_files/lane-2/t0622-secondseat-check.py exists as cited; 13-check table sums 11 PASS + 2 FAIL (both inside CR-A1) and matches the parent's table as claimed; verdict string CR-ACCEPT t0614 8de0571b 1.4477 0->1438 5
 
 ### ✅ 20261101-0940 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
