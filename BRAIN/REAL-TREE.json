@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-31",
-  "receipt_basis_commit": "77041508bc909745007e54927768ec7cbeb1595d",
-  "inventory_file_count": 1820,
+  "generated_at": "2026-11-01",
+  "receipt_basis_commit": "7e412cebb52084688ae29f3f3c06d100cdaa1a55",
+  "inventory_file_count": 1831,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -16,7 +16,8 @@
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 529,
+    "10-INTERFACES": 537,
+    "11-FACTORY": 3,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
     "90-OPERATIONS": 112,
@@ -8316,6 +8317,46 @@
       "size": 2792
     },
     {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/BLESSING.md",
+      "blob_sha": "b11d047421c4471e7888e36856bf34c27156b233",
+      "size": 7138
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/build-specimen.py",
+      "blob_sha": "1509e98799bd01fdbac36574cace3db6c6273885",
+      "size": 6914
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/gate-output.txt",
+      "blob_sha": "2394d7d289eb3267f04dfa67a4b04641c4261a44",
+      "size": 2937
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/nj-ev-hover.png",
+      "blob_sha": "964f6dacee5e824b7fa994d262118c018f354831",
+      "size": 10316
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/specimen-1440.png",
+      "blob_sha": "16926f7c75e9055a01a3dd55895433c3aa81ab5d",
+      "size": 249042
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/specimen-390.png",
+      "blob_sha": "5b602ee6e25fb610422cfe27fe7ea443beeabbc6",
+      "size": 224728
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/nj-briefing-strip.html",
+      "blob_sha": "1ce2c92b8753de7083b07c7c096be09809c780ca",
+      "size": 6779
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/specimen.html",
+      "blob_sha": "0de2c92b6f9b20eb2a0c3227e42abfaaeb91fbbb",
+      "size": 12537
+    },
+    {
       "path": "BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-01-mail.md",
       "blob_sha": "f9932e649ac67b8b4047c2558ba7b630fa1066aa",
       "size": 6897
@@ -8354,6 +8395,21 @@
       "path": "BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3",
       "blob_sha": "569dd0afe7c278940dd82970e6118862c9c5b643",
       "size": 33837
+    },
+    {
+      "path": "BRAIN/11-FACTORY/the-nayanet-blueprint-v1.ai.md",
+      "blob_sha": "5beb74739fdee0988b98d164f6ee13fc12b95b90",
+      "size": 24413
+    },
+    {
+      "path": "BRAIN/11-FACTORY/the-nayanet-blueprint-v1.human.md",
+      "blob_sha": "b4836bbe7dd71e1a82f52203d0995f029d2ae50b",
+      "size": 24328
+    },
+    {
+      "path": "BRAIN/11-FACTORY/the-nayanet-blueprint-v1.machine.json",
+      "blob_sha": "d2f7f9af3d8caa64039d371fd18255b82c93b9e1",
+      "size": 19959
     },
     {
       "path": "BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md",

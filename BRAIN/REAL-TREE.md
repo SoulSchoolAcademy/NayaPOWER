@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-31  
-**Receipt basis commit:** `77041508bc909745007e54927768ec7cbeb1595d`  
-**Inventory file count:** 1820  
+**Generated:** 2026-11-01  
+**Receipt basis commit:** `7e412cebb52084688ae29f3f3c06d100cdaa1a55`  
+**Inventory file count:** 1831  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -20,7 +20,7 @@
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 529 |
+| 10-INTERFACES | 537 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
 | 90-OPERATIONS | 112 |
@@ -1713,6 +1713,14 @@
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/06-living-counter.html` — `2608daf58143` (2347 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/07-orbit-dial.html` — `09f2d62e08e2` (1980 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/sg-chrome.css` — `70a99d8a7cbf` (2792 bytes)
+- `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/BLESSING.md` — `b11d047421c4` (7138 bytes)
+- `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/build-specimen.py` — `1509e98799bd` (6914 bytes)
+- `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/gate-output.txt` — `2394d7d289eb` (2937 bytes)
+- `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/nj-ev-hover.png` — `964f6dacee5e` (10316 bytes)
+- `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/specimen-1440.png` — `16926f7c75e9` (249042 bytes)
+- `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/specimen-390.png` — `5b602ee6e25f` (224728 bytes)
+- `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/nj-briefing-strip.html` — `1ce2c92b8753` (6779 bytes)
+- `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/specimen.html` — `0de2c92b6f9b` (12537 bytes)
 - `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-01-mail.md` — `f9932e649ac6` (6897 bytes)
 - `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-02-connections.md` — `162473034227` (6542 bytes)
 - `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-03-lists.md` — `4dd879e35a64` (7895 bytes)
@@ -1721,6 +1729,11 @@
 - `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-06-growth.md` — `e471a3ab07ad` (7647 bytes)
 - `BRAIN/10-INTERFACES/merge-briefs-2026-10-26/brief-07-intel-today.md` — `26c38692074d` (8519 bytes)
 - `BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3` — `569dd0afe7c2` (33837 bytes)
+### 11-FACTORY — (unregistered domain)
+
+- `BRAIN/11-FACTORY/the-nayanet-blueprint-v1.ai.md` — `5beb74739fde` (24413 bytes)
+- `BRAIN/11-FACTORY/the-nayanet-blueprint-v1.human.md` — `b4836bbe7dd7` (24328 bytes)
+- `BRAIN/11-FACTORY/the-nayanet-blueprint-v1.machine.json` — `d2f7f9af3d8c` (19959 bytes)
 ### 11-KNOWLEDGE — Knowledge
 
 - `BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md` — `d7c4828718a4` (1434 bytes)
