@@ -46,7 +46,7 @@ def _need(mapping: Any, key: str, where: str, errors: list[str]) -> Any:
     return mapping[key]
 
 
-def validate_brief(brief: Any, pieces: dict[str, Any] | None = None) -> list[str]:
+def validate_brief(brief: Any, pieces: dict[str, Any] | None = None, stage: str = "prebuild") -> list[str]:
     """Return actionable semantic violations; an empty list means PASS."""
     errors: list[str] = []
 
@@ -60,22 +60,22 @@ def validate_brief(brief: Any, pieces: dict[str, Any] | None = None) -> list[str
 
     project = brief.get("project")
     for key in ("id", "name", "pi_ref", "source_of_truth"):
-        if not _text(project.get(key)) if isinstance(project, dict) else True:
+        if not isinstance(project, dict) or not _text(project.get(key)):
             errors.append(f"project.{key} is required and must be non-empty text")
 
     outcome = brief.get("outcome")
     for key in ("primary_user", "job", "success"):
-        if not _text(outcome.get(key)) if isinstance(outcome, dict) else True:
+        if not isinstance(outcome, dict) or not _text(outcome.get(key)):
             errors.append(f"outcome.{key} is required and must be non-empty text")
 
     authority = brief.get("design_authority")
     for key in ("design_contract_ref", "design_standard_ref"):
-        if not _text(authority.get(key)) if isinstance(authority, dict) else True:
+        if not isinstance(authority, dict) or not _text(authority.get(key)):
             errors.append(f"design_authority.{key} must reference the current authority")
 
     shell = brief.get("app_shell")
     for key in ("navigation_model", "global_context", "search_policy"):
-        if not _text(shell.get(key)) if isinstance(shell, dict) else True:
+        if not isinstance(shell, dict) or not _text(shell.get(key)):
             errors.append(f"app_shell.{key} must be explicitly defined")
 
     data_contracts = brief.get("data_contracts")
@@ -300,7 +300,9 @@ def validate_brief(brief: Any, pieces: dict[str, Any] | None = None) -> list[str
             if not isinstance(accessibility.get("minimum_target_px"), int) or accessibility.get("minimum_target_px", 0) < 44:
                 errors.append(f"{where}.accessibility.minimum_target_px must meet the 44px Naya house rule")
             for field in ("contrast_checked", "keyboard_complete", "focus_visible", "focus_not_obscured", "reduced_motion", "screen_reader_semantics", "zoom_reflow_checked"):
-                if accessibility.get(field) is not True:
+                if not isinstance(accessibility.get(field), bool):
+                    errors.append(f"{where}.accessibility.{field} must be explicitly recorded as a boolean")
+                elif stage == "release" and accessibility.get(field) is not True:
                     errors.append(f"{where}.accessibility.{field} must be true before release")
 
         acceptance = screen.get("acceptance")
@@ -342,6 +344,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Validate a Naya Interface Brief V1 before factory dispatch.")
     parser.add_argument("brief", type=Path, help="Path to the brief JSON file")
     parser.add_argument("--pieces", type=Path, help="Optional current Smart Factory pieces.json registry")
+    parser.add_argument("--stage", choices=("prebuild", "release"), default="prebuild", help="prebuild validates completeness; release also requires completed accessibility checks")
     args = parser.parse_args()
 
     try:
@@ -354,7 +357,7 @@ def main() -> int:
         print(json.dumps(result, indent=2))
         return 2
 
-    errors = validate_brief(brief, pieces)
+    errors = validate_brief(brief, pieces, stage=args.stage)
     result = {
         "status": "PASS" if not errors else "BLOCKED",
         "contract_id": brief.get("contract_id"),
@@ -363,6 +366,7 @@ def main() -> int:
         "screens_checked": len(brief.get("screens", [])) if isinstance(brief.get("screens"), list) else 0,
         "components_checked": len(brief.get("component_manifest", [])) if isinstance(brief.get("component_manifest"), list) else 0,
         "registry_checked": str(args.pieces) if args.pieces else None,
+        "stage": args.stage,
         "errors": errors,
         "note": "PASS means the brief meets this semantic pre-build contract only; it does not certify implementation, visual quality, security, accessibility conformance, deployment, or production behavior."
     }
