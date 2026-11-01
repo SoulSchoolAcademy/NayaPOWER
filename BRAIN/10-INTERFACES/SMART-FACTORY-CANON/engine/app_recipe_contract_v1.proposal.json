@@ -45,7 +45,8 @@
     "part_ids",
     "data_refs",
     "states",
-    "next_screen"
+    "next_screen",
+    "experience"
   ],
   "max_context": 3,
   "states": [
@@ -96,5 +97,16 @@
     "mobile primary action obscured"
   ],
   "draft_policy": "May contain explicit UNKNOWN and unwired actions; they must remain not-verified, never called live.",
-  "release_candidate_policy": "Requires positive evidence pointers for actual services, permissions, visual/accessibility test, cross-account denial, independent verdict and exact version. Preflight still requires independent verification."
+  "release_candidate_policy": "Requires positive evidence pointers for actual services, permissions, visual/accessibility test, cross-account denial, independent verdict and exact version. Preflight still requires independent verification.",
+  "experience_fields": {
+    "hero_meaning": "plain-language answer: what is this and why does it matter?",
+    "empty_state_copy": "honest text for when meaningful data is absent",
+    "truth_source_ref": "ledger/event/dataset reference; static content uses approved source reference, never fabricated events",
+    "grid_rule": "explicit layout and alignment at usable phone viewport after chrome",
+    "touch_state": "actual meaningful interaction feedback and disabled/failure behavior",
+    "phone_review_ref": "external record from actual phone viewport, not a promise",
+    "laptop_review_ref": "external record from actual desktop/laptop viewport, not a promise",
+    "independent_two_second_review_ref": "different-seat cold glance and comprehension verdict on the exact version, not self-awarded"
+  },
+  "experience_policy": "Universal on every SCENE in every app. Draft missing entries generate warnings; release_candidate missing/UNKNOWN experience receipts DENY. References alone do not prove a rendered, accessible, functional or independently verified app. Preserve human-only Director cold-open and existing 9/9.5/10 governance decisions; do not silently choose a threshold."
 }
