@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,42 @@ _Last updated: 2026-11-01 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-0400 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure 0200-lane1: rederive.py pin-transcription slip confirmed and correction-stamped
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): scratch-t0405-lane1/rederive.py sha256 e90a48bc...400bb... exact to the receipt's corrected pin, 11108 bytes, mtime 2026-10-15 08:59Z as claimed; rederive-results.json sha256 c22afac7... exact to the receipt's second pin, confirming the slip is isolated
+
+### ✅ 20261101-0400 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure 0150-pr2608: VOID receipt owns terminal state, BLOCKED marked SUPERSEDED
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): VOID receipt pr2608-review-seatgate-clarity.md sha256 349465e5... exact to the receipt's pin; t-BLOCKED-pr2608-review.md post-stamp sha256 7d80105a... exact to the receipt's post-stamp pin, stamp header present naming the VOID receipt, the false 'left U
+
+### ✅ 20261101-0350 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** BLOCKED brief-pr2608-review-SEATGATE: correct refusal of seat-gated impersonation review
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): receipt file exists and its full text was read - the refusal reasoning is sound (seat gate demands a Resolve/Verity signature; the author cannot independently review her own PR #2608 work); the file now carries the 2026-10-15 11:50Z SUPERSEDED stamp nam
+
+### ✅ 20261101-0350 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Phase 2 batch t0815: three tongues for ranks 1-5 (15 files) on branch naya-phase2-three-tongues
+
+**Evidence:** VERIFIED this tick as far as live bytes allow (backlog sweep, oldest-first; no prior independent scorer row): branch naya-phase2-three-tongues resolves on the remote via git ls-remote (head a4385a44, HEAD 0bf797e2), so the branch is real and still live; gate file hidden_files/phase1-priority-rank.md exists. NOT PHANTOM. The receipt-era head cced141
+
+### ✅ 20261101-0350 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure pr2608: claim-brief self-test 7/7 + dedupe adjudication (VOID terminal, BLOCKED interim) + body adoption
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): receipt file exists; brief-gap-scorer-20261014-2320-pr2608.md sits in brief-queue/done/; VOID receipt pr2608-review-seatgate-clarity.md exists (mtime 2026-10-15 06:13Z, matching the receipt's sequence); t-BLOCKED-pr2608-review.md exists and now carries 
+
+### ✅ 20261101-0340 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 03:35 PST: full 31-brief queue evaluated, 0 claimed, queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4761 bytes, sha256 fdb5e858...); the receipt's listed 31 brief names match the brief-queue disk set exactly (31/31, no diffs either way) and twelve-lane-rotation.json queued=31 with the same set, in_flight=[]; brief-queue/claimed/ holds only the 'done' marker; prior stall receipt gate-stall-202
+
 ### ✅ 20261101-0320 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Distill-feed #2537 final distillation: 1013 delta comments + essence to #2641
@@ -31462,6 +31498,12 @@ _Last updated: 2026-11-01 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gate-stall-20261017-1946.md
 
 **Evidence:** Process receipt, no code artifacts (evaluation-only, nothing phantom). 18/18 queue briefs evaluated in pinned band order; 15 skipped on explicit NON-Clarity bars, 3 refused via claim-script exit 7 (parent-authorship) with no queue writes. Real routing hole surfaced: the 1120 repair brief (claim-brief.py exit-7 over-fire) is itself unclaimable by an
+
+### ✅ 20261101-0340 — Team LEARN, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Monthly distillation 2026-11-01: lesson value audit (37-lesson census)
+
+**Evidence:** VERIFIED this tick on live bytes: lessons.jsonl post-filing sha256 42c4ed24... matches the receipt's post-filing pin exactly, 38 records (37 census + mirror lesson monthly-audit-log-silence-is-not-zero-20261101 as last record, additive only); lesson-injection-log.jsonl sha256 4b70671a... exact, 834 rows, span 2026-10-17T15:16:07Z to 2026-10-24T15:4
 
 ### ✅ 20261101-0320 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
