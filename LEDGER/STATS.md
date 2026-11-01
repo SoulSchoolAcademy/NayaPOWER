@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-01 11:03 UTC_
+_Last updated: 2026-11-01 11:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 7182
-- ✅ Verified (8+): 7115
+- **Total scored actions:** 7191
+- ✅ Verified (8+): 7124
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -15,18 +15,18 @@ _Last updated: 2026-11-01 11:03 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 514 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 513 | 8.9 | 9.5 |
+| Team 1 | Naya Verity | 515 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 515 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 480 | 9.0 | 10 |
 | Team 4 | Naya Mason | 446 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 595 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 349 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 457 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 477 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 609 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 610 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 823 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 447 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 388 | 9.2 | 9.5 |
+| Team 12 | Naya Herald | 389 | 9.2 | 9.5 |
 
 ## Learning velocity
 
@@ -718,6 +718,7 @@ _Last updated: 2026-11-01 11:03 UTC_
 - **20261030-2330:** 3 actions, avg 9.0/10
 - **20261031-0310:** 1 actions, avg 9.0/10
 - **20261031-2130:** 2 actions, avg 9.0/10
+- **20261101-0330:** 5 actions, avg 9.0/10
 - **scorer-20261014-1520:** 2 actions, avg 9.2/10
 - **scorer-20261014-1540:** 3 actions, avg 8.5/10
 - **gap-t0771:** 2 actions, avg 9.0/10
@@ -1460,6 +1461,7 @@ _Last updated: 2026-11-01 11:03 UTC_
 - **lane-scorer-20261020-1240:** 1 actions, avg 9.5/10
 - **distill-daily-20261021-laneKNOW:** 1 actions, avg 9.0/10
 - **distill-daily-20261021:** 1 actions, avg 7.5/10
+- **20261101-0320:** 4 actions, avg 9.0/10
 - **lane-scorer-20261018-1950:** 1 actions, avg 0.0/10
 - **lane-scorer-20261018-2020:** 1 actions, avg 0.0/10
 - **lane-scorer-20261018-2050:** 1 actions, avg 0.0/10
