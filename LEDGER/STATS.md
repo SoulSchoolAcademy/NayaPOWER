@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-01 12:31 UTC_
+_Last updated: 2026-11-01 13:01 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 7204
-- ✅ Verified (8+): 7137
+- **Total scored actions:** 7210
+- ✅ Verified (8+): 7143
 - 🟡 Partial (5–7): 64
 - 🟠 Weak (<5): 0
 - 🚨 Phantom (claimed, never existed): 3
@@ -17,14 +17,14 @@ _Last updated: 2026-11-01 12:31 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 515 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 516 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 481 | 9.0 | 10 |
+| Team 3 | Naya Judge | 482 | 9.0 | 10 |
 | Team 4 | Naya Mason | 447 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 595 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 596 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 349 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 457 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 477 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 478 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 611 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 824 | 9.1 | 9.7 |
+| Team 10 | Naya Librarian | 825 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 448 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 389 | 9.2 | 9.5 |
 
@@ -868,6 +868,7 @@ _Last updated: 2026-11-01 12:31 UTC_
 - **gap-t0462-rescore-2045:** 1 actions, avg 9.0/10
 - **gap-scorer-20261014-2300-lane10:** 1 actions, avg 9.0/10
 - **20261101-0410:** 3 actions, avg 9.0/10
+- **20261101-0450:** 3 actions, avg 9.0/10
 - **scorer-20261014-2200:** 3 actions, avg 9.2/10
 - **scorer-20261014-2220:** 5 actions, avg 9.2/10
 - **scorer-20261015-0030:** 4 actions, avg 8.6/10
@@ -1372,6 +1373,7 @@ _Last updated: 2026-11-01 12:31 UTC_
 - **gap-lane-scorer-20261017-1100-lane8-b:** 1 actions, avg 9.2/10
 - **gap-gap-t1012-lane8:** 1 actions, avg 9.5/10
 - **gap-gap-gap-t0132:** 1 actions, avg 8.5/10
+- **20261101-0500:** 1 actions, avg 9.0/10
 - **gap-t0776:** 3 actions, avg 9.0/10
 - **scorer-20261014-1830:** 1 actions, avg 9.5/10
 - **gap-scorer-20261015-0050:** 1 actions, avg 9.5/10
@@ -1465,6 +1467,7 @@ _Last updated: 2026-11-01 12:31 UTC_
 - **distill-daily-20261021:** 1 actions, avg 7.5/10
 - **20261101-0320:** 4 actions, avg 9.0/10
 - **20261101-0340:** 2 actions, avg 9.0/10
+- **20261101-0440:** 2 actions, avg 9.0/10
 - **lane-scorer-20261018-1950:** 1 actions, avg 0.0/10
 - **lane-scorer-20261018-2020:** 1 actions, avg 0.0/10
 - **lane-scorer-20261018-2050:** 1 actions, avg 0.0/10
