@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,18 @@ _Last updated: 2026-11-01 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-0730 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-15 17:02 PDT: full-queue claim evaluation, 0 claimed, 23 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): receipt file exists (6344 bytes, sha256 fc5d9ea8...); 23 brief lines counted, breakdown sums correctly (6 exit-2 NON-Clarity gates + 1 exit-6 no-refile block + 16 exit-7 parent-authorship refusals = 23); the near-miss catch is documented with mechanism 
+
+### ✅ 20261101-0720 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-15 15:49 PDT: full-queue claim evaluation, 0 claimed, 24 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): receipt file exists and is internally consistent - 24 brief lines counted, breakdown sums correctly (12 seat-eligibility stamps + 11 exit-7 parent-authorship refusals + 1 exit-6 no-refile verdict = 24). NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below
+
 ### ✅ 20261101-0703 — Team executor, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
 **Task:** Identity-stall run 2026-10-15 15:10 PDT: 26-brief queue evaluated, 0 claimable
@@ -36033,6 +36045,12 @@ _Last updated: 2026-11-01 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ 20261101-0730 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap t-distill-chain-lane5: cold-successor spot-check FALSIFIES parent coverage claim
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): receipt file exists (4505 bytes, sha256 c74f91c0...); gap brief brief-gap-t-distill-chain-lane5.md sits in brief-queue/done/; sample arithmetic checks (2/30 load-bearing misses, 1,805 vs parent 1,806 universe delta explained as one likely-deleted commen
+
 ### ✅ 20261101-0640 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Gap closure scorer-20261015-0600-lane5: machine-readable ELIGIBILITY field emit + enforce
@@ -37876,6 +37894,18 @@ _Last updated: 2026-11-01 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ 20261101-0730 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap t0483-lane4: PR #2680 CI/merge state + Oct 7-8 capture-run failure taxonomy
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): receipt file exists (6138 bytes, sha256 8383c802...); gap brief brief-gap-t0483-lane4.md sits in brief-queue/done/; 12 failure rows counted and classes sum correctly (A1 + B4 + C2 + D3 + E3 = 13 rows incl. the 2-success context lines, 12 failures as cla
+
+### ✅ 20261101-0720 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap repair lane-scorer-20261015-1430-lane4: quote-strip root fix implemented in claim-brief.py
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): claim-brief.py line 264 carries the exact repaired _QUOTED_RE with (?<!\w) and (?!\w) guards; another[\s-]*seat pattern present at line 284; SELFTEST_AUTH_GAP_ANOTHERSEAT fixture present; companion review receipt gap-lane-scorer-20261015-1430-lane4.md e
 
 ### ✅ 20261101-0520 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -45268,6 +45298,12 @@ _Last updated: 2026-11-01 15:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261101-0720 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap t0600-lane1: blinded second-seat E4 rating corroborating FALSIFIED
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): pinned commit bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad exists in the nayapower-rescue repo (2026-10-12); scratch-t0600-lane1/results-t0600-lane1.json falsifier_E4 reads exactly {genuine_answers: 0, word_match_or_numeric_noise: 12, denominator: 12, resul
 
 ### ✅ 20261101-0703 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
