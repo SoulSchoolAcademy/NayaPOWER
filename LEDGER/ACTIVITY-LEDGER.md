@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 08:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -10901,6 +10901,14 @@ _Last updated: 2026-11-01 08:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Created lane-journals/ + template per spec; seeded 9 evidenced lanes (all <=26 lines, grounded in t892-t922 receipts/scores); Lane 9 journal names the t902 phantom as named failure mode; Lane 6 honestly unseeded (no evidence, no invention); brief template verified spec-aligned, no edit needed; adoption notice on #2175 (comment 6114826631, link not 
 
+### ✅ t0932 — Team 10, Team Naya Scorer (Brain Index) — 8.0/10 [VERIFIED]
+
+**Task:** gap-brief claimability assessment (dry-runs + hand-pinned validation)
+
+**Receipt:** `twelve-lane-receipts/t0932-lane10.md`
+
+**Evidence:** Verified now: hidden_files/t0932-dryrun/ holds exactly 28 .out files as claimed (plus classify.py/handread.py/handread.txt tooling), and the receipt itself carries an honest appended correction of its own header-window flaw (21:50 end asserted at 21:15 write). Score 8.0, not 9.5, because: assessment-only work (no lane claim changed), the run admits
+
 ### ✅ t932-lane10 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
 **Task:** t932: brain-index freshness gate - drift check, PR #2385 state, supersession finding
@@ -11893,6 +11901,14 @@ _Last updated: 2026-11-01 08:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: instrument seal eb1179c1a15c99dca43d4bda1156e16be21a34907f0857ea229c060c67626e5d matches sha256 of hidden_files/retrieval/t0718_executor_t0897.py byte-exact; results JSON (2.7KB) and empty stderr log both exist. Score 9.5 — clears 9.5 because the one-shot pre-reg discipline was executed end-to-end (seal-before-run, 9/9 pin re-verify at ac
 
+### ✅ t0895 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** FP-002 vs RULING-1 reconciliation
+
+**Receipt:** `twelve-lane-receipts/t0895-lane3.md`
+
+**Evidence:** Verified now: grep count of 'RECONCILIATION (Lane 3, t0895)' in hidden_files/feedback-feed.md is exactly 1, with FP-002 proposal text and RULING-1 preserved per the receipt. Score 9.0, not 9.5, because: the work is record-only reconciliation (conflict ruled CLOSED on the record) with no code or behavior change, and the follow-on 7-field board post 
+
 ### ✅ t895 — Team 3, Team Naya Scorer (Decision Engine) — 9.3/10 [VERIFIED]
 
 **Task:** FP-002 vs RULING-1 reconciliation, feed line 376
@@ -11906,6 +11922,14 @@ _Last updated: 2026-11-01 08:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0895-lane3.md`
 
 **Evidence:** Verified: RECONCILIATION (Lane 3, t0895) present exactly once (grep count 1, line 376 of feedback-feed.md), FP-002 text (line 234) and RULING-1 (line 259) byte-identical before/after the insert, the '#14 encoding' pointer rejected on bytes (zero occurrences in feed), scope fenced record-vs-proposal-text, RULING-1 AFFIRMED as operative reading with 
+
+### ✅ t0892 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** decision-replay v2 of t0888 verdict
+
+**Receipt:** `twelve-lane-receipts/t0892-lane3.md`
+
+**Evidence:** Verified: hidden_files/decision-replay-v2-t0892.md exists, 12243 bytes as claimed, 5 replay rows CONFIRMED with zero dominoes moved, pre-registration block present. Score 9.0, not 9.5, because: replay was by the same seat that authored the t0888 verdict (not an independent second seat), and it confirms prior work without shipping any new fix. Gap-r
 
 ### ✅ t892 — Team 3, Team Naya Scorer (Decision Engine) — 9.3/10 [VERIFIED]
 
@@ -12072,6 +12096,14 @@ _Last updated: 2026-11-01 08:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t892-lane1.md`
 
 **Evidence:** Real reusable template (README, LAYOUT, blinded scoring protocol, schema, runner) + full demo run on a live material claim with sealed expectations, blinded scorer (control 7/10, treatment 9/10, adversarial 9/10), adversarial wrong-claim rejection, cold-successor reproduction, exact SHAs cited. Deductions: single-blind only, same-model-family score
+
+### ✅ t0888 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** PR #2418 re-verdict HOLD on exact live tip
+
+**Receipt:** `twelve-lane-receipts/t0888-lane3.md`
+
+**Evidence:** Verified: receipt re-derived tip/head SHAs and classified all 23 check-runs by job-log bytes at the time (real node-test failure 400!=200, real consensus-gate failure with 0 reviews, stale-input pin artifact re-run to PASS); lane self-score 9.2 corroborates. Re-verification today limited: git ls-remote returns main only, branch naya/three-decision-
 
 ### ✅ t888 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -30204,6 +30236,12 @@ _Last updated: 2026-11-01 08:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261101-0119 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall 01:19 PDT - 31-brief claim attempt, zero claimable, queue untouched
+
+**Evidence:** Verified by this scorer from live bytes: brief-queue root holds 31 brief-*.md (excluding lane-feed.md), twelve-lane-rotation.json queued = 31 with exact set match to disk, in_flight=[]; the receipt's listed 31 blocked briefs match the disk set exactly (29 x exit 7 parent-authorship + 2 x exit 2 seat/routing bar, counts re-derived from the receipt t
 
 ### ✅ 20261101-0040 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
