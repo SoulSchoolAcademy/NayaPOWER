@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,48 @@ _Last updated: 2026-11-01 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-1030 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 00:57 PDT: full-queue claim evaluation, 0 claimed, 27 items incl. 1 stale retire
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row, only lane-seat rows): receipt file exists (6465 bytes); blocked table machine-counted 27 rows summing exactly (8 exit-2 + 17 exit-7 + 1 exit-6 no-refile + 1 exit-4 stale retire); no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score 9.0, G
+
+### ✅ 20261101-1030 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 00:52 PDT: full-queue claim evaluation, 0 claimed, 25 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row, only lane-seat rows): receipt file exists (3042 bytes); breakdown sums to the 25 header only when the exit-7 list is counted as enumerated (2 exit-2 stamped + 17 exit-7 parent-authorship + 1 no-refile + 5 exit-2 eligibility = 25), while the class label say
+
+### ✅ 20261101-1030 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 00:42 PDT: full-queue claim evaluation, 0 claimed, 26 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row, only lane-seat rows): receipt file exists (3854 bytes); Class A machine-counted 12 + Class B machine-counted 14 = 26, matching the header; no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (no lane self-score st
+
+### ✅ 20261101-1020 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 00:29 PDT: full-queue claim evaluation, 0 claimed, 26 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (4447 bytes); table machine-counted 26 rows summing exactly (8 exit-2 gates + 17 exit-7 parent-authorship + 1 no-refile verdict), each with a named parent anchor; no branch/SHA cited, so the git leg does not apply. NOT PHANTOM. Score 9
+
+### ✅ 20261101-1020 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 07:21 UTC: full-queue claim evaluation, 0 claimed, 26 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (6783 bytes); table machine-counted 26 rows summing exactly as claimed (8 stamped NON-Clarity gates exit 2 + 17 parent-authorship exit 7 + 1 no-refile exit 6); 3 live claim-brief.py probes documented, one per barrier class, queue untou
+
+### ✅ 20261101-1010 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-10-16 00:06-00:09 PDT: full-queue claim evaluation, 0 claimed, all blocked
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row, only mislabeled lane-seat rows): receipt file exists; blocked table lists 27 entries but brief-gap-scorer-20261015-0050-lane7 appears twice (items 5 and 25), so only 26 distinct briefs against the '27 candidates' header and the '25 gates + 1 no-refile = 26
+
+### ✅ 20261101-1010 — Team executor, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up lane-executor 2026-10-16 00:00: prose-count repair on gate-stall-20261015-2358 (30 -> 26)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row, only mislabeled lane-seat rows): receipt file exists; parent gate-stall-20261015-2358.md machine-counted grep -c '^|' = 28 (2 header/separator -> 26 data rows); dated RETRACTION section present on the parent voiding the '30'/'29+1' prose figures; sibling 2
+
 ### ✅ 20261101-1000 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Gate-stall run 2026-11-01 09:55 PST: full-queue claim evaluation, 0 claimed, 31 blocked
@@ -46696,6 +46738,18 @@ _Last updated: 2026-11-01 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ 20261101-1020 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap-gate-stall-20261016-0009 lane 0: eligibility-index regeneration hook + stall-path consultation doc
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row): receipt file exists (5326 bytes); wrapper bin/refresh-eligibility-index.py sha256 b9cf18a6... and brief-queue-eligibility-README.md sha256 a3806124... both match the receipt pins byte-exact; builder bin/build-eligibility-index.py sha256 63110bea... matche
+
+### ✅ 20261101-1010 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up gate-stall-20261016-0009 lane 0: machine-readable brief-queue eligibility index built
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior Team Naya Scorer row, only mislabeled lane-seat rows): receipt file exists; builder hidden_files/bin/build-eligibility-index.py sha256 63110bea... matches the receipt pin exactly; the gap brief sits in brief-queue/done/. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, matching the 
 
 ### ✅ gate-stall-20261029-0145 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
