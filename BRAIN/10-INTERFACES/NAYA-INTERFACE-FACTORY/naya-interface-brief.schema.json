@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nayanet.live/schemas/naya-interface-brief-v1.schema.json",
+  "title": "Naya Interface Brief V1",
+  "description": "Machine-readable, pre-build design and experience contract. It supplements the existing Smart Factory build contract; it does not replace or mutate it.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "contract_id",
+    "contract_version",
+    "project",
+    "outcome",
+    "design_authority",
+    "app_shell",
+    "data_contracts",
+    "component_manifest",
+    "viewport_matrix",
+    "screens",
+    "quality_gates"
+  ],
+  "properties": {
+    "contract_id": { "const": "NAYA-INTERFACE-BRIEF" },
+    "contract_version": { "const": "1.0.0" },
+    "status": { "enum": ["draft", "ready_for_build", "implemented", "verified", "released"] },
+    "project": {
+      "type": "object",
+      "required": ["id", "name", "pi_ref", "source_of_truth"],
+      "properties": {
+        "id": { "type": "string", "minLength": 2 },
+        "name": { "type": "string", "minLength": 2 },
+        "pi_ref": { "type": "string", "minLength": 3 },
+        "source_of_truth": { "type": "string", "minLength": 3 },
+        "owner": { "type": "string" },
+        "current_commit": { "type": "string" }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "required": ["primary_user", "job", "success"],
+      "properties": {
+        "primary_user": { "type": "string", "minLength": 3 },
+        "job": { "type": "string", "minLength": 8 },
+        "success": { "type": "string", "minLength": 8 },
+        "non_goals": { "type": "array", "items": { "type": "string" } },
+        "measures": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "design_authority": {
+      "type": "object",
+      "required": ["design_contract_ref", "design_standard_ref"],
+      "properties": {
+        "design_contract_ref": { "type": "string", "minLength": 3 },
+        "design_standard_ref": { "type": "string", "minLength": 3 },
+        "app_contract_ref": { "type": "string" },
+        "human_director_decisions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "app_shell": {
+      "type": "object",
+      "required": ["navigation_model", "global_context", "search_policy"],
+      "properties": {
+        "navigation_model": { "type": "string", "minLength": 3 },
+        "global_context": { "type": "string", "minLength": 3 },
+        "search_policy": { "type": "string", "minLength": 3 },
+        "persistent_elements": { "type": "array", "items": { "type": "string" } },
+        "shell_owner": { "type": "string" }
+      }
+    },
+    "data_contracts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "entity", "source_ref", "authority", "truth_state", "freshness", "empty_state", "error_state"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]+$" },
+          "entity": { "type": "string", "minLength": 2 },
+          "source_ref": { "type": "string", "minLength": 3 },
+          "authority": { "enum": ["canonical", "projection", "external-authorized", "device-local", "demo-only", "unknown"] },
+          "truth_state": { "enum": ["live", "cached", "stale", "local", "demo", "predicted", "unavailable", "unknown"] },
+          "freshness": { "type": "string", "minLength": 3 },
+          "owner_scope": { "type": "string" },
+          "permission_ref": { "type": "string" },
+          "derivation": { "type": "string" },
+          "empty_state": { "type": "string", "minLength": 3 },
+          "error_state": { "type": "string", "minLength": 3 },
+          "privacy_class": { "enum": ["public", "shared", "private", "sensitive", "unknown"] }
+        }
+      }
+    },
+    "component_manifest": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["piece_id", "registry_path", "role", "use_when", "registry_status"],
+        "properties": {
+          "piece_id": { "type": "string", "pattern": "^NAYA-[A-Z]{3}-[0-9]{3}$" },
+          "registry_path": { "type": "string", "minLength": 3 },
+          "role": { "type": "string", "minLength": 3 },
+          "use_when": { "type": "string", "minLength": 3 },
+          "avoid_when": { "type": "string" },
+          "variant": { "type": "string" },
+          "registry_status": { "enum": ["canonical", "reference", "approved_source", "candidate", "unverified", "retired"] },
+          "verification": { "enum": ["not_checked", "source_reviewed", "specimen_reviewed", "tested", "independently_verified"] },
+          "dependencies": { "type": "array", "items": { "type": "string" } },
+          "override_policy": { "type": "string" }
+        }
+      }
+    },
+    "viewport_matrix": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["id", "width", "height", "input_mode"],
+        "properties": {
+          "id": { "type": "string" },
+          "width": { "type": "integer", "minimum": 320 },
+          "height": { "type": "integer", "minimum": 256 },
+          "orientation": { "enum": ["portrait", "landscape", "either"] },
+          "input_mode": { "enum": ["touch", "mouse", "keyboard", "mixed"] },
+          "zoom_percent": { "type": "integer", "minimum": 100 }
+        }
+      }
+    },
+    "screens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "route", "job", "entry_context", "first_view", "sections", "actions", "data_dependencies", "states", "responsive", "accessibility", "acceptance"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]+$" },
+          "route": { "type": "string", "minLength": 1 },
+          "job": { "type": "string", "minLength": 8 },
+          "entry_context": { "type": "string", "minLength": 3 },
+          "exit_condition": { "type": "string" },
+          "back_behavior": { "type": "string" },
+          "first_view": {
+            "type": "object",
+            "required": ["orientation", "focal_point", "supporting_items", "primary_action"],
+            "properties": {
+              "orientation": { "type": "string", "minLength": 3 },
+              "focal_point": { "type": "string", "minLength": 3 },
+              "supporting_items": { "type": "array", "maxItems": 3, "items": { "type": "string" } },
+              "primary_action": { "type": ["string", "null"] },
+              "secondary_actions": { "type": "array", "maxItems": 1, "items": { "type": "string" } },
+              "ambient": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "sections": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id", "purpose", "priority"],
+              "properties": {
+                "id": { "type": "string" },
+                "purpose": { "type": "string", "minLength": 3 },
+                "priority": { "enum": ["focal", "supporting", "secondary", "ambient"] },
+                "data_ref": { "type": "string" },
+                "component_ids": { "type": "array", "items": { "type": "string" } },
+                "disclosure_rule": { "type": "string" }
+              }
+            }
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "label", "intent", "actor", "scope", "authority", "effect", "success_signal", "failure_recovery", "reversible", "requires_confirmation"],
+              "properties": {
+                "id": { "type": "string" },
+                "label": { "type": "string", "minLength": 1 },
+                "intent": { "type": "string", "minLength": 3 },
+                "actor": { "type": "string", "minLength": 2 },
+                "scope": { "type": "string", "minLength": 2 },
+                "authority": { "type": "string", "minLength": 3 },
+                "preconditions": { "type": "array", "items": { "type": "string" } },
+                "effect": { "type": "string", "minLength": 3 },
+                "success_signal": { "type": "string", "minLength": 3 },
+                "failure_recovery": { "type": "string", "minLength": 3 },
+                "reversible": { "type": "boolean" },
+                "requires_confirmation": { "type": "boolean" },
+                "evidence_ref": { "type": "string" }
+              }
+            }
+          },
+          "data_dependencies": { "type": "array", "items": { "type": "string" } },
+          "states": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["state", "presentation", "recovery"],
+              "properties": {
+                "state": { "enum": ["initial", "loading", "live", "cached", "stale", "empty", "error", "offline", "unavailable", "forbidden", "pending", "success", "rejected", "timeout"] },
+                "presentation": { "type": "string", "minLength": 3 },
+                "recovery": { "type": "string", "minLength": 3 },
+                "truth_label": { "type": "string" }
+              }
+            }
+          },
+          "responsive": {
+            "type": "object",
+            "required": ["small", "medium", "large", "scroll_policy", "horizontal_overflow"],
+            "properties": {
+              "small": { "type": "string", "minLength": 3 },
+              "medium": { "type": "string", "minLength": 3 },
+              "large": { "type": "string", "minLength": 3 },
+              "scroll_policy": { "enum": ["page-scroll", "bounded-screen", "explicit-data-region", "mixed"] },
+              "horizontal_overflow": { "enum": ["none", "explicit-two-dimensional-region-only"] },
+              "safe_area": { "type": "boolean" },
+              "keyboard_safe": { "type": "boolean" },
+              "no_clipping": { "type": "boolean" }
+            }
+          },
+          "accessibility": {
+            "type": "object",
+            "required": ["target_standard", "minimum_target_px", "contrast_checked", "keyboard_complete", "focus_visible", "reduced_motion", "screen_reader_semantics"],
+            "properties": {
+              "target_standard": { "const": "WCAG-2.2-AA" },
+              "minimum_target_px": { "type": "integer", "minimum": 44 },
+              "contrast_checked": { "type": "boolean" },
+              "keyboard_complete": { "type": "boolean" },
+              "focus_visible": { "type": "boolean" },
+              "focus_not_obscured": { "type": "boolean" },
+              "reduced_motion": { "type": "boolean" },
+              "screen_reader_semantics": { "type": "boolean" },
+              "zoom_reflow_checked": { "type": "boolean" }
+            }
+          },
+          "acceptance": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 5 } }
+        }
+      }
+    },
+    "quality_gates": {
+      "type": "object",
+      "required": ["minimum_dimension_score", "independent_verification_required", "hard_gates"],
+      "properties": {
+        "minimum_dimension_score": { "type": "number", "minimum": 9, "maximum": 10 },
+        "aaa_target": { "type": "number", "minimum": 9.5, "maximum": 10 },
+        "independent_verification_required": { "const": true },
+        "human_approval_required_for": { "type": "array", "items": { "type": "string" } },
+        "hard_gates": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+      }
+    }
+  }
+}
