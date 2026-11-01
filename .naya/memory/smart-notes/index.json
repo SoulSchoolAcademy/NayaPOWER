@@ -15238,6 +15238,66 @@
       "page_hash": "2b20d90cdf3e0a67353e6b2582a6d843e068ad57923d3ed6f2c5b8545fcf03d6"
     },
     {
+      "smart_note_id": "SN-0858",
+      "intelligent_block_id": "IB-SMART-NOTE-20261101-sn0858-viewport-optimization-law",
+      "title": "The Viewport Is the Service",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/DESIGN/viewport-optimization-law/SN-0858/IB-SMART-NOTE-20261101-sn0858-viewport-optimization-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "VIEWPORT_OPTIMIZATION_LAW",
+      "captured_at": "2026-11-01",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "Direct registration of a page-only filing by Naya Resolve Narzan on 2026-11-01, at Shawn's direction (the Maker's Charge: make it real, do not wait for another seat). The note was authored by Naya Nitro Narzan (created 2026-11-01T16:56:25Z) and first landed page-only under number SN-0834 — a number already taken by a senior note, so its live link served the wrong note. The filing lane renumbered it to SN-0858 and re-landed the page at this path, again page-only: no runtime capture exists and no registry entry was made. Resolve flagged the collision and the missing registration to Nitro by Smart Mail on 2026-11-01 (~17:03Z and ~18:43Z). This entry registers the published page exactly once. content_hash is omitted deliberately: it hashes a capture's intelligence payload and no capture exists — fabricating one is refused. page_hash is stamped from the raw page bytes (sha256, the checker's own _page_file_hash)."
+      },
+      "page_hash": "bf6721f3ff471ef126c39083391824c18202741066a76bbe9d0636c9e4df620f"
+    },
+    {
+      "smart_note_id": "SN-0859",
+      "intelligent_block_id": "IB-SMART-NOTE-20261101-sn0859-the-real-object-law",
+      "title": "Every Element Is a Real Physical Object",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/DESIGN/real-object-law/SN-0859/IB-SMART-NOTE-20261101-sn0859-the-real-object-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "REAL_OBJECT_LAW",
+      "captured_at": "2026-11-01",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "Direct registration of a page-only filing by Naya Resolve Narzan on 2026-11-01, at Shawn's direction (the Maker's Charge: make it real, do not wait for another seat). The note was authored by Naya Nitro Narzan (created 2026-11-01T17:31:00Z) and landed page-only at this path: no runtime capture exists and no registry entry was made. Resolve flagged the missing registration to Nitro by Smart Mail on 2026-11-01 (~18:43Z). This entry registers the published page exactly once. content_hash is omitted deliberately: it hashes a capture's intelligence payload and no capture exists — fabricating one is refused. page_hash is stamped from the raw page bytes (sha256, the checker's own _page_file_hash)."
+      },
+      "page_hash": "8eb9acfd8bf54f87837324ca079f3b73ca01386dc62c628a32efe012b47dfc6a"
+    },
+    {
+      "smart_note_id": "SN-0860",
+      "intelligent_block_id": "IB-SMART-NOTE-20261101-sn0860-the-naya-canon",
+      "title": "The Naya Canon — Everything We Stand For, In One Torch",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/NAYA/canon/SN-0860/IB-SMART-NOTE-20261101-sn0860-the-naya-canon.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "NAYA",
+      "topic": "NAYA",
+      "subtopic": "CANON",
+      "captured_at": "2026-11-01",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "Direct registration of a page-only filing by Naya Resolve Narzan on 2026-11-01, at Shawn's direction (the Maker's Charge: make it real, do not wait for another seat). The note was authored by Naya Nitro Narzan (created 2026-11-01T18:40:00Z) as the Smart Note for THE NAYA CANON and landed page-only at this path: no runtime capture exists and no registry entry was made. Resolve flagged the missing registration to Nitro by Smart Mail on 2026-11-01 (~18:43Z). This entry registers the published page exactly once. content_hash is omitted deliberately: it hashes a capture's intelligence payload and no capture exists — fabricating one is refused. page_hash is stamped from the raw page bytes (sha256, the checker's own _page_file_hash)."
+      },
+      "page_hash": "62e920155fd51938cb48740e27b962c14032ca4760e3c4a3859e92e8d084c6e0"
+    },
+    {
       "smart_note_id": "SN-1857",
       "intelligent_block_id": "IB-SMART-NOTE-20261024-sn1857-done-means-visible",
       "title": "Done Means Visible",
@@ -16325,5 +16385,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "7d6fda1b167ce91aa194f572dfbbbb1a384cf4039913d6d9299938c5f41ce093"
+  "corpus_manifest_hash": "56b31773db140a6520b49ed5438e105846ee75aa819ecd3476a3ee65555e60ba"
 }
