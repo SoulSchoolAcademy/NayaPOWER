@@ -1,0 +1,143 @@
+<!-- ============================================================
+  THE VIEWPOINT SYSTEM — Ultimate Parts Set
+  Shawn's law 2026-11-01: The Viewpoint Law + The Rubik's Cube
+  
+  Every part is a REAL OBJECT. Nothing flat. Everything alive.
+  Every part touchable, usable, ready for any requirement, any intent.
+  
+  PARTS IN THIS FILE:
+  01. VIEWPOINT (the container — a world, a screen, a moment)
+  02. HERO OBJECT (the centerpiece — gauge, instrument, signature)
+  03. ORB (the satellite — stat, alive, flowing light)
+  04. JEWEL ORBIT (the family ring — jewels circling the hero)
+  05. DISPLAY MODULE (the recessed readout — score set INTO the machine)
+  06. DIAL NUMERALS (printed on metal — 0-500, Bugatti style)
+  07. MORPH BUTTON (the tiny toggle — unfolds/folds navigation)
+  08. CHROME BEZEL (the machined ring — polished aluminum)
+  09. DIAMOND CENTER (the jewel heart — multi-layered, going back)
+  10. FLOWING LIGHT (the energy — orb color breathing around each orb)
+============================================================ -->
+
+<!-- 01. VIEWPOINT -->
+<!-- WHAT: A viewpoint is a complete world — one screen, one purpose, one moment.
+     HOW: Full viewport. Centered hero. Nothing else visible. Navigation folds away.
+     WHY: The person experiences ONE thing at maximum. No clutter. No competition.
+     WHEN: Every screen. Every page. The hero viewpoint, the links viewpoint, the stats viewpoint.
+     LAW: The Viewpoint Law — the objective function of every object is the ultimate
+          viewpoint for the ultimate viewing and experience. -->
+<div class="viewpoint viewpoint-hero" data-viewpoint="hero">
+  <!-- Hero object lives here. Nothing else. -->
+</div>
+
+<!-- 02. HERO OBJECT -->
+<!-- WHAT: The centerpiece of a viewpoint — the instrument, the signature piece.
+     HOW: Real physical object. Chrome bezel. Black obsidian dial. Mechanical depth.
+          Diamond center. Display module. Jewel orbit. It breathes. It's alive.
+     WHY: This is where they land. This is the Bugatti of the internet.
+          The first thing they see must be the most real thing they've ever touched on a screen.
+     LAW: The Real Object Law — if it doesn't look touchable, it doesn't ship. -->
+<div class="hero-object" data-hero="speedometer">
+  <!-- Bezel, dial, needle, display, jewels — assembled, not faked. -->
+</div>
+
+<!-- 03. ORB -->
+<!-- WHAT: A satellite stat — a glowing sphere orbiting the hero.
+     HOW: Glossy black marble. 2px colored border (its spectrum identity).
+          Sharp window reflection (top-left). Colored rim light (bottom).
+          Number dead center (white-hot). Label below in its color. Nothing else.
+          8-second breathing cycle — its color flows around it.
+          Under-glow beneath — like floating above a surface, lighting it.
+     WHY: Stats as objects, not sentences. You SEE your numbers as physical things.
+     LAW: Spectrum = identity. Each orb owns its color. Touch = it responds. -->
+<div class="orb" style="--nc:#a06bff" data-orb="creating">
+  <span class="orb-num">4</span>
+  <span class="orb-label">CREATING</span>
+</div>
+
+<!-- 04. JEWEL ORBIT -->
+<!-- WHAT: Small spectrum jewels slowly circling the hero (40s rotation).
+     HOW: 8 jewels, one per spectrum color. Positioned on a ring outside the dial.
+          Slow continuous rotation. Each glows in its own color.
+     WHY: Makes the hero and orbs feel like ONE FAMILY. Same color language.
+          The welcome page jewels, brought home. Unity you can feel.
+     LAW: The Family Law — you can tell they're brothers and sisters. -->
+<g class="jewel-orbit" aria-hidden="true">
+  <!-- 8 jewels, spectrum order, rotating as one -->
+</g>
+
+<!-- 05. DISPLAY MODULE -->
+<!-- WHAT: The score readout — set INTO the dial, not on it.
+     HOW: Recessed black window. Thin metal bezel. Number in luminous green (#2fe89e).
+          Like the Bugatti's "000" — a physical display module in the instrument.
+     WHY: The hero number must feel like hardware, not text. It's the machine telling
+          you your score — not a label someone stuck on.
+     LAW: Real Object Law — speak in objects. The display IS an object. -->
+<div class="display-module" data-display="score">
+  <span class="display-num">225</span>
+  <span class="display-label">SMART SCORE</span>
+</div>
+
+<!-- 06. DIAL NUMERALS -->
+<!-- WHAT: Numbers printed on the dial — 0, 50, 100... 500.
+     HOW: Crisp white. Printed (not floating). Major ticks at numbers, minor between.
+          500-point cycles: 0→500, then 500→1000. Like the Bugatti's 0-550.
+     WHY: A real instrument has real markings. No side labels, no clutter.
+          The dial speaks for itself.
+     LAW: Harvest-first. The Bugatti's dial is the reference. Copy the beauty. -->
+<g class="dial-numerals" aria-hidden="true">
+  <!-- 0-500 by 50s, positioned inside the tick ring -->
+</g>
+
+<!-- 07. MORPH BUTTON -->
+<!-- WHAT: The tiny button that unfolds/folds navigation.
+     HOW: 40px circle. Top-right. Black with subtle border. ☰ / ✕ toggle.
+          One tap: nav unfolds, hero scales back to fit. Another tap: everything folds away.
+     WHY: Navigation doesn't sit on top of the experience — it unfolds when called,
+          then disappears. The person summons their tools, then returns to the viewpoint.
+     LAW: SN-0858 — fade, don't clutter. Restore in one tap. Morph, don't jump. -->
+<button class="morph-button" id="hero-toggle" aria-label="Toggle navigation">☰</button>
+
+<!-- 08. CHROME BEZEL -->
+<!-- WHAT: The machined aluminum ring around the hero.
+     HOW: Conic-gradient silver (#8a8a96 → #c0c0cc → #8a8a96). Polished.
+          Catches light from top-left (one light source). Real metal, not grey paint.
+     WHY: The bezel is what makes it feel like you could pick it up.
+          Chrome = precision = real. This is the Bugatti's signature.
+     LAW: Real Object Law — one light source (top-left). Real materials. -->
+<div class="chrome-bezel" aria-hidden="true"></div>
+
+<!-- 09. DIAMOND CENTER -->
+<!-- WHAT: The jewel heart of the instrument — multi-layered, going back.
+     HOW: 3 concentric machined rings behind the needle hub. Darker as they go deeper.
+          Like looking INTO the movement. Like a diamond set in the machine.
+     WHY: Depth you can feel. The center isn't flat — it's a well you look into.
+          This is what separates "picture of an object" from "the object itself."
+     LAW: Real Object Law — build layers, don't fake with shadows. Assembly, not effects. -->
+<g class="diamond-center" aria-hidden="true">
+  <!-- Layered rings: surface → middle → deep. Going back. -->
+</g>
+
+<!-- 10. FLOWING LIGHT -->
+<!-- WHAT: The orb's color breathing around it — energy in motion.
+     HOW: 8-second animation cycle on box-shadow. Glow intensifies, then settles.
+          Color-matched under-glow (0 28px 48px var(--nc)). The orb's aura.
+     WHY: Alive ≠ lit at rest. Alive = responsive, breathing, flowing.
+          The light flowing around each orb says: this thing is ON. It's working. It's yours.
+     LAW: Law 6 (refined) — alive = responsive, not lit at rest. The flow is the life. -->
+<!-- Applied via CSS animation on .orb — no separate element needed. The light IS the orb's presence. -->
+
+<!-- ============================================================
+  THE SYSTEM: HOW IT ALL CONNECTS
+  
+  THE RUBIK'S CUBE: Viewpoints folding into viewpoints. Objects becoming objects.
+  - Hero viewpoint: gauge + orbs + jewels. Nothing else.
+  - Tap morph button: nav unfolds (Smart Tabs, search, + buttons). Hero scales to 92%.
+  - Tap again: everything folds away. Hero takes the full viewport.
+  - Each section (Smart Links, stats) = its own viewpoint. Travel between them.
+  - Nothing overlaps. Nothing competes. Everything fits.
+  
+  THE OBJECTIVE FUNCTION: Create the ultimate viewpoint for the ultimate viewing
+  and experience. Everything you need, a click away. Nothing you don't, in view.
+  
+  10-STAR = optimized for THEM, in THIS MOMENT, understanding their intent.
+============================================================ -->
