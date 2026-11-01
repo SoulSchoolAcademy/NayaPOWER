@@ -24,7 +24,7 @@ if (!urlArg) { console.error('Require --url=... (no implicit production browsing
 const url=urlArg.slice(6);
 try { const u=new URL(url); if (!['https:','http:','file:'].includes(u.protocol)) throw Error('protocol'); }
 catch { console.error('Invalid URL'); process.exit(2); }
-const variants=[{name:'phone',width:390,height:844,mobile:true},{name:'desktop',width:1440,height:900,mobile:false}];
+const variants=[{name:'compact-phone',width:320,height:700,mobile:true},{name:'phone',width:390,height:844,mobile:true},{name:'tablet',width:768,height:1024,mobile:true},{name:'desktop',width:1440,height:900,mobile:false}];
 const chromeBins=process.platform==='win32'
  ? ['C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe','C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe']
  : ['/usr/bin/google-chrome','/usr/bin/chromium','/usr/bin/chromium-browser'];
