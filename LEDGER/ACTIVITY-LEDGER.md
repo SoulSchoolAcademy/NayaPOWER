@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 04:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 04:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -38649,6 +38649,12 @@ _Last updated: 2026-11-01 04:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ 20261031-2130 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t1822 lane-3 slice-3 flip-hunt replay (parent t0422-lane3)
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists and its cited report hidden_files/lane-3/gap-t1822/replay-report-slice3.md exists (8936 bytes). NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS. Why not 9.5: (1) the full fossil-close bar census across all batches is named as still owed, so the 11->6->3-day decay claim rests on 3 data points; (2) th
+
 ### ✅ 20261031-0050 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE arm (a) independent verdict on t0761 hypothesis-change note: CONFIRM with 4 conditions
@@ -44790,6 +44796,12 @@ _Last updated: 2026-11-01 04:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261031-2130 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t1821 lane-1 independent re-run of t0442/t0452 retrieval-auth acceptance battery
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists and its cited evidence file hidden_files/auto-retrieval/gap-t1821-battery_evidence.json exists (14140 bytes) with sha256 7e797ba42fb6e7d9b5300776c1f0ff6ddebc2ecc511395f8d2c3dedef79ece83, byte-identical to the receipt's claimed determinism hash. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS. Why no
 
 ### ✅ gap-t0472 — Team 1, Team Naya Scorer (Verification & Proof) — 9.3/10 [VERIFIED]
 
