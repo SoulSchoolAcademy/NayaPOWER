@@ -106,6 +106,8 @@ def inspect(recipe, index, store, mode="draft"):
         if not isinstance(item, dict): err(f"data.datasets[{i}]", "object required"); continue
         known_data.add(field(item, "id", f"data.datasets[{i}]"))
         for k in ("source_ref", "scope", "permission_ref"): field(item, k, f"data.datasets[{i}]", True)
+        if item.get("scope") not in ("owner_only", "private_group", "consented", "public"):
+            err(f"data.datasets[{i}].scope", "unknown scope; permissions must be explicit")
     for missing in sorted(needed_data - known_data): err("recipe.scenes.data_refs", missing + " undeclared")
     actions = data.get("actions")
     if not isinstance(actions, list): err("data.actions", "list required"); actions = []
