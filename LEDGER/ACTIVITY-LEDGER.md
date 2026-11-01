@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 09:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 09:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,12 @@ _Last updated: 2026-11-01 09:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-0126 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 01:26 PDT: full 31-brief queue evaluated, 0 claimed, queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4647 bytes, sha256 ab62d2edaa08df8e008b4486c58ae1c0190d5b8bb53ff2a06d7f255050f12f21); brief-queue root holds exactly 31 brief-*.md files and the receipt's named list matches that set exactly (31/31, no diffs either way); twelve-lane-rotation.json queued=31 with the same exact set and in_flight=
+
 ### ✅ 20261101-0119 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** gate-stall 01:19 PDT - 31-brief claim attempt, zero claimable, queue untouched
@@ -34176,6 +34182,18 @@ _Last updated: 2026-11-01 09:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-scorer-20261014-2310-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0422-lane7: live-broadcast format drift in diary_intake.py CLOSED (RED-first, purge proved)
+
+**Evidence:** VERIFIED in part this tick on live bytes (backlog sweep, oldest-first): receipt file exists; parent gap-t0422-lane7.md claim path corroborated by brief-gap-scorer-20261014-2310-lane7.md in brief-queue/done/; diary_intake.py today still carries the receipt's fix shape (ENTRY_RE accepts optional bullet + [tNNNN] inline entries, preserve-all rewrite l
+
+### ✅ gap-scorer-20261014-2300-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0502-lane7: re-verify SEAT_RE precedent + t0032 rot-pass calibration at live tip
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first): receipt file exists (8997 bytes, sha256 36b04d1c...); parent t0502-lane7.md exists; gap brief sits in brief-queue/done/, corroborating the claim path. NOT PHANTOM. Live-tip regex legs NOT re-run this tick (time box), so they rest on the receipt's at-time tip-byte record (ba626387), not
 
 ### ✅ 20261101-0110 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -39913,6 +39931,12 @@ _Last updated: 2026-11-01 09:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-scorer-20261014-2310-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261014-2136 lane-2: dispatcher-scope holes H1/H2 re-derived, H3 honestly open
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first): receipt file exists (11428 bytes, sha256 48b6cc06...); parent gap-scorer-20261014-2301-lane2.md exists; gap brief sits in brief-queue/done/, corroborating the claim path. NOT PHANTOM. CORRECTION (same tick, late delivery): both script self-tests DID run green this tick, just slowly (ba
+
 ### ✅ gap-t0802-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up t0802 lane-2: queue-level CLOSED-signal sweeper wired (sweep-stale-gap-briefs.py + attribution rule in claim-brief.py)
@@ -42724,6 +42748,12 @@ _Last updated: 2026-11-01 09:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-scorer-20261014-2300-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on t0502-lane10: re-prove t0032/t1352 cited case handles at action time
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first): receipt file exists (8037 bytes, sha256 06743ab0...d7cc241); parent t0502-lane10.md exists; gap brief sits in brief-queue/done/, corroborating the claim path. NOT PHANTOM. Git-history legs (t1352 parents/tree, t0032 2448 blobs, 2446 --check exit 1) were NOT re-run this tick (would need
 
 ### ✅ gap-t0462-rescore-2045 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
