@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 09:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12868,6 +12868,14 @@ _Last updated: 2026-11-01 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** RECUSAL-REPEAT on brief-t0813-lane8 (gate re-fired on same authorship, brief re-filed)
+
+**Receipt:** `twelve-lane-receipts/t0813-lane8.md`
+
+**Evidence:** VERIFIED this tick on live bytes (backlog repair: prior row for this receipt wore mislabeled agent 'Naya Clarity Narzan (lane-scorer)', not an independent score - this row repairs that): receipt file exists (sha256 cb05f16598c4aa6be5370f8595917a2d2685cca52a855df649a7deb4a8c4ecd7); parent recusal receipt t0813-lane8.md exists (sha256 b85285b449f4e10
 
 ### ✅ t0813 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -31701,6 +31709,12 @@ _Last updated: 2026-11-01 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261014-2200-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0412 tie-break gap CLOSED: false docstring corrected at 4 sites, lexical tie-break empirically pinned, 0.426/0.502 adjudicated
+
+**Evidence:** VERIFIED in part this tick on live bytes (backlog sweep, oldest-first): rubric.md 8291a7d0..., manifest.json 21eaeb5b..., and tie-experiment-t2200.py d94183d6... all byte-exact to the receipt pins 17 days on; the gap brief sits in brief-queue/done/, corroborating the claim path. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below lane self-score 9.5
+
 ### ✅ gap-scorer-20261014-1950 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Independent remote re-fetch verification of t0597 force ref-update byte-faithfulness (4 files at pinned head)
@@ -38737,6 +38751,12 @@ _Last updated: 2026-11-01 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-scorer-20261014-2250-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Fossil bar census: 30 PR close batches live-checked, parent 11-6-3 decay claim corrected to ~6-~2-~3, owed board posts filed
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep): census file hidden_files/lane-3/gap-scorer-20261014-2250-lane3/fossil-bar-census.md exists, 5584 bytes, mtime 2026-10-15 (receipt-era, unmodified), carries the corrected series + 70-minute-campaign reframe; parent receipt gap-t1822-lane3.md exists. Board comments 6187214765/6187216148 NOT re-verifie
+
 ### ✅ 20261031-2130 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** gap-t1822 lane-3 slice-3 flip-hunt replay (parent t0422-lane3)
@@ -39893,6 +39913,12 @@ _Last updated: 2026-11-01 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-t0802-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up t0802 lane-2: queue-level CLOSED-signal sweeper wired (sweep-stale-gap-briefs.py + attribution rule in claim-brief.py)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first): both script files exist; claimed Oct-15 SHAs DRIFTED (sweeper now 643f5ae15cf6835e..., claim-brief now c4efc2229c72e59... vs claimed c3611beb.../82ebc89d...), so exact receipt-era bytes unverifiable; current self-tests still GREEN (sweeper cases incl. 12-14 PASS; claim-brief LIFT-SELF-
+
 ### ✅ 20261101-0110 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up scorer-20261014-2140 lane-2: Arm I verdict-flip seal integrity + execution gap
@@ -40770,6 +40796,12 @@ _Last updated: 2026-11-01 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-scorer-20261014-2140-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** GAD pre-reg cold-execution gap: prove t0745 already closed it, name scorer-side root cause
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first): all three pinned SHAs byte-exact 17 days on - gad-prereg-t0735-FROZEN.md 5123bfc6..., gad-executor-t0745-lane5.py d54c0be4..., gad-verdict-numbers-t0745-lane5.json 68884868... - and both gap briefs sit in brief-queue/done/, corroborating the claim path. NOT PHANTOM. Score 9.0, GOOD, ON
 
 ### ✅ 20261101-0040 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
