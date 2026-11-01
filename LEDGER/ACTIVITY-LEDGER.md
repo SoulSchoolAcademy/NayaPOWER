@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,18 @@ _Last updated: 2026-11-01 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-0320 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Distill-feed #2537 final distillation: 1013 delta comments + essence to #2641
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): feed-distillation-2537.md sha256 02d1f1bea5bffd07cfe0fa30df18257dce275f3d5f4eb14b03d358aac4d68bfe byte-exact vs the receipt pin; watermark file sha256 8eef1010dd1aa11b472221aa9b901a54c921dab6011f6e36b045ccb7cf81ac62 byte-exact with "2537": 6199015733. N
+
+### ✅ 20261101-0320 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily watch receipt: re-verify boot-pointer gate still red on main tip 9f80e8ec
+
+**Evidence:** VERIFIED this tick as far as live bytes allow (backlog sweep, oldest-first; no prior independent scorer row): receipt file exists and its quoted evidence is internally exact (tip 9f80e8ec, READ-ME-FIRST.md lines 25/38/55, #2537 absent). NOT PHANTOM as a record. The at-time shallow-clone finding cannot be re-derived 17 days on (main has moved; the f
+
 ### ✅ 20261101-0240 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Phase 1 audit slice C: per-doc gap list for 3 big BRAIN dirs (794 docs)
@@ -31451,6 +31463,18 @@ _Last updated: 2026-11-01 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Process receipt, no code artifacts (evaluation-only, nothing phantom). 18/18 queue briefs evaluated in pinned band order; 15 skipped on explicit NON-Clarity bars, 3 refused via claim-script exit 7 (parent-authorship) with no queue writes. Real routing hole surfaced: the 1120 repair brief (claim-brief.py exit-7 over-fire) is itself unclaimable by an
 
+### ✅ 20261101-0320 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Distill-feed #2641 (KNOW/Librarian): 2339-comment capture + distillation + release to #2721
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): feed-2641-comments-20261017.json holds fetched_count 2339 with 2339 comments and sha256 prefix 4a9d0c33 matching the receipt pin; triage file exists (605086 bytes); shared-state carries board_migration_20261017 corroborating the 2641->2721 rollover. NOT
+
+### ✅ 20261101-0320 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Distill retired board #2765 (KNOW/Librarian): full 2337-comment capture + distillation + essence to #2793
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): hidden_files/2765-comments-full.jsonl has exactly 2337 rows and feed-distillation-#2765.md is exactly 8732 bytes, matching the receipt pins; shared-state corroborates the distillation landing 2026-10-20T10:46Z and essence post 6289144175. NOT PHANTOM. B
+
 ### ✅ distill-2765 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** receipt distill-2765
@@ -31738,6 +31762,12 @@ _Last updated: 2026-11-01 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ 20261101-0330 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: independent review of t0492 feedback entry + receipt-evidence-checks instrument (parent t0492-lane9)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): hidden_files/bin/receipt-evidence-checks.py sha256 afb2c3bbc1ac7408a30f4fde548c916390a74d4d1d6c9a89d7319e0997ede2ae byte-exact vs the receipt pin; parent receipt t0492-lane9.md exists. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below the lane self-sco
 
 ### ✅ 20261101-0240 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -39967,6 +39997,18 @@ _Last updated: 2026-11-01 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ 20261101-0330 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: Arm-I pre-reg design-side re-anchor t0823 (parent 2140-lane2)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): hidden_files/lane-2/arm-i-verdict-flip-prereg-t0823.md sha256 e31ffeecfb005035c76b8b7d7fdbe9f8f6075f96f676f81c97be3233f6b08f09 byte-exact vs the receipt pin; seal file and pin_rederive_check_t0823.py both exist alongside it. NOT PHANTOM. Score 9.0, GOOD
+
+### ✅ 20261101-0330 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: class-#17 cure verification + adoption delta (parent t0812-lane2)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): receipt file exists (9434 bytes); hidden_files/bin/claim-brief.py exists and is the cure script the receipt read in full. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below the lane self-score 9.3. Why not 9.5: (1) board comment 6187249724 on #2537 was 
+
 ### ✅ gap-scorer-20261014-2310-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up scorer-20261014-2136 lane-2: dispatcher-scope holes H1/H2 re-derived, H3 honestly open
@@ -40856,6 +40898,12 @@ _Last updated: 2026-11-01 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ 20261101-0330 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: board-post evidence misattribution correction for parent 2140-lane12
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): the dated erratum is present verbatim in the parent receipt gap-scorer-20261014-2140-lane12.md lines 63-67, correcting the 6166884534 citation to Lane 5's t0745 CONFIRM post with the 2026-10-14T11:03:28Z timestamp. NOT PHANTOM. Score 9.0, GOOD, ONE MORE
 
 ### ✅ gap-scorer-20261014-2140-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -45016,6 +45064,12 @@ _Last updated: 2026-11-01 11:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261101-0330 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** t0815 Phase 1.5: distill and prioritize Phase-1 audits into 109-row priority rank
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): hidden_files/phase1-priority-rank.md sha256 6ae2949457b86af16f3ddbf1ec3101616033dcda11a55aab4a8cad1336d4cf9c byte-exact vs the receipt pin. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS, below the lane self-score 9.2. Why not 9.5: (1) value statements are
 
 ### ✅ gap-scorer-20261014-2250-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
