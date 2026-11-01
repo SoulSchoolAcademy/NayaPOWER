@@ -39,7 +39,17 @@
           "error",
           "denied"
         ],
-        "next_screen": "list-detail"
+        "next_screen": "list-detail",
+        "experience": {
+          "hero_meaning": "My lists and the next useful list action",
+          "empty_state_copy": "You have no lists yet. Create your first list.",
+          "truth_source_ref": "personal-lists",
+          "grid_rule": "Readable hero and real Create action above fixed phone chrome; details below",
+          "touch_state": "Create List control must respond to real tap and focus; currently UNWIRED",
+          "phone_review_ref": "UNVERIFIED",
+          "laptop_review_ref": "UNVERIFIED",
+          "independent_two_second_review_ref": "UNVERIFIED"
+        }
       },
       {
         "id": "list-detail",
@@ -65,7 +75,17 @@
           "denied",
           "success"
         ],
-        "next_screen": "lists-home"
+        "next_screen": "lists-home",
+        "experience": {
+          "hero_meaning": "Name a list and save it for later use",
+          "empty_state_copy": "Start with an empty name field, without inventing saved content.",
+          "truth_source_ref": "personal-lists",
+          "grid_rule": "Recessed label+input and Save action remain visible with mobile keyboard",
+          "touch_state": "Save control must show actual loading and persisted result; currently UNWIRED",
+          "phone_review_ref": "UNVERIFIED",
+          "laptop_review_ref": "UNVERIFIED",
+          "independent_two_second_review_ref": "UNVERIFIED"
+        }
       }
     ]
   },
