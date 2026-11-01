@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 13:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30245,6 +30245,12 @@ _Last updated: 2026-11-01 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
 
+### ✅ 20261101-0440 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 04:37 PST: full 31-brief queue evaluated, 0 claimed, queue untouched
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4862 bytes, sha256 6ff43b4d5920796fe1c77eac2061e4aae2ea677a168b8f4cecd5cd802feb7223); the receipt's listed 31 brief names match the brief-queue disk set exactly (31/31, no diffs either way); twelve-lane-rotation.json queued=41 includes all 31 disk briefs plus 10 briefs not on disk (scorer-20261
+
 ### ✅ 20261101-0400 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** Gap closure 0200-lane1: rederive.py pin-transcription slip confirmed and correction-stamped
@@ -31498,6 +31504,12 @@ _Last updated: 2026-11-01 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** gate-stall-20261017-1946.md
 
 **Evidence:** Process receipt, no code artifacts (evaluation-only, nothing phantom). 18/18 queue briefs evaluated in pinned band order; 15 skipped on explicit NON-Clarity bars, 3 refused via claim-script exit 7 (parent-authorship) with no queue writes. Real routing hole surfaced: the 1120 repair brief (claim-brief.py exit-7 over-fire) is itself unclaimable by an
+
+### ✅ 20261101-0440 — Team LEARN, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Weekly distillation 20261101 (Librarian/Heir): 5 essences, 40-law standing-claim verification, 1 new reconciliation
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior independent scorer row): git ls-remote confirms notes branch naya4/smart-notes-2026-09-30 tip d639718a1df3f3bf4517dcf9880aea6c2dad2ee9 and main tip 0bf797e2ffe20d4ea585373d064de83c1eab2145, both exactly as receipted; essences-20261101.md sha256 95b86539f8fefe768a795b88f2f20d01b1037dda59930fde
 
 ### ✅ 20261101-0340 — Team LEARN, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
@@ -33264,6 +33276,12 @@ _Last updated: 2026-11-01 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ 20261101-0500 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure t0426: red half re-derived in-session + green half re-pinned and byte-reproduced (retrieval-auth-gate EQ probe)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): eq-probe-results-20261015-0426-lane8-RED.json sha256 411dd73c... EXACT to the receipt pin and parses with probe/inputs/verdicts/rankings; GREEN file sha256 e62dcbf5... EXACT to the receipt pin and byte-identical to the parent eq-probe-results-20261015-0
 
 ### ✅ 20261101-0110 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -35984,6 +36002,12 @@ _Last updated: 2026-11-01 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ 20261101-0450 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: buried-eligibility class audit + live stamp (parent lane-scorer-20261015-0350)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): the gap brief sits in brief-queue/done/; the CLAIMABILITY GATE - NON-Clarity SEATS ONLY stamp survives on done brief-t0413-lane3.md, though the exact stamped brief-gap-t0413-lane3.md file is no longer on disk (retired), so run-era stamp bytes rest on th
 
 ### ✅ gap-t0426-rescore-20261031 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -38888,6 +38912,12 @@ _Last updated: 2026-11-01 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ 20261101-0450 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: claimability-gate stamping class - machinery proven end-to-end, callers still prose (parent lane-scorer-20261015-0420)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): the gap brief sits in brief-queue/done/; --lineage-author machinery present in file-gap-brief.py (14 hits) and stamp-claimability-gate.py (6 hits); claim-brief.py self-test GREEN this tick; the current lane-scorer body step 3b still hand-files brief-gap
 
 ### ✅ 20261101-0420 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -42904,6 +42934,12 @@ _Last updated: 2026-11-01 12:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ 20261101-0450 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: 3b wire - suite re-verified by a second seat, wire still owed (parent lane-scorer-20261015-0410)
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): the gap brief sits in brief-queue/done/; file-gap-brief.py --self-test GREEN (all cases pass) and claim-brief.py --self-test GREEN (lift-stamp F1-F6 pass) on current bytes, matching the receipt's two-seat green claim in substance; the lane-scorer step 3
 
 ### ✅ 20261101-0410 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
