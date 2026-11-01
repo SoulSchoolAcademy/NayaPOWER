@@ -68,6 +68,18 @@ def inspect(recipe, index, store, mode="draft"):
         states = scene.get("states")
         if not isinstance(states, list) or not {"ready", "error"}.issubset(states) or set(states) - STATES:
             err(w + ".states", "ready/error and known state names required")
+        # Universal user-first evidence applies to EVERY SCENE, not Dashboard alone.
+        # These strings are references/declarations, NOT self-certified UX proof.
+        ux = scene.get("experience")
+        if not isinstance(ux, dict):
+            (err if mode == "release_candidate" else warn)(w + ".experience", "screen experience contract required; draft may remain explicitly unverified")
+            ux = {}
+        for key in ("hero_meaning", "empty_state_copy", "truth_source_ref", "grid_rule", "touch_state", "phone_review_ref", "laptop_review_ref", "independent_two_second_review_ref"):
+            value = ux.get(key)
+            if not isinstance(value, str) or not value.strip() or value.strip().upper() in UNKNOWN:
+                (err if mode == "release_candidate" else warn)(w + ".experience." + key, "missing or unverified user-first experience receipt")
+        if isinstance(states, list) and "empty" not in states:
+            (err if mode == "release_candidate" else warn)(w + ".states", "honest empty-state behavior must be specified")
         for k in ("primary_action_id", "secondary_action_id"):
             val = scene.get(k)
             if isinstance(val, str) and val: needed_actions.add(val)
