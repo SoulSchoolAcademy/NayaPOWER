@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-11-01  
-**Receipt basis commit:** `7e412cebb52084688ae29f3f3c06d100cdaa1a55`  
-**Inventory file count:** 1831  
+**Receipt basis commit:** `9c2de0ca490009b380bf14a165d526ef0b138c7b`  
+**Inventory file count:** 1838  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,12 +15,12 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 909 |
+| 05-MEMORY | 910 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 537 |
+| 10-INTERFACES | 543 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
 | 90-OPERATIONS | 112 |
@@ -278,6 +278,7 @@
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-28-LEARNING-EVENT.md` — `38d8f1616f5a` (15078 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-29-LEARNING-EVENT.md` — `f91e49d984e5` (22430 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-30-LEARNING-EVENT.md` — `63b6d964ca01` (21997 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-31-LEARNING-EVENT.md` — `f7bfded8e60a` (25119 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md` — `cb3d277c8117` (2359 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md` — `9a102af87000` (2091 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md` — `ef4f22f9e3c1` (2239 bytes)
@@ -1626,9 +1627,9 @@
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/index.html` — `8226325770ba` (1134115 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-BLOCKS/ultimate-design-system/tokens.css` — `caac347591eb` (925 bytes)
 - `BRAIN/10-INTERFACES/DESIGN-LANGUAGE.md` — `d71c2cd07c7e` (51035 bytes)
-- `BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.ai.md` — `afc60f569f65` (13064 bytes)
-- `BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.human.md` — `9211d30819d9` (19019 bytes)
-- `BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.machine.json` — `64bdde47a389` (11926 bytes)
+- `BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.ai.md` — `64eee3d379fc` (13420 bytes)
+- `BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.human.md` — `cafd7bae6d8c` (19464 bytes)
+- `BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.machine.json` — `a2a1981e6615` (12309 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-spec-power-20261031.md` — `88adf7c06af3` (45241 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — `7e1e336df17b` (8020 bytes)
 - `BRAIN/10-INTERFACES/NAYA-DESIGN-LESSON.md` — `36ccfc24ae4f` (9104 bytes)
@@ -1636,6 +1637,8 @@
 - `BRAIN/10-INTERFACES/NAYA-ULTRA-INTELLIGENT-EXPERIENCE-PROPOSAL-V1.md` — `d6da51d0d135` (9471 bytes)
 - `BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json` — `b1718a66a282` (151516 bytes)
 - `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/AI-INTERFACE-EXPERIENCE-OPERATING-DETAILS-V1.PROPOSAL.md` — `bf55ad872910` (30579 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/AI-RECIPE-ASSEMBLY-LANGUAGE-V1.PROPOSAL.md` — `473b1dcfdec2` (8552 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json` — `a50ef2dd2e10` (266070 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.md` — `0e63b2413da5` (35445 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/EXEMPLAR-BUILD-SCORECARD.md` — `cae335d0eb2f` (13288 bytes)
@@ -1651,6 +1654,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/FACTORY-GATE-AND-DOOR-BUILD-RECORD-2026-10-23.md` — `2aa251a1d88b` (8191 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/FACTORY-PAGE-GENERATOR-BUILD-RECORD-2026-10-22.md` — `372b8238b0da` (9547 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/FACTORY-TEMPLATE-SHELF-BUILD-RECORD-2026-10-23.md` — `a18112bce9b6` (10496 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/app_recipe_contract_v1.proposal.json` — `0246e1ba80ed` (3799 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py` — `1d7674c116e6` (7140 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build_queue-schema.sql` — `1693263c4524` (1772 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/check_standard_features.py` — `5b17a9e2e03e` (62105 bytes)
@@ -1664,6 +1668,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/design-language-fixtures/rest-violation.html` — `996f75ab64e9` (374 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/design-language-fixtures/type-violation.html` — `5511b6fc4719` (441 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/design-language-fixtures/walk-break.html` — `554810c6784a` (478 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/examples/smart_lists_recipe_v1.sample.json` — `37f4f7010e29` (4798 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-presentation.json` — `1809dd174f0d` (39969 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-shell.html` — `2a778653cb05` (558861 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/generate-contract-twin.py` — `0d36e2c7844f` (20398 bytes)
@@ -1673,6 +1678,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/process-build-queue.py` — `c143933654e4` (8891 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/manifest.json` — `6381822d4c87` (1317 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/sw.js` — `6e6077330368` (1454 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/recipe_preflight_v1.py` — `ee53469417a5` (10249 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py` — `2951c74ee95f` (37549 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates-registry.json` — `755441cfc74b` (50263 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/booking.html` — `fda0ef13aeab` (229469 bytes)
@@ -1687,6 +1693,7 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/portfolio.html` — `ad5a4e8e03e8` (229486 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/product.html` — `3b4b17d2301c` (229496 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/signup.html` — `c9a8ebfa907e` (229469 bytes)
+- `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/tests/test_recipe_preflight_v1.py` — `9c11b112fff1` (4887 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory-page.generated.html` — `71f4541bbfbf` (640660 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory.css` — `0d5ad26b6b6d` (171405 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/pieces.json` — `3a195b5a073e` (110487 bytes)
@@ -1731,9 +1738,9 @@
 - `BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3` — `569dd0afe7c2` (33837 bytes)
 ### 11-FACTORY — (unregistered domain)
 
-- `BRAIN/11-FACTORY/the-nayanet-blueprint-v1.ai.md` — `5beb74739fde` (24413 bytes)
-- `BRAIN/11-FACTORY/the-nayanet-blueprint-v1.human.md` — `b4836bbe7dd7` (24328 bytes)
-- `BRAIN/11-FACTORY/the-nayanet-blueprint-v1.machine.json` — `d2f7f9af3d8c` (19959 bytes)
+- `BRAIN/11-FACTORY/the-nayanet-blueprint-v1.ai.md` — `b84140abdc0f` (25729 bytes)
+- `BRAIN/11-FACTORY/the-nayanet-blueprint-v1.human.md` — `3c8b562d97ea` (26542 bytes)
+- `BRAIN/11-FACTORY/the-nayanet-blueprint-v1.machine.json` — `70bd5ac5cdbc` (21543 bytes)
 ### 11-KNOWLEDGE — Knowledge
 
 - `BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md` — `d7c4828718a4` (1434 bytes)

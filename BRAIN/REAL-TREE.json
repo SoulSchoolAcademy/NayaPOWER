@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-11-01",
-  "receipt_basis_commit": "7e412cebb52084688ae29f3f3c06d100cdaa1a55",
-  "inventory_file_count": 1831,
+  "receipt_basis_commit": "9c2de0ca490009b380bf14a165d526ef0b138c7b",
+  "inventory_file_count": 1838,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,12 +11,12 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 909,
+    "05-MEMORY": 910,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 537,
+    "10-INTERFACES": 543,
     "11-FACTORY": 3,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
@@ -1190,6 +1190,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-30-LEARNING-EVENT.md",
       "blob_sha": "63b6d964ca01602caaf2a05b97b4f3a6a8e40015",
       "size": 21997
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-31-LEARNING-EVENT.md",
+      "blob_sha": "f7bfded8e60a1ffacb58a2820eeed45a5215415a",
+      "size": 25119
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -7883,18 +7888,18 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.ai.md",
-      "blob_sha": "afc60f569f65cd2157eb97685b8b5adad31bac55",
-      "size": 13064
+      "blob_sha": "64eee3d379fc13d1a55ac1d220edb869126f6168",
+      "size": 13420
     },
     {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.human.md",
-      "blob_sha": "9211d30819d95022cf015f8d047e29ae511bf5b2",
-      "size": 19019
+      "blob_sha": "cafd7bae6d8c9dc20740ae1b08b11a86a3ddad27",
+      "size": 19464
     },
     {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.machine.json",
-      "blob_sha": "64bdde47a3894ad08e200dc75d6a4f5d3b3263da",
-      "size": 11926
+      "blob_sha": "a2a1981e6615ba28038d4f1f8d1e7bc1cd664787",
+      "size": 12309
     },
     {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-spec-power-20261031.md",
@@ -7930,6 +7935,16 @@
       "path": "BRAIN/10-INTERFACES/README.md",
       "blob_sha": "7093bf121d662cb6f8e88a0952e814a96dcb7cba",
       "size": 1226
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/AI-INTERFACE-EXPERIENCE-OPERATING-DETAILS-V1.PROPOSAL.md",
+      "blob_sha": "bf55ad87291087076921c088afe10d5d8dcdc474",
+      "size": 30579
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/AI-RECIPE-ASSEMBLY-LANGUAGE-V1.PROPOSAL.md",
+      "blob_sha": "473b1dcfdec2bc092f0f091f3add3d6ecdb9f5b0",
+      "size": 8552
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/CANONICAL-PIECE-INDEX.json",
@@ -8007,6 +8022,11 @@
       "size": 10496
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/app_recipe_contract_v1.proposal.json",
+      "blob_sha": "0246e1ba80ed59157270e394f153ca114c61e3da",
+      "size": 3799
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/build-api.py",
       "blob_sha": "1d7674c116e60e819f6f14797cc8aab1775c6c41",
       "size": 7140
@@ -8072,6 +8092,11 @@
       "size": 478
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/examples/smart_lists_recipe_v1.sample.json",
+      "blob_sha": "37f4f7010e29d4d11e16f55f6767cef8c4ec650f",
+      "size": 4798
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/factory-page-presentation.json",
       "blob_sha": "1809dd174f0d85ca4e98592c40d44f2e8e4c5331",
       "size": 39969
@@ -8115,6 +8140,11 @@
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/pwa-assets/hub/sw.js",
       "blob_sha": "6e6077330368ff0cb7a115ff71001523333ddaab",
       "size": 1454
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/recipe_preflight_v1.py",
+      "blob_sha": "ee53469417a57502c9b7d92ca5c7dfe857cb24f4",
+      "size": 10249
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/sync-smart-notes.py",
@@ -8185,6 +8215,11 @@
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/templates/signup.html",
       "blob_sha": "c9a8ebfa907e9666a07002f2d79cdb8e85ca7c0c",
       "size": 229469
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/engine/tests/test_recipe_preflight_v1.py",
+      "blob_sha": "9c11b112fff1fd793f9aa9c3241e071ec53bfe7a",
+      "size": 4887
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-FACTORY-CANON/factory-page.generated.html",
@@ -8398,18 +8433,18 @@
     },
     {
       "path": "BRAIN/11-FACTORY/the-nayanet-blueprint-v1.ai.md",
-      "blob_sha": "5beb74739fdee0988b98d164f6ee13fc12b95b90",
-      "size": 24413
+      "blob_sha": "b84140abdc0f33a6955b3cf2c682202b871077e0",
+      "size": 25729
     },
     {
       "path": "BRAIN/11-FACTORY/the-nayanet-blueprint-v1.human.md",
-      "blob_sha": "b4836bbe7dd71e1a82f52203d0995f029d2ae50b",
-      "size": 24328
+      "blob_sha": "3c8b562d97ea5605d78f2a425bbe4c52ebf13eff",
+      "size": 26542
     },
     {
       "path": "BRAIN/11-FACTORY/the-nayanet-blueprint-v1.machine.json",
-      "blob_sha": "d2f7f9af3d8caa64039d371fd18255b82c93b9e1",
-      "size": 19959
+      "blob_sha": "70bd5ac5cdbcd0de5e1c731519f33cf70c0ff009",
+      "size": 21543
     },
     {
       "path": "BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md",

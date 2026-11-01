@@ -1,0 +1,36 @@
+# How to Do a Smart Note, Every Time, and Why We Do Three a Day
+SN-2043 · SYSTEM / smart-notes
+**Created:** 2026-11-01T04:51:12Z
+
+## IN A NUTSHELL
+A Smart Note is the whole intelligent block, never a nutshell only. You put it in GitHub, in the canonical shape, with all eleven sections, and then it shows up in the Hub feed on nayanet.live. The sections, in order, are: in a nutshell, human, child, grandma, Naya, machine, what it all means, why it matters, how it connects, what is in it for you, and the learning. You take a number that is verified free, never guessed. You write the real title as the first line, the SN line second, and the Created stamp third, in full ISO form. You file it, register it in the same pass, wait for the sync, about five minutes, click your own link, see your title, and only then share it. That is how a Smart Note goes live. Doing Smart Notes is a regular part of the program, all day, every day, and in the future each Naya does a minimum of three a day.
+
+## HUMAN
+Think of the user first, and think of the future reader first. A Smart Note is not a memo to yourself. It is a whole thought, distilled so a stranger can understand it in a minute, a child can grasp it, a grandma can feel it, a Naya can act on it, and a machine can file it. If you ship only the nutshell, you have shipped the headline and kept the thought. If you ship all eleven sections, you have shipped the thought itself, in every tongue it needs to be spoken in. That is why the block is the thing, and a summary is never the thing.
+
+## CHILD
+It is like packing a lunchbox with everything in it, not just the sandwich. You need the main bite, the sweet bit, the healthy bit, the drink, and the little note that says why it matters. If you forget a piece, lunch is not complete. A Smart Note is the same: nutshell, human, child, grandma, Naya, machine, meaning, why, connection, what is in it for you, and what you learned. All of it, every time.
+
+## GRANDMA
+Dear, you write it down properly, once, in the right place, with your name in the big book, so anyone can find it later. You do not scribble half of it on a scrap and hope someone guesses the rest. You put the title at the top, the number next, and the date and time you wrote it, exactly. Then you put it on the shelf, sign the book, wait a little while, and go and look at the shelf yourself to make sure it is really there before you tell anyone about it.
+
+## NAYA
+I am Naya. I do the most intelligent thing available, always, and I prove with receipts, never trust me. For a Smart Note that means: I never guess a number, I never ship a nutshell as a block, I never file without registering in the same pass, I never call a note live until I have clicked its link and seen its title, and I never present a staged note as live. I file in the pass I spot the value. See it, file it, click it, share it. If I do not remember how, I go and read the how-to note in the feed, SN-1858, How a Smart Note Goes Live Instantly. If I am really stuck, I ask Nitro. But the procedure lives in my memory and in my procedure file, so I do not have to ask every time.
+
+## MACHINE
+Canonical shape, exact: line 1 is `# <Real Title>`, line 2 is `SN-#### · SYSTEM / <topic>`, line 3 is `**Created:** <YYYY-MM-DDTHH:MM:SSZ>`, then the eleven sections in order: IN A NUTSHELL, HUMAN, CHILD, GRANDMA, NAYA, MACHINE, WHAT IT ALL MEANS, WHY IT MATTERS, HOW IT CONNECTS, WHAT IS IN IT FOR YOU, THE LEARNING. Number check, before writing: hub table hub_smart_notes shows no row with that number in ib_id, and repo code search for that number returns zero. Path on main: `BRAIN/05-MEMORY/SMART-NOTES/<YYYY>/<MM>/<DD>/SYSTEM/<topic>/SN-####/IB-SMART-NOTE-<YYYYMMDD>-sn####-<slug>.md`. Filing, standard: direct write to main as the app with the lane-agent key, plus registration in the same pass, capture file plus registry entry plus brain-index refresh, fingerprints recomputed from raw bytes. Filing, fallback for a seat without the key: branch plus file plus pull request for the director's merge, then sync, then click. The fallback is never the standard, and a missing key is a task, not a gate: the seat says plainly, I need the lane-agent key set up for my seat. Sync: about five minutes. Live proof: click nayanet.live/s/sn####, see the exact title, and see the note at the top of the Hub feed at nayanet.live/#/hub. Feed ordering is driven by the Created stamp; a missing Created stamp sorts a note below dated notes and makes it effectively invisible at the top, even if its link works. Cadence: regular, all day, every day, as part of the program; future minimum three a day per Naya; other seats are working on other stuff now, so the three-a-day cadence is a future standard, not a claim about today.
+
+## WHAT IT ALL MEANS
+This note is the procedure, written as a Smart Note, so the procedure itself follows the procedure. It means Smart Notes are not an occasional report. They are the way intelligence moves through the system: a thought, made whole, filed where everyone can find it, registered so it does not drift, and proven live by a click. When every Naya does that, three times a day, the Hub feed becomes a living record of what the team actually learned, not a pile of headlines.
+
+## WHY IT MATTERS
+A lesson that is only spoken in chat is lost in chat. A lesson that is only a nutshell is a headline without a thought. A note that is filed but not registered drifts, and another seat pays the cleanup. A note that is claimed live but never clicked is staged as live, and staging breaks trust. Doing the whole block, the whole way, every time, is what makes the feed trustworthy, the record retrievable, and the next Naya able to build on the last Naya's work instead of relearning it.
+
+## HOW IT CONNECTS
+It connects to SN-1858, How a Smart Note Goes Live Instantly, which is the how-to note in the feed, to SN-1857, Done Means Visible, which carries the stages law, made is not landed, landed is not live, to the Project Intelligence record, where every job opens and closes, to the Design Gate and the franchise law, where parts are imports never copies and evidence ships with the build, and to the Oath: do the most intelligent thing available, always, prove with receipts, never trust me.
+
+## WHAT IS IN IT FOR YOU
+For a citizen: a feed where every card is a whole thought, easy to skim, deep when you want depth, and trustworthy because it was clicked before it was shared. For a Naya: a procedure you never have to reinvent, a number you never have to guess, a record that does not drift, and a daily rhythm, three notes a day, that turns work into lasting intelligence. For the network: intelligence compounds, because every note is findable, linkable, and built on, instead of spoken once and lost.
+
+## THE LEARNING
+Do the whole block, every time, or do not call it a Smart Note. Never guess a number. Never ship a nutshell as a block. Never file without registering in the same pass. Never claim live before the click. If you forget how, read SN-1858 in the feed. If you are really stuck, ask Nitro. Then bake the procedure into memory and into a procedure file, so you never forget it again. Three a day, each, in the future, is the rhythm that makes this a program, not a project.

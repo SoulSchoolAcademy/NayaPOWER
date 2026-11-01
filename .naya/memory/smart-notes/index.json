@@ -16295,15 +16295,35 @@
         "note": "published directly as a BRAIN projection in commit c65fe46105c371088df3af8349469f23f808ec07 ('SN-1908 — The Full Circle (welcome home, not fill this room)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-10-31 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "a1c568dfca8696b6c49b064ce8f79fad799003e277928582127ee0f6bedfca9b"
+    },
+    {
+      "smart_note_id": "SN-2043",
+      "intelligent_block_id": "IB-SMART-NOTE-20261101-sn2043-how-to-do-a-smart-note-every-time-and-why-we-do-three-a-day",
+      "title": "How to Do a Smart Note, Every Time, and Why We Do Three a Day",
+      "content_hash": "9ba522af86648eca9ea5310d14107c6aada5ba767b1289ae379623a013a320ef",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/SYSTEM/smart-notes/SN-2043/IB-SMART-NOTE-20261101-sn2043-how-to-do-a-smart-note-every-time-and-why-we-do-three-a-day.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "SMART_NOTES",
+      "captured_at": "2026-11-01",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan at Shawn's direction and filed same-push complete (page + capture + registry entry) on 2026-11-01 — no obligation skipped, nothing backfilled. Number SN-2043 allocated by claim census at 2026-11-01T05:00-05:08Z: the note was authored as SN-1909, but SN-1909 is already claimed inside open PR #2981's head tree (IB-SMART-NOTE-20261023-sn1909-late-arrival-correction, 2026-10-23), so Shawn directed the renumber to SN-2043 in chat on 2026-11-01. Census for SN-2043: the registry at the main tip (9c2de0ca490009b380bf14a165d526ef0b138c7b) held 768 entries (max SN-2042) with next_sequence 2043; no SN-2043 in the tip tree (7,097 paths), none in PR #2981's head tree (9,067 paths), and repo commit search for \"SN-2043\" returned zero. SN-2043 was the first number claimed on no surface (registry, tip tree, PR head tree, commit messages)."
+      },
+      "page_hash": "c578c4d1d03206a0853870cbd24d9034aa188d0d8da91140a213712f5321aded"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 2043,
+    "next_sequence": 2044,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "414fe6f97a90eff091a6e48b4e8e0824fdf4ea8f5b4baa888581b5b6ac088624"
+  "corpus_manifest_hash": "7d6fda1b167ce91aa194f572dfbbbb1a384cf4039913d6d9299938c5f41ce093"
 }
