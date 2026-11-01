@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-31",
-  "receipt_basis_commit": "b72212191f9b74a8df1b95346a10e0db8c95a2e3",
-  "inventory_file_count": 1811,
+  "receipt_basis_commit": "77041508bc909745007e54927768ec7cbeb1595d",
+  "inventory_file_count": 1820,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,15 +11,15 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 908,
+    "05-MEMORY": 909,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 524,
+    "10-INTERFACES": 529,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
-    "90-OPERATIONS": 109,
+    "90-OPERATIONS": 112,
     "99-ARCHIVE": 2,
     "ROOT": 7
   },
@@ -1184,6 +1184,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-29-LEARNING-EVENT.md",
       "blob_sha": "f91e49d984e5de91b8f8509f0b587cc4c9c2234c",
       "size": 22430
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-30-LEARNING-EVENT.md",
+      "blob_sha": "63b6d964ca01602caaf2a05b97b4f3a6a8e40015",
+      "size": 21997
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
@@ -7876,6 +7881,26 @@
       "size": 51035
     },
     {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.ai.md",
+      "blob_sha": "afc60f569f65cd2157eb97685b8b5adad31bac55",
+      "size": 13064
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.human.md",
+      "blob_sha": "9211d30819d95022cf015f8d047e29ae511bf5b2",
+      "size": 19019
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-of-naya-design.machine.json",
+      "blob_sha": "64bdde47a3894ad08e200dc75d6a4f5d3b3263da",
+      "size": 11926
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-ANATOMY/anatomy-spec-power-20261031.md",
+      "blob_sha": "88adf7c06af386ce68d6ccbb2865876c063e0d89",
+      "size": 45241
+    },
+    {
       "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
       "blob_sha": "7e1e336df17b2f81c6f4235b243c12ae8ac72933",
       "size": 8020
@@ -7891,9 +7916,14 @@
       "size": 6546
     },
     {
+      "path": "BRAIN/10-INTERFACES/NAYA-ULTRA-INTELLIGENT-EXPERIENCE-PROPOSAL-V1.md",
+      "blob_sha": "d6da51d0d135da62f19759f2e174fe6a61616df7",
+      "size": 9471
+    },
+    {
       "path": "BRAIN/10-INTERFACES/PARTS-REGISTRY-V1.json",
-      "blob_sha": "5d371c0cb091cf86e0eb0ac3f08bb99c31abcf3c",
-      "size": 687429
+      "blob_sha": "b1718a66a282dbd0ae52f721a067660b4ae6dca8",
+      "size": 151516
     },
     {
       "path": "BRAIN/10-INTERFACES/README.md",
@@ -8639,6 +8669,21 @@
       "path": "BRAIN/90-OPERATIONS/2026-10-26-10-10-REPORT.md",
       "blob_sha": "6537281ef185d74a3f78b804ea53e0e155213cc7",
       "size": 14258
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-31-THE-ULTIMATE-ASSESSMENT.ai.md",
+      "blob_sha": "59d21efb39fb8e1e3acb6fa12803cc4d923a0605",
+      "size": 23770
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-31-THE-ULTIMATE-ASSESSMENT.human.md",
+      "blob_sha": "18cdc07c761f540eff2b22d5d283ff8d57facbb0",
+      "size": 27911
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-31-the-ultimate-assessment.machine.json",
+      "blob_sha": "f29fc07d085857deaeecb61ad6f0b5fdfbcda882",
+      "size": 13323
     },
     {
       "path": "BRAIN/90-OPERATIONS/GOVERNED-WORK-FLOW-TIERS-V1.md",
