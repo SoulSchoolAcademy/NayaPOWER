@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 03:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 04:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30204,6 +30204,12 @@ _Last updated: 2026-11-01 03:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261031-2103 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 21:03 PDT: full 31-brief queue evaluated, 0 claimed, all refused (29 exit 7, 2 exit 2)
+
+**Evidence:** VERIFIED this tick on live bytes: receipt file exists (4631 bytes, sha256 90b3474426d41759); brief-queue root holds exactly 31 brief-*.md files and the receipt's named list matches that set exactly (31/31, no diffs either way); twelve-lane-rotation.json queued=31; claimed/ holds only the 'done' marker, nothing claimed or moved; exit-code breakdown 
 
 ### ✅ 20261031-2000 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
