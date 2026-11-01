@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-01 14:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-01 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -31823,6 +31823,12 @@ _Last updated: 2026-11-01 14:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ 20261101-0620 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure scorer-20261015-0140-lane9: evidence-over-trust check of t0403 quoted mapping against live verdict bytes
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): verdict file harness-review-t0810-lane1.md sha256 f39bc2de...11b0b byte-exact to receipt pin; parent t0403-lane9.md exists. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: same-seat verification (receipt author = parent seat family, stated caveat) and the r
+
 ### ✅ 20261101-0410 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap closure scorer-20261015-0300-lane9: claim-script adoption verified + stale SHA pin re-verified + gate-parser false-positive root-fixed
@@ -38925,6 +38931,12 @@ _Last updated: 2026-11-01 14:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ 20261101-0620 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Gap closure scorer-20261015-0250-lane3: blind second-seat re-classification of 8 window rows
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): parent t0684-lane3.md exists; log auto-retrieval/ask-world-queries.jsonl now 199 rows (grown from 111, so original SHA cannot re-match - expected append growth, not phantom); window rows 22:06:38Z and 22:37:33Z still present (grep 1 each). Score 8.5, RE
+
 ### ✅ 20261101-0520 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: blinded-judge readiness audit for t0571 - recusal + pre-reg certification + drift caveat (parent lane-scorer-20261015-0510-lane3)
@@ -40105,6 +40117,12 @@ _Last updated: 2026-11-01 14:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ 20261101-0620 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure scorer-20261015-0250-lane2: 13/13 pin-guard battery second-seat re-run
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first; no prior independent scorer row): scratch/t0683-lane2-pin-guard pin_guard.py sha256 ea09a28c...a612 and test_pin_guard.py 6198f52f...6ef byte-exact to receipt pins; parent t0683-lane2.md exists. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: same-machine same-bytes corroboration (not cross
+
 ### ✅ 20261101-0420 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: per-skipped why in sweep-stale-gap-briefs.py + GAP_TITLE_RE root cause named with proof (parent scorer-20261015-0400-lane2)
@@ -41012,6 +41030,12 @@ _Last updated: 2026-11-01 14:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ 20261101-0630 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure lane-scorer-20261015-1210-lane12: citation close for t0555 CORRECTION post on live board
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first gap receipts; no prior independent scorer row): board comment 6200160386 re-fetched via gh-app-api this tick - issue_url .../issues/2641, author SoulSchoolAcademy, created 2026-10-15T19:08:53Z, body sha256 12a08bc1...bb7 BYTE-EXACT to the receipt pin and the CORRECTION quote present; par
 
 ### ✅ 20261015-0040 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -42130,6 +42154,12 @@ _Last updated: 2026-11-01 14:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ 20261101-0630 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure scorer-20261015-0550-lane11: second-seat re-judge of 12 metric_audit_t0822 rows
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first gap receipts; no prior independent scorer row): lane-11/metric_audit_t0822.json totals m2=12, m3=6, m4=2, rows=12 BYTE-MATCH the receipt's re-derived totals, with 12 receipts listed; gap brief sits in brief-queue/done/. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: the re-judge is same-sea
 
 ### ✅ 20261101-0410 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -45202,6 +45232,12 @@ _Last updated: 2026-11-01 14:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ 20261101-0630 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closure lane-scorer-20261015-1220-lane1: t0541 measurement JSON pinned, zero finding holds third time
+
+**Evidence:** VERIFIED this tick on live bytes (backlog sweep, oldest-first gap receipts; no prior independent scorer row): battery retrieval-hitrate-t0541.py sha256 df496220...75f BYTE-EXACT to the receipt pin and --selftest reproduced 5/5 PASS this tick; pinned measurement retrieval-hitrate-t0541-measurement-20261015-1220-lane1.json sha256 10cd5503...56ad278 B
 
 ### ✅ 20261015-0450 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
