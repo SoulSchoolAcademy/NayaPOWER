@@ -11,6 +11,7 @@
     "wowie_rule": {"status": "STANDING", "date": "2026-11-01"},
     "interface_framework": {"status": "PROPOSED", "author": "Nitro", "note": "Shawn-endorsed direction; NOT ratified; DNA governs conflicts until ratification"},
     "color_layers_reconciliation": {"status": "PROPOSED"},
+    "color_flow": {"status": "RATIFIED BY SHAWN", "date": "2026-11-01", "lead": "purple", "crown": "magenta", "supersedes": "PR #3141 spectrum walk"},
     "reading_screen_class": {"status": "PROPOSED"}
   },
   "philosophy": {
@@ -38,8 +39,22 @@
     "contrast_min_ratio": 4.5,
     "color": {
       "ground": "obsidian black with depth; white text; light backgrounds forbidden",
-      "spectrum_walk": ["magenta", "purple", "blue", "green", "gold"],
-      "spectrum_rule": "Richest first (magenta leads); one pass per page; never the same color twice adjacently; one color job per element.",
+      "dominant": "purple, black, white — most surfaces and most inputs predominantly purple",
+      "color_flow_cycle": [
+        {"name": "purple", "hz": null, "weekday": "Sunday", "role": "lead"},
+        {"name": "indigo blue", "hz": 852, "weekday": "Saturday"},
+        {"name": "emerald green", "hz": 639, "weekday": "Thursday"},
+        {"name": "gold", "hz": 528, "weekday": "Tuesday", "note": "yellow in some icon cases, for brightness"},
+        {"name": "orange", "hz": 417, "weekday": "Monday"},
+        {"name": "red", "hz": 396, "weekday": "Friday"},
+        {"name": "magenta", "hz": 963, "weekday": null, "role": "crown — wraps back to purple"}
+      ],
+      "lead": "purple",
+      "crown": "magenta",
+      "grouping_law": "A cycle, not a line. Richest shades. Groupings of 3 or 5 (or any consecutive run) keep the cycle's order; long sequences repeat the pattern; never double a color; never random order; never backtrack. High-contrast couplings encouraged (purple-green-gold; purple-blue-green). One color job per element.",
+      "presentation": "Bigger text over smaller; reading text white, high contrast — light pink / light grey text forbidden; minimal text, maximal visuals (an icon that says it without words beats words); everything alive and responsive on touch; never flat — always dynamic, multiple dimensions.",
+      "supersedes": "PR #3141 spectrum walk (magenta → purple → blue → green → gold, magenta leads)",
+      "color_flow_status": "RATIFIED BY SHAWN 2026-11-01",
       "ignition": "White at rest; ignites in its own color on touch/hover/focus; no halo at rest (jewel orb carries color as solid identity).",
       "truth_states": {"live_shown": "gold", "proven": "green"},
       "layers_proposal": {
@@ -107,7 +122,7 @@
     {"id": "G1", "check": "Obsidian ground: computed background is the obsidian token; white text; no white background in the surface", "kind": "computed-style"},
     {"id": "G2", "check": "Living depth: interactive elements show layered construction (rim/elevation present)", "kind": "computed-style"},
     {"id": "G3", "check": "Ignition: white/no halo at rest; ignites in own color on touch (orb identity exception: solid color, halo only on touch)", "kind": "state-render"},
-    {"id": "G4", "check": "Spectrum walk: no adjacent color repeat; one color job per element; walk order respected", "kind": "computed-style"},
+    {"id": "G4", "check": "Color flow: sequences follow the color_flow_cycle order (purple leads, magenta crowns and wraps); no doubled color; no backtracking; groupings keep cycle order; one color job per element", "kind": "computed-style"},
     {"id": "G5", "check": "Geometry: touch targets >= 44px; boards 16:9 (named strip/tile exceptions); buttons are pills", "kind": "measurement"},
     {"id": "G6", "check": "Type floors: body >= 16px; UI labels >= 14px; <= 3 type sizes on screen", "kind": "computed-style"},
     {"id": "G7", "check": "Spacing: every spacing value in {4,8,12,16,24,32,48,64,96}", "kind": "computed-style"},
@@ -213,7 +228,7 @@
     "delta_only": "State tracked once; passes read only changes; jobs earn cadence by outcomes, never by receipts about unchanged state."
   },
   "open_seams": [
-    "Palette reconciliation: obsidian baseline contested between sources; teal/indigo/lime legacy-vs-lawful unsettled; never quote a stale-hex count as settled.",
+    "Palette reconciliation: CLOSED BY SHAWN'S RULING 2026-11-01 — neither contested spectrum was right; the natural color flow cycle governs (purple leads, magenta crowns and wraps).",
     "Token-swap verification: Nitro's 65-family table lives on her machine only; blocked until it lands in a shared store.",
     "Framework ratification: a Shawn gate; until then DNA governs conflicts.",
     "SN-1905 amendment filing: note prepared 2026-10-31 (sale 50 -> 100); door filing owed.",
