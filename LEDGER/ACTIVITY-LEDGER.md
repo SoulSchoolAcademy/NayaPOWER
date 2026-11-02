@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-02 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-02 17:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30244,6 +30244,24 @@ _Last updated: 2026-11-02 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261102-0913 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-02 09:13 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): receipt's 31 brief names match brief-queue/brief-*.md on disk exactly (31/31, no diffs either way); refusal breakdown sums correctly (29 exit-7 parent-authorship + 2 exit-2 barred = 31); band counts 2+18+3+6+2 = 31; zero mission-sequence brief-t files; 
+
+### ✅ 20261102-0813 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-02 08:13 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): receipt's 31 brief names match brief-queue/brief-*.md on disk exactly (31/31, no diffs either way); refusal breakdown sums correctly (29 exit-7 parent-authorship + 2 exit-2 barred = 31); band counts 2+18+3+6+2 = 31; brief-queue/claimed/ holds only done/
+
+### ✅ 20261102-0708 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-02 07:08 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): receipt file exists; brief-queue/ root holds exactly the 31 briefs named in the receipt (31/31, zero diff either way); claimed/ holds only done/; prior gate-stall-20261102-0603 receipt exists, mtime 2026-11-02 14:05 UTC, this receipt 15:09 UTC (~64 min,
 
 ### ✅ 20261102-0603 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
