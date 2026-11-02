@@ -1,22 +1,22 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-11-01",
-  "receipt_basis_commit": "c247279968ec3c66bd0495d99cd90f3860eac2a5",
-  "inventory_file_count": 1839,
+  "generated_at": "2026-11-02",
+  "receipt_basis_commit": "e05d913cda6c1ed7607c0e724029828fc5860ec7",
+  "inventory_file_count": 1851,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
     "00-SPEC": 16,
-    "01-GOVERNANCE": 99,
+    "01-GOVERNANCE": 100,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 911,
+    "05-MEMORY": 915,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 543,
+    "10-INTERFACES": 550,
     "11-FACTORY": 3,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 26,
@@ -655,6 +655,11 @@
       "path": "BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.machine.json",
       "blob_sha": "63f415a75a993879e2f0498593d4c9d860aed53a",
       "size": 1107
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0038-WHAT-NAYA-STANDS-FOR.human.md",
+      "blob_sha": "4596772886746320dad78ca759e1ca58602a4dcf",
+      "size": 8227
     },
     {
       "path": "BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md",
@@ -5087,6 +5092,11 @@
       "size": 8062
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1905/SN-1905-CANON-AMENDMENT-2026-10-31.md",
+      "blob_sha": "189c4d835e5f8d33ea76b98667fe13fd59e14efe",
+      "size": 2633
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1906/IB-SMART-NOTE-20261030-sn1906-the-related-bar-law.md",
       "blob_sha": "b11563dff30609f0ec5314f360da08023b93d505",
       "size": 2135
@@ -5100,6 +5110,21 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/31/SYSTEM/smart-notes/SN-1908/IB-SMART-NOTE-20261031-sn1908-the-full-circle.md",
       "blob_sha": "20acbfb7cae163b8b2d095d1677a2743e5c6c452",
       "size": 2035
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/DESIGN/real-object-law/SN-0859/IB-SMART-NOTE-20261101-sn0859-the-real-object-law.md",
+      "blob_sha": "c04ad862eededd1f4a6050ec8b0484aef7f6b994",
+      "size": 2207
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/DESIGN/viewport-optimization-law/SN-0858/IB-SMART-NOTE-20261101-sn0858-viewport-optimization-law.md",
+      "blob_sha": "45ac03ea0f24913ecf5ee9b6128189530b19b8a9",
+      "size": 2640
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/NAYA/canon/SN-0860/IB-SMART-NOTE-20261101-sn0860-the-naya-canon.md",
+      "blob_sha": "d0f045280b1075a9ee384a266c4b61384110550e",
+      "size": 2254
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/SYSTEM/smart-notes/SN-2043/IB-SMART-NOTE-20261101-sn2043-how-to-do-a-smart-note-every-time-and-why-we-do-three-a-day.md",
@@ -8297,6 +8322,11 @@
       "size": 14220
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/ADDENDUM-2026-10-22-layer-and-community.md",
+      "blob_sha": "ecc62eca8a07037c3cac30aabf833ce4b6707533",
+      "size": 1927
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/README.md",
       "blob_sha": "aeaa4f0b92555adf4cd8ea2e311ab17664fb94e6",
       "size": 2224
@@ -8312,9 +8342,34 @@
       "size": 7631
     },
     {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-STATS-BUILD-SPEC-2026-10-31.human.md",
+      "blob_sha": "0f98667ec43b9489acd1475566ec35d6e8688a83",
+      "size": 10124
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/ULTIMATE-SMART-STATS.ai.md",
+      "blob_sha": "cd29b6d7ddca263dbce6debd83810b2ced497848",
+      "size": 21154
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/ULTIMATE-SMART-STATS.human.md",
+      "blob_sha": "c4dd59b2bf29f93b3fd41291a951e5a2e18788e7",
+      "size": 12890
+    },
+    {
       "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/smart-graphs-spec.machine.json",
       "blob_sha": "2bb90a0d4b6d4835e37b554ae94b7e9624654c7d",
       "size": 4566
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/smart-stats-build-2026-10-31.machine.json",
+      "blob_sha": "df75bd616047539fa00ee9feb2cfc9e1b4281b73",
+      "size": 5588
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimen-ultimate-dashboard.html",
+      "blob_sha": "a367d6b771974b15fee1025596d8100f576692fa",
+      "size": 29709
     },
     {
       "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/01-pulse-orb.html",
@@ -8355,6 +8410,11 @@
       "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/sg-chrome.css",
       "blob_sha": "70a99d8a7cbf459b5fdf14e5a6c3af7697650d12",
       "size": 2792
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/SMART-GRAPHS/ultimate-smart-stats.machine.json",
+      "blob_sha": "4138a7c61ee263752e14ab98f01038fe1933b618",
+      "size": 15514
     },
     {
       "path": "BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/BLESSING.md",
