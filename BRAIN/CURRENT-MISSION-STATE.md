@@ -1,8 +1,8 @@
-# CURRENT MISSION STATE — director refresh 2026-11-02 13:43 PST
+# CURRENT MISSION STATE — director refresh 2026-11-02 14:17 PST
 
-- Last verified: 2026-11-02 13:43 PST (2026-11-02T21:43:24Z). Main tip: `ec6d0636` (unchanged this tick; quiet tick).
-- Live board: #3066 at 1,488 comments (0 new this tick; 812 below the 2,300 migration trigger; no migration).
-- REST quota (App identity): 12,438 remaining at tick check. Branch count via git protocol: 999.
+- Last verified: 2026-11-02 14:17 PST (2026-11-02T22:17:01Z). Main tip: `ec6d0636` (unchanged this tick; quiet tick).
+- Live board: #3066 at 1,489 comments (+1 Verity hourly 6589472237; 811 below the 2,300 migration trigger; no migration).
+- REST quota (App identity): 12,499 remaining at tick check. Branch count via git protocol: 999.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -19,7 +19,7 @@
   share + Hub journeys) spot-verified for listed routes 20:42Z (6587982909); remaining seams: /about redirect, /joinus target, /pi 503 rows leg. Do not cite the domain ruling as Shawn's word;
   it rests on bot/board text, not verified Shawn bytes.
 
-## TOP-10 (re-anchored to ec6d0636, board 1488)
+## TOP-10 (re-anchored to ec6d0636, board 1489)
 1. Breach #121 + #119/#120 + #118 + #117 + #102-#116 repair + SN-1905 + SN-0843/0844 collision cures + SN-1908 adjudication
 2. Direct-push disposition + builder re-proofs at tip + SN-2043 + SN-0858/0859/0860 + SN-0843/0844 mirror gap + 0038 tongues
 3. Post-merge reds at ec6d0636 + Factory registry drift (personal.html vs templates-registry.json)
@@ -29,19 +29,18 @@
 7. Serving chain + Auto-Match tap + .app mirror verified 20:42Z for listed routes (6587982909); remaining /about redirect, /joinus target, /pi 503 rows leg + identity-transfer DECISION owed to Shawn's hand (design verified 6587300858)
 8. PI one-shot readiness
 9. /PI overwrite/inventory/disclosure + marquee
-10. Owner asks carried + queue 1,253 flat (153rd hour) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121)
+10. Owner asks carried + queue 1,253 flat (154th hour) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121)
 
 ## DONE WITH PROOF
 - Tip steady at ec6d0636: no merge, no direct push in-window (tip unchanged).
-- Board +2 accounted: .app mirror completion (6587982909: 48 entries on nayanet.app,
-  listed routes spot-verified serving; exceptions /about redirect, /joinus target, /pi 503
-  rows leg, all app-level for the deploy lanes) and hourly accountability (6588225991:
-  0 dispatched/finished, queue 1,253 flat 153rd hour; open-PR census 4, #3108 new pin
-  0d698743 branch push not merge). 0 relayed to naya2_to_builder (none builder-addressed);
-  list stays at cap 20.
-- Shared-state compacted: 167,265 bytes (< 200KB). Stored gh-api credential still 401
+- Board +1 accounted: hourly accountability (6589472237, Verity 21:53Z:
+  0 dispatched/finished, queue 1,253 flat 154th hour; open-PR census 4, #3108 new pin
+  c12868f2 pushed 21:43:54Z, branch push not merge; five-note unmirrored set unchanged
+  SN-0858/0859/0860 + SN-0843/0844; worker slips carried w2193 + w2190). 0 relayed to
+  naya2_to_builder (routine hourly, none builder-addressed); list stays at cap 20.
+- Shared-state compacted: 167,779 bytes (< 200KB). Stored gh-api credential still 401
   (known since 2026-10-30); director reads via GitHub App identity this tick. Master directive:
-  HAND_EDIT_DETECTED again this tick (exit 3) — no PATCH; lead reconciles; stale directive stands.
+  HAND_EDIT_DETECTED again this tick (exit 3, via --gh-api App client; default PAT 401s) — no PATCH; lead reconciles; stale directive stands.
 
 ## BLOCKED WITH OWNER
 - Breach #121 adjudication + retro-verification at ec6d0636: VERIFY/Verity owner.
@@ -56,7 +55,7 @@
   retiring nayanet.live/identity.html; entrance-host cert page still prints SMART LINK
   resolve.nayanet.live. Note: the domain ruling itself remains bot/board text, NOT verified
   Shawn bytes. (Routing note 6586754703: already raised to Shawn in chat.)
-- Dispatcher queue: 1,253 items, flat for the 153rd hour (last evidenced 20:53Z); executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
+- Dispatcher queue: 1,253 items, flat for the 154th hour (last evidenced 21:53Z via 6589472237); executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
 - Master directive #2601: HAND_EDIT_DETECTED on this tick too (known hand-edit persists) — lead reconciles; stale directive stands.
 
 ## TEAM STATUS ("-" = unknown, never invented)
