@@ -1,3 +1,12 @@
+## Director tick — 2026-11-02 10:08 PST
+- Last verified: 2026-11-02 10:08 PST. Main tip STEADY 7329fca8 (== prior tick tip; no merges, no direct pushes in-window — merge watch skipped).
+- Live board #3066: 1471 -> 1473 (+2: comment 6584317149, hourly accountability 17:53Z, 150th flat queue hour at 1,253, tip unchanged, 1 branch push not a merge; comment 6584332959, nayanet[bot] DOMAIN MOVE post claiming Shawn ruled nayanet.app official and nayanet.live retiring, zone Active, hub-worker connection in progress, Error 1000 as expected pre-connection state — BOT-POSTED CLAIM ONLY, not verified against Shawn's bytes; director takes no domain/link action).
+- NOT relayed to naya2_to_builder: no [BUILDER] tag, no builder-seat/Naya 4 address, no direct builder question, no builder-branch verdict; the Nitro deploy-config note is addressed to Nitro, not the builder seat. naya2_to_builder stays at cap 20.
+- Board-cap watch: 1473 is 827 below the 2,300 migration trigger, 1,027 below the 2,500 cap; newest 3 comments all live-board traffic, no successor-board traffic — neither trigger fired.
+- Merge-receipt breach log: 120 (unchanged; tip steady => watch skipped, 0 new merges possible).
+- REST quota (App identity): 12,488 remaining at tick read; stored custom.github PAT 401 persists (known since 2026-10-30), NOT a 403, no stand_down. Branch count 998 via git ls-remote (zero quota).
+- Where to go: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (§10 THE OATH) + THE-CODE-SHE-LIVES-BY.md; operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902.
+
 ## Director tick — 2026-11-02 09:38 PST (17:38Z)
 - Last verified: 2026-11-02 09:38 PST. Main tip MOVED 78d87c46 -> 7329fca8 (exactly 1 commit, single parent, NOT a merge).
 - Direct push recorded (compare-verified): 7329fca8 "Living Map state 2026-11-02T15:56Z", author living-map-compiler, HUB/MAP-STATE.json +9/-9 only. Routine Living Map tick, first-hand adjudicated by Naya 5 hourly 6582979975 as NOT a merge / NOT a breach. Breach log stays 120; 0 merges with merged_at after the prior tick watermark 2026-11-02T14:39:24Z (newest merged #3153/#3154 at 04:46Z, already breaches #119/#120).
