@@ -1,0 +1,237 @@
+{
+ "artifact": "welcome-engine-matches/v1",
+ "citizens": {
+  "naya-power": {
+   "people": [
+    {
+     "alias": "nitro",
+     "calibrated": true,
+     "kind": "citizen",
+     "reasons": [
+      "shared goals: prove",
+      "offer/need fit: PROVING, builder, builders",
+      "wanted connection: builder, builders"
+     ],
+     "score": 18,
+     "signal_coverage_percent": 60
+    },
+    {
+     "alias": "resolve",
+     "calibrated": true,
+     "kind": "citizen",
+     "reasons": [
+      "shared: THINKING",
+      "wanted connection: builder, builders"
+     ],
+     "score": 14,
+     "signal_coverage_percent": 55
+    }
+   ],
+   "projects": [],
+   "spaces": [
+    {
+     "alias": "space-nayapower",
+     "calibrated": true,
+     "kind": "space",
+     "reasons": [
+      "shared: CONNECTING, MAKING, build, building, integration",
+      "shared goals: outcome, prove, prove outcomes",
+      "offer/need fit: CONNECTING, builder, builders",
+      "wanted connection: builder, builders"
+     ],
+     "score": 57,
+     "signal_coverage_percent": 100
+    },
+    {
+     "alias": "space-smart-factory",
+     "calibrated": true,
+     "kind": "space",
+     "reasons": [
+      "shared: GUIDING, MAKING, build, building, design",
+      "offer/need fit: builder, builders"
+     ],
+     "score": 32,
+     "signal_coverage_percent": 60
+    },
+    {
+     "alias": "space-one-hub",
+     "calibrated": true,
+     "kind": "space",
+     "reasons": [
+      "shared: CONNECTING, system, systems",
+      "shared goals: nayanet, outcome, prove"
+     ],
+     "score": 27,
+     "signal_coverage_percent": 65
+    },
+    {
+     "alias": "space-team-nitro",
+     "calibrated": true,
+     "kind": "space",
+     "reasons": [
+      "shared: build",
+      "offer/need fit: builder, builders",
+      "wanted connection: builder, builders"
+     ],
+     "score": 14,
+     "signal_coverage_percent": 75
+    }
+   ]
+  },
+  "nitro": {
+   "people": [
+    {
+     "alias": "naya-power",
+     "calibrated": true,
+     "kind": "citizen",
+     "reasons": [
+      "shared goals: prove",
+      "offer/need fit: PROVING, builder, builders",
+      "wanted connection: builder, builders"
+     ],
+     "score": 18,
+     "signal_coverage_percent": 60
+    }
+   ],
+   "projects": [],
+   "spaces": [
+    {
+     "alias": "space-team-nitro",
+     "calibrated": true,
+     "kind": "space",
+     "reasons": [
+      "shared: PROVING, SHIPPING, delivery, execution, test",
+      "shared goals: SHIPPING, ship",
+      "offer/need fit: builder, builders",
+      "wanted connection: builder, builders"
+     ],
+     "score": 62,
+     "signal_coverage_percent": 100
+    },
+    {
+     "alias": "space-nayapower",
+     "calibrated": true,
+     "kind": "space",
+     "reasons": [
+      "shared goals: prove",
+      "offer/need fit: PROVING, builder, builders",
+      "wanted connection: builder, builders"
+     ],
+     "score": 15,
+     "signal_coverage_percent": 60
+    },
+    {
+     "alias": "space-one-hub",
+     "calibrated": true,
+     "kind": "space",
+     "reasons": [
+      "shared: PROVING",
+      "shared goals: prove",
+      "offer/need fit: PROVING, evidence"
+     ],
+     "score": 14,
+     "signal_coverage_percent": 85
+    },
+    {
+     "alias": "space-ask-naya",
+     "calibrated": true,
+     "kind": "space",
+     "reasons": [
+      "shared goals: test",
+      "offer/need fit: test"
+     ],
+     "score": 4,
+     "signal_coverage_percent": 45
+    }
+   ]
+  },
+  "resolve": {
+   "people": [
+    {
+     "alias": "naya-power",
+     "calibrated": true,
+     "kind": "citizen",
+     "reasons": [
+      "shared: THINKING",
+      "wanted connection: builder, builders"
+     ],
+     "score": 14,
+     "signal_coverage_percent": 55
+    }
+   ],
+   "projects": [],
+   "spaces": []
+  }
+ },
+ "engine": "smart_match v1.5",
+ "entity_count": 12,
+ "generated_from": "62107e3c8f675527137f855ccac95ae0031e04f3c5e015601b6aef4d51a00303",
+ "insufficient_signal": [
+  {
+   "alias": "space-mirror",
+   "empty_fields": [
+    "wants"
+   ],
+   "field_term_counts": {
+    "goals": 1,
+    "needs": 2,
+    "offers": 1,
+    "topics": 4,
+    "wants": 0
+   },
+   "kind": "space",
+   "surfaced_pairs": 0
+  },
+  {
+   "alias": "space-one-flow",
+   "empty_fields": [
+    "wants"
+   ],
+   "field_term_counts": {
+    "goals": 1,
+    "needs": 2,
+    "offers": 1,
+    "topics": 5,
+    "wants": 0
+   },
+   "kind": "space",
+   "surfaced_pairs": 0
+  },
+  {
+   "alias": "space-smart-mail",
+   "empty_fields": [
+    "wants"
+   ],
+   "field_term_counts": {
+    "goals": 1,
+    "needs": 2,
+    "offers": 2,
+    "topics": 4,
+    "wants": 0
+   },
+   "kind": "space",
+   "surfaced_pairs": 0
+  },
+  {
+   "alias": "space-voice",
+   "empty_fields": [
+    "wants"
+   ],
+   "field_term_counts": {
+    "goals": 1,
+    "needs": 2,
+    "offers": 1,
+    "topics": 4,
+    "wants": 0
+   },
+   "kind": "space",
+   "surfaced_pairs": 0
+  }
+ ],
+ "weights": {
+  "goals": 0.25,
+  "offers_needs": 0.2,
+  "topics": 0.4,
+  "wants": 0.15
+ }
+}
