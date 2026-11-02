@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-11-01  
-**Receipt basis commit:** `c247279968ec3c66bd0495d99cd90f3860eac2a5`  
-**Inventory file count:** 1839  
+**Generated:** 2026-11-02  
+**Receipt basis commit:** `e05d913cda6c1ed7607c0e724029828fc5860ec7`  
+**Inventory file count:** 1851  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,16 +11,16 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 16 |
-| 01-GOVERNANCE | 99 |
+| 01-GOVERNANCE | 100 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 28 |
-| 05-MEMORY | 911 |
+| 05-MEMORY | 915 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 9 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 543 |
+| 10-INTERFACES | 550 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 26 |
 | 90-OPERATIONS | 112 |
@@ -163,6 +163,7 @@
 - `BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.ai.md` — `6a364f8241b3` (7311 bytes)
 - `BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.human.md` — `1e78af263449` (1311 bytes)
 - `BRAIN/01-GOVERNANCE/0037-LOCKED-IN-DECLARATION-V1.machine.json` — `63f415a75a99` (1107 bytes)
+- `BRAIN/01-GOVERNANCE/0038-WHAT-NAYA-STANDS-FOR.human.md` — `459677288674` (8227 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.human.md` — `2af14cb71410` (88406 bytes)
 - `BRAIN/01-GOVERNANCE/DAILY-LAW-REGISTRY.machine.json` — `ab627b25a96b` (513665 bytes)
 - `BRAIN/01-GOVERNANCE/DOC-COMPLETENESS-AUDIT-2026-10-10.md` — `ea273ce3077d` (2633 bytes)
@@ -1057,9 +1058,13 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/learning/SN-2042/IB-SMART-NOTE-20261030-sn2042-the-same-law-everywhere.md` — `f5908f4aaf11` (11014 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1904/IB-SMART-NOTE-20261030-sn1904-what-it-means-to-be-the-most-intelligent.md` — `c5a5598c7d57` (8692 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1905/IB-SMART-NOTE-20261030-sn1905-the-adopted-pricing-canon.md` — `66fb8611c8a6` (8062 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1905/SN-1905-CANON-AMENDMENT-2026-10-31.md` — `189c4d835e5f` (2633 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1906/IB-SMART-NOTE-20261030-sn1906-the-related-bar-law.md` — `b11563dff306` (2135 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/30/SYSTEM/smart-notes/SN-1907/IB-SMART-NOTE-20261030-sn1907-one-mind-named-naya.md` — `b8307c37c1c6` (1259 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/31/SYSTEM/smart-notes/SN-1908/IB-SMART-NOTE-20261031-sn1908-the-full-circle.md` — `20acbfb7cae1` (2035 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/DESIGN/real-object-law/SN-0859/IB-SMART-NOTE-20261101-sn0859-the-real-object-law.md` — `c04ad862eede` (2207 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/DESIGN/viewport-optimization-law/SN-0858/IB-SMART-NOTE-20261101-sn0858-viewport-optimization-law.md` — `45ac03ea0f24` (2640 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/NAYA/canon/SN-0860/IB-SMART-NOTE-20261101-sn0860-the-naya-canon.md` — `d0f045280b10` (2254 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/SYSTEM/smart-notes/SN-2043/IB-SMART-NOTE-20261101-sn2043-how-to-do-a-smart-note-every-time-and-why-we-do-three-a-day.md` — `0e794de4e0d9` (7261 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md` — `7e5bbf440cac` (7193 bytes)
 - `BRAIN/05-MEMORY/SUPER-NOTES/README.md` — `a774a471df2e` (1983 bytes)
@@ -1709,10 +1714,16 @@
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/showcase/verify2.mjs` — `1a67b7c96f4f` (2575 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/smart_factory_final-2.html` — `b05c310e30c9` (454033 bytes)
 - `BRAIN/10-INTERFACES/SMART-FACTORY-CANON/validate-machine-contract.py` — `9ae1fe98539e` (14220 bytes)
+- `BRAIN/10-INTERFACES/SMART-GRAPHS/ADDENDUM-2026-10-22-layer-and-community.md` — `ecc62eca8a07` (1927 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/README.md` — `aeaa4f0b9255` (2224 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.ai.md` — `bf68e6ff9a1d` (5530 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-GRAPHS-SPEC.human.md` — `7326d11973dd` (7631 bytes)
+- `BRAIN/10-INTERFACES/SMART-GRAPHS/SMART-STATS-BUILD-SPEC-2026-10-31.human.md` — `0f98667ec43b` (10124 bytes)
+- `BRAIN/10-INTERFACES/SMART-GRAPHS/ULTIMATE-SMART-STATS.ai.md` — `cd29b6d7ddca` (21154 bytes)
+- `BRAIN/10-INTERFACES/SMART-GRAPHS/ULTIMATE-SMART-STATS.human.md` — `c4dd59b2bf29` (12890 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/smart-graphs-spec.machine.json` — `2bb90a0d4b6d` (4566 bytes)
+- `BRAIN/10-INTERFACES/SMART-GRAPHS/smart-stats-build-2026-10-31.machine.json` — `df75bd616047` (5588 bytes)
+- `BRAIN/10-INTERFACES/SMART-GRAPHS/specimen-ultimate-dashboard.html` — `a367d6b77197` (29709 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/01-pulse-orb.html` — `a6c116c088de` (2124 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/02-jewel-pillars.html` — `9303e152276a` (3010 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/03-spectrum-flow.html` — `dea2fe238e7c` (3865 bytes)
@@ -1721,6 +1732,7 @@
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/06-living-counter.html` — `2608daf58143` (2347 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/07-orbit-dial.html` — `09f2d62e08e2` (1980 bytes)
 - `BRAIN/10-INTERFACES/SMART-GRAPHS/specimens/sg-chrome.css` — `70a99d8a7cbf` (2792 bytes)
+- `BRAIN/10-INTERFACES/SMART-GRAPHS/ultimate-smart-stats.machine.json` — `4138a7c61ee2` (15514 bytes)
 - `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/BLESSING.md` — `b11d047421c4` (7138 bytes)
 - `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/build-specimen.py` — `1509e98799bd` (6914 bytes)
 - `BRAIN/10-INTERFACES/interface-factory/specs/blessed-05-briefing-strip/evidence/gate-output.txt` — `2394d7d289eb` (2937 bytes)
