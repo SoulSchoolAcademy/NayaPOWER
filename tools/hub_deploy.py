@@ -3,7 +3,7 @@
 
 WHY THIS EXISTS
 ---------------
-Until now the Hub (nayanet.live) was only ever re-shipped as a side effect of
+Until now the Hub (nayanet.app) was only ever re-shipped as a side effect of
 Smart Note landings: the sync lane's combined path baked notes into the page
 and uploaded it, so a canonical Hub-source fix merged to main stayed invisible
 until a note happened to land. On 2026-10-21 the sync watcher also died
@@ -66,7 +66,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 HUB_SOURCE_DIR = REPO_ROOT / "HUB" / "app"
 STATE_PATH = REPO_ROOT / "HUB" / ".hub-deploy-state.json"
-DEFAULT_SMOKE_URL = "https://nayanet.live/"
+DEFAULT_SMOKE_URL = "https://nayanet.app/"
 
 EXIT_OK = 0
 EXIT_GATE = 2
@@ -401,7 +401,7 @@ def main(argv: list[str] | None = None) -> int:
     p_deploy.add_argument("--dry-run", action="store_true",
                           help="dry run: requires --target; smoke checks the target copy")
     p_deploy.add_argument("--smoke-url", default=None,
-                          help="default: the --target copy (dry-run) or https://nayanet.live/")
+                          help="default: the --target copy (dry-run) or https://nayanet.app/")
     p_deploy.add_argument("--receipt", default=None, help="write a JSON receipt to this path")
 
     p_rb = sub.add_parser("rollback", help="re-publish the previously deployed commit")

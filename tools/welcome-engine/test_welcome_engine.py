@@ -34,7 +34,7 @@ def test_full_citizen_pages_verbatim():
 
 def test_link_and_issuance():
     r = w.activate("maya-rivers", MAYA, CORPUS)
-    assert r["ambassador_link"] == "https://nayanet.live/joinus?ref=maya-rivers"
+    assert r["ambassador_link"] == "https://nayanet.app/joinus?ref=maya-rivers"
     assert "on conflict (alias) do nothing" in r["issue_link_sql"]
     assert r["pages"]["links"] == [{"url": MAYA["links"][0], "tracked": True}]
 

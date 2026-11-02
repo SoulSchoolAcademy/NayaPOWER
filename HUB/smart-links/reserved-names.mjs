@@ -1,6 +1,6 @@
 // reserved-names.mjs — the ONE reserved-name list for Smart Links.
 //
-// A Smart Link name becomes nayanet.live/<name>. Any name that collides with
+// A Smart Link name becomes nayanet.app/<name>. Any name that collides with
 // a real route, room, file, or system path on the live site would shadow it —
 // so these names can never be minted as links. This module is the single
 // source: the redirect worker refuses them, the database seed in
@@ -11,7 +11,7 @@
 // Provenance of the list:
 //  - The Smart Links spec, via the Best-of-Best application map (element #3):
 //    /rooms/*, /s/*, /identity.html are named there verbatim.
-//  - Live route inventory of nayanet.live from this repo: the Hub worker's
+//  - Live route inventory of nayanet.app from this repo: the Hub worker's
 //    SPA + rooms (HUB/app/index.html ROOMS), the naya-share worker routes
 //    (/s/*, /share-img/*), the sync heartbeat file, the Welcome door and the
 //    identity certificate (DESIGN-LANGUAGE SS9.2/SS9.4).

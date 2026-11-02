@@ -56,7 +56,7 @@ SL_DECL = {
         {"label": "Morning prep checklist", "detail": "Doors, ovens, playlist"},
         {"label": "Supplier contacts", "url": "https://example.com/suppliers"},
     ],
-    "manage_endpoint": "https://lists.nayanet.live/morning-crumb",
+    "manage_endpoint": "https://lists.nayanet.app/morning-crumb",
 }
 
 
@@ -171,10 +171,10 @@ class FeatureSmartListAcceptance(unittest.TestCase):
             sl_contract(self.tmp, dict(SL_DECL)), self.workdir, self.tree)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         lst = list_html(page)
-        self.assertIn('action="https://lists.nayanet.live/morning-crumb/items"',
+        self.assertIn('action="https://lists.nayanet.app/morning-crumb/items"',
                       lst)
         self.assertIn('name="label"', lst)
-        self.assertIn('action="https://lists.nayanet.live/morning-crumb/remove"',
+        self.assertIn('action="https://lists.nayanet.app/morning-crumb/remove"',
                       lst)
         self.assertEqual(lst.count('class="slist-remove"'), 3)
 

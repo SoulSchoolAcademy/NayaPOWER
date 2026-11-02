@@ -11,7 +11,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-HOST = "https://nayanet.live"
+HOST = "https://nayanet.app"
 QUALITY_DIMENSIONS = (
     "Visual Excellence", "Functional Completeness", "Intelligence", "Honesty",
     "Performance", "Reliability & Continuity", "Accessibility", "Craft",

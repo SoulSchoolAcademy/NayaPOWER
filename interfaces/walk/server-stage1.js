@@ -1,8 +1,8 @@
 // naya-welcome — THE OFFICIAL WELCOME, built right (2026-10-24).
-// The page AFTER identity: nayanet.live/welcome · /api/welcome/* · /world/*.
+// The page AFTER identity: nayanet.app/welcome · /api/welcome/* · /world/*.
 // Identity is NOT built here — the Smart Identity Activation already
 // certifies the citizen (nayanet_identities: alias · name · device_key ·
-// cert_no) and hands them to nayanet.live, where the Hub greets them by
+// cert_no) and hands them to nayanet.app, where the Hub greets them by
 // the device-local identity store. This walk reads THAT store, verifies
 // it with the registry, and asks only the ten questions that build the
 // world. There is no begin endpoint and no claim form — never was again.
@@ -274,18 +274,18 @@ a{color:inherit}
 function tabsRow(alias, active) {
   const doors = [
     ['Home', '/world/' + alias, SPECTRUM[0]],
-    ['Dashboard', 'https://nayanet.live/dashboard', SPECTRUM[1]],
+    ['Dashboard', 'https://nayanet.app/dashboard', SPECTRUM[1]],
     ['About', '/world/' + alias + '#about', SPECTRUM[2]],
-    ['Today', 'https://nayanet.live/rooms/today', SPECTRUM[3]],
-    ['Smart Notes', 'https://nayanet.live/', SPECTRUM[4]],
-    ['Connections', 'https://nayanet.live/rooms/connections', SPECTRUM[5]],
-    ['Message', 'https://nayanet.live/rooms/mail', SPECTRUM[6]],
-    ['Inbox', 'https://nayanet.live/rooms/mail', SPECTRUM[0]],
-    ['Growth', 'https://nayanet.live/rooms/growth', SPECTRUM[1]],
-    ['Lists', 'https://nayanet.live/rooms/lists', SPECTRUM[2]],
-    ['Reports', 'https://nayanet.live/rooms/reports', SPECTRUM[3]],
+    ['Today', 'https://nayanet.app/rooms/today', SPECTRUM[3]],
+    ['Smart Notes', 'https://nayanet.app/', SPECTRUM[4]],
+    ['Connections', 'https://nayanet.app/rooms/connections', SPECTRUM[5]],
+    ['Message', 'https://nayanet.app/rooms/mail', SPECTRUM[6]],
+    ['Inbox', 'https://nayanet.app/rooms/mail', SPECTRUM[0]],
+    ['Growth', 'https://nayanet.app/rooms/growth', SPECTRUM[1]],
+    ['Lists', 'https://nayanet.app/rooms/lists', SPECTRUM[2]],
+    ['Reports', 'https://nayanet.app/rooms/reports', SPECTRUM[3]],
     ['Settings', '/world/' + alias + '#settings', SPECTRUM[4]],
-    ['Smart Factory', 'https://nayanet.live/#/hub/factory', SPECTRUM[5]]
+    ['Smart Factory', 'https://nayanet.app/#/hub/factory', SPECTRUM[5]]
   ];
   return '<nav class="tabs" aria-label="Your doors">' + doors.map(([label, href, c]) =>
     '<a class="tab" style="--rc:' + c + '" href="' + href + '"><i></i>' + esc(label) + '</a>').join('') + '</nav>';
@@ -299,7 +299,7 @@ function matchesPanel(matches, heading) {
   const rows = matches.map((m, i) => {
     const c = SPECTRUM[i % SPECTRUM.length];
     return '<div class="match-row"><div class="match-orb" style="--mc:' + c + '">' + esc(initialsOf(m.name, m.alias)) + '</div>' +
-      '<div class="match-main"><div class="match-name"><a href="/world/' + esc(m.alias) + '">' + esc(m.name || m.alias) + '</a> <span style="color:var(--silver);font-weight:600">· nayanet.live/world/' + esc(m.alias) + '</span></div>' +
+      '<div class="match-main"><div class="match-name"><a href="/world/' + esc(m.alias) + '">' + esc(m.name || m.alias) + '</a> <span style="color:var(--silver);font-weight:600">· nayanet.app/world/' + esc(m.alias) + '</span></div>' +
       '<div class="match-reason">' + esc((m.reasons || []).join(' · ')) + '</div></div>' +
       '<div class="match-pct" style="--mc:' + c + '">' + m.pct + '%</div></div>';
   }).join('');
@@ -320,7 +320,7 @@ function worldShell(opts) {
     '<div class="cover">' + jewelSVG(opts.alias, pc) + '<div class="cover-shade"></div>' +
     '<div class="cover-in"><div class="orb">' + esc(initialsOf(opts.name, opts.alias)) + '</div>' +
     '<div><h1>' + esc(opts.name) + '</h1>' +
-    '<div class="alias-line">nayanet.live/world/' + esc(opts.alias) + (opts.page !== 'personal' ? '/' + opts.page : '') + '</div>' +
+    '<div class="alias-line">nayanet.app/world/' + esc(opts.alias) + (opts.page !== 'personal' ? '/' + opts.page : '') + '</div>' +
     (opts.motto ? '<div class="motto">&ldquo;' + esc(opts.motto) + '&rdquo;</div>' : '') +
     '</div></div></div>' +
     '<div class="wrap">' + tabsRow(opts.alias, opts.page) + opts.body + '</div>' +
@@ -374,7 +374,7 @@ function renderConnectLayer(world, viewerMatch) {
     '<p>' + esc(world.name) + ' keeps this page private — and that is their right, held by design. What the network may know is the connect layer: their alias, what they are about, and that they are here to meet the right people.</p>' +
     (topics.length ? '<div class="chips" style="margin-top:16px">' + topics.map((t) => '<span class="chip">' + esc(t) + '</span>').join('') + '</div>' : '') +
     '<div class="doors" style="margin-top:20px">' +
-    '<a class="door" style="--dc:#3fb8ff" href="https://nayanet.live/rooms/mail">✉ Message via Smart Mail</a>' +
+    '<a class="door" style="--dc:#3fb8ff" href="https://nayanet.app/rooms/mail">✉ Message via Smart Mail</a>' +
     '<a class="door" style="--dc:#2fe89e" href="/world/' + esc(world.alias) + '/business">Their Business</a>' +
     '<a class="door" style="--dc:#ffbf3d" href="/world/' + esc(world.alias) + '/space">Their Space</a>' +
     '<a class="door" style="--dc:#e84fff" href="/welcome">Claim Your Own World</a></div></section>' +
@@ -397,11 +397,11 @@ function renderPersonal(world, owner, matches, settings) {
   body += '<section class="board" style="--igc:' + walk() + '"><h2>Their Worlds</h2><div class="doors">' +
     '<a class="door" style="--dc:#3fb8ff" href="/world/' + esc(world.alias) + '/business">Business Page</a>' +
     '<a class="door" style="--dc:#2fe89e" href="/world/' + esc(world.alias) + '/space">Their Space</a>' +
-    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.live/rooms/mail">✉ Smart Mail</a></div></section>';
+    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.app/rooms/mail">✉ Smart Mail</a></div></section>';
   body += matchesPanel(matches, 'Your Matches');
   body += '<section class="board" style="--igc:#2fe89e"><h2>Want More? — The Smart Factory</h2>' +
     '<p>This system arrived complete — done for you, move-in ready. The Factory is not where your pages come from; it is where your system grows: more personal pages, more businesses (you are never limited to one), more spaces, and smart blocks, smart systems and smart apps attached to your system whenever you want them.</p>' +
-    '<div class="doors" style="margin-top:16px"><a class="door" style="--dc:#2fe89e" href="https://nayanet.live/#/hub/factory">The Smart Factory — add pages, blocks and apps</a></div></section>';
+    '<div class="doors" style="margin-top:16px"><a class="door" style="--dc:#2fe89e" href="https://nayanet.app/#/hub/factory">The Smart Factory — add pages, blocks and apps</a></div></section>';
   if (owner) body += ownerSettingsBar(world.alias, settings);
   return worldShell({ alias: world.alias, name: world.name, page: 'personal', color: PAGE_COLORS.personal, title: world.name, motto: a.motto || '', body });
 }
@@ -417,7 +417,7 @@ function renderBusiness(world, owner) {
   body += '<section class="board" style="--igc:' + SPECTRUM[idx++ % 7] + '"><h2>Reach ' + esc(world.name) + '</h2><div class="doors">' +
     '<a class="door" style="--dc:#a06bff" href="/world/' + esc(world.alias) + '">Personal Page</a>' +
     '<a class="door" style="--dc:#2fe89e" href="/world/' + esc(world.alias) + '/space">Their Space</a>' +
-    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.live/rooms/mail">✉ Smart Mail</a></div></section>';
+    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.app/rooms/mail">✉ Smart Mail</a></div></section>';
   if (owner) body += ownerSettingsBar(world.alias, world.settings || DEFAULT_SETTINGS);
   return worldShell({ alias: world.alias, name: world.name, page: 'business', color: PAGE_COLORS.business, title: world.name + ' — Business', motto: a.motto || '', body });
 }
@@ -430,9 +430,9 @@ function renderSpace(world, owner) {
     (a.space && String(a.space).trim() ? '<p>' + esc(a.space) + '</p>' : '<p class="empty">This space was just born — its first gathering is yet to come.</p>') + '</section>';
   if ((world.topics || []).length) body += '<section class="board" style="--igc:' + SPECTRUM[idx++ % 7] + '"><h2>What This Space Is About</h2><div class="chips">' + world.topics.map((t) => '<span class="chip">' + esc(t) + '</span>').join('') + '</div></section>';
   body += '<section class="board" style="--igc:' + SPECTRUM[idx++ % 7] + '"><h2>Enter The Conversation</h2><div class="doors">' +
-    '<a class="door" style="--dc:#ff9a5a" href="https://nayanet.live/rooms/spaces">Smart Spaces Room</a>' +
+    '<a class="door" style="--dc:#ff9a5a" href="https://nayanet.app/rooms/spaces">Smart Spaces Room</a>' +
     '<a class="door" style="--dc:#a06bff" href="/world/' + esc(world.alias) + '">Personal Page</a>' +
-    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.live/rooms/mail">✉ Smart Mail</a></div>' +
+    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.app/rooms/mail">✉ Smart Mail</a></div>' +
     '<p style="margin-top:14px" class="empty">Spaces are where citizens gather around what they are into. This citizen’s space lives here, and its conversations gather in the Spaces room.</p></section>';
   if (owner) body += ownerSettingsBar(world.alias, world.settings || DEFAULT_SETTINGS);
   return worldShell({ alias: world.alias, name: world.name, page: 'space', color: PAGE_COLORS.space, title: world.name + ' — Space', motto: a.motto || '', body });
@@ -440,7 +440,7 @@ function renderSpace(world, owner) {
 
 function renderNotFound(alias) {
   const body = '<section class="board" style="--igc:#a06bff"><h2>No World Here Yet</h2>' +
-    '<p>The address nayanet.live/world/' + esc(alias) + ' has not been claimed — no citizen\'s world lives under this name yet. If it should be yours, the welcome takes two minutes and the world is born filled, never empty.</p>' +
+    '<p>The address nayanet.app/world/' + esc(alias) + ' has not been claimed — no citizen\'s world lives under this name yet. If it should be yours, the welcome takes two minutes and the world is born filled, never empty.</p>' +
     '<div class="doors" style="margin-top:18px"><a class="door" style="--dc:#a06bff" href="/welcome">Begin The Welcome</a></div></section>';
   return worldShell({ alias: alias || 'nayanet', name: 'Not Claimed Yet', page: 'personal', color: '#a06bff', title: 'No world here yet', motto: '', body });
 }

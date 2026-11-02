@@ -179,10 +179,10 @@ def delete_between(s, a, b):
     return s[:i] + s[j:]
 
 HEADER = """// naya-welcome — THE OFFICIAL WELCOME, built right (2026-10-24).
-// The page AFTER identity: nayanet.live/welcome · /api/welcome/* · /world/*.
+// The page AFTER identity: nayanet.app/welcome · /api/welcome/* · /world/*.
 // Identity is NOT built here — the Smart Identity Activation already
 // certifies the citizen (nayanet_identities: alias · name · device_key ·
-// cert_no) and hands them to nayanet.live, where the Hub greets them by
+// cert_no) and hands them to nayanet.app, where the Hub greets them by
 // the device-local identity store. This walk reads THAT store, verifies
 // it with the registry, and asks only the ten questions that build the
 // world. There is no begin endpoint and no claim form — never was again.

@@ -1152,7 +1152,7 @@
           </span>
         </button>
         <p class="cert-claim">Claim your Smart Name — yours alone: one person, one route, forever.</p>
-        <p class="cert-benefit">Your alias is your Smart Link route — alias.nayanet.live — your Smart Mail, and your identity in NayaNET.</p>
+        <p class="cert-benefit">Your alias is your Smart Link route — alias.nayanet.app — your Smart Mail, and your identity in NayaNET.</p>
         <p class="cert-privacy">Your name is never shared. Your alias is your identity in NayaNET — private by default.</p>
         <p class="hub-note" id="hubNote" hidden>One step left: set <code>HUB_APP_URL</code> in this page to your Intelligent Hub address, then this button takes you straight in.</p>
         </div>
@@ -1205,7 +1205,7 @@
        recognize the visitor. The Hub consumes it once and
        scrubs it from the address bar.
        ========================================================= */
-    var HUB_APP_URL = 'https://nayanet.live/';              /* placeholder — set to the real Hub host when known */
+    var HUB_APP_URL = 'https://nayanet.app/';              /* placeholder — set to the real Hub host when known */
     var HUB_APP_PLACEHOLDER = 'hub/';    /* the untouched default; the honesty guard keys off this */
     var SB_ANON_KEY = '__SB_ANON_KEY__';  /* injected at deploy time by deploy-entrance.py — never a real key in this file */
 
@@ -1277,8 +1277,8 @@
          query steps its size down under 820px heights). */
       if (nameEl) { nameEl.textContent = prettyName(currentAlias); nameEl.hidden = false; }
       const linkEl = document.getElementById('displayLink');
-      linkEl.textContent = currentAlias + '.nayanet.live';
-      linkEl.title = currentAlias + '.nayanet.live';
+      linkEl.textContent = currentAlias + '.nayanet.app';
+      linkEl.title = currentAlias + '.nayanet.app';
       document.getElementById('displayMail').textContent = currentAlias;
       if (linesEl) linesEl.hidden = false;
     }
@@ -1307,7 +1307,7 @@
         var certName = certRegalia.name || rawName || prettyName(certRegalia.alias || alias);
         if (nm) { nm.textContent = certName; nm.hidden = !certName; }
         var lk = document.getElementById('displayLink');
-        if (lk) { lk.textContent = (certRegalia.alias || alias) + '.nayanet.live'; lk.title = lk.textContent; }
+        if (lk) { lk.textContent = (certRegalia.alias || alias) + '.nayanet.app'; lk.title = lk.textContent; }
         var ml = document.getElementById('displayMail'); if (ml) ml.textContent = certRegalia.alias || alias;
         var ln = document.querySelector('.cert-lines'); if (ln) ln.hidden = false;
       } else if (plaque && !certStamped) {

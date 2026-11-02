@@ -118,7 +118,7 @@
         {
           "id": "intake.set_address",
           "name": "Set address",
-          "intent": "The page's address goes in the contract (nayanet.live/anything).",
+          "intent": "The page's address goes in the contract (nayanet.app/anything).",
           "in": [
             "address string"
           ],
@@ -1113,7 +1113,7 @@
           ],
           "configuration": {
             "enabled": true,
-            "link_base": "https://nayanet.live (http(s) only, optional)",
+            "link_base": "https://nayanet.app (http(s) only, optional)",
             "page_address": "string, optional — feeds deterministic note ids",
             "notes": [
               {

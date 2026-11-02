@@ -106,19 +106,19 @@ vision: ${v}
 template: ${tn}
 pieces (${cart.length} kinds):
 ${lines.join('\n')||'  (no pieces yet — tap Select on anything you love in Step 3)'}
-rules: Naya design laws v1 (white text, edge-only ignition, one board one color, rectangles not squares, 24/18/14 type, mobile-first). Auto-size pieces marked AUTO to the app.\ndelivers to: nayanet.live/${h} — your app, live on NayaNET.`;
+rules: Naya design laws v1 (white text, edge-only ignition, one board one color, rectangles not squares, 24/18/14 type, mobile-first). Auto-size pieces marked AUTO to the app.\ndelivers to: nayanet.app/${h} — your app, live on NayaNET.`;
  document.getElementById('contract').textContent=c;
  const fnStates={};document.querySelectorAll('.frow').forEach(r=>{const nmEl=r.querySelector('b');const nm=nmEl?nmEl.textContent.trim():'';const id=FN_MAP[nm];const on=r.querySelector('.tog').classList.contains('on');if(id)fnStates[id]=on;else if(on)fnStates['!no-unit:'+nm]=true;});
  const jc={version:"contract-v1",handle:h,idea:document.getElementById('visionText').value||'',vision:document.getElementById('qVision').value||'',do:document.getElementById('qDo').value||'',behave:document.getElementById('qBehave').value||'',template:tn,functions:fnStates,pieces:cart.map(i=>({model:i.model,name:i.name,size:i.size,qty:i.qty,note:i.note||''})),rules:"Naya design laws v1"};
  document.getElementById('contractJson').textContent=JSON.stringify(jc,null,1);
  document.getElementById('contractWrap').style.display='block';
- const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.live/'+h;
+ const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.app/'+h;
  document.getElementById('contractWrap').scrollIntoView({behavior:'smooth'});}
 document.getElementById('buildBtn').onclick=()=>{draftContract();openSummary();};
 function copyText(t,done){function ok(){if(done)done(true);}function legacy(){try{const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(ta);ta.focus();ta.select();const r=document.execCommand('copy');ta.remove();if(done)done(!!r);}catch(e){if(done)done(false);}}if(window.isSecureContext&&navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(legacy);}else{legacy();}}
 document.getElementById('copyBtn').onclick=()=>{copyText(document.getElementById('contract').textContent+"\n\n--- MACHINE CONTRACT ---\n"+document.getElementById('contractJson').textContent,()=>{document.getElementById('copyBtn').textContent='COPIED ✓';});};
 document.getElementById('sendNayaBtn').onclick=()=>{copyText(document.getElementById('contract').textContent+"\n\n--- MACHINE CONTRACT ---\n"+document.getElementById('contractJson').textContent,(good)=>{const b=document.getElementById('sendNayaBtn');b.textContent=good?'COPIED ✓ — NOW PASTE IT TO ME IN CHAT':'COPY FAILED — SELECT THE CONTRACT TEXT MANUALLY';document.getElementById('sendHint').style.display='block';});};
-document.getElementById('handleIn').addEventListener('input',e=>{const h=e.target.value.toLowerCase().replace(/[^a-z0-9]/g,'')||'yourname';document.getElementById('handlePrev').textContent=h;const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.live/'+h;});
+document.getElementById('handleIn').addEventListener('input',e=>{const h=e.target.value.toLowerCase().replace(/[^a-z0-9]/g,'')||'yourname';document.getElementById('handlePrev').textContent=h;const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.app/'+h;});
 document.addEventListener('input',()=>saveDraft());
 document.addEventListener('click',()=>saveDraft());
 if(loadDraft()){const t=document.getElementById('draftToast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
@@ -185,7 +185,7 @@ section{{margin:64px 0}}
 <textarea id="qBehave" class="visionin carve-2" style="min-height:70px;margin:8px 0 16px" placeholder="Calm, energetic, playful, serious..."></textarea>
 <label style="font-size:13px;opacity:.7">Your handle on NayaNET</label>
 <input id="handleIn" class="visionin carve-2" style="min-height:20px;margin:8px 0 4px" placeholder="yourname" maxlength="30">
-<div style="font-size:12px;opacity:.55;margin-bottom:8px">One word, lowercase, no dashes — this becomes your address: <span style="opacity:.9">nayanet.live/<span id="handlePrev" style="color:#2fe89e">yourname</span></span></div>
+<div style="font-size:12px;opacity:.55;margin-bottom:8px">One word, lowercase, no dashes — this becomes your address: <span style="opacity:.9">nayanet.app/<span id="handlePrev" style="color:#2fe89e">yourname</span></span></div>
 </div></section>
 
 <section id="step3"><div class="kicker">STEP 3</div><h2 class="stept">Pick your pieces</h2>
@@ -205,7 +205,7 @@ section{{margin:64px 0}}
 <button id="sendNayaBtn" class="primo theme-green elev-2" type="button" style="margin-top:14px">➤ SEND TO NAYA</button></div>
 <p id="sendHint" style="display:none;margin-top:10px;font-size:14px;color:#2fe89e">Contract copied — paste it to me right here in chat and say "build this."</p>
 <p style="margin-top:12px;font-size:13px;opacity:.7">Paste it to Naya in chat and say "build this" — she'll know every model number.</p>
-<div class="nextbox elev-1"><b>What happens next:</b> Naya takes this contract and builds your app — it lands on your page at <b id="nextUrl">nayanet.live/yourname</b>, live.</div>
+<div class="nextbox elev-1"><b>What happens next:</b> Naya takes this contract and builds your app — it lands on your page at <b id="nextUrl">nayanet.app/yourname</b>, live.</div>
 </div></section>
 </div>
 

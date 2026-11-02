@@ -29,7 +29,7 @@ function fakeCtx() {
 }
 
 const req = (path, headers = {}) =>
-  new Request('https://nayanet.live' + path, { headers });
+  new Request('https://nayanet.app' + path, { headers });
 
 test('happy path: 302 to target with carrier param, cookie set, click recorded', async () => {
   const env = fakeEnv();
@@ -96,13 +96,13 @@ test('multi-segment paths are never links', async () => {
 });
 
 test('referrer classes: direct / internal / search / email / other', () => {
-  assert.equal(classifyReferrer(null, 'nayanet.live').referrer_class, 'direct');
-  assert.equal(classifyReferrer('https://nayanet.live/feed', 'nayanet.live').referrer_class, 'internal');
-  assert.equal(classifyReferrer('https://www.google.com/search?q=x', 'nayanet.live').referrer_class, 'search');
-  assert.equal(classifyReferrer('https://mail.google.com/mail/u/0/', 'nayanet.live').referrer_class, 'email');
-  assert.equal(classifyReferrer('https://some-blog.example/post', 'nayanet.live').referrer_class, 'other');
+  assert.equal(classifyReferrer(null, 'nayanet.app').referrer_class, 'direct');
+  assert.equal(classifyReferrer('https://nayanet.app/feed', 'nayanet.app').referrer_class, 'internal');
+  assert.equal(classifyReferrer('https://www.google.com/search?q=x', 'nayanet.app').referrer_class, 'search');
+  assert.equal(classifyReferrer('https://mail.google.com/mail/u/0/', 'nayanet.app').referrer_class, 'email');
+  assert.equal(classifyReferrer('https://some-blog.example/post', 'nayanet.app').referrer_class, 'other');
   // raw referrer path is never stored — host only
-  assert.equal(classifyReferrer('https://some-blog.example/secret-path', 'nayanet.live').referrer_host, 'some-blog.example');
+  assert.equal(classifyReferrer('https://some-blog.example/secret-path', 'nayanet.app').referrer_host, 'some-blog.example');
 });
 
 test('redirect target: nl_ref appended once, never duplicated', () => {
@@ -115,9 +115,9 @@ test('redirect target: nl_ref appended once, never duplicated', () => {
 test('attribution carrier: the join side reads what the worker wrote', () => {
   const fromCookie = readAttribution({ cookieHeader: 'other=1; nl_attr=morning-crumb.attr-123; x=2' });
   assert.deepEqual(fromCookie, { link_name: 'morning-crumb', attribution_id: 'attr-123', source: 'cookie' });
-  const fromParam = readAttribution({ url: 'https://nayanet.live/join?nl_ref=morning-crumb' });
+  const fromParam = readAttribution({ url: 'https://nayanet.app/join?nl_ref=morning-crumb' });
   assert.deepEqual(fromParam, { link_name: 'morning-crumb', attribution_id: null, source: 'param' });
-  assert.equal(readAttribution({ cookieHeader: 'a=1', url: 'https://nayanet.live/join' }), null);
+  assert.equal(readAttribution({ cookieHeader: 'a=1', url: 'https://nayanet.app/join' }), null);
   assert.equal(readAttribution({}), null);
 });
 

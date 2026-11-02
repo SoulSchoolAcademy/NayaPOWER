@@ -12,7 +12,7 @@ SCRIPT = "naya-welcome"
 SB_MGMT = os.environ.get("SB_MGMT_BIN", "sb-mgmt-api")  # seat supplies Supabase mgmt tool path
 PROJECT = "dahisasgpfvziswqvmvm"
 CODE = os.path.join(os.path.dirname(__file__), "..", "walk", "worker.js")  # repo-relative: HUB/walk/worker.js
-PATTERNS = ["nayanet.live/welcome*", "nayanet.live/api/welcome/*", "nayanet.live/world/*"]
+PATTERNS = ["nayanet.app/welcome*", "nayanet.app/api/welcome/*", "nayanet.app/world/*"]
 
 def cf_call(method, url, data=None, ctype=None):
     req = urllib.request.Request(url, data=data, method=method,
@@ -55,7 +55,7 @@ def main():
     assert out.get("success")
 
     # 4. routes (idempotent: create, or update if the pattern exists)
-    zones = cf_call("GET", "https://api.cloudflare.com/client/v4/zones?name=nayanet.live")
+    zones = cf_call("GET", "https://api.cloudflare.com/client/v4/zones?name=nayanet.app")
     zid = zones["result"][0]["id"]
     existing = cf_call("GET", f"https://api.cloudflare.com/client/v4/zones/{zid}/workers/routes")
     by_pattern = {r["pattern"]: r for r in (existing.get("result") or [])}

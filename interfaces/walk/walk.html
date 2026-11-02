@@ -509,7 +509,7 @@ textarea.visionin{padding:10px}
 <main class="p3-main">
 <h1 class="p3-congrats">"Congratulations, you're hired."</h1>
 <p class="p3-welcome">Welcome to Naya. Welcome to the team. Welcome to the future. They say AI is taking jobs?? The irony: Naya is now hiring everyone in the world. You get 50% of the revenue, paid every Wednesday. Invite the world.</p>
-<div class="p3-linkchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg><button class="p3-link-url" id="linkFace" type="button" data-branded="nayanet.live/yourname" data-real="https://nayanet.live/joinus?ref=yourname" aria-label="Show your real affiliate link">nayanet.live/yourname</button><button class="p3-copy" id="copyBtn" type="button">Copy</button></div>
+<div class="p3-linkchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg><button class="p3-link-url" id="linkFace" type="button" data-branded="nayanet.app/yourname" data-real="https://nayanet.app/joinus?ref=yourname" aria-label="Show your real affiliate link">nayanet.app/yourname</button><button class="p3-copy" id="copyBtn" type="button">Copy</button></div>
 <p class="p3-linkcap">Your own personal branded Smart Link</p>
 <p class="p3-reco">Recommended first &mdash; start here, get your Smart Link. It&rsquo;s your identity, your smart name, your ambassador link, and your tracking, so you can get paid every Wednesday.</p>
 <div class="p3-doors" id="doorRow">
@@ -698,10 +698,10 @@ async function completeWalk(enterNote){
 function renderEnd(){
   var alias = ID.alias || 'yourname';
   var linkFace = document.getElementById('linkFace');
-  var real = (S.reveal && S.reveal.ambassador_link) || ('https://nayanet.live/joinus?ref=' + alias);
-  linkFace.setAttribute('data-branded', 'nayanet.live/' + alias);
+  var real = (S.reveal && S.reveal.ambassador_link) || ('https://nayanet.app/joinus?ref=' + alias);
+  linkFace.setAttribute('data-branded', 'nayanet.app/' + alias);
   linkFace.setAttribute('data-real', real);
-  linkFace.textContent = 'nayanet.live/' + alias;
+  linkFace.textContent = 'nayanet.app/' + alias;
   linkFace.setAttribute('aria-label', 'Show your real affiliate link');
 }
 
@@ -720,7 +720,7 @@ function renderEnd(){
     var personal = P.personal || ('/world/' + alias);
     var business = P.business || ('/world/' + alias + '/business');
     var space = P.space || ('/world/' + alias + '/space');
-    var urls = { Dashboard: personal + '#dashboard', Personal: personal, Business: business, Space: space, Hub: 'https://nayanet.live/' };
+    var urls = { Dashboard: personal + '#dashboard', Personal: personal, Business: business, Space: space, Hub: 'https://nayanet.app/' };
     if (urls[d]) window.location.href = urls[d];
   });
   var linkFace = document.getElementById('linkFace');

@@ -38,7 +38,7 @@ Metrics (window = --window-days, default 7):
       nothing and logged nothing, so early-log rates rest on small n.
       When the log cannot be fetched, (c2) reports NOT DERIVABLE and
       the proxy stands alone — never silently.
-  (d) Feed freshness — age of the newest entry on https://nayanet.live/
+  (d) Feed freshness — age of the newest entry on https://nayanet.app/
       (max created_at in the served page) vs now; plus the lag vs the
       newest Smart Note landing on main (commits API on the note trees).
 
@@ -64,7 +64,7 @@ REPO_DEFAULT = "SoulSchoolAcademy/NayaPOWER"
 GUARDIAN_LOG_BRANCH = "live/guardian-log"
 GUARDIAN_LOG_PATH = "guardian-log.jsonl"
 ESCAPE_VERDICTS = {"ESCAPE", "ESCAPE_ON_REVERT"}
-FEED_URL = "https://nayanet.live/"
+FEED_URL = "https://nayanet.app/"
 NOTE_TREES = ("BRAIN/05-MEMORY/SMART-NOTES", "BRAIN/05-MEMORY/SUPER-NOTES")
 
 PAPERWORK_CHECKS = {

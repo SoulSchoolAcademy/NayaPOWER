@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deploy the Smart Factory to its permanent home:
    worker `smartfactory` -> smartfactory.nayapower.workers.dev
-   + custom domain smartfactory.nayanet.live (never changes)."""
+   + custom domain smartfactory.nayanet.app (never changes)."""
 import json, os, sys, urllib.request
 
 sys.path.insert(0, "/opt/muse/skills/custom-connector-setup/bin")
@@ -10,7 +10,7 @@ from dynamic_credentials import add_surrogate_to_request
 ACCT = "b5e2a51b3e883f7722287c5f51b1196b"
 BASE = "https://api.cloudflare.com/client/v4"
 WORKER = "smartfactory"
-HOSTNAME = "smartfactory.nayanet.live"
+HOSTNAME = "smartfactory.nayanet.app"
 HTML_PATH = os.path.expanduser("~/workspace/team-nitro/smart-builder/factory/Smart_factory_smarttabs.html")
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -60,7 +60,7 @@ def main():
     print("worker deployed")
     r = call("POST", f"/accounts/{ACCT}/workers/scripts/{WORKER}/subdomain", b'{"enabled":true}')
     print("workers.dev:", "enabled" if r.get("success") else r)
-    # permanent home: smartfactory.nayanet.live
+    # permanent home: smartfactory.nayanet.app
     r = call("POST", f"/accounts/{ACCT}/workers/domains",
              json.dumps({"hostname": HOSTNAME, "service": WORKER}).encode())
     if r.get("success"):

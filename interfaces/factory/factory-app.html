@@ -994,7 +994,7 @@ html,body{overflow-x:clip}
 <textarea id="qBehave" class="visionin carve-2" style="min-height:70px;margin:8px 0 16px" placeholder="Calm, energetic, playful, serious..."></textarea>
 <div class="handle-board" id="handleBoard">
   <div class="handle-kicker">YOUR NAYANET ADDRESS</div>
-  <div class="handle-url">nayanet.live/<span id="handlePrev">yourname</span></div>
+  <div class="handle-url">nayanet.app/<span id="handlePrev">yourname</span></div>
   <input id="handleIn" class="handle-in" placeholder="yourname" maxlength="30" aria-label="Your NayaNET handle">
   <div class="handle-note">One word, lowercase, no dashes — this is where your app will live.</div>
 </div>
@@ -1384,7 +1384,7 @@ html,body{overflow-x:clip}
 <button id="sendNayaBtn" class="primo theme-green elev-2" type="button" style="margin-top:14px">➤ SEND TO NAYA</button></div>
 <p id="sendHint" style="display:none;margin-top:10px;font-size:14px;color:#2fe89e">Contract copied — paste it to me right here in chat and say "build this."</p>
 <p style="margin-top:12px;font-size:14px;opacity:.7">Paste it to Naya in chat and say "build this" — she'll know every model number.</p>
-<div class="nextbox elev-1"><b>What happens next:</b> Naya takes this contract and builds your app — it lands on your page at <b id="nextUrl">nayanet.live/yourname</b>, live.</div>
+<div class="nextbox elev-1"><b>What happens next:</b> Naya takes this contract and builds your app — it lands on your page at <b id="nextUrl">nayanet.app/yourname</b>, live.</div>
 </div></section>
 
 <footer style="text-align:center;padding:48px 20px 120px;margin-top:32px;border-top:1px solid rgba(255,255,255,.08)">
@@ -1490,14 +1490,14 @@ vision: ${v}
 template: ${tn}
 pieces (${cart.length} kinds):
 ${lines.join('\n')||'  (no pieces yet — tap Select on anything you love in Step 3)'}
-rules: Naya design laws v1 (white text, edge-only ignition, one board one color, rectangles not squares, 24/18/14 type, mobile-first). Auto-size pieces marked AUTO to the app.\ndelivers to: nayanet.live/${h} — your app, live on NayaNET.`;
+rules: Naya design laws v1 (white text, edge-only ignition, one board one color, rectangles not squares, 24/18/14 type, mobile-first). Auto-size pieces marked AUTO to the app.\ndelivers to: nayanet.app/${h} — your app, live on NayaNET.`;
  document.getElementById('contract').textContent=c;document.getElementById('contractWrap').style.display='block';
- const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.live/'+h;
+ const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.app/'+h;
  document.getElementById('contractWrap').scrollIntoView({behavior:'smooth'});}
 document.getElementById('buildBtn').onclick=()=>{draftContract();openSummary();};
 document.getElementById('copyBtn').onclick=()=>{navigator.clipboard.writeText(document.getElementById('contract').textContent);document.getElementById('copyBtn').textContent='COPIED ✓';};
 document.getElementById('sendNayaBtn').onclick=()=>{navigator.clipboard.writeText(document.getElementById('contract').textContent);const b=document.getElementById('sendNayaBtn');b.textContent='COPIED ✓ — NOW PASTE IT TO ME IN CHAT';document.getElementById('sendHint').style.display='block';};
-document.getElementById('handleIn').addEventListener('input',e=>{const h=e.target.value.toLowerCase().replace(/[^a-z0-9]/g,'')||'yourname';document.getElementById('handlePrev').textContent=h;const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.live/'+h;});
+document.getElementById('handleIn').addEventListener('input',e=>{const h=e.target.value.toLowerCase().replace(/[^a-z0-9]/g,'')||'yourname';document.getElementById('handlePrev').textContent=h;const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.app/'+h;});
 document.addEventListener('input',()=>saveDraft());
 document.addEventListener('click',()=>saveDraft());
 if(loadDraft()){const t=document.getElementById('draftToast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
@@ -2137,7 +2137,7 @@ NF.register(UNIT, {
   }
 });
 })();
-    var HUB='https://nayanet.live/';
+    var HUB='https://nayanet.app/';
     var ICONS={
       home:'<path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/>',
       feed:'<path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2.2"/>',
@@ -2241,7 +2241,7 @@ NF.register(UNIT, {
        templates join it when they're finished and done right, never before.
        ⋯ on any tab: heart, star, edit, remove — one tap. */
   if(window.NayaFunctions&&NayaFunctions.get('smart-tabs')){
-    var HUB='https://nayanet.live/';
+    var HUB='https://nayanet.app/';
     var AREAS=[
       {label:'Hub'},{label:'Smart Feed'},{label:'Intelligence Today'},{label:'Reports'},
       {label:'Smart Lists'},{label:'Smart Spaces'},{label:'Smart Mail'},{label:'Connections'}
