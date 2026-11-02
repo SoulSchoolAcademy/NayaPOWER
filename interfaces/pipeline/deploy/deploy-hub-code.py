@@ -28,7 +28,7 @@ Usage:
   deploy-hub-code.py           # full deploy with snapshot + smoke
 Options: --html PATH (default ~/workspace/user/files/index-2.html)
          --worker NAME (default hub)
-         --url URL (default https://nayanet.live/)
+         --url URL (default https://nayanet.app/)
 """
 
 import argparse
@@ -110,7 +110,7 @@ def main():
                     help='dry-run: gate + hashes + live read; deploy nothing')
     ap.add_argument('--html', default=DEFAULT_HTML)
     ap.add_argument('--worker', default='hub')
-    ap.add_argument('--url', default='https://nayanet.live/')
+    ap.add_argument('--url', default='https://nayanet.app/')
     args = ap.parse_args()
 
     deploy_mod = load_deploy_module()

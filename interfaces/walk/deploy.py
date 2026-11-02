@@ -12,7 +12,7 @@ SCRIPT = "naya-welcome"
 SB_MGMT = "/home/hatch/workspace/custom-connectors/custom.supabase-mgmt/bin/sb-mgmt-api"
 PROJECT = "dahisasgpfvziswqvmvm"
 CODE = "/home/hatch/workspace/welcome-build/worker.js"
-PATTERNS = ["nayanet.live/welcome*", "nayanet.live/api/welcome/*", "nayanet.live/world/*"]
+PATTERNS = ["nayanet.app/welcome*", "nayanet.app/api/welcome/*", "nayanet.app/world/*"]
 
 def cf_call(method, url, data=None, ctype=None):
     req = urllib.request.Request(url, data=data, method=method,
@@ -55,7 +55,7 @@ def main():
     assert out.get("success")
 
     # 4. routes (idempotent: create, or update if the pattern exists)
-    zones = cf_call("GET", "https://api.cloudflare.com/client/v4/zones?name=nayanet.live")
+    zones = cf_call("GET", "https://api.cloudflare.com/client/v4/zones?name=nayanet.app")
     zid = zones["result"][0]["id"]
     existing = cf_call("GET", f"https://api.cloudflare.com/client/v4/zones/{zid}/workers/routes")
     by_pattern = {r["pattern"]: r for r in (existing.get("result") or [])}

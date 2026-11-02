@@ -42,7 +42,7 @@ NA_DECL = {
     "enabled": True,
     "kb_source": "the bakery's GitHub knowledge base",
     "kb_ref": "morning-crumb/kb",
-    "answers_endpoint": "https://answers.nayanet.live/morning-crumb",
+    "answers_endpoint": "https://answers.nayanet.app/morning-crumb",
     "greeting": "Ask me anything about the bakery.",
     "placeholder": "Type your question...",
 }
@@ -144,12 +144,12 @@ class FeatureNayaAnswersAcceptance(unittest.TestCase):
         self.assertIn('data-naya-answers-status="built"', page)
         self.assertIn('data-mode="connected"', page)
         self.assertIn('data-grant="connections.github"', page)
-        self.assertIn('data-answer-endpoint="https://answers.nayanet.live/morning-crumb"',
+        self.assertIn('data-answer-endpoint="https://answers.nayanet.app/morning-crumb"',
                       page)
         self.assertIn('data-kb-source="the bakery&#x27;s GitHub knowledge base"', page)
         self.assertIn("the bakery&#x27;s GitHub knowledge base", page)
         self.assertIn("Ask me anything about the bakery.", page)
-        self.assertIn('action="https://answers.nayanet.live/morning-crumb"', page)
+        self.assertIn('action="https://answers.nayanet.app/morning-crumb"', page)
         self.assertIn('placeholder="Type your question..."', page)
         w = widget_html(page)
         self.assertTrue(w, "ask widget must render")

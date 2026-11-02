@@ -1,7 +1,7 @@
 // Dashboard ambassador embed — renders from the SAME ambassador_links row the Welcome end slide renders from.
 // One wire: no second issuance call. Share text appends the citizen's own link. Ask Naya writes the post when they don't know what to say.
 function ambassadorLink(alias) {
-  return "https://nayanet.live/joinus?ref=" + encodeURIComponent(alias);
+  return "https://nayanet.app/joinus?ref=" + encodeURIComponent(alias);
 }
 function sharePayload(alias, channel) {
   const link = ambassadorLink(alias);

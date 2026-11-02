@@ -44,7 +44,7 @@ CONTACTS_DECL = {
     "enabled": True,
     "contacts": [
         {"name": "Ava Stone", "role": "Head baker",
-         "link": "https://morning-crumb.nayanet.live/team/ava"},
+         "link": "https://morning-crumb.nayanet.app/team/ava"},
         {"name": "Ben Okafor", "role": "Flour supplier",
          "link": "mailto:ben@example.com"},
         {"name": "Cara Diaz", "link": "tel:+15551234567"},
@@ -134,7 +134,7 @@ class FeatureContactsAcceptance(unittest.TestCase):
         # (L-2026-10-17-002) — mailto: and tel: included, nothing invented
         hrefs = re.findall(r'<a class="contact-name" href="([^"]+)"', page)
         self.assertEqual(sorted(hrefs), sorted(
-            ["https://morning-crumb.nayanet.live/team/ava",
+            ["https://morning-crumb.nayanet.app/team/ava",
              "mailto:ben@example.com", "tel:+15551234567"]))
         machine = json.loads(re.search(
             r'<pre id="machinejson">(.*?)</pre>', page, re.S).group(1))

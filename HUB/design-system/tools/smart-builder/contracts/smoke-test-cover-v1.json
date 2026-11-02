@@ -4,8 +4,8 @@
  "features": {
   "cover": {
    "enabled": true,
-   "photo_url": "https://images.nayanet.live/morning-crumb/owner.jpg",
-   "cover_url": "https://images.nayanet.live/morning-crumb/cover.jpg",
+   "photo_url": "https://images.nayanet.app/morning-crumb/owner.jpg",
+   "cover_url": "https://images.nayanet.app/morning-crumb/cover.jpg",
    "name": "Morning Crumb",
    "tagline": "Warm bread \u00b7 order ahead"
   }
@@ -33,7 +33,7 @@
   ],
   [
    "Address",
-   "nayanet.live/morning-crumb"
+   "nayanet.app/morning-crumb"
   ],
   [
    "App icon",

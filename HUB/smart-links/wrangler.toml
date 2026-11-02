@@ -1,4 +1,4 @@
-# Smart Links redirect worker — nayanet.live/<name>
+# Smart Links redirect worker — nayanet.app/<name>
 #
 # DEPLOYMENT IS HUMAN-GATED. This config ships as code with the PR; the
 # route below is deliberately commented out so nothing in this file can
@@ -15,5 +15,5 @@ compatibility_date = "2026-10-17"
 # SUPABASE_ANON_KEY = "<flagship anon key — public, RLS-bounded>"
 
 # [[routes]]
-# pattern = "nayanet.live/*"
-# zone_name = "nayanet.live"
+# pattern = "nayanet.app/*"
+# zone_name = "nayanet.app"

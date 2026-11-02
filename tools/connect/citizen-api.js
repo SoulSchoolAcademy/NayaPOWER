@@ -53,7 +53,7 @@ export const THROTTLE_WINDOW_MS = 60 * 1000;
 // E3: PROPOSED single redirect. Confirm with Nitro/Hub before the
 // authorize page is built. This value is the allowlist, not a guess
 // at runtime — any other redirect_uri is refused.
-export const ALLOWED_REDIRECT_URI = "https://nayanet.live/connect/callback";
+export const ALLOWED_REDIRECT_URI = "https://nayanet.app/connect/callback";
 export const CONSENT_LIST = [
   "Read your identity and your four pages.",
   "Read your own notes and pages.",
@@ -127,10 +127,10 @@ export class MemoryStore {
   }
   addCitizen(alias, membership, pages, opts = {}) {
     this.citizens.set(alias, { alias, membership, joinedAt: opts.joinedAt || null, paid: !!opts.paid, pages: pages || {
-      personal: `https://nayanet.live/world/${alias}`,
-      business: `https://nayanet.live/world/${alias}/business`,
-      space: `https://nayanet.live/world/${alias}/space`,
-      dashboard: `https://nayanet.live/world/${alias}#dashboard`,
+      personal: `https://nayanet.app/world/${alias}`,
+      business: `https://nayanet.app/world/${alias}/business`,
+      space: `https://nayanet.app/world/${alias}/space`,
+      dashboard: `https://nayanet.app/world/${alias}#dashboard`,
     }});
     if (!this.notes.has(alias)) this.notes.set(alias, []);
   }

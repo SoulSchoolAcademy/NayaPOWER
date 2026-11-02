@@ -45,7 +45,7 @@ WORLD_SHELL = r"""function worldShell(opts) {
     '<div class="cover">' + jewelSVG(opts.alias, pc) + '<div class="cover-shade"></div>' +
     '<div class="cover-in"><div class="orb">' + esc(initialsOf(opts.name, opts.alias)) + '</div>' +
     '<div><h1>' + esc(opts.name) + '</h1>' +
-    '<div class="alias-line">nayanet.live/world/' + esc(opts.alias) + (opts.page !== 'personal' ? '/' + opts.page : '') + '</div>' +
+    '<div class="alias-line">nayanet.app/world/' + esc(opts.alias) + (opts.page !== 'personal' ? '/' + opts.page : '') + '</div>' +
     (opts.motto ? '<div class="motto">&ldquo;' + esc(opts.motto) + '&rdquo;</div>' : '') +
     '</div></div></div>' +
     '<div class="wrap">' + tabsRow(opts.alias, opts.page) + '<div id="worldRoot">' + opts.body + '</div></div>' +
@@ -97,11 +97,11 @@ PERSONAL = r"""function personalBody(world, matches, settings, owner) {
   body += '<section class="board" style="--igc:' + walk() + '"><h2>Their Worlds</h2><div class="doors">' +
     '<a class="door" style="--dc:#3fb8ff" href="/world/' + esc(world.alias) + '/business">Business Page</a>' +
     '<a class="door" style="--dc:#2fe89e" href="/world/' + esc(world.alias) + '/space">Their Space</a>' +
-    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.live/rooms/mail">✉ Smart Mail</a></div></section>';
+    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.app/rooms/mail">✉ Smart Mail</a></div></section>';
   body += matchesPanel(matches, 'Your Matches');
   body += '<section class="board" style="--igc:#2fe89e"><h2>Want More? — The Smart Factory</h2>' +
     '<p>This system arrived complete — done for you, move-in ready. The Factory is not where your pages come from; it is where your system grows: more personal pages, more businesses (you are never limited to one), more spaces, and smart blocks, smart systems and smart apps attached to your system whenever you want them.</p>' +
-    '<div class="doors" style="margin-top:16px"><a class="door" style="--dc:#2fe89e" href="https://nayanet.live/#/hub/factory">The Smart Factory — add pages, blocks and apps</a></div></section>';
+    '<div class="doors" style="margin-top:16px"><a class="door" style="--dc:#2fe89e" href="https://nayanet.app/#/hub/factory">The Smart Factory — add pages, blocks and apps</a></div></section>';
   if (owner) body += ownerSettingsBar(world.alias, settings);
   return body;
 }
@@ -124,7 +124,7 @@ BUSINESS = r"""function businessBody(world, settings, owner) {
   body += '<section class="board" style="--igc:' + SPECTRUM[idx++ % 7] + '"><h2>Reach ' + esc(world.name) + '</h2><div class="doors">' +
     '<a class="door" style="--dc:#a06bff" href="/world/' + esc(world.alias) + '">Personal Page</a>' +
     '<a class="door" style="--dc:#2fe89e" href="/world/' + esc(world.alias) + '/space">Their Space</a>' +
-    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.live/rooms/mail">✉ Smart Mail</a></div></section>';
+    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.app/rooms/mail">✉ Smart Mail</a></div></section>';
   if (owner) body += ownerSettingsBar(world.alias, settings);
   return body;
 }
@@ -144,9 +144,9 @@ SPACE = r"""function spaceBody(world, settings, owner) {
     (a.space && String(a.space).trim() ? '<p>' + esc(a.space) + '</p>' : '<p class="empty">This space was just born — its first gathering is yet to come.</p>') + '</section>';
   if ((world.topics || []).length) body += '<section class="board" style="--igc:' + SPECTRUM[idx++ % 7] + '"><h2>What This Space Is About</h2><div class="chips">' + world.topics.map((t) => '<span class="chip">' + esc(t) + '</span>').join('') + '</div></section>';
   body += '<section class="board" style="--igc:' + SPECTRUM[idx++ % 7] + '"><h2>Enter The Conversation</h2><div class="doors">' +
-    '<a class="door" style="--dc:#ff9a5a" href="https://nayanet.live/rooms/spaces">Smart Spaces Room</a>' +
+    '<a class="door" style="--dc:#ff9a5a" href="https://nayanet.app/rooms/spaces">Smart Spaces Room</a>' +
     '<a class="door" style="--dc:#a06bff" href="/world/' + esc(world.alias) + '">Personal Page</a>' +
-    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.live/rooms/mail">✉ Smart Mail</a></div>' +
+    '<a class="door" style="--dc:#ff5e6c" href="https://nayanet.app/rooms/mail">✉ Smart Mail</a></div>' +
     '<p style="margin-top:14px" class="empty">Spaces are where citizens gather around what they are into. This citizen’s space lives here, and its conversations gather in the Spaces room.</p></section>';
   if (owner) body += ownerSettingsBar(world.alias, settings);
   return body;
@@ -401,7 +401,7 @@ API_COMPLETE_JOINED = """async function apiComplete(request, env) {
   // citizen's ambassador link is issued at completion, idempotently —
   // the registry's own pattern (on conflict do nothing; alias is the
   // primary key) — and the coverage accounting rides the receipt.
-  const ambassadorLink = 'https://nayanet.live/joinus?ref=' + alias;
+  const ambassadorLink = 'https://nayanet.app/joinus?ref=' + alias;
   const ambRow = await sb(env, 'GET', 'ambassador_links?alias=eq.' + encodeURIComponent(alias) + '&select=alias');
   if (!(ambRow.ok && Array.isArray(ambRow.data) && ambRow.data.length)) {
     await sb(env, 'POST', 'ambassador_links', { alias, link_url: ambassadorLink }, 'resolution=ignore-duplicates,return=minimal');
@@ -427,7 +427,7 @@ print("joining checks:",
 # ─── FLAGSHIP WORLD PAGES (2026-10-24, Shawn-ordered correction) ───
 # The /world renderer used to invent thin pages (~14.5 KB) + an invented
 # jewel SVG cover. It now renders the REAL flagship pages whole (the
-# ~602 KB living app at nayanet.live/personal|business|space), with only
+# ~602 KB living app at nayanet.app/personal|business|space), with only
 # the middle data regions filled from the citizen's stored world and the
 # citizen's real cover (from the Smart Note cover system, geometry ported
 # from factory-pipeline/generate-share-card.py) in the cover slot.
@@ -439,7 +439,7 @@ FLAGSHIP_JS = r"""
 // Template: the live flagship Personal document, EMBEDDED AT BUILD TIME.
 // Why not fetched at request time: diagnosed 2026-10-24 (via a temporary
 // __tpldiag endpoint, since removed) — a subrequest from inside this
-// worker to https://nayanet.live/personal returns the HUB document
+// worker to https://nayanet.app/personal returns the HUB document
 // (5,308,126 bytes, title 'NayaNET — The Intelligent Hub'), NOT the
 // flagship, under both default and browser User-Agents. Same-zone worker
 // subrequests do not take the /personal → naya-model-personal route, so
@@ -463,7 +463,7 @@ async function flagshipTemplate() { return FLAGSHIP_TEMPLATE; }
 // ── The Smart Note cover system, as a deterministic SVG ──
 // Geometry ported from factory-pipeline/generate-share-card.py (the
 // LOCKED standard: 1200x630; black-diamond ground; diamond-N emblem in
-// a ring at centre-top; NAYANET.LIVE; title <=2 lines; body <=3 lines
+// a ring at centre-top; NAYANET.APP; title <=2 lines; body <=3 lines
 // centred in the band below the title; five spectrum gems at the bottom)
 // and generate-space-cover.py (accent glow behind the emblem + accent
 // title underline). Same ground, same emblem, same typography treatment,
@@ -529,7 +529,7 @@ function coverSVG(title, body, accent) {
   const emblem = '<circle cx="600" cy="95" r="70" fill="#0b0b11" stroke="' + ac + '" stroke-width="3"/>' +
     '<polygon points="600,28 668,95 600,162 532,95" fill="none" stroke="' + ac + '" stroke-width="5"/>' +
     '<text x="600" y="126" font-family="Georgia, serif" font-size="84" font-weight="700" fill="#ffffff" text-anchor="middle">N</text>';
-  const brand = '<text x="600" y="196" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#ffffff" text-anchor="middle">NAYANET.LIVE</text>';
+  const brand = '<text x="600" y="196" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#ffffff" text-anchor="middle">NAYANET.APP</text>';
   let titleSvg = '';
   tLines.forEach((ln, i) => {
     titleSvg += '<text x="600" y="' + (titleTop + 38 + i * tLH) + '" font-family="DejaVu Sans, Arial, sans-serif" font-size="' + tSize + '" font-weight="700" fill="#ffffff" text-anchor="middle">' + ex(ln) + '</text>';
@@ -660,7 +660,7 @@ function matchesCard(matches) {
     const c = SPECTRUM[i % SPECTRUM.length];
     return '<div style="display:flex;gap:12px;align-items:center;margin-top:12px">' +
       '<div style="width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;background:radial-gradient(circle at 34% 28%,' + c + ',' + c + ' 60%,#0a0a12 135%);border:1.5px solid rgba(255,255,255,.6)">' + esc(initialsOf(m.name, m.alias)) + '</div>' +
-      '<div style="flex:1;min-width:0"><div style="font-weight:700;color:#fff"><a style="color:#fff" href="/world/' + esc(m.alias) + '">' + esc(m.name || m.alias) + '</a> <span style="color:#c9c9d4;font-weight:600">· nayanet.live/world/' + esc(m.alias) + '</span></div>' +
+      '<div style="flex:1;min-width:0"><div style="font-weight:700;color:#fff"><a style="color:#fff" href="/world/' + esc(m.alias) + '">' + esc(m.name || m.alias) + '</a> <span style="color:#c9c9d4;font-weight:600">· nayanet.app/world/' + esc(m.alias) + '</span></div>' +
       '<div class="os-note" style="margin:4px 0 0">' + esc((m.reasons || []).join(' · ')) + '</div></div>' +
       '<div style="font-weight:900;font-size:1.2rem;color:' + c + '">' + m.pct + '%</div></div>';
   }).join('');
@@ -734,7 +734,7 @@ function renderConnectLayer(world, viewerMatch, page) {
     '<p>' + esc(world.name) + ' keeps this page private — and that is their right, held by design. What the network may know is the connect layer: their alias, what they are about, and that they are here to meet the right people.</p>' +
     (topics.length ? '<div class="chips">' + topics.map((t) => '<span class="chip">' + esc(t) + '</span>').join('') + '</div>' : '') +
     '<div class="doors">' +
-    '<a class="door" href="https://nayanet.live/rooms/mail">✉ Message via Smart Mail</a>' +
+    '<a class="door" href="https://nayanet.app/rooms/mail">✉ Message via Smart Mail</a>' +
     '<a class="door" href="/world/' + esc(world.alias) + '/business">Their Business</a>' +
     '<a class="door" href="/world/' + esc(world.alias) + '/space">Their Space</a>' +
     '<a class="door" href="/welcome">Claim Your Own World</a></div></div>' +
@@ -744,7 +744,7 @@ function renderConnectLayer(world, viewerMatch, page) {
 
 function renderNotFound(alias) {
   const body = '<div class="card"><h2>No World Here Yet</h2>' +
-    '<p>The address nayanet.live/world/' + esc(alias) + ' has not been claimed — no citizen\'s world lives under this name yet. If it should be yours, the welcome takes two minutes and the world is born filled, never empty.</p>' +
+    '<p>The address nayanet.app/world/' + esc(alias) + ' has not been claimed — no citizen\'s world lives under this name yet. If it should be yours, the welcome takes two minutes and the world is born filled, never empty.</p>' +
     '<div class="doors"><a class="door" href="/welcome">Begin The Welcome</a></div></div>';
   return gateShell('No world here yet', body, '');
 }
@@ -754,7 +754,7 @@ function renderNotFound(alias) {
 # markers, embed as a JSON string. Fallback: the checked-in artifact
 # welcome-build/flagship-template.html (refreshed on every live fetch).
 import subprocess as _sp
-_FLAGSHIP_LIVE = 'https://nayanet.live/personal'
+_FLAGSHIP_LIVE = 'https://nayanet.app/personal'
 try:
     # curl, not urllib: the edge 403s Python-urllib and truncates its reads.
     _cp = _sp.run(['curl', '-sS', '--fail', '--max-time', '60', '-A',

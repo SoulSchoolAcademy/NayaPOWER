@@ -1229,7 +1229,7 @@
     return { _absorb: absorb, _render: render };
   })();
 
-  /* — Smart Link block (Growth): the owner's own nayanet.live/<name>.
+  /* — Smart Link block (Growth): the owner's own nayanet.app/<name>.
        Every READ is the live contract the step-1 pipe shipped, through
        the same anon client as every other block: smart_links (SELECT,
        active rows), smart_link_reserved_names (SELECT) and the
@@ -1238,12 +1238,12 @@
        redirect fetch — an opaqueredirect answer means the worker fired
        its 302; anything else is reported as what it is.
        CLAIMING runs the create-smart-link.py sequence server-side
-       (guarded INSERT → route nayanet.live/<name>* → verify the 302),
+       (guarded INSERT → route nayanet.app/<name>* → verify the 302),
        because anon INSERT on smart_links is denied by design and a
        route cannot be minted from a browser. The claim therefore posts
        to the ONE endpoint below; until that endpoint is live, the
        status line says so plainly and nothing is claimed. — */
-  var SL_CLAIM_ENDPOINT = 'https://nayanet.live/api/smart-links/claim';
+  var SL_CLAIM_ENDPOINT = 'https://nayanet.app/api/smart-links/claim';
   var SL_NAME_RE = /^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$/;
   var slReserved = null, slVerdictState = '', slNameTimer = null;
 
@@ -1266,9 +1266,9 @@
     if (!links.length){ host.innerHTML = '<p class="os-note">No Smart Link yet — claim your name below and it lives here, with every click counted.</p>'; return; }
     host.innerHTML = links.map(function(l){
       var st = byName[l.name] || { clicks: 0, joins: 0, week: 0 };
-      var url = 'https://nayanet.live/' + l.name;
+      var url = 'https://nayanet.app/' + l.name;
       return '<div class="os-well" style="padding:14px 16px;margin-top:12px;">'
-        + '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><b style="font-size:17px;color:#fff;">nayanet.live/' + esc(l.name) + '</b>'
+        + '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><b style="font-size:17px;color:#fff;">nayanet.app/' + esc(l.name) + '</b>'
         + '<span data-sl-live="' + esc(l.name) + '" style="font-size:12px;font-weight:700;color:#9a9ab0;">CHECKING&hellip;</span></div>'
         + '<div class="os-orb-row">' + slOrbCell(st.clicks, 'CLICKS', '#3fb8ff') + slOrbCell(st.joins, 'JOINS', '#2fe89e') + '</div>'
         + '<p class="os-note">' + esc(slSentence(st)) + '</p>'
@@ -1279,7 +1279,7 @@
   }
   function slCheckLive(name){
     var chip = document.querySelector('[data-sl-live="' + name + '"]'); if (!chip) return;
-    fetch('https://nayanet.live/' + name, { method: 'GET', redirect: 'manual' }).then(function(res){
+    fetch('https://nayanet.app/' + name, { method: 'GET', redirect: 'manual' }).then(function(res){
       if (res.type === 'opaqueredirect'){ chip.textContent = '● LIVE — it redirects to your link'; chip.style.color = '#2fe89e'; }
       else { chip.textContent = 'NOT LIVE YET — this link isn’t redirecting right now'; chip.style.color = '#ffbf3d'; }
     }, function(){ chip.textContent = 'Couldn’t check from here — open the link to see it work'; chip.style.color = '#9a9ab0'; });
@@ -1305,13 +1305,13 @@
     var cp = t && t.closest ? t.closest('[data-sl-copy]') : null;
     var op = t && t.closest ? t.closest('[data-sl-open]') : null;
     if (cp){
-      var url = 'https://nayanet.live/' + cp.getAttribute('data-sl-copy');
+      var url = 'https://nayanet.app/' + cp.getAttribute('data-sl-copy');
       var st = $('os-sl-status');
       function done(){ if (st) st.textContent = 'Copied — ' + url + ' is ready to paste anywhere.'; var old = cp.getAttribute('data-sl-label') || cp.textContent; cp.setAttribute('data-sl-label', old); cp.textContent = 'Copied ✓'; setTimeout(function(){ cp.textContent = old; }, 1600); }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done);
       else done();
     }
-    if (op) window.open('https://nayanet.live/' + op.getAttribute('data-sl-open'), '_blank', 'noopener');
+    if (op) window.open('https://nayanet.app/' + op.getAttribute('data-sl-open'), '_blank', 'noopener');
   });
   var osSlIb = $('os-sl-info-btn'), osSlIp = $('os-sl-info');
   if (osSlIb && osSlIp) osSlIb.addEventListener('click', function(){
@@ -1322,19 +1322,19 @@
   function slCheckName(){
     var inp = $('os-sl-name'), v = $('os-sl-verdict'); if (!inp || !v) return;
     var n = (inp.value || '').trim().toLowerCase(); slVerdictState = '';
-    if (!n){ v.textContent = 'Your short address will be nayanet.live/ + the name you pick. Start typing — we’ll tell you right away if it’s free.'; return; }
+    if (!n){ v.textContent = 'Your short address will be nayanet.app/ + the name you pick. Start typing — we’ll tell you right away if it’s free.'; return; }
     if (!SL_NAME_RE.test(n)){ v.textContent = 'Use small letters and numbers (dashes work too) — and start and end with a letter or number.'; slVerdictState = 'bad'; return; }
     if (!sb){ v.textContent = 'No connection right now, so names can’t be checked. Reconnect and checking comes back on its own.'; return; }
-    v.textContent = 'Checking if nayanet.live/' + n + ' is free…';
+    v.textContent = 'Checking if nayanet.app/' + n + ' is free…';
     var resP = slReserved ? Promise.resolve(slReserved) : sb.from('smart_link_reserved_names').select('name').then(function(res){ if (res.error) throw new Error('register'); slReserved = (res.data || []).map(function(r){ return r.name; }); return slReserved; });
     resP.then(function(list){
       if ((inp.value || '').trim().toLowerCase() !== n) return;
-      if (list.indexOf(n) >= 0){ v.textContent = 'nayanet.live/' + n + ' is a NayaNET system name, so it can’t be claimed. Try making it yours — add a word, like nayanet.live/' + n + 'hq.'; slVerdictState = 'reserved'; return; }
+      if (list.indexOf(n) >= 0){ v.textContent = 'nayanet.app/' + n + ' is a NayaNET system name, so it can’t be claimed. Try making it yours — add a word, like nayanet.app/' + n + 'hq.'; slVerdictState = 'reserved'; return; }
       sb.from('smart_links').select('name').eq('name', n).then(function(res){
         if ((inp.value || '').trim().toLowerCase() !== n) return;
         if (res.error){ v.textContent = 'We couldn’t check that name just now. Pause a second — the check runs again on its own as you type.'; slVerdictState = ''; return; }
-        if (res.data && res.data.length){ v.textContent = 'Someone already claimed nayanet.live/' + n + ' — names go to whoever claims first. Try another name.'; slVerdictState = 'taken'; }
-        else { v.textContent = '✓ Free — nayanet.live/' + n + ' can be yours.'; slVerdictState = 'free'; }
+        if (res.data && res.data.length){ v.textContent = 'Someone already claimed nayanet.app/' + n + ' — names go to whoever claims first. Try another name.'; slVerdictState = 'taken'; }
+        else { v.textContent = '✓ Free — nayanet.app/' + n + ' can be yours.'; slVerdictState = 'free'; }
       });
     }, function(){ v.textContent = 'We couldn’t check that name just now. Pause a second — the check runs again on its own as you type.'; });
   }
@@ -1345,18 +1345,18 @@
     var url = ($('os-sl-url').value || '').trim(), n = ($('os-sl-name').value || '').trim().toLowerCase(), st = $('os-sl-status');
     if (!/^https?:\/\//i.test(url)){ st.textContent = 'That link looks incomplete — paste the whole address, starting with https://'; return; }
     if (!SL_NAME_RE.test(n)){ st.textContent = 'Pick a name for your link first — small letters and numbers work best.'; return; }
-    if (slVerdictState === 'reserved'){ st.textContent = 'nayanet.live/' + n + ' is a NayaNET system name, so it can’t be claimed. Try making it yours — add a word, like nayanet.live/' + n + 'hq.'; return; }
-    if (slVerdictState === 'taken'){ st.textContent = 'Someone already claimed nayanet.live/' + n + ' — names go to whoever claims first. Try another name.'; return; }
-    st.textContent = 'Claiming nayanet.live/' + n + '…';
+    if (slVerdictState === 'reserved'){ st.textContent = 'nayanet.app/' + n + ' is a NayaNET system name, so it can’t be claimed. Try making it yours — add a word, like nayanet.app/' + n + 'hq.'; return; }
+    if (slVerdictState === 'taken'){ st.textContent = 'Someone already claimed nayanet.app/' + n + ' — names go to whoever claims first. Try another name.'; return; }
+    st.textContent = 'Claiming nayanet.app/' + n + '…';
     fetch(SL_CLAIM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ owner_alias: PAGE_ALIAS, name: n, target_url: url }) }).then(function(res){
       return res.json().then(function(body){ return { ok: res.ok, body: body }; }, function(){ return { ok: res.ok, body: null }; });
     }).then(function(out){
       if (out.ok && out.body && out.body.name === n){
-        st.textContent = '✓ It’s yours — nayanet.live/' + n + ' now sends people to your link. Your link is right above this form: tap Copy the link, paste it anywhere you share, and every click will land here, counted.';
+        st.textContent = '✓ It’s yours — nayanet.app/' + n + ' now sends people to your link. Your link is right above this form: tap Copy the link, paste it anywhere you share, and every click will land here, counted.';
         $('os-sl-name').value = ''; $('os-sl-url').value = ''; slVerdictState = '';
         loadSmartLink();
       } else if (!out.body) {
-        if (slVerdictState === 'free') st.textContent = 'Claiming isn’t open yet, so nothing was saved — but nayanet.live/' + n + ' checked out free, and this form is where you’ll claim it the moment claiming opens.';
+        if (slVerdictState === 'free') st.textContent = 'Claiming isn’t open yet, so nothing was saved — but nayanet.app/' + n + ' checked out free, and this form is where you’ll claim it the moment claiming opens.';
         else st.textContent = 'Claiming isn’t open yet, so nothing was saved. This form is where you’ll claim your name the moment claiming opens.';
       } else {
         var reason = (out.body && out.body.error) ? String(out.body.error) : '';
@@ -1386,19 +1386,19 @@
   function dlCheckName(){
     var inp = $('os-dl-name'), v = $('os-dl-verdict'); if (!inp || !v) return;
     var n = (inp.value || '').trim().toLowerCase(); dlVerdictState = '';
-    if (!n){ v.textContent = 'Your short address will be nayanet.live/ + the name you pick. Start typing — we’ll tell you right away if it’s free.'; return; }
+    if (!n){ v.textContent = 'Your short address will be nayanet.app/ + the name you pick. Start typing — we’ll tell you right away if it’s free.'; return; }
     if (!SL_NAME_RE.test(n)){ v.textContent = 'Use small letters and numbers (dashes work too) — and start and end with a letter or number.'; dlVerdictState = 'bad'; return; }
     if (!sb){ v.textContent = 'No connection right now, so names can’t be checked. Reconnect and checking comes back on its own.'; return; }
-    v.textContent = 'Checking if nayanet.live/' + n + ' is free…';
+    v.textContent = 'Checking if nayanet.app/' + n + ' is free…';
     var resP = slReserved ? Promise.resolve(slReserved) : sb.from('smart_link_reserved_names').select('name').then(function(res){ if (res.error) throw new Error('register'); slReserved = (res.data || []).map(function(r){ return r.name; }); return slReserved; });
     resP.then(function(list){
       if ((inp.value || '').trim().toLowerCase() !== n) return;
-      if (list.indexOf(n) >= 0){ v.textContent = 'nayanet.live/' + n + ' is a NayaNET system name, so it can’t be claimed. Try making it yours — add a word, like nayanet.live/' + n + 'hq.'; dlVerdictState = 'reserved'; return; }
+      if (list.indexOf(n) >= 0){ v.textContent = 'nayanet.app/' + n + ' is a NayaNET system name, so it can’t be claimed. Try making it yours — add a word, like nayanet.app/' + n + 'hq.'; dlVerdictState = 'reserved'; return; }
       sb.from('smart_links').select('name').eq('name', n).then(function(res){
         if ((inp.value || '').trim().toLowerCase() !== n) return;
         if (res.error){ v.textContent = 'We couldn’t check that name just now. Pause a second — the check runs again on its own as you type.'; dlVerdictState = ''; return; }
-        if (res.data && res.data.length){ v.textContent = 'Someone already claimed nayanet.live/' + n + ' — names go to whoever claims first. Try another name.'; dlVerdictState = 'taken'; }
-        else { v.textContent = '✓ Free — nayanet.live/' + n + ' can be yours.'; dlVerdictState = 'free'; }
+        if (res.data && res.data.length){ v.textContent = 'Someone already claimed nayanet.app/' + n + ' — names go to whoever claims first. Try another name.'; dlVerdictState = 'taken'; }
+        else { v.textContent = '✓ Free — nayanet.app/' + n + ' can be yours.'; dlVerdictState = 'free'; }
       });
     }, function(){ v.textContent = 'We couldn’t check that name just now. Pause a second — the check runs again on its own as you type.'; });
   }
@@ -1409,19 +1409,19 @@
     var url = ($('os-dl-url').value || '').trim(), n = ($('os-dl-name').value || '').trim().toLowerCase(), st = $('os-dl-status');
     if (!/^https?:\/\//i.test(url)){ st.textContent = 'That link looks incomplete — paste the whole address, starting with https://'; return; }
     if (!SL_NAME_RE.test(n)){ st.textContent = 'Pick a name for your link first — small letters and numbers work best.'; return; }
-    if (dlVerdictState === 'reserved'){ st.textContent = 'nayanet.live/' + n + ' is a NayaNET system name, so it can’t be claimed. Try making it yours — add a word, like nayanet.live/' + n + 'hq.'; return; }
-    if (dlVerdictState === 'taken'){ st.textContent = 'Someone already claimed nayanet.live/' + n + ' — names go to whoever claims first. Try another name.'; return; }
-    st.textContent = 'Claiming nayanet.live/' + n + '…';
+    if (dlVerdictState === 'reserved'){ st.textContent = 'nayanet.app/' + n + ' is a NayaNET system name, so it can’t be claimed. Try making it yours — add a word, like nayanet.app/' + n + 'hq.'; return; }
+    if (dlVerdictState === 'taken'){ st.textContent = 'Someone already claimed nayanet.app/' + n + ' — names go to whoever claims first. Try another name.'; return; }
+    st.textContent = 'Claiming nayanet.app/' + n + '…';
     fetch(SL_CLAIM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ owner_alias: PAGE_ALIAS, name: n, target_url: url }) }).then(function(res){
       return res.json().then(function(body){ return { ok: res.ok, body: body }; }, function(){ return { ok: res.ok, body: null }; });
     }).then(function(out){
       if (out.ok && out.body && out.body.name === n){
-        st.textContent = '✓ It’s yours — nayanet.live/' + n + ' is live. Every click counts here.';
+        st.textContent = '✓ It’s yours — nayanet.app/' + n + ' is live. Every click counts here.';
         $('os-dl-name').value = ''; $('os-dl-url').value = ''; dlVerdictState = '';
         loadSmartLink();
         if (window.osLoadDashboard) window.osLoadDashboard();
       } else if (!out.body) {
-        if (dlVerdictState === 'free') st.textContent = 'Claiming isn’t open yet, so nothing was saved — but nayanet.live/' + n + ' checked out free, and this form is where you’ll claim it the moment claiming opens.';
+        if (dlVerdictState === 'free') st.textContent = 'Claiming isn’t open yet, so nothing was saved — but nayanet.app/' + n + ' checked out free, and this form is where you’ll claim it the moment claiming opens.';
         else st.textContent = 'Claiming isn’t open yet, so nothing was saved. This form is where you’ll claim your name the moment claiming opens.';
       } else {
         var reason = (out.body && out.body.error) ? String(out.body.error) : '';
@@ -2189,7 +2189,7 @@
     }
     var tag = '<span class="os-sl-tag" style="--ac:' + (SL_KIND_COLOR[it.item_kind] || '#2fe89e') + '">' + (SL_KIND_LABEL[it.item_kind] || 'Item') + '</span>';
     var open = it.item_kind === 'person'
-      ? '<a class="os-list-x os-sl-open" href="https://nayanet.live/rooms/connections" target="_blank" rel="noopener" aria-label="Open in Connections">→</a>'
+      ? '<a class="os-list-x os-sl-open" href="https://nayanet.app/rooms/connections" target="_blank" rel="noopener" aria-label="Open in Connections">→</a>'
       : '<button class="os-list-x" type="button" data-sl-open="' + esc(it.id) + '" aria-label="Open">→</button>';
     return '<div class="os-list-row os-draw-in"' + delay + '>' + tag + '<span class="os-list-text">' + esc(it.label || it.text || '') + '</span>' + open + '<button class="os-list-x" type="button" data-sl-unfile="' + esc(it.id) + '" aria-label="Remove from this list">✕</button></div>';
   }

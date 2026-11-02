@@ -1,4 +1,4 @@
-// worker.js — the Smart Links redirect worker for nayanet.live/<name>.
+// worker.js — the Smart Links redirect worker for nayanet.app/<name>.
 //
 // STATUS: code only. Deployment is a human-gated act (see README.md); this
 // file ships in the repo and is exercised by tests, it is not live.
@@ -165,6 +165,6 @@ export default {
       supabaseUrl: env.SUPABASE_URL,
       anonKey: env.SUPABASE_ANON_KEY,
     });
-    return handleRequest(request, { ...adapter, selfHost: 'nayanet.live' }, ctx);
+    return handleRequest(request, { ...adapter, selfHost: 'nayanet.app' }, ctx);
   },
 };

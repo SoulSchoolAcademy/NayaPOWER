@@ -261,7 +261,7 @@ class FeatureSocialFeedAcceptance(unittest.TestCase):
         c = json.load(open(SMOKE))
         c["features"] = {"social_feed": dict(
             json.loads(json.dumps(FEED_DECL)), live=True,
-            feed_url="https://hub.nayanet.live/feed/morning-crumb")}
+            feed_url="https://hub.nayanet.app/feed/morning-crumb")}
         c["connections"] = {"network": True}
         p = os.path.join(self.tmp, "contract.json")
         json.dump(c, open(p, "w"))
@@ -270,7 +270,7 @@ class FeatureSocialFeedAcceptance(unittest.TestCase):
         sec = feed_section(page)
         # snapshot still renders (ready) + the real live link (connected)
         self.assertIn("Warm sourdough at 7am.", sec)
-        self.assertIn('href="https://hub.nayanet.live/feed/morning-crumb"',
+        self.assertIn('href="https://hub.nayanet.app/feed/morning-crumb"',
                       sec)
         self.assertIn("Connected via the network", sec)
         events = manifest.get("receipt", {}).get("events", [])

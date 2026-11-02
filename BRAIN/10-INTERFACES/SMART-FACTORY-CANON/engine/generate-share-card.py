@@ -38,7 +38,7 @@ def generate_share_card(title, nutshell, output_path):
     
     # Brand 24px
     bf = get_font(24, True)
-    brand = "NAYANET.LIVE"
+    brand = "NAYANET.APP"
     bw = draw.textbbox((0,0), brand, font=bf)[2]
     draw.text(((1200-bw)//2, 175), brand, font=bf, fill=(255,255,255))
     

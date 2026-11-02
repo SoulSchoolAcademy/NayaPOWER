@@ -5,7 +5,7 @@
  * It catches first-viewport composition defects before a human is asked to score.
  *
  * Usage:
- *   node tools/dashboard_first_viewport_audit.mjs --url=https://nayanet.live/dashboard
+ *   node tools/dashboard_first_viewport_audit.mjs --url=https://nayanet.app/dashboard
  *   CHROME_BIN=/usr/bin/google-chrome node tools/dashboard_first_viewport_audit.mjs --url=file:///.../fixture.html
  *
  * Exit 0: automated first-viewport checks pass for both sizes.

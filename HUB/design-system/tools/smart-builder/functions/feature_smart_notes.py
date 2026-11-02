@@ -11,8 +11,8 @@ Capability contract (functions/registry.json):
 Activation input (from the contract):
   contract.features.smart_notes = {
       "enabled": True,
-      "link_base": "https://nayanet.live",          # optional, http(s) only
-      "page_address": "nayanet.live/morning-crumb",  # optional, feeds note ids
+      "link_base": "https://nayanet.app",          # optional, http(s) only
+      "page_address": "nayanet.app/morning-crumb",  # optional, feeds note ids
       "notes": [
           {"title": "Sourdough at 6am", "body": "The crumb ...", "voice": "naya"}
       ]
@@ -60,7 +60,7 @@ FEATURE_SMART_NOTES_ID = FEATURE_ID
 FEATURE_SMART_NOTES_VERSION = VERSION
 
 VOICES = ("human", "child", "grandma", "naya")
-DEFAULT_LINK_BASE = "https://nayanet.live"
+DEFAULT_LINK_BASE = "https://nayanet.app"
 
 # The named grant for the connected half of the contract (READY vs CONNECTED,
 # Naya 3's consent-line refinement 21:41Z): composing + minting is ready;

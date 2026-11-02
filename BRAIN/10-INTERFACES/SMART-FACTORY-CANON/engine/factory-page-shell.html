@@ -2111,10 +2111,10 @@ section{margin:64px 0}
 <p class="ssub">One word, lowercase, no dashes. This is where your app lives — make it yours.</p>
 <div class="handle-board">
 <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap">
-<span style="font-size:22px;font-weight:800;color:#F8F7FB;opacity:.85">nayanet.live/</span>
+<span style="font-size:22px;font-weight:800;color:#F8F7FB;opacity:.85">nayanet.app/</span>
 <input id="handleIn" class="handle-input" placeholder="yourname" maxlength="30" style="flex:1;min-width:180px;background:#020203;border:1.5px solid #F8F7FB;border-radius:14px;color:#F8F7FB;font-size:22px;font-weight:800;padding:14px 18px;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.8),inset 0 1px 3px rgba(255,255,255,.18),0 0 24px rgba(248,247,251,.35);transition:border-color .25s,box-shadow .25s,transform .25s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
 </div>
-<p class="micro" style="color:#F8F7FB;margin-top:14px">Your app will live at <b id="handlePrev" style="color:#2fe89e">nayanet.live/yourname</b></p>
+<p class="micro" style="color:#F8F7FB;margin-top:14px">Your app will live at <b id="handlePrev" style="color:#2fe89e">nayanet.app/yourname</b></p>
 </div></div>
 <div class="hero-copy" style="text-align:center;margin-top:12px">
 <h1 style="font-size:24px;margin:0 0 8px;color:#F8F7FB">Build Smart App, piece by piece.</h1>
@@ -3458,12 +3458,12 @@ section{margin:64px 0}
 </div>
 <div class="phone" id="view-mobile" aria-label="Mobile preview of your app"><div class="pscreen">
 <div class="pnotch"><i></i></div>
-<div class="phero"><div class="porb" id="p-orb"></div><h5 id="p-title">Your Smart App</h5><p id="phone-sub">nayanet.live/your-name</p></div>
+<div class="phero"><div class="porb" id="p-orb"></div><h5 id="p-title">Your Smart App</h5><p id="phone-sub">nayanet.app/your-name</p></div>
 <div class="pfeed"><i></i><i></i><i></i></div>
 <div class="pdock"><span class="fdock">⌂</span><span class="fdock">✦</span><span class="fdock">♥</span><span class="fdock">✉</span></div>
 </div></div>
 <div class="laptop" id="view-full" aria-label="Full page preview of your app" hidden><div class="lscreen">
-<div class="lchrome"><i></i><i></i><i></i><span class="lurl" id="l-url">nayanet.live/your-name</span></div>
+<div class="lchrome"><i></i><i></i><i></i><span class="lurl" id="l-url">nayanet.app/your-name</span></div>
 <div class="lnav"><span class="lnav-orb"></span><b id="l-title">Your Smart App</b><span class="lnav-links"><i></i><i></i><i></i></span></div>
 <div class="lhero"><div class="lorb"></div><h4 id="l-herotitle">Your Smart App</h4><p>Everything you need, beautifully organized.</p></div>
 <div class="lgrid"><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -3488,7 +3488,7 @@ section{margin:64px 0}
 <button id="sendNayaBtn" class="primo theme-green elev-2" type="button" style="margin-top:14px">➤ SEND TO NAYA</button></div>
 <p id="sendHint" style="display:none;margin-top:10px;font-size:14px;color:#2fe89e">Contract copied — paste it to me right here in chat and say "build this."</p>
 <p style="margin-top:12px;font-size:13px;opacity:.7">Paste it to Naya in chat and say "build this" — she'll know every model number.</p>
-<div class="nextbox elev-1"><b>What happens next:</b> Naya takes this contract and builds your app — it lands on your page at <b id="nextUrl">nayanet.live/yourname</b>, live.</div>
+<div class="nextbox elev-1"><b>What happens next:</b> Naya takes this contract and builds your app — it lands on your page at <b id="nextUrl">nayanet.app/yourname</b>, live.</div>
 </div></section>
 </div>
 
@@ -3634,14 +3634,14 @@ template: ${tn}
 pieces (${cart.length} kinds):
 ${lines.join('\n')||'  (no pieces yet — tap Select on anything you love in Step 3)'}
 rules: Naya design laws v1 (white text, edge-only ignition, one board one color, rectangles not squares, 24/18/14 type, mobile-first). Auto-size pieces marked AUTO to the app.\n${extra}
-delivers to: nayanet.live/${h} — your app, live on NayaNET.`;
+delivers to: nayanet.app/${h} — your app, live on NayaNET.`;
  document.getElementById('contract').textContent=c;
  const fnStates={};document.querySelectorAll('.frow').forEach(r=>{const nmEl=r.querySelector('b');const nm=nmEl?nmEl.textContent.trim():'';const id=FN_MAP[nm];const on=r.querySelector('.tog').classList.contains('on');if(id)fnStates[id]=on;else if(on)fnStates['!no-unit:'+nm]=true;});
  const jc={version:"contract-v1",handle:h,idea:document.getElementById('visionText').value||'',vision:document.getElementById('qVision').value||'',do:document.getElementById('qDo').value||'',behave:document.getElementById('qBehave').value||'',template:tn,functions:fnStates,pieces:cart.map(i=>({model:i.model,name:i.name,size:i.size,qty:i.qty,note:i.note||''})),rules:"Naya design laws v1"};
  if(bn)jc.name=bn;if(bt)jc.tagline=bt;if(ba)jc.about=ba;if(window.__soulColor)jc.soul_color=window.__soulColor;if(window.__brandPhoto)jc.photo=window.__brandPhoto;const adOut={};if(ad.ask)adOut.ask_naya=true;if(ad.qa)adOut.qa_library=true;if(ad.voice)adOut.voice={presenter:ad.presenter||'',photo_ids:ad.photoIds||[]};if(Object.keys(adOut).length)jc.addons=adOut;
  document.getElementById('contractJson').textContent=JSON.stringify(jc,null,1);
  document.getElementById('contractWrap').style.display='block';
- const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.live/'+h;
+ const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.app/'+h;
  document.getElementById('contractWrap').scrollIntoView({behavior:'smooth'});}
 document.getElementById('buildBtn').onclick=()=>{startBuild();openSummary();};
 // Trigger a real build via the NayaPOWER build API
@@ -3710,7 +3710,7 @@ function triggerRealBuild(){
 function copyText(t,done){function ok(){if(done)done(true);}function legacy(){try{const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(ta);ta.focus();ta.select();const r=document.execCommand('copy');ta.remove();if(done)done(!!r);}catch(e){if(done)done(false);}}if(window.isSecureContext&&navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(legacy);}else{legacy();}}
 document.getElementById('copyBtn').onclick=()=>{copyText(document.getElementById('contract').textContent+"\n\n--- MACHINE CONTRACT ---\n"+document.getElementById('contractJson').textContent,()=>{document.getElementById('copyBtn').textContent='COPIED ✓';});};
 document.getElementById('sendNayaBtn').onclick=()=>{copyText(document.getElementById('contract').textContent+"\n\n--- MACHINE CONTRACT ---\n"+document.getElementById('contractJson').textContent,(good)=>{const b=document.getElementById('sendNayaBtn');b.textContent=good?'COPIED ✓ — NOW PASTE IT TO ME IN CHAT':'COPY FAILED — SELECT THE CONTRACT TEXT MANUALLY';document.getElementById('sendHint').style.display='block';});};
-document.getElementById('handleIn').addEventListener('input',e=>{const h=e.target.value.toLowerCase().replace(/[^a-z0-9]/g,'')||'yourname';document.getElementById('handlePrev').textContent=h;const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.live/'+h;});
+document.getElementById('handleIn').addEventListener('input',e=>{const h=e.target.value.toLowerCase().replace(/[^a-z0-9]/g,'')||'yourname';document.getElementById('handlePrev').textContent=h;const nu=document.getElementById('nextUrl');if(nu)nu.textContent='nayanet.app/'+h;});
 document.addEventListener('input',()=>saveDraft());
 document.addEventListener('click',()=>saveDraft());
 if(loadDraft()){const t=document.getElementById('draftToast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
@@ -4205,12 +4205,12 @@ syncPreview();
   var SPECTRUM = ['#a06bff','#6675ff','#3fb8ff','#2fe89e','#40d3bb','#ffd45a','#ff9a5a','#ff5e6c','#e84fff'] /* Shawn's standing order 2026-10-18: purple>indigo>canyon>emerald>kenya>gold>orange>red>magenta, then cycles */;
   var worldNames = ['Personal','Today','Smart List','Business','Booking','Product','Event','Community','Portfolio','Menu','Signup','Dashboard'];
   var areaDefs = [
-    { label: 'Hub', route: 'https://nayanet.live/#/hub/feed' },
-    { label: 'Intelligence Today', route: 'https://nayanet.live/rooms/today' },
-    { label: 'Your Reports', route: 'https://nayanet.live/rooms/reports' },
-    { label: 'Smart List', route: 'https://nayanet.live/rooms/lists' },
-    { label: 'Smart Spaces', route: 'https://nayanet.live/rooms/spaces' },
-    { label: 'Smart Mail', route: 'https://nayanet.live/rooms/mail' }
+    { label: 'Hub', route: 'https://nayanet.app/#/hub/feed' },
+    { label: 'Intelligence Today', route: 'https://nayanet.app/rooms/today' },
+    { label: 'Your Reports', route: 'https://nayanet.app/rooms/reports' },
+    { label: 'Smart List', route: 'https://nayanet.app/rooms/lists' },
+    { label: 'Smart Spaces', route: 'https://nayanet.app/rooms/spaces' },
+    { label: 'Smart Mail', route: 'https://nayanet.app/rooms/mail' }
   ];
   var initial = worldNames.map(function (n, i) {
     return { id: 'tpl-' + i, label: n, kind: 'template', tpl: n, color: SPECTRUM[i % SPECTRUM.length] };
@@ -4455,7 +4455,7 @@ const EXTERNAL = {
       /* [SEATING] The Hub renders these rooms internally
          (window.NayaRouter.navigate('/hub/' + r.id)); standalone, the same
          destination is the Hub URL for that room. */
-      location.href = 'https://nayanet.live/#/hub/' + r.id;
+      location.href = 'https://nayanet.app/#/hub/' + r.id;
     });
     nav.appendChild(b);
   });

@@ -143,7 +143,7 @@ def issue_link_sql(alias):
     if not isinstance(alias, str) or not ALIAS_RE.match(alias):
         raise ValueError(f"unsafe alias rejected: {alias!r}")
     return ("insert into public.ambassador_links (alias, link_url) values "
-            f"('{alias}', 'https://nayanet.live/joinus?ref={alias}') on conflict (alias) do nothing;")
+            f"('{alias}', 'https://nayanet.app/joinus?ref={alias}') on conflict (alias) do nothing;")
 
 
 def activate(alias, answers, corpus, has_business=None):
@@ -167,7 +167,7 @@ def activate(alias, answers, corpus, has_business=None):
         "vector": vec,
         "corpus_entry": {"alias": alias, "vector": vec, "findable": True},
         "coverage": coverage(answers, has_business),
-        "ambassador_link": f"https://nayanet.live/joinus?ref={alias}",
+        "ambassador_link": f"https://nayanet.app/joinus?ref={alias}",
         "issue_link_sql": issue_link_sql(alias),
         "first_matches": matches,
         "corpus_excluded_unfindable": excluded,

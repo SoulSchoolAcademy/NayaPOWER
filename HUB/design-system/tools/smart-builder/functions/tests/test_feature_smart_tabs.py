@@ -46,11 +46,11 @@ SMOKE = os.path.join(SB_DIR, "contracts", "smoke-test-v1.json")
 TABS_DECL = {
     "enabled": True,
     "pages": [
-        {"title": "Morning Crumb", "url": "https://morning-crumb.nayanet.live/"},
-        {"title": "Bakes", "url": "https://morning-crumb.nayanet.live/bakes"},
-        {"title": "About", "url": "https://morning-crumb.nayanet.live/about"},
+        {"title": "Morning Crumb", "url": "https://morning-crumb.nayanet.app/"},
+        {"title": "Bakes", "url": "https://morning-crumb.nayanet.app/bakes"},
+        {"title": "About", "url": "https://morning-crumb.nayanet.app/about"},
     ],
-    "active_url": "https://morning-crumb.nayanet.live/",
+    "active_url": "https://morning-crumb.nayanet.app/",
 }
 
 
@@ -141,7 +141,7 @@ class FeatureSmartTabsAcceptance(unittest.TestCase):
         self.assertIn("Bakes", page)
         # tab_switch_tested: the current tab is marked
         self.assertIn('aria-current="page"', page)
-        self.assertIn('href="https://morning-crumb.nayanet.live/"', page)
+        self.assertIn('href="https://morning-crumb.nayanet.app/"', page)
         machine = json.loads(__import__("re").search(
             r'<pre id="machinejson">(.*?)</pre>', page, __import__("re").S).group(1))
         self.assertEqual(machine["features_status"]["smart_tabs"], "built")
@@ -195,13 +195,13 @@ class FeatureSmartTabsAcceptance(unittest.TestCase):
     def test_active_url_trailing_slash_insensitive(self):
         # the contract may name the active tab with or without a trailing
         # slash; both name the same tab
-        decl = dict(TABS_DECL, active_url="https://morning-crumb.nayanet.live")
+        decl = dict(TABS_DECL, active_url="https://morning-crumb.nayanet.app")
         r, page, _ = run_assemble(
             tabs_contract(self.tmp, decl), self.tmp, self.assemble)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         active = __import__("re").findall(
             r'<a[^>]*class="smart-tab is-current"[^>]*href="([^"]+)"', page)
-        self.assertEqual(active, ["https://morning-crumb.nayanet.live/"])
+        self.assertEqual(active, ["https://morning-crumb.nayanet.app/"])
 
     def test_active_url_sanitized(self):
         decl = dict(TABS_DECL, active_url="javascript:alert(1)")

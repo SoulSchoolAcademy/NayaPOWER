@@ -36,7 +36,7 @@ SPACE_DECL = {
     "name": "Morning Crumb Regulars",
     "description": "Gather around warm bread.",
     "visibility": "public",
-    "join_url": "https://spaces.nayanet.live/morning-crumb-regulars/join",
+    "join_url": "https://spaces.nayanet.app/morning-crumb-regulars/join",
     "member_count": 42,
 }
 
@@ -93,7 +93,7 @@ class FeatureSpaceAcceptance(unittest.TestCase):
         self.assertIn("Gather around warm bread.", sec)
         self.assertIn("Public space", sec)
         self.assertIn("42 members", sec)
-        self.assertIn('href="https://spaces.nayanet.live/morning-crumb-regulars/join"',
+        self.assertIn('href="https://spaces.nayanet.app/morning-crumb-regulars/join"',
                       sec)
         self.assertIn("Join the space", sec)
         machine = json.loads(re.search(
@@ -166,7 +166,7 @@ class FeatureSpaceAcceptance(unittest.TestCase):
         r, page, manifest = run_assemble(p, self.tmp)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         sec = space_section(page)
-        self.assertIn('href="https://spaces.nayanet.live/morning-crumb-regulars/join"',
+        self.assertIn('href="https://spaces.nayanet.app/morning-crumb-regulars/join"',
                       sec)
         # the grant is real, so "connected" is accurate — and mirrored
         self.assertIn("Connected via NayaNET", sec)
@@ -282,7 +282,7 @@ class FeatureSpaceAcceptance(unittest.TestCase):
         self.assertIn("Nothing inside this space is shown on this page", sec)
         self.assertNotIn("42", sec)
         self.assertNotIn("members", sec)
-        self.assertNotIn("spaces.nayanet.live", sec)
+        self.assertNotIn("spaces.nayanet.app", sec)
         self.assertNotIn("<a", sec)
 
     # ---- no join_url -> honest pending state, never a dead control ----
