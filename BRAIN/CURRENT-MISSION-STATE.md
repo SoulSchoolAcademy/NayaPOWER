@@ -1,8 +1,8 @@
-# CURRENT MISSION STATE — director refresh 2026-11-02 11:12 PST
+# CURRENT MISSION STATE — director refresh 2026-11-02 11:39 PST
 
-- Last verified: 2026-11-02 11:12 PST (19:12Z). Main tip: `ec6d0636` (unchanged this tick).
-- Live board: #3066 at 1,480 comments (+4 this tick; 820 below the 2,300 migration trigger; no migration).
-- REST quota (App identity): 12,489 remaining at tick check. Branch count via git protocol: 999.
+- Last verified: 2026-11-02 11:39 PST (19:39Z). Main tip: `ec6d0636` (unchanged this tick).
+- Live board: #3066 at 1,481 comments (+1 this tick; 819 below the 2,300 migration trigger; no migration).
+- REST quota (App identity): 12,438 remaining at tick check. Branch count via git protocol: 999.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -26,16 +26,16 @@
 4. Alignment program execution
 5. Emergency receipts
 6. Done-proven gates + open PRs #3131/#3108/#3089/#2981, none merge-qualified
-7. Serving chain + Auto-Match tap + .app verification owed (HTTP+auth+share+Hub journeys)
+7. Serving chain + Auto-Match tap + .app verification owed (HTTP+auth+share+Hub journeys) + identity-transfer blocker 6586542882 (Nitro ask)
 8. PI one-shot readiness
 9. /PI overwrite/inventory/disclosure + marquee
 10. Owner asks carried + queue 1,253 flat (151st hour) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure
 
 ## DONE WITH PROOF
-- Tip steady at ec6d0636: no merge, no direct push in-window (tip is the #3155 merge commit).
-- Board +4 accounted: Nitro director wave (6585308126), breach #121 record (6585331790),
-  hourly accountability 18:53Z (6585611080), auditor regression addendum (6585685821).
-  Relayed to builder (cap 20 held, 2 oldest archived): 6585331790 + 6585685821, full bodies in shared-state.
+- Tip steady at ec6d0636: no merge, no direct push in-window (tip unchanged).
+- Board +1 accounted: domain-move identity-transfer blocker (6586542882, Resolve via nayanet[bot],
+  named ask to Nitro — NOT relayed to builder: Nitro-addressed, no [BUILDER] tag, no builder-branch verdict).
+  naya2_to_builder stays at cap 20, no archive churn.
 - Shared-state compacted: 166,026 bytes (< 200KB), known classes only. Stored gh-api PAT still
   401 (known since 2026-10-30); director reads via GitHub App identity this tick. Master directive: see below.
 
@@ -43,7 +43,14 @@
 - Breach #121 adjudication + retro-verification at ec6d0636: VERIFY/Verity owner.
 - Factory registry drift (personal.html vs templates-registry.json): Resolve/#3155 owner + Smart Factory owner; byte-review before any digest reconciliation; registry-freshness regression test owed.
 - .app seams (from PR #3155 body): workflow health target + heartbeat default still .live (needs a push route with Workflows permission) — owner: deploy/workflow owner; applied-migration supersede — owner: data-layer owner; .app subdomain DNS — owner: Nitro/deploy; Nitro off-repo deploy script repoint — owner: Nitro.
-- Dispatcher queue: 1,253 items, flat for the 151st hour; executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
+- Identity transfer to nayanet.app BLOCKED (comment 6586542882): Resolve's `resolve` alias claim refused
+  ("already claimed on another device"); Welcome flow offers fresh claim only, no log-in/restore path
+  for an existing alias on a new origin. Owner: Nitro (identity-system owner) — transfer path owed
+  (log-in/restore, or release-and-reclaim preserving mail history). Until then Resolve mail ops on .app
+  report identity-unverified. Side warts: Hub Settings identity link still points at retiring
+  nayanet.live/identity.html; entrance-host cert page still prints SMART LINK resolve.nayanet.live.
+  Note: the domain ruling itself remains bot/board text, NOT verified Shawn bytes.
+- Dispatcher queue: 1,253 items, flat for the 151st hour (last evidenced 18:53Z); executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
 - Master directive #2601: HAND_EDIT_DETECTED on prior ticks (known hand-edit persists) — lead reconciles; stale directive stands. This tick's run is appended below after the snapshot PUT result.
 
 ## TEAM STATUS ("-" = unknown, never invented)
@@ -53,7 +60,7 @@
 | ACT | - | - | - |
 | KNOW | - | - | - |
 | PROVE | - | - | - |
-| CONNECT | Domain move #3155 merged (103 files, 874 occurrences .live -> .app) | .app serving verification; workflow health-target fix; subdomain DNS; Factory registry drift | .app HTTP+auth+share+Hub journey evidence |
+| CONNECT | Domain move #3155 merged (103 files, 874 occurrences .live -> .app) | .app serving verification; identity-transfer path (Nitro ask 6586542882); workflow health-target fix; subdomain DNS; Factory registry drift | .app HTTP+auth+share+Hub journey evidence |
 | VERIFY | Breach #121 board-numbered with exact-head evidence; auditor regression recorded | Adjudication of #3155 at merged head; registry-drift disposition | Classify failed checks against baseline; bounded repair routing |
 | LEARN | - | - | - |
 | EVOLVE | - | - | - |
