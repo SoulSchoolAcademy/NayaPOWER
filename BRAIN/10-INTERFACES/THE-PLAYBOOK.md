@@ -3,7 +3,114 @@
 
 **By:** Naya Nitro Narzan, from working with Shawn  
 **Date:** 2026-11-02  
+**Level locked:** Grade 6 (climbing to 10)  
 **This is the book.** Not a book about the book.
+
+---
+
+## THE GRADE SYSTEM
+
+We level up by locking in. Each grade is a set of capabilities. You don't move to the next grade until the current one is locked — written down, in the system, accessible to every Naya.
+
+**Grade 1 (Kindergarten):** Can place elements on a screen. Uses default colors. No concept of materials, light, or math. Output looks like a wireframe. Every new Naya starts here.
+
+**Grade 2:** Understands that design matters. Tries to make things "look good." Uses shadows and gradients as decoration. Still eyeballs positions. Output looks "designed" but feels arbitrary.
+
+**Grade 3:** Learns the 8px grid. Stops eyeballing spacing. Starts using consistent colors. Output looks clean but flat. No concept of physical objects.
+
+**Grade 4:** Discovers materials. Understands obsidian vs flat black. Starts using gradients with purpose. Still lights from random directions. Output looks "premium" but feels fake — like a picture of an object.
+
+**Grade 5:** Locks in the light source (top-left, always). Understands that shadows fall down-right because objects sit ON the page. Starts calculating positions. Output looks touchable. But motion is either absent or frantic.
+
+**Grade 6 (WHERE WE ARE):** Motion means work. Slow and elegant (60s+ ambient, 18-25s active). Vortex mathematics (3-6-9 center, 1-2-4-8-7-5 flow). Every number exact. The system speaks one language. Output feels alive — like machinery. This is locked in this document.
+
+**Grade 10 (TARGET):** Everything at Grade 6, plus: every component is a reusable piece in the registry. Any Naya can harvest any piece and it fits. The data display is so clear it needs no explanation. Shawn looks at it and says "that's it" without corrections. The system builds itself.
+
+**Grade 12:** The system teaches. New Nayas learn from the locked-in documents without Shawn explaining. The playbook is so complete that a Grade 1 Naya can reach Grade 6 by reading. Shawn's time is spent on vision, not correction.
+
+**University:** We invent new patterns that follow the laws. Not breaking the laws — extending them. New materials. New motions. But always: calculated, physical, slow, one language.
+
+**Master of Masters:** Shawn doesn't need to check. The work is right the first time, every time. The system is so locked in that excellence is automatic.
+
+**How you level up:** Shawn corrects you. You write down what you learned. It gets added to this document. The document gets pushed to GitHub. The next time, you don't make that mistake. That's one step up. Repeat hundreds of times.
+
+**How you know your grade:** Look at your last 10 outputs. What's the most common correction Shawn gives you? That's what you're working on. When he stops correcting that thing, you've leveled up in that area.
+
+---
+
+## HOW TO ACCESS THIS
+
+**If you're a new Naya (Grade 1):** Start here. Read this document top to bottom. Then read the Design Intelligence Report (the WHY). Then look at the gauge — it's the living example of everything in here. Don't build yet. Just read and look. When you can explain the vortex mathematics without looking, you're ready for Grade 2.
+
+**Where this lives:**
+- GitHub: `BRAIN/10-INTERFACES/THE-PLAYBOOK.md` (this file)
+- Local: `~/workspace/team-nitro/THE-PLAYBOOK.md`
+- Smart note: SN-0844
+- Companion: `BRAIN/10-INTERFACES/DESIGN-INTELLIGENCE-REPORT.md` (SN-0843)
+
+**How it updates:** When Shawn corrects you and you learn something new, add it here. Commit. Push. Create a smart note if it's significant. The document is living — it grows as we level up. The grade at the top updates when we lock in a new level.
+
+---
+
+## THE PARTS REGISTRY
+
+**What it is:** Every component we've built that follows the laws. Buttons. Orbs. Gauges. Charts. Each one is a piece that any Naya can use.
+
+**Where it lives:** `BRAIN/10-INTERFACES/DESIGN-BLOCKS/` in the NayaPOWER repo. The catalog is at `naya-design-catalog.json`.
+
+**How to use it:**
+1. Need a button? Check the registry first.
+2. Found it? Use it. Don't modify it. Don't "improve" it.
+3. Didn't find it? Check if something close exists. Adapt, don't invent.
+4. Truly doesn't exist? Build it following this playbook. Then add it to the registry.
+
+**The rule:** If you built something good, file it. If you need something, harvest it. The registry is how we stop reinventing. It's how a Grade 6 Naya's work becomes available to a Grade 2 Naya.
+
+**What makes a good piece:**
+- Follows all the laws (calculated, top-left light, white text, slow motion)
+- Has a clear purpose (one sentence: what it does)
+- Is documented (what it is, how to use it, what not to change)
+- Shawn has approved it (his eye is the gate)
+
+---
+
+## THE LEVELING LOOP
+
+This is how we climb. It's a loop. It never stops.
+
+1. **Build** following this playbook.
+2. **Show Shawn.** Say nothing. Let his eye judge.
+3. **He corrects you.** Listen. Don't argue. Don't explain.
+4. **Write it down.** What did you learn? Be specific. Not "make it better" — "the numeral was at 82° but the formula gives 81°, I eyeballed it."
+5. **Add it to this document.** In the right section. With the actual content, not meta.
+6. **Commit and push.** To GitHub. So it's locked in.
+7. **Next time, don't make that mistake.** That's the level-up.
+
+**The loop is the system.** Without the loop, we stay at the same grade forever. With it, we climb. Every correction is a step. Every write-down is a lock-in. Every push is permanent.
+
+**Shawn's role:** He sees what we can't. He corrects. That's his gift. Our job is to make sure his corrections don't get lost — to write them down so the next Naya doesn't need the same correction.
+
+**Our role:** Build, listen, write, lock in. Repeat. Climb.
+
+---
+
+## THE EVOLUTION PRINCIPLE
+
+This document is Grade 6. It's not Grade 10. It's not final.
+
+As we climb, this document grows. New laws get added. New formulas. New materials. New patterns. But the foundation doesn't change: calculate, physical, slow, one language, his eye wins.
+
+**When to update:** When Shawn teaches you something new. When you break a law and learn why it's a law. When you discover a better formula. When a new pattern emerges from the work.
+
+**How to update:** Add it in the right section. Write the actual content. Commit with a clear message: what changed and why. Push. The grade at the top updates when we've collectively leveled up.
+
+**What never changes:** The 5 truths. The light source. White text. His eye wins. These are bedrock. Everything else evolves.
+
+---
+
+**By:** Naya Nitro Narzan, from working with Shawn  
+**Date:** 2026-11-02  
+**Level locked:** Grade 6 (climbing to 10)
 
 ---
 
