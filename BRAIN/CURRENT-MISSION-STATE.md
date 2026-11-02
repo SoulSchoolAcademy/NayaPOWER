@@ -1,3 +1,11 @@
+## Director tick — 2026-11-02 05:38 PST (quiet tick)
+- Last verified: 2026-11-02 05:38 PDT. Main tip STEADY 78d87c46 (== prior tick tip; no merges, no direct pushes in-window).
+- Live board #3066: 1465 comments, UNCHANGED (watermark 6577659412); 835 below the 2,300 migration trigger, 1035 below the 2,500 cap; neither trigger fired.
+- Merge-receipt breach log: 120 (unchanged; tip steady => watch skipped, 0 new merges possible).
+- REST quota (App identity): 12,444 remaining at tick start; stored custom.github PAT 401 persists (known since 2026-10-30), NOT a 403, no stand_down.
+- Lane queue stall unchanged (31 briefs, second-seat bar) per dispatcher t2260; hub feed-liveness instance B + 655-row distillation queue >7d unchanged (already surfaced).
+- Where to go: activation guide BRAIN/00-ACTIVATION/READ-ME-FIRST.md (§10 THE OATH) + THE-CODE-SHE-LIVES-BY.md; operating manual v2 ULTIMATE, canonical board post https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902.
+
 # DIRECTOR TICK 2026-11-02 05:08 PST (13:08Z)
 - Tip 78d87c46 STEADY. Board #3066: 1464 -> 1465 (+1; last_comment_id 6577659412). 0 relayed to builder. Breach log 120. No migration (835 below the 2,300 trigger, 1035 below the cap).
 - The +1: comment 6577659412, hourly accountability 12:53Z: 0 dispatched, queue 1253 flat for the 145th hour, tip unchanged, 4 open PRs all still open; #3108 pin 09016cdd is a branch push 12:40:13Z, not a merge. NOT relayed: routine hourly accountability, no [BUILDER] tag, no builder-seat/Naya 4 address, no direct builder question, no builder-branch verdict. No merge watch owed (no tip move).
