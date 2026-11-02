@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-11-01",
-  "receipt_basis_commit": "9c2de0ca490009b380bf14a165d526ef0b138c7b",
-  "inventory_file_count": 1838,
+  "receipt_basis_commit": "c247279968ec3c66bd0495d99cd90f3860eac2a5",
+  "inventory_file_count": 1839,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 28,
-    "05-MEMORY": 910,
+    "05-MEMORY": 911,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -5100,6 +5100,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/31/SYSTEM/smart-notes/SN-1908/IB-SMART-NOTE-20261031-sn1908-the-full-circle.md",
       "blob_sha": "20acbfb7cae163b8b2d095d1677a2743e5c6c452",
       "size": 2035
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/01/SYSTEM/smart-notes/SN-2043/IB-SMART-NOTE-20261101-sn2043-how-to-do-a-smart-note-every-time-and-why-we-do-three-a-day.md",
+      "blob_sha": "0e794de4e0d9f92c7b878f78fb092a903735c549",
+      "size": 7261
     },
     {
       "path": "BRAIN/05-MEMORY/SUPER-NOTES/DISTILLATION-STANDARD.md",
