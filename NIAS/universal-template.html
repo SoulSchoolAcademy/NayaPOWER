@@ -6,422 +6,524 @@
 <title>{{name}} — NayaNET</title>
 <style>
 /* ═══════════════════════════════════════════════════════════════════
-   NAYA DNA — LOCKED. Harvested from elite pages, never invented.
-   Sources: dashboard (page-base.html) · Hub (index-2.html SmartTabs v9)
+   NAYA ACTIVE INTELLIGENCE v3.0 — THE ULTIMATE LANGUAGE
+   Harvested from the new hub preview. Filed in the Smart Factory.
+   REAL OBJECT LAW: every element is a physical object — glass, metal,
+   light with volume. Nothing flat. Nothing is a picture OF an object.
+   If it doesn't look touchable, it doesn't ship.
    ═══════════════════════════════════════════════════════════════════ */
 :root {
-  --naya-bg: #050607;
+  --naya-bg: #050607;                       /* obsidian, never pure black */
   --naya-purple: #a06bff; --naya-blue: #3fb8ff; --naya-green: #2fe89e;
   --naya-gold: #ffbf3d; --naya-orange: #ff9a5a; --naya-red: #ff5e6c;
   --naya-magenta: #e84fff; --naya-indigo: #3a5bff; --naya-sky: #7fd4ff;
   --naya-lavender: #c9a0ff;
-  --naya-text: #ffffff;
+  --naya-text: #ffffff;                     /* text is ALWAYS white */
   --naya-nutshell: 20px;
+  --soul: {{spectrum_color}};               /* one soul color per page */
   --ease: cubic-bezier(.2,.7,.3,1.2);
 }
-* { box-sizing: border-box; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { background: var(--naya-bg); }
 body {
-  background: var(--naya-bg) !important; color: var(--naya-text);
-  margin: 0; width: 100%; max-width: none !important;
-  font-family: system-ui, -apple-system, sans-serif;
-  padding-bottom: 90px; /* space for bottom bar */
-}
-h1, h2, h3 { text-shadow: 0 2px 4px rgba(0,0,0,.8), 0 0 20px rgba(160,107,255,.15); }
-
-/* ═══════════════════════════════════════════════════════════════════
-   ELEVATION GRAMMAR — every element is a real object.
-   Inset highlight (top) + inset shadow (bottom) + outer glow + drop shadow.
-   NOTHING is flat. Harvested from dashboard Law 15.
-   ═══════════════════════════════════════════════════════════════════ */
-.naya-elevated {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -3px 8px rgba(0,0,0,.5),
-    0 0 18px rgba(255,255,255,.08),
-    0 10px 26px rgba(0,0,0,.6);
+  background: var(--naya-bg); color: var(--naya-text);
+  margin: 0; width: 100%; max-width: none;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  padding-bottom: 110px;
+  overflow-x: hidden;
+  position: relative; z-index: 1;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   SMART BARS — top and bottom. Harvested from dashboard .eco-bottombar.
+   AMBIENT LIGHT — the room the objects sit in.
+   Purple radial glow behind hero. Light flare fans upward.
+   The page is lit from within, not decorated.
    ═══════════════════════════════════════════════════════════════════ */
-.naya-topbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 350;
-  display: flex; align-items: center; gap: 16px;
-  padding: 14px 24px;
-  background: linear-gradient(180deg, rgba(5,5,8,.95) 0%, rgba(5,5,8,.85) 100%);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-.naya-topbar .brand {
-  font-weight: 900; font-size: 1.3em; letter-spacing: .02em;
-  text-shadow: 0 0 16px rgba(160,107,255,.4);
-}
-.naya-topbar .ptype {
-  font-size: 12px; text-transform: uppercase; letter-spacing: .18em;
-  opacity: .5; border: 1px solid rgba(255,255,255,.2);
-  padding: 4px 12px; border-radius: 999px;
-}
-.naya-bottombar {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 350;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  padding: 14px 20px; flex-wrap: wrap;
-  background: linear-gradient(180deg, transparent, rgba(5,5,8,.92) 30%);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-@media (max-width: 640px) {
-  .naya-bottombar { gap: 8px; padding: 12px 12px; }
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   SMART TABS — harvested VERBATIM from Hub index-2.html `.smart-tab`.
-   Dark pill, bold label, per-tab --tc, white light idle, own color ignites.
-   ═══════════════════════════════════════════════════════════════════ */
-.naya-smtab {
-  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px;
-  padding: 12px 20px; border-radius: 999px; cursor: pointer; user-select: none;
-  border: 2px solid rgba(255,255,255,.45); background: rgba(0,0,0,.55);
-  color: #fff; font-family: inherit; font-weight: 900; font-size: 13px;
-  letter-spacing: .03em; white-space: nowrap; min-height: 44px; position: relative;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.5),
-    0 0 18px rgba(255,255,255,.18), 0 10px 26px rgba(0,0,0,.6);
-  border: 2px solid rgba(255,255,255,.8);
-  transition: box-shadow .25s, border-color .2s, text-shadow .25s, transform .18s;
-}
-.naya-smtab:hover, .naya-smtab:focus-visible {
-  border-color: var(--tc); outline: none;
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -2px 6px rgba(0,0,0,.35),
-    0 0 10px -1px var(--tc), 0 0 0 2px var(--tc) inset, 0 14px 32px rgba(0,0,0,.6);
-  text-shadow: 0 0 12px var(--tc);
-}
-.naya-smtab .icon { font-size: 16px; }
-
-/* ═══════════════════════════════════════════════════════════════════
-   HERO — 16:9, obsidian, cover integration, elevated.
-   ═══════════════════════════════════════════════════════════════════ */
-.naya-hero {
-  aspect-ratio: 16/9; width: 100%; max-height: 60vh; min-height: 320px;
-  background: linear-gradient(135deg, #0a0c10, #050607);
-  border: 1.5px solid rgba(255,255,255,.9);
-  border-top: 2px solid rgba(255,255,255,.4);
-  border-radius: 16px;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -8px 16px rgba(0,0,0,.8),
-    0 0 24px rgba(248,247,251,.12),
-    0 12px 32px rgba(0,0,0,.65);
-  margin: 80px 20px 24px; position: relative; overflow: hidden;
-  width: calc(100% - 40px);
-}
-.naya-hero .cover {
-  position: absolute; inset: 0; z-index: 0;
-  background-size: cover; background-position: center;
-  opacity: .35;
-}
-.naya-hero .cover::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(5,6,7,.3) 0%, rgba(5,6,7,.85) 100%);
-}
-.naya-hero h1 {
-  font-size: clamp(2em, 5vw, 3.5em); margin: 0; color: var(--naya-text);
-  z-index: 1; text-align: center; padding: 0 24px;
-  text-shadow: 0 2px 4px rgba(0,0,0,.8), 0 0 30px rgba(160,107,255,.3);
-}
-.naya-hero .naya-vision {
-  font-size: var(--naya-nutshell); color: var(--naya-text); opacity: .9;
-  margin-top: 16px; max-width: 640px; text-align: center; z-index: 1;
-  padding: 0 24px; line-height: 1.5;
-}
-.naya-hero .hero-glow {
-  position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
-  width: 60%; height: 100%; z-index: 0; pointer-events: none;
-  background: radial-gradient(ellipse, var(--hero-color, rgba(160,107,255,.15)), transparent 70%);
-  filter: blur(20px);
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   ORBS — harvested VERBATIM from dashboard.
-   Real 3D objects: radial gradients, orbit ring, light pool, breathe.
-   Spectrum: Sales #e84fff · Joins #a06bff · Notes #3a5bff · Invites #7fd4ff
-             Creations #2fe89e · Shares #ffbf3d · Comments #ff9a5a
-             Likes #ff5e6c · Saves #c9a0ff
-   ═══════════════════════════════════════════════════════════════════ */
-.orb-row {
-  display: flex; gap: 44px; justify-content: center; flex-wrap: wrap;
-  margin: 44px 20px 12px;
-}
-.orb-wrap { text-align: center; }
-.orb-wrap .micro {
-  margin-top: 18px; letter-spacing: .22em; text-transform: uppercase;
-  font-size: 12px; font-weight: 700;
-}
-.orb-wrap .micro small {
-  display: block; letter-spacing: .08em; text-transform: none;
-  color: rgba(255,255,255,.6); margin-top: 4px; font-size: 13px; font-weight: 400;
-}
-.orb {
-  --oc: #a06bff; --oc-rgb: 160,107,255;
-  position: relative; display: inline-block;
-  width: 120px; height: 120px; border-radius: 50%;
+.ai-ambient {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
   background:
-    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
-    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
-    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
-  box-shadow:
-    inset 0 0 0 1.5px rgba(255,255,255,.50),
-    inset 0 10px 18px rgba(255,255,255,.14),
-    inset 0 -12px 24px rgba(0,0,0,.62),
-    0 0 30px rgba(var(--oc-rgb),.55),
-    0 0 74px -10px rgba(var(--oc-rgb),.42),
-    0 24px 48px rgba(0,0,0,.65);
-  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
-  animation: orb-breathe 5s ease-in-out infinite;
-  display: inline-grid; place-items: center;
-  font-size: 40px; color: #fff;
-  text-shadow: 0 2px 10px rgba(0,0,0,.75), 0 0 22px rgba(var(--oc-rgb),.95);
+    radial-gradient(ellipse 65% 38% at 50% -2%, rgba(160,107,255,.16), transparent 70%),
+    radial-gradient(ellipse 45% 30% at 50% 108%, rgba(160,107,255,.05), transparent 70%),
+    radial-gradient(ellipse 30% 22% at 12% 40%, rgba(63,184,255,.045), transparent 70%),
+    radial-gradient(ellipse 30% 22% at 88% 60%, rgba(232,79,255,.045), transparent 70%);
 }
-@keyframes orb-breathe {
+.ai-ambient::after { /* light flare fanning upward from center */
+  content:''; position: absolute; top: 0; left: 30%; right: 30%; height: 46%;
+  background: linear-gradient(180deg, transparent 20%, rgba(190,160,255,.06) 80%, rgba(190,160,255,.10));
+  clip-path: polygon(38% 100%, 62% 100%, 100% 0, 0 0);
+  filter: blur(6px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   THE DEPTH EQUATION — applied to EVERY object. Non-negotiable.
+   145° gradient surface · 1px border · inset top highlight ·
+   grounding shadow · accent glow.
+   The CRESCENT (::before) is the glass-marble catch-light — the bright
+   arc along the top edge. WITHOUT IT, OBJECTS READ FLAT.
+   ═══════════════════════════════════════════════════════════════════ */
+.ai-obj {
+  position: relative;
+  background: linear-gradient(145deg, #0e1016 0%, #050607 55%, #020304 100%);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -6px 14px rgba(0,0,0,.60),
+    0 14px 34px rgba(0,0,0,.65),
+    0 0 24px var(--glow, rgba(160,107,255,.10));
+}
+.ai-obj::before { /* ◉ THE CRESCENT — never remove */
+  content:''; position: absolute; top: 1px; left: 9%; right: 9%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent);
+  border-radius: 999px; filter: blur(.5px); pointer-events: none; z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TYPOGRAPHY — white always. Hierarchy from size/weight/spacing.
+   Small-caps micro-labels. Bold hero. Minimal words, visuals first.
+   ═══════════════════════════════════════════════════════════════════ */
+.micro {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .22em;
+  color: #fff; opacity: .55; font-weight: 700; text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.9);
+}
+.micro small {
+  display: block; font-size: 10px; letter-spacing: .14em; opacity: .7;
+  margin-top: 3px; text-transform: none; font-weight: 400;
+}
+h1.hero-name {
+  font-size: clamp(1.8em, 5vw, 2.6em); font-weight: 900; margin: 0;
+  color: #fff; letter-spacing: .01em;
+  text-shadow: 0 2px 6px rgba(0,0,0,.9), 0 0 28px var(--glow, rgba(160,107,255,.35));
+}
+.nutshell {
+  font-size: var(--naya-nutshell); color: #fff; opacity: .92;
+  max-width: 640px; text-align: center; line-height: 1.45;
+  text-shadow: 0 1px 4px rgba(0,0,0,.9); margin: 14px auto 0;
+}
+.gem { color: var(--gc, var(--soul)); margin-right: 10px; text-shadow: 0 0 10px var(--gc, var(--soul)); }
+.board-title {
+  font-size: 13px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .2em; color: #fff; margin: 0 0 12px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.9);
+}
+.board-text { font-size: 15px; line-height: 1.6; color: #fff; opacity: .88; margin: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   HERO PILL — a glass capsule. Violet neon border, soft halo.
+   Bold white name, nutshell vision, smart link. Flanked by + orbs.
+   ═══════════════════════════════════════════════════════════════════ */
+.hero-stage {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  padding: 96px 20px 10px; flex-wrap: wrap;
+}
+.ai-hero {
+  border-radius: 999px;
+  border: 2px solid var(--soul);
+  background: linear-gradient(145deg, rgba(24,18,40,.94) 0%, rgba(5,6,7,.97) 60%, rgba(3,4,5,.98) 100%);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.35),
+    inset 0 -10px 24px rgba(0,0,0,.65),
+    0 18px 44px rgba(0,0,0,.7),
+    0 0 34px var(--soul),
+    0 0 90px rgba(160,107,255,.25);
+  padding: 36px 64px; text-align: center; max-width: min(860px, 92vw);
+  position: relative; overflow: hidden;
+}
+.ai-hero::before { /* crescent across the capsule top */
+  content:''; position: absolute; top: 2px; left: 14%; right: 14%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.9), transparent);
+  border-radius: 999px; filter: blur(.6px); z-index: 2; pointer-events: none;
+}
+.ai-hero::after { /* light flare rising inside the capsule */
+  content:''; position: absolute; bottom: -30%; left: 25%; right: 25%; height: 120%;
+  background: linear-gradient(180deg, transparent 40%, rgba(190,160,255,.10));
+  clip-path: polygon(40% 100%, 60% 100%, 100% 0, 0 0);
+  filter: blur(8px); pointer-events: none;
+}
+.ai-hero .cover {
+  position: absolute; inset: 0; z-index: 0; border-radius: 999px;
+  background-size: cover; background-position: center; opacity: .35;
+}
+.ai-hero .cover + * { position: relative; z-index: 1; }
+.hero-inner { position: relative; z-index: 1; }
+.plus-orb { /* the + orbs flanking the hero — grabbable */
+  flex: 0 0 auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ORBS — glass marbles. Crescent catch-light. Breathe at rest.
+   Ignite in own color on touch (edge + glow, never full fill).
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes breathe {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.04); }
+  50%      { transform: scale(1.045); }
 }
-.orb-wrap:nth-child(2) .orb { animation-delay: 1s; }
-.orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
-.orb-wrap:nth-child(4) .orb { animation-delay: 3s; }
-.orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
-.orb::before {
-  content: ""; position: absolute; inset: -14px; border-radius: 50%; z-index: 2;
-  background: conic-gradient(from 0deg, transparent 0deg, transparent 180deg, var(--oc) 270deg, #ffffff 320deg, transparent 360deg);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude; padding: 10px;
-  animation: orb-spin 2.5s linear infinite; opacity: 1; pointer-events: none;
-  filter: drop-shadow(0 0 16px var(--oc)) drop-shadow(0 0 6px #fff);
-}
-@keyframes orb-spin { to { transform: rotate(360deg); } }
-.orb::after {
-  content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px;
-  height: 24px; border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%);
-  filter: blur(7px); z-index: -1; pointer-events: none;
-}
-.orb:hover {
-  animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+.ai-orb {
+  width: 88px; height: 88px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; position: relative; flex: 0 0 auto;
+  background:
+    radial-gradient(circle at 50% 16%, rgba(255,255,255,.30), transparent 44%),
+    radial-gradient(circle at 50% 55%, rgba(255,255,255,.05), transparent 62%),
+    linear-gradient(145deg, #15171f 0%, #050607 58%, #020304 100%);
+  border: 1px solid rgba(255,255,255,.20);
   box-shadow:
-    inset 0 0 0 1.5px rgba(255,255,255,.65),
-    inset 0 10px 18px rgba(255,255,255,.2),
-    inset 0 -12px 24px rgba(0,0,0,.55),
-    0 0 44px rgba(var(--oc-rgb),.8),
-    0 0 90px -8px rgba(var(--oc-rgb),.55),
-    0 30px 54px rgba(0,0,0,.7);
+    inset 0 2px 7px rgba(255,255,255,.25),
+    inset 0 -9px 18px rgba(0,0,0,.68),
+    0 12px 26px rgba(0,0,0,.62),
+    0 0 26px var(--oglow, rgba(160,107,255,.20));
+  animation: breathe 4.2s ease-in-out infinite;
+  transition: transform .22s var(--ease), box-shadow .25s;
 }
-.orb:hover::before { animation-duration: 1.5s; opacity: 1; }
-.orb .orb-value {
-  font-size: 28px; font-weight: 900; z-index: 3;
-  text-shadow: 0 2px 8px rgba(0,0,0,.8);
+.ai-orb::before { /* ◉ marble crescent — the killer detail */
+  content:''; position: absolute; top: 7%; left: 20%; right: 20%; height: 26%;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.65), transparent 72%);
+  border-radius: 50%; filter: blur(1px); pointer-events: none; z-index: 2;
 }
-
-/* ═══════════════════════════════════════════════════════════════════
-   SECTION BOARDS — deep-black, white text, spectrum edge accents.
-   ═══════════════════════════════════════════════════════════════════ */
-.naya-section {
-  background: var(--naya-bg);
-  border: 1.5px solid rgba(255,255,255,.9);
-  border-top: 2px solid rgba(255,255,255,.4);
-  border-radius: 16px; padding: 28px; margin: 0 20px 20px;
+.ai-orb::after { /* light pool beneath */
+  content:''; position: absolute; bottom: -14px; left: 18%; right: 18%; height: 12px;
+  background: radial-gradient(ellipse, var(--oglow, rgba(160,107,255,.30)), transparent 70%);
+  filter: blur(4px); pointer-events: none;
+}
+.ai-orb:hover, .ai-orb:focus-visible {
+  animation-play-state: paused; outline: none;
+  transform: translateY(-4px) scale(1.07);
+  border-color: var(--oc, var(--soul));
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -3px 8px rgba(0,0,0,.5),
-    0 0 18px rgba(255,255,255,.06),
-    0 10px 26px rgba(0,0,0,.6);
-  position: relative;
+    inset 0 2px 7px rgba(255,255,255,.30),
+    inset 0 -9px 18px rgba(0,0,0,.60),
+    0 16px 32px rgba(0,0,0,.62),
+    0 0 18px var(--oc, var(--soul)),
+    0 0 44px var(--oc, var(--soul));
 }
-.naya-section::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  border-radius: 16px 16px 0 0;
-  background: var(--section-color, var(--naya-purple));
-  box-shadow: 0 0 12px var(--section-color, var(--naya-purple));
+.ai-orb .glyph {
+  font-size: 30px; color: #fff; line-height: 1; z-index: 1;
+  text-shadow: 0 0 14px var(--oc, var(--soul)), 0 2px 4px rgba(0,0,0,.9);
 }
-.naya-section h2 {
-  margin: 0 0 12px; font-size: 1.4em;
-  display: flex; align-items: center; gap: 10px;
+.ai-orb .orb-val {
+  position: absolute; bottom: -6px; right: -6px; z-index: 3;
+  min-width: 30px; height: 30px; padding: 0 7px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 900; color: #fff;
+  background: linear-gradient(145deg, #1a1d26, #050607);
+  border: 1px solid var(--oc, var(--soul));
+  box-shadow: 0 0 12px var(--oc, var(--soul)), 0 4px 10px rgba(0,0,0,.6);
 }
-.naya-section h2 .sec-icon { font-size: 1.2em; }
-.naya-section p {
-  font-size: var(--naya-nutshell); line-height: 1.6; margin: 0;
-  color: rgba(255,255,255,.92);
+.orb-row {
+  display: flex; gap: 26px; justify-content: center; flex-wrap: wrap;
+  padding: 26px 20px 8px; position: relative; z-index: 1;
 }
-
-/* HIDE BY TYPE */
-[data-show-for] { display: none; }
-body[data-pagetype="personal"] [data-show-for~="personal"],
-body[data-pagetype="business"] [data-show-for~="business"],
-body[data-pagetype="space"] [data-show-for~="space"],
-body[data-pagetype="membership"] [data-show-for~="membership"] { display: block; }
-
-/* SMART LINK */
-.naya-smartlink {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 20px; border-radius: 999px;
-  background: rgba(160,107,255,.12);
-  border: 1.5px solid rgba(160,107,255,.4);
-  color: #fff; font-size: 14px; font-weight: 700;
-  text-decoration: none; margin-top: 16px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 0 16px rgba(160,107,255,.2);
-  transition: all .25s var(--ease);
-}
-.naya-smartlink:hover {
-  border-color: var(--naya-purple);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 0 24px rgba(160,107,255,.5);
-  transform: translateY(-2px);
-}
+.orb-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 
 /* ═══════════════════════════════════════════════════════════════════
-   GAUGE — the 2-second answer: "How am I doing?"
-   Simplified Bugatti: obsidian dial, 270° spectrum arc, crystal needle.
-   Harvested from dashboard gauge language.
+   DESTINATION SQUARES — rounded-square glass tokens.
+   Thick saturated neon edges, tinted glass interiors.
+   Small-caps labels beneath. These are DOORS, not buttons.
    ═══════════════════════════════════════════════════════════════════ */
-.naya-gauge-wrap {
-  display: flex; flex-direction: column; align-items: center;
-  margin: 32px 20px 8px; padding: 28px 20px;
-  background: var(--naya-bg);
-  border: 1.5px solid rgba(255,255,255,.9);
-  border-top: 2px solid rgba(255,255,255,.4);
-  border-radius: 16px;
+.dest-row {
+  display: flex; gap: 22px; justify-content: center; flex-wrap: wrap;
+  padding: 22px 20px; position: relative; z-index: 1;
+}
+.ai-dest {
+  width: 118px; aspect-ratio: 1; border-radius: 24px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; position: relative;
+  border: 2px solid var(--dc, var(--soul));
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255,255,255,.16), transparent 46%),
+    linear-gradient(145deg, var(--dtint, rgba(160,107,255,.14)) 0%, rgba(5,6,7,.96) 62%, rgba(2,3,4,.98) 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -3px 8px rgba(0,0,0,.5),
-    0 0 24px rgba(160,107,255,.1),
-    0 10px 26px rgba(0,0,0,.6);
-  position: relative;
+    inset 0 2px 4px rgba(255,255,255,.28),
+    inset 0 -8px 18px rgba(0,0,0,.62),
+    0 14px 30px rgba(0,0,0,.62),
+    0 0 22px var(--dc, var(--soul));
+  transition: transform .2s var(--ease), box-shadow .25s;
 }
-.naya-gauge-wrap::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  border-radius: 16px 16px 0 0;
-  background: linear-gradient(90deg, var(--naya-purple), var(--naya-blue), var(--naya-green), var(--naya-gold), var(--naya-magenta));
-  box-shadow: 0 0 12px rgba(160,107,255,.5);
+.ai-dest::before { /* crescent */
+  content:''; position: absolute; top: 2px; left: 16%; right: 16%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent);
+  border-radius: 999px; filter: blur(.5px); pointer-events: none;
 }
-.naya-gauge { width: min(320px, 80vw); height: auto; }
-.naya-gauge .dial {
-  fill: #0a0c10; stroke: rgba(255,255,255,.9); stroke-width: 2;
+.ai-dest:hover, .ai-dest:focus-visible {
+  transform: translateY(-5px) scale(1.05); outline: none;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.32),
+    inset 0 -8px 18px rgba(0,0,0,.55),
+    0 18px 36px rgba(0,0,0,.62),
+    0 0 34px var(--dc, var(--soul)),
+    0 0 70px var(--dc, var(--soul));
 }
-.naya-gauge .tick { stroke: rgba(255,255,255,.35); stroke-width: 1.5; }
-.naya-gauge .tick-major { stroke: rgba(255,255,255,.7); stroke-width: 2.5; }
-.naya-gauge .needle {
-  stroke: #fff; stroke-width: 3; stroke-linecap: round;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,.8));
-  transition: transform 1.2s cubic-bezier(.2,.7,.3,1.2);
-  transform-origin: 100px 100px;
-}
-.naya-gauge .hub {
-  fill: radial-gradient(circle, #fff 0%, #a06bff 60%, #050607 100%);
-  filter: drop-shadow(0 0 8px rgba(160,107,255,.8));
-}
-.naya-gauge-value {
-  font-size: 2.2em; font-weight: 900; margin-top: -10px;
-  text-shadow: 0 0 20px rgba(160,107,255,.5);
-}
-.naya-gauge-label {
-  font-size: 12px; text-transform: uppercase; letter-spacing: .22em;
-  opacity: .6; margin-top: 4px;
-}
+.ai-dest .glyph { font-size: 38px; color: #fff; text-shadow: 0 0 16px var(--dc, var(--soul)), 0 2px 5px rgba(0,0,0,.9); }
+.dest-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 
 /* ═══════════════════════════════════════════════════════════════════
-   TIME SELECTOR — Hour/Day/Week/Month/All. The dashboard's time lens.
+   COMMAND BAR — wide, glowing, rounded trough. Purple light behind.
+   The action surface: Connect · Message · Share · Invite as icon orbs.
    ═══════════════════════════════════════════════════════════════════ */
-.naya-time-selector {
-  display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
-  margin: 16px 20px 8px;
+.ai-command {
+  margin: 26px auto 0; max-width: min(760px, 92vw);
+  border-radius: 999px; padding: 14px 26px;
+  display: flex; align-items: center; justify-content: center; gap: 30px;
+  border: 1px solid rgba(160,107,255,.45);
+  background: linear-gradient(145deg, rgba(26,20,44,.92), rgba(5,6,7,.96) 60%, rgba(3,4,5,.98));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -8px 18px rgba(0,0,0,.60),
+    0 14px 34px rgba(0,0,0,.62),
+    0 0 30px rgba(160,107,255,.35),
+    0 0 80px rgba(160,107,255,.14);
+  position: relative; z-index: 1;
 }
-.naya-time-pill {
-  padding: 8px 18px; border-radius: 999px; cursor: pointer;
-  border: 1.5px solid rgba(255,255,255,.25); background: rgba(0,0,0,.5);
-  color: rgba(255,255,255,.7); font-size: 12px; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase;
-  transition: all .2s var(--ease);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 4px 12px rgba(0,0,0,.4);
+.ai-command::before { /* crescent */
+  content:''; position: absolute; top: 1px; left: 12%; right: 12%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent);
+  border-radius: 999px; filter: blur(.5px); pointer-events: none;
 }
-.naya-time-pill:hover { border-color: rgba(255,255,255,.5); color: #fff; }
-.naya-time-pill.active {
-  border-color: var(--naya-purple); color: #fff;
-  background: rgba(160,107,255,.15);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 0 16px rgba(160,107,255,.35);
-  text-shadow: 0 0 10px var(--naya-purple);
+.ai-cmd {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: none; border: none; cursor: pointer; padding: 6px 4px; color: #fff;
 }
+.ai-cmd .ai-orb { width: 56px; height: 56px; animation-duration: 5s; }
+.ai-cmd .ai-orb .glyph { font-size: 22px; }
+.ai-cmd .micro { font-size: 10px; }
 
 /* ═══════════════════════════════════════════════════════════════════
-   UNIVERSAL ACTIONS — Connect · Message · Share · Invite.
-   The done-for-you service feel. Every page offers these.
+   SMART LINK — the branded address, a glass pill.
    ═══════════════════════════════════════════════════════════════════ */
-.naya-actions {
-  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-  margin: 24px 20px;
+.ai-smartlink {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 18px; padding: 10px 22px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25); color: #fff; text-decoration: none;
+  font-size: 14px; font-weight: 700; letter-spacing: .04em;
+  background: linear-gradient(145deg, rgba(20,22,30,.9), rgba(5,6,7,.95));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -4px 10px rgba(0,0,0,.55),
+    0 8px 20px rgba(0,0,0,.55),
+    0 0 18px rgba(160,107,255,.25);
+  transition: box-shadow .25s, transform .18s var(--ease), border-color .2s;
+  position: relative; z-index: 1;
 }
-.naya-action {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 24px; border-radius: 12px; cursor: pointer;
-  border: 1.5px solid rgba(255,255,255,.9);
-  border-top: 2px solid rgba(255,255,255,.4);
-  background: var(--naya-bg); color: #fff;
-  font-size: 15px; font-weight: 800; font-family: inherit;
+.ai-smartlink:hover {
+  border-color: var(--soul); transform: translateY(-2px);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -3px 8px rgba(0,0,0,.5),
-    0 0 18px rgba(255,255,255,.08),
-    0 10px 26px rgba(0,0,0,.6);
-  transition: all .25s var(--ease);
+    0 10px 24px rgba(0,0,0,.55),
+    0 0 26px var(--soul);
 }
-.naya-action:hover {
-  border-color: var(--ac, var(--naya-purple));
+
+/* ═══════════════════════════════════════════════════════════════════
+   BOARDS — obsidian glass slabs, 16:9, full width.
+   Spectrum inlay strip on the top edge (thin colored glass, never text).
+   Content is engraved, minimal — visuals first.
+   ═══════════════════════════════════════════════════════════════════ */
+.board-stage { padding: 10px 20px; position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+.ai-board {
+  border-radius: 18px; padding: 26px 30px; margin: 0 0 22px;
+  border: 1px solid rgba(255,255,255,.13);
+  background: linear-gradient(145deg, #0c0e14 0%, #050607 55%, #020304 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -8px 18px rgba(0,0,0,.62),
+    0 16px 38px rgba(0,0,0,.65),
+    0 0 22px rgba(255,255,255,.05);
+  position: relative; overflow: hidden;
+  transition: transform .22s var(--ease), box-shadow .25s;
+}
+.ai-board::before { /* crescent */
+  content:''; position: absolute; top: 1px; left: 6%; right: 6%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent);
+  border-radius: 999px; filter: blur(.5px); pointer-events: none; z-index: 2;
+}
+.ai-board::after { /* spectrum inlay strip — colored glass, top edge */
+  content:''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--bc, var(--soul));
+  box-shadow: 0 0 14px var(--bc, var(--soul));
+  border-radius: 18px 18px 0 0;
+}
+.ai-board:hover {
   transform: translateY(-3px);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.4),
-    inset 0 -2px 6px rgba(0,0,0,.35),
-    0 0 24px var(--ac, var(--naya-purple)),
-    0 14px 32px rgba(0,0,0,.6);
-  text-shadow: 0 0 12px var(--ac, var(--naya-purple));
+    inset 0 1px 0 rgba(255,255,255,.32),
+    inset 0 -8px 18px rgba(0,0,0,.58),
+    0 20px 44px rgba(0,0,0,.65),
+    0 0 30px var(--bc, rgba(160,107,255,.18));
 }
-.naya-action .icon { font-size: 18px; }
+@media (min-aspect-ratio: 16/9) { .ai-board { aspect-ratio: auto; } }
 
 /* ═══════════════════════════════════════════════════════════════════
-   STATS STRIP — Big Number + Delta. Answers "am I growing?"
+   GAUGE — "How am I doing?" in 2 seconds. A physical instrument:
+   spectrum arc, crystal needle, glass hub. Not a chart — an object.
    ═══════════════════════════════════════════════════════════════════ */
-.naya-stats-strip {
-  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-  margin: 20px;
+.gauge-stage {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px; position: relative; z-index: 1;
 }
-.naya-stat {
-  flex: 1 1 140px; max-width: 200px; text-align: center;
-  padding: 20px 16px; border-radius: 12px;
-  background: var(--naya-bg);
-  border: 1.5px solid rgba(255,255,255,.7);
-  border-top: 2px solid rgba(255,255,255,.35);
+.ai-gauge {
+  border-radius: 24px; padding: 26px 34px 20px; text-align: center;
+  border: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(145deg, #0d0f16 0%, #050607 55%, #020304 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.3),
-    inset 0 -2px 6px rgba(0,0,0,.4),
-    0 8px 20px rgba(0,0,0,.5);
-  position: relative;
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -10px 22px rgba(0,0,0,.62),
+    0 18px 40px rgba(0,0,0,.65),
+    0 0 30px rgba(160,107,255,.16);
+  position: relative; max-width: min(560px, 92vw);
 }
-.naya-stat::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  border-radius: 12px 12px 0 0;
-  background: var(--sc, var(--naya-purple));
+.ai-gauge::before { /* crescent */
+  content:''; position: absolute; top: 1px; left: 10%; right: 10%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent);
+  border-radius: 999px; filter: blur(.5px); pointer-events: none;
 }
-.naya-stat .big-number {
-  font-size: 2em; font-weight: 900;
-  text-shadow: 0 0 16px var(--sc, var(--naya-purple));
+.ai-gauge svg { width: 100%; max-width: 340px; height: auto; display: block; margin: 0 auto; }
+.gauge-needle { stroke: #fff; stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 0 6px rgba(255,255,255,.7)); }
+.gauge-hub {
+  fill: url(#hubGlass); stroke: rgba(255,255,255,.4); stroke-width: 1.5;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.7));
 }
-.naya-stat .delta {
-  font-size: 13px; font-weight: 700; margin-top: 4px;
+.gauge-value {
+  font-size: 2.6em; font-weight: 900; color: #fff; margin-top: 6px;
+  text-shadow: 0 2px 8px rgba(0,0,0,.9), 0 0 24px var(--soul);
 }
-.naya-stat .delta.up { color: var(--naya-green); }
-.naya-stat .delta.down { color: var(--naya-red); }
-.naya-stat .stat-label {
-  font-size: 11px; text-transform: uppercase; letter-spacing: .18em;
-  opacity: .55; margin-top: 6px;
+.gauge-mode { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
+
+/* time pills + mode pills — small glass lozenges */
+.ai-pill {
+  padding: 8px 18px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,.22); color: #fff;
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .16em;
+  background: linear-gradient(145deg, #14161e, #050607);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -3px 8px rgba(0,0,0,.55),
+    0 6px 14px rgba(0,0,0,.5);
+  transition: all .2s var(--ease); position: relative;
+}
+.ai-pill.active, .ai-pill:hover {
+  border-color: var(--soul);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.32),
+    0 6px 14px rgba(0,0,0,.5),
+    0 0 16px var(--soul);
+  text-shadow: 0 0 10px var(--soul);
 }
 
-/* NO VOICE */
+/* ═══════════════════════════════════════════════════════════════════
+   STAT READOUTS — physical dials. Big number + delta, engraved.
+   ═══════════════════════════════════════════════════════════════════ */
+.readout-row {
+  display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+  padding: 8px 20px 20px; position: relative; z-index: 1;
+}
+.ai-readout {
+  border-radius: 16px; padding: 18px 26px; text-align: center; min-width: 150px;
+  border: 1px solid rgba(255,255,255,.13);
+  background: linear-gradient(145deg, #0c0e14, #050607 55%, #020304);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -6px 14px rgba(0,0,0,.60),
+    0 12px 28px rgba(0,0,0,.60),
+    0 0 18px var(--rc, rgba(160,107,255,.14));
+  position: relative;
+}
+.ai-readout::before { /* crescent */
+  content:''; position: absolute; top: 1px; left: 12%; right: 12%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent);
+  border-radius: 999px; filter: blur(.5px); pointer-events: none;
+}
+.ai-readout .big {
+  font-size: 2em; font-weight: 900; color: #fff;
+  text-shadow: 0 0 18px var(--rc, var(--soul)), 0 2px 6px rgba(0,0,0,.9);
+}
+.ai-readout .delta { font-size: 13px; font-weight: 700; margin-top: 4px; color: #fff; }
+.ai-readout .delta.up { color: var(--naya-green); text-shadow: 0 0 10px rgba(47,232,158,.5); }
+.ai-readout .delta.down { color: var(--naya-red); text-shadow: 0 0 10px rgba(255,94,108,.5); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FEED CARDS (space) — the ritual:
+   title → quote → dateline → actions → nutshell → lenses →
+   love/like → stars → share → trust lines
+   ═══════════════════════════════════════════════════════════════════ */
+.ai-feedcard {
+  border-radius: 18px; padding: 24px 28px; margin: 0 0 22px;
+  border: 1px solid rgba(255,255,255,.13);
+  background: linear-gradient(145deg, #0c0e14 0%, #050607 55%, #020304 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -8px 18px rgba(0,0,0,.62),
+    0 16px 38px rgba(0,0,0,.65),
+    0 0 22px rgba(127,212,255,.10);
+  position: relative;
+}
+.ai-feedcard::before { /* crescent */
+  content:''; position: absolute; top: 1px; left: 6%; right: 6%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent);
+  border-radius: 999px; filter: blur(.5px); pointer-events: none; z-index: 2;
+}
+.fc-title { font-size: 1.25em; font-weight: 800; color: #fff; margin: 0 0 8px; }
+.fc-quote {
+  border-left: 3px solid var(--soul); padding-left: 14px; margin: 12px 0;
+  font-style: italic; color: #fff; opacity: .9; font-size: 15px; line-height: 1.55;
+}
+.fc-dateline { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #fff; opacity: .45; }
+.fc-nutshell { font-size: var(--naya-nutshell); color: #fff; margin: 14px 0 4px; line-height: 1.45; }
+.fc-row { display: flex; gap: 10px; align-items: center; margin-top: 14px; flex-wrap: wrap; }
+.fc-trust {
+  margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.08);
+  font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #fff; opacity: .4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TRUST LINES — engraved at the foot of the page.
+   ═══════════════════════════════════════════════════════════════════ */
+.trust-stage { text-align: center; padding: 34px 20px 10px; position: relative; z-index: 1; }
+.trust-line {
+  font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+  color: #fff; opacity: .42; margin: 8px 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,.9);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TOP / BOTTOM BARS
+   ═══════════════════════════════════════════════════════════════════ */
+.ai-topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 350;
+  display: flex; align-items: center; gap: 14px; padding: 13px 22px;
+  background: linear-gradient(180deg, rgba(5,6,7,.96), rgba(5,6,7,.86));
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,.09);
+}
+.ai-topbar .wordmark { font-weight: 900; font-size: 1.15em; color: #fff; text-shadow: 0 0 16px rgba(160,107,255,.45); }
+.ai-bottombar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 350;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  padding: 14px 16px; flex-wrap: wrap;
+  background: linear-gradient(180deg, transparent, rgba(5,6,7,.94) 32%);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,.09);
+}
+/* twin plus orbs — the universal add gesture */
+.twin-plus { display: flex; gap: 10px; align-items: center; }
+.twin-plus .ai-orb { width: 46px; height: 46px; }
+.twin-plus .ai-orb .glyph { font-size: 20px; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   MOTION DISCIPLINE — nothing moves without reason.
+   Orbs breathe (ambient). Cards lift on touch. Calm switch respected.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .ai-orb { animation: none; }
+  * { transition-duration: .01ms !important; }
+}
+@media (max-width: 640px) {
+  .ai-hero { padding: 28px 30px; }
+  .ai-command { gap: 16px; padding: 12px 16px; }
+  .ai-dest { width: 96px; }
+  .orb-row { gap: 18px; }
+  .ai-orb { width: 72px; height: 72px; }
+}
+/* NO VOICE — free tier carries no audio */
 .naya-voice-btn, button[class*="voice"], button[class*="powercast"],
 .powercast-topbtn, [data-action="play-voice"], [data-action="powercast"] {
   display: none !important;
@@ -429,218 +531,220 @@ body[data-pagetype="membership"] [data-show-for~="membership"] { display: block;
 </style>
 </head>
 <body data-pagetype="{{type}}">
+<div class="ai-ambient" aria-hidden="true"></div>
 
-<!-- ═══════════ SMART BAR TOP ═══════════ -->
-<nav class="naya-topbar">
-  <span class="brand">{{name}}</span>
-  <span class="ptype">{{type}}</span>
-  <span style="margin-left:auto; opacity:.5; font-size:13px;">nayanet.app/{{alias}}</span>
+<!-- ═══════════ TOP BAR ═══════════ -->
+<nav class="ai-topbar">
+  <span class="wordmark" data-naya-bind="brand">{{name}}</span>
+  <span class="micro" data-naya-bind="page-type">{{type}}</span>
+  <span class="twin-plus" style="margin-left:auto;">
+    <span class="ai-orb" style="--oc:#2fe89e;--oglow:rgba(47,232,158,.25);" data-naya-bind="add-left" role="button" aria-label="Add" tabindex="0"><span class="glyph">＋</span></span>
+    <span class="ai-orb" style="--oc:#2fe89e;--oglow:rgba(47,232,158,.25);" data-naya-bind="add-right" role="button" aria-label="Add" tabindex="0"><span class="glyph">＋</span></span>
+  </span>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
-<header class="naya-hero" style="--hero-color: {{hero_color}};" data-naya-bind="hero">
-  {{cover_div}}
-  <div class="hero-glow"></div>
-  <h1 data-naya-bind="hero-name">{{name}}</h1>
-  <div class="naya-vision" data-naya-bind="hero-vision">{{vision}}</div>
-  <a href="https://nayanet.app/{{alias}}" class="naya-smartlink" data-naya-bind="smart-link">🔗 nayanet.app/{{alias}}</a>
-</header>
-
-<!-- ═══════════ GAUGE — "How am I doing?" in 2 seconds (business) ═══════════ -->
-<div class="naya-gauge-wrap" data-show-for="business" data-naya-bind="gauge">
-  <svg class="naya-gauge" viewBox="0 0 200 130" aria-label="Performance gauge">
-    <defs>
-      <linearGradient id="gaugeArc" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#a06bff"/>
-        <stop offset="25%" stop-color="#3fb8ff"/>
-        <stop offset="50%" stop-color="#2fe89e"/>
-        <stop offset="75%" stop-color="#ffbf3d"/>
-        <stop offset="100%" stop-color="#e84fff"/>
-      </linearGradient>
-    </defs>
-    <!-- 270° arc background -->
-    <path d="M 20 100 A 80 80 0 1 1 180 100" fill="none"
-          stroke="rgba(255,255,255,.08)" stroke-width="14" stroke-linecap="round"/>
-    <!-- spectrum arc (value) -->
-    <path d="M 20 100 A 80 80 0 1 1 180 100" fill="none"
-          stroke="url(#gaugeArc)" stroke-width="14" stroke-linecap="round"
-          stroke-dasharray="377" stroke-dashoffset="94"
-          data-naya-bind="gauge-arc" opacity=".9"/>
-    <!-- ticks -->
-    <g stroke="rgba(255,255,255,.35)" stroke-width="1.5">
-      <line x1="20" y1="100" x2="28" y2="100" class="tick"/>
-      <line x1="180" y1="100" x2="172" y2="100" class="tick"/>
-      <line x1="100" y1="20" x2="100" y2="28" class="tick-major"/>
-    </g>
-    <!-- needle -->
-    <line x1="100" y1="100" x2="100" y2="32" class="needle"
-          data-naya-bind="gauge-needle" transform="rotate(45 100 100)"/>
-    <circle cx="100" cy="100" r="10" class="hub"/>
-  </svg>
-  <div class="naya-gauge-value" data-naya-bind="gauge-value">0</div>
-  <div class="naya-gauge-label">Smart Score</div>
-  <!-- PTS/% toggle -->
-  <div class="naya-time-selector" style="margin-top:12px;">
-    <button class="naya-time-pill active" data-naya-bind="pts-toggle">PTS</button>
-    <button class="naya-time-pill" data-naya-bind="pct-toggle">%</button>
+<!-- ═══════════ HERO — the pill ═══════════ -->
+<div class="hero-stage">
+  <div class="ai-hero" data-naya-bind="hero">
+    {{cover}}
+    <div class="hero-inner">
+      <div class="micro" style="margin-bottom:10px;" data-naya-bind="hero-kicker">{{type}} · nayanet</div>
+      <h1 class="hero-name" data-naya-bind="hero-name">{{name}}</h1>
+      <p class="nutshell" data-naya-bind="hero-vision">{{vision}}</p>
+      <a class="ai-smartlink" href="https://nayanet.app/{{alias}}" data-naya-bind="smart-link"><span>🔗</span> nayanet.app/{{alias}}</a>
+    </div>
   </div>
 </div>
 
-<!-- ═══════════ TIME SELECTOR ═══════════ -->
-<div class="naya-time-selector" data-show-for="business" data-naya-bind="time-selector">
-  <button class="naya-time-pill" data-range="day">Day</button>
-  <button class="naya-time-pill active" data-range="week">Week</button>
-  <button class="naya-time-pill" data-range="month">Month</button>
-  <button class="naya-time-pill" data-range="all">All</button>
-</div>
-
-<!-- ═══════════ STATS STRIP — Big Number + Delta ═══════════ -->
-<div class="naya-stats-strip" data-show-for="business" data-naya-bind="stats-strip">
-  <div class="naya-stat" style="--sc: var(--naya-green);">
-    <div class="big-number" data-naya-bind="stat-revenue">0</div>
-    <div class="delta up" data-naya-bind="stat-revenue-delta">▲ 0%</div>
-    <div class="stat-label">Revenue</div>
-  </div>
-  <div class="naya-stat" style="--sc: var(--naya-blue);">
-    <div class="big-number" data-naya-bind="stat-clicks">0</div>
-    <div class="delta up" data-naya-bind="stat-clicks-delta">▲ 0%</div>
-    <div class="stat-label">Clicks</div>
-  </div>
-  <div class="naya-stat" style="--sc: var(--naya-gold);">
-    <div class="big-number" data-naya-bind="stat-conv">0%</div>
-    <div class="delta up" data-naya-bind="stat-conv-delta">▲ 0%</div>
-    <div class="stat-label">Conv Rate</div>
-  </div>
-</div>
-
-<!-- ═══════════ ORBS (business: stats · others: key metrics) ═══════════ -->
-<div class="orb-row" data-show-for="business" data-naya-bind="orbs">
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#e84fff;--oc-rgb:232,79,255;"><span class="orb-value">★</span></div>
-    <div class="micro">Sales<small>Revenue engine</small></div>
-  </div>
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#a06bff;--oc-rgb:160,107,255;"><span class="orb-value">○</span></div>
-    <div class="micro">Joins<small>New members</small></div>
-  </div>
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#3a5bff;--oc-rgb:58,91,255;"><span class="orb-value">✦</span></div>
-    <div class="micro">Notes<small>Smart notes</small></div>
-  </div>
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#7fd4ff;--oc-rgb:127,212,255;"><span class="orb-value">▲</span></div>
-    <div class="micro">Invites<small>Sent out</small></div>
-  </div>
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#2fe89e;--oc-rgb:47,232,158;"><span class="orb-value">◆</span></div>
-    <div class="micro">Creations<small>Built</small></div>
-  </div>
-</div>
-
-<div class="orb-row" data-show-for="personal">
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#a06bff;--oc-rgb:160,107,255;"><span class="orb-value">○</span></div>
-    <div class="micro">Connections<small>Your people</small></div>
-  </div>
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#3a5bff;--oc-rgb:58,91,255;"><span class="orb-value">✦</span></div>
-    <div class="micro">Notes<small>Your thoughts</small></div>
-  </div>
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#ffbf3d;--oc-rgb:255,191,61;"><span class="orb-value">⇄</span></div>
-    <div class="micro">Shares<small>Spread wide</small></div>
-  </div>
-</div>
-
-<div class="orb-row" data-show-for="space">
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#7fd4ff;--oc-rgb:127,212,255;"><span class="orb-value">▲</span></div>
-    <div class="micro">Members<small>The community</small></div>
-  </div>
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#2fe89e;--oc-rgb:47,232,158;"><span class="orb-value">◆</span></div>
-    <div class="micro">Posts<small>The stream</small></div>
-  </div>
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#ff9a5a;--oc-rgb:255,154,90;"><span class="orb-value">✎</span></div>
-    <div class="micro">Discussions<small>Alive</small></div>
-  </div>
-</div>
-
-<div class="orb-row" data-show-for="membership">
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#e84fff;--oc-rgb:232,79,255;"><span class="orb-value">🔒</span></div>
-    <div class="micro">Members<small>Inner circle</small></div>
-  </div>
-  <div class="orb-wrap">
-    <div class="orb" style="--oc:#c9a0ff;--oc-rgb:201,160,255;"><span class="orb-value">☆</span></div>
-    <div class="micro">Exclusive<small>Members only</small></div>
-  </div>
-</div>
-
-<!-- ═══════════ MISSION ═══════════ -->
-<section class="naya-section" style="--section-color: var(--naya-blue);">
-  <h2><span class="sec-icon">🎯</span> Mission</h2>
-  <p>{{mission}}</p>
-</section>
-
-<!-- ═══════════ GOAL ═══════════ -->
-<section class="naya-section" style="--section-color: var(--naya-green);">
-  <h2><span class="sec-icon">🚀</span> Goal</h2>
-  <p>{{goal}}</p>
-</section>
-
-<!-- ═══════════ CUSTOM SECTIONS ═══════════ -->
-{{custom_sections}}
-
-<!-- ═══════════ PERSONAL ONLY ═══════════ -->
-<section class="naya-section" data-show-for="personal" style="--section-color: var(--naya-purple);">
-  <h2><span class="sec-icon">👥</span> Connections</h2>
-  <p>Your people, your world. Every connection is a thread in the web.</p>
-</section>
-
-<!-- ═══════════ BUSINESS ONLY ═══════════ -->
-<section class="naya-section" data-show-for="business" style="--section-color: var(--naya-gold);">
-  <h2><span class="sec-icon">📊</span> Intelligence</h2>
-  <p>Data, stats, the heartbeat. Every number tells the story.</p>
-</section>
-
-<!-- ═══════════ SPACE ONLY ═══════════ -->
-<section class="naya-section" data-show-for="space" style="--section-color: var(--naya-sky);">
-  <h2><span class="sec-icon">🌐</span> Community</h2>
-  <p>The group, the stream, the conversation. This is where it happens.</p>
-</section>
-
-<!-- ═══════════ MEMBERSHIP ONLY ═══════════ -->
-<section class="naya-section" data-show-for="membership" style="--section-color: var(--naya-magenta);">
-  <h2><span class="sec-icon">🔒</span> Members Only</h2>
-  <p>Private content for members. The inner circle.</p>
-</section>
-
-<!-- ═══════════ UNIVERSAL ACTIONS — the done-for-you service ═══════════ -->
-<div class="naya-actions" data-naya-bind="actions">
-  <button class="naya-action" style="--ac: var(--naya-purple);" data-action="connect">
-    <span class="icon">🤝</span> Connect
+<!-- ═══════════ COMMAND BAR — the action surface ═══════════ -->
+<div class="ai-command" data-naya-bind="command-bar" role="toolbar" aria-label="Actions">
+  <button class="ai-cmd" data-action="connect" data-naya-bind="action-connect">
+    <span class="ai-orb" style="--oc:#a06bff;--oglow:rgba(160,107,255,.25);"><span class="glyph">🤝</span></span>
+    <span class="micro">Connect</span>
   </button>
-  <button class="naya-action" style="--ac: var(--naya-blue);" data-action="message">
-    <span class="icon">💬</span> Message
+  <button class="ai-cmd" data-action="message" data-naya-bind="action-message">
+    <span class="ai-orb" style="--oc:#3fb8ff;--oglow:rgba(63,184,255,.25);"><span class="glyph">💬</span></span>
+    <span class="micro">Message</span>
   </button>
-  <button class="naya-action" style="--ac: var(--naya-green);" data-action="share">
-    <span class="icon">🔗</span> Share
+  <button class="ai-cmd" data-action="share" data-naya-bind="action-share">
+    <span class="ai-orb" style="--oc:#2fe89e;--oglow:rgba(47,232,158,.25);"><span class="glyph">🔗</span></span>
+    <span class="micro">Share</span>
   </button>
-  <button class="naya-action" style="--ac: var(--naya-gold);" data-action="invite">
-    <span class="icon">✉️</span> Invite
+  <button class="ai-cmd" data-action="invite" data-naya-bind="action-invite">
+    <span class="ai-orb" style="--oc:#ffbf3d;--oglow:rgba(255,191,61,.25);"><span class="glyph">✉️</span></span>
+    <span class="micro">Invite</span>
   </button>
 </div>
 
-<!-- ═══════════ SMART BAR BOTTOM ═══════════ -->
-<nav class="naya-bottombar">
-  <button class="naya-smtab" style="--tc: var(--naya-purple);"><span class="icon">🏠</span> Home</button>
-  <button class="naya-smtab" style="--tc: var(--naya-blue);"><span class="icon">✉️</span> Mail</button>
-  <button class="naya-smtab" style="--tc: var(--naya-green);"><span class="icon">➕</span> Create</button>
-  <button class="naya-smtab" style="--tc: var(--naya-gold);"><span class="icon">🔗</span> Share</button>
-  <button class="naya-smtab" style="--tc: var(--naya-sky);"><span class="icon">⚙️</span> Settings</button>
+<!-- ═══════════ BUSINESS: THE INTELLIGENCE — gauge + readouts + stat orbs ═══════════ -->
+<div data-show-for="business">
+  <div class="gauge-stage">
+    <div class="ai-gauge" data-naya-bind="gauge">
+      <div class="micro" style="margin-bottom:12px;">Smart Score</div>
+      <svg viewBox="0 0 200 130" role="img" aria-label="Performance gauge">
+        <defs>
+          <linearGradient id="gaugeArc" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#a06bff"/><stop offset="25%" stop-color="#3fb8ff"/>
+            <stop offset="50%" stop-color="#2fe89e"/><stop offset="75%" stop-color="#ffbf3d"/>
+            <stop offset="100%" stop-color="#e84fff"/>
+          </linearGradient>
+          <radialGradient id="hubGlass" cx="50%" cy="35%" r="70%">
+            <stop offset="0%" stop-color="rgba(255,255,255,.5)"/><stop offset="60%" stop-color="rgba(20,22,30,.9)"/><stop offset="100%" stop-color="#050607"/>
+          </radialGradient>
+        </defs>
+        <path d="M 20 100 A 80 80 0 1 1 180 100" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="14" stroke-linecap="round"/>
+        <path d="M 20 100 A 80 80 0 1 1 180 100" fill="none" stroke="url(#gaugeArc)" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="377" stroke-dashoffset="94" data-naya-bind="gauge-arc" opacity=".92"/>
+        <g stroke="rgba(255,255,255,.35)" stroke-width="1.5">
+          <line x1="20" y1="100" x2="28" y2="100"/><line x1="180" y1="100" x2="172" y2="100"/><line x1="100" y1="20" x2="100" y2="28"/>
+        </g>
+        <line x1="100" y1="100" x2="100" y2="34" class="gauge-needle" data-naya-bind="gauge-needle" transform="rotate(45 100 100)"/>
+        <circle cx="100" cy="100" r="11" class="gauge-hub"/>
+      </svg>
+      <div class="gauge-value" data-naya-bind="gauge-value">0</div>
+      <div class="gauge-mode">
+        <button class="ai-pill active" data-naya-bind="pts-toggle">PTS</button>
+        <button class="ai-pill" data-naya-bind="pct-toggle">%</button>
+      </div>
+      <div class="gauge-mode" data-naya-bind="time-selector">
+        <button class="ai-pill" data-range="day">Day</button>
+        <button class="ai-pill active" data-range="week">Week</button>
+        <button class="ai-pill" data-range="month">Month</button>
+        <button class="ai-pill" data-range="all">All</button>
+      </div>
+    </div>
+  </div>
+  <div class="readout-row" data-naya-bind="stats-strip">
+    <div class="ai-readout" style="--rc:rgba(47,232,158,.20);">
+      <div class="big" data-naya-bind="stat-revenue">0</div>
+      <div class="delta up" data-naya-bind="stat-revenue-delta">▲ 0%</div>
+      <div class="micro" style="margin-top:8px;">Revenue</div>
+    </div>
+    <div class="ai-readout" style="--rc:rgba(63,184,255,.20);">
+      <div class="big" data-naya-bind="stat-clicks">0</div>
+      <div class="delta up" data-naya-bind="stat-clicks-delta">▲ 0%</div>
+      <div class="micro" style="margin-top:8px;">Clicks</div>
+    </div>
+    <div class="ai-readout" style="--rc:rgba(255,191,61,.20);">
+      <div class="big" data-naya-bind="stat-conv">0%</div>
+      <div class="delta up" data-naya-bind="stat-conv-delta">▲ 0%</div>
+      <div class="micro" style="margin-top:8px;">Conv Rate</div>
+    </div>
+  </div>
+  <div class="orb-row" data-naya-bind="orbs">
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#e84fff;--oglow:rgba(232,79,255,.22);" data-naya-bind="orb-sales" role="button" tabindex="0"><span class="glyph">★</span><span class="orb-val" data-naya-bind="orb-sales-val">0</span></div><div class="micro">Sales<small>Revenue engine</small></div></div>
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#a06bff;--oglow:rgba(160,107,255,.22);" data-naya-bind="orb-joins" role="button" tabindex="0"><span class="glyph">○</span><span class="orb-val" data-naya-bind="orb-joins-val">0</span></div><div class="micro">Joins<small>New members</small></div></div>
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#3a5bff;--oglow:rgba(58,91,255,.22);" data-naya-bind="orb-notes" role="button" tabindex="0"><span class="glyph">✦</span><span class="orb-val" data-naya-bind="orb-notes-val">0</span></div><div class="micro">Notes<small>Smart notes</small></div></div>
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#7fd4ff;--oglow:rgba(127,212,255,.22);" data-naya-bind="orb-invites" role="button" tabindex="0"><span class="glyph">▲</span><span class="orb-val" data-naya-bind="orb-invites-val">0</span></div><div class="micro">Invites<small>Sent out</small></div></div>
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#2fe89e;--oglow:rgba(47,232,158,.22);" data-naya-bind="orb-creations" role="button" tabindex="0"><span class="glyph">◆</span><span class="orb-val" data-naya-bind="orb-creations-val">0</span></div><div class="micro">Creations<small>Built</small></div></div>
+  </div>
+  <div class="dest-row" data-naya-bind="destinations">
+    <div class="dest-wrap"><div class="ai-dest" style="--dc:#ffbf3d;--dtint:rgba(255,191,61,.13);" data-naya-bind="dest-dashboard" role="button" tabindex="0"><span class="glyph">📊</span></div><div class="micro">Dashboard<small>Deep dive</small></div></div>
+    <div class="dest-wrap"><div class="ai-dest" style="--dc:#3fb8ff;--dtint:rgba(63,184,255,.13);" data-naya-bind="dest-links" role="button" tabindex="0"><span class="glyph">🔗</span></div><div class="micro">Smart Links<small>Track all</small></div></div>
+    <div class="dest-wrap"><div class="ai-dest" style="--dc:#2fe89e;--dtint:rgba(47,232,158,.13);" data-naya-bind="dest-ledger" role="button" tabindex="0"><span class="glyph">📒</span></div><div class="micro">Ledger<small>Every point</small></div></div>
+  </div>
+</div>
+
+<!-- ═══════════ PERSONAL: THE VIBE — connection orbs + about boards ═══════════ -->
+<div data-show-for="personal">
+  <div class="orb-row" data-naya-bind="orbs">
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#a06bff;--oglow:rgba(160,107,255,.22);" data-naya-bind="orb-connections" role="button" tabindex="0"><span class="glyph">○</span><span class="orb-val" data-naya-bind="orb-connections-val">0</span></div><div class="micro">Connections<small>Your people</small></div></div>
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#3a5bff;--oglow:rgba(58,91,255,.22);" data-naya-bind="orb-notes" role="button" tabindex="0"><span class="glyph">✦</span><span class="orb-val" data-naya-bind="orb-notes-val">0</span></div><div class="micro">Notes<small>Your thoughts</small></div></div>
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#ffbf3d;--oglow:rgba(255,191,61,.22);" data-naya-bind="orb-shares" role="button" tabindex="0"><span class="glyph">⇄</span><span class="orb-val" data-naya-bind="orb-shares-val">0</span></div><div class="micro">Shares<small>Spread wide</small></div></div>
+  </div>
+  <div class="dest-row" data-naya-bind="destinations">
+    <div class="dest-wrap"><div class="ai-dest" style="--dc:#a06bff;--dtint:rgba(160,107,255,.13);" data-naya-bind="dest-mail" role="button" tabindex="0"><span class="glyph">✉️</span></div><div class="micro">Mail<small>Inbox</small></div></div>
+    <div class="dest-wrap"><div class="ai-dest" style="--dc:#3fb8ff;--dtint:rgba(63,184,255,.13);" data-naya-bind="dest-meet" role="button" tabindex="0"><span class="glyph">📹</span></div><div class="micro">Meet<small>Face time</small></div></div>
+    <div class="dest-wrap"><div class="ai-dest" style="--dc:#2fe89e;--dtint:rgba(47,232,158,.13);" data-naya-bind="dest-post" role="button" tabindex="0"><span class="glyph">📝</span></div><div class="micro">Post<small>Say it</small></div></div>
+  </div>
+</div>
+
+<!-- ═══════════ SPACE: THE COMMUNITY — member orbs + feed ritual ═══════════ -->
+<div data-show-for="space">
+  <div class="orb-row" data-naya-bind="orbs">
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#7fd4ff;--oglow:rgba(127,212,255,.22);" data-naya-bind="orb-members" role="button" tabindex="0"><span class="glyph">▲</span><span class="orb-val" data-naya-bind="orb-members-val">0</span></div><div class="micro">Members<small>The community</small></div></div>
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#2fe89e;--oglow:rgba(47,232,158,.22);" data-naya-bind="orb-posts" role="button" tabindex="0"><span class="glyph">◆</span><span class="orb-val" data-naya-bind="orb-posts-val">0</span></div><div class="micro">Posts<small>The stream</small></div></div>
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#ff9a5a;--oglow:rgba(255,154,90,.22);" data-naya-bind="orb-discussions" role="button" tabindex="0"><span class="glyph">✎</span><span class="orb-val" data-naya-bind="orb-discussions-val">0</span></div><div class="micro">Discussions<small>Alive</small></div></div>
+  </div>
+  <div class="board-stage" data-naya-bind="feed">
+    <div class="ai-feedcard" data-naya-bind="feed-welcome">
+      <div class="fc-title"><span class="gem" style="--gc:#7fd4ff;">◆</span>Welcome to {{name}}</div>
+      <div class="fc-quote" data-naya-bind="feed-quote">{{vision}}</div>
+      <div class="fc-dateline" data-naya-bind="feed-dateline">The stream begins</div>
+      <div class="fc-nutshell" data-naya-bind="feed-nutshell">{{mission}}</div>
+      <div class="fc-row">
+        <button class="ai-pill" data-naya-bind="feed-like">♥ Like</button>
+        <button class="ai-pill" data-naya-bind="feed-share">⇄ Share</button>
+        <button class="ai-pill" data-naya-bind="feed-star">☆ Star</button>
+      </div>
+      <div class="fc-trust">One intelligence · Many views · One identity</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MEMBERSHIP: THE EXCLUSIVE — locked orbs + join CTA ═══════════ -->
+<div data-show-for="membership">
+  <div class="orb-row" data-naya-bind="orbs">
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#e84fff;--oglow:rgba(232,79,255,.25);" data-naya-bind="orb-members" role="button" tabindex="0"><span class="glyph">🔒</span><span class="orb-val" data-naya-bind="orb-members-val">0</span></div><div class="micro">Members<small>Inner circle</small></div></div>
+    <div class="orb-wrap"><div class="ai-orb" style="--oc:#c9a0ff;--oglow:rgba(201,160,255,.22);" data-naya-bind="orb-exclusive" role="button" tabindex="0"><span class="glyph">☆</span><span class="orb-val" data-naya-bind="orb-exclusive-val">0</span></div><div class="micro">Exclusive<small>Members only</small></div></div>
+  </div>
+  <div class="hero-stage" style="padding-top:20px;" data-naya-bind="join-cta">
+    <div class="ai-hero" style="border-color:var(--naya-gold); box-shadow: inset 0 2px 3px rgba(255,255,255,.35), inset 0 -10px 24px rgba(0,0,0,.65), 0 18px 44px rgba(0,0,0,.7), 0 0 34px var(--naya-gold), 0 0 90px rgba(255,191,61,.22);">
+      <div class="hero-inner">
+        <div class="micro" style="margin-bottom:10px;">Membership</div>
+        <h1 class="hero-name">Join {{name}}</h1>
+        <p class="nutshell">{{goal}}</p>
+        <a class="ai-smartlink" href="https://nayanet.app/{{alias}}" data-naya-bind="join-link" style="border-color:var(--naya-gold);"><span>🔑</span> Claim your seat</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ BOARDS — mission · goal · custom ═══════════ -->
+<div class="board-stage">
+  <section class="ai-board" style="--bc:var(--naya-blue);" data-naya-bind="board-mission">
+    <h2 class="board-title"><span class="gem" style="--gc:var(--naya-blue);">◆</span>Mission</h2>
+    <p class="board-text" data-naya-bind="mission-text">{{mission}}</p>
+  </section>
+  <section class="ai-board" style="--bc:var(--naya-green);" data-naya-bind="board-goal">
+    <h2 class="board-title"><span class="gem" style="--gc:var(--naya-green);">◆</span>Goal</h2>
+    <p class="board-text" data-naya-bind="goal-text">{{goal}}</p>
+  </section>
+  {{sections}}
+</div>
+
+<!-- ═══════════ TRUST — engraved ═══════════ -->
+<div class="trust-stage" data-naya-bind="trust">
+  <div class="trust-line">One intelligence · Many views · One identity</div>
+  <div class="trust-line">Trust: source / interpretation separated</div>
+</div>
+
+<!-- ═══════════ BOTTOM BAR ═══════════ -->
+<nav class="ai-bottombar" data-naya-bind="bottombar">
+  <button class="ai-cmd" data-naya-bind="nav-home"><span class="ai-orb" style="--oc:#a06bff;--oglow:rgba(160,107,255,.25);width:52px;height:52px;"><span class="glyph" style="font-size:20px;">🏠</span></span><span class="micro" style="font-size:9px;">Home</span></button>
+  <button class="ai-cmd" data-naya-bind="nav-mail"><span class="ai-orb" style="--oc:#3fb8ff;--oglow:rgba(63,184,255,.25);width:52px;height:52px;"><span class="glyph" style="font-size:20px;">✉️</span></span><span class="micro" style="font-size:9px;">Mail</span></button>
+  <button class="ai-cmd" data-naya-bind="nav-create"><span class="ai-orb" style="--oc:#2fe89e;--oglow:rgba(47,232,158,.28);width:60px;height:60px;"><span class="glyph" style="font-size:24px;">＋</span></span><span class="micro" style="font-size:9px;">Create</span></button>
+  <button class="ai-cmd" data-naya-bind="nav-share"><span class="ai-orb" style="--oc:#ffbf3d;--oglow:rgba(255,191,61,.25);width:52px;height:52px;"><span class="glyph" style="font-size:20px;">🔗</span></span><span class="micro" style="font-size:9px;">Share</span></button>
+  <button class="ai-cmd" data-naya-bind="nav-settings"><span class="ai-orb" style="--oc:#7fd4ff;--oglow:rgba(127,212,255,.25);width:52px;height:52px;"><span class="glyph" style="font-size:20px;">⚙️</span></span><span class="micro" style="font-size:9px;">Settings</span></button>
 </nav>
 
+<script>
+/* NIAS v3.0 — page-type visibility + touch ignition helpers.
+   Nayas operate every [data-naya-bind] hook; this script only handles
+   what the static page must do alone. */
+(function(){
+  var type = document.body.getAttribute('data-pagetype') || 'personal';
+  document.querySelectorAll('[data-show-for]').forEach(function(el){
+    var show = el.getAttribute('data-show-for').split(/\s+/);
+    if (show.indexOf(type) === -1) el.style.display = 'none';
+  });
+  /* keyboard ignition mirrors hover for orbs/dests */
+  document.querySelectorAll('.ai-orb,.ai-dest').forEach(function(el){
+    el.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
+    });
+  });
+})();
+</script>
 </body>
 </html>
