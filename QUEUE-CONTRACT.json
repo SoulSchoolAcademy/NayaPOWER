@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-03T15:49:37Z",
-  "tip": "6c530ee1319180c569275362796fc9e44de2e72d",
+  "generated_at": "2026-11-03T21:49:24Z",
+  "tip": "23fd5aabf891f34b86e905a1dfb6169edf36c8fb",
   "prs": [
     {
       "number": 2981,
@@ -28,7 +28,7 @@
       "action": "MERGE-NOW",
       "cure": "Satisfies its tier's bar at the current head. Dock merges + faithfulness proof.",
       "owner": "dock",
-      "head": "4e90dd36fc7ed88674617327b47f57354e4a0574"
+      "head": "ebaa9b67c64783dff3e41d665552f8d389297419"
     },
     {
       "number": 3131,
@@ -38,15 +38,6 @@
       "cure": "Tier C bar is machine validation only; the paperwork reds are the retired form toll. Dock merges + faithfulness proof.",
       "owner": "dock",
       "head": "4280ea82cc832f146c2b8f088ded16c70c8dafc0"
-    },
-    {
-      "number": 3156,
-      "title": "docs(brain): learning event 2026-11-02",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness, claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "883d492b437ec92cafc19417ed45f318b77e61db"
     }
   ]
 }
