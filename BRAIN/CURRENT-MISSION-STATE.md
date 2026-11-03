@@ -1,8 +1,8 @@
-# CURRENT MISSION STATE — director refresh 2026-11-02 16:02 PST
+# CURRENT MISSION STATE — director refresh 2026-11-02 16:48 PST
 
-- Last verified: 2026-11-02 16:02 PST (2026-11-03T00:02:20Z). Main tip: `bead0651` (moved this tick ONLY by routine living-map MAP-STATE commit, single parent ec6d0636; no merge in-window).
-- Live board: #3066 at 1,492 comments (unchanged; 808 below the 2,300 migration trigger; no migration).
-- REST quota (App identity): 12490 remaining at tick check. Branch count via git protocol: 999.
+- Last verified: 2026-11-02 16:48 PST (2026-11-03T00:48Z). Main tip: `bead0651` (unchanged; last move was the routine living-map MAP-STATE commit, single parent ec6d0636; no merge in-window).
+- Live board: #3066 at 1,494 comments (+2; 806 below the 2,300 migration trigger; no migration).
+- REST quota (App identity): 12429 remaining at tick check. Branch count via git protocol: 999.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -29,9 +29,10 @@
 7. Serving chain + Auto-Match tap + .app mirror verified 20:42Z for listed routes (6587982909); remaining /about redirect, /joinus target, /pi 503 rows leg + identity-transfer DECISION owed to Shawn's hand (design verified 6587300858)
 8. PI one-shot readiness
 9. /PI overwrite/inventory/disclosure + marquee
-10. Owner asks carried + queue 1,253 flat (155th hour, last evidenced 23:00Z via 6590653450) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121) + protocol-watchdog failure 6590041195 (VERIFY inspection owed)
+10. Owner asks carried + queue 1,253 flat (156th hour, last evidenced 23:53Z via 6592321770) + nightly reservoir print 6592331175 (13D trigger, 4th night, ratio 1.02, no new gate move) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121) + protocol-watchdog failure 6590041195 (VERIFY inspection owed)
 
 ## DONE WITH PROOF
+- This tick: board +2, tip unchanged at bead0651 (no merge, no direct push in-window; merge watch skipped; breach log stays 121). New: hourly accountability 6592321770 (23:53Z: 0 dispatched/finished, queue 1,253 flat 156th hour, tip bead0651, open census 4 all held, #3108 pin da146609 branch push not a merge; five-note unmirrored set unchanged; daily learning review due 05:00Z 2026-11-03) + Nitro nightly reservoir print 6592331175 (00:45Z: created:finished 54:53 ≈ 1.02 over 7 days, 13D trigger 4th consecutive night; 4 open PRs same set, no lane over 5-PR cap, oldest touched #3089 ~7.0 days, #3108 head 90da7f92 -> da146609 author-lane churn, tip static). 0 relayed to naya2_to_builder (routine hourly + Nitro governance print, neither builder-addressed); list stays at cap 20.
 - This tick: board unchanged at 1,492 (0 new comments, 0 relayed; naya2_to_builder stays at cap 20). Tip ec6d0636 -> bead0651 via single routine living-map commit (HUB/MAP-STATE.json +10/-10, single parent); no merge in-window, breach log stays 121.
 - Board +2 accounted: Naya 5 nightly report (6590613347, 22:57Z: scoreboard claims Truth 5.0 -> 9.3 etc, all marked claim, not verified completions; no merge, no dispatch) + hourly accountability (6590653450, 23:00Z: 0 dispatched/finished, queue 1,253 flat 155th hour, tip verified unchanged since 18:34Z, 4 open all held, learning loop 22:37Z run skipped fresh read for the 4th straight run). 0 relayed to naya2_to_builder (routine status, none builder-addressed); list stays at cap 20. Tip steady at ec6d0636: no merge, no direct push in-window (tip unchanged, merge watch skipped).
 - Board +1 accounted: read-only CI/operations handoff (6590041195, 22:25Z: protocol-watchdog run 41507253152 both jobs exit 2, no checkout step, scripts exist at tip; latent stale #1354 target + token lacks Issues: write; addressed to CI owner #1868 + VERIFY #1872, not builder-addressed). 0 relayed to naya2_to_builder; list stays at cap 20. Tip steady at ec6d0636: no merge, no direct push in-window.
@@ -59,7 +60,7 @@
   retiring nayanet.live/identity.html; entrance-host cert page still prints SMART LINK
   resolve.nayanet.live. Note: the domain ruling itself remains bot/board text, NOT verified
   Shawn bytes. (Routing note 6586754703: already raised to Shawn in chat.)
-- Dispatcher queue: 1,253 items, flat for the 154th hour (last evidenced 21:53Z via 6589472237); executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
+- Dispatcher queue: 1,253 items, flat for the 156th hour (last evidenced 23:53Z via 6592321770); executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
 - Master directive #2601: HAND_EDIT_DETECTED on this tick too (known hand-edit persists) — lead reconciles; stale directive stands.
 
 ## TEAM STATUS ("-" = unknown, never invented)
