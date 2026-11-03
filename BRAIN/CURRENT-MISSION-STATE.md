@@ -1,9 +1,9 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 06:40 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 07:10 PST
 
-- Last verified: 2026-11-03 06:40 PST (2026-11-03T14:40:26Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
-- Live board: #3066 at 1,519 comments (UNCHANGED this tick — last comment 6605659545, 13:54Z hourly accountability, 170th flat hour; 781 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,492 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 14:31Z dispatcher rebuild (blobs 57381e35 / 91078ee1 / f185397a match local hash-object exactly). PROTOCOL + nodes + NC-001 unchanged, skipped.
+- Last verified: 2026-11-03 07:10 PST (2026-11-03T15:10:03Z). Main tip: `defe6775a` (MOVED — 6 intelligence-door Smart Note direct pushes SN-0862..SN-0867, compare-verified fast-forward ahead 6 / behind 0, no merge, no force-push; breach log stays 121).
+- Live board: #3066 at 1,520 comments (+1 this tick — last comment 6607062596, 14:53Z hourly accountability, 171st flat hour, queue 1,253 flat, cap-blocked streak 79 waves; 780 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,418 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 15:02Z dispatcher rebuild (blobs 7b78e1c9 / b02dc5f6 / aac5916f match local hash-object exactly). PROTOCOL + nodes + NC-001 unchanged, skipped.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
