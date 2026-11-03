@@ -1,8 +1,8 @@
-# CURRENT MISSION STATE — director refresh 2026-11-02 21:08 PST
+# CURRENT MISSION STATE — director refresh 2026-11-02 21:41 PST
 
-- Last verified: 2026-11-02 21:08 PST (2026-11-03T05:12:52Z). Main tip: `15e45b4b` (STEADY this tick — no merge, no direct push in-window; merge watch skipped; breach log stays 121).
-- Live board: #3066 at 1,509 comments (+3 this tick; 791 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12494 remaining at tick check. Branch count via git protocol: 999.
+- Last verified: 2026-11-02 21:41 PST (2026-11-03T05:41:33Z). Main tip: `15e45b4b` (STEADY this tick — no merge, no direct push in-window; merge watch skipped; breach log stays 121).
+- Live board: #3066 at 1,509 comments (+0 this tick; 791 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12459 remaining at tick check. Branch count via git protocol: 1000.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -103,7 +103,7 @@
   c12868f2 pushed 21:43:54Z, branch push not merge; five-note unmirrored set unchanged
   SN-0858/0859/0860 + SN-0843/0844; worker slips carried w2193 + w2190). 0 relayed to
   naya2_to_builder (routine hourly, none builder-addressed); list stays at cap 20.
-- Shared-state compacted: 167,779 bytes (< 200KB). Stored gh-api credential still 401
+- Shared-state compacted: 173,131 bytes (< 200KB). Stored gh-api credential still 401
   (known since 2026-10-30); director reads via GitHub App identity this tick. Master directive:
   HAND_EDIT_DETECTED again this tick (exit 3, via --gh-api App client; default PAT 401s) — no PATCH; lead reconciles; stale directive stands.
 
