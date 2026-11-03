@@ -1,8 +1,9 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 00:08 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 01:41 PST
 
-- Last verified: 2026-11-03 00:08 PST (2026-11-03T08:15:00Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
-- Live board: #3066 at 1,513 comments (+1 this tick; 787 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,485 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Last verified: 2026-11-03 01:41 PST (2026-11-03T09:41:00Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
+- Live board: #3066 at 1,514 comments (unchanged this tick; 786 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,460 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync PARTIAL this tick: ACTIVITY-LEDGER.md + STATS.md synced (blob-verified); activity-ledger.jsonl PUT 409s on a contents-API sha check even though git protocol + git-data API both confirm the supplied sha is current — stalled, pushed_hash NOT advanced, next tick retries (see director tick 20261103_0941).
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -141,5 +142,5 @@
 ## WHERE TO GO
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts).
 - Operating manual v2 ULTIMATE: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in `BRAIN/90-OPERATIONS/`, then link the repo path).
-- Live board: #3066 at 1,513 comments (+1 this tick; 787 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- Live board: #3066 at 1,514 comments (unchanged this tick; 786 below the 2,300 migration trigger; no migration, no successor-board traffic).
 - Master directive: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601
