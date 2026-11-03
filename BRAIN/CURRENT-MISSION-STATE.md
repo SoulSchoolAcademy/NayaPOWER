@@ -1,7 +1,7 @@
 # CURRENT MISSION STATE — director refresh 2026-11-03 11:59 PST
 
 - Last verified: 2026-11-03 11:59 PST (2026-11-03T19:59Z). Main tip: `c5915f3b` (MOVED — 7 direct pushes, single-parent, no merge, no force-push; breach log stays 121).
-- Live board: #3066 at 1,533 comments (+11 this tick — last comment 6613802476, 19:45Z daily value-ratio census; 767 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- Live board: #3066 at 1,533 comments; branches: 1,001 (git ls-remote --heads count, zero REST quota) (+11 this tick — last comment 6613802476, 19:45Z daily value-ratio census; 767 below the 2,300 migration trigger; no migration, no successor-board traffic).
 - REST quota (App identity): 12,433 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
 - Ledger sync: SKIPPED with byte proof — local LEDGER files vs naya/mission-state branch copy (git-protocol fetch): ACTIVITY-LEDGER.md, activity-ledger.jsonl, STATS.md, NAYANET-PROTOCOL-V1.md, nodes.jsonl, contracts/NC-001.json all diff 0 lines. No substantive ledger change; ledger_pushed_hash left at 7fb26826.
 
