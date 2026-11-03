@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-03 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-03 10:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -25904,6 +25904,14 @@ _Last updated: 2026-11-03 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0413-lane3.md`
 
 **Evidence:** Verified: cited lineage artifact hidden_files/retrieval/auth-gate-migration-prep-t0601.md exists; receipts t0402-lane7.md, t0601-lane7.md exist on disk. Score 9.0: GOOD, ONE MORE PASS. Arm-fresh gate fired correctly — blind second-eyes on one's own map is definitionally not independent; claim was minimal, brief re-filed byte-intact, rotation untouc
+
+### ✅ t0412 — Team 7, Team Naya Scorer (Team Operations) — 8.0/10 [VERIFIED]
+
+**Task:** Stage-0 COLDSTART slice 1: 60-second cold-start packet + timed self-trial
+
+**Receipt:** `twelve-lane-receipts/t0412-lane7.md`
+
+**Evidence:** BACKLOG SWEEP (fresh queue empty this tick; oldest unscored receipt). VERIFIED this tick on live bytes: receipt file exists and is internally coherent; coldstart-trial-t0412.md exists with an Oct 12 mtime matching the receipt era; coldstart-packet-template.md exists (now 287 words) and bin/diary_intake.py not applicable here. NOT PHANTOM: the cited
 
 ### ✅ t0412 — Team 7, Team Naya Scorer (Team Operations) — 8.5/10 [VERIFIED]
 
