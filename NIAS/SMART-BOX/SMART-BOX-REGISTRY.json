@@ -1,0 +1,102 @@
+{
+  "name": "Smart Box",
+  "version": 1,
+  "date": "2026-11-03",
+  "law": "Style blocks portable+alive; living blocks = whole pages (FACTORY-LAW-V5). Harvest, never invent.",
+  "sources": [
+    "https://nayanet.app/personal",
+    "https://nayanet.app/dashboard",
+    "https://nayanet.app/space"
+  ],
+  "bundle": "smart-box.css (462682 bytes, 2902 rules, 340 at-rules)",
+  "families": {
+    "foundation": {
+      "blocks": [
+        "body"
+      ],
+      "count": 1
+    },
+    "orbs": {
+      "blocks": [
+        ".orb",
+        ".orb--sm",
+        ".orb--xs",
+        ".orb--hero",
+        ".orb--black",
+        ".orb--glyph",
+        ".orb--icon",
+        ".mini-orb",
+        ".orb-wrap",
+        ".orb-row",
+        ".lorb",
+        ".nav-orb",
+        ".lnav-orb",
+        ".ib-card-orb"
+      ],
+      "count": 14
+    },
+    "buttons": {
+      "blocks": [
+        ".naya-btn",
+        ".naya-btn--primary",
+        ".naya-btn--secondary",
+        ".naya-btn--ghost",
+        ".naya-btn--danger",
+        ".naya-btn--lg",
+        ".naya-btn--sm",
+        ".naya-btn--icon",
+        ".naya-btn--block",
+        ".btn",
+        ".btn-chrome",
+        ".btn-ghost",
+        ".living-btn",
+        ".nav-button",
+        ".about-button",
+        ".like-pill",
+        ".filterpill",
+        ".act-chip"
+      ],
+      "count": 18
+    },
+    "hero": {
+      "blocks": [
+        ".lhero",
+        ".hero-buttons"
+      ],
+      "count": 2
+    },
+    "cards": {
+      "blocks": [
+        ".ib-card",
+        ".login-card",
+        ".ib-growdlg-card",
+        ".orbit-board"
+      ],
+      "count": 4
+    },
+    "inputs": {
+      "blocks": [
+        ".os-input",
+        ".nsb-btn"
+      ],
+      "count": 2
+    },
+    "shapes": {
+      "blocks": [
+        "diamond=intelligence",
+        "circle=state",
+        "square=destination"
+      ],
+      "count": 3
+    }
+  },
+  "living_blocks": {
+    "note": "Functional components live ONLY as whole pages. Never extract.",
+    "doors": {
+      "personal": "https://nayanet.app/personal",
+      "business": "https://nayanet.app/dashboard",
+      "space": "https://nayanet.app/space"
+    },
+    "mechanism": "NIAS/build-v5.py \u2014 fetch live + inject window.PAGE_*"
+  }
+}
