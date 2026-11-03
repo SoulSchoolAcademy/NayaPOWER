@@ -1,8 +1,8 @@
-# CURRENT MISSION STATE — director refresh 2026-11-02 17:08 PST
+# CURRENT MISSION STATE — director refresh 2026-11-02 17:38 PST
 
-- Last verified: 2026-11-02 17:08 PST (2026-11-03T01:08Z). Main tip: `bead0651` (unchanged; no merge in-window, no receipt watch triggered).
-- Live board: #3066 at 1,495 comments (+1 routine Naya 5 hourly accountability 6592497295; 805 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12479 remaining at tick check. Branch count via git protocol: 999.
+- Last verified: 2026-11-02 17:38 PST (2026-11-03T01:38Z). Main tip: `6d06caa4` (moved bead0651 -> 6d06caa4: single intelligence-door direct write, NOT a merge; breach log stays 121).
+- Live board: #3066 at 1,495 comments (unchanged this tick; 805 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12438 remaining at tick check. Branch count via git protocol: 999.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -19,7 +19,7 @@
   share + Hub journeys) spot-verified for listed routes 20:42Z (6587982909); remaining seams: /about redirect, /joinus target, /pi 503 rows leg. Do not cite the domain ruling as Shawn's word;
   it rests on bot/board text, not verified Shawn bytes.
 
-## TOP-10 (re-anchored to bead0651, board 1492)
+## TOP-10 (re-anchored to 6d06caa4, board 1495)
 1. Breach #121 + #119/#120 + #118 + #117 + #102-#116 repair + SN-1905 + SN-0843/0844 collision cures + SN-1908 adjudication
 2. Direct-push disposition + builder re-proofs at tip + SN-2043 + SN-0858/0859/0860 + SN-0843/0844 mirror gap + 0038 tongues
 3. Post-merge reds at ec6d0636 + Factory registry drift (personal.html vs templates-registry.json)
@@ -32,6 +32,7 @@
 10. Owner asks carried + queue 1,253 flat (156th hour, last evidenced 23:53Z via 6592321770) + nightly reservoir print 6592331175 (13D trigger, 4th night, ratio 1.02, no new gate move) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121) + protocol-watchdog failure 6590041195 (VERIFY inspection owed)
 
 ## DONE WITH PROOF
+- This tick: board unchanged at 1,495 (0 new comments, 0 relayed; naya2_to_builder stays at cap 20). Tip bead0651 -> 6d06caa4 via ONE commit (compare-verified ahead_by 1, behind_by 0, single parent): SN-0861 "Nikola Naya: The Mother Net Is the Supercharger" (VISION/MOTHER-NET), sole file BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/MOTHER-NET/SN-0861/IB-SMART-NOTE-20261103-sn0861-nikola-naya-the-mother-net.md +51/-0, author nayapower-lane-agent[bot]. Classification: intelligence-door direct write (Smart Notes land on main by direct write per standing law) — additive-only, no code, no merge, NOT a receipt breach; breach log stays 121. No merge in-window (newest merged PR #3155 predates the window).
 - This tick: board +2, tip unchanged at bead0651 (no merge, no direct push in-window; merge watch skipped; breach log stays 121). New: hourly accountability 6592321770 (23:53Z: 0 dispatched/finished, queue 1,253 flat 156th hour, tip bead0651, open census 4 all held, #3108 pin da146609 branch push not a merge; five-note unmirrored set unchanged; daily learning review due 05:00Z 2026-11-03) + Nitro nightly reservoir print 6592331175 (00:45Z: created:finished 54:53 ≈ 1.02 over 7 days, 13D trigger 4th consecutive night; 4 open PRs same set, no lane over 5-PR cap, oldest touched #3089 ~7.0 days, #3108 head 90da7f92 -> da146609 author-lane churn, tip static). 0 relayed to naya2_to_builder (routine hourly + Nitro governance print, neither builder-addressed); list stays at cap 20.
 - This tick: board unchanged at 1,492 (0 new comments, 0 relayed; naya2_to_builder stays at cap 20). Tip ec6d0636 -> bead0651 via single routine living-map commit (HUB/MAP-STATE.json +10/-10, single parent); no merge in-window, breach log stays 121.
 - Board +2 accounted: Naya 5 nightly report (6590613347, 22:57Z: scoreboard claims Truth 5.0 -> 9.3 etc, all marked claim, not verified completions; no merge, no dispatch) + hourly accountability (6590653450, 23:00Z: 0 dispatched/finished, queue 1,253 flat 155th hour, tip verified unchanged since 18:34Z, 4 open all held, learning loop 22:37Z run skipped fresh read for the 4th straight run). 0 relayed to naya2_to_builder (routine status, none builder-addressed); list stays at cap 20. Tip steady at ec6d0636: no merge, no direct push in-window (tip unchanged, merge watch skipped).
@@ -68,7 +69,7 @@
 | SELF | - | - | - |
 | LAW | - | - | - |
 | ACT | - | - | - |
-| KNOW | - | - | - |
+| KNOW | SN-0861 (VISION/MOTHER-NET) landed on main via intelligence-door direct write 6d06caa4 (+51, additive-only) | - | - |
 | PROVE | - | - | - |
 | CONNECT | Domain move #3155 merged (103 files, 874 occurrences .live -> .app); identity-transfer design verified (6587300858); .app mirror verified for listed routes (6587982909) | .app remaining seams (/about redirect, /joinus target, /pi 503 rows leg); identity-transfer decision (Shawn's hand, §5 7 items) then implementation (Nitro, different-seat verify); workflow health-target fix; subdomain DNS; Factory registry drift | .app remaining-seam evidence (/about, /joinus, /pi) |
 | VERIFY | Breach #121 board-numbered with exact-head evidence; auditor regression recorded | Adjudication of #3155 at merged head; registry-drift disposition | Classify failed checks against baseline; bounded repair routing |
