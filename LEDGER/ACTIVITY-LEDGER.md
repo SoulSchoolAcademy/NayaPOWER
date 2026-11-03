@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-03 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-03 20:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -30300,6 +30300,18 @@ _Last updated: 2026-11-03 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0666 lane 1: jitter-probe slice -> HOLD, compute-hypothesis falsified
 
 **Evidence:** Verified: probe JSON scratch/t0666-lane1/jitter-probe-t0666.json exists; characterization auto-retrieval/jitter-probe-characterization-t0666.md exists. Receipt honors the watch-for (no drill into load>3). Score 8.5; why not 9.5: noisy-window probes only (59.4% at load~5.1, no quiet anchor), a slice of the brief's full DoD (drill re-proof still owed
+
+### ✅ 20261103-1108 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-03 11:08 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): receipt's 31 named briefs match brief-queue/brief-*.md on disk exactly (31/31, no diffs either way, verified by set comparison); refusal breakdown sums correctly (29 exit-7 + 2 barred = 31; 29 '(7)' and 2 '(barred)' markers in receipt text); both barred
+
+### ✅ 20261103-1005 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall run 2026-11-03 10:05 PST: full-queue claim evaluation, 0 claimed, 31 blocked
+
+**Evidence:** VERIFIED this tick on live bytes (fresh window; no prior Team Naya Scorer row for this receipt): receipt's 31 named briefs match brief-queue/brief-*.md on disk exactly (31/31, no diffs either way); same 31-brief set as the 08:59 PST stall receipt, so the claimed NONE delta checks out; both barred briefs exist on disk; refusal split 29 exit-7 + 2 ba
 
 ### ✅ 20261103-0859 — Team executor, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
