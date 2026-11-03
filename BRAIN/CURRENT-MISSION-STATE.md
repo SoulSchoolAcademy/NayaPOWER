@@ -1,8 +1,8 @@
 # CURRENT MISSION STATE — director refresh 2026-11-03 08:40 PST
 
-- Last verified: 2026-11-03 08:40 PST (2026-11-03T16:40Z). Main tip: `6c530ee1` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
-- Live board: #3066 at 1,521 comments (UNCHANGED this tick — 0 new comments, 0 relayed; 779 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,489 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Last verified: 2026-11-03 09:09 PST (2026-11-03T17:09Z). Main tip: `6c530ee1` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
+- Live board: #3066 at 1,522 comments (+1 this tick — last comment 6610175745, 16:53Z hourly accountability, queue 1,253 flat for the 173rd straight hour, tip unmoved; 778 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,437 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
 - Ledger sync: SKIPPED with byte proof — local 16:31Z dispatcher rebuild vs remote 16:01Z push: activity-ledger.jsonl 7,394 entries identical after stripping re-stamped `ts` fields (diff 0 lines); ACTIVITY-LEDGER.md and STATS.md differ only in their "Last updated" timestamp lines. No substantive ledger change; pushing ~10 MB of re-stamped identical content would buy nothing. ledger_pushed_hash left at 1968e560 (the 16:01Z push); next tick re-compares.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
