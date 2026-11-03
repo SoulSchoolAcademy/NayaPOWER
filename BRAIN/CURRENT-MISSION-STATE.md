@@ -1,11 +1,11 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 13:38 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 14:08 PST
 
-- Last verified: 2026-11-03 13:38 PST (2026-11-03T21:38Z). Main tip: `23fd5aab` (MOVED by merges #3156 + #3157; breach log now 123).
-- Live board: #3066 at 1,535 comments (new: 6615533135, 21:11Z hourly accountability; 765 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,477 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: PUSHED 3 changed files (byte-compared via git protocol against branch) — ACTIVITY-LEDGER.md (commit 179b27da), activity-ledger.jsonl (519720d9), STATS.md (54cf585e): dispatcher rebuild 21:41Z adds 1 scorer entry (20261103-1316 gate-stall run 13:13 PST, 0 claimed / 31 blocked; totals 7391->7392, verified 7324->7325) + Last-updated re-stamps. Protocol, nodes, NC-001 identical, skipped. ledger_pushed_hash now matches local.
+- Last verified: 2026-11-03 14:08 PST (2026-11-03T22:08Z). Main tip: `23fd5aab` (UNCHANGED; breach log stays 123).
+- Live board: #3066 at 1,537 comments (new: 6616141166 breach record #122/#123, 6616492784 Verity hourly 21:53Z — queue flat 178th hour, cap-blocked streak 120 waves; 763 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,413 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: PUSHED 3 changed files (byte-compared via git protocol against branch) — ACTIVITY-LEDGER.md, activity-ledger.jsonl, STATS.md: dispatcher rebuild 22:01Z. Protocol, nodes, NC-001 identical, skipped.
 
-## ALERT — MERGE-RECEIPT BREACHES #122 + #123 (surfaced this tick, adjudication owed)
+## ALERT — MERGE-RECEIPT BREACHES #122 + #123 (surfaced 13:38 PST tick, adjudication owed)
 
 - BREACH #122: PR #3156 "docs(brain): learning event 2026-11-02" merged 2026-11-03T21:23:37Z
   (merge commit `72fef1a4`, head `883d492b`). NO 3-pass show-your-work receipt in the PR body;
@@ -134,7 +134,7 @@
 - No merged PR in-window (newest merged #3155 at 2026-11-02T18:34:12Z predates the window);
   breach log stays 121.
 
-## TOP-10 (re-anchored to 23fd5aab, board 1535)
+## TOP-10 (re-anchored to 23fd5aab, board 1537)
 1. Breaches #122/#123 (new: #3156/#3157 merged against their own scorecard holds, no 3-pass receipt) + #121 + #119/#120 + #118 + #117 + #102-#116 repair + SN-1905 + SN-0843/0844 collision cures + SN-1908 adjudication
 2. Direct-push disposition — NEW 12-commit NIAS/showcase burst to f9d21cab (generator code + template + 4 showcase pages + redeploy trigger, no receipt — accept vs receipted-PR ruling owed) + deploy-pipe batch to c5915f3b (new workflow file + nayanet.app worker/wrangler source, no receipt — accept vs receipted-PR ruling owed) + routine Living Map tick to 6c530ee1 (map-state only, no disposition question beyond the standing channel ruling) + 1-commit NIAS briefing add to 15e45b4b + 13-commit NIAS/DNA burst to e5ae6e69 (accept vs receipted-PR ruling owed) + 7823dcb2 nayanet-app/index.html source restore + prior classes + builder re-proofs at tip + SN-2043 + SN-0858/0859/0860/0861 + SN-0843/0844 mirror gap (now six) + SN-1906 vanish + 0038 tongues
 3. Post-merge reds at ec6d0636 + Factory registry drift (personal.html vs templates-registry.json)
