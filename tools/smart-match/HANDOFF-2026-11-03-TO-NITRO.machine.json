@@ -1,1 +1,212 @@
-{"anchor":{"main_tip":"3397e52f738fa3d1b8b74497444d40dea65f6f38","repo":"SoulSchoolAcademy/NayaPOWER","verified_via":"gh-app-api contents API / git blobs at tip"},"artifact":"automatch-handoff-to-nitro","auto_organization":{"built_piece":"tools/welcome-engine/categorize.py","design_sources":["SN-0845","HUB/NAYANET-PATH-TO-TEN-2026-10-27.HUMAN.md","HUB/NAYANET-PATH-TO-TEN-2026-10-27.AI.md"],"gate_precision":{"correct":661,"percent":99.1,"total":667},"privacy_rule":"visibility != public => refused before scoring","state":"proven_unlanded"},"bullseye":{"source":"BRAIN/10-INTERFACES/ALIGNMENT-MASTER-20261030.md §6 item 23","status_line":"Engine built, lane-proven 9.5; production switch-on awaits Shawn's serving-chain ruling."},"date":"2026-11-03","directed_by":"shawn","engine":{"blob":"92ac6ffa2326f40cf3e75876bc553018fda0f037","bytes":14424,"concept_taxonomy":["MAKING","SHIPPING","PROVING","CONNECTING","SPEAKING","TALKING","THINKING","CLEARING","GUIDING","DECIDING","PUBLISHING","PEOPLE"],"idf_mode_default":"off","input_fields":["topics","goals","offers","needs","wants"],"lines":318,"output_contract":["score","rank","signals","surface","parts","reasons","signal_coverage_percent","calibrated"],"path":"tools/welcome-engine/smart_match.py","percent_formula":"round(100 * weighted_sum)","percent_semantics":"The weighted share of DECLARED signals that align between two profiles. Not a probability, not a judgment of worth.","reasons_required":true,"surface_rule":">=2 independent signals","value_rule":"verified record {state: VERIFIED|FINAL, value 0..1} adjusts rank by (0.9 + 0.1*v); never moves percent","version":"1.5","weights":{"goals":0.25,"offers_needs":0.2,"topics":0.4,"wants":0.15}},"from":"naya-resolve","gates":{"production_switch_on":"shawn (serving-chain ruling)","sql_deploy":"shawn-gated production step"},"open_prs_mentioning_automatch":0,"ownership":{"assigned":"2026-10-27","auto_organization":"naya-resolve","automatch":"naya-resolve","early_scorecards":"naya-power (v1 5.5, v1.1 7.0, v1.2 7.5)","smart_search":"naya-power","system_design":"naya-verity (SN-0845, ruled by Shawn 2026-10-24)"},"pi_rows":[{"item_key":"resolve-automatch-buildable-complete","owner":"naya-resolve","state":"done_proven"},{"item_key":"14q-smart-match-sql-deploy","owner":"naya-resolve","state":"queued"},{"item_key":"automatch-onboarding-sync","owner":"naya-resolve","state":"queued"},{"item_key":"auto-organization-20261027","owner":"naya-resolve","state":"queued"}],"proof":{"calibration_weights_check":"12 right / 0 wrong","different_seat_score":9.5,"engine_tests_at_current_tip":"not_run_this_pass","golden_set":"12/12","hardening_suite":"69 passed","holdout":"20/20 (synthetic)","index_identity":"1000/1000","parity_python_sql":"79 = 79 (per PATH-TO-TEN 2026-10-27; not re-run 2026-11-03)","test_smart_match":"9/9","test_welcome_engine":"14/14"},"sql_twin":{"bytes":10023,"deployed":false,"entry_point":"public.smart_match(a jsonb, b jsonb, value_b numeric)","functions":["sm_stopwords","sm_terms","sm_stem","sm_words","sm_sig_words","sm_terms_content","sm_concepts","sm_coeff","sm_family","sm_cross","smart_match"],"migration_applied":"unknown","migration_path":"supabase/migrations/20261025040000_smart_match_v1_4.sql","path":"tools/smart-match/smart_match_v1_4.sql"},"state_of_truth":{"designed_not_proven":["real-citizen calibration","full Smart Tabs build","SQL/Python runtime equivalence (static audit only)","consent enforcement (Tree walk unmerged)"],"not_live":["sql twin not deployed","live derivation off","citizen-visible auto-intelligence = 0","organizer files nothing in the Hub"],"proven":["engine on main at tip","matching math (5 validations)","organizer filing gate 99.1% precision","B1-B7 done_proven in PI"]},"to":"naya-nitro","version":1,"version_clarification":"PI 'Smart Match v4.0' is a fill version, not an engine version. Engine version is 1.5."}
+{
+  "anchor": {
+    "main_tip": "1cf346bdceee419c2ba08539ee39f410d3702731",
+    "repo": "SoulSchoolAcademy/NayaPOWER",
+    "verified_via": "gh-app-api contents API / git blobs at tip"
+  },
+  "artifact": "automatch-handoff-to-nitro",
+  "auto_organization": {
+    "built_piece": "tools/welcome-engine/categorize.py",
+    "design_sources": [
+      "SN-0845",
+      "HUB/NAYANET-PATH-TO-TEN-2026-10-27.HUMAN.md",
+      "HUB/NAYANET-PATH-TO-TEN-2026-10-27.AI.md"
+    ],
+    "gate_precision": {
+      "correct": 661,
+      "percent": 99.1,
+      "total": 667
+    },
+    "privacy_rule": "visibility != public => refused before scoring",
+    "state": "proven_unlanded"
+  },
+  "bullseye": {
+    "source": "BRAIN/10-INTERFACES/ALIGNMENT-MASTER-20261030.md §6 item 23",
+    "status_line": "Engine built, lane-proven 9.5; production switch-on awaits Shawn's serving-chain ruling."
+  },
+  "date": "2026-11-03",
+  "directed_by": "shawn",
+  "engine": {
+    "blob": "92ac6ffa2326f40cf3e75876bc553018fda0f037",
+    "bytes": 14424,
+    "concept_taxonomy": [
+      "MAKING",
+      "SHIPPING",
+      "PROVING",
+      "CONNECTING",
+      "SPEAKING",
+      "TALKING",
+      "THINKING",
+      "CLEARING",
+      "GUIDING",
+      "DECIDING",
+      "PUBLISHING",
+      "PEOPLE"
+    ],
+    "idf_mode_default": "off",
+    "input_fields": [
+      "topics",
+      "goals",
+      "offers",
+      "needs",
+      "wants"
+    ],
+    "lines": 318,
+    "output_contract": [
+      "score",
+      "rank",
+      "signals",
+      "surface",
+      "parts",
+      "reasons",
+      "signal_coverage_percent",
+      "calibrated"
+    ],
+    "path": "tools/welcome-engine/smart_match.py",
+    "percent_formula": "round(100 * weighted_sum)",
+    "percent_semantics": "The weighted share of DECLARED signals that align between two profiles. Not a probability, not a judgment of worth.",
+    "reasons_required": true,
+    "surface_rule": ">=2 independent signals",
+    "value_rule": "verified record {state: VERIFIED|FINAL, value 0..1} adjusts rank by (0.9 + 0.1*v); never moves percent",
+    "version": "1.5",
+    "weights": {
+      "goals": 0.25,
+      "offers_needs": 0.2,
+      "topics": 0.4,
+      "wants": 0.15
+    }
+  },
+  "from": "naya-resolve",
+  "gates": {
+    "production_switch_on": "shawn (serving-chain ruling)",
+    "sql_deploy": "deploy proven already-done 2026-11-03; the row's live-match-proof half remains shawn-gated with the switch-on"
+  },
+  "open_prs_mentioning_automatch": {
+    "count": 0,
+    "as_of": "2026-11-03"
+  },
+  "ownership": {
+    "assigned": "2026-10-27",
+    "auto_organization": "naya-resolve",
+    "automatch": "naya-resolve",
+    "early_scorecards": "naya-power (v1 5.5, v1.1 7.0, v1.2 7.5)",
+    "smart_search": "naya-power",
+    "system_design": "naya-verity (SN-0845, ruled by Shawn 2026-10-24)"
+  },
+  "pi_rows": [
+    {
+      "item_key": "resolve-automatch-buildable-complete",
+      "owner": "naya-resolve",
+      "state": "done_proven"
+    },
+    {
+      "item_key": "14q-smart-match-sql-deploy",
+      "owner": "naya-resolve",
+      "state": "queued"
+    },
+    {
+      "item_key": "automatch-onboarding-sync",
+      "owner": "naya-resolve",
+      "state": "queued"
+    },
+    {
+      "item_key": "auto-organization-20261027",
+      "owner": "naya-resolve",
+      "state": "queued"
+    }
+  ],
+  "proof": {
+    "calibration_weights_check": "12 right / 0 wrong",
+    "different_seat_score": 9.5,
+    "engine_tests_at_current_tip": "149 passed / 0 failed at tip 1cf346bd (re-run 2026-11-03, all 33 welcome-engine files byte-verified against tip blobs)",
+    "golden_set": "12/12",
+    "hardening_suite": "69 passed",
+    "holdout": "20/20 (synthetic)",
+    "index_identity": "1000/1000",
+    "parity_python_sql": "79 = 79 (PATH-TO-TEN 2026-10-27) + parity tests green in the 2026-11-03 tip re-run + production runtime spot-proof (3 RPC probes agree with the contract)",
+    "test_smart_match": "9/9",
+    "test_welcome_engine": "14/14"
+  },
+  "sql_twin": {
+    "bytes": 10023,
+    "deployed": true,
+    "entry_point": "public.smart_match(a jsonb, b jsonb, value_b numeric)",
+    "functions": [
+      "sm_stopwords",
+      "sm_terms",
+      "sm_stem",
+      "sm_words",
+      "sm_sig_words",
+      "sm_terms_content",
+      "sm_concepts",
+      "sm_coeff",
+      "sm_family",
+      "sm_cross",
+      "smart_match"
+    ],
+    "migration_applied": true,
+    "migration_path": "supabase/migrations/20261025040000_smart_match_v1_4.sql",
+    "path": "tools/smart-match/smart_match_v1_4.sql",
+    "deployed_evidence": "Read-only RPC probes of public.smart_match in the production project, 2026-11-03: identical topics -> score 40 (0.40 weight), signals 1, surface false; offers/needs 'coaching' -> score 10 (0.20 x 0.5 symmetric average); disjoint topics -> 0. All contract-correct. Application date/route not in the lane record; the source header's 'NOT deployed' note is stale."
+  },
+  "state_of_truth": {
+    "designed_not_proven": [
+      "real-citizen calibration (owner naya-resolve; due within 7 days of the serving-chain ruling)",
+      "full Smart Tabs build",
+      "full 79-case parity executed against production functions (static checker green; 3 runtime probes agree)",
+      "consent enforcement (Tree walk unmerged)"
+    ],
+    "not_live": [
+      "live derivation off (no surface calls the function for citizens)",
+      "citizen-visible auto-intelligence = 0",
+      "organizer files nothing in the Hub"
+    ],
+    "proven": [
+      "engine on main at tip",
+      "matching math (5 validations)",
+      "organizer filing gate 99.1% precision",
+      "B1-B7 done_proven in PI",
+      "SQL twin deployed in production and answering (RPC-proven 2026-11-03)"
+    ]
+  },
+  "to": "naya-nitro",
+  "version": 2,
+  "version_clarification": "PI 'Smart Match v4.0' is a fill version, not an engine version. Engine version is 1.5.",
+  "amendment": {
+    "date": "2026-11-03",
+    "by": "naya-resolve",
+    "reason": "Nitro scored v1 8/9 CLEAR-WITH-FIXES (PR #3157 review 5757914623); fixes F1-F4 landed here. F2 produced a material correction: the SQL twin IS deployed in production (RPC-proven); v1's 'not deployed / unknown' is superseded.",
+    "fixes": [
+      "F1 all three queued PI rows are shawn-gated (human form)",
+      "F2 suite+parity re-run at tip 1cf346bd: 149/149; migration-applied resolved by production RPC probes",
+      "F3 point-in-time claims dated",
+      "F4 calibration owner + due rule named"
+    ]
+  },
+  "live_proof": {
+    "falsifiers": [
+      {
+        "id": "a",
+        "test": "a served surface returns a real match with % + reasons for a real citizen vector",
+        "state": "open"
+      },
+      {
+        "id": "b",
+        "test": "the SQL functions answer in production (deploy proof, not file presence)",
+        "state": "satisfied 2026-11-03 (3 read-only RPC probes, contract-correct)"
+      },
+      {
+        "id": "c",
+        "test": "the live claim holds across two consecutive checks",
+        "state": "open"
+      }
+    ],
+    "current_state": "engine proven; SQL deployed and answering; live citizen derivation OFF; citizen-visible auto-intelligence = 0",
+    "next_probe": "on Shawn's serving-chain ruling (the switch-on gate)"
+  },
+  "calibration": {
+    "owner": "naya-resolve",
+    "status": "awaiting_shawn_serving_chain_ruling",
+    "due": "within 7 days of the ruling, on the first real citizen cohort"
+  }
+}
