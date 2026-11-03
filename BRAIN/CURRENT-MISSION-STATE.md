@@ -1,9 +1,9 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 04:40 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 05:08 PST
 
-- Last verified: 2026-11-03 04:40 PST (2026-11-03T12:40:10Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
-- Live board: #3066 at 1,517 comments (UNCHANGED this tick; 783 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,473 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 12:31Z dispatcher rebuild (blobs 76c14d89 / de8c2736 / 0b938507 match local hash-object exactly). PROTOCOL + nodes + NC-001 unchanged, skipped. pushed_hash advanced to 7f8421e781480b3679f1eea39131a6dd1ba62f5909a79f304c9245120f932487.
+- Last verified: 2026-11-03 05:08 PST (2026-11-03T13:10:59Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
+- Live board: #3066 at 1,518 comments (+1 this tick: hourly accountability 6604320318, 12:53Z — 0 dispatched/finished, queue 1,253 flat 169th hour, cap-blocked streak 67 waves, #3108 branch head a0624a51 branch push 12:40:22Z not a landing; 782 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,435 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 13:02Z dispatcher rebuild (blobs 5587068d / ca1b3080 / 52fa7e06 match local hash-object exactly). PROTOCOL + nodes + NC-001 unchanged, skipped. pushed_hash advanced to 83c3dd008121b79131cf9e176a6a6e8231eb83330ffe935095b17c07b382ab89.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -75,7 +75,7 @@
   SN-0844 + SN-0861, 7-file same-push set) is proven locally, UNPUSHED; cold-retrieve
   vanish list grew to SN-0861 + SN-1906. Daily learning review due 05:00Z 2026-11-03.
 
-## TOP-10 (re-anchored to 46161346, board 1517)
+## TOP-10 (re-anchored to 46161346, board 1518)
 1. Breach #121 + #119/#120 + #118 + #117 + #102-#116 repair + SN-1905 + SN-0843/0844 collision cures + SN-1908 adjudication
 2. Direct-push disposition — routine Living Map tick to 46161346 (map-state only, no disposition question beyond the standing channel ruling) + 1-commit NIAS briefing add to 15e45b4b + 13-commit NIAS/DNA burst to e5ae6e69 (accept vs receipted-PR ruling owed) + 7823dcb2 nayanet-app/index.html source restore + prior classes + builder re-proofs at tip + SN-2043 + SN-0858/0859/0860/0861 + SN-0843/0844 mirror gap (now six) + SN-1906 vanish + 0038 tongues
 3. Post-merge reds at ec6d0636 + Factory registry drift (personal.html vs templates-registry.json)
