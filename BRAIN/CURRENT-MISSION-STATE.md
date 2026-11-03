@@ -1,9 +1,24 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 14:38 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 15:11 PST
 
-- Last verified: 2026-11-03 14:38 PST (2026-11-03T22:38Z). Main tip: `3180a8c9` (MOVED by 3 direct pushes, 0 merges; breach log stays 123; new DIRECT PUSH alert below).
-- Live board: #3066 at 1,538 comments (new: 6617223218 Nitro vision broadcast 'One Ultimate App, Different Doors' — claimed Shawn vision, carried as claim, not verified Shawn bytes; 762 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,473 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: PUSHED 3 changed files (byte-compared against branch) — ACTIVITY-LEDGER.md, activity-ledger.jsonl, STATS.md: dispatcher rebuild 22:32Z. Protocol, nodes, NC-001 identical, skipped.
+- Last verified: 2026-11-03 15:11 PST (2026-11-03T23:11:45Z). Main tip: `d4e1ac23` (MOVED by 5 direct pushes, 0 merges; breach log stays 123; new DIRECT PUSH alert below).
+- Live board: #3066 at 1,544 comments (new: 6617447926 Resolve reconciliation closing #3159 unmerged + 6617624433 Phi CLEAR re-scores #3160/#3161; 756 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,480 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: ACTIVITY-LEDGER.md want=2b88a6d8 got=2b88a6d8 VERIFIED; activity-ledger.jsonl want=0a3f1d5d got=0a3f1d5d VERIFIED; STATS.md want=82485651 got=82485651 VERIFIED; NAYANET-PROTOCOL-V1.md identical-skipped; nodes.jsonl identical-skipped; contracts/NC-001.json identical-skipped.
+
+## ALERT — DIRECT PUSH Smart Box + Naya World welcome (disposition owed, NOT a receipt breach)
+
+- Compare-verified via App identity: 3180a8c9 -> d4e1ac23, ahead_by 5, behind_by 0,
+  all single-parent, all author nayapower-lane-agent[bot] (shared/multi-tenant login —
+  seat unattributable from login alone), 2026-11-03T22:40–22:48Z.
+- 5f11c06d Smart Box v1 building blocks (2902 rules harvested whole from living pages).
+  86514a7b Smart Box v1 law (style blocks portable, living blocks whole pages).
+  1cf346bd Smart Box v1 machine registry of the building blocks.
+  7cc94bc8 Naya World welcome: the front door to the One App (Smart Box blocks + living doors).
+  d4e1ac23 Naya World welcome (composable): references smart-box.css.
+- DIRECT PUSH ALERT: app/content code on main with no PR/receipt/review — fourth
+  code-class direct landing today (after deploy-pipe, showcase generator, NIAS v5).
+  Disposition owed (accept vs receipted PR), alongside those standing questions.
+  NOT a receipt breach (no merge involved); breach log stays 123.
 
 ## ALERT — DIRECT PUSH NIAS v5 + SN-0874 (disposition owed, NOT a receipt breach)
 
