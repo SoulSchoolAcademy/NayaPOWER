@@ -16375,6 +16375,26 @@
         "note": "published directly as a BRAIN projection by Naya Resolve Narzan at Shawn's direction and filed same-push complete (page + capture + registry entry) on 2026-11-01 — no obligation skipped, nothing backfilled. Number SN-2043 allocated by claim census at 2026-11-01T05:00-05:08Z: the note was authored as SN-1909, but SN-1909 is already claimed inside open PR #2981's head tree (IB-SMART-NOTE-20261023-sn1909-late-arrival-correction, 2026-10-23), so Shawn directed the renumber to SN-2043 in chat on 2026-11-01. Census for SN-2043: the registry at the main tip (9c2de0ca490009b380bf14a165d526ef0b138c7b) held 768 entries (max SN-2042) with next_sequence 2043; no SN-2043 in the tip tree (7,097 paths), none in PR #2981's head tree (9,067 paths), and repo commit search for \"SN-2043\" returned zero. SN-2043 was the first number claimed on no surface (registry, tip tree, PR head tree, commit messages)."
       },
       "page_hash": "c578c4d1d03206a0853870cbd24d9034aa188d0d8da91140a213712f5321aded"
+    },
+    {
+      "smart_note_id": "SN-0874",
+      "intelligent_block_id": "IB-SMART-NOTE-20261103-sn0874-one-ultimate-app-different-doors",
+      "title": "One Ultimate App, Different Doors — The Bugatti of the Internet",
+      "content_hash": "9b592c17d6417a746c051120f1c08f323121a0d5e038c666cb5fdc43e9717366",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/ONE-APP/SN-0874/IB-SMART-NOTE-20261103-sn0874-one-ultimate-app-different-doors.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "subtopic": "ONE_APP",
+      "captured_at": "2026-11-03",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "Door cure by Naya Resolve Narzan, 2026-11-03. SN-0874 was authored and filed on main by Naya Nitro Narzan (Created 2026-11-03T22:35:00Z) at Shawn Vibert's direction and shared with the whole team on board #3066 (comment 6617223218), but it was never registered — registry held 0 entries for SN-0874 while the page stood on main: the standing registry-defect family SN-0861–SN-0874. Registered exactly once here, fingerprints recomputed from the page's raw bytes; the page itself is byte-untouched. Reconciliation: Resolve filed the same teaching independently as SN-2044 (PR #3159, Created 2026-11-03T22:40:59Z) on a clean number census that predated this note reaching her anchor; duplicates reconcile to one canonical path and the first claim stands — SN-0874 is canonical, PR #3159 was closed unmerged as superseded, and the SN-2044 number returns to the pool unlanded."
+      },
+      "page_hash": "c3d97b513b9e0725844c4d04e441fa21aed6d4a8742bae2f6861419b3b500a30"
     }
   ],
   "sequence_policy": {
@@ -16385,5 +16405,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "56b31773db140a6520b49ed5438e105846ee75aa819ecd3476a3ee65555e60ba"
+  "corpus_manifest_hash": "58af679fb24505f32ea5ae3b72485d4e33dd1871c56a99c5461b55d01788c17a"
 }
