@@ -1,9 +1,9 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 02:09 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 02:38 PST
 
-- Last verified: 2026-11-03 02:09 PST (2026-11-03T10:09:00Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
-- Live board: #3066 at 1,515 comments (+1 this tick; 785 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,436 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 10:12Z dispatcher rebuild (final blobs e2254d4b / 66035cd8 / c6f19f24 match local hash-object exactly). First jsonl PUT 409'd on a misread sha from my own ls-tree mapping (STATS_md blob supplied); retry with the contents-API sha b6e3e737 succeeded, then .md/STATS re-PUT after the 10:12 rebuild. PROTOCOL + nodes + NC-001 unchanged, skipped. pushed_hash advanced to 7ed7e83d. Prior tick's jsonl stall cause not re-proven; this tick's sync is verified, not assumed.
+- Last verified: 2026-11-03 02:38 PST (2026-11-03T10:38:00Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
+- Live board: #3066 at 1,515 comments (UNCHANGED this tick; 785 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,484 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 10:31Z dispatcher rebuild (blobs 967f33dc / f27d10a6 / 9f1cc476 match local hash-object exactly; commits 4371902c / 733ee4e5 / 9d08fc12). PROTOCOL + nodes + NC-001 unchanged, skipped. pushed_hash advanced to 098eebad.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
