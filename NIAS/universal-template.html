@@ -439,7 +439,7 @@ body[data-pagetype="membership"] [data-show-for~="membership"] { display: block;
 
 <!-- ═══════════ HERO ═══════════ -->
 <header class="naya-hero" style="--hero-color: {{hero_color}};" data-naya-bind="hero">
-  {{#if cover}}<div class="cover" style="background-image: url('{{cover}}');" data-naya-bind="hero-cover"></div>{{/if}}
+  {{cover_div}}
   <div class="hero-glow"></div>
   <h1 data-naya-bind="hero-name">{{name}}</h1>
   <div class="naya-vision" data-naya-bind="hero-vision">{{vision}}</div>
@@ -591,7 +591,7 @@ body[data-pagetype="membership"] [data-show-for~="membership"] { display: block;
 </section>
 
 <!-- ═══════════ CUSTOM SECTIONS ═══════════ -->
-{{sections}}
+{{custom_sections}}
 
 <!-- ═══════════ PERSONAL ONLY ═══════════ -->
 <section class="naya-section" data-show-for="personal" style="--section-color: var(--naya-purple);">
