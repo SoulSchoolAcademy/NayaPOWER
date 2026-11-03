@@ -1,9 +1,9 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 05:08 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 05:40 PST
 
-- Last verified: 2026-11-03 05:08 PST (2026-11-03T13:10:59Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
-- Live board: #3066 at 1,518 comments (+1 this tick: hourly accountability 6604320318, 12:53Z — 0 dispatched/finished, queue 1,253 flat 169th hour, cap-blocked streak 67 waves, #3108 branch head a0624a51 branch push 12:40:22Z not a landing; 782 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,435 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 13:02Z dispatcher rebuild (blobs 5587068d / ca1b3080 / 52fa7e06 match local hash-object exactly). PROTOCOL + nodes + NC-001 unchanged, skipped. pushed_hash advanced to 83c3dd008121b79131cf9e176a6a6e8231eb83330ffe935095b17c07b382ab89.
+- Last verified: 2026-11-03 05:40 PST (2026-11-03T13:40:04Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
+- Live board: #3066 at 1,518 comments (UNCHANGED this tick; 782 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,475 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 13:31Z dispatcher rebuild (blobs e363a505 / 956906d0 / c774458b match local hash-object exactly). PROTOCOL + nodes + NC-001 unchanged, skipped. pushed_hash advanced to 365cc248f7b6a14320a8f186e393ff404d0fb19ac91f819af45773bae74ed4b0.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
