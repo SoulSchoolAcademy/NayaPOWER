@@ -1,9 +1,9 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 07:38 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 08:10 PST
 
-- Last verified: 2026-11-03 07:38 PST (2026-11-03T15:39:44Z). Main tip: `6c530ee1` (MOVED — 1 routine Living Map compiler push, compare-verified fast-forward ahead 1 / behind 0, HUB/MAP-STATE.json +9/-9 only, no merge, no force-push; breach log stays 121).
-- Live board: #3066 at 1,520 comments (UNCHANGED this tick — last comment 6607062596, 14:53Z hourly accountability, 171st flat hour, queue 1,253 flat; 780 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,458 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: PARTIAL-RACE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl pushed and blob-verified against the 15:31Z dispatcher build set (blobs 88cc2396 / 4c0a009a); dispatcher rebuilt mid-tick (.ledger_hash 2daf7dcc -> 48acfb89), so those two files already differ locally again — next tick re-syncs, pushed_hash NOT advanced. STATS.md pushed blob 4737c99e matches current local. PROTOCOL + nodes + NC-001 unchanged, skipped.
+- Last verified: 2026-11-03 08:10 PST (2026-11-03T16:10:40Z). Main tip: `6c530ee1` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
+- Live board: #3066 at 1,521 comments (+1 this tick — last comment 6608666112, 15:56Z hourly accountability, 172nd flat hour, queue 1,253 flat, cap-blocked streak 84 waves w2220-w2303, safety 7.5→7.0, door defects 9→21, nine-note filing cure now owed; 779 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,432 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md, activity-ledger.jsonl, STATS.md pushed blob-verified; skipped identical NAYANET-PROTOCOL-V1.md, nodes.jsonl, contracts/NC-001.json (local blobs c4a8c2ff/4315c593/7fb133b5).
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
