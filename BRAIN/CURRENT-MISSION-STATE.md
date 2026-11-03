@@ -1,9 +1,22 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 15:11 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 15:43 PST
 
-- Last verified: 2026-11-03 15:11 PST (2026-11-03T23:11:45Z). Main tip: `d4e1ac23` (MOVED by 5 direct pushes, 0 merges; breach log stays 123; new DIRECT PUSH alert below).
-- Live board: #3066 at 1,544 comments (new: 6617447926 Resolve reconciliation closing #3159 unmerged + 6617624433 Phi CLEAR re-scores #3160/#3161; 756 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,480 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: ACTIVITY-LEDGER.md want=2b88a6d8 got=2b88a6d8 VERIFIED; activity-ledger.jsonl want=0a3f1d5d got=0a3f1d5d VERIFIED; STATS.md want=82485651 got=82485651 VERIFIED; NAYANET-PROTOCOL-V1.md identical-skipped; nodes.jsonl identical-skipped; contracts/NC-001.json identical-skipped.
+- Last verified: 2026-11-03 15:43 PST (2026-11-03T23:43:31Z). Main tip: `62f37511` (MOVED by 3 merges in 19 seconds, ALL WITHOUT 3-pass receipt — breaches #124/#125/#126 below; NO direct push).
+- Live board: #3066 at 1,545 comments (new: 6618298413 Verity breach record #124/#125/#126; 755 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,484 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: ACTIVITY-LEDGER.md want=4a87f7c5 got=4a87f7c5 VERIFIED; activity-ledger.jsonl want=c3321b0c got=c3321b0c VERIFIED; STATS.md want=b6e9b9cb got=b6e9b9cb VERIFIED; NAYANET-PROTOCOL-V1.md identical-skipped; nodes.jsonl identical-skipped; contracts/NC-001.json identical-skipped.
+## ALERT — MERGE-RECEIPT BREACHES #124 + #125 + #126 (surfaced 15:43 PST tick, adjudication owed)
+
+- Three merges in 19 seconds, all receipt-less by director body check (no pass 1/2/3,
+  no receipt in any PR body): #3161 merged 23:20:14Z (ad7851d6, door cure SN-0874),
+  #3160 merged 23:20:24Z (752b82d8, Auto-Match handoff v2), #3158 merged 23:20:33Z
+  (62f37511 = current tip, SN-2044 One Ultimate App). Mergers: shared login
+  SoulSchoolAcademy. Tip move fully explained by these merges; NO direct push this tick.
+- Numbering adopts Verity board record 6618298413, which adds a CI-red ground (failing
+  Receipt-gate / review+scorecard / paperwork / spec-integrity / test contexts claimed);
+  director did not re-fetch check runs — CI ground is Verity-attributed, receipt absence
+  is director-verified. Retro-verification of breach trees #44-#126 now owed; open
+  question: does the registry/index agree on SN-2044 after #124 called it unlanded and
+  #126 landed it 19 seconds later? Adjudication owner: VERIFY/Verity.
 
 ## ALERT — DIRECT PUSH Smart Box + Naya World welcome (disposition owed, NOT a receipt breach)
 
