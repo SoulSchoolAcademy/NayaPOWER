@@ -1,8 +1,8 @@
-# CURRENT MISSION STATE — director refresh 2026-11-02 18:41 PST
+# CURRENT MISSION STATE — director refresh 2026-11-02 19:12 PST
 
-- Last verified: 2026-11-02 18:41 PST (2026-11-03T02:41:17Z). Main tip: `7823dcb2` (unchanged this tick; direct-push disposition still owed; breach log stays 121).
-- Live board: #3066 at 1,499 comments (+1 this tick; 801 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12452 remaining at tick check. Branch count via git protocol: 999.
+- Last verified: 2026-11-02 19:12 PST (2026-11-03T03:12:10Z). Main tip: `e5ae6e69` (moved this tick by 13 direct NIAS/DNA commits, no merge; direct-push disposition still owed; breach log stays 121).
+- Live board: #3066 at 1,500 comments (+1 this tick; 800 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12498 remaining at tick check. Branch count via git protocol: 999.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -33,9 +33,27 @@
 - 02:24Z follow-up (6593813647, Nitro deploy lane): file-byte check at tip — nutshell 20px CONFIRMED; voice NOT removed (speechSynthesis x9, playVoice x2); obsidian lock PARTIAL (old tint #0B0D12 still present once); canonical index-2.html untouched, still old markers; no deploy occurred.
 - No merged PR in-window (newest merged #3155 predates the window); breach log stays 121.
 
-## TOP-10 (re-anchored to 7823dcb2, board 1499)
+## ALERT — DIRECT PUSH BURST e5ae6e69 (13 commits, disposition owed, NOT a receipt breach)
+- Compare-verified via App identity: 7823dcb2 -> e5ae6e69, ahead_by 13, behind_by 0, all
+  author nayapower-lane-agent[bot], 2026-11-03T02:59-03:07Z: NIAS/DNA delivery — DNA lock
+  (2 commits), NIAS machine files (NAYA-DNA-LOCKED.md, dna-audit, generate-page.py,
+  naya-dna.css, page-type-configs.json, phase1/phase2 docs, pi-page-schema.json,
+  universal-template.html, delivery doc), tip commit e5ae6e69 "NIAS expanded —
+  NIAS-EXPANDED.md (18 page types)". 13 files across NIAS/ + BRAIN/10-INTERFACES/DNA/.
+- No merged PR in-window (newest merged #3155 at 2026-11-02T18:34:12Z predates the window);
+  breach log stays 121. These are direct pushes, not merges, so no receipt check is owed —
+  but the route bypassed PR/receipt/review gates, same class as 7823dcb2. Disposition owed:
+  accept as delivered NIAS/DNA source or route through a receipted PR. Served Hub / NIAS
+  deployment is NOT implied by landing on main.
+- New board evidence this tick (6594252057, Verity hourly 02:53Z): queue 1,253 flat 159th
+  hour; LEARN battery held at tip 7823dcb2 but door check regressed 7 -> 9 defects across
+  747 pages because SN-0861 landed without capture or registry; a 3-note cure (SN-0843 +
+  SN-0844 + SN-0861, 7-file same-push set) is proven locally, UNPUSHED; cold-retrieve
+  vanish list grew to SN-0861 + SN-1906. Daily learning review due 05:00Z 2026-11-03.
+
+## TOP-10 (re-anchored to e5ae6e69, board 1500)
 1. Breach #121 + #119/#120 + #118 + #117 + #102-#116 repair + SN-1905 + SN-0843/0844 collision cures + SN-1908 adjudication
-2. Direct-push disposition — NEW 7823dcb2 nayanet-app/index.html source restore (accept vs receipted-PR ruling owed) + prior classes + builder re-proofs at tip + SN-2043 + SN-0858/0859/0860/0861 + SN-0843/0844 mirror gap (now six) + 0038 tongues
+2. Direct-push disposition — NEW 13-commit NIAS/DNA burst to e5ae6e69 (accept vs receipted-PR ruling owed) + 7823dcb2 nayanet-app/index.html source restore + prior classes + builder re-proofs at tip + SN-2043 + SN-0858/0859/0860/0861 + SN-0843/0844 mirror gap (now six) + SN-1906 vanish + 0038 tongues
 3. Post-merge reds at ec6d0636 + Factory registry drift (personal.html vs templates-registry.json)
 4. Alignment program execution
 5. Emergency receipts
@@ -43,9 +61,10 @@
 7. Serving chain + HUB BUILD CURRENCY: served Hub still OLD build (6593208585); newest-build source now on main as nayanet-app/index.html (7823dcb2) but NOT deployed — deploy is Shawn's hand; Auto-Match tap + .app mirror verified 20:42Z for listed routes (6587982909); remaining /about redirect, /joinus target, /pi 503 rows leg + identity-transfer DECISION owed to Shawn's hand (design verified 6587300858)
 8. PI one-shot readiness
 9. /PI overwrite/inventory/disclosure + marquee
-10. Owner asks carried + queue 1,253 flat (158th hour, last evidenced 01:53Z via 6593398666) + nightly reservoir print 6592331175 (13D trigger, 4th night, ratio 1.02, no new gate move) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121) + protocol-watchdog failure 6590041195 (VERIFY inspection owed)
+10. Owner asks carried + queue 1,253 flat (159th hour, last evidenced 02:53Z via 6594252057; door defects 7->9, 3-note cure proven locally unpushed; daily learning review due 05:00Z 2026-11-03) + nightly reservoir print 6592331175 (13D trigger, 4th night, ratio 1.02, no new gate move) + gh-api 401 reconnect (App identity used this tick) + SN-0834 deletion (Shawn's word) + capped-lane ruling + specialty-feed successors missing + safety-screen cause + weekly synthesis overdue + learning filing cure + value-ratio census 545:1 (1 verified outcome = domain ruling; 4 merges all breaches #118-#121) + protocol-watchdog failure 6590041195 (VERIFY inspection owed)
 
 ## DONE WITH PROOF
+- This tick: board +1 (1,499 -> 1,500; id 6594252057, Verity hourly accountability 02:53Z: 0 dispatched/finished, queue 1,253 flat 159th hour, tip 7823dcb2 at report time, LEARN door defects 7->9 on SN-0861 gap, 3-note cure proven locally unpushed, cold-retrieve vanish SN-0861 + SN-1906, daily learning review due 05:00Z 2026-11-03). Tip 7823dcb2 -> e5ae6e69 via 13 direct commits (compare-verified ahead_by 13, behind_by 0): NIAS/DNA delivery, author nayapower-lane-agent[bot]. Classification: DIRECT PUSH ALERT (not intelligence-door/Living Map/mission-snapshot) — surfaced, disposition owed. 0 relayed to naya2_to_builder (hourly accountability, no builder-addressed ask; list stays at cap 20). No merge in-window; breach log stays 121.
 - This tick: board +3 (1,495 -> 1,498; ids 6593208585 Resolve hub-regression ask, 6593343445 Nitro deploy-lane answer, 6593398666 Verity hourly accountability). Tip 6d06caa4 -> 7823dcb2 via ONE commit (compare-verified ahead_by 1, behind_by 0, single parent): nayanet-app/index.html ADDED +8,395/-0, author nayapower-lane-agent[bot]. Classification: DIRECT PUSH ALERT (app source, not intelligence-door/Living Map/mission-snapshot) — surfaced, disposition owed; served Hub still old until a Shawn-hand deploy. 0 relayed to naya2_to_builder (no relay-rule match; list stays at cap 20). No merge in-window; breach log stays 121.
 - This tick: board unchanged at 1,495 (0 new comments, 0 relayed; naya2_to_builder stays at cap 20). Tip bead0651 -> 6d06caa4 via ONE commit (compare-verified ahead_by 1, behind_by 0, single parent): SN-0861 "Nikola Naya: The Mother Net Is the Supercharger" (VISION/MOTHER-NET), sole file BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/VISION/MOTHER-NET/SN-0861/IB-SMART-NOTE-20261103-sn0861-nikola-naya-the-mother-net.md +51/-0, author nayapower-lane-agent[bot]. Classification: intelligence-door direct write (Smart Notes land on main by direct write per standing law) — additive-only, no code, no merge, NOT a receipt breach; breach log stays 121. No merge in-window (newest merged PR #3155 predates the window).
 - This tick: board +2, tip unchanged at bead0651 (no merge, no direct push in-window; merge watch skipped; breach log stays 121). New: hourly accountability 6592321770 (23:53Z: 0 dispatched/finished, queue 1,253 flat 156th hour, tip bead0651, open census 4 all held, #3108 pin da146609 branch push not a merge; five-note unmirrored set unchanged; daily learning review due 05:00Z 2026-11-03) + Nitro nightly reservoir print 6592331175 (00:45Z: created:finished 54:53 ≈ 1.02 over 7 days, 13D trigger 4th consecutive night; 4 open PRs same set, no lane over 5-PR cap, oldest touched #3089 ~7.0 days, #3108 head 90da7f92 -> da146609 author-lane churn, tip static). 0 relayed to naya2_to_builder (routine hourly + Nitro governance print, neither builder-addressed); list stays at cap 20.
@@ -76,7 +95,7 @@
   retiring nayanet.live/identity.html; entrance-host cert page still prints SMART LINK
   resolve.nayanet.live. Note: the domain ruling itself remains bot/board text, NOT verified
   Shawn bytes. (Routing note 6586754703: already raised to Shawn in chat.)
-- Dispatcher queue: 1,253 items, flat for the 158th hour (last evidenced 01:53Z via 6593398666); executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
+- Dispatcher queue: 1,253 items, flat for the 159th hour (last evidenced 02:53Z via 6594252057); executor-side drain stall on capped lane feeds (#1713/#1714/#1715/#2471 at 2,500 comments, #2472 at 2,499).
 - Master directive #2601: HAND_EDIT_DETECTED on this tick too (known hand-edit persists) — lead reconciles; stale directive stands.
 
 ## TEAM STATUS ("-" = unknown, never invented)
