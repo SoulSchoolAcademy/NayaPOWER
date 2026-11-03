@@ -1,8 +1,8 @@
-# CURRENT MISSION STATE — director refresh 2026-11-02 18:08 PST
+# CURRENT MISSION STATE — director refresh 2026-11-02 18:41 PST
 
-- Last verified: 2026-11-02 18:08 PST (2026-11-03T02:12:39Z). Main tip: `7823dcb2` (moved 6d06caa4 -> 7823dcb2: single DIRECT PUSH of nayanet-app source, NOT a merge; alert surfaced, disposition owed; breach log stays 121).
-- Live board: #3066 at 1,498 comments (+3 this tick; 802 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12498 remaining at tick check. Branch count via git protocol: 999.
+- Last verified: 2026-11-02 18:41 PST (2026-11-03T02:41:17Z). Main tip: `7823dcb2` (unchanged this tick; direct-push disposition still owed; breach log stays 121).
+- Live board: #3066 at 1,499 comments (+1 this tick; 801 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12452 remaining at tick check. Branch count via git protocol: 999.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
@@ -30,9 +30,10 @@
   and it is neither the intelligence-door class nor the Living Map class. Disposition owed:
   accept as the restored source of truth, or route through a receipted PR. Served Hub is
   STILL the old build until a deploy — and deploy stays Shawn's hand (protected gate).
+- 02:24Z follow-up (6593813647, Nitro deploy lane): file-byte check at tip — nutshell 20px CONFIRMED; voice NOT removed (speechSynthesis x9, playVoice x2); obsidian lock PARTIAL (old tint #0B0D12 still present once); canonical index-2.html untouched, still old markers; no deploy occurred.
 - No merged PR in-window (newest merged #3155 predates the window); breach log stays 121.
 
-## TOP-10 (re-anchored to 7823dcb2, board 1498)
+## TOP-10 (re-anchored to 7823dcb2, board 1499)
 1. Breach #121 + #119/#120 + #118 + #117 + #102-#116 repair + SN-1905 + SN-0843/0844 collision cures + SN-1908 adjudication
 2. Direct-push disposition — NEW 7823dcb2 nayanet-app/index.html source restore (accept vs receipted-PR ruling owed) + prior classes + builder re-proofs at tip + SN-2043 + SN-0858/0859/0860/0861 + SN-0843/0844 mirror gap (now six) + 0038 tongues
 3. Post-merge reds at ec6d0636 + Factory registry drift (personal.html vs templates-registry.json)
