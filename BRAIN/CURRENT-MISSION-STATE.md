@@ -1,9 +1,9 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 05:40 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 06:10 PST
 
-- Last verified: 2026-11-03 05:40 PST (2026-11-03T13:40:04Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
-- Live board: #3066 at 1,518 comments (UNCHANGED this tick; 782 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,475 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 13:31Z dispatcher rebuild (blobs e363a505 / 956906d0 / c774458b match local hash-object exactly). PROTOCOL + nodes + NC-001 unchanged, skipped. pushed_hash advanced to 365cc248f7b6a14320a8f186e393ff404d0fb19ac91f819af45773bae74ed4b0.
+- Last verified: 2026-11-03 06:10 PST (2026-11-03T14:10:25Z). Main tip: `46161346` (UNCHANGED — ls-remote = shared-state; no merge, no direct push in-window; breach log stays 121).
+- Live board: #3066 at 1,519 comments (+1 this tick: hourly accountability 13:53Z, 170th flat hour; 781 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,438 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: Ledger sync COMPLETE this tick: ACTIVITY-LEDGER.md + activity-ledger.jsonl + STATS.md synced and blob-verified against the 14:01Z dispatcher rebuild (blobs 0a8fc55b / a02701b7 / e627dade match local hash-object exactly). PROTOCOL + nodes + NC-001 unchanged, skipped.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
