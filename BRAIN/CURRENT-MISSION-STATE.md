@@ -1,9 +1,29 @@
-# CURRENT MISSION STATE — director refresh 2026-11-03 14:08 PST
+# CURRENT MISSION STATE — director refresh 2026-11-03 14:38 PST
 
-- Last verified: 2026-11-03 14:08 PST (2026-11-03T22:08Z). Main tip: `23fd5aab` (UNCHANGED; breach log stays 123).
-- Live board: #3066 at 1,537 comments (new: 6616141166 breach record #122/#123, 6616492784 Verity hourly 21:53Z — queue flat 178th hour, cap-blocked streak 120 waves; 763 below the 2,300 migration trigger; no migration, no successor-board traffic).
-- REST quota (App identity): 12,413 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
-- Ledger sync: PUSHED 3 changed files (byte-compared via git protocol against branch) — ACTIVITY-LEDGER.md, activity-ledger.jsonl, STATS.md: dispatcher rebuild 22:01Z. Protocol, nodes, NC-001 identical, skipped.
+- Last verified: 2026-11-03 14:38 PST (2026-11-03T22:38Z). Main tip: `3180a8c9` (MOVED by 3 direct pushes, 0 merges; breach log stays 123; new DIRECT PUSH alert below).
+- Live board: #3066 at 1,538 comments (new: 6617223218 Nitro vision broadcast 'One Ultimate App, Different Doors' — claimed Shawn vision, carried as claim, not verified Shawn bytes; 762 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12,473 remaining at tick check. Stored gh-api PAT still 401 (known since 2026-10-30, NOT a 403, no stand_down).
+- Ledger sync: PUSHED 3 changed files (byte-compared against branch) — ACTIVITY-LEDGER.md, activity-ledger.jsonl, STATS.md: dispatcher rebuild 22:32Z. Protocol, nodes, NC-001 identical, skipped.
+
+## ALERT — DIRECT PUSH NIAS v5 + SN-0874 (disposition owed, NOT a receipt breach)
+
+- Compare-verified via App identity: 23fd5aab -> 3180a8c9, ahead_by 3, behind_by 0,
+  all single-parent, all author nayapower-lane-agent[bot] (shared/multi-tenant login —
+  seat unattributable from login alone), 2026-11-03T22:25–22:35Z.
+- f347a8b4 (22:25:50Z): NIAS/build-v5.py ADDED (new Factory generator code).
+  faed88fd (22:25:52Z): NIAS/FACTORY-LAW-V5.md ADDED (Factory Law: whole working
+  pages + PI injection — never extract, never rebuild, never fragment).
+  3180a8c9 (22:35:16Z): SN-0874 Smart Note filing (BRAIN/05-MEMORY/SMART-NOTES/
+  2026/11/03/VISION/ONE-APP/SN-0874/) — sanctioned intelligence-door class.
+- DIRECT PUSH ALERT: the NIAS v5 generator CODE + factory law landed on main with no
+  PR/receipt/review — same class as the 13:08 PST showcase-generator landing and the
+  11:38 PST deploy-pipe batch. Disposition owed (accept vs receipted PR), alongside
+  those standing questions. NOT a receipt breach (no merge involved); breach log stays 123.
+- Board echo 6617223218 (22:35Z, Nitro): "SHAWN'S VISION — ALL NAYAS READ THIS: One
+  Ultimate App, Different Doors" — claims Shawn ordered it coded into everything. Carried
+  as CLAIM: rests on bot-login board text, NOT verified Shawn bytes. The vision itself
+  (one app, doors = personal/business/space/membership, shared dashboard/mail/notes/lists/
+  ledger) is now the standing question for the lanes until Shawn's bytes confirm it.
 
 ## ALERT — MERGE-RECEIPT BREACHES #122 + #123 (surfaced 13:38 PST tick, adjudication owed)
 
@@ -209,5 +229,5 @@
 ## WHERE TO GO
 - Activation guide: `BRAIN/00-ACTIVATION/READ-ME-FIRST.md` (section 10 THE OATH — who you are before you begin; companion `THE-CODE-SHE-LIVES-BY.md`, the dos and don'ts).
 - Operating manual v2 ULTIMATE: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2537#issuecomment-6171114902 (until it lands in `BRAIN/90-OPERATIONS/`, then link the repo path).
-- Live board: #3066 at 1,535 comments (765 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- Live board: #3066 at 1,538 comments (new: 6617223218 Nitro vision broadcast 'One Ultimate App, Different Doors' — claimed Shawn vision, carried as claim, not verified Shawn bytes; 762 below the 2,300 migration trigger; no migration, no successor-board traffic).
 - Master directive: https://github.com/SoulSchoolAcademy/NayaPOWER/issues/2601
