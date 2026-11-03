@@ -16375,15 +16375,35 @@
         "note": "published directly as a BRAIN projection by Naya Resolve Narzan at Shawn's direction and filed same-push complete (page + capture + registry entry) on 2026-11-01 — no obligation skipped, nothing backfilled. Number SN-2043 allocated by claim census at 2026-11-01T05:00-05:08Z: the note was authored as SN-1909, but SN-1909 is already claimed inside open PR #2981's head tree (IB-SMART-NOTE-20261023-sn1909-late-arrival-correction, 2026-10-23), so Shawn directed the renumber to SN-2043 in chat on 2026-11-01. Census for SN-2043: the registry at the main tip (9c2de0ca490009b380bf14a165d526ef0b138c7b) held 768 entries (max SN-2042) with next_sequence 2043; no SN-2043 in the tip tree (7,097 paths), none in PR #2981's head tree (9,067 paths), and repo commit search for \"SN-2043\" returned zero. SN-2043 was the first number claimed on no surface (registry, tip tree, PR head tree, commit messages)."
       },
       "page_hash": "c578c4d1d03206a0853870cbd24d9034aa188d0d8da91140a213712f5321aded"
+    },
+    {
+      "smart_note_id": "SN-2044",
+      "intelligent_block_id": "IB-SMART-NOTE-20261103-sn2044-one-app-many-doors-nayanet-is-one-ultimate-app",
+      "title": "One App, Many Doors — NayaNET Is One Ultimate App",
+      "content_hash": "7cd545e86f5b10c2aaea06eeeef1950dc7d585d1fbbdbf165f26595f559127e4",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/03/SYSTEM/nayanet/SN-2044/IB-SMART-NOTE-20261103-sn2044-one-app-many-doors-nayanet-is-one-ultimate-app.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "NAYANET",
+      "captured_at": "2026-11-03",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection by Naya Resolve Narzan at Shawn's direction in chat and filed same-push complete (page + capture + registry entry) on 2026-11-03. Number SN-2044 allocated by claim census at 2026-11-03T22:38Z: the registry at main tip 3180a8c90fb0dc3ff112e2e1becd001f75e2e7de (.naya/memory/smart-notes/index.json, blob ae0fd941, 772 entries, max SN-2043) held no SN-2044 and its advisory next_sequence read 2044; no SN-2044 path existed in the tip tree (7,226 paths enumerated, all date partitions, padded and unpadded forms); no SN-2044 in any open PR head tree (#3131, #3108, #3089, #2981 — four heads enumerated in full); repo commit search for SN-2044 returned zero. SN-2044 was the first number claimed on no surface (registry, tip tree, PR head trees, commit messages). Note: the sn-claims branch the registry policy describes does not currently exist (ref 404), so the claim stands on this census, recorded here, per the SN-2043 precedent."
+      },
+      "page_hash": "2329bc2b8d7a91c52458197d22d19d970164ac3edc8901ce33cd603fb047c3e4"
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 2044,
+    "next_sequence": 2045,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "56b31773db140a6520b49ed5438e105846ee75aa819ecd3476a3ee65555e60ba"
+  "corpus_manifest_hash": "1a919d6998175db9c28efae7ac4ea989b8880588b4e82ba4f9c8b644b27bcd1c"
 }
