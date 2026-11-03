@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-02T21:50:27Z",
-  "tip": "ec6d06367a82d6ef550feacee4bb56570527ca3f",
+  "generated_at": "2026-11-03T03:49:19Z",
+  "tip": "15e45b4b4814b74da2a2526f4b50058ee75f9810",
   "open_pr_count": 4,
   "queue_by_tier_action": {
     "C": {
@@ -13,11 +13,7 @@
     }
   },
   "tip_failing_checks": [
-    "Actions budget watch",
-    "Deploy Hub worker",
-    "Stale branch watch",
     "promote-and-prove",
-    "resolve-current-truth",
     "spec-integrity",
     "test"
   ],
