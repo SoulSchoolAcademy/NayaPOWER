@@ -1,8 +1,8 @@
-# CURRENT MISSION STATE — director refresh 2026-11-02 16:48 PST
+# CURRENT MISSION STATE — director refresh 2026-11-02 17:08 PST
 
-- Last verified: 2026-11-02 16:48 PST (2026-11-03T00:48Z). Main tip: `bead0651` (unchanged; last move was the routine living-map MAP-STATE commit, single parent ec6d0636; no merge in-window).
-- Live board: #3066 at 1,494 comments (+2; 806 below the 2,300 migration trigger; no migration).
-- REST quota (App identity): 12429 remaining at tick check. Branch count via git protocol: 999.
+- Last verified: 2026-11-02 17:08 PST (2026-11-03T01:08Z). Main tip: `bead0651` (unchanged; no merge in-window, no receipt watch triggered).
+- Live board: #3066 at 1,495 comments (+1 routine Naya 5 hourly accountability 6592497295; 805 below the 2,300 migration trigger; no migration, no successor-board traffic).
+- REST quota (App identity): 12479 remaining at tick check. Branch count via git protocol: 999.
 
 ## ALERT — MERGE-RECEIPT BREACH #121, BOARD-NUMBERED (VERIFY adjudication owed)
 - PR #3155 "Domain move: functional nayanet.live -> nayanet.app" merged 2026-11-02T18:34:12Z
